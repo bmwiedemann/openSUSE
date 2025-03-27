@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4util
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 %define libname libxfce4util7
 Name:           libxfce4util
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Utility Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -36,9 +36,8 @@ BuildRequires:  pkgconfig(gobject-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(gtk-doc) >= 1.20
 BuildRequires:  pkgconfig(vapigen)
-%if %{with git}
+# Needed for "xdt-gen-visibility":
 BuildRequires:  xfce4-dev-tools
-%endif
 
 %description
 libxfce4util is a general-purpose utility library with core application support

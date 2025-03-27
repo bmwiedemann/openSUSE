@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Mar 23 10:05:17 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.1
+  * autotools-build: Search for xdt-gen-visibility also in the
+    working tree
+  * meson-build: Bump meson min version
+  * build: Automate copyright year management
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * docs: Ignore visibility header and align build systems
+  * build: Remove libxfce4util-config.h from GI
+  * xfce-i18n: Use g_strlcpy instead of falling back to it
+  * meson-build: Add missing check for varargs.h
+  * xfce-rc: Fix C locale handling
+  * meson-build: Use SPDX license expression
+  * meson-build: Update debug/optimization flag management
+  * build: Use VERSION_FULL intead of VERSION or PACKAGE_VERSION
+  * meson-build: Let pkg.generate() fill in required libs
+  * meson-build: Use relative path in gtk-doc
+  * meson-build: Check for libintl only if required
+  * meson-build: Remove duplicated CFLAGS
+  * meson-build: Gobject introspection cleanup
+  * Fix namespace for GObject introspection in meson build too
+  * Fix namespace for GObject introspection
+  * Removed extra ';' in header files.
+  * build: Remove unused check for XDT_CHECK_ABI
+  * build: Add missing update of --enable-visibility flag
+  * docs: Don't run gtkdoc-check
+  * build: Bump xdt required version
+  * docs: Remove generated types from repository
+  * Add libxfce4util/meson.build to Makefile.am EXTRA_DIST
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Dec 15 10:39:58 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.0
