@@ -41,8 +41,10 @@ BuildRequires:  %{pythons}
 %if 0%{?suse_version} > 1600 || 0%{?sle_version} < 150600
 BuildRequires:  %{python_module flake8}
 %endif
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyflakes}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  mercurial
 BuildRequires:  mercurial-tests
@@ -58,10 +60,10 @@ Flexible evolution of Mercurial history.
 %setup -q -n hg_evolve-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 # Delete hgext3rd/__init__.py and its cached version because it is already delivered by mercurial.
 rm %{buildroot}%{python_sitelib}/hgext3rd/__init__.py
@@ -76,6 +78,7 @@ cd tests
 %files
 %doc CHANGELOG README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/hgext3rd
+%{python_sitelib}/hg_evolve-%{version}*-info
 
 %changelog
