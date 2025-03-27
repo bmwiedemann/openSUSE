@@ -60,4 +60,37 @@
     <comment></comment>
     <requestid>1252646</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bac42f7f1fe4dbaefe54af278826d2ed</srcmd5>
+    <version>6.1.1</version>
+    <time>1743111282</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.1.1:
+  * Create 6.1.1 release
+  * Create 6.1.1 release
+  * Create 6.1.1 release
+  * Ignore live test
+  * Fix error message
+  * Update CHANGELOG
+  * Support any value for contains predicate
+  * Fix jsonpath array filter with missing attribute in array element
+  * Do not include CR in filename
+  * Fix hurlfmt spacing
+  * Update hurl version to 6.1.1
+  * Update toDate filter grammar
+  * Publish npm package 6.1.0
+  * Reorg assert doc
+  * Clarify generic and deb packages installation
+  * Add CRLF tests (non-blocking)
+  * Update Test SSL keys/certificates
+  * Fix RELEASING.md
+  * Update hurl version to 6.2.0-SNAPSHOT
+
+- Update to 6.1.1:
+  * Fix hurlfmt spacing #3839
+  * Fix filename parsing #3848
+  * Fix jsonpath array wildcard with missing attribute #3859 #3869
+  * Fix predicate contains with none input #3868</comment>
+    <requestid>1264655</requestid>
+  </revision>
 </revisionlist>

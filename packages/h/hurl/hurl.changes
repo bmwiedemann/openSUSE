@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:48:06 UTC 2025 - mvetter@suse.com
+
+- Update to version 6.1.1:
+  * Create 6.1.1 release
+  * Create 6.1.1 release
+  * Create 6.1.1 release
+  * Ignore live test
+  * Fix error message
+  * Update CHANGELOG
+  * Support any value for contains predicate
+  * Fix jsonpath array filter with missing attribute in array element
+  * Do not include CR in filename
+  * Fix hurlfmt spacing
+  * Update hurl version to 6.1.1
+  * Update toDate filter grammar
+  * Publish npm package 6.1.0
+  * Reorg assert doc
+  * Clarify generic and deb packages installation
+  * Add CRLF tests (non-blocking)
+  * Update Test SSL keys/certificates
+  * Fix RELEASING.md
+  * Update hurl version to 6.2.0-SNAPSHOT
+
+-------------------------------------------------------------------
+Thu Mar 27 17:47:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.1.1:
+  * Fix hurlfmt spacing #3839
+  * Fix filename parsing #3848
+  * Fix jsonpath array wildcard with missing attribute #3859 #3869
+  * Fix predicate contains with none input #3868
+
+-------------------------------------------------------------------
 Wed Mar 12 15:01:43 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 6.1.0:
