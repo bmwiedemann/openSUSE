@@ -37,4 +37,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1249687</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>feae035240268100d594427442b89cd9</srcmd5>
+    <version>0</version>
+    <time>1743111218</time>
+    <user>anag+factory</user>
+    <comment>- Start the autoinstallation if a profile is found in a predefined
+  location (gh#agama-project/agama#2180).</comment>
+    <requestid>1256466</requestid>
+  </revision>
 </revisionlist>
