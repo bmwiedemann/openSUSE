@@ -17,7 +17,7 @@
 
 
 Name:           element-desktop
-Version:        1.11.94
+Version:        1.11.96
 Release:        0
 Summary:        A glossy Matrix collaboration client - desktop
 License:        AGPL-3.0-only or GPL-3.0-only
@@ -75,6 +75,13 @@ A glossy Matrix collaboration client - desktop
 %setup -q -a2
 %autopatch -p1
 
+# of course this node garbage of a "programming language" is trying to copy around some windows specific stuff on linux
+echo > ./node_modules/electron-winstaller/script/select-7z-arch.js
+
+# don't run the broken postinstall script
+sed -i -e 's/^.*postinstall.*$/"foo":"bar"/' package.json
+
+
 # https://blogs.gnome.org/mcatanzaro/2020/05/18/patching-vendored-rust-dependencies/
 for i in cc libloading libsqlite3-sys openssl-src rustix seshat vcpkg; do
 pushd .hak/hakModules/matrix-seshat/vendor/$i
@@ -117,11 +124,6 @@ export ESBUILD_BINARY_PATH=/usr/bin/esbuild
 
 %electron_rebuild
 
-
-#We do manually the rough equivalent of `hak build` to inject correct optflags
-pushd .hak/hakModules/keytar
-%electron_rebuild
-popd
 
 pushd .hak/hakModules/matrix-seshat
 %if 0%{?suse_version}
@@ -178,6 +180,9 @@ find -name usage.txt -type f -print -delete
 # Remove empty directories
 find . -type d -empty -print -delete
 
+# remove dotfiles
+find -type f -name ".*" -print -delete
+
 # fix file mode
 find . -type f -exec chmod 0644 {} \;
 find . -name '*.node' -exec chmod 0755 {} \;
@@ -192,9 +197,9 @@ ln -vs %{_datadir}/webapps/element "%{buildroot}%{_datadir}/element/webapp"
 
 # Install binaries to /usr/lib
 install -vd -m 0755 "%{buildroot}%{_prefix}/lib/element/"
-install -pvm0755 dist/linux-universal-unpacked/resources/app/node_modules/keytar/build/Release/keytar.node "%{buildroot}%{_prefix}/lib/element/keytar.node"
+mv "%{buildroot}/%{_datadir}/element/app/node_modules/keytar-forked/build/Release/keytar.node" "%{buildroot}%{_prefix}/lib/element/"
 install -pvm0755 dist/linux-universal-unpacked/resources/app/node_modules/matrix-seshat/index.node "%{buildroot}%{_prefix}/lib/element/matrix-seshat.node"
-ln -sfv "%{_prefix}/lib/element/keytar.node" "%{buildroot}%{_datadir}/element/app/node_modules/keytar/build/Release/keytar.node"
+ln -sfv "%{_prefix}/lib/element/keytar.node" "%{buildroot}/%{_datadir}/element/app/node_modules/keytar-forked/build/Release/keytar.node"
 ln -sfv "%{_prefix}/lib/element/matrix-seshat.node" "%{buildroot}%{_datadir}/element/app/node_modules/matrix-seshat/index.node"
 
 # Config file

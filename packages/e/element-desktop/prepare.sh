@@ -56,21 +56,10 @@ yarn run hak fetch
 
 # prefetch cargo crates
 pushd .hak/hakModules/matrix-seshat
-mkdir -pv .cargo 
+mkdir -pv .cargo
 cargo vendor-filterer --platform='*-unknown-linux-gnu' --platform='*-unknown-linux-gnueabihf' --all-features > .cargo/config
 #remove vendored libraries
-rm -rvf vendor/openssl-src/openssl
-popd
-
-#fetch node-addon-api for keytar. Unfortunately there is no package lock, therefore we use lowest supported version (for reproducility)
-#we need to install it manuall in a separate directory wiithout a package.json. good that node-addon-api has no dependencies.
-pushd .hak/hakModules/keytar
-naa_version=$(jq -cj '.dependencies["node-addon-api"]' <package.json | sed 's/^\^//')
-mkdir -pv "$tmpdir/naa"
-pushd "$tmpdir/naa"
-npm install --verbose --ignore-scripts --no-save node-addon-api@"${naa_version}"
-popd
-mv -v "$tmpdir/naa/node_modules" -t .
+rm -rf vendor/openssl-src/openssl
 popd
 
 #Remove non-free binaries, starting with a few common file extensions
