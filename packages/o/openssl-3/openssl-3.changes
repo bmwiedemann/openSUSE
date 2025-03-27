@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 17:19:40 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- FIPS: Mark SHA-1 as non-approved in the SLI. [jsc#PED-12224]
+  * Add openssl-FIPS-Mark-SHA1-as-nonapproved.patch
+
+-------------------------------------------------------------------
 Wed Mar  5 18:18:52 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Introduce --without lto. When %{optflags} contains -flto=*, tests cases are

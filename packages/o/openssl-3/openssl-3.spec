@@ -149,6 +149,8 @@ Patch64:        openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
 # PATCH-FIX-UPSTREAM: Fix failing tests on ppc64 jsc#PED-10280
 Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
 Patch66:        openssl-3-fix-quic_multistream_test.patch
+# PATCH-FIX-SUSE jsc#PED-12224 FIPS: Mark SHA1 as nonapproved in the SLI
+Patch67:        openssl-FIPS-Mark-SHA1-as-nonapproved.patch
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64

@@ -1,0 +1,25 @@
+Index: openssl-3.2.4/providers/fips/fipsprov.c
+===================================================================
+--- openssl-3.2.4.orig/providers/fips/fipsprov.c
++++ openssl-3.2.4/providers/fips/fipsprov.c
+@@ -278,7 +278,7 @@ static int fips_self_test(void *provctx)
+  */
+ static const OSSL_ALGORITHM fips_digests[] = {
+     /* Our primary name:NiST name[:our older names] */
+-    { PROV_NAMES_SHA1, FIPS_DEFAULT_PROPERTIES, ossl_sha1_functions },
++    { PROV_NAMES_SHA1, FIPS_UNAPPROVED_PROPERTIES, ossl_sha1_functions },
+     { PROV_NAMES_SHA2_224, FIPS_DEFAULT_PROPERTIES, ossl_sha224_functions },
+     { PROV_NAMES_SHA2_256, FIPS_DEFAULT_PROPERTIES, ossl_sha256_functions },
+     { PROV_NAMES_SHA2_384, FIPS_DEFAULT_PROPERTIES, ossl_sha384_functions },
+@@ -355,9 +355,9 @@ static const OSSL_ALGORITHM_CAPABLE fips
+     ALG(PROV_NAMES_AES_256_WRAP_PAD_INV, ossl_aes256wrappadinv_functions),
+     ALG(PROV_NAMES_AES_192_WRAP_PAD_INV, ossl_aes192wrappadinv_functions),
+     ALG(PROV_NAMES_AES_128_WRAP_PAD_INV, ossl_aes128wrappadinv_functions),
+-    ALGC(PROV_NAMES_AES_128_CBC_HMAC_SHA1, ossl_aes128cbc_hmac_sha1_functions,
++    UNAPPROVED_ALGC(PROV_NAMES_AES_128_CBC_HMAC_SHA1, ossl_aes128cbc_hmac_sha1_functions,
+          ossl_cipher_capable_aes_cbc_hmac_sha1),
+-    ALGC(PROV_NAMES_AES_256_CBC_HMAC_SHA1, ossl_aes256cbc_hmac_sha1_functions,
++    UNAPPROVED_ALGC(PROV_NAMES_AES_256_CBC_HMAC_SHA1, ossl_aes256cbc_hmac_sha1_functions,
+          ossl_cipher_capable_aes_cbc_hmac_sha1),
+     ALGC(PROV_NAMES_AES_128_CBC_HMAC_SHA256, ossl_aes128cbc_hmac_sha256_functions,
+          ossl_cipher_capable_aes_cbc_hmac_sha256),
