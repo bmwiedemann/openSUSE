@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Mar 24 08:26:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.2:
+  * build: Fix include order on *BSD
+  * autotools-build: Be sure gdbus-codegen files are regenerated
+- Remove obsolete 0003-fix-glib2_84-related-conditionals.patch
+
+-------------------------------------------------------------------
+Sun Mar 23 10:38:34 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.1:
+  * wayland: Use labwc's --session option if available
+  * wayland: Don't pass xfce4-session to the optional compositor
+    cmdline
+  * build: Add missing dep flags
+  * build: Automate copyright year management
+  * build: Replace xdt-csource with glib-compile-resources
+  * build: Define xfce4 min version >= 4.18
+  * scripts: Make xflock4 blocking again
+  * startxfce4: Fix keyboard layout on wayland
+  * scripts: Remove unused .in level in xinitrc
+  * build: Add missing checks for headers
+  * build: Fix wrong include guard
+  * build: Add missing check for sigprocmask
+  * autotools-build: Check for xfce4-dev-tools in configure.ac
+  * build: Add missing dep flags
+  * build: Get rid of maintainer mode where gdbus-codegen is used
+  * Improve Wayland support
+  * Translation Updates
+- Refresh xfce4-session-adapt-session-scripts-git.patch and
+  xfce4-session-adapt-session-scripts.patch
+- Refresh 0002-relax-x11-version.patch
+  * Add small hack to maintain the configure* files' modification
+    time; otherwise the whole aclocal, autoconf, automake series
+    will have to be run, which will fail.
+- Add 0003-fix-glib2_84-related-conditionals.patch to fix errors
+  when building with glib2 < 2.84
+
+-------------------------------------------------------------------
 Fri Dec 20 10:28:13 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Add xwayland as a required package for the new subpackage

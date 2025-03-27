@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_with git
 Name:           xfce4-session
-Version:        4.20.0
+Version:        4.20.2
 Release:        0
 Summary:        Xfce Session Manager
 License:        GPL-2.0-only
@@ -59,10 +59,10 @@ BuildRequires:  pkgconfig(libxfce4panel-2.0)
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.4
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.19.2
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.2
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.12.0
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(sm) >= 1.2.2
-BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 Requires:       %{name}-branding
 Requires:       systemd
 Requires:       xfce4-settings
@@ -115,7 +115,13 @@ for the Xfce desktop environment.
 %lang_package
 
 %prep
-%autosetup -p1
+# Hack to avoid having to run autotools:
+%setup -q
+cp -p ./configure ./configure.orig
+cp -p ./configure.ac ./configure.ac.orig
+%autopatch -p1
+touch -r ./configure.ac.orig ./configure.ac
+touch -r ./configure.orig ./configure
 
 %build
 %if %{with git}
@@ -197,5 +203,7 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %files wayland-experimental
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/xfce-wayland.desktop
+%dir %{_datadir}/xfce4/labwc
+%{_datadir}/xfce4/labwc/labwc*
 
 %changelog
