@@ -163,4 +163,14 @@
     transparently and automatically. (forwarded request 1255250 from rrahl0)</comment>
     <requestid>1255251</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ab6cf3b97b08bd49b8dbb2ecc76fd0f6</srcmd5>
+    <version>6.3.1</version>
+    <time>1743111130</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 6.3.1:
+  * Fixed an issue which caused data races and timeouts in certain cases, which
+    would cause cache storing and retrieval to fail. (forwarded request 1256336 from rrahl0)</comment>
+    <requestid>1256337</requestid>
+  </revision>
 </revisionlist>
