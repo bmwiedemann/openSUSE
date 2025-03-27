@@ -1238,4 +1238,17 @@ mostly-working synapse than nothing at all) and the package has been update to
     - Bump ulid from 1.2.0 to 1.2.1. (#18246)</comment>
     <requestid>1255975</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>92174294e0353599047151e005fa0a80</srcmd5>
+    <version>1.127.1</version>
+    <time>1743111132</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1256338 from darix
+
+- Update to 1.127.1
+  Fix CVE-2025-30355 / GHSA-v56r-hwv5-mxg6. High severity
+  vulnerability affecting federation. The vulnerability has been
+  exploited in the wild.</comment>
+    <requestid>1256339</requestid>
+  </revision>
 </revisionlist>
