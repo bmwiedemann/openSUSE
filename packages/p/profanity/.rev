@@ -633,4 +633,41 @@
     <comment></comment>
     <requestid>1226202</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2e14304303e9df6164748360a719a1bc</srcmd5>
+    <version>0.15.0</version>
+    <time>1743111291</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.15.0:
+  * Don't use xscreensaver on wayland (#1876)
+  * Correctly recognize ox encrypted carbons (#1878)
+  * Don't crash when using /plugins install while disconnected (#1880, #1882)
+  * Unify loading of keyfile (#1886)
+  * Fix detection of some URLs (#1877, #1883)
+  * Improve MUC title behaviour for roster, statusbar, and titlebar (#1892)
+  * Improve logging of DB messages (#1893)
+  * Fix crash on reconnect (#1894, #1896)
+  * Check sender for LMC messages (#1893, #1898)
+  * Fix /plugins reload error message (2ab9a3)
+  * Add parameter support for aliases (#1900)
+  * Add section on how to use Profanity to man page (#1904)
+  * Improve history paging performance (#1905)
+  * Fix loading of encryption type (#1906)
+  * Refactor tests to use the new cmocka test runner (#1908)
+  * Add unicode support for correction char (#1909)
+  * Show encryption for messages from history (#1910)
+  * Fix /omemo fingerprint crashing in a MUC (#1913)
+  * Change DB structure (#1902)
+  * Allow redirects for /plugins install via URLs (#1922)
+  * Fix error message for /executable subcommands (#1921)
+  * Do not check for unique stanza-id for MAM messages (#1926)
+  * Handle alt+enter as newline char (#1927)
+  * Fix unintended exits on some commands (#1924)
+  * Introduce /redraw command (#1931)
+  * Fix prof_pre_chat_message_display does not replace sent messages (#1918)
+  * Add new dynamic mode for statusbar tab behaviour (#1912)
+    /statusbar tabmode default|dynamic|actlist
+  * Smooth scrolling support (+mouse wheel scrolling in some terminals) (#1824)</comment>
+    <requestid>1264689</requestid>
+  </revision>
 </revisionlist>
