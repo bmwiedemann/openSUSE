@@ -1408,4 +1408,17 @@
   * Added support swipe navigation on touchscreens.</comment>
     <requestid>1254428</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>4cc88f700d62ebce5622f6e6bc68fb2c</srcmd5>
+    <version>5.13.1</version>
+    <time>1743111108</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 5.13.1
+  * Fixed crash in group/channel stories.
+  * Added allow transferring my unique gifts from Send Gift section.
+  * Added edit type of gifts you accept in Settings &gt; Privacy and Security.
+  * Added swipe navigation using swipe gesture on touchpads/touchscreens.
+  * Added choose chat list quick action for swipe or middle click.</comment>
+    <requestid>1256372</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 27 02:40:44 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 5.13.1
+  * Fixed crash in group/channel stories.
+  * Added allow transferring my unique gifts from Send Gift section.
+  * Added edit type of gifts you accept in Settings > Privacy and Security.
+  * Added swipe navigation using swipe gesture on touchpads/touchscreens.
+  * Added choose chat list quick action for swipe or middle click.
+
+-------------------------------------------------------------------
 Wed Mar 19 13:59:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Droped unneeded pcre build dependencies.

@@ -23,7 +23,7 @@
 %define ada_ver   3.2.1
 %define owt_ver   git20241202
 Name:           telegram-desktop
-Version:        5.12.5
+Version:        5.13.1
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
