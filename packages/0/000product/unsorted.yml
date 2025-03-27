@@ -2388,6 +2388,7 @@ unsorted:
   - cockpit-doc 
   - cockpit-kdump 
   - cockpit-machines 
+  - cockpit-packages 
   - cockpit-repos 
   - cockpit-selinux 
   - cockpit-storaged 
@@ -8726,8 +8727,6 @@ unsorted:
   - helix-runtime 
   - helix-zsh-completion 
   - hello 
-  - hello-kubic 
-  - hello-kubic-k8s-yaml 
   - hello-lang 
   - helm 
   - helm-bash-completion 
@@ -11109,7 +11108,6 @@ unsorted:
   - leechcraft-azoth-herbicide 
   - leechcraft-azoth-hili 
   - leechcraft-azoth-isterique 
-  - leechcraft-azoth-juick 
   - leechcraft-azoth-keeso 
   - leechcraft-azoth-lastseen 
   - leechcraft-azoth-metacontacts 
@@ -11129,6 +11127,9 @@ unsorted:
   - leechcraft-blasq-deathnote 
   - leechcraft-blasq-rappor 
   - leechcraft-blasq-vangog 
+  - leechcraft-blogique 
+  - leechcraft-blogique-hestia 
+  - leechcraft-blogique-metida 
   - leechcraft-certmgr 
   - leechcraft-cpuload 
   - leechcraft-cstp 
@@ -11155,12 +11156,11 @@ unsorted:
   - leechcraft-kbswitch 
   - leechcraft-kinotify 
   - leechcraft-knowhow 
-  - leechcraft-krigstask 
   - leechcraft-lackman 
-  - leechcraft-lastfmscrobble 
   - leechcraft-laughty 
   - leechcraft-launchy 
   - leechcraft-lemon 
+  - leechcraft-lhtr 
   - leechcraft-liznoo 
   - leechcraft-lmp 
   - leechcraft-lmp-brainslugz 
@@ -11170,7 +11170,6 @@ unsorted:
   - leechcraft-lmp-httstream 
   - leechcraft-lmp-mp3tunes 
   - leechcraft-lmp-mtpsync 
-  - leechcraft-lmp-potorchu 
   - leechcraft-lmp-ppl 
   - leechcraft-mellonetray 
   - leechcraft-monocle 
@@ -11201,7 +11200,7 @@ unsorted:
   - leechcraft-poshuku-onlinebookmarks 
   - leechcraft-poshuku-onlinebookmarks-delicious 
   - leechcraft-poshuku-onlinebookmarks-readitlater 
-  - leechcraft-poshuku-qrd 
+  - leechcraft-poshuku-speeddial 
   - leechcraft-poshuku-webengineview 
   - leechcraft-rosenthal 
   - leechcraft-sb2 
@@ -14524,22 +14523,23 @@ unsorted:
   - libldl3 
   - libldm-1_0-0-devel 
   - libled1 
-  - libleechcraft-util-db-qt5-0_6_75_1 
-  - libleechcraft-util-gui-qt5-0_6_75_1 
-  - libleechcraft-util-models-qt5-0_6_75_1 
-  - libleechcraft-util-monocle-qt5-0_6_75 
-  - libleechcraft-util-network-qt5-0_6_75_1 
-  - libleechcraft-util-qml-qt5-0_6_75_2 
-  - libleechcraft-util-shortcuts-qt5-0_6_75 
-  - libleechcraft-util-sll-qt5-0_6_75_1 
-  - libleechcraft-util-svcauth-qt5-0_6_75 
-  - libleechcraft-util-sys-qt5-0_6_75_1 
-  - libleechcraft-util-tags-qt5-0_6_75_1 
-  - libleechcraft-util-threads-qt5-0_6_75 
-  - libleechcraft-util-x11-qt5-0_6_75 
-  - libleechcraft-util-xdg-qt5-0_6_75 
-  - libleechcraft-util-xpc-qt5-0_6_75_2 
-  - libleechcraft-util-xsd-qt5-0_6_75 
+  - libleechcraft-util-db-qt6-0_6_75 
+  - libleechcraft-util-gui-qt6-0_6_75 
+  - libleechcraft-util-lmp-qt6-0_6_75 
+  - libleechcraft-util-models-qt6-0_6_75 
+  - libleechcraft-util-monocle-qt6-0_6_75 
+  - libleechcraft-util-network-qt6-0_6_75 
+  - libleechcraft-util-qml-qt6-0_6_75 
+  - libleechcraft-util-shortcuts-qt6-0_6_75 
+  - libleechcraft-util-sll-qt6-0_6_75 
+  - libleechcraft-util-svcauth-qt6-0_6_75 
+  - libleechcraft-util-sys-qt6-0_6_75 
+  - libleechcraft-util-tags-qt6-0_6_75 
+  - libleechcraft-util-threads-qt6-0_6_75 
+  - libleechcraft-util-x11-qt6-0_6_75 
+  - libleechcraft-util-xdg-qt6-0_6_75 
+  - libleechcraft-util-xpc-qt6-0_6_75 
+  - libleechcraft-util-xsd-qt6-0_6_75 
   - libleptonica6 
   - libleveldb1 
   - libleveldb1-x86-64-v3 
@@ -15410,7 +15410,7 @@ unsorted:
   - libosmovty-devel 
   - libosmovty13 
   - libosmvendor5 
-  - libossim1 
+  - libossim2 
   - libossp-uuid++16 
   - libossp-uuid16 
   - libossp-uuid_dce16 
@@ -15622,7 +15622,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler146-32bit 
+  - libpoppler147-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -24697,8 +24697,6 @@ unsorted:
   - python311-arf 
   - python311-argcomplete 
   - python311-argh 
-  - python311-argon2-cffi 
-  - python311-argon2-cffi-bindings 
   - python311-argparse-manpage 
   - python311-argparse_addons 
   - python311-arrow 
@@ -26628,7 +26626,6 @@ unsorted:
   - python311-parver 
   - python311-pass-git-helper 
   - python311-passivetotal 
-  - python311-passlib 
   - python311-pastel 
   - python311-pastream 
   - python311-patatt 
@@ -27430,7 +27427,6 @@ unsorted:
   - python311-screeninfo 
   - python311-screenplain 
   - python311-scripttest 
-  - python311-scrypt 
   - python311-sdjson 
   - python311-sdnotify 
   - python311-seaborn 
@@ -32078,6 +32074,8 @@ unsorted:
   - python313-archmage 
   - python313-arf 
   - python313-argh 
+  - python313-argon2-cffi 
+  - python313-argon2-cffi-bindings 
   - python313-argparse_addons 
   - python313-arrow 
   - python313-arviz 
@@ -34789,6 +34787,7 @@ unsorted:
   - python313-screeninfo 
   - python313-screenplain 
   - python313-scripttest 
+  - python313-scrypt 
   - python313-sdjson 
   - python313-sdnotify 
   - python313-seaborn 
