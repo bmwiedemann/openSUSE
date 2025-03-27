@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 27 00:33:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1743024662.95d87ac:
+  * Mention for what asset types `autoinst_url` can be used
+  * Consistently use try/catch instead of 'if ' everywhere
+  * Enable validation of resumed asset downloads in svirt backend
+  * Avoid leftover rsync processes on svirt host
+  * Check for correct git warning when cloning an empty repository
+
+-------------------------------------------------------------------
 Mon Mar 24 12:31:32 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1742623603.20c141b:
