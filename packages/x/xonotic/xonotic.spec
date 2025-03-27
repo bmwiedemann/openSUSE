@@ -30,18 +30,18 @@ Source2:        xonotic.service
 Source3:        xonotic.init
 Source4:        %{name}.changes
 Source100:      xonotic.appdata.xml
-BuildRequires:  SDL2-devel
-BuildRequires:  alsa-devel
-BuildRequires:  d0_blind_id-devel
-BuildRequires:  libXpm-devel
-BuildRequires:  libXxf86vm-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  libjpeg-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
-BuildRequires:  xorg-x11-libXext-devel
-BuildRequires:  xorg-x11-libXpm
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(d0_blind_id)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xpm)
+BuildRequires:  pkgconfig(xxf86vm)
+BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
 Requires:       xonotic-data = %{version}
 %if %{with systemd}
@@ -54,7 +54,7 @@ Provides:       user(%{name})
 Fast-paced first-person shooter that works on Windows, OS X and Linux. The project is geared towards providing addictive arena shooter gameplay which is all spawned and driven by the community itself. Being a direct successor of the Nexuiz project with years of development between them, and it aims to become the best possible open-source FPS (first-person-shooter) of its kind.
 
 %package server
-Summary:        Dedicated xonotic server first person shooter
+Summary:        Dedicated server for the Xonotic first person shooter
 Group:          Amusements/Games/3D/Shoot
 Requires:       xonotic-data = %{version}
 Requires(pre):  shadow
@@ -79,7 +79,7 @@ Xonotic is a free (GPL), fast-paced first-person shooter that works on Windows, 
 Data (textures, maps, sounds and models) required to play xonotic.
 
 %prep
-%setup -q -n Xonotic
+%autosetup -n Xonotic -p1
 rm -rf misc/buildfiles/ # use system libs
 sed -i \
 		-e "/^EXE_/s:darkplaces:%{name}-%{version}:" \
@@ -94,7 +94,6 @@ find .  -name '*.[ch]' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g
 
 %build
 %make_build \
-  %{?_smp_mflags} \
   DP_LINK_TO_LIBJPEG=1 \
   DP_LINK_CRYPTO=shared \
   DP_FS_BASEDIR="%{_datadir}/xonotic" \

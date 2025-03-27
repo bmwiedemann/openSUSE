@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 18:06:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Replace old package names BuildRequires (we have not had
+  xorg-x11-libX* in a long time)
+
+-------------------------------------------------------------------
 Wed Feb  5 13:45:03 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - removed unneeded xorg-x11-proto-devel BuildRequires (bsc#1236804)
