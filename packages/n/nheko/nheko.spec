@@ -31,7 +31,7 @@ BuildRequires:  asciidoc
 BuildRequires:  cmake >= 3.13.0
 BuildRequires:  cmark-devel
 BuildRequires:  desktop-file-utils
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires: gcc12
 BuildRequires: gcc12-c++
 %else
@@ -109,7 +109,7 @@ This package contain the zsh completion command for the %{name} matrix client.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif

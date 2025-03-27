@@ -4,4 +4,5 @@
 for Matrix that feels more like a mainstream chat app.
 
   </description>
+  <devel project="network:messaging:matrix" package="nheko"/>
 </package>
