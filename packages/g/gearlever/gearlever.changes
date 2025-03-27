@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:08:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.0.2:
+  * Fixed an issue causing the "Keep both" option to override the old desktop
+    file
+- Update to 3.0.1:
+  * Fixed an issue causing custom Github update urls being ignored when
+    checking for updates
+- Update to 3.0.0:
+  * Gear Lever now has a brand new command-line interface for managing and
+    updating apps
+
+-------------------------------------------------------------------
 Sat Jan 18 14:49:48 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 2.3.2:

@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        2.3.2
+Version:        3.0.2
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
