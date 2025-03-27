@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Mar 27 01:33:33 UTC 2025 - william.brown@suse.com
+
+- bsc#1239722 - CVE-2025-2487 - 389-ds: null pointer dereference leads to denial of service
+- Update to version 3.1.2~git55.7fbd4526:
+  * Security fix for CVE-2025-2487
+  * Issue 6500 - Fix covscan and ASAN issue
+  * Issue 6571 - Nested group does not receive memberOf attribute (#6679)
+  * Issue 6676 - Add GitHub workflow action and fix pbkdf2 tests (#6677)
+  * Issue 6671 - tombstone_fixup_test sometime fails on bdb
+  * Issue 6680 - instance read-only mode is broken (#6681)
+  * Issue 6683 - test_healthcheck_replication_out_of_sync_broken mail fail (#6684)
+  * Ignore replica busy condition in healthcheck (#6630)
+  * Issue 6613 - test_reindex_task_creates_abandoned_index_file fails (#6674)
+  * Issue 6663 - CLI - add error log JSON settings to dsconf
+  * Issue 6663 - RFE - Add option to write error log in JSON
+  * Issue 6665 - UI - Need to refresh log settings after saving
+  * Issue 6639 - Fix crash in upgrade when removing subtree name attribute
+  * Issue 6656 - UI - Enhance Monitor Log Viewer with Patternfly LogViewer component (#6657)
+  * Issue 6655 - fix replication release replica decoding error
+  * Issue  6653 - Cleanup error messages
+  * Issue 6639 - remove all the code related to entryrdn_get_switch
+  * Issue 6429 - UI - clicking on a database suffix under the Monitor tab crashes UI (#6610)
+  * Issue 6632 - Replication init fails with ASAN build
+  * Issue 6625 - UI - various fixes part 3
+  * Revert "Issue #6562 - Prevent undefined behaviour in in filter_stuff_func (#6563)" (#6634)
+  * Issue 6625 - UI - fix next round of bugs
+  * Issue 6599 - Access JSON logging - lib389/CI/minor fixes
+  * Issue #6562 - Prevent undefined behaviour in in filter_stuff_func (#6563)
+  * Bump esbuild from 0.24.0 to 0.25.0 in /src/cockpit/389-console (#6602)
+  * Issue 6327 - Fix incorrect sizeof() usage for pointer in get_ip_str() function (#6629)
+  * Issue 6553 - Update concread to 0.5.4 and refactor statistics tracking (#6607)
+  * Issue 6619 - test_dblib_migration fails on RHEL10 (#6620)
+  * Issue 6617 - test_vlv_as_freeipa_backup_restore fails (#6618)
+  * Issue 6625 - UI - fix various issues with LDAP browser, etc
+  * Issue 6623 - UI - Generic updates (#6624)
+
+-------------------------------------------------------------------
 Wed Feb 19 02:06:56 UTC 2025 - william.brown@suse.com
 
 - Update to version 3.1.2~git24.744df65e:
