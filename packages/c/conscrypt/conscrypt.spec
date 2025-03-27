@@ -1,7 +1,7 @@
 #
 # spec file for package conscrypt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -116,25 +116,29 @@ popd
 env -Cconstants g++ src/gen/cpp/generate_constants.cc -o generate_constants
 ./constants/generate_constants >openjdk/src/main/java/org/conscrypt/NativeConstants.java
 
+pushd openjdk
 %{mvn_alias} :{*} :@1-uber
 
 %{mvn_build} -f -- \
-    -f openjdk -Dsource=8
+    -Dsource=8
+popd
 
 %install
+pushd openjdk
 %mvn_install
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 # This helps to generate the right requires on boringssl and eventually,
 # we might patch the library loading to consider just this one
 install -dm 0755 %{buildroot}%{_libdir}/%{name}
-install -pm 0755 openjdk/build/libconscrypt_jni.so %{buildroot}%{_libdir}/%{name}/
+install -pm 0755 build/libconscrypt_jni.so %{buildroot}%{_libdir}/%{name}/
+popd
 
-%files -f .mfiles
+%files -f openjdk/.mfiles
 %{_libdir}/%{name}
 %license LICENSE NOTICE
 %doc {README,IMPLEMENTATION_NOTES,CAPABILITIES}.md
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc -f openjdk/.mfiles-javadoc
 %license LICENSE NOTICE
 
 %changelog

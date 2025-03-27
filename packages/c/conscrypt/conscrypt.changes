@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:30:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with both xmvn-mojo:javadoc and javadoc:aggregate
+
+-------------------------------------------------------------------
 Fri Oct 11 09:31:05 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add alias for the uber jar, since that is basically what we are
