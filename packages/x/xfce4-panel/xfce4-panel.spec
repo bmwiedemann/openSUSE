@@ -20,7 +20,7 @@
 %define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.20.3
+Version:        4.20.4
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  ed
 BuildRequires:  fdupes
 BuildRequires:  gettext >= 0.19.8
-BuildRequires:  gtk-doc
+BuildRequires:  gtk-doc >= 1.9
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
 
@@ -43,28 +43,32 @@ BuildRequires:  pkgconfig(cairo) >= 1.16.0
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4) >= 16.04.0
-BuildRequires:  pkgconfig(exo-2) >= 0.11.2
-BuildRequires:  pkgconfig(garcon-1) >= 4.17.0
-BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.17.0
+BuildRequires:  pkgconfig(exo-2) >= 4.18.0
+BuildRequires:  pkgconfig(garcon-1) >= 4.18.0
+BuildRequires:  pkgconfig(garcon-gtk3-1) >= 4.18.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.72.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gtk+-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.1
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.17.2
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.20.1
-BuildRequires:  pkgconfig(libxfconf-0) >= 4.13.2
+BuildRequires:  pkgconfig(libxfce4windowing-x11-0) >= 4.20.1
+BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.20.1
+BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(wayland-client) >= 1.20
 BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  pkgconfig(xext) >= 1.0.0
-# Needs xdt-csource provided by xfce4-dev-tools
+# Needs xdt-gen-visibility provided by xfce4-dev-tools
 BuildRequires:  xfce4-dev-tools
 # typelib(AppIndicator3) is needed for statusnotifier plugin to be fully usable with appindicators
 Requires:       typelib(AppIndicator3)

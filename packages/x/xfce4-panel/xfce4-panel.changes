@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar 23 11:51:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.4
+  * meson-build: Revert glib version change
+  * build: Define xfce4 min version >= 4.18
+  * build: Search for xdt-gen-visibility also in the working tree
+  * build: Replace xdt-csource with glib-compile-resources
+  * build: Fix wrong macro for min version
+  * panel: Show window in panel_application_new_window()
+  * wayland: autohide: Mitigate lack of size_allocate()
+  * systray: Use correct gtk functions to show/hide items
+  * wayland: Set exclusive zone for autohide window
+  * build: Remove libxfce4panel-config.h from GI
+  * meson-build: Add missing check for sys/prctl.h
+  * tasklist: Support window app changes
+  * build: Automate copyright year management
+  * item-dialog: Also search for plugins by their module name
+  * I18n: Update po/LINGUAS list
+  * wayland: wrapper: Set GtkProgressBar style properties to min values
+  * systray: Fix legacy icons being drawn with offset
+  * meson-build: Use SPDX license expression
+  * autotools-build: Check for xfce4-dev-tools in configure.ac
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Feb  4 08:25:20 UTC 2025 - Maurizio Galli <maurizio.galli@suse.com>
 
 - Update to version 4.20.3:
