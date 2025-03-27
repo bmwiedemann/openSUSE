@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Mar 18 17:41:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.57.0:
+  * Release v0.57.0 (#4511)
+  * Bump k6 version
+  * Add TODO to Frame.SetContent (#4538)
+  * browser: race fix in page.setInputFiles
+  * browser: race fix in page.SetViewportSize
+  * browser: race fix in page.selectOptions and co
+  * Drop not true TODO comments
+  * browser: race fix in page.screenshot
+  * browser: race fix in page/frame.Check
+  * Fix setContent racy access to options
+
+-------------------------------------------------------------------
+Tue Mar 18 17:40:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package k6: a modern load testing tool, using Go and
+  JavaScript
