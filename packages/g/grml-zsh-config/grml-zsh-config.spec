@@ -17,7 +17,7 @@
 
 
 Name:           grml-zsh-config
-Version:        0.19.15
+Version:        0.19.16
 Release:        0
 Summary:        Zsh config ujed by grml
 License:        GPL-2.0-only

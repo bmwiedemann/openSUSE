@@ -133,4 +133,13 @@
     configuration)</comment>
     <requestid>1250396</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>52f0affc11ab7eaf28285357ae81e309</srcmd5>
+    <version>0.19.16</version>
+    <time>1743111284</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.6:
+  * zsh: drop _hg completion #194</comment>
+    <requestid>1264637</requestid>
+  </revision>
 </revisionlist>
