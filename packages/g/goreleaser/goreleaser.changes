@@ -1,9 +1,33 @@
 -------------------------------------------------------------------
-Thu Mar 13 14:36:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+Thu Mar 27 14:05:51 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
-- Packaging improvements:
+- Packaging improvments:
   * Remove FIXME from License: clause, upstream does use MIT license
   * Summary and Description clarify the purpose of this CLI tool
+
+-------------------------------------------------------------------
+Mon Mar 17 14:54:50 UTC 2025 - felix.niederwanger@suse.de
+
+- Update to version 2.8.1:
+  * chore(deps): bump docker/login-action from 3.3.0 to 3.4.0 (#5653)
+  * perf: improve default gpg path detection (#5651)
+  * docs: fix typos in builds/rust
+  * docs: readme update (#5650)
+  * chore: auto-update generated files
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 1.0.0 to 1.1.0 (#5648)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.124.0 to 0.125.0 (#5647)
+  * docs: install with npm
+  * ci: fix npm configuration
+  * ci: fix action
+  * ci: fix action
+  * chore: auto-update generated files
+  * ci: improve nightly task
+  * docs: fix fury.disable docs
+  * ci: fix nightly/snapshot jobs
+  * ci: publish to npm (#5641)
+  * fix: properly handle deprecation of snaps.builds
+  * fix: notify each deprecation only once (#5642)
+  * ci(deps): update dagger et al (#5644)
 
 -------------------------------------------------------------------
 Thu Mar 13 14:05:18 UTC 2025 - felix.niederwanger@suse.de
