@@ -258,4 +258,30 @@
   for jsc#AGM-122 and bsc#1237165).</comment>
     <requestid>1254593</requestid>
   </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>9c72a6fe0d87b3270532b00e98166aaf</srcmd5>
+    <version>0</version>
+    <time>1743111216</time>
+    <user>anag+factory</user>
+    <comment>- Version 13
+
+- Support for manual files deployment in unattended mode
+  (gh#agama-project/agama#2121)
+
+- Do not try to connect to the HTTP server when it is not needed
+  (gh#agama-project/agama#2192).
+
+- Add extensions from the registration server (automatic
+  installation only) (jsc#AGM-100)
+
+- Improve init scripts execution (gh#agama-project/agama#2161):
+  * Properly run the scripts (gh#agama-project/agama#2144).
+  * Allow setting the scripts path with the SCRIPTS_DIR
+    environment variable.
+  * Do not exit with an error if there are not scripts.
+  * Make agama-scripts.sh idempotent.
+
+- Extend storage model schema with LVM (gh#agama-project/agama#2089).</comment>
+    <requestid>1256465</requestid>
+  </revision>
 </revisionlist>
