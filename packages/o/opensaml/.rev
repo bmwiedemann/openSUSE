@@ -103,4 +103,16 @@
     <comment></comment>
     <requestid>1223780</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bafc390ba2c0f3df8f69871ce984e6a9</srcmd5>
+    <version>3.3.1</version>
+    <time>1743111234</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.3.1:
+  * [CPPOST-126] - Simple signature verification fails to detect parameter smuggling
+    (bsc#1239889)
+   
+</comment>
+    <requestid>1261099</requestid>
+  </revision>
 </revisionlist>

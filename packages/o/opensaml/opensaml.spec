@@ -1,7 +1,7 @@
 #
 # spec file for package opensaml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define libvers 13
 %define pkgdocdir %{_docdir}/%{name}
 Name:           opensaml
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        Security Assertion Markup Language library
 License:        Apache-2.0
