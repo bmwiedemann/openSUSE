@@ -24,11 +24,10 @@ Version:        1.1.4
 Release:        0
 Summary:        Library for audio de-/encoding with ABME3000 based devices
 License:        GPL-3.0-only
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/f4exb/serialDV
 #Git-Clone:     https://github.com/f4exb/serialDV.git
 Source:         https://github.com/f4exb/serialDV/archive/v%{version}.tar.gz#/serialDV-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 
 %description
@@ -37,7 +36,6 @@ AMBE3000 based devices in packet mode over a serial link.
 
 %package -n %{libname}
 Summary:        Library for audio de-/encoding with ABME3000 based devices
-Group:          System/Libraries
 
 %description -n %{libname}
 A library that provides an interface for audio encoding and decoding with
@@ -45,7 +43,6 @@ AMBE3000 based devices in packet mode over a serial link.
 
 %package devel
 Summary:        Development files for libserialdv
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -59,11 +56,14 @@ applications that want to make use of libserialdv.
 %setup -q -n serialDV-%{version}
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
