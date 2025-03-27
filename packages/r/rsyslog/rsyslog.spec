@@ -99,7 +99,6 @@ BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
 BuildRequires:  libzstd-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 %if %{with rfc3195}

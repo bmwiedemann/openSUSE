@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 26 05:16:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency
+
+-------------------------------------------------------------------
 Wed Jul 24 06:48:46 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
 
 - Upgrade to rsyslog 8.2406.0
