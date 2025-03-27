@@ -1,0 +1,348 @@
+--- maven-replacer-plugin-1.6/src/main/java/com/google/code/maven_replacer_plugin/ReplacerMojo.java	2025-03-27 06:59:01.160112997 +0100
++++ maven-replacer-plugin-1.6/src/main/java/com/google/code/maven_replacer_plugin/ReplacerMojo.java	2025-03-27 07:34:27.375048307 +0100
+@@ -12,6 +12,9 @@
+ import java.util.List;
+ import java.util.regex.PatternSyntaxException;
+ 
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ 
+@@ -19,13 +23,10 @@
+ /**
+  * Goal replaces token with value inside file
+  *
+- * @goal replace
+- *
+- * @phase compile
+- * 
+- * @threadSafe
+- * 
+  */
++@Mojo( name = "replace",
++       defaultPhase = LifecyclePhase.COMPILE,
++       threadSafe = true )
+ public class ReplacerMojo extends AbstractMojo {
+ 	private static final String INVALID_IGNORE_MISSING_FILE_MESSAGE = "<ignoreMissingFile> only useable with <file>";
+ 	private static final String REGEX_PATTERN_WITH_DELIMITERS_MESSAGE = "Error: %s. " +
+@@ -48,8 +49,8 @@
+ 	 * The file must be text (ascii). 
+ 	 * Based on current execution path.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String file;
+ 
+ 	/**
+@@ -57,8 +58,8 @@
+ 	 * In Ant format (*\/directory/**.properties) 
+ 	 * Cannot use with outputFile.
+ 	 *
+-	 * @parameter
+ 	 */
++    @Parameter
+ 	private List<String> includes = new ArrayList<String>();
+ 
+ 	/**
+@@ -66,8 +67,8 @@
+ 	 * In Ant format (*\/directory/**.properties) 
+ 	 * Cannot use with outputFile.
+ 	 *
+-	 * @parameter
+ 	 */
++    @Parameter
+ 	private List<String> excludes = new ArrayList<String>();
+ 
+ 	/**
+@@ -76,8 +77,8 @@
+ 	 * In Ant format (*\/directory/**.properties). 
+ 	 * Files not found are ignored by default. 
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String filesToInclude;
+ 
+ 	/**
+@@ -86,8 +87,8 @@
+ 	 * In Ant format (**\/directory/do-not-replace.properties). 
+ 	 * The files replaced will be derived from the list of includes and excludes.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String filesToExclude;
+ 
+ 	/**
+@@ -95,8 +96,8 @@
+ 	 * The text to replace within the given file. 
+ 	 * This may or may not be a regular expression (see regex notes above).
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String token;
+ 
+ 	/**
+@@ -104,8 +105,8 @@
+ 	 * May be multiple words or lines. 
+ 	 * This is useful if you do not wish to expose the token within your pom or the token is long.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String tokenFile;
+ 
+ 	/**
+@@ -114,8 +115,8 @@
+ 	 * Set to true to not fail build if the file is not found. 
+ 	 * First checks if file exists and exits without attempting to replace anything.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private boolean ignoreMissingFile;
+ 
+ 	/**
+@@ -124,8 +125,8 @@
+ 	 * If no value is given, the tokens found are replaced with an empty string (effectively removing any tokens found). 
+ 	 * You can also reference grouped regex matches made in the token here by $1, $2, etc.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String value;
+ 
+ 	/**
+@@ -133,16 +134,16 @@
+ 	 * May be multiple words or lines.
+ 	 * This is useful if you do not wish to expose the value within your pom or the value is long.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String valueFile;
+ 
+ 	/**
+ 	 * Indicates if the token should be located with regular expressions. 
+ 	 * This should be set to false if the token contains regex characters which may miss the desired tokens or even replace the wrong tokens.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private boolean regex = true;
+ 
+ 	/**
+@@ -152,8 +153,8 @@
+ 	 * If it does exist, the contents are overwritten. 
+ 	 * You should not use outputFile when using a list of includes.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String outputFile;
+ 
+ 	/**
+@@ -161,8 +162,8 @@
+ 	 * Destination directory relative to the execution directory for all replaced files to be written to. 
+ 	 * Use with outputDir to have files written to a specific base location.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String outputDir;
+ 
+ 	/**
+@@ -172,8 +173,8 @@
+ 	 * Each token/value pair should be in the format: "token=value" (without quotations). 
+ 	 * If your token contains ='s you must escape the = character to \=. e.g. tok\=en=value
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String tokenValueMap;
+ 
+ 	/**
+@@ -182,8 +183,8 @@
+ 	 * This feature is useful for multi-module projects.
+ 	 * Default "." which is the default Maven basedir. 
+ 	 *
+-	 * @parameter default-value="."
+ 	 */
++    @Parameter( defaultValue = "." )
+ 	private String basedir = ".";
+ 
+ 	/**
+@@ -198,8 +199,8 @@
+ 	 * * UNICODE_CASE
+ 	 * * UNIX_LINES
+ 	 * 
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private List<String> regexFlags;
+ 
+ 	/**
+@@ -207,8 +208,8 @@
+ 	 * Each replacement element to contain sub-elements as token/value pairs. 
+ 	 * Each token within the given file will be replaced by it's respective value.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private List<Replacement> replacements;
+ 
+ 	/**
+@@ -217,16 +218,16 @@
+ 	 * If your token starts with an '#' then you must supply the commentsEnabled parameter and with a value of false.
+ 	 * Default is true.
+ 	 *
+-	 * @parameter default-value="true" 
+ 	 */
++    @Parameter( defaultValue = "true" )
+ 	private boolean commentsEnabled = true;
+ 	
+ 	/**
+ 	 * Skip running this plugin. 
+ 	 * Default is false.
+ 	 *
+-	 * @parameter default-value="false" 
+ 	 */
++    @Parameter( defaultValue = "false" )
+ 	private boolean skip = false;
+ 	
+ 	/**
+@@ -234,8 +235,8 @@
+ 	 * Having this existing but blank will cause the outputDir
+ 	 * to be based on the execution directory. 
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String outputBasedir;
+ 	
+ 	/**
+@@ -243,16 +244,16 @@
+ 	 * being written to an outputDir. 
+ 	 * Default is true.
+ 	 *
+-	 * @parameter default-value="true" 
+ 	 */
++    @Parameter( defaultValue = "true" )
+ 	private boolean preserveDir = true;
+ 
+ 	/**
+ 	 * Stops printing a summary of files that have had replacements performed upon them when true. 
+ 	 * Default is false.
+ 	 *
+-	 * @parameter default-value="false" 
+ 	 */
++    @Parameter( defaultValue = "false" )
+ 	private boolean quiet = false;
+ 
+ 	/**
+@@ -260,8 +261,8 @@
+ 	 * e.g. token\n is unescaped to token(carriage return).
+ 	 * Default is false.
+ 	 *
+-	 * @parameter default-value="false" 
+ 	 */
++    @Parameter( defaultValue = "false" )
+ 	private boolean unescape;
+ 	
+ 	/**
+@@ -270,8 +271,8 @@
+ 	 * e.g. @ would match @token@. 
+ 	 * e.g. ${} would match ${token}.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private List<String> delimiters = new ArrayList<String>();
+ 	
+ 	/**
+@@ -281,8 +282,8 @@
+ 	 * Format is comma separated. e.g. token=value,token2=value2
+ 	 * Comments are not supported.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String variableTokenValueMap;
+ 	
+ 	/**
+@@ -294,8 +295,8 @@
+ 	 * 
+ 	 * Default is false.
+ 	 *
+-	 * @parameter default-value="false" 
+ 	 */
++    @Parameter( defaultValue = "false" )
+ 	private boolean ignoreErrors;
+ 	
+ 	/**
+@@ -303,24 +304,24 @@
+ 	 * This is useful if you have the same token appearing in many nodes but 
+ 	 * wish to only replace the contents of one or more of them.
+ 	 *
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String xpath;
+ 	
+ 	/**
+ 	 * File encoding used when reading and writing files. 
+ 	 * Default system encoding used when not specified.
+ 	 * 
+-	 * @parameter default-value="${project.build.sourceEncoding}"
+ 	 */
++    @Parameter( defaultValue = "${project.build.sourceEncoding}" )
+ 	private String encoding;
+ 	
+ 	/**
+ 	 * Regular expression is run on an input file's name to create the output file with.
+ 	 * Must be used in conjunction with outputFilePattern.
+ 	 * 
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String inputFilePattern;
+ 	
+ 	/**
+@@ -329,29 +330,29 @@
+ 	 * 
+ 	 * The parameter outputFile is ignored when outputFilePattern is used.
+ 	 * 
+-	 * @parameter 
+ 	 */
++    @Parameter
+ 	private String outputFilePattern;
+ 
+     /**
+      * Set a maximum number of files which can be replaced per execution.
+      *
+-     * @parameter
+      */
++    @Parameter
+     private Integer maxReplacements = Integer.MAX_VALUE;
+ 
+     /**
+      * list files
+      * 
+-     * @parameter
+      */
++    @Parameter
+     private List<String> files = new ArrayList<String>();
+     
+     /**
+      * list out put file
+      * 
+-     * @parameter
+      */
++    @Parameter
+     private List<String> outputFiles = new ArrayList<String>();
+     
+ 	public ReplacerMojo() {

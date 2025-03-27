@@ -1,7 +1,7 @@
 #
 # spec file for package replacer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,13 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/beiliubei/maven-replacer-plugin
 # http://code.google.com/p/maven-replacer-plugin/
 Source0:        https://github.com/beiliubei/maven-replacer-plugin/archive/%{version}.tar.gz
+Patch0:         maven-replacer-plugin-mpt4.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(commons-io:commons-io)
 BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.commons:commons-lang3)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
@@ -51,6 +53,7 @@ This package contains javadoc for %{name}.
 
 %prep
 %setup -q -n maven-replacer-plugin-%{version}
+%patch -P 0 -p1
 
 # remove unnecessary dependency on parent POM
 %pom_remove_parent
@@ -60,6 +63,8 @@ This package contains javadoc for %{name}.
 
 # remove hard-coded compiler settings
 %pom_remove_plugin :maven-compiler-plugin
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 # trivial port to commons-lang3
 %pom_change_dep :commons-lang org.apache.commons:commons-lang3:3.8.1
