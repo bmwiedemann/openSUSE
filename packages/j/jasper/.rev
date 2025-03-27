@@ -390,4 +390,14 @@
     HEIC codec (#383).</comment>
     <requestid>1170497</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ec5448b545396e44409ec1e15b875bd9</srcmd5>
+    <version>4.2.5</version>
+    <time>1743111096</time>
+    <user>anag+factory</user>
+    <comment>- Update to 4.2.5:
+  * Made a change to a configuration header file in order to avoid
+    undesirable compiler warnings when JasPer is used in C++ code (#393).</comment>
+    <requestid>1256340</requestid>
+  </revision>
 </revisionlist>

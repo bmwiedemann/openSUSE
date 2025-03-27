@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:55:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.5:
+  * Made a change to a configuration header file in order to avoid
+    undesirable compiler warnings when JasPer is used in C++ code (#393).
+
+-------------------------------------------------------------------
 Sat Apr 27 19:31:14 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.2.4:
