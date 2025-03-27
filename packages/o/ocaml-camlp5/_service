@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-camlp5</param>
-    <param name="revision">b6c31884e5e980120c82ec354f1c8405f9a4ac1f</param>
+    <param name="revision">5a7098694f48cccbcf6acb842ac051ca30f5735a</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/camlp5/camlp5.git</param>

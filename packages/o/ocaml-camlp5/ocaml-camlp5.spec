@@ -25,7 +25,7 @@
 	%nil
 
 Name:           ocaml-camlp5
-Version:        8.03.01
+Version:        8.03.02
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml
@@ -42,6 +42,7 @@ BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(fmt)
+BuildRequires:  ocamlfind(pcre2)
 BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(rresult)
 
