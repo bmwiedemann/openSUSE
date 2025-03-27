@@ -1,0 +1,26 @@
+From cd0ef3f8a277c3ed0e6ca29c3acf1a1352a837a6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Hertzog?= <hertzog@debian.org>
+Date: Fri, 14 Mar 2025 15:23:50 +0100
+Subject: [PATCH 182/182] Remove GNOME 45 from the list of supported releases
+
+The "vadjustment" property that we are now using has been introduced
+in GNOME 46 at the same time that the "vscroll" property got deprecated.
+---
+ data/metadata.json.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index 5cf66e5..675e360 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -10,7 +10,6 @@
+     "gettext-domain": "hamster-shell-extension",
+     "settings-schema": "org.gnome.shell.extensions.project-hamster",
+     "shell-version": [
+-      "45",
+       "46",
+       "47",
+       "48"
+-- 
+2.49.0
+

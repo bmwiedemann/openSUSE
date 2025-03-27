@@ -1,7 +1,7 @@
-From c8736d910c2b7c443e2704fdbc796e05cb7eaf58 Mon Sep 17 00:00:00 2001
-From: Martin Wilck <mwilck@suse.com>
-Date: Mon, 28 Oct 2024 14:43:11 +0100
-Subject: [PATCH] metadata.json.in: mark GNOME 47 supported
+From 49e319b41425ad40ac1456f4bd15bb62a26ba558 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jeremy=20B=C3=ADcha?= <jeremy.bicha@canonical.com>
+Date: Thu, 12 Sep 2024 10:18:47 -0400
+Subject: [PATCH 180/182] metadata.json: Mark compatible with GNOME Shell 47
 
 ---
  data/metadata.json.in | 3 ++-
@@ -22,5 +22,5 @@ index 0fcf71d..c05498a 100644
      "url": "https://github.com/projecthamster/hamster-shell-extension.git",
      "uuid": @UUID@
 -- 
-2.47.0
+2.49.0
 

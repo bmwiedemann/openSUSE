@@ -1,0 +1,54 @@
+From 42a44482cd874c20beeb4ec063c9ce7f3ad127ef Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Rapha=C3=ABl=20Hertzog?= <hertzog@debian.org>
+Date: Fri, 14 Mar 2025 12:04:45 +0100
+Subject: [PATCH 181/182] Make hamster-shell-extension compatible with GNOME 48
+
+Don't use the "vscroll" property which has been removed in GNOME 48
+after having been deprecated in GNOME 46. Instead rely on the
+"vadjustment" property.
+
+Fixes #375
+---
+ data/metadata.json.in         | 3 ++-
+ extension/widgets/factsBox.js | 4 ++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/data/metadata.json.in b/data/metadata.json.in
+index c05498a..5cf66e5 100644
+--- a/data/metadata.json.in
++++ b/data/metadata.json.in
+@@ -12,7 +12,8 @@
+     "shell-version": [
+       "45",
+       "46",
+-      "47"
++      "47",
++      "48"
+     ],
+     "url": "https://github.com/projecthamster/hamster-shell-extension.git",
+     "uuid": @UUID@
+diff --git a/extension/widgets/factsBox.js b/extension/widgets/factsBox.js
+index 8e9fac3..9f07c39 100644
+--- a/extension/widgets/factsBox.js
++++ b/extension/widgets/factsBox.js
+@@ -68,7 +68,6 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+         // Since ``St.Table`` does not implement St.Scrollable, we create a
+         // container object that does.
+         this.todaysFactsWidget = new TodaysFactsWidget(this._controller, panelWidget);
+-        this._scrollAdjustment = this.todaysFactsWidget.vscroll.adjustment;
+         main_box.add_child(this.todaysFactsWidget);
+ 
+         // Setup category summery
+@@ -95,7 +94,8 @@ class FactsBox extends PopupMenu.PopupBaseMenuItem {
+      */
+     focus() {
+         GLib.timeout_add(GLib.PRIORITY_DEFAULT, 20, function() {
+-            this._scrollAdjustment.value = this._scrollAdjustment.upper;
++            let _vAdjustment = this.todaysFactsWidget.vadjustment;
++            _vAdjustment.value = _vAdjustment.upper;
+             global.stage.set_key_focus(this.ongoingFactEntry);
+         }.bind(this));
+     }
+-- 
+2.49.0
+

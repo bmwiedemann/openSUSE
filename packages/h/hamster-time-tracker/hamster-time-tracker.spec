@@ -1,7 +1,7 @@
 #
 # spec file for package hamster-time-tracker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,16 @@
 
 # ext_gnome_version: latest GNOME shell version supported
 # min_gnome_version: earliest GNOME shell version supported
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} > 1600
+%global ext_gnome_version 48
+%global min_gnome_version 46
+%else
+%if 0%{?suse_version} == 1600
 %global ext_gnome_version 47
+%global min_gnome_version 45
+%else
+%if 0%{?sle_version} >= 150600
+%global ext_gnome_version 45
 %global min_gnome_version 45
 %else
 %if 0%{?sle_version} >= 150400
@@ -34,6 +42,8 @@
 %else
 %global ext_gnome_version 3.30
 %global min_gnome_version 3.10
+%endif
+%endif
 %endif
 %endif
 %endif
@@ -145,7 +155,10 @@ Patch177:       0177-metadata.json-re-add-GNOME-45-support.patch
 Patch178:       0178-todaysFactsWidget-Fix-broken-layout-in-GNOME-45.patch
 Patch179:       0179-todaysFactsWidget-Fix-broken-layout-in-GNOME-45-and-.patch
 # GNOME 47
-Patch180:       0180-metadata.json.in-mark-GNOME-47-supported.patch
+Patch180:       0180-metadata.json-Mark-compatible-with-GNOME-Shell-47.patch
+# GNOME 48
+Patch181:       0181-Make-hamster-shell-extension-compatible-with-GNOME-4.patch
+Patch182:       0182-Remove-GNOME-45-from-the-list-of-supported-releases.patch
 
 BuildRequires:  fdupes
 BuildRequires:  intltool
@@ -238,6 +251,8 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 122 -p1
 %patch -P 123 -p1
 %patch -P 124 -p1
+%endif
+
 # TW / 15.4: GNOME 41+ support
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
 %patch -P 125 -p1
@@ -277,7 +292,7 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 160 -p1
 %patch -P 161 -p1
 %endif
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
 # TW: GNOME 45 support
 %patch -P 162 -p1
 %patch -P 163 -p1
@@ -291,6 +306,8 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 171 -p1
 %patch -P 172 -p1
 %patch -P 173 -p1
+%endif
+%if 0%{?suse_version} >= 1600
 # GNOME 46 support
 %patch -P 174 -p1
 %patch -P 175 -p1
@@ -300,13 +317,20 @@ cd hamster-shell-extension-%{ext_version}
 %patch -P 179 -p1
 # GNOME 47 support
 %patch -P 180 -p1
+%endif
+%if 0%{?suse_version} > 1600
+# GNOME 48 support
+%patch -P 181 -p1
+%patch -P 182 -p1
+%endif
 
-%endif # suse_version >= 1600
-%endif # sle_version >= 150400
-%else  # sle_version >= 150200
+%if 0%{?suse_version} < 1550 || 0%{?sle_version} < 150200
+# 15.1 and earlier need convenience.js
 mkdir build
 cp %{SOURCE2} build
-%endif # sle_version >= 150200
+%endif
+
+%endif # with extension
 
 %build
 ./waf --prefix=%{_prefix} --libdir=%{_libdir} --libexecdir=%{_libexecdir} \

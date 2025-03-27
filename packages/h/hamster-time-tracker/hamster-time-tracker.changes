@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:15:01 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to GNOME 48
+  * del 0180-metadata.json.in-mark-GNOME-47-supported.patch
+  * add 0180-metadata.json-Mark-compatible-with-GNOME-Shell-47.patch
+  * add 0181-Make-hamster-shell-extension-compatible-with-GNOME-4.patch
+  * add 0182-Remove-GNOME-45-from-the-list-of-supported-releases.patch
+- Fix GNOME support for 15.6 (GNOME 45)
+
+-------------------------------------------------------------------
 Mon Oct 28 13:54:47 UTC 2024 - Martin Wilck <mwilck@suse.com>
 
 - Mark GNOME 47 supported
