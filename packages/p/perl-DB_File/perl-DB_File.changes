@@ -1,0 +1,302 @@
+-------------------------------------------------------------------
+Fri Mar  8 22:15:32 UTC 2024 - Tina Müller <tina.mueller@suse.com>
+
+- Fix disabling of __perllib_provides
+
+-------------------------------------------------------------------
+Tue Aug 22 03:06:12 UTC 2023 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.859
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.859 21 August 2023
+
+     * silence clang compiler warnings
+       https://github.com/pmqs/DB_File/issues/13
+       Sun Aug 20 16:30:05 2023 +0100
+       6f8902efe7b2782ad418ea53ddaad08ed9bebf9b
+
+-------------------------------------------------------------------
+Sat May 14 03:07:31 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.858
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.858 13 May 2022
+
+     * Update to license wording
+        Fri May 13 07:50:35 2022 +0100
+        5089ede9dbc01ea9e47f5cb96bf9c8706ad1794d
+
+-------------------------------------------------------------------
+Sat Feb 26 03:06:52 UTC 2022 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.857
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.857 25 February 2022
+
+     * Silence gcc12 'empty-body' warning
+       https://github.com/pmqs/DB_File/issues/10
+       22c4850b70d0c32eb4acb9c987868274a61072ec
+
+-------------------------------------------------------------------
+Wed Jun 23 03:07:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.856
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+
+  1.856 22 June 2021
+
+     * Ensure that all *.bak files are cleaned up
+       https://github.com/pmqs/DB_File/pull/9
+       96bcf494625897ab4fcda322481dd6f730bdb668
+
+-------------------------------------------------------------------
+Wed Oct 14 03:09:45 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.855
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.855 13 October 2020
+
+     * Stop shipping DB_File_BS for the NeXT operating system.
+       https://github.com/pmqs/DB_File/pull/7
+       e5f329e066bf99f683c895f4a8b8ea328804bbb1
+       80e0bb7b655a2cb035292b3ae4b095d569314bdf
+
+-------------------------------------------------------------------
+Thu Sep 17 03:07:24 UTC 2020 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.854
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.854 16 September 2020
+     * Prefer direct notation over indirect (#4)
+     * Make hint/BS snippets strict compliant.
+     * trim whitespace
+
+-------------------------------------------------------------------
+Mon Jan  6 03:07:22 UTC 2020 -  <timueller+perl@suse.de>
+
+- updated to 1.853
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+-------------------------------------------------------------------
+Mon Apr 22 05:04:36 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.852
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.852 21 April Feb 2019
+  
+     * ParseOpenInfo() leaks if it croaks
+       DB_File_type memory not freed when ParseOpenInfo croaks.
+       https://github.com/pmqs/DB_File/issues/1
+  
+     * Fix whitespace in DB_File.xs
+
+-------------------------------------------------------------------
+Fri Apr  5 05:04:15 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.851
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.851 4 April Feb 2019
+  
+     * Fix typo in MANIFEST with .travis.yml file
+
+-------------------------------------------------------------------
+Sun Mar 31 05:06:57 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.850
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.850 10 Feb 2019
+     * Added soure to github
+       https://github.com/pmqs/DB_File
+  
+     * Added .travis.yml
+  
+     * Added t/meta-json.t & t/meta-yaml.t
+
+-------------------------------------------------------------------
+Thu Nov  8 06:12:19 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.843
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.843 2 November 2018
+  
+     * hints file (sourced from
+       http://cvsweb.netbsd.org/bsdweb.cgi/pkgsrc/lang/perl5/files/)
+       Highlighed by Sevan Janiyan <venture37@geeklan.co.uk>
+  
+          hints/bitrig.pl
+          hints/netbsd.pl
+          hints/minix.pl
+          hints/openbsd.pl
+
+-------------------------------------------------------------------
+Mon Jul 16 05:16:32 UTC 2018 - coolo@suse.com
+
+- updated to 1.842
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  
+  1.842 14 July 2018
+  
+     * Document the MaocOS build failures & how MacPort can work around th eissue.
+       # 125238
+       # 125585
+       # RT 133280
+  
+     * Write all test db files into a directory created by File::Temp
+       Protects against any possible races if running a parallel build.
+  
+     * #96357: DB_File destructor is not thread-safe
+       Added CLONE_SKIP to DB_File.pm and included the test db-threads.t from the patch.
+       Note - This only works with perl >= 5.8.7
+
+-------------------------------------------------------------------
+Tue Apr  3 05:13:45 UTC 2018 - coolo@suse.com
+
+- updated to 1.841
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.841 2 Apr 2018
+  
+     * #124944 allow ppport.h-less builds in core
+
+-------------------------------------------------------------------
+Fri Dec 30 06:17:24 UTC 2016 - coolo@suse.com
+
+- updated to 1.840
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.840 29 Dec 2016
+  
+     * #119569: Failed to install DB_File-1.839 into Linux
+  
+  1.839 29 Dec 2016
+  
+     * #119557: DB_File.xs: unused-parameter warnings
+     * #107642: unused arg
+
+-------------------------------------------------------------------
+Mon May 23 11:37:14 UTC 2016 - coolo@suse.com
+
+- updated to 1.838
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  1.838 15 May 2016
+  
+     * #101342: R_SETCURSOR compiler warning
+       #111726: Coverity finding: flagSet() test always false
+  
+  1.837 9 Jan 2016
+  
+     * DB_File: database UTF-8 documentation
+       RT #110248
+  
+     * Coverity finding: status variable ignored multiple times
+       RT #111725
+  
+  1.836 6 Jan 2016
+  
+     * Confirm build with BDB 6.2
+
+-------------------------------------------------------------------
+Tue Sep  1 08:53:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.835
+   see /usr/share/doc/packages/perl-DB_File/Changes
+
+  
+  1.835 23 Dec 2014
+  
+     * Silence more compiler warnings
+  
+  1.834 11 Dec 2014
+  
+     * Makefile.PL: version check is missing a zero
+       RT #100844
+  
+  1.833 9 Dec 2014
+  
+     * More Silence compiler warnings
+  
+     * 1.832 breaks bleadperl C89 build
+       RT #100812
+  
+  1.832 8 Dec 2014
+  
+     * Silence compiler warnings
+  
+     * C++ change from blead
+  
+  1.831 15 November 2013
+  
+     * C99 comment is a nogo
+       RT #90383
+  
+  1.830 2 November 2013
+  
+     * Memory leaks when failed to open db
+       RT #89589
+  
+     * DB_File uses AutoLoader for no reason
+       RT #88258
+  
+  1.829 7 July 2013
+  
+     * make realclean: removing all files
+       RT #68214
+  
+     * Documented the issue where the error below 
+  
+          BDB0588 At least one secondary cursor must be specified to DB->join
+  
+     * DB_File installs to wrong place for CPAN version
+       RT #70420
+       Makefile.PL prevents INSTALLDIRS on command line.
+       RT #68287: Makefile.PL prevents INSTALLDIRS on command line.
+  
+     * typo fix
+       RT #85335
+  
+  1.828 7 May 2013
+  
+     * Minor change to build with Berkeley DB 6.x
+  
+  1.827 25 Jan 2012
+  
+     * DB_File.pm - Don't use "@_" construct
+       [RT #79287]
+
+-------------------------------------------------------------------
+Wed Feb 15 17:00:57 UTC 2012 - seiler@b1-systems.de
+
+- changed dependency to get the build working (hopefully) for SLE10 distributions
+
+-------------------------------------------------------------------
+Wed Feb 15 16:58:50 UTC 2012 - seiler@b1-systems.de
+
+- changed dependency to get the build working (hopefully) for SLE10 distributions
+
+-------------------------------------------------------------------
+Wed Feb 15 16:51:04 UTC 2012 - seiler@b1-systems.de
+
+- corrected mistake in >= and == to prevent that the if condition for sles10 fits for sles11 too 
+
+-------------------------------------------------------------------
+Wed Feb 15 16:48:07 UTC 2012 - seiler@b1-systems.de
+
+- corrected if conditions to get the macros interpreted correctly for sles versions
+
+-------------------------------------------------------------------
+Tue Feb 14 11:29:24 UTC 2012 - seiler@b1-systems.de
+
+- added dependencies libd4_x-devel to prevent missing db.h file in build section (compiling error)
+
