@@ -1,7 +1,7 @@
 #
 # spec file for package openQA
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright 2018-2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -90,11 +90,11 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1742233134.0a4478bf
+Version:        5.1743011892.5068f7f4
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
-URL:            http://os-autoinst.github.io/openQA/
+Url:            http://os-autoinst.github.io/openQA/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
@@ -108,10 +108,10 @@ BuildRequires:  sles-release
 %endif
 BuildRequires:  %{build_requires}
 BuildRequires:  local-npm-registry
+Requires:       perl(Minion) >= 10.0
 Requires:       %{main_requires}
 Requires:       openQA-client = %{version}
 Requires:       openQA-common = %{version}
-Requires:       perl(Minion) >= 10.0
 # we need to have the same sha1 as expected
 %requires_eq    perl-Mojolicious-Plugin-AssetPack
 Recommends:     %{name}-local-db
@@ -213,8 +213,8 @@ The openQA worker manages test engine (provided by os-autoinst package).
 
 %package client
 Summary:        Client tools for remote openQA management
-Requires:       %client_requires
 Requires:       openQA-common = %{version}
+Requires:       %client_requires
 
 %description client
 Tools and support files for openQA client script. Client script is
@@ -244,8 +244,8 @@ next to the webui.
 Summary:        Convenience package for a single-instance setup using apache proxy
 Provides:       %{name}-single-instance-apache
 Provides:       %{name}-single-instance-apache2
-Requires:       %{name} = %{version}
 Requires:       %{name}-local-db
+Requires:       %{name} = %{version}
 Requires:       %{name}-worker = %{version}
 Requires:       apache2
 
@@ -254,8 +254,8 @@ Use this package to setup a local instance with all services provided together.
 
 %package single-instance-nginx
 Summary:        Convenience package for a single-instance setup using nginx proxy
-Requires:       %{name} = %{version}
 Requires:       %{name}-local-db
+Requires:       %{name} = %{version}
 Requires:       %{name}-worker = %{version}
 Requires:       nginx
 
@@ -303,15 +303,16 @@ regardless of whether devel:openQA contains updates.
 %if %{with munin_package}
 %package munin
 Summary:        Munin scripts
-Requires:       curl
 Requires:       munin
 Requires:       munin-node
+Requires:       curl
 Requires:       perl
 
 %description munin
 Use this package to install munin scripts that allow to monitor some openQA
 statistics.
 %endif
+
 
 %prep
 %setup -q
@@ -427,7 +428,6 @@ mkdir %{buildroot}%{_localstatedir}/lib/openqa/webui/cache
 %if 0%{?suse_version} > 1500
 %pre -f %{name}.pre
 %else
-
 %pre
 if ! getent passwd geekotest > /dev/null; then
     %{_sbindir}/useradd -r -g nogroup -c "openQA user" \
@@ -454,7 +454,6 @@ fi
 %if 0%{?suse_version} > 1500
 %pre worker -f openQA-worker.pre
 %else
-
 %pre worker
 if ! getent passwd _openqa-worker > /dev/null; then
   %{_sbindir}/useradd -r -g nogroup -c "openQA worker" \

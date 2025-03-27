@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:15:10 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1743011892.5068f7f4:
+  * Add new test for skipped job count
+  * dist: Add headers expected by OBS checks
+  * Use spaces in the Test:Most functions of ui/14-dashboard.t
+  * Update url query only with the selected option
+  * Bump eslint-plugin-prettier from 5.2.4 to 5.2.5
+  * Revert "Make loading nested config files work with our RPM packaging (no symlink)"
+  * Make loading nested config files work with our RPM packaging
+  * Remove unused cropper.css
+  * Bump @eslint/eslintrc from 3.3.0 to 3.3.1
+  * Bump eslint from 9.22.0 to 9.23.0
+  * Bump @types/estree from 1.0.6 to 1.0.7
+  * Bump eslint-plugin-prettier from 5.2.3 to 5.2.4
+  * dist: Add missing copyright header
+  * Allow web proxy to reach openQA on SELinux systems
+  * Fix config drop-in path to upstream specifications
+  * Bump ace-builds from 1.39.0 to 1.39.1
+  * Bump @pkgr/core from 0.1.1 to 0.1.2
+  * Consistently use try/catch instead of 'if ' everywhere
+  * t: Remove obsolete exception checking in 28-logging.t
+  * Slightly simplify Worker::Job
+  * Also use try/catch in Controller::API::V1::Comment
+  * Log AMQP errors only as such when retries exhausted
+  * Slightly simplify Shared::GruJob
+  * Show job ID only in AMQP log messages when actually present
+  * docs: Enable clickable section headers
+  * Add section numbering in OpenQA Documentation
+  * Dependency cron 2025-03-19
+  * Improve "from" time label in /tests/overview
+  * Mark uncoverable lines in Worker::Job
+
+-------------------------------------------------------------------
 Mon Mar 17 19:14:43 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1742233134.0a4478bf:
