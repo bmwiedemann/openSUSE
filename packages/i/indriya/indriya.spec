@@ -1,7 +1,7 @@
 #
 # spec file for package indriya
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,9 @@ Group:          Documentation/HTML
 find . -name "*.java" | xargs sed -i s,'tec.uom.lib.common','tech.uom.lib.common',g
 
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+    -Dmaven.compiler.release=8 \
+%endif
     -Dsource=8
 
 %install
