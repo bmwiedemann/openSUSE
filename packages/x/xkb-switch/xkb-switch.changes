@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 21 22:48:50 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Wed Mar 17 02:20:30 UTC 2021 - Martin Rey <mrey@suse.com>
 
 - Adapt spec file to corrctly rename man file
 
-- Update to version 1.8.5 
+- Update to version 1.8.5
   * Fix a potential int/char error
 
 - Changes from version 1.8.4
@@ -12,13 +18,13 @@ Wed Mar 17 02:20:30 UTC 2021 - Martin Rey <mrey@suse.com>
 
 - Changes from version 1.8.3
   * Can process tightly coupled one letter flags
-  * Rewrote option parsing using getopt 
+  * Rewrote option parsing using getopt
 
 - Changes from version 1.8.2
   * Minor fix for CMakeLists.tx
   * Use gzip as a manpage compression
   * Adjust CMakeLists style
-  * Replace vimtest.sh with more powerful test.sh 
+  * Replace vimtest.sh with more powerful test.sh
   * Fix and update test.sh
 
 - Changes from version 1.8.1

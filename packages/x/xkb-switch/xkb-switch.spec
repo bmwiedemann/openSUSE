@@ -1,7 +1,7 @@
 #
 # spec file for package xkb-switch
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-3.0-only
 Group:          System/X11/Utilities
 URL:            https://github.com/grwlf/xkb-switch
 Source:         https://github.com/grwlf/xkb-switch/archive/%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libxkbfile-devel
 
@@ -35,7 +35,7 @@ xkb-switch is a C++ program that allows to query and change the XKB layout state
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -46,6 +46,9 @@ if [ ! -d %{buildroot}%{_libdir}/ ]; then
 fi
 rm -f %{buildroot}%{_libdir}/libxkbswitch.so
 mv %{buildroot}%{_mandir}/man1/xkb-switch.1.gzip %{buildroot}%{_mandir}/man1/xkb-switch.1.gz
+
+%check
+%ctest
 
 %post -p /sbin/ldconfig
 
