@@ -152,4 +152,22 @@
   * Closes https://github.com/openSUSE/obs-service-go_modules/issues/49 (forwarded request 1183515 from jfkw)</comment>
     <requestid>1183516</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>bb0028453e0179eaa6f7c525ec9c1821</srcmd5>
+    <version>0.6.4</version>
+    <time>1743111124</time>
+    <user>anag+factory</user>
+    <comment>- Update go toolchain to Requires: golang(API) &gt;= 1.24
+  Refs boo#1240130
+  * Recent go toolchain versions enforce use of the minimum
+    toolchain version specified in go.mod
+  * Minimum toolchain requirements are in effect for go commands as
+    well as unit compilation
+  * Users running a version older than specified may see error:
+    go: go.mod requires go &gt;= 1.24.1 (running go 1.22.2; GOTOOLCHAIN=local)
+  * This package and others which call go toolchain commands will
+    need timely updates to the latest version
+  * Closes https://github.com/openSUSE/obs-service-go_modules/issues/62 (forwarded request 1256304 from jfkw)</comment>
+    <requestid>1256317</requestid>
+  </revision>
 </revisionlist>
