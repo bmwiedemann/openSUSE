@@ -179,4 +179,12 @@
 - Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1153305</requestid>
   </revision>
+  <revision rev="26" vrev="64">
+    <srcmd5>90d47a88921c0c7ce0c508628294161e</srcmd5>
+    <version>7.1</version>
+    <time>1743111208</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256433</requestid>
+  </revision>
 </revisionlist>

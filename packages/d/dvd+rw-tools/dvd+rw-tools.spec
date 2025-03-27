@@ -1,7 +1,7 @@
 #
 # spec file for package dvd+rw-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch3:         dvd+rw-tools-gcc43.patch
 Patch4:         dvd+rw-tools-buffer.patch
 # PATCH-FIX-UPSTREAM fix-build-with-recent-glibc.patch
 Patch5:         fix-build-with-recent-glibc.patch
+# PATCH-FIX-UPSTREAM 10-blue-ray-bug713016.patch -- Fix spurious "CLOSE SESSION failed" on BD-R
+Patch6:         10-blue-ray-bug713016.patch
 BuildRequires:  gcc-c++
 BuildRequires:  m4
 # According to Linux from scratch dvd+rw-tools needs this to function correctly with wodim
@@ -57,6 +59,7 @@ Blu-ray and DVD+-RW/+-R media.
 %patch -P 3
 %patch -P 4
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
