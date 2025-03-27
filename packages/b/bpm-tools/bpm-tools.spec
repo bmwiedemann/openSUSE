@@ -1,7 +1,7 @@
 #
 # spec file for package bpm-tools
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,10 +20,11 @@ Name:           bpm-tools
 Version:        0.3
 Release:        0
 Summary:        Automatic calculating and tagging the tempo of music files
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-Url:            http://www.pogo.org.uk/~mark/bpm-tools/
+URL:            http://www.pogo.org.uk/~mark/bpm-tools/
 Source0:        http://www.pogo.org.uk/~mark/bpm-tools/releases/%{name}-%{version}.tar.gz
+Patch0:         bpm-graph-so-reference.patch
 Requires:       gnuplot
 Requires:       sox
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -32,7 +33,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Automatic calculating and tagging the tempo (in beats-per-minute) of music files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 make %{?_smp_mflags} CFLAGS="%{optflags}"
@@ -43,7 +44,8 @@ chmod -x %{buildroot}%{_mandir}/man1/*
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING README
+%license COPYING
+%doc README
 %{_bindir}/*
 %{_mandir}/man1/*
 
