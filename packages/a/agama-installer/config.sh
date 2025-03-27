@@ -32,6 +32,9 @@ if stat -t /usr/lib/rpm/gnupg/keys/*.asc 2>/dev/null 1>/dev/null; then
   rpm --import /usr/lib/rpm/gnupg/keys/*.asc
 fi
 
+# decrease the libzypp timeout to 20 seconds (the default is 60 seconds)
+sed -i -e "s/^\s*#\s*download.connect_timeout\s*=\s*.*$/download.connect_timeout = 20/" /etc/zypp/zypp.conf
+
 # activate services
 systemctl enable sshd.service
 systemctl enable NetworkManager.service
@@ -39,6 +42,7 @@ systemctl enable avahi-daemon.service
 systemctl enable agama.service
 systemctl enable agama-web-server.service
 systemctl enable agama-dbus-monitor.service
+systemctl enable agama-dud.service
 systemctl enable agama-auto.service
 systemctl enable agama-hostname.service
 systemctl enable agama-proxy-setup.service
@@ -116,6 +120,9 @@ if [ "${arch}" = "s390x" ]; then
   # workaround for custom bootloader setting
   touch /config.bootoptions
 fi
+
+# Remove nvme hostid and hostnqn (bsc#1238038)
+rm -f /etc/nvme/host*
 
 # replace the @@LIVE_MEDIUM_LABEL@@ with the real Live partition label name from KIWI
 sed -i -e "s/@@LIVE_MEDIUM_LABEL@@/$label/g" /usr/bin/live-password
