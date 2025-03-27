@@ -235,4 +235,32 @@
   and bsc#1237165).</comment>
     <requestid>1254594</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d56da2d9f731db01427ede4774aa5ec9</srcmd5>
+    <version>13.devel1</version>
+    <time>1743111227</time>
+    <user>anag+factory</user>
+    <comment>- Version 13
+
+- Extend storage model for basic LVM support
+  (gh#agama-project/agama#2216).
+
+- Install registred addon product (its *-release package)
+  (related to jsc#AGM-100)
+
+- Support for autoyast manual files deployment with exception
+  of deploying directories and files_script
+  (gh#agama-project/agama#2121)
+
+- Add extensions from the registration server (automatic
+  installation only) (jsc#AGM-100)
+
+- Symlink the /mnt/etc/resolv.conf to the NetworkManager running
+  one in order to have DNS resolution in the chroot post scripts
+  (bsc#1235617, gh#agama-project/agama#2179).
+
+  (gh#agama-project/agama#2140).
+  will be proposed by storage. Currently works only for BLS.</comment>
+    <requestid>1256470</requestid>
+  </revision>
 </revisionlist>
