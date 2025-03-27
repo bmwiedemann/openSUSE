@@ -26,7 +26,6 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://github.com/vozlt/nginx-module-vts
 Source:         https://github.com/vozlt/nginx-module-vts/archive/refs/tags/v%version.tar.gz
 BuildRequires:  nginx-source
-BuildRequires:  pcre-devel
 %ngx_conditionals
 %ngx_requires
 

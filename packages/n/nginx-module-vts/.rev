@@ -31,4 +31,12 @@
     <comment>- Update to release 0.2.4</comment>
     <requestid>1254171</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>942e1e5d1fb3f0e8f3423c5044583e38</srcmd5>
+    <version>0.2.4</version>
+    <time>1743111151</time>
+    <user>anag+factory</user>
+    <comment>- Delete unused build dependency on PCRE [boo#1239998]</comment>
+    <requestid>1256366</requestid>
+  </revision>
 </revisionlist>
