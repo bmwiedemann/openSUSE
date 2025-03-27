@@ -137,4 +137,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1253051</requestid>
   </revision>
+  <revision rev="13" vrev="13">
+    <srcmd5>ae696f70807547b5260b7162264c75c6</srcmd5>
+    <version>0</version>
+    <time>1743111219</time>
+    <user>anag+factory</user>
+    <comment>- Add gnome pattern to the SLES 16.0 product (gh#agama-project/agama#2204)
+
+- Enable non-oss repositories for aarch64 (gh#agama-project/agama#2106).
+
+- Drop basic-desktop pulling IceWM from Leap 16.0
+  installation profiles jsc#PED-1721 code-o-o#leap/features#183
+   
+
+- Display the HA pattern after registering the HA extension
+  (jsc#AGM-100)
+
+- Adapt to SAP patterns new names.</comment>
+    <requestid>1256467</requestid>
+  </revision>
 </revisionlist>
