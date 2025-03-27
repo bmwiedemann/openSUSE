@@ -1,0 +1,211 @@
+--- jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/AbstractVersionMojo.java	2025-03-27 10:51:38.872079221 +0100
++++ jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/AbstractVersionMojo.java	2025-03-27 11:25:49.587457595 +0100
+@@ -19,6 +19,8 @@
+ 
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.Component;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.project.MavenProjectHelper;
+ 
+@@ -26,50 +28,44 @@
+ {
+     /**
+      * The project basedir.
+-     * 
+-     * @parameter expression="${project.basedir}"
+-     * @required
+      */
++    @Parameter( property = "project.basedir",
++                required = true )
+     protected File basedir;
+     
+     /**
+      * The existing VERSION.txt file.
+-     * <p>
+-     * 
+-     * @parameter expression="${version.text.file}" default-value="${project.basedir}/VERSION.txt"
+      */
++    @Parameter( property = "version.text.file",
++                defaultValue = "${project.basedir}/VERSION.txt" )
+     protected File versionTextInputFile;
+     
+     /**
+      * The classifier to use for attaching the generated VERSION.txt artifact
+-     * 
+-     * @parameter expression=${version.text.output.classifier}" default-value="version"
+      */
++    @Parameter( property = "version.text.output.classifier",
++                defaultValue = "version" )
+     protected String classifier = "version";
+     
+     /**
+      * The type to use for the attaching the generated VERSION.txt artifact
+-     * 
+-     * @parameter expression=${version.text.output.type}" default-value="txt"
+      */
++    @Parameter( property = "version.text.output.type",
++                defaultValue = "txt" )
+     protected String type = "txt";
+     
+     /**
+      * Maven ProjectHelper. (internal component)
+-     * 
+-     * @component
+-     * @readonly
+-     * @required
+      */
++    @Component
+     protected MavenProjectHelper projectHelper;
+     
+     /**
+      * Maven Project.
+-     * 
+-     * @parameter expression="${project}"
+-     * @readonly
+-     * @required
+      */
++    @Parameter( property = "project",
++                readonly = true,
++                required = true )
+     protected MavenProject project;
+ 
+     protected void ensureDirectoryExists(File dir) throws MojoFailureException
+--- jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/AttachVersionMojo.java	2025-03-27 10:51:38.872120586 +0100
++++ jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/AttachVersionMojo.java	2025-03-27 11:09:11.883531966 +0100
+@@ -17,16 +17,18 @@
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
+ 
+ /**
+  * Attach the VERSION.txt to the project.
+  * <p>
+  * Will only attach the VERSION.txt if it exists.
+  * 
+- * @goal attach-version-text
+- * @requiresProject true
+- * @phase process-resources
+  */
++@Mojo( name = "attach-version-text",
++       requiresProject = true,
++       defaultPhase = LifecyclePhase.PROCESS_RESOURCES )
+ public class AttachVersionMojo extends AbstractVersionMojo
+ {
+     public void execute() throws MojoExecutionException, MojoFailureException
+--- jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/UpdateVersionTextMojo.java	2025-03-27 10:51:38.872196843 +0100
++++ jetty-version-maven-plugin-1.0.10/src/main/java/org/eclipse/jetty/toolchain/version/UpdateVersionTextMojo.java	2025-03-27 11:12:48.366999775 +0100
+@@ -21,83 +21,95 @@
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.codehaus.plexus.util.FileUtils;
+ import org.eclipse.jetty.toolchain.version.git.GitCommand;
+ 
+ /**
+  * Update the active version entry in the VERSION.txt file from information present in the git logs.
+  * 
+- * @goal update-version-text
+- * @requiresProject true
+- * @phase package
+  */
++@Mojo( name = "update-version-text",
++       requiresProject = true,
++       defaultPhase = LifecyclePhase.PACKAGE )
+ public class UpdateVersionTextMojo extends AbstractVersionMojo
+ {
+     /**
+      * The maven project version.
+      * 
+-     * @parameter expression="${version.section}" default-value="${project.version}"
+-     * @required
+      */
++    @Parameter( property = "version.section",
++                defaultValue = "${project.version}",
++                required = true )
+     private String version;
+ 
+     /**
+      * The version key to use in the VERSION.txt file.
+      * 
+-     * @parameter expression="${version.text.key}" default-value="jetty-VERSION"
+-     * @required
+      */
++    @Parameter( property = "version.text.key",
++                defaultValue = "jetty-VERSION",
++                required = true )
+     private String versionTextKey;
+ 
+     /**
+      * The version key to use when looking up a git tag ref.
+      * 
+-     * @parameter expression="${version.tag.key}" default-value="jetty-VERSION"
+-     * @required
+      */
++    @Parameter( property = "version.tag.key",
++                defaultValue = "jetty-VERSION",
++                required = true )
+     private String versionTagKey;
+ 
+     /**
+      * Allow the existing issues to be sorted alphabetically.
+      * 
+-     * @parameter expression="${version.sort.existing}" default-value="false"
+      */
++    @Parameter( property = "version.sort.existing",
++                defaultValue = "false" )
+     private boolean sortExisting = false;
+ 
+     /**
+      * Allow the plugin to issue a 'git fetch --tags' to update the local tags from.
+      * 
+-     * @parameter expression="${version.refresh.tags}" default-value="false"
+      */
++    @Parameter( property = "version.refresh.tags",
++                defaultValue = "false" )
+     private boolean refreshTags = false;
+ 
+     /**
+      * Allow the plugin to update the release date for an issue (if none is provided)
+      * 
+-     * @parameter expression="${version.update.date}" default-value="false"
+      */
++    @Parameter( property = "version.update.date",
++                defaultValue = "false" )
+     private boolean updateDate = false;
+ 
+     /**
+      * Allow the plugin to replace the input VERSION.txt file
+      * 
+-     * @parameter expression="${version.copy.generated}" default-value="false"
+      */
++    @Parameter( property = "version.copy.generated",
++                defaultValue = "false" )
+     private boolean copyGenerated;
+ 
+     /**
+      * Allow the plugin to attach the generated VERSION.txt file to the project
+      * 
+-     * @parameter expression="${version.attach}" default-value="false"
+      */
++    @Parameter( property = "version.attach",
++                defaultValue = "false" )
+     private boolean attachArtifact;
+ 
+     /**
+      * The generated VERSION.txt file.
+      * <p>
+      * 
+-     * @parameter expression="${version.text.output.file}" default-value="${project.build.directory}/VERSION.txt"
+      */
++    @Parameter( property = "version.text.output.file",
++                defaultValue = "${project.build.directory}/VERSION.txt" )
+     private File versionTextOuputFile;
+ 
+     public void execute() throws MojoExecutionException, MojoFailureException

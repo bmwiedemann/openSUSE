@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:04:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
+Thu Mar 27 14:17:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-version-maven-plugin-mpt4.patch
+    + port the maven-plugin to java-annotations extractor instead
+      of the deprecated java-javadoc one
+
+-------------------------------------------------------------------
 Mon Sep 25 09:39:20 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2
