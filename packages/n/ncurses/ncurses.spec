@@ -220,18 +220,12 @@ Group:          System/Libraries
 Requires:       terminfo-base
 Provides:       ncurses = 5.9
 Obsoletes:      ncurses < 5.9
-# bug437293
-%ifarch ppc64
-Obsoletes:      ncurses-64bit
-%endif
-#
 
 %description -n libncurses_c++5
 The ncurses library is used by many terminal applications for
 controlling output to the screen and input from the user.
 
 This package contains the C++ library built with the version 5 ABI.
-
 
 %package -n libncurses6
 Summary:        Terminal control library
@@ -298,7 +292,6 @@ but build without weak threading support.
 
 Use with environment variable LD_LIBRARY_PATH=/usr/lib64/ncurses6nt
 or the wrapper script ncursesnt .
-
 
 %package -n terminfo
 Summary:        A terminal descriptions database
