@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:14:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.16
+  * Add support for QMI service request rate limiting.
+
+-------------------------------------------------------------------
 Fri Feb 14 17:13:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.15
