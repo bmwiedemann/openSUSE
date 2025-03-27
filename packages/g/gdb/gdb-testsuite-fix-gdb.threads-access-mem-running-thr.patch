@@ -1,0 +1,119 @@
+From 87a754a5b94b2360f39525f63f2292f23e9e0fe6 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 27 Mar 2025 13:18:57 +0100
+Subject: [PATCH] [gdb/testsuite] Fix
+ gdb.threads/access-mem-running-thread-exit.exp
+
+In OBS (Open Build Service), with a 15.2 based gdb package, occasionally I run
+into:
+...
+(gdb) inferior 2
+[Switching to inferior 2 [process 31372] (access-mem-running-thread-exit)]
+[Switching to thread 2.1 (Thread 0xf7db9700 (LWP 31372))](running)
+(gdb) print global_var = 555
+$1 = 555
+(gdb) print global_var
+$2 = 556
+(gdb) FAIL: $exp: all-stop: access mem \
+  (print global_var after writing, inf=2, iter=1)
+...
+
+I managed to reproduce this on current trunk using a reproducer patch (posted
+in the PR).
+
+The problem is due to commit 31c21e2c13d ("[gdb/testsuite] Fix
+gdb.threads/access-mem-running-thread-exit.exp with clang"), which introduced
+an increment of global_var at the start of main.
+
+This created a race between:
+- gdb modifying global_var, and
+- the inferior modifying global_var.
+
+Fix this by:
+- adding a new empty function setup_done,
+- adding a call to setup_done after the increment of global_var, and
+- rather than running to main, running to setup_done.
+
+Tested on x86_64-linux.
+
+PR testsuite/32822
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32822
+---
+ .../gdb.threads/access-mem-running-thread-exit.c       |  7 +++++++
+ .../gdb.threads/access-mem-running-thread-exit.exp     | 10 +++++-----
+ 2 files changed, 12 insertions(+), 5 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.c b/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.c
+index af05b13c763..e22bf12df75 100644
+--- a/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.c
++++ b/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.c
+@@ -97,6 +97,11 @@ thread_fn (void *arg)
+   return NULL;
+ }
+ 
++static void
++setup_done (void)
++{
++}
++
+ int
+ main (void)
+ {
+@@ -104,6 +109,8 @@ main (void)
+ 
+   global_var++;
+ 
++  setup_done ();
++
+   for (i = 0; i < 4; i++)
+     {
+       struct thread_arg *p;
+diff --git a/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.exp b/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.exp
+index 784f17ff3b2..42222c0fb35 100644
+--- a/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.exp
++++ b/gdb/testsuite/gdb.threads/access-mem-running-thread-exit.exp
+@@ -54,7 +54,7 @@ proc test { non_stop } {
+       clean_restart ${binfile}
+     }
+ 
+-    if ![runto_main] {
++    if ![runto setup_done] {
+ 	return -1
+     }
+ 
+@@ -76,7 +76,7 @@ proc test { non_stop } {
+     # Start the second inferior.
+     with_test_prefix "second inferior" {
+ 	# With stub targets that do reload on run, if we let the new
+-	# inferior share inferior 1's connection, runto_main would
++	# inferior share inferior 1's connection, runto would
+ 	# fail because GDB is already connected to something, like
+ 	# e.g. with --target_board=native-gdbserver:
+ 	#
+@@ -86,10 +86,10 @@ proc test { non_stop } {
+ 	#  Already connected to a remote target.  Disconnect? (y or n)
+ 	#
+ 	# Instead, start the inferior with no connection, and let
+-	# gdb_load/runto_main spawn a new remote connection/gdbserver.
++	# gdb_load/runto spawn a new remote connection/gdbserver.
+ 	#
+ 	# OTOH, with extended-remote, we must let the new inferior
+-	# reuse the current connection, so that runto_main below can
++	# reuse the current connection, so that runto below can
+ 	# issue the "run" command, and have the inferior run on the
+ 	# remote target.  If we forced no connection, then "run" would
+ 	# either fail if "set auto-connect-native-target" is on, like
+@@ -108,7 +108,7 @@ proc test { non_stop } {
+ 
+ 	gdb_load $binfile
+ 
+-	if ![runto_main] {
++	if ![runto setup_done] {
+ 	    return -1
+ 	}
+     }
+
+base-commit: af5d18ee9fd221ca8a54de4957ec5c351599f13c
+-- 
+2.43.0
+

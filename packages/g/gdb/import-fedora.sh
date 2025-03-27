@@ -6,16 +6,12 @@ skip_patches=(
     # Not applicable for openSUSE.
     gdb-add-index.patch
     gdb-6.3-rh-testversion-20041202.patch
-    gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
     gdb-6.8-bz466901-backtrace-full-prelinked.patch
 
     # Dropped by fedora.
     gdb-rhbz1156192-recursive-dlopen-test.patch
     gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
     gdb-test-bt-cfi-without-die.patch
-    
-    # No longer needed.
-    gdb-remove-use-of-py-isascii
 )
 
 usage ()

@@ -3818,4 +3818,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
 </comment>
     <requestid>1252754</requestid>
   </revision>
+  <revision rev="185" vrev="3">
+    <srcmd5>de16ec04e97db4a7d01aef1f6f4187fa</srcmd5>
+    <version>15.2</version>
+    <time>1743111101</time>
+    <user>anag+factory</user>
+    <comment>Fix bsc#1240047.</comment>
+    <requestid>1256455</requestid>
+  </revision>
 </revisionlist>

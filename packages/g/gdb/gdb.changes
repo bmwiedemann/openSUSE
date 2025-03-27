@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Mar 27 12:24:34 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-fix-gdb.threads-access-mem-running-thr.patch
+
+-------------------------------------------------------------------
+Wed Mar 26 09:30:19 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Patches updated (bsc#1240047):
+  * gdb-add-rpm-suggestion-script-suse.patch
+- Patches added (bsc#1240047):
+  * gdb-6.6-buildid-locate-tests-suse.patch
+
+-------------------------------------------------------------------
+Tue Mar 25 11:25:52 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to fedora rawhide @ 8d5adc7.
+- Maintenance script import-fedora.sh:
+  * Remove
+  gdb-6.6-buildid-locate-misleading-warning-missing-debuginfo-rhbz981154.patch
+  and gdb-remove-use-of-py-isascii from skip_patches.
+- Patches dropped:
+  * gdb-6.6-buildid-locate-solib-missing-ids.patch
+  * gdb-6.6-buildid-locate.patch
+  * gdb-python-avoid-depending-on-the-curses-library.patch
+  * gdb-6.6-buildid-locate-rpm-suse.patch
+- Patches added:
+  * gdb-6.6-buildid-locate-tests.patch
+  * gdb-add-deprecated-settings-py-script.patch
+  * gdb-backport-buildid-related-changes.patch
+  * gdb-remove-qnx-neutrino-support.patch
+  * fixup-gdb-add-rpm-suggestion-script.patch
+  * gdb-add-rpm-suggestion-script-suse.patch
+  * gdb-build-fix-unused-var-in-corelow.c.patch
+- Patches updated:
+  * gdb-add-rpm-suggestion-script.patch
+
+-------------------------------------------------------------------
+Tue Mar 25 08:08:37 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Mention bsc#1216488.
+
+-------------------------------------------------------------------
 Thu Mar 13 10:51:28 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Patches added:
@@ -1458,9 +1501,10 @@ Sun Oct 29 18:57:21 UTC 2023 - Tom de Vries <tdevries@suse.com>
   * Update PR29781 kfail.
 - Maintenance script qa-local.sh:
   * Add "Verify quilt setup" step.
-- Patches added (backport from master):
+- Patches added (backport from master, bsc#1216488):
   * gdb-symtab-handle-self-reference-die.patch
   * gdb-symtab-handle-self-reference-in-inherit_abstract.patch
+- Patches added (backport from master):
   * gdb-symtab-add-optimized-out-static-var-to-cooked-in.patch
 
 -------------------------------------------------------------------

@@ -173,15 +173,17 @@ NoSource:       20
 Patch2:         gdb-6.3-gstack-20050411.patch
 Patch3:         gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
 Patch4:         gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
-Patch5:         gdb-6.6-buildid-locate.patch
-Patch6:         gdb-6.6-buildid-locate-solib-missing-ids.patch
-Patch7:         gdb-6.5-gcore-buffer-limit-test.patch
-Patch8:         gdb-6.3-mapping-zero-inode-test.patch
-Patch10:        gdb-archer-next-over-throw-cxx-exec.patch
-Patch12:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
-Patch15:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
-Patch16:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
-Patch20:        gdb-add-rpm-suggestion-script.patch
+Patch5:         gdb-6.5-gcore-buffer-limit-test.patch
+Patch6:         gdb-6.3-mapping-zero-inode-test.patch
+Patch8:         gdb-archer-next-over-throw-cxx-exec.patch
+Patch10:        gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
+Patch12:        gdb-rhbz1149205-catch-syscall-after-fork-test.patch
+Patch13:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
+Patch16:        gdb-remove-qnx-neutrino-support.patch
+Patch17:        gdb-backport-buildid-related-changes.patch
+Patch18:        gdb-add-rpm-suggestion-script.patch
+Patch19:        gdb-add-deprecated-settings-py-script.patch
+Patch20:        gdb-6.6-buildid-locate-tests.patch
 Patch21:        gdb-catchpoint-re-set.patch
 #Fedora Packages end
 
@@ -190,13 +192,16 @@ Patch21:        gdb-catchpoint-re-set.patch
 # them when upgrading.
 
 Patch1000:      fixup-gdb-6.5-gcore-buffer-limit-test.patch
+Patch1001:      fixup-gdb-add-rpm-suggestion-script.patch
 
 # openSUSE specific
 
 # Hardcodes /bin/bash, given that path is known.
 Patch1100:      gdb-gcore-bash.patch
 # Make gdb emit zypper install hints, rather than debuginfo-install hints.
-Patch1101:      gdb-6.6-buildid-locate-rpm-suse.patch
+Patch1101:      gdb-add-rpm-suggestion-script-suse.patch
+# Fixes testcase to not expect dnf message.
+Patch1102:      gdb-6.6-buildid-locate-tests-suse.patch
 
 # openSUSE specific -- testsuite
 
@@ -231,7 +236,6 @@ Patch2000:      gdb-testsuite-fix-gdb.fortran-array-bounds.exp-on-ar.patch
 Patch2001:      gdb-symtab-return-correct-reader-for-top-level-cu-in.patch
 Patch2002:      gdb-tdep-s390-add-arch15-record-replay-support.patch
 Patch2003:      gdb-testsuite-avoid-intermittent-failures-on-a-debug.patch
-Patch2004:      gdb-python-avoid-depending-on-the-curses-library.patch
 Patch2005:      gdb-testsuite-fix-gdb.threads-leader-exit-attach.exp.patch
 Patch2006:      gdb-testsuite-fix-gdb.python-py-format-string.exp-wi.patch
 Patch2007:      gdb-testsuite-fix-gdb.python-py-mi-cmd.exp-with-pyth.patch
@@ -262,6 +266,7 @@ Patch2031:      gdb-prune-inferior-after-switching-inferior.patch
 Patch2032:      gdb-testsuite-fix-timeout-in-gdb.mi-mi-multi-command.patch
 Patch2033:      gdb-testsuite-fix-regexp-in-gdb.threads-stepi-over-c.patch
 Patch2034:      gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+Patch2035:      gdb-build-fix-unused-var-in-corelow.c.patch
 
 # Backports from master, available in GDB 17.
 
@@ -291,6 +296,7 @@ Patch2122:      gdb-testsuite-fix-gdb.ada-convvar_comp.exp-on-s390x-.patch
 Patch2123:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-for-amd.patch
 Patch2124:      gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-glibc-2-41.patch
 Patch2125:      gdb-tdep-backport-i386_canonicalize_syscall-rewrite-.patch
+Patch2126:      gdb-testsuite-fix-gdb.threads-access-mem-running-thr.patch
 
 # Backport from gdb-patches
 
@@ -641,20 +647,24 @@ find -name "*.info*"|xargs rm -f
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 10 -p1
 %patch -P 12 -p1
-%patch -P 15 -p1
+%patch -P 13 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
+%patch -P 19 -p1
 %patch -P 20 -p1
 %patch -P 21 -p1
 #Fedora patching end
 
 %patch -P 1000 -p1
+%patch -P 1001 -p1
 
 %patch -P 1100 -p1
 %patch -P 1101 -p1
+%patch -P 1102 -p1
 
 %patch -P 1200 -p1
 %patch -P 1203 -p1
@@ -672,7 +682,6 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2001 -p1
 %patch -P 2002 -p1
 %patch -P 2003 -p1
-%patch -P 2004 -p1
 %patch -P 2005 -p1
 %patch -P 2006 -p1
 %patch -P 2007 -p1
@@ -703,6 +712,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2032 -p1
 %patch -P 2033 -p1
 %patch -P 2034 -p1
+%patch -P 2035 -p1
 
 %patch -P 2100 -p1
 %patch -P 2101 -p1
@@ -730,6 +740,7 @@ find -name "*.info*"|xargs rm -f
 %patch -P 2123 -p1
 %patch -P 2124 -p1
 %patch -P 2125 -p1
+%patch -P 2126 -p1
 
 %patch -P 3000 -p1
 %patch -P 3001 -p1

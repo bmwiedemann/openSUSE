@@ -1,0 +1,40 @@
+From 423c53757e2fe22815fef8a04abf21caff951937 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 25 Mar 2025 14:12:51 +0100
+Subject: [PATCH 1/4] [distro] Update gdb-add-rpm-suggestion-script.patch for
+ SUSE
+
+---
+ gdb/python/lib/gdb/command/rpm-suggestions.py | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/python/lib/gdb/command/rpm-suggestions.py b/gdb/python/lib/gdb/command/rpm-suggestions.py
+index 156fce0672b..f1034070989 100644
+--- a/gdb/python/lib/gdb/command/rpm-suggestions.py
++++ b/gdb/python/lib/gdb/command/rpm-suggestions.py
+@@ -358,7 +358,7 @@ else:
+     # Take a non-empty list of RPM names and print a command line a
+     # user could run to install these RPMs.
+     def print_rpm_suggestions(rpm_name_list):
+-        print("Missing rpms, try: dnf --enablerepo='*debug*' install " + ' '.join(rpm_name_list))
++        print("Missing separate debuginfos, use: zypper install " + ' '.join(rpm_name_list))
+ 
+     # Take a non-empty list of build-id strings and print a series of
+     # lines that a user could run to instll the RPMs that provide
+@@ -423,7 +423,10 @@ else:
+ 
+     # Register the missing debug and missing objfile handlers with GDB.
+     gdb.missing_debug.register_handler(None, RPM_MissingDebugHandler())
+-    gdb.missing_objfile.register_handler(None, RPM_MissingObjfileHandler())
++
++    # Not enabled for SUSE/openSUSE.  Zypper doesn't support finding packages
++    # based on build-id, unless the package's installed.
++    #gdb.missing_objfile.register_handler(None, RPM_MissingObjfileHandler())
+ 
+     # Implement the core of 'info rpm-suggestions'.  Reprint all rpm
+     # suggestions.
+
+base-commit: 956ad1d51aa6e4117a98c4124bd7154a1aaeec55
+-- 
+2.43.0
+

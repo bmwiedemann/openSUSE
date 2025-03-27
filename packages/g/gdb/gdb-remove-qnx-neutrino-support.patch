@@ -1,0 +1,2923 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Simon Marchi <simon.marchi@polymtl.ca>
+Date: Thu, 25 Jul 2024 13:41:35 -0400
+Subject: gdb-remove-qnx-neutrino-support.patch
+
+;; Backport of upstream commit 36fb20fa93484b104d.  This is not really
+;; relevant for our branch, but later commits that are important, and
+;; which we want to backport, conflict unless the cleanup in this
+;; patch is in place.
+;;
+;; This commit will be part of GDB 16, so this back-port should drop
+;; out when we rebase onto GDB 16.
+;;
+;; gdb: remove QNX Neutrino support
+;;
+;; Remove the support for the QNX Neutrino OS (tdep and native bits).  This
+;; has been unmaintained for years, and we don't have a way to see if it
+;; works (or even builds, for the native parts).  Without somebody actively
+;; maintaining it, this is just a burden for developers, especially that
+;; this port does a few weird unique things that require reasoning about
+;; when doing big change.
+;;
+;; Support for GDBserver was removed in 2020, commit 613f149a90d6
+;; ("gdbserver: remove support for Neutrino").
+;;
+;; Change-Id: I4e25ec26ab06636629adebd02ceb161ee31c232d
+;; Approved-by: Kevin Buettner <kevinb@redhat.com>
+
+diff --git a/gdb/Makefile.in b/gdb/Makefile.in
+--- a/gdb/Makefile.in
++++ b/gdb/Makefile.in
+@@ -828,7 +828,6 @@ ALL_TARGET_OBS = \
+ 	i386-go32-tdep.o \
+ 	i386-linux-tdep.o \
+ 	i386-netbsd-tdep.o \
+-	i386-nto-tdep.o \
+ 	i386-obsd-tdep.o \
+ 	i386-sol2-tdep.o \
+ 	i386-tdep.o \
+@@ -856,7 +855,6 @@ ALL_TARGET_OBS = \
+ 	nds32-tdep.o \
+ 	nios2-linux-tdep.o \
+ 	nios2-tdep.o \
+-	nto-tdep.o \
+ 	obsd-tdep.o \
+ 	or1k-linux-tdep.o \
+ 	or1k-tdep.o \
+@@ -1441,7 +1439,6 @@ HFILES_NO_SRCDIR = \
+ 	nds32-tdep.h \
+ 	nios2-tdep.h \
+ 	elf-none-tdep.h \
+-	nto-tdep.h \
+ 	objc-lang.h \
+ 	objfiles.h \
+ 	obsd-nat.h \
+@@ -1573,7 +1570,6 @@ HFILES_NO_SRCDIR = \
+ 	compile/gcc-c-plugin.h \
+ 	compile/gcc-cp-plugin.h \
+ 	config/nm-linux.h \
+-	config/nm-nto.h \
+ 	config/djgpp/langinfo.h \
+ 	config/djgpp/nl_types.h \
+ 	config/i386/nm-i386gnu.h \
+diff --git a/gdb/config/nm-nto.h b/gdb/config/nm-nto.h
+deleted file mode 100644
+--- a/gdb/config/nm-nto.h
++++ /dev/null
+@@ -1,29 +0,0 @@
+-/* Native support for QNX Neutrino version 6.
+-
+-   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+-
+-   This code was donated by QNX Software Systems Ltd.
+-
+-   This file is part of GDB.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-#ifndef CONFIG_NM_NTO_H
+-#define CONFIG_NM_NTO_H
+-
+-/* Setup the valid realtime signal range.  */
+-#define REALTIME_LO 41
+-#define REALTIME_HI 56
+-
+-#endif /* CONFIG_NM_NTO_H */
+diff --git a/gdb/configure.host b/gdb/configure.host
+--- a/gdb/configure.host
++++ b/gdb/configure.host
+@@ -110,7 +110,6 @@ i[34567]86-*-mingw32*)	gdb_host=mingw
+ i[34567]86-*-msdosdjgpp*) gdb_host=go32 ;;
+ i[34567]86-*-linux*)	gdb_host=linux ;;
+ i[34567]86-*-gnu*)	gdb_host=i386gnu ;;
+-i[3456]86-*-nto*) 	gdb_host=nto ;;
+ i[34567]86-*-openbsd*)	gdb_host=obsd ;;
+ i[34567]86-*-solaris2* | x86_64-*-solaris2*)
+ 			gdb_host=sol2 ;;
+diff --git a/gdb/configure.nat b/gdb/configure.nat
+--- a/gdb/configure.nat
++++ b/gdb/configure.nat
+@@ -421,15 +421,6 @@ case ${gdb_host} in
+ 
+ 	esac
+ 	;;
+-    nto)
+-	case ${gdb_host_cpu} in
+-	    i386)
+-		# Host: Intel 386 running QNX.
+-		NATDEPFILES='nto-procfs.o'
+-		NAT_FILE='config/nm-nto.h'
+-		;;
+-	esac
+-	;;
+     obsd)
+ 	case ${gdb_host_cpu} in
+ 	    i386)
+diff --git a/gdb/configure.tgt b/gdb/configure.tgt
+--- a/gdb/configure.tgt
++++ b/gdb/configure.tgt
+@@ -304,11 +304,6 @@ i[34567]86-*-openbsd*)
+ 	# Target: OpenBSD/i386
+ 	gdb_target_obs="i386-bsd-tdep.o i386-obsd-tdep.o bsd-uthread.o"
+ 	;;
+-i[34567]86-*-nto*)
+-	# Target: Intel 386 running qnx6.
+-	gdb_target_obs="solib-svr4.o \
+-			i386-nto-tdep.o nto-tdep.o"
+-	;;
+ i[34567]86-*-solaris2* | x86_64-*-solaris2*)
+ 	# Target: Solaris x86_64
+ 	gdb_target_obs="${i386_tobjs} ${amd64_tobjs} \
+@@ -803,7 +798,6 @@ case "${targ}" in
+ 		gdb_osabi=GDB_OSABI_FREEBSD ;;
+ *-*-linux* | *-*-uclinux*)
+ 		gdb_osabi=GDB_OSABI_LINUX ;;
+-*-*-nto*)	gdb_osabi=GDB_OSABI_QNXNTO ;;
+ m68*-*-openbsd* | m88*-*-openbsd* | vax-*-openbsd*) ;;
+ *-*-openbsd*)	gdb_osabi=GDB_OSABI_OPENBSD ;;
+ *-*-solaris*)	gdb_osabi=GDB_OSABI_SOLARIS ;;
+diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
+--- a/gdb/doc/gdb.texinfo
++++ b/gdb/doc/gdb.texinfo
+@@ -2742,7 +2742,7 @@
+ @end smallexample
+ 
+ This command is available when debugging locally on most targets, excluding
+-@sc{djgpp}, Cygwin, MS Windows, and QNX Neutrino.
++@sc{djgpp}, Cygwin, and MS Windows.
+ 
+ @kindex set startup-with-shell
+ @anchor{set startup-with-shell}
+@@ -22011,7 +22011,7 @@
+ @cindex shared libraries
+ @anchor{Shared Libraries}
+ @value{GDBN} supports @sc{gnu}/Linux, MS-Windows, SunOS,
+-Darwin/Mach-O, SVr4, IBM RS/6000 AIX, QNX Neutrino, FDPIC (FR-V), and
++Darwin/Mach-O, SVr4, IBM RS/6000 AIX, FDPIC (FR-V), and
+ DSBT (TIC6X) shared libraries.
+ 
+ On MS-Windows @value{GDBN} must be linked with the Expat library to support
+@@ -25203,16 +25203,6 @@
+ These commands enable and disable tracing of entries into and exits
+ from the @code{syscall} interface.
+ 
+-@item info pidlist
+-@kindex info pidlist
+-@cindex process list, QNX Neutrino
+-For QNX Neutrino only, this command displays the list of all the
+-processes and all the threads within each process.
+-
+-@item info meminfo
+-@kindex info meminfo
+-@cindex mapinfo list, QNX Neutrino
+-For QNX Neutrino only, this command displays the list of all mapinfos.
+ @end table
+ 
+ @node DJGPP Native
+diff --git a/gdb/i386-nto-tdep.c b/gdb/i386-nto-tdep.c
+deleted file mode 100644
+--- a/gdb/i386-nto-tdep.c
++++ /dev/null
+@@ -1,379 +0,0 @@
+-/* Target-dependent code for QNX Neutrino x86.
+-
+-   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+-
+-   Contributed by QNX Software Systems Ltd.
+-
+-   This file is part of GDB.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-#include "extract-store-integer.h"
+-#include "frame.h"
+-#include "osabi.h"
+-#include "regcache.h"
+-#include "target.h"
+-
+-#include "i386-tdep.h"
+-#include "i387-tdep.h"
+-#include "nto-tdep.h"
+-#include "solib.h"
+-#include "solib-svr4.h"
+-
+-#ifndef X86_CPU_FXSR
+-#define X86_CPU_FXSR (1L << 12)
+-#endif
+-
+-/* Why 13?  Look in our /usr/include/x86/context.h header at the
+-   x86_cpu_registers structure and you'll see an 'exx' junk register
+-   that is just filler.  Don't ask me, ask the kernel guys.  */
+-#define NUM_GPREGS 13
+-
+-/* Mapping between the general-purpose registers in `struct xxx'
+-   format and GDB's register cache layout.  */
+-
+-/* From <x86/context.h>.  */
+-static int i386nto_gregset_reg_offset[] =
+-{
+-  7 * 4,			/* %eax */
+-  6 * 4,			/* %ecx */
+-  5 * 4,			/* %edx */
+-  4 * 4,			/* %ebx */
+-  11 * 4,			/* %esp */
+-  2 * 4,			/* %epb */
+-  1 * 4,			/* %esi */
+-  0 * 4,			/* %edi */
+-  8 * 4,			/* %eip */
+-  10 * 4,			/* %eflags */
+-  9 * 4,			/* %cs */
+-  12 * 4,			/* %ss */
+-  -1				/* filler */
+-};
+-
+-/* Given a GDB register number REGNUM, return the offset into
+-   Neutrino's register structure or -1 if the register is unknown.  */
+-
+-static int
+-nto_reg_offset (int regnum)
+-{
+-  if (regnum >= 0 && regnum < ARRAY_SIZE (i386nto_gregset_reg_offset))
+-    return i386nto_gregset_reg_offset[regnum];
+-
+-  return -1;
+-}
+-
+-static void
+-i386nto_supply_gregset (struct regcache *regcache, char *gpregs)
+-{
+-  struct gdbarch *gdbarch = regcache->arch ();
+-  i386_gdbarch_tdep *tdep = gdbarch_tdep<i386_gdbarch_tdep> (gdbarch);
+-
+-  gdb_assert (tdep->gregset_reg_offset == i386nto_gregset_reg_offset);
+-  i386_gregset.supply_regset (&i386_gregset, regcache, -1,
+-			      gpregs, NUM_GPREGS * 4);
+-}
+-
+-static void
+-i386nto_supply_fpregset (struct regcache *regcache, char *fpregs)
+-{
+-  if (nto_cpuinfo_valid && nto_cpuinfo_flags | X86_CPU_FXSR)
+-    i387_supply_fxsave (regcache, -1, fpregs);
+-  else
+-    i387_supply_fsave (regcache, -1, fpregs);
+-}
+-
+-static void
+-i386nto_supply_regset (struct regcache *regcache, int regset, char *data)
+-{
+-  switch (regset)
+-    {
+-    case NTO_REG_GENERAL:
+-      i386nto_supply_gregset (regcache, data);
+-      break;
+-    case NTO_REG_FLOAT:
+-      i386nto_supply_fpregset (regcache, data);
+-      break;
+-    }
+-}
+-
+-static int
+-i386nto_regset_id (int regno)
+-{
+-  if (regno == -1)
+-    return NTO_REG_END;
+-  else if (regno < I386_NUM_GREGS)
+-    return NTO_REG_GENERAL;
+-  else if (regno < I386_NUM_GREGS + I387_NUM_REGS)
+-    return NTO_REG_FLOAT;
+-  else if (regno < I386_SSE_NUM_REGS)
+-    return NTO_REG_FLOAT; /* We store xmm registers in fxsave_area.  */
+-
+-  return -1;			/* Error.  */
+-}
+-
+-static int
+-i386nto_register_area (struct gdbarch *gdbarch,
+-		       int regno, int regset, unsigned *off)
+-{
+-  i386_gdbarch_tdep *tdep = gdbarch_tdep<i386_gdbarch_tdep> (gdbarch);
+-
+-  *off = 0;
+-  if (regset == NTO_REG_GENERAL)
+-    {
+-      if (regno == -1)
+-	return NUM_GPREGS * 4;
+-
+-      *off = nto_reg_offset (regno);
+-      if (*off == -1)
+-	return 0;
+-      return 4;
+-    }
+-  else if (regset == NTO_REG_FLOAT)
+-    {
+-      unsigned off_adjust, regsize, regset_size, regno_base;
+-      /* The following are flags indicating number in our fxsave_area.  */
+-      int first_four = (regno >= I387_FCTRL_REGNUM (tdep)
+-			&& regno <= I387_FISEG_REGNUM (tdep));
+-      int second_four = (regno > I387_FISEG_REGNUM (tdep)
+-			 && regno <= I387_FOP_REGNUM (tdep));
+-      int st_reg = (regno >= I387_ST0_REGNUM (tdep)
+-		    && regno < I387_ST0_REGNUM (tdep) + 8);
+-      int xmm_reg = (regno >= I387_XMM0_REGNUM (tdep)
+-		     && regno < I387_MXCSR_REGNUM (tdep));
+-
+-      if (nto_cpuinfo_valid && nto_cpuinfo_flags | X86_CPU_FXSR)
+-	{
+-	  off_adjust = 32;
+-	  regsize = 16;
+-	  regset_size = 512;
+-	  /* fxsave_area structure.  */
+-	  if (first_four)
+-	    {
+-	      /* fpu_control_word, fpu_status_word, fpu_tag_word, fpu_operand
+-		 registers.  */
+-	      regsize = 2; /* Two bytes each.  */
+-	      off_adjust = 0;
+-	      regno_base = I387_FCTRL_REGNUM (tdep);
+-	    }
+-	  else if (second_four)
+-	    {
+-	      /* fpu_ip, fpu_cs, fpu_op, fpu_ds registers.  */
+-	      regsize = 4;
+-	      off_adjust = 8;
+-	      regno_base = I387_FISEG_REGNUM (tdep) + 1;
+-	    }
+-	  else if (st_reg)
+-	    {
+-	      /* ST registers.  */
+-	      regsize = 16;
+-	      off_adjust = 32;
+-	      regno_base = I387_ST0_REGNUM (tdep);
+-	    }
+-	  else if (xmm_reg)
+-	    {
+-	      /* XMM registers.  */
+-	      regsize = 16;
+-	      off_adjust = 160;
+-	      regno_base = I387_XMM0_REGNUM (tdep);
+-	    }
+-	  else if (regno == I387_MXCSR_REGNUM (tdep))
+-	    {
+-	      regsize = 4;
+-	      off_adjust = 24;
+-	      regno_base = I387_MXCSR_REGNUM (tdep);
+-	    }
+-	  else
+-	    {
+-	      /* Whole regset.  */
+-	      gdb_assert (regno == -1);
+-	      off_adjust = 0;
+-	      regno_base = 0;
+-	      regsize = regset_size;
+-	    }
+-	}
+-      else
+-	{
+-	  regset_size = 108;
+-	  /* fsave_area structure.  */
+-	  if (first_four || second_four)
+-	    {
+-	      /* fpu_control_word, ... , fpu_ds registers.  */
+-	      regsize = 4;
+-	      off_adjust = 0;
+-	      regno_base = I387_FCTRL_REGNUM (tdep);
+-	    }
+-	  else if (st_reg)
+-	    {
+-	      /* One of ST registers.  */
+-	      regsize = 10;
+-	      off_adjust = 7 * 4;
+-	      regno_base = I387_ST0_REGNUM (tdep);
+-	    }
+-	  else
+-	    {
+-	      /* Whole regset.  */
+-	      gdb_assert (regno == -1);
+-	      off_adjust = 0;
+-	      regno_base = 0;
+-	      regsize = regset_size;
+-	    }
+-	}
+-
+-      if (regno != -1)
+-	*off = off_adjust + (regno - regno_base) * regsize;
+-      else
+-	*off = 0;
+-      return regsize;
+-    }
+-  return -1;
+-}
+-
+-static int
+-i386nto_regset_fill (const struct regcache *regcache, int regset, char *data)
+-{
+-  if (regset == NTO_REG_GENERAL)
+-    {
+-      int regno;
+-
+-      for (regno = 0; regno < NUM_GPREGS; regno++)
+-	{
+-	  int offset = nto_reg_offset (regno);
+-	  if (offset != -1)
+-	    regcache->raw_collect (regno, data + offset);
+-	}
+-    }
+-  else if (regset == NTO_REG_FLOAT)
+-    {
+-      if (nto_cpuinfo_valid && nto_cpuinfo_flags | X86_CPU_FXSR)
+-	i387_collect_fxsave (regcache, -1, data);
+-      else
+-	i387_collect_fsave (regcache, -1, data);
+-    }
+-  else
+-    return -1;
+-
+-  return 0;
+-}
+-
+-/* Return whether THIS_FRAME corresponds to a QNX Neutrino sigtramp
+-   routine.  */
+-
+-static int
+-i386nto_sigtramp_p (const frame_info_ptr &this_frame)
+-{
+-  CORE_ADDR pc = get_frame_pc (this_frame);
+-  const char *name;
+-
+-  find_pc_partial_function (pc, &name, NULL, NULL);
+-  return name && strcmp ("__signalstub", name) == 0;
+-}
+-
+-/* Assuming THIS_FRAME is a QNX Neutrino sigtramp routine, return the
+-   address of the associated sigcontext structure.  */
+-
+-static CORE_ADDR
+-i386nto_sigcontext_addr (const frame_info_ptr &this_frame)
+-{
+-  struct gdbarch *gdbarch = get_frame_arch (this_frame);
+-  enum bfd_endian byte_order = gdbarch_byte_order (gdbarch);
+-  gdb_byte buf[4];
+-  CORE_ADDR ptrctx;
+-
+-  /* We store __ucontext_t addr in EDI register.  */
+-  get_frame_register (this_frame, I386_EDI_REGNUM, buf);
+-  ptrctx = extract_unsigned_integer (buf, 4, byte_order);
+-  ptrctx += 24 /* Context pointer is at this offset.  */;
+-
+-  return ptrctx;
+-}
+-
+-static void
+-init_i386nto_ops (void)
+-{
+-  nto_regset_id = i386nto_regset_id;
+-  nto_supply_gregset = i386nto_supply_gregset;
+-  nto_supply_fpregset = i386nto_supply_fpregset;
+-  nto_supply_altregset = nto_dummy_supply_regset;
+-  nto_supply_regset = i386nto_supply_regset;
+-  nto_register_area = i386nto_register_area;
+-  nto_regset_fill = i386nto_regset_fill;
+-  nto_fetch_link_map_offsets =
+-    svr4_ilp32_fetch_link_map_offsets;
+-}
+-
+-static void
+-i386nto_init_abi (struct gdbarch_info info, struct gdbarch *gdbarch)
+-{
+-  i386_gdbarch_tdep *tdep = gdbarch_tdep<i386_gdbarch_tdep> (gdbarch);
+-  static solib_ops nto_svr4_so_ops;
+-
+-  /* Deal with our strange signals.  */
+-  nto_initialize_signals ();
+-
+-  /* NTO uses ELF.  */
+-  i386_elf_init_abi (info, gdbarch);
+-
+-  /* Neutrino rewinds to look more normal.  Need to override the i386
+-     default which is [unfortunately] to decrement the PC.  */
+-  set_gdbarch_decr_pc_after_break (gdbarch, 0);
+-
+-  tdep->gregset_reg_offset = i386nto_gregset_reg_offset;
+-  tdep->gregset_num_regs = ARRAY_SIZE (i386nto_gregset_reg_offset);
+-  tdep->sizeof_gregset = NUM_GPREGS * 4;
+-
+-  tdep->sigtramp_p = i386nto_sigtramp_p;
+-  tdep->sigcontext_addr = i386nto_sigcontext_addr;
+-  tdep->sc_reg_offset = i386nto_gregset_reg_offset;
+-  tdep->sc_num_regs = ARRAY_SIZE (i386nto_gregset_reg_offset);
+-
+-  /* Setjmp()'s return PC saved in EDX (5).  */
+-  tdep->jb_pc_offset = 20;	/* 5x32 bit ints in.  */
+-
+-  set_solib_svr4_fetch_link_map_offsets
+-    (gdbarch, svr4_ilp32_fetch_link_map_offsets);
+-
+-  /* Initialize this lazily, to avoid an initialization order
+-     dependency on solib-svr4.c's _initialize routine.  */
+-  if (nto_svr4_so_ops.in_dynsym_resolve_code == NULL)
+-    {
+-      nto_svr4_so_ops = svr4_so_ops;
+-
+-      /* Our loader handles solib relocations differently than svr4.  */
+-      nto_svr4_so_ops.relocate_section_addresses
+-	= nto_relocate_section_addresses;
+-
+-      /* Supply a nice function to find our solibs.  */
+-      nto_svr4_so_ops.find_and_open_solib
+-	= nto_find_and_open_solib;
+-
+-      /* Our linker code is in libc.  */
+-      nto_svr4_so_ops.in_dynsym_resolve_code
+-	= nto_in_dynsym_resolve_code;
+-    }
+-  set_gdbarch_so_ops (gdbarch, &nto_svr4_so_ops);
+-
+-  set_gdbarch_wchar_bit (gdbarch, 32);
+-  set_gdbarch_wchar_signed (gdbarch, 0);
+-}
+-
+-void _initialize_i386nto_tdep ();
+-void
+-_initialize_i386nto_tdep ()
+-{
+-  init_i386nto_ops ();
+-  gdbarch_register_osabi (bfd_arch_i386, 0, GDB_OSABI_QNXNTO,
+-			  i386nto_init_abi);
+-  gdbarch_register_osabi_sniffer (bfd_arch_i386, bfd_target_elf_flavour,
+-				  nto_elf_osabi_sniffer);
+-}
+diff --git a/gdb/nto-procfs.c b/gdb/nto-procfs.c
+deleted file mode 100644
+--- a/gdb/nto-procfs.c
++++ /dev/null
+@@ -1,1588 +0,0 @@
+-/* Machine independent support for QNX Neutrino /proc (process file system)
+-   for GDB.  Written by Colin Burgess at QNX Software Systems Limited.
+-
+-   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+-
+-   Contributed by QNX Software Systems Ltd.
+-
+-   This file is part of GDB.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-
+-#include <fcntl.h>
+-#include <spawn.h>
+-#include <sys/debug.h>
+-#include <sys/procfs.h>
+-#include <sys/neutrino.h>
+-#include <sys/syspage.h>
+-#include <dirent.h>
+-#include <sys/netmgr.h>
+-#include <sys/auxv.h>
+-
+-#include "gdbcore.h"
+-#include "inferior.h"
+-#include "target.h"
+-#include "objfiles.h"
+-#include "gdbthread.h"
+-#include "nto-tdep.h"
+-#include "command.h"
+-#include "regcache.h"
+-#include "solib.h"
+-#include "inf-child.h"
+-#include "gdbsupport/filestuff.h"
+-#include "gdbsupport/scoped_fd.h"
+-
+-#define NULL_PID		0
+-#define _DEBUG_FLAG_TRACE	(_DEBUG_FLAG_TRACE_EXEC|_DEBUG_FLAG_TRACE_RD|\
+-		_DEBUG_FLAG_TRACE_WR|_DEBUG_FLAG_TRACE_MODIFY)
+-
+-int ctl_fd;
+-
+-static sighandler_t ofunc;
+-
+-static procfs_run run;
+-
+-/* Create the "native" and "procfs" targets.  */
+-
+-struct nto_procfs_target : public inf_child_target
+-{
+-  void open (const char *arg, int from_tty) override;
+-
+-  void attach (const char *, int) override = 0;
+-
+-  void post_attach (int);
+-
+-  void detach (inferior *, int) override;
+-
+-  void resume (ptid_t, int, enum gdb_signal) override;
+-
+-  ptid_t wait (ptid_t, struct target_waitstatus *, target_wait_flags) override;
+-
+-  void fetch_registers (struct regcache *, int) override;
+-  void store_registers (struct regcache *, int) override;
+-
+-  enum target_xfer_status xfer_partial (enum target_object object,
+-					const char *annex,
+-					gdb_byte *readbuf,
+-					const gdb_byte *writebuf,
+-					ULONGEST offset, ULONGEST len,
+-					ULONGEST *xfered_len) override;
+-
+-  void files_info () override;
+-
+-  int insert_breakpoint (struct gdbarch *, struct bp_target_info *) override;
+-
+-  int remove_breakpoint (struct gdbarch *, struct bp_target_info *,
+-			 enum remove_bp_reason) override;
+-
+-  int can_use_hw_breakpoint (enum bptype, int, int) override;
+-
+-  int insert_hw_breakpoint (struct gdbarch *, struct bp_target_info *) override;
+-
+-  int remove_hw_breakpoint (struct gdbarch *, struct bp_target_info *) override;
+-
+-  int insert_watchpoint (CORE_ADDR, int, enum target_hw_bp_type,
+-			 struct expression *) override;
+-
+-  int remove_watchpoint (CORE_ADDR, int, enum target_hw_bp_type,
+-			 struct expression *) override;
+-
+-  bool stopped_by_watchpoint () override;
+-
+-  void kill () override;
+-
+-  void create_inferior (const char *, const std::string &,
+-			char **, int) override;
+-
+-  void mourn_inferior () override;
+-
+-  void pass_signals (gdb::array_view<const unsigned char>) override;
+-
+-  bool thread_alive (ptid_t ptid) override;
+-
+-  void update_thread_list () override;
+-
+-  std::string pid_to_str (ptid_t) override;
+-
+-  void interrupt () override;
+-
+-  const char *extra_thread_info (struct thread_info *) override;
+-
+-  const char *pid_to_exec_file (int pid) override;
+-};
+-
+-/* For "target native".  */
+-
+-static const target_info nto_native_target_info = {
+-  "native",
+-  N_("QNX Neutrino local process"),
+-  N_("QNX Neutrino local process (started by the \"run\" command).")
+-};
+-
+-class nto_procfs_target_native final : public nto_procfs_target
+-{
+-  const target_info &info () const override
+-  { return nto_native_target_info; }
+-};
+-
+-/* For "target procfs <node>".  */
+-
+-static const target_info nto_procfs_target_info = {
+-  "procfs",
+-  N_("QNX Neutrino local or remote process"),
+-  N_("QNX Neutrino process.  target procfs NODE")
+-};
+-
+-struct nto_procfs_target_procfs final : public nto_procfs_target
+-{
+-  const target_info &info () const override
+-  { return nto_procfs_target_info; }
+-};
+-
+-static ptid_t do_attach (ptid_t ptid);
+-
+-/* These two globals are only ever set in procfs_open_1, but are
+-   referenced elsewhere.  'nto_procfs_node' is a flag used to say
+-   whether we are local, or we should get the current node descriptor
+-   for the remote QNX node.  */
+-static char *nodestr;
+-static unsigned nto_procfs_node = ND_LOCAL_NODE;
+-
+-/* Return the current QNX Node, or error out.  This is a simple
+-   wrapper for the netmgr_strtond() function.  The reason this
+-   is required is because QNX node descriptors are transient so
+-   we have to re-acquire them every time.  */
+-static unsigned
+-nto_node (void)
+-{
+-  unsigned node;
+-
+-  if (ND_NODE_CMP (nto_procfs_node, ND_LOCAL_NODE) == 0
+-      || nodestr == NULL)
+-    return ND_LOCAL_NODE;
+-
+-  node = netmgr_strtond (nodestr, 0);
+-  if (node == -1)
+-    error (_("Lost the QNX node.  Debug session probably over."));
+-
+-  return (node);
+-}
+-
+-static enum gdb_osabi
+-procfs_is_nto_target (bfd *abfd)
+-{
+-  return GDB_OSABI_QNXNTO;
+-}
+-
+-/* This is called when we call 'target native' or 'target procfs
+-   <arg>' from the (gdb) prompt.  For QNX6 (nto), the only valid arg
+-   will be a QNX node string, eg: "/net/some_node".  If arg is not a
+-   valid QNX node, we will default to local.  */
+-void
+-nto_procfs_target::open (const char *arg, int from_tty)
+-{
+-  char *endstr;
+-  char buffer[50];
+-  int total_size;
+-  procfs_sysinfo *sysinfo;
+-  char nto_procfs_path[PATH_MAX];
+-
+-  /* Offer to kill previous inferiors before opening this target.  */
+-  target_preopen (from_tty);
+-
+-  nto_is_nto_target = procfs_is_nto_target;
+-
+-  /* Set the default node used for spawning to this one,
+-     and only override it if there is a valid arg.  */
+-
+-  xfree (nodestr);
+-  nodestr = NULL;
+-
+-  nto_procfs_node = ND_LOCAL_NODE;
+-  nodestr = (arg != NULL) ? xstrdup (arg) : NULL;
+-
+-  if (nodestr)
+-    {
+-      nto_procfs_node = netmgr_strtond (nodestr, &endstr);
+-      if (nto_procfs_node == -1)
+-	{
+-	  if (errno == ENOTSUP)
+-	    gdb_printf ("QNX Net Manager not found.\n");
+-	  gdb_printf ("Invalid QNX node %s: error %d (%s).\n", nodestr,
+-		      errno, safe_strerror (errno));
+-	  xfree (nodestr);
+-	  nodestr = NULL;
+-	  nto_procfs_node = ND_LOCAL_NODE;
+-	}
+-      else if (*endstr)
+-	{
+-	  if (*(endstr - 1) == '/')
+-	    *(endstr - 1) = 0;
+-	  else
+-	    *endstr = 0;
+-	}
+-    }
+-  snprintf (nto_procfs_path, PATH_MAX - 1, "%s%s",
+-	    (nodestr != NULL) ? nodestr : "", "/proc");
+-
+-  scoped_fd fd (open (nto_procfs_path, O_RDONLY));
+-  if (fd.get () == -1)
+-    {
+-      gdb_printf ("Error opening %s : %d (%s)\n", nto_procfs_path, errno,
+-		  safe_strerror (errno));
+-      error (_("Invalid procfs arg"));
+-    }
+-
+-  sysinfo = (void *) buffer;
+-  if (devctl (fd.get (), DCMD_PROC_SYSINFO, sysinfo, sizeof buffer, 0) != EOK)
+-    {
+-      gdb_printf ("Error getting size: %d (%s)\n", errno,
+-		  safe_strerror (errno));
+-      error (_("Devctl failed."));
+-    }
+-  else
+-    {
+-      total_size = sysinfo->total_size;
+-      sysinfo = alloca (total_size);
+-      if (sysinfo == NULL)
+-	{
+-	  gdb_printf ("Memory error: %d (%s)\n", errno,
+-		      safe_strerror (errno));
+-	  error (_("alloca failed."));
+-	}
+-      else
+-	{
+-	  if (devctl (fd.get (), DCMD_PROC_SYSINFO, sysinfo, total_size, 0)
+-	      != EOK)
+-	    {
+-	      gdb_printf ("Error getting sysinfo: %d (%s)\n", errno,
+-			  safe_strerror (errno));
+-	      error (_("Devctl failed."));
+-	    }
+-	  else
+-	    {
+-	      if (sysinfo->type !=
+-		  nto_map_arch_to_cputype
+-		    (gdbarch_bfd_arch_info
+-		     (current_inferior ()->arch ())->arch_name))
+-		error (_("Invalid target CPU."));
+-	    }
+-	}
+-    }
+-
+-  inf_child_target::open (arg, from_tty);
+-  gdb_printf ("Debugging using %s\n", nto_procfs_path);
+-}
+-
+-static void
+-procfs_set_thread (ptid_t ptid)
+-{
+-  pid_t tid;
+-
+-  tid = ptid.tid ();
+-  devctl (ctl_fd, DCMD_PROC_CURTHREAD, &tid, sizeof (tid), 0);
+-}
+-
+-/*  Return true if the thread TH is still alive.  */
+-
+-bool
+-nto_procfs_target::thread_alive (ptid_t ptid)
+-{
+-  pid_t tid;
+-  pid_t pid;
+-  procfs_status status;
+-  int err;
+-
+-  tid = ptid.tid ();
+-  pid = ptid.pid ();
+-
+-  if (kill (pid, 0) == -1)
+-    return false;
+-
+-  status.tid = tid;
+-  if ((err = devctl (ctl_fd, DCMD_PROC_TIDSTATUS,
+-		     &status, sizeof (status), 0)) != EOK)
+-    return false;
+-
+-  /* Thread is alive or dead but not yet joined,
+-     or dead and there is an alive (or dead unjoined) thread with
+-     higher tid.
+-
+-     If the tid is not the same as requested, requested tid is dead.  */
+-  return (status.tid == tid) && (status.state != STATE_DEAD);
+-}
+-
+-static void
+-update_thread_private_data_name (struct thread_info *new_thread,
+-				 const char *newname)
+-{
+-  nto_thread_info *pti = get_nto_thread_info (new_thread);
+-
+-  gdb_assert (newname != NULL);
+-  gdb_assert (new_thread != NULL);
+-
+-  if (pti)
+-    {
+-      pti = new nto_thread_info;
+-      new_thread->priv.reset (pti);
+-    }
+-
+-  pti->name = newname;
+-}
+-
+-static void 
+-update_thread_private_data (struct thread_info *new_thread, 
+-			    pthread_t tid, int state, int flags)
+-{
+-  procfs_info pidinfo;
+-  struct _thread_name *tn;
+-  procfs_threadctl tctl;
+-
+-#if _NTO_VERSION > 630
+-  gdb_assert (new_thread != NULL);
+-
+-  if (devctl (ctl_fd, DCMD_PROC_INFO, &pidinfo,
+-	      sizeof(pidinfo), 0) != EOK)
+-    return;
+-
+-  memset (&tctl, 0, sizeof (tctl));
+-  tctl.cmd = _NTO_TCTL_NAME;
+-  tn = (struct _thread_name *) (&tctl.data);
+-
+-  /* Fetch name for the given thread.  */
+-  tctl.tid = tid;
+-  tn->name_buf_len = sizeof (tctl.data) - sizeof (*tn);
+-  tn->new_name_len = -1; /* Getting, not setting.  */
+-  if (devctl (ctl_fd, DCMD_PROC_THREADCTL, &tctl, sizeof (tctl), NULL) != EOK)
+-    tn->name_buf[0] = '\0';
+-
+-  tn->name_buf[_NTO_THREAD_NAME_MAX] = '\0';
+-
+-  update_thread_private_data_name (new_thread, tn->name_buf);
+-
+-  nto_thread_info *pti = get_nto_thread_info (new_thread);
+-  pti->tid = tid;
+-  pti->state = state;
+-  pti->flags = flags;
+-#endif /* _NTO_VERSION */
+-}
+-
+-void
+-nto_procfs_target::update_thread_list ()
+-{
+-  procfs_status status;
+-  pid_t pid;
+-  ptid_t ptid;
+-  pthread_t tid;
+-  struct thread_info *new_thread;
+-
+-  if (ctl_fd == -1)
+-    return;
+-
+-  prune_threads ();
+-
+-  pid = current_inferior ()->pid;
+-
+-  status.tid = 1;
+-
+-  for (tid = 1;; ++tid)
+-    {
+-      if (status.tid == tid 
+-	  && (devctl (ctl_fd, DCMD_PROC_TIDSTATUS, &status, sizeof (status), 0)
+-	      != EOK))
+-	break;
+-      if (status.tid != tid)
+-	/* The reason why this would not be equal is that devctl might have 
+-	   returned different tid, meaning the requested tid no longer exists
+-	   (e.g. thread exited).  */
+-	continue;
+-      ptid = ptid_t (pid, 0, tid);
+-      new_thread = this->find_thread (ptid);
+-      if (!new_thread)
+-	new_thread = add_thread (ptid);
+-      update_thread_private_data (new_thread, tid, status.state, 0);
+-      status.tid++;
+-    }
+-  return;
+-}
+-
+-static void
+-procfs_pidlist (const char *args, int from_tty)
+-{
+-  struct dirent *dirp = NULL;
+-  char buf[PATH_MAX];
+-  procfs_info *pidinfo = NULL;
+-  procfs_debuginfo *info = NULL;
+-  procfs_status *status = NULL;
+-  pid_t num_threads = 0;
+-  pid_t pid;
+-  char name[512];
+-  char procfs_dir[PATH_MAX];
+-
+-  snprintf (procfs_dir, sizeof (procfs_dir), "%s%s",
+-	    (nodestr != NULL) ? nodestr : "", "/proc");
+-
+-  gdb_dir_up dp (opendir (procfs_dir));
+-  if (dp == NULL)
+-    {
+-      gdb_printf (gdb_stderr, "failed to opendir \"%s\" - %d (%s)",
+-		  procfs_dir, errno, safe_strerror (errno));
+-      return;
+-    }
+-
+-  /* Start scan at first pid.  */
+-  rewinddir (dp.get ());
+-
+-  do
+-    {
+-      /* Get the right pid and procfs path for the pid.  */
+-      do
+-	{
+-	  dirp = readdir (dp.get ());
+-	  if (dirp == NULL)
+-	    return;
+-	  snprintf (buf, sizeof (buf), "%s%s/%s/as",
+-		    (nodestr != NULL) ? nodestr : "",
+-		    "/proc", dirp->d_name);
+-	  pid = atoi (dirp->d_name);
+-	}
+-      while (pid == 0);
+-
+-      /* Open the procfs path.  */
+-      scoped_fd fd (open (buf, O_RDONLY));
+-      if (fd.get () == -1)
+-	{
+-	  gdb_printf (gdb_stderr, "failed to open %s - %d (%s)\n",
+-		      buf, errno, safe_strerror (errno));
+-	  continue;
+-	}
+-
+-      pidinfo = (procfs_info *) buf;
+-      if (devctl (fd.get (), DCMD_PROC_INFO, pidinfo, sizeof (buf), 0) != EOK)
+-	{
+-	  gdb_printf (gdb_stderr,
+-		      "devctl DCMD_PROC_INFO failed - %d (%s)\n",
+-		      errno, safe_strerror (errno));
+-	  break;
+-	}
+-      num_threads = pidinfo->num_threads;
+-
+-      info = (procfs_debuginfo *) buf;
+-      if (devctl (fd.get (), DCMD_PROC_MAPDEBUG_BASE, info, sizeof (buf), 0)
+-	  != EOK)
+-	strcpy (name, "unavailable");
+-      else
+-	strcpy (name, info->path);
+-
+-      /* Collect state info on all the threads.  */
+-      status = (procfs_status *) buf;
+-      for (status->tid = 1; status->tid <= num_threads; status->tid++)
+-	{
+-	  const int err
+-	    = devctl (fd.get (), DCMD_PROC_TIDSTATUS, status, sizeof (buf), 0);
+-	  gdb_printf ("%s - %d", name, pid);
+-	  if (err == EOK && status->tid != 0)
+-	    gdb_printf ("/%d\n", status->tid);
+-	  else
+-	    {
+-	      gdb_printf ("\n");
+-	      break;
+-	    }
+-	}
+-    }
+-  while (dirp != NULL);
+-}
+-
+-static void
+-procfs_meminfo (const char *args, int from_tty)
+-{
+-  procfs_mapinfo *mapinfos = NULL;
+-  static int num_mapinfos = 0;
+-  procfs_mapinfo *mapinfo_p, *mapinfo_p2;
+-  int flags = ~0, err, num, i, j;
+-
+-  struct
+-  {
+-    procfs_debuginfo info;
+-    char buff[_POSIX_PATH_MAX];
+-  } map;
+-
+-  struct info
+-  {
+-    unsigned addr;
+-    unsigned size;
+-    unsigned flags;
+-    unsigned debug_vaddr;
+-    unsigned long long offset;
+-  };
+-
+-  struct printinfo
+-  {
+-    unsigned long long ino;
+-    unsigned dev;
+-    struct info text;
+-    struct info data;
+-    char name[256];
+-  } printme;
+-
+-  /* Get the number of map entrys.  */
+-  err = devctl (ctl_fd, DCMD_PROC_MAPINFO, NULL, 0, &num);
+-  if (err != EOK)
+-    {
+-      printf ("failed devctl num mapinfos - %d (%s)\n", err,
+-	      safe_strerror (err));
+-      return;
+-    }
+-
+-  mapinfos = XNEWVEC (procfs_mapinfo, num);
+-
+-  num_mapinfos = num;
+-  mapinfo_p = mapinfos;
+-
+-  /* Fill the map entrys.  */
+-  err = devctl (ctl_fd, DCMD_PROC_MAPINFO, mapinfo_p, num
+-		* sizeof (procfs_mapinfo), &num);
+-  if (err != EOK)
+-    {
+-      printf ("failed devctl mapinfos - %d (%s)\n", err, safe_strerror (err));
+-      xfree (mapinfos);
+-      return;
+-    }
+-
+-  num = std::min (num, num_mapinfos);
+-
+-  /* Run through the list of mapinfos, and store the data and text info
+-     so we can print it at the bottom of the loop.  */
+-  for (mapinfo_p = mapinfos, i = 0; i < num; i++, mapinfo_p++)
+-    {
+-      if (!(mapinfo_p->flags & flags))
+-	mapinfo_p->ino = 0;
+-
+-      if (mapinfo_p->ino == 0)	/* Already visited.  */
+-	continue;
+-
+-      map.info.vaddr = mapinfo_p->vaddr;
+-
+-      err = devctl (ctl_fd, DCMD_PROC_MAPDEBUG, &map, sizeof (map), 0);
+-      if (err != EOK)
+-	continue;
+-
+-      memset (&printme, 0, sizeof printme);
+-      printme.dev = mapinfo_p->dev;
+-      printme.ino = mapinfo_p->ino;
+-      printme.text.addr = mapinfo_p->vaddr;
+-      printme.text.size = mapinfo_p->size;
+-      printme.text.flags = mapinfo_p->flags;
+-      printme.text.offset = mapinfo_p->offset;
+-      printme.text.debug_vaddr = map.info.vaddr;
+-      strcpy (printme.name, map.info.path);
+-
+-      /* Check for matching data.  */
+-      for (mapinfo_p2 = mapinfos, j = 0; j < num; j++, mapinfo_p2++)
+-	{
+-	  if (mapinfo_p2->vaddr != mapinfo_p->vaddr
+-	      && mapinfo_p2->ino == mapinfo_p->ino
+-	      && mapinfo_p2->dev == mapinfo_p->dev)
+-	    {
+-	      map.info.vaddr = mapinfo_p2->vaddr;
+-	      err =
+-		devctl (ctl_fd, DCMD_PROC_MAPDEBUG, &map, sizeof (map), 0);
+-	      if (err != EOK)
+-		continue;
+-
+-	      if (strcmp (map.info.path, printme.name))
+-		continue;
+-
+-	      /* Lower debug_vaddr is always text, if necessary, swap.  */
+-	      if ((int) map.info.vaddr < (int) printme.text.debug_vaddr)
+-		{
+-		  memcpy (&(printme.data), &(printme.text),
+-			  sizeof (printme.data));
+-		  printme.text.addr = mapinfo_p2->vaddr;
+-		  printme.text.size = mapinfo_p2->size;
+-		  printme.text.flags = mapinfo_p2->flags;
+-		  printme.text.offset = mapinfo_p2->offset;
+-		  printme.text.debug_vaddr = map.info.vaddr;
+-		}
+-	      else
+-		{
+-		  printme.data.addr = mapinfo_p2->vaddr;
+-		  printme.data.size = mapinfo_p2->size;
+-		  printme.data.flags = mapinfo_p2->flags;
+-		  printme.data.offset = mapinfo_p2->offset;
+-		  printme.data.debug_vaddr = map.info.vaddr;
+-		}
+-	      mapinfo_p2->ino = 0;
+-	    }
+-	}
+-      mapinfo_p->ino = 0;
+-
+-      gdb_printf ("%s\n", printme.name);
+-      gdb_printf ("\ttext=%08x bytes @ 0x%08x\n", printme.text.size,
+-		  printme.text.addr);
+-      gdb_printf ("\t\tflags=%08x\n", printme.text.flags);
+-      gdb_printf ("\t\tdebug=%08x\n", printme.text.debug_vaddr);
+-      gdb_printf ("\t\toffset=%s\n", phex (printme.text.offset, 8));
+-      if (printme.data.size)
+-	{
+-	  gdb_printf ("\tdata=%08x bytes @ 0x%08x\n", printme.data.size,
+-		      printme.data.addr);
+-	  gdb_printf ("\t\tflags=%08x\n", printme.data.flags);
+-	  gdb_printf ("\t\tdebug=%08x\n", printme.data.debug_vaddr);
+-	  gdb_printf ("\t\toffset=%s\n", phex (printme.data.offset, 8));
+-	}
+-      gdb_printf ("\tdev=0x%x\n", printme.dev);
+-      gdb_printf ("\tino=0x%x\n", (unsigned int) printme.ino);
+-    }
+-  xfree (mapinfos);
+-  return;
+-}
+-
+-/* Print status information about what we're accessing.  */
+-void
+-nto_procfs_target::files_info ()
+-{
+-  struct inferior *inf = current_inferior ();
+-
+-  gdb_printf ("\tUsing the running image of %s %s via %s.\n",
+-	      inf->attach_flag ? "attached" : "child",
+-	      target_pid_to_str (ptid_t (inf->pid)).c_str (),
+-	      (nodestr != NULL) ? nodestr : "local node");
+-}
+-
+-/* Target to_pid_to_exec_file implementation.  */
+-
+-const char *
+-nto_procfs_target::pid_to_exec_file (const int pid)
+-{
+-  int proc_fd;
+-  static char proc_path[PATH_MAX];
+-  ssize_t rd;
+-
+-  /* Read exe file name.  */
+-  snprintf (proc_path, sizeof (proc_path), "%s/proc/%d/exefile",
+-	    (nodestr != NULL) ? nodestr : "", pid);
+-  proc_fd = open (proc_path, O_RDONLY);
+-  if (proc_fd == -1)
+-    return NULL;
+-
+-  rd = read (proc_fd, proc_path, sizeof (proc_path) - 1);
+-  close (proc_fd);
+-  if (rd <= 0)
+-    {
+-      proc_path[0] = '\0';
+-      return NULL;
+-    }
+-  proc_path[rd] = '\0';
+-  return proc_path;
+-}
+-
+-/* Attach to process PID, then initialize for debugging it.  */
+-void
+-nto_procfs_target::attach (const char *args, int from_tty)
+-{
+-  int pid;
+-  struct inferior *inf;
+-
+-  pid = parse_pid_to_attach (args);
+-
+-  if (pid == getpid ())
+-    error (_("Attaching GDB to itself is not a good idea..."));
+-
+-  target_announce_attach (from_tty, pid);
+-
+-  ptid_t ptid = do_attach (ptid_t (pid));
+-  inf = current_inferior ();
+-  inferior_appeared (inf, pid);
+-  inf->attach_flag = true;
+-
+-  if (!inf->target_is_pushed (ops))
+-    inf->push_target (ops);
+-
+-  update_thread_list ();
+-
+-  switch_to_thread (this->find_thread (ptid));
+-}
+-
+-void
+-nto_procfs_target::post_attach (pid_t pid)
+-{
+-  if (current_program_space->exec_bfd ())
+-    solib_create_inferior_hook (0);
+-}
+-
+-static ptid_t
+-do_attach (ptid_t ptid)
+-{
+-  procfs_status status;
+-  struct sigevent event;
+-  char path[PATH_MAX];
+-
+-  snprintf (path, PATH_MAX - 1, "%s%s/%d/as",
+-	    (nodestr != NULL) ? nodestr : "", "/proc", ptid.pid ());
+-  ctl_fd = open (path, O_RDWR);
+-  if (ctl_fd == -1)
+-    error (_("Couldn't open proc file %s, error %d (%s)"), path, errno,
+-	   safe_strerror (errno));
+-  if (devctl (ctl_fd, DCMD_PROC_STOP, &status, sizeof (status), 0) != EOK)
+-    error (_("Couldn't stop process"));
+-
+-  /* Define a sigevent for process stopped notification.  */
+-  event.sigev_notify = SIGEV_SIGNAL_THREAD;
+-  event.sigev_signo = SIGUSR1;
+-  event.sigev_code = 0;
+-  event.sigev_value.sival_ptr = NULL;
+-  event.sigev_priority = -1;
+-  devctl (ctl_fd, DCMD_PROC_EVENT, &event, sizeof (event), 0);
+-
+-  if (devctl (ctl_fd, DCMD_PROC_STATUS, &status, sizeof (status), 0) == EOK
+-      && status.flags & _DEBUG_FLAG_STOPPED)
+-    SignalKill (nto_node (), ptid.pid (), 0, SIGCONT, 0, 0);
+-  nto_init_solib_absolute_prefix ();
+-  return ptid_t (ptid.pid (), 0, status.tid);
+-}
+-
+-/* Ask the user what to do when an interrupt is received.  */
+-static void
+-interrupt_query (void)
+-{
+-  if (query (_("Interrupted while waiting for the program.\n\
+-Give up (and stop debugging it)? ")))
+-    {
+-      target_mourn_inferior (inferior_ptid);
+-      quit ();
+-    }
+-}
+-
+-/* The user typed ^C twice.  */
+-static void
+-nto_handle_sigint_twice (int signo)
+-{
+-  signal (signo, ofunc);
+-  interrupt_query ();
+-  signal (signo, nto_handle_sigint_twice);
+-}
+-
+-static void
+-nto_handle_sigint (int signo)
+-{
+-  /* If this doesn't work, try more severe steps.  */
+-  signal (signo, nto_handle_sigint_twice);
+-
+-  target_interrupt ();
+-}
+-
+-sptid_t
+-nto_procfs_target::wait (ptid_t ptid, struct target_waitstatus *ourstatus,
+-			 target_wait_flags options)
+-{
+-  sigset_t set;
+-  siginfo_t info;
+-  procfs_status status;
+-  static int exit_signo = 0;	/* To track signals that cause termination.  */
+-
+-  ourstatus->set_spurious ();
+-
+-  if (inferior_ptid == null_ptid)
+-    {
+-      ourstatus->set_stopped (GDB_SIGNAL_0);
+-      exit_signo = 0;
+-      return null_ptid;
+-    }
+-
+-  sigemptyset (&set);
+-  sigaddset (&set, SIGUSR1);
+-
+-  devctl (ctl_fd, DCMD_PROC_STATUS, &status, sizeof (status), 0);
+-  while (!(status.flags & _DEBUG_FLAG_ISTOP))
+-    {
+-      ofunc = signal (SIGINT, nto_handle_sigint);
+-      sigwaitinfo (&set, &info);
+-      signal (SIGINT, ofunc);
+-      devctl (ctl_fd, DCMD_PROC_STATUS, &status, sizeof (status), 0);
+-    }
+-
+-  nto_inferior_data (NULL)->stopped_flags = status.flags;
+-  nto_inferior_data (NULL)->stopped_pc = status.ip;
+-
+-  if (status.flags & _DEBUG_FLAG_SSTEP)
+-    ourstatus->set_stopped (GDB_SIGNAL_TRAP);
+-  /* Was it a breakpoint?  */
+-  else if (status.flags & _DEBUG_FLAG_TRACE)
+-    ourstatus->set_stopped (GDB_SIGNAL_TRAP);
+-  else if (status.flags & _DEBUG_FLAG_ISTOP)
+-    {
+-      switch (status.why)
+-	{
+-	case _DEBUG_WHY_SIGNALLED:
+-	  ourstatus->set_stopped (gdb_signal_from_host (status.info.si_signo));
+-	  exit_signo = 0;
+-	  break;
+-	case _DEBUG_WHY_FAULTED:
+-	  if (status.info.si_signo == SIGTRAP)
+-	    {
+-	      ourstatus->set_stopped (0);
+-	      exit_signo = 0;
+-	    }
+-	  else
+-	    {
+-	      ourstatus->set_stopped
+-		(gdb_signal_from_host (status.info.si_signo));
+-	      exit_signo = ourstatus->sig ();
+-	    }
+-	  break;
+-
+-	case _DEBUG_WHY_TERMINATED:
+-	  {
+-	    int waitval = 0;
+-
+-	    waitpid (inferior_ptid.pid (), &waitval, WNOHANG);
+-	    if (exit_signo)
+-	      {
+-		/* Abnormal death.  */
+-		ourstatus->set_signalled (exit_signo);
+-	      }
+-	    else
+-	      {
+-		/* Normal death.  */
+-		ourstatus->set_exited (WEXITSTATUS (waitval));
+-	      }
+-	    exit_signo = 0;
+-	    break;
+-	  }
+-
+-	case _DEBUG_WHY_REQUESTED:
+-	  /* We are assuming a requested stop is due to a SIGINT.  */
+-	  ourstatus->set_stopped (GDB_SIGNAL_INT);
+-	  exit_signo = 0;
+-	  break;
+-	}
+-    }
+-
+-  return ptid_t (status.pid, 0, status.tid);
+-}
+-
+-/* Read the current values of the inferior's registers, both the
+-   general register set and floating point registers (if supported)
+-   and update gdb's idea of their current values.  */
+-void
+-nto_procfs_target::fetch_registers (struct regcache *regcache, int regno)
+-{
+-  union
+-  {
+-    procfs_greg greg;
+-    procfs_fpreg fpreg;
+-    procfs_altreg altreg;
+-  }
+-  reg;
+-  int regsize;
+-
+-  procfs_set_thread (regcache->ptid ());
+-  if (devctl (ctl_fd, DCMD_PROC_GETGREG, &reg, sizeof (reg), &regsize) == EOK)
+-    nto_supply_gregset (regcache, (char *) &reg.greg);
+-  if (devctl (ctl_fd, DCMD_PROC_GETFPREG, &reg, sizeof (reg), &regsize)
+-      == EOK)
+-    nto_supply_fpregset (regcache, (char *) &reg.fpreg);
+-  if (devctl (ctl_fd, DCMD_PROC_GETALTREG, &reg, sizeof (reg), &regsize)
+-      == EOK)
+-    nto_supply_altregset (regcache, (char *) &reg.altreg);
+-}
+-
+-/* Helper for procfs_xfer_partial that handles memory transfers.
+-   Arguments are like target_xfer_partial.  */
+-
+-static enum target_xfer_status
+-procfs_xfer_memory (gdb_byte *readbuf, const gdb_byte *writebuf,
+-		    ULONGEST memaddr, ULONGEST len, ULONGEST *xfered_len)
+-{
+-  int nbytes;
+-
+-  if (lseek (ctl_fd, (off_t) memaddr, SEEK_SET) != (off_t) memaddr)
+-    return TARGET_XFER_E_IO;
+-
+-  if (writebuf != NULL)
+-    nbytes = write (ctl_fd, writebuf, len);
+-  else
+-    nbytes = read (ctl_fd, readbuf, len);
+-  if (nbytes <= 0)
+-    return TARGET_XFER_E_IO;
+-  *xfered_len = nbytes;
+-  return TARGET_XFER_OK;
+-}
+-
+-/* Target to_xfer_partial implementation.  */
+-
+-enum target_xfer_status
+-nto_procfs_target::xfer_partial (enum target_object object,
+-				 const char *annex, gdb_byte *readbuf,
+-				 const gdb_byte *writebuf, ULONGEST offset,
+-				 ULONGEST len, ULONGEST *xfered_len)
+-{
+-  switch (object)
+-    {
+-    case TARGET_OBJECT_MEMORY:
+-      return procfs_xfer_memory (readbuf, writebuf, offset, len, xfered_len);
+-    case TARGET_OBJECT_AUXV:
+-      if (readbuf != NULL)
+-	{
+-	  int err;
+-	  CORE_ADDR initial_stack;
+-	  debug_process_t procinfo;
+-	  /* For 32-bit architecture, size of auxv_t is 8 bytes.  */
+-	  const unsigned int sizeof_auxv_t = sizeof (auxv_t);
+-	  const unsigned int sizeof_tempbuf = 20 * sizeof_auxv_t;
+-	  int tempread;
+-	  gdb_byte *const tempbuf = alloca (sizeof_tempbuf);
+-
+-	  if (tempbuf == NULL)
+-	    return TARGET_XFER_E_IO;
+-
+-	  err = devctl (ctl_fd, DCMD_PROC_INFO, &procinfo,
+-			sizeof procinfo, 0);
+-	  if (err != EOK)
+-	    return TARGET_XFER_E_IO;
+-
+-	  initial_stack = procinfo.initial_stack;
+-
+-	  /* procfs is always 'self-hosted', no byte-order manipulation.  */
+-	  tempread = nto_read_auxv_from_initial_stack (initial_stack, tempbuf,
+-						       sizeof_tempbuf,
+-						       sizeof (auxv_t));
+-	  tempread = std::min (tempread, len) - offset;
+-	  memcpy (readbuf, tempbuf + offset, tempread);
+-	  *xfered_len = tempread;
+-	  return tempread ? TARGET_XFER_OK : TARGET_XFER_EOF;
+-	}
+-	/* Fallthru */
+-    default:
+-      return this->beneath ()->xfer_partial (object, annex,
+-					     readbuf, writebuf, offset, len,
+-					     xfered_len);
+-    }
+-}
+-
+-/* Take a program previously attached to and detaches it.
+-   The program resumes execution and will no longer stop
+-   on signals, etc.  We'd better not have left any breakpoints
+-   in the program or it'll die when it hits one.  */
+-void
+-nto_procfs_target::detach (inferior *inf, int from_tty)
+-{
+-  target_announce_detach ();
+-
+-  if (siggnal)
+-    SignalKill (nto_node (), inf->pid, 0, 0, 0, 0);
+-
+-  close (ctl_fd);
+-  ctl_fd = -1;
+-
+-  switch_to_no_thread ();
+-  detach_inferior (inf->pid);
+-  init_thread_list ();
+-  inf_child_maybe_unpush_target (ops);
+-}
+-
+-static int
+-procfs_breakpoint (CORE_ADDR addr, int type, int size)
+-{
+-  procfs_break brk;
+-
+-  brk.type = type;
+-  brk.addr = addr;
+-  brk.size = size;
+-  errno = devctl (ctl_fd, DCMD_PROC_BREAK, &brk, sizeof (brk), 0);
+-  if (errno != EOK)
+-    return 1;
+-  return 0;
+-}
+-
+-int
+-nto_procfs_target::insert_breakpoint (struct gdbarch *gdbarch,
+-				      struct bp_target_info *bp_tgt)
+-{
+-  bp_tgt->placed_address = bp_tgt->reqstd_address;
+-  return procfs_breakpoint (bp_tgt->placed_address, _DEBUG_BREAK_EXEC, 0);
+-}
+-
+-int
+-nto_procfs_target::remove_breakpoint (struct gdbarch *gdbarch,
+-				      struct bp_target_info *bp_tgt,
+-				      enum remove_bp_reason reason)
+-{
+-  return procfs_breakpoint (bp_tgt->placed_address, _DEBUG_BREAK_EXEC, -1);
+-}
+-
+-int
+-nto_procfs_target::insert_hw_breakpoint (struct gdbarch *gdbarch,
+-					 struct bp_target_info *bp_tgt)
+-{
+-  bp_tgt->placed_address = bp_tgt->reqstd_address;
+-  return procfs_breakpoint (bp_tgt->placed_address,
+-			    _DEBUG_BREAK_EXEC | _DEBUG_BREAK_HW, 0);
+-}
+-
+-int
+-nto_procfs_target::remove_hw_breakpoint (struct gdbarch *gdbarch,
+-					 struct bp_target_info *bp_tgt)
+-{
+-  return procfs_breakpoint (bp_tgt->placed_address,
+-			    _DEBUG_BREAK_EXEC | _DEBUG_BREAK_HW, -1);
+-}
+-
+-void
+-nto_procfs_target::resume (ptid_t ptid, int step, enum gdb_signal signo)
+-{
+-  int signal_to_pass;
+-  procfs_status status;
+-  sigset_t *run_fault = (sigset_t *) (void *) &run.fault;
+-
+-  if (inferior_ptid == null_ptid)
+-    return;
+-
+-  procfs_set_thread (ptid == minus_one_ptid ? inferior_ptid :
+-		     ptid);
+-
+-  run.flags = _DEBUG_RUN_FAULT | _DEBUG_RUN_TRACE;
+-  if (step)
+-    run.flags |= _DEBUG_RUN_STEP;
+-
+-  sigemptyset (run_fault);
+-  sigaddset (run_fault, FLTBPT);
+-  sigaddset (run_fault, FLTTRACE);
+-  sigaddset (run_fault, FLTILL);
+-  sigaddset (run_fault, FLTPRIV);
+-  sigaddset (run_fault, FLTBOUNDS);
+-  sigaddset (run_fault, FLTIOVF);
+-  sigaddset (run_fault, FLTIZDIV);
+-  sigaddset (run_fault, FLTFPE);
+-  /* Peter V will be changing this at some point.  */
+-  sigaddset (run_fault, FLTPAGE);
+-
+-  run.flags |= _DEBUG_RUN_ARM;
+-
+-  signal_to_pass = gdb_signal_to_host (signo);
+-
+-  if (signal_to_pass)
+-    {
+-      devctl (ctl_fd, DCMD_PROC_STATUS, &status, sizeof (status), 0);
+-      signal_to_pass = gdb_signal_to_host (signo);
+-      if (status.why & (_DEBUG_WHY_SIGNALLED | _DEBUG_WHY_FAULTED))
+-	{
+-	  if (signal_to_pass != status.info.si_signo)
+-	    {
+-	      SignalKill (nto_node (), inferior_ptid.pid (), 0,
+-			  signal_to_pass, 0, 0);
+-	      run.flags |= _DEBUG_RUN_CLRFLT | _DEBUG_RUN_CLRSIG;
+-	    }
+-	  else		/* Let it kill the program without telling us.  */
+-	    sigdelset (&run.trace, signal_to_pass);
+-	}
+-    }
+-  else
+-    run.flags |= _DEBUG_RUN_CLRSIG | _DEBUG_RUN_CLRFLT;
+-
+-  errno = devctl (ctl_fd, DCMD_PROC_RUN, &run, sizeof (run), 0);
+-  if (errno != EOK)
+-    {
+-      perror (_("run error!\n"));
+-      return;
+-    }
+-}
+-
+-void
+-nto_procfs_target::mourn_inferior ()
+-{
+-  if (inferior_ptid != null_ptid)
+-    {
+-      SignalKill (nto_node (), inferior_ptid.pid (), 0, SIGKILL, 0, 0);
+-      close (ctl_fd);
+-    }
+-  switch_to_no_thread ();
+-  init_thread_list ();
+-  inf_child_mourn_inferior (ops);
+-}
+-
+-/* This function breaks up an argument string into an argument
+-   vector suitable for passing to execvp().
+-   E.g., on "run a b c d" this routine would get as input
+-   the string "a b c d", and as output it would fill in argv with
+-   the four arguments "a", "b", "c", "d".  The only additional
+-   functionality is simple quoting.  The gdb command:
+-	run a "b c d" f
+-   will fill in argv with the three args "a", "b c d", "e".  */
+-static void
+-breakup_args (char *scratch, char **argv)
+-{
+-  char *pp, *cp = scratch;
+-  char quoting = 0;
+-
+-  for (;;)
+-    {
+-      /* Scan past leading separators.  */
+-      quoting = 0;
+-      while (*cp == ' ' || *cp == '\t' || *cp == '\n')
+-	cp++;
+-
+-      /* Break if at end of string.  */
+-      if (*cp == '\0')
+-	break;
+-
+-      /* Take an arg.  */
+-      if (*cp == '"')
+-	{
+-	  cp++;
+-	  quoting = strchr (cp, '"') ? 1 : 0;
+-	}
+-
+-      *argv++ = cp;
+-
+-      /* Scan for next arg separator.  */
+-      pp = cp;
+-      if (quoting)
+-	cp = strchr (pp, '"');
+-      if ((cp == NULL) || (!quoting))
+-	cp = strchr (pp, ' ');
+-      if (cp == NULL)
+-	cp = strchr (pp, '\t');
+-      if (cp == NULL)
+-	cp = strchr (pp, '\n');
+-
+-      /* No separators => end of string => break.  */
+-      if (cp == NULL)
+-	{
+-	  pp = cp;
+-	  break;
+-	}
+-
+-      /* Replace the separator with a terminator.  */
+-      *cp++ = '\0';
+-    }
+-
+-  /* Execv requires a null-terminated arg vector.  */
+-  *argv = NULL;
+-}
+-
+-void
+-nto_procfs_target::create_inferior (const char *exec_file,
+-				    const std::string &allargs,
+-				    char **env, int from_tty)
+-{
+-  struct inheritance inherit;
+-  pid_t pid;
+-  int flags, errn;
+-  char **argv, *args;
+-  const char *in = "", *out = "", *err = "";
+-  int fd, fds[3];
+-  sigset_t set;
+-  struct inferior *inf;
+-
+-  argv = xmalloc ((allargs.size () / (unsigned) 2 + 2) *
+-		  sizeof (*argv));
+-  argv[0] = const_cast<char *> (get_exec_file (1));
+-  if (!argv[0])
+-    {
+-      if (exec_file)
+-	argv[0] = exec_file;
+-      else
+-	return;
+-    }
+-
+-  args = xstrdup (allargs.c_str ());
+-  breakup_args (args, (exec_file != NULL) ? &argv[1] : &argv[0]);
+-
+-  argv = nto_parse_redirection (argv, &in, &out, &err);
+-
+-  fds[0] = STDIN_FILENO;
+-  fds[1] = STDOUT_FILENO;
+-  fds[2] = STDERR_FILENO;
+-
+-  /* If the user specified I/O via gdb's --tty= arg, use it, but only
+-     if the i/o is not also being specified via redirection.  */
+-  const char *inferior_tty = current_inferior ()->tty ();
+-  if (inferior_tty != nullptr)
+-    {
+-      if (!in[0])
+-	in = inferior_tty;
+-      if (!out[0])
+-	out = inferior_tty;
+-      if (!err[0])
+-	err = inferior_tty;
+-    }
+-
+-  if (in[0])
+-    {
+-      fd = open (in, O_RDONLY);
+-      if (fd == -1)
+-	perror (in);
+-      else
+-	fds[0] = fd;
+-    }
+-  if (out[0])
+-    {
+-      fd = open (out, O_WRONLY);
+-      if (fd == -1)
+-	perror (out);
+-      else
+-	fds[1] = fd;
+-    }
+-  if (err[0])
+-    {
+-      fd = open (err, O_WRONLY);
+-      if (fd == -1)
+-	perror (err);
+-      else
+-	fds[2] = fd;
+-    }
+-
+-  /* Clear any pending SIGUSR1's but keep the behavior the same.  */
+-  signal (SIGUSR1, signal (SIGUSR1, SIG_IGN));
+-
+-  sigemptyset (&set);
+-  sigaddset (&set, SIGUSR1);
+-  sigprocmask (SIG_UNBLOCK, &set, NULL);
+-
+-  memset (&inherit, 0, sizeof (inherit));
+-
+-  if (ND_NODE_CMP (nto_procfs_node, ND_LOCAL_NODE) != 0)
+-    {
+-      inherit.nd = nto_node ();
+-      inherit.flags |= SPAWN_SETND;
+-      inherit.flags &= ~SPAWN_EXEC;
+-    }
+-  inherit.flags |= SPAWN_SETGROUP | SPAWN_HOLD;
+-  inherit.pgroup = SPAWN_NEWPGROUP;
+-  pid = spawnp (argv[0], 3, fds, &inherit, argv,
+-		ND_NODE_CMP (nto_procfs_node, ND_LOCAL_NODE) == 0 ? env : 0);
+-  xfree (args);
+-
+-  sigprocmask (SIG_BLOCK, &set, NULL);
+-
+-  if (pid == -1)
+-    error (_("Error spawning %s: %d (%s)"), argv[0], errno,
+-	   safe_strerror (errno));
+-
+-  if (fds[0] != STDIN_FILENO)
+-    close (fds[0]);
+-  if (fds[1] != STDOUT_FILENO)
+-    close (fds[1]);
+-  if (fds[2] != STDERR_FILENO)
+-    close (fds[2]);
+-
+-  ptid_t ptid = do_attach (ptid_t (pid));
+-  update_thread_list ();
+-  switch_to_thread (this->find_thread (ptid));
+-
+-  inf = current_inferior ();
+-  inferior_appeared (inf, pid);
+-  inf->attach_flag = false;
+-
+-  flags = _DEBUG_FLAG_KLC;	/* Kill-on-Last-Close flag.  */
+-  errn = devctl (ctl_fd, DCMD_PROC_SET_FLAG, &flags, sizeof (flags), 0);
+-  if (errn != EOK)
+-    {
+-      /* FIXME: expected warning?  */
+-      /* warning( "Failed to set Kill-on-Last-Close flag: errno = %d(%s)\n",
+-	 errn, safe_strerror(errn) ); */
+-    }
+-  if (!inf->target_is_pushed (ops))
+-    inf->push_target (ops);
+-  target_terminal::init ();
+-
+-  if (current_program_space->exec_bfd () != NULL
+-      || (current_program_space->symfile_object_file != NULL
+-	  && current_program_space->symfile_object_file->obfd != NULL))
+-    solib_create_inferior_hook (0);
+-}
+-
+-void
+-nto_procfs_target::interrupt ()
+-{
+-  devctl (ctl_fd, DCMD_PROC_STOP, NULL, 0, 0);
+-}
+-
+-void
+-nto_procfs_target::kill ()
+-{
+-  target_mourn_inferior (inferior_ptid);
+-}
+-
+-/* Fill buf with regset and return devctl cmd to do the setting.  Return
+-   -1 if we fail to get the regset.  Store size of regset in regsize.  */
+-static int
+-get_regset (int regset, char *buf, int bufsize, int *regsize)
+-{
+-  int dev_get, dev_set;
+-  switch (regset)
+-    {
+-    case NTO_REG_GENERAL:
+-      dev_get = DCMD_PROC_GETGREG;
+-      dev_set = DCMD_PROC_SETGREG;
+-      break;
+-
+-    case NTO_REG_FLOAT:
+-      dev_get = DCMD_PROC_GETFPREG;
+-      dev_set = DCMD_PROC_SETFPREG;
+-      break;
+-
+-    case NTO_REG_ALT:
+-      dev_get = DCMD_PROC_GETALTREG;
+-      dev_set = DCMD_PROC_SETALTREG;
+-      break;
+-
+-    case NTO_REG_SYSTEM:
+-    default:
+-      return -1;
+-    }
+-  if (devctl (ctl_fd, dev_get, buf, bufsize, regsize) != EOK)
+-    return -1;
+-
+-  return dev_set;
+-}
+-
+-void
+-nto_procfs_target::store_registers (struct regcache *regcache, int regno)
+-{
+-  union
+-  {
+-    procfs_greg greg;
+-    procfs_fpreg fpreg;
+-    procfs_altreg altreg;
+-  }
+-  reg;
+-  unsigned off;
+-  int len, regset, regsize, dev_set, err;
+-  char *data;
+-  ptid_t ptid = regcache->ptid ();
+-
+-  if (ptid == null_ptid)
+-    return;
+-  procfs_set_thread (ptid);
+-
+-  if (regno == -1)
+-    {
+-      for (regset = NTO_REG_GENERAL; regset < NTO_REG_END; regset++)
+-	{
+-	  dev_set = get_regset (regset, (char *) &reg,
+-				sizeof (reg), &regsize);
+-	  if (dev_set == -1)
+-	    continue;
+-
+-	  if (nto_regset_fill (regcache, regset, (char *) &reg) == -1)
+-	    continue;
+-
+-	  err = devctl (ctl_fd, dev_set, &reg, regsize, 0);
+-	  if (err != EOK)
+-	    gdb_printf (gdb_stderr,
+-			"Warning unable to write regset %d: %s\n",
+-			regno, safe_strerror (err));
+-	}
+-    }
+-  else
+-    {
+-      regset = nto_regset_id (regno);
+-      if (regset == -1)
+-	return;
+-
+-      dev_set = get_regset (regset, (char *) &reg, sizeof (reg), &regsize);
+-      if (dev_set == -1)
+-	return;
+-
+-      len = nto_register_area (regcache->arch (),
+-			       regno, regset, &off);
+-
+-      if (len < 1)
+-	return;
+-
+-      regcache->raw_collect (regno, (char *) &reg + off);
+-
+-      err = devctl (ctl_fd, dev_set, &reg, regsize, 0);
+-      if (err != EOK)
+-	gdb_printf (gdb_stderr,
+-		    "Warning unable to write regset %d: %s\n", regno,
+-		    safe_strerror (err));
+-    }
+-}
+-
+-/* Set list of signals to be handled in the target.  */
+-
+-void
+-nto_procfs_target::pass_signals
+-  (gdb::array_view<const unsigned char> pass_signals)
+-{
+-  int signo;
+-
+-  sigfillset (&run.trace);
+-
+-  for (signo = 1; signo < NSIG; signo++)
+-    {
+-      int target_signo = gdb_signal_from_host (signo);
+-      if (target_signo < pass_signals.size () && pass_signals[target_signo])
+-	sigdelset (&run.trace, signo);
+-    }
+-}
+-
+-std::string
+-nto_procfs_target::pid_to_str (ptid_t ptid)
+-{
+-  int pid, tid;
+-  struct tidinfo *tip;
+-
+-  pid = ptid.pid ();
+-  tid = ptid.tid ();
+-
+-#if 0				/* NYI */
+-  tip = procfs_thread_info (pid, tid);
+-  if (tip != NULL)
+-    snprintf (&buf[n], 1023, " (state = 0x%02x)", tip->state);
+-#endif
+-
+-  return string_printf ("process %d", pid);
+-}
+-
+-/* to_can_run implementation for "target procfs".  Note this really
+-  means "can this target be the default run target", which there can
+-  be only one, and we make it be "target native" like other ports.
+-  "target procfs <node>" wouldn't make sense as default run target, as
+-  it needs <node>.  */
+-
+-int
+-nto_procfs_target::can_run ()
+-{
+-  return 0;
+-}
+-
+-/* "target procfs".  */
+-static nto_procfs_target_procfs nto_procfs_ops;
+-
+-/* "target native".  */
+-static nto_procfs_target_native nto_native_ops;
+-
+-/* Create the "native" and "procfs" targets.  */
+-
+-static void
+-init_procfs_targets (void)
+-{
+-  /* Register "target native".  This is the default run target.  */
+-  add_target (nto_native_target_info, inf_child_open_target);
+-  set_native_target (&nto_native_ops);
+-
+-  /* Register "target procfs <node>".  */
+-  add_target (nto_procfs_target_info, inf_child_open_target);
+-}
+-
+-#define OSTYPE_NTO 1
+-
+-void _initialize_procfs ();
+-void
+-_initialize_procfs ()
+-{
+-  sigset_t set;
+-
+-  init_procfs_targets ();
+-
+-  /* We use SIGUSR1 to gain control after we block waiting for a process.
+-     We use sigwaitevent to wait.  */
+-  sigemptyset (&set);
+-  sigaddset (&set, SIGUSR1);
+-  sigprocmask (SIG_BLOCK, &set, NULL);
+-
+-  /* Initially, make sure all signals are reported.  */
+-  sigfillset (&run.trace);
+-
+-  /* Stuff some information.  */
+-  nto_cpuinfo_flags = SYSPAGE_ENTRY (cpuinfo)->flags;
+-  nto_cpuinfo_valid = 1;
+-
+-  add_info ("pidlist", procfs_pidlist, _("pidlist"));
+-  add_info ("meminfo", procfs_meminfo, _("memory information"));
+-
+-  nto_is_nto_target = procfs_is_nto_target;
+-}
+-
+-
+-static int
+-procfs_hw_watchpoint (int addr, int len, enum target_hw_bp_type type)
+-{
+-  procfs_break brk;
+-
+-  switch (type)
+-    {
+-    case hw_read:
+-      brk.type = _DEBUG_BREAK_RD;
+-      break;
+-    case hw_access:
+-      brk.type = _DEBUG_BREAK_RW;
+-      break;
+-    default:			/* Modify.  */
+-/* FIXME: brk.type = _DEBUG_BREAK_RWM gives EINVAL for some reason.  */
+-      brk.type = _DEBUG_BREAK_RW;
+-    }
+-  brk.type |= _DEBUG_BREAK_HW;	/* Always ask for HW.  */
+-  brk.addr = addr;
+-  brk.size = len;
+-
+-  errno = devctl (ctl_fd, DCMD_PROC_BREAK, &brk, sizeof (brk), 0);
+-  if (errno != EOK)
+-    {
+-      perror (_("Failed to set hardware watchpoint"));
+-      return -1;
+-    }
+-  return 0;
+-}
+-
+-bool
+-nto_procfs_target::can_use_hw_breakpoint (enum bptype type,
+-					  int cnt, int othertype)
+-{
+-  return 1;
+-}
+-
+-int
+-nto_procfs_target::remove_hw_watchpoint (CORE_ADDR addr, int len,
+-					 enum target_hw_bp_type type,
+-					 struct expression *cond)
+-{
+-  return procfs_hw_watchpoint (addr, -1, type);
+-}
+-
+-int
+-nto_procfs_target::insert_hw_watchpoint (CORE_ADDR addr, int len,
+-					 enum target_hw_bp_type type,
+-					 struct expression *cond)
+-{
+-  return procfs_hw_watchpoint (addr, len, type);
+-}
+-
+-bool
+-nto_procfs_target::stopped_by_watchpoint ()
+-{
+-  /* NOTE: nto_stopped_by_watchpoint will be called ONLY while we are
+-     stopped due to a SIGTRAP.  This assumes gdb works in 'all-stop' mode;
+-     future gdb versions will likely run in 'non-stop' mode in which case
+-     we will have to store/examine statuses per thread in question.
+-     Until then, this will work fine.  */
+-
+-  struct inferior *inf = current_inferior ();
+-  struct nto_inferior_data *inf_data;
+-
+-  gdb_assert (inf != NULL);
+-
+-  inf_data = nto_inferior_data (inf);
+-
+-  return inf_data->stopped_flags
+-	 & (_DEBUG_FLAG_TRACE_RD
+-	    | _DEBUG_FLAG_TRACE_WR
+-	    | _DEBUG_FLAG_TRACE_MODIFY);
+-}
+diff --git a/gdb/nto-tdep.c b/gdb/nto-tdep.c
+deleted file mode 100644
+--- a/gdb/nto-tdep.c
++++ /dev/null
+@@ -1,521 +0,0 @@
+-/* nto-tdep.c - general QNX Neutrino target functionality.
+-
+-   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+-
+-   Contributed by QNX Software Systems Ltd.
+-
+-   This file is part of GDB.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-#include <sys/stat.h>
+-#include "nto-tdep.h"
+-#include "extract-store-integer.h"
+-#include "top.h"
+-#include "inferior.h"
+-#include "infrun.h"
+-#include "gdbarch.h"
+-#include "bfd.h"
+-#include "elf-bfd.h"
+-#include "solib-svr4.h"
+-#include "gdbcore.h"
+-#include "objfiles.h"
+-#include "source.h"
+-#include "gdbsupport/pathstuff.h"
+-
+-#define QNX_NOTE_NAME	"QNX"
+-#define QNX_INFO_SECT_NAME "QNX_info"
+-
+-#ifdef __CYGWIN__
+-#include <sys/cygwin.h>
+-#endif
+-
+-#ifdef __CYGWIN__
+-static char default_nto_target[] = "C:\\QNXsdk\\target\\qnx6";
+-#elif defined(__sun__) || defined(linux)
+-static char default_nto_target[] = "/opt/QNXsdk/target/qnx6";
+-#else
+-static char default_nto_target[] = "";
+-#endif
+-
+-struct nto_target_ops current_nto_target;
+-
+-static const registry<inferior>::key<struct nto_inferior_data>
+-  nto_inferior_data_reg;
+-
+-static char *
+-nto_target (void)
+-{
+-  char *p = getenv ("QNX_TARGET");
+-
+-#ifdef __CYGWIN__
+-  static char buf[PATH_MAX];
+-  if (p)
+-    cygwin_conv_path (CCP_WIN_A_TO_POSIX, p, buf, PATH_MAX);
+-  else
+-    cygwin_conv_path (CCP_WIN_A_TO_POSIX, default_nto_target, buf, PATH_MAX);
+-  return buf;
+-#else
+-  return p ? p : default_nto_target;
+-#endif
+-}
+-
+-/* Take a string such as i386, rs6000, etc. and map it onto CPUTYPE_X86,
+-   CPUTYPE_PPC, etc. as defined in nto-share/dsmsgs.h.  */
+-int
+-nto_map_arch_to_cputype (const char *arch)
+-{
+-  if (!strcmp (arch, "i386") || !strcmp (arch, "x86"))
+-    return CPUTYPE_X86;
+-  if (!strcmp (arch, "rs6000") || !strcmp (arch, "powerpc"))
+-    return CPUTYPE_PPC;
+-  if (!strcmp (arch, "mips"))
+-    return CPUTYPE_MIPS;
+-  if (!strcmp (arch, "arm"))
+-    return CPUTYPE_ARM;
+-  if (!strcmp (arch, "sh"))
+-    return CPUTYPE_SH;
+-  return CPUTYPE_UNKNOWN;
+-}
+-
+-int
+-nto_find_and_open_solib (const char *solib, unsigned o_flags,
+-			 gdb::unique_xmalloc_ptr<char> *temp_pathname)
+-{
+-  char *buf, *arch_path, *nto_root;
+-  const char *endian;
+-  const char *base;
+-  const char *arch;
+-  int arch_len, len, ret;
+-#define PATH_FMT \
+-  "%s/lib:%s/usr/lib:%s/usr/photon/lib:%s/usr/photon/dll:%s/lib/dll"
+-
+-  nto_root = nto_target ();
+-  gdbarch *gdbarch = current_inferior ()->arch ();
+-  if (strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name, "i386") == 0)
+-    {
+-      arch = "x86";
+-      endian = "";
+-    }
+-  else if (strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name,
+-		   "rs6000") == 0
+-	   || strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name,
+-		   "powerpc") == 0)
+-    {
+-      arch = "ppc";
+-      endian = "be";
+-    }
+-  else
+-    {
+-      arch = gdbarch_bfd_arch_info (gdbarch)->arch_name;
+-      endian = gdbarch_byte_order (gdbarch)
+-	       == BFD_ENDIAN_BIG ? "be" : "le";
+-    }
+-
+-  /* In case nto_root is short, add strlen(solib)
+-     so we can reuse arch_path below.  */
+-
+-  arch_len = (strlen (nto_root) + strlen (arch) + strlen (endian) + 2
+-	      + strlen (solib));
+-  arch_path = (char *) alloca (arch_len);
+-  xsnprintf (arch_path, arch_len, "%s/%s%s", nto_root, arch, endian);
+-
+-  len = strlen (PATH_FMT) + strlen (arch_path) * 5 + 1;
+-  buf = (char *) alloca (len);
+-  xsnprintf (buf, len, PATH_FMT, arch_path, arch_path, arch_path, arch_path,
+-	     arch_path);
+-
+-  base = lbasename (solib);
+-  ret = openp (buf, OPF_TRY_CWD_FIRST | OPF_RETURN_REALPATH, base, o_flags,
+-	       temp_pathname);
+-  if (ret < 0 && base != solib)
+-    {
+-      xsnprintf (arch_path, arch_len, "/%s", solib);
+-      ret = open (arch_path, o_flags, 0);
+-      if (temp_pathname)
+-	{
+-	  if (ret >= 0)
+-	    *temp_pathname = gdb_realpath (arch_path);
+-	  else
+-	    temp_pathname->reset (NULL);
+-	}
+-    }
+-  return ret;
+-}
+-
+-void
+-nto_init_solib_absolute_prefix (void)
+-{
+-  char buf[PATH_MAX * 2], arch_path[PATH_MAX];
+-  char *nto_root;
+-  const char *endian;
+-  const char *arch;
+-
+-  nto_root = nto_target ();
+-  gdbarch *gdbarch = current_inferior ()->arch ();
+-  if (strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name, "i386") == 0)
+-    {
+-      arch = "x86";
+-      endian = "";
+-    }
+-  else if (strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name,
+-		   "rs6000") == 0
+-	   || strcmp (gdbarch_bfd_arch_info (gdbarch)->arch_name,
+-		   "powerpc") == 0)
+-    {
+-      arch = "ppc";
+-      endian = "be";
+-    }
+-  else
+-    {
+-      arch = gdbarch_bfd_arch_info (gdbarch)->arch_name;
+-      endian = gdbarch_byte_order (gdbarch)
+-	       == BFD_ENDIAN_BIG ? "be" : "le";
+-    }
+-
+-  xsnprintf (arch_path, sizeof (arch_path), "%s/%s%s", nto_root, arch, endian);
+-
+-  xsnprintf (buf, sizeof (buf), "set solib-absolute-prefix %s", arch_path);
+-  execute_command (buf, 0);
+-}
+-
+-char **
+-nto_parse_redirection (char *pargv[], const char **pin, const char **pout, 
+-		       const char **perr)
+-{
+-  char **argv;
+-  const char *in, *out, *err, *p;
+-  int argc, i, n;
+-
+-  for (n = 0; pargv[n]; n++);
+-  if (n == 0)
+-    return NULL;
+-  in = "";
+-  out = "";
+-  err = "";
+-
+-  argv = XCNEWVEC (char *, n + 1);
+-  argc = n;
+-  for (i = 0, n = 0; n < argc; n++)
+-    {
+-      p = pargv[n];
+-      if (*p == '>')
+-	{
+-	  p++;
+-	  if (*p)
+-	    out = p;
+-	  else
+-	    out = pargv[++n];
+-	}
+-      else if (*p == '<')
+-	{
+-	  p++;
+-	  if (*p)
+-	    in = p;
+-	  else
+-	    in = pargv[++n];
+-	}
+-      else if (*p++ == '2' && *p++ == '>')
+-	{
+-	  if (*p == '&' && *(p + 1) == '1')
+-	    err = out;
+-	  else if (*p)
+-	    err = p;
+-	  else
+-	    err = pargv[++n];
+-	}
+-      else
+-	argv[i++] = pargv[n];
+-    }
+-  *pin = in;
+-  *pout = out;
+-  *perr = err;
+-  return argv;
+-}
+-
+-static CORE_ADDR
+-lm_addr (const solib &so)
+-{
+-  auto *li = gdb::checked_static_cast<const lm_info_svr4 *> (so.lm_info.get ());
+-
+-  return li->l_addr;
+-}
+-
+-static CORE_ADDR
+-nto_truncate_ptr (CORE_ADDR addr)
+-{
+-  gdbarch *gdbarch = current_inferior ()->arch ();
+-  if (gdbarch_ptr_bit (gdbarch) == sizeof (CORE_ADDR) * 8)
+-    /* We don't need to truncate anything, and the bit twiddling below
+-       will fail due to overflow problems.  */
+-    return addr;
+-  else
+-    return addr & (((CORE_ADDR) 1 << gdbarch_ptr_bit (gdbarch)) - 1);
+-}
+-
+-static Elf_Internal_Phdr *
+-find_load_phdr (bfd *abfd)
+-{
+-  Elf_Internal_Phdr *phdr;
+-  unsigned int i;
+-
+-  if (!elf_tdata (abfd))
+-    return NULL;
+-
+-  phdr = elf_tdata (abfd)->phdr;
+-  for (i = 0; i < elf_elfheader (abfd)->e_phnum; i++, phdr++)
+-    {
+-      if (phdr->p_type == PT_LOAD && (phdr->p_flags & PF_X))
+-	return phdr;
+-    }
+-  return NULL;
+-}
+-
+-void
+-nto_relocate_section_addresses (solib &so, target_section *sec)
+-{
+-  /* Neutrino treats the l_addr base address field in link.h as different than
+-     the base address in the System V ABI and so the offset needs to be
+-     calculated and applied to relocations.  */
+-  Elf_Internal_Phdr *phdr = find_load_phdr (sec->the_bfd_section->owner);
+-  unsigned vaddr = phdr ? phdr->p_vaddr : 0;
+-
+-  sec->addr = nto_truncate_ptr (sec->addr + lm_addr (so) - vaddr);
+-  sec->endaddr = nto_truncate_ptr (sec->endaddr + lm_addr (so) - vaddr);
+-}
+-
+-/* This is cheating a bit because our linker code is in libc.so.  If we
+-   ever implement lazy linking, this may need to be re-examined.  */
+-int
+-nto_in_dynsym_resolve_code (CORE_ADDR pc)
+-{
+-  if (in_plt_section (pc))
+-    return 1;
+-  return 0;
+-}
+-
+-void
+-nto_dummy_supply_regset (struct regcache *regcache, char *regs)
+-{
+-  /* Do nothing.  */
+-}
+-
+-static void
+-nto_sniff_abi_note_section (bfd *abfd, asection *sect, void *obj)
+-{
+-  const char *sectname;
+-  unsigned int sectsize;
+-  /* Buffer holding the section contents.  */
+-  char *note;
+-  unsigned int namelen;
+-  const char *name;
+-  const unsigned sizeof_Elf_Nhdr = 12;
+-
+-  sectname = bfd_section_name (sect);
+-  sectsize = bfd_section_size (sect);
+-
+-  if (sectsize > 128)
+-    sectsize = 128;
+-
+-  if (sectname != NULL && strstr (sectname, QNX_INFO_SECT_NAME) != NULL)
+-    *(enum gdb_osabi *) obj = GDB_OSABI_QNXNTO;
+-  else if (sectname != NULL && strstr (sectname, "note") != NULL
+-	   && sectsize > sizeof_Elf_Nhdr)
+-    {
+-      note = XNEWVEC (char, sectsize);
+-      bfd_get_section_contents (abfd, sect, note, 0, sectsize);
+-      namelen = (unsigned int) bfd_h_get_32 (abfd, note);
+-      name = note + sizeof_Elf_Nhdr;
+-      if (sectsize >= namelen + sizeof_Elf_Nhdr
+-	  && namelen == sizeof (QNX_NOTE_NAME)
+-	  && 0 == strcmp (name, QNX_NOTE_NAME))
+-	*(enum gdb_osabi *) obj = GDB_OSABI_QNXNTO;
+-
+-      XDELETEVEC (note);
+-    }
+-}
+-
+-enum gdb_osabi
+-nto_elf_osabi_sniffer (bfd *abfd)
+-{
+-  enum gdb_osabi osabi = GDB_OSABI_UNKNOWN;
+-
+-  bfd_map_over_sections (abfd,
+-			 nto_sniff_abi_note_section,
+-			 &osabi);
+-
+-  return osabi;
+-}
+-
+-static const char * const nto_thread_state_str[] =
+-{
+-  "DEAD",		/* 0  0x00 */
+-  "RUNNING",	/* 1  0x01 */
+-  "READY",	/* 2  0x02 */
+-  "STOPPED",	/* 3  0x03 */
+-  "SEND",		/* 4  0x04 */
+-  "RECEIVE",	/* 5  0x05 */
+-  "REPLY",	/* 6  0x06 */
+-  "STACK",	/* 7  0x07 */
+-  "WAITTHREAD",	/* 8  0x08 */
+-  "WAITPAGE",	/* 9  0x09 */
+-  "SIGSUSPEND",	/* 10 0x0a */
+-  "SIGWAITINFO",	/* 11 0x0b */
+-  "NANOSLEEP",	/* 12 0x0c */
+-  "MUTEX",	/* 13 0x0d */
+-  "CONDVAR",	/* 14 0x0e */
+-  "JOIN",		/* 15 0x0f */
+-  "INTR",		/* 16 0x10 */
+-  "SEM",		/* 17 0x11 */
+-  "WAITCTX",	/* 18 0x12 */
+-  "NET_SEND",	/* 19 0x13 */
+-  "NET_REPLY"	/* 20 0x14 */
+-};
+-
+-const char *
+-nto_extra_thread_info (struct target_ops *self, struct thread_info *ti)
+-{
+-  if (ti != NULL && ti->priv != NULL)
+-    {
+-      nto_thread_info *priv = get_nto_thread_info (ti);
+-
+-      if (priv->state < ARRAY_SIZE (nto_thread_state_str))
+-	return nto_thread_state_str [priv->state];
+-    }
+-  return "";
+-}
+-
+-void
+-nto_initialize_signals (void)
+-{
+-  /* We use SIG45 for pulses, or something, so nostop, noprint
+-     and pass them.  */
+-  signal_stop_update (gdb_signal_from_name ("SIG45"), 0);
+-  signal_print_update (gdb_signal_from_name ("SIG45"), 0);
+-  signal_pass_update (gdb_signal_from_name ("SIG45"), 1);
+-
+-  /* By default we don't want to stop on these two, but we do want to pass.  */
+-#if defined(SIGSELECT)
+-  signal_stop_update (SIGSELECT, 0);
+-  signal_print_update (SIGSELECT, 0);
+-  signal_pass_update (SIGSELECT, 1);
+-#endif
+-
+-#if defined(SIGPHOTON)
+-  signal_stop_update (SIGPHOTON, 0);
+-  signal_print_update (SIGPHOTON, 0);
+-  signal_pass_update (SIGPHOTON, 1);
+-#endif
+-}
+-
+-/* Read AUXV from initial_stack.  */
+-LONGEST
+-nto_read_auxv_from_initial_stack (CORE_ADDR initial_stack, gdb_byte *readbuf,
+-				  LONGEST len, size_t sizeof_auxv_t)
+-{
+-  gdb_byte targ32[4]; /* For 32 bit target values.  */
+-  gdb_byte targ64[8]; /* For 64 bit target values.  */
+-  CORE_ADDR data_ofs = 0;
+-  ULONGEST anint;
+-  LONGEST len_read = 0;
+-  gdb_byte *buff;
+-  enum bfd_endian byte_order;
+-  int ptr_size;
+-
+-  if (sizeof_auxv_t == 16)
+-    ptr_size = 8;
+-  else
+-    ptr_size = 4;
+-
+-  /* Skip over argc, argv and envp... Comment from ldd.c:
+-
+-     The startup frame is set-up so that we have:
+-     auxv
+-     NULL
+-     ...
+-     envp2
+-     envp1 <----- void *frame + (argc + 2) * sizeof(char *)
+-     NULL
+-     ...
+-     argv2
+-     argv1
+-     argc  <------ void * frame
+-
+-     On entry to ldd, frame gives the address of argc on the stack.  */
+-  /* Read argc. 4 bytes on both 64 and 32 bit arches and luckily little
+-   * endian. So we just read first 4 bytes.  */
+-  if (target_read_memory (initial_stack + data_ofs, targ32, 4) != 0)
+-    return 0;
+-
+-  byte_order = gdbarch_byte_order (current_inferior ()->arch ());
+-
+-  anint = extract_unsigned_integer (targ32, sizeof (targ32), byte_order);
+-
+-  /* Size of pointer is assumed to be 4 bytes (32 bit arch.) */
+-  data_ofs += (anint + 2) * ptr_size; /* + 2 comes from argc itself and
+-						NULL terminating pointer in
+-						argv.  */
+-
+-  /* Now loop over env table:  */
+-  anint = 0;
+-  while (target_read_memory (initial_stack + data_ofs, targ64, ptr_size)
+-	 == 0)
+-    {
+-      if (extract_unsigned_integer (targ64, ptr_size, byte_order) == 0)
+-	anint = 1; /* Keep looping until non-null entry is found.  */
+-      else if (anint)
+-	break;
+-      data_ofs += ptr_size;
+-    }
+-  initial_stack += data_ofs;
+-
+-  memset (readbuf, 0, len);
+-  buff = readbuf;
+-  while (len_read <= len-sizeof_auxv_t)
+-    {
+-      if (target_read_memory (initial_stack + len_read, buff, sizeof_auxv_t)
+-	  == 0)
+-	{
+-	  /* Both 32 and 64 bit structures have int as the first field.  */
+-	  const ULONGEST a_type
+-	    = extract_unsigned_integer (buff, sizeof (targ32), byte_order);
+-
+-	  if (a_type == AT_NULL)
+-	    break;
+-	  buff += sizeof_auxv_t;
+-	  len_read += sizeof_auxv_t;
+-	}
+-      else
+-	break;
+-    }
+-  return len_read;
+-}
+-
+-/* Return nto_inferior_data for the given INFERIOR.  If not yet created,
+-   construct it.  */
+-
+-struct nto_inferior_data *
+-nto_inferior_data (struct inferior *const inferior)
+-{
+-  struct inferior *const inf = inferior ? inferior : current_inferior ();
+-  struct nto_inferior_data *inf_data;
+-
+-  gdb_assert (inf != NULL);
+-
+-  inf_data = nto_inferior_data_reg.get (inf);
+-  if (inf_data == NULL)
+-    inf_data = nto_inferior_data_reg.emplace (inf);
+-
+-  return inf_data;
+-}
+diff --git a/gdb/nto-tdep.h b/gdb/nto-tdep.h
+deleted file mode 100644
+--- a/gdb/nto-tdep.h
++++ /dev/null
+@@ -1,194 +0,0 @@
+-/* nto-tdep.h - QNX Neutrino target header.
+-
+-   Copyright (C) 2003-2024 Free Software Foundation, Inc.
+-
+-   Contributed by QNX Software Systems Ltd.
+-
+-   This file is part of GDB.
+-
+-   This program is free software; you can redistribute it and/or modify
+-   it under the terms of the GNU General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
+-
+-   This program is distributed in the hope that it will be useful,
+-   but WITHOUT ANY WARRANTY; without even the implied warranty of
+-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+-   GNU General Public License for more details.
+-
+-   You should have received a copy of the GNU General Public License
+-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+-
+-#ifndef NTO_TDEP_H
+-#define NTO_TDEP_H
+-
+-#include "solist.h"
+-#include "osabi.h"
+-#include "regset.h"
+-#include "gdbthread.h"
+-#include "gdbsupport/gdb-checked-static-cast.h"
+-
+-/* Target operations defined for Neutrino targets (<target>-nto-tdep.c).  */
+-
+-struct nto_target_ops
+-{
+-/* The CPUINFO flags from the remote.  Currently used by
+-   i386 for fxsave but future proofing other hosts.
+-   This is initialized in procfs_attach or nto_start_remote
+-   depending on our host/target.  It would only be invalid
+-   if we were talking to an older pdebug which didn't support
+-   the cpuinfo message.  */
+-  unsigned cpuinfo_flags;
+-
+-/* True if successfully retrieved cpuinfo from remote.  */
+-  int cpuinfo_valid;
+-
+-/* Given a register, return an id that represents the Neutrino
+-   regset it came from.  If reg == -1 update all regsets.  */
+-  int (*regset_id) (int);
+-
+-  void (*supply_gregset) (struct regcache *, char *);
+-
+-  void (*supply_fpregset) (struct regcache *, char *);
+-
+-  void (*supply_altregset) (struct regcache *, char *);
+-
+-/* Given a regset, tell gdb about registers stored in data.  */
+-  void (*supply_regset) (struct regcache *, int, char *);
+-
+-/* Given a register and regset, calculate the offset into the regset
+-   and stuff it into the last argument.  If regno is -1, calculate the
+-   size of the entire regset.  Returns length of data, -1 if unknown
+-   regset, 0 if unknown register.  */
+-  int (*register_area) (struct gdbarch *, int, int, unsigned *);
+-
+-/* Build the Neutrino register set info into the data buffer.
+-   Return -1 if unknown regset, 0 otherwise.  */
+-  int (*regset_fill) (const struct regcache *, int, char *);
+-
+-/* Gives the fetch_link_map_offsets function exposure outside of
+-   solib-svr4.c so that we can override relocate_section_addresses().  */
+-  struct link_map_offsets *(*fetch_link_map_offsets) (void);
+-
+-/* Used by nto_elf_osabi_sniffer to determine if we're connected to an
+-   Neutrino target.  */
+-  enum gdb_osabi (*is_nto_target) (bfd *abfd);
+-};
+-
+-extern struct nto_target_ops current_nto_target;
+-
+-#define nto_cpuinfo_flags (current_nto_target.cpuinfo_flags)
+-
+-#define nto_cpuinfo_valid (current_nto_target.cpuinfo_valid)
+-
+-#define nto_regset_id (current_nto_target.regset_id)
+-
+-#define nto_supply_gregset (current_nto_target.supply_gregset)
+-
+-#define nto_supply_fpregset (current_nto_target.supply_fpregset)
+-
+-#define nto_supply_altregset (current_nto_target.supply_altregset)
+-
+-#define nto_supply_regset (current_nto_target.supply_regset)
+-
+-#define nto_register_area (current_nto_target.register_area)
+-
+-#define nto_regset_fill (current_nto_target.regset_fill)
+-
+-#define nto_fetch_link_map_offsets \
+-(current_nto_target.fetch_link_map_offsets)
+-
+-#define nto_is_nto_target (current_nto_target.is_nto_target)
+-
+-/* Keep this consistant with neutrino syspage.h.  */
+-enum
+-{
+-  CPUTYPE_X86,
+-  CPUTYPE_PPC,
+-  CPUTYPE_MIPS,
+-  CPUTYPE_SPARE,
+-  CPUTYPE_ARM,
+-  CPUTYPE_SH,
+-  CPUTYPE_UNKNOWN
+-};
+-
+-enum
+-{
+-  OSTYPE_QNX4,
+-  OSTYPE_NTO
+-};
+-
+-/* These correspond to the DSMSG_* versions in dsmsgs.h.  */
+-enum
+-{
+-  NTO_REG_GENERAL,
+-  NTO_REG_FLOAT,
+-  NTO_REG_SYSTEM,
+-  NTO_REG_ALT,
+-  NTO_REG_END
+-};
+-
+-typedef char qnx_reg64[8];
+-
+-typedef struct _debug_regs
+-{
+-  qnx_reg64 padding[1024];
+-} nto_regset_t;
+-
+-struct nto_thread_info : public private_thread_info
+-{
+-  short tid = 0;
+-  unsigned char state = 0;
+-  unsigned char flags = 0;
+-  std::string name;
+-};
+-
+-static inline nto_thread_info *
+-get_nto_thread_info (thread_info *thread)
+-{
+-  return gdb::checked_static_cast<nto_thread_info *> (thread->priv.get ());
+-}
+-
+-/* Per-inferior data, common for both procfs and remote.  */
+-struct nto_inferior_data
+-{
+-  /* Last stopped flags result from wait function */
+-  unsigned int stopped_flags = 0;
+-
+-  /* Last known stopped PC */
+-  CORE_ADDR stopped_pc = 0;
+-};
+-
+-/* Generic functions in nto-tdep.c.  */
+-
+-void nto_init_solib_absolute_prefix (void);
+-
+-char **nto_parse_redirection (char *start_argv[], const char **in,
+-			      const char **out, const char **err);
+-
+-void nto_relocate_section_addresses (solib &, target_section *);
+-
+-int nto_map_arch_to_cputype (const char *);
+-
+-int nto_find_and_open_solib (const char *, unsigned,
+-			     gdb::unique_xmalloc_ptr<char> *);
+-
+-enum gdb_osabi nto_elf_osabi_sniffer (bfd *abfd);
+-
+-void nto_initialize_signals (void);
+-
+-/* Dummy function for initializing nto_target_ops on targets which do
+-   not define a particular regset.  */
+-void nto_dummy_supply_regset (struct regcache *regcache, char *regs);
+-
+-int nto_in_dynsym_resolve_code (CORE_ADDR pc);
+-
+-const char *nto_extra_thread_info (struct target_ops *self, struct thread_info *);
+-
+-LONGEST nto_read_auxv_from_initial_stack (CORE_ADDR initial_stack,
+-					  gdb_byte *readbuf,
+-					  LONGEST len, size_t sizeof_auxv_t);
+-
+-struct nto_inferior_data *nto_inferior_data (struct inferior *inf);
+-
+-#endif /* NTO_TDEP_H */
+diff --git a/gdb/osabi.c b/gdb/osabi.c
+--- a/gdb/osabi.c
++++ b/gdb/osabi.c
+@@ -70,7 +70,6 @@ static const struct osabi_names gdb_osabi_names[] =
+   { "OpenBSD", NULL },
+   { "WindowsCE", NULL },
+   { "DJGPP", NULL },
+-  { "QNX-Neutrino", NULL },
+   { "Cygwin", NULL },
+   { "Windows", NULL },
+   { "AIX", NULL },
+diff --git a/gdb/osabi.h b/gdb/osabi.h
+--- a/gdb/osabi.h
++++ b/gdb/osabi.h
+@@ -35,7 +35,6 @@ enum gdb_osabi
+   GDB_OSABI_OPENBSD,
+   GDB_OSABI_WINCE,
+   GDB_OSABI_GO32,
+-  GDB_OSABI_QNXNTO,
+   GDB_OSABI_CYGWIN,
+   GDB_OSABI_WINDOWS,
+   GDB_OSABI_AIX,
+diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
+--- a/gdb/testsuite/lib/gdb.exp
++++ b/gdb/testsuite/lib/gdb.exp
+@@ -8079,7 +8079,6 @@ gdb_caching_proc gdb_has_argv0 {} {
+ 	  || [istarget *-wince-pe] || [istarget *-*-mingw32ce*]
+ 	  || [istarget *-*-osf*]
+ 	  || [istarget *-*-dicos*]
+-	  || [istarget *-*-nto*]
+ 	  || [istarget *-*-*vms*]
+ 	  || [istarget *-*-lynx*178]) } {
+ 	fail "argv\[0\] should be available on this target"

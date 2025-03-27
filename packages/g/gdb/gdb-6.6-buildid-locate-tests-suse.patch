@@ -1,0 +1,40 @@
+From 4aaa960916b069dd82a293bf0e876dbc8710801e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 26 Mar 2025 10:25:38 +0100
+Subject: [PATCH 4/4] gdb-6.6-buildid-locate-tests-suse.patch
+
+---
+ ...z981154-misleading-yum-install-warning.exp | 20 ++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp b/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp
+index 991ffef474d..ab5f1667f31 100644
+--- a/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp
++++ b/gdb/testsuite/gdb.base/rhbz981154-misleading-yum-install-warning.exp
+@@ -55,6 +55,20 @@ gdb_test "set build-id-verbose 1" "" \
+ gdb_test "set debug-file-directory /usr/lib/" "" \
+     "set debug-file-directory"
+ 
+-gdb_test "core-file [standard_output_file gcore.test]" \
+-    "Missing file\\(s\\), try: dnf --enablerepo='\\*debug\\*' install [string_to_regexp /usr/lib/$build_id_without_debug] [string_to_regexp /usr/lib/debug/$build_id_debug_file]" \
+-    "test first yum/dnf warning"
++# Supporting this for SUSE/openSUSE requires a gdb.missing_objfile handler,
++# but that's not enabled.  Zypper doesn't support finding packages based on
++# build-id, unless the package's installed.
++# So, instead of testing for the SUSE/openSUSE-specific solution, check that
++# the fedora solution doesn't appear.
++
++set cmd "core-file [standard_output_file gcore.test]"
++set test "test first yum/dnf warning"
++set fail_re [string_to_regexp "Missing file(s), try: dnf "].*
++gdb_test_multiple $cmd $test {
++    -re -wrap $fail_re {
++	fail $gdb_test_name
++    }
++    -re -wrap "" {
++	pass $gdb_test_name
++    }
++}
+-- 
+2.43.0
+
