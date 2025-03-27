@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 20:09:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- move from pcre to pcre2, add nim-2.2.2-pcre2.patch
+
+-------------------------------------------------------------------
 Tue Mar 11 14:57:41 UTC 2025 - Rein Fernhout <me@levitati.ng>
 
 - Update to version 2.2.

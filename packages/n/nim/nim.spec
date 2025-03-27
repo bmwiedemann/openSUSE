@@ -32,6 +32,9 @@ Source2:        nim-rpmlintrc
 Source3:        https://github.com/nim-lang/sat/archive/%{_sat_commit}.tar.gz#/sat-%{_sat_commit}.tar.gz
 Patch0:         nim-nim-gdb_fix_interpreter.patch
 Patch1:         nim-fix-tests-i586.patch
+# https://github.com/nim-lang/Nim/issues/23668
+# https://github.com/nim-lang/Nim/pull/24405
+Patch2:         nim-2.2.2-pcre2.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -43,15 +46,15 @@ BuildRequires:  gcc-c++ >= 6.2
 BuildRequires:  git
 BuildRequires:  libopenssl-devel
 BuildRequires:  netcfg
-BuildRequires:  pcre
 BuildRequires:  sqlite3-devel
 BuildRequires:  timezone
 BuildRequires:  valgrind
+BuildRequires:  pkgconfig(libpcre2-8)
 # pull in a C compiler (required to build Nim programs)
 Requires:       gcc
 Recommends:     clang
 Recommends:     git
-Recommends:     pcre
+Recommends:     libpcre2-8-0
 ExclusiveArch:  %{ix86} x86_64 armv7l armv7hl aarch64 ppc64le riscv64
 # Needs node 12 for flag --unhandled-rejections=strict, but it's not
 # strictly needed (it's used to test the Nim JS compiler, so we can
@@ -95,7 +98,7 @@ Elegant:
 * Statements are grouped by indentation but can span multiple lines.
 
 %prep
-%setup -a1 -a3
+%setup -q -a1 -a3
 
 mv atlas-%{_atlas_version} dist/atlas
 mkdir dist/atlas/dist
@@ -105,6 +108,7 @@ mv sat-%{_sat_commit} dist/atlas/dist/sat
 %ifarch i586
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 
 %build
 export CFLAGS="%{optflags}"
