@@ -47,4 +47,12 @@
     <comment>Use SOURCE_DATE_EPOCH for reproducible builds</comment>
     <requestid>1202522</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>0e680a524efdf5e7d5c4a2c69e96d69f</srcmd5>
+    <version>1.1.5</version>
+    <time>1743111260</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1264609</requestid>
+  </revision>
 </revisionlist>

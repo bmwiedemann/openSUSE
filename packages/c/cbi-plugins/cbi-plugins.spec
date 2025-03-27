@@ -1,7 +1,7 @@
 #
 # spec file for package cbi-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        A set of helpers for Eclipse CBI
 License:        EPL-1.0
 Group:          Development/Libraries/Java
-URL:            https://git.eclipse.org/c/cbi/org.eclipse.cbi.git/tree/maven-plugins/README.md
-Source0:        https://git.eclipse.org/c/cbi/org.eclipse.cbi.git/snapshot/org.eclipse.cbi-org.eclipse.cbi.maven.plugins_maven-plugin-parent_%{version}.tar.xz
+URL:            https://github.com/eclipse-cbi/org.eclipse.cbi/blob/main/maven-plugins/README.md
+Source0:        https://github.com/eclipse-cbi/org.eclipse.cbi/archive/refs/tags/org.eclipse.cbi.maven.plugins_maven-plugin-parent_%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  tycho-bootstrap
@@ -70,7 +70,7 @@ API documentation for %{name}.
 %pom_remove_plugin :maven-enforcer-plugin
 
 # We don't have findbugs annotations
-%pom_change_dep com.google.code.findbugs: com.google.code.findbugs:jsr305 . maven-plugins/eclipse-flatpak-packager
+%pom_remove_dep com.google.code.findbugs:findbugs-annotations maven-plugins/eclipse-flatpak-packager
 sed -i -e '/SuppressFBWarnings/d' maven-plugins/eclipse-flatpak-packager/src/main/java/org/eclipse/cbi/maven/plugins/flatpakager/model/Source.java
 
 # Build the common module
@@ -98,17 +98,19 @@ do
 done
 
 %build
-# Tests require jimfs which we don't have
+pushd maven-plugins
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -f maven-plugins/pom.xml -Dproject.build.sourceEncoding=UTF-8 -Dsource=1.8
+    -Dproject.build.sourceEncoding=UTF-8 -Dsource=1.8
+popd
 
 %install
+pushd maven-plugins
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
+popd
 
-%files -f .mfiles
+%files -f maven-plugins/.mfiles
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc -f maven-plugins/.mfiles-javadoc
 
 %changelog

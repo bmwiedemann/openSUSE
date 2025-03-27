@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:25:37 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with both xmvn-mojo:javadoc and javadoc:aggregate
+
+-------------------------------------------------------------------
 Mon Sep 23 05:44:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible builds
