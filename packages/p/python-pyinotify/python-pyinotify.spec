@@ -16,7 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-pyinotify
 Version:        0.9.6
@@ -31,8 +36,13 @@ Source1:        pyinotify
 Patch0:         make_asyncore_support_optional.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -67,6 +77,10 @@ sed -i "s|#!%{_bindir}/env python|#!%__python3|" python3/examples/*py
 install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/pyinotify
 %python_clone -a %{buildroot}%{_bindir}/pyinotify
 
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pyinotify
+
 %post
 %python_install_alternative pyinotify
 
@@ -79,6 +93,8 @@ install -D -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/pyinotify
 %doc old/ChangeLog old/NEWS
 %doc python3/examples
 %python_alternative %{_bindir}/pyinotify
-%{python_sitelib}/*
+%{python_sitelib}/pyinotify.py
+%{python_sitelib}/pyinotify-%{version}*.egg-info
+%pycache_only %{python_sitelib}/__pycache__
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 26 11:57:29 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Use libalternatives instead of update-alternatives, bsc#1240097
+- No more greedy globs in %files.
+- Use python3 in pyinotify script
+
+-------------------------------------------------------------------
 Fri Mar 21 10:42:17 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Make asyncore support optional to fix issue in Python 3.12 and 3.13
