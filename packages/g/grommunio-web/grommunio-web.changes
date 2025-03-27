@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 26 23:31:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.11
+  * Do not collapse the mail list view to invisibility, instead now
+    mail preview
+  * Correct all day event on wrong day for non-proper MAPI elements
+    without TZ (Kopano migrations)
+  * Introduce new plugin for integration with Kendox InfoShare
+
+-------------------------------------------------------------------
 Fri Nov  3 08:55:03 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5

@@ -1,6 +1,7 @@
 #!/bin/sh
 mkdir -p /var/lib/grommunio-web/tmp /var/lib/grommunio-web/sqlite-index
-chown -h groweb:groweb /var/lib/grommunio-web
+chown -h groweb:groweb /var/lib/grommunio-web /var/lib/grommunio-web/tmp \
+	/var/lib/grommunio-web/session
 chmod 0770 /var/lib/grommunio-web /var/lib/grommunio-web/tmp \
 	/var/lib/grommunio-web/sqlite-index /var/lib/grommunio-web/session
 # clear translation caches
@@ -9,5 +10,5 @@ runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
 # reloading is not sufficient especially for php-fpm as it does not
 # create the socket with the appropriate permissions
 systemctl list-units --plain --no-legend --quiet "php*fpm.service" | \
-awk '{print$1}' | xargs /usr/bin/systemctl try-restart
-/usr/bin/systemctl reload nginx.service
+awk '{print$1}' | xargs /usr/bin/systemctl try-restart 2>/dev/null || :
+systemctl reload nginx 2>/dev/null || :

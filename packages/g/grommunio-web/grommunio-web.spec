@@ -1,7 +1,7 @@
 #
 # spec file for package grommunio-web
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,13 +21,15 @@
 %endif
 
 Name:           grommunio-web
-Version:        3.5.1.31715c1e
+Version:        3.11
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            http://www.grommunio.com/
-Source:         %name-%version.tar.xz
+Source:         https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-3.11/grommunio-web-%version.tar.xz
+Source2:        https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-3.11/grommunio-web-%version.tar.asc
+Source3:        %name.keyring
 
 %if 0%{?suse_version} >= 1590 || 0%{?sle_version} >= 150400
 %define fpmdir /etc/php8/fpm/php-fpm.d
@@ -91,7 +93,7 @@ Requires:       php-xml
 %endif
 Requires(pre):  user(groweb)
 Requires:       gromox >= 2.11
-Requires:       mapi-header-php >= 1.2.3
+Requires:       mapi-header-php >= 1.6
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
@@ -168,17 +170,7 @@ runuser -u groweb -- ipcrm -M 0x950412DE 2>/dev/null || :
 %files
 %dir %_sysconfdir/grommunio-web
 %_sysconfdir/php*
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-archive.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-chat.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-desktopnotifications.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-files.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-intranet.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-maps.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-mdm.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-meet.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-passwd.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config-smime.php
-%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config.php
+%config(noreplace) %attr(0644,root,root) %_sysconfdir/grommunio-web/config*.php
 %dir %_datadir/grommunio-common/
 %dir %_datadir/grommunio-common/nginx/
 %dir %_datadir/grommunio-common/nginx/locations.d/
