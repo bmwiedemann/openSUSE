@@ -53,7 +53,6 @@ Patch12:        perl-reproducible.patch
 Patch13:        perl_skip_flaky_tests_powerpc.patch
 # PATCH-FIX-UPSTREAM unmerged https://www.nntp.perl.org/group/perl.perl5.porters/2018/12/msg253240.html
 Patch18:        perl-reproducible2.patch
-BuildRequires:  db-devel
 BuildRequires:  gdbm-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  ncurses-devel
@@ -160,7 +159,7 @@ test -n "$versionlist" || versionlist=none
 versionlist=${versionlist# }
 options="$options -Dotherlibdirs=/usr/lib/perl5/site_perl -Dinc_version_list='$versionlist'"
 chmod 755 ./configure.gnu
-./configure.gnu --prefix=%{_prefix} -Dvendorprefix=%{_prefix} -Dinstallusrbinperl -Dusethreads -Di_db -Di_dbm -Di_ndbm -Di_gdbm -Dd_dbm_open -Duseshrplib=\'true\' $options
+./configure.gnu --prefix=%{_prefix} -Dvendorprefix=%{_prefix} -Dinstallusrbinperl -Dusethreads -Di_dbm -Di_ndbm -Di_gdbm -Dd_dbm_open -Duseshrplib=\'true\' $options
 make %{?_smp_mflags}
 cp -p libperl.so savelibperl.so
 cp -p lib/Config.pm saveConfig.pm
@@ -168,7 +167,7 @@ cp -p lib/Config_heavy.pl saveConfig_heavy.pl
 make -j1 clobber
 rm -rf lib
 mv savelib lib
-./configure.gnu --prefix=%{_prefix} -Dvendorprefix=%{_prefix} -Dinstallusrbinperl -Dusethreads -Di_db -Di_dbm -Di_ndbm -Di_gdbm -Dd_dbm_open $options
+./configure.gnu --prefix=%{_prefix} -Dvendorprefix=%{_prefix} -Dinstallusrbinperl -Dusethreads -Di_dbm -Di_ndbm -Di_gdbm -Dd_dbm_open $options
 make %{?_smp_mflags}
 
 %check
