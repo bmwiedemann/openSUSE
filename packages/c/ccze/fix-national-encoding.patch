@@ -1,0 +1,11 @@
+Description: Convert national encoding to UTF-8
+Author: Axel Beckert <abe@debian.org>
+
+--- a/THANKS
++++ b/THANKS
+@@ -12,4 +12,4 @@
+ Morten Brix Pedersen
+ Thomas Graf
+ Zoltan Lengyel (War_New)
+-Zsolt Czigléczki (ciga)
++Zsolt CziglÃ©czki (ciga)

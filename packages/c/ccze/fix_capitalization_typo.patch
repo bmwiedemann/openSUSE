@@ -1,0 +1,16 @@
+Description: Fix typo in preprocessor directive
+ Might fix some crashes, too.
+Bug-Debian: https://bugs.debian.org/823334
+Author: Steven Willis <onlynone@gmail.com>
+
+--- a/src/ccze-compat.c
++++ b/src/ccze-compat.c
+@@ -275,7 +275,7 @@
+ 		char **valuep)
+ {
+   int i = getsubopt (optionp, tokens, valuep);
+-#if HAVE_SUBOPTARg
++#if HAVE_SUBOPTARG
+   if (!*valuep && suboptarg)
+     *valuep = strdup (suboptarg);
+ #endif

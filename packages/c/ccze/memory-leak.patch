@@ -1,0 +1,18 @@
+Description: Fix a memory leak.
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: no
+Last-Update: 2023-12-06
+---
+
+--- ccze.orig/src/ccze.c
++++ ccze/src/ccze.c
+@@ -731,6 +731,9 @@
+ 
+       if (ccze_config.mode == CCZE_MODE_CURSES)
+ 	refresh ();
++
++      free (subject);
++      subject = NULL;
+     }
+ 
+   if (ccze_config.mode == CCZE_MODE_CURSES)

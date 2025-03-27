@@ -1,0 +1,23 @@
+Description: Fix a possibly uninitialised value.
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: no
+Last-Update: 2023-12-06
+---
+
+--- ccze.orig/src/ccze-color.c
++++ ccze/src/ccze-color.c
+@@ -459,9 +459,11 @@
+   size_t len;
+   struct stat stb;
+ 
+-  stat (fn, &stb);
+-  if (!S_ISREG (stb.st_mode))
+-    return;
++  if ((stat (fn, &stb)) == 0)
++    {
++      if (!S_ISREG (stb.st_mode))
++        return;
++    }
+   
+   fp = fopen (fn, "r");
+   if (!fp)

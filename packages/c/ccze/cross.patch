@@ -1,0 +1,17 @@
+From: Helmut Grohne <helmut@subdivi.de>
+Subject: avoid spoiling AC_PROG_CC with the build architecture compiler
+Bug-Debian: https://bugs.debian.org/900024
+Origin: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=900024#5
+
+Index: ccze-0.2.1/configure.ac
+===================================================================
+--- ccze-0.2.1.orig/configure.ac
++++ ccze-0.2.1/configure.ac
+@@ -36,7 +36,6 @@
+ dnl **********************
+ dnl * Programs
+ dnl **********************
+-AC_CHECK_TOOL(CC, cc)
+ AC_PROG_CC
+ 
+ WFLAGS=""

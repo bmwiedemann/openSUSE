@@ -1,0 +1,2877 @@
+Description: Port to PCRE2.
+Bug-Debian: https://bugs.debian.org/1000044
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: no
+Last-Update: 2023-12-24
+---
+
+--- ccze.orig/configure.ac
++++ ccze/configure.ac
+@@ -102,14 +102,14 @@
+ AC_CHECK_FUNC(getopt_long, [], [AC_CHECK_LIB(gnugetopt, getopt_long)])
+ 
+ if test -z "${PCRE_CONFIG}"; then
+-	AC_PATH_PROG(PCRE_CONFIG, pcre-config, no)
++	AC_PATH_PROG(PCRE_CONFIG, pcre2-config, no)
+ fi
+ AC_MSG_CHECKING(for PCRE)
+ if test "${PCRE_CONFIG}" = "no"; then
+ 	AC_ERROR(PCRE not found)
+ fi
+ PCRE_CFLAGS=$($PCRE_CONFIG --cflags)
+-PCRE_LIBS=$($PCRE_CONFIG --libs)
++PCRE_LIBS=$($PCRE_CONFIG --libs8)
+ AC_SUBST(PCRE_CFLAGS)
+ AC_SUBST(PCRE_LIBS)
+ AC_MSG_RESULT(found)
+--- ccze.orig/src/ccze-wordcolor.c
++++ ccze/src/ccze-wordcolor.c
+@@ -29,9 +29,9 @@
+ #include "ccze-private.h"
+ #include "ccze-compat.h"
+ 
+-static pcre *reg_pre, *reg_post, *reg_host, *reg_mac, *reg_email;
+-static pcre *reg_uri, *reg_size, *reg_ver, *reg_time, *reg_addr;
+-static pcre *reg_num, *reg_sig, *reg_email2, *reg_hostip, *reg_msgid;
++static pcre2_code *reg_pre, *reg_post, *reg_host, *reg_mac, *reg_email;
++static pcre2_code *reg_uri, *reg_size, *reg_ver, *reg_time, *reg_addr;
++static pcre2_code *reg_num, *reg_sig, *reg_email2, *reg_hostip, *reg_msgid;
+ 
+ static char *words_bad[] = {
+   "warn", "restart", "exit", "stop", "end", "shutting", "down", "close",
+@@ -71,34 +71,35 @@
+ void
+ ccze_wordcolor_process_one (char *word, int slookup)
+ {
+-  size_t wlen;
+-  int offsets[99];
++  size_t wlen, l;
+   ccze_color_t col;
+-  int match, printed = 0;
+-  char *pre = NULL, *post = NULL, *tmp, *lword;
++  int printed = 0;
++  char *pre = NULL, *post = NULL, *tmp = NULL, *lword;
++  pcre2_match_data *offsets;
+ 
+   col = CCZE_COLOR_DEFAULT;
+ 
++  offsets = pcre2_match_data_create (99, NULL);
++
+   /** prefix **/
+-  if ((match = pcre_exec (reg_pre, NULL, word, strlen (word), 0, 0,
+-			  offsets, 99)) >= 0)
++  if (pcre2_match (reg_pre, word, strlen (word), 0, 0, offsets, NULL) >= 0)
+     {
+-      pcre_get_substring (word, offsets, match, 1, (const char **)&pre);
+-      pcre_get_substring (word, offsets, match, 2, (const char **)&tmp);
++      pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&pre, &l);
++      pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&tmp, &l);
+       free (word);
+-      word = tmp;
++      word = strdup (tmp);
+     }
+   else
+     pre = NULL;
+ 
+   /** postfix **/
+-  if ((match = pcre_exec (reg_post, NULL, word, strlen (word), 0, 0,
+-			  offsets, 99)) >= 0)
++  if (pcre2_match (reg_post, word, strlen (word), 0, 0, offsets, NULL) >= 0)
+     {
+-      pcre_get_substring (word, offsets, match, 1, (const char **)&tmp);
+-      pcre_get_substring (word, offsets, match, 2, (const char **)&post);
++      pcre2_substring_free (tmp);
++      pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&tmp, &l);
++      pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&post, &l);
+       free (word);
+-      word = tmp;
++      word = strdup (tmp);
+     }
+   else
+     post = NULL;
+@@ -107,45 +108,45 @@
+   lword = _stolower (word);
+       
+   /** Host **/
+-  if (pcre_exec (reg_host, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  if (pcre2_match (reg_host, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_HOST;
+   /** MAC address **/
+-  else if (pcre_exec (reg_mac, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_mac, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_MAC;
+   /** Directory **/
+   else if (lword[0] == '/')
+     col = CCZE_COLOR_DIR;
+   /** E-mail **/
+-  else if (pcre_exec (reg_email, NULL, lword, wlen, 0, 0, offsets, 99)
+-	   >= 0 && pcre_exec (reg_email2, NULL, lword, wlen, 0, 0,
+-			      offsets,99) >= 0)
++  else if (pcre2_match (reg_email, lword, wlen, 0, 0, offsets, NULL)
++	   >= 0 && pcre2_match (reg_email2, lword, wlen, 0, 0,
++			        offsets, NULL) >= 0)
+     col = CCZE_COLOR_EMAIL;
+   /** Message-ID **/
+-  else if (pcre_exec (reg_msgid, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_msgid, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_EMAIL;
+   /** URI **/
+-  else if (pcre_exec (reg_uri, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_uri, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_URI;
+   /** Size **/
+-  else if (pcre_exec (reg_size, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_size, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_SIZE;
+   /** Version **/
+-  else if (pcre_exec (reg_ver, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_ver, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_VERSION;
+   /** Time **/
+-  else if (pcre_exec (reg_time, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_time, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_DATE;
+   /** Address **/
+-  else if (pcre_exec (reg_addr, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_addr, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_ADDRESS;
+   /** Number **/
+-  else if (pcre_exec (reg_num, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_num, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_NUMBERS;
+   /** Signal **/
+-  else if (pcre_exec (reg_sig, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_sig, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     col = CCZE_COLOR_SIGNAL;
+   /* Host + IP (postfix) */
+-  else if (pcre_exec (reg_hostip, NULL, lword, wlen, 0, 0, offsets, 99) >= 0)
++  else if (pcre2_match (reg_hostip, lword, wlen, 0, 0, offsets, NULL) >= 0)
+     {
+       char *host, *ip;
+       size_t hostlen, iplen;
+@@ -207,8 +208,10 @@
+   
+   free (lword);
+   free (word);
+-  free (post);
+-  free (pre);
++  pcre2_substring_free (tmp);
++  pcre2_substring_free (post);
++  pcre2_substring_free (pre);
++  pcre2_match_data_free (offsets);
+ }
+ 
+ void
+@@ -260,64 +263,67 @@
+ void
+ ccze_wordcolor_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_pre = pcre_compile ("^([`'\".,!?:;(\\[{<]+)([^`'\".,!?:;(\\[{<]\\S*)$",
+-			  0, &error, &errptr, NULL);
+-  reg_post = pcre_compile ("^(\\S*[^`'\".,!?:;)\\]}>])([`'\".,!?:;)\\]}>]+)$",
+-			   0, &error, &errptr, NULL);
+-  reg_host = pcre_compile ("^(((\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})|"
+-			   "(([a-z0-9-_]+\\.)+[a-z]{2,3})|(localhost)|"
+-			   "(\\w*::\\w+)+)(:\\d{1,5})?)$", 0, &error,
+-			   &errptr, NULL);
+-  reg_hostip = pcre_compile ("^(((\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})|"
+-			     "(([a-z0-9-_\\.]+)+)|(localhost)|"
+-			     "(\\w*::\\w+)+)(:\\d{1,5})?)"
+-			     "\\[",
+-			     0, &error,  &errptr, NULL);
+-  reg_mac = pcre_compile ("^([0-9a-f]{2}:){5}[0-9a-f]{2}$", 0, &error,
+-			  &errptr, NULL);
+-  reg_email = pcre_compile
+-    ("^[a-z0-9-_=\\+]+@([a-z0-9-_\\.]+)+(\\.[a-z]{2,4})+", 0,
+-     &error, &errptr, NULL);
+-  reg_email2 = pcre_compile ("(\\.[a-z]{2,4})+$", 0, &error, &errptr, NULL);
+-  reg_uri = pcre_compile ("^\\w{2,}:\\/\\/(\\S+\\/?)+$", 0, &error,
+-			  &errptr, NULL);
+-  reg_size = pcre_compile ("^\\d+(\\.\\d+)?[k|m|g|t]i?b?(ytes?)?",
+-			   0, &error, &errptr, NULL);
+-  reg_ver = pcre_compile ("^v?(\\d+\\.){1}((\\d|[a-z])+\\.)*(\\d|[a-z])+$",
+-			  0, &error, &errptr, NULL);
+-  reg_time = pcre_compile ("\\d{1,2}:\\d{1,2}(:\\d{1,2})?", 0, &error,
+-			   &errptr, NULL);
+-  reg_addr = pcre_compile ("^0x(\\d|[a-f])+$", 0, &error, &errptr, NULL);
+-  reg_num = pcre_compile ("^[+-]?\\d+$", 0, &error, &errptr, NULL);
+-  reg_sig = pcre_compile ("^sig(hup|int|quit|ill|abrt|fpe|kill|segv|pipe|"
+-			  "alrm|term|usr1|usr2|chld|cont|stop|tstp|tin|tout|"
+-			  "bus|poll|prof|sys|trap|urg|vtalrm|xcpu|xfsz|iot|"
+-			  "emt|stkflt|io|cld|pwr|info|lost|winch|unused)", 0,
+-			  &error, &errptr, NULL);
+-  reg_msgid = pcre_compile
+-    ("^[a-z0-9-_\\.\\$=\\+]+@([a-z0-9-_\\.]+)+(\\.?[a-z]+)+", 0, &error,
+-     &errptr, NULL);
++  reg_pre = pcre2_compile ("^([`'\".,!?:;(\\[{<]+)([^`'\".,!?:;(\\[{<]\\S*)$",
++			   PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_post = pcre2_compile ("^(\\S*[^`'\".,!?:;)\\]}>])([`'\".,!?:;)\\]}>]+)$",
++			    PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_host = pcre2_compile ("^(((\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})|"
++			    "(([a-z0-9-_]+\\.)+[a-z]{2,3})|(localhost)|"
++			    "(\\w*::\\w+)+)(:\\d{1,5})?)$",
++			    PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_hostip = pcre2_compile ("^(((\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})|"
++			      "(([a-z0-9-_\\.]+)+)|(localhost)|"
++			      "(\\w*::\\w+)+)(:\\d{1,5})?)"
++			      "\\[", PCRE2_ZERO_TERMINATED,
++			      0, &error,  &errptr, NULL);
++  reg_mac = pcre2_compile ("^([0-9a-f]{2}:){5}[0-9a-f]{2}$",
++			   PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_email = pcre2_compile
++    ("^[a-z0-9-_=\\+]+@([a-z0-9-_\\.]+)+(\\.[a-z]{2,4})+",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_email2 = pcre2_compile ("(\\.[a-z]{2,4})+$", PCRE2_ZERO_TERMINATED,
++                              0, &error, &errptr, NULL);
++  reg_uri = pcre2_compile ("^\\w{2,}:\\/\\/(\\S+\\/?)+$",
++			   PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_size = pcre2_compile ("^\\d+(\\.\\d+)?[k|m|g|t]i?b?(ytes?)?",
++			    PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_ver = pcre2_compile ("^v?(\\d+\\.){1}((\\d|[a-z])+\\.)*(\\d|[a-z])+$",
++			   PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_time = pcre2_compile ("\\d{1,2}:\\d{1,2}(:\\d{1,2})?",
++			    PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_addr = pcre2_compile ("^0x(\\d|[a-f])+$", PCRE2_ZERO_TERMINATED,
++                            0, &error, &errptr, NULL);
++  reg_num = pcre2_compile ("^[+-]?\\d+$", PCRE2_ZERO_TERMINATED,
++                           0, &error, &errptr, NULL);
++  reg_sig = pcre2_compile ("^sig(hup|int|quit|ill|abrt|fpe|kill|segv|pipe|"
++			   "alrm|term|usr1|usr2|chld|cont|stop|tstp|tin|tout|"
++			   "bus|poll|prof|sys|trap|urg|vtalrm|xcpu|xfsz|iot|"
++			   "emt|stkflt|io|cld|pwr|info|lost|winch|unused)",
++			   PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++  reg_msgid = pcre2_compile
++    ("^[a-z0-9-_\\.\\$=\\+]+@([a-z0-9-_\\.]+)+(\\.?[a-z]+)+",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ void
+ ccze_wordcolor_shutdown (void)
+ {
+-  free (reg_pre);
+-  free (reg_post);
+-  free (reg_host);
+-  free (reg_mac);
+-  free (reg_email);
+-  free (reg_email2);
+-  free (reg_uri);
+-  free (reg_size);
+-  free (reg_ver);
+-  free (reg_time);
+-  free (reg_addr);
+-  free (reg_num);
+-  free (reg_sig);
+-  free (reg_hostip);
+-  free (reg_msgid);
++  pcre2_code_free (reg_pre);
++  pcre2_code_free (reg_post);
++  pcre2_code_free (reg_host);
++  pcre2_code_free (reg_mac);
++  pcre2_code_free (reg_email);
++  pcre2_code_free (reg_email2);
++  pcre2_code_free (reg_uri);
++  pcre2_code_free (reg_size);
++  pcre2_code_free (reg_ver);
++  pcre2_code_free (reg_time);
++  pcre2_code_free (reg_addr);
++  pcre2_code_free (reg_num);
++  pcre2_code_free (reg_sig);
++  pcre2_code_free (reg_hostip);
++  pcre2_code_free (reg_msgid);
+ }
+--- ccze.orig/src/ccze.h
++++ ccze/src/ccze.h
+@@ -25,7 +25,8 @@
+ #ifdef HAVE_SYSTEM_H
+ # include "system.h"
+ #endif
+-#include <pcre.h>
++#define PCRE2_CODE_UNIT_WIDTH 8
++#include <pcre2.h>
+ #include <ncurses.h>
+ #include <stddef.h>
+ 
+--- ccze.orig/src/mod_apm.c
++++ ccze/src/mod_apm.c
+@@ -27,21 +27,22 @@
+ static void ccze_apm_shutdown (void);
+ static int ccze_apm_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_apm;
++static pcre2_code *reg_apm;
+ 
+ static char *
+-ccze_apm_process (const char *str, int *offsets, int match)
++ccze_apm_process (pcre2_match_data *offsets)
+ {
+   char *battery, *charge, *rate, *stuff1, *elapsed, *remain;
+-  char *stuff2;
++  char *stuff2, *ret;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&battery);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&charge);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&rate);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&stuff1);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&elapsed);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&remain);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&stuff2);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&battery, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&charge, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&rate, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&stuff1, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&elapsed, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&remain, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&stuff2, &l);
+         
+   ccze_addstr (CCZE_COLOR_DEFAULT, "Battery:");
+   ccze_space ();
+@@ -62,48 +63,54 @@
+   ccze_addstr (CCZE_COLOR_DATE, remain);
+   ccze_space ();
+ 
+-  free (battery);
+-  free (charge);
+-  free (rate);
+-  free (stuff1);
+-  free (elapsed);
+-  free (remain);
++  ret = strdup (stuff2);
++  pcre2_substring_free (battery);
++  pcre2_substring_free (charge);
++  pcre2_substring_free (rate);
++  pcre2_substring_free (stuff1);
++  pcre2_substring_free (elapsed);
++  pcre2_substring_free (remain);
++  pcre2_substring_free (stuff2);
+   
+-  return stuff2;
++  return ret;
+ }
+ 
+ static void
+ ccze_apm_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_apm = pcre_compile
++  reg_apm = pcre2_compile
+     ("Battery: (-?\\d*)%, ((.*)charging) \\((-?\\d*)% ([^ ]*) "
+-     "(\\d*:\\d*:\\d*)\\), (\\d*:\\d*:\\d*) (.*)", 0, &error, &errptr, NULL);
++     "(\\d*:\\d*:\\d*)\\), (\\d*:\\d*:\\d*) (.*)", PCRE2_ZERO_TERMINATED,
++     0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_apm_shutdown (void)
+ {
+-  free (reg_apm);
++  pcre2_code_free (reg_apm);
+ }
+ 
+ static int
+ ccze_apm_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_apm, NULL, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_apm, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+       if (rest)
+-	*rest = ccze_apm_process (str, offsets, match);
++	*rest = ccze_apm_process (offsets);
+       else
+-	ccze_apm_process (str, offsets, match);
++	ccze_apm_process (offsets);
+       
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+     
+   return 0;
+ }
+--- ccze.orig/src/mod_distcc.c
++++ ccze/src/mod_distcc.c
+@@ -29,17 +29,17 @@
+ static void ccze_distcc_shutdown (void);
+ static int ccze_distcc_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_distcc;
+-static pcre_extra *hints_distcc;
++static pcre2_code *reg_distcc;
+ 
+ static char *
+-ccze_distcc_process (const char *str, int *offsets, int match)
++ccze_distcc_process (pcre2_match_data *offsets)
+ {
+-  char *pid, *func, *rest;
++  char *pid, *func, *rest, *ret;
++  size_t l;
+     
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&pid);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&func);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&rest);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&pid, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&func, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&rest, &l);
+   
+   ccze_addstr (CCZE_COLOR_PROC, "distccd");
+   ccze_addstr (CCZE_COLOR_PIDB, "[");
+@@ -53,41 +53,44 @@
+       ccze_space ();
+     }
+ 
+-  free (pid);
+-  free (func);
++  ret = strdup (rest);
++  pcre2_substring_free (pid);
++  pcre2_substring_free (func);
++  pcre2_substring_free (rest);
+   
+-  return rest;
++  return ret;
+ }
+ 
+ static void
+ ccze_distcc_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_distcc = pcre_compile ("^distccd\\[(\\d+)\\] (\\([^\\)]+\\))? ?(.*)",
+-			     0, &error, &errptr, NULL);
+-  hints_distcc = pcre_study (reg_distcc, 0, &error);
++  reg_distcc = pcre2_compile ("^distccd\\[(\\d+)\\] (\\([^\\)]+\\))? ?(.*)",
++                              PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_distcc_shutdown (void)
+ {
+-  free (reg_distcc);
+-  free (hints_distcc);
++  pcre2_code_free (reg_distcc);
+ }
+ 
+ static int
+ ccze_distcc_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_distcc, hints_distcc, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_distcc, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_distcc_process (str, offsets, match);
++      *rest = ccze_distcc_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_dpkg.c
++++ ccze/src/mod_dpkg.c
+@@ -28,17 +28,19 @@
+ static int ccze_dpkg_handle (const char *str, size_t length, char **rest);
+ 
+ 
+-static pcre *reg_dpkg_status, *reg_dpkg_action, *reg_dpkg_conffile;
++static pcre2_code *reg_dpkg_status, *reg_dpkg_action, *reg_dpkg_conffile;
+ 
+ static char *
+-ccze_dpkg_status_process(const char *str, int *offsets, int match)
++ccze_dpkg_status_process(pcre2_match_data *offsets)
+ {
+   char *date, *state, *pkg, *installed_version;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&state);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&pkg);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&installed_version);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&state, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&pkg, &l);
++  pcre2_substring_get_bynumber (offsets, 4,
++                                (unsigned char **)&installed_version, &l);
+ 
+   ccze_print_date(date);
+   ccze_space();
+@@ -51,24 +53,27 @@
+   ccze_addstr(CCZE_COLOR_DEFAULT, installed_version);
+   ccze_newline();
+ 
+-  free(date);
+-  free(state);
+-  free(pkg);
+-  free(installed_version);
++  pcre2_substring_free(date);
++  pcre2_substring_free(state);
++  pcre2_substring_free(pkg);
++  pcre2_substring_free(installed_version);
+ 
+   return NULL;
+ }
+ 
+ static char *
+-ccze_dpkg_action_process(const char *str, int *offsets, int match)
++ccze_dpkg_action_process(pcre2_match_data *offsets)
+ {
+   char *date, *action, *pkg, *installed_version, *available_version;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&action);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&pkg);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&installed_version);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&available_version);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&action, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&pkg, &l);
++  pcre2_substring_get_bynumber (offsets, 4,
++                                (unsigned char **)&installed_version, &l);
++  pcre2_substring_get_bynumber (offsets, 5,
++                                (unsigned char **)&available_version, &l);
+ 
+   ccze_print_date(date);
+   ccze_space();
+@@ -81,24 +86,25 @@
+   ccze_addstr(CCZE_COLOR_DEFAULT, available_version);
+   ccze_newline();
+ 
+-  free(date);
+-  free(action);
+-  free(pkg);
+-  free(installed_version);
+-  free(available_version);
++  pcre2_substring_free(date);
++  pcre2_substring_free(action);
++  pcre2_substring_free(pkg);
++  pcre2_substring_free(installed_version);
++  pcre2_substring_free(available_version);
+ 
+   return NULL;
+ }
+ 
+ static char *
+-ccze_dpkg_conffile_process(const char *str, int *offsets, int match)
++ccze_dpkg_conffile_process(pcre2_match_data *offsets)
+ {
+   char *date, *filename, *decision;
++  size_t l;
+   /* YYYY-MM-DD HH:MM:SS conffile <filename> <decision> */
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&filename);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&decision);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&filename, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&decision, &l);
+ 
+   ccze_print_date(date);
+   ccze_space();
+@@ -109,9 +115,9 @@
+   ccze_addstr(CCZE_COLOR_KEYWORD, decision);
+   ccze_newline();
+ 
+-  free(date);
+-  free(filename);
+-  free(decision);
++  pcre2_substring_free(date);
++  pcre2_substring_free(filename);
++  pcre2_substring_free(decision);
+ 
+   return NULL;
+ }
+@@ -120,60 +126,63 @@
+ static void
+ ccze_dpkg_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+   /* YYYY-MM-DD HH:MM:SS status <state> <pkg> <installed-version> */
+-  reg_dpkg_status = pcre_compile(
++  reg_dpkg_status = pcre2_compile(
+       "^([-\\d]{10}\\s[:\\d]{8})\\sstatus\\s(\\S+)\\s(\\S+)\\s(\\S+)$",
+-      0, &error, &errptr, NULL);
++      PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+   /* YYYY-MM-DD HH:MM:SS <action> <pkg> <installed-version> <available-version> */
+-  reg_dpkg_action = pcre_compile(
++  reg_dpkg_action = pcre2_compile(
+       "^([-\\d]{10}\\s[:\\d]{8})\\s(install|upgrade|remove|purge)\\s(\\S+)\\s(\\S+)\\s(\\S+)$",
+-      0, &error, &errptr, NULL);
++      PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+   /* YYYY-MM-DD HH:MM:SS conffile <filename> <decision> */
+-  reg_dpkg_conffile = pcre_compile(
++  reg_dpkg_conffile = pcre2_compile(
+       "^([-\\d]{10}\\s[:\\d]{8})\\sconffile\\s(\\S+)\\s(install|keep)$",
+-      0, &error, &errptr, NULL);
++      PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+ }
+ 
+ static void
+ ccze_dpkg_shutdown (void)
+ {
+-  free (reg_dpkg_status);
+-  free (reg_dpkg_action);
+-  free (reg_dpkg_conffile);
++  pcre2_code_free (reg_dpkg_status);
++  pcre2_code_free (reg_dpkg_action);
++  pcre2_code_free (reg_dpkg_conffile);
+ }
+ 
+ static int
+ ccze_dpkg_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_dpkg_status, NULL, str, length,
+-                  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_dpkg_status, str, length, 0, 0, offsets, NULL) >= 0)
+   {
+-      *rest = ccze_dpkg_status_process (str, offsets, match);
++      *rest = ccze_dpkg_status_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+   }
+ 
+-  if ((match = pcre_exec (reg_dpkg_action, NULL, str, length,
+-                  0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_dpkg_action, str, length, 0, 0, offsets, NULL) >= 0)
+   {
+-      *rest = ccze_dpkg_action_process (str, offsets, match);
++      *rest = ccze_dpkg_action_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+   }
+ 
+-  if ((match = pcre_exec (reg_dpkg_conffile, NULL, str, length,
+-                  0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_dpkg_conffile, str, length, 0, 0, offsets, NULL) >= 0)
+   {
+-      *rest = ccze_dpkg_conffile_process (str, offsets, match);
++      *rest = ccze_dpkg_conffile_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+   }
+ 
++  pcre2_match_data_free (offsets);
++
+   return 0;
+ }
+ 
+--- ccze.orig/src/mod_exim.c
++++ ccze/src/mod_exim.c
+@@ -27,28 +27,29 @@
+ static void ccze_exim_shutdown (void);
+ static int ccze_exim_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_exim, *reg_exim_actiontype, *reg_exim_uniqn;
+-static pcre_extra *hints_exim;
++static pcre2_code *reg_exim, *reg_exim_actiontype, *reg_exim_uniqn;
+ 
+ static char *
+-ccze_exim_process (const char *str, int *offsets, int match)
++ccze_exim_process (pcre2_match_data *offsets)
+ {
+-  char *date, *msg=NULL, *action=NULL, *uniqn=NULL, *msgfull;
+-  int match2, offsets2[99];
++  char *date, *msg=NULL, *action=NULL, *uniqn=NULL, *ret=NULL, *msgfull;
++  pcre2_match_data *offsets2;
++  size_t l;
+   ccze_color_t color = CCZE_COLOR_UNKNOWN;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&msgfull);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&msgfull, &l);
+ 
+-  if ((match2 = pcre_exec (reg_exim_actiontype, NULL, msgfull,
+-			   strlen (msgfull), 0, 0, offsets2, 99)) >= 0)
++  offsets2 = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_exim_actiontype, msgfull, strlen (msgfull),
++                   0, 0, offsets2, NULL) >= 0)
+     {
+-      pcre_get_substring (msgfull, offsets2, match2, 1,
+-			  (const char **)&uniqn);
+-      pcre_get_substring (msgfull, offsets2, match2, 2,
+-			  (const char **)&action);
+-      pcre_get_substring (msgfull, offsets2, match2, 3,
+-			  (const char **)&msg);
++      pcre2_substring_get_bynumber (offsets2, 1,
++			            (unsigned char **)&uniqn, &l);
++      pcre2_substring_get_bynumber (offsets2, 2,
++			            (unsigned char **)&action, &l);
++      pcre2_substring_get_bynumber (offsets2, 3,
++			            (unsigned char **)&msg, &l);
+       if (action[0] == '<')
+ 	color = CCZE_COLOR_INCOMING;
+       else if (action[1] == '>')
+@@ -56,16 +57,16 @@
+       else if (action[0] == '=' || action[0] == '*')
+ 	color = CCZE_COLOR_ERROR;
+     }
+-  else if ((match2 = pcre_exec (reg_exim_uniqn, NULL, msgfull,
+-				strlen (msgfull), 0, 0, offsets2, 99)) >= 0)
++  else if (pcre2_match (reg_exim_uniqn, msgfull, strlen (msgfull),
++                        0, 0, offsets2, NULL) >= 0)
+     {
+-      pcre_get_substring (msgfull, offsets2, match2, 1,
+-			  (const char **)&uniqn);
+-      pcre_get_substring (msgfull, offsets2, match2, 2,
+-			  (const char **)&msg);
++      pcre2_substring_get_bynumber (offsets2, 1,
++			            (unsigned char **)&uniqn, &l);
++      pcre2_substring_get_bynumber (offsets2, 2,
++			            (unsigned char **)&msg, &l);
+     }
+   else
+-    msg = strdup (msgfull);
++    ret = strdup (msgfull);
+   
+   ccze_print_date (date);
+   ccze_space ();
+@@ -82,47 +83,58 @@
+       ccze_space();
+     }
+ 
+-  return msg;
++  if (!ret)
++    ret = strdup (msg);
++
++  pcre2_substring_free (date);
++  pcre2_substring_free (msgfull);
++  pcre2_substring_free (uniqn);
++  pcre2_substring_free (action);
++  pcre2_substring_free (msg);
++  pcre2_match_data_free (offsets2);
++
++  return ret;
+ }
+ 
+ static void
+ ccze_exim_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_exim = pcre_compile
+-    ("^(\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2})\\s(.*)$", 0,
+-     &error, &errptr, NULL);
+-  hints_exim = pcre_study (reg_exim, 0, &error);
+-
+-  reg_exim_actiontype = pcre_compile
+-    ("^(\\S{16})\\s([<=\\*][=>\\*])\\s(\\S+.*)$", 0, &error,
+-     &errptr, NULL);
+-  reg_exim_uniqn = pcre_compile ("^(\\S{16})\\s(.*)$", 0, &error,
+-				 &errptr, NULL);
++  reg_exim = pcre2_compile
++    ("^(\\d{4}-\\d{2}-\\d{2}\\s\\d{2}:\\d{2}:\\d{2})\\s(.*)$",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++
++  reg_exim_actiontype = pcre2_compile
++    ("^(\\S{16})\\s([<=\\*][=>\\*])\\s(\\S+.*)$", PCRE2_ZERO_TERMINATED,
++     0, &error, &errptr, NULL);
++  reg_exim_uniqn = pcre2_compile ("^(\\S{16})\\s(.*)$", PCRE2_ZERO_TERMINATED,
++                                  0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_exim_shutdown (void)
+ {
+-  free (reg_exim);
+-  free (hints_exim);
+-  free (reg_exim_actiontype);
+-  free (reg_exim_uniqn);
++  pcre2_code_free (reg_exim);
++  pcre2_code_free (reg_exim_actiontype);
++  pcre2_code_free (reg_exim_uniqn);
+ }
+ 
+ static int
+ ccze_exim_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_exim, hints_exim, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_exim, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_exim_process (str, offsets, match);
++      *rest = ccze_exim_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_fetchmail.c
++++ ccze/src/mod_fetchmail.c
+@@ -27,18 +27,19 @@
+ static void ccze_fetchmail_shutdown (void);
+ static int ccze_fetchmail_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_fetchmail;
++static pcre2_code *reg_fetchmail;
+ 
+ static char *
+-ccze_fetchmail_process (const char *str, int *offsets, int match)
++ccze_fetchmail_process (pcre2_match_data *offsets)
+ {
+-  char *start, *addy, *current, *full, *rest;
++  char *start, *addy, *current, *full, *rest, *ret;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&start);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&addy);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&current);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&full);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&rest);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&start, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&addy, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&current, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&full, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&rest, &l);
+ 
+   ccze_addstr (CCZE_COLOR_DEFAULT, start);
+   ccze_space ();
+@@ -51,45 +52,51 @@
+   ccze_addstr (CCZE_COLOR_NUMBERS, full);
+   ccze_space ();
+   
+-  free (start);
+-  free (addy);
+-  free (current);
+-  free (full);
++  ret = strdup (rest);
++  pcre2_substring_free (start);
++  pcre2_substring_free (addy);
++  pcre2_substring_free (current);
++  pcre2_substring_free (full);
++  pcre2_substring_free (rest);
+   
+-  return rest;
++  return ret;
+ }
+ 
+ static void
+ ccze_fetchmail_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_fetchmail = pcre_compile
+-    ("(reading message) ([^@]*@[^:]*):([0-9]*) of ([0-9]*) (.*)", 0,
+-     &error, &errptr, NULL);
++  reg_fetchmail = pcre2_compile
++    ("(reading message) ([^@]*@[^:]*):([0-9]*) of ([0-9]*) (.*)",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_fetchmail_shutdown (void)
+ {
+-  free (reg_fetchmail);
++  pcre2_code_free (reg_fetchmail);
+ }
+ 
+ static int
+ ccze_fetchmail_handle (const char *str, size_t length, char **rest)
+ {
+-  int offsets[99], match;
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_fetchmail, NULL, str, length, 0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_fetchmail, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+       if (rest)
+-	*rest = ccze_fetchmail_process (str, offsets, match);
++	*rest = ccze_fetchmail_process (offsets);
+       else
+-	ccze_fetchmail_process (str, offsets, match);
++	ccze_fetchmail_process (offsets);
+       
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_ftpstats.c
++++ ccze/src/mod_ftpstats.c
+@@ -29,22 +29,22 @@
+ static void ccze_ftpstats_shutdown (void);
+ static int ccze_ftpstats_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_ftpstats;
+-static pcre_extra *hints_ftpstats;
++static pcre2_code *reg_ftpstats;
+ 
+ static char *
+-ccze_ftpstats_process (const char *str, int *offsets, int match)
++ccze_ftpstats_process (pcre2_match_data *offsets)
+ {
+   char *date, *sessionid, *user, *host, *type, *size, *duration, *file;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&sessionid);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&user);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&type);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&size);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&duration);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&file);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&sessionid, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&user, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&type, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&size, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&duration, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&file, &l);
+ 
+   ccze_print_date (date);
+   ccze_space ();
+@@ -63,14 +63,14 @@
+   ccze_addstr (CCZE_COLOR_DIR, file);
+   ccze_newline ();
+ 
+-  free (file);
+-  free (duration);
+-  free (size);
+-  free (type);
+-  free (host);
+-  free (user);
+-  free (sessionid);
+-  free (date);
++  pcre2_substring_free (file);
++  pcre2_substring_free (duration);
++  pcre2_substring_free (size);
++  pcre2_substring_free (type);
++  pcre2_substring_free (host);
++  pcre2_substring_free (user);
++  pcre2_substring_free (sessionid);
++  pcre2_substring_free (date);
+   
+   return NULL;
+ }
+@@ -78,34 +78,35 @@
+ static void
+ ccze_ftpstats_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_ftpstats = pcre_compile
++  reg_ftpstats = pcre2_compile
+     ("^(\\d{9,10})\\s([\\da-f]+\\.[\\da-f]+)\\s([^\\s]+)\\s([^\\s]+)"
+      "\\s(U|D)\\s(\\d+)\\s(\\d+)\\s(.*)$",
+-     0, &error, &errptr, NULL);
+-  hints_ftpstats = pcre_study (reg_ftpstats, 0, &error);
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_ftpstats_shutdown (void)
+ {
+-  free (reg_ftpstats);
+-  free (hints_ftpstats);
++  pcre2_code_free (reg_ftpstats);
+ }
+ 
+ static int
+ ccze_ftpstats_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_ftpstats, hints_ftpstats, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_ftpstats, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_ftpstats_process (str, offsets, match);
++      *rest = ccze_ftpstats_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_httpd.c
++++ ccze/src/mod_httpd.c
+@@ -27,8 +27,7 @@
+ static void ccze_httpd_shutdown (void);
+ static int ccze_httpd_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_httpd_access, *reg_httpd_error;
+-static pcre_extra *hints_httpd_access, *hints_httpd_error;
++static pcre2_code *reg_httpd_access, *reg_httpd_error;
+ 
+ static ccze_color_t
+ _ccze_httpd_error (const char *level)
+@@ -45,20 +44,21 @@
+ }
+ 
+ static char *
+-ccze_httpd_access_log_process (const char *str, int *offsets, int match)
++ccze_httpd_access_log_process (pcre2_match_data *offsets)
+ {
+   char *host, *vhost, *user, *date, *full_action, *method, *http_code;
+   char *gsize, *other;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&vhost);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&user);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&full_action);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&method);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&http_code);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&gsize);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&other);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&vhost, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&user, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&full_action, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&method, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&http_code, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&gsize, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&other, &l);
+ 
+   ccze_addstr (CCZE_COLOR_HOST, vhost);
+   ccze_space();
+@@ -86,26 +86,29 @@
+   ccze_addstr (CCZE_COLOR_DEFAULT, other);
+   ccze_newline ();
+   
+-  free (host);
+-  free (user);
+-  free (date);
+-  free (method);
+-  free (full_action);
+-  free (http_code);
+-  free (gsize);
++  pcre2_substring_free (vhost);
++  pcre2_substring_free (host);
++  pcre2_substring_free (user);
++  pcre2_substring_free (date);
++  pcre2_substring_free (method);
++  pcre2_substring_free (full_action);
++  pcre2_substring_free (http_code);
++  pcre2_substring_free (gsize);
++  pcre2_substring_free (other);
+ 
+   return NULL;
+ }
+ 
+ static char *
+-ccze_httpd_error_log_process (const char *str, int *offsets, int match)
++ccze_httpd_error_log_process (pcre2_match_data *offsets)
+ {
+   char *date, *level, *msg;
+   ccze_color_t lcol;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&level);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&msg);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&level, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&msg, &l);
+ 
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_space ();
+@@ -118,9 +121,9 @@
+ 
+   ccze_newline ();
+ 
+-  free (date);
+-  free (level);
+-  free (msg);
++  pcre2_substring_free (date);
++  pcre2_substring_free (level);
++  pcre2_substring_free (msg);
+ 
+   return NULL;
+ }
+@@ -128,49 +131,49 @@
+ static void
+ ccze_httpd_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_httpd_access = pcre_compile
++  reg_httpd_access = pcre2_compile
+     ("^(\\S*)\\s(\\S*)?\\s?-\\s(\\S+)\\s(\\[\\d{1,2}\\/\\S*"
+      "\\/\\d{4}:\\d{2}:\\d{2}:\\d{2}.{0,6}[^\\]]*\\])\\s"
+      "(\"([^ \"]+)\\s*[^\"]*\")\\s(\\d{3})\\s(\\d+|-)\\s*(.*)$",
+-     0, &error, &errptr, NULL);
+-  hints_httpd_access = pcre_study (reg_httpd_access, 0, &error);
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+-  reg_httpd_error = pcre_compile
++  reg_httpd_error = pcre2_compile
+     ("^(\\[\\w{3}\\s\\w{3}\\s{1,2}\\d{1,2}\\s\\d{2}:\\d{2}:\\d{2}\\s"
+-     "\\d{4}\\])\\s(\\[\\w*\\])\\s(.*)$", 0, &error, &errptr, NULL);
+-  hints_httpd_error = pcre_study (reg_httpd_error, 0, &error);
++     "\\d{4}\\])\\s(\\[\\w*\\])\\s(.*)$",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_httpd_shutdown (void)
+ {
+-  free (reg_httpd_access);
+-  free (hints_httpd_access);
+-  free (reg_httpd_error);
+-  free (hints_httpd_error);
++  pcre2_code_free (reg_httpd_access);
++  pcre2_code_free (reg_httpd_error);
+ }
+ 
+ static int
+ ccze_httpd_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+ 
+-  if ((match = pcre_exec (reg_httpd_access, hints_httpd_access,
+-			  str, length, 0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_httpd_access, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_httpd_access_log_process (str, offsets, match);
++      *rest = ccze_httpd_access_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+-  if ((match = pcre_exec (reg_httpd_error, hints_httpd_error,
+-			  str, length, 0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_httpd_error, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_httpd_error_log_process (str, offsets, match);
++      *rest = ccze_httpd_error_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+ 
++  pcre2_match_data_free (offsets);
++
+   return 0;
+ }
+ 
+--- ccze.orig/src/mod_icecast.c
++++ ccze/src/mod_icecast.c
+@@ -29,20 +29,20 @@
+ static void ccze_icecast_shutdown (void);
+ static int ccze_icecast_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_icecast, *reg_icecast_usage;
+-static pcre_extra *hints_icecast, *hints_icecast_usage;
++static pcre2_code *reg_icecast, *reg_icecast_usage;
+ 
+ static char *
+-ccze_icecast_process (const char *str, int *offsets, int match)
++ccze_icecast_process (pcre2_match_data *offsets)
+ {
+   char *date = NULL, *admin = NULL, *threadno = NULL, *thread = NULL;
+-  char *rest = NULL;
++  char *rest = NULL, *ret;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&admin);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&threadno);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&thread);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&rest);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&admin, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&threadno, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&thread, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&rest, &l);
+   
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_space ();
+@@ -65,29 +65,32 @@
+     }
+   ccze_space ();
+ 
+-  free (date);
+-  free (admin);
+-  free (threadno);
+-  free (thread);
++  ret = strdup (rest);
++  pcre2_substring_free (date);
++  pcre2_substring_free (admin);
++  pcre2_substring_free (threadno);
++  pcre2_substring_free (thread);
++  pcre2_substring_free (rest);
+   
+-  return rest;
++  return ret;
+ }
+ 
+ static char *
+-ccze_icecast_usage_process (const char *str, int *offsets, int match)
++ccze_icecast_usage_process (pcre2_match_data *offsets)
+ {
+   char *date, *threadno, *thread, *date2, *bw, *src;
+   char *unit, *clients, *admins;
++  size_t l;
+     
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&threadno);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&thread);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&date2);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&bw);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&unit);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&src);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&clients);
+-  pcre_get_substring (str, offsets, match, 10, (const char **)&admins);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&threadno, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&thread, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&date2, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&bw, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&unit, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&src, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&clients, &l);
++  pcre2_substring_get_bynumber (offsets, 10, (unsigned char **)&admins, &l);
+   
+   
+   ccze_addstr (CCZE_COLOR_DATE, date);
+@@ -121,15 +124,15 @@
+ 
+   ccze_newline ();
+   
+-  free (date);
+-  free (threadno);
+-  free (thread);
+-  free (date2);
+-  free (bw);
+-  free (unit);
+-  free (src);
+-  free (clients);
+-  free (admins);
++  pcre2_substring_free (date);
++  pcre2_substring_free (threadno);
++  pcre2_substring_free (thread);
++  pcre2_substring_free (date2);
++  pcre2_substring_free (bw);
++  pcre2_substring_free (unit);
++  pcre2_substring_free (src);
++  pcre2_substring_free (clients);
++  pcre2_substring_free (admins);
+   
+   return NULL;
+ }
+@@ -137,51 +140,51 @@
+ static void
+ ccze_icecast_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_icecast = pcre_compile ("^(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
+-			      "(Admin)? *(\\[(\\d+)?:?([^\\]]*)\\]) (.*)$",
+-			  0, &error, &errptr, NULL);
+-  hints_icecast = pcre_study (reg_icecast, 0, &error);
+-
+-  reg_icecast_usage = pcre_compile ("^(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
+-				    "(\\[(\\d+):([^\\]]*)\\]) "
+-				    "(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
+-				    "Bandwidth:([\\d\\.]+)([^ ]*) "
+-				    "Sources:(\\d+) "
+-				    "Clients:(\\d+) Admins:(\\d+)",
+-				    0, &error, &errptr, NULL);
+-  hints_icecast_usage = pcre_study (reg_icecast_usage, 0, &error);
++  reg_icecast = pcre2_compile ("^(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
++                               "(Admin)? *(\\[(\\d+)?:?([^\\]]*)\\]) (.*)$",
++                               PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
++
++  reg_icecast_usage = pcre2_compile ("^(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
++                                     "(\\[(\\d+):([^\\]]*)\\]) "
++                                     "(\\[\\d+/.../\\d+:\\d+:\\d+:\\d+\\]) "
++                                     "Bandwidth:([\\d\\.]+)([^ ]*) "
++                                     "Sources:(\\d+) "
++                                     "Clients:(\\d+) Admins:(\\d+)",
++                                     PCRE2_ZERO_TERMINATED, 0,
++                                     &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_icecast_shutdown (void)
+ {
+-  free (reg_icecast);
+-  free (hints_icecast);
+-  free (reg_icecast_usage);
+-  free (hints_icecast_usage);
++  pcre2_code_free (reg_icecast);
++  pcre2_code_free (reg_icecast_usage);
+ }
+ 
+ static int
+ ccze_icecast_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+ 
+-  if ((match = pcre_exec (reg_icecast_usage, hints_icecast_usage,
+-			  str, length, 0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_icecast_usage, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_icecast_usage_process (str, offsets, match);
++      *rest = ccze_icecast_usage_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+   
+-  if ((match = pcre_exec (reg_icecast, hints_icecast, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_icecast, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_icecast_process (str, offsets, match);
++      *rest = ccze_icecast_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_oops.c
++++ ccze/src/mod_oops.c
+@@ -29,21 +29,21 @@
+ static void ccze_oops_shutdown (void);
+ static int ccze_oops_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_oops;
+-static pcre_extra *hints_oops;
++static pcre2_code *reg_oops;
+ 
+ static char *
+-ccze_oops_process (const char *str, int *offsets, int match)
++ccze_oops_process (pcre2_match_data *offsets)
+ {
+   char *date, *sp1, *id, *field, *sp2, *value, *etc;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&sp1);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&id);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&field);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&sp2);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&value);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&etc);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&sp1, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&id, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&field, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&sp2, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&value, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&etc, &l);
+   
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_addstr (CCZE_COLOR_DEFAULT, sp1);
+@@ -65,13 +65,13 @@
+ 
+   ccze_newline ();
+   
+-  free (date);
+-  free (sp1);
+-  free (id);
+-  free (field);
+-  free (sp2);
+-  free (value);
+-  free (etc);
++  pcre2_substring_free (date);
++  pcre2_substring_free (sp1);
++  pcre2_substring_free (id);
++  pcre2_substring_free (field);
++  pcre2_substring_free (sp2);
++  pcre2_substring_free (value);
++  pcre2_substring_free (etc);
+   
+   return NULL;
+ }
+@@ -79,36 +79,37 @@
+ static void
+ ccze_oops_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_oops = pcre_compile
++  reg_oops = pcre2_compile
+     ("^((Mon|Tue|Wed|Thu|Fri|Sat|Sun) "
+      "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) "
+      "\\d+ \\d+:\\d+:\\d+ \\d+)(\\s+)\\[([\\dxa-fA-F]+)\\]"
+      "statistics\\(\\): ([\\S]+)(\\s*): (\\d+)(.*)",
+-     0, &error, &errptr, NULL);
+-  hints_oops = pcre_study (reg_oops, 0, &error);
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_oops_shutdown (void)
+ {
+-  free (reg_oops);
+-  free (hints_oops);
++  pcre2_code_free (reg_oops);
+ }
+ 
+ static int
+ ccze_oops_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_oops, hints_oops, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_oops, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_oops_process (str, offsets, match);
++      *rest = ccze_oops_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_php.c
++++ ccze/src/mod_php.c
+@@ -29,56 +29,59 @@
+ static void ccze_php_shutdown (void);
+ static int ccze_php_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_php;
+-static pcre_extra *hints_php;
++static pcre2_code *reg_php;
+ 
+ static char *
+-ccze_php_process (const char *str, int *offsets, int match)
++ccze_php_process (pcre2_match_data *offsets)
+ {
+-  char *date = NULL, *rest = NULL;
++  char *date = NULL, *rest = NULL, *ret;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&rest);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&rest, &l);
+   
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_space ();
+   ccze_addstr (CCZE_COLOR_KEYWORD, "PHP");
+   ccze_space ();
+ 
+-  free (date);
++  ret = strdup (rest);
++  pcre2_substring_free (date);
++  pcre2_substring_free (rest);
+ 
+-  return rest;
++  return ret;
+ }
+ 
+ static void
+ ccze_php_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_php = pcre_compile ("^(\\[\\d+-...-\\d+ \\d+:\\d+:\\d+\\]) PHP (.*)$",
+-			  0, &error, &errptr, NULL);
+-  hints_php = pcre_study (reg_php, 0, &error);
++  reg_php = pcre2_compile ("^(\\[\\d+-...-\\d+ \\d+:\\d+:\\d+\\]) PHP (.*)$",
++                           PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_php_shutdown (void)
+ {
+-  free (reg_php);
+-  free (hints_php);
++  pcre2_code_free (reg_php);
+ }
+ 
+ static int
+ ccze_php_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_php, hints_php, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_php, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_php_process (str, offsets, match);
++      *rest = ccze_php_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_postfix.c
++++ ccze/src/mod_postfix.c
+@@ -29,7 +29,7 @@
+ static void ccze_postfix_shutdown (void);
+ static int ccze_postfix_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_postfix;
++static pcre2_code *reg_postfix;
+ 
+ static int
+ _ccze_postfix_process_one (const char *s, char **rest)
+@@ -53,14 +53,15 @@
+ }
+ 
+ static char *
+-ccze_postfix_process (const char *str, int *offsets, int match)
++ccze_postfix_process (pcre2_match_data *offsets)
+ {
+   char *spoolid, *s, *rest, *tmp;
+   int r;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&spoolid);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&s);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&rest);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&spoolid, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&s, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&rest, &l);
+ 
+   ccze_addstr (CCZE_COLOR_UNIQN, spoolid);
+   ccze_addstr (CCZE_COLOR_DEFAULT, ": ");
+@@ -77,6 +78,10 @@
+       if (tmp)
+ 	ccze_addstr (CCZE_COLOR_DEFAULT, ",");
+     } while (!r && (tmp != NULL));
++
++  pcre2_substring_free (spoolid);
++  pcre2_substring_free (s);
++  pcre2_substring_free (rest);
+   
+   return NULL;
+ }
+@@ -84,35 +89,38 @@
+ static void
+ ccze_postfix_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_postfix = pcre_compile
++  reg_postfix = pcre2_compile
+     ("^([\\dA-F]+): ((client|to|message-id|uid|resent-message-id|from)(=.*))",
+-     0, &error, &errptr, NULL);
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_postfix_shutdown (void)
+ {
+-  free (reg_postfix);
++  pcre2_code_free (reg_postfix);
+ }
+ 
+ static int
+ ccze_postfix_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_postfix, NULL, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_postfix, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+       if (rest)
+-	*rest = ccze_postfix_process (str, offsets, match);
++	*rest = ccze_postfix_process (offsets);
+       else
+-	ccze_postfix_process (str, offsets, match);
++	ccze_postfix_process (offsets);
+       
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+     
+   return 0;
+ }
+--- ccze.orig/src/mod_procmail.c
++++ ccze/src/mod_procmail.c
+@@ -27,44 +27,49 @@
+ static void ccze_procmail_shutdown (void);
+ static int ccze_procmail_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_procmail;
+-static pcre_extra *hints_procmail;
++static pcre2_code *reg_procmail;
+ 
+ static char *
+-ccze_procmail_process (const char *str, int *offsets, int match)
++ccze_procmail_process (const char *str, pcre2_match_data *offsets)
+ {
+   char *header = NULL, *value = NULL, *space1 = NULL;
+   char *space2 = NULL, *extra = NULL;
+   int handled = 0;
++  size_t l;
+   ccze_color_t col = CCZE_COLOR_UNKNOWN;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&space1);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&header);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&value);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&space2);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&extra);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&space1, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&header, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&value, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&space2, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&extra, &l);
+   
+-  if (!strcasecmp ("from", header) || !strcasecmp (">from", header))
++  if (header)
+     {
+-      col = CCZE_COLOR_EMAIL;
+-      handled = 1;
+-    }
+-  if (!strcasecmp ("subject:", header))
+-    {
+-      col = CCZE_COLOR_SUBJECT;
+-      handled = 1;
+-    }
+-  if (!strcasecmp ("folder:", header))
+-    {
+-      col = CCZE_COLOR_DIR;
+-      handled = 1;
++      if (!strcasecmp ("from", header) || !strcasecmp (">from", header))
++        {
++          col = CCZE_COLOR_EMAIL;
++          handled = 1;
++        }
++      if (!strcasecmp ("subject:", header))
++        {
++          col = CCZE_COLOR_SUBJECT;
++          handled = 1;
++        }
++      if (!strcasecmp ("folder:", header))
++        {
++          col = CCZE_COLOR_DIR;
++          handled = 1;
++        }
+     }
+ 
+   if (!handled)
+     {
+-      free (header);
+-      free (value);
+-      free (extra);
++      pcre2_substring_free (header);
++      pcre2_substring_free (value);
++      pcre2_substring_free (extra);
++      pcre2_substring_free (space1);
++      pcre2_substring_free (space2);
+       return strdup (str);
+     }
+ 
+@@ -85,9 +90,11 @@
+   ccze_addstr (col, extra);
+   ccze_newline();
+     
+-  free (extra);
+-  free (header);
+-  free (value);
++  pcre2_substring_free (extra);
++  pcre2_substring_free (header);
++  pcre2_substring_free (value);
++  pcre2_substring_free (space1);
++  pcre2_substring_free (space2);
+ 
+   return NULL;
+ }
+@@ -95,33 +102,34 @@
+ static void
+ ccze_procmail_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_procmail = pcre_compile
+-    ("^(\\s*)(>?From|Subject:|Folder:)?\\s(\\S+)(\\s+)?(.*)", 0,
+-     &error, &errptr, NULL);
+-  hints_procmail = pcre_study (reg_procmail, 0, &error);
++  reg_procmail = pcre2_compile
++    ("^(\\s*)(>?From|Subject:|Folder:)?\\s(\\S+)(\\s+)?(.*)",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_procmail_shutdown (void)
+ {
+-  free (reg_procmail);
+-  free (hints_procmail);
++  pcre2_code_free (reg_procmail);
+ }
+ 
+ static int
+ ccze_procmail_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_procmail, hints_procmail, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_procmail, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_procmail_process (str, offsets, match);
++      *rest = ccze_procmail_process (str, offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_proftpd.c
++++ ccze/src/mod_proftpd.c
+@@ -27,22 +27,22 @@
+ static void ccze_proftpd_shutdown (void);
+ static int ccze_proftpd_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_proftpd_access, *reg_proftpd_auth;
+-static pcre_extra *hints_proftpd_access, *hints_proftpd_auth;
++static pcre2_code *reg_proftpd_access, *reg_proftpd_auth;
+ 
+ static char *
+-ccze_proftpd_access_log_process (const char *str, int *offsets, int match)
++ccze_proftpd_access_log_process (pcre2_match_data *offsets)
+ {
+   char *host, *user, *auser, *date, *command, *file, *ftpcode, *size;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&user);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&auser);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&command);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&file);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&ftpcode);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&size);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&user, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&auser, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&command, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&file, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&ftpcode, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&size, &l);
+ 
+   ccze_addstr (CCZE_COLOR_HOST, host);
+   ccze_space ();
+@@ -69,30 +69,31 @@
+   
+   ccze_newline ();
+ 
+-  free (size);
+-  free (ftpcode);
+-  free (file);
+-  free (command);
+-  free (date);
+-  free (auser);
+-  free (user);
+-  free (host);
++  pcre2_substring_free (size);
++  pcre2_substring_free (ftpcode);
++  pcre2_substring_free (file);
++  pcre2_substring_free (command);
++  pcre2_substring_free (date);
++  pcre2_substring_free (auser);
++  pcre2_substring_free (user);
++  pcre2_substring_free (host);
+ 
+   return NULL;
+ }
+ 
+ static char *
+-ccze_proftpd_auth_log_process (const char *str, int *offsets, int match)
++ccze_proftpd_auth_log_process (pcre2_match_data *offsets)
+ {
+   char *servhost, *pid, *remhost, *date, *cmd, *value, *ftpcode;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&servhost);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&pid);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&remhost);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&cmd);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&value);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&ftpcode);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&servhost, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&pid, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&remhost, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&cmd, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&value, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&ftpcode, &l);
+ 
+   ccze_addstr (CCZE_COLOR_HOST, servhost);
+   ccze_space ();
+@@ -118,13 +119,13 @@
+   
+   ccze_newline ();
+     
+-  free (ftpcode);
+-  free (value);
+-  free (cmd);
+-  free (date);
+-  free (remhost);
+-  free (pid);
+-  free (servhost);
++  pcre2_substring_free (ftpcode);
++  pcre2_substring_free (value);
++  pcre2_substring_free (cmd);
++  pcre2_substring_free (date);
++  pcre2_substring_free (remhost);
++  pcre2_substring_free (pid);
++  pcre2_substring_free (servhost);
+ 
+   return NULL;
+ }
+@@ -132,49 +133,50 @@
+ static void
+ ccze_proftpd_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_proftpd_access = pcre_compile
++  reg_proftpd_access = pcre2_compile
+     ("^(\\d+\\.\\d+\\.\\d+\\.\\d+) (\\S+) (\\S+) "
+      "\\[(\\d{2}/.{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [\\-\\+]\\d{4})\\] "
+-     "\"([A-Z]+) ([^\"]+)\" (\\d{3}) (-|\\d+)", 0, &error, &errptr, NULL);
+-  hints_proftpd_access = pcre_study (reg_proftpd_access, 0, &error);
++     "\"([A-Z]+) ([^\"]+)\" (\\d{3}) (-|\\d+)", PCRE2_ZERO_TERMINATED,
++     0, &error, &errptr, NULL);
+ 
+-  reg_proftpd_auth = pcre_compile
++  reg_proftpd_auth = pcre2_compile
+     ("^(\\S+) ftp server \\[(\\d+)\\] (\\d+\\.\\d+\\.\\d+\\.\\d+) "
+      "\\[(\\d{2}/.{3}/\\d{4}:\\d{2}:\\d{2}:\\d{2} [\\-\\+]\\d{4})\\] "
+-     "\"([A-Z]+) ([^\"]+)\" (\\d{3})", 0, &error, &errptr, NULL);
+-  hints_proftpd_auth = pcre_study (reg_proftpd_auth, 0, &error);
++     "\"([A-Z]+) ([^\"]+)\" (\\d{3})", PCRE2_ZERO_TERMINATED,
++     0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_proftpd_shutdown (void)
+ {
+-  free (reg_proftpd_auth);
+-  free (hints_proftpd_auth);
+-  free (reg_proftpd_access);
+-  free (hints_proftpd_access);
++  pcre2_code_free (reg_proftpd_auth);
++  pcre2_code_free (reg_proftpd_access);
+ }
+ 
+ static int
+ ccze_proftpd_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+ 
+-  if ((match = pcre_exec (reg_proftpd_access, hints_proftpd_access,
+-			  str, length, 0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_proftpd_access, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_proftpd_access_log_process (str, offsets, match);
++      *rest = ccze_proftpd_access_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+-  if ((match = pcre_exec (reg_proftpd_auth, hints_proftpd_auth,
+-			  str, length, 0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_proftpd_auth, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_proftpd_auth_log_process (str, offsets, match);
++      *rest = ccze_proftpd_auth_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+ 
++  pcre2_match_data_free (offsets);
++
+   return 0;
+ }
+ 
+--- ccze.orig/src/mod_squid.c
++++ ccze/src/mod_squid.c
+@@ -27,8 +27,7 @@
+ static void ccze_squid_shutdown (void);
+ static int ccze_squid_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_squid_access, *reg_squid_store, *reg_squid_cache;
+-static pcre_extra *hints_squid_access, *hints_squid_store, *hints_squid_cache;
++static pcre2_code *reg_squid_access, *reg_squid_store, *reg_squid_cache;
+ 
+ static ccze_color_t
+ _ccze_proxy_action (const char *action)
+@@ -82,24 +81,25 @@
+ }
+ 
+ static char *
+-ccze_squid_access_log_process (const char *str, int *offsets, int match)
++ccze_squid_access_log_process (pcre2_match_data *offsets)
+ {
+   char *date, *espace, *elaps, *host, *action, *httpc, *gsize;
+   char *method, *uri, *ident, *hierar, *fhost, *ctype;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&espace);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&elaps);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&action);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&httpc);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&gsize);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&method);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&uri);
+-  pcre_get_substring (str, offsets, match, 10, (const char **)&ident);
+-  pcre_get_substring (str, offsets, match, 11, (const char **)&hierar);
+-  pcre_get_substring (str, offsets, match, 12, (const char **)&fhost);
+-  pcre_get_substring (str, offsets, match, 13, (const char **)&ctype);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&espace, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&elaps, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&action, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&httpc, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&gsize, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&method, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&uri, &l);
++  pcre2_substring_get_bynumber (offsets, 10, (unsigned char **)&ident, &l);
++  pcre2_substring_get_bynumber (offsets, 11, (unsigned char **)&hierar, &l);
++  pcre2_substring_get_bynumber (offsets, 12, (unsigned char **)&fhost, &l);
++  pcre2_substring_get_bynumber (offsets, 13, (unsigned char **)&ctype, &l);
+ 
+   ccze_print_date (date);
+   ccze_addstr (CCZE_COLOR_DEFAULT, espace);
+@@ -135,63 +135,67 @@
+ 
+   ccze_newline ();
+ 
+-  free (date);
+-  free (espace);
+-  free (elaps);
+-  free (host);
+-  free (action);
+-  free (httpc);
+-  free (gsize);
+-  free (method);
+-  free (uri);
+-  free (ident);
+-  free (hierar);
+-  free (fhost);
+-  free (ctype);
++  pcre2_substring_free (date);
++  pcre2_substring_free (espace);
++  pcre2_substring_free (elaps);
++  pcre2_substring_free (host);
++  pcre2_substring_free (action);
++  pcre2_substring_free (httpc);
++  pcre2_substring_free (gsize);
++  pcre2_substring_free (method);
++  pcre2_substring_free (uri);
++  pcre2_substring_free (ident);
++  pcre2_substring_free (hierar);
++  pcre2_substring_free (fhost);
++  pcre2_substring_free (ctype);
+   
+   return NULL;
+ }
+ 
+ static char *
+-ccze_squid_cache_log_process (const char *str, int *offsets, int match)
++ccze_squid_cache_log_process (pcre2_match_data *offsets)
+ {
+-  char *date, *other;
++  char *date, *other, *ret;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&other);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&other, &l);
+ 
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_space();
+ 
+-  free (date);
+-  return other;
++  ret = strdup (other);
++  pcre2_substring_free (date);
++  pcre2_substring_free (other);
++  return ret;
+ }
+ 
+ static char *
+-ccze_squid_store_log_process (const char *str, int *offsets, int match)
++ccze_squid_store_log_process (pcre2_match_data *offsets)
+ {
+   char *date, *tag, *swapnum, *swapname, *swapsum, *space1, *hcode;
+   char *hdate, *lmdate, *expire, *ctype, *size, *read, *method;
+   char *uri, *space2, *space3, *space4;
++  size_t l;
+     
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&tag);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&swapnum);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&swapname);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&swapsum);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&space1);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&hcode);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&space2);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&hdate);
+-  pcre_get_substring (str, offsets, match, 10, (const char **)&space3);
+-  pcre_get_substring (str, offsets, match, 11, (const char **)&lmdate);
+-  pcre_get_substring (str, offsets, match, 12, (const char **)&space4);
+-  pcre_get_substring (str, offsets, match, 13, (const char **)&expire);
+-  pcre_get_substring (str, offsets, match, 14, (const char **)&ctype);
+-  pcre_get_substring (str, offsets, match, 15, (const char **)&size);
+-  pcre_get_substring (str, offsets, match, 16, (const char **)&read);
+-  pcre_get_substring (str, offsets, match, 17, (const char **)&method);
+-  pcre_get_substring (str, offsets, match, 18, (const char **)&uri);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&tag, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&swapnum, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&swapname, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&swapsum, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&space1, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&hcode, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&space2, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&hdate, &l);
++  pcre2_substring_get_bynumber (offsets, 10, (unsigned char **)&space3, &l);
++  pcre2_substring_get_bynumber (offsets, 11, (unsigned char **)&lmdate, &l);
++  pcre2_substring_get_bynumber (offsets, 12, (unsigned char **)&space4, &l);
++  pcre2_substring_get_bynumber (offsets, 13, (unsigned char **)&expire, &l);
++  pcre2_substring_get_bynumber (offsets, 14, (unsigned char **)&ctype, &l);
++  pcre2_substring_get_bynumber (offsets, 15, (unsigned char **)&size, &l);
++  pcre2_substring_get_bynumber (offsets, 16, (unsigned char **)&read, &l);
++  pcre2_substring_get_bynumber (offsets, 17, (unsigned char **)&method, &l);
++  pcre2_substring_get_bynumber (offsets, 18, (unsigned char **)&uri, &l);
+ 
+   ccze_print_date (date);
+   ccze_space();
+@@ -223,24 +227,24 @@
+ 
+   ccze_newline ();
+ 
+-  free (date);
+-  free (tag);
+-  free (swapnum);
+-  free (swapname);
+-  free (swapsum);
+-  free (space1);
+-  free (hcode);
+-  free (hdate);
+-  free (lmdate);
+-  free (expire);
+-  free (ctype);
+-  free (size);
+-  free (read);
+-  free (method);
+-  free (uri);
+-  free (space2);
+-  free (space3);
+-  free (space4);
++  pcre2_substring_free (date);
++  pcre2_substring_free (tag);
++  pcre2_substring_free (swapnum);
++  pcre2_substring_free (swapname);
++  pcre2_substring_free (swapsum);
++  pcre2_substring_free (space1);
++  pcre2_substring_free (hcode);
++  pcre2_substring_free (hdate);
++  pcre2_substring_free (lmdate);
++  pcre2_substring_free (expire);
++  pcre2_substring_free (ctype);
++  pcre2_substring_free (size);
++  pcre2_substring_free (read);
++  pcre2_substring_free (method);
++  pcre2_substring_free (uri);
++  pcre2_substring_free (space2);
++  pcre2_substring_free (space3);
++  pcre2_substring_free (space4);
+   
+   return NULL;
+ }
+@@ -248,65 +252,62 @@
+ static void
+ ccze_squid_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_squid_access = pcre_compile
++  reg_squid_access = pcre2_compile
+     ("^(\\d{9,10}\\.\\d{3})(\\s+)(\\d+)\\s(\\S+)\\s(\\w+)\\/(\\d{3})"
+      "\\s(\\d+)\\s(\\w+)\\s(\\S+)\\s(\\S+)\\s(\\w+)\\/([\\d\\.]+|-)\\s(.*)",
+-     0, &error, &errptr, NULL);
+-  hints_squid_access = pcre_study (reg_squid_access, 0, &error);
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+-  reg_squid_cache = pcre_compile
+-    ("^(\\d{4}\\/\\d{2}\\/\\d{2}\\s(\\d{2}:){2}\\d{2}\\|)\\s(.*)$", 0,
+-     &error, &errptr, NULL);
+-  hints_squid_cache = pcre_study (reg_squid_cache, 0, &error);
++  reg_squid_cache = pcre2_compile
++    ("^(\\d{4}\\/\\d{2}\\/\\d{2}\\s(\\d{2}:){2}\\d{2}\\|)\\s(.*)$",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ 
+-  reg_squid_store = pcre_compile
++  reg_squid_store = pcre2_compile
+     ("^([\\d\\.]+)\\s(\\w+)\\s(\\-?[\\dA-F]+)\\s+(\\S+)\\s([\\dA-F]+)"
+      "(\\s+)(\\d{3}|\\?)(\\s+)(\\-?[\\d\\?]+)(\\s+)(\\-?[\\d\\?]+)(\\s+)"
+      "(\\-?[\\d\\?]+)\\s(\\S+)\\s(\\-?[\\d|\\?]+)\\/(\\-?[\\d|\\?]+)\\s"
+-     "(\\S+)\\s(.*)", 0, &error, &errptr, NULL);
+-  hints_squid_store = pcre_study (reg_squid_store, 0, &error);
++     "(\\S+)\\s(.*)", PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_squid_shutdown (void)
+ {
+-  free (reg_squid_access);
+-  free (hints_squid_access);
+-  free (reg_squid_cache);
+-  free (hints_squid_cache);
+-  free (reg_squid_store);
+-  free (hints_squid_store);
++  pcre2_code_free (reg_squid_access);
++  pcre2_code_free (reg_squid_cache);
++  pcre2_code_free (reg_squid_store);
+ }
+ 
+ static int
+ ccze_squid_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+ 
+-  if ((match = pcre_exec (reg_squid_access, hints_squid_access, str,
+-			  length, 0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_squid_access, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_squid_access_log_process (str, offsets, match);
++      *rest = ccze_squid_access_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+   
+-  if ((match = pcre_exec (reg_squid_store, hints_squid_store, str,
+-			  length, 0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_squid_store, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_squid_store_log_process (str, offsets, match);
++      *rest = ccze_squid_store_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+   
+-  if ((match = pcre_exec (reg_squid_cache, hints_squid_cache, str,
+-			  length, 0, 0, offsets, 99)) >= 0)
++  if (pcre2_match (reg_squid_cache, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_squid_cache_log_process (str, offsets, match);
++      *rest = ccze_squid_cache_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
+ 
++  pcre2_match_data_free (offsets);
++
+   return 0;
+ }
+ 
+--- ccze.orig/src/mod_sulog.c
++++ ccze/src/mod_sulog.c
+@@ -26,19 +26,19 @@
+ static void ccze_sulog_shutdown (void);
+ static int ccze_sulog_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_sulog;
+-static pcre_extra *hints_sulog;
++static pcre2_code *reg_sulog;
+ 
+ static char *
+-ccze_sulog_process (const char *str, int *offsets, int match)
++ccze_sulog_process (pcre2_match_data *offsets)
+ {
+   char *date, *islogin, *tty, *fromuser, *touser;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&islogin);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&tty);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&fromuser);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&touser);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&islogin, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&tty, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&fromuser, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&touser, &l);
+ 
+   ccze_addstr (CCZE_COLOR_DEFAULT, "SU ");
+   ccze_addstr (CCZE_COLOR_DATE, date);
+@@ -61,11 +61,11 @@
+   
+   ccze_newline ();
+ 
+-  free (date);
+-  free (islogin);
+-  free (tty);
+-  free (fromuser);
+-  free (touser);
++  pcre2_substring_free (date);
++  pcre2_substring_free (islogin);
++  pcre2_substring_free (tty);
++  pcre2_substring_free (fromuser);
++  pcre2_substring_free (touser);
+ 
+   return NULL;
+ }
+@@ -73,33 +73,34 @@
+ static void
+ ccze_sulog_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_sulog = pcre_compile ("^SU (\\d{2}\\/\\d{2} \\d{2}:\\d{2}) ([\\+\\-]) "
+-			    "(\\S+) ([^\\-]+)-(.*)$", 0, &error, &errptr,
+-			    NULL);
+-  hints_sulog = pcre_study (reg_sulog, 0, &error);
++  reg_sulog = pcre2_compile ("^SU (\\d{2}\\/\\d{2} \\d{2}:\\d{2}) ([\\+\\-]) "
++                             "(\\S+) ([^\\-]+)-(.*)$", PCRE2_ZERO_TERMINATED,
++                             0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_sulog_shutdown (void)
+ {
+-  free (reg_sulog);
+-  free (hints_sulog);
++  pcre2_code_free (reg_sulog);
+ }
+ 
+ static int
+ ccze_sulog_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_sulog, hints_sulog, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_sulog, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_sulog_process (str, offsets, match);
++      *rest = ccze_sulog_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_super.c
++++ ccze/src/mod_super.c
+@@ -26,19 +26,19 @@
+ static void ccze_super_shutdown (void);
+ static int ccze_super_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_super;
+-static pcre_extra *hints_super;
++static pcre2_code *reg_super;
+ 
+ static char *
+-ccze_super_process (const char *str, int *offsets, int match)
++ccze_super_process (pcre2_match_data *offsets)
+ {
+   char *email, *date, *space, *suptag, *other;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&email);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&space);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&suptag);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&other);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&email, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&space, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&suptag, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&other, &l);
+ 
+   ccze_addstr (CCZE_COLOR_EMAIL, email);
+   ccze_space ();
+@@ -51,6 +51,12 @@
+   ccze_addstr (CCZE_COLOR_PIDB, ")");
+ 
+   ccze_newline ();
++
++  pcre2_substring_free (email);
++  pcre2_substring_free (date);
++  pcre2_substring_free (space);
++  pcre2_substring_free (suptag);
++  pcre2_substring_free (other);
+   
+   return NULL;
+ }
+@@ -58,33 +64,35 @@
+ static void
+ ccze_super_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_super = pcre_compile
++  reg_super = pcre2_compile
+     ("^(\\S+)\\s(\\w+\\s+\\w+\\s+\\d+\\s+\\d+:\\d+:\\d+\\s+\\d+)"
+-     "(\\s+)(\\S+)\\s\\(([^\\)]+)\\)", 0, &error, &errptr, NULL);
+-  hints_super = pcre_study (reg_super, 0, &error);
++     "(\\s+)(\\S+)\\s\\(([^\\)]+)\\)", PCRE2_ZERO_TERMINATED,
++     0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_super_shutdown (void)
+ {
+-  free (reg_super);
+-  free (hints_super);
++  pcre2_code_free (reg_super);
+ }
+ 
+ static int
+ ccze_super_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_super, hints_super, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_super, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_super_process (str, offsets, match);
++      *rest = ccze_super_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_syslog.c
++++ ccze/src/mod_syslog.c
+@@ -29,26 +29,30 @@
+ static void ccze_syslog_shutdown (void);
+ static int ccze_syslog_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_syslog;
+-static pcre_extra *hints_syslog;
++static pcre2_code *reg_syslog;
+ 
+ static char *
+-ccze_syslog_process (const char *str, int *offsets, int match)
++ccze_syslog_process (pcre2_match_data *offsets)
+ {
+   char *date = NULL, *host = NULL, *send = NULL, *process = NULL;
+   char *msg = NULL, *pid = NULL, *tmp = NULL, *toret;
++  int use_free = 0;
++  size_t l;
+   
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&send);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&send, &l);
+   
+   if ((strstr (send, "last message repeated") && strstr (send, "times")) ||
+       (strstr (send, "-- MARK --")))
+-    msg = strdup (send);
++    {
++      msg = strdup (send);
++      use_free = 1;
++    }
+   else
+     {
+-      pcre_get_substring (str, offsets, match, 4, (const char **)&process);
+-      pcre_get_substring (str, offsets, match, 5, (const char **)&msg);
++      pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&process, &l);
++      pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&msg, &l);
+     }
+       
+   if (process)
+@@ -60,8 +64,8 @@
+ 
+ 	  pid = strndup (&t[1], (size_t)(t2 - t - 1));
+ 	  tmp = strndup (process, (size_t)(t - process));
+-	  free (process);
+-	  process = tmp;
++	  pcre2_substring_free (process);
++	  process = strdup (tmp);
+ 	}
+     }
+ 
+@@ -87,12 +91,17 @@
+   else
+     toret = strdup (send);
+ 
+-  free (date);
+-  free (host);
+-  free (send);
+-  free (process);
+-  free (msg);
++  pcre2_substring_free (date);
++  pcre2_substring_free (host);
++  pcre2_substring_free (send);
++  /* free (process); */
+   free (pid);
++  free (tmp);
++
++  if (use_free)
++    free (msg);
++  else
++    pcre2_substring_free (msg);
+ 
+   return toret;
+ }
+@@ -100,33 +109,34 @@
+ static void
+ ccze_syslog_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_syslog = pcre_compile ("^(\\S*\\s{1,2}\\d{1,2}\\s\\d\\d:\\d\\d:\\d\\d)"
+-			     "\\s(\\S+)\\s+((\\S+:?)\\s(.*))$", 0, &error,
+-			     &errptr, NULL);
+-  hints_syslog = pcre_study (reg_syslog, 0, &error);
++  reg_syslog = pcre2_compile ("^(\\S*\\s{1,2}\\d{1,2}\\s\\d\\d:\\d\\d:\\d\\d)"
++                              "\\s(\\S+)\\s+((\\S+:?)\\s(.*))$",
++                              PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_syslog_shutdown (void)
+ {
+-  free (reg_syslog);
+-  free (hints_syslog);
++  pcre2_code_free (reg_syslog);
+ }
+ 
+ static int
+ ccze_syslog_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_syslog, hints_syslog, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_syslog, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_syslog_process (str, offsets, match);
++      *rest = ccze_syslog_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_ulogd.c
++++ ccze/src/mod_ulogd.c
+@@ -29,7 +29,7 @@
+ static void ccze_ulogd_shutdown (void);
+ static int ccze_ulogd_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_ulogd;
++static pcre2_code *reg_ulogd;
+ 
+ static char *
+ ccze_ulogd_process (const char *msg)
+@@ -64,34 +64,38 @@
+ static void
+ ccze_ulogd_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_ulogd = pcre_compile
+-    ("(IN|OUT|MAC|TTL|SRC|TOS|PREC|SPT)=", 0, &error,
++  reg_ulogd = pcre2_compile
++    ("(IN|OUT|MAC|TTL|SRC|TOS|PREC|SPT)=", PCRE2_ZERO_TERMINATED, 0, &error,
+      &errptr, NULL);
+ }
+ 
+ static void
+ ccze_ulogd_shutdown (void)
+ {
+-  free (reg_ulogd);
++  pcre2_code_free (reg_ulogd);
+ }
+ 
+ static int
+ ccze_ulogd_handle (const char *str, size_t length, char **rest)
+ {
+-  int offsets[10];
++  pcre2_match_data *offsets;
+   
+-  if (pcre_exec (reg_ulogd, NULL, str, length, 0, 0, offsets, 2) >= 0)
++  offsets = pcre2_match_data_create (10, NULL);
++  if (pcre2_match (reg_ulogd, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+       if (rest)
+ 	*rest = ccze_ulogd_process (str);
+       else
+ 	ccze_ulogd_process (str);
+       
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_vsftpd.c
++++ ccze/src/mod_vsftpd.c
+@@ -20,25 +20,26 @@
+  */
+ 
+ #include <ccze.h>
++#include <string.h>
+ #include <stdlib.h>
+ 
+ static void ccze_vsftpd_setup (void);
+ static void ccze_vsftpd_shutdown (void);
+ static int ccze_vsftpd_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_vsftpd;
+-static pcre_extra *hints_vsftpd;
++static pcre2_code *reg_vsftpd;
+ 
+ static char *
+-ccze_vsftpd_log_process (const char *str, int *offsets, int match)
++ccze_vsftpd_log_process (pcre2_match_data *offsets)
+ {
+-  char *date, *sspace, *pid, *user, *other;
++  char *date, *sspace, *pid, *user, *other, *ret;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&date);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&sspace);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&pid);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&user);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&other);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&date, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&sspace, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&pid, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&user, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&other, &l);
+   
+   ccze_addstr (CCZE_COLOR_DATE, date);
+   ccze_addstr (CCZE_COLOR_DEFAULT, sspace);
+@@ -57,45 +58,48 @@
+       ccze_space ();
+     }
+ 
+-  free (date);
+-  free (sspace);
+-  free (pid);
+-  free (user);
++  ret = strdup (other);
++  pcre2_substring_free (date);
++  pcre2_substring_free (sspace);
++  pcre2_substring_free (pid);
++  pcre2_substring_free (user);
++  pcre2_substring_free (other);
+   
+-  return other;
++  return ret;
+ }
+ 
+ static void
+ ccze_vsftpd_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+-  reg_vsftpd = pcre_compile
++  reg_vsftpd = pcre2_compile
+     ("^(\\S+\\s+\\S+\\s+\\d{1,2}\\s+\\d{1,2}:\\d{1,2}:\\d{1,2}\\s+\\d+)"
+-     "(\\s+)\\[pid (\\d+)\\]\\s+(\\[(\\S+)\\])?\\s*(.*)$", 0, &error,
+-     &errptr, NULL);
+-  hints_vsftpd = pcre_study (reg_vsftpd, 0, &error);
++     "(\\s+)\\[pid (\\d+)\\]\\s+(\\[(\\S+)\\])?\\s*(.*)$",
++     PCRE2_ZERO_TERMINATED, 0, &error, &errptr, NULL);
+ }
+ 
+ static void
+ ccze_vsftpd_shutdown (void)
+ {
+-  free (reg_vsftpd);
+-  free (hints_vsftpd);
++  pcre2_code_free (reg_vsftpd);
+ }
+ 
+ static int
+ ccze_vsftpd_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_vsftpd, hints_vsftpd, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_vsftpd, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_vsftpd_log_process (str, offsets, match);
++      *rest = ccze_vsftpd_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }
+--- ccze.orig/src/mod_xferlog.c
++++ ccze/src/mod_xferlog.c
+@@ -26,30 +26,30 @@
+ static void ccze_xferlog_shutdown (void);
+ static int ccze_xferlog_handle (const char *str, size_t length, char **rest);
+ 
+-static pcre *reg_xferlog;
+-static pcre_extra *hints_xferlog;
++static pcre2_code *reg_xferlog;
+ 
+ static char *
+-ccze_xferlog_log_process (const char *str, int *offsets, int match)
++ccze_xferlog_log_process (pcre2_match_data *offsets)
+ {
+   char *curtime, *transtime, *host, *fsize, *fname, *transtype;
+   char *actionflag, *direction, *amode, *user, *service, *amethod;
+   char *auid, *status;
++  size_t l;
+ 
+-  pcre_get_substring (str, offsets, match, 1, (const char **)&curtime);
+-  pcre_get_substring (str, offsets, match, 2, (const char **)&transtime);
+-  pcre_get_substring (str, offsets, match, 3, (const char **)&host);
+-  pcre_get_substring (str, offsets, match, 4, (const char **)&fsize);
+-  pcre_get_substring (str, offsets, match, 5, (const char **)&fname);
+-  pcre_get_substring (str, offsets, match, 6, (const char **)&transtype);
+-  pcre_get_substring (str, offsets, match, 7, (const char **)&actionflag);
+-  pcre_get_substring (str, offsets, match, 8, (const char **)&direction);
+-  pcre_get_substring (str, offsets, match, 9, (const char **)&amode);
+-  pcre_get_substring (str, offsets, match, 10, (const char **)&user);
+-  pcre_get_substring (str, offsets, match, 11, (const char **)&service);
+-  pcre_get_substring (str, offsets, match, 12, (const char **)&amethod);
+-  pcre_get_substring (str, offsets, match, 13, (const char **)&auid);
+-  pcre_get_substring (str, offsets, match, 14, (const char **)&status);
++  pcre2_substring_get_bynumber (offsets, 1, (unsigned char **)&curtime, &l);
++  pcre2_substring_get_bynumber (offsets, 2, (unsigned char **)&transtime, &l);
++  pcre2_substring_get_bynumber (offsets, 3, (unsigned char **)&host, &l);
++  pcre2_substring_get_bynumber (offsets, 4, (unsigned char **)&fsize, &l);
++  pcre2_substring_get_bynumber (offsets, 5, (unsigned char **)&fname, &l);
++  pcre2_substring_get_bynumber (offsets, 6, (unsigned char **)&transtype, &l);
++  pcre2_substring_get_bynumber (offsets, 7, (unsigned char **)&actionflag, &l);
++  pcre2_substring_get_bynumber (offsets, 8, (unsigned char **)&direction, &l);
++  pcre2_substring_get_bynumber (offsets, 9, (unsigned char **)&amode, &l);
++  pcre2_substring_get_bynumber (offsets, 10, (unsigned char **)&user, &l);
++  pcre2_substring_get_bynumber (offsets, 11, (unsigned char **)&service, &l);
++  pcre2_substring_get_bynumber (offsets, 12, (unsigned char **)&amethod, &l);
++  pcre2_substring_get_bynumber (offsets, 13, (unsigned char **)&auid, &l);
++  pcre2_substring_get_bynumber (offsets, 14, (unsigned char **)&status, &l);
+   
+   ccze_addstr (CCZE_COLOR_DATE, curtime);
+   ccze_space ();
+@@ -81,20 +81,20 @@
+ 
+   ccze_newline ();
+ 
+-  free (curtime);
+-  free (transtime);
+-  free (host);
+-  free (fsize);
+-  free (fname);
+-  free (transtype);
+-  free (actionflag);
+-  free (direction);
+-  free (amode);
+-  free (user);
+-  free (service);
+-  free (amethod);
+-  free (auid);
+-  free (status);
++  pcre2_substring_free (curtime);
++  pcre2_substring_free (transtime);
++  pcre2_substring_free (host);
++  pcre2_substring_free (fsize);
++  pcre2_substring_free (fname);
++  pcre2_substring_free (transtype);
++  pcre2_substring_free (actionflag);
++  pcre2_substring_free (direction);
++  pcre2_substring_free (amode);
++  pcre2_substring_free (user);
++  pcre2_substring_free (service);
++  pcre2_substring_free (amethod);
++  pcre2_substring_free (auid);
++  pcre2_substring_free (status);
+ 
+   return NULL;
+ }
+@@ -102,36 +102,37 @@
+ static void
+ ccze_xferlog_setup (void)
+ {
+-  const char *error;
+-  int errptr;
++  int error;
++  size_t errptr;
+ 
+   /* FIXME: Does not handle spaces in filenames! */
+-  reg_xferlog = pcre_compile
++  reg_xferlog = pcre2_compile
+     ("^(... ... +\\d{1,2} +\\d{1,2}:\\d{1,2}:\\d{1,2} \\d+) (\\d+) ([^ ]+) "
+      "(\\d+) (\\S+) (a|b) (C|U|T|_) (o|i) (a|g|r) ([^ ]+) ([^ ]+) " 
+-     "(0|1) ([^ ]+) (c|i)", 0, &error,
++     "(0|1) ([^ ]+) (c|i)", PCRE2_ZERO_TERMINATED, 0, &error,
+      &errptr, NULL);
+-  hints_xferlog = pcre_study (reg_xferlog, 0, &error);
+ }
+ 
+ static void
+ ccze_xferlog_shutdown (void)
+ {
+-  free (reg_xferlog);
+-  free (hints_xferlog);
++  pcre2_code_free (reg_xferlog);
+ }
+ 
+ static int
+ ccze_xferlog_handle (const char *str, size_t length, char **rest)
+ {
+-  int match, offsets[99];
++  pcre2_match_data *offsets;
+   
+-  if ((match = pcre_exec (reg_xferlog, hints_xferlog, str, length,
+-			  0, 0, offsets, 99)) >= 0)
++  offsets = pcre2_match_data_create (99, NULL);
++  if (pcre2_match (reg_xferlog, str, length, 0, 0, offsets, NULL) >= 0)
+     {
+-      *rest = ccze_xferlog_log_process (str, offsets, match);
++      *rest = ccze_xferlog_log_process (offsets);
++      pcre2_match_data_free (offsets);
+       return 1;
+     }
++
++  pcre2_match_data_free (offsets);
+   
+   return 0;
+ }

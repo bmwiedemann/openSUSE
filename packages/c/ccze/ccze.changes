@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 21 08:46:17 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- GitHub repository have been removed:
+  * switch to upstream's archived repository as homepage.
+  * do not download tarball from GitHub
+- Add directly patches from Debian that aren't applid already,
+  they include PCRE2 porting:
+  * fix_passing_LDFLAGS_for_ccze-cssdump.patch
+  * fix_capitalization_typo.patch
+  * fix-national-encoding.patch
+  * cross.patch
+  * pcre2.patch
+  * memory-leak.patch
+  * uninitialised-value.patch
+- Switch to PCRE2
+- Only run updated tests
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Feb 26 10:40:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
