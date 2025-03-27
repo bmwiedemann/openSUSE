@@ -1,8 +1,8 @@
 #
 # spec file for package libansilove
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2019-2022, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global sover   1
 %global libname %{name}%{sover}
 Name:           libansilove
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Library for converting ANSI, ASCII, and other formats to PNG
 License:        BSD-2-Clause
@@ -28,7 +28,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/libansilove.git
 Source:         https://github.com/ansilove/libansilove/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.10
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gdlib)
 
@@ -68,11 +68,11 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libansilove.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -80,8 +80,7 @@ make %{?_smp_mflags}
 # Only keep the shared library
 rm %{buildroot}%{_libdir}/libansilove-static.a
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 24 17:26:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.2
+  - Bump cmake_minimum_required to 3.5, to allow building with
+    CMake 4.0.
+  - Bump cmake_minimum_required to 3.10 to be more future proof.
+
+-------------------------------------------------------------------
 Mon Jun  5 08:11:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.4.1
