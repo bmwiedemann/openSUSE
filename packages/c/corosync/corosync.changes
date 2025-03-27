@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 09:20:06 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Add a patch to fix CVE-2025-30472 (bsc#1239987)
+  * 779.patch
+
+-------------------------------------------------------------------
 Mon Nov 18 03:51:09 UTC 2024 - nicholas.yang@suse.com
 
 - Update to version 3.1.9:

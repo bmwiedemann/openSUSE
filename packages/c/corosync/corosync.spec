@@ -1,7 +1,7 @@
 #
 # spec file for package corosync
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,6 +56,7 @@ Release:        0
 URL:            http://corosync.github.io/corosync/
 Source0:        %{name}-%{version}.tar.gz
 Patch0:         0001-harden-services-with-systemd-sandboxing.patch
+Patch1:         779.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # provide openais on purpose, the package has been deleted.
