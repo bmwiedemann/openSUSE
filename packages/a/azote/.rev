@@ -325,4 +325,14 @@
   * Added support for libayatana-appindicator3 #206.</comment>
     <requestid>1233908</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6202bd206d0547a03ef90adb89ee8bb7</srcmd5>
+    <version>1.14.2</version>
+    <time>1743111277</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.14.2:
+  * Added Czech lang file #210
+  * Added Turkish lang file #211</comment>
+    <requestid>1264629</requestid>
+  </revision>
 </revisionlist>
