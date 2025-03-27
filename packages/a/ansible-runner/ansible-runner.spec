@@ -15,7 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define module_name ansible-runner
+%define module_name ansible_runner
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -30,7 +30,7 @@
 %endif
 
 Name:           ansible-runner
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Run ansible-playbook inside an execution environment
 License:        Apache-2.0
@@ -110,8 +110,8 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %files
 %doc README.md
 %license LICENSE.md
-%{_bindir}/%{module_name}
-%{ansible_python_sitelib}/ansible_runner
-%{ansible_python_sitelib}/ansible_runner-%{version}.dist-info
+%{_bindir}/%{name}
+%{ansible_python_sitelib}/%{module_name}
+%{ansible_python_sitelib}/%{module_name}-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:27:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.4.1:
+  * Modify volume mount behavior when source does not exist
+    (#1408). Volumes specified using the container-volume-mount
+    option will now be passed through to the underlying container
+    engine unverified and unmodified. This now allows you to mount
+    individual files (vs. the parent directory) and non-existing
+    source volumes. The behavior encountered with a non-existing
+    source volume depends on which container engine is in use
+    (docker creates the volume, podman will error).
+
+-------------------------------------------------------------------
 Mon Mar 17 18:40:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - ignore two more flaky tests
