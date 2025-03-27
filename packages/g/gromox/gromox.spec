@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        2.43
+Version:        2.44
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -30,7 +30,7 @@ Source2:        https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source8:        %name.keyring
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-BuildRequires:  gcc12-c++
+BuildRequires:  gcc14-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -55,7 +55,7 @@ BuildRequires:  group(gromox)
 BuildRequires:  pkgconfig(fmt) >= 8
 BuildRequires:  pkgconfig(jsoncpp) >= 1.4.0
 BuildRequires:  pkgconfig(krb5-gssapi)
-BuildRequires:  pkgconfig(libHX) >= 4.19
+BuildRequires:  pkgconfig(libHX) >= 4.27
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libesedb)
@@ -124,7 +124,7 @@ ready-to-run installation of Gromox.
 %build
 %configure \
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
-	CC=gcc-12 CXX=g++-12 \
+	CC=gcc-14 CXX=g++-14 \
 %endif
 	%nil
 %make_build V=1

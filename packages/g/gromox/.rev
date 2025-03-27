@@ -359,4 +359,13 @@
     <comment>- Update to release 2.43</comment>
     <requestid>1251054</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b8b9dbe9f4ac121058e75809f0eb73bd</srcmd5>
+    <version>2.44</version>
+    <time>1743111145</time>
+    <user>anag+factory</user>
+    <comment>- Trim excess keys from keyring
+- Update to release 2.44</comment>
+    <requestid>1256363</requestid>
+  </revision>
 </revisionlist>
