@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:11:59 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Switch to PCRE2 
+
+-------------------------------------------------------------------
 Fri Sep 27 17:33:08 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www to filelist [bsc#1231027]

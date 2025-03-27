@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,7 @@ BuildRequires:  automake
 BuildRequires:  gd-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 # required for the squid user/group
 BuildRequires:  squid
 Recommends:     http_proxy
