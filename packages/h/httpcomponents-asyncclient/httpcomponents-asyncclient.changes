@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 18:10:59 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
 Mon Sep 11 10:11:27 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
