@@ -1,0 +1,45 @@
+--- ./check_haproxy.pl	2025/03/26 16:15:37	1.1
++++ ./check_haproxy.pl	2025/03/26 16:15:54
+@@ -123,6 +123,11 @@
+ 	help => _gt('Comma-separated list of backends to ignore'),
+ 	required => 0,
+ );
++$np->add_arg (
++	spec => 'ignore-down-backup-servers|B',
++	help => _gt('Ignore servers marked as backup in down state.'),
++	required => 0,
++);
+ 
+ 
+ $np->getopts;
+@@ -141,6 +146,7 @@
+ if ( defined ( $ignore_backends ) ) {
+ 	@ignore_backends_list = split(',',$ignore_backends);
+ }
++my $ignore_down_backup = $np->opts->get('ignore-down-backup-servers');
+ 
+ # Thresholds :
+ # time
+@@ -296,14 +302,16 @@
+ 				if ( $stats{$pxname}{$svname}{'status'} eq 'UP' ) {
+ 					logD( sprintf(_gt("%s '%s' is up on '%s' proxy."),$activeDescr,$svname,$pxname) );
+ 				} elsif ( $stats{$pxname}{$svname}{'status'} eq 'DOWN' ) {
+-					if ( defined($crit_backends) ) {
+-						if ( grep(/^$pxname$/,@crit_backends_list) ) {
+-							$np->add_message(CRITICAL, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
++					if ( $active || !$ignore_down_backup ) {
++						if ( defined($crit_backends) ) {
++							if ( grep(/^$pxname$/,@crit_backends_list) ) {
++								$np->add_message(CRITICAL, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
++							}else{
++								$np->add_message(WARNING, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
++							}
+ 						}else{
+-							$np->add_message(WARNING, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
++							$np->add_message(CRITICAL, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
+ 						}
+-					}else{
+-						$np->add_message(CRITICAL, sprintf(_gt("%s '%s' is DOWN on '%s' proxy !"),$activeDescr,$svname,$pxname) );
+ 					}
+ 				}
+ 				if ( $stats{$pxname}{$svname}{'act'} eq '1' ) {

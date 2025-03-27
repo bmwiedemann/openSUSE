@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-haproxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          System/Monitoring
 URL:            https://github.com/Napsty/check_haproxy
 Source0:        check_haproxy-%{version}.tar.gz
 Source1:        gpl-2.0.txt
+Patch0:         check_haproxy-ignore_down_backends.patch
 BuildRequires:  nagios-rpm-macros
 # For directory ownership:
 BuildRequires:  icinga2-bin
@@ -47,7 +48,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 The plugin checks HAProxy statistic url (csv) and gets UP and DOWN services.
 
 %prep
-%setup -q -n check_haproxy-%{version}
+%autosetup -n check_haproxy-%{version}
 install -m644 %{SOURCE1} LICENSE
 
 %build
