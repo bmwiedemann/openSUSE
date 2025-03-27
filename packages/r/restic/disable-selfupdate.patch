@@ -1,12 +1,13 @@
-diff -uNr restic.org/build.go restic/build.go
---- restic.org/build.go	2023-01-16 23:09:42.559283644 +0100
-+++ restic/build.go	2023-01-16 23:10:38.002960609 +0100
-@@ -56,7 +56,7 @@
- 	Name:             "restic",                                 // name of the program executable and directory
- 	Namespace:        "github.com/restic/restic",               // subdir of GOPATH, e.g. "github.com/foo/bar"
- 	Main:             "./cmd/restic",                           // package name for the main package
--	DefaultBuildTags: []string{"selfupdate"},                   // specify build tags which are always used
-+	//DefaultBuildTags: []string{"selfupdate"},                   // specify build tags which are always used
- 	Tests:            []string{"./..."},                        // tests to run
- 	MinVersion:       GoVersion{Major: 1, Minor: 18, Patch: 0}, // minimum Go version supported
+Index: restic-0.18.0/build.go
+===================================================================
+--- restic-0.18.0.orig/build.go
++++ restic-0.18.0/build.go
+@@ -58,7 +58,7 @@ var config = Config{
+ 	Main:      "./cmd/restic",             // package name for the main package
+ 	// disable_grpc_modules is necessary to reduce the binary size since cloud.google.com/go/storage v1.44.0
+ 	// see https://github.com/googleapis/google-cloud-go/issues/11448
+-	DefaultBuildTags: []string{"selfupdate", "disable_grpc_modules"}, // specify build tags which are always used
++	DefaultBuildTags: []string{"disable_grpc_modules"}, // specify build tags which are always used
+ 	Tests:            []string{"./..."},                              // tests to run
+ 	MinVersion:       GoVersion{Major: 1, Minor: 23, Patch: 0},       // minimum Go version supported
  }

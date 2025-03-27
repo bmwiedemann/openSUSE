@@ -20,7 +20,7 @@
 %define import_path github.com/restic/restic
 
 Name:           restic
-Version:        0.17.3
+Version:        0.18.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -30,9 +30,7 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
-# This is applied when manually (not via _service) creating the vendor.tar.gz
-# the patched go.{mod,sum} files are then part of vendor.tar.gz
-Source4:        bump-google-apis-for-oauth2-fix.patch
+Source9:        series
 Patch0:         disable-selfupdate.patch
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging

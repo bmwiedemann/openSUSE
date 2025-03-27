@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Mar 27 20:59:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.18.0
+  - Sec #5291: Mitigate attack on content-defined chunking
+    algorithm
+  - Fix #1843: Correctly restore long filepaths' timestamp on old
+    Windows
+  - Fix #2165: Ignore disappeared backup source files
+  - Fix #5153: Include root tree when searching using find --tree
+  - Fix #5169: Prevent Windows VSS event log 8194 warnings for
+    backup with fs snapshot
+  - Fix #5212: Fix duplicate data handling in prune --max-unused
+  - Fix #5249: Fix creation of oversized index by repair index
+    --read-all-packs
+  - Fix #5259: Fix rare crash in command output
+  - Chg #4938: Update dependencies and require Go 1.23 or newer
+  - Chg #5162: Promote feature flags
+  - Enh #1378: Add JSON support to check command
+  - Enh #2511: Support generating shell completions to stdout
+  - Enh #3697: Allow excluding online-only cloud files (e.g.
+    OneDrive)
+  - Enh #4179: Add sort option to ls command
+  - Enh #4433: Change default sort order for find output
+  - Enh #4521: Add support for Microsoft Blob Storage access tiers
+  - Enh #4942: Add snapshot summary statistics to rewritten
+    snapshots
+  - Enh #4948: Format exit errors as JSON when requested
+  - Enh #4983: Add SLSA provenance to GHCR container images
+  - Enh #5054: Enable compression for ZIP archives in dump command
+  - Enh #5081: Add retry mechanism for loading repository config
+  - Enh #5089: Allow including/excluding extended file attributes
+    during restore
+  - Enh #5092: Show count of deleted files and directories during
+    restore
+  - Enh #5109: Make small pack size configurable for prune
+  - Enh #5119: Add start and end timestamps to backup JSON output
+  - Enh #5131: Add DragonFlyBSD support
+  - Enh #5137: Make tag command print which snapshots were modified
+  - Enh #5141: Provide clear error message if AZURE_ACCOUNT_NAME is
+    not set
+  - Enh #5173: Add experimental S3 cold storage support
+  - Enh #5174: Add xattr support for NetBSD 10+
+  - Enh #5251: Improve retry handling for flaky rclone backends
+  - Enh #52897: Make recover automatically rebuild index when
+    needed
+- drop bump-google-apis-for-oauth2-fix.patch
+- refresh disable-selfupdate.patch to apply cleanly again
+
+-------------------------------------------------------------------
 Tue Mar 11 14:26:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - add bump-google-apis-for-oauth2-fix.patch:

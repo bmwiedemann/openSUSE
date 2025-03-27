@@ -276,4 +276,43 @@
   boo#1239264 CVE-2025-22868</comment>
     <requestid>1252082</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3c980b3e30b847f0a042fe14d31f8828</srcmd5>
+    <version>0.18.0</version>
+    <time>1743111293</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1264710 from darix
+
+- update to 0.18.0
+  - Sec #5291: Mitigate attack on content-defined chunking
+    algorithm
+  - Fix #1843: Correctly restore long filepaths' timestamp on old
+    Windows
+  - Fix #2165: Ignore disappeared backup source files
+  - Fix #5153: Include root tree when searching using find --tree
+  - Fix #5169: Prevent Windows VSS event log 8194 warnings for
+    backup with fs snapshot
+  - Fix #5212: Fix duplicate data handling in prune --max-unused
+  - Fix #5249: Fix creation of oversized index by repair index
+    --read-all-packs
+  - Fix #5259: Fix rare crash in command output
+  - Chg #4938: Update dependencies and require Go 1.23 or newer
+  - Chg #5162: Promote feature flags
+  - Enh #1378: Add JSON support to check command
+  - Enh #2511: Support generating shell completions to stdout
+  - Enh #3697: Allow excluding online-only cloud files (e.g.
+    OneDrive)
+  - Enh #4179: Add sort option to ls command
+  - Enh #4433: Change default sort order for find output
+  - Enh #4521: Add support for Microsoft Blob Storage access tiers
+  - Enh #4942: Add snapshot summary statistics to rewritten
+    snapshots
+  - Enh #4948: Format exit errors as JSON when requested
+  - Enh #4983: Add SLSA provenance to GHCR container images
+  - Enh #5054: Enable compression for ZIP archives in dump command
+  - Enh #5081: Add retry mechanism for loading repository config
+  - Enh #5089: Allow including/excluding extended file attributes
+    during restore</comment>
+    <requestid>1264712</requestid>
+  </revision>
 </revisionlist>
