@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Mar 26 19:58:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.25.1:
+  https://istio.io/latest/news/releases/1.25.x/announcing-1.25.1/
+  Security Update
+  * CVE-2025-30157 (CVSS Score 6.5, Medium): Envoy crashes when
+    HTTP ext_proc processes local replies.
+    For the purposes of Istio, this CVE is only exploitable in
+    circumstances where ext_proc is configured via EnvoyFilter.
+  * Changes
+    - no apparent CLI-related changes
+
+-------------------------------------------------------------------
 Wed Mar  5 10:39:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.25.0:
@@ -187,7 +200,7 @@ Wed Jun  5 05:53:19 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * Fixed returning 503 errors by auto-passthrough gateways created
     after enabling mTLS.
   * Fixed serviceRegistry orders influence the proxy labels, so we
-    put the Kubernetes registry in front. (Issue #50968) 
+    put the Kubernetes registry in front. (Issue #50968)
 
 -------------------------------------------------------------------
 Tue May 14 05:39:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
