@@ -24,7 +24,7 @@ License:        MIT
 URL:            https://nheko.im/nheko-reborn/coeurl
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
 BuildRequires:  meson
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires: gcc12
 BuildRequires: gcc12-c++
 %else
@@ -61,7 +61,7 @@ Requires:       %{libname} = %{version}
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif
