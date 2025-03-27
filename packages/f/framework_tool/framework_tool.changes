@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Wed Feb 26 09:54:17 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.2.1
+  * ccgx: Format PD version as decimal on 11th Gen by @JohnAZoidberg in #75
+  * Bump to v0.2.1 by @JohnAZoidberg in #77
+- Update to 0.2.0
+  * Merge pull request #67 from FrameworkComputer/prep-v0.2.0
+  * Release v0.2.0
+
+-------------------------------------------------------------------
+Wed Nov 20 13:25:21 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
+
+- initial version 0.1.0
