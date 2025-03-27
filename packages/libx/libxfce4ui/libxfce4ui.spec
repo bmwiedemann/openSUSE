@@ -1,7 +1,7 @@
 #
 # spec file for package libxfce4ui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_with git
 
 Name:           libxfce4ui
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -31,17 +31,19 @@ Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.20/%{name}-%{vers
 Source1:        xfhelp4.sh
 # PATCH-FIX-OPENSUSE 0001-relax-x11-version.patch -- Allow build for Leap with its ancient but sufficient X11 packages.
 Patch1:         0001-relax-x11-version.patch
-BuildRequires:  gettext >= 0.19.8
 BuildRequires:  fdupes
+BuildRequires:  gettext >= 0.19.8
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.10
+BuildRequires:  pkgconfig(epoxy) >= 1.2
+BuildRequires:  pkgconfig(gdk-wayland-3.0) >= 3.24.0
+BuildRequires:  pkgconfig(gdk-x11-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.5.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.72.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(ice) >= 1.0.9
@@ -55,7 +57,7 @@ BuildRequires:  pkgconfig(vapigen)
 BuildRequires:  pkgconfig(wayland-client) >= 1.20
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.25
 BuildRequires:  pkgconfig(wayland-scanner) >= 1.20
-BuildRequires:  pkgconfig(x11) >= 1.6.5
+BuildRequires:  pkgconfig(x11) >= 1.6.7
 %if %{with git}
 BuildRequires:  gtk-doc
 BuildRequires:  xfce4-dev-tools
@@ -139,8 +141,8 @@ This package provides the upstream look and feel for libxfce4ui.
 
 
 
-# this should be replaced by %%lang_package once bnc#513786 is resolved
 
+# this should be replaced by %%lang_package once bnc#513786 is resolved
 %package lang
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later

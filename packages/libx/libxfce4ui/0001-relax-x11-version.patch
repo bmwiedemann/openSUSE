@@ -1,133 +1,21 @@
 diff -rup a/configure.ac b/configure.ac
---- a/configure.ac	2024-10-24 23:04:47.000000000 +0200
-+++ b/configure.ac	2024-10-25 09:47:03.895923637 +0200
-@@ -18,9 +18,9 @@ m4_define([gtk_min_version], [3.24.0])
- m4_define([libxfce4util_min_version], [4.17.2])
+--- a/configure.ac	2025-03-23 09:32:09.000000000 +0100
++++ b/configure.ac	2025-03-23 10:58:53.014722541 +0100
+@@ -20,8 +20,8 @@ m4_define([libxfce4util_min_version], [4
  m4_define([xfconf_min_version], [4.12.0])
  
--m4_define([libx11_min_version], [1.6.7])
+ m4_define([libx11_min_version], [1.6.7])
 -m4_define([libice_min_version], [1.0.10])
 -m4_define([libsm_min_version], [1.2.3])
-+m4_define([libx11_min_version], [1.6.5])
 +m4_define([libice_min_version], [1.0.9])
 +m4_define([libsm_min_version], [1.2.2])
  
  m4_define([libstartup_notif_min_version], [0.4])
  
 diff -rup a/configure b/configure
---- a/configure	2024-10-24 23:09:05.000000000 +0200
-+++ b/configure	2024-10-25 09:45:34.415862054 +0200
-@@ -18099,11 +18099,11 @@ printf "%s\n" "not found" >&6; }
- 
- 
-   if test x"$xdt_feature_deps_check_only" = x"yes"; then
--    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
-+    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
-       if test x"$xdt_feature_deps_missing" = x""; then
--        xdt_feature_deps_missing="x11 >= 1.6.7"
-+        xdt_feature_deps_missing="x11 >= 1.6.5"
-       else
--        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
-+        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
-       fi
-     fi
-   else
-@@ -18257,9 +18257,9 @@ fi
- 
- 
- 
--  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
--printf %s "checking for x11 >= 1.6.7... " >&6; }
--  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
-+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
-+printf %s "checking for x11 >= 1.6.5... " >&6; }
-+  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
-     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
- printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -18276,7 +18276,7 @@ printf %s "checking LIBX11_LIBS... " >&6
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
- printf "%s\n" "$LIBX11_LIBS" >&6; }
- 
--    LIBX11_REQUIRED_VERSION=1.6.7
-+    LIBX11_REQUIRED_VERSION=1.6.5
- 
- 
- 
-@@ -18305,7 +18305,7 @@ printf "%s\n" "found, but $xdt_cv_versio
- 
-       echo "*** The required package x11 was found on your system,"
-       echo "*** but the installed version ($xdt_cv_version) is too old."
--      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
-+      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
-       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
-       echo "*** the new version of the package in a nonstandard prefix so"
-       echo "*** pkg-config is able to find it."
-@@ -18317,7 +18317,7 @@ printf "%s\n" "not found" >&6; }
- 
- 
-       echo "*** The required package x11 was not found on your system."
--      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
-+      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
-       echo "*** the PKG_CONFIG_PATH environment variable if you"
-       echo "*** installed the package in a nonstandard prefix so that"
-       echo "*** pkg-config is able to find it."
-@@ -18567,11 +18567,11 @@ printf "%s\n" "not found" >&6; }
- 
- 
-   if test x"$xdt_feature_deps_check_only" = x"yes"; then
--    if ! $PKG_CONFIG --exists "x11 >= 1.6.7" >/dev/null 2>&1; then
-+    if ! $PKG_CONFIG --exists "x11 >= 1.6.5" >/dev/null 2>&1; then
-       if test x"$xdt_feature_deps_missing" = x""; then
--        xdt_feature_deps_missing="x11 >= 1.6.7"
-+        xdt_feature_deps_missing="x11 >= 1.6.5"
-       else
--        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.7"
-+        xdt_feature_deps_missing="$xdt_feature_deps_missing, x11 >= 1.6.5"
-       fi
-     fi
-   else
-@@ -18725,9 +18725,9 @@ fi
- 
- 
- 
--  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.7" >&5
--printf %s "checking for x11 >= 1.6.7... " >&6; }
--  if $PKG_CONFIG "--atleast-version=1.6.7" "x11" >/dev/null 2>&1; then
-+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for x11 >= 1.6.5" >&5
-+printf %s "checking for x11 >= 1.6.5... " >&6; }
-+  if $PKG_CONFIG "--atleast-version=1.6.5" "x11" >/dev/null 2>&1; then
-     LIBX11_VERSION=`$PKG_CONFIG --modversion "x11"`
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_VERSION" >&5
- printf "%s\n" "$LIBX11_VERSION" >&6; }
-@@ -18744,7 +18744,7 @@ printf %s "checking LIBX11_LIBS... " >&6
-     { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBX11_LIBS" >&5
- printf "%s\n" "$LIBX11_LIBS" >&6; }
- 
--    LIBX11_REQUIRED_VERSION=1.6.7
-+    LIBX11_REQUIRED_VERSION=1.6.5
- 
- 
- 
-@@ -18773,7 +18773,7 @@ printf "%s\n" "found, but $xdt_cv_versio
- 
-       echo "*** The required package x11 was found on your system,"
-       echo "*** but the installed version ($xdt_cv_version) is too old."
--      echo "*** Please upgrade x11 to atleast version 1.6.7, or adjust"
-+      echo "*** Please upgrade x11 to atleast version 1.6.5, or adjust"
-       echo "*** the PKG_CONFIG_PATH environment variable if you installed"
-       echo "*** the new version of the package in a nonstandard prefix so"
-       echo "*** pkg-config is able to find it."
-@@ -18785,7 +18785,7 @@ printf "%s\n" "not found" >&6; }
- 
- 
-       echo "*** The required package x11 was not found on your system."
--      echo "*** Please install x11 (atleast version 1.6.7) or adjust"
-+      echo "*** Please install x11 (atleast version 1.6.5) or adjust"
-       echo "*** the PKG_CONFIG_PATH environment variable if you"
-       echo "*** installed the package in a nonstandard prefix so that"
-       echo "*** pkg-config is able to find it."
-@@ -19381,11 +19381,11 @@ fi
+--- a/configure	2025-03-23 09:34:26.000000000 +0100
++++ b/configure	2025-03-23 10:59:17.804788857 +0100
+@@ -20559,11 +20559,11 @@ fi
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -142,7 +30,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -19539,9 +19539,9 @@ fi
+@@ -20722,9 +20722,9 @@ fi
  
  
  
@@ -155,7 +43,7 @@ diff -rup a/configure b/configure
      LIBICE_VERSION=`$PKG_CONFIG --modversion "ice"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_VERSION" >&5
  printf "%s\n" "$LIBICE_VERSION" >&6; }
-@@ -19558,7 +19558,7 @@ printf %s "checking LIBICE_LIBS... " >&6
+@@ -20741,7 +20741,7 @@ printf %s "checking LIBICE_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_LIBS" >&5
  printf "%s\n" "$LIBICE_LIBS" >&6; }
  
@@ -164,7 +52,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -19587,7 +19587,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -20770,7 +20770,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package ice was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -173,7 +61,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -19599,7 +19599,7 @@ printf "%s\n" "not found" >&6; }
+@@ -20782,7 +20782,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package ice was not found on your system."
@@ -182,7 +70,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you"
        echo "*** installed the package in a nonstandard prefix so that"
        echo "*** pkg-config is able to find it."
-@@ -19613,11 +19613,11 @@ printf "%s\n" "not found" >&6; }
+@@ -20796,11 +20796,11 @@ printf "%s\n" "not found" >&6; }
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -197,7 +85,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -19771,9 +19771,9 @@ fi
+@@ -20959,9 +20959,9 @@ fi
  
  
  
@@ -210,7 +98,7 @@ diff -rup a/configure b/configure
      LIBSM_VERSION=`$PKG_CONFIG --modversion "sm"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_VERSION" >&5
  printf "%s\n" "$LIBSM_VERSION" >&6; }
-@@ -19790,7 +19790,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
+@@ -20978,7 +20978,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_LIBS" >&5
  printf "%s\n" "$LIBSM_LIBS" >&6; }
  
@@ -219,7 +107,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -19819,7 +19819,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -21007,7 +21007,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package sm was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -228,7 +116,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -19831,7 +19831,7 @@ printf "%s\n" "not found" >&6; }
+@@ -21019,7 +21019,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package sm was not found on your system."
@@ -237,7 +125,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you"
        echo "*** installed the package in a nonstandard prefix so that"
        echo "*** pkg-config is able to find it."
-@@ -19849,11 +19849,11 @@ printf "%s\n" "not found" >&6; }
+@@ -21037,11 +21037,11 @@ printf "%s\n" "not found" >&6; }
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -252,7 +140,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -20007,9 +20007,9 @@ fi
+@@ -21200,9 +21200,9 @@ fi
  
  
  
@@ -265,7 +153,7 @@ diff -rup a/configure b/configure
      LIBICE_VERSION=`$PKG_CONFIG --modversion "ice"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_VERSION" >&5
  printf "%s\n" "$LIBICE_VERSION" >&6; }
-@@ -20026,7 +20026,7 @@ printf %s "checking LIBICE_LIBS... " >&6
+@@ -21219,7 +21219,7 @@ printf %s "checking LIBICE_LIBS... " >&6
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBICE_LIBS" >&5
  printf "%s\n" "$LIBICE_LIBS" >&6; }
  
@@ -274,7 +162,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -20055,7 +20055,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -21248,7 +21248,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package ice was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -283,7 +171,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -20067,7 +20067,7 @@ printf "%s\n" "not found" >&6; }
+@@ -21260,7 +21260,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package ice was not found on your system."
@@ -292,7 +180,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you"
        echo "*** installed the package in a nonstandard prefix so that"
        echo "*** pkg-config is able to find it."
-@@ -20081,11 +20081,11 @@ printf "%s\n" "not found" >&6; }
+@@ -21274,11 +21274,11 @@ printf "%s\n" "not found" >&6; }
  
  
    if test x"$xdt_feature_deps_check_only" = x"yes"; then
@@ -307,7 +195,7 @@ diff -rup a/configure b/configure
        fi
      fi
    else
-@@ -20239,9 +20239,9 @@ fi
+@@ -21437,9 +21437,9 @@ fi
  
  
  
@@ -320,7 +208,7 @@ diff -rup a/configure b/configure
      LIBSM_VERSION=`$PKG_CONFIG --modversion "sm"`
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_VERSION" >&5
  printf "%s\n" "$LIBSM_VERSION" >&6; }
-@@ -20258,7 +20258,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
+@@ -21456,7 +21456,7 @@ printf %s "checking LIBSM_LIBS... " >&6;
      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $LIBSM_LIBS" >&5
  printf "%s\n" "$LIBSM_LIBS" >&6; }
  
@@ -329,7 +217,7 @@ diff -rup a/configure b/configure
  
  
  
-@@ -20287,7 +20287,7 @@ printf "%s\n" "found, but $xdt_cv_versio
+@@ -21485,7 +21485,7 @@ printf "%s\n" "found, but $xdt_cv_versio
  
        echo "*** The required package sm was found on your system,"
        echo "*** but the installed version ($xdt_cv_version) is too old."
@@ -338,7 +226,7 @@ diff -rup a/configure b/configure
        echo "*** the PKG_CONFIG_PATH environment variable if you installed"
        echo "*** the new version of the package in a nonstandard prefix so"
        echo "*** pkg-config is able to find it."
-@@ -20299,7 +20299,7 @@ printf "%s\n" "not found" >&6; }
+@@ -21497,7 +21497,7 @@ printf "%s\n" "not found" >&6; }
  
  
        echo "*** The required package sm was not found on your system."

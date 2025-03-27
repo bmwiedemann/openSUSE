@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 23 09:49:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 4.20.1
+  * clipboard-manager: Fix memory leak
+  * I18n: Update po/LINGUAS list
+  * build: Automate copyright year management
+  * build: Remove libxfce4ui-config.h from GI
+  * clipboard-manager: Preserve all image formats when taking ownership
+  * Delete obsolete file libxfce4ui-1.pc.in
+  * build: Include local header libxfce4ui/libxfce4ui.h
+  * build: Fix include guard position
+  * Add variadic functions to Vala
+  * Fix namespace for GObject introspection
+  * Translation Updates
+- Refresh 0001-relax-x11-version.patch
+
+-------------------------------------------------------------------
 Sun Dec 15 12:45:54 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.0
