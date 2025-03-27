@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-jaxb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            https://jaxb.java.net
 Source0:        https://github.com/javaee/jaxb-v2/archive/%{version}.tar.gz
 Patch0:         txw2-args4j.patch
 Patch1:         glassfish-jaxb-timestamp.patch
+Patch2:         pom-errors.patch
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -239,6 +240,7 @@ This package contains the API documentation for %{name}.
 
 %patch -P 0
 %patch -P 1 -p1
+%patch -P 2 -p1
 
 pushd jaxb-ri
 

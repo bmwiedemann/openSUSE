@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 18:03:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * pom-errors.patch
+    + fix errors in pom files that will be fatal with maven 4
+
+-------------------------------------------------------------------
 Mon Nov  4 21:27:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix conflict/choice of providers
