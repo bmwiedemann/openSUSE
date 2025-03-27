@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-hk2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,8 @@ Patch2:         hk2-jdk11.patch
 Patch3:         reproducible-now.patch
 # Port to maven-plugin-plugin >= 3.11
 Patch4:         hk2-inhabitant-generator-goaprefix.patch
+# port to maven-plugin-tools >= 4.0.0
+Patch5:         port-to-mpt4.patch
 BuildRequires:  maven-local
 BuildRequires:  mvn(aopalliance:aopalliance)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
@@ -234,6 +236,7 @@ This package contains API documentation for %{name}.
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 5 -p1
 
 # Disable tests that intermittently fail on ARM arches
 sed -i -e '/org\.junit\.Ignore/s/\/\///' \
@@ -345,8 +348,10 @@ rm hk2-runlevel/src/test/java/org/glassfish/hk2/runlevel/tests/listener/Listener
 %pom_remove_dep -r :jboss-logging
 %pom_remove_dep -r :classmate
 
-%pom_add_dep org.apache.maven:maven-core:3.9.0:provided maven-plugins/osgiversion-maven-plugin
-%pom_add_dep org.apache.maven:maven-core:3.9.0:provided maven-plugins/consolidatedbundle-maven-plugin
+%pom_add_dep org.apache.maven:maven-core:3.9.9:provided maven-plugins/osgiversion-maven-plugin
+%pom_add_dep org.apache.maven:maven-core:3.9.9:provided maven-plugins/consolidatedbundle-maven-plugin
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided maven-plugins
 
 # Disable security policy that interferes with tests
 %pom_xpath_remove "pom:plugin[pom:artifactId ='maven-surefire-plugin']/pom:configuration" hk2-api

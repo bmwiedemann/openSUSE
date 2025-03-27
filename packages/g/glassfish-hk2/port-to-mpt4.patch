@@ -1,0 +1,242 @@
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/consolidatedbundle-maven-plugin/src/main/java/com/sun/enterprise/module/maven/HK2GenerateMojo.java	2025-03-27 12:48:57.365572862 +0100
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/consolidatedbundle-maven-plugin/src/main/java/com/sun/enterprise/module/maven/HK2GenerateMojo.java	2025-03-27 13:13:41.134788755 +0100
+@@ -18,6 +18,10 @@
+ 
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++import org.apache.maven.plugins.annotations.ResolutionScope;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.artifact.Artifact;
+ 
+@@ -33,14 +37,13 @@
+ /**
+  * Generates a consolidated OSGI bundle with a consolidated HK2 header
+  *
+- * @goal hk2-generate
+- * @phase prepare-package
+- *
+- * @requiresProject true
+- * @requiresDependencyResolution compile
+  * @author Sivakumar Thyagarajan
+  */
+ /* We use prepare-package as the phase as we need to perform this consolidation before the maven-bundle-plugin's bundle goal gets executed in the package phase.*/
++@Mojo( name = "hk2-generate",
++       defaultPhase = LifecyclePhase.PREPARE_PACKAGE,
++       requiresProject = true,
++       requiresDependencyResolution = ResolutionScope.COMPILE )
+ public class HK2GenerateMojo extends AbstractMojo {
+ 
+     private final static String META_INF = "META-INF";
+@@ -51,17 +54,17 @@
+     /**
+      * Directory where the manifest will be written
+      *
+-     * @parameter expression="${manifestLocation}"
+-     * default-value="${project.build.outputDirectory}"
+      */
++    @Parameter( property = "manifestLocation",
++                defaultValue = "${project.build.outputDirectory}" )
+     protected File manifestLocation;
+     /**
+      * The maven project.
+      *
+-     * @parameter expression="${project}"
+-     * @required
+-     * @readonly
+      */
++    @Parameter( property = "project",
++                required = true,
++                readonly = true )
+     protected MavenProject project;
+ 
+     @SuppressWarnings("unchecked")
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/AbstractInhabitantsGeneratorMojo.java	2025-03-27 12:48:57.366337802 +0100
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/AbstractInhabitantsGeneratorMojo.java	2025-03-27 13:14:08.446958321 +0100
+@@ -26,6 +26,7 @@
+ import org.apache.maven.artifact.Artifact;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.project.MavenProject;
+ import org.jvnet.hk2.generator.HabitatGenerator;
+ 
+@@ -38,36 +39,28 @@
+     private final static String WEB_INF = "WEB-INF";
+     private final static String CLASSES = "classes";
+     
+-    /**
+-     * @parameter expression="${project.build.directory}"
+-     */
++    @Parameter( property = "project.build.directory" )
+     private File targetDirectory;
+     
+     /**
+      * The maven project.
+-     *
+-     * @parameter expression="${project}" @required @readonly
+      */
++    @Parameter( property = "project",
++                required = true,
++                readonly = true )
+     protected MavenProject project;
+     
+-    /**
+-     * @parameter
+-     */
++    @Parameter
+     private boolean verbose;
+     
+-    /**
+-     * @parameter default-value=true
+-     */
++    @Parameter( defaultValue = "true" )
+     private boolean includeDate = true;
+     
+-    /**
+-     * @parameter
+-     */
++    @Parameter
+     private String locator;
+     
+-    /**
+-     * @parameter expression="${supportedProjectTypes}" default-value="jar,ejb,war"
+-     */
++    @Parameter( property = "supportedProjectTypes",
++                defaultValue = "jar,ejb,war" )
+     private String supportedProjectTypes;
+     
+     protected abstract boolean getNoSwap();
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/InhabitantsGeneratorMojo.java	2025-03-27 12:48:57.366372023 +0100
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/InhabitantsGeneratorMojo.java	2025-03-27 13:13:16.318526883 +0100
+@@ -16,25 +16,26 @@
+ 
+ package org.jvnet.hk2.generator.maven;
+ 
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++import org.apache.maven.plugins.annotations.ResolutionScope;
++
+ import java.io.File;
+ 
+ /**
+  * Generates inhabitant
+  * 
+- * @goal generate-inhabitants
+- * @phase process-classes 
+- * @requiresDependencyResolution test
+  */
++@Mojo( name = "generate-inhabitants",
++       defaultPhase = LifecyclePhase.PROCESS_CLASSES,
++       requiresDependencyResolution = ResolutionScope.TEST )
+ public class InhabitantsGeneratorMojo extends AbstractInhabitantsGeneratorMojo {
+     
+-    /**
+-     * @parameter expression="${project.build.outputDirectory}"
+-     */
++    @Parameter( property = "project.build.outputDirectory" )
+     private File outputDirectory;
+     
+-    /**
+-     * @parameter default-value="true"
+-     */
++    @Parameter( defaultValue = "true" )
+     private boolean noswap;
+ 
+     @Override
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/TestInhabitantsGeneratorMojo.java	2025-03-27 12:48:57.366398692 +0100
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/hk2-inhabitant-generator/src/main/java/org/jvnet/hk2/generator/maven/TestInhabitantsGeneratorMojo.java	2025-03-27 13:13:26.846558707 +0100
+@@ -16,25 +16,26 @@
+ 
+ package org.jvnet.hk2.generator.maven;
+ 
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++import org.apache.maven.plugins.annotations.ResolutionScope;
++
+ import java.io.File;
+ 
+ /**
+  * Generates inhabitant
+  * 
+- * @goal generate-test-inhabitants
+- * @phase test-compile
+- * @requiresDependencyResolution test
+  */
++@Mojo( name = "generate-test-inhabitants",
++       defaultPhase = LifecyclePhase.TEST_COMPILE,
++       requiresDependencyResolution = ResolutionScope.TEST )
+ public class TestInhabitantsGeneratorMojo extends AbstractInhabitantsGeneratorMojo {
+     
+-    /**
+-     * @parameter expression="${project.build.testOutputDirectory}"
+-     */
++    @Parameter( property = "project.build.testOutputDirectory" )
+     private File outputDirectory;
+     
+-    /**
+-     * @parameter default-value="false"
+-     */
++    @Parameter( defaultValue = "false" )
+     private boolean noswap;
+ 
+     @Override
+--- glassfish-hk2-2.5.0-RELEASE/maven-plugins/osgiversion-maven-plugin/src/main/java/com/sun/enterprise/module/maven/OsgiVersionMojo.java	2025-03-27 12:48:57.368438894 +0100
++++ glassfish-hk2-2.5.0-RELEASE/maven-plugins/osgiversion-maven-plugin/src/main/java/com/sun/enterprise/module/maven/OsgiVersionMojo.java	2025-03-27 13:12:55.438497082 +0100
+@@ -20,6 +20,9 @@
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.project.MavenProject;
+ 
+ /**
+@@ -30,19 +33,19 @@
+  *
+  * @author Kohsuke Kawaguchi
+  * @author Sanjeeb.Sahoo@Sun.COM
+- * @goal compute-osgi-version
+- * @threadSafe
+- * @phase validate
+- * @requiresProject
+  */
++@Mojo ( name = "compute-osgi-version",
++        threadSafe = true,
++        defaultPhase = LifecyclePhase.VALIDATE,
++        requiresProject = true )
+ public class OsgiVersionMojo extends AbstractMojo {
+     /**
+      * The maven project.
+      *
+-     * @parameter expression="${project}"
+-     * @required
+-     * @readonly
+      */
++    @Parameter( property = "project",
++                required = true,
++                readonly = true )
+     protected MavenProject project;
+     
+     /**
+@@ -60,13 +63,13 @@
+      * be used in the OSGi version. If they ask us to drop minor, then only
+      * major will be used. Similarly, if they ask us to drop qualifier, then
+      * major, minor and micro portions will be used.
+-     * @parameter
+      */
++    @Parameter
+     protected Version.COMPONENT dropVersionComponent;
+ 
+     /**
+-     * @parameter default-value="project.osgi.version"
+      */
++    @Parameter( defaultValue = "project.osgi.version" )
+     protected String versionPropertyName;
+ 
+     @Override

@@ -79,4 +79,12 @@
     <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
     <requestid>1174394</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>863d3577e40a45544a26ccb4e7d7a7ed</srcmd5>
+    <version>2.5.0</version>
+    <time>1743111243</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1262803</requestid>
+  </revision>
 </revisionlist>

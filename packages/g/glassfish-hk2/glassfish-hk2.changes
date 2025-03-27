@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 14:49:55 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * port-to-mpt4.patch
+    + port the maven-plugins to java-annotations extractor instead
+      of the deprecated java-javadoc one
+
+-------------------------------------------------------------------
 Thu May 16 08:07:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
