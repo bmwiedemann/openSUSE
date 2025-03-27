@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 19 17:40:33 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to 3.4.7:
+- Drop upstreamed patch:
+  * 830.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 15:22:24 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add patches to fix BTI on aarch64:

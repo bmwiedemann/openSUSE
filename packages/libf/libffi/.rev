@@ -173,4 +173,15 @@
   * 810.patch (forwarded request 1159617 from Guillaume_G)</comment>
     <requestid>1159781</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1da7e8cc173cd1b35ef6459ef9aeb235</srcmd5>
+    <version>3.4.7</version>
+    <time>1743111089</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.4.7:
+- Drop upstreamed patch:
+  * 830.patch
+</comment>
+    <requestid>1255515</requestid>
+  </revision>
 </revisionlist>
