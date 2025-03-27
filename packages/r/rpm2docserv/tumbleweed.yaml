@@ -1,0 +1,22 @@
+projectname: openSUSE
+projecturl: https://www.opensuse.org
+#logourl: /logo.svg
+servingdir: /srv/rpm2docserv
+download: false
+baseurl: https://manpages.opensuse.org
+import: /usr/share/rpm2docserv/index/leap.idx
+products:
+  - name: Tumbleweed
+    alias:
+      - MicroOS
+    cache:
+      - /srv/ftp-stage/pub/opensuse/tumbleweed/repo/oss/x86_64
+      - /srv/ftp-stage/pub/opensuse/tumbleweed/repo/oss/noarch
+  - name: Leap-16.0
+    norender: true
+  - name: Leap-15.6
+    norender: true
+sortorder:
+  - Tumbleweed
+  - Leap-16.0
+  - Leap-15.6

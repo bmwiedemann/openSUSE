@@ -21,22 +21,20 @@
 %endif
 
 Name:           rpm2docserv
-Version:        20250321.37b55b5
+Version:        20250327.1888603
 Release:        0
 Summary:        Make manpages from RPMs accessible in a web browser
 License:        Apache-2.0
 URL:            https://github.com/thkukuk/rpm2docserv
 Source:         rpm2docserv-%{version}.tar.xz
 Source1:        vendor.tar.gz
+Source2:        tumbleweed.yaml
+Source3:        leap.idx
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  golang(API) >= 1.23
 Requires:       /usr/bin/mandoc
 Requires:       cpio
-# To re-create:
-# git clone https://github.com/thkukuk/rpm2docserv
-# cd rpm2docserv; make vendor; cd ..
-# osc service
 
 %description
 rpm2docserv extracts manual pages from RPM packages and makes them accessible in a web browser.
@@ -94,6 +92,9 @@ install -m 755 bin/docserv-minisrv %{buildroot}%{_sbindir}/
 install -m 755 bin/docserv-sitemap %{buildroot}%{_bindir}/
 mkdir -p %{buildroot}%{_datadir}/%{name}
 cp -r assets %{buildroot}%{_datadir}/%{name}
+mkdir -p %{buildroot}%{_datadir}/%{name}/{configs,index}
+install -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/%{name}/configs/
+install -m 0644 %{SOURCE3} %{buildroot}%{_datadir}/%{name}/index/
 
 install -D -m 0644 systemd/docserv-auxserver.service %{buildroot}%{_unitdir}/docserv-auxserver.service
 install -D -m 0644 systemd/docserv-auxserver.default %{buildroot}%{_distconfdir}/default/docserv-auxserver

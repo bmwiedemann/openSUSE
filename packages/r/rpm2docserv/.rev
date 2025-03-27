@@ -267,4 +267,18 @@
   * Remove unused and outdated tests</comment>
     <requestid>1255873</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>102026ecc0abc67a64ea292e25ad0381</srcmd5>
+    <version>20250327.1888603</version>
+    <time>1743111198</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250327.1888603:
+  * Sync config file struct
+  * unrpm: make all files read/writable for the user
+  * Update go dependencies
+  * Don't render products imported via idx file
+  * Remove obsolete comments
+- Add tumbleweed.yaml and leap.idx</comment>
+    <requestid>1256421</requestid>
+  </revision>
 </revisionlist>
