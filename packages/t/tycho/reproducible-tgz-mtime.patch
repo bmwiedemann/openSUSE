@@ -1,0 +1,21 @@
+--- tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/src/main/java/org/eclipse/tycho/plugins/tar/TarGzArchiver.java	2024-09-19 14:16:09.460537990 +0200
++++ tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/src/main/java/org/eclipse/tycho/plugins/tar/TarGzArchiver.java	2024-09-19 15:02:05.532769133 +0200
+@@ -23,6 +23,7 @@
+ import java.nio.file.attribute.PosixFileAttributeView;
+ import java.nio.file.attribute.PosixFileAttributes;
+ import java.util.ArrayList;
++import java.util.Date;
+ import java.util.List;
+ 
+ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+@@ -131,6 +132,10 @@
+             tarEntry.setMode(FilePermissionHelper.toOctalFileMode(attrs.permissions()));
+         }
+         tarEntry.setModTime(source.lastModified());
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        if (sde != null) {
++            tarEntry.setModTime(new Date(1000 * Long.parseLong(sde)));
++        }
+         return tarEntry;
+     }
+ 

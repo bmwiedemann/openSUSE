@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 27 14:53:02 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Port the EmptyMojo.java, used during the boostrap build, to
+  java-annotations extractor instead of the deprecated java-javadoc
+  one. This allows to build using the up-coming maven-plugin-tools
+  4.x
+- Added patches:
+  * reproducible-tgz-mtime.patch
+  * reproducible-zip-mtime.patch
+    + trying to sanitize the modification times of files produced
+      by tycho plugins
+
+-------------------------------------------------------------------
 Wed May 15 16:39:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

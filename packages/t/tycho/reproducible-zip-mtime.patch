@@ -1,0 +1,203 @@
+--- tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/src/main/java/org/eclipse/tycho/plugins/p2/director/ProductArchiverMojo.java	2020-01-13 12:02:41.000000000 +0100
++++ tycho-1.6.0/tycho-p2/tycho-p2-director-plugin/src/main/java/org/eclipse/tycho/plugins/p2/director/ProductArchiverMojo.java	2024-09-25 16:48:40.724831059 +0200
+@@ -13,6 +13,7 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.nio.file.attribute.FileTime;
+ import java.util.HashMap;
+ import java.util.Map;
+ 
+@@ -136,6 +137,10 @@
+                     } else {
+                         Archiver archiver = productArchiver.getArchiver();
+                         archiver.setDestFile(productArchive);
++                        String sde = System.getenv("SOURCE_DATE_EPOCH");
++                        if (sde != null) {
++                            archiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++                        }
+                         DefaultFileSet fileSet = new DefaultFileSet(sourceDir);
+                         fileSet.setUsingDefaultExcludes(false);
+                         archiver.addFileSet(fileSet);
+--- tycho-1.6.0/tycho-p2/tycho-p2-repository-plugin/src/main/java/org/eclipse/tycho/plugins/p2/repository/ArchiveRepositoryMojo.java	2020-01-13 12:02:41.000000000 +0100
++++ tycho-1.6.0/tycho-p2/tycho-p2-repository-plugin/src/main/java/org/eclipse/tycho/plugins/p2/repository/ArchiveRepositoryMojo.java	2024-09-25 17:38:37.775628140 +0200
+@@ -13,6 +13,7 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.nio.file.attribute.FileTime;
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+@@ -58,6 +59,10 @@
+         File destFile = getBuildDirectory().getChild(finalName + ".zip");
+ 
+         try {
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                inflater.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++            }
+             inflater.addFileSet(DefaultFileSet.fileSet(getAssemblyRepositoryLocation()).prefixed(""));
+             inflater.setDestFile(destFile);
+             inflater.createArchive();
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageFeatureMojo.java	2024-09-25 16:14:55.650462903 +0200
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageFeatureMojo.java	2024-09-25 16:15:01.163835826 +0200
+@@ -15,6 +15,7 @@
+ import java.io.FileWriter;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.file.attribute.FileTime;
+ import java.nio.file.Files;
+ import java.util.ArrayList;
+ import java.util.List;
+@@ -137,6 +138,11 @@
+         archiver.setOutputFile(outputJar);
+         jarArchiver.setDestFile(outputJar);
+ 
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        if (sde != null) {
++            jarArchiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++        }
++
+         try {
+             archiver.getArchiver().addFileSet(getManuallyIncludedFiles(buildProperties));
+             if (licenseFeature != null) {
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageIUMojo.java	2020-01-13 12:02:41.000000000 +0100
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageIUMojo.java	2024-09-25 18:01:25.715138483 +0200
+@@ -12,6 +12,8 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.nio.file.attribute.FileTime;
++import java.nio.file.Files;
+ 
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
+@@ -119,16 +121,23 @@
+                 newArtifact.delete();
+             }
+ 
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
+             if (hasPayload()) {
+                 DefaultFileSet fs = new DefaultFileSet();
+                 fs.setDirectory(payload);
+                 zipArchiver.addFileSet(fs);
+                 zipArchiver.setDestFile(newArtifact);
+                 zipArchiver.setCompress(true);
++                if (sde != null) {
++                    zipArchiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++                }
+                 zipArchiver.createArchive();
+             } else {
+                 //Force create the file
+                 newArtifact.createNewFile();
++                if (sde != null) {
++                    Files.setLastModifiedTime(newArtifact.toPath(), FileTime.fromMillis(1000 * Long.parseLong(sde)));
++                }
+             }
+             return newArtifact;
+         } catch (IOException | ArchiverException e) {
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackagePluginMojo.java	2020-01-13 12:02:41.000000000 +0100
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackagePluginMojo.java	2024-09-25 18:06:43.014014463 +0200
+@@ -16,6 +16,7 @@
+ import java.io.FileOutputStream;
+ import java.io.IOException;
+ import java.io.InputStream;
++import java.nio.file.attribute.FileTime;
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.jar.Attributes;
+@@ -149,6 +150,11 @@
+     public void execute() throws MojoExecutionException {
+         pdeProject = (EclipsePluginProject) project.getContextValue(TychoConstants.CTX_ECLIPSE_PLUGIN_PROJECT);
+ 
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        if (sde != null) {
++            jarArchiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++        }
++
+         createSubJars();
+ 
+         File pluginFile = createPluginJar();
+@@ -172,6 +178,10 @@
+             File jarFile = new File(project.getBasedir(), jarName);
+             JarArchiver archiver = new JarArchiver();
+             archiver.setDestFile(jarFile);
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                archiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++            }
+             archiver.addDirectory(jar.getOutputDirectory());
+             if (customManifest != null) {
+                 for (File sourceFolder : jar.getSourceFolders()) {
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageUpdateSiteMojo.java	2020-01-13 12:02:41.000000000 +0100
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/PackageUpdateSiteMojo.java	2024-09-25 17:41:41.193568902 +0200
+@@ -12,6 +12,7 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
++import java.nio.file.attribute.FileTime;
+ 
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+@@ -66,10 +67,17 @@
+             File siteDestination = new File(target.getParentFile(), "site.zip");
+             siteZipper.addFile(new File(target, "site.xml"), "site.xml");
+             siteZipper.setDestFile(siteDestination);
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                siteZipper.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++            }
+             siteZipper.createArchive();
+             project.getArtifact().setFile(siteDestination);
+             if (archiveSite) {
+                 ZipArchiver asssemblyZipper = new ZipArchiver();
++                if (sde != null) {
++                    asssemblyZipper.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++                }
+                 File asssemblyDestFile = new File(target.getParentFile(), "site_assembly.zip");
+                 asssemblyZipper.addDirectory(target);
+                 asssemblyZipper.setDestFile(asssemblyDestFile);
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/ProductExportMojo.java	2024-09-25 16:14:55.653796260 +0200
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/ProductExportMojo.java	2024-09-25 16:24:24.147878245 +0200
+@@ -20,6 +20,7 @@
+ import java.io.InputStream;
+ import java.io.OutputStream;
+ import java.io.StringWriter;
++import java.nio.file.attribute.FileTime;
+ import java.util.Arrays;
+ import java.util.Enumeration;
+ import java.util.HashMap;
+@@ -395,6 +396,10 @@
+         File destFile = new File(project.getBuild().getDirectory(), filename.toString());
+ 
+         try {
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                zipper.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++            }
+             zipper.addDirectory(target);
+             zipper.setDestFile(destFile);
+             zipper.createArchive();
+diff -urEbwB tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/UpdateSiteAssembler.java tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/UpdateSiteAssembler.java
+--- tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/UpdateSiteAssembler.java	2024-09-25 16:14:55.653796260 +0200
++++ tycho-1.6.0/tycho-packaging-plugin/src/main/java/org/eclipse/tycho/packaging/UpdateSiteAssembler.java	2024-09-25 16:15:01.163835826 +0200
+@@ -17,6 +17,7 @@
+ import java.io.InputStream;
+ import java.io.OutputStream;
+ import java.net.URL;
++import java.nio.file.attribute.FileTime;
+ import java.util.Map;
+ 
+ import org.codehaus.plexus.PlexusContainer;
+@@ -252,6 +253,10 @@
+         archiver.setDestFile(targetZip);
+         try {
+             archiver.addDirectory(sourceDir);
++            String sde = System.getenv("SOURCE_DATE_EPOCH");
++            if (sde != null) {
++                archiver.setLastModifiedTime(FileTime.fromMillis(1000 * Long.parseLong(sde)));
++            }
+             archiver.createArchive();
+         } catch (IOException | ArchiverException e) {
+             throw new RuntimeException("Error packing zip", e);

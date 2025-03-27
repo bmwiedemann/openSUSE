@@ -20,6 +20,6 @@ pushd ${pluginsDir} && rm -rf *
 symlinkBundles "${wantedBundles}"
 for b in *; do readlink $b; done >$mfLoc
 popd
-zip -ry ${zipFile} *
+zip -Xry ${zipFile} *
 popd
 mv ${tmpDir}/${zipFile} ${zipLoc}

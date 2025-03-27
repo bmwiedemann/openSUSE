@@ -159,4 +159,12 @@
     <comment>Fix build with maven-plugin-plugin &gt;= 3.11</comment>
     <requestid>1174350</requestid>
   </revision>
+  <revision rev="21" vrev="18">
+    <srcmd5>ee21ad38f2fece73117c4350f9af4ff0</srcmd5>
+    <version>1.6.0</version>
+    <time>1743111271</time>
+    <user>anag+factory</user>
+    <comment>allow building with the upcoming maven-plugin-tools 4.x</comment>
+    <requestid>1264630</requestid>
+  </revision>
 </revisionlist>

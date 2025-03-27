@@ -95,7 +95,7 @@ function symlinkBundles () {
 # SCL priority is from right to left.
 # X_SCLS expands to list of currently enabled SCLs, in the order they were enabled, if any
 scls="$X_SCLS"
-baseLocations=( '/usr/share/java/eclipse' '/usr/share/java' '/usr/lib/java' )
+baseLocations=( '/usr/share/java/eclipse' '/usr/share/java' '/usr/lib/java' '/usr/lib64/java' )
 osgiLocations=(${baseLocations[@]} ${osgiLocations[@]} )
 for scl in ${scls} ; do
   osgiLocations=( ${baseLocations[@]/#//opt/rh/${scl}/root} ${osgiLocations[@]} )
