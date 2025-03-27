@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:48:48 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.29.0:
+  * fix(auth): print token to stdout on get-access-token cmd (#669)
+  * feat(serverbackup): Region adjustment (#667)
+  * chore(server): regional adjustment for server update (#662)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/core to v0.16.2 (#666)
+  * chore: add make option to create test coverage reports (#659)
+
+-------------------------------------------------------------------
 Wed Mar 26 14:13:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.28.0:

@@ -19,7 +19,7 @@
 %define executable_name stackit
 
 Name:           stackit-cli
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        A command-line interface to manage STACKIT resources
 License:        Apache-2.0
@@ -64,8 +64,8 @@ Bash command line completion support for %{name}.
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Requires:       fish
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -75,8 +75,8 @@ Fish command line completion support for %{name}.
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
