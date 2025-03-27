@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:55:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
 Thu Oct 26 03:40:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build javadoc with source level 8

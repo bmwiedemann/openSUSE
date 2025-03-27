@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-command
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,8 @@ This package contains API documentation for %{name}.
 %pom_change_dep :osgi.annotation :::provided
 %pom_change_dep :junit :::test
 %pom_change_dep :mockito-core :::test
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 %{mvn_build} -f -- \
