@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:23:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.4.0:
+  * adopt a new algorithm that eliminates necessity of specifying
+    values with --thres and --thrash options
+  * fix a bug where oomstaller crashes when files under /proc
+    cannot be read
+
+-------------------------------------------------------------------
 Fri Dec 13 12:44:22 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.3.0:

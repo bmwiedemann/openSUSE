@@ -1,7 +1,7 @@
 #
 # spec file for package oomstaller
 #
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           oomstaller
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        A tool for suppressing swap thrashing at build time
 License:        BSL-1.0
