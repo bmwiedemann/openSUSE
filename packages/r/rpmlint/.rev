@@ -5191,4 +5191,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: whitelist kio-admin (bsc#1229913) (forwarded request 1248365 from mgerstner)</comment>
     <requestid>1248374</requestid>
   </revision>
+  <revision rev="502" vrev="1">
+    <srcmd5>8f71ff509004a40c4a68343e9fe88863</srcmd5>
+    <version>2.7.0+git20250325.dd508d6</version>
+    <time>1743111103</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.7.0+git20250325.dd508d6:
+  * CI: Disable failing CI images
+  * polkit-rules: whitelist gdm WiFi connection setup rules (bsc#1239719)
+  * Fix grammatical direction for unstripped-binary-or-object message
+  * Release 2.7.0
+</comment>
+    <requestid>1255923</requestid>
+  </revision>
 </revisionlist>

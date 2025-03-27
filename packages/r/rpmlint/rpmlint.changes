@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 08:57:01 UTC 2025 - wolfgang.frisch@suse.com
+
+- Update to version 2.7.0+git20250325.dd508d6:
+  * CI: Disable failing CI images
+  * polkit-rules: whitelist gdm WiFi connection setup rules (bsc#1239719)
+  * Fix grammatical direction for unstripped-binary-or-object message
+  * Release 2.7.0
+
+-------------------------------------------------------------------
 Tue Feb 25 12:59:17 UTC 2025 - matthias.gerstner@suse.com
 
 - Update to version 2.6.1+git20250225.61788d7b:
