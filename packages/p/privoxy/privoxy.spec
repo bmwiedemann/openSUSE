@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  w3m
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
