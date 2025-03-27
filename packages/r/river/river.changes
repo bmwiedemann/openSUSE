@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 14:31:02 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Switch to BuildRequires: pkgconfig(libpcre2-8)
+
+-------------------------------------------------------------------
 Tue Jan 14 00:44:10 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Include qt6-wayland. This ensures Qt apps look great.
