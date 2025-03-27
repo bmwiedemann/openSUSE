@@ -29,7 +29,7 @@ Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.
 Patch0:         fix-build-with-fmt11.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 BuildRequires: gcc12
 BuildRequires: gcc12-c++
 %else
@@ -81,7 +81,7 @@ Client API library for Matrix, built on top of Boost.Asio
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
 %endif

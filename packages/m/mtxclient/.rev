@@ -7,4 +7,12 @@
     <comment>dependency for nheko</comment>
     <requestid>1253397</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1be57c615bc6b3be681f1ae3313a8a3a</srcmd5>
+    <version>0.10.0</version>
+    <time>1743111214</time>
+    <user>anag+factory</user>
+    <comment>fix for 16.0</comment>
+    <requestid>1256444</requestid>
+  </revision>
 </revisionlist>
