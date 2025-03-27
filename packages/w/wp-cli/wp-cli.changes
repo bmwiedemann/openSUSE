@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Feb 10 07:48:08 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.11.0
+  * Allow manually dispatching tests workflow [#5965]
+  * Add fish shell completion [#5954]
+  * Add defaults and accepted values for runcommand() options in doc [#5953]
+  * Address warnings with filenames ending in fullstop on Windows [#5951]
+  * Fix unit tests [#5950]
+  * Update copyright year in license [#5942]
+  * Fix breaking multi-line CSV values on reading [#5939]
+  * Fix broken Gutenberg test [#5938]
+  * Update docker runner to resolve docker path using /usr/bin/env [#5936]
+  * Fix inherit path in nested directory [#5930]
+  * Minor docblock improvements [#5929]
+  * Add Signup fetcher [#5926]
+  * Ensure the alias has the leading @ symbol when added [#5924]
+  * Include any non default hook information in CompositeCommand [#5921]
+  * Correct completion case when ends in = [#5913]
+  * Docs: Fixes for inline comments [#5912]
+  * Update Inline comments [#5910]
+  * Add a real-world example for wp cli has-command [#5908]
+  * Fix typos [#5901]
+  * Avoid PHP deprecation notices in PHP 8.1.x [#5899]
+
+-------------------------------------------------------------------
 Sun Apr  7 19:29:40 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.10.0

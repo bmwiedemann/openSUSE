@@ -47,4 +47,34 @@
     <comment></comment>
     <requestid>1167547</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b4673544a96c4f390b64a4197c0b5ce3</srcmd5>
+    <version>2.11.0</version>
+    <time>1743111210</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1244677 from gladiac
+
+- Update to version 2.11.0
+  * Allow manually dispatching tests workflow [#5965]
+  * Add fish shell completion [#5954]
+  * Add defaults and accepted values for runcommand() options in doc [#5953]
+  * Address warnings with filenames ending in fullstop on Windows [#5951]
+  * Fix unit tests [#5950]
+  * Update copyright year in license [#5942]
+  * Fix breaking multi-line CSV values on reading [#5939]
+  * Fix broken Gutenberg test [#5938]
+  * Update docker runner to resolve docker path using /usr/bin/env [#5936]
+  * Fix inherit path in nested directory [#5930]
+  * Minor docblock improvements [#5929]
+  * Add Signup fetcher [#5926]
+  * Ensure the alias has the leading @ symbol when added [#5924]
+  * Include any non default hook information in CompositeCommand [#5921]
+  * Correct completion case when ends in = [#5913]
+  * Docs: Fixes for inline comments [#5912]
+  * Update Inline comments [#5910]
+  * Add a real-world example for wp cli has-command [#5908]
+  * Fix typos [#5901]
+  * Avoid PHP deprecation notices in PHP 8.1.x [#5899]</comment>
+    <requestid>1256437</requestid>
+  </revision>
 </revisionlist>
