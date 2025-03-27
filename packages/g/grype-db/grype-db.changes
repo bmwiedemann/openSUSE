@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:09:34 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.31.0:
+  * Added Features
+    - Add hardware and operating system CPE parts [#544 @wagoodman]
+  * Bug Fixes
+    - Use all CPE parts when considering duplicates [#547
+      @wagoodman]
+    - Refactor NVD node configuration parsing [#546 @wagoodman]
+
+-------------------------------------------------------------------
 Sat Mar 22 07:51:26 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.30.1 (there is no 0.30.0):
