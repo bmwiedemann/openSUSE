@@ -1,0 +1,94 @@
+--- munge-maven-plugin-munge-maven-plugin-1.0/src/main/java/org/sonatype/plugins/munge/MungeForkMojo.java	2025-03-27 08:17:52.000723698 +0100
++++ munge-maven-plugin-munge-maven-plugin-1.0/src/main/java/org/sonatype/plugins/munge/MungeForkMojo.java	2025-03-27 08:23:28.173882586 +0100
+@@ -3,12 +3,17 @@
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ 
++import org.apache.maven.plugins.annotations.Execute;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++
+ /**
+  * Forks a new build that compiles and runs tests using the munged source in place of the original.
+  * 
+- * @goal munge-fork
+- * @execute lifecycle=munge phase=prepare-package
+  */
++@Mojo( name = "munge-fork" )
++@Execute ( phase = LifecyclePhase.PREPARE_PACKAGE,
++           lifecycle = "munge" )
+ public class MungeForkMojo
+     extends AbstractMojo
+ {
+--- munge-maven-plugin-munge-maven-plugin-1.0/src/main/java/org/sonatype/plugins/munge/MungeMojo.java	2025-03-27 08:17:52.000759442 +0100
++++ munge-maven-plugin-munge-maven-plugin-1.0/src/main/java/org/sonatype/plugins/munge/MungeMojo.java	2025-03-27 08:39:18.397497457 +0100
+@@ -5,6 +5,9 @@
+ import java.util.List;
+ 
+ import org.apache.maven.model.Build;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.project.MavenProject;
+@@ -18,48 +21,46 @@
+  * @goal munge
+  * @phase generate-sources
+  */
++@Mojo( name = "munge",
++       defaultPhase = LifecyclePhase.GENERATE_SOURCES )
+ public class MungeMojo
+     extends AbstractMojo
+ {
+     /**
+      * Where to put the munged source files.
+      * 
+-     * @parameter default-value="${project.build.directory}/munged"
+      */
++    @Parameter( defaultValue = "${project.build.directory}/munged" )
+     private String mungedDirectory;
+ 
+     /**
+      * List of symbols (separated by commas) identifying which sections of munged code to keep.
+      * 
+-     * @parameter default-value="${symbols}"
+-     * @required
+      */
++    @Parameter( defaultValue = "${symbols}",
++                required = true )
+     private String symbols;
+ 
+     /**
+      * List of patterns (separated by commas) specifying files that should be munged; by default munge everything.
+      * 
+-     * @parameter default-value="${includes}"
+      */
++    @Parameter( defaultValue = "${includes}" )
+     private String includes;
+ 
+     /**
+      * List of patterns (separated by commas) specifying files that should not be copied; by default exclude nothing.
+      * 
+-     * @parameter default-value="${excludes}"
+      */
++    @Parameter( defaultValue = "${excludes}" )
+     private String excludes;
+ 
+-    /**
+-     * @parameter expression="${project.build}"
+-     * @readonly
+-     */
++    @Parameter( property = "project.build",
++                readonly = true )
+     private Build build;
+ 
+-    /**
+-     * @parameter expression="${executedProject}"
+-     * @readonly
+-     */
++    @Parameter(property = "executedProject",
++               readonly = true )
+     private MavenProject executedProject;
+ 
+     @SuppressWarnings( "unchecked" )

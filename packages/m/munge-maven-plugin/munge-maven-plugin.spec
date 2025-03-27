@@ -1,7 +1,7 @@
 #
 # spec file for package munge-maven-plugin
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        CDDL-1.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/sonatype/munge-maven-plugin
 Source0:        https://github.com/sonatype/munge-maven-plugin/archive/munge-maven-plugin-1.0.tar.gz
+Patch0:         munge-maven-plugin-mpt4.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -63,6 +64,9 @@ This package provides %{summary}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%patch -P 0 -p1
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 %build
 %{mvn_build} -f -- \
