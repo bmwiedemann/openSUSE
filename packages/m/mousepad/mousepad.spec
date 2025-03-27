@@ -1,7 +1,7 @@
 #
 # spec file for package mousepad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://docs.xfce.org/apps/mousepad/start
-Source:         https://archive.xfce.org/src/apps/mousepad/0.6/mousepad-%{version}.tar.bz2
+Source:         https://archive.xfce.org/src/apps/mousepad/0.6/mousepad-%{version}.tar.xz
 BuildRequires:  appstream-glib
 BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.57.0
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.56.2
 BuildRequires:  pkgconfig(gmodule-2.0)  >= 2.56.2
-BuildRequires:  pkgconfig(gspell-1)
+BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.17.5
@@ -62,11 +64,11 @@ Development files for Mousepad plugin development
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
@@ -80,7 +82,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%doc AUTHORS NEWS ChangeLog README.md
+%doc AUTHORS NEWS README.md
 %license COPYING
 %{_bindir}/mousepad
 %{_datadir}/applications/org.xfce.mousepad.desktop
