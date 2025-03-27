@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 27 08:19:23 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.8.1 ESR
+  * Fixed: Security fix.
+- Mozilla Firefox 136.0.4, ESR 128.8.1, ESR 115.21.1
+  https://www.mozilla.org/security/advisories/mfsa2025-19
+  MFSA 2025-19 (boo#???????)
+
+-------------------------------------------------------------------
 Sun Mar 16 11:29:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Don't build the various langpacks in parallel. This may be fixing
