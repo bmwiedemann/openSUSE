@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 27 14:41:49 UTC 2025 - Alexander Bergmann <abergmann@suse.com>
+
+- security release 4.98.2 for CVE-2025-30232 (bsc#1239794)
+  * Fixed use-after-free with potential for privilege escalation. 
+- security release 4.98.1 for CVE-2025-26794 (bsc#1237424)
+  * Fixed remote SQL injection when SQLite hints and ETRN serialization
+    are used.
+
+-------------------------------------------------------------------
 Tue Mar 11 08:41:22 UTC 2025 - Wolfgang Engel <wolfgang.engel@suse.com>
 
 - Adding directory /var/spool/mail/ to permissions file /etc/permissions.d/exim

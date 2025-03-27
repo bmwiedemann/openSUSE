@@ -31,7 +31,7 @@
 %bcond_with     dane
 %endif
 Name:           exim
-Version:        4.98
+Version:        4.98.2
 Release:        0
 Summary:        The Exim Mail Transfer Agent, a Replacement for sendmail
 License:        GPL-2.0-or-later
