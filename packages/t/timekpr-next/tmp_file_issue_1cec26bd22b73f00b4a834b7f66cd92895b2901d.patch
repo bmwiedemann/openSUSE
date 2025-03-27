@@ -1,0 +1,50 @@
+From 1cec26bd22b73f00b4a834b7f66cd92895b2901d Mon Sep 17 00:00:00 2001
+From: Eduards Bezverhijs <edzis@inbox.lv>
+Date: Tue, 4 Feb 2025 20:18:30 +0200
+Subject: improve pidfile handling   read only 10 chars from the pidfile and
+ verify whether it is an actual number   in addition remove pid file if it is
+ a symlink for a reason or other   (pidfile will be recreated), fixes #2097253
+
+---
+ common/utils/misc.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/common/utils/misc.py b/common/utils/misc.py
+index 54387d8..5db5fc8 100644
+--- a/common/utils/misc.py
++++ b/common/utils/misc.py
+@@ -110,7 +110,10 @@ def checkAndSetRunning(pAppName, pUserName=""):
+     if os.path.isfile(pidFile):
+         # if we have a file, we read the pid from there
+         with open(pidFile, "r") as pidfile:
+-            processPid = pidfile.readline().rstrip("\n").rstrip("\r")
++            # determine pid
++            processPid = pidfile.readline(10).rstrip("\n").rstrip("\r")
++            # check if pid is numeric
++            processPid = "0" if not processPid.isnumeric() else processPid
+ 
+     # so we have a running app, now we check whether its our app
+     if processPid != "0":
+@@ -131,11 +134,16 @@ def checkAndSetRunning(pAppName, pUserName=""):
+         # we are running
+         isAlreadyRunning = True
+         # print this to console as well
+-        print("Timekpr-nExT \"%s\" is already running for user \"%s\"" % (pAppName, pUserName if pUserName != "" else "ŗoot"))
++        print("Timekpr-nExT \"%s\" is already running for user \"%s\"" % (pAppName, pUserName if pUserName != "" else "root"))
+     else:
++        # check if we have pid file and it is a link for some reason
++        if os.path.islink(pidFile):
++            # remove the "old" pid file
++            os.remove(pidFile)
+         # set our pid
+-        with open(pidFile, "w") as pidfile:
+-            processCmd = pidfile.write(str(os.getpid()))
++        with open(pidFile, "w") as pidfilew:
++            # write our pid to pid file
++            processCmd = pidfilew.write(str(os.getpid()))
+ 
+     # return whether we are running
+     return isAlreadyRunning
+-- 
+cgit v1.2.3
+

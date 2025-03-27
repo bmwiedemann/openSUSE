@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Wed Feb 12 13:12:59 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Include upstream fixes for the /tmp PID file issue (boo#1236644)
+  * add tmp_file_issue_07e0b29763def53d95611f9ee4a2f54ae50df38c.patch
+  * add tmp_file_issue_1cec26bd22b73f00b4a834b7f66cd92895b2901d.patch
+
+-------------------------------------------------------------------
+Mon Nov 11 14:24:21 UTC 2024 - Alexey Svistunov <svalx@svalx.net>
+
+- Update to 0.5.7:
+  * improve username and user shell filter (fixes #2061003)
+    usernames which do not conform to standard username patterns
+    are filtered out users with no login shell are filtered out
+- Specfile refactoring
+- Add changes file
+- Split system-group-timekpr and lang packages
+- Move python files to appropriate location
