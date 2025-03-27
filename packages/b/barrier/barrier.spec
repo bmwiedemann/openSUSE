@@ -1,7 +1,7 @@
 #
 # spec file for package barrier
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Christian Mauderer <oss@c-mauderer.de>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,7 @@ Source3:        barriers.service
 Patch0:         fix-build.patch
 # Required for gcc-13
 Patch1:         fix-build2.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  gmock
@@ -82,7 +82,8 @@ cp -r filesystem-1.5.10/include/ ext/gulrak-filesystem/
 export BARRIER_VERSION_STAGE="release"
 %cmake \
   -DBARRIER_BUILD_INSTALLER=OFF \
-  -DBARRIER_USE_EXTERNAL_GTEST=ON
+  -DBARRIER_USE_EXTERNAL_GTEST=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %check

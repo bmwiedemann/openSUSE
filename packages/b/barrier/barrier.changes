@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 20 23:23:33 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+
+-------------------------------------------------------------------
 Fri Apr  5 13:25:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use full URL for gulrak/filesystem.
