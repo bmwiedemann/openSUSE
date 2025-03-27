@@ -222,4 +222,30 @@
   and bsc#1237165).</comment>
     <requestid>1254595</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>0a7bff5a21a6108e4b46aeab344c1002</srcmd5>
+    <version>0</version>
+    <time>1743111220</time>
+    <user>anag+factory</user>
+    <comment>- Version 13
+
+- Add basic support for creating LVM volume groups and logical
+  volumes (gh#agama-project/agama#2216).
+
+- Change switches by checkboxes (gh#agama-project/agama#2168).
+- Restructure the encryption form (gh#agama-project/agama#2168).
+
+- Properly handle empty lists of unsupported AutoYaST elements
+  (gh#agama-project/agama#2196).
+
+- Stop parsing errors from SCC at frontend side and simply render
+  them as returned by the backend (gh#agama-project/agama#2193).
+
+- Stop displaying the hostname alert once the system is registered
+  (gh#agama-project/agama#2183).
+
+- Allow temporary removal of the root file system
+ (gh#agama-project/agama#2160).</comment>
+    <requestid>1256469</requestid>
+  </revision>
 </revisionlist>
