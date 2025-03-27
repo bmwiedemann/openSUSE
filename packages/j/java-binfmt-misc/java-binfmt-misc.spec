@@ -1,7 +1,7 @@
 #
 # spec file for package java-binfmt-misc
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           java-binfmt-misc
 Version:        1.4
 Release:        0
 Summary:        The binfmt_misc support for Java
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Development/Languages/Java
-Url:            http://www.kernel.org/
+URL:            http://www.kernel.org/
 # derived from Linux's Documentation/java.txt
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  update-desktop-files
@@ -34,6 +34,8 @@ Requires(postun): shared-mime-info
 Requires(postun): systemd
 # split-alias for libzypp
 Provides:       jpackage-utils:%{_bindir}/jarwrapper
+
+Supplements:    java
 
 %description
 Linux beats them ALL! While all other OS's are TALKING about direct

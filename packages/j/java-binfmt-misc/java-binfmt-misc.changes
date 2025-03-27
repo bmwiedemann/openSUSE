@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 22 03:14:47 UTC 2025 - Heitor Moreira da Silva <heitor@opensuse.org>
+
+- Add supplements to openJDK (boo#1205413 boo#1205825)
+
+-------------------------------------------------------------------
 Wed Aug 19 09:19:01 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
