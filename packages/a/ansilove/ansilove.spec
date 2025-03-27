@@ -2,7 +2,7 @@
 # spec file for package ansilove
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ansilove
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        ANSI and ASCII art to PNG converter
 License:        BSD-2-Clause
@@ -26,7 +26,7 @@ Group:          Productivity/Graphics/Other
 URL:            https://www.ansilove.org
 #Git-Clone:     https://github.com/ansilove/ansilove.git
 Source:         https://github.com/ansilove/ansilove/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  libansilove-devel >= 1.4.0
 
 %description
@@ -48,8 +48,8 @@ The following formats are supported:
 find examples/ -type f -name "*.ans" -exec sed -i 's/\r$//' {} +
 
 %build
-%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
 %cmake_install

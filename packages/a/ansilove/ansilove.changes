@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 24 18:41:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.1
+  * Document support for the Spleen 8x16 font
+  * Bump cmake_minimum_required to 3.5, to allow building with
+    CMake 4.0.
+  * Bump cmake_minimum_required to 3.10 to be more future proof.
+
+-------------------------------------------------------------------
 Thu Mar 20 22:10:46 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
