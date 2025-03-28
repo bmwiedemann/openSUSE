@@ -33,4 +33,12 @@ replaces cnf-rs</comment>
     <comment></comment>
     <requestid>1255443</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>5dafdca79ae1ba780fa8f280fd2983c4</srcmd5>
+    <version>0.7.1~0</version>
+    <time>1743150965</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256135</requestid>
+  </revision>
 </revisionlist>

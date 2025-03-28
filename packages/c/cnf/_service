@@ -23,7 +23,7 @@
       <!-- ✨ The name of the project here ✨ -->
      <param name="srcdir">cnf</param>
      <param name="compression">zst</param>
-     <param name="update">true</param>
+     <param name="update">false</param>
   </service>
   <!-- must stay here despite cargo_vendor says otherwise -->
   <service name="cargo_audit" mode="manual" /> 

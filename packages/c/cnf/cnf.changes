@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 26 08:04:54 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- do not auto update vendored dependencies - fixes Leap 15.6 build problem 
+
+-------------------------------------------------------------------
 Sun Mar 23 18:24:58 UTC 2025 - michal.vyskocil@gmail.com
 
 - Update to version 0.7.1~0:
