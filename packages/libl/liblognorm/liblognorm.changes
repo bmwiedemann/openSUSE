@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 15 11:32:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre2, add liblognorm-2.0.6-pcre2.patch
+
+-------------------------------------------------------------------
 Mon Jan 14 15:52:24 CET 2019 - kukuk@suse.de
 
 - Use %license instead of %doc [bsc#1082318]

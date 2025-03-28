@@ -2,6 +2,7 @@
 # spec file for package liblognorm
 #
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +22,20 @@ Name:           liblognorm
 Version:        2.0.6
 Release:        0
 Summary:        Library and tool to normalize log data
-License:        LGPL-2.1-or-later AND Apache-2.0
+License:        Apache-2.0 AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Url:            http://www.liblognorm.com/
-Source0:        http://www.liblognorm.com/download/files/download/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://www.liblognorm.com/
+Source0:        https://www.liblognorm.com/download/files/download/%{name}-%{version}.tar.gz
+Patch0:         liblognorm-2.0.6-pcre2.patch
+# for liblognorm-2.0.6-pcre2.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+#
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libestr)
 BuildRequires:  pkgconfig(libfastjson) >= 0.99.0
-BuildRequires:  pkgconfig(libpcre)
+BuildRequires:  pkgconfig(libpcre2-8) >= 10.00
 
 %description
 Liblognorm is a fast-samples based normalization library. It is a library and
@@ -106,37 +112,37 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# for liblognorm-2.0.6-pcre2.patch
+autoreconf -fiv
+#
 %configure \
 	--disable-static \
 	--enable-regexp \
 	--disable-testbench \
 	--enable-advanced-stats \
 	--enable-tools \
-	--disable-docs
-
-make %{?_smp_mflags}
+	--disable-docs \
+	%{nil}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
-%post -n liblognorm%{sover} -p /sbin/ldconfig
-%postun -n liblognorm%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblognorm%{sover}
 
 %files -n liblognorm%{sover}
-%defattr(-,root,root)
 %license COPYING
 %{_libdir}/*.so.*
 %{_bindir}/lognormalizer
 
 %files devel
-%defattr(-,root,root)
 %license COPYING
 %doc NEWS README AUTHORS ChangeLog
 %{_includedir}/*

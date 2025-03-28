@@ -9,6 +9,6 @@ In short words, one will be able to throw arbitrary log message to liblognorm, o
 So, for example, if you have traffic logs from three different firewalls, liblognorm will be able to &quot;normalize&quot; the events into generic ones. Among others, it will extract source and destination ip addresses and ports and make them available via well-defined fields. As the end result, a common log analysis application will be able to work on that common set and so this backend will be independent from the actual firewalls feeding it. Even better, once we have a well-understood interim format, it is also easy to convert that into any other vendor specific format, so that you can use that vendor's analysis tool. 
 
 </description>
-  <devel project="devel:libraries:c_c++" package="liblognorm" />
+  <devel project="devel:libraries:c_c++" package="liblognorm"/>
   <url>http://www.liblognorm.com/</url>
 </package>
