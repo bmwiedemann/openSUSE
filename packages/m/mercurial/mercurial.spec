@@ -31,7 +31,7 @@
 %endif
 
 Name:           mercurial
-Version:        6.9.4
+Version:        7.0
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ Patch0:         mercurial-hgk-path-fix.diff
 Patch2:         mercurial-locale-path-fix.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm >= 8.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
@@ -53,11 +54,7 @@ BuildRequires:  fdupes
 Requires:       %{pprefix}-curses
 Requires:       %{pprefix}-xml
 Provides:       hg = %{version}
-%if 0%{?suse_version} < 1210
-BuildRequires:  docutils
-%else
 BuildRequires:  %{python_module docutils}
-%endif
 %if 0%{?sles_version}
 Requires:       openssl-certs
 %else
@@ -85,6 +82,7 @@ designed for efficient handling of very large distributed projects.
 Summary:        Mercurial tests
 Group:          Development/Tools/Version Control
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description tests
 Mercurial is a fast, lightweight source control management system
@@ -97,7 +95,7 @@ This package contains its tests.
 %patch -P 0
 %patch -P 2 -p1
 
-sed -i -e '1s@env @@' contrib/hgk
+find . -type f -exec sed -i -e '1{/#!/s/env //}' '{}' \;
 
 chmod 644 hgweb.cgi
 
@@ -157,6 +155,10 @@ cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
 %{_mandir}/man5/hgignore.5%{?ext_man}
 %{_mandir}/man5/hgrc.5%{?ext_man}
 %{_mandir}/man8/hg-ssh.8%{?ext_man}
-%{python_sitearch}/*
+%{python_sitearch}/hgdemandimport
+%{python_sitearch}/hgext
+%{python_sitearch}/hgext3rd
+%{python_sitearch}/mercurial
+%{python_sitearch}/mercurial-%{version}*-info
 
 %changelog

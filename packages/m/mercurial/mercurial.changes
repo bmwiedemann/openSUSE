@@ -1,9 +1,84 @@
 -------------------------------------------------------------------
+Tue Mar 25 23:28:58 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.0
+
+  + Packaging Changes
+    The 7.0 release is the first to be compliant with `PEP 517`.
+
+    This required an overhaul of the Mercurial packaging: packagers should pay extra
+    attention to this release and report any issues they might encounter with the
+    new system.
+
+    In practice, this means that Mercurial's `setup.py` can no longer be called
+    directly.
+    Instead, one should build the Mercurial package using PyPA's `build` package
+    (https://github.com/pypa/build).
+
+    In the general case, this will take care of the build dependencies, but
+    packagers might want to explicitly manage them. Currently the build depends on:
+
+    - `wheel`
+    - `setuptools>=64`
+    - `setuptools_scm>=8.1.0`
+    - `docutils`
+
+    The `Makefile` no longer offers a `build` target.
+    We now use `BuildTools 2022` when building Windows packages.
+
+  + Other Backwards Compatibility Changes
+    * sslutil: bump the default minimum TLS version of the client to 1.2 (BC) (085cc409847d)
+    * setup: require TLS 1.2 support from the Python interpreter (BC) (a820a7a1fce0)
+
+  + New Features
+    * It is now possible to store inline clone bundle outside of .hg (48572371d478)
+    * Added a generic `storage.all-slow-path` option to control the default
+      behavior regarding degraded support for some repository format. (bbbb12632607)
+    * Added a `--to` flag to `hg graft` that allows graft in memory (68dc6cecca32)
+    * Added a `fix.extra-bin-paths` configuration for the `fix` extension (1330278b9029)
+
+  + New Experimental Features
+    * add a --ignore-changes-from-ancestors option (688665425496)
+    * stream-clone: use dedicated threads to write the data on disk (7f848cfc4286, 58baa86c7a02, aee193b1c784)
+    * the experimental `git` extension now supports more commands
+
+  + Bug Fixes
+    * subrepo: fix calling outgoing with multiple paths (85c095c1f8bc)
+    * stream clone: fix a race condition around volatile files (46574e588017, 3f0cf7bb3086)
+    * rhg: set the expected dirstate permissions (0o666 minus umask) (a48c688d3e80)
+    * rhg: fix matcher issue (136e74c2bf8f)
+    * rhg files correctly implements `--rev` (it instead provided `--revision`)
+    * clone-bundles: fix background spawning of automatic generation
+    * bundle-spec: properly format boolean parameter (issue6960)
+    * bundle2: fix a bug where _forwardchunks doesn't work with empty bundles
+
+  + Rust
+    * the Rust code is now exposed to Python though PyO3 instead of `rust-cpython` (6673cec8605c)
+    * rhg: support `status --change`, including `--copies` (bde718849153)
+    * Rust implementation for the internal part of revlogs
+    * Rust implementation for `hg annotate` (6183949219b2)
+    * Rust implementation for `hg update` from a completely empty working copy
+
+  + Miscellaneous
+    * help: modernize the help text for `hostsecurity.minimumprotocol` (b65085c6d6ff)
+    * run-tests: add a 4th `HGPORT` value (7f8d0c2c3692)
+    * rust-ignore: make `debugignorerhg` command show a full regex, with exact files (e2e49069eeb6)
+    * tests: fix `filtertraceback.py` to handle contiguous `File` lines (8431296a93e8)
+    * typing: moved `interface` logic from `zope` interfaces to `typing.Protocol` (a1c0f19e7cb4)
+    * format: add pattern filtering to debugformat (8dede0df9de9)
+    * run-tests: add a `--tail-report` argument to analyze run parallelism (a814534aaedd)
+
+-------------------------------------------------------------------
+Thu Mar 20 18:21:19 UTC 2025 - Matej Cepl <mcepl@suse.com>
+
+- Clean up rpmlint issues
+
+-------------------------------------------------------------------
 Wed Mar 19 20:27:59 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 6.9.4
 
-  * hgweb: fix XSS vulnerability in hgweb (CVE-2025-2361)
+  * hgweb: fix XSS vulnerability in hgweb (CVE-2025-2361, bsc#1239685)
 
 -------------------------------------------------------------------
 Wed Mar  5 22:29:56 UTC 2025 - Sean Baggaley <me@drinkybird.net>

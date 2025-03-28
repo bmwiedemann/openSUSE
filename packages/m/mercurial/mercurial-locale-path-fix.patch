@@ -1,6 +1,12 @@
---- a/mercurial/i18n.py
-+++ b/mercurial/i18n.py
-@@ -58,7 +58,7 @@ if (
+---
+ mercurial/i18n.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: mercurial-6.9.4/mercurial/i18n.py
+===================================================================
+--- mercurial-6.9.4.orig/mercurial/i18n.py	2025-03-20 19:18:38.520490391 +0100
++++ mercurial-6.9.4/mercurial/i18n.py	2025-03-20 19:18:43.941863826 +0100
+@@ -55,7 +55,7 @@
  
  
  datapath = pycompat.fsdecode(resourceutil.datapath)

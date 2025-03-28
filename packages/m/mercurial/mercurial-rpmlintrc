@@ -1,1 +1,2 @@
-addFilter("python-naming-policy-not-applied")
+addFilter("zero-length.*/tests/test-check-interfaces.py.out")
+addFilter("hidden-file-or-dir.*/tests/.balto.toml")
