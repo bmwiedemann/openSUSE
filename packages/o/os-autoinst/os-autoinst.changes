@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 28 04:03:07 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1743091574.1f9ae10:
+  * Bring up network devices to avoid "(tapX): Operation not permitted"
+  * Prevent conflicts to ensure eth iface is assigned to one firewalld zone
+  * Mention for what asset types `autoinst_url` can be used
+  * Better error when syswrite fails in myjsonrpc
+  * Consistently use try/catch instead of 'if ' everywhere
+  * Avoid leftover rsync processes on svirt host
+
+-------------------------------------------------------------------
 Thu Mar 27 00:33:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1743024662.95d87ac:
