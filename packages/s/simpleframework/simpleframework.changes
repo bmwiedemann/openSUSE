@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:38:11 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix build with both xmvn-mojo:javadoc and javadoc:aggregate
+
+-------------------------------------------------------------------
 Fri Feb  3 00:29:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Initial packaging with v6.0.1

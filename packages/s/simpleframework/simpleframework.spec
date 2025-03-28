@@ -1,7 +1,7 @@
 #
 # spec file for package simpleframework
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/ngallagher/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
+BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-ssh-external)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
@@ -62,16 +63,21 @@ sed -i -e 's/\r//g' README.md
 %pom_remove_plugin -r :maven-javadoc-plugin simple
 
 %build
-%{mvn_build} -f -- -Dsource=8 -f simple
+pushd simple
+%{mvn_build} -f -- -Dsource=8
+popd
 
 %install
+pushd simple
 %mvn_install
+%fdupes %{buildroot}%{_javadocdir}/%{name}
+popd
 
-%files -f .mfiles
+%files -f simple/.mfiles
 %license LICENSE-2.0.txt
 %doc README.md
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc -f simple/.mfiles-javadoc
 %license LICENSE-2.0.txt
 
 %changelog
