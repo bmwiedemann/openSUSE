@@ -2,7 +2,7 @@
 # spec file for package libidn
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 #
 
 
-%define lname	libidn12
+%define sover	12
 Name:           libidn
-Version:        1.42
+Version:        1.43
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND Apache-2.0
@@ -62,14 +62,14 @@ characters, and bidirectional character handling. Profiles for iSCSI,
 Kerberos 5, Nameprep, SASL, and XMPP are included. Punycode and ASCII
 Compatible Encoding (ACE) via IDNA is supported.
 
-%package -n %{lname}
+%package -n %{name}%{sover}
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
 Group:          System/Libraries
 Provides:       libidn = %{version}
 Obsoletes:      libidn < %{version}
 
-%description -n %{lname}
+%description -n %{name}%{sover}
 GNU Libidn is an implementation of the Stringprep, Punycode, and IDNA
 specifications defined by the IETF Internationalized Domain Names
 (IDN) working group. It is used to prepare internationalized strings
@@ -86,7 +86,7 @@ Compatible Encoding (ACE) via IDNA is supported.
 Summary:        Development files for libidn
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
+Requires:       %{name}%{sover} = %{version}
 Requires:       glibc-devel
 
 %description devel
@@ -103,7 +103,7 @@ XMPP are included. Punycode and ASCII Compatible Encoding (ACE) via
 IDNA is supported.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -123,8 +123,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %make_build check
 %endif
 
-%post -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files tools -f %{name}.lang
 %license COPYING*
@@ -137,15 +136,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/emacs/site-lisp/idna.el
 %{_datadir}/emacs/site-lisp/punycode.el
 
-%files -n %{lname}
+%files -n %{name}%{sover}
 %license COPYING*
-%{_libdir}/libidn.so.12*
+%{_libdir}/libidn.so.%{sover}{,.*}
 
 %files devel
 %license COPYING*
 %{_libdir}/libidn.so
 %{_includedir}/*.h
 %{_libdir}/pkgconfig/libidn.pc
-%{_mandir}/man3/*
+%{_mandir}/man3/*.3%{?ext_man}
 
 %changelog

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar 22 16:37:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.43:
+  * The release tarball is now reproducible
+  * A use of uninitialized value bug was fixed in idna_to_unicode_4z4z
+  * Unicode tables are now rebuilt from source again
+  * Update gnulib files and build fixes
+
+-------------------------------------------------------------------
 Sun Jan 14 11:13:36 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.42:
