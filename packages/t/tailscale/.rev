@@ -238,4 +238,21 @@
     <comment>- add patch fix-CVE-2025-22869.patch, fixes bsc#1239353 (forwarded request 1252353 from rrahl0)</comment>
     <requestid>1252354</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>9f8183ca2214c204915333a5f7c451be</srcmd5>
+    <version>1.82.0</version>
+    <time>1743143775</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.82.0:
+  * DERP functionality within the client supports certificate pinning for
+    self-signed IP address certificates for those unable to use Let's Encrypt
+    or WebPKI certificates.
+  * Go is updated to version 1.24.1
+  * NAT traversal code uses the DERP connection that a packet arrived on as an
+    ultimate fallback route if no other information is available
+  * Captive portal detection reliability is improved on some in-flight Wi-Fi networks
+  * Port mapping success rate is improved
+  * Helsinki is added as a DERP region. (forwarded request 1264693 from rrahl0)</comment>
+    <requestid>1264694</requestid>
+  </revision>
 </revisionlist>

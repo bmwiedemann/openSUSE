@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 27 19:50:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.82.0:
+  * DERP functionality within the client supports certificate pinning for
+    self-signed IP address certificates for those unable to use Let's Encrypt
+    or WebPKI certificates.
+  * Go is updated to version 1.24.1
+  * NAT traversal code uses the DERP connection that a packet arrived on as an
+    ultimate fallback route if no other information is available
+  * Captive portal detection reliability is improved on some in-flight Wi-Fi networks
+  * Port mapping success rate is improved
+  * Helsinki is added as a DERP region.
+
+-------------------------------------------------------------------
 Wed Mar 12 09:07:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2025-22869.patch, fixes bsc#1239353
