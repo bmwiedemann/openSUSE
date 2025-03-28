@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 20:56:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.16.7:
+  * chore: release 0.16.7 (#2039)
+  * fix: remove comment from first line zsh completion output (#2035) (#2037)
+
+-------------------------------------------------------------------
 Sat Mar 22 10:04:33 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.16.6:

@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1255237</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d6ce3c238a18fd5f1a8fd476ba0ce8d</srcmd5>
+    <version>0.16.7</version>
+    <time>1743151008</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.16.7:
+  * chore: release 0.16.7 (#2039)
+  * fix: remove comment from first line zsh completion output (#2035) (#2037) (forwarded request 1264739 from alessio.biancalana)</comment>
+    <requestid>1264740</requestid>
+  </revision>
 </revisionlist>
