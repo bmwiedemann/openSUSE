@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:02:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
 Fri Apr  8 22:03:12 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
 - Do not require mvn(log4j:log4j) for build (bsc#1197642)
