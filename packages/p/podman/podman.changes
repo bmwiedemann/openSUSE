@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 08:24:05 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Add patch for CVE-2025-22869 (bsc#1239330):
+  * 0001-CVE-2025-22869-ssh-limit-the-size-of-the-internal-pa.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 08:47:14 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Depend on runc unconditionally, not only on SLES

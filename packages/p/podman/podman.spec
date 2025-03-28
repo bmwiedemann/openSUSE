@@ -30,6 +30,7 @@ Group:          System/Management
 URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
+Patch0:         0001-CVE-2025-22869-ssh-limit-the-size-of-the-internal-pa.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
