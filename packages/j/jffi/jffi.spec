@@ -1,7 +1,7 @@
 #
 # spec file for package jffi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Patch2:         jffi-fix-system-ffi.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  hamcrest
+BuildRequires:  junit
 BuildRequires:  make
 BuildRequires:  maven-local
 BuildRequires:  pkgconfig
@@ -76,33 +78,15 @@ sed -i -e '/case FFI_BAD_ARGTYPE:/,3d' jni/jffi/CallContext.c
 # https://bugzilla.redhat.com/show_bug.cgi?id=561448#c9
 sed -i.cpu -e '/m\$(MODEL)/d' {jni,libtest}/GNUmakefile
 
-%if %{?pkg_vcmp:%pkg_vcmp maven-antrun-plugin >= 3}%{!?pkg_vcmp:0}
-sed -i -e 's#tasks\>#target\>#g' pom.xml
-%pom_xpath_set "pom:plugin[pom:artifactId='maven-antrun-plugin']/pom:version" "3.0.0"
-%pom_add_plugin "org.codehaus.mojo:build-helper-maven-plugin:3.2.0" pom.xml "
-    <executions>
-        <execution>
-            <id>add-source-directory</id>
-            <phase>generate-sources</phase>
-            <configuration>
-                <sources>
-                    <source>\${project.build.directory}/java</source>
-                </sources>
-            </configuration>
-            <goals>
-                <goal>add-source</goal>
-            </goals>
-        </execution>
-    </executions>
-"
-%endif
-
 # remove uneccessary directories
 rm -rf archive/* jni/libffi/ lib/junit*
 
 find . -name '*.jar' -delete
 
 build-jar-repository -s -p lib/ junit hamcrest/core
+
+%pom_xpath_inject "pom:plugin[pom:artifactId = 'maven-jar-plugin']/pom:executions/pom:execution/pom:configuration/pom:archive" \
+  "<manifestFile>\${project.build.directory}/META-INF-complete/MANIFEST.MF</manifestFile>"
 
 %{mvn_package} ':::native:' native
 %{mvn_file} ':{*}' %{name}/@1 @1

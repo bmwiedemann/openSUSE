@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:09:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix pom.xml errors that will be fatal with Maven 4
+
+-------------------------------------------------------------------
 Mon Sep 23 14:53:59 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime
