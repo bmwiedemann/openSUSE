@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Feb 11 20:04:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.12.2:
+  * fix memory leaks
+  * MMDB_get_entry_data_list() now always sets the passed
+    entry_data_list parameter to either NULL or valid memory. This
+    makes it safe for callers to use MMDB_free_entry_data_list() on
+    it even in case of error.
+  * more build system tweaks
+
+-------------------------------------------------------------------
 Thu Jul 18 15:54:35 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:
