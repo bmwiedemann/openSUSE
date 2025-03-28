@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Mar 27 08:35:04 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.1.1244:
+  * patch 9.1.1244:
+    - part of patch v9.1.1242 was wrong
+    - runtime(omnimark): update and rewrite syntax script in Vim9
+      script
+  * patch 9.1.1243: diff mode is lacking for changes within lines
+  * patch 9.1.1242: Crash when evaluating variable name
+  * patch 9.1.1241: wrong preprocessort indentation in term.c
+  * patch 9.1.1240:
+    - Regression with ic/ac text objects and comment plugin
+    - runtime(hyprlang): save and restore cpo setting in syntax
+      script
+    - runtime(solidity): update syntax script with error
+      definitions
+    - runtime(doc): add back help tag "pi_netrw.txt"
+  * patch 9.1.1239:
+    - if_python: no tuple data type support
+    - runtime(doc): Add missing garbagecollect() hypertext link
+    - Improve contributing guide by adding a section on signing
+      off commits
+  * patch 9.1.1238: wrong cursor column with 'set
+    splitkeep=screen'
+  * patch 9.1.1237: Compile error with C89 compiler in term.c
+  * patch 9.1.1236: tests: test_comments leaves swapfiles around
+  * patch 9.1.1235: cproto files are outdated
+  * patch 9.1.1234: Compile error when SIZE_MAX is not defined
+  * patch 9.1.1233:
+    - Coverity warns about NULL pointer when triggering WinResized
+    - runtime(doc): Fix an omission in the documentation.
+  * patch 9.1.1232:
+    - Vim script is missing the tuple data type
+    - runtime(vim): Update base-syntax, match protected
+      constructors
+    - runtime(syntax-tests): Do not ignore failed screendumps
+  * patch 9.1.1231:
+    - filetype: SPA JSON files are not recognized
+    - runtime(doc): update and correct str2blob() and blob2str()
+      examples
+    - runtime(hlyank): update the hlyank package
+    - runtime(syntax-tests): Add non-Latin-1 character filters for
+      C syntax tests
+
+-------------------------------------------------------------------
 Sat Mar 22 17:00:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.1.1230

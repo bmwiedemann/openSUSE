@@ -7960,4 +7960,12 @@ always built-in because vim has direct perl dependencies anyway.
  *  patch 9.1.1212: filetype: logrotate'd pacmanlogs are not recognized</comment>
     <requestid>1255305</requestid>
   </revision>
+  <revision rev="382" vrev="1">
+    <srcmd5>c911f93336433efabb5ecea6a2dada71</srcmd5>
+    <version>9.1.1244</version>
+    <time>1743150997</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1264624</requestid>
+  </revision>
 </revisionlist>
