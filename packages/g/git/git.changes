@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 14:04:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Add support of SHA256 git repo for gitk (bsc#1239989):
+  0001-gitk-Add-a-basic-support-of-SHA256-repositories-into.patch
+  0002-gitk-Add-auto-select-length-preference-for-SHA256.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 23:43:43 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.49.0

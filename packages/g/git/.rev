@@ -2893,4 +2893,12 @@ git 2.48.0</comment>
 - docs switched to asciidoc</comment>
     <requestid>1253269</requestid>
   </revision>
+  <revision rev="322" vrev="2">
+    <srcmd5>7be1a0bf6ee69f562d0b9ec937627d97</srcmd5>
+    <version>2.49.0</version>
+    <time>1743150977</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256190</requestid>
+  </revision>
 </revisionlist>

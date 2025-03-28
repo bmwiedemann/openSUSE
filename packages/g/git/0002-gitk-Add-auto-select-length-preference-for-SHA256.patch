@@ -1,0 +1,134 @@
+From 0c251d64abf2eb7b275554b3fc6784e87f07cfbe Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Wed, 19 Mar 2025 11:18:21 +0100
+Subject: [PATCH 2/2] gitk: Add auto-select length preference for SHA256
+
+This implements the missing preference setup of the auto select length
+for SHA256. The variable set via the preference menu is switched
+depending on the hash algorithm.
+
+The default auto-select length is set to 64 for SHA256, and
+saved/restored as "autosellensha256" in the config.
+
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ gitk-git/gitk | 39 +++++++++++++++++++++++++++++----------
+ 1 file changed, 29 insertions(+), 10 deletions(-)
+
+diff --git a/gitk-git/gitk b/gitk-git/gitk
+index 1e85cfef2ee3..b364d9e7dc93 100755
+--- a/gitk-git/gitk
++++ b/gitk-git/gitk
+@@ -7488,6 +7488,16 @@ proc make_idmark {id} {
+     $canv raise $t
+ }
+ 
++proc get_autosellen {} {
++    global hashalgorithm autosellen autosellensha256
++
++    if {$hashalgorithm == "SHA256"} {
++        return $autosellensha256
++    } else {
++        return $autosellen
++    }
++}
++
+ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+     global canv ctext commitinfo selectedline
+     global canvy0 linespc parents children curview
+@@ -7496,7 +7506,7 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+     global mergemax numcommits pending_select
+     global cmitmode showneartags allcommits
+     global targetrow targetid lastscrollrows
+-    global autocopy autoselect autosellen jump_to_here
++    global autocopy autoselect jump_to_here
+     global vinlinediff
+ 
+     unset -nocomplain pending_select
+@@ -7563,11 +7573,11 @@ proc selectline {l isnew {desired_loc {}} {switch_to_patch 0}} {
+     $sha1entry delete 0 end
+     $sha1entry insert 0 $id
+     if {$autoselect && [haveselectionclipboard]} {
+-        $sha1entry selection range 0 $autosellen
++        $sha1entry selection range 0 [get_autosellen]
+     }
+     if {$autocopy} {
+         clipboard clear
+-        clipboard append [string range $id 0 [expr $autosellen - 1]]
++        clipboard append [string range $id 0 [expr [get_autosellen] - 1]]
+     }
+     rhighlight_sel $id
+ 
+@@ -9629,13 +9639,14 @@ proc mktaggo {} {
+ }
+ 
+ proc copyreference {} {
+-    global rowmenuid autosellen
++    global rowmenuid
+     global hashlength
+ 
+     set format "%h (\"%s\", %ad)"
+     set cmd [list git show -s --pretty=format:$format --date=short]
+-    if {$autosellen < $hashlength} {
+-        lappend cmd --abbrev=$autosellen
++    set alen [get_autosellen]
++    if {$alen < $hashlength} {
++        lappend cmd --abbrev=$alen
+     }
+     set reference [eval exec $cmd $rowmenuid]
+ 
+@@ -11741,8 +11752,9 @@ proc create_prefs_page {w} {
+ proc prefspage_general {notebook} {
+     global NS maxwidth maxgraphpct showneartags showlocalchanges
+     global tabstop wrapcomment wrapdefault limitdiffs
+-    global autocopy autoselect autosellen extdifftool perfile_attrs
++    global autocopy autoselect extdifftool perfile_attrs
+     global hideremotes want_ttk have_ttk maxrefs web_browser
++    global hashalgorithm hashlength
+ 
+     set page [create_prefs_page $notebook.general]
+ 
+@@ -11771,7 +11783,13 @@ proc prefspage_general {notebook} {
+             -variable autoselect
+         grid x $page.autoselect -sticky w
+     }
+-    spinbox $page.autosellen -from 1 -to 40 -width 4 -textvariable autosellen
++
++    if {$hashalgorithm == "SHA256"} {
++        set autolenvar "autosellensha256"
++    } else {
++        set autolenvar "autosellen"
++    }
++    spinbox $page.autosellen -from 1 -to $hashlength -width 4 -textvariable $autolenvar
+     ${NS}::label $page.autosellenl -text [mc "Length of commit ID to copy"]
+     grid x $page.autosellenl $page.autosellen -sticky w
+ 
+@@ -11908,7 +11926,7 @@ proc doprefs {} {
+     global maxwidth maxgraphpct use_ttk NS
+     global oldprefs prefstop showneartags showlocalchanges
+     global uicolor bgcolor fgcolor ctext diffcolors selectbgcolor markbgcolor
+-    global tabstop limitdiffs autoselect autosellen extdifftool perfile_attrs
++    global tabstop limitdiffs autoselect extdifftool perfile_attrs
+     global hideremotes want_ttk have_ttk wrapcomment wrapdefault
+ 
+     set top .gitkprefs
+@@ -12606,6 +12624,7 @@ set datetimeformat "%Y-%m-%d %H:%M:%S"
+ set autocopy 0
+ set autoselect 1
+ set autosellen 40
++set autosellensha256 64
+ set perfile_attrs 0
+ set want_ttk 1
+ 
+@@ -12702,7 +12721,7 @@ config_check_tmp_exists 50
+ set config_variables {
+     mainfont textfont uifont tabstop findmergefiles maxgraphpct maxwidth
+     cmitmode wrapcomment wrapdefault autocopy autoselect autosellen
+-    showneartags maxrefs visiblerefs
++    autosellensha256 showneartags maxrefs visiblerefs
+     hideremotes showlocalchanges datetimeformat limitdiffs uicolor want_ttk
+     bgcolor fgcolor uifgcolor uifgdisabledcolor colors diffcolors mergecolors
+     markbgcolor diffcontext selectbgcolor foundbgcolor currentsearchhitbgcolor
+-- 
+2.49.0
+
