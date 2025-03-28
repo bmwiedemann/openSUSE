@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 25 23:09:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.17.1
+  * Added support for filesystem passthrough read/write when
+    FUSE_PASSTHROUGH capability is enabled
+  * New API: fuse_passthrough_open() and fuse_passthrough_close()
+  * Added fmask and dmask options to high-level API for separate
+    permission masks for files and directories
+  * Added signal handling with backtrace printing
+    (fuse_set_fail_signal_handlers())
+  * Added syslog support for fuse_log() messages
+  * New API: fuse_log_enable_syslog() and fuse_log_close_syslog()
+  * Added thread names to libfuse threads
+
+-------------------------------------------------------------------
 Tue Oct 10 08:43:11 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.16.2

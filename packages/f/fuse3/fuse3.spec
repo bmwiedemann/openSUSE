@@ -1,7 +1,7 @@
 #
 # spec file for package fuse3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           fuse3
-Version:        3.16.2
+Version:        3.17.1
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        BSD-2-Clause AND GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Filesystems
 URL:            https://github.com/libfuse/libfuse
 Source:         https://github.com/libfuse/libfuse/releases/download/fuse-%version/fuse-%version.tar.gz
-Source1000:     baselibs.conf
+Source9:        baselibs.conf
 Patch1:         conf-rename.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -44,11 +44,11 @@ This package contains helper programs for using FUSE mounts.
 FUSE file systems are typically implemented as a standalone
 applications in their own right and are packaged separately.
 
-%package -n libfuse3-3
+%package -n libfuse3-4
 Summary:        Library of FUSE, the User space File System for GNU/Linux and BSD
 Group:          System/Filesystems
 
-%description -n libfuse3-3
+%description -n libfuse3-4
 FUSE (Filesystem in Userspace) is an interface by the Linux kernel
 for userspace programs to export a filesystem to the kernel.
 
@@ -68,7 +68,7 @@ Summary:        Development package for FUSE (userspace filesystem) modules
 Group:          Development/Languages/C and C++
 Requires:       fuse3 = %version
 Requires:       glibc-devel
-Requires:       libfuse3-3 = %version
+Requires:       libfuse3-4 = %version
 
 %description devel
 This package contains all include files, libraries and configuration
@@ -101,8 +101,7 @@ rm -Rfv "%buildroot/%_prefix/lib/udev" "%buildroot/%_initddir"
 %verifyscript
 %verify_permissions -e %_bindir/fusermount3
 
-%post -n libfuse3-3 -p /sbin/ldconfig
-%postun -n libfuse3-3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfuse3-4
 
 %files
 %license LICENSE GPL2.txt LGPL2.txt
@@ -113,16 +112,15 @@ rm -Rfv "%buildroot/%_prefix/lib/udev" "%buildroot/%_initddir"
 %_mandir/man1/*
 %_mandir/man8/*
 
-%files -n libfuse3-3
-%_libdir/libfuse3.so.3*
+%files -n libfuse3-4
+%_libdir/libfuse3.so.*
 
 %files doc
 %doc example doc
 
 %files devel
 %_libdir/libfuse3.so
-%_includedir/fuse3/*.h
-%_includedir/fuse3
+%_includedir/fuse3/
 %_libdir/pkgconfig/*.pc
 
 %changelog
