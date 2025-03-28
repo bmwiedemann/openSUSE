@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:09:28 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.23.2:
+  * check diff after rebuilding (#1878)
+  * npm/install: allow using pnpm instead (#1875)
+  * Add `directory` parameter for `fetch` to be passed to `tar -C`
+    (#1862)
+  * e2e test: rebuild go- cargo- and gcc-built packages (#1869)
+  * Store and apply xattrs correctly for all builds (#1867)
+  * git-checkout - set depth=-1 when checking out a branch with
+    commit. (#1868)
+  * drop dep on k8s.io for sets (#1870)
+
+-------------------------------------------------------------------
 Mon Mar 24 06:05:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.1:
