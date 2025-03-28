@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 14:57:55 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.393:
+  * Update pci, usb and vendor ids
+  * Fix usb.ids encoding and a couple of typos
+  * Fix configure to honor --prefix
+
+-------------------------------------------------------------------
 Tue Feb 18 14:11:32 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.392:
