@@ -1,7 +1,7 @@
 #
 # spec file for package libdlm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,9 @@ Source:         https://pagure.io/dlm/archive/dlm-%{version}/dlm-dlm-%{version}.
 
 ##################
 #upstream patch
-# n/a
+Patch0001:      dlm_controld-terminate-uevent-buffer.patch
+Patch0002:      dlm_controld-Support-for-extended-value-of-kernel-DL.patch
+Patch0003:      dlm_controld-remove-detect-mode-from-config-item-pro.patch
 
 # suse special patch
 Patch1001:      0001-makefile-for-diff-arch.patch
@@ -53,9 +55,9 @@ Patch1004:      0004-man-dlm.conf-add-note-that-the-file-is-not-creat.patch
 
 BuildRequires:  fdupes
 BuildRequires:  glib2-devel
-BuildRequires:  pkgconfig(corosync) >= 3.1.0
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
+BuildRequires:  pkgconfig(corosync) >= 3.1.0
 BuildRequires:  pkgconfig(pacemaker)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -100,7 +102,6 @@ make all UDEVDIR="%{_udevrulesdir}"
 %install
 ###########################################################
 %make_install UDEVDIR="%{_udevrulesdir}"
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/packages/libdlm-%{version}
 
 install -Dm 0644 init/dlm.service $RPM_BUILD_ROOT%{_unitdir}/dlm.service
 install -Dm 0644 init/dlm.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dlm
@@ -126,7 +127,6 @@ install -Dm 0644 init/dlm.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dlm
 %postun -n libdlm3 -p /sbin/ldconfig
 
 %files
-%dir %{_datadir}/doc/packages/libdlm-%{version}
 %{_udevrulesdir}/51-dlm.rules
 %{_sbindir}/dlm_controld
 %{_sbindir}/dlm_stonith
@@ -134,7 +134,6 @@ install -Dm 0644 init/dlm.sysconfig $RPM_BUILD_ROOT%{_fillupdir}/sysconfig.dlm
 %{_datadir}/man/man8/*.gz
 %{_datadir}/man/man3/*.gz
 %{_datadir}/man/man5/*.gz
-%{_datadir}/doc/packages/libdlm-%{version}
 %{_unitdir}/dlm.service
 %{_fillupdir}/sysconfig.dlm
 

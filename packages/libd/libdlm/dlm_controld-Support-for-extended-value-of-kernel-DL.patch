@@ -1,0 +1,43 @@
+From 1768dd91c309f1bf8b062c28c2edee8e5c7aaab4 Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Fri, 21 Feb 2025 23:09:35 +0800
+Subject: [PATCH 1/2] dlm_controld: Support for extended value of kernel
+ DLM_MAX_ADDR_COUNT
+
+This patch should work with the updated kernel dlm module, because
+the code changes need to be aligned with the DLM_MAX_ADDR_COUNT value.
+
+Another notice is that with the current dlm_controld code, users
+should explicitly add 'protocol=sctp' to the dlm.conf in a corosync
+3.x env.
+
+---
+2025.3.26 by heming zhao
+I modified this patch by removing the dlm_sand part of the patch.
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ dlm_controld/dlm_daemon.h | 6 +++---
+ 1 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/dlm_controld/dlm_daemon.h b/dlm_controld/dlm_daemon.h
+index 4a533e3451e2..c902228f890f 100644
+--- a/dlm_controld/dlm_daemon.h
++++ b/dlm_controld/dlm_daemon.h
+@@ -175,10 +175,10 @@ EXTERN struct dlm_option dlm_options[dlm_options_max];
+ 
+ #define MAX_NODES	128
+ 
+-/* Maximum number of IP addresses per node, when using SCTP and multi-ring in
+-   corosync  In dlm-kernel this is DLM_MAX_ADDR_COUNT, currently 3. */
++/* Maximum number of IP addresses per node, when using SCTP and multi-[ring|link]
++   in corosync [2|3]. In dlm-kernel this is DLM_MAX_ADDR_COUNT, currently 8. */
+ 
+-#define MAX_NODE_ADDRESSES 4
++#define MAX_NODE_ADDRESSES 8
+ 
+ #define PROTO_TCP  0
+ #define PROTO_SCTP 1
+-- 
+2.43.0
+

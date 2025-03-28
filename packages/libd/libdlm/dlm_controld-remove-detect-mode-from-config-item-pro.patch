@@ -1,0 +1,148 @@
+From 9d294573d4512ab3c7f3e7ad087df035959e53ec Mon Sep 17 00:00:00 2001
+From: Heming Zhao <heming.zhao@suse.com>
+Date: Mon, 10 Mar 2025 15:36:20 +0800
+Subject: [PATCH 2/2] dlm_controld: remove 'detect' mode from config item
+ 'protocol'
+
+This patch removes the 'detect' mode for the configuration
+item 'protocol'.
+
+After this patch, dlm 'protocol' behaviors:
+- TCP is now the default protocol.
+- Stop trying to detect:
+  - use dlm.conf or dlm_controld command line to switch from TCP
+    to SCTP.
+  - corosync.conf 'rrp_mode' is not supported in corosync 2.x env.
+- TCP can work with multi-link, but uses only the first ip address
+  from corosync.
+- SCTP can support up to 8 ip addresses.
+
+Note: This change requires a corresponding update to the dlm kernel
+function dlm_tcp_listen_validate().
+
+Signed-off-by: Heming Zhao <heming.zhao@suse.com>
+---
+ dlm_controld/action.c       | 39 ++++++-------------------------------
+ dlm_controld/dlm.conf.5     | 11 ++++++++++-
+ dlm_controld/dlm_controld.8 |  2 +-
+ dlm_controld/main.c         |  4 ++--
+ 4 files changed, 19 insertions(+), 37 deletions(-)
+
+diff --git a/dlm_controld/action.c b/dlm_controld/action.c
+index 60eb22a78c56..10f0f67387b1 100644
+--- a/dlm_controld/action.c
++++ b/dlm_controld/action.c
+@@ -21,35 +21,6 @@ static int comms_nodes_count;
+ #define SPACES_DIR    "/sys/kernel/config/dlm/cluster/spaces"
+ #define COMMS_DIR     "/sys/kernel/config/dlm/cluster/comms"
+ 
+-static int detect_protocol(void)
+-{
+-	cmap_handle_t handle;
+-	char *str = NULL;
+-	int rv, proto = -1;
+-
+-	rv = cmap_initialize(&handle);
+-	if (rv != CS_OK) {
+-		log_error("cmap_initialize error %d", rv);
+-		return -1; 
+-	}
+-
+-	rv = cmap_get_string(handle, "totem.rrp_mode", &str);
+-	if (rv != CS_OK)
+-		goto out;
+-
+-	log_debug("cmap totem.rrp_mode = '%s'", str);
+-
+-	if (!strcmp(str, "none"))
+-		proto = PROTO_TCP;
+-	else
+-		proto = PROTO_SCTP;
+- out:
+-	if (str)
+-		free(str);
+-	cmap_finalize(handle);
+-	return proto;
+-}
+-
+ static int detect_cluster_name(void)
+ {
+ 	cmap_handle_t handle;
+@@ -870,12 +841,14 @@ int setup_configfs_options(void)
+ 	set_configfs_cluster("mark", NULL, optu(mark_ind));
+ 
+ 	proto_name = opts(protocol_ind);
+-	proto_num = -1;
++	proto_num = 0; /* default is tcp */
+ 
+-	if (!strcasecmp(proto_name, "detect") || !strcmp(proto_name, "2"))
+-		proto_num = detect_protocol(); /* may be -1 */
++	if (!strcasecmp(proto_name, "detect") || !strcmp(proto_name, "2")) {
++		log_error("'detect' mode is not supported anymore, will use default mode (TCP).");
++		log_error("see dlm_conf(5) for details.");
++	}
+ 
+-	else if (!strcasecmp(proto_name, "tcp") || !strcmp(proto_name, "0"))
++	if (!strcasecmp(proto_name, "tcp") || !strcmp(proto_name, "0"))
+ 		proto_num = PROTO_TCP;
+ 
+ 	else if (!strcasecmp(proto_name, "sctp") || !strcmp(proto_name, "1"))
+diff --git a/dlm_controld/dlm.conf.5 b/dlm_controld/dlm.conf.5
+index cb13eaf0db28..073baf883b38 100644
+--- a/dlm_controld/dlm.conf.5
++++ b/dlm_controld/dlm.conf.5
+@@ -77,13 +77,22 @@ enable_helper
+ 
+ Options with (*) can be reloaded, see Reload config.
+ 
+-.SH Reload config
++.SH Reload configuration
+ 
+ Some dlm.conf settings can be changed while dlm_controld is running using
+ dlm_tool reload_config.  Edit dlm.conf, adding, removing, commenting or
+ changing values, then run dlm_tool reload_config to apply the changes in
+ dlm_controld.  dlm_tool dump_config will show the new settings.
+ 
++.SH Protocol configuration
++
++Since the totem.rrp_mode configuration item was deprecated in Corosync 3,
++the DLM adjusts the protocol configuration item's style to ensure DLM
++functionality on both Corosync 2 and 3. The change is that the protocol
++configuration item no longer supports 'detect|2'. The default protocol is
++TCP if the user does not specify a protocol on the dlm_daemon command line
++or in dlm.conf.
++
+ .SH Fencing
+ 
+ A fence device definition begins with a
+diff --git a/dlm_controld/dlm_controld.8 b/dlm_controld/dlm_controld.8
+index 3aab388531df..d72ebb299f7d 100644
+--- a/dlm_controld/dlm_controld.8
++++ b/dlm_controld/dlm_controld.8
+@@ -31,7 +31,7 @@ For default settings, see dlm_controld -h.
+ 
+ .B --protocol | -r
+ .I str
+-        dlm kernel lowcomms protocol: tcp, sctp, detect
++        dlm kernel lowcomms protocol: tcp, sctp
+ 
+ .B --debug_logfile | -L
+         write debugging to log file
+diff --git a/dlm_controld/main.c b/dlm_controld/main.c
+index 1c4333373617..6fb6dffeadaf 100644
+--- a/dlm_controld/main.c
++++ b/dlm_controld/main.c
+@@ -1817,8 +1817,8 @@ static void set_opt_defaults(void)
+ 
+ 	set_opt_default(protocol_ind,
+ 			"protocol", 'r', req_arg_str,
+-			-1, "detect", 0, 0,
+-			"dlm kernel lowcomms protocol: tcp, sctp, detect");
++			0, "tcp", 0, 0,
++			"dlm kernel lowcomms protocol: tcp, sctp");
+ 
+ 	set_opt_default(port_ind,
+ 			"port", 'R', req_arg_uint,
+-- 
+2.43.0
+

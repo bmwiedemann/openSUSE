@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 26 00:59:00 UTC 2025 - heming.zhao@suse.com
+
+- libdlm supports corosync 3.x multi-link (jsc#PED-11932)
+  * add upstream patch
+    + dlm_controld-terminate-uevent-buffer.patch
+    + dlm_controld-Support-for-extended-value-of-kernel-DL.patch
+    + dlm_controld-remove-detect-mode-from-config-item-pro.patch
+  * remove useless folder
+    - %{_datadir}/doc/packages/libdlm-%{version}
+
+-------------------------------------------------------------------
 Wed May  8 06:24:00 UTC 2024 - heming.zhao@suse.com - 4.3.0
 
 - update libdlm to version 4.3.0: no changelog available (jsc#PED-8085)
