@@ -1,0 +1,36 @@
+commit e204846ec16c1ab34c7f3a681734cf5190433018
+Author: James Almer <jamrial@gmail.com>
+Date:   Fri Sep 3 13:50:32 2021 -0300
+
+    avcodec/libdav1d: fix compilation after recent libdav1d API changes
+
+    They were done in preparation for an upcoming 1.0 release.
+    Keep supporting previous releases for the time being.
+
+    Reviewed-by: BBB
+    Signed-off-by: James Almer <jamrial@gmail.com>
+
+--- a/libavcodec/libdav1d.c
++++ b/libavcodec/libdav1d.c
+@@ -202,6 +202,9 @@
+     Libdav1dContext *dav1d = c->priv_data;
+     Dav1dData *data = &dav1d->data;
+     Dav1dPicture pic = { 0 }, *p = &pic;
++#if FF_DAV1D_VERSION_AT_LEAST(5,1)
++    enum Dav1dEventFlags event_flags = 0;
++#endif
+     int res;
+
+     if (!data->sz) {
+@@ -280,6 +283,11 @@
+     frame->linesize[1] = p->stride[1];
+     frame->linesize[2] = p->stride[1];
+
++#if FF_DAV1D_VERSION_AT_LEAST(5,1)
++    dav1d_get_event_flags(dav1d->c, &event_flags);
++    if (c->pix_fmt == AV_PIX_FMT_NONE ||
++        event_flags & DAV1D_EVENT_FLAG_NEW_SEQUENCE)
++#endif
+     c->profile = p->seq_hdr->profile;
+     c->level = ((p->seq_hdr->operating_points[0].major_level - 2) << 2)
+                | p->seq_hdr->operating_points[0].minor_level;

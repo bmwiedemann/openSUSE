@@ -8,7 +8,7 @@ Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-22921.patch:
-  Backporting 7f9c7f98 from upstream, clear array length when
+  Backport 7f9c7f98 from upstream, clear array length when
   freeing it.
   (CVE-2025-22921, bsc#1237382)
 
@@ -16,7 +16,7 @@ Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-25473.patch:
-  Backporting c08d3004 from upstream, clear FFFormatContext packet.
+  Backport c08d3004 from upstream, clear FFFormatContext packet.
   When packet_buffer is used in mux.c, and if a muxing process fails
   at a point where packets remained in said queue.
   (CVE-2025-25473, bsc#1237351)
@@ -25,7 +25,7 @@ Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-0518.patch:
-  Backporting b5b6391d from upstream, fixes memory data leak when
+  Backport b5b6391d from upstream, fixes memory data leak when
   use sscanf().
   (CVE-2025-0518, bsc#1236007)
 
@@ -33,7 +33,7 @@ Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-22919.patch:
-  Backporting 1446e37d from upstream, check for valid sample rate
+  Backport 1446e37d from upstream, check for valid sample rate
   As the sample rate <= 0 is invalid.
   (CVE-2025-22919, bsc#1237371)
 
@@ -41,7 +41,7 @@ Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 01:48:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2024-12361.patch:
-  Backporting 4065ff69 from upstream, add check for av_packet_new_side_data()
+  Backport 4065ff69 from upstream, add check for av_packet_new_side_data()
   to avoid null pointer dereference if allocation fails.
   (CVE-2024-12361, bsc#1237358)
 
@@ -49,7 +49,7 @@ Fri Feb 19 01:48:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 01:11:17 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2024-35368.patch:
-  Backporting 45133009 from upstream, After having created the
+  Backport 45133009 from upstream, After having created the
   AVBuffer that is put into frame->buf[0], ownership of several
   objects Fix double-free on the AVFrame is unreferenced.
   (CVE-2024-35368, bsc#1234028)
@@ -72,6 +72,7 @@ Mon Jan  6 11:53:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
   ffmpeg-CVE-2023-50010.patch
   ffmpeg-4-CVE-2024-32230.patch
   ffmpeg-4-CVE-2024-7055.patch (all merged)
+  (CVE-2023-51798, bsc#1223304)
 
 -------------------------------------------------------------------
 Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
@@ -82,7 +83,7 @@ Tue Oct 15 08:18:54 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 Fri Sep  6 15:06:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2024-7055.patch:
-  Backporting 3faadbe2 from upstream, Use 64bit for input size check,
+  Backport 3faadbe2 from upstream, Use 64bit for input size check,
   Fixes: out of array read, Fixes: poc3.
   (CVE-2024-7055, bsc#1229026)
 
@@ -102,14 +103,14 @@ Fri Jul 26 13:19:42 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 Tue Jul  2 12:26:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2024-32230.patch:
-  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  Backport 96449cfe from upstream, Fix 1 line and one column images.
   (CVE-2024-32230, bsc#1227296)
 
 -------------------------------------------------------------------
 Tue Apr 27 11:38:35 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50010.patch:
-  Backporting e4d2666b from upstream, fixes the out of array access.
+  Backport e4d2666b from upstream, fixes the out of array access.
   (CVE-2023-a50010, bsc#1223256)
 
 -------------------------------------------------------------------
@@ -122,34 +123,53 @@ Fri Apr 26 22:16:48 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 Thu Apr 23 16:14:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-51793.patch:
-  Backporting 0ecc1f0e from upstream, Fix odd height handling.
+  Backport 0ecc1f0e from upstream, Fix odd height handling.
   (CVE-2023-51793, bsc#1223272)
 
 -------------------------------------------------------------------
 Thu Apr 23 15:35:32 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-49502.patch:
-  Backporting 737ede40 from upstream, account for chroma sub-sampling
+  Backport 737ede40 from upstream, account for chroma sub-sampling
   in min size calculation.
   (CVE-2023-49502, bsc#1223235)
 
 -------------------------------------------------------------------
 Tue Apr 23 14:25:53 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
-- Address boo#1223304/CVE-2023-51798: add patch
-  0001-avfilter-vf_minterpolate-Check-pts-before-division.patch
+- Add 0001-avfilter-vf_minterpolate-Check-pts-before-division.patch:
+  Backport 68146f06 from upstream, Check pts before division.
+  (CVE-2023-51798, bsc#1223304)
 
 -------------------------------------------------------------------
 Mon Apr 22 12:41:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
-- Address boo#1223070/CVE-2024-31578: add patch
-  0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
+- Add 0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch:
+  Backport 76a48e85 from upstream, Check length.
+  (CVE-2024-31578, bsc#1223070)
+
+-------------------------------------------------------------------
+Mon Feb 12 18:23:41 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
+
+- ffmpeg-avcodec-libdav1d-don-t-repeatedly-parse-the-same-seq.patch
+  * fixes build against dav1d, which has been updated in
+    SUSE:SLE-15-SP5:Update (where apparently no rebuild of ffmpeg-4
+    had been triggered)
 
 -------------------------------------------------------------------
 Fri Feb  2 09:34:15 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- drop support for libmfx, which is no longer supported upstream
-  at all (boo#1219494)
+- no longer build against libmfx; build also 15.5 against libvpl
+ (boo#1230983, boo#1219494)
+
+- dropping support for libmfx below covers:
+  * libmfx: improper input validation (CVE-2023-48368, bsc#1226897)
+  * libmfx: improper buffer restrictions (CVE-2023-45221, bsc#1226898)
+  * libmfx: out-of-bounds read (CVE-2023-22656, bsc#1226899)
+  * libmfx: out-of-bounds write (CVE-2023-47282, bsc#1226900)
+  * libmfx: improper buffer restrictions (CVE-2023-47169, bsc#1226901)
+  * Multiple vulnerabilities in the Intel Media SDK (libmfx1) (bsc#1226892)
+  * Drop libmfx dependency from our product (jira #PED-10024)
 
 -------------------------------------------------------------------
 Tue Dec 26 13:36:38 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -167,9 +187,9 @@ Wed Dec  6 08:50:00 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 Fri Nov  3 08:17:13 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - Add ffmpeg-fix-new-binutils.patch:
-  Backporting 01fc3034 from upstream, Fix build with new binutils
+  Backport 01fc3034 from upstream, Fix build with new binutils
   (bsc#1215309)
- 
+
 -------------------------------------------------------------------
 Mon Oct 30 11:16:43 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
@@ -550,7 +570,7 @@ Fri Mar 31 00:41:22 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 - Add Samba support for Factory (as this needs a fix in Samba itself)
   Add --enable-libsmbclient to configure, add BR on pkgconfig(smbclient)
 - License is now GPLv3+ by default (--enable-version3)
- 
+
 -------------------------------------------------------------------
 Mon Mar 30 07:14:39 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
