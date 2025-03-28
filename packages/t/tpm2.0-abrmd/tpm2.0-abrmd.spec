@@ -23,8 +23,8 @@
 %if 0%{?sle_version} > 120300 || 0%{?is_opensuse} || 0%{?suse_version} >= 1600
 %define install_dbus_files 1
 %endif
-# selinux only for Tumbleweed for now
-%if 0%{?suse_version} >= 1550 && 0%{?is_opensuse}
+# enable selinux for Tumbleweed and SLE-16
+%if 0%{?suse_version} >= 1600
 %bcond_without selinux
 %else
 %bcond_with selinux

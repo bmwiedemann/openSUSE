@@ -371,4 +371,14 @@ etc.
     <comment></comment>
     <requestid>1239647</requestid>
   </revision>
+  <revision rev="29" vrev="6">
+    <srcmd5>63aca59abf43014738ce6ef82834f1b0</srcmd5>
+    <version>3.0.0</version>
+    <time>1743150976</time>
+    <user>anag+factory</user>
+    <comment>- also enable SELinux features for SLE-16 (bsc#1240070). On SLE-16 abrmd does
+  not work, because the SELinux configuration is missing and thus its
+  operations are denied. Include SLE-16 to fix this. (forwarded request 1256178 from mgerstner)</comment>
+    <requestid>1256179</requestid>
+  </revision>
 </revisionlist>

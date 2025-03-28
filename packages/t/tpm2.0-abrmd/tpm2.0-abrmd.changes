@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 26 11:06:46 UTC 2025 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- also enable SELinux features for SLE-16 (bsc#1240070). On SLE-16 abrmd does
+  not work, because the SELinux configuration is missing and thus its
+  operations are denied. Include SLE-16 to fix this.
+
+-------------------------------------------------------------------
 Wed Jan 22 16:21:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
