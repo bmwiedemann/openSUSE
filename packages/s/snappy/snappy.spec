@@ -22,14 +22,13 @@ Version:        1.1.10
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/snappy/
 Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz
 Source1:        snappy.pc
 Source99:       baselibs.conf
 Patch0:         use-system-test-libs.patch
 Patch2:         reenable-rtti.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
@@ -44,7 +43,6 @@ aims for high speeds and reasonable compression.
 
 %package -n %{libname}
 Summary:        Shared library from snappy
-Group:          System/Libraries
 
 %description -n %{libname}
 Snappy is a compression/decompression library. It does not aim for maximum
@@ -60,7 +58,6 @@ This package holds the shared library of snappy.
 
 %package devel
 Summary:        Development files for snappy
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description devel
@@ -74,7 +71,11 @@ This package holds the development files for snappy.
 %autosetup
 
 %build
-%cmake -DSNAPPY_USE_BUNDLED_GTEST=OFF -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF -DCMAKE_CXX_STANDARD=14
+%cmake \
+  -DSNAPPY_USE_BUNDLED_GTEST=OFF \
+  -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF \
+  -DCMAKE_CXX_STANDARD=14 \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_build
 
 %install
