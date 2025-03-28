@@ -86,7 +86,7 @@ ln -s %{_javadir}/slf4j/slf4j-api.jar target/classpath/
 %build
 %make_build native
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+    -Dsource=8
 
 %install
 %mvn_install
