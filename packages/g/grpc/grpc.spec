@@ -1,7 +1,7 @@
 #
 # spec file for package grpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define lver 45
-%define lverp 1_70
+%define lver 46
+%define lverp 1_71
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.70.1
+Version:        1.71.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -130,8 +130,7 @@ BuildArch:      noarch
 This subpackage contains source code of the gRPC reference implementation.
 
 %prep
-%autosetup -N
-%patch -P 1 -P 2 -P 3 -P 4 -p1
+%autosetup -p1
 find "." -type f -exec grep -l '/usr/bin/python' {} + |
 	xargs -r perl -i -lpe \
 	's{#! ?/usr/bin/python\S*}{#!/usr/bin/python3}g;'
@@ -141,9 +140,6 @@ find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 	 s{#! ?/usr/bin/env sh}{#!/bin/sh}g;
 	 s{#! ?/usr/bin/env bash}{#!/bin/bash}g;
 	 s{#! ?/usr/bin/env }{#!/usr/bin/}g;'
-pushd third_party/xxhash
-%patch -P 14 -P 15 -p1
-popd
 rm -Rf third_party/abseil-cpp/
 
 %build
@@ -160,7 +156,7 @@ cp -a /usr/src/opencensus-proto third_party/
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
 find "." -type f -exec grep '/usr/bin/env ' {} + || :
-pushd .
+s="$PWD"
 %cmake -DgRPC_INSTALL=ON                  \
        -DgRPC_INSTALL_LIBDIR:PATH="%_lib" \
        -DgRPC_INSTALL_CMAKEDIR:PATH="%_libdir/cmake/grpc" \
@@ -173,24 +169,24 @@ pushd .
        -DgRPC_ZLIB_PROVIDER=package \
        -DCMAKE_CXX_STANDARD=17
 %cmake_build
-popd
+cd "$s"
 find "." -type f -exec grep '/usr/bin/env ' {} + || :
 
 %install
 b="%buildroot"
 %cmake_install
 
-pushd "$b/usr"
+cd "$b/usr"
 rm -fv lib/*.a share/grpc/*.pem
-popd
+cd -
 
 # Install sources
-pushd %__builddir
+cd "%__builddir"
 rm -fv CMakeFiles/*.log
 make clean
 find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" -o \
 	-name "*.bin" -o -name "*.out" ")" -exec rm -Rfv {} +
-popd
+cd -
 # Don't include abseil-cpp in sources
 rm -fr third_party/abseil-cpp/*
 # Don't include non-deterministic log in sources

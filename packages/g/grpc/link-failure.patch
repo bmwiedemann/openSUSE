@@ -15,19 +15,19 @@ Index: grpc-1.70.1/CMakeLists.txt
 ===================================================================
 --- grpc-1.70.1.orig/CMakeLists.txt
 +++ grpc-1.70.1/CMakeLists.txt
-@@ -4091,6 +4091,7 @@ target_link_libraries(upb_json_lib
-   ${_gRPC_ALLTARGETS_LIBRARIES}
-   upb_mini_descriptor_lib
-   upb_wire_lib
-+  grpc_unsecure
+@@ -4054,6 +4054,7 @@ add_library(upb_json_lib ${_gRPC_STATIC_
+   third_party/upb/upb/reflection/method_def.c
+   third_party/upb/upb/reflection/oneof_def.c
+   third_party/upb/upb/reflection/service_def.c
++  src/core/ext/upb-gen/google/protobuf/descriptor.upb_minitable.c
  )
  
- 
-@@ -4348,6 +4349,7 @@ target_link_libraries(upb_textformat_lib
-   ${_gRPC_ALLTARGETS_LIBRARIES}
-   upb_mini_descriptor_lib
-   upb_wire_lib
-+  grpc_unsecure
+ target_compile_features(upb_json_lib PUBLIC cxx_std_17)
+@@ -4311,6 +4312,7 @@ add_library(upb_textformat_lib ${_gRPC_S
+   third_party/upb/upb/reflection/service_def.c
+   third_party/upb/upb/text/encode.c
+   third_party/upb/upb/text/internal/encode.c
++  src/core/ext/upb-gen/google/protobuf/descriptor.upb_minitable.c
  )
  
- 
+ target_compile_features(upb_textformat_lib PUBLIC cxx_std_17)

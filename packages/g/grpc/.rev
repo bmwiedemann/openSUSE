@@ -656,4 +656,12 @@ fixed in that other package, after which it will trickle down.</comment>
 - Update to release 1.70.1</comment>
     <requestid>1245422</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ba192bdb0b7b5dac61b9fc28455fc236</srcmd5>
+    <version>1.71.0</version>
+    <time>1743150959</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.71</comment>
+    <requestid>1256084</requestid>
+  </revision>
 </revisionlist>

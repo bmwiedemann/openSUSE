@@ -15,8 +15,8 @@ Subject: [PATCH] [ARM] Unaligned access fixes
 
 diff --git a/xxhash.h b/xxhash.h
 index 08ab794..4cf3f0d 100644
---- a/xxhash.h
-+++ b/xxhash.h
+--- a/third_party/xxhash/xxhash.h
++++ b/third_party/xxhash/xxhash.h
 @@ -1402,28 +1402,18 @@ XXH3_128bits_reset_withSecretandSeed(XXH3_state_t* statePtr,
   */
  
