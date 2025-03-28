@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:02:25 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
 Mon Sep 25 09:38:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Remove dependency on maven2

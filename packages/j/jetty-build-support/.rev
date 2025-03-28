@@ -31,4 +31,12 @@
     <comment>Remove dependency on maven2</comment>
     <requestid>1113417</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>974b42ac7053ce294bb1cb3938fa6f34</srcmd5>
+    <version>1.5</version>
+    <time>1743151003</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1264717</requestid>
+  </revision>
 </revisionlist>

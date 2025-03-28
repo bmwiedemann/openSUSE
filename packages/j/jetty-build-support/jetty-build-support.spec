@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-build-support
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ BuildRequires:  xz
 BuildRequires:  mvn(org.apache.maven.enforcer:enforcer-api)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.apache.maven.shared:maven-shared-utils)
 BuildRequires:  mvn(org.apache.maven:maven-artifact)
 BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
@@ -61,6 +62,9 @@ cp %{SOURCE2} .
 
 %pom_xpath_set pom:properties/pom:maven.version 3.8.1
 %pom_remove_dep :maven-project
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+%pom_add_dep org.apache.maven.shared:maven-shared-utils
 
 %build
 %{mvn_build} -f -- -Dsource=8
