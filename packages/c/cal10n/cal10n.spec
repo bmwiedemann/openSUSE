@@ -1,7 +1,7 @@
 #
 # spec file for package cal10n
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Source0:        %{base_name}-%{version}.tar.xz
 Source1:        %{base_name}-build.tar.xz
 # https://github.com/qos-ch/cal10n/pull/10
 Patch0:         Fix-SupportedSourceVersion-warning.patch
+Patch1:         cal10n-mpt4.patch
 BuildRequires:  fdupes
 BuildRequires:  xz
 BuildArch:      noarch
@@ -40,6 +41,7 @@ Name:           %{base_name}-maven-plugins
 Summary:        Compiler assisted localization library (CAL10N) maven plugins
 BuildRequires:  maven-local
 BuildRequires:  mvn(ch.qos.cal10n:cal10n-api)
+BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.wagon:wagon-ssh)
 BuildRequires:  mvn(org.apache.maven:maven-core)
@@ -80,6 +82,9 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{base_name}-%{version} -a1
 %patch -P 0 -p1
+%patch -P 1 -p1
+
+%pom_add_dep org.apache.maven.plugin-tools:maven-plugin-annotations:3.15.1:provided
 
 # We don't want to depend on ant, since it will be
 # present when we try to use the task

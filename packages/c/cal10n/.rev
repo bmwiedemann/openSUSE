@@ -107,4 +107,12 @@
     <comment>Fix warning + latest snapshot + maven plugins as an extra flavour</comment>
     <requestid>1171385</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4236f71d35b59c780596ff8ad010de68</srcmd5>
+    <version>0.8.1.12</version>
+    <time>1743150993</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1258733</requestid>
+  </revision>
 </revisionlist>

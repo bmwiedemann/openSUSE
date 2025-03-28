@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 14:12:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * cal10n-mpt4.patch
+    + port the maven-plugin to java-annotations extractor instead
+      of the deprecated java-javadoc one
+
+-------------------------------------------------------------------
 Thu May  2 14:22:43 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fetch the latest git revision: 12th commit after 0.8.1 calling

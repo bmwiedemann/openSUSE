@@ -1,0 +1,71 @@
+--- cal10n-0.8.1.12/maven-cal10n-plugin/src/main/java/ch/qos/cal10n/plugins/VerifyMojo.java	2025-03-27 10:22:32.625904888 +0100
++++ cal10n-0.8.1.12/maven-cal10n-plugin/src/main/java/ch/qos/cal10n/plugins/VerifyMojo.java	2025-03-27 10:46:49.745357037 +0100
+@@ -37,6 +37,10 @@
+ import org.apache.maven.plugin.AbstractMojo;
+ import org.apache.maven.plugin.MojoExecutionException;
+ import org.apache.maven.plugin.MojoFailureException;
++import org.apache.maven.plugins.annotations.LifecyclePhase;
++import org.apache.maven.plugins.annotations.Mojo;
++import org.apache.maven.plugins.annotations.Parameter;
++import org.apache.maven.plugins.annotations.ResolutionScope;
+ 
+ import ch.qos.cal10n.verifier.IMessageKeyVerifier;
+ 
+@@ -46,43 +50,40 @@
+ /**
+  * Verifies resources bundles in various locales against an enumType
+  *
+- * @goal verify
+- * @phase verify
+- * @requiresProject true
+- * @requiresDependencyResolution
+  */
++@Mojo( name = "verify",
++       defaultPhase = LifecyclePhase.VERIFY,
++       requiresProject = true,
++       requiresDependencyResolution = ResolutionScope.RUNTIME )
+ public class VerifyMojo extends AbstractMojo {
+ 
+-  /**
+-   * @parameter
+-   * @required
+-   */
++  @Parameter( required = true )
+   private String[] enumTypes;
+ 
+   /**
+    * The directory for compiled classes.
+    * 
+-   * @parameter expression="${project.build.outputDirectory}"
+-   * @required
+-   * @readonly
+    */
++  @Parameter( property = "project.build.outputDirectory",
++              required = true,
++              readonly = true )
+   private File outputDirectory;
+ 
+   // direct dependencies of this project
+   /**
+    * 
+-   * @parameter expression="${project.artifacts}"
+-   * @required
+-   * @readonly
+    */
++  @Parameter( property = "project.artifacts",
++              required = true,
++              readonly = true )
+   private Set<Artifact> projectArtifacts;
+ 
+   /**
+-   * @parameter expression="${localRepository}"
+-   * @required
+-   * @readonly 
+    * @since 1.0
+    */
++  @Parameter( property = "localRepository",
++              required = true,
++              readonly = true )
+   private ArtifactRepository localRepository;
+ 
+   public void execute() throws MojoExecutionException, MojoFailureException {
