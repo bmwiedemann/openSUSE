@@ -13833,9 +13833,9 @@ unsorted:
   - libgretl-1_0-50 
   - libgromacs9 
   - libgromacs_mpi9 
-  - libgrpc++1_70 
-  - libgrpc1_70 
-  - libgrpc45 
+  - libgrpc++1_71 
+  - libgrpc1_71 
+  - libgrpc46 
   - libgsequencer0 
   - libgsettings-qt1 
   - libgsf-devel 
@@ -16971,7 +16971,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb45 
+  - libupb46 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp16 
