@@ -1654,4 +1654,22 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
   * Updated lists of ioctl commands from Linux 6.13. (forwarded request 1239874 from Andreas_Schwab)</comment>
     <requestid>1239875</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>94350d9a223c123a9de41fa6a8571ad9</srcmd5>
+    <version>6.14</version>
+    <time>1743150953</time>
+    <user>anag+factory</user>
+    <comment>- Update to strace 6.14
+  * Added -e namespace=new option for printing the namespaces entered
+    by the tracee.
+  * Implemented decoding of FRA_FLOWLABEL and FRA_FLOWLABEL_MASK netlink
+    attributes of RTM_{NEW,DEL,GET}RULE NETLINK_ROUTE messages.
+  * Implemented decoding of RTM_{NEW,DEL}MULTICAST and RTM_{NEW,DEL}ANYCAST
+    NETLINK_ROUTE messages.
+  * Updated decoding of statx syscall.
+  * Updated lists of AT_*, AUDIT_*, ETHTOOL_*, FAN_*, IORING_*, IPPROTO_*,
+    KEY_*, NL80211_*, RWF_*, and SECBIT_* constants.
+  * Updated lists of ioctl commands from Linux 6.14. (forwarded request 1256016 from Andreas_Schwab)</comment>
+    <requestid>1256017</requestid>
+  </revision>
 </revisionlist>

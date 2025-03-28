@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 25 11:41:14 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update to strace 6.14
+  * Added -e namespace=new option for printing the namespaces entered
+    by the tracee.
+  * Implemented decoding of FRA_FLOWLABEL and FRA_FLOWLABEL_MASK netlink
+    attributes of RTM_{NEW,DEL,GET}RULE NETLINK_ROUTE messages.
+  * Implemented decoding of RTM_{NEW,DEL}MULTICAST and RTM_{NEW,DEL}ANYCAST
+    NETLINK_ROUTE messages.
+  * Updated decoding of statx syscall.
+  * Updated lists of AT_*, AUDIT_*, ETHTOOL_*, FAN_*, IORING_*, IPPROTO_*,
+    KEY_*, NL80211_*, RWF_*, and SECBIT_* constants.
+  * Updated lists of ioctl commands from Linux 6.14.
+
+-------------------------------------------------------------------
 Thu Jan 23 11:56:38 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update to strace 6.13
