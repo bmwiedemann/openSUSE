@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 28 05:47:17 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 25.3.4:
+  * Bump Prometheus to `v2.55.1` (#13867)
+  * build(deps): bump the clap group with 2 updates (#13866)
+  * feat(CLI): Add errors for invalid Gateway API CRD states
+    (#13834)
+  * build(deps): bump pest_derive from 2.7.15 to 2.8.0 (#13860)
+  * build(deps): bump delegate from 0.13.2 to 0.13.3 (#13861)
+  * build(deps): bump pest from 2.7.15 to 2.8.0 (#13862)
+  * build(deps): bump rustls-webpki from 0.103.0 to 0.103.1
+    (#13863)
+  * build(deps): bump cc from 1.2.16 to 1.2.17 (#13853)
+  * build(deps): bump log from 0.4.26 to 0.4.27 (#13856)
+  * build(deps): bump google.golang.org/protobuf from 1.36.5 to
+    1.36.6 (#13855)
+  * build(deps): bump iana-time-zone from 0.1.61 to 0.1.62 (#13857)
+  * build(deps): bump tj-actions/changed-files (#13854)
+  * build(deps): bump linkerd-extension-init from 0.1.2 to 0.1.3
+    (#13833)
+  * build(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2
+    (#13836)
+  * build(deps): bump Swatinem/rust-cache from 2.7.7 to 2.7.8
+    (#13838)
+  * build(deps): bump actions/download-artifact from 4.2.0 to 4.2.1
+    (#13839)
+  * chore(dependabot): group kubert updates (#13842)
+  * build(deps): bump kubert from 0.23 to 0.24 (#13843)
+  * chore(deps): remove unused k8s-gateway-api dependency (#13844)
+  * build(deps): bump tj-actions/changed-files (#13837)
+
+-------------------------------------------------------------------
 Thu Mar 20 12:16:04 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 25.3.3:
