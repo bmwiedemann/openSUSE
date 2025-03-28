@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 22:15:30 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1743092811.fb25b01c:
+  * Avoid interrupting/skipping directly chained jobs due to high load
+  * Dependency cron 2025-03-27
+
+-------------------------------------------------------------------
 Wed Mar 26 21:15:10 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1743011892.5068f7f4:
