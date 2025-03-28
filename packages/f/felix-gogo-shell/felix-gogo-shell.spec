@@ -1,7 +1,7 @@
 #
 # spec file for package felix-gogo-shell
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,8 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{bundle}-%{version}
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %{mvn_file} : felix/%{bundle}
 
