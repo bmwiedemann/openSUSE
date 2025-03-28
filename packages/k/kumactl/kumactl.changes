@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 28 05:46:56 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.1:
+  * chore(deps): upgrade golang version from 1.23.6 to 1.23.7
+    (#13247)
+  * chore(deps): upgrade envoy version from v1.32.4 to v1.32.5
+    (#13241)
+  * ci(update-insecure-dependencies): no need to use -u for go get
+    (backport of #13205) (#13208)
+  * perf(rules): add `withNegation` flag to simplify `to` policy
+    flow (backport of #13151) (#13193)
+  * chore(deps): upgrade envoy version from v1.32.3 to v.1.32.4
+    (#13159)
+  * chore(deps): security update (#13169)
+
+-------------------------------------------------------------------
 Tue Mar 18 10:05:31 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.0:
