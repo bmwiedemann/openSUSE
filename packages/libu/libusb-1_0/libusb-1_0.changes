@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Mar 20 12:00:27 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 1.0.28
+  * New libusb_get_ssplus_usb_device_capability_descriptor API
+    for query of SuperSpeed+ Capability Descriptors
+  * API support for reporting USB 3.2 Gen2x2 speeds
+  * macOS: Fix Zero-Length Packet for multiple packets per frame
+  * Windows: Base HID device descriptor on OS-cached values
+  * Build fixes for Haiku and SunOS
+  * Many code correctness fixes
+
+-------------------------------------------------------------------
 Thu Feb  1 10:01:05 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Update to version 1.0.27
