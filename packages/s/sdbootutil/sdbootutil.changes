@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:19:37 UTC 2025 - aplanas@suse.com
+
+- Update to version 1+git20250327.9714cbd:
+  * Get boot_dst from os-release NAME
+  * Add --devices parameter
+
+-------------------------------------------------------------------
 Mon Mar 24 19:50:28 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250324.c1cd393:

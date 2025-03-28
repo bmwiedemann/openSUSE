@@ -17,7 +17,7 @@
 
 
 Name:           sdbootutil
-Version:        1+git20250324.c1cd393
+Version:        1+git20250327.9714cbd
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
