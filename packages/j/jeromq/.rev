@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1247519</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>65e83b9c88d27e338e68a5ae2fd0b556</srcmd5>
+    <version>0.5.3</version>
+    <time>1743151013</time>
+    <user>anag+factory</user>
+    <comment>Fix javadoc generation with javadoc:aggregate</comment>
+    <requestid>1264778</requestid>
+  </revision>
 </revisionlist>

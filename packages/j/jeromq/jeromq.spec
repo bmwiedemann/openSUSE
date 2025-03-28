@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(eu.neilalexander:jnacl)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildArch:      noarch
 
 %description
@@ -43,13 +44,11 @@ This package contains the API documentation for %{name}.
 %prep
 %setup -q
 %pom_remove_plugin :maven-checkstyle-plugin
-%pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :nexus-staging-maven-plugin
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+%{mvn_build} -f -- -DlegacyMode=true -Dverbose=true
 
 %install
 %mvn_install
