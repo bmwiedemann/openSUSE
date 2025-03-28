@@ -415,4 +415,13 @@
   * test: Wait for sshd.service before checking labels in /etc</comment>
     <requestid>1253008</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2f4572816faadd57af282475bd707caf</srcmd5>
+    <version>4.0+git11</version>
+    <time>1743150949</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 4.0+git11:
+  * Only parse section with at minimum two arguments (#42)</comment>
+    <requestid>1255993</requestid>
+  </revision>
 </revisionlist>
