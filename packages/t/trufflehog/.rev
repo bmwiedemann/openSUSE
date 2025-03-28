@@ -2020,4 +2020,18 @@
   * Update results help text (#3978) (forwarded request 1255521 from ph03nix)</comment>
     <requestid>1255731</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5a1ea9bd66dcc05fe6225038a22f1a07</srcmd5>
+    <version>3.88.19</version>
+    <time>1743151010</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.19:
+  * Add Bitbucket installation type option (#3999)
+  * more removals of blog and aws canary not triggered verbiage. (#3990)
+  * (fix) Remove `db_type` parameter Postgres detector during making connection (#3989)
+  * added tags for integration test of ipquality detector (#3996)
+  * fixed and improved squareapp detector (#3993)
+  * removed vebiage saying we don't trigger aws canary tokens, as we do. (#3991) (forwarded request 1264721 from ph03nix)</comment>
+    <requestid>1264750</requestid>
+  </revision>
 </revisionlist>

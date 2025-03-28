@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 27 20:55:06 UTC 2025 - felix.niederwanger@suse.com
+
+- Update to version 3.88.19:
+  * Add Bitbucket installation type option (#3999)
+  * more removals of blog and aws canary not triggered verbiage. (#3990)
+  * (fix) Remove `db_type` parameter Postgres detector during making connection (#3989)
+  * added tags for integration test of ipquality detector (#3996)
+  * fixed and improved squareapp detector (#3993)
+  * removed vebiage saying we don't trigger aws canary tokens, as we do. (#3991)
+
+-------------------------------------------------------------------
 Mon Mar 24 07:57:00 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 3.88.18:
