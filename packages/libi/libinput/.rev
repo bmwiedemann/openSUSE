@@ -1063,4 +1063,12 @@ Peter Hutterer (3):
     supports Ctrl+C to stop the currently replaying event sequence.</comment>
     <requestid>1236128</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>71c7a8f530f48396d99cd42e4a5b3b45</srcmd5>
+    <version>1.28.0</version>
+    <time>1743150975</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.28</comment>
+    <requestid>1256174</requestid>
+  </revision>
 </revisionlist>

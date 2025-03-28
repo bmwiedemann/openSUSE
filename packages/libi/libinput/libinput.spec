@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.27.1
+Version:        1.28.0
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -70,6 +70,7 @@ BuildRequires:  pkgconfig(libevdev) >= 0.4
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libwacom) >= 0.20
 BuildRequires:  pkgconfig(mtdev) >= 1.1.0
+BuildRequires:  systemd-rpm-macros
 
 %description
 libinput is a library that handles input devices for display servers and
@@ -168,8 +169,8 @@ done
 
 %ldconfig_scriptlets -n %lname
 
-%post udev
-[ -x /usr/bin/udevadm ] && /usr/bin/udevadm hwdb --update || :
+%posttrans udev
+%udev_hwdb_update
 
 %if "%flavor" == ""
 %files udev

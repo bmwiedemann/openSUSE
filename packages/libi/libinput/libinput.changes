@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Mar 26 03:15:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.28
+  * Support for three-finger drag for touchpads.
+  * On tablets the pressure range is now correctly tracked per
+    tablet.
+
+-------------------------------------------------------------------
+Fri Feb 28 15:13:10 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Use %udev_hwdb_update in %posttrans to update udev hwdb. On
+  recent distros such as TW, this should not be necessary at all as
+  the hwdb is automatically updated via the rpm file triggers
+  mechanism. However, the explicit call to update the hwdb is kept
+  in case the spec file is also used for older ditros. The call is
+  also done from %posttrans where we know that udev is fully
+  functional without the need of `Requires(post): udev`.
+
+-------------------------------------------------------------------
 Mon Jan  6 11:50:58 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.27.1
