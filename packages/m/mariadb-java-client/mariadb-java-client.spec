@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-java-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ URL:            https://mariadb.com/kb/en/mariadb/about-mariadb-connector-j/
 Source0:        https://github.com/MariaDB/mariadb-connector-j/archive/%{version}.tar.gz
 Patch0:         remove_waffle-jna.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(net.java.dev.jna:jna)
@@ -95,8 +96,7 @@ rm -f src/main/java/org/mariadb/jdbc/plugin/authentication/addon/gssapi/WindowsN
 
 %build
 # tests are skipped, while they require running application server
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)
+%{mvn_build} -f -- -Dmaven.compiler.release=8
 
 %install
 %mvn_install
