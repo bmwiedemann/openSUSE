@@ -28,7 +28,7 @@ Source:         https://github.com/jbeder/yaml-cpp/archive/%{version}.tar.gz#/%{
 Source98:       baselibs.conf
 # https://github.com/jbeder/yaml-cpp/commit/7b469b4220f96fb3d036cf68cd7bd30bd39e61d2
 Patch0:         yaml-cpp-gcc15.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  sed
 %if %{?suse_version} >= 1330
@@ -71,12 +71,16 @@ export CXX=g++-6
     -DYAML_BUILD_SHARED_LIBS:BOOL=ON \
     -DYAML_CPP_BUILD_TESTS:BOOL=OFF \
     -DCMAKE_C_COMPILER=$CC             \
-    -DCMAKE_CXX_COMPILER=$CXX
+    -DCMAKE_CXX_COMPILER=$CXX \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 make %{?_smp_mflags}
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n %{library_name} -p /sbin/ldconfig
 %postun -n %{library_name} -p /sbin/ldconfig
