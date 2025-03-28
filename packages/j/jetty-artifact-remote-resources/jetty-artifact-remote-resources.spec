@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-artifact-remote-resources
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,8 +36,10 @@ Jetty toolchain artifact remote resources
 %prep
 %setup -q
 
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
+
 %build
-%{mvn_build}
+%{mvn_build} -f
 
 %install
 %mvn_install

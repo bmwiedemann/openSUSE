@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:01:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Remove a relativePath that points to a non-existing directory
+
+-------------------------------------------------------------------
 Tue Apr  2 12:26:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Sanitize a bit the source service and regenerate tarball
