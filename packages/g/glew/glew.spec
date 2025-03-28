@@ -73,6 +73,7 @@ Requires:       pkgconfig(egl)
 %endif
 Requires:       pkgconfig(sm)
 Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xext)
 Requires:       pkgconfig(xproto)
 # Don't require GLU, because there is GLEW_NO_GLU option
 Recommends:     pkgconfig(glu)
