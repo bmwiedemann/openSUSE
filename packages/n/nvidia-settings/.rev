@@ -90,4 +90,12 @@ make use of %ldconfig_scriptlets</comment>
     <comment>- update to release 570.124.04 (boo#1237585)</comment>
     <requestid>1249296</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ae9caa67cdcfbc47d50e98ca0793de65</srcmd5>
+    <version>570.133.07</version>
+    <time>1743150956</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1256076</requestid>
+  </revision>
 </revisionlist>
