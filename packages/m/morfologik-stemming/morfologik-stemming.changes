@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 22:06:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix pom.xml errors that will be fatal with Maven 4
+
+-------------------------------------------------------------------
 Wed Feb 21 10:51:31 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

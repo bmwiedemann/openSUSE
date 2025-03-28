@@ -1,7 +1,7 @@
 #
 # spec file for package morfologik-stemming
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,9 +58,9 @@ for file in CHANGES.txt CONTRIBUTING.txt README.txt LICENSE.txt; do
 done
 
 %pom_add_dep org.hamcrest:hamcrest-core::test morfologik-tools
-%pom_remove_plugin com.carrotsearch.randomizedtesting:junit4-maven-plugin
-%pom_remove_plugin de.thetaphi:forbiddenapis
-%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin -r com.carrotsearch.randomizedtesting:junit4-maven-plugin
+%pom_remove_plugin -r de.thetaphi:forbiddenapis
+%pom_remove_plugin -r :maven-javadoc-plugin
 
 # Remove classpath from manifest file
 %pom_xpath_set pom:addClasspath false morfologik-tools
