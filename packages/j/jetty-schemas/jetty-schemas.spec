@@ -1,7 +1,7 @@
 #
 # spec file for package jetty-schemas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ BuildArch:      noarch
 
 %pom_remove_plugin :maven-javadoc-plugin
 %pom_remove_plugin :maven-source-plugin
+
+%pom_xpath_remove pom:project/pom:parent/pom:relativePath
 
 %build
 %{mvn_build} -f -- \
