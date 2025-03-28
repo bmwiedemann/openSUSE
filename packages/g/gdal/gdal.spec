@@ -2,6 +2,7 @@
 # spec file for package gdal
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +68,7 @@ BuildRequires:  libcryptopp-devel
 BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
+BuildRequires:  libzstd-devel-static
 BuildRequires:  mysql-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers
@@ -94,7 +96,6 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.1
-BuildRequires:  pkgconfig(libpcrecpp)
 BuildRequires:  pkgconfig(libpng) >= 1.6
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libtiff-4) >= 4.1
@@ -214,10 +215,7 @@ BuildArch:      noarch
 bash command line completion support for GDAL
 
 %prep
-%setup -q -n %{sourcename}-%{version}
-%autopatch -p1
-# Prepare tests
-tar -xf %{SOURCE2}
+%autosetup -p1 -n %{sourcename}-%{version} -a2
 # Delete bundled libraries
 # keep zlib due to missing frmts/zlib/contrib/infback9 in our package
 # rm -rv frmts/zlib
@@ -246,7 +244,6 @@ find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython},"
 %cmake \
   -DGDAL_USE_INTERNAL_LIBS=OFF \
   -DGDAL_USE_EXTERNAL_LIBS=ON \
-  -DSWIG_REGENERATE_PYTHON=OFF \
 %if %{with ecw5_support}
   -DECW_ROOT="../ECW/Desktop_Read-Only" \
 %endif
@@ -287,7 +284,6 @@ find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython},"
   -DGDAL_USE_OGDI=OFF \
   -DGDAL_USE_OPENCL=ON \
   -DGDAL_USE_OPENJPEG=ON \
-  -DGDAL_USE_PCRE=ON \
   -DGDAL_USE_PCRE2=ON \
   -DGDAL_USE_PNG=ON \
   -DGDAL_USE_POPPLER=ON \
@@ -352,9 +348,7 @@ pushd %{name}autotest-%{version}
 popd
 %endif
 
-%post -n lib%{name}%{soversion} -p /sbin/ldconfig
-
-%postun	-n lib%{name}%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{soversion}
 
 %files -n lib%{name}%{soversion}
 %license LICENSE.TXT
@@ -362,6 +356,7 @@ popd
 %{_libdir}/*.so.%{soversion}
 
 %files -n lib%{name}-drivers
+%license LICENSE.TXT
 %dir %{_libdir}/gdalplugins
 %{_libdir}/gdalplugins/drivers.ini
 
@@ -502,6 +497,7 @@ popd
 %{_bindir}/rgb2pct.py
 
 %files bash-completion
+%license LICENSE.TXT
 %{_datadir}/bash-completion/completions/*
 
 %changelog

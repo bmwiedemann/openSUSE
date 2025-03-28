@@ -836,4 +836,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     the envelope of a non-rectangle clip geometry, but doesn't</comment>
     <requestid>1246249</requestid>
   </revision>
+  <revision rev="95" vrev="2">
+    <srcmd5>114cb75e3334dd2f670963b33f4f01cb</srcmd5>
+    <version>3.10.2</version>
+    <time>1743143777</time>
+    <user>anag+factory</user>
+    <comment>fix build, drop pcre (forwarded request 1264698 from AndreasStieger)</comment>
+    <requestid>1264699</requestid>
+  </revision>
 </revisionlist>

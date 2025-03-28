@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 27 20:13:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build, need zstd-devel-static
+- drop unneeded build dependencies on pcre, was ported to pcre2
+
+-------------------------------------------------------------------
 Sun Feb 16 08:34:35 UTC 2025 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to bugfix release version 3.10.2
