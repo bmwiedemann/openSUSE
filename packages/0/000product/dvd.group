@@ -322,7 +322,7 @@
     <package name="dejavu-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="deltarpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="desktop-data-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="desktop-file-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="desktop-file-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="desktop-translations" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="device-mapper" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="dhcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-dhcp_dns_server -->
@@ -843,6 +843,7 @@
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
     <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="java-binfmt-misc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-filesystem" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="javapackages-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="jfsutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -3356,6 +3357,7 @@
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-CryptX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-DB_File" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-Digest-SHA1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

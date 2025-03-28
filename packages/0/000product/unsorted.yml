@@ -4605,6 +4605,7 @@ unsorted:
   - framework-inputmodule-control 
   - framework-inputmodule-udev-rules 
   - framework-laptop-kmp-default 
+  - framework_tool 
   - frameworkintegration-devel 
   - frameworkintegration-plugin 
   - francis 
@@ -8772,6 +8773,8 @@ unsorted:
   - hhdate-devel 
   - hibiscus 
   - hicolor-icon-theme-devel 
+  - hid-tmff2 
+  - hid-tmff2-kmp-default 
   - hidviz 
   - highlight 
   - highlight-bash-completion 
@@ -9499,7 +9502,6 @@ unsorted:
   - java-23-openjdk-jmods 
   - java-23-openjdk-src 
   - java-atk-wrapper 
-  - java-binfmt-misc 
   - java-cup 
   - java-cup-bootstrap 
   - java-cup-manual 
@@ -9972,6 +9974,10 @@ unsorted:
   - k3sup 
   - k4dirstat 
   - k4dirstat-lang 
+  - k6 
+  - k6-bash-completion 
+  - k6-fish-completion 
+  - k6-zsh-completion 
   - k8s-sidecar 
   - k8senv 
   - k8senv-bash-completion 
@@ -37613,6 +37619,7 @@ unsorted:
   - spotify-easyrpm 
   - spotify-launcher 
   - spotify-qt 
+  - spotifyd 
   - spread-sheet-widget-devel 
   - spyder 
   - spyder-lang 
@@ -37997,6 +38004,7 @@ unsorted:
   - system-group-ne 
   - system-group-obsolete 
   - system-group-sudo 
+  - system-group-timekpr 
   - system-user-alloy 
   - system-user-bitlbee 
   - system-user-cscreen 
@@ -47815,6 +47823,8 @@ unsorted:
   - tilix-lang 
   - time-api 
   - time-api-javadoc 
+  - timekpr-next 
+  - timekpr-next-lang 
   - timeshift 
   - timeshift-lang 
   - timewarrior 

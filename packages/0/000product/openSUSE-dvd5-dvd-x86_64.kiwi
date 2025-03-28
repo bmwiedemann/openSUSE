@@ -847,6 +847,7 @@
       <repopackage name="jack-dbus"/>
       <repopackage name="java-21-openjdk"/>
       <repopackage name="java-21-openjdk-headless"/>
+      <repopackage name="java-binfmt-misc"/>
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
@@ -3407,6 +3408,7 @@
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-SmbHash"/>
       <repopackage name="perl-CryptX"/>
+      <repopackage name="perl-DB_File"/>
       <repopackage name="perl-Digest-HMAC"/>
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
