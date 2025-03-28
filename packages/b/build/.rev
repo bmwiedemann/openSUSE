@@ -1948,4 +1948,13 @@ Changes:
    * Support git checkout by commit like with the obs scm bridge</comment>
     <requestid>1255056</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>b843a9c1deb7a802baf3a6f5eb3d0526</srcmd5>
+    <version>20250326</version>
+    <time>1743150968</time>
+    <user>anag+factory</user>
+    <comment>- Supporting automatic tar ball creation also when just
+  provided via git (no need for RemoteAsset in that case)</comment>
+    <requestid>1256157</requestid>
+  </revision>
 </revisionlist>
