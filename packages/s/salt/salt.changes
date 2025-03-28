@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 15:27:34 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Small refactor on the spec file
+
+-------------------------------------------------------------------
 Tue Mar 25 10:17:35 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Make "salt" package to obsolete "python3-salt" package on SLE15SP7+ 

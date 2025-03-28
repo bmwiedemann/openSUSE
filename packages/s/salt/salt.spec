@@ -54,7 +54,6 @@
 %if %{without systemd}
 %define service_del_preun echo %{*}
 %endif
-
 %if 0%{?sle_version} >= 150700
 %{?sle15_python_module_pythons}
 %else
@@ -798,15 +797,10 @@ Requires:       iputils
 Requires:       sudo
 Requires:       file
 Recommends:     man
-%if 0%{?rhel} || 0%{?fedora}
-Recommends:     python3-passlib
-%endif
-%if 0%{?suse_version}
 %if 0%{?singlespec_compat}
 Recommends:     %{python_module passlib}
 %else
 Recommends:     python-passlib
-%endif
 %endif
 
 %if 0%{?singlespec_compat}
