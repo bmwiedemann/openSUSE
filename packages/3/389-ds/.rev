@@ -772,4 +772,13 @@
     <comment></comment>
     <requestid>1256369</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>343420e1e6242505aa04b1fc742d92b4</srcmd5>
+    <version>3.1.2~git55.7fbd4526</version>
+    <time>1743225445</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python-psutil requires (boo#1240340).
+
+RelEng emergencyfix</comment>
+  </revision>
 </revisionlist>

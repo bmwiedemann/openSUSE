@@ -181,6 +181,7 @@ Requires:       %{use_python}-argparse-manpage
 Requires:       %{use_python}-cryptography
 Requires:       %{use_python}-distro
 Requires:       %{use_python}-ldap >= 3.0
+Requires:       %{use_python}-psutil
 Requires:       %{use_python}-pyasn1
 Requires:       %{use_python}-pyasn1-modules
 Requires:       %{use_python}-python-dateutil

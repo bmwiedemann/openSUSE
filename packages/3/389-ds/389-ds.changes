@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 29 05:14:35 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- Add python-psutil requires (boo#1240340).
+
+-------------------------------------------------------------------
 Thu Mar 27 01:33:33 UTC 2025 - william.brown@suse.com
 
 - bsc#1239722 - CVE-2025-2487 - 389-ds: null pointer dereference leads to denial of service
