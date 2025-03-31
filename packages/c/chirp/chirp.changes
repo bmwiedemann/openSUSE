@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:40:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250328:
+  * Add driver for Wouxun KG-805g
+  * Updated Italian, Spanish Translation
+  * Initial support of QYT KT-5000.
+  * kg816/818: Fix query string processing
+  * add UV21ProV2 and UV21ProGPS
+  * Disable immutable mem.extra in expanded memory editor
+  * update upper frequency limit that is displayed in validation
+    error message
+
+-------------------------------------------------------------------
 Fri Mar 21 20:02:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250321:
