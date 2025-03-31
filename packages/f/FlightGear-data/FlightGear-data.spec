@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear-data
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define main_version 2020.3
+%define main_version 2024.1
 Name:           FlightGear-data
-Version:        %{main_version}.18
+Version:        %{main_version}.1
 Release:        0
 Summary:        FlightGear base scenery and data files
 License:        GPL-2.0-only
@@ -51,7 +51,7 @@ This package contains pdf, text and html documentation for the
 FlightGear flight simulator package.
 
 %prep
-%setup -q -n fgdata
+%setup -q -n fgdata_2024_1
 dos2unix -c ascii Docs/model-combined.eff/README.model-combined.eff
 # Remove no longer used textures
 rm -Rf ./Textures/Unused

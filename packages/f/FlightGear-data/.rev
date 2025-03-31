@@ -248,4 +248,16 @@ Required for FlightGear</comment>
     <comment></comment>
     <requestid>1075537</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fae3fd83a74b13702842e6a532c1d7d3</srcmd5>
+    <version>2024.1.1</version>
+    <time>1743414067</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2024.1.1
+  * https://www.flightgear.org/download/releases/2024-1/
+- Update to 2020.3.19
+  * https://wiki.flightgear.org/Changelog_2020.3#2020.3.19
+</comment>
+    <requestid>1265276</requestid>
+  </revision>
 </revisionlist>
