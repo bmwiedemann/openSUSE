@@ -1,0 +1,32 @@
+From fb63768b72437e647fe85b4cfa2f211e986cc564 Mon Sep 17 00:00:00 2001
+From: Alan Coopersmith <alan.coopersmith@oracle.com>
+Date: Sun, 9 Feb 2025 10:31:27 -0800
+Subject: [PATCH] meson: fix generation of shadow man pages
+
+Since the shadow man pages have 'man__libmansuffix__/Xau.__libmansuffix__'
+the /g modifier needs to be applied to the sed substitution to make it
+apply to all instances in the line, not just the first.
+
+Fixes: 68e74d3 ("add Meson build system")
+Signed-off-by: Alan Coopersmith <alan.coopersmith@oracle.com>
+Part-of: <https://gitlab.freedesktop.org/xorg/lib/libxau/-/merge_requests/20>
+---
+ man/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/meson.build b/man/meson.build
+index 4732cbc..64babf5 100644
+--- a/man/meson.build
++++ b/man/meson.build
+@@ -13,7 +13,7 @@ foreach man : ['Xau', 'XauDisposeAuth', 'XauFileName', 'XauGetAuthByAddr',
+     command : [
+       prog_sed,
+       '-e', 's/__xorgversion__/"libXau @0@" "X Version 11"/'.format(meson.project_version()),
+-      '-e', 's/__libmansuffix__/3/',
++      '-e', 's/__libmansuffix__/3/g',
+       '@INPUT@',
+     ],
+     capture : true,
+-- 
+2.43.0
+

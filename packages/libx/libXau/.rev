@@ -122,4 +122,17 @@
 - switched to meson build system</comment>
     <requestid>1230954</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>91efbada2a63b3f024106d821a9f0fa6</srcmd5>
+    <version>1.0.12</version>
+    <time>1743413841</time>
+    <user>anag+factory</user>
+    <comment>- replaced fix-sed-for-manpages.patch with upstream patch
+  U_meson-fix-generation-of-shadow-man-pages.patch
+
+- fix-sed-for-manpages.patch: sed need to replace all occurences
+  of the string, not only the first one. Else e.g. .so references
+  are broken (.so man3/Xau.__libmansuffix__)</comment>
+    <requestid>1265205</requestid>
+  </revision>
 </revisionlist>

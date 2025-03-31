@@ -1,7 +1,7 @@
 #
 # spec file for package libXau
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ URL:            https://xorg.freedesktop.org/
 #Git-Web:       http://cgit.freedesktop.org/xorg/lib/libXau/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch:          U_meson-fix-generation-of-shadow-man-pages.patch
 #git#BuildRequires:	autoconf >= 2.60, automake
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -76,7 +77,7 @@ This package contains the development headers for the library found
 in %{lname}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

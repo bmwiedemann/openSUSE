@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 28 12:26:06 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- replaced fix-sed-for-manpages.patch with upstream patch
+  U_meson-fix-generation-of-shadow-man-pages.patch
+
+-------------------------------------------------------------------
+Wed Mar 26 12:57:19 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- fix-sed-for-manpages.patch: sed need to replace all occurences
+  of the string, not only the first one. Else e.g. .so references
+  are broken (.so man3/Xau.__libmansuffix__)
+
+-------------------------------------------------------------------
 Sat Dec 14 03:47:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.0.12
