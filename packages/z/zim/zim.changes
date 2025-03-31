@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 29 22:26:10 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 0.76.3:
+  * Add seperator to template for new files
+  * Fix spellcheck state at startup
+  * Fix cursor position after undo indent
+  * Fix test suite release 0.76.2
+- Update to 0.76.2:
+  * Let new page and quicknote templates place cursor
+  * Let find match within sourceview blocks
+  * Add property with template for filename of pasted images
+  * In InsertLinkDialog translate file to page link
+  * Fix issue with GSPell support
+
+-------------------------------------------------------------------
 Mon Feb  3 12:43:04 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to 0.76.1:
