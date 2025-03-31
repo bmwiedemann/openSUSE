@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:31:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.1:
+  * Updated document date to today.
+  * Each file has 1 to 3 trivial casts added and all
+    involve things whose known range ensures
+    the change is ok (boolean, address-size, and other known
+    things)..
+  * Removing trailing whitespace and fixing a couple
+    indent mistakes.
+  * Now checks and reports on all DIE references, meaning
+    the DWARF reference class.
+  * Now uses a macro for 0x%08llx clarifying printf on
+    Dwarf_Unsigned.
+  * Also removes an accidental trailing space in printed
+    output.
+  * In one place in code added yesterday an explicit dealloc
+    of a Dwarf_Error was omitted. Found by the usual
+    export NLIZE=y export SUPPRESSDEALLOCTREE=y
+    regressiontest.
+  * The code refactoed to print attributes:
+    DW_AT_specification:
+    DW_AT_abstract_origin:
+    DW_AT_type:
+    is now in place and this commit
+    deletes the lines extracted to the new source file.
+  * build: fix arguments order in calloc calls (#258)
+  * Initial addition of ossfuzz 70753 and ossfuzz 70763
+
+-------------------------------------------------------------------
 Sun Aug 18 13:03:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:
