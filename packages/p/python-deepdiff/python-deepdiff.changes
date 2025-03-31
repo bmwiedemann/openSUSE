@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Mar 27 12:24:09 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 8.4.1
+  * pytz is not required
+- Update to 8.4.0
+  * Adding BaseOperatorPlus base class for custom operators
+  * default_timezone can be passed now to set your default
+    timezone to something other than UTC
+  * New summarization algorithm that produces valid json
+  * Better type hint support
+- Update to 8.1.1
+  * Adding Python 3.13 to setup.py
+-Update to 8.1.0
+  * Removing deprecated lines from setup.py
+  * Added prefix option to pretty()
+  * Fixes hashing of numpy boolean values.
+  * Fixes slots comparison when the attribute doesn't exist.
+  * Relaxing orderly-set reqs
+  * Added Python 3.13 support
+  * Only lower if clean_key is instance of str #504
+  * Fixes issue where the key deep_distance is not returned
+    when both compared items are equal #510
+  * Fixes exclude_paths fails to work in certain cases
+  * exclude_paths fails to work #509
+  * Fixes to_json() method chokes on standard json.dumps()
+    kwargs such as sort_keys
+  * to_dict() method chokes on standard json.dumps() kwargs #490
+  * Fixes accessing the affected_root_keys property on the diff
+    object returned by DeepDiff fails when one of the dicts is empty
+  * Fixes accessing the affected_root_keys property on the diff
+    object returned by DeepDiff fails when one of the dicts is empty #508
+
+-------------------------------------------------------------------
 Tue Nov 19 11:10:52 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing on Python 3.13
