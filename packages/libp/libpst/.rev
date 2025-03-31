@@ -378,4 +378,16 @@
     <comment></comment>
     <requestid>1190479</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>e69505d8bd3387cd570ad03b5b1e18ec</srcmd5>
+    <version>0.6.76</version>
+    <time>1743413833</time>
+    <user>anag+factory</user>
+    <comment>- Add 0003-gcc-c23-changes.patch: Fix build with gcc 15, patch
+  lifted from fedora.
+- Replace gcc-c++ generic c++_compiler BuildRequires.
+- Replace libgsf-devel with pkgconfig(libgsf-1) BuildRequires:
+  Align with what configure checks for. (forwarded request 1256166 from iznogood)</comment>
+    <requestid>1264947</requestid>
+  </revision>
 </revisionlist>

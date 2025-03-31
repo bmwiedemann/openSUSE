@@ -1,7 +1,7 @@
 #
 # spec file for package libpst
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2008 Bharath Acharya
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,12 +25,15 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Utilities
 URL:            http://www.gnome.org/projects/evolution/
 Source0:        http://www.five-ten-sg.com/libpst/packages/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libpst-0dfabdc07bf3.patch -- Fix 'incompatible pointer types' warning on i686
 Patch1:         libpst-0dfabdc07bf3.patch
+# PATCH-FIX-UPSTREAM 0003-gcc-c23-changes.patch -- Fix build with gcc 15
+Patch2:         0003-gcc-c23-changes.patch
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  gd-devel
-BuildRequires:  libgsf-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libgsf-1)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-doc
 
