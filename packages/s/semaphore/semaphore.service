@@ -1,0 +1,16 @@
+# https://docs.semaphoreui.com/administration-guide/installation/
+[Unit]
+Description=Semaphore UI for running Ansible playbooks, Terraform/OpenTofu and Pulumi code
+Documentation=https://github.com/semaphoreui/semaphore
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/semaphore server --config=/etc/semaphore/config.json
+SyslogIdentifier=semaphore
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+# https://docs.semaphoreui.com/administration-guide/installation/
+[Unit]
+Description=Runner for the Semaphore UI for running Ansible playbooks, Terraform/OpenTofu and Pulumi code
+Documentation=https://github.com/semaphoreui/semaphore
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+ExecReload=/bin/kill -HUP $MAINPID
+ExecStart=/usr/bin/semaphore runner --config=/etc/semaphore-runner/config.json
+SyslogIdentifier=semaphore-runner
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

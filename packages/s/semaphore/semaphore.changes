@@ -1,0 +1,956 @@
+-------------------------------------------------------------------
+Thu Mar 27 15:58:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- rename package to semaphore to follow upstream
+- rename binary, service and directory names to semaphore
+
+-------------------------------------------------------------------
+Thu Mar 27 06:40:14 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.2:
+  * Bugfixes
+    - Update outdated dependencies.
+  * What's Changed
+    - fix(be): validate runner status before save by @fiftin in
+      #2828
+    - Potential fix for code scanning alert no. 37: Email content
+      injection by @fiftin in #2830
+    - chore(deps): update dependency chai to v5 by @renovate in
+      #2588
+    - chore(deps): update dependency @vue/test-utils to v2 by
+      @renovate in #2586
+    - [Snyk] Upgrade core-js from 3.39.0 to 3.40.0 by @fiftin in
+      #2730
+    - [Snyk] Security upgrade axios from 0.29.0 to 1.8.3 by @fiftin
+      in #2834
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.0.2 to
+      4.0.5 by @dependabot in #2769
+    - chore(deps): update dependency eslint-plugin-vue to v9.33.0
+      by @renovate in #2674
+    - chore(deps): update dependency nanoid to v5.1.5 by @renovate
+      in #2789
+    - chore(deps): update dependency openai to v4.89.0 by @renovate
+      in #2567
+    - chore(deps): update dependency @vue/eslint-config-airbnb to
+      v8 by @renovate in #2584
+    - chore(deps): update apiaryio/dredd docker tag to v14 by
+      @renovate in #2583
+    - fix(deps): update dependency axios to v1.8.4 by @renovate in
+      #2836
+    - fix(deps): update module github.com/go-ldap/ldap/v3 to
+      v3.4.10 by @renovate in #2832
+    - fix(deps): update module github.com/mdp/qrterminal/v3 to
+      v3.2.1 by @renovate in #2837
+
+-------------------------------------------------------------------
+Mon Mar 24 12:11:41 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.1:
+  * Bugfixes
+    - UI: Error 400 when empty Max Parallel tasks in project
+      settings
+    - Added SECURITY.md
+    - UI: Null pointers in template form
+    - BACKEND(SMTP): Doesn't work with Azure SMTP (#2688)
+    - UI: Null pointers in Terraform workspaces page
+    - UI: Missed Allow limit checkbox in template settings
+    - BACKEND: Host key checking issue: #2811
+
+-------------------------------------------------------------------
+Tue Mar 18 05:57:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.13.0:
+  Release details can be found here:
+  https://semaphoreui.com/releases/semaphore-v2_13
+  * Features
+    - Project runner tags (PRO)
+    - Improved the user experience (UX) of the Template form
+    - Projects Statistics
+    - Tags and limits for Ansible templates
+  * Bugfixes
+    - Fixed project runner creation (PRO).
+    - Fixed a bug with renaming of secrets in Variable Group.
+    - Fixed a bug where the associated commit can not be removed
+      when rerunning a task.
+
+-------------------------------------------------------------------
+Tue Mar 11 06:26:46 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.17 (no releases between .14 and .17):
+  * Update Dockerfile to expose port
+  * Fix: Semaphore sql tables can´t handle SHA256 commit hashes
+  * fix: Show next cron run correctlу
+  * Update OpenTofu distribution to 1.9.0
+  * docs: Add message property
+
+-------------------------------------------------------------------
+Sun Feb 16 09:25:06 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.14:
+  * Create separate image for Semaphore with PowerShell. Tag:
+    v2.12.*-powershell7.5.0.
+
+-------------------------------------------------------------------
+Sun Feb 16 09:13:12 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.13:
+  * ci(docker): fix powershell docker image
+
+-------------------------------------------------------------------
+Sun Feb 16 08:58:03 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.12:
+  * ci(docker): fix powershell correct arch
+
+-------------------------------------------------------------------
+Thu Feb 13 06:38:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.11:
+  * Bugfixes
+    - Create separate image for Semaphore with PowerShell. Tag:
+      v2.12.*-powershell7.5.0.
+
+-------------------------------------------------------------------
+Thu Feb 13 06:29:35 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.9:
+  * Bugfixes
+    - Fixed OIDC incorrect redirection when web_host doesn't
+      specified
+    - Fixed export/import Survey variables
+
+-------------------------------------------------------------------
+Tue Feb 11 07:34:59 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.8:
+  * Bugfixes
+    - Fixed bug with deleting old tasks when field
+      max_tasks_per_template provided.
+
+-------------------------------------------------------------------
+Tue Feb 11 07:30:39 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.7:
+  * Bugfixes
+    - Fixed TOTP QR code incorrect URL when web_host specified.
+    - Fixed space on bottom of Task Log.
+
+-------------------------------------------------------------------
+Tue Feb 11 07:27:22 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.6:
+  * fix(ui): task view spaces
+  * ci: change maintainer
+  * ci: package description
+
+-------------------------------------------------------------------
+Mon Feb 10 08:01:29 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.5:
+  * fix(runner): divider under menu
+  * fix(runner): hide toolbar for project runners
+
+-------------------------------------------------------------------
+Sat Feb 08 09:46:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.4:
+  * fix(runner): formatted config json
+  * fix(runner): sorting
+  * fix(runner): spaces on web
+  * fix(runner): copy content
+  * feat(runner): download private key from web
+  * feat(runner): correct setup guide
+  * feat(runner): correct setup guide
+  * feat(runner): display variants of usage on web
+  * fix(runner): do not reset token when update runner in boltdb
+  * feat(runner): generate private key
+  * fix(runner): remove menu from global runner page
+  * fix(runner): update task commit hash and message
+  * feat(runner): encrypt works
+  * feat(runner): update config file when setup or register
+  * feat(runner): remove extra field from config
+  * feat(runner): use private key for decryption data from server
+  * feat(runner): encrypt data if public key provided
+  * feat(runner): add public key column
+  * fix(runner): save token
+  * fix(web): task log height
+
+-------------------------------------------------------------------
+Thu Jan 30 12:39:02 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.12.3:
+  (2.12.0, 2.12.2 and 2.12.1 were not released)
+  https://semaphoreui.com/releases/semaphore-v2_12
+  * Features
+    - Docker image with Ansible 2.16 included
+    - Time-based one-time password (TOTP)
+    - Integrations have been improved
+  * Bugfixes
+    - Correct the sorting logic for task result records.
+    - Use BIGINT as the primary key in the task records table.
+    - Remove the extra column from the task records table.
+    - Enable support for large output.
+    - Implement virtual scrolling in the task viewer.
+    - Use SVG flags instead of Emoji:
+    - Respect variables by Terraform/Bash/PowerShell templates
+    - Reading registration token from stdin
+    - Fixed project backup/restore
+
+-------------------------------------------------------------------
+Mon Jan 27 17:31:49 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.3:
+  * fix(tasks): re-run task for boltdb
+  * fix(backup): pass unit test
+  * fix(backup): schedules backup and restore
+  * fix(backup): correct restore template vault
+  * fix(runner): reading registration token from stdin
+  * fix(ui): drawer item title
+
+-------------------------------------------------------------------
+Sat Dec 28 12:16:06 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.2:
+  * Bugfixes
+    - Fixed New Project page.
+    - Fixed Restore Project page.
+    - Fixed message about project restoring result.
+
+-------------------------------------------------------------------
+Sat Dec 28 10:45:59 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.1 (2.11.0 was not released):
+  * Features
+    - Web interface improvements: UI has received its most
+      significant overhaul in years, making it more polished and
+      professional.
+    - Git commit messages: Tasks now store the Git commit hash and
+      message, enabling you to rerun tasks using the same commit.
+    - Task run details: A new Details page has been added to
+      provide insights into task running results.
+    - Terraform/OpenTofu support improvements: There are many
+      Terraform/OpenTofu support improvements in this release.
+  * Bugfixes
+    - OpenTofu/Terraform: Fixed a bug with Terraform tasks: the
+      -auto-approve flag now works.
+    - Security: Prevented JavaScript from using Cookies to avoid
+      the HTTPOnly issue.
+    - OpenTofu/Terraform: enabled the -migrate-state flag by
+      default.
+    - OpenTofu/Terraform: Added prompts for state actions on the
+      web.
+    - Terraform/OpenTofu: Ignored the workspace name for the HTTP
+      backend.
+
+-------------------------------------------------------------------
+Fri Nov 22 15:08:27 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.43:
+  * fix(runner): return empty array instead of null for boltdb
+
+-------------------------------------------------------------------
+Fri Nov 22 10:00:39 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.42 (no releases between .35 and .42):
+  * feat(ui): expandable inventory editor
+  * fix(ui): task log head on mobile screen
+  * feat(ui): extend message log dialog
+  * fix(be): user count sql error for pg
+  * feat(be): user count implementation for boltdb
+  * docs: semui.co to semaphoreui.com
+  * fix(runners): check runner type in update
+  * fix(runners): check created runner type
+  * fix(runners): return empty array not null
+  * refactor(runners): split runner to 2 files
+  * fix(runners): use correct middleware
+  * feat(runners): use project runners
+  * refactor(be): add method param
+  * chore: copile flag
+  * fix(ui): check project type in dashboard menu
+  * fix(ui): pass project type to dashboard menu component
+  * project runners (#2547)
+  * fix(be): pull pointer when getting build version
+  * feat(be): disable host key checking by default (#2535)
+  * chore(deps-dev): bump elliptic from 6.5.7 to 6.6.0 in /web
+  * feat(vaults): add migration for boltdb
+  * refactor(vaults): remove extra database request for boltdb
+  * fix(web): runner api path
+  * fix(web): runner api path
+  * fix(backup): add vaults to backup
+  * test(env): fix test
+  * Move implementation of Ansible vault password client script to
+    TemplateVault.
+  * fix(web): Fix issue where editing existing default vault was
+    prevented.
+  * Add Ansible Vault Password Client Script support
+
+-------------------------------------------------------------------
+Tue Oct 29 13:58:33 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.35:
+  * fix(be): PATH for all types of app
+  * feat(be): ansible-semaphore -> semaphoreui
+
+-------------------------------------------------------------------
+Sun Oct 27 10:18:16 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.34:
+  * fix(docker): server wrapper
+  * ci(docker): remove commented code
+  * ci(docker): fix server-wrapper
+
+-------------------------------------------------------------------
+Fri Oct 25 19:15:51 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.33:
+  * Don't return Project schedules in GET template schedules
+  * refactor(config): env assignment order
+  * test(config): check loading arr from env
+  * feat(env): add test for env vars
+  * feat(config): add forwarded env vars
+  * ci(docker): log port number
+  * chore(deps): update dependency sass to v1.80.4
+  * chore(deps): update dependency openai to v4.68.4
+  * ci(wrapper): remove stdin file after usage
+  * ci(wrapper): fix host extracting
+  * ci(wrapper): export vars
+  * ci(wrapper): remove default values
+  * ci(wrapper): use jq to parse config.json
+  * ci(wrapper): use jq to parse config.json
+  * ci(wrapper): remove extra veriables
+  * chore(deps): update dependency sass to ~1.80.0
+  * chore(deps): update dependency stylus to ^0.64.0
+  * refactor(env): use fmt print
+  * feat(config): add env vars map to config file
+  * chore(deps): update dependency sass-loader to v13.3.3
+  * ci: remove packages.txt
+  * chore(web): title
+  * fix(web): try/catch for load data
+  * Update README.md
+  * chore(deps): update dependency openai to v4.68.1
+  * chore(deps): update dependency chai to v4.5.0
+  * chore(deps): update apiaryio/dredd docker tag to v13.1.2
+
+-------------------------------------------------------------------
+Tue Oct 22 08:02:45 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.32:
+  * fix(sec): clear env vars
+  * fix(ansible): use correct path for ansible galaxy
+  * test(e2e): fix restore test
+  * ci(testing): add lauch to vscode config for dredd
+  * fix(deps): update module github.com/spf13/cobra to v1.8.1
+  * fix(deps): update module github.com/gorilla/websocket to v1.5.3
+  * ci(testing): add e2e testing for dev container
+  * fix(deps): update module github.com/go-ldap/ldap/v3 to v3.4.8
+  * fix(deps): update module github.com/creack/pty to v1.1.23
+  * fix(deps): update dependency axios to v0.28.1
+  * chore(deps): update dependency @vue/test-utils to v1.3.6
+  * test(backup): fix test
+  * fix(backup): export/import survay_variables
+  * Add renovate.json
+  * fix(apps): pass environment variables to tf/tofu init
+
+-------------------------------------------------------------------
+Tue Oct 22 07:44:37 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.31:
+  * refactor(galaxy): add type and constants
+  * chore(ui): label
+  * fix(config): init ldap mappings in interactive setup
+  * fix(api): allow null for git_branch
+  * fix(be): use pointer for git branch
+  * chore(be): rename migration file
+  * Fix ldapmapping panic
+  * Add Ukrainian language support
+  * feat(deps): update ansi_up package
+  * fix(runner): detect runner without running tasks correctly
+  * feat: Add Gotify alerts
+  * Allow override of Template git branch. Prefer Task override
+    when running Local Job.
+  * Allow override of Task git_branch
+  * Check template type
+  * Removed build task id from alert
+  * Added get incoming version to alerts
+  * Update semaphore.service
+
+-------------------------------------------------------------------
+Tue Oct 15 15:48:42 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.30:
+  * feat(runner): web form
+  * fix(runner): 0 max parallel tasks mean infity
+  * ci(runner): fix script
+  * ci(runner): use --no-config option for runner
+  * fix(runner): error code validation
+- refactor `_service` file
+
+-------------------------------------------------------------------
+Tue Oct 15 15:41:00 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.30 (no releases between .22 and this one):
+  * Features
+    - Multiple vault passwords for template (@Omicron7 #2392).
+  * Runners has been refactored
+    - Added web interface for managing runners
+    - Added CLI commands for managing runners:
+      - semaphore runner setup
+      - semaphore runner register
+      - semaphore runner unregister
+    - Added detailed documentation.
+  * Refactored project backups
+  * Other features
+    - DingTalk notifications (@shaxiaozz #2363)
+    - Screen to monitor and manage active tasks.
+    - Use GPT-4 to translate strings.
+  * Bugfixes
+    - Fixed a critical bug with SEMAPHORE_DB_HOST and
+      SEMAPHORE_DB_PORT. If the host includes a port, the
+      SEMAPHORE_DB_PORT value will be ignored. Examples of valid
+      SEMAPHORE_DB_HOST values:
+      - localhost
+      - localhost:3306
+    - Updated translations.
+    - Fixed the Docker image for the runner, which now uses the
+      --no-config flag internally.
+    - Fix passing arguments and variables to shell apps (@ShaneMcC
+      #2288)
+    - add Inventory ID when creating tasks (@gaoyue1989 #2284)
+
+-------------------------------------------------------------------
+Thu Jul 25 05:21:12 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.22:
+  * fix(apps): delete options with emply values
+  * fix(apps): ignore nil values
+  * feat(apps): add priority
+  * fix(schedules): return only schedules with repo id for
+    templates
+
+-------------------------------------------------------------------
+Thu Jul 25 05:07:28 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.21:
+  * fix(be): sql query
+
+-------------------------------------------------------------------
+Thu Jul 25 05:02:47 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.20:
+  * fix(tasks): fill tasks for sql
+  * fix: merge conflict
+  * fix(templates): fill last task for sql db
+  * fix(templates): fill last task for boltdb
+  * feat(db): revert template tasks requsting
+  * feat(db): change algo for filling last_task of template model
+  * fix(ui): task dialog height
+  * fix(apps): hide from UI for non-admin users
+
+-------------------------------------------------------------------
+Thu Jul 18 18:54:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.19:
+  * fix(environment): decrypt secrets
+  * feat(environment): secret can be var or env
+  * fix(environment): remove secret from ui
+  * fix(integrations): null pointer to template
+  * fix(terraform): provide inventory
+  * fix(terraform): select workspace
+  * fix(ui): check template field requirement
+
+-------------------------------------------------------------------
+Tue Jul 16 09:26:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.18 (no release since 2.10.11 and this):
+  * fix: provide app for demo project templates
+  * fix(task_params): don't check params for ansible
+  * fix(task_params): remove extra params
+  * feat(task_params): add params
+  * feat(ui): add task params
+  * chore: remove test boltdb
+  * test(e2e): fix boltdb tests
+  * test(bolt): fix util tests
+  * feat: add option sessionConnection for boltdb
+  * feat(ui): add empty params form
+  * feat(ui): replace codemirror with ArgsPicker in template editor
+  * feat(apps): python3 by default
+  * fix(apps): allow override path and args
+  * fix(apps): display app icon for tasks for boltdb
+  * fix(apps): '' to ansible
+  * fix(apps): init apps in config
+  * chore(be): add app id to error message
+  * refactor(be): clear system envs before init envs of process
+  * fix(be): remove sensitive env vars instead of set empty
+  * fix(apps): don't pass args to shell app
+  * feat(apps): add app args
+  * feat(ui): inventory icon
+  * feat(apps): change log message
+  * fix(be): escape table name option (need for mysql)
+  * fix(be): migration file
+  * fix(be): remove default value for app
+  * fix(options): null pointer
+  * fix(options): null pointer
+  * fix(ui): labels
+  * fix(ui): missed * in template field
+  * fix(ui): missed * in template field
+  * refactor(apps): remove unused components
+  * fix(apps): labels in template editor
+  * feat(apps): add migration '' -> 'ansible'
+  * fix(apps): run shells
+  * fix(apps): use correct form for app
+  * refactor(apps): rename bash compoment
+  * fix(apps): loading data
+  * feat(apps): default apps
+  * feat(apps): add default apps
+  * fix(apps): use apps mixin for template form
+  * feat(apps): add path to ui
+  * feat(apps): delete apps
+  * fix(apps): updating app
+  * fix(apps): init Apps in nil
+  * fix(apps): update single prop in config
+  * feat(options): implement manipulation methods
+  * feat(apps): add app mixin for ui, fixed config loading
+  * feat(apps): icon and title for edit form
+  * feat: add /apps endpoint and use it for template list
+  * feat(apps): active apps
+  * feat: lookup default apps
+  * fix(options): converting to go types
+  * fix: getting options from boltdb
+  * feat: load options from db
+  * git url without : with empty login
+  * feat: get options method
+  * feat: add apps settings link
+  * refactor(be): bash -> shell
+  * fix(be): omitted one letter in repositry
+    (https://github.com/semaphoreui/semaphore/issues/2168)
+  * fix(docker): remove env var ANSIBLE_CONFIG and move ansible.cfg
+    to /etc/ansible/ansible.cfg
+  * fix(docker): ANSIBLE_CONFIG env variable
+  * fix(environment): placeholders for vars name->value inputs
+  * feat(environment): add user friendly editor for extra variables
+  * fix(be): template last task
+  * feat: add column schedule_id to task model
+  * feat: add column task_params to integrations table
+  * fix: sql migration query
+  * feat(be): add user id for access key
+  * fix(ui): button spaces
+  * fix(ui): use correct secrets options
+  * feat(secrets): text on ui
+  * feat(secrets): send secrets to bash and ansible
+  * feat(secrets): promote env secrets to task
+  * refactor(secrets): move secrets to environment entity
+  * feat(secrets): implement secret getting for boltdb
+  * feat(secrets): add endpoints
+  * Trim important fields in repository and inventory forms
+  * Update de.js
+  * feat(secrets): add env secrets
+  * feat(secrets): add migartion
+  * feat: change env var name
+  * Fix the rerun functionality when using an inventory from a git
+    repo
+  * fix(schedule): show - if name is empty
+  * chore(shedule): remove 'active' column title
+  * feat(schedule): update form and table
+  * refactor(schedule): replace disabled field to active
+  * feat(schedule): add name and allow disable
+  * fix(integrations): use correct type
+  * test(dredd): +x for bash script
+  * test(dredd): create server wrapper
+  * test(dredd): add env var for semaphore
+  * fix(boltdb): cleaning
+  * feat(sql): cleaning of tasks
+  * fix(sql): tasks query
+  * feat(be): cleaning tasks
+  * feat(be): query optimization
+  * feat(bolt): optimize query
+  * add more chinese lang
+
+-------------------------------------------------------------------
+Wed Jul 03 19:12:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.11 (no releases between 2.10.7 and this):
+  * fix(schedule): months title
+  * fix(web): issue
+    https://github.com/semaphoreui/semaphore/issues/2136
+  * feat(schedule): minor ui changes
+  * Update README.md
+  * feat(schedule): change column order
+  * fix(schedule): nect run time for new schedule
+  * feat(schedule): display next run time
+  * feat(schedule): editor
+  * feat(schedule): don't show repo commit check schedules
+  * fix(web): schedule form
+  * feat(be): add project schedules function
+  * feat(web): add schedule page
+  * fix(be): deserialize secret of inventory
+  * docs: change website domain
+  * fix(web): remove unused import
+  * chore(ui): remove unused code
+  * Update README.md
+
+-------------------------------------------------------------------
+Fri Jun 21 19:09:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.10.7:
+  * Features
+    - Added support for Terraform code, OpenTofu code and Bash
+      scripts.
+    - Added usage examples.
+    - Added DEBUG Docker image for remote debugging from Goland.
+  * Bugfixes
+    - Fixed infinite "Waiting" status.
+    - Reduced size of Docker image.
+    - Fixed issue with authentication on the server with
+      login/password (#2098)
+    - Fixed web_host option usage in Docker image.
+    - Docker Image: Fixed overriding config file options by empty
+      SEMAPHORE_ACCESS_KEY_ENCRYPTION and SEMAPHORE_WEB_ROOT
+      environment variables.
+    - Web interface: Removed predefined variables from Environment
+      form.
+    - Fixed bug with supporting HTTP protocol.
+
+-------------------------------------------------------------------
+Fri May 31 07:44:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- do not use CGO_ENABLED=0 to fix builds for i586
+
+-------------------------------------------------------------------
+Thu May 30 10:42:35 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.112:
+  * fix:remove extra log
+  * fix(docker): env var
+  * fix(docker): return tini to kill zombie processes
+  * feat(ldap): use claims like in open id
+  * feat(ldap): mapping env vars
+  * ci(docker): move venv from ~ to /opt
+  * ci(docker): use full path of venv
+  * fix(runners): pass inventory repo to the runner
+  * fix(ui): text
+  * feat(ui): optional marker
+  * fix(ui): close button
+  * Add recurse submodules on the git pull
+
+-------------------------------------------------------------------
+Thu May 30 08:51:43 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.109:
+  * Features
+    - Docker: Now SEMAPHORE_DB_HOST can contains port number.
+    - Added environment variable SEMAPHORE_DB_OPTIONS which allows
+      customize db connection. But be valid JSON. Example:
+      {"sslmode": "require"}.
+    - Ability to use separate repository for Inventory
+    - Search collections/requirements.yml both in repo directory
+      and in playbook directory.
+    - Added Secret type for survey variables.
+    - Added Enum type for survey variables.
+  * Bugfixes
+    - Support http:// protocol for Git repositories.
+    - Fixed path to database file in Docker for BoltDB #2054
+      (comment) @Ereaey
+    - Disable debug mode for tasks started by Integrations (thanks
+      to @vdudejon for reporting).
+
+-------------------------------------------------------------------
+Mon Apr 29 09:17:29 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.74:
+  * fix(be): SSH connecting with wrong username
+    https://github.com/semaphoreui/semaphore/issues/1964
+  * fix: close dir
+  * feat: add loader
+  * feat(web): add app constants
+  * fix(web): new template condition
+  * fix(web): icon
+  * refactor: add edit template dialog
+  * fix(be): error message
+  * feat(be): add method GetUserCount
+  * chore: remove extra switch
+
+-------------------------------------------------------------------
+Sat Mar 30 16:49:12 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to 2.9.64:
+  * Features
+    - Changed CLI command semaphore runner -> semaphore runner
+      start.
+    - Added CLI command for unregistering of Runner semaphore
+      runner unregister.
+  * - Bugfixes
+    - Critical OpenID Connect bug: #1864.
+
+-------------------------------------------------------------------
+Mon Mar 25 07:36:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.58:
+  * fix: apply prepareClaims
+  * feat: add prepareClaims to fix float fields
+
+-------------------------------------------------------------------
+Mon Mar 25 07:28:31 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.57:
+  * test(login): claim | which always false
+  * test: add tests for parseClaim
+  * feat: support claim pipes
+  * feat: add format for oidc claims
+
+-------------------------------------------------------------------
+Sun Mar 24 11:31:55 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.56:
+  * Features
+    - Integrations. Allows to integrate Semaphore with external
+      services, like GitHub actions and GitLab (#1365 by
+      @andreas-marschke):
+    - Rocket Chat notifications (#1836 by @oussjarrousse)
+    - Hide/show password button by @ewatkins.
+  * Bugfixes
+    - A lot to fixes and refactoring by @tboerger
+    - Integration authentication fixed. Following variants now
+      available:
+      * HMAC
+      * GItHub Webhooks (like HMAC but with GitHub specific)
+      * Token (useful for GitLab)
+      * None
+
+-------------------------------------------------------------------
+Mon Jan 29 20:30:30 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.45:
+  * Features
+    - Use ssh agent instead of SSH files
+    - Support SSH keys with passphrase
+    - Rekey command:
+      https://docs.semui.co/administration-guide/cli#vault-management
+  * What's Changed
+    - [WIP]: Handle ssh keys with internal ssh agent by @Elbandi in
+      #1500
+
+-------------------------------------------------------------------
+Mon Jan 29 19:24:20 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.9.40:
+  * fix(config): support yes for bool
+  * ci(runners): change dockerfile
+  * ci: change beta job names
+  * ci: fix beta workflow name
+  * ci: add beta workflow
+  * feat(secrets): use ssh agent for git
+  * refactor: create package db_lib
+  * Fix test
+  * Fix variable scope
+  * Handle ssh keys with internal ssh agent
+
+-------------------------------------------------------------------
+Thu Oct 05 05:47:20 UTC 2023 - kastl@b1-systems.de
+
+- skipping pre-releases between 2.9.5 and 2.9.37
+- Update to version 2.9.37:
+  * feat(config): print more info about validation
+  * fix(be): check port format
+  * feat(runners): use 1 atomic for check and send
+  * fix(runners): add atimic checks
+  * fix(runner): duplication of runners and tasks
+  * fix(alerts): version instaed of build id
+  * chore(alerts): use ERR instead of WARN
+  * fix(alerts): do not panic on error
+  * chore(ui): text
+  * feat(billing): coming soon
+  * feat(billing): add billing block
+  * fix(be): init array my empty
+  * feat: left project
+  * chore: update spec
+  * fix: limit data by users
+  * feat(ui): change button color
+  * fix(demo): fill required fields
+  * fix(be): ignore max parallel tasks if it is 0
+  * feat(be): create demo project
+  * fix(ui): admin label
+  * feat(ui): admin badge
+  * fix: team management
+  * feat: admin can all
+  * feat: restrict manager permissions
+  * feat(ui): language switcher
+  * feat(web): update ui
+  * fix(config): default value for max tasks
+  * fix(runners): specify content type in webhook request
+  * fix(config): change port validation
+  * fix(config): bug with handing maps in config
+  * fix(oidc): github auth
+  * feat(config): default value for map items
+  * fix(config): check value by zero for init default
+  * fix(config): check value
+  * fix(config): load defaults before load file
+  * refactor(config): remove type DbDriver
+  * feat(config): remove hash rule to pass tests
+  * feat(config): add other env
+  * test(config): pass tests
+  * feat(config): add tags
+  * fix(config): remove git field type
+  * ci: fix path
+  * ci(runners): fix config
+  * ci: fix runner wrapper
+  * ci: build/push docker image for runner
+  * ci: add env vars
+  * ci: change runner config location
+  * ci: return dev workflow
+  * ci: runner config
+  * ci(runners): test docker runner
+  * feat(runners): add docker image for runner
+  * feat: add status starting
+  * feat(runners): add SetStatus method
+  * fix(ui): added german language support
+  * chore(runners): descrypt secrets before send
+  * ci(runners): revert
+  * ci: try build on macbook
+  * fix(runner): decrypt key
+  * fix(runners): pass vault key
+  * Runners (#1477)
+  * test(config): fix test
+  * refactor(config): add tags to config fields
+  * feat: config-validation - minor fixes
+  * feat: added basic config validation, loading all settings from
+    environment-variables, dynamic applying of default-values to
+    settings, tests for config-loading and -validation
+
+-------------------------------------------------------------------
+Mon Sep 11 05:52:04 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.5:
+  * Runners (#1458)
+  * Vault cli (#1463)
+  * Update base docke image from `alpine:3.16` to `alpine:3.18`
+
+-------------------------------------------------------------------
+Fri Sep 08 08:31:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.4:
+  * fix(ui): scrollbar in project title
+  * fix(ui): translations
+  * chore(be): rename method
+  * fix: Update api-docs.yml
+  * feat: added basic github issue-forms
+- skipping non-existent release 2.9.3
+
+-------------------------------------------------------------------
+Fri Sep 08 08:08:53 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.2:
+  * fix(runners): use local job
+
+-------------------------------------------------------------------
+Fri Sep 08 07:34:44 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.9.1:
+  * feat(runners): add register endpoint
+  * feat(runners): add remote runner
+  * refactor(runners): move functionality TaskRunner ->
+    AnsibleJobRunner
+  * fix(runners): init job
+  * chore(runners): remote unused field
+  * feat(runners): use external logger from AnsibleJobRunner
+  * refactor(runners): remove status field
+  * refactor(runners): remove mutation from job
+  * feat(runners): pass username and verison to task
+  * test(runners): fix tests
+  * fix(runners): params for Run
+  * feat(runners): implement runner selection
+  * feat(runners): fill required fields
+  * fix(runners): session block
+  * feat(runners): kill process
+  * refactor(runners): rename fields to public
+  * feat(runners): remote runner functionallity
+  * refactor(runners): remove unused class
+  * fix(runners): send json
+  * feat(runners): runner registration
+  * feat(runners): logging
+  * feat(runners): server <-> running communication works
+  * feat(runners): pass creds to runenr
+- skipping release 2.9.0 as this has the same commit hash as 2.8.95
+
+-------------------------------------------------------------------
+Fri Sep 08 07:08:56 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.95:
+  * fix(ui): display div for role instead of disabled select
+  * fix(ui): check perm for template
+  * fix(be): do not panic in boltdb connection
+  * Runners (#1439)
+  * feat: remove demo mode
+  * ci: remove test workflow
+  * ci: depoy to dev docker only from branch develop
+  * ci: workflow for PRs
+  * test: pass tests
+  * test: fix stop test
+  * test: fix endpoint
+  * Issue #1376
+  * Create pt.js - Portuguese language added
+
+-------------------------------------------------------------------
+Fri Sep 08 06:16:23 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.95:
+  * fix(ui): display div for role instead of disabled select
+- update to version 2.8.94:
+  * Merge pull request #1440 from ansible-semaphore/roles
+- update to version 2.8.93:
+  * fix(be): currect manager permissions
+
+-------------------------------------------------------------------
+Thu Sep 07 14:39:05 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.92:
+  * feat(ui): add roles to UI
+  * fix(migrations): manager is default role
+
+-------------------------------------------------------------------
+Thu Jul 13 05:15:21 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.91:
+  * fix(be): migration for bolt
+  * test(be): fix dredd test
+  * fix(roles): validate user role in project when add or update
+  * refactor(be): create middleware to check permissions
+  * feat: update go to 1.19
+  * docs(readme): remove unused info from readme
+  * docs: remove open creative link
+  * docs: describe tests in contribution guide
+  * feat(ui): add select for project users' role
+  * refactor(be): add struct UserWithProjectRole
+  * fix(be): column admin -> role in sql request
+  * fix(be): specify varchat max length
+  * test: fix dredd test
+  * fix(be): update sql query
+  * fix(be): sql migration issue
+  * feat(be): add migration project__user.admin ->
+  * project_user.role
+  * feat(be): add role based checks
+  * committing implementation
+  * test: fix test after MR
+  * Create semaphore.spec
+  * fix: email alert
+  * Update runner.go
+  * feat: provide task ID from semaphore_vars
+  * Correctly display relative time for non-UTC timezones
+  * Update Template.go
+  * Update Template.go
+  * Oops
+  * Update Template.go
+  * feat(oidc): add config option to manually configure provider
+  * endpoints
+  * feat: implement oidc authentication
+
+-------------------------------------------------------------------
+Wed Apr 26 09:24:15 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.8.90:
+  * fix: replace config flag use_external_git to option git_client
+  * Update README.md
+
+-------------------------------------------------------------------
+Tue Apr  4 07:08:51 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package ansible-semaphore: Modern UI for Ansible

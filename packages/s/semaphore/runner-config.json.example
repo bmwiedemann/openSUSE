@@ -1,0 +1,7 @@
+{
+  "web_host": "http://localhost:3000",
+
+  "runner": {
+    "private_key_file": "./config.runner.key"
+  }
+}
