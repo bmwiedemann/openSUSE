@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Mar 29 01:46:35 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.41.0:
+  * A new mode of operation for text_fg_override_threshold to override
+    foreground colors so as to maintain a minimum contrast between foreground
+    and background text colors. Works in a perceptual color space for best
+    color accuracy (#8420)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.text_fg_override_threshold
+  * A 15% improvement in throughput when processing text thanks to using a
+    multi-stage table for Unicode property lookups
+  * kitty +open: Ask for confirmation by default when running executables to
+    work around some badly designed programs that try to open links in
+    documents that point to executable files. Can be overridden by specifying
+    your own launch-actions.conf.
+    - https://sw.kovidgoyal.net/kitty/open_actions/#launch-actions
+  * Fix a regression in version 0.40.0 causing a crash when the underline
+    thickness of the font is zero (#8443)
+  * Fix a regression in version 0.40.0 causing a hang on resizing with a wide
+    character at the right edge of a line that needs to be moved onto the next
+    line (#8464)
+  * Fix a regression in 0.40.1 that caused copying to clipboard via OSC 52
+    from applications that don’t specify a destination in the escape code not
+    working (#8459)
+  * Wayland: Fix a regression in the previous release that caused crashes on
+    compositors that don’t support the xdg-toplevel-icon protocol and the user
+    has set a custom kitty icon (#8471)
+
+-------------------------------------------------------------------
 Tue Mar 18 05:18:29 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.40.1:
