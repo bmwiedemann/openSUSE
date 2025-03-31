@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 01:39:40 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Support building with cmake4
+  * Add 0001-Bump-CMake-minimum-version-to-3.12.patch
+
+-------------------------------------------------------------------
 Tue Feb 11 14:27:17 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - luajit: enable deterministic bytecode generation (boo#1236871)
