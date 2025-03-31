@@ -142,6 +142,10 @@ Requires:       ethtool
 %ifnarch s390x
 Requires:       irqbalance
 %endif
+%ifarch %ix86 x86_64
+Requires:       ucode-amd
+Requires:       ucode-intel
+%endif
 Requires:       fcoe-utils
 Requires:       hwinfo
 
