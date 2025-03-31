@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:17:09 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change display-manager.service to display-manager-legacy.service
+  (rename for future systemd control of display manager choice)
+
+-------------------------------------------------------------------
 Tue Jan 28 11:00:10 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Enable wtmpdbd.socket to start wtmpdbd via socket activation.

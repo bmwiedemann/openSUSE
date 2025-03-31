@@ -17,7 +17,7 @@ enable ca-certificates.path
 enable check-battery.timer
 enable cron.service
 enable dbus-broker.service
-enable display-manager.service
+enable display-manager-legacy.service
 enable dm-event.socket
 enable dnf-makecache.timer
 disable fstrim.service
