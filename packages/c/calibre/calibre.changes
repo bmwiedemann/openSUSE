@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Mar 28 08:09:05 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.1.1
+  - Version 8.1.1 fixes a regression causing an error that does not
+    affect functionality on startup on macOS
+
+-------------------------------------------------------------------
+Fri Mar 28 05:59:16 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.1.0
+  * New features
+    - Edit metadata dialog: Allow right clicking on the cover to
+      edit it with an external program
+    - Virtual library tabs: When the tabs are locked prevent them
+      from being re-ordered as well
+    - FreeBSD: Add support for connecting to devices
+  * Bug fixes
+    - macOS: Fix regression in previous release that caused
+      calibre:// URLs to no longer work
+    - macOS: Fix a regression in calibre 8 that prevented icons in
+      menus from being rendered
+    - Kobo driver: Fix hyphenation settings not being applied
+      correctly when generating KEPUB to put on the device
+    - KEPUB Output: Include leading whitespace in kobo sentence span
+      tags. This prevents unsightly breaks when highlighting across
+      formatted text on the Kobo
+    - Content server: Fix FB2 books not readable via the in-browser
+      viewer
+    - Edit book: Add text narration: Fix preferred voice for
+      language setting being ignored
+    - E-book viewer: Use IPC to update annotations when calibre is
+      running. Avoids possible loss of annotations in the
+      Annotations browser due to db being locked
+    - Ensure calibre temp files are deleted even on program crash
+    - Fix incorrect minimums on font size changing controls in viewer
+    - Fix regression in previous release causing incorrect
+      rendering of layout menu on some macOS machines
+    - Fix archive formats such as ZIP not being indexed for full
+      text search
+
+-------------------------------------------------------------------
 Fri Mar 21 10:15:41 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 8.0.1
