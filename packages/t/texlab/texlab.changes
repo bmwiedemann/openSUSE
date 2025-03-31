@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Mar 23 06:51:34 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Reupload vendor.tar.zst. 
+  * Disable update to respect lockfile
+
+-------------------------------------------------------------------
+Sun Mar 23 04:05:56 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.22.1:
+  * Don't store IPC socket (texlab.sock) in temp directory
+  * Allow hovering over symbol-like commands (e. g. \pi) to show a unicode preview or a preview image if the client supports it
+  * Add texlab.symbols.customEnvironments setting for specifying additional environments that will be included in the document symbols
+  * Add texlab.experimental.labelReferenceRangeCommands setting
+  * Add tex-fmt as a formatter for latex and bibtex
+  * Fix parsing links with URL encoding
+  * Improve error message when texlab.build.executable does not exist
+  * Support starred variants in "Go to References"
+  * Add texlab.latexindent.replacement setting to allow passing a replacement flag to latexindent
+  * Don't require a label to show section numbers for document symbols
+  * Support navigating to files that are part of the TEXINPUTS similar to BIBINPUTS
+  * Fix opening untitled documents
+  * Handle \bibitem when checking for undefined references
+  * Fix false-positive syntax error when using a command inside a \label
+
+-------------------------------------------------------------------
 Thu Oct 24 07:31:52 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.20.0:
