@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:14:24 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1743174385.0bd1f0a8:
+  * Allow reading config files from `/usr/etc/openqa` and drop-in files
+  * Fix showing version on web UI after fbf611f1347d3087010ee8d6c8c34b169
+  * Read config from `/usr/etc/openqa` even if `/etc/openqa/….d/…` present
+  * Avoid unhandled output in `t/config.t` after recent changes
+  * Mention that devel config files override any system provided config
+  * Make loading nested config files work with RPM packaging (2nd attempt)
+
+-------------------------------------------------------------------
 Thu Mar 27 22:15:30 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1743092811.fb25b01c:
