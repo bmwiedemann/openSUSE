@@ -19,14 +19,14 @@
 %define executable_name kubectl-browse_pvc
 
 Name:           kubectl-browse-pvc
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Kubectl plugin for browsing PVCs on the command line
 License:        MIT
 URL:            https://github.com/clbx/kubectl-browse-pvc
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.22
+BuildRequires:  go1.23
 
 %description
 I constantly found myself spinning up dummy pods to exec into them so I could
