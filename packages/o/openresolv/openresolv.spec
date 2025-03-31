@@ -1,7 +1,7 @@
 #
 # spec file for package openresolv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           openresolv
-Version:        3.13.2
+Version:        3.14.1
 Release:        0
 Summary:        DNS management framework
 License:        BSD-2-Clause
 URL:            https://roy.marples.name/projects/openresolv
-Source0:        https://github.com/NetworkConfiguration/openresolv/releases/download/v3.13.2/openresolv-%{version}.tar.xz
-Source1:        https://github.com/NetworkConfiguration/openresolv/releases/download/v3.13.2/openresolv-%{version}.tar.xz.asc
+Source0:        https://github.com/NetworkConfiguration/openresolv/releases/download/v%{version}/openresolv-%{version}.tar.xz
+Source1:        https://github.com/NetworkConfiguration/openresolv/releases/download/v%{version}/openresolv-%{version}.tar.xz.asc
+Source2:        openresolv.keyring
 Requires:       bash
 BuildArch:      noarch
 

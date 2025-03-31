@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:52:48 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.14.1:
+  * unbound: Add option for marking domains as private
+  * Add a new exlcude option to exclude a whole file on match 
+  * Remove reference to README for configure options
+
+- added openresolv.keyring for signature verification
+
+-------------------------------------------------------------------
 Tue Dec  5 15:28:39 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.13.2:
