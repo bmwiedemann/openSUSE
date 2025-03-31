@@ -343,4 +343,16 @@
     <comment></comment>
     <requestid>1245856</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9d06d77956f0a622dc83d70441414555</srcmd5>
+    <version>0.34.2</version>
+    <time>1743414148</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.34.2:
+  * context_management: add a type stub override to fix typing.
+    Type checkers like mypy and pyright can now correctly
+    determine the types for `.sources()`, `.sections()`, and the
+    other `Specfile` methods that return context managers.</comment>
+    <requestid>1265374</requestid>
+  </revision>
 </revisionlist>
