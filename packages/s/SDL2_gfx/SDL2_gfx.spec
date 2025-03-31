@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_gfx
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ Source2:        https://downloads.sf.net/sdl2gfx/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 # Key: 231D4B58E1DDB871, http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/#comment-89
 Source4:        %name.keyring
+Patch0:         SDL2_gfx-correct-pkgconfig-version.patch
 BuildRequires:  dos2unix
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl2)
 
@@ -54,9 +56,10 @@ Provides:       SDL2_gfx-devel = %version-%release
 Library containing 20+ graphics primitives (line, box, circle, polygon, etc.) for SDL2.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+./autogen.sh
 %configure \
 %ifnarch x86_64
 	--disable-mmx \
@@ -70,8 +73,7 @@ chmod 644 COPYING AUTHORS ChangeLog NEWS README
 %make_install
 find "%buildroot" -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING

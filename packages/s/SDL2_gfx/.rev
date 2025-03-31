@@ -46,4 +46,14 @@
     <comment>- Update homepage URLs</comment>
     <requestid>911429</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>203c826860ce1f929d39a9a401e1b7e2</srcmd5>
+    <version>1.0.4</version>
+    <time>1743414211</time>
+    <user>anag+factory</user>
+    <comment>- Add SDL2_gfx-correct-pkgconfig-version.patch to fix version
+  tag in project autoconf files and consequently in the installed
+  pkgconfig file.</comment>
+    <requestid>1265529</requestid>
+  </revision>
 </revisionlist>

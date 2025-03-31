@@ -1,0 +1,28 @@
+From: Atri Bhattacharya <badshah400@gmail.com>
+Date: 2025-03-28 15:27:00 +0100
+Subject: Fix version tag in pkgconfig file.
+
+This patch fixes the project version in the autoconf files and
+consequently in the installed pkgconfig file.
+
+---
+ configure.in |    6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+Index: SDL2_gfx-1.0.4/configure.in
+===================================================================
+--- SDL2_gfx-1.0.4.orig/configure.in
++++ SDL2_gfx-1.0.4/configure.in
+@@ -13,9 +13,9 @@ dnl Set various version strings - taken
+ 
+ MAJOR_VERSION=1
+ MINOR_VERSION=0
+-MICRO_VERSION=2
+-INTERFACE_AGE=2
+-BINARY_AGE=2
++MICRO_VERSION=4
++INTERFACE_AGE=4
++BINARY_AGE=4
+ VERSION=$MAJOR_VERSION.$MINOR_VERSION.$MICRO_VERSION
+ 
+ AC_SUBST(MAJOR_VERSION)
