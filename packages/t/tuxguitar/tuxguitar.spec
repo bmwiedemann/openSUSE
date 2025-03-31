@@ -94,13 +94,22 @@ sed -i "s/static final String RELEASE_NAME =.*/static final String RELEASE_NAME 
 %pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt  desktop/pom.xml
 %pom_xpath_set -r pom:org.eclipse.swt.artifactId org.eclipse.swt desktop/build-scripts/%{name}-linux-swt
 %pom_xpath_remove "pom:artifactItem[pom:destFileName[text()='swt.jar']]" desktop/build-scripts/%{name}-linux-swt
+%pom_remove_dep :org.eclipse.swt.gtk.freebsd desktop/pom.xml
 %pom_remove_dep :org.eclipse.swt.gtk.linux desktop/pom.xml
 %pom_remove_dep :org.eclipse.swt.win32.win32 desktop/pom.xml
 %pom_remove_dep :org.eclipse.swt.cocoa.macosx desktop/pom.xml
 
+sed -i 's#\${project.parent.relativePath}#../../../#g' \
+    desktop/build-scripts/native-modules/tuxguitar-alsa-linux/pom.xml \
+    desktop/build-scripts/native-modules/tuxguitar-jack-linux/pom.xml \
+    desktop/build-scripts/native-modules/tuxguitar-fluidsynth-linux/pom.xml \
+    desktop/build-scripts/native-modules/tuxguitar-synth-lv2-linux/pom.xml
+
 %build
 %{mvn_build} -j -f -- \
     -e -f desktop/build-scripts/%{name}-linux-swt/pom.xml \
+    -Dorg.eclipse.swt.groupId=org.eclipse.swt \
+    -Dorg.eclipse.swt.artifactId=org.eclipse.swt \
     -Dproject.build.sourceEncoding=UTF-8 -Dnative-modules=true
 
 %install
