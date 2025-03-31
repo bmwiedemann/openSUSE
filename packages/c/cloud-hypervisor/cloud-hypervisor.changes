@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 30 11:37:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 45.0:
+  * Experimental `riscv64` Architecture Support (direct kernel booting
+    only)
+  * Alphabetically Sorted CLI Options
+  * Improved Downtime of VM Live Migration
+  * Fix seccomp filters related to http-api thread
+  * Handle cross-page access in the emulator for mshv
+- enable riscv64 builds
+
+-------------------------------------------------------------------
 Tue Feb  4 22:13:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 44.0:

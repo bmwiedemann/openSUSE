@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1243226</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9a800ea12f71641e10ef65e844c79a55</srcmd5>
+    <version>45.0</version>
+    <time>1743414220</time>
+    <user>anag+factory</user>
+    <comment>- update to 45.0:
+  * Experimental `riscv64` Architecture Support (direct kernel booting
+    only)
+  * Alphabetically Sorted CLI Options
+  * Improved Downtime of VM Live Migration
+  * Fix seccomp filters related to http-api thread
+  * Handle cross-page access in the emulator for mshv
+- enable riscv64 builds (forwarded request 1265533 from rrahl0)</comment>
+    <requestid>1265534</requestid>
+  </revision>
 </revisionlist>
