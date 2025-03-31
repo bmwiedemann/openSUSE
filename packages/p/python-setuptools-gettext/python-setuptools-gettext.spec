@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-gettext
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-gettext
-Version:        0.1.11
+Version:        0.1.14
 Release:        0
 Summary:        Setuptools gettext extension plugin
 License:        GPL-2.0-or-later
 URL:            https://github.com/breezy-team/setuptools-gettext
-Source:         https://files.pythonhosted.org/packages/source/s/setuptools-gettext/setuptools-gettext-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/setuptools-gettext/setuptools_gettext-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,7 +37,7 @@ BuildArch:      noarch
 Setuptools gettext extension plugin
 
 %prep
-%autosetup -p1 -n setuptools-gettext-%{version}
+%autosetup -p1 -n setuptools_gettext-%{version}
 
 %build
 %pyproject_wheel
