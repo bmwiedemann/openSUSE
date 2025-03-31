@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 19 21:20:48 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.0.
+  * Compatibility with LLVM 20.
+  * Implement SPV_KHR_untyped_pointers.
+  * Add translation for intrinsics atan, atan2, acos, asin, cosh,
+    sinh, tanh.
+  * Translate integer dot product SPIR-V builtins to OCL builtins.
+  * Translate floating-point atomic_compare_exchange as integer.
+  * Translate LLVM IR zero-length arrays to 1-length arrays in
+    SPIR-V.
+  * Add an option to translate LLVM IR to SPIR-V using the LLVM
+    SPIRV Backend target
+
+-------------------------------------------------------------------
 Thu Mar  6 11:55:54 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Build with GCC 13 on Leap/SLES 15 in the hope to fix Mesa build

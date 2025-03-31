@@ -21,9 +21,9 @@
 %define gcc_version 13
 %endif
 
-%define sover   19
+%define sover   20
 Name:           spirv-llvm-translator
-Version:        19.1.5
+Version:        20.1.0
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
