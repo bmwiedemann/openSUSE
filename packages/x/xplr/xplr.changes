@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Mar 23 01:41:55 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Remove `rm .cargo/config` line. The file does not exist anymore.
+
+-------------------------------------------------------------------
+Sun Mar 23 01:37:45 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.0.0:
+  * Use TryCompletePath
+  * Improve search ranking algorithm
+  * Add linkcheck
+
+-------------------------------------------------------------------
 Tue Nov 19 15:12:23 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Reupload new vendor.tar.zst. Generated with new cargo_vendor passed with

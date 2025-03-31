@@ -1,7 +1,7 @@
 #
 # spec file for package xplr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xplr
-Version:        0.21.9
+Version:        1.0.0
 Release:        0
 Summary:        TUI file explorer
 License:        MIT
@@ -43,8 +43,6 @@ scriptable, keyboard-controlled, real-time visual interface.
 %prep
 %autosetup -a1
 sed -i 's/-- version = "0.0.0"/version = "%{version}"/' src/init.lua
-# This conflicts with vendored cargo
-rm .cargo/config
 
 %build
 %{cargo_build} --all-features
