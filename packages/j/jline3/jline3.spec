@@ -33,19 +33,19 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://github.com/jline/jline3
 Source0:        %{url}/archive/refs/tags/jline-%{version}.tar.gz
-Source1:        Load-native-library-system-wide-place.patch.in
+Source1:        %{name}-build.tar.xz
+Source100:      Load-native-library-system-wide-place.patch.in
 Patch0:         0001-Remove-optional-dependency-on-universalchardet.patch
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 11
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(net.java.dev.jna:jna)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.fusesource.jansi:jansi)
+BuildRequires:  jansi
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  jna
+BuildRequires:  jsr-305
 %if %{with ssh}
-BuildRequires:  mvn(org.apache.sshd:sshd-core)
-BuildRequires:  mvn(org.apache.sshd:sshd-scp)
-BuildRequires:  mvn(org.apache.sshd:sshd-sftp)
+BuildRequires:  apache-sshd
+BuildRequires:  slf4j
 %endif
 %if %{with ffm}
 BuildRequires:  java-devel >= 22
@@ -62,13 +62,6 @@ readline/editline capabilities for modern shells (such as bash and tcsh) will
 find most of the command editing features of JLine to be familiar.
 
 JLine 3.x is an evolution of JLine 2.x.
-
-%package parent
-Summary:        JLine Parent
-BuildArch:      noarch
-
-%description parent
-%{desc}
 
 %package builtins
 Summary:        JLine Builtins
@@ -223,9 +216,9 @@ BuildArch:      noarch
 API documentation for %{name}.
 
 %prep
-%autosetup -n %{name}-jline-%{version} -p1
+%autosetup -n %{name}-jline-%{version} -p1 -a1
 
-sed "s;@SYSTEMLIBRARYPATH@;%{_libdir}/%{name}/;g" < %{SOURCE1} | patch -p1
+sed "s;@SYSTEMLIBRARYPATH@;%{_libdir}/%{name}/;g" < %{SOURCE100} | patch -p1
 
 cp -p console-ui/LICENSE.txt LICENSE-APACHE.txt
 
@@ -319,17 +312,123 @@ for module in \
 done
 
 %build
+mkdir -p lib
+build-jar-repository -s lib \
+    jansi/jansi \
+    jna/jna \
+    jsr-305
+%if %{with ssh}
+  build-jar-repository -s lib \
+    apache-sshd/sshd-common \
+    apache-sshd/sshd-core \
+    apache-sshd/sshd-scp \
+    apache-sshd/sshd-sftp \
+    slf4j/api
+%endif
+
 # Build a native object
 gcc -Wall %{?build_cflags} %{?optflags} -fPIC -fvisibility=hidden -shared \
   -I native/src/main/native -I %{_jvmdir}/java/include \
   -I %{_jvmdir}/java/include/linux %{?build_ldflags} \
   -o libjlinenative.so native/src/main/native/{jlinenative,clibrary}.c
 
-%{mvn_build} -f -s -- -Dnojavadoc=true
+ant package javadoc
+%if %{with ssh}
+  ant -f remote-ssh package javadoc
+%endif
+%if %{with ffm}
+  ant -f terminal-ffm package javadoc
+%endif
 
 %install
-%mvn_install
+# jars
+install -dm 0755 %{buildroot}%{_jnidir}/%{name}
+install -pm 0644 jansi/target/jansi-%{version}.jar %{buildroot}%{_jnidir}/%{name}/jansi.jar
+install -pm 0644 jline/target/jline-%{version}.jar %{buildroot}%{_jnidir}/%{name}/jline.jar
+install -pm 0644 native/target/jline-native-%{version}.jar %{buildroot}%{_jnidir}/%{name}/jline-native.jar
+
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 jansi-core/target/jansi-core-%{version}.jar %{buildroot}%{_javadir}/%{name}/jansi-core.jar
+for i in \
+  builtins \
+  console \
+  console-ui \
+  curses reader \
+%if %{with ssh}
+  remote-ssh \
+%endif
+  remote-telnet \
+  style \
+  terminal \
+%if %{with ffm}
+  terminal-ffm \
+%endif
+  terminal-jansi \
+  terminal-jna \
+  terminal-jni; do
+    install -pm 0644 ${i}/target/jline-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/jline-${i}.jar
+done
+
+# poms
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+for i in \
+  jansi \
+  jansi-core \
+  jline; do
+    %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/${i}.pom
+    %add_maven_depmap %{name}/${i}.pom %{name}/${i}.jar -f ${i}
+done
+
+for i in \
+  builtins \
+  console \
+  console-ui \
+  curses reader \
+  native \
+%if %{with ssh}
+  remote-ssh \
+%endif
+  remote-telnet \
+  style \
+  terminal \
+%if %{with ffm}
+  terminal-ffm \
+%endif
+  terminal-jansi \
+  terminal-jna \
+  terminal-jni; do
+    %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/jline-${i}.pom
+    %add_maven_depmap %{name}/jline-${i}.pom %{name}/jline-${i}.jar -f ${i}
+done
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+for i in \
+  builtins \
+  console \
+  console-ui \
+  curses reader \
+  jansi \
+  jansi-core \
+  jline \
+  native \
+%if %{with ssh}
+  remote-ssh \
+%endif
+  remote-telnet \
+  style \
+  terminal \
+%if %{with ffm}
+  terminal-ffm \
+%endif
+  terminal-jansi \
+  terminal-jna \
+  terminal-jni; do
+    cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+done
 %fdupes %{buildroot}%{_javadocdir}/%{name}
+
+# native library
 install -d -m 755 %{buildroot}%{_libdir}/%{name}/
 install -p -m 755 libjlinenative.so %{buildroot}%{_libdir}/%{name}/
 
@@ -343,57 +442,55 @@ install -p -m 755 libjlinenative.so %{buildroot}%{_libdir}/%{name}/
 %files jansi-core -f .mfiles-jansi-core
 %license LICENSE.txt
 
-%files builtins -f .mfiles-jline-builtins
+%files builtins -f .mfiles-builtins
 %license LICENSE.txt
 
-%files console -f .mfiles-jline-console
+%files console -f .mfiles-console
 %license LICENSE.txt
 
-%files console-ui -f .mfiles-jline-console-ui
+%files console-ui -f .mfiles-console-ui
 %license LICENSE.txt
 
-%files curses -f .mfiles-jline-curses
+%files curses -f .mfiles-curses
 %license LICENSE.txt
 
-%files native -f .mfiles-jline-native
+%files native -f .mfiles-native
 %{_libdir}/%{name}
 %license LICENSE.txt
 
-%files reader -f .mfiles-jline-reader
+%files reader -f .mfiles-reader
 %license LICENSE.txt
 
 %if %{with ssh}
-%files remote-ssh -f .mfiles-jline-remote-ssh
+%files remote-ssh -f .mfiles-remote-ssh
 %license LICENSE.txt
 %endif
 
 %if %{with ffm}
-%files terminal-ffm -f .mfiles-jline-terminal-ffm
+%files terminal-ffm -f .mfiles-terminal-ffm
 %license LICENSE.txt
 %endif
 
-%files remote-telnet -f .mfiles-jline-remote-telnet
+%files remote-telnet -f .mfiles-remote-telnet
 %license LICENSE.txt
 
-%files style -f .mfiles-jline-style
+%files style -f .mfiles-style
 %license LICENSE.txt
 
-%files terminal -f .mfiles-jline-terminal
+%files terminal -f .mfiles-terminal
 %license LICENSE.txt
 
-%files terminal-jansi -f .mfiles-jline-terminal-jansi
+%files terminal-jansi -f .mfiles-terminal-jansi
 %license LICENSE.txt
 
-%files terminal-jna -f .mfiles-jline-terminal-jna
+%files terminal-jna -f .mfiles-terminal-jna
 %license LICENSE.txt
 
-%files terminal-jni -f .mfiles-jline-terminal-jni
+%files terminal-jni -f .mfiles-terminal-jni
 %license LICENSE.txt
 
-%files parent -f .mfiles-jline-parent
-%license LICENSE.txt
-
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE.txt
 
 %changelog
