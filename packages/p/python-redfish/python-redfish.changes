@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 28 19:50:46 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  * Fixed bug in recent workaround logic for services not
+    returning the 'Location' header to not print the workaround
+    warning for failed login attempts.
+
+-------------------------------------------------------------------
 Sat Mar 22 09:39:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.0
