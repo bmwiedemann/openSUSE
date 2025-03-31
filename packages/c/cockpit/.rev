@@ -642,4 +642,14 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   (bsc#1220477)</comment>
     <requestid>1254457</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>116a8741fb238477eda6ac8004af01b9</srcmd5>
+    <version>334.1</version>
+    <time>1743413843</time>
+    <user>anag+factory</user>
+    <comment>changelog only change
+
+- npm modules updated, since new version</comment>
+    <requestid>1265212</requestid>
+  </revision>
 </revisionlist>
