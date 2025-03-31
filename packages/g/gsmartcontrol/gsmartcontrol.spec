@@ -41,8 +41,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  polkit
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.4
-BuildRequires:  pkgconfig(libpcre)
-Requires:       pcre
 Requires:       polkit
 Requires:       smartmontools >= 5.43
 Recommends:     xdg-utils
@@ -54,7 +52,7 @@ Technology) data in hard disk drives. It allows inspecting the drive's
 SMART data to determine its health, as well as run various tests on it.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %if 0%{?suse_version} < 1600

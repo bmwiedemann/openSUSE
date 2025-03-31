@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 27 18:02:37 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency, code was ported to
+  std::regex in v2.0.0
+
+-------------------------------------------------------------------
 Fri Mar 14 15:11:15 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.0.2
