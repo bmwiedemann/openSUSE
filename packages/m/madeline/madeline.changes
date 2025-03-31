@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 29 15:34:05 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.1+git.1733505506.5c2abae:
+  * graph: update for unicode 16
+  * Preserve newlines in history file
+  * Continue line when it isn't considered done
+  * Map alt+backspace to delete word
+  * Separate words on any whitespace
+
+-------------------------------------------------------------------
 Wed Oct 23 10:10:29 UTC 2024 - mcepl@cepl.eu
 
 - Update to version 0.1+git.1716356019.c693a0a:

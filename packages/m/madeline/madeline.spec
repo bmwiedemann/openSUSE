@@ -18,7 +18,7 @@
 %define  haredir  %{_usrsrc}/hare
 Name:           madeline
 Release:        0
-Version:        0.1+git.1716356019.c693a0a
+Version:        0.1+git.1733505506.5c2abae
 Summary:        Hare readline
 URL:            https://git.sr.ht/~ecs/madeline
 Source0:        %{name}-%{version}.tar.zst

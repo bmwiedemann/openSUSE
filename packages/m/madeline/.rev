@@ -7,4 +7,17 @@
     <comment>Fixed SR</comment>
     <requestid>1228392</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>70991af0417d8e3fbf167d92f205360e</srcmd5>
+    <version>0.1+git.1733505506.5c2abae</version>
+    <time>1743414167</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.1+git.1733505506.5c2abae:
+  * graph: update for unicode 16
+  * Preserve newlines in history file
+  * Continue line when it isn't considered done
+  * Map alt+backspace to delete word
+  * Separate words on any whitespace</comment>
+    <requestid>1265410</requestid>
+  </revision>
 </revisionlist>
