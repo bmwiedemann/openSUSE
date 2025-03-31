@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nanobind
-Version:        2.5.0
+Version:        2.6.1
 Release:        0
 Summary:        Tiny And Efficient C++/Python Bindings
 License:        BSD-3-Clause
