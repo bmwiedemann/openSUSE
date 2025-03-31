@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynitrokey
-Version:        0.7.4
+Version:        0.8.1
 Release:        0
 Summary:        Python Library for Nitrokey devices
 License:        Apache-2.0 OR MIT
@@ -37,8 +37,8 @@ BuildRequires:  %{python_module ecdsa}
 BuildRequires:  %{python_module fido2 >= 1.2.0 with %python-fido2 < 2}
 # https://github.com/Nitrokey/pynitrokey/issues/601
 BuildRequires:  %{python_module hidapi >= 0.14.0.post1 with %python-hidapi < 0.14.0.post4}
-BuildRequires:  %{python_module nethsm >= 1.2.1 with %python-nethsm < 2}
-BuildRequires:  %{python_module nitrokey >= 0.2.1 with %python-nitrokey < 0.3}
+BuildRequires:  %{python_module nethsm >= 1.3.0 with %python-nethsm < 2}
+BuildRequires:  %{python_module nitrokey >= 0.3.1 with %python-nitrokey < 0.4}
 BuildRequires:  %{python_module nkdfu}
 BuildRequires:  %{python_module protobuf >= 3.17.3}
 BuildRequires:  %{python_module pyusb}
@@ -67,8 +67,8 @@ Requires:       (python-click-aliases >= 1.0.5 with python-click-aliases < 2)
 Requires:       (python-cryptography >= 41.0.4 with python-cryptography < 45)
 Requires:       (python-fido2 >= 1.2.0 with python-fido2 < 2)
 Requires:       (python-hidapi >= 0.14.0.post1 with python-hidapi < 0.14.0.post4)
-Requires:       (python-nethsm >= 1.2.1 with python-nethsm < 2)
-Requires:       (python-nitrokey >= 0.2.1 with python-nitrokey < 0.3)
+Requires:       (python-nethsm >= 1.3.0 with python-nethsm < 2)
+Requires:       (python-nitrokey >= 0.3.1 with python-nitrokey < 0.4)
 Requires:       (python-spsdk >= 2.0 with python-spsdk < 2.2)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives

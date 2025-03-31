@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Mar 28 09:28:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.1:
+  * Update Nitrokey SDK to v0.3.1 and release v0.8.1 by
+    @robin-nitrokey in #633
+
+-------------------------------------------------------------------
+Wed Mar 26 08:15:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.0:
+  This release adds support for Nitrokey 3 firmware updates to
+  v1.8.2, adds TPM information to the NetHSM system status and
+  improves the FIDO2 tests in nitropy nk3 test and nitropy fido2
+  verify.
+  Changelog
+  * Check attestation signature after FIDO2 makeCredential by
+    @robin-nitrokey in #626
+  * Add TPM information to system information by @mmerklinger in
+    #628
+  * Bump minimum nethsm sdk version to 1.3.0 by @mmerklinger in
+    #629
+  * Update Nitrokey SDK to v0.3.0 and release v0.8.0 by
+    @robin-nitrokey in #632
+
+-------------------------------------------------------------------
 Tue Feb 25 19:55:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.7.4:
