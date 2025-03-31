@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 19:01:22 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+
+-------------------------------------------------------------------
 Sat Mar 22 15:18:14 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
