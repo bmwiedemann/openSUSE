@@ -6,9 +6,11 @@ Subject: Enable debugging symbols in the build
  src/Makefile |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -54,9 +54,9 @@ CCOPT_arm64=
+Index: LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/Makefile
+===================================================================
+--- LuaJIT-5.1.2.1.0+git.1741730670.538a821.orig/src/Makefile	2025-03-25 17:07:13.482265396 +0100
++++ LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/Makefile	2025-03-25 17:07:21.367645582 +0100
+@@ -54,9 +54,9 @@
  CCOPT_ppc=
  CCOPT_mips=
  #

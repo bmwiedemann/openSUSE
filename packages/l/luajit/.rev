@@ -454,4 +454,36 @@
     <comment></comment>
     <requestid>1251653</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e567f38bbaa3d17d1658d8c06d906906</srcmd5>
+    <version>5.1.2.1.0+git.1741730670.538a821</version>
+    <time>1743413831</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 5.1.2.1.0+git.1741730670.538a821:
+  * Change handling of nil value markers in template tables.
+  * REVERT: Change handling of nil value markers in template tables.
+  * macOS: Fix Apple hardened runtime support and put behind build option.
+  * macOS: Fix support for Apple hardened runtime.
+  * Fix handling of nil value markers in template tables.
+  * Avoid unpatching bytecode twice after a trace flush.
+  * Fix state restore when recording __concat metamethod.
+  * Windows: Allow mixed builds with msvcbuild.bat.
+  * macOS: Add suport for Apple hardened runtime.
+  * Add compatibility string coercion for fp:seek() argument.
+  * Windows: Clarify installation directory layout.
+  * Remove Cygwin from docs, since it's not a supported target.
+  * Improve CLI signal handling on POSIX.
+  * FFI: Add pre-declared int128_t, uint128_t, __int128 types.
+  * Use dylib extension for iOS installs, too.
+  * Change handling of nil value markers in template tables.
+  * Fix recording of BC_VARG.
+  * Reject negative getfenv()/setfenv() levels to prevent compiler warning.
+  * Bump copyright date.
+  * Force fallback source name for stripped bytecode.
+  * Remove dependency on &lt;limits.h&gt;.
+  * Restore state when recording __concat metamethod throws OOM.
+  * MIPS64: Fix pcall() error case.
+  * Fix detection of inconsistent renames due to sunk values.</comment>
+    <requestid>1256453</requestid>
+  </revision>
 </revisionlist>

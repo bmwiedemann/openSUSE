@@ -5,8 +5,10 @@
  src/luaconf.h |    2 +-
  4 files changed, 9 insertions(+), 7 deletions(-)
 
---- a/Makefile
-+++ b/Makefile
+Index: LuaJIT-5.1.2.1.0+git.1741730670.538a821/Makefile
+===================================================================
+--- LuaJIT-5.1.2.1.0+git.1741730670.538a821.orig/Makefile	2025-03-25 17:07:06.248742356 +0100
++++ LuaJIT-5.1.2.1.0+git.1741730670.538a821/Makefile	2025-03-25 17:07:13.480809547 +0100
 @@ -16,13 +16,14 @@
  MAJVER=  2
  MINVER=  1
@@ -23,7 +25,7 @@
  VERSION= $(MMVERSION).$(RELVER)
  
  ##############################################################################
-@@ -52,7 +53,7 @@ INSTALL_MAN= $(INSTALL_SHARE)/man/man1
+@@ -52,7 +53,7 @@
  INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
  
  INSTALL_TNAME= luajit-$(VERSION)
@@ -32,7 +34,7 @@
  INSTALL_ANAME= libluajit-$(ABIVER).a
  INSTALL_SOSHORT1= libluajit-$(ABIVER).so
  INSTALL_SOSHORT2= libluajit-$(ABIVER).so.$(MAJVER)
-@@ -90,7 +91,7 @@ ifneq ($(INSTALL_DEFINC),$(INSTALL_INC))
+@@ -90,7 +91,7 @@
    SED_PC+= -e "s|^includedir=.*|includedir=$(INSTALL_INC)|"
  endif
  
@@ -41,7 +43,7 @@
  FILE_A= libluajit.a
  FILE_SO= libluajit.so
  FILE_MAN= luajit.1
-@@ -138,7 +139,7 @@ install: $(INSTALL_DEP)
+@@ -138,7 +139,7 @@
  	  ( $(LDCONFIG) $(INSTALL_LIB) || : ) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT1) && \
  	  $(SYMLINK) $(INSTALL_SONAME) $(INSTALL_SHORT2) || :
@@ -50,9 +52,11 @@
  	cd etc && $(SED_PC) $(FILE_PC) > $(FILE_PC).tmp && \
  	  $(INSTALL_F) $(FILE_PC).tmp $(INSTALL_PC) && \
  	  $(RM) $(FILE_PC).tmp
---- a/etc/luajit.pc
-+++ b/etc/luajit.pc
-@@ -10,7 +10,7 @@ multilib=lib
+Index: LuaJIT-5.1.2.1.0+git.1741730670.538a821/etc/luajit.pc
+===================================================================
+--- LuaJIT-5.1.2.1.0+git.1741730670.538a821.orig/etc/luajit.pc	2025-03-25 17:07:06.250442675 +0100
++++ LuaJIT-5.1.2.1.0+git.1741730670.538a821/etc/luajit.pc	2025-03-25 17:07:13.482070760 +0100
+@@ -10,7 +10,7 @@
  exec_prefix=${prefix}
  libdir=${exec_prefix}/${multilib}
  libname=luajit-${abiver}
@@ -61,9 +65,11 @@
  
  INSTALL_LMOD=${prefix}/share/lua/${abiver}
  INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -14,6 +14,7 @@ MAJVER=  2
+Index: LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/Makefile
+===================================================================
+--- LuaJIT-5.1.2.1.0+git.1741730670.538a821.orig/src/Makefile	2025-03-11 23:04:30.000000000 +0100
++++ LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/Makefile	2025-03-25 17:07:13.482265396 +0100
+@@ -14,6 +14,7 @@
  MINVER=  1
  ABIVER=  5.1
  NODOTABIVER= 51
@@ -71,7 +77,7 @@
  
  ##############################################################################
  #############################  COMPILER OPTIONS  #############################
-@@ -527,7 +528,7 @@ LIB_VMDEFP= $(LIB_VMDEF)
+@@ -527,7 +528,7 @@
  LUAJIT_O= luajit.o
  LUAJIT_A= libluajit.a
  LUAJIT_SO= libluajit.so
@@ -80,9 +86,11 @@
  
  ALL_T= $(LUAJIT_T) $(LUAJIT_A) $(LUAJIT_SO) $(HOST_T)
  ALL_HDRGEN= lj_bcdef.h lj_ffdef.h lj_libdef.h lj_recdef.h lj_folddef.h \
---- a/src/luaconf.h
-+++ b/src/luaconf.h
-@@ -51,7 +51,7 @@
+Index: LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/luaconf.h
+===================================================================
+--- LuaJIT-5.1.2.1.0+git.1741730670.538a821.orig/src/luaconf.h	2025-03-11 23:04:30.000000000 +0100
++++ LuaJIT-5.1.2.1.0+git.1741730670.538a821/src/luaconf.h	2025-03-25 17:07:13.482427381 +0100
+@@ -50,7 +50,7 @@
  #endif
  
  #ifndef LUA_LJDIR
