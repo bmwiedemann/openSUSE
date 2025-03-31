@@ -187,4 +187,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221903</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>452c6a47684d297c4d272c2a42786de3</srcmd5>
+    <version>4.5.1</version>
+    <time>1743414158</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1241097 from ojkastl_buildservice
+
+update to 4.5.1</comment>
+    <requestid>1265395</requestid>
+  </revision>
 </revisionlist>

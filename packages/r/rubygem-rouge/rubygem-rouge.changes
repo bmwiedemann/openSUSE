@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jan 29 07:52:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.5.1:
+  * JSON5 Lexer
+    - Fix prerequisite dependency in JSON5 (#2084 by Tan Le)
+- update to 4.5.0:
+    * General
+      - Support multiple states when parsing rules (#2078 by Tan
+        Le)
+    * COBOL Lexer (NEW)
+      - Add a lexer, tests and examples for COBOL (#2067 by Bart
+        Broere)
+    * Groovy Lexer
+      - Recognize Nextflow files as Groovy files (#2081 by
+        Bond-009)
+    * INI Lexer
+      - Add more extensions and mimetypes for INI lexer (#2075 by
+        Tan Le)
+      - Default .cfg highlight to INI lexer (#2074 by Tan Le)
+    * Javascript Lexer
+      - Support private property identifier in JS lexer (#2076 by
+        Tan Le)
+    * JSON5 Lexer (NEW)
+      - implement a json5 lexer (#1561 by Jeanine Adkisson)
+    * Ruby Lexer
+      - Recognize Thor files as Ruby files (#2080 by Vitaly
+        Slobodin)
+    * Terraform Lexer
+      - Support special escape sequences in Terraform (#2073 by Tan
+        Le)
+
+-------------------------------------------------------------------
 Mon Nov  4 17:25:14 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - 4.4.0:
