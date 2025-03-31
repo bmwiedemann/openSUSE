@@ -398,4 +398,12 @@
     <comment>- Add /srv/www to filelist [bsc#1231027] (forwarded request 1204298 from kukuk)</comment>
     <requestid>1204656</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>2a9f21491d3931c697e048b6160b185f</srcmd5>
+    <version>2.0.13</version>
+    <time>1743413985</time>
+    <user>anag+factory</user>
+    <comment>- removed unneeded pcre build dependency (forwarded request 1254482 from AndreasStieger)</comment>
+    <requestid>1265137</requestid>
+  </revision>
 </revisionlist>

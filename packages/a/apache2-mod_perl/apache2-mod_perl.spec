@@ -2,7 +2,7 @@
 # spec file for package apache2-mod_perl
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,6 @@ BuildRequires:  apache2-devel
 BuildRequires:  db-devel
 BuildRequires:  ed
 BuildRequires:  netcfg
-BuildRequires:  pcre-devel
 BuildRequires:  perl
 BuildRequires:  perl-BSD-Resource
 BuildRequires:  perl-Tie-IxHash
