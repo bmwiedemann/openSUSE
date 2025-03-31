@@ -44,7 +44,7 @@ almost completely POSIX 1003.2 compliant.
 %build
 export CFLAGS="%{optflags}"
 %configure
-%if %{do_profiling}
+%if %{do_profiling} && !0%{?want_reproducible_builds}
   %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
   %make_build check
   %make_build clean
