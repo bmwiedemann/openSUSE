@@ -255,4 +255,13 @@
   * Update README.md</comment>
     <requestid>1256298</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>faf913dc65e546a56e0e5a5c1d6ecea3</srcmd5>
+    <version>1.3.11</version>
+    <time>1743414164</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.3.11:
+  * [encrypt] Revert machine-id generation (boo#1239804)</comment>
+    <requestid>1265403</requestid>
+  </revision>
 </revisionlist>
