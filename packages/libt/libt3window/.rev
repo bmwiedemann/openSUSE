@@ -78,4 +78,12 @@
     <comment>- Add 0001-build-fix-configure-failure-in-gcc-14.patch</comment>
     <requestid>1220356</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ef0437b77a11af3f14926a0ccddffb53</srcmd5>
+    <version>0.4.2</version>
+    <time>1743414207</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.4.2</comment>
+    <requestid>1265515</requestid>
+  </revision>
 </revisionlist>

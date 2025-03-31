@@ -1,7 +1,7 @@
 #
 # spec file for package libt3window
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libt3window
 %define lname	libt3window0
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        The Tilde Toolkit's window-based terminal program library
 License:        GPL-3.0-only
@@ -27,7 +27,6 @@ URL:            https://os.ghalkes.nl/t3/libt3window.html
 #Git-Clone:	https://github.com/gphalkes/t3widget
 Source:         https://os.ghalkes.nl/dist/%name-%version.tar.bz2
 Source2:        https://os.ghalkes.nl/dist/%name-%version.tar.bz2.sig
-Patch1:         0001-build-fix-configure-failure-in-gcc-14.patch
 Source3:        %name.keyring
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools

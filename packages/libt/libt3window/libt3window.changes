@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 30 11:05:28 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.2
+  * GCC 14 support
+- Delete 0001-build-fix-configure-failure-in-gcc-14.patch (merged)
+
+-------------------------------------------------------------------
 Sat Nov  2 21:51:13 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-build-fix-configure-failure-in-gcc-14.patch
