@@ -7,4 +7,13 @@
     <comment>This package is meant for framework laptops and automatically controls the keyboard backlight based on usage.</comment>
     <requestid>1254815</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a47ffff7530c090d5cfa69d55b5799e4</srcmd5>
+    <version>1+git20240806.b7b17e3</version>
+    <time>1743414169</time>
+    <user>anag+factory</user>
+    <comment>- add systemd_pre hook
+- correct permissions of service file</comment>
+    <requestid>1265419</requestid>
+  </revision>
 </revisionlist>

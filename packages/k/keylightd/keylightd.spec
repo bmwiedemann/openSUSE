@@ -47,7 +47,10 @@ cargo test --release
 %install
 install -Dm755 target/release/keylightd %{buildroot}%{_bindir}/keylightd
 sed -i 's|/usr/local/bin/keylightd|%{_bindir}/keylightd --brightness 100|g' etc/keylightd.service
-install -D etc/keylightd.service %{buildroot}/%{_unitdir}/keylightd.service
+install -Dm644 etc/keylightd.service %{buildroot}/%{_unitdir}/keylightd.service
+
+%pre
+%systemd_pre keylightd.service
 
 %post
 %systemd_post keylightd.service
