@@ -1,7 +1,7 @@
 #
 # spec file for package libtorrent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,25 @@
 #
 
 
+#common.m4 depends on a bashism in <=0.15.2
+%define _buildshell /bin/sh
+%define lname	libtorrent24
 Name:           libtorrent
-%define lname	libtorrent23
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/rakshasa/libtorrent
-
 Source:         https://github.com/rakshasa/rtorrent/releases/download/v%version/libtorrent-%version.tar.gz
+Patch1:         0001-0.15.2-Missing-header-algorithm.patch
+Patch2:         0002-Fixed-DhtController-m_router-check-and-log-unit-test.patch
 BuildRequires:  automake
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(openssl)
@@ -61,9 +68,11 @@ seed speeds than the official client on high-bandwidth links.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CXX=g++-13
+%endif
 export CFLAGS="%optflags -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 autoreconf -fiv
 %configure --enable-ipv6 --with-posix-fallocate
 %make_build

@@ -130,4 +130,12 @@
     <comment>- Update to release 0.15.1</comment>
     <requestid>1234609</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>19c7fa2511acc50f382a79ebb736736f</srcmd5>
+    <version>0.15.2</version>
+    <time>1743414155</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 0.15.2</comment>
+    <requestid>1265385</requestid>
+  </revision>
 </revisionlist>

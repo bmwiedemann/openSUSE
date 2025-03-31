@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:41:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.2
+  * preparation for multi-threaded trackers
+  * added a thread-safe DNS resolver
+- Add 0001-0.15.2-Missing-header-algorithm.patch,
+  0002-Fixed-DhtController-m_router-check-and-log-unit-test.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 11:53:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.1
