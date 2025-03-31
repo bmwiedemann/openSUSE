@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:06:19 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.6a
+  * VirtioNet: Fixed issue with re-negotiation of features
+    after reset
+  * Graphics: Fixed issue with Linux guest screen flickering when
+    guest was using VMSVGA graphics adapter
+  * Linux Guest Additions: Introduced initial support for
+    kernel 6.13
+- Delete kernel-6-13.patch (merged)
+
+-------------------------------------------------------------------
+Fri Mar 28 06:42:00 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add: kernel-6-14.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 10:00:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build python bindings for python311, do not use python3 since

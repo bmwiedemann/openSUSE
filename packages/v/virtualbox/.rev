@@ -2716,4 +2716,13 @@ rpmfusion/debian patches did not work ultimately
 (they probably did not move to 3.13 yet, and only had 3.13 mentioned on a chance)</comment>
     <requestid>1248094</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>5eedbc9468b0483d77bf5aeb950dd7b3</srcmd5>
+    <version>7.1.6a</version>
+    <time>1743413850</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 7.1.6a
+- add: kernel-6-14.patch</comment>
+    <requestid>1265175</requestid>
+  </revision>
 </revisionlist>

@@ -58,9 +58,9 @@
 %global __mypython %{expand:%%__%{mypython}}
 %global mypython_sitelib %{expand:%%%{mypython}_sitelib}
 
-# ********* If the VB version exceeds 6.1.x, notify the libvirt maintainer!!
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.1.4
+Version:        7.1.6a
+%define rversion 7.1.6
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -122,7 +122,7 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
-Patch13:        kernel-6-13.patch
+Patch14:        kernel-6-14.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -155,29 +155,15 @@ Source2:        VirtualBox.appdata.xml
 %endif
 ### Requirements for virtualbox main package ###
 %if %{main_package}
-BuildRequires:  LibVNCServer-devel
-BuildRequires:  SDL2-devel
-BuildRequires:  alsa-devel
-BuildRequires:  device-mapper-devel
 BuildRequires:  dmidecode
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  glslang-devel >= 11.5
-BuildRequires:  gsoap-devel >= 2.8.50
 BuildRequires:  java-devel >= 1.6.0
-#BuildRequires:  libSDL2-2_0-0
-BuildRequires:  libelf-devel
-BuildRequires:  libidl-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  libopus-devel
-BuildRequires:  libtpms-devel
-BuildRequires:  libvpx-devel
-BuildRequires:  libxslt-devel
 BuildRequires:  libzio-devel
 BuildRequires:  lzfse
 BuildRequires:  lzfse-devel
-BuildRequires:  pulseaudio-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-setuptools
@@ -200,16 +186,29 @@ BuildRequires:  pkgconfig(Qt6Sql)
 BuildRequires:  pkgconfig(Qt6StateMachine)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(fontsproto)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glx)
+BuildRequires:  pkgconfig(gsoap) >= 2.8.50
+BuildRequires:  pkgconfig(libIDL-2.0)
+BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libtpms)
+BuildRequires:  pkgconfig(libvncserver)
+BuildRequires:  pkgconfig(libxslt)
+BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(randrproto)
 BuildRequires:  pkgconfig(renderproto)
 BuildRequires:  pkgconfig(resourceproto)
 BuildRequires:  pkgconfig(scrnsaverproto)
 BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(vpx)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xau)
 BuildRequires:  pkgconfig(xcomposite)
@@ -421,7 +420,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %endif
 
 %prep
-%autosetup -n VirtualBox-%{version} -p1
+%autosetup -n VirtualBox-%{rversion} -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -555,7 +554,7 @@ install -d -m 755 %{buildroot}/media
 echo "entering VNC extension install section"
 pushd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
-install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
+install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack"
 popd
 
 echo "entering virtualbox(-qt) install section"
@@ -750,7 +749,7 @@ done
 %service_add_post vboxweb-service.service
 
 %post vnc
-EXTPACK="%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack"
+EXTPACK="%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack"
 ACCEPT="$(tar --to-stdout -xf "${EXTPACK}" ./ExtPack-license.txt | sha256sum | head --bytes=64)"
 VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" > /dev/null
 
@@ -958,7 +957,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %files vnc
 %license COPYING
 %dir %{_datadir}/virtualbox/extensions
-%{_datadir}/virtualbox/extensions/VNC-%{version}.vbox-extpack
+%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack
 
 # main_package
 %endif
