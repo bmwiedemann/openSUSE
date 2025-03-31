@@ -34,7 +34,6 @@ URL:            https://kid3.kde.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz.sig
 BuildRequires:  extra-cmake-modules
-BuildRequires:  ffmpeg-7-libavcodec-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  id3lib-devel
 BuildRequires:  kf%{qt_version}-filesystem
@@ -59,6 +58,7 @@ BuildRequires:  cmake(Qt%{qt_version}Xml)
 BuildRequires:  config(docbook-xsl-stylesheets)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(libavcodec) >= 61
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)

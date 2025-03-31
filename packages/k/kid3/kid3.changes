@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 31 07:39:15 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use pkgconfig(libavcodec) to allow building with ffmpeg-*-mini.
+
+-------------------------------------------------------------------
 Fri Jan 24 15:03:39 UTC 2025 - Dave Plater <davejplater@gmail.com>
 
 - Force to build with ffmpeg-7
