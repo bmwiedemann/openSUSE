@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar 29 18:57:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 14.4.1:
+  * faster handling of pow() and square() within accu() and sum()
+    expressions
+  * faster sort() and sort_index() for complex matrices
+  * expanded the field class with .reshape() and .resize() member
+    functions
+  * more efficient handling of compound expressions by sum(),
+    reshape(), trans()
+  * better detection of vector expressions by pow(), imag(),
+    conj()
+- Fix typo in baselibs.conf.
+
+-------------------------------------------------------------------
 Fri Feb 14 08:00:49 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 14.2.3:
