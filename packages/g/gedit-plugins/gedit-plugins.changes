@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 31 06:45:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python-based plugins, as they are not compatible with the
+  GNOME 48 infrastructure, mainly pygobject 3.52. The disabled
+  plugins are: bracketcompletion, charmap, codecomment,
+  colorpicker, joinlines, multiedit, sessionsaver, and terminal.
+  See glgo#World/gedit/gedit#614, boo1239952.
+
+-------------------------------------------------------------------
 Fri Mar 14 20:47:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gtksourceview-4) BuildRequires: Not needed nor

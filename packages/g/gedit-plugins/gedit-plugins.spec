@@ -1,7 +1,7 @@
 #
 # spec file for package gedit-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -211,7 +211,15 @@ The gedit wordcompletion plugin
 install -m644 %{SOURCE1} .
 
 %build
-%meson
+%meson \
+    -Dplugin_bracketcompletion=false \
+    -Dplugin_charmap=false           \
+    -Dplugin_codecomment=false       \
+    -Dplugin_colorpicker=false       \
+    -Dplugin_joinlines=false         \
+    -Dplugin_multiedit=false         \
+    -Dplugin_sessionsaver=false      \
+    -Dplugin_terminal=false
 %meson_build
 
 %install
@@ -236,29 +244,29 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/bookmarks.plugin
 %{_libdir}/gedit/plugins/libbookmarks.so
 
-%files -n gedit-plugin-bracketcompletion
-# bracketcompletion
-%{_datadir}/metainfo/gedit-bracketcompletion.metainfo.xml
-%{_libdir}/gedit/plugins/bracketcompletion.plugin
-%{_libdir}/gedit/plugins/bracketcompletion.py*
+%dnl %files -n gedit-plugin-bracketcompletion
+%dnl # bracketcompletion
+%dnl %{_datadir}/metainfo/gedit-bracketcompletion.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/bracketcompletion.plugin
+%dnl %{_libdir}/gedit/plugins/bracketcompletion.py*
 
-%files -n gedit-plugin-charmap
-# charmap
-%{_datadir}/metainfo/gedit-charmap.metainfo.xml
-%{_libdir}/gedit/plugins/charmap.plugin
-%{_libdir}/gedit/plugins/charmap/
+%dnl %files -n gedit-plugin-charmap
+%dnl # charmap
+%dnl %{_datadir}/metainfo/gedit-charmap.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/charmap.plugin
+%dnl %{_libdir}/gedit/plugins/charmap/
 
-%files -n gedit-plugin-codecomment
-# codecomment
-%{_datadir}/metainfo/gedit-codecomment.metainfo.xml
-%{_libdir}/gedit/plugins/codecomment.plugin
-%{_libdir}/gedit/plugins/codecomment.py*
+%dnl %files -n gedit-plugin-codecomment
+%dnl # codecomment
+%dnl %{_datadir}/metainfo/gedit-codecomment.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/codecomment.plugin
+%dnl %{_libdir}/gedit/plugins/codecomment.py*
 
-%files -n gedit-plugin-colorpicker
-# colorpicker
-%{_datadir}/metainfo/gedit-colorpicker.metainfo.xml
-%{_libdir}/gedit/plugins/colorpicker.plugin
-%{_libdir}/gedit/plugins/colorpicker.py*
+%dnl %files -n gedit-plugin-colorpicker
+%dnl # colorpicker
+%dnl %{_datadir}/metainfo/gedit-colorpicker.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/colorpicker.plugin
+%dnl %{_libdir}/gedit/plugins/colorpicker.py*
 
 %files -n gedit-plugin-drawspaces
 # drawspaces
@@ -267,17 +275,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/libdrawspaces.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.drawspaces.gschema.xml
 
-%files -n gedit-plugin-joinlines
-# joinlines
-%{_datadir}/metainfo/gedit-joinlines.metainfo.xml
-%{_libdir}/gedit/plugins/joinlines.plugin
-%{_libdir}/gedit/plugins/joinlines.py*
+%dnl %files -n gedit-plugin-joinlines
+%dnl # joinlines
+%dnl %{_datadir}/metainfo/gedit-joinlines.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/joinlines.plugin
+%dnl %{_libdir}/gedit/plugins/joinlines.py*
 
-%files -n gedit-plugin-multiedit
-# multiedit
-%{_datadir}/metainfo/gedit-multiedit.metainfo.xml
-%{_libdir}/gedit/plugins/multiedit.plugin
-%{_libdir}/gedit/plugins/multiedit/
+%dnl %files -n gedit-plugin-multiedit
+%dnl # multiedit
+%dnl %{_datadir}/metainfo/gedit-multiedit.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/multiedit.plugin
+%dnl %{_libdir}/gedit/plugins/multiedit/
 
 %files -n gedit-plugin-smartspaces
 # smartspaces
@@ -285,18 +293,18 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/smartspaces.plugin
 %{_libdir}/gedit/plugins/libsmartspaces.so
 
-%files -n gedit-plugin-session-saver
-# session-saver
-%{_datadir}/gedit/plugins/sessionsaver/
-%{_libdir}/gedit/plugins/sessionsaver.plugin
-%{_libdir}/gedit/plugins/sessionsaver/
+%dnl %files -n gedit-plugin-session-saver
+%dnl # session-saver
+%dnl %{_datadir}/gedit/plugins/sessionsaver/
+%dnl %{_libdir}/gedit/plugins/sessionsaver.plugin
+%dnl %{_libdir}/gedit/plugins/sessionsaver/
 
-%files -n gedit-plugin-terminal
-# terminal
-%{_datadir}/metainfo/gedit-terminal.metainfo.xml
-%{_libdir}/gedit/plugins/terminal.plugin
-%{_libdir}/gedit/plugins/terminal.py*
-%{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.terminal.gschema.xml
+%dnl %files -n gedit-plugin-terminal
+%dnl # terminal
+%dnl %{_datadir}/metainfo/gedit-terminal.metainfo.xml
+%dnl %{_libdir}/gedit/plugins/terminal.plugin
+%dnl %{_libdir}/gedit/plugins/terminal.py*
+%dnl %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.terminal.gschema.xml
 
 %files -n gedit-plugin-wordcompletion
 # wordcompletion
