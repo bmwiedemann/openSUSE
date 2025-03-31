@@ -1,7 +1,7 @@
 #
 # spec file for package gajim
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libpcre1
+BuildRequires:  libpcre2-8-0
 BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-generators >= 20220912
