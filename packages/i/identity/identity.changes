@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 30 19:29:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to Version 25.03
+  * Changed the versioning scheme to year.month.
+  * Updated to the GNOME 48 platform.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 23 14:51:23 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - add glycin-loaders Requires: needed to open jxl and avif properly

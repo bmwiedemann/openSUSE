@@ -1,7 +1,7 @@
 #
 # spec file for package identity
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,9 @@
 
 %define _lto_cflags %{nil}
 %define appid org.gnome.gitlab.YaLTeR.Identity
-%define rurl abddc256d6b3b7fce433a40eae4588fe
+%define rurl eccd1611a3158fcaa7c0105a6ea85eca
 Name:           identity
-Version:        0.7.0
+Version:        25.03
 Release:        0
 Summary:        Compare images and videos
 License:        GPL-3.0-or-later
