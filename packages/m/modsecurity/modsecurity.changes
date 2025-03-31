@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Mar 19 17:46:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.0.14:
+  * changed t:htmlEntityDecode transformation
+    CVE-2025-27110 boo#1238061
+  * add value checking to @validateByteRange operator
+  * aligned TIME_MON variable's behavior
+  * Leverage std::make_unique & std::make_shared to create objects in the heap
+  * Simplified handling of RuleMessage by removing usage of std::shared_ptr
+  * Simplified constructors, copy constructors & assignment operators
+- new upstream
+- add upstream signing key and validate source signature
+- drop build dependencies no longer needed
+- build with support for curl, MaxMindDB, ssdeep (libfuzzy), yail
+- build with pcre2 instead of pcre
+- correct upstream license, it is Apache-2.0
+
+-------------------------------------------------------------------
 Tue Dec  3 07:24:11 UTC 2024 - Flavio Castelli <fcastelli@suse.com>
 
 - Update to version 3.0.13:
