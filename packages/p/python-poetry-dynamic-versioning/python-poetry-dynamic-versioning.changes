@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 30 11:42:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.8.2:
+  * Possible object has no attribute 'poetry' error in some projects.
+
+-------------------------------------------------------------------
 Mon Mar 24 17:41:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.8.1:
