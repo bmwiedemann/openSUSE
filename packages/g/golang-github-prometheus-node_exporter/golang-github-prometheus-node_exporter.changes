@@ -2,7 +2,7 @@
 Mon Feb 17 08:35:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - refactor `_service` file and spec to use a nice tarball name
-- update to 1.9.0:
+- update to 1.9.0 (jsc#PED-12485):
   * [CHANGE] meminfo: Convert linux implementation to use procfs
     lib #3049
   * [CHANGE] Update logging to use Go log/slog #3097
