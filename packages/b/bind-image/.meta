@@ -1,0 +1,4 @@
+<package name="bind-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed ISC BIND 9</title>
+  <description>ISC BIND 9 container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
