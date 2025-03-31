@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:50:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.10.2:
+  * RosterManager: Do not auto-accept Moved subscription requests to
+    comply with XEP #691
+
+-------------------------------------------------------------------
 Wed Feb 26 08:13:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.1:

@@ -32,7 +32,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -117,6 +117,7 @@ already found by CMake.
 
 
 # No need to build it twice
+
 %package -n libqxmpp-doc
 Summary:        Qxmpp library documentation
 Group:          Documentation/HTML
