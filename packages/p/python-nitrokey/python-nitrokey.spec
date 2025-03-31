@@ -18,17 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.2.4
+Version:        0.3.1
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nitrokey-sdk-py
-Source:         https://files.pythonhosted.org/packages/source/n/nitrokey/nitrokey-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/n/nitrokey/nitrokey-%{version}.tar.gz
+Source99:       python-nitrokey.rpmlintrc
+BuildRequires:  %{python_module base >= 3.9.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-crcmod
+Requires:       python-cryptography
+Requires:       python-fido2
+Requires:       python-hidapi
+Requires:       python-protobuf
+Requires:       python-pyserial
+Requires:       python-requests
+Requires:       python-semver
+Requires:       python-tlv8
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,7 +58,7 @@ The Nitrokey Python SDK can be used to use and configure Nitrokey devices.
 
 %files %{python_files}
 %doc README.md
-%license LICENSES LICENSES/Apache-2.0.txt LICENSES/MIT.txt
+%license LICENSES/Apache-2.0.txt LICENSES/MIT.txt
 %{python_sitelib}/nitrokey
 %{python_sitelib}/nitrokey-%{version}.dist-info
 

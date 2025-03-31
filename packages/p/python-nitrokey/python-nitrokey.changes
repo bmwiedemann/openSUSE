@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Mar 28 14:57:14 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add *.rpmlintrc to make rpmlint output useful.
+
+-------------------------------------------------------------------
+Fri Mar 28 08:51:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.3.1:
+  * nitropy.nk3.updates: Remove reboot during update
+
+-------------------------------------------------------------------
+Wed Mar 26 08:18:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.3.0:
+  * Bump minimum Python version from 3.9 to 3.9.2.
+  * nitrokey.nk3.updates:
+    - Remove UpdatePath, get_extra_information and
+      get_finalization_wait_retries from public API.
+    - Remove obsolete UpdateUi.request_repeated_update method.
+    - Show warning when updating from bootloader mode and if the
+      status command is not available.
+    - Reboot devices in firmware mode before the update to make
+      sure that the status is up to date.
+    - Add Warning enum, show_warning and raise_warning methods to
+      UpdateUi and ignore_warnings argument to UpdateUi.__init__.
+  * Add support for updates to Nitrokey 3 firmware v1.8.2.
+  * Add support for setting a minimum SDK version in firmware
+    update containers.
+    - Add an sdk field to nitrokey.trussed.FirmwareContainer.
+    - Check SDK version in nitrokey.nk3.updates.Updater.update.
+    - Add nitrokey.nk3.updates.Warning.SDK_VERSION variant.
+
+-------------------------------------------------------------------
 Tue Feb 18 10:18:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.2.4

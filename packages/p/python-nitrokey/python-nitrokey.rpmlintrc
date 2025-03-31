@@ -1,0 +1,2 @@
+addFilter("python-bytecode-inconsistent-mtime /usr/lib.*/__pycache__/.*\.pyc")
+addFilter("non-executable-script /usr/lib.*/trussed/.*\.py")
