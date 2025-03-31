@@ -1,0 +1,27 @@
+-------------------------------------------------------------------
+Mon Mar 31 05:43:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7:
+  * Features
+    - Git who now reads and respects a .git-blame-ignore-revs file
+      if present in the root of the repo (suggested in #10)
+    - Git who now fully supports the "exclude" pathspec magic as
+      defined in gitglossary(3). This allows you to ignore certain
+      files by passing e.g. :!vendor/ or :!*.c (addresses #4)
+  * Bug Fixes / Tweaks
+    - Git who no longer panics when log.show-signature is set in
+      the Git config (fixes #2)
+    - Git who can handle leading whitespace in filenames (fixes #5)
+    - "Terminator" (i.e. --) is now parsed properly from the CLI
+      arguments, allowing deleted paths to be analyzed (fixes #7)
+    - Commit "subject" no longer read from git log. It was
+      previously ignored but not reading it entirely might fix #16
+    - --diff-merges: first-parent no longer passed to git log
+      invocation. This wasn't really needed and it turns out it is
+      a relatively new feature of Git (version 2.31). This should
+      help with #21
+
+-------------------------------------------------------------------
+Thu Mar 20 06:29:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package git-who: git blame for file trees
