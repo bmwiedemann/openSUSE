@@ -47,4 +47,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148562</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f608eff0c07a2320e885e40aa3a2c9a9</srcmd5>
+    <version>4.9.0</version>
+    <time>1743413922</time>
+    <user>anag+factory</user>
+    <comment>Do not require xmvn-tools for building</comment>
+    <requestid>1264942</requestid>
+  </revision>
 </revisionlist>

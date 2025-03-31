@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-swt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,12 +56,10 @@ Patch38:        eclipse-jintlong.patch
 Patch39:        eclipse-gcc10.patch
 BuildRequires:  ant >= 1.10.5
 BuildRequires:  gcc
-BuildRequires:  javapackages-local
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  rhino
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)
@@ -122,7 +120,13 @@ ant -Dmachine_gtk3=1 -DBUILD_WEBKIT2EXTENSION=yes -Dswt.arch=%{eclipse_arch}
 %{mvn_artifact} eclipse.platform.swt/bundles/org.eclipse.swt/pom.xml org.eclipse.swt.gtk.linux.%{eclipse_arch}.jar
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_jnidir}
+install -pm 0644 org.eclipse.swt.gtk.linux.%{eclipse_arch}.jar %{buildroot}%{_jnidir}/swt.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%mvn_install_pom eclipse.platform.swt/bundles/org.eclipse.swt/pom.xml %{buildroot}%{_mavenpomdir}/swt.pom
+%add_maven_depmap swt.pom swt.jar -a "org.eclipse.swt:swt"
 
 %files -f .mfiles
 
