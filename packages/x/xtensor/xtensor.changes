@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 30 07:40:30 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Version 0.26.0
+  - Adding the ability to enable memory overlap check in assignment to avoid
+    unneeded temporary memory allocation
+  - Pure xtensor FFT implementation
+  - Update for C++ 20 compatibility
+  - Fixed CI added OSX 13 and GCC 12
+  - Fix compile issue with clang 19.1.1
+  - Avoid warnings in compiler version checks
+  - Bump OSX Version 12 -> 13 to avoid deprecated environment
+  - Update gh-pages.yml
+  - Upgraded to xsimd 13.2.0
+  - Added missing configuration key for RTD
+  - Code reorganization
+  - Adding fix for incorrect usage of xt::has_assign_conversion in xassig
+  - Upgraded to xtl 0.8.0 and C++17
+  - Migrated to more recent compilers
+  - Fix for Clang19
+
+-------------------------------------------------------------------
 Fri Feb  7 15:42:31 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - BuildRequires: python3-sphinx_rtd_theme to fix Factory build

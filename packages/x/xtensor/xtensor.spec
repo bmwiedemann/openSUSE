@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           xtensor
-Version:        0.25.0
+Version:        0.26.0
 Release:        0
 Summary:        Multi-dimensional arrays with broadcasting and lazy computing
 License:        BSD-3-Clause
@@ -32,7 +32,7 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  make
-BuildRequires:  xtl-devel >= 0.7.5
+BuildRequires:  xtl-devel >= 0.8.0
 Group:          Development/Libraries/C and C++
 
 %description
