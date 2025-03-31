@@ -290,4 +290,17 @@
     <comment></comment>
     <requestid>1199470</requestid>
   </revision>
+  <revision rev="39" vrev="14">
+    <srcmd5>58707808e937facdb05c7de40081641d</srcmd5>
+    <version>0.4.9</version>
+    <time>1743414153</time>
+    <user>anag+factory</user>
+    <comment>- Fix build differently:
+  + BuildRequire waf and use system waf instead of old intree version.
+  + waflib_python312.patch is only needed in python-aubio.
+- Fix build by using python312 and enabling waflib_python312.patch
+  for the main build.
+</comment>
+    <requestid>1265449</requestid>
+  </revision>
 </revisionlist>

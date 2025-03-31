@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Mar 29 13:30:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build differently:
+  + BuildRequire waf and use system waf instead of old intree version.
+  + waflib_python312.patch is only needed in python-aubio.
+
+-------------------------------------------------------------------
+Fri Mar 28 10:19:05 UTC 2025 - Dave Plater <davejplater@gmail.com>
+
+- Fix build by using python312 and enabling waflib_python312.patch
+  for the main build.
+
+-------------------------------------------------------------------
 Sun Jul 16 09:16:44 UTC 2023 - Edgar Aichinger <edogawa@aon.at>
 
 - Add waflib_deprecated.patch (fixes TW compilation)

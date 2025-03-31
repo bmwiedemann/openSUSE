@@ -1,7 +1,7 @@
 #
 # spec file for package aubio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ Patch0:         cdfe9ce.patch
 # PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/8a05420.patch -- [source_avcodec] define FF_API_LAVF_AVCTX for libavcodec > 59, thx @berolinux (closes gh-353)
 Patch1:         8a05420.patch
 Patch2:         waflib_deprecated.patch
-
 Source99:       baselibs.conf
 BuildRequires:  alsa-devel
 BuildRequires:  doxygen
@@ -44,6 +43,7 @@ BuildRequires:  libsndfile-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  txt2man
+BuildRequires:  waf
 %if 1 == 0
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -111,11 +111,11 @@ sed -i -e "s#/lib#/%{_lib}#" src/wscript_build
 sed -i -e 's#python\ ${SRC}#python3 ${SRC}#g' tests/wscript_build
 
 %build
-python3 ./waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-fftw3
-python3 ./waf build -v %{?_smp_mflags}
+waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-fftw3
+waf build -v %{?_smp_mflags}
 
 %install
-python3 ./waf install --destdir=%{buildroot}
+waf install --destdir=%{buildroot}
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pR %{buildroot}%{_datadir}/doc/libaubio-doc/api %{buildroot}%{_docdir}/%{name}
 rm -rf %{buildroot}%{_datadir}/doc/libaubio-doc
