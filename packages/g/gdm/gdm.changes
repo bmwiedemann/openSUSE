@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 26 22:11:42 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update systemd xdm migration
+  * Change display-manager to display-manager-legacy
+  * Actually detect gdm instead of xdm
+  * Upgrade xdm first if installed to run the systemd migration
+
+-------------------------------------------------------------------
 Fri Mar 21 13:01:10 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rebase/fix gdm-switch-to-tty1.patch to fix build against gcc 15.

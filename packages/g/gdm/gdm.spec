@@ -222,6 +222,8 @@ By default openSUSE uses xdm which enables the DM based on sysconfig.
 Summary:        Systemd gdm.service file
 Group:          System/GUI/GNOME
 Requires:       gdm
+# Upgrade xdm first if installed - to run systemd DM migration
+Requires(pre):  (xdm >= 1.1.17 if xdm)
 BuildArch:      noarch
 
 %description systemd
@@ -383,11 +385,11 @@ dconf update
 %posttrans systemd
 %dnl migrate a system that still uses xdm abstraction as display manager to gdm
 %dnl part of https://en.opensuse.org/openSUSE:DisplayManagerRework
-if [ "$(systemctl is-enabled display-manager)" = "enabled" ]; then
-  # display-manager is currently 'xdm' - if another display-manager would be running
-  # the above command would return 'alias'
+if [ "$(systemctl is-enabled display-manager-legacy)" = "enabled" ]; then
+  # display-manager is currently 'legacy mode' - if migration has already occured
+  # the above command would return 'disabled'
   if [ -x /usr/sbin/update-alternatives ]; then
-    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/xdm" ]; then
+    if [ "$(update-alternatives  --query default-displaymanager | awk '/Value:/ {print $2}')" = "/usr/lib/X11/displaymanagers/gdm" ]; then
       # the display-manager started by xdm is currently gdm - let's switch to the native service
       # this only force-enables gdm whenever xdm was enabled AND it was uses as wrapper to start gdm
       systemctl enable --force gdm.service
