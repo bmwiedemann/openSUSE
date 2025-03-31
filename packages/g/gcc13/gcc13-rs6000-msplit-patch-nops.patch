@@ -1,0 +1,201 @@
+From 1807ab6f3a5028ef0b7b30a37e947ea2c9d2bb18 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 13 Nov 2024 16:04:06 +0100
+Subject: [PATCH] rs6000: Add -msplit-patch-nops (PR112980)
+To: gcc-patches@gcc.gnu.org
+
+From: Michael Matz <matz@suse.de>
+
+as the bug report details some uses of -fpatchable-function-entry
+aren't happy with the "before" NOPs being inserted between global and
+local entry point on powerpc.  We want the before NOPs be in front
+of the global entry point.  That means that the patching NOPs aren't
+consecutive for dual entry point functions, but for these usecases
+that's not the problem.  But let us support both under the control
+of a new target option: -msplit-patch-nops.
+
+	gcc/
+
+	PR target/112980
+	* config/rs6000/rs6000.opt (msplit-patch-nops): New option.
+	* doc/invoke.texi (RS/6000 and PowerPC Options): Document it.
+	* config/rs6000/rs6000.h (machine_function.stop_patch_area_print):
+	New member.
+	* config/rs6000/rs6000.cc (rs6000_print_patchable_function_entry):
+	Emit split nops under control of that one.
+	* config/rs6000/rs6000-logue.cc (rs6000_output_function_prologue):
+	Add handling of split patch nops.
+---
+ gcc/config/rs6000/rs6000-logue.cc | 15 +++++++++------
+ gcc/config/rs6000/rs6000.cc       | 27 +++++++++++++++++++++++----
+ gcc/config/rs6000/rs6000.h        |  6 ++++++
+ gcc/config/rs6000/rs6000.opt      |  4 ++++
+ gcc/doc/invoke.texi               | 17 +++++++++++++++--
+ 5 files changed, 57 insertions(+), 12 deletions(-)
+
+diff --git a/gcc/config/rs6000/rs6000-logue.cc b/gcc/config/rs6000/rs6000-logue.cc
+index 208404e6864..0c3425fdd9a 100644
+--- a/gcc/config/rs6000/rs6000-logue.cc
++++ b/gcc/config/rs6000/rs6000-logue.cc
+@@ -4003,8 +4003,8 @@ rs6000_output_function_prologue (FILE *file)
+ 
+       unsigned short patch_area_size = crtl->patch_area_size;
+       unsigned short patch_area_entry = crtl->patch_area_entry;
+-      /* Need to emit the patching area.  */
+-      if (patch_area_size > 0)
++      /* Emit non-split patching area now.  */
++      if (!TARGET_SPLIT_PATCH_NOPS && patch_area_size > 0)
+ 	{
+ 	  cfun->machine->global_entry_emitted = true;
+ 	  /* As ELFv2 ABI shows, the allowable bytes between the global
+@@ -4025,7 +4025,6 @@ rs6000_output_function_prologue (FILE *file)
+ 		       patch_area_entry);
+ 	      rs6000_print_patchable_function_entry (file, patch_area_entry,
+ 						     true);
+-	      patch_area_size -= patch_area_entry;
+ 	    }
+ 	}
+ 
+@@ -4035,9 +4034,13 @@ rs6000_output_function_prologue (FILE *file)
+       assemble_name (file, name);
+       fputs ("\n", file);
+       /* Emit the nops after local entry.  */
+-      if (patch_area_size > 0)
+-	rs6000_print_patchable_function_entry (file, patch_area_size,
+-					       patch_area_entry == 0);
++      if (patch_area_size > patch_area_entry)
++	{
++	  patch_area_size -= patch_area_entry;
++	  cfun->machine->stop_patch_area_print = false;
++	  rs6000_print_patchable_function_entry (file, patch_area_size,
++						 patch_area_entry == 0);
++	}
+     }
+ 
+   else if (rs6000_pcrel_p ())
+diff --git a/gcc/config/rs6000/rs6000.cc b/gcc/config/rs6000/rs6000.cc
+index 2b876c90e6f..e6fbfe76e19 100644
+--- a/gcc/config/rs6000/rs6000.cc
++++ b/gcc/config/rs6000/rs6000.cc
+@@ -14937,11 +14937,25 @@ rs6000_print_patchable_function_entry (FILE *file,
+ {
+   bool global_entry_needed_p = rs6000_global_entry_point_prologue_needed_p ();
+   /* For a function which needs global entry point, we will emit the
+-     patchable area before and after local entry point under the control of
+-     cfun->machine->global_entry_emitted, see the handling in function
+-     rs6000_output_function_prologue.  */
+-  if (!global_entry_needed_p || cfun->machine->global_entry_emitted)
++     patchable area when it isn't split before and after local entry point
++     under the control of cfun->machine->global_entry_emitted, see the
++     handling in function rs6000_output_function_prologue.  */
++  if (!TARGET_SPLIT_PATCH_NOPS
++      && (!global_entry_needed_p || cfun->machine->global_entry_emitted))
+     default_print_patchable_function_entry (file, patch_area_size, record_p);
++
++  /* For split patch nops we emit the before nops (from generic code)
++     in front of the global entry point and after the local entry point,
++     under the control of cfun->machine->stop_patch_area_print, see
++     rs6000_output_function_prologue and rs6000_elf_declare_function_name.  */
++  if (TARGET_SPLIT_PATCH_NOPS)
++    {
++      if (!cfun->machine->stop_patch_area_print)
++	default_print_patchable_function_entry (file, patch_area_size,
++						record_p);
++      else
++	gcc_assert (global_entry_needed_p);
++    }
+ }
+ 
+ enum rtx_code
+@@ -21115,6 +21129,11 @@ rs6000_elf_declare_function_name (FILE *file, const char *name, tree decl)
+       fprintf (file, "\t.previous\n");
+     }
+   ASM_OUTPUT_LABEL (file, name);
++  /* At this time, the "before" NOPs have been already emitted.
++     For split nops stop generic code from printing the "after" NOPs and
++     emit them just after local entry ourself later.  */
++  if (rs6000_global_entry_point_prologue_needed_p ())
++    cfun->machine->stop_patch_area_print = true;
+ }
+ 
+ static void rs6000_elf_file_end (void) ATTRIBUTE_UNUSED;
+diff --git a/gcc/config/rs6000/rs6000.h b/gcc/config/rs6000/rs6000.h
+index b8edba43d53..b5dae276420 100644
+--- a/gcc/config/rs6000/rs6000.h
++++ b/gcc/config/rs6000/rs6000.h
+@@ -2443,6 +2443,12 @@ typedef struct GTY(()) machine_function
+      global entry.  It helps to control the patchable area before and after
+      local entry.  */
+   bool global_entry_emitted;
++  /* With ELFv2 ABI dual entry points being adopted, generic framework
++     targetm.asm_out.print_patchable_function_entry would generate "after"
++     NOPs before local entry, which is wrong.  This flag is to stop it from
++     printing patch area before local entry, it is only useful when the
++     function requires dual entry points.  */
++  bool stop_patch_area_print;
+ } machine_function;
+ #endif
+ 
+diff --git a/gcc/config/rs6000/rs6000.opt b/gcc/config/rs6000/rs6000.opt
+index 52507956a4d..6acd8c3c5ff 100644
+--- a/gcc/config/rs6000/rs6000.opt
++++ b/gcc/config/rs6000/rs6000.opt
+@@ -300,6 +300,10 @@ mfull-toc
+ Target
+ Put everything in the regular TOC.
+ 
++msplit-patch-nops
++Target Var(TARGET_SPLIT_PATCH_NOPS) Init(0)
++Emit NOPs before global and after local entry point for -fpatchable-function-entry.
++
+ mvrsave
+ Target Var(TARGET_ALTIVEC_VRSAVE) Save
+ Generate VRSAVE instructions when generating AltiVec code.
+diff --git a/gcc/doc/invoke.texi b/gcc/doc/invoke.texi
+index 89d4b24dd74..1b0cd6c8e26 100644
+--- a/gcc/doc/invoke.texi
++++ b/gcc/doc/invoke.texi
+@@ -1265,6 +1265,7 @@ See RS/6000 and PowerPC Options.
+ -mtraceback=@var{traceback_type}
+ -maix-struct-return  -msvr4-struct-return
+ -mabi=@var{abi-type}  -msecure-plt  -mbss-plt
++-msplit-patch-nops
+ -mlongcall  -mno-longcall  -mpltseq  -mno-pltseq
+ -mblock-move-inline-limit=@var{num}
+ -mblock-compare-inline-limit=@var{num}
+@@ -17449,11 +17450,12 @@ If @code{N=0}, no pad location is recorded.
+ The NOP instructions are inserted at---and maybe before, depending on
+ @var{M}---the function entry address, even before the prologue.  On
+ PowerPC with the ELFv2 ABI, for a function with dual entry points,
+-the local entry point is this function entry address.
++the local entry point is this function entry address by default.  See
++the @option{-msplit-patch-nops} option to change this.
+ 
+ The maximum value of @var{N} and @var{M} is 65535.  On PowerPC with the
+ ELFv2 ABI, for a function with dual entry points, the supported values
+-for @var{M} are 0, 2, 6 and 14.
++for @var{M} are 0, 2, 6 and 14 when not using @option{-msplit-patch-nops}.
+ @end table
+ 
+ 
+@@ -29486,6 +29488,17 @@ requires @code{.plt} and @code{.got}
+ sections that are both writable and executable.
+ This is a PowerPC 32-bit SYSV ABI option.
+ 
++@opindex msplit-patch-nops
++@item -msplit-patch-nops
++When adding NOPs for a patchable area via the
++@option{-fpatchable-function-entry} option emit the ``before'' NOPs in front
++of the global entry point and the ``after'' NOPs after the local entry point.
++This makes the sequence of NOPs not consecutive when a global entry point
++is generated.  Without this option the NOPs are emitted directly before and
++after the local entry point, making them consecutive but moving global and
++local entry point further apart.  If only a single entry point is generated
++this option has no effect.
++
+ @opindex misel
+ @opindex mno-isel
+ @item -misel
+-- 
+2.43.0
+

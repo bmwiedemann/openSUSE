@@ -397,4 +397,15 @@
   [bsc#1238491]</comment>
     <requestid>1253649</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7e9c7d7c8233446811b1bcfb4c1d783b</srcmd5>
+    <version>13.3.1+git9426</version>
+    <time>1743413975</time>
+    <user>anag+factory</user>
+    <comment>- Replace gcc13-rs6000-Adjust-fpatchable-function-entry.patch with
+  a backport of the now upstream -msplit-patch-nops in
+  gcc13-rs6000-msplit-patch-nops.patch requried for user-space
+  livepatching on powerpc.</comment>
+    <requestid>1264976</requestid>
+  </revision>
 </revisionlist>

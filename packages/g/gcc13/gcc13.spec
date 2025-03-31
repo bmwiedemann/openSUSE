@@ -398,7 +398,7 @@ Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
 # Feature backports
 Patch100:       gcc13-pr88345-min-func-alignment.diff
-Patch101:       gcc13-rs6000-Adjust-fpatchable-function-entry.patch
+Patch101:       gcc13-rs6000-msplit-patch-nops.patch
 
 License:        GPL-3.0-or-later
 Summary:        The GNU C Compiler and Support Files

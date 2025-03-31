@@ -147,7 +147,7 @@ Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
 # Feature backports
 Patch100:       gcc13-pr88345-min-func-alignment.diff
-Patch101:       gcc13-rs6000-Adjust-fpatchable-function-entry.patch
+Patch101:       gcc13-rs6000-msplit-patch-nops.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple

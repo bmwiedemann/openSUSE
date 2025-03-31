@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 10:05:46 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Replace gcc13-rs6000-Adjust-fpatchable-function-entry.patch with
+  a backport of the now upstream -msplit-patch-nops in
+  gcc13-rs6000-msplit-patch-nops.patch requried for user-space
+  livepatching on powerpc.
+
+-------------------------------------------------------------------
 Thu Mar 13 08:22:15 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, 4ef1d8c84faeebffeb0cc01ee2, git9426
