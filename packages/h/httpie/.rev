@@ -144,4 +144,12 @@
 - Rewrite %{python_sitelib} in %files to respect %primary_python</comment>
     <requestid>1240895</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>aecf7ae29a5b966cbe4257bc2975e7f7</srcmd5>
+    <version>3.2.4</version>
+    <time>1743414050</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265246</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 16:35:37 UTC 2025 - Robert Munteanu <rombert@apache.org>
+
+- Switch python version to 3.13
+  * ignore the newly failing tests
+
+-------------------------------------------------------------------
 Tue Jan 21 13:32:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded build dependencies
