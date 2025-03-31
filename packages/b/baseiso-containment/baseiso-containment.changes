@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:03:38 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- 0.2.4
+  * generate tftpboot subpackage when agama PXE tarballs are
+    detected
+
+-------------------------------------------------------------------
 Wed Feb 26 21:54:34 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - 0.2.3

@@ -1,5 +1,7 @@
 # needsrootforbuild
 
+%bcond pxeboot 0
+
 Url:            http://www.suse.com/
 Name:           baseiso-__NAME____FLAVOR__
 Summary:        Product Composer Base Images
@@ -9,15 +11,33 @@ Group:          System/Management
 License:        SUSE-EULA
 Provides:       baseiso(__NAME____FLAVOR__)
 
-%define install_dir %_libexecdir/base-isos
+%define install_dir  %{_libexecdir}/base-isos
+%define tftpboot_dir /usr/share/tftpboot-installation
+%define product_dir  %{tftpboot_dir}/__NAME____FLAVOR__
+%define pxeboot_dir  %{product_dir}/%{_arch}/loader
 
 %description
 Images to be used by product composer as a base. It is designed
 for Agama Installer in first place.
 
+%package -n tftpboot-__NAME____FLAVOR__-%{_arch}
+Summary:        Product Composer Base Images (extracted PXE images)
+Group:          System/Management
+BuildArch:      noarch
+
+%description -n tftpboot-__NAME____FLAVOR__-%{_arch}
+Loaders that can be used for PXE boot, extracted from the installer
+content.
+
 %install
 mkdir -p %buildroot%{install_dir}
 cp -a /usr/src/packages/KIWI/* %buildroot%install_dir
+
+%if %{with pxeboot}
+mkdir -p %{buildroot}%{pxeboot_dir}
+tar -xvf %{buildroot}%{install_dir}/__NAME__*.install.tar -C %{buildroot}%{pxeboot_dir} --transform 's/__NAME__.%{_arch}-__VERSION__./pxe-installer./' --show-transformed-names
+ls -ltha %{buildroot}%{pxeboot_dir}
+%endif
 
 if [ -n "__FLAVOR__" ]; then
   # Rename the files so that they match what product-composer
@@ -35,5 +55,11 @@ fi
 
 %files
 %install_dir
+
+%if %{with pxeboot}
+%files -n tftpboot-__NAME____FLAVOR__-%{_arch}
+%dir %tftpboot_dir
+%product_dir
+%endif
 
 %changelog

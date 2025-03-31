@@ -17,7 +17,7 @@
 
 
 Name:           baseiso-containment
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Wraps Agama build for product composer
 License:        MIT

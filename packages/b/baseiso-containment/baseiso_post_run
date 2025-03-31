@@ -35,15 +35,30 @@ ARCH="$(uname -m)"
 
 set +e # we have set -e, so on Minimal VMs this needs to fail silently
 iso_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.iso 2>/dev/null`
+pxe_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.install.tar 2>/dev/null`
 set -e
 
 # nothing to do for us
-[ -z "$iso_file" ] && exit 0
+if [ -z "$iso_file" ] && [ -z "$pxe_file" ]; then
+    exit 0
+fi
 
-iso_file="${iso_file##*/}"
-iso_name=${iso_file%.$ARCH*}
-iso_version=${iso_file#*$ARCH-}
+if [ -n "$pxe_file" ]; then
+    PXEBOOT_BCOND="--with pxeboot"
+else
+    PXEBOOT_BCOND="--without pxeboot"
+fi
+
+if [ -n "$iso_file" ]; then
+    main_file=${iso_file##*/}
+else
+    main_file=${pxe_file##*/}
+fi
+
+iso_name=${main_file%.$ARCH*}
+iso_version=${main_file#*$ARCH-}
 iso_version=${iso_version%.iso}
+iso_version=${iso_version%.tar}
 iso_build=${iso_version##*-Build}
 iso_version=${iso_version%-Build*}
 iso_flavor=${iso_version#*-}
@@ -66,13 +81,16 @@ sed -e "s@__NAME__@$iso_name@g" \
     > $BUILD_DIR/image.spec
 
 if [ -z "$BUILD_DISTURL" ]; then
-  rpmbuild --target $ARCH -ba $BUILD_DIR/image.spec
+  rpmbuild --target $ARCH -ba $PXEBOOT_BCOND $BUILD_DIR/image.spec
 else
-  rpmbuild --target $ARCH -ba --define "disturl $BUILD_DISTURL" $BUILD_DIR/image.spec
+  rpmbuild --target $ARCH -ba $PXEBOOT_BCOND --define "disturl $BUILD_DISTURL" $BUILD_DIR/image.spec
 fi
 
 # required for the BS to find the rpm, because it is
 # a "non-standard result file for KIWI"
 mkdir -p $TOPDIR/OTHER
 mv $TOPDIR/RPMS/$ARCH/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.$ARCH.rpm $TOPDIR/OTHER/
+if [ -e $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_build.noarch.rpm ]; then
+  mv $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_build.noarch.rpm $TOPDIR/OTHER/
+fi
 mv $TOPDIR/SRPMS/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/
