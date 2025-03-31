@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 29 07:51:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.42.0:
+  * New Features
+    - 2c0c2a0: feat: Add BuildHost option to RPM packages (#914)
+      (@onshorechet)
+  * Bug fixes
+    - 17cc289: fix: nfpm init changelog file name (@caarlos0)
+  * Dependency updates
+    - 4200fa0: feat(deps): update to go 1.23, update golang.org/x/
+      deps (@caarlos0)
+  * Other work
+    - ed61e2e: docs: fix typo in goarch-to-pkg.md (#916)
+      (@erdnaxeli)
+    - eaf8141: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Fri Feb 28 05:41:25 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.41.3:
