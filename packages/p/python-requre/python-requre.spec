@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-requre
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Python libray for storing and using objects for testing
 License:        MIT
