@@ -258,4 +258,35 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Deprecate Python 3.9, support Python 3.13.</comment>
     <requestid>1222985</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>03b69908a5c9ce76b6325b4a73f3d646</srcmd5>
+    <version>2025.3.13</version>
+    <time>1743414191</time>
+    <user>anag+factory</user>
+    <comment>- update to 2025.3.13:
+  * Pass 5110 tests.
+  * Change bytes2str to decode only up to first NULL character
+    (breaking).
+  * Remove stripnull function calls to reduce overhead (#285).
+  * Deprecate stripnull function.
+  * Fix julian_datetime milliseconds (#283).
+  * Remove deprecated dtype arguments from imread and
+    FileSequence (breaking).
+  * Remove deprecated imsave and TiffWriter.save function/method
+    (breaking).
+  * Remove deprecated option to pass multiple values to
+    compression (breaking).
+  * Remove deprecated option to pass unit to resolution
+    (breaking).
+  * Remove deprecated enums from TIFF namespace (breaking).
+  * Remove deprecated lazyattr and squeeze_axes functions
+    (breaking).
+  * Improve type hints.
+  * Deprecate Python 3.10.
+  * Read PlaneProperty from STK UIC1Tag (#280).
+  * Allow 'None' as alias for COMPRESSION.NONE and PREDICTOR.NONE
+    (#274).
+  * Zarr 3 is not supported (#272).</comment>
+    <requestid>1265493</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Mar 30 07:53:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.3.13:
+  * Pass 5110 tests.
+  * Change bytes2str to decode only up to first NULL character
+    (breaking).
+  * Remove stripnull function calls to reduce overhead (#285).
+  * Deprecate stripnull function.
+  * Fix julian_datetime milliseconds (#283).
+  * Remove deprecated dtype arguments from imread and
+    FileSequence (breaking).
+  * Remove deprecated imsave and TiffWriter.save function/method
+    (breaking).
+  * Remove deprecated option to pass multiple values to
+    compression (breaking).
+  * Remove deprecated option to pass unit to resolution
+    (breaking).
+  * Remove deprecated enums from TIFF namespace (breaking).
+  * Remove deprecated lazyattr and squeeze_axes functions
+    (breaking).
+  * Improve type hints.
+  * Deprecate Python 3.10.
+  * Read PlaneProperty from STK UIC1Tag (#280).
+  * Allow 'None' as alias for COMPRESSION.NONE and PREDICTOR.NONE
+    (#274).
+  * Zarr 3 is not supported (#272).
+
+-------------------------------------------------------------------
 Sat Nov  9 15:50:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.9.20:
