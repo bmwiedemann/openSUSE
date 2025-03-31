@@ -1,7 +1,7 @@
 #
 # spec file for package xca
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Jonathan Brielmaier <jbrielmaier@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xca
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        An RSA key and certificate management tool
 License:        BSD-3-Clause
