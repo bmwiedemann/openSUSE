@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 28 18:22:24 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Fix errors in aggregator.pom and in ant build system that prevent
+  successful builds with upcoming Maven 4
+- Generate a non-modular javadoc
+
+-------------------------------------------------------------------
 Fri May 24 05:33:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Let junit5 require junit5-minimal to avoid conflict of providers
