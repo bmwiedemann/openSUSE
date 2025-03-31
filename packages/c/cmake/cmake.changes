@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:14:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch cmake-gui builds to Qt6.
+- Add BuildRequires: qt6-macro to locate qhelpgenerator (in
+  %_qt6_libexecdir) and add corresponding path to env PATH.
+- Drop use of deprecated %suse_update_desktop_file macro and
+  BuildRequires: update-desktop-files needed solely for this.
+
+-------------------------------------------------------------------
 Tue Mar 11 06:54:19 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add cmake-findhdf5-prefer-hl-compilers.patch -- FindHDF5: Prefer

@@ -109,11 +109,13 @@ BuildRequires:  pkgconfig(libcurl)
 %if %{with gui}
 BuildRequires:  python%{pyver}-Sphinx
 BuildRequires:  python%{pyver}-base
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  qt6-macros
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Widgets)
 %endif
 %if %{with qhelp}
-BuildRequires:  libqt5-qttools-qhelpgenerator
+BuildRequires:  qt6-tools-helpgenerators
 %endif
 
 %description
@@ -148,6 +150,10 @@ echo "`grep cmake-%{version}.tar.gz %{SOURCE5} | grep -Eo '^[0-9a-f]+'`  %{SOURC
 
 %build
 cp -p %{SOURCE99} .
+%if %{with qhelp}
+# Add path to qhelpgenerator
+export PATH+=":%{_qt6_libexecdir}"
+%endif
 %if %{with mini}
 # this is serial, so it takes too much time for the mini package
 %define _find_debuginfo_dwz_opts %{nil}
@@ -196,7 +202,6 @@ export CXXFLAGS="$CFLAGS"
 mkdir -p %{buildroot}%{_libdir}/cmake
 
 %if %{with gui}
-%suse_update_desktop_file  -r cmake-gui CMake Development IDE Tools Qt
 
 # delete files that belong to the 'cmake' package
 rm -rf %{buildroot}%{_bindir}/{cpack,cmake,ctest,ccmake}
