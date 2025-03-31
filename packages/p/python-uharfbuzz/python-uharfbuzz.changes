@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:44:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.48.0:
+  * Build vendored HarfBuzz again with HB_EXPERIMENTAL_API to
+    restore
+  * support for VARC and other experimental HarfBuzz features.
+- update to 0.47.0:
+  * Update to HarfBuzz 11.0.0
+
+-------------------------------------------------------------------
 Tue Mar 18 10:07:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.46.0

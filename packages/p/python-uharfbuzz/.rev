@@ -53,4 +53,17 @@
     <comment></comment>
     <requestid>1254105</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b986919ad782025e71a0b35f408d001</srcmd5>
+    <version>0.48.0</version>
+    <time>1743414185</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.48.0:
+  * Build vendored HarfBuzz again with HB_EXPERIMENTAL_API to
+    restore
+  * support for VARC and other experimental HarfBuzz features.
+- update to 0.47.0:
+  * Update to HarfBuzz 11.0.0</comment>
+    <requestid>1265482</requestid>
+  </revision>
 </revisionlist>
