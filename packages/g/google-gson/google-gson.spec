@@ -1,7 +1,7 @@
 #
 # spec file for package google-gson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,13 @@ Summary:        Java lib for conversion of Java objects into JSON representation
 License:        Apache-2.0
 URL:            https://github.com/google/gson
 Source0:        https://github.com/google/gson/archive/gson-parent-%{version}.tar.gz
-Patch0:         osgi-export-internal.patch
-# Remove dependency on unavailable templating-maven-plugin
-Patch1:         no-template-plugin.patch
+Source1:        %{name}-build.tar.xz
+BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  glassfish-annotation-api
 BuildRequires:  java-devel >= 9
-BuildRequires:  maven-local
-BuildRequires:  mvn(javax.annotation:jsr250-api)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  jsr-305
 # The automatic requires would be java-headless >= 9, but the
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
@@ -50,50 +49,37 @@ Summary:        API documentation for %{name}
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n gson-gson-parent-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-
-# remove unnecessary dependency on parent POM
-%pom_remove_parent
-
-# presence of these files breaks builds with Java 8
-# find -name "module-info.java" -print -delete
-
-# Use felix maven-bundle-plugin only for OSGi metadata
-%pom_remove_plugin :bnd-maven-plugin gson
-%pom_remove_plugin :templating-maven-plugin gson
-%pom_remove_plugin :copy-rename-maven-plugin gson
-%pom_remove_plugin :proguard-maven-plugin gson
-%pom_add_plugin "org.apache.felix:maven-bundle-plugin" gson "<configuration>
-    <instructions>
-      <_include>bnd.bnd</_include>
-    </instructions>
-  </configuration>
-  <executions>
-    <execution>
-      <id>create-manifest</id>
-      <phase>process-classes</phase>
-      <goals><goal>manifest</goal></goals>
-    </execution>
-  </executions>"
-
-%pom_xpath_set "pom:plugins/pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration" "<release>8</release>"
+%setup -q -n gson-gson-parent-%{version} -a1
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+mkdir -p lib
+build-jar-repository -s lib jsr-305 glassfish-annotation-api
+ant package javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 gson/target/gson-%{version}.jar %{buildroot}%{_javadir}/%{name}/gson.jar
+install -pm 0644 extras/target/gson-extras-%{version}.jar %{buildroot}%{_javadir}/%{name}/gson-extras.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+%mvn_install_pom gson/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/gson.pom
+%add_maven_depmap %{name}/gson.pom %{name}/gson.jar
+%mvn_install_pom extras/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/gson-extras.pom
+%add_maven_depmap %{name}/gson-extras.pom %{name}/gson-extras.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+for i in gson extras; do
+  cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
+done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc README.md CHANGELOG.md UserGuide.md
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog

@@ -79,4 +79,12 @@
     <comment>This runs with java 8 just fine</comment>
     <requestid>1170843</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>89b2229b31932c40b49209841ac4e2bc</srcmd5>
+    <version>2.8.9</version>
+    <time>1743413904</time>
+    <user>anag+factory</user>
+    <comment>Rewrite for Ant == build cycles prevention</comment>
+    <requestid>1264934</requestid>
+  </revision>
 </revisionlist>

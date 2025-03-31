@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 28 05:58:22 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build system for ant to avoid potential build cycles
+  with upcoming Maven 4
+- Removed patches:
+  * no-template-plugin.patch
+  * osgi-export-internal.patch
+    + factored into the ant build already
+
+-------------------------------------------------------------------
 Mon Apr 29 14:47:02 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - The binaries are compatible with java 1.8
