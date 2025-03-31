@@ -45,4 +45,17 @@
     <comment></comment>
     <requestid>973777</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>94f42f7494d7c18a1b4a99a40be9fcda</srcmd5>
+    <version>0.6.0</version>
+    <time>1743414111</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.0:
+  * Upgrade Python support to include 3.6, 3.7, 3.8,  3.9, 3.10,
+    3.11 and 3.12
+  * Drop support for Python 3.* &lt; 3.6 (Python 2.7 remains)
+  * Fix tox and github action so they work nicely together
+  * Add a release workflow to Pypi which uses trusted publisher</comment>
+    <requestid>1265295</requestid>
+  </revision>
 </revisionlist>

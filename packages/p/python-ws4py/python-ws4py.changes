@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:47:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Upgrade Python support to include 3.6, 3.7, 3.8,  3.9, 3.10,
+    3.11 and 3.12
+  * Drop support for Python 3.* < 3.6 (Python 2.7 remains)
+  * Fix tox and github action so they work nicely together
+  * Add a release workflow to Pypi which uses trusted publisher
+
+-------------------------------------------------------------------
 Thu Apr 28 15:49:52 UTC 2022 - pgajdos@suse.com
 
 - do not require python-mock for build

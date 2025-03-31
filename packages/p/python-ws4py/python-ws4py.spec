@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-ws4py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-ws4py%{psuffix}
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        WebSocket client and server library for Python
 License:        BSD-3-Clause
