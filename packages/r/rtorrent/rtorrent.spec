@@ -17,27 +17,31 @@
 
 
 Name:           rtorrent
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/rakshasa/rtorrent
-
 Source:         https://github.com/rakshasa/rtorrent/releases/download/v%version/%name-%version.tar.gz
 Source2:        rtorrent.desktop
 # This manpage copied from the 0.9.2 tarball as it was missing in later versions
 Source3:        rtorrent.1
 Source4:        rtorrent.service
+Patch1:         0001-Added-default-switch-cases-to-RpcManager.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
-BuildRequires:  pkgconfig(libtorrent) >= 0.15.0
+BuildRequires:  pkgconfig(libtorrent) >= 0.15.2
 BuildRequires:  sysuser-tools
 Provides:       bundled(tinyxml2) = 10.0.0
 %sysusers_requires
@@ -52,10 +56,12 @@ management.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CXX=g++-13
+%endif
 # It's full of type pun violations
 export CFLAGS="%optflags -fno-strict-aliasing"
 export CXXFLAGS="$CFLAGS"
-export CXXFLAGS="$CXXFLAGS -std=gnu++14"
 autoreconf -fiv
 %configure --with-xmlrpc-tinyxml2 --enable-ipv6
 %make_build

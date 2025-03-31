@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 28 21:24:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.2
+  * Colors, LUA and json-rpc are now supported in the client
+- Add 0001-Added-default-switch-cases-to-RpcManager.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 10:36:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.1
