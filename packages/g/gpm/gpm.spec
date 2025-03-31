@@ -138,7 +138,7 @@ cp %{S:7} COPYING
 #export SUSE_ASNEEDED=1
 NOCONFIGURE=1 ./autogen.sh
 autoreconf -fi
-export CFLAGS="%{optflags} -DQUIET_LIBGPM -D_REENTRANT"
+export CFLAGS="%{optflags} -DQUIET_LIBGPM -D_REENTRANT -std=gnu11"
 %configure --disable-static \
 	--sysconfdir=%{_sysconfdir}/gpm
 make CC=gcc %{?_smp_mflags}

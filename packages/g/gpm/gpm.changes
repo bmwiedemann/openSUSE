@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:29:13 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu11 to avoid the C23 default of GCC 15 which no longer
+  supports calling unprototyped functions.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:18:47 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
