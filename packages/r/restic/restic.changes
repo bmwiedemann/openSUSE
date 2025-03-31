@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Thu Mar 27 20:59:00 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
-- update to 0.18.0
+- update to 0.18.0 (boo#1240262)
   - Sec #5291: Mitigate attack on content-defined chunking
     algorithm
   - Fix #1843: Correctly restore long filepaths' timestamp on old

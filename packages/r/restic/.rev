@@ -315,4 +315,12 @@
     during restore</comment>
     <requestid>1264712</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>660b46ceb67a41978e06c2a45d187feb</srcmd5>
+    <version>0.18.0</version>
+    <time>1743413970</time>
+    <user>anag+factory</user>
+    <comment>Add missing bugnumber</comment>
+    <requestid>1265145</requestid>
+  </revision>
 </revisionlist>
