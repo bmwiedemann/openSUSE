@@ -240,4 +240,12 @@
     <comment>- Update to release 3.2.9</comment>
     <requestid>1207350</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9b4c5464558fe4a50d5e9179dec10688</srcmd5>
+    <version>3.2.10</version>
+    <time>1743414209</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2.10:</comment>
+    <requestid>1265514</requestid>
+  </revision>
 </revisionlist>

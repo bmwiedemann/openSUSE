@@ -22,7 +22,7 @@ Name:           libmirage
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.2.9
+Version:        3.2.10
 Release:        0
 URL:            https://cdemu.sourceforge.io/about/libmirage/
 #Git-Clone:     https://github.com/cdemu/cdemu.git
