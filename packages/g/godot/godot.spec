@@ -29,7 +29,7 @@
 %define compiler_version_leap 10
 
 Name:           godot
-Version:        4.4
+Version:        4.4.1
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -207,7 +207,7 @@ Provides:       bundled(libpng) = 1.6.45
 Provides:       bundled(libzstd) = 1.5.6
 Provides:       bundled(zlib) = 1.3.1
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 3.6.2
+Provides:       bundled(mbedtls) = 3.6.3
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay

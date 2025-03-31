@@ -1,3 +1,19 @@
+Wed Mar 26 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 4.4.1
+  * Fix TextEdit scrolls wrong on text selection
+  * Restore "Show in File Manager" button functionality
+    in ProjectManager
+  * Update script modified times when saved in EditorNode
+  * Create .uid files for detected new files
+  * Set window position when running project in maximized
+    or full-screen mode to ensure it is opened on the correct screen
+  * Add "Go Online" button on Export Template Manager
+  * Fix check for "is_maximized" to require both horizontal and vertical
+  and more:
+  https://godotengine.github.io/godot-interactive-changelog/#4.4.1
+
+-------------------------------------------------------------------
 Mon Mar 3 12:00:00 UTC 2025 - cunix@mail.de
 
 - Update to 4.4
