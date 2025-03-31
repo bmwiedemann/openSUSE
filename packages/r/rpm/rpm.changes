@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:48:09 CET 2025 - mls@suse.de
+
+- Backport check_c_compiler_flag cmake tests fix from upstream
+  The old code would pick up -fhardened by accident
+  * new patch: cmake_fhardened.diff
+
+-------------------------------------------------------------------
 Fri Mar  7 14:14:55 CET 2025 - mls@suse.de
 
 - update to rpm-4.20.1

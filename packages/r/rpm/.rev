@@ -2578,4 +2578,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment>- update to rpm-4.20.1</comment>
     <requestid>1251214</requestid>
   </revision>
+  <revision rev="321" vrev="2">
+    <srcmd5>9ffe4a46a311c96abf3c472b5ae3d54d</srcmd5>
+    <version>4.20.1</version>
+    <time>1743413887</time>
+    <user>anag+factory</user>
+    <comment>Backport check_c_compiler_flag cmake tests fix from upstream</comment>
+    <requestid>1256239</requestid>
+  </revision>
 </revisionlist>
