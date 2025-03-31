@@ -17,9 +17,9 @@
 #
 
 
-%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.11.0}
+%{?!dnf_lowest_compatible: %global dnf_lowest_compatible 4.19.0}
 %global dnf_plugins_extra 2.0.0
-%global hawkey_version 0.64.0
+%global hawkey_version 0.73.0
 
 %if 0%{?is_opensuse}
 # Copr targets are available for openSUSE Leap 15.0 and newer
@@ -56,7 +56,7 @@
 #global prerel rc1
 
 Name:           dnf-plugins-core
-Version:        4.4.4
+Version:        4.10.1
 Release:        0
 Summary:        Core Plugins for DNF
 License:        GPL-2.0-or-later
@@ -72,25 +72,24 @@ BuildRequires:  gettext
 Requires:       python3-dnf-plugins-core = %{version}-%{release}
 
 Provides:       dnf-command(builddep)
+Provides:       dnf-command(changelog)
 Provides:       dnf-command(config-manager)
 %if %{with copr_plugin}
 Provides:       dnf-command(copr)
 %endif
-Provides:       dnf-command(builddep)
-Provides:       dnf-command(changelog)
-Provides:       dnf-command(config-manager)
-Provides:       dnf-command(copr)
 Provides:       dnf-command(debug-dump)
 Provides:       dnf-command(debug-restore)
 Provides:       dnf-command(debuginfo-install)
 Provides:       dnf-command(download)
 Provides:       dnf-command(groups-manager)
 Provides:       dnf-command(repoclosure)
-Provides:       dnf-command(repodiff)
 Provides:       dnf-command(repograph)
 Provides:       dnf-command(repomanage)
 Provides:       dnf-command(reposync)
+Provides:       dnf-command(repodiff)
 Provides:       dnf-command(system-upgrade)
+Provides:       dnf-command(offline-upgrade)
+Provides:       dnf-command(offline-distrosync)
 
 # Plugins shift from extras to core
 Provides:       dnf-plugins-extras-debug = %{version}-%{release}
@@ -240,6 +239,17 @@ Post transaction actions Plugin for DNF, Python 3 version. Plugin runs actions
 (shell commands) after transaction is completed. Actions are defined in action
 files.
 
+%package -n python3-dnf-plugin-pre-transaction-actions
+Summary:        Pre transaction actions Plugin for DNF
+Requires:       python3-%{name} = %{version}-%{release}
+Provides:       dnf-plugin-pre-transaction-actions =  %{version}-%{release}
+Conflicts:      python2-dnf-plugin-pre-transaction-actions < %{version}-%{release}
+
+%description -n python3-dnf-plugin-pre-transaction-actions
+Pre transaction actions Plugin for DNF, Python 3 version. Plugin runs actions
+(shell commands) before transaction is completed. Actions are defined in action
+files.
+
 %package -n python3-dnf-plugin-show-leaves
 Summary:        Show-leaves Plugin for DNF
 Group:          System/Packages
@@ -326,24 +336,27 @@ mkdir -p %{buildroot}%{_var}/cache/dnf
 mv %{buildroot}%{_libexecdir}/dnf-utils-3 %{buildroot}%{_libexecdir}/dnf-utils
 rm -vf %{buildroot}%{_libexecdir}/dnf-utils-*
 
+ln -sf dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-upgrade.8.gz
+ln -sf dnf4-system-upgrade.8.gz %{buildroot}%{_mandir}/man8/dnf4-offline-distrosync.8.gz
+
 mkdir -p %{buildroot}%{_bindir}
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repodiff
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
-ln -sf %{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/debuginfo-install
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/needs-restarting
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/find-repos-of-install
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repo-graph
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/package-cleanup
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoclosure
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repodiff
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repomanage
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repoquery
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/reposync
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/repotrack
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-builddep
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-config-manager
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-dump
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-debug-restore
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yum-groups-manager
+ln -srf %{buildroot}%{_libexecdir}/dnf-utils %{buildroot}%{_bindir}/yumdownloader
 
 %if %{with deconflict}
 # Deal with conflicts to unblock backports
@@ -375,32 +388,36 @@ export PYTHONPATH=./plugins
 %files
 %license COPYING
 %doc AUTHORS README.rst
-%{_mandir}/man8/dnf-builddep.*
-%{_mandir}/man8/dnf-changelog.*
-%{_mandir}/man8/dnf-config-manager.*
+%{_mandir}/man8/dnf*-builddep.*
+%{_mandir}/man8/dnf*-changelog.*
+%{_mandir}/man8/dnf*-config-manager.*
 %if %{with copr_plugin}
-%{_mandir}/man8/dnf-copr.*
+%{_mandir}/man8/dnf*-copr.*
 %config(noreplace) %{_sysconfdir}/dnf/plugins/copr.conf
 %dir %{_sysconfdir}/dnf/plugins/copr.d
 %else
-%exclude %{_mandir}/man8/dnf-copr.*
+%exclude %{_mandir}/man8/dnf*-copr.*
 %endif
-%{_mandir}/man8/dnf-debug.*
-%{_mandir}/man8/dnf-debuginfo-install.*
-%{_mandir}/man8/dnf-download.*
-%{_mandir}/man8/dnf-generate_completion_cache.*
-%{_mandir}/man8/dnf-groups-manager.*
-%{_mandir}/man8/dnf-needs-restarting.*
-%{_mandir}/man8/dnf-repoclosure.*
-%{_mandir}/man8/dnf-repograph.*
-%{_mandir}/man8/dnf-repomanage.*
-%{_mandir}/man8/dnf-reposync.*
-%{_mandir}/man8/dnf-system-upgrade.*
-%{_mandir}/man8/dnf-repodiff.*
+%{_mandir}/man8/dnf*-debug.*
+%{_mandir}/man8/dnf*-debuginfo-install.*
+%{_mandir}/man8/dnf*-download.*
+%{_mandir}/man8/dnf*-expired-pgp-keys.*
+%{_mandir}/man8/dnf*-generate_completion_cache.*
+%{_mandir}/man8/dnf*-groups-manager.*
+%{_mandir}/man8/dnf*-needs-restarting.*
+%{_mandir}/man8/dnf*-repoclosure.*
+%{_mandir}/man8/dnf*-repodiff.*
+%{_mandir}/man8/dnf*-repograph.*
+%{_mandir}/man8/dnf*-repomanage.*
+%{_mandir}/man8/dnf*-reposync.*
+%{_mandir}/man8/dnf*-system-upgrade.*
+%{_mandir}/man8/dnf*-offline-upgrade.*
+%{_mandir}/man8/dnf*-offline-distrosync.*
 %dir %{_sysconfdir}/dnf/protected.d
 %dir %{_var}/cache/dnf
 %ghost %{_var}/cache/dnf/packages.db
 %config(noreplace) %{_sysconfdir}/dnf/plugins/debuginfo-install.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/expired-pgp-keys.conf
 
 %files lang -f %{name}.lang
 
@@ -427,6 +444,8 @@ export PYTHONPATH=./plugins
 %{python3_sitelib}/dnf-plugins/__pycache__/debuginfo-install.*
 %{python3_sitelib}/dnf-plugins/download.py
 %{python3_sitelib}/dnf-plugins/__pycache__/download.*
+%{python3_sitelib}/dnf-plugins/expired-pgp-keys.py
+%{python3_sitelib}/dnf-plugins/__pycache__/expired-pgp-keys.*
 %{python3_sitelib}/dnf-plugins/generate_completion_cache.py
 %{python3_sitelib}/dnf-plugins/__pycache__/generate_completion_cache.*
 %{python3_sitelib}/dnf-plugins/groups_manager.py
@@ -495,14 +514,15 @@ export PYTHONPATH=./plugins
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/leaves.*
-%{_mandir}/man8/dnf-leaves.*
+%{_mandir}/man8/dnf*-leaves.*
+%exclude %{_mandir}/man8/dnf*-show-leaves.*
 
 %files -n python3-dnf-plugin-local
 %config(noreplace) %{_sysconfdir}/dnf/plugins/local.conf
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/local.*
 %{python3_sitelib}/dnf-plugins/__pycache__/local.*
-%{_mandir}/man8/dnf-local.*
+%{_mandir}/man8/dnf*-local.*
 
 %files -n python3-dnf-plugin-post-transaction-actions
 %config(noreplace) %{_sysconfdir}/dnf/plugins/post-transaction-actions.conf
@@ -510,13 +530,20 @@ export PYTHONPATH=./plugins
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/post-transaction-actions.*
 %{python3_sitelib}/dnf-plugins/__pycache__/post-transaction-actions.*
-%{_mandir}/man8/dnf-post-transaction-actions.*
+%{_mandir}/man8/dnf*-post-transaction-actions.*
+
+%files -n python3-dnf-plugin-pre-transaction-actions
+%config(noreplace) %{_sysconfdir}/dnf/plugins/pre-transaction-actions.conf
+%config(noreplace) %{_sysconfdir}/dnf/plugins/pre-transaction-actions.d
+%{python3_sitelib}/dnf-plugins/pre-transaction-actions.*
+%{python3_sitelib}/dnf-plugins/__pycache__/pre-transaction-actions.*
+%{_mandir}/man8/dnf*-pre-transaction-actions.*
 
 %files -n python3-dnf-plugin-show-leaves
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/show_leaves.*
 %{python3_sitelib}/dnf-plugins/__pycache__/show_leaves.*
-%{_mandir}/man8/dnf-show-leaves.*
+%{_mandir}/man8/dnf*-show-leaves.*
 
 %files -n python3-dnf-plugin-versionlock
 %config(noreplace) %{_sysconfdir}/dnf/plugins/versionlock.conf
@@ -524,12 +551,12 @@ export PYTHONPATH=./plugins
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/versionlock.*
 %{python3_sitelib}/dnf-plugins/__pycache__/versionlock.*
-%{_mandir}/man8/dnf-versionlock.*
+%{_mandir}/man8/dnf*-versionlock.*
 
 %files -n python3-dnf-plugin-modulesync
 %dir %{python3_sitelib}/dnf-plugins/__pycache__
 %{python3_sitelib}/dnf-plugins/modulesync.*
 %{python3_sitelib}/dnf-plugins/__pycache__/modulesync.*
-%{_mandir}/man8/dnf-modulesync.*
+%{_mandir}/man8/dnf*-modulesync.*
 
 %changelog

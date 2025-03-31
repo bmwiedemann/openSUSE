@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:14:26 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- 4.10.1
+
+* spec: toggle dnf5_obsoletes_dnf for RHEL 11
+* reposync: Avoid multiple downloads of duplicate packages
+* doc: needs-restarting uses UnitsLoadStartTimestamp boot time
+* debuginfo-install: Fix missing dnf.cli import
+* copr Fix missing dnf.cli import
+* tests: Fix missing dnf.cli imports
+
+- 4.10.0
+* CMakeLists.txt: Allow overriding PYTHON_INSTALL_DIR
+* Add Amazon Linux to copr chroots
+* needs-restarting: Add --exclude-services
+* needs-restarting: Add --exclude-services to man page
+* needs-restarting: Get boot time from systemd UnitsLoadStartTimestamp
+* needs-restarting: "Regular files" are often on 00:xx devices
+* needs-restarting tests: Can't discriminate block devices any more
+
+- 4.9.0
+* Enable leaves and show-leaves plugins for RHEL
+* expired-pgp-keys: New plugin for detecting expired PGP keys
+* reposync: Respect --norepopath with --metadata-path
+* doc: copr plugin does not respect IP family preference
+* expired-pgp-keys: Fix calling the hook at resolved time
+
+- 4.8.0
+* needs-restarting: Revert using systemd start time
+* spec: Fix symbolic links to packaged files
+* needs-restarting: detect packages providing NEED_REBOOT.
+* build: Disable debug plugin on Fedora > 40 and RHEL > 9
+* download plugin now resolves dependencies for debuginfo and debugsource packages
+
+- 4.7.0
+* docs: Documentation of needs-restarting boot time
+* man: Prepare pages for dnf5 switch
+* spec: Prepare for switch of dnf5 in Rawhide
+
+- 4.6.0:
+* Updated AUTHORS file
+* needs-restarting: get systemd boot time from UnitsLoadStartTimestamp
+* Add new plugin pre-transaction-actions
+
+- 4.5.0:
+* Request filelists metadata for plugins needing that
+
+-------------------------------------------------------------------
 Fri Oct 11 13:46:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend -lang package: the lang package has already the
