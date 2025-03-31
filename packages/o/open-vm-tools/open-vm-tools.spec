@@ -380,7 +380,6 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/modprobe.d/50-vmnics.co
 %pre
 %service_add_pre vmtoolsd.service
 %service_add_pre vgauthd.service
-%service_add_pre vmblock-fuse.service
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in pam.d/vmtoolsd ; do
