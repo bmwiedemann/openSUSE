@@ -2365,4 +2365,20 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224085</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>6fe4b953e96e84e92d436be7433801e1</srcmd5>
+    <version>20</version>
+    <time>1743413854</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20.
+  * For details, see the release notes:
+    - https://releases.llvm.org/20.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/lld/docs/ReleaseNotes.html
+- Add libomp-devel on riscv64
+</comment>
+    <requestid>1254871</requestid>
+  </revision>
 </revisionlist>
