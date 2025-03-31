@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 28 08:01:40 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.14.10:
+  * [Added] Add JSON output support.
+  * [Changed] Generate shell completions at build time.
+  * [Fixed] Trim null byte from /proc//attr/current.
+
+-------------------------------------------------------------------
 Fri Jan 17 03:37:29 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.14.9:
