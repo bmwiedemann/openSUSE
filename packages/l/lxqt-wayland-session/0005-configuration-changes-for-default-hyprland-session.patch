@@ -1,4 +1,4 @@
-From 62d130cb2fae506d63c13fa92d265cccd5711e0a Mon Sep 17 00:00:00 2001
+From c6b2cd27f5c54b082106fd2cb8f8b6690e2db264 Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 21 Jan 2025 15:56:25 -0800
 Subject: [PATCH 5/7] configuration changes for default hyprland session
@@ -22,5 +22,5 @@ index f5450c3..95ab07e 100644
  
  # If not using lxqt-session uncomment components to autostart
 -- 
-2.48.1
+2.49.0
 

@@ -48,4 +48,12 @@
     <comment></comment>
     <requestid>1252808</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>2bc10ffab8591a6ee31ba33b503b8264</srcmd5>
+    <version>0.1.1</version>
+    <time>1743414173</time>
+    <user>anag+factory</user>
+    <comment>- Updated labwc config patch to include LABWC_CONFIG_DIR</comment>
+    <requestid>1265431</requestid>
+  </revision>
 </revisionlist>

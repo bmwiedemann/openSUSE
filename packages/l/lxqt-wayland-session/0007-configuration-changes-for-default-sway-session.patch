@@ -1,4 +1,4 @@
-From b9fd498a5facc8fc1c34b9567aebf74d2196655e Mon Sep 17 00:00:00 2001
+From 155ef94ec514d97f6c46ddca71f89d92340ec6de Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Tue, 21 Jan 2025 17:23:47 -0800
 Subject: [PATCH 7/7] configuration changes for default sway session
@@ -31,5 +31,5 @@ index f30047c..97f910e 100644
 -include /etc/sway/config.d/*
 +# include /etc/sway/config.d/*
 -- 
-2.48.1
+2.49.0
 

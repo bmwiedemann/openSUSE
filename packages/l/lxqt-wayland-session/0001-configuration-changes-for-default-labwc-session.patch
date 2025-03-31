@@ -1,4 +1,4 @@
-From 3b8fd3c03145898a409a0965d0bb4b0c5bcb9f0d Mon Sep 17 00:00:00 2001
+From e5727489a86e277978c8d34fc930a67bfb81167f Mon Sep 17 00:00:00 2001
 From: "Shawn W. Dunn" <sfalken@cloverleaf-linux.org>
 Date: Wed, 8 Jan 2025 09:24:02 -0800
 Subject: [PATCH 1/7] configuration changes for default labwc session
@@ -9,11 +9,12 @@ session.
 - Adjusts the pointerspeed to make the default mouse pointer less twitchy
 - Moves user configs from default labwc locations, to avoid config
   conflicts
+- Add LABWC_CONFIG_DIR env variable for labwc-tweaks compatibility
 ---
- configurations/labwc/autostart | 2 +-
- configurations/labwc/rc.xml    | 2 +-
- startlxqtwayland.in            | 8 ++++----
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ configurations/labwc/autostart |  2 +-
+ configurations/labwc/rc.xml    |  2 +-
+ startlxqtwayland.in            | 10 ++++++----
+ 3 files changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/configurations/labwc/autostart b/configurations/labwc/autostart
 index fa49741..a756d24 100644
@@ -42,7 +43,7 @@ index 41d628c..07acc3c 100644
        <tap>yes</tap>
        <tapButtonMap></tapButtonMap>
 diff --git a/startlxqtwayland.in b/startlxqtwayland.in
-index 64a2986..d46c317 100644
+index 64a2986..a1e0d1b 100644
 --- a/startlxqtwayland.in
 +++ b/startlxqtwayland.in
 @@ -96,10 +96,10 @@ if  [ -z "$COMPOSITOR" ]; then
@@ -59,15 +60,17 @@ index 64a2986..d46c317 100644
         fi
      fi
  
-@@ -109,7 +109,7 @@ elif [ "$COMPOSITOR" = "labwc" ]; then
+@@ -109,7 +109,9 @@ elif [ "$COMPOSITOR" = "labwc" ]; then
          echo "Running on virtualized hardware"
      fi
  
 -    exec $COMPOSITOR -C $XDG_CONFIG_HOME/labwc -S lxqt-session
++    # Set LABWC_CONFIG_DIR for labwc-tweaks compatibility
++    export LABWC_CONFIG_DIR=$XDG_CONFIG_HOME/lxqt/labwc
 +    exec $COMPOSITOR -C $XDG_CONFIG_HOME/lxqt/labwc -S lxqt-session
  
  elif [ "$COMPOSITOR" = "niri" ]; then
      if [ ! -f "$XDG_CONFIG_HOME/lxqt/wayland/lxqt-niri.kdl" ]; then
 -- 
-2.48.1
+2.49.0
 
