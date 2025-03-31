@@ -11,25 +11,24 @@ export GLIBC_TUNABLES=glibc.mem.decorate_maps=1
 make check
 ```
 
+Remove the dumb prctl allow rule as for glibc malloc the prctl PR_SET_VMA
+with flag PR_SET_VMA_ANON_NAME is already allowed
+
 Signed-off-by: Werner Fink <werner@suse.de>
+
 ---
- src/seccomp.c | 3 +++
- 1 file changed, 3 insertions(+)
+ src/seccomp.c |    2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/src/seccomp.c b/src/seccomp.c
-index ce824330..8a2c8a4c 100644
 --- a/src/seccomp.c
 +++ b/src/seccomp.c
-@@ -80,6 +80,9 @@ enable_sandbox(void)
+@@ -80,6 +80,8 @@ enable_sandbox(void)
  	if (ctx == NULL)
  		return -1;
  
-+	ALLOW_RULE(prctl);
 +	ALLOW_RULE(getrandom);
 +	ALLOW_RULE(rseq);
  	ALLOW_RULE(access);
  	ALLOW_RULE(brk);
  	ALLOW_RULE(close);
--- 
-2.43.0
-

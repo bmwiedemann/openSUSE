@@ -1,0 +1,29 @@
+The glibc does not provide the real value of TCGETS as e.g.
+used by tcgetattr(3). Therefore as a dirty workaround for
+the correct struct termios from ppc specific includes has to
+loaded before including ioctl.h.  Simply to get the the final
+correct value of TCGETS aka _IOR('t', 19, struct termios).
+
+---
+ src/seccomp.c |   11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/seccomp.c b/src/seccomp.c
+--- a/src/seccomp.c
++++ b/src/seccomp.c
+@@ -33,9 +33,13 @@ FILE_RCSID("@(#)$File: seccomp.c,v 1.29
+ #if HAVE_LIBSECCOMP
+ #include <seccomp.h> /* libseccomp */
+ #include <sys/prctl.h> /* prctl */
+-#include <sys/ioctl.h>
+ #include <sys/socket.h>
+-#include <termios.h>
++#ifdef __powerpc64__
++# include <asm/termbits.h>
++#else
++# include <termios.h>
++#endif
++#include <sys/ioctl.h>
+ #include <fcntl.h>
+ #include <stdlib.h>
+ #include <errno.h>

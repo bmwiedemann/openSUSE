@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Mar 26 14:21:59 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- baselibs.conf: drop it
+
+-------------------------------------------------------------------
+Wed Mar 19 09:31:52 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Change patch file-seccomp.patch
+  * Remove the dumb prctl allow rule as for glibc malloc the prctl
+    PR_SET_VMA with flag PR_SET_VMA_ANON_NAME is already allowed
+- Require at build zlib-devel to enable direct uncompresion of
+  zip'ed files as well
+
+-------------------------------------------------------------------
+Tue Mar 18 10:40:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch file-seccomp-ppc.patch
+  * Minimal patch to work around of wrong provide of used TCGETS 
+
+-------------------------------------------------------------------
 Fri Feb 21 07:27:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch boo1237209.patch temporary

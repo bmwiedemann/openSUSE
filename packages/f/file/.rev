@@ -1720,4 +1720,21 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   * Fix stack overrun (boo#1237209)</comment>
     <requestid>1247564</requestid>
   </revision>
+  <revision rev="141" vrev="3">
+    <srcmd5>f77442e00d180f7f336b7310bdea953a</srcmd5>
+    <version>5.46</version>
+    <time>1743413889</time>
+    <user>anag+factory</user>
+    <comment>- baselibs.conf: drop it
+
+- Change patch file-seccomp.patch
+  * Remove the dumb prctl allow rule as for glibc malloc the prctl
+    PR_SET_VMA with flag PR_SET_VMA_ANON_NAME is already allowed
+- Require at build zlib-devel to enable direct uncompresion of
+  zip'ed files as well
+
+- Add patch file-seccomp-ppc.patch
+  * Minimal patch to work around of wrong provide of used TCGETS</comment>
+    <requestid>1256270</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,9 @@
 Name:           file
 BuildRequires:  bash >= 4.0
 BuildRequires:  libtool
+BuildRequires:  lzlib-devel
 BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libzstd)
@@ -40,7 +42,6 @@ Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
 Group:          Productivity/File utilities
 Source0:        https://www.astron.com/pub/file/file-%{version}.tar.gz
-Source2:        baselibs.conf
 Source3:        file-rpmlintrc
 Source4:        https://www.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
@@ -65,6 +66,7 @@ Patch37:        file-secure_getenv.patch
 Patch39:        file-5.28-btrfs-image.dif
 Patch42:        boo1237209.patch
 Patch43:        file-seccomp.patch
+Patch44:        file-seccomp-ppc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
 %global         magicdir    %{_datadir}/file
@@ -130,6 +132,7 @@ to develop applications that require the magic "file" interface.
 %patch -P 0 -b .0
 %patch -P 42 -p1
 %patch -P 43 -p1 -b .seccomp
+%patch -P 44 -p1 -b .ppc
 test -s src/magic.h.in || cp -p src/magic.h src/magic.h.in
 rm -fv src/magic.h
 
