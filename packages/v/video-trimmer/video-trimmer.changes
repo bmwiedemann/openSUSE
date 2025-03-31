@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 30 19:33:39 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 25.03:
+  * Changed the versioning scheme to year.month.
+  * Moved the accurate trimming and remove audio options from the
+    save dialog to the main window.
+  * Added , and . shortcuts for short video stepping.
+  * Updated to the GNOME 48 platform.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct  9 20:41:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.0:

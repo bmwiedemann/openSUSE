@@ -1,7 +1,7 @@
 #
 # spec file for package video-trimmer
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define rurl 2573eae6e0279de48b5d996e87ae0701
+%define rurl ae720db1ea4142329be911b7a048a301
 Name:           video-trimmer
-Version:        0.9.0
+Version:        25.03
 Release:        0
 Summary:        Trim videos quickly
 License:        GPL-3.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  cargo-packaging
 BuildRequires:  meson
 BuildRequires:  desktop-file-utils
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 
 %description
 Video Trimmer cuts out a fragment of a video given the start and end
