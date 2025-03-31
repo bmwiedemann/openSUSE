@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-remote
 #
-# Copyright (c) 2021 SUSE LLC.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,7 @@
 #
 
 
-%define soapy_modver 0.8
+%define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
 
 Name:           soapy-remote
@@ -25,10 +25,10 @@ Version:        0.5.2
 Release:        0
 Summary:        Remote device support for Soapy SDR
 License:        BSL-1.0
-Url:            https://github.com/pothosware/SoapyRemote/wiki
+URL:            https://github.com/pothosware/SoapyRemote/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyRemote.git
 Source:         https://github.com/pothosware/SoapyRemote/archive/%{name}-%{version}.tar.gz
-Patch0:	harden_SoapySDRServer.service.patch
+Patch0:         harden_SoapySDRServer.service.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
