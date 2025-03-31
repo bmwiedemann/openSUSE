@@ -34,4 +34,17 @@ since we bumped libgo SONAME as well for 15</comment>
     <comment>- Disable build of glibc cross to loongarch64 and hppa in SLFO.</comment>
     <requestid>1255621</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>afba630d789d3c4de42897fb433c3133</srcmd5>
+    <version>15.0.1+git9001</version>
+    <time>1743413873</time>
+    <user>anag+factory</user>
+    <comment>- Update to GCC trunk head, 15.0.1+git9001
+  * includes -msplit-patch-nops required for user-space livepatching
+    on powerpc
+  * includes fix for Ada build with --enable-host-pie
+- Adjust for removed avx10_2roundingintrin.h intrinsic header.
+- Build GCC executables PIE on SLE.  [bsc#1239938]</comment>
+    <requestid>1265224</requestid>
+  </revision>
 </revisionlist>

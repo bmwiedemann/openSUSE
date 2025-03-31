@@ -217,7 +217,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git8082
+Version:        15.0.1+git9001
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2610,6 +2610,9 @@ export GDC=gdc-11
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
 	--enable-languages=$languages \
+%if !0%{?is_opensuse}
+	--enable-host-pie \
+%endif
 %if %{build_nvptx} || %{build_gcn}
 	--enable-offload-targets=\
 %if %{build_nvptx}
@@ -3544,7 +3547,6 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc15-locale.lang
 %{libsubdir}/include/sm4intrin.h
 %{libsubdir}/include/avx512bitalgvlintrin.h
 %{libsubdir}/include/usermsrintrin.h
-%{libsubdir}/include/avx10_2roundingintrin.h
 %{libsubdir}/include/avx10_2-512bf16intrin.h
 %{libsubdir}/include/avx10_2-512convertintrin.h
 %{libsubdir}/include/avx10_2-512mediaintrin.h
