@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zstd
-Version:        1.5.6.1
+Version:        1.5.6.6
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause

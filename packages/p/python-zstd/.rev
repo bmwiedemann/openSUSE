@@ -181,4 +181,24 @@
     <comment></comment>
     <requestid>1235961</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>108bce13061642d3af40edb02b338f21</srcmd5>
+    <version>1.5.6.6</version>
+    <time>1743414186</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.5.6.6:
+  * fix module version string form then building with external
+    system library #203
+- update to 1.5.6.5:
+  * find pkg-config in paths defined in PATH environment
+    variable, as suggested by @parona-source
+  * add new options for development `--all-warnings` and `--all-
+    warnings-errors`
+  * fix action setup for building wheels
+- update to 1.5.6.4:
+  * fixed `check()` function
+  * fixed various compiller warnings
+  * added some developer/debug options for compilation</comment>
+    <requestid>1265483</requestid>
+  </revision>
 </revisionlist>

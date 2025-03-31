@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:06:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.6.6:
+  * fix module version string form then building with external
+    system library #203
+- update to 1.5.6.5:
+  * find pkg-config in paths defined in PATH environment
+    variable, as suggested by @parona-source
+  * add new options for development `--all-warnings` and `--all-
+    warnings-errors`
+  * fix action setup for building wheels
+- update to 1.5.6.4:
+  * fixed `check()` function
+  * fixed various compiller warnings
+  * added some developer/debug options for compilation
+
+-------------------------------------------------------------------
 Wed Jan  8 11:17:44 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - update to 1.5.6.1:
