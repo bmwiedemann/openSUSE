@@ -1,7 +1,7 @@
 #
 # spec file for package xdp-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,9 @@ Summary:        Utilities and example programs for use with XDP
 License:        GPL-2.0-only
 URL:            https://github.com/xdp-project/xdp-tools
 Source:         https://github.com/xdp-project/xdp-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Fixes "error: argument unused during compilation: '-c' [-Werror,-Wunused-command-line-argument]" with
+# Clang 20. The command lines have both -c and -S, but should only have -S as they're producing textual IR.
+Patch1:         fix-clang20-build.patch
 BuildRequires:  bpftool
 BuildRequires:  clang >= 10.0.0
 BuildRequires:  gcc
