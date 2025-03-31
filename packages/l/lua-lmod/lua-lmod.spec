@@ -66,24 +66,14 @@ Requires:       lua%{version_name_suffix %lua_version}-luaterm
 Requires:       tcl
 Requires:       (lua-lmod-apparmor-abstractions if apparmor-abstractions)
 Conflicts:      Modules
-%if 0%{suse_version} >= 1550
 BuildRequires:  python3-Sphinx
-%else
-BuildRequires:  python-Sphinx
-%endif
 Provides:       environment-modules
 Provides:       lua-lmod-man = %{version}-%{release}
 Provides:       ml = %{version}
 Conflicts:      environment-modules
 %if 0%{?build_pdf:1}
 
-%if 0%{suse_version} >= 1550
 BuildRequires:  python3-Sphinx-latex
-%else
-%if 0%{?sle_version} == 0 || 0%{?sle_version} >= 120300
-BuildRequires:  python-Sphinx-latex
-%endif
-%endif
 BuildRequires:  texlive
 BuildRequires:  texlive-babel
 BuildRequires:  texlive-babel-english

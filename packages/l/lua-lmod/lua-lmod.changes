@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 11:57:38 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Remove python2 support.
+
+-------------------------------------------------------------------
 Mon Jan 27 10:27:04 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Add /usr/share/lmod/%{version}/libexec/addto to the `bash`
@@ -23,15 +28,16 @@ Fri Jan  3 12:10:22 UTC 2025 - Egbert Eich <eich@suse.com>
     + Report build time in UTC when `$SOURCE_DATE_EPOCH` is set.
     + Support for downstream conflicts has been added.
     + Support for dynamic `LMOD_MODULERC` has been added.
-   (8.7.39) * Fix busted test for ModuleA.
+  * Version 8.7.39:
+    + Fix busted test for ModuleA.
   * Version 8.7.40
     + Bug fix for prepend/append path when trying to add an empty string.
     + Bug fix for `serializeTbl`: handle empty or single blank
       string as key.
   * Version 8.7.41
-    + Added new function `depends_on_any()`.
-    + If `$MODULES_AUTO_HANDLING` is set then
-      `prereq() -> depends_on()`; prereq_any() -> depends_on_any()`
+    + Added new function `depends_on_any()`:
+      If `$MODULES_AUTO_HANDLING` is set then
+      `prereq()` -> `depends_on()`, `prereq_any()` -> `depends_on_any()`
     + Generate a perl pod format for manpage for `module.1`
     + `ModuleTable` modification: Changes to `$MODULEPATH` are
       stored in an entry.
@@ -81,7 +87,7 @@ Fri Jan  3 12:10:22 UTC 2025 - Egbert Eich <eich@suse.com>
     + Add support for `--dumpname` in `lmod` and `ml`; Update tab
       completions files.
     + Do not reset `BASH_ENV` if already set for `cshrc.in`.
-    + Do not reset `BASH_ENV` if already set for profile.in.
+    + Do not reset `BASH_ENV` if already set for `profile.in`.
     + Support for the functions `hide{}` and `forbid{}`.
   * Version 8.7.51
     + Fix bug in load test.

@@ -567,4 +567,12 @@
   environment when starting non-interactive shells (boo#1236365). (forwarded request 1240494 from eeich)</comment>
     <requestid>1240496</requestid>
   </revision>
+  <revision rev="45" vrev="3">
+    <srcmd5>be3c9bffdf834bb2e7d5baa60e444411</srcmd5>
+    <version>8.7.55</version>
+    <time>1743414010</time>
+    <user>anag+factory</user>
+    <comment>- Remove python2 support. (forwarded request 1265189 from eeich)</comment>
+    <requestid>1265193</requestid>
+  </revision>
 </revisionlist>
