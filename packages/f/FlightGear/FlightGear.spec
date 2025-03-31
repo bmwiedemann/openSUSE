@@ -1,7 +1,7 @@
 #
 # spec file for package FlightGear
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,15 @@
 #
 
 
-%define main_version 2020.3
+%define main_version 2024.1
 Name:           FlightGear
-Version:        %{main_version}.19
+Version:        %{main_version}.1
 Release:        0
 Summary:        Flight Simulator
 License:        GPL-2.0-only
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
-Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/flightgear-%{version}.tar.bz2
+Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/fgbuild/flightgear-%{version}.tar.bz2
 
 BuildRequires:  SimGear-devel = %{version}
 BuildRequires:  cmake
@@ -79,7 +79,7 @@ done
     -DENABLE_JS_DEMO:BOOL=OFF \
     -DENABLE_GPSSMOOTH:BOOL=OFF \
     -DENABLE_FGVIEWER:BOOL=OFF \
-    -DENABLE_FGELEV:BOOL=OFF \
+    -DENABLE_FGELEV:BOOL=ON \
     -DOpenGL_GL_PREFERENCE=GLVND \
     -DENABLE_METAR:BOOL=ON
 %cmake_build

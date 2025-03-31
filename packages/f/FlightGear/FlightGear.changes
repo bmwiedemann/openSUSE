@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 28 14:10:06 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 2024.1.1
+  * https://www.flightgear.org/download/releases/2024-1/
+  * Highlights:
+    + Real-time dynamic shadows and lights
+    + Added preliminary support for VR headsets using OpenXR
+    + Added a preview of World Scenery 3.0, a new scenery system
+      that uses multiple levels of detail to provide higher
+      frame-rates and lower memory occupancy at higher
+      visibility ranges
+    + Fixed a large number of crashes, bugs, and memory leaks
+
+-------------------------------------------------------------------
 Mon Nov 13 22:35:14 UTC 2023 - Florian "spirit" <packaging@sp1rit.anonaddy.me>
 
 - Update to 2020.3.19
