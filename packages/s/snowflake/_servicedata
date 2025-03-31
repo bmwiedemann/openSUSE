@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake</param>
+              <param name="changesrevision">a88f73b0ffd2d3db4a92360f1f265374d3ab5635</param></service><service name="tar_scm">
+                <param name="url">https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake.git</param>
+              <param name="changesrevision">6472bd86cdd5d13fe61dc851edcf83b03df7bda1</param></service></servicedata>

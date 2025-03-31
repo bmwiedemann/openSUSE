@@ -1,0 +1,10 @@
+[Unit]
+Description=Snowflake proxy
+After=network.target
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/sbin/snowflake
+
+[Install]
+WantedBy=multi-user.target

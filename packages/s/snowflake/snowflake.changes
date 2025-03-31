@@ -1,0 +1,245 @@
+-------------------------------------------------------------------
+Tue Mar 18 21:12:53 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.11.0:
+  * Bump verison of Snowflake to 2.11.0
+  * improvement: less scary failed conn logs & metrics
+  * Update README to reflect project usecase
+  * fix: data race warnings of tokens_t
+  * fix: `periodicProxyStats.connectionCount` race
+  * fix: make NATPolicy thread-safe
+  * fix: potential race conditions with non-local err
+  * fix(proxy): race condition warning for `isClosing`
+  * chore(deps): update module github.com/pion/sdp/v3 to v3.0.11
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.13
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.13
+  * Update broker metrics to count matches, denials, and timeouts
+  * feat(proxy): add failed connection count stats
+  * chore(deps): update module github.com/xtaci/smux to v1.5.34
+  * Create CI artifact regardless of when shadow fails
+  * Remove metrics race condition in sqs test
+  * Move nonblocking AddSnowflake out of goroutine in sqs test
+  * refactor: docstring for checkIsRelayURLAcceptable
+  * Copy base client config for each SOCKS connection
+  * chore(deps): update module github.com/prometheus/client_golang
+    to v1.21.0
+  * Fix minor data race in Snowflake broker metrics
+  * Remove data races from sqs tests
+  * Process and read broker SQS messages more quickly
+  * fix(proxy): improve NAT test reliability
+  * proxy: add country to prometheus metrics
+  * proxy: webRTCconn gives the remote IP instead of the Address
+  * Temove outdated comment
+  * fix(proxy): not answering before client timeout
+  * chore(deps): update
+    gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/ptutil
+    digest to efaf4e0
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.29.6
+  * chore(deps): update module github.com/pion/ice/v4 to v4.0.6
+  * chore(deps): update module golang.org/x/net to v0.35.0
+  * update golang testing setting in CI
+  * chore(deps): update module
+    github.com/aws/aws-sdk-go-v2/credentials to v1.17.59
+  * chore(deps): update module
+    github.com/aws/aws-sdk-go-v2/service/sqs to v1.37.14
+  * Lower broker ClientTimeout to 5 seconds
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.29.4
+  * chore(deps): update module github.com/miekg/dns to v1.1.63
+  * Remove utls library from snowflake and Use ptuil/utls
+  * chore(deps): update module
+    github.com/aws/aws-sdk-go-v2/service/sqs to v1.37.9
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.29.1
+  * CI: use /etc/localtime instead of /etc/timezone
+  * chore(deps): update module github.com/xtaci/smux to v1.5.33
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.8
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2 to
+    v1.33.0
+  * chore(deps): update module github.com/pion/sdp/v3 to v3.0.10
+  * Add self-signed ISRG Root X1 to cert pool
+  * chore(deps): update module golang.org/x/net to v0.34.0
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2 to
+    v1.32.8
+  * Comment typo.
+  * chore(deps): update module golang.org/x/net to v0.33.0
+    [security]
+  * refactor(proxy): simplify `tokens.ret()` on error
+  * chore(deps): update module golang.org/x/crypto to v0.31.0
+    [security]
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2 to
+    v1.32.7
+  * seperate docker hub mirroring to a seperate stage
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.6
+  * docs: clarify -ports-range is for port forwarding
+  * improvement: warn if ports-range is too narrow
+  * docs: improve `ephemeral-ports-range` description
+  * copy container tag to generate stable with crane to avoid
+    flattening image
+  * Finish incomplete comment for newEncapsulationPacketConn.
+  * chore(deps): update module golang.org/x/net to v0.32.0
+  * chore(deps): update module
+    gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/goptlib
+    to v1.6.0
+  * feat(client): try restricted proxy if NAT unknown
+  * refactor: separate some `Negotiate` logic
+  * Fixup new STUN servers to include protocol
+  * Added new RFC 5780 compatible STUN servers
+  * Remove nonfunctional STUN servers
+  * Remove log when offer is nil
+  * Log EventOnCurrentNATTypeDetermined for proxy
+  * chore(deps): update module github.com/aws/aws-sdk-go-v2 to
+    v1.32.6
+  * chore(deps): update golang docker tag to v1.23
+  * refactor: use named returns for some funcs
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.5
+  * improvement: use `SetIPFilter` for local addrs
+  * Suppress logs of proxy events by default
+  * Add Container Image Mirroring from Tor Gitlab to Docker Hub
+  * chore(deps): update module github.com/pion/ice/v4 to v4.0.3
+  * chore(deps): update module github.com/pion/webrtc/v4 to v4.0.2
+  * refactor: separate function for `connectToRelay`
+  * improvement: use IsLinkLocalUnicast in IsLocal
+  * refactor: rewrite `IsLocal` with `ip.IsPrivate()`
+  * update snowflake to use pion webrtc v4
+  * chore(deps): update module github.com/pion/webrtc/v3 to v4
+
+-------------------------------------------------------------------
+Tue Nov 12 15:38:18 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.1:
+  * Issue 40406: Update version string
+
+-------------------------------------------------------------------
+Tue Nov 12 15:35:17 UTC 2024 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2.10.0:
+  *  Issue 40402: Add proxy event for when client has connected
+  *  Issue 40405: Prevent panic for duplicate SnowflakeConn.Close()
+     calls
+  *  Enable local time for proxy logging
+  *  Have proxy summary statistics log average transfer rate
+  *  Issue 40210: Remove duplicate poll interval loop in proxy
+  *  Issue 40371: Prevent broker and proxy from rejecting clients
+     without ICE candidates
+  *  Issue 40392: Allow the proxy and probetest to set multiple
+     STUN URLs
+  *  Issue 40387: Fix error in probetest NAT check
+  *  Fix proxy panic on invalid relayURL
+  *  Set empty pattern if broker bridge-list is empty
+  *  Improve documentation of Ephemeral[Min,Max]Port
+  *  Fix resource leak and NAT check in probetest
+  *  Fix memory leak from failed NAT check
+  *  Improve NAT check logging
+  *  Issue 40230: Send answer even if ICE gathering is not complete
+  *  Improve broker error message on unknown bridge fingerprint
+  *  Don't proxy private IP addresses
+  *  Only accept ws:// and wss:// relay addresses
+  *  Issue 40373: Add cli flag and SnowflakeProxy field to modify
+     proxy poll interval
+  *  Use %w not $v in fmt.Errorf
+  *  Updates to documentation
+  *  Adjust copy buffer size to improve proxy performance
+  *  Improve descriptions of cli flags
+  *  Cosmetic changes for code readability
+  *  Issue 40367: Deduplicate prometheus metrics names
+  *  Report the version of snowflake to the tor process
+  *  Issue 40365: Indicate whether the repo was modified in the
+     version string
+  *  Simplify NAT checking logic
+  *  Issue 40354: Use ptutil library for safelog and prometheus
+     metrics
+  *  Add cli flag to set a listen address for proxy prometheus
+     metrics
+  *  Issue 40345: Integrate docker image with release process
+  *  Bump versions of dependencies
+
+-------------------------------------------------------------------
+Mon Apr 22 16:22:49 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.9.2:
+  * Issue 40288: Add integration testing with Shadow
+  * Issue 40345: Automatically build and push containers to our registry
+  * Issue 40339: Fix client ID reuse bug in SQS rendezvous
+  * Issue 40341: Modify SQS rendezvous arguments to use b64 encoded parameters
+  * Issue 40330: Add new metrics at the broker for per-country rendezvous stats
+  * Issue 40345: Update docker container tags
+  * Bump versions of dependencies
+
+- Update to version 2.9.1:
+  * Issue 40335: Fix release job
+  * Change deprecated io/ioutil package to io package
+  * Bump versions of dependencies
+
+-------------------------------------------------------------------
+Sun Feb 11 16:15:30 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2.9.0:
+  * Prune metrics that are reported for rendezvous
+  * Move RendezvousMethod field to messages.Arg
+  * Add metrics for tracking rendezvous method
+  * Fix nil ptr deference when listing client queues
+  * Add unit tests for SQS rendezvous in broker
+  * Add unit tests for SQS rendezvous in client
+  * Add mocks and interfaces for testing SQS rendezvous
+  * Implement SQS rendezvous in client and broker
+  * Cosmetic fixes taken from !219.
+  * Add probetest commandline option for STUN URL
+  * Use SetNet setting in probetest to ignore net.Interfaces error
+  * Add proxy commandline option for probe server URL
+  * Scrub space separated ip addresses
+  * Update recommended torrc options in the client readme
+  * Add vcs revision to version string
+
+- Update to version 2.8.1
+  * Suppress logs of EventOnProxyConnectionOver
+  * Add Ignore Android Restriction Workaround for Proxy
+  * Have encapsulation.ReadData return an error when the buffer is short.
+  * Have encapsulation.ReadData read into a provided buffer.
+
+-------------------------------------------------------------------
+Sun Dec 10 23:41:12 UTC 2023 - eyadlorenzo@gmail.com
+
+- Update to version 2.8.0:
+  * chore(deps): update module github.com/pion/webrtc/v3 to v3.2.23
+  * chore(deps): update module github.com/miekg/dns to v1.1.57
+  * chore(deps): update module golang.org/x/net to v0.18.0
+  * chore(deps): update module github.com/gorilla/websocket to v1.5.1
+  * Update prometheus metrics to use new EventOnProxyStats
+  * Process and properly log connection closure stats
+  * Modify EventOnProxyStats to include summary data
+  * Proxy stats log only what occurred that time interval
+  * Move creation of periodic stats task inside proxy library
+  * Zero bytesSyncLogger stats after reading them
+  * Remove ThroughputSummary from bytesLogger
+  * Check if multiple front domains argument is empty
+  * chore(deps): update module github.com/prometheus/client_golang to v1.17.0
+  * chore(deps): update module github.com/refraction-networking/utls to v1.5.4
+  * Add outbound proxy configuration propagation
+  * Add transport wrapper
+  * Add common proxy utilities
+  * chore(deps): update module github.com/prometheus/client_model to v0.5.0
+  * chore(deps): update module golang.org/x/net to v0.17.0 [security]
+  * chore(deps): update module github.com/xtaci/kcp-go/v5 to v5.6.5
+  * improvement(broker): don't reject unrestricted client if there are no restricted proxies
+
+-------------------------------------------------------------------
+Sat Oct 21 18:26:48 UTC 2023 - kastl@b1-systems.de
+
+- Update to version 2.7.0:
+  * update version to 2.7.0
+  * fix(proxy): Correctly close connection pipe when dealing with error
+  * Remove proxy churn measurements from broker.
+  * fix(proxy): remove _potential_ deadlock
+  * Maintain backward compatability with old clients
+  * Randomly select front domain from comma-separated list
+  * Update dependencies
+  * chore(deps): update module github.com/xtaci/kcp-go/v5 to v5.6.3
+  * Remove Golang 1.20 from CI Testing
+  * Update CI targets to test android from golang 1.21
+
+-------------------------------------------------------------------
+Sat Oct 21 18:26:41 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
+
+- new package snowflake: TOR snowflake proxy server
