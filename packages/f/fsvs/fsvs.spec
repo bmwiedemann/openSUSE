@@ -2,6 +2,7 @@
 # spec file for package fsvs
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +18,21 @@
 
 
 Name:           fsvs
-Version:        1.2.9
+Version:        1.2.13
 Release:        0
 Summary:        Backup/Restore/Versioning of large Data Sets with Meta-Data
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
-URL:            http://fsvs.tigris.org/
-Source:         https://download.fsvs-software.org/fsvs-%{version}.tar.bz2
-Patch1:         fsvs-destdir.patch
-Patch2:         fsvs-1.2.5-linking.patch
-# PATCH-FIX-UPSTREAM -- TODO
-Patch3:         reproducible.patch
-BuildRequires:  apache2-devel
-BuildRequires:  ctags
+URL:            https://github.com/phmarek/fsvs
+Source:         https://download.fsvs-software.org/%{name}-%{version}.tar.gz
+BuildRequires:  automake
 BuildRequires:  db-devel
-BuildRequires:  ed
-BuildRequires:  gcc
-BuildRequires:  gcc-c++
-BuildRequires:  gdbm
 BuildRequires:  gdbm-devel
-BuildRequires:  glibc-devel
-BuildRequires:  libapr-util1-devel
-BuildRequires:  libapr1-devel
-BuildRequires:  make
-BuildRequires:  neon-devel
-BuildRequires:  openldap2-devel
-BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
-BuildRequires:  subversion-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(apr-util-1)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libsvn_delta)
+BuildRequires:  pkgconfig(libsvn_ra)
 
 %description
 FSVS is the abbreviation for “Fast System VerSioning”, and is pronounced
@@ -58,31 +44,19 @@ tree or whole filesystems, with a subversionTM repository as the backend.
 You may think of it as some kind of tar or rsync with versioned storage.
 
 %prep
-%setup -q
-%patch -P 1
-%patch -P 2
-%patch -P 3 -p1
+%autosetup -p1
+# remove dangling symlinks
+rm config.guess config.sub
+cp -v %{_datadir}/automake-`rpm -q --queryformat %%{version} automake`/config.{guess,sub} .
 
 %build
-export CFLAGS="%{optflags} $(pkg-config --includes apr-1)"
-export CFLAGS="$CFLAGS -fno-strict-aliasing -fgnu89-inline"
-%configure --disable-silent-rules
+%configure
 %make_build
 
 %install
 %make_install
 
-rm -rf doc/develop
-echo -n >manfiles.lst
-for p in doc/*.{1,5}; do
-    f="${p##*/}"
-    m="${f##*.}"
-    install -D -m0644 "$p" "%{buildroot}%{_mandir}/man${m}/${f}"
-    rm "$p"
-    echo "%doc %{_mandir}/man${m}/${f}"'*' >>manfiles.lst
-done
-
-%files -f manfiles.lst
+%files
 %license LICENSE
 %doc doc CHANGES README
 %{_bindir}/fsvs

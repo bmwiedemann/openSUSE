@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:30:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.13:
+  * build system tweaks
+- update to 1.2.12:
+  * Don't use pcre2_get_match_data_size
+  * Allow comments in "fsvs ignore load" lists.
+  * Repair webdav: close the root directory handle as well
+- includes changes from 1.2.11:
+  * fix webdav removed duplicated open calls
+- includes changes from 1.2.10:
+  * Restore properties like the update- and commit-pipe on "sync-repos"
+  * When using a commit-pipe store the original (non-transformed) MD5
+    in the local properties as well, so that they match the remote data.
+  * Switched to pcre2
+- drop upstreamed patches:
+  * fsvs-destdir.patch
+  * fsvs-1.2.5-linking.patch
+  * reproducible.patch  
+
+-------------------------------------------------------------------
 Mon Feb 26 08:48:32 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
