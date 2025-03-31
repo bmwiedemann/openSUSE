@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:10:39 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 136.0.4
+  MFSA 2025-19 (bsc#1240084)
+  * CVE-2025-2857, CVE-2025-2783 (bmo#1956398)
+    Incorrect handle could lead to sandbox escapes
+  136.0.3
+  * Significantly improved responsiveness on TikTok by improving the
+    speed of date formatting. (bmo#1954323)
+  136.0.2
+  * Fixed a bug where "Cookies and site data" and "Temporary cached
+    files and pages" were unexpectedly enabled after updating to
+    Firefox 136 for users with "History" and/or "Site settings" set
+    to clear on shutdown in previous versions. (bmo#1952564)
+  * Fixed an issue where the Primary Password prompt appeared in
+    unexpected situations. (bmo#1946121)
+  * Fixed visibility issues with radio buttons on dark backgrounds
+    (bmo#1951930)
+  * Fixed high CPU usage on Windows when the screen was locked or the
+    laptop lid was closed. (bmo#1924932)
+- Use default clang version. (by Aaron Puchert)
+
+-------------------------------------------------------------------
 Sat Mar 15 07:34:21 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 136.0.1

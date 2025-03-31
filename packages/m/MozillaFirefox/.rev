@@ -7359,4 +7359,30 @@
     address bar in new windows. (bmo#1947723)</comment>
     <requestid>1253342</requestid>
   </revision>
+  <revision rev="451" vrev="1">
+    <srcmd5>6b880faf1adc74de01c913e5b7862fdc</srcmd5>
+    <version>136.0.4</version>
+    <time>1743413859</time>
+    <user>anag+factory</user>
+    <comment>- Mozilla Firefox 136.0.4
+  MFSA 2025-19 (bsc#1240084)
+  * CVE-2025-2857, CVE-2025-2783 (bmo#1956398)
+    Incorrect handle could lead to sandbox escapes
+  136.0.3
+  * Significantly improved responsiveness on TikTok by improving the
+    speed of date formatting. (bmo#1954323)
+  136.0.2
+  * Fixed a bug where &quot;Cookies and site data&quot; and &quot;Temporary cached
+    files and pages&quot; were unexpectedly enabled after updating to
+    Firefox 136 for users with &quot;History&quot; and/or &quot;Site settings&quot; set
+    to clear on shutdown in previous versions. (bmo#1952564)
+  * Fixed an issue where the Primary Password prompt appeared in
+    unexpected situations. (bmo#1946121)
+  * Fixed visibility issues with radio buttons on dark backgrounds
+    (bmo#1951930)
+  * Fixed high CPU usage on Windows when the screen was locked or the
+    laptop lid was closed. (bmo#1924932)
+- Use default clang version. (by Aaron Puchert)</comment>
+    <requestid>1265284</requestid>
+  </revision>
 </revisionlist>
