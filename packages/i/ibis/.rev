@@ -36,4 +36,14 @@
   * Add Ibis.Feature.get_prefix_for_mode (forwarded request 1253562 from rrahl0)</comment>
     <requestid>1253563</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8b8f77e060757340d5e573640bf4dc41</srcmd5>
+    <version>0.13.0</version>
+    <time>1743414243</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.0:
+  * Fix the parameter order of an error in Ibis.Client.parse_mode_string
+  * Implement Ibis.formatting_parse (forwarded request 1265607 from rrahl0)</comment>
+    <requestid>1265608</requestid>
+  </revision>
 </revisionlist>

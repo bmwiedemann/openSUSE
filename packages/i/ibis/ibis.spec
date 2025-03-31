@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           ibis
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Gobject based library
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(hasl) >= 0.4.0
+BuildRequires:  pkgconfig(pango) >= 1.54.0
 
 %description
 This parser originated out of an early version of purple-spasm. The library was
