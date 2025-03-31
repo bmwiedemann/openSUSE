@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:53:47 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.48.1:
+  + This is a bugfix release with some patches cherry-picked from
+    main on top of 0.48.0.
+  + Fixes backported
+    - renderer: Simplify and fix hdr metadata setting
+    - seat: avoid sending null surfaces in leave/enter events
+    - xwl: don't close the fd too early
+    - groupbar: apply scaling factor to text
+    - pass: remove unused timeline in texpass
+    - groupbar: round boxes
+    - groupbar: include clipBox in opaque calculations
+    - opengl: don't attempt to compile cm on gles3.0
+    - surfacestate: track and apply updated state
+    - internal: fix minor ubsan errors
+    - workspaces: minor fixes to persistence
+    - surfacestate: reset buffer bit before applying to current
+    - core: don't damage the entire surface every frame
+    - xwayland: cleanup server startup and fds
+
+-------------------------------------------------------------------
 Sun Mar 23 19:33:00 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Updated to version 0.48.0:
