@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:03:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.1.2:
+  * build: Add a minimal configure.ac
+  * build: bump minimum required cmake
+  * build(cmake): allow user to set TERMINFO_DIRS
+  * Do not stop searching on EPERM
+- use newer macros (autosetup, ldconfig_scriptlets, make)
+
+-------------------------------------------------------------------
 Thu Jul  1 14:07:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 2.1.1
