@@ -1,7 +1,7 @@
 #
 # spec file for package limesuite
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover 23_11-0
 %define libname libLimeSuite%{sover}
-%define soapy_modver 0.8
+%define soapy_modver 0.8-3
 Name:           limesuite
 Version:        23.11.0
 Release:        0
