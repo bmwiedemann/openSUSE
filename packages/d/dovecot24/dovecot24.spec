@@ -17,8 +17,8 @@
 
 
 %define pkg_name dovecot
-%define dovecot_version 2.4.0
-%define dovecot_pigeonhole_version 2.4.0
+%define dovecot_version 2.4.1-4
+%define dovecot_pigeonhole_version 2.4.1-4
 %define dovecot_branch  2.4
 %define dovecot_pigeonhole_source_dir %{pkg_name}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -44,7 +44,7 @@
 %endif
 
 Name:           dovecot24
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
@@ -546,6 +546,7 @@ fi
 %{_libdir}/%{pkg_name}/modules/lib95_imap_sieve_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib95_imap_filter_sieve_plugin.so
 %{_libdir}/%{pkg_name}/modules/lib99_welcome_plugin.so
+%{_libdir}/%{pkg_name}/modules/libdcrypt_openssl.so
 %{_libdir}/%{pkg_name}/modules/libfs_compress.so
 %{_libdir}/%{pkg_name}/modules/libfs_crypt.so
 %{_libdir}/%{pkg_name}/modules/libssl_iostream_openssl.so
@@ -687,7 +688,6 @@ fi
 %{_datadir}/aclocal/dovecot-pigeonhole.m4
 %{_includedir}/%{pkg_name}/
 %{_libdir}/%{pkg_name}/dovecot-config
-%{_libdir}/%{pkg_name}/libdcrypt_openssl.so
 %{_libdir}/%{pkg_name}/libdovecot.so
 %{_libdir}/%{pkg_name}/libdovecot-ldap.so
 %{_libdir}/%{pkg_name}/libdovecot-lua.so

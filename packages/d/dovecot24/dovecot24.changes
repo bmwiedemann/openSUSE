@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:41:38 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.4.1
+  * auth: Change unix_listener/auth-userdb/group = $SET:default_internal_group
+    This change needs dovecot_config_version=2.4.1.
+  * auth: lua - Remove support for single string result.
+  * imap: Unconditionally advertise SPECIAL-USE capability.
+  * lib-dcrypt: Install dcrypt_openssl.so into dovecot modules directory.
+  * lib-master: For glibc, default MALLOC_MMAP_THRESHOLD_=131072.
+  * lib-storage: Change default mail_cache_fields to:
+    hdr.date hdr.subject hdr.from hdr.sender hdr.reply-to hdr.to
+    hdr.cc hdr.bcc hdr.in-reply-to hdr.message-id
+    date.received size.virtual imap.bodystructure mime.parts hdr.references
+    hdr.importance hdr.x-priority hdr.x-open-xchange-share-url
+    pop3.uidl pop3.order. This change needs dovecot_config_version=2.4.1.
+  * lib-var-expand: Use moduledir instead of pkglibdir for crypt.
+  * lmtp: Change the default lmtp_user_concurrency_limit to 10.
+    This change needs dovecot_config_version=2.4.1.
+  * lmtp: Change the default service_restart_request_count to 1.
+    This change needs dovecot_config_version=2.4.1.
+  + auth: Allow configuring passdb/userdb sql to use auth-workers.
+  + config: Add default group @mailbox_defaults = english.
+  + config: Improve "Unknown setting" error with more details and
+    suggestions.
+  + doveconf: Add -U parameter to ignore unknown settings in config file.
+  + fts-flatcurve: Support lock files in VOLATILEDIR.
+  + imap-acl: Add support for the IMAP LIST-MYRIGHTS capability (RFC 8440).
+  + imap-client: Support ANONYMOUS authentication.
+  + imap: Implement support for the REPLACE capability.
+  - Many bugs have been fixed.
+
+-------------------------------------------------------------------
 Thu Feb 27 18:18:24 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Adapt dependency for SLES.
