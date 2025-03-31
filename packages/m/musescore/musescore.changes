@@ -1,4 +1,269 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:49:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.5.1:
+  Engraving:
+  * Space between a dynamic and an expression (e.g. within "p dolce") now scales correctly with staff size
+  * Increased distance between a partial slur and partial tie on the same note
+  * Partial ties now extend past breath marks and notes or rests in other voices
+  * Fixed corruption in parts when a time signature is inserted between tied notes
+  * Making higher instruments visible in a part no longer duplicates jump markers (e.g. "to Coda", etc.)
+  * Fixed centering of dynamics between staves when horizontal space is limited
+  * Fixed horizontal spacing after hiding an instrument
+  * Fixed layout of courtesy time signatures for which autoplace is disabled
+  * Increased gap before barline for hairpins created by dragging from a dynamic
+  * "Show text" property of glissandos is now properly preserved on saving and loading
+  * When a large time signature is hidden, its parentheses are now also hidden (affects MuseScore.com and continuous view)
+  * High Floor Tom and Low Floor Tom have exchanged position on the General MIDI Percussion staff
+  Interaction:
+  * Selection filter setting is now properly accounted for during a range selection
+  * Entering a pitch in 'input by duration' mode now turns off 'toggle rest'
+  * Partial ties can be copied and pasted
+  * Creating a hairpin by dragging from a dynamic can now be undone in one step instead of two
+  * Hairpins can now be removed via the dynamics popup by pressing the same hairpin button again
+  * MIDI notes can be staggered when entering chords in input by duration mode
+  * If you've opted to use the legacy percussion panel, it now appears when note input is activated
+  * More special characters can be typed with AltGr and Ctrl+Alt on Windows
+  Stability:
+  * Fixed crash after note input on deleted staff
+  * Fixed crash when Shift+clicking on a page number
+  * Fixed crash when editing partial ties
+  * Fixed crash after copying a tie in the score and selecting it in the parts
+  * Fixed crash when adding a time signature to a score with voltas and system markings
+  * Fixed crash when a lyrics hyphen is entered before a repeat barline
+  * Fixed crash when opening the layout panel
+  * More reliable fix for crash when pasting into a tuplet
+  * Fixed an issue where a black screen occurs on startup on macOS
+  Other:
+  * Fixed playback after undoing an edit to a chord symbol
+  * Slur and hairpin properties are properly exposed to the plugin API
+  * File format icon images are now square (i.e. same width and height) on Linux
+
+-------------------------------------------------------------------
+Sun Mar 16 18:16:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5
+  https://musescore.org/en/4.5
+
+-------------------------------------------------------------------
+Mon Dec 23 05:06:05 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to 4.4.4
+  
+  This update brings stability improvements and bug fixes, as well
+  as some new minor features.
+  See https://musescore.org/en/4.4.4
+
+-------------------------------------------------------------------
+Thu Oct 24 13:38:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.4.3:
+  This update addresses multiple crashes and resolves various issues
+  related to interaction, playback, and engraving. Additionally,
+  it includes a critical fix for Windows users, resolving several
+  graphical problems.
+  See https://musescore.org/en/4.4.3
+- Drop fix-menubar.patch
+
+-------------------------------------------------------------------
+Wed Sep 18 08:02:42 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.4.2
+  This update addresses stability issues, fixes a problem with
+  MuseScore Studio's online functionality, improves playback
+  quality especially on less powerful computers, and includes
+  several other enhancements and fixes in various areas. For more
+  information, please see the announcement on MuseScore.org.
+
+-------------------------------------------------------------------
+Sun Sep  8 22:42:55 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.4.1
+  This update contains more than 50 bug fixes and stability
+  improvements. Most importantly:
+
+  - A problem was fixed that caused some Windows users to see only
+    an empty screen, depending on their graphics setup
+  - Scores with multi-byte (i.e. "non-English") characters in the
+    filename can be opened again on Windows
+  - Several crashes have been fixed
+  - The interaction with dynamics and hairpins has been further
+    refined
+  - An issue preventing playback of lyrics with Muse Choir and
+    VOXOS Epic Choirs has been fixed
+
+  Please see the announcement on musescore.org for more information.
+- drop patches from upstream:
+  56db7728d4f4534c83eb875174560c0a7f978cb8.patch
+  696279e362afe72db5e92f8a47aa64b3a0e86a86.patch
+
+-------------------------------------------------------------------
+Thu Aug 29 12:34:09 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add fix-menubar.patch to test Fabian's suggestion in
+  https://github.com/musescore/MuseScore/issues/24097
+
+-------------------------------------------------------------------
+Wed Aug 28 20:41:29 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix the requires exclude 
+
+-------------------------------------------------------------------
+Wed Aug 28 20:40:22 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Replace local patches with upstream patches:
+  dropped:
+    no-libraries-from-internet.patch
+    pass-in-freetype2.patch
+  added:
+    56db7728d4f4534c83eb875174560c0a7f978cb8.patch
+    696279e362afe72db5e92f8a47aa64b3a0e86a86.patch
+
+-------------------------------------------------------------------
+Wed Aug 28 12:49:40 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- ignore requires for internal QML components
+
+-------------------------------------------------------------------
+Wed Aug 28 12:04:50 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- the app mode define for cmake switched to MUSE_APP_BUILD_MODE 
+
+-------------------------------------------------------------------
+Wed Aug 28 09:23:55 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- BR hicolor-icon-theme for directory ownership
+
+-------------------------------------------------------------------
+Wed Aug 28 03:33:41 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Added pass-in-freetype2.patch:
+  We also need to check for HarfBuzz as the internal drawing code
+  also loads HarfBuzz header files.
+
+  The finder is a copy of the same file already in the freetype
+  intree copy.
+
+-------------------------------------------------------------------
+Wed Aug 28 02:41:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- update patch with the changes from the pull request
+- enable internal drawing code again
+
+-------------------------------------------------------------------
+Wed Aug 28 02:19:11 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- disable internal drawing code because it requires an msdfgen.h
+
+-------------------------------------------------------------------
+Wed Aug 28 02:04:36 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BR for glibc locale package and set UTF-8 locales as the
+  tooling complains about non UTF-8 locales 
+
+-------------------------------------------------------------------
+Wed Aug 28 01:56:28 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- added no-libraries-from-internet.patch:
+  use patch proposed in
+  https://github.com/musescore/MuseScore/issues/24235#issuecomment-2313896167
+
+-------------------------------------------------------------------
+Tue Aug 27 23:45:59 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable use of system libraries for tinyxml2 and opus(enc)
+
+-------------------------------------------------------------------
+Tue Aug 27 14:40:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- switch to Qt6
+- drop use-qtmake-qt5.patch as Qt5 is no longer used
+
+-------------------------------------------------------------------
+Tue Aug 27 14:29:55 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- MuseScore 4.4.0:
+  - Playback features and improvements
+    - Support for Muse Sounds Drumline* libraries, including score
+      migration from MDL, and ability to trigger different playback
+      samples via sticking text.
+    - Support for Muse Sounds choral libraries, including lyric
+      text to trigger different phoneme samples.
+    - Dynamics now apply independently to voices and staves (N.b.
+      varies depending on sound technology used. Please consult the
+      handbook for details).
+    - Dynamics now use optimal playback parameters (varies
+      depending on sound technology) for more realistic playback.
+    - Significant audio engine optimisations (including lower
+      buffer sizes), significantly reducing note input latency when
+      using a MIDI keyboard, and massively reducing audio export
+      times.
+    - Hidden instruments can now be muted/soloed in the mixer.
+  - Engraving features and improvements
+    - Items such as dynamics/hairpins, text, and line objects no
+      longer have to be attached ('anchored') to a note or rest,
+      but can also be attached to rhythmic subdivisions within any
+      duration.
+    - Dynamics/hairpins can be assigned to specific voices with
+      appropriate default placement, and can also be centered
+      between a grand stave. There are also new style options to
+      control the default positioning of dynamics/hairpins.
+    - Dynamics and hairpins now snap more intelligently to each
+      other, enabling better horizontal alignment. There are new
+      controls in Properties for snapping and unsnapping these
+      objects.
+    - The layout system for accidentals has been rewritten, and
+      SMuFL cutouts are now being used. This results in a more
+      elegant and compact layout, especially in complex chords. New
+      style options allow further configuration.
+    - New style options for lyrics.
+    - New style options for fretboard diagrams, including the
+      ability to add fingerings.
+    - Header and footer improvements, including the ability to add
+      multi-line copyright text.
+    - New option for "French-style" beams.
+    - New options for hiding/showing instrument labels.
+    - Improved alignment and interactions for ghost/dead notes in
+      guitar notation.
+    - New style options to show/hide double barlines before time
+      and key signatures.
+    - Cross-stave beam improvements, including better vertical
+      spacing and new options to set beams above or below staves.
+    - Many small improvements to how shapes and skylines have been
+      calculated, allowing a more flexible layout.
+    - Increased use of SMuFL symbols within text for pedal
+      markings, ottavas, codas/segno markings, and tuplet numbers.
+    - Frames can now be scaled with stave size.
+    - Percussion sticking is now centered on the notehead and
+      aligned to a common baseline across the system.
+    - New option for separating layout of similarly-stemmed voices.
+    - Thickness of slurs and ties can now be set independently.
+    - Grace note slashes can now be toggled on or off in
+      Properties.
+    - The 'Explode' and 'Implode' functions now copy dynamics and
+      text annotations, also taking their voice assignment into
+      account. Grace notes are now also taken into account when
+      exploding measures.
+    - Many other improvements, including MusicXML improvements (See
+      this detailed summary on our forum).
+  - Interaction improvements
+    - Multiple selected notes retain their selection after their
+      durations are changed.
+    - Notes can be entered into different voices without having to
+      start at the beginning of the bar.
+    - Palette objects now snap more intelligently to their
+      applicable in-score objects when being dragged.
+  - Backend updates
+    - Linux support for Wayland has been improved. The AppImage can
+      now be launched in Wayland mode by setting the
+      QT_QPA_PLATFORM=wayland environment variable. Additionally, a
+      positioning issue with popups, menus and tooltips has been
+      resolved.
+  - Plus hundreds of bug fixes. See our GitHub project for the full
+    list of improvements.
+    https://github.com/orgs/musescore/projects/34
+
+-------------------------------------------------------------------
 Wed Jun 12 09:51:48 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - MuseScore 4.3.2:

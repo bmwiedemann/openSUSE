@@ -1,7 +1,7 @@
 #
 # spec file for package musescore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,17 @@
 
 
 # Internal QML imports
-%global __requires_exclude qmlimport\\((MuseScore|FileIO).*
+
+# we do not generate proper provides for those controls and without excluding them from the requires list we can not install the package
+%global __requires_exclude ^.*qml.*(Muse|MuseScore|FileIO).*$
 # Workaround boo#1189991
 %define _lto_cflags %{nil}
 %define rname   mscore
-%define version_lesser 4.3
+%define version_lesser 4.5
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
 Name:           musescore
-Version:        4.3.2
+Version:        4.5.1
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -60,8 +62,6 @@ Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 Source5:        README.SUSE
-# PATCH-FIX-OPENSUSE: openSUSE has qmake-qt5 qmake was reserved for qt4, which is no longer present
-Patch0:         use-qtmake-qt5.patch
 
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -71,40 +71,54 @@ BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  libqt5-qtbase-private-headers-devel
 %ifarch ppc64 ppc64le
 # PPC builds often have memory issues, limit the number of parallel jobs
 BuildRequires:  memory-constraints
 %endif
+
+# Qt tools want an UTF-8 locale
+BuildRequires:  glibc-locale-base
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  strip-nondeterminism
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Designer)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5NetworkAuth)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5QuickControls2)
-BuildRequires:  pkgconfig(Qt5QuickTemplates2)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6NetworkAuth)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Qml)
+BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickTemplates2)
+BuildRequires:  cmake(Qt6QuickWidgets)
+BuildRequires:  cmake(Qt6StateMachine)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(tinyxml2)
 BuildRequires:  pkgconfig(alsa)
+# it could use this but our flac doesnt provide the cmake file and the finder in MuseScore does not find it just via pkgconfig
+# BuildRequires:  pkgconfig(flac)
+# it looks for it but then doesnt find it.
+# BuildRequires:  pkgconfig(fluidsynth)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jack)
+# it looks for it but then doesnt find it.
+# BuildRequires:  pkgconfig(lame)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libopusenc)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
@@ -112,8 +126,6 @@ BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
 BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %{name}-fonts = %{version}-%{release}
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols2
 Requires:       ( alsa-plugins-pulse if pulseaudio )
 # For the following arch build fails in the crashpad client,
 # Maybe repairable? Disabled until a solution is found by someone.
@@ -160,6 +172,8 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 #sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
 
 %build
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 # Limit memory / threads on PowerPC to avoid memory issues
 %ifarch ppc64 ppc64le
 %limit_build -m 2000
@@ -176,12 +190,18 @@ export CXX=g++-12
 # BUILD_VIDEOEXPORT_MODULE:BOOL=ON
 # find out how to enable this
 # BUILD_VST:BOOL=ON
+# it tries to use it but the finder apparently needs the cmake file
+# TODO: -DMUE_COMPILE_USE_SYSTEM_FLAC:BOOL=ON \
 %cmake \
        -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DMUSESCORE_BUILD_CONFIGURATION=app \
-       -DMUSESCORE_BUILD_MODE=release \
+       -DMUSE_APP_BUILD_MODE=release \
        -DMUE_BUILD_UNIT_TESTS=OFF \
-       -DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON \
+       -DMUE_COMPILE_USE_SYSTEM_FREETYPE:BOOL=ON \
+       -DMUE_COMPILE_USE_SYSTEM_HARFBUZZ:BOOL=ON \
+       -DMUE_COMPILE_USE_SYSTEM_OPUS:BOOL=ON \
+       -DMUE_COMPILE_USE_SYSTEM_OPUSENC:BOOL=ON \
+       -DMUE_COMPILE_USE_SYSTEM_TINYXML:BOOL=ON \
        -DMUE_ENABLE_AUDIO_JACK=OFF \
        -DMUE_BUILD_UPDATE_MODULE=OFF \
        -DMUE_BUILD_CRASHPAD_CLIENT=OFF \
