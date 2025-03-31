@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Mar 28 01:47:23 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update to ddskk 17.1_Neppu
+  * too long see ChangeLog
+- Update to skkdic 20250328
+  * auto-updated by python script, have no idea what was changed
+
+-------------------------------------------------------------------
 Mon Feb 26 08:01:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

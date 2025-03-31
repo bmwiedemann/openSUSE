@@ -1,7 +1,7 @@
 #
 # spec file for package ddskk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,21 @@
 # Current version does not build with current xemacs, disable for now
 %define use_xemacs 0
 Name:           ddskk
-Version:        20160304
+Version:        20250328
 Release:        0
 Summary:        SKK (Simple Kana to Kanji Conversion Program) for Emacs
 License:        GPL-2.0-or-later AND SUSE-Permissive AND SUSE-Public-Domain
 Group:          Productivity/Editors/Emacs
 URL:            http://openlab.ring.gr.jp/skk/ddskk.html
-Source0:        https://github.com/skk-dev/ddskk/archive/%{name}-16.2_Warabitai.tar.gz
+Source0:        https://github.com/skk-dev/ddskk/archive/%{name}-17.1_Neppu.tar.gz
 Source1:        suse-start.el
-Source97:       download-dic.sh
+Source97:       update_skkdic.py
 Source98:       README.SUSE
 Source99:       ddskk-rpmlintrc
 # see README.SUSE for how to generate this file.
 # NOTE: some dictionary files are not licenced under GPL-2.0+
 # see commiters.txt
-Source100:      skkdic-20200228.tar.xz
+Source100:      skkdic-20250328.tar.xz
 Patch2:         bugzilla-141756-workaround.patch
 # PATCH-FIX-OPENSUSE or UPSTREAM -- drop build date to make build reproducible
 Patch3:         ddskk-drop-build-date.patch
@@ -80,8 +80,8 @@ aggressively developed.
 Summary:        Main Dictionary for SKK
 Group:          System/I18n/Japanese
 URL:            http://openlab.ring.gr.jp/skk/dic.html
-Requires(post):	info
-Requires(preun):	info
+Requires(post): info
+Requires(preun): info
 Provides:       locale(scim-skk:ja)
 
 %description -n skkdic
@@ -96,9 +96,9 @@ URL:            http://openlab.ring.gr.jp/skk/dic.html
 optional, additional dictionaries for SKK
 
 %prep
-%autosetup -p1 -n ddskk-ddskk-16.2_Warabitai
-
-tar --strip-components=1 --xz -xf %{S:100} -C dic
+%autosetup -p1 -n ddskk-ddskk-17.1_Neppu
+mkdir -p dic
+tar --strip-components=2 --xz -xf %{S:100} -C dic
 cp dic/zipcode/SKK-JISYO.* dic/
 
 %build
@@ -182,8 +182,6 @@ fi
 %{emacs_package_dir}
 %config %{emacs_sitelisp_dir}/suse-start-%{name}.el
 %{_infodir}/*
-%exclude %{_datadir}/doc/packages/ddskk/READMEs/README.MacOSX.ja
-%exclude %{_datadir}/doc/packages/ddskk/READMEs/README.w32.ja.org
 
 %if %{use_xemacs}
 %files -n ddskk-xemacs
@@ -199,7 +197,7 @@ fi
 %files -n skkdic
 %defattr(-,root,root)
 %doc dic/ChangeLog*
-%license dic/committers.txt
+%license dic/READMEs/committers.txt
 %dir %{_datadir}/skk/
 %{_datadir}/skk/SKK-JISYO.L
 %{_datadir}/skk/skk.xpm
@@ -221,7 +219,7 @@ fi
 %{_datadir}/skk/SKK-JISYO.JIS2004
 %{_datadir}/skk/SKK-JISYO.assoc
 %{_datadir}/skk/SKK-JISYO.china_taiwan
-%{_datadir}/skk/SKK-JISYO.edict
+#%{_datadir}/skk/SKK-JISYO.edict
 %{_datadir}/skk/SKK-JISYO.fullname
 %{_datadir}/skk/SKK-JISYO.geo
 %{_datadir}/skk/SKK-JISYO.itaiji
