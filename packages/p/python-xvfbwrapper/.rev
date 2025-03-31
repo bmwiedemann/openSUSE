@@ -58,4 +58,14 @@
     <comment></comment>
     <requestid>914741</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>57b5973a9df366d8b4b484bd90519201</srcmd5>
+    <version>0.2.10</version>
+    <time>1743414113</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.2.10:
+  * https://github.com/cgoldberg/xvfbwrapper/compare/0.2.9...0.2.10
+- modernize spec file</comment>
+    <requestid>1265299</requestid>
+  </revision>
 </revisionlist>

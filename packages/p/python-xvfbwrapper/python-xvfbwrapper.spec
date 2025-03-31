@@ -1,7 +1,7 @@
 #
 # spec file for package python-xvfbwrapper
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%{?sle15_python_module_pythons}
 Name:           python-xvfbwrapper
-Version:        0.2.9
+Version:        0.2.10
 Release:        0
 Summary:        Python wrapper for controlling X virtual framebuffer (Xvfb)
 License:        MIT
 URL:            https://github.com/cgoldberg/xvfbwrapper
 Source:         https://files.pythonhosted.org/packages/source/x/xvfbwrapper/xvfbwrapper-%{version}.tar.gz
 Patch0:         skip_failing_test.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       xorg-x11-Xvfb
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  xorg-x11-Xvfb
-%if %{with python2}
-BuildRequires:  python-mock
-%endif
 # /SECTION
 %python_subpackages
 
@@ -47,15 +45,13 @@ physical display.  Only a network layer is necessary.
 Xvfb is useful for running acceptance tests on headless servers.
 
 %prep
-%setup -q -n xvfbwrapper-%{version}
-%autopatch -p1
-sed -i -e '/^#!\//, 1d' xvfbwrapper.py
+%autosetup -p1 -n xvfbwrapper-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +60,8 @@ sed -i -e '/^#!\//, 1d' xvfbwrapper.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/xvfbwrapper.py
+%{python_sitelib}/xvfbwrapper-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/xvfbwrapper.*
 
 %changelog
