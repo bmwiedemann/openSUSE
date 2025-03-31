@@ -199,8 +199,8 @@ yq e '
   .tftp.ipxe."00:07" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:09" = "ipxe-x86_64.efi" |
   .tftp.ipxe."00:0B" = "snp-arm64.efi" |
-  .["container mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
-  .["container mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
+  .["image mounts"] += {"source": "/etc/SUSEConnect", "dest": "/etc/SUSEConnect", "readonly": true} |
+  .["image mounts"] += {"source": "/etc/zypp/credentials.d/SCCcredentials", "dest": "/etc/zypp/credentials.d/SCCcredentials", "readonly": true}' \
   -i %{buildroot}%{_sysconfdir}/warewulf/warewulf.conf
 # SUSE starts user UIDs at 1000
 #sed -i -e 's@\(.* \$_UID \(>\|-ge\) \)500\(.*\)@\11000\3@' %{buildroot}%{_localstatedir}/lib/warewulf/overlays/host/rootfs/etc/profile.d/ssh_setup.*sh.ww

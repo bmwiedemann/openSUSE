@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 09:59:27 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- SUSEConnect is now correctly mounted into the images
+
+-------------------------------------------------------------------
 Wed Mar 26 12:43:35 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Fix typo in %post script.

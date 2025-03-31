@@ -408,4 +408,12 @@
     <comment>- Fix typo in %post script.</comment>
     <requestid>1256226</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>599881aea779636312d6b00a9f0b8f4c</srcmd5>
+    <version>4.6.0</version>
+    <time>1743413987</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265147</requestid>
+  </revision>
 </revisionlist>
