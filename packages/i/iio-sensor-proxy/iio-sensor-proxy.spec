@@ -17,15 +17,14 @@
 
 
 Name:           iio-sensor-proxy
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Proxy for IIO and input subsystems
 License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://gitlab.freedesktop.org/hadess/iio-sensor-proxy
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM iio-sensor-proxy-compass-check-claim-perm.patch bsc#1236290 badshah400@gmail.com -- avoid unauthenticated permissions for compass
-Patch0:         https://gitlab.freedesktop.org/hadess/iio-sensor-proxy/-/merge_requests/393.patch#/iio-sensor-proxy-compass-check-claim-perm.patch
+
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig

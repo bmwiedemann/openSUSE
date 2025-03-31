@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Mar 27 22:03:57 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.7:
+  + This update fixes a regression of 3.6 regarding the fallback
+    for buffer sensors with and without triggers.
+  + Do not hardcode trigger names.
+  + Enable ring buffers only when sensor is claimed.
+  + Confirm if buffer is usable before using it.
+  + Fix doublefree in input-proximity driver.
+- Drop iio-sensor-proxy-compass-check-claim-perm.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Mon Feb 10 10:28:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add iio-sensor-proxy-compass-check-claim-perm.patch: Avoid
