@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 06:03:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite to use Ant to build. This prevents potential cycles with
+  upcoming Maven 4
+
+-------------------------------------------------------------------
 Sat Sep  9 14:51:33 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

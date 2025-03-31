@@ -39,4 +39,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109997</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>4048eb68cbaeff4ddf9fc88e29725ccd</srcmd5>
+    <version>4.2.1</version>
+    <time>1743413909</time>
+    <user>anag+factory</user>
+    <comment>Rewrite for Ant == build cycles prevention</comment>
+    <requestid>1264936</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="stax2-api" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="project.groupId" value="org.codehaus.woodstox"/>
+  <property name="project.artifactId" value="stax2-api"/>
+  <property name="project.version" value="4.2.1"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="true"
+           encoding="utf-8"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             source="${compiler.source}"
+             verbose="false"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             encoding="utf-8"
+             linksource="false"
+             breakiterator="false"
+             maxmemory="1g">
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Automatic-Module-Name" value="org.codehaus.stax2"/>
+        <attribute name="Bundle-Description" value="Stax2 API is an extension to basic Stax 1.0 API that adds significant new functionality, such as full-featured bi-direction validation interface and high-performance Typed Access API."/>
+        <attribute name="Bundle-DocURL" value="http://github.com/FasterXML/stax2-api"/>
+        <attribute name="Bundle-License" value="http://www.opensource.org/licenses/bsd-license.php"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="Stax2 API"/>
+        <attribute name="Bundle-SymbolicName" value="${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="fasterml.com"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="org.codehaus.stax2.evt;uses:=&quot;javax.xml.stream,javax.xml.stream.events,org.codehaus.stax2&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.io;uses:=&quot;javax.xml.transform&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.osgi;uses:=&quot;org.codehaus.stax2,org.codehaus.stax2.validation&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.ri.dom;uses:=&quot;javax.xml.namespace,javax.xml.stream,javax.xml.transform.dom,org.codehaus.stax2,org.codehaus.stax2.ri,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation,org.w3c.dom&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.ri.evt;uses:=&quot;javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,org.codehaus.stax2,org.codehaus.stax2.evt&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.ri.typed;uses:=&quot;javax.xml.namespace,org.codehaus.stax2.ri,org.codehaus.stax2.typed&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.ri;uses:=&quot;javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,org.codehaus.stax2,org.codehaus.stax2.evt,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.util,org.codehaus.stax2.validation&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.typed;uses:=&quot;javax.xml.namespace,javax.xml.stream&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.util;uses:=&quot;javax.xml.namespace,javax.xml.stream,javax.xml.stream.util,org.codehaus.stax2,org.codehaus.stax2.typed,org.codehaus.stax2.validation&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2.validation;uses:=&quot;javax.xml.namespace,javax.xml.stream&quot;;version=&quot;${project.version}&quot;,org.codehaus.stax2;uses:=&quot;javax.xml.namespace,javax.xml.stream,org.codehaus.stax2.typed,org.codehaus.stax2.validation&quot;;version=&quot;${project.version}&quot;"/>
+        <attribute name="Implementation-Title" value="Stax2 API"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Vendor" value="fasterxml.com"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,org.codehaus.stax2,org.codehaus.stax2.evt,org.codehaus.stax2.ri,org.codehaus.stax2.ri.evt,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.util,org.codehaus.stax2.validation,org.w3c.dom"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="Stax2 API"/>
+        <attribute name="Specification-Vendor" value="fasterxml.com"/>
+        <attribute name="Specification-Version" value="${project.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

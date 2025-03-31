@@ -1,7 +1,7 @@
 #
 # spec file for package stax2-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@ License:        BSD-2-Clause
 Group:          Development/Libraries/Java
 URL:            http://wiki.fasterxml.com/WoodstoxStax2
 Source0:        https://github.com/FasterXML/%{name}/archive/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
+BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
 %description
@@ -48,27 +48,27 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-
-%pom_xpath_remove pom:Import-Package
-
-%pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :moditect-maven-plugin
+cp %{SOURCE1} build.xml
 
 %build
-%{mvn_file} :%{name} %{name}
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+ant jar javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 
 %changelog
