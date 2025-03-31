@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1252884</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>d3c45782cc1824ae0d1e1c617905bdee</srcmd5>
+    <version>0.9.0.M3</version>
+    <time>1743413919</time>
+    <user>anag+factory</user>
+    <comment>Build the sisu-mojos early</comment>
+    <requestid>1264939</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 06:11:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Build with bootstrap version of maven-plugins. This allows to be
+  built early, since it will become a crucial plugin with Maven 4.
+
+-------------------------------------------------------------------
 Wed Jun  5 14:00:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream milestone 0.9.0.M3
