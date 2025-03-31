@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 24 19:15:37 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Make dependency on libimobile and libplist optional and disbled
+  by default:
+  Reading out battery and charging state of USB connected iPod/iPad
+  does not justify the introduction of these dependencies for this core
+  package.
+
+-------------------------------------------------------------------
 Thu Feb 13 11:11:22 UTC 2025 - trenn@suse.de
 
 - Upower is a mature tool with mostly fixes being added, let's

@@ -15,11 +15,19 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# Do not build against libimobile and libplist by default
+# Reading out battery and charging state of USB connected iPod/iPad
+# does not justify the introduction of these dependencies
+%bcond_with libimobile
+%if %{with libimobile}
+%define idevice enabled
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %define libplist2 1
 %else
 %define libplist2 0
+%endif
+%else
+%define idevice disabled
 %endif
 Name:           upower
 Version:        1.90.7.13+git.4f1ef04
@@ -44,16 +52,18 @@ BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.66.0
 BuildRequires:  pkgconfig(gudev-1.0) >= 235
-BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 %{?systemd_requires}
+%if %{with libimobile}
+BuildRequires:  pkgconfig(libimobiledevice-1.0) >= 0.9.7
 %if %libplist2
 BuildRequires:  pkgconfig(libplist-2.0)
 %else
 BuildRequires:  pkgconfig(libplist) >= 0.12
+%endif
 %endif
 
 %description
@@ -111,6 +121,7 @@ system) are restricted using PolicyKit.
 %build
 %meson \
 	--libexecdir=%{_libexecdir}/upower \
+	-Didevice=%{idevice} \
 	%{nil}
 %meson_build
 
