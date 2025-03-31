@@ -65,4 +65,25 @@
     first #1383</comment>
     <requestid>1225341</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93688c36474bac00e638573ee70024d5</srcmd5>
+    <version>0.19.0</version>
+    <time>1743414190</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.19.0:
+  * Add block-level sphinx_gallery_capture_repr_block setting
+  * Fix minigallery duplicates and add tests and update
+    documenation
+  * Fix: Fix minigallery duplicates
+  * Fix incorrect paths for JupyterLite Notebook interface URLs,
+    unpin jupyterlite-sphinx, and update JupyterLite integration
+    docs
+  * BUG: make _anim_rst windows compatible
+  * Fix custom sort
+  * DOC Fixes to minigallery doc in configuration\.rst
+  * DOC Improve doc on linking code blocks
+  * Doc: mention color css property to hide link
+  * DOC Improve custom sort key docs</comment>
+    <requestid>1265491</requestid>
+  </revision>
 </revisionlist>
