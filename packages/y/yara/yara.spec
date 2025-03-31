@@ -31,10 +31,6 @@ BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(jansson)
-BuildRequires:  pkgconfig(libpcre)
-BuildRequires:  pkgconfig(libpcre16)
-BuildRequires:  pkgconfig(libpcrecpp)
-BuildRequires:  pkgconfig(libpcreposix)
 %{?suse_build_hwcaps_libs}
 
 %description
