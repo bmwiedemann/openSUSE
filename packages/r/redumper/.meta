@@ -1,0 +1,9 @@
+<package name="redumper" project="openSUSE:Factory">
+  <title>Low level CD dumper utility</title>
+  <description>redumper is a low-level byte perfect CD disc dumper.
+
+It supports incremental dumps, advanced SCSI/C2 repair,
+intelligent audio CD offset detection and a lot of other features.
+redumper also is a general purpose DVD/HD-DVD/Blu-ray disc dumper.</description>
+  <url>https://github.com/superg/redumper/</url>
+</package>
