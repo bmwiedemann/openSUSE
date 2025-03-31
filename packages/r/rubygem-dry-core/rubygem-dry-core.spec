@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-dry-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,20 +24,19 @@
 #
 
 Name:           rubygem-dry-core
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 %define mod_name dry-core
 %define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.7.0}
+BuildRequires:  %{ruby >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://dry-rb.org/gems/dry-core
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
+Source1:        dry-core-1.1.0.gem.sha256
+Source2:        gem2rpm.yml
 Summary:        A toolset of small support modules used throughout the dry-rb
 License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 A toolset of small support modules used throughout the dry-rb ecosystem.
