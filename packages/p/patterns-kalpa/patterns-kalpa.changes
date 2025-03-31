@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:06:21 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add mesa-demo-egl (kde#502129)
+
+-------------------------------------------------------------------
 Sat Mar 22 23:05:10 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Remove pattern-visible() to stop pattern from showing up in Yast

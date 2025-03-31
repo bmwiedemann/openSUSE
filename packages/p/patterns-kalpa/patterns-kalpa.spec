@@ -396,6 +396,9 @@ Requires:       tpm2.0-abrmd
 Requires:       tpm2-0-tss
 Requires:       tpm2.0-tools
 
+# Add mesa-demo-egl (kde#502129)
+Requires:       Mesa-demo-egl
+
 %description base
 This is the openSUSE Kalpa base system. It contains only fully working immutable desktop system.
 

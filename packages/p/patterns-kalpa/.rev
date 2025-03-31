@@ -110,4 +110,12 @@
     <comment>- Remove pattern-visible() to stop pattern from showing up in Yast</comment>
     <requestid>1255343</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>47729ae6339c18d9e6de2428f1a5b5a0</srcmd5>
+    <version>6.0</version>
+    <time>1743414109</time>
+    <user>anag+factory</user>
+    <comment>- Add mesa-demo-egl (kde#502129)</comment>
+    <requestid>1265290</requestid>
+  </revision>
 </revisionlist>
