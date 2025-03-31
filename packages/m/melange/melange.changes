@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 31 05:45:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.3:
+  * rebuild: handle pipelines originally passed via
+    `--pipeline-dir` (#1884)
+  * fix: bug with target-architecture (#1883)
+  * setup-bubblewrap: allow anyone to call bwrap (#1882)
+  * rebuild: support subpackages (#1880)
+  * switch to ubuntu-latest (#1877)
+
+-------------------------------------------------------------------
 Thu Mar 27 21:09:28 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.2:
