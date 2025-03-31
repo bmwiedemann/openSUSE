@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:07:46 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Fix build on architectures different to ix86 and x86_64 by disabling the VM
+  and adding implement_hl_debug_break_for_more_architectures.patch
+- Drop fix_arm_compilation.patch
+
+-------------------------------------------------------------------
 Mon Mar 24 21:01:32 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 1.15

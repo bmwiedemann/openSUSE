@@ -111,4 +111,15 @@ final releases.
 </comment>
     <requestid>1256260</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0bed68bfdbf64d845c5bd1649929b617</srcmd5>
+    <version>1.15</version>
+    <time>1743414136</time>
+    <user>anag+factory</user>
+    <comment>- Fix build on architectures different to ix86 and x86_64 by disabling the VM
+  and adding implement_hl_debug_break_for_more_architectures.patch
+- Drop fix_arm_compilation.patch
+</comment>
+    <requestid>1265352</requestid>
+  </revision>
 </revisionlist>

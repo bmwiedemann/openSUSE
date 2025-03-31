@@ -1,0 +1,86 @@
+From 737a6629cada6960e2c8c7e73d75117b9baf5726 Mon Sep 17 00:00:00 2001
+From: Apprentice-Alchemist
+ <53486764+Apprentice-Alchemist@users.noreply.github.com>
+Date: Wed, 26 Mar 2025 12:09:51 +0100
+Subject: [PATCH] Implement hl_debug_break for more architectures.
+
+Unify Linux/macOS implementations and enable hl_debug_break for all non-console platforms.
+
+Remove usage of .pushsection embed-breakpoint because it doesn't actually do anything.
+---
+ src/hl.h | 49 +++++++++++++++++++++++++++++++++----------------
+ 1 file changed, 33 insertions(+), 16 deletions(-)
+
+diff --git a/src/hl.h b/src/hl.h
+index 3f57a027b..30635013a 100644
+--- a/src/hl.h
++++ b/src/hl.h
+@@ -283,28 +283,40 @@ C_FUNCTION_END
+ C_FUNCTION_BEGIN
+ HL_API void hl_debug_break( void );
+ C_FUNCTION_END
+-#elif defined(HL_LINUX)
+-#	ifdef HL_64
++#elif !defined(HL_CONSOLE)
++
++// use __builtin_debugtrap when available
++// fall back to breakpoint instructions for certain architectures
++// else raise SIGTRAP
++#	ifdef __has_builtin
++#	if __has_builtin(__builtin_debugtrap)
++#	define USE_BUILTIN_DEBUG_TRAP 1
++#	endif
++#	endif
++
++#	ifdef USE_BUILTIN_DEBUG_TRAP
+ #	define hl_debug_break() \
+ 		if( hl_detect_debugger() ) \
+-			__asm__("0: int3;" \
+-			    ".pushsection embed-breakpoints;" \
+-			    ".quad 0b;" \
+-			    ".popsection")
+-#	else
++			__builtin_debugtrap()
++#	elif defined(__x86_64__) || defined(__i386__)
+ #	define hl_debug_break() \
+ 		if( hl_detect_debugger() ) \
+-			__asm__("0: int3;" \
+-			    ".pushsection embed-breakpoints;" \
+-			    ".long 0b;" \
+-			    ".popsection")
+-#	endif
+-#elif defined(HL_MAC)
+-#include <signal.h>
+-#include <mach/mach.h>
++			__asm__("int3;")
++#	elif defined(__aarch64__)
++#	define hl_debug_break() \
++		if( hl_detect_debugger() ) \
++			__asm__("brk #0xf000;")
++#	elif defined(__riscv)
+ #	define hl_debug_break() \
+ 		if( hl_detect_debugger() ) \
+-			raise(SIGTRAP);//__builtin_trap();
++			__asm__("ebreak;")
++#	else
++#	include <signal.h>
++#	define hl_debug_break() \
++		if( hl_detect_debugger() ) \
++			raise(SIGTRAP)
++#	endif
++#undef USE_BUILTIN_DEBUG_TRAP
+ #else
+ #	define hl_debug_break()
+ #endif
+@@ -913,6 +925,11 @@ struct _hl_trap_ctx {
+ 
+ #define HL_MAX_EXTRA_STACK 64
+ 
++#ifdef HL_MAC
++#include <mach/mach.h>
++#include <signal.h>
++#endif
++
+ typedef struct {
+ 	int thread_id;
+ 	// gc vars
