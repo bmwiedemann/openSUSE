@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 6.13
-%define patchversion 6.13.8
-%define git_commit 7089702bd465a5dc1c9f43f152bf6fb7a3cf993a
+%define srcversion 6.14
+%define patchversion 6.14.0
+%define git_commit ab99d4c5094f8daf779dcf957330fa83bd92ac73
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-debug
-Version:        6.13.8
+Version:        6.14.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7089702
+Release:        <RELEASE>.gab99d4c
 %else
 Release:        0
 %endif
@@ -1961,7 +1961,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     add_dirs_to_filelist %my_builddir/optional-modules > %my_builddir/kernel-optional.files
 %endif
 
-%if 0%{?sle_version} >= 150000
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150000
     # By default, loading unsupported modules is disabled on SLE through
     # /etc/modprobe.d/10-unsupported-modules.conf from the suse-module-tools
     # package.
@@ -1972,7 +1972,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     # multiversion(kernel).
 
     modprobe_d_dir=/etc/modprobe.d
-    %if 0%{?sle_version} > 150300
+    %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
     modprobe_d_dir=/lib/modprobe.d
     %endif
     %if %{usrmerged}

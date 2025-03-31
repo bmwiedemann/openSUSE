@@ -6944,4 +6944,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.13.8 &amp; openvpn-dco retry; bugs: bsc#1012628</comment>
     <requestid>1255536</requestid>
   </revision>
+  <revision rev="774" vrev="1">
+    <srcmd5>f0f19680da0ef0e1448974d2c22cd5a0</srcmd5>
+    <version>6.14.0</version>
+    <time>1743413849</time>
+    <user>anag+factory</user>
+    <comment>6.14; bugs: bsc#1237521 bsc#1239986</comment>
+    <requestid>1256401</requestid>
+  </revision>
 </revisionlist>

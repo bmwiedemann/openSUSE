@@ -16,9 +16,9 @@
 #
 
 
-%define srcversion 6.13
-%define patchversion 6.13.8
-%define git_commit 7089702bd465a5dc1c9f43f152bf6fb7a3cf993a
+%define srcversion 6.14
+%define patchversion 6.14.0
+%define git_commit ab99d4c5094f8daf779dcf957330fa83bd92ac73
 %define variant %{nil}
 %define build_html 1
 %define build_pdf 0
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-docs
-Version:        6.13.8
+Version:        6.14.0
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g7089702
+Release:        <RELEASE>.gab99d4c
 %else
 Release:        0
 %endif
