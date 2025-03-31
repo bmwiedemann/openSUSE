@@ -1316,4 +1316,12 @@
     <comment></comment>
     <requestid>1228723</requestid>
   </revision>
+  <revision rev="144" vrev="3">
+    <srcmd5>fa783e61d1e22468beaed2a0feb0f808</srcmd5>
+    <version>1.7.0</version>
+    <time>1743413813</time>
+    <user>anag+factory</user>
+    <comment>- Remove unix2_chkpwd, no consumer left</comment>
+    <requestid>1255709</requestid>
+  </revision>
 </revisionlist>

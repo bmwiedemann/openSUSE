@@ -85,8 +85,6 @@ Source5:        common-account.pamd
 Source6:        common-password.pamd
 Source7:        common-session.pamd
 Source9:        baselibs.conf
-Source10:       unix2_chkpwd.c
-Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
 Source13:       pam.tmpfiles
 Source20:       common-session-nonlogin.pamd
@@ -254,8 +252,6 @@ cp %{tar_package_name} %{_other}
 
 %endif # livepatchable
 
-gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/%{_target_platform}/libpam -lpam
-
 %if %{build_main}
 %check
 %meson_test
@@ -286,8 +282,6 @@ DOC=%{buildroot}%{_defaultdocdir}/pam
 mkdir -p $DOC/modules
 cp -fpv %{_vpath_builddir}/modules/pam_*/pam_*.txt "$DOC/modules/"
 %endif
-# Install unix2_chkpwd
-install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{_sbindir}
 
 # rpm macros
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
@@ -300,7 +294,6 @@ mkdir -p %{buildroot}%{_pam_secdistconfdir}/{limits.d,namespace.d}
 %if !%{build_doc}
 rm -rf %{buildroot}%{_mandir}/man?/*
 %else
-install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 # bsc#1188724
 echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 %endif
@@ -323,12 +316,10 @@ rm -rf  %{buildroot}{%{_pam_moduledir}/pam_limits.so,%{_pam_secdistconfdir}/limi
 
 %verifyscript
 %verify_permissions -e %{_sbindir}/unix_chkpwd
-%verify_permissions -e %{_sbindir}/unix2_chkpwd
 
 %post
 /sbin/ldconfig
 %set_permissions %{_sbindir}/unix_chkpwd
-%set_permissions %{_sbindir}/unix2_chkpwd
 %tmpfiles_create %{_tmpfilesdir}/pam.conf
 
 %postun -p /sbin/ldconfig
@@ -422,7 +413,6 @@ done
 %{_sbindir}/pam_namespace_helper
 %{_sbindir}/pwhistory_helper
 %verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix_chkpwd
-%verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix2_chkpwd
 %attr(0700,root,root) %{_sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
 %{_tmpfilesdir}/pam.conf
@@ -526,7 +516,6 @@ done
 %{_mandir}/man8/pam_wheel.8%{?ext_man}
 %{_mandir}/man8/pam_xauth.8%{?ext_man}
 %{_mandir}/man8/pwhistory_helper.8%{?ext_man}
-%{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_update.8%{?ext_man}
 
