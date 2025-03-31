@@ -628,4 +628,12 @@
   * Make it build again with latest texinfo package</comment>
     <requestid>1248620</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>50ea31d2b4fb4db20555b73b3ad6f6a8</srcmd5>
+    <version>14.0.7</version>
+    <time>1743413990</time>
+    <user>anag+factory</user>
+    <comment>- Switch over to TeXLive 2025</comment>
+    <requestid>1265150</requestid>
+  </revision>
 </revisionlist>
