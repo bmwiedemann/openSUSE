@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 09:09:28 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu11 to avoid the strict C23 default from GCC 15.
+
+-------------------------------------------------------------------
 Thu Jul  4 14:25:46 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to the remaining uses of optflags. [boo#1223910]
