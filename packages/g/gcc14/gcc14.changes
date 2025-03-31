@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 08:25:48 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc14-bsc1239938.patch to allow GCC executables to be
+  built PIE.  [bsc#1239938]
+- Add gcc14-rs6000-msplit-patch-nops.patch to backport -msplit-patch-nops
+  required for user-space livepatching on powerpc.
+
+-------------------------------------------------------------------
 Thu Mar 13 14:06:30 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2

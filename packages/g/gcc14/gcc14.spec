@@ -372,6 +372,8 @@ Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc13-pr101523.patch
 Patch22:        gcc14-pr118780.patch
 Patch23:        gcc13-bsc1239566.patch
+Patch24:        gcc14-bsc1239938.patch
+Patch25:        gcc14-rs6000-msplit-patch-nops.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2373,7 +2375,7 @@ ln -s newlib-4.4.0.20231231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
-%patch -p1 -P 20 -P 22 -P 23
+%patch -p1 -P 20 -P 22 -P 23 -P 24 -P 25
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
@@ -2525,6 +2527,9 @@ export CARGO=/bin/true
 	--libdir=%{_libdir} \
 	--libexecdir=%{_libdir} \
 	--enable-languages=$languages \
+%if !0%{?is_opensuse}
+	--enable-host-pie \
+%endif
 %if %{build_nvptx} || %{build_gcn}
 	--enable-offload-targets=\
 %if %{build_nvptx}

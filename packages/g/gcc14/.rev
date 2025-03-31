@@ -172,4 +172,15 @@ next week.  Gcc7 can pick it up from there.
   [bsc#1238491]</comment>
     <requestid>1253651</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>a8ee7cf7ff0cd9b514bed36e34f0e663</srcmd5>
+    <version>14.2.1+git11321</version>
+    <time>1743413822</time>
+    <user>anag+factory</user>
+    <comment>- Add gcc14-bsc1239938.patch to allow GCC executables to be
+  built PIE.  [bsc#1239938]
+- Add gcc14-rs6000-msplit-patch-nops.patch to backport -msplit-patch-nops
+  required for user-space livepatching on powerpc.</comment>
+    <requestid>1260501</requestid>
+  </revision>
 </revisionlist>

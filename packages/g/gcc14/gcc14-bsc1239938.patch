@@ -1,0 +1,426 @@
+From 1a6442e5ef6a335ae906bad32a43812c73379109 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Tue, 25 Mar 2025 18:11:08 +0100
+Subject: [PATCH] Add support of --enable-host-pie to the native Ada compiler
+To: gcc-patches@gcc.gnu.org
+
+From: Eric Botcazou <ebotcazou@adacore.com>
+
+gcc/ada/
+	PR ada/119440
+	* gcc-interface/Make-lang.in (GCC_LINK): Filter out -pie in stage 1
+	(GCC_LLINK): Likewise.
+	* gcc-interface/Makefile.in (COMPILER): Delete and replace by CC.
+	(COMPILER_FLAGS): Delete.
+	(ALL_COMPILERFLAGS): Delete and replace by ALL_CFLAGS.
+	(ALL_ADAFLAGS): Move around.
+	(enable_host_pie): New substituted variable.
+	(LD_PICFLAG): Likewise.  Do not add it to TOOLS_LIBS.
+	(LIBIBERTY): Test enable_host_pie.
+	(LIBGNAT): Likewise and use libgnat_pic.a if yes.
+	(TOOLS_FLAGS_TO_PASS): Pass $(PICFLAG) under CFLAGS & $(LD_PICFLAG)
+	under LDFLAGS.  Also pass through ADA_CFLAGS.
+	(common-tools): Add $(ALL_CFLAGS) $(ADA_CFLAGS) to the --GCC string
+	of $(GNATLINK) commands.
+	(../../gnatdll$(exeext)): Likewise.
+	(gnatmake-re): Likewise.
+	(gnatlink-re): Likewise.
+	(gnatlib-shared-dual): Remove all the object files at the end.
+
+gnattools/
+	PR ada/119440
+	* configure.ac (host-pie): New switch.
+	(host-bind-now): Likewise.
+	Substitute PICFLAG and LD_PICFLAG.
+	* configure: Regenerate.
+	* Makefile.in (PICFLAG): New substituted variable.
+	(LD_PICFLAG): Likewise.
+	(TOOLS_FLAGS_TO_PASS): Pass $(PICFLAG) under CFLAGS & $(LD_PICFLAG)
+	under LDFLAGS.  Do not pass -I- under ADA_INCLUDES.
+	(TOOLS_FLAGS_TO_PASS_RE): Likewise.
+---
+ gcc/ada/gcc-interface/Make-lang.in |  8 ++-
+ gcc/ada/gcc-interface/Makefile.in  | 91 +++++++++++++++++-------------
+ gnattools/Makefile.in              | 13 +++--
+ gnattools/configure                | 24 ++++++++
+ gnattools/configure.ac             | 16 +++++-
+ 5 files changed, 107 insertions(+), 45 deletions(-)
+
+diff --git a/gcc/ada/gcc-interface/Make-lang.in b/gcc/ada/gcc-interface/Make-lang.in
+index f6404c0b1eb..ec72816f773 100644
+--- a/gcc/ada/gcc-interface/Make-lang.in
++++ b/gcc/ada/gcc-interface/Make-lang.in
+@@ -271,8 +271,14 @@ GCC_LINKERFLAGS = $(filter-out -Werror, $(ALL_LINKERFLAGS))
+ GCC_LDFLAGS = $(LDFLAGS)
+ endif
+ 
+-GCC_LINK=$(LINKER) $(GCC_LINKERFLAGS) $(GCC_LDFLAGS)
++# Do not link with -pie during stage #1 because the base libgnat.a is not PIC
++ifeq ($(STAGE1),True)
++GCC_LINK= $(filter-out -pie, $(LINKER)  $(GCC_LINKERFLAGS) $(GCC_LDFLAGS))
++GCC_LLINK=$(filter-out -pie, $(LLINKER) $(GCC_LINKERFLAGS) $(GCC_LDFLAGS))
++else
++GCC_LINK= $(LINKER)  $(GCC_LINKERFLAGS) $(GCC_LDFLAGS)
+ GCC_LLINK=$(LLINKER) $(GCC_LINKERFLAGS) $(GCC_LDFLAGS)
++endif
+ 
+ # Lists of files for various purposes.
+ 
+diff --git a/gcc/ada/gcc-interface/Makefile.in b/gcc/ada/gcc-interface/Makefile.in
+index 0666fc00bb8..692a35684df 100644
+--- a/gcc/ada/gcc-interface/Makefile.in
++++ b/gcc/ada/gcc-interface/Makefile.in
+@@ -91,10 +91,11 @@ LS = ls
+ RANLIB = @RANLIB@
+ RANLIB_FLAGS = @ranlib_flags@
+ AWK = @AWK@
+-PICFLAG = @PICFLAG@
+ 
+-COMPILER = $(CC)
+-COMPILER_FLAGS = $(CFLAGS)
++# Should we build position-independent host code?
++enable_host_pie = @enable_host_pie@
++PICFLAG = @PICFLAG@
++LD_PICFLAG = @LD_PICFLAG@
+ 
+ SHELL = @SHELL@
+ PWD_COMMAND = $${PWDCMD-pwd}
+@@ -119,7 +120,6 @@ GNATLIBCFLAGS = -g -O2
+ GNATLIBCFLAGS_FOR_C = \
+   -W -Wall $(GNATLIBCFLAGS) -fexceptions -DIN_RTS -DHAVE_GETIPINFO
+ PICFLAG_FOR_TARGET = @PICFLAG_FOR_TARGET@
+-ALL_ADAFLAGS = $(CFLAGS) $(ADA_CFLAGS) $(ADAFLAGS)
+ THREAD_KIND = native
+ THREADSLIB =
+ GMEM_LIB =
+@@ -236,11 +236,9 @@ ALL_CFLAGS = $(INTERNAL_CFLAGS) $(T_CFLAGS) $(CFLAGS)
+ # Likewise.
+ ALL_CPPFLAGS = $(CPPFLAGS)
+ 
+-# Used with $(COMPILER).
+-ALL_COMPILERFLAGS = $(ALL_CFLAGS)
++ALL_ADAFLAGS = $(CFLAGS) $(ADA_CFLAGS) $(ADAFLAGS)
+ 
+-# This is where we get libiberty.a from.
+-ifneq ($(findstring $(PICFLAG),-fPIC -fPIE),)
++ifneq ($(enable_host_pie),)
+ LIBIBERTY = ../../libiberty/pic/libiberty.a
+ else
+ LIBIBERTY = ../../libiberty/libiberty.a
+@@ -261,9 +259,6 @@ TOOLS_LIBS = ../version.o ../link.o ../targext.o ../../ggc-none.o \
+   $(LIBGNAT) $(LIBINTL) $(LIBICONV) ../$(LIBBACKTRACE) ../$(LIBIBERTY) \
+   $(SYSLIBS) $(TGT_LIB)
+ 
+-# Add -no-pie to TOOLS_LIBS since some of them are compiled with -fno-PIE.
+-TOOLS_LIBS += @LD_PICFLAG@
+-
+ # Specify the directories to be searched for header files.
+ # Both . and srcdir are used, in that order,
+ # so that tm.h and config.h will be found in the compilation
+@@ -299,8 +294,7 @@ ADA_INCLUDES_FOR_SUBDIR = -I. -I$(fsrcdir)/ada
+ 	$(CC) -c -x assembler $< $(OUTPUT_OPTION)
+ 
+ .c.o:
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) $(ALL_CPPFLAGS) \
+-	  $(INCLUDES) $< $(OUTPUT_OPTION)
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) $(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ .adb.o:
+ 	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) $< $(OUTPUT_OPTION)
+@@ -378,13 +372,18 @@ endif
+ 
+ include $(fsrcdir)/ada/Makefile.rtl
+ 
++ifneq ($(enable_host_pie),)
++LIBGNAT=../$(RTSDIR)/libgnat_pic.a
++else
+ LIBGNAT=../$(RTSDIR)/libgnat.a
++endif
+ 
+ TOOLS_FLAGS_TO_PASS=		\
+ 	"CC=$(CC)" 		\
+-	"CFLAGS=$(CFLAGS)"	\
+-	"LDFLAGS=$(LDFLAGS)"	\
++	"CFLAGS=$(CFLAGS) $(PICFLAG)"	\
++	"LDFLAGS=$(LDFLAGS) $(LD_PICFLAG)"	\
+ 	"ADAFLAGS=$(ADAFLAGS)"	\
++	"ADA_CFLAGS=$(ADA_CFLAGS)"	\
+ 	"INCLUDES=$(INCLUDES_FOR_SUBDIR)"\
+ 	"ADA_INCLUDES=$(ADA_INCLUDES) $(ADA_INCLUDES_FOR_SUBDIR)"\
+ 	"libsubdir=$(libsubdir)"	\
+@@ -465,32 +464,41 @@ common-tools: ../stamp-tools
+ 	  gnatchop gnatcmd gnatkr gnatls gnatprep gnatname \
+ 	  gnatclean -bargs $(ADA_INCLUDES) $(GNATBIND_FLAGS)
+ 	$(GNATLINK) -v gnatcmd -o ../../gnat$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatchop -o ../../gnatchop$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatkr -o ../../gnatkr$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatls -o ../../gnatls$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatprep -o ../../gnatprep$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatname -o ../../gnatname$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	   --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(GNATLINK) -v gnatclean -o ../../gnatclean$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 
+ ../../gnatdll$(exeext): ../stamp-tools
+ 	$(GNATMAKE) -c $(ADA_INCLUDES) gnatdll --GCC="$(CC) $(ALL_ADAFLAGS)"
+ 	$(GNATBIND) $(ADA_INCLUDES) $(GNATBIND_FLAGS) gnatdll
+ 	$(GNATLINK) -v gnatdll -o $@ \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 
+ gnatmake-re: ../stamp-tools
+-	$(GNATMAKE) -j0 $(ADA_INCLUDES) -u sdefault --GCC="$(CC) $(MOST_ADA_FLAGS)"
++	$(GNATMAKE) -j0 $(ADA_INCLUDES) -u sdefault --GCC="$(CC) $(ALL_ADAFLAGS)"
+ 	$(GNATMAKE) -j0 -c $(ADA_INCLUDES) gnatmake --GCC="$(CC) $(ALL_ADAFLAGS)"
+ 	$(GNATBIND) $(ADA_INCLUDES) $(GNATBIND_FLAGS) gnatmake
+ 	$(GNATLINK) -v gnatmake -o ../../gnatmake$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 
+ # Note the use of the "mv" command in order to allow gnatlink to be linked with
+ # with the former version of gnatlink itself which cannot override itself.
+@@ -500,7 +508,8 @@ gnatlink-re: ../stamp-tools gnatmake-re
+ 	$(GNATMAKE) -j0 -c $(ADA_INCLUDES) gnatlink --GCC="$(CC) $(ALL_ADAFLAGS)"
+ 	$(GNATBIND) $(ADA_INCLUDES) $(GNATBIND_FLAGS) gnatlink
+ 	$(GNATLINK) -v gnatlink -o ../../gnatlinknew$(exeext) \
+-	  --GCC="$(CC) $(ADA_INCLUDES)" --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
++	  --GCC="$(CC) $(ALL_CFLAGS) $(ADA_CFLAGS) $(ADA_INCLUDES)" \
++	  --LINK="$(GCC_LINK)" $(TOOLS_LIBS)
+ 	$(MV)  ../../gnatlinknew$(exeext)  ../../gnatlink$(exeext)
+ 
+ # Needs to be built with CC=gcc
+@@ -727,6 +736,14 @@ gnatlib-shared-dual:
+ 	$(MV) libgnat_pic$(arext) $(RTSDIR)
+ 	$(MV) libgnarl_pic$(arext) $(RTSDIR)
+ 
++	# Remove all the object files. They cannot be reused because they have
++	# been generated for the static library and the shared library will be
++	# the first to be rebuilt. Moreover, this will prevent gnatmake to pick
++	# them instead of the prescribed version of the library when the tools
++	# are built for a native compiler.
++	$(RM) $(addprefix $(RTSDIR)/,$(GNATRTL_NONTASKING_OBJS) $(LIBGNAT_OBJS))
++	$(RM) $(addprefix $(RTSDIR)/,$(GNATRTL_TASKING_OBJS))
++
+ gnatlib-shared-dual-win32:
+ 	$(MAKE) $(FLAGS_TO_PASS) \
+              GNATLIBFLAGS="$(GNATLIBFLAGS)" \
+@@ -886,15 +903,13 @@ b_gnatl.adb : $(GNATLINK_OBJS)
+ 	$(GNATBIND) $(ADA_INCLUDES) -o b_gnatl.adb gnatlink.ali
+ 
+ b_gnatl.o : b_gnatl.adb
+-	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) -gnatws -gnatyN \
+-	    $< $(OUTPUT_OPTION)
++	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) -gnatws -gnatyN $< $(OUTPUT_OPTION)
+ 
+ b_gnatm.adb : $(GNATMAKE_OBJS)
+ 	$(GNATBIND) $(ADA_INCLUDES) -o b_gnatm.adb gnatmake.ali
+ 
+ b_gnatm.o : b_gnatm.adb
+-	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) -gnatws -gnatyN \
+-	    $< $(OUTPUT_OPTION)
++	$(CC) -c $(ALL_ADAFLAGS) $(ADA_INCLUDES) -gnatws -gnatyN $< $(OUTPUT_OPTION)
+ 
+ # Provide a `toolexeclibdir' definition for when `gnat-install-lib' is
+ # wired through gcc/ in a configuration with top-level libada disabled.
+@@ -912,7 +927,7 @@ ADA_RTL_DSO_DIR = $(toolexeclibdir)
+ # some targets.
+ 
+ tracebak.o  : tracebak.c
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) $(ALL_CPPFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) $(ALL_CPPFLAGS) \
+ 	      $(INCLUDES) $(NO_OMIT_ADAFLAGS) $< $(OUTPUT_OPTION)
+ 
+ adadecode.o : adadecode.c adadecode.h
+@@ -940,33 +955,33 @@ terminals.o : terminals.c
+ vx_stack_info.o : vx_stack_info.c
+ 
+ raise-gcc.o : raise-gcc.c raise.h
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 		-iquote $(srcdir) -iquote $(ftop_srcdir)/libgcc \
+ 		$(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ cio.o     : cio.c
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 	         $(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ init.o    : init.c adaint.h raise.h
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 	         $(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ init-vxsim.o : init-vxsim.c
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 	         $(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ initialize.o : initialize.c raise.h
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 	         $(ALL_CPPFLAGS) $(INCLUDES) $< $(OUTPUT_OPTION)
+ 
+ link.o : link.c
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 		$(ALL_CPPFLAGS) $(INCLUDES_FOR_SUBDIR) \
+ 		$< $(OUTPUT_OPTION)
+ 
+ targext.o : targext.c
+-	$(COMPILER) -c $(ALL_COMPILERFLAGS) $(ADA_CFLAGS) \
++	$(CC) -c $(ALL_CFLAGS) $(ADA_CFLAGS) \
+ 		-iquote $(srcdir) \
+ 		$(ALL_CPPFLAGS) $(INCLUDES_FOR_SUBDIR) \
+ 		$< $(OUTPUT_OPTION)
+diff --git a/gnattools/Makefile.in b/gnattools/Makefile.in
+index e8fc4af0788..1e7c9b8470c 100644
+--- a/gnattools/Makefile.in
++++ b/gnattools/Makefile.in
+@@ -51,6 +51,9 @@ WARN_CFLAGS = @warn_cflags@
+ 
+ ADA_CFLAGS=@ADA_CFLAGS@
+ 
++PICFLAG = @PICFLAG@
++LD_PICFLAG = @LD_PICFLAG@
++
+ # Variables for gnattools.
+ ADAFLAGS= -gnatpg -gnata
+ 
+@@ -79,12 +82,12 @@ CXX_LFLAGS = \
+ TOOLS_FLAGS_TO_PASS_NATIVE= \
+ 	"CC=../../xgcc -B../../" \
+ 	"CXX=../../xg++ -B../../ $(CXX_LFLAGS)" \
+-	"CFLAGS=$(CFLAGS) $(WARN_CFLAGS)" \
+-	"LDFLAGS=$(LDFLAGS)" \
++	"CFLAGS=$(CFLAGS) $(WARN_CFLAGS) $(PICFLAG)" \
++	"LDFLAGS=$(LDFLAGS) $(LD_PICFLAG)" \
+ 	"ADAFLAGS=$(ADAFLAGS)" \
+ 	"ADA_CFLAGS=$(ADA_CFLAGS)" \
+ 	"INCLUDES=$(INCLUDES_FOR_SUBDIR)" \
+-	"ADA_INCLUDES=-I- -I../rts $(ADA_INCLUDES_FOR_SUBDIR)"\
++	"ADA_INCLUDES=-I../rts $(ADA_INCLUDES_FOR_SUBDIR)"\
+ 	"exeext=$(exeext)" \
+ 	"fsrcdir=$(fsrcdir)" \
+ 	"srcdir=$(fsrcdir)" \
+@@ -97,8 +100,8 @@ TOOLS_FLAGS_TO_PASS_NATIVE= \
+ TOOLS_FLAGS_TO_PASS_RE= \
+ 	"CC=../../xgcc -B../../" \
+ 	"CXX=../../xg++ -B../../ $(CXX_LFLAGS)" \
+-	"CFLAGS=$(CFLAGS)" \
+-	"LDFLAGS=$(LDFLAGS)" \
++	"CFLAGS=$(CFLAGS) $(WARN_CFLAGS) $(PICFLAG)" \
++	"LDFLAGS=$(LDFLAGS) $(LD_PICFLAG)" \
+ 	"ADAFLAGS=$(ADAFLAGS)" \
+ 	"ADA_CFLAGS=$(ADA_CFLAGS)" \
+ 	"INCLUDES=$(INCLUDES_FOR_SUBDIR)" \
+diff --git a/gnattools/configure b/gnattools/configure
+index 6cdfbe67af2..1eb0debc2ce 100755
+--- a/gnattools/configure
++++ b/gnattools/configure
+@@ -585,6 +585,8 @@ ac_unique_file="Makefile.in"
+ ac_subst_vars='LTLIBOBJS
+ LIBOBJS
+ default_gnattools_target
++LD_PICFLAG
++PICFLAG
+ warn_cflags
+ OBJEXT
+ EXEEXT
+@@ -657,6 +659,8 @@ ac_subst_files=''
+ ac_user_opts='
+ enable_option_checking
+ enable_maintainer_mode
++enable_host_pie
++enable_host_bind_now
+ '
+       ac_precious_vars='build_alias
+ host_alias
+@@ -1281,6 +1285,8 @@ Optional Features:
+   --enable-maintainer-mode
+                           enable make rules and dependencies not useful (and
+                           sometimes confusing) to the casual installer
++  --enable-host-pie       build host code as PIE
++  --enable-host-bind-now  link host code as BIND_NOW
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -2884,6 +2890,24 @@ if test "x$GCC" = "xyes"; then
+ fi
+ 
+ 
++# Enable --enable-host-pie
++# Check whether --enable-host-pie was given.
++if test "${enable_host_pie+set}" = set; then :
++  enableval=$enable_host_pie; PICFLAG=-fPIE; LD_PICFLAG=-pie
++else
++  PICFLAG=-fno-PIE; LD_PICFLAG=-no-pie
++fi
++
++
++
++# Enable --enable-host-bind-now
++# Check whether --enable-host-bind-now was given.
++if test "${enable_host_bind_now+set}" = set; then :
++  enableval=$enable_host_bind_now; LD_PICFLAG="$LD_PICFLAG -Wl,-z,now"
++fi
++
++
++
+ # Determine what to build for 'gnattools'.  Test after the above,
+ # because testing for CC sets the final value of cross_compiling, even
+ # if we end up using a different CC.  We want to build
+diff --git a/gnattools/configure.ac b/gnattools/configure.ac
+index 38a28b6ee62..776530aee52 100644
+--- a/gnattools/configure.ac
++++ b/gnattools/configure.ac
+@@ -1,4 +1,4 @@
+-# Configure script for libada.
++# Configure script for gnattools
+ #   Copyright 2003, 2004, 2009, 2012 Free Software Foundation, Inc.
+ #
+ # This file is free software; you can redistribute it and/or modify it
+@@ -97,6 +97,20 @@ if test "x$GCC" = "xyes"; then
+ fi
+ AC_SUBST(warn_cflags)
+ 
++# Enable --enable-host-pie
++AC_ARG_ENABLE(host-pie,
++[AS_HELP_STRING([--enable-host-pie],
++		[build host code as PIE])],
++[PICFLAG=-fPIE; LD_PICFLAG=-pie], [PICFLAG=-fno-PIE; LD_PICFLAG=-no-pie])
++AC_SUBST(PICFLAG)
++
++# Enable --enable-host-bind-now
++AC_ARG_ENABLE(host-bind-now,
++[AS_HELP_STRING([--enable-host-bind-now],
++       [link host code as BIND_NOW])],
++[LD_PICFLAG="$LD_PICFLAG -Wl,-z,now"], [])
++AC_SUBST(LD_PICFLAG)
++
+ # Determine what to build for 'gnattools'.  Test after the above,
+ # because testing for CC sets the final value of cross_compiling, even
+ # if we end up using a different CC.  We want to build
+-- 
+2.43.0
+
