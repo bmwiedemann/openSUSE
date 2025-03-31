@@ -17,7 +17,7 @@
 
 
 Name:           kubescape
-Version:        3.0.33
+Version:        3.0.34
 Release:        0
 Summary:        Tool providing a multi-cloud K8s single pane of glass
 License:        Apache-2.0
