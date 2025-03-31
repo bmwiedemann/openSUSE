@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 28 12:00:36 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.0.4
+  - Fixed command line parsing (QCommandLineParser/Option) to not
+    exiting the application with a segfault when showing help and
+    version information.
+  - Graph: force an actual complete refresh on main View/Refresh...,
+    especially when changing the color theme palette on-the-fly.
+
+-------------------------------------------------------------------
 Mon Nov 25 12:33:19 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.0.3
