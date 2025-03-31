@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Mar 29 16:52:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.1:
+  * Bug Fixes
+    - Fix layer selection to select only one layer at a time [#585
+      @wagoodman]
+    - Gitlab-ci integration is broken with latest docker image
+      [#580 #586 @wagoodman]
+    - Failed to Create Container After Upgrading to 0.13.0 [#576
+      #586 @wagoodman]
+    - exec: "getent": executable file not found in $PATH [#582 #586
+      @wagoodman]
+    - Publish dive to ghcr.io [#573 #577 @wagoodman]
+  * Additional Changes
+    - Add x-cmd method to install dive [#550 @lunrenyi]
+
+-------------------------------------------------------------------
 Fri Mar 21 20:20:31 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.13.0:

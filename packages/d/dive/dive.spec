@@ -17,7 +17,7 @@
 
 
 Name:           dive
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Tool for exploring each layer in a docker image
 License:        MIT
