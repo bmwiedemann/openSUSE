@@ -167,4 +167,12 @@
     <comment>allow building with the upcoming maven-plugin-tools 4.x</comment>
     <requestid>1264630</requestid>
   </revision>
+  <revision rev="22" vrev="19">
+    <srcmd5>e16d8cf1cad130496eba32e9846fbc71</srcmd5>
+    <version>1.6.0</version>
+    <time>1743414133</time>
+    <user>anag+factory</user>
+    <comment>fix &quot;Classes found in the wrong directory&quot;</comment>
+    <requestid>1265353</requestid>
+  </revision>
 </revisionlist>

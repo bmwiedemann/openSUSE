@@ -1,0 +1,8 @@
+--- tycho-tycho-1.6.0/tycho-surefire/org.eclipse.tycho.surefire.junit5/bnd.bnd	2025-03-29 08:56:38.005424192 +0100
++++ tycho-tycho-1.6.0/tycho-surefire/org.eclipse.tycho.surefire.junit5/bnd.bnd	2025-03-29 08:57:07.988483934 +0100
+@@ -9,3 +9,4 @@
+ 	*
+ Fragment-Host: org.eclipse.tycho.surefire.osgibooter
+ -removeheaders: Tool, Bnd-*, Created-By, Private-Package
+\ No newline at end of file
++-fixupmessages: "Classes found in the wrong directory"; restrict:=error; is:=warning

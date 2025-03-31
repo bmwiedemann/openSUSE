@@ -73,6 +73,7 @@ Patch13:        tycho-surefire3.patch
 Patch14:        tycho-mpp-311.patch
 Patch15:        reproducible-zip-mtime.patch
 Patch16:        reproducible-tgz-mtime.patch
+Patch17:        bnd-on-multi-release.patch
 Patch100:       fedoraproject-p2-bootstrap-fix.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
@@ -229,6 +230,7 @@ mv fedoraproject-p2-%{fp_p2_git_tag} fedoraproject-p2
 %patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
 %patch -P 100
 
 # Unneeded for RPM builds

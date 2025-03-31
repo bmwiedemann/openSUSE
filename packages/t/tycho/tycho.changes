@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 29 08:02:48 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * bnd-on-multi-release.patch
+    + fix "Classes found in the wrong directory" by ignoring the
+      warning
+
+-------------------------------------------------------------------
 Thu Mar 27 14:53:02 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Port the EmptyMojo.java, used during the boostrap build, to
