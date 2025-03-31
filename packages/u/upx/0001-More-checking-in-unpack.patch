@@ -1,0 +1,87 @@
+From e0b6ff192412f5bb5364c1948f4f6b27a0cd5ea2 Mon Sep 17 00:00:00 2001
+From: John Reiser <jreiser@BitWagon.com>
+Date: Tue, 18 Mar 2025 08:39:35 -0700
+Subject: [PATCH] More checking in unpack()
+
+https://github.com/upx/upx/issues/898
+	modified:   p_lx_elf.cpp
+---
+ src/p_lx_elf.cpp | 24 +++++++++++++++++++-----
+ 1 file changed, 19 insertions(+), 5 deletions(-)
+
+diff --git a/src/p_lx_elf.cpp b/src/p_lx_elf.cpp
+index 8efda7e7..4f425c52 100644
+--- a/src/p_lx_elf.cpp
++++ b/src/p_lx_elf.cpp
+@@ -7314,8 +7314,11 @@ void PackLinuxElf32::un_DT_INIT(
+             ||       Elf32_Dyn::DT_PREINIT_ARRAY == tag) {
+                 // 'val' is the RVA of the first slot, which is the slot that
+                 // the compressor changed to be the entry to the run-time stub.
+-                Elf32_Rel *rp = (Elf32_Rel *)elf_find_dynamic(Elf32_Dyn::DT_NULL);
+-                ((Elf32_Dyn *)elf_find_dynptr(Elf32_Dyn::DT_NULL))->d_val = 0;
++                Elf32_Dyn *dyn_null = elf_find_dynptr(Elf32_Dyn::DT_NULL);
++                if (!dyn_null)
++                    throwCantUnpack("bad PT_DYNAMIC .end");
++                Elf32_Rel *rp = (Elf32_Rel *)elf_find_dynamic(dyn_null->d_val);
++                dyn_null->d_val = 0;
+                 if (rp) {
+                     // Compressor saved the original *rp in dynsym[0]
+                     Elf32_Rel *rp_unc = (Elf32_Rel *)&dynsym[0];  // pointer
+@@ -7414,6 +7417,8 @@ void PackLinuxElf32::un_DT_INIT(
+ 
+             Elf32_Ehdr const *const o_ehdr = (Elf32_Ehdr const *)(void *)lowmem;
+             unsigned const o_phnum = o_ehdr->e_phnum;
++            if (((1<<16) - sizeof(Elf32_Ehdr)) / sizeof(Elf32_Phdr) < o_phnum)
++                throwCantUnpack("bad Ehdr.e_phnum %#x", o_phnum);
+             phdr = phdro;
+             for (unsigned j = 0; j < o_phnum; ++j, ++phdr) if (is_LOAD(phdr)) {
+                 upx_uint32_t vaddr = get_te32(&phdr->p_vaddr);
+@@ -7421,6 +7426,8 @@ void PackLinuxElf32::un_DT_INIT(
+                 upx_uint32_t d = plt_va - vaddr - asl_delta;
+                 if (d < filesz) {
+                     upx_uint32_t offset = get_te32(&phdr->p_offset);
++                    if ((upx_uint32_t)file_size <= offset)
++                        throwCantUnpack("bad phdr[%d].p_offset %#zx", j, (size_t)offset);
+                     if (fo) {
+                         fo->seek(d + offset, SEEK_SET);
+                         fo->rewrite(jump_slots, n_plt * sizeof(upx_uint32_t));
+@@ -7490,12 +7497,15 @@ void PackLinuxElf64::un_DT_INIT(
+             }
+             // Apparently the hard case is common for some Android IDEs.
+             // No DT_INIT; only DT_INIT_ARRAY.
+-            else if (Elf32_Dyn::DT_INIT_ARRAY    == tag
++            else if (Elf64_Dyn::DT_INIT_ARRAY    == tag
+             ||       Elf64_Dyn::DT_PREINIT_ARRAY == tag) {
+                 // 'val' is the RVA of the first slot, which is the slot that
+                 // the compressor changed to be the entry to the run-time stub.
+-                Elf64_Rela *rp = (Elf64_Rela *)elf_find_dynamic(Elf64_Dyn::DT_NULL);
+-                ((Elf64_Dyn *)elf_find_dynptr(Elf64_Dyn::DT_NULL))->d_val = 0;
++                Elf64_Dyn *dyn_null = elf_find_dynptr(Elf64_Dyn::DT_NULL);
++                if (!dyn_null)
++                    throwCantUnpack("bad PT_DYNAMIC .end");
++                Elf64_Rela *rp = (Elf64_Rela *)elf_find_dynamic(dyn_null->d_val);
++                dyn_null->d_val = 0;
+                 if (rp) {
+                     // Compressor saved the original *rp in dynsym[0]
+                     Elf64_Rela *rp_unc = (Elf64_Rela *)&dynsym[0];  // pointer
+@@ -7558,6 +7568,8 @@ void PackLinuxElf64::un_DT_INIT(
+ 
+             Elf64_Ehdr const *const o_ehdr = (Elf64_Ehdr const *)(void *)lowmem;
+             unsigned const o_phnum = o_ehdr->e_phnum;
++            if (((1<<16) - sizeof(Elf64_Ehdr)) / sizeof(Elf64_Phdr) < o_phnum)
++                throwCantUnpack("bad Ehdr.e_phnum %#x", o_phnum);
+             phdr = phdro;
+             for (unsigned j = 0; j < o_phnum; ++j, ++phdr) if (is_LOAD(phdr)) {
+                 upx_uint64_t vaddr = get_te64(&phdr->p_vaddr);
+@@ -7565,6 +7577,8 @@ void PackLinuxElf64::un_DT_INIT(
+                 upx_uint64_t d = plt_va - vaddr - asl_delta;
+                 if (d < filesz) {
+                     upx_uint64_t offset = get_te64(&phdr->p_offset);
++                    if ((upx_uint64_t)file_size <= offset)
++                        throwCantUnpack("bad phdr[%d].p_offset %#zx", j, (size_t)offset);
+                     if (fo) {
+                         fo->seek(d + offset, SEEK_SET);
+                         fo->rewrite(jump_slots, n_plt * sizeof(upx_uint64_t));
+-- 
+2.49.0
+

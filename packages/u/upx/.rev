@@ -247,4 +247,12 @@
     <comment>- Update to release 5.0.0</comment>
     <requestid>1247766</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4a3628d74f53dbfce0d5aa039c4e2bca</srcmd5>
+    <version>5.0.0</version>
+    <time>1743414005</time>
+    <user>anag+factory</user>
+    <comment>- Add 0001-More-checking-in-unpack.patch [boo#1240236, CVE-2025-2849]</comment>
+    <requestid>1265185</requestid>
+  </revision>
 </revisionlist>

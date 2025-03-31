@@ -24,6 +24,7 @@ License:        Apache-2.0 WITH LLVM-exception AND GPL-2.0-or-later AND BSD-4-Cl
 Group:          Development/Tools/Other
 URL:            https://upx.github.io/
 Source:         https://github.com/upx/upx/releases/download/v%version/%name-%version-src.tar.xz
+Patch1:         0001-More-checking-in-unpack.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libucl1-devel
