@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-codec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2010, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define base_name  codec
 %define short_name commons-%{base_name}
 Name:           apache-commons-codec
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        Apache Commons Codec Package
 License:        Apache-2.0
