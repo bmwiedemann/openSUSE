@@ -153,4 +153,41 @@ ship any actual functionality. ImGui suppose to be used as sources</comment>
     <comment>- update to 1.91.0:</comment>
     <requestid>1226519</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f37b26fe98915826635888c0f614d511</srcmd5>
+    <version>1.91.8</version>
+    <time>1743414125</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.91.8:
+  * Breaking changes:
+    - ColorEdit, ColorPicker: redesigned how alpha is displayed in
+      the preview square. (gh#ocornut/imgui#8335,
+      gh#ocornut/imgui#1578, gh#ocornut/imgui#346).
+    - Backends: SDLGPU3: Renamed
+      ImGui_ImplSDLGPU3_InitInfo::GpuDevice to Device for
+      consistency. (gh#ocornut/imgui#8163, gh#ocornut/imgui#7998,
+      gh#ocornut/imgui#7988).
+  * imgui_freetype: fixed issue where glyph advances would
+    incorrectly be snapped to pixels.
+  * Inputs: added IsMouseReleasedWithDelay() helper.
+    (gh#ocornut/imgui#8337, gh#ocornut/imgui#8320).
+  * Windows: legacy SetWindowFontScale() is properly inherited by
+    nested child windows.
+  * Windows, Style: Fixed small rendering issues with menu bar,
+    resize grip and scrollbar when using thick border sizes.
+    (gh#ocornut/imgui#8267, gh#ocornut/imgui#7887).
+  * Windows: Fixed IsItemXXXX() functions not working on
+    append-version of EndChild() (gh#ocornut/imgui#8350).
+  * Error Handling: Recovery from missing EndMenuBar() call
+    (gh#ocornut/imgui#1651).
+  * Tables, Menus: Fixed using BeginTable() in menu layer (any
+    menu bar) (gh#ocornut/imgui#8355).
+  * Tables, Menus: Fixed tables or child windows submitted inside
+    BeginMainMenuBar() being unable to save their settings, as the
+    main menu bar uses ImGuiWindowFlags_NoSavedSettings
+    (gh#ocornut/imgui#8356).
+  * ColorEdit, ColorPicker: Fixed alpha preview broken in 1.91.7
+    (gh#ocornut/imgui#8336, gh#ocornut/imgui#8241).</comment>
+    <requestid>1265311</requestid>
+  </revision>
 </revisionlist>
