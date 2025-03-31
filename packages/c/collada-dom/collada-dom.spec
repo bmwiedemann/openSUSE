@@ -2,6 +2,7 @@
 # spec file for package collada-dom
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +26,15 @@ License:        MIT
 URL:            https://github.com/rdiankov/collada-dom
 Source:         %{name}-%{version}.tar.gz
 Patch0:         silence-warnings.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  minizip-devel
-BuildRequires:  pcre-devel
-BuildRequires:  uriparser-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(uriparser)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The COLLADA Document Object Model (DOM) is an application programming
@@ -64,7 +65,7 @@ interface (API) that provides a C++ object representation of a COLLADA XML
 instance document.
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1
 # fix compilation with boost 1.85 due to deprecated stuff that was removed
 sed -i 's/convenience/operations/' dom/include/dae.h dom/src/dae/daeUtils.cpp
 sed -i 's/branch_path/parent_path/' dom/src/dae/daeZAEUncompressHandler.cpp
@@ -78,14 +79,17 @@ CXXFLAGS="-Wno-overloaded-virtual"
 %install
 %cmake_install
 
-%post -p /sbin/ldconfig -n %{libname}
-%postun -p /sbin/ldconfig -n %{libname}
+%check
+%ctest
+
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license licenses/license_e.txt licenses/dom_license_e.txt
 %{_libdir}/*.so.*
 
 %files -n %{name}-devel
+%license licenses/license_e.txt licenses/dom_license_e.txt
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}*.pc
