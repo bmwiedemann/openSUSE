@@ -32,6 +32,8 @@ Source:         http://plugins.geany.org/geany-plugins/%{name}-%{version}.tar.bz
 Patch1:         https://github.com/geany/geany-plugins/commit/db2698cc869274aef353ba7af23d70921d944166.patch
 # PATCH-FIX-UPSTREAM 644550babb52013d2625a3f8e789bbe94a335b6f.patch -- projectorganizer: Use g_pattern_spec_match_string() instead  of g_pattern_match_string()
 Patch2:         https://github.com/geany/geany-plugins/commit/644550babb52013d2625a3f8e789bbe94a335b6f.patch
+# PATCH-FIX-UPSTREAM geany-plugins-2.0-gcc15.patch -- Fix build with gcc 15
+Patch3:         geany-plugins-2.0-gcc15.patch
 
 BuildRequires:  devhelp-devel
 BuildRequires:  fdupes

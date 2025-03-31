@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 21:35:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add geany-plugins-2.0-gcc15.patch: Fix build with gcc 15, patch
+  lifted from gentoo.
+
+-------------------------------------------------------------------
 Thu Feb 27 18:36:01 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop libwnck2-devel BuildRequires: nothing needs this. Stops us
