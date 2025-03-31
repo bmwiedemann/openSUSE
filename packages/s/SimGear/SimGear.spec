@@ -20,22 +20,18 @@
 # in our requirements, i.e. the same version we have built against
 %define openscenegraph_version %(rpm -qa --nosignature --nodigest libOpenSceneGraph\*-devel | sed 's/.*-devel-\\(.*\\)-.*/\\1/')
 
-%define libname libSimGearCore-2020_3_19
-%define main_version 2020.3
+%define libname libSimGearCore-2024_1_1
+%define main_version 2024.1
 Name:           SimGear
-Version:        %{main_version}.19
+Version:        %{main_version}.1
 Release:        0
 Summary:        Simulator Construction Gear
 # https://sourceforge.net/p/flightgear/codetickets/1940/
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND MIT
 Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
-Source0:        https://sourceforge.net/projects/flightgear/files/release-%{main_version}/simgear-%{version}.tar.bz2
+Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/sgbuild/simgear-%{version}.tar.bz2
 Source99:       SimGear-rpmlintrc
-# PATCH-FIX-UPSTREAM simgear-boost-1.81.patch - fix building with boost >= 1.81
-Patch0:         simgear-boost-1.81.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         https://gitlab.com/flightgear/simgear/-/commit/5bb023647114267141a7610e8f1ca7d6f4f5a5a8.patch#/add_NasalIORulesChecker.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel
