@@ -34,8 +34,10 @@ URL:            https://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xdm.tar.bz2
 Source2:        HOWTO.xdm
-Source4:        display-manager.service
+Source4:        display-manager-legacy.service
 Source5:        xsession.desktop
+# Upstream version doesn't handle display-manager.service
+Source6:        xdm.service
 Patch1:         xdm-tolerant-hostname-changes.diff
 Patch2:         xdm-tarball.patch
 Patch3:         n_Allow-the-greeter-to-set-the-input-fields-bg-color.patch
@@ -81,6 +83,8 @@ Requires:       /sbin/pidof
 %endif
 Requires:       displaymanager-sysconfig
 Requires(post): displaymanager-sysconfig
+# Ensure display-manager.service symlink is created in %post
+Requires(pre):  systemd-presets-common-SUSE
 
 %description
 Xdm manages a collection of X displays, which may be on the local host
@@ -125,7 +129,8 @@ autoreconf -fi
         --with-pam \
         --with-xdmconfigdir=%{_sysconfdir}/X11/xdm \
         --with-xdmscriptdir=%{_sysconfdir}/X11/xdm \
-	--with-systemdsystemunitdir=no
+        --with-piddir=%{_rundir} \
+        --with-systemdsystemunitdir=no
 %make_build
 
 %install
@@ -182,7 +187,7 @@ mv %{buildroot}%{_libdir}/X11/xdm/chooser %{buildroot}%{_bindir}
 ln -s xdm.8%{?ext_man} %{buildroot}%{_mandir}/man8/chooser.8%{?ext_man}
 install -D %{SOURCE5} -m 0644 %{buildroot}%{_datadir}/xsessions/xsession.desktop
 rm -f %{buildroot}%{_sbindir}/rcxdm
-install -D %{SOURCE4} -m 0444 %{buildroot}%{_unitdir}/display-manager.service
+install -D %{SOURCE4} -m 0444 %{buildroot}%{_unitdir}/display-manager-legacy.service
 ln -sf service %{buildroot}%{_sbindir}/rcdisplay-manager
 cat > %{buildroot}%{_sbindir}/rcxdm <<-'EOF'
 	#!/bin/bash
@@ -201,6 +206,8 @@ mkdir -p %{buildroot}%{_distconfdir}/logrotate.d
 mv %{buildroot}%{_sysconfdir}/logrotate.d/xdm %{buildroot}%{_distconfdir}/logrotate.d/xdm
 %endif
 
+install -Dm0644 %{SOURCE6} %{buildroot}%{_unitdir}/xdm.service
+
 %post
 # enable Xorg on s390x with virtio (Redhat PCI ID 1af4:1050) on installation (but not upgrade)
 if [ $1 -eq 1 ] ; then
@@ -212,7 +219,8 @@ if [ $1 -eq 1 ] ; then
     fi
   fi
 fi
-%service_add_post display-manager.service
+%service_add_post display-manager-legacy.service
+%service_add_post xdm.service
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/console 5
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
@@ -222,14 +230,17 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %firewalld_reload
 
 %pre
-%service_add_pre display-manager.service
+%service_add_pre display-manager-legacy.service
+%service_add_pre xdm.service
 
 %postun
 # Do not restart DM on update (bnc#886641)
 %if 0%{?suse_version} >= 1550
-%service_del_postun_without_restart display-manager.service
+%service_del_postun_without_restart display-manager-legacy.service
+%service_del_postun_without_restart xdm.service
 %else
-%service_del_postun -n display-manager.service
+%service_del_postun -n display-manager-legacy.service
+%service_del_postun -n xdm.service
 %endif
 [ -f %{_prefix}/lib/X11/displaymanagers/console ] || %{_sbindir}/update-alternatives \
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/console
@@ -237,7 +248,8 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/xdm
 
 %preun
-%service_del_preun display-manager.service
+%service_del_preun display-manager-legacy.service
+%service_del_preun xdm.service
 
 %post -n displaymanager-sysconfig
 %{fillup_only -n displaymanager}
@@ -264,7 +276,8 @@ sed -i 's/DISPLAYMANAGER=.*//g' %{_sysconfdir}/sysconfig/displaymanager
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/services
 %{_prefix}/lib/firewalld/services/x11.xml
-%{_unitdir}/display-manager.service
+%{_unitdir}/display-manager-legacy.service
+%{_unitdir}/xdm.service
 %{_prefix}/lib/X11/display-manager
 %if 0%{?UsrEtcMove}
 %{_distconfdir}/logrotate.d/xdm

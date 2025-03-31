@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:15:20 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move display-manager.service to display-manager-legacy.service
+  to prepare for systemd control of display manager choice
+  (needs systemd-presets-common-SUSE update)
+- Create xdm.service to allow XDM to be used in systemd only mode
+- Order systemd-presets-common-SUSE before xdm
+
+-------------------------------------------------------------------
 Sun Mar  9 04:05:25 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to release 1.1.17

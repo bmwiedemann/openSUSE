@@ -1,5 +1,6 @@
 [Unit]
 Description=X Display Manager
+Documentation=man:xdm(8)
 Conflicts=getty@tty7.service plymouth-quit.service
 After=ypbind.service gpm.service winbind.service acpid.service
 Wants=systemd-user-sessions.service systemd-logind.service
@@ -7,12 +8,7 @@ After=systemd-user-sessions.service systemd-logind.service
 OnFailure=plymouth-quit.service
 
 [Service]
-Type=forking
-PIDFile=/run/displaymanager.pid
-ExecStart=/usr/lib/X11/display-manager start
-ExecReload=/usr/lib/X11/display-manager reload
-KillMode=process
+ExecStart=/usr/bin/xdm -nodaemon
 
 [Install]
-WantedBy=graphical.target
-Alias=xdm.service
+Alias=display-manager.service
