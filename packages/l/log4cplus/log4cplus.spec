@@ -1,7 +1,7 @@
 #
 # spec file for package log4cplus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define soname  2_1-9
 Name:           log4cplus
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        C++ logging library
 License:        Apache-2.0

@@ -114,4 +114,19 @@ SPDX format (forwarded request 123774 from babelworx)</comment>
     <comment></comment>
     <requestid>1198026</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>55fff0c08c80b779dcd299bed1cb101f</srcmd5>
+    <version>2.1.2</version>
+    <time>1743414238</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.1.2:
+  * Implement `LOG4CPLUS_ASSERT_FMT()` - formats assertion
+    message using C-style format string.
+  * Implement `LOG4CPLUS_ASSERT_FORMAT()` - formats assertion
+    message using C++20 `&lt;format&gt;` header facilities.
+  * `log4cplus.threadPoolBlockOnFull`. When this
+    property is `true` (default), threads will block when
+    internal thread pool queue is full.</comment>
+    <requestid>1265605</requestid>
+  </revision>
 </revisionlist>
