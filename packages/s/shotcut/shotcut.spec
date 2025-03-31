@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        25.01.25
+Version:        25.03.29
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
