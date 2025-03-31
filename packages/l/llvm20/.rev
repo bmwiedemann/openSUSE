@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>acff8c4bfa5634e9b8929875f790e46b</srcmd5>
+    <version>20.1.0</version>
+    <time>1743413852</time>
+    <user>anag+factory</user>
+    <comment>- Initial release based on version 20.1.0.
+  * For details, see the release notes:
+    - https://releases.llvm.org/20.1.0/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/clang/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/clang/tools/extra/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/projects/libcxx/docs/ReleaseNotes.html
+    - https://releases.llvm.org/20.1.0/tools/lld/docs/ReleaseNotes.html
+  * New LLVM tools:
+    - llvm-cgdata: Extracting, inspecting, and manipulating raw
+      codegen data for more efficient function outlining and
+      function merging across modules in subsequent compilations.
+    - llvm-ctxprof-util: LLVM Contextual Profile Utils.
+  * New Clang tool: clang-sycl-linker: a linker for SYCL.
+  * Removed Clang tools: clang-pseudo, clang-rename.
+- Rebase patches:
+  * clang-resourcedirs.patch
+  * link-clang-shared.patch
+  * llvm-do-not-install-static-libraries.patch
+  * llvm_build_tablegen_component_as_shared_library.patch
+- Remove obsolete patches:
+  * clang-fix-modules-test-riscv.patch
+  * clang-fix-openmp-test-non-x86.patch
+  * clang-shlib-symbol-versioning.patch</comment>
+    <requestid>1254870</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+diff --git a/clang/test/OpenMP/nvptx_throw_trap.cpp b/clang/test/OpenMP/nvptx_throw_trap.cpp
+index c1c76c4e1b18..3efbfee17e6f 100644
+--- a/clang/test/OpenMP/nvptx_throw_trap.cpp
++++ b/clang/test/OpenMP/nvptx_throw_trap.cpp
+@@ -1,4 +1,4 @@
+-// REQUIRES: nvptx-registered-target
++// REQUIRES: nvptx-registered-target,x86-registered-target
+ 
+ // RUN: %clang_cc1 -fopenmp -triple nvptx64 -fopenmp-is-target-device %s -S -Wno-openmp-target-exception -o - | FileCheck -check-prefix=DEVICE %s
+ // RUN: %clang_cc1 -fopenmp -triple x86_64-pc-linux-gnu -fopenmp-is-target-device -fcxx-exceptions %s -S -Wno-openmp-target-exception -o - | FileCheck -check-prefix=HOST %s

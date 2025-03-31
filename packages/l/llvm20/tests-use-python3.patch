@@ -1,0 +1,30 @@
+Index: llvm-8.0.0rc3.src/test/BugPoint/compile-custom.ll.py
+===================================================================
+--- llvm-8.0.0rc3.src.orig/test/BugPoint/compile-custom.ll.py
++++ llvm-8.0.0rc3.src/test/BugPoint/compile-custom.ll.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 
+Index: llvm-8.0.0rc3.src/test/Other/opt-bisect-helper.py
+===================================================================
+--- llvm-8.0.0rc3.src.orig/test/Other/opt-bisect-helper.py
++++ llvm-8.0.0rc3.src/test/Other/opt-bisect-helper.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ from __future__ import print_function
+ 
+Index: llvm-8.0.0rc3.src/test/TableGen/JSON-check.py
+===================================================================
+--- llvm-8.0.0rc3.src.orig/test/TableGen/JSON-check.py
++++ llvm-8.0.0rc3.src/test/TableGen/JSON-check.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ 
+ import sys
+ import subprocess
