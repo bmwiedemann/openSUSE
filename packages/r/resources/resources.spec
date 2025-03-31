@@ -1,8 +1,8 @@
 #
 # spec file for package resources
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_with test
 %define appid net.nokyan.Resources
 Name:           resources
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
