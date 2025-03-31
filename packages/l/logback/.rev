@@ -71,4 +71,12 @@
     <comment>CVE-2024-12798 (bsc#1234742), CVE-2024-12801 (bsc#1234743)</comment>
     <requestid>1236131</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>f41a5417ee385eb9ac3da7fe1fd4c54a</srcmd5>
+    <version>1.2.11</version>
+    <time>1743413919</time>
+    <user>anag+factory</user>
+    <comment>Fix errors with newer maven-filtering</comment>
+    <requestid>1264940</requestid>
+  </revision>
 </revisionlist>

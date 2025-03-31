@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 28 06:06:29 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * filtering.patch
+    + Newer maven-filtering versions will throw error when trying
+      to filte binary files and failing to do so. This avoids
+      filtering on *.jks (Java Key Store) files.
+
+-------------------------------------------------------------------
 Wed Jan  8 13:10:15 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - CVE-2024-12798 (bsc#1234742) Arbitrary code execution via

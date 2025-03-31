@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         %{name}-1.2.8-jetty.patch
 Patch1:         logback-1.2.3-getCallerClass.patch
 Patch2:         logback-CVE-2024-12801-CVE-2024-12798.patch
+Patch3:         filtering.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.mail:mail)
@@ -90,6 +91,7 @@ chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 %patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :findbugs-maven-plugin
@@ -121,7 +123,6 @@ rm -r %{name}-*/src/test/java/*
 %build
 
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif

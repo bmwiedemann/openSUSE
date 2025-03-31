@@ -1,0 +1,20 @@
+diff -urEbwB logback-1.2.11.orig/logback-examples/pom.xml logback-1.2.11/logback-examples/pom.xml
+--- logback-1.2.11.orig/logback-examples/pom.xml	2025-03-27 23:39:41.712418915 +0100
++++ logback-1.2.11/logback-examples/pom.xml	2025-03-27 23:43:13.411244382 +0100
+@@ -57,6 +57,16 @@
+       <resource>
+         <directory>src/main/resources</directory>
+         <filtering>true</filtering>
++        <excludes>
++          <exclude>**/*.jks</exclude>
++        </excludes>
++      </resource>
++      <resource>
++        <directory>src/main/resources</directory>
++        <filtering>false</filtering>
++        <includes>
++          <include>**/*.jks</include>
++        </includes>
+       </resource>
+     </resources>
+     <plugins>
