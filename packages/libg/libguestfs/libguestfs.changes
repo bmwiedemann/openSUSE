@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 21:17:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libguestfs-appliance: drop incorrect requireson libpcre1,
+  package was converted to pcre2 by 1.44.2
+
+-------------------------------------------------------------------
 Wed Mar 12 13:37:32 MDT 2025 - carnold@suse.com
 
 - Update to version 1.55.7 (jsc#PED-8910)

@@ -373,7 +373,7 @@ Requires:       libaugeas0
 Requires:       libcap2
 Requires:       libguestfs0
 Requires:       libhivex0
-Requires:       libpcre1
+Requires:       libpcre2-8-0
 
 # For core disk features
 Requires:       qemu-tools
