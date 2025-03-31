@@ -2,6 +2,7 @@
 # spec file for package recode
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +19,13 @@
 
 %define         libname lib%{name}3
 Name:           recode
-Version:        3.7.14
+Version:        3.7.15
 Release:        0
 Summary:        Character Set Converter
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Convertors
 URL:            https://github.com/rrthomas/recode
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  flex
-BuildRequires:  help2man
 BuildRequires:  python3
 BuildRequires:  python3-Cython
 BuildRequires:  python3-setuptools
@@ -70,13 +69,12 @@ other applications.
 rm -f %{buildroot}%{_libdir}/librecode.la
 %find_lang %{name}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -f %{name}.lang
 %license COPYING COPYING-LIB
 %doc ABOUT-NLS AUTHORS NEWS README THANKS TODO ChangeLog
-%{_mandir}/man1/*
+%{_mandir}/man1/*.1%{?ext_man}
 %{_infodir}/recode*
 %{_bindir}/recode
 

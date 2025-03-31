@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 29 22:14:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.7.15:
+  * fix a case in which librecode would close a file handle that
+    was supplied by the caller
+
+-------------------------------------------------------------------
 Mon Mar 13 12:17:25 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.14:
