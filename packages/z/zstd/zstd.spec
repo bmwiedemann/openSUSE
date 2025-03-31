@@ -35,6 +35,8 @@ Source0:        https://github.com/facebook/zstd/releases/download/v%{version}/%
 Source1:        https://github.com/facebook/zstd/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
 Source2:        zstd.keyring
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE -- 0001-Don-t-export-libzstd_static-CMake-target.patch
+Patch0:         0001-Don-t-export-libzstd_static-CMake-target.patch
 %if %{with cmake}
 BuildRequires:  cmake
 %endif

@@ -459,4 +459,12 @@
   this should not be a problem any more as cmake:mini is in ring0</comment>
     <requestid>1254402</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>b2280b33e224feeb5bf6c11c6bc03b27</srcmd5>
+    <version>1.5.7</version>
+    <time>1743413891</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265120</requestid>
+  </revision>
 </revisionlist>
