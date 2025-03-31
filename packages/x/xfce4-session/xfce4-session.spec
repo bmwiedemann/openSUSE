@@ -101,6 +101,7 @@ BuildArch:      noarch
 %description branding-upstream
 This package provides the upstream look and feel for the Xfce Session Manager.
 
+%if 0%{is_opensuse} && 0%{suse_version} >= 1550
 %package wayland-experimental
 Summary:        Xfce Session Manager for Wayland
 Group:          System/GUI/XFCE
@@ -111,6 +112,7 @@ Requires:       xwayland
 %description wayland-experimental
 xfce4-wayland-experimental-session is the Wayland session manager
 for the Xfce desktop environment.
+%endif
 
 %lang_package
 
@@ -166,6 +168,15 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
 ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
 
+# Remove all wayland/labwc related stuff on Leap; sub-package wayland-experimental
+# won't be generated at all
+%if 0%{suse_version} < 1550
+rm -f %{buildroot}%{_datadir}/xfce4/labwc/labwc*
+rmdir %{buildroot}%{_datadir}/xfce4/labwc
+rm -f %{buildroot}%{_datadir}/wayland-sessions/xfce-wayland.desktop
+rmdir %{buildroot}%{_datadir}/wayland-sessions
+%endif
+
 %post
 %{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
   default-xsession.desktop %{_datadir}/xsessions/xfce.desktop 20
@@ -200,10 +211,12 @@ ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadi
 %files branding-upstream
 %config %{_sysconfdir}/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-session.xml
 
+%if 0%{is_opensuse} && 0%{suse_version} >= 1550
 %files wayland-experimental
 %dir %{_datadir}/wayland-sessions
 %{_datadir}/wayland-sessions/xfce-wayland.desktop
 %dir %{_datadir}/xfce4/labwc
 %{_datadir}/xfce4/labwc/labwc*
+%endif
 
 %changelog

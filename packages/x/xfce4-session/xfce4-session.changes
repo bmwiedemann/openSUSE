@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 30 15:29:35 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Build sub-package wayland-experimental only on Tumbleweed or
+  Slowroll; Leap does not provide labwc (yet).
+
+-------------------------------------------------------------------
 Mon Mar 24 08:26:59 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 4.20.2:
