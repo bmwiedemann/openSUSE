@@ -404,4 +404,12 @@
   * win: honor NoDefaultCurrentDirectoryInExePath env var</comment>
     <requestid>1164081</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>580e8ba34aa39fe705bf0aa0821aa052</srcmd5>
+    <version>1.50.0</version>
+    <time>1743413819</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256408</requestid>
+  </revision>
 </revisionlist>

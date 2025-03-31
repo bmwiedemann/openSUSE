@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Wed Mar 26 20:49:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.50.0:
+  * misc: implement uv_getrusage_thread
+  * linux: always use io_uring for epoll batching
+
+-------------------------------------------------------------------
 Thu Mar 14 02:46:20 UTC 2024 - jun wang <jgwang@suse.com>
 
-- Update to version 1..48.0 
+- Update to version 1.48.0 
   * CVE-2024-24806: Improper Domain Lookup that potentially leads
     to SSRF attacks (bsc#1219724)
   * misc: remove deprecated stalebot file

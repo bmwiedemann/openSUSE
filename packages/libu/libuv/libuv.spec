@@ -1,7 +1,7 @@
 #
 # spec file for package libuv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define somajor 1
 Name:           libuv
-Version:        1.48.0
+Version:        1.50.0
 Release:        0
 Summary:        Asychronous I/O support library
 License:        MIT
