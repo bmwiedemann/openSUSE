@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="woodstox-core" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="project.groupId" value="com.fasterxml.woodstox"/>
+  <property name="project.artifactId" value="woodstox-core"/>
+  <property name="project.version" value="6.2.8"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="true"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}"
+             classpathref="build.classpath"
+             packagenames="*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="private"
+             verbose="false"
+             encoding="UTF-8"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             windowtitle="Woodstox ${project.version} API"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="true"
+             charset="ISO-8859-1"
+             source="${compiler.source}"
+             linksource="false"
+             breakiterator="false">
+      <doctitle>&lt;![CDATA[Woodstox ${project.version} API]]&gt;</doctitle>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="Woodstox is a high-performance XML processor that implements Stax (JSR-173),SAX2 and Stax2 APIs"/>
+        <attribute name="Bundle-DocURL" value="https://github.com/FasterXML/woodstox"/>
+        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="Woodstox"/>
+        <attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="FasterXML"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="com.ctc.wstx.api;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.cfg,com.ctc.wstx.dtd,com.ctc.wstx.ent,com.ctc.wstx.util,javax.xml.stream,org.codehaus.stax2.io,org.codehaus.stax2.validation&quot;,com.ctc.wstx.cfg;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.stream&quot;,com.ctc.wstx.compat;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.namespace&quot;,com.ctc.wstx.dom;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.sw,javax.xml.namespace,javax.xml.stream,javax.xml.transform.dom,org.codehaus.stax2.ri.dom,org.w3c.dom&quot;,com.ctc.wstx.dtd;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.ent,com.ctc.wstx.io,com.ctc.wstx.sr,com.ctc.wstx.util,javax.xml.stream,javax.xml.stream.events,org.codehaus.stax2.validation&quot;,com.ctc.wstx.ent;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.evt,com.ctc.wstx.io,javax.xml.stream&quot;,com.ctc.wstx.evt;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.dtd,com.ctc.wstx.sr,com.ctc.wstx.util,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,org.codehaus.stax2,org.codehaus.stax2.ri.evt&quot;,com.ctc.wstx.exc;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.stream,org.codehaus.stax2.validation&quot;,com.ctc.wstx.io;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.exc,com.ctc.wstx.util,javax.xml.stream,org.codehaus.stax2&quot;,com.ctc.wstx.osgi;version=&quot;${project.version}&quot;;uses:=&quot;org.codehaus.stax2,org.codehaus.stax2.osgi,org.codehaus.stax2.validation,org.osgi.framework&quot;,com.ctc.wstx.sax;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.dtd,com.ctc.wstx.sr,com.ctc.wstx.stax,javax.xml.parsers,javax.xml.stream,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers&quot;,com.ctc.wstx.sr;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.cfg,com.ctc.wstx.dtd,com.ctc.wstx.ent,com.ctc.wstx.exc,com.ctc.wstx.io,com.ctc.wstx.sw,com.ctc.wstx.util,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,org.codehaus.stax2,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation,org.xml.sax,org.xml.sax.ext&quot;,com.ctc.wstx.stax;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.cfg,com.ctc.wstx.dtd,com.ctc.wstx.io,com.ctc.wstx.sr,com.ctc.wstx.sw,com.ctc.wstx.util,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,org.codehaus.stax2,org.codehaus.stax2.ri&quot;,com.ctc.wstx.sw;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.cfg,com.ctc.wstx.sr,com.ctc.wstx.util,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,org.codehaus.stax2,org.codehaus.stax2.ri,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation&quot;,com.ctc.wstx.util;version=&quot;${project.version}&quot;;uses:=&quot;com.ctc.wstx.api,com.ctc.wstx.dtd,com.ctc.wstx.sr,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation,org.xml.sax,org.xml.sax.ext&quot;"/>
+        <attribute name="Implementation-Title" value="Woodstox"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Vendor" value="FasterXML"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="com.ctc.wstx.api;version=&quot;[6.2,7)&quot;,com.ctc.wstx.cfg;version=&quot;[6.2,7)&quot;,com.ctc.wstx.compat;version=&quot;[6.2,7)&quot;,com.ctc.wstx.dom;version=&quot;[6.2,7)&quot;,com.ctc.wstx.dtd;version=&quot;[6.2,7)&quot;,com.ctc.wstx.ent;version=&quot;[6.2,7)&quot;,com.ctc.wstx.evt;version=&quot;[6.2,7)&quot;,com.ctc.wstx.exc;version=&quot;[6.2,7)&quot;,com.ctc.wstx.io;version=&quot;[6.2,7)&quot;,com.ctc.wstx.sr;version=&quot;[6.2,7)&quot;,com.ctc.wstx.stax;version=&quot;[6.2,7)&quot;,com.ctc.wstx.sw;version=&quot;[6.2,7)&quot;,com.ctc.wstx.util;version=&quot;[6.2,7)&quot;,java.io,java.lang,java.lang.ref,java.lang.reflect,java.math,java.net,java.text,java.util,java.util.logging,java.util.regex,javax.xml.namespace,javax.xml.parsers,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stream,org.codehaus.stax2.io;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.osgi;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.ri.dom;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.ri.evt;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.ri.typed;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.ri;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.typed;version=&quot;[4.2,5)&quot;,org.codehaus.stax2.validation;version=&quot;[4.2,5)&quot;,org.codehaus.stax2;version=&quot;[4.2,5)&quot;,org.osgi.framework;version=&quot;[1.10,2)&quot;;resolution:=optional,org.w3c.dom,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="Woodstox"/>
+        <attribute name="Specification-Vendor" value="FasterXML"/>
+        <attribute name="Specification-Version" value="${project.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

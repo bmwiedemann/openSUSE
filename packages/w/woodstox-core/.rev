@@ -71,4 +71,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148204</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>3213c8fab1044b339d6eb3e5669461f8</srcmd5>
+    <version>6.2.8</version>
+    <time>1743413910</time>
+    <user>anag+factory</user>
+    <comment>Rewrite for Ant == build cycles prevention</comment>
+    <requestid>1264937</requestid>
+  </revision>
 </revisionlist>

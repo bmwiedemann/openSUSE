@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 06:05:06 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite to use Ant to build. This prevents potential cycles with
+  upcoming Maven 4
+
+-------------------------------------------------------------------
 Tue Feb 20 15:23:15 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
