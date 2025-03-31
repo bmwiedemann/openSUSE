@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Mar 26 11:01:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Export -std=gnu17 to cflags, fix build with gcc 15. Cogl is
+  deprecated upstream, and we can not expect this to be fixed from
+  there, so use older gcc standard until we can remove the package
+  from distro.
+- Refresh patches from upstream, keep the bots happy.
+
+-------------------------------------------------------------------
 Thu Sep 30 10:04:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 2bd3cbed45d633fb15625d58e6b7cb8721b0ba98.patch: cogl-gles2:

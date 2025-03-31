@@ -8,7 +8,7 @@ Subject: [PATCH] cogl-gles2: Fix undefined references.
  1 file changed, 1 insertion(+)
 
 diff --git a/cogl-gles2/Makefile.am b/cogl-gles2/Makefile.am
-index 72ec1eae..1328444e 100644
+index 72ec1eae4..1328444e4 100644
 --- a/cogl-gles2/Makefile.am
 +++ b/cogl-gles2/Makefile.am
 @@ -17,6 +17,7 @@ endif

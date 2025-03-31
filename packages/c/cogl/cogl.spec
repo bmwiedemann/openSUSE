@@ -1,7 +1,7 @@
 #
 # spec file for package cogl
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -194,6 +194,8 @@ applications that want to make use of cogl.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags}"
+export CFLAGS="$CFLAGS -std=gnu17"
 autoreconf -vif
 %configure \
 	--disable-static \

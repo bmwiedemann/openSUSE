@@ -434,4 +434,16 @@
     <comment> (forwarded request 922653 from iznogood)</comment>
     <requestid>923217</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>a4a43257361515e80afa8c7b2f402e3f</srcmd5>
+    <version>1.22.8</version>
+    <time>1743413834</time>
+    <user>anag+factory</user>
+    <comment>- Export -std=gnu17 to cflags, fix build with gcc 15. Cogl is
+  deprecated upstream, and we can not expect this to be fixed from
+  there, so use older gcc standard until we can remove the package
+  from distro.
+- Refresh patches from upstream, keep the bots happy. (forwarded request 1256451 from iznogood)</comment>
+    <requestid>1264949</requestid>
+  </revision>
 </revisionlist>
