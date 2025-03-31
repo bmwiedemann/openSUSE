@@ -45,7 +45,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  lua53-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  perl-libwww-perl
 BuildRequires:  pkgconfig
 Requires:       %{apache_mmn}
@@ -67,8 +67,14 @@ cp %{SOURCE4} .
 %build
 aclocal
 automake
-%configure --with-apxs=%{apache_apxs} --enable-request-early --enable-htaccess-config --disable-mlogc
-CFLAGS="%{optflags}" make %{?_smp_mflags}
+%configure \
+	--with-apxs=%{apache_apxs} \
+	--enable-request-early \
+	--enable-htaccess-config \
+	--disable-mlogc \
+	--with-pcre2 \
+	%{nil}
+%make_build
 
 %install
 pushd apache2
@@ -79,9 +85,6 @@ mkdir -p %{buildroot}%{apache_sysconfdir}/mod_security2.d
 mkdir -p %{buildroot}%{apache_sysconfdir}/mod_security2.d/rules
 mkdir -p %{buildroot}%{apache_sysconfdir}/conf.d/
 cp -a %{SOURCE3} %{buildroot}%{apache_sysconfdir}/conf.d/
-
-%check
-make test
 
 %files
 %{apache_libexecdir}/mod_security2.so

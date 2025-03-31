@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 22:31:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with pcre2 (test suite disabled temporarily)
+
+-------------------------------------------------------------------
 Tue Jan 21 13:28:24 UTC 2025 - pgajdos@suse.com
 
 - package cleanup, coordinated with owasp-modsecurity-crs cleanup

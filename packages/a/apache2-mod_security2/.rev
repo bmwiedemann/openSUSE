@@ -337,4 +337,12 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
     <comment>- fixes CVE-2022-48279 [bsc#1207378], CVE-2023-24021 [bsc#1207379]</comment>
     <requestid>1240740</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>4e717f82b539000c824ce884806ac5f7</srcmd5>
+    <version>2.9.8</version>
+    <time>1743413981</time>
+    <user>anag+factory</user>
+    <comment>- build with pcre2 (test suite disabled temporarily) (forwarded request 1253263 from AndreasStieger)</comment>
+    <requestid>1265135</requestid>
+  </revision>
 </revisionlist>
