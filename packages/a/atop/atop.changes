@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 31 07:46:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.11.1:
+  * Atop will not connect to the TCP port of 'atopgpud' daemon any more
+    by default. The flag -k can be used explicitly when 'atopgpud' is
+    active. Also the code to parse the received strings is improved to
+    avoid future issues with heap corruption.
+  * The flag -K has been implemented to connect to netatop/netatop-bpf.
+  * Fix CVE-2025-31160
+
+-------------------------------------------------------------------
 Mon Jul 29 06:48:50 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.11.0:
