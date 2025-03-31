@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.1:
+  * New Features
+    - Improved error handling by adding a test check for
+      non-existent stack and unit paths, ensuring clearer messages
+      when expected files are missing.
+  * What's Changed
+    - feat: added support for reading stack configuration and
+      values files by @denis256 in #4085
+    - feat: enhanced stack validation with improved checks and
+      error reporting by @denis256 in #4078
+
+-------------------------------------------------------------------
+Fri Mar 28 14:48:26 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 0.77.0:
+  * Breaking Changes
+    - Best Effort Parsing
+      Exported functions like ParseConfig and ParseConfigString now
+      perform best effort parsing instead of early returns.
+      Consumers of Terragrunt as a library should be aware of this
+      change, as it can result in partially parsed configurations
+      being returned instead of nil when errors are encountered
+      during parsing. As a consumer of these functions, you are
+      responsible for checking the errors being returned, and
+      handling the returned configuration value accordingly.
+      These changes are being introduced to support greater parsing
+      flexibility for usage in the find and list command, which
+      will be able to handle partial parse failures while still
+      returning valuable information, along with the Terragrunt
+      LSP, which needs the same adjustments to parsing.
+    - Struct Field Alignment
+      The fieldalignment govet lint has been introduced to the
+      codebase, and all structs that had less efficient struct
+      field alignment have been updated to minimize their memory
+      footprint. If you are consuming Terragrunt as a library, you
+      may have to make changes to how you are leveraging exported
+      structs from Terragrunt.
+      The simplest way to avoid any breakage related to this change
+      is to avoid usage of unkeyed composite literals.
+      See the release for details:
+      https://github.com/gruntwork-io/terragrunt/releases/tag/v0.77.0
+    - Telemetry Environment Variable Name Changes
+      The following environment variables now have new aliases:
+      - TERRAGRUNT_TELEMETRY_TRACE_EXPORTER --> TG_TELEMETRY_TRACE_EXPORTER
+      - TERRAGRUNT_TELEMETRY_TRACE_EXPORTER_HTTP_ENDPOINT --> TG_TELEMETRY_TRACE_EXPORTER_HTTP_ENDPOINT
+      - TERRAGRUNT_TELEMETRY_TRACE_EXPORTER_INSECURE_ENDPOINT --> TG_TELEMETRY_TRACE_EXPORTER_INSECURE_ENDPOINT
+      - TERRAGRUNT_TELEMETRY_METRIC_EXPORTER --> TG_TELEMETRY_METRIC_EXPORTER
+      - TERRAGRUNT_TELEMETRY_METRIC_EXPORTER_INSECURE_ENDPOINT --> TG_TELEMETRY_METRIC_EXPORTER_INSECURE_ENDPOINT
+      These environment variables have been renamed to align more
+      closely with the rest of the changes in the CLI Redesign.
+      Note that the TRACEPARENT environment variable has not
+      changed. This environment variable is semi-standard in the
+      OpenTelemetry space, so we've preserved it.
+      This is not a breaking change with this release, but will be
+      in the future. As with all the environment variable renames
+      that have taken place during the CLI Redesign, both the
+      legacy environment variable and the new environment variable
+      will be supported to give users time to make requisite
+      adjustments. If you would like to opt in to stricter behavior
+      that requires usage of the new environment variables,
+      leverage the terragrunt-prefix-env-vars strict control.
+  * New Features
+    - Introduction of backend bootstrap and backend delete
+      This release introduces two new commands named backend
+      bootstrap and backend delete.
+      These commands allow for manual control over the process by
+      which Terragrunt can manage backend state resources on behalf
+      of users.
+    - backend bootstrap
+      The backend bootstrap command allows users to explicitly
+      bootstrap resources like S3 buckets, GCS buckets, DynamoDB
+      tables, etc. used to manage state for OpenTofu/Terraform.
+      It is accompanied by a flag (--backend-bootstrap) which
+      explicitly enables this behavior by default before performing
+      any operation that might require backend resources (like the
+      run command).
+      The introduction of this command is part of the future
+      deprecation of provisioning backend resources by default when
+      using Terragrunt. You can learn more about this in the CLI
+      Redesign.
+    - backend delete
+      The backend delete command allows users to delete state
+      resources relevant to one or more units in remote state.
+      Terragrunt performs two safety checks to mitigate the risk of
+      accidentally removing the wrong backend state resource:
+      1. By default, Terragrunt will refuse to remove any backend
+         state file if versioning is not enabled for the backend S3
+         bucket or GCS bucket. To explicitly ignore this safety
+         check, users must provide the --force flag.
+      2. By default, Terragrunt will prompt users to confirm their
+         decision to remove a given backend state file. To
+         explicitly ignore this safety check, users must provide
+         the --non-interactive flag.
+      The introduction of this command is part of a larger effort
+      to provide users greater control over the full lifecycle of
+      backend state resources by Terragrunt. You can learn more
+      about this in the CLI Redesign.
+  * What's Changed
+    - feat: Adding best effort parsing by @yhakbar in #4044
+    - feat: Implementation of backend commands: bootstrap, delete
+      by @levkohimins in #4070
+    - feat: Backend delete prompt by @levkohimins in #4091
+    - feat: Adding backend docs by @yhakbar in #4087
+    - fix: Updating homepage title by @yhakbar in #4081
+    - fix: Addressing stricter lint findings by @yhakbar in #4090
+    - fix: Fixing visible flags by @yhakbar in #4088
+    - fix: Renaming telemetry envs prefix TERRAGRUNT_ with TG_ by
+      @levkohimins in #4084
+    - fix: Fixing backend delete safety features by @yhakbar in
+      #4089
+    - fix: Avoiding duplicate description in flag names by @yhakbar
+      in #4092
+    - fix: terraform_binary with run version command by
+      @levkohimins in #4095
+    - build(deps-dev): bump nokogiri from 1.18.3 to 1.18.4 in /docs
+      by @dependabot in #4069
+
+-------------------------------------------------------------------
 Tue Mar 25 13:45:07 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.76.8:
