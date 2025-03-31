@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:41:39 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Update to 1.10.1
+  * Fixed Bugs:
+    + BEANUTILS-541:  FluentPropertyBeanIntrospector concurrency
+      issue (backport to 1.X) #325.
+    + Javadoc is missing its Overview page.
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS (from
+      org.apache.commons:commons-parent:80).
+    + Deprecate BeanUtils.BeanUtils().
+    + Deprecate ConstructorUtils.ConstructorUtils().
+    + Deprecate LocaleBeanUtils.LocaleBeanUtils().
+    + Deprecate LocaleConvertUtils.LocaleConvertUtils().
+    + Deprecate ConvertUtils.ConvertUtils().
+    + Deprecate MethodUtils.MethodUtils().
+    + Deprecate PropertyUtils.PropertyUtils().
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 78 to 81.
+- Includes changes from 1.10.0
+  * Fixed Bugs:
+    + BEANUTILS-541:  FluentPropertyBeanIntrospector caches
+      corrupted writeMethod (1.x backport) #69.
+    + Replace internal use of Locale.ENGLISH with Locale.ROOT.
+    + Replace Maven CLIRR plugin with JApiCmp.
+    + Port to Java 1.4 Throwable APIs (!).
+    + Fix Javadoc generation on Java 8, 17, and 21.
+    + AbstractArrayConverter.parseElements(String) now returns a
+      List<String> instead of a raw List.
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 47 to 78.
+    + Bump Java requirement from Java 6 to 8.
+    + Bump junit:junit from 4.12 to 4.13.2.
+    + Bump JUnit from 4.x to 5.x "vintage".
+    + Bump commons-logging:commons-logging from 1.2 to 1.3.4.
+    + Deprecate BeanUtilsBean.initCause(Throwable, Throwable) for
+      removal, use Throwable.initCause(Throwable).
+    + Deprecate BeanUtils.initCause(Throwable, Throwable) for
+      removal, use Throwable.initCause(Throwable).
+- Update apache-commons-beanutils-fix-build-version.patch to
+  reflect new version.
+
+-------------------------------------------------------------------
 Thu Feb 22 07:14:51 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build with SLE12

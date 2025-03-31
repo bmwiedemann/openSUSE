@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-beanutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define base_name	beanutils
 %define short_name	commons-%{base_name}
 Name:           apache-commons-beanutils
-Version:        1.9.4
+Version:        1.10.1
 Release:        0
 Summary:        Utility methods for accessing and modifying the properties of JavaBeans
 License:        Apache-2.0

@@ -168,4 +168,12 @@
     <comment>Fix build with SLE12</comment>
     <requestid>1148996</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>486e376f26c352559d540578b99194d4</srcmd5>
+    <version>1.10.1</version>
+    <time>1743413999</time>
+    <user>anag+factory</user>
+    <comment>Update to 1.10.1</comment>
+    <requestid>1265174</requestid>
+  </revision>
 </revisionlist>
