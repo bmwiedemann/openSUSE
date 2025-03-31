@@ -362,4 +362,12 @@
     <comment>Update to version 1.2.50</comment>
     <requestid>1216687</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>3a6be7550bcbc74012febf95a3b159b2</srcmd5>
+    <version>1.2.50</version>
+    <time>1743413984</time>
+    <user>anag+factory</user>
+    <comment>- drop unneeded pcre build requirement (forwarded request 1254478 from AndreasStieger)</comment>
+    <requestid>1265136</requestid>
+  </revision>
 </revisionlist>

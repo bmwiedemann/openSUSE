@@ -32,7 +32,6 @@ Source3:        https://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-c
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
 BuildRequires:  java-devel
-BuildRequires:  pcre-devel
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Requires:       apache2
@@ -57,8 +56,9 @@ export APACHE2_CFLAGS="%{apache_cflags}"
 cd native
 %configure \
 	--with-pic \
-	--with-apxs=%{apache_apxs}
-make %{?_smp_mflags}
+	--with-apxs=%{apache_apxs} \
+	%{nil} 
+%make_build
 
 %install
 # AJP Connector jk
