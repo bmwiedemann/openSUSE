@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Fri Mar 28 14:19:37 UTC 2025 - scott.bradnick@suse.com
+
+- Adding 'rioterm-rpmlintrc' to deal w/ 'useless provides' warnings
+- Update to version 0.2.12:
+  * prepare 0.2.12
+  * remove .gitattributes
+  * restore nerd font
+  * restore emoji font
+  * restore test-fonts
+  * restore fonts
+  * fix lint
+  * clamp texture size to device limits by @chyyran
+  * Update docs/docs/releases.md
+  * update lint
+  * remove ntsc_vcr
+  * fix lint
+  * add builtin filters
+  * update libshader deps
+  * feat: bultin filters
+  * update releases.md
+  * prepare 0.2.11
+  * fix dimension computation
+  * add debug flag for metal
+  * upda skrifa
+  * remove wa
+  * update wgpu
+  * migrate navigation
+  * migrate routes
+  * refactor compositors into one
+  * remove text mod
+  * move search to it's own struct
+  * fix lint
+  * feat: unify text renderer
+  * update description
+  * remove ttf and otf from git lfs track
+  * update cascadia code to latest
+  * use std::hash::RandomState and update twox-hash
+  * fix toml format
+  * bump dependencies
+  * update releases
+  * update tests
+  * fix issue for first tab dimension after create new tabs using bottom or top tab
+  * change default height to 490
+  * fix compute lines and columns
+  * update version to 0.2.10
+  * fix lint
+  * fix: remove assertion, this test is complicated because can run into race conditions where path is known beforehand (closes #994)
+  * fixes: opacity on foreground text, opacity for unfocused split and allow unfocused routes to be updated
+  * prepare 0.2.9
+  * flake.lock: Update
+  * fix wrong toml comments
+  * fix tests
+  * fix comment on toml
+  * update releases
+  * feat: implement symbol_map
+  * update docs
+  * add symbol-map support on config level and fix issue when font isn't found
+  * Add missing LICENSE files to several workspace crates (#1003)
+  * Small changes to macOS info.plist file (#1002)
+  * Add Switch to Next/Prev Split or Tab command (#995)
+  * Update 2025-03-01-rio-is-now-releasing-with-goreleaser.mdx (#997)
+  * Update 2025-03-01-rio-is-now-releasing-with-goreleaser.mdx (#996)
+  * update releases.md
+  * uppercase R of Goreleaser
+  * update text
+  * remove confusing part on paragraph
+  * update paragraph
+  * new post
+  * fix(goreleaser): different terminfo paths on linux & macos, address deprecation msgs (#990)
+  * fix(goreleaser): bundle compiled terminfo in deb/rpm (#986)
+  * fix(goreleaser): template syntax (#988)
+  * use rioterm.com
+  * fix(goreleaser): do not run after hooks on intermediary steps (#987)
+  * prepare 0.2.8
+  * update description
+  * update website
+  * update path
+  * fix CNAME
+  * update url and baseUrl
+  * add CNAME
+  * migrate to flakehub cache
+  * add support to ios
+  * fix(goreleaser): different terminfo paths for deb/rpm based distros (#985)
+  * spinning logo (#984)
+  * remove indices and ids
+  * update release.md
+  * Cache GSUB and GPOS features independently
+  * flake.lock: Update (#983)
+  * update release.md
+  * ci: native macos notarization (#982)
+  * fix(goreleaser): rpm dependencies (#981)
+  * update docs
+  * back to timeout
+  * remove timeout from goreleaser.yml
+  * wait true for notarize
+  * feat: shell integration - current path (#970)
+  * ci(release): publish nightlies only on config/workflow changes (#954)
+  * feat-update-windows-sys-0.59 (#969)
+  * Update flake.lock (#966)
+  * ci(release): update goreleaser-action to v6.2.1 (#965)
+  * fix(goreleaser): special chars should be wrapped in `"` (#964)
+  * refactor(goreleaser): use conventional file names for deb, rpm (#960)
+  * ci: fix multiple things and run only when necessary (#962)
+  * docs: update releases.md (#963)
+  * chore(goreleaser): add rpm, fix github release (#955)
+  * feat: add goreleaser (#921)
+  * update install links
+  * prepare 0.2.7
+  * update 0.2.7
+  * Implement set_color and reset_color (#952)
+  * [fix] changing Ubuntu version to 22.04 for supporting older version (#950)
+  * Don't report unshifted key when Shift was not pressed (originally taken from alacritty)
+  * Update flake.lock (#949)
+  * update links
+  * mark plist as 0.2.6
+  * prepare 0.2.6
+  * update release.md
+  * update release.md
+  * bugfix: fix duplicate tab_id by monotonic counter for unique tab IDs (#938)
+  * update releases
+  * Add backslash to invalid characters for URL regex
+  * fix regression introduced by 0.2.5 on light colors
+  * Update defaults.rs (#936)
+  * flake.lock: Update (#935)
+  * Alias to Normal and Italic works without capitalization (#934)
+  * docs: update default font style from normal to Normal (#933)
+  * use null_mut() instead of zero isize
+  * bump dependencies
+  * fix: Use `closesplitortab` instead of `closecurrenttaborsplit` (#929)
+  * fix some links
+  * fix some links
+  * fix some links
+  * update release
+  * prepare 0.2.5
+  * new docs (#928)
+  * update docs
+  * apply calculation on color
+  * introduce Mul<f32> for ColorRgb
+  * receive colors
+  * update releases.md
+  * fix lint
+  * fix macos unable to type Option + Number for special characters
+  * flake.lock: Update (#923)
+  * remove cursor duplication
+  * update wgpu to 24.0.1
+  * fix array concat lint
+  * migrate to objc-rs
+  * fix: Better handling of Escape and Enter keys (#915)
+  * update changelog
+  * option as alt per default on macos
+  * add cyberpunk video
+  * fix broken link to nixpkgs (#909)
+  * update icons
+  * Use wrapper type for CFUUID retired from (https://github.com/rust-windowing/winit/pull/4032)
+  * flake.lock: Update (#910)
+  * update article
+  * update links on docs
+  * use src as raphamorim.io
+
+-------------------------------------------------------------------
 Tue Jan 28 17:33:09 UTC 2025 - nf@ioa.pm
 
 - Update to version 0.2.4:
