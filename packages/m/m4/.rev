@@ -308,4 +308,12 @@
     <comment>- fix build for loongarch64 (forwarded request 1227514 from adrianSuSE)</comment>
     <requestid>1227584</requestid>
   </revision>
+  <revision rev="42" vrev="10">
+    <srcmd5>14bd1114e9d030baa8b73739ae517f57</srcmd5>
+    <version>1.4.18</version>
+    <time>1743413829</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265245</requestid>
+  </revision>
 </revisionlist>

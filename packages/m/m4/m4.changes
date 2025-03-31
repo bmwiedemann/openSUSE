@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Mar 19 15:28:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Skip PGO with %want_reproducible_builds (boo#1040589)
+
+-------------------------------------------------------------------
 Sat Nov 30 13:02:16 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - fix build for loongarch64

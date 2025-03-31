@@ -51,7 +51,7 @@ cp -a /usr/lib/rpm/config.{sub,guess} build-aux/
 	gl_cv_func_isnanl_works=yes \
 	gl_cv_func_printf_directive_n=yes \
 	gl_cv_func_printf_infinite_long_double=yes
-%if %{do_profiling}
+%if %{do_profiling} && !0%{?want_reproducible_builds}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
   # run profiling check sequentially to have it reproducible
   %make_build -j1 check CFLAGS="%{optflags} %{cflags_profile_generate}"
