@@ -84,7 +84,7 @@ BuildRequires:  systemd-rpm-macros
 Recommends:     crypto-policies-scripts
 %endif
 Conflicts:      gnutls < 3.8.8
-Conflicts:      nss < 3.105
+Conflicts:      nss < 3.101
 Conflicts:      openssh < 9.9p1
 Conflicts:      openssl < 3.0.2
 #!BuildIgnore:  crypto-policies
