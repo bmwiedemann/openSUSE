@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 20:58:12 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Update voro++-cmake.patch to support newer CMake version
+
+-------------------------------------------------------------------
 Fri Mar 21 23:12:24 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

@@ -78,7 +78,7 @@ This package contains development headers and libraries for voro++.
  -DCMAKE_BUILD_TYPE=Release \
  -DCMAKE_SKIP_RPATH=1 \
  -DLIB=%{_lib} \
- -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
+ ..
 make %{?_smp_mflags}
 
 %install
