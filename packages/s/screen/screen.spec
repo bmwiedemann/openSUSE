@@ -64,7 +64,7 @@ Documentation: man page
 %build
 sh ./autogen.sh
 
-CFLAGS="-DMAXWIN=1000 %{optflags}" %configure --prefix=%{_prefix} --infodir=%{_infodir} \
+CFLAGS="-DMAXWIN=1000 %{optflags} -std=gnu89" %configure --prefix=%{_prefix} --infodir=%{_infodir} \
 				--mandir=%{_mandir} \
 				--with-socket-dir='(eff_uid ? "%{rundir}/uscreens" : "%{rundir}/screens")' \
 				--with-sys-screenrc=%{_sysconfdir}/screenrc \

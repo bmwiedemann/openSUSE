@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:37:40 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- K&R source is not ready for C23 used by default with GCC 15.
+  Use -std=gnu89 instead.
+
+-------------------------------------------------------------------
 Thu Jan 16 10:49:16 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable libutempter, it doesn't work anymore with the switch

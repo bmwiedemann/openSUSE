@@ -575,4 +575,12 @@ Changelog updated and bug reported upstream here: https://savannah.gnu.org/bugs/
   from utmp to systemd-logind and only creates error messages (forwarded request 1238457 from kukuk)</comment>
     <requestid>1241316</requestid>
   </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>be7035e5ef17cf1b08339c1d4d825f30</srcmd5>
+    <version>4.9.1</version>
+    <time>1743413815</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1256353</requestid>
+  </revision>
 </revisionlist>
