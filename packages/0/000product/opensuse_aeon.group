@@ -64,6 +64,7 @@
     <package name="libkfont0" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
+    <package name="liblz1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: opensuse_aeon:suse-module-tools-scriptlets -->
     <package name="libmagic1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
     <package name="libmount1" supportstatus="unsupported"/> <!-- reason: common_locks:kernel-default -->
@@ -127,6 +128,6 @@
 <group name="opensuse_aeon.x86_64">
   <conditional name="only_x86_64"/>
   <packagelist relationship="recommends">
-    <package name=" patterns-aeon-base uninstallable: package patterns-aeon-base-5.0-21.1.x86_64 requires gnome-backgrounds, but none of the providers can be installed" supportstatus="unsupported"/>
+    <package name=" patterns-aeon-base uninstallable: package patterns-aeon-base-5.0-22.1.x86_64 requires gnome-backgrounds, but none of the providers can be installed" supportstatus="unsupported"/>
   </packagelist>
 </group>

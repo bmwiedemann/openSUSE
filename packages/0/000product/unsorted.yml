@@ -9,7 +9,6 @@ unsorted:
   - 3proxy 
   - 4pane 
   - 4pane-lang 
-  - 4store 
   - 4ti2 
   - 4ti2-devel 
   - 6tunnel 
@@ -2245,6 +2244,8 @@ unsorted:
   - clang18-doc 
   - clang19-devel 
   - clang19-doc 
+  - clang20-devel 
+  - clang20-doc 
   - clanlib 
   - clanlib-devel 
   - clanlib-doc 
@@ -3430,6 +3431,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -3475,7 +3477,6 @@ unsorted:
   - dnsdiag 
   - dnsdist 
   - dnsmasq-utils 
-  - dnsmeter 
   - dnsproxy 
   - dnstracer 
   - docbook-css-stylesheets 
@@ -4383,7 +4384,6 @@ unsorted:
   - fifth-leg-font 
   - figlet 
   - file-devel 
-  - file-devel-32bit 
   - file-unpack 
   - file-unpack2 
   - fileb0x 
@@ -5178,17 +5178,9 @@ unsorted:
   - gede-qt6 
   - gedit-devel 
   - gedit-plugin-bookmarks 
-  - gedit-plugin-bracketcompletion 
-  - gedit-plugin-charmap 
-  - gedit-plugin-codecomment 
-  - gedit-plugin-colorpicker 
   - gedit-plugin-devhelp 
   - gedit-plugin-drawspaces 
-  - gedit-plugin-joinlines 
-  - gedit-plugin-multiedit 
-  - gedit-plugin-session-saver 
   - gedit-plugin-smartspaces 
-  - gedit-plugin-terminal 
   - gedit-plugin-wordcompletion 
   - gedit-plugins 
   - gedit-plugins-data 
@@ -7304,6 +7296,7 @@ unsorted:
   - git-subrepo-zsh-completion 
   - git-sync 
   - git-test 
+  - git-who 
   - gitea-tea 
   - gitea-tea-bash-completion 
   - gitea-tea-zsh-completion 
@@ -9750,7 +9743,6 @@ unsorted:
   - jline3-jansi-core 
   - jline3-javadoc 
   - jline3-native 
-  - jline3-parent 
   - jline3-reader 
   - jline3-remote-telnet 
   - jline3-style 
@@ -11257,8 +11249,6 @@ unsorted:
   - lib3270-devel 
   - lib3ds-1-3 
   - lib3ds-devel 
-  - lib4store-devel 
-  - lib4store0 
   - lib4ti2-0 
   - lib5250-0 
   - libADLMIDI1 
@@ -11443,18 +11433,19 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_5_4 
   - libLLVM15 
-  - libLLVM15-32bit 
   - libLLVM17 
   - libLLVM17-32bit 
   - libLLVM18 
   - libLLVM18-32bit 
   - libLLVM19-32bit 
+  - libLLVM20-32bit 
   - libLLVMSPIRVLib-devel 
-  - libLLVMSPIRVLib19 
+  - libLLVMSPIRVLib20 
   - libLTO15 
   - libLTO17 
   - libLTO18 
   - libLTO19 
+  - libLTO20 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-0 
   - libMagick++-7_Q16HDRI5 
@@ -11812,7 +11803,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
-  - libSimGearCore-2020_3_19 
+  - libSimGearCore-2024_1_1 
   - libSingular-4_4_1 
   - libSingular-devel 
   - libSoQt20 
@@ -12699,12 +12690,12 @@ unsorted:
   - libclBLAS2 
   - libclFFT2 
   - libclang-cpp15 
-  - libclang-cpp15-32bit 
   - libclang-cpp17 
   - libclang-cpp17-32bit 
   - libclang-cpp18 
   - libclang-cpp18-32bit 
   - libclang-cpp19-32bit 
+  - libclang-cpp20-32bit 
   - libclang_rt18 
   - libclapper-0_0-0 
   - libclapper-gtk-0_0-0 
@@ -13452,7 +13443,6 @@ unsorted:
   - libftdi1 
   - libftdi1-devel 
   - libftgl2 
-  - libftgl2-32bit 
   - libftoa0_3 
   - libftxf-devel 
   - libftxf1 
@@ -14581,6 +14571,7 @@ unsorted:
   - liblldb17 
   - liblldb18 
   - liblldb19 
+  - liblldb20 
   - liblldpctl4 
   - liblmdb-0_9_30-32bit 
   - liblms7002m-devel 
@@ -14660,7 +14651,6 @@ unsorted:
   - liblxqt-lang 
   - liblxqt-wallet6_0_0 
   - liblxqt2 
-  - liblz1 
   - liblz4-1-32bit 
   - liblz4-devel 
   - liblzma5-32bit 
@@ -14704,7 +14694,6 @@ unsorted:
   - libmaa4 
   - libmad-devel 
   - libmaeparser1 
-  - libmagic1-32bit 
   - libmaia-devel 
   - libmaia1 
   - libmaliit-devel 
@@ -15221,6 +15210,7 @@ unsorted:
   - libomp17-devel 
   - libomp18-devel 
   - libomp19-devel 
+  - libomp20-devel 
   - libonnx 
   - libonnx_proto 
   - liboop-devel 
@@ -16834,7 +16824,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent23 
+  - libtorrent24 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm_unseal1 
@@ -17788,6 +17778,7 @@ unsorted:
   - lld17 
   - lld18 
   - lld19 
+  - lld20 
   - lldap 
   - lldap-cli 
   - lldap-migration-tool 
@@ -17802,6 +17793,8 @@ unsorted:
   - lldb18-devel 
   - lldb19 
   - lldb19-devel 
+  - lldb20 
+  - lldb20-devel 
   - lldpd 
   - lldpd-devel 
   - llmnrd 
@@ -17859,6 +17852,13 @@ unsorted:
   - llvm19-polly 
   - llvm19-polly-devel 
   - llvm19-vim-plugins 
+  - llvm20 
+  - llvm20-devel 
+  - llvm20-doc 
+  - llvm20-opt-viewer 
+  - llvm20-polly 
+  - llvm20-polly-devel 
+  - llvm20-vim-plugins 
   - lmdb 
   - lmdb-devel 
   - lmdbxx-devel 
@@ -21263,6 +21263,7 @@ unsorted:
   - par 
   - par2cmdline 
   - par_text 
+  - parallel-hashmap-devel 
   - parallel-printer-support 
   - paralleloverhead 
   - paranamer 
@@ -24118,6 +24119,7 @@ unsorted:
   - python3-clang17 
   - python3-clang18 
   - python3-clang19 
+  - python3-clang20 
   - python3-clingo 
   - python3-clustershell 
   - python3-coconut 
@@ -24132,6 +24134,7 @@ unsorted:
   - python3-dnf-plugin-local 
   - python3-dnf-plugin-modulesync 
   - python3-dnf-plugin-post-transaction-actions 
+  - python3-dnf-plugin-pre-transaction-actions 
   - python3-dnf-plugin-rpmconf 
   - python3-dnf-plugin-show-leaves 
   - python3-dnf-plugin-showvars 
@@ -24221,6 +24224,7 @@ unsorted:
   - python3-lldb17 
   - python3-lldb18 
   - python3-lldb19 
+  - python3-lldb20 
   - python3-logreduce 
   - python3-lttngust 
   - python3-magnumclient 
@@ -36201,6 +36205,7 @@ unsorted:
   - redsea 
   - redshift 
   - redshift-gtk 
+  - redumper 
   - reflectasm 
   - reflectasm-javadoc 
   - reflections 
@@ -37209,6 +37214,7 @@ unsorted:
   - selinux-policy-targeted-gaming 
   - selinux-targeted-setup 
   - semantik 
+  - semaphore 
   - sendfax 
   - sendmail-devel 
   - sendmail-starttls 
@@ -37391,7 +37397,6 @@ unsorted:
   - slade 
   - slang-devel 
   - slang-slsh 
-  - sleuth 
   - sleuthkit 
   - sleuthkit-devel 
   - slf4j 
@@ -37477,20 +37482,21 @@ unsorted:
   - snorenotify-qt5-devel 
   - snowball 
   - snowball-devel 
+  - snowflake 
   - snpguest 
   - snphost 
   - soapy-osmo-devel 
   - soapy-remote-server 
   - soapy-sdr 
   - soapy-sdr-devel 
-  - soapysdr0.8-module-airspy 
-  - soapysdr0.8-module-bladerf 
-  - soapysdr0.8-module-hackrf 
-  - soapysdr0.8-module-lms7 
-  - soapysdr0.8-module-mirisdr 
-  - soapysdr0.8-module-osmosdr 
-  - soapysdr0.8-module-remote 
-  - soapysdr0.8-module-rtlsdr 
+  - soapysdr0.8-3-module-airspy 
+  - soapysdr0.8-3-module-bladerf 
+  - soapysdr0.8-3-module-hackrf 
+  - soapysdr0.8-3-module-lms7 
+  - soapysdr0.8-3-module-mirisdr 
+  - soapysdr0.8-3-module-osmosdr 
+  - soapysdr0.8-3-module-remote 
+  - soapysdr0.8-3-module-rtlsdr 
   - soapysdr0.8-module-uhd 
   - soapysdr0.8-module-xtrx 
   - sobby 
