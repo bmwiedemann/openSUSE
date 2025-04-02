@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  1 17:58:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.4.0:
+  * Enhancements
+    - End-of-run summary report (#4405) @Qalthos
+    - Pull out common action options (#4411) @Qalthos
+  * Bugfixes
+    - Replace internal calls to SystemExit with custom exception
+      (#4413) @Qalthos
+    - Update recommended container (#4403) @gilbertbw
+
+-------------------------------------------------------------------
 Wed Feb 19 13:14:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.3.1:

@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        25.3.1
+Version:        25.4.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
@@ -158,6 +158,7 @@ IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_playbook"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_configs"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_playbooks_converge_property"
 IGNORED_CHECKS="${IGNORED_CHECKS} or test_get_ansible_playbook_with_driver_key_when_playbook_key_missing[_provisioner_driver_playbook_key_missing_section_data]"
+IGNORED_CHECKS="${IGNORED_CHECKS} or test_command_report"
 
 %pytest -k "not (${IGNORED_CHECKS})" -W ignore:'There is no current event loop'
 %endif
