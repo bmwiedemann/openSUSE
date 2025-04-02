@@ -1,7 +1,7 @@
 #
 # spec file for package tidy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Version:        5.8.0
 Release:        0
 Summary:        Utility to Clean Up and Pretty-print HTML, XHTML or XML Markup
 License:        W3C
-Group:          Productivity/Publishing/HTML/Tools
 URL:            https://github.com/htacg/tidy-html5
 Source0:        https://github.com/htacg/tidy-html5/archive/%{version}.tar.gz
 # Latest version of unit tests
@@ -36,7 +35,7 @@ Source10:       tidy_fetch_docs.sh
 Patch0:         dynamic_library_build.diff
 Patch1:         test_fixes.diff
 Patch2:         fix_doxygen_paths.diff
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -54,7 +53,6 @@ limited to correcting basic well-formedness errors and pretty printing.
 
 %package doc
 Summary:        Documentation for tidy and libtidy
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -62,7 +60,6 @@ This package contains the documentation for both tidy and libtidy.
 
 %package -n libtidy58
 Summary:        Library to Clean Up and Pretty-print HTML, XHTML or XML Markup
-Group:          System/Libraries
 
 %description -n libtidy58
 TidyLib is a library for cleaning up and pretty printing HTML, XHTML and XML
@@ -78,7 +75,6 @@ There is a command line frontend for this library, contained in the package
 
 %package -n libtidy-devel
 Summary:        Development files for libtidy
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libtidy58 = %{version}
 Conflicts:      libtidy-0_99-0-devel
@@ -98,12 +94,16 @@ mv tidy-html5-tests-* tests
 %cmake \
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DINCLUDE_INSTALL_DIR:PATH=include/%{name} \
-    -DTIDY_COMPAT_HEADERS:BOOL=ON -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O0 -ggdb3"
+    -DTIDY_COMPAT_HEADERS:BOOL=ON -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O0 -ggdb3" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 ../tidy-html5-doxygen/build_docs.sh
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post   -n libtidy58 -p /sbin/ldconfig
 %postun -n libtidy58 -p /sbin/ldconfig
