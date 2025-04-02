@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 31 15:57:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency
+
+-------------------------------------------------------------------
 Wed Oct 16 06:43:57 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add libXinerama-devel BuildRequires: ensure clanDisplay can be

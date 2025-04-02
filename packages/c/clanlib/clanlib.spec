@@ -42,7 +42,6 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libvorbis-devel
 BuildRequires:  libxslt
-BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
