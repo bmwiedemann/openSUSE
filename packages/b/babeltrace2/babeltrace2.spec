@@ -31,6 +31,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  python3-setuptools
 BuildRequires:  swig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libdw) >= 0.154

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 10 04:00:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add BuildRequires on python3-setuptools, required for Python 3.12+. 
+
+-------------------------------------------------------------------
 Thu Jan 30 10:42:35 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to 2.1.0
