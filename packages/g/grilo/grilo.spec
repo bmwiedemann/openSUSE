@@ -17,13 +17,13 @@
 
 
 Name:           grilo
-Version:        0.3.16
+Version:        0.3.16+17
 Release:        0
 Summary:        Framework for browsing and searching media content
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
-Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc

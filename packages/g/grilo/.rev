@@ -816,4 +816,12 @@
 - Created initial packages with grilo 0.1.16 (forwarded request 1251120 from dimstar)</comment>
     <requestid>1251121</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0ed273971da782e24236e0d0ec851bab</srcmd5>
+    <version>0.3.16+17</version>
+    <time>1743606382</time>
+    <user>anag+factory</user>
+    <comment> (forwarded request 1265263 from iznogood)</comment>
+    <requestid>1265720</requestid>
+  </revision>
 </revisionlist>

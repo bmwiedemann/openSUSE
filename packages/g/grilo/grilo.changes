@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 28 08:38:49 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 0.3.16+17:
+  * pls: Fix thumbnail URI for remote files in Flatpak
+  * net: Fix possible regressions from GTask port (6c97aed)
+  * grilo-test-ui: Use new separate-src config for filesystem
+  * pls: Use fast-content-type on remote shares
+  * pls: Add thumbnails for remote files
+  * Correct 404 URIs to Tracker Ontology reference
+  * Updated translations.
+- Switch to git checkout via source service, current head.
+
+-------------------------------------------------------------------
 Thu Mar  6 19:47:11 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gtk+-3.0) BuildRequires and pass
