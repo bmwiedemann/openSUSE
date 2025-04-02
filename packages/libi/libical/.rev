@@ -473,4 +473,32 @@
     <comment></comment>
     <requestid>1169647</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>dfa0b247c3975b259c1016edef876410</srcmd5>
+    <version>3.0.20</version>
+    <time>1743606338</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.0.20:
+  * Clean up the byte-swapping macros
+  * Fix a testcase in libical-glib when using 64-bit on a 32-bit
+    system
+- update to 3.0.19:
+  * Fix for changes to the libicu 75 API
+  * Add vcpkg manifest-mode support
+  * Improved berkeley-db discovery on Mac with homebrew
+  * Improved libicu discrovery on Mac with homebrew
+  * Properly set DYLD_LIBRARY_PATH on Mac for libical-ical tests
+  * Resolved known limitation: Negative values are now also
+    supported for `BYMONTHDAY` and `BYYEARDAY`.
+  * Add support for RDATE;VALUE=PERIOD
+  * Fix time conversion to time_t for times before epoch
+  * Allow `icalcomponent_foreach_recurrence` to receive
+    `DATE`-only `start` and `end` params.
+  * Fix the calculation of an event's duration if `DTSTART` is a
+    `DATE`-only value.
+  * Fix `icaltime_span_new()` - ignore the case where DTEND is
+    unset and require it to be set by the caller instead.
+  * Various fixes for fuzzer issues</comment>
+    <requestid>1265604</requestid>
+  </revision>
 </revisionlist>
