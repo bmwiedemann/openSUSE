@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:30:21 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.2.2:
+  * Fixes and workarounds in order to make multiboot2 more
+    resilient when booting specific kernels such as Xen.
+  * Avoid mistakenly allocating more memory than necessary when
+    creating the volume index.
+
+-------------------------------------------------------------------
 Tue Mar 25 23:35:00 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.2.1:
