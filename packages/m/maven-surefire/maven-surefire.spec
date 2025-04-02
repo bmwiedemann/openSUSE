@@ -1,7 +1,7 @@
 #
 # spec file for package maven-surefire
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-surefire
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
@@ -62,6 +62,7 @@ BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  testng
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
@@ -204,6 +205,7 @@ build-jar-repository -s -p lib \
     plexus-languages/plexus-java \
     plexus/utils \
     plexus/xml \
+    slf4j/api \
     testng
 
 %{ant} \

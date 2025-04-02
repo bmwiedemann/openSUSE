@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Mar 31 15:14:16 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.5.3
+  * Bug
+    + SUREFIRE-1643: JUnit 5 in parallel execution mode confuses
+      Surefire reports
+    + SUREFIRE-1737: Disabling the JUnit5Xml30StatelessReporter has
+      no effect
+    + SUREFIRE-1751: Surefire report shows flaky tests as failures
+    + SUREFIRE-2289: FailsafeSummary.toRunResult throws a raw
+      exception
+- Modified patches:
+  * 0001-Port-to-TestNG-7.4.0.patch
+  * 0002-Unshade-surefire.patch
+    + rediff
+  * maven-surefire-bootstrap-resources.patch
+    + regenerate from non-bootstrap build
+
+-------------------------------------------------------------------
 Mon Nov  4 09:51:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 3.5.2

@@ -1,109 +1,113 @@
-From baf95099bc61a6e5eed9172576b4de175cbad6f1 Mon Sep 17 00:00:00 2001
+From b42885011a1ba16ac446a2b83a8164677519066f Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Tue, 1 Oct 2024 22:01:47 +0200
 Subject: [PATCH 2/2] Unshade surefire
 
 ---
- maven-failsafe-plugin/pom.xml                 | 26 ++++---------
+ maven-failsafe-plugin/pom.xml                 | 26 +++++----------
  .../maven/plugin/failsafe/VerifyMojo.java     |  2 +-
- .../util/FailsafeSummaryXmlUtils.java         |  6 +--
- maven-surefire-common/pom.xml                 | 37 +++++++++++--------
- .../plugin/surefire/AbstractSurefireMojo.java | 22 +++++------
+ .../util/FailsafeSummaryXmlUtils.java         |  6 ++--
+ maven-surefire-common/pom.xml                 | 32 ++++++++++++------
+ .../plugin/surefire/AbstractSurefireMojo.java | 28 +++++++---------
  .../surefire/StartupReportConfiguration.java  |  2 +-
+ .../surefire/SurefireDependencyResolver.java  |  1 -
  .../maven/plugin/surefire/SurefireHelper.java |  2 +-
  .../plugin/surefire/SurefireProperties.java   |  2 +-
  .../maven/plugin/surefire/TestClassPath.java  |  2 +-
  .../ClasspathForkConfiguration.java           |  2 +-
  .../DefaultForkConfiguration.java             |  2 +-
- .../surefire/booterclient/ForkStarter.java    |  4 +-
- .../JarManifestForkConfiguration.java         |  8 ++--
+ .../surefire/booterclient/ForkStarter.java    |  4 +--
+ .../JarManifestForkConfiguration.java         |  8 ++---
  .../ModularClasspathForkConfiguration.java    |  2 +-
- .../lazytestprovider/Commandline.java         |  6 +--
- .../extensions/SurefireForkChannel.java       |  4 +-
- .../surefire/report/ConsoleReporter.java      |  4 +-
- .../report/DefaultReporterFactory.java        |  4 +-
+ .../lazytestprovider/Commandline.java         |  6 ++--
+ .../extensions/SurefireForkChannel.java       |  4 +--
+ .../surefire/report/ConsoleReporter.java      |  4 +--
+ .../report/DefaultReporterFactory.java        |  4 +--
  .../plugin/surefire/report/FileReporter.java  |  2 +-
  .../surefire/report/FileReporterUtils.java    |  2 +-
- .../surefire/report/StatelessXmlReporter.java |  8 ++--
- .../plugin/surefire/report/TestSetStats.java  |  4 +-
+ .../surefire/report/StatelessXmlReporter.java |  8 ++---
+ .../plugin/surefire/report/TestSetStats.java  |  4 +--
  .../surefire/report/WrappedReportEntry.java   |  2 +-
  .../plugin/surefire/util/FileScanner.java     |  2 +-
  .../plugin/surefire/util/ScannerUtil.java     |  2 +-
  .../surefire/util/SpecificFileFilter.java     |  2 +-
  .../maven/surefire/stream/EventDecoder.java   |  2 +-
- .../surefire/AbstractSurefireMojoTest.java    |  6 +--
+ .../AbstractSurefireMojoJava7PlusTest.java    | 30 +++--------------
+ .../surefire/AbstractSurefireMojoTest.java    | 33 +++----------------
  .../plugin/surefire/SurefireHelperTest.java   |  2 +-
- .../booterclient/ForkConfigurationTest.java   | 22 +++++------
- .../booterclient/ForkStarterTest.java         |  6 +--
+ .../booterclient/ForkConfigurationTest.java   | 22 +++++--------
+ .../booterclient/ForkStarterTest.java         |  6 ++--
  .../JarManifestForkConfigurationTest.java     |  2 +-
  ...ModularClasspathForkConfigurationTest.java |  2 +-
- .../lazytestprovider/CommandlineTest.java     |  4 +-
+ .../lazytestprovider/CommandlineTest.java     |  4 +--
  .../report/DefaultReporterFactoryTest.java    |  2 +-
- .../report/StatelessXmlReporterTest.java      |  6 +--
+ .../report/StatelessXmlReporterTest.java      |  6 ++--
  .../surefire/report/TestSetStatsTest.java     |  2 +-
  .../StatelessTestsetInfoReporterTest.java     |  2 +-
  .../report/ConsoleOutputFileReporterTest.java |  2 +-
- maven-surefire-report-plugin/pom.xml          | 31 +++++++++-------
- pom.xml                                       |  1 -
- surefire-api/pom.xml                          | 18 ++++++---
+ maven-surefire-report-plugin/pom.xml          | 21 +++++++++---
+ pom.xml                                       | 17 ----------
+ surefire-api/pom.xml                          | 17 +++++++---
  .../maven/surefire/api/booter/Command.java    |  2 +-
  .../api/filter/SpecificTestClassFilter.java   |  2 +-
  .../api/report/CategorizedReportEntry.java    |  2 +-
  .../report/LegacyPojoStackTraceWriter.java    |  2 +-
  .../api/stream/AbstractStreamDecoder.java     |  2 +-
- .../surefire/api/testset/ResolvedTest.java    | 14 +++----
- .../api/testset/TestListResolver.java         | 10 ++---
- .../api/util/DefaultDirectoryScanner.java     |  4 +-
+ .../surefire/api/testset/ResolvedTest.java    | 14 ++++----
+ .../api/testset/TestListResolver.java         | 10 +++---
+ .../api/util/DefaultDirectoryScanner.java     |  4 +--
  .../api/util/internal/ClassMethod.java        |  2 +-
- .../api/util/internal/ObjectUtils.java        |  4 +-
- .../api/util/internal/ObjectUtilsTest.java    |  4 +-
- surefire-booter/pom.xml                       | 28 +++++++++++---
- .../maven/surefire/booter/CommandReader.java  |  4 +-
+ .../api/util/internal/ObjectUtils.java        |  4 +--
+ .../api/util/internal/ObjectUtilsTest.java    |  4 +--
+ surefire-booter/pom.xml                       | 27 ++++++++++++---
+ .../maven/surefire/booter/CommandReader.java  |  4 +--
  .../maven/surefire/booter/ForkedBooter.java   |  2 +-
- .../maven/surefire/booter/PpidChecker.java    | 10 ++---
+ .../maven/surefire/booter/PpidChecker.java    | 10 +++---
  .../surefire/booter/ProcessCheckerType.java   |  2 +-
  .../surefire/booter/PropertiesWrapper.java    |  2 +-
  .../booter/SurefireBooterForkException.java   |  2 +-
- .../maven/surefire/booter/SystemUtils.java    | 14 +++----
+ .../maven/surefire/booter/SystemUtils.java    | 14 ++++----
  .../booter/stream/CommandDecoder.java         |  2 +-
  .../surefire/booter/ForkedBooterMockTest.java |  2 +-
  .../booter/IsolatedClassLoaderTest.java       |  2 +-
  .../surefire/booter/NewClassLoaderRunner.java |  2 +-
- .../surefire/booter/PpidCheckerTest.java      |  4 +-
- .../surefire/booter/SystemUtilsTest.java      | 12 +++---
- surefire-extensions-api/pom.xml               | 14 ++++---
+ .../surefire/booter/PpidCheckerTest.java      |  4 +--
+ .../surefire/booter/SystemUtilsTest.java      | 12 +++----
+ surefire-extensions-api/pom.xml               | 13 +++++---
  .../extensions/ConsoleOutputReporter.java     |  2 +-
  .../extensions/StatelessReporter.java         |  2 +-
- .../extensions/util/CommandlineExecutor.java  |  8 ++--
- .../extensions/CommandlineExecutorTest.java   |  4 +-
- surefire-grouper/pom.xml                      |  4 +-
- surefire-its/pom.xml                          | 10 -----
- surefire-providers/common-java5/pom.xml       |  5 +--
- .../report/SmartStackTraceParser.java         |  4 +-
- surefire-providers/common-junit4/pom.xml      |  9 ++---
+ .../extensions/util/CommandlineExecutor.java  |  8 ++---
+ .../extensions/CommandlineExecutorTest.java   |  4 +--
+ surefire-grouper/pom.xml                      |  4 +--
+ surefire-its/pom.xml                          | 10 ------
+ surefire-providers/common-java5/pom.xml       |  4 +--
+ .../report/SmartStackTraceParser.java         |  4 +--
+ surefire-providers/common-junit4/pom.xml      |  8 ++---
  .../junit4/JUnit4RunListenerFactory.java      |  2 +-
- surefire-providers/common-junit48/pom.xml     |  9 ++---
+ surefire-providers/common-junit48/pom.xml     |  8 ++---
  .../common/junit48/FilterFactory.java         |  2 +-
  .../common/junit48/FilterFactoryTest.java     |  2 +-
- .../surefire-junit-platform/pom.xml           | 17 +++++++--
- .../junitplatform/JUnitPlatformProvider.java  |  4 +-
+ .../surefire-junit-platform/pom.xml           | 18 +++++++---
+ .../junitplatform/JUnitPlatformProvider.java  |  4 +--
  .../junitplatform/RunListenerAdapter.java     |  2 +-
- surefire-providers/surefire-junit3/pom.xml    | 11 +++---
- .../surefire/junit/JUnitTestSetTest.java      |  4 +-
- surefire-providers/surefire-testng/pom.xml    |  9 ++---
+ surefire-providers/surefire-junit3/pom.xml    | 10 +++---
+ .../surefire/junit/JUnitTestSetTest.java      |  4 +--
+ surefire-providers/surefire-testng/pom.xml    |  8 ++---
  .../testng/TestNGDirectoryTestSuite.java      |  2 +-
  .../maven/surefire/testng/TestNGExecutor.java |  2 +-
  surefire-report-parser/pom.xml                |  5 +++
- 90 files changed, 282 insertions(+), 258 deletions(-)
+ surefire-shadefire/pom.xml                    |  1 -
+ 93 files changed, 289 insertions(+), 310 deletions(-)
 
 diff --git a/maven-failsafe-plugin/pom.xml b/maven-failsafe-plugin/pom.xml
-index 0d371c294..4332be577 100644
+index dc71f83ad..480a18dc1 100644
 --- a/maven-failsafe-plugin/pom.xml
 +++ b/maven-failsafe-plugin/pom.xml
-@@ -45,6 +45,14 @@
-   </properties>
- 
-   <dependencies>
+@@ -49,7 +49,14 @@
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-simple</artifactId>
+     </dependency>
+-
 +    <dependency>
 +      <groupId>org.apache.commons</groupId>
 +      <artifactId>commons-lang3</artifactId>
@@ -115,14 +119,13 @@ index 0d371c294..4332be577 100644
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
        <artifactId>surefire-api</artifactId>
-@@ -60,24 +68,11 @@
+@@ -65,23 +72,11 @@
        <artifactId>surefire-extensions-api</artifactId>
        <version>${project.version}</version>
      </dependency>
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${project.version}</version>
 -    </dependency>
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
@@ -140,7 +143,7 @@ index 0d371c294..4332be577 100644
      <dependency>
        <groupId>org.apache.maven</groupId>
        <artifactId>maven-plugin-api</artifactId>
-@@ -108,11 +103,6 @@
+@@ -123,11 +118,6 @@
        <artifactId>mockito-core</artifactId>
        <scope>test</scope>
      </dependency>
@@ -153,11 +156,11 @@ index 0d371c294..4332be577 100644
  
    <build>
 diff --git a/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/VerifyMojo.java b/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/VerifyMojo.java
-index cef6391ec..546d963e8 100644
+index e53f4073e..727b667cb 100644
 --- a/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/VerifyMojo.java
 +++ b/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/VerifyMojo.java
-@@ -39,8 +39,8 @@
- import org.codehaus.plexus.logging.Logger;
+@@ -40,8 +40,8 @@
+ import org.slf4j.LoggerFactory;
  
  import static org.apache.maven.plugin.surefire.SurefireHelper.reportExecution;
 +import static org.apache.maven.shared.utils.StringUtils.capitalizeFirstLetter;
@@ -167,10 +170,10 @@ index cef6391ec..546d963e8 100644
  /**
   * Verify integration tests ran using Failsafe.
 diff --git a/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/util/FailsafeSummaryXmlUtils.java b/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/util/FailsafeSummaryXmlUtils.java
-index fac986b39..bd50a01d2 100644
+index e72d34fcf..e83dbf581 100644
 --- a/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/util/FailsafeSummaryXmlUtils.java
 +++ b/maven-failsafe-plugin/src/main/java/org/apache/maven/plugin/failsafe/util/FailsafeSummaryXmlUtils.java
-@@ -39,9 +39,9 @@
+@@ -40,9 +40,9 @@
  import static java.lang.String.format;
  import static java.nio.charset.StandardCharsets.UTF_8;
  import static javax.xml.xpath.XPathConstants.NODE;
@@ -184,13 +187,14 @@ index fac986b39..bd50a01d2 100644
  /**
   * @author <a href="mailto:tibordigana@apache.org">Tibor Digana (tibor17)</a>
 diff --git a/maven-surefire-common/pom.xml b/maven-surefire-common/pom.xml
-index eb1d57549..547acb951 100644
+index aba5a859b..58ed7a692 100644
 --- a/maven-surefire-common/pom.xml
 +++ b/maven-surefire-common/pom.xml
-@@ -32,6 +32,28 @@
-   <description>API used in Surefire and Failsafe MOJO.</description>
- 
-   <dependencies>
+@@ -36,7 +36,28 @@
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-simple</artifactId>
+     </dependency>
+-
 +    <dependency>
 +      <groupId>org.powermock</groupId>
 +      <artifactId>powermock-reflect</artifactId>
@@ -216,24 +220,18 @@ index eb1d57549..547acb951 100644
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
        <artifactId>surefire-api</artifactId>
-@@ -113,16 +135,6 @@
-       <artifactId>org.eclipse.sisu.plexus</artifactId>
+@@ -123,10 +144,6 @@
+       <artifactId>jansi</artifactId>
        <scope>provided</scope>
      </dependency>
 -    <dependency>
--      <groupId>org.fusesource.jansi</groupId>
--      <artifactId>jansi</artifactId>
--      <scope>provided</scope>
--    </dependency>
--    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${surefire-shared-utils.version}</version>
 -    </dependency>
      <dependency>
        <groupId>com.google.code.findbugs</groupId>
        <artifactId>jsr305</artifactId>
-@@ -154,11 +166,6 @@
+@@ -170,11 +187,6 @@
        <classifier>runtime</classifier>
        <scope>test</scope>
      </dependency>
@@ -246,7 +244,7 @@ index eb1d57549..547acb951 100644
        <groupId>commons-io</groupId>
        <artifactId>commons-io</artifactId>
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/AbstractSurefireMojo.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/AbstractSurefireMojo.java
-index 67e0cb60f..3d082d6e8 100644
+index b783d73be..60bb2fec4 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/AbstractSurefireMojo.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/AbstractSurefireMojo.java
 @@ -81,6 +81,7 @@
@@ -257,7 +255,7 @@ index 67e0cb60f..3d082d6e8 100644
  import org.apache.maven.surefire.api.booter.ProviderParameterNames;
  import org.apache.maven.surefire.api.booter.Shutdown;
  import org.apache.maven.surefire.api.cli.CommandLineOption;
-@@ -110,7 +111,6 @@
+@@ -111,7 +112,6 @@
  import org.apache.maven.surefire.providerapi.ProviderDetector;
  import org.apache.maven.surefire.providerapi.ProviderInfo;
  import org.apache.maven.surefire.providerapi.ProviderRequirements;
@@ -265,7 +263,7 @@ index 67e0cb60f..3d082d6e8 100644
  import org.apache.maven.toolchain.DefaultToolchain;
  import org.apache.maven.toolchain.Toolchain;
  import org.apache.maven.toolchain.ToolchainManager;
-@@ -129,12 +129,22 @@
+@@ -131,12 +131,22 @@
  import static java.util.Collections.emptyList;
  import static java.util.Collections.singletonList;
  import static java.util.Collections.singletonMap;
@@ -288,7 +286,7 @@ index 67e0cb60f..3d082d6e8 100644
  import static org.apache.maven.surefire.api.booter.ProviderParameterNames.EXCLUDE_JUNIT5_ENGINES_PROP;
  import static org.apache.maven.surefire.api.booter.ProviderParameterNames.INCLUDE_JUNIT5_ENGINES_PROP;
  import static org.apache.maven.surefire.api.suite.RunResult.failure;
-@@ -145,16 +155,6 @@
+@@ -147,16 +157,6 @@
  import static org.apache.maven.surefire.booter.SystemUtils.isJava9AtLeast;
  import static org.apache.maven.surefire.booter.SystemUtils.toJdkHomeFromJvmExec;
  import static org.apache.maven.surefire.booter.SystemUtils.toJdkVersionFromReleaseFile;
@@ -305,11 +303,38 @@ index 67e0cb60f..3d082d6e8 100644
  
  /**
   * Abstract base class for running tests using Surefire.
+@@ -1874,7 +1874,6 @@ private StartupConfiguration newStartupConfigWithClasspath(
+             getApiArtifact(),
+             getSpiArtifact(),
+             getLoggerApiArtifact(),
+-            getSurefireSharedUtilsArtifact()
+         };
+         Set<Artifact> inProcArtifacts = retainInProcArtifactsUnique(providerArtifacts, additionalInProcArtifacts);
+         Classpath inProcClasspath = createInProcClasspath(providerClasspath, inProcArtifacts);
+@@ -1997,7 +1996,6 @@ private StartupConfiguration newStartupConfigWithModularPath(
+             getApiArtifact(),
+             getSpiArtifact(),
+             getLoggerApiArtifact(),
+-            getSurefireSharedUtilsArtifact()
+         };
+         Set<Artifact> inProcArtifacts = retainInProcArtifactsUnique(providerArtifacts, additionalInProcArtifacts);
+         Classpath inProcClasspath = createInProcClasspath(providerClasspath, inProcArtifacts);
+@@ -2041,10 +2039,6 @@ private Artifact getApiArtifact() {
+         return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-api");
+     }
+ 
+-    private Artifact getSurefireSharedUtilsArtifact() {
+-        return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-shared-utils");
+-    }
+-
+     private Artifact getLoggerApiArtifact() {
+         return getPluginArtifactMap().get("org.apache.maven.surefire:surefire-logger-api");
+     }
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java
-index 89e6614f3..bffeb11af 100644
+index cd805c7c7..ef11bab33 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/StartupReportConfiguration.java
-@@ -41,10 +41,10 @@
+@@ -42,10 +42,10 @@
  import org.apache.maven.surefire.extensions.StatelessTestsetInfoFileReportEventListener;
  
  import static java.nio.charset.StandardCharsets.UTF_8;
@@ -321,6 +346,18 @@ index 89e6614f3..bffeb11af 100644
  
  /**
   * All the parameters used to construct reporters
+diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireDependencyResolver.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireDependencyResolver.java
+index 46739e347..85dd3e99a 100644
+--- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireDependencyResolver.java
++++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireDependencyResolver.java
+@@ -78,7 +78,6 @@ class SurefireDependencyResolver {
+         "surefire-junit-platform",
+         "surefire-api",
+         "surefire-logger-api",
+-        "surefire-shared-utils",
+         "common-java5",
+         "common-junit3",
+         "common-junit4",
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireHelper.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireHelper.java
 index 6285506c7..ab0628d9f 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/SurefireHelper.java
@@ -535,7 +572,7 @@ index f6645e6ca..325b49719 100644
  /**
   * Base class for console reporters.
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactory.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactory.java
-index cde479eac..1984912e2 100644
+index f95c061ab..e738088a4 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactory.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactory.java
 @@ -31,6 +31,7 @@
@@ -591,7 +628,7 @@ index fb54edaeb..aebd48e01 100644
  /**
   * Utils class for file-based reporters
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
-index 7724b1210..ef6a5e9d2 100644
+index d658737ce..d46779f71 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/StatelessXmlReporter.java
 @@ -36,18 +36,18 @@
@@ -636,7 +673,7 @@ index 1431d8fde..e29e4275d 100644
  /**
   * Maintains per-thread test result state. Not thread safe.
 diff --git a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/WrappedReportEntry.java b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/WrappedReportEntry.java
-index f661a003f..f88fbe6fb 100644
+index c443d27cb..1b8657892 100644
 --- a/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/WrappedReportEntry.java
 +++ b/maven-surefire-common/src/main/java/org/apache/maven/plugin/surefire/report/WrappedReportEntry.java
 @@ -31,8 +31,8 @@
@@ -708,8 +745,84 @@ index 0bfc1e26b..f03a83d7a 100644
  
  /**
   *
+diff --git a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoJava7PlusTest.java b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoJava7PlusTest.java
+index 39007de0d..4fa30a81c 100644
+--- a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoJava7PlusTest.java
++++ b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoJava7PlusTest.java
+@@ -199,16 +199,6 @@ public void shouldHaveStartupConfigForModularClasspath() throws Exception {
+                 "org.apache.maven.surefire", "surefire-booter", createFromVersion("1"), "runtime", "jar", "", handler);
+         booter.setFile(mockFile("surefire-booter.jar"));
+ 
+-        Artifact utils = new DefaultArtifact(
+-                "org.apache.maven.surefire",
+-                "surefire-shared-utils",
+-                createFromVersion("1"),
+-                "runtime",
+-                "jar",
+-                "",
+-                handler);
+-        utils.setFile(mockFile("surefire-shared-utils.jar"));
+-
+         Map<String, Artifact> artifacts = new HashMap<>();
+         artifacts.put("org.apache.maven.surefire:maven-surefire-common", common);
+         artifacts.put("org.apache.maven.surefire:surefire-extensions-api", ext);
+@@ -216,7 +206,6 @@ public void shouldHaveStartupConfigForModularClasspath() throws Exception {
+         artifacts.put("org.apache.maven.surefire:surefire-logger-api", loggerApi);
+         artifacts.put("org.apache.maven.surefire:surefire-extensions-spi", spi);
+         artifacts.put("org.apache.maven.surefire:surefire-booter", booter);
+-        artifacts.put("org.apache.maven.surefire:surefire-shared-utils", utils);
+         when(mojo.getPluginArtifactMap()).thenReturn(artifacts);
+ 
+         ProviderInfo providerInfo = mock(ProviderInfo.class);
+@@ -259,8 +248,8 @@ public void shouldHaveStartupConfigForModularClasspath() throws Exception {
+                         "test(compact) classpath:  non-modular.jar  junit.jar  hamcrest.jar",
+                         "test(compact) modulepath:  modular.jar  classes",
+                         "provider(compact) classpath:  surefire-provider.jar",
+-                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar",
+-                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar");
++                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar",
++                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar");
+ 
+         assertThat(conf).isNotNull();
+         assertThat(conf.isShadefire()).isFalse();
+@@ -369,16 +358,6 @@ public void shouldHaveStartupConfigForModularClasspathAndTestDescriptor() throws
+                 "org.apache.maven.surefire", "surefire-booter", createFromVersion("1"), "runtime", "jar", "", handler);
+         booter.setFile(mockFile("surefire-booter.jar"));
+ 
+-        Artifact utils = new DefaultArtifact(
+-                "org.apache.maven.surefire",
+-                "surefire-shared-utils",
+-                createFromVersion("1"),
+-                "runtime",
+-                "jar",
+-                "",
+-                handler);
+-        utils.setFile(mockFile("surefire-shared-utils.jar"));
+-
+         Map<String, Artifact> artifacts = new HashMap<>();
+         artifacts.put("org.apache.maven.surefire:maven-surefire-common", common);
+         artifacts.put("org.apache.maven.surefire:surefire-extensions-api", ext);
+@@ -386,7 +365,6 @@ public void shouldHaveStartupConfigForModularClasspathAndTestDescriptor() throws
+         artifacts.put("org.apache.maven.surefire:surefire-logger-api", loggerApi);
+         artifacts.put("org.apache.maven.surefire:surefire-extensions-spi", spi);
+         artifacts.put("org.apache.maven.surefire:surefire-booter", booter);
+-        artifacts.put("org.apache.maven.surefire:surefire-shared-utils", utils);
+         when(mojo.getPluginArtifactMap()).thenReturn(artifacts);
+ 
+         ProviderInfo providerInfo = mock(ProviderInfo.class);
+@@ -417,8 +395,8 @@ public void shouldHaveStartupConfigForModularClasspathAndTestDescriptor() throws
+                         "test(compact) classpath:",
+                         "test(compact) modulepath:  test-classes  classes  modular.jar  non-modular.jar  junit.jar  hamcrest.jar",
+                         "provider(compact) classpath:  surefire-provider.jar",
+-                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar",
+-                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar");
++                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar",
++                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar");
+ 
+         assertThat(conf).isNotNull();
+         assertThat(conf.isShadefire()).isFalse();
 diff --git a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoTest.java b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoTest.java
-index 1af67c838..da890b8e5 100644
+index c2967b534..eccf65741 100644
 --- a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoTest.java
 +++ b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/AbstractSurefireMojoTest.java
 @@ -91,12 +91,12 @@
@@ -728,8 +841,77 @@ index 1af67c838..da890b8e5 100644
  import static org.assertj.core.api.Assertions.assertThat;
  import static org.codehaus.plexus.languages.java.jpms.ModuleNameSource.MODULEDESCRIPTOR;
  import static org.mockito.ArgumentMatchers.any;
+@@ -478,16 +478,6 @@ public void shouldHaveStartupConfigForNonModularClasspath() throws Exception {
+                 "org.apache.maven.surefire", "surefire-booter", createFromVersion("1"), "runtime", "jar", "", handler);
+         booter.setFile(mockFile("surefire-booter.jar"));
+ 
+-        Artifact utils = new DefaultArtifact(
+-                "org.apache.maven.surefire",
+-                "surefire-shared-utils",
+-                createFromVersion("1"),
+-                "runtime",
+-                "jar",
+-                "",
+-                handler);
+-        utils.setFile(mockFile("surefire-shared-utils.jar"));
+-
+         Map<String, Artifact> providerArtifactsMap = new HashMap<>();
+         providerArtifactsMap.put("org.apache.maven.surefire:maven-surefire-common", common);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-extensions-api", ext);
+@@ -495,7 +485,6 @@ public void shouldHaveStartupConfigForNonModularClasspath() throws Exception {
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-logger-api", loggerApi);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-extensions-spi", spi);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-booter", booter);
+-        providerArtifactsMap.put("org.apache.maven.surefire:surefire-shared-utils", utils);
+ 
+         when(mojo.getPluginArtifactMap()).thenReturn(providerArtifactsMap);
+ 
+@@ -547,8 +536,8 @@ public void shouldHaveStartupConfigForNonModularClasspath() throws Exception {
+                         "provider classpath:  surefire-provider.jar",
+                         "test(compact) classpath:  test-classes  classes  junit.jar  hamcrest.jar",
+                         "provider(compact) classpath:  surefire-provider.jar",
+-                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar",
+-                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar  surefire-shared-utils.jar");
++                        "in-process classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar",
++                        "in-process(compact) classpath:  surefire-provider.jar  maven-surefire-common.jar  surefire-booter.jar  surefire-extensions-api.jar  surefire-api.jar  surefire-extensions-spi.jar  surefire-logger-api.jar");
+ 
+         assertThat(conf.getClassLoaderConfiguration()).isSameAs(classLoaderConfiguration);
+ 
+@@ -660,16 +649,6 @@ private StartupConfiguration startupConfigurationForProvider(ProviderInfo provid
+                 "org.apache.maven.surefire", "surefire-booter", createFromVersion("1"), "runtime", "jar", "", handler);
+         booter.setFile(mockFile("surefire-booter.jar"));
+ 
+-        Artifact utils = new DefaultArtifact(
+-                "org.apache.maven.surefire",
+-                "surefire-shared-utils",
+-                createFromVersion("1"),
+-                "runtime",
+-                "jar",
+-                "",
+-                handler);
+-        utils.setFile(mockFile("surefire-shared-utils.jar"));
+-
+         Map<String, Artifact> providerArtifactsMap = new HashMap<>();
+         providerArtifactsMap.put("org.apache.maven.surefire:maven-surefire-common", common);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-extensions-api", ext);
+@@ -677,7 +656,6 @@ private StartupConfiguration startupConfigurationForProvider(ProviderInfo provid
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-logger-api", loggerApi);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-extensions-spi", spi);
+         providerArtifactsMap.put("org.apache.maven.surefire:surefire-booter", booter);
+-        providerArtifactsMap.put("org.apache.maven.surefire:surefire-shared-utils", utils);
+ 
+         when(mojo.getPluginArtifactMap()).thenReturn(providerArtifactsMap);
+ 
+@@ -737,7 +715,6 @@ public void shouldCreateStartupConfigWithModularPath() throws Exception {
+         artifacts.put("org.apache.maven.surefire:surefire-logger-api", dummyArtifact);
+         artifacts.put("org.apache.maven.surefire:surefire-extensions-spi", dummyArtifact);
+         artifacts.put("org.apache.maven.surefire:surefire-booter", dummyArtifact);
+-        artifacts.put("org.apache.maven.surefire:surefire-shared-utils", dummyArtifact);
+         mojo.setPluginArtifactMap(artifacts);
+ 
+         ResolvePathResult resolvePathResult = mock(ResolvePathResult.class);
 diff --git a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/SurefireHelperTest.java b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/SurefireHelperTest.java
-index 88c609ea5..7b19ed64c 100644
+index a0d658946..ae2a3ba91 100644
 --- a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/SurefireHelperTest.java
 +++ b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/SurefireHelperTest.java
 @@ -37,9 +37,9 @@
@@ -836,7 +1018,7 @@ index c6d7330ca..de4bc121c 100644
  
          File forkDirectory = new File(basedir, "fork_1");
 diff --git a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/booterclient/ForkStarterTest.java b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/booterclient/ForkStarterTest.java
-index b16765038..c7fe40d99 100644
+index 6a774ace8..a315782e8 100644
 --- a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/booterclient/ForkStarterTest.java
 +++ b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/booterclient/ForkStarterTest.java
 @@ -29,6 +29,9 @@
@@ -849,7 +1031,7 @@ index b16765038..c7fe40d99 100644
  import org.apache.maven.plugin.surefire.StartupReportConfiguration;
  import org.apache.maven.plugin.surefire.SurefireProperties;
  import org.apache.maven.plugin.surefire.booterclient.lazytestprovider.AbstractCommandReader;
-@@ -53,9 +56,6 @@
+@@ -54,9 +57,6 @@
  import org.apache.maven.surefire.booter.StartupConfiguration;
  import org.apache.maven.surefire.booter.SurefireBooterForkException;
  import org.apache.maven.surefire.extensions.ForkNodeFactory;
@@ -909,17 +1091,18 @@ index 2ebcd3e85..e89f4dc85 100644
  
  /**
 diff --git a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactoryTest.java b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactoryTest.java
-index 484d71798..23e40892c 100644
+index 86c23c82a..ee4eef59d 100644
 --- a/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactoryTest.java
 +++ b/maven-surefire-common/src/test/java/org/apache/maven/plugin/surefire/report/DefaultReporterFactoryTest.java
-@@ -32,13 +32,13 @@
+@@ -32,6 +32,7 @@
  import org.apache.maven.plugin.surefire.extensions.SurefireStatelessTestsetInfoReporter;
  import org.apache.maven.plugin.surefire.log.api.ConsoleLogger;
  import org.apache.maven.plugin.surefire.report.DefaultReporterFactory.TestResultType;
 +import org.apache.maven.shared.utils.logging.MessageUtils;
+ import org.apache.maven.surefire.api.report.ReporterFactoryOptions;
  import org.apache.maven.surefire.api.report.SafeThrowable;
  import org.apache.maven.surefire.api.report.StackTraceWriter;
- import org.apache.maven.surefire.api.report.TestOutputReportEntry;
+@@ -39,7 +40,6 @@
  import org.apache.maven.surefire.api.report.TestReportListener;
  import org.apache.maven.surefire.api.suite.RunResult;
  import org.apache.maven.surefire.report.RunStatistics;
@@ -1001,7 +1184,7 @@ index ca9382fb5..9f671e5be 100644
  import static java.nio.charset.StandardCharsets.US_ASCII;
  import static org.apache.maven.surefire.api.report.RunMode.NORMAL_RUN;
 diff --git a/maven-surefire-report-plugin/pom.xml b/maven-surefire-report-plugin/pom.xml
-index 82a5f2a75..5dc8e20b3 100644
+index 1e1f21e94..4318ad92c 100644
 --- a/maven-surefire-report-plugin/pom.xml
 +++ b/maven-surefire-report-plugin/pom.xml
 @@ -50,6 +50,23 @@
@@ -1039,25 +1222,8 @@ index 82a5f2a75..5dc8e20b3 100644
      <dependency>
        <groupId>org.codehaus.plexus</groupId>
        <artifactId>plexus-i18n</artifactId>
-@@ -130,16 +143,6 @@
-       <artifactId>plexus-interpolation</artifactId>
-       <version>1.27</version>
-     </dependency>
--    <dependency>
--      <groupId>org.fusesource.jansi</groupId>
--      <artifactId>jansi</artifactId>
--      <scope>provided</scope>
--    </dependency>
--    <dependency>
--      <groupId>commons-io</groupId>
--      <artifactId>commons-io</artifactId>
--      <scope>test</scope>
--    </dependency>
-     <dependency>
-       <groupId>org.apache.maven.plugin-testing</groupId>
-       <artifactId>maven-plugin-testing-harness</artifactId>
 diff --git a/pom.xml b/pom.xml
-index 36fbdc5df..788342963 100644
+index 2737001ad..16e1fd4f4 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -48,7 +48,6 @@
@@ -1068,11 +1234,41 @@ index 36fbdc5df..788342963 100644
      <module>surefire-logger-api</module>
      <module>surefire-api</module>
      <module>surefire-extensions-api</module>
+@@ -290,11 +289,6 @@
+         <version>${jacocoVersion}</version>
+         <classifier>runtime</classifier>
+       </dependency>
+-      <dependency>
+-        <groupId>org.apache.maven.surefire</groupId>
+-        <artifactId>surefire-shared-utils</artifactId>
+-        <version>${project.version}</version>
+-      </dependency>
+     </dependencies>
+   </dependencyManagement>
+ 
+@@ -474,17 +468,6 @@
+   </reporting>
+ 
+   <profiles>
+-    <profile>
+-      <!-- First, install the project without tests -> mvn install -DskipTests
+-        This is a workaround for IntelliJ IDEA, see https://youtrack.jetbrains.com/issue/IDEA-148573
+-        IDEA is able to recognize external artifacts with classifiers. But IDEA expects modules and their artifacts
+-        without classifier. If the version differs from project, the idea would understand it as external artifact.
+-        -->
+-      <id>ide-development</id>
+-      <properties>
+-        <surefire-shared-utils.version>3-SNAPSHOT</surefire-shared-utils.version>
+-      </properties>
+-    </profile>
+     <profile>
+       <id>jdk9+</id>
+       <activation>
 diff --git a/surefire-api/pom.xml b/surefire-api/pom.xml
-index 0d93447b4..ecb4484af 100644
+index 68fbf7e10..ab5252f7a 100644
 --- a/surefire-api/pom.xml
 +++ b/surefire-api/pom.xml
-@@ -33,14 +33,22 @@
+@@ -33,13 +33,22 @@
  
    <dependencies>
      <dependency>
@@ -1094,7 +1290,6 @@ index 0d93447b4..ecb4484af 100644
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${surefire-shared-utils.version}</version>
 +      <artifactId>surefire-logger-api</artifactId>
 +      <version>${project.version}</version>
      </dependency>
@@ -1279,16 +1474,14 @@ index 9e1640b6a..1717b05c0 100644
  
  /**
 diff --git a/surefire-booter/pom.xml b/surefire-booter/pom.xml
-index 4a5b67947..c53610aa9 100644
+index 4a0c6c568..5d1c9cad8 100644
 --- a/surefire-booter/pom.xml
 +++ b/surefire-booter/pom.xml
-@@ -33,18 +33,36 @@
+@@ -32,6 +32,29 @@
+   <description>API and Facilities used by forked tests running in JVM sub-process.</description>
  
    <dependencies>
-     <dependency>
--      <groupId>org.apache.maven.surefire</groupId>
--      <artifactId>surefire-api</artifactId>
--      <version>${project.version}</version>
++    <dependency>
 +      <groupId>org.powermock</groupId>
 +      <artifactId>powermock-reflect</artifactId>
 +      <scope>test</scope>
@@ -1310,20 +1503,21 @@ index 4a5b67947..c53610aa9 100644
 +    <dependency>
 +      <groupId>org.apache.maven.shared</groupId>
 +      <artifactId>maven-shared-utils</artifactId>
-     </dependency>
++    </dependency>
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
--      <artifactId>surefire-extensions-spi</artifactId>
-+      <artifactId>surefire-api</artifactId>
+       <artifactId>surefire-api</artifactId>
+@@ -42,10 +65,6 @@
+       <artifactId>surefire-extensions-spi</artifactId>
        <version>${project.version}</version>
      </dependency>
-     <dependency>
-       <groupId>org.apache.maven.surefire</groupId>
+-    <dependency>
+-      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
-+      <artifactId>surefire-extensions-spi</artifactId>
-       <version>${project.version}</version>
-     </dependency>
+-    </dependency>
      <dependency>
+       <groupId>org.apache.maven.surefire</groupId>
+       <artifactId>surefire-logger-api</artifactId>
 diff --git a/surefire-booter/src/main/java/org/apache/maven/surefire/booter/CommandReader.java b/surefire-booter/src/main/java/org/apache/maven/surefire/booter/CommandReader.java
 index b1dba3bb5..2166eda1d 100644
 --- a/surefire-booter/src/main/java/org/apache/maven/surefire/booter/CommandReader.java
@@ -1566,7 +1760,7 @@ index 6752ba75b..9e2277916 100644
  import static org.junit.Assume.assumeTrue;
  import static org.mockito.Matchers.any;
 diff --git a/surefire-extensions-api/pom.xml b/surefire-extensions-api/pom.xml
-index a76ec0378..3796e3691 100644
+index 45a959160..b464ea738 100644
 --- a/surefire-extensions-api/pom.xml
 +++ b/surefire-extensions-api/pom.xml
 @@ -30,6 +30,15 @@
@@ -1585,18 +1779,17 @@ index a76ec0378..3796e3691 100644
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
        <artifactId>surefire-api</artifactId>
-@@ -47,11 +56,6 @@
+@@ -47,10 +56,6 @@
        <artifactId>jsr305</artifactId>
        <scope>provided</scope>
      </dependency>
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${surefire-shared-utils.version}</version>
 -    </dependency>
      <dependency>
-       <groupId>org.mockito</groupId>
-       <artifactId>mockito-core</artifactId>
+       <groupId>org.junit.jupiter</groupId>
+       <artifactId>junit-jupiter-api</artifactId>
 diff --git a/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/ConsoleOutputReporter.java b/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/ConsoleOutputReporter.java
 index 5f32f9b78..2129e8589 100644
 --- a/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/ConsoleOutputReporter.java
@@ -1611,7 +1804,7 @@ index 5f32f9b78..2129e8589 100644
  /**
   * Extension for logger.
 diff --git a/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/StatelessReporter.java b/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/StatelessReporter.java
-index 3cf833daa..9cde28fb4 100644
+index da330c02e..aebe45f23 100644
 --- a/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/StatelessReporter.java
 +++ b/surefire-extensions-api/src/main/java/org/apache/maven/surefire/extensions/StatelessReporter.java
 @@ -20,7 +20,7 @@
@@ -1644,7 +1837,7 @@ index 737fd5af1..9fa7ade79 100644
  /**
   * Programming model with this class:
 diff --git a/surefire-extensions-api/src/test/java/org/apache/maven/plugin/surefire/extensions/CommandlineExecutorTest.java b/surefire-extensions-api/src/test/java/org/apache/maven/plugin/surefire/extensions/CommandlineExecutorTest.java
-index 1443947df..89960a02a 100644
+index d7d4946f9..8009dbf90 100644
 --- a/surefire-extensions-api/src/test/java/org/apache/maven/plugin/surefire/extensions/CommandlineExecutorTest.java
 +++ b/surefire-extensions-api/src/test/java/org/apache/maven/plugin/surefire/extensions/CommandlineExecutorTest.java
 @@ -21,17 +21,17 @@
@@ -1658,9 +1851,9 @@ index 1443947df..89960a02a 100644
  import org.apache.maven.surefire.extensions.util.CountdownCloseable;
  import org.apache.maven.surefire.extensions.util.LineConsumerThread;
 -import org.apache.maven.surefire.shared.utils.cli.Commandline;
- import org.junit.After;
- import org.junit.Before;
- import org.junit.Test;
+ import org.junit.jupiter.api.AfterEach;
+ import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.Test;
  
 -import static org.apache.maven.surefire.shared.lang3.SystemUtils.IS_OS_WINDOWS;
 +import static org.apache.commons.lang3.SystemUtils.IS_OS_WINDOWS;
@@ -1668,10 +1861,10 @@ index 1443947df..89960a02a 100644
  import static org.assertj.core.util.Files.delete;
  import static org.mockito.ArgumentMatchers.contains;
 diff --git a/surefire-grouper/pom.xml b/surefire-grouper/pom.xml
-index d54fa0173..52d556dd1 100644
+index 75b2d4806..beea322c2 100644
 --- a/surefire-grouper/pom.xml
 +++ b/surefire-grouper/pom.xml
-@@ -34,9 +34,9 @@
+@@ -47,9 +47,9 @@
    <build>
      <plugins>
        <plugin>
@@ -1684,10 +1877,10 @@ index d54fa0173..52d556dd1 100644
            <dependency>
              <groupId>net.java.dev.javacc</groupId>
 diff --git a/surefire-its/pom.xml b/surefire-its/pom.xml
-index ffc745302..fb062b322 100644
+index 2f1ddd83e..b80682ece 100644
 --- a/surefire-its/pom.xml
 +++ b/surefire-its/pom.xml
-@@ -58,21 +58,11 @@
+@@ -60,21 +60,11 @@
        <artifactId>hamcrest</artifactId>
        <scope>test</scope>
      </dependency>
@@ -1710,21 +1903,20 @@ index ffc745302..fb062b322 100644
        <groupId>org.apache.maven.shared</groupId>
        <artifactId>maven-shared-utils</artifactId>
 diff --git a/surefire-providers/common-java5/pom.xml b/surefire-providers/common-java5/pom.xml
-index 93534cfe5..55f2d6b75 100644
+index 0d4ca40f4..8ec44b0c0 100644
 --- a/surefire-providers/common-java5/pom.xml
 +++ b/surefire-providers/common-java5/pom.xml
-@@ -33,9 +33,8 @@
+@@ -33,8 +33,8 @@
  
    <dependencies>
      <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${surefire-shared-utils.version}</version>
 +      <groupId>org.apache.maven.shared</groupId>
 +      <artifactId>maven-shared-utils</artifactId>
      </dependency>
-   </dependencies>
  
+     <dependency>
 diff --git a/surefire-providers/common-java5/src/main/java/org/apache/maven/surefire/report/SmartStackTraceParser.java b/surefire-providers/common-java5/src/main/java/org/apache/maven/surefire/report/SmartStackTraceParser.java
 index e5c66dde8..171d267f1 100644
 --- a/surefire-providers/common-java5/src/main/java/org/apache/maven/surefire/report/SmartStackTraceParser.java
@@ -1741,7 +1933,7 @@ index e5c66dde8..171d267f1 100644
  /**
   * @author Kristian Rosenvold
 diff --git a/surefire-providers/common-junit4/pom.xml b/surefire-providers/common-junit4/pom.xml
-index 848fbd45e..1fe45e32f 100644
+index 663e0e4c3..8586a3f6c 100644
 --- a/surefire-providers/common-junit4/pom.xml
 +++ b/surefire-providers/common-junit4/pom.xml
 @@ -32,6 +32,10 @@
@@ -1755,14 +1947,13 @@ index 848fbd45e..1fe45e32f 100644
      <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>
-@@ -43,11 +47,6 @@
+@@ -43,10 +47,6 @@
        <artifactId>surefire-logger-api</artifactId>
        <version>${project.version}</version>
      </dependency>
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${project.version}</version>
 -    </dependency>
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
@@ -1781,10 +1972,10 @@ index b0a74a4f7..26be9beac 100644
  /**
   * @author Kristian Rosenvold
 diff --git a/surefire-providers/common-junit48/pom.xml b/surefire-providers/common-junit48/pom.xml
-index bac3c870d..e53e9e9ef 100644
+index e12469612..331d9e804 100644
 --- a/surefire-providers/common-junit48/pom.xml
 +++ b/surefire-providers/common-junit48/pom.xml
-@@ -32,17 +32,16 @@
+@@ -32,16 +32,16 @@
    <description>Shared JUnit48 Provider Code</description>
  
    <dependencies>
@@ -1801,7 +1992,6 @@ index bac3c870d..e53e9e9ef 100644
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${project.version}</version>
 -    </dependency>
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
@@ -1838,10 +2028,10 @@ index ddb772ae6..679ef712a 100644
  import org.junit.runner.Description;
  import org.junit.runner.JUnitCore;
 diff --git a/surefire-providers/surefire-junit-platform/pom.xml b/surefire-providers/surefire-junit-platform/pom.xml
-index b850fc855..b859011d6 100644
+index c40f1ec07..b056e5627 100644
 --- a/surefire-providers/surefire-junit-platform/pom.xml
 +++ b/surefire-providers/surefire-junit-platform/pom.xml
-@@ -85,13 +85,22 @@
+@@ -78,13 +78,23 @@
  
    <dependencies>
      <dependency>
@@ -1865,11 +2055,12 @@ index b850fc855..b859011d6 100644
        <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
 +      <artifactId>common-java5</artifactId>
-       <version>${project.version}</version>
++      <version>${project.version}</version>
      </dependency>
      <dependency>
+       <groupId>org.junit.platform</groupId>
 diff --git a/surefire-providers/surefire-junit-platform/src/main/java/org/apache/maven/surefire/junitplatform/JUnitPlatformProvider.java b/surefire-providers/surefire-junit-platform/src/main/java/org/apache/maven/surefire/junitplatform/JUnitPlatformProvider.java
-index 5e8255490..684a28f3c 100644
+index 416c38a38..683af9ec0 100644
 --- a/surefire-providers/surefire-junit-platform/src/main/java/org/apache/maven/surefire/junitplatform/JUnitPlatformProvider.java
 +++ b/surefire-providers/surefire-junit-platform/src/main/java/org/apache/maven/surefire/junitplatform/JUnitPlatformProvider.java
 @@ -30,6 +30,7 @@
@@ -1888,7 +2079,7 @@ index 5e8255490..684a28f3c 100644
  import org.junit.platform.engine.DiscoverySelector;
  import org.junit.platform.engine.Filter;
  import org.junit.platform.launcher.EngineFilter;
-@@ -55,6 +55,7 @@
+@@ -56,6 +56,7 @@
  import static java.util.Optional.of;
  import static java.util.logging.Level.WARNING;
  import static java.util.stream.Collectors.toList;
@@ -1896,7 +2087,7 @@ index 5e8255490..684a28f3c 100644
  import static org.apache.maven.surefire.api.booter.ProviderParameterNames.EXCLUDE_JUNIT5_ENGINES_PROP;
  import static org.apache.maven.surefire.api.booter.ProviderParameterNames.INCLUDE_JUNIT5_ENGINES_PROP;
  import static org.apache.maven.surefire.api.booter.ProviderParameterNames.TESTNG_EXCLUDEDGROUPS_PROP;
-@@ -64,7 +65,6 @@
+@@ -65,7 +66,6 @@
  import static org.apache.maven.surefire.api.report.RunMode.RERUN_TEST_AFTER_FAILURE;
  import static org.apache.maven.surefire.api.testset.TestListResolver.optionallyWildcardFilter;
  import static org.apache.maven.surefire.api.util.TestsToRun.fromClass;
@@ -1919,7 +2110,7 @@ index 7ae8cc79d..094aaafe8 100644
  
  /**
 diff --git a/surefire-providers/surefire-junit3/pom.xml b/surefire-providers/surefire-junit3/pom.xml
-index 46ff2001d..b1a09e407 100644
+index 0db3383ed..51bd1d591 100644
 --- a/surefire-providers/surefire-junit3/pom.xml
 +++ b/surefire-providers/surefire-junit3/pom.xml
 @@ -32,6 +32,11 @@
@@ -1934,14 +2125,13 @@ index 46ff2001d..b1a09e407 100644
      <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>
-@@ -48,12 +53,6 @@
+@@ -48,11 +53,6 @@
        <artifactId>common-java5</artifactId>
        <version>${project.version}</version>
      </dependency>
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${project.version}</version>
 -      <scope>test</scope>
 -    </dependency>
    </dependencies>
@@ -1963,10 +2153,10 @@ index 35979a1ec..1824cb983 100644
  /**
   *
 diff --git a/surefire-providers/surefire-testng/pom.xml b/surefire-providers/surefire-testng/pom.xml
-index 72ac6bad5..e186ac796 100644
+index df68dc121..e6062580c 100644
 --- a/surefire-providers/surefire-testng/pom.xml
 +++ b/surefire-providers/surefire-testng/pom.xml
-@@ -32,17 +32,16 @@
+@@ -32,6 +32,10 @@
    <description>Surefire TestNG Runner</description>
  
    <dependencies>
@@ -1977,13 +2167,13 @@ index 72ac6bad5..e186ac796 100644
      <dependency>
        <groupId>junit</groupId>
        <artifactId>junit</artifactId>
-       <version>3.8.2</version>
-       <scope>provided</scope>
+@@ -43,10 +47,6 @@
+       <artifactId>assertj-core</artifactId>
+       <scope>test</scope>
      </dependency>
 -    <dependency>
 -      <groupId>org.apache.maven.surefire</groupId>
 -      <artifactId>surefire-shared-utils</artifactId>
--      <version>${project.version}</version>
 -    </dependency>
      <dependency>
        <groupId>org.apache.maven.surefire</groupId>
@@ -2020,21 +2210,33 @@ index 96e7170b9..e3662f43e 100644
  import org.apache.maven.surefire.testng.utils.FailFastEventsSingleton;
  import org.apache.maven.surefire.testng.utils.FailFastListener;
 diff --git a/surefire-report-parser/pom.xml b/surefire-report-parser/pom.xml
-index 0fb0f1bac..7b2f14a02 100644
+index 132a1e312..5a7348235 100644
 --- a/surefire-report-parser/pom.xml
 +++ b/surefire-report-parser/pom.xml
-@@ -32,6 +32,11 @@
-   <description>Parses report output files from surefire.</description>
+@@ -42,6 +42,11 @@
+       <artifactId>maven-shared-utils</artifactId>
+     </dependency>
  
-   <dependencies>
 +    <dependency>
 +      <groupId>org.hamcrest</groupId>
 +      <artifactId>hamcrest</artifactId>
 +      <scope>test</scope>
 +    </dependency>
      <dependency>
-       <groupId>org.apache.maven.surefire</groupId>
-       <artifactId>surefire-logger-api</artifactId>
+       <groupId>junit</groupId>
+       <artifactId>junit</artifactId>
+diff --git a/surefire-shadefire/pom.xml b/surefire-shadefire/pom.xml
+index 73dca095b..2178f2716 100644
+--- a/surefire-shadefire/pom.xml
++++ b/surefire-shadefire/pom.xml
+@@ -75,7 +75,6 @@
+             <configuration>
+               <artifactSet>
+                 <includes>
+-                  <include>org.apache.maven.surefire:surefire-shared-utils</include>
+                   <include>org.apache.maven.surefire:surefire-logger-api</include>
+                   <include>org.apache.maven.surefire:surefire-api</include>
+                   <include>org.apache.maven.surefire:surefire-extensions-spi</include>
 -- 
-2.47.0
+2.49.0
 

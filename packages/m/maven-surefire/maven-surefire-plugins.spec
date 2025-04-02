@@ -1,7 +1,7 @@
 #
 # spec file for package maven-surefire-plugins
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global base_name maven-surefire
 Name:           %{base_name}-plugins
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 Summary:        Test framework project
 License:        Apache-2.0 AND CPL-1.0
