@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Mar 29 15:25:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.1.1258:
+  * patch 9.1.1258: regexp: max \U and \%U value is limited by
+    INT_MAX
+  * patch 9.1.1257:
+    - Mixing vim_strsize() with mb_ptr2cells() in pum_redraw()
+    - runtime(lf): add lf r34 keywords to syntax script
+  * patch 9.1.1256:
+    - if_python: duplicate tuple data entries
+    - runtime(vim): Update base-syntax, match tuples
+  * patch 9.1.1255: missing test condition for 'pummaxwidth'
+    setting
+  * patch 9.1.1254: need more tests for the comment plugin
+  * patch 9.1.1253:
+    - abort when closing window with attached quickfix data
+    - runtime(doc): non-portable sed regex in Makefile for
+      pi_netrw.txt rule
+  * patch 9.1.1252: typos in code and docs related to 'diffopt'
+    "inline:"
+  * patch 9.1.1251: if_python: build error with tuples and dynamic
+    python
+  * patch 9.1.1250: cannot set the maximum popup menu width
+  * patch 9.1.1249:
+    - tests: no test that 'listchars' "eol" doesn't affect "gM"
+    - runtime(doc): group python interface related items in
+      todo.txt
+  * patch 9.1.1248: compile error when building without
+    FEAT_QUICKFIX
+  * patch 9.1.1247: fragile setup to get (preferred) keys from
+    key_name_entry
+  * patch 9.1.1246: coverity complains about some changes in
+    v9.1.1243
+  * patch 9.1.1245: need some more tests for curly braces
+    evaluation
+
+-------------------------------------------------------------------
 Thu Mar 27 08:35:04 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 9.1.1244:
