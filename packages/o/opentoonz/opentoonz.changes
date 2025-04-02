@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  1 23:45:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Use-system-TIFF.patch
+    (gh#opentoonz/opentoonz#5592, gh#opentoonz/opentoonz#4199)
+  * opentoonz-cmake4.patch
+- Update the _service file and tarball
+
+-------------------------------------------------------------------
 Mon Mar  3 08:42:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:

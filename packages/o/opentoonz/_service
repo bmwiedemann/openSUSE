@@ -4,9 +4,7 @@
         <param name="url">https://github.com/opentoonz/opentoonz</param>
         <param name="revision">v1.7.1</param>
         <param name="versionformat">1.7.1</param>
-        <!-- the openblas folder contains unredistributable files -->
         <param name="exclude">thirdparty/openblas</param>
-        <!-- more thirdparty dependencies we don't need -->
         <param name="exclude">thirdparty/Lz4</param>
         <param name="exclude">thirdparty/glew</param>
         <param name="exclude">thirdparty/glut</param>
@@ -16,7 +14,7 @@
         <param name="exclude">thirdparty/libpng-1.6.21</param>
         <param name="exclude">thirdparty/libusb</param>
         <param name="exclude">thirdparty/superlu</param>
-        <param name="exclude">thirdparty/tiff-4.0.3/lib</param>
+        <param name="exclude">thirdparty/tiff-4.0.3</param>
         <param name="exclude">thirdparty/zlib-1.2.8</param>
         <!-- thirdparty/lzo/driver is needed, but the 2.x subfolder can be dropped -->
         <param name="exclude">thirdparty/lzo/2.03</param>

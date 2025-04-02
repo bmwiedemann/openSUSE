@@ -1,0 +1,31 @@
+From 34f665351756840a244ee62086d423d9406baecd Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 2 Apr 2025 01:54:32 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ toonz/sources/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/toonz/sources/CMakeLists.txt b/toonz/sources/CMakeLists.txt
+index 397524c4..a56ebe82 100644
+--- a/toonz/sources/CMakeLists.txt
++++ b/toonz/sources/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8.11)
++cmake_minimum_required(VERSION 3.16)
+ 
+ set(CMAKE_BUILD_TYPE_INIT Release)
+ 
+@@ -187,7 +187,7 @@ elseif(BUILD_ENV_APPLE)
+     endif()
+ elseif(BUILD_ENV_UNIXLIKE)
+     # Needed for correct Qt detection
+-    cmake_minimum_required(VERSION 2.8.12)
++    cmake_minimum_required(VERSION 3.16)
+     set(PRELOAD_VARIABLE "LD_LIBRARY_PATH")
+     if(CMAKE_SYSTEM_NAME MATCHES "Linux")
+         add_definitions(-DLINUX)
+-- 
+2.49.0
+

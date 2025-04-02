@@ -33,6 +33,10 @@ Patch1:         0001-Fix-build-with-Werror-return-type.patch
 Patch2:         0001-Use-system-stdfx.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         opentoonz-glew_config_compat.patch
+# PATCH-FIX-UPSTREAM -- Use system TIFF
+Patch4:         0001-Use-system-TIFF.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         opentoonz-cmake4.patch
 BuildRequires:  boost-devel >= 1.55
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
@@ -82,23 +86,19 @@ ExclusiveArch:  %{ix86} x86_64 ppc64 ppc64le %{riscv}
 %autosetup -p1
 
 %build
-# NOTE: Third party dependencies are dropped from the tarball thanks to the
-# _service file. Only lzo/driver and tiff-4.0.3 shall be kept.
-
-# TODO upstream planning to replace custom thirdparty libs with system versions
-cd thirdparty/tiff-*
-export CFLAGS="%{optflags} -fPIC"
-%configure --disable-jbig
-%make_build
-cd -
+# NOTE: Most third party dependencies are dropped from the tarball. Only tinyexr
+# and lzodriver are kept
 
 cd toonz
 %define __sourcedir sources
+
+# FIXME: -DCMAKE_POLICY_VERSION_MINIMUM=3.5 is temporarily needed until dependencies build with cmake 4 (e.g. kissfft)
 %cmake \
   -DCMAKE_SKIP_RPATH:BOOL=ON \
   -DWITH_SYSTEM_LZO:BOOL=ON \
   -DWITH_SYSTEM_SUPERLU:BOOL=ON \
-  -DWITH_TRANSLATION:BOOL=OFF
+  -DWITH_TRANSLATION:BOOL=OFF \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 %cmake_build
 

@@ -234,4 +234,16 @@
   * 0001-Use-system-stdfx.patch</comment>
     <requestid>1250610</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>ce45fbb31d9030b229e0d2a6a9571999</srcmd5>
+    <version>1.7.1</version>
+    <time>1743606998</time>
+    <user>anag+factory</user>
+    <comment>- Add patches:
+  * 0001-Use-system-TIFF.patch
+    (gh#opentoonz/opentoonz#5592, gh#opentoonz/opentoonz#4199)
+  * opentoonz-cmake4.patch
+- Update the _service file and tarball</comment>
+    <requestid>1266343</requestid>
+  </revision>
 </revisionlist>

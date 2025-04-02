@@ -1,0 +1,302 @@
+From 8237b53909f5a5d64cd0069061aecceda4d4bf32 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Wed, 2 Apr 2025 01:34:05 +0200
+Subject: [PATCH 1/2] Use system TIFF
+
+Opentoonz developers take security lightly and still embed outdated 3rdparty libraries with countless security issues.
+
+Despite being asked to allow using system libraries for years [1], nothing was done.
+
+Consequently, Fedora changes will be used, at the cost of a slight feature loss [2]
+
+[1]
+https://github.com/opentoonz/opentoonz/issues/5592
+https://github.com/opentoonz/opentoonz/issues/4199
+
+[2] https://src.fedoraproject.org/rpms/opentoonz/tree/rawhide
+---
+ toonz/cmake/FindTIFF.cmake           |  46 ---------
+ toonz/sources/image/CMakeLists.txt   |  10 +-
+ toonz/sources/image/tif/tiio_tif.cpp | 137 ---------------------------
+ toonz/sources/image/tzp/tiio_tzp.cpp |   8 +-
+ 4 files changed, 6 insertions(+), 195 deletions(-)
+ delete mode 100644 toonz/cmake/FindTIFF.cmake
+
+diff --git a/toonz/cmake/FindTIFF.cmake b/toonz/cmake/FindTIFF.cmake
+deleted file mode 100644
+index b3db5fa0..00000000
+--- a/toonz/cmake/FindTIFF.cmake
++++ /dev/null
+@@ -1,46 +0,0 @@
+-# looks for libtiff(4.0.3 modified)
+-find_path(
+-    TIFF_INCLUDE_DIR
+-    NAMES
+-        tiffio.h
+-    HINTS
+-        ${SDKROOT}
+-    PATH_SUFFIXES
+-        tiff-4.0.3/libtiff/
+-# if mono or another framework with a tif library
+-# is installed, ignore it.
+-if(BUILD_ENV_APPLE)
+-    NO_DEFAULT_PATH
+-    NO_CMAKE_ENVIRONMENTPATH
+-    NO_CMAKE_PATH
+-endif()
+-)
+-
+-find_library(
+-    TIFF_LIBRARY
+-    NAMES
+-        libtiff.a
+-    HINTS
+-        ${SDKROOT}
+-    PATH_SUFFIXES
+-        tiff-4.0.3/libtiff/.libs
+-    NO_DEFAULT_PATH
+-)
+-
+-message("***** libtiff Header path:" ${TIFF_INCLUDE_DIR})
+-message("***** libtiff Library path:" ${TIFF_LIBRARY})
+-
+-set(TIFF_NAMES ${TIFF_NAMES} TIFF)
+-
+-include(FindPackageHandleStandardArgs)
+-FIND_PACKAGE_HANDLE_STANDARD_ARGS(TIFF
+-    DEFAULT_MSG TIFF_LIBRARY TIFF_INCLUDE_DIR)
+-
+-if(TIFF_FOUND)
+-    set(TIFF_LIBRARIES ${TIFF_LIBRARY})
+-endif()
+-
+-mark_as_advanced(
+-    TIFF_LIBRARY
+-    TIFF_INCLUDE_DIR
+-)
+diff --git a/toonz/sources/image/CMakeLists.txt b/toonz/sources/image/CMakeLists.txt
+index 87953ced..ee5ff9ce 100644
+--- a/toonz/sources/image/CMakeLists.txt
++++ b/toonz/sources/image/CMakeLists.txt
+@@ -72,7 +72,8 @@ if(NOT BUILD_TARGET_BSD)
+         tif/tiio_tif.cpp
+         tzp/tiio_plt.cpp
+         tzp/tiio_tzp.cpp
+-        tzp/toonzrle.cpp
++        # Removed since it requires libtiff internal API access.
++        # tzp/toonzrle.cpp
+         tzp/avl.c
+     )
+ endif()
+@@ -128,11 +129,6 @@ endif()
+ message("subdir: image")
+ message("Bin: " ${CMAKE_CURRENT_BINARY_DIR})
+ 
+-include_directories(
+-    SYSTEM
+-    ${TIFF_INCLUDE_DIR}
+-)
+-
+ if(NOT BUILD_TARGET_BSD)
+     include_directories(
+         ${SDKROOT}/LibJPEG/jpeg-9
+@@ -197,4 +193,4 @@ elseif(BUILD_ENV_UNIXLIKE)
+     endif()
+ endif()
+ 
+-target_link_libraries(image Qt5::Core Qt5::Gui Qt5::Network ${Z_LIB} ${GLUT_LIB} ${GL_LIB} ${JPEG_LIB} ${TIFF_LIB} ${PNG_LIB} ${EXTRA_LIBS})
++target_link_libraries(image Qt5::Core Qt5::Gui Qt5::Network ${Z_LIB} ${GLUT_LIB} ${GL_LIB} ${JPEG_LIB} TIFF::TIFF ${PNG_LIB} ${EXTRA_LIBS})
+diff --git a/toonz/sources/image/tif/tiio_tif.cpp b/toonz/sources/image/tif/tiio_tif.cpp
+index c9682f2f..ea38b126 100644
+--- a/toonz/sources/image/tif/tiio_tif.cpp
++++ b/toonz/sources/image/tif/tiio_tif.cpp
+@@ -65,7 +65,6 @@ public:
+ 
+   int skipLines(int lineCount) override;
+   void readLine(char *buffer, int x0, int x1, int shrink) override;
+-  void readLine(short *buffer, int x0, int x1, int shrink) override;
+ };
+ 
+ //------------------------------------------------------------
+@@ -422,145 +421,9 @@ int TifReader::skipLines(int lineCount) {
+ 
+ #include "timage_io.h"
+ 
+-void TifReader::readLine(short *buffer, int x0, int x1, int shrink) {
+-  assert(shrink > 0);
+-
+-  const int pixelSize = 8;
+-  int stripRowSize    = m_rowLength * pixelSize;
+-
+-  if (m_row < m_info.m_y0 || m_row > m_info.m_y1) {
+-    memset(buffer, 0, (x1 - x0 + 1) * pixelSize);
+-    m_row++;
+-    return;
+-  }
+-
+-  int stripIndex = m_row / m_rowsPerStrip;
+-  if (m_stripIndex != stripIndex) {
+-    // Retrieve the strip holding current row. Please, observe that
+-    // TIFF functions will return the strip buffer in the BOTTOM-UP orientation,
+-    // no matter the internal tif's orientation storage
+-
+-    m_stripIndex = stripIndex;
+-
+-    if (TIFFIsTiled(m_tiff)) {
+-      // Retrieve tiles size
+-      uint32 tileWidth = 0, tileHeight = 0;
+-      TIFFGetField(m_tiff, TIFFTAG_TILEWIDTH, &tileWidth);
+-      TIFFGetField(m_tiff, TIFFTAG_TILELENGTH, &tileHeight);
+-      assert(tileWidth > 0 && tileHeight > 0);
+-
+-      // Allocate a sufficient buffer to store a single tile
+-      int tileSize = tileWidth * tileHeight;
+-      std::unique_ptr<uint64[]> tile(new uint64[tileSize]);
+-
+-      int x = 0;
+-      int y = tileHeight * m_stripIndex;
+-
+-      // In case it's the last tiles row, the tile size might exceed the image
+-      // bounds
+-      int lastTy = std::min((int)tileHeight, m_info.m_ly - y);
+-
+-      // Traverse the tiles row
+-      while (x < m_info.m_lx) {
+-        int ret = TIFFReadRGBATile_64(m_tiff, x, y, tile.get());
+-        assert(ret);
+-
+-        int tileRowSize = std::min((int)tileWidth, m_info.m_lx - x) * pixelSize;
+-
+-        // Copy the tile rows in the corresponding output strip rows
+-        for (int ty = 0; ty < lastTy; ++ty) {
+-          memcpy(m_stripBuffer + (ty * m_rowLength + x) * pixelSize,
+-                 (UCHAR *)tile.get() + ty * tileWidth * pixelSize, tileRowSize);
+-        }
+-
+-        x += tileWidth;
+-      }
+-    } else {
+-      int y  = m_rowsPerStrip * m_stripIndex;
+-      int ok = TIFFReadRGBAStrip_64(m_tiff, y, (uint64 *)m_stripBuffer);
+-      assert(ok);
+-    }
+-  }
+-
+-  uint16 orient = ORIENTATION_TOPLEFT;
+-  TIFFGetField(m_tiff, TIFFTAG_ORIENTATION, &orient);
+-
+-  int r = m_rowsPerStrip - 1 - (m_row % m_rowsPerStrip);
+-  switch (orient)  // Pretty weak check for top/bottom orientation
+-  {
+-  case ORIENTATION_TOPLEFT:
+-  case ORIENTATION_TOPRIGHT:
+-  case ORIENTATION_LEFTTOP:
+-  case ORIENTATION_RIGHTTOP:
+-    // We have to invert the fixed BOTTOM-UP returned by TIFF functions - since
+-    // this function is
+-    // supposed to ignore orientation issues (which are managed outside).
+-
+-    // The last tiles row will actually start at the END OF THE IMAGE (not
+-    // necessarily at
+-    // m_rowsPerStrip multiples). So, we must adjust for that.
+-
+-    r = std::min(m_rowsPerStrip, m_info.m_ly - m_rowsPerStrip * m_stripIndex) -
+-        1 - (m_row % m_rowsPerStrip);
+-    break;
+-
+-  case ORIENTATION_BOTRIGHT:
+-  case ORIENTATION_BOTLEFT:
+-  case ORIENTATION_RIGHTBOT:
+-  case ORIENTATION_LEFTBOT:
+-    r = m_row % m_rowsPerStrip;
+-    break;
+-  }
+-
+-  // Finally, copy the strip row to the output row buffer
+-  TPixel64 *pix = (TPixel64 *)buffer;
+-  USHORT *v     = (USHORT *)(m_stripBuffer + r * stripRowSize);
+-
+-  pix += x0;
+-  v += 4 * x0;
+-
+-  int width =
+-      (x1 < x0) ? (m_info.m_lx - 1) / shrink + 1 : (x1 - x0) / shrink + 1;
+-
+-  for (int i = 0; i < width; i++) {
+-    USHORT c = *v++;
+-    pix->r   = c;
+-    c        = *v++;
+-    pix->g   = c;
+-    c        = *v++;
+-    pix->b   = c;
+-    c        = *v++;
+-    pix->m   = c;
+-
+-    pix += shrink;
+-    v += 4 * (shrink - 1);
+-  }
+-
+-  m_row++;
+-}
+-
+ //===============================================================
+ 
+ void TifReader::readLine(char *buffer, int x0, int x1, int shrink) {
+-  if (this->m_info.m_bitsPerSample == 16 &&
+-      this->m_info.m_samplePerPixel >= 3) {
+-    std::vector<short> app(4 * (m_info.m_lx));
+-    readLine(&app[0], x0, x1, shrink);
+-
+-    TPixel64 *pixin = (TPixel64 *)&app[0];
+-
+-    TPixel32 *pixout = (TPixel32 *)buffer;
+-    for (int j = 0; j < x0; j++) {
+-      pixout++;
+-      pixin++;
+-    }
+-
+-    for (int i = 0; i < (x1 - x0) + 1; i++)
+-      *pixout++ = PixelConverter<TPixel32>::from(*pixin++);
+-
+-    return;
+-  }
+-
+   assert(shrink > 0);
+ 
+   const int pixelSize = 4;
+diff --git a/toonz/sources/image/tzp/tiio_tzp.cpp b/toonz/sources/image/tzp/tiio_tzp.cpp
+index 080f9bdf..a22f9d0f 100644
+--- a/toonz/sources/image/tzp/tiio_tzp.cpp
++++ b/toonz/sources/image/tzp/tiio_tzp.cpp
+@@ -7,7 +7,7 @@
+ #include "texception.h"
+ 
+ #include "tiffio.h"
+-#include "tiffiop.h"
++// #include "tiffiop.h"
+ // #include "tspecialstyleid.h"
+ #include <set>
+ 
+@@ -225,8 +225,7 @@ void TzpReader::readLine(char *buffer, int x0, int x1, int shrink) {
+       static std::set<int> table;
+ 
+       /// per le tzp che vengono da Irix
+-      bool bigEndian =
+-          (m_tiff->tif_header.classic.tiff_magic == TIFF_BIGENDIAN);
++      bool bigEndian = TIFFIsBigEndian(m_tiff);
+ 
+       for (int i = 0; i < m_lx; i++) {
+         unsigned short inPix = line[i];
+@@ -255,8 +254,7 @@ void TzpReader::readLine(char *buffer, int x0, int x1, int shrink) {
+       static std::set<int> table;
+ 
+       /// per le tzp che vengono da Irix
+-      bool bigEndian =
+-          (m_tiff->tif_header.classic.tiff_magic == TIFF_BIGENDIAN);
++      bool bigEndian = TIFFIsBigEndian(m_tiff);
+ 
+       for (int i = 0; i < m_lx; i++) {
+         unsigned short inPix = line[i];
+-- 
+2.49.0
+
