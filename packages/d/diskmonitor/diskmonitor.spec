@@ -1,7 +1,7 @@
 #
 # spec file for package diskmonitor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ URL:            https://github.com/papylhomme/diskmonitor
 Source0:        https://github.com/papylhomme/diskmonitor/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Install-the-application-icon-in-the-right-directory.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         diskmonitor-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  cmake(KF5ConfigWidgets)

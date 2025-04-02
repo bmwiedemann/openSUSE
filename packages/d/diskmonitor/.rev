@@ -32,4 +32,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226901</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>84f0ce075c3ac2878f564ec599470b5a</srcmd5>
+    <version>0.3.4</version>
+    <time>1743606824</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * diskmonitor-cmake4.patch</comment>
+    <requestid>1266139</requestid>
+  </revision>
 </revisionlist>

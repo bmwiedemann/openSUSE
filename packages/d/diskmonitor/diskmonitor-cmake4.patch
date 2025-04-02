@@ -1,0 +1,30 @@
+From ec8d1438dfe9535f1ee2ee229c74d331e5da9238 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 14:31:41 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 20a88b3..02858b3 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,12 +6,9 @@ set(DISKMONITOR_VERSION "${DISKMONITOR_VERSION_MAJOR}.${DISKMONITOR_VERSION_MINO
+ 
+ 
+ 
+-cmake_minimum_required(VERSION 2.8.12)
++cmake_minimum_required(VERSION 3.16)
+ set (QT_MIN_VERSION "5.2.0")
+ 
+-# Suppress warning with CMake >= 3.3
+-cmake_policy(SET CMP0063 NEW)
+-
+ find_package(ECM 1.6.0 REQUIRED NO_MODULE)
+ set (CMAKE_MODULE_PATH ${ECM_MODULE_PATH})
+ 
+-- 
+2.49.0
+
