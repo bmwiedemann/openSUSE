@@ -1,3 +1,44 @@
+Libbytesize 2.11
+----------------
+
+Alexandre Detiste (1):
+
+- remove dependency on python3-six and python2 crumbs
+
+Vojtech Trefny (8):
+
+- dist: Fix release number in spec
+- Squashed 'translation-canary/' changes from 4d4e65b..5bb8125
+- ci: Bump actions/checkout from v3 to v4
+- Rename 'master' branch to 'main'
+- New version - 2.10
+- ci: Set custom release number for Packit
+- ci: Update CentOS Stream repositories for Packit
+- ci: Add dependabot to automatically update GH actions
+
+Weblate (1):
+
+- Update translation files
+
+Weblate Translation Memory (1):
+
+- Translated using Weblate (Sinhala)
+
+dependabot[bot] (1):
+
+- infra: bump actions/upload-artifact from 3 to 4
+
+triallax (1):
+
+- tests: remove unnecessary bash dependency
+
+김인수 (4):
+
+- Translated using Weblate (Korean)
+- Added translation using Weblate (Japanese)
+- Translated using Weblate (Japanese)
+- Translated using Weblate (Korean)
+
 Libbytesize 2.10
 ----------------
 
