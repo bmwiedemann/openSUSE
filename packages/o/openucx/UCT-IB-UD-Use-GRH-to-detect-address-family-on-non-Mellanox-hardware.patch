@@ -1,0 +1,224 @@
+commit d437b65a6df080416048067141b1c206a52bdc78
+Author: Nathan Hjelm <hjelmn@google.com>
+Date:   Wed Oct 16 20:32:48 2024 +0000
+
+    UCT/IB/UD: Use GRH to detect address family on non-Mellanox hardware
+    
+    Setting the service level in the work completion is a Mellanox-specific feature,
+    so it can not be relied on to detect IPv4 vs IPv6. This commit fixes the
+    detection logic for non-Mellanox providers by detecting the address class from
+    the grh instead. This is done by detecting either 0x6a (IPv6) at offset 0 or
+    0x45 (IPv4) at offset 20 of the receive buffer. Since the first 20B of IPv4
+    packets are undefined ud_verbs sets the first byte of each posted receive to a
+    known value (0xff) since the provider is unliklely to touch these bytes. This
+    commit makes no changes to the mlx5 code which continues to rely on the CQE data
+    to determine if a packet is IPv4 or IPv6. It can be updated to use the non-mlx5
+    logic but since the IP version is present in the CGE there is no need.
+    
+    Signed-off-by: Nathan Hjelm <hjelmn@google.com>
+
+diff --git src/uct/ib/mlx5/ib_mlx5.h src/uct/ib/mlx5/ib_mlx5.h
+index 3183ea460a8a..3ec48b7197d8 100644
+--- src/uct/ib/mlx5/ib_mlx5.h
++++ src/uct/ib/mlx5/ib_mlx5.h
+@@ -1,6 +1,7 @@
+ /**
+ * Copyright (c) NVIDIA CORPORATION & AFFILIATES, 2001-2014. ALL RIGHTS RESERVED.
+ * Copyright (C) ARM Ltd. 2016.  ALL RIGHTS RESERVED.
++* Copyright (c) Google, LLC, 2024. ALL RIGHTS RESERVED.
+ *
+ * See file LICENSE for terms.
+ */
+@@ -66,6 +67,9 @@
+ #define UCT_IB_MLX5_ATOMIC_MODE_EXT      3
+ #define UCT_IB_MLX5_CQE_FLAG_L3_IN_DATA  UCS_BIT(28) /* GRH/IP in the receive buffer */
+ #define UCT_IB_MLX5_CQE_FLAG_L3_IN_CQE   UCS_BIT(29) /* GRH/IP in the CQE */
++/* Bits 24-26 of flags_rqpn indicate the packet type */
++#define UCT_IB_MLX5_RQPN_ROCE_FLAG_IPV6  UCS_BIT(24)
++#define UCT_IB_MLX5_RQPN_ROCE_FLAG_IPV4  UCS_BIT(25)
+ #define UCT_IB_MLX5_CQE_FORMAT_MASK      0xc
+ #define UCT_IB_MLX5_MINICQE_ARR_MAX_SIZE 7
+ #define UCT_IB_MLX5_MP_RQ_BYTE_CNT_MASK  0x0000FFFF  /* Byte count mask for multi-packet RQs */
+diff --git src/uct/ib/mlx5/ib_mlx5.inl src/uct/ib/mlx5/ib_mlx5.inl
+index 6602143c8bf5..2aa58455d5cd 100644
+--- src/uct/ib/mlx5/ib_mlx5.inl
++++ src/uct/ib/mlx5/ib_mlx5.inl
+@@ -1,5 +1,6 @@
+ /**
+  * Copyright (c) NVIDIA CORPORATION & AFFILIATES, 2001-2016. ALL RIGHTS RESERVED.
++ * Copyright (c) Google, LLC, 2024. ALL RIGHTS RESERVED.
+  *
+  * See file LICENSE for terms.
+  */
+@@ -88,6 +89,35 @@ uct_ib_mlx5_cqe_is_grh_present(struct mlx5_cqe64* cqe)
+                                    UCT_IB_MLX5_CQE_FLAG_L3_IN_CQE);
+ }
+ 
++static UCS_F_ALWAYS_INLINE size_t
++uct_ib_mlx5_cqe_roce_gid_len(struct mlx5_cqe64* cqe)
++{
++    /*
++     * Take the packet type from CQE, because:
++     * 1. According to Annex17_RoCEv2 (A17.4.5.1):
++     * For UD, the Completion Queue Entry (CQE) includes remote address
++     * information (InfiniBand Specification Vol. 1 Rev 1.2.1 Section 11.4.2.1).
++     * For RoCEv2, the remote address information comprises the source L2
++     * Address and a flag that indicates if the received frame is an IPv4,
++     * IPv6 or RoCE packet.
++     *
++     * 2. According to PRM, for responder UD/DC over RoCE sl represents RoCE
++     * packet type as:
++     * bit 3    : when set R-RoCE frame contains an UDP header otherwise not
++     * Bits[2:0]: L3_Header_Type, as defined below
++     *     - 0x0 : GRH - (RoCE v1.0)
++     *     - 0x1 : IPv6 - (RoCE v1.5/v2.0)
++     *     - 0x2 : IPv4 - (RoCE v1.5/v2.0)
++     *
++     * The service level is the most significant byte of cqe->flags_rqpn.
++     *
++     * Alternatively, this could be detected by examining the packet contents
++     * as is done for non-mlx5 transports.
++     */
++    return (cqe->flags_rqpn & htonl(UCT_IB_MLX5_RQPN_ROCE_FLAG_IPV4)) ?
++        UCS_IPV4_ADDR_LEN : UCS_IPV6_ADDR_LEN;
++}
++
+ static UCS_F_ALWAYS_INLINE void*
+ uct_ib_mlx5_gid_from_cqe(struct mlx5_cqe64* cqe)
+ {
+diff --git src/uct/ib/mlx5/ud/ud_mlx5.c src/uct/ib/mlx5/ud/ud_mlx5.c
+index 58f4ae6446a3..27a96b1b615b 100644
+--- src/uct/ib/mlx5/ud/ud_mlx5.c
++++ src/uct/ib/mlx5/ud/ud_mlx5.c
+@@ -2,6 +2,7 @@
+ * Copyright (c) NVIDIA CORPORATION & AFFILIATES, 2001-2019. ALL RIGHTS RESERVED.
+ * Copyright (C) ARM Ltd. 2017.  ALL RIGHTS RESERVED.
+ * Copyright (C) Advanced Micro Devices, Inc. 2024. ALL RIGHTS RESERVED.
++* Copyright (c) Google, LLC, 2024. ALL RIGHTS RESERVED.
+ *
+ * See file LICENSE for terms.
+ */
+@@ -521,7 +522,7 @@ uct_ud_mlx5_iface_poll_rx(uct_ud_mlx5_iface_t *iface, int is_async)
+ 
+     if (!uct_ud_iface_check_grh(&iface->super, packet,
+                                 uct_ib_mlx5_cqe_is_grh_present(cqe),
+-                                cqe->flags_rqpn & 0xFF)) {
++                                uct_ib_mlx5_cqe_roce_gid_len(cqe))) {
+         ucs_mpool_put_inline(desc);
+         goto out_polled;
+     }
+diff --git src/uct/ib/ud/base/ud_iface.h src/uct/ib/ud/base/ud_iface.h
+index 1efecd291d98..89fa7e3810fc 100644
+--- src/uct/ib/ud/base/ud_iface.h
++++ src/uct/ib/ud/base/ud_iface.h
+@@ -1,5 +1,6 @@
+ /**
+ * Copyright (c) NVIDIA CORPORATION & AFFILIATES, 2001-2020. ALL RIGHTS RESERVED.
++* Copyright (c) Google, LLC, 2024. ALL RIGHTS RESERVED.
+ *
+ * See file LICENSE for terms.
+ */
+@@ -395,10 +396,9 @@ static UCS_F_ALWAYS_INLINE void uct_ud_leave(uct_ud_iface_t *iface)
+ 
+ static UCS_F_ALWAYS_INLINE int
+ uct_ud_iface_check_grh(uct_ud_iface_t *iface, void *packet, int is_grh_present,
+-                       uint8_t roce_pkt_type)
++                       size_t gid_len)
+ {
+     struct ibv_grh *grh = (struct ibv_grh *)packet;
+-    size_t gid_len;
+     union ibv_gid *gid;
+     khiter_t khiter;
+     char gid_str[128] UCS_V_UNUSED;
+@@ -412,25 +412,6 @@ uct_ud_iface_check_grh(uct_ud_iface_t *iface, void *packet, int is_grh_present,
+         return 1;
+     }
+ 
+-    /*
+-     * Take the packet type from CQE, because:
+-     * 1. According to Annex17_RoCEv2 (A17.4.5.1):
+-     * For UD, the Completion Queue Entry (CQE) includes remote address
+-     * information (InfiniBand Specification Vol. 1 Rev 1.2.1 Section 11.4.2.1).
+-     * For RoCEv2, the remote address information comprises the source L2
+-     * Address and a flag that indicates if the received frame is an IPv4,
+-     * IPv6 or RoCE packet.
+-     * 2. According to PRM, for responder UD/DC over RoCE sl represents RoCE
+-     * packet type as:
+-     * bit 3    : when set R-RoCE frame contains an UDP header otherwise not
+-     * Bits[2:0]: L3_Header_Type, as defined below
+-     *     - 0x0 : GRH - (RoCE v1.0)
+-     *     - 0x1 : IPv6 - (RoCE v1.5/v2.0)
+-     *     - 0x2 : IPv4 - (RoCE v1.5/v2.0)
+-     */
+-    gid_len = ((roce_pkt_type & UCT_IB_CQE_SL_PKTYPE_MASK) == 0x2) ?
+-              UCS_IPV4_ADDR_LEN : UCS_IPV6_ADDR_LEN;
+-
+     if (ucs_likely((gid_len == iface->gid_table.last_len) &&
+                     uct_ud_gid_equal(&grh->dgid, &iface->gid_table.last,
+                                      gid_len))) {
+diff --git src/uct/ib/ud/verbs/ud_verbs.c src/uct/ib/ud/verbs/ud_verbs.c
+index 989bdb59d08f..848dc4e5cd66 100644
+--- src/uct/ib/ud/verbs/ud_verbs.c
++++ src/uct/ib/ud/verbs/ud_verbs.c
+@@ -1,5 +1,6 @@
+ /**
+ * Copyright (c) NVIDIA CORPORATION & AFFILIATES, 2001-2019. ALL RIGHTS RESERVED.
++* Copyright (c) Google, LLC, 2024. ALL RIGHTS RESERVED.
+ *
+ * See file LICENSE for terms.
+ */
+@@ -393,6 +394,20 @@ uct_ud_verbs_iface_poll_tx(uct_ud_verbs_iface_t *iface, int is_async)
+     return 1;
+ }
+ 
++static UCS_F_ALWAYS_INLINE size_t uct_ud_verbs_iface_get_gid_len(void *packet)
++{
++  /* The GRH will contain either an IPv4 or IPv6 header. If the former is
++   * present the header will start at offset 20 in the buffer otherwise it
++   * will start at offset 0. Since the two headers are of fixed size (20 or
++   * 40 bytes) this means we will either see 0x6? at offset 0 (IPv6) or 0x45
++   * at offset 20. The detection is a little tricky for IPv6 given that the
++   * first 20B are undefined for IPv4. To overcome this the first byte of
++   * the posted receive buffer is set to 0xff.
++   */
++  return ((((uint8_t*)packet)[0] & 0xf0) == 0x60) ? UCS_IPV6_ADDR_LEN :
++                                                    UCS_IPV4_ADDR_LEN;
++}
++
+ static UCS_F_ALWAYS_INLINE unsigned
+ uct_ud_verbs_iface_poll_rx(uct_ud_verbs_iface_t *iface, int is_async)
+ {
+@@ -413,7 +428,8 @@ uct_ud_verbs_iface_poll_rx(uct_ud_verbs_iface_t *iface, int is_async)
+ 
+     UCT_IB_IFACE_VERBS_FOREACH_RXWQE(&iface->super.super, i, packet, wc, num_wcs) {
+         if (!uct_ud_iface_check_grh(&iface->super, packet,
+-                                    wc[i].wc_flags & IBV_WC_GRH, wc[i].sl)) {
++                                    wc[i].wc_flags & IBV_WC_GRH,
++                                    uct_ud_verbs_iface_get_gid_len(packet))) {
+             ucs_mpool_put_inline((void*)wc[i].wr_id);
+             continue;
+         }
+@@ -696,7 +712,7 @@ uct_ud_verbs_iface_post_recv_always(uct_ud_verbs_iface_t *iface, int max)
+     struct ibv_recv_wr *bad_wr;
+     uct_ib_recv_wr_t *wrs;
+     unsigned count;
+-    int ret;
++    int ret, i;
+ 
+     wrs  = ucs_alloca(sizeof *wrs  * max);
+ 
+@@ -706,6 +722,14 @@ uct_ud_verbs_iface_post_recv_always(uct_ud_verbs_iface_t *iface, int max)
+         return;
+     }
+ 
++    /* Set the first byte in the receive buffer grh to a known value not equal to
++     * 0x6?. This should aid in the detection of IPv6 vs IPv4 because the first
++     * byte is undefined in the later and 0x6? in the former. It is unlikely
++     * this byte is touched with IPv4. */
++    for (i = 0; i < count; ++i) {
++        ((uint8_t*)wrs[i].sg.addr)[0] = 0xff;
++    }
++
+     ret = ibv_post_recv(iface->super.qp, &wrs[0].ibwr, &bad_wr);
+     if (ret != 0) {
+         ucs_fatal("ibv_post_recv() returned %d: %m", ret);

@@ -374,4 +374,12 @@
     - Fixed missing memory handle flags by copying from parent to child</comment>
     <requestid>1247274</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>c5e02b4cdda364924e08fe84e57c95ca</srcmd5>
+    <version>1.18.0</version>
+    <time>1743606547</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266178</requestid>
+  </revision>
 </revisionlist>

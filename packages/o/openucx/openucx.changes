@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:31:11 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add UCT-IB-UD-Use-GRH-to-detect-address-family-on-non-Mellanox-hardware.patch
+  to fix an UD init issue on non-Mellanox RDMA HW (bsc#1240204).
+
+-------------------------------------------------------------------
 Wed Feb 19 15:47:23 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to ucx 1.18.0
