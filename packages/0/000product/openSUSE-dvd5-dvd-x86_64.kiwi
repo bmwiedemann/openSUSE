@@ -3051,6 +3051,7 @@
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
       <repopackage name="llvm19-gold"/>
+      <repopackage name="llvm19-libclang13"/>
       <repopackage name="llvm20-gold"/>
       <repopackage name="localsearch"/>
       <repopackage name="localsearch-lang"/>

@@ -17848,6 +17848,10 @@ unsorted:
   - llvm19 
   - llvm19-devel 
   - llvm19-doc 
+  - llvm19-libc++-devel 
+  - llvm19-libc++1 
+  - llvm19-libc++abi-devel 
+  - llvm19-libc++abi1 
   - llvm19-opt-viewer 
   - llvm19-polly 
   - llvm19-polly-devel 
