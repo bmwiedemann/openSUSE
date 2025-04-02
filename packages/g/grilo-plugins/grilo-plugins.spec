@@ -1,7 +1,7 @@
 #
 # spec file for package grilo-plugins
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define plugin_dir %(pkg-config --variable plugindir grilo-0.3)
 Name:           grilo-plugins
-Version:        0.3.16
+Version:        0.3.16+45
 Release:        0
 Summary:        Media and metadata plugins for the Grilo framework
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
-Source0:        https://download.gnome.org/sources/grilo-plugins/0.3/%{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  gperf
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  itstool
+BuildRequires:  localsearch
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(avahi-client)
@@ -164,18 +165,14 @@ This package provides the development files.
 %{plugin_dir}/libgrlmagnatune.so
 %{plugin_dir}/libgrllocalmetadata.so
 %{plugin_dir}/libgrlmetadatastore.so
-#%%{plugin_dir}/libgrlopensubtitles.so
 %{plugin_dir}/libgrlopticalmedia.so
 %{plugin_dir}/libgrlpodcasts.so
-%{plugin_dir}/libgrlraitv.so
 %{plugin_dir}/libgrlshoutcast.so
 %{plugin_dir}/libgrlthetvdb.so
 %{plugin_dir}/libgrltmdb.so
 %{plugin_dir}/libgrlluafactory.so
 %dir %{_datadir}/grilo-plugins
 %dir %{_datadir}/grilo-plugins/grl-lua-factory
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.lua
-%{_datadir}/grilo-plugins/grl-lua-factory/grl-appletrailers.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-euronews.gresource
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-guardianvideos.lua
@@ -191,6 +188,8 @@ This package provides the development files.
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-lastfm-cover.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-steam-store.lua
 %{_datadir}/grilo-plugins/grl-lua-factory/grl-theaudiodb-cover.lua
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-iptv.gresource
+%{_datadir}/grilo-plugins/grl-lua-factory/grl-iptv.lua
 
 %files lang -f %{name}.lang
 
