@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 31 22:10:59 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.0.9:
+  * Remove legacy malloc/realloc workarounds.
+
+-------------------------------------------------------------------
 Thu Jul 11 00:32:12 UTC 2024 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.0.8:
