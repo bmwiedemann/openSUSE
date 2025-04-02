@@ -74,4 +74,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update kernel-firmware-tools scripts to be downloadable</comment>
     <requestid>1255837</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d124a6c00c6621ba91688eb91520be00</srcmd5>
+    <version>20250331</version>
+    <time>1743606525</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250331 (git commit 0f7fe1e739bf):
+  * cirrus: cs35l56: Correct filenames of SSID 103c8e1b and 103c8e1c</comment>
+    <requestid>1266054</requestid>
+  </revision>
 </revisionlist>
