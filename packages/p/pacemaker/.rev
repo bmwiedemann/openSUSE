@@ -2495,4 +2495,38 @@
     <comment>- spec: Provides user(hacluster) and group(haclient) (forwarded request 1254949 from yan_gao)</comment>
     <requestid>1254950</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>19ccdc6772fca7c5e145043673d1fc7a</srcmd5>
+    <version>3.0.0+20250331.008a7d1784</version>
+    <time>1743606502</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.0.0+20250331.008a7d1784:
+- pacemaker-attrd: make a peer learn our node name once it has joined (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: ability to send a protocol message to a single peer (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: make attrd_send_message()'s node argument const (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: remember names of peers from attribute update in case unknown (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: use %PRIu32 format specifier instead of %u for node id (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- libcrmcluster: correctly log node id (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: log the cluster layer id of the changed peer (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+- pacemaker-attrd: prevent segfault if a peer leaves when its name is unknown yet (bsc#1239629, gh#ClusterLabs/pacemaker#3847)
+
+- spec: create a temporary file in /run directory (bsc#1239770)
+
+- Update to version 3.0.0+20250326.6053d2fc3f:
+- agents: Add an advised interval value for monitor action in remote RA (gh#ClusterLabs/pacemaker#3854)
+
+- Update to version 3.0.0+20250325.6ad1da5e7a:
+- libcib: Don't match element based on XPath matching an attribute
+
+- Update to version 3.0.0+20250319.4263b0ac7e:
+- libcrmcommon: provide a description for pcmk_rc_no_dc return code (gh#ClusterLabs/pacemaker#3848)
+
+- Update to version 3.0.0+20250318.6d6734a86b:
+- tools: Use correct error code for command lookup failure
+- tools: Dry-run crm_resource --fail if CIB_file is set
+- libcrmcommon: Sort schema transformations on non-glibc systems
+- libcrmcommon: Ensure schema transform numbers are in valid range
+- libcrmcommon: Match literal dots in schema transform filter (forwarded request 1266030 from yan_gao)</comment>
+    <requestid>1266031</requestid>
+  </revision>
 </revisionlist>

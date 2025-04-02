@@ -121,7 +121,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.0+20250310.476dc59612
+Version:        3.0.0+20250331.008a7d1784
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -559,8 +559,8 @@ exit 0
 
 %if %{with_regression_tests}
 %post devel
-if [ ! -e /tmp/.pcmk_regression_tests_ran ]; then
-	touch /tmp/.pcmk_regression_tests_ran
+if [ ! -e %{_rundir}/.pcmk_regression_tests_ran ]; then
+	touch %{_rundir}/.pcmk_regression_tests_ran
 	# Needed so that the shell doesn't get stuck on escape
 	# sequences
 	export TERM=dumb
