@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:53:20 UTC 2025 - aplanas@suse.com
+
+- Update to version 0.2.1~0:
+  * Check if snapshot directory exist
+
+-------------------------------------------------------------------
 Thu Feb 20 13:16:23 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add sndiff.8.md manual page

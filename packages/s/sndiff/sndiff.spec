@@ -18,7 +18,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           sndiff
-Version:        v0.2~0
+Version:        0.2.1~0
 Release:        0
 Summary:        Tool for diffing packages and files from snapshots
 License:        MIT
