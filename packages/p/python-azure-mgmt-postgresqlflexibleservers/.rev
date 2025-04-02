@@ -39,4 +39,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1245565 from glaubitz)</comment>
     <requestid>1245626</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aa6244519b141136e17ff0e2cd21f455</srcmd5>
+    <version>1.1.0</version>
+    <time>1743612794</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1265676 from glaubitz)</comment>
+    <requestid>1265877</requestid>
+  </revision>
 </revisionlist>
