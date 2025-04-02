@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.18.2
+Version:        4.18.3
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -394,6 +394,7 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.Debug.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.EmojiChooser.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Settings.FileChooser.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gtk.gtk4.Inspector.gschema.xml
 
 %files branding-upstream
 %{_datadir}/gtk-4.0/settings.ini

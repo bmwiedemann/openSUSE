@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Mar 29 13:59:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.18.3:
+  + Bugs fixed:
+    - GtkTextView left and right margins
+    - Deadkeys using UFDD modifiers do not work under gtk4 apps
+    - Wrong position for input method when line number is enabled
+    - Uninitialized variable being used at
+      _gdk_win32_surface_compute_size
+    - Vulkan renderer: `vkCreateSwapchainKHR` errors on windows
+      when opening a popover for the first time
+    - GtkTextView double click select then drag not working
+    - Menu is does not open on mobile since translation is too long
+    - a11y: remove_from_accessible_relation: assertion
+      'GTK_IS_AT_CONTEXT (self)' failed
+    - window: Allow window resizing to always work
+    - columnview: Measure header for get_border
+    - vulkan: Fix copy/paste error
+    - widget: Explicitly annotate visible's getter
+    - build: Use accesskit-c 0.15
+    - Fixed MacOS GDK issue where calling main loop iterations in
+      some Cocoa event...
+    - widget: Explicitly annotate sensitive's getter
+    - Windows: Fix #warning not defined with MSVC
+    - Add more deprecations
+    - Emit inclusion warning only in normal use
+    - Fix Double-Free Issue in GTK Print Backend CPDB
+    - wayland: Avoid a warning without posix_fallocate
+    - print: Add more docs
+    - listbox: Don't explicitly show headers and model rows
+    - Test rapid cursor changes
+    - wayland: Avoid setting the same shape twice
+    - Drop an unused field
+    - build: Improve libintl function check
+    - gdkglcontext-win32-wgl.c: Apply scale for
+      glAddSwapHintRectWIN() (fix use on HiDPI)
+    - gtklistbase: Do not select invalid positions
+    - inspector: Persist some UI state
+    - gstsink: Set the actual buffer size
+    - menus: prefer standard shortcuts over action keys
+    - wayland: Stop using syscall() for memfds
+    - memoryformat: Remove unneeded GL header
+    - Improve BEPO compose sequence visuals
+  + Updated translation.
+
+-------------------------------------------------------------------
 Mon Mar 17 07:07:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.18.2:
