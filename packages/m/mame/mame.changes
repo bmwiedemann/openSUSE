@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 10:35:50 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.276
+  * Used ld.mold for link to fix aarch64 build.
+  * /usr/share/doc/packages/mame/whatsnew-0.276.txt
+
+-------------------------------------------------------------------
 Wed Feb 26 11:25:18 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.275

@@ -1,0 +1,1337 @@
+0.276 2025-03-31
+----------------
+
+
+MAME Testers bugs fixed
+-----------------------
+- 00835: [Sound] (rare/kinst.cpp) kinst, kinst2: Music doesn’t play during attract mode immediately after booting. (hap)
+- 07947: [Sound] (technos/ddragon.cpp) ddragon and clones: Music and sound effect balance is incorrect. (hap)
+- 08895: [Sound] (snk/bbusters.cpp) bbustersu, bbustersua: Some sound effects and music channels do not play. (hap)
+- 09125: [Graphics] (cinematronics/leland.cpp) brutforc: The status bar at the bottom of the screen flickers. (hap)
+- 09129: [Sound] (namco/namcos21_de.cpp) driveyes: The default PCM ROM settings are incorrect causing missing sounds. (danylopez123)
+- 09136: [Sound] (sega/segas16b.cpp) bayroute1: Sound ROM dumps of questionable quality are available but not used. (hap)
+- 09141: [DIP/Input] (sharp/x68k.cpp) x68000 [metlunit, metluni2]: Mouse input doesn’t work correctly. (Patrick Mackinlay)
+- 09144: [Graphics] (taito/asuka.cpp) earthjkr: The text layer does not display correctly after loading a saved state. (hap)
+- 09145: [Sound] (cinematronics/jack.cpp) jack and clones: [possible] Sounds play too fast. (hap)
+
+
+New working systems
+-------------------
+Lian Huan Pao - ATT II [dyq, little0, Guru]
+Lian Huan Pao - ATT III [dyq, little0, Guru]
+Tarzan Chuang Tianguan 2 Jiaqiang Ban (V306CN) [dyq, little0, Guru]
+Xingyun Dou Dizhu [dyq, little0, Guru]
+Xingyun Pao De Kuai (V106CN) [dyq, little0, Guru]
+
+
+New working clones
+------------------
+Cadash (Spain) [Tailsnic Retroworks]
+Ghosts'n Goblins (bootleg) [Jordi Tuells, Jordi Beltrán]
+Maa Zoek Lung Hing Fu Dai (Hong Kong, D106T) [little0]
+Mahjong Reach (Ver. 1.00, set 2) [buffi]
+Maque Caihui Ying (Taiwan, ver 2.20) [little0]
+Multi Champ (World, ver. 9.6) [Manuel Assoni]
+Psion Organiser II Alpha POS 200 [Nigel Barnes, Jaap Scherphuis]
+Psion Organiser II P 250 [Nigel Barnes, Jaap Scherphuis]
+Psion Organiser II P 432 [Nigel Barnes, Jaap Scherphuis]
+Que You Ji - Dian Zi Ji Pan Jiaqiang Ban (v201) [dyq, little0, Guru]
+Toffy (unencrypted) [hammy]
+Wizard Fire (Over Sea v1.0) [Tailsnic Retroworks]
+Xingyun Manguan (China, V651C, set 2) [little0]
+
+
+Systems promoted to working
+---------------------------
+5-Aces Poker [Roberto Fresca, Grull Osgo]
+Challenger Draw Poker [Roberto Fresca, Grull Osgo]
+Draw 80 Poker (Minn) [Roberto Fresca, Grull Osgo]
+Draw Poker HI-LO (alt GFX) [Roberto Fresca, Grull Osgo]
+Draw Poker HI-LO (Japanese) [Roberto Fresca, Grull Osgo]
+Draw Poker HI-LO (M.Kramer) [Roberto Fresca, Grull Osgo]
+Drews Revenge (v.2.89, set 1) [Roberto Fresca, Grull Osgo]
+Fast Draw (poker conversion kit) [Roberto Fresca, Grull Osgo]
+HI-LO Double Up Joker Poker [Roberto Fresca, Grull Osgo]
+Joker Poker (Kramer, alt) [Roberto Fresca, Grull Osgo]
+Linn Electronics LinnDrum [m1macrophage]
+Noraut Joker Poker (console, set 1) [Roberto Fresca, Grull Osgo]
+Southern Systems Joker Poker [Roberto Fresca, Grull Osgo]
+Sure Shot (older, dphl hardware) [Roberto Fresca, Grull Osgo]
+Wild 1 (Quick Change Kit) [Roberto Fresca, Grull Osgo]
+
+
+Clones promoted to working
+--------------------------
+Drews Revenge (v.2.89, set 2) [Roberto Fresca, Grull Osgo]
+Noraut Joker Poker (console, set 2) [Roberto Fresca, Grull Osgo]
+
+
+New systems marked not working
+------------------------------
+AMS Optomax V [ClawGrip]
+Baibian Shuangkou [little0]
+Chao Ji Dou Niu (V305CN) [dyq, little0, Guru]
+Chao Ji Laizi Dou Dizhu (V109CN) [little0]
+Chao Ji Sai Jin Hua (V201CN) [dyq, little0, Guru]
+Chaoji Da Lianzhuang (Version 1.1) [dyq, little0, Guru]
+Chaoji Dou Dizhu (V219CN) / Chaoji Dou Dizhu Jianan Ban (V302CN) [dyq, little0, Guru]
+Chaoji Dou Dizhu Jiaqiang Ban (S300CN) / unknown second set [little0]
+Chaoji Mingxing [little0]
+Cisco CSS11501S-K9 [ArcadeHacker]
+Cranesaurus Single [Zooo Arcade, Recreativas.org]
+Crown Poker (ver. 1.20) [Brian Troha, hammy, The Dumping Union]
+Da Fu Weng III (V130LI) [Dr.Liu(BJ), little0]
+Digital Equipment Corporation MicroVAX 3100 Model 10 [OldComputers ES]
+Digital Equipment Corporation MicroVAX 3400 [MicroVAX II Museum]
+Digital Equipment Corporation MicroVAX 3500 [MicroVAX II Museum]
+Digital Equipment Corporation MicroVAX I [MicroVAX II Museum]
+Digital Equipment Corporation MicroVAX II [MicroVAX II Museum]
+Honywell CAMIR-F1 [ArcadeHacker]
+Hu Lu Wang II (v100KI) [Dr.Liu(BJ), little0]
+Hua Shen II (v120DI) [Dr.Liu(BJ), little0]
+Huahua Shijie 5 (V107CN) [little0, XingXing]
+Huahua Shijie II (v100FI, set 1) [Dr.Liu(BJ), little0]
+Huang Guan Le Yuan (990726 CRG1.1) [dyq, little0, Guru]
+Jin Huang Guan [Dr.Liu(BJ), little0]
+Magical Tonic Part 2 [buffi]
+Microtek MICE-IIIS 68000 [ArcadeHacker]
+Microtek Powerpack In-Circuit Emulator PP-SW+ PIII [ArcadeHacker]
+Nihonzenkoku-katochan-no-kurukuru-ressya-de-Pe! (Ver.1.00, 2004/10/24) [Darksoft, MetalliC, rtw]
+Nuwang Feng New / Queen Bee New (China, Ver. 1.10) [dyq, little0, Guru]
+Qiji 6 (V118CN) [little0, XingXing]
+Secoinsa Serie 20 [ArcadeHacker]
+Shuiguo Leyuan (V150UI) [Dr.Liu(BJ), little0]
+Treasure Trail (JPM) [hammy]
+Turnier Dart [Victor Fernandez (City Game)]
+Waku Waku Shinkansen (J 971031 V0.002) [Darksoft]
+Wang Pai Dou Dizhou [dyq, little0, Guru]
+Wu Lin Zhengba [dyq, little0, Guru]
+Xingyun Paomadi Super (V401CN) [dyq, little0, Guru]
+Zuanshi Wutai (V110II) [Dr.Liu(BJ), little0]
+
+
+New clones marked not working
+-----------------------------
+Chaoji Dou Dizhu (V213CN) [dyq, little0, Guru]
+Chaoji Dou Dizhu (V219CN) / Chaoji Dou Dizhu Jianan Ban (V405CN) [dyq, little0, Guru]
+Heart of Antony (0252526, US) [dam0, Heihachi_73]
+Huahua Shijie II (v100FI, set 2) [little0]
+Jin Hu Lu II (v100GI) [Dr.Liu(BJ), little0]
+Jin Hu Lu II (v101IS) [little0]
+Jin Hu Lu II (v120GI) [dyq, little0, Guru]
+Mahjong Electron Base (parts 2 & 3, Japan bootleg) [little0]
+Meng Hong Lou (earlier) [dyq, little0, Guru]
+Mr Woo (30215311, NSW/ACT) [dam0, Heihachi_73]
+Sexy Parodius (ver EAA, bootleg) [H4M573R]
+Super Star 97 / Ming Xing 97 (version V168A) [dyq, little0, Guru]
+Super Star 97 / Ming Xing 97 Jianan Ban [little0]
+Tumble Pop (Electronic Devices bootleg) [hammy]
+Turnier Dart (HB8-97) [Victor Fernandez (City Game)]
+Xingyun Paomadi (unknown ver) [dyq, little0, Guru]
+
+
+New working software list items
+-------------------------------
+fidel_scc: Chess Encyclopedia, Sicilian Variation [anonymous]
+ibm5170:
+  PartitionMagic 8.05 (English), PartitionMagic 8.05 (French), PartitionMagic 8.05 (German), PartitionMagic 8.05 (Italian),
+  PartitionMagic 8.05 (Spanish) [Mike Swanson]
+ibm5170_cdrom: PartitionMagic 8.05 [Mike Swanson]
+pc88va: AntiAir, Ascend, Bootskell, Cacorm, Cavit, Cracky, Lift, Neuras, Osotos, Yewdow [Inufuto]
+spectrum_cass:
+  Mieyen [Inufuto]
+  African Trail Simulator, Ajedrez, Run for Gold (System 4) [Spectrum Computing]
+  Destronado [El Trastero del Spectrum]
+
+
+Software list items promoted to working
+---------------------------------------
+pc88va: Abunai Tengu Densetsu, Crescent Moon Girl, D.P.S - Dream Program System, Pac-Man, Pac-Man (auto-bootable) [Angelo Salese]
+
+
+New software list items marked not working
+------------------------------------------
+pc88va: Aerial, Battlot, Guntus, Hopman, Impetus, Ruptus [Inufuto]
+pc98_cd: FreeBSD(98) Nyuumon Kit (2.1.0R) [sampson]
+
+
+Merged pull requests
+--------------------
+- 12401: sega/m50dass.cpp: Added a skeleton device to hold ROMs for the Megalo 50 DASS. [jordigahan, Recreativas.org, ClawGrip]
+- 13139: ibm5170.xml, ibm5170_cdrom.xml: Added PartitionMagic 8.05 and pre-built boot floppies. [Mike Swanson]
+- 13304: philips/mcd212.cpp: Renamed the matte flag constants and refactored the matte handling code. [Vincent-Halver]
+- 13331: dec/uvax3100.cpp: Added a skeleton driver for the DEC MicroVAX 3100 Model 10. [OldComputers ES, ClawGrip]
+- 13358: misc/compucranes.cpp: Dumped the Cranesaurus Single ROMs (GANCHONEW hardware). [Zooo Arcade, Recreativas.org, ClawGrip]
+- 13376: pc/sis630.cpp: Added an ASCII circuit board diagram and ROM placeholder for the GameCristal JAMMA interface. [ClawGrip]
+- 13381: fujitsu/secoinsa20.cpp: Added a skeleton driver for the Secoinsa Serie 20 minicomputer. [ArcadeHacker, ClawGrip]
+- 13384: skeleton/css11501sk9.cpp: Added a skeleton Cisco CSS11501S-K9 Content Services Switch driver. [ArcadeHacker, ClawGrip]
+- 13390: skeleton/powerpack.cpp: Dumped the ROMs from a Microtek Powerpack In-Circuit Emulator PP-SW+ PIII. [ArcadeHacker, ClawGrip]
+- 13393: skeleton/mice3s68k.cpp: Dumped the ROMs from a Microtek MICE-IIIS-68000 in-circuit emulator. [ArcadeHacker, ClawGrip]
+- 13398: spectrum_cass.xml: Added five working items, and cleaned up metadata for some existing items. [ArcadeShadow]
+- 13400: konami/konamigx_v.cpp, konami/konamigx_m.cpp: Implemented layer brightness control and one more K055550 command. [FredYeye]
+- 13402: vsystem/vsystem_spr.cpp: Fixed a spelling error in a comment. [cam900]
+- 13403: vsystem/pspikes.cpp: Use explicitly sized integers for data members that need to be registered for save states. [cam900]
+- 13404: linn/linndrum.cpp: Added an interactive layout for the LinnDrum. [m1macrophage]
+- 13406: machine/am9513.cpp: Added more logging for counter and mode control. [Adam Billyard]
+- 13408: taito/flstory.cpp, taito/nycaptor.cpp: Corrected the sound CPU interrupt frequency. [jotego]
+- 13409: sinclair/sprinter.cpp: Use an input merger device to combine interrupt sources. [holub]
+- 13410: bus/sg1000_exp/sp400.cpp: Added a skeleton device for the Sega SP-400 plotter. [Fabio Dalla Libera, Golden Child]
+- 13412: wing/pinkiri8.cpp: Improved input behavior, fixed debugger issues and cleaned up code. [cam900]
+- 13415: zpa/iq151.cpp: Cleaned up ROM mapping. [cam900]
+- 13417: zvt/pp01.cpp: Restrict drawing to the clipping rectangle, fixed loading saved states and cleaned up code. [cam900]
+- 13422: Updated the common slider handling code for multiple synthesizer layouts. [m1macrophage]
+- 13426: oberheim/xpander.cpp: Added saved state support. [m1macrophage]
+- 13427: yachiyo/mole.cpp: Use a memory share creator to allocate tile RAM and cleaned up code. [cam900]
+- 13428: capcom/gng.cpp: Dumped a Ghosts'n Goblins bootleg. [Jordi Tuells, Jordi Beltrán, ClawGrip]
+- 13429: bus/centronics/epson_fx80.cpp: Added skeleton devices for the Epson FX-80 and JX-80 printers. [Golden Child]
+- 13432: philips/mcd212.cpp: Fixed handling of transparent layers and simplified code. [Vincent-Halver]
+- 13433: linn/linndrum.cpp: Allow adjusting rotary controls by dragging up/down. [m1macrophage]
+- 13436: megacd.xml: Added a missing parent/clone relationship and cleaned up descriptions. [ArcadeShadow]
+- 13437: skeleton/turnierdart.cpp: Dumped ROMs from two Turnier Dart machines. [Victor Fernandez (City Game), ClawGrip]
+- 13440: snk/snk.cpp: Fixed save state, soft reset and debugger issues, and cleaned up code. [cam900]
+- 13441: skeleton/camirf1.cpp: Dumped the ROMs from a Honeywell CAMIR-F1 infrared motion sensor/camera. [ArcadeHacker, ClawGrip]
+- 13442: snk/munchmo.cpp: Cleaned up graphics decoding layouts and improved save state support. [cam900]
+- 13445: snk/mainsnk.cpp: Suppress side effects for debugger reads and cleaned up code. [cam900]
+- 13447: igs/igs_68k_023vid.cpp: Hooked up enough peripherals to allow the Xingyun Paomadi games to show graphics. [David Haywood]
+- 13448: snk/snk_bbusters_spr.cpp, snk/bbusters.cpp, snk/mechatt.cpp: Cleaned up code. [cam900]
+- 13450: shared/seibusound.cpp: Read coin inputs through the sound module device. [cam900]
+- 13451: cpu/z80/z80dasm.cpp: Changed “repeating” instructions (LDIR, OTIR, etc.) to use the “step over” flag. [holub]
+- 13452: sega/model3.cpp: Removed erroneously duplicated lines in the Model 3 Step 2 video board diagram comment. [Matthew Daniels]
+- 13454: sound/gt155.cpp: Increased the range of the filter output values to avoid overflow. [Devin Acker]
+- 13455: dataeast/supbtime.cpp: Fixed the note about the CPU type in the header comment. [cam900]
+- 13458: linn/linndrum.cpp: Added initial sound output emulation (missing some controls and post-processing). [m1macrophage]
+- 13460: skeleton/optomaxv.cpp: Added a skeleton driver for the AMS Optomax V image analyser. [ClawGrip]
+- 13461: taito/asuka.cpp: Dumped an additional Spanish version of Cadash. [Tailsnic Retroworks, ClawGrip]
+- 13463: metro/hyprduel.cpp: Use explicitly sized integers for data members that need to be registered for save states. [cam900]
+- 13464: cpu/drcbearm64.cpp: Emit optimised address space access code. [Vas Crabb]
+- 13466: kaneko/kaneko16.cpp, kaneko/kaneko_calc3.cpp: Cleaned up code. [cam900]
+- 13468: misc/mcatadv.cpp: Cleaned up code. [cam900]
+- 13470: tatsumi/tatsumi.cpp, tatsumi/tzbx15_sprites.cpp: Made the TZB215/TZB215 sprite chips a separate device. [David Haywood]
+- 13472: cpu/drcbearm64.cpp: Add disassembled UML comments to logged native assembly language. [Vas Crabb]
+- 13474: igs/igs_m027_033vid.cpp: Added basic video emulation so Qiji 6 shows the attract mode demonstration. [David Haywood]
+- 13476: cpu/drcbearm64.cpp: Fixed issues with and optimised code generation for add/subtract instructions. [Vas Crabb]
+- 13479: sinclair/tsconf.cpp: Add onboard media devices before adding slots to make media options less unstable. [holub]
+- 13480: sorcerer_cass.xml: Corrected developer names, and added release dates and publisher details. [exidyboy]
+- 13484: cpu/drcbearm64.cpp: Optimised conditional operations using the carry flag. [Vas Crabb]
+- 13486: cpu/mb86233: Store ALU results before writing to registers/memory and only test D after ALU operations. [Matthew Daniels]
+- 13492: heathzenith/h8.cpp: Refactored interrupt handling and moved the interrupt controller to a common location. [Mark Garlanger]
+- 13494: linn/linndrum.cpp: Hooked up mixing, panning and tuning controls, added audio filters, and adjusted balance. [m1macrophage]
+- 13495: dataeast/rohga.cpp: Added Wizard Fire (Over Sea v1.0) [Tailsnic Retroworks, ClawGrip]
+- 13496: bus/nes/disksys.cpp: Implemented name table mirroring mode read, and fixed issues with saved state support. [cam900]
+- 13502: cpu/sc61860: Implemented an undocumented load immediate zero instruction and fixed disassembler issues. [ffxx68]
+- 13503: tatsumi: Moved games on different hardware variants from tatsumi/tatsumi.cpp to separate source files. [David Haywood]
+- 13504: linn_linndrum.lay, oberheim_dmx.lay: Show a warning when layout scripting support is disabled. [m1macrophage]
+- 13506: cpu/v60: Use the correct rounding mode when converting floating-point values to integers. [Matthew Daniels]
+- 13507: cpu/i960: Don’t preserve the sign bit when shifting integers left. [Matthew Daniels]
+- 13508: sinclair/spectrum.cpp: Improved performance by 50% avoiding a tag lookup on a hot critical path. [holub]
+- 13509: linn/linndrum.cpp: Emulated hi-hat decay and improved the default snare tuning. [m1macrophage]
+
+
+Source changes
+--------------
+-tc0060dca: make stream alloc adaptive, make chip stereo, and do table lookup at write instead of at stream update [hap]
+
+-opwolf: add todo note about sound routing [hap]
+
+-vsystem/vsystem_spr.cpp: Fix spelling error (#13402) [cam900]
+
+-misc/gms.cpp: added a couple more inputs for baile [Ivan Vangelista]
+
+-misc/gms.cpp: added a couple more inputs for sscs [Ivan Vangelista]
+
+-video/zr36060.cpp: hookup Codec and Video register handlers [angelosa]
+
+-Draw 80 Poker driver improvements: [Roberto Fresca, Grull Osgo]
+ * Added the DIP switch via AY8910.
+ * Battery sensor through T1 line.
+ * Rewrite the input system for players.
+ * Improved coin inputs.
+ * Added and documented the DIP switches fuctionalities.
+ * Lamps support.
+ * Mech Counters support.
+ * Added hopper device.
+ * Added default init for video memory.
+ * Fixed a bug in read NVRAM decode.
+ * Added AY-8910 callback for the DIP switch.
+ * Added support for Wild 1 cocktail mode.
+ * Added button-lamps clickable layout for both games.
+ * System is playable with almost complete functionality.
+
+-leland_v: remove uneeded screen always update flag [hap]
+
+-linn/linndrum.cpp: Added interactive layout for the LinnDrum. (#13404) [m1macrophage]
+ * linn/linndrum.cpp: Added interactive layout for LinnDrum.
+ * linn/linndrum.cpp: Spell tuning correctly.
+
+-misc/vgmplay.cpp: Give visual feedback for playing/paused and loop state. [Vas Crabb]
+
+New software list items marked not working
+------------------------------------------
+pc98_cd: FreeBSD(98) Nyuumon Kit (2.1.OR) [sampson]
+
+-hash/pc98_cd.xml: add metadata to freebsd21 [angelosa]
+
+New systems marked not working
+------------------------------
+Baibian Shuangkou [little0]
+Chaoji Mingxing [little0]
+
+-leland: no need to check for scanline>0 for partial updates (update_partial already checks if scanline is out of bounds) [hap]
+
+-screen: remember last partial updates reset time because of scheduler time travel issue [hap]
+
+-capcom/cps1_v.cpp: fix #13413 [angelosa]
+
+-ddragon3_v: small cleanup to source code spacing [hap]
+
+-cbajbl: mark game as bootleg [hap]
+
+-cbajbl: remove odd spaces from romdefs [hap]
+
+-pci/zr36057.cpp: hookup video frontend handlers [angelosa]
+
+-screen: fix possible race condition at reset_origin if vblank start == vblank end [hap]
+
+-leland: add debugger side effect check when reading vram, no need for m_last_scanline variable [hap]
+
+-kinst: add eprom waitstates [hap]
+
+-Tidied up some minor things. [Vas Crabb]
+
+-skyarmy: tweak clocks based on pcb video [hap]
+
+-pci/zr36057.cpp: hookup interrupt routing [angelosa]
+
+-zvt/pp01.cpp: Restrict drawing to clipping rectangle and cleaned up code. (#13417) [cam900]
+ * Restore memory mapping after loading a saved state.
+ * Reduced literal tags and run-time tag lookups.
+ * Use more appropriate types and made some variables const.
+
+-wing/pinkiri8.cpp: Fixed some issues and cleaned up code: (#13412) [cam900]
+ * Moved drawing functions into the VDP device class.
+ * Marked Pinkiri 8 as lacking sound altogether.
+ * Use tilemap helpers, use palette format helpers, and adjusted palette size to match the amount of palette RAM.
+ * Suppress side effects for debugger reads, and improved save state support.
+ * Fixed switch matrix reading behavior.
+ * Reduced literal tag usage and run-time tag lookups.
+ * Reduced duplication and improved member and ROM region names.
+
+-vsystem/pspikes.cpp: Use explicitly sized integers for members that need to be registered for save states. (#13403) [cam900]
+ * Also improved member names.
+
+-spectrum_cass.xml: Added five working items and improved metadata. (#13398) [ArcadeShadow]
+ * Also made the two cassettes included in BMX Simulator 2 parts of a single item.
+
+New working software list items (spectrum_cass.xml)
+---------------------------------------------------
+African Trail Simulator [Spectrum Computing]
+Ajedrez [Spectrum Computing]
+Destronado [El Trastero del Spectrum]
+Mieyen [Inufuto]
+Run for Gold (System 4) [Spectrum Computing]
+
+-sinclair/sprinter.cpp: Use an input merger to combine IRQ sources. (#13409) [holub]
+
+-zpa/iq151.cpp: Cleaned up ROM mapping. (#13415) [cam900]
+ * Use a memory view to switch in the boot ROM, and reduced ROM region size to actual ROM size.
+ * Reduced run-time tag lookups and added notes.
+
+-taito/flstory.cpp, taito/nycaptor.cpp: Corrected sound CPU interrupt frequency. (#13408) [JOTEGO]
+ * Interrupt is generated by dividing down the output of the 8 MHz crystal oscillator.
+
+-misc: small cleanup, nycaptor: add audiocpu irq change to other drivers too [hap]
+
+-bus/sg1000_exp/sp400.cpp: Added a skeleton device for the SP-400 plotter (#13410) [Fabio Dalla Libera, Golden Child]
+
+-util/chd.cpp: Hacked around GitHub #13029 (issues creating delta CHDs). [Vas Crabb]
+ * The code depends on getting away with trying to read at least one hunk past the end of the parent CHD.  Previously it just
+    ignored any errors from reading the parent CHD, but adding error checking broke it.
+ * This hack just ignores that specific error.  Also cleaned up some gross flow control and made more things const.
+ * The code should obviously be fixed properly, but that's non-trivial. This gets it to a state no worse than it was in 0.270.
+
+New systems marked not working
+------------------------------
+Treasure Trail (JPM) [Hammy]
+
+-tms52xx: Enable command buffering during speak operation. [Michael Zapf]
+
+-acorn/electron.cpp: Merged electron_m.cpp and electron.h into electron.cpp. [Nigel Barnes]
+
+-Draw 80 Poker driver improvements: [Roberto Fresca, Grull Osgo]
+ * Fixed inputs polarity: No more credits triggered at reset.
+ * Found the "Pair of Aces" DIP switch.
+ * Fixed hopper DIP switch polarity.
+ * Fixed hopper coin out signal.
+ * Reverse-engineered the whole DIP switches bank.
+ * Rewrote I/O handlers to simplify the if/then nested scheme toward switch statements.
+ * Reworked coin inputs per game.
+ * Promoted Draw 80 Poker (Minn) to working.
+ * Promoted Wild 1 (Quick Change Kit) to working.
+
+Systems promoted to working
+---------------------------
+Draw 80 Poker (Minn) [Roberto Fresca, Grull Osgo]
+Wild 1 (Quick Change Kit) [Roberto Fresca, Grull Osgo]
+
+New working clones
+------------------
+Multi Champ (World, ver. 9.6 [Manuel Assoni]
+
+New clones marked not working
+-----------------------------
+Mahjong Electron Base (parts 2 & 3, Japan bootleg) [little0]
+
+-nec/pc88va.cpp: preliminary C-Bus slot hookup [angelosa]
+
+-tms52xx: Remove legacy spchrom implementation. [Michael Zapf]
+
+-Multiple synth layouts: updated to the latest slider script. (#13422) [m1macrophage]
+ * Explicit configuration: Using add_* functions, instead of scanning through the layout for sliders.
+ * Separated the copy-pasteable portion of the script.
+ * A no-op for the DMX and LinnDrum layouts.
+ * Fixes multitouch and slider "drift", and adds support for relative adjustments to the D70 sliders (they were using an older
+    version of the script).
+
+-oberheim/xpander: Added save state support. (#13426) [m1macrophage]
+
+-pc/sis630.cpp: Add notes and ROM placeholder for GameCristal JAMMA interface PCB (#13376) [ClawGrip]
+
+-Cleaned up some stuff: [Vas Crabb]
+ * oberheim/xpander.cpp: Use multi-dimensional output finders algorithms and range-based for loops.
+ * util/chd.cpp: Use a C++17ism to reduce if nesting a bit.
+ * sound/tms5220.cpp: Five an example VERBOSE value that will actually do something rather than LOG_GENERAL which isn't used in the
+    file at all.
+
+-yachiyo/mole.cpp: Cleaned up code: (#13427) [cam900]
+ * Use a memory share creator for tile RAM, improved member names and tags.
+
+-philips/mcd212.cpp: Renamed matte flag constants and refactored matte handling code. (#13304) [Vincent-Halver]
+ * Renamed "regions" to "mattes" to match Green Book convention.
+
+New working clones
+------------------
+Maque Long Xiong Hu Di (Taiwan?, D106T) [little0]
+
+-tektronix/tek410x_kbd.cpp: Keyboard updates [AJR]
+ * Rebind |/~ key to BACKSLASH2 (as suggested by @Elektraglide); bind Esc and Tab and add arbitrary bindings for remaining keys
+ * Add notes on different key labels for 4404 keyboard (this might be emulated separately in the future)
+
+-dataeast/simpl156.cpp: Consolidate driver in single file [AJR]
+
+-gk2000: update notes [hap]
+
+-debugger/win: Added option to disable window grouping. [Vas Crabb]
+ * Option is in debugger console window Settings menu.  Changes apply on hard reset or restarting MAME.  Setting is saved to
+    default.cfg.
+
+-debugger/debugwin.cpp: Fixed clang build. [Vas Crabb]
+
+-apple/macpwrbkmsc.cpp: Map full SCSI DRQ range; some disk utilities don't use the OS's normal address. [R. Belmont]
+
+-mystwarr: small cleanup [hap]
+
+-konamigx_v.cpp, konamigx.h: implement brightness for layers (#13400) [Fredrik Sandkvist]
+ * konamigx_v.cpp, konamigx.h: implement brightness for layers
+ * konamigx_m.cpp: initial implementation of operation 0x98
+
+-linn/linndrum.cpp: Made knobs controllable by pointing device. (#13433) [m1macrophage]
+
+-geneve: Enable 384K SRAM expansion. [Michael Zapf]
+
+-kinst: add debugger side effects check after prev commit [hap]
+
+-megacd.xml: Metadata cleanups (#13436) [ArcadeShadow]
+ * Added parent/clone relationship between "Blackhole Assault (Europe)" / "Black Hole Assault (Japan)"
+ * Lowercase on descriptive words "Night Trap (USA, re-release)"
+ * Replaced country abbreviation "Cadillacs and Dinosaurs - The Second Cataclysm (Brazil)"
+
+New systems marked not working
+------------------------------
+Tarzan Chuang Tianguan 2 Jiaqiang Ban (V306CN) [dyq, little0, Guru]
+Xingyun Pao De Kuai (V106CN) [dyq, little0, Guru]
+
+-ti99: Added I/O port Splitter device. [Michael Zapf]
+
+-ti99: Add sidecar cartridge Arcturus. [Michael Zapf]
+
+-fsblk.cpp: Internal overhaul [AJR]
+ * Replace custom reference counting wrapper with std::shared_ptr
+ * Rename fsblk_t::block_t::copy to write and use it in a few more places
+ * Add fsblk_t::block_t::read
+ * Rename fsblk_t::block_t::offset and rooffset due to name collisions and privatize these helper functions
+ * Rename fsblk_t::fill to fill_all for clarity's sake
+
+-skeleton/pv9234.cpp: update notes, minor cleanups [angelosa]
+
+-opwolf: improve sound routing [hap]
+
+-tc0060dca: use 2 handlers for writing volume [hap]
+
+-opwolf: reduce duplicated adpcm source code [hap]
+
+-imagedev/floppy.cpp: Return INVALIDIMAGE from floppy_image_device::identify if no format scores [AJR]
+
+New working systems
+-------------------
+Lian Huan Pao - ATT II [dyq, little0, Guru]
+Lian Huan Pao - ATT III [dyq, little0, Guru]
+Xingyun Dou Dizhu [dyq, little0, Guru]
+
+New clones marked not working
+-----------------------------
+Chaoji Dou Dizhu (V213CN) [dyq, little0, Guru]
+Heart of Antony (0252526, US) [Dam0, Heihachi_73]
+Mr Woo (30215311, NSW/ACT) [Dam0, Heihachi_73]
+
+-bmc/popobear.cpp: redumped one GFX ROM for qiwang [dyq, little0, Guru]
+
+-bayroute1: add sound roms [hap]
+
+-driveyes: correct pcm rom dsw default state [hap]
+
+New systems marked not working
+------------------------------
+Crown Poker (ver. 1.20) [Brian Troha, Hammy, The Dumping Union]
+
+-Major improvements to misc/vpoker.cpp driver: [Roberto Fresca, Grull Osgo]
+ * Change vpoker description to Challenger Draw Poker.
+ * Inputs from the scratch.
+ * Split machine drivers for each game.
+ * Hook clocks to the 6840 PTM.
+ * Reworked interrupts handling.
+ * Lamps support for both sets.
+ * Adjusted screen visible area per game.
+ * Clickable button-lamps layout for vpoker.
+ * Clickable button-lamps layout for 5acespkr.
+ * Mech counters support.
+ * NVRAM support.
+ * Added sigma-delta DAC sound support.
+ * Promoted vpoker to working.
+ * Promoted 5acespkr to working.
+ * Added technical notes.
+
+Systems promoted to working
+---------------------------
+Challenger Draw Poker [Roberto Fresca, Grull Osgo]
+5-Aces Poker [Roberto Fresca, Grull Osgo]
+
+-ti99: Change Arcturus device short name. [Michael Zapf]
+
+New systems marked not working
+------------------------------
+Chaoji Da Lianzhuang (Version 1.1) [dyq, little0, Guru]
+Huang Guan Le Yuan (990726 CRG1.1) [dyq, little0, Guru]
+
+New clones marked not working
+-----------------------------
+Super Star 97 / Ming Xing 97 (version V168A) [dyq, little0, Guru]
+
+-bmc/bmcpokr.cpp: Improved DIP switch settings for xyddzhh. [Vas Crabb]
+
+-posixfile.cpp: nothrow is passed to operator new, not to reinterpret_cast. [Vas Crabb]
+
+-posixfile.cpp: Pass in explcit alignment to operator new just in case. [Vas Crabb]
+
+-skeleton/pv9234.cpp: hookup stub NS16550, more notes [angelosa]
+
+-nec/pc88va.cpp: implement GVRAM single/multiplane ROP registers [angelosa]
+
+-nec/pc88va_v.cpp: multiplane mode don't fallback in singleplane if AACC disabled [angelosa]
+
+-misc/gms.cpp: redumped one GFX ROM for cjdlz [Guru]
+
+-misc/gms.cpp: fixed GFX for cjldp [Ivan Vangelista]
+
+-snk/munchmo.cpp: Cleaned up graphics decoding layouts and other improvements: (#13442) [cam900]
+ * Cleanup graphics decoding layouts, use scale factors rather than duplicating pixels.
+ * Split graphics ROM and look-up table ROM regions.
+ * Improved save state support and cleaned up code.
+
+-pc/przone.cpp: notes [angelosa]
+
+-bus/cbus: add MIF-201 MIDI interface stub [angelosa]
+
+-igs/igs_m027.cpp: Promoted xypdk and tct2p to working: [Vas Crabb]
+ * Fixed inputs and sound for xypdk.
+ * Fixed inputs, and hooked up hopper, counter and lamp for tct2p.
+
+Systems promoted to working
+---------------------------
+Tarzan Chuang Tianguan 2 Jiaqiang Ban (V306CN) [Vas Crabb]
+Xingyun Pao De Kuai (V106CN) [Vas Crabb]
+
+-snk/snk.cpp: Split driver state class for different hardware configuration: (#13440) [cam900]
+ * Added saved state support and suppress side effects for debugger reads.
+ * Use generic graphics decoding layouts.
+ * Added machine reset handler to fix soft reset.
+ * Reduced literal tag use.
+ * Reduced duplication, use more appropriate types for some variables, made more variables const.
+
+-snk/snk.cpp: Fix build; igs/igs_m027.cpp: Added note about tct2p inputs. [Vas Crabb]
+
+-snk/mainsnk.cpp: Suppress side effects for debugger reads and cleaned up code. (#13445) [cam900]
+ * Cleaned up graphics decoding layouts, use bit helpers, made some variables const.
+
+-6525tpi: clear latches on write to portc in interrupt mode [Dirk Best]
+
+-amiga: CDTV CD-ROM support [Dirk Best]
+ * CDTV can boot from CD and play audio discs
+ * Alternatively use the A570 expansion for the A500
+
+New systems marked not working
+------------------------------
+Xing Yun Pao Ma Di (V401CN) [dyq, little0, Guru]
+Wang Pai Dou Dizhou [dyq, little0, Guru]
+Wu Lin Zheng Ba [dyq, little0, Guru]
+
+New clones marked not working
+-----------------------------
+Xing Yun Pao Ma Di (unknown ver) [dyq, little0, Guru]
+
+-nec/pc88va_sgp.cpp: add 8bpp mode, fix tetris text [angelosa]
+
+-More improvements to misc/vpoker.cpp driver: [Roberto Fresca, Grull Osgo]
+ * Rewrote the lamps scheme.
+ * Fixed the button-lamps layouts.
+ * Added workaround for the NMI routine (vpoker).
+ * Fixed vpoker NVRAM issues.
+ * Fixed mech counters support per game.
+
+New systems marked not working
+------------------------------
+Chao Ji Dou Niu (V305CN) [dyq, little0, Guru]
+Chao Ji Sai Jin Hua [dyq, little0, Guru]
+
+-igs/igs_68k_023vid.cpp: made xypmd / xypmda show something (#13447) [mamehaze]
+
+-seta/rmhaihai.cpp: Added Real Mahjong Haihai DIP switch locations from manual. [Vas Crabb]
+
+-cpu/drcbearm64.cpp: Added some glue for supporting memory access optimisations. [Vas Crabb]
+
+-snk/snk_bbusters_spr.cpp, snk/bbusters.cpp, snk/mechatt.cpp: Cleaned up code: (#13448) [cam900]
+ * Reduced literal tag use, use bit extraction helpers.
+ * Made some variables const, improved member names and tags, cleaned up formatting.
+
+-philips/mcd212.cpp: Fixed handling of transparent layers and simplified code. (#13432) [Vincent-Halver]
+ * Only execute the first matte that triggers on an X coordinate.
+ * Ignore transparent layers when mixing.
+ * Show the backdrop when both layers are transparent.
+
+-bus/centronics/epson_fx80.cpp: Added skeleton devices Epson FX-80 and JX-80 printers. (#13429) [goldnchild]
+
+-src/devices/bus/centronics/epson_fx80.cpp: C++ has rules about how to refer to protected members of base classes. [Vas Crabb]
+
+-ti99: Model the Speech Synthesizer as an own unit, with an adapter board for the PEB. [Michael Zapf]
+
+-ti99: Add the lost newline at EOF. [Michael Zapf]
+
+-nec/pc88va_sgp.cpp: implement ROP and TPMOD functions, fix pitch bugs in boomer and shinraba [angelosa]
+
+-nec/pc88va_v.cpp: vestigial interlace support [angelosa]
+
+-sound/namco.cpp: m_voices is a configuration parameter, so it shouldn't be part of the save state [AJR]
+
+New systems marked not working
+------------------------------
+Nu Wang Feng New / Queen Bee New (China, Ver. 1.10) [dyq, little0, Guru]
+
+-scripts/build/check_include_guards.py: bail if no argument specified [angelosa]
+
+-ti99/peb/speechadapter.h: fix include guard [angelosa]
+
+-aristocrat/aristmk6.cpp: add note relationship with neon250 [angelosa]
+
+-Removing erroneously duplicated lines in figure of Model 3 video board (#13452) [Matthew Daniels]
+
+-Add disassembler for CDC 160(-A) architecture [AJR]
+
+New clones marked not working
+-----------------------------
+Jin Hu Lu 2 (v120GI) [dyq. little0, Guru]
+
+New systems marked not working
+------------------------------
+Waku Waku Shinkansen (J 971031 V0.002) [Darksoft]
+
+-skeleton/vgame.cpp: dumped GFX ROM for cjsjh [Ivan Vangelista]
+
+-docs: Fixed paper size selection (GitHub #13439).  Also set paper size to widespread A4 for dist.mak and CI. [Vas Crabb]
+
+-Fixed some things causing save states to be unportable: [Vas Crabb]
+ * emu/save.cpp: Don't save block stride as it depends on alignment rules.
+ * windows/winmain.cpp: Don't send display orientation to machine outputs.
+
+-nec/pc88va_v.cpp: hook GDEN0 and VW nec/pc88va_sgp.cpp: hook start_dot for destination transfers [angelosa]
+
+-nec/pc88va_v.cpp: draw sprites to odd lines when MG is 1 [angelosa]
+
+-hash/pc88va.xml: add Inufuto entries [angelosa]
+
+New working software list items
+-------------------------------
+pc88va: AntiAir, Bootskell, Cacorm, Cavit, Cracky, Guntus, Lift, Neuras, Osotos, Yewdow [angelosa]
+
+New software list items marked not working
+------------------------------------------
+pc88va: Aerial, Ascend, Battlot, Hopman, Impetus, Ruptus [angelosa]
+
+New clones marked not working
+-----------------------------
+Meng Hong Lou (earlier) [dyq, little0, Guru]
+
+-skeleton/vgame.cpp: dumped GFX ROM for cjdn [Guru]
+
+-pci/aha2940au.cpp: add enough glue logic to at least try some SCSI [angelosa]
+
+-supbtime/chinatwn: lower oki clock a bit [hap]
+
+-vpoker.cpp driver improvements. [Roberto Fresca, Grull Osgo]
+ * Workaround for NMI to get the Save and Halt function (5-Aces).
+ * Solved any issues regarding interrupt vectors.
+ * Documented the 5-Aces Poker SETUP mode.
+ * Fixed the 5-Aces Poker vertical refresh rate.
+ * Renamed function according to its own interrupts vector name.
+ * Unified most of the inputs.
+ * Rewrote the 5-Aces Poker machine config to use the vpoker one as base config.
+ * Added links to the Challenger Draw Poker flyers.
+ * Added technical notes.
+
+-magicfly.cpp improvements: [Roberto Fresca]
+ * Added some notes
+ * Cleaned up the driver.
+
+-dataeast/supbtime.cpp: Fix hardware notes (#13455) [cam900]
+
+-apple/apple2gs.cpp: Fix language card state after Control-Reset. (GitHub #13420) [R. Belmont]
+
+New machines marked as NOT_WORKING
+----------------------------------
+MicroVAX I [microvax2.org]
+MicroVAX II [microvax2.org]
+MicroVAX 3400 [microvax2.org]
+MicroVAX 3500 [microvax2.org]
+
+-nec/pc88va_sgp.cpp: add RGB565 ROPs nec/pc88va_v.cpp: use DSA in draw_packed_gfx_4bpp, halve pitch for draw_direct_gfx_rgb565
+ hash/pc88va.xml: update QA, and use saner defaults where applicable [angelosa]
+
+-pci/virge_pci.cpp: add virgevx_pci stub [angelosa]
+
+-hash/pc88va.xml: fix validation [angelosa]
+
+-scripts/src/cpu.lua: Update comment [AJR]
+
+-magicfly driver improvements: [Roberto Fresca, Grull Osgo]
+ * Bonne Chance chars and tiles both 3bpp.
+ * New TILE_GET_INFO and video start for Bonne Chance.
+ * Reworked the Bonne Chance and 7mezzo color palette.
+
+-skeleton/vgame.cpp: Tentatively change CPU type to ARM7 [AJR]
+
+-am9513.cpp: more logging for LOG_MODE and LOG_TC (#13406) [Adam Billyard]
+
+New systems marked not working
+------------------------------
+Chaoji Dou Dizhu (V219CN) / Chaoji Dou Dizhu Jiaqiang Ban (V302CN) [dyq, little0, Guru]
+Chaoji Dou Dizhu Jiaqiang Ban (S300CN) / unknown second game [little0]
+
+New clones marked not working
+-----------------------------
+Chaoji Dou Dizhu (V219CN) / Chaoji Dou Dizhu Jiaqiang Ban (V405CN) [dyq, little0, Guru]
+
+-nec/pc88va_v.cpp: hookup TSP Maximum Raster Address (line height per char) [angelosa]
+
+Software list items promoted to working
+---------------------------------------
+pc88va.xml: Abunai Tengu Densetsu, Crescent Moon Girl, D.P.S - Dream Program System, Pac-Man [angelosa]
+
+-cpu/drcbex64.cpp: Align HANDLE entry point to 16-byte boundary. [Vas Crabb]
+
+-cpu/mips/mips3drc.cpp: Don't start a new block for every callable helper. [Vas Crabb]
+
+New working clones
+------------------
+Majiang Caihui Ying (ver 2.20) [little0]
+Que You Ji - Dian Zi Ji Pan Jiaqiang Ban (v201) [dyq, little0, Guru]
+
+-igs/pgm.cpp: identified kovqhsgs302 [FBNeo]
+
+-Add a skeleton driver for Cisco CSS11501S-K9 Content Services Switch (#13384) [ClawGrip]
+
+New not working machine
+-----------------------
+Nihonzenkoku-katochan-no-kurukuru-ressya-de-Pe! (Ver.1.00, 2004/10/24) [Darksoft, MetalliC, rtw]
+
+-3rdparty/lua: Updated to Lua 5.4.7. [Vas Crabb]
+
+-3rdparty/expat: Updated to expat 2.6.4. [Vas Crabb]
+
+-3rdparty/expat: Added dummy expat_config.h to hopefully fix macOS buid. [Vas Crabb]
+
+-cpu/drcbearm64.cpp: Emit optimised memory access code. (#13464) [Vas Crabb]
+ * Emit optimised code for native-width reads and writes no larger than native width.
+
+-3rdparty/expat: Hopefully fix macOS build properly. [Vas Crabb]
+
+-m68k: fix fmovem effective address increment bug [Patrick Mackinlay]
+
+-bt431, bt45x: make accessors public [Patrick Mackinlay]
+
+-bt450: new ramdac device [Patrick Mackinlay]
+
+-misc/mcatadv.cpp: Cleaned up code: (#13468) [cam900]
+ * Use sign extension and bit extraction helpers.
+ * Avoid unnecessary device replacement in machine configuration.
+ * Made more variables const, updated comments.
+
+-kaneko/kaneko16.cpp, kaneko/kaneko_calc3.cpp: Cleaned up code: (#13466) [cam900]
+ * kaneko/kaneko16.cpp: Moved Blaze On and Wing Force to a derived state class, reduced optional object finders.
+ * kaneko/kaneko16.cpp: Reduced literal tag use, made more variables const, improved ROM region names, added notes.
+ * kaneko/kaneko_calc3.cpp: Removed hard-coded tags, updated comments.
+
+-machine/ncr5380.cpp: Add DP8490 type so that its Enhanced Mode can be emulated in the future [AJR]
+
+-metro/hyprduel.cpp: Use explicitly size integers for things that need to be registered for save states. (#13463) [cam900]
+
+-sound/gt155.cpp: Increased range of filter output to avoid overflow. (#13454) [Devin Acker]
+
+-shared/seibusound.cpp: Read coin inputs through sound device. (#13450) [cam900]
+ * Coin inputs are read through the sound MCU, so this documents the connections better and allows fake I/O ports to be removed.
+ * Also cleaned up code and improved tags.
+
+-kaneko/kaneko_calc3.cpp: Organise decryption table as 256*64, restored tabulation killed by a previous incarnation of srcclean.
+ [Vas Crabb]
+
+-cpu/dsp56156: Fixed class memory access warnings (was nuking some memory_access::specific helpers). [Vas Crabb]
+
+-skeleton/vgame.cpp: added complete PCB infos and dumped EEPROM for cjsjh [Guru]
+
+-devices/machine: fixed Clang 20.1.0 erroring due to using memset on non-trivial objects [Ivan Vangelista]
+
+New working clones
+------------------
+Toffy (unencrypted) [Hammy]
+
+-nec/pc88va_sgp.cpp: make RMW shifting more reliable, add 1bpp to 1bpp/4bpp OPs [angelosa]
+
+-Add a skeleton driver for DEC MicroVAX 3100 (#13331) [ClawGrip]
+
+New systems marked not working
+------------------------------
+MicroVAX 3100 Model 10 [OldComputers ES]
+
+-dec/uvax3100.cpp: Hook up ROM to memory map and (really) fix loading [AJR]
+
+-Fixed some -listxml issues: [Vas Crabb]
+ * frontend/mame/infoxml.cpp: Recursively discover device types when filtering output.
+ * frontend/mame/infoxml.cpp: Don't waste time/memory collecting device types when not filtering.
+ * scripts/target/mame: Sort driver projects and sources within driver projects to give more determinisitc output on filesystems
+    that don't enumerate in order by filename (e.g. XFS or ext).
+
+-machine/s3c24xx.hxx: Got rid of a layer of indirection on LCD bitmaps. [Vas Crabb]
+
+-frontend/mame/infoxml.cpp: Added null check. [Vas Crabb]
+
+-neogeo: correct link mcu rom label, wgp: rename World Grand Prix to WGP, make wgp2 a parent set [hap]
+
+-wgp: compile error slipped in [hap]
+
+-cpu/drcbearm64.cpp: Add disassembled UML comments to logged native assembly language. (#13472) [Vas Crabb]
+
+-dynax/ddenlovr.cpp: Fixed some Chinese titles: [Vas Crabb]
+ * Use Jyutping transliteration for mjmyunivbl title as Hong Kong is a Cantonese-speaking area.
+ * Corrected character in mjmyunivbl2 Chinese title in comment (traditional, not simplified).
+
+-dynax/ddenlovr.cpp: Default to Hong Kong/Taiwan region for mjmyunivbl and mjmyunivbl2. [Vas Crabb]
+
+New systems marked not working
+------------------------------
+Flower World 3 (V118CN) [little0, XingXing]
+
+New clones marked not working
+-----------------------------
+Super Star 97 / Ming Xing 97 Jianan Ban [little0]
+Tumble Pop (Electronic Devices bootleg) [Hammy]
+
+-neogeo/neogeo.cpp: updated documentation [JacKc]
+
+-various drivers: identified manufacturers for some bootlegs [Hammy]
+
+-devices/cpu/alto2/a2disp.cpp: removed use of memset on non-trivial object [Ivan Vangelista]
+
+-cpu/drcbearm64.cpp: More fixes and optimisations: [Vas Crabb]
+ * Correctly identify valid immediate constants for add/sub/cmp (it was too conservative).
+ * Don't unnecessarily copy UML register values kept in host registers for CMP.
+ * Fixed detection of TST against immediate zero and optimised generated code.
+ * Optimised TST against immediate with all bits set.
+
+-cpu/alto2: Follow the same pattern as the other things that have been altered to avoid problematic memsets in this device.
+ [Vas Crabb]
+
+-cpu/powerpc: Realigned some comments that had drifted. [Vas Crabb]
+
+-make flowerw3 (igs_m027_033vid.cpp) show the attract demo (#13474) [mamehaze]
+ * Co-authored-by: David Haywood <hazemamewip@hotmail.com>
+
+-z80scc: reassert interrupt if conditions persist (fixes MT#9141) [Patrick Mackinlay]
+
+-hash/ibm5170{,_cdrom}: PartitionMagic 8.05 (#13139) [Mike Swanson]
+
+New working software list items
+-------------------------------
+ibm5170.xml: Norton PartitionMagic 8.05 (English), Norton PartitionMagic 8.05 (French), Norton PartitionMagic 8.05 (German), Norton
+  PartitionMagic 8.05 (Italian), Norton PartitionMagic 8.05 (Spanish) [chungy]
+
+New working software list items
+-------------------------------
+ibm5170_cdrom.xml: Norton PartitionMagic 8.05 [chungy]
+
+-linn/linndrum.cpp: First pass at audio emulation. (#13458) [m1macrophage]
+ * linn/linndrum.cpp: First pass at audio emulation. Promoted to working.
+ * linndrum: Remove stray & from tom variation calculation.
+
+-igs/igs_m027_033vid.cpp: redumped GFX ROM for flowerw3 [little0]
+
+-igs/jackie.cpp: corrected ROM loading for kungfu [David Haywood]
+
+-igs/igs_m027_033vid.cpp: added tile and oki banking, preliminary inputs. Renamed as per title screen. Playable but for the missing
+ hopper support. [Ivan Vangelista]
+
+-mame.lst: forgot to commit romset change [Ivan Vangelista]
+
+-igs/igs_m027_033vid.cpp: added video enable bit, removed outdated comments [Ivan Vangelista]
+
+-cpu/drcbearm64.cpp: Fixed issues with and optimise ADD[C]/SUB[B] code generation. (#13476) [Vas Crabb]
+ * Fixed potential crash on generating code for UML ADDC or SUBB with immediate operands (GitHub #13475).
+ * Optimised generated code for various degenerate cases and cases where register loads can be avoided.
+
+-vax: Minor disassembly refinements [AJR]
+ * xtal.cpp: Add value for later use
+
+-igs/igs_m027_033vid.cpp: added MACHINE_IMPERFECT_COLORS flag [Ivan Vangelista]
+
+-taito tilemap chips: mark gfxram dirty after loadstate [hap]
+
+-bbusters: correct what appears to be an old copy paste error with adpcm rom loading [hap]
+
+-softfloat: remove unused global LITTLEENDIAN/BIGENDIAN macros, as well as TRUE/FALSE macros [hap]
+
+-cpu/drcbearm64.cpp: General cleanup, no functional changes. [Vas Crabb]
+
+-cpu/drcbearm64.cpp: Minor fixes and optimisations: [Vas Crabb]
+ * Clear V/Z/S bits in flags register after SETFLGS or RESTORE.  These flags are kept in the native NZCV register, and SAVE assumes
+    the corresponding bits in the flags register are clear.
+ * Don't use an extra temporary register for SETFMOD with operand loaded from memory.  It doesn't allow additional parallelism
+    anyway.
+ * Slightly optimised generated code for GETFLGS.
+ * Avoid a redundant TST when flags are requested for the non-optimised ROLAND case.  Also avoid unnecessarily updating flags when
+    not requested.
+ * Don't update flags for ADD/ADDC/SUB/SUBB/AND if not requested.  Slightly reduces pressure on the NZCV register.
+ * Added TODO notes for opportunities to use CSEL/FCSEL rather than conditional branches.
+
+-nec/pc88va_v.cpp: add display start address, fix bobs display in shinraba, add offset base for split graphics nec/pc88va_sgp.cpp:
+ handle source negative pitches, avoid out of bounds accesses in rtype [angelosa]
+
+-video/s3virge.cpp: add stub Serial Port implementation, retire s3virgedx_rev1_vga_device [angelosa]
+
+-pci/virge_pci.cpp: hookup Leadtek WinFast 3D S600DX BIOS alt to virgedx_pci [Devin Acker]
+
+-machine/i82371sb.cpp: lift cargo cult 0xe0-0xef noprw machine/mediagx_cs5530_bridge, machine/sis85c496.cpp, machine/sis950_lpc.cpp:
+ as above [angelosa]
+
+-sega/segasp.cpp: bingogal security PIC dumped [HRKT20, MetalliC, rtw]
+
+-ddragon: increase overall adpcm volume [hap]
+
+-cpu/drcbearm64.cpp: Optimised conditional operations using carry flag. (#13484) [Vas Crabb]
+ * Track the state of the native carry flag to avoid unnecessarily manipulating the native NZCV register.  If the native carry flag
+    does not correspond to the UML carry flag, test the bit in the flags register for the C and NC conditions.
+ * Use condition select instructions to implement conditional forms of MOV and FMOV when advantageous.
+ * Fixed EXIT with C/NC/A/BE condition not working properly if it doesn't immediately follow a CMP or SUB.  Extended reach of
+    conditional EXIT to +/-128MiB (was +/-1MiB for conditions other than U/NU).
+ * Moved code to set up skipping conditional instructions to a common function.
+ * Use TBZ/TBNZ for short backward jumps with U/NU/C/NC conditions to save one instruction and a temporary register.
+ * Simplified/optimised ADD[C]/SUB[B] code generation - avoids an unnecessary register copy when one operand is in memory and the
+    other is a small immediate value.  Also fixed another unnecessary register copy for SUB[B] when an operand is kept in a host
+    register.
+ * Slightly optimised generated code for AND immediate.
+
+-Miscellaneous minor stuff: [Vas Crabb]
+ * scripts/minimaws: Set option strict for JavaScript code.
+ * util/mfpresolve.h: Be explicit about turning nullptr into a pointer to data.
+ * cpu/drcbearm64.cpp: Reduced number of temporary registers used for AND with some operand combinations.
+
+-Major improvements to norautp.cpp driver: [Roberto Fresca, Grull Osgo]
+ * Consolidate driver in one file.
+ * New palette for drhl and drhla.
+ * Added new test functions for drhl, drhla, dphl, and dphla.
+ * Cleaned all the conditional unused things.
+ * Rewrote inputs for different sets.
+ * DIP switches improvements for norautp, norautrh,
+ * New inputs for norautua, dphla, drhl, ssjkrpkr.
+ * New portmap for dphl, dphla.
+ * Added Interrupts through vertical sync for all sets based on i8080.
+ * Fixed norautua and norautub table for bin to bcd conversion.
+ * New button-lamps layout with 10 buttons for dphl, dphla, dphljp, drhl, drhla, and ssjkrpkr.
+ * Clickable buttons for all former buttons-lamps layouts.
+ * Promoted drhl, drhla, norautua, norautub, and ssjkrpkr to working.
+
+Systems promoted to working
+---------------------------
+Drews Revenge (v.2.89, set 1) [Roberto Fresca, Grull Osgo]
+Noraut Joker Poker (console, set 1) [Roberto Fresca, Grull Osgo]
+Southern Systems Joker Poker [Roberto Fresca, Grull Osgo]
+
+Clones promoted to working
+--------------------------
+Drews Revenge (v.2.89, set 2) [Roberto Fresca, Grull Osgo]
+Noraut Joker Poker (console, set 2) [Roberto Fresca, Grull Osgo]
+
+-x68k: improve interrupt handling [Patrick Mackinlay]
+
+-fix the build [Patrick Mackinlay]
+
+-really fix the build [Patrick Mackinlay]
+
+-sinclair/tsconf.cpp: Add onboard media devices before adding slots to make media options less unstable. (#13479) [holub]
+
+-v60: improve CVTSW flags and fix issue with float-to-u32 cast [hap]
+
+-cpu/drcbe*.cpp: Print an error message and abort when running off the end of a generated code block. [Vas Crabb]
+
+-cpu/drcbearm64.cpp: Don't emit code for UML NOP - the simplifier litters the code with these for elided operations. [Vas Crabb]
+
+-frontend/mame/clifront.cpp: Added newline at end of -version output. [Vas Crabb]
+
+-igs/igs_m027_033vid.cpp: fixed bitplane order in decode. Fixes colors [David Haywood]
+
+-igs/spoker.cpp: fixed bitplane order in jinhulu2's decode. Fixes colors [David Haywood]
+
+New working clones
+------------------
+Xingyun Man Guan (China, V651C, set 2) [little0]
+
+New systems marked not working
+------------------------------
+Chaoji Daheng 6th (v100FI) [little0]
+Chao Ji Laizi Dou Dizhu (V109CN) [little0]
+
+New clones marked not working
+-----------------------------
+Jin Hu Lu 2 (v101IS) [little0]
+
+New working software list items
+-------------------------------
+fidel_scc: Chess Encyclopedia, Sicilian Variation [anonymous]
+
+-naroutp.cpp driver improvements: [Roberto Fresca, Grull Osgo]
+ * Implemented a custom timer and counter to get correct reads in unknown hardware.
+ * Added buttons-lamps layout to smshilo.
+ * Promoted dphl, dphljp, and smshilo to working.
+ * Added technical notes.
+
+Systems promoted to working
+---------------------------
+Draw Poker HI-LO (M.Kramer) [Roberto Fresca, Grull Osgo]
+HI-LO Double Up Joker Poker [Roberto Fresca, Grull Osgo]
+Draw Poker HI-LO (Japanese) [Roberto Fresca, Grull Osgo]
+
+-jack: improve sound timer [hap]
+
+-igs/igs_68k_023vid.cpp: added preliminary inputs for the xypmd set [Ivan Vangelista]
+
+-igs/spoker.cpp: added input selection for jinhulu2 [Ivan Vangelista]
+
+-linn/linndrum.cpp: Mixing, panning and tuning. (#13494) [m1macrophage]
+ * Mix and pan sliders work.
+ * Master volume knob works.
+ * Tuning knobs and trimmer work. Adjusted knob sensitivity on the layout.
+ * Corrected relative levels of voices.
+ * Added output LPF and DC-blocking HPFs.
+ * Mild refactoring: moved voice setup in strobe_* functions.
+
+-bus/nes/disksys.cpp, sound/rp2c33_snd.cpp: Updates (#13496) [cam900]
+ * bus/nes/disksys.cpp: Updates
+   - Fix dead link
+   - Implement readable nametable mirroring status
+   - Fix save state support, Fix initializing function
+ * sound/rp2c33_snd.cpp: Fix dead link
+
+-video/tea1002.cpp: fix misspelled amplitude variable [angelosa]
+
+-hash: remove spurious spaces with name and supported values for consistency [angelosa]
+
+-tea1002: fix compile [hap]
+
+-fidelity elite: update todo notes [hap]
+
+-More DRC fixes/improvements: [Vas Crabb]
+ * cpu/uml.cpp: Handle some more cases where ROLAND can be turned into AND in the simplifier.
+ * cpu/drcbearm.cpp, cpu/drcbex64.cpp: Fixed a number of cases where 4-byte operations wouldn't clear the upper half of the
+    destination (there are plenty more of these caused by the simplifier that will be harder to fix).
+ * cpu/drcbearm64.cpp: Fixed some cases where a conditional MOV could unexpectedly clear the upper bits of the destination.
+ * cpu/drcbex64.cpp: Improved code generation for various arithmetic and logical operations.  More AND/OR/XOR/ADD/ADDC operand
+    combinations are optimised.  Special cases of ROLAND/ROLINS are optimised.
+ * cpu/drcbex64.cpp: Don't treat operands to FADD/FMUL as commutative. This isn't true when one is a NaN.
+
+-cpu/e132xs: Use osd_printf_error for diagnositc output, and make more local variables const. [Vas Crabb]
+
+-fidelity elite: add more notes about encyclop module [hap]
+
+New systems marked not working
+------------------------------
+Huahua Shijie 5 (V107CN) [little0, XingXing]
+
+-m16c: Fix disassembly syntax for adjnz/sbjnz [AJR]
+
+-Some relatively simple recompiler optimisations: [Vas Crabb]
+ * cpu/drcbex64.cpp: Avoid a lot of unnecessary flag manipulation on shift/rotate operations.  Don't calculate flags when not
+    requested. Don't preserve carry in for operations that don't use it as an input.
+ * cpu/drcbex64.cpp: Avoid loading CL when ECX can be used.  Loading CL doesn't clear the upper bits, so it depends on the previous
+    value of RCX, causing pipeline dependencies.  Loading ECX can grab a fresh rename register.
+ * cpu/drcbearm64.cpp: Attempt more optimisation on one more load immediate operation.
+ * cpu/e132xs: Get rid of a redundant TEST - ROLAND can set the Z flag.
+
+-mips/mips1: remove embedded syscall logging [Patrick Mackinlay]
+
+-tatsumi rotating sprite device refactor take 2 (#13470) [mamehaze]
+
+-tzbx15_sprites.cpp: cursory cleanups [angelosa]
+
+-[heathzenith/h8.cpp] Update interrupt handling to not use set_input_line_and_vector (#13492) [Mark Garlanger]
+ * [heathzenith/h8.cpp] Update interrupt handling to not use set_input_line_and_vector
+ * Fix include guards for moved header file
+
+-fixing cpu for missing opcode (#13502) [ffxx68]
+
+New systems marked not working
+------------------------------
+Magical Tonic Part 2 [buffi]
+
+-naroutp.cpp driver improvements: [Roberto Fresca, Grull Osgo]
+ * Added hopper support.
+ * Extended palette.
+ * Identified dphlunka as Sure Shot.
+ * Custom palette for Sure Shot.
+ * Buttons-lamps layout for Sure Shot.
+ * Inputs for Sure Shot.
+ * Machine config for Sure Shot.
+ * Promote dphla set to working.
+ * Promote sureshoto set to working.
+ * Promote dphlunkb set to working.
+
+Systems promoted to working
+---------------------------
+Joker Poker (Kramer, Alt) [Roberto Fresca, Grull Osgo]
+Sure Shot (older, dphl hardware) [Roberto Fresca, Grull Osgo]
+Draw Poker HI-LO (alt GFX) [Roberto Fresca, Grull Osgo]
+
+-Write the results of an ALU operation before writing to register/memory (#13486) [Matthew Daniels]
+ * Sega Rally has an instruction that calculates d += p and loads a value into d at the same time; it is the loaded value that
+    should be used, not the result of the ALU operation
+ * Also only test the d register when performing an ALU operation
+
+-naroutp.cpp driver improvements: [Roberto Fresca, Grull Osgo]
+ * Added a default NVRAM to fastdrwp.
+ * Derivated inputs for fasdrwp.
+ * Added buttons-lamps layout for fastdrwp.
+ * Promoted fastdrwp set to working.
+
+Systems promoted to working
+---------------------------
+Fast Draw (poker conversion kit) [Roberto Fresca, Grull Osgo]
+
+-cpu/e132xs, cpu/drcbex64.cpp: Recompiler fixes and optimisations: [Vas Crabb]
+ * cpu/e132xs.cpp: Refactored code generation to improve performance and fixed some issues:
+   - Moved a considerable amound of logic from execution time to code generation time.
+   - Fixed some cases where add/subtract carry was being interpreted incorrectly.
+   - Fixed a case where a load double intruction was incorrectly writing the same register twice.
+   - Use UML flags to generate condition codes for addition/subtraction.
+   - Use UML carry flag for carry-/borrow-in.
+   - Reduced UML register pressure (improves performance for hosts with fewer callee-saved CPU registers).
+   - Moved more logic to helper functions to simplify maintenance.
+     * cpu/drcbex64.cpp: Fixed upper bits of UML registers being cleared when used as address offset for LOAD/STORE.
+     * cpu/drcbex64.cpp: Don't do expensive zero/sign flag update for shift operations if only carry flag will be used.
+     * cpu/drcbex64.cpp: Reduced copy/paste in READ[M]/WRITE[M] generators.
+
+-linn_linndrum.lay, oberheim_dmx.lay: Warn when scripting is disabled. (#13504) [m1macrophage]
+
+-z80/z80dasm.cpp: Switched *R (LDIR, OTIR, etc) debugger flag to STEP_OVER (#13451) [holub]
+
+New systems marked not working
+------------------------------
+Da Fu Wang III (V130LI) [Dr.Liu(BJ), little0]
+Huahua Shijie II (v100FI) [Dr.Liu(BJ), little0]
+Hua Sheng II (v120DI) [Dr.Liu(BJ), little0]
+Hu Lu Wang II (v100KI) [Dr.Liu(BJ), little0]
+Jin Huang Guan [Dr.Liu(BJ), little0]
+Shuiguo Leyuan (V150UI) [Dr.Liu(BJ), little0]
+Zuanshi Wutai (V110II) [Dr.Liu(BJ), little0]
+
+New clones marked not working
+-----------------------------
+Jin Hu Lu II (v100GI) [Dr.Liu(BJ), little0]
+
+-v60: implement correct rounding mode when converting float to integer (#13506) [Matthew Daniels]
+
+-igs/spoker.cpp: corrected decryption and memory map for jinhuang [Ivan Vangelista]
+
+-cpu/e132xs: More recompiler fixes: [Vas Crabb]
+ * Cleaned up and commented code for generating an exception, reducing about nine memory accesses to update SR to two.
+ * Implemented NEGS, and fixed ADDS and SUBS not setting excption handler address.
+ * Optimised code to update Z flag on logic operations to avoid branches.
+ * Reduced copy/paste a bit more.
+
+-tatsumi code location shuffle (not a cleanup) (#13503) [mamehaze]
+ * Tatsumi code location shuffle
+ * put the wrong class name here
+
+chip type difference is definitely not the CLUT size, which is weird, but now confirmed on a PCB.
+-------------------------------------------------------------------------------------------------
+Co-authored-by: David Haywood <hazemamewip@hotmail.com> [mamehaze]
+
+-i960: don't preserve sign bit when shifting integer left (#13507) [Matthew Daniels]
+
+-Revert "i960: don't preserve sign bit when shifting integer left (#13507)" [AJR]
+ * This reverts commit 5954767b0b4da0c43f7194c7def4c162fbc8ef78.
+ * This was merged way too hastily based on incomplete information.
+
+-machine/psion_asic9.cpp: Improved ASIC9MX RAM configuration to detect 2MB. [Nigel Barnes]
+ * psion/psion3a.cpp: Improved LCD palette contrast.
+   - Series 3mx now uses ASIC9MX to correctly detect 2MB RAM.
+     * psion/siena.cpp: Improved LCD palette contrast.
+     * psion/workabout.cpp: Improved LCD palette contrast.
+   - Workabout mx now uses ASIC9MX to correctly detect 2MB RAM.
+
+-machine/psion_ssd.cpp: Don't save state of removable media. [Nigel Barnes]
+
+-tatsumi: bulk replace screen_update suffixes, m_rotatingsprites -> m_sprites [angelosa]
+
+-igs/igs01.cpp: dumped missing GFX ROM for xymga [little0]
+
+-igs/spoker.cpp: dumped missing GFX ROM for jinhulu2101is and cjdh6. Renamed cjdh6 to huahuas2a as it was misnamed [little0]
+
+-igs/spoker.cpp: implemented more tile banking bits following Haze's IGS033 implementation, gives correct GFX for the sets which use
+ that chip without breaking the ones using the IGS001 / IGS002 combo [Ivan Vangelista]
+
+-sinclair/spectrum.cpp Improved performance by 50% avoiding memregion lookup in a critical path (#13508) [holub]
+
+-dataeast/rohga.cpp: Add Wizard Fire (Over Sea v1.0) (#13495) [ClawGrip]
+
+New working clones
+------------------
+Wizard Fire (Over Sea v1.0) [Tailsnic Retroworks]
+
+-Update sorcerer_cass.xml (#13480) [Michael Borthwick]
+ * Corrected developer names and added dates and publisher details for various titles.
+
+-Add a new Cadash Spanish set (#13461) [ClawGrip]
+
+New working clones
+------------------
+Cadash (Spain) [Tailsnic Retroworks]
+
+-Add a skeleton driver form AMS Optomax V image analyser (#13460) [ClawGrip]
+
+New machines marked not working
+-------------------------------
+Optomax V [ClawGrip]
+
+-Add a Skeleton driver for Honeywell CAMIR-F1 motion sensor (#13441) [ClawGrip]
+
+New systems marked not working
+------------------------------
+CAMIR-F1 [ArcadeHacker]
+
+-Add a skeleton for Turnier Dart darts machine (#13437) [ClawGrip]
+
+New systems marked not working
+------------------------------
+Turnier Dart [Victor Fernandez (City Game)]
+
+New clones marked not working
+-----------------------------
+Turnier Dart (HB8-97) [Victor Fernandez (City Game)]
+
+-capcom/gng.cpp: Add a new Ghosts'n Goblins bootleg (#13428) [ClawGrip]
+
+New working clones
+------------------
+Ghosts'n Goblins (bootleg) [Jordi Tuells, Jordi Beltran (Crazy Taxi)]
+
+-nec/pc80s13k.cpp: sync pc88va2_fd_if_device with timer fixup from main driver [angelosa]
+
+-hash/pc88va.xml: update QA [angelosa]
+
+-Add a skeleton for Microtek MICE-IIIS-68000 In-Circuit Emulator (#13393) [ClawGrip]
+
+New systems marked not working
+------------------------------
+MICE-IIIS 68000 [ArcadeHacker]
+
+-Also renamed "Microtek International" to just "Microtek" as manufacturer name on the driver for older MICE models (the commercial
+ brand was "Microtek", without any suffix). [ClawGrip]
+
+-Add a skeleton for Microtek Powerpack In-Circuit Emulator PP-SW+ PIII (#13390) [ClawGrip]
+
+New systems marked not working
+------------------------------
+Powerpack In-Circuit Emulator PP-SW+ PIII [ArcadeHacker]
+
+-Add a skeleton driver for Secoinsa Serie 20 (#13381) [ClawGrip]
+
+New systems marked not working
+------------------------------
+Serie 20 [ArcadeHacker]
+
+-misc/compucranes.cpp: Add a new crane coinop on GANCHONEW hardware (#13358) [ClawGrip]
+
+New systems marked not working
+------------------------------
+Cranesaurus Single [Zooo Arcade, Recreativas.org]
+
+-linn/linndrum.cpp: Emulating hi-hat decay. (#13509) [m1macrophage]
+ * Hi-hat decay knob is now working.
+ * Open and closed hats have different decays.
+ * Better default tuning for the snare.
+ * Removed `strobe_` prefix from functions where it was redundant. Made it an argument in a function where it matters.
+
+-Create skeleton device for Sega Megalo 50 DASS and hook it on supported Sega C2 games [jordigahan, Recreativas.org] (#12401)
+ [ClawGrip]
+
+-cpu/e132xs: More recompiler optimisation: [Vas Crabb]
+ * Made interrupt check function generate far more compact code (about 85% reduction in number of native instructions on x86-64).
+ * Optimised out-of-cycles check.
+ * Applied prior optimisation for trap/interrupt checks to static exception checks as well (code is still copy/pasted).
+
+-cpu/e132xs: Fixed IO2 interrupt check in recompiler. [Vas Crabb]
+ * Also further reduced conditional branches and logic operations in interrupt check.
+
+-psion/psion.cpp: Consolidated into single file, and removed runtime tag lookups. [Nigel Barnes]
+ * Simplified ROM/RAM banking.
+ * Added Alpha and Numerical keyboards for POS variants.
+ * Applied software list filters.
+ * Added topslot for Organiser II variants.
+ * Removed fake LZ64S model, ROMs moved to LZ64.
+   - psion/psion_pack.cpp: Allow setting image_interface.
+
+New working clones
+------------------
+Organiser II Alpha POS 200 [Nigel Barnes, Jaap Scherphuis]
+Organiser II P 250 [Nigel Barnes, Jaap Scherphuis]
+Organiser II P 432 [Nigel Barnes, Jaap Scherphuis]
+
+-srcclean the tree. [Vas Crabb]
+
+-src/devices/cpu/e132xs/e132xsdrc.cpp: Fixed regression in exceptions. [Vas Crabb]
+
+-Miscelaneous minor fixes: [Vas Crabb]
+ * Changed "Exception Points" to "Exceptionpoints" in the debugger documentation and help.  This better matches "Watchpoints" and
+    "Registerpoints".  Also, it's very confusing that you see the help topic listing showing "Exception Points" but typing "help
+    Exception Points" doesn't actually work.
+ * cpu/e132xs: Fixed a flags issue in the recompiler.
+ * misc/dgpix.cpp: Demoted The X-Files to not working with unemulated protection.
+ * skeleton/turnierdart.cpp: The srcclean on this file was missed.
+
+-misc/dgpix.cpp: Demote the correct game. [Vas Crabb]
+
+-Miscellaneous fixes for descriptions. [Vas Crabb]

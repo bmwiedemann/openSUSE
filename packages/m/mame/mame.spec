@@ -16,7 +16,7 @@
 #
 
 
-%define ver     275
+%define ver     276
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -38,6 +38,7 @@ Patch4:         reproducible.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  mold
 BuildRequires:  pkgconfig
 BuildRequires:  portmidi-devel
 BuildRequires:  update-desktop-files
@@ -50,6 +51,7 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpulse)
@@ -131,7 +133,8 @@ sed -i "s@-s -rdynamic@$MY_LDFLAGS -rdynamic@" 3rdparty/genie/build/gmake.linux/
     CC="gcc-13" \
     CXX="g++-13" \
 %endif
-    OPT_FLAGS="$MY_OPT_FLAGS"
+    OPT_FLAGS="$MY_OPT_FLAGS" \
+    LDOPTS="${LDFLAGS} -Wl,-v -fuse-ld=mold"
 
 %install
 install -pm0644 %{SOURCE1} whatsnew-%{version}.txt

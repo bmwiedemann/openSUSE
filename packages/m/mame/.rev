@@ -249,4 +249,14 @@
   * /usr/share/doc/packages/mame/whatsnew-0.275.txt</comment>
     <requestid>1248718</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>49eb812bebe974b5a618332c2a62d42a</srcmd5>
+    <version>0.276</version>
+    <time>1743606591</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.276
+  * Used ld.mold for link to fix aarch64 build.
+  * /usr/share/doc/packages/mame/whatsnew-0.276.txt</comment>
+    <requestid>1265747</requestid>
+  </revision>
 </revisionlist>
