@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-hlsl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define         _name hlsl
 Name:           tree-sitter-hlsl
-Version:        0.1.5
+Version:        0.2.0
 Release:        0
 Summary:        HLSL grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-hlsl
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter >= 0.24.7
 BuildRequires:  treesitter_grammar_src(tree-sitter-cpp)
 %treesitter_grammars %{_name}
 
@@ -57,4 +57,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-

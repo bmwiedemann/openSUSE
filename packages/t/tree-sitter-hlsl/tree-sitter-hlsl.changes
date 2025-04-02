@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:18:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.2.0:
+  * migrate to tree-sitter.json
+  * Test and modernize bindings
+
+-------------------------------------------------------------------
 Thu Dec  5 00:56:02 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
