@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:46:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.2
+  * Allow protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+  * Resolve issue where pre-release versions of dependencies are installed
+  * Resolve issue where pre-release versions of dependencies are installed (#13653)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:04:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.1
