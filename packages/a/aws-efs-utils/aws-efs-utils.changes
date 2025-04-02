@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 31 09:42:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.2.1
+  * Readme Updates
+  * Update log4rs to mitigate CVE-2020-35881
+- from version 2.2.0
+  * Use region-specific domain suffixes for dns endpoints where missing
+  * Merge PR #211 - Amend Debian control to use binary architecture
+- from version 2.1.0
+  * Add mount option for specifying region
+  * Add new ISO regions to config file
+- from version 2.0.4
+  * Add retry logic to and increase timeout for EC2 metadata token
+    retrieval requests
+- Update BuildRequires from requirements.txt
+
+-------------------------------------------------------------------
 Wed Jul 31 11:04:49 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.0.3

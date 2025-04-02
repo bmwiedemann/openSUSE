@@ -201,4 +201,24 @@
   * Use primary Python version on Tumbleweed (forwarded request 1190644 from glaubitz)</comment>
     <requestid>1190670</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b6cd25eba9a6b936a78bfffa6c05af99</srcmd5>
+    <version>2.2.1</version>
+    <time>1743606707</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.2.1
+  * Readme Updates
+  * Update log4rs to mitigate CVE-2020-35881
+- from version 2.2.0
+  * Use region-specific domain suffixes for dns endpoints where missing
+  * Merge PR #211 - Amend Debian control to use binary architecture
+- from version 2.1.0
+  * Add mount option for specifying region
+  * Add new ISO regions to config file
+- from version 2.0.4
+  * Add retry logic to and increase timeout for EC2 metadata token
+    retrieval requests
+- Update BuildRequires from requirements.txt (forwarded request 1265712 from glaubitz)</comment>
+    <requestid>1265933</requestid>
+  </revision>
 </revisionlist>

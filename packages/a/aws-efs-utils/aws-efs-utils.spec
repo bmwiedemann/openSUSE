@@ -1,7 +1,7 @@
 #
 # spec file for package aws-efs-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 Name:           aws-efs-utils
-Version:        2.0.3
+Version:        2.2.1
 Release:        0
 Summary:        Utilities for using the EFS file systems
 License:        MIT
@@ -34,23 +34,21 @@ Patch0:         disable_mount_efs_test.patch
 Patch1:         harden_amazon-efs-mount-watchdog.service.patch
 Patch2:         skip-styletest.patch
 Patch3:         use_mock_from_unittest.patch
-BuildRequires:  %{pythons}-attrs >= 17.4.0
-BuildRequires:  %{pythons}-botocore >= 1.17.53
-BuildRequires:  %{pythons}-coverage >= 4.5.4
-BuildRequires:  openssl
-#BuildRequires:  %{pythons}-flake8 >= 3.7.9
-BuildRequires:  %{pythons}-flake8
+BuildRequires:  %{pythons}-botocore >= 1.34.140
+BuildRequires:  %{pythons}-coverage >= 7.6.0
+BuildRequires:  %{pythons}-flake8 >= 7.1.0
 BuildRequires:  %{pythons}-mccabe >= 0.6.1
 BuildRequires:  %{pythons}-pbr >= 3.1.1
 BuildRequires:  %{pythons}-pluggy >= 0.13.0
 BuildRequires:  %{pythons}-py >= 1.11.0
 BuildRequires:  %{pythons}-pycodestyle >= 2.5.0
 BuildRequires:  %{pythons}-pyflakes >= 2.1.1
-BuildRequires:  %{pythons}-pytest >= 4.6.7
-BuildRequires:  %{pythons}-pytest-cov >= 2.8.1
-BuildRequires:  %{pythons}-pytest-html >= 1.19.0
-BuildRequires:  %{pythons}-pytest-metadata >= 1.7.0
-BuildRequires:  %{pythons}-pytest-mock >= 1.11.2
+BuildRequires:  %{pythons}-pytest >= 8.2.2
+BuildRequires:  %{pythons}-pytest-cov >= 5.0.0
+BuildRequires:  %{pythons}-pytest-html >= 4.1.1
+BuildRequires:  %{pythons}-pytest-metadata >= 3.1.1
+BuildRequires:  %{pythons}-pytest-mock >= 3.14.0
+BuildRequires:  openssl
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(systemd)
 Requires:       nfs-utils
