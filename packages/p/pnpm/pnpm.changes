@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:34:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 10.7.1:
+  * Patch Changes
+    - pnpm config set should convert the settings to their correct
+      type before adding them to pnpm-workspace.yaml #9355.
+    - pnpm config get should read auth related settings via npm CLI
+      #9345.
+    - Replace leading ~/ in a path in .npmrc with the home directory
+      #9217.
+
+-------------------------------------------------------------------
 Wed Mar 26 11:44:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.7:
