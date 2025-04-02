@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ongres-scram
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %global		upstream_name    scram
-%global		upstream_version 2.1
+%global		upstream_version 3.1
 Name:           ongres-%{upstream_name}
 Version:        %(echo %{upstream_version} | sed 's/-/~/g')
 Release:        0
@@ -26,10 +26,11 @@ License:        BSD-2-Clause
 URL:            https://github.com/ongres/%{upstream_name}
 Source0:        https://github.com/ongres/%{upstream_name}/archive/%{upstream_version}/%{upstream_name}-%{upstream_version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(com.ongres.stringprep:saslprep)
+BuildRequires:  mvn(com.ongres.stringprep:saslprep) >= 2.2
+BuildRequires:  mvn(org.jetbrains:annotations)
+Requires:       mvn(com.ongres.stringprep:stringprep) >= 2.2
 BuildArch:      noarch
 
 %description
@@ -50,42 +51,39 @@ Summary:        Javadoc for %{name}
 %description javadoc
 This package contains javadoc for %{name}
 
-%package parent
-Summary:        Parent POM of %{name}
-
-%description parent
-This package contains the %{name} parent POM.
-
 %prep
 %autosetup -p1 -n "%{upstream_name}-%{upstream_version}"
 find \( -name '*.jar' -o -name '*.class' \) -delete
-%pom_remove_plugin :nexus-staging-maven-plugin
-%pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin :maven-dependency-plugin client
+
 %pom_remove_plugin -r :maven-javadoc-plugin
+%pom_remove_plugin -r :maven-enforcer-plugin
+%pom_remove_plugin -r :flatten-maven-plugin
+%pom_remove_plugin -r :maven-invoker-plugin
+%pom_remove_dep -r :junit-bom
 
-%pom_remove_dep com.google.code.findbugs:annotations
-sed -i 's/.*SuppressFBWarnings.*//' common/src/main/java/com/ongres/scram/common/message/ServerFinalMessage.java
+%{mvn_package} com.ongres.scram:scram-aggregator __noinstall
+%{mvn_package} com.ongres.scram:scram-parent __noinstall
 
-%pom_xpath_set "pom:project/pom:properties/pom:java.version" "1.8"
+%pom_xpath_inject 'pom:plugin[pom:artifactId = "maven-jar-plugin"]/pom:configuration/pom:archive' '
+<manifestEntries>
+  <Multi-Release>true</Multi-Release>
+</manifestEntries>
+' scram-parent
 
 %build
-%{mvn_build} -s -f -- -Dsource=8
+%{mvn_build} -s -f
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -f .mfiles-common
+%files -f .mfiles-scram-common
 %license LICENSE
 
-%files client -f .mfiles-client
+%files client -f .mfiles-scram-client
 %license LICENSE
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE
-
-%files parent -f .mfiles-parent
 %license LICENSE
 
 %changelog

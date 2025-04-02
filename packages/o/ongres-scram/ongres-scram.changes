@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:41:19 UTC 2025 - Michael Calmer <mc@suse.com>
+
+- Version 3.1
+  - Update of the `saslprep` dependency to 2.2.
+  - Full refactor of the `scram` java implementation, this release
+    is compatible with Java 8+, but it's incompatible with previous
+    releases
+  - Fully rewrite the `ScramClient` allowing negotiation of
+    channel-binding properly.
+  - Create Multi-release Modular JARs, the modules names are:
+    - `com.ongres.scram.common` for the common scram messages
+    - `com.ongres.scram.client` for the scram client implementation
+  - Add `StringPreparation.POSTGRESQL_PREPARATION`, for any error in
+    SASL preparation, it falls back to return the raw string
+  - Implementation of `tls-server-end-point` channel binding data
+    extraction
+  - Now the password is passed as a `char[]`
+  - Remove the shaded Bouncy Castle pbkdf2 and base64 implementation
+    used for Java 7 support
+- remove ongres-scram-parent package
+
+-------------------------------------------------------------------
 Thu Oct 26 10:43:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Build with source and target levels 8
