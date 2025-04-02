@@ -22,7 +22,7 @@ Release:        0
 Summary:        Wayland clipboard utility
 License:        ISC
 URL:            https://sr.ht/~noocsharp/wayclip
-#!RemoteAssetUrl: git+https://git.sr.ht/~mcepl/wayclip#devel
+Source0:        wayclip-%{version}.tar.xz
 BuildRequires:  pkgconf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(wayland-client)
@@ -34,9 +34,7 @@ clipboard. Specifically, wayclip is a wlr-data-control protocol
 client.
 
 %prep
-%setup -q -n wayclip -c -T
-
-cp -al %{_sourcedir}/wayclip/* .
+%autosetup -p1 -n wayclip-%{version}
 
 %build
 export CFLAGS="%{optflags} $(pkgconf --cflags wayland-client)"

@@ -1,5 +1,6 @@
 <package name="wayclip" project="openSUSE:Factory">
   <title>wayclip</title>
   <description>Wayland clipboard utility</description>
+  <devel project="X11:Wayland" package="wayclip"/>
   <url>https://git.sr.ht/~noocsharp/wayclip</url>
 </package>

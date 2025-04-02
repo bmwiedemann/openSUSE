@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 02 14:28:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.4.2+git.1709775940.a62ac18:
+  * add missing options to man page and usage
+  * explicitly document that the define is necessary for getopt
+  * check that offer isn't null before receiving
+  * common: shrink a bit
+  * style
+  * fix logic to determine which offer to receive
+  * manpages: add -p
+  * waypaste: support primary clipboard
+  * When you have defined .c.o rule, you shouldn't override it.
+  * add primary clipboard support with -p
+
+-------------------------------------------------------------------
 Tue Mar 11 08:49:37 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Link sources to the working directory instead of copying them.
