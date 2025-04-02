@@ -689,4 +689,40 @@
     <comment>- no source changes, just adding jira reference: jsc#SLE-21253</comment>
     <requestid>1223742</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>e3f1d4dc4e10cfe2ebeb33904dd1fbd8</srcmd5>
+    <version>2.7.1</version>
+    <time>1743606271</time>
+    <user>anag+factory</user>
+    <comment>- version update to 2.7.1
+     Bug fixes:
+       #980 #989  Restore event pointer behavior from Expat 2.6.4
+                    (that the fix to CVE-2024-8176 changed in 2.7.0);
+                    affected API functions are:
+                    - XML_GetCurrentByteCount
+                    - XML_GetCurrentByteIndex
+                    - XML_GetCurrentColumnNumber
+                    - XML_GetCurrentLineNumber
+                    - XML_GetInputContext
+     Other changes:
+       #976 #977  Autotools: Integrate files &quot;fuzz/xml_lpm_fuzzer.{cpp,proto}&quot;
+                    with Automake that were missing from 2.7.0 release tarballs
+       #983 #984  Fix printf format specifiers for 32bit Emscripten
+            #992  docs: Promote OpenSSF Best Practices self-certification
+            #978  tests/benchmark: Resolve mistaken double close
+            #986  Address compiler warnings
+       #990 #993  Version info bumped from 11:1:10 (libexpat*.so.1.10.1)
+                    to 11:2:10 (libexpat*.so.1.10.2); see https://verbump.de/
+                    for what these numbers do
+        Infrastructure:
+            #982  CI: Start running Perl XML::Parser integration tests
+            #987  CI: Enforce Clang Static Analyzer clean code
+            #991  CI: Re-enable warning clang-analyzer-valist.Uninitialized
+                    for clang-tidy
+            #981  CI: Cover compilation with musl
+       #983 #984  CI: Cover compilation with 32bit Emscripten
+       #976 #977  CI: Protect against fuzzer files missing from future
+                    release archives</comment>
+    <requestid>1265155</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:22:44 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.7.1
+     Bug fixes:
+       #980 #989  Restore event pointer behavior from Expat 2.6.4
+                    (that the fix to CVE-2024-8176 changed in 2.7.0);
+                    affected API functions are:
+                    - XML_GetCurrentByteCount
+                    - XML_GetCurrentByteIndex
+                    - XML_GetCurrentColumnNumber
+                    - XML_GetCurrentLineNumber
+                    - XML_GetInputContext
+
+     Other changes:
+       #976 #977  Autotools: Integrate files "fuzz/xml_lpm_fuzzer.{cpp,proto}"
+                    with Automake that were missing from 2.7.0 release tarballs
+       #983 #984  Fix printf format specifiers for 32bit Emscripten
+            #992  docs: Promote OpenSSF Best Practices self-certification
+            #978  tests/benchmark: Resolve mistaken double close
+            #986  Address compiler warnings
+       #990 #993  Version info bumped from 11:1:10 (libexpat*.so.1.10.1)
+                    to 11:2:10 (libexpat*.so.1.10.2); see https://verbump.de/
+                    for what these numbers do
+
+        Infrastructure:
+            #982  CI: Start running Perl XML::Parser integration tests
+            #987  CI: Enforce Clang Static Analyzer clean code
+            #991  CI: Re-enable warning clang-analyzer-valist.Uninitialized
+                    for clang-tidy
+            #981  CI: Cover compilation with musl
+       #983 #984  CI: Cover compilation with 32bit Emscripten
+       #976 #977  CI: Protect against fuzzer files missing from future
+                    release archives
+
+-------------------------------------------------------------------
+Fri Mar 14 10:25:24 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.7.0 (CVE-2024-8176 [bsc#1239618])
+  * Security fixes:
+       #893 #973  CVE-2024-8176 -- Fix crash from chaining a large number
+                    of entities caused by stack overflow by resolving use of
+                    recursion, for all three uses of entities:
+                    - general entities in character data ("<e>&g1;</e>")
+                    - general entities in attribute values ("<e k1='&g1;'/>")
+                    - parameter entities ("%p1;")
+                    Known impact is (reliable and easy) denial of service:
+                    CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H/E:H/RL:O/RC:C
+                    (Base Score: 7.5, Temporal Score: 7.2)
+                    Please note that a layer of compression around XML can
+                    significantly reduce the minimum attack payload size.
+
+   * Other changes:
+       #935 #937  Autotools: Make generated CMake files look for
+                    libexpat.@SO_MAJOR@.dylib on macOS
+            #925  Autotools: Sync CMake templates with CMake 3.29
+  #945 #962 #966  CMake: Drop support for CMake <3.13
+            #942  CMake: Small fuzzing related improvements
+            #921  docs: Add missing documentation of error code
+                    XML_ERROR_NOT_STARTED that was introduced with 2.6.4
+            #941  docs: Document need for C++11 compiler for use from C++
+            #959  tests/benchmark: Fix a (harmless) TOCTTOU
+            #944  Windows: Fix installer target location of file xmlwf.xml
+                    for CMake
+            #953  Windows: Address warning -Wunknown-warning-option
+                    about -Wno-pedantic-ms-format from LLVM MinGW
+            #971  Address Cppcheck warnings
+       #969 #970  Mass-migrate links from http:// to https://
+    #947 #958 ..
+       #974 #975  Document changes since the previous release
+       #974 #975  Version info bumped from 11:0:10 (libexpat*.so.1.10.0)
+                    to 11:1:10 (libexpat*.so.1.10.1); see https://verbump.de/
+                    for what these numbers do
+
+-------------------------------------------------------------------
 Tue Nov 12 15:43:19 UTC 2024 - pgajdos@suse.com
 
 - no source changes, just adding jira reference: jsc#SLE-21253
