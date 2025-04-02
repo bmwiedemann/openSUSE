@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(x11) >= 1.6.7
 BuildRequires:  xfce4-dev-tools
 %endif
 Recommends:     %{name}-lang = %{version}
+Recommends:     webp-pixbuf-loader
 
 %description
 The Ristretto Image Viewer is an application that can be used to
