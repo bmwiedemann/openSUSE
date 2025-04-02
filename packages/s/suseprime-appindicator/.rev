@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>866676</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>9fcb3a48f23cfc48299f5e30bbfaecc2</srcmd5>
+    <version>0.1.0</version>
+    <time>1743606691</time>
+    <user>anag+factory</user>
+    <comment>add setuptools.patch to replace distutils with setuptools (forwarded request 1253090 from nkrapp)</comment>
+    <requestid>1265902</requestid>
+  </revision>
 </revisionlist>

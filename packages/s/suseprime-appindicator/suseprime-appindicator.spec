@@ -1,7 +1,7 @@
 #
 # spec file for package suseprime-appindicator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019 Stasiek Michalski <hellcp@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,10 +25,13 @@ License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/openSUSE/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM setuptools.patch from: https://github.com/openSUSE/suseprime-appindicator/pull/4
+Patch:          setuptools.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
+BuildRequires:  python3-setuptools
 Requires:       python3-gobject
 Requires:       (suse-prime or suse-prime-bbswitch)
 Supplements:    (xfce4-indicator-plugin and suse-prime)
@@ -38,7 +41,7 @@ BuildArch:      noarch
 SUSE Prime appindicator for switching between Nvidia/Intel GPUs.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %python3_build

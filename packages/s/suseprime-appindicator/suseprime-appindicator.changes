@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 14 13:37:58 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- add setuptools.patch to replace distutils with setuptools
+
+-------------------------------------------------------------------
 Mon Jan 25 20:58:57 UTC 2021 - Stasiek Michalski <stasiek@michalski.cc>
 
 - Add an option to use with suse-prime-bbswitch (boo#1181373)
