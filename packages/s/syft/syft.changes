@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Apr 01 17:31:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.22.0:
+  * Added Features
+    - Improve .NET package CPE generation [#3764 @wagoodman]
+    - Catalog deb archives directly [#3315 #3704 @popey]
+  * Bug Fixes
+    - Dotnet-Portable-Executable-Cataloger uses wrong component
+      version for dotnet runtime libraries [#3282 #3768 @wagoodman]
+    - Dotnet deps cataloger returns "wrong" dotnet-framework
+      dependencies and misses out on the runtime (for applications)
+      [#2347 #3768 @wagoodman]
+    - .NET deps.json should be considered as installation evidence
+      [#3570 #3563 @wagoodman]
+    - Dotnet PE binary cataloger is detecting false positives
+      [#3469 #3563 @wagoodman]
+    - Long Processing Time in dpkg-db-cataloger with all-layers
+      Option (Syft 1.20.0) [#3683 #3636 @kzantow]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3772)
+    - chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0
+      (#3766)
+    - chore(deps): bump 8398a7/action-slack from 3.16.2 to 3.18.0
+      (#3767)
+    - chore(deps): bump modernc.org/sqlite from 1.36.1 to 1.37.0
+      (#3771)
+    - chore(deps): update CPE dictionary index (#3769)
+    - chore(deps): bump github/codeql-action from 3.28.12 to
+      3.28.13 (#3758)
+    - chore(deps): update CPE dictionary index (#3756)
+    - chore(deps): update tools to latest versions (#3747)
+    - chore(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2
+      (#3750)
+    - chore(deps): bump github.com/docker/docker (#3749)
+    - chore(deps): bump actions/cache from 4.2.2 to 4.2.3 (#3751)
+    - chore(deps): bump actions/cache in /.github/actions/bootstrap
+      (#3752)
+    - chore(deps): bump actions/setup-go in
+      /.github/actions/bootstrap (#3742)
+    - chore(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+      (#3743)
+    - chore(deps): bump github/codeql-action from 3.28.11 to
+      3.28.12 (#3744)
+    - chore(deps): bump github.com/BurntSushi/toml from 1.4.0 to
+      1.5.0 (#3740)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.26 to 1.7.27 (#3738)
+    - chore(deps): update tools to latest versions (#3739)
+
+-------------------------------------------------------------------
 Mon Mar 17 19:49:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.21.0:
