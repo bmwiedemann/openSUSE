@@ -73,4 +73,12 @@
   * Remove manylinux1 which is no longer supported by PyPA</comment>
     <requestid>1199450</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>08d07dec5b5d3179a66e4542ed3c48a5</srcmd5>
+    <version>1.7.1</version>
+    <time>1743606862</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266189</requestid>
+  </revision>
 </revisionlist>

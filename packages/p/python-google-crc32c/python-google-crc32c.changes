@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:41:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.7.1
+  * Add Python 3.13 windows wheels
+- from version 1.7.0
+  * Add Python 3.13 trove classifier (#233)
+  * Add support for python 3.13 (#239)
+
+-------------------------------------------------------------------
 Sun Sep  8 13:05:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:
