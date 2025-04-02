@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:54:21 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Change 0001-always_inline-fix.patch by replacing the function
+  rte_trace_feature_is_enabled with a preprocessor substitution, 
+  this also work with older gcc7 where -mgeneral-regs-only isn't 
+  available.
+
+-------------------------------------------------------------------
+Mon Mar 31 11:49:34 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add 0001-always_inline-fix.patch to fix issue with always_inline
+  and rte_trace_feature_is_enabled which should use -mgeneral-regs-only
+  to inter-operate with other ISA flags.  Remove GCC 14 build requirement
+  for SLE15/16 again.
+
+-------------------------------------------------------------------
 Fri Mar 14 13:37:33 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Remove the 'thunderx' multibuild flavor; it was identical to aarch64.

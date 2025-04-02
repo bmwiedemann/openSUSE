@@ -1,0 +1,35 @@
+From a9ae58b265d580a1b7048e0686a626d7b2538d18 Mon Sep 17 00:00:00 2001
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.de>
+Date: Tue, 1 Apr 2025 10:05:47 +0200
+Subject: [PATCH] rte_trace: rte_trace_feature_is_enabled as makro
+
+---
+ lib/eal/include/rte_trace.h | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/lib/eal/include/rte_trace.h b/lib/eal/include/rte_trace.h
+index 90af760194..df95674277 100644
+--- a/lib/eal/include/rte_trace.h
++++ b/lib/eal/include/rte_trace.h
+@@ -44,16 +44,11 @@ bool rte_trace_is_enabled(void);
+  * @return
+  *   true if trace feature is enabled, false otherwise.
+  */
+-__rte_experimental
+-static __rte_always_inline bool
+-rte_trace_feature_is_enabled(void)
+-{
+ #ifdef RTE_TRACE
+-	return true;
++#define rte_trace_feature_is_enabled() (true)
+ #else
+-	return false;
++#define rte_trace_feature_is_enabled() (false)
+ #endif
+-}
+ 
+ /**
+  * Enumerate trace mode operation.
+-- 
+2.43.0
+

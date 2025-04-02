@@ -49,12 +49,8 @@ Source:         https://fast.dpdk.org/rel/dpdk-%{version}.tar.xz
 Patch0:         0001-fix-cpu-compatibility.patch
 # PATCH-FIX-UPSTREAM - https://bugs.dpdk.org/show_bug.cgi?id=1530
 Patch1:         0001-examples-vm_power_manager-add-missing-header.patch
-%ifarch x86_64
-%if 0%{suse_version} < 1699
-# Workaround for build failure related to inline error
-BuildRequires:  gcc14
-%endif
-%endif
+# Fix inline error for < gcc14 (<=SLE16)
+Patch2:         0001-always_inline-fix.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module pyelftools >= 0.22}
 BuildRequires:  %{pythons}
@@ -178,12 +174,7 @@ as L2 and L3 forwarding.
 
 %prep
 %setup -q -n dpdk-stable-%{version}
-%if 0%{?suse_version} > 1600
 %autopatch -p1
-%else
-# grr, no fs.copyfile() in the old meson in SLE (but it has old enough kernel).
-%autopatch -p1 -M 99
-%endif
 
 # Skip not supported examples
 sed -i "/performance-thread/d" examples/meson.build
@@ -196,9 +187,6 @@ sed -i "/performance-thread/d" examples/meson.build
 
 %ifarch x86_64
 export CFLAGS="%{optflags} -U_FORTIFY_SOURCE -msse4"
-%if 0%{suse_version} < 1699
-export CC=gcc-14
-%endif
 %endif
 examples="all"
 for flavor in %{flavors_to_build}; do
