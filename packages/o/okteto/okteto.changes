@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 01 12:12:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  * New Feature
+    - feat: add depends_on annotation support for services by
+      @jLopezbarb in #4686
+  * Bug Fix
+    - DEV-877: Split ignorer logic for Smart Build into 2 different
+      functions according to the flag, and use a temporary file for
+      the SHA calculation by @ifbyol in #4689
+
+-------------------------------------------------------------------
 Tue Mar 25 18:15:03 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.5.1:
