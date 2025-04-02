@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-core-tracing-opentelemetry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-core-tracing-opentelemetry
-Version:        1.0.0b11
+Version:        1.0.0b12
 Release:        0
 Summary:        Azure Core Tracing OpenTelemetry client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-core-tracing-opentelemetry/azure-core-tracing-opentelemetry-%{version}.tar.gz
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_core_tracing_opentelemetry/azure_core_tracing_opentelemetry-%{version}.tar.gz
 BuildRequires:  %{python_module azure-core < 2.0.0}
 BuildRequires:  %{python_module azure-core >= 1.24.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -48,10 +47,9 @@ BuildArch:      noarch
 Azure Core Tracing OpenTelemetry client library for Python
 
 %prep
-%setup -q -n azure-core-tracing-opentelemetry-%{version}
+%setup -q -n azure_core_tracing_opentelemetry-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-core-tracing-opentelemetry-%{version}
 %pyproject_wheel
 
 %install
@@ -64,7 +62,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/core/tracing/ext/opentelemetry_span
 %{python_sitelib}/azure_core_tracing_opentelemetry-*.dist-info
 
