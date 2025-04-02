@@ -32,13 +32,14 @@ ExclusiveArch:  do_not_build
 %endif
 %define sover 5
 Name:           libqxmpp%{?pkg_suffix}
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-URL:            https://github.com/qxmpp-project/qxmpp/
-Source0:        https://github.com/qxmpp-project/qxmpp/archive/v%{version}.tar.gz#/libqxmpp-%{version}.tar.gz
+URL:            https://invent.kde.org/libraries/qxmpp
+Source0:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz
+Source1:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz.sig
+Source2:        qxmpp.keyring
 BuildRequires:  cmake
 %if 0%{?qt5}
 BuildRequires:  doxygen
@@ -74,7 +75,6 @@ QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 
 %package -n libQXmpp%{lib_suffix}-%{sover}
 Summary:        Qt XMPP Library
-Group:          System/Libraries
 Provides:       libqxmpp-qt5-0 = %{version}
 Obsoletes:      libqxmpp-qt5-0 < %{version}
 # Renamed in the 1.5.4 release
@@ -88,7 +88,6 @@ QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 
 %package -n libQXmpp%{lib_suffix}-devel
 Summary:        Qxmpp Development Files
-Group:          Development/Libraries/C and C++
 Requires:       libQXmpp%{lib_suffix}-%{sover} = %{version}
 Requires:       libqxmpp-devel = %{version}
 Requires:       pkgconfig(gstreamer-1.0)
@@ -117,10 +116,8 @@ already found by CMake.
 
 
 # No need to build it twice
-
 %package -n libqxmpp-doc
 Summary:        Qxmpp library documentation
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description -n libqxmpp-doc

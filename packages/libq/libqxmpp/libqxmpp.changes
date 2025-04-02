@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:25:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.3:
+  * OmemoManager: Clear complete in-memory cache on local own
+    device reset
+
+-------------------------------------------------------------------
 Thu Mar 27 17:50:48 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.10.2:
