@@ -1,7 +1,7 @@
 #
 # spec file for package bcftools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcftools
-Version:        1.19
+Version:        1.21
 Release:        0
 Summary:        Tools for manipulating variant calls in the Variant Call Format (VCF)
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  lzma-devel
 BuildRequires:  zlib-devel
 Requires:       bgzip
 Requires:       htsfile
-Requires:       perl
+Requires:       perl-base
 Requires:       python3-base
 Requires:       python3-matplotlib
 Requires:       tabix
@@ -63,7 +63,7 @@ sed -i -E "s:/usr/bin/env python3?:%{_bindir}/python3:" %{buildroot}/%{_bindir}/
 
 %files
 %license LICENSE
-%doc AUTHORS README
+%doc AUTHORS README NEWS
 %{_bindir}/bcftools
 %{_bindir}/*.py
 %{_bindir}/*.pl
