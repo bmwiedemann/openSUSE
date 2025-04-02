@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  2 09:42:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to fix kissfft usage with CMake 4:
+  * 0001-Bump-minimum-CMake-version-in-kissfft-config.cmake.patch
+
+-------------------------------------------------------------------
 Sat Feb 25 00:14:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - enable build for all architectures, there is no assembly

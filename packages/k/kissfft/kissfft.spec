@@ -28,6 +28,8 @@ License:        BSD-3-Clause AND Unlicense
 # was https://sourceforge.net/projects/kissfft
 URL:            https://github.com/mborgerding/kissfft
 Source0:        https://github.com/mborgerding/kissfft/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- https://github.com/mborgerding/kissfft/pull/101
+Patch0:         0001-Bump-minimum-CMake-version-in-kissfft-config.cmake.patch
 BuildRequires:  cmake
 # TESTS
 BuildRequires:  gcc-c++
