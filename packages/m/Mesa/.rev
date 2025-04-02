@@ -6195,4 +6195,14 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment></comment>
     <requestid>1255941</requestid>
   </revision>
+  <revision rev="537" vrev="409">
+    <srcmd5>54b24b0876f981284b8fb1a995d5cb1f</srcmd5>
+    <version>unknown</version>
+    <time>1743606481</time>
+    <user>anag+factory</user>
+    <comment>- don't apply revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+  on s390x, which is not affected by that issue (different Mesa
+  version)</comment>
+    <requestid>1265937</requestid>
+  </revision>
 </revisionlist>

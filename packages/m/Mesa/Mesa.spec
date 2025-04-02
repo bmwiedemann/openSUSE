@@ -907,7 +907,9 @@ cp %{SOURCE6} subprojects/packagecache/
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
+%ifnarch s390x
 %patch -P 2000000 -p1
+%endif
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0

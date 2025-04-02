@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:20:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- don't apply revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch
+  on s390x, which is not affected by that issue (different Mesa
+  version) 
+
+-------------------------------------------------------------------
 Tue Mar 25 09:07:24 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Fix regression in winsys/amdgpu (boo#1239657)
