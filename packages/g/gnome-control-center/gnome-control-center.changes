@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Mar 31 07:37:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0+15:
+  * printers: Run printer details response callback when closing
+    dialog.
+  * keyboard: fix duplicated search shortcut rows in launchers
+    group of shortcuts dialog.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 20 01:15:04 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Drop gnome-control-center-users-page-Don-t-show-the-system-accounts.patch:
