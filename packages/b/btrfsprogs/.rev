@@ -1449,4 +1449,14 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- update to 6.12 (forwarded request 1235199 from dsterba)</comment>
     <requestid>1235200</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>8b9e8ec017d4de01cbb798d11f8acb82</srcmd5>
+    <version>6.13</version>
+    <time>1743606492</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.13
+- spec: package btrfs-find-root unconditionally (bsc#1239992)
+- Refresh patches: mkfs-default-features.patch (context) (forwarded request 1265982 from dsterba)</comment>
+    <requestid>1265983</requestid>
+  </revision>
 </revisionlist>

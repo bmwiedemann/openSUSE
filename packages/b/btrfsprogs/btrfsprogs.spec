@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.12
+Version:        6.13
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -285,10 +285,7 @@ rm -f module-setup.sh
 install -m 0644 -D %{SOURCE3} %{buildroot}/%{_datadir}/%{name}/dracut-fsck-help.txt
 
 %if 0%{!?for_debugging:1}
-DEBUG_FILES="/sbin/btrfs-find-root
-  %{_sbindir}/btrfs-find-root
-  %{_mandir}/man8/btrfs-find-root.8
-  /sbin/btrfs-select-super
+DEBUG_FILES="/sbin/btrfs-select-super
   %{_sbindir}/btrfs-select-super"
 for file in $DEBUG_FILES; do
   rm -f %{buildroot}$file
@@ -330,6 +327,7 @@ done
 /sbin/btrfstune
 /sbin/btrfsck
 /sbin/mkfs.btrfs
+/sbin/btrfs-find-root
 %endif
 %{_sbindir}/btrfs
 %{_sbindir}/btrfs-convert
@@ -338,6 +336,7 @@ done
 %{_sbindir}/btrfsck
 %{_sbindir}/fsck.btrfs
 %{_sbindir}/mkfs.btrfs
+%{_sbindir}/btrfs-find-root
 %if 0%{?suse_version} < 1310
 %dir /lib/mkinitrd
 %dir /lib/mkinitrd/scripts
@@ -358,6 +357,7 @@ done
 %{_mandir}/man8/btrfs-check.8%{?ext_man}
 %{_mandir}/man8/btrfs-device.8%{?ext_man}
 %{_mandir}/man8/btrfs-filesystem.8%{?ext_man}
+%{_mandir}/man8/btrfs-find-root.8%{?ext_man}
 %{_mandir}/man8/btrfs-inspect-internal.8%{?ext_man}
 %{_mandir}/man8/btrfs-property.8%{?ext_man}
 %{_mandir}/man8/btrfs-qgroup.8%{?ext_man}
@@ -372,9 +372,6 @@ done
 %{_mandir}/man8/btrfs-select-super.8%{?ext_man}
 
 %if 0%{?for_debugging:1}
-/sbin/btrfs-find-root
-%{_sbindir}/btrfs-find-root
-%{_mandir}/man8/btrfs-find-root.8%{?ext_man}
 /sbin/btrfs-select-super
 %{_sbindir}/btrfs-select-super
 %endif
