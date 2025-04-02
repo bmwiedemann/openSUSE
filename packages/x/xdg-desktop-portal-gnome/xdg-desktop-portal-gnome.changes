@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 11:30:32 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Bump libgxdp commit to e68375c7ace to fix initialization under
+  X11. (bsc#1240057)
+
+-------------------------------------------------------------------
 Mon Mar 17 12:59:37 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.0:

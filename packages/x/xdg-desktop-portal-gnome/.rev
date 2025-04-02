@@ -219,4 +219,12 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1253784 from dimstar)</comment>
     <requestid>1253792</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>16b85524bcb088a3d0c9187d0156ceab</srcmd5>
+    <version>48.0</version>
+    <time>1743606292</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265260</requestid>
+  </revision>
 </revisionlist>
