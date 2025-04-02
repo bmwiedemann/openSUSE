@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 31 20:16:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.2
+  * Added TTF_GetFontWeight()
+
+-------------------------------------------------------------------
 Fri Feb 21 23:42:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.2
