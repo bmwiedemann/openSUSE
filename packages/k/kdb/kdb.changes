@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 13:14:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * 0001-Find-newer-PostgreSQL-versions.patch
+  * kdb-cmake4.patch
+
+-------------------------------------------------------------------
 Fri Jun  7 08:57:55 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Enforce c++-17 to fix build with icu 75

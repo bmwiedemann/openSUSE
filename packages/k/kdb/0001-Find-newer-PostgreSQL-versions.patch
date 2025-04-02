@@ -1,0 +1,25 @@
+From 2f19ffa8c0c166adb9aefff6f4085eef057980df Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 15:13:11 +0200
+Subject: [PATCH] Find newer PostgreSQL versions
+
+---
+ cmake/modules/FindPostgreSQL.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindPostgreSQL.cmake b/cmake/modules/FindPostgreSQL.cmake
+index 8ec30db..340509d 100644
+--- a/cmake/modules/FindPostgreSQL.cmake
++++ b/cmake/modules/FindPostgreSQL.cmake
+@@ -86,7 +86,7 @@ set(PostgreSQL_LIBRARY_DIR_MESSAGE "Set the PostgreSQL_LIBRARY_DIR cmake cache e
+ set(PostgreSQL_ROOT_DIR_MESSAGE "Set the PostgreSQL_ROOT system variable to where PostgreSQL is found on the machine E.g C:/Program Files/PostgreSQL/8.4")
+ 
+ set(PostgreSQL_KNOWN_VERSIONS ${PostgreSQL_ADDITIONAL_VERSIONS}
+-    "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
++    "18" "17" "16" "15" "14" "13" "12" "11" "10" "9.6" "9.5" "9.4" "9.3" "9.2" "9.1" "9.0" "8.4" "8.3" "8.2" "8.1" "8.0")
+ 
+ # Define additional search paths for root directories.
+ foreach (suffix ${PostgreSQL_KNOWN_VERSIONS} )
+-- 
+2.49.0
+

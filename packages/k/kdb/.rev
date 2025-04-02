@@ -129,4 +129,14 @@
     <comment>- Enforce c++-17 to fix build with icu 75</comment>
     <requestid>1179159</requestid>
   </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>c81583f3c90908c0745eae04f4192d67</srcmd5>
+    <version>3.2.0</version>
+    <time>1743606851</time>
+    <user>anag+factory</user>
+    <comment>- Add patches:
+  * 0001-Find-newer-PostgreSQL-versions.patch
+  * kdb-cmake4.patch</comment>
+    <requestid>1266175</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,52 @@
+From 8e473a67421127ddf666a120a5cdaaf52c7a717d Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 15:13:54 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt                          |  3 +--
+ cmake/modules/SetKDbCMakePolicies.cmake | 19 -------------------
+ 2 files changed, 1 insertion(+), 21 deletions(-)
+ delete mode 100644 cmake/modules/SetKDbCMakePolicies.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 940acba..1afdd14 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,6 @@
+-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
+ find_package(ECM 1.8.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+-include(SetKDbCMakePolicies NO_POLICY_SCOPE)
+ 
+ project(KDb VERSION 3.2.0) # Update this
+ 
+diff --git a/cmake/modules/SetKDbCMakePolicies.cmake b/cmake/modules/SetKDbCMakePolicies.cmake
+deleted file mode 100644
+index bc28d8a..0000000
+--- a/cmake/modules/SetKDbCMakePolicies.cmake
++++ /dev/null
+@@ -1,19 +0,0 @@
+-# Copyright (C) 2003-2016 Jarosław Staniek <staniek@kde.org>
+-#
+-# Redistribution and use is allowed according to the terms of the BSD license.
+-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-
+-cmake_policy(SET CMP0017 NEW)
+-cmake_policy(SET CMP0048 NEW) # for PROJECT_VERSION
+-cmake_policy(SET CMP0053 NEW) # TODO remove, temporary fix for a bug in Qt 5.8's Qt5ModuleLocation.cmake
+-                              # "Simplify variable reference and escape sequence evaluation"
+-
+-if(POLICY CMP0059) # Don’t treat DEFINITIONS as a built-in directory property.
+-    cmake_policy(SET CMP0059 OLD)
+-endif()
+-if(POLICY CMP0063) # Honor visibility properties for all target types (since cmake 3.3)
+-    cmake_policy(SET CMP0063 NEW)
+-endif()
+-if(POLICY CMP0071) # Don't warn when combining AUTOMOC with qt5_wrap_ui() or qt5_add_resources() (since cmake 3.10)
+-    cmake_policy(SET CMP0071 NEW)
+-endif()
+-- 
+2.49.0
+

@@ -30,6 +30,10 @@ Patch0:         Fix-build-with-PostgreSQL-12.patch
 Patch1:         Fix-build-with-newer-Qt.patch
 # PATCH-FIX-UPSTREAM -- Find python3
 Patch2:         0001-Find-also-Python3-with-find_package-PythonInterp.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-Find-newer-PostgreSQL-versions.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         kdb-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  libmysqld-devel
