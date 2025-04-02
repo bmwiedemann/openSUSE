@@ -1,12 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:37:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-NDO-Fix-possible-overflow-access.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 09:20:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
-  * 0001-ASE-Fix-possible-out-of-bound-access.patch
+  * 0001-ASE-Fix-possible-out-of-bound-access.patch (CVE-2025-3015, boo#1240412)
   * 0001-MDL-Limit-max-texture-sizes.patch
-    (gh#assimp/assimp#6022)
+    (gh#assimp/assimp#6022, CVE-2025-3016, boo#1240413)
   * 0001-MDL-Fix-overflow-check.patch
-    (gh#assimp/assimp#6009)
+    (gh#assimp/assimp#6009, CVE-2025-2591, boo#1239920)
   * CVE-2025-2151.patch (CVE-2025-2151, boo#1239220)
   * 0001-Bugfix-Fix-possible-nullptr-dereferencing.patch
     (gh#assimp/assimp#6025)
@@ -14,7 +20,7 @@ Mon Mar 17 09:20:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
   * 0001-ASE-Use-correct-vertex-container.patch
     (gh#assimp/assimp#6024)
   * 0001-CMS-Fix-possible-overflow-access.patch
-    (gh#assimp/assimp#6010)
+    (CVE-2025-2592, boo#1239916, gh#assimp/assimp#6010)
 
 -------------------------------------------------------------------
 Fri Dec 27 08:05:57 UTC 2024 - Christophe Marin <christophe@krop.fr>

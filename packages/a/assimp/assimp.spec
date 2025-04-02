@@ -42,6 +42,8 @@ Patch9:         0001-Bugfix-Fix-possible-nullptr-dereferencing.patch
 Patch10:        0001-Potential-use-after-free.patch
 Patch11:        0001-ASE-Use-correct-vertex-container.patch
 Patch12:        0001-CMS-Fix-possible-overflow-access.patch
+# PATCH-FIX-UPSTREAM
+Patch13:        0001-NDO-Fix-possible-overflow-access.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++

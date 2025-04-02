@@ -304,4 +304,12 @@
     (gh#assimp/assimp#6010)</comment>
     <requestid>1253687</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>1a265ddd2af0c6c19dbee8b77c505f63</srcmd5>
+    <version>5.4.3</version>
+    <time>1743606531</time>
+    <user>anag+factory</user>
+    <comment>Add another patch + bug refs</comment>
+    <requestid>1266068</requestid>
+  </revision>
 </revisionlist>
