@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:47:19 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to new upstream release v0.18.1:
+  * added zsh shell completions
+  * added bash shell completions
+  * fixed crashing on some compositors with wp_viewport
+
+-------------------------------------------------------------------
 Tue Mar 18 19:20:41 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
 
 - version bump to v0.18.0 

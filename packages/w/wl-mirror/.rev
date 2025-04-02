@@ -24,4 +24,16 @@ Therefore it would be important to have the package available in the main repos.
 </comment>
     <requestid>1254227</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd8a2508d84e0159cf02ef2263168f1e</srcmd5>
+    <version>0.18.1</version>
+    <time>1743606958</time>
+    <user>anag+factory</user>
+    <comment>- Update to new upstream release v0.18.1:
+  * added zsh shell completions
+  * added bash shell completions
+  * fixed crashing on some compositors with wp_viewport
+</comment>
+    <requestid>1266309</requestid>
+  </revision>
 </revisionlist>
