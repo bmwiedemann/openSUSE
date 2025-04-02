@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:35:29 UTC 2025 - jsegitz@suse.com
+
+- Update to version 2.236.0:
+  * Allow super privileged containers to use RealtimeKit for scheduling
+  * Add container_ro_file_t to the podman artifact store
+
+-------------------------------------------------------------------
 Wed Mar 05 17:15:45 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 2.235.0:
