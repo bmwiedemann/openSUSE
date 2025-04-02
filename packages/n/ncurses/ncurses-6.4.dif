@@ -727,7 +727,7 @@
 +
 +exec ${1+"$@"}
 --- ncurses/tinfo/MKfallback.sh
-+++ ncurses/tinfo/MKfallback.sh	2024-12-16 08:23:36.335179769 +0000
++++ ncurses/tinfo/MKfallback.sh	2025-03-31 06:18:50.619173630 +0000
 @@ -66,14 +66,22 @@ if test $# != 0 ; then
  	TERMINFO=`pwd`/$tmp_info
  	export TERMINFO
@@ -756,8 +756,8 @@
  	for x in "$@"
  	do
  		echo "/* $x */"
--		"$infocmp_path" -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
-+		"$infocmp_path" $infocmp_args -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
+-		"$infocmp_path" -x -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
++		"$infocmp_path" $infocmp_args -x -E "$x" | sed -e 's/[ 	]short[ 	]/ NCURSES_INT2 /g'
  	done
  
  	cat <<EOF
@@ -765,8 +765,8 @@
  	for x in "$@"
  	do
  		echo "$comma /* $x */"
--		"$infocmp_path" -e "$x"
-+		"$infocmp_path" $infocmp_args -e "$x"
+-		"$infocmp_path" -x -e "$x"
++		"$infocmp_path" $infocmp_args -x -e "$x"
  		comma=","
  	done
  

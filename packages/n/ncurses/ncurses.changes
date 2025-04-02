@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Mar 31 06:15:49 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250329
+  + add XM/xm to ms-terminal, to enable mouse with experimental Windows
+    driver -TD
+  + add -x option to infocmp in MKfallback.sh
+  + improve experimental Windows driver by restoring the scroll buffer
+    and console mode, e.g., when reset_prog_mode or endwin is called
+    (patch by Daniel Starke).
+  + add a buffer-limit check in postprocess_termcap (report/testcase by
+    Yifan Zhang).
+
+-------------------------------------------------------------------
+Mon Mar 24 08:41:43 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250322
+  + add a null pointer check in mouse-initialization, for the
+    experimental Windows driver (patch by Daniel Starke).
+  + improve makefile dependency in Ada95/src
+  + add note in user_caps.5 addressing a quibble about dates.
+
+-------------------------------------------------------------------
 Mon Mar 17 07:39:44 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250315

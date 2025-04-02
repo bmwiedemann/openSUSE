@@ -5031,4 +5031,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1255532</requestid>
   </revision>
+  <revision rev="290" vrev="63">
+    <srcmd5>efb798b37a580e561da5e8bf71640936</srcmd5>
+    <version>unknown</version>
+    <time>1743606268</time>
+    <user>anag+factory</user>
+    <comment>- Add ncurses patch 20250329
+  + add XM/xm to ms-terminal, to enable mouse with experimental Windows
+    driver -TD
+  + add -x option to infocmp in MKfallback.sh
+  + improve experimental Windows driver by restoring the scroll buffer
+    and console mode, e.g., when reset_prog_mode or endwin is called
+    (patch by Daniel Starke).
+  + add a buffer-limit check in postprocess_termcap (report/testcase by
+    Yifan Zhang).
+
+- Add ncurses patch 20250322
+  + add a null pointer check in mouse-initialization, for the
+    experimental Windows driver (patch by Daniel Starke).
+  + improve makefile dependency in Ada95/src
+  + add note in user_caps.5 addressing a quibble about dates.</comment>
+    <requestid>1265702</requestid>
+  </revision>
 </revisionlist>
