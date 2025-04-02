@@ -1,7 +1,7 @@
 #
 # spec file for package python-microsoft-security-utilities-secret-masker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,21 +15,22 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b3
+
+%define realversion 1.0.0b4
 
 %{?sle15_python_module_pythons}
 Name:           python-microsoft-security-utilities-secret-masker
-Version:        1.0.0~b3
+Version:        1.0.0~b4
 Release:        0
 Summary:        A tool for detecting and masking secrets
 License:        MIT
 URL:            None
 Source:         https://files.pythonhosted.org/packages/source/m/microsoft-security-utilities-secret-masker/microsoft_security_utilities_secret_masker-%{realversion}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,6 +48,7 @@ A tool for detecting and masking secrets
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%doc HISTORY.rst README.rst
 %{python_sitelib}/microsoft_security_utilities_secret_masker
 %{python_sitelib}/microsoft_security_utilities_secret_masker-%{realversion}.dist-info
 

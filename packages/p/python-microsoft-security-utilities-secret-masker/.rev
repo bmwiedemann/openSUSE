@@ -8,4 +8,16 @@
   + Version 1.0.0b3</comment>
     <requestid>1206245</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1448ca8848b5c7649be2d17d191c800c</srcmd5>
+    <version>1.0.0~b4</version>
+    <time>1743606869</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b4
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Add HISTORY.rst and README.rst to %doc section (forwarded request 1266040 from glaubitz)</comment>
+    <requestid>1266116</requestid>
+  </revision>
 </revisionlist>
