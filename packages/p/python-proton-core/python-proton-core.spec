@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-core
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Proton VPN core library
 License:        GPL-3.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(libopenssl)
 Requires:       python-aiohttp
 Requires:       python-bcrypt
 Requires:       python-gnupg
+Requires:       python-importlib-metadata
 Requires:       python-pyOpenSSL
 Requires:       python-requests
 Conflicts:      python-proton-client
