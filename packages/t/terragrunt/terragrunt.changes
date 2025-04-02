@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Apr 02 04:45:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.6:
+  * bug: added limitation on detection of stack files (#4113)
+  * fix: Ignoring lock table encryption setting (#4112)
+  * feat: added support for parsing stack config from string
+    (#4110)
+
+-------------------------------------------------------------------
+Tue Apr 01 05:57:19 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.5:
+  * feat: added support for OpenTelemetry in stack commands to
+    enable enhanced observability and tracing by @denis256 in #4109
+
+-------------------------------------------------------------------
+Tue Apr 01 05:47:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.4:
+  * Bug fixes
+    - Newlines reduced in Error Logging for Configuration Errors
+      Logging for configuration errors has been compacted to reduce
+      noise, and make errors easier to read.
+    - Improved Cycle Detection Logic for stack generate
+      On the default filesystem for macOS, path length was likely
+      to result in an error before internal cycle detection logic,
+      so cycle detection was updated to leverage a maximum path
+      length of 1024 characters as an earlier exit for all
+      operating systems.
+    - Excessive warning for bootstrap requirement resolved
+      Internal logic for determination that backends required
+      bootstrapping was adjusted to no longer leverage the value of
+      the OpenTofu state file.
+      While cheaper than making a network request to assess the
+      current state of backend resources, it also resulted in false
+      negatives, which triggered excessive backend bootstrap
+      warnings.
+  * What's Changed
+    - fix: New lines in TF diagnostic log by @levkohimins in #4108
+    - fix: Stack cycles detection improvements by @denis256 in
+      #4106
+    - fix: Fixing excessive warning for bootstrap by @yhakbar in
+      #4107
+
+-------------------------------------------------------------------
+Mon Mar 31 18:51:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.3:
+  * Enhancements
+    Error Handling for Discovery
+    The find and list commands now leverage improved error handling
+    when discovering configurations throughout Terragrunt projects.
+    When configurations require authentication due to usage of
+    functionality like get_aws_account_id(), have errors in their
+    configurations or cycles between dependencies, the commands
+    will do their best to return valid results, and warn the user
+    that the results are incomplete due to suppressed errors or cut
+    cycles.
+    This should allow for usage of the find and list commands in
+    more real-world use-cases, which frequently require this kind
+    of error handling.
+  * What's Changed
+    - feat: Adding error handling for discovery by @yhakbar in
+      #4098
+
+-------------------------------------------------------------------
+Mon Mar 31 18:45:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.2:
+  * New Features
+    The backend configuration block now supports
+    assume_role_with_web_identity for configuring the backend block
+    of the OpenTofu/Terraform terraform block.
+    This allows users separately authenticating to backends with a
+    different role to leverage role assumption with OIDC.
+    For more information, see the backend docs.
+  * What's Changed
+    - feat: Adding assume_role_with_web_identity for backend
+      configs by @yhakbar in #4097
+    - chore: simplified processing of errors block by @denis256 in
+      #4046
+    - build(deps): Updated google.golang.org/protobuf to 1.36.6 by
+      @denis256 in #4096
+    - build(deps): Updated github.com/charmbracelet/lipgloss to
+      v1.1.0 by @denis256 in #4096
+    - build(deps): Update
+      github.com/gruntwork-io/terragrunt-engine-go to v0.0.13 by
+      @denis256 in #4096
+    - build(deps): Update github.com/urfave/cli/v2 to v2.27.6 by
+      @denis256 in #4096
+
+-------------------------------------------------------------------
 Fri Mar 28 20:00:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.1:
