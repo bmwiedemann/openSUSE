@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 27 04:10:39 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix grub-bls has broken builtin theme for SLE (bsc#1240090)
+
+-------------------------------------------------------------------
 Fri Mar 21 02:42:12 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Filter out the non-subvolume btrfs mount points when creating the

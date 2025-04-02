@@ -893,6 +893,14 @@ theme_vendor=${theme_vendor##*/}
 
 mkdir -p ./boot/grub
 cp -rf "%{_datadir}/%{name}/themes/$theme_vendor" ./boot/grub/themes
+
+# Background image is used by SLE branding
+theme_background="%{_datadir}/%{name}/backgrounds/$theme_vendor/default-43.png"
+if [ -f "$theme_background" ]; then
+    cp "$theme_background" ./boot/grub/themes/background.png
+    cp "$theme_background" ./boot/grub/themes/terminal-background.png
+fi
+
 rm -f "./boot/grub/themes/activate-theme"
 
 cat > ./grubbls.cfg <<'EOF'
