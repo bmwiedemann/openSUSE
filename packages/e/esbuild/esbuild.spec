@@ -28,7 +28,7 @@
 %global tag   v%{version}
 %global extractdir0 esbuild-%{version}
 Name:           esbuild
-Version:        0.25.1
+Version:        0.25.2
 Release:        0
 Summary:        A JavaScript bundler written for speed
 License:        MIT

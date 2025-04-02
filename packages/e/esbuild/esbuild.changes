@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Sat Mar 15 23:09:15 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+Wed Apr  2 02:11:52 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.2:
+  * Support flags in regular expressions for the API (#4121)
+  * Fix node-specific annotations for string literal export names (#4100)
+  * Basic support for index source maps (#3439, #4109)
+
+-------------------------------------------------------------------
+Wed Mar 19 03:39:26 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.25.1:
   * Fix incorrect paths in inline source maps (#4070, #4075, #4105)
