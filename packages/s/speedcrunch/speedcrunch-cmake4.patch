@@ -1,0 +1,26 @@
+From 856951320ce9f9389ee7bc76795d473200a8f147 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 17:56:27 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ src/CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 7be6aad..6149bd0 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -1,7 +1,7 @@
+-cmake_minimum_required(VERSION 2.8.11)
++cmake_minimum_required(VERSION 3.16)
+ 
+-project(speedcrunch)
+ set(speedcrunch_VERSION "0.12")
++project(speedcrunch VERSION ${speedcrunch_VERSION})
+ 
+ set(CMAKE_AUTOMOC ON)
+ set(CMAKE_COLOR_MAKEFILE ON)
+-- 
+2.49.0
+

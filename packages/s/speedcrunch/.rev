@@ -164,4 +164,13 @@
 </comment>
     <requestid>1107773</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>e350f0a85556942ada4f97c6de546570</srcmd5>
+    <version>0.12</version>
+    <time>1743606903</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * speedcrunch-cmake4.patch</comment>
+    <requestid>1266254</requestid>
+  </revision>
 </revisionlist>
