@@ -20,18 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version b69d4b74c98611d4c1bdd1d1a767791b451a3f38
+%define git_version 0f7fe1e739bfe0d67a42df6daed43f253030c928
 
 Name:           kernel-firmware-intel
-Version:        20250311
+Version:        20250331
 Release:        0
 Summary:        Kernel firmware files for Intel-platform device drivers
-License:        GPL-2.0-only AND GPL-2.0-or-later AND SUSE-Firmware
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250311.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250325.tar.gz#/kernel-firmware-tools-20250325.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -111,7 +110,8 @@ Supplements:    modalias(pci:v00008086d0000E445sv*sd*bc*sc*i*)
 This package contains kernel firmware files for Intel-platform device drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh intel < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE

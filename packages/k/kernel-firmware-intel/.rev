@@ -34,4 +34,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for qat_420xx devices</comment>
     <requestid>1252343</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c7d0f4fa3fdb73d5e12267ee67668061</srcmd5>
+    <version>20250331</version>
+    <time>1743606518</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250331 (git commit 0f7fe1e739bf):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1266052</requestid>
+  </revision>
 </revisionlist>
