@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:03:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 5.15.16:
+  * A requirements file for documentation builds (requirements-doc.txt) has
+   been added.
+  * [PYSIDE-1931] A hang in QSqlQueryModel.setQuery() (PostGres with SSH
+   tunnel) was fixed.
+  * [PYSIDE-2101] Python 3.10 and up have an incompatibility
+   to the __signature__ attribute. It is fixed by patching rlcompleter.
+  * [PYSIDE-1797] Limited_API: The check for PyIndex_Check has been fixed.
+  * [PYSIDE-2465] Special characters in the format string of an error message
+                causing an issue with Python 3.11.5 have been fixed.
+- Add patch:
+  * pyside-cmake4.patch
+- Drop patch:
+  * 0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 13:00:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patches to fix build with Python 3.13:

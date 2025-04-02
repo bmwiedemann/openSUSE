@@ -37,7 +37,7 @@
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
 
 Name:           %{mypython}-pyside2
-Version:        5.15.12
+Version:        5.15.16
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -54,11 +54,11 @@ Patch1:         0001-Don-t-try-to-install-or-use-uic-rcc-designer-copies.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         0001-cmake-Don-t-assume-qhelpgenerator-is-in-PATH.patch
 # PATCH-FIX-UPSTREAM
-Patch3:         0001-Fix-tests-sample_privatector-sample_privatedtor-fail.patch
-# PATCH-FIX-UPSTREAM
 Patch4:         AsLong.patch
 # PATCH-FIX-UPSTREAM, adapted to older codebase
 Patch5:         python312.patch
+# PATCH-FIX-UPSTREAM -- CMake 4 compat
+Patch6:         pyside-cmake4.patch
 # Provide the PyPI names
 Provides:       %{mypython}-PySide2 = %{version}-%{release}
 Provides:       %{mypython}-shiboken2 = %{version}-%{release}
