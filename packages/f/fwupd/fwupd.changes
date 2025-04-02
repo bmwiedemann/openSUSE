@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Mar 25 16:35:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.7:
+  + This release adds the following features:
+    - Allow calling 'fwupdtool security' with a fwupd version parameter
+    - A new plugin to update B&R DisplayPort receivers
+    - A new plugin to update Intel CVS cameras
+    - A new plugin to verify UEFI memory protection attributes
+    - A new quirk to signify that no additional ESP space is required
+    - Build additional Redfish instance IDs for Dell server hardware
+    - Implement the HPE proprietary Redfish firmware push method
+    - Support cabinet archives greater in size than 2GB
+    - Support for showing the SBOM release URL
+    - Support for UEFI capsule installation in the bootloader
+  + This release fixes the following bugs:
+    - Always close USB file descriptors after starting the daemon
+    - Do not add a Redfish release date if set to 00:00:00Z
+    - Fix a critical warning when rescanning a device with no GUIDs
+    - Fix a small memory leak when emumerating Logitech Rallysystem devices
+    - Fix a tiny Redfish memory leak when writing firmware
+    - Fix building against pygobject 3.52
+    - Fix Logitech BulkController setup for new device firmware versions
+    - Fix scaler-only Wacom USB update deployment
+    - Fix updating the RMM component in the dell-kestrel dock
+    - Fix writing new EFI variables to workaround a kernel regression
+    - Make PCI NAME and SSVID_SSPID based modem-manager IDs visible
+    - Parse firmware before putting the device into bootloader mode
+    - Prepend the capsule header when using Capsule-on-Disk
+    - Put a memory limit on decoding LZMA streams when parsing firmware
+    - Retry claiming the fastboot interface for up to 2500ms
+    - Trigger dpaux rescan on drm changes correctly
+    - Use the metadata version format to set the version_lowest when required
+  + This release adds support for the following hardware:
+    - Another HP wireless dongle
+    - Lenovo ThinkPad Thunderbolt 4 Smart Dock Gen2
+    - Lenovo USB-C Dual Display Travel Dock
+    - More EDL 5G modem devices
+- Drop 8583.patch and 8588.patch: fixed upsrtream.
+- Align meson call with current upstream supported parameters. 
+
+-------------------------------------------------------------------
 Mon Mar 17 15:11:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 8588.patch: Fix compile when using Pango >= 1.56.2.

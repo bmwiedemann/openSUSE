@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.6
+Version:        2.0.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -48,10 +48,6 @@ Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM
-Patch0:         https://patch-diff.githubusercontent.com/raw/fwupd/fwupd/pull/8583.patch
-# PATCH-FIx-UPSTREAM
-Patch1:         https://patch-diff.githubusercontent.com/raw/fwupd/fwupd/pull/8588.patch
 # PATCH-FIX-OPENSUSE fwupd-bsc1130056-shim-path.patch bsc#1130056
 Patch99:        fwupd-bsc1130056-change-shim-path.patch
 
@@ -229,32 +225,10 @@ export CFLAGS="%{optflags} -D_GNU_SOURCE"
 # Dell support requires direct SMBIOS access,
 # Synaptics requires Dell support, i.e. x86 only
 %meson \
-  -Dlaunchd=disabled \
-  -Dplugin_amdgpu=enabled \
   -Dpassim=disabled \
 %if %{with efi_fw_update}
-  -Dplugin_uefi_capsule=enabled \
-  -Dplugin_uefi_pk=enabled \
   -Defi_binary=false \
-%else
-  -Dplugin_uefi_capsule=disabled \
-  -Dplugin_uefi_pk=disabled \
 %endif
-%if %{with msr_support}
-  -Dplugin_msr=enabled \
-%else
-  -Dplugin_msr=disabled \
-%endif
-%if %{with dell_support}
-  -Dplugin_synaptics_mst=enabled \
-%else
-  -Dplugin_synaptics_mst=disabled \
-%endif
-%ifnarch %{ix86} x86_64
-  -Dplugin_synaptics_rmi=disabled \
-%endif
-  -Dplugin_nvme=enabled \
-  -Dplugin_redfish=enabled \
   -Ddocs=enabled \
   -Dsupported_build=enabled \
   -Dtests=false \

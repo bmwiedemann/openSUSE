@@ -869,4 +869,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment>- Add 8588.patch: Fix compile when using Pango &gt;= 1.56.2. (forwarded request 1253854 from dimstar)</comment>
     <requestid>1253857</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>ea11d3731702f7fe4b24faee0890a7e3</srcmd5>
+    <version>2.0.7</version>
+    <time>1743606454</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265890</requestid>
+  </revision>
 </revisionlist>
