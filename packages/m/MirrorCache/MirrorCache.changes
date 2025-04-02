@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Mar 26 12:16:45 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.093:
+  * Fix join condition in stat_agg_pkg task
+
+-------------------------------------------------------------------
+Tue Mar 25 12:12:07 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.092:
+  * Rework aggregation of package download stats (#572)
+
+-------------------------------------------------------------------
+Fri Mar 21 14:59:08 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.091:
+  * Count download for packages (#571)
+  * ui: change default sort order for mtime column (#570)
+  * Update footer.html.ep - copyright year (#564)
+  * Fix join condition in pkg stat aggregation (#555)
+  * Less aggressive schedule for package day stat calculation (#555)
+
+-------------------------------------------------------------------
 Thu Jan 09 11:12:48 UTC 2025 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.090:
