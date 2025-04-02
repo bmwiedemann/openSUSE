@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 13:58:41 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add rsync341-gcc15-bool.patch to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Wed Jan 22 15:44:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

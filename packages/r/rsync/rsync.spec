@@ -59,6 +59,8 @@ Patch2:         rsync-usr-etc.patch
 Patch3:         rsync-run-dir.patch
 # https://github.com/RsyncProject/rsync/pull/639
 Patch5:         rsyncd-return-from-list-command-with-0.patch
+# https://github.com/RsyncProject/rsync/pull/716
+Patch6:         rsync341-gcc15-bool.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
