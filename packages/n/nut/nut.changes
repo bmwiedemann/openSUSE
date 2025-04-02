@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 19:22:22 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Add pynut-replace-telnetlib.patch
+  * Removes dependency on telnetlib module which was removed in python 3.13
+
+-------------------------------------------------------------------
 Sun Sep 29 20:50:24 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add /srv/www directories to filelist [bsc#1231027]

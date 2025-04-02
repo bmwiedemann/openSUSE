@@ -1,7 +1,7 @@
 #
 # spec file for package nut
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,9 @@ Patch2:         nut-doc-fixed-date.patch
 Patch3:         harden_nut-driver.service.patch
 Patch4:         harden_nut-monitor.service.patch
 Patch5:         harden_nut-server.service.patch
+# PATCH-FIX-UPSTREAM pynut-replace-telnetlib.patch antonio.teixeira@suse.com -- Removes dependency on telnetlib module which was removed in python 3.13.
+# Backported from https://github.com/networkupstools/nut/pull/2792
+Patch6:         pynut-replace-telnetlib.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
