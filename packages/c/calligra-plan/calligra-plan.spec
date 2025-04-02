@@ -23,6 +23,8 @@ Summary:        Project Management Application
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.calligra.org/
 Source0:        https://download.kde.org/stable/calligra/%{version}/calligraplan-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         calligraplan-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  perl-base

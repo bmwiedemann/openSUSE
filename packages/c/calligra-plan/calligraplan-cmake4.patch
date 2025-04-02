@@ -1,0 +1,49 @@
+From 73268e580488f69fe3c9bcee2c4cf2931e87fb49 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 14:27:38 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 26 +-------------------------
+ 1 file changed, 1 insertion(+), 25 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b00d0bc..dee4918 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,31 +1,7 @@
+ 
+ project(calligraplan)
+ 
+-cmake_minimum_required(VERSION 3.0)
+-if (POLICY CMP0002)
+-    cmake_policy(SET CMP0002 NEW)
+-endif ()
+-if (POLICY CMP0017)
+-    cmake_policy(SET CMP0017 NEW)
+-endif ()
+-if (POLICY CMP0022)
+-    cmake_policy(SET CMP0022 NEW)
+-endif ()
+-if (POLICY CMP0026)
+-    cmake_policy(SET CMP0026 NEW)
+-endif()
+-if (POLICY CMP0046)
+-    cmake_policy(SET CMP0046 NEW)
+-endif ()
+-if (POLICY CMP0059)
+-    cmake_policy(SET CMP0059 NEW)
+-endif()
+-if (POLICY CMP0063)
+-    cmake_policy(SET CMP0063 NEW)
+-endif()
+-if (POLICY CMP0071)
+-    cmake_policy(SET CMP0071 NEW)
+-endif()
++cmake_minimum_required(VERSION 3.16)
+ 
+ list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "PLAN_SCHEDULERPLUGIN_EXPORT")
+ 
+-- 
+2.49.0
+

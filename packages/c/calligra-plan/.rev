@@ -145,4 +145,13 @@
     <comment></comment>
     <requestid>1255918</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>1a2833b53d923744d467ab3030a98a02</srcmd5>
+    <version>3.3.0</version>
+    <time>1743606822</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * calligraplan-cmake4.patch</comment>
+    <requestid>1266137</requestid>
+  </revision>
 </revisionlist>
