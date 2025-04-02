@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr  1 17:34:30 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- update to 25.4.0:
+  * Bugfixes
+    - Fix CI: Update libtmux to the newer version (#1918)
+      @shatakshiiii
+  * Dependencies
+    - Bump the dependencies group in /.config with 10 updates
+      (#1936)
+    - Update ruff to latest (#1933)
+    - Bump the dependencies group in /.config with 2 updates
+      (#1934)
+    - Bump the dependencies group in /.config with 9 updates
+      (#1930)
+    - Bump the dependencies group in /.config with 10 updates
+      (#1929)
+    - Bump codecov/codecov-action from 5.3.1 to 5.4.0 (#1926)
+    - Bump the dependencies group in /.config with 8 updates
+      (#1925)
+    - Bump the dependencies group in /.config with 9 updates
+      (#1923)
+    - Bump libtmux from 0.42.1 to 0.43.0 in /.config in the
+      dependencies group (#1920)
+    - Bump the dependencies group across 1 directory with 14
+      updates (#1919)
+    - Bump the dependencies group in /.config with 10 updates
+      (#1913)
+    - Bump the dependencies group in /.config with 11 updates
+      (#1910)
+    - Bump codecov/codecov-action from 5.1.2 to 5.3.1 (#1911)
+
+-------------------------------------------------------------------
 Wed Jan 22 06:21:28 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 25.1.0:
