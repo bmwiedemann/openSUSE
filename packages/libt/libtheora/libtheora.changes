@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Mar 31 09:03:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Fix devel package Requires, so name of shared libs was changed in
+  previous version update.
+
+-------------------------------------------------------------------
+Sat Mar 29 14:17:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.2.0
+  * New 'ptalarbvorm' encoder with better rate/distortion optimization
+  * New th_encode_ctl option for copying configuration from an existing
+    setup header, useful for splicing streams.
+  * Returns TH_DUPFRAME in more cases.
+  * Add ARM optimizations
+  * Add TI C64x+ DSP optimizations
+  * Other performance improvements
+  * Rename speedlevel 2 to 3 and provide a new speedlevel 2
+  * Various minor bug fixes
+  * Bumped minor SONAME versions as <codec.h> methods changed constness
+    of arguments.
+  * Updated libogg dependency to version 1.3.4 for ogg_uint64_t.
+  * Updated doxygen setup.
+  * Updated autotools setup and support scripts
+  * Improved ARM support.
+  * Converted SCons setup to work with Python 3.
+  * Introduced new configure options --enable-mem-constraint and
+    --enable-gcc-sanitizers.
+  * Fixed all known compiler warnings and errors from gcc and clang.
+  * Improved examples for stability and correctness.
+  * Various speed, bug fixes and code quality improvements.
+    - Fixed build problem with Visual Studio
+    - Avoids undefined bit shift of signed numbers
+    - Avoids example encoder crash on bogus audio input
+    - Fixed musl linking issue with asm enabled
+    - Fixed some broken clamping in rate control
+    - Added NULL check _tc and _setup even for data packets
+    - Fixed mismatched oc_mb_fill_cmapping11 signature
+    - Updated the documentation for theora_encode_comment()
+    - Adjusted build to only link libcompat with dump_video
+    - Corrected an operator precedence error in the visualization
+      code
+    - Fixed two spelling errors in the comments
+    - Avoid negative bit shift operation in huffdec.c (CVE-2024-56431)
+  * Improved library documentation and specification text.
+  * Adjusted library dependencies so libtheoraenc do not depend on
+    libtheoradec.
+  * Handle fallout from CVE-2017-14633 in libvorbis, check return value
+    in encoder_example and transcoder_example.
+  * Bumped minor SONAME versions as oc_comment_unpack() implementation
+    changed.
+  * Added example wrapper script encoder_example_ffmpeg
+  * Improve comment handling on platforms where malloc(0) return NULL
+  * Added pragma in example code to quiet clang op precedenca warnings.
+  * Adjusted encoder_example help text.
+  * Adjusted README, CHANGES, pkg-config and spec files to better reflect
+    current release
+  * Corrected english typos in source and build system.
+  * Switched http links to https in doc and comments where relevant.
+    Did not touch RFC drafts.
+- do not obsolete itself
+- remove workaround for ppc64 as that arch does not exist anymore
+- use macros (autosetup, make, ldconfig_scriptlets)
+- be more verbose in the %files section (list every file)
+
+-------------------------------------------------------------------
 Mon Jun 21 18:06:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove completely unnecessary python BR

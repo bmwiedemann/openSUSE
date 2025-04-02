@@ -1,7 +1,7 @@
 #
 # spec file for package libtheora
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,41 +20,29 @@ Name:           libtheora
 Summary:        Theora video compression codec
 License:        BSD-3-Clause
 Group:          Productivity/Multimedia/Other
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
-%define pkg_version %version
 URL:            http://www.theora.org/
-
-Source:         http://downloads.xiph.org/releases/theora/%{name}-%{pkg_version}.tar.bz2
-Source2:        baselibs.conf
+Source0:        https://gitlab.xiph.org/xiph/theora/-/archive/v%{version}/theora-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
 BuildRequires:  gcc-c++
-BuildRequires:  libogg-devel
 BuildRequires:  libtool
-BuildRequires:  libvorbis-devel
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-# bug437293
-%ifarch ppc64
-Obsoletes:      libtheora-64bit
-%endif
+BuildRequires:  pkgconfig(ogg)
+BuildRequires:  pkgconfig(vorbis)
 
 %description
 Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
 multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
-%package -n libtheora0
+%package -n libtheora1
 Summary:        Theora video compression codec
 Group:          System/Libraries
 Provides:       %{name} = %{version}
-Obsoletes:      %{name} <= %{version}
-# bug437293
-%ifarch ppc64
-Obsoletes:      libtheora-64bit
-%endif
-#
+Obsoletes:      %{name} < %{version}
 
-%description -n libtheora0
+%description -n libtheora1
 Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
 multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
@@ -74,22 +62,22 @@ Authors:
 --------
     the Xiph.Org Foundation http://www.xiph.org/
 
-%package -n libtheoradec1
+%package -n libtheoradec2
 Summary:        Theora video decompression library
 Group:          System/Libraries
 
-%description -n libtheoradec1
+%description -n libtheoradec2
 Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
 multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
 
 This subpackage contains the decoder library.
 
-%package -n libtheoraenc1
+%package -n libtheoraenc2
 Summary:        Theora video compression library
 Group:          System/Libraries
 
-%description -n libtheoraenc1
+%description -n libtheoraenc2
 Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
 multimedia technology it can be used to distribute film and video online and on disc without
 the licensing and royalty fees or vendor lock-in associated with other formats.
@@ -100,14 +88,9 @@ This subpackage contains the encoder library.
 Summary:        Theora video compression codec
 Group:          Development/Libraries/C and C++
 Requires:       libogg-devel
-Requires:       libtheora0 = %{version}
-Requires:       libtheoradec1 = %{version}
-Requires:       libtheoraenc1 = %{version}
-# bug437293
-%ifarch ppc64
-Obsoletes:      libtheora-devel-64bit
-%endif
-#
+Requires:       libtheora1 = %{version}
+Requires:       libtheoradec2 = %{version}
+Requires:       libtheoraenc2 = %{version}
 
 %description devel
 Theora is a free and open video compression format from the Xiph.org Foundation. Like all our
@@ -130,52 +113,49 @@ Authors:
     the Xiph.Org Foundation http://www.xiph.org/
 
 %prep
-%setup -q -n %{name}-%{pkg_version}
+%autosetup -n theora-v%{version}
 
 %build
-ACLOCAL="aclocal -I m4" autoreconf -f -i
+./autogen.sh
 %configure --disable-examples \
     --disable-static \
     --with-pic
-make %{?_smp_mflags} docdir=%{_docdir}/%{name}
+%make_build docdir=%{_docdir}/%{name}
 
 %install
 %make_install docdir=%{_docdir}/%{name}
-%{__install} -d $RPM_BUILD_ROOT%{_bindir}
-# Install remaining parts of documentation.
-%{__cp} -a AUTHORS CHANGES COPYING LICENSE README $RPM_BUILD_ROOT%{_docdir}/%{name}
+
+# remove la files
+find %{buildroot} -type f -name "*.la" -exec rm {} \;
+# remove empty file
+find %{buildroot} -type f -name "doxygen-build.stamp" -exec rm {} \;
 
 %check
-%{__make} check
+%make_build check
 
-%post   -n libtheora0 -p /sbin/ldconfig
-%postun -n libtheora0 -p /sbin/ldconfig
-%post   -n libtheoradec1 -p /sbin/ldconfig
-%postun -n libtheoradec1 -p /sbin/ldconfig
-%post   -n libtheoraenc1 -p /sbin/ldconfig
-%postun -n libtheoraenc1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtheora1
+%ldconfig_scriptlets -n libtheoradec2
+%ldconfig_scriptlets -n libtheoraenc2
 
-%files -n libtheora0
-%defattr(-,root,root)
-%{_libdir}/libtheora.so.0*
+%files -n libtheora1
+%{_libdir}/libtheora.so.1*
 
-%files -n libtheoradec1
-%defattr(-,root,root)
-%{_libdir}/libtheoradec.so.1*
+%files -n libtheoradec2
+%{_libdir}/libtheoradec.so.2*
 
-%files -n libtheoraenc1
-%defattr(-,root,root)
-%{_libdir}/libtheoraenc.so.1*
+%files -n libtheoraenc2
+%{_libdir}/libtheoraenc.so.2*
 
 %files devel
-%defattr(-,root,root)
-%doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/*
+%license COPYING LICENSE
+%doc AUTHORS CHANGES README.md
+%{_docdir}/%{name}
 %{_includedir}/theora
-%{_libdir}/*.so
+%{_libdir}/libtheora.so
+%{_libdir}/libtheoradec.so
+%{_libdir}/libtheoraenc.so
+%{_libdir}/pkgconfig/theora.pc
 %{_libdir}/pkgconfig/theoradec.pc
 %{_libdir}/pkgconfig/theoraenc.pc
-%{_libdir}/pkgconfig/theora.pc
-%exclude %{_libdir}/*.la
 
 %changelog
