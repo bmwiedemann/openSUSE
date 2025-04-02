@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:36:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.2.0:
+  * docs: update README.md based on template
+  * publish: fix project website in pyproject.toml
+
+-------------------------------------------------------------------
 Thu Dec  5 00:55:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging
