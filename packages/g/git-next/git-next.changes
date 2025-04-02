@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:48:05 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2025.3.4:
+  * Fixed
+    - clear status to waiting when expire message token received
+    - don't send duplicate WebhookReceive updates for next and dev
+    - improve error message on unconventional commit
+    - (xui) rebase and user intervention handler use selected repo
+  * Other
+    - (xui) add regresion test for displaying selected repo when
+      filtered
+    - (xui) DataState widget
+    - (xui) extract popup rendering into fn
+    - fix flaky test by generating valid test hostnames
+    - replace ForgeConfig contructor with Builder
+
+-------------------------------------------------------------------
+Sun Mar 23 18:20:47 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2025.3.3:
+  * Other
+    - (push-main-pr) allow manual dispatch of workflow
+    - (docker) publish docker image with tag not branch
+- Update to version 2025.3.2:
+  * Other
+    - (push-main-release) fix second typo in tagging codeberg
+      images
+- Update to version 2025.3.1:
+  * Fixed
+    - (xui) display correct repo when filtered
+  * Other
+    - (push-main-release) fix typo in tagging codeberg images
+    - (deps) upgrade rstest from 0.24 to 0.25
+    - (xui) UserAlert use Builder
+    - (push-main-release) don't update PR concurrently
+    - (xui) RepoTable and RepoTableItem use Builder
+    - drop derive_setters in favour of derive_with
+    - reduce how often docker image is built
+    - (xui) CommitLog use Builder
+    - (xui) UserInputActor use Builder
+    - (xui) UiState use Builder
+    - (xui) RepoState fields not pub
+    - (xui) RepoKey use Builder
+    - (xui) RepoDetails use Builder
+
+-------------------------------------------------------------------
+Sat Mar 22 16:45:36 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 2025.3.0:
+  * Added
+    - always validate repo on valid webhook
+  * Documentation
+    - fix minor typos in README
+  * Other
+    - (deps) upgrade kameo from 0.14 to 0.15
+    - (deps) upgrade derive_more from 1.0 to 2.0
+    - (deps) upgrade rand from 0.8 to 0.9
+    - (deps) upgrade derive-with from 0.5 to 0.6
+    - add forgejo-commit-path-rules v0.2.3
+    - sort dependencies
+    - clippy fixes
+
+-------------------------------------------------------------------
 Thu Feb 27 06:00:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package git-next: trunk-based development manager for a solo
