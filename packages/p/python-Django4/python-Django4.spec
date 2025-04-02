@@ -154,6 +154,6 @@ export PATH=%{_libdir}/chromium:$PATH
 %python_alternative %{_bindir}/django-admin
 %{_datadir}/bash-completion/completions/django_bash_completion-%{python_bin_suffix}.sh
 %{python_sitelib}/django
-%{python_sitelib}/Django-%{version}-py*.egg-info
+%{python_sitelib}/[dD]jango-%{version}-py*.egg-info
 
 %changelog
