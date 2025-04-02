@@ -58,4 +58,17 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update spec to make kernel-firmware-tools downloadable</comment>
     <requestid>1255831</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>62dab20ad2474cca5b766c9220389565</srcmd5>
+    <version>20250401</version>
+    <time>1743606560</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250401 (git commit d864697fd38a):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x17E9_16ED
+  * Revert &quot;rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6&quot;
+
+- Update to version 20250331 (git commit 0f7fe1e739bf):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6</comment>
+    <requestid>1266533</requestid>
+  </revision>
 </revisionlist>

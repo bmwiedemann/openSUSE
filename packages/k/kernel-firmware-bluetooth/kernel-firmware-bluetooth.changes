@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  2 12:26:58 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250401 (git commit d864697fd38a):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x17E9_16ED
+  * Revert "rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6"
+
+-------------------------------------------------------------------
+Tue Apr  1 08:31:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250331 (git commit 0f7fe1e739bf):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6
+
+-------------------------------------------------------------------
 Tue Mar 25 07:22:28 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix a typo in download URL
