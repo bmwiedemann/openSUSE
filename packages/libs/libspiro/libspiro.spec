@@ -1,7 +1,7 @@
 #
 # spec file for package libspiro
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sonum   1
 Name:           libspiro
-Version:        20221101
+Version:        20240903
 Release:        0
 Summary:        A clothoid to bezier spline converter
 License:        GPL-3.0-or-later

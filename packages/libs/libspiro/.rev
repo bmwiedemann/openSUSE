@@ -106,4 +106,22 @@
   * Test added for 'a','h' to ensure points don't overlap, else exit. (forwarded request 1060006 from dirkmueller)</comment>
     <requestid>1060348</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2d58c3704991c58b81126d233b743153</srcmd5>
+    <version>20240903</version>
+    <time>1743606316</time>
+    <user>anag+factory</user>
+    <comment>- update to 20240903:
+  * Downgraded ./configure AC_PREREQ(2.70) to 2.69 to allow
+    libspiro to be built for ELN distros.
+- update to 20240902:
+  * Removed bug introduced during 20221101 which caused libspiro
+    to exit early without results. This was seen in Fontforge as
+    straight lines (closes issue (see bug).
+  * Updated configure.ac to also display $libdir since 64bit
+    needs to run './configure --prefix=/usr --libdir=/usr/lib64'
+    for distro installs (32bit ./configure --prefix=/usr' is
+    enough).</comment>
+    <requestid>1265508</requestid>
+  </revision>
 </revisionlist>

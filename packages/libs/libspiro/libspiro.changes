@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 30 10:45:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 20240903:
+  * Downgraded ./configure AC_PREREQ(2.70) to 2.69 to allow
+    libspiro to be built for ELN distros.
+- update to 20240902:
+  * Removed bug introduced during 20221101 which caused libspiro
+    to exit early without results. This was seen in Fontforge as
+    straight lines (closes issue (see bug).
+  * Updated configure.ac to also display $libdir since 64bit
+    needs to run './configure --prefix=/usr --libdir=/usr/lib64'
+    for distro installs (32bit ./configure --prefix=/usr' is
+    enough).
+
+-------------------------------------------------------------------
 Thu Dec  8 20:28:06 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 20221101:
