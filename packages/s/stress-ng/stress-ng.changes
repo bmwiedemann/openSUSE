@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Mar 31 08:36:25 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- update to 0.18.12:
+  * physmmap: add physical memory mapping (/dev/mem) stressor
+  * stress-link/memfd/mmaphuge/mmaptorture: fix global buffer overflow
+  * stress-prefetch: add aarch64 load prefetch instructions (prfm)
+  * core-asm-ret: add lpad instruction in return code on RISC-V
+  * core-asm-ret: add PPC64 big endian and PPC little and big endian support
+  * stress-flushcache: call dcbst_page for PPC and PPC64
+  * stress-nop: make policy non-clobberable for ppc32 gcc 4.9.2 builds
+  * stress-cyclic: make policy non-clobberable for ppc32 gcc 4.9.2 builds
+  * stress-hyperbolic: long double trig should be at least as accurate as double
+  * stress-trig: long double trig should be at least as accurate as double
+  * stress-opcode: Fix incorrect opcode mmap size, 2 pages short
+  * stress-lockbus: add timer to break out stuck split locks on ppc64
+  * stress-regex: Fix digits regex name, should be digits and not alphas
+  * stress-tlb-shootdown: page align two more offsets
+  * stress-tlb-shootdown: msync memfd mapping using the correct size
+  * stress-malloc: only declare tmp_align for aligned allocations
+  * stress-tlb-shootdown: page align offsets
+  * stress-open: always unlink file on O_TRUNC open
+  * stress-stream: add hex string compare of checksums
+  * stress-physmmap: add upper region size bounds check
+  * stress-easy-opcode: ensure enough end spaces is available for return ops(s)
+  * stress-easy-opcode: add a simple easy opcode stressor
+  * stress-tlb-shootdown: make TLB shootdowns more aggressive, add metrics
+  * core-cpu-cache: only use clflushopt if it is supported by the processor
+  * kernel-coverage: add --physmmap-read test
+  * stress-physmmap: add --physmmap-read option to force read data in every page
+  * stress-misaligned: use atomic_fetch_add if 2,4,8 byte variants unavailable
+  * stress-physmmap: attempt to mmap entire region in one mmap
+  * stress-physmmap: make mappable_pages a register size_t
+  * stress-physmmap: report if no pages were mappable
+  * stress-physmmap: add physical memory mapping (/dev/mem) stressor
+  * Remove stress-mpfr.
+  * stress-uprobe: cast size_t to ssize_t for sane type comparison
+  * stress-uprobe: prevent buffer overflows when parsing data
+  * stress-race-sched: fix off-by-one comparison on method_all_index
+  * stress-malloc: ensured aligned_alloc is a multiple of alignment
+  * stress-bitononicsort: fix mmap'd anon mapped name
+  * stress-vm: add collapse to vm-madvise options for MADV_COLLAPSE
+  * core-heler: add stress_madvise_collapse to collapse pages to hugepages
+  * stress-umask: add umask system call exercising stressor
+  * stress-mmaptorture: add MADV_RANDOM on zero sized allocation
+  * core-shim: add build-time check for close_range, use it in core-shim
+  * matrix-methods.job: remove hot from hot-cpu
+  * core-cpu-cache: add #elif for cacheflush, helps static analyzer
+  * stress-bigheap: use bit-wise & for logical anding
+  * stress-numa: use bit-wise & for logical anding
+  * stress-zombie: voidify return from shim_usleep()
+  * stress-swap: enable --swap-self on --aggressive
+  * stress-stack: enable --stack-{fill|mlock|pageout|swap} on --aggressive
+  * stress-shm-sysv: enable --shm-sysv-mlock on --aggressive
+  * stress-shm: enable --shm-mlock on --aggressive
+  * Manual: fix missing sysv shared memory heading
+  * stress-sem: enable --sem-shared on --aggressive
+  * stress-resources: enable --resources-mlock on --aggressive
+  * stress-readahead: limit --readahead-bytes maximized setting to MAX_32
+  * stress-ramfs: make --ramfs-fill fill pages with random data
+  * stress-ng: check for stressors that should be ignore
+  * stress-pseek: enable --pseek-rand on --aggressive
+  * stress-pipeherd: enable --pipeherd-yield on --aggressive
+  * Manual: fix indentation on --pci-ops-rate option
+  * stress-pagemove: enable --pagemove-mlock and --pagemove-numa on --aggressive
+  * stress-numa: enable numa-shuffle-addr and numa-shuffle-node on --aggressive
+  * Manual: fix missing netlink task title
+  * Manual: fix missing title for mmapmany stressor
+  * Manual: remove idle-page help
+  * stress-malloc: flush pages when using --aggressive
+  * stress-bigheap: use memory clearing calloc when using --aggressive
+  * stress-vm: flush pages when using --aggressive
+  * stress-vm-addr: flush pages when using --aggressive
+  * stress-vma: flush pages when using --aggressive
+  * stress-stack: flush touched stack pages when using --aggressive
+  * stress-stack: make --stack-fill option fill stack with random data
+  * stress-pageswap: madvise populate read when using --aggressive option
+  * stress-munmap: for pages to page out with --aggressive option
+  * stress-madvise: force more swapouts/swapins with --aggressive options
+  * core-out-of-memory: Fix off-by-one array overflow error
+  * stess-bigheap: increase reallocs and memory checks with --aggressive
+  * stress-affinity: add more sched_setaffinity call with --aggressive option
+  * stress-access: add more access calls with --aggressive option enabled
+  * stress-lockbus: add 1 byte and 2 byte misaligned 32 bit lock bus operations
+  * stress-ng: enable specifying number of instances as % of cpus
+  * core-vmstat: add vmstat memory scaling option --vmstat-units U
+
+-------------------------------------------------------------------
 Mon Mar  3 09:58:31 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - update to 0.18.11:
