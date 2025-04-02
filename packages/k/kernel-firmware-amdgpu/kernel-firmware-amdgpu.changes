@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 29 08:26:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250328 (git commit 4bfa7c6351ab):
+  * amdgpu: update dcn 3.5 and dcn 3.5.1 firmware to 9.0.27.0
+  * amdgpu: update dcn 3.1.4 firmware to 8.0.78.0
+
+-------------------------------------------------------------------
 Tue Mar 25 07:22:25 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix a typo in download URL
