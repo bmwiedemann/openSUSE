@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr  1 06:48:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 5.12.5:
+  + Bugfix tracon table size management.
+  + Bugfix connector hashing for fewer hash collisions.
+  + Bugfix python unit test for Thai on Apple.
+  + New autogen.sh
+  + Stop litering .lg_history in current directory.
+  + MS Windows build fixes
+- For more changes since version 5.10.5, please see the included
+  Changelog file.
+- Use ldconfig_scriptlets macro for post(un) handling.
+- Update URL and Source to new home.
+- Drop NEWS file, it is no longer maintained.
+
+-------------------------------------------------------------------
 Tue Mar 11 13:36:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop python bindings (unused, and incompatible with Python 3.13):

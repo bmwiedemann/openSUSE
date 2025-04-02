@@ -18,13 +18,13 @@
 
 %define lname liblink-grammar5
 Name:           link-grammar
-Version:        5.10.5
+Version:        5.12.5
 Release:        0
 Summary:        Syntactic parser and grammar checker
 License:        LGPL-2.1-only
 Group:          Productivity/Text/Spell
-URL:            https://www.abisource.com/projects/link-grammar/
-Source:         http://www.abisource.com/downloads/link-grammar/%{version}/%{name}-%{version}.tar.gz
+URL:            https://opencog.github.io/link-grammar-website/
+Source:         https://www.gnucash.org/link-grammar/downloads/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.rpmlintrc
 
 BuildRequires:  autoconf-archive
@@ -89,12 +89,11 @@ find %{buildroot}%{_libdir} -type f "(" -name "*.a" -o -name "*.la" ")" -delete 
 find %{buildroot} ! -type d -size 0 -delete
 %fdupes %{buildroot}%{_prefix}
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
 %files
 %license LICENSE
-%doc NEWS README.md
+%doc ChangeLog README.md
 %{_bindir}/*
 %{_datadir}/link-grammar
 %{_mandir}/man1/link-parser.1%{?ext_man}
@@ -104,7 +103,7 @@ find %{buildroot} ! -type d -size 0 -delete
 %{_libdir}/*.so.*
 
 %files devel
-%doc AUTHORS ChangeLog MAINTAINERS
+%doc AUTHORS MAINTAINERS
 %dir %{_includedir}/link-grammar
 %{_includedir}/link-grammar/*.h
 %{_libdir}/*.so
