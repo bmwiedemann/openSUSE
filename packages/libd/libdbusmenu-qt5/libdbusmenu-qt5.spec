@@ -25,12 +25,13 @@ Release:        0
 URL:            https://launchpad.net/libdbusmenu-qt/
 Summary:        A Qt implementation of the DBusMenu protocol
 License:        LGPL-2.0-or-later
-Group:          System/Libraries
-Source:         https://github.com/unity8-team/%{rname}/archive/%{version}-0ubuntu1.tar.gz
+Source0:        https://github.com/unity8-team/%{rname}/archive/%{version}-0ubuntu1.tar.gz
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM noqDebug-qWarnings.patch -- libdbusmenu uses it's own qDebug's and qWarnings,
 # which are useless, and annoy users, so this patch just disables them in release mode
 Patch0:         noqDebug-qWarnings.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-CMake-4.patch
 #Needed for DISABLE_FIND_PACKAGE
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -40,7 +41,6 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This library provides a Qt implementation of the DBusMenu protocol.
@@ -50,7 +50,6 @@ their menus over DBus. Qt5 library
 
 %package -n libdbusmenu-qt5-2
 Summary:        Development package for dbusmenu-qt5
-Group:          System/Libraries
 
 %description -n libdbusmenu-qt5-2
 This library provides a Qt implementation of the DBusMenu protocol.
@@ -60,7 +59,6 @@ their menus over DBus. Qt5 library
 
 %package -n libdbusmenu-qt5-devel
 Summary:        Development package for libdbusmenu-qt5
-Group:          Development/Libraries/Other
 Requires:       libdbusmenu-qt5-2 = %{version}
 Requires:       pkgconfig(Qt5Core)
 
@@ -74,22 +72,16 @@ This package contains development files for libdbusmenu-qt5.
 sed -i "s/HTML_TIMESTAMP         = YES/HTML_TIMESTAMP         = NO/" Doxyfile.in
 
 %build
-mkdir build
-pushd build
-export CFLAGS="%{optflags} -DQT_NO_DEBUG -DQT_NO_DEBUG_OUTPUT -DQT_NO_WARNING_OUTPUT"
-export CXXFLAGS="%{optflags} -DQT_NO_DEBUG -DQT_NO_DEBUG_OUTPUT -DQT_NO_WARNING_OUTPUT"
-export LDFLAGS="-Wl,-Bsymbolic-functions $LDFLAGS"
 _libsuffix=$(echo %{_lib} | cut -b4-)
-cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-      -DLIB_SUFFIX="$_libsuffix" \
-      -DUSE_QT5=ON \
-      -DCMAKE_DISABLE_FIND_PACKAGE_QJSON=TRUE \
-      -DCMAKE_BUILD_TYPE=release ..
-make %{?_smp_mflags} VERBOSE=1
-popd
+%cmake \
+  -DLIB_SUFFIX="$_libsuffix" \
+  -DUSE_QT5=ON \
+  -DCMAKE_DISABLE_FIND_PACKAGE_QJSON=TRUE \
+  -DCMAKE_BUILD_TYPE=release
+%cmake_build
 
 %install
-%makeinstall -C build
+%cmake_install
 
 # Install the documentation in the correct location
 mkdir -p %{buildroot}%{_docdir}/libdbusmenu-qt5-devel
@@ -97,10 +89,9 @@ mv %{buildroot}%{_datadir}/doc/libdbusmenu-qt5-doc/ %{buildroot}%{_docdir}/libdb
 # Install additional documentation
 install -pm 0644 COPYING NEWS README %{buildroot}%{_docdir}/libdbusmenu-qt5-devel/
 
-%fdupes -s %{buildroot}%{_docdir}/libdbusmenu-qt5-devel/
+%fdupes %{buildroot}%{_docdir}/libdbusmenu-qt5-devel/
 
 %ldconfig_scriptlets -n libdbusmenu-qt5-2
-
 
 %files -n libdbusmenu-qt5-2
 %defattr(-,root,root,-)

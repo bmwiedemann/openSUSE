@@ -87,4 +87,13 @@
   * full_include_dir.patch</comment>
     <requestid>1148314</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>65c2ff33e4f8dd546f47fc55f6f72946</srcmd5>
+    <version>0.9.3+16.04.20160218</version>
+    <time>1743606551</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * 0001-Fix-build-with-CMake-4.patch</comment>
+    <requestid>1266184</requestid>
+  </revision>
 </revisionlist>

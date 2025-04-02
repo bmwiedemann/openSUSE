@@ -1,0 +1,40 @@
+From 446bbefcb9a9a50112598e9f2c341a404de001ca Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 15:36:52 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 72cbc45..85df937 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,9 +1,4 @@
+-project(dbusmenu-qt)
+-cmake_minimum_required(VERSION 2.8.11)
+-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
+-
+-# Build options
+-option(WITH_DOC "Build documentation (requires Doxygen)" ON)
++cmake_minimum_required(VERSION 3.16)
+ 
+ # Versions
+ ## Package version
+@@ -12,6 +7,12 @@ set(dbusmenu_qt_VERSION_MINOR 9)
+ set(dbusmenu_qt_VERSION_PATCH 2)
+ set(dbusmenu_qt_VERSION ${dbusmenu_qt_VERSION_MAJOR}.${dbusmenu_qt_VERSION_MINOR}.${dbusmenu_qt_VERSION_PATCH})
+ 
++project(dbusmenu-qt VERSION ${dbusmenu_qt_VERSION})
++set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/modules")
++
++# Build options
++option(WITH_DOC "Build documentation (requires Doxygen)" ON)
++
+ ## Lib version
+ ### Bump this one when a binary-incompatible change is introduced
+ set(dbusmenu_qt_lib_SOVERSION 2)
+-- 
+2.49.0
+
