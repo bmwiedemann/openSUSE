@@ -1,7 +1,7 @@
 #
 # spec file for package coredns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define project github.com/coredns/coredns
 Name:           coredns
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        DNS server written in Go
 License:        Apache-2.0
@@ -71,7 +71,7 @@ go build -mod=vendor -v -buildmode=pie -o coredns
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.
 # Updates must be tested manually.
-go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1|TestView"
+go test ./... -skip="TestZoneExternalCNAMELookupWithProxy|TestReadme|TestCorefile1|TestView|TestMultisocket_Restart"
 
 %install
 cd $HOME/go/src/%{project}
