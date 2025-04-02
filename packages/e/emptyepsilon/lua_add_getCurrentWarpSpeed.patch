@@ -1,0 +1,37 @@
+From 3f17db4baa9ecc7d7e5a925afd1d3f9dba1b143e Mon Sep 17 00:00:00 2001
+From: Pithlit <pithlit@mail.de>
+Date: Sun, 30 Mar 2025 19:59:56 +0200
+Subject: [PATCH] add api function getCurrentWarpSpeed
+
+---
+ src/spaceObjects/spaceship.cpp | 4 ++++
+ src/spaceObjects/spaceship.h   | 1 +
+ 2 files changed, 5 insertions(+)
+
+diff --git a/src/spaceObjects/spaceship.cpp b/src/spaceObjects/spaceship.cpp
+index 7a42b86ba2..7b5cb11fe9 100644
+--- a/src/spaceObjects/spaceship.cpp
++++ b/src/spaceObjects/spaceship.cpp
+@@ -292,6 +292,10 @@ REGISTER_SCRIPT_SUBCLASS_NO_CREATE(SpaceShip, ShipTemplateBasedObject)
+     /// Actual warp speed can be modified by "warp" system effectiveness.
+     /// Example: ship:getWarpSpeed();
+     REGISTER_SCRIPT_CLASS_FUNCTION(SpaceShip, getWarpSpeed);
++    /// Returns this SpaceShip's current warp speed.
++    /// Actual warp speed can be modified by "warp" system effectiveness.
++    /// Example: ship:getCurrentWarpSpeed();
++    REGISTER_SCRIPT_CLASS_FUNCTION(SpaceShip, getCurrentWarpSpeed);
+     /// Returns the arc, in degrees, for the BeamWeapon with the given index on this SpaceShip.
+     /// Example: ship:getBeamWeaponArc(0); -- returns beam weapon 0's arc
+     REGISTER_SCRIPT_CLASS_FUNCTION(SpaceShip, getBeamWeaponArc);
+diff --git a/src/spaceObjects/spaceship.h b/src/spaceObjects/spaceship.h
+index 8624673df1..77993a741f 100644
+--- a/src/spaceObjects/spaceship.h
++++ b/src/spaceObjects/spaceship.h
+@@ -417,6 +417,7 @@ class SpaceShip : public ShipTemplateBasedObject
+             return 0.0f;
+         }
+      }
++    float getCurrentWarpSpeed() { return current_warp; }
+     float getJumpDriveCharge() { return jump_drive_charge; }
+     void setJumpDriveCharge(float charge) { jump_drive_charge = charge; }
+     float getJumpDelay() { return jump_delay; }

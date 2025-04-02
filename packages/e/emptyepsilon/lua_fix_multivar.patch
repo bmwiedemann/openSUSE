@@ -1,0 +1,37 @@
+From 6976a22b7bbc4b51d0c66ef05d4d650aadc2a71a Mon Sep 17 00:00:00 2001
+From: Pithlit <pithlit@mail.de>
+Date: Sun, 30 Mar 2025 19:46:43 +0200
+Subject: [PATCH] lua get: handle functions that return multiple variables
+
+.../get.lua?x,y=getPosition() behaves now as expected.
+---
+ src/httpScriptAccess.cpp | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/src/httpScriptAccess.cpp b/src/httpScriptAccess.cpp
+index 713a00c859..bc7479d1e1 100644
+--- a/src/httpScriptAccess.cpp
++++ b/src/httpScriptAccess.cpp
+@@ -77,7 +77,21 @@ EEHttpServer::EEHttpServer(int port, string static_file_path)
+                 return "{\"ERROR\": \"Cannot set values through get.lua\", \"COMMAND\": \"" + i->second + "\"}";
+             }
+             // Build LUA-code
+-            luaCode += i->first + " = object:" + i->second + ", ";
++			int variables_count = i->first.count(",") + 1;
++			if (variables_count == 1)
++			{
++				luaCode += i->first + " = object:" + i->second + ", ";
++			}
++			else
++			{
++				int idx = 1;
++				for(auto& var: i->first.split(","))
++				{
++					luaCode += var + " = ({object:" + i->second + "})[" + std::to_string(idx) + "], ";
++					idx++;
++				}
++			}
++
+         }   luaCode += "}";
+ 
+         // Run script

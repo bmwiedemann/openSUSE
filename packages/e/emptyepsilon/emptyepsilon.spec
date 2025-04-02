@@ -28,8 +28,12 @@ Source1:        SeriousProton-%{version}.tar.gz
 Source2:        download.sh
 Source3:        basis_universal.zip
 Source5:        meshoptimizer.zip
-Patch0:         use_bundled_basis_universal.patch
+Source6:        use_bundled_basis_universal.patch
 Patch1:         use_bundled_meshoptimizer.patch
+Patch2:         lua_add_getCurrentWarpSpeed.patch
+Patch3:         lua_fix_multivar.patch
+Patch4:         lua_add_commandBypassSelfDestruct.patch
+Patch5:         lua_fix_commandCombatManeuver.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  bsdtar
 BuildRequires:  cmake
@@ -53,11 +57,9 @@ Each officer fills a unique role: Captain, Helms, Weapons, Relay, Science, and E
 %prep
 # extract EE and SP inside the EE dir
 %setup -q -a1 -n EmptyEpsilon-EE-%{version}
-find -name .gitignore | xargs rm
-pushd SeriousProton-EE-%{version}
-%patch -P 0 -p1
-popd
-%patch -P 1 -p1
+find -name .gitignore -delete
+patch -d SeriousProton-EE-%{version} -p1 < %{S:6}
+%autopatch -p1
 
 # extract bundled dependencies
 mkdir -p SeriousProton/externals/basis

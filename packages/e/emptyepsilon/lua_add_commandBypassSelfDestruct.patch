@@ -1,0 +1,129 @@
+From b4f0c114b91ca7e5aa3b3f4c9e691b087117ed19 Mon Sep 17 00:00:00 2001
+From: Pithlit <Pithlit@mail.de>
+Date: Wed, 14 Aug 2024 21:19:54 +0200
+Subject: [PATCH] self descruct code bypass (designed for hardware
+ key-switches)
+
+# Conflicts:
+#	src/spaceObjects/playerSpaceship.cpp
+---
+ src/gui/hotkeyConfig.cpp                    |  2 ++
+ src/gui/hotkeyConfig.h                      |  1 +
+ src/screenComponents/selfDestructButton.cpp |  4 ++++
+ src/spaceObjects/playerSpaceship.cpp        | 22 +++++++++++++++++++++
+ src/spaceObjects/playerSpaceship.h          |  1 +
+ 5 files changed, 30 insertions(+)
+
+diff --git a/src/gui/hotkeyConfig.cpp b/src/gui/hotkeyConfig.cpp
+index bf81006706..eca0c50409 100644
+--- a/src/gui/hotkeyConfig.cpp
++++ b/src/gui/hotkeyConfig.cpp
+@@ -267,6 +267,7 @@ Keys::Keys() :
+     engineering_repair_crew_right("ENGINEERING_REPAIR_CREW_RIGHT", "Right"),
+     engineering_self_destruct_start("ENGINEERING_SELF_DESTRUCT_START"),
+     engineering_self_destruct_confirm("ENGINEERING_SELF_DESTRUCT_CONFIRM"),
++    engineering_self_destruct_bypass("ENGINEERING_SELF_DESTRUCT_BYPASS"),
+     engineering_self_destruct_cancel("ENGINEERING_SELF_DESTRUCT_CANCEL"),
+     engineering_set_power_for_system{
+         {"ENGINEERING_SET_SYSTEM_POWER_REACTOR"},
+@@ -474,6 +475,7 @@ void Keys::init()
+ 
+     //Various
+     spectator_show_callsigns.setLabel(tr("hotkey_menu", "Various"), tr("hotkey_various", "Show callsigns (spectator)"));
++    engineering_self_destruct_bypass.setLabel(tr("hotkey_menu", "Various"), tr("hotkey_various", "key-operated switch"));
+ 
+     //Debug
+     debug_show_fps.setLabel(tr("hotkey_menu", "Various"), tr("hotkey_debug", "Show FPS"));
+diff --git a/src/gui/hotkeyConfig.h b/src/gui/hotkeyConfig.h
+index af3cd917e9..a90838da1d 100644
+--- a/src/gui/hotkeyConfig.h
++++ b/src/gui/hotkeyConfig.h
+@@ -134,6 +134,7 @@ class Keys
+     sp::io::Keybinding engineering_repair_crew_right;
+     sp::io::Keybinding engineering_self_destruct_start;
+     sp::io::Keybinding engineering_self_destruct_confirm;
++    sp::io::Keybinding engineering_self_destruct_bypass;
+     sp::io::Keybinding engineering_self_destruct_cancel;
+ 
+     sp::io::Keybinding engineering_set_power_for_system[SYS_COUNT];
+diff --git a/src/screenComponents/selfDestructButton.cpp b/src/screenComponents/selfDestructButton.cpp
+index 21ed53e7b4..8bae10de51 100644
+--- a/src/screenComponents/selfDestructButton.cpp
++++ b/src/screenComponents/selfDestructButton.cpp
+@@ -49,6 +49,10 @@ void GuiSelfDestructButton::onUpdate()
+             confirm_button->hide();
+             my_spaceship->commandActivateSelfDestruct();
+         }
++        if (keys.engineering_self_destruct_bypass.getDown() && cancel_button->isVisible())
++        {
++            my_spaceship->commandBypassSelfDestruct();
++        }
+         if (keys.engineering_self_destruct_cancel.getDown() && cancel_button->isVisible())
+         {
+             activate_button->show();
+diff --git a/src/spaceObjects/playerSpaceship.cpp b/src/spaceObjects/playerSpaceship.cpp
+index c54717eaea..b86aaad60e 100644
+--- a/src/spaceObjects/playerSpaceship.cpp
++++ b/src/spaceObjects/playerSpaceship.cpp
+@@ -314,6 +314,10 @@ REGISTER_SCRIPT_SUBCLASS(PlayerSpaceship, SpaceShip)
+     /// Codes are 0-indexed. Index 0 corresponds to code A, 1 to B, etc.
+     /// Example: player:commandConfirmDestructCode(0,46223) -- commands submitting 46223 as self-destruct confirmation code A
+     REGISTER_SCRIPT_CLASS_FUNCTION(PlayerSpaceship, commandConfirmDestructCode);
++    /// Commands this PlayerSpaceship to bypass the self-destruct authorization code for the code request with the given index.
++    /// Codes are 0-indexed. Index 0 corresponds to code A, 1 to B, etc.
++    /// Example: player:commandConfirmDestructCode(0) -- commands bypassing self-destruct confirmation code A
++    REGISTER_SCRIPT_CLASS_FUNCTION(PlayerSpaceship, commandBypassSelfDestruct);
+     /// Commands this PlayerSpaceship to set its forward combat maneuver to the given value.
+     /// Valid values are any from -1.0 (full reverse) to 1.0 (full forward).
+     /// The maneuver continues until the ship's combat maneuver reserves are depleted.
+@@ -500,6 +504,11 @@ static const int16_t CMD_SET_MAIN_SCREEN_OVERLAY = 0x0027;
+ static const int16_t CMD_HACKING_FINISHED = 0x0028;
+ static const int16_t CMD_CUSTOM_FUNCTION = 0x0029;
+ static const int16_t CMD_TURN_SPEED = 0x002A;
++static const int16_t CMD_SET_REPAIR_DOCKED = 0x002B;
++static const int16_t CMD_SET_SHARES_ENERGY = 0x002C;
++static const int16_t CMD_SET_RESTOCKS_PROBES = 0x002D;
++static const int16_t CMD_SET_RESTOCKS_MISSILES = 0x002E;
++static const int16_t CMD_CONFIRM_SELF_DESTRUCT_BYPASS = 0x002F;
+ 
+ string alertLevelToString(EAlertLevel level)
+ {
+@@ -1776,6 +1785,12 @@ void PlayerSpaceship::onReceiveClientCommand(int32_t client_id, sp::io::DataBuff
+                 self_destruct_code_confirmed[index] = true;
+         }
+         break;
++    case CMD_CONFIRM_SELF_DESTRUCT_BYPASS:
++        {
++            for (int8_t index = 0; index < max_self_destruct_codes; index++)
++                self_destruct_code_confirmed[index] = true;
++        }
++        break;
+     case CMD_COMBAT_MANEUVER_BOOST:
+         {
+             float request_amount;
+@@ -2131,6 +2146,13 @@ void PlayerSpaceship::commandConfirmDestructCode(int8_t index, uint32_t code)
+     sendClientCommand(packet);
+ }
+ 
++void PlayerSpaceship::commandBypassSelfDestruct()
++{
++    sp::io::DataBuffer packet;
++    packet << CMD_CONFIRM_SELF_DESTRUCT_BYPASS;
++    sendClientCommand(packet);
++}
++
+ void PlayerSpaceship::commandCombatManeuverBoost(float amount)
+ {
+     combat_maneuver_boost_request = amount;
+diff --git a/src/spaceObjects/playerSpaceship.h b/src/spaceObjects/playerSpaceship.h
+index 7952a81e2d..77603c9d70 100644
+--- a/src/spaceObjects/playerSpaceship.h
++++ b/src/spaceObjects/playerSpaceship.h
+@@ -279,6 +279,7 @@ class PlayerSpaceship : public SpaceShip
+     void commandActivateSelfDestruct();
+     void commandCancelSelfDestruct();
+     void commandConfirmDestructCode(int8_t index, uint32_t code);
++    void commandBypassSelfDestruct();
+     void commandCombatManeuverBoost(float amount);
+     void commandCombatManeuverStrafe(float strafe);
+     void commandLaunchProbe(glm::vec2 target_position);

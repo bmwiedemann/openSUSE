@@ -43,4 +43,19 @@
 </comment>
     <requestid>1237732</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>48b287517d939b8faed972287771d736</srcmd5>
+    <version>2024.12.08</version>
+    <time>1743607073</time>
+    <user>anag+factory</user>
+    <comment>- Load use_bundled_basis_universal.patch as source as %autopatch
+  doesn't have the -m option on 15.6
+- Backport patches for Lua API fixes:
+  * lua_add_getCurrentWarpSpeed.patch
+  * lua_fix_multivar.patch
+  * lua_add_commandBypassSelfDestruct.patch
+  * lua_fix_commandCombatManeuver.patch
+</comment>
+    <requestid>1266535</requestid>
+  </revision>
 </revisionlist>
