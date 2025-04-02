@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 30 11:02:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.8:
+  * cmake build fixes
+  * dmtxRegion: add deterministic findNext variant
+  * Adding reader programming feature.
+
+-------------------------------------------------------------------
 Fri Jul 15 19:08:00 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.7:

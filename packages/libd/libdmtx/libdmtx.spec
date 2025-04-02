@@ -17,7 +17,7 @@
 
 
 Name:           libdmtx
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Software for reading and writing Data Matrix barcodes
 License:        BSD-2-Clause
