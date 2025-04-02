@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1244830</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>adc21251464b68ff1a373635bcc45981</srcmd5>
+    <version>128.8.1</version>
+    <time>1743606419</time>
+    <user>anag+factory</user>
+    <comment>New stable release (forwarded request 1265538 from iznogood)</comment>
+    <requestid>1265728</requestid>
+  </revision>
 </revisionlist>

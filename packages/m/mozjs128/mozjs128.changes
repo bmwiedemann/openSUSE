@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 30 12:57:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 128.8.1:
+  + CVE-2025-2857: Incorrect handle could lead to sandbox escapes.
+- Changes from version 128.8.0:
+  + Various security fixes: CVE-2024-43097, CVE-2025-1930,
+    CVE-2025-1931, CVE-2025-1932, CVE-2025-1933, CVE-2025-1934,
+    CVE-2025-1935, CVE-2025-1936.
+
+-------------------------------------------------------------------
 Sat Feb  8 12:41:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.7.0:
