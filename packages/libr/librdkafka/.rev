@@ -299,4 +299,41 @@
     rd_kafka_poll is called with consume_cb (#4431).</comment>
     <requestid>1127461</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6e132aadfd3cd53cbd8b1aed94750dd9</srcmd5>
+    <version>2.8.0</version>
+    <time>1743606318</time>
+    <user>anag+factory</user>
+    <comment>- update to 2.8.0:
+  * Socket options are now all set before connection (#4893).
+  * Client certificate chain is now sent when using
+    `ssl.certificate.pem` or `ssl_certificate` or 
+    `ssl.keystore.location` (#4894).
+  * Avoid sending client certificates whose chain doesn't match
+    with broker trusted root certificates (#4900).
+  * Fixes to allow to migrate partitions to leaders with same
+    leader epoch, or NULL leader epoch (#4901).
+  * Support versions of OpenSSL without the ENGINE component
+    and
+  * Socket options are now all set before connection, as
+    documentation says it's needed for socket buffers to take 
+    effect, even if in some cases they could have effect even
+    after connection.
+  * Fix for a Fetch regression when connecting to Apache Kafka &lt;
+    2.7 (#4871).
+  * Fix for an infinite loop happening with cooperative-sticky
+    assignor
+  * under some particular conditions (#4800).
+  * Fix for retrieving offset commit metadata when it contains
+  * zeros and configured with `strndup`
+  * Fix for a loop of ListOffset requests, happening in a Fetch
+    From Follower
+  * scenario, if such request is made to the follower (#4616,
+    #4754, @kphelps).
+  * Fix to remove fetch queue messages that blocked the destroy
+    of rdkafka
+  * instances
+  * Upgrade Linux dependencies: OpenSSL 3.0.15, CURL 8.10.1</comment>
+    <requestid>1265510</requestid>
+  </revision>
 </revisionlist>
