@@ -136,4 +136,17 @@
   * GNOME 48 (forwarded request 1255318 from rrahl0)</comment>
     <requestid>1255319</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9c50de52ae0bb95ae59eaa036526d1b2</srcmd5>
+    <version>0.6.3</version>
+    <time>1743606970</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.6.3:
+  * build: Specify the minimum required version of libadwaita
+  * general: Use g_strcmp0 for null safe string comparison
+  * Translations updates
+  * Fix app closure
+  * Minor update to fix a frequent crash (forwarded request 1266319 from rrahl0)</comment>
+    <requestid>1266320</requestid>
+  </revision>
 </revisionlist>
