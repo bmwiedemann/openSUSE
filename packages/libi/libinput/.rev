@@ -1071,4 +1071,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.28</comment>
     <requestid>1256174</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>ad7bd624b717ab59b7f72ee4cae58110</srcmd5>
+    <version>1.28.1</version>
+    <time>1743606507</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 1.28.1</comment>
+    <requestid>1266042</requestid>
+  </revision>
 </revisionlist>

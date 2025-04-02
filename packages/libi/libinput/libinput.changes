@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  1 08:14:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.28.1
+  * After unplugging and re-plugging a tablet device, proximity
+    events toggled the tip on/off due to an uninitialized (== zero)
+    pressure range. Repeatedly unplugging also eventually triggered
+    an bug notification.
+  * The `debug-events` diagnosis command failed to print pinch
+    angle and rotation.
+
+-------------------------------------------------------------------
 Wed Mar 26 03:15:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.28
