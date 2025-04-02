@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:30:34 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- v1.45.1
+  * Fix compilation failing without `--locked`
+
+- v1.45.0
+  *  Fix total search impossible to redo after refresh
+  * With `refresh_after: false`, a verb configuration can request that the tree isn't refreshed after its execution
+
+- v1.44.7
+  * fix bad regex match position
+  * update resvg dependency to 0.44
+  * on `--server`, remove the existing socket if it already exists
+
+- v1.44.6
+  * fix .ignore files ignored when not in a git repository
+  * update git2 dependency to 0.20
+
+- v1.44.5
+  * no real change (just reverting a crate name to ease some packaging)
+
+- v1.44.4
+  * fix panic in preview on syntax coloring (when a sublime syntax isn't compatible with the regex engine)
+
+- v1.44.3
+  * removed default bindings on left and right keys. You may add them back by adding this to your verbs.hjson:
+    { key: "left", internal: "back" }
+    { key: "right", internal: "open_stay" }
+  * rustc minimal version changed from 1.76 to 1.79, which allows better performing image rendering
+  * remove dependency to onig, to allow compatibility with gcc 15
+
+- v1.44.2
+  * temp files created for kitty now erased on quitting or when too many of them have been written
+  * no longer panics when launched with BROOT_LOG=debug but the broot.log file can't be created
+  * fix user and group names displayed as "????" when coming from openldap
+
+- v1.44.1
+  * fix wrong position of IMEs (input method editors) popup - See #948
+  * improve querying the terminal for capabilities (prevent some escape chars from leaking)
+
+- v1.44.0
+  * `:focus_staging_area_no_open` internal, focus the staging area if it's already open, does nothing in other case
+  * fix some composite patterns with several operators and no parenthesis
+
+- v1.43.0
+  * 'Size' and 'Deletion date' columns in trash screen. This screen now supports the `:toggle_date`, `:toggle_size`, `:sort_by_date`, and `:sort_by_size` internals.
+  * new `:show` internal make the provided path visible and selected, adding lines to the tree if necessary, does nothing if the provided path is not a descendant of the current tree root (this part may change depending on feedback)
+
+- v1.42.0
+  * support of `.ignore` files with the same syntax than `.gitignore`. They have priority over `.gitignore` so that a personal `.ignore` file can override a shared `.gitignore` - See https://dystroy.org/broot/tree_view/#hidden-ignored-files
+  * `:toggle_ignore` internal, identical to `:toggle_git_ignore`, but with a clearer name so should be preferred
+  * the `panels` verb filter now works in most contexts (it was previously only checked on key events)
+  * many dependencies updated
+
+- v1.41.1
+  * allow compilation with rustc 1.76
+
+- v1.41.0
+  * Major Feature: :search_again
+    - ctrl-s now triggers `:search_again` which either
+    - brings back the last used search pattern, when no filtering pattern is active
+    - does a "total search" if a filtering pattern is active and the search wasn't complete
+  * Major Feature: internals changing panel widths
+    - `set_panel_width`, taking as parameter the index of the panel and the desired width
+    - `move_panel_divider`, taking as parameter the index of the divider and the desired change
+    - `ctrl-<` is bound by default to `:move_panel_divider 0 -1`
+    - `ctrl->` is bound by default to `:move_panel_divider 0 1`
+    - See http://dystroy.org/broot/panels/#resize-panels
+  * Minor Changes:
+    - when git file infos are shown, and git ignored files aren't hidden, those files are flagged with a 'I'
+    - Remove .bak extension from content search exclusion list
+    - Update nerdfont and vscode icons
+    - `{initial-root}` verb argument
+
+- v1.40.0
+  * Major Feature: preview transformers
+    You can now define preview transformers to be applied before preview.
+    They allow for example previewing PDF or Office files, or beautifying JSON files.
+    Edit the `preview_transformers` array in your conf.hjson file.
+    See https://dystroy.org/broot/conf_file/#preview
+  * fix search on root
+  * fix some verb cycling problems
+
+- v1.39.2
+  * fix UNC paths being displayed on Windows (regression at 1.39.1)
+
+- v1.39.1
+  * fix high-resolution (kitty protocole) image broken in release mode
+  * canonicalize paths when focusing them (mostly useful when following links)
+  * a few minor internal optimizations
+
+-------------------------------------------------------------------
 Thu Jun 27 07:14:22 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Update to v1.39.0

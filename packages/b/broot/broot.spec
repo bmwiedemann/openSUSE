@@ -17,7 +17,7 @@
 
 
 Name:           broot
-Version:        1.39.0
+Version:        1.45.1
 Release:        0
 Summary:        A better way to navigate directories
 License:        GPL-2.0-only AND MIT AND MPL-2.0
