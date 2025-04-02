@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Mar 24 09:21:36 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 5.3 Patch 5 - 2025-03-23
+
+- NEW FEATURE: remind: Add moonrise, moonset, moonrisedir and moonsetdir
+  functions.  The first two functions calculate the time of the next
+  moonrise and moonset, and the second two calculate in which direction
+  the moon will rise or set.  See the examples/astro script for examples
+  of how to use the moonrise/moonset functions.
+
+- CODE CLEANUPS: remind: Some minor code cleanups with no user-visible
+  effects.
+
+- IMPROVEMENT: Add tests for the astronomical calculation functions.
+
+- UPDATE: Update the included json.c and json.h files to the latest
+  versions from https://github.com/udp/json-parser
+
+- BUG FIX: remind: The %2 and %@ sequences would print "0:34am" for the
+  time 00:34, instead of the correct "12:34am".  This has been fixed.
+
+- BUG FIX: TkRemind: Fix bug that broke the ability to open a text
+  editor on a reminder from the "Queue..." listing.
+
+-------------------------------------------------------------------
 Mon Mar 10 09:37:46 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 5.3 Patch 4 - 2025-03-09
