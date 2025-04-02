@@ -33,6 +33,12 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
+# CVE-2025-27795 [bsc#1239044], JXL in GraphicsMagick before 1.3.46 lacks image dimension resource limits.
+Patch2:         GraphicsMagick-CVE-2025-27795.patch
+# CVE-2025-27796 [bsc#1239043], WPG in GraphicsMagick before 1.3.46 mishandles palette buffer allocation.
+Patch3:         GraphicsMagick-CVE-2025-27796.patch
+# use return value of realloc function
+Patch4:         GraphicsMagick-return-value.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
@@ -275,6 +281,9 @@ export MAGICK_CONFIGURE_PATH=$PWD/config
 cd PerlMagick
 # bsc#1105592
 rm -r t/ps
+# manually run tests:
+# export PERL5LIB="$(pwd)/blib/lib:$(pwd)/blib/arch/auto/Graphics/Magick:$(pwd)"
+# perl t/write.t
 %make_build test
 
 %post -n libGraphicsMagick-Q%{quant}-%{so_ver} -p /sbin/ldconfig

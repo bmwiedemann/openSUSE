@@ -1308,4 +1308,19 @@ New Features:
     are supported by libxml2.</comment>
     <requestid>1251699</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>209e00de87a8f53994d6aac11f64dc4e</srcmd5>
+    <version>1.3.45</version>
+    <time>1743606527</time>
+    <user>anag+factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2025-27795 [bsc#1239044], JXL in GraphicsMagick before 1.3.46 lacks image dimension resource limits.
+  + GraphicsMagick-CVE-2025-27795.patch
+  fix CVE-2025-27796 [bsc#1239043], WPG in GraphicsMagick before 1.3.46 mishandles palette buffer allocation.
+  + GraphicsMagick-CVE-2025-27796.patch
+  use return value of realloc function
+  + GraphicsMagick-return-value.patch</comment>
+    <requestid>1266057</requestid>
+  </revision>
 </revisionlist>

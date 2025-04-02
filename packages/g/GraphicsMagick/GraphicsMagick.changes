@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  1 08:58:02 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2025-27795 [bsc#1239044], JXL in GraphicsMagick before 1.3.46 lacks image dimension resource limits.
+  + GraphicsMagick-CVE-2025-27795.patch
+  fix CVE-2025-27796 [bsc#1239043], WPG in GraphicsMagick before 1.3.46 mishandles palette buffer allocation.
+  + GraphicsMagick-CVE-2025-27796.patch
+  use return value of realloc function
+  + GraphicsMagick-return-value.patch
+
+-------------------------------------------------------------------
 Mon Mar 10 08:58:49 UTC 2025 - pgajdos@suse.com
 
 - version update to 1.3.45
