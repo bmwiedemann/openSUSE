@@ -23,9 +23,11 @@ Release:        0
 Summary:        A photographic lens database and a library for accessing it
 License:        CC-BY-SA-3.0 AND LGPL-3.0-only
 URL:            https://lensfun.github.io/
-Source:         https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/lensfun/lensfun/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # updated lens database, use "osc service dr" to update it.
-Source2:        data-master.tar.xz
+Source1:        data-master.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         lensfun-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -119,7 +121,7 @@ Header and library definition files for developing applications
 that use the lensfun library/database.
 
 %prep
-%autosetup -p1 -a 2
+%autosetup -p1 -a 1
 echo 'HTML_TIMESTAMP=NO' >> docs/doxyfile.in.cmake
 # fix python shebangs
 sed -i \

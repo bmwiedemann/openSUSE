@@ -1,0 +1,52 @@
+From f713aacfc44d3570133e81d14f9343b717ed3abc Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 15:48:35 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 19 ++++++++++---------
+ 1 file changed, 10 insertions(+), 9 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 087928c..88665fe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,12 +1,19 @@
+-# require at least cmake 2.8.12
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.8.12 FATAL_ERROR )
++# require at least cmake 3.16
++CMAKE_MINIMUM_REQUIRED(VERSION 3.16 FATAL_ERROR )
+ 
+ # path for helper modules
+ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_SOURCE_DIR}/cmake/modules")
+ GET_FILENAME_COMPONENT(SOURCE_BASE_DIR ${CMAKE_SOURCE_DIR} PATH CACHE)
+ 
++# version
++SET(VERSION_MAJOR 0)
++SET(VERSION_MINOR 3)
++SET(VERSION_MICRO 4)
++SET(VERSION_BUGFIX 0)
++SET(VERSION_API 1)
++
+ #  global setup
+-project(lensfun C CXX)
++project(lensfun VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_MICRO}  LANGUAGES C CXX)
+ 
+ set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+@@ -18,12 +25,6 @@ ELSE()
+     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wformat-security")
+ ENDIF()
+ 
+-# version
+-SET(VERSION_MAJOR 0)
+-SET(VERSION_MINOR 3)
+-SET(VERSION_MICRO 4)
+-SET(VERSION_BUGFIX 0)
+-SET(VERSION_API 1)
+ # This is the version of the *shipped* database, which is not necessarily the
+ # highest version number supported
+ SET(LENSFUN_DB_VERSION 1)
+-- 
+2.49.0
+

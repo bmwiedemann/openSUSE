@@ -431,4 +431,14 @@
     <comment>- Update lens database</comment>
     <requestid>1207993</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>06c1fdd390702e920661e4f721fe0e06</srcmd5>
+    <version>0.3.4</version>
+    <time>1743606555</time>
+    <user>anag+factory</user>
+    <comment>- Update lens database
+- Add patch:
+  * lensfun-cmake4.patch</comment>
+    <requestid>1266186</requestid>
+  </revision>
 </revisionlist>
