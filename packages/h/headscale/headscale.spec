@@ -29,6 +29,7 @@ Source3:        headscale.tmpfs.conf
 Source4:        headscale.systemd.service
 Source5:        config-example.yaml
 Source6:        derp-example.yaml
+Patch0:         fix-CVE-2025-30204.patch
 BuildRequires:  golang-packaging
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -47,7 +48,7 @@ It implements a narrow scope, a single Tailnet, suitable for a personal use, or
 a small open-source organisation.
 
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 go build -v -buildmode=pie -mod=vendor -tags "ts2019" -ldflags "-X github.com/juanfont/headscale/cmd/headscale/cli.Version=%{version}" ./cmd/headscale

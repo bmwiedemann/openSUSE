@@ -107,4 +107,12 @@
   * hand register auth rerrors (forwarded request 1248516 from rrahl0)</comment>
     <requestid>1248517</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f075e981049de7d677a891d5b6812e7c</srcmd5>
+    <version>0.25.1</version>
+    <time>1743606926</time>
+    <user>anag+factory</user>
+    <comment>- add patch fix-CVE-2025-30204.patch, for fixing bsc#1240506 (forwarded request 1266276 from rrahl0)</comment>
+    <requestid>1266277</requestid>
+  </revision>
 </revisionlist>
