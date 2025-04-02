@@ -34,4 +34,20 @@
 - enable devel package</comment>
     <requestid>1230238</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55f84233ad7633eea5b9b32faf45f6b5</srcmd5>
+    <version>0.4.1</version>
+    <time>1743606728</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.4.1:
+  * nothing of relevance
+- update to 0.4.0:
+  * Fix filename of common/common.js in package.json that breaks the node
+    package after rename
+  * fix: recognize escaped &quot;$&quot; in latex blocks
+  * fix: allow whitespace after closing code block fence
+  * fix: highlights &amp; injections query paths in tree-sitter.json
+  * injections.scm: TOML +++ metadata frontmatter support (forwarded request 1265946 from rrahl0)</comment>
+    <requestid>1265953</requestid>
+  </revision>
 </revisionlist>

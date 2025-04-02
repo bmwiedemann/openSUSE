@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:25:02 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.4.1:
+  * nothing of relevance
+- update to 0.4.0:
+  * Fix filename of common/common.js in package.json that breaks the node
+    package after rename
+  * fix: recognize escaped "$" in latex blocks
+  * fix: allow whitespace after closing code block fence
+  * fix: highlights & injections query paths in tree-sitter.json
+  * injections.scm: TOML +++ metadata frontmatter support
+
+-------------------------------------------------------------------
 Wed Dec 11 23:21:08 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - disable devel package (for now)
