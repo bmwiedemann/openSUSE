@@ -117,7 +117,7 @@ install -Dpm0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 install -Dpm0644 %{SOURCE5} %{buildroot}%{_unitdir}/%{name}.service
 install -Dpm0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/%{name}.conf
 
-rm %{buildroot}/srv/www/htdocs/index.html
+rm %{buildroot}/srv/www/htdocs/{50x,index}.html
 
 mkdir -p %{buildroot}%{ngx_doc_dir}
 cp -av CHANGES* LICENSE %{buildroot}%{ngx_doc_dir}
@@ -191,7 +191,6 @@ rm -r $GPGTMP
 %{_mandir}/man3/%{name}.3pm*
 %dir /srv/www
 %dir /srv/www/htdocs
-/srv/www/htdocs/50x.html
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{_localstatedir}/log/nginx/
 %dir %attr(750,%{ngx_user_group},%{ngx_user_group}) %{ngx_home}/

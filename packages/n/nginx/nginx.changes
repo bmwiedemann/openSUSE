@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Mar 30 02:11:41 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Removed rudiment /srv/www/htdocs/50x.html (boo#1240166).
+- Changed nginx-conf.patch to refresh default config.
+
+-------------------------------------------------------------------
 Thu Feb  6 04:45:46 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Changed URL's from nginx.org to github.com .

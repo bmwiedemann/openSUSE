@@ -1197,4 +1197,13 @@
     sources if the --with-libatomic=DIR option was used.</comment>
     <requestid>1243543</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>b01e3e4f53e230fad3b50f413b6dcf2e</srcmd5>
+    <version>1.27.4</version>
+    <time>1743606305</time>
+    <user>anag+factory</user>
+    <comment>- Removed rudiment /srv/www/htdocs/50x.html (boo#1240166).
+- Changed nginx-conf.patch to refresh default config.</comment>
+    <requestid>1265447</requestid>
+  </revision>
 </revisionlist>
