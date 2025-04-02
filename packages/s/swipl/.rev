@@ -170,4 +170,16 @@ the list of changes is still too long to enumerate here.
 (🤖: Submission of swipl via https://src.opensuse.org/pool/swipl/pulls/9 by mcepl)</comment>
     <requestid>1248101</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>eb3e974e9a05a24766cf9aa0f354c5ea</srcmd5>
+    <version>9.3.21</version>
+    <time>1743607070</time>
+    <user>anag+factory</user>
+    <comment>- Update to 9.3.21:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=9.3.20&amp;to=9.3.21
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.</comment>
+    <requestid>1266454</requestid>
+  </revision>
 </revisionlist>
