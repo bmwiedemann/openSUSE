@@ -61,6 +61,7 @@ ExcludeArch:    %{arml}
 BuildRequires:  cargo%{?vrust}
 BuildRequires:  cmake%{?vcmake}
 BuildRequires:  gcc%{?vgcc}
+BuildRequires:  gcc%{?vgcc}-PIE
 BuildRequires:  gcc%{?vgcc}-c++
 BuildRequires:  libbz2-devel
 BuildRequires:  libjson-c-devel

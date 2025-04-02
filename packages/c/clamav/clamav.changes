@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 11:17:03 UTC 2025 - Reinhard Max <max@suse.com>
+
+- bsc#1239957: Build with PIE.
+- Eliminate some UTF-8 NBSP characters from the changes file.
+
+-------------------------------------------------------------------
 Mon Feb 10 12:12:53 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1236949: Fix location of license files.
@@ -129,14 +135,14 @@ Fri Mar 15 13:52:57 UTC 2024 - Reinhard Max <max@suse.com>
 - New version 1.1.0:
   * https://blog.clamav.net/2023/05/clamav-110-released.html
   * Added the ability to extract images embedded in HTML CSS
-    <style> blocks.
-  * Updated to Sigtool so that the --vba option will extract VBA
+    <style> blocks.
+  * Updated to Sigtool so that the --vba option will extract VBA
     code from Microsoft Office documents the same way that
     libclamav extracts VBA.
   * Added a new option --fail-if-cvd-older-than=days to clamscan
     and clamd, and FailIfCvdOlderThan to clamd.conf
-  * Added a new function cl_cvdgetage() to the libclamav API.
-  * Added a new function cl_engine_set_clcb_vba() to the
+  * Added a new function cl_cvdgetage() to the libclamav API.
+  * Added a new function cl_engine_set_clcb_vba() to the
     libclamav API.
   * obsoletes clamav-ec32.patch.
 - boo#1180296: Integrate clamonacc as a service.
@@ -1743,7 +1749,7 @@ Wed Apr  7 19:17:05 CEST 2010 - max@suse.de
 
   * The Bytecode Interpreter: the interpreter built into LibClamAV
     allows the signature writers to create and distribute very
-    complex detection routines and remotely enhance the scanner’s
+    complex detection routines and remotely enhance the scanner's
     functionality.
 
   * Heuristic improvements: improve the PE heuristics detection

@@ -1300,4 +1300,12 @@
     <comment>- bsc#1236949: Fix location of license files.</comment>
     <requestid>1244806</requestid>
   </revision>
+  <revision rev="132" vrev="4">
+    <srcmd5>92f96ffce140d57b9d5f0d68affab6ac</srcmd5>
+    <version>1.4.2</version>
+    <time>1743606739</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1265932</requestid>
+  </revision>
 </revisionlist>
