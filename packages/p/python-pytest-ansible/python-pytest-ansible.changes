@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 01 17:59:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.0:
+  * Bump the dependencies group in /.config with 4 updates (#440)
+  * Bump the dependencies group in /.config with 7 updates (#439)
+  * Bump the dependencies group in /.config with 4 updates (#438)
+  * Minor fixes on testing code (#436)
+  * chore: pre-commit autoupdate (#433)
+  * Fix bug with additional collections paths not being strings
+    (#435)
+  * Bump the dependencies group in /.config with 11 updates (#434)
+  * Bump the dependencies group in /.config with 8 updates (#432)
+  * Update Ubuntu Version (#431)
+  * Bump the dependencies group in /.config with 10 updates (#430)
+  * Bump the dependencies group in /.config with 9 updates (#428)
+  * Bump the dependencies group in /.config with 9 updates (#427)
+  * chore: pre-commit autoupdate (#426)
+  * Bump the dependencies group in /.config with 6 updates (#425)
+  * Update test dependencies (#424)
+  * Linters update (#423)
+  * Bump the dependencies group in /.config with 11 updates (#422)
+
+-------------------------------------------------------------------
 Wed Mar 19 20:39:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - use python3 for python_for_dependencies
