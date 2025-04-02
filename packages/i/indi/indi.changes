@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:42:51 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.1.3:
+  * https://github.com/indilib/indi/releases/tag/v2.1.3
+
+-------------------------------------------------------------------
 Tue Mar 11 07:49:15 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Disable websocketpp: with next release websocketpp will be completely

@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.1.2.1
+Version:        2.1.3
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -164,7 +164,6 @@ export CXXFLAGS="$CFLAGS"
     -DINDI_BUILD_STATIC=OFF \
     -DUDEVRULES_INSTALL_DIR=%{_udevrulesdir} \
     -DINDI_BUILD_QT5_CLIENT=ON \
-    -DINDI_BUILD_WEBSOCKET=OFF \
     -DINDI_BUILD_XISF=ON \
 %if 0%{?force_gcc_version}
     -DCMAKE_CXX_COMPILER=%{_bindir}/g++-%{?force_gcc_version} \
