@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 30 10:44:20 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.22:
+  * Add support for COLLAPSE_EMPTY when exporting an
+    XbBuilderNode (Richard Hughes)
+  * Store the expected file size in the header to detect
+    truncation (Richard Hughes)
+  * Check the strtab has a trailing NUL byte
+  * Fix an issue when exporting a silo using COLLAPSE_EMPTY
+  * Fix calling text() on an empty element
+
+-------------------------------------------------------------------
 Mon Feb 24 11:24:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.3.21
