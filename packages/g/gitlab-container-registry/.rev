@@ -7,4 +7,12 @@
     <comment>new package gitlab-container-registry: Gitlab's fork of the Docker Distribution Registry (now called CNCF Distribution)</comment>
     <requestid>1254502</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3039d145a366fa7fa0cd187644f12fb9</srcmd5>
+    <version>4.19.0</version>
+    <time>1743606743</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1265965</requestid>
+  </revision>
 </revisionlist>

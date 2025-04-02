@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 24 17:34:45 UTC 2025 - opensuse_buildservice@ojkastl.de
+
+- Update to version 4.19.0:
+  * Features
+    - datastore: add index on manifests subject_id field (e1a5821)
+  * Build
+    - deps: update module github.com/redis/go-redis/v9 to v9.7.3
+      (58d51a8)
+    - deps: update module github.com/shopify/toxiproxy/v2 to
+      v2.12.0 (9d5716e)
+    - deps: update module github.com/spf13/viper to v1.20.0
+      (840a550)
+    - deps: update module google.golang.org/api to v0.226.0
+      (9be95f3)
+    - update Go version to latest 1.23 minor release (2cde241)
+
+-------------------------------------------------------------------
 Mon Mar 17 19:47:58 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.18.0:
