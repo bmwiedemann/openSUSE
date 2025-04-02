@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 30 10:57:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.5:
+  * This release is just for bug fixing.
+  * Enable anthy-unicode
+  * Use UTF-8 instead of EUC-JP in example/mimx-anthy.c
+  * configure.ac: fix incorrect bashism
+
+-------------------------------------------------------------------
 Sat Oct 14 20:24:19 UTC 2023 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 1.8.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package m17n-lib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define	appdefdir  %{_datadir}/X11
 Name:           m17n-lib
-Version:        1.8.4
+Version:        1.8.5
 Release:        0
 Summary:        Multilingual Text Processing Library for the C Language
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
