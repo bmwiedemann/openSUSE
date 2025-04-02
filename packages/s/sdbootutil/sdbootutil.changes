@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 01 13:59:48 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250401.2eda714:
+  * Shift only the matching component
+  * Rework free-space allocator algorithm
+  * Clarify when the initrd is generated
+  * Add the kernel version for measurement order
+  * Keep original prediction for pcrlock aligment
+  * Check array size for emptiness
+  * Refactor debug output
+  * Reclaim free space when updating entries
+  * spec: Update bootloader if it is recognized
+  * Limit variations up to 8 for a component
+  * Add priority field in entry list
+  * Make snapshot_ids ordered by importance
+  * Convert echo to info
+  * In virtual environment drop PCR0
+
+-------------------------------------------------------------------
+Fri Mar 28 21:13:53 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250328.f1d4885:
+  * Fallback to file config when bootctl fails
+  * Remove TODO file
+  * Declare local variable
+  * Print colors when in terminal
+  * Do not load the config file when variable is set
+  * Uset btrfs instead of snapper for set default snapshot
+  * Drop unused entries parameter
+  * Improve boot loader detection
+
+-------------------------------------------------------------------
 Thu Mar 27 15:19:37 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20250327.9714cbd:
