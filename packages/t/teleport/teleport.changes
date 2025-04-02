@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 04:59:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.4.2:
+  * Reduced resource consumption and improve latency of tsh
+    ssh. #53645
+  * Fixed an issue where expired app session won't redirect to login
+    page when Teleport is using DynamoDB backend. #53591
+  * Workload ID: Support for adding custom claims to JWT-SVIDs. #53585
+
+-------------------------------------------------------------------
 Sat Mar 29 08:07:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.4.1:
