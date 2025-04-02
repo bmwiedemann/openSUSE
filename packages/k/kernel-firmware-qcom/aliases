@@ -62,6 +62,10 @@ msm: of:N*T*Cqcom%2Csm6125-dpu
 msm: of:N*T*Cqcom%2Csm6125-dpuC*
 msm: of:N*T*Cqcom%2Csm6125-mdss
 msm: of:N*T*Cqcom%2Csm6125-mdssC*
+msm: of:N*T*Cqcom%2Csm6150-dpu
+msm: of:N*T*Cqcom%2Csm6150-dpuC*
+msm: of:N*T*Cqcom%2Csm6150-mdss
+msm: of:N*T*Cqcom%2Csm6150-mdssC*
 msm: of:N*T*Cqcom%2Csm6350-dpu
 msm: of:N*T*Cqcom%2Csm6350-dpuC*
 msm: of:N*T*Cqcom%2Csm6350-mdss
