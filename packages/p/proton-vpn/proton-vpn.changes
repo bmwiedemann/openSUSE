@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Mar 31 10:17:47 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
+
+- Update package to 4.9.5
+  * [VPNLINUX-1066] Add custom dns setting to settings window.
+  * [VPNLINUX-1080] Settings not opening due to early access toggle crashing.
+  * [VPNLINUX-1076] Improve custom DNS.
+  * [VPNLINUX-1055] Added semgrep scanning to CI
+  * [VPNLINUX-1070] Introduce pop-up for conflicting features (netshield/custom dns)
+  * [VPNLINUX-1086] Add reconnection warning when enabling custom DNS.
+  * [VPNLINUX-1074] Drop support for Ubuntu 20.04
+  * [VPNLINUX-1089] Fix kill switch leak on quit.
+  * [VPNLINUX-1096] Add final URL to 'learn more' link buttons.
+  * [VPNLINUX-1106] Update release package version used for beta toggle
+  * [VPNLINUX-1079] Ensure UI is using latest feature flags after login.
+  * [VPNLINUX-1132] Ensure app does not crash when attempting to logout after doing a search.
+  * [VPNLINUX-1128] Display forwarded port if available.
+  * [VPNLINUX-1128] Only display port if environment variable is set.
+  * [VPNLINUX-1134] Display server load in search results
+  * [VPNLINUX-1117] Include beta branch on version metadata.
+  * [VPNLINUX-1116] Remove code related to old feature flags.
+  * [VPNLINUX-1145] Re-implement tests and clean-up code.
+  * [VPNLINUX-1144] Replace deprecated method.
+  * Remove save_setting when building UI.
+  * [VPNLINUX-949] Fix cancel connection button
+  * [VPNLINUX-949] update changelog
+  * [VPNLINUX-1129] Show port forwarding desktop notification
+  * [VPNLINUX-1169] Switch DisplayPortForwarding env var to Feature Flag
+  * [VPNLINUX-1168] Customize Port Forwarding notification
+  * [VPNLINUX-1167] Update api-core dependency
+  * [VPNLINUX-1168] Minor changes to wording of port forwarding user interface
+  * [VPNLINUX-1181] add linux referral to sign-up URL
+  * [VPNLINUX-1176] Fix crash when quitting the app while connected and PF is enabled
+
+-------------------------------------------------------------------
 Tue Nov 12 12:39:02 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update package to 4.7.4:
