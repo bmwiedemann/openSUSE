@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:20:32 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 34.2
+  * libkmod: fix buffer-overflow in weakdep_to_char
+- Delete unused 0001-build-resolve-build-failure-due-to-missing-include.patch
+
+-------------------------------------------------------------------
 Wed Mar 12 16:03:22 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - tests: drop ppc64 workaround, print failed test results if any

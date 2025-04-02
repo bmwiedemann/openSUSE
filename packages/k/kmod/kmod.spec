@@ -22,7 +22,7 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        34.1
+Version:        34.2
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

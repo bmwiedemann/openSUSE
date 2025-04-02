@@ -786,4 +786,13 @@ This addition of patch not mentioned in changelog should have been rejected by t
 - tests: drop ppc64 workaround, print failed test results if any</comment>
     <requestid>1253001</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>7395a169f47a715ad9549d0e12b7ecc6</srcmd5>
+    <version>34.2</version>
+    <time>1743606297</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 34.2
+  * libkmod: fix buffer-overflow in weakdep_to_char</comment>
+    <requestid>1265298</requestid>
+  </revision>
 </revisionlist>
