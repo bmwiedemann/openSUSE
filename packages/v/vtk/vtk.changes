@@ -22,6 +22,11 @@ Sun Dec 22 03:31:28 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
   * Do-not-request-CUBE_MAP_SEAMLESS-on-GLES.patch
 
 -------------------------------------------------------------------
+Mon Dec 16 16:16:25 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Normalize jar mtimes for reproducible builds (boo#1134568)
+
+-------------------------------------------------------------------
 Thu Dec 12 16:28:03 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - - Update to version 9.4.0, see:

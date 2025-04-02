@@ -51,6 +51,7 @@
 %bcond_without haru
 %bcond_with    system_pegtl
 %bcond_without pugixml
+%define have_strip_nondeterminism 1
 %endif
 
 %bcond_without gl2ps
@@ -189,6 +190,9 @@ BuildRequires:  libharu-devel >= 2.4.0
 %endif
 %if %{with java}
 BuildRequires:  java-devel >= 1.8
+%if 0%?have_strip_nondeterminism > 0
+BuildRequires:  strip-nondeterminism
+%endif
 %endif
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
@@ -567,6 +571,10 @@ mv %{buildroot}%{my_datadir}/licenses/VTK %{buildroot}%{_licensedir}/%{name}
 pushd build/%{_lib}/python%{python3_version}/site-packages/
 python3 setup.py install_egg_info -d %{buildroot}%{python3_sitearch}
 popd
+%endif
+
+%if %{with java} && 0%?have_strip_nondeterminism > 0
+    strip-all-nondeterminism %{buildroot}%{my_libdir}/java/
 %endif
 
 %fdupes %{buildroot}
