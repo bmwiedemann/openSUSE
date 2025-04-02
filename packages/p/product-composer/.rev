@@ -358,4 +358,14 @@
   * fix crash on missing summary field</comment>
     <requestid>1255051</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fa77fd6ddcc5b159023a173d693734d4</srcmd5>
+    <version>0.5.12</version>
+    <time>1743606666</time>
+    <user>anag+factory</user>
+    <comment>- update to version 0.5.12:
+  * Fix handling of internal updateinfo.xml attributes 
+    supportstatus, superseded_by and embargo_date .</comment>
+    <requestid>1265732</requestid>
+  </revision>
 </revisionlist>

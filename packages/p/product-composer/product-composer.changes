@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 10:05:44 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.12:
+  * Fix handling of internal updateinfo.xml attributes 
+    supportstatus, superseded_by and embargo_date .
+
+-------------------------------------------------------------------
 Fri Mar 21 15:43:58 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.11
