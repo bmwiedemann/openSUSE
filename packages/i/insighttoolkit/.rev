@@ -144,4 +144,13 @@
     <comment></comment>
     <requestid>1193348</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b32261a01d3414fbf6dbae592b34fcd5</srcmd5>
+    <version>5.4.0</version>
+    <time>1743620730</time>
+    <user>anag+factory</user>
+    <comment>Drop unneeded pcre build dependency via pkgconfig(libpcrecpp).
+</comment>
+    <requestid>1266379</requestid>
+  </revision>
 </revisionlist>

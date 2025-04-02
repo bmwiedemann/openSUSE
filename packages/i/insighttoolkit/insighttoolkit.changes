@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  1 20:10:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Drop unneeded pcre build dependency via pkgconfig(libpcrecpp).
+
+-------------------------------------------------------------------
 Mon Jul  8 06:30:25 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.4.0:
