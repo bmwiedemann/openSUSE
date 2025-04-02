@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:14:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.12.2
+  * Update license file reference from LICENSE to LICENCE
+    in pyproject.toml (#243) @williamjamir
+  * Update docstring in naturaldelta (#242) @teobucci
+  * Ignore sys.monitoring warning for Python 3.11 and
+    earlier in coverage.py config (#244) @hugovk
+
+-------------------------------------------------------------------
 Wed Mar 19 11:45:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.12.1
