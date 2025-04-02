@@ -1298,14 +1298,6 @@ unsorted:
   - baka-mplayer 
   - ballerburg 
   - baloo-widgets-devel 
-  - baloo5-devel 
-  - baloo5-file 
-  - baloo5-file-lang 
-  - baloo5-imports 
-  - baloo5-kioslaves 
-  - baloo5-kioslaves-lang 
-  - baloo5-tools 
-  - baloo5-tools-lang 
   - balsa 
   - balsa-lang 
   - bam 
@@ -2359,9 +2351,6 @@ unsorted:
   - cmh 
   - cmh-devel 
   - cmis-client 
-  - cmpi-bindings-perl 
-  - cmpi-bindings-py3wbem 
-  - cmpi-bindings-ruby 
   - cmpi-provider-register 
   - cmrt-devel 
   - cmuclmtk 
@@ -9084,7 +9073,6 @@ unsorted:
   - iio-sensor-proxy-doc 
   - ikiwiki 
   - ikiwiki-w3m 
-  - ikona 
   - ikvm 
   - ilbc-devel 
   - illum 
@@ -10062,7 +10050,6 @@ unsorted:
   - kanku-web 
   - kanku-worker 
   - kanshi 
-  - kapidox 
   - kapman 
   - kapman-lang 
   - kappanhang 
@@ -10121,9 +10108,6 @@ unsorted:
   - kcrash-devel 
   - kcron 
   - kcron-lang 
-  - kdav 
-  - kdav-devel 
-  - kdav-lang 
   - kdb-devel 
   - kdb-lang 
   - kdb-mysql-driver 
@@ -10357,9 +10341,6 @@ unsorted:
   - kf6-syndication-devel 
   - kf6-syntax-highlighting-devel 
   - kf6-threadweaver-devel 
-  - kfilemetadata5 
-  - kfilemetadata5-devel 
-  - kfilemetadata5-lang 
   - kfind 
   - kfind-lang 
   - kfloppy 
@@ -10528,8 +10509,6 @@ unsorted:
   - klog-zsh-completion 
   - klp-build 
   - kmailtransport-devel 
-  - kmarkdownwebview 
-  - kmarkdownwebview-lang 
   - kmbox-devel 
   - kmediaplayer-devel 
   - kmime-devel 
@@ -10583,8 +10562,6 @@ unsorted:
   - kompose-zsh-completion 
   - kongress 
   - kongress-lang 
-  - konkretcmpi-devel 
-  - konkretcmpi-python3 
   - konqueror 
   - konqueror-devel 
   - konqueror-lang 
@@ -10614,9 +10591,6 @@ unsorted:
   - kpartloader 
   - kpartloader-lang 
   - kparts-devel 
-  - kpeople5 
-  - kpeople5-devel 
-  - kpeople5-lang 
   - kphotoalbum 
   - kphotoalbum-lang 
   - kpimtextedit-devel 
@@ -10639,8 +10613,6 @@ unsorted:
   - kpublictransport-devel 
   - kpublictransport-imports 
   - kpublictransport-lang 
-  - kquickcharts 
-  - kquickcharts-devel 
   - kquickimageeditor6-devel 
   - kquickimageeditor6-imports 
   - kraft 
@@ -10967,7 +10939,6 @@ unsorted:
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
-  - kxmlrpcclient5-devel 
   - kyotocabinet 
   - kyverno 
   - kyverno-bash-completion 
@@ -11385,14 +11356,10 @@ unsorted:
   - libKF5Activities5 
   - libKF5ActivitiesStats1 
   - libKF5Attica5 
-  - libKF5Baloo5 
-  - libKF5BalooEngine5 
-  - libKF5BalooEngine5-lang 
   - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
   - libKF5Cddb5 
   - libKF5Contacts5 
-  - libKF5DAV5 
   - libKF5Emoticons5 
   - libKF5Holidays5 
   - libKF5Holidays5-lang 
@@ -11423,8 +11390,6 @@ unsorted:
   - libKF5Syndication5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
-  - libKF5XmlRpcClient5 
-  - libKF5XmlRpcClient5-lang 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -11970,7 +11935,7 @@ unsorted:
   - liba52-devel 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail4 
+  - libabigail5 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl_2501_0_0-32bit 
@@ -12139,6 +12104,8 @@ unsorted:
   - libarrow1900 
   - libarrow_acero1900 
   - libarrow_dataset1900 
+  - libarrow_flight1900 
+  - libarrow_flight_sql1900 
   - libart_lgpl-devel 
   - libart_lgpl_2-2 
   - libasan4 
@@ -14422,23 +14389,23 @@ unsorted:
   - libkea-cfgclient65 
   - libkea-cryptolink50 
   - libkea-d2srv46 
-  - libkea-database61 
-  - libkea-dhcp++90 
+  - libkea-database62 
+  - libkea-dhcp++91 
   - libkea-dhcp_ddns56 
-  - libkea-dhcpsrv109 
+  - libkea-dhcpsrv110 
   - libkea-dns++56 
   - libkea-eval69 
   - libkea-exceptions33 
-  - libkea-hooks98 
+  - libkea-hooks99 
   - libkea-http71 
   - libkea-log61 
-  - libkea-mysql70 
-  - libkea-pgsql70 
-  - libkea-process72 
+  - libkea-mysql71 
+  - libkea-pgsql71 
+  - libkea-process73 
   - libkea-stats41 
   - libkea-tcp18 
   - libkea-util-io0 
-  - libkea-util84 
+  - libkea-util85 
   - libkea1_5 
   - libkeccak-devel 
   - libkeccak1 
@@ -14484,7 +14451,6 @@ unsorted:
   - libknot15 
   - libkokkos-4_3 
   - libkomparediff2-devel 
-  - libkonkretcmpi0 
   - libkpathsea6 
   - libkrun-devel 
   - libkrun-sev-devel 
@@ -16272,7 +16238,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
-  - librocksdb10 
+  - librocksdb9 
   - librocsgraphtheory0 
   - librpma0 
   - librrd8 
@@ -16323,7 +16289,6 @@ unsorted:
   - libsass-devel 
   - libsatyr4 
   - libsbc1-32bit 
-  - libsblim-cmpiutil1 
   - libscalapack2-gnu-mpich-hpc 
   - libscalapack2-gnu-mpich-hpc-devel 
   - libscalapack2-gnu-mvapich2-hpc 
@@ -16410,6 +16375,7 @@ unsorted:
   - libserialport-devel 
   - libserialport0 
   - libseteec0 
+  - libsexp1 
   - libsexpp0 
   - libsfcUtil0 
   - libsfml2-2_6 
@@ -16804,9 +16770,9 @@ unsorted:
   - libthai-devel 
   - libthai0-32bit 
   - libtheora-devel 
-  - libtheora0-32bit 
-  - libtheoradec1-32bit 
-  - libtheoraenc1-32bit 
+  - libtheora1-32bit 
+  - libtheoradec2-32bit 
+  - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
   - libthrift-0_17_0 
@@ -17190,7 +17156,7 @@ unsorted:
   - libvorbisenc2-32bit 
   - libvorbisfile3-32bit 
   - libvoro++0 
-  - libvotca2024 
+  - libvotca2025 
   - libvpd-2_2-3 
   - libvpd-base 
   - libvpd-devel 
@@ -17624,7 +17590,7 @@ unsorted:
   - libz-ng-compat1-32bit 
   - libz-ng2 
   - libz-ng2-32bit 
-  - libz3-4_13 
+  - libz3-4_14 
   - libzapojit-0_0-0 
   - libzapojit-devel 
   - libzarchive0_1 
@@ -18869,6 +18835,7 @@ unsorted:
   - meld 
   - meld-lang 
   - meli 
+  - meli-with-debug-tracing 
   - melt 
   - memcached 
   - memcached-devel 
@@ -18892,6 +18859,7 @@ unsorted:
   - mesheryctl-fish-completion 
   - mesheryctl-zsh-completion 
   - meshlab 
+  - meslo-lg-dz-fonts 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -20468,38 +20436,6 @@ unsorted:
   - ocli 
   - oclock 
   - ocp 
-  - ocr-gnu-hpc 
-  - ocr-gnu-hpc-devel 
-  - ocr-gnu-hpc-doc 
-  - ocr-gnu-hpc-examples 
-  - ocr-gnu-mpich-hpc 
-  - ocr-gnu-mpich-hpc-devel 
-  - ocr-gnu-mpich-hpc-doc 
-  - ocr-gnu-mpich-hpc-examples 
-  - ocr-gnu-mvapich2-hpc 
-  - ocr-gnu-mvapich2-hpc-devel 
-  - ocr-gnu-mvapich2-hpc-doc 
-  - ocr-gnu-mvapich2-hpc-examples 
-  - ocr-gnu-openmpi4-hpc 
-  - ocr-gnu-openmpi4-hpc-devel 
-  - ocr-gnu-openmpi4-hpc-doc 
-  - ocr-gnu-openmpi4-hpc-examples 
-  - ocr_1_0_1-gnu-hpc 
-  - ocr_1_0_1-gnu-hpc-devel 
-  - ocr_1_0_1-gnu-hpc-doc 
-  - ocr_1_0_1-gnu-hpc-examples 
-  - ocr_1_0_1-gnu-mpich-hpc 
-  - ocr_1_0_1-gnu-mpich-hpc-devel 
-  - ocr_1_0_1-gnu-mpich-hpc-doc 
-  - ocr_1_0_1-gnu-mpich-hpc-examples 
-  - ocr_1_0_1-gnu-mvapich2-hpc 
-  - ocr_1_0_1-gnu-mvapich2-hpc-devel 
-  - ocr_1_0_1-gnu-mvapich2-hpc-doc 
-  - ocr_1_0_1-gnu-mvapich2-hpc-examples 
-  - ocr_1_0_1-gnu-openmpi4-hpc 
-  - ocr_1_0_1-gnu-openmpi4-hpc-devel 
-  - ocr_1_0_1-gnu-openmpi4-hpc-doc 
-  - ocr_1_0_1-gnu-openmpi4-hpc-examples 
   - ocrad 
   - ocrad-devel 
   - ocrs 
@@ -20628,12 +20564,8 @@ unsorted:
   - ongres-scram 
   - ongres-scram-client 
   - ongres-scram-javadoc 
-  - ongres-scram-parent 
   - ongres-stringprep 
-  - ongres-stringprep-codegenerator 
   - ongres-stringprep-javadoc 
-  - ongres-stringprep-parent 
-  - ongres-stringprep-saslprep 
   - oniguruma-devel 
   - onioncat 
   - onnx-backend-test 
@@ -23819,6 +23751,7 @@ unsorted:
   - protobuf21-devel 
   - protoc-gen-go 
   - proton-vpn 
+  - proton-vpn-local-agent 
   - protontricks 
   - protonvpn-cli 
   - protonvpn-gui 
@@ -24109,7 +24042,6 @@ unsorted:
   - python-sip4-common 
   - python-sip4-doc 
   - python-six-doc 
-  - python-sqlalchemy-migrate-doc 
   - python-sushy-doc 
   - python-swiftclient-doc 
   - python-tooz-doc 
@@ -24952,6 +24884,8 @@ unsorted:
   - python311-azure-mgmt-appcontainers 
   - python311-azure-mgmt-applicationinsights 
   - python311-azure-mgmt-appplatform 
+  - python311-azure-mgmt-arizeaiobservabilityeval 
+  - python311-azure-mgmt-astro 
   - python311-azure-mgmt-attestation 
   - python311-azure-mgmt-authorization 
   - python311-azure-mgmt-automanage 
@@ -24979,6 +24913,7 @@ unsorted:
   - python311-azure-mgmt-connectedvmware 
   - python311-azure-mgmt-consumption 
   - python311-azure-mgmt-containerinstance 
+  - python311-azure-mgmt-containerorchestratorruntime 
   - python311-azure-mgmt-containerregistry 
   - python311-azure-mgmt-containerservice 
   - python311-azure-mgmt-containerservicefleet 
@@ -24988,6 +24923,7 @@ unsorted:
   - python311-azure-mgmt-costmanagement 
   - python311-azure-mgmt-customproviders 
   - python311-azure-mgmt-dashboard 
+  - python311-azure-mgmt-databasewatcher 
   - python311-azure-mgmt-databox 
   - python311-azure-mgmt-databoxedge 
   - python311-azure-mgmt-databricks 
@@ -25012,6 +24948,7 @@ unsorted:
   - python311-azure-mgmt-digitaltwins 
   - python311-azure-mgmt-dns 
   - python311-azure-mgmt-dnsresolver 
+  - python311-azure-mgmt-durabletask 
   - python311-azure-mgmt-dynatrace 
   - python311-azure-mgmt-edgegateway 
   - python311-azure-mgmt-edgeorder 
@@ -25036,6 +24973,7 @@ unsorted:
   - python311-azure-mgmt-hybridkubernetes 
   - python311-azure-mgmt-hybridnetwork 
   - python311-azure-mgmt-imagebuilder 
+  - python311-azure-mgmt-impactreporting 
   - python311-azure-mgmt-informaticadatamanagement 
   - python311-azure-mgmt-iotcentral 
   - python311-azure-mgmt-iotfirmwaredefense 
@@ -25062,6 +25000,7 @@ unsorted:
   - python311-azure-mgmt-maps 
   - python311-azure-mgmt-marketplaceordering 
   - python311-azure-mgmt-media 
+  - python311-azure-mgmt-migrationassessment 
   - python311-azure-mgmt-mixedreality 
   - python311-azure-mgmt-mobilenetwork 
   - python311-azure-mgmt-monitor 
@@ -25147,6 +25086,7 @@ unsorted:
   - python311-azure-mgmt-voiceservices 
   - python311-azure-mgmt-web 
   - python311-azure-mgmt-webpubsub 
+  - python311-azure-mgmt-weightsandbiases 
   - python311-azure-mgmt-workloadmonitor 
   - python311-azure-mgmt-workloads 
   - python311-azure-mixedreality-authentication 
@@ -26207,7 +26147,6 @@ unsorted:
   - python311-kiwi-keg 
   - python311-kiwisolver 
   - python311-kmatch 
-  - python311-kmodpy 
   - python311-knack 
   - python311-kombu 
   - python311-korean-lunar-calendar 
@@ -26821,6 +26760,7 @@ unsorted:
   - python311-proton-vpn-connection 
   - python311-proton-vpn-killswitch 
   - python311-proton-vpn-killswitch-network-manager 
+  - python311-proton-vpn-local-agent 
   - python311-proton-vpn-logger 
   - python311-proton-vpn-network-manager 
   - python311-proton-vpn-network-manager-openvpn 
@@ -27302,7 +27242,6 @@ unsorted:
   - python311-pyvo 
   - python311-pywayland 
   - python311-pywbem 
-  - python311-pywbemtools 
   - python311-pywebpush 
   - python311-pywinrm 
   - python311-pywlroots 
@@ -27643,7 +27582,6 @@ unsorted:
   - python311-spsdk 
   - python311-spur 
   - python311-spyder-kernels 
-  - python311-sqlalchemy-migrate 
   - python311-sqlglot 
   - python311-sqlite-anyio 
   - python311-sqlite-fts4 
@@ -28616,6 +28554,8 @@ unsorted:
   - python312-azure-mgmt-appcontainers 
   - python312-azure-mgmt-applicationinsights 
   - python312-azure-mgmt-appplatform 
+  - python312-azure-mgmt-arizeaiobservabilityeval 
+  - python312-azure-mgmt-astro 
   - python312-azure-mgmt-attestation 
   - python312-azure-mgmt-authorization 
   - python312-azure-mgmt-automanage 
@@ -28643,6 +28583,7 @@ unsorted:
   - python312-azure-mgmt-connectedvmware 
   - python312-azure-mgmt-consumption 
   - python312-azure-mgmt-containerinstance 
+  - python312-azure-mgmt-containerorchestratorruntime 
   - python312-azure-mgmt-containerregistry 
   - python312-azure-mgmt-containerservice 
   - python312-azure-mgmt-containerservicefleet 
@@ -28652,6 +28593,7 @@ unsorted:
   - python312-azure-mgmt-costmanagement 
   - python312-azure-mgmt-customproviders 
   - python312-azure-mgmt-dashboard 
+  - python312-azure-mgmt-databasewatcher 
   - python312-azure-mgmt-databox 
   - python312-azure-mgmt-databoxedge 
   - python312-azure-mgmt-databricks 
@@ -28676,6 +28618,7 @@ unsorted:
   - python312-azure-mgmt-digitaltwins 
   - python312-azure-mgmt-dns 
   - python312-azure-mgmt-dnsresolver 
+  - python312-azure-mgmt-durabletask 
   - python312-azure-mgmt-dynatrace 
   - python312-azure-mgmt-edgegateway 
   - python312-azure-mgmt-edgeorder 
@@ -28700,6 +28643,7 @@ unsorted:
   - python312-azure-mgmt-hybridkubernetes 
   - python312-azure-mgmt-hybridnetwork 
   - python312-azure-mgmt-imagebuilder 
+  - python312-azure-mgmt-impactreporting 
   - python312-azure-mgmt-informaticadatamanagement 
   - python312-azure-mgmt-iotcentral 
   - python312-azure-mgmt-iotfirmwaredefense 
@@ -28726,6 +28670,7 @@ unsorted:
   - python312-azure-mgmt-maps 
   - python312-azure-mgmt-marketplaceordering 
   - python312-azure-mgmt-media 
+  - python312-azure-mgmt-migrationassessment 
   - python312-azure-mgmt-mixedreality 
   - python312-azure-mgmt-mobilenetwork 
   - python312-azure-mgmt-monitor 
@@ -28811,6 +28756,7 @@ unsorted:
   - python312-azure-mgmt-voiceservices 
   - python312-azure-mgmt-web 
   - python312-azure-mgmt-webpubsub 
+  - python312-azure-mgmt-weightsandbiases 
   - python312-azure-mgmt-workloadmonitor 
   - python312-azure-mgmt-workloads 
   - python312-azure-mixedreality-authentication 
@@ -29898,7 +29844,6 @@ unsorted:
   - python312-kiwi-keg 
   - python312-kiwisolver 
   - python312-kmatch 
-  - python312-kmodpy 
   - python312-knack 
   - python312-kombu 
   - python312-korean-lunar-calendar 
@@ -30523,6 +30468,7 @@ unsorted:
   - python312-proton-vpn-connection 
   - python312-proton-vpn-killswitch 
   - python312-proton-vpn-killswitch-network-manager 
+  - python312-proton-vpn-local-agent 
   - python312-proton-vpn-logger 
   - python312-proton-vpn-network-manager 
   - python312-proton-vpn-network-manager-openvpn 
@@ -31015,7 +30961,6 @@ unsorted:
   - python312-pyvo 
   - python312-pywayland 
   - python312-pywbem 
-  - python312-pywbemtools 
   - python312-pywebpush 
   - python312-pywinrm 
   - python312-pywlroots 
@@ -31366,7 +31311,6 @@ unsorted:
   - python312-spsdk 
   - python312-spur 
   - python312-spyder-kernels 
-  - python312-sqlalchemy-migrate 
   - python312-sqlglot 
   - python312-sqlite-anyio 
   - python312-sqlite-fts4 
@@ -32332,6 +32276,8 @@ unsorted:
   - python313-azure-mgmt-appcontainers 
   - python313-azure-mgmt-applicationinsights 
   - python313-azure-mgmt-appplatform 
+  - python313-azure-mgmt-arizeaiobservabilityeval 
+  - python313-azure-mgmt-astro 
   - python313-azure-mgmt-attestation 
   - python313-azure-mgmt-authorization 
   - python313-azure-mgmt-automanage 
@@ -32359,6 +32305,7 @@ unsorted:
   - python313-azure-mgmt-connectedvmware 
   - python313-azure-mgmt-consumption 
   - python313-azure-mgmt-containerinstance 
+  - python313-azure-mgmt-containerorchestratorruntime 
   - python313-azure-mgmt-containerregistry 
   - python313-azure-mgmt-containerservice 
   - python313-azure-mgmt-containerservicefleet 
@@ -32368,6 +32315,7 @@ unsorted:
   - python313-azure-mgmt-costmanagement 
   - python313-azure-mgmt-customproviders 
   - python313-azure-mgmt-dashboard 
+  - python313-azure-mgmt-databasewatcher 
   - python313-azure-mgmt-databox 
   - python313-azure-mgmt-databoxedge 
   - python313-azure-mgmt-databricks 
@@ -32392,6 +32340,7 @@ unsorted:
   - python313-azure-mgmt-digitaltwins 
   - python313-azure-mgmt-dns 
   - python313-azure-mgmt-dnsresolver 
+  - python313-azure-mgmt-durabletask 
   - python313-azure-mgmt-dynatrace 
   - python313-azure-mgmt-edgegateway 
   - python313-azure-mgmt-edgeorder 
@@ -32416,6 +32365,7 @@ unsorted:
   - python313-azure-mgmt-hybridkubernetes 
   - python313-azure-mgmt-hybridnetwork 
   - python313-azure-mgmt-imagebuilder 
+  - python313-azure-mgmt-impactreporting 
   - python313-azure-mgmt-informaticadatamanagement 
   - python313-azure-mgmt-iotcentral 
   - python313-azure-mgmt-iotfirmwaredefense 
@@ -32442,6 +32392,7 @@ unsorted:
   - python313-azure-mgmt-maps 
   - python313-azure-mgmt-marketplaceordering 
   - python313-azure-mgmt-media 
+  - python313-azure-mgmt-migrationassessment 
   - python313-azure-mgmt-mixedreality 
   - python313-azure-mgmt-mobilenetwork 
   - python313-azure-mgmt-monitor 
@@ -32527,6 +32478,7 @@ unsorted:
   - python313-azure-mgmt-voiceservices 
   - python313-azure-mgmt-web 
   - python313-azure-mgmt-webpubsub 
+  - python313-azure-mgmt-weightsandbiases 
   - python313-azure-mgmt-workloadmonitor 
   - python313-azure-mgmt-workloads 
   - python313-azure-mixedreality-authentication 
@@ -33578,7 +33530,6 @@ unsorted:
   - python313-kiwi-keg 
   - python313-kiwisolver 
   - python313-kmatch 
-  - python313-kmodpy 
   - python313-knack 
   - python313-kombu 
   - python313-korean-lunar-calendar 
@@ -34192,6 +34143,7 @@ unsorted:
   - python313-proton-vpn-connection 
   - python313-proton-vpn-killswitch 
   - python313-proton-vpn-killswitch-network-manager 
+  - python313-proton-vpn-local-agent 
   - python313-proton-vpn-logger 
   - python313-proton-vpn-network-manager 
   - python313-proton-vpn-network-manager-openvpn 
@@ -34666,7 +34618,6 @@ unsorted:
   - python313-pyvo 
   - python313-pywayland 
   - python313-pywbem 
-  - python313-pywbemtools 
   - python313-pywebpush 
   - python313-pywinrm 
   - python313-pywlroots 
@@ -35006,7 +34957,6 @@ unsorted:
   - python313-spsdk 
   - python313-spur 
   - python313-spyder-kernels 
-  - python313-sqlalchemy-migrate 
   - python313-sqlglot 
   - python313-sqlite-anyio 
   - python313-sqlite-fts4 
@@ -35631,8 +35581,6 @@ unsorted:
   - qps 
   - qps-lang 
   - qpwgraph 
-  - qqc2-breeze-style 
-  - qqc2-breeze-style-devel 
   - qqc2-breeze-style6-devel 
   - qqc2-desktop-style-devel 
   - qqwing 
@@ -36263,6 +36211,10 @@ unsorted:
   - reflectasm-javadoc 
   - reflections 
   - reflections-javadoc 
+  - regal 
+  - regal-bash-completion 
+  - regal-fish-completion 
+  - regal-zsh-completion 
   - regclient 
   - regclient-bash-completion 
   - regclient-fish-completion 
@@ -37090,15 +37042,8 @@ unsorted:
   - sbd-devel 
   - sbiload 
   - sbl-orca 
-  - sblim-cim-client2 
-  - sblim-cim-client2-javadoc 
-  - sblim-cim-client2-manual 
-  - sblim-cmpi-base 
-  - sblim-cmpi-base-devel 
-  - sblim-cmpi-base-testsuite 
   - sblim-cmpi-c++-devel 
   - sblim-cmpi-devel 
-  - sblim-cmpiutil-devel 
   - sblim-indication_helper 
   - sblim-indication_helper-devel 
   - sblim-sfcCommon-devel 
@@ -37308,6 +37253,7 @@ unsorted:
   - sffview 
   - sfml2-devel 
   - sfml2-doc 
+  - sfsexp-devel 
   - sgi-bitmap-fonts 
   - sgmltool 
   - sgmltool-latex 
@@ -47833,7 +47779,6 @@ unsorted:
   - tftpboot-installation-openSUSE-MicroOS-x86_64 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
   - tgt 
-  - the_silver_searcher 
   - thermal-monitor 
   - thermald 
   - thessalonica-oldstandard-ttf-fonts 
@@ -49266,7 +49211,6 @@ unsorted:
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
   - weblug 
-  - webp-pixbuf-loader 
   - webrepl 
   - websocketpp-devel 
   - weechat 

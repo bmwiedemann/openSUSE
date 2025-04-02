@@ -2497,7 +2497,6 @@
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libpeas-loader-python3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpgm-5_3-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libphodav-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libphonenumber8" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2759,9 +2758,9 @@
     <package name="libtextstyle0" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="libthai-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libthai0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtheora0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libtheoradec1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libtheoraenc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libtheora1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libtheoradec2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libtheoraenc2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libthunarx-3-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtiff6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libtirpc-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4201,6 +4200,7 @@
     <package name="wayland-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wb-cifs-idmap-plugin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="webkit2gtk-4_1-injected-bundles" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="webp-pixbuf-loader" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="wget" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wget-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
