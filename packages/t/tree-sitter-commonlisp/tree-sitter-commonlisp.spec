@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-commonlisp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         _name commonlisp
 Name:           tree-sitter-commonlisp
-Version:        0.3.3
+Version:        0.4.1
 Release:        0
 Summary:        Common Lisp grammar for tree-sitter
 License:        MIT
@@ -57,4 +57,3 @@ ln -s %{_libdir}/lib%{name}.so %{buildroot}%{_libdir}/tree_sitter/%{_name}.so
 %treesitter_devel_package
 
 %changelog
-
