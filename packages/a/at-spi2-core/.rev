@@ -2698,4 +2698,15 @@
     <comment>New stable rel (forwarded request 1253462 from iznogood)</comment>
     <requestid>1253710</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>ed7e99ee9c75265a1f601a9347279348</srcmd5>
+    <version>2.56.1</version>
+    <time>1743606405</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.56.1:
+  + device-a11y-manager:
+    - Fix crash on dispose
+    - Check properly for the DBus backend presence (forwarded request 1265365 from iznogood)</comment>
+    <requestid>1265725</requestid>
+  </revision>
 </revisionlist>

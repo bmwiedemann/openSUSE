@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 29 08:43:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.1:
+  + device-a11y-manager:
+    - Fix crash on dispose
+    - Check properly for the DBus backend presence
+
+-------------------------------------------------------------------
 Sun Mar 16 08:48:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.0:
