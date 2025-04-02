@@ -1,7 +1,7 @@
 #
 # spec file for package totem
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           totem
-Version:        43.1
+Version:        43.1+35
 Release:        0
 Summary:        Movie Player for the GNOME Desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://wiki.gnome.org/Apps/Videos
-Source0:        https://download.gnome.org/sources/totem/43/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM d16d9ad1d2b214996639e4f01c4515b611fb2739.patch -- data: Add new canonical mime-type for AVI files
-Patch1:         https://gitlab.gnome.org/GNOME/totem/-/commit/d16d9ad1d2b214996639e4f01c4515b611fb2739.patch
+Source0:        %{name}-%{version}.tar.zst
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
@@ -169,7 +167,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 
 %files plugins
 # Explicitly list plugins
-%{_libdir}/totem/plugins/apple-trailers/
 %{_libdir}/totem/plugins/autoload-subtitles/
 %{_libdir}/totem/plugins/im-status/
 %{_libdir}/totem/plugins/mpris/
@@ -183,7 +180,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Totem.deskt
 %{_libdir}/totem/plugins/screensaver/
 %{_libdir}/totem/plugins/screenshot/
 %{_libdir}/totem/plugins/skipto/
-%{_libdir}/totem/plugins/vimeo/
 %{_libdir}/totem/plugins/variable-rate/
 %{_datadir}/GConf/gsettings/opensubtitles.convert
 %{_datadir}/GConf/gsettings/pythonconsole.convert

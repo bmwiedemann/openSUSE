@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Mar 27 21:43:44 UTC 2025 - bjorn.lie@gmail.com
+
+- Update to version 43.1+35:
+  * thumbnailer:
+    - Bump memory usage limit
+    - Print actually set resource limits
+    - Propagate verbose to resource monitor
+    - Work-around OpenBLAS thread usage
+  * gst: Use playbin's convert-frame feature again
+  * build:
+    - Fix meson deprecation warning about the use of
+      ExternalProgram.path
+    - Fix meson deprecating warning about the use of
+      meson.source_root
+    - Fix meson deprecation warning about the use of
+      dependency.get_pkgconfig_variable
+  * Add branding colors
+  * open-directory: Don't abort if failed to create XdpPortal
+    instance
+- Drop apple-trailers and vimeo plugins, no longer supported.
+- Drop d16d9ad1d2b214996639e4f01c4515b611fb2739.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Oct 22 18:35:48 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 43.1:
