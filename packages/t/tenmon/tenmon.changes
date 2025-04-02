@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:47:56 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 20250318:
+  * Use only single database
+  * Add generating thumbnails from cmd line
+  * Configurable threshold
+  * Fix Do not prepend \\ to network share paths
+  * Add ability to have user defined colormaps
+  * For setSolverProfile use index 1-8
+  * Add best fit on image load
+  * Remove startfit
+
+-------------------------------------------------------------------
 Sun Feb  9 16:54:17 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 20250126:

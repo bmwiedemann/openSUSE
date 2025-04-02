@@ -163,4 +163,21 @@
 </comment>
     <requestid>1244515</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>32a3d489abca547f824d1481e68a694a</srcmd5>
+    <version>20250318</version>
+    <time>1743607041</time>
+    <user>anag+factory</user>
+    <comment>- Update to 20250318:
+  * Use only single database
+  * Add generating thumbnails from cmd line
+  * Configurable threshold
+  * Fix Do not prepend \\ to network share paths
+  * Add ability to have user defined colormaps
+  * For setSolverProfile use index 1-8
+  * Add best fit on image load
+  * Remove startfit
+</comment>
+    <requestid>1266385</requestid>
+  </revision>
 </revisionlist>

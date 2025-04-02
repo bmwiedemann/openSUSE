@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20250126
+Version:        20250318
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
