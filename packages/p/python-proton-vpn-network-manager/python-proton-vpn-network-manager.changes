@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Mar 28 17:14:04 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
+
+- Update to 0.12.13:
+  * Forward the rust log to python log
+  * Improve logic for applying fallback DNS
+  * Ensure that Proton DNS IP is used as a fallback when custom DNS is enabled but no IP is provided with the WireGuard protocol
+  * Bump the minimum required version of vpn-api-core module
+  * Fix for old call to this non existant method
+  * Fix Certificate Expired early error in openvpn
+  * Revert introduced workarounds for kill switch with newer versions of netplan (1.1.1-1). Users are now able to use kill switch while having IPv6 disable at grub/kernel level
+  * Added local agent to OpenVPN
+  * Ignore interfaces without a gateway configured
+  * Encrypt openvpn certificate private key
+  * Don't log handled agent errors
+  * Update to new local agent dependency where the rust logger is initialized automatically
+  * Fix certificate expired error handling
+  * Integrate LA port forwarding
+  * Update to use new LA interface (Alexandru Cheltuitor, Josep Llaneras)
+  * Update event context so that it passes a forwarded port
+  * Use a mock port for the moment until local-agent has fully implemented the feature
+  * Do not use privileged local port for wireguard
+  * Drop Ubuntu 20.04 support
+  * Remove DoH
+  * Added semgrep scanning to CI
+  * Change to new custom DNS format
+  * Refactor code so that new changes are taken into consideration
+  * Fix unsupported type annotation in python 3.8.10
+  * Fix bug where automatic DNS settings is ignored, regardless if custom DNS is passed or not
+  * Validate custom DNS values for IPv4/6
+  * Generate the changelogs in the CI
+  * Move to a centralised way to update the version of the package
+  * Handle connection details received by local agent 
+
+-------------------------------------------------------------------
 Thu Oct 24 11:44:51 UTC 2024 - Yunhe Guo <i@guoyunhe.me>
 
 - Update to 0.9.1

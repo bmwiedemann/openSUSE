@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-network-manager
-Version:        0.9.1
+Version:        0.12.13
 Release:        0
 Summary:        Proton VPN library for NetworkManager
 License:        GPL-3.0-or-later
@@ -29,9 +29,12 @@ Source:         https://github.com/ProtonVPN/python-proton-vpn-network-manager/a
 # https://github.com/ProtonVPN/proton-vpn-gtk-app/issues/43
 Patch1:         keyring.patch
 BuildRequires:  %{python_module gobject}
+BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module proton-core}
-BuildRequires:  %{python_module proton-vpn-api-core}
+BuildRequires:  %{python_module proton-vpn-api-core >= 0.42.3}
+BuildRequires:  %{python_module proton-vpn-local-agent >= 1.4.4}
 BuildRequires:  %{python_module pycairo}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
@@ -43,11 +46,25 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       NetworkManager
 Requires:       python-gobject
+Requires:       python-jinja2
+Requires:       python-packaging
 Requires:       python-proton-core
-Requires:       python-proton-vpn-api-core
+Requires:       python-proton-vpn-api-core >= 0.42.3
+Requires:       python-proton-vpn-local-agent >= 1.4.4
 Requires:       python-pycairo
-Conflicts:      python-proton-vpn-network-manager-openvpn
+Conflicts:      python-proton-vpn-network-manager-openvpn 
+Conflicts:      python-proton-vpn-network-manager-wireguard 
+Conflicts:      python-proton-vpn-killswitch-network-manager 
+Conflicts:      python-proton-vpn-killswitch-network-manager-wireguard 
 Conflicts:      python-protonvpn-nm-lib
+Obsoletes:      python-proton-vpn-network-manager-openvpn < 0.1.1
+Obsoletes:      python-proton-vpn-network-manager-wireguard < 0.4.7
+Obsoletes:      python-proton-vpn-killswitch-network-manager < 0.6.1
+Obsoletes:      python-proton-vpn-killswitch-network-manager-wireguard < 0.2.1
+Provides:       python-proton-vpn-network-manager-openvpn = 0.1.1
+Provides:       python-proton-vpn-network-manager-wireguard = 0.4.7
+Provides:       python-proton-vpn-killswitch-network-manager = 0.6.1
+Provides:       python-proton-vpn-killswitch-network-manager-wireguard = 0.2.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +83,8 @@ This package contains functionality for Proton VPN client to interact with Netwo
 
 %check
 # buildroot doesn't provide network manager service, so it is not possible to run killswitch tests
-%pytest tests --deselect "tests/integration/killswitch/default/test_killswitch_connection.py" --deselect "tests/integration/killswitch/wireguard/test_killswitch_connection.py"
+# ignore tests which are failing -> `Permission denied: '/run/user'`
+%pytest tests --deselect "tests/integration/killswitch/default/test_killswitch_connection.py" --deselect "tests/integration/killswitch/wireguard/test_killswitch_connection.py" --ignore "tests/openvpn/test_openvpn.py" --ignore "tests/openvpn/test_openvpnconfiguration.py" --ignore "tests/unit/core/test_networkmanager.py"
 
 %files %{python_files}
 %license LICENSE
