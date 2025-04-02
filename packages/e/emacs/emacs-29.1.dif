@@ -245,7 +245,7 @@
  (defun ange-ftp-add-cms-host (host)
 --- lisp/site-load.el
 +++ lisp/site-load.el	2025-03-03 14:13:31.015626331 +0000
-@@ -0,0 +1,45 @@
+@@ -0,0 +1,37 @@
 +;;;;
 +;;; emacs-27.1/lisp/site-load.el
 +;;; Copyright (c) 1995,96,98,99 SuSE Gmbh Nuernberg, Germany.  All rights reserved.
@@ -280,14 +280,6 @@
 +(load "lpr")
 +(setq lpr-headers-switches (list "-h"))
 +(setq lpr-add-switches t)
-+(garbage-collect)
-+
-+;; Overwrite `load delsel'
-+;; Choose `t' in your ~/.emacs
-+(custom-set-variables '(delete-selection-mode nil))
-+(garbage-collect)
-+
-+(setq gnus-default-nntp-server "news")
 +(garbage-collect)
 +
 +;;; site-load.el ends here

@@ -495,7 +495,6 @@ export CC CFLAGS LANG LC_CTYPE LDFLAGS
 DESKTOP="--with-x \
 	 --with-xim \
 	 --with-sound \
-	 --with-xpm \
 	 --with-jpeg \
 	 --with-tiff \
 	 --with-gif \
@@ -508,6 +507,7 @@ DESKTOP="--with-x \
 	 --without-gpm \
 "
     GTK="${DESKTOP} \
+	 --with-xpm=ifavailable \
 	 --with-x-toolkit=gtk3 \
 	 --without-pgtk \
 	 --with-toolkit-scroll-bars \
@@ -523,6 +523,7 @@ DESKTOP="--with-x \
 %endif
 "
     X11="${DESKTOP} \
+	 --with-xpm=ifavailable \
 	 --with-x-toolkit=lucid \
 	 --with-toolkit-scroll-bars \
 	 --x-includes=%{_x11inc} \
@@ -566,6 +567,7 @@ DESKTOP="--with-x \
 	 --with-kerberos5 \
 	 --with-file-notification=inotify \
 	 --with-modules \
+	 --enable-gcc-warnings=warn-only \
 	 --enable-autodepend \
 "
 if (($(getconf LONG_BIT) < 62))
