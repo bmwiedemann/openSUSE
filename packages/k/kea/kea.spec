@@ -1,7 +1,7 @@
 #
 # spec file for package kea
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,30 +22,30 @@
 %define cfgclient_sover 65
 %define cryptolink_sover 50
 %define d2srv_sover 46
-%define database_sover 61
-%define dhcppp_sover 90
+%define database_sover 62
+%define dhcppp_sover 91
 %define dhcp_ddns_sover 56
-%define dhcpsrv_sover 109
+%define dhcpsrv_sover 110
 %define dnspp_sover 56
 %define eval_sover 69
 %define exceptions_sover 33
-%define hooks_sover 98
+%define hooks_sover 99
 %define http_sover 71
 %define log_sover 61
-%define mysql_sover 70
-%define pgsql_sover 70
-%define process_sover 72
+%define mysql_sover 71
+%define pgsql_sover 71
+%define process_sover 73
 %define stats_sover 41
 %define tcp_sover 18
 %define util_io_sover 0
-%define util_sover 84
+%define util_sover 85
 %if 0%{?suse_version} >= 1600
 %bcond_without regen_files
 %else
 %bcond_with    regen_files
 %endif
 Name:           kea
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0

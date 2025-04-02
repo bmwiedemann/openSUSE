@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Mar 26 16:01:54 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 2.6.2
+  Bug fixes:
+  * Fix for inaccurate statistics: Kea was miscalculating
+    declined and assigned leases.
+  * Fix for lease conflicts and NAK: Conflicting entries were
+    created when two relayed HA instances tried to update a shared
+    lease DB at the same time.
+  * Fix for `subnetX-del` not removing subnets completely:
+    `subnetX-del` was not correctly deleting the subnet declaration
+    from the shared network configuration section.
+  * Fix for `config-write` and `retry-on-startup` parameter:
+    `config-write` was improperly storing the `retry-on-startup`
+    parameter in the config file, causing Kea to fail when
+    restarting.
+  * Fix for incorrect DB schema entry: A typo prevented the
+    upgrade script from working in certain circumstances.
+  * Fix for mishandling malformed DISCOVER packets:
+  * Fix for excessive memory utilization when receiving frequent
+    SIGHUP: Kea was storing a history of configs in memory with
+    each restart.
+  * Fix for `config-set` with `output_options`: `config-set` was
+    omitting the `output_options` section when spelled with "_".
+  * Fix for store-extended-info breaking lease limits: A specific
+    combination of vendor classes and storing extended info caused
+    limits to not be applied.
+  * Fix for DB connection recovery
+  * DB upgrade scripts: DB upgrade could fail on some
+    distributions.
+
+-------------------------------------------------------------------
 Thu Mar 13 13:26:28 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Add patch to fix build with boost 1.87

@@ -148,4 +148,12 @@ AFAICT these packages aren't needed for generating the docs and the official doc
 - Add BuildRequires for python3-sphinx_rtd_theme to fix docs build</comment>
     <requestid>1252806</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9124b597dae208d538da84720f9f2f2e</srcmd5>
+    <version>2.6.2</version>
+    <time>1743606631</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 2.6.2</comment>
+    <requestid>1265703</requestid>
+  </revision>
 </revisionlist>
