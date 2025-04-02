@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar 31 11:42:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- explit remove distruted certs, as the distrust does not get exported
+  correctly and the SSL certs are still trusted. (bsc#1240343)
+  - Entrust.net Premium 2048 Secure Server CA
+  - Entrust Root Certification Authority
+  - AffirmTrust Commercial
+  - AffirmTrust Networking
+  - AffirmTrust Premium
+  - AffirmTrust Premium ECC
+  - Entrust Root Certification Authority - G2
+  - Entrust Root Certification Authority - EC1
+  - GlobalSign Root E46
+  - GLOBALTRUST 2020
+- remove-distrusted.patch: apply to certdata.txt
+
+-------------------------------------------------------------------
 Tue Mar 25 09:45:30 UTC 2025 - Elisei Roca <eroca@suse.com>
 
 - Fix awk to compare (missing a =) and give the following output:

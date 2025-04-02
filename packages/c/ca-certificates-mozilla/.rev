@@ -882,4 +882,24 @@
   # NSS_BUILTINS_LIBRARY_VERSION &quot;2.74&quot; (forwarded request 1255880 from eroca)</comment>
     <requestid>1255908</requestid>
   </revision>
+  <revision rev="68" vrev="3">
+    <srcmd5>042fd0c29a8cd562427d95e0cc6b7f04</srcmd5>
+    <version>2.74</version>
+    <time>1743606451</time>
+    <user>anag+factory</user>
+    <comment>- explit remove distruted certs, as the distrust does not get exported
+  correctly and the SSL certs are still trusted. (bsc#1240343)
+  - Entrust.net Premium 2048 Secure Server CA
+  - Entrust Root Certification Authority
+  - AffirmTrust Commercial
+  - AffirmTrust Networking
+  - AffirmTrust Premium
+  - AffirmTrust Premium ECC
+  - Entrust Root Certification Authority - G2
+  - Entrust Root Certification Authority - EC1
+  - GlobalSign Root E46
+  - GLOBALTRUST 2020
+- remove-distrusted.patch: apply to certdata.txt</comment>
+    <requestid>1265888</requestid>
+  </revision>
 </revisionlist>
