@@ -135,4 +135,16 @@
     <comment></comment>
     <requestid>1143532</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9bb7dbf5b31270b055e19cf6a803dc84</srcmd5>
+    <version>1.1.11</version>
+    <time>1743606699</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.1.11:
+  * correct wording
+  * use license file from reuse
+  * add reuse config
+- Add BuildRequires on python3-setuptools (forwarded request 1251627 from StevenK)</comment>
+    <requestid>1265898</requestid>
+  </revision>
 </revisionlist>

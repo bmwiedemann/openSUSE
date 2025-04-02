@@ -1,7 +1,7 @@
 #
 # spec file for package rpmconf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rpmconf
-Version:        1.1.10
+Version:        1.1.11
 Release:        0
 Summary:        Tool to handle rpmnew and rpmsave files
 License:        GPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-devel
 BuildRequires:  python3-rpm
+BuildRequires:  python3-setuptools
 Requires:       python3-%{name}
 Requires:       python3-rpm
 Suggests:       diffuse
@@ -76,17 +77,17 @@ find docs/build/ -type f -name ".buildinfo" -delete -print
 %fdupes -s %{buildroot}%{python3_sitelib}
 
 %files
-%license LICENSE
+%license LICENSES/GPL-3.0-only.txt
 %doc README.md TODO
 %{_sbindir}/%{name}
 %dir %{_datadir}/%{name}/
 %{_mandir}/man8/%{name}.8%{?ext_man}
 
 %files -n python3-%{name}
-%license LICENSE
+%license LICENSES/GPL-3.0-only.txt
 %doc README.md TODO
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}-*
+%{python3_sitelib}/%{name}-%{version}-*.egg-info
 %{_mandir}/man3/%{name}.3%{?ext_man}
 
 %changelog
