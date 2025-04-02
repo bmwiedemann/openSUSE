@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr  2 17:02:20 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 0.6.11 
+ * Enhancements
+   * Add dependents ("via ..." comments) in uv export command 
+   * Bump least-recent non-EOL macOS version to 13.0 
+   * Support --find-links-style "flat" indexes in [[tool.uv.index]] 
+   * Distinguish between -q and -qq 
+   * Add uv sync --check flag 
+   * Add support for Python version requests in uv python list 
+   * Support .env files in uv tool run 
+   * Support python find --script 
+ * Configuration
+   * Support UV_PROJECT environment to set project directory. 
+ * Performance
+   * Use a boxed slice for various requirement types 
+   * Use a boxed slice for extras and groups 
+   * Use small string for index name type 
+ * Bug fixes
+   * Add a newline after metadata when initializing scripts with other metadata blocks 
+   * Avoid writing empty requires-python to script blocks 
+   * Respect build constraints in uv sync 
+   * Respect transitive dependencies in uv tree --only-group 
+   * Allow virtual packages with --no-build 
+   * Ignore --find-links entries for pinned indexes 
+   * Omit wheels from lockfile based on --exclude-newer 
+   * Retain end-of-line comment position when adding dependency 
+   * Omit fragment when querying for wheels in Simple HTML API 
+   * Error on missing argument in requirements.txt 
+   * Support modules with different casing in build backend 
+   * Add authentication policy support for pip commands 
+ * Preview features
+   * Check all compatible torch indexes when --torch-backend is enabled 
+
+-------------------------------------------------------------------
 Tue Mar 25 16:09:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.6.9
