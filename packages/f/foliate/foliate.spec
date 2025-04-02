@@ -1,7 +1,7 @@
 #
 # spec file for package foliate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define oname com.github.johnfactotum.Foliate
 Name:           foliate
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        A GTK eBook reader
 License:        GPL-3.0-only
@@ -37,8 +37,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gjs-1.0) >= 1.76
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.12
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
-BuildRequires:  pkgconfig(webkitgtk-6.0)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
+BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.40.1
 Requires:       gjs
 BuildArch:      noarch
 

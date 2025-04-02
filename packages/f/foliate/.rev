@@ -470,4 +470,16 @@
     <comment></comment>
     <requestid>1232842</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>edb1822eba1d05e56990a98add9a19aa</srcmd5>
+    <version>3.3.0</version>
+    <time>1743612157</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.3.0:
+  * Added support for mouse forward/backward buttons.
+  * Improved text wrapping in headings.
+  * Improved default link style. 
+</comment>
+    <requestid>1266400</requestid>
+  </revision>
 </revisionlist>
