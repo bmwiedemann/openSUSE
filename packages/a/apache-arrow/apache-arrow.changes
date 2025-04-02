@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 08:47:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Re-enable flight, grpc has been fixed boo#1237422
+
+-------------------------------------------------------------------
 Thu Mar 13 18:57:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Add missing dependencies for libboost_process explicitly

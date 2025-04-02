@@ -15,15 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# These are unconditionally on here. Disable selectively if needed.
+%bcond_without tests
+%bcond_without flight
 
 # Remove static build due to devel-static packages being required by the generated CMake Targets
 %bcond_with static
-%bcond_without tests
 # Required for runtime dispatch, not yet packaged
 %bcond_with xsimd
-
-# does not work with current grpc: gh#grpc/grpc#37968
-%bcond_with flight
 
 %if %{suse_version} <= 1500
 # requires __has_builtin with keywords

@@ -577,4 +577,13 @@ apache-arrow is being used more and more by python numeric packages like pandas 
   boo#1239599 (forwarded request 1252868 from bnavigator)</comment>
     <requestid>1252869</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4def52296f22e1aea1ae4ca1fc5bb5ba</srcmd5>
+    <version>19.0.1</version>
+    <time>1743620738</time>
+    <user>anag+factory</user>
+    <comment>- Re-enable flight, grpc has been fixed boo#1237422
+</comment>
+    <requestid>1264972</requestid>
+  </revision>
 </revisionlist>
