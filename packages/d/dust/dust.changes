@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 02 16:03:15 UTC 2025 - mvetter@suse.com
+
+- Update to version 1.2.0:
+  * release: increment version (#485)
+  * fix: status mesages go to stderr not stdout (#483)
+  * fix: all arguments now use '-' instead of '_' (#484)
+  * feat: Abort immedietly when ^C is received. (#478)
+  * deps: cargo update (#474)
+  * rewrite: Reduce indentation with guard clause
+  * perf: Canonicalize ignored absolute path only once
+  * refactor: Extract is_ignored_path function
+  * perf: Do not canonicalize non-absolute ignored path
+  * fix: Ignoring absolute path with `-X` option
+  * release: Increment version
+
+-------------------------------------------------------------------
 Fri Feb 28 08:12:27 UTC 2025 - mvetter@suse.com
 
 - Update to version 1.1.2:

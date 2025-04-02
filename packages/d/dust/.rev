@@ -73,4 +73,23 @@
     <comment></comment>
     <requestid>1249639</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d02c48a740dd6a99256c5976486ac1bf</srcmd5>
+    <version>1.2.0</version>
+    <time>1743620757</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.2.0:
+  * release: increment version (#485)
+  * fix: status mesages go to stderr not stdout (#483)
+  * fix: all arguments now use '-' instead of '_' (#484)
+  * feat: Abort immedietly when ^C is received. (#478)
+  * deps: cargo update (#474)
+  * rewrite: Reduce indentation with guard clause
+  * perf: Canonicalize ignored absolute path only once
+  * refactor: Extract is_ignored_path function
+  * perf: Do not canonicalize non-absolute ignored path
+  * fix: Ignoring absolute path with `-X` option
+  * release: Increment version</comment>
+    <requestid>1266625</requestid>
+  </revision>
 </revisionlist>
