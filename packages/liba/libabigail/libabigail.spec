@@ -16,15 +16,14 @@
 #
 
 
+%define lname   libabigail5
 Name:           libabigail
-%define lname   libabigail4
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        Apache-2.0 WITH LLVM-exception
 Group:          Development/Libraries/C and C++
 URL:            https://sourceware.org/libabigail/
-
 Source:         http://mirrors.kernel.org/sourceware/libabigail/%name-%version.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  dpkg
@@ -38,6 +37,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python3-Sphinx
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.22
+BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
 BuildRequires:  pkgconfig(libzip) >= 0.10
 
 %description
@@ -92,7 +92,7 @@ interesting conclusions about these differences.
 	--disable-static --enable-cxx11 --disable-silent-rules
 %make_build
 pushd doc/manuals
-make man info
+%make_build man info
 popd
 
 %install
