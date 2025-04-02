@@ -263,4 +263,13 @@
   will be proposed by storage. Currently works only for BLS.</comment>
     <requestid>1256470</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>843e0071194fd4ec1611af1a453f4005</srcmd5>
+    <version>13.devel5</version>
+    <time>1743606626</time>
+    <user>anag+factory</user>
+    <comment>- Properly map AutoYaST scripts &quot;sources&quot; to &quot;content&quot;
+  (gh#agama-project/agama#2224).</comment>
+    <requestid>1265197</requestid>
+  </revision>
 </revisionlist>
