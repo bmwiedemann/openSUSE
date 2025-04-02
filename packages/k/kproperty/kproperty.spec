@@ -22,11 +22,12 @@ Version:        3.2.0
 Release:        0
 Summary:        Property editing framework with editor widget
 License:        LGPL-2.0-only
-Group:          Productivity/Office/Other
 URL:            https://community.kde.org/KProperty
 Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-build-with-gcc48.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         kproperty-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -41,7 +42,6 @@ A property editing framework with editor widget similar to what is known from Qt
 
 %package -n libKPropertyCore3-%{sover}
 Summary:        Core library for the Property editing framework
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKPropertyCore3-%{sover}
@@ -49,7 +49,6 @@ The Core library for the property editing framework with editor widget similar t
 
 %package -n libKPropertyWidgets3-%{sover}
 Summary:        Editor Widget library for the property editing framework
-Group:          System/Libraries
 Requires:       %{name} >= %{version}
 
 %description -n libKPropertyWidgets3-%{sover}
@@ -57,7 +56,6 @@ The editor widget library for the property editing framework similar to what is 
 
 %package devel
 Summary:        Development package for kproperty
-Group:          Development/Libraries/KDE
 Requires:       libKPropertyCore3-%{sover} = %{version}
 Requires:       libKPropertyWidgets3-%{sover} = %{version}
 
@@ -80,14 +78,12 @@ Development package for the property editing Framework
 # The pkgconfig files contain incorrect stuff
 rm %{buildroot}%{_kf5_libdir}/pkgconfig/KProperty*.pc
 
-%post -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
-%postun -n libKPropertyCore3-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPropertyCore3-%{sover}
 
 %files -n libKPropertyCore3-%{sover}
 %{_kf5_libdir}/libKPropertyCore3.so.*
 
-%post -n libKPropertyWidgets3-%{sover} -p /sbin/ldconfig
-%postun -n libKPropertyWidgets3-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKPropertyWidgets3-%{sover}
 
 %files
 %{_kf5_sharedir}/kproperty3/

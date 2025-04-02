@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:35:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * kproperty-cmake4.patch
+
+-------------------------------------------------------------------
 Fri May 17 09:50:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not recommend lang package: the -lang package already has more

@@ -56,4 +56,13 @@
     <comment></comment>
     <requestid>1174837</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>d02d14bc70e9a444f5cd9e696db7352c</srcmd5>
+    <version>3.2.0</version>
+    <time>1743606901</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * kproperty-cmake4.patch</comment>
+    <requestid>1266232</requestid>
+  </revision>
 </revisionlist>
