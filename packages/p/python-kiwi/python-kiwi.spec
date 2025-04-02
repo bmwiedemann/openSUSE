@@ -29,7 +29,11 @@
 %endif
 
 %if %{undefined python3_sitelib}
+%if "%{_vendor}" == "debbuild"
 %global python3_sitelib %(%{__python3} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+%else
+%global python3_sitelib %(%{__python3} -c "import sysconfig; print(sysconfig.get_path('platlib'))")
+%endif
 %endif
 
 %if %{undefined python3_version}
@@ -52,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.2.13
+Version:        10.2.16
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi

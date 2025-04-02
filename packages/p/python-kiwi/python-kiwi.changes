@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Mar 25 13:13:00 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.15 → 10.2.16
+
+-------------------------------------------------------------------
+Tue Mar 25 11:35:09 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support sourcetype setting on the commandline
+
+  Allow to specifiy the sourcetype(metalink|baseurl|mirrorlist)
+  also on the commandline via --set-repo/--add-repo options. So
+  far this was only possible as part of the kiwi description file
+
+-------------------------------------------------------------------
+Tue Mar 25 08:40:22 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.14 → 10.2.15
+
+-------------------------------------------------------------------
+Tue Mar 25 08:39:18 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix gh-pages deployment
+
+  poetry install was not called, thus sphinx was not present
+
+-------------------------------------------------------------------
+Tue Mar 25 08:30:11 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.2.13 → 10.2.14
+
+-------------------------------------------------------------------
+Mon Mar 24 19:10:07 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop use of travis-sphinx
+
+  According to the documentation of peaceiris/actions-gh-pages
+  the sphinx-build output can be directly consumed to publish
+  to github pages
+
+-------------------------------------------------------------------
+Mon Mar 24 18:22:59 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow stderr data in CommandProcess
+
+  Enhance poll_show_progress() method to allow polling on
+  stderr data too. The new parameter with_stderr is used
+  together with the dnf5 package manager. dnf5 has changed
+  in a way that a lot of useful information during the
+  install of packages is printed to stderr. From my perspective
+  a clear regression to former behavior but we can fix this
+  in kiwi to poll on both channels. This Fixes #2748
+
+-------------------------------------------------------------------
+Mon Mar 24 15:06:02 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Support arch attribute for <users> section
+
+  Allow to setup users per arch. This Fixes #2737
+
+-------------------------------------------------------------------
+Mon Mar 24 09:35:57 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add Debian_12_update repo for testing with typer
+
+  Even though we will add support for the typer Cli with kiwi-11
+  I want our integration test images to be able to build with the
+  open PR #2751. Debian 12 is the only target in the support matrix
+  which uses a too old veryion of typer. Therefore to be able to
+  test this target I built a newer version of typer in an update
+  repo for Debian 12 and added it to the integration test
+  description
+
+-------------------------------------------------------------------
+Fri Mar 21 21:18:08 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed python3_sitelib for debbuild in OBS
+
+-------------------------------------------------------------------
+Fri Mar 21 08:46:32 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed test-image-agama
+
+  Service setup-systemd-proxy-env.path no longer exists
+
+-------------------------------------------------------------------
+Wed Mar 12 10:22:46 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Explicitly request shadow-utils
+
+  Make sure shadow-utils gets installed for rawhide
+  integration tests
+
+-------------------------------------------------------------------
+Wed Mar 12 09:12:36 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop test-image-suse-on-dnf test
+
+  This was just a "can this work" test but has no real
+  relevance for users since nobody would use dnf to build
+  a suse image, there is also no help when it does not
+  work. So let's drop this test build
+
+-------------------------------------------------------------------
+Thu Mar 06 11:32:25 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- distutils sysconfig is deprecated
+
+  Move to sysconfig module
+
+-------------------------------------------------------------------
+Tue Mar 04 11:01:21 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make integration tests to build outside of OBS
+
+  Update and extend all integration tests such that they also
+  build outside of the Open Build Service. Along with the changes
+  on the descriptions a simple build-tests.sh script was added
+  to drive the build process. The build is based on the kiwi
+  boxbuild plugin in container mode to build the tests
+  from a given build-tests directory. A new chapter to document
+  how to Build the Build Tests is also provided and referenced
+  on the github main page.
+
+-------------------------------------------------------------------
+Mon Mar 03 12:28:03 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add rd.kiwi.oem.luks.reencrypt_randompass
+
+  For OEM LUKS2 encrypted disk images in combination
+  with rd.kiwi.oem.luks.reencrypt. Reset insecure built time
+  passphrase with a random onetime passphrase
+
+-------------------------------------------------------------------
 Mon Mar 03 09:40:13 CET 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.2.12 → 10.2.13
