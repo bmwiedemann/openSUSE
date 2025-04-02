@@ -16,6 +16,11 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+%bcond_with rules
+%else
+%bcond_without rules
+%endif
 Name:           cppcheck
 Version:        2.17.1
 Release:        0
@@ -39,7 +44,9 @@ BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Test)
 BuildRequires:  pkgconfig(Qt6Widgets)
+%if %{with rules}
 BuildRequires:  pkgconfig(libpcre)
+%endif
 ExcludeArch:    %ix86 %arm
 Requires:       python3-Pygments
 
@@ -82,7 +89,11 @@ doesn't see.
   -DFILESDIR="%{_datadir}/%{name}" \
   -DBUILD_GUI=ON \
   -DBUILD_TESTS=ON \
-  -DHAVE_RULES=yes \
+%if %{with rules}
+  -DHAVE_RULES=ON \
+%else
+  -DHAVE_RULES=OFF \
+%endif
   -DUSE_QT6=yes \
   -DUSE_Z3=yes
 %cmake_build
