@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:57:46 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+
+- Backport golang-jwt version bump (bsc#1240492, CVE-2025-30204)
+  by adding bump_jwt.patch
+
+-------------------------------------------------------------------
 Fri Mar 21 10:18:28 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 
 - Update to version 0.18.3

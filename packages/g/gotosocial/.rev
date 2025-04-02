@@ -31,4 +31,14 @@
     <comment>- Update to version 0.18.3 (forwarded request 1255320 from fl4nn)</comment>
     <requestid>1255321</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a0b80672a91927bfd83d0d1088d29ff3</srcmd5>
+    <version>0.18.3</version>
+    <time>1743606931</time>
+    <user>anag+factory</user>
+    <comment>- Backport golang-jwt version bump (bsc#1240492, CVE-2025-30204)
+  by adding bump_jwt.patch
+</comment>
+    <requestid>1266282</requestid>
+  </revision>
 </revisionlist>
