@@ -1,5 +1,0 @@
-<package name="cmpi-bindings" project="openSUSE:Factory">
-  <title>Adapter to write and run CMPI-type CIM providers</title>
-  <description>-</description>
-  <devel project="systemsmanagement:wbem" package="cmpi-bindings"/>
-</package>
