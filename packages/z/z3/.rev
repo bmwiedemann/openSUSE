@@ -382,4 +382,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219484</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a72bd37a8b0c069690a2e662f1c09abf</srcmd5>
+    <version>4.14.1</version>
+    <time>1743606815</time>
+    <user>anag+factory</user>
+    <comment>- update to 4.14.1
+  * Add ubv_to_int, sbv_to_int, int_to_bv to SMTLIB2 API.
+  * Fix nuget package regression omitting Microsoft.Z3.* files
+  * SLS modulo theories engine v1 release.
+  * API for accessing term depth and groundness.
+  * Two fixes to relevancy propagation.
+  * A new API for solving LRA variables modulo constraints.
+  * Performance and bug fixes.
+  * several updates to emscripten including #7473
+  * add preliminary pyodie build
+  * address issues with Java bindings
+  * Include start of sls-smt functionality SLS modulo theories</comment>
+    <requestid>1266082</requestid>
+  </revision>
 </revisionlist>

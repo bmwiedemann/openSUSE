@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 28 09:24:36 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.14.1
+  * Add ubv_to_int, sbv_to_int, int_to_bv to SMTLIB2 API.
+  * Fix nuget package regression omitting Microsoft.Z3.* files
+  * SLS modulo theories engine v1 release.
+  * API for accessing term depth and groundness.
+  * Two fixes to relevancy propagation.
+  * A new API for solving LRA variables modulo constraints.
+  * Performance and bug fixes.
+  * several updates to emscripten including #7473
+  * add preliminary pyodie build
+  * address issues with Java bindings
+  * Include start of sls-smt functionality SLS modulo theories
+
+-------------------------------------------------------------------
 Mon Oct 14 09:42:25 UTC 2024 - Jiri Slaby <jslaby@suse.cz>
 
 - build with g++-13 on < 1600 (z3 needs c++20)
