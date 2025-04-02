@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.20
-%define git_commit 5a14607a2385bc3c0e80ed83d05e02367bdcd4b7
+%define patchversion 6.12.21
+%define git_commit d06a107167ed8b652e53d9ca43252deea3ba6a72
 %define variant -longterm%{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -26,9 +26,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.12.20
+Version:        6.12.21
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5a14607
+Release:        <RELEASE>.gd06a107
 %else
 Release:        0
 %endif
