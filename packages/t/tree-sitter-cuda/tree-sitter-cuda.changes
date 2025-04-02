@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:38:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.21.0:
+  * bindings: use tree_sitter_language and Rust edition 2024
+  * update test action to follow tree-sitter-cpp
+
+-------------------------------------------------------------------
 Mon Jan 27 11:06:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.20.7:

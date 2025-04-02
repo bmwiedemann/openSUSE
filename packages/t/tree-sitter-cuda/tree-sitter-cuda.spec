@@ -18,7 +18,7 @@
 
 %define         _name cuda
 Name:           tree-sitter-cuda
-Version:        0.20.7
+Version:        0.21.0
 Release:        0
 Summary:        CUDA grammar for tree-sitter
 License:        MIT
