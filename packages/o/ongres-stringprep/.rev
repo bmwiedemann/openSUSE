@@ -23,4 +23,12 @@
     <comment>rpm 4.20 compat</comment>
     <requestid>1148621</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>885a1d0d25e4eed8533c4f010ae66fd0</srcmd5>
+    <version>MACRO</version>
+    <time>1743606886</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266252</requestid>
+  </revision>
 </revisionlist>

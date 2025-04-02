@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:14:21 UTC 2025 - Michael Calmer <mc@suse.com>
+
+- Version 2.2
+  - Fix `Stringprep::getProvider` was not working on the module
+    path.
+  - The Profile interface now has overloaded methods with `char[]`
+    versions.
+  - The Java modules profiles `com.ongres.saslprep` and
+    `com.ongres.nameprep` have implied readability with
+    `com.ongres.stringprep`.
+  - Exports the packages of the profiles in the module declaration
+    to allow creating instances without the ServiceLoader lookup.
+  - Introduce the annotation `@ProfileName` to declare the name of
+    the profile used for ServiceLoader lookup.
+  - Full rewrite of the `stringprep` implementation, this release
+    is compatible with Java 8+.
+  - The stringprep profiles can be created by implementing the
+    `Profile` interface.
+  - New module `nameprep` implementing the stringprep `Profile`.
+  - Create Multi-release Modular JARs, the modules names are:
+    - `com.ongres.stringprep`
+    - `com.ongres.saslprep`
+    - `com.ongres.nameprep`
+  - Refactor of the `stringprep` implementation to make it
+    extensible and modular, now this implemenation is considered
+    feature-complete.
+  - Change the module `saslprep` to implement the stringprep
+    `Profile` interface.
+  Removed: fix-dir-create.patch
+- include parent and saslprep into main package
+- exclude codegenerator
+
+-------------------------------------------------------------------
 Wed Feb 21 10:52:17 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.
