@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 30 10:59:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.4:
+  * Have sizeof() parsing handle u8/s8 through u64/s64
+  * Print arrays like Linux does
+  * Print function pointer address when TEP_EVENT_FL_PRINTRAW is specified
+
+-------------------------------------------------------------------
 Sat Aug 31 15:45:06 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.3:

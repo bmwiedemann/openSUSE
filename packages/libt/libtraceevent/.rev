@@ -111,4 +111,15 @@
     <comment></comment>
     <requestid>1198707</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ca6b2e1d3a676ad3821feb41c6e11405</srcmd5>
+    <version>1.8.4</version>
+    <time>1743606322</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.8.4:
+  * Have sizeof() parsing handle u8/s8 through u64/s64
+  * Print arrays like Linux does
+  * Print function pointer address when TEP_EVENT_FL_PRINTRAW is specified</comment>
+    <requestid>1265512</requestid>
+  </revision>
 </revisionlist>
