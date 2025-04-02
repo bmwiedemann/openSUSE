@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 14:03:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * kst-cmake4.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 17:11:06 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the %suse_update_desktop_file macro

@@ -26,6 +26,8 @@ URL:            https://kst-plot.kde.org/
 Source:         kst-plot-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE
 Patch0:         fix-hdf5-include-path.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         kst-cmake4.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes

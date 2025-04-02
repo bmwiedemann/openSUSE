@@ -478,4 +478,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226959</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>69448470d036465b749ebb422ef2f962</srcmd5>
+    <version>2.1.0</version>
+    <time>1743606892</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * kst-cmake4.patch</comment>
+    <requestid>1266219</requestid>
+  </revision>
 </revisionlist>
