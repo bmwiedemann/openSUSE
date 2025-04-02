@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiorpcX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiorpcX
-Version:        0.23.1
+Version:        0.24
 Release:        0
 Summary:        Generic async RPC implementation, including JSON-RPC
 License:        MIT
@@ -50,6 +50,7 @@ Generic async RPC implementation, including JSON-RPC
 %setup -q -n aiorpcX-%{version}
 # needs network
 rm tests/test_websocket.py
+chmod a-x LICENCE README.rst docs/*
 
 %build
 %pyproject_wheel
@@ -68,9 +69,9 @@ SKIP_TESTS="$SKIP_TESTS or test_cancel_remaining_on_group_with_stubborn_task"
 %pytest -k "not ($SKIP_TESTS)"
 
 %files %{python_files}
-%doc README.rst
+%doc README.rst docs/*.rst
 %license LICENCE
 %{python_sitelib}/aiorpcx
-%{python_sitelib}/aiorpcX-%{version}.dist-info
+%{python_sitelib}/aiorpc[xX]-%{version}.0.dist-info
 
 %changelog

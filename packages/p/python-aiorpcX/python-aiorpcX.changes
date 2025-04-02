@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Mar 25 06:51:46 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- dist-info can now be lowercase, handle that
+- package docs
+- remove X perms for docs
+- update to 0.24:
+  * bump websockets library to >=14.0 and Python version to >=3.9
+
+-------------------------------------------------------------------
 Sat Apr 20 13:39:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:

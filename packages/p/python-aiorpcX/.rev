@@ -110,4 +110,12 @@
   * Add websocket support as client and server by using Aymeric</comment>
     <requestid>1169361</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>81749af73135a430595fa4925c972582</srcmd5>
+    <version>0.24</version>
+    <time>1743606790</time>
+    <user>anag+factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1266023</requestid>
+  </revision>
 </revisionlist>
