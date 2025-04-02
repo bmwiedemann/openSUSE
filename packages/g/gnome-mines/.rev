@@ -285,4 +285,13 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251324</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b97583a0ea551f4e2a45bae144d8fb50</srcmd5>
+    <version>48.0</version>
+    <time>1743606639</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 48.0:
+  + Updated translations. (forwarded request 1265601 from iznogood)</comment>
+    <requestid>1265729</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mines
-Version:        48.alpha
+Version:        48.0
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
