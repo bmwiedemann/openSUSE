@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 23:24:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.03.31
+  * yt: add player_js_variant extractor-arg
+  * yt/tab: Fix playlist continuation extraction
+
+-------------------------------------------------------------------
 Fri Mar 28 11:09:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.03.27
