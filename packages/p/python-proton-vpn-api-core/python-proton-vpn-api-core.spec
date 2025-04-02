@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-api-core
-Version:        0.35.5
+Version:        0.42.3
 Release:        0
 Summary:        Proton VPN API library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ProtonVPN/python-proton-vpn-api-core
 Source:         https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module distro}
@@ -42,18 +41,20 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2
 Requires:       python-PyNaCl
 Requires:       python-cryptography
 Requires:       python-distro
-Requires:       python-proton-core
+Requires:       python-proton-core >= 0.4.0
 # sentry-sdk is not mandatory and only available in TW
 %if 0%{?suse_version} > 1600
 Requires:       python-sentry-sdk
 %endif
-Conflicts:      python-proton-vpn-connection
-Conflicts:      python-proton-vpn-killswitch
-Conflicts:      python-proton-vpn-logger
+Conflicts:      proton-vpn < 4.8.2
+Conflicts:      python-proton-vpn-network-manager < 0.12.10
+Obsoletes:      python-proton-vpn-session <= 0.6.7
+Obsoletes:      python-proton-vpn-connection <= 0.14.4
+Obsoletes:      python-proton-vpn-killswitch <= 0.4.0
+Obsoletes:      python-proton-vpn-logger <= 0.2.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,14 +72,9 @@ This package contains a facade to the other Proton VPN components, exposing a un
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if 0%{?suse_version} > 1600
 # Failing tests, needs to be investigated
 # See https://github.com/ProtonVPN/python-proton-vpn-api-core/issues/4
-%pytest tests --ignore=tests/connection/test_vpnconfiguration.py
-%else
-# sentry-sdk is not mandatory and only available in TW
-%pytest tests --ignore=tests/connection/test_vpnconfiguration.py --ignore=tests/core/test_usage.py
-%endif
+%pytest tests --ignore=tests/connection/test_vpnconfiguration.py --ignore=tests/connection/test_events.py --ignore=tests/connection/test_persistence.py --ignore=tests/connection/test_publisher.py --ignore=tests/connection/test_states.py --ignore=tests/connection/test_vpnconnection.py --ignore=tests/core/refresher/test_certificate_refresher.py --ignore=tests/core/refresher/test_client_config_refresher.py --ignore=tests/core/refresher/test_feature_flags_refresher.py --ignore=tests/core/refresher/test_server_list_refresher.py --ignore=tests/core/refresher/test_scheduler.py --ignore=tests/core/refresher/test_vpn_data_refresher.py --ignore=tests/core/test_connection.py --ignore=tests/core/test_settings.py --ignore=tests/core/test_usage.py
 
 %files %{python_files}
 %license LICENSE

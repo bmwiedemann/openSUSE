@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Mar 27 13:14:43 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
+
+- Update to 0.42.3:
+  * Expose method to get DNS IPs based on provided IP version
+  * Always load feature flag cache/defaults
+  * Add a breaks/conflicts clause for python3-proton-vpn-network-manager < 0.12.10
+  * Fix Certificate Expired error when requesting certificate in pem format
+  * Switch DisplayPortForwarding env var to Feature Flag
+  * Added local agent to OpenVPN, minor bug fix
+  * Added local agent to OpenVPN
+  * Manage file containing forwarded port
+  * Encrypt openvpn certificate private key
+  * Notify connecting/disconnecting state early
+  * Notify subscribers when state context changes
+  * Fix sentry event username masking
+  * Cleanup old feature flags
+  * Update event context so that it passes a forwarded port
+  * Ensure default settings use feature flags even after login the next time they are fetched
+  * Switch default protocol to WireGuard if feature flag is present
+  * Ensure no crash occurs if cache files are non-decodable
+  * Set default expiration time for features flags to expired, so that they're fetched from the API and cached as soon as possible
+  * Emit connection state update after state tasks are completed
+  * Update how time is calculated in logging module
+  * Drop Ubuntu 20.04 support
+  * Added semgrep scanning to CI
+  * Refactor custom DNS
+  * Introduce custom DNS
+  * Automatically generate the changelog files for debian and fedora
+  * Switch to /vpn/v2 API
+  * Use versioned API endpoints
+  * Fix for certificate based authentication for openvpn, feature flag was out of date
+  * Fix certificate expired regression
+  * Enable certificate based authentication for openvpn
+  * Improve logic on when to update location details
+  * Use a 'before_send' callback in sentry to sanitize events in sentry
+  * Update location object after successfully connecting to VPN server via local agent
+
+-------------------------------------------------------------------
 Tue Nov 12 12:07:11 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Enable sentry-sdk only in Tumbleweed
