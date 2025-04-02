@@ -2034,4 +2034,13 @@
   * removed vebiage saying we don't trigger aws canary tokens, as we do. (#3991) (forwarded request 1264721 from ph03nix)</comment>
     <requestid>1264750</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>6d67e0ca34641719dd3626fa2f07c8eb</srcmd5>
+    <version>3.88.20</version>
+    <time>1743606685</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.88.20:
+  * Postman source handle different JSON info for headers (#3995) (forwarded request 1265686 from ph03nix)</comment>
+    <requestid>1265892</requestid>
+  </revision>
 </revisionlist>
