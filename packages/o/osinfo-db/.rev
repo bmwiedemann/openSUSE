@@ -648,4 +648,12 @@
     <comment>Update the database definitions for SLE and Leap 16</comment>
     <requestid>1250125</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>4ca293b979f49e667a648160f8dfa34d</srcmd5>
+    <version>20250124</version>
+    <time>1743606295</time>
+    <user>anag+factory</user>
+    <comment>Add support for SLEMicro 6.2 and Windows Server 2025</comment>
+    <requestid>1265288</requestid>
+  </revision>
 </revisionlist>

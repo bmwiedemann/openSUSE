@@ -1,0 +1,50 @@
+--- /dev/null	2025-03-28 05:37:47.885616973 -0600
++++ osinfo-db-20250124/os/microsoft.com/win-2k25.xml	2025-03-28 13:30:39.410829818 -0600
+@@ -0,0 +1,47 @@
++<?xml version="1.0"?>
++<libosinfo version="0.0.1">
++<!-- Licensed under the GNU General Public License version 2 or later.
++     See http://www.gnu.org/licenses/ for a copy of the license text -->
++  <os id="http://microsoft.com/win/2k25">
++    <short-id>win2k25</short-id>
++    <name>Microsoft Windows Server 2025</name>
++    <version>10.0</version>
++    <vendor>Microsoft Corporation</vendor>
++    <family>winnt</family>
++    <distro>win</distro>
++    <derives-from id="http://microsoft.com/win/2k22"/>
++    <upgrades id="http://microsoft.com/win/2k22"/>
++
++    <release-date>2024-11-01</release-date>
++    <eol-date>2034-10-10</eol-date>
++
++    <media arch="x86_64">
++      <iso>
++        <volume-id>^(SSS_X64CHK|SSS_X64FREE?|SSS_X64FREV)_</volume-id>
++        <publisher-id>MICROSOFT CORPORATION</publisher-id>
++        <l10n-language regex="true" l10n-language-map="http://microsoft.com/win/7/l10n-language">[A-Z0-9]*_([A-Z]*)</l10n-language>
++      </iso>
++    </media>
++
++    <resources arch="x86_64">
++      <minimum>
++        <cpu>1400000000</cpu>
++        <n-cpus>1</n-cpus>
++        <ram>536870912</ram>
++        <storage>34359738368</storage>
++      </minimum>
++
++      <recommended>
++        <cpu>2000000000</cpu>
++        <ram>4294967296</ram>
++        <storage>42949672960</storage>
++      </recommended>
++
++      <maximum>
++        <!-- 256 TB -->
++        <ram>281474976710656</ram>
++      </maximum>
++    </resources>
++
++  </os>
++</libosinfo>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Mar 28 12:50:18 MDT 2025 - carnold@suse.com
+
+- bsc#1240121 - [SLEMicro6.2] osinfo-db: Add support for slem6.2 to
+  the database
+  add-slem6.2-support.patch
+- bsc#1240338 - virt-manager: Windows Server 2025 is not
+  automatically detected and missing from manual selection
+  add-Windows-Server-2025.patch
+
+-------------------------------------------------------------------
 Thu Feb 27 13:54:24 MST 2025 - carnold@suse.com
 
 - Modify SLES and Leap 16 database entries to define new volume id

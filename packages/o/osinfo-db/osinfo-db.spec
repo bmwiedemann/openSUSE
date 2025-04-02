@@ -32,8 +32,10 @@ Patch25:        adjust-tumbleweed-hardware-requirements.patch
 Patch28:        add-sle15sp7-support.patch
 Patch30:        add-slem6.0-support.patch
 Patch31:        add-slem6.1-support.patch
-Patch32:        add-sles16-support.patch
-Patch33:        add-opensuse-leap-16.0-support.patch
+Patch32:        add-slem6.2-support.patch
+Patch33:        add-sles16-support.patch
+Patch34:        add-opensuse-leap-16.0-support.patch
+Patch35:        add-Windows-Server-2025.patch
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
 BuildArch:      noarch
