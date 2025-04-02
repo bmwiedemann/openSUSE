@@ -1,7 +1,7 @@
 #
 # spec file for package rancher-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rancher-cli
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0

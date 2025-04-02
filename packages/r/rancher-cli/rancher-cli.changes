@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 01 05:48:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.0:
+  * [v2.11] Bump rancher/rancher to v2.11.0 (#421)
+  * [v2.11] Bump dependencies (#415)
+  * Bump dependencies for v2.11 (#414)
+  * Bump Go toolchain to 1.23.7 (#413)
+  * Update README.md docker image usage (#409)
+  * Fix expected http status codes for different auth methods in
+    token command (#412)
+  * Bump Go toolchain to 1.23.5 (#411)
+  * Respect proxy settings and timeout in token command (#410)
+  * Respect proxy settings and set http timeout in login and ssh
+    commands  (#406)
+  * [2.11] Avoid permissions errors on Windows (#398)
+  * Remove app, catalog, multiclusterapp commands (#405)
+  * Add format option to server ls command (#383)
+  * Bump rancher to main HEAD (#404)
+  * Remove globaldns subcommand (#403)
+  * Avoid overwriting entire KubeCredentials block (#397)
+  * Improve cluster|project list-members subcommands (#399)
+
+-------------------------------------------------------------------
 Sat Feb  1 19:02:20 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build with rpm-4.20
