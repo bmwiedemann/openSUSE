@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:31:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * kreport-cmake4.patch
+
+-------------------------------------------------------------------
 Wed Dec 25 10:26:58 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Stop using the optional marble dependency

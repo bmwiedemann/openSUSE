@@ -92,4 +92,13 @@
     <comment>- Stop using the optional marble dependency</comment>
     <requestid>1233309</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>a3a9d8a6dce3b6df906f582c76bd61a9</srcmd5>
+    <version>3.2.0</version>
+    <time>1743606898</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * kreport-cmake4.patch</comment>
+    <requestid>1266223</requestid>
+  </revision>
 </revisionlist>

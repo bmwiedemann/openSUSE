@@ -1,0 +1,68 @@
+From 39fadba5652fc03841e11498c5bab5571a36d56e Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 17:31:12 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt                              |  4 ++--
+ autotests/headers/HeadersTestInclude.cmake  |  6 ------
+ cmake/modules/SetKReportCMakePolicies.cmake | 19 -------------------
+ 3 files changed, 2 insertions(+), 27 deletions(-)
+ delete mode 100644 cmake/modules/SetKReportCMakePolicies.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 7daed85..b935b94 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,7 +1,7 @@
+-cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
++cmake_minimum_required(VERSION 3.16 FATAL_ERROR)
++
+ find_package(ECM 1.8.0 REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
+-include(SetKReportCMakePolicies NO_POLICY_SCOPE)
+ 
+ project(KReport VERSION 3.2.0) # Update this
+ 
+diff --git a/autotests/headers/HeadersTestInclude.cmake b/autotests/headers/HeadersTestInclude.cmake
+index f01b355..7afaa9f 100644
+--- a/autotests/headers/HeadersTestInclude.cmake
++++ b/autotests/headers/HeadersTestInclude.cmake
+@@ -6,9 +6,3 @@ find_package(KReport REQUIRED)
+ set(LIB_INSTALL_DIR "lib")
+ include(KDECMakeSettings NO_POLICY_SCOPE)
+ include(KDECompilerSettings NO_POLICY_SCOPE)
+-if(POLICY CMP0063) # Honor visibility properties for all target types (since cmake 3.3)
+-    cmake_policy(SET CMP0063 NEW)
+-endif()
+-if(POLICY CMP0071) # Don't warn when combining AUTOMOC with qt5_wrap_ui() or qt5_add_resources() (since cmake 3.10)
+-    cmake_policy(SET CMP0071 NEW)
+-endif()
+diff --git a/cmake/modules/SetKReportCMakePolicies.cmake b/cmake/modules/SetKReportCMakePolicies.cmake
+deleted file mode 100644
+index bc28d8a..0000000
+--- a/cmake/modules/SetKReportCMakePolicies.cmake
++++ /dev/null
+@@ -1,19 +0,0 @@
+-# Copyright (C) 2003-2016 Jarosław Staniek <staniek@kde.org>
+-#
+-# Redistribution and use is allowed according to the terms of the BSD license.
+-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+-
+-cmake_policy(SET CMP0017 NEW)
+-cmake_policy(SET CMP0048 NEW) # for PROJECT_VERSION
+-cmake_policy(SET CMP0053 NEW) # TODO remove, temporary fix for a bug in Qt 5.8's Qt5ModuleLocation.cmake
+-                              # "Simplify variable reference and escape sequence evaluation"
+-
+-if(POLICY CMP0059) # Don’t treat DEFINITIONS as a built-in directory property.
+-    cmake_policy(SET CMP0059 OLD)
+-endif()
+-if(POLICY CMP0063) # Honor visibility properties for all target types (since cmake 3.3)
+-    cmake_policy(SET CMP0063 NEW)
+-endif()
+-if(POLICY CMP0071) # Don't warn when combining AUTOMOC with qt5_wrap_ui() or qt5_add_resources() (since cmake 3.10)
+-    cmake_policy(SET CMP0071 NEW)
+-endif()
+-- 
+2.49.0
+

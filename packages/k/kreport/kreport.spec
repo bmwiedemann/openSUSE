@@ -28,6 +28,8 @@ Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.t
 Patch0:         Fix-kexi-build-with-GCC-10.patch
 # PATCH-FIX-UPSTREAM -- find python3
 Patch1:         0001-Find-also-Python3-with-find_package-PythonInterp.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         kreport-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  python3-base
 BuildRequires:  cmake(KF5Config)
