@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:18:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.9
+  * Revert "add uv to interpreters list"
+
+-------------------------------------------------------------------
 Mon Feb 24 13:34:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.8
