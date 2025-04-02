@@ -40,7 +40,7 @@
 %define proto_c_ver %(protoc-c --version | head -1 | awk '{print $2}')
 
 Name:           criu
-Version:        4.0
+Version:        4.1
 Release:        0
 Summary:        Checkpoint/Restore In Userspace Tools
 License:        GPL-2.0-only
@@ -53,8 +53,6 @@ Patch101:       criu-py-install-fix.diff
 Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch104:       plugin-dir-path.patch
 Patch105:       criu-ns-python3-shebang.patch
-Patch106:       vdso-handle-vvar_vclock-vma-s.patch
-Patch201:       0001-cr_options-switch-networking-default-backend-to-nfta.patch
 BuildRequires:  libcap-devel
 %if %{with_amdgpu_plugin}
 BuildRequires:  libdrm-devel
@@ -62,6 +60,7 @@ BuildRequires:  libdrm-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libnl3-devel
+BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-c
 BuildRequires:  protobuf-devel
@@ -77,7 +76,7 @@ BuildRequires:  asciidoc
 BuildRequires:  xmlto
 %endif
 Requires:       python3-protobuf
-ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x
+ExclusiveArch:  x86_64 aarch64 ppc64le armv7l armv7hl s390x riscv
 %if 0%{?suse_version} > 1320
 BuildRequires:  libbsd-devel
 %endif
@@ -146,7 +145,9 @@ to develop applications with CRIU library.
 # build with default nftables support on envs
 # where nftables is the default firewall backend
 # https://github.com/containers/podman/issues/24799
-%patch -P201 -p1
+%define netlock NETWORK_LOCK_DEFAULT=NETWORK_LOCK_NFTABLES
+%else
+%define netlock %{nil}
 %endif
 
 # workaround for Leap 15.x
@@ -166,13 +167,15 @@ export CFLAGS="$CFLAGS -Wno-error=deprecated"
 make V=1 %{?_smp_mflags} %{?make_options} WERROR=0 \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
-	LIBEXECDIR=%{_libexecdir}
+	LIBEXECDIR=%{_libexecdir} \
+	%{netlock}
 
 %install
 %make_install V=1 %{?make_options} WERROR=0 \
 	PREFIX=%{_prefix} \
 	LIBDIR=%{_libdir} \
-	LIBEXECDIR=%{_libexecdir}
+	LIBEXECDIR=%{_libexecdir} \
+	%{netlock}
 install -c -m 0755 %{SOURCE1} %{buildroot}%{_bindir}/crit
 
 # remove static libs

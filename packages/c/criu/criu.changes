@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:20:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to criu 4.1:
+  New features:
+  * RISC-V Support
+  * PIDFD Support
+  * arm64: C/R PAC keys
+  Bugfixes:
+  * vdso: handle vvar_vclock vma-s
+  * seize: Take --timeout option into account when freezing processes
+  * net: use unique lock chain names (nftables)
+  * Fixes here and there.
+  Improvements:
+  * CUDA Enhancements
+  * Allow setting the default network locking backend
+  * Enable coredump generation for aarch64 and arm
+  * vdso: switch from DT_HASH to DT_GNU_HASH
+- Drop superfluous patches:
+  vdso-handle-vvar_vclock-vma-s.patch
+  0001-cr_options-switch-networking-default-backend-to-nfta.patch
+- Enable riscv build
+
+-------------------------------------------------------------------
 Thu Mar  6 00:44:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded Requires on python3-ipaddr.
