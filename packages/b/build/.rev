@@ -1957,4 +1957,13 @@ Changes:
   provided via git (no need for RemoteAsset in that case)</comment>
     <requestid>1256157</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>092639b03cfd6a6dc16671f234849960</srcmd5>
+    <version>20250331</version>
+    <time>1743606564</time>
+    <user>anag+factory</user>
+    <comment>- SLE 15 SP7 config
+- RemoteAsset code cleanup</comment>
+    <requestid>1265885</requestid>
+  </revision>
 </revisionlist>
