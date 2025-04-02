@@ -32,6 +32,8 @@ Patch1:         qt-config-path.patch
 Patch2:         fix-crash-about-invalid-columns.patch
 # PATCH-FIX-UPSTREAM oxygen-gtk2-1.4.6-xul.patch -- Add a number of xul applications to prevent crash for these CCBUG: 341181
 Patch3:         oxygen-gtk2-1.4.6-xul.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         oxygen-gtk-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -48,7 +50,6 @@ behave well on other Desktop Environments.
 
 %package -n gtk2-engine-oxygen
 Summary:        Oxygen GTK 2.x Theme Engine
-Group:          System/GUI/Other
 
 %description -n gtk2-engine-oxygen
 Oxygen-Gtk2 is a port of the KDE Oxygen widget theme to Gtk 2.x.
@@ -62,7 +63,6 @@ This package contains the Oxygen Gtk 2.x theme engine.
 
 %package -n gtk2-theme-oxygen
 Summary:        Oxygen GTK 2.x Theme
-Group:          System/GUI/Other
 Requires:       gtk2-engine-oxygen = %{version}
 # oxygen-gtk2 was last used at version 1.2.0 in K:D:F
 Provides:       oxygen-gtk2 = %{version}

@@ -1,0 +1,25 @@
+From 61dc1cb9a9bbbf95332b01f23a1c3cfa31275b8d Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Tue, 1 Apr 2025 18:30:55 +0200
+Subject: [PATCH] Fix build with CMake 4
+
+---
+ CMakeLists.txt | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1f576d2..ae1230d 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,6 +1,6 @@
+-project( oxygen-gtk )
++cmake_minimum_required(VERSION 3.16)
+ 
+-cmake_minimum_required(VERSION 2.4)
++project( oxygen-gtk VERSION 1.4.6)
+ 
+ ###########################
+ # Define package generation
+-- 
+2.49.0
+
