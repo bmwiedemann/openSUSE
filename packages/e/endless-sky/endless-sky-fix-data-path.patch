@@ -1,7 +1,8 @@
-diff -Nur endless-sky-0.9.16.1-orig/endless-sky.6 endless-sky-0.9.16.1/endless-sky.6
---- endless-sky-0.9.16.1-orig/endless-sky.6	2022-10-18 21:33:02.000000000 +0200
-+++ endless-sky-0.9.16.1/endless-sky.6	2023-04-15 15:39:07.226563739 +0200
-@@ -17,7 +17,7 @@
+Index: endless-sky-0.10.12/endless-sky.6
+===================================================================
+--- endless-sky-0.10.12.orig/endless-sky.6
++++ endless-sky-0.10.12/endless-sky.6
+@@ -17,7 +17,7 @@ Most of the controls should be self\-exp
  
  For a manual and other information, visit https://endless\-sky.github.io
  
@@ -10,10 +11,11 @@ diff -Nur endless-sky-0.9.16.1-orig/endless-sky.6 endless-sky-0.9.16.1/endless-s
  
  .SH OPTIONS
  .IP \fB\-h,\ \-\-help
-diff -Nur endless-sky-0.9.16.1-orig/SConstruct endless-sky-0.9.16.1/SConstruct
---- endless-sky-0.9.16.1-orig/SConstruct	2022-10-18 21:33:02.000000000 +0200
-+++ endless-sky-0.9.16.1/SConstruct	2023-04-15 15:40:29.318973502 +0200
-@@ -232,11 +232,11 @@
+Index: endless-sky-0.10.12/SConstruct
+===================================================================
+--- endless-sky-0.10.12.orig/SConstruct
++++ endless-sky-0.10.12/SConstruct
+@@ -237,11 +237,11 @@ def RecursiveInstall(env, target, source
  			RecursiveInstall(env, pathjoin(target, name), node.abspath)
  		else:
  			env.Install(target, node)
@@ -30,22 +32,24 @@ diff -Nur endless-sky-0.9.16.1-orig/SConstruct endless-sky-0.9.16.1/SConstruct
  
  # Make the word "install" in the command line do an installation.
  env.Alias("install", "$DESTDIR$PREFIX")
-diff -Nur endless-sky-0.9.16.1-orig/source/Files.cpp endless-sky-0.9.16.1/source/Files.cpp
---- endless-sky-0.9.16.1-orig/source/Files.cpp	2022-10-18 21:33:02.000000000 +0200
-+++ endless-sky-0.9.16.1/source/Files.cpp	2023-04-15 15:41:49.083327214 +0200
-@@ -101,7 +101,7 @@
- 	// the executable, but are under the same prefix (/usr or /usr/local).
- 	static const string LOCAL_PATH = "/usr/local/";
- 	static const string STANDARD_PATH = "/usr/";
--	static const string RESOURCE_PATH = "share/games/endless-sky/";
-+	static const string RESOURCE_PATH = "share/endless-sky/";
- 	if(!resources.compare(0, LOCAL_PATH.length(), LOCAL_PATH))
- 		resources = LOCAL_PATH + RESOURCE_PATH;
- 	else if(!resources.compare(0, STANDARD_PATH.length(), STANDARD_PATH))
-diff -Nur endless-sky-0.9.16.1-orig/source/News.h endless-sky-0.9.16.1/source/News.h
---- endless-sky-0.9.16.1-orig/source/News.h	2022-10-18 21:33:02.000000000 +0200
-+++ endless-sky-0.9.16.1/source/News.h	2023-04-15 15:59:23.268524113 +0200
-@@ -21,6 +21,7 @@
+Index: endless-sky-0.10.12/source/Files.cpp
+===================================================================
+--- endless-sky-0.10.12.orig/source/Files.cpp
++++ endless-sky-0.10.12/source/Files.cpp
+@@ -102,7 +102,7 @@ void Files::Init(const char * const *arg
+ 		// the executable, but are under the same prefix (/usr or /usr/local).
+ 		static const filesystem::path LOCAL_PATH = "/usr/local/";
+ 		static const filesystem::path STANDARD_PATH = "/usr/";
+-		static const filesystem::path RESOURCE_PATH = "share/games/endless-sky/";
++		static const filesystem::path RESOURCE_PATH = "share/endless-sky/";
+ 
+ 		const auto IsParent = [](const auto parent, const auto child) -> bool {
+ 			if(distance(child.begin(), child.end()) < distance(parent.begin(), parent.end()))
+Index: endless-sky-0.10.12/source/News.h
+===================================================================
+--- endless-sky-0.10.12.orig/source/News.h
++++ endless-sky-0.10.12/source/News.h
+@@ -20,6 +20,7 @@ this program. If not, see <https://www.g
  #include "Phrase.h"
  
  #include <string>

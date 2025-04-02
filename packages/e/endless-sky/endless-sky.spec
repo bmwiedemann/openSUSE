@@ -2,6 +2,7 @@
 # spec file for package endless-sky
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +22,7 @@
 %endif
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.10
+Version:        0.10.12
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
