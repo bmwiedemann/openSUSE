@@ -18,7 +18,7 @@
 
 
 Name:           lua-language-server
-Version:        3.13.6
+Version:        3.13.9
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT

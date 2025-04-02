@@ -3,6 +3,5 @@
   <description>This package provides the lua-language-server.
 
 </description>
-  <devel project="devel:languages:lua" package="lua-language-server"/>
   <url>https://github.com/sumneko/lua-language-server</url>
 </package>

@@ -210,4 +210,38 @@
     <comment></comment>
     <requestid>1251280</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cae17094162cd6b593181cddf7107b8a</srcmd5>
+    <version>3.13.9</version>
+    <time>1743606579</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.13.9:
+  * remove the limit for analyzing the literal table
+- update to 3.13.8:
+  * fix: respect ignoreDir in --check CLI
+  * Merge branch 'master' into fix-ignore-in-check
+  * Chore: Update help messages
+  * limit 100 items for performance reason
+- update to 3.13.7:
+  * Fix changelog links
+  * fix: incorrect arg skip pattern for --check_out_path=
+  * fix: incorrect file names in doc.json
+  * fix: reimplement section luals.config in doc.json
+  * fix: use fs.canonical() instead of fs.absolute()
+  * fix: incorrect error message for --doc-update.
+  * chore: refactoring
+  * fix: default path for --doc_out_path is the current directory
+  * fix: remove extra ./ prefix in check report when using --check=.
+  * fix_doc_config
+  * fix_doc_defaultpath
+  * fix: osdate is not allowed in os.time
+  * fix: another regression related to type narrow and generic since v3.10.1
+  * fix: fix type annotations for bit module
+  * fix: correct pattern links for string methods
+  * Correct version for math.type and math.ult
+  * Update changelog.md
+  * fix: type narrowing bugs with literal fields
+  * feat: add --help</comment>
+    <requestid>1256458</requestid>
+  </revision>
 </revisionlist>

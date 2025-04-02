@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/LuaLS/lua-language-server</param>
-    <param name="revision">refs/tags/3.13.6</param>
+    <param name="revision">refs/tags/3.13.9</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="submodules">enable</param>
   </service>
