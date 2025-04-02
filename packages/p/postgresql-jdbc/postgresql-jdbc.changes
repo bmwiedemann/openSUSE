@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  1 13:14:03 UTC 2025 - Michael Calmer <mc@suse.com>
+
+- Upgrade to upstream version 42.7.5
+  - fix: PgDatabaseMetaData implementation of catalog as param and return value
+  - fix: Support default GSS credentials in the Java Postgres client
+  - fix: return only the transactions accessible by the current_user in XAResource.recover
+  - feat: don’t force send extra_float_digits for PostgreSQL >= 12 fix
+  - fix: exclude “include columns” from the list of primary keys
+  - perf: Enhance the meta query performance by specifying the oid
+  - feat: support getObject(int, byte[].class) for bytea
+  - fix: Added way to check for major server version, fixed check for RULE
+  - fix: Reuse buffers and reduce allocations in GSSInputStream addresses
+  - fix: getSchemas()
+  - fix: Update rpm postgresql-jdbc.spec.tpl with scram-client
+  - fix: Clearing thisRow and rowBuffer on close() of ResultSet
+  - fix: As of version 18 the RULE privilege has been removed
+  - fix: use buffered inputstream to create GSSInputStream
+  - fix: boolean types not handled in SimpleQuery mode
+
+-------------------------------------------------------------------
 Thu Feb 29 16:40:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 42.7.2
