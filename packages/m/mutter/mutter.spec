@@ -23,7 +23,7 @@
 %define libmutter libmutter-%{api_major}-%{api_minor}
 
 Name:           mutter
-Version:        48.0+5
+Version:        48.1
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -40,8 +40,6 @@ Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 #PATCH-FEATURE-OPENSUSE mutter-implement-text-input-v1.patch glgo#GNOME/mutter!3751 bsc#1219505 alynx.zhou@suse.com -- Allow input method to work in Wayland Chromium
 Patch5:         mutter-implement-text-input-v1.patch
-# PATCH-FIX-UPSTREAM 0001-cursor-Unify-prepare_func-for-shape-cursors.patch https://gitlab.gnome.org/GNOME/mutter/-/issues/3975 -- Solves the problem of changing the size of the cursor in gtk applications on HiDPI displays.
-Patch6:         0001-cursor-Unify-prepare_func-for-shape-cursors.patch
 
 ## SLE-only patches start at 1000
 # PATCH-FEATURE-SLE mutter-SLE-bell.patch FATE#316042 bnc#889218 idonmez@suse.com -- make audible bell work out of the box.

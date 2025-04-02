@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Apr  1 14:12:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fixed occasional screen freezes
+  + Fix tablet tool cursor sizes when set via the cursor shape
+    protocol
+  + Fix hiding the cursor when using the cursor shape protocl
+  + Fall back to the default color mode when a HDR monitor looses
+    HDR capabilities
+  + Disable HDR support with non-atomic (legacy) KMS drivers
+  + Fix the cursor shape protocol when being used with tablets
+  + Immediately update cursors on theme and size changes
+  + Avoid cursor stuttering when cursor set via the cursor shape
+    protocol
+  + Handle DnD cursor feedback in compositor
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+
+-------------------------------------------------------------------
+Fri Mar 28 16:50:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0+38:
+  * cursor-sprite/xcursor: Add a cache for the XCursor images
+  * backends/cursor: Propagate cursor theme and size pref changes
+  * cursor-renderer/native: Handle when kms_cursor_manager is NULL
+  * tests: Add a11y mouse keys test
+  * tests/utils: Add helper to wait for stage update
+  * tests: Add uinput based virtual input device factory method
+  * dbus-templates/logind: Open fds as nonblocking
+  * seat-impl: Split initialization in two steps
+  * wayland: Handle NULL backend in handle_release_points
+  * wayland: Refactor handle_release_points helper out of
+    _dec_use_count
+  * compositor: Ensure to freeze DnD surface actor during failed
+    animation
+  * clutter/frame-clock: Don't accidentally reschedule-now
+  * Revert "kms/impl-device: Always catch pending KMS update in
+    _schedule_process"
+  * onscreen/native: Account for all posted frames
+  * onscreen/native: Include connector in some debug logs
+  * clutter/frame-clock: Add more debug logging
+  * clutter/frame-clock: Set frame clock state via helper
+  * monitor-manager: Don't apply configurations with unsupported
+    color modes
+  * monitor-manager: Split out helper to check monitor availability
+  * monitor: Add helper to check whether a color mode is supported
+  * monitor-config-utils: Add monitors config copy function
+  * wayland: Bail early if cursor shape doesn't change
+  * wayland: Fix thinko in cursor_shape_manager.get_tablet_tool_v2
+  * wayland: Fix thinko in shape protocol implementation with
+    tablet tools
+  * kms/device: Add SUPPORTS_COLOR_MODES flag and use it to guard
+    HDR/color
+  * kms/impl-device/simple: Add support for missing KMS properties
+  * kms/impl-device/simple: Add support for KMS blobs
+  * wayland: Allow changing from a cursor shape to a NULL surface
+  * cursor: Move sprite preparation into sprite classes
+  * tests: Disconnect dangling signal handlers
+  * Fix mutter crash from should_constraint_be_enabled()
+  * test-client: Ignore GdkX11 deprecations
+  * frames: Ignore GdkX11 deprecations
+- Drop 0001-cursor-Unify-prepare_func-for-shape-cursors.patch:
+  Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Mar 21 08:05:33 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Add 0001-cursor-Unify-prepare_func-for-shape-cursors.patch.
