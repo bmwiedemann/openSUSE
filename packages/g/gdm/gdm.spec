@@ -343,9 +343,6 @@ install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 
 install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
 
-### FIXME ### Needs sec review, so remove for now. (boo#1239719)
-rm -vrf %{buildroot}%{_datadir}/polkit-1/rules.d/20-gdm.rules
-
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
 
@@ -438,8 +435,7 @@ fi
 %if 0%{?is_opensuse}
 %{_udevrulesdir}/61-gdm.rules
 %endif
-### FIXME ### Needs sec review. (boo#1239719)
-%dnl %{_datadir}/polkit-1/rules.d/20-gdm.rules
+%{_datadir}/polkit-1/rules.d/20-gdm.rules
 %{_tmpfilesdir}/gdm.conf
 %{_sysusersdir}/gdm.conf
 %dir %{_prefix}/lib/systemd/logind.conf.d

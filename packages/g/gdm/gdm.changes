@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 07:00:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer rm -vrf
+  %{buildroot}%{_datadir}/polkit-1/rules.d/20-gdm.rules, now that
+  boo#1239719 is resolved.
+
+-------------------------------------------------------------------
 Wed Mar 26 22:11:42 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update systemd xdm migration
