@@ -1809,4 +1809,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251343</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>680caf2651a3c60ac94f2c9749b31286</srcmd5>
+    <version>3.24.49+14</version>
+    <time>1743606443</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265742</requestid>
+  </revision>
 </revisionlist>
