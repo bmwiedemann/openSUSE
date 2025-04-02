@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Mon Mar 31 18:45:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.1:
+  * Add changelog.
+  * Bump version to 3.10.1.
+  * build(deps): Bump the ci group with 2 updates
+
+-------------------------------------------------------------------
+Mon Mar 31 05:44:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.0:
+  * build(deps): Bump alpine from 3.18 to 3.21 in /.release in the
+    docker group across 1 directory by @dependabot in #1700
+  * Convert changelog to MarkDown by @felixfontein in #1741
+  * build(deps): Bump the go group with 7 updates by @dependabot in
+    #1743
+  * build(deps): Bump the go group with 9 updates by @dependabot in
+    #1745
+  * build(deps): Bump the rust group in /functional-tests with 2
+    updates by @dependabot in #1744
+  * build(deps): Bump github/codeql-action from 3.28.5 to 3.28.8 in
+    the ci group by @dependabot in #1746
+  * build(deps): Bump the go group with 12 updates by @dependabot
+    in #1751
+  * build(deps): Bump the ci group with 4 updates by @dependabot in
+    #1750
+  * Add --input-type option for filestatus subcommand by
+    @felixfontein in #1601
+  * Use SOPS_EDITOR before EDITOR by @felixfontein in #1611
+  * Allow users to disable version check via environment variable
+    by @nicklasfrahm in #1684
+  * add duplicate section support to ini store by @reindlt in #1452
+  * stores: test for duplicate keys, reserve keyword (yaml only
+    now) by @holiman in #1203
+  * Add same process option for exec-env by @ricmatsui in #880
+  * outputs: add trailing newline at the end of JSON files by
+    @duthils in #1476
+  * set subcommand: add --idempotent flag that will not write the
+    file if no change happened by @felixfontein in #1754
+  * Encrypt and decrypt time.Time objects by @felixfontein in #1759
+  * build(deps): Bump the go group with 8 updates by @dependabot in
+    #1763
+  * build(deps): Bump tempfile from 3.16.0 to 3.17.0 in
+    /functional-tests in the rust group by @dependabot in #1762
+  * build(deps): Bump goreleaser/goreleaser-action from 6.1.0 to
+    6.2.1 in the ci group by @dependabot in #1761
+  * fix(docs): typo in README.rst by @Paredev in #1765
+  * Add SSH support for age by @haoqixu in #1692
+  * make sure that tests do not pick keys.txt from user's HOME dir
+    by @tomaszduda23 in #1766
+  * support for age identity with passphrase by @tomaszduda23 in
+    #1400
+  * build(deps): Bump the rust group in /functional-tests with 4
+    updates by @dependabot in #1768
+  * build(deps): Bump the go group with 12 updates by @dependabot
+    in #1769
+  * build(deps): Bump the ci group with 4 updates by @dependabot in
+    #1770
+  * build(deps): Bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 by @dependabot in #1773
+  * feat: add age plugin support by @brianmcgee in #1641
+  * Check GnuPG decryption result for non-empty size by
+    @felixfontein in #1776
+  * vendored age code: consolidate passphrase reading functionality
+    by @felixfontein in #1775
+  * Allow to encrypt and decrypt from stdin by @felixfontein in
+    #1690
+  * build(deps): Bump the go group with 11 updates by @dependabot
+    in #1784
+  * build(deps): Bump the ci group with 5 updates by @dependabot in
+    #1782
+  * build(deps): Bump serde_json from 1.0.139 to 1.0.140 in
+    /functional-tests in the rust group; bump Rust to 1.85.0 by
+    @dependabot in #1783
+  * build(deps): Bump the go group with 13 updates by @dependabot
+    in #1797
+  * build(deps): Bump the rust group in /functional-tests with 3
+    updates by @dependabot in #1796
+  * build(deps): Bump github/codeql-action from 3.28.10 to 3.28.11
+    in the ci group by @dependabot in #1795
+  * build(deps): Bump the go group with 6 updates by @dependabot in
+    #1802
+  * build(deps): Bump tempfile from 3.18.0 to 3.19.0 in
+    /functional-tests in the rust group by @dependabot in #1800
+  * build(deps): Bump docker/login-action from 3.3.0 to 3.4.0 in
+    the ci group by @dependabot in #1801
+  * build(deps): Bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+    5.2.2 by @dependabot in #1806
+  * goreleaser: add windows arm64 by @duthils in #1791
+  * Add a way to set sops config location via envvar by @sledzikowy
+    in #1701
+  * build(deps): Bump the go group with 3 updates by @dependabot in
+    #1809
+  * build(deps): Bump the ci group with 5 updates by @dependabot in
+    #1808
+  * build(deps): Bump tempfile from 3.19.0 to 3.19.1 in
+    /functional-tests in the rust group by @dependabot in #1807
+  * Support --config option in publish subcommand by @felixfontein
+    in #1779
+  * Fix caching of Metadata.DataKey by @felixfontein in #1781
+  * Lint by @felixfontein in #1780
+  * updatekeys subcommand: rename GroupQuorum to ShamirThreshold by
+    @felixfontein in #1631
+  * If --filename-override is specified, convert it to an absolute
+    path same as regular filenames by @felixfontein in #1793
+  * Add support for oauth2.TokenSource in GCP KMS by @matheuscscp
+    in #1794
+  * Added SOPS_AGE_KEY_CMD option to age, fixes #1323 by
+    @danilobuerger in #1811
+  * chore: omitempty metadata to reduce the size of stored config
+    by @cgetzen in #1571
+  * Improve Shamir Secret Sharing code by @felixfontein in #1813
+  * Update all dependencies by @felixfontein in #1814
+  * Run 'gofmt -w' on all .go files by @felixfontein in #1817
+  * Add option to explicitly check for the latest version;
+    deprecate current default of always doing that unless disabled
+    by @felixfontein in #1816
+  * Build using Go 1.24 and drop support for 1.22 by @hiddeco in
+    #1819
+  * Support GOOGLE_OAUTH_ACCESS_TOKEN for Google Cloud Platform by
+    @marensofier in #1578
+  * Warn about .sops.yml files found while searching for .sops.yaml
+    by @felixfontein in #1820
+  * Release 3.10.0 by @felixfontein in #1815
+  * Added support for multiarch windows release binaries by
+    @sabre1041 in #1823
+
+-------------------------------------------------------------------
 Sun Jan 26 08:46:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.9.4:
