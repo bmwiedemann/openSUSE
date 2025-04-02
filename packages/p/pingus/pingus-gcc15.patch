@@ -1,0 +1,24 @@
+Index: pingus/src/engine/display/font.hpp
+===================================================================
+--- pingus.orig/src/engine/display/font.hpp
++++ pingus/src/engine/display/font.hpp
+@@ -18,6 +18,7 @@
+ #define HEADER_PINGUS_ENGINE_DISPLAY_FONT_HPP
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #include "math/rect.hpp"
+ 
+Index: pingus/src/pingus/collision_map.hpp
+===================================================================
+--- pingus.orig/src/pingus/collision_map.hpp
++++ pingus/src/pingus/collision_map.hpp
+@@ -18,6 +18,7 @@
+ #define HEADER_PINGUS_PINGUS_COLLISION_MAP_HPP
+ 
+ #include <memory>
++#include <cstdint>
+ 
+ #include "engine/display/sprite.hpp"
+ #include "pingus/groundtype.hpp"
