@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  1 20:03:48 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.19.0
+  * Drop Python v3.7 support, upgrade deps, add Python v3.13 support by @jherland in #459
+  * Documentation page: mkdocs & GitHub pages by @mknorps in #449
+  * Add support for PEP 735 dependency groups by @jherland in #469
+
+-------------------------------------------------------------------
 Mon Feb 10 14:00:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run

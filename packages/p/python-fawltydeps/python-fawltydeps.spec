@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fawltydeps
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Find undeclared and unused 3rd-party dependencies in your Python project
 License:        MIT
