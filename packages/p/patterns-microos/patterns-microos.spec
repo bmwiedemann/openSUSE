@@ -431,7 +431,6 @@ Provides:       pattern() = microos_gnome_desktop
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-gnome
 Provides:       pattern-order() = 9100
-Provides:       pattern-visible()
 Requires:       gdm-branding-MicroOS
 Requires:       pattern() = gnome_basic
 Requires:       pattern() = microos_base_zypper
@@ -579,7 +578,6 @@ Provides:       pattern() = microos_kde_desktop
 Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kde
 Provides:       pattern-order() = 9101
-Provides:       pattern-visible()
 Requires:       pattern() = kde_plasma
 Requires:       pattern() = microos_desktop_common
 # Pull in transactional-update
@@ -692,6 +690,10 @@ Requires:       steam-devices
 # Add gvfs and gvfs-backends (boo#1216667)
 Requires:       gvfs
 Requires:       gvfs-backends
+
+# Add Mesa-demo-egl (missed in Kalpa, due to being a Recommends:
+# for kinfocenter6 (kde#502129)
+Requires:       Mesa-demo-egl
 
 %description desktop-kde
 Packages required for the openSUSE MicroOS with KDE Plasma

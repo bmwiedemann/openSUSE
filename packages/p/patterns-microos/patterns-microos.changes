@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:01:07 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add Mesa-demo-egl to KDE pattern (kde#502129)
+
+-------------------------------------------------------------------
+Sat Mar 22 23:00:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Remove pattern-visible() from the Gnome and KDE patterns, so
+  they're not selectable in the YaST installer
+
+-------------------------------------------------------------------
 Wed Feb 26 14:29:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add sndiff to default pattern
@@ -7,7 +18,7 @@ Wed Feb 26 14:29:47 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Mon Feb 24 16:35:49 CET 2025 - ro@suse.de
 
-- Drop crda, obsolete since kernel 4.15 
+- Drop crda, obsolete since kernel 4.15
 
 -------------------------------------------------------------------
 Tue Feb 18 12:55:06 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>

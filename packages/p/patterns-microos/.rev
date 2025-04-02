@@ -915,4 +915,12 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
 - Drop crda, obsolete since kernel 4.15</comment>
     <requestid>1248749</requestid>
   </revision>
+  <revision rev="98" vrev="98">
+    <srcmd5>9fda7eb756967dd9ffd7977cae9341fe</srcmd5>
+    <version>5.0</version>
+    <time>1743606302</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265405</requestid>
+  </revision>
 </revisionlist>
