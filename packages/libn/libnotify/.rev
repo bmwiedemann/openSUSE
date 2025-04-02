@@ -384,4 +384,20 @@ No GPL-2.0+ files found in the package. The Fedora package is also licensed unde
     <comment></comment>
     <requestid>1247839</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>9cbadeeae4b8430dc80fdd48129d320c</srcmd5>
+    <version>0.8.6</version>
+    <time>1743606400</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 0.8.6:
+  + Revert usage of autopointers
+  + notify-send:
+    - wait timeout variable should be int, not long
+    - Utilize app_icon property rather than icon-name
+  + test: make tests run with `meson test`
+  + notify: constructor should set app-icon property, not icon-name
+  + Revert updating of meson stylesheet URL
+- Add docbook5-xsl-stylesheets, now needed for manpages. (forwarded request 1265357 from iznogood)</comment>
+    <requestid>1265724</requestid>
+  </revision>
 </revisionlist>

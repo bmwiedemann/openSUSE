@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 28 17:57:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.8.6:
+  + Revert usage of autopointers
+  + notify-send:
+    - wait timeout variable should be int, not long
+    - Utilize app_icon property rather than icon-name
+  + test: make tests run with `meson test`
+  + notify: constructor should set app-icon property, not icon-name
+  + Revert updating of meson stylesheet URL
+- Add docbook5-xsl-stylesheets, now needed for manpages.
+
+-------------------------------------------------------------------
 Thu Feb 20 10:10:06 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.8.4:

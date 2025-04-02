@@ -17,7 +17,7 @@
 
 
 Name:           libnotify
-Version:        0.8.4
+Version:        0.8.6
 Release:        0
 Summary:        Notifications Library
 License:        LGPL-2.1-or-later
@@ -27,6 +27,7 @@ Source:         %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
 
 BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
