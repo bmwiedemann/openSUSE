@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 01:13:14 UTC 2025 - William Brown <william.brown@suse.com>
+
+- Backport MTU checking support for fping, and v4/v6 handling improvements
+  * 0001-Backport-fping-MTU-and-ipv4-6-handling-improvements.patch
+
+-------------------------------------------------------------------
 Fri Feb  7 13:52:07 CET 2025 - ro@suse.de
 
 - update apparmor profiles:

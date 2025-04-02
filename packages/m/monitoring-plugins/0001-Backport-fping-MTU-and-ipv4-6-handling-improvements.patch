@@ -1,0 +1,134 @@
+From 4b56fd1bb0c145cee5289ba8f76d8f5f1dfa9460 Mon Sep 17 00:00:00 2001
+From: William <william@blackhats.net.au>
+Date: Fri, 28 Mar 2025 11:08:03 +1000
+Subject: [PATCH] Backport fping MTU and ipv4/6 handling improvements
+
+---
+ plugins/check_fping.c | 55 +++++++++++++++++++++++++++++++++----------
+ 1 file changed, 43 insertions(+), 12 deletions(-)
+
+diff --git a/plugins/check_fping.c b/plugins/check_fping.c
+index 70d6f9fc..0ff48b14 100644
+--- a/plugins/check_fping.c
++++ b/plugins/check_fping.c
+@@ -55,6 +55,9 @@ void print_usage (void);
+ char *server_name = NULL;
+ char *sourceip = NULL;
+ char *sourceif = NULL;
++bool randomize_packet_data = false;
++bool dontfrag = false;
++
+ int packet_size = PACKET_SIZE;
+ int packet_count = PACKET_COUNT;
+ int target_timeout = 0;
+@@ -96,6 +99,25 @@ main (int argc, char **argv)
+ 
+   server = strscpy (server, server_name);
+ 
++#ifdef PATH_TO_FPING6
++  if (address_family == AF_INET6 || (address_family == AF_UNSPEC && is_inet6_addr(server))) {
++    fping_prog = strdup(PATH_TO_FPING6);
++  } else {
++    xasprintf(&option_string, "%s-4 ", option_string);
++    fping_prog = strdup(PATH_TO_FPING);
++  }
++#else
++  if (address_family == AF_INET6 || (address_family == AF_UNSPEC && is_inet6_addr(server))) {
++    // -4 / -6 must be set explicitly as when a host has dual stack
++    // if we don't specify -4 then fping selects ipv6 which can mess
++    // with some checks.
++    xasprintf(&option_string, "%s-6 ", option_string);
++  } else {
++    xasprintf(&option_string, "%s-4 ", option_string);
++  }
++  fping_prog = strdup(PATH_TO_FPING);
++#endif
++
+   /* compose the command */
+   if (target_timeout)
+     xasprintf(&option_string, "%s-t %d ", option_string, target_timeout);
+@@ -105,15 +127,12 @@ main (int argc, char **argv)
+     xasprintf(&option_string, "%s-S %s ", option_string, sourceip);
+   if (sourceif)
+     xasprintf(&option_string, "%s-I %s ", option_string, sourceif);
+-
+-#ifdef PATH_TO_FPING6
+-  if (address_family != AF_INET && is_inet6_addr(server))
+-    fping_prog = strdup(PATH_TO_FPING6);
+-  else
+-    fping_prog = strdup(PATH_TO_FPING);
+-#else
+-  fping_prog = strdup(PATH_TO_FPING);
+-#endif
++  if (dontfrag) {
++    xasprintf(&option_string, "%s-M ", option_string);
++  }
++  if (randomize_packet_data) {
++    xasprintf(&option_string, "%s-R ", option_string);
++  }
+ 
+   xasprintf (&command_line, "%s %s-b %d -c %d %s", fping_prog,
+             option_string, packet_size, packet_count, server);
+@@ -293,7 +312,7 @@ process_arguments (int argc, char **argv)
+     {"sourceif", required_argument, 0, 'I'},
+     {"critical", required_argument, 0, 'c'},
+     {"warning", required_argument, 0, 'w'},
+-	{"alive", no_argument, 0, 'a'},
++    {"alive", no_argument, 0, 'a'},
+     {"bytes", required_argument, 0, 'b'},
+     {"number", required_argument, 0, 'n'},
+     {"target-timeout", required_argument, 0, 'T'},
+@@ -303,6 +322,8 @@ process_arguments (int argc, char **argv)
+     {"help", no_argument, 0, 'h'},
+     {"use-ipv4", no_argument, 0, '4'},
+     {"use-ipv6", no_argument, 0, '6'},
++    {"dontfrag", no_argument, 0, 'M'},
++    {"random", no_argument, 0, 'R'},
+     {0, 0, 0, 0}
+   };
+ 
+@@ -320,7 +341,7 @@ process_arguments (int argc, char **argv)
+   }
+ 
+   while (1) {
+-    c = getopt_long (argc, argv, "+hVvaH:S:c:w:b:n:T:i:I:46", longopts, &option);
++    c = getopt_long (argc, argv, "+hVvaH:S:c:w:b:n:T:i:I:M:R:46", longopts, &option);
+ 
+     if (c == -1 || c == EOF || c == 1)
+       break;
+@@ -354,7 +375,7 @@ process_arguments (int argc, char **argv)
+       break;
+     case 'I':                 /* sourceip */
+       sourceif = strscpy (sourceif, optarg);
+-			break;
++      break;
+     case '4':                 /* IPv4 only */
+       address_family = AF_INET;
+       break;
+@@ -415,6 +436,12 @@ process_arguments (int argc, char **argv)
+       else
+         usage (_("Interval must be a positive integer"));
+       break;
++    case 'R':
++      randomize_packet_data = true;
++      break;
++    case 'M':
++      dontfrag = true;
++      break;
+     }
+   }
+ 
+@@ -506,6 +533,10 @@ void print_help (void) {
+   printf ("    %s\n", _("name or IP Address of sourceip"));
+   printf (" %s\n", "-I, --sourceif=IF");
+   printf ("    %s\n", _("source interface name"));
++  printf(" %s\n", "-M, --dontfrag");
++  printf("    %s\n", _("set the Don't Fragment flag"));
++  printf(" %s\n", "-R, --random");
++  printf("    %s\n", _("random packet data (to foil link data compression)"));
+   printf (UT_VERBOSE);
+   printf ("\n");
+   printf (" %s\n", _("THRESHOLD is <rta>,<pl>%% where <rta> is the round trip average travel time (ms)"));
+-- 
+2.48.1
+

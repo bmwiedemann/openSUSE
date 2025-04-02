@@ -406,4 +406,13 @@ New patches:
   - check_procs: allow to read /sys/devices/system/node/ (forwarded request 1244145 from oertel)</comment>
     <requestid>1250476</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>b5fd8c25e44026310504e75de9210979</srcmd5>
+    <version>2.4.0</version>
+    <time>1743607375</time>
+    <user>anag+factory</user>
+    <comment>- Backport MTU checking support for fping, and v4/v6 handling improvements
+  * 0001-Backport-fping-MTU-and-ipv4-6-handling-improvements.patch (forwarded request 1264789 from firstyear)</comment>
+    <requestid>1266405</requestid>
+  </revision>
 </revisionlist>

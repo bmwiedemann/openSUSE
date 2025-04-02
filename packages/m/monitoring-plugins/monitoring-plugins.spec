@@ -72,6 +72,10 @@ Patch121:       %{name}-2.4.0-check_swap_wrong_percent.patch
 Patch122:       %{name}-2.4.0-check_ntp_perf_absolute.patch
 Patch130:       %{name}-2.4.0-check_http-proxy.patch
 Patch131:       %{name}-2.4.0-check_dbi-type_mismatch.patch
+
+# Backport MTU checking and fixes for v4/v6 handling with dualstack IPs
+Patch200:       0001-Backport-fping-MTU-and-ipv4-6-handling-improvements.patch
+
 BuildRequires:  automake
 BuildRequires:  bind-utils
 BuildRequires:  dhcp-devel
@@ -1139,7 +1143,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
 	--with-apt-get-command=%{apt_get_command} \
 	--with-cgiurl=/nagios/cgi-bin \
 	--with-fping-command=%{_sbindir}/fping \
-	--with-fping6-command=%{_sbindir}/fping6 \
 	--with-ipv6 \
 	--with-openssl=%{_prefix} \
 	--with-perl=%{_bindir}/perl \
