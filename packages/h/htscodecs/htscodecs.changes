@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:35:16 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 1.6.1:
+  * Changes
+    + Improve warning levels by the compiler in CI.
+    + Switch to GitHub actions for some CI builds.
+    + Add configure check for cpuid systems.
+  * Bug fixes
+    + Use unsigned chars for ctype macros in the name tokeniser.
+      On many systems this was already mitigated against, but on
+      some OSes a char > 128 could trigger a buffer underrun.
+    + Improve AVX512 compiler support.
+    + Fix -std=c99 -pendantic pedantry (#117)
+
+-------------------------------------------------------------------
 Wed Jan  3 01:32:19 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 1.6.0:
