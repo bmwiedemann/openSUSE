@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.70.0
+Version:        2.71.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -78,7 +78,7 @@ Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
 Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 33.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 34.2.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.7.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
@@ -93,7 +93,7 @@ Requires:       %{pythons}-azure-mgmt-imagebuilder >= 1.3.0
 Requires:       %{pythons}-azure-mgmt-iotcentral >= 10.0.0b1
 Requires:       %{pythons}-azure-mgmt-iothub >= 3.0.0
 Requires:       %{pythons}-azure-mgmt-iothubprovisioningservices >= 1.1.0
-Requires:       %{pythons}-azure-mgmt-keyvault >= 10.3.0
+Requires:       %{pythons}-azure-mgmt-keyvault >= 11.0.0
 Requires:       %{pythons}-azure-mgmt-loganalytics >= 13.0.0
 Requires:       %{pythons}-azure-mgmt-managementgroups >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-maps >= 2.0.0
@@ -127,7 +127,7 @@ Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
 Requires:       %{pythons}-azure-mgmt-trafficmanager >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-web >= 7.2.0
 Requires:       %{pythons}-azure-monitor-query >= 1.2.0
-Requires:       %{pythons}-azure-multiapi-storage >= 1.3.0
+Requires:       %{pythons}-azure-multiapi-storage >= 1.4.0
 Requires:       %{pythons}-azure-storage-common >= 1.4
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.19.0
