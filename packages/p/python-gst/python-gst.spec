@@ -27,6 +27,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM 0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch -- Fix compatibility with PyGObject>=3.52.0
+Patch0:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler
@@ -55,7 +57,7 @@ This module contains a wrapper that allows GStreamer applications to be
 written in Python.
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p3 -n %{_name}-%{version}
 
 %build
 %{python_expand py_var=$python
@@ -63,7 +65,7 @@ written in Python.
   cp -rp * ../$py_var
   pushd ../$py_var
   %meson \
-    -Dpython=$py_var \
+    -Dpython-exe=$py_var \
     %{nil}
   %meson_build
   popd

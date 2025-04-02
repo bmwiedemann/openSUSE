@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:55:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch: Fix
+  compatibility with PyGObject>=3.52.0.
+- Pass python-exe instead of python to meson setup, the latter is
+  deprecated.
+
+-------------------------------------------------------------------
 Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.26.0:
