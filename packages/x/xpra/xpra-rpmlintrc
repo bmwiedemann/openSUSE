@@ -1,4 +1,5 @@
 addFilter("potential-bashisms /usr/bin/xpra_Xdummy");
+addFilter("potential-bashisms /usr/libexec/xpra/xpra_weston_xvfb")
 #addFilter("python-bytecode-inconsistent-mtime * *");
 addFilter('dbus-policy-allow-receive <allow receive_sender="org.xpra.Server"/> /etc/dbus-1/system.d/xpra.conf');
 addFilter('python-missing-require PyGObject');

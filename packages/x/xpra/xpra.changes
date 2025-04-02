@@ -1,4 +1,508 @@
 -------------------------------------------------------------------
+Wed Mar 12 14:04:35 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20250311.d6b60eda:
+  * #3964 disable gstreamer video again
+  * fix video option parsing which broke when adding options
+  * bundle wmi to get reliable Windows OS version detection
+  * border cannot be shown if the window is too small
+  * #4503 only strip comments from strings
+  * derp: we want 64-bit, don't care which type
+  * better compatibility with arm64 installer packaging
+  * #2756 add documentation on windows proxy service
+  * add env var to use token impersonation
+  * named-pipes can be used to stop the proxy without authentication
+  * fix detection of win32 named-pipe server state
+  * use f-strings
+  * type hints
+  * use more specific log files for system services
+  * convert all menu directories to absolute paths
+  * match mmap refactoring
+  * minimal info response
+  * we can't impersonate administrators, so just run as system
+  * cosmetic
+  * use a better description
+  * ship the Xpra-Service.exe with fat builds
+  * type hints + test using logon_msv1 if we have the password
+  * newer syntax is just better
+  * cleanup + modernize
+  * stronger type hints
+  * don't log sensitive data
+  * prettier warning output
+  * stricter ctypes arguments, verify return value
+  * use a single exported Logon function
+  * DllExport 1.8.0
+  * if signtool is already there, no need to do anything
+  * call LogonEx directly, so we can specify server and domain
+  * cosmetic + make it testable from the command line
+  * cosmetic
+  * leading slashes interfere with os.path.join
+  * match create-process-lib changes, provide more CREATIONINFO attributes
+  * match updated subprocess superclass interface and ctypes changes
+  * remove debug logging
+  * MS Windows usernames are not case sensitive
+  * type hints and ctypes import path fixes
+  * allow clients to specify username, do verify it
+  * add debug logging
+  * prettify server platform string
+  * yaml is back in
+  * check_output can raise a OSError if nvidia-smi does not exist
+  * remove duplicate 'yaml' entry
+  * the fat builds require pyqt6
+  * for simplicity, all commands can be placed in the cwd
+  * make it possible to place vs commands in the cwd
+  * ensure var is defined
+  * cosmetic
+  * oops: ssl upgrade broke in 89aa145bd895e115883779b86f41f7602bee829b
+  * missing f-strings
+  * #4525 accept more path formats (ie: trailing slashes)
+  * cosmetic: ignore missing encoders (already gone)
+  * #4483 compare spec with 'codec_type'
+  * handle decoding failures without using exceptions
+  * pass fallback reason info to method
+  * openh264 decoder is studio range
+  * #511 / #4483 add synced attribute for codec color range
+  * #4434 pam bindings must be available without the server module
+  * cython workarounds are no longer necessary
+  * type hints
+  * #4524 honour ssl options in launcher files
+  * set_info_color is already handled by set_info_text
+  * simplify + better debug logging
+  * better error message
+  * ssl_handshake does not return a new object
+  * show connection step in splash window
+  * simplify
+  * make code reusable
+  * add type hints
+  * replace ugly method hijacking with event listener
+
+-------------------------------------------------------------------
+Tue Mar 11 19:27:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Converting from python311 -> python313
+
+-------------------------------------------------------------------
+Wed Mar 05 15:17:00 UTC 2025 - scott.bradnick@suse.com
+
+- Update to version 6.3.0+git20250305.d1505720:
+  * no pandoc or VC on the arm64 build system
+  * dependency belongs in one of the packages
+  * rpmbuild brought in some weird dependencies on F42 arm64
+  * add explicit dependency on the python version required
+  * depend on actual python version built against
+  * fix parsing of strings containing the 'all' placeholder
+  * remove debug logging
+  * rename 'installer' to 'exe' for consistency
+  * #4518 honour http request path specified using URL
+  * #4518 honour http request path specified in launcher
+  * add type hints
+  * match signature
+  * update the release notes
+  * #4523 more test fixes
+  * the menu helper can be used without a tray
+  * #4523 fixups for c8b917e9751704a6d91d9298a82e146814cbc9ae
+  * add type hints
+  * #4523 update tests to match d14da1b5c8f3d6942246f2dc1ce3bb2c78020df6
+  * reset encoder specs as soon as connection is closed (#4483)
+  * #4523 use explicit method for legacy aliases
+  * only parse encodings, not the full server caps
+  * #4523 move towards only using prefixed subsystems
+  * better debug logging
+  * #511 we can't use ultra-low-latency with older cards
+  * #511 check property exists before querying it
+  * #511 missing f-string in error message
+  * cosmetic
+  * add type hints
+  * #4483 add hard-coded simple encoder client
+  * #4483 verify that 'encodings' are enabled early
+  * handle cleanup race conditions more gracefully
+  * make packet chunking (aka 'raw packets') optional
+  * don't error if already initialized
+  * #511 we have to use Vulkan on Linux?
+  * workaround for broken pam_misc.pc on Fedora 42
+  * switch to python3.12 for RHEL 9 clones
+  * remove debug logging
+  * #4449 handle missing dbus more gracefully
+  * type hints
+  * preserve case
+  * Python 3.14 blows up on parallel compilation
+  * #511 let it run on all platforms
+  * #511 add 'xpra-codecs-amd'
+  * #511 try the "special" paths where AMD places the library
+  * whitespace
+  * #511 add 'xpra-codecs-amd' package
+  * #511 derp
+  * #511 don't hardcode the library name
+  * #511 correctly silence some messages
+  * too many places still rely on 'get_encodings()'
+  * file had gone MIA in 33d5ac73c88fb23e3a82fee1442dbad73db16c23
+  * #3964 disable gstreamer-video on MS Windows
+  * missing the get_info function triggers a 'AttributeError'
+  * remove debug logging
+  * spng.pc vs libspng.pc
+  * ensure attributes are initialized
+  * add warning for Debian and Ubuntu users
+  * #4456 add GUI configure dialog for changing xvfb command
+  * since we renamed the file, make sure we rename old configs
+  * filter client options dictionaries before sending over the wire
+  * coerce to int
+  * ignore potentially duplicate context close events
+  * unused variable and import
+  * #4483 add socket activated encoder service
+  * check 'allow_owner' separately
+  * don't verify username when running as root
+  * #4483 make mmap base class optional for encode client
+  * remove proxy encoding, unmaintainable
+  * #511 try to enable av1 and hevc
+  * #4483 support lz4 compression of pixel data
+  * don't log reconnections at info level
+  * consume chunks mmap attribute
+  * support lz4 with mmap
+  * oops: enable_from_caps requires a typedict
+  * cosmetic + type hints
+  * #511 simplify
+  * #511 amf rowstride may be different
+  * query encoder caps
+  * repack properly
+  * #511 hook logger
+  * incorrect types
+  * was broken since 25b8dd09751fad71104254fed3bc38276b3c0c4a
+  * we can't use googlesource for snapshots
+  * oops: missing argument
+  * #4483 add automatic csc step if needed
+  * make sure the mmap area is closed when cleaning up
+  * parse server caps to disable mmap
+  * #4483 refactoring and improvements
+  * bgrx output image was cropped
+  * got bitshift precedence wrong
+  * prettify
+  * reuse pillow encoder to provide a save utility function
+  * cosmetic + type hints
+  * avoid showing too many quotes
+  * add type hints
+  * consume the mmap metdata
+  * #4483 make remote codec code reusable
+  * minor linter fixes
+  * consistent type hints
+  * no longer needed
+  * #511 increment frame counter
+  * #511 expose the subsampling used
+  * #511 oops: return the info we collect
+  * consistency: all the other codecs use tuples
+  * derp: output_colorspaces is a sequence of strings
+  * #511 add amf to video list
+  * update tests to use new init_module options interface
+  * avoid errors during tests cleanup
+  * remove video decoder entry if there are no options left
+  * __dealloc__ can end up calling clean twice
+  * init_context requires options argument now
+  * don't enable splash unconditionally on non-posix
+  * simplify
+  * #4483 don't cache encoder specs
+  * log both backtrace and exc_info if both are enabled
+  * move exception handling to common method
+  * add type hints
+  * no need for backtrace with InitExit exceptions
+  * if we don't have (py)cuda, don't warn about not allocating a context
+  * #4483 cancel connection timer on module cleanup
+  * #4483 'encoder' server can run on all platforms
+  * libyuv 0.1899.r2785.47ddac299
+  * #4481 better interoperability: use lists for tuples
+  * #4483 close remote encoders
+  * support csv and new encoder with options syntax
+  * disable 'DOUBLE-BUFFER' extension
+  * add missing type hints
+  * show the invalid header byte
+  * #4483 move encoder to its own directory
+  * more consistent loop variable naming
+  * move print_screen_info to display module
+  * #4483 use a thread for I/O
+  * #4483 poll for new encoder servers showing up
+  * #4483 handle re-connection
+  * #4483 automatically locate 'encoder' servers
+  * #4483 ensure we never create a loop
+  * #4483 simplify inheritance and delegation
+  * #4483 send back encoder info
+  * #4483 allow encoder options to be specified with --video-encoders=
+  * #4483 discount score when encoder server is not connected
+  * keep track of initialized codecs in one place
+  * don't define pointless functions
+  * simplify: flatten exception handlers
+  * cosmetic: attributes are not necessarily classnames
+  * initialize video modules and record them
+  * cosmetic
+  * update unit test to emulate full video spec interface
+  * encoder runtime factor was not being honoured
+  * #4483 handle failure to connect as a transient error
+  * add type hints
+  * better error and debug logging
+  * #4483 'BufferError' is not a 'RuntimeError'
+  * #4483 suppress default encoding logging
+  * #4483 log client options
+  * #4483 start dbus if needed
+  * min level is inclusive
+  * log the full backtrace from 'ErrorTrapper'
+  * use a looser coupling with display and cursor modules
+  * #4111 use the stronger 'memorytype' where possible
+  * compressed data should not be modified
+  * #4483 use temporary failure when encoder server is not connected
+  * try harder to close mmap areas
+  * #4483 preserve the codec type chosen
+  * remove redundant colorspace functions from csc interface
+  * move free_image_wrapper to a function
+  * the decoder 'get_output_colorspaces' is no longer used
+  * remove redundant colorspace functions from video decoders interface
+  * remove redundant colorspace functions from video encoders interface
+  * #4111 install a less buggy version of Cython
+  * #4455 also remove end years from C files
+  * #4111 newer Cython versions no longer choke on memoryview type hints
+  * #4510 dealloc should never be called more than once
+  * reformat
+  * simlify
+  * 'CodecStateException' is a 'RuntimeError' now
+  * fix link across docs
+  * fix deprecated command
+  * fix package name typo
+  * fix code page error in non-English systems
+  * make parsing more resilient
+  * don't assume 'ISO 8859-1' codepage
+  * typo
+  * remove debug logging, fail more quietly
+  * #4502 install libexec scripts just once is enough
+  * #4504 add 'LD_LIBRARY_PATH' to whitelist
+  * #4505 use strict match for 'keep' env vars
+  * delay pillow import
+  * use correct return type
+  * #4483 receive compressed stream via mmap if possible
+  * #4483 send pixels via mmap
+  * #4483 encoder server does not use the screen
+  * MMapArea overrides __bool__ so we have to check against None
+  * better debug logging
+  * #4483 no need for splash screen with encoder server
+  * better error logging
+  * avoid printing a message when dbus is disabled
+  * src_format is a string, never a None value
+  * #4483 allocate a cuda context for GPU encoders
+  * codec errors should be handled as "RuntimeError"s
+  * #4503 strip comments
+  * add separate switch for http support
+  * expose subsystems enabled
+  * replace env vars with command line switches
+  * #4483 use a queue to wait for encoder server responses
+  * cosmetic
+  * #4449 prevent none values
+  * #4501 we can't override '_lookup' on older versions
+  * shortcut out + cosmetic debug logging
+  * more consistent and correct type hints
+  * openh264 2.6.0
+  * #4483 get the encoder specs from the server
+  * add debug logging to source caps
+  * #3582 hide unnecessary info / when desired
+  * the dbus mixin is optional
+  * cut&paste gone wrong
+  * #4449 add keyboard-backend option
+  * cython 3.0.12
+  * #4449 wait for ibus to be connected
+  * remove Ubuntu Lunar, add Plucky
+  * fail fast: don't retry to connect initially
+  * no need for nested exceptions
+  * add Fedora 42 build list
+  * pycuda has been fixed
+  * make it easier to use direct writes
+  * the tests can't check the token
+  * add Ubuntu Plucky
+  * #4491 failure to connect is normal
+  * #4491 timeout more quickly
+  * simplify: use the mmap wrapper object
+  * #4491 add stub remote encoder module
+  * better handling of missing version
+  * move 'wait_for_header' heuristic to protocol
+  * fedora 39 is eol
+  * pycuda 2025.1
+  * no need to start protocol here
+  * initialize the challenge handlers later
+  * forgot to update these clients
+  * don't bother specifying a pixel format
+  * #4491 support mmap=both to enable both directions
+  * #4491 older servers won't use the write area
+  * remove debug logging
+  * #4491 use mmap for webcam frame upload
+  * return real strings, better type hints
+  * fixup lost-window mmap cleanup
+  * simplify + type hints
+  * already moved to cursors module
+  * don't assume we have the network state mixin loaded
+  * #4496 plan to drop non-bytes image data
+  * prevent confusing interface of 'setup_connection'
+  * match new 'encoding' setting, debug logging
+  * #4496 plan to drop non-bytes image data
+  * #4491 encode server supports mmap or lz4
+  * match new mmap interface
+  * #4491 default to mmap read only for clients
+  * remove unused arg
+  * only handle 'startup-complete' after authentication, and only once
+  * make the argument usable as a kwarg
+  * update unit tests, move them accordingly
+  * dismiss splash screen when showing prompt
+  * move challenge handlers to top level
+  * pylsqpack 0.3.19
+  * #4449 let ibus set the layout
+  * #4449 keep existing translations
+  * honour the keyboard model and rules specified in query struct
+  * make it easier to skip very verbose keyboard debug messages
+  * #3868 workaround for unresponsive upstream
+  * handle multi-line ssh authentication banners
+  * add '-V' alias for '--version'
+  * fix qp calculation for nvenc
+  * add debug logging
+  * typo
+  * display stuff must use the main thread
+  * avoid leaking atoms
+  * bandwidth-limit belongs in network state module
+  * move original-desktop-display to module
+  * try to not remove agent symlink after use
+  * add debug logging
+  * use late_cleanup for stopping the dbus server
+  * cosmetic
+  * #4490 match client resolution earlier with remote starts
+  * more helpful warning
+  * don't raise exceptions when verifying tokens
+  * #4491 bi-directional mmap
+  * move mixin loading to a factory
+  * #4491 server side support
+  * should be safe to import earlier with the features checks
+  * #4491 create two mmap areas, one for each direction
+  * better errors and type hints
+  * better error handling and debug logging
+  * cosmetic
+  * move madvise to function
+  * #4483 honour encoding attributes
+  * wrong kbitem positional argument
+  * fix type hints
+  * silence linter warning
+  * allow framerate to be specified
+  * remove noop statements
+  * #4483 add metadata, save the result
+  * stop dbus unless exiting / upgrading
+  * always quote encoding in error / log messages
+  * #4483 basic roundtrip working for testing via pillow
+  * don't build pyglet or pyqt6 clients for RHEL8
+  * the 'wants' attribute is now part of the source mixin interface
+  * only the socket handler needs scheduler functions
+  * #4483 hook command line client
+  * move more functionality to server modules
+  * #4483 no need to start new commands
+  * doh: also update server tests
+  * quote when printing, not when comparing values
+  * make it easier to cut & paste failing commands
+  * update tests to new packet handler interface
+  * cosmetic: no tabs
+  * type hints and cosmetic
+  * #4483 extend ServerBase so we get multi-client handling for free
+  * no need to call 'init_packet_handlers' again
+  * move cursor handling to its own module
+  * no need to duplicate these attributes
+  * refactor packet handler registration
+  * move xsettings overrides to display manager
+  * move 'run opengl probe' to a function
+  * hello requests are now handler earlier
+  * the function arguments will change as we iterate
+  * fix 'unused variable' linter warning
+  * remove now unused 'disconnected' return value
+  * forgot to update tests after removing methods from stub
+  * #2303 move ssh agent code to a new server module
+  * refactor packet handling
+  * dpi lives in display mixin
+  * oops: one more test needs attributes
+  * oops: fixups for the unit tests
+  * simplify source mixin instantiation
+  * no need to skip logging
+  * move bandwidth code to network state source mixin
+  * add missing type hints
+  * move hello requests handling to common location
+  * these attributes are already defined in server base
+  * cosmetic
+  * reset_focus does not need to be part of the server mixin interface
+  * move 'start_after_connect_done' flag to child command mixin
+  * redundant
+  * move base classes to factory
+  * #4449 type hints and debug logging
+  * refactor 'run-info' functions
+  * #4483 use a dynamic base class
+  * update unit tests to match code
+  * split http scripts handling to a new module
+  * move open_html_url to network module
+  * move dbus bits to a mixin
+  * remove more unused bytes-strings conversions
+  * display_pid belongs in x11 servers only
+  * add type hints
+  * pyopengl 3.1.9
+  * nvidia-ml-py 12.57.0.86
+  * #4481 forgot to add actual build switch for yaml
+  * #4486 remove network packet name aliases
+  * #4483 more template
+  * more type hints
+  * add type hints
+  * #4485 never expose empty keys
+  * this should no longer be needed
+  * ensure we don't clip 64-bit cython values
+  * #4484 python int type hint was getting translated to c int
+  * don't import unless needed
+  * fix building with CUDA 12.8 and Fedora 41
+  * stronger type hints
+  * codec interface requires options arg
+  * also prefer the cuda arch specific pkgconfig file for nvdec
+  * make it easier to cut & paste the command used
+  * #4483 stub encoder server
+  * #3582 honour flag for openssl version
+  * cleanup
+  * #4481 enhance the SafeLoader with support for tuples
+  * #4481 packaging for yaml
+  * #4481 re-instate yaml packet encoder
+  * prettier message formatting
+  * stronger type hints
+  * #3592 remove zlib remnants
+  * #511 function renaming, skip unused debug queries
+  * #511 upload pixel data with memcpy then CopyResource
+  * #511 move common code to a separate module
+  * #511 tidy up
+  * #511 faster and prettier error message lookup
+  * #511 capture GPU description
+  * #511 add more diagnostics
+  * #511 expose device info
+  * #511 add D3D11 wrapper and encoder tuning
+  * #511 add more definitions
+  * better debug logging
+  * #511 move header stuff to pxd
+  * #511 add ctypes and cython glue
+  * derp was using wrong 'init_module' location
+  * make it easier to add custom build args
+  * #3335 add 'watchdog' dependency to setup
+  * make manifest files optional
+  * #511 use pkgconfig file first if one exists
+  * better debug logging in verbose mode
+  * #4474 delete the whole lib directory before install
+  * make it easier to skip recording libs info
+  * #511 add stub amf encoder
+  * link to one more windows defender false positive
+  * #4449 add 'ibus' debug logging category
+  * typo
+  * update trixie to use clang-19 for cuda
+  * remove invalid type hints
+  * silence some minor linter warnings
+  * #4476 stub for rdp server support
+  * basic detection of rdp connection attempts
+  * only log connection error backtrace at debug level
+  * remove debug logging
+  * #4475 new 'package' subcommand
+  * the end of an era
+  * add link to lts downloads
+  * #4474 also use fallback on internal library errors
+  * add some release notes
+  * doh
+  * handle context query errors slightly more gracefully
+
+-------------------------------------------------------------------
 Tue Jan 14 15:09:46 UTC 2025 - scott.bradnick@suse.com
 
 - Update to version 6.3.0+git20250114.17113d02:

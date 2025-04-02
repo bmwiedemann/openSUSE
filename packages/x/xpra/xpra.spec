@@ -1,7 +1,7 @@
 #
 # spec file for package xpra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,14 +25,14 @@
 ###   setup.py build --verbose ...
 %define xpra_ver %(echo %{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
 #####
-%define python_ver python311
-%define python_short_ver 3.11
-%define python_bin python3.11
+%define python_ver python313
+%define python_short_ver 3.13
+%define python_bin python3.13
 
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.3.0+git20250114.17113d02
+Version:        6.3.0+git20250311.d6b60eda
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -255,6 +255,8 @@ getent group xpra >/dev/null || groupadd -r xpra
 mkdir -p %{_rundir}/%{name} || exit 1
 %service_add_pre %{name}.service
 %service_add_pre %{name}.socket
+%service_add_pre %{name}-encoder.service
+%service_add_pre %{name}-encoder.socket
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/lib; save any old .rpmsave
 for i in pam.d/xpra ; do
@@ -271,16 +273,22 @@ done
 %post
 %service_add_post %{name}.service
 %service_add_post %{name}.socket
+%service_add_post %{name}-encoder.service
+%service_add_post %{name}-encoder.socket
 %fillup_only %{name}
 %tmpfiles_create %{_tmpfilesdir}/xpra.conf
 
 %preun
 %service_del_preun %{name}.service
 %service_del_preun %{name}.socket
+%service_del_preun %{name}-encoder.service
+%service_del_preun %{name}-encoder.socket
 
 %postun
 %service_del_postun %{name}.service
 %service_del_postun %{name}.socket
+%service_del_postun %{name}-encoder.service
+%service_del_postun %{name}-encoder.socket
 
 %files
 %doc docs/README.md docs/CHANGELOG.md
@@ -356,6 +364,8 @@ done
 %{_tmpfilesdir}/xpra.conf
 %{_unitdir}/xpra.service
 %{_unitdir}/xpra.socket
+%{_unitdir}/xpra-encoder.service
+%{_unitdir}/xpra-encoder.socket
 %ghost %dir %attr(1775,-,xpra) %{_rundir}/xpra
 %ghost %dir %attr(1700,-,xpra) %{_rundir}/xpra/proxy
 

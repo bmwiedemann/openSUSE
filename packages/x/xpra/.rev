@@ -702,4 +702,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1239332</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b6bf11036962c8fa14dd291256fa95dd</srcmd5>
+    <version>6.3.0+git20250311.d6b60eda</version>
+    <time>1743606703</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1265909</requestid>
+  </revision>
 </revisionlist>

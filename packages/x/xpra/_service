@@ -12,7 +12,7 @@
       * Now (20240523):
           $ grep -r __version_info__ .
           ...
-          ./xpra/__init__.py:__version_info__ = (6, 1)
+          ./xpra/__init__.py:__version_info__ = (6, 3)
           ...
     -->
     <!-- DEFAULT versionrewrite-pattern
