@@ -377,4 +377,19 @@
     <comment></comment>
     <requestid>1255104</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>d376f1eefb512d111eb2e30e22dcddb0</srcmd5>
+    <version>1.74.0</version>
+    <time>1743606635</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.74.0:
+  * [Library] Fixed inconsistent background color introduced in previous version
+  * [Servers] Aurora Scan (pt_BR): Disabled
+  * [Servers] Noromax (ID): Update
+  * [Servers] Tecno Scans (EN): Update
+  * [Servers] Wicked Witch Scan (pt_BR): Disabled
+  * [Servers] Up-to-date modules feature: an app restart is now required for a change to take effect (modules update or setting activation/deactivation)
+  * [L10n] Updated Bulgarian, Czech, French, Russian and Ukrainian translations (forwarded request 1265287 from rrahl0)</comment>
+    <requestid>1265735</requestid>
+  </revision>
 </revisionlist>

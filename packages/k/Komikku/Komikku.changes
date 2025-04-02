@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Mar 28 19:54:42 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.74.0:
+  * [Library] Fixed inconsistent background color introduced in previous version
+  * [Servers] Aurora Scan (pt_BR): Disabled
+  * [Servers] Noromax (ID): Update
+  * [Servers] Tecno Scans (EN): Update
+  * [Servers] Wicked Witch Scan (pt_BR): Disabled
+  * [Servers] Up-to-date modules feature: an app restart is now required for a change to take effect (modules update or setting activation/deactivation)
+  * [L10n] Updated Bulgarian, Czech, French, Russian and Ukrainian translations
+
+-------------------------------------------------------------------
 Fri Mar 21 16:56:53 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.73.0:
