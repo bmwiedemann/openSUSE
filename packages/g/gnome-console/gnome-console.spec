@@ -24,7 +24,7 @@ License:        GPL-3.0-only
 URL:            https://gitlab.gnome.org/GNOME/console
 Source:         %{name}-%{version}.tar.zst
 
-BuildRequires:  appstream-glib
+BuildRequires:  AppStream
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  libxml2-tools
@@ -59,6 +59,7 @@ needs a terminal.
 
 %build
 %meson \
+	-D tests=true \
 	%{nil}
 %meson_build
 

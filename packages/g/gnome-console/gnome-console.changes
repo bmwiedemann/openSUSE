@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 30 20:25:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace appstream-glib with AppStream BuildRequires, use the
+  correct dependency, and pass tests=true to meson setup, run all
+  the tests available.
+
+-------------------------------------------------------------------
 Sun Mar 16 08:34:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0.1:

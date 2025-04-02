@@ -56,4 +56,12 @@
   + Updated translations. (forwarded request 1253459 from iznogood)</comment>
     <requestid>1253707</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0bc68b048d2002fb04e23b343dd6a02d</srcmd5>
+    <version>48.0.1</version>
+    <time>1743606432</time>
+    <user>anag+factory</user>
+    <comment>Correct BR and run all tests... (forwarded request 1265606 from iznogood)</comment>
+    <requestid>1265730</requestid>
+  </revision>
 </revisionlist>
