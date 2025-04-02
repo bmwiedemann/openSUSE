@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 31 07:02:04 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64
+
+-------------------------------------------------------------------
 Thu Feb 27 09:40:42 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(ftgl) BuildRequires: this is not actually used

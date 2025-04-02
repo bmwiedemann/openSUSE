@@ -53,7 +53,8 @@ BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libpulse)
 %endif
 %if %{with sdl}
-BuildRequires:  libSDL2-devel
+BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  Mesa-libGL-devel
 %endif
 %if %{with gles_flavor}
 # Workaround: Qt5OpenGL is required for configure when testing libglm
