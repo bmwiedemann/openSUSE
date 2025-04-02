@@ -32,6 +32,8 @@ Source2:        heaptrack.keyring
 %endif
 # PATCH-FIX-UPSTREAM -- gcc14 compat
 Patch0:         0001-cmake-Fix-C-compatibility-of-libunwind-probes.patch
+# PATCH-FIX-UPSTREAM -- CMake 4 compat
+Patch1:         0001-Use-system-robin-map.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  libboost_container-devel
 BuildRequires:  libboost_filesystem-devel
@@ -52,6 +54,7 @@ BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5ThreadWeaver)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(tsl-robin-map)
 BuildRequires:  pkgconfig(libdw) >= 0.158
 BuildRequires:  pkgconfig(libzstd)
 Suggests:       heaptrack-gui

@@ -139,4 +139,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1226903</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>12efef6eec574b86278d205f153da5f0</srcmd5>
+    <version>1.5.0</version>
+    <time>1743606844</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * 0001-Use-system-robin-map.patch</comment>
+    <requestid>1266163</requestid>
+  </revision>
 </revisionlist>
