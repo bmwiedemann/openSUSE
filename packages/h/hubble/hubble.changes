@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 02 04:44:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.2:
+  * Prepare for v1.17.2 release
+  * chore(deps): update actions/setup-go action to v5.4.0
+  * chore(deps): update all github action dependencies
+  * chore(deps): update module golang.org/x/net to v0.36.0
+    [security]
+  * chore(deps): update library/golang docker tag to v1.23.7
+  * chore(deps): update dependency cilium/cilium to v1.17.1
+  * chore(deps): update dependency helm/helm to v3.17.1
+  * chore(deps): update dependency kubernetes-sigs/kind to v0.27.0
+  * update stable release to 1.17.1
+
+-------------------------------------------------------------------
 Thu Feb 13 06:17:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.17.1:
