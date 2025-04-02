@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Sun Mar 30 18:24:47 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.1:
+  * [Client] Nameplate rewrite
+  * [Editor] New speed tiles
+  * [Client] Overhaul skin loading and refreshing, improvements for 0.7 skins
+  * [Client] Move DDRace HUD title to correct pane
+  * [Client] Always automatically rcon auth on local server
+  * [Client] Add size to demo list
+  * [Client] Allow test map locally in subfolders
+  * [Client] Apply alpha to spectating tees from other teams
+  * [Client] Slider to change prediction margin
+  * [Client] Changes to mouse button press handling
+  * [Client] Reduce FPS impact of community icon loading
+  * [Client] Fix incorrect chat messages for inactive client
+  * [Client] Android: Support importing touch controls with no
+    "label-type"
+  * [Client] Fix spectator cursor on older servers
+  * [Client] Fix player_default_eyes not working if cl_run_on_join
+    ends with ;
+  * [Client] Support using dbg_graphs without debug
+  * [Client] Fix left and right joystick hat keys
+  * [Client] Fix camera button overlap the "record demo button"
+    in vanilla
+  * [Client] Clear key states on alt tab
+  * [Client] Improve HiDPI handling
+  * [Client] Fix crash due to changed sound sample assertion
+  * [Editor] Add flip and rotate to speedup arrow angle
+  * [Editor] Make "Allow all unknown settings" allow all settings
+  * [Editor] Add shift+scroll to speedup layer
+  * [Editor] Fix unused tele/speedup tiles deleting with shift
+    fill mode
+  * [Editor] Fix automap refernece popup initial selection
+  * [Editor] Fix automapper seed crash
+  * [Editor] Fix automapper undo and popup crashes
+  * [Editor] Improve editor tune popup and tune tile text render
+  * [Editor] Fix undo for hookthrough's front layer
+  * [Server&Client] Make fifo commands usable from console
+  * [Server] Reset velocity when using move commands
+  * [Server] Fix unpractice when locked
+  * [Server] Fix jetpack tuning and incorrect tune zone override
+  * [Server] Error in auth_add when username is too long
+  * [Server] Disable spectator count for hide_auth_status
+  * [Server] Fix keeping spec
+  * [Server] Don't unpause when force pause timer is over
+- Changes in 19.0:
+  * [Client] Add spectator count to HUD
+  * [Client] Auto-sync player camera option
+  * [Client] Teleport hookline (when 1 exit)
+  * [Editor] Add "Test map locally" button
+  * [Editor] Automapper usability improvements
+  * [Editor] View ingame entities
+  * [Client] 128 player support (not in server yet)
+  * [Client] Android: Support changing touch button background
+    color
+  * [Client] Button to open ddnet-saves.txt
+  * [Client] Partial antiping (cl_antiping_percent)
+  * [Client] Show position in freeview
+  * [Client] Improved ingame server info
+  * [Client] Don't show "add friend" message when everyone
+    is offline
+  * [Client] Teeworlds 0.7 skin fixes
+  * [Client] Show team info in server info
+  * [Client] Display ninja bar in 0.7 servers
+  * [Client] Fix custom map download URLs
+  * [Client] Make it easier to download a file and have
+    If-Modified-Since support
+  * [Client] Add support for checking mapbugs in client prediction
+  * [Client] Remember selected server settings option
+    during search
+  * [Client] Show Teeworlds 0.7 servers in LAN browser
+  * [Client] Reset player speed value in demo
+  * [Client] Fix ping cache for 0.7 servers
+  * [Client] Fix crash with long translations
+  * [Client] Fix Vulkan crash with long text
+  * [Client] Add translation credits to language settings
+  * [Client] Higher quality speedup arrows
+  * [Client] Show position of paused character currently
+    spectating
+  * [Client] Show FPS button in settings
+  * [Client] Add community name tooltip to password popup
+  * [Client] Fix touch control button's corner bug [K1nop1c0]
+  * [Editor] Improve editor envelope preview and envelope
+    curve rendering
+  * [Editor] Confirm deletion of images/sounds that are used in
+    map layers
+  * [Editor] Fix tele cp using wrong number
+  * [Editor] Fix crash with game tiles in other group
+  * [Editor] Fix crash when deleting a sound
+  * [Editor] Fix editor ctrl+right click selecting hidden
+    layers/groups
+  * [Server] Vanish on /spec in practice, add /unpractice
+  * [Server] Separate infjump and invincible
+  * [Server] List available maps as console arguments for
+    sv_map/change_map
+  * [Server] Allow custom mods override client prediction tune
+    zone (per-player)
+  * [Server] Cancel swap command with /cancel
+  * [Server] Add sv_practice_by_default command
+  * [Server] Persist last whisper between map changes
+  * [Server] Preserve super on hot reload
+  * [Server] Do not force infinite ammo for ddrace gametypes
+  * [Server] Fix FIFO on Windows not working with linebreaks
+  * [Server] Add hide_auth_status to rcon
+  * [Tools] mastersrv: Add config file and hot-reloading
+  * [Tools] dilate: Support --dry-run
+
+-------------------------------------------------------------------
 Sun Feb  2 18:03:06 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 18.9.1:
