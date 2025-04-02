@@ -17,7 +17,7 @@
 
 
 Name:           asar
-Version:        3.2.18
+Version:        3.4.0
 Release:        0
 Summary:        Creating atom-shell (electron) app packages
 License:        MIT and ISC
@@ -65,7 +65,7 @@ tsc --removeComments --sourceMap false || true
 %install
 mkdir -pv %{buildroot}%{nodejs_sitelib}/@electron
 mkdir -pv %{buildroot}%{_bindir}
-cp -lr . %{buildroot}%{nodejs_sitelib}/@electron/asar
+cp -alr . %{buildroot}%{nodejs_sitelib}/@electron/asar
 ln -srv %{buildroot}%{nodejs_sitelib}/@electron/asar/bin/asar.js %{buildroot}%{_bindir}/asar
 # symlink old package name
 ln -srv %{buildroot}%{nodejs_sitelib}/{@electron/,}asar
@@ -103,7 +103,11 @@ find -name '.yarn*' -type f -print -delete
 find -name '*package-lock.json' -type f -print -delete
 find -name '.prettierrc*' -type f -print -delete
 find -name '.releaserc*' -type f -print -delete
+find -name '.mocharc*' -type f -print -delete
 find -name tsconfig.json -type f -print -delete
+
+#remove symlink to no longer existent dev executable
+rm -v node_modules/.bin/node-which
 
 # Remove empty directories
 find . -type d -empty -print -delete
