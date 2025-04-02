@@ -26,9 +26,18 @@ License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Text/Convertors
 URL:            https://github.com/rrthomas/recode
 Source:         %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  python3
-BuildRequires:  python3-Cython
-BuildRequires:  python3-setuptools
+
+
+# Need python >= 3.8, SLE/Leap15 has 3.6 as default
+%if 0%{?suse_version} > 1500
+%global pythons %{primary_python}
+%else
+%global pythons python311
+%endif
+
+BuildRequires:  %{pythons}
+BuildRequires:  %{pythons}-Cython
+BuildRequires:  %{pythons}-setuptools
 
 %description
 Recode converts files between various character sets.

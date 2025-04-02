@@ -122,4 +122,13 @@
     <comment></comment>
     <requestid>1265505</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>3b7d92e8e1cf8ea4a2250962f8e14c7f</srcmd5>
+    <version>3.7.15</version>
+    <time>1743611120</time>
+    <user>anag+factory</user>
+    <comment>- Require python &gt;= 3.8
+</comment>
+    <requestid>1266591</requestid>
+  </revision>
 </revisionlist>

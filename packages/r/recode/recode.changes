@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 15:05:18 UTC 2025 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- simplify python version selection
+
+-------------------------------------------------------------------
+Mon Mar 31 10:24:40 UTC 2025 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Require python >= 3.8
+
+-------------------------------------------------------------------
 Sat Mar 29 22:14:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.7.15:
