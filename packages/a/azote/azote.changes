@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  2 16:00:06 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.15.0:
+  * Support for JPEG XL images added to Pillow through pillow-jxl-plugin #214
+  * Support for using miraclemsg when miracle-wm is detected #213
+
+-------------------------------------------------------------------
 Thu Mar 27 17:41:17 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.2:

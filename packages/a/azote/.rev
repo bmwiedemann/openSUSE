@@ -335,4 +335,14 @@
   * Added Turkish lang file #211</comment>
     <requestid>1264629</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>49ba7f47229bb96038e3102cc4f6e4d5</srcmd5>
+    <version>1.15.0</version>
+    <time>1743620747</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.15.0:
+  * Support for JPEG XL images added to Pillow through pillow-jxl-plugin #214
+  * Support for using miraclemsg when miracle-wm is detected #213</comment>
+    <requestid>1266621</requestid>
+  </revision>
 </revisionlist>
