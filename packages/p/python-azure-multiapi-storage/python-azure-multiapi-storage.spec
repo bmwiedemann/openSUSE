@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-multiapi-storage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-multiapi-storage
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        MS Azure Storage Client Library for Python - with Multi API version Support
 License:        MIT

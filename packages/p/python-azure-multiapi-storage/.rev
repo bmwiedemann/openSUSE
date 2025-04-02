@@ -213,4 +213,12 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1198297 from glaubitz)</comment>
     <requestid>1198472</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bf042fe1cd29d8d33432310fb79ec25e</srcmd5>
+    <version>1.4.0</version>
+    <time>1743606875</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266420</requestid>
+  </revision>
 </revisionlist>
