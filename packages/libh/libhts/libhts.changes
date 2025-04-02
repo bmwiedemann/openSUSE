@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:44:21 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 1.21:
+  * Extend annot-tsv with several new command line options.
+  * Allow annot-tsv -a to rename annotations.
+  * Extend annot-tsv --overlap to be able to specify the overlap
+    fraction separately for source and target.
+  * Added new APIs to facilitate low-level CRAM container
+    manipulations, used by the new samtools cat region
+    filtering code.
+  * Some speed improvements.
+  For a complete list of changes, see
+  https://github.com/samtools/htslib/releases/tag/1.21 
+
+-------------------------------------------------------------------
 Mon Jul 15 12:17:55 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.20

@@ -58,4 +58,12 @@ Dependency of python-biopython, which is already in openSUSE:Factory.</comment>
     <comment></comment>
     <requestid>1189980</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>66ef802e916e38a77b15a68ecd0b82fc</srcmd5>
+    <version>1.21</version>
+    <time>1743611110</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266562</requestid>
+  </revision>
 </revisionlist>

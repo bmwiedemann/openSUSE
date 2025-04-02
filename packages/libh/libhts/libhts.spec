@@ -1,7 +1,7 @@
 #
 # spec file for package libhts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Upstream does not bump htscodecs SOVERSION on backwards incompatible changes
-%define htscodecsminversion 1.6.0
+%define htscodecsminversion 1.6.1
 
 Name:           libhts
-Version:        1.20
+Version:        1.21
 Release:        0
 %define   sonum 3
 Summary:        C library for high-throughput sequencing data formats
