@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 31 07:58:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.97.0:
+  * Features
+    - feat: Support key title for githubrelease source, condition
+      @viccuad (#4528)
+  * Maintenance
+    - deps(go): bump module golang.org/x/net to v0.38.0
+      @updateclibot[bot] (#4540)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.36.0
+      @updateclibot[bot] (#4535)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#4513)
+
+-------------------------------------------------------------------
 Mon Mar 24 08:57:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.96.0:
