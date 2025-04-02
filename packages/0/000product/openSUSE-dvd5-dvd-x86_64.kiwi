@@ -186,7 +186,6 @@
       <repopackage name="bluez-cups"/>
       <repopackage name="bluez-firmware"/>
       <repopackage name="bluez-obexd"/>
-      <repopackage name="bluez-zsh-completion"/>
       <repopackage name="bolt"/>
       <repopackage name="boost-license1_87_0"/>
       <repopackage name="branding-openSUSE"/>
@@ -206,7 +205,6 @@
       <repopackage name="btrfsprogs-bash-completion"/>
       <repopackage name="btrfsprogs-udev-rules"/>
       <repopackage name="bubblewrap"/>
-      <repopackage name="bubblewrap-zsh-completion"/>
       <repopackage name="busybox"/>
       <repopackage name="busybox-bzip2"/>
       <repopackage name="busybox-coreutils"/>
@@ -247,11 +245,6 @@
       <repopackage name="chrony-pool-openSUSE"/>
       <repopackage name="cifs-utils"/>
       <repopackage name="clamav"/>
-      <repopackage name="clang"/>
-      <repopackage name="clang-tools"/>
-      <repopackage name="clang19"/>
-      <repopackage name="clang20"/>
-      <repopackage name="clazy"/>
       <repopackage name="clicfs"/>
       <repopackage name="clutter-gtk-lang"/>
       <repopackage name="clutter-lang"/>
@@ -259,7 +252,6 @@
       <repopackage name="cnf"/>
       <repopackage name="cnf-bash"/>
       <repopackage name="cnf-locale"/>
-      <repopackage name="cnf-zsh"/>
       <repopackage name="cogl-lang"/>
       <repopackage name="colord"/>
       <repopackage name="colord-color-profiles"/>
@@ -275,7 +267,6 @@
       <repopackage name="cpp"/>
       <repopackage name="cpp14"/>
       <repopackage name="cpp15"/>
-      <repopackage name="cppcheck"/>
       <repopackage name="cpupower"/>
       <repopackage name="cpupower-bash-completion"/>
       <repopackage name="cpupower-lang"/>
@@ -298,7 +289,6 @@
       <repopackage name="cups-pk-helper"/>
       <repopackage name="cups-pk-helper-lang"/>
       <repopackage name="curl"/>
-      <repopackage name="curl-zsh-completion"/>
       <repopackage name="cyreal-lobster-cyrillic-fonts"/>
       <repopackage name="cyrus-sasl"/>
       <repopackage name="cyrus-sasl-crammd5"/>
@@ -354,7 +344,6 @@
       <repopackage name="dolphin"/>
       <repopackage name="dolphin-part"/>
       <repopackage name="dolphin-part-lang"/>
-      <repopackage name="dolphin-zsh-completion"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
       <repopackage name="dracut"/>
@@ -440,7 +429,6 @@
       <repopackage name="fd0ssh"/>
       <repopackage name="fdupes"/>
       <repopackage name="feh"/>
-      <repopackage name="feh-zsh-completion"/>
       <repopackage name="ffmpegthumbnailer"/>
       <repopackage name="ffmpegthumbs"/>
       <repopackage name="file"/>
@@ -454,14 +442,12 @@
       <repopackage name="firewalld"/>
       <repopackage name="firewalld-bash-completion"/>
       <repopackage name="firewalld-lang"/>
-      <repopackage name="firewalld-zsh-completion"/>
       <repopackage name="fixmath"/>
       <repopackage name="flatpak"/>
       <repopackage name="flatpak-kcm6"/>
       <repopackage name="flatpak-kcm6-lang"/>
       <repopackage name="flatpak-remote-flathub"/>
       <repopackage name="flatpak-selinux"/>
-      <repopackage name="flatpak-zsh-completion"/>
       <repopackage name="flute"/>
       <repopackage name="folks-data"/>
       <repopackage name="folks-lang"/>
@@ -541,7 +527,6 @@
       <repopackage name="git"/>
       <repopackage name="git-core"/>
       <repopackage name="git-email"/>
-      <repopackage name="git-svn"/>
       <repopackage name="git-web"/>
       <repopackage name="gjs"/>
       <repopackage name="glib-networking"/>
@@ -761,9 +746,6 @@
       <repopackage name="gzip"/>
       <repopackage name="hack-fonts"/>
       <repopackage name="hdparm"/>
-      <repopackage name="heaptrack"/>
-      <repopackage name="heaptrack-gui"/>
-      <repopackage name="heaptrack-lang"/>
       <repopackage name="hicolor-icon-theme"/>
       <repopackage name="hicolor-icon-theme-branding-openSUSE"/>
       <repopackage name="hostname"/>
@@ -911,10 +893,6 @@
       <repopackage name="kdepim-runtime-lang"/>
       <repopackage name="kdeplasma6-addons"/>
       <repopackage name="kdeplasma6-addons-lang"/>
-      <repopackage name="kdevelop"/>
-      <repopackage name="kdevelop-lang"/>
-      <repopackage name="kdevplatform"/>
-      <repopackage name="kdevplatform-lang"/>
       <repopackage name="kdialog"/>
       <repopackage name="kdialog-lang"/>
       <repopackage name="kdoctools"/>
@@ -1130,7 +1108,6 @@
       <repopackage name="konsole"/>
       <repopackage name="konsole-part"/>
       <repopackage name="konsole-part-lang"/>
-      <repopackage name="konsole-zsh-completion"/>
       <repopackage name="kontact"/>
       <repopackage name="kontact-lang"/>
       <repopackage name="kontactinterface"/>
@@ -1305,8 +1282,6 @@
       <repopackage name="libboost_iostreams1_87_0-x86-64-v3"/>
       <repopackage name="libboost_locale1_87_0"/>
       <repopackage name="libboost_locale1_87_0-x86-64-v3"/>
-      <repopackage name="libboost_program_options1_87_0"/>
-      <repopackage name="libboost_program_options1_87_0-x86-64-v3"/>
       <repopackage name="libboost_python-py3-1_87_0"/>
       <repopackage name="libboost_python-py3-1_87_0-x86-64-v3"/>
       <repopackage name="libboost_thread1_87_0"/>
@@ -1374,11 +1349,6 @@
       <repopackage name="libcjson1"/>
       <repopackage name="libclamav12"/>
       <repopackage name="libclammspack0"/>
-      <repopackage name="libclang-cpp19"/>
-      <repopackage name="libclang-cpp20"/>
-      <repopackage name="libclang13"/>
-      <repopackage name="libclang_rt19"/>
-      <repopackage name="libclang_rt20"/>
       <repopackage name="libclastfm0"/>
       <repopackage name="libcloudproviders0"/>
       <repopackage name="libclucene-contribs-lib1"/>
@@ -1847,8 +1817,6 @@
       <repopackage name="libkcddb-qt6"/>
       <repopackage name="libkcddb-qt6-lang"/>
       <repopackage name="libKCddb5"/>
-      <repopackage name="libkchart-lang"/>
-      <repopackage name="libKChart2"/>
       <repopackage name="libkColorPicker-Qt6-0"/>
       <repopackage name="libkcompactdisc-lang"/>
       <repopackage name="libKCompactDisc6-5"/>
@@ -1863,7 +1831,6 @@
       <repopackage name="libKDEGames6"/>
       <repopackage name="libkdepim"/>
       <repopackage name="libkdepim-lang"/>
-      <repopackage name="libkdevplatform61"/>
       <repopackage name="libkdsoap-qt6-2"/>
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
       <repopackage name="libKEduVocDocument5"/>
@@ -2188,7 +2155,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia112"/>
-      <repopackage name="libLLVM19"/>
       <repopackage name="libLLVM20"/>
       <repopackage name="liblmdb-0_9_30"/>
       <repopackage name="libloader"/>
@@ -2374,7 +2340,6 @@
       <repopackage name="libpcaudio0"/>
       <repopackage name="libpci3"/>
       <repopackage name="libpciaccess0"/>
-      <repopackage name="libpcre1"/>
       <repopackage name="libpcre2-16-0"/>
       <repopackage name="libpcre2-32-0"/>
       <repopackage name="libpcre2-8-0"/>
@@ -2504,7 +2469,6 @@
       <repopackage name="libQt6DBus6"/>
       <repopackage name="libQt6Designer6"/>
       <repopackage name="libQt6Gui6"/>
-      <repopackage name="libQt6Help6"/>
       <repopackage name="libQt6HunspellInputMethod6"/>
       <repopackage name="libqt6keychain1"/>
       <repopackage name="libQt6LabsAnimation6"/>
@@ -2667,7 +2631,6 @@
       <repopackage name="libsensors4"/>
       <repopackage name="libsepol2"/>
       <repopackage name="libserd-0-0"/>
-      <repopackage name="libserf-1-1"/>
       <repopackage name="libserializer"/>
       <repopackage name="libsgutils2-1_48-2"/>
       <repopackage name="libsha1detectcoll1"/>
@@ -2741,8 +2704,6 @@
       <repopackage name="libsubid5"/>
       <repopackage name="libsuitesparseconfig7"/>
       <repopackage name="libsunpinyin3"/>
-      <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
-      <repopackage name="libsvn_auth_kwallet-1-0"/>
       <repopackage name="libsvrcore0"/>
       <repopackage name="libSvtAv1Enc3"/>
       <repopackage name="libswresample3_9"/>
@@ -2826,7 +2787,6 @@
       <repopackage name="libusbredirparser1"/>
       <repopackage name="libusdm0"/>
       <repopackage name="libutf8_range-28_3_0"/>
-      <repopackage name="libutf8proc3"/>
       <repopackage name="libuuid1"/>
       <repopackage name="libuv1"/>
       <repopackage name="libv4l"/>
@@ -3050,9 +3010,6 @@
       <repopackage name="lightsoff-lang"/>
       <repopackage name="linux-glibc-devel"/>
       <repopackage name="lklug-fonts"/>
-      <repopackage name="llvm19-gold"/>
-      <repopackage name="llvm19-libclang13"/>
-      <repopackage name="llvm20-gold"/>
       <repopackage name="localsearch"/>
       <repopackage name="localsearch-lang"/>
       <repopackage name="login_defs"/>
@@ -3115,8 +3072,6 @@
       <repopackage name="Mesa-libEGL1"/>
       <repopackage name="Mesa-libGL1"/>
       <repopackage name="Mesa-libva"/>
-      <repopackage name="meson"/>
-      <repopackage name="meson-vim"/>
       <repopackage name="messagelib"/>
       <repopackage name="messagelib-lang"/>
       <repopackage name="metamail"/>
@@ -3236,7 +3191,6 @@
       <repopackage name="nfs-client"/>
       <repopackage name="nfs-kernel-server"/>
       <repopackage name="nftables"/>
-      <repopackage name="ninja"/>
       <repopackage name="nkf"/>
       <repopackage name="notification-daemon"/>
       <repopackage name="notification-daemon-lang"/>
@@ -3249,7 +3203,6 @@
       <repopackage name="nvidia-open-driver-G06-signed-kmp-default"/>
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
-      <repopackage name="nvme-cli-zsh-completion"/>
       <repopackage name="obex-data-server"/>
       <repopackage name="ocean-sound-theme6"/>
       <repopackage name="ofl"/>
@@ -3606,7 +3559,6 @@
       <repopackage name="powerdevil6"/>
       <repopackage name="powerdevil6-lang"/>
       <repopackage name="powerprofilesctl-bash-completion"/>
-      <repopackage name="powerprofilesctl-zsh-completion"/>
       <repopackage name="ppp"/>
       <repopackage name="pptp"/>
       <repopackage name="pragha"/>
@@ -3783,7 +3735,6 @@
       <repopackage name="python313-pycurl"/>
       <repopackage name="python313-pygdbmi"/>
       <repopackage name="python313-pygit2"/>
-      <repopackage name="python313-Pygments"/>
       <repopackage name="python313-pyinotify"/>
       <repopackage name="python313-pyOpenSSL"/>
       <repopackage name="python313-pysmbc"/>
@@ -4015,9 +3966,6 @@
       <repopackage name="step-lang"/>
       <repopackage name="stix-fonts"/>
       <repopackage name="strace"/>
-      <repopackage name="subversion"/>
-      <repopackage name="subversion-bash-completion"/>
-      <repopackage name="subversion-perl"/>
       <repopackage name="sudo"/>
       <repopackage name="sudo-plugin-python"/>
       <repopackage name="sunpinyin-data"/>
@@ -4244,7 +4192,6 @@
       <repopackage name="udisks2"/>
       <repopackage name="udisks2-bash-completion"/>
       <repopackage name="udisks2-lang"/>
-      <repopackage name="udisks2-zsh-completion"/>
       <repopackage name="umbrello"/>
       <repopackage name="umbrello-lang"/>
       <repopackage name="un-fonts"/>
@@ -4315,7 +4262,6 @@
       <repopackage name="wireplumber"/>
       <repopackage name="wireplumber-audio"/>
       <repopackage name="wireplumber-lang"/>
-      <repopackage name="wireplumber-zsh-completion"/>
       <repopackage name="wmctrl"/>
       <repopackage name="wol"/>
       <repopackage name="wol-lang"/>
@@ -4656,7 +4602,6 @@
       <repopackage name="zip"/>
       <repopackage name="zisofs-tools"/>
       <repopackage name="zoo"/>
-      <repopackage name="zsh"/>
       <repopackage name="zstd"/>
       <repopackage name="zypper"/>
       <repopackage name="zypper-log"/>
