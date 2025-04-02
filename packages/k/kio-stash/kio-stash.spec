@@ -1,7 +1,7 @@
 #
 # spec file for package kio-stash
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,67 +12,60 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%bcond_without lang
+%define kf6_version 6.8
+%define qt6_version 6.6
+
 Name:           kio-stash
-Version:        1.0
+Version:        1.0git.20250301T021103~51f07b6
 Release:        0
 Summary:        KIO slave for stashing temporary files
-License:        GPL-2.0+
-Group:          System/GUI/KDE
-Url:            http://www.kde.org
-Source:         http://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  extra-cmake-modules
+License:        GPL-2.0-or-later
+URL:            https://www.kde.org
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  intltool
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5Core) >= 5.4.0
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Test)
-BuildRequires:  cmake(KF5Config) >= 5.22.0
-BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5I18n)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Recommends:     %{name}-lang
-%if %{with lang}
-%lang_package
-%endif
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 
 %description
 This KIO slave can be used to stash files in a virtual
 folder temporarily. It requires use of a KIO-compatible
 file manager, like dolphin.
 
+%lang_package
+
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %make_jobs
+%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+
+%kf6_build
 
 %install
-  %kf5_makeinstall -C build
-  %if %{with lang}
-  # There are no translations yet
-  echo > %{name}.lang
-  #%%find_lang kio_stash %%{name}.lang
-  #%%kf5_find_htmldocs
-  %endif
+%kf6_install
+
+%find_lang %{name} --all-name
 
 %files
-%defattr(-,root,root)
-%doc COPYING README.md
-%{_kf5_dbusinterfacesdir}/org.kde.kio.StashNotifier.xml
-%{_kf5_plugindir}/kf5/
-%{_kf5_appstreamdir}/org.kde.filestash.appdata.xml
+%license LICENSES/*
+%doc README.md
+%{_kf6_appstreamdir}/org.kde.filestash.appdata.xml
+%{_kf6_dbusinterfacesdir}/org.kde.kio.StashNotifier.xml
+%dir %{_kf6_plugindir}/kf6/kded
+%{_kf6_plugindir}/kf6/kded/stashnotifier.so
+%{_kf6_plugindir}/kf6/kio/filestash.so
 
-%if %{with lang}
 %files lang -f %{name}.lang
-%defattr(-,root,root,-)
-%endif
 
 %changelog

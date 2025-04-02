@@ -7,4 +7,12 @@
     <comment>kio-stash is a kio slave that allows temporary stashing of files in RAM.</comment>
     <requestid>508259</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>41b3755add2a3754ca914daf63488e3a</srcmd5>
+    <version>1.0git.20250301T021103~51f07b6</version>
+    <time>1743606831</time>
+    <user>anag+factory</user>
+    <comment>- Switch to a git snapshot to build with KF6/Qt6</comment>
+    <requestid>1266287</requestid>
+  </revision>
 </revisionlist>
