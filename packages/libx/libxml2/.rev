@@ -1211,4 +1211,16 @@
     - xpath: Fix parsing of non-ASCII names</comment>
     <requestid>1247404</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>21d824c56866e3bff74545ea860554a6</srcmd5>
+    <version>2.13.7</version>
+    <time>1743606265</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.13.7:
+  + Regressions:
+    - tree: Fix xmlTextMerge with NULL args
+    - io: Fix `compressed` flag for uncompressed stdin
+    - parser: Fix parsing of DTD content (forwarded request 1265279 from iznogood)</comment>
+    <requestid>1265700</requestid>
+  </revision>
 </revisionlist>

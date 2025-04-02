@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 28 18:28:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.13.7:
+  + Regressions:
+    - tree: Fix xmlTextMerge with NULL args
+    - io: Fix `compressed` flag for uncompressed stdin
+    - parser: Fix parsing of DTD content
+
+-------------------------------------------------------------------
 Tue Feb 18 22:04:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.13.6 ([bsc#1237363], [bsc#1237370], [bsc#1237418]):
