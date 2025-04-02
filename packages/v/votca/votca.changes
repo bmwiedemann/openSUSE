@@ -1,15 +1,23 @@
 -------------------------------------------------------------------
+Fri Mar 28 18:04:34 UTC 2025 - Christoph Junghans <junghans@votca.org>
+
+- Update to v2025
+  - Hide some libint2 warnings ([gh#votca/votca#1166])
+  - Update CI ([gh#votca/votca#1168], [gh#votca/votca#1169])
+  - Add arm64 docker container ([gh#votca/votca#1164])
+
+-------------------------------------------------------------------
 Sun Sep 29 20:24:56 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Update to v2024.2
-  - Editorial changes for v2024.1 JOSS paper ([gh#votca/votca##1148],
-    [gh#votca/votca##1153], [gh#votca/votca##1154])
-  - Fix permissions on some scripts ([gh#votca/votca##1150])
-  - Fix exit code on some scripts ([gh#votca/votca##1151])
-  - Update CITATION.cff ([gh#votca/votca##1155])
-  - Clean up CI ([gh#votca/votca##1146], [gh#votca/votca##1160],
-    [gh#votca/votca##1161], [gh#votca/votca##1162])
-  - supporting ORCA6 logfile reading ([gh#votca/votca##1157])
+  - Editorial changes for v2024.1 JOSS paper ([gh#votca/votca#1148],
+    [gh#votca/votca#1153], [gh#votca/votca#1154])
+  - Fix permissions on some scripts ([gh#votca/votca#1150])
+  - Fix exit code on some scripts ([gh#votca/votca#1151])
+  - Update CITATION.cff ([gh#votca/votca#1155])
+  - Clean up CI ([gh#votca/votca#1146], [gh#votca/votca#1160],
+    [gh#votca/votca#1161], [gh#votca/votca#1162])
+  - supporting ORCA6 logfile reading ([gh#votca/votca#1157])
 
 
 -------------------------------------------------------------------

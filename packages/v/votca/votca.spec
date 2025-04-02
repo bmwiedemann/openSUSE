@@ -25,10 +25,10 @@
 %endif
 
 Name:           votca
-Version:        2024.2
+Version:        2025
 Release:        0
 %define         uversion %{version}
-%define         sover 2024
+%define         sover 2025
 Summary:        Versatile Object-oriented Toolkit for Coarse-graining Applications
 License:        Apache-2.0
 Group:          Productivity/Scientific/Chemistry
