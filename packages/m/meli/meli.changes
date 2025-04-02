@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Mar 18 00:32:00 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update specfile to accommodate new flavour as a new package.
+
+-------------------------------------------------------------------
+Mon Mar 10 01:36:21 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Add _multibuild file
+  * debug tracing mode should be a separate build flavour
+
+-------------------------------------------------------------------
 Fri Dec 20 11:03:51 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - This package requires libgpgme
