@@ -2,6 +2,7 @@
 # spec file for package shadowsocks-libev
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,6 @@
 
 
 %define libver 2
-
 Name:           shadowsocks-libev
 Version:        3.3.5
 Release:        0
@@ -38,28 +38,23 @@ Source9:        %{name}-server@.service
 Source10:       %{name}-tunnel@.service
 Source11:       %{name}-nat@.service
 Source12:       %{name}-redir@.service
+Patch0:         shadowsocks-libev-3.3.5-pcre2.patch
+BuildRequires:  asciidoc
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  mbedtls-devel < 3
-BuildRequires:  pkgconfig(libcares)
-BuildRequires:  pkgconfig(libev)
-BuildRequires:  pkgconfig(libpcre)
-BuildRequires:  pkgconfig(libsodium) >= 1.0.4
-BuildRequires:  pkgconfig(openssl)
-%if 0%{?fedora} >= 24
 BuildRequires:  pkgconfig
-%else
-BuildRequires:  pkg-config
-%endif
-%if 0%{?fedora} == 24
-BuildRequires:  ghostscript-core
-%endif
-BuildRequires:  asciidoc
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(libcares)
+BuildRequires:  pkgconfig(libev)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libsodium) >= 1.0.4
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
 Requires(pre):  shadow
 Recommends:     shadowsocks-v2ray-plugin
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
 %description
@@ -100,9 +95,10 @@ low-end boxes.
 This package provides development headers for it.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 export CFLAGS="%{optflags} -fcommon"
 %configure \
            --enable-shared
@@ -112,7 +108,7 @@ export CFLAGS="%{optflags} -fcommon"
 %install
 %make_install
 
-rm -rf %{buildroot}/%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 install -d %{buildroot}%{_sysconfdir}/shadowsocks/
 install -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/shadowsocks/
@@ -201,12 +197,9 @@ chmod 640 %{_sysconfdir}/shadowsocks/*
 %service_del_postun %{name}-redir@.service
 %service_del_postun %{name}-tunnel@.service
 
-%post -n lib%{name}2 -p /sbin/ldconfig
-
-%postun -n lib%{name}2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}2
 
 %files
-%defattr(-,root,root)
 %doc Changes README.md AUTHORS
 %dir %{_sysconfdir}/shadowsocks
 %config(noreplace) %{_sysconfdir}/shadowsocks/%{name}-config.json
@@ -217,22 +210,22 @@ chmod 640 %{_sysconfdir}/shadowsocks/*
 %{_bindir}/ss-tunnel
 %{_bindir}/ss-manager
 %{_bindir}/ss-nat
-%{_mandir}/man8/%{name}.8.gz
-%{_mandir}/man1/ss-*.1.gz
+%{_mandir}/man8/%{name}.8%{?ext_man}
+%{_mandir}/man1/ss-*.1%{?ext_man}
 %{_sbindir}/rcshadowsocks-libev-*
 %{_unitdir}/%{name}-*.service
 
 %files -n lib%{name}%{libver}
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/lib%{name}.so.*
 
 %files doc
-%defattr(-,root,root)
+%license COPYING
 %dir %{_datadir}/doc/%{name}
 %doc %{_datadir}/doc/%{name}/*.html
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_includedir}/shadowsocks.h
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/lib%{name}.so

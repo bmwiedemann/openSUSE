@@ -194,4 +194,12 @@
   * Create the PID under /run/shadowsocks (forwarded request 1235123 from hillwood)</comment>
     <requestid>1235124</requestid>
   </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>ea93e5babc8dce27307e6dca2c22e46d</srcmd5>
+    <version>3.3.5</version>
+    <time>1743606800</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266034</requestid>
+  </revision>
 </revisionlist>
