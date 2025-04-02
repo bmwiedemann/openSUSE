@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Mar 29 22:51:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- SCons 4.9.1:
+  * Fix CacheDir initialization code failed on Python 3.7
+  * developer visible fixes and changes for other platforms
+
+-------------------------------------------------------------------
 Sat Mar 15 08:53:16 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - SCons 4.9.0:
