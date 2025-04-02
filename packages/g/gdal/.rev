@@ -844,4 +844,14 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
     <comment>fix build, drop pcre (forwarded request 1264698 from AndreasStieger)</comment>
     <requestid>1264699</requestid>
   </revision>
+  <revision rev="96" vrev="3">
+    <srcmd5>55170092b56a2c01a34d0807e6c24f15</srcmd5>
+    <version>3.10.2</version>
+    <time>1743607057</time>
+    <user>anag+factory</user>
+    <comment>- Drop libzstd-devel-static again: this was only a workaround to
+  unblock Factory while waiting on the proper fix on zstd
+  (boo#1240043). (forwarded request 1266399 from dimstar)</comment>
+    <requestid>1266401</requestid>
+  </revision>
 </revisionlist>

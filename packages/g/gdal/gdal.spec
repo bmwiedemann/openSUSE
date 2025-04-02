@@ -68,7 +68,6 @@ BuildRequires:  libcryptopp-devel
 BuildRequires:  libdeflate-devel
 BuildRequires:  libtool
 BuildRequires:  libzstd-devel
-BuildRequires:  libzstd-devel-static
 BuildRequires:  mysql-devel
 # This one is needed for Leap :-(
 BuildRequires:  opencl-headers

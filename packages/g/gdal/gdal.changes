@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 13:25:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop libzstd-devel-static again: this was only a workaround to
+  unblock Factory while waiting on the proper fix on zstd
+  (boo#1240043).
+
+-------------------------------------------------------------------
 Thu Mar 27 20:13:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build, need zstd-devel-static
