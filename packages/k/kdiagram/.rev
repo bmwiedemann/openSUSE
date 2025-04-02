@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>863818</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4313ab4d9ba0e1f0c54d1babe109ddc5</srcmd5>
+    <version>2.8.0</version>
+    <time>1743606829</time>
+    <user>anag+factory</user>
+    <comment>- Add patch:
+  * kdiagram-cmake4.patch</comment>
+    <requestid>1266182</requestid>
+  </revision>
 </revisionlist>

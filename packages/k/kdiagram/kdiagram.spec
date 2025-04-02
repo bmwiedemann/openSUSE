@@ -22,9 +22,10 @@ Version:        2.8.0
 Release:        0
 Summary:        Powerful libraries (KChart, KGantt) for creating business diagrams
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://www.kde.org/
 Source:         https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         kdiagram-cmake4.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  libqt5-linguist-devel >= 5.12.0
@@ -38,7 +39,6 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.12.0
 
 %package -n libKChart2
 Summary:        KChart library for kdiagram
-Group:          System/Libraries
 Recommends:     libkchart-lang = %{version}
 Provides:       libkchart = %{version}
 
@@ -47,7 +47,6 @@ This package contains the KChart libraries from the kdiagram package.
 
 %package -n libKGantt2
 Summary:        Gantt chart implementation for kdiagram
-Group:          System/Libraries
 Recommends:     libkgantt-lang = %{version}
 Provides:       libkgantt = %{version}
 
@@ -60,7 +59,6 @@ This package contains the KGantt libraries from the kdiagram package.
 
 %package devel
 Summary:        Development package for the KDiagram libraries
-Group:          System/Libraries/KDE
 Requires:       libKChart2 = %{version}
 Requires:       libKGantt2 = %{version}
 Requires:       cmake(Qt5Core) >= 5.12.0
@@ -72,23 +70,21 @@ Requires:       cmake(Qt5Widgets) >= 5.12.0
 Development package for the KDiagram libraries
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-  %cmake_kf5 -d build
-  %make_jobs
+%cmake_kf5 -d build
+%cmake_build
 
 %install
-  %kf5_makeinstall -C build
+%kf5_makeinstall -C build
 %if %{with lang}
-  %find_lang kgantt --with-qt --without-mo
-  %find_lang kchart --with-qt --without-mo
+%find_lang kgantt --with-qt --without-mo
+%find_lang kchart --with-qt --without-mo
 %endif
 
-%post -n libKChart2 -p /sbin/ldconfig
-%postun -n libKChart2 -p /sbin/ldconfig
-%post -n libKGantt2 -p /sbin/ldconfig
-%postun -n libKGantt2 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libKChart2
+%ldconfig_scriptlets -n libKGantt2
 
 %files -n libKChart2
 %license LICENSE.GPL.txt
