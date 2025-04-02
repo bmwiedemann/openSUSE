@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:46:28 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.29.4
+  * Bugfixes:
+    #9990: Tildes break directory autocomplete
+
+-------------------------------------------------------------------
 Wed Mar 12 12:01:43 UTC 2025 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.29.3
