@@ -119,4 +119,22 @@
   * Enabled detection of dotprod support in Windows ARM64 builds.</comment>
     <requestid>1194548</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>278c78c2d0e8611d8c2002788891d5e1</srcmd5>
+    <version>1.23</version>
+    <time>1743606310</time>
+    <user>anag+factory</user>
+    <comment>- update to 1.23:
+  * Fixed bug introduced in 1.20 where incorrect checksums could
+    be calculated if libdeflate was compiled with clang at -O0
+    and run on a CPU supporting AVX512.
+  * Fixed build error when using -mno-evex512 with clang 18+ or
+    gcc 14+.
+  * Increased the minimum CMake version to 3.10.
+  * Further optimized the x86 CRC code.
+  * The CMake-based build system now implements a workaround for
+    gcc being paired with a too-old binutils version.
+    This can prevent build errors.</comment>
+    <requestid>1265498</requestid>
+  </revision>
 </revisionlist>

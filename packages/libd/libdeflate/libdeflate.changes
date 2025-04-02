@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:46:46 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23:
+  * Fixed bug introduced in 1.20 where incorrect checksums could
+    be calculated if libdeflate was compiled with clang at -O0
+    and run on a CPU supporting AVX512.
+  * Fixed build error when using -mno-evex512 with clang 18+ or
+    gcc 14+.
+  * Increased the minimum CMake version to 3.10.
+  * Further optimized the x86 CRC code.
+  * The CMake-based build system now implements a workaround for
+    gcc being paired with a too-old binutils version.
+    This can prevent build errors.
+
+-------------------------------------------------------------------
 Sun Aug 18 12:58:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21:
