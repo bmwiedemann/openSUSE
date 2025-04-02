@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Apr  1 06:38:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.54:
+  * General
+    - Add Mia Grenell as a Documentation Maintainer @zihanKuang
+      (#14160)
+    - fix: dry run errors not showing up @souvikinator (#13835)
+    - remove polygon meshery shapes component @amitamrutiya
+      (#14156)
+  * - Meshery CLI
+    - fix(mesheryctl-e2e): create BATS libs folder if not existing
+      @lekaf974 (#14185)
+    - [mesheryctl] ci e2e bats improvment @lekaf974 (#14133)
+    - refactor: mesheryctl add reusable function list function
+      @lekaf974 (#14109)
+  * - Maintenance
+    - fix: jekyll docs update @ianrwhitney (#14170)
+    - [mesheryctl] ci e2e bats improvment @lekaf974 (#14133)
+    - feat: enable e2e test gh action on master push @ianrwhitney
+      (#14153)
+  * - Documentation
+    - Typo-error in docs @alokdangre (#14174)
+    - Added Related Tutorials section to Integrations pages
+      @vr-varad (#13937)
+    - Update publishing workflow documentation and images
+      @zihanKuang (#13955)
+    - fix: go.sum missing update @lekaf974 (#14151)
+- update to 0.8.53:
+  * General
+    - bump schemas and meshkit @aabidsofi19 (#14150)
+  * Meshery CLI
+    - Dockerfile Fix @Chirag-16 (#14135)
+    - [mesheryctl] UX: Fix components command · Issue #14077
+      @dhiraj-kadam (#14095)
+    - Update README.md with cli e2e test url @mishrlaksh (#14137)
+  * Maintenance
+    - feat: added jekyll test report update gh action @ianrwhitney
+      (#13944)
+    - Fix: update documentation issue template with navigation sync
+      reminder @zihanKuang (#14127)
+  * Documentation
+    - [CI] Added test for user session logout @Pratik-050 (#13807)
+    - [Docs] Fixed Markdown and Code Block Formatting in
+      Contributing to UI - Sistent @Sumitsh28 (#14130)
+    - Dockerfile Fix @Chirag-16 (#14135)
+    - [mesheryctl] UX: Fix components command · Issue #14077
+      @dhiraj-kadam (#14095)
+
+-------------------------------------------------------------------
 Tue Mar 25 09:37:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.52:
