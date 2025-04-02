@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Mar 27 14:56:45 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
+
+- Update to 1.4.4:
+  * Forward the rust log to python log
+
+-------------------------------------------------------------------
+Thu Feb 27 01:38:43 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable builds only for aarch64 and x86_64
+- enable Leap builds
+
+-------------------------------------------------------------------
+Sat Feb  1 19:43:05 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- initial packaging

@@ -1,0 +1,5 @@
+<package name="python-proton-vpn-local-agent" project="openSUSE:Factory">
+  <title>python-proton-vpn-local-agent</title>
+  <description>Proton VPN local agent written in Rust</description>
+  <url>https://github.com/ProtonVPN/local-agent-rs</url>
+</package>
