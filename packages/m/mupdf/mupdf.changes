@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  2 11:24:01 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to 1.25.6:
+  * Avoid crash when noto fonts have zero size.
+  * Fix bug in q/Q count balancing.
+  * Improve clip/layer nesting to handle more than 1000 nested levels.
+  * Fix bug where all redaction annotations were applied intead of just one.
+
+-------------------------------------------------------------------
 Mon Mar 17 10:22:43 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to 1.25.5:
