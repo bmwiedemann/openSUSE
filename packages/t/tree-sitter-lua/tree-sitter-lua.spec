@@ -18,13 +18,13 @@
 
 %define         _name lua
 Name:           tree-sitter-lua
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Lua grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-lua
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  tree-sitter
+BuildRequires:  tree-sitter >= 0.24.0
 %treesitter_grammars %{_name}
 
 %description
