@@ -1061,4 +1061,17 @@
   * Bump chrono from 0.4.39 to 0.4.40</comment>
     <requestid>1252731</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7a700713c2312bd5b2e5ac5e8505aaff</srcmd5>
+    <version>0.21.0</version>
+    <time>1743611128</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.21.0:
+  * Flake bump 2025-03-20
+  * Remove unnescesarry unsafe blocks for libc major/minor device id
+  * Unwrap -&gt; expect on libc deviceid calls
+  * Formatting issue
+  * Fix unused PermissionsPlus fields</comment>
+    <requestid>1266568</requestid>
+  </revision>
 </revisionlist>

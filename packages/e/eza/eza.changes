@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 13:45:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.0:
+  * Flake bump 2025-03-20
+  * Remove unnescesarry unsafe blocks for libc major/minor device id
+  * Unwrap -> expect on libc deviceid calls
+  * Formatting issue
+  * Fix unused PermissionsPlus fields
+
+-------------------------------------------------------------------
 Thu Mar 13 11:06:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.20.24:
