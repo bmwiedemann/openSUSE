@@ -164,4 +164,31 @@
     <comment></comment>
     <requestid>1200136</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5b8e4cafeb5e82264c7fa94b9dfad7cb</srcmd5>
+    <version>17.1</version>
+    <time>1743612831</time>
+    <user>anag+factory</user>
+    <comment>- Update to 17.1:
+  * Quality of chess play
+    In our testing against its predecessor, Stockfish 17.1 shows a
+    consistent improvement in performance, with an Elo gain of up
+    to 20 points and winning close to 2 times more game pairs than
+    it loses.
+  * New speedtest command
+    The new speedtest command benchmarks your computer's performance (measured
+    in nodes per second) using a realistic and stable test. To run it, you'll
+    need command line access—give it a try and share your results with the community!
+  * Improved hardware support
+    Stockfish is no longer limited to 1024 threads and will allow users to specify
+    whatever their system is capable of. Additionally, hardware such as ppc64 and
+    Loongson is now better supported at build time.
+  * Bug fixes for tablebase support
+    Our previous release introduced improved engine lines (principal variations)
+    ending in mate as soon as a mate score is announced. A side effect of this
+    improvement was a rare corner case involving cursed tablebase wins, only relevant
+    in correspondence chess when the 50-move rule does not apply, which has now been
+    fixed. Relatedly, time management has also been improved to avoid potential time losses.</comment>
+    <requestid>1266620</requestid>
+  </revision>
 </revisionlist>

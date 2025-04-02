@@ -1,16 +1,8 @@
-Index: Stockfish-sf_17/src/Makefile
+Index: Stockfish-sf_17.1/src/Makefile
 ===================================================================
---- Stockfish-sf_17.orig/src/Makefile
-+++ Stockfish-sf_17/src/Makefile
-@@ -801,7 +801,6 @@ help:
- 	@echo "help                    > Display architecture details"
- 	@echo "profile-build           > standard build with profile-guided optimization"
- 	@echo "build                   > skip profile-guided optimization"
--	@echo "net                     > Download the default nnue nets"
- 	@echo "strip                   > Strip executable"
- 	@echo "install                 > Install executable"
- 	@echo "clean                   > Clean up"
-@@ -862,20 +861,20 @@ ifneq ($(SUPPORTED_ARCH), true)
+--- Stockfish-sf_17.1.orig/src/Makefile
++++ Stockfish-sf_17.1/src/Makefile
+@@ -927,20 +927,20 @@ ifneq ($(SUPPORTED_ARCH), true)
  endif
  
  
@@ -35,61 +27,16 @@ Index: Stockfish-sf_17/src/Makefile
  	@echo ""
  	@echo "Step 1/4. Building instrumented executable ..."
  	$(MAKE) ARCH=$(ARCH) COMP=$(COMP) $(profile_make)
-@@ -917,44 +916,6 @@ profileclean:
- 	@rm -f stockfish.res
- 	@rm -f ./-lstdc++.res
- 
--define fetch_network
--	@echo "Default net: $(nnuenet)"
--	@if [ "x$(curl_or_wget)" = "x" ]; then \
--		echo "Neither curl nor wget is installed. Install one of these tools unless the net has been downloaded manually"; \
--	fi
--	@if [ "x$(shasum_command)" = "x" ]; then \
--		echo "shasum / sha256sum not found, skipping net validation"; \
--	elif test -f "$(nnuenet)"; then \
--		if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
--			echo "Removing invalid network"; rm -f $(nnuenet); \
--		fi; \
--	fi;
--	@for nnuedownloadurl in "$(nnuedownloadurl1)" "$(nnuedownloadurl2)"; do \
--		if test -f "$(nnuenet)"; then \
--			echo "$(nnuenet) available : OK"; break; \
--		else \
--			if [ "x$(curl_or_wget)" != "x" ]; then \
--				echo "Downloading $${nnuedownloadurl}"; $(curl_or_wget) $${nnuedownloadurl} > $(nnuenet);\
--			else \
--				echo "No net found and download not possible"; exit 1;\
--			fi; \
--		fi; \
--		if [ "x$(shasum_command)" != "x" ]; then \
--			if [ "$(nnuenet)" != "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
--				echo "Removing failed download"; rm -f $(nnuenet); \
--			fi; \
--		fi; \
--	done
--	@if ! test -f "$(nnuenet)"; then \
--		echo "Failed to download $(nnuenet)."; \
--	fi;
--	@if [ "x$(shasum_command)" != "x" ]; then \
--		if [ "$(nnuenet)" = "nn-"`$(shasum_command) $(nnuenet) | cut -c1-12`".nnue" ]; then \
--			echo "Network validated"; break; \
--		fi; \
--	fi;
--endef
--
- # set up shell variables for the net stuff
- define netvariables
- $(eval nnuenet := $(shell grep $(1) evaluate.h | grep define | sed 's/.*\(nn-[a-z0-9]\{12\}.nnue\).*/\1/'))
-@@ -984,7 +945,7 @@ default:
+@@ -999,7 +999,7 @@ default:
  
  all: $(EXE) .depend
  
 -config-sanity: net
 +config-sanity:
  	@echo ""
- 	@echo "Config:"
- 	@echo "debug: '$(debug)'"
-@@ -1093,6 +1054,6 @@ icx-profile-use:
+ 	@echo "Config:" && \
+ 	echo "debug: '$(debug)'" && \
+@@ -1118,6 +1118,6 @@ icx-profile-use:
  .depend: $(SRCS)
  	-@$(CXX) $(DEPENDFLAGS) -MM $(SRCS) > $@ 2> /dev/null
  
