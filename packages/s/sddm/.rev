@@ -814,4 +814,12 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>1203661</requestid>
   </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>a384f48616ba94f44c8218cf5f177fcd</srcmd5>
+    <version>0.21.0</version>
+    <time>1743606468</time>
+    <user>anag+factory</user>
+    <comment>CMake 4 compat</comment>
+    <requestid>1266272</requestid>
+  </revision>
 </revisionlist>

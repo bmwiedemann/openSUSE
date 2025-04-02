@@ -59,6 +59,7 @@ Source20:       sddm.pam
 Source21:       sddm-autologin.pam
 Source22:       sddm-greeter.pam
 # Patch0-100: PATCH-FIX-UPSTREAM
+Patch0:         0001-CMake-Raise-required-version-to-3.5.patch
 # https://github.com/sddm/sddm/pull/1779
 Patch50:        0001-Redesign-login-shell-use-in-session-scripts.patch
 # Part of https://github.com/sddm/sddm/pull/1896

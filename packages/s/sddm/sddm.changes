@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:15:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-CMake-Raise-required-version-to-3.5.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 22:04:46 UTC 2024 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Move default value for [Autologin] Session
