@@ -1,7 +1,7 @@
 #
 # spec file for package eyedropper
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2023 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 %define sname   blueprint-compiler
 %define sver    0.8.1
 Name:           eyedropper
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        Pick and format colors
 License:        GPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7.0
 BuildRequires:  desktop-file-utils
 
 %description
