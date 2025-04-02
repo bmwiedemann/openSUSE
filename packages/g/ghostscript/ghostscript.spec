@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ghostscript
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,21 +24,25 @@
 %bcond_without  apparmor
 %endif
 Name:           ghostscript%{psuffix}
-Version:        10.04.0
+Version:        10.05.0
 Release:        0
 Summary:        The Ghostscript interpreter for PostScript and PDF
 License:        AGPL-3.0-only
 Group:          Productivity/Office/Other
 URL:            https://www.ghostscript.com/
 # Use "osc service manualrun" to fetch Source0:
-Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10040/ghostscript-%{version}.tar.gz
+Source0:        https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-%{version}.tar.gz
 # How to manually (i.e. without "osc service") find the Source0 URL at Ghostscript upstream
-# (example for the Ghostscript 10.03.1 release):
+# (example for the Ghostscript 10.05.1 release):
 # Go to https://www.ghostscript.com
-# -> "The current Ghostscript release 10.03.1 can be downloaded here" https://www.ghostscript.com/releases/index.html
-# -> "Ghostscript" https://www.ghostscript.com/releases/gsdnld.html
-# -> "Ghostscript 10.03.1 Source for all platforms / GNU Affero General Public License" = "Ghostscript AGPL Release"
-# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10031/ghostscript-10.03.1.tar.gz
+# -> [Download] or "Releases" https://ghostscript.com/releases/index.html
+# -> "Ghostscript" https://ghostscript.com/releases/gsdnld.htm
+# -> "Ghostscript 10.05.0 Source for all platforms / Ghostscript AGPL Release"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/ghostscript-10.05.0.tar.gz
+# and "MD5 Checksums"
+# https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10050/MD5SUMS
+# and on https://ghostscript.com/releases/index.html
+# -> "release notes" https://ghostscript.readthedocs.io/en/gs10.05.0/News.html
 Source10:       apparmor_ghostscript
 # Patch0...Patch9 is for patches from upstream:
 # Source10...Source99 is for sources from SUSE which are intended for upstream:
@@ -61,7 +65,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-alternatives
 BuildRequires:  zlib-devel
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 # Provide the additional RPM Provides of the ghostscript-library package
 # (ghostscript_x11 is provided by the ghostscript-x11 sub-package, see below).
 # The "Provides: ghostscript_any" is there to support "BuildRequires: ghostscript_any"
@@ -356,7 +360,6 @@ fi
 %{_bindir}/gslp
 %{_bindir}/gsnd
 %{_bindir}/lprsetup.sh
-%{_bindir}/pdf2dsc
 %{_bindir}/pdf2ps
 %{_bindir}/pf2afm
 %{_bindir}/pfbtopfa
@@ -381,7 +384,6 @@ fi
 %{_mandir}/man1/gslj.1%{?ext_man}
 %{_mandir}/man1/gslp.1%{?ext_man}
 %{_mandir}/man1/gsnd.1%{?ext_man}
-%{_mandir}/man1/pdf2dsc.1%{?ext_man}
 %{_mandir}/man1/pdf2ps.1%{?ext_man}
 %{_mandir}/man1/pf2afm.1%{?ext_man}
 %{_mandir}/man1/pfbtopfa.1%{?ext_man}

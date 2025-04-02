@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:56:06 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.05.0
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.05.0/News.html
+  * This release addresses:
+    + CVE-2025-27830 (bsc#1240074)
+    + CVE-2025-27831 (bsc#1240075)
+    + CVE-2025-27832 (bsc#1240077)
+    + CVE-2025-27833 (bsc#1240078)
+    + CVE-2025-27834 (bsc#1240079)
+    + CVE-2025-27835 (bsc#1240080)
+    + CVE-2025-27836 (bsc#1240081)
+    + CVE-2025-27837 (bsc#1240082 - affects only Windows)
+  * The 10.05.0 release deprecates the non-standard operator
+    "selectdevice", all code should now be using the standard
+    "setpagedevice" operator. "selectdevice" will be removed
+    in the 10.06.0 release.
+  * We now support production of PDF/X-1a and PDF/X-4a
+    in addition to the existing support for PDF/X-3
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements. 
+- In Ghostscript 10.05.0 the pdf2dsc utility is removed because
+  its PostScript program pdf2dsc.ps uses chunks of the old PDF
+  interpreter which is replaced with a new implementation
+  (in C instead of PostScript) in the 10.x series of Ghostscript
+  so pdf2dsc can no longer work as intended. For details see the
+  "Please restore PDF2DSC for preview-latex" mail thread e.g. on
+  https://mail.gnu.org/archive/html/auctex-devel/2025-03/threads.html
+
+-------------------------------------------------------------------
 Tue Feb  4 09:42:47 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to not embed timestamp in .h file

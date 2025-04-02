@@ -635,4 +635,12 @@
     <comment></comment>
     <requestid>1243309</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e9dce21cd1df86d4309f467604c60725</srcmd5>
+    <version>10.05.0</version>
+    <time>1743606536</time>
+    <user>anag+factory</user>
+    <comment>Ghostscript version upgrade to 10.05.0 fixes CVE-2025-27830 (bsc#1240074) CVE-2025-27831 (bsc#1240075) CVE-2025-27832 (bsc#1240077) CVE-2025-27833 (bsc#1240078) CVE-2025-27834 (bsc#1240079) CVE-2025-27835 (bsc#1240080) CVE-2025-27836 (bsc#1240081) (forwarded request 1266108 from jsmeix)</comment>
+    <requestid>1266109</requestid>
+  </revision>
 </revisionlist>
