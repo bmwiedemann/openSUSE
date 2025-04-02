@@ -40,6 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libqt5-linguist
 BuildRequires:  muparser-devel
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -78,11 +79,16 @@ CAD drawings.
 sed -i 's/\r$//' licenses/{MIT,KST32B_v2,lc_opengost-fonts}.txt
 
 %build
+# Build procedure expects certain aliases
+mkdir prog
+export PATH="$PWD/prog:$PATH"
+ln -s "$(which lrelease-qt5)" "prog/lrelease"
+
 echo 'DISABLE_POSTSCRIPT = true' > librecad/src/custom.pri
 qmake-qt5 \
 librecad.pro CONFIG+="release" \
 	QMAKE_CFLAGS+="%optflags" QMAKE_CXXFLAGS+="%optflags"
-make %{?_smp_mflags}
+%make_build
 rm -f unix/resources/fonts/wqy-unicode.lff
 mkdir -p unix/resources/fonts
 ./unix/ttf2lff -L "Apache-2.0 or SUSE-GPL-3.0+-with-font-exception" \
@@ -90,10 +96,13 @@ mkdir -p unix/resources/fonts
 	unix/resources/fonts/wqy-unicode.lff
 
 %install
+export PATH="$PWD/prog:$PATH"
 b="%buildroot"
 # No make install :(
 export BUILDDIR="$b/%_datadir/%name"
 sh scripts/postprocess-unix.sh
+mkdir -p "$b/%_datadir/%name/qm"
+cp -av librecad/ts/*.qm "$b/%_datadir/%name/qm/"
 
 install -Dpm0755 "unix/%name" "$b/%_bindir/%name"
 install -Dpm0755 "unix/ttf2lff" "$b/%_bindir/ttf2lff"

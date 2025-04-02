@@ -291,4 +291,12 @@
     <comment></comment>
     <requestid>1249222</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>f33c459f98b11f3e3932c6e8e399b447</srcmd5>
+    <version>2.2.1.1</version>
+    <time>1743606906</time>
+    <user>anag+factory</user>
+    <comment>- Install lanauge packs [boo#1240406]</comment>
+    <requestid>1266228</requestid>
+  </revision>
 </revisionlist>
