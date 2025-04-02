@@ -1,7 +1,7 @@
 #
 # spec file for package libpeas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %bcond_with lua51
-%bcond_without python3
+%bcond_with python3
 Name:           libpeas
 Version:        1.36.0
 Release:        0
@@ -177,8 +177,10 @@ every application the chance to assume its own extensibility.
 %license COPYING
 %doc AUTHORS README
 %{_libdir}/libpeas-1.0.so.*
+%if %{with python3}
 %dir %{_libdir}/libpeas-1.0
 %dir %{_libdir}/libpeas-1.0/loaders
+%endif
 
 %files -n typelib-1_0-Peas-1_0
 %{_libdir}/girepository-1.0/Peas-1.0.typelib

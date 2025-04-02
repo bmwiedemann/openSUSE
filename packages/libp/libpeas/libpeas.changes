@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 06:32:54 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable python loader for now: peas uses GIRepostiory 1.0, which
+  conflicts with pygobject 3.52 using GIRepository 2.0 (part of
+  boo#1239952).
+
+-------------------------------------------------------------------
 Mon Aug 19 11:33:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire gettext-devel instead of gettext: allow OBS to
