@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mpiP
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,162 +19,41 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mpiP
-%define _vers 3_5
 
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
+%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
+%define DisOMPI4 ExclusiveArch:  do_not_build
 %endif
-%if 0%{?sle_version} >= 150300
-%define DisOMPI2 ExclusiveArch:  do_not_build
+%if 0%{?sle_version:1} && 0%{?sle_version} < 160000
+%define DisOMPI5 ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
+%define p_suffix %{nil}
+%else
+%define p_suffix -%{flavor}
 %endif
 
-%if "%{flavor}" == "gnu-openmpi4-hpc"
+%if "%{flavor}" == "openmpi4"
 %{?DisOMPI4}
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family openmpi
-%define mpi_ver 4
 %endif
 
-%if "%{flavor}" == "gnu-openmpi5-hpc"
+%if "%{flavor}" == "openmpi5"
+ExcludeArch:    %{ix86} %{arm}
 %{?DisOMPI5}
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family openmpi
-%define mpi_ver 5
 %endif
 
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family mvapich2
-%endif
+%define package_name %{pname}%{p_suffix}
+%define p_prefix %{_libdir}/mpi/gcc/%{flavor}
 
-%if "%{flavor}" == "gnu-mpich-hpc"
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_family mpich
-%endif
+%define p_bindir %{p_prefix}/bin
+%define p_datadir %{p_prefix}/share
+%define p_incdir %{p_prefix}/include/
+%define p_libdir %{p_prefix}/%{_lib}/
+%define p_libexecdir %{p_prefix}/%{_lib}
+%define p_mandir %{p_prefix}/share/man
 
-%if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family openmpi
-%define mpi_ver 4
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family openmpi
-%define mpi_ver 5
-%endif
-
-%if "%{flavor}" == "gnu7-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu7-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family openmpi
-%define mpi_ver 4
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family openmpi
-%define mpi_ver 5
-%endif
-
-%if "%{flavor}" == "gnu8-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu8-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family openmpi
-%define mpi_ver 4
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family openmpi
-%define mpi_ver 5
-%endif
-
-%if "%{flavor}" == "gnu9-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu9-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family openmpi
-%define mpi_ver 4
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family openmpi
-%define mpi_ver 5
-%endif
-
-%if "%{flavor}" == "gnu10-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu10-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_family mpich
-%endif
-
-%{?hpc_init:%{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}} %{?ext:-e %{ext}}}}
-
-Name:           %{?hpc_package_name:%{hpc_package_name %_vers}}%{!?hpc_package_name:%pname}
+Name:           %{package_name}
 Summary:        A profiling library for MPI applications
 License:        BSD-3-Clause
 Group:          Development/Tools/Debuggers
@@ -188,16 +67,16 @@ Patch2:         Add-return-value-to-non-void-function.patch
 Patch3:         pc_lookup-replace-PTR-with-void.patch
 Patch4:         configure-fix-compilation-error-for-GCC-14.patch
 Patch5:         arch-add-generic-arch-using-GCC-builtins.patch
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
+
+BuildRequires:  %{flavor}-devel
 BuildRequires:  binutils-devel
 BuildRequires:  dejagnu
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
+BuildRequires:  gcc-fortran
 BuildRequires:  libunwind-devel
-BuildRequires:  lua-lmod
 BuildRequires:  python3
-#BuildRequires:  slurm-node
-BuildRequires:  suse-hpc
-%{?hpc_requires}
+Requires:       %{flavor}
 
 %description
 mpiP is a profiling library for MPI applications.
@@ -208,23 +87,17 @@ uses communication during report generation, typically at the end of
 the experiment, to merge results from all of the tasks into one output
 file.
 
-%{hpc_master_package -L}
-
 %package devel
 Summary:        Headers for profiling library for MPI applications
 Group:          Development/Libraries/C and C++
-%{?hpc_requires_devel}
 
 %description devel
 mpiP is a profiling library for MPI applications. This packages contains
 the build headers.
 
-%{hpc_master_package devel}
-
 %package devel-static
 Summary:        Static version of profiling library for MPI applications
 Group:          Development/Libraries/C and C++
-%{?hpc_requires_devel}
 
 %description devel-static
 mpiP is a profiling library for MPI applications.
@@ -240,12 +113,6 @@ mpiP is a profiling library for MPI applications.
 
 This contains the documentation.
 
-%{hpc_master_package doc}
-
-%if "%(echo %version | tr '.' '_')" != "%_vers"
-%{error: Fix _vers variable to match package version!}
-%endif
-
 %prep
 %setup -q -n %{pname}-%{version}
 %autopatch -p0
@@ -253,7 +120,9 @@ sed -i -e "/-shared -o \$@/s#\(\${LDFLAGS}\)#\1 -Wl,-soname,\$@#" Makefile.in
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%hpc_setup
+export CC=gcc
+source %{p_bindir}/mpivars.sh
+
 export CC=mpicc
 export CXX=mpicxx
 export FC=mpifort
@@ -261,7 +130,15 @@ export F77=$FC
 export CFLAGS="-D__DATE__=\\\"NODATE\\\" -D__TIME__=\\\"NOTIME\\\""
 export FFLAGS="-std=legacy"
 export HAVE_PYTHON="python3"
-%hpc_configure \
+%configure \
+  --prefix=%{p_prefix} \
+  --exec-prefix=%{p_prefix} \
+  --datadir=%{p_datadir} \
+  --bindir=%{p_bindir} \
+  --includedir=%{p_incdir} \
+  --libdir=%{p_libdir} \
+  --libexecdir=%{p_libexecdir} \
+  --mandir=%{p_mandir} \
     --enable-demangling \
 %ifarch aarch64
     --enable-setjmp \
@@ -271,53 +148,22 @@ export HAVE_PYTHON="python3"
 make %{?_smp_mflags} PYTHON="python3" shared
 
 %install
-%hpc_setup
+source %{p_bindir}/mpivars.sh
+
 make install-all DESTDIR=%{?buildroot}
 find "%{buildroot}" -type f -name "*.a" -exec chmod a-x {} +
 find "%{buildroot}/%{_docdir}" -type f -exec chmod a-x {} +
-find "%{buildroot}/%{hpc_includedir}" -type f -exec chmod a-x {} +
-%{hpc_shebang_sanitize_scripts %{buildroot}%{hpc_bindir}}
+find "%{buildroot}/%{p_incdir}" -type f -exec chmod a-x {} +
 for i in mpirun-mpip srun-mpip; do
     sed -i \
-	-e "s@\(MPIP_DIR=\).*@\1%{?hpc_prefix}@" \
+	-e "s@\(MPIP_DIR=\).*@\1%{?p_prefix}@" \
 	-e "s@\(LD_PRELOAD=\).*:\(.*\)@\1\2@" \
 	-e "s@\(ADDTL_RT_LIBS=.*\)@#\1@" \
-	-e "s@/lib/libmpiP.so@/%{_lib}/libmpiP.so@" %{buildroot}%{hpc_bindir}/$i
+	-e "s@/lib/libmpiP.so@/%{_lib}/libmpiP.so@" %{buildroot}%{p_bindir}/$i
 done
 
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} compiler"
-puts stderr "toolchain and the %{mpi_family} MPI stack."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} compiler and %{mpi_family} MPI"
-module-whatis "Version: %{version}"
-module-whatis "Category: Profiling library"
-module-whatis "Description: %{SUMMARY:0}"
-module-whatis "URL %{url}"
-
-set     version                     %{version}
-
-prepend-path    PATH                %{hpc_bindir}
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-if {[file isdirectory  %{hpc_includedir}]} {
-prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
-prepend-path    INCLUDE             %{hpc_includedir}
-}
-
-setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase %pname}_LIB        %{hpc_libdir}
-
-EOF
-
 %check
-%hpc_setup
+source %{p_bindir}/mpivars.sh
 export CC=mpicc
 export CXX=mpicxx
 export FC=mpifort
@@ -326,22 +172,17 @@ export FFLAGS="-std=legacy"
 LD_LIBRARY_PATH=$(pwd)${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 make FFLAGS+=${FFLAGS} check || exit 0
 
-%postun
-%hpc_module_delete_if_default
-
 %files
-%{hpc_dirs}
-%{hpc_modules_files}
-%{hpc_libdir}/*so
-%{hpc_bindir}
+%{p_libdir}/*so
+%{p_bindir}
 
 %files doc
 %{_docdir}/%{name}/
 
 %files devel
-%{hpc_includedir}
+%{p_incdir}
 
 %files devel-static
-%{hpc_libdir}/*.a
+%{p_libdir}/*.a
 
 %changelog

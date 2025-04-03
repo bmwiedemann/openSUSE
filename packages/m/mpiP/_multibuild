@@ -1,5 +1,8 @@
 <multibuild>
-  <package>gnu-openmpi4-hpc</package>
-  <package>gnu-mvapich2-hpc</package>
-  <package>gnu-mpich-hpc</package>
+  <package>openmpi4</package>
+  <package>openmpi5</package>
+  <package>mpich</package>
+  <package>mvapich2</package>
+  <package>mvapich3-ofi</package>
+  <package>mvapich3-ucx</package>
 </multibuild>

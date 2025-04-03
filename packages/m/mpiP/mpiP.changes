@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 17:03:13 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove gnu-hpc build flavours (bsc#1239982)
+- Enable non hpc flavours
+
+-------------------------------------------------------------------
 Thu Sep  5 13:11:56 UTC 2024 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Refresh patched to git format
