@@ -195,4 +195,25 @@
   order bit size and the curve order is not a multiple of 8</comment>
     <requestid>1167154</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c375cab941fb27ddcd0c14ac66ad5f68</srcmd5>
+    <version>0.19.1</version>
+    <time>1743691863</time>
+    <user>anag+factory</user>
+    <comment>- Update to 0.19.1
+  * ``der.remove_implitic`` and ``der.encode_implicit`` for decoding and
+    encoding DER IMPLICIT values with custom tag values and arbitrary
+    classes
+  * Minor fixes around arithmetic with curves that have non-prime order
+    (useful for experimentation, not practical deployments)
+  * Fix arithmetic to work with curves that have (0, 0) on the curve
+  * Fix canonicalization of signatures when ``s`` is just slightly
+    above half of curve order
+  * Dropped official support for Python 3.5 (again, issues with CI, support
+    for Python 2.6 and Python 2.7 is unchanged)
+  * Officialy support Python 3.12 and 3.13 (add them to CI)
+  * Removal of few more unnecessary `six.b` literals (Alexandre Detiste)
+  * Fix typos in warning messages (forwarded request 1266769 from glaubitz)</comment>
+    <requestid>1266860</requestid>
+  </revision>
 </revisionlist>
