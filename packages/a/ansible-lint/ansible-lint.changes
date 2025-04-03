@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr  2 20:04:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.2.0:
+  * Enhancements
+    - Refactor line number identification (#4564) @ssbarnea
+    - Require ansible-core 2.16.11 (#4569) @ssbarnea
+  * Bugfixes
+    - Improve testing and code coverage (#4561) @ssbarnea
+    - Refactor types for future ansible-core compatibility (#4557)
+      @ssbarnea
+    - Isolate ansible internal types to submodule (#4556) @ssbarnea
+    - Add line method to Task class (#4554) @ssbarnea
+    - Move task_to_str to Task class (#4553) @ssbarnea
+    - Add 2025 to WindowsPlatformModel (#4531) @rsdoherty
+
+-------------------------------------------------------------------
 Wed Feb 19 05:46:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.3:
