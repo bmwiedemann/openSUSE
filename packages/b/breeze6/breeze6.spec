@@ -33,7 +33,7 @@
 %endif
 %define rname breeze
 Name:           breeze6
-Version:        6.3.3
+Version:        6.3.4
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -130,11 +130,6 @@ Obsoletes:      breeze5-decoration < %{version}
 %description -n breeze6-decoration
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
 This package provides Breeze KWin decoration.
-
-
-
-
-
 
 
 
