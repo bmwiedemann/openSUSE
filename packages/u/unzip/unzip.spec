@@ -65,6 +65,7 @@ Patch23:        unzip-initialize-the-symlink-flag.patch
 Patch24:        CVE-2022-0530.patch
 # PATCH-FIX-UPSTREAM danilo.spinella@suse.com CVE-2022-0529 bsc#1196180
 Patch25:        CVE-2022-0529.patch
+Patch26:        unzip-time-decl.patch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{_name}-doc
@@ -115,6 +116,7 @@ functionality. This version can also extract encrypted archives.
 %patch -P 23 -p1
 %patch -P 24 -p1
 %patch -P 25 -p1
+%patch -P 26 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} \

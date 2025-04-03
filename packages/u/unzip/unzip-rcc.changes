@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  2 14:03:26 UTC 2025 - Friedrich Haubensak < hsk17@mail.de>
+
+- Add unzip-time-decl.patch from debian to fix gcc-15 compile time
+  error
+
+-------------------------------------------------------------------
 Wed Feb 21 15:26:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

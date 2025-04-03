@@ -1,0 +1,20 @@
+
+bugs.debian.org/cgi-bin/bugreport.cgi?bug=1098043
+salsa.debian.org/sanvila/unzip/-/commit/a21e271
+
+
+From: Santiago Vila <sanvila@debian.org>
+Subject: [PATCH] Drop conflicting declarations of gmtime() and localtime().
+Date: Tue, 11 Mar 2025 16:01:00 +0100
+
+--- a/unix/unxcfg.h
++++ b/unix/unxcfg.h
+@@ -118,7 +118,7 @@
+ #  endif
+ #else
+ #  include <time.h>
+-   struct tm *gmtime(), *localtime();
++/*   struct tm *gmtime(), *localtime(); */
+ #endif
+ 
+ #if (defined(BSD4_4) || (defined(SYSV) && defined(MODERN)))
