@@ -1,7 +1,7 @@
 #
 # spec file for package mumps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define pname mumps
-%define ver 5.3.5
 %define so_ver 5_3_5
-%define openblas_vers 0.3.6
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 
 %define PNAME %(echo %{pname} | tr [a-z] [A-Z])
@@ -32,260 +30,57 @@
 ExclusiveArch:  do_not_build
 %endif
 
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
-%define DisOMPI4 ExclusiveArch:  do_not_build
-%endif
-
 %if "%{flavor}" == "serial"
 # Stub MPI library
 %define mumps_f77_mpilibs '-lmpiseq'
-%bcond_with hpc
 %endif
 
 %if "%{flavor}" == "scotch-serial"
 # Stub MPI library
 %define mumps_f77_mpilibs '-lmpiseq'
-%bcond_with hpc
 %bcond_without scotch
 %endif
 
 %if "%{flavor}" == "openmpi4"
-%{?DisOMPI4}
-%define mpi_family  openmpi
+%define mpi_flavor  openmpi4
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_with hpc
 %endif
 
 %if "%{flavor}" == "openmpi5"
-%{?DisOMPI5}
-%define mpi_family  openmpi
+%define mpi_flavor  openmpi5
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_with hpc
+ExcludeArch:    %{ix86} %{arm}
 %endif
 
 %if "%{flavor}" == "mvapich2"
-%define mpi_family  mvapich2
+%define mpi_flavor  mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%bcond_with hpc
 %endif
 
 %if "%{flavor}" == "scotch-openmpi4"
-%{?DisOMPI4}
-%define mpi_family  openmpi
-%define mpi_ver 4
+%define mpi_flavor  openmpi4
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%bcond_with hpc
 %bcond_without scotch
 %endif
 
 %if "%{flavor}" == "scotch-openmpi5"
-%{?DisOMPI5}
-%define mpi_family  openmpi
-%define mpi_ver 5
+%define mpi_flavor  openmpi5
 %define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%bcond_with hpc
 %bcond_without scotch
+ExcludeArch:    %{ix86} %{arm}
 %endif
 
 %if "%{flavor}" == "scotch-mvapich2"
-%define mpi_family  mvapich2
+%define mpi_flavor  mvapich2
 %define mumps_f77_mpilibs -lfmpich -lmpich
-%bcond_with hpc
 %bcond_without scotch
-%endif
-
-%if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%undefine c_f_ver
-# macro mpi is used by macros for master package
-%global mpi_family mvapich2
-%define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-mpich-hpc"
-%undefine c_f_ver
-%global mpi_family mpich
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-mvapich2-hpc"
-%define c_f_ver 7
-# macro mpi is used by macros for master package
-%global mpi_family mvapich2
-%define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-mpich-hpc"
-%define c_f_ver 7
-%global mpi_family mpich
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-mvapich2-hpc"
-%define c_f_ver 8
-# macro mpi is used by macros for master package
-%global mpi_family mvapich2
-%define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-mpich-hpc"
-%define c_f_ver 8
-%global mpi_family mpich
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-mvapich2-hpc"
-%define c_f_ver 9
-# macro mpi is used by macros for master package
-%global mpi_family mvapich2
-%define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-mpich-hpc"
-%define c_f_ver 9
-%global mpi_family mpich
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 4
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family openmpi
-%define mumps_f77_mpilibs -lmpi_mpifh -lmpi
-%define mpi_ver 5
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-mvapich2-hpc"
-%define c_f_ver 10
-# macro mpi is used by macros for master package
-%global mpi_family mvapich2
-%define mumps_f77_mpilibs -lfmpich -lmpich
-%undefine mpi_ver
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-mpich-hpc"
-%define c_f_ver 10
-%global mpi_family mpich
-%bcond_without hpc
 %endif
 
 %ifarch i586 s390 ppc armv7l
 ExclusiveArch:  do_not_build
 %endif
 
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
-ExclusiveArch:  do_not_build
-%endif
-
-%{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
+%{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 
 %if %{with scotch}
  %if %{with mpi}
@@ -295,7 +90,6 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if %{without hpc}
 %if %{without mpi}
 %define my_prefix %_prefix
 %define my_bindir %_bindir
@@ -303,8 +97,8 @@ ExclusiveArch:  do_not_build
 %define my_incdir %_includedir
 %define my_datadir %_datadir
 %else
-%define my_suffix  -%{mpi_family}%{?mpi_ver}
-%define my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ver}
+%define my_suffix  -%{mpi_flavor}
+%define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}
 %define my_bindir %{my_prefix}/bin
 %define my_libdir %{my_prefix}/%{_lib}/
 %define my_incdir %{my_prefix}/include/
@@ -312,50 +106,25 @@ ExclusiveArch:  do_not_build
 %endif
 %define package_name %{pname}%{?scotch:-%{scotch}}%{?my_suffix}
 %define libname lib%{pname}%{?scotch:-%{scotch}}%{?so_ver}%{?my_suffix}
-%else
-ExcludeArch:    %ix86
-%{!?compiler_family:%global compiler_family gnu}
-%{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
 
-%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_family}} %{?mpi_ver:-V %{mpi_ver}} %{?scotch:-e %{scotch}}}
-%define my_prefix %{hpc_prefix}
-%define my_bindir %{hpc_bindir}
-%define my_libdir %{hpc_libdir}
-%define my_incdir %{hpc_includedir}
-%define my_datadir %{hpc_datadir}
-%define package_name %{hpc_package_name %{?_ver}}
-%define libname lib%{package_name}
-%endif
-
-Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
+Summary:        A Multifrontal Massively Parallel Sparse direct Solver
 License:        CECILL-C
 Group:          Productivity/Scientific/Math
 Name:           %{package_name}
-Version:        %{ver}
+Version:        5.3.5
 Release:        0
 URL:            http://mumps.enseeiht.fr/
 Source0:        http://mumps.enseeiht.fr/MUMPS_%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 Source1:        Makefile.inc
-%if %{without hpc}
 BuildRequires:  gcc-fortran
-%{?with_scotch:BuildRequires:  %{scotch}%{?with_mpi:-%{mpi_family}%{?mpi_ver}}-devel}
+%{?with_scotch:BuildRequires:  %{scotch}%{?with_mpi:-%{mpi_flavor}}-devel}
  %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_ver}-devel
-BuildRequires:  libblacs2-%{mpi_family}%{?mpi_ver}-devel
-BuildRequires:  scalapack-%{mpi_family}%{?mpi_ver}-devel
+BuildRequires:  %{mpi_flavor}-devel
+BuildRequires:  libblacs2-%{mpi_flavor}-devel
+BuildRequires:  scalapack-%{mpi_flavor}-devel
  %endif # mpi
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
-%else # hpc
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  %{mpi_family}%{?mpi_ver}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
-BuildRequires:  fdupes
-BuildRequires:  libopenblas-%{compiler_family}%{?c_f_ver}-hpc >=  %{openblas_vers}
-BuildRequires:  libscalapack2-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_ver}-hpc-devel
-# Workaround for https://bugzilla.suse.com/show_bug.cgi?id=1234007
-BuildRequires:  libscalapack2-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_ver}-hpc
-BuildRequires:  suse-hpc
-%endif # hpc
 
 %description
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -366,19 +135,11 @@ C interfaces, and can interface with ordering tools such as Scotch.
 %package -n %{libname}
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
 Group:          System/Libraries
- %if %{without hpc}
 %{?with_mpi:Recommends:       %{libname}-compat = %{version}}
 # Explicitly include this library here:
 # the solver doesn't have enough information to pick the correct MPI flavor
-%{?with_mpi:Requires:         libblacs2-%{mpi_family}%{?mpi_ver}}
- %else
-%{requires_eq libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc}
-%hpc_requires
-Requires:       lua-lmod >= 7.6.1
- %endif
-%if %{without hpc}
+%{?with_mpi:Requires:         libblacs2-%{mpi_flavor}}
 Conflicts:      lib%{pname}%{?scotch:-%{scotch}}5%{?my_suffix} >= 5.3.5
-%endif
 
 %description -n %{libname}
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -389,14 +150,14 @@ C interfaces, and can interface with ordering tools such as Scotch.
 %if %{!with mpi}
 This package contains the sequential library%{?scotch: with Scotch support enabled}.
 %else
-This package contains the parallel library with %{mpi_family}%{?mpi_ver} and %{?scotch: with Scotch support enabled}.
+This package contains the parallel library with %{mpi_flavor} and %{?scotch: with Scotch support enabled}.
 %endif
 
 %package -n %{libname}-compat
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
 Group:          System/Libraries
 Requires:       lib%{pname}%{?scotch:-scotch}%{so_ver} = %{version}
-%if %{without hpc} && %{with mpi}
+%if %{with mpi}
 # Install link targets for non-HPC MPI compat links from the MPI libdir - see below.
 BuildRequires:  %{pname}%{?scotch:-scotch}-devel-static = %version
 BuildRequires:  lib%{pname}%{?scotch:-scotch}%{so_ver} = %{version}
@@ -409,7 +170,7 @@ operate on distributed matrices e.g. over a cluster.  It has Fortran and
 C interfaces, and can interface with ordering tools such as Scotch.
 
 This package provides links to the serial libraries from the MPI library
-directory MUMPS built for %{mpi_family}%{?mpi_ver}.
+directory MUMPS built for %{mpi_flavor}.
 
 %package doc
 Summary:        A MUltifrontal Massively Parallel Sparse direct Solver
@@ -427,34 +188,29 @@ This package provides Documentation for %{package_name}.
 %if %{!with mpi}
 This package contains the sequential library%{?scotch: with Scotch support enabled}.
 %else
-This package contains the parallel library with %{mpi_family}%{?mpi_ver} and %{?scotch: with Scotch support enabled}.
+This package contains the parallel library with %{mpi_flavor} and %{?scotch: with Scotch support enabled}.
 %endif
 
 %package devel
 Summary:        Files needed for developing mumps based applications
 Group:          Development/Libraries/Parallel
 Requires:       %{libname} = %version
-%if %{without hpc}
- %if %{with mpi} || %{with scotch}
+%if %{with mpi} || %{with scotch}
 Requires:       mumps-devel = %{version}
- %endif
- %if %{with mpi}
-Requires:       %{mpi_family}%{?mpi_ver}-devel
-Requires:       scalapack-%{mpi_family}%{?mpi_ver}-devel
-  %if %{with scotch}
+%endif
+%if %{with mpi}
+Requires:       %{mpi_flavor}-devel
+Requires:       scalapack-%{mpi_flavor}-devel
+ %if %{with scotch}
 Requires:       mumps-scotch-devel = %{version}
-Requires:       ptscotch-%{mpi_family}%{?mpi_ver}-devel
-  %endif
- %else # mpi
+Requires:       ptscotch-%{mpi_flavor}-devel
+ %endif
+%else # mpi
 Requires:       blas-devel
 Requires:       lapack-devel
 %{?with_scotch:Requires:       scotch-devel}
- %endif # mpi
+%endif # mpi
 Recommends:     gcc-fortran
-%else # hpc
-%hpc_requires_devel
-%{requires_eq libscalapack2-%{compiler_family}-%{mpi_family}%{?mpi_ver}-hpc-devel}
-%endif
 
 %description devel
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -489,16 +245,14 @@ operate on distributed matrices e.g. over a cluster.  It has Fortran and
 C interfaces, and can interface with ordering tools such as Scotch.
 
 This package provides links to the static serial libraries from the MPI
-library directory MUMPS built for %{mpi_family}%{?mpi_ver}.
+library directory MUMPS built for %{mpi_flavor}.
 
 %package examples
 Summary:        Test programs and examples for mumps
 Group:          Documentation/Other
 Requires:       %{libname} = %version
-%if %{without hpc}
 Provides:       mumps(examples)(%{?mpi_family}) = %version
 Conflicts:      otherproviders(mumps(examples)(%{?mpi_family}))
-%endif
 
 %description examples
 MUMPS implements a direct solver for large sparse linear systems, with a
@@ -509,13 +263,6 @@ C interfaces, and can interface with ordering tools such as Scotch.
 This packages contains some test and examples programs for mumps. In addition,
 matlab and scilab extensions are provided in /usr/share/doc/packages/mumps.
 
-%if %{with hpc}
-%{hpc_master_package -l -L}
-%{hpc_master_package -L devel}
-%{hpc_master_package -L examples}
-%{hpc_master_package doc}
-%endif
-
 %prep
 %autosetup -n %{PNAME}_%{version}
 
@@ -523,12 +270,7 @@ matlab and scilab extensions are provided in /usr/share/doc/packages/mumps.
 
 export SUSE_ASNEEDED=0
 
-%if %{with hpc}
-%hpc_setup
-module load openblas scalapack
-%else
 %{?with_mpi: source %{my_bindir}/mpivars.sh}
-%endif
 
 %define PLAT %{?scotch:_%{scotch}}%{!?scotch:%{!?with_mpi:_seq}}
 
@@ -547,22 +289,17 @@ module load openblas scalapack
  %endif
 %endif # scotch
 
-%if %{with hpc}
- %define LIBBLAS -lopenblas -lscalapack
- %define LAPAK -lscalapack
-%else # hpc
- %define LIBBLAS -lblas -llapack
- %define LAPACK -llapack
-%endif # hpc
+%define LIBBLAS -lblas -llapack
+%define LAPACK -llapack
 
 %if %{with mpi}
 # Set LD_LIBRARY_PATH and PATH
  %define C_C mpicc
  %define F_C mpif77 -std=legacy
  %define F_L mpif77
- %define SCALAP -lscalapack %{!?with_hpc:-lblacs}
- %define MUMPS_LIBF77 %{!?with_hpc:-L%{my_libdir}} %{?mumps_f77_mpilibs}
- %define INCPAR %{!?with_hpc:-I%{my_incdir}}
+ %define SCALAP -lscalapack -lblacs
+ %define MUMPS_LIBF77 -L%{my_libdir} %{?mumps_f77_mpilibs}
+ %define INCPAR -I%{my_incdir}
  %define LIBPAR %{SCALAP} %{MUMPS_LIBF77}
  %define INCS \\\$(INCPAR)
  %define LIBS \\\$(LIBPAR)
@@ -639,7 +376,7 @@ mkdir -p %{buildroot}%{my_libdir}
 # install libs
 cp -P lib/lib*.a %{buildroot}%{my_libdir}
 cp -P lib/lib*.so* %{buildroot}%{my_libdir}
-%if %{with hpc} || %{without mpi} && %{without scotch}
+%if %{without mpi} && %{without scotch}
 mkdir -p %{buildroot}%{my_incdir}/mumps
 mkdir -p %{buildroot}%{my_incdir}/pord
 install -m 644 include/* %{buildroot}%{my_incdir}/mumps
@@ -651,7 +388,6 @@ install -m 755 examples/c_example %{buildroot}%{my_bindir}
 install -m 755 examples/*_save_restore %{buildroot}%{my_bindir}
 
 %if %{with mpi}
- %if %{without hpc}
 # we make a symlink to the serial lib in the parallel lib prefix
 # because some scientific packages don't manage different directories
 # for the serial and parallel libs
@@ -661,47 +397,7 @@ for lib in libcmumps libdmumps libsmumps libzmumps libmumps_common libmpiseq lib
          ln -s %{_libdir}/$name %{buildroot}%{my_libdir}/$name
      done
 done
- %endif # hpc
 %endif # mpi
-
-%if %{with hpc}
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the mumps library built with the %{compiler_family} compiler"
-puts stderr "toolchain and the %{mpi_family}%{?mpi_ver} MPI stack."
-puts stderr " "
-
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} compiler%{?with_mpi: and %{mpi_family}%{?mpi_ver} MPI}"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "%{url}"
-
-set     version                     %{version}
-
-depends-on scalapack
-
-prepend-path    PATH                %{hpc_bindir}
-if {[file isdirectory  %{hpc_includedir}]} {
-prepend-path    INCLUDE             %{hpc_includedir}
-}
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-
-setenv          %{PNAME}_DIR        %{hpc_prefix}
-setenv          %{PNAME}_BIN        %{hpc_bindir}
-if {[file isdirectory  %{hpc_includedir}]} {
-setenv          %{PNAME}_INC        %{hpc_includedir}
-}
-setenv          %{PNAME}_LIB        %{hpc_libdir}
-
-EOF
-%endif
 
 # Don't want binaries in docdir
 rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_example examples/multiple_arithmetics_example
@@ -716,14 +412,9 @@ rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_exam
 
 %postun -n %{libname}
 /sbin/ldconfig -N %{my_libdir}
-%{?with_hpc:%{hpc_module_delete_if_default}}
 %endif
 
 %files -n %{libname}
-%if %{with hpc}
-%{hpc_dirs}
-%{hpc_modules_files}
-%endif
 %license LICENSE
 %doc ChangeLog README VERSION CREDITS
 %{my_libdir}/libcmumps%{?PLAT}.so.*
@@ -736,39 +427,38 @@ rm -rf examples/*.o examples/*simpletest examples/*_save_restore examples/c_exam
 %{_libdir}/libmpiseq%{?PLAT}.so.*
 %endif
 
-%if %{with mpi} && %{without hpc}
+%if %{with mpi}
 %files -n %{libname}-compat
  %if %{without scotch}
 %{my_libdir}/lib*_seq.so.*
  %else # scotch
 %{my_libdir}/lib*_scotch.so.*
  %endif # scotch
-%endif # mpi && !hpc
+%endif # mpi
 
 %files devel
- %if %{with hpc} || ( %{without scotch} && %{without mpi} )
-%{?with_hpc:%dir %{my_incdir}}
+%if %{without scotch} && %{without mpi}
 %{my_incdir}/mumps
 %{my_incdir}/pord
- %endif
+%endif
 %{my_libdir}/*.so
 
 %files devel-static
 %{?with_mpi:%exclude %{my_libdir}/*%{!?scotch:_seq}%{?scotch:_scotch}.a}
 %{my_libdir}/*.a
 
-%if %{with mpi} && %{without hpc}
+%if %{with mpi}
 %files devel-static-compat
 %{my_libdir}/*%{!?scotch:_seq}%{?scotch:_scotch}.a
 %endif
 
-%if %{with hpc} || ( %{without mpi} && %{without scotch} )
+%if %{without mpi} && %{without scotch}
 %files doc
 %doc doc SCILAB MATLAB
 %endif
 
 %files examples
 %doc Makefile.inc examples
-%{my_bindir}%{!?with_hpc:/*}
+%{my_bindir}/*
 
 %changelog

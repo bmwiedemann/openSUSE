@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:13:54 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+- openmpi5 is not available on 32b systems
+
+-------------------------------------------------------------------
 Mon Dec 30 22:47:14 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix hpc builds, add workaround for bsc#1234007.
