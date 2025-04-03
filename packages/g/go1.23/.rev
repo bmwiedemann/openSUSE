@@ -188,4 +188,23 @@
   * go#71962 runtime/cgo: does not build with -Wdeclaration-after-statement (forwarded request 1250290 from jfkw)</comment>
     <requestid>1250291</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3698f7a680418e32e6991df3bad61d1e</srcmd5>
+    <version>1.23.8</version>
+    <time>1743698439</time>
+    <user>anag+factory</user>
+    <comment>- go1.23.8 (released 2025-04-01) includes security fixes to the
+  net/http package, as well as bug fixes to the runtime and the go
+  command.
+  Refs boo#1229122 go1.23 release tracking
+  CVE-2025-22871
+  * go#72010 go#71988 boo#1240550 security: fix CVE-2025-22871 net/http: reject bare LF in chunked encoding
+  * go#72114 runtime: process hangs for mips hardware
+  * go#72871 runtime: cgo callback on extra M treated as external code after nested cgo callback returns
+  * go#72937 internal/godebugs: winsymlink and winreadlinkvolume have incorrect defaults for Go 1.22
+
+  net/http package, as well as bug fixes to cgo, the compiler, and
+  the reflect, runtime, and syscall packages. (forwarded request 1266332 from jfkw)</comment>
+    <requestid>1266334</requestid>
+  </revision>
 </revisionlist>
