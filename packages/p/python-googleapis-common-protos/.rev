@@ -277,4 +277,15 @@
     <comment></comment>
     <requestid>1254047</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>50f6dfe4634cd1f4c8799006efa1cba1</srcmd5>
+    <version>1.69.2</version>
+    <time>1743691863</time>
+    <user>anag+factory</user>
+    <comment>- Fix changelog entry for previous version
+- Update GitHub URL in URL field
+
+- Update to 1.69.1 (forwarded request 1266766 from glaubitz)</comment>
+    <requestid>1266859</requestid>
+  </revision>
 </revisionlist>

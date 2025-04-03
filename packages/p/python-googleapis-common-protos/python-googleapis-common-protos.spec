@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.69.1
+Version:        1.69.2
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://github.com/googleapis/python-api-common-protos
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/googleapis-common-protos
 Source:         https://files.pythonhosted.org/packages/source/g/googleapis_common_protos/googleapis_common_protos-%{version}.tar.gz
 Source1:        test_google_api_error_reason.py
 BuildRequires:  %{python_module pip}
