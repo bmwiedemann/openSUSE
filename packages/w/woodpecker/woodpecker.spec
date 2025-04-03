@@ -26,7 +26,7 @@
 %define server_executable_name woodpecker-server
 
 Name:           woodpecker
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Source4:        Makefile
 Source11:       woodpecker-server.service
 Source12:       woodpecker-agent.service
 Source21:       system-user-woodpecker.conf
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.4
 
 %description
 Woodpecker is a simple yet powerful CI/CD engine with great extensibility
