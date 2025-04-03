@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr  1 14:52:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Build with -v flag
+
+- Update to 0.34.1 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.34.1
+  * Dependency updates
+
+- Update to 0.34.0 - for details see
+  * https://github.com/ipfs/kubo/releases/tag/v0.34.0
+  * AutoTLS now enabled by default for nodes with 1 hour uptime
+  * New WebUI features: CAR file import and QR code sharing
+  * RPC and CLI command changes
+    ~ ipfs config is now validating json fields
+    ~ Deprecated the bitswap reprovide command
+    ~ The stats reprovide command now shows additional stats
+    ~ ipfs files cp now performs basic codec check
+  * Bitswap improvements from Boxo
+  * IPNS publishing TTL change
+    ~ we’ve lowered the default IPNS Record TTL during publishing
+      to 5 minutes
+  * IPFS_LOG_LEVEL deprecated
+  * Pebble datastore format update
+  * Badger datastore update
+  * Datastore Implementation Updates
+  * Datastore Implementation Updates
+  * Fix hanging pinset operations during reprovides
+  * Important dependency updates
+
+-------------------------------------------------------------------
 Mon Feb 17 13:38:36 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 0.33.1 - for details see

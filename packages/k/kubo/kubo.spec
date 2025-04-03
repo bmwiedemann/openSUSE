@@ -18,7 +18,7 @@
 
 %define repo github.com/ipfs/kubo
 Name:           kubo
-Version:        0.33.2
+Version:        0.34.1
 Release:        0
 Summary:        IPFS implementation in Go
 License:        MIT
@@ -29,7 +29,7 @@ Source1:        vendor.tar.zst
 
 BuildRequires:  git
 # >= 1.14.4 is ambiguous
-BuildRequires:  go1.23
+BuildRequires:  go1.24
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
 Requires:       fuse
@@ -51,7 +51,7 @@ You can also mount the world at /ipfs.
 %autosetup -p1 -a1
 
 %build
-go build -mod=vendor -buildmode=pie -o ./cmd/ipfs/ipfs ./cmd/ipfs
+go build -mod=vendor -buildmode=pie -v -o ./cmd/ipfs/ipfs ./cmd/ipfs
 #make build
 
 %install

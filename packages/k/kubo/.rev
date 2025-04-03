@@ -181,4 +181,12 @@ now with fixed build</comment>
   * Fix: Escape Redirect URL for Directory</comment>
     <requestid>1246572</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>467be06808a54672297b53f8c62e04b8</srcmd5>
+    <version>0.34.1</version>
+    <time>1743691793</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266722</requestid>
+  </revision>
 </revisionlist>
