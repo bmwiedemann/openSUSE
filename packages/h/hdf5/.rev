@@ -864,4 +864,13 @@ fixed baselibs.conf compared to previous version</comment>
     <comment></comment>
     <requestid>1255078</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>d0ae0e4472224b662f183e64923dfbf7</srcmd5>
+    <version>1.14.6</version>
+    <time>1743691615</time>
+    <user>anag+factory</user>
+    <comment>- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- openmpi5 is not available on 32b systems</comment>
+    <requestid>1266212</requestid>
+  </revision>
 </revisionlist>
