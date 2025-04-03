@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:29:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- remove unused pcre build dependency
+
+-------------------------------------------------------------------
 Thu Jan 19 09:22:50 UTC 2017 - bwiedemann@suse.com
 
 - set PERL_HASH_SEED to make build reproducible

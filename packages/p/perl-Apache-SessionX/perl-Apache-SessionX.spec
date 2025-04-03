@@ -20,7 +20,6 @@ Name:           perl-Apache-SessionX
 BuildRequires:  apache2-devel
 BuildRequires:  libapr-util1-devel
 BuildRequires:  mysql-client
-BuildRequires:  pcre-devel
 BuildRequires:  perl-Apache-Session
 BuildRequires:  perl-DBD-mysql
 BuildRequires:  perl-MLDBM
