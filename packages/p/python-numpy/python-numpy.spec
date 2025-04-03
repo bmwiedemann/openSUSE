@@ -16,30 +16,8 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%define ver 2.2.2
-%define _ver 2_2_2
-%define pname python-numpy
 %define plainpython python
-%define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
-%if "%{flavor}" == ""
- %bcond_with hpc
- %bcond_with openblas
-%endif
-%if "%{flavor}" == "gnu-hpc"
- %bcond_without hpc
-%endif
-%if "%{flavor}" == "gnu7-hpc"
- %define c_f_ver 7
- %bcond_without hpc
-%endif
-%if %{with hpc}
- %bcond_without openblas
-%endif
-%if 0%{?sle_version} == 120300
-%{?with_openblas:ExclusiveArch:  do_not_build}
-%endif
-%{?with_hpc:%{hpc_requires}}
+
 #
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
@@ -49,30 +27,11 @@
 %bcond_with cblas
 %endif
 #
-%bcond_with ringdisabled
-#
-%if %{without hpc}
-%define package_name %{pname}
-%define p_python_sitearch %{python_sitearch}
-%define p_prefix %{_prefix}
-%define p_bindir %{_bindir}
-%else
-%{!?compiler_family:%global compiler_family gnu}
-%{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_ver:-V %{mpi_ver}}}
-%define package_name %{hpc_package_name %{_ver}}
-%define p_python_sitearch %{hpc_python_sitearch}
-%define p_prefix %{hpc_prefix}
-%define p_bindir %{hpc_bindir}
-# Magic for OBS Staging. Only build the flavors required by
-# other packages in the ring.
-%if %{with ringdisabled}
-ExclusiveArch:  do_not_build
-%endif
-%endif
 %{?sle15_python_module_pythons}
-Name:           %{package_name}
+
+Name:           python-numpy
 # set %%ver and %%_ver instead above
-Version:        %{ver}
+Version:        2.2.2
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
@@ -112,7 +71,6 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module typing-extensions >= 4.2.0}
 # /SECTION
-%if %{without hpc}
 # Last version which packaged %%{_bindir}/f2py without update-alternatives
 Conflicts:      %{plainpython}-numpy <= 1.12.0
 %if 0%{?suse_version}
@@ -120,9 +78,6 @@ BuildRequires:  gcc-fortran
 %else
 BuildRequires:  gcc-gfortran
 %endif
-%if %{with openblas}
-BuildRequires:  openblas-devel > 0.3.20
-%else
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
 %if %{with cblas}
@@ -130,22 +85,12 @@ BuildRequires:  lapack-devel
 BuildRequires:  cblas-devel
 Recommends:     libopenblas_pthreads0
 %endif
-%endif
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%endif
-%else
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-%ifnarch %ix86 %arm
-BuildRequires:  lua-lmod
-%endif
-BuildRequires:  suse-hpc
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
 %endif
 %python_subpackages
 
@@ -161,32 +106,19 @@ interfacing with general-purpose data-base applications.
 There are also basic facilities for discrete fourier transform,
 basic linear algebra and random number generation.
 
-%{?with_hpc:%{hpc_python_master_package -L -a }}
-
 %package devel
 Summary:        Development files for numpy applications
 Requires:       %{name} = %{version}
+Requires:       blas-devel
 Requires:       python-devel
 Requires:       %plainpython(abi) = %{python_version}
-%if %{without hpc}
-%if %{with openblas}
-Requires:       openblas-devel
-%else
-Requires:       blas-devel
 %if %{with cblas}
 Requires:       cblas-devel
 %endif
 Requires:       lapack-devel
-%endif
-%else
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-%{hpc_requires_devel}
-%endif
 
 %description devel
 This package contains files for developing applications using numpy.
-
-%{?with_hpc:%{hpc_python_master_package devel -a }}
 
 %prep
 %autosetup -p1 -n numpy-%{version}
@@ -206,19 +138,7 @@ rm -f PKG-INFO
 %build
 export PYTHONDONTWRITEBYTECODE=1
 %define _lto_cflags %{nil}
-%if %{with hpc}
-%hpc_setup
-module load openblas
-export CFLAGS="$(pkg-config --cflags openblas) %{optflags} -fno-strict-aliasing" LIBS="$(pkg-config --libs openblas)"
-cat > site.cfg <<EOF
-[openblas]
-libraries = openblas
-library_dirs = $OPENBLAS_LIB
-include_dirs = $OPENBLAS_INC
-EOF
-%else
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%endif
 %if 0%{?suse_version} < 1600
 export CC=gcc-12
 export CXX=g++-12
@@ -227,67 +147,17 @@ export CXX=g++-12
 %pyproject_wheel
 
 %install
-%{?with_hpc:%hpc_setup}
-%{?with_hpc:module load openblas}
+%pyproject_install
 
-%pyproject_install --prefix %{p_prefix} --root %{buildroot}
-
-%if !%{with hpc}
 %python_clone -a %{buildroot}%{_bindir}/f2py
 %python_clone -a %{buildroot}%{_bindir}/numpy-config
-%endif
 
 %if 0%{?suse_version}
-%fdupes %{buildroot}%{p_prefix}
-%endif
-
-%if %{with hpc}
-
-%define hpc_module_pname ${python_flavor}-numpy
-%{python_expand # Don't package testsuite
-python_flavor=`cat _current_flavor`
-sitesearch_path=`$python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))"`
-rm -rf %{buildroot}${sitesearch_path}/numpy/{,_core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} compiler"
-puts stderr "toolchain."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} compiler"
-module-whatis "Version: %{version}"
-module-whatis "Category: python module"
-module-whatis "Description: %{SUMMARY:0}"
-module-whatis "URL %{url}"
-
-set     version             %{version}
-
-if [ expr [ module-info mode load ] || [module-info mode display ] ] {
-  if { ![is-loaded intel] && ![is-loaded openblas] } {
-      module load openblas
-    }
-}
-
-prepend-path    PATH                %{hpc_bindir}
-prepend-path    PYTHONPATH          ${sitesearch_path}
-
-setenv          %{hpc_upcase_trans_hyph %{pname}}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase_trans_hyph %{pname}}_BIN        %{hpc_bindir}
-
-family "NumPy"
-EOF
-}
-
+%fdupes %{buildroot}%{_prefix}
 %endif
 
 %check
 # https://numpy.org/doc/stable/dev/development_environment.html#running-tests
-%if %{without hpc}
 
 mkdir -p testing
 cp pytest.ini testing/
@@ -299,7 +169,6 @@ for b in f2py numpy-config; do
   ln -s %{buildroot}%{_bindir}/$b-%{$python_bin_suffix} build/flavorbin/$b
 done
 }
-%endif
 
 # flaky tests
 test_failok+=" or test_structured_object_indexing"
@@ -378,7 +247,6 @@ $python runobstest.py "not (test_new_policy ${test_failok} or slow)"
 popd
 %endif
 
-%if %{without hpc}
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.
 %python_libalternatives_reset_alternative f2py
@@ -388,12 +256,10 @@ popd
 
 %postun
 %python_uninstall_alternative f2py
-%endif
 
 %files %{python_files}
 %doc README.md THANKS.txt
 %license LICENSE.txt
-%if %{without hpc}
 %python_alternative %{_bindir}/f2py
 %python_alternative %{_bindir}/numpy-config
 %{python_sitearch}/numpy/
@@ -405,37 +271,9 @@ popd
 %exclude %{python_sitearch}/numpy/distutils/checks/*.c
 %exclude %{python_sitearch}/numpy/f2py/src/
 %exclude %{python_sitearch}/numpy/random/lib/libnpyrandom.a
-%else
-%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
-%{p_bindir}/f2py
-%{p_bindir}/numpy-config
-%else
-%exclude %{p_bindir}/f2py
-%exclude %{p_bindir}/numpy-config
-%endif
-%{p_python_sitearch}/numpy/
-%{p_python_sitearch}/numpy-%{version}.dist-info
-%exclude %{p_python_sitearch}/numpy/_core/include/
-%exclude %{p_python_sitearch}/numpy/_core/lib/libnpymath.a
-%exclude %{p_python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
-%exclude %{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
-%exclude %{p_python_sitearch}/numpy/distutils/mingw/*.c
-%exclude %{p_python_sitearch}/numpy/distutils/checks/*.c
-%exclude %{p_python_sitearch}/numpy/f2py/src/
-%endif
-
-%if %{with hpc}
-%define hpc_module_pname %{python_flavor}-numpy
-%{hpc_modules_files}
-%{hpc_dirs}
-%dir %{hpc_bindir}
-%dir %{hpc_libdir}/python%{hpc_python_version}
-%dir %{p_python_sitearch}
-%endif
 
 %files %{python_files devel}
 %license LICENSE.txt
-%if %{without hpc}
 %{python_sitearch}/numpy/_core/include/
 %if 0%{python_version_nodots} < 312
 %{python_sitearch}/numpy/distutils/mingw/*.c
@@ -445,16 +283,5 @@ popd
 %{python_sitearch}/numpy/_core/lib/libnpymath.a
 %{python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
 %{python_sitearch}/numpy/random/lib/libnpyrandom.a
-%else
-%{p_python_sitearch}/numpy/_core/include/
-%{p_python_sitearch}/numpy/_core/lib/pkgconfig/numpy.pc
-%{p_python_sitearch}/numpy/_core/lib/libnpymath.a
-%{p_python_sitearch}/numpy/random/lib/libnpyrandom.a
-%if 0%{python_version_nodots} < 312
-%{p_python_sitearch}/numpy/distutils/mingw/*.c
-%{p_python_sitearch}/numpy/distutils/checks/*.c
-%endif
-%{p_python_sitearch}/numpy/f2py/src/
-%endif
 
 %changelog

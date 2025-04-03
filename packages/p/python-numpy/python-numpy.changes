@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:06:08 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support of gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Mon Feb 24 16:32:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.2.2

@@ -1364,4 +1364,12 @@ The Python versions supported in this release are 3.9-3.11.
     <comment></comment>
     <requestid>1254141</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>fa9dd9e1d545d00986933cab04e03e1f</srcmd5>
+    <version>2.2.2</version>
+    <time>1743691562</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266567</requestid>
+  </revision>
 </revisionlist>
