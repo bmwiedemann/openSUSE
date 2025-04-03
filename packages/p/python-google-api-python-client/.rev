@@ -1316,4 +1316,41 @@ eplacement for google-api-python-client, follow our naming convention</comment>
     <comment></comment>
     <requestid>1254097</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>083a4a3a9390309398954cb7b753e103</srcmd5>
+    <version>2.166.0</version>
+    <time>1743691861</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 1.166.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **apigee:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigquery:** Update the api
+  * **civicinfo:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **gkebackup:** Update the api
+  * **integrations:** Update the api
+  * **managedkafka:** Update the api
+  * **merchantapi:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **oracledatabase:** Update the api
+  * **pubsub:** Update the api
+  * **securitycenter:** Update the api (forwarded request 1266765 from glaubitz)</comment>
+    <requestid>1266856</requestid>
+  </revision>
 </revisionlist>

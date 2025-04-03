@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Thu Apr  3 06:15:25 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.166.0
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticshub:** Update the api
+  * **apigee:** Update the api
+  * **bigqueryreservation:** Update the api
+  * **bigquery:** Update the api
+  * **civicinfo:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **container:** Update the api
+  * **dataplex:** Update the api
+  * **dataproc:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **gkebackup:** Update the api
+  * **integrations:** Update the api
+  * **managedkafka:** Update the api
+  * **merchantapi:** Update the api
+  * **monitoring:** Update the api
+  * **netapp:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkservices:** Update the api
+  * **notebooks:** Update the api
+  * **oracledatabase:** Update the api
+  * **pubsub:** Update the api
+  * **securitycenter:** Update the api
+  * **verifiedaccess:** Update the api
+  * **chat:** Update the api
+  * **storage:** Update the api
+  * **sts:** Update the api
+- from version 2.165.0
+  * **accesscontextmanager:** Update the api
+  * **aiplatform:** Update the api
+  * **alloydb:** Update the api
+  * **analyticsadmin:** Update the api
+  * **appengine:** Update the api
+  * **backupdr:** Update the api
+  * **beyondcorp:** Update the api
+  * **bigquery:** Update the api
+  * **bigtableadmin:** Update the api
+  * **binaryauthorization:** Update the api
+  * **chromemanagement:** Update the api
+  * **cloudasset:** Update the api
+  * **compute:** Update the api
+  * **contactcenterinsights:** Update the api
+  * **containeranalysis:** Update the api
+  * **dataflow:** Update the api
+  * **datastream:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **dlp:** Update the api
+  * **eventarc:** Update the api
+  * **firebaseml:** Update the api
+  * **forms:** Update the api
+  * **gkebackup:** Update the api
+  * **healthcare:** Update the api
+  * **integrations:** Update the api
+  * **logging:** Update the api
+  * **looker:** Update the api
+  * **merchantapi:** Update the api
+  * **networksecurity:** Update the api
+  * **networkservices:** Update the api
+  * **places:** Update the api
+  * **playdeveloperreporting:** Update the api
+  * **retail:** Update the api
+  * **run:** Update the api
+  * **securitycenter:** Update the api
+  * **spanner:** Update the api
+  * **sqladmin:** Update the api
+  * **tagmanager:** Update the api
+  * **tpu:** Update the api
+  * **workloadmanager:** Update the api
+  * Resolve issue where pre-release versions of dependencies are installed (#2576)
+
+-------------------------------------------------------------------
 Tue Mar 18 07:29:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.164.0
