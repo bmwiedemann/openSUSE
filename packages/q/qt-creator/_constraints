@@ -1,10 +1,10 @@
 <constraints>
   <hardware>
     <disk>
-      <size unit="G">11</size>
+      <size unit="G">18</size>
     </disk>
     <memory>
-      <size unit="G">4</size>
+      <size unit="G">8</size>
     </memory>
   </hardware>
   <overwrite>
@@ -15,11 +15,8 @@
       <arch>riscv64</arch>
     </conditions>
     <hardware>
-      <disk>
-        <size unit="G">14</size>
-      </disk>
       <memory>
-        <size unit="G">6</size>
+        <size unit="G">12</size>
       </memory>
     </hardware>
   </overwrite>
