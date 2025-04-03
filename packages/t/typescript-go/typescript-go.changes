@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Apr  2 19:46:06 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 0.0.512:
+  * @ 3ab630d865af74daac9c372af6ceacce10d167bd
+- use default packaging macros for go
+- add tests to %check section
+
+-------------------------------------------------------------------
+Wed Mar 19 20:52:43 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 0.0.471:
+  * @ ffa058269dbc4a3749c1f0494a3eb0c8d6b96517
+- fix rpm lints:
+  * set `Group`
+  * format `Summary`
+
+-------------------------------------------------------------------
+Wed Mar 19 03:13:03 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 0.0.462:
+  * @ f3cf27f6970fa98b26d9413dd160c4b864d570a2
+- set version to 0.0.x while under development
+- use zstd for main source tarball as well
+
+-------------------------------------------------------------------
+Sat Mar 15 23:01:25 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- initial rev @ 8cf4a33989a0dc18f47adb7aa63d2db2099578e4

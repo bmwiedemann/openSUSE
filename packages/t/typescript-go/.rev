@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3864824815d29e64ef0e20dbc628274a</srcmd5>
+    <version>0.0.512</version>
+    <time>1743691636</time>
+    <user>anag+factory</user>
+    <comment>use go packaging macros
+
+retrying again after infra fixes merged</comment>
+    <requestid>1266678</requestid>
+  </revision>
+</revisionlist>

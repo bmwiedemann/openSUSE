@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/microsoft/typescript-go</param>
+    <param name="scm">git</param>
+
+    <param name="revision">3ab630d865af74daac9c372af6ceacce10d167bd</param>
+    <param name="version">0.0.512</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitignore</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>
+
