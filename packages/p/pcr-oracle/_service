@@ -4,10 +4,10 @@
 <services>
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
-		<param name="url">https://github.com/okirch/pcr-oracle.git</param>
+		<param name="url">https://github.com/openSUSE/pcr-oracle.git</param>
 		<param name="filename">pcr-oracle</param>
 		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="revision">refs/tags/0.5.4</param>
+		<param name="revision">refs/tags/0.5.5</param>
 	</service>
 	<service name="recompress" mode="disabled">
 		 <param name="file">pcr-oracle*.tar</param>

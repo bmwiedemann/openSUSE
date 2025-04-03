@@ -18,34 +18,13 @@
 
 
 Name:           pcr-oracle
-Version:        0.5.4
+Version:        0.5.5
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-or-later
 Group:          System/Boot
-URL:            https://github.com/okirch/pcr-oracle
+URL:            https://github.com/openSUSE/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix_efi_measure_and_shim.patch gh#okirch/pcr-oracle!47
-# PATCH-FIX-UPSTREAM fix_efi_measure_and_shim.patch gh#okirch/pcr-oracle!51
-Patch0:         fix_efi_measure_and_shim.patch
-# PATCH-FIX-UPSTREAM fix_loader_conf.patch gh#okirch/pcr-oracle!50
-Patch1:         fix_loader_conf.patch
-# PATCH-FIX-UPSTREAM fix_grub_bls_entry.patch gh#okirch/pcr-oracle!52
-Patch2:         fix_grub_bls_entry.patch
-# PATCH-FIX-UPSTREAM fix_grub_bls_cmdline.patch gh#okirch/pcr-oracle!52 (cont)
-Patch3:         fix_grub_bls_cmdline.patch
-# PATCH-FIX-UPSTREAM support-ecc-srk.patch gh#okirch/pcr-oracle!56
-Patch4:         support-ecc-srk.patch
-# PATCH-FIX-UPSTREAM fix-testcase-empty-efi-variables.patch gh#okirch/pcr-oracle!58
-Patch5:         fix-testcase-empty-efi-variables.patch
-# PATCH-FIX-UPSTREAM fix-event-reshash-for-cryptouuid.patch gh#okirch/pcr-oracle!60
-Patch6:         fix-event-reshash-for-cryptouuid.patch
-# PATCH-FIX-UPSTREAM fix-bsc1230316-predict-sbatlevelrt.patch gh#okirch/pcr-oracle!61
-Patch7:         fix-bsc1230316-predict-sbatlevelrt.patch
-# PATCH-FIX-UPSTREAM fix-bsc1230316-predict-sbatlevelrt-sb-off.patch gh#okirch/pcr-oracle!61
-Patch8:         fix-bsc1230316-predict-sbatlevelrt-sb-off.patch
-# PATCH-FIX-UPSTREAM fix-bsc1230316-make-pcr4-hard-requirement.patch gh#okirch/pcr-oracle!61
-Patch9:         fix-bsc1230316-make-pcr4-hard-requirement.patch
 BuildRequires:  libopenssl-devel >= 0.9.8
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0

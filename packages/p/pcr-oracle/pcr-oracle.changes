@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:26:00 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 0.5.5
+  + Merge of pending patches into the project
+  + No new feature since last release
+- Change source to the openSUSE project
+- Remove patches (merged)
+  + fix-bsc1230316-make-pcr4-hard-requirement.patch
+  + fix-bsc1230316-predict-sbatlevelrt.patch
+  + fix-bsc1230316-predict-sbatlevelrt-sb-off.patch
+  + fix_efi_measure_and_shim.patch
+  + fix-event-reshash-for-cryptouuid.patch
+  + fix_grub_bls_cmdline.patch
+  + fix_grub_bls_entry.patch
+  + fix_loader_conf.patch
+  + fix-testcase-empty-efi-variables.patch
+  + support-ecc-srk.patch
+
+-------------------------------------------------------------------
 Fri Mar  7 06:19:42 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fix-bsc1230316-predict-sbatlevelrt-sb-off.patch to fix the
