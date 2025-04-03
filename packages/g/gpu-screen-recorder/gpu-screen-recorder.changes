@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Apr 02 22:33:09 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250401:
+  * Fix incorrect region when monitor is rotated
+  * Fix cursor rotated background in compute shader on wayland
+  * Fix incorrect region for region capture after compute shader
+    change
+  * Fix incorrect compute size when scaling image
+  * Change quality parameters for 'very_high' (default) quality
+  * Refine options text
+  * Compute shader: nvidia: render full image
+  * Compute shader: add support for external texture, color
+    component swapping (bgr to rgb)
+  * Use sampler2D for alpha blending compute shader instead of
+    output image2D
+  * Test broadcom (raspberry pi) support
+  * Fix application audio not working correctly after a recent update
+  * Fix screenshot of window not working after latest change
+  * texture filter change
+  * Take screenshot with XGetImage on x11 to workaround nvidia
+    driver (nvfbc) limitation that only allows one nvfbc session at
+    a time
+  * nvfbc region capture work
+  * Fix screenshot with region not working correctly for some sizes
+    and possibly crashing
+  * Add region capture with -w region -region WxH+X+Y
+  * Test fix 2: crtc map update
+  * Test fix for monitor changing after power off/on
+  * Example scripts: use cbr for replay scripts
+  * Fix pipewire server breaking when pipewire connection is closed
+    too quickly (--info)
+  * Rename window_wayland to wayland and window_x11 to x11
+
+-------------------------------------------------------------------
+Tue Mar 04 22:24:59 UTC 2025 - mantarimay@pm.me
+
+- Update to version 20250303:
+  * Fix portal capture on sway and hyprland: unset capture types/
+    cursor modes that are not supported by the desktop portal
+  * Correct check for default audio output change in pulseaudio
+  * Pipewire: auto change default_output/default_input connected
+    nodes when the default devices are changed in system audio
+    settings
+  * Audio device capture: make default output/input switch
+    recording source the default output/input is changed in the
+    audio server
+
+-------------------------------------------------------------------
 Tue Feb 25 19:45:40 UTC 2025 - mantarimay@pm.me
 
 - Update to version 20250224:
