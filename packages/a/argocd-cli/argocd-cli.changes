@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 03 05:17:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.9:
+  * - Bug fixes
+    31a5545: fix: Check for semver constraint matching in
+    application webhook handler (cherry-pick #21648) (#22508)
+    (@gcp-cherry-pick-bot[bot])
+  * Other work
+    - c868711: chore(dep): bump gitops-engine 2.14 (#22520)
+      (@pjiang-dev)
+
+-------------------------------------------------------------------
 Tue Mar 25 05:44:10 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.8:
