@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package scotch
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,257 +19,26 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define base_pname scotch
-%define vers 6.1.0
-%define _vers 6_1_0
 %define so_ver 0
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build
  %define package_name %pname
-%endif
-
-%if "%{flavor}" == "serial"
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "openmpi4"
-%{?DisOMPI4}
-%global mpi_family openmpi
-%bcond_with hpc
-%define mpi_vers 4
+%else
+ %if "%{flavor}" == "serial"
+ %else
+%global mpi_flavor %{flavor}
+ %endif
 %endif
 
 %if "%{flavor}" == "openmpi5"
-%{?DisOMPI5}
-%global mpi_family openmpi
-%bcond_with hpc
-%define mpi_vers 5
+ExcludeArch:    %{ix86} %{arm}
 %endif
 
-%if "%{flavor}" == "mvapich2"
-%global mpi_family %{flavor}
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "mpich"
-%global mpi_family %{flavor}
-%bcond_with hpc
-%endif
-
-%if "%{flavor}" == "gnu-hpc"
-%bcond_without hpc
-%global compiler_family gnu
-%undefine c_f_ver
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu-mpich-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_vers 4
-%endif
-
-%if "%{flavor}" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
-%bcond_without hpc
-%define compiler_family gnu
-%undefine c_f_ver
-%global mpi_family openmpi
-%define mpi_vers 5
-%endif
-
-%if "%{flavor}" == "gnu7-hpc"
-%bcond_without hpc
-%global compiler_family gnu
-%define c_f_ver 7
-%endif
-
-%if "%{flavor}" == "gnu7-mvapich2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu7-mpich-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_family openmpi
-%define mpi_vers 4
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 7
-%global mpi_family openmpi
-%define mpi_vers 5
-%endif
-
-%if "%{flavor}" == "gnu8-hpc"
-%bcond_without hpc
-%global compiler_family gnu
-%define c_f_ver 8
-%endif
-
-%if "%{flavor}" == "gnu8-mvapich2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu8-mpich-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_family openmpi
-%define mpi_vers 4
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 8
-%global mpi_family openmpi
-%define mpi_vers 5
-%endif
-
-%if "%{flavor}" == "gnu9-hpc"
-%bcond_without hpc
-%global compiler_family gnu
-%define c_f_ver 9
-%endif
-
-%if "%{flavor}" == "gnu9-mvapich2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu9-mpich-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_family openmpi
-%define mpi_vers 4
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 9
-%global mpi_family openmpi
-%define mpi_vers 5
-%endif
-
-%if "%{flavor}" == "gnu10-hpc"
-%bcond_without hpc
-%global compiler_family gnu
-%define c_f_ver 10
-%endif
-
-%if "%{flavor}" == "gnu10-mvapich2-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family mvapich2
-%endif
-
-%if "%{flavor}" == "gnu10-mpich-hpc"
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family mpich
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family openmpi
-%define mpi_vers 4
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%bcond_without hpc
-%define compiler_family gnu
-%define c_f_ver 10
-%global mpi_family openmpi
-%define mpi_vers 5
-%endif
-
-# Don't build non-HPC on SLE
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
-ExclusiveArch:  do_not_build
-%endif
-
-%if 0%{?with_hpc}
-%bcond_with mumps
-%else
 %bcond_without mumps
-%endif
 
-%{?mpi_family:%{bcond_without mpi}}%{!?mpi_family:%{bcond_with mpi}}
-%{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
-%{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
-
-%define mpi_ext %{?mpi_vers}
+%{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 
 %if %{without mpi}
 %define pname %{base_pname}
@@ -280,42 +49,31 @@ ExclusiveArch:  do_not_build
 %define metis parmetis
 %endif
 
-%if %{with hpc}
-ExcludeArch:    %ix86
-%{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_family} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
- %define my_prefix %hpc_prefix
- %define my_bindir %hpc_bindir
- %define my_libdir %hpc_libdir
- %define my_incdir %hpc_includedir
- %define my_mandir %hpc_mandir
- %define package_name   %{hpc_package_name %_vers}
- %define f_name(ln:s:)   %{-l:lib}%{pname}%{-n*}%{hpc_package_name_tail %{?_vers}}
+%if %{without mpi}
+ %define my_prefix %_prefix
+ %define my_bindir %_bindir
+ %define my_libdir %_libdir
+ %define my_incdir %_includedir
+ %define my_mandir %_mandir
 %else
- %if %{without mpi}
-  %define my_prefix %_prefix
-  %define my_bindir %_bindir
-  %define my_libdir %_libdir
-  %define my_incdir %_includedir
-  %define my_mandir %_mandir
- %else
-  %define my_suffix -%{mpi_family}%{?mpi_ext}
-  %define my_prefix %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_ext}
-  %define my_bindir %{my_prefix}/bin
-  %define my_libdir %{my_prefix}/%{_lib}/
-  %define my_incdir %{my_prefix}/include/
-  %define my_mandir %{my_prefix}/share/man
- %endif
- %if 0%{!?package_name:1}
-  %define package_name   %pname%{?my_suffix}
- %endif
- %define f_name(ln:s:)   %{-l:lib}%{pname}%{-n*}%{-s*}%{?my_suffix}
+ %define my_suffix -%{mpi_flavor}
+ %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}
+ %define my_bindir %{my_prefix}/bin
+ %define my_libdir %{my_prefix}/%{_lib}/
+ %define my_incdir %{my_prefix}/include/
+ %define my_mandir %{my_prefix}/share/man
 %endif
+%if 0%{!?package_name:1}
+ %define package_name   %pname%{?my_suffix}
+%endif
+%define libname lib%{pname}%{so_ver}%{?my_suffix}
+%define metis_pname  lib%{pname}-metis%{?my_suffix}
 
 Summary:        Graph, mesh and hypergraph partitioning library
 License:        CECILL-C
 Group:          Productivity/Scientific/Math
 Name:           %{package_name}
-Version:        %{vers}
+Version:        6.1.0
 Release:        0
 URL:            https://gitlab.inria.fr/scotch/scotch
 Source0:        https://gitlab.inria.fr/scotch/scotch/-/archive/v%{version}/%{base_pname}-v%{version}.tar.gz
@@ -325,91 +83,65 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
-BuildRequires:  libbz2-devel
-BuildRequires:  make
-BuildRequires:  zlib-devel
-%if %{without hpc}
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+BuildRequires:  libbz2-devel
+BuildRequires:  make
+BuildRequires:  zlib-devel
  %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_ext}-devel
+BuildRequires:  %{mpi_flavor}-devel
  %endif
-%else # hpc
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  lua-lmod  >= 7.6.1
-BuildRequires:  suse-hpc >= 0.2
-Requires:       %{f_name -l -s %{so_ver}} = %version
- %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
- %endif
-%endif
 
 %description
 Scotch is a software package for graph and mesh/hypergraph partitioning and
 sparse matrix ordering.
 
-%{?with_hpc:%{hpc_master_package -L}}
-
-%package     -n %{f_name -l -s %{so_ver}}
+%package     -n %{libname}
 Summary:        Graph, mesh and hypergraph partitioning library
 Group:          System/Libraries
-%if %{without hpc}
  %if %{with mpi}
 BuildRequires:  libscotch%{so_ver}
 Requires:       libscotch%{so_ver}
  %endif
-%else
-%hpc_requires
-Requires:       lua-lmod  >= 7.6.1
-%endif
 
-%description -n %{f_name -l -s %{so_ver}}
+%description -n %{libname}
 Scotch is a software package for graph and mesh/hypergraph partitioning and
 sparse matrix ordering.
-
-%{?with_hpc:%{hpc_master_package -L -l -n lib%{pname}%{hpc_package_name_tail}}}
 
 %package     devel
 Summary:        Development libraries for scotch
 Group:          Development/Libraries/C and C++
-Requires:       %{f_name -l -s %{so_ver}} = %{version}
-%if %{without hpc}
+Requires:       %{libname} = %{version}
 Requires:       gcc-fortran
  %if %{with mpi}
 BuildRequires:  scotch-devel
-Requires:       %{mpi_family}%{?mpi_ext}-devel
+Requires:       %{mpi_flavor}-devel
 Requires:       scotch-devel
  %else
 Provides:       scotch-devel = %{version}
  %endif
-%else
-Requires:       %{f_name -l -s %{so_ver}}
-%hpc_requires_devel
-%endif
 
 %description devel
 This package contains development libraries for libscotch.
 
-%{?with_hpc:%{hpc_master_package -L devel}}
-
 %package        devel-static
 Summary:        Development libraries for scotch
 Group:          Development/Libraries/C and C++
-Requires:       %{f_name}-devel = %{version}
-%{?!with_hpc:Provides:       scotch-devel-static = %{version}}
+Requires:       %{package_name}-devel = %{version}
+Provides:       scotch-devel-static = %{version}
 
 %description devel-static
 This package contains libscotch static libraries.
 
-%package     -n %{f_name -n -%{metis}}-devel
+%package     -n %{pname}-%{metis}%{?my_suffix}-devel
 Summary:        Development libraries for scotch
 Group:          Development/Libraries/C and C++
-%{?!with_hpc:%{?!with_mpi:Conflicts:      metis-devel}}
-Requires:       %{f_name -l -s %{so_ver}}
-Requires:       %{f_name}-devel = %{version}
+%{?!with_mpi:Conflicts:      metis-devel}
+Requires:       %{libname}
+Requires:       %{package_name}-devel = %{version}
 
-%description -n %{f_name -n -%{metis}}-devel
+%description -n %{pname}-%{metis}%{?my_suffix}-devel
 This package contains the devel libraries and header file in the case
 scotch is used as a replacement of the metis library.
 
@@ -418,14 +150,8 @@ scotch is used as a replacement of the metis library.
 cp %SOURCE1 src/Makefile.inc
 
 %build
-
-%if %{with hpc}
-%hpc_setup
-%hpc_debug
-%else
 export CC=gcc
 %{?with_mpi:source %{my_bindir}/mpivars.sh}
-%endif
 %{?with_mpi:export CC=mpicc}
 
 export SUSE_ASNEEDED=0
@@ -452,12 +178,8 @@ $CC %{LDFLAGS} -shared -Wl,-soname=lib%{?pt_pref}esmumps.so.0 -o ../lib/lib%{?pt
 cd ..
 
 %install
-%if %{with hpc}
-%hpc_setup
-%else
 export CC=gcc
 %{?with_mpi:source %{my_bindir}/mpivars.sh}
-%endif
 %{?with_mpi:export CC=mpicc}
 
 pushd src/
@@ -468,7 +190,6 @@ for static_libs in lib/lib%{pname}*.a %{?with_mumps:lib/lib%{?pt_pref}esmumps.a}
 	ln -s $libs.so.0.0 lib/$libs.so.0
 	ln -s $libs.so.0.0 lib/$libs.so
 done
-%if %{without hpc}
 pushd %{buildroot}%{my_libdir}
 ln -s lib%{?pt_pref}scotch%{metis}.a lib%{metis}.a
 ln -s lib%{?pt_pref}scotch%{metis}.so lib%{metis}.so
@@ -498,46 +219,6 @@ for man in *; do
 done
 popd
 %endif # without mpi
-%else
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the Scotch library built with the %{compiler_family} compiler"
-puts stderr "toolchain and the %{mpi_family}%{?mpi_vers} MPI stack."
-puts stderr " "
-
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} compiler and %{mpi_family}%{?mpi_vers} MPI"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "Description: %{SUMMARY:0}"
-module-whatis "%{url}"
-
-set     version                     %{version}
-
-if {[file isdirectory  %{hpc_bindir}]} {
-prepend-path    PATH                %{hpc_bindir}
-}
-prepend-path    MANPATH             %{hpc_mandir}
-if {[file isdirectory  %{hpc_includedir}]} {
-prepend-path    INCLUDE             %{hpc_includedir}
-}
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-
-setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase %pname}_BIN        %{hpc_bindir}
-if {[file isdirectory  %{hpc_includedir}]} {
-setenv          %{hpc_upcase %pname}_LIB        %{hpc_libdir}
-}
-setenv          %{hpc_upcase %pname}_INC        %{hpc_includedir}
-EOF
-
-%endif # without hpc
 cp -dp lib/lib*scotch*.so* %{?with_mumps:lib/lib*esmumps.*} %{buildroot}%{my_libdir}/
 %{?with_mumps:cp include/esmumps.h %{buildroot}%{my_incdir}/}
 cp src/libscotchmetis/%{metis}.h %{buildroot}%{my_incdir}/
@@ -553,43 +234,32 @@ popd
 %fdupes %{buildroot}%{my_bindir}
 %fdupes %{buildroot}%{my_mandir}
 
-%if %{without mpi} && %{without hpc}
-%post -n %{f_name -l -s %so_ver} -p /sbin/ldconfig
-%postun -n %{f_name -l -s %so_ver} -p /sbin/ldconfig
+%if %{without mpi}
+%post -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 %else
 
-# HPC and MPI package install to non-standard locations: don't update cache
-%post -n %{f_name -l -s %so_ver}
+# MPI package install to non-standard locations: don't update cache
+%post -n %{libname}
 /sbin/ldconfig -N %{my_libdir}
 
-%postun -n %{f_name -l -s %so_ver}
+%postun -n %{libname}
 /sbin/ldconfig -N %{my_libdir}
-%{?with_hpc:%hpc_module_delete_if_default}
 %endif
 
 %files
 %doc README.txt doc/scotch*.pdf
 %license doc/CeCILL-*
-%if %{with hpc}
-%{my_bindir}
-%dir %{hpc_datadir}
-%{my_mandir}
-%else
 %{my_bindir}/%{!?with_mpi:*}
 %{my_mandir}/man1/%{!?with_mpi:*}
-%endif
 
-%files -n %{f_name -l -s %{so_ver}}
-%{?with_hpc:%hpc_dirs}
-%{?with_hpc:%hpc_modules_files}
-%if %{without mpi} || %{without hpc}
+%files -n %{libname}
 %{my_libdir}/libscotch.so.*
 %{my_libdir}/libscotcherr.so.*
 %{my_libdir}/libscotcherrexit.so.*
 %{my_libdir}/libscotchmetis.so.*
- %if %{with mumps}
+%if %{with mumps}
 %{my_libdir}/libesmumps.so.*
- %endif
 %endif
 %if %{with mpi}
 %{my_libdir}/libptscotch.so.*
@@ -600,15 +270,12 @@ popd
 %endif
 
 %files devel
-%{?with_hpc:%dir %{my_incdir}}
-%if %{without mpi} || %{without hpc}
 %{my_libdir}/libscotch.so
 %{my_libdir}/libscotcherr.so
 %{my_libdir}/libscotcherrexit.so
 %{my_libdir}/libscotchmetis.so
- %if %{with mumps}
+%if %{with mumps}
 %{my_libdir}/libesmumps.so
- %endif
 %endif
 %if %{with mpi}
 %{my_libdir}/libptscotch.so
@@ -620,27 +287,23 @@ popd
 %{my_incdir}/*.h
 %exclude %{my_incdir}/%{metis}.h
 
-%if %{without hpc}
-%files -n %{f_name -n -%{metis}}-devel
+%files -n %{pname}-%{metis}%{?my_suffix}-devel
 %{my_libdir}/lib%{metis}.so
-%endif
 %{my_incdir}/%{metis}.h
 
 %files devel-static
 %{my_libdir}/libscotch.a
 %{my_libdir}/libscotcherr.a
 %{my_libdir}/libscotcherrexit.a
-%if %{without mpi} || %{without hpc}
 %{my_libdir}/libscotchmetis.a
-%endif
 %if %{with mpi}
 %{my_libdir}/libptscotch.a
 %{my_libdir}/libptscotcherr.a
 %{my_libdir}/libptscotcherrexit.a
 %{my_libdir}/libptscotchparmetis.a
-%{!?with_hpc:%{my_libdir}/libparmetis.a}
+%{my_libdir}/libparmetis.a
 %else
-%{!?with_hpc:%{my_libdir}/libmetis.a}
+%{my_libdir}/libmetis.a
 %endif
 %if %{with mumps}
 %{my_libdir}/lib%{?pt_pref}esmumps.a

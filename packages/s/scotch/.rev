@@ -167,4 +167,12 @@
 - Update to version 6.1.0. The change in release number reflects a change</comment>
     <requestid>1119881</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>cf9d397a033c5dc3419a072118a6e02b</srcmd5>
+    <version>6.1.0</version>
+    <time>1743691619</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266381</requestid>
+  </revision>
 </revisionlist>
