@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Mon Mar 31 00:16:20 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Superseded gnucash-swig43.patch
+- Removed gnucash-icu.patch
+- Update to 5.11:
+  + Inconsistent behavior in Loan Review
+  + start/end of current/last quarter have off-by-one error
+  + CSV Export: 'Accounts Selected' text has bad formatting
+  + GnuCash re-opens to incorrect page
+  + Dialog boxes won't remain sized and positioned - part1
+  + Save As... sequence from SQL to XML format does not clear lock 
+    on the origin SQL book.
+  + Register Filter Today radio buttons don't work correctly 
+  + Fails to build with ICU 76
+  + Unable to save gnucash DB file as XML file
+  + Add "Clear All" button to register filter
+  + Version 5.10 Fails to import QIF file
+  + Gnucash grashes on startup ice-9/read.scm error
+  + Autocomplete of split only completes description
+  + Pie chart hovering shows wrong information in pop-up
+  + Crash on account deletion (edit)
+  + Saved reports configurations are opening with…
+  + Import Map Editor Non-Bayesian crashes gnucash
+  + Decimal point confusions when getting stock quotes from aex
+  + Reconcile date default doesn't update to reflect previous 
+    reconciliation.
+  + Adjust quarter begin and end dates to align with Accounting 
+    Period (Fiscal Year) start and end dates when the latter are 
+    not the first/last of the month.
+  + Update Form/Schedule line references for 2024 for the US Income 
+    Tax Report
+  + Better handling of complex Jump to other split operations: 
+    * Expand multi-split transactions in the destination register 
+      after a jump and select the destination split.
+    * Emit a warning when a Jump to other split operation can't be 
+      performed instead of doing nothing.
+    * When there are multiple splits but only one other account 
+      Jump will jump to the transaction in that other account's 
+      register regardless of what split is selected in the original 
+      register.
+    * Do nothing when the user attempts to jump to another split in 
+      the current register's account.
+    * Add a new Register preference "Jump action for multiple 
+      splits"
+        
+         Make the behaviour when the "Jump" operation encounters a 
+         transaction with more than two splits configurable. This 
+         can be configured as: 
+           * Do nothing (this is the default)
+           * Use the split with the largest value
+           * Use the split with the smallest value
+  
+  + Allow more account types in the payment window's transfer 
+    account list
+      
+      So far it was limited to Asset, Liability, Credit Card and 
+      either Income (for customer payments) or Expenses (for 
+      vendor payments). There are however use cases where a 
+      customer payment also covers expenses (like for example 
+      a Paypal service charge). To allow for as many edge cases 
+      as possible the filter now only excludes those account types 
+      I worry will break the business logic: AP and AR accounts. 
+      That is, with this change you won't be able to create a 
+      customer payment (which necessarily has one split an an AR 
+      account) that transfers to another AR or to an AP account. 
+      While even that may work, I am sure the business features 
+      weren't designed to cope with this and I can't exhaustively 
+      test that. 
+  
+  + Support for enums as GtkRadioButton preferences
+      
+      The "=" in the widget name will separate the pref name from 
+      the enum string value that is used when the radio button is 
+      activated. When the radio button is deactivated, its 
+      preference update is ignored because another button must 
+      have been made active. 
+  
+  + Allow warning dialogs to be the dismiss-only variant
+      
+      All existing dialogs are either QUESTION or WARNING. Allow 
+      INFO, ERROR and OTHER to remember being dismissed without 
+      asking a question. 
+
+  + Improve GncNumeric(std::string) to handle unicode spaces and 
+    thousands separators.
+  
+  + Add function to GncQueryView to expand column
+      
+      Add function gnc_query_set_expand_column to GncQueryView so 
+      that the expand column can be specified that takes up any 
+      available free space. Use this function in the Due 
+      Bills/Invoice Reminder to to set the expanding column to the 
+      company name. 
+
+  + [Account.hpp] New function gnc_account_get_all_parents returns 
+    reversed path vector
+  
+  + Fix python bindings built with Swig-4.3.0.
+      
+      New and Updated Translations: Chinese (Simplified Han script), 
+      Croatian, Dutch, English (Australia), English (New Zealand), 
+      English (United Kingdom), Estonian, Finnish, French, German, 
+      Greek, Hebrew, Hungarian, Norwegian Bokmål, Persian, 
+      Portuguese, Portuguese (Brazil), Russian, Spanish, Swedish, 
+      Tamil, Ukrainian
+  + Update the Security Editor section in manual to match the 
+    dialog.
+  + add entity for menuchoice 'Export Reports'
+  + Remove Finance::Quote appendix. The content has been moved to 
+    Wiki.
+
+-------------------------------------------------------------------
 Tue Jan 14 21:14:06 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 5.10:
