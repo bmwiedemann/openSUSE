@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  2 19:42:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Drop explicit requirements of -devel: pcre switched to pcre2
+  by 4.3.0, but these are auto-generated via pkgconfig when needed
+- fix build by removing broken/duplicate leap_version construct
+
+-------------------------------------------------------------------
 Thu Oct 31 11:51:02 UTC 2024 - peter czanik <peter@czanik.hu>
 
 - fix the merge-grammar fix 

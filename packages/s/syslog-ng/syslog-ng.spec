@@ -143,12 +143,7 @@ BuildRequires:  libesmtp-devel
 BuildRequires:  libcurl-devel
 %endif
 %if %{with geoip}
-%if 0%{?leap_version} >= 420200
 BuildRequires:  libmaxminddb-devel
-%endif
-%if 0%{?suse_version} > 1320
-BuildRequires:  libmaxminddb-devel
-%endif
 %endif
 %if %{with redis}
 BuildRequires:  hiredis-devel
@@ -324,12 +319,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Provides:       libevtlog-devel = %{version}
 Obsoletes:      libevtlog-devel <= 0.2.13
-Requires:       glib2-devel
-Requires:       glibc-devel
-Requires:       libcap-devel
-Requires:       libopenssl-devel
-Requires:       pcre-devel
-Requires:       systemd-devel
 
 %description devel
 This package provides files necessary for syslog-ng development.
@@ -970,12 +959,7 @@ chmod 640 "${additional_sockets#/}"
 %if %{with geoip}
 %files geoip
 %dir %{_libdir}/syslog-ng
-%if 0%{?leap_version} >= 420200
 %attr(755,root,root) %{_libdir}/syslog-ng/libgeoip2-plugin.so
-%endif
-%if 0%{?suse_version} > 1320
-%attr(755,root,root) %{_libdir}/syslog-ng/libgeoip2-plugin.so
-%endif
 
 %endif
 
