@@ -36,7 +36,7 @@ Name:           crmsh
 Summary:        High Availability cluster command-line interface
 License:        GPL-2.0-or-later
 Group:          %{pkg_group}
-Version:        5.0.0+20250324.9041399d
+Version:        5.0.0+20250403.1442a04a
 Release:        0
 URL:            http://crmsh.github.io
 Source0:        %{name}-%{version}.tar.bz2
@@ -117,11 +117,6 @@ Requires(post): python3-dateutil
 Requires(post): python3-tox
 Requires(post): pacemaker
 BuildArch:      noarch
-%if 0%{?suse_version}
-Requires(post): libglue-devel
-%else
-Requires(post): cluster-glue-libs-devel
-%endif
 Requires(post): python3-PyYAML
 %endif
 

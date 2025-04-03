@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 03 08:31:40 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250403.1442a04a:
+  * Dev: ra: Drop legacy codes to fetch ra informations
+  * Dev: Remove codes that include rhcs term
+  * Dev: Drop node type normal and ping
+
+-------------------------------------------------------------------
+Mon Mar 31 11:38:11 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250331.c807da2a:
+  * Dev: ui_configure: Show the changes with diff like format
+  * Dev: github-actions: allow the CI workflow to be dispatched manually
+
+-------------------------------------------------------------------
+Mon Mar 24 10:26:40 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250324.341103ff:
+  * Dev: Drop cluster-glue in multiple places (jsc#PED-8733)
+  * Dev: behave: Adjust functional tests to replace /var/lib/heartbeat
+  * Dev: bootstrap: Drop /var/lib/heartbeat in source code (jsc#PED-8733)
+
+-------------------------------------------------------------------
 Mon Mar 24 04:49:07 UTC 2025 - zzhou@suse.com
 
 - Update to version 5.0.0+20250324.9041399d:
