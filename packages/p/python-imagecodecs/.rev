@@ -182,4 +182,20 @@
     <comment></comment>
     <requestid>1228806</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0cd683b07567bc0848643ba120a8b1d4</srcmd5>
+    <version>2025.3.30</version>
+    <time>1743691805</time>
+    <user>anag+factory</user>
+    <comment>- Update to 2025.3.30:
+  * Pass 7659 tests.
+  * Fix some codecs for use with Zarr 3, zarr_format=2 (#123).
+  * Fix lz4h5 codec when block size is less than compressed size (#126).
+  * Fix pglz_compress is not thread-safe.
+  * Set __module__ attribute on public objects.
+  * Drop support for Python 3.9, deprecate Python 3.10.
+- Add patch no-length-assertion-aborts.patch:
+  * Do not call h5lookup methods that cause failed assertions.</comment>
+    <requestid>1266740</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-imagecodecs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,15 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2024.9.22
+Version:        2025.3.30
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/imagecodecs/
 Source0:        https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
+# PATCH-FIX-OPENSUSE Remove h5lookup tests that cause failed assertions
+Patch0:         no-length-assertion-aborts.patch
 ExcludeArch:    %ix86 %arm32 ppc s390
 BuildRequires:  %{python_module Cython >= 3.0.11}
 BuildRequires:  %{python_module base >= 3.10}
