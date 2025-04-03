@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           ibis
-Version:        0.13.0
+Version:        0.13.1
 Release:        0
 Summary:        Gobject based library
 License:        GPL-2.0-or-later

@@ -46,4 +46,13 @@
   * Implement Ibis.formatting_parse (forwarded request 1265607 from rrahl0)</comment>
     <requestid>1265608</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fc75947776833209ee3f5838f14c894f</srcmd5>
+    <version>0.13.1</version>
+    <time>1743691798</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.13.1:
+  * Fix a few issues with formatting</comment>
+    <requestid>1266730</requestid>
+  </revision>
 </revisionlist>
