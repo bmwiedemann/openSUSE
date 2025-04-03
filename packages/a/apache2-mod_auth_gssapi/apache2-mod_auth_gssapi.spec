@@ -1,7 +1,7 @@
 #
 # spec file for package apache2-mod_auth_gssapi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2004, 2005 NOVELL (All rights reserved)
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,8 @@
 #
 
 
-%if 0%{suse_version} >= 1599
-%define test 1
-%else
+# kinit: Configuration file does not specify default realm when parsing name maguser
 %define test 0
-%endif
 Name:           apache2-mod_auth_gssapi
 Version:        1.6.5
 Release:        0

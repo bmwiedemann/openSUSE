@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  3 09:55:51 UTC 2025 - pgajdos@suse.com
+
+- turn the testsuite off even for Factory for now, it appears it
+  requires certain kerberos tweaks 
+  [kinit: Configuration file does not specify default realm when parsing name maguser]
+
+-------------------------------------------------------------------
 Tue Feb 20 11:00:28 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
