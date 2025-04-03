@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.8.1
-%define orig_version   128.8.1
+%define mainver        %major.9.0
+%define orig_version   128.9.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -168,7 +168,7 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %if 0%{?suse_version} < 1599
 BuildRequires:  clang15-devel
 %else
-BuildRequires:  clang18-devel
+BuildRequires:  clang-devel
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
