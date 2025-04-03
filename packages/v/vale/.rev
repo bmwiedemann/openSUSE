@@ -851,4 +851,18 @@
   * fix: support filters through strings or files (forwarded request 1254142 from jfkw)</comment>
     <requestid>1254153</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1b9b0059b9c69e1733732dfcceebc975</srcmd5>
+    <version>3.11.0</version>
+    <time>1743698608</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.11.0:
+  * chore: add mdx2vast to Docker
+  * docs: clean up accept.txt
+  * fix: don't normalize multiple spaces
+  * fix: Enhance `stepsToString` to properly handle parentheses
+  * chore: update .vale.ini
+  * feat: support for front matter (forwarded request 1266885 from jfkw)</comment>
+    <requestid>1266891</requestid>
+  </revision>
 </revisionlist>

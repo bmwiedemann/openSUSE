@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 02 23:52:10 UTC 2025 - Jeff Kowalczyk <Jeff Kowalczyk <jkowalczyk@suse.com>>
+
+- Update to version 3.11.0:
+  * chore: add mdx2vast to Docker
+  * docs: clean up accept.txt
+  * fix: don't normalize multiple spaces
+  * fix: Enhance `stepsToString` to properly handle parentheses
+  * chore: update .vale.ini
+  * feat: support for front matter
+
+-------------------------------------------------------------------
 Tue Mar 18 09:22:45 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.10.0:
