@@ -30,7 +30,7 @@
 %define base_ver 48
 
 Name:           gnome-settings-daemon
-Version:        48.0
+Version:        48.0+3
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -46,6 +46,10 @@ Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patc
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 # PATCH-FIX-UPSTREAM gnome-settings-daemon-fix-stop-service.patch bsc#1233824 glgo#GNOME/gnome-settings-daemon!395-- sharing: Stop systemd service waiting when daemon is stopping
 Patch5:         gnome-settings-daemon-fix-stop-service.patch
+# PATCH-FIX-UPSTREAM 411.patch -- power: Ensure backlight iface signal gets emited on startup
+Patch6:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/411.patch
+# PATCH-FIX-UPSTREAM 413.patch -- power: Avoid using uninitialized value when restoring brightness
+Patch7:         https://gitlab.gnome.org/GNOME/gnome-settings-daemon/-/merge_requests/413.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
