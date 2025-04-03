@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-autodoc-typehints
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-autodoc-typehints%{psuffix}
-Version:        2.4.4
+Version:        3.1.0
 Release:        0
 Summary:        Type hints (PEP 484) support for the Sphinx autodoc extension
 License:        MIT
@@ -90,7 +90,7 @@ export PYTHONPATH=./src
 %if %{without test}
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG.md
+%doc README.md
 %{python_sitelib}/%{modname}-%{version}*-info
 %{python_sitelib}/%{modname}
 %endif

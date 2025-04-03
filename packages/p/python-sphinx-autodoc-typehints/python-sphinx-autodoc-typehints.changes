@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  3 12:55:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.1.0:
+  - Support Sphinx 8.2.0 - drop 3.10 support because Sphinx does
+- Update to 3.0.1:
+  - Fix roles for types module
+  - Update Ruff to 0.9.1
+- Update to 3.0.0:
+  - 🐛 Replace docutils private API use w/ public
+  - Drop support for nptyping
+- Update to 2.5.0:
+  - Fix the type checker
+  - Apply typehints_formatter to signature
+
+-------------------------------------------------------------------
 Mon Oct 28 13:03:06 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python-nptyping BuildRequirement for SLFO:Main

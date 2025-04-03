@@ -259,4 +259,22 @@
     <comment>- Remove python-nptyping BuildRequirement for SLFO:Main</comment>
     <requestid>1218927</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>f74e1a8ed9d2a13d1fbf51ded229b436</srcmd5>
+    <version>3.1.0</version>
+    <time>1743691866</time>
+    <user>anag+factory</user>
+    <comment>- Update to 3.1.0:
+  - Support Sphinx 8.2.0 - drop 3.10 support because Sphinx does
+- Update to 3.0.1:
+  - Fix roles for types module
+  - Update Ruff to 0.9.1
+- Update to 3.0.0:
+  - 🐛 Replace docutils private API use w/ public
+  - Drop support for nptyping
+- Update to 2.5.0:
+  - Fix the type checker
+  - Apply typehints_formatter to signature</comment>
+    <requestid>1266892</requestid>
+  </revision>
 </revisionlist>
