@@ -1,12 +1,16 @@
-diff -up chromium-122.0.6261.29/chrome/browser/safe_browsing/download_protection/file_analyzer.cc.nounrar chromium-122.0.6261.29/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
---- chromium-122.0.6261.29/chrome/browser/safe_browsing/download_protection/file_analyzer.cc.nounrar	2024-02-07 19:49:25.000000000 +0100
-+++ chromium-122.0.6261.29/chrome/browser/safe_browsing/download_protection/file_analyzer.cc	2024-02-11 18:55:29.964450604 +0100
-@@ -79,8 +79,6 @@ void FileAnalyzer::Start(const base::Fil
+diff --git a/chrome/browser/safe_browsing/download_protection/file_analyzer.cc b/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+index 2a930f44908f4..095a1ac913334 100644
+--- a/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
++++ b/chrome/browser/safe_browsing/download_protection/file_analyzer.cc
+@@ -78,11 +78,6 @@ void FileAnalyzer::Start(const base::FilePath& target_file_name,
+     return;
+   }
  
-   if (inspection_type == DownloadFileType::ZIP) {
-     StartExtractZipFeatures();
--  } else if (inspection_type == DownloadFileType::RAR) {
+-  if (inspection_type == DownloadFileType::RAR) {
 -    StartExtractRarFeatures();
+-    return;
+-  }
+-
  #if BUILDFLAG(IS_MAC)
-   } else if (inspection_type == DownloadFileType::DMG) {
+   if (inspection_type == DownloadFileType::DMG) {
      StartExtractDmgFeatures();

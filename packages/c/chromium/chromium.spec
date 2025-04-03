@@ -58,13 +58,8 @@
 %define ffmpeg_version 58
 %endif
 %bcond_with system_zstd
-%if 0%{?suse_version} >= 1600
 %define node_ver 22.0
 %define node_ver_next 23.0
-%else
-%define node_ver 20.0
-%define node_ver_next 21.0
-%endif
 # LLVM version
 %define llvm_version 19
 # RUST version
@@ -97,6 +92,11 @@
 %else
 %bcond_with libxml2_2_12
 %endif
+%if %{pkg_vcmp gtk4-devel >= 4.19}
+%bcond_without gtk4_4_19
+%else
+%bcond_with gtk4_4_19
+%endif
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -106,7 +106,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        134.0.6998.165
+Version:        135.0.7049.52
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -143,7 +143,6 @@ Patch98:        chromium-102-regex_pattern-array.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch202:       chromium-prop-codecs.patch
 Patch240:       chromium-117-string-convert.patch
-#Patch256:       chromium-120-make_unique-struct.patch
 Patch261:       chromium-121-rust-clang_lib.patch
 Patch337:       chromium-123-missing-QtGui.patch
 Patch359:       chromium-126-quiche-interator.patch
@@ -155,7 +154,6 @@ Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
 Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
-Patch372:       chromium-134-revert-allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 # conditionally applied patches
@@ -169,6 +167,8 @@ Patch1006:      chromium-93-ffmpeg-4.4-rest.patch
 Patch1010:      chromium-124-system-libxml.patch
 # patch where rust <= 1.85
 Patch1030:      chromium-134-revert-rust-adler2.patch
+# gtk4 is too old
+Patch1040:      gtk-414.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -178,7 +178,7 @@ BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  git
-BuildRequires:  gn >= 0.1807
+BuildRequires:  gn >= 0.20250306
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  golang(API)
@@ -444,6 +444,10 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -R -P 1030
 %endif
 
+%if %{without gtk4_4_19}
+%patch -p1 -R -P 1040
+%endif
+
 %build
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
@@ -600,7 +604,6 @@ keeplibs=(
     third_party/googletest
     third_party/highway
     third_party/hunspell
-    third_party/iccjpeg
     third_party/ink
     third_party/inspector_protocol
     third_party/ipcz
@@ -664,6 +667,7 @@ keeplibs=(
     third_party/private-join-and-compute
     third_party/private_membership
     third_party/protobuf
+    third_party/protobuf/third_party/utf8_range
     third_party/pthreadpool
     third_party/puffin
     third_party/pyjson5
@@ -982,7 +986,7 @@ myconf_gn+=" safe_browsing_use_unrar=false"
 myconf_gn+=" gtk_version=4"
 %endif
 %if %{without qt5}
-myconf_gn+=" use_qt=false"
+myconf_gn+=" use_qt5=false"
 %else
 myconf_gn+=" moc_qt5_path=\"%{_libqt5_bindir}\""
 %endif

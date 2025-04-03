@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr  2 01:20:57 CEST 2025 - ro@suse.de
+
+- Chromium 135.0.7049.52
+  (stable release 2025-04-01) (boo#1240555)
+  * CVE-2025-3066: Use after free in Navigations
+  * CVE-2025-3067: Inappropriate implementation in Custom Tabs
+  * CVE-2025-3068: Inappropriate implementation in Intents
+  * CVE-2025-3069: Inappropriate implementation in Extensions
+  * CVE-2025-3070: Insufficient validation of untrusted input in Extensions
+  * CVE-2025-3071: Inappropriate implementation in Navigations
+  * CVE-2025-3072: Inappropriate implementation in Custom Tabs
+  * CVE-2025-3073: Inappropriate implementation in Autofill
+  * CVE-2025-3074: Inappropriate implementation in Downloads
+- modified patches:
+  system-libdrm.patch (context update)
+  gcc-enable-lto.patch (context update)
+  chromium-127-constexpr.patch (context update)
+  chromium-norar.patch (context update)
+- added patches:
+  gtk-414.patch (reverse apply since our gtk4 is too old)
+- add to keeplibs:
+  third_party/protobuf/third_party/utf8_range
+- drop from keeplibs:
+  third_party/iccjpeg (gone upstream)
+- config variable changed from use_qt to use_qt5
+- bump buildrequires for gn to 0.20250306
+
+-------------------------------------------------------------------
+Wed Mar 26 12:29:38 CET 2025 - ro@suse.de
+
+- drop chromium-134-revert-allowlist.patch
+  (obsolete, gn has been updated) 
+- also use nodejs 22 for sle15 
+
+-------------------------------------------------------------------
 Sat Mar 22 14:18:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 134.0.6998.165
@@ -7,8 +42,7 @@ Sat Mar 22 14:18:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Fri Mar 21 16:57:02 CET 2025 - ro@suse.de
 
-- disable not needed chromium-120-make_unique-struct.patch
-  (context boo#1239780)
+- drop chromium-120-make_unique-struct.patch (not needed)
 
 -------------------------------------------------------------------
 Thu Mar 20 12:05:15 CET 2025 - ro@suse.de

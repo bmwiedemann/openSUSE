@@ -1,0 +1,119 @@
+From b3e4993ab0aaf2ed41a0c8c69b94ae1226be7494 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Mon, 3 Mar 2025 10:41:42 -0800
+Subject: [PATCH] [GTK] Fix caption button rendering on newer versions of GTK4
+
+A few new node types have been introduced since the GTK4 port was
+written, so this CL adds and handles the new types and adds logging to
+more easily diagnose this in the future.
+
+R=thestig
+
+Change-Id: Ie1d69ff7d7effc19aa1e873a58f8dd8943a43366
+Fixed: 400336287, 400365777
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6318540
+Reviewed-by: Lei Zhang <thestig@chromium.org>
+Commit-Queue: Lei Zhang <thestig@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Auto-Submit: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1427225}
+
+diff --git a/ui/gtk/gsk.sigs b/ui/gtk/gsk.sigs
+index 8f80d9d6bd11a..9dc03167830f4 100644
+--- a/ui/gtk/gsk.sigs
++++ b/ui/gtk/gsk.sigs
+@@ -15,3 +15,6 @@ guint gsk_container_node_get_n_children(UI_GTK_CONST GskRenderNode* node);
+ guint gsk_gl_shader_node_get_n_children(UI_GTK_CONST GskRenderNode* node);
+ GdkTexture* gsk_texture_node_get_texture(UI_GTK_CONST GskRenderNode* node);
+ float gsk_opacity_node_get_opacity(const GskRenderNode* node);
++GskRenderNode* gsk_mask_node_get_mask(const GskRenderNode* node);
++GdkTexture* gsk_texture_scale_node_get_texture(const GskRenderNode* node);
++GskRenderNode* gsk_subsurface_node_get_child(const GskRenderNode* node);
+\ No newline at end of file
+diff --git a/ui/gtk/gtk_types.h b/ui/gtk/gtk_types.h
+index 6a18a86ed1570..6c3b820fab09b 100644
+--- a/ui/gtk/gtk_types.h
++++ b/ui/gtk/gtk_types.h
+@@ -41,7 +41,15 @@ using GskRenderNodeType = enum {
+   GSK_TEXT_NODE,
+   GSK_BLUR_NODE,
+   GSK_DEBUG_NODE,
+-  GSK_GL_SHADER_NODE
++  GSK_GL_SHADER_NODE,
++  GSK_TEXTURE_SCALE_NODE,
++  GSK_MASK_NODE,
++  GSK_FILL_NODE,
++  GSK_STROKE_NODE,
++  GSK_SUBSURFACE_NODE,
++
++  // Not defined in GTK.
++  GSK_RENDER_NODE_MAX_VALUE = GSK_SUBSURFACE_NODE,
+ };
+ 
+ enum GdkMemoryFormat : int;
+diff --git a/ui/gtk/gtk_util.cc b/ui/gtk/gtk_util.cc
+index 0413e6fd94f59..78c4dc6bd57e5 100644
+--- a/ui/gtk/gtk_util.cc
++++ b/ui/gtk/gtk_util.cc
+@@ -66,6 +66,10 @@ GskRenderNode* GetRenderNodeChild(GskRenderNode* node) {
+       return gsk_blur_node_get_child(node);
+     case GSK_DEBUG_NODE:
+       return gsk_debug_node_get_child(node);
++    case GSK_MASK_NODE:
++      return gsk_mask_node_get_mask(node);
++    case GSK_SUBSURFACE_NODE:
++      return gsk_subsurface_node_get_child(node);
+     default:
+       return nullptr;
+   }
+@@ -769,8 +773,19 @@ GdkTexture* GetTextureFromRenderNode(GskRenderNode* node) {
+     return nullptr;
+   }
+ 
+-  if (gsk_render_node_get_node_type(node) == GSK_TEXTURE_NODE) {
+-    return gsk_texture_node_get_texture(node);
++  auto node_type = gsk_render_node_get_node_type(node);
++  if (node_type > GSK_RENDER_NODE_MAX_VALUE) {
++    LOG(ERROR) << "Unexpected node type: " << node_type;
++    return nullptr;
++  }
++
++  switch (node_type) {
++    case GSK_TEXTURE_NODE:
++      return gsk_texture_node_get_texture(node);
++    case GSK_TEXTURE_SCALE_NODE:
++      return gsk_texture_node_get_texture(node);
++    default:
++      break;
+   }
+ 
+   if (auto* texture = GetTextureFromRenderNode(GetRenderNodeChild(node))) {
+diff --git a/ui/gtk/nav_button_provider_gtk.cc b/ui/gtk/nav_button_provider_gtk.cc
+index efe6321149679..239fbf4ca69a1 100644
+--- a/ui/gtk/nav_button_provider_gtk.cc
++++ b/ui/gtk/nav_button_provider_gtk.cc
+@@ -117,11 +117,13 @@ gfx::Size LoadNavButtonIcon(ui::NavButtonProvider::FrameButtonDisplayType type,
+     auto* snapshot = gtk_snapshot_new();
+     gdk_paintable_snapshot(paintable, snapshot, width, height);
+     auto* node = gtk_snapshot_free_to_node(snapshot);
+-    GdkTexture* texture = GetTextureFromRenderNode(node);
+     size_t nbytes = width * height * sizeof(SkColor);
+     SkColor* pixels = reinterpret_cast<SkColor*>(g_malloc(nbytes));
++    memset(pixels, 0, nbytes);
+     size_t stride = sizeof(SkColor) * width;
+-    gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
++    if (GdkTexture* texture = GetTextureFromRenderNode(node)) {
++      gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
++    }
+     SkColor fg = GtkStyleContextGetColor(button_context);
+     for (int i = 0; i < width * height; ++i) {
+       pixels[i] = SkColorSetA(fg, SkColorGetA(pixels[i]));
+@@ -199,7 +201,7 @@ void CalculateUnscaledButtonSize(
+     gfx::Size* button_size,
+     gfx::Insets* button_margin) {
+   // views::ImageButton expects the images for each state to be of the
+-  // same size, but GTK can, in general, use a differnetly-sized
++  // same size, but GTK can, in general, use a differently-sized
+   // button for each state.  For this reason, render buttons for all
+   // states at the size of a GTK_STATE_FLAG_NORMAL button.
+   auto button_context = AppendCssNodeToStyleContext(

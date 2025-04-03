@@ -5500,4 +5500,43 @@ boo#1224178</comment>
   (context boo#1239780)</comment>
     <requestid>1255957</requestid>
   </revision>
+  <revision rev="456" vrev="1">
+    <srcmd5>9587ee6b0e8fc97aaf63418c40625743</srcmd5>
+    <version>135.0.7049.52</version>
+    <time>1743691637</time>
+    <user>anag+factory</user>
+    <comment>please note, bug#1239780 dropped from changelog as the bug is not fixed yet.
+
+- Chromium 135.0.7049.52
+  (stable release 2025-04-01) (boo#1240555)
+  * CVE-2025-3066: Use after free in Navigations
+  * CVE-2025-3067: Inappropriate implementation in Custom Tabs
+  * CVE-2025-3068: Inappropriate implementation in Intents
+  * CVE-2025-3069: Inappropriate implementation in Extensions
+  * CVE-2025-3070: Insufficient validation of untrusted input in Extensions
+  * CVE-2025-3071: Inappropriate implementation in Navigations
+  * CVE-2025-3072: Inappropriate implementation in Custom Tabs
+  * CVE-2025-3073: Inappropriate implementation in Autofill
+  * CVE-2025-3074: Inappropriate implementation in Downloads
+- modified patches:
+  system-libdrm.patch (context update)
+  gcc-enable-lto.patch (context update)
+  chromium-127-constexpr.patch (context update)
+  chromium-norar.patch (context update)
+- added patches:
+  gtk-414.patch (reverse apply since our gtk4 is too old)
+- add to keeplibs:
+  third_party/protobuf/third_party/utf8_range
+- drop from keeplibs:
+  third_party/iccjpeg (gone upstream)
+- config variable changed from use_qt to use_qt5
+- bump buildrequires for gn to 0.20250306
+
+- drop chromium-134-revert-allowlist.patch
+  (obsolete, gn has been updated) 
+- also use nodejs 22 for sle15 
+
+- drop chromium-120-make_unique-struct.patch (not needed)</comment>
+    <requestid>1266600</requestid>
+  </revision>
 </revisionlist>

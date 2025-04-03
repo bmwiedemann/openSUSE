@@ -38,5 +38,5 @@ Index: chromium-114.0.5735.90/media/gpu/chromeos/video_decoder_pipeline_unittest
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
 +#include <drm_fourcc.h>
  
- #if BUILDFLAG(IS_CHROMEOS_ASH)
+ #if BUILDFLAG(IS_CHROMEOS)
  // gn check does not account for BUILDFLAG(), so including this header will

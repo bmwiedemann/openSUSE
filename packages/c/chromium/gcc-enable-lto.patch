@@ -44,7 +44,7 @@ Index: chromium-120.0.6099.18/sandbox/linux/BUILD.gn
 --- chromium-120.0.6099.18.orig/sandbox/linux/BUILD.gn
 +++ chromium-120.0.6099.18/sandbox/linux/BUILD.gn
 @@ -253,6 +253,9 @@ component("seccomp_bpf") {
-     "//build:chromeos_buildflags",
+     "//base",
      "//sandbox:sandbox_buildflags",
    ]
 +  if (gcc_lto) {

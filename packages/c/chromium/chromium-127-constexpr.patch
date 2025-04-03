@@ -33,8 +33,8 @@ author: Andres Salomon <dilinger@debian.org>
                                                       .prefix_list = "/",
                                                       .sensitive = true,
                                                       .strict = true};
---- a/components/autofill/core/browser/data_model/autofill_i18n_api.h
-+++ b/components/autofill/core/browser/data_model/autofill_i18n_api.h
+--- a/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
++++ b/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
 @@ -16,8 +16,8 @@ namespace autofill::i18n_model_definitio
  // Country code that represents autofill's legacy address hierarchy model as
  // stored `kAutofillModelRules`. As a workaround for GCC we declare the
@@ -74,8 +74,8 @@ author: Andres Salomon <dilinger@debian.org>
  
  using PrefetchContainerIdForTesting =
      base::StrongAlias<class PrefetchContainerIdForTestingTag, std::string>;
--static constexpr PrefetchContainerIdForTesting
-+static const PrefetchContainerIdForTesting
+-inline constexpr PrefetchContainerIdForTesting
++inline const PrefetchContainerIdForTesting
      InvalidPrefetchContainerIdForTesting = PrefetchContainerIdForTesting("");
  
  class TestPrefetchWatcherImpl;
