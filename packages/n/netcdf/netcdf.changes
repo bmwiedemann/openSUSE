@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:15:07 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+
+-------------------------------------------------------------------
 Mon Oct 23 19:16:02 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - Disable HPC flavors on i586

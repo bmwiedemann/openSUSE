@@ -679,4 +679,13 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   to catch the the library package even without an so-name.</comment>
     <requestid>1119877</requestid>
   </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>192a88b433b3b409e0ab95373d72279a</srcmd5>
+    <version>4.9.2</version>
+    <time>1743691614</time>
+    <user>anag+factory</user>
+    <comment>- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour</comment>
+    <requestid>1266211</requestid>
+  </revision>
 </revisionlist>
