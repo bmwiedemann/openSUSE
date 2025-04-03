@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 02 15:36:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.16 (API & ABI are backwards compatible).
+- fast_div.hpp: Fix "Warning: mnemonic suffix used with `div'".
+- libdivide.h: Fix "Warning: mnemonic suffix used with `div'".
+- LoadBalancerS2.cpp: Tune load balancing.
+- LoadBalancerAC.cpp: Tune load balancing.
+- primecount-config.hpp: Update default CPU cache sizes.
+- Sieve.cpp: Improve count balancing.
+- Sieve.cpp: Add multiarch count methods.
+- Sieve.hpp: New multiarch count methods.
+- D.cpp: Runtime dispatching changes.
+- D_multiarch_avx512.cpp: New file.
+- D_multiarch_arm_sve.cpp: New file.
+- S2_hard.cpp: Runtime dispatching changes.
+- S2_hard_multiarch_avx512.cpp: New file.
+- S2_hard_multiarch_arm_sve.cpp: New file.
+
+-------------------------------------------------------------------
 Mon Mar 03 09:50:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.15 (API & ABI are backwards compatible).

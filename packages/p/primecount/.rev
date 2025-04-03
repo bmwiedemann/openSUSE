@@ -171,4 +171,12 @@ This should fix my previously declined package submission: https://build.opensus
     <comment>Update to new primecount-7.15</comment>
     <requestid>1249983</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ec9d83daa0c91b5c2cf375058ba0190d</srcmd5>
+    <version>7.16</version>
+    <time>1743691865</time>
+    <user>anag+factory</user>
+    <comment>Update to new primecount-7.16</comment>
+    <requestid>1266871</requestid>
+  </revision>
 </revisionlist>
