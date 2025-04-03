@@ -120,4 +120,12 @@
     <comment>- Trim extraneous X11 dependencies from SDL3-devel [boo#1239635]</comment>
     <requestid>1253146</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dc54bac4a0c887b754c43cc9851af025</srcmd5>
+    <version>3.2.10</version>
+    <time>1743698437</time>
+    <user>anag+factory</user>
+    <comment>- Update to release 3.2.10</comment>
+    <requestid>1266284</requestid>
+  </revision>
 </revisionlist>
