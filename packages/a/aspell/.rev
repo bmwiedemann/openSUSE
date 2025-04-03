@@ -358,4 +358,12 @@
 - libtoolize to build (forwarded request 1135742 from dirkmueller)</comment>
     <requestid>1136153</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>d3092b9a5b3340b755248c5ca3f0a15e</srcmd5>
+    <version>0.60.8.1</version>
+    <time>1743698447</time>
+    <user>anag+factory</user>
+    <comment>add aspell-gcc15.patch to fix gcc15 compile time error (forwarded request 1266225 from hsk17)</comment>
+    <requestid>1266395</requestid>
+  </revision>
 </revisionlist>

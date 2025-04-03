@@ -31,6 +31,8 @@ Source100:      baselibs.conf
 Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         aspell-gcc15.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
