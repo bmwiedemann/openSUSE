@@ -122,7 +122,7 @@
 %endif
 
 Name:           go1.24
-Version:        1.24.1
+Version:        1.24.2
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -134,12 +134,13 @@ Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
 # Preferred form when all arches share llvm race version
-# Source100:      llvm-%{tsan_commit}.tar.xz
+# Source100:      llvm-tsan_commit.tar.xz
 Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 # PATCH-FIX-OPENSUSE: https://go-review.googlesource.com/c/go/+/391115
 Patch7:         dont-force-gold-on-arm64.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
 Patch8:         gcc-go.patch
+Patch9:         go-fixseccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -225,6 +226,15 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 # go
 %setup -q -n go
 %patch -P 7 -p1
+
+# SLE-12 only: Add declarations to Cgo seccomp_linux.go
+# for new syscalls seccomp and getrandom which are not present
+# in the kernel headers supplied by glibc version in SLE-12.
+# Refs boo#1239182
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+%patch -P 9 -p1
+%endif
+
 %if %{with gccgo}
 # Currently gcc-go does not manage an update-alternatives entry and will
 # never be symlinked as "go", even if gcc-go is the only installed go toolchain.

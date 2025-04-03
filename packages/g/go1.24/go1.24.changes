@@ -1,10 +1,52 @@
 -------------------------------------------------------------------
+Wed Apr  2 16:21:00 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * SLE-12 only: Fix conditional for go-fixsecomp.patch to work
+    correctly when suse_version is undefined.
+    Refs boo#1239182
+  * Fix RPM warning by removing valid macro syntax in comment
+    describing naming format of llvm-tsan_commit.tar.xz
+
+-------------------------------------------------------------------
+Tue Apr  1 16:11:46 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.24.2 (released 2025-04-01) includes security fixes to the
+  net/http package, as well as bug fixes to the compiler, the
+  runtime, the go command, and the crypto/tls, go/types, net/http,
+  and testing packages.
+  Refs boo#1236217 go1.24 release tracking
+  CVE-2025-22871
+  * go#72011 go#71988 boo#1240550 security: fix CVE-2025-22871 net/http: reject bare LF in chunked encoding
+  * go#72067 cmd/compile: out of memory
+  * go#72103 net/http: go1.24 breaks compatibility by modifying in-place the tls.Config{NextProtos}
+  * go#72115 runtime: process hangs for mips hardware
+  * go#72796 runtime: add an example for AddCleanup
+  * go#72822 cmd/compile: OOM with mutually-recursive iter.Seq
+  * go#72823 crypto/tls: FIPS 140-3 modes reject ECDSA w/ curve P-521/SHA-512 in TLS
+  * go#72826 go/types, types2: CheckExpr / Eval may mutate type checked objects (=> data race)
+  * go#72872 runtime: cgo callback on extra M treated as external code after nested cgo callback returns
+  * go#72934 testing: b.StopTimer breaks b.Loop
+  * go#72938 internal/godebugs: winsymlink and winreadlinkvolume have incorrect defaults for Go 1.22
+  * go#72974 testing: b.Loop gives bogus results in some situations
+
+-------------------------------------------------------------------
+Tue Mar  5 14:32:16 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * SLE-12 only: Add declarations to Cgo seccomp_linux.go
+    for new syscalls seccomp and getrandom which are not present
+    in the kernel headers supplied by glibc version in SLE-12.
+    (Marcus Meissner)
+    Refs boo#1239182
+  * Add patch go-fixseccomp.patch
+
+-------------------------------------------------------------------
 Tue Mar  4 19:27:08 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.24.1 (released 2025-03-04) includes security fixes to the
-  net/http, x/net/proxy, and x/net/http/httpproxy packages, as well
-  as bug fixes to the compiler, the runtime, the go command and the
-  crypto, debug, os and reflect packages.
+  net/http package, as well as bug fixes to cgo, the compiler, the
+  go command, and the reflect, runtime, and syscall packages.
   Refs boo#1236217 go1.24 release tracking
   CVE-2025-22870
   * go#71986 go#71984 boo#1238572 security: fix CVE-2025-22870 net/http, x/net/proxy, x/net/http/httpproxy: proxy bypass using IPv6 zone IDs
