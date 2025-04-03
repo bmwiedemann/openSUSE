@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1199357</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9a6755e9e209fc32556d13b5b7629e05</srcmd5>
+    <version>3.0</version>
+    <time>1743691608</time>
+    <user>anag+factory</user>
+    <comment>- Remove support of gnu-hpc build flavours.
+
+- Disable gnu-hpc build flavours (bsc#1239982)</comment>
+    <requestid>1265558</requestid>
+  </revision>
 </revisionlist>
