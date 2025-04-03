@@ -33,6 +33,12 @@
  %bcond_without hpc
 %endif
 %if %{with hpc}
+%if 0%{?suse_version} > 1500
+# All hpc packages are slated for removal from factory and SLFO/Leap 16: boo#1239982
+# Once this is accepted by the community, the whole hpc code in this specfile and
+# the multibuild can be cleaned up
+ExclusiveArch: do_not_build
+%endif
  %bcond_without openblas
 %endif
 

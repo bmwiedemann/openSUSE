@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 12:44:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Disable hpc builds for Factory and SLFO / Leap 16
+  * See discussion in boo#1239982
+  * Once this is accepted by the community, the whole hpc code in
+  * the specfile and the multibuild can be cleaned up
+
+-------------------------------------------------------------------
 Sat Nov 30 09:51:06 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip tests failing with new setuptools 75
