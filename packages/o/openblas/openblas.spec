@@ -19,8 +19,6 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %undefine sha1
-%define _vers 0_3_29
-%define vers 0.3.29
 %define so_v 0
 %define pname openblas
 
@@ -42,7 +40,6 @@ ExclusiveArch:  do_not_build
 %define openblas_so_prio 20
 # we build devel packages only from one flavor
 %define build_devel 1
-%{bcond_with hpc}
 %endif
 
 %if "%flavor" == "pthreads"
@@ -53,7 +50,6 @@ ExclusiveArch:  do_not_build
  %else
  %define openblas_so_prio 20
  %endif
-%{bcond_with hpc}
 %endif
 
 %if "%flavor" == "openmp"
@@ -63,105 +59,6 @@ ExclusiveArch:  do_not_build
  %define arch_flavor 1
  %define openblas_so_prio 50
  %endif
-%{bcond_with hpc}
-%endif
-
-%if "%flavor" == "gnu-hpc"
-%define compiler_family gnu
-%undefine c_f_ver
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu-hpc-pthreads"
-%define compiler_family gnu
-%undefine c_f_ver
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-hpc"
-%define compiler_family gnu
-%define c_f_ver 7
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 7
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-hpc"
-%define compiler_family gnu
-%define c_f_ver 8
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 8
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-hpc"
-%define compiler_family gnu
-%define c_f_ver 9
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 9
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-hpc"
-%define compiler_family gnu
-%define c_f_ver 10
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 10
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu11-hpc"
-%define compiler_family gnu
-%define c_f_ver 11
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu11-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 11
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu12-hpc"
-%define compiler_family gnu
-%define c_f_ver 12
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu12-hpc-pthreads"
-%define compiler_family gnu
-%define c_f_ver 12
-%define ext pthreads
-%define build_flags USE_THREAD=1 USE_OPENMP=0
-%{bcond_without hpc}
 %endif
 
 %ifarch ppc64le
@@ -190,7 +87,6 @@ ExclusiveArch:  do_not_build
  %endif
 %endif
 
-%if %{without hpc}
 %define so_a %{so_v}
 %if 0%{!?package_name:1}
 %define package_name  %{pname}_%{flavor}
@@ -202,26 +98,6 @@ ExclusiveArch:  do_not_build
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
 
-%else
-%define so_a %{nil}
-# Magic for OBS Staging. Only build the flavors required by
-# other packages in the ring.
-%if %{with ringdisabled}
-ExclusiveArch:  do_not_build
-%endif
-
-%define package_name %{hpc_package_name %_vers}
-
-%define p_prefix %hpc_prefix
-%define p_includedir %hpc_includedir
-%define p_libdir %hpc_libdir
-%define p_testdir %hpc_prefix/tests
-%define p_cmakedir %{hpc_libdir}/cmake
-%define num_threads 256
-
-%{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
-%endif
-
 %if 0%{?sha1:1}
 %define v_string %{sha1}
 %else
@@ -229,7 +105,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{package_name}
-Version:        %vers
+Version:        0.3.29
 Release:        0
 Summary:        An optimized BLAS library based on GotoBLAS2
 License:        BSD-3-Clause
@@ -237,7 +113,6 @@ Group:          Productivity/Scientific/Math
 URL:            http://www.openblas.net
 Source0:        https://github.com/xianyi/OpenBLAS/archive/%{v_string}.tar.gz#/OpenBLAS-%{version}%{?sha1:_%{sha1}}.tar.gz
 Source1:        README.SUSE
-Source2:        README.HPC.SUSE
 Source3:        openblas_tests.sh.in
 Source4:        openblas.rpmlintrc
 # PATCH port
@@ -250,17 +125,10 @@ BuildRequires:  memory-constraints
 %if 0%{?cc_v:1}
 BuildRequires:  gcc%{?cc_v}-fortran
 %endif
-%if %{without hpc}
 BuildRequires:  gcc-fortran
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
-%else
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  lua-lmod
-BuildRequires:  suse-hpc
-%global dep_summary %{summary}
-%endif
 
 %description
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
@@ -268,7 +136,6 @@ OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 %package     -n lib%{name}%{so_a}
 Summary:        An optimized BLAS library based on GotoBLAS2, %{flavor} version
 Group:          System/Libraries
-%if %{without hpc}
 Requires(post): update-alternatives
 Requires(post): coreutils
 Requires(preun): update-alternatives
@@ -284,37 +151,26 @@ Obsoletes:      lib%{pname}p0
  %if "%flavor" == "openmp"
 Obsoletes:      lib%{pname}o0
  %endif
-%else # with hpc
-%hpc_requires
-%endif
 
 %description -n lib%{name}%{so_a}
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
-%{?with_hpc:%{hpc_master_package  -l -L}}
-
 %package     -n lib%{name}-devel
 Summary:        Development libraries for OpenBLAS, %{flavor} version
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{so_a} = %{version}
-%if %{without hpc}
 Requires:       %{pname}-common-devel = %{version}
+Requires:       lib%{name}%{so_a} = %{version}
 %if 0%{?arch_flavor}
 Provides:       %{pname}-devel = %version
 Provides:       %{pname}-devel(default) = %version
 %else
 Provides:       %{pname}-devel(other) = %version
 %endif
-%else
-%hpc_requires_devel
-%endif
 
 %description -n lib%{name}-devel
 OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.
 
 This package contains the development libraries for serial OpenBLAS version.
-
-%{?with_hpc:%{hpc_master_package  -l -L  devel}}
 
 %package        devel-static
 Summary:        Static version of OpenBLAS
@@ -367,13 +223,8 @@ sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_sgemmt.o *@@' utest/Makefile
 sed -i -e '/^OBJS_EXT+=/s@[^= ]*/test_dgemmt.o *@@' utest/Makefile
 %endif
 
-%if %{without hpc}
 cp %{SOURCE1} .
-%else
-cp %{SOURCE2} .
-%endif
 
-%if %{without hpc}
 # create baselibs.conf based on flavor
 cat >  %{_sourcedir}/baselibs.conf <<EOF
 lib%{name}%{so_a}
@@ -383,7 +234,6 @@ lib%{name}-devel
     requires -%{name}-<targettype>
     requires "lib%{name}%{?so_a}-<targettype> = <version>"
 EOF
-%endif
 
 %build
 
@@ -404,11 +254,6 @@ EOF
 %ifarch riscv64
 # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=110812
 %global _lto_cflags %{nil}
-%endif
-
-%if %{with hpc}
-%hpc_debug
-%hpc_setup_compiler
 %endif
 
 # Use DYNAMIC_ARCH everywhere - not sure about PPC?
@@ -456,7 +301,7 @@ EOF
 # set MAKE_NB_JOBS instead and let the build do the work!
 # Do not use LIBNAMESUFFIX for new builds as it will not allow
 # the different flavors to be plugin replacements of each other
-%if 0%{?suse_version} <= 1500 && %{without hpc}
+%if 0%{?suse_version} <= 1500
 %define libnamesuffix LIBNAMESUFFIX=_%{flavor}
 %endif
 make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
@@ -469,14 +314,10 @@ make MAKE_NB_JOBS=$jobs %{?openblas_target} %{?build_flags} \
      OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
      PREFIX=%{p_prefix} \
      %{?dynamic_list} \
-     %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
-     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
-     %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}}
+     %{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""} \
+     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}}
 
 %install
-%if %{with hpc}
-%hpc_setup_compiler
-%endif
 
 # Install library and headers
 # Pass NUM_THREADS again, as it is not propagated from the build step
@@ -489,12 +330,11 @@ mkdir -p %{buildroot}/%{p_testdir}
     OPENBLAS_INCLUDE_DIR=%{p_includedir} \
     OPENBLAS_BINARY_DIR=%{p_testdir} \
     OPENBLAS_CMAKE_DIR=%{p_cmakedir} \
-    %{!?with_hpc:%{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""}} \
+    %{?libnamesuffix} FC=gfortran CC=gcc%{?cc_v:-%{cc_v}} %{?cc_v:CEXTRALIB=""} \
     %{?ldflags_tests:LDFLAGS_TESTS=%{ldflags_tests}} \
-    %{?with_hpc:%{?cc_v:CC=gcc-%{cc_v} FC=gfortran-%{cc_v} CEXTRALIB=""}} \
     PREFIX=%{p_prefix}
 sed -e 's#@FLAVOR@#%{flavor}#' \
-    -e 's#@COMPILER@#%{?compiler_family:%compiler_family%{?hpc_gnu_dep_version:/%hpc_gnu_dep_version}}#' \
+    -e 's#@COMPILER@#%{?compiler_family:%compiler_family}}#' \
     < %{S:3} > %{buildroot}/%{p_testdir}/openblas_tests.sh
 chmod 0755 %{buildroot}/%{p_testdir}/openblas_tests.sh
 for i in %{buildroot}/%{p_testdir}/*; do
@@ -509,8 +349,6 @@ done
  sed -i '/#define OPENBLAS_NEEDBUNDERSCORE/,/#define OPENBLAS_VERSION/{//!d}' \
     %{buildroot}%{p_includedir}/openblas_config.h
 %endif
-
-%if %{without hpc}
 
 %if 0%{!?build_devel:1}
 # We need the includes only once
@@ -567,52 +405,6 @@ ln -s %{_sysconfdir}/alternatives/openblas-default%{?a_x}/cmake/openblas %{build
 ln -s openblas-%{flavor}/lib%{pname}.so.%{so_v} %{buildroot}%{_libdir}/lib%{name}.so.%{so_v}
 ln -s openblas-%{flavor}/lib%{pname}.so %{buildroot}%{_libdir}/lib%{name}.so
 %endif
-%else # with hpc
-
-# HPC module file
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} compiler toolchain."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{hpc_upcase %pname} built with %{compiler_family} toolchain"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "Description: %{dep_summary}"
-module-whatis "%{url}"
-
-set     version             %{version}
-
-prepend-path    LD_LIBRARY_PATH     %{p_libdir}
-
-setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-
-if {[file isdirectory  %{hpc_includedir}]} {
-prepend-path    LIBRARY_PATH        %{p_libdir}
-prepend-path    CPATH               %{p_includedir}
-prepend-path    C_INCLUDE_PATH      %{p_includedir}
-prepend-path    CPLUS_INCLUDE_PATH  %{p_includedir}
-prepend-path    INCLUDE             %{p_includedir}
-%hpc_modulefile_add_pkgconfig_path
-
-setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase %pname}_LIB        %{p_libdir}
-setenv          %{hpc_upcase %pname}_INC        %{p_includedir}
-
-}
-
-family "openblas"
-EOF
-%{hpc_write_pkgconfig -l %{pname}}
-
-%endif # with hpc
-
-%if %{without hpc}
 
 # Ensure directory used in older versions are replaced by symlink properly
 %pre -n %{pname}-common-devel
@@ -648,17 +440,9 @@ if [ ! -d %{p_libdir} ]; then
 fi
 /sbin/ldconfig
 
-%else
-
-%postun -n lib%{name}
-%hpc_module_delete_if_default
-
-%endif
-
 %files -n lib%{name}%{so_a}
 %defattr(-,root,root,-)
 %{p_libdir}/lib%{pname}.so.%{so_v}
-%if %{without hpc}
 %dir %{p_libdir}
 %{?libnamesuffix:%{_libdir}/lib%{name}.so.%{so_v}}
 # Created by %%post
@@ -673,26 +457,14 @@ fi
 %ghost %{_sysconfdir}/alternatives/libcblas.so.3%{?a_x}
 %ghost %{_sysconfdir}/alternatives/liblapack.so.3%{?a_x}
 %ghost %{_sysconfdir}/alternatives/liblapacke.so.3%{?a_x}
-%else
-%hpc_dirs
-%{p_libdir}/libopenblas*r*.so
-%hpc_modules_files
-%endif
 
 %files -n lib%{name}-devel
 %{p_libdir}/lib%{pname}.so
 %{?libnamesuffix:%{_libdir}/lib%{name}.so}
 %{p_cmakedir}/
-%if %{with hpc}
-%license LICENSE
-%doc Changelog.txt GotoBLAS* README.md README.HPC.SUSE
-%hpc_pkgconfig_file
-%{p_includedir}/
-%else
 %dir %{p_libdir}/cmake
 %dir %{p_libdir}/pkgconfig
 %{p_libdir}/pkgconfig
-%endif
 
 %files tests
 %dir %{p_testdir}

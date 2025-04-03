@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:16:09 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Mon Mar 17 08:51:26 UTC 2025 - Egbert Eich <eich@suse.com>
 
 - Disable sgemmt and dgemmt tests in the test suite on power

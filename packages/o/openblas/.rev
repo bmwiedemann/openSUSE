@@ -893,4 +893,12 @@ Currently, openSUSE:Factory:Staging:E.
 - Set gcc versions for ppc64le (bsc#1239702) (forwarded request 1253917 from eeich)</comment>
     <requestid>1253922</requestid>
   </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>f29193358386e6e8ae3394ee3dbc3fc8</srcmd5>
+    <version>0.3.29</version>
+    <time>1743691554</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266047</requestid>
+  </revision>
 </revisionlist>
