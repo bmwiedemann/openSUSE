@@ -1,6 +1,6 @@
 name:                http-client-tls
 version:             0.3.6.4
-x-revision: 1
+x-revision: 2
 synopsis:            http-client backend using the connection package and tls library
 description:         Hackage documentation generation is not reliable. For up to date documentation, please see: <https://www.stackage.org/package/http-client-tls>.
 homepage:            https://github.com/snoyberg/http-client
@@ -22,7 +22,7 @@ library
                      , http-client >= 0.7.11
                      , crypton-connection
                      , network
-                     , tls >= 2.1.2
+                     , tls (>=1.2 && < 2.1) || >= 2.1.2
                      , bytestring
                      , case-insensitive
                      , transformers
