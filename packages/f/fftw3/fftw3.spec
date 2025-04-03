@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package fftw3
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -16,298 +16,26 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-
 %define bname fftw
 %define BNAME FFTW
-%define pname fftw3
-%define _ver 3_3_10
 
 %bcond_with ringdisabled
-
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse:1} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
 
 %if !0%{?is_opensuse:1} && 0%{?sle_version:1} && 0%{?sle_version} < 150300
 %define DisOMPI4 ExclusiveArch:  do_not_build
 %endif
-
-%if "%flavor" == ""
-ExclusiveArch:  do_not_build
-%define package_name %pname
+%if 0%{?sle_version:1} && 0%{?sle_version} < 160000
+%define DisOMPI5 ExclusiveArch:  do_not_build
 %endif
 
-# Magic for OBS Staging. Only build the flavors required by
-# other packages in the ring.
-%if %{with ringdisabled}
- %if "%flavor" != "standard"
-ExclusiveArch:  do_not_build
- %endif
-%endif
-
-%if "%{flavor}" == "standard"
-%define mpi_flavor standard
 %ifnarch %{arm} %ix86 s390 s390x
 %bcond_without mpi
 %endif
-%bcond_with hpc
 %bcond_without system_packages
-%endif
 
-%if "%flavor" == "gnu-hpc"
-%define compiler_family gnu
-%undefine c_f_ver
-%bcond_with mpi
-%bcond_without hpc
-%endif
+%define package_libname lib%{name}-3
 
-%if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%undefine c_f_ver
-%global mpi_flavor openmpi
-%define mpi_vers 4
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%undefine c_f_ver
-%global mpi_flavor openmpi
-%define mpi_vers 5
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_flavor mvapich2
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu-mpich-hpc"
-%global compiler_family gnu
-%undefine c_f_ver
-%define mpi_flavor mpich
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%flavor" == "gnu7-hpc"
-%define compiler_family gnu
-%define c_f_ver 7
-%bcond_with mpi
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 7
-%global mpi_flavor openmpi
-%define mpi_vers 4
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 7
-%global mpi_flavor openmpi
-%define mpi_vers 5
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu7-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_flavor mvapich2
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu7-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 7
-%define mpi_flavor mpich
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%flavor" == "gnu8-hpc"
-%define compiler_family gnu
-%define c_f_ver 8
-%bcond_with mpi
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 8
-%global mpi_flavor openmpi
-%define mpi_vers 4
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 8
-%global mpi_flavor openmpi
-%define mpi_vers 5
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu8-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_flavor mvapich2
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu8-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 8
-%define mpi_flavor mpich
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%flavor" == "gnu9-hpc"
-%define compiler_family gnu
-%define c_f_ver 9
-%bcond_with mpi
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 9
-%global mpi_flavor openmpi
-%define mpi_vers 4
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 9
-%global mpi_flavor openmpi
-%define mpi_vers 5
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu9-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_flavor mvapich2
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu9-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 9
-%define mpi_flavor mpich
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%flavor" == "gnu10-hpc"
-%define compiler_family gnu
-%define c_f_ver 10
-%bcond_with mpi
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%global compiler_family gnu
-%define c_f_ver 10
-%global mpi_flavor openmpi
-%define mpi_vers 4
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%global compiler_family gnu
-%define c_f_ver 10
-%global mpi_flavor openmpi
-%define mpi_vers 5
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu10-mvapich2-hpc"
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_flavor mvapich2
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-%if "%{flavor}" == "gnu10-mpich-hpc"
-%global compiler_family gnu
-%define c_f_ver 10
-%define mpi_flavor mpich
-%bcond_without hpc
-%bcond_without mpi
-%endif
-
-# now exchange the paths
-%if %{with hpc}
-%{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
-%{?with_hpc:%{!?compiler_family:%global compiler_family gnu}}
-%{?with_mpi:%{!?mpi_flavor:%global mpi_flavor openmpi}}
-%{?with_mpi:%global hpc_module_pname p%{pname}}
-# needed by the hpc tools
-ExcludeArch:    %ix86
-%{hpc_init -c %compiler_family %{?c_f_ver:-v %{c_f_ver}} %{?with_mpi:-m {%mpi_flavor}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
-%define package_base %{hpc_install_path_base}
-%define package_prefix %hpc_prefix
-%define package_bindir %hpc_bindir
-%define package_libdir %hpc_libdir
-%define package_datadir %hpc_datadir
-%define package_includedir %hpc_includedir
-%define package_mandir %hpc_mandir
-%define package_docdir %hpc_docdir
-%define package_infodir %hpc_infodir
-%define package_name %{hpc_package_name %_ver}
-%define package_libname lib%{package_name}
-%else
-%define package_base %{_prefix}
-%define package_prefix %{_prefix}
-%define package_bindir %{_bindir}
-%define package_libdir %{_libdir}
-%define package_datadir %{_datadir}
-%define package_includedir %{_includedir}
-%define package_mandir %{_mandir}
-%define package_docdir %{_docdir}
-%define package_infodir %{_infodir}
-%define package_name   %pname%{?my_suffix}
-%define package_libname lib%{pname}-3
-%endif
-
-Name:           %package_name
+Name:           fftw3
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 Version:        3.3.10
@@ -317,22 +45,13 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.fftw.org
 Source:         ftp://ftp.fftw.org/pub/fftw/fftw-%{version}%{?pl_ext:-%{pl_ext}}.tar.gz
-Source1:        %{pname}-rpmlintrc
+Source1:        %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if %{with hpc}
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  lua-lmod
-BuildRequires:  suse-hpc
-%if %{with mpi}
-BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
-%endif
-%else
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
-Requires:       %{package_name}-libs = %{version}
+Requires:       %{name}-libs = %{version}
 %if %{with mpi}
 BuildRequires:  openmpi-macros-devel
-%endif
 %endif
 
 %description
@@ -340,22 +59,13 @@ FFTW is a C subroutine library for computing the Discrete Fourier
 Transform (DFT) in one or more dimensions, of both real and complex
 data, and of arbitrary input size.
 
-%if %{with hpc}
-%%{hpc_master_package -L}
-%{hpc_master_package -l}
-%{hpc_master_package -a devel}
-%endif
-
 %package devel
 Summary:        Include Files and Libraries mandatory for Development
 Group:          Development/Libraries/C and C++
 Requires:       %package_libname = %{version}-%{release}
 Requires:       glibc-devel
 Requires(post): %install_info_prereq
-Requires(preun):%install_info_prereq
-%if %{with hpc}
-%hpc_requires_devel
-%endif
+Requires(preun): %install_info_prereq
 Provides:       fftw-devel
 
 %description devel
@@ -363,7 +73,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %package devel-static
-Summary:        Static libraries for %{pname}
+Summary:        Static libraries for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel
 
@@ -385,7 +95,6 @@ FFTW is a C subroutine library for computing the Discrete Fourier
 Transform (DFT) in one or more dimensions, of both real and complex
 data, and of arbitrary input size.
 
-%if %{without hpc}
 %package -n libfftw3_threads3
 Summary:        Discrete Fourier Transform (DFT) C subroutine library
 Group:          Productivity/Scientific/Math
@@ -436,7 +145,6 @@ Requires:       libfftw3_omp3 = %{version}-%{release}
 FFTW is a C subroutine library for computing the Discrete Fourier
 Transform (DFT) in one or more dimensions, of both real and complex
 data, and of arbitrary input size.
-%endif
 
 %if %{with mpi}
 %package -n libfftw3_mpi3
@@ -470,33 +178,21 @@ data, and of arbitrary input size.
 %prep
 %setup -q -n %{bname}-%{version}%{?pl_ext:-%{pl_ext}}
 
-%if %{without hpc}
 cat > %{_sourcedir}/baselibs.conf  <<EOF
 %{package_libname}
 lib%{name}_threads3
 lib%{name}_omp3
 lib%{name}_mpi3
 EOF
-%endif
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%if %{with hpc}
-%hpc_setup
-%endif
 %if %{with mpi}
-%if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
-%endif
 
-%if %{without hpc}
 %configure \
   --disable-static \
-%else
-%hpc_configure \
-  --enable-static \
-%endif
 %if %{with mpi}
   --enable-mpi \
 %endif
@@ -511,28 +207,19 @@ EOF
 make %{?_smp_mflags}
 
 %install
-%if %{with hpc}
-%{hpc_setup}
-%endif
 %makeinstall
 
 # remove unneeded files
-%{!?with_hpc:rm -f %{buildroot}%{package_libdir}/lib*.*a}
+rm -f %{buildroot}%{_libdir}/lib*.*a
 
 # hack to also compile/install single-precision version:
 make distclean
 
 %if %{with mpi}
-%if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
-%endif
 
-%if %{without hpc}
 %configure \
-%else
-%hpc_configure \
-%endif
 	--enable-shared --enable-threads --enable-float --enable-openmp \
 %if %{with mpi}
   --enable-mpi \
@@ -549,15 +236,9 @@ make %{?_smp_mflags}
 make distclean
 
 %if %{with mpi}
-%if "%{mpi_flavor}" == "standard"
 %setup_openmpi
 %endif
-%endif
-%if %{without hpc}
 %configure \
-%else
-%hpc_configure \
-%endif
 	--enable-shared --enable-threads --enable-long-double --enable-openmp \
 %if %{with mpi}
   --enable-mpi \
@@ -568,68 +249,28 @@ make %{?_smp_mflags}
 %makeinstall
 
 # remove unneeded files
-%{!?with_hpc:rm -f %{buildroot}%{package_libdir}/lib*.*a}
+rm -f %{buildroot}%{_libdir}/lib*.*a
 
-gzip -9nf %{buildroot}%{package_infodir}/*.info*
+gzip -9nf %{buildroot}%{_infodir}/*.info*
 
 # remove Makefiles in doc directory at last
 find doc -name 'Makefile*' | xargs rm
-%if %{with hpc}
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} toolchain."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} toolchain"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "Description: %{summary:0}"
-module-whatis "URL: %{url}"
-
-set     version                     %{version}
-
-prepend-path    PATH                %{hpc_bindir}
-prepend-path    MANPATH             %{hpc_mandir}
-prepend-path    INCLUDE             %{hpc_includedir}
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-setenv          %{BNAME}_DIR        %{hpc_prefix}
-setenv          %{BNAME}_BIN        %{hpc_bindir}
-setenv          %{BNAME}_LIB        %{hpc_libdir}
-setenv          %{BNAME}_INC        %{hpc_includedir}
-if ([file isdirectory  %{hpc_includedir}]) {
-# should work also for fortran
-prepend-path    LIBRARY_PATH        %{hpc_libdir}
-prepend-path    CPATH               %{hpc_includedir}
-prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
-prepend-path    CPLUS_INCLUDE_PATH  %{hpc_includedir}
-}
-
-%{hpc_modulefile_add_pkgconfig_path}
-
-EOF
-%endif
 
 %fdupes -s doc
 
 # cmake files are incomplete and useless when installed via auto-tools (bsc#1194728)
-rm -rf %{buildroot}%{package_libdir}/cmake
+rm -rf %{buildroot}%{_libdir}/cmake
 
 %preun devel
-%install_info_delete --info-dir=%{package_infodir} %{package_infodir}/fftw3.info.gz
+%install_info_delete --info-dir=%{_infodir} %{_infodir}/fftw3.info.gz
 
 %post devel
-%install_info --info-dir=%{package_infodir} %{package_infodir}/fftw3.info.gz
+%install_info --info-dir=%{_infodir} %{_infodir}/fftw3.info.gz
 
 %post -n %package_libname  -p /sbin/ldconfig
 
 %postun -n %package_libname -p /sbin/ldconfig
 
-%if %{without hpc}
 %post -n libfftw3_threads3 -p /sbin/ldconfig
 
 %postun -n libfftw3_threads3 -p /sbin/ldconfig
@@ -643,100 +284,63 @@ rm -rf %{buildroot}%{package_libdir}/cmake
 
 %postun -n libfftw3_mpi3 -p /sbin/ldconfig
 %endif
-%endif
 
 %files -n %package_libname
-%{package_libdir}/libfftw3.so.3*
-%{package_libdir}/libfftw3f.so.3*
-%{package_libdir}/libfftw3l.so.3*
+%{_libdir}/libfftw3.so.3*
+%{_libdir}/libfftw3f.so.3*
+%{_libdir}/libfftw3l.so.3*
 
-%if %{without hpc}
 %files -n libfftw3_threads3
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_threads.so.3*
-%{package_libdir}/libfftw3f_threads.so.3*
-%{package_libdir}/libfftw3l_threads.so.3*
+%{_libdir}/libfftw3_threads.so.3*
+%{_libdir}/libfftw3f_threads.so.3*
+%{_libdir}/libfftw3l_threads.so.3*
 
-%if %{without hpc}
 %files -n libfftw3_omp3
-%else
-%hpc_modules_files
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_omp.so.3*
-%{package_libdir}/libfftw3f_omp.so.3*
-%{package_libdir}/libfftw3l_omp.so.3*
+%{_libdir}/libfftw3_omp.so.3*
+%{_libdir}/libfftw3f_omp.so.3*
+%{_libdir}/libfftw3l_omp.so.3*
 
 %if %{with mpi}
-%if %{without hpc}
 %files -n libfftw3_mpi3
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_mpi.so.3*
-%{package_libdir}/libfftw3f_mpi.so.3*
-%{package_libdir}/libfftw3l_mpi.so.3*
-%endif
-# ENDIF FOR {without mpi}
-
-%files devel
-%if %{with hpc}
-%{package_infodir}/
-%hpc_dirs
-%dir %package_libdir/pkgconfig
-%dir %package_includedir
-%dir %package_mandir
-%dir %package_mandir/man1
-%dir %package_infodir
-%dir %package_bindir
-%dir %package_datadir
-%endif
-%license COPYING
-%doc AUTHORS CONVENTIONS COPYRIGHT ChangeLog NEWS README TODO
-%doc doc/*
-%doc %{package_mandir}/man?/*
-%{package_infodir}/*.info*
-%{package_includedir}/fftw3.*
-%{package_includedir}/fftw3q.f03
-%{package_includedir}/fftw3l.f03
-%{package_libdir}/libfftw3.so
-%{package_libdir}/libfftw3f.so
-%{package_libdir}/libfftw3l.so
-%{package_libdir}/pkgconfig/*.pc
-%{package_bindir}/*
-
-%if %{without hpc}
-%files threads-devel
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_threads.so
-%{package_libdir}/libfftw3f_threads.so
-%{package_libdir}/libfftw3l_threads.so
-
-%if %{without hpc}
-%files openmp-devel
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_omp.so
-%{package_libdir}/libfftw3f_omp.so
-%{package_libdir}/libfftw3l_omp.so
-
-%if %{with mpi}
-%if %{without hpc}
-%files mpi-devel
-%endif
-# ENDIF FOR {without hpc}
-%{package_libdir}/libfftw3_mpi.so
-%{package_libdir}/libfftw3f_mpi.so
-%{package_libdir}/libfftw3l_mpi.so
-%{package_includedir}/fftw3-mpi.*
-%{package_includedir}/fftw3l-mpi.f03
+%{_libdir}/libfftw3_mpi.so.3*
+%{_libdir}/libfftw3f_mpi.so.3*
+%{_libdir}/libfftw3l_mpi.so.3*
 %endif
 # ENDIF FOR {with mpi}
 
-%if %{with hpc}
-%files devel-static
-%{package_libdir}/*.*a
+%files devel
+%license COPYING
+%doc AUTHORS CONVENTIONS COPYRIGHT ChangeLog NEWS README TODO
+%doc doc/*
+%doc %{_mandir}/man?/*
+%{_infodir}/*.info*
+%{_includedir}/fftw3.*
+%{_includedir}/fftw3q.f03
+%{_includedir}/fftw3l.f03
+%{_libdir}/libfftw3.so
+%{_libdir}/libfftw3f.so
+%{_libdir}/libfftw3l.so
+%{_libdir}/pkgconfig/*.pc
+%{_bindir}/*
+
+%files threads-devel
+%{_libdir}/libfftw3_threads.so
+%{_libdir}/libfftw3f_threads.so
+%{_libdir}/libfftw3l_threads.so
+
+%files openmp-devel
+%{_libdir}/libfftw3_omp.so
+%{_libdir}/libfftw3f_omp.so
+%{_libdir}/libfftw3l_omp.so
+
+%if %{with mpi}
+%files mpi-devel
+%{_libdir}/libfftw3_mpi.so
+%{_libdir}/libfftw3f_mpi.so
+%{_libdir}/libfftw3l_mpi.so
+%{_includedir}/fftw3-mpi.*
+%{_includedir}/fftw3l-mpi.f03
 %endif
+# ENDIF FOR {with mpi}
 
 %changelog

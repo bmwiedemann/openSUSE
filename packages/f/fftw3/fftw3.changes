@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:05:44 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Thu Feb 20 11:17:48 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable openmpi for 32b non-hpc builds as OpenMPI >= 5 has no support
