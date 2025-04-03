@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  3 12:31:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.5:
+  * Bugfixes
+    - Make warning signature compatible with ansible core 2.19 (#478)
+      @ssbarnea
+
+-------------------------------------------------------------------
 Wed Feb 19 05:49:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.4:
