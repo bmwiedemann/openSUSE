@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 29 14:42:02 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove support for gnu-hpc build flavours.
+
+-------------------------------------------------------------------
+Mon Mar 24 12:52:28 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Wed Feb 19 16:04:48 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to 4.1.8 (jsc#PED-11356):
