@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 03 09:21:14 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.30
+- Commit finished compose sequences immediately if no completions are possible
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/662)
+- Fix summary for asciidigits in the gschema file
+- Fix typo in English message “more then one” -> “more than one”
+- Translation update from Weblate (new: fi 73.6%)
+
+-------------------------------------------------------------------
 Wed Feb 26 19:28:09 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.29
