@@ -80,7 +80,7 @@ find -name CVS -exec rm -Rf "{}" "+"
 %autopatch -p1
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -DUSE_BUFINFO -DOPENSSL_NO_SSL_INTERN -D_GNU_SOURCE $(getconf LFS_CFLAGS) -fno-strict-aliasing `ncursesw6-config --cflags` -fPIE"
+export CFLAGS="$RPM_OPT_FLAGS -DUSE_BUFINFO -DOPENSSL_NO_SSL_INTERN -D_GNU_SOURCE $(getconf LFS_CFLAGS) -fno-strict-aliasing `ncursesw6-config --cflags` -fPIE -std=gnu11"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="`ncursesw6-config --libs` -pie"
 ./configure	--bindir=/usr/bin \

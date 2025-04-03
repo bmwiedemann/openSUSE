@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  2 13:25:14 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+ 
+-------------------------------------------------------------------
 Tue Jul 25 14:31:42 UTC 2023 - Thomas Blume <thomas.blume@suse.com>
 
 - CVE-2023-38253: out-of-bounds read in growbuf_to_Str() at w3m/indep.c
