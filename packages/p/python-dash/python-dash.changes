@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  3 07:42:31 UTC 2025 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
+
+- Update to 2.18.2
+  * Lots of changes since 2.16.1:
+    https://github.com/plotly/dash/compare/v2.16.1...v2.18.2
+  * Drop dependencies python-dash-core-components,
+    python dash-html-components and dash-table as they are moved to
+    main dash repo
+
+-------------------------------------------------------------------
 Wed Aug 14 14:50:01 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

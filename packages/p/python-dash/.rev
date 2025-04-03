@@ -154,4 +154,12 @@ Also, update to 2.2.0.</comment>
     <comment>- switch to modern python for sle15</comment>
     <requestid>1193892</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>49118080268a81504b7b0a354aac1a2b</srcmd5>
+    <version>2.18.2</version>
+    <time>1743698622</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266896</requestid>
+  </revision>
 </revisionlist>

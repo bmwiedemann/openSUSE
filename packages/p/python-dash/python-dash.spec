@@ -18,10 +18,10 @@
 
 # We can't test currenty, see below.
 %bcond_with test
-%define distver 2.16.1
+%define distver 2.18.2
 %{?sle15_python_module_pythons}
 Name:           python-dash
-Version:        2.16.1
+Version:        2.18.2
 Release:        0
 Summary:        Python framework for building reactive web-apps
 License:        MIT
@@ -31,9 +31,6 @@ Source:         https://files.pythonhosted.org/packages/source/d/dash/dash-%{ver
 Source99:       python-dash.rpmlintrc
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module Flask >= 1.0.4}
-BuildRequires:  %{python_module dash-core-components = 2.0.0}
-BuildRequires:  %{python_module dash-html-components = 2.0.0}
-BuildRequires:  %{python_module dash-table = 5.0.0}
 BuildRequires:  %{python_module percy}
 BuildRequires:  %{python_module plotly >= 5.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -58,9 +55,6 @@ Requires:       python-requests
 Requires:       python-retrying
 Requires:       python-nest-asyncio
 Requires:       python-setuptools
-Requires:       python-dash-core-components = 2.0.0
-Requires:       python-dash-html-components = 2.0.0
-Requires:       python-dash-table = 5.0.0
 Requires:       python-plotly >= 5.0.0
 Requires:       jupyter-dash = %{version}-%{release}
 # SECTION testing extras
