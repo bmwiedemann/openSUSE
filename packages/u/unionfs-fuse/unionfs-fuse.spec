@@ -1,7 +1,7 @@
 #
 # spec file for package unionfs-fuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,9 @@ Version:        2.2
 Release:        0
 Summary:        Userspace Unionfs File System
 License:        BSD-3-Clause
-Group:          System/Filesystems
 URL:            https://github.com/rpodgorny/unionfs-fuse
 Source:         https://github.com/rpodgorny/unionfs-fuse/archive/v%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fuse-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libattr-devel
@@ -43,11 +42,14 @@ copied to to a higher level read-write branch if the copy-on-write
 %setup -q
 
 %build
-%cmake -DWITH_XATTR=1
+%cmake -DWITH_XATTR=1 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE
