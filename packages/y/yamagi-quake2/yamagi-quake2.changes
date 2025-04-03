@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr  2 18:43:59 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.50
+  * Consistent bindings between multiple gamepad types.
+  * Improved menu navigation with gamepads.
+  * The SDL 3 code now supports the stable SDL 3 API. Several bugs
+     with SDL 3 were fixed.
+  * Water warp effect for the OpenGL 1.4 renderer.
+  * Add a sound backend selector to the menu.
+  * Fix several problems with HTTP downloads.
+  * Better navigation in input fields in the menu. Support left and
+     right navigation, add support for the ctrl-l,c,x,v shortcuts.
+  * Performance optimizations for the OpenGL 1.4 renderer,
+    especially on embedded and mobile GPUs. Includes an alternative
+    GL ES 1.0 renderer.
+  * Several fixes to gl1_stereo.
+  * Fix the SDL2 sound backend not working with modern backends.
+  * Make the Windows key bindable.
+  * Support true randomness when shuffling audio tracks.
+  * Fix leaking temporary spawnflags into entities spawned
+    mid-level.
+  * Support the unofficial GL4 renderer lib in the video menu.
+  * Clipboard support for the console and better navigation in the
+    console line editor.
+  * Support player models inside pak files in the menu.
+  * Support 24 bit PCX files.
+  * Check if an entity file matches the current map before loading
+    it. This fixes problems with loading entity files from Quake II
+    against Quake II Remaster maps and the other way round.
+- Build with support for SDL3 on TW
+
+-------------------------------------------------------------------
 Sun Jan 26 10:45:57 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.41

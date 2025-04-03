@@ -18,7 +18,7 @@
 
 
 Name:           yamagi-quake2
-Version:        8.41
+Version:        8.50
 Release:        0
 Summary:        Enhanced Quake 2 Source Port
 License:        GPL-2.0-only
@@ -36,7 +36,11 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
+%if 0%{?suse_version} > 1600
+BuildRequires:  pkgconfig(sdl3)
+%else
 BuildRequires:  pkgconfig(sdl2)
+%endif
 
 %description
 Yamagi Quake II is an enhanced client for id Software's Quake II. The
@@ -54,7 +58,11 @@ export SOURCE_DATE_EPOCH=$(date +%s -r CHANGELOG)
 %cmake \
   -DSYSTEMWIDE_SUPPORT=ON \
   -DCURL_SUPPORT=ON \
-  -DOPENAL_SUPPORT=ON
+%if 0%{?suse_version} > 1600
+  -DSDL3_SUPPORT=ON \
+%endif
+%{nil}
+
 %cmake_build
 
 %install
