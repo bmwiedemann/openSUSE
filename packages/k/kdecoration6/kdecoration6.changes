@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 10:05:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.3.4
+- Changes since 6.3.3:
+  * update version for new release
+
+-------------------------------------------------------------------
 Thu Mar 20 14:53:28 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add back obsoletion of libkdecorations2-5-lang (boo#1239218)
