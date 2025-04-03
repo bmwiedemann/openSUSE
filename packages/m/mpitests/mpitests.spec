@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package mpitests
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -46,7 +46,6 @@
 
 %define mpi_home %{hpc_mpi_home %flavor}
 %define implem_list_dir %{_datadir}/mpitests/implem.d/
-%define sles_pre_15 (0%{?sle_version} > 120000 && 0%{?sle_version} < 150000)
 %define sles_pre_or_15 (0%{?sle_version} > 120000 && 0%{?sle_version} <= 150000)
 %define sles_pre_16 (0%{?sle_version} > 120000 && 0%{?sle_version} < 160000)
 
@@ -74,10 +73,6 @@ Patch2:         imb-cpp-flags.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
-# suse-hpc is not available for SLE < 15
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150000
-BuildRequires:  suse-hpc
-%endif
 %if "%{flavor}" != ""
 BuildRequires:  %{flavor}
 BuildRequires:  %{flavor}-devel
@@ -90,32 +85,8 @@ Requires:       mpitests = %{version}
 ExcludeArch:    %{arm}
 %endif
 
-%if  "%{flavor}" == "mvapich2-gnu-hpc"
-%if %{sles_pre_15}
-# Disable hpc builds for SLE12
-ExclusiveArch:  do_not_build
-%endif
-ExcludeArch:    i586 %arm s390
-%endif
-
 %if "%{flavor}" == "mvapich2-psm2"
 ExclusiveArch:  x86_64
-%endif
-
-%if "%{flavor}" == "mvapich2-psm2-gnu-hpc"
-%if %{sles_pre_15}
-# Disable hpc builds for SLE12
-ExclusiveArch:  do_not_build
-%else
-ExclusiveArch:  x86_64
-%endif
-%endif
-
-%if "%{flavor}" == "openmpi1-gnu-hpc"
-%if %{sles_pre_15}
-# Disable hpc builds for SLE12
-ExclusiveArch:  do_not_build
-%endif
 %endif
 
 %if "%{flavor}" == "openmpi4"
@@ -127,15 +98,6 @@ ExcludeArch:    ppc64
 %endif
 %endif
 
-%if "%{flavor}" == "openmpi4-gnu-hpc"
-%if %{sles_pre_or_15}
-# Disable openmpi4 builds for SLES up to (including) 15
-ExclusiveArch:  do_not_build
-%else
-ExcludeArch:    i586 %arm s390 ppc64
-%endif
-%endif
-
 %if "%{flavor}" == "openmpi5"
 %if %{sles_pre_16}
 # Disable openmpi5 builds for SLES < 16
@@ -143,30 +105,6 @@ ExclusiveArch:  do_not_build
 %else
 ExcludeArch:    ppc64 %{arm} %ix86
 %endif
-%endif
-
-%if "%{flavor}" == "openmpi5-gnu-hpc"
-%if %{sles_pre_16}
-# Disable openmpi5 builds for SLES < 16
-ExclusiveArch:  do_not_build
-%else
-ExcludeArch:    %ix86 %arm s390 ppc64
-%endif
-%endif
-
-# Disable mpich builds for SLE12 as it is not available
-%if "%{flavor}" == "mpich-ofi" || "%{flavor}" == "mpich"
-%if %{sles_pre_15}
-ExclusiveArch:  do_not_build
-%endif
-%endif
-
-# Disable mpich builds for SLE12 as it is not available
-%if "%{flavor}" == "mpich-ofi-gnu-hpc" || "%{flavor}" == "mpich-gnu-hpc"
-%if %{sles_pre_15}
-ExclusiveArch:  do_not_build
-%endif
-ExcludeArch:    i586 %arm s390
 %endif
 
 %description
