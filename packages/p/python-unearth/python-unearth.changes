@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  3 07:13:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.3
+  * Update contributing guidelines for rebase branch
+  * Best match should be a pre-release if that's all the index has
+  * Use stdlib Path <-> URL conversions
+
+-------------------------------------------------------------------
 Fri Sep 27 05:05:46 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.17.2:
