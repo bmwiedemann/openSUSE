@@ -1,0 +1,5 @@
+<package name="perl-Perl-Critic-TooMuchCode" project="openSUSE:Factory">
+  <title>perlcritic add-ons that generally check for dead code</title>
+  <description>This add-on for Perl::Critic is aiming for identifying trivial dead code. Either the ones that has no use, or the one that produce no effect. Having dead code floating around causes maintenance burden. Some might prefer not to generate them in the first place.</description>
+  <url>https://metacpan.org/pod/Perl::Critic::TooMuchCode</url>
+</package>
