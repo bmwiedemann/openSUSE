@@ -1,7 +1,7 @@
 #
 # spec file for package id3lib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,7 @@ Patch13:        id3lib-%{version}-fix-stack-overrun.patch
 Patch14:        id3lib-3.8.3-fix-utf16-stringlists.patch
 Patch15:        add-c-wrapper-functions.patch
 Patch16:        id3lib-missing-nullpointer-check.patch
+Patch17:        https://gitweb.gentoo.org/repo/gentoo.git/plain/media-libs/id3lib/files/id3lib-3.8.3-fix-c23.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dos2unix
@@ -105,6 +106,9 @@ id3lib, a software library for ID3v1 and ID3v2 tag manipulation.
 %patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
+%if %{pkg_vcmp gcc >= 15}
+%patch -P 17 -p1
+%endif
 for i in doc/id3v2.3.0{.txt,.html}; do
   dos2unix $i
 done
