@@ -167,4 +167,12 @@
     <comment>Plasma 6.3.3</comment>
     <requestid>1252287</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>17077d1318716905122621c9454bd350</srcmd5>
+    <version>6.3.4</version>
+    <time>1743691594</time>
+    <user>anag+factory</user>
+    <comment>Plasma 6.3.4 (still building) (forwarded request 1266434 from krop)</comment>
+    <requestid>1266504</requestid>
+  </revision>
 </revisionlist>
