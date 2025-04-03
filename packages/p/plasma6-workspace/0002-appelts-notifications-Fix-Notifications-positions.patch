@@ -1,0 +1,39 @@
+From c8289fd789d5af909cf748ac926762c090033f8a Mon Sep 17 00:00:00 2001
+From: Marco Martin <notmart@gmail.com>
+Date: Thu, 3 Apr 2025 10:38:26 +0000
+Subject: [PATCH 2/2] appelts/notifications: Fix Notifications positions
+
+window position is double buffered, so it's needed to call
+an explicit QWindow::update() after we ask to move the popup
+with PlasmaShellWaylandIntegration::get(this)->setPosition(me->pos());
+
+BUG: 500192
+BUG: 498599
+BUG: 491217
+BUG: 502160
+
+
+(cherry picked from commit 066d3083c60d1f6d87ada2a60c66ede19c70510d)
+
+066d3083 appelts/notifications: Fix Notifications positions
+
+Co-authored-by: Marco Martin <notmart@gmail.com>
+---
+ applets/notifications/notificationwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/applets/notifications/notificationwindow.cpp b/applets/notifications/notificationwindow.cpp
+index 29650785ca..598c6f71be 100644
+--- a/applets/notifications/notificationwindow.cpp
++++ b/applets/notifications/notificationwindow.cpp
+@@ -81,6 +81,7 @@ void NotificationWindow::moveEvent(QMoveEvent *me)
+ {
+     PlasmaShellWaylandIntegration::get(this)->setPosition(me->pos());
+     PlasmaWindow::moveEvent(me);
++    update();
+ }
+ 
+ #include "moc_notificationwindow.cpp"
+-- 
+2.47.1
+

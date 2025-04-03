@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.3.3
+Version:        6.3.4
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -43,6 +43,8 @@ Source2:        plasma.keyring
 Source3:        sddm.conf
 Source4:        waitforkded.conf
 # PATCH-FIX-UPSTREAM
+Patch1:         0001-applets-notifications-improve-paddings-again.patch
+Patch2:         0002-appelts-notifications-Fix-Notifications-positions.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch

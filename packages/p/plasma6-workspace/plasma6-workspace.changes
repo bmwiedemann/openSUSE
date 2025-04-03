@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr  3 11:50:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix notification appearance
+  (kde#500192, kde#498599, kde#491217, kde#502160):
+  * 0001-applets-notifications-improve-paddings-again.patch
+- Add patch to fix notification position:
+  * 0002-appelts-notifications-Fix-Notifications-positions.patch
+
+-------------------------------------------------------------------
+Wed Apr  2 10:06:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.3.4
+- Changes since 6.3.3:
+  * applets/notifications: fix body label implicit height and alignment
+  * applets/notifications: restore padding above the icon, when visible
+  * applets/notifications: use more appropriate wrap mode for labels (kde#502162)
+  * applets/notifications: tighten internal spacings (kde#449083)
+  * notifications: Sync window position on creation
+  * applets/notifications: Fix actions in FullRepresentation
+  * klipper: let Qt handle plain text to deal with non-UTF-8 encodings when syncing selections
+  * kcms/region_language: make removing languages work
+  * Only queue position updates for panel when not hidden (kde#499833)
+  * klipper: let Qt handle plain text to deal with non-UTF-8 encodings (kde#500203)
+  * shell: fix shelltest
+  * klipper: only accept certain MIME types
+  * applets/notifications: make drag parameter explicit
+  * Check for queued positionAndResize requests at the end of the event cycle (kde#499833)
+  * applets/devicenotifier: handle unmounting gracefully
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Mar 11 14:45:00 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.3:
