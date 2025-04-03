@@ -36,7 +36,9 @@ Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
 URL:            https://www.kdab.com/gammaray
-Source:         https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{rname}-%{version}.tar.gz
+Source0:        https://github.com/KDAB/GammaRay/releases/download/v%{version}/%{rname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         gammaray-qt69.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen

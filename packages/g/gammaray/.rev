@@ -242,4 +242,13 @@
   way to use the system KDSME.</comment>
     <requestid>1242096</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>3d1c4202531a2b9b670fa785b12642b9</srcmd5>
+    <version>3.1.0</version>
+    <time>1743691820</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change:
+  * gammaray-qt69.patch</comment>
+    <requestid>1266790</requestid>
+  </revision>
 </revisionlist>
