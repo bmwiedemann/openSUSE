@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  3 14:35:31 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.16.2
+  * Support punctuation candidate
+  * Notify user when import file finished
+  * Display lua converters in ibus panel
+  * Support square bracket page option
+  * Fix bugs
+- Drop ibus-libpinyin-revert-python-3.2.patch, merged by upstream
+
+-------------------------------------------------------------------
 Mon Sep 23 10:42:18 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus-libpinyin.spec:

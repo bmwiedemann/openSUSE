@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-libpinyin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,19 +20,18 @@
 %define   with_cloud_input   1
 
 Name:           ibus-libpinyin
-Version:        1.15.8
+Version:        1.16.1
 Release:        0
 Summary:        Intelligent Pinyin engine based on libpinyin for IBus
 License:        GPL-3.0-or-later
 Group:          System/I18n/Chinese
 URL:            https://github.com/libpinyin/ibus-libpinyin
 Source0:        https://github.com/libpinyin/ibus-libpinyin/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         ibus-libpinyin-revert-python-3.2.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
-BuildRequires:  ibus-devel >= 1.4.99
+BuildRequires:  ibus-devel >= 1.5.11
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  libuuid-devel
@@ -42,11 +41,12 @@ BuildRequires:  sqlite3
 BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gdk-3.0)
-BuildRequires:  pkgconfig(libpinyin) >= 2.7.91
+BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libpinyin) >= 2.9.92
 BuildRequires:  pkgconfig(lua)
 %if %{with_cloud_input}
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(json-glib-1.0) >= 1.0
+BuildRequires:  pkgconfig(libsoup-3.0) >= 3.0
 %endif
 %if 0%{?sle_version} < 150600 && 0%{?sle_version} >= 150000
 BuildRequires:  python310-base
@@ -113,6 +113,7 @@ NOCONFIGURE=1 ./autogen.sh
 %{_datadir}/%{name}/icons
 %{_datadir}/%{name}/setup
 %{_datadir}/%{name}/network.txt
+%{_datadir}/%{name}/default.xml
 %{_datadir}/ibus-libpinyin/db/table.db
 %{_datadir}/metainfo/libpinyin.appdata.xml
 %{_datadir}/ibus

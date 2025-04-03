@@ -387,4 +387,18 @@
     <comment></comment>
     <requestid>1204700</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>f6ab7d5ad666ddd0c826be0a87c40b0c</srcmd5>
+    <version>1.16.1</version>
+    <time>1743698627</time>
+    <user>anag+factory</user>
+    <comment>- Update version to 1.16.2
+  * Support punctuation candidate
+  * Notify user when import file finished
+  * Display lua converters in ibus panel
+  * Support square bracket page option
+  * Fix bugs
+- Drop ibus-libpinyin-revert-python-3.2.patch, merged by upstream (forwarded request 1266919 from hillwood)</comment>
+    <requestid>1266922</requestid>
+  </revision>
 </revisionlist>
