@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  2 10:05:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.3.4
+- Changes since 6.3.3:
+  * applets/folderview: fix list view icon opacity (kde#501797)
+  * applets/kickoff: honor display style setting in search results
+  * kcms/touchpad/actions: Add touchpad toggle shortcut with meta keys
+  * Use entire screen to place sidebars when not in edit mode (kde#480890)
+  * update version for new release
+
+-------------------------------------------------------------------
 Sun Mar 16 09:17:21 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - make scim conditional, it'll drop from Factory
