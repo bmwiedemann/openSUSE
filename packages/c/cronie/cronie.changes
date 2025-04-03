@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 31 15:47:13 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add cronie-gcc15.patch to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Tue Jul  9 10:02:29 UTC 2024 - Johannes Segitz <jsegitz@suse.com>
 
 - Improve permissions checks in run-cron. Just check if the permission

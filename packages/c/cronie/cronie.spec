@@ -35,6 +35,8 @@ Source4:        deny.sample
 Source7:        cron_to_cronie.README
 Source8:        cron.service
 Source9:        sysconfig.cron
+# PATCH-FIX-UPSTREAM
+Patch1:         cronie-gcc15.patch
 # PATCH-FEATURE-OPENSUSE cronie-pam_config.diff added pam config file from old cron
 Patch3:         cronie-pam_config.diff
 # openSUSE set NHEADER_LINES to 3 - old openSUSE cron put three lines of comments
@@ -101,6 +103,7 @@ overloaded in settings.
 
 %prep
 %setup -q -n %{name}-%{name}-%{cronie_version}
+%patch -P 1 -p1
 %patch -P 3 -p1
 %patch -P 4
 %patch -P 5 -p1
