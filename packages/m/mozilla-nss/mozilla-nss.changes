@@ -1,10 +1,27 @@
 -------------------------------------------------------------------
+Sun Mar 30 05:41:41 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.109
+  * bmo#1939512 - Call BL_Init before RNG_RNGInit() so that special
+                  SHA instructions can be used if available
+  * bmo#1930807 - NSS policy updates - fix inaccurate key policy issues
+  * bmo#1945883 - SMIME fuzz target
+  * bmo#1914256 - ASN1 decoder fuzz target
+  * bmo#1936001 - Part 2: Revert “Extract testcases from ssl gtests
+                  for fuzzing”
+  * bmo#1915155 - Add fuzz/README.md
+  * bmo#1936001 - Part 4: Fix tstclnt arguments script
+  * bmo#1944545 - Extend pkcs7 fuzz target
+  * bmo#1912320 - Extend certDN fuzz target
+  * bmo#1944300 - revert changes to HACL* files from bug 1866841
+  * bmo#1936001 - Part 3: Package frida corpus script
+
+-------------------------------------------------------------------
 Wed Mar  5 10:17:10 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - Updated nss-fips-approved-crypto-non-ec.patch to not pass in
   bad targetKeyLength parameters when checking for FIPS approval
   after keygen. This was causing false rejections.
-
 - Updated nss-fips-approved-crypto-non-ec.patch to approve
   RSA signature verification  mechanisms with PKCS padding and
   legacy moduli (bsc#1222834).

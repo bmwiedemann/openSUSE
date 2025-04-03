@@ -3357,4 +3357,25 @@
     <comment></comment>
     <requestid>1250499</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>aee2ed55c679813d17c1af1f0afa94a4</srcmd5>
+    <version>3.109</version>
+    <time>1743698443</time>
+    <user>anag+factory</user>
+    <comment>- update to NSS 3.109
+  * bmo#1939512 - Call BL_Init before RNG_RNGInit() so that special
+                  SHA instructions can be used if available
+  * bmo#1930807 - NSS policy updates - fix inaccurate key policy issues
+  * bmo#1945883 - SMIME fuzz target
+  * bmo#1914256 - ASN1 decoder fuzz target
+  * bmo#1936001 - Part 2: Revert “Extract testcases from ssl gtests
+                  for fuzzing”
+  * bmo#1915155 - Add fuzz/README.md
+  * bmo#1936001 - Part 4: Fix tstclnt arguments script
+  * bmo#1944545 - Extend pkcs7 fuzz target
+  * bmo#1912320 - Extend certDN fuzz target
+  * bmo#1944300 - revert changes to HACL* files from bug 1866841
+  * bmo#1936001 - Part 3: Package frida corpus script</comment>
+    <requestid>1266364</requestid>
+  </revision>
 </revisionlist>
