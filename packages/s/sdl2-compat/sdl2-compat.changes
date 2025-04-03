@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Mar 31 23:26:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.54
+  * Fixed crash during controller hotplug in RetroArch
+  * Improved accuracy of SDL_GetRenderDriverInfo()
+  * Fixed SDL_SetWindowInputFocus() return value
+- Delete 0001-cmake-install-sdl2-config-.cmake-files.patch
+  (merged)
+
+-------------------------------------------------------------------
+Sun Mar 30 02:13:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add workarounds for Leap 15's not-so-capable pkg-config.
+
+-------------------------------------------------------------------
 Wed Mar 12 16:14:12 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete pc.patch (rejected upstream)

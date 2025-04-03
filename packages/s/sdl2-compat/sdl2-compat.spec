@@ -19,7 +19,7 @@
 %define lname libSDL2-2_0-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 Name:           sdl2-compat
-Version:        2.32.52
+Version:        2.32.54
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 License:        MIT
@@ -28,8 +28,8 @@ URL:            https://github.com/libsdl-org/sdl2-compat
 Source:         https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz
 Source2:        https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz.sig
 Source8:        baselibs.conf
+Source9:        %name-rpmlintrc
 Patch1:         sdl2-symvers.patch
-Patch2:         0001-cmake-install-sdl2-config-.cmake-files.patch
 BuildRequires:  cmake
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(sdl3) >= 3.2.4
@@ -42,7 +42,9 @@ against SDL 2.0, but it uses SDL 3.0 behind the scenes.
 %package -n %lname
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 Group:          System/Libraries
-%requires_eq %(rpm --qf "%%{name}" -qf $(readlink -f %_libdir/libSDL3.so))
+Requires:       libSDL3-0 >= 3.2.10
+# "sdl2-compat 2.32.54: SDL3 library is too old (have 3.2.8, but
+# need at least 3.2.10). Segmentation fault (core dumped)"
 
 %description -n %lname
 This is the "Simple DirectMedia Layer" library built from sdl2-compat.
@@ -68,9 +70,14 @@ library.
 %cmake_build
 
 %install
+b="%buildroot"
 %cmake_install
-rm -Rf "%buildroot/%_datadir/licenses" # using %%license instead
-cd "%buildroot/%_libdir/cmake/SDL2/"
+rm -Rf "$b/%_datadir/licenses" # using %%license instead
+cd "$b/%_libdir/cmake/SDL2/"
+%if 0%{?suse_version} < 1600
+# pkgconfig 0.x does not know "Provides" lines; work around it.
+ln -s sdl2-compat.pc "$b/%_libdir/pkgconfig/sdl2.pc"
+%endif
 
 %ldconfig_scriptlets -n %lname
 
