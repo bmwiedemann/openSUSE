@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 03 08:02:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.3:
+  * refactor: replace gsed with sed for consistency in explain and
+    trivy scripts
+  * add clone object functionality to various commands and improve
+    context handling
+  * enhance kubecui command handling with improved option parsing
+    and context management
+  * refine explain output formatting and enhance object retrieval
+    logic based on namespace
+  * service port-forward
+  * deletion bug fix
+  * sync fzf and tmux color schemes
+  * meaningful confirmation message. Minor bug fixes
+
+-------------------------------------------------------------------
 Sun Oct 27 19:41:20 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubecui: kubeui makes kubectl more user friendly.

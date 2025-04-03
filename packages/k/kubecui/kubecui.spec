@@ -1,7 +1,7 @@
 #
 # spec file for package kubecui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubecui
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Simple but still extremely powerful K9S alternative
 License:        MIT
@@ -30,10 +30,10 @@ BuildRequires:  filesystem
 Requires:       bash
 Requires:       fzf
 Requires:       jq
-Recommends:     trivy
+Recommends:     kube-no-trouble
 Recommends:     tmux
 Recommends:     tmuxp
-Recommends:     kube-no-trouble
+Recommends:     trivy
 
 %description
 kubeui makes kubectl more user friendly. This is still kubectl but enhanced
