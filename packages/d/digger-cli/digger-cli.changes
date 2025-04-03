@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 02 20:05:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.94:
+  * improvements for depends_on traversal (#1932)
+  * supporting gitlab connections (#1921)
+  * feat: add support to slog in libs workspace (#1928)
+  * feat: structured logging in digger (backend) (#1927)
+  * fix/ee release pipelines (#1926)
+
+-------------------------------------------------------------------
 Wed Mar 26 10:12:20 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.93:
