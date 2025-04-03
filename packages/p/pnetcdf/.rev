@@ -68,4 +68,13 @@
     <comment>- Disable HPC flavors on i586 (forwarded request 1119883 from eeich)</comment>
     <requestid>1119884</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>1bdb3421d11aafc14e14a5890a8c412c</srcmd5>
+    <version>1.12.3</version>
+    <time>1743691618</time>
+    <user>anag+factory</user>
+    <comment>- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour</comment>
+    <requestid>1266214</requestid>
+  </revision>
 </revisionlist>
