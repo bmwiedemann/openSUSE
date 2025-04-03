@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  2 10:05:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.3.4
+- Too many changes since 6.3.3, only listing bugfixes:
+  * wayland: Clip surface damage (kde#501113)
+  * Combine tile modes when tiling via arrow keys (kde#501731)
+  * plugins/systembell: Throttle audio bell (kde#500916)
+  * compositor: only delay hardware cursor updates when necessary (kde#487563)
+  * kcms/rules: Remove pragma on OptionsComboBox (kde#501357)
+- Drop patches:
+  * 0001-Version-6.3.3.patch
+  * 0002-kcms-rules-Remove-pragma-on-OptionsComboBox.patch
+
+-------------------------------------------------------------------
 Tue Mar 11 14:36:17 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.3:
