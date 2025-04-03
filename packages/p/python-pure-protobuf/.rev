@@ -53,4 +53,13 @@
   * prepare for python 3.14 (forwarded request 1208237 from rrahl0)</comment>
     <requestid>1208238</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0d42ba781e1d088b1dbc89658a625d60</srcmd5>
+    <version>3.1.4</version>
+    <time>1743691795</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.1.4:
+  * Fix: Any_ must inherit from BaseMessage (forwarded request 1266723 from rrahl0)</comment>
+    <requestid>1266724</requestid>
+  </revision>
 </revisionlist>

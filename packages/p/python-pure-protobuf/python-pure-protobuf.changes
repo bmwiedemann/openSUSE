@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  3 00:02:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1.4:
+  * Fix: Any_ must inherit from BaseMessage
+
+-------------------------------------------------------------------
 Tue Oct 15 21:47:22 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.1.3:
