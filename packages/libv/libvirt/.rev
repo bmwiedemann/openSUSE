@@ -4825,4 +4825,14 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   bsc#1239836</comment>
     <requestid>1255147</requestid>
   </revision>
+  <revision rev="420" vrev="1">
+    <srcmd5>13bfa1be08c02b37cda65eb210f8233e</srcmd5>
+    <version>11.2.0</version>
+    <time>1743698441</time>
+    <user>anag+factory</user>
+    <comment>- Update to libvirt 11.2.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-2-0-2025-04-01</comment>
+    <requestid>1266337</requestid>
+  </revision>
 </revisionlist>
