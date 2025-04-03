@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 30 14:25:12 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Don't package the whole _includedir, only the gsl folder
+
+-------------------------------------------------------------------
+Fri Mar 28 10:59:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Remove obsolete Obsolete (from almost a decade ago)
+- Remove HPC code as it's unused now (bsc#1239982)
+
+-------------------------------------------------------------------
 Tue Oct  8 09:14:06 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Ensure that %check do not modify build results (boo#1227364)
