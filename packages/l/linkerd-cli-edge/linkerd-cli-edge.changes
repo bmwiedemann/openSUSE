@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Apr 02 20:10:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.1:
+  * chore(ci): run policy tests against various Gateway API
+    versions (#13893)
+  * fix(policy-test): feature-gate experimental types in tests
+    (#13896)
+  * build(deps): bump the clap group with 2 updates (#13894)
+  * feat(policy-test): conditionally compile experimental type
+    tests (#13891)
+  * chore(multicluster): update Prometheus configs and access
+    policy to scrape new multicluster controllers (#13892)
+  * build(deps): enable tracing feature in hyper-util (#13890)
+  * fix(cli): check if installGatewayAPI is true before we error
+    during CRD install (#13872)
+  * proxy: v2.290.0 (#13889)
+  * build(deps): bump iana-time-zone from 0.1.62 to 0.1.63 (#13885)
+  * build(deps): bump tj-actions/changed-files (#13887)
+  * feat(multicluster): add --only-controller flag to `linkerd mc
+    unlink` (#13874)
+  * build(deps): bump hyper-util from 0.1.10 to 0.1.11 (#13886)
+  * build(deps): bump linkerd2-proxy-api from git to v0.16.0
+    (#13883)
+  * build(deps): bump event-listener-strategy from 0.5.3 to 0.5.4
+    (#13868)
+  * build(deps-dev): bump webpack-dev-server from 5.2.0 to 5.2.1 in
+    /web/app (#13875)
+  * build(deps-dev): bump @babel/runtime from 7.26.10 to 7.27.0 in
+    /web/app (#13876)
+  * build(deps-dev): bump sinon from 19.0.4 to 20.0.0 in /web/app
+    (#13877)
+  * build(deps-dev): bump @babel/eslint-parser in /web/app (#13878)
+  * build(deps): bump @babel/eslint-plugin in /web/app (#13879)
+  * build(deps): bump once_cell from 1.21.1 to 1.21.3 (#13880)
+  * build(deps): bump darling from 0.20.10 to 0.20.11 (#13881)
+  * build(deps): bump socket2 from 0.5.8 to 0.5.9 (#13882)
+
+-------------------------------------------------------------------
 Fri Mar 28 05:47:17 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 25.3.4:
