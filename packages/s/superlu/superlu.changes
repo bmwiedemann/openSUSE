@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 17:01:39 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Mon Dec  9 15:13:46 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires:
