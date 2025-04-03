@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Mar 31 10:35:11 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 81
+  * ndctl/namespace: avoid integer overflow in namespace validation
+  * ndctl/dimm: do not increment a ULLONG_MAX slot value
+  * ndctl/namespace: protect against overflow handling param.offset
+  * ndctl/namespace: protect against under|over-flow w bad param.align
+  * ndctl/list: display region caps for any of BTT, PFN, DAX
+  * cxl/region: report max size for region creation
+  * daxctl: output more information if memblock is unremovable
+  * cxl/json: remove prefix from tracefs.h #include
+- Remove upstreamed cxl-json-Fix-tracefs-include.patch
+
+-------------------------------------------------------------------
 Thu Oct 10 17:01:07 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 80
