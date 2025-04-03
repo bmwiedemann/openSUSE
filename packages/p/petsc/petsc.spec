@@ -1,7 +1,7 @@
 #
 # spec file for package petsc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,10 +21,7 @@
 
 # Please also update slepc, which is version locked with petsc
 %define pname petsc
-%define vers 3.22.2
-%define _vers 3_22_2
 %define so_ver 3_22
-%define openblas_vers 0.3.6
 
 ExcludeArch:    s390 s390x
 
@@ -35,227 +32,37 @@ ExcludeArch:    s390 s390x
 
 %define python_ver 3
 
-%if 0%{?sle_version} >= 150200
-%define DisOMPI1 ExclusiveArch:  do_not_build
-%endif
-%if !0%{?is_opensuse} && 0%{?sle_version:1} && 0%{?sle_version} < 150200
-%define DisOMPI3 ExclusiveArch:  do_not_build
-%endif
-%if 0%{?sle_version:1} && 0%{?sle_version} < 150300
-%define DisOMPI4 ExclusiveArch:  do_not_build
-%endif
-
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
 %endif
 
 %if "%flavor" == "serial"
-%{bcond_with hpc}
 %endif
 
 %if "%flavor" == "openmpi4"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define mpi_vers 4
-%{bcond_with hpc}
+%define mpi_flavor openmpi4
 %endif
 
 %if "%flavor" == "openmpi5"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define mpi_vers 5
-%{bcond_with hpc}
+%define mpi_flavor openmpi5
+ExcludeArch:    %{ix86} %{arm}
 %endif
 
-%if "%flavor" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 4
-%{bcond_without hpc}
-%endif
+%define package_name %{pname}%{?with_mpi:-%{mpi_flavor}}
+%define libname      lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_flavor}}
 
-%if "%flavor" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define compiler_family gnu
-%undefine c_f_ver
-%define mpi_vers 5
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu-mvapich2-hpc"
-%define mpi_family mvapich2
-%define compiler_family gnu
-%undefine c_f_ver
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu-mpich-hpc"
-%define mpi_family mpich
-%define compiler_family gnu
-%undefine c_f_ver
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-openmpi4-hpc"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 7
-%define mpi_vers 4
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-openmpi5-hpc"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 7
-%define mpi_vers 5
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-mvapich2-hpc"
-%define mpi_family mvapich2
-%define compiler_family gnu
-%define c_f_ver 7
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu7-mpich-hpc"
-%define mpi_family mpich
-%define compiler_family gnu
-%define c_f_ver 7
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-openmpi4-hpc"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 8
-%define mpi_vers 4
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-openmpi5-hpc"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 8
-%define mpi_vers 5
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu8-mvapich2-hpc"
-%define mpi_family mvapich2
-%define compiler_family gnu
-%define c_f_ver 8
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-openmpi4-hpc"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 9
-%define mpi_vers 4
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-openmpi5-hpc"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 9
-%define mpi_vers 5
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-mvapich2-hpc"
-%define mpi_family mvapich2
-%define compiler_family gnu
-%define c_f_ver 9
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu9-mpich-hpc"
-%define mpi_family mpich
-%define compiler_family gnu
-%define c_f_ver 9
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 10
-%define mpi_vers 4
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%define mpi_family openmpi
-%define compiler_family gnu
-%define c_f_ver 10
-%define mpi_vers 5
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-mvapich2-hpc"
-%define mpi_family mvapich2
-%define compiler_family gnu
-%define c_f_ver 10
-%{bcond_without hpc}
-%endif
-
-%if "%flavor" == "gnu10-mpich-hpc"
-%define mpi_family mpich
-%define compiler_family gnu
-%define c_f_ver 10
-%{bcond_without hpc}
-%endif
-
-%if !0%{?is_opensuse} && !0%{?with_hpc:1}
-ExclusiveArch:  do_not_build
-%endif
-
-%if %{without hpc}
-%define package_name() %{pname}%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
-%define libname() lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
-%else
-ExcludeArch:    %ix86
-%{hpc_init -c %compiler_family -m %mpi_family %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
-
-%define package_name() %{hpc_package_name %_vers}
-%define libname() lib%{pname}%{expand:%%{hpc_package_name_tail %{**}}}
-%global libname_plain %{libname}
-%endif
-
-%if 0%{?mpi_family:1}
+%if 0%{?mpi_flavor:1}
 %{bcond_without mpi}
 %else
 %{bcond_with mpi}
 %endif
 
-%if %{without hpc}
- %if %{without mpi}
+%if %{without mpi}
 %define p_base %{_prefix}/
- %else
- %{?with_mpi:%{!?mpi_family:error "No MPI family specified!"}}
-
-%define p_base %{_libdir}/mpi/gcc/%{mpi_family}%{?mpi_vers}/
- %endif
-%define p_prefix %{p_libdir}/petsc/%{version}/%petsc_arch
 %else
-%define p_base %{hpc_prefix}/
-%define p_prefix %{hpc_prefix}
+%define p_base %{_libdir}/mpi/gcc/%{mpi_flavor}/
 %endif
-
+%define p_prefix %{p_libdir}/petsc/%{version}/%petsc_arch
 %define p_libdir %{p_base}%_lib
 %define p_include %{p_prefix}/include
 
@@ -265,7 +72,7 @@ Name:           %{package_name}
 Summary:        Portable Extensible Toolkit for Scientific Computation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        %vers
+Version:        3.22.2
 Release:        0
 
 Source:         https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-%{version}.tar.gz
@@ -279,7 +86,6 @@ BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  pkgconfig(yaml-0.1)
 
-%if %{without hpc}
 BuildRequires:  Modules
 BuildRequires:  blas-devel
 BuildRequires:  gcc-c++
@@ -287,36 +93,23 @@ BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  suitesparse-devel >= 5.6.0
 
- %if %{with mpi}
-BuildRequires:  %{mpi_family}%{?mpi_vers}-devel
-BuildRequires:  blacs-%{mpi_family}%{?mpi_vers}-devel
-BuildRequires:  hdf5-%{mpi_family}%{?mpi_vers}-devel
-%if %{with hypre}
-BuildRequires:  hypre-%{mpi_family}%{?mpi_vers}-devel
+%if %{with mpi}
+BuildRequires:  %{mpi_flavor}-devel
+BuildRequires:  blacs-%{mpi_flavor}-devel
+BuildRequires:  hdf5-%{mpi_flavor}-devel
+ %if %{with hypre}
+BuildRequires:  hypre-%{mpi_flavor}-devel
 BuildRequires:  superlu-devel
-%endif
-BuildRequires:  ptscotch-%{mpi_family}%{?mpi_vers}-devel
-BuildRequires:  ptscotch-parmetis-%{mpi_family}%{?mpi_vers}-devel
-#!BuildIgnore:  metis-devel
-%if %{with pastix}
-BuildRequires:  pastix-%{mpi_family}%{?mpi_vers}-devel
-%endif
-BuildRequires:  scalapack-%{mpi_family}%{?mpi_vers}-devel
- %else
-BuildRequires:  metis-devel
  %endif
+BuildRequires:  ptscotch-%{mpi_flavor}-devel
+BuildRequires:  ptscotch-parmetis-%{mpi_flavor}-devel
+#!BuildIgnore:  metis-devel
+ %if %{with pastix}
+BuildRequires:  pastix-%{mpi_flavor}-devel
+ %endif
+BuildRequires:  scalapack-%{mpi_flavor}-devel
 %else
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  %{mpi_family}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
-BuildRequires:  hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
-BuildRequires:  libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
-BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-BuildRequires:  libopenblas-%{compiler_family}-hpc >=  %{openblas_vers}
-BuildRequires:  libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc
-BuildRequires:  libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel
-BuildRequires:  lua-lmod
-BuildRequires:  suse-hpc
+BuildRequires:  metis-devel
 %endif
 
 BuildRequires:  valgrind-devel
@@ -328,49 +121,33 @@ PETSc is a suite of data structures and routines for the scalable
 (parallel) solution of scientific applications modeled by partial
 differential equations.
 
-%package -n %{libname %_vers}
+%package -n %{libname}
 Summary:        PETSc shared libraries
 Group:          System/Libraries
-%if %{with hpc}
-%{hpc_requires}
-%{requires_eq libhdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
-%{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc}
-%else
 # Fixup wrong package name
-Conflicts:      libpetsc3%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
-%endif
+Conflicts:      libpetsc3%{?with_mpi:-%{mpi_flavor}}
 
-%description -n %{libname %_vers}
+%description -n %{libname}
 PETSc is a suite of data structures and routines for the scalable
 (parallel) solution of scientific applications modeled by partial
 differential equations.
 
-%{?with_hpc:%{hpc_master_package -n %{libname_plain} -l -L}}
-
 %package %{?n_pre}devel
 Summary:        Devel files for petsc
 Group:          Development/Libraries/C and C++
-Requires:       %{libname %_vers} = %{version}
-Requires:       pkgconfig(yaml-0.1)
-%if %{without hpc}
+Requires:       %{libname} = %{version}
 Requires:       Modules
 Requires:       suitesparse-devel
- %if %{without mpi}
+Requires:       pkgconfig(yaml-0.1)
+%if %{without mpi}
 Requires:       metis-devel
- %else
-Requires:       blacs-%{mpi_family}%{?mpi_vers}-devel
-Requires:       hdf5-%{mpi_family}%{?mpi_vers}-devel
-Requires:       hypre-%{mpi_family}%{?mpi_vers}-devel
-Requires:       ptscotch-%{mpi_family}%{?mpi_vers}-devel
-Requires:       ptscotch-parmetis-%{mpi_family}%{?mpi_vers}-devel
-Requires:       scalapack-%{mpi_family}%{?mpi_vers}-devel
- %endif
 %else
-# with hpc:
-%{requires_eq hdf5%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
-%{requires_eq libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
-%{requires_eq libscalapack2%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-%{mpi_family}%{?mpi_vers}-hpc-devel}
-%hpc_requires_devel
+Requires:       blacs-%{mpi_flavor}-devel
+Requires:       hdf5-%{mpi_flavor}-devel
+Requires:       hypre-%{mpi_flavor}-devel
+Requires:       ptscotch-%{mpi_flavor}-devel
+Requires:       ptscotch-parmetis-%{mpi_flavor}-devel
+Requires:       scalapack-%{mpi_flavor}-devel
 %endif
 
 %description %{?n_pre}devel
@@ -378,28 +155,12 @@ PETSc is a suite of data structures and routines for the scalable
 (parallel) solution of scientific applications modeled by partial
 differential equations.
 
-%{?with_hpc:%{hpc_master_package -a devel}}
-
 %package doc
 Summary:        Documentation for petsc
 Group:          Documentation/HTML
 
 %description doc
 This package contains the documentation for petsc.
-
-%if %{with hpc}
-%package saws
-Summary:        PETsc SAWs infrastructure
-#Requires:      saws
-#Requires:      jshon
-Group:          Productivity/Scientific/Other
-Requires:       %{libname %_vers} = %{version}
-
-%description saws
-This package contains the files to interface with SAWs
-(Scientific Application Web server). SAWs itself is not
-yet supported by %{?is_opensuse:open}SUSE.
-%endif
 
 %prep
 
@@ -419,26 +180,11 @@ find lib/petsc/bin -type f -exec sed -i \
   -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
   \{\} \;
 
-%if 0 && %{without hpc}
-cat > %{_sourcedir}/baselibs.conf  <<EOF
-%{libname %_vers}
-%{name}-devel
-  requires -blas-<targettype>
-  requires -lapack-<targettype>
-  requires " %{libname %_vers}-<targettype> = <version>"
-EOF
-%endif
-
 %build
 
-%if %{without hpc}
 export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
 export PETSC_ARCH=%petsc_arch
 %{?with_mpi:export LD_LIBRARY_PATH=%{p_libdir}}
-%else
-%hpc_setup
-module load phdf5 scalapack openblas
-%endif
 %ifarch ppc64le ppc64 s390 aarch64 x86_64
 export ARCHCFLAGS=-fPIC
 %endif
@@ -456,7 +202,6 @@ python%{python_ver} ./config/configure.py \
   --with-shared-libraries \
   --with-batch=0 \
   --with-yaml=1 \
-%if %{without hpc}
   --with-suitesparse=1 \
   --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
   --with-suitesparse-include=%{_includedir}/suitesparse \
@@ -489,30 +234,18 @@ python%{python_ver} ./config/configure.py \
   --with-hdf5-include=%{p_base}/include \
         || cat configure.log
  %endif
-%else
-  --with-blas-lapack-lib=$OPENBLAS_LIB/libopenblas.so \
-  --with-scalapack=1 \
-  --with-scalapack-dir=$SCALAPACK_DIR \
-  --with-hdf5=1 \
-  --with-hdf5-lib=$HDF5_LIB/libhdf5.so \
-  --with-hdf5-include=$HDF5_INC
-%endif
 
 %make_build
 
 %install
-%if %{without hpc}
 export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
 export PETSC_ARCH=%petsc_arch
-%endif
 
 make install DESTDIR=%{buildroot}
 
 find %{buildroot}%{p_prefix}/share/petsc/examples/src -type f -ipath '*/output/*out' -delete
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/*.log
 rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
-
-%if %{without hpc}
 
 rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.init
 rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.py
@@ -527,7 +260,7 @@ popd
 
 # Module files
 mkdir -p %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}
-cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
+cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_flavor}}
 #%%Module
 proc ModulesHelp { } {
         global dotversion
@@ -541,105 +274,6 @@ setenv PETSC_DIR  %{p_libdir}/petsc/%{version}/%{petsc_arch}
 prepend-path LD_LIBRARY_PATH %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib
 
 EOF
-%else
-# with hpc:
-
-if [ ! -d %{buildroot}%{p_libdir} -a -d %{buildroot}%{p_base}/lib ]
-then
-    mkdir -p %{buildroot}%{p_libdir}
-    mv  %{buildroot}%{p_base}/lib/lib*.so %{buildroot}%{p_base}/lib/lib*.so.* %{buildroot}%{p_libdir}
-    mv  %{buildroot}%{p_base}/lib/pkgconfig  %{buildroot}%{p_libdir}
-fi
-
-for i in update.py \
-    bin/FASTMathInstaller.py \
-    bin/TOPSGenerator.py \
-    bin/petscnagupgrade.py \
-    bin/configVars.py bin/update.py \
-    lib/petsc/conf/reconfigure-arch-linux2-cxx-opt.py \
-    lib/petsc/conf/uninstall.py
-do
-    rm -f %{buildroot}%{p_prefix}/$i
-done
-
-for file in %{hpc_prefix}/lib/petsc/bin/petsc_conf.py \
-    %{hpc_prefix}/lib/petsc/bin/PetscBinaryIO.py \
-    %{hpc_prefix}/lib/petsc/bin/PetscBinaryIOTrajectory.py
-do
-    %{hpc_python_mv_to_sitearch $file}
-done
-
-%{hpc_shebang_prepend_list %{buildroot}%{p_prefix}/lib/petsc/bin/*.py}
-%hpc_shebang_sanitize_scripts %{buildroot}%{p_prefix}/lib/petsc/bin
-%hpc_shebang_sanitize_scripts %{buildroot}%{p_prefix}/lib/petsc
-
-tmp=$(mktemp /tmp/bad-XXXXXX})
-for file in $(find %{buildroot}%{p_prefix} -name "*.py"); do
-    %{hpc_verify_python3 $file} || echo "$file" >> $tmp
-done
-[ -s $tmp ] && { echo "One or more python script not Python 3 compliant!"; cat $tmp; exit 1; }
-rm -f $tmp
-
-python_sitearch_path=%{hpc_python_sitearch_no_singlespec}
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the PETSc library built with the %{compiler_family} compiler"
-puts stderr "toolchain and the %{mpi_family}%{?mpi_vers} MPI stack."
-puts stderr " "
-
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} compiler and %{mpi_family}%{?mpi_vers} MPI"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "Description: %{SUMMARY:0}"
-module-whatis "%{url}"
-
-set     version                     %{version}
-
-# Require phdf5 (and scalapack for gnu compiler families)
-
-if [ expr [ module-info mode load ] || [module-info mode display ] ] {
-    if {  ![is-loaded phdf5]  } {
-        module load phdf5
-    }
-    if { ![is-loaded openblas]  } {
-        module load openblas
-    }
-    if { ![is-loaded scalapack]  } {
-        module load scalapack
-    }
-}
-
-prepend-path    PATH                %{hpc_prefix}/lib/petsc/bin
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-if {[file isdirectory  $python_sitearch_path]} {
-prepend-path    PYTHONPATH          $python_sitearch_path
-}
-
-setenv          %{hpc_upcase %pname}_DIR        %{hpc_prefix}
-if {[file isdirectory  %{hpc_prefix}/lib/petsc/bin]} {
-setenv          %{hpc_upcase %pname}_BIN        %{hpc_prefix}/lib/petsc/bin
-}
-if {[file isdirectory  %{hpc_includedir}]} {
-prepend-path    LIBRARY_PATH        %{hpc_libdir}
-prepend-path    CPATH               %{hpc_includedir}
-prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
-prepend-path    CPLUS_INCLUDE_PATH  %{hpc_includedir}
-prepend-path    INCLUDE                         %{hpc_includedir}
-%hpc_modulefile_add_pkgconfig_path
-
-setenv          %{hpc_upcase %pname}_INC        %{hpc_includedir}
-setenv          %{hpc_upcase %pname}_LIB        %{hpc_libdir}
-}
-EOF
-%endif
-# with/out hpc
 
 # clean up non-include files
 find %{buildroot}%{p_include} -name \*.html  -exec rm {} \;
@@ -667,12 +301,10 @@ chmod a+x $i %{buildroot}%{p_prefix}/lib/petsc/bin/*
 sed -i -e '/^MAKE_/ { /MAKE_NP/ d ; /MAKE_LOAD/ d ; /MAKE_TEST_NP/ d }; /^NPMAX/ d' \
   %{buildroot}%{p_prefix}/lib/petsc/conf/petscvariables
 
-%if %{without hpc}
 # Make pkgconfig file visible to pkg-config
 mkdir -p %{buildroot}%{p_libdir}/pkgconfig
 ln -s %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib/pkgconfig/petsc.pc \
       %{buildroot}%{p_libdir}/pkgconfig/
-%endif
 for d in /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/matlab \
  /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/lib/petsc/bin \
  /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/bin
@@ -692,47 +324,32 @@ done
 %fdupes %{buildroot}%{p_prefix}/share/petsc/examples
 
 ##
-%post -n %{libname %_vers} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -n %{libname %_vers}
+%postun -n %{libname}
 /sbin/ldconfig
-%{?with_hpc:%{hpc_module_delete_if_default}}
 
-%files -n %{libname %_vers}
+%files -n %{libname}
 %dir %{p_prefix}
 %dir %{p_prefix}/lib
 %{p_libdir}/*.so.*
 %{p_prefix}/share
 %exclude %{p_prefix}/share/petsc/examples
 %exclude %{p_prefix}/share/petsc/saws
-%if %{without hpc}
 %dir %{p_libdir}/petsc
 %dir %{p_libdir}/petsc/%{version}
 %{p_prefix}/lib/*.so.*
-%else
-%hpc_dirs
-%hpc_modules_files
-%{dirname:%{hpc_python_sitearch_no_singlespec}}
-%endif
 
 %files %{?n_pre}devel
 %exclude %{p_prefix}/lib/petsc/bin/saws
 %{p_prefix}/include
 %{p_prefix}/lib/petsc
-%{p_prefix}/%{!?with_hpc:lib}%{?with_hpc:%_lib}/pkgconfig
+%{p_prefix}/lib/pkgconfig
 %{p_libdir}/*.so
 %{p_libdir}/pkgconfig/*.pc
-  %if %{without hpc}
 %{p_prefix}/lib/*.so
 %dir %{_datadir}/modules/%{name}-%{petsc_arch}
-%{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_family}%{?mpi_vers}}
-  %endif
+%{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_flavor}}
 %doc %{p_prefix}/share/petsc/examples
-
-%if %{with hpc}
-%files saws
-%{p_prefix}/lib/petsc/bin/saws
-%{p_prefix}/share/petsc/saws
-%endif
 
 %changelog

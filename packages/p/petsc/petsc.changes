@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  1 13:16:39 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Fix issues package naming and install paths introduced during gnu-hpc removal
+
+-------------------------------------------------------------------
+Mon Mar 24 13:17:00 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+
+-------------------------------------------------------------------
 Mon Dec 30 19:41:59 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.22:
