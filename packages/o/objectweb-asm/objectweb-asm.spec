@@ -1,7 +1,7 @@
 #
 # spec file for package objectweb-asm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __requires_exclude java-headless
 Name:           objectweb-asm
-Version:        9.7.1
+Version:        9.8
 Release:        0
 Summary:        Java bytecode manipulation framework
 License:        BSD-3-Clause

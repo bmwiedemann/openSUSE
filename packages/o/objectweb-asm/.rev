@@ -219,4 +219,20 @@
     <comment>9.7.1</comment>
     <requestid>1207482</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c790a696b3a818b2403cd7ca9a39698e</srcmd5>
+    <version>9.8</version>
+    <time>1743698448</time>
+    <user>anag+factory</user>
+    <comment>- Upgrade to version 9.8
+  * new Opcodes.V25 constant for Java 25
+  * bug fixes
+    + Fix one more copy operation on DUP2
+    + 318015: Valid bytecode for jvm, but failed to pass the
+      CheckClassAdapter.
+    + `ASMifier` should print calls to `valueOf` instead of
+      deprecated constructors of primitive wrappers
+</comment>
+    <requestid>1266402</requestid>
+  </revision>
 </revisionlist>
