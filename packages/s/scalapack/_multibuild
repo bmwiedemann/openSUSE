@@ -2,8 +2,4 @@
   <package>openmpi4</package>
   <package>openmpi5</package>
   <package>mvapich2</package>
-  <package>gnu-openmpi4-hpc</package>
-  <package>gnu-openmpi5-hpc</package>
-  <package>gnu-mvapich2-hpc</package>
-  <package>gnu-mpich-hpc</package>
 </multibuild>

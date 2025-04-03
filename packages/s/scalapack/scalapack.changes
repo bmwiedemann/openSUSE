@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:19:07 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support of gnu-hpc build flavours (bsc#1239982)
+- openmpi5 is not available on 32b systems
+- Switch default openmpi to openmpi4 to openmpi5
+
+-------------------------------------------------------------------
 Wed Sep 18 10:52:41 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.0:
