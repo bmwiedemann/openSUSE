@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:11:58 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Sun Mar 16 15:24:18 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build failure of depending packages, add

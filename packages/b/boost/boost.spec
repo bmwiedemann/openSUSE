@@ -21,7 +21,6 @@
 
 %define ver 1.87.0
 %define _ver 1_87_0
-%define package_version 1_87_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -56,7 +55,6 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "base"
 %define build_base 1
 %define name_suffix -base
-%bcond_with hpc
 %bcond_with python3
 %bcond_with mpi
 %endif
@@ -71,130 +69,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 
-%if "%{flavor}" == "gnu-hpc"
-%define build_base 1
-%define compiler_family gnu
-%undefine c_f_ver
-%bcond_with mpi
-%bcond_without hpc
-%endif
-
-%if "%{flavor}" == "gnu-openmpi4-hpc"
-%{?DisOMPI4}
-%define build_base 0
-%define mpi_vers 4
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu-openmpi5-hpc"
-%{?DisOMPI5}
-%define build_base 0
-%define mpi_vers 5
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu-mvapich2-hpc"
-%define build_base 0
-%define compiler_family gnu
-%define mpi_flavor mvapich2
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu-mpich-hpc"
-%define build_base 0
-%define compiler_family gnu
-%define mpi_flavor mpich
-%undefine c_f_ver
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi4-hpc"
-%{?DisOMPI4}
-%define build_base 0
-%define mpi_vers 4
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu10-openmpi5-hpc"
-%{?DisOMPI5}
-%define build_base 0
-%define mpi_vers 5
-%define compiler_family gnu
-%define mpi_flavor openmpi
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu10-mvapich2-hpc"
-%define build_base 0
-%define compiler_family gnu
-%define mpi_flavor mvapich2
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if "%{flavor}" == "gnu10-mpich-hpc"
-%define build_base 0
-%define compiler_family gnu
-%define mpi_flavor mpich
-%define c_f_ver 10
-%bcond_without hpc
-%bcond_without mpi
-%bcond_without python3
-%endif
-
-%if 0%{?with_hpc}
-%if %{with ringdisabled}
-ExclusiveArch:  do-not-build
-%else
-ExcludeArch:    s390x %{ix86} ppc64 ppc64le %{arm}
-%endif
-%endif
-
-%if %{with hpc}
-# needed by the hpc tools
-%{hpc_init -c %compiler_family %{?with_mpi:-m %mpi_flavor} %{?c_f_ver:-v %{c_f_ver}} %{?mpi_vers:-V %{mpi_vers}} %{?ext:-e %{ext}}}
-%define package_prefix %{hpc_prefix}
-%define package_libdir %{hpc_libdir}
-%define package_bindir %{hpc_bindir}
-%define package_includedir %{hpc_includedir}
-%define package_datadir %{hpc_datadir}
-%define base_name %{hpc_package_name %_ver}
-%define package_name %{hpc_package_name %_ver}
-%define package_python3_sitearch %{_hpc_python_sysconfig_path /usr/bin/python3 platlib %{?hpc_prefix}}
-%else
-%define package_prefix %{_prefix}
-%define package_bindir %{_bindir}
-%define package_libdir %{_libdir}
-%define package_includedir %{_includedir}
-%define package_datadir %{_datadir}
 %define base_name boost%{?name_suffix}
-%define package_python3_sitearch %python3_sitearch
-%endif
 
 Name:           %{base_name}
 Version:        1.87.0
@@ -253,20 +128,8 @@ BuildRequires:  libxslt-tools
 BuildRequires:  texlive-latex
 %endif
 %endif
-%if %{with hpc}
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel
-BuildRequires:  lua-lmod
-BuildRequires:  python3
-BuildRequires:  suse-hpc
-%hpc_requires
-%if %{with mpi}
-BuildRequires:  %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc-macros-devel
-Requires:       %{mpi_flavor}%{?mpi_vers}-%{compiler_family}%{?c_f_ver}-hpc
-%endif
-%else
 %if %{with mpi}
 BuildRequires:  openmpi-macros-devel
-%endif
 %endif
 
 %description
@@ -308,9 +171,6 @@ This package contains the license boost is provided under.
 %package -n     %{package_name}-devel
 Summary:        Development package for Boost C++
 Group:          Development/Libraries/C and C++
-%if %{with hpc}
-Requires:       %{package_name}
-%else
 Requires:       libboost_atomic%{library_version}-devel
 Requires:       libboost_chrono%{library_version}-devel
 Requires:       libboost_container%{library_version}-devel
@@ -345,7 +205,6 @@ Requires:       libboost_mpi%{library_version}-devel
 %endif
 %if %{with python3}
 Requires:       libboost_python-py3-%{library_version}-devel
-%endif
 %endif
 
 %description -n %{package_name}-devel
@@ -1250,14 +1109,6 @@ QuickBook is a WikiWiki style documentation tool geared towards C++
 documentation using simple rules and markup for simple formatting
 tasks.
 
-%if %{with hpc}
-%{hpc_master_package}
-%{hpc_master_package devel}
-%if %{with python3}
-%{hpc_master_package python3}
-%endif
-%endif
-
 %prep
 %setup -q -n boost_%{library_version} -b 3
 #everything in the tarball has the executable flag set ...
@@ -1319,11 +1170,7 @@ EOF
 
 %if %{with mpi}
 # Set PATH, MANPATH and LD_LIBRARY_PATH for mpi
-%if %{with hpc}
-module load gnu %mpi_flavor
-%else
 %setup_openmpi
-%endif
 %endif
 
 # Need specific Boost Jam config files.
@@ -1339,8 +1186,8 @@ EOF
 
 # bootstrap b2
 ./bootstrap.sh \
-    --prefix=%{package_prefix} --exec-prefix=%{package_bindir} \
-    --libdir=%{package_libdir} --includedir=%{package_includedir} \
+    --prefix=%{_prefix} --exec-prefix=%{_bindir} \
+    --libdir=%{_libdir} --includedir=%{_includedir} \
     --with-toolset=gcc
 
 # Read shared build instructions
@@ -1417,7 +1264,6 @@ cp %{SOURCE101} .
 chmod +x symbol_diff.sh
 
 # Build documentation
-%if ! %{with hpc}
 %if %{with build_quickbook}
 pushd tools/quickbook
 ../../b2 --debug-configuration --user-config=../../user-config.jam --v2 dist-bin %{?_smp_mflags}
@@ -1427,7 +1273,6 @@ popd
 %if %{with build_docs}
 cd doc
 ./b2 --debug-configuration --user-config=../user-config.jam --v2 man %{?_smp_mflags}
-%endif
 %endif
 
 %endif
@@ -1441,11 +1286,7 @@ cd doc
 
 %if %{with mpi}
 # Set PATH, MANPATH and LD_LIBRARY_PATH for mpi
-%if %{with hpc}
-module load gnu %mpi_flavor
-%else
 %setup_openmpi
-%endif
 %endif
 
 %if %{with python3}
@@ -1454,8 +1295,8 @@ module load gnu %mpi_flavor
     boost.stacktrace.from_exception=off \
     --build-type=minimal --build-dir=./python3-build \
     --python-buildid=py3 \
-    --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
-    --libdir=%{buildroot}%{package_libdir} --includedir=%{buildroot}%{package_includedir} \
+    --prefix=%{buildroot}%{_prefix} --exec-prefix=%{buildroot}%{_bindir} \
+    --libdir=%{buildroot}%{_libdir} --includedir=%{buildroot}%{_includedir} \
     --stagedir=./python3-stage %{?_smp_mflags} \
     $PY_LIBRARIES_FLAGS \
     threading=multi link=shared runtime-link=shared install
@@ -1468,38 +1309,35 @@ module load gnu %mpi_flavor
      --debug-configuration \
      boost.stacktrace.from_exception=off \
      --build-type=minimal --build-dir=./build --stagedir=./stage \
-     --prefix=%{buildroot}%{package_prefix} --exec-prefix=%{buildroot}%{package_bindir} \
-     --libdir=%{buildroot}%{package_libdir} --includedir=%{buildroot}%{package_includedir} \
+     --prefix=%{buildroot}%{_prefix} --exec-prefix=%{buildroot}%{_bindir} \
+     --libdir=%{buildroot}%{_libdir} --includedir=%{buildroot}%{_includedir} \
      --user-config=./user-config.jam \
      $LIBRARIES_FLAGS \
      threading=multi link=shared runtime-link=shared install
 
 # No python dependencies in the main tree
 
-! $(ldd %{buildroot}%{package_libdir}/*.so* | grep python\\.)
+! $(ldd %{buildroot}%{_libdir}/*.so* | grep python\\.)
 
 %if ! %{build_base}
 
 %if %{with python3}
-! $(ldd %{buildroot}%{package_libdir}/*.so* | grep python3-\\.)
-ln -s libboost_python-py3.so %{buildroot}%{package_libdir}/libboost_python3.so
+! $(ldd %{buildroot}%{_libdir}/*.so* | grep python3-\\.)
+ln -s libboost_python-py3.so %{buildroot}%{_libdir}/libboost_python3.so
 %endif
 
 %if %{with python3} && %{with mpi}
-mkdir -p %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
-install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{package_python3_sitearch}/boost/parallel/mpi/
-install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost/parallel
-install -m 0644 %{SOURCE11} %{buildroot}%{package_python3_sitearch}/boost
+mkdir -p %{buildroot}%{python3_sitearch}/boost/parallel/mpi/
+install -m 0644 libs/mpi/build/__init__.py %{buildroot}%{python3_sitearch}/boost/parallel/mpi/
+install -m 0644 %{SOURCE11} %{buildroot}%{python3_sitearch}/boost/parallel
+install -m 0644 %{SOURCE11} %{buildroot}%{python3_sitearch}/boost
 # Boost 1.87 packages a python cmake file in both the mpi-python dir and the mpi directory.
 # It should not be in that second one
-rm -f %{buildroot}%{package_libdir}/cmake/boost_mpi-%{version}/libboost_mpi-variant-shared-py3*.cmake
-%if ! %{with hpc}
-mv %{buildroot}%{_libdir}/boost-python3.*/mpi.%{py3_soflags}.so %{buildroot}%{package_python3_sitearch}/mpi.%{py3_soflags}.so
+rm -f %{buildroot}%{_libdir}/cmake/boost_mpi-%{version}/libboost_mpi-variant-shared-py3*.cmake
+mv %{buildroot}%{_libdir}/boost-python3.*/mpi.%{py3_soflags}.so %{buildroot}%{python3_sitearch}/mpi.%{py3_soflags}.so
 rmdir %{buildroot}%{_libdir}/boost-python3.*
 %endif
-%endif
 
-%if ! %{with hpc}
 #install doc files
 mkdir -p %{buildroot}%{my_docdir}
 %if %{with boost_devel}
@@ -1509,113 +1347,71 @@ find libs/ -name \*.htm\* -o -name \*.css -o -name \*.js | xargs dos2unix
 find . -name \*.htm\* -o -name \*.gif -o -name \*.css -o -name \*.jpg -o -name \*.png -o -name \*.ico | \
 	tar --files-from=%{SOURCE4} -cf - --files-from=- | tar -C %{buildroot}%{my_docdir} -xf -
 rm -rf %{buildroot}%{my_docdir}/boost
-#ln -s %%{package_includedir}/boost %%{buildroot}%%{my_docdir}
+#ln -s %%{_includedir}/boost %%{buildroot}%%{my_docdir}
 #ln -s ../LICENSE_1_0.txt %%{buildroot}%%{my_docdir}/libs
 find %{buildroot}%{my_docdir} -name \*.py -exec chmod -x {} +
 chmod -x ../boost_1_56_pdf/*.pdf
 
 %if %{with build_quickbook}
-mkdir -p %{buildroot}%{package_bindir}
-install -m 0755 dist/bin/quickbook %{buildroot}%{package_bindir}/quickbook
-%endif
+mkdir -p %{buildroot}%{_bindir}
+install -m 0755 dist/bin/quickbook %{buildroot}%{_bindir}/quickbook
 %endif
 %endif
 
 %if %{build_base}
 
-%if %{without hpc}
-mkdir -p %{buildroot}%{package_bindir}
-install -m 755 b2 %{buildroot}%{package_bindir}/bjam
-ln -s bjam %{buildroot}%{package_bindir}/jam
+mkdir -p %{buildroot}%{_bindir}
+install -m 755 b2 %{buildroot}%{_bindir}/bjam
+ln -s bjam %{buildroot}%{_bindir}/jam
 
 # install boost-build jam files
-mkdir -p %{buildroot}%{package_datadir}/boost-build/
-cp -r tools/build/src/* %{buildroot}%{package_datadir}/boost-build/
-rm -r %{buildroot}%{package_datadir}/boost-build/engine
-find %{buildroot}%{package_datadir}/boost-build/ -type f \! -name \*.py \! -name \*.jam -delete
-find %{buildroot}%{package_datadir}/boost-build/ -type f -exec chmod 644 {} +
-%endif
+mkdir -p %{buildroot}%{_datadir}/boost-build/
+cp -r tools/build/src/* %{buildroot}%{_datadir}/boost-build/
+rm -r %{buildroot}%{_datadir}/boost-build/engine
+find %{buildroot}%{_datadir}/boost-build/ -type f \! -name \*.py \! -name \*.jam -delete
+find %{buildroot}%{_datadir}/boost-build/ -type f -exec chmod 644 {} +
 
-rm -r %{buildroot}%{package_datadir}/boost_predef
+rm -r %{buildroot}%{_datadir}/boost_predef
 
 # Remove exception library, but only if the symbols are not
 # actually used. For now, the only symbol that is linked is
 # should never be used as it's only available on Windows. So,
 # verify that here.
-objdump -Ctj .text -Ctj .text %{buildroot}%{package_libdir}/libboost_exception.so | \
+objdump -Ctj .text -Ctj .text %{buildroot}%{_libdir}/libboost_exception.so | \
   grep '^[0-9a-f]\+[[:space:]]\+g[[:space:]]\+F' | \
   sed -e 's#[0-9a-f]\+[[:space:]]\+g[[:space:]]\+F[[:space:]]\+\.text[[:space:]]\+[0-9a-f]\+[[:space:]]\+##' | \
   diff %{SOURCE10} - || echo "WARNING: libexception symbol change?"
-rm %{buildroot}%{package_libdir}/libboost_exception.so
-rm %{buildroot}%{package_libdir}/libboost_exception.so.%{version}
+rm %{buildroot}%{_libdir}/libboost_exception.so
+rm %{buildroot}%{_libdir}/libboost_exception.so.%{version}
 
 # not used or duplicated in boost-extra flavour
-rm -r %{buildroot}%{package_libdir}/cmake/boost_exception-*
-rm -r %{buildroot}%{package_libdir}/cmake/boost_graph_parallel-%{version}
+rm -r %{buildroot}%{_libdir}/cmake/boost_exception-*
+rm -r %{buildroot}%{_libdir}/cmake/boost_graph_parallel-%{version}
 
-%fdupes %{buildroot}%{package_includedir}/boost
+%fdupes %{buildroot}%{_includedir}/boost
 mkdir -p %{buildroot}%{my_docdir}
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 120200 && !0%{?is_opensuse}
 mkdir -p %{buildroot}%{_defaultlicensedir}
 %endif
 %else
 # duplicate from boost-base flavour
-rm %{buildroot}%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
-rm -r %{buildroot}%{package_libdir}/cmake/Boost-%{version}
-rm -r %{buildroot}%{package_libdir}/cmake/boost_headers-%{version}
-rm -rf %{buildroot}%{package_libdir}/cmake/boost_{w,}serialization-%{version}
-rm -r %{buildroot}%{package_libdir}/cmake/boost_container-%{version}
-rm -f %{buildroot}%{package_libdir}/libboost_container.so*
-rm -r %{buildroot}%{package_libdir}/cmake/boost_graph-%{version}
-rm -f %{buildroot}%{package_libdir}/libboost_graph.so*
+rm %{buildroot}%{_libdir}/cmake/BoostDetectToolset-%{version}.cmake
+rm -r %{buildroot}%{_libdir}/cmake/Boost-%{version}
+rm -r %{buildroot}%{_libdir}/cmake/boost_headers-%{version}
+rm -rf %{buildroot}%{_libdir}/cmake/boost_{w,}serialization-%{version}
+rm -r %{buildroot}%{_libdir}/cmake/boost_container-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_container.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_graph-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_graph.so*
 # If no library was needed to be built, system was built to avoid building everything.
 # If needs to be removed from the extra package in that case
-rm -Rf %{buildroot}%{package_libdir}/cmake/boost_system-%{version}
-rm -Rf %{buildroot}%{package_libdir}/libboost_system.so*
+rm -Rf %{buildroot}%{_libdir}/cmake/boost_system-%{version}
+rm -Rf %{buildroot}%{_libdir}/libboost_system.so*
 
-rm -r %{buildroot}%{package_includedir}/boost
-rm -f %{buildroot}%{package_libdir}/libboost_{w,}serialization*
-rmdir --ignore-fail-on-non-empty %{buildroot}%{package_libdir}
+rm -r %{buildroot}%{_includedir}/boost
+rm -f %{buildroot}%{_libdir}/libboost_{w,}serialization*
+rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %fdupes %{buildroot}%{my_docdir}
-%endif
-
-%if %{with hpc}
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} toolchain."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} toolchain"
-module-whatis "Version: %{version}"
-module-whatis "Category: runtime library"
-module-whatis "Description: %{summary:0}"
-module-whatis "URL: %{url}"
-
-set     version                     %{version}
-
-prepend-path    PATH                %{hpc_bindir}
-prepend-path    MANPATH             %{hpc_mandir}
-prepend-path    LD_LIBRARY_PATH     %{hpc_libdir}
-setenv          BOOST_DIR           %{hpc_path}
-setenv          BOOST_DIR           %{hpc_libdir}
-setenv          BOOST_INC           %{hpc_includedir}
-if ([file isdirectory  %{hpc_includedir}]) {
-prepend-path    CPATH               %{hpc_includedir}
-prepend-path    C_INCLUDE_PATH      %{hpc_includedir}
-prepend-path    CPLUS_INCLUDE_PATH  %{hpc_includedir}
-}
-if ([file isdirectory  %{package_python3_sitearch}]) {
-prepend-path    PYTHONPATH          %{package_python3_sitearch}
-}
-
-%{hpc_modulefile_add_pkgconfig_path}
-
-EOF
 %endif
 
 %if %{build_base}
@@ -1666,388 +1462,363 @@ EOF
 %endif
 
 %endif
-%if %{with hpc}
-%ldconfig_scriptlets -n %base_name
-%endif
 
-%if %{with hpc}
-
-%files
-%hpc_modules_files
-%{!?hpc_compiler_family:%dir %{hpc_install_base}}
-%dir %{hpc_install_path_base}
-%dir %{hpc_install_path}
-%package_libdir
-%exclude %package_libdir/*.so
-%if %{with python3}
-%exclude %package_python3_sitearch
-%endif
-
-%files -n %{package_name}-devel
-%package_includedir
-%package_libdir/*.so
-%if %{with python3}
-%files -n %{package_name}-python3
-%package_python3_sitearch
-%endif
-
-%else
 %if %{build_base}
 %files -n boost%{library_version}-jam
-%{package_bindir}/bjam
-%{package_bindir}/jam
-%dir %{package_datadir}/boost-build
-%{package_datadir}/boost-build/*
+%{_bindir}/bjam
+%{_bindir}/jam
+%dir %{_datadir}/boost-build
+%{_datadir}/boost-build/*
 
 %files -n libboost_atomic%{library_version}
-%{package_libdir}/libboost_atomic.so.%{version}
+%{_libdir}/libboost_atomic.so.%{version}
 
 %files -n libboost_atomic%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_atomic-%{version}
-%{package_libdir}/cmake/boost_atomic-%{version}/*
-%{package_libdir}/libboost_atomic.so
+%dir %{_libdir}/cmake/boost_atomic-%{version}
+%{_libdir}/cmake/boost_atomic-%{version}/*
+%{_libdir}/libboost_atomic.so
 
 %files -n libboost_container%{library_version}
-%{package_libdir}/libboost_container.so.%{version}
+%{_libdir}/libboost_container.so.%{version}
 
 %files -n libboost_container%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_container-%{version}
-%{package_libdir}/cmake/boost_container-%{version}/*
-%{package_libdir}/libboost_container.so
+%dir %{_libdir}/cmake/boost_container-%{version}
+%{_libdir}/cmake/boost_container-%{version}/*
+%{_libdir}/libboost_container.so
 
 %files -n libboost_context%{library_version}
-%{package_libdir}/libboost_context.so.%{version}
+%{_libdir}/libboost_context.so.%{version}
 
 %files -n libboost_context%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_context-%{version}
-%{package_libdir}/cmake/boost_context-%{version}/*
-%{package_libdir}/libboost_context.so
+%dir %{_libdir}/cmake/boost_context-%{version}
+%{_libdir}/cmake/boost_context-%{version}/*
+%{_libdir}/libboost_context.so
 
 %files -n libboost_coroutine%{library_version}
-%{package_libdir}/libboost_coroutine.so.%{version}
+%{_libdir}/libboost_coroutine.so.%{version}
 
 %files -n libboost_coroutine%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_coroutine-%{version}
-%{package_libdir}/cmake/boost_coroutine-%{version}/*
-%{package_libdir}/libboost_coroutine.so
+%dir %{_libdir}/cmake/boost_coroutine-%{version}
+%{_libdir}/cmake/boost_coroutine-%{version}/*
+%{_libdir}/libboost_coroutine.so
 
 %files -n libboost_contract%{library_version}
-%{package_libdir}/libboost_contract.so.%{version}
+%{_libdir}/libboost_contract.so.%{version}
 
 %files -n libboost_contract%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_contract-%{version}
-%{package_libdir}/cmake/boost_contract-%{version}/*
-%{package_libdir}/libboost_contract.so
+%dir %{_libdir}/cmake/boost_contract-%{version}
+%{_libdir}/cmake/boost_contract-%{version}/*
+%{_libdir}/libboost_contract.so
 
 %files -n libboost_date_time%{library_version}
-%{package_libdir}/libboost_date_time.so.%{version}
+%{_libdir}/libboost_date_time.so.%{version}
 
 %files -n libboost_date_time%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_date_time-%{version}
-%{package_libdir}/cmake/boost_date_time-%{version}/*
-%{package_libdir}/libboost_date_time.so
+%dir %{_libdir}/cmake/boost_date_time-%{version}
+%{_libdir}/cmake/boost_date_time-%{version}/*
+%{_libdir}/libboost_date_time.so
 
 %files -n libboost_fiber%{library_version}
-%{package_libdir}/libboost_fiber.so.%{version}
+%{_libdir}/libboost_fiber.so.%{version}
 
 %files -n libboost_fiber%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_fiber-%{version}
-%{package_libdir}/cmake/boost_fiber-%{version}/*
-%{package_libdir}/libboost_fiber.so
+%dir %{_libdir}/cmake/boost_fiber-%{version}
+%{_libdir}/cmake/boost_fiber-%{version}/*
+%{_libdir}/libboost_fiber.so
 
 %files -n libboost_filesystem%{library_version}
-%{package_libdir}/libboost_filesystem.so.%{version}
+%{_libdir}/libboost_filesystem.so.%{version}
 
 %files -n libboost_filesystem%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_filesystem-%{version}
-%{package_libdir}/cmake/boost_filesystem-%{version}/*
-%{package_libdir}/libboost_filesystem.so
+%dir %{_libdir}/cmake/boost_filesystem-%{version}
+%{_libdir}/cmake/boost_filesystem-%{version}/*
+%{_libdir}/libboost_filesystem.so
 
 %files -n libboost_graph%{library_version}
-%{package_libdir}/libboost_graph.so.%{version}
+%{_libdir}/libboost_graph.so.%{version}
 
 %files -n libboost_graph%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_graph-%{version}
-%{package_libdir}/cmake/boost_graph-%{version}/*
-%{package_libdir}/libboost_graph.so
+%dir %{_libdir}/cmake/boost_graph-%{version}
+%{_libdir}/cmake/boost_graph-%{version}/*
+%{_libdir}/libboost_graph.so
 
 %files -n libboost_iostreams%{library_version}
-%{package_libdir}/libboost_iostreams.so.%{version}
+%{_libdir}/libboost_iostreams.so.%{version}
 
 %files -n libboost_iostreams%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_iostreams-%{version}
-%{package_libdir}/cmake/boost_iostreams-%{version}/*
-%{package_libdir}/libboost_iostreams.so
+%dir %{_libdir}/cmake/boost_iostreams-%{version}
+%{_libdir}/cmake/boost_iostreams-%{version}/*
+%{_libdir}/libboost_iostreams.so
 
 %files -n libboost_log%{library_version}
-%{package_libdir}/libboost_log.so.%{version}
-%{package_libdir}/libboost_log_setup.so.%{version}
+%{_libdir}/libboost_log.so.%{version}
+%{_libdir}/libboost_log_setup.so.%{version}
 
 %files -n libboost_log%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_log-%{version}
-%dir %{package_libdir}/cmake/boost_log_setup-%{version}
-%{package_libdir}/cmake/boost_log-%{version}/*
-%{package_libdir}/cmake/boost_log_setup-%{version}/*
-%{package_libdir}/libboost_log.so
-%{package_libdir}/libboost_log_setup.so
+%dir %{_libdir}/cmake/boost_log-%{version}
+%dir %{_libdir}/cmake/boost_log_setup-%{version}
+%{_libdir}/cmake/boost_log-%{version}/*
+%{_libdir}/cmake/boost_log_setup-%{version}/*
+%{_libdir}/libboost_log.so
+%{_libdir}/libboost_log_setup.so
 
 %files -n libboost_math%{library_version}
-%{package_libdir}/libboost_math_c99f.so.%{version}
-%{package_libdir}/libboost_math_c99.so.%{version}
-%{package_libdir}/libboost_math_tr1f.so.%{version}
-%{package_libdir}/libboost_math_tr1.so.%{version}
+%{_libdir}/libboost_math_c99f.so.%{version}
+%{_libdir}/libboost_math_c99.so.%{version}
+%{_libdir}/libboost_math_tr1f.so.%{version}
+%{_libdir}/libboost_math_tr1.so.%{version}
 %ifnarch ppc ppc64
-%{package_libdir}/libboost_math_c99l.so.%{version}
-%{package_libdir}/libboost_math_tr1l.so.%{version}
+%{_libdir}/libboost_math_c99l.so.%{version}
+%{_libdir}/libboost_math_tr1l.so.%{version}
 %endif
 
 %files -n libboost_math%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_math-%{version}
-%dir %{package_libdir}/cmake/boost_math_c99*-%{version}
-%dir %{package_libdir}/cmake/boost_math_tr1*-%{version}
-%{package_libdir}/cmake/boost_math-%{version}/*
-%{package_libdir}/cmake/boost_math_c99*-%{version}/*
-%{package_libdir}/cmake/boost_math_tr1*-%{version}/*
-%{package_libdir}/libboost_math_c99f.so
-%{package_libdir}/libboost_math_c99.so
-%{package_libdir}/libboost_math_tr1f.so
-%{package_libdir}/libboost_math_tr1.so
+%dir %{_libdir}/cmake/boost_math-%{version}
+%dir %{_libdir}/cmake/boost_math_c99*-%{version}
+%dir %{_libdir}/cmake/boost_math_tr1*-%{version}
+%{_libdir}/cmake/boost_math-%{version}/*
+%{_libdir}/cmake/boost_math_c99*-%{version}/*
+%{_libdir}/cmake/boost_math_tr1*-%{version}/*
+%{_libdir}/libboost_math_c99f.so
+%{_libdir}/libboost_math_c99.so
+%{_libdir}/libboost_math_tr1f.so
+%{_libdir}/libboost_math_tr1.so
 %ifnarch ppc ppc64
-%{package_libdir}/libboost_math_c99l.so
-%{package_libdir}/libboost_math_tr1l.so
+%{_libdir}/libboost_math_c99l.so
+%{_libdir}/libboost_math_tr1l.so
 %endif
 
 %files -n libboost_nowide%{library_version}
-%{package_libdir}/libboost_nowide.so.%{version}
+%{_libdir}/libboost_nowide.so.%{version}
 
 %files -n libboost_nowide%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_nowide-%{version}
-%{package_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config.cmake
-%{package_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config-version.cmake
-%{package_libdir}/cmake/boost_nowide-%{version}/libboost_nowide-variant-shared.cmake
-%{package_libdir}/libboost_nowide.so
+%dir %{_libdir}/cmake/boost_nowide-%{version}
+%{_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config.cmake
+%{_libdir}/cmake/boost_nowide-%{version}/boost_nowide-config-version.cmake
+%{_libdir}/cmake/boost_nowide-%{version}/libboost_nowide-variant-shared.cmake
+%{_libdir}/libboost_nowide.so
 
 %files -n libboost_test%{library_version}
-%{package_libdir}/libboost_prg_exec_monitor.so.%{version}
-%{package_libdir}/libboost_test_exec_monitor.so.%{version}
-%{package_libdir}/libboost_unit_test_framework.so.%{version}
+%{_libdir}/libboost_prg_exec_monitor.so.%{version}
+%{_libdir}/libboost_test_exec_monitor.so.%{version}
+%{_libdir}/libboost_unit_test_framework.so.%{version}
 
 %files -n libboost_test%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_prg_exec_monitor-%{version}
-%dir %{package_libdir}/cmake/boost_test_exec_monitor-%{version}
-%dir %{package_libdir}/cmake/boost_unit_test_framework-%{version}
-%{package_libdir}/cmake/boost_prg_exec_monitor-%{version}/*
-%{package_libdir}/cmake/boost_test_exec_monitor-%{version}/*
-%{package_libdir}/cmake/boost_unit_test_framework-%{version}/*
-%{package_libdir}/libboost_prg_exec_monitor.so
-%{package_libdir}/libboost_test_exec_monitor.so
-%{package_libdir}/libboost_unit_test_framework.so
+%dir %{_libdir}/cmake/boost_prg_exec_monitor-%{version}
+%dir %{_libdir}/cmake/boost_test_exec_monitor-%{version}
+%dir %{_libdir}/cmake/boost_unit_test_framework-%{version}
+%{_libdir}/cmake/boost_prg_exec_monitor-%{version}/*
+%{_libdir}/cmake/boost_test_exec_monitor-%{version}/*
+%{_libdir}/cmake/boost_unit_test_framework-%{version}/*
+%{_libdir}/libboost_prg_exec_monitor.so
+%{_libdir}/libboost_test_exec_monitor.so
+%{_libdir}/libboost_unit_test_framework.so
 
 %files -n libboost_process%{library_version}
-%{package_libdir}/libboost_process.so.%{version}
+%{_libdir}/libboost_process.so.%{version}
 
 %files -n libboost_process%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_process-%{version}
-%{package_libdir}/cmake/boost_process-%{version}/*
-%{package_libdir}/libboost_process.so
+%dir %{_libdir}/cmake/boost_process-%{version}
+%{_libdir}/cmake/boost_process-%{version}/*
+%{_libdir}/libboost_process.so
 
 %files -n libboost_program_options%{library_version}
-%{package_libdir}/libboost_program_options.so.%{version}
+%{_libdir}/libboost_program_options.so.%{version}
 
 %files -n libboost_program_options%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_program_options-%{version}
-%{package_libdir}/cmake/boost_program_options-%{version}/*
-%{package_libdir}/libboost_program_options.so
+%dir %{_libdir}/cmake/boost_program_options-%{version}
+%{_libdir}/cmake/boost_program_options-%{version}/*
+%{_libdir}/libboost_program_options.so
 %endif
 
 %if ! %{build_base}
 
 %if %{with mpi}
 %files -n libboost_mpi%{library_version}
-%{package_libdir}/libboost_mpi.so.1*
+%{_libdir}/libboost_mpi.so.1*
 
 %files -n libboost_mpi%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/boost_mpi-%{version}
-%{package_libdir}/cmake/boost_mpi-%{version}/*
-%{package_libdir}/libboost_mpi.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/boost_mpi-%{version}
+%{_libdir}/cmake/boost_mpi-%{version}/*
+%{_libdir}/libboost_mpi.so
 
 %files -n libboost_graph_parallel%{library_version}
-%{package_libdir}/libboost_graph_parallel.so.1*
+%{_libdir}/libboost_graph_parallel.so.1*
 
 %files -n libboost_graph_parallel%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/boost_graph_parallel-%{version}
-%{package_libdir}/cmake/boost_graph_parallel-%{version}/*
-%{package_libdir}/libboost_graph_parallel.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/boost_graph_parallel-%{version}
+%{_libdir}/cmake/boost_graph_parallel-%{version}/*
+%{_libdir}/libboost_graph_parallel.so
 
 %if %{with python3}
 %files -n libboost_mpi_python-py3-%{library_version}
-%{package_libdir}/libboost_mpi_python-py3.so.%{version}
+%{_libdir}/libboost_mpi_python-py3.so.%{version}
 
 %files -n libboost_mpi_python-py3-%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_mpi_python-%{version}
-%{package_libdir}/cmake/boost_mpi_python-%{version}/*
+%dir %{_libdir}/cmake/boost_mpi_python-%{version}
+%{_libdir}/cmake/boost_mpi_python-%{version}/*
 %endif
-%{package_libdir}/libboost_mpi_python-py3.so
+%{_libdir}/libboost_mpi_python-py3.so
 
 %files -n python3-boost_parallel_mpi%{library_version}
-%dir %{package_python3_sitearch}/boost
-%dir %{package_python3_sitearch}/boost/parallel
-%dir %{package_python3_sitearch}/boost/parallel/mpi
-%{package_python3_sitearch}/boost/__init__.py
-%{package_python3_sitearch}/boost/parallel/__init__.py
-%{package_python3_sitearch}/boost/parallel/mpi/__init__.py
-%{package_python3_sitearch}/mpi.%{py3_soflags}.so
+%dir %{python3_sitearch}/boost
+%dir %{python3_sitearch}/boost/parallel
+%dir %{python3_sitearch}/boost/parallel/mpi
+%{python3_sitearch}/boost/__init__.py
+%{python3_sitearch}/boost/parallel/__init__.py
+%{python3_sitearch}/boost/parallel/mpi/__init__.py
+%{python3_sitearch}/mpi.%{py3_soflags}.so
 %endif
 
 %if %{with python3}
 %files -n libboost_python-py3-%{library_version}
-%{package_libdir}/libboost_python-py3.so.1*
+%{_libdir}/libboost_python-py3.so.1*
 
 %files -n libboost_python-py3-%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/boost_python-%{version}
-%{package_libdir}/cmake/boost_python-%{version}/*
-%{package_libdir}/libboost_python3.so
-%{package_libdir}/libboost_python-py3.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/boost_python-%{version}
+%{_libdir}/cmake/boost_python-%{version}/*
+%{_libdir}/libboost_python3.so
+%{_libdir}/libboost_python-py3.so
 
 %files -n libboost_numpy-py3-%{library_version}
-%{package_libdir}/libboost_numpy-py3.so.1*
+%{_libdir}/libboost_numpy-py3.so.1*
 
 %files -n libboost_numpy-py3-%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/boost_numpy-%{version}
-%{package_libdir}/cmake/boost_numpy-%{version}/*
-%{package_libdir}/libboost_numpy-py3.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/boost_numpy-%{version}
+%{_libdir}/cmake/boost_numpy-%{version}/*
+%{_libdir}/libboost_numpy-py3.so
 
 %endif
 %endif
 
 %if %{build_base}
 %files -n libboost_serialization%{library_version}
-%{package_libdir}/libboost_serialization.so.%{version}
-%{package_libdir}/libboost_wserialization.so.%{version}
+%{_libdir}/libboost_serialization.so.%{version}
+%{_libdir}/libboost_wserialization.so.%{version}
 
 %files -n libboost_serialization%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_serialization-%{version}
-%dir %{package_libdir}/cmake/boost_wserialization-%{version}
-%{package_libdir}/cmake/boost_serialization-%{version}/*
-%{package_libdir}/cmake/boost_wserialization-%{version}/*
-%{package_libdir}/libboost_serialization.so
-%{package_libdir}/libboost_wserialization.so
+%dir %{_libdir}/cmake/boost_serialization-%{version}
+%dir %{_libdir}/cmake/boost_wserialization-%{version}
+%{_libdir}/cmake/boost_serialization-%{version}/*
+%{_libdir}/cmake/boost_wserialization-%{version}/*
+%{_libdir}/libboost_serialization.so
+%{_libdir}/libboost_wserialization.so
 
 %files -n libboost_stacktrace%{library_version}
-%{package_libdir}/libboost_stacktrace_addr2line.so.%{version}
-%{package_libdir}/libboost_stacktrace_basic.so.%{version}
-%{package_libdir}/libboost_stacktrace_noop.so.%{version}
+%{_libdir}/libboost_stacktrace_addr2line.so.%{version}
+%{_libdir}/libboost_stacktrace_basic.so.%{version}
+%{_libdir}/libboost_stacktrace_noop.so.%{version}
 
 %files -n libboost_stacktrace%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_stacktrace_addr2line-%{version}
-%dir %{package_libdir}/cmake/boost_stacktrace_basic-%{version}
-%dir %{package_libdir}/cmake/boost_stacktrace_noop-%{version}
-%{package_libdir}/cmake/boost_stacktrace_addr2line-%{version}/*
-%{package_libdir}/cmake/boost_stacktrace_basic-%{version}/*
-%{package_libdir}/cmake/boost_stacktrace_noop-%{version}/*
-%{package_libdir}/libboost_stacktrace_addr2line.so
-%{package_libdir}/libboost_stacktrace_basic.so
-%{package_libdir}/libboost_stacktrace_noop.so
+%dir %{_libdir}/cmake/boost_stacktrace_addr2line-%{version}
+%dir %{_libdir}/cmake/boost_stacktrace_basic-%{version}
+%dir %{_libdir}/cmake/boost_stacktrace_noop-%{version}
+%{_libdir}/cmake/boost_stacktrace_addr2line-%{version}/*
+%{_libdir}/cmake/boost_stacktrace_basic-%{version}/*
+%{_libdir}/cmake/boost_stacktrace_noop-%{version}/*
+%{_libdir}/libboost_stacktrace_addr2line.so
+%{_libdir}/libboost_stacktrace_basic.so
+%{_libdir}/libboost_stacktrace_noop.so
 
 %files -n libboost_system%{library_version}
-%{package_libdir}/libboost_system.so.%{version}
+%{_libdir}/libboost_system.so.%{version}
 
 %files -n libboost_system%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_system-%{version}
-%{package_libdir}/cmake/boost_system-%{version}/*
-%{package_libdir}/libboost_system.so
+%dir %{_libdir}/cmake/boost_system-%{version}
+%{_libdir}/cmake/boost_system-%{version}/*
+%{_libdir}/libboost_system.so
 
 %files -n libboost_thread%{library_version}
-%{package_libdir}/libboost_thread.so.%{version}
+%{_libdir}/libboost_thread.so.%{version}
 
 %files -n libboost_thread%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_thread-%{version}
-%{package_libdir}/cmake/boost_thread-%{version}/*
-%{package_libdir}/libboost_thread.so
+%dir %{_libdir}/cmake/boost_thread-%{version}
+%{_libdir}/cmake/boost_thread-%{version}/*
+%{_libdir}/libboost_thread.so
 
 %files -n libboost_wave%{library_version}
-%{package_libdir}/libboost_wave.so.%{version}
+%{_libdir}/libboost_wave.so.%{version}
 
 %files -n libboost_wave%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_wave-%{version}
-%{package_libdir}/cmake/boost_wave-%{version}/*
-%{package_libdir}/libboost_wave.so
+%dir %{_libdir}/cmake/boost_wave-%{version}
+%{_libdir}/cmake/boost_wave-%{version}/*
+%{_libdir}/libboost_wave.so
 
 %files -n libboost_url%{library_version}
-%{package_libdir}/libboost_url.so.%{version}
+%{_libdir}/libboost_url.so.%{version}
 
 %files -n libboost_url%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_url-%{version}
-%{package_libdir}/cmake/boost_url-%{version}/*
-%{package_libdir}/libboost_url.so
+%dir %{_libdir}/cmake/boost_url-%{version}
+%{_libdir}/cmake/boost_url-%{version}/*
+%{_libdir}/libboost_url.so
 
 %files -n libboost_regex%{library_version}
-%{package_libdir}/libboost_regex.so.%{version}
+%{_libdir}/libboost_regex.so.%{version}
 
 %files -n libboost_regex%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_regex-%{version}
-%{package_libdir}/cmake/boost_regex-%{version}/*
-%{package_libdir}/libboost_regex.so
+%dir %{_libdir}/cmake/boost_regex-%{version}
+%{_libdir}/cmake/boost_regex-%{version}/*
+%{_libdir}/libboost_regex.so
 
 %files -n libboost_random%{library_version}
-%{package_libdir}/libboost_random.so.%{version}
+%{_libdir}/libboost_random.so.%{version}
 
 %files -n libboost_random%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_random-%{version}
-%{package_libdir}/cmake/boost_random-%{version}/*
-%{package_libdir}/libboost_random.so
+%dir %{_libdir}/cmake/boost_random-%{version}
+%{_libdir}/cmake/boost_random-%{version}/*
+%{_libdir}/libboost_random.so
 
 %files -n libboost_chrono%{library_version}
-%{package_libdir}/libboost_chrono.so.%{version}
+%{_libdir}/libboost_chrono.so.%{version}
 
 %files -n libboost_chrono%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_chrono-%{version}
-%{package_libdir}/cmake/boost_chrono-%{version}/*
-%{package_libdir}/libboost_chrono.so
+%dir %{_libdir}/cmake/boost_chrono-%{version}
+%{_libdir}/cmake/boost_chrono-%{version}/*
+%{_libdir}/libboost_chrono.so
 
 %files -n libboost_locale%{library_version}
-%{package_libdir}/libboost_locale.so.%{version}
+%{_libdir}/libboost_locale.so.%{version}
 
 %files -n libboost_locale%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_locale-%{version}
-%{package_libdir}/cmake/boost_locale-%{version}/*
-%{package_libdir}/libboost_locale.so
+%dir %{_libdir}/cmake/boost_locale-%{version}
+%{_libdir}/cmake/boost_locale-%{version}/*
+%{_libdir}/libboost_locale.so
 
 %files -n libboost_timer%{library_version}
-%{package_libdir}/libboost_timer.so.%{version}
+%{_libdir}/libboost_timer.so.%{version}
 
 %files -n libboost_timer%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_timer-%{version}
-%{package_libdir}/cmake/boost_timer-%{version}/*
-%{package_libdir}/libboost_timer.so
+%dir %{_libdir}/cmake/boost_timer-%{version}
+%{_libdir}/cmake/boost_timer-%{version}/*
+%{_libdir}/libboost_timer.so
 
 %files -n libboost_type_erasure%{library_version}
-%{package_libdir}/libboost_type_erasure.so.%{version}
+%{_libdir}/libboost_type_erasure.so.%{version}
 
 %files -n libboost_type_erasure%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_type_erasure-%{version}
-%{package_libdir}/cmake/boost_type_erasure-%{version}/*
-%{package_libdir}/libboost_type_erasure.so
+%dir %{_libdir}/cmake/boost_type_erasure-%{version}
+%{_libdir}/cmake/boost_type_erasure-%{version}/*
+%{_libdir}/libboost_type_erasure.so
 
 %files -n libboost_json%{library_version}
-%{package_libdir}/libboost_json.so.%{version}
+%{_libdir}/libboost_json.so.%{version}
 
 %files -n libboost_json%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_json-%{version}
-%{package_libdir}/cmake/boost_json-%{version}/*
-%{package_libdir}/libboost_json.so
+%dir %{_libdir}/cmake/boost_json-%{version}
+%{_libdir}/cmake/boost_json-%{version}/*
+%{_libdir}/libboost_json.so
 
 %files -n libboost_charconv%{library_version}
-%{package_libdir}/libboost_charconv.so.%{version}
+%{_libdir}/libboost_charconv.so.%{version}
 
 %files -n libboost_charconv%{library_version}-devel
-%dir %{package_libdir}/cmake/boost_charconv-%{version}
-%{package_libdir}/cmake/boost_charconv-%{version}/*
-%{package_libdir}/libboost_charconv.so
+%dir %{_libdir}/cmake/boost_charconv-%{version}
+%{_libdir}/cmake/boost_charconv-%{version}/*
+%{_libdir}/libboost_charconv.so
 
 %endif
 
@@ -2079,20 +1850,20 @@ EOF
 
 %if %{with build_quickbook}
 %files -n %{package_name}-quickbook
-%{package_bindir}/quickbook
+%{_bindir}/quickbook
 %endif
 %endif
 
 %if %{build_base}
 %files -n libboost_headers%{library_version}-devel
-%dir %{package_libdir}/cmake
-%dir %{package_libdir}/cmake/Boost-%{version}
-%dir %{package_libdir}/cmake/boost_headers-%{version}
-%dir %{package_includedir}/boost
-%{package_libdir}/cmake/BoostDetectToolset-%{version}.cmake
-%{package_libdir}/cmake/Boost-%{version}/*
-%{package_libdir}/cmake/boost_headers-%{version}/*
-%{package_includedir}/boost/*
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/Boost-%{version}
+%dir %{_libdir}/cmake/boost_headers-%{version}
+%dir %{_includedir}/boost
+%{_libdir}/cmake/BoostDetectToolset-%{version}.cmake
+%{_libdir}/cmake/Boost-%{version}/*
+%{_libdir}/cmake/boost_headers-%{version}/*
+%{_includedir}/boost/*
 
 %files -n boost-license%{library_version}
 %license LICENSE_1_0.txt
@@ -2100,7 +1871,6 @@ EOF
 %attr(755,root,root) %dir %{_defaultlicensedir}
 %endif
 
-%endif
 %endif
 
 %changelog
