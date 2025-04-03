@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr  3 11:27:34 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Add procps as BuildRequires
+
+-------------------------------------------------------------------
+Thu Apr  3 05:35:19 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.1.0
+   see /usr/share/doc/packages/perl-Mojo-IOLoop-ReadWriteProcess/Changes
+
+  1.1.0 2025-04-02T17:01:36Z
+   -  README: Update POD using minilla
+   -  Try to prevent warnings about Formatter
+   -  Update Build.PL and META.json with minilla 3.1.25
+   -  Remove obsolete dependency on TAP::Formatter::Color
+   -  Fix changelog
+
+  1.0.0 2025-03-17 12:20:20Z
+   -  Various test fixes
+   -  Fix race condition in `is_running` when `kill_whole_group` is set
+   -  Fix handling process groups when initial process is not running anymore
+   -  Add Minilla to the ci target
+   -  Update minil.toml to have the harness arguments enabled
+   -  Mention syntactic sugar to help when debugging
+   -  Enable support for MacOSX (darwin)
+
+-------------------------------------------------------------------
 Fri Mar  8 22:43:53 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
