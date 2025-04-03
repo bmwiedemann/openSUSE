@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  2 10:05:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.3.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.3.4
+- Changes since 6.3.3:
+  * KHintsSettings: Properly handle zero CursorBlinkRate in updateQtSettings
+  * KDirSelectDialog: Fix sidebar sizing bugs (kde#421247)
+  * update version for new release
+
+-------------------------------------------------------------------
 Tue Mar 11 14:44:35 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.3:
