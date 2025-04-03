@@ -86,4 +86,15 @@
     <comment></comment>
     <requestid>1150310</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>ab336181bcca212cc9224838f767a4ef</srcmd5>
+    <version>1.13.1</version>
+    <time>1743691617</time>
+    <user>anag+factory</user>
+    <comment>- Remove gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+- openmpi5 is not available on 32b systems
+- Fix mpi_ver for openmpi5</comment>
+    <requestid>1266213</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Mar 25 06:53:32 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+- openmpi5 is not available on 32b systems
+- Fix mpi_ver for openmpi5
+
+-------------------------------------------------------------------
 Tue Feb 20 09:59:39 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
