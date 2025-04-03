@@ -44,4 +44,15 @@
   * Force creating another interface as master</comment>
     <requestid>1255721</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ff8e5e65c5b540b6d6db7318c31f9cf9</srcmd5>
+    <version>0.9</version>
+    <time>1743691856</time>
+    <user>anag+factory</user>
+    <comment>- version 0.9:
+  * add a forward-delay option
+  * add an STP option
+  * fix displaying error</comment>
+    <requestid>1266842</requestid>
+  </revision>
 </revisionlist>
