@@ -39,7 +39,6 @@ BuildRequires:  gcc9-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ragel
-BuildRequires:  pkgconfig(libpcre)
 BuildRequires:  pkgconfig(sqlite3)
 Conflicts:      hyperscan
 # Do not support 32-bit Arm - https://github.com/VectorCamp/vectorscan/issues/61
@@ -76,8 +75,7 @@ Group:          Development/Libraries/C and C++
 
 %description examples
 Example binaries for the vectorscan library:
-  benchmarks, hsbench, hscheck, hscollider, patbench,
-  pcapscan, simplegrep, unit-hyperscan, unit-internal
+  hsbench, hscheck, patbench, pcapscan, simplegrep, unit-hyperscan
 
 %package devel
 Summary:        Libraries and header files for the vectorscan library
