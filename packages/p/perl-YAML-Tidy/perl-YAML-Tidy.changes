@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Mar 22 05:34:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.11.0 (v0.11.0)
+   see /usr/share/doc/packages/perl-YAML-Tidy/Changes
+
+  v0.11.0 2025-03-21 23:28:09+01:00
+
+      - Do not add or remove spaces in the middle of comments (issue#13)
+
+-------------------------------------------------------------------
 Fri Feb  2 03:09:32 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.10.0
