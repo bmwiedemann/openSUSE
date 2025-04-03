@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr  1 08:09:26 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 1.21
+
+  * criu: when running under systemd, use a proxy process to initialize the cgroup so that all the container processes are restored in the correct cgroup.
+  * set HOME to "/" if the specified user is not present in the /etc/passwd file.
+  * do not fail if any of stdin/stdout/stderr is closed.
+  * cgroup: fix handling of absent subcgroup when configuring cpuset on cgroup v1.
+  * ignore SIGWINCH when a tty is not used.
+  * utils: improve error message if the specified command is not executable.
+  * fix PATH lookup. Support filenames starting with a dot.
+  * krun: create context after loading the library.
+  * krun: stop using krun_set_exec but use the command line directly from the OCI configuration file.
+
+-------------------------------------------------------------------
 Tue Feb 11 08:59:46 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to 1.20
