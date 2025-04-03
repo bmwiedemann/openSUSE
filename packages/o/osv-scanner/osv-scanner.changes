@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 03 05:15:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.1:
+  * Features:
+    - Feature #1730 Add support for extracting dependencies from
+      .NET packages.config and packages.lock.json files.
+    - Feature #1770 Add support for extracting dependencies from
+      rust binaries compiled with cargo-auditable.
+    - Feature #1761 Improve output when scanning for OS packages,
+      we now show binary packages associated with a source package
+      in the table output.
+  * Fixes:
+    - Bug #1752 Fix paging depth issue when querying the osv.dev
+      API.
+    - Bug #1747 Ensure osv-reporter prints warnings instead of
+      errors for certain messages to return correct exit code
+      (related to osv-scanner-action#65).
+    - Bug #1717 Fix issue where nested CycloneDX components were
+      not being parsed.
+    - Bug #1744 Fix issue where empty CycloneDX SBOMs was causing a
+      panic.
+    - Bug #1726 De-duplicate references in CycloneDX report output
+      for improved validity.
+    - Bug #1727 Remove automatic opening of HTML reports in the
+      browser (fixes #1721).
+    - Bug #1735 Require a tag when scanning container images to
+      prevent potential errors.
+  * API Changes:
+    - API Change #1763 Made the SourceType enum public.
+  * Dependencies:
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.18 to 1.7.27 in the go_modules group across 1 directory
+      (#1719)
+    - chore(deps): update goreleaser/goreleaser-action action to
+      v6.3.0 (#1765)
+    - chore(deps): update workflows (#1713)
+    - chore(deps): update workflows (#1731)
+
+-------------------------------------------------------------------
 Mon Mar 17 06:01:21 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.0.0:
