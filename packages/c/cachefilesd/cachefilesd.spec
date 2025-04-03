@@ -1,7 +1,7 @@
 #
 # spec file for package cachefilesd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,9 @@ URL:            https://people.redhat.com/~dhowells/fscache/
 Source:         http://people.redhat.com/~dhowells/fscache/%{name}-%{version}.tar.bz2
 Patch0:         cachefilesd-autotools.patch
 Patch1:         cachefilesd-config.patch
-Patch2:         cachefilesd-loadmod.patch
-Patch3:         cachefilesd-monitoring-howto-update.patch
+Patch2:         cachefilesd-monitoring-howto-update.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libkmod-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
@@ -43,8 +41,7 @@ caching framework for mounted filesystems.
 %setup -q
 %patch -P 0
 %patch -P 1
-%patch -P 2
-%patch -P 3 -p1
+%patch -P 2 -p1
 
 %build
 autoreconf -fiv

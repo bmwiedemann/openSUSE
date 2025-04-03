@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Mar 19 21:18:39 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Fix cachefilesd startup failure (bsc#1239807)
+  - remove cachefilesd-loadmod.patch
+
+  The patch would explicitly attempt to load the cachefilesd module at
+  startup and fail with -EPERM when started from the systemd unit file,
+  as system is by default enforcing a strict seccomp policy that denies
+  the finit_module (among many other privileged operations).
+
+  Since the systemd unit file is already loading the cachefilesd module
+  before starting the daemon, there is no need to repeat loading from
+  within the daemon code, so the patch can be dropped.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:30:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
