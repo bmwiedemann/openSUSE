@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:13:32 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Remove upstream URL for Source0 as all links are dead.
+
+-------------------------------------------------------------------
 Wed Apr  3 07:48:00 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Cleanup after tests
