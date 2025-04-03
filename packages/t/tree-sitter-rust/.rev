@@ -27,4 +27,27 @@
     <comment></comment>
     <requestid>1229565</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>981a42a1ee7c4933d81e3ec6f27496b3</srcmd5>
+    <version>0.24.0</version>
+    <time>1743691796</time>
+    <user>anag+factory</user>
+    <comment>- update to 0.24.0:
+  * nothing of relevance
+- update to 0.23.3:
+  * Update tags.scm
+  * parse turbofish patterns
+  * add `FUNDING.yml
+  * parse default const parameters
+  * parse use bounds (precise capture syntax)
+  * implement range-to patterns
+  * fix shebang parsing
+  * fix where clauses in type aliases and allow empty where clauses
+  * add parsing support for use ::* syntax
+  * parse impl types (abstract types) where the lifetime comes first
+  * add tuple_type to possible dynamic types
+  * parse async closures
+  * add expr_2021 and pat_param to fragment_specifier (forwarded request 1266726 from rrahl0)</comment>
+    <requestid>1266727</requestid>
+  </revision>
 </revisionlist>

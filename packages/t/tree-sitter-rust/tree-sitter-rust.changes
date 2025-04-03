@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr  3 00:06:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.24.0:
+  * nothing of relevance
+- update to 0.23.3:
+  * Update tags.scm
+  * parse turbofish patterns
+  * add `FUNDING.yml
+  * parse default const parameters
+  * parse use bounds (precise capture syntax)
+  * implement range-to patterns
+  * fix shebang parsing
+  * fix where clauses in type aliases and allow empty where clauses
+  * add parsing support for use ::* syntax
+  * parse impl types (abstract types) where the lifetime comes first
+  * add tuple_type to possible dynamic types
+  * parse async closures
+  * add expr_2021 and pat_param to fragment_specifier
+
+-------------------------------------------------------------------
 Wed Dec  4 23:49:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.23.2:

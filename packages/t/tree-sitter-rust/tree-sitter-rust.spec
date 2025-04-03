@@ -18,7 +18,7 @@
 
 %define         _name rust
 Name:           tree-sitter-rust
-Version:        0.23.2
+Version:        0.24.0
 Release:        0
 Summary:        Rust grammar for tree-sitter
 License:        MIT
