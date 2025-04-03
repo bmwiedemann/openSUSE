@@ -33,6 +33,7 @@ Source0:        %{name}-%{version}.tar.zst
 
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 BuildRequires:  gcc13
+BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++
 %endif
 BuildRequires:  /usr/bin/dbus-run-session
