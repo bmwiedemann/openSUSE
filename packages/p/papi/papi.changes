@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 24 13:16:43 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support for gnu-hpc build flavours (bsc#1239982)
+- Redownload papi-7.1.0.tar.gz as it was not actually gzipped
+  and triggered and OBS error when running download_files.
+
+-------------------------------------------------------------------
 Tue Jan 23 18:52:36 UTC 2024 - Tony Jones <tonyj@suse.com>
 
 - Update to version 7.1 (jsc#PED-7679)

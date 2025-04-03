@@ -322,4 +322,12 @@ I see that 1143794 has been accepted so resubmitting PAPI update to Factory so t
 </comment>
     <requestid>1144039</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>495f7ceea61d50d5b85b007beae09d43</srcmd5>
+    <version>7.1.0</version>
+    <time>1743691620</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266429</requestid>
+  </revision>
 </revisionlist>
