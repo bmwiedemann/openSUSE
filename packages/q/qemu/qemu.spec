@@ -88,7 +88,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.2.2
+Version:        9.2.3
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -242,8 +242,13 @@ Requires:       user(qemu)
 Requires:       (qemu-guest-agent = %{version} if qemu-guest-agent)
 ## Packages we will RECOMMEND
 %ifarch s390x
-Recommends:     qemu-hw-s390x-virtio-gpu-ccw
+Requires:       qemu-hw-s390x-virtio-gpu-ccw
 %else
+%ifarch arm
+Requires:       qemu-hw-display-virtio-gpu-pci
+%else
+Recommends:     qemu-hw-display-virtio-gpu-pci
+%endif
 Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-display-virtio-gpu
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -1125,7 +1130,7 @@ Summary:        Machine emulator and virtualizer for Power architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
 Requires:       qemu-SLOF
-Recommends:     qemu-ipxe
+Requires:       qemu-ipxe
 Recommends:     qemu-vgabios
 
 %description ppc
@@ -1166,8 +1171,8 @@ This package provides s390x emulation.
 Summary:        Machine emulator and virtualizer for ARM architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
+Requires:       qemu-ipxe
 Recommends:     ovmf
-Recommends:     qemu-ipxe
 Recommends:     qemu-uefi-aarch64
 Recommends:     qemu-vgabios
 
@@ -1872,7 +1877,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.2.2%{sbver}
+Version:        9.2.3%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1893,7 +1898,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.2.2%{sbver}
+Version:        9.2.3%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1919,7 +1924,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.2.2
+Version:        9.2.3
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

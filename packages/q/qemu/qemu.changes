@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Apr 02 00:32:54 UTC 2025 - dfaggioli@suse.com
+
+- Update to latest stable release (9.2.3)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/44124379-3349-45cf-9238-8a847d8b2770@tls.msk.ru/
+  Fixes: bsc#1240005
+  Highlights include:
+  * hw/intc/aspeed: Fix IRQ handler mask check
+  * hw/misc/aspeed_hace: Fix buffer overflow in has_padding function
+  * target/riscv: fix handling of nop for vstart >= vl in some vector instruction
+  * target/riscv: refactor VSTART_CHECK_EARLY_EXIT() to accept vl as a parameter
+  * Makefile: "make dist" generates a .xz, not .bz2
+  * target/ppc: Fix e200 duplicate SPRs
+  * target/ppc: Fix facility interrupt checks for VSX
+  * ppc/spapr: fix default cpu for pre-9.0 machines.
+  * host/include/loongarch64: Fix inline assembly compatibility with Clang
+  * linux-user/riscv: Fix handling of cpu mask in riscv_hwprobe syscall
+  * target/riscv: fixes a bug against `ssamoswap` behavior in M-mode
+  * target/riscv: fix access permission checks for CSR_SSP
+  * docs/about/emulation: Fix broken link
+  * vdpa: Allow vDPA to work on big-endian machine
+  * vdpa: Fix endian bugs in shadow virtqueue
+  * target/loongarch: Fix vldi inst
+  * target/arm: Simplify pstate_sm check in sve_access_check
+  * target/arm: Make DisasContext.{fp, sve}_access_checked tristate
+  * util/cacheflush: Make first DSB unconditional on aarch64
+  * docs: Rename default-configs to configs
+  * block: Zero block driver state before reopening
+  * hw/xen/hvm: Fix Aarch64 typo
+  * hw/net/smc91c111: Don't allow data register access to overrun buffer
+  * hw/net/smc91c111: Sanitize packet length on tx
+  * hw/net/smc91c111: Sanitize packet numbers
+  * ppc/pnv/occ: Fix common area sensor offsets
+  * xen: No need to flush the mapcache for grants (bsc#1240005)
+  * net: move backend cleanup to NIC cleanup
+  * net: parameterize the removing client from nc list
+  * util/qemu-timer.c: Don't warp timer from timerlist_rearm()
+  * target/arm: Correct STRD atomicity
+  * target/arm: Correct LDRD atomicity and fault behaviour
+  * hw/arm: enable secure EL2 timers for sbsa machine
+  * hw/arm: enable secure EL2 timers for virt machine
+  * target/arm: Implement SEL2 physical and virtual timers
+  * ...
+
+- Fix bsc#1240157:
+  * [openSUSE][RPM] spec: Require ipxe and virtio-gpu packages for more arch-es
+
+-------------------------------------------------------------------
 Fri Feb 28 14:04:51 UTC 2025 - dfaggioli@suse.com
 
 - Update to latest upstream release, 9.2.2:
