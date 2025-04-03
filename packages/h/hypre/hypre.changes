@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:32:54 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Remove support for gnu-hpc build flavors (bsc#1239982).
+
+-------------------------------------------------------------------
+Mon Mar 24 13:13:04 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable gnu-hpc build flavours (bsc#1239982)
+- Add openmpi5 build flavour
+- openmpi5 is not available on 32b systems
+
+-------------------------------------------------------------------
+Tue Dec  3 08:45:17 UTC 2024 - Egbert Eich <eich@suse.com>
+
+- Use the newly introduced %hpc_requires_eq macro to get the correct
+  library dependencies (boo#1234007).
+
+-------------------------------------------------------------------
 Thu Feb 22 07:54:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
