@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Mar 22 23:36:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.5.0:
+  * Default type for authentication changed from "none" to "denyall" to prevent unexpected access after initial installation (secure-by-default)
+  * Reverse proxy base prefix stripping was adjusted/fixed, in case of issues check new option and your reverse proxy configuration
+  * InfCloud WebUI can be now be served "bundled", see https://github.com/Kozea/Radicale/wiki/Client-InfCloud
+  * Add: option [auth] type oauth2 by code migration from https://gitlab.mim-libre.fr/alphabet/radicale_oauth/-/blob/dev/oauth2/
+  * Add: option [auth] type pam by code migration from v1, add new option pam_serivce
+  * Add: option [server] script_name for reverse proxy base_prefix handling
+  * Add: on-the-fly link activation and default content adjustment in case of bundled InfCloud (tested with 0.13.1)
+  * Add: warning in case of started standalone and not listen on loopback interface but trusting external authentication
+  * Adjust: [auth] imap: use AUTHENTICATE PLAIN instead of LOGIN towards remote IMAP server
+  * Adjust: Change default [auth] type from "none" to "denyall" for secure-by-default
+  * Improve: relax mtime check on storage filesystem, change test file location to "collection-root" directory
+  * Improve: WebUI
+  * Improve: log client IP on SSL error and SSL protocol+cipher if successful
+  * Improve: catch htpasswd hash verification errors
+  * Improve: add support for more bcrypt algos on autodetection, extend logging for autodetection fallback to PLAIN in case of hash length is not matching
+  * Fix: catch OS errors on PUT MKCOL MKCALENDAR MOVE PROPPATCH (insufficient storage, access denied, internal server error)
+  * Test: skip bcrypt related tests if module is missing
+  * Fix: proper base_prefix stripping if running behind reverse proxy
+  * Cosmetics: extend list of used modules with their version on startup
+  * Review: Apache reverse proxy config example
+- enable upstream tests
+- remove Radicale.rpmlintrc, as that is not needed anymore
+
+-------------------------------------------------------------------
 Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.4.0

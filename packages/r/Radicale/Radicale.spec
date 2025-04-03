@@ -26,7 +26,7 @@
 %define vo_min_ver 0.9.6
 %define pk_min_ver 1.1.0
 Name:           Radicale
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -36,12 +36,17 @@ Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz
 Source1:        radicale.service
 Source2:        system-user-%{pkg_user_group}.conf
 Source3:        radicale.firewalld
-Source4:        %{name}.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-bcrypt
+BuildRequires:  python3-defusedxml
+BuildRequires:  python3-passlib
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-vobject >= %{vo_min_ver}
+BuildRequires:  python3-waitress
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(python3) >= %{py_min_ver}
@@ -91,6 +96,9 @@ mkdir %{buildroot}%{pkg_home}/collections
 
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/
+
+%check
+pytest
 
 %pre -f %{pkg_user_group}.pre
 %service_add_pre %{pkg_name}.service
