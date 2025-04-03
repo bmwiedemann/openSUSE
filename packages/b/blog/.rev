@@ -191,4 +191,41 @@ use private glib API but implement a share memory mkstemp</comment>
     initramfs at shutdown.</comment>
     <requestid>1129802</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d0023bf41c40cdd10ca8e50a03925fdc</srcmd5>
+    <version>2.32</version>
+    <time>1743698604</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 2.32
+  * Better 3270 console support, use uevent below /sys file system 
+
+- Update to version 2.31
+  * Handel BS on password prompt as well
+  * Drop spining code as systemd uses clear to end of line
+    escape sequence (hard coded!) for its cylon lines.
+- blog: again suggest blog-plymouth
+
+- Update to version 2.30
+  * The asking variable is not shared
+  * Allow password asking prompt to be repeated if empty.
+  * Make spinner support UTF-8 multibyte conform.
+  * Spinner lines of system still not handled.
+
+- Update to version 2.29
+  * Make sure that password prompt is seen Latest
+    Use a temporary buffer to be silent during asking passwords.
+    And stop system console output during password questions
+    only if temporary buffer becomes short. As well as do coloring
+    on /dev/ttysclp0 for S390. 
+- Drop patch.patch as now upstream
+
+- Modify temporary patch patch.patch
+  * Use a temporary buffer to be silent during asking passwords
+  * Stop system console output during password questions only
+    if temporary buffer becomes short 
+
+- Add temporary patch named patch.patch
+  * Stop system console output during password questions</comment>
+    <requestid>1266909</requestid>
+  </revision>
 </revisionlist>

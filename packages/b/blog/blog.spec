@@ -1,7 +1,7 @@
 #
 # spec file for package blog
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.28
+Version:        2.32
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -26,7 +26,6 @@ Group:          System/Base
 URL:            https://github.com/bitstreamout/showconsole
 Source:         https://github.com/bitstreamout/showconsole/archive/v%{version}.tar.gz#/showconsole-%{version}.tar.gz
 Source1:        blog-rpmlintrc
-BuildRequires:  suse-module-tools
 Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       sysvinit-tools:/sbin/blogd
@@ -79,9 +78,13 @@ the LSB startproc command.
 
 %prep
 %setup -q -n showconsole-%version
+for l in rt util pthread
+do
+    ln -sf %{_libdir}/lib${l}.so.[0-9] lib${l}.so
+done
 
 %build
-make %{?_smp_mflags} CC="%__cc" \
+make V=1 %{?_smp_mflags} CC="%__cc" \
     LIBDIR=%{_libdir} \
     INCDIR=%{_includedir} \
     SYSDUNITS=%{_unitdir} \
