@@ -2142,7 +2142,6 @@ unsorted:
   - cilium-cli-bash-completion 
   - cilium-cli-fish-completion 
   - cilium-cli-zsh-completion 
-  - cim-schema 
   - cinnamon 
   - cinnamon-control-center 
   - cinnamon-control-center-common 
@@ -2314,7 +2313,6 @@ unsorted:
   - cmh 
   - cmh-devel 
   - cmis-client 
-  - cmpi-provider-register 
   - cmrt-devel 
   - cmuclmtk 
   - cmus 
@@ -3036,6 +3034,10 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
+  - cyrus-imapd-devel 
+  - cyrus-imapd-snmp 
+  - cyrus-imapd-snmp-mibs 
+  - cyrus-imapd-utils 
   - cyrus-sasl-32bit 
   - cyrus-sasl-bdb 
   - cyrus-sasl-bdb-crammd5 
@@ -7575,9 +7577,6 @@ unsorted:
   - gns3-gui 
   - gns3-server 
   - gnu-cobol 
-  - gnu-compilers-hpc 
-  - gnu-compilers-hpc-devel 
-  - gnu-compilers-hpc-macros-devel 
   - gnu-crypto 
   - gnu-efi-apps 
   - gnu-efi-devel 
@@ -11665,7 +11664,6 @@ unsorted:
   - libQtQuick5-32bit 
   - libQuotient-qt6-devel 
   - libQuotientQt6-0_9 
-  - libRaTools0 
   - libRecast1 
   - libRivet-3_1_10 
   - libSDL-1_2-0-32bit 
@@ -12644,10 +12642,7 @@ unsorted:
   - libcmocka-doc 
   - libcmocka0 
   - libcmocka0-32bit 
-  - libcmpiCppImpl0 
   - libcmpisfcc1 
-  - libcmpiutil-devel 
-  - libcmpiutil0 
   - libcmrt1 
   - libcmuclmtk-devel 
   - libcmuclmtk0 
@@ -13195,7 +13190,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla46 
+  - libfilezilla47 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -13560,7 +13555,6 @@ unsorted:
   - libgltf-0_1-1 
   - libgltf-devel 
   - libglusterfs0 
-  - libglut3 
   - libglut3-32bit 
   - libglvnd-32bit 
   - libglvnd-devel 
@@ -14840,11 +14834,6 @@ unsorted:
   - libnet-devel 
   - libnet-doc 
   - libnet9 
-  - libnetcdf-cxx4-gnu-hpc 
-  - libnetcdf-cxx4-gnu-hpc-devel 
-  - libnetcdf-cxx4_4_3_1-gnu-hpc 
-  - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
-  - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
   - libnetcdf19 
   - libnetcdf19-openmpi4 
   - libnetcdf19-openmpi5 
@@ -15298,7 +15287,6 @@ unsorted:
   - libpcre16-0-32bit 
   - libpcre2-16-0-32bit 
   - libpcre2-32-0-32bit 
-  - libpcre2-posix3 
   - libpcre2-posix3-32bit 
   - libpcrecpp0 
   - libpcrecpp0-32bit 
@@ -16150,7 +16138,6 @@ unsorted:
   - libseteec0 
   - libsexp1 
   - libsexpp0 
-  - libsfcUtil0 
   - libsfml2-2_6 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
@@ -16256,7 +16243,9 @@ unsorted:
   - libsolarus1 
   - libsolv-demo 
   - libsolv-devel 
+  - libsolv-devel-static 
   - libsolv-tools 
+  - libsolv1 
   - libsonivox3 
   - libsord-0-0-32bit 
   - libsoundio-devel 
@@ -16740,7 +16729,7 @@ unsorted:
   - libupb46 
   - libupnp-devel 
   - libupnpp-devel 
-  - libupnpp16 
+  - libupnpp17 
   - libupower-glib-devel 
   - libupsclient6 
   - libur_adapter_native_cpu0 
@@ -16870,7 +16859,6 @@ unsorted:
   - libvips-devel 
   - libvips42 
   - libvirt 
-  - libvirt-cim 
   - libvirt-client-qemu 
   - libvirt-daemon 
   - libvirt-daemon-config-nwfilter 
@@ -16993,7 +16981,6 @@ unsorted:
   - libwebkit2gtk-4_0-37 
   - libwebp-devel 
   - libwebp-devel-32bit 
-  - libwebp-tools 
   - libwebp7-32bit 
   - libwebpdecoder3 
   - libwebpdecoder3-32bit 
@@ -20997,7 +20984,6 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
-  - patterns-hpc-libraries 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -22292,7 +22278,6 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
-  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -27385,6 +27370,7 @@ unsorted:
   - python311-types-setuptools 
   - python311-types-toml 
   - python311-typing-inspect 
+  - python311-typing-inspection 
   - python311-typish 
   - python311-typogrify 
   - python311-tzlocal 
@@ -31108,6 +31094,7 @@ unsorted:
   - python312-types-setuptools 
   - python312-types-toml 
   - python312-typing-inspect 
+  - python312-typing-inspection 
   - python312-typing_extensions 
   - python312-typish 
   - python312-typogrify 
@@ -34750,6 +34737,7 @@ unsorted:
   - python313-types-setuptools 
   - python313-types-toml 
   - python313-typing-inspect 
+  - python313-typing-inspection 
   - python313-typish 
   - python313-typogrify 
   - python313-tzdata 
@@ -36636,16 +36624,7 @@ unsorted:
   - sbd-devel 
   - sbiload 
   - sbl-orca 
-  - sblim-cmpi-c++-devel 
-  - sblim-cmpi-devel 
-  - sblim-indication_helper 
-  - sblim-indication_helper-devel 
-  - sblim-sfcCommon-devel 
-  - sblim-sfcb 
   - sblim-sfcc-devel 
-  - sblim-testsuite 
-  - sblim-tools-libra-devel 
-  - sblim-wbemcli 
   - sbsigntools 
   - sbt-boilerplate 
   - sbt-boilerplate-javadoc 
@@ -37439,7 +37418,6 @@ unsorted:
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-fonts 
-  - suse-hpc 
   - suse-prime 
   - suse-xsl-stylesheets 
   - suseconnect-ng 

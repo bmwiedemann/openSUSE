@@ -287,7 +287,9 @@
     <package name="cups-pk-helper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cups-pk-helper-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="cyradm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyreal-lobster-cyrillic-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="cyrus-imapd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="cyrus-sasl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-crammd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cyrus-sasl-digestmd5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1832,6 +1834,7 @@
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcupsimage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcurl4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcyrus0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libdaemon0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libdatrie1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libdav1d7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2028,6 +2031,7 @@
     <package name="libglibmm-2_4-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglibmm-2_68-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libglslang15" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libglut3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libglvnd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libglyr1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgme0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2493,6 +2497,7 @@
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libpcre2-posix3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpeas-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpeas-gtk-1_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2883,6 +2888,7 @@
     <package name="libwayland-egl1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwayland-server0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebkit2gtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libwebp-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libwebp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpdemux2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwebpmux3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3316,6 +3322,9 @@
     <package name="perl-Crypt-OpenSSL-Random" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Crypt-SmbHash" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-CryptX" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Cyrus-Annotator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Cyrus-IMAP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="perl-Cyrus-SIEVE-managesieve" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-DB_File" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-HMAC" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Digest-MD4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3368,6 +3377,7 @@
     <package name="perl-SNMP" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="perl-Socket6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Term-ReadKey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="perl-Term-ReadLine-Gnu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-TimeDate" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Try-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-Types-Serialiser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
