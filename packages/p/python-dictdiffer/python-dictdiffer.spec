@@ -1,7 +1,7 @@
 #
 # spec file for package python-dictdiffer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,10 +30,11 @@ BuildRequires:  %{python_module setuptools_scm >= 1.15.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Suggests:       python-numpy >= 1.11.0
+Suggests:       python-numpy >= 1.20.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.8.0}
+BuildRequires:  %{python_module numpy >= 1.20.0}
 # /SECTION
 %python_subpackages
 

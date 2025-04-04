@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  4 02:48:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- numpy is required for tests.
+
+-------------------------------------------------------------------
 Wed Mar 27 20:55:44 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

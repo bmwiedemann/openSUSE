@@ -40,4 +40,12 @@
     <comment></comment>
     <requestid>1163249</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>dbf8016ce18060b99244b6c00740f9ce</srcmd5>
+    <version>0.9.0</version>
+    <time>1743780658</time>
+    <user>anag+factory</user>
+    <comment>- numpy is required for tests.</comment>
+    <requestid>1266991</requestid>
+  </revision>
 </revisionlist>
