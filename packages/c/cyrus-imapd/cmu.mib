@@ -1,0 +1,96 @@
+CMU-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, enterprises
+        FROM SNMPv2-SMI;
+
+cmuMIB MODULE-IDENTITY
+    LAST-UPDATED "9701220000Z"
+    ORGANIZATION "Carnegie Mellon"
+    CONTACT-INFO
+                "       Email: dc0m@andrew.cmu.edu
+
+                        Network Development
+                        Computing Services
+                        Carnegie Mellon University
+                        Pittsburgh PA. 15213
+
+                "
+    DESCRIPTION
+            "The MIB module for CMU SNMP entities."
+    REVISION    "9701220000Z"
+    DESCRIPTION
+            "The initial revision of this MIB"
+    REVISION    "9706031200Z"
+    DESCRIPTION "Expanded MIB, incorporated old CMU information.
+                 Updated contact information.
+                "
+    REVISION    "0312112000Z"
+    DESCRIPTION "Added cmuLDAP"
+
+    ::= { enterprises 3 }
+
+   -- CMU Systems
+   cmuSystems OBJECT IDENTIFIER ::= { cmuMIB 1 }
+
+   -- Other MIBs
+   cmuMIBs    OBJECT IDENTIFIER ::= { cmuMIB 2 }
+
+   -- Not Used
+   -- cmuSimpleSecurity ::= { cmuMIB 3 }
+
+   -- Monitored:  Names of monitored entities
+   cmuMonitored OBJECT IDENTIFIER ::= { cmuMIB 4 }
+
+   cmuLDAPResources OBJECT IDENTIFIER ::= { cmuMIB 5 }
+
+   -- software that's distributed under Project Cyrus
+   cmuCyrus OBJECT IDENTIFIER ::= { cmuMIB 6 }
+
+   -- application statistics
+   cmuAppStats OBJECT IDENTIFIER ::= { cmuMIB 7 }
+
+   -- CMU LDAP OIDs
+   ldapResources OBJECT IDENTIFIER ::= { cmuMIB 8 }
+
+   -- ********** System Monitoring **********
+
+-- These aren't used anymore.
+
+--   cmuOldSNMPD OBJECT IDENTIFIER ::= { cmuSystems 1 }
+--   cmuKip      OBJECT IDENTIFIER ::= { cmuSystems 2 }
+--   cmuRouter   OBJECT IDENTIFIER ::= { cmuSystems 3 }
+--   cmuBridge   OBJECT IDENTIFIER ::= { cmuSystems 4 }
+--   cmuDelni    OBJECT IDENTIFIER ::= { cmuSystems 5 }
+
+   -- Bind patch, http://www.net.cmu.edu/projects/snmp/dns
+   cmuDNS      OBJECT IDENTIFIER ::= { cmuSystems 6 } -- CMU-DNS-MIB
+
+-- Not used anymore
+--   cmuUNIX     OBJECT IDENTIFIER ::= { cmuSystems 7 }
+
+   -- CMU SNMPD
+   cmuSNMPD    OBJECT IDENTIFIER ::= { cmuSystems 8 } -- CMU-SNMPD-MIB
+
+   -- libevent specific information
+   cmuNADINE   OBJECT IDENTIFIER ::= { cmuSystems 9 } -- CMU-NADINE-MIB
+
+   -- CMU DHCP
+-- cmuDHCP     OBJECT IDENTIFIER ::= { cmuSystems 10 } 
+					-- CMU-DHCP-MIB
+
+   -- ********** Other MIBs **********
+
+--   cmuRouterMIB  OBJECT IDENTIFIER ::= { cmuMIBs 1 } Defined in ROUTER-MIB
+--   cmuUnixMIB    OBJECT IDENTIFIER ::= { cmuMIBs 2 } Defined in CMU-UNIX-MIB
+--   cmuFaultMIB   OBJECT IDENTIFIER ::= { cmuMIBs 3 } Defined in CMU-FAULT-MIB
+ 
+-- Not used anymore (if ever)
+--   cmuProcwatch  OBJECT IDENTIFIER ::= { cmuMIBs 4 }
+--   cmuPing       OBJECT IDENTIFIER ::= { cmuMIBs 5 }
+
+   -- *********** application statistics (leg@andrew.cmu.edu) **********
+   cmuSendmailStats OBJECT IDENTIFIER ::= { cmuAppStats 1 }
+   cmuApacheModStatus OBJECT IDENTIFIER ::= { cmuAppStats 2 }
+
+END

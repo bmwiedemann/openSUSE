@@ -1,0 +1,47 @@
+diff '--color=auto' -ru a/doc/html/imap/concepts/overview_and_concepts.html b/doc/html/imap/concepts/overview_and_concepts.html
+--- a/doc/html/imap/concepts/overview_and_concepts.html	2024-03-13 03:51:12.000000000 +0100
++++ b/doc/html/imap/concepts/overview_and_concepts.html	2024-04-10 17:42:03.859885326 +0200
+@@ -1307,7 +1307,7 @@
+ </section>
+ <section id="the-syslog-facility">
+ <h2>The syslog facility<a class="headerlink" href="#the-syslog-facility" title="Permalink to this heading">¶</a></h2>
+-<p>The Cyrus IMAP server software sends log messages to the <code class="docutils literal notranslate"><span class="pre">local6</span></code>
++<p>The Cyrus IMAP server software sends log messages to the <code class="docutils literal notranslate"><span class="pre">daemon</span></code>
+ syslog facility.  The severity levels used are:</p>
+ <ul class="simple">
+ <li><p><strong>CRIT</strong> - Critical errors which probably require prompt administrator action</p></li>
+@@ -1571,4 +1571,4 @@
+ 
+ 
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+diff '--color=auto' -ru a/doc/legacy/install-configure.html b/doc/legacy/install-configure.html
+--- a/doc/legacy/install-configure.html	2024-03-13 03:47:32.000000000 +0100
++++ b/doc/legacy/install-configure.html	2024-04-10 17:40:43.429453680 +0200
+@@ -45,10 +45,10 @@
+ 
+ If you do not copy the "<tt>syslog/syslog.conf</tt>" file to the
+ "<tt>/etc</tt>" directory, be sure to add support for
+-"<tt>local6.debug</tt>".  The file should include a line like:
++"<tt>daemon.debug</tt>".  The file should include a line like:
+ 
+ <pre>
+-   local6.debug  /var/log/imapd.log
++   daemon.debug  /var/log/imapd.log
+ </pre>
+ 
+ You probably also want to log SASL messages with a line like:
+diff '--color=auto' -ru a/doc/legacy/overview.html b/doc/legacy/overview.html
+--- a/doc/legacy/overview.html	2024-03-13 03:47:44.000000000 +0100
++++ b/doc/legacy/overview.html	2024-04-10 17:40:58.012865278 +0200
+@@ -623,7 +623,7 @@
+ 
+ <h3><a name="syslog">The <TT>syslog</TT> facility</a></h3>
+ 
+-The Cyrus IMAP server software sends log messages to the "<TT>local6</TT>"
++The Cyrus IMAP server software sends log messages to the "<TT>daemon</TT>"
+ syslog facility.  The severity levels used are:
+ 
+ <UL>
