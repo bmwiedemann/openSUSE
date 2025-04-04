@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 04 13:15:04 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250404.20a1dfb:
+  * Limit 640 to 4 variations
+  * Fix get_default for grub2-bls
+
+-------------------------------------------------------------------
+Thu Apr 03 16:08:58 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250403.0ae7eeb:
+  * Drop shifted variations before the new one
+  * Create loader.conf if missing
+
+-------------------------------------------------------------------
 Tue Apr 01 13:59:48 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250401.2eda714:
