@@ -417,31 +417,16 @@ unsorted:
   - addrwatch 
   - ade-devel 
   - adinatha-fonts 
-  - adios-gnu-mpich-hpc 
-  - adios-gnu-mpich-hpc-devel 
-  - adios-gnu-mpich-hpc-devel-static 
-  - adios-gnu-mvapich2-hpc 
-  - adios-gnu-mvapich2-hpc-devel 
-  - adios-gnu-mvapich2-hpc-devel-static 
-  - adios-gnu-openmpi4-hpc 
-  - adios-gnu-openmpi4-hpc-devel 
-  - adios-gnu-openmpi4-hpc-devel-static 
   - adios-openmpi4 
   - adios-openmpi4-devel 
   - adios-openmpi4-devel-static 
+  - adios-openmpi5 
+  - adios-openmpi5-devel 
+  - adios-openmpi5-devel-static 
   - adios2-devel 
   - adios2-mpich-devel 
   - adios2-mvapich2-devel 
   - adios2-openmpi4-devel 
-  - adios_1_13_1-gnu-mpich-hpc 
-  - adios_1_13_1-gnu-mpich-hpc-devel 
-  - adios_1_13_1-gnu-mpich-hpc-devel-static 
-  - adios_1_13_1-gnu-mvapich2-hpc 
-  - adios_1_13_1-gnu-mvapich2-hpc-devel 
-  - adios_1_13_1-gnu-mvapich2-hpc-devel-static 
-  - adios_1_13_1-gnu-openmpi4-hpc 
-  - adios_1_13_1-gnu-openmpi4-hpc-devel 
-  - adios_1_13_1-gnu-openmpi4-hpc-devel-static 
   - adjtimex 
   - adlmidi 
   - adlmidi-tools 
@@ -1544,33 +1529,11 @@ unsorted:
   - boomaga 
   - boomaga-lang 
   - boost-devel 
-  - boost-gnu-hpc 
-  - boost-gnu-hpc-devel 
-  - boost-gnu-mpich-hpc 
-  - boost-gnu-mpich-hpc-devel 
-  - boost-gnu-mpich-hpc-python3 
-  - boost-gnu-mvapich2-hpc 
-  - boost-gnu-mvapich2-hpc-devel 
-  - boost-gnu-mvapich2-hpc-python3 
-  - boost-gnu-openmpi4-hpc 
-  - boost-gnu-openmpi4-hpc-devel 
-  - boost-gnu-openmpi4-hpc-python3 
   - boost-jam 
   - boost1_87_0-doc-html 
   - boost1_87_0-doc-pdf 
   - boost1_87_0-jam 
   - boost1_87_0-quickbook 
-  - boost_1_87_0-gnu-hpc 
-  - boost_1_87_0-gnu-hpc-devel 
-  - boost_1_87_0-gnu-mpich-hpc 
-  - boost_1_87_0-gnu-mpich-hpc-devel 
-  - boost_1_87_0-gnu-mpich-hpc-python3 
-  - boost_1_87_0-gnu-mvapich2-hpc 
-  - boost_1_87_0-gnu-mvapich2-hpc-devel 
-  - boost_1_87_0-gnu-mvapich2-hpc-python3 
-  - boost_1_87_0-gnu-openmpi4-hpc 
-  - boost_1_87_0-gnu-openmpi4-hpc-devel 
-  - boost_1_87_0-gnu-openmpi4-hpc-python3 
   - booth 
   - booth-test 
   - bootiso 
@@ -4363,21 +4326,9 @@ unsorted:
   - ffmsindex 
   - ffnvcodec-devel 
   - fftw3-devel 
-  - fftw3-gnu-hpc-devel 
-  - fftw3-gnu-mpich-hpc-devel 
-  - fftw3-gnu-mvapich2-hpc-devel 
-  - fftw3-gnu-openmpi4-hpc-devel 
   - fftw3-mpi-devel 
   - fftw3-openmp-devel 
   - fftw3-threads-devel 
-  - fftw3_3_3_10-gnu-hpc-devel 
-  - fftw3_3_3_10-gnu-hpc-devel-static 
-  - fftw3_3_3_10-gnu-mpich-hpc-devel 
-  - fftw3_3_3_10-gnu-mpich-hpc-devel-static 
-  - fftw3_3_3_10-gnu-mvapich2-hpc-devel 
-  - fftw3_3_3_10-gnu-mvapich2-hpc-devel-static 
-  - fftw3_3_3_10-gnu-openmpi4-hpc-devel 
-  - fftw3_3_3_10-gnu-openmpi4-hpc-devel-static 
   - fhourstones 
   - fhs 
   - fife-devel 
@@ -8282,14 +8233,6 @@ unsorted:
   - gsl-devel 
   - gsl-doc 
   - gsl-examples 
-  - gsl-gnu-hpc 
-  - gsl-gnu-hpc-devel 
-  - gsl-gnu-hpc-doc 
-  - gsl_2_8_0-gnu-hpc 
-  - gsl_2_8_0-gnu-hpc-devel 
-  - gsl_2_8_0-gnu-hpc-doc 
-  - gsl_2_8_0-gnu-hpc-examples 
-  - gsl_2_8_0-gnu-hpc-module 
   - gsmartcontrol 
   - gsoap-devel 
   - gsoap-doc 
@@ -8665,39 +8608,12 @@ unsorted:
   - hdf5-devel 
   - hdf5-devel-data 
   - hdf5-examples 
-  - hdf5-gnu-hpc 
-  - hdf5-gnu-hpc-devel 
-  - hdf5-gnu-mpich-hpc 
-  - hdf5-gnu-mpich-hpc-devel 
-  - hdf5-gnu-mvapich2-hpc 
-  - hdf5-gnu-mvapich2-hpc-devel 
-  - hdf5-gnu-openmpi4-hpc 
-  - hdf5-gnu-openmpi4-hpc-devel 
-  - hdf5-gnu-openmpi5-hpc 
-  - hdf5-gnu-openmpi5-hpc-devel 
-  - hdf5-hpc-examples 
   - hdf5-mvapich2 
   - hdf5-mvapich2-devel 
   - hdf5-openmpi4 
   - hdf5-openmpi4-devel 
   - hdf5-openmpi5 
   - hdf5-openmpi5-devel 
-  - hdf5_1_14_6-gnu-hpc 
-  - hdf5_1_14_6-gnu-hpc-devel 
-  - hdf5_1_14_6-gnu-hpc-module 
-  - hdf5_1_14_6-gnu-mpich-hpc 
-  - hdf5_1_14_6-gnu-mpich-hpc-devel 
-  - hdf5_1_14_6-gnu-mpich-hpc-module 
-  - hdf5_1_14_6-gnu-mvapich2-hpc 
-  - hdf5_1_14_6-gnu-mvapich2-hpc-devel 
-  - hdf5_1_14_6-gnu-mvapich2-hpc-module 
-  - hdf5_1_14_6-gnu-openmpi4-hpc 
-  - hdf5_1_14_6-gnu-openmpi4-hpc-devel 
-  - hdf5_1_14_6-gnu-openmpi4-hpc-module 
-  - hdf5_1_14_6-gnu-openmpi5-hpc 
-  - hdf5_1_14_6-gnu-openmpi5-hpc-devel 
-  - hdf5_1_14_6-gnu-openmpi5-hpc-module 
-  - hdf5_1_14_6-hpc-examples 
   - hdhomerun_config 
   - hdhomerun_config_gui 
   - hdjmod-kmp-default 
@@ -8911,15 +8827,20 @@ unsorted:
   - hyprcursor 
   - hyprcursor-devel 
   - hypre-devel 
-  - hypre-gnu-mpich-hpc-devel 
-  - hypre-gnu-mvapich2-hpc-devel 
-  - hypre-gnu-openmpi4-hpc-devel 
+  - hypre-doc 
+  - hypre-examples 
   - hypre-mpich-devel 
+  - hypre-mpich-doc 
+  - hypre-mpich-examples 
   - hypre-mvapich2-devel 
+  - hypre-mvapich2-doc 
+  - hypre-mvapich2-examples 
   - hypre-openmpi4-devel 
-  - hypre_2_20_0-gnu-mpich-hpc-devel 
-  - hypre_2_20_0-gnu-mvapich2-hpc-devel 
-  - hypre_2_20_0-gnu-openmpi4-hpc-devel 
+  - hypre-openmpi4-doc 
+  - hypre-openmpi4-examples 
+  - hypre-openmpi5-devel 
+  - hypre-openmpi5-doc 
+  - hypre-openmpi5-examples 
   - hyprgraphics-devel 
   - hypridle 
   - hyprland 
@@ -11317,16 +11238,11 @@ unsorted:
   - libGraphicsMagickWand-Q16-2 
   - libHACD3_17 
   - libHX-devel 
-  - libHYPRE-gnu-mpich-hpc 
-  - libHYPRE-gnu-mvapich2-hpc 
-  - libHYPRE-gnu-openmpi4-hpc 
   - libHYPRE2_20_0 
   - libHYPRE2_20_0-mpich 
   - libHYPRE2_20_0-mvapich2 
   - libHYPRE2_20_0-openmpi4 
-  - libHYPRE_2_20_0-gnu-mpich-hpc 
-  - libHYPRE_2_20_0-gnu-mvapich2-hpc 
-  - libHYPRE_2_20_0-gnu-openmpi4-hpc 
+  - libHYPRE2_20_0-openmpi5 
   - libHepMC3-4 
   - libHepMC3search5 
   - libHepMC4 
@@ -13264,14 +13180,6 @@ unsorted:
   - libffms2-5 
   - libffms2-devel 
   - libfftw3-3-32bit 
-  - libfftw3-gnu-hpc 
-  - libfftw3-gnu-mpich-hpc 
-  - libfftw3-gnu-mvapich2-hpc 
-  - libfftw3-gnu-openmpi4-hpc 
-  - libfftw3_3_3_10-gnu-hpc 
-  - libfftw3_3_3_10-gnu-mpich-hpc 
-  - libfftw3_3_3_10-gnu-mvapich2-hpc 
-  - libfftw3_3_3_10-gnu-openmpi4-hpc 
   - libfftw3_mpi3 
   - libfftw3_omp3 
   - libfftw3_omp3-32bit 
@@ -13830,10 +13738,6 @@ unsorted:
   - libgsettings-qt1 
   - libgsf-devel 
   - libgsf-tools 
-  - libgsl-gnu-hpc 
-  - libgsl_2_8_0-gnu-hpc 
-  - libgslcblas-gnu-hpc 
-  - libgslcblas_2_8_0-gnu-hpc 
   - libgsm-devel 
   - libgsm-devel-32bit 
   - libgsm-utils 
@@ -13987,100 +13891,30 @@ unsorted:
   - libhdf5-310-mvapich2 
   - libhdf5-310-openmpi4 
   - libhdf5-310-openmpi5 
-  - libhdf5-gnu-hpc 
-  - libhdf5-gnu-mpich-hpc 
-  - libhdf5-gnu-mvapich2-hpc 
-  - libhdf5-gnu-openmpi4-hpc 
-  - libhdf5-gnu-openmpi5-hpc 
-  - libhdf5_1_14_6-gnu-hpc 
-  - libhdf5_1_14_6-gnu-mpich-hpc 
-  - libhdf5_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_cpp-gnu-hpc 
-  - libhdf5_cpp-gnu-mpich-hpc 
-  - libhdf5_cpp-gnu-mvapich2-hpc 
-  - libhdf5_cpp-gnu-openmpi4-hpc 
-  - libhdf5_cpp-gnu-openmpi5-hpc 
   - libhdf5_cpp310 
   - libhdf5_cpp310-mvapich2 
   - libhdf5_cpp310-openmpi4 
   - libhdf5_cpp310-openmpi5 
-  - libhdf5_cpp_1_14_6-gnu-hpc 
-  - libhdf5_cpp_1_14_6-gnu-mpich-hpc 
-  - libhdf5_cpp_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_cpp_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_cpp_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_fortran-gnu-hpc 
-  - libhdf5_fortran-gnu-mpich-hpc 
-  - libhdf5_fortran-gnu-mvapich2-hpc 
-  - libhdf5_fortran-gnu-openmpi4-hpc 
-  - libhdf5_fortran-gnu-openmpi5-hpc 
   - libhdf5_fortran310 
   - libhdf5_fortran310-mvapich2 
   - libhdf5_fortran310-openmpi4 
   - libhdf5_fortran310-openmpi5 
-  - libhdf5_fortran_1_14_6-gnu-hpc 
-  - libhdf5_fortran_1_14_6-gnu-mpich-hpc 
-  - libhdf5_fortran_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_fortran_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_fortran_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_hl-gnu-hpc 
-  - libhdf5_hl-gnu-mpich-hpc 
-  - libhdf5_hl-gnu-mvapich2-hpc 
-  - libhdf5_hl-gnu-openmpi4-hpc 
-  - libhdf5_hl-gnu-openmpi5-hpc 
   - libhdf5_hl310 
   - libhdf5_hl310-mvapich2 
   - libhdf5_hl310-openmpi4 
   - libhdf5_hl310-openmpi5 
-  - libhdf5_hl_1_14_6-gnu-hpc 
-  - libhdf5_hl_1_14_6-gnu-mpich-hpc 
-  - libhdf5_hl_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_hl_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_hl_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_hl_cpp-gnu-hpc 
-  - libhdf5_hl_cpp-gnu-mpich-hpc 
-  - libhdf5_hl_cpp-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp-gnu-openmpi4-hpc 
-  - libhdf5_hl_cpp-gnu-openmpi5-hpc 
   - libhdf5_hl_cpp310 
   - libhdf5_hl_cpp310-mvapich2 
   - libhdf5_hl_cpp310-openmpi4 
   - libhdf5_hl_cpp310-openmpi5 
-  - libhdf5_hl_cpp_1_14_6-gnu-hpc 
-  - libhdf5_hl_cpp_1_14_6-gnu-mpich-hpc 
-  - libhdf5_hl_cpp_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_hl_cpp_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_hl_cpp_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_hl_fortran-gnu-hpc 
-  - libhdf5_hl_fortran-gnu-mpich-hpc 
-  - libhdf5_hl_fortran-gnu-mvapich2-hpc 
-  - libhdf5_hl_fortran-gnu-openmpi4-hpc 
-  - libhdf5_hl_fortran-gnu-openmpi5-hpc 
   - libhdf5_hl_fortran310 
   - libhdf5_hl_fortran310-mvapich2 
   - libhdf5_hl_fortran310-openmpi4 
   - libhdf5_hl_fortran310-openmpi5 
-  - libhdf5_hl_fortran_1_14_6-gnu-hpc 
-  - libhdf5_hl_fortran_1_14_6-gnu-mpich-hpc 
-  - libhdf5_hl_fortran_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_hl_fortran_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_hl_fortran_1_14_6-gnu-openmpi5-hpc 
-  - libhdf5_tools-gnu-hpc 
-  - libhdf5_tools-gnu-mpich-hpc 
-  - libhdf5_tools-gnu-mvapich2-hpc 
-  - libhdf5_tools-gnu-openmpi4-hpc 
-  - libhdf5_tools-gnu-openmpi5-hpc 
   - libhdf5_tools310 
   - libhdf5_tools310-mvapich2 
   - libhdf5_tools310-openmpi4 
   - libhdf5_tools310-openmpi5 
-  - libhdf5_tools_1_14_6-gnu-hpc 
-  - libhdf5_tools_1_14_6-gnu-mpich-hpc 
-  - libhdf5_tools_1_14_6-gnu-mvapich2-hpc 
-  - libhdf5_tools_1_14_6-gnu-openmpi4-hpc 
-  - libhdf5_tools_1_14_6-gnu-openmpi5-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
   - libhealpix_cxx4 
@@ -14797,9 +14631,7 @@ unsorted:
   - libmetal0 
   - libmetalink-devel 
   - libmetee4_3_1 
-  - libmetis-gnu-hpc 
   - libmetis5 
-  - libmetis_5_1_0-gnu-hpc 
   - libmetrics-devel 
   - libmetrics0 
   - libmfx 
@@ -14947,20 +14779,18 @@ unsorted:
   - libmtdev1-32bit 
   - libmtp-devel 
   - libmuffin0 
-  - libmumps-gnu-mpich-hpc 
-  - libmumps-gnu-mvapich2-hpc 
-  - libmumps-gnu-openmpi4-hpc 
   - libmumps-ptscotch5_3_5-openmpi4 
   - libmumps-ptscotch5_3_5-openmpi4-compat 
+  - libmumps-ptscotch5_3_5-openmpi5 
+  - libmumps-ptscotch5_3_5-openmpi5-compat 
   - libmumps-scotch5_3_5 
   - libmumps5_3_5 
   - libmumps5_3_5-mvapich2 
   - libmumps5_3_5-mvapich2-compat 
   - libmumps5_3_5-openmpi4 
   - libmumps5_3_5-openmpi4-compat 
-  - libmumps_5_3_5-gnu-mpich-hpc 
-  - libmumps_5_3_5-gnu-mvapich2-hpc 
-  - libmumps_5_3_5-gnu-openmpi4-hpc 
+  - libmumps5_3_5-openmpi5 
+  - libmumps5_3_5-openmpi5-compat 
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
@@ -15015,16 +14845,9 @@ unsorted:
   - libnetcdf-cxx4_4_3_1-gnu-hpc 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel 
   - libnetcdf-cxx4_4_3_1-gnu-hpc-devel-static 
-  - libnetcdf-gnu-hpc 
-  - libnetcdf-gnu-mpich-hpc 
-  - libnetcdf-gnu-mvapich2-hpc 
-  - libnetcdf-gnu-openmpi4-hpc 
   - libnetcdf19 
   - libnetcdf19-openmpi4 
-  - libnetcdf_4_9_2-gnu-hpc 
-  - libnetcdf_4_9_2-gnu-mpich-hpc 
-  - libnetcdf_4_9_2-gnu-mvapich2-hpc 
-  - libnetcdf_4_9_2-gnu-openmpi4-hpc 
+  - libnetcdf19-openmpi5 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -15231,14 +15054,6 @@ unsorted:
   - libopenal0-32bit 
   - libopenal1-32bit 
   - libopenbabel7 
-  - libopenblas-gnu-hpc 
-  - libopenblas-gnu-hpc-devel 
-  - libopenblas-pthreads-gnu-hpc 
-  - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_29-gnu-hpc 
-  - libopenblas-pthreads_0_3_29-gnu-hpc-devel 
-  - libopenblas_0_3_29-gnu-hpc 
-  - libopenblas_0_3_29-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_pthreads-devel 
   - libopenblas_pthreads-devel-32bit 
@@ -15278,10 +15093,6 @@ unsorted:
   - libopenjp2-7-32bit 
   - libopenjph0_21 
   - libopenlibm4 
-  - libopenmpi4-gnu-hpc 
-  - libopenmpi5-gnu-hpc 
-  - libopenmpi_4_1_8-gnu-hpc 
-  - libopenmpi_5_0_7-gnu-hpc 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
   - libopenmpt0-32bit 
@@ -15450,8 +15261,6 @@ unsorted:
   - libpantheon-wayland1 
   - libpaper-devel 
   - libpapi 
-  - libpapi-hpc 
-  - libpapi_7_1_0-hpc 
   - libpappl1 
   - libparanoia1_0 
   - libparaview5_13 
@@ -15508,14 +15317,9 @@ unsorted:
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
   - libperseus-sdr0 
-  - libpetsc-gnu-mpich-hpc 
-  - libpetsc-gnu-mvapich2-hpc 
-  - libpetsc-gnu-openmpi4-hpc 
   - libpetsc3_22 
   - libpetsc3_22-openmpi4 
-  - libpetsc_3_22_2-gnu-mpich-hpc 
-  - libpetsc_3_22_2-gnu-mvapich2-hpc 
-  - libpetsc_3_22_2-gnu-openmpi4-hpc 
+  - libpetsc3_22-openmpi5 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -15574,15 +15378,10 @@ unsorted:
   - libpmempool1 
   - libpmi0 
   - libpmix2 
-  - libpnetcdf-gnu-mpich-hpc 
-  - libpnetcdf-gnu-mvapich2-hpc 
-  - libpnetcdf-gnu-openmpi4-hpc 
   - libpnetcdf4-mpich 
   - libpnetcdf4-mvapich2 
   - libpnetcdf4-openmpi4 
-  - libpnetcdf_1_12_3-gnu-mpich-hpc 
-  - libpnetcdf_1_12_3-gnu-mvapich2-hpc 
-  - libpnetcdf_1_12_3-gnu-openmpi4-hpc 
+  - libpnetcdf4-openmpi5 
   - libpng12-0 
   - libpng12-0-32bit 
   - libpng12-compat-devel 
@@ -15697,15 +15496,10 @@ unsorted:
   - libpsx2-32bit 
   - libptexenc1 
   - libptl2 
-  - libptscotch-gnu-mpich-hpc 
-  - libptscotch-gnu-mvapich2-hpc 
-  - libptscotch-gnu-openmpi4-hpc 
   - libptscotch0-mpich 
   - libptscotch0-mvapich2 
   - libptscotch0-openmpi4 
-  - libptscotch_6_1_0-gnu-mpich-hpc 
-  - libptscotch_6_1_0-gnu-mvapich2-hpc 
-  - libptscotch_6_1_0-gnu-openmpi4-hpc 
+  - libptscotch0-openmpi5 
   - libptytty-devel 
   - libptytty0 
   - libpugixml1 
@@ -16289,14 +16083,6 @@ unsorted:
   - libsass-devel 
   - libsatyr4 
   - libsbc1-32bit 
-  - libscalapack2-gnu-mpich-hpc 
-  - libscalapack2-gnu-mpich-hpc-devel 
-  - libscalapack2-gnu-mvapich2-hpc 
-  - libscalapack2-gnu-mvapich2-hpc-devel 
-  - libscalapack2-gnu-openmpi4-hpc 
-  - libscalapack2-gnu-openmpi4-hpc-devel 
-  - libscalapack2-gnu-openmpi5-hpc 
-  - libscalapack2-gnu-openmpi5-hpc-devel 
   - libscalapack2-mvapich2 
   - libscalapack2-mvapich2-devel 
   - libscalapack2-mvapich2-devel-static 
@@ -16306,18 +16092,6 @@ unsorted:
   - libscalapack2-openmpi5 
   - libscalapack2-openmpi5-devel 
   - libscalapack2-openmpi5-devel-static 
-  - libscalapack2_2_2_0-gnu-mpich-hpc 
-  - libscalapack2_2_2_0-gnu-mpich-hpc-devel 
-  - libscalapack2_2_2_0-gnu-mpich-hpc-devel-static 
-  - libscalapack2_2_2_0-gnu-mvapich2-hpc 
-  - libscalapack2_2_2_0-gnu-mvapich2-hpc-devel 
-  - libscalapack2_2_2_0-gnu-mvapich2-hpc-devel-static 
-  - libscalapack2_2_2_0-gnu-openmpi4-hpc 
-  - libscalapack2_2_2_0-gnu-openmpi4-hpc-devel 
-  - libscalapack2_2_2_0-gnu-openmpi4-hpc-devel-static 
-  - libscalapack2_2_2_0-gnu-openmpi5-hpc 
-  - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel 
-  - libscalapack2_2_2_0-gnu-openmpi5-hpc-devel-static 
   - libscamperctrl-devel 
   - libscamperctrl4 
   - libscamperfile-devel 
@@ -16333,14 +16107,13 @@ unsorted:
   - libschroedinger-1_0-0-32bit 
   - libscintilla-devel 
   - libscintilla5 
-  - libscotch-gnu-hpc 
   - libscotch0 
-  - libscotch_6_1_0-gnu-hpc 
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
   - libsdbus-c++2 
   - libseafile0 
+  - libseagull0 
   - libsearpc-devel 
   - libsearpc1 
   - libseat1 
@@ -16663,10 +16436,8 @@ unsorted:
   - libsundials_sunnonlin4 
   - libsundials_sunnonlin4-mvapich2 
   - libsundials_sunnonlin4-openmpi4 
-  - libsuperlu-gnu-hpc 
   - libsuperlu7 
   - libsuperlu7-32bit 
-  - libsuperlu_7_0_0-gnu-hpc 
   - libsurgescript0_6_1 
   - libsuseconnect 
   - libsvm-devel 
@@ -18903,14 +18674,6 @@ unsorted:
   - metis-devel 
   - metis-doc 
   - metis-examples 
-  - metis-gnu-hpc 
-  - metis-gnu-hpc-devel 
-  - metis-gnu-hpc-doc 
-  - metis-gnu-hpc-examples 
-  - metis_5_1_0-gnu-hpc 
-  - metis_5_1_0-gnu-hpc-devel 
-  - metis_5_1_0-gnu-hpc-doc 
-  - metis_5_1_0-gnu-hpc-examples 
   - metronome 
   - metronome-lang 
   - metslib-devel 
@@ -19362,62 +19125,43 @@ unsorted:
   - mpg123-sdl 
   - mpg123-sdl-32bit 
   - mpi-selector 
-  - mpiP-gnu-mpich-hpc 
-  - mpiP-gnu-mpich-hpc-devel 
-  - mpiP-gnu-mpich-hpc-doc 
-  - mpiP-gnu-mvapich2-hpc 
-  - mpiP-gnu-mvapich2-hpc-devel 
-  - mpiP-gnu-mvapich2-hpc-doc 
-  - mpiP-gnu-openmpi4-hpc 
-  - mpiP-gnu-openmpi4-hpc-devel 
-  - mpiP-gnu-openmpi4-hpc-doc 
-  - mpiP_3_5-gnu-mpich-hpc 
-  - mpiP_3_5-gnu-mpich-hpc-devel 
-  - mpiP_3_5-gnu-mpich-hpc-devel-static 
-  - mpiP_3_5-gnu-mpich-hpc-doc 
-  - mpiP_3_5-gnu-mvapich2-hpc 
-  - mpiP_3_5-gnu-mvapich2-hpc-devel 
-  - mpiP_3_5-gnu-mvapich2-hpc-devel-static 
-  - mpiP_3_5-gnu-mvapich2-hpc-doc 
-  - mpiP_3_5-gnu-openmpi4-hpc 
-  - mpiP_3_5-gnu-openmpi4-hpc-devel 
-  - mpiP_3_5-gnu-openmpi4-hpc-devel-static 
-  - mpiP_3_5-gnu-openmpi4-hpc-doc 
+  - mpiP-mpich 
+  - mpiP-mpich-devel 
+  - mpiP-mpich-devel-static 
+  - mpiP-mpich-doc 
+  - mpiP-mvapich2 
+  - mpiP-mvapich2-devel 
+  - mpiP-mvapich2-devel-static 
+  - mpiP-mvapich2-doc 
+  - mpiP-mvapich3-ofi 
+  - mpiP-mvapich3-ofi-devel 
+  - mpiP-mvapich3-ofi-devel-static 
+  - mpiP-mvapich3-ofi-doc 
+  - mpiP-mvapich3-ucx 
+  - mpiP-mvapich3-ucx-devel 
+  - mpiP-mvapich3-ucx-devel-static 
+  - mpiP-mvapich3-ucx-doc 
+  - mpiP-openmpi4 
+  - mpiP-openmpi4-devel 
+  - mpiP-openmpi4-devel-static 
+  - mpiP-openmpi4-doc 
+  - mpiP-openmpi5 
+  - mpiP-openmpi5-devel 
+  - mpiP-openmpi5-devel-static 
+  - mpiP-openmpi5-doc 
   - mpibash 
   - mpibash-examples 
   - mpich 
   - mpich-devel 
-  - mpich-gnu-hpc 
-  - mpich-gnu-hpc-devel 
-  - mpich-gnu-hpc-devel-static 
-  - mpich-gnu-hpc-macros-devel 
   - mpich-ofi 
   - mpich-ofi-devel 
-  - mpich-ofi-gnu-hpc 
-  - mpich-ofi-gnu-hpc-devel 
-  - mpich-ofi-gnu-hpc-devel-static 
-  - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_4_3_0-gnu-hpc 
-  - mpich-ofi_4_3_0-gnu-hpc-devel 
-  - mpich-ofi_4_3_0-gnu-hpc-devel-static 
-  - mpich-ofi_4_3_0-gnu-hpc-macros-devel 
-  - mpich_4_3_0-gnu-hpc 
-  - mpich_4_3_0-gnu-hpc-devel 
-  - mpich_4_3_0-gnu-hpc-devel-static 
-  - mpich_4_3_0-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
-  - mpitests-mpich-gnu-hpc 
   - mpitests-mpich-ofi 
-  - mpitests-mpich-ofi-gnu-hpc 
   - mpitests-mvapich2 
-  - mpitests-mvapich2-gnu-hpc 
   - mpitests-mvapich2-psm2 
-  - mpitests-mvapich2-psm2-gnu-hpc 
   - mpitests-openmpi4 
-  - mpitests-openmpi4-gnu-hpc 
   - mpitests-openmpi5 
-  - mpitests-openmpi5-gnu-hpc 
   - mplus-code-latin-variable-fonts 
   - mplus-code-latin50-fonts 
   - mplus-code-latin60-fonts 
@@ -19512,15 +19256,6 @@ unsorted:
   - mumps-devel-static 
   - mumps-doc 
   - mumps-examples 
-  - mumps-gnu-mpich-hpc-devel 
-  - mumps-gnu-mpich-hpc-doc 
-  - mumps-gnu-mpich-hpc-examples 
-  - mumps-gnu-mvapich2-hpc-devel 
-  - mumps-gnu-mvapich2-hpc-doc 
-  - mumps-gnu-mvapich2-hpc-examples 
-  - mumps-gnu-openmpi4-hpc-devel 
-  - mumps-gnu-openmpi4-hpc-doc 
-  - mumps-gnu-openmpi4-hpc-examples 
   - mumps-mvapich2-devel 
   - mumps-mvapich2-devel-static 
   - mumps-mvapich2-devel-static-compat 
@@ -19529,25 +19264,21 @@ unsorted:
   - mumps-openmpi4-devel-static 
   - mumps-openmpi4-devel-static-compat 
   - mumps-openmpi4-examples 
+  - mumps-openmpi5-devel 
+  - mumps-openmpi5-devel-static 
+  - mumps-openmpi5-devel-static-compat 
+  - mumps-openmpi5-examples 
   - mumps-ptscotch-openmpi4-devel 
   - mumps-ptscotch-openmpi4-devel-static 
   - mumps-ptscotch-openmpi4-devel-static-compat 
   - mumps-ptscotch-openmpi4-examples 
+  - mumps-ptscotch-openmpi5-devel 
+  - mumps-ptscotch-openmpi5-devel-static 
+  - mumps-ptscotch-openmpi5-devel-static-compat 
+  - mumps-ptscotch-openmpi5-examples 
   - mumps-scotch-devel 
   - mumps-scotch-devel-static 
   - mumps-scotch-examples 
-  - mumps_5_3_5-gnu-mpich-hpc-devel 
-  - mumps_5_3_5-gnu-mpich-hpc-devel-static 
-  - mumps_5_3_5-gnu-mpich-hpc-doc 
-  - mumps_5_3_5-gnu-mpich-hpc-examples 
-  - mumps_5_3_5-gnu-mvapich2-hpc-devel 
-  - mumps_5_3_5-gnu-mvapich2-hpc-devel-static 
-  - mumps_5_3_5-gnu-mvapich2-hpc-doc 
-  - mumps_5_3_5-gnu-mvapich2-hpc-examples 
-  - mumps_5_3_5-gnu-openmpi4-hpc-devel 
-  - mumps_5_3_5-gnu-openmpi4-hpc-devel-static 
-  - mumps_5_3_5-gnu-openmpi4-hpc-doc 
-  - mumps_5_3_5-gnu-openmpi4-hpc-examples 
   - munge 
   - munge-devel 
   - munge-maven-plugin 
@@ -19582,52 +19313,16 @@ unsorted:
   - mvapich2-devel 
   - mvapich2-devel-static 
   - mvapich2-doc 
-  - mvapich2-gnu-hpc 
-  - mvapich2-gnu-hpc-devel 
-  - mvapich2-gnu-hpc-doc 
-  - mvapich2-gnu-hpc-macros-devel 
   - mvapich2-psm2 
   - mvapich2-psm2-devel 
   - mvapich2-psm2-devel-static 
   - mvapich2-psm2-doc 
-  - mvapich2-psm2-gnu-hpc 
-  - mvapich2-psm2-gnu-hpc-devel 
-  - mvapich2-psm2-gnu-hpc-doc 
-  - mvapich2-psm2-gnu-hpc-macros-devel 
-  - mvapich2-psm2_2_3_7-gnu-hpc 
-  - mvapich2-psm2_2_3_7-gnu-hpc-devel 
-  - mvapich2-psm2_2_3_7-gnu-hpc-devel-static 
-  - mvapich2-psm2_2_3_7-gnu-hpc-doc 
-  - mvapich2-psm2_2_3_7-gnu-hpc-macros-devel 
-  - mvapich2_2_3_7-gnu-hpc 
-  - mvapich2_2_3_7-gnu-hpc-devel 
-  - mvapich2_2_3_7-gnu-hpc-devel-static 
-  - mvapich2_2_3_7-gnu-hpc-doc 
-  - mvapich2_2_3_7-gnu-hpc-macros-devel 
   - mvapich3-ofi 
   - mvapich3-ofi-devel 
   - mvapich3-ofi-doc 
-  - mvapich3-ofi-gnu-hpc 
-  - mvapich3-ofi-gnu-hpc-devel 
-  - mvapich3-ofi-gnu-hpc-doc 
-  - mvapich3-ofi-gnu-hpc-macros-devel 
-  - mvapich3-ofi_3_0-gnu-hpc 
-  - mvapich3-ofi_3_0-gnu-hpc-devel 
-  - mvapich3-ofi_3_0-gnu-hpc-devel-static 
-  - mvapich3-ofi_3_0-gnu-hpc-doc 
-  - mvapich3-ofi_3_0-gnu-hpc-macros-devel 
   - mvapich3-ucx 
   - mvapich3-ucx-devel 
   - mvapich3-ucx-doc 
-  - mvapich3-ucx-gnu-hpc 
-  - mvapich3-ucx-gnu-hpc-devel 
-  - mvapich3-ucx-gnu-hpc-doc 
-  - mvapich3-ucx-gnu-hpc-macros-devel 
-  - mvapich3-ucx_3_0-gnu-hpc 
-  - mvapich3-ucx_3_0-gnu-hpc-devel 
-  - mvapich3-ucx_3_0-gnu-hpc-devel-static 
-  - mvapich3-ucx_3_0-gnu-hpc-doc 
-  - mvapich3-ucx_3_0-gnu-hpc-macros-devel 
   - mwic 
   - mxml-devel 
   - mxml-doc 
@@ -19932,29 +19627,12 @@ unsorted:
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
-  - netcdf-gnu-hpc 
-  - netcdf-gnu-hpc-devel 
-  - netcdf-gnu-mpich-hpc 
-  - netcdf-gnu-mpich-hpc-devel 
-  - netcdf-gnu-mvapich2-hpc 
-  - netcdf-gnu-mvapich2-hpc-devel 
-  - netcdf-gnu-openmpi4-hpc 
-  - netcdf-gnu-openmpi4-hpc-devel 
   - netcdf-openmpi4 
   - netcdf-openmpi4-devel 
   - netcdf-openmpi4-devel-static 
-  - netcdf_4_9_2-gnu-hpc 
-  - netcdf_4_9_2-gnu-hpc-devel 
-  - netcdf_4_9_2-gnu-hpc-devel-static 
-  - netcdf_4_9_2-gnu-mpich-hpc 
-  - netcdf_4_9_2-gnu-mpich-hpc-devel 
-  - netcdf_4_9_2-gnu-mpich-hpc-devel-static 
-  - netcdf_4_9_2-gnu-mvapich2-hpc 
-  - netcdf_4_9_2-gnu-mvapich2-hpc-devel 
-  - netcdf_4_9_2-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_9_2-gnu-openmpi4-hpc 
-  - netcdf_4_9_2-gnu-openmpi4-hpc-devel 
-  - netcdf_4_9_2-gnu-openmpi4-hpc-devel-static 
+  - netcdf-openmpi5 
+  - netcdf-openmpi5-devel 
+  - netcdf-openmpi5-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -20696,10 +20374,6 @@ unsorted:
   - openbao-postgresql-database-plugin 
   - openbao-server 
   - openblas-common-devel 
-  - openblas-pthreads_0_3_29-gnu-hpc-devel-static 
-  - openblas-pthreads_0_3_29-gnu-hpc-tests 
-  - openblas_0_3_29-gnu-hpc-devel-static 
-  - openblas_0_3_29-gnu-hpc-tests 
   - openblas_openmp-devel-static 
   - openblas_openmp-tests 
   - openblas_pthreads-devel-static 
@@ -20775,39 +20449,16 @@ unsorted:
   - openmpi4-config 
   - openmpi4-devel 
   - openmpi4-docs 
-  - openmpi4-gnu-hpc 
-  - openmpi4-gnu-hpc-devel 
-  - openmpi4-gnu-hpc-devel-static 
-  - openmpi4-gnu-hpc-docs 
-  - openmpi4-gnu-hpc-macros-devel 
   - openmpi4-libs 
-  - openmpi4-libs-32bit 
   - openmpi4-macros-devel 
   - openmpi4-testsuite 
   - openmpi5 
   - openmpi5-config 
   - openmpi5-devel 
   - openmpi5-docs 
-  - openmpi5-gnu-hpc 
-  - openmpi5-gnu-hpc-devel 
-  - openmpi5-gnu-hpc-devel-static 
-  - openmpi5-gnu-hpc-docs 
-  - openmpi5-gnu-hpc-macros-devel 
   - openmpi5-libs 
   - openmpi5-macros-devel 
   - openmpi5-testsuite 
-  - openmpi_4_1_8-gnu-hpc 
-  - openmpi_4_1_8-gnu-hpc-devel 
-  - openmpi_4_1_8-gnu-hpc-devel-static 
-  - openmpi_4_1_8-gnu-hpc-docs 
-  - openmpi_4_1_8-gnu-hpc-macros-devel 
-  - openmpi_4_1_8-gnu-hpc-testsuite 
-  - openmpi_5_0_7-gnu-hpc 
-  - openmpi_5_0_7-gnu-hpc-devel 
-  - openmpi_5_0_7-gnu-hpc-devel-static 
-  - openmpi_5_0_7-gnu-hpc-docs 
-  - openmpi_5_0_7-gnu-hpc-macros-devel 
-  - openmpi_5_0_7-gnu-hpc-testsuite 
   - openmpt123 
   - openmw 
   - opennlp 
@@ -21231,11 +20882,6 @@ unsorted:
   - papi 
   - papi-devel 
   - papi-devel-static 
-  - papi-hpc 
-  - papi-hpc-devel 
-  - papi_7_1_0-hpc 
-  - papi_7_1_0-hpc-devel 
-  - papi_7_1_0-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
   - pappl 
@@ -21323,6 +20969,7 @@ unsorted:
   - patterns-ceph-containers-ceph_base 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
+  - patterns-cockpit 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
@@ -22453,6 +22100,7 @@ unsorted:
   - perl-Perl-Critic-Policy-Plicease-ProhibitArrayAssignAref 
   - perl-Perl-Critic-Policy-Variables-ProhibitLoopOnHash 
   - perl-Perl-Critic-Pulp 
+  - perl-Perl-Critic-TooMuchCode 
   - perl-Perl-PrereqScanner 
   - perl-Perl-PrereqScanner-NotQuiteLite 
   - perl-Perl-Tidy 
@@ -22963,16 +22611,8 @@ unsorted:
   - pesign-obs-integration 
   - pesign-systemd 
   - petsc-devel 
-  - petsc-gnu-mpich-hpc-devel 
-  - petsc-gnu-mvapich2-hpc-devel 
-  - petsc-gnu-openmpi4-hpc-devel 
   - petsc-openmpi4-devel 
-  - petsc_3_22_2-gnu-mpich-hpc-devel 
-  - petsc_3_22_2-gnu-mpich-hpc-saws 
-  - petsc_3_22_2-gnu-mvapich2-hpc-devel 
-  - petsc_3_22_2-gnu-mvapich2-hpc-saws 
-  - petsc_3_22_2-gnu-openmpi4-hpc-devel 
-  - petsc_3_22_2-gnu-openmpi4-hpc-saws 
+  - petsc-openmpi5-devel 
   - pfsalign 
   - pfscalibration 
   - pfsglview 
@@ -23339,13 +22979,6 @@ unsorted:
   - pmix-test 
   - pnetcdf-devel-data 
   - pnetcdf-doc 
-  - pnetcdf-gnu-mpich-hpc 
-  - pnetcdf-gnu-mpich-hpc-devel 
-  - pnetcdf-gnu-mvapich2-hpc 
-  - pnetcdf-gnu-mvapich2-hpc-devel 
-  - pnetcdf-gnu-openmpi4-hpc 
-  - pnetcdf-gnu-openmpi4-hpc-devel 
-  - pnetcdf-hpc-doc 
   - pnetcdf-mpich 
   - pnetcdf-mpich-devel 
   - pnetcdf-mpich-devel-static 
@@ -23355,16 +22988,9 @@ unsorted:
   - pnetcdf-openmpi4 
   - pnetcdf-openmpi4-devel 
   - pnetcdf-openmpi4-devel-static 
-  - pnetcdf_1_12_3-gnu-mpich-hpc 
-  - pnetcdf_1_12_3-gnu-mpich-hpc-devel 
-  - pnetcdf_1_12_3-gnu-mpich-hpc-devel-static 
-  - pnetcdf_1_12_3-gnu-mvapich2-hpc 
-  - pnetcdf_1_12_3-gnu-mvapich2-hpc-devel 
-  - pnetcdf_1_12_3-gnu-mvapich2-hpc-devel-static 
-  - pnetcdf_1_12_3-gnu-openmpi4-hpc 
-  - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel 
-  - pnetcdf_1_12_3-gnu-openmpi4-hpc-devel-static 
-  - pnetcdf_1_12_3-hpc-doc 
+  - pnetcdf-openmpi5 
+  - pnetcdf-openmpi5-devel 
+  - pnetcdf-openmpi5-devel-static 
   - png++-devel 
   - pngcheck 
   - pngcrush 
@@ -23809,12 +23435,6 @@ unsorted:
   - pthread-stubs-devel 
   - ptl-devel 
   - ptpd 
-  - ptscotch-gnu-mpich-hpc 
-  - ptscotch-gnu-mpich-hpc-devel 
-  - ptscotch-gnu-mvapich2-hpc 
-  - ptscotch-gnu-mvapich2-hpc-devel 
-  - ptscotch-gnu-openmpi4-hpc 
-  - ptscotch-gnu-openmpi4-hpc-devel 
   - ptscotch-mpich 
   - ptscotch-mpich-devel 
   - ptscotch-mpich-devel-static 
@@ -23824,18 +23444,13 @@ unsorted:
   - ptscotch-openmpi4 
   - ptscotch-openmpi4-devel 
   - ptscotch-openmpi4-devel-static 
+  - ptscotch-openmpi5 
+  - ptscotch-openmpi5-devel 
+  - ptscotch-openmpi5-devel-static 
   - ptscotch-parmetis-mpich-devel 
   - ptscotch-parmetis-mvapich2-devel 
   - ptscotch-parmetis-openmpi4-devel 
-  - ptscotch_6_1_0-gnu-mpich-hpc 
-  - ptscotch_6_1_0-gnu-mpich-hpc-devel 
-  - ptscotch_6_1_0-gnu-mpich-hpc-devel-static 
-  - ptscotch_6_1_0-gnu-mvapich2-hpc 
-  - ptscotch_6_1_0-gnu-mvapich2-hpc-devel 
-  - ptscotch_6_1_0-gnu-mvapich2-hpc-devel-static 
-  - ptscotch_6_1_0-gnu-openmpi4-hpc 
-  - ptscotch_6_1_0-gnu-openmpi4-hpc-devel 
-  - ptscotch_6_1_0-gnu-openmpi4-hpc-devel-static 
+  - ptscotch-parmetis-openmpi5-devel 
   - ptyxis 
   - ptyxis-lang 
   - pueue 
@@ -24559,7 +24174,6 @@ unsorted:
   - python311-StrEnum 
   - python311-TagStats 
   - python311-Telethon 
-  - python311-Tempita 
   - python311-TermRecord 
   - python311-Transplant 
   - python311-Trololio 
@@ -26497,14 +26111,8 @@ unsorted:
   - python311-numericalunits 
   - python311-numexpr 
   - python311-numpy-devel 
-  - python311-numpy-gnu-hpc 
-  - python311-numpy-gnu-hpc-devel 
   - python311-numpy1 
   - python311-numpy1-devel 
-  - python311-numpy_1_26_4-gnu-hpc 
-  - python311-numpy_1_26_4-gnu-hpc-devel 
-  - python311-numpy_2_2_2-gnu-hpc 
-  - python311-numpy_2_2_2-gnu-hpc-devel 
   - python311-numpydoc 
   - python311-nvim-remote 
   - python311-nwdiag 
@@ -28222,7 +27830,6 @@ unsorted:
   - python312-StrEnum 
   - python312-TagStats 
   - python312-Telethon 
-  - python312-Tempita 
   - python312-TermRecord 
   - python312-Transplant 
   - python312-Trololio 
@@ -30201,14 +29808,8 @@ unsorted:
   - python312-numexpr 
   - python312-numpy 
   - python312-numpy-devel 
-  - python312-numpy-gnu-hpc 
-  - python312-numpy-gnu-hpc-devel 
   - python312-numpy1 
   - python312-numpy1-devel 
-  - python312-numpy_1_26_4-gnu-hpc 
-  - python312-numpy_1_26_4-gnu-hpc-devel 
-  - python312-numpy_2_2_2-gnu-hpc 
-  - python312-numpy_2_2_2-gnu-hpc-devel 
   - python312-numpydoc 
   - python312-nvim-remote 
   - python312-nwdiag 
@@ -31947,7 +31548,6 @@ unsorted:
   - python313-StrEnum 
   - python313-TagStats 
   - python313-Telethon 
-  - python313-Tempita 
   - python313-TermRecord 
   - python313-Transplant 
   - python313-Trololio 
@@ -33883,14 +33483,8 @@ unsorted:
   - python313-numericalunits 
   - python313-numexpr 
   - python313-numpy-devel 
-  - python313-numpy-gnu-hpc 
-  - python313-numpy-gnu-hpc-devel 
   - python313-numpy1 
   - python313-numpy1-devel 
-  - python313-numpy_1_26_4-gnu-hpc 
-  - python313-numpy_1_26_4-gnu-hpc-devel 
-  - python313-numpy_2_2_2-gnu-hpc 
-  - python313-numpy_2_2_2-gnu-hpc-devel 
   - python313-numpydoc 
   - python313-nvim-remote 
   - python313-nwdiag 
@@ -37078,14 +36672,6 @@ unsorted:
   - scalapack-mvapich2-test 
   - scalapack-openmpi4-test 
   - scalapack-openmpi5-test 
-  - scalapack_2_2_0-gnu-mpich-hpc-module 
-  - scalapack_2_2_0-gnu-mpich-hpc-test 
-  - scalapack_2_2_0-gnu-mvapich2-hpc-module 
-  - scalapack_2_2_0-gnu-mvapich2-hpc-test 
-  - scalapack_2_2_0-gnu-openmpi4-hpc-module 
-  - scalapack_2_2_0-gnu-openmpi4-hpc-test 
-  - scalapack_2_2_0-gnu-openmpi5-hpc-module 
-  - scalapack_2_2_0-gnu-openmpi5-hpc-test 
   - scalpel 
   - scamper 
   - scanmem 
@@ -37125,12 +36711,7 @@ unsorted:
   - scotch 
   - scotch-devel 
   - scotch-devel-static 
-  - scotch-gnu-hpc 
-  - scotch-gnu-hpc-devel 
   - scotch-metis-devel 
-  - scotch_6_1_0-gnu-hpc 
-  - scotch_6_1_0-gnu-hpc-devel 
-  - scotch_6_1_0-gnu-hpc-devel-static 
   - scout 
   - scout-command-not-found 
   - scream 
@@ -37183,6 +36764,7 @@ unsorted:
   - sdl-ball 
   - sdl12_compat-devel 
   - sdl2-compat-devel 
+  - sdl2-compat-devel-32bit 
   - sdl_bomber 
   - sdlpop 
   - sdparm 
@@ -37191,6 +36773,8 @@ unsorted:
   - seafile 
   - seafile-client 
   - seafile-devel 
+  - seagull-devel 
+  - seagull-doc 
   - seamonkey 
   - seamonkey-dom-inspector 
   - seamonkey-irc 
@@ -37843,12 +37427,6 @@ unsorted:
   - superlu-devel 
   - superlu-doc 
   - superlu-examples 
-  - superlu-gnu-hpc-devel 
-  - superlu-gnu-hpc-doc 
-  - superlu-gnu-hpc-examples 
-  - superlu_7_0_0-gnu-hpc-devel 
-  - superlu_7_0_0-gnu-hpc-doc 
-  - superlu_7_0_0-gnu-hpc-examples 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -48519,6 +48097,7 @@ unsorted:
   - typelib-1_0-RygelRenderer-2_8 
   - typelib-1_0-RygelRendererGst-2_8 
   - typelib-1_0-RygelServer-2_8 
+  - typelib-1_0-Seagull-1_0 
   - typelib-1_0-Skk-1_0 
   - typelib-1_0-Soup-2_4 
   - typelib-1_0-SpeechProvider-1_0 
@@ -48559,6 +48138,7 @@ unsorted:
   - typelib-1_0-libmirage-3_2 
   - typesafe-config 
   - typescript 
+  - typescript-go 
   - typioca 
   - typioca-bash-completion 
   - typioca-zsh-completion 
