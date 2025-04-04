@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr  4 12:52:31 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 1.0.2:
+  * Control: cdircontent: methods taking output parameters should clear them first
+- update to 1.0.1:
+   * Control: content directory: improve access to properties with multiple values
+     or artist roles. API change.
+   * Changed version to 1.0 because should now be stable
+
+-------------------------------------------------------------------
 Sun Mar  9 12:51:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.26.8:

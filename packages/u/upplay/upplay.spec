@@ -17,13 +17,13 @@
 
 
 Name:           upplay
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
 URL:            https://www.lesbonscomptes.com/upplay/
 Source0:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
-Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
+#Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -32,7 +32,7 @@ BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(jsoncpp)
-BuildRequires:  pkgconfig(libupnpp) >= 0.24.1
+BuildRequires:  pkgconfig(libupnpp) >= 1.0.0
 BuildRequires:  pkgconfig(mpris-qt5)
 
 %description

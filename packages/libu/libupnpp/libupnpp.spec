@@ -1,7 +1,7 @@
 #
 # spec file for package libupnpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define so_ver  16
+%define so_ver  17
 Name:           libupnpp
-Version:        0.26.8
+Version:        1.0.2
 Release:        0
 Summary:        Library providing a higher level API over libnpupnp or libupnp
 License:        LGPL-2.1-or-later
@@ -82,7 +82,7 @@ developing applications that use %{name}.
 %files -n %{name}%{so_ver}
 %license COPYING LICENSE
 %{_libdir}/*.so.%{so_ver}
-%{_libdir}/*.so.%{so_ver}.*
+%{_libdir}/*.so.%{version}
 
 %files devel
 %license COPYING LICENSE
