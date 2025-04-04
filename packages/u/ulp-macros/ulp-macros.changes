@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  2 20:27:16 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Update to comply with gcc-15.
+
+-------------------------------------------------------------------
 Mon Feb  3 20:53:28 UTC 2025 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Reduce prologue size on ppc64le (bsc#1236776).
