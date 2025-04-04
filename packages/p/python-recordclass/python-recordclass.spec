@@ -1,7 +1,7 @@
 #
 # spec file for package python-recordclass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-recordclass
 Version:        0.22.1
 Release:        0
@@ -24,6 +23,8 @@ Summary:        Library implementing a mutable variant of namedtuple
 License:        MIT
 URL:            https://github.com/intellimath/recordclass
 Source:         https://files.pythonhosted.org/packages/source/r/recordclass/recordclass-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#intellimath/recordclass#338044cbf771e5665a744d3b36b5d7edd126d16a
+Patch0:         do-not-use-pytuple-get-size.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +42,7 @@ Mutable variant of namedtuple -- recordclass, which support assignments, and
 other memory saving variants.
 
 %prep
-%setup -q -n recordclass-%{version}
+%autosetup -p1 -n recordclass-%{version}
 
 %build
 export CFLAGS="%{optflags}"
