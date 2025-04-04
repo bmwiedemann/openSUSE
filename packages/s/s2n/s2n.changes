@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Apr  2 15:14:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.15
+  * feature: openssl-3.0-fips support (#5191)
+  * ci: defend against unset version number in awslc installer (#5195)
+  * fix: openssl-3.0-fips should use libcrypto HKDF (#5183)
+  * fix: remove unnecessary RC4 restriction (#5170)
+  * fix: openssl-3.0-fips should use separate private rand (#5184)
+  * ci: move openssl3fips build to existing asan build (#5181)
+  * chore: include Need By Date section in github issue template (#5187)
+  * ci: cleanup awslc-fips versioning (#5156)
+  * chore: bump linting action Ubuntu version (#5186)
+  * build(deps): update aws-lc-rs version to remove paste deps (#5192)
+  * test: fix self-talk pkey offload test for openssl-3.0-fips (#5175)
+  * test: reduce parameter selection (#5161)
+  * chore: add inline noqa suppression (#5159)
+  * ci: make start_codebuild.sh work for forks (#5178)
+  * test(integv2): add partial support for OpenSSL 3.0 provider (#5131)
+  * (docs): Improve PQ docs (#5173)
+  * ci: use ruff --diff instead of --check (#5177)
+  * chore: pin once_cell version to unblock the CI (#5174)
+  * fix(ruff): resolve linting errors detected by Ruff (#5140)
+  * fix: mark chachapoly as unavailable with openssl-3.0-fips (#5168)
+  * tests: fix flaky ja4 test (#5169)
+  * chore: update git blame ignore commit ID (#5164)
+  * style: fix redundant return (#5150)
+  * build(deps): bump nixbuild/nix-quick-install-action from 29 to 30
+    in /.github/workflows in the all-gha-updates group (#5153)
+  * refactor: add libcrypto PRF impl for openssl-3.0-fips (#5158)
+  * chore: binding release 0.3.13 (#5167)
+  * chore(ci): pin symbolic-common (#5166)
+
+-------------------------------------------------------------------
 Fri Mar 14 09:44:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.14
