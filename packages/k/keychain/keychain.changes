@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 11:19:50 UTC 2025 - Christoffer Karlsson <ck@ckarlsson.me>
+
+- Only depend on openssh-clients, not openssh-server
+
+-------------------------------------------------------------------
 Mon Apr 25 09:38:38 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - use https url 

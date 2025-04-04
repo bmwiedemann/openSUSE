@@ -1,7 +1,7 @@
 #
 # spec file for package keychain
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@ URL:            https://www.funtoo.org/Keychain
 Source:         https://github.com/funtoo/keychain/archive/2.8.5.tar.gz#/%{name}-%{version}.tar.gz
 Requires:       bash
 Requires:       coreutils
-Requires:       openssh
+Requires:       openssh-clients
 Requires:       sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
