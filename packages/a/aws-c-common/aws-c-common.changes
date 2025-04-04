@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  2 13:51:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.2
+  * Tests require compiler extensions by @graebm in (#1193)
+  * Simplify how inline math files are included by @graebm in (#1195)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:33:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.1
