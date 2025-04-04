@@ -1459,4 +1459,16 @@ This set of changes is not suitable for direct copy to currently released produc
 - Refresh patches: mkfs-default-features.patch (context) (forwarded request 1265982 from dsterba)</comment>
     <requestid>1265983</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>4618263b432ea174e06c8bf10529dcf1</srcmd5>
+    <version>6.14</version>
+    <time>1743780508</time>
+    <user>anag+factory</user>
+    <comment>- update to 6.14
+- spec file:
+  - update subpackage descriptions
+  - drop conditional build of documentation, always use source
+  - drop pre-systemd udev workarounds (version 190) (forwarded request 1266713 from dsterba)</comment>
+    <requestid>1266714</requestid>
+  </revision>
 </revisionlist>

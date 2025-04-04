@@ -16,9 +16,6 @@
 #
 
 
-%define udev_with_btrfs_builtin 190
-%define udev_version %(pkg-config --modversion udev)
-%define package_udev_rules %{udev_version} >= %{udev_with_btrfs_builtin}
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
 # enable building of btrfsprogs-static
@@ -28,13 +25,10 @@
 %define build_static	1
 %endif
 
-# the tarball contains prebuilt documentation
-%define build_docs	0
-
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.13
+Version:        6.14
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -56,9 +50,6 @@ Provides:       btrfs-progs(%_arch) = %{version}-%{release}
 
 Patch1:         mkfs-default-features.patch
 
-%if %build_docs
-BuildRequires:  python3-Sphinx
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  dracut
@@ -88,13 +79,12 @@ Requires(postun):coreutils
 %endif
 Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
-%if %{package_udev_rules}
 Requires:       btrfsprogs-udev-rules
-%endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-Utilities needed to create and maintain btrfs file systems under Linux.
+Utilities needed to create and maintain Btrfs file systems under Linux (btrfs,
+mkfs.btrfs, btrfs-convert, btrfs-image, ...).
 
 %if %build_static
 %package -n btrfsprogs-static
@@ -114,11 +104,12 @@ BuildRequires:  lzo-devel-static
 BuildRequires:  zlib-devel-static
 
 %description -n btrfsprogs-static
-Static build of utilities needed to create and maintain btrfs file systems
-under Linux. Suitable for limited or rescue environments.
+Static build of utilities needed to create and maintain Btrfs file systems
+under Linux (btrfs, mkfs.btrfs, btrfs-convert, btrfs-image, ...).
+Suitable for limited or rescue environments.
 
-Warning: the zlib and lzo libraries are statically linked in and may lack
-important updates
+Warning: the zlib, lzo and zstd libraries are statically linked in and may lack
+important updates as their version is fixed and not linked to system libaries.
 %endif
 
 %package -n libbtrfs0
@@ -126,8 +117,7 @@ Summary:        Library for interacting with Btrfs
 Group:          System/Libraries
 
 %description -n libbtrfs0
-This package contains the libbtrfs.so shared library needed for some
-applications to interface with btrfs.
+This package contains the versioned libbtrfs.so shared library.
 
 %package -n libbtrfs-devel
 Summary:        Include Files and Libraries for developing with Btrfs
@@ -136,33 +126,28 @@ Requires:       %{name} = %{version}-%{release}
 Requires:       libbtrfs0 = %{version}
 
 %description -n libbtrfs-devel
-This package contains the libraries and headers files for developers to
-build applications to interface with Btrfs.
+This package contains the libbtrfs.so shared library and limited API to access
+Btrfs filesystems.
 
-# rpm < 4.6.0 (SLE11 uses 4.4) doesn't support noarch subpackages.
-# Fortunately, it doesn't use systemd either so we can just skip it.
-%if %{package_udev_rules}
 %package udev-rules
 Summary:        Udev rules for configuring btrfs file systems
 Group:          System/Kernel
-Conflicts:      udev < %{udev_with_btrfs_builtin}
 BuildArch:      noarch
 
 %description udev-rules
 This package contains the udev rule file for configuring device mapper
-devices that are components of btrfs file systems.  It is meant to be
+devices that are components of Btrfs filesystems.  It is meant to be
 used with versions of udev that contain the "built-in" btrfs command
 (v190 and newer).  Older versions of udev will call the version of
 "btrfs ready" contained in the btrfsprogs package, which does the right
 thing.
-%endif
 
 %package -n libbtrfsutil1
 Summary:        Utility library for interacting with Btrfs
 Group:          System/Libraries
 
 %description -n libbtrfsutil1
-This package contains the libbtrfsutil.so shared library. This library is
+This package contains the versioned libbtrfsutil.so shared library. This library is
 LGPL unlike libbtrfs.so and can be used by applications to interact with Btrfs
 filesystems.
 
@@ -202,7 +187,7 @@ Supplements:    packageand(%{name}:bash-completion)
 %endif
 
 %description bash-completion
-bash command line completion support for btrfsprogs.
+Command line completion support for bas for utilities from btrfsprogs.
 
 %prep
 %autosetup -p1 -n  btrfs-progs-v%{version}
@@ -212,9 +197,7 @@ bash command line completion support for btrfsprogs.
 
 %configure			\
 			--enable-python	\
-%if !%{build_docs}
 			--disable-documentation	\
-%endif
 %if 0%{?suse_version} <= 1500
 			--disable-zoned	\
 %if 0%{?sle_version} < 150600
@@ -235,14 +218,12 @@ make install		\
 	DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir} \
 	install_python
 
-%if !%{build_docs}
 cd Documentation
 install -m 0755 -d %{buildroot}/%{_mandir}/man5
 install -m 0755 -d %{buildroot}/%{_mandir}/man8
 install -m 0644 *.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 *.8 %{buildroot}/%{_mandir}/man8
 cd ..
-%endif
 
 %if %{build_static}
 make install-static DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir}
@@ -411,13 +392,11 @@ done
 %{_libdir}/libbtrfsutil.so
 %{_libdir}/pkgconfig/libbtrfsutil.pc
 
-%if %{package_udev_rules}
 %files udev-rules
 %defattr(-, root, root)
 %dir %{_udevrulesdir}
 %{_udevrulesdir}/64-btrfs-dm.rules
 %{_udevrulesdir}/64-btrfs-zoned.rules
-%endif
 
 %files -n python-btrfsutil
 %{python3_sitearch}/*

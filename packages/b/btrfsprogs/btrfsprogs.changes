@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr  3 00:00:00 CEST 2025 - dsterba@suse.cz
+
+- update to 6.14
+  * mkfs:
+    * allow --sectorsize to be 2K for testing purposes of subpage mode (needs
+      the same block size supported by kernel)
+    * fix false error when no compression is requested and lzo is not compiled in
+  * convert: support 2K block size in the source filesystem
+  * defrag: new parameter -L/--level to specify compression levels (kernel 6.15),
+    also supports the realtime levels
+  * subvol delete: show names of recursively deleted child subvolumes
+  * qgroup show: use sysfs to detect up to date consistency status
+  * zoned mode: support zone capacity tracking
+  * other:
+    * CI new and updated workflows
+    * documentation updates
+- spec file:
+  - update subpackage descriptions
+  - drop conditional build of documentation, always use source
+  - drop pre-systemd udev workarounds (version 190)
+
+-------------------------------------------------------------------
 Mon Mar 31 00:00:00 CEST 2025 - dsterba@suse.cz
 
 - update to 6.13
