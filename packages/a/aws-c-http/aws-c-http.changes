@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  2 14:55:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.6
+  * Fix Error Handling For Connection Manager by @waahm7 in (#507)
+  * h1_decoder error on multiple content-length headers by @quinnj in (#509)
+  * Apple Network Framework Support by @xiazhvera in (#502)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:27:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.9.5
