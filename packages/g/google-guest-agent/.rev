@@ -589,4 +589,12 @@
   * CVE-2025-22868.patch (forwarded request 1252040 from glaubitz)</comment>
     <requestid>1252128</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>d98358eaa20ed9ce4c0977fc920dabbd</srcmd5>
+    <version>20250327.01</version>
+    <time>1743783003</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1267147</requestid>
+  </revision>
 </revisionlist>

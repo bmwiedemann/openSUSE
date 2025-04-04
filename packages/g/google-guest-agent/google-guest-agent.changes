@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Mon Mar 31 11:11:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250327.01 (bsc#1239763, bsc#1239866)
+  * Remove error messages from gce_workload_cert_refresh and
+    metadata script runner (#527)
+- from version 20250327.00
+  * Update guest-logging-go dependency (#526)
+  * Add 'created-by' metadata, and pass it as option to logging library (#508)
+  * Revert "oslogin: Correctly handle newlines at the end of
+    modified files (#520)" (#523)
+  * Re-enable disabled services if the core plugin was enabled (#522)
+  * Enable guest services on package upgrade (#519)
+  * oslogin: Correctly handle newlines at the end of modified files (#520)
+  * Fix core plugin path (#518)
+  * Fix package build issues (#517)
+  * Fix dependencies ran go mod tidy -v (#515)
+  * Fix debian build path (#514)
+  * Bundle compat metadata script runner binary in package (#513)
+  * Bump golang.org/x/net from 0.27.0 to 0.36.0 (#512)
+  * Update startup/shutdown services to launch compat manager (#503)
+  * Bundle new gce metadata script runner binary in agent package (#502)
+  * Revert "Revert bundling new binaries in the package (#509)" (#511)
+- from version 20250326.00
+  * Re-enable disabled services if the core plugin was enabled (#521)
+- from version 20250324.00
+  * Enable guest services on package upgrade (#519)
+  * oslogin: Correctly handle newlines at the end of modified files (#520)
+  * Fix core plugin path (#518)
+  * Fix package build issues (#517)
+  * Fix dependencies ran go mod tidy -v (#515)
+  * Fix debian build path (#514)
+  * Bundle compat metadata script runner binary in package (#513)
+  * Bump golang.org/x/net from 0.27.0 to 0.36.0 (#512)
+  * Update startup/shutdown services to launch compat manager (#503)
+  * Bundle new gce metadata script runner binary in agent package (#502)
+  * Revert "Revert bundling new binaries in the package (#509)" (#511)
+  * Revert bundling new binaries in the package (#509)
+  * Fix typo in windows build script (#501)
+  * Include core plugin binary for all packages (#500)
+  * Update crypto library to fix  CVE-2024-45337 (#499)
+  * Start packaging compat manager (#498)
+  * Start bundling ggactl_plugin_cleanup binary in all agent packages (#492)
+  * scripts: introduce a wrapper to locally build deb package (#490)
+  * Introduce compat-manager systemd unit (#497)
+- from version 20250317.00
+  * Revert "Revert bundling new binaries in the package (#509)" (#511)
+  * Revert bundling new binaries in the package (#509)
+  * Fix typo in windows build script (#501)
+  * Include core plugin binary for all packages (#500)
+  * Update crypto library to fix  CVE-2024-45337 (#499)
+  * Start packaging compat manager (#498)
+  * Start bundling ggactl_plugin_cleanup binary in all agent packages (#492)
+  * scripts: introduce a wrapper to locally build deb package (#490)
+  * Introduce compat-manager systemd unit (#497)
+- from version 20250312.00
+  * Revert bundling new binaries in the package (#509)
+  * Fix typo in windows build script (#501)
+  * Include core plugin binary for all packages (#500)
+  * Update crypto library to fix  CVE-2024-45337 (#499)
+  * Start packaging compat manager (#498)
+  * Start bundling ggactl_plugin_cleanup binary in all agent packages (#492)
+  * scripts: introduce a wrapper to locally build deb package (#490)
+  * Introduce compat-manager systemd unit (#497)
+- from version 20250305.00
+  * Revert bundling new binaries in the package (#509)
+  * Fix typo in windows build script (#501)
+  * Include core plugin binary for all packages (#500)
+  * Update crypto library to fix  CVE-2024-45337 (#499)
+  * Start packaging compat manager (#498)
+  * Start bundling ggactl_plugin_cleanup binary in all agent packages (#492)
+  * scripts: introduce a wrapper to locally build deb package (#490)
+  * Introduce compat-manager systemd unit (#497)
+- from version 20250304.01
+  * Fix typo in windows build script (#501)
+- from version 20250214.01
+  * Include core plugin binary for all packages (#500)
+- from version 20250214.00
+  * Update crypto library to fix  CVE-2024-45337 (#499)
+- from version 20250212.00
+  * Start packaging compat manager (#498)
+  * Start bundling ggactl_plugin_cleanup binary in all agent packages (#492)
+- from version 20250211.00
+  * scripts: introduce a wrapper to locally build deb package (#490)
+  * Introduce compat-manager systemd unit (#497)
+- from version 20250207.00
+  * vlan: toggle vlan configuration in debian packaging (#495)
+  * vlan: move config out of unstable section (#494)
+  * Add clarification to comments regarding invalid NICs and the
+    `invalid` tag. (#493)
+  * Include interfaces in lists even if it has an invalid MAC. (#489)
+  * Fix windows package build failures (#491)
+  * vlan: don't index based on the vlan ID (#486)
+  * Revert PR #482 (#488)
+  * Remove Amy and Zach from OWNERS (#487)
+  * Skip interfaces in interfaceNames() instead of erroring if there is an (#482)
+  * Fix Debian packaging if guest agent manager is not checked out (#485)
+- from version 20250204.02
+  * force concourse to move version forward.
+- from version 20250204.01
+  * vlan: toggle vlan configuration in debian packaging (#495)
+- from version 20250204.00
+  * vlan: move config out of unstable section (#494)
+  * Add clarification to comments regarding invalid NICs and the
+    `invalid` tag. (#493)
+- from version 20250203.01
+  * Include interfaces in lists even if it has an invalid MAC. (#489)
+- from version 20250203.00
+  * Fix windows package build failures (#491)
+  * vlan: don't index based on the vlan ID (#486)
+  * Revert PR #482 (#488)
+  * Remove Amy and Zach from OWNERS (#487)
+  * Skip interfaces in interfaceNames() instead of erroring if there is an (#482)
+  * Fix Debian packaging if guest agent manager is not checked out (#485)
+- from version 20250122.00
+  * networkd(vlan): remove the interface in addition to config (#468)
+  * Implement support for vlan dynamic removal, update dhclient to
+    remove only if configured (#465)
+  * Update logging library (#479)
+  * Remove Pat from owners file. (#478)
+
+-------------------------------------------------------------------
 Tue Mar 11 11:25:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to fix unexpected memory consumption during token
