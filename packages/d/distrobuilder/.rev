@@ -23,4 +23,41 @@
     <comment>- add patch fix-CVE-2025-22869.patch, fixes bsc#1239417 (forwarded request 1252355 from rrahl0)</comment>
     <requestid>1252356</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d9003f709ad1f04243abc4e51172d2bc</srcmd5>
+    <version>3.2</version>
+    <time>1743780657</time>
+    <user>anag+factory</user>
+    <comment>- update to 3.2:
+  * distrobuilder: Adjust name of driver inf files
+  * distrobuilder: Also install exes when injecting drivers
+  * fedora: Add support for OCI images
+  * ubuntu.yaml: add Noble, Oracular, Plucky
+  * Move to geaaru/docker-companion fork
+  * gomod: Update dependencies
+  * opensuse: Temporarily switch to mirrorcache-eu to fix downloads
+  * nixos: correctly handle 24.11
+  * Update README.md
+  * lxc.generator: Workaround issue with nsresourced
+  * lxc.generator: Fix systemd-networkd on recent distros
+  * Makefile: Sync update-gomod with Incus
+  * systemd: Relax read-only path workaround
+  * remove nixos 24.05
+  * Update openwrt-http_test.go to support v24.10 (and drop v21.x)
+  * Change naming of INF files
+  * docs: update supported Windows versions list
+  * doc: Add XP (for Windows XP) to wordlist
+  * Makefile: Bump minimum Go to 1.23.0
+  * Makefile: Remove deprecated -d flag
+  * Makefile: Remove GOCACHE
+  * README: Fix badge
+  * sources: Add Alpaquita downloader
+  * managers/apk: Support packages.repositories[].key
+  * Add user/group ID mapping from passwd and group files
+  * README: Add missing packages
+  * systemd: Remove unused logic
+  * systemd: Cleanup generator script
+  * systemd: Apply overrides even when nesting is enabled (forwarded request 1266989 from rrahl0)</comment>
+    <requestid>1266990</requestid>
+  </revision>
 </revisionlist>

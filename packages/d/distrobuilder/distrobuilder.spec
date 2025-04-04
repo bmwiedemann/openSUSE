@@ -17,7 +17,7 @@
 
 
 Name:           distrobuilder
-Version:        3.1
+Version:        3.2
 Release:        0
 Summary:        System container image builder for LXC and LXD/Incus
 License:        Apache-2.0
@@ -25,7 +25,6 @@ URL:            https://github.com/lxc/distrobuilder
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         pie.patch
-Patch1:         fix-CVE-2025-22869.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
 BuildRequires:  gpg2

@@ -1,9 +1,9 @@
-diff -rub distrobuilder-distrobuilder-3.1/Makefile distrobuilder-distrobuilder-3.1-patched/Makefile
---- distrobuilder-distrobuilder-3.1/Makefile	2024-10-23 22:07:08.000000000 +0200
-+++ distrobuilder-distrobuilder-3.1-patched/Makefile	2024-10-24 00:18:17.584743125 +0200
-@@ -9,7 +9,7 @@
- 	go env -w GOCACHE=$(shell go env GOCACHE)
- 	$(shell go env | grep -v GOENV | sed "s/'//g" > $(shell go env GOENV))
+diff -rub distrobuilder-distrobuilder-3.2/Makefile distrobuilder-distrobuilder-3.2-patched/Makefile
+--- distrobuilder-distrobuilder-3.2/Makefile	2025-04-03 22:45:57.000000000 +0200
++++ distrobuilder-distrobuilder-3.2-patched/Makefile	2025-04-04 03:53:41.361634018 +0200
+@@ -7,7 +7,7 @@
+ .PHONY: default
+ default:
  	gofmt -s -w .
 -	go install -v ./...
 +	go install -buildmode=pie -v ./...
