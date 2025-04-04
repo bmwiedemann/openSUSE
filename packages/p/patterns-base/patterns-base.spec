@@ -154,14 +154,14 @@ Requires:       glibc-locale-base
 %{requires_on_transactional_recommends_otherwise iproute2}
 %{requires_on_transactional_recommends_otherwise issue-generator}
 %{requires_on_transactional_recommends_otherwise lastlog2}
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 %{requires_on_transactional pam_pwquality}
 %else
 %{recommends_on_traditional pam_pwquality}
 %endif
 Requires:       shadow
 %{recommends_on_traditional system-group-trusted}
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 %{requires_on_transactional system-group-wheel}
 %else
 %{recommends_on_traditional system-group-wheel}
@@ -216,7 +216,7 @@ Suggests:       xz
 %if %{with betatest}
 Requires:       aaa_base-malloccheck
 %endif
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 Recommends:     SUSEConnect
 Recommends:     btrfsprogs
 # SLES users expect all FS tools to be installed
@@ -419,6 +419,8 @@ Recommends:     krb5
 Recommends:     less
 Recommends:     logrotate
 Recommends:     lsscsi
+# lvm2 should be there by default (#1239784)
+Recommends:     lvm2
 # man by default (#304687)
 Recommends:     man
 # needed for detecting software raid - required by yast2-storage too
@@ -481,7 +483,7 @@ Suggests:       pam_ssh
 Suggests:       xfsprogs
 Suggests:       zip
 %{obsolete_legacy_pattern enhanced_base}
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 # in SLE we still want /var/log/messages as all of the docu refers to it
 # TODO: if we still want it everywhere it should move back to base
 Recommends:     rsyslog
@@ -660,7 +662,7 @@ Requires:       biosdevname
 %if 0%{?is_opensuse}
 Requires:       (grub2-branding-openSUSE if branding-openSUSE)
 %else
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 Requires:       (grub2-branding-SLE if branding-SLE)
 %endif
 %endif
@@ -733,7 +735,7 @@ Provides:       pattern-icon() = pattern-software-management
 Provides:       pattern-order() = 1360
 Provides:       pattern-visible()
 Recommends:     pattern() = sw_management_x11
-%if 0%{?sle_version}
+%if !0%{?is_opensuse}
 Recommends:     lifecycle-data
 Recommends:     zypper-lifecycle-plugin
 %endif

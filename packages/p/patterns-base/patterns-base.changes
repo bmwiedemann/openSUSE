@@ -1,13 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr  3 08:37:18 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Replace sle_version is !is_opensuse macro (bsc#1240642).
+
+-------------------------------------------------------------------
 Sat Mar 22 09:10:11 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - On S390x plymouth is rather useless therefore replace it with
   blog-plymouth for similar services but without boot splash 
 
 -------------------------------------------------------------------
+Thu Mar 20 13:46:31 UTC 2025 - Olaf Kirch <okir@suse.com>
+
+- Add lvm2 to enhanced_base (#1239784)
+
+-------------------------------------------------------------------
 Wed Mar 12 14:18:51 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove setserial, stty is the tool for this since a long time
+
+-------------------------------------------------------------------
+Mon Mar 10 09:27:33 UTC 2025 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Ensure SUSEConnect is installed on SLES 16 (bsc#1235771)
+  See also https://build.suse.de/requests/359397 .
 
 -------------------------------------------------------------------
 Thu Mar  6 16:23:54 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
