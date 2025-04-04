@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(girepository-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= %{gi_version}
 BuildRequires:  pkgconfig(libffi) >= %{libffi_version}
 # Trigger an automatic installation of python(2|3.*)-gobject when python and libgirepository are installed.
 Supplements:    (python and %{introspection_real_package})

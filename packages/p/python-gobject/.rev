@@ -849,4 +849,14 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment></comment>
     <requestid>1255103</requestid>
   </revision>
+  <revision rev="103" vrev="3">
+    <srcmd5>ec1b621d2603e8f4856ea24bdedc7053</srcmd5>
+    <version>3.52.3</version>
+    <time>1743780538</time>
+    <user>anag+factory</user>
+    <comment>- Re-add BuildRequires pkgconfig(gobject-introspection-1.0) to
+  fix &quot;cannot import name GLib, introspection typelib not found&quot;
+  error (boo#1240549) (forwarded request 1266325 from cboltz)</comment>
+    <requestid>1266887</requestid>
+  </revision>
 </revisionlist>
