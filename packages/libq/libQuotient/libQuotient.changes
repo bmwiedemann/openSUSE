@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  3 20:22:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.9.3
+  * Support event relations on all post message functions
+  * OIDC awareness
+  * A couple of internal minor fixes
+  * Emit finished() and delete verification session when it's
+    cancelled on the remote side
+
+-------------------------------------------------------------------
 Sun Jan 12 12:04:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.9.2
