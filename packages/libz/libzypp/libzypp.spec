@@ -15,7 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# In Code16 libsolv moved the static libs from -devel to -devel-static.
+# Those are needed while cmake -DSUSE enforces linking libsolv statically.
+%if 0%{?suse_version} >= 1600
+%define libsolv_devel_package libsolv-devel-static
+%else
+%define libsolv_devel_package libsolv-devel
+%endif
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400 || (0%{?is_opensuse} && 0%{?sle_version} >= 150100)
 %bcond_without zchunk
@@ -59,7 +65,7 @@
 %bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
 
 Name:           libzypp
-Version:        17.36.5
+Version:        17.36.6
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -132,11 +138,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkg-config
 %endif
 
-BuildRequires:  libsolv-devel >= 0.7.24
+BuildRequires:  %{libsolv_devel_package} >= 0.7.32
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
 BuildRequires:  libsolv-tools-base >= 0.7.29
 %requires_eq    libsolv-tools-base
-Requires:	( findutils if libsolv-tools-base <= 0.7.31 )
 %else
 BuildRequires:  libsolv-tools
 %requires_eq    libsolv-tools
@@ -269,9 +274,9 @@ Requires:       libcurl-devel >= %{min_curl_version}
 Requires:       libcurl-devel >= %{min_curl_version}
 %endif
 %if 0%{?suse_version}
-%requires_ge    libsolv-devel
+%requires_ge    %{libsolv_devel_package}
 %else
-Requires:       libsolv-devel
+Requires:       %{libsolv_devel_package}
 %endif
 
 %description devel
@@ -292,14 +297,18 @@ Developer documentation for libzypp.
 mkdir build
 cd build
 
-%if 0%{?suse_version} == 1600
-# bsc#1216091: rpm-4.18' does not execute 'rpm --runposttrans'
-# scripts chroot if --root is used.
-export CFLAGS="%{optflags} -DWORKAROUNDDUMPPOSTTRANS_BUG_1216091"
-export CXXFLAGS="%{optflags} -DWORKAROUNDDUMPPOSTTRANS_BUG_1216091"
-%else
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
+
+CMAKE_FLAGS=
+%if 0%{?fedora} || 0%{?rhel} >= 6
+CMAKE_FLAGS="-DFEDORA=1"
+%endif
+%if 0%{?mageia}
+CMAKE_FLAGS="-DMAGEIA=1"
+%endif
+%if 0%{?suse_version}
+CMAKE_FLAGS="-DSUSE=1"
 %endif
 
 EXTRA_CMAKE_OPTIONS=
@@ -310,10 +319,8 @@ EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CODESTREAM=0%{?suse_versio
 EXTRA_CMAKE_OPTIONS="${EXTRA_CMAKE_OPTIONS} -DLIBZYPP_CONFIG_USE_DELTARPM_BY_DEFAULT=1"
 %endif
 
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-      -DENABLE_BUILD_DOCS=TRUE \
-      -DENABLE_BUILD_TRANS=TRUE \
-      -DENABLE_BUILD_TESTS=TRUE \
+cmake .. $CMAKE_FLAGS \
+      -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DDOC_INSTALL_DIR=%{_docdir} \
       -DLIB=%{_lib} \
       -DCMAKE_BUILD_TYPE=Release \
@@ -325,8 +332,8 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       %{?with_sigc_block_workaround:-DENABLE_SIGC_BLOCK_WORKAROUND=1} \
       %{!?with_mediabackend_tests:-DDISABLE_MEDIABACKEND_TESTS=1} \
       %{?with enable_preview_single_rpmtrans_as_default_for_zypper:-DENABLE_PREVIEW_SINGLE_RPMTRANS_AS_DEFAULT_FOR_ZYPPER=1} \
-      ${EXTRA_CMAKE_OPTIONS} \
-      ..
+      ${EXTRA_CMAKE_OPTIONS}
+
 make %{?_smp_mflags} VERBOSE=1
 
 %install
@@ -354,11 +361,6 @@ mkdir -p %{buildroot}/%{_prefix}/lib/zypp/plugins/urlresolver
 mkdir -p %{buildroot}/%{_var}/lib/zypp
 mkdir -p %{buildroot}/%{_var}/log/zypp
 mkdir -p %{buildroot}/%{_var}/cache/zypp
-
-# Default to 'solver.dupAllowVendorChange = false' on TW and post SLE12
-%if 0%{?suse_version} >= 1330 || "%{distribution}" == "openSUSE Tumbleweed"
-sed -i "s|# solver.dupAllowVendorChange = true|solver.dupAllowVendorChange = false|g" %{buildroot}%{_sysconfdir}/zypp/zypp.conf
-%endif
 
 cd ..
 
