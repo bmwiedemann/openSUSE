@@ -33,19 +33,13 @@ Source1:        https://github.com/fail2ban/fail2ban/releases/download/%{version
 Source2:        %{name}.sysconfig
 Source3:        %{name}.logrotate
 Source5:        %{name}.tmpfiles
-Source6:        sfw-fail2ban.conf
-Source7:        f2b-restart.conf
 # Path definitions have been submitted to upstream
 Source8:        paths-opensuse.conf
 Source200:      fail2ban.keyring
 # PATCH-FIX-OPENSUSE fail2ban-opensuse-locations.patch bnc#878028 jweberhofer@weberhofer.at -- update default locations for logfiles
 Patch100:       %{name}-opensuse-locations.patch
-# PATCH-FIX-OPENSUSE fail2ban-opensuse-service.patch jweberhofer@weberhofer.at -- openSUSE modifications to the service file
-Patch101:       %{name}-opensuse-service.patch
 # PATCH-FIX-OPENSUSE fail2ban-0.10.4-env-script-interpreter.patch jweberhofer@weberhofer.at -- use exact path to define interpretor
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
-# PATCH-FEATURE-OPENSUSE fail2ban-opensuse-service-sfw.patch jweberhofer@weberhofer.at -- start after SuSEfirewall2 only for older distributions
-Patch300:       fail2ban-opensuse-service-sfw.patch
 # PATCH-FEATURE-OPENSUSE harden_fail2ban.service.patch jsegitz@suse.com -- Added hardening to systemd service(s) bsc#1181400
 Patch301:       harden_fail2ban.service.patch
 # PATCH-FIX-OPENSUSE fail2ban-fix-openssh98.patch meissner@suse.com -- support openssh9.8 bsc#1230101
@@ -62,23 +56,19 @@ Requires:       ed
 Requires:       iptables
 Requires:       logrotate
 Requires:       python3 >= 3.5
+Requires:       python3-setuptools
 Requires:       whois
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1230
-# systemd
 BuildRequires:  python3-systemd
 BuildRequires:  pkgconfig(systemd)
 Requires:       python3-systemd
 Requires:       systemd > 204
 %{?systemd_requires}
-%else
-# no systemd (the init-script requires lsof)
-Requires:       lsof
-Requires:       syslog
-%endif
-%if 0%{?suse_version} >= 1500
 BuildRequires:  python3-pyinotify >= 0.8.3
 Requires:       python3-pyinotify >= 0.8.3
+%if 0%{?suse_version} < 1600
+Obsoletes:      SuSEfirewall2-%{name}
+Provides:       SuSEfirewall2-%{name}
 %endif
 
 %description
@@ -87,19 +77,6 @@ addresses that makes too many password failures. It updates firewall rules to
 reject the IP address, can send e-mails, or set host.deny entries.  These rules
 can be defined by the user. Fail2Ban can read multiple log files such as sshd
 or Apache web server ones.
-
-%if !0%{?suse_version} > 1500
-%package -n SuSEfirewall2-%{name}
-Summary:        Files for integrating fail2ban into SuSEfirewall2 via systemd
-Group:          Productivity/Networking/Security
-Requires:       SuSEfirewall2
-Requires:       fail2ban
-
-%description -n SuSEfirewall2-%{name}
-This package ships systemd files which will cause fail2ban to be ordered in
-relation to SuSEfirewall2 such that the two can be run concurrently within
-reason, i.e. SFW will always run first because it does a table flush.
-%endif
 
 %package -n monitoring-plugins-%{name}
 Summary:        Check fail2ban server and how many IPs are currently banned
@@ -130,11 +107,7 @@ install -m644 %{SOURCE8} config/paths-opensuse.conf
 sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 
 %patch -P 100 -p1
-%patch -P 101 -p1
 %patch -P 201 -p1
-%if !0%{?suse_version} > 1500
-%patch -P 300 -p1
-%endif
 %patch -P 301 -p1
 %patch -P 302 -p1
 
@@ -146,11 +119,6 @@ rm 	config/paths-arch.conf \
 
 # correct doc-path
 sed -i -e 's|%{_datadir}/doc/%{name}|%{_docdir}/%{name}|' setup.py
-
-# remove syslogd-logger settings for older distributions
-%if 0%{?suse_version} < 1230
-sed -i -e 's|^\([^_]*_backend = systemd\)|#\1|' config/paths-opensuse.conf
-%endif
 
 %build
 export CFLAGS="%{optflags}"
@@ -169,31 +137,18 @@ install -p -m 644 man/jail.conf.5.gz %{buildroot}%{_mandir}/man5
 install -d -m 755 %{buildroot}%{_initddir}
 install -d -m 755 %{buildroot}%{_sbindir}
 
-%if 0%{?suse_version} > 1310
 # use /run directory
 install -d -m 755 %{buildroot}/run
 touch %{buildroot}/run/%{name}
-%else
-#use /var/run directory
-install -d -m 755 %{buildroot}%{_localstatedir}/run/%{name}
-%endif
 
-%if 0%{?suse_version} >= 1230
 # systemd
 install -d -m 755 %{buildroot}%{_unitdir}
-install -p -m 644 files/%{name}.service.in %{buildroot}%{_unitdir}/%{name}.service
+cp -av build/fail2ban.service "%{buildroot}/%{_unitdir}/%{name}.service"
 
 install -d -m 755 %{buildroot}%{_tmpfilesdir}
 install -p -m 644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 ln -sf service %{buildroot}%{_sbindir}/rc%{name}
-
-%else
-# without systemd
-install -d -m 755 %{buildroot}%{_initddir}
-install -m 755 files/suse-initd %{buildroot}%{_initddir}/%{name}
-ln -sf %{_initddir}/%{name} %{buildroot}%{_sbindir}/rc%{name}
-%endif
 
 echo "# Do all your modifications to the jail's configuration in jail.local!" > %{buildroot}%{_sysconfdir}/%{name}/jail.local
 
@@ -205,13 +160,9 @@ install -p -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -d -m 755 %{buildroot}%{_sysconfdir}/logrotate.d
 install -p -m 644 %{SOURCE3}  %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 
-%if !0%{?suse_version} > 1500
-%if 0%{?_unitdir:1}
-install -Dm 0644 "%{_sourcedir}/sfw-fail2ban.conf" \
-	"%{buildroot}%{_unitdir}/SuSEfirewall2.service.d/fail2ban.conf"
-install -D -m 0644 "%{_sourcedir}/f2b-restart.conf" \
-	"%{buildroot}%{_unitdir}/fail2ban.service.d/SuSEfirewall2.conf"
-%endif
+%if 0%{?suse_version} < 1600
+perl -i -lpe 's{(After|PartOf)=(.*)}{$1=$2 SuSEfirewall2.service}' \
+	"%{buildroot}/%{_unitdir}/%{name}.service"
 %endif
 install -D -m 755 files/nagios/check_fail2ban %{buildroot}%{nagios_plugindir}/check_%{name}
 
@@ -229,44 +180,21 @@ export LANG=en_US.UTF-8
 ./fail2ban-testcases-all --no-network || true
 %endif
 
-%if 0%{?suse_version} >= 1230
 %pre
 %service_add_pre %{name}.service
-%endif
 
 %post
 %fillup_only
-%if 0%{?suse_version} >= 1230
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 # The next line is not workin in Leap 42.1, so keep the old way
 #%%tmpfiles_create %%{_tmpfilesdir}/%%{name}.conf
 %service_add_post %{name}.service
-%endif
 
 %preun
-%if 0%{?suse_version} >= 1230
 %service_del_preun %{name}.service
-%else
-%stop_on_removal %{name}
-%endif
 
 %postun
-%if 0%{?suse_version} >= 1230
 %service_del_postun %{name}.service
-%else
-%restart_on_update %{name}
-%insserv_cleanup
-%endif
-
-%if !0%{?suse_version} > 1500
-%if 0%{?_unitdir:1}
-%post -n SuSEfirewall2-%{name}
-%{_bindir}/systemctl daemon-reload >/dev/null 2>&1 || :
-
-%postun -n SuSEfirewall2-%{name}
-%{_bindir}/systemctl daemon-reload >/dev/null 2>&1 || :
-%endif
-%endif
 
 %files
 %dir %{_sysconfdir}/%{name}
@@ -287,21 +215,11 @@ export LANG=en_US.UTF-8
 #
 %config %{_sysconfdir}/logrotate.d/%{name}
 %dir %{_localstatedir}/lib/%{name}/
-%if 0%{?suse_version} > 1310
 # use /run directory
 %ghost /run/%{name}
-%else
-# use /var/run directory
-%dir %ghost %{_localstatedir}/run/%{name}
-%endif
-%if 0%{?suse_version} >= 1230
 # systemd
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
-%else
-# without-systemd
-%{_initddir}/%{name}
-%endif
 %{_sbindir}/rc%{name}
 %{_bindir}/%{name}-server
 %{_bindir}/%{name}-client
@@ -319,14 +237,6 @@ export LANG=en_US.UTF-8
 # do not include tests as they are executed during the build process
 %exclude %{_bindir}/%{name}-testcases
 %exclude %{python3_sitelib}/%{name}/tests
-
-%if !0%{?suse_version} > 1500
-%if 0%{?_unitdir:1}
-%files -n SuSEfirewall2-%{name}
-%{_unitdir}/SuSEfirewall2.service.d
-%{_unitdir}/%{name}.service.d
-%endif
-%endif
 
 %files -n monitoring-plugins-%{name}
 %license COPYING

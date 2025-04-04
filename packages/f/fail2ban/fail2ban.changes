@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Mar 29 13:31:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- distutils (provided by python3-setuptools) is also needed during
+  time, or f2b cannot launch the systemd log analyzer backend.
+- Delete all pre-SUSE-15.x build instructions.
+- Delete fail2ban-opensuse-service-sfw.patch,
+  fail2ban-opensuse-service.patch, sfw-fail2ban.conf,
+  since this mostly part of the pristine fail2ban.service.in
+  already. (Unit modified in %install for SFW.)
+
+-------------------------------------------------------------------
 Mon Mar 10 03:39:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on setuptools, required for Python 3.12+.
