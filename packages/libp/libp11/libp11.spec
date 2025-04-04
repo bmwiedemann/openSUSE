@@ -1,7 +1,7 @@
 #
 # spec file for package libp11
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,9 @@ Token Interface (Cryptoki)".
 %package -n %{libname}
 Summary:        Library Implementing a Small Layer on Top of PKCS#11 API
 Group:          Productivity/Security
+# RH has renamed libp11 to openssl-pkcs11 since 0.4.7-4, in order to keep
+# compatibility we need to provide openssl-pkcs11 (jsc#PED-12017)
+Provides:       openssl-pkcs11 = %{version}-%{release}
 
 %description -n %{libname}
 Libp11 is a library implementing a small layer on top of PKCS#11 API to

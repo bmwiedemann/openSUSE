@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 13:15:35 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Add Provides: openssl-pkcs11:
+  * RH has renamed libp11 to openssl-pkcs11 since 0.4.7-4, in order to keep
+    compatibility we need to provide openssl-pkcs11 (jsc#PED-12017)
+
+-------------------------------------------------------------------
 Fri Dec 20 17:51:35 UTC 2024 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Add patch to fix upstream
