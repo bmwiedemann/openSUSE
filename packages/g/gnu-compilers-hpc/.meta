@@ -1,6 +1,0 @@
-<package name="gnu-compilers-hpc" project="openSUSE:Factory">
-  <title>HPC default login environment for the gnu compiler family</title>
-  <description>Provides default login configuration using the gnu compiler family.</description>
-  <devel project="science:HPC" package="gnu-compilers-hpc"/>
-  <url>https://github.com/openhpc/ohpc</url>
-</package>
