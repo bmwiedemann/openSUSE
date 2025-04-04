@@ -1,6 +1,7 @@
 #
 # spec file for package pgpdump
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,6 +24,8 @@ Summary:        PGP packet visualizer
 License:        BSD-3-Clause
 URL:            https://www.mew.org/~kazu/proj/pgpdump/en/
 Source:         https://www.mew.org/~kazu/proj/pgpdump/%{name}-%{version}.tar.gz
+# https://github.com/kazu-yamamoto/pgpdump/commit/541442dc04259bde680b46742522177be40cc065
+Patch0:         pgpdump-gcc15.patch
 
 %description
 pgpdump is a PGP packet visualizer which displays the packet format of OpenPGP
