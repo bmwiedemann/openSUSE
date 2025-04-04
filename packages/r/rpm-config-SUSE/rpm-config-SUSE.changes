@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:22:44 UTC 2025 - dmueller@suse.com
+
+- Update to version 20250328:
+  * Revert "Define %jobs as variable (boo#1237231)"
+  * Create the directory for rpm macros installation in install
+
+-------------------------------------------------------------------
+Mon Mar 24 12:43:56 UTC 2025 - dmueller@suse.com
+
+- Update to version 20250324:
+  * Define %jobs as variable (boo#1237231)
+  * %requires_eq|ge(): Fix multiline output
+  * Split the SUSE distribution version macros to a separate file
+
+-------------------------------------------------------------------
 Thu Oct 31 09:33:24 UTC 2024 - dmueller@suse.com
 
 - Update to version 20241031:

@@ -313,4 +313,19 @@
   * %requires_eq|ge(): Report error if package version cannot be determined</comment>
     <requestid>1219797</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a80de0f932c06421ab8c742e3f8e02f8</srcmd5>
+    <version>20250328</version>
+    <time>1743780563</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 20250328:
+  * Revert &quot;Define %jobs as variable (boo#1237231)&quot;
+  * Create the directory for rpm macros installation in install
+
+- Update to version 20250324:
+  * Define %jobs as variable (boo#1237231)
+  * %requires_eq|ge(): Fix multiline output
+  * Split the SUSE distribution version macros to a separate file</comment>
+    <requestid>1265247</requestid>
+  </revision>
 </revisionlist>

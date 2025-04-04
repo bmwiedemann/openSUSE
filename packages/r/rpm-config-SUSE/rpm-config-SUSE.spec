@@ -1,7 +1,7 @@
 #
 # spec file for package rpm-config-SUSE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 # ignore the explicit bash requires from the kernel mod scripts
 %define __requires_exclude ^/bin/bash$
 Name:           rpm-config-SUSE
-Version:        20241031
+Version:        20250328
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -53,7 +53,7 @@ sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
 %else
     -e '/@sle_version@/d' \
 %endif
-  < suse_macros.in > suse_macros
+  < suse_dist_macros.in > macros.d/macros.susedist
 
 %if 0%{?is_opensuse}
 # use latest build date of BuildRequires as reference and go to January 1st three years back - the + 6 * 3600 is to match exactly the previous value of 2020-01-01 00:00 as leap-years cause some hours of offset
@@ -68,8 +68,8 @@ EOF
 
 %install
 # Install SUSE vendor macros and rpmrc
-mkdir -p %{buildroot}%{_rpmconfigdir}/suse
-cp -a suse_macros %{buildroot}%{_rpmconfigdir}/suse/macros
+install -d -m 0755 %{buildroot}%{_rpmconfigdir}
+cp -a suse %{buildroot}%{_rpmconfigdir}
 
 # Install vendor dependency generators
 cp -a fileattrs %{buildroot}%{_rpmconfigdir}
