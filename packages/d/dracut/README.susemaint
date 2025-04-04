@@ -409,3 +409,4 @@ f3fffa1e fix(systemd-veritysetup): install dm-verity kernel module
 6ac1033c feat(dmsquash-live): add support for rd.live.overlay.nouserconfirmprompt
 9b12ef98 feat(lsinitrd.sh): enable unpacking files from squash-root.img
 d10455ad feat(lsinitrd.sh): print stored dracut cmdline
+59af2fff fix(crypt): install dm_crypt module in non-hostonly mode as well

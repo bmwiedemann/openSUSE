@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 03 12:10:51 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.714.gee616a76:
+  * fix(crypt): always install s390 crypto modules (jsc#IBM-1444)
+  * fix(crypt): install dm_crypt module in non-hostonly mode as well
+  * fix(nfs): set correct ownership of rpc.statd state directories (bsc#1217885)
+  * perf(nfs): remove references to old rpcbind state dir
+  * fix(nfs): libnfsidmap plugins not added in some distributions
+
+-------------------------------------------------------------------
 Mon Mar 17 10:31:20 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.707.g7b7df177:
