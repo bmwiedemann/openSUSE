@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 31 16:12:21 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Wed Mar 19 15:28:26 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Skip PGO with %want_reproducible_builds (boo#1040589)

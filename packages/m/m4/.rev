@@ -316,4 +316,12 @@
     <comment></comment>
     <requestid>1265245</requestid>
   </revision>
+  <revision rev="43" vrev="11">
+    <srcmd5>e5007dee7ed248e4d2252556a9bc42a9</srcmd5>
+    <version>1.4.18</version>
+    <time>1743780504</time>
+    <user>anag+factory</user>
+    <comment>add -std=gnu17 to CFLAGS to fix gcc15 compile time error (forwarded request 1266626 from hsk17)</comment>
+    <requestid>1266775</requestid>
+  </revision>
 </revisionlist>
