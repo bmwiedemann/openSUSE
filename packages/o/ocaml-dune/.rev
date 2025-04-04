@@ -468,4 +468,13 @@ I will submit the packages one by one once this is accepted.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1249873</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>1118393ddf593e3168660cbdb2bfb7a5</srcmd5>
+    <version>3.18.0</version>
+    <time>1743782941</time>
+    <user>anag+factory</user>
+    <comment>- Update to version 3.18.0
+  see included CHANGES.md file for details</comment>
+    <requestid>1267058</requestid>
+  </revision>
 </revisionlist>
