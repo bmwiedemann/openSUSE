@@ -15,4 +15,12 @@
     <comment>- allow only 64bit to follow other packages</comment>
     <requestid>1256252</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a4a9e87078ddd55c7d9c8800b0161a44</srcmd5>
+    <version>2.18</version>
+    <time>1743782935</time>
+    <user>anag+factory</user>
+    <comment>- Remove ExclusiveArch 64bit</comment>
+    <requestid>1267053</requestid>
+  </revision>
 </revisionlist>
