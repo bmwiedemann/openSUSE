@@ -15,4 +15,12 @@
     <comment>- Relax ocaml-rpm-macros requirement</comment>
     <requestid>1256262</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c65a5f69d4f139e288da0586d86014dc</srcmd5>
+    <version>0.1</version>
+    <time>1743782955</time>
+    <user>anag+factory</user>
+    <comment>- Remove ExclusiveArch 64bit</comment>
+    <requestid>1267066</requestid>
+  </revision>
 </revisionlist>

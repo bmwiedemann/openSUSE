@@ -23,7 +23,6 @@ Release:        0
 Summary:        library to work with swhids
 License:        ISC
 URL:            https://opam.ocaml.org/packages/swhid_core
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
