@@ -1818,4 +1818,12 @@ New stable rel</comment>
   + testWarnings: run gc wrapper test only under Gtk4 (forwarded request 1253983 from iznogood)</comment>
     <requestid>1253993</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>df3b87af1d519baa7480fc4ab10e5681</srcmd5>
+    <version>1.84.1</version>
+    <time>1743780506</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266393</requestid>
+  </revision>
 </revisionlist>

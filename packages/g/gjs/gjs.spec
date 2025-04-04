@@ -110,10 +110,10 @@ Mozilla SpiderMonkey JavaScript engine.
 %meson_install
 
 %check
-%dnl export DISPLAY=:98
-%dnl Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
-%dnl sleep 10
-%dnl %meson_test
+export DISPLAY=:98
+Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
+sleep 10
+%meson_test
 
 %ldconfig_scriptlets -n libgjs0
 
