@@ -1,7 +1,7 @@
 #
 # spec file for package tumbler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,6 +91,7 @@ A thumbnailer to show custom folder thumbnails in Thunar
 Summary:        Thumbnailer for WebP images
 Group:          Productivity/Graphics/Other
 Requires:       ImageMagick
+Requires:       libwebp-tools
 Supplements:    (%{name} and ImageMagick)
 
 %description -n %{name}-webp-thumbnailer
@@ -159,10 +160,12 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 
 %find_lang %{name} %{?no_lang_C}
 
-mkdir %{buildroot}%{_datadir}/thumbnailers
-mv custom_thumbnailers/*.thumbnailer %{buildroot}%{_datadir}/thumbnailers/
-mkdir %{buildroot}%{_bindir}
-mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
+install -D -m 0755 -d %{buildroot}%{_datadir}/thumbnailers
+install -D -m 0644 custom_thumbnailers/folder.thumbnailer %{buildroot}%{_datadir}/thumbnailers/
+install -D -m 0644 custom_thumbnailers/webp.thumbnailer   %{buildroot}%{_datadir}/thumbnailers/
+install -D -m 0755 -d %{buildroot}%{_bindir}
+install -D -m 0755 custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
+install -D -m 0755 custom_thumbnailers/webp-thumbnailer   %{buildroot}%{_bindir}/
 
 %post -n %{libname} -p /sbin/ldconfig
 
@@ -205,6 +208,7 @@ mv custom_thumbnailers/folder-thumbnailer %{buildroot}%{_bindir}/
 %{_datadir}/thumbnailers/folder.thumbnailer
 
 %files -n %{name}-webp-thumbnailer
+%{_bindir}/webp-thumbnailer
 %{_datadir}/thumbnailers/webp.thumbnailer
 
 %files -n %{libname}
