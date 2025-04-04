@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  3 10:44:43 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to rdma-core v56.1 (jsc#PED-11289, jsc#PED-11323)
+  - Bug fixes for all providers
+
+-------------------------------------------------------------------
 Wed Feb 19 15:17:34 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to rdma-core v56.0 (jsc#PED11323)
