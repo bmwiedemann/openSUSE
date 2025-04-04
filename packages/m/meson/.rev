@@ -1061,4 +1061,12 @@ Smoketest in GNOME:Next passed</comment>
     <comment>- Add 14337.patch: get_llvm_tool_names: add llvm 20. (forwarded request 1255516 from dimstar)</comment>
     <requestid>1255517</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>a624c6ea0457cd44c3d732ff6cc15a6b</srcmd5>
+    <version>1.7.1</version>
+    <time>1743780559</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266528</requestid>
+  </revision>
 </revisionlist>

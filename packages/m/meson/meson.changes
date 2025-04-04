@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  2 06:43:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.7.1:
+  + When subproject() fails because downloading is disabled, say
+    what failed.
+  + tests: work around broken PyPy globbing by removing inert code.
+  + get_llvm_tool_names: add llvm 20.
+  + linkers: revert a binutils bug workaround, sort of.
+- Drop 14337.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Mon Mar 24 07:28:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 14337.patch: get_llvm_tool_names: add llvm 20.
