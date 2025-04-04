@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 05:37:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.205.0 (1.205)
+   see /usr/share/doc/packages/perl-Test-Deep/Changes
+
+  1.205     2025-04-01 11:01:50-04:00 America/New_York
+          - add "use v5.12" to Test::Deep, just for clarity
+          - fix a test so that if an "A" module is in @INC, the tests still pass
+
+-------------------------------------------------------------------
 Wed Jun 12 08:08:31 UTC 2024 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - refresh spec file (remove package name based requires)

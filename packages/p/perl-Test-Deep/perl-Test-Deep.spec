@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Deep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Test-Deep
 Name:           perl-Test-Deep
-Version:        1.204
+Version:        1.205.0
 Release:        0
+# 1.205 -> normalize -> 1.205.0
+%define cpan_version 1.205
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Extremely flexible deep comparison
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -32,6 +34,51 @@ BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Tester) >= 0.107
 Requires:       perl(Test::More) >= 0.96
+Provides:       perl(Over)
+Provides:       perl(Test::Deep) = %{version}
+Provides:       perl(Test::Deep::All) = %{version}
+Provides:       perl(Test::Deep::Any) = %{version}
+Provides:       perl(Test::Deep::Array) = %{version}
+Provides:       perl(Test::Deep::ArrayEach) = %{version}
+Provides:       perl(Test::Deep::ArrayElementsOnly) = %{version}
+Provides:       perl(Test::Deep::ArrayLength) = %{version}
+Provides:       perl(Test::Deep::ArrayLengthOnly) = %{version}
+Provides:       perl(Test::Deep::Blessed) = %{version}
+Provides:       perl(Test::Deep::Boolean) = %{version}
+Provides:       perl(Test::Deep::Cache) = %{version}
+Provides:       perl(Test::Deep::Cache::Simple) = %{version}
+Provides:       perl(Test::Deep::Class) = %{version}
+Provides:       perl(Test::Deep::Cmp) = %{version}
+Provides:       perl(Test::Deep::Code) = %{version}
+Provides:       perl(Test::Deep::Hash) = %{version}
+Provides:       perl(Test::Deep::HashEach) = %{version}
+Provides:       perl(Test::Deep::HashElements) = %{version}
+Provides:       perl(Test::Deep::HashKeys) = %{version}
+Provides:       perl(Test::Deep::HashKeysOnly) = %{version}
+Provides:       perl(Test::Deep::Ignore) = %{version}
+Provides:       perl(Test::Deep::Isa) = %{version}
+Provides:       perl(Test::Deep::ListMethods) = %{version}
+Provides:       perl(Test::Deep::MM) = %{version}
+Provides:       perl(Test::Deep::Methods) = %{version}
+Provides:       perl(Test::Deep::NoTest) = %{version}
+Provides:       perl(Test::Deep::None) = %{version}
+Provides:       perl(Test::Deep::Number) = %{version}
+Provides:       perl(Test::Deep::Obj) = %{version}
+Provides:       perl(Test::Deep::Ref) = %{version}
+Provides:       perl(Test::Deep::RefType) = %{version}
+Provides:       perl(Test::Deep::Regexp) = %{version}
+Provides:       perl(Test::Deep::RegexpMatches) = %{version}
+Provides:       perl(Test::Deep::RegexpOnly) = %{version}
+Provides:       perl(Test::Deep::RegexpRef) = %{version}
+Provides:       perl(Test::Deep::RegexpRefOnly) = %{version}
+Provides:       perl(Test::Deep::RegexpVersion) = %{version}
+Provides:       perl(Test::Deep::ScalarRef) = %{version}
+Provides:       perl(Test::Deep::ScalarRefOnly) = %{version}
+Provides:       perl(Test::Deep::Set) = %{version}
+Provides:       perl(Test::Deep::Shallow) = %{version}
+Provides:       perl(Test::Deep::Stack) = %{version}
+Provides:       perl(Test::Deep::String) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 # necessary because Test::Deep::NoTest does "require Test::Builder"
@@ -61,7 +108,7 @@ structures
 Test::Deep has *_a lot_* of exports. See EXPORTS below.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

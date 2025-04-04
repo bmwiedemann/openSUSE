@@ -227,4 +227,16 @@
 </comment>
     <requestid>1180120</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>eaca780632266fb6300a34bb01e5f17c</srcmd5>
+    <version>1.205.0</version>
+    <time>1743780526</time>
+    <user>anag+factory</user>
+    <comment>- updated to 1.205.0 (1.205)
+   see /usr/share/doc/packages/perl-Test-Deep/Changes
+  1.205     2025-04-01 11:01:50-04:00 America/New_York
+          - add &quot;use v5.12&quot; to Test::Deep, just for clarity
+          - fix a test so that if an &quot;A&quot; module is in @INC, the tests still pass (forwarded request 1266851 from tinita)</comment>
+    <requestid>1266870</requestid>
+  </revision>
 </revisionlist>
