@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  4 05:42:13 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.28
+  * Add the standard F10 key binding for activating the main
+    menu button.
+  * Implement GUI redesign
+  * Update some of the deprecated GTK API usage.
+  * Fix a crash that occurs on exit with GTK 4.17.
+  * Add support for loading Lua modules from script-modules.
+  * File durations are now displayed in the playlist when
+    available.
+  * Make next/previous buttons control playlist position
+  * Add Irish translation
+  * Drop Autotools.
+- Drop celluloid-fix_segfault_gnome48.patch (merged upstream)
+
+-------------------------------------------------------------------
 Thu Mar 27 09:13:10 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add celluloid-fix_segfault_gnome48.patch to prevent segmentation
