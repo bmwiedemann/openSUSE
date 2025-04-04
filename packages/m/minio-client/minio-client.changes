@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 03 19:34:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 20250403T170756Z:
+  - fix the terminal is damaged when parameters are missing (#5175)
+  - fix: error out when the source and destination might be
+    subdirectories of each other (#5173)
+  - fix: replace tag and point to relevant release
+  - Add `admin accesskey sts-revoke` and `idp ldap accesskey
+    sts-revoke` (#5160)
+  - fix return EOF failure on lines with trailing empty lines
+    (#5176)
+  - fix: no data transition will show error for when mc ilm info
+    not found (#5177)
+  - upgrade golang-lint to v2 (#5178)
+  - pre-emptively disable sha256 payload if checksum is set (#5167)
+  - build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+    4.5.2 (#5169)
+  - batch: use server's generate API when available (#5166)
+  - Add ping sort to mc support top rpc (#5158)
+
+-------------------------------------------------------------------
 Wed Mar 12 18:44:51 UTC 2025 - mrueckert@suse.de
 
 - Update to version 20250312T172924Z:
