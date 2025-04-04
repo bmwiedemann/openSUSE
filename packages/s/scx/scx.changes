@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Apr 03 07:49:22 UTC 2025 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.11:
+  * scxtop: Disable bpf conditional attachment
+  * Add scxctl into tools
+  * scx_bpfland: Fix idle detection when SMT is disabled
+  * scx_layered: add node spread growth algo
+  * scx_p2dq: Add config for minimum queue size for pick2
+  * scx_p2dq: Add config for min runs for pick2
+  * scx_p2dq: Add stats for pick2 on dispatch/select paths
+  * scx_p2dq: Allow disabling pick2 load balancing on dispatch
+  * scx_p2dq: Add option to only load balance max DSQ tasks
+  * scx_flash: simplify scheduling policy
+  * scx_p2dq: Add helper to scale vtime by task weight
+  * scxtop: Fix DSQ initialization
+  * scx_layered: add protected layer flag
+  * scx_p2dq: Add min_nr_queued_pick2 check on pick_two_llc_ctx
+  * scx_bpfland: handle per-CPU tasks preempted by a higher scheduling class
+  * scx_lavd: Respect the core preference and some more.
+  * scx_layered: add cpus_pct cfg param
+  * scx_flash: mitigate stalls from higher priority scheduling classes
+  * scx_p2dq: Add idle resume QoS config
+  * scx_layered: Add idle qos config
+  * scxtop: adding hw_pressure event trace.
+  * scx_layered: add node spread reverse, swap it with node spread
+  * scx_layered: make nodespread account for smt
+  * scx_p2dq: Fix vtime handling in enqueue path
+  * scxtop: Add checks when updating DSQ latency
+  * scx_layered: More optimal core allocation
+  * scxtop: Add fork event tracing
+  * scx_p2dq: Cleanup pick_two_cpu selection
+  * scx_p2dq: Update default scheduler config
+  * scxtop: trace on_sched_exec event.
+  * scx_layered: add exclude match rule
+  * scx_lavd: Make the idle CPU selection compute domain aware.
+  * scx_lavd: Enable SCX_OPS_ALLOW_QUEUED_WAKEUP and misc.
+  * scx_p2dq: Fix vtime accounting
+  * scxtop: Add key bindings to toggle hw pressure
+  * scxtop: Add exit event tracing
+  * scx_bpfland: Enable SCX_OPS_ALLOW_QUEUED_WAKEUP
+  * scx_bpfland: Introduce --idle-resume-us
+  * scx_p2dq: Add support for SCX_OPS_ALLOW_QUEUED_WAKEUP
+  * scxtop: fix clock_sync_failure errors
+  * scxtop: adding cpu hotplug event on exit trace event.
+  * scx_layered: add NodeSpreadRandom growth algo
+  * scx_layered: Fix accounting, reporting and CPU allocation fluctuations
+  * scx_lavd: Better control and handling of per-CPU tasks.
+  * scx_bpfland: Improve NUMA node locality
+  * scx_p2dq: Fix stalls caused by improper handling of affinitized tasks
+  * scx_bpfland: Introduce an option to disable SMT awareness
+  * scx_lavd: Fix incorrect task affinity testing and more.
+  * scx_bpfland: Fix direct dispatch migration
+  * scx_p2dq: Fix affinitized task handling
+  * scx_lavd: Revise task affinity testing.
+  * scx_p2dq: Fix handling for two LLCs
+  * scx_p2dq: Update default load balancing config
+  * scx_layered: remove extra call to test_and_clear_cpu in pick_idle_from
+  * scx_chaos: init with basic functionality
+  * scx_p2dq: Improve locality for affinitized tasks
+  * scx_p2dq: Avoid aggressive return on cpu selection
+  * scx_bpfland: NUMA load balancer
+
+-------------------------------------------------------------------
 Fri Mar 07 10:17:37 UTC 2025 - fredrik.lonnegren@suse.com
 
 - remove fix-aarch64.patch: fixed upstream

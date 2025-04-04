@@ -19,7 +19,7 @@
 %define libbpf_min_ver 1.5.0
 
 Name:           scx
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
