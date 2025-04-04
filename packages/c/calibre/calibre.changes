@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr  4 08:47:34 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.2.1
+  - Version 8.2.1 fixes an error when clicking on format links in
+    the book details panel
+
+-------------------------------------------------------------------
+Fri Apr  4 05:23:22 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.2.0
+  * New Features
+    - Kobo driver: Add support for new Tolino firmware
+    - Kindle driver: Allow using a value of * in
+      Preferences->Output options->MOBI Output to have the driver
+      mark all books sent to the device as personal documents
+  * Bug Fixes
+    - Kobo driver: Fix hyphenation and extra CSS added to KEPUB
+      files being ignored by the renderer on the Kobo
+    - macOS: Fix opening book folder or PDF files for books with
+      square brackets in the title not working
+    - Quickview: Fix a long standing bug with syncing of columns
+      in the presence of hidden/re-ordered columns
+    - E-book viewer: Show an error message when an invalid nearby
+      search expression is used
+    - KEPUB Output: Fix incorrect encoding detection for some HTML
+      files without an encoding declaration
+    - macOS: Fix a regression in the previous release that caused
+      failures in the E-book viewer when updating annotations for
+      books with a large number of annotations
+
+-------------------------------------------------------------------
 Fri Mar 28 08:09:05 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 8.1.1
