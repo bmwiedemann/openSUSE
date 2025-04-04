@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Fri Mar 28 21:18:11 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Set the timeout via sdbootutil
+
+-------------------------------------------------------------------
 Thu Mar  6 12:50:13 UTC 2025 - Fabian Vogt <fvogt@suse.com>
 
 - Switch away from patterns-base-bootloader for grub-bls, not suitable
 - Switch away from kiwi's support for grub-bls, does not match sdbootutil
+
+-------------------------------------------------------------------
+Tue Mar  4 15:35:56 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- disk.sh: Check if /etc/sysconfig/bootloader has content
 
 -------------------------------------------------------------------
 Fri Feb 21 12:38:04 UTC 2025 - Fabian Vogt <fvogt@suse.com>

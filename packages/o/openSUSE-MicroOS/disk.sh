@@ -14,7 +14,7 @@ if [ -x /usr/bin/sdbootutil ]; then
 	echo "install boot loader"
 	loader_type="grub2-bls"
 	rpm -q systemd-boot && loader_type="systemd-boot"
-	if [ -f /etc/sysconfig/bootloader ]; then
+	if [ -s /etc/sysconfig/bootloader ]; then
 		sed -i "s/^LOADER_TYPE=.*$/LOADER_TYPE=\"$loader_type\"/g" /etc/sysconfig/bootloader
 	else
 		echo "LOADER_TYPE=\"${loader_type}\"" > /etc/sysconfig/bootloader
@@ -26,7 +26,7 @@ if [ -x /usr/bin/sdbootutil ]; then
 	export hostonly_l=no # for dracut
 	sdbootutil -v --arch "$arch" --esp-path /boot/efi --entry-token=auto add-all-kernels
 	# Set a 5s timeout, the "hold a key down" method doesn't work effectively.
-	echo "timeout 5" >> /boot/efi/loader/loader.conf
+	sdbootutil -v --arch "$arch" --esp-path /boot/efi set-timeout 5
 
 	rm -f /boot/mbrid
 
