@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  3 13:18:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.2.1:
+  * Bugfixes
+     - Finish support for data tagging from ansible 2.19 (#4571)
+       @ssbarnea
+
+-------------------------------------------------------------------
 Wed Apr  2 20:04:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.2.0:
