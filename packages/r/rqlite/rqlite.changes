@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  3 19:48:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.16:
+  * Minor refactoring of HTTP Leader checks
+  * Add transaction status to DB stats
+
+-------------------------------------------------------------------
 Sun Mar 16 13:46:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.14:
