@@ -110,7 +110,7 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  ladspa-devel
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  meson >= 1.1
+BuildRequires:  meson >= 1.4
 BuildRequires:  musepack-devel
 BuildRequires:  orc >= 0.4.11
 BuildRequires:  pkgconfig
@@ -164,7 +164,7 @@ BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.14
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsrtp2) >= 2.1.0
 BuildRequires:  pkgconfig(libssh2) >= 1.4.3
 BuildRequires:  pkgconfig(libusb-1.0)

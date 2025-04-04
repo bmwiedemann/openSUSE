@@ -1597,4 +1597,14 @@ Please add to Staging:G</comment>
     <comment></comment>
     <requestid>1253054</requestid>
   </revision>
+  <revision rev="180" vrev="3">
+    <srcmd5>ae184b85a929c882e5e62060fbf24188</srcmd5>
+    <version>1.26.0</version>
+    <time>1743780522</time>
+    <user>anag+factory</user>
+    <comment>- Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)
+  BuildRequires: align with what meson setup checks for. Lucky us,
+  soup-3.0 was already pulled in via different dependency.</comment>
+    <requestid>1266867</requestid>
+  </revision>
 </revisionlist>
