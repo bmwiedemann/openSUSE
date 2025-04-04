@@ -308,7 +308,7 @@ popd
 %files %{python_files %{name}}
 %{python_sitearch}/tbb
 %{python_sitearch}/TBB.py
-%{python_sitearch}/TBB-%{version}*-info
+%{python_sitearch}/[Tt][Bb][Bb]-%{version}.dist-info
 %pycache_only %{python_sitearch}/__pycache__/TBB*
 %endif
 

@@ -455,4 +455,13 @@
     <comment>- Modernize building of the Python subpackage, don't generate *.egg.</comment>
     <requestid>1236039</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>9d0360415aaa7a339a697f46edf34ef9</srcmd5>
+    <version>2022.0.0</version>
+    <time>1743780520</time>
+    <user>anag+factory</user>
+    <comment>- Support older and current versions of setuptools WRT to the case of
+  the metadata directory.</comment>
+    <requestid>1266830</requestid>
+  </revision>
 </revisionlist>

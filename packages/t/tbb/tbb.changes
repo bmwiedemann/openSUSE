@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  3 05:23:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support older and current versions of setuptools WRT to the case of
+  the metadata directory.
+
+-------------------------------------------------------------------
 Wed Jan  8 17:41:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Modernize building of the Python subpackage, don't generate *.egg.
