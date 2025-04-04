@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  3 15:04:42 MDT 2025 - carnold@suse.com
+
+- Update to version 1.55.8 (jsc#PED-8910)
+  * Various build improvements
+  * Updated translations for several languages
+  * lib/launch-libvirt.c: Remove fallback <emulator> for Arm
+
+-------------------------------------------------------------------
 Mon Mar 24 21:17:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libguestfs-appliance: drop incorrect requireson libpcre1,

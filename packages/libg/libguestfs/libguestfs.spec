@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.55.7
+Version:        1.55.8
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -345,7 +345,9 @@ BuildRequires:  parted
 BuildRequires:  psmisc
 BuildRequires:  sg3_utils
 BuildRequires:  strace
+%if 0%{?suse_version} < 1600
 BuildRequires:  sysconfig-netconfig
+%endif
 %ifarch %ix86 x86_64
 BuildRequires:  syslinux
 %endif
