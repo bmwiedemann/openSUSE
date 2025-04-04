@@ -1,6 +1,0 @@
-<package name="sblim-testsuite" project="openSUSE:Factory">
-  <title>SBLIM Testsuite</title>
-  <description>Standards Based Linux Instrumentation Base Providers Test Suite
-</description>
-  <devel project="systemsmanagement:wbem" package="sblim-testsuite"/>
-</package>
