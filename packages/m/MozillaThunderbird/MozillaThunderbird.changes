@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr  3 10:20:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to use BuildRequires on clang-devel on Tumbleweed/Factory
+  instead of clang18-tools.
+
+-------------------------------------------------------------------
+Thu Mar 27 07:17:25 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.9.0
+  * Thunderbird now has a notification system for real-time desktop alerts
+  * Data corruption occurred when compacting IMAP Drafts folder after
+    saving a message
+  * Right-clicking "Decrypt and Save As..." on an attachment file failed.
+  * Thunderbird could crash when importing mail
+  * Sort indicators were missing on the calendar events list
+  MFSA 2025-24 (bsc#1240083)
+  * CVE-2025-3028 (bmo#1941002)
+    Use-after-free triggered by XSLTProcessor
+  * CVE-2025-3029 (bmo#1952213)
+    URL Bar Spoofing via non-BMP Unicode characters
+  * CVE-2025-3030 (bmo#1850615, bmo#1932468, bmo#1942551,
+    bmo#1951017, bmo#1951494)
+    Memory safety bugs fixed in Firefox 137, Thunderbird 137,
+    Firefox ESR 128.9, and Thunderbird 128.9
+
+-------------------------------------------------------------------
 Wed Mar  5 19:54:43 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 128.8.0

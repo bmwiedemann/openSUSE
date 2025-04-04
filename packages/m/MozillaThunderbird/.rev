@@ -5813,4 +5813,12 @@ I cannot test locally unfortunately.
     Firefox ESR 115.21, Firefox ESR 128.8, and Thunderbird 128.8</comment>
     <requestid>1250560</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>76470b1c8145eef62dcacdcf7f179270</srcmd5>
+    <version>128.9.0</version>
+    <time>1743780580</time>
+    <user>anag+factory</user>
+    <comment></comment>
+    <requestid>1266906</requestid>
+  </revision>
 </revisionlist>

@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          128
-%define mainver        %major.8.0
-%define orig_version   128.8.0
+%define mainver        %major.9.0
+%define orig_version   128.9.0
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -148,7 +148,7 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %if 0%{?suse_version} < 1599
 BuildRequires:  clang15-devel
 %else
-BuildRequires:  clang18-devel
+BuildRequires:  clang-devel
 %endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -578,6 +578,7 @@ rm -f %{buildroot}%{progdir}/updater.ini
 rm -f %{buildroot}%{progdir}/update.locale
 rm -f %{buildroot}%{progdir}/dictionaries/en-US*
 rm -f %{buildroot}%{progdir}/nspr-config
+rm -f %{buildroot}%{progdir}/interesting_serverknobs.json
 # Some sites use different partitions for /usr/(lib|lib64) and /usr/share.  Since you
 # can't create hardlinks across partitions, we'll do this more than once.
 %fdupes %{buildroot}%{progdir}
