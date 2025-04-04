@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Mar 27 17:24:54 UTC 2025 - Knut Anderssen <kanderssen@suse.com>
+
+- Load default security settings before importing the section to
+  ensure the settings are set in case there is no security section 
+  defined and run without confirmation dialog (bsc#1231490)
+- 5.0.6
+
+-------------------------------------------------------------------
 Thu Mar 20 10:50:34 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Allow skipping profile fetch errors by setting
