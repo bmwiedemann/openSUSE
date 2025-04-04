@@ -22,7 +22,6 @@ Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
 URL:            https://opam.ocaml.org/
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
 Source:         %name-%version.tar.xz
 Patch0:         5ffd07705853a7d6516b65db08d3f0a47aa421ab.patch
 Patch1:         d5e0bcb805839ce8e9b9e423415bd81fc8c13abe.patch
