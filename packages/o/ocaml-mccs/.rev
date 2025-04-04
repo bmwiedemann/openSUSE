@@ -99,4 +99,12 @@ Update: Package LICENSE files as %license.</comment>
     <comment>- allow only 64bit to follow other packages</comment>
     <requestid>1256258</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>0bd13ef507e7cfd201668e4f4244a6a4</srcmd5>
+    <version>1.1+19</version>
+    <time>1743782945</time>
+    <user>anag+factory</user>
+    <comment>- Remove ExclusiveArch 64bit</comment>
+    <requestid>1267061</requestid>
+  </revision>
 </revisionlist>
