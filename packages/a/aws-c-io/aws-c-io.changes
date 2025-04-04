@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  2 15:06:11 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.0
+  * Grand Dispatch Queue, Apple Network Connection, Apple SecItem
+    by @sbSteveK in (#661)
+  * Remove unused variables in aws_host_resolver by @graebm in (#719)
+- from version 0.17.0
+  * Add back kqueue support on iOS by @xiazhvera in (#716)
+  * Fix IP address being labelled "bad" for too long by @graebm in (#718)
+
+-------------------------------------------------------------------
 Thu Feb 27 12:32:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.16.0
