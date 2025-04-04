@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Mar 28 10:40:48 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.50.0
+  New features:
+  * Added 'fresh' fz::file::open::creation_flags. If set, file
+    creation fails if a file with the same name already exists.
+  * Added fz::get_digest_size for hash algorithms.
+  * Impersonation changes for working with Active Directory users.
+  * Transparent fz::less_/equal_insensitive_ascii comparators.
+  * Generalized fz::starts_/ends_with.
+  Bugfixes and minor changes:
+  * fz::socket_base::close is now public.
+  * Fixes to mutex-debugging functionality.
+  * Fixes to fz::is_pem heuristic.
+
+-------------------------------------------------------------------
 Sat Nov  2 11:24:28 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.49.0
