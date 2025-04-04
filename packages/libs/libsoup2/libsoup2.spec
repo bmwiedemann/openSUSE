@@ -146,16 +146,20 @@ Features:
     %{nil}
 %meson_build
 
-%check
-# Run the regression tests using GnuTLS NORMAL priority
-export G_TLS_GNUTLS_PRIORITY=NORMAL
-%meson_test
-
 %install
 %meson_install
 %find_lang %{_name} %{?no_lang_C}
 
 %ldconfig_scriptlets -n %{_name}-2_4-1
+
+%check
+# Run the regression tests using GnuTLS NORMAL priority
+export G_TLS_GNUTLS_PRIORITY=NORMAL
+%ifarch s390x
+%meson_test -t 5
+%else
+%meson_test
+%endif
 
 %files -n %{_name}-2_4-1
 %license COPYING

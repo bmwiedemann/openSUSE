@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  2 15:03:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Increase test timeout on s390x. The http2-body-stream test can be
+  slow and sometimes times out in our builds.
+
+-------------------------------------------------------------------
 Wed Nov 13 19:51:03 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add 4c9e75c6.patch: fix an intermittent test failure
