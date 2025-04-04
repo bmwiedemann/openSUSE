@@ -154,6 +154,14 @@ chown -R root:traefik %{_sysconfdir}/%{name}
 chown -R traefik: %{_localstatedir}/lib/%{name}
 chown -R traefik: %{_localstatedir}/log/%{name}
 
+# update traefik user's home directory
+sysuser_homedir="$(getent passwd traefik | cut -d: -f6)"
+
+if [ "${sysuser_homedir}" != "%{_localstatedir}/lib/%{name}" ]; then
+    usermod --home %{_localstatedir}/lib/%{name} traefik
+    echo "Updated traefik home directory to %{_localstatedir}/lib/%{name}" 1>&2
+fi
+
 %preun
 %service_del_preun %{name}.service
 

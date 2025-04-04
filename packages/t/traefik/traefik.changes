@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 31 00:02:54 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Change traefik user's home directory to /var/lib/traefik. This
+  will allow traefik to store data for plugins from https://plugins.traefik.io/plugins
+  without permission issues
+
+  This change will reflect on existing installations automatically
+
+-------------------------------------------------------------------
 Mon Mar 10 00:27:19 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 
 - Version 3.3.4 changes
