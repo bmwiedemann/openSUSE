@@ -53,4 +53,12 @@ It is a dependency of opam.</comment>
     <comment>- allow only 64bit to follow other packages</comment>
     <requestid>1256256</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0fd11a5cfb443eefb7ec122e40d4cd30</srcmd5>
+    <version>7.0.0</version>
+    <time>1743782939</time>
+    <user>anag+factory</user>
+    <comment>- Remove ExclusiveArch 64bit</comment>
+    <requestid>1267057</requestid>
+  </revision>
 </revisionlist>
