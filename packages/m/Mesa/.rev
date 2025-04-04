@@ -6205,4 +6205,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   version)</comment>
     <requestid>1265937</requestid>
   </revision>
+  <revision rev="538" vrev="410">
+    <srcmd5>4b49df0980e694406cb88ddecced7998</srcmd5>
+    <version>unknown</version>
+    <time>1743780512</time>
+    <user>anag+factory</user>
+    <comment>-  Update to release 25.0.3
+   --&gt; https://docs.mesa3d.org/relnotes/25.0.3</comment>
+    <requestid>1266736</requestid>
+  </revision>
 </revisionlist>
