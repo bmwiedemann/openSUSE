@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  2 14:58:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.8.9
+  * RSA PKCS8 support by @DmitriyMusatkin in (#212)
+- from version 0.8.8
+  * Fix module export to respect ed25519 flag by @DmitriyMusatkin in (#210)
+  * Fix FindCrypto behavior on win by @DmitriyMusatkin in (#211)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:40:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.7
