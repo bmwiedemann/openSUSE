@@ -17,15 +17,12 @@
 
 
 Name:           python-netutils
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0
 URL:            https://netutils.readthedocs.io
 Source:         https://github.com/networktocode/netutils/archive/refs/tags/v%{version}.tar.gz#/netutils-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Fix version in pyproject.toml
-# see: https://github.com/networktocode/netutils/issues/613
-Patch:          fix-version-in-pyproject.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module jinja2}
 BuildRequires:  %{python_module legacycrypt if %python-base >= 3.13}

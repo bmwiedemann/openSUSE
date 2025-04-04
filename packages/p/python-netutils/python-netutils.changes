@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  4 08:01:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.13.0
+  * Added is_reversible_wildcardmask, netmask_to_wildcardmask,
+    and wildcardmask_to_netmask functions.
+  * Added aruba_os and aruba_osswitch parsers.
+- Drop fix-version-in-pyproject.patch, fixed upstream
+
+-------------------------------------------------------------------
 Tue Jan 14 10:42:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.12.0

@@ -110,4 +110,16 @@
     <comment></comment>
     <requestid>1238027</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>660326ba1c95c11c12b038024f51e4fe</srcmd5>
+    <version>1.13.0</version>
+    <time>1743782985</time>
+    <user>anag+factory</user>
+    <comment>- Update to 1.13.0
+  * Added is_reversible_wildcardmask, netmask_to_wildcardmask,
+    and wildcardmask_to_netmask functions.
+  * Added aruba_os and aruba_osswitch parsers.
+- Drop fix-version-in-pyproject.patch, fixed upstream</comment>
+    <requestid>1267107</requestid>
+  </revision>
 </revisionlist>
