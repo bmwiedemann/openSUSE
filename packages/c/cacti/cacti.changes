@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr  3 14:19:46 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
+
+- cacti 1.2.30
+ - issue#6089: Unable to add new users
+ - issue#6090: When using Automation Rules, specifying graph criteria may cause issues
+ - issue#6099: When transferring a system from a backup if the poller has not run recently rrdtool issues are found
+ - issue#6172: When translating, quotes may cause incorrect text to appear
+ - issue#6173: When using Boost for the first time, warnings may appear
+ - issue#6183: When refreshing forms, items may be checked incorrectly by xmacan
+
+-------------------------------------------------------------------
 Wed Mar 19 18:21:32 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
 
 - to fix openSUSE:Factory/cacti package acceptance
