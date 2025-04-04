@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 04 11:23:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.1:
+  * Bug Fixes
+    - Add missing icon for changes files tab [#5068]
+    - Improve CLI info text and remove markdown [#5069]
+    - Fix cli format flag fallback [#5057]
+  * Documentation
+    - chore(deps): update docs npm deps non-major [#5060]
+  *  Dependency
+    - fix(deps): update module code.gitea.io/sdk/gitea to v0.21.0
+      [#5067]
+    - chore(deps): lock file maintenance [#5062]
+    - fix(deps): update module github.com/mattn/go-sqlite3 to
+      v1.14.27 [#5058]
+
+-------------------------------------------------------------------
 Wed Apr 02 20:04:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.0:
