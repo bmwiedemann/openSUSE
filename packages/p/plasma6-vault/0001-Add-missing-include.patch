@@ -1,0 +1,25 @@
+From dab97ac6db2db753a03c1766ce4033362d5e14e9 Mon Sep 17 00:00:00 2001
+From: Manuel Alcaraz Zambrano <manuelalcarazzam@gmail.com>
+Date: Fri, 17 Jan 2025 20:06:16 +0100
+Subject: [PATCH] Add missing include
+
+(cherry picked from commit a982e58679caa583ceb4cc883d1c1923dab54db9)
+---
+ kded/engine/commandresult.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/kded/engine/commandresult.h b/kded/engine/commandresult.h
+index 232c5ab..4a24aae 100644
+--- a/kded/engine/commandresult.h
++++ b/kded/engine/commandresult.h
+@@ -7,6 +7,7 @@
+ #ifndef PLASMAVAULT_KDED_ENGINE_COMMAND_RESULT_H
+ #define PLASMAVAULT_KDED_ENGINE_COMMAND_RESULT_H
+ 
++#include <QDebug>
+ #include <QFuture>
+ 
+ #include "asynqt/basic/all.h"
+-- 
+2.49.0
+

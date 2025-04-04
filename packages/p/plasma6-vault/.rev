@@ -175,4 +175,13 @@
     <comment>Plasma 6.3.4 (still building) (forwarded request 1266434 from krop)</comment>
     <requestid>1266506</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>8ddb1021c9c8d78a4c10239fc61d3578</srcmd5>
+    <version>6.3.4</version>
+    <time>1743780869</time>
+    <user>anag+factory</user>
+    <comment>- Add upstream change:
+  * 0001-Add-missing-include.patch</comment>
+    <requestid>1267133</requestid>
+  </revision>
 </revisionlist>
