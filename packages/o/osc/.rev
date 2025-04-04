@@ -1987,4 +1987,16 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment></comment>
     <requestid>1254827</requestid>
   </revision>
+  <revision rev="211" vrev="1">
+    <srcmd5>53d0c9b59b4b01c657e4b7d4453fc8b3</srcmd5>
+    <version>1.15.1</version>
+    <time>1743782964</time>
+    <user>anag+factory</user>
+    <comment>Forwarded request #1267135 from dmach
+
+- 1.15.1
+  - Library:
+    - Revert &quot;Run decode_it also in the other case&quot;</comment>
+    <requestid>1267136</requestid>
+  </revision>
 </revisionlist>

@@ -74,7 +74,7 @@
 %endif
 
 Name:           osc
-Version:        1.14.0
+Version:        1.15.1
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -141,6 +141,9 @@ Recommends:     sudo
 Recommends:     git-core
 Recommends:     git-lfs
 
+# needed for osc co of a git package
+Recommends:     obs-scm-bridge
+
 # needed for `osc add <URL>`
 Recommends:     obs-service-recompress
 Recommends:     obs-service-download_files
@@ -194,10 +197,21 @@ PYTHONPATH=. argparse-manpage \
     --output=osc.1 \
     --format=single-commands-section \
     --module=osc.commandline \
-    --function=get_parser \
+    --function=argparse_manpage_get_parser \
     --project-name=osc \
     --prog=osc \
-    --description="openSUSE Commander" \
+    --description="Command-line client for Open Build Service" \
+    --author="Contributors to the osc project. See the project's GIT history for the complete list." \
+    --url="https://github.com/openSUSE/osc/"
+
+PYTHONPATH=. argparse-manpage \
+    --output=git-obs.1 \
+    --format=single-commands-section \
+    --module=osc.commandline_git \
+    --function=argparse_manpage_get_parser \
+    --project-name=osc \
+    --prog=git-obs \
+    --description="Git based command-line client for Open Build Service" \
     --author="Contributors to the osc project. See the project's GIT history for the complete list." \
     --url="https://github.com/openSUSE/osc/"
 
@@ -234,6 +248,7 @@ install -Dm0644 macros.osc %{buildroot}%{_rpmmacrodir}/macros.osc
 %if %{with man}
 install -Dm0644 git-obs-quickstart.1 %{buildroot}%{_mandir}/man1/git-obs-quickstart.1
 install -Dm0644 osc.1 %{buildroot}%{_mandir}/man1/osc.1
+install -Dm0644 git-obs.1 %{buildroot}%{_mandir}/man1/git-obs.1
 install -Dm0644 oscrc.5 %{buildroot}%{_mandir}/man5/oscrc.5
 %endif
 
@@ -245,7 +260,6 @@ install -Dm0644 oscrc.5 %{buildroot}%{_mandir}/man5/oscrc.5
 
 # inject argcomplete marker to the generated git-obs executable
 sed -i '3i # PYTHON_ARGCOMPLETE_OK'  %{buildroot}%{_bindir}/git-obs
-
 
 %check
 %{use_python} -m unittest
