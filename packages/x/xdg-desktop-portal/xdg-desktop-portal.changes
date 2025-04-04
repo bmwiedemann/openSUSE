@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Mar 28 01:48:38 UTC 2025 - Yifan Jiang <yfjiang@suse.com>
+
+- Optimize docs dependency concern by using default sphinx
+  theme. So the python-furo and its dependencies will not be pulled
+  on Leap 16.0, and we can still build the doc. Added Patch
+  authored by Daniel Garcia <daniel.garcia@suse.com>:
+  * remove-furo-dep.patch
+
+-------------------------------------------------------------------
 Mon Mar 17 16:08:47 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Do not build docs on SLE/Leap <= 16. They pull in a lot of

@@ -1,0 +1,34 @@
+Index: xdg-desktop-portal-1.19.2/doc/conf.py
+===================================================================
+--- xdg-desktop-portal-1.19.2.orig/doc/conf.py
++++ xdg-desktop-portal-1.19.2/doc/conf.py
+@@ -26,9 +26,8 @@ exclude_patterns = ["_build", "Thumbs.db
+ # -- Options for HTML output -------------------------------------------------
+ # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
+ 
+-html_theme = "furo"
++html_theme = "alabaster"
+ # add custom files that are stored in _static
+-html_css_files = ["xdg.css"]
+ html_static_path = ["_static"]
+ html_favicon = "img/favicon.svg"
+ html_logo = "img/logo.svg"
+@@ -37,5 +36,3 @@ html_logo = "img/logo.svg"
+ 
+ ogp_site_url = "https://flatpak.github.io/xdg-desktop-portal/docs/"
+ ogp_image = "_static/card.png"
+-
+-html_permalinks_icon = "🔗"
+Index: xdg-desktop-portal-1.19.2/meson.build
+===================================================================
+--- xdg-desktop-portal-1.19.2.orig/meson.build
++++ xdg-desktop-portal-1.19.2/meson.build
+@@ -185,7 +185,7 @@ add_project_arguments(['-DGLIB_VERSION_M
+ build_documentation = false
+ gdbus_codegen = find_program('gdbus-codegen', native: true, required: get_option('documentation'))
+ sphinx_build = find_program('sphinx-build', native: true, required: get_option('documentation'))
+-sphinx_modules = pymod.find_installation('python3', modules: ['sphinxext.opengraph', 'sphinx_copybutton', 'furo'], required: get_option('documentation'))
++sphinx_modules = pymod.find_installation('python3', modules: ['sphinxext.opengraph', 'sphinx_copybutton'], required: get_option('documentation'))
+ if not get_option('documentation').disabled() and gdbus_codegen.found() and sphinx_build.found() and sphinx_modules.found()
+     fs = import('fs')
+     # we're going to copy this file in to our build tree

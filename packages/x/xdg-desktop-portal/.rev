@@ -479,4 +479,16 @@
   additional dependencies. (forwarded request 1253867 from mgorse)</comment>
     <requestid>1253885</requestid>
   </revision>
+  <revision rev="51" vrev="3">
+    <srcmd5>c37ed0469f51f9b248ed5d88c369ad10</srcmd5>
+    <version>1.20.0</version>
+    <time>1743780541</time>
+    <user>anag+factory</user>
+    <comment>- Optimize docs dependency concern by using default sphinx
+  theme. So the python-furo and its dependencies will not be pulled
+  on Leap 16.0, and we can still build the doc. Added Patch
+  authored by Daniel Garcia &lt;daniel.garcia@suse.com&gt;:
+  * remove-furo-dep.patch (forwarded request 1266404 from yfjiang)</comment>
+    <requestid>1266888</requestid>
+  </revision>
 </revisionlist>

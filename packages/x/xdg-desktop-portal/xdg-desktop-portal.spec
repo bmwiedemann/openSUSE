@@ -19,9 +19,6 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "docs"
-%if 0%{?suse_version} <= 1600
-ExclusiveArch:  do-not-build
-%endif
 %bcond_without  docs
 %define psuffix -devel-docs
 %else
@@ -44,6 +41,8 @@ Supplements:    (%{oname}-devel and patterns-base-documentation)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/flatpak/xdg-desktop-portal
 Source0:        %{url}/releases/download/%{version}/%{oname}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE remove-furo-dep.patch daniel.garcia@suse.com -- Remove the furo dependency for doc
+Patch0:         remove-furo-dep.patch
 
 BuildRequires:  docutils
 BuildRequires:  meson >= 0.58
@@ -51,9 +50,11 @@ BuildRequires:  pkgconfig
 
 %if %{with docs}
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-furo
 BuildRequires:  python3-sphinxcontrib-copybutton
 BuildRequires:  python3-sphinxext-opengraph
+%if 0%{suse_version} > 1600
+BuildRequires:  python3-furo
+%endif
 %endif
 BuildRequires:  gstreamer-plugins-good
 BuildRequires:  gstreamer-utils
@@ -113,7 +114,10 @@ This package contains convenience documentation for developers.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{oname}-%{version}
+%autosetup -N -n %{oname}-%{version}
+%if 0%{suse_version} <= 1600
+%patch -P 0 -p1
+%endif
 
 %build
 %meson %{!?with_docs:-Ddocumentation=disabled} \
