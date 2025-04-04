@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  3 15:16:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Disable two more tests in SLFO that use Qt bindings.
+
+-------------------------------------------------------------------
 Mon Mar 24 12:24:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - We're removing all python Qt bindings from SLE16, so don't build

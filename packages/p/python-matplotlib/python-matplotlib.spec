@@ -359,6 +359,9 @@ skip_tests+=" or (test_backend_pgf and test_rcupdate)"
 # Timeout, this test freeze forever
 skip_tests+=" or test_determinism"
 skip_tests+=" or test_pcolormesh[png] or test_pcolormesh_alpha[png]"
+# The next two tests fail when there's no python qt5 bindings, as in SLFO:Main
+skip_tests+=" or test_span_selector_animated_artists_callback"
+skip_tests+=" or test_qt_missing"
 %endif
 
 # backend tests landing in the wrong xdist process may fail with an error. Test them without xdist.
