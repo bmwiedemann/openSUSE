@@ -402,4 +402,13 @@
   * https://www.dosbox-staging.org/releases/release-notes/0.82.0</comment>
     <requestid>1229657</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>080844a6f82fbdbc564ee1993f9fa658</srcmd5>
+    <version>0.82.1</version>
+    <time>1743780655</time>
+    <user>anag+factory</user>
+    <comment>- Updated to 0.82.1
+  * https://www.dosbox-staging.org/releases/release-notes/0.82.1</comment>
+    <requestid>1266987</requestid>
+  </revision>
 </revisionlist>
