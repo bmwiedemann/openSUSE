@@ -35,4 +35,12 @@ It is a dependency of opam, which is used for building some dependencies of the 
     <comment>- Relax ocaml-rpm-macros requirement</comment>
     <requestid>1256255</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>d90755dcf8dd3e93bd7ae08d55178c28</srcmd5>
+    <version>0.10</version>
+    <time>1743782938</time>
+    <user>anag+factory</user>
+    <comment>- Remove ExclusiveArch 64bit</comment>
+    <requestid>1267056</requestid>
+  </revision>
 </revisionlist>
