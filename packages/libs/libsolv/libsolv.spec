@@ -60,19 +60,26 @@
 %bcond_with ruby
 %bcond_with perl
 %endif
+
+%if 0%{?suse_version} >= 1600
+%bcond_without static
+%bcond_without shared
+%else
 %bcond_without static
 %bcond_with shared
+%endif
+
 %bcond_with zypp
 
 Name:           libsolv
-Version:        0.7.31
+Version:        0.7.32
 Release:        0
 Summary:        Package dependency solver using a satisfiability algorithm
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/openSUSE/libsolv
 Source:         libsolv-%{version}.tar.bz2
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 BuildRequires:  rpm-devel
@@ -167,6 +174,15 @@ Conflicts:      libsatsolver-devel
 Development files for libsolv, a library for solving packages and
 reading repositories.
 
+%package devel-static
+Summary:        Development files for libsolv, a package solver
+Group:          Development/Libraries/C and C++
+Requires:       libsolv-devel = %version
+
+%description devel-static
+Development files for libsolv, a library for solving packages and
+reading repositories.
+
 %package tools-base
 Summary:        Utilities used by libzypp to manage .solv files
 Group:          System/Management
@@ -208,6 +224,9 @@ Applications demoing the libsolv library.
 %package -n ruby-solv
 Summary:        Ruby bindings for the libsolv library
 Group:          Development/Languages/Ruby
+%if 0%{?suse_version}
+Provides:       ruby-solv-ruby-%{rb_ver}
+%endif
 
 %description -n ruby-solv
 Ruby bindings for libsolv.
@@ -267,7 +286,7 @@ cmake . $CMAKE_FLAGS \
 	-DENABLE_APPDATA=1 \
 	-DENABLE_COMPS=1 \
 	-DMULTI_SEMANTICS=1 \
-	%{?with_static:-DENABLE_STATIC=1} \
+	%{?with_static:-DENABLE_STATIC=1 -DENABLE_STATIC_TOOLS=1 -DENABLE_STATIC_BINDINGS=1} \
 	%{!?with_shared:-DDISABLE_SHARED=1} \
 	%{?with_perl:-DENABLE_PERL=1} \
 	%{?with_python:-DENABLE_PYTHON=1} \
@@ -344,7 +363,7 @@ make ARGS=--output-on-failure test
 
 %files devel
 %defattr(-,root,root)
-%if %{with static}
+%if %{with static} && !%{with shared}
 %{_libdir}/libsolv.a
 %{_libdir}/libsolvext.a
 %endif
@@ -360,6 +379,13 @@ make ARGS=--output-on-failure test
 %{_datadir}/cmake/Modules/*
 %{_libdir}/pkgconfig/libsolv*.pc
 %{_mandir}/man3/*
+
+%if %{with static} && %{with shared}
+%files devel-static
+%defattr(-,root,root)
+%{_libdir}/libsolv.a
+%{_libdir}/libsolvext.a
+%endif
 
 %files demo
 %defattr(-,root,root)
