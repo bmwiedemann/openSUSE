@@ -542,4 +542,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1220040 from glaubitz)</comment>
     <requestid>1220048</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a8cbe12296aff1013eb1b71821cd3d74</srcmd5>
+    <version>1.33.0</version>
+    <time>1743782988</time>
+    <user>anag+factory</user>
+    <comment>- New upstream release
+  + Version 1.33.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1267043 from glaubitz)</comment>
+    <requestid>1267118</requestid>
+  </revision>
 </revisionlist>
