@@ -5539,4 +5539,14 @@ boo#1224178</comment>
 - drop chromium-120-make_unique-struct.patch (not needed)</comment>
     <requestid>1266600</requestid>
   </revision>
+  <revision rev="457" vrev="2">
+    <srcmd5>9101bd58b8a456a50a84c625c5538322</srcmd5>
+    <version>135.0.7049.52</version>
+    <time>1743780692</time>
+    <user>anag+factory</user>
+    <comment>- add patch chromium-135-add_map_droppable.patch
+  add MAP_DROPPABLE introduced by recent QT
+  (boo#1238826, boo#1239780)</comment>
+    <requestid>1267101</requestid>
+  </revision>
 </revisionlist>

@@ -156,6 +156,7 @@ Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
+Patch376:       chromium-135-add_map_droppable.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
