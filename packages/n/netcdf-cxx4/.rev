@@ -159,4 +159,17 @@
     <comment></comment>
     <requestid>1150307</requestid>
   </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>804c961895f42f2e0657a21e5c2c00a0</srcmd5>
+    <version>4.3.1</version>
+    <time>1743780604</time>
+    <user>anag+factory</user>
+    <comment>- Remove support for gnu-hpc build flavors (bsc#1239982).
+
+- do not own the includedir - it comes from the filesystem package
+- Add build support for gcc8/9/10 to HPC build (bsc#1174439).
+- Update to version 4.3.1, (jsc#SLE-9959), see changes at:
+  currently on BE (bsc#1091474).</comment>
+    <requestid>1266943</requestid>
+  </revision>
 </revisionlist>

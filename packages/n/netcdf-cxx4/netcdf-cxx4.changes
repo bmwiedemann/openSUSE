@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  1 06:28:33 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Remove support for gnu-hpc build flavors (bsc#1239982).
+
+-------------------------------------------------------------------
 Thu Feb 22 14:00:19 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
@@ -19,7 +24,7 @@ Thu Jul  1 15:36:35 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Wed Apr  7 20:05:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- do not own the includedir - it comes from the filesystem package 
+- do not own the includedir - it comes from the filesystem package
 
 -------------------------------------------------------------------
 Wed Dec  9 08:38:32 UTC 2020 - Egbert Eich <eich@suse.com>
@@ -31,12 +36,12 @@ Wed Dec  9 08:38:32 UTC 2020 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Fri Sep 11 06:12:00 UTC 2020 - Egbert Eich <eich@suse.com>
 
-- Add build support for gcc8/9/10 to HPC build (bsc#1174439). 
+- Add build support for gcc8/9/10 to HPC build (bsc#1174439).
 
 -------------------------------------------------------------------
 Wed Oct  2 07:26:28 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
-- Update to version 4.3.1, (jsc#SLE-9959), see changes at:  
+- Update to version 4.3.1, (jsc#SLE-9959), see changes at:
   * https://www.unidata.ucar.edu/blogs/news/entry/netcdf-c-4-3-1
 - Use -ffat-lto-objects to provide a proper static library.
 - Spec file cleanup
@@ -45,7 +50,7 @@ Wed Oct  2 07:26:28 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 Mon Apr 30 18:08:38 UTC 2018 - eich@suse.com
 
 - (Temporarily) disable fpr S390* as a check test for netcdf fails
-  currently on BE (bsc#1091474). 
+  currently on BE (bsc#1091474).
 
 -------------------------------------------------------------------
 Fri Apr 27 12:24:16 UTC 2018 - eich@suse.com
