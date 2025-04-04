@@ -1,7 +1,7 @@
 #
 # spec file for package python-transitions
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           python-transitions
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        A lightweight, object-oriented Python state machine implementation
 License:        MIT

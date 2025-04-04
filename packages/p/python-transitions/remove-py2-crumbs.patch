@@ -1,4 +1,3 @@
-From 3758cd4a28dfb162e19e29601d8cfe3b8ae1d410 Mon Sep 17 00:00:00 2001
 From: Alexandre Detiste <alexandre.detiste@gmail.com>
 Date: Sun, 14 Apr 2024 14:28:03 +0200
 Subject: [PATCH] remove Python 2 crumbs
@@ -12,10 +11,9 @@ Subject: [PATCH] remove Python 2 crumbs
  transitions/extensions/nesting.py       | 28 +++++++------------------
  6 files changed, 18 insertions(+), 65 deletions(-)
 
-diff --git a/tests/test_nesting.py b/tests/test_nesting.py
-index a982aba0..13323869 100644
---- a/tests/test_nesting.py
-+++ b/tests/test_nesting.py
+diff -Nru transitions-0.9.2.orig/tests/test_nesting.py transitions-0.9.2/tests/test_nesting.py
+--- transitions-0.9.2.orig/tests/test_nesting.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/tests/test_nesting.py	2025-04-03 15:37:00.639048015 +0200
 @@ -1,10 +1,5 @@
  # -*- coding: utf-8 -*-
  
@@ -36,10 +34,9 @@ index a982aba0..13323869 100644
      pass
  
  
-diff --git a/transitions/core.py b/transitions/core.py
-index 8b42d553..e9480c2a 100644
---- a/transitions/core.py
-+++ b/transitions/core.py
+diff -Nru transitions-0.9.2.orig/transitions/core.py transitions-0.9.2/transitions/core.py
+--- transitions-0.9.2.orig/transitions/core.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/transitions/core.py	2025-04-03 15:37:00.639277420 +0200
 @@ -6,23 +6,7 @@
      and transition concepts.
  """
@@ -65,7 +62,7 @@ index 8b42d553..e9480c2a 100644
  
  import inspect
  import itertools
-@@ -31,7 +15,6 @@ class EnumMeta:  # type:ignore
+@@ -31,7 +15,6 @@
  
  from collections import OrderedDict, defaultdict, deque
  from functools import partial
@@ -73,7 +70,7 @@ index 8b42d553..e9480c2a 100644
  
  _LOGGER = logging.getLogger(__name__)
  _LOGGER.addHandler(logging.NullHandler())
-@@ -820,7 +803,7 @@ def add_states(self, states, on_enter=None, on_exit=None,
+@@ -838,7 +821,7 @@
          states = listify(states)
  
          for state in states:
@@ -82,7 +79,7 @@ index 8b42d553..e9480c2a 100644
                  state = self._create_state(
                      state, on_enter=on_enter, on_exit=on_exit,
                      ignore_invalid_triggers=ignore, **kwargs)
-@@ -1178,7 +1161,7 @@ def resolve_callable(func, event_data):
+@@ -1204,7 +1187,7 @@
          Returns:
              callable function resolved from string or func
          """
@@ -91,10 +88,9 @@ index 8b42d553..e9480c2a 100644
              try:
                  func = getattr(event_data.model, func)
                  if not callable(func):  # if a property or some other not callable attribute was passed
-diff --git a/transitions/extensions/diagrams_base.py b/transitions/extensions/diagrams_base.py
-index b70ae553..c831e5cb 100644
---- a/transitions/extensions/diagrams_base.py
-+++ b/transitions/extensions/diagrams_base.py
+diff -Nru transitions-0.9.2.orig/transitions/extensions/diagrams_base.py transitions-0.9.2/transitions/extensions/diagrams_base.py
+--- transitions-0.9.2.orig/transitions/extensions/diagrams_base.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/transitions/extensions/diagrams_base.py	2025-04-03 15:37:00.639470446 +0200
 @@ -8,14 +8,12 @@
  import copy
  import abc
@@ -111,11 +107,10 @@ index b70ae553..c831e5cb 100644
      """Provides the common foundation for graphs generated either with pygraphviz or graphviz. This abstract class
      should not be instantiated directly. Use .(py)graphviz.(Nested)Graph instead.
      Attributes:
-diff --git a/transitions/extensions/factory.py b/transitions/extensions/factory.py
-index e56541c6..30d6a961 100644
---- a/transitions/extensions/factory.py
-+++ b/transitions/extensions/factory.py
-@@ -34,7 +34,7 @@ class NestedAsyncTransition(NestedTransition):  # type: ignore
+diff -Nru transitions-0.9.2.orig/transitions/extensions/factory.py transitions-0.9.2/transitions/extensions/factory.py
+--- transitions-0.9.2.orig/transitions/extensions/factory.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/transitions/extensions/factory.py	2025-04-03 15:37:00.639536752 +0200
+@@ -34,7 +34,7 @@
          """A mock of NestedAsyncTransition for Python 3.6 and earlier."""
  
  
@@ -124,10 +119,9 @@ index e56541c6..30d6a961 100644
      """Convenience factory for machine class retrieval."""
  
      # get one of the predefined classes which fulfill the criteria
-diff --git a/transitions/extensions/markup.py b/transitions/extensions/markup.py
-index 7d5e1bdf..b42f9607 100644
---- a/transitions/extensions/markup.py
-+++ b/transitions/extensions/markup.py
+diff -Nru transitions-0.9.2.orig/transitions/extensions/markup.py transitions-0.9.2/transitions/extensions/markup.py
+--- transitions-0.9.2.orig/transitions/extensions/markup.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/transitions/extensions/markup.py	2025-04-03 15:37:51.412268665 +0200
 @@ -7,24 +7,13 @@
      also be used to store and transfer machines.
  """
@@ -145,7 +139,7 @@ index 7d5e1bdf..b42f9607 100644
 -    from enum import Enum, EnumMeta
 -except ImportError:  # pragma: no cover
 -    # If enum is not available, create dummy classes for type checks
--    # typing must be prevent redefinition issues with mypy
+-    # typing must be prevented redefinition issues with mypy
 -    class Enum:  # type:ignore
 -        """This is just an Enum stub for Python 2 and Python 3.3 and before without Enum support."""
 -
@@ -155,7 +149,7 @@ index 7d5e1bdf..b42f9607 100644
  
  from ..core import Machine
  from .nesting import HierarchicalMachine
-@@ -229,7 +218,7 @@ class HierarchicalMarkupMachine(MarkupMachine, HierarchicalMachine):
+@@ -236,7 +225,7 @@
  
  def rep(func, format_references=None):
      """Return a string representation for `func`."""
@@ -164,19 +158,18 @@ index 7d5e1bdf..b42f9607 100644
          return func
      if isinstance(func, numbers.Number):
          return str(func)
-@@ -242,7 +231,7 @@ def _convert(obj, attributes, format_references):
+@@ -249,7 +238,7 @@
          val = getattr(obj, key, False)
          if not val:
              continue
 -        if isinstance(val, string_types):
 +        if isinstance(val, str):
              definition[key] = val
-         else:
-             try:
-diff --git a/transitions/extensions/nesting.py b/transitions/extensions/nesting.py
-index d8c54ef7..96ccbfb1 100644
---- a/transitions/extensions/nesting.py
-+++ b/transitions/extensions/nesting.py
+         elif val is True:
+             definition[key] = True
+diff -Nru transitions-0.9.2.orig/transitions/extensions/nesting.py transitions-0.9.2/transitions/extensions/nesting.py
+--- transitions-0.9.2.orig/transitions/extensions/nesting.py	2024-08-06 15:30:55.000000000 +0200
++++ transitions-0.9.2/transitions/extensions/nesting.py	2025-04-03 15:37:00.639796826 +0200
 @@ -9,23 +9,11 @@
  
  from collections import OrderedDict
@@ -202,7 +195,7 @@ index d8c54ef7..96ccbfb1 100644
  from ..core import State, Machine, Transition, Event, listify, MachineError, EventData
  
  _LOGGER = logging.getLogger(__name__)
-@@ -374,7 +362,7 @@ def __init__(self, model=Machine.self_literal, states=None, initial='initial', t
+@@ -414,7 +402,7 @@
          )
  
      def __call__(self, to_scope=None):
@@ -211,7 +204,7 @@ index d8c54ef7..96ccbfb1 100644
              state_name = to_scope.split(self.state_cls.separator)[0]
              state = self.states[state_name]
              to_scope = (state, state.states, state.events, self.prefix_path + [state_name])
-@@ -408,7 +396,7 @@ def add_model(self, model, initial=None):
+@@ -448,7 +436,7 @@
          if hasattr(initial_name, 'name'):
              initial_name = initial_name.name
          # initial states set by add_model or machine might contain initial states themselves.
@@ -220,7 +213,7 @@ index d8c54ef7..96ccbfb1 100644
              initial_states = self._resolve_initial(models, initial_name.split(self.state_cls.separator))
          # when initial is set to a (parallel) state, we accept it as it is
          else:
-@@ -473,7 +461,7 @@ def add_states(self, states, on_enter=None, on_exit=None, ignore_invalid_trigger
+@@ -513,7 +501,7 @@
                      state = {'name': state, 'children': state.value}
                  elif isinstance(state.value, dict):
                      state = dict(name=state, **state.value)
@@ -229,7 +222,7 @@ index d8c54ef7..96ccbfb1 100644
                  self._add_string_state(state, on_enter, on_exit, ignore, remap, **kwargs)
              elif isinstance(state, Enum):
                  self._add_enum_state(state, on_enter, on_exit, ignore, remap, **kwargs)
-@@ -600,7 +588,7 @@ def get_state(self, state, hint=None):
+@@ -640,7 +628,7 @@
          """
          if isinstance(state, Enum):
              state = self._get_enum_path(state)
@@ -238,7 +231,7 @@ index d8c54ef7..96ccbfb1 100644
              state = state.split(self.state_cls.separator)
          if not hint:
              state = copy.copy(state)
-@@ -652,11 +640,11 @@ def get_transitions(self, trigger="", source="*", dest="*", delegate=False):
+@@ -692,11 +680,11 @@
          """
          with self():
              source_path = [] if source == "*" \
@@ -252,7 +245,7 @@ index d8c54ef7..96ccbfb1 100644
                  else self._get_enum_path(dest) if isinstance(dest, Enum) \
                  else self._get_state_path(dest)
              matches = self.get_nested_transitions(trigger, source_path, dest_path)
-@@ -1064,7 +1052,7 @@ def _init_state(self, state):
+@@ -1166,7 +1154,7 @@
                  self._init_state(substate)
  
      def _recursive_initial(self, value):
