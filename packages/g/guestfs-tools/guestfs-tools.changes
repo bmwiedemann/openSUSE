@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr  3 11:36:44 MDT 2025 - carnold@suse.com
+
+- Update to version 1.53.9 (jsc#PED-8910)
+  * Various build improvements
+  * mlcustomize: ignore sriov vioprot.* files too
+  * mlcustomize: don't inject .pdb files
+  * mlcustomize: Only use osinfo id for virtio-win path matching
+  * mlcustomize: virtio-win: clarify virtio-1.0 support
+  * mlcustomize: make windows q35 check independent of virtio drivers
+  * mlcustomize: virtio-win: stop checking osinfo for virtio drivers
+  * mltools: Strip out all libosinfo driver plumbing
+  * mlutils: Remove need for OCaml OUnit2
+  * mltools: Remove need for OCaml OUnit2
+  * mlstdutils: Remove need for OCaml OUnit2
+  * mltools: Fix de-oUnit-ized tests
+
+-------------------------------------------------------------------
 Wed Mar 12 14:50:23 MDT 2025 - carnold@suse.com
 
 - Update to version 1.53.8 (jsc#PED-8910)
