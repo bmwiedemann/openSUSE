@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Apr  5 01:17:04 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.8.1:
+  * [CMake] Fix transitive dependencies for TBB when libblake3 is
+    built with BLAKE3_USE_TBB=1
+- Updates from version 1.8.0:
+  * The Rust crate now provides the blake3::hazmat module, which
+    replaces the undocumented and now deprecated blake3::guts
+    module. This is intended for advanced use cases like Bao and
+    Iroh, which need to manipulate chunk and subtree "chaining
+    values" directly.
+- Updates from version 1.7.0:
+  * The C implementation has gained multithreading support, based
+    on Intel's oneTBB library. This works similarly to the
+    Rayon-based multithreading used in the Rust implementation. See
+    c/README.md for details.
+  * Added b3sum --tag, which changes the output format. This is for
+    compatibility with GNU checksum tools (which use the same flag)
+    and BSD checksum tools (which use the output format this flag
+    turns on).
+- Updates from version 1.6.1:
+  * Remove mmap from the default features list. It was added
+    accidentally in v1.6.0, last week. This is technically a
+    backwards-incompatible change, but I would rather not tag
+    v2.0.0 for a build-time bugfix with a simple workaround.
+- Updates from version 1.6.0:
+  * Add Hash::from_slice.
+  
+-------------------------------------------------------------------
 Sat Nov 30 08:47:40 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.5.5:

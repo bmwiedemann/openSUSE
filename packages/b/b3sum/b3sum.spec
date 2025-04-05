@@ -1,7 +1,7 @@
 #
 # spec file for package b3sum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           b3sum
-Version:        1.5.5
+Version:        1.8.1
 Release:        0
 Summary:        A multithreaded rust implementation of BLAKE3
 License:        Apache-2.0 OR CC0-1.0
