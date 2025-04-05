@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  3 09:19:19 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Do not provides ncurses for *new* C++ library subpackages
+
+-------------------------------------------------------------------
 Mon Mar 31 06:15:49 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250329

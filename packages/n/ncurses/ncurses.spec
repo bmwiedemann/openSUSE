@@ -218,8 +218,6 @@ Summary:        Terminal control library
 License:        MIT
 Group:          System/Libraries
 Requires:       terminfo-base
-Provides:       ncurses = 5.9
-Obsoletes:      ncurses < 5.9
 
 %description -n libncurses_c++5
 The ncurses library is used by many terminal applications for
@@ -247,7 +245,6 @@ Summary:        Terminal control library
 License:        MIT
 Group:          System/Libraries
 Requires:       terminfo-base
-Provides:       ncurses = %{version}
 Recommends:     ncurses-utils = %{version}
 Suggests:       libncurses6-compat
 

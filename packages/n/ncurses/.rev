@@ -5053,4 +5053,12 @@
   + add note in user_caps.5 addressing a quibble about dates.</comment>
     <requestid>1265702</requestid>
   </revision>
+  <revision rev="291" vrev="64">
+    <srcmd5>404546219ddfa3bf59be3630512af152</srcmd5>
+    <version>unknown</version>
+    <time>1743853224</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not provides ncurses for *new* C++ library subpackages</comment>
+    <requestid>1266831</requestid>
+  </revision>
 </revisionlist>
