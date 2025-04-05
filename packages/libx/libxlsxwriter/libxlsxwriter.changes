@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr  5 01:10:45 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to version 1.2.2:
+  * Added support for manually positioning chart elements such as
+    the chart axis labels, the chart legend, the chart plot area
+    and the chart title.
+- Updates from version 1.2.1:
+  * Improved the cmake build support for using the minizip library.
+
+-------------------------------------------------------------------
 Sat Feb 15 14:13:18 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 1.2.0:

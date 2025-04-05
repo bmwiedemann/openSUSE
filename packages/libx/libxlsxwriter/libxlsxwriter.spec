@@ -16,10 +16,10 @@
 #
 
 
-%define libname libxlsxwriter7
+%define libname libxlsxwriter9
 
 Name:           libxlsxwriter
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        A C library for creating Excel XLSX files
 License:        BSD-2-Clause
