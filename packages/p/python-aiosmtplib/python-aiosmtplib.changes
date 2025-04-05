@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  4 12:16:40 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.0.0
+  * BREAKING: Drop Python 3.8 support
+  * Bugfix: Run socket.getfqdn in thread to avoid blocking event loop if local_hostname not provided (thanks @Raidzin)
+  * Bugfix: Clear connect lock on connection lost, allowing client reconnect
+  * Bugfix: Allow socket connections to use TLS by providing hostname and use_tls=True
+
+-------------------------------------------------------------------
 Fri Nov  8 08:23:35 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.0.2
