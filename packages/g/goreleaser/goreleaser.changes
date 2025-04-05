@@ -1,9 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr 02 08:23:43 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.8.2:
+  * chore(deps): bump mkdocs-material from 9.6.10 to 9.6.11 in /www (#5692)
+  * ci: notify discord if generate job fails
+  * chore: auto-update generated files
+  * ci: add release:watch
+  * ci: fix generate
+  * fix: do not set extra replaces to nil
+  * chore(deps): bump mkdocs-material from 9.6.9 to 9.6.10 in /www (#5691)
+  * refactor: improve extra cast errors
+  * refactor: ExtraOr, MustExtra (#5685)
+  * chore(deps): update go-github
+  * fix(winget): update manifest schema to latest (1.10.0)  (#5683)
+  * test: simplify tests with usetesting linter (#5684)
+  * chore: update
+  * fix: lint
+  * fix: jsonschema
+  * refactor: organize config code a bit better
+  * fix: lint issues (2nd pass) (#5681)
+  * fix: lint issues (#5678)
+  * docs: alert Markdown Tip section (#5677)
+  * chore: fix imports
+  * chore: fix imports
+  * refactor: modernize codebase
+  * refactor: replace interface{} with any
+  * ci: fix lint
+  * ci: update golangci-lint config
+  * chore(deps): bump github/codeql-action from 3.28.12 to 3.28.13 (#5676)
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.2 to 7.0.0 (#5675)
+  * chore(deps): bump github.com/distribution/distribution/v3 from 3.0.0-rc.3 to 3.0.0-rc.4 (#5673)
+  * docs: use docker and pip instead of nix (#5672)
+  * fix(nix): cleanup, docs updates, test names
+  * fix(nix): use nix-hash instead of nix-prefetch-url (#5669)
+  * fix(winget): make tags lowercase (#5664)
+  * chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to 4.5.2 in the go_modules group (#5668)
+  * chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2 in the go_modules group (#5667)
+  * fix(winget): tags: replace spaces with dash
+  * fix(winget): better handle publisher name (#5643)
+  * docs: move sponsors to navbar (#5661)
+  * chore(deps): bump github/codeql-action from 3.28.11 to 3.28.12 (#5660)
+  * chore(deps): bump actions/cache from 4.2.2 to 4.2.3 (#5659)
+  * chore(deps): bump actions/setup-go from 5.3.0 to 5.4.0 (#5658)
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.1 to 6.5.2 (#5657)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.125.0 to 0.126.0 (#5656)
+  * chore(deps): bump github.com/BurntSushi/toml from 1.4.0 to 1.5.0 (#5655)
+  * docs: improve home page
+  * docs: remove announcement
+  * docs: fix site home
+
+-------------------------------------------------------------------
 Thu Mar 27 14:05:51 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
-- Packaging improvments:
-  * Remove FIXME from License: clause, upstream does use MIT license
-  * Summary and Description clarify the purpose of this CLI tool
+- Re-add Jeff Kowalczyk Packaging improvements that somehow got lost:
+-  * Remove FIXME from License: clause, upstream does use MIT license
+-  * Summary and Description clarify the purpose of this CLI tool
 
 -------------------------------------------------------------------
 Mon Mar 17 14:54:50 UTC 2025 - felix.niederwanger@suse.de

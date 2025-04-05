@@ -42,4 +42,41 @@
   * ci(deps): update dagger et al (#5644)</comment>
     <requestid>1264622</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e5a23252e9ad7f7f3f731358a1b289f5</srcmd5>
+    <version>2.8.2</version>
+    <time>1743853476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.8.2:
+  * chore(deps): bump mkdocs-material from 9.6.10 to 9.6.11 in /www (#5692)
+  * ci: notify discord if generate job fails
+  * chore: auto-update generated files
+  * ci: add release:watch
+  * ci: fix generate
+  * fix: do not set extra replaces to nil
+  * chore(deps): bump mkdocs-material from 9.6.9 to 9.6.10 in /www (#5691)
+  * refactor: improve extra cast errors
+  * refactor: ExtraOr, MustExtra (#5685)
+  * chore(deps): update go-github
+  * fix(winget): update manifest schema to latest (1.10.0)  (#5683)
+  * test: simplify tests with usetesting linter (#5684)
+  * chore: update
+  * fix: lint
+  * fix: jsonschema
+  * refactor: organize config code a bit better
+  * fix: lint issues (2nd pass) (#5681)
+  * fix: lint issues (#5678)
+  * docs: alert Markdown Tip section (#5677)
+  * chore: fix imports
+  * chore: fix imports
+  * refactor: modernize codebase
+  * refactor: replace interface{} with any
+  * ci: fix lint
+  * ci: update golangci-lint config
+  * chore(deps): bump github/codeql-action from 3.28.12 to 3.28.13 (#5676)
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.2 to 7.0.0 (#5675)
+  * chore(deps): bump github.com/distribution/distribution/v3 from 3.0.0-rc.3 to 3.0.0-rc.4 (#5673)
+  * docs: use docker and pip instead of nix (#5672) (forwarded request 1266409 from ph03nix)</comment>
+    <requestid>1267199</requestid>
+  </revision>
 </revisionlist>
