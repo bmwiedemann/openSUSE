@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  4 16:33:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU ed 1.21.1:
+  * Fixed a compilation failure caused by the inclusion of the
+    unused and obsolete header <sys/file.h>
+  * Ed now reads the initial window size for the z command from the
+    environment variable LINES
+
+-------------------------------------------------------------------
 Sat Jan 11 12:19:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU ed 1.21
