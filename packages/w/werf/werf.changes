@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 04 17:29:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.0:
+  * Features
+    - build: add clearUser and clearWorkingDir options to imageSpec
+      config (#6759) (36f3d6a)
+    - build: add pull/push retries when authentication is required
+      (short-term token case) #6750 (26ccd15)
+    - cleanup: add disable cleanup feature (#6737) (78f4e20)
+  * Bug Fixes
+    - build, docker: fix failed to find driver "docker-container"
+      (#6760) (63dcbfb)
+    - host-cleanup: don't prune backend build cache (7963926)
+    - host-cleanup: don't prune containers #6762 (fa242d8)
+    - host-cleanup: don't prune dangling werf images for some time
+      (#6767) (fd9b2ca)
+    - host-cleanup: don't prune dangling werf images for some time
+      (Docker) (#6752) (c0d3413)
+    - host-cleanup: ensure no parallel processes of auto host
+      cleanup (#6736) (9b43ad0)
+    - host-cleanup: purge Stapel assembling container (785fa77)
+
+-------------------------------------------------------------------
 Wed Mar 26 11:43:32 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.34.1:
