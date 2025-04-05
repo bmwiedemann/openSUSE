@@ -6214,4 +6214,11 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
    --&gt; https://docs.mesa3d.org/relnotes/25.0.3</comment>
     <requestid>1266736</requestid>
   </revision>
+  <revision rev="539" vrev="411">
+    <srcmd5>54b24b0876f981284b8fb1a995d5cb1f</srcmd5>
+    <version>unknown</version>
+    <time>1743852707</time>
+    <user>dimstar_suse</user>
+    <comment>Revert to 25.0.2 - test for virtio-vga issues</comment>
+  </revision>
 </revisionlist>

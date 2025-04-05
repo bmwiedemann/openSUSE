@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.0.3
+%define _version 25.0.2
 %else
 %define _version 24.1.7
 %endif
@@ -156,7 +156,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.0.3
+Version:        25.0.2
 %else
 Version:        24.1.7
 %endif
@@ -187,8 +187,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.3.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.3.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.2.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.2.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
