@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Mar 23 13:17:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.2:
+  * fix: revert sexp_output_stream_t::change_output_byte_size ABI
+
+-------------------------------------------------------------------
+Sat Mar 22 15:34:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.1:
+  * fix: update inttypes includes by @barracuda156
+  * fix: resolve type mismatch in sexpp-input.cpp
+  * ffix: update error message formats for size_t parameters
+  * doc: update specification reference, remove dead links
+
+-------------------------------------------------------------------
 Fri Oct 18 05:41:37 UTC 2024 - ming li <mli@suse.com>
 
 -  Update to 0.9.0:

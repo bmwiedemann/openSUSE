@@ -1,8 +1,8 @@
 #
 # spec file for package sexpp
 #
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define soversion 0
 Name:           sexpp
-Version:        0.9.0
+Version:        0.9.2
 Release:        0
 Summary:        S-expressions parser and generator library
 License:        MIT
