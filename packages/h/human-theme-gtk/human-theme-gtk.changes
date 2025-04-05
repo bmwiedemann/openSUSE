@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.3.0)
+  * (gtk 3) new design for Mate notifications
+    PR => github.com/mate-desktop/mate-notification-daemon/pull/232
+    PR => github.com/mate-desktop/mate-notification-daemon/pull/233
+    mate-notification-daemon v1.28.4+
+  * (gtk 3) fix design for Bleachbit
+    PR => github.com/bleachbit/bleachbit/pull/1195
+    bleachbit v?
+  * (gtk 3) update design for mate-control-center & ccsm
+  * (gtk 3) fix icon size in titlebar for xfwm4
+  * (gtk 3) fix padding in titlebar when maximized for xfwm4
+  * (gtk 3) same design between Mate and Xfce for terminal & alttab
+    PR => github.com/mate-desktop/marco/pull/789
+    marco v1.28.2+
+  * (gtk 3) update font color for mate-panel
+  * (gtk 3) fix font color for mate keyboard indicator
+  * (gtk 3) fix background for disabled view for Caja (F3)
+  * (gtk 3) fix lines (treeview) for disabled view for Caja (F3)
+  * (gtk 3) fix design of progressbar in statusbar for Eom
+  * (gtk 3) fix design for Mate osd when compositor is enabled
+  * (gtk 3 & 4) fix design of progressbars with text in statusbar
+  * (gtk 3 & 4) fix and update design of progressbars with text
+  * (gtk 3 & 4) update background for selected lines in treeviews
+  * (gtk 3 & 4) add highlight effect for icons on hover
+  * (gtk 3 & 4) better contrast for progressbars/scales background
+  * (gtk 3 & 4) little enhancement for headarbar
+  * (gtk 4) fix for the stupid hover effect on menubar items
+  * (gtk 4) fix background of menu items
+  * (gtk 4) add design for listviews (open/save dialogs)
+  * (gtk 4) add design open/save dialogs
+  * (gtk 4) no changes required from 4.12 to 4.18!
+- The best with gtk3-classic and gtk4-classic
+    gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
+  * (gtk 3) automatic min-width/min-height for progressbars
+  * (gtk 4) add dual text color for progressbars
+
+-------------------------------------------------------------------
 Mon Mar  3 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.2.1)

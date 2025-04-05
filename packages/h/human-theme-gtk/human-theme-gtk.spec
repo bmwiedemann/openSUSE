@@ -17,7 +17,7 @@
 
 
 Name:           human-theme-gtk
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Human theme for GTK
 Summary(fr):    Thème Human pour GTK
@@ -28,10 +28,10 @@ BuildRequires:  aspell-fr
 Recommends:     dmz-icon-theme-cursors
 Recommends:     gnome-icon-theme
 Recommends:     gtk2-engine-murrine
-# https://software.opensuse.org/search?baseproject=openSUSE%3AFactory&q=qt+theme+gtk
 Suggests:       libqt5-qtbase-platformtheme-gtk3
 Suggests:       libqt5-qtstyleplugins-platformtheme-gtk2
 Suggests:       qt6-platformtheme-gtk3
+# https://software.opensuse.org/search?baseproject=openSUSE%3AFactory&q=qt+theme+gtk
 BuildArch:      noarch
 
 %description %{expand:
@@ -64,7 +64,8 @@ install -Dpm 644 data/profile.sh %{buildroot}%{_sysconfdir}/profile.d/%{name}.sh
 %config(noreplace) %{_sysconfdir}/profile.d/%{name}.sh
 %license LICENSE
 %doc README.md
-# the entire source code is GPL-3.0-or-later, except metacity-1/* which is LGPL-2.1-or-later, and gtk-2.0/* which is CC-BY-SA-3.0-or-later
+# the entire source code is GPL-3.0-or-later, except metacity-1/* which is LGPL-2.1-or-later,
+# and gtk-2.0/* which is CC-BY-SA-3.0-or-later
 %{_datadir}/themes/human-theme/
 %{_datadir}/themes/human-theme-blue/
 %{_datadir}/themes/human-theme-green/
