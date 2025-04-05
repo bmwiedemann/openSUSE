@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr  4 12:28:11 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.61:
+  * argparsers: pgrep i3 with shmlog (#2272), by lasers
+  * modules: fix SyntaxWarning for python 3.12+ thx to @sdelafond (#2274)
+  * conky module: fix tempfile and ignore new output (#2273), by ntorresalberto
+  * mpris module: hide all non can_play players (#2267), by Valdur Kana
+  * playerctl module: gi.require_version notification fix (#2270), by Valdur Kana
+
+-------------------------------------------------------------------
+Fri Apr  4 12:28:11 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.60:
+  * THANKS to Valdur Kana and @lasers for their long and continued efforts in improving py3status!
+  * core: drop EOL python 3.8 and add new 3.13 to CI (#2266)
+  * external_script module: add composite placeholder (#2263), by lasers
+  * hddtemp module: remove deprecated telnetlib dependency (fixes #2261) (#2262), by Valdur Kana
+  * kdeconnector module: replace pydbus with dbus-python (#2264), by Valdur Kana
+  * mpris module: improve documentation (#2257), by Valdur Kana
+  * playerctl module: hide non-can-play players and use chrome and chromium as default value. (#2256), by Valdur Kana
+  * playerctl module: list python-gobject as dependency (#2258), by Joey Holtzman
+  * wwan module: replace pydbus with dbus-python (#2265), by Valdur Kana
+
+-------------------------------------------------------------------
+Fri Apr  4 12:28:11 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 3.59:
+  * core: strip whitespaces from OUTPUT, OUTPUT_PART events (#2245), by lasers
+  * ci(ruff): use new ruff check path command (#2253)
+  * external_script module: fix clicking on parts of message thx to @lasers (#2254)
+  * mpris module: kdeconnect mpris interface will skip identity cache, because mobile device can run different media players (#2251), by Valdur Kana
+
+-------------------------------------------------------------------
 Wed Jun  5 10:11:02 UTC 2024 - Dawid Adam <nyslay@gmail.com>
 
 - update to 3.58:

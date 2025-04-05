@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-py3status
-Version:        3.58
+Version:        3.61
 Release:        0
 Summary:        Python extensible i3status wrapper
 License:        BSD-3-Clause
