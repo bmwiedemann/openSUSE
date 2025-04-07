@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-quick3dphysics
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtquick3dphysics-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,26 +27,26 @@
 %endif
 #
 Name:           qt6-quick3dphysics%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Quick3D Physics Extensions
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-quick3d-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 #
 # Only arm and x86_64 are supported
-ExclusiveArch:  %{arm} aarch64 x86_64 %x86_64
+ExclusiveArch:  %{arm} aarch64 x86_64 %{x86_64}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -87,12 +87,12 @@ Development files for the Qt 6 Quick3DPhysics library.
 
 %package -n qt6-quick3dphysics-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DPhysics library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3D) = %{real_version}
 Requires:       cmake(Qt6Quick3DPhysics) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-qml-private-devel
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-quick3dphysics-private-devel
 This package provides private headers of libQt6Quick3DPhysics that do not have
@@ -110,10 +110,10 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-quick3dphysicshelpers-private-devel
 Summary:        Qt 6 Quick3DPhysicsHelpers library - Development files
 Requires:       libQt6Quick3DPhysicsHelpers6 = %{version}
-Requires:       qt6-quick3dphysics-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6Quick3D) = %{real_version}
+Requires:       cmake(Qt6Quick3DPhysicsPrivate) = %{real_version}
 
 %description -n qt6-quick3dphysicshelpers-private-devel
 Development files for the Qt 6 Quick3DPhysics private library.
@@ -123,7 +123,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-bundledphysx-devel-static
 Summary:        Qt6 BundledPhysX static library
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-bundledphysx-devel-static
 The Qt6 BundledPhysX static library.
@@ -183,6 +183,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtQuick3DPhysics/%{real_version}
 
 %files -n qt6-quick3dphysics-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DPhysicsPrivate/
 %{_qt6_includedir}/QtQuick3DPhysics/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dphysics_private.pri
 
@@ -193,6 +194,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files -n qt6-quick3dphysicshelpers-private-devel
 %{_qt6_cmakedir}/Qt6Quick3DPhysicsHelpers/
+%{_qt6_cmakedir}/Qt6Quick3DPhysicsHelpersPrivate/
 %{_qt6_descriptionsdir}/Quick3DPhysicsHelpers.json
 %{_qt6_includedir}/QtQuick3DPhysicsHelpers/
 %{_qt6_libdir}/libQt6Quick3DPhysicsHelpers.prl
