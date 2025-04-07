@@ -81,6 +81,7 @@ export CXX=g++-11
 %if %{suse_version} < 1550
 export TEST_CC=gcc-11
 export TEST_CXX=g++-11
+export TEST_GXX=g++-11
 %endif
 %ctest
 
