@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-grpc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtgrpc
 %define tar_name qtgrpc-everywhere-src
 %define tar_suffix %{nil}
@@ -28,24 +28,25 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\(qtgrpc\\.examples.*
+%global __requires_exclude qt6qmlimport\\((qtgrpc\\.examples.*|QtGrpcChat).*
 #
 Name:           qt6-grpc%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        gRPC and Protobuf generator and bindings for Qt framework
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel = %{version}
-BuildRequires:  qt6-network-private-devel = %{version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6NetworkPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QmlNetwork) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
+BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(grpc++)
 BuildRequires:  pkgconfig(libprotobuf-c)
@@ -120,6 +121,8 @@ ABI or API guarantees.
 %autosetup -p1 -n %{tar_name}-%{real_version}%{tar_suffix}
 
 %build
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %cmake_qt6 \
   -DQT_GENERATE_SBOM:BOOL=FALSE
 
@@ -146,8 +149,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6GrpcQuick.so.*
 
 %files devel
-%{_qt6_cmakedir}/Qt6/FindWrapgRPC.cmake
-%{_qt6_cmakedir}/Qt6/FindWrapgRPCPlugin.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtGrpcTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Grpc/
 %{_qt6_cmakedir}/Qt6GrpcQuick/
@@ -171,6 +172,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtGrpcQuick/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6GrpcPrivate/
+%{_qt6_cmakedir}/Qt6GrpcQuickPrivate/
 %{_qt6_includedir}/QtGrpc/%{real_version}
 %{_qt6_includedir}/QtGrpcQuick/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_grpc_private.pri
@@ -185,7 +188,6 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %{_qt6_libdir}/libQt6ProtobufWellKnownTypes.so.*
 
 %files -n qt6-protobuf-devel
-%{_qt6_cmakedir}/Qt6/FindWrapProtobuf.cmake
 %{_qt6_cmakedir}/Qt6/FindWrapProtoc.cmake
 %{_qt6_cmakedir}/Qt6Protobuf/
 %{_qt6_cmakedir}/Qt6ProtobufQtCoreTypes/
@@ -233,6 +235,11 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtProtobufQuick/%{real_version}
 
 %files -n qt6-protobuf-private-devel
+%{_qt6_cmakedir}/Qt6ProtobufPrivate/
+%{_qt6_cmakedir}/Qt6ProtobufQtCoreTypesPrivate/
+%{_qt6_cmakedir}/Qt6ProtobufQtGuiTypesPrivate/
+%{_qt6_cmakedir}/Qt6ProtobufQuickPrivate/
+%{_qt6_cmakedir}/Qt6ProtobufWellKnownTypesPrivate/
 %{_qt6_includedir}/QtProtobuf/%{real_version}/
 %{_qt6_includedir}/QtProtobufQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_protobuf_private.pri
