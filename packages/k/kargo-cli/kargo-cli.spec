@@ -19,7 +19,7 @@
 %define executable_name kargo
 
 Name:           kargo-cli
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        CLI for the Kubernetes Application lifecycle orchestration
 License:        Apache-2.0
@@ -73,16 +73,18 @@ zsh command line completion support for %{name}.
 %autosetup -p1 -a 1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="\
-   -X github.com/akuity/kargo/internal/version.version=%{version} \
-   -X github.com/akuity/kargo/internal/version.buildDate=${BUILD_DATE} \
-   -X github.com/akuity/kargo/internal/version.gitCommit=v%{version} \
-   -X github.com/akuity/kargo/internal/version.gitTreeState=clean" \
+   -X github.com/akuity/kargo/pkg/x/version.version=%{version} \
+   -X github.com/akuity/kargo/pkg/x/version.buildDate=${BUILD_DATE} \
+   -X github.com/akuity/kargo/pkg/x/version.gitCommit=${COMMIT_HASH} \
+   -X github.com/akuity/kargo/pkg/x/version.gitTreeState=clean" \
    -o bin/%{executable_name} ./cmd/cli
 
 %install
