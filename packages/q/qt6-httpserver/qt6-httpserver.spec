@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-httpserver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qthttpserver-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,21 +27,21 @@
 %endif
 #
 Name:           qt6-httpserver%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt HTTP Server
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-network-private-devel
-BuildRequires:  qt6-websockets-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6NetworkPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6WebSockets) = %{real_version}
+BuildRequires:  cmake(Qt6WebSocketsPrivate) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -69,10 +69,10 @@ Development files for the Qt 6 HttpServer library.
 
 %package -n qt6-httpserver-private-devel
 Summary:        Non-ABI stable API for the Qt 6 HttpServer Library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6HttpServer) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-network-private-devel
-%requires_eq    qt6-websockets-private-devel
+Requires:       cmake(Qt6NetworkPrivate) = %{real_version}
+Requires:       cmake(Qt6WebSocketsPrivate) = %{real_version}
 
 %description -n qt6-httpserver-private-devel
 This package provides private headers of libQt6HttpServer that do not have any
@@ -115,6 +115,7 @@ ABI or API guarantees.
 %exclude %{_qt6_includedir}/QtHttpServer/%{real_version}
 
 %files -n qt6-httpserver-private-devel
+%{_qt6_cmakedir}/Qt6HttpServerPrivate/
 %{_qt6_includedir}/QtHttpServer/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_httpserver_private.pri
 
