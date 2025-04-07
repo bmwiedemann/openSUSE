@@ -27,10 +27,10 @@ The following command line verbs are known:
 # ARGUMENTS
 
 `OLD_SNAPSHOT`
-: Snapshot to compare with
+: Snapshot to compare with.  If missing will be autodetected.
 
 `NEW_SNAPSHOT`
-: Optional reference snapshot. If missing use the current one.
+: Optional reference snapshot.  Usually the current one.  If missing will be autodetected.
 
 # OPTIONS
 
@@ -52,8 +52,8 @@ The following command line verbs are known:
 `--no-colors`, `-n`
 : Disable colored output
 
-`--debug`, `-d`
-: Turn debugging information on
+`--verbose`, `-v`
+: Verbose output
 
 `--help`, `-h`
 : Print help
@@ -71,6 +71,12 @@ The following command line verbs are known:
 `sndiff 3 4`
 : Compare snapshots 3 (old) and 4 (new), showing the same information
   than before.
+
+`sndiff`
+
+: Compare the previous snapshot (old) with the current active one
+  (new).  The previous snapshot selection depends on the kind of
+  distribution (MicroOS or Tumbleweed).
 
 `sndiff --short 3 4`
 : Present the information in a compact way.
@@ -90,6 +96,13 @@ The following command line verbs are known:
 
 `sndiff --no-colors 3 4`
 : No colorized output
+
+`sndiff list`
+: Print a table of current snapshots.  Mark the snapshot selected as
+  `old` and `new`.
+
+`sndiff --json list`
+: Shows the same table in JSON format.
 
 # SEE ALSO
 **snapper**(8), **transactional-update**(8), **zypper**(8)
