@@ -1,5 +1,5 @@
 diff --git a/iwyu_include_picker.cc b/iwyu_include_picker.cc
-index 1cbed6b..11a35f0 100644
+index 126e215..98b5ea0 100644
 --- a/iwyu_include_picker.cc
 +++ b/iwyu_include_picker.cc
 @@ -78,14 +78,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
@@ -478,65 +478,14 @@ index 1cbed6b..11a35f0 100644
  //
  // Do not edit!
  const IncludeMapEntry libstdcpp_include_map[] = {
-@@ -668,6 +837,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
-   { "<bits/atomic_futex.h>", kPrivate, "<future>", kPublic },
-   { "<bits/atomic_word.h>", kPrivate, "<ext/atomicity.h>", kPublic },
-   { "<bits/cxxabi_init_exception.h>", kPrivate, "<cxxabi.h>", kPublic },
-+  { "<bits/elements_of.h>", kPrivate, "<generator>", kPublic },
-+  { "<bits/elements_of.h>", kPrivate, "<ranges>", kPublic },
-   { "<bits/enable_special_members.h>", kPrivate, "<experimental/optional>", kPublic },
-   { "<bits/enable_special_members.h>", kPrivate, "<optional>", kPublic },
-   { "<bits/enable_special_members.h>", kPrivate, "<variant>", kPublic },
-@@ -680,17 +851,12 @@ const IncludeMapEntry libstdcpp_include_map[] = {
-   { "<bits/erase_if.h>", kPrivate, "<unordered_map>", kPublic },
-   { "<bits/erase_if.h>", kPrivate, "<unordered_set>", kPublic },
-   { "<bits/exception.h>", kPrivate, "<exception>", kPublic },
-+  { "<bits/exception.h>", kPrivate, "<expected>", kPublic },
-   { "<bits/exception.h>", kPrivate, "<new>", kPublic },
-   { "<bits/exception.h>", kPrivate, "<typeinfo>", kPublic },
-   { "<bits/gthr.h>", kPrivate, "<ext/atomicity.h>", kPublic },
-   { "<bits/gthr.h>", kPrivate, "<ext/concurrence.h>", kPublic },
-   { "<bits/gthr.h>", kPrivate, "<ext/rope>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<experimental/utility>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<future>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<memory>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<memory_resource>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<scoped_allocator>", kPublic },
--  { "<bits/uses_allocator.h>", kPrivate, "<tuple>", kPublic },
-   { "<debug/assertions.h>", kPrivate, "<array>", kPublic },
-   { "<debug/assertions.h>", kPrivate, "<experimental/memory_resource>", kPublic },
-   { "<debug/assertions.h>", kPrivate, "<memory_resource>", kPublic },
-@@ -708,6 +874,7 @@ const IncludeMapEntry libstdcpp_include_map[] = {
-   { "<debug/set>", kPrivate, "<set>", kPublic },
-   { "<debug/unordered_map>", kPrivate, "<unordered_map>", kPublic },
-   { "<debug/unordered_set>", kPrivate, "<unordered_set>", kPublic },
-+  { "<debug/vector>", kPrivate, "<regex>", kPublic },
-   { "<debug/vector>", kPrivate, "<vector>", kPublic },
-   { "<experimental/bits/lfts_config.h>", kPrivate, "<experimental/algorithm>", kPublic },
-   { "<experimental/bits/lfts_config.h>", kPrivate, "<experimental/any>", kPublic },
-@@ -755,16 +922,20 @@ const IncludeMapEntry libstdcpp_include_map[] = {
-   // Private-to-private #include mappings.
-   { "<bits/cxxabi_init_exception.h>", kPrivate, "<bits/exception_ptr.h>", kPrivate },
-   { "<bits/enable_special_members.h>", kPrivate, "<bits/hashtable.h>", kPrivate },
-+  { "<bits/gthr-default.h>", kPrivate, "<bits/gthr.h>", kPrivate },
-   { "<bits/gthr.h>", kPrivate, "<bits/atomic_wait.h>", kPrivate },
-   { "<bits/gthr.h>", kPrivate, "<bits/c++io.h>", kPrivate },
-   { "<bits/gthr.h>", kPrivate, "<bits/std_mutex.h>", kPrivate },
-   { "<bits/gthr.h>", kPrivate, "<bits/std_thread.h>", kPrivate },
-+  { "<bits/gthr.h>", kPrivate, "<bits/c++io.h>", kPrivate },
-+  { "<bits/stdc++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
-+  { "<bits/stdc++.h>", kPrivate, "<bits/stdtr1c++.h>", kPrivate },
+@@ -713,9 +882,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/stdc++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
    { "<bits/stdc++.h>", kPrivate, "<bits/stdtr1c++.h>", kPrivate },
    { "<bits/stdtr1c++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
 -  { "<bits/uses_allocator.h>", kPrivate, "<bits/stl_queue.h>", kPrivate },
 -  { "<bits/uses_allocator.h>", kPrivate, "<bits/stl_stack.h>", kPrivate },
-+  { "<bits/stdtr1c++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/align.h>", kPrivate },
 +  { "<debug/assertions.h>", kPrivate, "<bits/memory_resource.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/stl_deque.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/stl_iterator_base_funcs.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/stl_vector.h>", kPrivate },
--- 
-2.47.0
-

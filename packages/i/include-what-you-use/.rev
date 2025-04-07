@@ -295,4 +295,18 @@
 </comment>
     <requestid>1224340</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1986b08ffbd0593f9d1aa54f5385350e</srcmd5>
+    <version>0.24</version>
+    <time>1744040254</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.24, update LLVM/Clang to version 20.
+  * Improve handling of type traits.
+  * Improve type analysis for some edge cases.
+  * Improve libstdc++ mappings.
+  * Implement --quoted_includes_first.
+- Rebase iwyu_include_picker.patch.
+</comment>
+    <requestid>1267431</requestid>
+  </revision>
 </revisionlist>
