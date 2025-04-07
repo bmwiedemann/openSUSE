@@ -16,9 +16,6 @@
 #
 
 
-# FIXME: Files listed inside the conditional "%%if %%{gtk3_ready}" are enabled because they do build when compiled against gtk3.
-# On next update, try enabling each of the disabled libs (in the %%else section) and check if they build with gtk3 or not. When all of them compile against gtk3, remove the macro and conditional.
-%define gtk3_ready 1
 Name:           geany-plugins
 Version:        2.0
 Release:        0
@@ -45,10 +42,6 @@ BuildRequires:  libtool
 BuildRequires:  lua51-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-# We cannot use pygtk anymore, as it is Python 2-based.
-# Unless geany-plugins switches to PyGObject, we cannot have Gnome
-# plugins here.
-# BuildRequires:  python-gtk-devel
 BuildRequires:  vala
 BuildRequires:  pkgconfig(enchant) >= 1.3
 BuildRequires:  pkgconfig(geany) >= 1.26
@@ -58,11 +51,9 @@ BuildRequires:  pkgconfig(gtkspell3-3.0)
 BuildRequires:  pkgconfig(libgit2) >= 0.21
 BuildRequires:  pkgconfig(libsoup-2.4) >= 2.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.27
+BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
-# Disable this as we do not want to use this unsupported version of webkit.
-# Leaving it in place to remind us to enable for newer versions if upstream ports it.
-# See https://github.com/geany/geany-plugins/issues/655
-#BuildRequires:  pkgconfig(webkit-1.0) >= 1.1.18
+
 Requires:       geany >= 2.0
 Requires:       lua
 Enhances:       geany
@@ -91,8 +82,7 @@ find %{buildroot} -size 0 -delete
 %fdupes %{buildroot}%{_docdir}/%{name}
 %find_lang %{name}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %doc NEWS README
@@ -103,14 +93,12 @@ find %{buildroot} -size 0 -delete
 %dir %{_libdir}/geany-plugins/geanylua
 %{_docdir}/%{name}/
 %{_datadir}/geany-plugins/
-
-%if %{gtk3_ready}
-# List of gtk3 compatible plugins
 %{_libdir}/geany/addons.so
 %{_libdir}/geany/autoclose.so
 %{_libdir}/geany/automark.so
 %{_libdir}/geany/codenav.so
 %{_libdir}/geany/commander.so
+%{_libdir}/geany/debugger.so
 %{_libdir}/geany/defineformat.so
 %{_libdir}/geany/geanyctags.so
 %{_libdir}/geany/geanyextrasel.so
@@ -131,6 +119,7 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/geany/pohelper.so
 %{_libdir}/geany/pretty-printer.so
 %{_libdir}/geany/projectorganizer.so
+%{_libdir}/geany/scope.so
 %{_libdir}/geany/shiftcolumn.so
 %{_libdir}/geany/spellcheck.so
 %{_libdir}/geany/tableconvert.so
@@ -146,12 +135,6 @@ find %{buildroot} -size 0 -delete
 %{_libdir}/geany/vimode.so
 %{_libdir}/geany/workbench.so
 %{_libdir}/geany/webhelper.so
-%else
-# These plugins are not compatible with gtk3
-%{_libdir}/geany/debugger.so
-%{_libdir}/geany/markdown.so
-%{_libdir}/geany/scope.so
-%endif
 
 %files lang -f %{name}.lang
 
