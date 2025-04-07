@@ -5,5 +5,6 @@ and uses SQLite as database backend.
 
 QLogs aims to be as simple as possible, but to provide everything the operator
 expects from the log to be. This log is not currently focused on contests.</description>
+  <devel project="hamradio" package="QLog"/>
   <url>https://github.com/foldynl/QLog</url>
 </package>
