@@ -27,14 +27,14 @@
 %endif
 
 Name:           ART
-Version:        1.25.2
+Version:        1.25.3.1
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-only
 URL:            http://art.pixls.us/
 Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{name}-%{version}.tar.xz
-# No signed tarball quite yet.
-# Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+# No signed tarball quite yet. See gh#artpixls/ART#341 for open issue
+# Source1:         https://github.com/artpixls/ART/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # https://keys.openpgp.org/vks/v1/by-fingerprint/942FCFB1CBE1E38928A1A6BEA94D951156835A5D
 Source2:        %{name}.keyring
 Patch0:         fix-missing-lm.patch

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat Apr  5 01:41:32 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 1.25.3.1:
+  * updated translations
+  * smoothing: performance improvement for add_noise
+  * smoothing: reworked add_noise to avoid grid-like pattern
+    artifacts and produce smoother grain
+- Updates from 1.25.3:
+  * agx extlut: fixed dir_couplers handling
+  * use rec2020 gamut by default in the AgX emulsion external 3dLUT
+  * grain: changed default coarseness to 50
+  * filmnegative: allow to select spot size for pickers
+  * smoothing add_noise speedup
+  * smoothing: reworked add_noise
+  * updated translations
+  * some more tweaks to smoothing->add noise and film grain
+  * smoothing: use different random seeds for noise generated with
+    different parameters
+  * cache: ensure the cache size is always > 0
+  * clutstore: fixed potential undefined return value
+  * progressconnector: don't lock on delete
+  * further tweaks to grain
+  * changed implementation of film grain to be more convincing
+  * fixed corner-case discrepancy between preview and output with
+    auto WB
+  * subprocess: properly set the child environment in popen()
+  * further speedups for agx_emulsion_mklut.py
+  * extlut: added "server mode" for external 3dLUT generators
+  * make sure to call setlocale(LC_NUMERIC, "C") before parsing
+    json files
+  * updated cJSON to the latest version
+  * better caching of external 3dLUTs
+  * added scripts to integrate agx-emulsion as external 3dLUT
+  * film simulation: skip LUTs without a valid label/name
+  * started working on supporting externally-computed 3dLUTs
+  * whitebalance: fixed bug in displaying temperature/tint warning
+  * re-allow to select the monitor profile under wayland
+  * clut params: select the first (and not the last) curve in each
+    group
+  * added make_dcp script
+  * updated build-art script
+  * removed unused (and obsolete) tools
+  * CMake: readded option ENABLE_MIMALLOC
+  * CMake: use ccache if available
+  * linux bundle: offer to create a .desktop file when running for
+    the first time
+  * C++: eliminate using namespace std, get ready for C++17
+
+-------------------------------------------------------------------
 Sat Feb 15 14:20:48 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 1.25.2:
