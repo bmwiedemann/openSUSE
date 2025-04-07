@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtmultimedia
 %define tar_name qtmultimedia-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((FrequencyMonitor|frequencymonitor|performancemonitor).*
 #
 Name:           qt6-multimedia%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Multimedia libraries
 License:        GPL-3.0-only
@@ -44,24 +44,24 @@ Patch0:         0001-Fix-build-on-x86-arch.patch
 Patch1:         0001-Build-with-system-eigen-3.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-quick3d-private-devel
-BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
 BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  cmake(Qt6WidgetsPrivate) = %{real_version}
 BuildRequires:  pkgconfig(eigen3) >= 3.4.0
-# GStreamer may cause high latencies and is not the default anymore for desktops
+# GStreamer may cause high latencies and is not the default anymore for desktop
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
@@ -113,9 +113,9 @@ Development files for the Qt 6 Multimedia library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Multimedia Library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6Multimedia) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Multimedia that do not have any
@@ -139,9 +139,9 @@ Development files for the Qt 6 MultimediaWidgets library.
 
 %package -n qt6-multimediawidgets-private-devel
 Summary:        Non-ABI stable API for the Qt 6 MultimediaWidgets Library
-Requires:       qt6-multimedia-private-devel = %{version}
+Requires:       cmake(Qt6MultimediaPrivate) = %{real_version}
 Requires:       cmake(Qt6MultimediaWidgets) = %{real_version}
-%requires_eq    qt6-widgets-private-devel
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 
 %description -n qt6-multimediawidgets-private-devel
 This package provides private headers of libQt6MultimediaWidgets that do not
@@ -181,10 +181,10 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-multimediaquick-private-devel
 Summary:        Qt 6 MultimediaQuick library - Development files
 Requires:       libQt6MultimediaQuick6 = %{version}
-Requires:       qt6-multimedia-private-devel = %{version}
 Requires:       cmake(Qt6Multimedia) = %{real_version}
+Requires:       cmake(Qt6MultimediaPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-multimediaquick-private-devel
 Development files for the Qt 6 Multimedia private library.
@@ -201,8 +201,8 @@ This library does not have any ABI or API guarantees.
 Summary:        Qt 6 Quick3DSpatialAudio library - Development files
 Requires:       libQt6Quick3DSpatialAudio6 = %{version}
 Requires:       cmake(Qt6Quick3D) = %{real_version}
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
 Requires:       cmake(Qt6SpatialAudio) = %{real_version}
-%requires_eq    qt6-quick3d-private-devel
 
 %description -n qt6-quick3dspatialaudio-private-devel
 Development files for the Qt 6 Quick3DSpatialAudio private library.
@@ -212,7 +212,7 @@ This library does not have any ABI or API guarantees.
 
 %package -n qt6-bundledresonanceaudio-devel-static
 Summary:        Qt6 BundledResonanceAudio static library
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-bundledresonanceaudio-devel-static
 The Qt6 BundledResonanceAudio static library.
@@ -252,21 +252,29 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 # The GstreamerMediaPlugin library has a limited usage outside of Qt development
 # (needed to create unit tests for the gstreamer plugin)
 rm %{buildroot}%{_qt6_cmakedir}/Qt6Multimedia/Qt6QGstreamerMediaPluginAdditionalTargetInfo.cmake
-rm %{buildroot}%{_qt6_descriptionsdir}/QGstreamerMediaPluginImplPrivate.json
-rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPluginImpl.a
-rm %{buildroot}%{_qt6_libdir}/libQt6QGstreamerMediaPluginImpl.prl
-rm %{buildroot}%{_qt6_metatypesdir}/qt6qgstreamermediapluginimplprivate_*_metatypes.json
-rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qgstreamermediapluginimpl_private.pri
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6QGstreamerMediaPluginImplPrivate/
-rm -r %{buildroot}%{_qt6_includedir}/QtQGstreamerMediaPluginImpl/
+rm %{buildroot}%{_qt6_descriptionsdir}/GstreamerMediaPluginImplPrivate.json
+rm %{buildroot}%{_qt6_libdir}/libQt6GstreamerMediaPluginImpl.a
+rm %{buildroot}%{_qt6_libdir}/libQt6GstreamerMediaPluginImpl.prl
+rm %{buildroot}%{_qt6_metatypesdir}/qt6gstreamermediapluginimplprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_gstreamermediapluginimpl_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6GstreamerMediaPluginImplPrivate/
+rm -r %{buildroot}%{_qt6_includedir}/QtGstreamerMediaPluginImpl/
 
 # Same thing for the testlib
+rm %{buildroot}%{_qt6_descriptionsdir}/MultimediaTestLibPrivate.json
 rm %{buildroot}%{_qt6_libdir}/libQt6MultimediaTestLib.*
+rm %{buildroot}%{_qt6_metatypesdir}/qt6multimediatestlibprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_private.pri
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6MultimediaTestLibPrivate
-rm -r %{buildroot}%{_qt6_descriptionsdir}/MultimediaTestLibPrivate.json
 rm -r %{buildroot}%{_qt6_includedir}/QtMultimediaTestLib
-rm -r %{buildroot}%{_qt6_metatypesdir}/qt6multimediatestlibprivate_relwithdebinfo_metatypes.json
-rm -r %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_private.pri
+
+# The FFmpegMediaPluginImpl files are probably unneeded
+rm %{buildroot}%{_qt6_descriptionsdir}/FFmpegMediaPluginImplPrivate.json
+rm %{buildroot}%{_qt6_libdir}/libQt6FFmpegMediaPluginImpl.*
+rm %{buildroot}%{_qt6_metatypesdir}/qt6ffmpegmediapluginimplprivate_*_metatypes.json
+rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_ffmpegmediapluginimpl_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6FFmpegMediaPluginImplPrivate
+rm -r %{buildroot}%{_qt6_includedir}/QtFFmpegMediaPluginImpl
 
 %ldconfig_scriptlets -n libQt6Multimedia6
 %ldconfig_scriptlets -n libQt6MultimediaQuick6
@@ -308,6 +316,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_pri
 %exclude %{_qt6_includedir}/QtMultimedia/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6MultimediaPrivate/
 %{_qt6_includedir}/QtMultimedia/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_multimedia_private.pri
 
@@ -326,6 +335,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_pri
 %exclude %{_qt6_includedir}/QtMultimediaWidgets/%{real_version}
 
 %files -n qt6-multimediawidgets-private-devel
+%{_qt6_cmakedir}/Qt6MultimediaWidgetsPrivate/
 %{_qt6_includedir}/QtMultimediaWidgets/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_multimediawidgets_private.pri
 
@@ -344,6 +354,7 @@ rm -r %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_multimediatestlibprivate_pri
 %exclude %{_qt6_includedir}/QtSpatialAudio/%{real_version}
 
 %files -n qt6-spatialaudio-private-devel
+%{_qt6_cmakedir}/Qt6SpatialAudioPrivate/
 %{_qt6_includedir}/QtSpatialAudio/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_spatialaudio_private.pri
 
