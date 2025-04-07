@@ -17,7 +17,7 @@
 
 
 Name:           riff
-Version:        3.3.9
+Version:        3.3.10
 Release:        0
 Summary:        A diff filter highlighting which line parts have changed
 License:        MIT

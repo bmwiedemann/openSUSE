@@ -261,4 +261,13 @@
   * Don't group Hiragana / Katakana into words</comment>
     <requestid>1255509</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>203a63df338c98d5cf44f6ff5096435b</srcmd5>
+    <version>3.3.10</version>
+    <time>1744040285</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.10:
+  * Enable highlighting differences in ANSI styled text files.</comment>
+    <requestid>1267691</requestid>
+  </revision>
 </revisionlist>
