@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtcoap-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-coap%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 CoAP client module
 License:        GPL-3.0-or-later
@@ -116,6 +116,7 @@ ABI or API guarantees.
 %exclude %{_qt6_includedir}/QtCoap/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6CoapPrivate/
 %{_qt6_includedir}/QtCoap/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_coap_private.pri
 
