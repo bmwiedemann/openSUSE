@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1
+  * doc: Remove a non existent parameter from docstring
+  * Drop six dependency
+- Update Requires from setup.py
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Thu Dec 12 21:01:34 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.0:
