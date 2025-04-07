@@ -5,4 +5,5 @@ Its idea comes from ancient Chinese brush and carving art.
 Mainly it's about to express your thinking with your keystrokes.
 
 rime-plum-go is RIME's plum configuration manager in golang</description>
+  <devel project="M17N" package="rime-plum-go"/>
 </package>
