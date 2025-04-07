@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr  6 09:25:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add patches:
+  * clazy-llvm20.patch
+  * clazy-llvm20_2.patch
+
+-------------------------------------------------------------------
+Thu Apr 03 12:30:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Switch back to a git snapshot until a version compatible with
+  LLVM 20 gets released
+- Update to version 1.14git.20250301T021020~9afca196:
+  * Add new check: qbytearray-conversion-to-c-style
+  * QProcess::start was wrongly flagged as deprecated
+  * HOWTO.md: add a note about running the tests from the build dir directly
+  * Don't warn for missing Q_OBJECT macro for nested classes.
+  * qt6-deprecated-api-fixes: Only flag QString assignment to QDir
+  * Properly document exclude-next-line clazy directive
+  * SuppressionManager: Use continue statement instead of nesting large block in if-statement
+  * SuppressionManager: Also handle clazy:skip after early return
+  * SuppressionManager: Rework controlflow to avoid multiple regex checks in same comment
+
+-------------------------------------------------------------------
 Mon Dec 30 08:32:40 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.13

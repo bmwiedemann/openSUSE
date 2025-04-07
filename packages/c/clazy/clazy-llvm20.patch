@@ -1,0 +1,30 @@
+From bea10f2260fcf311b2e0b310a713e85270ebb5e1 Mon Sep 17 00:00:00 2001
+From: Alexander Lohnau <alexander.lohnau@gmx.de>
+Date: Sun, 30 Mar 2025 16:52:03 +0200
+Subject: [PATCH] use-static-qregularexpression: Adjust to type of variable
+ having changed from xvalue to lvalue in clang20
+
+---
+ src/checks/level0/use-static-qregularexpression.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/checks/level0/use-static-qregularexpression.cpp b/src/checks/level0/use-static-qregularexpression.cpp
+index 176a6691..71b1370a 100644
+--- a/src/checks/level0/use-static-qregularexpression.cpp
++++ b/src/checks/level0/use-static-qregularexpression.cpp
+@@ -196,6 +196,12 @@ void UseStaticQRegularExpression::VisitStmt(clang::Stmt *stmt)
+                 emitWarning(obj->getBeginLoc(), "Don't create temporary QRegularExpression objects. Use a static QRegularExpression object instead");
+                 return;
+             }
++
++            // In clang20, "auto m2 = QRegularExpression("[123]").globalMatch(selectedText);" is apparently an l-value
++            if (auto *temp = dyn_cast<MaterializeTemporaryExpr>(obj); temp && isTemporaryQRegexObj(temp, lo())) {
++                emitWarning(temp->getBeginLoc(), "Don't create temporary QRegularExpression objects. Use a static QRegularExpression object instead");
++            }
++
+         } else if (obj->isXValue()) {
+             // is it a temporary?
+             auto *temp = dyn_cast<MaterializeTemporaryExpr>(obj);
+-- 
+GitLab
+

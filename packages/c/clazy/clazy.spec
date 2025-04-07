@@ -1,7 +1,7 @@
 #
 # spec file for package clazy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,22 @@
 #
 
 
-%define release_ver 1.13
+# %%define release_ver 1.14
 Name:           clazy
-Version:        1.13.0
+Version:        1.14git.20250301T021020~9afca196
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 URL:            https://apps.kde.org/clazy/
-Source0:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz
-Source1:        https://download.kde.org/stable/clazy/%{release_ver}/src/%{name}-%{release_ver}.tar.xz.sig
+Source0:        %{name}-%{version}.tar.xz
+# TODO Uncomment when we get a new release
+# Source0:        https://download.kde.org/stable/clazy/%%{release_ver}/src/%%{name}-%%{release_ver}.tar.xz
+# Source1:        https://download.kde.org/stable/clazy/%%{release_ver}/src/%%{name}-%%{release_ver}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/alex@key1.asc?ref_type=heads
-Source2:        clazy.keyring
+# Source2:        clazy.keyring
+# PATCH-FIX-UPSTREAM
+Patch0:         clazy-llvm20.patch
+Patch1:         clazy-llvm20_2.patch
 BuildRequires:  clang
 BuildRequires:  clang-devel >= 11.0
 BuildRequires:  cmake >= 3.13
@@ -46,7 +51,7 @@ You get more than 50 Qt related compiler warnings, ranging from unneeded memory
 allocations to misusage of API, including fix-its for automatic refactoring.
 
 %prep
-%autosetup -p1 -n %{name}-%{release_ver}
+%autosetup -p1
 
 # When exporting CXX=clazy, the executable matching libraries used to build clazy must be used
 # NOTE: 'readlink -f' can't be used, or the result won't be 'clang++-xx' but 'clang-xx', which will cause linker errors

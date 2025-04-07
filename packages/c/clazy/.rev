@@ -278,4 +278,27 @@
     <comment>Update to 1.13</comment>
     <requestid>1233875</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>91922afdc3765a8e4a4cc6001e9b50ef</srcmd5>
+    <version>1.14git.20250301T021020~9afca196</version>
+    <time>1744040251</time>
+    <user>anag_factory</user>
+    <comment>- Add patches:
+  * clazy-llvm20.patch
+  * clazy-llvm20_2.patch
+
+- Switch back to a git snapshot until a version compatible with
+  LLVM 20 gets released
+- Update to version 1.14git.20250301T021020~9afca196:
+  * Add new check: qbytearray-conversion-to-c-style
+  * QProcess::start was wrongly flagged as deprecated
+  * HOWTO.md: add a note about running the tests from the build dir directly
+  * Don't warn for missing Q_OBJECT macro for nested classes.
+  * qt6-deprecated-api-fixes: Only flag QString assignment to QDir
+  * Properly document exclude-next-line clazy directive
+  * SuppressionManager: Use continue statement instead of nesting large block in if-statement
+  * SuppressionManager: Also handle clazy:skip after early return
+  * SuppressionManager: Rework controlflow to avoid multiple regex checks in same comment</comment>
+    <requestid>1267387</requestid>
+  </revision>
 </revisionlist>
