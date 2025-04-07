@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webchannel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtwebchannel-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-webchannel%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 WebChannel library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -36,9 +36,9 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-webchannel-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
@@ -81,7 +81,6 @@ Development files for the Qt 6 WebChannel library
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 WebChannel library
 Requires:       cmake(Qt6WebChannel) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6WebChannel that do not have any
@@ -96,7 +95,7 @@ The Qt 6 WebChannelQuick library.
 %package -n qt6-webchannelquick-devel
 Summary:        Qt 6 WebChannelQuick library - Development files
 Requires:       libQt6WebChannelQuick6 = %{version}
-Requires:       qt6-webchannel-private-devel = %{version}
+Requires:       cmake(Qt6WebChannel) = %{real_version}
 
 %description -n qt6-webchannelquick-devel
 Development files for the Qt 6 WebChannelQuick library
@@ -155,6 +154,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtWebChannel/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6WebChannelPrivate/
 %{_qt6_includedir}/QtWebChannel/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webchannel_private.pri
 
@@ -174,6 +174,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtWebChannelQuick/%{real_version}/
 
 %files -n qt6-webchannelquick-private-devel
+%{_qt6_cmakedir}/Qt6WebChannelQuickPrivate/
 %{_qt6_includedir}/QtWebChannelQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webchannelquick_private.pri
 
