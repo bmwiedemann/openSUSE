@@ -142,4 +142,17 @@
   * zsh: drop _hg completion #194</comment>
     <requestid>1264637</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6a21a83085484dbcc816f2779bc3f3f6</srcmd5>
+    <version>0.19.17</version>
+    <time>1744044104</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.17:
+  * zshrc: Add alias llblk for lsblk with useful columns #192
+
+- Update to 0.19.16:
+- Update to 0.19.15:
+- Update to 0.19.14:</comment>
+    <requestid>1267688</requestid>
+  </revision>
 </revisionlist>

@@ -1,13 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:01:37 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.17:
+  * zshrc: Add alias llblk for lsblk with useful columns #192
+
+-------------------------------------------------------------------
 Thu Mar 27 17:51:31 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.19.6:
+- Update to 0.19.16:
   * zsh: drop _hg completion #194
 
 -------------------------------------------------------------------
 Wed Mar  5 07:37:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.19.5:
+- Update to 0.19.15:
   * doc/Makefile: drop unused target for copying to grml.org
   * Switch manpage source to asciidoc
   * README: add link to grmlzshrc manpage
@@ -24,7 +30,7 @@ Wed Mar  5 07:37:27 UTC 2025 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Tue Jan 28 13:31:34 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.19.4:
+- Update to 0.19.14:
   * zshrc: deprecate xunfunction
   * zshrc: remove "hbp" alias
 
