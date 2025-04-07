@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.9.0)
+  * hide deprecated notices from includes
+  * add notification from toolbar
+  * add entry in toolbar
+  * fix set theme from command line
+  * limit width of filebutton
+  * allow multiple selection for open dialog
+  * split source code in 3 files
+
+-------------------------------------------------------------------
 Mon Mar  3 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.8.1)
