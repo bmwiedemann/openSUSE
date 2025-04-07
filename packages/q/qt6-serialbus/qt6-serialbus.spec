@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-serialbus
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtserialbus-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-serialbus
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 SerialBus library
 License:        LGPL-3.0-only OR GPL-2.0-or-later
@@ -36,8 +36,8 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-serialbus-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6SerialPort) = %{real_version}
@@ -72,10 +72,10 @@ Development files for the Qt 6 SerialBus library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 SerialBus library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
 Requires:       cmake(Qt6SerialBus) = %{real_version}
 Requires:       cmake(Qt6SerialPort) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6SerialBus that do not have any
@@ -130,6 +130,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6SerialBus/*Plugin*.cmake
 %exclude %{_qt6_includedir}/QtSerialBus/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6SerialBusPrivate/
 %dir %{_qt6_includedir}/QtSerialBus
 %{_qt6_includedir}/QtSerialBus/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_serialbus_private.pri
