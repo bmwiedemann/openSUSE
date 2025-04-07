@@ -1,1 +1,2 @@
 addFilter("opencv.*SUSE_Backports_policy-SLE_conflict")
+addFilter("libopencv_highgui411-qt6.*: E: shlib-policy-name-error")

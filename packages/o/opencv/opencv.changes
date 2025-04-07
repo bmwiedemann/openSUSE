@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr  3 07:55:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Make devel package conflicts between different flavors explicit.
+
+-------------------------------------------------------------------
+Wed Feb 26 14:15:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split into multiple flavors to support switch to Qt6 for
+  openSUSE TW and Leap 16+:
+  * Main (no-name) flavor builds with Qt5.
+  * qt6 flavor builds with Qt6
+  * nogui flavor builds without Qt support.
+- Use ldconfig_scriptlets macro for post(un) scripts.
+
+-------------------------------------------------------------------
 Sat Jan 18 09:20:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.11.0,  highlights below, for details check
