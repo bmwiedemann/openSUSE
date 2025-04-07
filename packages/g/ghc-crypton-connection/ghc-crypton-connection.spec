@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton-connection
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name crypton-connection
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Simple and easy network connection API
 License:        BSD-3-Clause
@@ -28,20 +28,14 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-basement-devel
-BuildRequires:  ghc-basement-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-crypton-x509-devel
-BuildRequires:  ghc-crypton-x509-prof
 BuildRequires:  ghc-crypton-x509-store-devel
 BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-crypton-x509-system-devel
 BuildRequires:  ghc-crypton-x509-system-prof
-BuildRequires:  ghc-crypton-x509-validation-devel
-BuildRequires:  ghc-crypton-x509-validation-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-network-devel

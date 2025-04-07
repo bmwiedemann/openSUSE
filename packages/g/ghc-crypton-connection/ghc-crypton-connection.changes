@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 30 01:44:29 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.4.4.
+  ## Version 0.4.4
+
+  * Remove unused packages.
+    [#8](https://github.com/kazu-yamamoto/crypton-connection/pull/8)
+
+-------------------------------------------------------------------
 Fri Dec  6 05:38:35 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update crypton-connection to version 0.4.3.
