@@ -1,0 +1,25 @@
+
+github.com/gentoo/gentoo/commit/f1ad5f3
+
+From: NRK <nrk@disroot.org>
+Date: Sat, 8 Mar 2025 20:52:10 +0000
+Subject: [PATCH] dev-lang/uasm: replace custom bool with stdbool.h
+Closes: https://bugs.gentoo.org/944192
+
+
+diff --git a/H/bool.h b/H/bool.h
+index fbf55c8..ddb7396 100644
+--- a/H/bool.h
++++ b/H/bool.h
+@@ -30,10 +30,7 @@
+ ****************************************************************************/
+ 
+ 
+-#if !defined( BOOL_DEFINED )  &&  !defined( bool ) && !(__WATCOMC__ >= 1070 && defined(__cplusplus))
+-    #define BOOL_DEFINED
+-    typedef unsigned char bool;
+-#endif
++#include <stdbool.h>
+ #ifndef TRUE
+     #define TRUE 1
+ #endif

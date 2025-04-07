@@ -24,6 +24,7 @@ License:        Watcom-1.0
 URL:            http://www.terraspace.co.uk/%{name}.html
 Source:         https://github.com/Terraspace/%{name}/archive/refs/tags/v%{version}.tar.gz
 Patch0:         fix-error-return-type.patch
+Patch1:         fix-bool.patch
 BuildRequires:  glibc-devel
 
 %description
