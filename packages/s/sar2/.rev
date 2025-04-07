@@ -65,4 +65,12 @@
     <comment></comment>
     <requestid>1139546</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7d432a780f205e3a5f52861be157f78a</srcmd5>
+    <version>2.6.0</version>
+    <time>1744040279</time>
+    <user>anag_factory</user>
+    <comment>- add libglu dependency to fix compilation error (forwarded request 1267406 from amanzini)</comment>
+    <requestid>1267661</requestid>
+  </revision>
 </revisionlist>

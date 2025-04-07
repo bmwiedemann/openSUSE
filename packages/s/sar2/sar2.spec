@@ -1,7 +1,7 @@
 #
 # spec file for package sar2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,11 +38,12 @@ BuildRequires:  xorg-x11-libX11-devel
 BuildRequires:  xorg-x11-libXext-devel
 BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  xorg-x11-libXpm-devel
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(sdl2)
 Requires:       %{name}-data = %{version}
 %if 0%{?suse_version} < 1330
 Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
+Requires(postun): update-desktop-files
 %endif
 
 %description
