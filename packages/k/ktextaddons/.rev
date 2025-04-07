@@ -40,4 +40,13 @@
     <comment>Update to 1.5.4</comment>
     <requestid>1175470</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a276f9ef36dd0f783043345535e0b396</srcmd5>
+    <version>1.5.4</version>
+    <time>1744040150</time>
+    <user>anag_factory</user>
+    <comment>- Add build fix for Qt 6.9:
+  * 0001-Add-missing-include.patch</comment>
+    <requestid>1266803</requestid>
+  </revision>
 </revisionlist>

@@ -31,6 +31,8 @@ Source:         https://download.kde.org/stable/ktextaddons/%{name}-%{version}.t
 Source1:        https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz.sig
 Source2:        ktextaddons.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-missing-include.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}

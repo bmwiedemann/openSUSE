@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr  3 08:14:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add build fix for Qt 6.9:
+  * 0001-Add-missing-include.patch
+
+-------------------------------------------------------------------
 Tue May 21 08:17:15 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.5.4. No changelog

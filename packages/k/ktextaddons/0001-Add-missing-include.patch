@@ -1,0 +1,24 @@
+From fdbb082aaa0125d60fdf819c9cb95c40bdb98800 Mon Sep 17 00:00:00 2001
+From: Nicolas Fella <nicolas.fella@gmx.de>
+Date: Fri, 3 Jan 2025 16:00:02 +0100
+Subject: [PATCH] Add missing include
+
+---
+ texttranslator/translator/plugins/google/googleengineplugin.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/texttranslator/translator/plugins/google/googleengineplugin.cpp b/texttranslator/translator/plugins/google/googleengineplugin.cpp
+index 4cddf167..80a0f279 100644
+--- a/texttranslator/translator/plugins/google/googleengineplugin.cpp
++++ b/texttranslator/translator/plugins/google/googleengineplugin.cpp
+@@ -14,6 +14,7 @@ using namespace Qt::Literals::StringLiterals;
+ #include <QNetworkAccessManager>
+ #include <QNetworkReply>
+ #include <QNetworkRequest>
++#include <QRegularExpression>
+ #include <QUrlQuery>
+ #include <TextTranslator/TranslatorEngineAccessManager>
+ 
+-- 
+2.49.0
+
