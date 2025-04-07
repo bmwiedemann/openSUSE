@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr  4 19:29:35 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.40.2
+  Changes:
+   * Since v2.40.0, we've been loading config files from the 
+     directory where the fastfetch binary is located. However, 
+     this approach may lead to loading unexpected files. For 
+     example, `fastfetch -c groups` would attempt to load 
+     `/usr/bin/groups`. Therefore, we now enforce the .jsonc 
+     extension when loading config files. 
+  Features:
+   * Mark kitty image protocol support for warp terminal (Logo)
+   * Documentation improvements
+- update to 2.40.1
+  Bugfixes:
+   * Fix compiling error on old intel platform (TPM, macOS)
+   * Fix --file-raw - no longer working 
+     (gh#fastfetch-cli/fastfetch#1659) 
+
+-------------------------------------------------------------------
 Thu Apr  3 02:27:45 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.40.0
