@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  4 13:13:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Disable a test that fails randomly
+
+-------------------------------------------------------------------
+Wed Apr  2 11:39:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0. Check the installed changes-6.9.0 file for the
+  full list of changes
+- Drop patch:
+  * fix-pytest-qt.patch
+
+-------------------------------------------------------------------
+Tue Mar 18 13:27:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update Shiboken runtime dependency. llvm-config is required
+- Disable a failing test on ppc64le
+
+-------------------------------------------------------------------
 Mon Feb 10 14:43:59 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Update test excludes for qemu emulation and riscv64

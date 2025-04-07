@@ -17,7 +17,7 @@
 
 
 %define tar_name pyside-setup-everywhere-src
-%define tar_version 6.8.2
+%define tar_version 6.9.0
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%flavor" == ""
@@ -43,7 +43,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{mypython}-%{pyside_flavor}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND GPL-2.0-only AND GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -51,8 +51,6 @@ URL:            https://www.qt.io
 Source:         https://download.qt.io/official_releases/QtForPython/pyside6/PySide6-%{version}-src/%{tar_name}-%{tar_version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Always-link-to-python-libraries.patch
-# PATCH-FIX-UPSTREAM https://codereview.qt-project.org/c/pyside/pyside-setup/+/567559
-Patch1:         fix-pytest-qt.patch
 # SECTION common_dependencies
 BuildRequires:  clang-devel
 BuildRequires:  %{mypython}-Sphinx
@@ -60,12 +58,16 @@ BuildRequires:  %{mypython}-devel >= 3.7
 BuildRequires:  %{mypython}-numpy-devel
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  fdupes
+BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-macros
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Test)
-BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(Qt6Core) >= %{version}
+BuildRequires:  cmake(Qt6CorePrivate) >= %{version}
+BuildRequires:  cmake(Qt6Test) >= %{version}
+BuildRequires:  cmake(Qt6TestPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Xml) >= %{version}
+BuildRequires:  cmake(Qt6XmlPrivate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 # /SECTION
@@ -80,64 +82,120 @@ BuildRequires:  qt6-sql-sqlite
 BuildRequires:  xvfb-run
 # /SECTION
 # SECTION essential_modules
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6ExampleIconsPrivate)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6PrintSupport)
-BuildRequires:  cmake(Qt6Sql)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Concurrent) >= %{version}
+BuildRequires:  cmake(Qt6ExampleIconsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Gui) >= %{version}
+BuildRequires:  cmake(Qt6GuiPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Network) >= %{version}
+BuildRequires:  cmake(Qt6NetworkPrivate) >= %{version}
+BuildRequires:  cmake(Qt6PrintSupport) >= %{version}
+BuildRequires:  cmake(Qt6PrintSupportPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Sql) >= %{version}
+BuildRequires:  cmake(Qt6SqlPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Widgets) >= %{version}
+BuildRequires:  cmake(Qt6WidgetsPrivate) >= %{version}
 # /SECTION
 # SECTION optional_modules
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  cmake(Qt63DAnimation)
-BuildRequires:  cmake(Qt63DCore)
-BuildRequires:  cmake(Qt63DExtras)
-BuildRequires:  cmake(Qt63DInput)
-BuildRequires:  cmake(Qt63DLogic)
-BuildRequires:  cmake(Qt63DRender)
-BuildRequires:  cmake(Qt6Bluetooth)
-BuildRequires:  cmake(Qt6Charts)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6DataVisualization)
-BuildRequires:  cmake(Qt6Designer)
-BuildRequires:  cmake(Qt6Graphs)
-BuildRequires:  cmake(Qt6Help)
-BuildRequires:  cmake(Qt6HttpServer)
-BuildRequires:  cmake(Qt6Location)
-BuildRequires:  cmake(Qt6Multimedia)
-BuildRequires:  cmake(Qt6MultimediaWidgets)
-BuildRequires:  cmake(Qt6NetworkAuth)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Positioning)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Quick3D)
-BuildRequires:  cmake(Qt6QuickControls2)
-BuildRequires:  cmake(Qt6QuickTest)
-BuildRequires:  cmake(Qt6QuickWidgets)
-BuildRequires:  cmake(Qt6RemoteObjects)
-BuildRequires:  cmake(Qt6Scxml)
-BuildRequires:  cmake(Qt6Sensors)
-BuildRequires:  cmake(Qt6SerialBus)
-BuildRequires:  cmake(Qt6SerialPort)
-BuildRequires:  cmake(Qt6SpatialAudio)
-BuildRequires:  cmake(Qt6StateMachine)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6SvgWidgets)
-BuildRequires:  cmake(Qt6TextToSpeech)
-BuildRequires:  cmake(Qt6UiPlugin)
-BuildRequires:  cmake(Qt6UiTools)
-BuildRequires:  cmake(Qt6WebChannel)
-%ifarch x86_64 %x86_64 aarch64 riscv64
-BuildRequires:  cmake(Qt6Pdf)
-BuildRequires:  cmake(Qt6PdfWidgets)
-BuildRequires:  cmake(Qt6WebEngineCore)
-BuildRequires:  cmake(Qt6WebEngineQuick)
-BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt63DAnimation) >= %{version}
+BuildRequires:  cmake(Qt63DAnimationPrivate) >= %{version}
+BuildRequires:  cmake(Qt63DCore) >= %{version}
+BuildRequires:  cmake(Qt63DCorePrivate) >= %{version}
+BuildRequires:  cmake(Qt63DExtras) >= %{version}
+BuildRequires:  cmake(Qt63DExtrasPrivate) >= %{version}
+BuildRequires:  cmake(Qt63DInput) >= %{version}
+BuildRequires:  cmake(Qt63DInputPrivate) >= %{version}
+BuildRequires:  cmake(Qt63DLogic) >= %{version}
+BuildRequires:  cmake(Qt63DLogicPrivate) >= %{version}
+BuildRequires:  cmake(Qt63DRender) >= %{version}
+BuildRequires:  cmake(Qt63DRenderPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Bluetooth) >= %{version}
+BuildRequires:  cmake(Qt6BluetoothPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Charts) >= %{version}
+BuildRequires:  cmake(Qt6ChartsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6DBus) >= %{version}
+BuildRequires:  cmake(Qt6DBusPrivate) >= %{version}
+BuildRequires:  cmake(Qt6DataVisualization) >= %{version}
+BuildRequires:  cmake(Qt6DataVisualizationPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Designer) >= %{version}
+BuildRequires:  cmake(Qt6DesignerPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Graphs) >= %{version}
+BuildRequires:  cmake(Qt6GraphsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6GraphsWidgets) >= %{version}
+BuildRequires:  cmake(Qt6GraphsWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Help) >= %{version}
+BuildRequires:  cmake(Qt6HelpPrivate) >= %{version}
+BuildRequires:  cmake(Qt6HttpServer) >= %{version}
+BuildRequires:  cmake(Qt6HttpServerPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Location) >= %{version}
+BuildRequires:  cmake(Qt6LocationPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{version}
+BuildRequires:  cmake(Qt6MultimediaPrivate) >= %{version}
+BuildRequires:  cmake(Qt6MultimediaWidgets) >= %{version}
+BuildRequires:  cmake(Qt6MultimediaWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6NetworkAuth) >= %{version}
+BuildRequires:  cmake(Qt6Nfc) >= %{version}
+BuildRequires:  cmake(Qt6NfcPrivate) >= %{version}
+BuildRequires:  cmake(Qt6NetworkAuthPrivate) >= %{version}
+BuildRequires:  cmake(Qt6OpenGL) >= %{version}
+BuildRequires:  cmake(Qt6OpenGLWidgets) >= %{version}
+BuildRequires:  cmake(Qt6Positioning) >= %{version}
+BuildRequires:  cmake(Qt6PositioningPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Qml) >= %{version}
+BuildRequires:  cmake(Qt6QmlPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Quick) >= %{version}
+BuildRequires:  cmake(Qt6QuickPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Quick3D) >= %{version}
+BuildRequires:  cmake(Qt6Quick3DPrivate) >= %{version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{version}
+BuildRequires:  cmake(Qt6QuickControls2Private) >= %{version}
+BuildRequires:  cmake(Qt6QuickTest) >= %{version}
+BuildRequires:  cmake(Qt6QuickTestPrivate) >= %{version}
+BuildRequires:  cmake(Qt6QuickWidgets) >= %{version}
+BuildRequires:  cmake(Qt6QuickWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6RemoteObjects) >= %{version}
+BuildRequires:  cmake(Qt6RemoteObjectsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6RepParser) >= %{version}
+BuildRequires:  cmake(Qt6Scxml) >= %{version}
+BuildRequires:  cmake(Qt6ScxmlPrivate) >= %{version}
+BuildRequires:  cmake(Qt6Sensors) >= %{version}
+BuildRequires:  cmake(Qt6SensorsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6SerialBus) >= %{version}
+BuildRequires:  cmake(Qt6SerialBusPrivate) >= %{version}
+BuildRequires:  cmake(Qt6SerialPort) >= %{version}
+BuildRequires:  cmake(Qt6SerialPortPrivate) >= %{version}
+BuildRequires:  cmake(Qt6SpatialAudio) >= %{version}
+BuildRequires:  cmake(Qt6SpatialAudioPrivate) >= %{version}
+BuildRequires:  cmake(Qt6StateMachine) >= %{version}
+BuildRequires:  cmake(Qt6StateMachinePrivate) >= %{version}
+BuildRequires:  cmake(Qt6Svg) >= %{version}
+BuildRequires:  cmake(Qt6SvgPrivate) >= %{version}
+BuildRequires:  cmake(Qt6SvgWidgets) >= %{version}
+BuildRequires:  cmake(Qt6SvgWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6TextToSpeech) >= %{version}
+BuildRequires:  cmake(Qt6TextToSpeechPrivate) >= %{version}
+BuildRequires:  cmake(Qt6UiPlugin) >= %{version}
+BuildRequires:  cmake(Qt6UiTools) >= %{version}
+BuildRequires:  cmake(Qt6UiToolsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebChannel) >= %{version}
+BuildRequires:  cmake(Qt6WebChannelPrivate) >= %{version}
+%ifarch x86_64 %{x86_64} aarch64 riscv64
+BuildRequires:  cmake(Qt6Pdf) >= %{version}
+BuildRequires:  cmake(Qt6PdfPrivate) >= %{version}
+BuildRequires:  cmake(Qt6PdfWidgets) >= %{version}
+BuildRequires:  cmake(Qt6PdfWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineCore) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineCorePrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineQuick) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineQuickPrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{version}
+BuildRequires:  cmake(Qt6WebEngineWidgetsPrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebView) >= %{version}
+BuildRequires:  cmake(Qt6WebViewPrivate) >= %{version}
+BuildRequires:  cmake(Qt6WebViewQuick) >= %{version}
+BuildRequires:  cmake(Qt6WebViewQuickPrivate) >= %{version}
 %endif
-BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6WebSockets) >= %{version}
+BuildRequires:  cmake(Qt6WebSocketsPrivate) >= %{version}
 # /SECTION
 Requires:       %{mypython}-shiboken6
 %endif
@@ -152,6 +210,10 @@ Python bindings for the Qt cross-platform application and UI framework.
 %package devel
 Summary:        Development files for %{name}
 Requires:       %{name} = %{version}
+%if "%{pyside_flavor}" == "shiboken6"
+# Shiboken runs llvm-config to find Clang's built-in include directory
+Requires:       llvm%{_llvm_sonum}-devel
+%endif
 %if 0%{?suse_version} > 1500
 Provides:       python3-%{pyside_flavor}-devel = %{version}-%{release}
 Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
@@ -161,6 +223,8 @@ Obsoletes:      python3-%{pyside_flavor}-devel < %{version}-%{release}
 Python bindings for the Qt cross-platform application and UI framework
 
 %prep
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+
 %autosetup -p1 -n %{tar_name}-%{version}
 
 # Restore 6.6.1 RPATH value. rpmlint will complain otherwise
@@ -236,8 +300,8 @@ export LD_LIBRARY_PATH=%{buildroot}%{_qt6_libdir}:$LD_LIBRARY_PATH
 for dir in libminimal libother libsample libsmart; do
   export LD_LIBRARY_PATH=$PWD/sources/shiboken6/shiboken6/tests/$dir:$LD_LIBRARY_PATH
 done
-# 2023-05-30 Only fails on armv7l
-%ifarch armv7l armv7hl
+# 2025-03-18 Fails on armv7l and ppc64le
+%ifarch armv7l armv7hl ppc64le
 %define excluded_tests 1
 ctest_exclude_regex="smart_smart_pointer"
 %endif
@@ -247,7 +311,7 @@ ctest_exclude_regex="smart_smart_pointer"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2024-09-28)
+# Excluded tests (last update: 2025-04-04)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -256,7 +320,8 @@ ctest_exclude_regex="smart_smart_pointer"
 # QtWidgets_qwidget_test fails randomly
 # pyside6-android-deploy_test_pyside6_android_deploy
 # QtCore_qoperatingsystemversion_test fails after https://code.qt.io/cgit/qt/qtbase.git/commit/?id=1214edc
-ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy|qoperatingsystemversion"
+# cpp_interop_cpp_interop_test is flaky
+ctest_exclude_regex="QtWebEngineWidgets_pyside-474-qtwebengineview|QtGui_qpen_test|QtMultimediaWidgets_qmultimediawidgets|Qt3DExtras_qt3dextras_test|QtPositioning_positioning|pyside6-deploy_test_pyside6_deploy|QtWidgets_qwidget_test|pyside6-android-deploy_test_pyside6_android_deploy|qoperatingsystemversion|cpp_interop_cpp_interop_test"
 
 # QtWebEngineCore_web_engine_custom_scheme asserts
 # QtWebEngineCore_qwebenginecookiestore_test, pysidetest_new_inherited_functions_test fail with a mesa error ('MESA: error: ZINK: vkCreateInstance failed (VK_ERROR_INCOMPATIBLE_DRIVER)')
@@ -298,6 +363,9 @@ popd
 %{mypython_sitearch}/shiboken6_generator/
 %endif
 %if "%{pyside_flavor}" == "pyside6"
+# This library is used to interpret .rep files from Python
+# it is intentionally static (also see https://bugreports.qt.io/browse/PYSIDE-862)
+%{_libdir}/libpyside6remoteobjects.a
 %{_libdir}/libpyside6qml.abi3.so.*
 %dir %{_qt6_pluginsdir}/designer
 %{_qt6_pluginsdir}/designer/libPySidePlugin.so
