@@ -48,4 +48,15 @@
     <comment></comment>
     <requestid>1238320</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4c388fd643b34da91016f57099c7a18e</srcmd5>
+    <version>0.1.7</version>
+    <time>1744040240</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.7:
+  * Allow resizes
+  * Improvements to ext-image-capture
+</comment>
+    <requestid>1267355</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.1.6
+Version:        0.1.7
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
