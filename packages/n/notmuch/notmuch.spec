@@ -37,6 +37,7 @@ BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  pkgconfig(gmime-3.0)
+BuildRequires:  pkgconfig(sfsexp)
 BuildRequires:  pkgconfig(talloc)
 
 %{bcond_without python3}
@@ -71,6 +72,7 @@ BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 %endif
 %if %{with ruby}
