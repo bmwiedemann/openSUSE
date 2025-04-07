@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-scxml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtscxml
 %define tar_name qtscxml-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((Calculator|InvokeExample|Mediaplayer|TrafficLightApplication)\\)
 #
 Name:           qt6-scxml%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        SCXML (state machine notation) compiler and related tools
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -39,15 +39,15 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-scxml-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
@@ -85,8 +85,8 @@ Development files for the Qt 6 Scxml library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Scxml library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Scxml) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Scxml that do not have any
@@ -125,15 +125,17 @@ The Qt 6 StateMachine library.
 Summary:        Qt 6 StateMachine library - Development files
 Requires:       libQt6StateMachine6 = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6ScxmlGlobalPrivate) = %{real_version}
 
 %description -n qt6-statemachine-devel
 Development files for the Qt 6 StateMachine library.
 
 %package -n qt6-statemachine-private-devel
 Summary:        Non-ABI stable API for the Qt 6 StateMachine library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6ScxmlGlobalPrivate) = %{real_version}
 Requires:       cmake(Qt6StateMachine) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-statemachine-private-devel
 This package provides private headers of libQt6StateMachine that do not have any
@@ -206,18 +208,24 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %files devel
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtScxmlTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6Scxml/
+# Qt6Scxml depends on QtScxmlGlobal, even if it only has a private header, we'll leave it in the main -devel package
+%{_qt6_cmakedir}/Qt6ScxmlGlobalPrivate/
 %{_qt6_cmakedir}/Qt6ScxmlTools/
 %{_qt6_descriptionsdir}/Scxml.json
+%{_qt6_descriptionsdir}/ScxmlGlobalPrivate.json
 %{_qt6_includedir}/QtScxml/
+%{_qt6_includedir}/QtScxmlGlobal/
 %{_qt6_libdir}/libQt6Scxml.prl
 %{_qt6_libdir}/libQt6Scxml.so
 %{_qt6_metatypesdir}/qt6scxml_*_metatypes.json
 %{_qt6_mkspecsdir}/features/qscxmlc.prf
 %{_qt6_mkspecsdir}/modules/qt_lib_scxml.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_scxmlglobal_private.pri
 %{_qt6_pkgconfigdir}/Qt6Scxml.pc
 %exclude %{_qt6_includedir}/QtScxml/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6ScxmlPrivate/
 %{_qt6_includedir}/QtScxml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_scxml_private.pri
 
@@ -236,6 +244,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/QtScxmlQml/%{real_version}
 
 %files -n qt6-scxmlqml-private-devel
+%{_qt6_cmakedir}/Qt6ScxmlQmlPrivate/
 %{_qt6_includedir}/QtScxmlQml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_scxmlqml_private.pri
 
@@ -254,6 +263,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/QtStateMachine/%{real_version}
 
 %files -n qt6-statemachine-private-devel
+%{_qt6_cmakedir}/Qt6StateMachinePrivate/
 %{_qt6_includedir}/QtStateMachine/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachine_private.pri
 
@@ -272,6 +282,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/QtStateMachineQml/%{real_version}
 
 %files -n qt6-statemachineqml-private-devel
+%{_qt6_cmakedir}/Qt6StateMachineQmlPrivate/
 %{_qt6_includedir}/QtStateMachineQml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_statemachineqml_private.pri
 
