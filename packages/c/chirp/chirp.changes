@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  4 15:30:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250404:
+  * TH9000: Add programmable buttons to settings.
+  * tk280: Fix choosing highest applicable tuning step
+  * Change lower bound valid_bands acceptance test
+  * Simplify required_step() to honor the allow list
+  * Fix two unused globals for new flake8
+  * ic9700: Decode cross tone modes
+  * KG805G fix: Duplex field calculated wrong
+  * tk8180: Fix choosing max step
+  * tk8180: Fix 12.5kHz-required step frequencies
+
+-------------------------------------------------------------------
 Fri Mar 28 16:40:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250328:
