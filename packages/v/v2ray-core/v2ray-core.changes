@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  6 04:47:00 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update version to 5.29.3
+  * Enable restricted mode load for http protocol client
+  * Correctly implement QUIC sniffer when handling multiple initial packets
+  * Fix unreleased cache buffer in QUIC sniffing
+  * A temporary testing fix for the buffer corruption issue
+  * QUIC Sniffer Restructure
+
+-------------------------------------------------------------------
 Fri Nov 22 12:44:43 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.22.0
