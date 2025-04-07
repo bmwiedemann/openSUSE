@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  6 07:41:41 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- no consumer for perl/ruby/python3 bindings, bcond_with them
+
+-------------------------------------------------------------------
 Thu Mar 13 23:53:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, required for Python 3.12+.
