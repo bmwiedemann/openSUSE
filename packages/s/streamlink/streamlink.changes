@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr  4 20:12:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.2.0:
+  * Added: decompress extras marker to Streamlink's optional dependencies for installing brotli and zstandard
+  * Changed: --retry-streams to allow a value of 0, so it can be unset again if set previously
+  * Changed: --quiet to suppress all text output including errors, not just log output
+  * Fixed: --logfile affecting the console output stream
+  * Fixed: broken user input prompt behavior on missing or non-interactive I/O streams
+  * Fixed: Plugin classes not requiring a matching matcher
+  * Fixed: --hls-audio-select not being case-insensitive and only comparing input values rather than resolved language codes
+  * Updated: Chrome Devtool Protocol interfaces, to match recent Chromium versions
+  * Updated plugins:
+    - euronews: rewritten and fixed plugin
+    - kick: refactored plugin, fixed clip matcher and 403 API responses
+    - nicolive: fixed plugin not loading cookies from WebSocket messages
+    - nicolive: made the plugin always filter out blank HLS segments
+    - nowtvtr: removed plugin
+    - okru: canonicalize mobile URLs
+    - tf1: fixed stream matcher
+
+-------------------------------------------------------------------
 Mon Feb 17 16:14:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.1.3:
