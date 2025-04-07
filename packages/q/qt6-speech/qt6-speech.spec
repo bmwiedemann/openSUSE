@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-speech
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtspeech-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -31,7 +31,7 @@
 %bcond_without flite
 %endif
 Name:           qt6-speech%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 TextToSpeech Library and Plugin
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -42,11 +42,11 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 BuildRequires:  flite-devel > 2.0
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
-BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
+BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  pkgconfig(speech-dispatcher)
 %if "%{qt6_flavor}" == "docs"
@@ -75,15 +75,15 @@ The QTextToSpeech class provides a convenient access to text-to-speech engines.
 %package -n qt6-texttospeech-devel
 Summary:        Qt 6 TextToSpeech library - Development files
 Requires:       libQt6TextToSpeech6 = %{version}
-Requires:       cmake(Qt6QmlIntegration) = %{real_version }
+Requires:       cmake(Qt6QmlIntegration) = %{real_version}
 
 %description -n qt6-texttospeech-devel
 Development files for the Qt 6 TextToSpeech library.
 
 %package -n qt6-texttospeech-private-devel
 Summary:        Non-ABI stable API for the Qt 6 TextToSpeech library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6TextToSpeech) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description -n qt6-texttospeech-private-devel
 This package provides private headers of libQt6TextToSpeech that do not have
@@ -140,6 +140,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtTextToSpeech/%{real_version}
 
 %files -n qt6-texttospeech-private-devel
+%{_qt6_cmakedir}/Qt6TextToSpeechPrivate/
 %{_qt6_includedir}/QtTextToSpeech/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_texttospeech_private.pri
 
