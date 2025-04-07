@@ -1,7 +1,7 @@
 #
 # spec file for package zvm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zvm
-Version:        0.8.5
+Version:        0.8.6
 Release:        0
 Summary:        Easily install/upgrade between different versions of Zig
 License:        MIT
@@ -58,4 +58,3 @@ go test ./cli -v
 %{_bindir}/%{name}
 
 %changelog
-

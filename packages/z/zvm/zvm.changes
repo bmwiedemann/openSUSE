@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:25:17 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.8.6:
+  * skip flag parsing with zvm run by @vrischmann in #123
+  * Add check for 32-bit arch as there is no release for it. by @geouno in #128
+
+- fixed changelog version
+
+-------------------------------------------------------------------
 Fri Feb 14 18:36:44 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
-- Update to 0.8.3:
+- Update to 0.8.5:
   * Updating year to 2025 in main.go and LICENSE file,just a small pedant… by
     @bq-wrongway in #114
   * Use --zls In any location by @Jaxon-teBoekhorst in #112
