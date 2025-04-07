@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr  5 14:56:39 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.22.1:
+  * windows: downgrade libz-ng-sys 
+  * Features:
+    - battery: Use best match instead of first match for battery.display 
+      threshold 
+    - bun: Detect bun using new text-format lockfile
+    - direnv: allow direnv to detect environment variables
+    - status: add {success,failure}_style options
+  * Bug Fixes:
+    - fish: restore support for fish <v3.4.0 
+    - handle variable bash $SHLVL behavior with explicit option
+    - hostname: use DNS instead of NetBIOS name on Windows
+    - init/pwsh: preserve ViModeChangeHandler
+    - init: do not use cygpath for elvish 
+    - status: add trailing space to pipestatus_format
+    - username: avoid using whoami on android 
+
+-------------------------------------------------------------------
 Fri Oct 18 19:20:37 UTC 2024 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.21.1:
