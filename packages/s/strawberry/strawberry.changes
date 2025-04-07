@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr  5 15:58:04 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.8
+  + Bugfixes:
+   + Added "HI_RES_LOSSLESS" for Tidal quality setting.
+   + Increased backend settings device lineedit height.
+   + Possible fix for KGlobalAccel shortcuts sometimes not working.
+  + Enhancements:
+    + Removed deprecated Tidal username/password login.
+    + Turned off "Grey out unavailable songs in playlists on startup" by default.
+    + Added support for reading tags from streams.
+    + Added tooltips in equalizer, backend and appearance settings.
+    + Added full tag support for AIFF including embedded covers.
+    + Use card ID instead of index for ALSA devices.
+    + Removed KDSingleApplication from 3rdparty.
+    + Support arbitrarily large EBU R 128 loudness normalization.
+  + New features:
+    + Added Discord rich presence support.
+
+-------------------------------------------------------------------
 Fri Jan 31 17:45:24 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add missing qt6-gui-private-devel dependency

@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.7
+Version:        1.2.8
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -38,9 +38,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libchromaprint-devel
 BuildRequires:  make
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -50,6 +53,7 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(RapidJSON)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fftw3)
@@ -72,13 +76,10 @@ BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.12
-%if 0%{?suse_version} > 1600
-BuildRequires:  cmake(KDSingleApplication-qt6)
-%endif
-BuildRequires:  qt6-gui-private-devel
 
 Requires:       qt6-sql-sqlite
 

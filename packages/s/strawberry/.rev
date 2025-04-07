@@ -1610,4 +1610,12 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1241767</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>1c0eac4c1c86448efb1a66b04bc93154</srcmd5>
+    <version>1.2.8</version>
+    <time>1744040237</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267320</requestid>
+  </revision>
 </revisionlist>
