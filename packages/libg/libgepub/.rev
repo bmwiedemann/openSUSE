@@ -73,4 +73,14 @@
 New stable rel</comment>
     <requestid>1093704</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>15178195fb4d2835c91f65336a9f2f4a</srcmd5>
+    <version>0.7.3</version>
+    <time>1744044114</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.3:
+  + Fix integer overflow in gepub-archive
+  + Install missing config.h and gepub-widget.h (forwarded request 1267610 from iznogood)</comment>
+    <requestid>1267618</requestid>
+  </revision>
 </revisionlist>

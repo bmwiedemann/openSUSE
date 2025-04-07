@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:15:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.3:
+  + Fix integer overflow in gepub-archive
+  + Install missing config.h and gepub-widget.h
+
+-------------------------------------------------------------------
 Wed Jun 14 15:07:21 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.7.1:
