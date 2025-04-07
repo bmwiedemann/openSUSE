@@ -16,7 +16,7 @@
 #
 
 
-%define sover	0_110
+%define sover	0_111
 %define bootstrap_with_gdmd 1
 %if %{bootstrap_with_gdmd}
 %if 0%{?suse_version} < 1550
@@ -29,7 +29,7 @@ BuildRequires:  dmd
 BuildRequires:  phobos-devel-static
 %endif
 Name:           dmd
-Version:        2.110.0
+Version:        2.111.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
@@ -170,8 +170,7 @@ cp -r %{_builddir}/dmd/compiler/docs/man/* %{buildroot}%{_mandir}/
 install -dm755 %{buildroot}%{_datadir}/licenses/dmd
 install -Dm644 %{_builddir}/dmd/LICENSE.txt %{buildroot}%{_datadir}/licenses/dmd/LICENSE.txt
 
-install -dm755 %{buildroot}%{_datadir}/%{name}/samples
-cp -r %{_builddir}/dmd/compiler/samples/* %{buildroot}%{_datadir}/dmd/samples/
+install -dm755 %{buildroot}%{_datadir}/%{name}
 
 # phobos
 install -dm755 %{buildroot}%{_libdir}

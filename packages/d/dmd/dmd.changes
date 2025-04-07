@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Apr  4 09:29:24 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.111.0
+  * Compiler changes
+    + Storage classes ref and auto ref can now be applied to local, static, 
+      extern, and global variables
+    + Keywords auto and ref must be adjacent
+    + The align attribute now allows specifying default explicitly
+    + Remove delete as a keyword
+    + Case fallthough for multivalued cases is an error now
+    + An error is now given for constructors when a field's destructor has 
+      stricter attributes
+    + Initializing a field with itself has been deprecated
+    + An error is now given for subtracting pointers of different types
+    + An error is now issued for in/out contracts of nothrow functions that may
+      throw
+    + Typesafe variadic class parameters have been deprecated
+    + Integers in debug or version statements have been removed from the 
+      language
+    + Many error messages have changed
+    + The compiler now accepts -extern-std=c++23
+    + Build time profiling has been added to DMD
+    + New traits getBitfieldOffset and getBitfieldWidth for built-in bitfields
+    + Using the compiler flag -i will now properly pick up C source files
+    + A pragma for ImportC allows to set nothrow, @nogc or pure
+    + Mixin templates can now use assignment syntax
+    + Object file extensions .o and .obj are now accepted on all platforms
+    + Objective-C selectors are now automatically generated when not specified
+      with @selector.
+    + New compiler switch -oq for DMD
+    + Added Placement New Expression
+    + Postfix type qualifier method attributes for -H and -D
+    + The folder samples has been removed from DMD installations
+    + New keyword __rvalue
+    + Add -preview=safer switch for safety checking on unattributed functions
+    + Shortened method syntax can now be used in constructors
+  * Runtime changes
+    + Add Windows BCrypt bindings under core.sys.windows.bcrypt
+    + Remove criticalRegionLock
+    + Adds expect, likely, unlikely, and trap to core.builtins
+    + New segfault handler showing backtraces for null access / call stack 
+      overflow on linux
+  * Library changes
+    + Added std.conv.bitCast
+    + Extend the functionality of formattedRead to permit a std.file.slurp 
+      like execution.
+    + Added fromHexString and fromHexStringAsRange functions to std.digest.
+    + ODBC Bindings in etc.c.odbc have been updated to ODBC 4.0.
+    + Added popGrapheme function to std.uni.
+    + Added readfln and File.readfln to std.stdio
+    + Added the SharedAllocatorList, as the thread-safe version of the regular
+      AllocatorList.
+    + New procedural API for std.sumtype
+    + std.uni has been upgraded from Unicode 15.1.0 to 16.0.0
+
+-------------------------------------------------------------------
 Thu Mar  6 16:47:30 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.110.0
