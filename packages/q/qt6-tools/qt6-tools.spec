@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qttools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-tools%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Tools libraries and tools
 # Legal:
@@ -54,26 +54,25 @@ BuildRequires:  clang-devel >= 17
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-dbus-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-widgets-private-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6DBus) = %{real_version}
+BuildRequires:  cmake(Qt6DBusPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGLWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
 BuildRequires:  cmake(Qt6QmlLSPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6Sql) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  cmake(Qt6WidgetsPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Xml) = %{real_version}
 BuildRequires:  pkgconfig(libzstd) >= 1.3
 # These packages are required to generate documentation for the Qt packages
@@ -133,10 +132,10 @@ Development files for the Qt6 Designer libraries.
 
 %package -n qt6-designer-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Designer libraries
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Designer) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-widgets-private-devel
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 
 %description -n qt6-designer-private-devel
 This package provides private headers of libQt6Designer that do not have any
@@ -161,8 +160,8 @@ Development files for the Qt6 Help library.
 
 %package -n qt6-help-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Help library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Help) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description -n qt6-help-private-devel
 This package provides private headers of libQt6Help that do not have any
@@ -241,7 +240,7 @@ Command line client for communication over D-Bus.
 
 %package qdoc
 Summary:        Qt 6 Tool used by Qt to generate documentation
-License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
+License:        GPL-3.0-only
 # qdoc hardcodes clang include paths: boo#1109367, QTBUG-70687
 %requires_eq    libclang%{_libclang_sonum}
 # Both qdoc and libclang link against libclang-cpp, so make sure it's compatible.
@@ -263,11 +262,11 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-designercomponents-private-devel
 Summary:        Development files for the Qt 6 DesignerComponents library
 Requires:       libQt6DesignerComponents6 = %{version}
-Requires:       qt6-designer-private-devel = %{version}
 Requires:       cmake(Qt6Core) = %{real_version}
+Requires:       cmake(Qt6DesignerPrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 Requires:       cmake(Qt6Xml) = %{real_version}
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-widgets-private-devel
 
 %description -n qt6-designercomponents-private-devel
 Development files for the Qt 6 DesignerComponents library.
@@ -305,20 +304,20 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_qdoccatch*.pri
 rm %{buildroot}%{_qt6_descriptionsdir}/QDocCatch*.json
 
 # Desktop files for applications
-%suse_update_desktop_file -i org.qt.assistant6
-%suse_update_desktop_file -i org.qt.designer6
-%suse_update_desktop_file -i org.qt.linguist6
-rm %{buildroot}%{_datadir}/pixmaps/linguist6.png
-%suse_update_desktop_file -i org.qt.qdbusviewer6
+mkdir -p %{buildroot}%{_qt6_sharedir}/applications
+install -D -m644 %{SOURCE10} %{buildroot}%{_qt6_sharedir}/applications/org.qt.designer6.desktop
+install -D -m644 %{SOURCE11} %{buildroot}%{_qt6_sharedir}/applications/org.qt.linguist6.desktop
+install -D -m644 %{SOURCE12} %{buildroot}%{_qt6_sharedir}/applications/org.qt.assistant6.desktop
+install -D -m644 %{SOURCE13} %{buildroot}%{_qt6_sharedir}/applications/org.qt.qdbusviewer6.desktop
 
-# Icons for the desktop files
-install -D -m644 src/designer/src/designer/images/designer.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/designer6.png
-install -D -m644 %{SOURCE14} %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/linguist6.png
-install -D -m644 src/linguist/linguist/images/icons/linguist-128-32.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/linguist6.png
-install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/qdbusviewer6.png
-install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/qdbusviewer6.png
-install -D -m644 src/assistant/assistant/images/assistant.png %{buildroot}%{_datadir}/icons/hicolor/32x32/apps/assistant6.png
-install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/assistant6.png
+# Icons for desktop files
+install -D -m644 src/designer/src/designer/images/designer.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/128x128/apps/designer6.png
+install -D -m644 %{SOURCE14} %{buildroot}%{_qt6_sharedir}/icons/hicolor/48x48/apps/linguist6.png
+install -D -m644 src/linguist/linguist/images/icons/linguist-128-32.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/128x128/apps/linguist6.png
+install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/32x32/apps/qdbusviewer6.png
+install -D -m644 src/qdbus/qdbusviewer/images/qdbusviewer-128.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/128x128/apps/qdbusviewer6.png
+install -D -m644 src/assistant/assistant/images/assistant.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/32x32/apps/assistant6.png
+install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/128x128/apps/assistant6.png
 
 %ldconfig_scriptlets -n libQt6Designer6
 %ldconfig_scriptlets -n libQt6DesignerComponents6
@@ -370,6 +369,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %exclude %{_qt6_includedir}/QtDesigner/%{real_version}
 
 %files -n qt6-designer-private-devel
+%{_qt6_cmakedir}/Qt6DesignerPrivate/
 %{_qt6_includedir}/QtDesigner/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_designer_private.pri
 
@@ -388,6 +388,7 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %exclude %{_qt6_includedir}/QtHelp/%{real_version}
 
 %files -n qt6-help-private-devel
+%{_qt6_cmakedir}/Qt6HelpPrivate/
 %{_qt6_includedir}/QtHelp/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_help_private.pri
 
@@ -406,28 +407,29 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %exclude %{_qt6_includedir}/QtUiTools/%{real_version}
 
 %files -n qt6-uitools-private-devel
+%{_qt6_cmakedir}/Qt6UiToolsPrivate/
 %{_qt6_includedir}/QtUiTools/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_uitools_private.pri
 
 %files assistant
 %{_bindir}/assistant6
-%{_datadir}/applications/org.qt.assistant6.desktop
-%{_datadir}/icons/hicolor/128x128/apps/assistant6.png
-%{_datadir}/icons/hicolor/32x32/apps/assistant6.png
 %{_qt6_bindir}/assistant
 %dir %{_qt6_pluginsdir}/help
 %{_qt6_pluginsdir}/help/libhelpplugin.so
+%{_qt6_sharedir}/applications/org.qt.assistant6.desktop
+%{_qt6_sharedir}/icons/hicolor/128x128/apps/assistant6.png
+%{_qt6_sharedir}/icons/hicolor/32x32/apps/assistant6.png
 
 %files designer
 %dir %{_qt6_pluginsdir}/designer
 %{_bindir}/designer6
-%{_datadir}/applications/org.qt.designer6.desktop
-%{_datadir}/icons/hicolor/128x128/apps/designer6.png
 %{_qt6_bindir}/designer
 %{_qt6_pluginsdir}/designer/libcontainerextension.so
 %{_qt6_pluginsdir}/designer/libcustomwidgetplugin.so
 %{_qt6_pluginsdir}/designer/libqquickwidget.so
 %{_qt6_pluginsdir}/designer/libtaskmenuextension.so
+%{_qt6_sharedir}/applications/org.qt.designer6.desktop
+%{_qt6_sharedir}/icons/hicolor/128x128/apps/designer6.png
 
 %files helpgenerators
 %{_qt6_libexecdir}/qhelpgenerator
@@ -438,9 +440,6 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_bindir}/linguist6
 %{_bindir}/lrelease6
 %{_bindir}/lupdate6
-%{_datadir}/applications/org.qt.linguist6.desktop
-%{_datadir}/icons/hicolor/48x48/apps/linguist6.png
-%{_datadir}/icons/hicolor/128x128/apps/linguist6.png
 %{_qt6_bindir}/lconvert
 %{_qt6_bindir}/linguist
 %{_qt6_bindir}/lrelease
@@ -449,6 +448,9 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %{_qt6_libexecdir}/lprodump
 %{_qt6_libexecdir}/lrelease-pro
 %{_qt6_libexecdir}/lupdate-pro
+%{_qt6_sharedir}/applications/org.qt.linguist6.desktop
+%{_qt6_sharedir}/icons/hicolor/48x48/apps/linguist6.png
+%{_qt6_sharedir}/icons/hicolor/128x128/apps/linguist6.png
 
 %files -n qt6-linguist-devel
 %{_qt6_descriptionsdir}/Linguist.json
@@ -460,11 +462,11 @@ install -D -m644 src/assistant/assistant/images/assistant-128.png %{buildroot}%{
 %files qdbus
 %{_bindir}/qdbus6
 %{_bindir}/qdbusviewer6
-%{_datadir}/applications/org.qt.qdbusviewer6.desktop
-%{_datadir}/icons/hicolor/128x128/apps/qdbusviewer6.png
-%{_datadir}/icons/hicolor/32x32/apps/qdbusviewer6.png
 %{_qt6_bindir}/qdbus
 %{_qt6_bindir}/qdbusviewer
+%{_qt6_sharedir}/applications/org.qt.qdbusviewer6.desktop
+%{_qt6_sharedir}/icons/hicolor/128x128/apps/qdbusviewer6.png
+%{_qt6_sharedir}/icons/hicolor/32x32/apps/qdbusviewer6.png
 
 %files qdoc
 %{_bindir}/qdoc6
