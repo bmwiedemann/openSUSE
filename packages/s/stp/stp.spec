@@ -1,7 +1,7 @@
 #
 # spec file for package stp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.4+20240611
+Version:        2.3.4+20240918
 Release:        0
 Summary:        Constraint Solver
 License:        MIT

@@ -1,7 +1,17 @@
 -------------------------------------------------------------------
+Fri Mar 28 06:58:48 UTC 2025 - jslaby@suse.cz
+
+- Update to version 2.3.4+20240918:
+  * Added dummy diagnostic-output-channel support
+  * Make timestamp in generated file use $SOURCE_DATE_EPOCH
+  * Use sysconfig, not distutils, to find python root
+  * Move to CMS @ 5.11.22
+  * Bump CMS revision to b735c94
+
+-------------------------------------------------------------------
 Mon Mar 10 10:26:08 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
-- Add missing BuildRequires python3-setuptools 
+- Add missing BuildRequires python3-setuptools
 
 -------------------------------------------------------------------
 Fri Jun 28 06:06:35 UTC 2024 - jslaby@suse.cz

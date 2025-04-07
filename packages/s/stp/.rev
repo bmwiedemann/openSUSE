@@ -202,4 +202,19 @@
     <comment></comment>
     <requestid>1251979</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c3b6a4e9190e16b21de454d9a697e190</srcmd5>
+    <version>2.3.4+20240918</version>
+    <time>1744040244</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.4+20240918:
+  * Added dummy diagnostic-output-channel support
+  * Make timestamp in generated file use $SOURCE_DATE_EPOCH
+  * Use sysconfig, not distutils, to find python root
+  * Move to CMS @ 5.11.22
+  * Bump CMS revision to b735c94
+
+- Add missing BuildRequires python3-setuptools</comment>
+    <requestid>1267368</requestid>
+  </revision>
 </revisionlist>
