@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr  6 09:06:50 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.6
+  * Fix issue with handling blacklisting and roaming requests.
+  * Fix issue with handling CQM thresholds for FullMAC devices.
+  * Add support for PMKSA when using FullMAC devices.
+  version 3.5:
+  * Add support for option to disable blacklist handling.
+  * Add support for option to disable SAE for broken drivers.
+
+-------------------------------------------------------------------
 Wed Feb 26 10:04:09 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.4

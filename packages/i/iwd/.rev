@@ -515,4 +515,18 @@
     <comment></comment>
     <requestid>1248639</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ba3dc51ed9362ddaf3ff07eb492d5019</srcmd5>
+    <version>3.6</version>
+    <time>1744044088</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6
+  * Fix issue with handling blacklisting and roaming requests.
+  * Fix issue with handling CQM thresholds for FullMAC devices.
+  * Add support for PMKSA when using FullMAC devices.
+  version 3.5:
+  * Add support for option to disable blacklist handling.
+  * Add support for option to disable SAE for broken drivers. (forwarded request 1267385 from alois)</comment>
+    <requestid>1267426</requestid>
+  </revision>
 </revisionlist>
