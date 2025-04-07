@@ -16,13 +16,15 @@
 #
 
 
+%define real_version 1.3-3
+
 Name:           goverlay
-Version:        1.3
+Version:        1.3.3
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
 URL:            https://github.com/benjamimgois/goverlay
-Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{real_version}.tar.gz#/%{name}-%{real_version}.tar.gz
 # PATCH-FIX-OPENSUSE goverlay-enable-debuginfo-generation.patch andythe_great@pm.me -- Enable generate debuginfo
 Patch0:         goverlay-enable-debuginfo-generation.patch
 BuildRequires:  appstream-glib
@@ -45,7 +47,7 @@ BuildRequires:  lazarus-lcl-qt6
 GOverlay is a graphical UI to manage Vulkan/OpenGL overlays.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{real_version}
 chmod -x LICENSE README.md
 
 %build
