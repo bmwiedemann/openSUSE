@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:49:11 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.7:
+  * This release fixes version detection when not building from git repo
+
+- Update to version 1.7.6:
+  * This release fixes that 1.7.5 reports incorrect version
+
+- Update to version 1.7.5:
+  * html: allow overriding client options with URL query (dea883a)
+  * server: add --exit-no-conn option (#1029) (116ce8f)
+  * html: add safari mobile full screen support (#946) (f79304f)
+  * html: Add Unicode 11 xterm.js addon (#1310) (61a985e)
+  * html: upgrade to xterm 5.4.0 (#1303) (09e7fd8)
+  * add trzszDragInitTimeout option (#1238) (272f2f8)
+
+-------------------------------------------------------------------
 Sat Mar 22 00:56:37 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

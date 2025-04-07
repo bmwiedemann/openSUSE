@@ -18,7 +18,7 @@
 
 
 Name:           ttyd
-Version:        1.7.4
+Version:        1.7.7
 Release:        0
 Summary:        Share your terminal over the web
 License:        MIT
