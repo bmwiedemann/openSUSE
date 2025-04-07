@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-websockets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtwebsockets-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-websockets%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 WebSockets library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -35,12 +35,12 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-websockets-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-network-private-devel
-BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6NetworkPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 %if "%{qt6_flavor}" == "docs"
@@ -81,8 +81,8 @@ Development files for the Qt 6 WebSockets library
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 WebSockets library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6WebSockets) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6WebSockets that do not have any
@@ -131,6 +131,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtWebSockets/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6WebSocketsPrivate/
 %{_qt6_includedir}/QtWebSockets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_websockets_private.pri
 
