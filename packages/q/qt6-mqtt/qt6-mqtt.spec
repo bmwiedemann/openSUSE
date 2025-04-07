@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtmqtt-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-mqtt%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Module to implement MQTT protocol version 3.1 and 3.1.1
 License:        GPL-3.0-only WITH Qt-GPL-exception-1.0
@@ -36,8 +36,8 @@ Source0:        %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-mqtt-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
@@ -116,6 +116,7 @@ ABI or API guarantees.
 %exclude %{_qt6_includedir}/QtMqtt/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6MqttPrivate/
 %{_qt6_includedir}/QtMqtt/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_mqtt_private.pri
 
