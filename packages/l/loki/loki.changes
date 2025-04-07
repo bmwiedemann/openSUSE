@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Apr 04 13:06:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.3:
+  - fix(deps): update jwt, oauth and go-redis dependencies (#17023)
+  - docs: Clarify approx_topk is an experimental feature (backport
+    release-3.4.x) (#16995)
+  - docs: fix localhost link in logcli getting-started  (backport
+    release-3.4.x) (#16968)
+  - docs: add note about lambda-promtail (backport release-3.4.x)
+    (#16812)
+  - docs: fix broken links (backport release-3.4.x) (#16789)
+  - fix(docs): add a note on docker configuration.md doc to explain
+    accep… (backport release-3.4.x) (#16743)
+  - docs: update RN with blog post (#16715) (#16736)
+  - docs(LIDs): Add Loki mixin configuration improvements draft
+    (backport release-3.4.x) (#16714)
+  - fix(deps): Move to Go 1.23.7 (#16682)
+  - docs: Update `approx_topk` documentation (backport
+    release-3.4.x) (#16680)
+  - fix(deps): update module golang.org/x/crypto to v0.35.0
+    [security] (release-3.4.x) (#16588)
+  - fix(deps): update module golang.org/x/oauth2 to v0.27.0
+    [security] (release-3.4.x) (#16589)
+  - chore: [v3.4.x] Remove relref shortcodes (#16628)
+  - docs: fixed breaking tutorials (backport release-3.4.x)
+    (#16608)
+  - docs: add note about index cache and TSDB (backport
+    release-3.4.x) (#16596)
+  - docs: remove deployment.environment from list of otel resource
+    attrs stored as labels (backport release-3.4.x) (#16583)
+  - docs: update 3rd party python-logging-loki to V2 that supports
+    headers (backport release-3.4.x) (#16551)
+  - docs: clarify OTEL endpoint (backport release-3.4.x) (#16546)
+  - chore: Rename Explore Apps to App Drilldown (backport
+    release-3.4.x) (#16392)
+  - docs: fix spacing in Cardinality URL (backport release-3.4.x)
+    (#16293)
+  - docs: Update versions in docs (backport release-3.4.x) (#16288)
+  - docs: release notes for v3.4.2 (backport release-3.4.x)
+    (#16279)
+  - chore(release-3.4.x): release 3.4.2 (#16270)
+  - docs: minor RN update (backport release-3.4.x) (#16277)
+  - chore: Clean go.mod file in cmd/dataobj-inspect directory
+    (#16275)
+
+-------------------------------------------------------------------
 Fri Feb 14 13:01:42 UTC 2025 - mrueckert@suse.de
 
 - Update to version 3.4.2:
