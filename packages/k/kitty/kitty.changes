@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  5 02:00:01 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.41.1:
+  * Fix a regression in the previous release that caused rendering of emoji
+    using the VS16 variation selector to fail with some fonts (#8495)
+  * Fix a regression in 0.40.0 that caused tab bar margins to not be properly
+    blanked when the tab bar is at the bottom (#8494)
+  * Wayland: panel kitten: Fix incorrect initial font size on compositors such
+    as Hyprland that set scale late in the window creation process (#8496)
+  * Fix a regression in 0.40.1 that caused hyperlink underline on hover to
+    remain on screen when the screen is scrolled
+
+-------------------------------------------------------------------
 Sat Mar 29 01:46:35 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.41.0:
