@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 6.7.2:
+  * Fixed minification bug that caused problems with libraries like jQuery and older Safari versions
+  * Updated the Library.add() TypeScript definition to be more typey and scrippy
+  * Missed a hard-coded "fa" in the SCSS assets which caused issues showing version 4 icons
+  * Don't define --fa--fa in free distribution since that's specifically for Duotone icons
+
+-------------------------------------------------------------------
+Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 6.7.1:
+  * Added a square version of the Bluesky logo. Follow us on Bluesky here.. 
+  * Flipped the direction of the hydra to match our other animals
+  * Removed alternative text from content CSS properties to fix Safari < v17.4
+  * Made sure the new CSS logo is in Font Awesome Free
+  * Adjusted the optical size of the Bluesky logo
+  * Optimized the line-weight of the Laravel logo
+  * Fixed a glitch in the Sharp styles of the square-parking icon
+  * Sharpened the wheels in the new Sharp Duotone carpool icon
+
+-------------------------------------------------------------------
+Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 6.7.0:
+  * New Duotone Styles!
+  * Tired of riding solo? A whole new highway lane just opened up to you with our new carpool icon, courtesy of Menlo School. 
+  * Added the new CSS logo
+  * We did a brainstorming session with ErbslandDEV and came up with a number of LLM-related icons including: chart-diagram, comment-nodes, file-fragment, file-half-dashed, hexagon-nodes, hexagon-nodes-bolt, and square-binary. 
+  * Our other chart icons got jealous, so we added new chart-fft and chart-sine icons, sponsored by Crystal Instruments. 
+  * We added circles-overlap-3 icon (with a pronoun alias), thanks to Verasoft. 
+  * Added the files.com logo to our Brand icons, courtesy of Files.com. 
+  * Refactored :before and :after Pseudo Elements to use new --fa and --fa--fa properties.
+  * Files _duotone-icons.[scss|less] and _sharp-duotone-icons.[scss|less] no longer needed so we removed them.
+  * Made sure the Bluesky logo was symmetrical.
+  * Fixed an error in our Duotone barcode icon.
+  * Made our square-rss icon in Sharp a bit more sharp.
+  * Some of our box-dollar icons forgot their dollars. We lent them some cash to cover it.
+  * The circle-down and circle-left icons in Classic Regular were accidentally sharp. Now they're not.
+  * Using fa-duotone fa-solid now gives you a Duotone Solid icon.
+  * Aliases that contained numbers have correct names in Typescript @fortawesome/fontawesome-common-types package.
+
+-------------------------------------------------------------------
+Fri Apr  4 12:12:30 UTC 2025 - Dawid Adam <nyslay@gmail.com>
+
+- update to 6.6.0:
+  * Introducing Font Awesome Sharp Duotone!
+  * We needed an icon to represent a component, so put a ring on it with our new diamonds-4 icon
+  * It took a whole lot of routers, but we finally fully connected the world with a globe-wifi icon
+  * In the immortal words of Captain America, Hail Hydra
+  * Speaking of immortal, we've just added a certain bearded deity with our user-beard-bolt icon
+  * We had the great idea to include a lightbulb-message icon
+  * Our thumbtack icon was lonely, so we added its counterpart, thumbtack-slash
+  * You can never have enough cephalopods! Our squid icon is joined by an octopus icon
+  * In our last release, we locked some table-related icons, this time, we unlocked them: table-cells-unlock, table-cells-column-unlock, and table-cells-row-unlock
+  * Flitted in with a brand icon for Flutter
+  * Threw a bullseye with a brand icon for Dart
+  * We heard there was a new the SoundCloud icon
+  * Fixed --fa-font-solid, --fa-font-regular, --fa-font-light, --fa-font-thin CSS Custom properties to have correct family names: Font Awesome 6 Pro in SVG-specific CSS.
+  * Fixed an error with the square-chevron-down icon
+  * Fixed a bug in the duotone version of the file-slash icon
+  * Fixed up the globe-stand icon in duotone
+  * Fixed a bug in the album-collection
+
+-------------------------------------------------------------------
 Thu Apr  4 08:50:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.5.2:
