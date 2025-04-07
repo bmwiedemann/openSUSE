@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtcharts
 %define tar_name qtcharts-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-charts%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Charts library
 License:        GPL-3.0-only
@@ -158,6 +158,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtCharts/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6ChartsPrivate/
 %{_qt6_includedir}/QtCharts/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_charts_private.pri
 
@@ -176,6 +177,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtChartsQml/%{real_version}
 
 %files -n qt6-chartsqml-private-devel
+%{_qt6_cmakedir}/Qt6ChartsQmlPrivate/
 %{_qt6_includedir}/QtChartsQml/%{real_version}
 %{_qt6_mkspecsdir}/modules/qt_lib_chartsqml_private.pri
 
