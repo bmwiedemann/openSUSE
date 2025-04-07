@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:51:23 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.1:
+  * Fix: handle monitors appearing and disappearing more correctly
+  * Compat: bump supported GTK to v3.24.49
+
+-------------------------------------------------------------------
 Tue Sep 10 05:45:44 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:

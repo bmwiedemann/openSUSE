@@ -192,4 +192,14 @@
     sure until it's released</comment>
     <requestid>1242873</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7fb8bca07d292c82f93563640e3f575c</srcmd5>
+    <version>0.9.1</version>
+    <time>1744040617</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.1:
+  * Fix: handle monitors appearing and disappearing more correctly
+  * Compat: bump supported GTK to v3.24.49</comment>
+    <requestid>1267689</requestid>
+  </revision>
 </revisionlist>
