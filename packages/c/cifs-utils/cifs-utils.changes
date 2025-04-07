@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr  2 20:58:16 UTC 2025 - Henrique Carvalho <henrique.carvalho@suse.com>
+
+- Update cifs-utils to 7.3
+  * Fix regression in mount.cifs with guest mount option
+  * resolve_host.c: Initialize site_name
+  * cldap_ping: Fix socket fd leak
+  * getcifsacl: fix return code check for getting full ACL
+  * cifs-utils: add documentation for upcall_target
+  * cifs-utils: avoid using mktemp when updating mtab
+  * cldap_ping.c: add missing <sys/types.h> include
+  * configure.ac: libtalloc is now mandatory
+  * cifscreds: allow user to set the key's timeout
+  * cifscreds: use continue instead of break when matching commands
+  * Do not pass passwords with sec=none and sec=krb5
+  * docs: add esize description
+  * docs: add max_cached_dirs description
+  * docs: update actimeo description
+  * Fix compiler warnings in mount.cifs
+  * CIFS.upcall to accomodate new namespace mount opt
+  * cifs-utils: Skip TGT check if valid service ticket is already available
+  * use enums to check password or password2 in set_password, get_password_from_file and minor documentation additions
+  * cifs-utils: support and document password2 mount option
+  * smbinfo: add bash completion support for filestreaminfo, keys, gettconinfo
+
+
+-------------------------------------------------------------------
 Tue Jan 28 09:10:24 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
 
 - Require a cifs.idmap plugin, suggest wb-cifs-idmap-plugin as
