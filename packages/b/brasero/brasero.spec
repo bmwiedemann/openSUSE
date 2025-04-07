@@ -1,7 +1,7 @@
 #
 # spec file for package brasero
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,13 @@
 %bcond_with nautilus_extension
 
 Name:           brasero
-Version:        3.12.3
+Version:        3.12.3+43
 Release:        0
 Summary:        CD/DVD burning application for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Record
 URL:            http://gnome.org/projects/brasero
-Source:         https://download.gnome.org/sources/brasero/3.12/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 9b3f451e72cfa3bac700517a036faab61f683b3f.patch -- libbrasero-media: Fix duplicated if
-Patch0:         https://gitlab.gnome.org/GNOME/brasero/-/commit/9b3f451e72cfa3bac700517a036faab61f683b3f.patch
-# PATCH-FIX-UPSTREAM 5cdefa8c76ddb797bce8b67a3f5767678bd36a5a.patch -- Fix gcc 14.x build failure (due to -Wincompatible-pointer-types)
-Patch1:         https://gitlab.gnome.org/GNOME/brasero/-/commit/5cdefa8c76ddb797bce8b67a3f5767678bd36a5a.patch
+Source:         %{name}-%{version}.tar.zst
 
 BuildRequires:  fdupes
 # Needed, as we provide a git snapshot
@@ -179,6 +175,7 @@ This package provides the Brasero extension for Nautilus.
 %autosetup -p1
 
 %build
+NOCONFIGURE=1 ./autogen.sh
 %configure \
         --disable-static \
         --disable-gtk-doc \
@@ -246,7 +243,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libbrasero-utils3.so.1*
 
 %files devel
-%doc %{_datadir}/gtk-doc/html/libbrasero-*/
+%dnl #%doc %{_datadir}/gtk-doc/html/libbrasero-*/
 %{_includedir}/brasero3/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libbrasero-media3.pc

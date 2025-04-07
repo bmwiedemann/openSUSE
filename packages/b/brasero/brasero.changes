@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 05 17:31:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.12.3+43 (boo#1240085):
+  * burn-dialog: Use 'media-optical' for notifications
+  * Prefer 'application/vnd.efi.iso' MIME type
+  * src: Fix 'GtkSpinButton' filling vertical space
+  * libbrasero-burn: Fix incorrect plugin version comparison
+  * Replace invalid signal name
+  * Fix gcc 14.x build failure (due to
+    -Wincompatible-pointer-types)
+  * Updated translations.
+- Drop 5cdefa8c76ddb797bce8b67a3f5767678bd36a5a.patch and
+  9b3f451e72cfa3bac700517a036faab61f683b3f.patch: Fixed upstream.
+- Bootstrap build via autogen.sh call.
+
+-------------------------------------------------------------------
 Sat Sep  7 21:44:24 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace tracker-devel with tinysparql-devel BuildRequires

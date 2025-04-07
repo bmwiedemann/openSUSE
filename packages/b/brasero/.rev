@@ -721,4 +721,12 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205417</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>8ed3f0e57e06014394610793b906a56a</srcmd5>
+    <version>3.12.3+43</version>
+    <time>1744044092</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1267430 from iznogood)</comment>
+    <requestid>1267616</requestid>
+  </revision>
 </revisionlist>
