@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 07 11:32:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.10:
+  * Bugfixes
+    - Layout issues
+
+-------------------------------------------------------------------
+Mon Apr 07 11:18:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.9:
+  * Null pointer on Template page
+
+-------------------------------------------------------------------
+Mon Apr 07 05:01:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.8:
+  * Bugfixes
+    - Template form layout and text
+
+-------------------------------------------------------------------
 Wed Apr 02 04:43:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.7 2.13.6 was not released):
