@@ -1,7 +1,7 @@
 #
 # spec file for package texi2roff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           texi2roff
 Version:        2.0
 Release:        0
-Summary:        Tool for converting texinfo documents to HTML
+Summary:        Tool for converting texinfo documents to roff ones
 License:        SUSE-Permissive-Modify-By-Patch
 Group:          Productivity/Publishing/Texinfo
 URL:            https://www.ctan.org/pkg/texi2roff

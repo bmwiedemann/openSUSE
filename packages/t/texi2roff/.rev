@@ -32,4 +32,12 @@
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151760 from pgajdos)</comment>
     <requestid>1151764</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a5d347c8013633e05766ab1a5f3b5856</srcmd5>
+    <version>2.0</version>
+    <time>1744040260</time>
+    <user>anag_factory</user>
+    <comment>- Fix typo in Summary: (forwarded request 1267350 from mcepl)</comment>
+    <requestid>1267483</requestid>
+  </revision>
 </revisionlist>
