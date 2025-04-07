@@ -92,4 +92,18 @@ This is more futureproof.
     <comment></comment>
     <requestid>1224491</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c2b4672702df23eebde9b732b1bc1c28</srcmd5>
+    <version>0.96.0</version>
+    <time>1744044117</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.96.0:
+  + Add CI/CD release automation
+  + Update Ubuntu build instructions
+  + Unload Pulseaudio module on exit
+- Changes from version 0.95.0:
+  + Fix X11 support regression
+  + Fix XDP session free operation (forwarded request 1267609 from iznogood)</comment>
+    <requestid>1267623</requestid>
+  </revision>
 </revisionlist>
