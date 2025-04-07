@@ -518,4 +518,21 @@
   * chore(deps): update module google.golang.org/api to v0.221.0 (#1305) (forwarded request 1250748 from ph03nix)</comment>
     <requestid>1250766</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b1d4029e9bc5945ee3bd4aa0e186a3c0</srcmd5>
+    <version>2.22.3</version>
+    <time>1744044111</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.22.3:
+  * Update version in 'action.yml' to 2.22.3 (anticipating next version (#1332)
+  * Update go version to 1.24.2 and 1.23.8 (#1331)
+  * remove G113. It only affects old/unsupported versions of Go (#1328)
+  * chore(deps): update all dependencies (#1325)
+  * Add SSOJet (#1320)
+  * chore(deps): update all dependencies (#1319)
+  * Update the integrity sha for babel dependency in html report (#1316)
+  * Add support for `//gosec:disable` directive (#1314)
+  * chore(deps): update all dependencies (#1315) (forwarded request 1267596 from ph03nix)</comment>
+    <requestid>1267714</requestid>
+  </revision>
 </revisionlist>
