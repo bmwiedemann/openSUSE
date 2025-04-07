@@ -114,4 +114,14 @@
     <comment></comment>
     <requestid>1250006</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c21116464f61df74989e2869401d0b12</srcmd5>
+    <version>0.2025.3.31.0.36.18</version>
+    <time>1744044279</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2025.3.31.0.36.18
+  * Update IERS Earth rotation and leap second tables
+</comment>
+    <requestid>1267429</requestid>
+  </revision>
 </revisionlist>
