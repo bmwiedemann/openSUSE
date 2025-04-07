@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-base
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtbase-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %bcond_without system_md4c
 %endif
 Name:           qt6-base%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 core components (Core, Gui, Widgets, Network...)
 # Legal: qtpaths is BSD-3-Clause
@@ -42,10 +42,6 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
-# https://bugs.kde.org/show_bug.cgi?id=499537
-Patch0:       0001-QLocale-try-to-survive-being-created-during-applicat.patch
-Patch1:       0001-QSystemLocale-bail-out-if-accessed-post-destruction.patch
-Patch2:       0001-QLibraryInfo-speed-up-checking-if-qt-etc-qt.conf-res.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -170,18 +166,18 @@ This meta-package requires all the qt6-base development packages.
 %package private-devel
 Summary:        Qt 6 base unstable ABI meta package
 Requires:       qt6-base-devel = %{version}
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-dbus-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
 Requires:       qt6-kmssupport-private-devel = %{version}
-Requires:       qt6-network-private-devel = %{version}
-Requires:       qt6-opengl-private-devel = %{version}
 Requires:       qt6-platformsupport-private-devel = %{version}
-Requires:       qt6-printsupport-private-devel = %{version}
-Requires:       qt6-sql-private-devel = %{version}
-Requires:       qt6-test-private-devel = %{version}
-Requires:       qt6-widgets-private-devel = %{version}
-Requires:       qt6-xml-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6DBusPrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6NetworkPrivate) = %{real_version}
+Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
+Requires:       cmake(Qt6SqlPrivate) = %{real_version}
+Requires:       cmake(Qt6PrintSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6TestPrivate) = %{real_version}
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
+Requires:       cmake(Qt6XmlPrivate) = %{real_version}
 BuildArch:      noarch
 
 %description private-devel
@@ -279,7 +275,7 @@ contains Qt6's qdbusxml2cpp and qdbuscpp2xml binaries.
 
 %package -n qt6-dbus-private-devel
 Summary:        Non-ABI stable API for the Qt 6 D-Bus library
-Requires:       qt6-core-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6DBus) = %{real_version}
 
 %description -n qt6-dbus-private-devel
@@ -329,15 +325,15 @@ Development files for the Qt 6 GUI libraries.
 %package -n qt6-gui-private-devel
 Summary:        Non-ABI stable API for the Qt 6 GUI libraries
 Requires:       libQt6Gui6 = %{version}
-Requires:       qt6-core-private-devel = %{version}
 Requires:       qt6-kmssupport-private-devel = %{version}
-Requires:       qt6-opengl-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6DeviceDiscoverySupportPrivate) = %{real_version}
 Requires:       cmake(Qt6EglFSDeviceIntegrationPrivate) = %{real_version}
 Requires:       cmake(Qt6EglFsKmsSupportPrivate) = %{real_version}
 Requires:       cmake(Qt6FbSupportPrivate) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6InputSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
 Requires:       pkgconfig(xkbcommon)
 
 %description -n qt6-gui-private-devel
@@ -371,9 +367,9 @@ Development files for the Qt 6 Network library.
 
 %package -n qt6-network-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Network library
-Requires:       qt6-core-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Network) = %{real_version}
-%requires_ge %(rpm -q --whatprovides "pkgconfig(openssl)" | grep -v noarch)
+%requires_ge    %(rpm -q --whatprovides "pkgconfig(openssl)" | grep -v noarch)
 
 %description -n qt6-network-private-devel
 This package provides private headers of libQt6Network that do not have any
@@ -405,8 +401,8 @@ Development files for the Qt 6 OpenGL library.
 
 %package -n qt6-opengl-private-devel
 Summary:        Non-ABI stable API for the Qt 6 OpenGL library
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6OpenGL) = %{real_version}
 
 %description -n qt6-opengl-private-devel
@@ -463,10 +459,10 @@ Development files for the Qt 6 PrintSupport library.
 
 %package -n qt6-printsupport-private-devel
 Summary:        Non-ABI stable API for the Qt 6 PrintSupport library
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
-Requires:       qt6-widgets-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6PrintSupport) = %{real_version}
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 
 %description -n qt6-printsupport-private-devel
 This package provides private headers of libQt6PrintSupport that do not have any
@@ -494,7 +490,7 @@ Development files for the Qt 6 SQL library
 
 %package -n qt6-sql-private-devel
 Summary:        Non-ABI stable API for the Qt 6 SQL library
-Requires:       qt6-core-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Sql) = %{real_version}
 
 %description -n qt6-sql-private-devel
@@ -521,7 +517,7 @@ Development files for the Qt 6 Test library.
 
 %package -n qt6-test-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Test library
-Requires:       qt6-core-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Test) = %{real_version}
 
 %description -n qt6-test-private-devel
@@ -547,8 +543,8 @@ Development files for the Qt 6 Widgets library.
 
 %package -n qt6-widgets-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Widgets library
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6Widgets) = %{real_version}
 
 %description -n qt6-widgets-private-devel
@@ -576,7 +572,7 @@ QXmlStreamReader and QXmlStreamWriter classes in Qt Core instead.)
 
 %package -n qt6-xml-private-devel
 Summary:        Non-ABI stable API for the Qt 6 XML library
-Requires:       qt6-core-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Xml) = %{real_version}
 
 %description -n qt6-xml-private-devel
@@ -596,16 +592,16 @@ This package contains common files used for building Qt documentation.
 %package -n qt6-exampleicons-devel-static
 Summary:        Qt ExampleIcons module
 # TODO
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 
 %description -n qt6-exampleicons-devel-static
 Qt icon library for examples. This private library can be used by Qt examples.
 
 %package -n qt6-kmssupport-devel-static
 Summary:        Qt KMSSupport module
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 
 %description -n qt6-kmssupport-devel-static
 Qt module to support Kernel Mode Setting.
@@ -620,8 +616,8 @@ ABI or API guarantees.
 
 %package -n qt6-platformsupport-devel-static
 Summary:        Qt PlatformSupport module
-Requires:       qt6-core-private-devel = %{version}
-Requires:       qt6-gui-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       pkgconfig(atspi-2)
 Requires:       pkgconfig(egl)
 Requires:       pkgconfig(fontconfig)
@@ -754,6 +750,8 @@ rm -r src/3rdparty/{blake2,double-conversion,freetype,harfbuzz-ng,libjpeg,libpng
 %if %{with system_md4c}
 rm -r src/3rdparty/md4c
 %endif
+# Remove license files symlinked to deleted 3rdparty libraries
+rm LICENSES/{FTL.txt,IJG.txt,libpng-2.0.txt,Zlib.txt}
 
 # Empty file used for the meta packages
 cat >> meta_package << EOF
@@ -792,8 +790,6 @@ sed -i '/zstd CONFIG/d' cmake/FindWrapZSTD.cmake
     -DQT_CREATE_VERSIONED_HARD_LINK:BOOL=FALSE \
     -DQT_DISABLE_RPATH:BOOL=FALSE \
     -DQT_GENERATE_SBOM:BOOL=FALSE \
-    -DQT_SBOM_GENERATE_JSON:BOOL=FALSE \
-    -DQT_SBOM_VERIFY:BOOL=FALSE \
 %ifnarch ppc64
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION:BOOL=TRUE \
 %endif
@@ -912,6 +908,8 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_cmakedir}/Qt6BuildInternals/QtStandaloneTestTemplateProject/
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtBaseTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6HostInfo/
+%{_qt6_cmakedir}/Qt6TestInternalsPrivate/
+%{_qt6_descriptionsdir}/TestInternalsPrivate.json
 %{_qt6_libexecdir}/cmake_automoc_parser
 %{_qt6_libexecdir}/moc
 %{_qt6_libexecdir}/qlalr
@@ -935,6 +933,8 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 
 %files -n qt6-concurrent-devel
 %{_qt6_cmakedir}/Qt6Concurrent/
+# upstream bug, there are no headers in include/QtConcurrent/<version>
+%{_qt6_cmakedir}/Qt6ConcurrentPrivate/
 %{_qt6_descriptionsdir}/Concurrent.json
 %{_qt6_includedir}/QtConcurrent/
 %{_qt6_libdir}/libQt6Concurrent.prl
@@ -974,6 +974,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtCore/%{real_version}
 
 %files -n qt6-core-private-devel
+%{_qt6_cmakedir}/Qt6CorePrivate/
 %dir %{_qt6_includedir}/QtCore/
 %{_qt6_includedir}/QtCore/%{real_version}/
 
@@ -993,6 +994,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtDBus/%{real_version}
 
 %files -n qt6-dbus-private-devel
+%{_qt6_cmakedir}/Qt6DBusPrivate/
 %dir %{_qt6_includedir}/QtDBus
 %{_qt6_includedir}/QtDBus/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_dbus_private.pri
@@ -1024,10 +1026,10 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtGui/%{real_version}
 
 %files -n qt6-gui-private-devel
-%dir %{_qt6_includedir}/QtGui
 %{_qt6_cmakedir}/Qt6EglFSDeviceIntegrationPrivate/
 %{_qt6_cmakedir}/Qt6EglFsKmsGbmSupportPrivate/
 %{_qt6_cmakedir}/Qt6EglFsKmsSupportPrivate/
+%{_qt6_cmakedir}/Qt6GuiPrivate/
 %{_qt6_cmakedir}/Qt6XcbQpaPrivate/
 %{_qt6_descriptionsdir}/EglFSDeviceIntegrationPrivate.json
 %{_qt6_descriptionsdir}/EglFsKmsGbmSupportPrivate.json
@@ -1036,6 +1038,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %{_qt6_includedir}/QtEglFSDeviceIntegration/
 %{_qt6_includedir}/QtEglFsKmsGbmSupport/
 %{_qt6_includedir}/QtEglFsKmsSupport/
+%dir %{_qt6_includedir}/QtGui
 %{_qt6_includedir}/QtGui/%{real_version}/
 %{_qt6_libdir}/libQt6EglFSDeviceIntegration.prl
 %{_qt6_libdir}/libQt6EglFSDeviceIntegration.so
@@ -1070,6 +1073,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtNetwork/%{real_version}
 
 %files -n qt6-network-private-devel
+%{_qt6_cmakedir}/Qt6NetworkPrivate/
 %dir %{_qt6_includedir}/QtNetwork
 %{_qt6_includedir}/QtNetwork/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_network_private.pri
@@ -1089,6 +1093,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtOpenGL/%{real_version}
 
 %files -n qt6-opengl-private-devel
+%{_qt6_cmakedir}/Qt6OpenGLPrivate/
 %dir %{_qt6_includedir}/QtOpenGL
 %{_qt6_includedir}/QtOpenGL/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_opengl_private.pri
@@ -1098,6 +1103,8 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 
 %files -n qt6-openglwidgets-devel
 %{_qt6_cmakedir}/Qt6OpenGLWidgets/
+# upstream bug, there are no headers in include/QtOpenGLWidgets/<version>
+%{_qt6_cmakedir}/Qt6OpenGLWidgetsPrivate/
 %{_qt6_descriptionsdir}/OpenGLWidgets.json
 %{_qt6_includedir}/QtOpenGLWidgets/
 %{_qt6_libdir}/libQt6OpenGLWidgets.prl
@@ -1122,6 +1129,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtPrintSupport/%{real_version}
 
 %files -n qt6-printsupport-private-devel
+%{_qt6_cmakedir}/Qt6PrintSupportPrivate/
 %dir %{_qt6_includedir}/QtPrintSupport
 %{_qt6_includedir}/QtPrintSupport/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_printsupport_private.pri
@@ -1142,6 +1150,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtSql/%{real_version}
 
 %files -n qt6-sql-private-devel
+%{_qt6_cmakedir}/Qt6SqlPrivate/
 %dir %{_qt6_includedir}/QtSql
 %{_qt6_includedir}/QtSql/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_sql_private.pri
@@ -1161,6 +1170,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtTest/%{real_version}
 
 %files -n qt6-test-private-devel
+%{_qt6_cmakedir}/Qt6TestPrivate/
 %dir %{_qt6_includedir}/QtTest
 %{_qt6_includedir}/QtTest/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_testlib_private.pri
@@ -1181,6 +1191,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtWidgets/%{real_version}
 
 %files -n qt6-widgets-private-devel
+%{_qt6_cmakedir}/Qt6WidgetsPrivate/
 %dir %{_qt6_includedir}/QtWidgets
 %{_qt6_includedir}/QtWidgets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_widgets_private.pri
@@ -1200,6 +1211,7 @@ sed -i 's#!/bin/env python3#!/usr/bin/python3#' %{buildroot}%{_qt6_examplesdir}/
 %exclude %{_qt6_includedir}/QtXml/%{real_version}
 
 %files -n qt6-xml-private-devel
+%{_qt6_cmakedir}/Qt6XmlPrivate/
 %dir %{_qt6_includedir}/QtXml
 %{_qt6_includedir}/QtXml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_xml_private.pri

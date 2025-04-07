@@ -568,4 +568,12 @@
   * 0001-Change-default-settings-for-Qt-packages.patch</comment>
     <requestid>1251558</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>379e5cd885df01138b082fafacbd2a3d</srcmd5>
+    <version>6.9.0</version>
+    <time>1744040113</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.9.0</comment>
+    <requestid>1266634</requestid>
+  </revision>
 </revisionlist>

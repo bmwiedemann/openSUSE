@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  2 11:03:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0:
+  * https://www.qt.io/blog/qt-6.9-released
+- Drop patches, merged upstream:
+  * 0001-QLocale-try-to-survive-being-created-during-applicat.patch
+  * 0001-QSystemLocale-bail-out-if-accessed-post-destruction.patch
+  * 0001-QLibraryInfo-speed-up-checking-if-qt-etc-qt.conf-res.patch
+
+-------------------------------------------------------------------
 Sun Mar  9 09:28:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch (fixes boo#1218403):
