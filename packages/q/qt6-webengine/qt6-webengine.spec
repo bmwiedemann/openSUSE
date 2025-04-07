@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webengine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -46,8 +46,14 @@
 %{?sle15_python_module_pythons}
 %define pyver python311
 %endif
+#
+# Note about required versions:
+# qtwebengine supports building against the latest LTS release. This (potentially) allows submitting
+# updates to Leap
+%global lts_version 6.8.0
+#
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -55,16 +61,15 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         0001-Build-system-remove-libxml2-compilation-test.patch
-Patch1:         qtwebengine-glibc_2.41.patch
-Patch2:         qtwebengine-ffmpeg-playback-fix.patch
+Patch0:         qtwebengine-glibc_2.41.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
-#
-# Chromium/blink don't support PowerPC and zSystems and build fails on
-# 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
-ExclusiveArch:  aarch64 x86_64 %x86_64 riscv64
+Patch102:       qtwebengine-pipewire-1.4.patch
+BuildRequires:  %{pyver}
+BuildRequires:  %{pyver}-devel
+BuildRequires:  %{pyver}-html5lib
+BuildRequires:  %{pyver}-importlib-metadata
 BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
 # Not pulled automatically on Leap
@@ -80,21 +85,13 @@ BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  %{pyver}
-BuildRequires:  %{pyver}-devel
-BuildRequires:  %{pyver}-html5lib
-BuildRequires:  %{pyver}-importlib-metadata
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-quickwidgets-private-devel
-BuildRequires:  qt6-widgets-private-devel
+BuildRequires:  qt6-core-private-devel >= %{lts_version}
+BuildRequires:  qt6-gui-private-devel >= %{lts_version}
+BuildRequires:  qt6-qml-private-devel >= %{lts_version}
+BuildRequires:  qt6-quick-private-devel >= %{lts_version}
+BuildRequires:  qt6-quickwidgets-private-devel >= %{lts_version}
+BuildRequires:  qt6-widgets-private-devel >= %{lts_version}
 BuildRequires:  snappy-devel
-# Note about required versions:
-# qtwebengine supports building against the latest LTS release. This allows submitting
-# updates to Leap
-%global lts_version 6.5.0
 BuildRequires:  cmake(Qt6Core) >= %{lts_version}
 BuildRequires:  cmake(Qt6Designer) >= %{lts_version}
 BuildRequires:  cmake(Qt6Gui) >= %{lts_version}
@@ -128,7 +125,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(glproto)
 %if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(harfbuzz)
+BuildRequires:  pkgconfig(harfbuzz) >= 4.3.0
 %endif
 %if %{with system_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
@@ -178,6 +175,10 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
+# Chromium/blink don't support PowerPC and zSystems and build fails on
+# 32 bits archs (https://bugreports.qt.io/browse/QTBUG-102143)
+ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
+
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -238,11 +239,11 @@ The Qt6 PdfQuick library.
 %package -n qt6-pdfquick-devel
 Summary:        Development files for the Qt 6 PdfQuick library
 Requires:       libQt6PdfQuick6 = %{version}
-Requires:       qt6-pdf-private-devel = %{version}
+Requires:       qt6-quick-private-devel >= %{lts_version}
 Requires:       cmake(Qt6Gui) >= %{lts_version}
+Requires:       cmake(Qt6PdfPrivate) = %{real_version}
 Requires:       cmake(Qt6Qml) >= %{lts_version}
 Requires:       cmake(Qt6Quick) >= %{lts_version}
-%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-pdfquick-devel
 Development files for the Qt 6 PdfQuick library.
@@ -397,7 +398,7 @@ export NINJAFLAGS="%{?_smp_mflags}"
   -DFEATURE_webengine_system_ffmpeg:BOOL=FALSE \
 %endif
 %if %{without system_harfbuzz}
-  -DFEATURE_webengine-system-harfbuzz:BOOL=FALSE \
+  -DFEATURE_webengine_system_harfbuzz:BOOL=FALSE \
 %endif
 %if %{with system_icu}
   -DFEATURE_webengine_system_icu:BOOL=TRUE \
@@ -428,6 +429,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 # E: files-duplicated-waste
 %fdupes %{buildroot}%{_qt6_examplesdir}
 
+# Hunspell dictionaries will be converted and added there when installing the package
+mkdir -p %{buildroot}%{_qt6_datadir}/qtwebengine_dictionaries
+
 %ldconfig_scriptlets -n libQt6Pdf6
 %ldconfig_scriptlets -n libQt6PdfQuick6
 %ldconfig_scriptlets -n libQt6PdfWidgets6
@@ -435,13 +439,26 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %ldconfig_scriptlets -n libQt6WebEngineQuick6
 %ldconfig_scriptlets -n libQt6WebEngineWidgets6
 
+%filetriggerin -- %{_datadir}/hunspell
+# Convert Hunspell dictionaries on package installation
+while read filename ; do
+  case "$filename" in
+    *.dic)
+      bdicname=%{_qt6_datadir}/qtwebengine_dictionaries/`basename -s .dic "$filename"`.bdic
+      %{_qt6_libexecdir}/qwebengine_convert_dict "$filename" "$bdicname" &> /dev/null || :
+      ;;
+  esac
+done
+
 %files
+%dir %{_qt6_datadir}/qtwebengine_dictionaries
 %dir %{_qt6_pluginsdir}/designer
 %{_qt6_datadir}/resources/
-%{_qt6_translationsdir}/qtwebengine_locales/
 %{_qt6_libexecdir}/QtWebEngineProcess
+%{_qt6_libexecdir}/qwebengine_convert_dict
 %{_qt6_libexecdir}/webenginedriver
 %{_qt6_pluginsdir}/designer/libqwebengineview.so
+%{_qt6_translationsdir}/qtwebengine_locales/
 
 %files imports
 %{_qt6_qmldir}/QtWebEngine/
@@ -467,6 +484,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %exclude %{_qt6_includedir}/QtPdf/%{real_version}
 
 %files -n qt6-pdf-private-devel
+%{_qt6_cmakedir}/Qt6PdfPrivate/
 %{_qt6_includedir}/QtPdf/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_pdf_private.pri
 
@@ -485,6 +503,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %exclude %{_qt6_includedir}/QtPdfQuick/%{real_version}
 
 %files -n qt6-pdfquick-private-devel
+%{_qt6_cmakedir}/Qt6PdfQuickPrivate/
 %{_qt6_includedir}/QtPdfQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfquick_private.pri
 
@@ -503,6 +522,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %exclude %{_qt6_includedir}/QtPdfWidgets/%{real_version}
 
 %files -n qt6-pdfwidgets-private-devel
+%{_qt6_cmakedir}/Qt6PdfWidgetsPrivate/
 %{_qt6_includedir}/QtPdfWidgets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_pdfwidgets_private.pri
 
@@ -524,13 +544,13 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %{_qt6_libdir}/libQt6WebEngineCore.prl
 %{_qt6_libdir}/libQt6WebEngineCore.so
 %{_qt6_libexecdir}/gn
-%{_qt6_libexecdir}/qwebengine_convert_dict
 %{_qt6_metatypesdir}/qt6webenginecore_*_metatypes.json
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginecore.pri
 %{_qt6_pkgconfigdir}/Qt6WebEngineCore.pc
 %exclude %{_qt6_includedir}/QtWebEngineCore/%{real_version}
 
 %files -n qt6-webenginecore-private-devel
+%{_qt6_cmakedir}/Qt6WebEngineCore*Private/
 %{_qt6_includedir}/QtWebEngineCore/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginecore_private.pri
 
@@ -557,6 +577,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %exclude %{_qt6_includedir}/QtWebEngineQuick/%{real_version}
 
 %files -n qt6-webenginequick-private-devel
+%{_qt6_cmakedir}/Qt6WebEngineQuick*Private/
 %{_qt6_includedir}/QtWebEngineQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequick_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginequickdelegatesqml_private.pri
@@ -576,6 +597,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BuildInternals
 %exclude %{_qt6_includedir}/QtWebEngineWidgets/%{real_version}
 
 %files -n qt6-webenginewidgets-private-devel
+%{_qt6_cmakedir}/Qt6WebEngineWidgetsPrivate/
 %{_qt6_includedir}/QtWebEngineWidgets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webenginewidgets_private.pri
 

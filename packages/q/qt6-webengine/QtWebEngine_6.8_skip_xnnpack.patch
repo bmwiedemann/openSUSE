@@ -3,11 +3,11 @@ Don't use xnnpack on ARM with QtWebEngine 6.8.0
 Bug ref: https://bugreports.qt.io/browse/QTBUG-129985
 
 diff --git a/src/core/CMakeLists.txt b/src/core/CMakeLists.txt
-index fe4f2c3f1..729d4d3e9 100644
+index 9b9be814d..7f76ec696 100644
 --- a/src/core/CMakeLists.txt
 +++ b/src/core/CMakeLists.txt
-@@ -544,6 +544,10 @@ foreach(arch ${archs})
-                     )
+@@ -566,6 +566,10 @@ foreach(arch ${archs})
+                     list(APPEND gnArgArg libyuv_use_sve=false)
                  endif()
              endif()
 +            if(cpu MATCHES "arm.*")

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  2 11:03:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0:
+  * https://www.qt.io/blog/qt-6.9-released
+- Drop patches, merged upstream:
+  * 0001-Build-system-remove-libxml2-compilation-test.patch
+  * qtwebengine-ffmpeg-playback-fix.patch
+- Add patch:
+  * qtwebengine-pipewire-1.4.patch
+
+-------------------------------------------------------------------
 Sat Mar 15 09:39:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:
