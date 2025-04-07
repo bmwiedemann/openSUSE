@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-positioning
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtpositioning-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(SatelliteInformation\\)
 #
 Name:           qt6-positioning%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Positioning plugins and libraries
 License:        GPL-3.0-or-later
@@ -38,14 +38,14 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-positioning-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-quick-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6DBus) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6SerialPort) = %{real_version}
 BuildRequires:  cmake(Qt6Svg) = %{real_version}
@@ -142,9 +142,9 @@ Development files for the Qt 6 PositioningQuick library.
 
 %package -n qt6-positioningquick-private-devel
 Summary:        Non-ABI stable API for the Qt 6 PositioningQuick Library
-Requires:       qt6-positioning-private-devel = %{version}
+Requires:       cmake(Qt6PositioningPrivate) = %{real_version}
 Requires:       cmake(Qt6PositioningQuick) = %{real_version}
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-positioningquick-private-devel
 This package provides private headers of libQt6PositioningQuick that do not have any
@@ -208,6 +208,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %exclude %{_qt6_includedir}/QtPositioning/%{real_version}
 
 %files -n qt6-positioning-private-devel
+%{_qt6_cmakedir}/Qt6PositioningPrivate/
 %{_qt6_includedir}/QtPositioning/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_positioning_private.pri
 
@@ -226,6 +227,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Bundled_Clip2Tri
 %exclude %{_qt6_includedir}/QtPositioningQuick/%{real_version}
 
 %files -n qt6-positioningquick-private-devel
+%{_qt6_cmakedir}/Qt6PositioningQuickPrivate/
 %{_qt6_includedir}/QtPositioningQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_positioningquick_private.pri
 
