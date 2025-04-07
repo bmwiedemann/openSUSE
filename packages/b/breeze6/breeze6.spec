@@ -43,6 +43,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+Patch2:         0001-Add-missing-includes.patch
+Patch3:         0002-kcursorgen-Add-QDebug-include.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -130,6 +132,7 @@ Obsoletes:      breeze5-decoration < %{version}
 %description -n breeze6-decoration
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
 This package provides Breeze KWin decoration.
+
 
 
 

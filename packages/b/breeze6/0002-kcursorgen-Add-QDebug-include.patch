@@ -1,0 +1,27 @@
+From e2f16562b64c63b623def44476eadc635a82c7de Mon Sep 17 00:00:00 2001
+From: Kai Uwe Broulik <kde@privat.broulik.de>
+Date: Fri, 17 Jan 2025 18:41:26 +0100
+Subject: [PATCH 2/2] kcursorgen: Add QDebug include
+
+It failed to build for me because of qCritical.
+
+(cherry picked from commit 663da19b8ba6b9849b81bc57f7f8ff4944f6976a)
+---
+ cursors/src/kcursorgen/kcursorgen.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/cursors/src/kcursorgen/kcursorgen.cpp b/cursors/src/kcursorgen/kcursorgen.cpp
+index 3ae73350..aa4bd9ff 100644
+--- a/cursors/src/kcursorgen/kcursorgen.cpp
++++ b/cursors/src/kcursorgen/kcursorgen.cpp
+@@ -7,6 +7,7 @@
+ #include "options.h"
+ 
+ #include <QCollator>
++#include <QDebug>
+ #include <QDir>
+ #include <QImage>
+ #include <QJsonArray>
+-- 
+2.47.1
+

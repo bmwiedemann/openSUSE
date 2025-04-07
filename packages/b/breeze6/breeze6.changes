@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr  3 15:27:36 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix build:
+  * 0001-Add-missing-includes.patch
+  * 0002-kcursorgen-Add-QDebug-include.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 10:05:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.4
