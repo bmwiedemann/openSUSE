@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  5 01:28:44 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
+
+- Update to 0.16.0:
+  New
+  * feat(table): show indicator on help keybindings (opt-in)
+  Fixes
+  * fix(choose): order when using --label-delimiter
+  * fix(confirm): ensure --show-output show the right answer
+  * fix(spin): preserve color output when --show-output is given
+  * fix(table): padding on item indicator
+  * fix: generated completion invalid for fish shell
+  * fix(choose): generated completion invalid for fish shell
+    (choose/options)
+  * fix(filter): wildcard escaping issue
+
+-------------------------------------------------------------------
 Sat Feb  1 02:58:17 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.15.2:
