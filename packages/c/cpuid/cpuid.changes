@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:49:29 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to release 20250316
+  * cpuid.c: Updated synth decoding for (0,6),(11,6) to mention Atom
+    P6900, name determined from an Intel SA about DSA.  SSG* confirms that
+    Grand Ridge is Crestmont.
+  * cpuid.c: Changed uarch synth for (0,6),(10,15) to Crestmont.  The
+    Sierra Forest name appears only under synth decoding, similar to
+    Meteor Lake & Grand Ridge.
+  * cpuid.c: Added synth decoding for (0,6),(11,7) Xeon E-2400 & Xeon 6300.
+  * cpuid.c: Improved synth decoding for (0,6),(10,15),3 Sierra Forest C0,
+    Xeon 6 6700E-Series.
+  * cpuid.c: Changed synth decoding for (8,15),(9,0-7) Van Gogh to
+    Custom APU: Steam Deck.
+  * cpuid.c: Changed synth decoding for (8,15),(9,8-15) Mero to
+    Custom APU: Magic Leap Demophon.
+  * cpuid.c: Changed synth decoding for (11,15),(1,*) to "5th Gen", and
+    uarch decoding for (11,15),(1,*) to "Zen 5c".
+  * cpuid.c: Changed synth decoding for (10,15),(7,0-7) to be
+    Phoenix/Hawk Point.  For (10,15),(7,5) specifically, instlatx64 has
+    samples: Ryzen 7 8845HS (Hawk Point) and Ryzen 7 8700G (Phoenix).  It
+    may not be possible to differentiate the cases with just cpuid data.
+  * cpuid.c: Added synth decoding for (0,6),(0,9,2) Timna, a canceled
+    precursor to Banias, circa 2000.
+  * cpuid.c: Improved synth decoding for (0,6),(12,5) Arrow Lake-H and its
+    A1 (2) stepping.
+  * cpuid.c: Improved synth decoding for (0,6),(12,6) Arrow Lake-H and its
+    A0/B0 (2) stepping.
+  * cpuid.c: Improved synth decoding for (0,6),(11,5) Arrow Lake-U and its
+    A1 (0) stepping.
+  * cpuid.c: Added AMD PkgType for Ryzen 9000 (11,15),(4,*).
+  * cpuid.man: Added 57896 doc.
+
+-------------------------------------------------------------------
 Fri Mar  7 09:03:43 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to release 20241023
