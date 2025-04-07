@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define upstream_version    1_10_50
+%define upstream_version    1_10_53
 Name:           workrave
-Version:        1.10.50
+Version:        1.10.53
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-only
@@ -33,6 +33,8 @@ BuildRequires:  boost-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gstreamer-devel
+BuildRequires:  gtk4-devel
 BuildRequires:  intltool
 BuildRequires:  libpulse-devel
 BuildRequires:  libtool
@@ -59,27 +61,19 @@ Group:          Development/Libraries/Other
 This package contains header files needed for developing plugins for
 Workrave.
 
-%package -n typelib-1_0-Workrave-1_0
-Summary:        Introspection bindings for Workrave
-Group:          System/Libraries
-Requires:       %{name} = %{version}
-
-%description -n typelib-1_0-Workrave-1_0
-This package contains typelib files needed for developing plugins for
-Workrave.
-
 %prep
 %setup -q -n %{name}-%{upstream_version}
 
 %build
 ./autogen.sh
-%configure --disable-static
-make %{?_smp_mflags}
+%configure --disable-static --enable-gnome45
+%make_build
 
 %install
 %make_install
 find %{buildroot}/%{_libdir} -type f -name "*.la" -delete
 %suse_update_desktop_file %{name}
+rm -f %{buildroot}/%{_libdir}/libworkrave-gtk4-private-1.0.so
 rm -f %{buildroot}/%{_libdir}/libworkrave-private-1.0.so
 %fdupes %{buildroot}/%{_prefix}
 %find_lang %{name}
@@ -116,12 +110,11 @@ rm -f %{buildroot}/%{_libdir}/libworkrave-private-1.0.so
 %dir /usr/share/cinnamon/
 %dir /usr/share/cinnamon/applets/
 %dir /usr/share/cinnamon/applets/workrave@workrave.org/
-%{_libdir}/libworkrave-private-*
+%{_libdir}/libworkrave-private-1.0.so.*
+%{_libdir}/libworkrave-gtk4-private-1.0.so.*
+%{_libdir}/girepository-1.0/Workrave-*.typelib
 
 %files devel
-%{_datadir}/gir-1.0/Workrave-1.0.gir
-
-%files -n typelib-1_0-Workrave-1_0
-%{_libdir}/girepository-1.0/Workrave-1.0.typelib
+%{_datadir}/gir-1.0/Workrave-*.gir
 
 %changelog

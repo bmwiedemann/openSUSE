@@ -1,3 +1,35 @@
+----------------------------------------------------------------------------------------
+Sat Apr  5 12:22:16 UTC 2025 - usessuse <noemail@example.com>
+
+- Enable audio notification support
+- Enable GNOME 45+ compatibility
+- Merge separate typelib package into primary package
+- Fix typelib dependency problem
+
+----------------------------------------------
+Mon Mar  3 14:36:08 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- set typelib version to 2.0, fixing
+  can't install workrave-1.10.53-1.1.x86_64:
+  nothing provides typelib(Workrave) = 2.0 needed by workrave-1.10.53.x86_64
+  (we have typelib-1_0-Workrave-1_0-1.10.53-1.1.x86_64)
+
+-------------------------------------------------------------------
+Sun Feb 16 14:16:27 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 1.10.53:
+ - Fix GNOME Shell 46 support (#532)
+ - Add support for GNOME Shell 47 and 48 (#601)
+- update to version 1.10.52:
+ - Fix GNOME 45 compatibility (#508)
+- update to version 1.10.51.1:
+ - Fix packaging
+- update to version 1.10.51:
+ - Support GNOME Shell 43 (#430 by Jeremy Bich,async from 1.11)
+ - Add option to force the use of the X11 Gtk backend on Wayland
+ - Support GNOME Shell 44 (#487)
+ - Fix crash on Linux when not using GNOME.
+
 -------------------------------------------------------------------
 Fri Feb  2 15:20:00 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
