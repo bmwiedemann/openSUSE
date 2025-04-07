@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Apr  6 14:18:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.6.8:
+  * Adjust --break-blocks to break structs and functions only with all option
+  * Fix space between pointer references with --align-pointer=type
+  * Define <<< and >>> operators for Java only
+  * Fix indentation of class modifiers within structs
+  * Fix parsing of nested structs
+  * Another approach to fix interpretation of closing nested templates as 
+    operator
+  * Fix indent of multiline strings with macros
+
+- update to 3.6.7:
+  * Add --error-on-changes option
+  * Prevent --squeeze-ws of removing whitespace before comments
+  * Adjust --pad-include to ignore macros in include directives
+  * Adjust --pad-include section in the docs
+  * Fix interpretation of closing nested templates as operator
+  * Use standard filesystem API to retrieve absolute file paths
+  * Add operator --preserve-ws
+  * Disable --unpad-paren in structs for leading whitespace
+  * Do not remove space after opening parens and align-pointer=type
+  * Fix issue with --pad-oper and *= operand
+
+- update to 3.6.6:
+  * Fix indent after assignment operators (correct cause)
+  * Adjust delete-empty-lines feature description
+
+- update to 3.6.5:
+  * Add option --accept-empty-list
+  * Fix indent regression due to method extraction
+  * Fix indent in blocks after assignment operators
+  * Fix indent of multi line strings after preprocessor or comment sections
+  * Fix indent after assignment operators
+  * Fix --align-pointer=middle with existing whitespace
+
+- update to 3.6.4:
+  * Fix indent of brace initializers within constructor init list
+  * Improve indent of continued string literals
+  * Fix space after opening paren for GSC
+  * Update astyle.html layout
+  * Add deprecation hint for --html
+  * Update install docs
+  * Delete old IDE project files
+  * Move build/cmake scripts content into main CMakeLists.txt
+
+- update to 3.6.3:
+  * Fix indent after single open parenthesis
+  * Fix padding of operator char * methods
+  * Fix padding of user defined type cast
+  * Fix bitfield line break with macros
+  * Fix GSC modulo padding
+  * Removed flawed option --add-braces=nested
+  * Reverted alignment of user defined types using --align-pointer
+
+- update to 3.6.1:
+  * Fix setting of --pad-negation and --pad-include options
+  * Fix --pad-include with UTF-8 BOM
+  * Improve multiplication recognition with --align-pointer=type
+  * Improve --align-pointer=type after parens and brackets
+  * Removed VMS compilation options
+  * Updated JNI interface to use Arduino IDE conventions
+
+- update to 3.6:
+  * Fix crash concerning macro continuation
+  * Fix GSC comment recognition
+  * Add option --pad-include
+  * Combined GHC and GSC style options
+  * Improve combination of --align-pointer=type and --pad-oper
+  * Improve multiplication recognition with --align-pointer=type
+  * Update compiler options in build files
+  * Fix indent of assignments within macros
+
+- update to 3.5:
+  * Add option --pad-negation
+  * Apply align-pointer=type only if type is present
+  * Avoid deletion of empty lines after continuation
+  * Fix alignment of logical AND operators
+  * Fix recognition of Java/C# multi line strings
+
+- update to 3.4.16:
+  * Fix padding of scientific notation literals (#570)
+  * Fix of reference args alignment
+
+- update to 3.4.15:
+  * Fix parsing of floating point literals (#566)
+  * Fix "--break-block" handling of class and function blocks (#569)
+  * Fix "--align-pointer=type" option for all types in lambda parameter lists
+  * Fix padding of lambda capture with align-pointer option
+  * Exclude files ending with backup suffix from input file names list (#560)
+
+- update to 3.4.14:
+  * Fix split references with "-k1" option (#565)
+  * Fix "--align-pointer=type" option for fundamental types in lambda parameter 
+    lists
+  * Fix "--indent-after-parens" indent count
+
+-------------------------------------------------------------------
 Mon Mar 18 08:31:18 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.13:
