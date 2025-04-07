@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 07 04:41:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.5:
+  * rebuild: support passing --signing-key (#1890)
+
+-------------------------------------------------------------------
 Thu Apr 03 05:15:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.4:
