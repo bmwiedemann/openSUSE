@@ -1,7 +1,7 @@
 #
 # spec file for package python-sunpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sunpy
-Version:        6.0.4
+Version:        6.1.1
 Release:        0
 Summary:        SunPy core package: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -27,46 +27,48 @@ Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{v
 # PATCH-FIX-OPENSUSE use custom hypothesis profile for slow OBS executions
 Patch1:         sunpy-obs-profile.patch
 BuildRequires:  %{python_module aioftp}
-BuildRequires:  %{python_module astropy >= 5.3}
-BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module astropy >= 6}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module extension-helpers}
+BuildRequires:  %{python_module fsspec >= 2023.3.0}
 BuildRequires:  %{python_module numpy-devel >= 1.25 with %python-numpy-devel < 2.3}
-BuildRequires:  %{python_module packaging >= 19}
+BuildRequires:  %{python_module packaging >= 23}
 BuildRequires:  %{python_module parfive >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyerfa >= 2.0.0.1}
+BuildRequires:  %{python_module pyerfa >= 2.0.1.1}
 BuildRequires:  %{python_module requests >= 2.28}
 BuildRequires:  %{python_module setuptools >= 62}
-BuildRequires:  %{python_module setuptools_scm >= 6.2}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astropy >= 5.3
+Requires:       python-astropy >= 6
+Requires:       python-fsspec >= 2023.3.0
 Requires:       python-numpy > 1.24.5
 Requires:       python-packaging >= 23
 Requires:       python-parfive >= 2.0.0
-Requires:       python-pyerfa >= 2.0.0.1
+Requires:       python-pyerfa >= 2.0.1.1
 Requires:       python-requests >= 2.28.0
 # pafived[ftp], ignore rpmlint's python-leftover-require
 Requires:       python-aioftp >= 0.17.1
 # SECTION project.optional-dependencies:asdf
 Recommends:     python-asdf >= 2.13
-Recommends:     python-asdf-astropy >= 0.4
+Recommends:     python-asdf-astropy >= 0.5
 # /SECTION
 # SECTION project.optional-dependencies:dask
 Suggests:       python-dask-array >= 2022.5.2
 # /SECTION
 # SECTION project.optional-dependencies:image
-Recommends:     python-scipy >= 1.9
+Recommends:     python-scipy >= 1.10.1
 # /SECTION
 # SECTION project.optional-dependencies:jpeg2000
 Recommends:     python-Glymur >= 0.11
-Recommends:     python-lxml >= 4.9
+Recommends:     python-lxml >= 4.9.1
 # /SECTION
 # SECTION project.optional-dependencies:map
-Recommends:     python-matplotlib >= 3.5.0
+Recommends:     python-matplotlib >= 3.6.0
 Recommends:     python-mpl-animators >= 1.0.0
-Recommends:     python-reproject
+Recommends:     python-reproject >= 0.10.0
 # scipy
 # /SECTION
 # SECTION project.optional-dependencies:net
@@ -79,13 +81,13 @@ Recommends:     python-zeep >= 4.1.0
 # SECTION project.optional-dependencies:opencv
 Recommends:     python-opencv >= 4.6.0.66
 # SECTION project.optional-dependencies:scikit-image
-Recommends:     python-scikit-image >= 0.19
+Recommends:     python-scikit-image >= 0.20
 # /SECTION
 # SECTION project.optional-dependencies:timeseries
-Recommends:     python-cdflib >= 0.4.4
+Recommends:     python-cdflib >= 1.3.2
 Recommends:     python-h5netcdf >= 1
-Recommends:     python-h5py >= 3.7
-Recommends:     python-pandas >= 1.4
+Recommends:     python-h5py >= 3.8
+Recommends:     python-pandas >= 1.5
 #               matplotlib
 # /SECTION
 # SECTION project.optional-dependencies:visualization
@@ -94,26 +96,26 @@ Recommends:     python-pandas >= 1.4
 # /SECTION
 # SECTION test requirements (and extras)
 BuildRequires:  %{python_module asdf >= 2.13}
-BuildRequires:  %{python_module asdf-astropy >= 0.1.1}
+BuildRequires:  %{python_module asdf-astropy >= 0.5}
 BuildRequires:  %{python_module beautifulsoup4 >= 4.11.0}
-BuildRequires:  %{python_module cdflib >= 0.4.4}
+BuildRequires:  %{python_module cdflib >= 1.3.2}
 BuildRequires:  %{python_module dask-array >= 2022.5.2}
 BuildRequires:  %{python_module drms >= 0.7.1}
 BuildRequires:  %{python_module h5netcdf >= 1}
-BuildRequires:  %{python_module h5py >= 3.7.0}
+BuildRequires:  %{python_module h5py >= 3.8.0}
 BuildRequires:  %{python_module hypothesis >= 6.0.0}
 BuildRequires:  %{python_module jplephem >= 2.14}
-BuildRequires:  %{python_module lxml >= 4.9}
-BuildRequires:  %{python_module matplotlib >= 3.5.0}
+BuildRequires:  %{python_module lxml >= 4.9.1}
+BuildRequires:  %{python_module matplotlib >= 3.6.0}
 BuildRequires:  %{python_module mpl-animators >= 1.0.0}
-BuildRequires:  %{python_module pandas >= 1.4.0}
+BuildRequires:  %{python_module pandas >= 1.5}
 BuildRequires:  %{python_module pytest >= 7.1}
 BuildRequires:  %{python_module pytest-astropy >= 0.11}
 BuildRequires:  %{python_module pytest-mpl >= 0.16}
 BuildRequires:  %{python_module pytest-xdist >= 3.0.2}
 BuildRequires:  %{python_module reproject >= 0.9}
-BuildRequires:  %{python_module scikit-image >= 0.19.0 if %python-base < 3.13}
-BuildRequires:  %{python_module scipy >= 1.9}
+BuildRequires:  %{python_module scikit-image >= 0.20}
+BuildRequires:  %{python_module scipy >= 1.10.1}
 BuildRequires:  %{python_module zeep >= 4.1}
 BuildRequires:  python3-opencv
 # /SECTION
@@ -147,11 +149,10 @@ if [ "%{$python_provides}" != "python3" ]; then
   $python_donttest=" or opencv or (test_transform and (test_nans or test_clipping))"
 fi
 }
-# python313-scikit-image not available
-python313_donttest+=" or test_differential_rotation or (test_mapbase and test_contour)"
-ignore="--ignore %{buildroot}%{python313_sitearch}/sunpy/image/tests/test_transform.py"
 # fails because it does not find any opencv-python dist metadata (even for python3-opencv installed)
 donttest="test_self_test"
+# max age: not online for IERS updates
+donttest="$donttest or test_print_params"
 # spiceypy not available
 %python_expand ignore="$ignore --ignore %{buildroot}%{$python_sitearch}/sunpy/coordinates/tests/test_spice.py"
 %ifarch aarch64

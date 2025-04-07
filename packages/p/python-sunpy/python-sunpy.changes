@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Sun Apr  6 15:47:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.1.1
+  ## Breaking Changes
+  * Dataretriever / "Scraper" clients no longer require the
+    regex-formatted baseurl and a parse-formatted pattern variable
+    but instead a single and full pattern variable written in the
+    parse-format. Documentation about how to write the new patterns
+    and about explaining the internal Scraper algorithm is added to
+    the topic guide on adding new sources to Fido.
+  * The internal method on ~sunpy.net.scraper.Scraper called
+    _extract_files_meta function no longer requires an extractor
+    pattern.
+  * A new submodule called scraper.net.scraper_utils is created and
+    Scraper helper functions like date_floor(), extract_timestep(),
+    check_timerange() and get_timerange_from_exdict() can be
+    accessed directly from there.
+  * All the extracted timeranges have a millisecond subtracted from
+    the end date, i.e. they end on 59:59:59 of the date just
+    before, instead of the inconsistent issue where some could end
+    with 00:00:00 of the end date which lead to undesirable cases
+    like January 1, 2015 data also showing up in the 2014 year-long
+    timerange. (#7077)
+  * Update our dependancy policy to follow SPEC 0 rather than the
+    older NEP 29. The only difference between the old (NEP 29)
+    policy and the new (SPEC 0) policy is that we only support
+    Python versions for 3 years after their initial release, rather
+    than 4. (#7796)
+  * Increased minimum versions for these dependencies:
+        asdf-astropy >= 0.5.0
+        astropy >= 6.0.0
+        numpy >= 1.24.0
+        pandas >= 1.5.0
+        sphinx >= 6.0.0 (#7976)
+   ## Deprecations
+   * sunpy.map.GenericMap.contour is deprecated in favor of
+     sunpy.map.GenericMap.find_contours. Note that ContourPy, now
+     used for contour generation, may produce different results and
+     does not support all scikit-image keyword arguments. (#7760)
+   * The following components of ~sunpy.map.MapSequence are now
+     deprecated and will be removed in v7.1:
+      - The derotate keyword argument to ~sunpy.map.MapSequence.
+        Derotation is not implemented.
+      - The resample keyword argument to
+        ~sunpy.map.MapSequence.peek and
+        ~sunpy.map.MapSequence.plot. To reproduce this behavior,
+        use ~sunpy.map.GenericMap.resample on each map in the
+        sequence before plotting.
+      - Deprecate ~sunpy.map.MapSequence.all_maps_same_shape in
+        favor of ~sunpy.map.MapSequence.all_same_shape.
+      - Deprecate ~sunpy.map.MapSequence.at_least_one_map_has_mask.
+        To reproduce this functionality, check whether
+        ~sunpy.map.MapSequence.mask is None.
+      - Deprecate ~sunpy.map.MapSequence.as_array in favor of
+        ~sunpy.map.MapSequence.data and
+        ~sunpy.map.MapSequence.mask. Previously, as_array returned
+        a masked array if at least one map held a mask and a bare
+        array if not.
+      - Deprecate ~sunpy.map.MapSequence.all_meta in favor of
+        ~sunpy.map.MapSequence.meta. (#7827)
+    * General support within ~sunpy.map.Map for the non-standard
+      CTYPE values 'SOLAR-X' and 'SOLAR-Y' is now deprecated, and
+      should instead be handled by a source-specific subclass.
+      (#7955)
+    * Renamed the sunpy.time.TimeRange method extend() to
+      sunpy.time.TimeRange.shift to reflect what the method
+      actually does. (#8008)
+   ## New Features
+   * Added support for saving a sunpy.map.Map into an ASDF file
+     using sunpy.map.GenericMap.save and loading a map stored in an
+     ASDF file with sunpy.map.Map. (#7712)
+   * The ~sunpy.coordinates.RotatedSunFrame class now accepts a
+     ~astropy.time.TimeDelta object for the duration parameter.
+     (#7752)
+   * Added ~sunpy.map.GenericMap.find_contours for getting contours
+     from a ~sunpy.map.Map. By default the method uses ContourPy
+     for performance reasons and consistency with
+     sunpy.map.GenericMap.draw_contours. One can alternatively
+     specify that the method use scikit-image. (#7760)
+   * Added support for loading files from various cloud services
+     (such as s3) in ~sunpy.map.Map and
+     ~sunpy.timeseries.TimeSeries using fsspec. (#7790)
+   * Added the ~sunpy.coordinates.HelioprojectiveRadial coordinate
+     frame. (#7803)
+   * Added a function ~sunpy.map.make_hpr_header to easily make a
+     FITS WCS header for the
+     ~sunpy.coordinates.HelioprojectiveRadial coordinate frame.
+     (#7803)
+   * Added a function sunpy.visualization.show_hpr_impact_angle to
+     modify a plot axis of a
+     ~sunpy.coordinates.HelioprojectiveRadial ~sunpy.map.Map to
+     show impact angle rather than declination for the tick labels.
+     (#7803)
+   * Added ability to delay download in
+     sunpy.data.data_manager.manager.DataManager.require (#7845)
+   * Add sunpy.visualization.drawing.extent to visualize the extent
+     of another WCS on an axis. Add
+     sunpy.map.GenericMap.draw_extent to visualize the extent of a
+     map on a given axis. (#7851)
+   * Add a link to the VSO Health Report in the Fido Results when
+     using the VSOClient. (#7884)
+   * Added unconverted_value attribute to the Wavelength attribute.
+     (#7923)
+   * sunpy.time.TimeRange.shift can now accept inputs of type
+     datetime.timedelta and astropy.units.Quantity. (#7931)
+   * sunpy.map.CompositeMap.plot will now skip autoaligning an
+     overplotted map image if that map's WCS matches the WCS of the
+     figure axes. This significantly improves performance when the
+     maps being composited have already been reprojected onto a
+     common WCS. (#7948)
+  ## Bug Fixes
+  * sunpy.map.MapSequence unable to set the normalization for data
+    that was UINT8 (JPEG2000) causing the animations to break.
+    (#7674)
+  * Fixed incorrect reference_date for GONG Synoptic maps. (#7758)
+  * Fix sunpy.physics.differential_rotation.differential_rotate to
+    update the reference_date attribute of the input map instead of
+    the date. (#7758)
+  * Fixed incorrect reference_date for SDO/AIA and SDO/HMI data to
+    use the T_OBS keyword instead of the DATE-OBS keyword.
+  * For AIA images, the location of SDO has been shifted up to a
+    second in time, which corresponds to a shift in Heliographic
+    Longitude by only 4 milliarcseconds. (#7758)
+  * Fix filetype detection to use the detected filetype if a known
+    reader is registered. (#7788)
+  * Fixed loading of ~sunpy.map.sources.ADAPTMap if sunkit-magex
+    v1.0.0 is installed. (#7798)
+  * All map sources that override date or reference_date now fall
+    back to the corresponding properties on sunpy.map.GenericMap if
+    the needed source-specific metadata for these properties cannot
+    be found. (#7810)
+  * Fixes a bug where ~sunpy.map.sources.HMIMap returned a
+    wavelength without a unit because WAVEUNIT is not in the header
+    and cannot be parsed from any other part of the metadata. If it
+    cannot be found, it now defaults to Angstrom. (#7812)
+  * Fixed a calculation bug when using
+    ~sunpy.coordinates.PlanarScreen when it is both tilted (the
+    plane is not perpendicular to the observer-Sun direction) and
+    offset (the plane does not go through Sun center). (#7814)
+  * Fixed a bug where custom values in the plot_settings dictionary
+    were not being correctly applied in the
+    sunpy.map.GenericMap.draw_contours method. (#7844)
+  * Fix use of deprecated astropy.table.Table.pformat_all in
+    sunpy.net. (#7854)
+  * Fixed a bug with axis labels when plotting a ~sunpy.map.Map
+    that could conflict with automatic label positioning in astropy
+    7.0. (#7857)
+  * Added correct unit fallback for LASCO JPEG2000 files from the
+    Helioviewer. (#7890)
+  * Added support within ~.parse_time for the timestamp %Y%m%d%H%M
+    ,%Y%m%dT%H%M and %Y%m%d_%H%M. (#7911)
+  * Updated the internal CDF reader to handle FILLVAL only for
+    floating point numbers. (#7917)
+  * Fixed unit conversion for wavelength in
+    sunpy.net.dataretriever.sources.goes.SUVIClient. (#7920)
+  * Fixed a time-ordering bug in sunpy.time.TimeRange.shift when
+    the shifted start time is later than than the shifted end time.
+    (#7931)
+  * Fixed a bug in the HTML representation for
+    sunpy.timeseries.GenericTimeSeries that error-ed if the
+    time-series had too many columns. (#7947)
+  * Fix sunpy.data.data_manager.manager.DataManager.get now
+    automatically redownloads files if they are accidentally
+    deleted. (#7950)
+  * Fixed a bug in
+    ~sunpy.physics.differential_rotation.differential_rotate that
+    assumed the input map header had RSUN_REF defined. (#7953)
+  * Fixed two bugs associated with the handling of WCS PVi_m values
+    by ~sunpy.map.Map. PVi_m values were incorrectly retrieved from
+    the first alternative WCS description (e.g., PV1_1A) instead of
+    the primary WCS description (e.g., PV1_1). Also, PVi_m values
+    were misassigned when m was a two-digit number (i.e., 10
+    through 99). (#7961)
+  * Fixed a bug in ~sunpy.time.parse_time where parsing a list of
+    time strings containing "TAI" did not automatically set the
+    time scale to TAI. (#7983)
+  * Fixed a bug in ~sunpy.time.parse_time where parsing a list of
+    time strings could incorrectly fail even when parsing the
+    individual elements would succeed. (#7983)
+  * Fixed the formatting of the the channel labels for
+    ~sunpy.timeseries.sources.XRSTimeSeries. (#7986)
+  * Examples in docs for sunpy.net.attr.Attr are now rendering
+    properly. (#8002)
+  * Fixed the unintended ~sunpy.map.Map behavior where any
+    combination of non-FITS units were allowed as long as one of
+    the non-FITS units was DN. DN is currently the only non-FITS
+    unit permitted in ~sunpy.map.Map. (#8037)
+  * Corrected the NOAA ~.SRSClient to use a updated HTTPS server
+    instead of the now defunct FTP. (#8054)
+  * Fixed a bug where ~sunpy.map.sources.EITMap and the correct
+    colormaps (e.g., sohoeit171) failed to load for SOHO/EIT level
+    1 FITS files from SDAC. (#8070)    
+
+-------------------------------------------------------------------
 Sat Dec  7 09:47:21 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.0.4
