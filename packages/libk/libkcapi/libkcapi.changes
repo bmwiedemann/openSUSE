@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Apr  4 09:41:07 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- fixed sumprefix to be "." as before, also stores sums in the binary
+  directoris. changed back packaging to be same as before.
+
+-------------------------------------------------------------------
+Sun Mar 16 21:59:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.5.0:
+  * kcapi-hasher is a new multi-call binary with a single hmac
+  * move all sha* applications to the libexec directory to allow
+    them to coexist with other packages sha* applications - the
+    caller is expected to make a symlink to them
+  * add sha3sum
+  * add kcapi_md_sha3_* wrapper APIs
+  * kcapi-enc: allow larger keysizes
+  * kcapi-enc: PBKDF limits key size to 32 bytes
+  * kcapi-enc: Add option --key-len to kcapi-enc to specify the
+    length of key
+  * library: set default log level to NONE
+  * performance improvements
+- HMACs are now all sha512hmac, and in (libdir)/hmaccalc
+- code is dual-licended GPL-2.0-only / BSD-3-Clause
+- package license texts
+
+-------------------------------------------------------------------
 Mon Mar  6 15:17:46 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - libkcapi was actually signed by the wrong key (bsc#1207892)

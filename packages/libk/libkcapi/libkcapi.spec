@@ -1,7 +1,8 @@
 #
 # spec file for package libkcapi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +17,16 @@
 #
 
 
+%define sover 1
 Name:           libkcapi
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Linux Kernel Crypto API User Space Interface Library
-License:        GPL-2.0-only
+License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Productivity/Security
-URL:            https://www.chronox.de/libkcapi.html
-Source:         https://www.chronox.de/libkcapi/libkcapi-%{version}.tar.xz
-Source1:        https://www.chronox.de/libkcapi/libkcapi-%{version}.tar.xz.asc
+URL:            https://www.chronox.de/libkcapi/
+Source:         https://www.chronox.de/libkcapi/releases/%{version}/%{name}-%{version}.tar.xz
+Source1:        https://www.chronox.de/libkcapi/releases/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        libkcapi.keyring
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,17 +39,17 @@ libkcapi exports APIs so that developers need not consider the low-level
 Netlink interface handling that is used for accesing the Linux kernel crypto
 API.
 
-%package -n libkcapi1
+%package -n libkcapi%{sover}
 Summary:        Linux Kernel Crypto API User Space Interface Library
 Group:          System/Libraries
 
-%description -n libkcapi1
+%description -n libkcapi%{sover}
 libkcapi allows user-space to access the Linux kernel crypto API.
 
 %package devel
 Summary:        Linux Kernel Crypto API User Space Interface Library
 Group:          Development/Languages/C and C++
-Requires:       libkcapi1 = %{version}
+Requires:       libkcapi%{sover} = %{version}
 
 %description devel
 libkcapi exports APIs so that developers need not consider the low-level
@@ -76,88 +78,57 @@ libkcapi user space tools to access certain hash algorithms.
 %autosetup -p1
 
 %build
-autoreconf -i
-%configure 			\
+autoreconf -fiv
+%configure \
   --disable-static		\
   --enable-kcapi-test		\
   --enable-kcapi-speed		\
   --enable-kcapi-hasher		\
   --enable-kcapi-rngapp		\
   --enable-kcapi-encapp		\
-  --enable-kcapi-dgstapp
-
-make %{?_smp_mflags}
+  --enable-kcapi-dgstapp	\
+  %{nil}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot} LIBDIR="%{_libdir}" BINDIR=/%{_libexecdir}/libkcapi/ %{?_smp_mflags}
-rm %{buildroot}/%_libdir/libkcapi.la
-
-mkdir -p %{buildroot}/%{_libexecdir}/libkcapi/
-mv %{buildroot}/usr/bin/* %{buildroot}/%{_libexecdir}/libkcapi/
-mv %{buildroot}/usr/bin/.??* %{buildroot}/%{_libexecdir}/libkcapi/
-
-# Add generation of HMAC checksums of the final fipshmac fipscheck stripped binaries
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+# do not ship hmac files unless we (re)generated them
+find %{buildroot} -type f -name "*.hmac" -delete -print
+# Add generation of HMAC checksums of the libary and kcapi-hasher binary
 %define __spec_install_post \
 	%{?__debug_package:%{__debug_install_post}} \
 	%{__arch_install_post} \
-	%{__os_install_post} \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/fipscheck   |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.fipscheck.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/fipshmac   |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.fipshmac.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha1sum   |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha1sum.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha256sum |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha256sum.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha384sum |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha384sum.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha512sum |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha512sum.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha1hmac   |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha1hmac.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha256hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha256hmac.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha384hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha384hmac.hmac \
-	openssl sha512 -hmac FIPS-FTW-RHT2009 $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/sha512hmac |sed -e 's/.* //;' > $RPM_BUILD_ROOT/%{_libexecdir}/libkcapi/.sha512hmac.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so.1|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.1.hmac \
-	openssl sha256 -hmac orboDeJITITejsirpADONivirpUkvarP $RPM_BUILD_ROOT/%_libdir/libkcapi.so.%version|sed -e 's/.* //;' > $RPM_BUILD_ROOT/%_libdir/.libkcapi.so.%version.hmac \
+	%__os_install_post \
+	openssl sha512 -hmac FIPS-FTW-RHT2009 %{buildroot}/%{_bindir}/kcapi-hasher |sed -e 's/.* //;' > %{buildroot}/%{_bindir}/.kcapi-hasher.hmac \
+	openssl sha512 -hmac FIPS-FTW-RHT2009 %{buildroot}/%{_libdir}/libkcapi.so.%{version}|sed -e 's/.* //;' > %{buildroot}/%{_libdir}/.libkcapi.so.%{version}.hmac \
+	openssl sha512 -hmac FIPS-FTW-RHT2009 %{buildroot}/%{_libdir}/libkcapi.so.%{sover}|sed -e 's/.* //;' > %{buildroot}/%{_libdir}/.libkcapi.so.%{sover}.hmac \
+	openssl sha512 -hmac FIPS-FTW-RHT2009 %{buildroot}/%{_libdir}/libkcapi.so|sed -e 's/.* //;' > %{buildroot}/%{_libdir}/.libkcapi.so.hmac \
 	%{nil}
 
-%post -n libkcapi1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libkcapi%{sover}
 
-%postun -n libkcapi1 -p /sbin/ldconfig
-
-%files -n libkcapi1
-%license COPYING
+%files -n libkcapi%{sover}
+%license COPYING COPYING.bsd COPYING.gplv2
 %doc CHANGES.md
-%{_libdir}/libkcapi.so.1.*
-%{_libdir}/libkcapi.so.1
-%{_libdir}/.libkcapi.so.1*
+%{_libdir}/libkcapi.so.%{sover}
+%{_libdir}/libkcapi.so.%{sover}.*
+%{_libdir}/.libkcapi.so.%{sover}.hmac
+%{_libdir}/.libkcapi.so.%{version}.hmac
 
 %files devel
+%license COPYING COPYING.bsd COPYING.gplv2
 %{_includedir}/kcapi.h
-%{_mandir}/man3/*
+%{_mandir}/man3/*3%{?ext_man}
 %{_libdir}/libkcapi.so
 %{_libdir}/.libkcapi.so.hmac
 %{_libdir}/pkgconfig/libkcapi.pc
 
 %files tools
-%dir %{_libexecdir}/libkcapi
-%{_libexecdir}/libkcapi/*sum*
-%{_libexecdir}/libkcapi/*hmac*
-%{_libexecdir}/libkcapi/.*.hmac
-%{_libexecdir}/libkcapi/kcapi
-%{_libexecdir}/libkcapi/kcapi-convenience
-%{_libexecdir}/libkcapi/compile-test.sh
-%{_libexecdir}/libkcapi/hasher-test.sh
-%{_libexecdir}/libkcapi/kcapi-convenience.sh
-%{_libexecdir}/libkcapi/kcapi-dgst-test.sh
-%{_libexecdir}/libkcapi/kcapi-enc-test-large
-%{_libexecdir}/libkcapi/kcapi-enc-test-large.sh
-%{_libexecdir}/libkcapi/kcapi-enc-test.sh
-%{_libexecdir}/libkcapi/kcapi-fuzz-test.sh
-%{_libexecdir}/libkcapi/fipscheck
-%{_libexecdir}/libkcapi/kcapi-dgst
-%{_libexecdir}/libkcapi/kcapi-enc
-%{_libexecdir}/libkcapi/kcapi-rng
-%{_libexecdir}/libkcapi/kcapi-speed
-%{_libexecdir}/libkcapi/libtest.sh
-%{_libexecdir}/libkcapi/test-invocation.sh
-%{_libexecdir}/libkcapi/test.sh
-%{_libexecdir}/libkcapi/virttest.sh
-%{_mandir}/man1/kcapi*
+%license COPYING COPYING.bsd COPYING.gplv2
+%{_bindir}/*
+%{_libexecdir}/libkcapi
+%{_bindir}/.kcapi-hasher.hmac
+%{_mandir}/man1/*1%{?ext_man}
 
 %changelog
