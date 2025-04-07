@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  4 08:24:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.12.0
+  * README: fix typo in QNetworkReply example
+  * Don't discard result from QFile::open
+  * Add return value conversion for QCoroTask
+  * fix: disable language-extension-token warning
+  * Don't set CMAKE_CXX_FLAGS, use target properties instead
+  * Fix infinite recursion with debug builds on libstdc++
+  * Fix build with Qt dev
+  * Don't leak compile definitions from interface libraries
+  * Add missing includes
+
+-------------------------------------------------------------------
 Fri Oct  4 21:37:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.11.0
