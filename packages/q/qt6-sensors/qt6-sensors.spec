@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-sensors
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtsensors
 %define tar_name qtsensors-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-sensors%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt Sensors API to access sensor hardware
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
@@ -36,8 +36,8 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-sensors-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6DBus) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
@@ -83,8 +83,8 @@ Development files for the Qt 6 Sensors library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Sensors library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Sensors) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Sensors that do not have any
@@ -162,6 +162,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/QtSensors/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6SensorsPrivate/
 %{_qt6_includedir}/QtSensors/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_sensors_private.pri
 
@@ -180,6 +181,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/QtSensorsQuick/%{real_version}
 
 %files -n qt6-sensorsquick-private-devel
+%{_qt6_cmakedir}/Qt6SensorsQuickPrivate/
 %{_qt6_includedir}/QtSensorsQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_sensorsquick_private.pri
 
