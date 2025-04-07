@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 03 15:58:24 UTC 2025 - dcermak@suse.com
+
+- Update to version 5.4.2:
+  * Bump to v5.4.2
+  * Add release notes for v5.4.2
+  * Fix a potential deadlock during `podman cp`
+  * Improve the file format documentation of podman-import.
+  * Revert "podman-import only supports gz and tar"
+  * Bump buildah to v1.39.4
+  * libpod: do not cover idmapped mountpoint
+  * test: Fix runc error message
+  * oci: report empty exec path as ENOENT
+  * test: adapt tests new crun error messages
+  * test: remove duplicate test
+  * cirrus: test only on f41/rawhide
+  * CI: use z1d instance for windows machine testing
+  * New images 2025-03-24
+  * test/e2e: use go net.Dial() ov nc
+  * test: use ncat over nc
+  * New images 2025-03-12
+  * RPM: Add riscv64 to ExclusiveArch-es
+  * Fix HealthCheck log destination, count, and size defaults
+  * Win installer test: hardcode latest GH release ID
+  * Packit: Fix action script for fetching upstream commit
+  * Bump to v5.4.2-dev
+
+-------------------------------------------------------------------
 Wed Mar 26 08:24:05 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
 
 - Add patch for CVE-2025-22869 (bsc#1239330):

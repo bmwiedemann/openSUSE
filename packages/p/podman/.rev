@@ -1322,4 +1322,12 @@ Update to version 4.7.1 (forwarded request 1115956 from danishprakash)</comment>
     <comment>Add patch for CVE-2025-22869 (bsc#1239330) (forwarded request 1256140 from danishprakash)</comment>
     <requestid>1256158</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>493e5356b7efe3f3cc7668af6b0086f4</srcmd5>
+    <version>5.4.2</version>
+    <time>1744040110</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267170</requestid>
+  </revision>
 </revisionlist>
