@@ -2043,4 +2043,22 @@
   * Postman source handle different JSON info for headers (#3995) (forwarded request 1265686 from ph03nix)</comment>
     <requestid>1265892</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>e0a68442476283b039c3d7908760c65f</srcmd5>
+    <version>3.88.23</version>
+    <time>1744044115</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.88.23:
+  * Make verification cache detector type-aware (#4009)
+- Update to version 3.88.22:
+  * Added logging for Postman API response headers (#4007)
+- Update to version 3.88.21:
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4011)
+  * fix(deps): update module github.com/xanzy/go-gitlab to v0.115.0 (#3755)
+  * [Feat] Detector implementation for Azure API Management Repository key (#3955)
+  * [Feat] Added Figma (PAT) Analyzer (#3974)
+  * chore(deps): update dependency go (#3958)
+  * Added a rate limiter for getting the overall list of Postman workspaces (#4002) (forwarded request 1267595 from ph03nix)</comment>
+    <requestid>1267713</requestid>
+  </revision>
 </revisionlist>
