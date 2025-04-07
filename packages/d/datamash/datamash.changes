@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  5 06:52:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.9:
+  * Add short options -h and -V for --help and --version
+  * rand operation now uses getrandom(2)
+  * add operation dotprod for scalar product
+  * Add option -S/--seed to set a specific pseudp-RNG seed
+  * Add option --vnlog for experimental vnlog format
+  * -g/groupby takes ranges of columns (e.g. 1-4)
+  * now correctly calculates the "antimode" for a sequence of numbers
+  * When using the locale's decimal separator as field separator,
+    numeric operations now work correctly
+  * The "getnum" operation now stays inside the specified field
+
+-------------------------------------------------------------------
 Thu Jul 28 18:47:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8:

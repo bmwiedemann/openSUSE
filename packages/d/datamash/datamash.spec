@@ -2,6 +2,7 @@
 # spec file for package datamash
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +22,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           datamash
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Statistical, numerical and textual operations in the command line
 License:        GPL-3.0-or-later
@@ -33,15 +34,13 @@ Source2:        https://ftp.gnu.org/gnu/datamash/%{name}-%{version}.tar.gz.sig
 Source3:        datamash.keyring
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 
 %description
 GNU datamash is a command-line program which performs basic numeric,
 textual and statistical operations on input textual data files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -59,12 +58,6 @@ textual and statistical operations on input textual data files.
 
 %check
 %make_build check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz
 
 %files -f %{name}.lang
 %license COPYING
