@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qt3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-3d%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 3D Library
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -35,22 +35,22 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-3d-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-opengl-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-shadertools-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Multimedia) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGLPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickWidgets) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderToolsPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(assimp) >= 5
 BuildRequires:  pkgconfig(zlib)
@@ -88,19 +88,19 @@ This meta-package requires all the qt6-3d development packages.
 %package private-devel
 Summary:        Qt 6 3D unstable ABI meta package
 Requires:       qt6-3d-devel = %{version}
-Requires:       qt6-3danimation-private-devel = %{version}
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3dextras-private-devel = %{version}
-Requires:       qt6-3dinput-private-devel = %{version}
-Requires:       qt6-3dlogic-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
-Requires:       qt6-3dquickanimation-private-devel = %{version}
-Requires:       qt6-3dquickextras-private-devel = %{version}
-Requires:       qt6-3dquickinput-private-devel = %{version}
-Requires:       qt6-3dquickrender-private-devel = %{version}
-Requires:       qt6-3dquickscene2d-private-devel = %{version}
-Requires:       qt6-3dquickscene3d-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DAnimationPrivate) = %{real_version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
+Requires:       cmake(Qt63DExtrasPrivate) = %{real_version}
+Requires:       cmake(Qt63DInputPrivate) = %{real_version}
+Requires:       cmake(Qt63DLogicPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickAnimationPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickExtrasPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickInputPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickRenderPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickScene2DPrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickScene3DPrivate) = %{real_version}
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
 BuildArch:      noarch
 
 %description private-devel
@@ -125,10 +125,10 @@ Development files for the Qt 6 3DAnimation library.
 
 %package -n qt6-3danimation-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DAnimation library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
 Requires:       cmake(Qt63DAnimation) = %{real_version}
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-3danimation-private-devel
 This package provides private headers of libQt63DAnimation that do not have any
@@ -154,8 +154,8 @@ Development files for the Qt 6 3DCore library.
 Summary:        Non-ABI stable API for the Qt 6 3DCore library
 Requires:       cmake(Qt63DCore) = %{real_version}
 Requires:       cmake(Qt6Concurrent) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 
 %description -n qt6-3dcore-private-devel
 This package provides private headers of libQt63DCore that do not have any
@@ -181,10 +181,10 @@ Development files for the Qt 6 3DExtras library.
 
 %package -n qt6-3dextras-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DExtras library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DExtras) = %{real_version}
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-3dextras-private-devel
 This package provides private headers of libQt63DExtras that do not have any
@@ -207,9 +207,9 @@ Development files for the Qt 6 3DInput library.
 
 %package -n qt6-3dinput-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DInput library
-Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DInput) = %{real_version}
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-3dinput-private-devel
 This package provides private headers of libQt63DInput that do not have any
@@ -232,10 +232,10 @@ Development files for the Qt 6 3DLogic library.
 
 %package -n qt6-3dlogic-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DLogic library
-Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DLogic) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 
 %description -n qt6-3dlogic-private-devel
 This package provides private headers of libQt63DLogic that do not have any
@@ -250,8 +250,8 @@ The Qt 6 3DQuick library.
 %package -n qt6-3dquick-devel
 Summary:        Development files for the Qt 6 3DQuick library
 Requires:       libQt63DQuick6 = %{version}
-Requires:       qt6-3dcore-private-devel = %{version}
 Requires:       cmake(Qt63DCore) = %{real_version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
@@ -262,10 +262,10 @@ Development files for the Qt 6 3DQuick library.
 %package -n qt6-3dquick-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuick library
 Requires:       cmake(Qt63DQuick) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-qml-private-devel
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-3dquick-private-devel
 This package provides private headers of libQt63DQuick that do not have any
@@ -292,12 +292,12 @@ Development files for the Qt 6 3DQuickAnimation library.
 
 %package -n qt6-3dquickanimation-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickAnimation library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickAnimation) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickanimation-private-devel
 This package provides private headers of libQt63DQuickAnimation that do not
@@ -326,12 +326,12 @@ Development files for the Qt 6 3DQuickExtras library.
 
 %package -n qt6-3dquickextras-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickExtras library
-Requires:       qt6-3dextras-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DExtras) = %{real_version}
 Requires:       cmake(Qt63DQuickExtras) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickextras-private-devel
 This package provides private headers of libQt63DQuickExtras that do not have
@@ -357,12 +357,12 @@ Development files for the Qt 6 3DQuickInput library.
 
 %package -n qt6-3dquickinput-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickInput library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3dinput-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
+Requires:       cmake(Qt63DInputPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickInput) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickinput-private-devel
 This package provides private headers of libQt63DQuickInput that do not have any
@@ -388,12 +388,12 @@ Development files for the Qt 6 3DQuickRender library.
 
 %package -n qt6-3dquickrender-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickRender library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickRender) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickrender-private-devel
 This package provides private headers of libQt63DQuickRender that do not have
@@ -419,12 +419,12 @@ Development files for the Qt 6 3DQuickScene2D library.
 
 %package -n qt6-3dquickscene2d-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickScene2D library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3dquick-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
+Requires:       cmake(Qt63DQuickPrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickScene2D) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickscene2d-private-devel
 This package provides private headers of libQt63DQuickScene2D that do not have
@@ -450,11 +450,11 @@ Development files for the Qt 6 3DQuickScene3D library.
 
 %package -n qt6-3dquickscene3d-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DQuickScene3D library
-Requires:       qt6-3dcore-private-devel = %{version}
-Requires:       qt6-3drender-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DQuickScene3D) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-qml-private-devel
+Requires:       cmake(Qt63DRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 
 %description -n qt6-3dquickscene3d-private-devel
 This package provides private headers of libQt63DQuickScene3D that do not have
@@ -478,10 +478,10 @@ Development files for the Qt 6 3DRender library.
 
 %package -n qt6-3drender-private-devel
 Summary:        Non-ABI stable API for the Qt 6 3DRender library
-Requires:       qt6-3dcore-private-devel = %{version}
+Requires:       cmake(Qt63DCorePrivate) = %{real_version}
 Requires:       cmake(Qt63DRender) = %{real_version}
 Requires:       cmake(Qt6Concurrent) = %{real_version}
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-3drender-private-devel
 This package provides private headers of libQt63DRender that do not have any
@@ -560,6 +560,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DAnimation/%{real_version}
 
 %files -n qt6-3danimation-private-devel
+%{_qt6_cmakedir}/Qt63DAnimationPrivate/
 %{_qt6_includedir}/Qt3DAnimation/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3danimation_private.pri
 
@@ -582,6 +583,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DCore/%{real_version}
 
 %files -n qt6-3dcore-private-devel
+%{_qt6_cmakedir}/Qt63DCorePrivate/
 %{_qt6_includedir}/Qt3DCore/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dcore_private.pri
 
@@ -600,6 +602,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DExtras/%{real_version}
 
 %files -n qt6-3dextras-private-devel
+%{_qt6_cmakedir}/Qt63DExtrasPrivate/
 %{_qt6_includedir}/Qt3DExtras/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dextras_private.pri
 
@@ -618,6 +621,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DInput/%{real_version}
 
 %files -n qt6-3dinput-private-devel
+%{_qt6_cmakedir}/Qt63DInputPrivate/
 %{_qt6_includedir}/Qt3DInput/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dinput_private.pri
 
@@ -636,6 +640,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DLogic/%{real_version}
 
 %files -n qt6-3dlogic-private-devel
+%{_qt6_cmakedir}/Qt63DLogicPrivate/
 %{_qt6_includedir}/Qt3DLogic/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dlogic_private.pri
 
@@ -654,6 +659,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuick/%{real_version}
 
 %files -n qt6-3dquick-private-devel
+%{_qt6_cmakedir}/Qt63DQuickPrivate/
 %{_qt6_includedir}/Qt3DQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquick_private.pri
 
@@ -672,6 +678,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickAnimation/%{real_version}
 
 %files -n qt6-3dquickanimation-private-devel
+%{_qt6_cmakedir}/Qt63DQuickAnimationPrivate/
 %{_qt6_includedir}/Qt3DQuickAnimation/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickanimation_private.pri
 
@@ -690,6 +697,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickExtras/%{real_version}
 
 %files -n qt6-3dquickextras-private-devel
+%{_qt6_cmakedir}/Qt63DQuickExtrasPrivate/
 %{_qt6_includedir}/Qt3DQuickExtras/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickextras_private.pri
 
@@ -708,6 +716,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickInput/%{real_version}
 
 %files -n qt6-3dquickinput-private-devel
+%{_qt6_cmakedir}/Qt63DQuickInputPrivate/
 %{_qt6_includedir}/Qt3DQuickInput/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickinput_private.pri
 
@@ -726,6 +735,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickRender/%{real_version}
 
 %files -n qt6-3dquickrender-private-devel
+%{_qt6_cmakedir}/Qt63DQuickRenderPrivate/
 %{_qt6_includedir}/Qt3DQuickRender/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickrender_private.pri
 
@@ -745,6 +755,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickScene2D/%{real_version}
 
 %files -n qt6-3dquickscene2d-private-devel
+%{_qt6_cmakedir}/Qt63DQuickScene2DPrivate/
 %{_qt6_includedir}/Qt3DQuickScene2D/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene2d_private.pri
 
@@ -763,6 +774,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DQuickScene3D/%{real_version}
 
 %files -n qt6-3dquickscene3d-private-devel
+%{_qt6_cmakedir}/Qt63DQuickScene3DPrivate/
 %{_qt6_includedir}/Qt3DQuickScene3D/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3dquickscene3d_private.pri
 
@@ -784,6 +796,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,ConfigVersion,Targets*}.cmake
 %exclude %{_qt6_includedir}/Qt3DRender/%{real_version}
 
 %files -n qt6-3drender-private-devel
+%{_qt6_cmakedir}/Qt63DRenderPrivate/
 %{_qt6_includedir}/Qt3DRender/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_3drender_private.pri
 
