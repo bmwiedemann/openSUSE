@@ -25,7 +25,7 @@
 %endif
 
 Name:           dino
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        Modern Jabber/XMPP Client using GTK+/Vala
 License:        GPL-3.0-only
@@ -64,7 +64,7 @@ BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libsrtp2)
 BuildRequires:  pkgconfig(nice) >= 0.1.15
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(webrtc-audio-processing)
+#BuildRequires:  pkgconfig(webrtc-audio-processing)
 %if %{with shared_libsignal}
 BuildRequires:  pkgconfig(libsignal-protocol-c) >= 2.3.2
 %endif

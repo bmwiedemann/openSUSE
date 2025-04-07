@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Apr  4 18:11:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.5:
+  * Fix build with webrtc-audio-processing 2.x
+  * Voice processor: add support for webrtc-audio-processing 1.x and 2.x
+  * Fix vertical picture padding for certain aspect ratios
+  * Fix various sizing issues
+  * Fix compatibility with GTK 4.17+ (bsc#1239972)
+  * Search: Build preview string based on chars not bytes
+  * Work around pango bug
+  * XEP-0215: Remove timeout from previous connection
+  * XEP-0215: management of the field `expires`
+  * Ignore bad stun/turn IP addresses
+  * Omemo: Connect listener only once on account added
+  * Fix shift+enter in chat input not scrolling down
+  * OMEMO: Do not show message for OMEMO messages without payload
+- Disable webrtc due to build fail for now
+
+-------------------------------------------------------------------
 Thu Oct 24 12:13:54 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(libsoup-2.4) with pkgconfig(libsoup-3.0)

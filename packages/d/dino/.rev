@@ -154,4 +154,26 @@
     <comment></comment>
     <requestid>1218068</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cbbe15d706e79cc70188962c4f96dd75</srcmd5>
+    <version>0.4.5</version>
+    <time>1744040179</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.5:
+  * Fix build with webrtc-audio-processing 2.x
+  * Voice processor: add support for webrtc-audio-processing 1.x and 2.x
+  * Fix vertical picture padding for certain aspect ratios
+  * Fix various sizing issues
+  * Fix compatibility with GTK 4.17+ (bsc#1239972)
+  * Search: Build preview string based on chars not bytes
+  * Work around pango bug
+  * XEP-0215: Remove timeout from previous connection
+  * XEP-0215: management of the field `expires`
+  * Ignore bad stun/turn IP addresses
+  * Omemo: Connect listener only once on account added
+  * Fix shift+enter in chat input not scrolling down
+  * OMEMO: Do not show message for OMEMO messages without payload
+- Disable webrtc due to build fail for now</comment>
+    <requestid>1267189</requestid>
+  </revision>
 </revisionlist>
