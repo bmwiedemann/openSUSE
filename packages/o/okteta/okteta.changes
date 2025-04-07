@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr  4 20:16:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.21
+  * Added: navigation of non-zero byte ranges with Ctrl + Alt + Left/Right
+  * Improved: translations
+  * Improved: handle ShortcutOverride event in Okteta Gui
+    library's views
+  * Improved: embedded dialogs use QKeySequence::Cancel instead
+    of fixed ESC
+  * Changed: use Alt + PageDown/PageUp now for previous/next
+    bookmark
+  * Fixed: crashes using any tools before creating/opening a
+    document
+
+-------------------------------------------------------------------
 Mon Mar  3 18:16:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.20:
