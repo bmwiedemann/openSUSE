@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-webview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtwebview-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,26 +27,26 @@
 %endif
 #
 Name:           qt6-webview%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 WebView library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-webenginecore-private-devel
-BuildRequires:  qt6-webenginequick-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineCore) = %{real_version}
+BuildRequires:  cmake(Qt6WebEngineCorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6WebEngineQuick) = %{real_version}
+BuildRequires:  cmake(Qt6WebEngineQuickPrivate) = %{real_version}
 # Only available where qtwebengine is
-ExclusiveArch:  aarch64 x86_64 %x86_64 riscv64
+ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
 %{qt6_doc_packages}
@@ -83,9 +83,9 @@ Development files for the Qt 6 WebView library
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 WebView library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6WebView) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
 
 %description private-devel
 This package provides private headers of libQt6WebView that do not have any
@@ -164,6 +164,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6WebView/*Plugin*.cmake
 %exclude %{_qt6_includedir}/QtWebView/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6WebViewPrivate/
 %{_qt6_includedir}/QtWebView/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webview_private.pri
 
@@ -182,6 +183,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6WebView/*Plugin*.cmake
 %exclude %{_qt6_includedir}/QtWebViewQuick/%{real_version}/
 
 %files -n qt6-webviewquick-private-devel
+%{_qt6_cmakedir}/Qt6WebViewQuickPrivate/
 %{_qt6_includedir}/QtWebViewQuick/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_webviewquick_private.pri
 
