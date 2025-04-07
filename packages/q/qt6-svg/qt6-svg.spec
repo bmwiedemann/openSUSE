@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-svg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtsvg-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-svg%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Classes for rendering and displaying SVG drawings
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -35,12 +35,12 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-svg-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
+BuildRequires:  cmake(Qt6WidgetsPrivate) = %{real_version}
 BuildRequires:  pkgconfig(zlib)
 # Ignored: only used for building tests
 # BuildRequires:  cmake(Qt6Xml)
@@ -79,11 +79,11 @@ Development files for the Qt 6 SVG libraries.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 SVG libraries
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6Svg) = %{real_version}
 Requires:       cmake(Qt6SvgWidgets) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-widgets-private-devel
+Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 
 %description private-devel
 This package provides private headers of libQt6Svg that do not have any
@@ -144,6 +144,8 @@ rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_svgwidgets_private.pri
 %exclude %{_qt6_includedir}/QtSvg/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6SvgPrivate/
+%{_qt6_cmakedir}/Qt6SvgWidgetsPrivate/
 %dir %{_qt6_includedir}/QtSvg/
 %{_qt6_includedir}/QtSvg/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_svg_private.pri
