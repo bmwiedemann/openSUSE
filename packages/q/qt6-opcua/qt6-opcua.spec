@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtopcua-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(OpcUaMachineBackend\\)
 #
 Name:           qt6-opcua%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt wrapper for existing OPC UA stacks
 # src/plugins/opcua is GPL-3.0-or-later, rest is dual licensed
@@ -40,11 +40,11 @@ URL:            https://www.qt.io
 Source0:        %{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-opcua-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-network-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6NetworkPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
@@ -78,9 +78,9 @@ Development files for the Qt 6 OpcUa library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 OpcUa library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6NetworkPrivate) = %{real_version}
 Requires:       cmake(Qt6OpcUa) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-network-private-devel
 
 %description private-devel
 This package provides private headers of libQt6Opcua that do not have any
@@ -144,10 +144,9 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files devel
 %{_qt6_bindir}/qopcuaxmldatatypes2cpp
-%{_qt6_cmakedir}/Qt6/FindOpen62541.cmake
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtOpcUaTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6OpcUa/
-%{_qt6_cmakedir}/Qt6QtOpcUaTools/
+%{_qt6_cmakedir}/Qt6OpcUaTools/
 %{_qt6_descriptionsdir}/OpcUa.json
 %{_qt6_includedir}/QtOpcUa
 %{_qt6_libdir}/libQt6OpcUa.prl
@@ -158,6 +157,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtOpcUa/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6OpcUaPrivate/
 %{_qt6_includedir}/QtOpcUa/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_opcua_private.pri
 
@@ -169,6 +169,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 
 %files -n qt6-declarativeopcua-private-devel
 %{_qt6_cmakedir}/Qt6DeclarativeOpcua/
+%{_qt6_cmakedir}/Qt6DeclarativeOpcuaPrivate/
 %{_qt6_descriptionsdir}/DeclarativeOpcua.json
 %{_qt6_includedir}/QtDeclarativeOpcua/
 %{_qt6_libdir}/libQt6DeclarativeOpcua.prl
