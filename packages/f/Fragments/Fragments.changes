@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  6 12:04:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Exclude s390x arch as a buildtarget, fails to build.
+
+-------------------------------------------------------------------
 Mon Aug 19 19:36:17 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable LTO, fails to build with GCC 14.

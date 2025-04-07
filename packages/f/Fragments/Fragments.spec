@@ -48,6 +48,7 @@ BuildRequires:  pkgconfig(gtk4) >= 4.0.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2.0
 BuildRequires:  pkgconfig(sqlite3) >= 3.20
 Requires:       transmission-daemon
+ExcludeArch:    s390x
 
 %description
 Fragments is an easy to use BitTorrent client which follows the
