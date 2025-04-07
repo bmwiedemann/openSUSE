@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  4 11:00:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.15
+  * Add request ID to debug level log by @TingDaoK in (#504)
+
+-------------------------------------------------------------------
 Wed Apr  2 13:59:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.14
