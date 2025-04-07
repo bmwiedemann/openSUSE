@@ -228,4 +228,12 @@
     corrupted colormap (boo#1215687)</comment>
     <requestid>1115069</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>545c72c1c24db16719f9c787f70a4435</srcmd5>
+    <version>3.5.17</version>
+    <time>1744040111</time>
+    <user>anag_factory</user>
+    <comment>- adding COPYING file to filelist (bsc#1240836)</comment>
+    <requestid>1267176</requestid>
+  </revision>
 </revisionlist>

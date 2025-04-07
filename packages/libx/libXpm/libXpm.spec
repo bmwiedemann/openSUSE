@@ -1,7 +1,7 @@
 #
 # spec file for package libXpm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -104,6 +104,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
+%license COPYING
 %{_libdir}/libXpm.so.4*
 
 %files devel
