@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  4 07:00:19 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
+
+- New environment variables YAST_STORAGE_TEST_MODE and
+  YAST_DEVICEGRAPH_FILE to ease development of YaST and Agama
+  (gh#yast/yast-storage-ng#1407).
+- 5.0.28
+
+-------------------------------------------------------------------
 Mon Feb 24 15:11:04 UTC 2025 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Discarded RAM disks as candidate for installation
