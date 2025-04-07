@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Mar 29 13:48:18 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support of gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Thu Mar 27 12:44:26 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Disable hpc builds for Factory and SLFO / Leap 16
