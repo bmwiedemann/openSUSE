@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyqt-builder
-Version:        1.17.1
+Version:        1.18.1
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        BSD-2-Clause
@@ -89,6 +89,6 @@ $python -c 'import pyqtbuild'
 %python_alternative %{_bindir}/pyqt-bundle
 %python_alternative %{_bindir}/pyqt-qt-wheel
 %{python_sitelib}/pyqtbuild
-%{python_sitelib}/PyQt_builder-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Qq]t_builder-%{version}.dist-info
 
 %changelog

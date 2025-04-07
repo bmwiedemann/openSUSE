@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  4 01:13:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support older and current versions of setuptools WRT to the case of
+  the metadata directory.
+
+-------------------------------------------------------------------
+Thu Apr  3 16:50:22 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.18.1
+  * The QtEglFSDeviceIntegration library is now bundled for Qt5 and
+    Qt6.
+  * Added support for the QtStateMachine module.
+
+-------------------------------------------------------------------
 Wed Jan  8 15:25:39 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.17.1
