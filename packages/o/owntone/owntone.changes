@@ -1,25 +1,51 @@
 -------------------------------------------------------------------
+Fri Apr  4 06:42:35 UTC 2025 - erfan <erfanfrp@gmail.com>
+
+- update to version 28.12
+ * fix: possible deadlock during Spotify scan
+ * fix: armv7 compile warnings
+ * fix: stop playback when last queue item removed
+ * fix: "Invalid token" when authorising Spotify
+ * fix: mpd enable/disable erroneously toggles
+ * fix: cover art not being displayed in album lists
+ * new: logging includes thread info
+ * new: support for ListenBrainz
+
+- Owntone 28.11
+ * fix: retrieval of artwork from online sources
+ * fix: mpd speaker selection
+ * fix: autoconf warnings
+ * fix: Apple Music/iTunes not working on Airplay host
+ * web UI: Now Playing does not stop play progress updates when pausing
+ * web UI: add ability to access the server externally
+ * new: internet radio "Streamurl" options
+ * new: support libevent as WS server instead of libwebsockets
+ * new: template for VSCode
+ * new: mpd updates, version 0.23.0, e.g. getvol, readpicture, albumart
+ * new: API for setting skip_count and play_count directly
+
+-------------------------------------------------------------------
 Tue Oct  8 09:10:27 UTC 2024 - erfan <erfanfrp@gmail.com>
 
 - update to version 28.10
-	* fix: playlist scanner ignoring lines starting with non-ascii chars
-	* fix: last seconds of a track sometimes being skipped
-	* fix: Apple Music password-based auth
-	* fix: missing file scan when modified multiple times within a second
-	* fix: Roku M1001 crash
-	* fix: speakers changing IP addresses (error "Got RR type A size 16")
-	* fix: playlist rename not registered
-	* fix: problems with DAAP and old dates ("Integer value too large")
-	* fix: compability with ffmpeg 7 (fixes build error)
-	* web UI: many smaller improvements, e.g. sort by release date
-	* web UI: traditional Chinese translation
-	* new: ALAC transcoding for RSP/DAAP streaming
-	* new: ability to save id3 metadata
-	* config: change "trusted_networks" to have new value "lan" as default
-	* config: new option to announce a MPD httpd plugin (stream from server)
-	* config: set ipv6 to disabled by default due to unknown Airplay issue
-	* config: deprecate "cache_path", replaced by "cache_dir"
-	* dependency: libxml2 instead of mxml
+ * fix: playlist scanner ignoring lines starting with non-ascii chars
+ * fix: last seconds of a track sometimes being skipped
+ * fix: Apple Music password-based auth
+ * fix: missing file scan when modified multiple times within a second
+ * fix: Roku M1001 crash
+ * fix: speakers changing IP addresses (error "Got RR type A size 16")
+ * fix: playlist rename not registered
+ * fix: problems with DAAP and old dates ("Integer value too large")
+ * fix: compability with ffmpeg 7 (fixes build error)
+ * web UI: many smaller improvements, e.g. sort by release date
+ * web UI: traditional Chinese translation
+ * new: ALAC transcoding for RSP/DAAP streaming
+ * new: ability to save id3 metadata
+ * config: change "trusted_networks" to have new value "lan" as default
+ * config: new option to announce a MPD httpd plugin (stream from server)
+ * config: set ipv6 to disabled by default due to unknown Airplay issue
+ * config: deprecate "cache_path", replaced by "cache_dir"
+ * dependency: libxml2 instead of mxml
 
 -------------------------------------------------------------------
 
