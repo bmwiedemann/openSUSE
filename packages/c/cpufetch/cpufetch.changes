@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 13 12:55:07 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- fix-Makefile.patch: installing a man page with the suffix
+  .gz does not compress it, fix rename during installation. 
+
+-------------------------------------------------------------------
 Tue Oct  1 09:26:11 UTC 2024 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix arm %check:

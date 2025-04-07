@@ -1,0 +1,11 @@
+--- cpufetch-1.06/Makefile.orig	2024-08-18 16:12:27.000000000 +0200
++++ cpufetch-1.06/Makefile	2025-03-13 13:53:43.049026545 +0100
+@@ -116,7 +116,7 @@
+ install: $(OUTPUT)
+ 	install -Dm755 "cpufetch"   "$(DESTDIR)$(PREFIX)/bin/cpufetch"
+ 	install -Dm644 "LICENSE"    "$(DESTDIR)$(PREFIX)/share/licenses/cpufetch-git/LICENSE"
+-	install -Dm644 "cpufetch.1" "$(DESTDIR)$(PREFIX)/share/man/man1/cpufetch.1.gz"
++	install -Dm644 "cpufetch.1" "$(DESTDIR)$(PREFIX)/share/man/man1/cpufetch.1"
+ 
+ uninstall:
+ 	rm -f "$(DESTDIR)$(PREFIX)/bin/cpufetch"

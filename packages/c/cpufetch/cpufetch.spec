@@ -1,7 +1,7 @@
 #
 # spec file for package cpufetch
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Taekyung Kim <gnuykeat.mik@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://github.com/Dr-Noob/%{name}
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - Fix arm tests
 Patch1:         cpufetch-aa94389.patch
+Patch2:         fix-Makefile.patch
 # Supports only x86_64, ARM and PowerPC
 ExclusiveArch:  %{arm} aarch64 x86_64 ppc ppc64 ppc64le
 
