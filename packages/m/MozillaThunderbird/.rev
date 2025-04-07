@@ -5821,4 +5821,14 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>1266906</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>48e2cf1af995fde1d5084287c0b6fb6b</srcmd5>
+    <version>128.9.1</version>
+    <time>1744040190</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird ESR 128.9.1
+  * Added delay to built-in notifications when new profile is
+    created in offline mode</comment>
+    <requestid>1267257</requestid>
+  </revision>
 </revisionlist>

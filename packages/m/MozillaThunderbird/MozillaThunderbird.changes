@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  5 06:04:41 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.9.1
+  * Added delay to built-in notifications when new profile is
+    created in offline mode
+
+-------------------------------------------------------------------
 Thu Apr  3 10:20:02 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to use BuildRequires on clang-devel on Tumbleweed/Factory
