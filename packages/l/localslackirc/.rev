@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4634a1d909b27c6ee6625389a7c15007</srcmd5>
+    <version>1.33+git.1739989938.1a93818</version>
+    <time>1744044059</time>
+    <user>anag_factory</user>
+    <comment>
+
+IRC gateway for slack, running on localhost for one user. This project is a replacement for slack's IRC gateway that they dropped.
+
+One instance of localslackirc connects to one slack account and one IRC client, passing the messages between the two.
+
+localslackirc also supports Rocket.Chat.</comment>
+    <requestid>1267346</requestid>
+  </revision>
+</revisionlist>

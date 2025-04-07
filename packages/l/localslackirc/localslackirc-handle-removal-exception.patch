@@ -1,0 +1,43 @@
+From: Jiri Kosina <jkosina@suse.cz>
+Subject: [PATCH] localslackirc: handle removal exception
+
+Signed-off-by: Jiri Kosina <jkosina@suse.cz>
+---
+ slack.py |   23 +++++++++++++----------
+ 1 file changed, 13 insertions(+), 10 deletions(-)
+
+Index: localslackirc-1.33+git.1739989938.1a93818/slack.py
+===================================================================
+--- localslackirc-1.33+git.1739989938.1a93818.orig/slack.py	2025-02-19 19:32:18.000000000 +0100
++++ localslackirc-1.33+git.1739989938.1a93818/slack.py	2025-03-21 19:57:01.373580021 +0100
+@@ -1057,17 +1057,20 @@
+             except Exception:
+                 ev = None
+ 
+-            if isinstance(ev, (Join, Leave)) and ev.channel in self._get_members_cache:
+-                if isinstance(ev, Join):
+-                    self._get_members_cache[ev.channel].add(ev.user)
+-                else:
+-                    self._get_members_cache[ev.channel].discard(ev.user)
+-            elif isinstance(ev, UserTyping):
+-                await self._annoy(ev)
+-                continue
++            try:
++                if isinstance(ev, (Join, Leave)) and ev.channel in self._get_members_cache:
++                    if isinstance(ev, Join):
++                        self._get_members_cache[ev.channel].add(ev.user)
++                    else:
++                        self._get_members_cache[ev.channel].discard(ev.user)
++                elif isinstance(ev, UserTyping):
++                    await self._annoy(ev)
++                    continue
+ 
+-            if ev:
+-                return ev
++                if ev:
++                    return ev
++            except Exception:
++                ev = None
+ 
+             subt = event.get('subtype')
+ 

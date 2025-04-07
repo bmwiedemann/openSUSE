@@ -1,0 +1,19 @@
+From 93f2ce1199e40a772d89aa6d9de2419e43d612ad Mon Sep 17 00:00:00 2001
+From: Loic Devulder <ldevulder@suse.de>
+Date: Fri, 19 Apr 2019 16:18:14 +0200
+Subject: [PATCH] Replace shebang to force python3
+
+---
+ localslackirc |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: localslackirc-1.33+git.1739989938.1a93818/localslackirc
+===================================================================
+--- localslackirc-1.33+git.1739989938.1a93818.orig/localslackirc	2025-02-19 19:32:18.000000000 +0100
++++ localslackirc-1.33+git.1739989938.1a93818/localslackirc	2025-03-21 19:54:45.253529194 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ # localslackirc
+ # Copyright (C) 2021 Salvo "LtWorf" Tomaselli
+ #

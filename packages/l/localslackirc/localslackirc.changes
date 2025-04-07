@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Fri Mar 21 19:09:15 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 1.33+git.1739989938.1a93818:
+  * sq
+  * New syntax
+  * Parameter changed name -_-'
+  * Bump version
+  * Bump Standards-Version
+  * d/ch
+  * Force current version of websockets for the .deb package
+  * Use new type syntax
+  * Use new API from websockets
+  * CHANGELOG
+- Fix the SPEC file to build again
+
+-------------------------------------------------------------------
+Thu Sep 02 14:15:30 UTC 2021 - dmulder <dmulder@suse.com>
+
+- Update to version 1.12.
+
+-------------------------------------------------------------------
+Fri Apr 19 14:20:11 UTC 2019 - ldevulder <ldevulder@suse.com> - 1.3
+
+- Initial version (v1.3) 

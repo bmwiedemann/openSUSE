@@ -1,0 +1,8 @@
+<package name="localslackirc" project="openSUSE:Factory">
+  <title>IRC gateway for slack and rocket.chat</title>
+  <description>IRC gateway for slack, running on localhost for one user. This project is a replacement for slack's IRC gateway that they dropped.
+
+One instance of localslackirc connects to one slack account and one IRC client, passing the messages between the two.
+
+localslackirc also supports Rocket.Chat.</description>
+</package>
