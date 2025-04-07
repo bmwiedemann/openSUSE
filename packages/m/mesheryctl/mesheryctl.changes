@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr  7 05:21:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.55:
+  * General
+    - Fix: Dry run for un-deploy not working @souvikinator (#13836)
+    - update meshsync and meshkit @amitamrutiya (#14192)
+  * Meshery CLI
+    - fix(ci): update golangci-lint version and go to 1.24
+      @lekaf974 (#14251)
+    - refactor: mesheryctl model command using fetch and list
+      @lekaf974 (#14171)
+    - fix(mesheryctl): prevent panic to raised @lekaf974 (#14169)
+    - update model and component csv files @amitamrutiya (#14207)
+    - fix(mesheryctl-model): parse model.Category.Name as a string
+      to fix b… @lekaf974 (#14196)
+  * Maintenance
+    - fix: fix logout test flakiness @ianrwhitney (#14301)
+    - fix(ci): update golangci-lint version and go to 1.24
+      @lekaf974 (#14251)
+    - Fix: Optimize Playwright Test Performance in CI/CD @vr-varad
+      (#14195)
+    - [Chore] Dockerfile alpine and glibc update @theBeginner86
+      (#14242)
+    - Bump github.com/meshery/schemas from 0.8.5 to 0.8.6
+      @dependabot (#14211)
+    - Bump @babel/eslint-parser from 7.26.8 to 7.27.0 in
+      /provider-ui @dependabot (#14221)
+    - Bump next from 13.5.8 to 15.2.4 in /provider-ui @dependabot
+      (#14219)
+    - feat: added permissions to gh action @ianrwhitney (#14197)
+  * Documentation
+    - Update CLI/UI test contribution docs with Sheet Views
+      @Atharv-16 (#14184)
+    - [Docs] Update contributing-schemas.md @miacycle (#14247)
+    - fix(mesheryctl): prevent panic to raised @lekaf974 (#14169)
+    - docs: add test implementation section in cli e2e contribution
+      guide @lekaf974 (#14106)
+    - feat: add test report to docs site @ianrwhitney (#14198)
+  * Security
+    - [Chore] Bump the containerd version @thealberto (#14250)
+    - [Dependency] Update Go version from 1.21 to 1.23 in go.mod
+      @ritzorama (#14244)
+
+-------------------------------------------------------------------
 Tue Apr  1 06:38:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.54:
