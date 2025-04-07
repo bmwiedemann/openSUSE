@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:03:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.0.1
+  * fix multi_line_output_modes docs (#2096) @xinydev
+  * Ruff rules PT for pytest (#2372) @cclauss
+  * Ruff rules B017, B028, and E203 (#2371) @cclauss
+  * Lint Python code with ruff (#2359) @cclauss
+  * Fix test_find_imports_in_file_error failing on Windows (#2369) @kobarity
+  * Move flake8 settings into pyproject.toml (#2360) @cclauss
+  * Upgrade to uv>=0.6.0 and enable-cache (#2364) @cclauss
+  * Apply some ruff rules (#2353) @cclauss
+  * Add OSError handling in find_imports_in_file (#2331) @kobarity
+  * Link GH as changelog (#2354) @staticdev
+- Update to 6.0.0
+  * Remove support for Python 3.8 (#2327) @DanielNoord
+  * Python 3.13 support (#2306) @mayty
+  * Updates round 3 (#2334) @matthewhughes934
+  * Speed up exists_case_sensitive calls (#2264) @correctmost
+  * nit: Fix deprecation message link (#2220) @syou6162
+  * Ensure that split_on_trailing_comma works with as imports (#2340) @DanielNoord
+  * Black profile: enable magic comma (#2236) @MrMino
+  * Fix google style test (#2336) @DanielNoord
+  * Update line_length and single_line_exclusions in google profile (#2149) @jagapiou
+  * Updates round 2 (#2329) @matthewhughes934
+  * Dependency updates round 1 (#2325) @matthewhughes934
+  * Run pre-commit autoupdate (#2321) @kurtmckee
+  * Allow --diff to be used with --jobs (#2302) @mnakama
+  * wemake has 80 chars hard limit, not 79 (#2241) @sobolevn
+  * Fix errors on main (#2320) @DanielNoord
+  * Fixed syntax error (#2289) @Sergio-prog
+  * fix: typo (#2298) @Rotzbua
+  * Fix sort_reexports code mangling (#2283) @Helveg
+  * fix: correct group by package tokenization (#2136) @glasnt
+  * Fix isort-action usage documentation (#2297) @jamescurtin
+  * Fix CDN for Ace (#2127) @abitrolly
+  * Fix help text (#2229) @stweil
+  * docs: fix spelling mistake (#2249) @cachho
+  * Bump poetry to 2.0.1 (#2341) @DanielNoord
+  * Fix misc unsafe dependencies (#2345) @staticdev
+  * Bump the github-actions group across 1 directory with 5 updates (#2324) @dependabot[bot]
+  * Bump gitpython from 3.1.40 to 3.1.41 (#2223) @dependabot[bot]
+  * Bump jinja2 from 3.1.2 to 3.1.3 (#2224) @dependabot[bot]
+- drop support-pytest-8.patch, merged upstream
+- change source url back to pypi, tests are now included
+- update build-requirements
+- add fix-typo.patch to fix tests
+
+-------------------------------------------------------------------
 Thu Oct 24 11:20:33 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove not needed build dependencies

@@ -650,4 +650,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment>- Remove not needed build dependencies</comment>
     <requestid>1218037</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>74d039530ef050b14f2143d941407894</srcmd5>
+    <version>6.0.1</version>
+    <time>1744044961</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267733</requestid>
+  </revision>
 </revisionlist>
