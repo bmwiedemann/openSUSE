@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.4
+Version:        0.1.6
 Release:        0
 Summary:        Library to control network protocols
 License:        BSD-3-Clause

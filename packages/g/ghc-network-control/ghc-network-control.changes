@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:30:48 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update network-control to version 0.1.6.
+  ## 0.1.6
+
+  * Allowing size 0.
+
+-------------------------------------------------------------------
+Fri Mar 28 07:03:54 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update network-control to version 0.1.5.
+  ## 0.1.5
+
+  * New API: `lookup'` adjusts the target priority.
+  * New API: `LRUCacheRef` stuffs
+  * `insert` rebuilds PSQ when reached the limit.
+
+-------------------------------------------------------------------
 Tue Jan 28 04:36:16 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update network-control to version 0.1.4.
