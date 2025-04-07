@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-lottie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtlottie
 %define tar_name qtlottie-everywhere-src
 %define tar_suffix %{nil}
@@ -28,7 +28,7 @@
 %endif
 #
 Name:           qt6-lottie%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        QML API for rendering graphics and animation
 # LICENSE.GPL3-EXCEPT only applies to the conan recipe which is not used
@@ -37,9 +37,9 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-lottie-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
@@ -72,7 +72,7 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-bodymovin-private-devel
 Summary:        Development files for the Qt 6 Bodymovin library
 Requires:       cmake(Qt6Gui) = %{real_version}
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 # Renamed in 6.2.0
 Provides:       qt6-bodymovin-devel = 6.2.0
 Obsoletes:      qt6-bodymovin-devel < 6.2.0
