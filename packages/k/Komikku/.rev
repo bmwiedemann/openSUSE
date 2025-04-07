@@ -392,4 +392,32 @@
   * [L10n] Updated Bulgarian, Czech, French, Russian and Ukrainian translations (forwarded request 1265287 from rrahl0)</comment>
     <requestid>1265735</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>aad0c719f4c1418663a3787df020d7a4</srcmd5>
+    <version>1.75.0</version>
+    <time>1744044090</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.75.0:
+  * [Servers] ريبر العربي (AR): Disabled
+  * [Servers] 3asq (AR): Disabled
+  * [Servers] Dango Scan (pt_BR): Update
+  * [Servers] DB New Hope (EN/ES/FR): Update
+  * [Servers] Dynasty Reader (EN): Update
+  * [Servers] EZmanga (EN): Ignored chapters with price
+  * [Servers] Mangago (EN): Update
+  * [Servers] Mangaowl (EN): Update
+  * [Servers] MangaReader (EN): Update
+  * [Servers] MangaWorld (IT): Update
+  * [Servers] Manhwa Hentai (EN): Disabled
+  * [Servers] Mint Manga (RU): Disabled
+  * [Servers] Nazarick Scan (pt_BR): Update
+  * [Servers] PhenixScans (FR): Update
+  * [Servers] Reaper Scans (EN): Update
+  * [Servers] Terco Scans (EN): Update
+  * [Servers] Tres Daos (ES): Update
+  * [Servers] View Comics (EN): Update
+  * [Servers] Xoxocomics (EN): Update
+  * [L10n] Updated French and Russian translations (forwarded request 1267200 from rrahl0)</comment>
+    <requestid>1267619</requestid>
+  </revision>
 </revisionlist>
