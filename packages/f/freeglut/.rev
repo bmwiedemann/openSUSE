@@ -321,4 +321,12 @@
     <comment></comment>
     <requestid>964509</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>a58d81ee140cbb30efb98d83ea1c3f04</srcmd5>
+    <version>3.2.2</version>
+    <time>1744040094</time>
+    <user>anag_factory</user>
+    <comment>add freeglut-gcc15.patch from upstream to fix gcc-15 compile time error (forwarded request 1266937 from hsk17)</comment>
+    <requestid>1267042</requestid>
+  </revision>
 </revisionlist>

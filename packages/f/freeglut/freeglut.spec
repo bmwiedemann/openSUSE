@@ -26,6 +26,8 @@ URL:            http://freeglut.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/freeglut/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://downloads.sourceforge.net/openglut/openglut-0.6.3-doc.tar.gz
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch1:         freeglut-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -107,6 +109,7 @@ joystick functions on a wide range of platforms.
 
 %prep
 %setup -q -a1
+%autopatch -p1
 
 %build
 %cmake \
