@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -71,14 +71,18 @@ zsh command line completion support for %{name}.
 %autosetup -p 1 -a 1
 
 %build
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 go build \
    -mod=vendor \
    -buildmode=pie \
+   -tags="osusergo netgo release" \
    -ldflags=" \
-   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.version=%{version} \
-   -X github.com/GoogleContainerTools/skaffold/pkg/skaffold/version.buildDate=${BUILD_DATE}" \
+   -X github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version.version=%{version} \
+   -X github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version.gitCommit=${COMMIT_HASH} \
+   -X github.com/GoogleContainerTools/skaffold/v2/pkg/skaffold/version.buildDate=${BUILD_DATE}" \
    -o bin/%{name} ./cmd/%{name}
 
 %install
