@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-location
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtlocation-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,25 +30,25 @@
 %global __requires_exclude qt6qmlimport\\(MapViewer\\)
 #
 Name:           qt6-location%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Location plugins and libraries
 License:        GPL-3.0-or-later
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-location-rpmlintrc
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-quick-private-devel
-BuildRequires:  qt6-positioning-private-devel
-BuildRequires:  qt6-positioningquick-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
-BuildRequires:  cmake(Qt6QuickShapesPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Positioning) = %{real_version}
+BuildRequires:  cmake(Qt6PositioningPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6PositioningQuick) = %{real_version}
+BuildRequires:  cmake(Qt6PositioningQuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QuickShapesPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
 BuildRequires:  cmake(Qt6Test) = %{real_version}
@@ -84,7 +84,11 @@ Development files for the Qt 6 Location library.
 
 %package -n qt6-location-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Location Library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Location) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
+Requires:       cmake(Qt6PositioningPrivate) = %{real_version}
+Requires:       cmake(Qt6PositioningQuickPrivate) = %{real_version}
 
 %description -n qt6-location-private-devel
 This package provides private headers of libQt6Location that do not have any
@@ -137,6 +141,7 @@ rm %{buildroot}%{_qt6_cmakedir}/Qt6Location/*Plugin*.cmake
 %exclude %{_qt6_includedir}/QtLocation/%{real_version}
 
 %files -n qt6-location-private-devel
+%{_qt6_cmakedir}/Qt6LocationPrivate/
 %{_qt6_includedir}/QtLocation/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_location_private.pri
 

@@ -143,4 +143,12 @@
     <comment>- Ignore private QML imports</comment>
     <requestid>1251584</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8f300cce83e67dd20cd5ad188c4b7a01</srcmd5>
+    <version>6.9.0</version>
+    <time>1744040162</time>
+    <user>anag_factory</user>
+    <comment>Qt 6.9.0</comment>
+    <requestid>1266645</requestid>
+  </revision>
 </revisionlist>
