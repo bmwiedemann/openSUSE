@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnslib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-dnslib
-Version:        0.9.25
+Version:        0.9.26
 Release:        0
 Summary:        Simple library to encode/decode DNS wire-format packets
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/paulc/dnslib
 Source:         https://files.pythonhosted.org/packages/source/d/dnslib/dnslib-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +41,10 @@ Simple library to encode/decode DNS wire-format packets.
 sed -i '1{/^#!/d}' dnslib/test_decode.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +53,7 @@ sed -i '1{/^#!/d}' dnslib/test_decode.py
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dnslib
+%{python_sitelib}/dnslib-%{version}.dist-info
 
 %changelog
