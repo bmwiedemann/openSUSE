@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtquick3d-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example).*
+%global __requires_exclude qt6qmlimport\\((Quick3DAssets|VirtualAssistant\\.Constants|robotassistant|.*Example|xr_shared).*
 #
 Name:           qt6-quick3d%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        API for creating 3D content and 3D user interfaces based on Qt Quick
 License:        GPL-3.0-only
@@ -39,22 +39,22 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-quick3d-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
 BuildRequires:  qt6-quicktimeline-private-devel
-BuildRequires:  qt6-shadertools-private-devel
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 # Only needed if QT_FEATURE_qml_debug is enabled
 # BuildRequires:  cmake(Qt6PacketProtocolPrivate)
 BuildRequires:  cmake(Qt6QuickTimeline) = %{real_version}
 BuildRequires:  cmake(Qt6ShaderTools) = %{real_version}
+BuildRequires:  cmake(Qt6ShaderToolsPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
 BuildRequires:  cmake(assimp) >= 5.1.0
 BuildRequires:  pkgconfig(zlib)
@@ -90,12 +90,12 @@ Development files for the Qt 6 Quick3D library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3D library
-Requires:       qt6-quick3druntimerender-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3D) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-qml-private-devel
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description private-devel
 This package provides private headers of libQt6Quick3D that do not have any
@@ -125,9 +125,9 @@ Development files for the Qt 6 Quick3DAssetImport library.
 
 %package -n qt6-quick3dassetimport-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DAssetImport library
-Requires:       qt6-quick3dutils-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DAssetImport) = %{real_version}
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6Quick3DUtilsPrivate) = %{real_version}
 
 %description -n qt6-quick3dassetimport-private-devel
 This package provides private headers of libQt6Quick3DAssetImport that do not
@@ -142,14 +142,14 @@ The Qt 6 Quick3DAssetUtils library.
 %package -n qt6-quick3dassetutils-devel
 Summary:        Qt6 Quick3DAssetUtils library - Development files
 Requires:       libQt6Quick3DAssetUtils6 = %{version}
-Requires:       qt6-quick3d-private-devel = %{version}
-Requires:       qt6-quick3dassetimport-private-devel = %{version}
-Requires:       qt6-quick3druntimerender-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
 Requires:       cmake(Qt6Quick3D) = %{real_version}
 Requires:       cmake(Qt6Quick3DAssetImport) = %{real_version}
+Requires:       cmake(Qt6Quick3DAssetImportPrivate) = %{real_version}
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
 Requires:       cmake(Qt6QuickTimeline) = %{real_version}
 
 %description -n qt6-quick3dassetutils-devel
@@ -157,13 +157,13 @@ Development files for the Qt 6 Quick3DAssetUtils library.
 
 %package -n qt6-quick3dassetutils-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DAssetUtils library
-Requires:       qt6-quick3d-private-devel = %{version}
-Requires:       qt6-quick3dassetimport-private-devel = %{version}
-Requires:       qt6-quick3druntimerender-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6Quick3DAssetImportPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DAssetUtils) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-quicktimeline-private-devel
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickTimelinePrivate) = %{real_version}
 
 %description -n qt6-quick3dassetutils-private-devel
 This package provides private headers of libQt6Quick3DAssetUtils that do not
@@ -178,9 +178,9 @@ The Qt 6 Quick3DEffects library.
 %package -n qt6-quick3deffects-devel
 Summary:        Qt6 Quick3DEffects library - Development files
 Requires:       libQt6Quick3DEffects6 = %{version}
-Requires:       qt6-quick3d-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
 
 %description -n qt6-quick3deffects-devel
 Development files for the Qt 6 Quick3DEffects library.
@@ -194,9 +194,9 @@ The Qt 6 Quick3DHelpers library.
 %package -n qt6-quick3dhelpers-devel
 Summary:        Qt6 Quick3DHelpers library - Development files
 Requires:       libQt6Quick3DHelpers6 = %{version}
-Requires:       qt6-quick3d-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
 
 %description -n qt6-quick3dhelpers-devel
 Development files for the Qt 6 Quick3DHelpers library.
@@ -218,9 +218,9 @@ The Qt 6 Quick3DHelpersImpl library.
 %package -n qt6-quick3dhelpersimpl-devel
 Summary:        Qt6 Quick3DHelpersImpl library - Development files
 Requires:       libQt6Quick3DHelpersImpl6 = %{version}
-Requires:       qt6-quick3d-private-devel = %{version}
 Requires:       cmake(Qt6Qml) = %{real_version}
 Requires:       cmake(Qt6Quick) = %{real_version}
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
 
 %description -n qt6-quick3dhelpersimpl-devel
 Development files for the Qt 6 Quick3DHelpersImpl library.
@@ -251,9 +251,9 @@ Development files for the Qt 6 Quick3DIblBaker library.
 
 %package -n qt6-quick3diblbaker-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DIblBaker library
-Requires:       qt6-quick3druntimerender-private-devel = %{version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DIblBaker) = %{real_version}
-%requires_eq    qt6-gui-private-devel
+Requires:       cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
 
 %description -n qt6-quick3diblbaker-private-devel
 This package provides private headers of libQt6Quick3DIblBaker that do not
@@ -276,14 +276,14 @@ Development files for the Qt 6 Quick3DParticles library.
 
 %package -n qt6-quick3dparticles-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DParticles library
-Requires:       qt6-quick3d-private-devel = %{version}
-Requires:       qt6-quick3dassetimport-private-devel = %{version}
-Requires:       qt6-quick3druntimerender-private-devel = %{version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
+Requires:       cmake(Qt6Quick3DAssetImportPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DParticles) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-qml-private-devel
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6Quick3DPrivate) = %{real_version}
+Requires:       cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-quick3dparticles-private-devel
 This package provides private headers of libQt6Quick3DParticles that do not
@@ -328,10 +328,10 @@ Development files for the Qt 6 Quick3DRuntimeRender library.
 
 %package -n qt6-quick3druntimerender-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DRuntimeRender library
-Requires:       qt6-quick3dutils-private-devel = %{version}
 Requires:       cmake(Qt6Quick3DRuntimeRender) = %{real_version}
-%requires_eq    qt6-quick-private-devel
-%requires_eq    qt6-shadertools-private-devel
+Requires:       cmake(Qt6Quick3DUtilsPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
+Requires:       cmake(Qt6ShaderToolsPrivate) = %{real_version}
 
 %description -n qt6-quick3druntimerender-private-devel
 This package provides private headers of libQt6Quick3DRuntimeRender that do not
@@ -354,10 +354,10 @@ Development files for the Qt 6 Quick3DUtils library.
 
 %package -n qt6-quick3dutils-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Quick3DUtils library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6Quick3DUtils) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-quick-private-devel
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 
 %description -n qt6-quick3dutils-private-devel
 This package provides private headers of libQt6Quick3DUtils that do not have any
@@ -402,7 +402,7 @@ This library does not have any ABI or API guarantees.
 %ifarch x86_64 %{x86_64} aarch64
 %package -n qt6-bundledembree-devel-static
 Summary:        Qt6 BundledEmbree static library
-%requires_eq    qt6-core-private-devel
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 
 %description -n qt6-bundledembree-devel-static
 The Qt6 BundledEmbree static library.
@@ -445,6 +445,8 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin*.cmake
 # There's no private api
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3deffects_private.pri
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticleeffects_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Quick3DEffectsPrivate
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Quick3DParticleEffectsPrivate
 
 # Probably unneeded
 rm %{buildroot}%{_qt6_cmakedir}/Qt6/FindWrapBundledOpenXRConfigExtra.cmake
@@ -510,6 +512,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3D/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6Quick3DPrivate/
 %{_qt6_includedir}/QtQuick3D/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3d_private.pri
 
@@ -528,6 +531,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DAssetImport/%{real_version}
 
 %files -n qt6-quick3dassetimport-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DAssetImportPrivate/
 %{_qt6_includedir}/QtQuick3DAssetImport/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetimport_private.pri
 
@@ -546,6 +550,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DAssetUtils/%{real_version}
 
 %files -n qt6-quick3dassetutils-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DAssetUtilsPrivate/
 %{_qt6_includedir}/QtQuick3DAssetUtils/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dassetutils_private.pri
 
@@ -576,6 +581,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DHelpers/%{real_version}
 
 %files -n qt6-quick3dhelpers-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DHelpersPrivate/
 %{_qt6_includedir}/QtQuick3DHelpers/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpers_private.pri
 
@@ -594,6 +600,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DHelpersImpl/%{real_version}
 
 %files -n qt6-quick3dhelpersimpl-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DHelpersImplPrivate/
 %{_qt6_includedir}/QtQuick3DHelpersImpl/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dhelpersimpl_private.pri
 
@@ -612,6 +619,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DIblBaker/%{real_version}
 
 %files -n qt6-quick3diblbaker-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DIblBakerPrivate/
 %{_qt6_includedir}/QtQuick3DIblBaker/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3diblbaker_private.pri
 
@@ -630,6 +638,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DParticles/%{real_version}
 
 %files -n qt6-quick3dparticles-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DParticlesPrivate/
 %{_qt6_includedir}/QtQuick3DParticles/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dparticles_private.pri
 
@@ -660,6 +669,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DRuntimeRender/%{real_version}
 
 %files -n qt6-quick3druntimerender-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DRuntimeRenderPrivate/
 %{_qt6_includedir}/QtQuick3DRuntimeRender/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3druntimerender_private.pri
 
@@ -678,6 +688,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %exclude %{_qt6_includedir}/QtQuick3DUtils/%{real_version}
 
 %files -n qt6-quick3dutils-private-devel
+%{_qt6_cmakedir}/Qt6Quick3DUtilsPrivate/
 %{_qt6_includedir}/QtQuick3DUtils/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_quick3dutils_private.pri
 
@@ -687,6 +698,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6BundledOpenXR
 %files -n qt6-quick3dxr-private-devel
 %{_qt6_cmakedir}/Qt6/FindWrapSystemOpenXR.cmake
 %{_qt6_cmakedir}/Qt6Quick3DXr/
+%{_qt6_cmakedir}/Qt6Quick3DXrPrivate/
 %{_qt6_descriptionsdir}/Quick3DXr.json
 %{_qt6_includedir}/QtQuick3DXr/
 %{_qt6_libdir}/libQt6Quick3DXr.prl
