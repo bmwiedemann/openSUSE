@@ -94,4 +94,14 @@ bugowner: varkoly</comment>
   - Many bugs have been fixed.</comment>
     <requestid>1265313</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b3c4b4eb9289d5553ab2aff1e89b8b6e</srcmd5>
+    <version>2.4.1</version>
+    <time>1744040241</time>
+    <user>anag_factory</user>
+    <comment>- Fix bsc#1240399 dovecot24 has incomplete config.
+  Ignore the broken config in the sources and deliver a minimal
+  configuration for the system users.</comment>
+    <requestid>1267353</requestid>
+  </revision>
 </revisionlist>

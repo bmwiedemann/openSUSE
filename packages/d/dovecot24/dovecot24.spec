@@ -67,6 +67,7 @@ Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dove
 Source12:       dovecot24.keyring
 Source13:       dovecot-2.4.configfiles
 Source14:       dovecot-2.4-pigeonhole.configfiles
+Source15:       dovecot.conf
 # PATCH-FIX-OPENSUSE - boo#932386
 Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 # PATCH-FIX-OPENSUSE - use lua-dkjson instead of lua-json
@@ -365,24 +366,8 @@ install -m 0755 -Dd \
   %{buildroot}%{_var}/run/%{pkg_name}/login/ \
   %{buildroot}%{_var}/lib/%{pkg_name}/
 
-install -D -m 0644 doc/dovecot.conf %{buildroot}%{_docdir}/%{pkg_name}/example-config/
-
-# install the script to create dummy selfsigned certs
-pushd %{buildroot}%{_docdir}/%{pkg_name}/
-chmod +x mkcert.sh
-mv -v {*.cnf,mkcert.sh,example-config} ../../../%{pkg_name}/
-
-install -m 755 -d example-config/{,conf.d/}
-ln -sv ../../../%{pkg_name}/{*.cnf,mkcert.sh} .
-cd example-config/
-ln -sv \
-    ../../../../%{pkg_name}/example-config/*conf \
-  .
-cd conf.d/
-ln -sv \
-    ../../../../../%{pkg_name}/example-config/conf.d/* \
-  .
-popd
+install -D -m 0644 %{S:15} %{buildroot}%{_datadir}/%{pkg_name}/
+install -m 0755 %{buildroot}%{_docdir}/%{pkg_name}/mkcert.sh  %{buildroot}%{_datadir}/%{pkg_name}/
 
 # additional docs for the main package
 install -m 0644 \
@@ -580,9 +565,8 @@ fi
 %{_libdir}/%{pkg_name}/modules/sieve/lib90_sieve_imapsieve_plugin.so
 #
 %dir %{_datadir}/%{pkg_name}/
-%{_datadir}/%{pkg_name}/*.cnf
+%{_datadir}/%{pkg_name}/*.conf
 %{_datadir}/%{pkg_name}/mkcert.sh
-%{_datadir}/%{pkg_name}/example-config
 %{_mandir}/man1/deliver.1%{?ext_man}
 %{_mandir}/man1/doveadm-acl.1%{?ext_man}
 %{_mandir}/man1/doveadm-altmove.1%{?ext_man}
