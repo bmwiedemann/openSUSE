@@ -1,0 +1,376 @@
+-------------------------------------------------------------------
+Mon Apr 07 13:54:44 UTC 2025 - shundhammer@suse.com
+
+- Update to version 0.9.3:
+  * Change log and version bump
+  * Version bump to 0.9.3
+  * No ellipsis
+  * Don't need root privileges anymore for a solver test case
+  * Improved generating a resolver test case
+  * Inform user about post-trans scripts
+  * Fixed margins
+  * More reliable file conflict progress dialog closing
+  * Indentation
+  * Get rid of leftover file conflicts dialog
+  * Don't show automatic pkg changes popup if the user sees them in the main window already
+  * Enabled package metadata translations (Closes #3)
+  * Use the more reliable server
+  * Require Qt 6.5
+  * Typo / wording
+  * Intercept Ctrl+Left / Ctrl+Right (Closes #84)
+  * Migrated remnants of the old logger to the new one
+  * Log duration of pkg update / dist upgrade
+  * Removed redundant include
+  * Don't consider protected packages as updatable
+  * Handle unexpected pkg states when marking leftovers
+  * Slight wording changes
+  * Show pkg/dist update success or failure with an icon
+  * New icons: Sad and sick smiley
+  * Log the used fonts
+  * Use a dedicated heading font
+  * Instant feedback when needing to quit from repo config
+  * Consistency
+
+-------------------------------------------------------------------
+Sat Apr  5 14:23:21 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Require libQt6Svg6 at runtime to load SVG icons (#86)
+
+-------------------------------------------------------------------
+Fri Mar 14 13:13:04 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.9.2:
+  * Build without a RUNPATH (#80)
+  * Fixed rpmlint complaint
+  * Updated service file to latest tag
+  * Obsolete accidential version 9.0.1
+  * Change log
+  * Typo
+  * Restored old sort-by-column behavior (Closes #75)
+  * Show details by default on commit page
+  * Updated build docs
+  * Ease the pain with g++10 on Leap 15.x a little (#78)
+  * Tell user to clear the CMake cache when switching compilers
+  * Fixed YET ANOTHER CMake complaint
+  * Check for presence of the 'filesystem' header (issue #78)
+  * Removed cruft
+  * Fixed Qt6 complaints about QMessageBox buttons
+  * Default to enabled sorting
+  * Enable sorting the package list
+  * Explicitly ignore a QCloseEvent handled by a widget directly (Closes #77)
+  * Require only Qt6Svg6 at runtime
+  * Require Qt6
+  * Version bump
+  * Added a one pixel border around the status icons
+  * [qt 6] Replace deprecate QMenu::addAction
+  * [qt 6] Replace deprecated QRegularExpression::AnchoredMatchOption
+  * Add some missing override's
+  * [qt 6] Replace deprecated QMouseEvent::globalPos()
+  * Removed cruft
+  * Fixed icon name
+  * Coding style (how hard can it be, WTF?)
+  * Fixed nonsensical naming
+  * Log DPI settings
+  * Coding style
+  * Fixed icon handling: Check for QPixmap::isNull(), not nullptr
+  * Coding style
+  * Fixed Qt resource handling in CMake
+  * Use operator| instead of + for creating QKeySequence
+  * Fix formatErrno() to properly convert from int to QString
+  * YQIconPool: Do not add bools
+  * [cmake] Workflow-tester compiled with Qt 6
+  * QSetting always assumes UTF-8 encoding
+  * [cmake] Migration from Qt 5 to Qt 6
+  * Removed redundant connect() that causes errors in Qt 6 (Closes #75)
+  * Deactivate setSource() which is no longer virtual in Qt 6
+  * Allow deprecated warnings
+  * Transition to std::ofstream-based logger (Closes #70)
+  * Get it to compile with the new std::ofstream-based logger
+  * Use std::ofstream for logger, not QTextStream
+  * Whitespace cleanup
+  * typo
+  * Version bump to 9.0.1
+  * Direct links to RPMs for other distros
+  * Direct link to RPM download directory
+  * Leftovers of old application name
+  * Added link to repo config doc to help menu
+  * Added reference to repon config doc issue
+  * More precise screenshot cut-out
+  * Added latest screenshots to home page
+  * About dialog window title
+
+-------------------------------------------------------------------
+Mon Feb 10 14:28:37 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.9.1:
+  * Version bump
+  * Updated features in README.md
+  * New screenshots: Repo config, add community repo
+  * Warn about pending changes and needing to restart
+  * Less verbose logging
+  * Restart if needed also with WM_CLOSE + less debug logging
+  * Use better repo aliases
+  * Use currentItemChanged(), not itemClicked() signal
+  * Implemented adding community repos
+  * New class for base product info
+  * Enable double click on fields in the repo table
+  * Fixed mouse double click handler
+  * Implemented deleting repos
+  * Coding style + added missing override
+  * Added missing override
+  * Added missing override
+  * Removed dead code that didn't actually override a parent class method
+  * Handle WM_CLOSE as QDialog::reject() in repo dialogs
+  * Added missing override
+  * Repo add/edit: Show expanded repo URL only if different from raw URL
+  * Enforce restart if repos changed
+  * First successfully added repo
+  * Simplify add/edit repo dialog
+  * Removed debugging code
+  * Reverted to sorting the 'to do' list on the PkgCommit page
+  * Target / base product details
+  * Read-only mode in repo config
+  * Added runningAsRealRoot()
+  * Made dangerous actions less easy to execute by accident
+  * Removed arcane menu action that no user ever understood
+  * Removed obsolete FIXMEs
+  * Replace while loops that are actual for loops
+  * Remove two unused typedefs
+  * Use range-based for loop
+  * First edit / add repo dialog (still incomplete)
+  * Show raw URL as well
+  * Prio column alignment and right margin
+  * Whitespace cleanup
+  * Less debug logging
+  * Fixed crashes
+  * Coding style
+  * Fixed misleading summary in .spec
+  * Updated tag in service file
+  * Version bump and change log
+  * RepoConfigDialog starts doing things (and crashes)
+  * First RepoConfigDialog
+  * Fixed headers
+  * Fill RepoTable with content
+  * Use const &
+  * Moved typedef ZyppRepoInfo to central header
+  * Coding style
+  * New multi-column table for repos
+  * Added missing 'override' + coding style
+  * Fixing includes
+  * Fixed headers
+  * Repo list: More concise tooltip + removed dead code
+  * 'const bool' as a function parameter doesn't make any sense
+
+-------------------------------------------------------------------
+Fri Jan 31 07:30:06 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.8.05:
+  * Version bump and change log
+  * YQPkgFilterTab: Make YQPkgFilterTabPrivate a class for consistency
+  * PkgTasks: Fix broken calculation of byUser() and byDependency()
+  * Add missing override's
+  * typo
+  * Feature status update
+  * Feature status update
+  * Status filter view fine tuning
+  * Replace Qt resource icons with icons from the desktop theme (Closes #63)
+  * Use a QGroupBox instead of a QFormLayout (#63)
+  * Use std::shared_ptr from zypp:: instead of boost::
+  * Use std::shared_ptr from C++11 instead of Boost
+  * Remove ImplPtr and replace its only use by const std::unique_ptr
+  * PkgCommit: Show number of task items in list headers
+  * Removed unused method
+  * Latest features / fixes
+  * Smaller timeout for connecting to libzypp
+  * Member variable cleanup + consistent initialization
+  * Don't read or write /etc/sysconfig/yast anymore (Closes #39)
+  * Prepare configuring repos
+  * Use Ctrl+Shift+... to change filter views
+  * Unneeded includes
+  * Got rid of bullshit fields in technical details
+  * Removed cruft
+  * Yet another keyboard shortcut for symmetry
+  * Less debug logging
+  * Fixed outdated doc
+  * Fixed ambiguous shortcuts + killed patch menu
+  * Added global Ctrl+?? shortcuts for the filter view pages
+  * Refactored filter view tab menu action handling
+  * Removed unused member variable
+  * Updated service file to latest stable release
+
+-------------------------------------------------------------------
+Wed Jan 22 12:42:11 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.8.04:
+  * Change log and version bump
+  * Keyboard focus in the search field whenever switching to the search page
+  * Superfluous forward declaration
+  * Trying to fix build failure on 15.6 (What build failure?)
+  * New screenshot
+  * Updated screenshots
+  * Myrlyn Minor begone spell
+  * Let the little Myrlyn do at least a little magic (Closes #61)
+  * Replace Qt-style foreach by C++11 range-based for loop
+  * Use range-based for loops instead of while loops
+  * YQPkgDescriptionView: Ensure range-based for loop does not detach
+  * Clean up of includes
+  * Dialog window title, size grip, modality
+  * Change log
+  * Disable repo for this program run if user rejects importing GPG key (Closes #6)
+  * Ask the user to import a repo GPG key (issue #6)
+  * First rudimentary GPG key ring callbacks
+  * Close possibly leftover file conflicts progress dialog
+  * Default window position centered on MainWindow
+  * License cache for already confirmed licenses
+  * Better error handling for download / install errors
+  * Fixed zypp download problem callback override
+  * Fixed typo (Closes #59)
+  * Fixed typo (Closes #59)
+  * Wording
+  * Wording
+  * Fixed initial filter page
+  * Latest feature
+  * Unneeded include
+  * Markdown formatting
+  * No longer WIP
+
+-------------------------------------------------------------------
+Wed Jan 15 15:30:56 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.8.03:
+  * Version bump
+  * Added comments to .desktop files
+  * Just 'Myrlin' as the desktop entry name (requested by Lubos)
+  * Initial selection in patch filter view
+  * Show the number of patches and updates in the tab label
+  * Support for more info about update packages
+  * Force showing patches if there are any needed ones
+  * Support for more general info about patches
+  * Unneeded includes
+  * Coding style
+  * Added new patch category to silence the complaints in the logs
+  * Removed obsolete PkgSel flags and modes
+  * Reset patch filter view + code cleanup
+  * Removed dead code
+  * Reset package selector when going back (Closes #11)
+  * Removed unused variable
+  * typo
+  * Dropped non-transparent Myrlyn artwork
+  * Dropped non-transparent Myrlyn artwork
+  * No more non-transparent Myrlyn artwork
+  * Dropped non-transparent Myrlyn artwork
+  * Made the "alpha" artwork versions without background the default
+  * Little fixes + wording
+  * More screenshots
+  * Markdown formatting
+  * Added screenshots
+  * New screenshots
+  * Added screenshots
+  * New figlet header after project rename
+  * Fixed copyright line whitespace
+  * New figlet header after project rename
+  * Typo + spacers
+  * Project rename YQPkg -> Myrlyn
+  * Replace while loop by range-based for-loop
+  * Declare YQPkgFilterPage consistently as a class, not a structs
+  * YQPkgLangList: Remove set but unused variables
+  * YQPkgList: Add missing override keywords
+  * QY2ListView: Remove unused variable
+  * No markdown
+  * Coding style
+  * Added "About" dialog
+  * Killed horrendously outdated old help texts
+  * Prepare to disable the logo if needed
+  * Added logo in package selector tab bar top right corner
+  * Install LICENSE to license dir, not doc dir
+  * Don't install Contributing.md
+  * Consistent compression method
+  * Fixed doc files in .spec
+  * Use background-less Myrlyn logo
+  * Generated smaller versions of Myrlin-alpha
+  * Imported the background-less Myrlin from @armync
+  * Use .png extension for icon
+  * Fixed .desktop dest dir
+  * Install program icons
+  * [cmake] Install desktop files and Myrlyn icons
+  * [cmake] Install LICENSE, readme, Contributing files
+  * Use busy cursor during init
+  * Use more common hotkeys
+  * Default to 30 sec countdown on the summary page, not 10
+  * Imported DimStar77's .spec file changes
+  * Added "Linux"
+  * Remove declaration of unused and nonexistent function bsearch
+  * Use lowercase for .desktop names
+  * Fixed executable name
+  * Don't use @... macro
+  * Fixed binary name
+
+-------------------------------------------------------------------
+Mon Jan 13 14:29:51 UTC 2025 - ecsos@opensuse.org
+
+- Change to offical latest stable version from source.
+- Fix service file, so we use latest version and not git master.
+- Fix one rpmlint error.
+
+-------------------------------------------------------------------
+Thu Jan  9 15:59:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.02+8:
+  * Added "Linux"
+  * Remove declaration of unused and nonexistent function bsearch
+  * Use lowercase for .desktop names
+  * Fixed executable name
+  * Don't use @... macro
+  * Fixed binary name
+
+-------------------------------------------------------------------
+Thu Jan 09 15:32:23 UTC 2025 - dimstar@opensuse.org
+
+- Update to version 0.8.02+4:
+  * Use lowercase for .desktop names
+  * Fixed executable name
+
+-------------------------------------------------------------------
+Thu Jan 09 15:07:40 UTC 2025 - dimstar@opensuse.org
+
+- Update to version 0.8.02+2:
+  * Renamed to Myrlyn
+
+-------------------------------------------------------------------
+Thu Jan 09 10:33:14 UTC 2025 - ecsos@opensuse.org
+
+- Update to version 0.8.01
+  * Version bump to 0.8.01
+- Changes from 0.8.0
+  * Added both root and on-root .desktop files
+
+-------------------------------------------------------------------
+Tue Dec 24 10:28:45 UTC 2024 - ecsos@opensuse.org
+
+- Update to version endofhackweek24+git20241223.4ee388b:
+  * Build requirements
+  * Leftover from libyui
+  * Cleaned up .spec file
+  * Scroll downloads list to top when starting to install packages
+  * Added size hint
+  * Don't believe libzypp when it says there is nothing to do
+
+-------------------------------------------------------------------
+Mon Dec 23 19:19:00 UTC 2024 - ecsos@opensuse.org
+
+- Update to version end-of-hack-week-24+git:
+  * Implemented first version of 'zypper dup' / 'zypper up' equivalent (issue #7)
+  * Added global packages update / dist-upgrade
+  * Fixed coding style (how hard can that be?)
+  * Fixed indentation (how hard can that be?)
+  * Whitespace cleanup
+  * Check pointers BEFORE they are used, not after
+  * Allow sorting languages
+  * New Contributing.md doc imported from QDirStat
+  * Coding style
+  * Coding style + brought 'selectSomething()' back to life
+
+-------------------------------------------------------------------
+Mon Dec 23 19:16:45 UTC 2024 - ecsos <ecsos@opensuse.org>
+
+- Initial version 0.7.0

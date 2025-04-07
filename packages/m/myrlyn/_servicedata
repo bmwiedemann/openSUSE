@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/shundhammer/yqpkg.git</param>
+              <param name="changesrevision">ca8bd11aa2729b40fa14e5e7131f3e7506962260</param></service><service name="tar_scm">
+                <param name="url">https://github.com/shundhammer/myrlyn.git</param>
+              <param name="changesrevision">de63ea8d1d0260853dae9ba2fa6200fcf70946b7</param></service></servicedata>
