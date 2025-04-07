@@ -1,0 +1,42 @@
+From eebaa3b69efd9e3d218f3436dc43ff3340020ef5 Mon Sep 17 00:00:00 2001
+From: Alexey Gladkov <legion@kernel.org>
+Date: Fri, 3 Jan 2025 12:54:18 +0100
+Subject: [PATCH] Restore the old behavior when using gzip
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Commit b2f454b ("Add option to control keymaps compression") removed -n
+option from gzip invocation, the absence of which makes gzip write file
+timestamps into compressed .gz files. These timestamps vary from one
+build to another, and so the resulting installed .gz files are
+non-reproducible.
+
+Since not all archivers understand this option it is impossible to add
+it for all archivers by default.
+
+But we can bring back the default behavior (the case where no configure
+options were specified) by using “gzip -n” as the archiver.
+
+Link: https://github.com/legionus/kbd/issues/124
+Fixes: b2f454bd ("Add option to control keymaps compression")
+Signed-off-by: Alexey Gladkov <legion@kernel.org>
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5e951815..33a9afad 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -188,8 +188,8 @@ AC_ARG_ENABLE(compress,
+ 	[enable_compress=$enableval], [enable_compress=auto])
+ 
+ AS_IF([test "x$enable_compress" = xno],   [],
+-      [test "x$enable_compress" = xyes],  [AC_CHECK_PROGS([COMPRESS_PROG], [zstd xz bzip2 gzip])],
+-      [test "x$enable_compress" = xauto], [AC_CHECK_PROGS([COMPRESS_PROG], [gzip])],
++      [test "x$enable_compress" = xyes],  [AC_CHECK_PROGS([COMPRESS_PROG], [zstd xz bzip2 "gzip -n"])],
++      [test "x$enable_compress" = xauto], [AC_CHECK_PROGS([COMPRESS_PROG], ["gzip -n"])],
+       [AC_CHECK_PROGS([COMPRESS_PROG], ["$enable_compress"])])
+ AM_CONDITIONAL(ENABLE_COMPRESS, test "x$COMPRESS_PROG" != "x")
+ 

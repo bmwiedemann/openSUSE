@@ -61,6 +61,8 @@ Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 Patch14:        kbdsettings-nox86.patch
 # PATCH-FIX-SLE kbd-unicode-fxxx.patch sbrabec@suse.com bsc1085432 -- Do not cause error on UNICODE characters >= 0xF000 (e. g. ligature fi)
 Patch15:        kbd-unicode-fxxx.patch
+# PATCH-FIX-UPSTREAM bsc#1240348 -- for reproducible builds
+Patch16:        https://github.com/legionus/kbd/commit/eebaa3b69efd9e3d218f3436dc43ff3340020ef5.patch#/kbd-2.7.1-reproducible-gzip.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
