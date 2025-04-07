@@ -106,4 +106,41 @@
   * feat: add air lsp (forwarded request 1247962 from rrahl0)</comment>
     <requestid>1247963</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7545d9a143a849e48fbe1223dcf3e599</srcmd5>
+    <version>1.8.0</version>
+    <time>1744044087</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * fix!: remove lua as root marker
+  * fix(rust_analyzer): fix broken rust analyzer link
+  * fix(sourcekit): use textDocument/diagnostic over publishDiagnostics
+  * refactor(docgen): use vim.text.indent()
+  * fix(docgen): root_dir doc shows paths from CI env
+  * Update bacon_ls.lua to reflect new configuration
+  * chore(bazelrc_lsp): Invoke lsp subcommand explicitly
+  * fix(postgresql_lsp): update command to use lsp-proxy argument
+  * gleam: fix broken installation description
+  * feat: add systemd-language-server
+  * fix: rename systemd-language-server to systemd_ls
+  * Chore and doc tweaks to QML-related LSPs
+  * feat: muon
+  * fix(tailwindcss): improved tailwindcss detection
+  * fix(ltex_plus): add latex to enabled settings
+  * feat: postgrestools
+  * fix(biome): improved biomejs detection
+  * fix(golangci-lint): fix typo in commang argument
+  * feat: alias :LspInfo to :checkhealth vim.lsp
+  * feat: vectorcode-server
+  * fix(golangci-lint): disable stats in json output
+  * fix: &quot;:checkhealth lspconfig&quot; fails on Nvim 0.11
+  * fix(postgres_lsp): re-enable single file support
+  * Update wgsl-analyzer docs to correct install instructions
+  * fix(sourcekit): URL &amp; add dynamic reg. for didChangeWatchedFiles
+  * fix(docgen): regenerate configs.txt with correct :help format
+  * fix(docgen): :help (vimdoc) format
+  * feat(ada_ls): update documentation and support alire.toml files
+  * fix(tblgen): find tablegen_compile_commands.yml (forwarded request 1267416 from rrahl0)</comment>
+    <requestid>1267417</requestid>
+  </revision>
 </revisionlist>

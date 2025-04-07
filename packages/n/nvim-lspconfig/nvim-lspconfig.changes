@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Apr  6 15:15:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.8.0:
+  * fix!: remove lua as root marker
+  * fix(rust_analyzer): fix broken rust analyzer link
+  * fix(sourcekit): use textDocument/diagnostic over publishDiagnostics
+  * refactor(docgen): use vim.text.indent()
+  * fix(docgen): root_dir doc shows paths from CI env
+  * Update bacon_ls.lua to reflect new configuration
+  * chore(bazelrc_lsp): Invoke lsp subcommand explicitly
+  * fix(postgresql_lsp): update command to use lsp-proxy argument
+  * gleam: fix broken installation description
+  * feat: add systemd-language-server
+  * fix: rename systemd-language-server to systemd_ls
+  * Chore and doc tweaks to QML-related LSPs
+  * feat: muon
+  * fix(tailwindcss): improved tailwindcss detection
+  * fix(ltex_plus): add latex to enabled settings
+  * feat: postgrestools
+  * fix(biome): improved biomejs detection
+  * fix(golangci-lint): fix typo in commang argument
+  * feat: alias :LspInfo to :checkhealth vim.lsp
+  * feat: vectorcode-server
+  * fix(golangci-lint): disable stats in json output
+  * fix: ":checkhealth lspconfig" fails on Nvim 0.11
+  * fix(postgres_lsp): re-enable single file support
+  * Update wgsl-analyzer docs to correct install instructions
+  * fix(sourcekit): URL & add dynamic reg. for didChangeWatchedFiles
+  * fix(docgen): regenerate configs.txt with correct :help format
+  * fix(docgen): :help (vimdoc) format
+  * feat(ada_ls): update documentation and support alire.toml files
+  * fix(tblgen): find tablegen_compile_commands.yml
+  * feat(svelte): command to migrate to svelte 5
+  * feat: add just language server configuration
+
+-------------------------------------------------------------------
 Mon Feb 24 01:57:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.7.0:
