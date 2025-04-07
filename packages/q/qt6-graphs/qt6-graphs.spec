@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-graphs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtgraphs-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -37,13 +37,14 @@ License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-quick3d-private-devel
-BuildRequires:  qt6-quick3druntimerender-private-devel
-BuildRequires:  qt6-quickshapes-private-devel
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6QuickShapesPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6PrintSupport) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6Quick3D) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
@@ -97,8 +98,8 @@ Development files for the Qt 6 Graphs library.
 %package -n qt6-graphs-private-devel
 Summary:        Non-ABI stable API for the Qt 6 Graphs Library
 Requires:       cmake(Qt6Graphs) = %{real_version}
-%requires_eq    qt6-quick3d-private-devel
-%requires_eq    qt6-quick3druntimerender-private-devel
+BuildRequires:  cmake(Qt6Quick3DPrivate) = %{real_version}
+BuildRequires:  cmake(Qt6Quick3DRuntimeRenderPrivate) = %{real_version}
 
 %description -n qt6-graphs-private-devel
 This package provides private headers of libQt6Graphs that do not have any
@@ -157,6 +158,8 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtGraphsWidgets/%{real_version}
 
 %files -n qt6-graphs-private-devel
+%{_qt6_cmakedir}/Qt6GraphsPrivate/
+%{_qt6_cmakedir}/Qt6GraphsWidgetsPrivate/
 %{_qt6_includedir}/QtGraphs/%{real_version}/
 %{_qt6_includedir}/QtGraphsWidgets/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_graphs_private.pri
