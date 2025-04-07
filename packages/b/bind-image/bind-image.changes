@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  7 09:18:00 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Fix ownership of /var/lib/named/master
+
+-------------------------------------------------------------------
 Fri Mar 28 13:45:48 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the ISC BIND 9 BCI

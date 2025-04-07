@@ -68,7 +68,7 @@ RUN set -euo pipefail; \
     mkdir -p /run/named; chown root:named /run/named; chmod 1775 /run/named; \ 
     mkdir -p /var/lib/named; chown root:named /var/lib/named; chmod 1775 /var/lib/named; \ 
     mkdir -p /var/lib/named/dyn; chown named:named /var/lib/named/dyn; chmod 755 /var/lib/named/dyn; \ 
-    mkdir -p /var/lib/named/master; chown named:named /var/lib/named/master; chmod 755 /var/lib/named/master; \ 
+    mkdir -p /var/lib/named/master; chown root:root /var/lib/named/master; chmod 755 /var/lib/named/master; \ 
     mkdir -p /var/lib/named/slave; chown named:named /var/lib/named/slave; chmod 755 /var/lib/named/slave; \ 
     mkdir -p /var/log/named; chown named:named /var/log/named; chmod 750 /var/log/named;
 # create files that tmpfiles.d would create for us
