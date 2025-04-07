@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f3956ca18614f6e4856ee67f50bc28ba</srcmd5>
+    <version>0.11.3</version>
+    <time>1744040173</time>
+    <user>anag_factory</user>
+    <comment>FUSE file system; typically better performance and compression ratio than e.g. SquashFS</comment>
+    <requestid>1267050</requestid>
+  </revision>
+</revisionlist>

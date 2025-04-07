@@ -1,0 +1,6 @@
+<package name="dwarfs" project="openSUSE:Factory">
+  <title>Deduplicating compressed read-only file system</title>
+  <description>The Deduplicating Warp-speed Advanced Read-only File System.
+
+DwarFS is a deduplicating compressed read-only file system particularly suited for very redundant data. Compared to SquashFS, it is typically more efficient.</description>
+</package>
