@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Mon Apr 07 09:07:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.0:
+  Welcome to the v0.39.0 release of Inspektor Gadget!
+  Some relevant changes for this version are:
+    * WASM: Use Go 1.24 for the wasmylayer instead of TinyGo by
+      @burak-ok in #4130
+    * container-collection: reduce mem allocs for each event by
+      @alban in #4237
+    * Convert traceloop to image-based gadget by @eiffel-fl in
+      #3763
+    * gadget audit_seccomp: add user stacks by @alban in #4281
+  * General Improvements
+    - update dockerhub reference by @mauriciovasquezbernal in #4122
+    - Artifact Hub: Update gadgets version to v0.38.0 by
+      @github-actions in #4158
+    - pkg/utils/syscalls: update to Linux v6.13.0 2025-01-23 by
+      @alban in #4132
+    - format ebpf-builder.Dockerfile by @jaehanbyun in #4180
+    - Dockerfiles: Use distroless for kubectl-gadget image. by
+      @eiffel-fl in #4182
+    - tree-wide: Update ebpf-builder missing refs by
+      @mauriciovasquezbernal in #4183
+    - operators: Add pre stop lifecycle by @mauriciovasquezbernal
+      in #4159
+    - gadgets: Uniform filtering for networking gadgets by
+      @mauriciovasquezbernal in #3951
+    - Dockerfiles: Use --mount-type=cache by @mqasimsarfraz in
+      #4190
+    - wasm: Change module name from env to ig by @burak-ok in #4209
+    - fsnotify gadget: add support for Linux 5.4 by @alban in #4210
+    - pkg/gadget-context: sort operators by priority and name to be
+      deterministic by @flyth in #4198
+    - Artifact Hub: Update gadgets version to v0.38.1 by
+      @github-actions in #4235
+    - gadget params: rename print-*stack to collect-*stack by
+      @alban in #4248
+    - inspect: adds ebpf and wasm extra info by @KapilSareen in
+      #4167
+    - gadget trace_open: add user stacks by @alban in #4175
+    - inspect: makes pull policy and verify-image configurable by
+      @KapilSareen in #4271
+    - ustack: add --symbolizers parameter by @alban in #4178
+    - trace_dns: Remove the section for OS level tracing by
+      @mqasimsarfraz in #4255
+  * Bug Fixes
+    - wasm: Fix error ambiguity for fieldGetScalar by
+      @mauriciovasquezbernal in #4107
+    - operators/wasm: Fix return code for fieldSet by
+      @mauriciovasquezbernal in #4177
+    - oci: call saveIndexWithLock after importing gadget images by
+      @flyth in #4223
+    - Bug fix - use skb load bytes instead of bpf read by @afek854
+      in #4203
+    - ustack: fix uninitialized buffer when --collect-ustack=false
+      by @alban in #4269
+    - filter: fix verifier error in
+      gadget_should_discard_data_by_skb by @alban in #4273
+    - container-collection: fix SetPodLabels by @alban in #4268
+  * Documentation Improvements
+    - docs: Document how to print custom output from a gadget by
+      @mauriciovasquezbernal in #4160
+    - Small grammar change by @Fearkin in #4212
+    - README: Add repology badges for kubectl-gadget and ig. by
+      @eiffel-fl in #4228
+    - docs: quick-start: clarify different options by @alban in
+      #4236
+  * Testing and Continue Integration
+    - ci: Use different name for test-report artifacts by
+      @mqasimsarfraz in #4157
+    - CI/Integration tests: Skip building gadgets by @burak-ok in
+      #4164
+    - ci: fix permissions by @eiffel-fl in #4181
+    - ci: Use main instead of latest for container tags by
+      @mauriciovasquezbernal in #4179
+    - integration: Add way to set -gadget-repository and
+      -gadget-tag from M… by @eiffel-fl in #4189
+    - ci: Compute checksums for SBOMs by @eiffel-fl in #4176
+    - golangci-lint: Update to v1.64.8 by @burak-ok in #4221
+    - Implementing Formatters Operator Unit Tests by @Shaheer-Ahmd
+      in #4205
+    - Add Limiter Operator Unit Tests by @Shaheer-Ahmd in #4234
+    - tests: Fix image export and import tests by
+      @mauriciovasquezbernal in #4260
+
+-------------------------------------------------------------------
 Thu Mar 20 12:14:36 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.38.1:
