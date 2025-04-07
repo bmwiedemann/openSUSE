@@ -1,0 +1,14 @@
+Index: hawk2-2.7.0+git.1742310530.bfcd0e2c/scripts/hawk-backend.service.in
+===================================================================
+--- hawk2-2.7.0+git.1742310530.bfcd0e2c.orig/scripts/hawk-backend.service.in
++++ hawk2-2.7.0+git.1742310530.bfcd0e2c/scripts/hawk-backend.service.in
+@@ -14,6 +14,6 @@ WorkingDirectory=@WWW_BASE@/hawk
+ Environment="HAWK_ENV=production"
+ Environment="HAWK_BIND=unix://@WWW_BASE@/hawk/tmp/hawk.sock"
+ EnvironmentFile=-/etc/sysconfig/hawk
+-ExecStart=/usr/bin/puma@RUBY_SUFFIX@ -C @WWW_BASE@/hawk/config/puma.rb
+-ExecStop=/usr/bin/pumactl@RUBY_SUFFIX@ -S @WWW_BASE@/hawk/tmp/pids/puma.state stop
+-ExecReload=/usr/bin/pumactl@RUBY_SUFFIX@ -S @WWW_BASE@/hawk/tmp/pids/puma.state restart
++ExecStart=/usr/libexec/hawk/vendor/bin/puma@RUBY_SUFFIX@ -C @WWW_BASE@/hawk/config/puma.rb
++ExecStop=/usr/libexec/hawk/vendor/bin/pumactl@RUBY_SUFFIX@ -S @WWW_BASE@/hawk/tmp/pids/puma.state stop
++ExecReload=/usr/libexec/hawk/vendor/bin/pumactl@RUBY_SUFFIX@ -S @WWW_BASE@/hawk/tmp/pids/puma.state restart

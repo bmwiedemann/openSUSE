@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 24 11:47:04 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.0+git.1742310530.bfcd0e2c
+  * bundle all the gems in the project 
+  * gemfile-lock.patch
+  * update-hawk-backend-service.patch
+
+-------------------------------------------------------------------
 Tue Mar 18 16:31:42 UTC 2025 - aburlakov@suse.com
 
 - Update to version 2.6.6+git.1742310530.bfcd0e2c (bsc#1182162,bsc#1182164):

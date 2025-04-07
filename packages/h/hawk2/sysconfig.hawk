@@ -57,3 +57,11 @@ HAWK_KEY="/etc/hawk/hawk.key"
 # Configures an SSL certificate that the Hawk web server presents.
 HAWK_CERT="/etc/hawk/hawk.pem"
 
+## Path:            Cluster/Hawk
+## Description:     The path where the hawk will search the gem packages
+## Type:            string
+## Default:         /usr/lib64/ruby/gems/3.4.0
+## ServiceRestart:  hawk
+# The path where the hawk will search the gem packages. Starting from the hawk-2.7.0
+# hawk bundles it's gems and installs them in /usr/libexec/hawk/vendor
+GEM_PATH="/usr/libexec/hawk/vendor"
