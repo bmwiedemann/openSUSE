@@ -865,4 +865,18 @@
   * feat: support for front matter (forwarded request 1266885 from jfkw)</comment>
     <requestid>1266891</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>19b293641643ed9cd842a09e69e6bdb4</srcmd5>
+    <version>3.11.2</version>
+    <time>1744040257</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.11.2:
+  * fix: adjust comment offset
+  * refactor: improve front matter error messages
+  * test: add case for `IgnoredScopes`
+
+- Update to version 3.11.1:
+  * fix: don't error on duplicate fields (forwarded request 1267458 from jfkw)</comment>
+    <requestid>1267459</requestid>
+  </revision>
 </revisionlist>

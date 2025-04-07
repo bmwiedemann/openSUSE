@@ -1,5 +1,19 @@
 -------------------------------------------------------------------
-Wed Apr 02 23:52:10 UTC 2025 - Jeff Kowalczyk <Jeff Kowalczyk <jkowalczyk@suse.com>>
+Mon Apr 07 01:19:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.11.2:
+  * fix: adjust comment offset
+  * refactor: improve front matter error messages
+  * test: add case for `IgnoredScopes`
+
+-------------------------------------------------------------------
+Mon Apr 07 01:18:39 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.11.1:
+  * fix: don't error on duplicate fields
+
+-------------------------------------------------------------------
+Wed Apr 02 23:52:10 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.11.0:
   * chore: add mdx2vast to Docker
