@@ -1,0 +1,1293 @@
+diff -ur pyqt6-6.8.1/ChangeLog pyqt6-6.9.0.dev2504021615/ChangeLog
+--- pyqt6-6.8.1/ChangeLog	2025-02-03 16:22:08.462368200 +0100
++++ pyqt6-6.9.0.dev2504021615/ChangeLog	2025-04-03 02:57:40.433992000 +0200
+@@ -1,3 +1,50 @@
++2025-04-02  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* project.py:
++	Backout the hack required to build QtStateMachine on Qt v6.9.0rc.
++	[d84b0d490ff2] [tip]
++
++2025-03-27  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* PyQt6.msp, qpy/QtCore/qpycore_std_chrono_duration.sip:
++	Implemented std::chrono::milliseconds as a mapped type.
++	[e31c76dbc604]
++
++2025-03-21  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* qpy/QtCore/qpycore_std_chrono_duration.sip:
++	Implemented std::chrono::seconds as a mapped type for
++	PyQt6-NetworkAuth.
++	[23f0ec8141eb]
++
++2025-03-17  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* PyQt6.msp, project.py, qpy/QtCore/qpycore_enums_flags_metatype.cpp:
++	Updated for Qt v6.9.0rc.
++	[b9a66b2dbde4]
++
++	* Merged the 6.8-maint branch.
++	[4cc56d430f47]
++
++2025-02-24  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* PyQt6.msp:
++	Fixed a crash when garbage collecting a QModelRoleDataSpan created
++	from a list of QModelRoleData instances.
++	[c6efaaff87c5] <6.8-maint>
++
++2025-02-07  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* extras/uic/uiparser.py:
++	Fixed a pyuic6 bug handling fully scoped alignment flags.
++	[7480cca87b72] <6.8-maint>
++
++2025-02-03  Phil Thompson  <phil@riverbankcomputing.com>
++
++	* .hgtags:
++	Added tag 6.8.1 for changeset c774d4388743
++	[ed39f83755bb] <6.8-maint>
++
+ 2025-02-01  Phil Thompson  <phil@riverbankcomputing.com>
+ 
+ 	* PyQt6.msp:
+diff -ur pyqt6-6.8.1/project.py pyqt6-6.9.0.dev2504021615/project.py
+--- pyqt6-6.8.1/project.py	2025-02-03 16:22:08.600111500 +0100
++++ pyqt6-6.9.0.dev2504021615/project.py	2025-04-03 02:57:40.831648300 +0200
+@@ -834,7 +834,8 @@
+     def __init__(self, project):
+         """ Initialise the bindings. """
+ 
+-        super().__init__(project, 'QtStateMachine', qmake_QT=['statemachine'],
++        super().__init__(project, 'QtStateMachine',
++                qmake_QT=['statemachine'],
+                 test_headers=['qstate.h'],
+                 test_statement='new QState()')
+ 
+diff -ur pyqt6-6.8.1/qpy/QtCore/qpycore_enums_flags_metatype.cpp pyqt6-6.9.0.dev2504021615/qpy/QtCore/qpycore_enums_flags_metatype.cpp
+--- pyqt6-6.8.1/qpy/QtCore/qpycore_enums_flags_metatype.cpp	2025-02-03 16:22:08.510631600 +0100
++++ pyqt6-6.9.0.dev2504021615/qpy/QtCore/qpycore_enums_flags_metatype.cpp	2025-04-03 02:57:40.573414000 +0200
+@@ -45,7 +45,11 @@
+     {
+         mti->alignment = alignof(unsigned);
+         mti->size = sizeof(unsigned);
++#if QT_VERSION >= 0x060900
++        mti->flags = QtPrivate::QMetaTypeForType<unsigned>::flags() | QMetaType::IsEnumeration | QMetaType::IsUnsignedEnumeration;
++#else
+         mti->flags = QtPrivate::QMetaTypeForType<unsigned>::Flags | QMetaType::IsEnumeration | QMetaType::IsUnsignedEnumeration;
++#endif
+         mti->defaultCtr = QtPrivate::QMetaTypeForType<unsigned>::getDefaultCtr();
+         mti->copyCtr = QtPrivate::QMetaTypeForType<unsigned>::getCopyCtr();
+         mti->moveCtr = QtPrivate::QMetaTypeForType<unsigned>::getMoveCtr();
+@@ -61,7 +65,11 @@
+     {
+         mti->alignment = alignof(int);
+         mti->size = sizeof(int);
++#if QT_VERSION >= 0x060900
++        mti->flags = QtPrivate::QMetaTypeForType<int>::flags() | QMetaType::IsEnumeration;
++#else
+         mti->flags = QtPrivate::QMetaTypeForType<int>::Flags | QMetaType::IsEnumeration;
++#endif
+         mti->defaultCtr = QtPrivate::QMetaTypeForType<int>::getDefaultCtr();
+         mti->copyCtr = QtPrivate::QMetaTypeForType<int>::getCopyCtr();
+         mti->moveCtr = QtPrivate::QMetaTypeForType<int>::getMoveCtr();
+diff -ur pyqt6-6.8.1/sip/QtCore/qabstractitemmodel.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qabstractitemmodel.sip
+--- pyqt6-6.8.1/sip/QtCore/qabstractitemmodel.sip	2025-02-03 16:22:09.936914400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qabstractitemmodel.sip	2025-04-03 02:57:45.115368100 +0200
+@@ -344,7 +344,7 @@
+ // The capsule destructor for a QModelRoleData array.
+ static void qpycore_gc_modelroledata(PyObject *mrd_obj)
+ {
+-    delete[] reinterpret_cast<QList<QModelRoleData>* >(PyCapsule_GetPointer(mrd_obj, NULL));
++    delete reinterpret_cast<QList<QModelRoleData>* >(PyCapsule_GetPointer(mrd_obj, NULL));
+ }
+ %End
+ 
+diff -ur pyqt6-6.8.1/sip/QtCore/qchar.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qchar.sip
+--- pyqt6-6.8.1/sip/QtCore/qchar.sip	2025-02-03 16:22:09.961596500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qchar.sip	2025-04-03 02:57:45.188380000 +0200
+@@ -218,6 +218,27 @@
+         Script_Vithkuqi,
+         Script_Kawi,
+         Script_NagMundari,
++%If (Qt_6_9_0 -)
++        Script_Garay,
++%End
++%If (Qt_6_9_0 -)
++        Script_GurungKhema,
++%End
++%If (Qt_6_9_0 -)
++        Script_KiratRai,
++%End
++%If (Qt_6_9_0 -)
++        Script_OlOnal,
++%End
++%If (Qt_6_9_0 -)
++        Script_Sunuwar,
++%End
++%If (Qt_6_9_0 -)
++        Script_Todhri,
++%End
++%If (Qt_6_9_0 -)
++        Script_TuluTigalari,
++%End
+     };
+ };
+ 
+diff -ur pyqt6-6.8.1/sip/QtCore/qcommandlineoption.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qcommandlineoption.sip
+--- pyqt6-6.8.1/sip/QtCore/qcommandlineoption.sip	2025-02-03 16:22:09.989929400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qcommandlineoption.sip	2025-04-03 02:57:45.271330800 +0200
+@@ -47,6 +47,9 @@
+     {
+         HiddenFromHelp,
+         ShortOptionStyle,
++%If (Qt_6_9_0 -)
++        IgnoreOptionsAfter,
++%End
+     };
+ 
+     typedef QFlags<QCommandLineOption::Flag> Flags;
+diff -ur pyqt6-6.8.1/sip/QtCore/qcommandlineparser.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qcommandlineparser.sip
+--- pyqt6-6.8.1/sip/QtCore/qcommandlineparser.sip	2025-02-03 16:22:09.995036800 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qcommandlineparser.sip	2025-04-03 02:57:45.288717000 +0200
+@@ -69,6 +69,18 @@
+     };
+ 
+     void setOptionsAfterPositionalArgumentsMode(QCommandLineParser::OptionsAfterPositionalArgumentsMode mode);
++%If (Qt_6_9_0 -)
++
++    enum class MessageType
++    {
++        Information,
++        Error,
++    };
++
++%End
++%If (Qt_6_9_0 -)
++    static void showMessageAndExit(QCommandLineParser::MessageType type, const QString &message, int exitCode = 0);
++%End
+ 
+ private:
+     QCommandLineParser(const QCommandLineParser &);
+diff -ur pyqt6-6.8.1/sip/QtCore/qconcatenatetablesproxymodel.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qconcatenatetablesproxymodel.sip
+--- pyqt6-6.8.1/sip/QtCore/qconcatenatetablesproxymodel.sip	2025-02-03 16:22:09.994344000 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qconcatenatetablesproxymodel.sip	2025-04-03 02:57:45.286523600 +0200
+@@ -87,4 +87,7 @@
+     virtual bool dropMimeData(const QMimeData *data, Qt::DropAction action, int row, int column, const QModelIndex &parent);
+     virtual QSize span(const QModelIndex &index) const;
+     QList<QAbstractItemModel *> sourceModels() const;
++%If (Qt_6_9_0 -)
++    virtual QHash<int, QByteArray> roleNames() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtCore/qcoreevent.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qcoreevent.sip
+--- pyqt6-6.8.1/sip/QtCore/qcoreevent.sip	2025-02-03 16:22:09.954377400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qcoreevent.sip	2025-04-03 02:57:45.168305400 +0200
+@@ -217,6 +217,9 @@
+ %If (Qt_6_7_0 -)
+         ParentWindowChange,
+ %End
++%If (Qt_6_9_0 -)
++        SafeAreaMarginsChange,
++%End
+         User,
+         MaxUser,
+     };
+@@ -263,6 +266,9 @@
+ %End
+ 
+ %End
++%If (Qt_6_9_0 -)
++    bool matches(const QBasicTimer &timer) const;
++%End
+ };
+ 
+ class QChildEvent : public QEvent /NoDefaultCtors/
+diff -ur pyqt6-6.8.1/sip/QtCore/qdatastream.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qdatastream.sip
+--- pyqt6-6.8.1/sip/QtCore/qdatastream.sip	2025-02-03 16:22:09.957884300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qdatastream.sip	2025-04-03 02:57:45.177929400 +0200
+@@ -86,6 +86,9 @@
+ %If (Qt_6_8_0 -)
+         Qt_6_8,
+ %End
++%If (Qt_6_9_0 -)
++        Qt_6_9,
++%End
+     };
+ 
+     enum ByteOrder
+diff -ur pyqt6-6.8.1/sip/QtCore/qfile.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qfile.sip
+--- pyqt6-6.8.1/sip/QtCore/qfile.sip	2025-02-03 16:22:10.000608200 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qfile.sip	2025-04-03 02:57:45.306060000 +0200
+@@ -28,7 +28,12 @@
+ 
+ public:
+     QFile();
++%If (Qt_6_9_0 -)
++    explicit QFile(const QString &name);
++%End
++%If (- Qt_6_9_0)
+     QFile(const QString &name);
++%End
+     explicit QFile(QObject *parent /TransferThis/);
+     QFile(const QString &name, QObject *parent /TransferThis/);
+     virtual ~QFile();
+@@ -63,4 +68,7 @@
+     static bool setPermissions(const QString &filename, QFileDevice::Permissions permissionSpec);
+     bool moveToTrash();
+     static bool moveToTrash(const QString &fileName, QString *pathInTrash /Out/ = 0);
++%If (Qt_6_9_0 -)
++    static bool supportsMoveToTrash();
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtCore/qiodevice.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qiodevice.sip
+--- pyqt6-6.8.1/sip/QtCore/qiodevice.sip	2025-02-03 16:22:09.971150000 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qiodevice.sip	2025-04-03 02:57:45.217384800 +0200
+@@ -127,6 +127,9 @@
+         Py_END_ALLOW_THREADS
+ %End
+ 
++%If (Qt_6_9_0 -)
++    bool readLineInto(QByteArray *result, qint64 maxSize = 0) /ReleaseGIL/;
++%End
+     QByteArray readAll() /ReleaseGIL/;
+     virtual bool canReadLine() const;
+     void startTransaction();
+diff -ur pyqt6-6.8.1/sip/QtCore/qjsondocument.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qjsondocument.sip
+--- pyqt6-6.8.1/sip/QtCore/qjsondocument.sip	2025-02-03 16:22:09.968941500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qjsondocument.sip	2025-04-03 02:57:45.211231200 +0200
+@@ -20,6 +20,8 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++%If (- Qt_6_9_0)
++
+ struct QJsonParseError
+ {
+ %TypeHeaderCode
+@@ -50,6 +52,8 @@
+     QJsonParseError::ParseError error;
+ };
+ 
++%End
++
+ class QJsonDocument
+ {
+ %TypeHeaderCode
+diff -ur pyqt6-6.8.1/sip/QtCore/qjsonvalue.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qjsonvalue.sip
+--- pyqt6-6.8.1/sip/QtCore/qjsonvalue.sip	2025-02-03 16:22:09.982108600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qjsonvalue.sip	2025-04-03 02:57:45.247856100 +0200
+@@ -81,6 +81,16 @@
+ %MethodCode
+         sipRes = qHash(*sipCpp);
+ %End
++
++%If (Qt_6_9_0 -)
++    typedef QJsonDocument::JsonFormat JsonFormat;
++%End
++%If (Qt_6_9_0 -)
++    static QJsonValue fromJson(QByteArrayView json, QJsonParseError *error /Out/ = 0);
++%End
++%If (Qt_6_9_0 -)
++    QByteArray toJson(QJsonValue::JsonFormat format = QJsonDocument::Indented) const;
++%End
+ };
+ 
+ QDataStream &operator<<(QDataStream &, const QJsonValue & /Constrained/) /ReleaseGIL/;
+diff -ur pyqt6-6.8.1/sip/QtCore/qlocale.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qlocale.sip
+--- pyqt6-6.8.1/sip/QtCore/qlocale.sip	2025-02-03 16:22:09.952786400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qlocale.sip	2025-04-03 02:57:45.163357700 +0200
+@@ -428,6 +428,12 @@
+ %If (Qt_6_8_0 -)
+         Kuvi,
+ %End
++%If (Qt_6_9_0 -)
++        KaraKalpak,
++%End
++%If (Qt_6_9_0 -)
++        SwampyCree,
++%End
+     };
+ 
+     enum Country
+diff -ur pyqt6-6.8.1/sip/QtCore/qmetaobject.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qmetaobject.sip
+--- pyqt6-6.8.1/sip/QtCore/qmetaobject.sip	2025-02-03 16:22:09.983637000 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qmetaobject.sip	2025-04-03 02:57:45.252205100 +0200
+@@ -164,15 +164,28 @@
+     int value(int index) const;
+     const char *scope() const;
+     int keyToValue(const char *key, bool *ok = 0) const;
++%If (Qt_6_9_0 -)
++    const char *valueToKey(quint64 value) const;
++%End
++%If (- Qt_6_9_0)
+     const char *valueToKey(int value) const;
++%End
+     int keysToValue(const char *keys, bool *ok = 0) const;
++%If (Qt_6_9_0 -)
++    QByteArray valueToKeys(quint64 value) const;
++%End
++%If (- Qt_6_9_0)
+     QByteArray valueToKeys(int value) const;
++%End
+     bool isValid() const;
+     bool isScoped() const;
+     const char *enumName() const;
+ %If (Qt_6_6_0 -)
+     QMetaType metaType() const;
+ %End
++%If (Qt_6_9_0 -)
++    bool is64Bit() const;
++%End
+ };
+ 
+ class QMetaProperty
+diff -ur pyqt6-6.8.1/sip/QtCore/qnamespace.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qnamespace.sip
+--- pyqt6-6.8.1/sip/QtCore/qnamespace.sip	2025-02-03 16:22:09.966514300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qnamespace.sip	2025-04-03 02:57:45.201322600 +0200
+@@ -220,6 +220,12 @@
+         BypassWindowManagerHint,
+         CoverWindow,
+         MaximizeUsingFullscreenGeometryHint,
++%If (Qt_6_9_0 -)
++        ExpandedClientAreaHint,
++%End
++%If (Qt_6_9_0 -)
++        NoTitleBarBackgroundHint,
++%End
+     };
+ 
+     typedef QFlags<Qt::WindowType> WindowFlags;
+diff -ur pyqt6-6.8.1/sip/QtCore/qprocess.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qprocess.sip
+--- pyqt6-6.8.1/sip/QtCore/qprocess.sip	2025-02-03 16:22:09.998025700 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qprocess.sip	2025-04-03 02:57:45.297494000 +0200
+@@ -216,6 +216,9 @@
+ %If (Qt_6_7_0 -)
+         ResetIds,
+ %End
++%If (Qt_6_9_0 -)
++        DisableCoreDumps,
++%End
+     };
+ 
+ %End
+diff -ur pyqt6-6.8.1/sip/QtCore/qsortfilterproxymodel.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qsortfilterproxymodel.sip
+--- pyqt6-6.8.1/sip/QtCore/qsortfilterproxymodel.sip	2025-02-03 16:22:09.968030500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qsortfilterproxymodel.sip	2025-04-03 02:57:45.207497800 +0200
+@@ -95,7 +95,12 @@
+     void setRecursiveFilteringEnabled(bool recursive);
+ 
+ protected:
++%If (Qt_6_9_0 -)
++    void beginFilterChange();
++%End
+     void invalidateFilter();
++    void invalidateRowsFilter();
++    void invalidateColumnsFilter();
+ 
+ signals:
+     void dynamicSortFilterChanged(bool dynamicSortFilter);
+@@ -110,10 +115,6 @@
+     bool autoAcceptChildRows() const;
+     void setAutoAcceptChildRows(bool accept);
+ 
+-protected:
+-    void invalidateRowsFilter();
+-    void invalidateColumnsFilter();
+-
+ signals:
+     void autoAcceptChildRowsChanged(bool autoAcceptChildRows);
+ };
+diff -ur pyqt6-6.8.1/sip/QtCore/qstringconverter_base.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qstringconverter_base.sip
+--- pyqt6-6.8.1/sip/QtCore/qstringconverter_base.sip	2025-02-03 16:22:09.995869200 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qstringconverter_base.sip	2025-04-03 02:57:45.291045000 +0200
+@@ -42,6 +42,9 @@
+     typedef QFlags<QStringConverterBase::Flag> Flags;
+ 
+ protected:
++%If (Qt_6_9_0 -)
++    QStringConverterBase();
++%End
+     ~QStringConverterBase();
+ };
+ 
+diff -ur pyqt6-6.8.1/sip/QtCore/QtCoremod.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/QtCoremod.sip
+--- pyqt6-6.8.1/sip/QtCore/QtCoremod.sip	2025-02-03 16:22:09.958583400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/QtCoremod.sip	2025-04-03 02:57:45.180201300 +0200
+@@ -22,7 +22,7 @@
+ 
+ %Module(name=PyQt6.QtCore, call_super_init=True, default_VirtualErrorHandler=PyQt6, keyword_arguments="Optional", use_limited_api=True, py_ssize_t_clean=True)
+ 
+-%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0}
++%Timeline {Qt_6_0_0 Qt_6_1_0 Qt_6_2_0 Qt_6_3_0 Qt_6_4_0 Qt_6_5_0 Qt_6_6_0 Qt_6_7_0 Qt_6_8_0 Qt_6_9_0}
+ 
+ %Platforms {Android iOS Linux macOS WebAssembly Windows}
+ 
+@@ -126,6 +126,7 @@
+ %Include qiodevicebase.sip
+ %Include qitemselectionmodel.sip
+ %Include qjsondocument.sip
++%Include qjsonparseerror.sip
+ %Include qjsonvalue.sip
+ %Include qlibrary.sip
+ %Include qlibraryinfo.sip
+@@ -200,6 +201,7 @@
+ %Include qxmlstream.sip
+ %Include qyieldcpu.sip
+ %Include qanystringview.sip
++%Include qpycore_std_chrono_duration.sip
+ %Include qflags.sip
+ %Include qstring.sip
+ %Include qbytearraylist.sip
+diff -ur pyqt6-6.8.1/sip/QtCore/qthreadpool.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qthreadpool.sip
+--- pyqt6-6.8.1/sip/QtCore/qthreadpool.sip	2025-02-03 16:22:09.946946400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qthreadpool.sip	2025-04-03 02:57:45.147782300 +0200
+@@ -177,4 +177,10 @@
+ %End
+ 
+ %End
++%If (Qt_6_9_0 -)
++    void setServiceLevel(QThread::QualityOfService serviceLevel);
++%End
++%If (Qt_6_9_0 -)
++    QThread::QualityOfService serviceLevel() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtCore/qthread.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/qthread.sip
+--- pyqt6-6.8.1/sip/QtCore/qthread.sip	2025-02-03 16:22:09.961955000 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qthread.sip	2025-04-03 02:57:45.189499100 +0200
+@@ -88,4 +88,20 @@
+ %If (Qt_6_8_0 -)
+     bool isCurrentThread() const;
+ %End
++%If (Qt_6_9_0 -)
++
++    enum class QualityOfService
++    {
++        Auto,
++        High,
++        Eco,
++    };
++
++%End
++%If (Qt_6_9_0 -)
++    void setServiceLevel(QThread::QualityOfService serviceLevel);
++%End
++%If (Qt_6_9_0 -)
++    QThread::QualityOfService serviceLevel() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtCore/quuid.sip pyqt6-6.9.0.dev2504021615/sip/QtCore/quuid.sip
+--- pyqt6-6.8.1/sip/QtCore/quuid.sip	2025-02-03 16:22:10.005590700 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/quuid.sip	2025-04-03 02:57:45.319928200 +0200
+@@ -45,6 +45,9 @@
+         Name,
+         Random,
+         Sha1,
++%If (Qt_6_9_0 -)
++        UnixEpoch,
++%End
+     };
+ 
+     enum StringFormat
+@@ -106,14 +109,17 @@
+ %If (- Qt_6_8_0)
+     static QUuid createUuidV3(const QUuid &ns, const QByteArray &baseData);
+ %End
++    static QUuid createUuidV3(const QUuid &ns, const QString &baseData);
+ %If (Qt_6_8_0 -)
+     static QUuid createUuidV5(QUuid ns, QByteArrayView baseData);
+ %End
+ %If (- Qt_6_8_0)
+     static QUuid createUuidV5(const QUuid &ns, const QByteArray &baseData);
+ %End
+-    static QUuid createUuidV3(const QUuid &ns, const QString &baseData);
+     static QUuid createUuidV5(const QUuid &ns, const QString &baseData);
++%If (Qt_6_9_0 -)
++    static QUuid createUuidV7();
++%End
+     QUuid::Variant variant() const;
+     QUuid::Version version() const;
+     QByteArray toByteArray(QUuid::StringFormat mode = QUuid::WithBraces) const;
+diff -ur pyqt6-6.8.1/sip/QtGui/qbrush.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qbrush.sip
+--- pyqt6-6.8.1/sip/QtGui/qbrush.sip	2025-02-03 16:22:09.825863600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qbrush.sip	2025-04-03 02:57:44.786477300 +0200
+@@ -420,3 +420,28 @@
+     void setCenter(qreal x, qreal y);
+     void setAngle(qreal angle);
+ };
++
++%If (Qt_6_9_0 -)
++bool operator!=(const QBrush &lhs, const Qt::BrushStyle &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator!=(const QBrush &lhs, const Qt::GlobalColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator!=(const QBrush &lhs, const QColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator!=(const QColor &lhs, const QBrush &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QBrush &lhs, const Qt::BrushStyle &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QBrush &lhs, const Qt::GlobalColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QBrush &lhs, const QColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QColor &lhs, const QBrush &rhs);
++%End
+diff -ur pyqt6-6.8.1/sip/QtGui/qcolorspace.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qcolorspace.sip
+--- pyqt6-6.8.1/sip/QtGui/qcolorspace.sip	2025-02-03 16:22:09.784187800 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qcolorspace.sip	2025-04-03 02:57:44.664372200 +0200
+@@ -117,6 +117,9 @@
+     QColorSpace(QPointF whitePoint, QColorSpace::TransferFunction transferFunction, float gamma = 0.F);
+ %End
+     QColorSpace(const QColorSpace &colorSpace);
++%If (Qt_6_9_0 -)
++    QColorSpace(const QColorSpace::PrimaryPoints &primaryPoints, QColorSpace::TransferFunction transferFunction, float gamma = 0.F);
++%End
+     ~QColorSpace();
+     void swap(QColorSpace &colorSpace /Constrained/);
+     QColorSpace::Primaries primaries() const;
+@@ -163,6 +166,25 @@
+ %If (Qt_6_8_0 -)
+     bool isValidTarget() const;
+ %End
++%If (Qt_6_9_0 -)
++
++    struct PrimaryPoints
++    {
++%TypeHeaderCode
++#include <qcolorspace.h>
++%End
++
++        static QColorSpace::PrimaryPoints fromPrimaries(QColorSpace::Primaries primaries);
++        bool isValid() const;
++    };
++
++%End
++%If (Qt_6_9_0 -)
++    void setPrimaryPoints(const QColorSpace::PrimaryPoints &primaryPoints);
++%End
++%If (Qt_6_9_0 -)
++    QColorSpace::PrimaryPoints primaryPoints() const;
++%End
+ };
+ 
+ bool operator==(const QColorSpace &colorSpace1, const QColorSpace &colorSpace2);
+diff -ur pyqt6-6.8.1/sip/QtGui/qfontdatabase.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qfontdatabase.sip
+--- pyqt6-6.8.1/sip/QtGui/qfontdatabase.sip	2025-02-03 16:22:09.783621500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qfontdatabase.sip	2025-04-03 02:57:44.662661000 +0200
+@@ -113,6 +113,18 @@
+ %If (Qt_6_8_0 -)
+     static QStringList applicationFallbackFontFamilies(QChar::Script script);
+ %End
++%If (Qt_6_9_0 -)
++    static void addApplicationEmojiFontFamily(const QString &familyName);
++%End
++%If (Qt_6_9_0 -)
++    static bool removeApplicationEmojiFontFamily(const QString &familyName);
++%End
++%If (Qt_6_9_0 -)
++    static void setApplicationEmojiFontFamilies(const QStringList &familyNames);
++%End
++%If (Qt_6_9_0 -)
++    static QStringList applicationEmojiFontFamilies();
++%End
+ 
+ private:
+     QFontDatabase();
+diff -ur pyqt6-6.8.1/sip/QtGui/qfontinfo.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qfontinfo.sip
+--- pyqt6-6.8.1/sip/QtGui/qfontinfo.sip	2025-02-03 16:22:09.785881500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qfontinfo.sip	2025-04-03 02:57:44.669954000 +0200
+@@ -43,4 +43,7 @@
+     bool exactMatch() const;
+     QString styleName() const;
+     void swap(QFontInfo &other /Constrained/);
++%If (Qt_6_9_0 -)
++    QList<QFontVariableAxis> variableAxes() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtGui/qimage.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qimage.sip
+--- pyqt6-6.8.1/sip/QtGui/qimage.sip	2025-02-03 16:22:09.788226100 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qimage.sip	2025-04-03 02:57:44.675800600 +0200
+@@ -342,6 +342,12 @@
+ %If (Qt_6_8_0 -)
+     QImage colorTransformed(const QColorTransform &transform, QImage::Format format, Qt::ImageConversionFlags flags = Qt::AutoColor);
+ %End
++%If (Qt_6_9_0 -)
++    QImage flipped(Qt::Orientations orient = Qt::Vertical) const;
++%End
++%If (Qt_6_9_0 -)
++    void flip(Qt::Orientations orient = Qt::Vertical);
++%End
+ };
+ 
+ QDataStream &operator<<(QDataStream &, const QImage &) /ReleaseGIL/;
+diff -ur pyqt6-6.8.1/sip/QtGui/qinputdevice.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qinputdevice.sip
+--- pyqt6-6.8.1/sip/QtGui/qinputdevice.sip	2025-02-03 16:22:09.786975400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qinputdevice.sip	2025-04-03 02:57:44.672818200 +0200
+@@ -81,6 +81,9 @@
+ 
+ signals:
+     void availableVirtualGeometryChanged(QRect area);
++%If (Qt_6_9_0 -)
++    void capabilitiesChanged(QInputDevice::Capabilities capabilities);
++%End
+ 
+ public:
+ %If (Qt_6_3_0 -)
+diff -ur pyqt6-6.8.1/sip/QtGui/qpdfwriter.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qpdfwriter.sip
+--- pyqt6-6.8.1/sip/QtGui/qpdfwriter.sip	2025-02-03 16:22:09.800499200 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qpdfwriter.sip	2025-04-03 02:57:44.711406000 +0200
+@@ -77,4 +77,10 @@
+ %If (Qt_6_8_0 -)
+     void setOutputIntent(const QPdfOutputIntent &intent);
+ %End
++%If (Qt_6_9_0 -)
++    QString author() const;
++%End
++%If (Qt_6_9_0 -)
++    void setAuthor(const QString &author);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtGui/qpen.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qpen.sip
+--- pyqt6-6.8.1/sip/QtGui/qpen.sip	2025-02-03 16:22:09.781445700 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qpen.sip	2025-04-03 02:57:44.656217300 +0200
+@@ -101,3 +101,21 @@
+ 
+ QDataStream &operator<<(QDataStream &, const QPen &) /ReleaseGIL/;
+ QDataStream &operator>>(QDataStream &, QPen & /Constrained/) /ReleaseGIL/;
++%If (Qt_6_9_0 -)
++bool operator!=(const QPen &lhs, const Qt::PenStyle &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator!=(const QPen &lhs, const QColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator!=(const QColor &lhs, const QPen &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QPen &lhs, const Qt::PenStyle &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QPen &lhs, const QColor &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QColor &lhs, const QPen &rhs);
++%End
+diff -ur pyqt6-6.8.1/sip/QtGui/qtextoption.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qtextoption.sip
+--- pyqt6-6.8.1/sip/QtGui/qtextoption.sip	2025-02-03 16:22:09.815868400 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qtextoption.sip	2025-04-03 02:57:44.756986100 +0200
+@@ -55,6 +55,12 @@
+         AddSpaceForLineAndParagraphSeparators,
+         SuppressColors,
+         ShowDocumentTerminator,
++%If (Qt_6_9_0 -)
++        ShowDefaultIgnorables,
++%End
++%If (Qt_6_9_0 -)
++        DisableEmojiParsing,
++%End
+     };
+ 
+     typedef QFlags<QTextOption::Flag> Flags;
+diff -ur pyqt6-6.8.1/sip/QtGui/QtGuimod.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/QtGuimod.sip
+--- pyqt6-6.8.1/sip/QtGui/QtGuimod.sip	2025-02-03 16:22:09.816816800 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/QtGuimod.sip	2025-04-03 02:57:44.759382500 +0200
+@@ -66,6 +66,7 @@
+ %Include qfontdatabase.sip
+ %Include qfontinfo.sip
+ %Include qfontmetrics.sip
++%Include qfontvariableaxis.sip
+ %Include qgenericmatrix.sip
+ %Include qglyphrun.sip
+ %Include qguiapplication.sip
+@@ -91,6 +92,7 @@
+ %Include qpaintengine.sip
+ %Include qpainter.sip
+ %Include qpainterpath.sip
++%Include qpainterstateguard.sip
+ %Include qpalette.sip
+ %Include qpdfoutputintent.sip
+ %Include qpdfwriter.sip
+diff -ur pyqt6-6.8.1/sip/QtGui/qwindow.sip pyqt6-6.9.0.dev2504021615/sip/QtGui/qwindow.sip
+--- pyqt6-6.8.1/sip/QtGui/qwindow.sip	2025-02-03 16:22:09.786590300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qwindow.sip	2025-04-03 02:57:44.671758700 +0200
+@@ -221,4 +221,12 @@
+ %If (PyQt_Vulkan)
+     QVulkanInstance *vulkanInstance() const;
+ %End
++%If (Qt_6_9_0 -)
++    QMargins safeAreaMargins() const;
++%End
++
++signals:
++%If (Qt_6_9_0 -)
++    void safeAreaMarginsChanged(QMargins arg);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtNetwork/qhttp2configuration.sip pyqt6-6.9.0.dev2504021615/sip/QtNetwork/qhttp2configuration.sip
+--- pyqt6-6.8.1/sip/QtNetwork/qhttp2configuration.sip	2025-02-03 16:22:09.737575800 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtNetwork/qhttp2configuration.sip	2025-04-03 02:57:44.510913600 +0200
+@@ -41,6 +41,12 @@
+     bool setMaxFrameSize(unsigned int size);
+     unsigned int maxFrameSize() const;
+     void swap(QHttp2Configuration &other /Constrained/);
++%If (Qt_6_9_0 -)
++    void setMaxConcurrentStreams(unsigned int value);
++%End
++%If (Qt_6_9_0 -)
++    unsigned int maxConcurrentStreams() const;
++%End
+ };
+ 
+ bool operator==(const QHttp2Configuration &lhs, const QHttp2Configuration &rhs);
+diff -ur pyqt6-6.8.1/sip/QtNetwork/qnetworkrequestfactory.sip pyqt6-6.9.0.dev2504021615/sip/QtNetwork/qnetworkrequestfactory.sip
+--- pyqt6-6.8.1/sip/QtNetwork/qnetworkrequestfactory.sip	2025-02-03 16:22:09.732181300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtNetwork/qnetworkrequestfactory.sip	2025-04-03 02:57:44.493895300 +0200
+@@ -58,16 +58,8 @@
+     QString password() const;
+     void setPassword(const QString &password);
+     void clearPassword();
+-    void setTransferTimeout(qint64 timeout);
+-%MethodCode
+-        sipCpp->setTransferTimeout(std::chrono::milliseconds(a0));
+-%End
+-
+-    qint64 transferTimeout() const;
+-%MethodCode
+-        sipRes = sipCpp->transferTimeout().count();
+-%End
+-
++    void setTransferTimeout(std::chrono::milliseconds timeout);
++    std::chrono::milliseconds transferTimeout() const;
+     QUrlQuery queryParameters() const;
+     void setQueryParameters(const QUrlQuery &query);
+     void clearQueryParameters();
+diff -ur pyqt6-6.8.1/sip/QtQuick/qquickitem.sip pyqt6-6.9.0.dev2504021615/sip/QtQuick/qquickitem.sip
+--- pyqt6-6.8.1/sip/QtQuick/qquickitem.sip	2025-02-03 16:22:09.842442500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtQuick/qquickitem.sip	2025-04-03 02:57:44.832864000 +0200
+@@ -57,6 +57,12 @@
+         ItemAntialiasingHasChanged,
+         ItemDevicePixelRatioHasChanged,
+         ItemEnabledHasChanged,
++%If (Qt_6_9_0 -)
++        ItemScaleHasChanged,
++%End
++%If (Qt_6_9_0 -)
++        ItemTransformHasChanged,
++%End
+     };
+ 
+     struct ItemChangeData
+diff -ur pyqt6-6.8.1/sip/QtQuickWidgets/qquickwidget.sip pyqt6-6.9.0.dev2504021615/sip/QtQuickWidgets/qquickwidget.sip
+--- pyqt6-6.8.1/sip/QtQuickWidgets/qquickwidget.sip	2025-02-03 16:22:09.848888600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtQuickWidgets/qquickwidget.sip	2025-04-03 02:57:44.851860500 +0200
+@@ -34,6 +34,9 @@
+     explicit QQuickWidget(QWidget *parent /TransferThis/ = 0);
+     QQuickWidget(QQmlEngine *engine, QWidget *parent /TransferThis/);
+     QQuickWidget(const QUrl &source, QWidget *parent /TransferThis/ = 0);
++%If (Qt_6_9_0 -)
++    QQuickWidget(QAnyStringView uri, QAnyStringView typeName, QWidget *parent /TransferThis/ = 0);
++%End
+     virtual ~QQuickWidget();
+     QUrl source() const;
+     QQmlEngine *engine() const;
+@@ -91,12 +94,16 @@
+     virtual void dragLeaveEvent(QDragLeaveEvent *);
+     virtual void dropEvent(QDropEvent *);
+     virtual void paintEvent(QPaintEvent *event);
++    virtual bool focusNextPrevChild(bool next);
+ 
+ public:
+     QImage grabFramebuffer() const;
+     void setClearColor(const QColor &color);
+     QQuickWindow *quickWindow() const;
+-
+-protected:
+-    virtual bool focusNextPrevChild(bool next);
++%If (Qt_6_9_0 -)
++    void setInitialProperties(const QVariantMap &initialProperties);
++%End
++%If (Qt_6_9_0 -)
++    void loadFromModule(QAnyStringView uri, QAnyStringView typeName);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtSerialPort/qserialport.sip pyqt6-6.9.0.dev2504021615/sip/QtSerialPort/qserialport.sip
+--- pyqt6-6.8.1/sip/QtSerialPort/qserialport.sip	2025-02-03 16:22:09.830642500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtSerialPort/qserialport.sip	2025-04-03 02:57:44.799284000 +0200
+@@ -277,6 +277,19 @@
+ signals:
+     void breakEnabledChanged(bool set);
+     void errorOccurred(QSerialPort::SerialPortError error);
++
++public:
++%If (Qt_6_9_0 -)
++    bool settingsRestoredOnClose() const;
++%End
++%If (Qt_6_9_0 -)
++    void setSettingsRestoredOnClose(bool restore);
++%End
++
++signals:
++%If (Qt_6_9_0 -)
++    void settingsRestoredOnCloseChanged(bool restore);
++%End
+ };
+ 
+ %End
+diff -ur pyqt6-6.8.1/sip/QtSql/qsqldriver.sip pyqt6-6.9.0.dev2504021615/sip/QtSql/qsqldriver.sip
+--- pyqt6-6.8.1/sip/QtSql/qsqldriver.sip	2025-02-03 16:22:09.904885500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtSql/qsqldriver.sip	2025-04-03 02:57:45.012925000 +0200
+@@ -156,4 +156,7 @@
+ 
+     QSqlDriver::DbmsType dbmsType() const;
+     virtual int maximumIdentifierLength(QSqlDriver::IdentifierType type) const;
++%If (Qt_6_9_0 -)
++    QString connectionName() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtSql/qsqlquerymodel.sip pyqt6-6.9.0.dev2504021615/sip/QtSql/qsqlquerymodel.sip
+--- pyqt6-6.8.1/sip/QtSql/qsqlquerymodel.sip	2025-02-03 16:22:09.906944300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtSql/qsqlquerymodel.sip	2025-04-03 02:57:45.020631800 +0200
+@@ -72,4 +72,7 @@
+ 
+ public:
+     virtual QHash<int, QByteArray> roleNames() const;
++%If (Qt_6_9_0 -)
++    void refresh();
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtSvg/qtsvgglobal.sip pyqt6-6.9.0.dev2504021615/sip/QtSvg/qtsvgglobal.sip
+--- pyqt6-6.8.1/sip/QtSvg/qtsvgglobal.sip	2025-02-03 16:22:09.762099700 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtSvg/qtsvgglobal.sip	2025-04-03 02:57:44.593304900 +0200
+@@ -35,6 +35,15 @@
+ %If (Qt_6_8_0 -)
+         AssumeTrustedSource,
+ %End
++%If (Qt_6_9_0 -)
++        DisableSMILAnimations,
++%End
++%If (Qt_6_9_0 -)
++        DisableCSSAnimations,
++%End
++%If (Qt_6_9_0 -)
++        DisableAnimations,
++%End
+     };
+ 
+     typedef QFlags<QtSvg::Option> Options;
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qabstractitemview.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qabstractitemview.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qabstractitemview.sip	2025-02-03 16:22:09.860775700 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qabstractitemview.sip	2025-04-03 02:57:44.884064700 +0200
+@@ -279,4 +279,12 @@
+ 
+ protected:
+     virtual void initViewItemOption(QStyleOptionViewItem *option) const;
++
++public:
++%If (Qt_6_9_0 -)
++    int updateThreshold() const;
++%End
++%If (Qt_6_9_0 -)
++    void setUpdateThreshold(int threshold);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qcombobox.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qcombobox.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qcombobox.sip	2025-02-03 16:22:09.902630600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qcombobox.sip	2025-04-03 02:57:45.004056500 +0200
+@@ -151,4 +151,19 @@
+ public:
+     void setPlaceholderText(const QString &placeholderText);
+     QString placeholderText() const;
++%If (Qt_6_9_0 -)
++
++    enum class LabelDrawingMode
++    {
++        UseStyle,
++        UseDelegate,
++    };
++
++%End
++%If (Qt_6_9_0 -)
++    QComboBox::LabelDrawingMode labelDrawingMode() const;
++%End
++%If (Qt_6_9_0 -)
++    void setLabelDrawingMode(QComboBox::LabelDrawingMode labelDrawing);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qdockwidget.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qdockwidget.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qdockwidget.sip	2025-02-03 16:22:09.896705200 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qdockwidget.sip	2025-04-03 02:57:44.987252200 +0200
+@@ -67,4 +67,12 @@
+     virtual void closeEvent(QCloseEvent *event);
+     virtual void paintEvent(QPaintEvent *event);
+     virtual bool event(QEvent *event);
++
++public:
++%If (Qt_6_9_0 -)
++    void setDockLocation(Qt::DockWidgetArea area);
++%End
++%If (Qt_6_9_0 -)
++    Qt::DockWidgetArea dockLocation() const;
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qstackedlayout.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstackedlayout.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qstackedlayout.sip	2025-02-03 16:22:09.884046600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstackedlayout.sip	2025-04-03 02:57:44.946994300 +0200
+@@ -99,6 +99,9 @@
+ signals:
+     void widgetRemoved(int index);
+     void currentChanged(int index);
++%If (Qt_6_9_0 -)
++    void widgetAdded(int index);
++%End
+ 
+ public slots:
+     void setCurrentIndex(int index);
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qstackedwidget.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstackedwidget.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qstackedwidget.sip	2025-02-03 16:22:09.895055300 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstackedwidget.sip	2025-04-03 02:57:44.982007300 +0200
+@@ -44,6 +44,9 @@
+ 
+ signals:
+     void currentChanged(int);
++%If (Qt_6_9_0 -)
++    void widgetAdded(int index);
++%End
+     void widgetRemoved(int index);
+ 
+ protected:
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qstyleoption.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstyleoption.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qstyleoption.sip	2025-02-03 16:22:09.873474600 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qstyleoption.sip	2025-04-03 02:57:44.914718900 +0200
+@@ -464,6 +464,9 @@
+     {
+         None,
+         HasFrame,
++%If (Qt_6_9_0 -)
++        MinimumSizeHint,
++%End
+     };
+ 
+     typedef QFlags<QStyleOptionTab::TabFeature> TabFeatures;
+@@ -619,6 +622,12 @@
+         HasCheckIndicator,
+         HasDisplay,
+         HasDecoration,
++%If (Qt_6_9_0 -)
++        IsDecoratedRootColumn,
++%End
++%If (Qt_6_9_0 -)
++        IsDecorationForRootColumn,
++%End
+     };
+ 
+     typedef QFlags<QStyleOptionViewItem::ViewItemFeature> ViewItemFeatures;
+diff -ur pyqt6-6.8.1/sip/QtWidgets/qwidget.sip pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qwidget.sip
+--- pyqt6-6.8.1/sip/QtWidgets/qwidget.sip	2025-02-03 16:22:09.875983500 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtWidgets/qwidget.sip	2025-04-03 02:57:44.921539000 +0200
+@@ -515,4 +515,10 @@
+     void setWindowFlag(Qt::WindowType, bool on = true);
+     QScreen *screen() const;
+     void setScreen(QScreen *);
++%If (Qt_6_9_0 -)
++    QString accessibleIdentifier() const;
++%End
++%If (Qt_6_9_0 -)
++    void setAccessibleIdentifier(const QString &identifier);
++%End
+ };
+diff -ur pyqt6-6.8.1/sip/QtXml/qdom.sip pyqt6-6.9.0.dev2504021615/sip/QtXml/qdom.sip
+--- pyqt6-6.8.1/sip/QtXml/qdom.sip	2025-02-03 16:22:09.764196200 +0100
++++ pyqt6-6.9.0.dev2504021615/sip/QtXml/qdom.sip	2025-04-03 02:57:44.599672800 +0200
+@@ -158,8 +158,12 @@
+     QDomNodeList();
+     QDomNodeList(const QDomNodeList &);
+     ~QDomNodeList();
++%If (- Qt_6_9_0)
+     bool operator==(const QDomNodeList &) const;
++%End
++%If (- Qt_6_9_0)
+     bool operator!=(const QDomNodeList &) const;
++%End
+     QDomNode item(int index) const;
+     QDomNode at(int index) const;
+     int length() const;
+@@ -526,3 +530,9 @@
+ };
+ 
+ QTextStream &operator<<(QTextStream &, const QDomNode &) /ReleaseGIL/;
++%If (Qt_6_9_0 -)
++bool operator!=(const QDomNodeList &lhs, const QDomNodeList &rhs);
++%End
++%If (Qt_6_9_0 -)
++bool operator==(const QDomNodeList &lhs, const QDomNodeList &rhs);
++%End
+diff -ur pyqt6-6.8.1/uic/uiparser.py pyqt6-6.9.0.dev2504021615/uic/uiparser.py
+--- pyqt6-6.8.1/uic/uiparser.py	2025-02-03 16:22:08.579204600 +0100
++++ pyqt6-6.9.0.dev2504021615/uic/uiparser.py	2025-04-03 02:57:40.776603200 +0200
+@@ -1,4 +1,4 @@
+-# Copyright (c) 2023 Riverbank Computing Limited.
++# Copyright (c) 2025 Riverbank Computing Limited.
+ # Copyright (c) 2006 Thorsten Marek.
+ # All right reserved.
+ #
+@@ -58,7 +58,7 @@
+ 
+     align_flags = None
+     for qt_align in alignment.split('|'):
+-        _, qt_align = qt_align.split('::')
++        *_, qt_align = qt_align.split('::')
+         align = getattr(QtCore.Qt.AlignmentFlag, qt_align)
+ 
+         if align_flags is None:
+--- /dev/null	2025-04-03 18:43:40.396021108 +0200
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qpycore_std_chrono_duration.sip	2025-04-03 02:57:45.093715200 +0200
+@@ -0,0 +1,79 @@
++// This is the SIP interface definition for the std::chrono::duration based
++// mapped types.
++//
++// Copyright (c) 2025 Riverbank Computing Limited <info@riverbankcomputing.com>
++// 
++// This file is part of PyQt6.
++// 
++// This file may be used under the terms of the GNU General Public License
++// version 3.0 as published by the Free Software Foundation and appearing in
++// the file LICENSE included in the packaging of this file.  Please review the
++// following information to ensure the GNU General Public License version 3.0
++// requirements will be met: http://www.gnu.org/copyleft/gpl.html.
++// 
++// If you do not wish to use this file under the terms of the GPL version 3.0
++// then you may purchase a commercial license.  For more information contact
++// info@riverbankcomputing.com.
++// 
++// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
++// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++
++
++%If (Qt_6_8_0 -)
++
++%MappedType std::chrono::milliseconds /TypeHint="int"/
++{
++%TypeHeaderCode
++#include <chrono>
++%End
++
++%ConvertFromTypeCode
++    return PyLong_FromLong(sipCpp->count());
++%End
++
++%ConvertToTypeCode
++    if (!sipIsErr)
++    {
++        PyErr_Clear();
++        sipLong_AsLong(sipPy);
++
++        return !PyErr_Occurred();
++    }
++
++    *sipCppPtr = new std::chrono::milliseconds(sipLong_AsLong(sipPy));
++ 
++    return sipGetState(sipTransferObj);
++%End
++};
++
++%End
++
++
++%If (Qt_6_9_0 -)
++
++%MappedType std::chrono::seconds /TypeHint="int"/
++{
++%TypeHeaderCode
++#include <chrono>
++%End
++
++%ConvertFromTypeCode
++    return PyLong_FromLong(sipCpp->count());
++%End
++
++%ConvertToTypeCode
++    if (!sipIsErr)
++    {
++        PyErr_Clear();
++        sipLong_AsLong(sipPy);
++
++        return !PyErr_Occurred();
++    }
++
++    *sipCppPtr = new std::chrono::seconds(sipLong_AsLong(sipPy));
++ 
++    return sipGetState(sipTransferObj);
++%End
++};
++
++%End
+--- /dev/null	2025-04-03 18:43:40.396021108 +0200
++++ pyqt6-6.9.0.dev2504021615/sip/QtCore/qjsonparseerror.sip	2025-04-03 02:57:45.306746500 +0200
+@@ -0,0 +1,55 @@
++// qjsonparseerror.sip generated by MetaSIP
++//
++// This file is part of the QtCore Python extension module.
++//
++// Copyright (c) 2025 Riverbank Computing Limited <info@riverbankcomputing.com>
++// 
++// This file is part of PyQt6.
++// 
++// This file may be used under the terms of the GNU General Public License
++// version 3.0 as published by the Free Software Foundation and appearing in
++// the file LICENSE included in the packaging of this file.  Please review the
++// following information to ensure the GNU General Public License version 3.0
++// requirements will be met: http://www.gnu.org/copyleft/gpl.html.
++// 
++// If you do not wish to use this file under the terms of the GPL version 3.0
++// then you may purchase a commercial license.  For more information contact
++// info@riverbankcomputing.com.
++// 
++// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
++// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++
++
++%If (Qt_6_9_0 -)
++
++struct QJsonParseError
++{
++%TypeHeaderCode
++#include <qjsonparseerror.h>
++%End
++
++    enum ParseError
++    {
++        NoError,
++        UnterminatedObject,
++        MissingNameSeparator,
++        UnterminatedArray,
++        MissingValueSeparator,
++        IllegalValue,
++        TerminationByNumber,
++        IllegalNumber,
++        IllegalEscapeSequence,
++        IllegalUTF8String,
++        UnterminatedString,
++        MissingObject,
++        DeepNesting,
++        DocumentTooLarge,
++        GarbageAtEnd,
++    };
++
++    QString errorString() const;
++    int offset;
++    QJsonParseError::ParseError error;
++};
++
++%End
+--- /dev/null	2025-04-03 18:43:40.396021108 +0200
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qfontvariableaxis.sip	2025-04-03 02:57:44.779524600 +0200
+@@ -0,0 +1,48 @@
++// qfontvariableaxis.sip generated by MetaSIP
++//
++// This file is part of the QtGui Python extension module.
++//
++// Copyright (c) 2025 Riverbank Computing Limited <info@riverbankcomputing.com>
++// 
++// This file is part of PyQt6.
++// 
++// This file may be used under the terms of the GNU General Public License
++// version 3.0 as published by the Free Software Foundation and appearing in
++// the file LICENSE included in the packaging of this file.  Please review the
++// following information to ensure the GNU General Public License version 3.0
++// requirements will be met: http://www.gnu.org/copyleft/gpl.html.
++// 
++// If you do not wish to use this file under the terms of the GPL version 3.0
++// then you may purchase a commercial license.  For more information contact
++// info@riverbankcomputing.com.
++// 
++// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
++// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++
++
++%If (Qt_6_9_0 -)
++
++class QFontVariableAxis
++{
++%TypeHeaderCode
++#include <qfontvariableaxis.h>
++%End
++
++public:
++    QFontVariableAxis();
++    QFontVariableAxis(const QFontVariableAxis &axis);
++    ~QFontVariableAxis();
++    void swap(QFontVariableAxis &other /Constrained/);
++    QFont::Tag tag() const;
++    void setTag(QFont::Tag tag);
++    QString name() const;
++    void setName(const QString &name);
++    qreal minimumValue() const;
++    void setMinimumValue(qreal minimumValue);
++    qreal maximumValue() const;
++    void setMaximumValue(qreal maximumValue);
++    qreal defaultValue() const;
++    void setDefaultValue(qreal defaultValue);
++};
++
++%End
+--- /dev/null	2025-04-03 18:43:40.396021108 +0200
++++ pyqt6-6.9.0.dev2504021615/sip/QtGui/qpainterstateguard.sip	2025-04-03 02:57:44.681874000 +0200
+@@ -0,0 +1,48 @@
++// qpainterstateguard.sip generated by MetaSIP
++//
++// This file is part of the QtGui Python extension module.
++//
++// Copyright (c) 2025 Riverbank Computing Limited <info@riverbankcomputing.com>
++// 
++// This file is part of PyQt6.
++// 
++// This file may be used under the terms of the GNU General Public License
++// version 3.0 as published by the Free Software Foundation and appearing in
++// the file LICENSE included in the packaging of this file.  Please review the
++// following information to ensure the GNU General Public License version 3.0
++// requirements will be met: http://www.gnu.org/copyleft/gpl.html.
++// 
++// If you do not wish to use this file under the terms of the GPL version 3.0
++// then you may purchase a commercial license.  For more information contact
++// info@riverbankcomputing.com.
++// 
++// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
++// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++
++
++%If (Qt_6_9_0 -)
++
++class QPainterStateGuard
++{
++%TypeHeaderCode
++#include <qpainterstateguard.h>
++%End
++
++public:
++    enum class InitialState
++    {
++        Save,
++        NoSave,
++    };
++
++    QPainterStateGuard(QPainter *painter, QPainterStateGuard::InitialState state = QPainterStateGuard::InitialState::Save);
++    ~QPainterStateGuard();
++    void swap(QPainterStateGuard &other /Constrained/);
++    void save();
++    void restore();
++
++private:
++    QPainterStateGuard(const QPainterStateGuard &);
++};
++
++%End

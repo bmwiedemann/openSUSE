@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr  3 17:05:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.8.1
+  * Added the QtStateMachine module.
+  * Bug fixes.
+- Drop 0001-Fix-build-with-Qt-6.8.2.patch
+- Add PyQt6-Qt6.9.0.patch in order to build with Qt 6.9.0. This is
+  basically PyQt6 6.9.0.dev2504021615 without the version bump
+
+-------------------------------------------------------------------
 Sun Feb  2 12:00:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add build fix:

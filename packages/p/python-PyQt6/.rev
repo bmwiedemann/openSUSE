@@ -236,4 +236,17 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment></comment>
     <requestid>1242235</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2b9f0ff3c81ffa7cf3e2b5521e68cd82</srcmd5>
+    <version>6.8.1</version>
+    <time>1744040154</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.8.1
+  * Added the QtStateMachine module.
+  * Bug fixes.
+- Drop 0001-Fix-build-with-Qt-6.8.2.patch
+- Add PyQt6-Qt6.9.0.patch in order to build with Qt 6.9.0. This is
+  basically PyQt6 6.9.0.dev2504021615 without the version bump (forwarded request 1266946 from bnavigator)</comment>
+    <requestid>1266947</requestid>
+  </revision>
 </revisionlist>

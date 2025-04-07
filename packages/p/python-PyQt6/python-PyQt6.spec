@@ -21,19 +21,19 @@
 %define pyqt_build_for_qt6 1
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}
-Version:        6.8.0
+Version:        6.8.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/PyQt6-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
 Patch1:         0001-Use-a-noarch-wrapper-for-dbus-mainloop-integration.patch
-# PATCH-FIX-UPSTREAM - fix build failure with Qt 6.8.2
-Patch2:         0001-Fix-build-with-Qt-6.8.2.patch
+# PATCH-FIX-UPSTREAM PyQt6-Qt6.9.0.patch -- this is basically 6.9.0.dev2504021615 without the version bump
+Patch2:         PyQt6-Qt6.9.0.patch
 BuildRequires:  %{python_module PyQt6-sip >= 13.8}
 BuildRequires:  %{python_module dbus-python-devel >= 0.8}
 BuildRequires:  %{python_module devel >= 3.9}
@@ -178,7 +178,7 @@ PyQt is a set of Python bindings for the Qt framework.
 This package contains programming examples for PyQt6.
 
 %prep
-%autosetup -p1 -n PyQt6-%{version}
+%autosetup -p1 -n pyqt6-%{version}
 dos2unix examples/quick/models/*/view.qml
 dos2unix examples/multimedia*/*/*.ui
 
