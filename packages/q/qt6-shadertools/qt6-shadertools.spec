@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtshadertools-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,7 +27,7 @@
 %endif
 #
 Name:           qt6-shadertools%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 ShaderTools library
 License:        GPL-3.0-only
@@ -35,9 +35,9 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-shadertools-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       spirv-tools
 %if "%{qt6_flavor}" == "docs"
 BuildRequires:  qt6-tools
@@ -67,8 +67,8 @@ Development files for the Qt 6 ShaderTools library
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 ShaderTools library
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6ShaderTools) = %{real_version}
-%requires_eq    qt6-gui-private-devel
 
 %description private-devel
 This package provides private headers of libQt6ShaderTools that do not have any
@@ -116,6 +116,7 @@ ABI or API guarantees.
 %exclude %{_qt6_includedir}/QtShaderTools/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6ShaderToolsPrivate/
 %{_qt6_includedir}/QtShaderTools/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_shadertools_private.pri
 
