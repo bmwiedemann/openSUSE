@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Mar 30 01:29:44 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton to version 1.0.4.
+  ## 1.0.4
+
+  * Ed448.sign: avoid extra re-derive of public key.
+    [#48](https://github.com/kazu-yamamoto/crypton/pull/48)
+
+-------------------------------------------------------------------
+Sat Mar 29 03:59:21 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update crypton to version 1.0.3.
+  ## 1.0.3
+
+  * Make sign of Ed25519/Ed448 safer. The public key parameter is
+    ignored and its public key is generated from the secret key
+    parameter to prevent Double Public Key Signing Function Oracle
+    Attack.
+    [#47](https://github.com/kazu-yamamoto/crypton/pull/47)
+
+-------------------------------------------------------------------
 Tue Mar 11 19:15:31 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update crypton to version 1.0.2.
