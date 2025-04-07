@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtconnectivity-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -27,10 +27,10 @@
 %endif
 #
 # Private QML imports
-%global __requires_exclude qt6qmlimport\\((HeartRateGame|NdefEditor)\\)
+%global __requires_exclude qt6qmlimport\\((HeartRateGame|NdefEditor.*)\\)
 #
 Name:           qt6-connectivity%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 connectivity tools and libraries
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
@@ -38,12 +38,12 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-connectivity-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-network-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6DBus) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
+BuildRequires:  cmake(Qt6NetworkPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickControls2) = %{real_version}
 BuildRequires:  cmake(Qt6Widgets) = %{real_version}
@@ -86,9 +86,9 @@ Development files for the Qt6 connectivity libraries.
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 connectivity libraries
 Requires:       cmake(Qt6Bluetooth) = %{real_version}
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6NetworkPrivate) = %{real_version}
 Requires:       cmake(Qt6Nfc) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-network-private-devel
 
 %description private-devel
 This package provides private headers of qt6-connectivity that are normally
@@ -152,11 +152,18 @@ The packages that build against these have to require the exact Qt version.
 %exclude %{_qt6_includedir}/QtNfc/%{real_version}/
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6BluetoothPrivate/
+%{_qt6_cmakedir}/Qt6Connectivity/
+%{_qt6_cmakedir}/Qt6NfcPrivate/
+%{_qt6_descriptionsdir}/Connectivity.json
 %dir %{_qt6_includedir}/QtBluetooth
 %dir %{_qt6_includedir}/QtNfc
 %{_qt6_includedir}/QtBluetooth/%{real_version}/
+# No public API
+%{_qt6_includedir}/QtConnectivity/
 %{_qt6_includedir}/QtNfc/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_bluetooth_private.pri
+%{_qt6_mkspecsdir}/modules/qt_lib_connectivity_private.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_nfc_private.pri
 
 %endif
