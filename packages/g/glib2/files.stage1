@@ -60,7 +60,3 @@
 %{_libdir}/pkgconfig/gobject-2.0.pc
 %{_libdir}/pkgconfig/gthread-2.0.pc
 %{_libexecdir}/gio-launch-desktop
-%dir %{_libexecdir}/installed-tests
-%dir %{_libexecdir}/installed-tests/glib
-%{_libexecdir}/installed-tests/glib/taptestrunner.py
-%{_libexecdir}/installed-tests/glib/testprogramrunner.py

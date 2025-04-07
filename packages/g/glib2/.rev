@@ -2379,4 +2379,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251303</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>cb6fd738f984c4294c51639d5dd13e55</srcmd5>
+    <version>2.84.1</version>
+    <time>1744040107</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267156</requestid>
+  </revision>
 </revisionlist>

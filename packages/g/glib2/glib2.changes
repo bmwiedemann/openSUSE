@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Apr  3 21:13:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.84.1:
+  + Fix test failure when building against gobject-introspection
+    ≥1.83.4
+  + Bugs fixed:
+    - 2.84.0 build failure on Linux:
+      ../gio/gnetworkmonitornetlink.c:47:10: fatal error:
+      netlink/netlink_route.h: No such file or directory
+    - test failure with gobject-introspection 1.83.4: warning:
+      element doc:format from state 3 is unknown, ignoring
+    - gio/trash does not handle special characters well
+    - `g_cancellable_connect()` documentation incorrect
+    - g_cancellable_connect(): is it safe to unref cancellable from
+      callback?
+    - Crash with some registry key values in GWin32AppInfo
+    - Memory sanitizer fixes
+    - gobject: Be consistent in using atomic logic to handle the
+      GParamSpecPool
+    - gsettings: Port docs to gi-docgen format, add missing
+      annotations and make various improvements
+    - tests: Don't install runner scripts without installed_tests
+    - docs: Document GSignalFlags members added after 2.0
+    - tests: Add a test for g_object_freeze_notify() being called
+      too often
+    - gfileinfo: Slightly expand docs for
+      g_file_info_get_attribute_as_string()
+    - gi: Dynamically set doc-format
+    - tests: Various fixes to create temporary files in /tmp rather
+      than the build directory
+    - gdbusnameowning: Convert docs to gi-docgen linking syntax
+    - giounix-private: Fix macro for checking for epoll_create1()
+    - Fix LGPL in header
+    - gutils: make documentation of g_set_prgname() clearer
+    - docs: Add some detail
+    - gspawn-win32: Fix potential integer overflows in argv
+      handling
+    - gvarianttype: Improve docs on type validation
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar  6 14:02:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.84.0:
