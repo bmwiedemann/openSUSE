@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:19:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.03.0:
+  * spelling fix: possibilites -> possibilities
+  * Duck array ops for `all` and `any`
+  * `map_over_datasets`: fix error message for wrong result type
+  * Use resolution-dependent default units for lazy time encoding
+  * DOC: Fix 404 on Cubed's documentation
+  * use mean of min/max years as offset in calculation of
+    datetime64 mean
+  * Fix dataarray drop attrs
+  * Start splitting up `dataset.py`
+  * Upgrade mypy to 1.15
+  * implement map_over_datasets kwargs
+  * run CI on `python=3.13`
+  * Prune data tree for Isomorphic operations
+  * Skip failing array api test.
+  * Pass node path to tokenize in `open_datatree`
+  * Fix false timedelta decoding `SerializationWarning` and
+    improve warning message
+  * Add typos check to pre-commit hooks
+  * Ensure KeyError raised for zarr datasets missing dim names
+  * Improve handling of dtype and NaT when encoding/decoding
+    masked and packaged datetimes and timedeltas
+  * fix and supress some test warnings
+  * Update asv badge url in README.md
+  * Fix broken Zarr test
+  * Pin pandas stubs
+  * Use `to_numpy` in time decoding
+  * explicitly cast the dtype of `where`'s condition parameter to
+    `bool`
+  * Better `uv` compatibility
+  * Change `python_files` in `pyproject.toml` to a list
+  * Don't skip tests when on a `mypy` branch
+  * Fix type issues from pandas stubs
+  * Refactor compatibility modules into xarray.compat package
+  * Fix version in requires_zarr_v3 fixture
+  * Adds open_datatree and load_datatree to the tutorial module
+  * Update flaky pydap test
+- update to 2025.01.2:
+  * This release brings non-nanosecond datetime and timedelta
+    resolution to xarray, sharded reading in zarr, suggestion of
+    correct names when trying to access non-existent data
+    variables and bug fixes!
+  * Remove outdated quantile test.
+  * Relax nanosecond datetime restriction in CF time decoding
+  * fix upstream dev issues
+  * Suggest the correct name when no key matches in the dataset
+  * cast type to PDDatetimeUnitOptions
+  * Update time coding tests to assert exact equality
+  * remove dask-expr from CI runs, fix related tests
+  * Use zarr-fixture to prevent thread leakage errors
+  * fix weighted polyfit for arrays with more than 2 dimensions
+  * Fix test_doc_example on big-endian systems
+  * Remove unnecessary a article
+  * Fix some typing
+  * Use flox for grouped first, last
+  * Add `shards` to `valid_encodings` to enable sharded Zarr
+    writing
+  * Add shxarray to the xarray ecosystem list
+  * Remove repetitive that (replace it with the)
+  * Enable `DataTree.to_zarr(compute=False)`
+  * Add `time_unit` argument to `CFTimeIndex.to_datetimeindex`
+  * fix mean for datetime-like using the respective time
+    resolution unit
+  * Enable passing a `CFTimedeltaCoder` to `decode_timedelta`
+  * Revert "Use flox for grouped first, last (#9986)"
+  * Fix infer_freq, check for subdtype "datetime64"/"timedelta64"
+  * Migrate Zarr region="auto" tests to a class
+  * Fix the push method when the limit parameter is bigger than
+    the chunk…
+  * Use `freq="D"` instead of `freq="d"` in `pd.timedelta_range`
+  * cast `numpy` scalars to arrays in `NamedArray.from_array`
+  * remove outdated type-ignores
+  * Preserve order of variables in combine_by_coords
+  * Add FAQ answer about API stability & backwards compatibility
+  * release notes: 2025.01.2
+- update to 2025.01.1:
+  * split out CFDatetimeCoder, deprecate use_cftime as kwarg
+  * Fix zarr upstream tests
+- update to 2025.01.0:
+  * Add blank What's New
+  * Upgrade ruff to 0.8.0
+  * Improved duck array wrapping
+  * Use compute instead of load in plot
+  * Described default centre argument behaviour in rolling
+    functions
+  * Fix type annotations for `get_axis_num` (GH 9822)
+  * Test type annotations for Variable.get_axis_num
+  * FIX: gracfully handle missing seaborn dependency
+  * move ensure_dtype_not_object from conventions to backends
+  * Fixed function links in dataarray.py and dataset.py
+  * Fix seed for random test data.
+  * Set `zarr_format` for `zarr.consolidate_metadata`
+  * Reference ncdata in docs.
+  * Add Pyproject pre-commit hooks
+  * dask tests: Avoid check for non-copies, xfail pandas
+    comparison
+  * Avoid local functions in push
+  * Add token to codecov
+  * Remove deprecated behavior for non-dim positional args
+  * Fix/silence upstream tests
+  * finalize deprecation of "closed"-parameter
+  * Fix upstream Zarr compatibility
+  * Fix interpolation when non-numeric coords are present.
+  * Use integers instead of randint
+  * Add "unit"-parameter to date_range, enhance iso time parser
+    to us
+  * Add missing DataTree attributes to docs
+  * move scalar-handling logic into `possibly_convert_objects`
+  * remove unused "type: ignore" comments in test_plot.py
+  * Optimize idxmin, idxmax with dask
+  * Cache pre-existing Zarr arrays in Zarr backend
+  * Explicitly configure ReadTheDocs build to use conf.py
+  * Skip dask rolling
+  * Rewrite interp to use `apply_ufunc`
+  * friendlier error messages for missing chunk managers
+  * Edit serialization error message
+  * Enhance and move ISO-8601 parser to coding.times
+  * fix warning from scipy backend guess_can_open on directory
+  * time coding refactor
+- add no-mypy-test-plugin.patch: skip pytest-mypy dependency
+
+-------------------------------------------------------------------
 Fri Dec  6 12:27:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip another type induced test error on 32-bit

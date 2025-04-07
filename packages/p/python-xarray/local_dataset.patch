@@ -1,6 +1,8 @@
---- xarray-2024.11.0/xarray/tutorial.py	2024-11-22 21:58:55.000000000 +0100
-+++ xarray-2024.11.0/xarray/tutorial.py.new	2024-11-24 14:18:51.684909924 +0100
-@@ -162,9 +162,11 @@
+Index: xarray-2025.03.0/xarray/tutorial.py
+===================================================================
+--- xarray-2025.03.0.orig/xarray/tutorial.py
++++ xarray-2025.03.0/xarray/tutorial.py
+@@ -164,9 +164,11 @@ def open_dataset(
      downloader = pooch.HTTPDownloader(headers=headers)
  
      # retrieve the file

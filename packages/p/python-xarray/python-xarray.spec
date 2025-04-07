@@ -1,7 +1,7 @@
 #
 # spec file for package python-xarray
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,19 +25,19 @@
 %define psuffix %{nil}
 %endif
 
-%define ghversion 2024.11.0
-
 %{?sle15_python_module_pythons}
 Name:           python-xarray%{psuffix}
-Version:        2024.11.0
+Version:        2025.03.0
 Release:        0
 Summary:        N-D labeled arrays and datasets in Python
 License:        Apache-2.0
 URL:            https://github.com/pydata/xarray
-Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{ghversion}.tar.gz#/xarray-%{ghversion}-gh.tar.gz
+Source:         https://github.com/pydata/xarray/archive/refs/tags/v%{version}.tar.gz#/xarray-%{version}-gh.tar.gz
 # PATCH-FEATURE-UPSTREAM local_dataset.patch gh#pydata/xarray#5377 mcepl@suse.com
 # fix xr.tutorial.open_dataset to work with the preloaded cache.
 Patch0:         local_dataset.patch
+# PATCH-FIX-OPENSUSE: skip dependency on pytest-mypy
+Patch1:         no-mypy-test-plugin.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -79,7 +79,7 @@ Recommends:     python-numbagg >= 0.6
 %description accel
 The [accel] extra for xarray, N-D labeled arrays and datasets in Python
 Except flox and numbagg, because they are not packaged yet.
-Use `pip-%{python_bin_suffix} --user install flox numbagg` to install from PyPI, if needed.
+Use `pip --user install flox numbagg` to install from PyPI, if needed.
 
 %package complete
 Summary:        The python xarray[complete] extra
@@ -109,7 +109,7 @@ Recommends:     python-pre-commit
 
 %description dev
 The [dev] extra for xarray, N-D labeled arrays and datasets in Python
-Except pre-commit, Use `pip-%{python_bin_suffix} --user install pre-commit` to install, if needed.
+Except pre-commit, Use `pip --user install pre-commit` to install, if needed.
 
 %package io
 Summary:        The python xarray[io] extra
@@ -124,6 +124,11 @@ Requires:       python-zarr >= 2.16
 
 %description io
 The [io] extra for xarray, N-D labeled arrays and datasets in Python
+
+
+
+
+
 
 
 
@@ -151,10 +156,10 @@ Recommends:     python-nc-time-axis
 The [viz] extra for xarray, N-D labeled arrays and datasets in Python
 
 Except nc-time-axis, because it's not packaged yet.
-Use `pip-%{python_bin_suffix} --user install nc-time-axis` to install from PyPI, if needed.
+Use `pip --user install nc-time-axis` to install from PyPI, if needed.
 
 %prep
-%autosetup -p1 -n xarray-%{ghversion}
+%autosetup -p1 -n xarray-%{version}
 chmod -x xarray/util/print_versions.py
 
 %build
@@ -197,7 +202,7 @@ donttest="$donttest or test_h5netcdf_storage_options or test_source_encoding_alw
 %doc README.md
 %license LICENSE licenses/
 %{python_sitelib}/xarray
-%{python_sitelib}/xarray-%{version}.dist-info
+%{python_sitelib}/xarray-*.dist-info
 
 %files %{python_files accel}
 %doc README.md
