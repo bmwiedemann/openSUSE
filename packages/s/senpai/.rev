@@ -1,0 +1,16 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00dca4be9d411e1bf6b99221a1d866dd</srcmd5>
+    <version>0.4.0</version>
+    <time>1744040238</time>
+    <user>anag_factory</user>
+    <comment>senpai is a terminal IRC client that works best with bouncers:
+
+ * no logs are kept,
+ * history is fetched from the server via CHATHISTORY,
+ * networks are fetched from the server via bouncer-networks,
+ * messages can be searched in logs via SEARCH,
+ * files can be uploaded via FILEHOST (with drag &amp; drop!)</comment>
+    <requestid>1267349</requestid>
+  </revision>
+</revisionlist>
