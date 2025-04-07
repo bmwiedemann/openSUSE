@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huey
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        huey, a little task queue
 License:        MIT

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  7 12:46:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.5.3
+  * Add support for a new `SIGNAL_ENQUEUED`.
+  * Use `FOR UPDATE SKIP LOCKED` when supported by the database
+    in the `sql_huey` storage engine.
+
+-------------------------------------------------------------------
 Wed Jan 22 11:03:56 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix shebang for $python_sitelib/huey/bin/huey_consumer.py
