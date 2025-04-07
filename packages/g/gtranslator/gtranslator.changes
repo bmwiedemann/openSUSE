@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  6 10:21:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop pkgconfig(libdazzle-1.0) BuildRequires: No longer needed,
+  nor used.
+
+-------------------------------------------------------------------
 Tue Mar 25 07:30:14 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove old source 47.1, not needed anymore

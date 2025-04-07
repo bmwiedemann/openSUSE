@@ -44,7 +44,6 @@ BuildRequires:  pkgconfig(gtksourceview-5) >= 5.4.0
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
-BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.33.90
 BuildRequires:  pkgconfig(libgda-6.0) >= 6.0.0
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(libspelling-1)
