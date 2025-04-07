@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:54:36 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  New Features:
+  * Add multithreading support for zstd compression #689
+  * Add bzip3 support #522
+  * Add --remove flag for decompression subcommand to remove files
+    after successful decompression #757
+  * Add br (Brotli) support #765
+  * Add rename option in overwrite menu #779
+  Bug Fixes:
+  * Fix output corrupted on parallel decompression #642
+  * Tweaks:
+  * CI refactor #578
+  * Use a more unique name for temporary decompression path #725
+  * Run clippy for tests too #738
+  Improvements:
+  * Fix logging IO bottleneck #642
+  * Support decompression over stdin #692
+  * Make --format more forgiving with the formatting of the provided format #519
+  * Use buffered writer for list output #764
+  * Disable smart unpack when --dir flag is provided in decompress command #782
+
+-------------------------------------------------------------------
 Wed Mar 20 16:07:47 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Filter dependencies for vendor tarball
