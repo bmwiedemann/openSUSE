@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-remoteobjects
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtremoteobjects-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -30,7 +30,7 @@
 %global __requires_exclude qt6qmlimport\\(TimeExample\\)
 #
 Name:           qt6-remoteobjects%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt6 RemoteObjects Library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
@@ -38,10 +38,9 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-remoteobjects-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Bluetooth) = %{real_version}
+BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6Network) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
@@ -83,8 +82,8 @@ Development files for the Qt 6 RemoteObjects library.
 
 %package private-devel
 Summary:        Non-ABI stable API for the Qt 6 RemoteObjects library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6RemoteObjects) = %{real_version}
-%requires_eq    qt6-core-private-devel
 
 %description private-devel
 This package provides private headers of libQt6RemoteObjects that do not have
@@ -140,14 +139,10 @@ This package contains REPC, a compiler for Qt RemoteObjects API definition files
 
 # repparser has no private headers
 rm %{buildroot}%{_qt6_mkspecsdir}/modules/qt_lib_repparser_private.pri
+rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParserPrivate
 
 # CMake files are not needed for plugins
 rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
-
-# Unneeded?
-rm -r %{buildroot}%{_qt6_mkspecsdir}/features
-rm -r %{buildroot}%{_qt6_cmakedir}/Qt6RepParser
-rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 
 %ldconfig_scriptlets -n libQt6RemoteObjects6
 %ldconfig_scriptlets -n libQt6RemoteObjectsQml6
@@ -163,6 +158,8 @@ rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %{_qt6_cmakedir}/Qt6BuildInternals/StandaloneTests/QtRemoteObjectsTestsConfig.cmake
 %{_qt6_cmakedir}/Qt6RemoteObjects/
 %{_qt6_cmakedir}/Qt6RemoteObjectsTools/
+%{_qt6_cmakedir}/Qt6RepParser
+%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %{_qt6_descriptionsdir}/RemoteObjects.json
 %{_qt6_descriptionsdir}/RepParser.json
 %{_qt6_includedir}/QtRemoteObjects/
@@ -170,12 +167,14 @@ rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %{_qt6_libdir}/libQt6RemoteObjects.prl
 %{_qt6_libdir}/libQt6RemoteObjects.so
 %{_qt6_metatypesdir}/qt6remoteobjects_*_metatypes.json
+%{_qt6_mkspecsdir}/features/*
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects.pri
 %{_qt6_mkspecsdir}/modules/qt_lib_repparser.pri
 %{_qt6_pkgconfigdir}/Qt6RemoteObjects.pc
 %exclude %{_qt6_includedir}/QtRemoteObjects/%{real_version}
 
 %files private-devel
+%{_qt6_cmakedir}/Qt6RemoteObjectsPrivate/
 %{_qt6_includedir}/QtRemoteObjects/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjects_private.pri
 
@@ -194,6 +193,7 @@ rm %{buildroot}%{_qt6_pkgconfigdir}/Qt6RepParser.pc
 %exclude %{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}
 
 %files -n qt6-remoteobjectsqml-private-devel
+%{_qt6_cmakedir}/Qt6RemoteObjectsQmlPrivate/
 %{_qt6_includedir}/QtRemoteObjectsQml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_remoteobjectsqml_private.pri
 
