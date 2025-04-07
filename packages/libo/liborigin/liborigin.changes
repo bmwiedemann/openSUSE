@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr  5 16:26:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.0.3:
+  * Fix-buffer-overflow and out-of-bounds accesses
+  * Fix reading legends from newer project version
+  * support axis title shown property
+  * multiple code quality fixes
+- Fix license to GPL-3.0-or-later
+- drop unused rpmlintrc filter
+
+-------------------------------------------------------------------
 Thu Aug  3 01:02:30 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.0.2:

@@ -2,6 +2,7 @@
 # spec file for package liborigin
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +19,16 @@
 
 %define shlib %{name}3
 Name:           liborigin
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        A library for reading OriginLab OPJ project files
-License:        GPL-2.0-or-later
+License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/liborigin/
 Source:         http://downloads.sourceforge.net/liborigin/%{name}-%{version}.tar.gz
-Source2:        liborigin-rpmlintrc
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  doxygen
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 %description
@@ -86,22 +86,30 @@ Features:
 
 %install
 %cmake_install
+# installed via macro
+rm %{buildroot}%{_docdir}/%{name}/COPYING
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
+%license COPYING
 %{_libdir}/%{name}.so.*
 
 %files devel
+%license COPYING
 %{_libdir}/%{name}.so
 %{_includedir}/%{name}/
 %{_libdir}/pkgconfig/*.pc
 
 %files doc
+%license COPYING
 %{_docdir}/%{name}/
 
 %files tools
+%license COPYING
 %{_bindir}/opj2dat
 
 %changelog
