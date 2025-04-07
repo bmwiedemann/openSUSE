@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  6 07:11:40 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- refactor librime-boost166.patch
+  * leap 15.6's gcc7 has no <filesystem> support, and -lstdc++fs
+    does not work, port to <boost/filesystem.hpp>, to avoid runtime
+    segfault
+
+-------------------------------------------------------------------
 Sat Mar 22 13:09:45 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - fix Leap 15.6 build

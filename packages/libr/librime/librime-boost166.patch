@@ -15,12 +15,595 @@ Index: librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
 ===================================================================
 --- librime-1.10.0+git20240229.4ee471e.orig/plugins/plugins_module.cc
 +++ librime-1.10.0+git20240229.4ee471e/plugins/plugins_module.cc
-@@ -49,7 +49,7 @@ void PluginManager::LoadPlugins(path plu
-           LOG(INFO) << "loading plugin '" << plugin_name << "' from "
-                     << plugin_file;
-           try {
--            auto plugin_lib = boost::dll::shared_library(plugin_file);
-+            auto plugin_lib = boost::dll::shared_library(boost::filesystem::path(plugin_file));
-             plugin_libs_[plugin_name] = plugin_lib;
-           } catch (const std::exception& ex) {
-             LOG(ERROR) << "error loading plugin " << plugin_name << ": "
+@@ -6,7 +6,7 @@
+ #include <algorithm>
+ #include <boost/algorithm/string.hpp>
+ #include <boost/dll.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/build_config.h>
+ #include <rime/common.h>
+ #include <rime/component.h>
+@@ -14,7 +14,7 @@
+ #include <rime/registry.h>
+ #include <rime_api.h>
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ 
+ namespace rime {
+ 
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/common.h
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/common.h
++++ librime-1.10.0+git20240229.4ee471e/src/rime/common.h
+@@ -9,7 +9,7 @@
+ 
+ #include <rime/build_config.h>
+ 
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <functional>
+ #include <list>
+ #include <map>
+@@ -80,8 +80,9 @@ inline an<T> New(Args&&... args) {
+ using boost::signals2::connection;
+ using boost::signals2::signal;
+ 
+-class path : public std::filesystem::path {
+-  using fs_path = std::filesystem::path;
++class path : public boost::filesystem::path {
++
++  using fs_path = boost::filesystem::path;
+ 
+  public:
+   path() : fs_path() {}
+@@ -90,9 +91,9 @@ class path : public std::filesystem::pat
+ #ifdef _WIN32
+   // convert utf-8 string to native encoding path.
+   explicit path(const std::string& utf8_path)
+-      : fs_path(std::filesystem::u8path(utf8_path)) {}
++      : fs_path(boost::filesystem::path(utf8_path)) {}
+   explicit path(const char* utf8_path)
+-      : fs_path(std::filesystem::u8path(utf8_path)) {}
++      : fs_path(boost::filesystem::path(utf8_path)) {}
+ #else
+   // disable implicit conversion from string to path for development purpose.
+   explicit path(const std::string& utf8_path) : fs_path(utf8_path) {}
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/build_info_plugin.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/config/build_info_plugin.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/config/build_info_plugin.cc
+@@ -2,7 +2,7 @@
+ // Copyright RIME Developers
+ // Distributed under the BSD License
+ //
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/service.h>
+ #include <rime/algo/fs.h>
+ #include <rime/config/config_compiler.h>
+@@ -37,7 +37,7 @@ bool BuildInfoPlugin::ReviewLinkOutput(C
+     }
+     // TODO: store as 64-bit number to avoid the year 2038 problem
+     timestamps[resource->resource_id] =
+-        (int)filesystem::to_time_t(std::filesystem::last_write_time(file_path));
++        (int)boost::filesystem::last_write_time(file_path);
+   });
+ #endif
+   return true;
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/config/config_data.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/config/config_data.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/config/config_data.cc
+@@ -7,7 +7,7 @@
+ #include <fstream>
+ #include <sstream>
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <yaml-cpp/yaml.h>
+ #include <rime/config/config_compiler.h>
+ #include <rime/config/config_cow_ref.h>
+@@ -61,7 +61,7 @@ bool ConfigData::LoadFromFile(const path
+   file_path_ = file_path;
+   modified_ = false;
+   root.reset();
+-  if (!std::filesystem::exists(file_path)) {
++  if (!boost::filesystem::exists(file_path)) {
+     LOG(WARNING) << "nonexistent config file '" << file_path << "'.";
+     return false;
+   }
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/db.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/db.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/db.cc
+@@ -5,7 +5,7 @@
+ // 2011-11-02 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/common.h>
+ #include <rime/resource.h>
+ #include <rime/service.h>
+@@ -40,7 +40,7 @@ Db::Db(const path& file_path, const stri
+     : name_(name), file_path_(file_path) {}
+ 
+ bool Db::Exists() const {
+-  return std::filesystem::exists(file_path());
++  return boost::filesystem::exists(file_path());
+ }
+ 
+ bool Db::Remove() {
+@@ -48,7 +48,7 @@ bool Db::Remove() {
+     LOG(ERROR) << "attempt to remove opened db '" << name_ << "'.";
+     return false;
+   }
+-  return std::filesystem::remove(file_path());
++  return boost::filesystem::remove(file_path());
+ }
+ 
+ bool Db::CreateMetadata() {
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dict_compiler.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/dict_compiler.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/dict_compiler.cc
+@@ -4,7 +4,7 @@
+ //
+ // 2011-11-27 GONG Chen <chen.sst@gmail.com>
+ //
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <cfloat>
+ #include <cmath>
+ #include <fstream>
+@@ -51,7 +51,7 @@ static bool get_dict_files_from_settings
+     for (auto it = tables->begin(); it != tables->end(); ++it) {
+       string dict_name = As<ConfigValue>(*it)->str();
+       auto dict_file = source_resolver->ResolvePath(dict_name + ".dict.yaml");
+-      if (!std::filesystem::exists(dict_file)) {
++      if (!boost::filesystem::exists(dict_file)) {
+         LOG(ERROR) << "source file '" << dict_file << "' does not exist.";
+         return false;
+       }
+@@ -82,7 +82,7 @@ bool DictCompiler::Compile(const path& s
+   bool build_table_from_source = true;
+   DictSettings settings;
+   auto dict_file = source_resolver_->ResolvePath(dict_name_ + ".dict.yaml");
+-  if (!std::filesystem::exists(dict_file)) {
++  if (!boost::filesystem::exists(dict_file)) {
+     LOG(ERROR) << "source file '" << dict_file << "' does not exist.";
+     build_table_from_source = false;
+   } else if (!load_dict_settings_from_file(&settings, dict_file)) {
+@@ -165,7 +165,7 @@ bool DictCompiler::Compile(const path& s
+     EntryCollector collector(std::move(syllabary));
+     DictSettings settings;
+     auto dict_file = source_resolver_->ResolvePath(pack_name + ".dict.yaml");
+-    if (!std::filesystem::exists(dict_file)) {
++    if (!boost::filesystem::exists(dict_file)) {
+       if (pack_table->Exists())
+         LOG(INFO) << "pack source file '" << dict_file
+                   << "' does not exist, using prebuilt table '"
+@@ -209,7 +209,7 @@ bool DictCompiler::Compile(const path& s
+ 
+ static path relocate_target(const path& source_path,
+                             ResourceResolver* target_resolver) {
+-  auto resource_id = source_path.filename().u8string();
++  auto resource_id = source_path.filename().string();
+   return target_resolver->ResolvePath(resource_id);
+ }
+ 
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/dictionary.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/dictionary.cc
+@@ -4,7 +4,7 @@
+ //
+ // 2011-07-05 GONG Chen <chen.sst@gmail.com>
+ //
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/algo/syllabifier.h>
+ #include <rime/common.h>
+ #include <rime/dict/dictionary.h>
+@@ -306,8 +306,8 @@ bool Dictionary::Decode(const Code& code
+ }
+ 
+ bool Dictionary::Exists() const {
+-  return std::filesystem::exists(prism_->file_path()) && !tables_.empty() &&
+-         std::filesystem::exists(tables_[0]->file_path());
++  return boost::filesystem::exists(prism_->file_path()) && !tables_.empty() &&
++         boost::filesystem::exists(tables_[0]->file_path());
+ }
+ 
+ bool Dictionary::Remove() {
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/mapped_file.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/mapped_file.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/mapped_file.cc
+@@ -7,7 +7,7 @@
+ // 2011-06-30 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <fstream>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <boost/interprocess/file_mapping.hpp>
+ #include <boost/interprocess/mapped_region.hpp>
+ #include <rime/dict/mapped_file.h>
+@@ -101,7 +101,7 @@ void MappedFile::Close() {
+ }
+ 
+ bool MappedFile::Exists() const {
+-  return std::filesystem::exists(file_path_);
++  return boost::filesystem::exists(file_path_);
+ }
+ 
+ bool MappedFile::IsOpen() const {
+@@ -130,7 +130,7 @@ bool MappedFile::Resize(size_t capacity)
+   if (IsOpen())
+     Close();
+   try {
+-    std::filesystem::resize_file(file_path_, capacity);
++    boost::filesystem::resize_file(file_path_, capacity);
+   } catch (...) {
+     return false;
+   }
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db_recovery_task.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/user_db_recovery_task.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db_recovery_task.cc
+@@ -5,7 +5,7 @@
+ // 2013-04-22 GONG Chen <chen.sst@gmail.com>
+ //
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/deployer.h>
+ #include <rime/dict/db.h>
+@@ -40,9 +40,9 @@ bool UserDbRecoveryTask::Run(Deployer* d
+   // repair didn't work on the damaged db file; remove and recreate it
+   LOG(INFO) << "recreating db file.";
+   if (db_->Exists()) {
+-    std::error_code ec;
+-    std::filesystem::rename(db_->file_path(),
+-                            path(db_->file_path()).concat(".old"), ec);
++    boost::system::error_code ec;
++    boost::filesystem::rename(db_->file_path(),
++                            path(db_->file_path()) /= ".old", ec);
+     if (ec && !db_->Remove()) {
+       LOG(ERROR) << "Error removing db file '" << db_->file_path() << "'.";
+       return false;
+@@ -67,12 +67,12 @@ void UserDbRecoveryTask::RestoreUserData
+   const path& dir(deployer->user_data_sync_dir());
+   // try *.userdb.txt
+   path snapshot_path = dir / (dict_name + UserDb::snapshot_extension());
+-  if (!std::filesystem::exists(snapshot_path)) {
++  if (!boost::filesystem::exists(snapshot_path)) {
+     // try *.userdb.*.snapshot
+     string legacy_snapshot_file =
+         dict_name + component->extension() + ".snapshot";
+     snapshot_path = dir / legacy_snapshot_file;
+-    if (!std::filesystem::exists(snapshot_path)) {
++    if (!boost::filesystem::exists(snapshot_path)) {
+       return;  // not found
+     }
+   }
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/customizer.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/customizer.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/customizer.cc
+@@ -4,14 +4,14 @@
+ //
+ // 2011-12-12 GONG Chen <chen.sst@gmail.com>
+ //
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <stdint.h>
+ #include <rime/common.h>
+ #include <rime/config.h>
+ #include <rime/algo/utilities.h>
+ #include <rime/lever/customizer.h>
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ 
+ namespace rime {
+ 
+@@ -88,7 +88,7 @@ bool Customizer::UpdateConfigFile() {
+   if (redistribute || (is_dirty && !missing_original_copy)) {
+     try {
+       fs::copy_file(source_path_, dest_path_,
+-                    fs::copy_options::overwrite_existing);
++                    fs::copy_option::overwrite_if_exists);
+     } catch (...) {
+       LOG(ERROR) << "Error copying config file '" << source_path_
+                  << "' to user directory.";
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/deployment_tasks.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/deployment_tasks.cc
+@@ -9,7 +9,7 @@
+ 
+ #include <algorithm>
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <boost/uuid/random_generator.hpp>
+ #include <boost/uuid/uuid.hpp>
+ #include <boost/uuid/uuid_io.hpp>
+@@ -31,7 +31,7 @@
+ 
+ using namespace std::placeholders;
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ 
+ namespace rime {
+ 
+@@ -49,7 +49,7 @@ bool DetectModifications::Run(Deployer*
+     for (auto dir : data_dirs_) {
+       path p = fs::canonical(dir);
+       last_modified = (std::max)(last_modified,
+-                                 filesystem::to_time_t(fs::last_write_time(p)));
++                                 fs::last_write_time(p));
+       if (fs::is_directory(p)) {
+         for (fs::directory_iterator iter(p), end; iter != end; ++iter) {
+           path entry(iter->path());
+@@ -58,7 +58,7 @@ bool DetectModifications::Run(Deployer*
+               entry.filename().string() != "user.yaml") {
+             last_modified =
+                 (std::max)(last_modified,
+-                           filesystem::to_time_t(fs::last_write_time(entry)));
++                           fs::last_write_time(entry));
+           }
+         }
+       }
+@@ -87,7 +87,7 @@ bool InstallationUpdate::Run(Deployer* d
+   const path& user_data_path(deployer->user_data_dir);
+   if (!fs::exists(user_data_path)) {
+     LOG(INFO) << "creating user data dir: " << user_data_path;
+-    std::error_code ec;
++    boost::system::error_code ec;
+     if (!fs::create_directories(user_data_path, ec)) {
+       LOG(ERROR) << "Error creating user data dir: " << user_data_path;
+     }
+@@ -261,7 +261,7 @@ SchemaUpdate::SchemaUpdate(TaskInitializ
+ }
+ 
+ static bool MaybeCreateDirectory(path dir) {
+-  std::error_code ec;
++  boost::system::error_code ec;
+   if (fs::create_directories(dir, ec)) {
+     return true;
+   }
+@@ -312,7 +312,7 @@ static bool TrashDeprecatedUserCopy(cons
+       return false;
+     }
+     path backup = trash / user_copy.filename();
+-    std::error_code ec;
++    boost::system::error_code ec;
+     fs::rename(user_copy, backup, ec);
+     if (ec) {
+       LOG(ERROR) << "error trashing file " << user_copy;
+@@ -417,7 +417,7 @@ static bool ConfigNeedsUpdate(Config* co
+       continue;
+     }
+     if (recorded_time !=
+-        (int)filesystem::to_time_t(fs::last_write_time(source_file))) {
++        (int)fs::last_write_time(source_file)) {
+       LOG(INFO) << "source file " << (recorded_time ? "changed: " : "added: ")
+                 << source_file;
+       return true;
+@@ -481,7 +481,7 @@ bool SymlinkingPrebuiltDictionaries::Run
+     if (fs::is_symlink(entry)) {
+       try {
+         // a symlink becomes dangling if the target file is no longer provided
+-        std::error_code ec;
++	boost::system::error_code ec;
+         auto target_path = fs::canonical(entry, ec);
+         bool bad_link = bool(ec);
+         bool linked_to_shared_data =
+@@ -564,8 +564,8 @@ bool BackupConfigFiles::Run(Deployer* de
+       ++skipped;  // customized copy
+       continue;
+     }
+-    std::error_code ec;
+-    fs::copy_file(entry, backup, fs::copy_options::overwrite_existing, ec);
++    boost::system::error_code ec;
++    fs::copy_file(entry, backup, fs::copy_option::overwrite_if_exists, ec);
+     if (ec) {
+       LOG(ERROR) << "error backing up file " << backup;
+       ++failure;
+@@ -599,7 +599,7 @@ bool CleanupTrash::Run(Deployer* deploye
+         return false;
+       }
+       path backup = trash / entry.filename();
+-      std::error_code ec;
++      boost::system::error_code ec;
+       fs::rename(entry, backup, ec);
+       if (ec) {
+         LOG(ERROR) << "error clean up file " << entry;
+@@ -634,7 +634,7 @@ bool CleanOldLogFiles::Run(Deployer* dep
+   for (auto& dir : google::GetLoggingDirectories()) {
+     auto perms = fs::status(dir).permissions();
+     if ((perms & (fs::perms::owner_write | fs::perms::group_write |
+-                  fs::perms::others_write)) != fs::perms::none) {
++                  fs::perms::others_write)) != fs::perms::no_perms) {
+       dirs.push_back(dir);
+     }
+   }
+@@ -647,7 +647,7 @@ bool CleanOldLogFiles::Run(Deployer* dep
+     // preparing files
+     for (const auto& entry : fs::directory_iterator(dir)) {
+       const string& file_name(entry.path().filename().string());
+-      if (entry.is_regular_file() && !entry.is_symlink() &&
++      if (fs::is_regular_file(entry.path()) && !fs::is_symlink(entry.path()) &&
+           boost::starts_with(file_name, "rime.") &&
+           !boost::contains(file_name, today)) {
+         files.push_back(entry.path());
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/switcher_settings.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/switcher_settings.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/switcher_settings.cc
+@@ -6,12 +6,12 @@
+ //
+ #include <utility>
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/config.h>
+ #include <rime/deployer.h>
+ #include <rime/lever/switcher_settings.h>
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ 
+ namespace rime {
+ 
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/lever/user_dict_manager.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/lever/user_dict_manager.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/lever/user_dict_manager.cc
+@@ -6,7 +6,7 @@
+ //
+ #include <fstream>
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <boost/scope_exit.hpp>
+ #include <rime/common.h>
+ #include <rime/deployer.h>
+@@ -16,7 +16,7 @@
+ #include <rime/dict/user_db.h>
+ #include <rime/lever/user_dict_manager.h>
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ 
+ namespace rime {
+ 
+@@ -40,7 +40,7 @@ void UserDictManager::GetUserDictList(Us
+     return;
+   }
+   for (fs::directory_iterator it(path_), end; it != end; ++it) {
+-    string name = it->path().filename().u8string();
++    string name = it->path().filename().string();
+     if (boost::ends_with(name, component->extension())) {
+       boost::erase_last(name, component->extension());
+       user_dict_list->push_back(name);
+@@ -163,7 +163,7 @@ bool UserDictManager::UpgradeUserDict(co
+   LOG(INFO) << "upgrading user dict '" << dict_name << "'.";
+   path trash = deployer_->user_data_dir / "trash";
+   if (!fs::exists(trash)) {
+-    std::error_code ec;
++    boost::system::error_code ec;
+     if (!fs::create_directories(trash, ec)) {
+       LOG(ERROR) << "error creating directory '" << trash << "'.";
+       return false;
+@@ -180,7 +180,7 @@ bool UserDictManager::Synchronize(const
+   bool success = true;
+   path sync_dir(deployer_->sync_dir);
+   if (!fs::exists(sync_dir)) {
+-    std::error_code ec;
++    boost::system::error_code ec;
+     if (!fs::create_directories(sync_dir, ec)) {
+       LOG(ERROR) << "error creating directory '" << sync_dir << "'.";
+       return false;
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/resource.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/resource.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/resource.cc
+@@ -4,13 +4,13 @@
+ //
+ 
+ #include <boost/algorithm/string.hpp>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <rime/resource.h>
+ 
+ namespace rime {
+ 
+ string ResourceResolver::ToResourceId(const string& file_path) const {
+-  string string_path = path(file_path).generic_u8string();
++  string string_path = path(file_path).generic_string();
+   bool has_prefix = boost::starts_with(string_path, type_.prefix);
+   bool has_suffix = boost::ends_with(string_path, type_.suffix);
+   size_t start = (has_prefix ? type_.prefix.length() : 0);
+@@ -27,16 +27,16 @@ string ResourceResolver::ToFilePath(cons
+ }
+ 
+ path ResourceResolver::ResolvePath(const string& resource_id) {
+-  return std::filesystem::absolute(root_path_ /
++  return boost::filesystem::absolute(root_path_ /
+                                    (type_.prefix + resource_id + type_.suffix));
+ }
+ 
+ path FallbackResourceResolver::ResolvePath(const string& resource_id) {
+   auto default_path = ResourceResolver::ResolvePath(resource_id);
+-  if (!std::filesystem::exists(default_path)) {
+-    auto fallback_path = std::filesystem::absolute(
++  if (!boost::filesystem::exists(default_path)) {
++    auto fallback_path = boost::filesystem::absolute(
+         fallback_root_path_ / (type_.prefix + resource_id + type_.suffix));
+-    if (std::filesystem::exists(fallback_path)) {
++    if (boost::filesystem::exists(fallback_path)) {
+       return fallback_path;
+     }
+   }
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/dict/user_db.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/dict/user_db.cc
+@@ -107,7 +107,7 @@ bool UserDbHelper::UpdateUserInfo() {
+ }
+ 
+ bool UserDbHelper::IsUniformFormat(const path& file_path) {
+-  return boost::ends_with(file_path.filename().u8string(),
++  return boost::ends_with(file_path.filename().string(),
+                           plain_userdb_extension);
+ }
+ 
+Index: librime-1.10.0+git20240229.4ee471e/src/rime/gear/simplifier.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/src/rime/gear/simplifier.cc
++++ librime-1.10.0+git20240229.4ee471e/src/rime/gear/simplifier.cc
+@@ -36,7 +36,7 @@ class Opencc {
+     opencc::Config config;
+     try {
+       // opencc accepts file path encoded in UTF-8.
+-      converter_ = config.NewFromFile(config_path.u8string());
++      converter_ = config.NewFromFile(config_path.string());
+ 
+       const list<opencc::ConversionPtr> conversions =
+           converter_->GetConversionChain()->GetConversions();
+Index: librime-1.10.0+git20240229.4ee471e/test/resource_resolver_test.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/test/resource_resolver_test.cc
++++ librime-1.10.0+git20240229.4ee471e/test/resource_resolver_test.cc
+@@ -1,9 +1,9 @@
+ #include <fstream>
+-#include <filesystem>
++#include <boost/filesystem.hpp>
+ #include <gtest/gtest.h>
+ #include <rime/resource.h>
+ 
+-namespace fs = std::filesystem;
++namespace fs = boost::filesystem;
+ using namespace rime;
+ 
+ static const ResourceType kMineralsType = ResourceType{
+Index: librime-1.10.0+git20240229.4ee471e/tools/rime_table_decompiler.cc
+===================================================================
+--- librime-1.10.0+git20240229.4ee471e.orig/tools/rime_table_decompiler.cc
++++ librime-1.10.0+git20240229.4ee471e/tools/rime_table_decompiler.cc
+@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
+   fout << "# Rime dictionary\n\n";
+   fout << "---\n"
+           "name: "
+-       << file_path.stem().u8string()
++       << file_path.stem().string()
+        << "\n"
+           "version: \"1.0\"\n"
+           "...\n\n";
