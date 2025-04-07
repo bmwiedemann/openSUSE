@@ -1,7 +1,7 @@
 #
 # spec file for package qt6-datavis3d
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define short_name qtdatavis3d
 %define tar_name qtdatavis3d-everywhere-src
 %define tar_suffix %{nil}
@@ -31,7 +31,7 @@
 %global __requires_exclude qt6qmlimport\\((AxisHandling|SurfaceGallery)\\)
 #
 Name:           qt6-datavis3d%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 data visualization framework
 License:        GPL-3.0-or-later
@@ -39,11 +39,11 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-datavis3d-rpmlintrc
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-qml-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
 BuildRequires:  cmake(Qt6QuickTest) = %{real_version}
 BuildRequires:  cmake(Qt6Test) = %{real_version}
@@ -158,6 +158,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtDataVisualization/%{real_version}
 
 %files -n qt6-datavisualization-private-devel
+%{_qt6_cmakedir}/Qt6DataVisualizationPrivate/
 %{_qt6_includedir}/QtDataVisualization/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_datavisualization_private.pri
 
@@ -176,6 +177,7 @@ rm -r %{buildroot}%{_qt6_cmakedir}/Qt6Qml/QmlPlugins
 %exclude %{_qt6_includedir}/QtDataVisualizationQml/%{real_version}
 
 %files -n qt6-datavisualizationqml-private-devel
+%{_qt6_cmakedir}/Qt6DataVisualizationQmlPrivate/
 %{_qt6_includedir}/QtDataVisualizationQml/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_datavisualizationqml_private.pri
 
