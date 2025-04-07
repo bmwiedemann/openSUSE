@@ -69,13 +69,15 @@ Patch8:         %{name}-Revert-ArmVirtPkg-make-EFI_LOADER_DATA-non-executabl.pat
 # Bug 1205613 - L3: win 2k22 UEFI xen VMs cannot boot in xen after upgrade
 Patch9:         %{name}-Revert-OvmfPkg-OvmfXen-Set-PcdFSBClock.patch
 # Bug 1236009 - Build failure on Leap 15.5/15.6 due to unsupported GCC flag -mstack-protector-guard for aarch64 cross-compiler
-Patch10:        %{name}-Remove-unsupported-GCC-flag-mstack-protector-guard.patch
+Patch10:        %{name}-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
 %ifarch x86_64
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} <= 150700
 Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 %endif
 %endif
 Patch12:        %{name}-Increase-FVMAIN-Size-for-Compatibility-with-2MB-Size.patch
+# Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
+Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
 
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils

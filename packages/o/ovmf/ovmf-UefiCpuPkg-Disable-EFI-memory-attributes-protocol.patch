@@ -1,0 +1,33 @@
+From 337fa12ca8065594ef66dba34117e9307aebb346 Mon Sep 17 00:00:00 2001
+From: Chun-Yi Lee <jlee@suse.com>
+Date: Wed, 2 Apr 2025 20:40:02 +0800
+Subject: [PATCH] UefiCpuPkg: Disable EFI memory attributes protocol
+
+The 'efaa102d006f UefiCpuPkg: Produce EFI memory attributes protocol'
+causes that some OS hangs on booting. (e.g. Win11 or SLE12-SP5 with
+old shim 15.8 )
+
+Let's disable EFI memory attributes protocol at this moment. Until
+we found a better solution. (bsc#1240420, bsc#1240300)
+
+Signed-off-by: Chun-Yi Lee <jlee@suse.com>
+---
+ UefiCpuPkg/CpuDxe/CpuDxe.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/UefiCpuPkg/CpuDxe/CpuDxe.c b/UefiCpuPkg/CpuDxe/CpuDxe.c
+index 472de55180..5f4a0aafca 100644
+--- a/UefiCpuPkg/CpuDxe/CpuDxe.c
++++ b/UefiCpuPkg/CpuDxe/CpuDxe.c
+@@ -1036,7 +1036,7 @@ InitializeCpu (
+   //
+   // Install EFI memory attribute Protocol
+   //
+-  InstallEfiMemoryAttributeProtocol (mCpuHandle);
++//  InstallEfiMemoryAttributeProtocol (mCpuHandle);
+ 
+   //
+   // Refresh GCD memory space map according to MTRR value.
+-- 
+2.44.0
+

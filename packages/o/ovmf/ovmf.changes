@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  3 07:00:11 UTC 2025 - Joey Lee <jlee@suse.com>
+
+- Using old ovmf-Revert-Add-Stack-Cookie-Support-to-MSVC-and-GCC.patch
+  to replace ovmf-Remove-unsupported-GCC-flag-mstack-protector-guard.patch
+  because the new patch causes that smm ovmf can not boot success.
+  (bsc#1240300)
+        - guest OS: openSUSE Tumbleweed, Windows 11
+- Added ovmf-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
+  to disable EFI memory attributes protocol at this moment. It causes
+  old shim 15.8 boot fail on SLE12-SP5. (bsc#1240771)
+
+-------------------------------------------------------------------
 Wed Mar 05 18:00:00 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202502
