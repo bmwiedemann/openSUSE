@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Apr 03 11:00:29 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20250403:
+  * Allow hyper-v's fcopy_uio_daemon to run as unconfined_service_t (bsc#1239593)
+  * Allow switcheroo-control dbus chat with xdm
+  * Fix typo in calling unconfined_dbus_chat for switcheroo-control
+  * Allow sysadm_t to write to /dev/kmsg
+  * Allow init_t nnp domain transition to pcscd_t
+  * Fix the genfscon statement for pidfs filesystem
+  * Allow tuned-ppd dbus chat with xdm
+  * Update INSTALL to describe necessary steps to build it
+  * Rename the default policy to fedora-selinux
+  * Update COPYING to the latest version of GPLv2
+  * Allow traceroute_t bind rawip sockets to unreserved ports
+  * Revert "Allow traceroute_t bind rawip sockets to unreserved ports"
+  * Change the bootc system generator name to bootc-systemd-generator
+  * Correct path for SAP HDB binary
+  * additional path for SAP binaries
+  * dontaudit access to /etc/passwd for power-profiles-daemon (bsc#1237534)
+  * allow power-profiles-daemon to watch sysfs directories (bsc#1237534)
+  * add dev_watch_sysfs_dirs interface
+  * Allow mpd use the io_uring API
+  * Confine tuned-ppd
+  * Add the switcheroo module
+  * Label wine's windows libraries as textrel_shlib_t
+  * Allow systemd domains write global pressure stall information
+  * Add label and interfaces for kernel PSI files
+  * Update bootupd policy
+  * Update ktls policy
+  * Add policy for systemd-bootc-generator
+  * Allow blueman the kill capability
+  * Add context for plymouth debug log files
+  * Allow rlimit inheritance for domains transitioning to local_login_t
+  * Update insights-core policy
+  * Allow insights-core map all non-security files
+  * Allow insights-core map audit config and log files
+  * Allow insights-client manage insights_client_var_log_t files
+- Syncing with upstream rawhide selinux-policy up to:
+  * 041d36f8d8c03e651c1e52b6221770db1e9237c6
+- Update embedded container-selinux version to commit:
+  * 4244f856ea34d20edb903a6ff28667400a4b6c18 (version 2.236.0)
+
+-------------------------------------------------------------------
 Mon Mar 24 09:33:34 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250324:
