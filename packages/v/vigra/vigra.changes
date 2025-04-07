@@ -1,10 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr  5 09:17:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.2
+  * Removing executable permission from plain files
+  * Do not inherit from std::iterator as it is deprecated in c++17
+  * Use posix shell instead of bash for tests
+  * fix RandomAccessSet::insert(pos, val) function for gcc-15
+    and clang-19
+  * fix typo in multi_iterator_coupled
+  * Move away from inline global regex flag
+  * modernise for c++20
+- Also build without numpy on arm7l
+- Add a _constraints file to avoid oom issues on PowerPC and aarch64
+
+-------------------------------------------------------------------
 Thu Mar 13 07:10:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires: python3-setuptools to fix builds against
   python 3.13.
 - Drop python support for i586 as it won't build against
   python3.13 + numpy2 on these archs any more.
+
+-------------------------------------------------------------------
+Mon Mar 10 22:44:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.1
+  * Address implementation incompatibility of ptp in vigranumpy
+    with numpy 2
+  * Improve compatibility with compilers in 2024
+- Remove unneeded _service file. `osc service mr download_files`
+  does the same thing
+- Spec cleanup
 
 -------------------------------------------------------------------
 Thu Feb 29 14:49:04 UTC 2024 - Takashi Iwai <tiwai@suse.com>

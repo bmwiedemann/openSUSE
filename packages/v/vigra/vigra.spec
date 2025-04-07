@@ -19,9 +19,7 @@
 %if 0%{?suse_version} < 1600
 %bcond_with numpy
 %else
-%ifarch %{ix86}
-%bcond_with numpy
-%else
+%ifnarch %{ix86} %{arm}
 %bcond_without numpy
 %endif
 %endif
@@ -30,14 +28,14 @@
 %bcond_with    lemon
 %define _shlibname libvigraimpex11
 Name:           vigra
-Version:        1.11.2
+Version:        1.12.2
 Release:        0
 Summary:        Computer vision Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            http://ukoethe.github.io/vigra/
-Source:         https://github.com/ukoethe/vigra/archive/refs/tags/Version-1-11-2.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+URL:            https://ukoethe.github.io/vigra/
+Source:         https://github.com/ukoethe/vigra/archive/refs/tags/Version-1-12-2.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -48,18 +46,14 @@ BuildRequires:  libtiff-devel
 BuildRequires:  openexr-devel
 BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
 %if %{with numpy}
+BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_python3-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-setuptools
 %endif
-
 %if %{with lemon}
 BuildRequires:  lemon-devel
 %endif
@@ -111,12 +105,11 @@ those in the C++ Standard Template Library, you can easily adapt any
 VIGRA component to the needs of your application, without giving up
 execution speed.
 
-
 %if %{with numpy}
 %package -n python3-vigranumpy
 Summary:        Numpy support for VIGRA library
 Group:          Development/Libraries/C and C++
-Requires:       %{name} == %{version}
+Requires:       %{name} = %{version}
 Requires:       python3-numpy
 
 %description -n python3-vigranumpy
@@ -127,11 +120,10 @@ those in the C++ Standard Template Library, you can easily adapt any
 VIGRA component to the needs of your application, without giving up
 execution speed. This package contains python / numpy bindings for VIGRA
 
-
 %endif
 
 %prep
-%autosetup -p1 -n%{name}-Version-1-11-2
+%autosetup -p1 -n%{name}-Version-1-12-2
 sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
 
 %build
@@ -150,34 +142,37 @@ sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
 %install
 %cmake_install
 
-rm -rf %{buildroot}%{_docdir}/vigranumpy
-%fdupes %{buildroot}/%{_prefix}
+# Move CMake config files to the usual location
+mkdir -p %{buildroot}%{_libdir}/cmake
+mv %{buildroot}%{_libdir}/vigra %{buildroot}%{_libdir}/cmake
+%if %{with numpy}
+mv %{buildroot}%{_libdir}/vigranumpy %{buildroot}%{_libdir}/cmake
+%endif
 
-%post -n %{_shlibname} -p /sbin/ldconfig
-%postun -n %{_shlibname} -p /sbin/ldconfig
+%fdupes %{buildroot}%{_prefix}
+
+%ldconfig_scriptlets -n %{_shlibname}
 
 %files -n %{_shlibname}
 %doc README.md
 %license LICENSE.txt
-%{_libdir}/*.so.*
+%{_libdir}/libvigraimpex.so.*
 
 %files devel
-%{_bindir}/vigra-config
-%{_libdir}/*.so
-%{_includedir}/*
-%dir %{_libdir}/vigra/
-%{_libdir}/vigra/*.cmake
 %doc %{_docdir}/%{name}
+%{_bindir}/vigra-config
+%{_includedir}/vigra/
+%{_libdir}/cmake/vigra/
+%{_libdir}/libvigraimpex.so
 
 %if %{with numpy}
 %files -n python3-vigranumpy
-%dir %{python_sitearch}/vigra
-%dir %{python_sitearch}/vigra/pyqt
-%dir %{_libdir}/vigranumpy
-%{python_sitearch}/vigra/*.py
-%{python_sitearch}/vigra/pyqt/*.py
-%{python_sitearch}/vigra/*.so
-%{_libdir}/vigranumpy/*.cmake
+%dir %{python_sitelib}/vigra
+%dir %{python_sitelib}/vigra/pyqt
+%{python_sitelib}/vigra/*.py
+%{python_sitelib}/vigra/pyqt/*.py
+%{python_sitelib}/vigra/*.so
+%{_libdir}/cmake/vigranumpy/
 %endif
 
 %changelog
