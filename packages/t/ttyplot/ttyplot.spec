@@ -1,7 +1,8 @@
 #
 # spec file for package ttyplot
 #
-# Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2023-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           ttyplot
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        Realtime plotting utility for terminals
 License:        Apache-2.0
@@ -33,7 +34,7 @@ It supports rate calculation for counters, and up to two plots on a single
 display using reverse video for the second line.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %make_build CFLAGS="%{optflags} $(pkg-config --cflags --libs ncursesw)"
