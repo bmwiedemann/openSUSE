@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  6 09:48:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0
+  * Add servicePrincipalName to output.
+  * Fix functions descriptions.
+  * Drop future requirement, require Python 3.6+.
+- Drop patch:
+  * remove-future-requirement.patch
+- Add patch:
+  * 73.patch
+
+-------------------------------------------------------------------
 Wed Sep  6 05:58:09 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on update-alternatives.

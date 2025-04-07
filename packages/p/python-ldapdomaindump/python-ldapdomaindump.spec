@@ -1,8 +1,8 @@
 #
 # spec file for package python-ldapdomaindump
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 
 Name:           python-ldapdomaindump
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Active Directory information dumper via LDAP
 License:        MIT
 URL:            https://github.com/dirkjanm/ldapdomaindump/
 Source:         https://files.pythonhosted.org/packages/source/l/ldapdomaindump/ldapdomaindump-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#dirkjanm/ldapdomaindump#55
-Patch0:         remove-future-requirement.patch
+# PATCH-FIX-UPSTREAM https://github.com/dirkjanm/ldapdomaindump/pull/73
+Patch0:         https://patch-diff.githubusercontent.com/raw/dirkjanm/ldapdomaindump/pull/73.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dnspython
 Requires:       python-ldap3 >= 2.5
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module dnspython}
@@ -76,7 +76,7 @@ find . -type f -exec dos2unix {} \;
 
 %files %{python_files}
 %license LICENSE
-%doc Readme.md
+%doc README.md
 %python_alternative %{_bindir}/ldapdomaindump
 %python_alternative %{_bindir}/ldd2bloodhound
 %python_alternative %{_bindir}/ldd2pretty
