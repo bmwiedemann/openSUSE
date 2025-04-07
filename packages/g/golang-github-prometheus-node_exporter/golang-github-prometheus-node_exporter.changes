@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 17:33:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.9.1
+  * [BUGFIX] pressure: Fix missing IRQ on older kernels #3263
+  * [BUGFIX] Fix Darwin memory leak #3277
+
+-------------------------------------------------------------------
 Mon Feb 17 08:35:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - refactor `_service` file and spec to use a nice tarball name
