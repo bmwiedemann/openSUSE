@@ -174,4 +174,26 @@
   * Landlock access fix</comment>
     <requestid>1231378</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2c664b4174378918d205e25594bb1ebd</srcmd5>
+    <version>2.2.1</version>
+    <time>1744044103</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.1:
+  * Fix compilation when libproxyprotocol is not present
+
+- Update to 2.2.0:
+  * Add a boolean setting &quot;is_unix&quot; for listen and
+   protocol entries. This will use the 'host' setting
+   as a path name to a socket file, and connections
+   (listening or connecting) will be performed on Unix
+   socket instead of Internet sockets.
+  * Support HAProxy's proxyprotocol on the backend
+    server side.
+  * Lots of documentation about a new, simpler way to
+    perform transparent proxying.
+  * New &quot;verbose&quot; option that overrides all other
+    verbose settings.</comment>
+    <requestid>1267690</requestid>
+  </revision>
 </revisionlist>

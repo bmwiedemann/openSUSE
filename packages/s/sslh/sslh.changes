@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:50:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  * Fix compilation when libproxyprotocol is not present
+
+-------------------------------------------------------------------
+Mon Apr  7 13:49:47 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.0:
+  * Add a boolean setting "is_unix" for listen and
+   protocol entries. This will use the 'host' setting
+   as a path name to a socket file, and connections
+   (listening or connecting) will be performed on Unix
+   socket instead of Internet sockets.
+  * Support HAProxy's proxyprotocol on the backend
+    server side.
+  * Lots of documentation about a new, simpler way to
+    perform transparent proxying.
+  * New "verbose" option that overrides all other
+    verbose settings.
+
+-------------------------------------------------------------------
 Mon Dec 16 11:08:25 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.4:
