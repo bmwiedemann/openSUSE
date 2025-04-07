@@ -18,12 +18,11 @@
 
 %if 0%{?suse_version} <= 1600
 %bcond_without  bundled_libfmt
+%bcond_without  bundled_libusb
 %else
 %bcond_with     bundled_libfmt
+%bcond_with     bundled_libusb
 %endif
-# currently libusb with support for SuperSpeedPlus is required,
-# which is not yet released, so the one bundled is used.
-%bcond_without  bundled_libusb
 
 Name:           android-tools
 Version:        35.0.2
@@ -72,7 +71,7 @@ BuildRequires:  pkgconfig(fmt) >= 10.2.0
 BuildRequires:  pkgconfig(libudev)
 Provides:       bundled(libusb-1_0)
 %else
-BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.28
 %endif
 
 %description

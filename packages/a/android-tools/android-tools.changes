@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 29 10:34:35 UTC 2025 - munix9@googlemail.com
+
+- Use system libusb library (>= 1.0.28 with SuperSpeedPlus
+  support) for Factory/TW
+
+-------------------------------------------------------------------
 Sun Mar  9 05:32:44 UTC 2025 - munix9@googlemail.com
 
 - Revoke "Use system fmt library for Leap >= 16", as "SLFO_Main"
