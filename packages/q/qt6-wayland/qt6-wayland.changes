@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  2 11:03:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.9.0:
+  * https://www.qt.io/blog/qt-6.9-released
+- Drop patches, merged upstream:
+  * 0001-update-wayland_xml-to-version-1_23_0.patch
+  * fix-taskbar.patch
+
+-------------------------------------------------------------------
 Sun Mar  9 22:50:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Ignore private QML imports

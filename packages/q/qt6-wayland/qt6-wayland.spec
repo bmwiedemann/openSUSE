@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 6.8.2
-%define short_version 6.8
+%define real_version 6.9.0
+%define short_version 6.9
 %define tar_name qtwayland-everywhere-src
 %define tar_suffix %{nil}
 #
@@ -33,7 +33,7 @@
 %global with_opengl 1
 %endif
 Name:           qt6-wayland%{?pkg_suffix}
-Version:        6.8.2
+Version:        6.9.0
 Release:        0
 Summary:        Qt 6 Wayland libraries and tools
 # The wayland compositor files are GPL-3.0-or-later
@@ -41,22 +41,18 @@ License:        GPL-3.0-or-later AND (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-o
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-update-wayland_xml-to-version-1_23_0.patch
-# PATCH-FIX-UPSTREAM fix-taskbar.patch - Based on change number 623667 via KDE bug 491100
-Patch1:         fix-taskbar.patch
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-core-private-devel
-BuildRequires:  qt6-gui-private-devel
-BuildRequires:  qt6-opengl-private-devel
 BuildRequires:  qt6-platformsupport-private-devel
-BuildRequires:  qt6-qml-private-devel
-BuildRequires:  qt6-quick-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}
+BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Gui) = %{real_version}
+BuildRequires:  cmake(Qt6GuiPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6OpenGL) = %{real_version}
+BuildRequires:  cmake(Qt6OpenGLPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Qml) = %{real_version}
+BuildRequires:  cmake(Qt6QmlPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Quick) = %{real_version}
+BuildRequires:  cmake(Qt6QuickPrivate) = %{real_version}
 BuildRequires:  cmake(Qt6Svg) = %{real_version}
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(wayland-client)
@@ -89,8 +85,8 @@ This meta-package requires all the qt6-wayland development packages.
 
 %package private-devel
 Summary:        Qt6 wayland unstable ABI meta package
-Requires:       qt6-waylandclient-private-devel = %{version}
-Requires:       qt6-waylandcompositor-private-devel = %{version}
+Requires:       cmake(Qt6WaylandClientPrivate) = %{real_version}
+Requires:       cmake(Qt6WaylandCompositorPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandEglClientHwIntegrationPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandEglCompositorHwIntegrationPrivate) = %{real_version}
 Requires:       cmake(Qt6WlShellIntegrationPrivate) = %{real_version}
@@ -126,9 +122,9 @@ Development files for the Qt6 WaylandClient library.
 
 %package -n qt6-waylandclient-private-devel
 Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandClient) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
 
 %description -n qt6-waylandclient-private-devel
 This package provides private headers of libQt6WaylandClient that do not have
@@ -154,11 +150,11 @@ Development files for the Qt6 WaylandCompositor library.
 
 %package -n qt6-waylandcompositor-private-devel
 Summary:        Non-ABI stable API for the Qt6 WaylandCompositor library
+Requires:       cmake(Qt6CorePrivate) = %{real_version}
+Requires:       cmake(Qt6GuiPrivate) = %{real_version}
+Requires:       cmake(Qt6QmlPrivate) = %{real_version}
+Requires:       cmake(Qt6QuickPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandCompositor) = %{real_version}
-%requires_eq    qt6-core-private-devel
-%requires_eq    qt6-gui-private-devel
-%requires_eq    qt6-qml-private-devel
-%requires_eq    qt6-quick-private-devel
 
 %description -n qt6-waylandcompositor-private-devel
 This package provides private headers of libQt6WaylandCompositor that do not
@@ -183,9 +179,9 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-waylandeglclienthwintegration-private-devel
 Summary:        Qt 6 WaylandEglClientHwIntegration library - Development files
 Requires:       libQt6WaylandEglClientHwIntegration6 = %{version}
-Requires:       qt6-waylandclient-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
-%requires_eq    qt6-opengl-private-devel
+Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
+Requires:       cmake(Qt6WaylandClientPrivate) = %{real_version}
 
 %description -n qt6-waylandeglclienthwintegration-private-devel
 Development files for the Qt 6 WaylandEglClientHwIntegration library.
@@ -201,8 +197,8 @@ This library does not have any ABI or API guarantees.
 %package -n qt6-waylandeglcompositorhwintegration-private-devel
 Summary:        Qt 6 WaylandEglCompositorHwIntegration library - Development files
 Requires:       libQt6WaylandEglCompositorHwIntegration6 = %{version}
-Requires:       qt6-waylandcompositor-private-devel = %{version}
 Requires:       cmake(Qt6Gui) = %{real_version}
+Requires:       cmake(Qt6WaylandCompositorPrivate) = %{real_version}
 
 %description -n qt6-waylandeglcompositorhwintegration-private-devel
 Development files for the Qt 6 WaylandEglCompositorHwIntegration library.
@@ -297,6 +293,7 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %exclude %{_qt6_includedir}/QtWaylandClient/%{real_version}
 
 %files -n qt6-waylandclient-private-devel
+%{_qt6_cmakedir}/Qt6WaylandClientPrivate/
 %{_qt6_includedir}/QtWaylandClient/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandclient_private.pri
 
@@ -351,6 +348,11 @@ rm %{buildroot}%{_qt6_cmakedir}/*/*Plugin{Config,Targets}*.cmake
 %exclude %{_qt6_includedir}/QtWaylandCompositor/%{real_version}
 
 %files -n qt6-waylandcompositor-private-devel
+%{_qt6_cmakedir}/Qt6WaylandCompositorPrivate/
+%{_qt6_cmakedir}/Qt6WaylandCompositorIviapplicationPrivate/
+%{_qt6_cmakedir}/Qt6WaylandCompositorPresentationTimePrivate/
+%{_qt6_cmakedir}/Qt6WaylandCompositorWLShellPrivate/
+%{_qt6_cmakedir}/Qt6WaylandCompositorXdgShellPrivate/
 %{_qt6_includedir}/QtWaylandCompositor/%{real_version}/
 %{_qt6_mkspecsdir}/modules/qt_lib_waylandcompositor_private.pri
 
