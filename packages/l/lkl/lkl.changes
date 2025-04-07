@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  7 02:49:50 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 37a5caec47e9
+- lkl: Define symbols for string utilities
+- Fix OUTPUT environment variable for LKL build.
+- lkl: hijack: move dbg.c code into dbg_handler.c
+- lkl: hijack: move dbg_handler out of liblkl
+- lkl: Remove the stat symbol hijack
+- Add LKL arch implementation of memmove.
+- lkl: fix zpoline runtime issue missing libgcc_s.so
+- lkl: fix install headers issue on Windows
+- lkl: add android/binder.h and mman.h to headers_install
+  * Rebase without pulling in binder fuzzer and MMU features
+- lkl: fix windows python issue (freeze_support)
+
+-------------------------------------------------------------------
 Fri Mar 21 06:52:57 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 6b2b164c9630
