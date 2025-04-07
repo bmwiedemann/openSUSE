@@ -612,4 +612,12 @@
 - Update to TeXLive 2025</comment>
     <requestid>1255625</requestid>
   </revision>
+  <revision rev="61" vrev="64">
+    <srcmd5>dc1084ccdb6c9bd16026201acd303b7b</srcmd5>
+    <version>unknown</version>
+    <time>1744040102</time>
+    <user>anag_factory</user>
+    <comment>- Avoid doubled pattern() (bug boo#1240761)</comment>
+    <requestid>1267078</requestid>
+  </revision>
 </revisionlist>

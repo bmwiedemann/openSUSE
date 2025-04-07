@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr  4 06:56:16 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid doubled pattern() (bug boo#1240761)
+
+-------------------------------------------------------------------
 Mon Mar 24 12:47:43 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Resolve missing dependcies

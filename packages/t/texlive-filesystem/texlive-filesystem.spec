@@ -24,7 +24,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   218
+%define texlive_noarch   220
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -204,7 +204,7 @@ License:        LPPL-1.0
 Summary:        Basic scheme (plain and latex)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_basic
+Provides:       pattern() = texlive_scheme_basic
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
@@ -226,7 +226,7 @@ License:        LPPL-1.0
 Summary:        Book publishing scheme (core LaTeX and add-ons)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_bookpub
+Provides:       pattern() = texlive_scheme_bookpub
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-barcodes >= %{texlive_version}
 #!BuildIgnore: texlive-barcodes
@@ -298,7 +298,7 @@ License:        LPPL-1.0
 Summary:        ConTeXt scheme
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_context
+Provides:       pattern() = texlive_scheme_context
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-antt >= %{texlive_version}
 #!BuildIgnore: texlive-antt
@@ -353,7 +353,7 @@ License:        LPPL-1.0
 Summary:        Full scheme (everything)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_full
+Provides:       pattern() = texlive_scheme_full
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
@@ -447,7 +447,7 @@ License:        LPPL-1.0
 Summary:        GUST TeX Live scheme
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_gust
+Provides:       pattern() = texlive_scheme_gust
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-amslatex-primer >= %{texlive_version}
 #!BuildIgnore: texlive-amslatex-primer
@@ -528,7 +528,7 @@ License:        LPPL-1.0
 Summary:        Infrastructure-only scheme (no TeX at all)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_infraonly
+Provides:       pattern() = texlive_scheme_infraonly
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-hyphen-base >= %{texlive_version}
 #!BuildIgnore: texlive-hyphen-base
@@ -554,7 +554,7 @@ License:        LPPL-1.0
 Summary:        Medium scheme (small + more packages and languages)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_medium
+Provides:       pattern() = texlive_scheme_medium
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
@@ -613,7 +613,7 @@ License:        LPPL-1.0
 Summary:        Minimal scheme (plain only)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_minimal
+Provides:       pattern() = texlive_scheme_minimal
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-collection-basic >= %{texlive_version}
 #!BuildIgnore: texlive-collection-basic
@@ -633,7 +633,7 @@ License:        LPPL-1.0
 Summary:        Small scheme (basic + xetex, metapost, a few languages)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_small
+Provides:       pattern() = texlive_scheme_small
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-babel-basque >= %{texlive_version}
 #!BuildIgnore: texlive-babel-basque
@@ -748,7 +748,7 @@ License:        LPPL-1.0
 Summary:        TeTeX scheme (more than medium, but nowhere near full)
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_tetex
+Provides:       pattern() = texlive_scheme_tetex
 Provides:       pattern-category() = TeXLive%20Scheme
 Requires:       texlive-acronym >= %{texlive_version}
 #!BuildIgnore: texlive-acronym
@@ -880,7 +880,7 @@ License:        LPPL-1.0
 Summary:        Essential programs and files
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_basic
+Provides:       pattern() = texlive_collection_basic
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive <= %{texlive_previous}
 Requires:       texlive-amsfonts >= %{texlive_version}
@@ -977,7 +977,7 @@ License:        LPPL-1.0
 Summary:        BibTeX additional styles
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_bibtexextra
+Provides:       pattern() = texlive_collection_bibtexextra
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-aaai-named >= %{texlive_version}
 #!BuildIgnore: texlive-aaai-named
@@ -1329,7 +1329,7 @@ License:        LPPL-1.0
 Summary:        TeX auxiliary programs
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_binextra
+Provides:       pattern() = texlive_collection_binextra
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      tetex-bin <= %{texlive_previous}
 Obsoletes:      texlive-bin <= %{texlive_previous}
@@ -1565,7 +1565,7 @@ License:        LPPL-1.0
 Summary:        ConTeXt and packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_context
+Provides:       pattern() = texlive_collection_context
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-context <= %{texlive_previous}
 Requires:       texlive-collection-basic >= %{texlive_version}
@@ -1632,7 +1632,7 @@ License:        LPPL-1.0
 Summary:        Additional fonts
 Group:          Productivity/Publishing/TeX/Fonts
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_fontsextra
+Provides:       pattern() = texlive_collection_fontsextra
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-fonts-extra <= %{texlive_previous}
 Obsoletes:      texlive-fonts-extra-doc <= %{texlive_previous}
@@ -2383,7 +2383,7 @@ License:        LPPL-1.0
 Summary:        Recommended fonts
 Group:          Productivity/Publishing/TeX/Fonts
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_fontsrecommended
+Provides:       pattern() = texlive_collection_fontsrecommended
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-avantgar >= %{texlive_version}
 #!BuildIgnore: texlive-avantgar
@@ -2468,7 +2468,7 @@ License:        LPPL-1.0
 Summary:        Graphics and font utilities
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_fontutils
+Provides:       pattern() = texlive_collection_fontutils
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       psutils
 Requires:       texlive-accfonts >= %{texlive_version}
@@ -2521,7 +2521,7 @@ License:        LPPL-1.0
 Summary:        Additional formats
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_formatsextra
+Provides:       pattern() = texlive_collection_formatsextra
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-aleph >= %{texlive_version}
 #!BuildIgnore: texlive-aleph
@@ -2578,7 +2578,7 @@ License:        LPPL-1.0
 Summary:        Games typesetting
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_games
+Provides:       pattern() = texlive_collection_games
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-bartel-chess-fonts >= %{texlive_version}
 #!BuildIgnore: texlive-bartel-chess-fonts
@@ -2709,7 +2709,7 @@ License:        LPPL-1.0
 Summary:        Humanities packages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_humanities
+Provides:       pattern() = texlive_collection_humanities
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-adtrees >= %{texlive_version}
 #!BuildIgnore: texlive-adtrees
@@ -2841,7 +2841,7 @@ License:        LPPL-1.0
 Summary:        Arabic
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_arabic
+Provides:       pattern() = texlive_lang_arabic
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Obsoletes:      texlive-arab <= %{texlive_previous}
 Requires:       texlive-alkalami >= %{texlive_version}
@@ -2923,7 +2923,7 @@ License:        LPPL-1.0
 Summary:        Chinese
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_chinese
+Provides:       pattern() = texlive_lang_chinese
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-arphic >= %{texlive_version}
 #!BuildIgnore: texlive-arphic
@@ -3011,7 +3011,7 @@ Summary:        Chinese/Japanese/Korean (base)
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
 Provides:       locale(texlive:zh;ja;ko)
-Provides:       pattern() = texlive_cjk
+Provides:       pattern() = texlive_lang_cjk
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Obsoletes:      texlive-cjk <= %{texlive_previous}
 Obsoletes:      texlive-cjk-latex-extras <= %{texlive_previous}
@@ -3071,7 +3071,7 @@ License:        LPPL-1.0
 Summary:        Cyrillic
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_cyrillic
+Provides:       pattern() = texlive_lang_cyrillic
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-babel-belarusian >= %{texlive_version}
 #!BuildIgnore: texlive-babel-belarusian
@@ -3183,7 +3183,7 @@ License:        LPPL-1.0
 Summary:        Czech/Slovak
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_czechslovak
+Provides:       pattern() = texlive_lang_czechslovak
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-babel-czech >= %{texlive_version}
 #!BuildIgnore: texlive-babel-czech
@@ -3230,7 +3230,7 @@ License:        LPPL-1.0
 Summary:        US and UK English
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_english
+Provides:       pattern() = texlive_lang_english
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-amiweb2c-guide >= %{texlive_version}
 #!BuildIgnore: texlive-amiweb2c-guide
@@ -3393,7 +3393,7 @@ License:        LPPL-1.0
 Summary:        Other European languages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_european
+Provides:       pattern() = texlive_lang_european
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-armtex >= %{texlive_version}
 #!BuildIgnore: texlive-armtex
@@ -3552,7 +3552,7 @@ License:        LPPL-1.0
 Summary:        French
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_french
+Provides:       pattern() = texlive_lang_french
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-aeguill >= %{texlive_version}
 #!BuildIgnore: texlive-aeguill
@@ -3667,7 +3667,7 @@ License:        LPPL-1.0
 Summary:        German
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_german
+Provides:       pattern() = texlive_lang_german
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-apalike-german >= %{texlive_version}
 #!BuildIgnore: texlive-apalike-german
@@ -3776,7 +3776,7 @@ License:        LPPL-1.0
 Summary:        Greek
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_greek
+Provides:       pattern() = texlive_lang_greek
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-babel-greek >= %{texlive_version}
 #!BuildIgnore: texlive-babel-greek
@@ -3843,7 +3843,7 @@ License:        LPPL-1.0
 Summary:        Italian
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_italian
+Provides:       pattern() = texlive_lang_italian
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-amsldoc-it >= %{texlive_version}
 #!BuildIgnore: texlive-amsldoc-it
@@ -3898,7 +3898,7 @@ License:        LPPL-1.0
 Summary:        Japanese
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_japanese
+Provides:       pattern() = texlive_lang_japanese
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-ascmac >= %{texlive_version}
 #!BuildIgnore: texlive-ascmac
@@ -4050,7 +4050,7 @@ License:        LPPL-1.0
 Summary:        Korean
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_korean
+Provides:       pattern() = texlive_lang_korean
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-baekmuk >= %{texlive_version}
 #!BuildIgnore: texlive-baekmuk
@@ -4091,7 +4091,7 @@ License:        LPPL-1.0
 Summary:        Other languages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_other
+Provides:       pattern() = texlive_lang_other
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-aalok >= %{texlive_version}
 #!BuildIgnore: texlive-aalok
@@ -4235,7 +4235,7 @@ License:        LPPL-1.0
 Summary:        Polish
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_polish
+Provides:       pattern() = texlive_lang_polish
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-babel-polish >= %{texlive_version}
 #!BuildIgnore: texlive-babel-polish
@@ -4288,7 +4288,7 @@ License:        LPPL-1.0
 Summary:        Portuguese
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_portuguese
+Provides:       pattern() = texlive_lang_portuguese
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-babel-portuges >= %{texlive_version}
 #!BuildIgnore: texlive-babel-portuges
@@ -4331,7 +4331,7 @@ License:        LPPL-1.0
 Summary:        Spanish
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_spanish
+Provides:       pattern() = texlive_lang_spanish
 Provides:       pattern-category() = TeXLive%20Collection%20Language
 Requires:       texlive-antique-spanish-units >= %{texlive_version}
 #!BuildIgnore: texlive-antique-spanish-units
@@ -4376,7 +4376,7 @@ License:        LPPL-1.0
 Summary:        LaTeX fundamental packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_latex
+Provides:       pattern() = texlive_collection_latex
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-latex <= %{texlive_previous}
 Obsoletes:      texlive-latex-doc <= %{texlive_previous}
@@ -4516,7 +4516,7 @@ License:        LPPL-1.0
 Summary:        LaTeX additional packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_latexextra
+Provides:       pattern() = texlive_collection_latexextra
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-2up >= %{texlive_version}
 #!BuildIgnore: texlive-2up
@@ -7719,7 +7719,7 @@ License:        LPPL-1.0
 Summary:        LaTeX recommended packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_latexrecommended
+Provides:       pattern() = texlive_collection_latexrecommended
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-anysize >= %{texlive_version}
 #!BuildIgnore: texlive-anysize
@@ -7877,7 +7877,7 @@ License:        LPPL-1.0
 Summary:        LuaTeX packages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_luatex
+Provides:       pattern() = texlive_collection_luatex
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-addliga >= %{texlive_version}
 #!BuildIgnore: texlive-addliga
@@ -8118,7 +8118,7 @@ License:        LPPL-1.0
 Summary:        Mathematics, natural sciences, computer science packages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_mathscience
+Provides:       pattern() = texlive_collection_mathscience
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-12many >= %{texlive_version}
 #!BuildIgnore: texlive-12many
@@ -8695,7 +8695,7 @@ License:        LPPL-1.0
 Summary:        MetaPost and Metafont packages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_metapost
+Provides:       pattern() = texlive_collection_metapost
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-metapost <= %{texlive_previous}
 Requires:       texlive-automata >= %{texlive_version}
@@ -8815,7 +8815,7 @@ License:        LPPL-1.0
 Summary:        Music packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_music
+Provides:       pattern() = texlive_collection_music
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-musictex <= %{texlive_previous}
 Requires:       texlive-abc >= %{texlive_version}
@@ -8907,7 +8907,7 @@ License:        LPPL-1.0
 Summary:        Graphics, pictures, diagrams
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_pictures
+Provides:       pattern() = texlive_collection_pictures
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-adigraph >= %{texlive_version}
 #!BuildIgnore: texlive-adigraph
@@ -9465,7 +9465,7 @@ License:        LPPL-1.0
 Summary:        Plain (La)TeX packages
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_plaingeneric
+Provides:       pattern() = texlive_collection_plaingeneric
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-abbr >= %{texlive_version}
 #!BuildIgnore: texlive-abbr
@@ -9715,7 +9715,7 @@ License:        LPPL-1.0
 Summary:        PSTricks
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_pstricks
+Provides:       pattern() = texlive_collection_pstricks
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-auto-pst-pdf >= %{texlive_version}
 #!BuildIgnore: texlive-auto-pst-pdf
@@ -9958,7 +9958,7 @@ License:        LPPL-1.0
 Summary:        Publisher styles, theses, etcetera
 Group:          Productivity/Publishing/TeX/Base
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_publishers
+Provides:       pattern() = texlive_collection_publishers
 Provides:       pattern-category() = TeXLive%20Collection
 Requires:       texlive-aastex >= %{texlive_version}
 #!BuildIgnore: texlive-aastex
@@ -10579,7 +10579,7 @@ License:        LPPL-1.0
 Summary:        XeTeX and packages
 Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.tug.org/texlive/
-Provides:       pattern() = texlive_xetex
+Provides:       pattern() = texlive_collection_xetex
 Provides:       pattern-category() = TeXLive%20Collection
 Obsoletes:      texlive-xetex <= %{texlive_previous}
 Requires:       texlive-arabxetex >= %{texlive_version}
