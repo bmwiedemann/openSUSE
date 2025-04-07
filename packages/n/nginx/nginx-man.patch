@@ -1,0 +1,17 @@
+Index: nginx-1.27.4/auto/install
+===================================================================
+--- nginx-1.27.4.orig/auto/install
++++ nginx-1.27.4/auto/install
+@@ -104,9 +104,11 @@ $NGX_OBJS/nginx.8:	$NGX_MAN $NGX_AUTO_CO
+ 		-e "s|%%ERROR_LOG_PATH%%|${NGX_ERROR_LOG_PATH:-stderr}|" \\
+ 		< $NGX_MAN > \$@
+ 
+-install:	build $NGX_INSTALL_PERL_MODULES
++install:	build $NGX_INSTALL_PERL_MODULES manpage
+ 	test -d '\$(DESTDIR)$NGX_PREFIX' || mkdir -p '\$(DESTDIR)$NGX_PREFIX'
+ 
++	install -D -m 0644 -t '\$(DESTDIR)/usr/share/man/man8' $NGX_OBJS/nginx.8
++
+ 	test -d '\$(DESTDIR)`dirname "$NGX_SBIN_PATH"`' \\
+ 		|| mkdir -p '\$(DESTDIR)`dirname "$NGX_SBIN_PATH"`'
+ 	test ! -f '\$(DESTDIR)$NGX_SBIN_PATH' \\

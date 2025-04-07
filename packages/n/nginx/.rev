@@ -1206,4 +1206,12 @@
 - Changed nginx-conf.patch to refresh default config.</comment>
     <requestid>1265447</requestid>
   </revision>
+  <revision rev="97" vrev="3">
+    <srcmd5>75e8afce456d7e43e8a22b5f1c415992</srcmd5>
+    <version>1.27.4</version>
+    <time>1744040090</time>
+    <user>anag_factory</user>
+    <comment>- Added nginx-man.patch to enable manpage 8 (boo#1240675).</comment>
+    <requestid>1266982</requestid>
+  </revision>
 </revisionlist>

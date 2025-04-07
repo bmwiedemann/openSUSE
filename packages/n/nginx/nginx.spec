@@ -46,6 +46,8 @@ Patch2:         %{name}-perl.patch
 Patch3:         %{name}-conf.patch
 # PATCH-FIX-UPSTREAM nginx-aio.patch fix support for Linux AIO
 Patch4:         %{name}-aio.patch
+# PATCH-FIX-OPENSUSE nginx-man.patch install the manpage
+Patch5:         %{name}-man.patch
 BuildRequires:  %{name}-macros
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2
@@ -188,7 +190,7 @@ rm -r $GPGTMP
 %{ngx_module_dir}/ngx_http_xslt_filter_module.so
 %{ngx_module_dir}/ngx_mail_module.so
 %{ngx_module_dir}/ngx_stream_module.so
-%{_mandir}/man3/%{name}.3pm*
+%{_mandir}/man{3,8}/%{name}.{3pm,8}%{?ext_man}
 %dir /srv/www
 %dir /srv/www/htdocs
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
