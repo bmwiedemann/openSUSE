@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  8 05:16:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.5.1:
+  * Remove bundled code from libprotobuf-c
+  * Ensure compatibility with latest version of libprotobuf-c
+  * Improve compatibility with MSVC compiler
+  * Add support for Meson build system
+
+-------------------------------------------------------------------
 Tue Jan 24 07:05:10 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of libomemo-c 0.5.0, fork of libsignal-c, for openSUSE

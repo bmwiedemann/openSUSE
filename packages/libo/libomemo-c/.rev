@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>1060569</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f40638bfec718f3e59b9d4e9764d6bdb</srcmd5>
+    <version>0.5.1</version>
+    <time>1744127518</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.1:
+  * Remove bundled code from libprotobuf-c
+  * Ensure compatibility with latest version of libprotobuf-c
+  * Improve compatibility with MSVC compiler
+  * Add support for Meson build system</comment>
+    <requestid>1267811</requestid>
+  </revision>
 </revisionlist>

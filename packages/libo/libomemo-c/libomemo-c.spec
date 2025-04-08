@@ -1,7 +1,7 @@
 #
 # spec file for package libomemo-c
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define c_lib libomemo-c0
 Name:           libomemo-c
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Fork of libsignal-protocol-c adding support for OMEMO XEP-0384 0.5.0+
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  cmake >= 2.8.4
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl) >= 1.0
+BuildRequires:  protobuf-c-devel
 
 %description
 This is a fork of libsignal-protocol-c, an implementation of Signal's ratcheting forward secrecy protocol that works in synchronous and asynchronous messaging. The fork adds support for OMEMO as defined in XEP-0384 versions 0.3.0 and later.
@@ -74,8 +75,7 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %files -n %{c_lib}
 %license LICENSE
 %doc README.md
-%{_libdir}/libomemo-c.so.0
-%{_libdir}/libomemo-c.so.0.5.0
+%{_libdir}/libomemo-c.so.*
 
 %files devel
 %dir %{_includedir}/omemo
