@@ -707,4 +707,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1145451</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>2c307895f32f66cdef386b17cf7292b1</srcmd5>
+    <version>7.1</version>
+    <time>1744127393</time>
+    <user>anag_factory</user>
+    <comment>add -std=gnu17 to CFLAGS to fix gcc15 compile time error (flag can be dropped w/ release 7.2) (forwarded request 1267205 from hsk17)</comment>
+    <requestid>1267482</requestid>
+  </revision>
 </revisionlist>

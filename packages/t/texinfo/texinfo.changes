@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  4 17:04:55 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS to fix gcc15 compile time error
+  (flag can be dropped w/ release 7.2)
+
+------------------------------------------------------------------
 Fri Feb  2 13:05:43 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 7.1 (18 October 2023)

@@ -111,6 +111,8 @@ or standalone GNU Info.
 %build
 LANG=en_GB.UTF-8
 export LANG
+## -std=gnu17 can be dropped w/ release 7.2
+export CFLAGS=-std=gnu17
 %configure \
 	--with-external-Text-Unidecode \
 	--enable-perl-xs
