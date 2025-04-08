@@ -24,11 +24,14 @@ Version:        4.1.0
 Release:        0
 Summary:        Qt implementation of freedesktop.org xdg specs
 License:        LGPL-2.1-only AND SUSE-LGPL-2.1-with-digia-exception-1.1
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/lxqt/libqtxdg
 Source0:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+
+# PATCH-FIX-UPSTREAM <sfalken@opensuse.org> (gh#lxqt/libqtxdg#311)
+Patch0:         %{url}/commit/35ce74f1510a9f41b2aff82fd1eda63014c3fe2b.patch
+
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -52,7 +55,6 @@ Qt implementation of freedesktop.org XDG specs for LXQt
 
 %package -n libQt6Xdg%{sover}
 Summary:        Libraries for qtxdg
-Group:          System/Libraries
 Provides:       libqtxdg
 
 %description -n libQt6Xdg%{sover}
@@ -60,7 +62,6 @@ QtXDG libraries for development
 
 %package devel
 Summary:        Devel files for libqtxdg
-Group:          Development/Libraries/C and C++
 Requires:       libQt6Xdg%{sover} = %{version}
 
 %description devel
@@ -68,7 +69,6 @@ QtXDG libraries for development
 
 %package -n libQt6XdgIconLoader%{sover}
 Summary:        IconLoader library for QtXDG
-Group:          System/Libraries
 Provides:       libqtxdgiconloader
 
 %description -n libQt6XdgIconLoader%{sover}
@@ -76,14 +76,13 @@ QtXDG icon loader libraries used in LXQt
 
 %package -n libQt6XdgIconLoader-devel
 Summary:        Devel files for libQt6XdgIconLoader
-Group:          Development/Libraries/C and C++
 Requires:       libQt6XdgIconLoader%{sover} = %{version}
 
 %description -n libQt6XdgIconLoader-devel
 Development files for QtXDG icon loader libraries used in LXQt
 
 %prep
-%autosetup -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %cmake_qt6
@@ -95,6 +94,9 @@ Development files for QtXDG icon loader libraries used in LXQt
 
 %ldconfig_scriptlets -n libQt6Xdg%{sover}
 %ldconfig_scriptlets -n libQt6XdgIconLoader%{sover}
+
+%check
+%ctest
 
 %files -n libQt6Xdg%{sover}
 %doc AUTHORS CHANGELOG README.md
