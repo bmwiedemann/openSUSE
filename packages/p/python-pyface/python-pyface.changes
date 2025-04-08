@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  8 07:50:31 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove dependencies on importlib backports for current python
+  versions 
+
+-------------------------------------------------------------------
 Thu Nov 21 11:57:23 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - buildignore also python313-Pillow

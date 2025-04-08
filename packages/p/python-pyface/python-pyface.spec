@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyface
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,8 +37,8 @@ Patch1:         skip-qt4-tests.patch
 #!BuildIgnore:  python312-Pillow
 #!BuildIgnore:  python313-Pillow
 BuildRequires:  %{python_module Pygments}
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module importlib-resources >= 1.1.0}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module importlib-resources >= 1.1.0 if %python-base < 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
@@ -51,8 +51,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+%if %{python_version_nodots} < 310
 Requires:       python-importlib-metadata
+%endif
+%if %{python_version_nodots} < 39
 Requires:       python-importlib-resources >= 1.1.0
+%endif
 Requires:       python-traits >= 6.2
 Recommends:     python-Pygments
 Recommends:     python-numpy
