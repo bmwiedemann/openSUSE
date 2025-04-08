@@ -1,0 +1,40 @@
+diff --git a/gcc/config/i386/gnu-user64.h b/gcc/config/i386/gnu-user64.h
+index 911fbd4651c..c7f65148ec7 100644
+--- a/gcc/config/i386/gnu-user64.h
++++ b/gcc/config/i386/gnu-user64.h
+@@ -50,7 +50,8 @@ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+ #define ASM_SPEC "%{" SPEC_32 ":--32} \
+  %{" SPEC_64 ":--64} \
+  %{" SPEC_X32 ":--x32} \
+- %{msse2avx:%{!mavx:-msse2avx}}"
++ %{msse2avx:%{!mavx:-msse2avx}} \
++ %{mmpx:-march=+mpx}"
+ 
+ #define GNU_USER_TARGET_LINK_SPEC				   \
+                   "%{" SPEC_64 ":-m " GNU_USER_LINK_EMULATION64 "} \
+diff --git a/libmpx/configure b/libmpx/configure
+index 2fd71ca89f6..90ed6ec2149 100644
+--- a/libmpx/configure
++++ b/libmpx/configure
+@@ -5135,7 +5135,7 @@ fi
+ 
+ # Check we may build wrappers library
+ echo "test:  bndmov %bnd0, %bnd1" > conftest.s
+-if { ac_try='$AS -o conftest.o conftest.s 1>&5'
++if { ac_try='$AS -march=+mpx -o conftest.o conftest.s 1>&5'
+   { { eval echo "\"\$as_me\":${as_lineno-$LINENO}: \"$ac_try\""; } >&5
+   (eval $ac_try) 2>&5
+   ac_status=$?
+diff --git a/libmpx/configure.ac b/libmpx/configure.ac
+index baa882b16b0..32c5c8f4aa0 100644
+--- a/libmpx/configure.ac
++++ b/libmpx/configure.ac
+@@ -100,7 +100,7 @@ AC_CHECK_TOOL(RANLIB, ranlib, :)
+ 
+ # Check we may build wrappers library
+ echo "test:  bndmov %bnd0, %bnd1" > conftest.s
+-if AC_TRY_COMMAND([$AS -o conftest.o conftest.s 1>&AS_MESSAGE_LOG_FD])
++if AC_TRY_COMMAND([$AS -march=+mpx -o conftest.o conftest.s 1>&AS_MESSAGE_LOG_FD])
+ then
+     mpx_as=yes
+ else

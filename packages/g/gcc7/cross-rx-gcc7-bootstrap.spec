@@ -157,6 +157,8 @@ Patch45:        gcc7-lra-elim.patch
 Patch46:        gcc7-bsc1216488.patch
 Patch47:        gcc7-pr87723.patch
 Patch48:        gcc7-pr82463.patch
+Patch49:        gcc7-bsc1239566.patch
+Patch50:        gcc7-enable-mpx-in-as.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -359,6 +361,8 @@ ln -s nvptx-newlib/newlib .
 %patch -P 46 -p1
 %patch -P 47 -p1
 %patch -P 48 -p1
+%patch -P 49 -p1
+%patch -P 50 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61

@@ -1,0 +1,50 @@
+From eb8b3209074d91f27b725681d0328c4a75cf7cdb Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Thu, 13 Mar 2025 14:41:36 +0100
+Subject: [PATCH] bsc#1239566 - add -[DU]_FORTIFY_SOURCE[=n] to DW_AT_producer
+To: gcc-patches@gcc.gnu.org
+
+The following makes sure to record -D_FORTIFY_SOURCE=n and
+-U_FORTIFY_SOURCE in the DW_AT_producer debuginfo attribute when
+present on the compiler command line.
+
+	* dwarf2out.c (gen_producer_string): Record -D and -U
+	with _FORTIFY_SOURCE prefix.
+---
+ gcc/dwarf2out.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/gcc/dwarf2out.c b/gcc/dwarf2out.c
+index 5590845d2a4..317fd84b9de 100644
+--- a/gcc/dwarf2out.c
++++ b/gcc/dwarf2out.c
+@@ -23428,9 +23428,7 @@ gen_producer_string (void)
+       case OPT_v:
+       case OPT_w:
+       case OPT_L:
+-      case OPT_D:
+       case OPT_I:
+-      case OPT_U:
+       case OPT_SPECIAL_unknown:
+       case OPT_SPECIAL_ignore:
+       case OPT_SPECIAL_program_name:
+@@ -23453,6 +23451,16 @@ gen_producer_string (void)
+       case OPT_fdebug_prefix_map_:
+ 	/* Ignore these.  */
+ 	continue;
++      case OPT_D:
++      case OPT_U:
++	if (strncmp (save_decoded_options[j].arg, "_FORTIFY_SOURCE",
++		     strlen ("_FORTIFY_SOURCE")) == 0)
++	  {
++	    switches.safe_push (save_decoded_options[j].orig_option_with_args_text);
++	    len += strlen (save_decoded_options[j].orig_option_with_args_text) + 1;
++	  }
++	/* Otherwise ignore these. */
++	continue;
+       default:
+         if (cl_options[save_decoded_options[j].opt_index].flags
+ 	    & CL_NO_DWARF_RECORD)
+-- 
+2.43.0
+

@@ -675,4 +675,21 @@ This is in preparation of Pointer Authentication enablement in Tumbleweed. (forw
   intrinsics on s390x.  [bsc#1236267]</comment>
     <requestid>1252007</requestid>
   </revision>
+  <revision rev="45" vrev="20">
+    <srcmd5>fe39f84433d7026e99e7f447ca63493e</srcmd5>
+    <version>7.5.0+r278197</version>
+    <time>1744127531</time>
+    <user>anag_factory</user>
+    <comment>- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Disable MPX for SLE16 and Factory builds, modern binutils dropped
+  support for it.
+- Add gcc7-enable-mpx-in-as.patch to enable MPX support in the
+  assembler (disabled by default with binutils 2.44) when -mmpx
+  is specified.  Fixup libmpx assembler configure check.
+
+- Add gcc7-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2
+  in the DWARF debug info DW_AT_producer string.  [bsc#1239566]</comment>
+    <requestid>1267852</requestid>
+  </revision>
 </revisionlist>

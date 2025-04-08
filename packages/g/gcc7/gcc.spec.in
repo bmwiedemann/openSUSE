@@ -47,7 +47,7 @@
 %define vtv_arch x86_64 %ix86
 %endif
 %define cilkrts_arch x86_64 %ix86
-%if %{suse_version} >= 1310
+%if %{suse_version} >= 1310 && %{suse_version} < 1600
 %define mpx_arch x86_64 %ix86
 %endif
 
@@ -343,6 +343,8 @@ Patch45:	gcc7-lra-elim.patch
 Patch46:	gcc7-bsc1216488.patch
 Patch47:	gcc7-pr87723.patch
 Patch48:	gcc7-pr82463.patch
+Patch49:	gcc7-bsc1239566.patch
+Patch50:	gcc7-enable-mpx-in-as.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1155,6 +1157,8 @@ ln -s nvptx-newlib/newlib .
 %patch -P 46 -p1
 %patch -P 47 -p1
 %patch -P 48 -p1
+%patch -P 49 -p1
+%patch -P 50 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61
@@ -1600,7 +1604,8 @@ if ! test -z "$dir_ml"; then
 fi
 %endif
 
-# move shared libs from versionspecific dir to main libdir
+# move shared libs from versionspecific dir to main libdir, keep a copy
+# for link-editing in the .so
 for libname in \
 %if %{build_fortran}
   libgfortran \
@@ -1656,8 +1661,16 @@ for libname in \
     mv $lib $RPM_BUILD_ROOT%{mainlibdir}/
   done
   if test -L $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so; then
-    ln -sf %{mainlibdir}/`readlink $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so
+    cp $RPM_BUILD_ROOT%{mainlibdir}/`readlink $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so` \
+         $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so.tem
+    rm $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so
+    mv $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so.tem $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so
+    strip -g $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so
+  else
+    if test -e $RPM_BUILD_ROOT%{versmainlibdir}/$libname.so; then
+      echo ERROR: unexpected linker script for $libname.so
+      exit 1
+    fi
   fi
 %if %{biarch}
   if test -d $RPM_BUILD_ROOT%{versmainlibdirbi}; then
@@ -1665,8 +1678,16 @@ for libname in \
       mv $lib $RPM_BUILD_ROOT%{mainlibdirbi}/
     done
     if test -L $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so; then
-      ln -sf %{mainlibdirbi}/`readlink $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so
+      cp $RPM_BUILD_ROOT%{mainlibdirbi}/`readlink $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so`  \
+         $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so.tem
+      rm $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so
+      mv $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so.tem $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so
+      strip -g $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so
+    else
+      if test -e $RPM_BUILD_ROOT%{versmainlibdirbi}/$libname.so; then
+        echo ERROR: unexpected linker script for $libname.so
+	exit 1
+      fi
     fi
   fi
 %endif
@@ -1686,34 +1707,44 @@ sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' $RPM_BUILD_ROOT%
 %endif
 %endif
 
-# Move libgcc_s around
+# Move libgcc_s around, make sure a version specific copy is available
+# for link editing
+chmod a+x $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so.%{libgcc_s}
 if test -L $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so; then
   rm -f $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so
-  ln -sf /%{_lib}/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so
+  cp $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so
+  strip -g $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so
 else
   mv $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdir}/
+  cp $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so.%{libgcc_s}
+  strip -g $RPM_BUILD_ROOT%{versmainlibdir}/libgcc_s.so.%{libgcc_s}
 fi
-chmod a+x $RPM_BUILD_ROOT/%{_lib}/libgcc_s.so.%{libgcc_s}
 %if %{biarch}
 %if %{build_primary_64bit}
+chmod a+x $RPM_BUILD_ROOT/lib/libgcc_s.so.%{libgcc_s}
 if test -L $RPM_BUILD_ROOT/lib/libgcc_s.so; then
   rm -f $RPM_BUILD_ROOT/lib/libgcc_s.so
-  ln -sf /lib/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so
+  cp $RPM_BUILD_ROOT/lib/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so
+  strip -g $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so
 else
   mv $RPM_BUILD_ROOT/lib/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi32}/
+  cp $RPM_BUILD_ROOT/lib/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so.%{libgcc_s}
+  strip -g $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s.so.%{libgcc_s}
 fi
 ln -sf %{versmainlibdirbi32}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi32}/libgcc_s_32.so
-chmod a+x $RPM_BUILD_ROOT/lib/libgcc_s.so.%{libgcc_s}
 %else
 # 32-bit biarch systems
+chmod a+x $RPM_BUILD_ROOT/lib64/libgcc_s.so.%{libgcc_s}
 if test -L $RPM_BUILD_ROOT/lib64/libgcc_s.so; then
   rm -f $RPM_BUILD_ROOT/lib64/libgcc_s.so
-  ln -sf /lib64/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so
+  cp $RPM_BUILD_ROOT/lib64/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so
+  strip -g $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so
 else
   mv $RPM_BUILD_ROOT/lib64/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi64}/
+  cp $RPM_BUILD_ROOT/lib64/libgcc_s.so.%{libgcc_s} $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so.%{libgcc_s}
+  strip -g $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s.so.%{libgcc_s}
 fi
 ln -sf %{versmainlibdirbi64}/libgcc_s.so $RPM_BUILD_ROOT%{versmainlibdirbi64}/libgcc_s_64.so
-chmod a+x $RPM_BUILD_ROOT/lib64/libgcc_s.so.%{libgcc_s}
 %endif
 %endif
 
@@ -2021,6 +2052,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %versmainlib libgcc*.a
 %versmainlib libgcov.a
 %versmainlib libgcc_s*.so
+%versmainlib libgcc_s.so.%{libgcc_s}
 %versmainlib libgomp.so
 %versmainlib libgomp.a
 %versmainlib libgomp.spec
@@ -2092,6 +2124,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc@base_ver@-locale.lang
 %versbiarchlib libgcc*.a
 %versbiarchlib libgcov.a
 %versbiarchlib libgcc_s*.so
+%versbiarchlib libgcc_s.so.%{libgcc_s}
 %versbiarchlib libgomp.so
 %versbiarchlib libgomp.a
 %versbiarchlib libgomp.spec

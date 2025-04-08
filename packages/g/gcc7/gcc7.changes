@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr  7 12:36:11 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Disable MPX for SLE16 and Factory builds, modern binutils dropped
+  support for it.
+- Add gcc7-enable-mpx-in-as.patch to enable MPX support in the
+  assembler (disabled by default with binutils 2.44) when -mmpx
+  is specified.  Fixup libmpx assembler configure check.
+
+-------------------------------------------------------------------
+Thu Mar 13 13:42:56 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-bsc1239566.patch to also record -D_FORTIFY_SOURCE=2
+  in the DWARF debug info DW_AT_producer string.  [bsc#1239566] 
+
+-------------------------------------------------------------------
 Tue Mar 11 08:49:09 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Remove fixed bits/sched.h.
