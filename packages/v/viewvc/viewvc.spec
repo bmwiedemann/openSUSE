@@ -1,7 +1,7 @@
 #
 # spec file for package viewvc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ Source1:        viewvc.conf
 Source99:       viewvc-rpmlintrc
 BuildRequires:  apache2-devel
 BuildRequires:  python3-devel
+BuildRequires:  python3-legacy-cgi
+Requires:       python3-legacy-cgi
 Requires:       subversion-python >= 1.4
 Supplements:    (subversion-server and apache2)
 Provides:       subversion-viewcvs = %{version}
