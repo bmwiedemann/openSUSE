@@ -170,4 +170,30 @@ Signed-off-by: Matěj Cepl &lt;mcepl@cepl.eu&gt;
 (🤖: Submission of breezy via https://src.opensuse.org/pool/breezy/pulls/1 by mcepl)</comment>
     <requestid>1239585</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7e1147102be9af67179c2e8941f59596</srcmd5>
+    <version>3.3.11</version>
+    <time>1744127554</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.11:
+  * Drop static tuple. This is breaking Python
+    3.13 support, Python has made improvements to tuples
+    that should reduce the need for this. We're
+    also moving performance-critical code to rust
+    in the future. (#2102194, Jelmer Vernooĳ)
+  * Fix timezone handling, avoid looking up
+    timezone. (#2103478, Jelmer Vernooĳ)
+  * Drop unused ``simple_set`` extension.
+    (Jelmer Vernooĳ)
+- Update to 3.3.10:
+  * Breezy itself is now hosted on GitHub -
+    https://github.com/breezy-team/breezy.
+    (Jelmer Vernooĳ)
+  * Bump PyO3 to 0.23. (Jelmer Vernooĳ)
+  * Add support for Python 3.13.
+    (Jelmer Vernooĳ, #2102194)
+
+  - github: Lazily load github pull requests, improving performance.</comment>
+    <requestid>1267901</requestid>
+  </revision>
 </revisionlist>

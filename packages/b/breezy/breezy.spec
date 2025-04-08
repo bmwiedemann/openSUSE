@@ -19,13 +19,14 @@
 %define rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           breezy
-Version:        3.3.9
+Version:        3.3.11
 Release:        0
 Summary:        Distributed version control system with multi-format support
 License:        GPL-2.0-or-later
 # Upstream website https://launchpad.net/brz
 URL:            https://www.breezy-vcs.org/
 Source0:        https://files.pythonhosted.org/packages/source/b/breezy/breezy-%{version}.tar.gz
+Source97:       breezy.rpmlintrc
 Source98:       vendor-lib-rio.tar.zst
 Source99:       vendor.tar.zst
 # PATCH-FIX-UPSTREAM 03_spurious_test_failure.patch mcepl@suse.com

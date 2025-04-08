@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Apr  6 12:56:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.3.11:
+  * Drop static tuple. This is breaking Python
+    3.13 support, Python has made improvements to tuples
+    that should reduce the need for this. We're
+    also moving performance-critical code to rust
+    in the future. (#2102194, Jelmer Vernooĳ)
+
+  * Fix timezone handling, avoid looking up
+    timezone. (#2103478, Jelmer Vernooĳ)
+
+  * Drop unused ``simple_set`` extension.
+    (Jelmer Vernooĳ)
+
+- Update to 3.3.10:
+  * Breezy itself is now hosted on GitHub -
+    https://github.com/breezy-team/breezy.
+    (Jelmer Vernooĳ)
+
+  * Bump PyO3 to 0.23. (Jelmer Vernooĳ)
+
+  * Add support for Python 3.13.
+    (Jelmer Vernooĳ, #2102194)
+
+-------------------------------------------------------------------
 Tue Jan 21 23:29:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix vendoring in _service && revendor
@@ -50,7 +76,7 @@ Mon Jan 23 07:45:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
   - Add --recurse-nested argument to 'brz export'.
   - Add an ``extra`` for installing PGP dependencies.
   - Convert multiple authors to the Co-authored-by field.
-  - github: Lazily load github pull requests, improving   performance. 
+  - github: Lazily load github pull requests, improving performance.
   - github: Return canonical URLs for branches.
   - Avoid deprecated distutils.version, ahead of removal.
   - Add a docker file. 
