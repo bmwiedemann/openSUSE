@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr 08 08:30:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.30.0:
+  * fix: project list command does not work with service account
+    (#691)
+  * fix(deps): update stackit sdk modules (#684)
+  * fix(deps): update module golang.org/x/oauth2 to v0.29.0 (#688)
+  * fix(deps): update module golang.org/x/text to v0.24.0 (#690)
+  * feat(ci): enusure docs are up-to-date for PRs (#686)
+  * feat(auth): Introduce possibility to use an environment
+    variable to authenticate (#682)
+  * chore: upgraded go version (#685)
+  * chore(observability): remove argus alias and warning in readme
+    (#683)
+  * chore(sqlserverflex): show how to get flavors in create
+    instance example (#679)
+  * fix(deps): update stackit sdk modules (#680)
+  * fix(deps): update kubernetes packages to v0.32.3 (#677)
+  * fix(deps): update module golang.org/x/oauth2 to v0.28.0 (#632)
+  * fix(deps): update module golang.org/x/text to v0.23.0 (#644)
+  * fix(deps): update module golang.org/x/mod to v0.24.0 (#642)
+  * fix(deps): update module golang.org/x/term to v0.30.0 (#643)
+  * fix(deps): update module github.com/goccy/go-yaml to v1.17.1
+    (#678)
+  * chore(github): add issue templates (#675)
+  * fix(server): List also delete_on_termination (#673)
+  * chore(github): add pull request template (#671)
+  * fix(deps): update stackit sdk modules (#672)
+  * fix(deps): update module github.com/spf13/viper to v1.20.1
+    (#665)
+  * chore(doc): update installation docs (#668)
+  * chore: update stackit logo in README.md (#670)
+
+-------------------------------------------------------------------
 Thu Mar 27 17:48:48 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.29.0:
