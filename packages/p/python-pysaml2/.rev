@@ -379,4 +379,12 @@
 - add use-cryptography.patch to fix tests</comment>
     <requestid>1249137</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>41231471fb67ad57fb6bbff571d4161d</srcmd5>
+    <version>7.5.2</version>
+    <time>1744127535</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267842</requestid>
+  </revision>
 </revisionlist>

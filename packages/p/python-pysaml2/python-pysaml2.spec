@@ -28,10 +28,10 @@ Source:         https://github.com/IdentityPython/pysaml2/archive/v%{version}.ta
 # PATCH-FIX-UPSTREAM use-cryptography.patch https://github.com/IdentityPython/pysaml2/issues/879
 Patch0:         use-cryptography.patch
 BuildRequires:  %{python_module Paste}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cryptography >= 40.0}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pymongo >= 3.5}
@@ -40,7 +40,6 @@ BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 1.0.0}
 BuildRequires:  %{python_module responses}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module xmlschema >= 2}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
@@ -53,7 +52,6 @@ BuildRequires:  xmlsec1
 Requires:       python-Paste
 Requires:       python-cryptography >= 3.1
 Requires:       python-defusedxml
-Requires:       python-importlib-resources
 Requires:       python-pyOpenSSL
 Requires:       python-pymongo >= 3.5
 Requires:       python-python-dateutil
