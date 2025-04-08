@@ -1,0 +1,4 @@
+# rpmlint does not understand multiline quoted texts.
+addFilter("macro-in-comment %{_sysconfdir}")
+# This is the purpose of this package.
+addFilter("standard-dir-owned-by-package /media")
