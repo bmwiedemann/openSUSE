@@ -105,4 +105,25 @@
     <comment></comment>
     <requestid>1234619</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d052be4a94fa72bdaaa81db5a041c456</srcmd5>
+    <version>1.14.9</version>
+    <time>1744127539</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.9:
+  * Set version to 1.14.9
+  * Remove unnecessary dependencies in evdi package
+  * Check first origin/main then github/main
+  * Fix evdi build on for 6.14 kernels
+  * Preparation for automated note generation
+  * Fix key enrollment on Debian bookworm
+  * Fixes GH-487: Add potentially missing vector header
+  * Set version to 1.14.8
+  * Fetch checkpatch script from linux kernel mirror
+  * Check github/main branch against linux master branch
+- Remove unneeded patch:
+  * evdi-Enable-compilation-against-15.5.patch
+</comment>
+    <requestid>1267853</requestid>
+  </revision>
 </revisionlist>
