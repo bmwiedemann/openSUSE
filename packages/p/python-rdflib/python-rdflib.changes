@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr  3 06:45:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 7.1.4
+  * Remove old hacks against 2to3
+  * Allow multi subjects & objects in graph funcs
+  * Reduce test warnings
+  * Downgrade log message about plugin
+  * Remove old hacks against 2to3
+  * Cope with Namespace annotations in Python 3.14
+  * Small docco update
+
+-------------------------------------------------------------------
 Fri Feb 14 07:34:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.1.3

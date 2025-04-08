@@ -1192,4 +1192,41 @@
     <comment>Readding the reference, Sorry.</comment>
     <requestid>1254303</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>1f7375c600d047ef7f64450b258fecfe</srcmd5>
+    <version>8.4.5</version>
+    <time>1744127439</time>
+    <user>anag_factory</user>
+    <comment>- version update to 8.4.5
+    BCMath:
+        Fixed bug GH-17398 (bcmul memory leak).
+    Core:
+        Fixed bug GH-17623 (Broken stack overflow detection for variable compilation).
+        Fixed bug GH-17618 (UnhandledMatchError does not take zend.exception_ignore_args=1 into account).
+        Fix fallback paths in fast_long_{add,sub}_function.
+        Fixed bug OSS-Fuzz #391975641 (Crash when accessing property backing value by reference).
+        Fixed bug GH-17718 (Calling static methods on an interface that has `__callStatic` is allowed).
+        Fixed bug GH-17713 (ReflectionProperty::getRawValue() and related methods may call hooks of overridden properties).
+        Fixed bug GH-17916 (Final abstract properties should error).
+        Fixed bug GH-17866 (zend_mm_heap corrupted error after upgrading from 8.4.3 to 8.4.4).
+        Fixed GHSA-rwp7-7vc6-8477 (Reference counting in php_request_shutdown causes Use-After-Free). (CVE-2024-11235)
+    DOM:
+        Fixed bug GH-17609 (Typo in error message: Dom\NO_DEFAULT_NS instead of Dom\HTML_NO_DEFAULT_NS).
+        Fixed bug GH-17802 (\Dom\HTMLDocument querySelector attribute name is case sensitive in HTML).
+        Fixed bug GH-17847 (xinclude destroys live node).
+        Fix using Dom\Node with Dom\XPath callbacks.
+    GD:
+        Fixed bug GH-17703 (imagescale with both width and height negative values triggers only an Exception on width).
+        Fixed bug GH-17772 (imagepalettetotruecolor crash with memory_limit=2M).
+    FFI:
+        Fix FFI Parsing of Pointer Declaration Lists.
+    FPM:
+        Fixed bug GH-17643 (FPM with httpd ProxyPass encoded PATH_INFO env).
+    LDAP:
+        Fixed bug GH-17704 (ldap_search fails when $attributes contains a non-packed array with numerical keys).
+    LibXML:
+        Fixed GHSA-wg4p-4hqh-c3g9 (Reocurrence of #72714).
+        Fixed GHSA-p3x9-6h7p-cgfc (libxml streams use wrong `content-type` header when requesting a redirected resource). (CVE-2025-1219)</comment>
+    <requestid>1267591</requestid>
+  </revision>
 </revisionlist>

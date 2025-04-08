@@ -143,4 +143,12 @@ Redesigned the directory-include feature to avoid using
     <comment></comment>
     <requestid>901317</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>3ec7a34c915984d205c774cf35bf9eed</srcmd5>
+    <version>1.7.3</version>
+    <time>1744127432</time>
+    <user>anag_factory</user>
+    <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1267435 from hsk17)</comment>
+    <requestid>1267512</requestid>
+  </revision>
 </revisionlist>

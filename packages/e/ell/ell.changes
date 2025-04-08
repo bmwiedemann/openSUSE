@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr  6 14:39:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.76
+  * Add support for NIST P-192/224/521 curve usage with ECDH,
+    SHA-224-based checksums and HMACs.
+  * Add support for SHA-3 series of hashing algorithms.
+  * Add support for converting OID octets to strings.
+
+-------------------------------------------------------------------
 Fri Feb 14 17:18:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.73

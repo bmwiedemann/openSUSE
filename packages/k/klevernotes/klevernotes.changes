@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr  6 19:11:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2.1
+  * Remove the requirement for the storage name (no longer
+    need to be "klevernotes")
+  * Fix code block rendering issue with HTML tag
+  * Fix todos saving
+  * Allow items to be moved to the storage root
+
+-------------------------------------------------------------------
 Tue Mar 18 16:44:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.2.0

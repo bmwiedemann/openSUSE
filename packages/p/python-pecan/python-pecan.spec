@@ -1,7 +1,7 @@
 #
 # spec file for package python-pecan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@
 %bcond_with libalternatives
 %endif
 
+%{?sle15_python_module_pythons}
 Name:           python-pecan
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause

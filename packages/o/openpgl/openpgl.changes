@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Sat Apr 05 21:43:28 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.7.0:
+  * [cleanup] Final fixes for the release
+  * [doc] Updating README.md and CHANGELOG.md
+  * [superbuild] reordering CMAKE Options
+  * [common] Adding (float, float, float) constructor to pgl_spectrum
+  * [samplestorage] Adding GetZeroValueSampleSurface and GetZeroValueSampleVolume functions
+  * [doc] Updating documentation in the README.md
+  * [release] Increasing version number to 0.7.0 and updating change log
+  * [superbuild] Cleaning up the script
+  * [clang-format] Running clang-format
+  * [pathsegmentstorage] Removing the trackZeroValueSamples  parameter from the PathSegmentStorage constructor. It is now turned on internally when needed (i.e., radiance caches is enabled)
+  * [samplestorage] Renaming GetSizeInvalidSurface and GetSizeInvalidVolume to GetSizeZeroValueSurface and GetSizeZeroValueVolume
+  * [cmake] Deactivating experimental features (e.g., radiance caches and image-space guiding buffer) and directional and spectral data compression by default.
+  * [ci] Adding python3 to the rockylinux 8 runner
+  * [coverity] Fixing some coverity warnings
+  * [ci] Adding Windows on ARM CI
+  * [tbb] Udating TBB version to 2012.13
+  * [sse2neon+compile] Re-apply sse2neon changes, and add support for Windows ARM64
+  * [sse2neon] Upgrade sse2neon to revision 227cc413
+  * [common] Renaming function normalize to pglNormalize
+  * [third-party] Updating third-party licenses
+  * [format] Applying clang-format
+  * [format] Adding .clang-format file
+  * [imagespaceguidingbuffer] Ensuring that the denoiser pointer is intializes as nullptr
+  * [vmm] Fixing numerical instability sampling method and ensuring resetting empty components after product calculation
+  * [ci] Cleaning up ci scripts
+  * [cleanup] Fixing include orders and some comment styles
+  * [denoiser] Switching to in-place denoising and removing unnecessary OIDN buffers
+  * [imagespaceguidingbuffer] Adding Reset function (e.g., needed when the camera or scene changes)
+  * [cleanup] Doing some code cleanup (removing commented out code)
+  * [doc] Updating comments for the RR strategies and the ImageSpaceGuidingBuffer
+  * [ci] Updating CI scripts
+  * [superbuild] Adding OIDN 2.3.0 patch for (older) Apple systems
+  * [ci] Removing ICC test and updating ICX
+  * [tinyexr] Switching to nanozlib
+  * [cpp-API] Revising vector classes and adding opterators
+  * [imagespaceguidingbuffer] Adding ImageSpaceGuidingBuffer example class: e.g., for estimating pixel contibutions
+  * [cleanup] Some code cleanup
+  * [radiance caches] Changing OPENPGL_EF_RADIANCE_CACHES to OPENPGL_RADIANCE_CACHES define
+  * [superbuild] Adding OpenImageDenoise and ISPC dependencies to the superbuild CMake script
+  * [tinyexr] Adding tinyexr header
+  * [guidedrr] Adding example code for calculating the survival probability for guided Russian Roulette
+  * [sampledata] Simplified compression/quantization by using operator overloading
+  * [sampledata] Removing unused flagtype ESplatted
+  * [sampledata] Adding compression of directions and radiance values
+  * [radiance caches] Renaming the withMIS parameter to directLightMIS
+  * [radiance caches] Implementing the fitting feature to query radiance quantities with the withMIS flag
+  * [radiance caches] Adding withMIS parameter to be able to query irradiance, fluence, incoming, and in-scattered radiance estimates with or with NEE weights
+  * [ci] Adding basic public CI workflow with Rocky8 und Ubuntu22
+  * [radiance caches] Cleaning up use of OPENPGL_RADIANCE_CACHES define
+  * [invalidsamples] Renaming InvalidSamples to ZeroValueSamples
+  * [samplestorage] Adding `AddInvalidSample` function.
+  * [compile] Fixing some compiler warnings
+  * [invalidsamples] Adding the incident direction to the PGLInvalidSampleData
+  * [cleanup] Reveted accidental change, squash into e5e06e863c7d33290f783967fafd97eccdf92630
+  * [ci] Moving from CentOS 7 to RockyLinux 8.7 and removing Ubuntu 18.04
+  * [radiance caches] Added function documentation for the new radiance cache related functions
+  * [pathsegment] Lowering the minPDF threshold (0.1 -> 0.01) to get more accurate radiance cache approaximations.
+  * [radiance caches] Code clean up
+  * [radiance caches] Fixed radiance cache calculation
+  * [radiance caches] Adding support to estimate the in-scattered radiance (VMMs)
+  * [radiance caches] Continued working on the outgoing radiance estimate
+  * [radiance caches] Added better defines to drive experimental features
+  * [radiance caches] Adding support for estimating/querying outgoing radiance
+  * [radiance caches] Adding support to switch on/off experimental features
+  * [radiance caches] Adding support for direct irradiance approximation (VMMs)
+  * [radiance caches] Adding functionality to estimate the fluence and incoming radiance
+  * [radiance caches] Adding support for tracking invalid samples
+  * Fixed initialization of separator/tab strings
+  * Fixed compiler warnings related to C compatibility
+  * [format] Changes for a more clang-format friendly code base
+  * [cleanup] Adding some includes
+  * [pavmm] Adding SIMD CDF sampling code to select a mixture component
+  * [simd] Moving SIMD prefixsum code to openpgl_common.h adding AVX512 code
+  * [simd] Implementing SIMD version of CDF sampling
+  * [knn] Adding distance importance sampled KNN look up
+  * [cmake] Adding defines.h to identify if support for AVX512 was activated during build
+  * [serialization] Re-designed the serialization and deserialization code for the SIMD vectors.
+  * [docu] Updating changelog (fixing typos)
+  * [typo] Fixing typo SufficientStatisitcs -> SufficientStatistics
+  * [compare] Adding missing compare checks for the distributions and training statistics
+  * [knn] Avoiding copying statistics during KNN-tree build
+  * [samplingdistribution] Fixing typo for pglSurfaceSamplingDistributionGetId
+  * [pathsegment] Fixing bug in AddDirectContribution
+  * [cmake] updating global compiler configurations
+  * [ci] Disabling MacOS icc build test because icc reached EOL
+  * [security] Adding SECURITY.md file
+  * [cmake] Adding separate CMake option (OPENPGL_BUILD_CHECK_TOOL) to build the check tool
+  * [doc] Updating Readme.md
+  * [field] Adding functionality to disable knn-lookups by passing a negative 1D sample value to the Volume/SurfaceSamplingDistribution::Init() functions
+  * [sse2neon] Updating to version 1.6.0
+  * [sse2neon] Updating sse2neon to version 1.5.1
+  * [macos] Fixing some compiler bugs with sse2neon.h under MacOS Sonoma
+  * [embree] Updating the SIMD code to Embree 4.3
+  * [tbb] Fixing TBB memory leak caused by TBB's asynchronous destruction of arenas and streams if not explicitly initialized in a context before a ttb::parallel_for.
+  * [clean] Cleaning up some parallelization code
+  * [version] Bumping the version to 0.6.0 and rebuilding the README.md
+  * [stats] Adding timings to the FieldStatistics and info about them into the ChangeLog
+  * [ci] Adding build tests on MacOS Sonoma and older versions
+  * [field] Adding FieldConfig class to configure the initialization of the guiding Field.
+  * [tools] Updated, commented and tested the 'openpgl_bench' and 'openpgl_debug' tools
+  * [statistics] Adding support for querying statistics from the guiding Field (e.g., about the KDTree, the distributions, and number of caches)
+  * [cleanup] Doing some code cleanup and reducing some compiler warnings
+  * [ci] Adding coverity support
+  * [samplecontainer] Assert fix
+  * [cleanup] Fixing some typos
+  * [fix] some VMM fixes
+  * [cmake] Adding messages to print the platform, compiler and arch
+  * [doc] Updated change log for next release (0.6.0)
+  * [cleanup] Some code cleanup and documentation
+  * [compile] Removing some compiler warnings
+  * [data] Adding SampleContainerInternal struct to replace std::vector<SampleData> containers
+  * [omp] Removing legacy OpenMP code snippets
+  * [kdtree] Switched to shared 'split dim + idx' representation and remove MERGE_SPLITDIM_AND_NODE_IDX define
+  * [kdtree] Cleaning up code
+  * [kdtree] Some parallel code clean up
+  * [device] Adding numThreads parameter
+  * [debug] Adding new modes "compareSamples", "compareFields", and "updateCompareFields" to the openpgl_debug tools
+  * [kdtreeBuild] fixing non-determinism Bug
+  * [field+samplestorage] Adding compare (==) operators to be able to compare Fields and SampleStorages for debugging determinism
+  * [samplestats] Adding integer arithmetic for calculating stats
+  * [kdtree] Adding parallel algorithms from Embree for partition the samples
+  * [parallel] Adding parallel algorithms from Embree (e.g., parallel_partition, parallel_reduce)
+  * [treelets] delete TreeLets in the Tree deconstructur
+  * [field] Adding DebugSettings
+  * [bench] `init_fitting` Moving the loading of data out of the test loop
+  * [samplingdistributions] Adding GetId() function to query the cache id.
+  * [kdetree] Implemented TreeLets
+  * [bench] Implemented `benchLookUpSample` benchmark
+  * [device] Adding PGL_DEVICE_TYPE_NONE type
+  * [bench] Adding benchmarking tool
+  * [debug] Adding "exportSamplesToOBJ" functionality
+  * [tools] Adding openpgl_debug tool
+  * [cmake] Refactoring handling of compile options
+  * [icc+mac] Fixing compile error under MacOS when using ICC
+  * [ci] adding build test for icc compiler
+  * [compile] Re-structuring the compiler flags handling
+  * [compiler] Adding check for `dpcpp`
+
+-------------------------------------------------------------------
 Fri Nov 24 22:28:13 UTC 2023 - draskmont@protonmail.com
 
 - Update to version v0.5.0:

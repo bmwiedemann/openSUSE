@@ -1133,4 +1133,13 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
     <comment></comment>
     <requestid>1254710</requestid>
   </revision>
+  <revision rev="151" vrev="3">
+    <srcmd5>4e3714bcea031c7d933a2596f1517411</srcmd5>
+    <version>48.0</version>
+    <time>1744127399</time>
+    <user>anag_factory</user>
+    <comment>- Add gnome-keyring-register-login-keyring.patch: ensure login
+  keyring is properly registered (glgo#GNOME/gnome-keyring!78). (forwarded request 1266893 from fcrozat)</comment>
+    <requestid>1267260</requestid>
+  </revision>
 </revisionlist>

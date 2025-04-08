@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          136
-%define mainver        %major.0.4
-%define orig_version   136.0.4
+%define major          137
+%define mainver        %major.0
+%define orig_version   137.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -114,7 +114,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.36
-BuildRequires:  mozilla-nss-devel >= 3.108
+BuildRequires:  mozilla-nss-devel >= 3.109
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -138,8 +138,10 @@ BuildRequires:  python3-devel
 %endif
 %endif
 BuildRequires:  rust-cbindgen >= 0.26
+%if 0%{?suse_version} > 1560
+BuildRequires:  translate-suse-desktop
+%endif
 BuildRequires:  unzip
-BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
 BuildRequires:  xvfb-run
@@ -183,10 +185,13 @@ Group:          Productivity/Networking/Web/Browsers
 URL:            http://www.mozilla.org/
 %if !%{with only_print_mozconfig}
 Source:         http://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz
-Source1:        MozillaFirefox.desktop
+Source1:        MozillaFirefox.desktop.in.in
 Source2:        MozillaFirefox-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
+# Ready made desktop file for products that don't support %%translate_suse_desktop.
+# You can be prompted for the update during the Factory build.
+Source5:        MozillaFirefox.desktop
 %if %{localize}
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
 %endif
@@ -328,11 +333,33 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
+%if 0%{?suse_version} > 1560
+cp %{SOURCE1} %{desktop_file_name}.desktop.in.in
+%else
+cp %{SOURCE5} %{desktop_file_name}.desktop
+%endif
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %autopatch -p1
 %endif
 
 %build
+# desktop file
+%if 0%{?suse_version} > 1560
+sed "s:%%NAME:%{appname}:g
+s:%%EXEC:%{progname}:g
+s:%%ICON:%{progname}:g
+s:%%WMCLASS:%{progname}%{major}:g" \
+  %{desktop_file_name}.desktop.in.in > %{desktop_file_name}.desktop.in
+%translate_suse_desktop %{desktop_file_name}.desktop
+if ! diff %{desktop_file_name}.desktop %{SOURCE5} ; then
+cat <<EOF
+A new version of desktop file exists. Please update MozillaFirefox.desktop
+rpm source from $PWD/%{desktop_file_name}.desktop
+to get translations to older products.
+EOF
+  exit 1
+fi
+%endif
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
@@ -552,6 +579,7 @@ ccache -s
 %endif
 
 %install
+install -D -m 0644 %{desktop_file_name}.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
 cd $RPM_BUILD_DIR/obj
 source %{SOURCE4}
 export MOZ_SOURCE_STAMP=$RELEASE_TAG
@@ -605,14 +633,6 @@ s:%%PROFILE:.mozilla/firefox:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
 ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
-# desktop file
-mkdir -p %{buildroot}%{_datadir}/applications
-sed "s:%%NAME:%{appname}:g
-s:%%EXEC:%{progname}:g
-s:%%ICON:%{progname}:g
-s:%%WMCLASS:%{progname}%{major}:g" \
-  %{SOURCE1} > %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
-%suse_update_desktop_file %{desktop_file_name} Network WebBrowser GTK
 # additional mime-types
 mkdir -p %{buildroot}%{_datadir}/mime/packages
 cp %{SOURCE8} %{buildroot}%{_datadir}/mime/packages/%{progname}.xml

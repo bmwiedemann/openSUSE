@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  7 07:24:16 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Drop pcre module, it hasn't been ported to pcre2 yet.
+
+-------------------------------------------------------------------
 Tue Jan 07 16:37:11 UTC 2025 - kkaempf@suse.de
 
 - Update to version 2.3.3+git16.89d32bb:

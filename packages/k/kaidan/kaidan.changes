@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr  6 19:18:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.12.2
+  https://www.kaidan.im/2025/03/30/kaidan-0.12.2/
+- Drop patch:
+  * drop_quick_compiler_option.patch
+
+-------------------------------------------------------------------
 Sun Feb 16 22:36:37 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 0.11.0:

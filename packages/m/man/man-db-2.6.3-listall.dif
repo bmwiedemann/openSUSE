@@ -1,10 +1,10 @@
 ---
  man/man1/man.man1 |    8 ++
- src/man.c         |  180 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
- 2 files changed, 186 insertions(+), 2 deletions(-)
+ src/man.c         |  182 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 188 insertions(+), 2 deletions(-)
 
 --- man/man1/man.man1
-+++ man/man1/man.man1	2022-08-17 13:11:29.974677243 +0000
++++ man/man1/man.man1	2025-04-07 09:22:13.196358321 +0000
 @@ -1236,6 +1236,14 @@ However, some users want to see them any
  .RB $ MAN_KEEP_STDERR
  is set to any non-empty value, error output will be displayed as usual.
@@ -21,8 +21,8 @@
  On Linux,
  .B %man%
 --- src/man.c
-+++ src/man.c	2022-08-17 13:10:07.436205495 +0000
-@@ -3651,12 +3651,141 @@ static int locate_page (const char *manp
++++ src/man.c	2025-04-07 09:41:34.647095968 +0000
+@@ -3651,12 +3651,143 @@ static int locate_page (const char *manp
  	return found;
  }
  
@@ -54,6 +54,8 @@
 +		struct sigaction sa;
 +		int used = 0x2A;
 +
++		if (section)
++			break;
 +		if (findall)
 +			break;
 +		if (external)
@@ -73,7 +75,7 @@
 +
 +		fputs("Man: ", stderr);
 +		fputs(_("find all matching manual pages"), stderr);
-+		fputs(" (set MAN_POSIXLY_CORRECT to avoid this)", stderr);
++		fputs(" (export MAN_POSIXLY_CORRECT=1 to avoid this)", stderr);
 +		fputc('\n', stderr);
 +
 +		lext = NULL;
@@ -102,7 +104,7 @@
 +
 +		sigaction(SIGALRM, &sa, (struct sigaction*)0);
 +
-+		alarm(7);
++		alarm(15);
 +		len = read(STDIN_FILENO, reqsect, sizeof(reqsect)-1);
 +		alarm(0);
 +
@@ -164,7 +166,7 @@
  		global_manpath = is_global_mandir (candp->path);
  		if (!global_manpath)
  			drop_effective_privs ();
-@@ -3679,9 +3808,56 @@ static int display_pages (struct candida
+@@ -3679,9 +3810,56 @@ static int display_pages (struct candida
  			regain_effective_privs ();
  
  		if (found && !findall)

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr  7 15:08:11 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
+
+- Adaptation for SLES16:
+  * Disable gnome_x11, gnome_multimedia and enable gnome_internet
+    patterns
+  * Always recommends NetworkManager and gnome_internet pattern.
+  * no longer recommends gnome-shell-classic, pidgin, planner, 
+    totem packages and gnome_imaging, office and x11_yast patterns.
+  * switch from gnome-terminal to GNOME Console
+  * switch from gedit to GNOME Text Editor
+  * switch from evince to Papers
+- Hardcode adobe-sourcecodepro and adwaita fonts to ensure
+  always have default fonts installed, when recommends are disabled
+- No longer recommends gnome-desktop
+
+-------------------------------------------------------------------
 Mon Mar 24 15:50:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend gnome-console instead of gnome-terminal.

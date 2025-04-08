@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:56:25 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.0.1
+  This upgrade is long overdue and fixes a security vulnerability transitive
+  from `zstd` itself.
+
+  * vendor: upgrade to python-zstandard 0.23.0
+
+-------------------------------------------------------------------
 Tue Mar 25 23:28:58 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.0

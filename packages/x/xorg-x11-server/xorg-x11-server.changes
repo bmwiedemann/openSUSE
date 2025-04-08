@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  2 07:35:25 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add u_xf86-Accept-devices-with-the-kernel-s-vesadrm-driver.patch: Enables
+  Xorg to make use of the kernel's vesadrm driver. Taken from upstream. See
+  the MR at https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/1879.
+  (bsc#1240624)
+
+- Add u_xf86-Accept-devices-with-the-kernel-s-efidrm-driver.patch: Enables
+  Xorg to make use of the kernel's efidrm driver. Taken from upstream. See
+  the MR at https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/1879.
+  (bsc#1240624)
+
+-------------------------------------------------------------------
 Tue Mar 18 18:32:17 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_CVE-2022-49737-dix-Hold-input-lock-for-AttachDevice.patch

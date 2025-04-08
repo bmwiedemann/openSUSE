@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioresponses
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-aioresponses
-Version:        0.7.6
+Version:        0.7.8
 Release:        0
 Summary:        Python module for mocking out requests made by ClientSession from aiohttp
 License:        MIT
@@ -36,7 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  (python3-asynctest if python3-base < 3.8)
 BuildRequires:  (python36-asynctest if python36-base)
-Requires:       python-aiohttp >= 2.0.0
+Requires:       python-aiohttp >= 3.3.0
+Requires:       python-packaging >= 22.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -61,6 +62,7 @@ export LC_ALL=en_US.UTF-8
 # disable tests which try to access external network
 skiptests+="test_address_as_instance_of_url_combined_with_pass_through"
 skiptests+=" or test_pass_through_with_origin_params"
+skiptests+=" or test_pass_through_unmatched_requests"
 %pytest -k "not ($skiptests)"
 
 %files %{python_files}

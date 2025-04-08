@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:56:55 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.1.
+  * Emit select for out-of-range builtin var indices.
+  * Allow UniformDecoration capability for Uniform (SPIR-V 1.6).
+  * Fix OpTypeBufferSurfaceINTEL translation for opaque pointers.
+  * Deprecate SPV_INTEL_token_type.
+
+-------------------------------------------------------------------
 Wed Mar 19 21:20:48 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.0.

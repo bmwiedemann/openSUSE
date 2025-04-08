@@ -388,4 +388,12 @@
     <comment>Required by iwd</comment>
     <requestid>1249659</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>180cd000cd4a24eb594b2cefc8aacf11</srcmd5>
+    <version>0.76</version>
+    <time>1744127405</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.76</comment>
+    <requestid>1267425</requestid>
+  </revision>
 </revisionlist>

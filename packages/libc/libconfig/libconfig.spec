@@ -96,6 +96,7 @@ This package contains the C++ bindings development files.
 %autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %configure \
   --disable-silent-rules \
   --disable-static

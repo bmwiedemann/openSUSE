@@ -96,7 +96,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.1
+Version:        7.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -120,8 +120,6 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
-Patch16:        ffmpeg-7-CVE-2025-22919.patch
-Patch17:        ffmpeg-7-CVE-2025-0518.patch
 Patch18:        ffmpeg-7-CVE-2025-25473.patch
 Patch19:        ffmpeg-7-CVE-2025-22921.patch
 Patch20:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
@@ -262,14 +260,6 @@ Requires:       (libavutil59 = %version-%release or ffmpeg-7-mini-libs = %versio
 Requires:       (libpostproc58 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
 Requires:       (libswresample5 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
 Requires:       (libswscale8 = %version-%release or ffmpeg-7-mini-libs = %version-%release)
-%if "%flavor" == "ffmpeg-7-mini"
-# Patches may subtly change internal APIs, so we're sticking %%release in
-# Requires lines. It also conveniently blocks openSUSE libav* being combined
-# with Packman libav*, due to PM's unique %%release numbers.
-# This use of %%release with %flavor however requires bcnt synchro:
-#
-#!BcntSyncTag:  ffmpeg-7
-%endif
 
 %description
 FFmpeg is a multimedia framework, able to decode, encode,
@@ -820,8 +810,14 @@ done
 
 %else
 %define _name ffmpeg
+# Patches may subtly change internal APIs, so we're sticking %%release in
+# Requires lines. It also conveniently blocks openSUSE libav* being combined
+# with Packman libav*, due to PM's unique %%release numbers.
+# This use of %%release with %flavor however requires bcnt synchro:
+#
+#!BcntSyncTag:  ffmpeg-7
 Name:           ffmpeg-7-mini
-Version:        7.1
+Version:        7.1.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:31:39 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update cookie to version 0.5.1.
+  ## 0.5.1
+
+  * Add the `Partitioned` cookie attribute.
+
+-------------------------------------------------------------------
 Mon Mar  4 08:52:49 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update cookie to version 0.5.0.

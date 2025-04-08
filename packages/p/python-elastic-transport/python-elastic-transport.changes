@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:55:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.17.1
+  * Ensure compatibility with httpx v0.28.0+ (#222)
+  * Add missing NOTICE file (#229)
+
+-------------------------------------------------------------------
 Wed Jan  8 09:45:07 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - 8.17.0: 

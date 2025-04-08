@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  6 08:58:01 UTC 2025 - Matthias Bach <marix@marix.org> - 59
+
+- Update to version 59
+  * INIReader: change variable visibility from private to protected
+  * Add preprocessor exclusions when INI_ALLOW_MULTILINE=0
+  * Add INIReader Sections and Keys methods
+  * If a line is longer than INI_MAX_LINE, consume input up to next
+    newline
+  * Performance improvements
+- Add service file to download source.
+
+-------------------------------------------------------------------
 Thu Jan 25 19:58:02 UTC 2024 - Matthias Bach <marix@marix.org> - 58
 
 - Update to version 58

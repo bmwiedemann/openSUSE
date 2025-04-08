@@ -1,7 +1,7 @@
 #
 # spec file for package embree
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,10 +17,10 @@
 #
 
 
-%define libname libembree3
+%define libname libembree4-4
 
 Name:           embree
-Version:        3.13.5
+Version:        4.4.0
 Release:        0
 Summary:        Ray Tracing Kernels
 License:        Apache-2.0
@@ -93,6 +93,7 @@ This package contains the shared library.
 %cmake_install
 rm -r %{buildroot}%{_mandir}
 rm -r %{buildroot}/usr/share/doc
+rm -v %{buildroot}%{_prefix}/embree-vars.*
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -103,7 +104,7 @@ rm -r %{buildroot}/usr/share/doc
 %files devel
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
-%{_includedir}/embree3
+%{_includedir}/embree4
 %{_libdir}/cmake/%{name}-%{version}
 %{_libdir}/*.so
 

@@ -25,6 +25,7 @@ Release:        0
 URL:            https://dotat.at/prog/unifdef/
 Source:         https://dotat.at/prog/unifdef/unifdef-%{version}.tar.xz
 Patch0:         fix-fgets-.-size-1.patch
+Patch1:         constexpr.patch
 BuildRequires:  xz
 
 %description

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:28:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.8
+  * feat: integer repeat
+  * fix: case repeat=1
+  * docs: elaborate on meaning in documentation of repeat argument
+  * use ClientSession base_url and headers
+  * Refactor usage of session base_url and headers
+  * Add tests for base_url and headers from session
+  * Add __repr__ to RequestMatch
+  * Upgrade yarl to be compatible with Python 3.12
+  * fix: review suggestion
+  * fix: fix test
+  * fix: added condition on py3.8 while supporting ClientSession.base_url
+  * fix: flake8
+- from version 0.7.7
+  * added passthrough_unmatched flag for aioresponses class
+  * test for passing unmatched requests
+  * add a readme description about passthrough_unmatched flag
+  * feat: support raise_for_status as callable
+  * Add packaging to requirements.txt
+  * Update ``__version__`` to latest released version
+  * Fix compat with aiohttp 3.11.0+
+  * fix: invalid rst code
+- Add test_pass_through_unmatched_requests to skipped tests
+- Update Requires from requirements.txt
+
+-------------------------------------------------------------------
 Sun Nov  3 14:47:54 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

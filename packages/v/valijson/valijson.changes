@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 07 13:18:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.5:
+  * Issues fixed in this release:
+    - Add 'schema_cache.hpp' to bundle script (@gema-mx)
+    - Fixed issues with running ci-fuzz on push and PRs
+    - Changes to make property tree adapter compile with C++17
+  * - Other changes include:
+    - Enable C++17; use built-in CMake support for locating Poco
+    - Test suite builds now assume that a C++14 compiler is
+      available
+    - Bump minimum CMake version
+
+-------------------------------------------------------------------
 Sun Feb 16 10:33:51 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.0.4:

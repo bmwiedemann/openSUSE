@@ -129,6 +129,8 @@ Recommends:     system-config-printer-dbus-service
 # power-profile-daemon uses a dbus interface, which is provided by tuned-ppd and power-profiles-daemom
 # Either one will do
 Recommends:     ppd-server
+# For parental control (malcontent) support for users
+Recommends:     malcontent-control
 # If the user expresses no choice, we pick the original power-profiles-daemon for now
 Suggests:       power-profiles-daemon
 

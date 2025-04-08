@@ -1,7 +1,7 @@
 #
-# spec file for package qpageview
+# spec file for package python-qpageview
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,40 @@
 
 
 %{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
-%define         X_display         ":98"
 Name:           python-qpageview
-Version:        0.6.2
+Version:        1.0.0
 Release:        0
 Summary:        Widget to display page-based documents for Qt5/PyQt5
 License:        GPL-3.0-only
 URL:            https://github.com/frescobaldi/qpageview
 Source:         https://files.pythonhosted.org/packages/source/q/qpageview/qpageview-%{version}.tar.gz
-Source1:        qpageview_smoketest.py
-# Created with Sphinx by `make latexpdf` in the docs subdir
-Source2:        qpageview.pdf
-BuildRequires:  %{python_module poppler-qt5}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  xorg-x11-server
+BuildRequires:  %{python_module cups}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module qt6}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-poppler-qt5
-Requires:       python-qt5
+Requires:       python-qt6
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Widget to display page-based documents for Qt5/PyQt5
+Widget to display page-based documents for Qt6/PyQt6
 
 %prep
 %setup -q -n qpageview-%{version}
-cp %{SOURCE1} %{SOURCE2} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-#############################################
-### Launch a virtual framebuffer X server ###
-#############################################
-export DISPLAY=%{X_display}
-Xvfb %{X_display} >& Xvfb.log &
-trap "kill $! || true" EXIT
-sleep 2
-%python_expand $python qpageview_smoketest.py
 
 %files %{python_files}
-%doc ChangeLog README.rst
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/qpageview
 %{python_sitelib}/qpageview-%{version}*-info

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  4 19:42:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Increase test timeout for all arches except x86_64 and run tests
+  again should they fail the first time, the testsuite is flaky.
+
+-------------------------------------------------------------------
 Wed Apr  2 15:03:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Increase test timeout on s390x. The http2-body-stream test can be

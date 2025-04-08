@@ -64,6 +64,8 @@ Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
+Patch17:        bluez-5.79-c23.patch
+Patch18:        bluez-5.79-stdarg.patch
 # fix some memory leak with malformed packet (reported upstream but not yet fixed)
 Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
@@ -247,7 +249,7 @@ export CC=gcc-8
 # header file has "#ifndef FIRMWARE_DIR...#define FIRMWARE_DIR /etc/firmare"
 # instead of patching, just supply FIRMWARE_DIR on compiler's command line
 export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"%{_firmwaredir}\"'"
-# because of patch4...
+# because of patch4... and patch18
 autoreconf -fi
 # --enable-experimental is needed or btattach does not build (bug?)
 %configure \

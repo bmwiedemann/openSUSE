@@ -24,6 +24,8 @@ License:        Apache-2.0
 Group:          System/I18n/Chinese
 URL:            https://github.com/BYVoid/OpenCC
 Source:         https://github.com/BYVoid/OpenCC/archive/ver.%{version}/OpenCC-ver.%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch1:         opencc-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -74,6 +76,8 @@ This package provides development headers for OpenCC.
 
 %prep
 %setup -q -n OpenCC-ver.%{version}
+%autopatch -p1
+
 # call python3 with path
 sed -i \
     -e 's:BIN python:BIN /usr/bin/python3:g' \

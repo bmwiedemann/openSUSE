@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr  7 10:46:03 UTC 2025 - pgajdos@suse.com
+
+- version update to 25.04.0 
+  core:
+   * Properly verify adbe.pkcs7.sha1 signatures
+   * Improve errors on signing failure
+   * Allow empty outline titles
+   * Fix error in Distinguished Name parsing
+   * Fix build with Android API < 29
+   * Fix parsing Level PG document string
+   * Internal code improvements
+   * Fix crashes in malformed documents
+  utils:
+   * pdfcairo: Fix document unit for SVG output
+  cpp:
+   * Add document::form_type
+   * Add document::has_javascript
+  build system:
+   * cmake: Use modern Python3 cmake module
+- fixes CVE-2025-32365 [bsc#1240881]
+        CVE-2025-32364 [bsc#1240880]
+
+-------------------------------------------------------------------
 Mon Mar 24 09:33:35 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.03.0

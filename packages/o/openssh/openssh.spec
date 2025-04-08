@@ -1,7 +1,7 @@
 #
 # spec file for package openssh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define sandbox_seccomp 0
-%ifnarch ppc
+%ifnarch ppc loongarch64
 %define sandbox_seccomp 1
+%endif
+%if !%{sandbox_seccomp}
+%ifarch loongarch64
+%define sandbox_rlimit 0
+%else
+%define sandbox_rlimit 1
+%endif
 %endif
 %define _fwdir      %{_sysconfdir}/sysconfig/SuSEfirewall2.d
 %define _fwdefdir   %{_fwdir}/services
@@ -172,14 +180,14 @@ BuildRequires:  openssl-devel
 %endif
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  sysuser-shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libfido2) >= 1.2.0
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  sysuser-shadow
-BuildRequires:  sysuser-tools
 Requires:       %{name}-clients = %{version}-%{release}
 Requires:       %{name}-server = %{version}-%{release}
-%if 0%{?suse_version} >= 1550 || 0%{?suse_version} < 1500 
+%if 0%{?suse_version} >= 1550 || 0%{?suse_version} < 1500
 BuildRequires:  pkgconfig(krb5)
 %else
 BuildRequires:  krb5-mini-devel
@@ -267,6 +275,7 @@ root logins. This package provides a config that disallows root
 to log in using the passwor. It's useful to secure your system
 preventing password attacks on the root account over ssh.
 %else
+
 %package server-config-rootlogin
 Summary:        Config to permit root logins to sshd
 Group:          Productivity/Networking/SSH
@@ -369,7 +378,9 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 %if %{sandbox_seccomp}
     --with-sandbox=seccomp_filter \
 %else
+%if %{sandbox_rlimit}
     --with-sandbox=rlimit \
+%endif
 %endif
     --disable-strip \
     --with-audit=linux \
@@ -640,6 +651,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %config(noreplace) %{_sysconfdir}/ssh/sshd_config.d/51-permit-root-login.conf
 %endif
 %else
+
 %files server-config-rootlogin
 %if %{defined _distconfdir}
 %{_distconfdir}/ssh/sshd_config.d/50-permit-root-login.conf

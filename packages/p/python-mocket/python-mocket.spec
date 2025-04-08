@@ -1,7 +1,7 @@
 #
 # spec file for package python-mocket
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.13.2
+Version:        3.13.4
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -42,6 +42,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
 Requires:       python-h11
 Requires:       python-puremagic
+Requires:       python-typing-extensions
 Requires:       python-urllib3 >= 1.25.3
 Suggests:       python-xxhash
 BuildArch:      noarch

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:17:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- all distros actually ship with python 3.6 we can have it enabled
+  all the time
+
+-------------------------------------------------------------------
+Sat Apr  5 16:16:26 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add 0001-Avoid-type-names-and-keywords.patch from Fedora: fixes
+  build with gcc 15.
+
+-------------------------------------------------------------------
 Mon Mar 24 23:23:46 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.0.2

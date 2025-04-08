@@ -2221,4 +2221,16 @@ General:
     <comment>- Update to 3.0.2 (forwarded request 1255755 from darix)</comment>
     <requestid>1255848</requestid>
   </revision>
+  <revision rev="151" vrev="2">
+    <srcmd5>80975d3c0ac9f79ba97675beb7a1f3b4</srcmd5>
+    <version>3.0.2</version>
+    <time>1744127415</time>
+    <user>anag_factory</user>
+    <comment>- all distros actually ship with python 3.6 we can have it enabled
+  all the time
+
+- Add 0001-Avoid-type-names-and-keywords.patch from Fedora: fixes
+  build with gcc 15.</comment>
+    <requestid>1267702</requestid>
+  </revision>
 </revisionlist>

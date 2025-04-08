@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 18 08:51:16 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Disable seccomp_filter and rlimitsandbox sandbox for loongarch. 
+  seccomp_filter and rlimitsandbox not supported on loongarch64 yet.
+
+-------------------------------------------------------------------
 Wed Feb 19 09:17:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - merge openssh-fips into the main openssh package (bsc#1185116)

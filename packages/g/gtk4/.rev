@@ -1017,4 +1017,25 @@ New upstream release</comment>
     <comment>New stable release (forwarded request 1265406 from iznogood)</comment>
     <requestid>1265726</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>500ca2b3f8fa986b1f7792d22b0a365b</srcmd5>
+    <version>4.18.4</version>
+    <time>1744127454</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.4:
+  + Bugs fixed:
+    - 4.18.3 regression: cursor doesn't update state when crossing
+      window boundaries
+    - Gtk.Video causes segfault inside VM with wayland backend
+    - Win32: can't resize or move windows anymore
+    - testsuite: Make reftest-compare use gsize instead of int
+    - wayland: Force setting cursor on enter
+    - Merge fixes from !8375 into 4.18
+    - inspector: Survive without installed schemas
+    - builder: Fix a menu parsing issue
+    - win32: Fix initial window state
+    - vulkan: Do not create dmabuf target images if not enabled
+  + Updated translations. (forwarded request 1267515 from iznogood)</comment>
+    <requestid>1267617</requestid>
+  </revision>
 </revisionlist>

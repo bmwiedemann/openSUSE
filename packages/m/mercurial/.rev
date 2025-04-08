@@ -1887,4 +1887,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment>- Mercurial 7.0</comment>
     <requestid>1256086</requestid>
   </revision>
+  <revision rev="213" vrev="1">
+    <srcmd5>076786129cd0edaf532fd19541b2c8fd</srcmd5>
+    <version>7.0.1</version>
+    <time>1744127462</time>
+    <user>anag_factory</user>
+    <comment>- Mercurial 7.0.1</comment>
+    <requestid>1267635</requestid>
+  </revision>
 </revisionlist>

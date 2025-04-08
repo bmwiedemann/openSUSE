@@ -62,7 +62,7 @@ This package contains the development files for liblqr.
 sed -i "s,/nwalsh/html/chunk.xsl,/nwalsh/current/html/chunk.xsl," docs/lqr_style.xsl
 
 %build
-%configure
+%configure CFLAGS="-std=gnu11 %optflags"
 %make_build
 cd docs
 %make_build

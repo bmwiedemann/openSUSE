@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 07 20:28:10 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250406:
+  * Fallback to graphics shader instead of compute shader if the
+    gpu doesn't support compute shader (either glsl 420 or opengl
+    es glsl 310)
+  * Use opengl 4.20 for non-external texture (supports wider range
+    of hardware)
+  * Improve color quality, use texture instead of texelFetch
+  * Fix region capture on hyprland with multiple monitors
+  * Remove -preset and -multipass, replace with -tune
+    performance|quality
+  * Correct error message for preset
+  * Add -preset and -multipass options for higher quality video
+    encoding on nvidia
+
+-------------------------------------------------------------------
 Wed Apr 02 22:33:09 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250401:

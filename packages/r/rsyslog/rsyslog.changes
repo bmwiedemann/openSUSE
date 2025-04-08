@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Apr  1 17:26:14 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Upgrade to rsyslog 8.2502
+  * 2025-02-16: prepare for scheduled stable 8.2502.0 release
+  * 2025-02-13: openssl: check for ENGINE support in library
+  * 2025-02-13: CI: add compile check with atomic operations disabled
+  * 2025-02-12: omfwd bugfix: variable was not properly synced across threads
+  * 2025-02-12: omamqp1: Fixed build on Ubuntu 24
+  * 2025-02-12: testbench: Write started dummy file in python snmpreceiver script
+  * 2025-01-29: CI: add Testruns under Ubuntu 24.04
+  * 2025-02-07: testbench: Added new version of snmptrapreceiver.py for python 3.11+
+  * 2025-01-27: testbench: reduce flakiness for omhttp-batch-retry-metadata.sh test
+  * 2025-01-27: testbench: Fix OpenSSL 3.x depreceated warnings in tcpflood
+  * 2025-01-27: testbench: remove es 6.0 based tests
+  * 2025-01-27: omfwd: align some parameters with imtcp names
+  * 2025-01-22: tcpflood test tool: enable multi threaded connection open
+  * 2025-01-23: testbench: add new and adapt imtcp tests for large connection counts
+  * 2025-01-23: imtcp: add "socketBacklog" parameter to configure TCP backlog size
+  * 2025-01-23: testbench: adapt imptcp tests for large connection counts
+  * 2025-01-23: imptcp: Increase default SYN backlog for imptcp server to 64
+  * 2025-01-14: netstrm TLS driver: move TLS retry handling to main driver
+  * 2025-01-07: testbench flake fix: prevent "bad" timing to cause flakes
+  * 2025-01-03: Replaced inet_aton with inet_pton for IPv4 address conversion.
+  * 2024-11-28: CI: add check for compile with -std=gnu23 gcc option
+  * 2024-12-31: CI: remove libgrok-related codeql checks
+  * 2024-12-05: mmkubernetes: nitfix
+  * 2024-12-04: bump version number for next scheduled stable release
+  * 2024-11-28: omazureeventhubs: Handle invalid URL characters in config parameters
+  * 2024-12-02: prepare for schedule stable 8.2412.0 release
+  * 2024-11-26: Fix legacy $ActionQueueDiscardMark parameter
+  * 2024-11-26: imdiag bugfix: racy network driver selection
+  * 2024-11-15: CI: user newer OS versions in CI workflow
+  * 2024-11-18: gnutls bugfix: Add timeout to GnuTLS handshake
+  * 2024-11-18: gnutls bugfix: Avoid blocking sockets during TLS handshake
+  * 2024-11-15: cleanup: remove unused variable
+  * 2024-11-15: libksi: make build under C11 C standard
+  * 2024-11-15: cleanup: remove variables that are no longer used
+  * 2024-11-13: testbench bugfix: typo caused invalid test file to be used
+  * 2024-11-12: nsd_ptcp regression fix: remove debugging messages emited to stderr
+  * 2024-03-25: ossl netstream driver: allow ephemeral Diffie-Hellman key exchange
+  * 2024-11-07: Fix build on musl
+  * 2024-10-29: test bench fix: bump zookeper NVR
+  * 2024-10-25: imjournal: Fix first message loss after journal rotation
+  * 2024-10-20: bump version number for next scheduled stable release cycle
+  * 2024-10-20: prepare for 8.2410.0 scheduled stable release
+  * 2024-10-14: regression fix: build issue on Solaris 10
+  * 2024-09-23: testbench: correctly apply socket options in minitcpsrvr
+  * 2024-10-07: clean(imhiredis): Minor code fixes
+  * 2024-09-25: rainerscript: do not try to call a function if it does not exist
+  * 2024-09-20: Fix runConf NULL pointer refence
+  * 2024-09-15: network subsystem: improve connection failure error message
+  * 2024-08-22: add missing ChangeLog entry
+  * 2024-08-20: prepare for next scheduled release cycle
+  * 2024-08-19: build: make new openssl crypto provider individually selectable
+  * 2024-08-19: prepare for v8.2408.0 scheduled stable release
+  * 2024-08-19: build system: correct invalid file name
+  * 2024-04-12: omfwd: implement native load balancing - phase 1
+  * 2024-08-13: Adjust documentation regarding rscryutil
+  * 2024-08-14: Replace deprecated json_object_object_get
+  * 2024-08-15: minor: flag function as OK for undefined behaviour
+  * 2024-08-14: build fix: regression from recently merged 615cde156c14
+  * 2024-08-13: Refactor ossl crypto provider
+  * 2024-08-12: omkafka: write Kafka log with level ERROR or higher into errorfile
+  * 2024-08-02: openssl: Add remoteclient to LogMsg where possible
+  * 2024-07-31: imtcp: add streamdriver.crlfile module parameter
+  * 2024-05-10: Refactor the rscryutil tool
+  * 2024-07-23: imptcp: improve error messages
+  * 2024-07-18: omazureeventhubs: Fix implementation of amqp_address parameter
+  * 2024-07-18: ossl: Fix #pragma GCC diagnostic not allowed inside functions
+  * 2024-06-14: Fix memory leak in omazureeventhubs on accepted PN_DELIVERY event
+  * 2024-05-01: Keep original free pattern.
+  * 2024-04-19: Do not free the uninitialized cstring.
+  * 2024-05-08: Fix passing the value to EscapeChar.
+  * 2024-07-01: prepare for next scheduled stable release cycle
+  * 2024-06-21: tls bugfix: parameter 'StreamDriver.CRLFile' not known
+  * 2024-04-09: fix(lexer): typo and missing space when file can't be accessed
+- source code now supports c23 standard
+
+-------------------------------------------------------------------
 Wed Mar 26 05:16:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency

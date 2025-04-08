@@ -142,4 +142,12 @@
     form when input has one significant digit (forwarded request 1093823 from dirkmueller)</comment>
     <requestid>1093988</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>36bf7f48d4b5ae3c0bcd58d9b5e4e456</srcmd5>
+    <version>3.3.1</version>
+    <time>1744127461</time>
+    <user>anag_factory</user>
+    <comment>double-conversion 3.3.1 (forwarded request 1267313 from AndreasStieger)</comment>
+    <requestid>1267625</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:43:03 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and
+  to still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Tue Jun 18 11:40:30 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to compiler options to work around GCC 14 not allowing

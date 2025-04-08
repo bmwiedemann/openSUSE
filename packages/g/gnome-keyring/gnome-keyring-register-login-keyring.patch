@@ -1,0 +1,140 @@
+diff --git a/daemon/control/gkd-control-server.c b/daemon/control/gkd-control-server.c
+index 5ef307d6eeb40da055a3a90271a50f6c3ef96164..dcf6471e1922ee02f72e5ecfabb528931a78af57 100644
+--- a/daemon/control/gkd-control-server.c
++++ b/daemon/control/gkd-control-server.c
+@@ -25,6 +25,7 @@
+ 
+ #include "daemon/gkd-main.h"
+ #include "daemon/gkd-util.h"
++#include "daemon/dbus/gkd-dbus.h"
+ 
+ #include "egg/egg-buffer.h"
+ #include "egg/egg-cleanup.h"
+@@ -85,10 +86,13 @@ control_unlock_login (EggBuffer *buffer)
+ 	if (!egg_buffer_get_string (buffer, offset, &offset, &master, egg_secure_realloc))
+ 		return GKD_CONTROL_RESULT_FAILED;
+ 
+-	if (gkd_login_unlock (master))
++	if (gkd_login_unlock (master)) {
+ 		res = GKD_CONTROL_RESULT_OK;
+-	else
++		if (gkd_main_secrets_started ())
++			gkd_dbus_ensure_login_collection_is_registered ();
++	} else {
+ 		res = GKD_CONTROL_RESULT_DENIED;
++	}
+ 
+ 	egg_secure_strfree (master);
+ 	return res;
+diff --git a/daemon/dbus/gkd-dbus-secrets.c b/daemon/dbus/gkd-dbus-secrets.c
+index 207524b2f75a1b4e4856f4298b53ad3e3569d482..7227dd83d27fcd125c1d5edebffb3ae420d5e7f0 100644
+--- a/daemon/dbus/gkd-dbus-secrets.c
++++ b/daemon/dbus/gkd-dbus-secrets.c
+@@ -156,3 +156,9 @@ gkd_dbus_secrets_cleanup (GDBusConnection *conn)
+ 		secrets_service = NULL;
+ 	}
+ }
++
++void
++gkd_dbus_ensure_login_collection_is_registered (void)
++{
++	gkd_secret_service_ensure_login_collection_is_registered (secrets_service);
++}
+diff --git a/daemon/dbus/gkd-dbus.h b/daemon/dbus/gkd-dbus.h
+index 8a9ca450fce5852ce2fb8166cdebe973cdb86f9c..9cd2a55b3994a201c6cbaaf6098a860d1df127f3 100644
+--- a/daemon/dbus/gkd-dbus.h
++++ b/daemon/dbus/gkd-dbus.h
+@@ -38,4 +38,6 @@ gchar*        gkd_dbus_singleton_control        (void);
+ gboolean      gkd_dbus_invocation_matches_caller (GDBusMethodInvocation *invocation,
+ 						  const char            *caller);
+ 
++void          gkd_dbus_ensure_login_collection_is_registered (void);
++
+ #endif /* GKD_DBUS_H */
+diff --git a/daemon/dbus/gkd-secret-objects.c b/daemon/dbus/gkd-secret-objects.c
+index af89601706d85d6f858659e853bc9d5d614358a3..5dda0f3f99b43d4b43e7a1030515094c1726c0c6 100644
+--- a/daemon/dbus/gkd-secret-objects.c
++++ b/daemon/dbus/gkd-secret-objects.c
+@@ -1660,3 +1660,10 @@ gkd_secret_objects_unregister_collection (GkdSecretObjects *self,
+ 		return;
+ 	}
+ }
++
++gboolean
++gkd_secret_objects_check_collection_is_registered  (GkdSecretObjects *self,
++                                                    const gchar *collection_path)
++{
++	return g_hash_table_lookup (self->collections_to_skeletons, collection_path) != NULL;
++}
+diff --git a/daemon/dbus/gkd-secret-objects.h b/daemon/dbus/gkd-secret-objects.h
+index e9b61d4e4063427ad0902d569bc74ca8f5ab70ea..905167438fd0e3a448713004481df8524baf6d70 100644
+--- a/daemon/dbus/gkd-secret-objects.h
++++ b/daemon/dbus/gkd-secret-objects.h
+@@ -102,4 +102,7 @@ void                gkd_secret_objects_register_collection       (GkdSecretObjec
+ void                gkd_secret_objects_unregister_collection     (GkdSecretObjects *self,
+                                                                   const gchar *collection_path);
+ 
++gboolean            gkd_secret_objects_check_collection_is_registered  (GkdSecretObjects *self,
++                                                                        const gchar *collection_path);
++
+ #endif /* __GKD_SECRET_OBJECTS_H__ */
+diff --git a/daemon/dbus/gkd-secret-service.c b/daemon/dbus/gkd-secret-service.c
+index 7a4458152243967a8092b378d36aa3143dfbd0f0..b36cbac9c316bebd8df1bb00049d734d57680d58 100644
+--- a/daemon/dbus/gkd-secret-service.c
++++ b/daemon/dbus/gkd-secret-service.c
+@@ -1447,3 +1447,16 @@ gkd_secret_service_emit_collection_changed (GkdSecretService *self,
+ 
+ 	gkd_exported_service_emit_collection_changed (self->skeleton, collection_path);
+ }
++
++void
++gkd_secret_service_ensure_login_collection_is_registered (GkdSecretService *self)
++{
++	g_return_if_fail (GKD_SECRET_IS_SERVICE (self));
++
++	gchar *collection_path = gkd_secret_util_build_path (SECRET_COLLECTION_PREFIX, "login", strlen("login"));
++	if (gkd_secret_objects_check_collection_is_registered (self->objects, collection_path)) {
++		return;
++	}
++
++	gkd_secret_objects_register_collection (self->objects, collection_path);
++}
+diff --git a/daemon/dbus/gkd-secret-service.h b/daemon/dbus/gkd-secret-service.h
+index f95ac9606e2c1696bae905bed978dd9f13f6b154..960da54685e7ea663ce0ae966fff0b3154549b30 100644
+--- a/daemon/dbus/gkd-secret-service.h
++++ b/daemon/dbus/gkd-secret-service.h
+@@ -84,4 +84,6 @@ void                    gkd_secret_service_emit_collection_changed (GkdSecretSer
+ 
+ gchar **                gkd_secret_service_get_collections         (GkdSecretService *self);
+ 
++void                    gkd_secret_service_ensure_login_collection_is_registered (GkdSecretService *self);
++
+ #endif /* ___SECRET_SERVICE_H__ */
+diff --git a/daemon/gkd-main.c b/daemon/gkd-main.c
+index 6fab91fa6aeadfe98d8bf289705dbc7eac93f522..f6268bad3475b6b108f103f5b5c83a73b507070b 100644
+--- a/daemon/gkd-main.c
++++ b/daemon/gkd-main.c
+@@ -821,6 +821,12 @@ gkd_main_complete_initialization (const gchar *components)
+ 	gkr_daemon_initialize_steps (components);
+ }
+ 
++gboolean
++gkd_main_secrets_started (void)
++{
++	return secrets_started;
++}
++
+ static gboolean
+ on_login_timeout (gpointer data)
+ {
+diff --git a/daemon/gkd-main.h b/daemon/gkd-main.h
+index b847be6b2a1ea0e47574d5bdf1469f8ae3f49281..5e9ba153e13b4f686acba771104e250e35b0c25e 100644
+--- a/daemon/gkd-main.h
++++ b/daemon/gkd-main.h
+@@ -27,4 +27,6 @@ void           gkd_main_quit                    (void);
+ 
+ void           gkd_main_complete_initialization (const gchar *components);
+ 
++gboolean        gkd_main_secrets_started        (void);
++
+ #endif /* GKD_MAIN_H_ */

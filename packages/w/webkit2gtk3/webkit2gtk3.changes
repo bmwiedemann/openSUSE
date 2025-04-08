@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Apr  5 22:05:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.48.1:
+  + Limit the data stored in session state.
+  + Remove the empty area below the title bar in Web Inspector when
+    not docked.
+  + Fix the build with GST_DISABLE_GST_DEBUG.
+  + Fix the build with GStreamer < 1.20.
+  + Fix the build with video disabled.
+  + Fix the build with clang 20.
+- Add 8bee9eb9.patch: fix the build on non-x86 architectures.
+
+-------------------------------------------------------------------
 Mon Mar 17 10:50:24 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: no longer build bi-arch flavors of
@@ -19,7 +32,7 @@ Fri Mar 14 17:37:34 UTC 2025 - Michael Gorse <mgorse@suse.com>
 -------------------------------------------------------------------
 Fri Mar 14 13:05:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Update to version 2.48.0 (boo#1239863 boo#1239864).:
+- Update to version 2.48.0 (boo#1239863 boo#1239864):
   + Move tiles rendering to worker threads when rendering with the
     GPU.
   + Fix preserve-3D intersection rendering.

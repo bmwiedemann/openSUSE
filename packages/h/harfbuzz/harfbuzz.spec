@@ -18,7 +18,7 @@
 
 
 Name:           harfbuzz
-Version:        11.0.0
+Version:        11.0.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
@@ -159,7 +159,6 @@ export CXXFLAGS="%optflags -std=c++17"
 %files tools
 %license COPYING
 %{_bindir}/hb-info
-%{_bindir}/hb-ot-shape-closure
 %{_bindir}/hb-shape
 %{_bindir}/hb-subset
 %{_bindir}/hb-view

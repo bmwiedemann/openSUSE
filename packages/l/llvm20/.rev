@@ -29,4 +29,15 @@
   * clang-shlib-symbol-versioning.patch</comment>
     <requestid>1254870</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d72edcc3cd73aa014cce9c7f69d1fd7</srcmd5>
+    <version>20.1.2</version>
+    <time>1744127400</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.1.2.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1267342</requestid>
+  </revision>
 </revisionlist>

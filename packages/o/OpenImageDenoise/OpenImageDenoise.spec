@@ -1,7 +1,7 @@
 #
 # spec file for package OpenImageDenoise
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 
 %define pkgname oidn
 Name:           OpenImageDenoise
-Version:        2.2.2
+Version:        2.3.3
 Release:        0
 Summary:        Open Image Denoise library
 License:        Apache-2.0
@@ -102,7 +102,6 @@ rm -r %{buildroot}%{_datadir}/doc
 %files
 %license LICENSE.txt
 %{_bindir}/oidn*
-
 
 %files -n %{main_library}
 %license LICENSE.txt

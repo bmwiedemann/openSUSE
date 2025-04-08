@@ -1884,4 +1884,40 @@
    * [flake8-gettext] Swap format- and printf-in-get-text-func-call examples (INT002, INT003)</comment>
     <requestid>1255264</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>5f022ef482aae2cff05f277cc5506743</srcmd5>
+    <version>0.11.4</version>
+    <time>1744127406</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.4
+ * Preview features
+   * [ruff] Implement invalid-rule-code as RUF102 
+   * [syntax-errors] Detect duplicate keys in match mapping patterns 
+   * [syntax-errors] Detect duplicate attributes in match class patterns 
+   * [syntax-errors] Detect invalid syntax in annotations 
+   * [airflow] Add more autofixes for AIR302
+   * [airflow] Move AIR301 to AIR002 
+   * [airflow] Move AIR302 to AIR301 and AIR303 to AIR302 
+   * [flake8-bandit] Mark str and list[str] literals as trusted input (S603) 
+   * [ruff] Support slices in RUF005 
+   * [syntax-errors] Start detecting compile-time syntax errors 
+   * [syntax-errors] Duplicate type parameter names 
+   * [syntax-errors] Irrefutable case pattern before final case 
+   * [syntax-errors] Multiple assignments in case pattern 
+   * [syntax-errors] Single starred assignment target 
+   * [syntax-errors] Starred expressions in return, yield, and for 
+   * [syntax-errors] Store to or delete __debug__ 
+ * Bug fixes
+   * [syntax-errors] Fix multiple assignment error for class fields in match patterns 
+   * Don't skip visiting non-tuple slice in typing.Annotated subscripts 
+   * Error instead of panic! when running Ruff from a deleted directory
+   * [syntax-errors] Fix false positive for parenthesized tuple index 
+ * CLI
+   * Check pyproject.toml correctly when it is passed via stdin 
+ * Configuration
+   * [flake8-import-conventions] Add import numpy.typing as npt to default flake8-import-conventions.aliases 
+   * Documentation
+   * [refurb] Document why UserDict, UserList, and UserString are preferred over dict, list, and str (FURB189)</comment>
+    <requestid>1267438</requestid>
+  </revision>
 </revisionlist>

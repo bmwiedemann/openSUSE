@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Apr  6 13:51:28 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Migrate from deprecated %suse_update_desktop_file to
+  %translate_suse_desktop. (boo#1158957)
+- MozillaFirefox.desktop fixes done during the migration to
+  translate-suse-desktop:
+  * Remove English text from Burmese translation.
+  * Import translations from mis-named languages from
+    MozillaFirefox.desktop and move them to correct language codes.
+  * Remove en_GB translation that contains no real contents.
+
+-------------------------------------------------------------------
+Wed Apr  2 05:57:56 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 137.0
+  * https://www.mozilla.org/en-US/firefox/137.0/releasenotes/
+  MFSA 2025-20 (bsc#1240083)
+  * CVE-2025-3028 (bmo#1941002)
+    Use-after-free triggered by XSLTProcessor
+  * CVE-2025-3031 (bmo#1947141)
+    JIT optimization bug with different stack slot sizes
+  * CVE-2025-3032 (bmo#1949987)
+    Leaking file descriptors from the fork server
+  * CVE-2025-3029 (bmo#1952213)
+    URL bar spoofing via non-BMP Unicode characters
+  * CVE-2025-3035 (bmo#1952268)
+    Tab title disclosure across pages when using AI chatbot
+  * CVE-2025-3033 (bmo#1950056)
+    Opening local .url files could lead to another file being opened
+  * CVE-2025-3030 (bmo#1850615, bmo#1932468, bmo#1942551,
+    bmo#1951017, bmo#1951494)
+    Memory safety bugs fixed in Firefox 137, Thunderbird 137,
+    Firefox ESR 128.9, and Thunderbird 128.9
+  * CVE-2025-3034 (bmo#1894100, bmo#1934086, bmo#1950360)
+    Memory safety bugs fixed in Firefox 137 and Thunderbird 137
+- requires NSS 3.109
+
+-------------------------------------------------------------------
 Fri Mar 28 16:10:39 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 136.0.4

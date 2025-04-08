@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sat Apr  5 21:34:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.3:
+  - Added NVIDIA Blackwell GPU support
+  - Added AMD RDNA4 GPU support
+  - Improved performance for AMD RDNA3 GPUs
+  - Added OIDN_DEPENDENTLOADFLAG CMake option for setting the
+    DEPENDENTLOADFLAG linker flag on Windows
+  - Added OIDN_LIBRARY_VERSIONED CMake option for toggling
+    versioning in the Open Image Denoise library files
+  - Known issue: performance regression for AMD RDNA2 GPUs
+
+-------------------------------------------------------------------
+Sat Apr  5 21:33:34 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.2:
+  - Improved performance for Intel Lunar Lake and Battlemage GPUs
+  - Added Intel Panther Lake GPU support
+  - Fixed compile error when building with OpenImageIO 3.x
+
+-------------------------------------------------------------------
+Sat Apr  5 21:32:16 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.1:
+  - Fixed corrupted output when in-place denoising high-resolution
+    (> 1080p) images where the input and output are stored in
+    different shared buffer objects (created with
+    oidnNewSharedBuffer*) that overlap in memory
+  - Fixed issues with cancellation through progress monitor
+    callbacks:
+    - Fixed cancellation requests not being fulfilled on CPU
+      devices since v2.3.0
+    - Fixed not calling the callback anymore after requesting
+      cancellation, while the operation is still being executed
+  - Added support for creating shared buffers on Metal devices
+  - Enabled accessing system allocated memory for CUDA devices
+    which support this feature (see systemMemorySupported device
+    parameter)
+  - Added LUID support for HIP devices. Importing DX12 and Vulkan
+    buffers is now functional when using recent AMD GPU drivers on
+    Windows
+
+-------------------------------------------------------------------
+Sat Apr  5 21:27:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.3.0:
+  - Significantly improved image quality of the RT filter in high
+    quality mode for HDR denoising with prefiltering, i.e., the
+    following combinations of input features and parameters:
+    - HDR color + albedo + normal + cleanAux
+    - albedo
+    - normal
+    In these cases a much more complex filter is used, which
+    results in lower performance than before (about 2x). To revert
+    to the previous performance behavior, please switch to the
+    balanced quality mode.
+  - Added fast quality mode (OIDN_QUALITY_FAST) for even higher
+    performance (about 1.5-2x) interactive/real-time previews and
+    lower default memory usage at the cost of somewhat lower image
+    quality. Currently this is implemented for the RT filter except
+    prefiltering (albedo, normal). In other cases denoising
+    implicitly falls back to balanced mode.
+  - Added Intel Arrow Lake, Lunar Lake, and Battlemage GPU support
+  - Execute Async functions asynchronously on CPU devices as well
+  - Load/initialize device modules lazily (improves stability)
+  - Added oidnIsCPUDeviceSupported, oidnIsSYCLDeviceSupported,
+    oidnIsCUDADeviceSupported, oidnIsHIPDeviceSupported, and
+    oidnIsMetalDeviceSupported API functions for checking whether a
+    physical device of a particular type is supported
+  - Release the CUDA primary context when destroying the device
+    object if using the CUDA driver API
+  - Added OIDN_LIBRARY_NAME CMake option for setting the base name
+    of the Open Image Denoise library files
+  - Fixed device creation error with oidnNewDevice when the default
+    device of the specified type (e.g. CUDA) is not supported but
+    there are other supported non-default devices of that type in
+    the system
+  - Fixed CMake error when building with Metal support using
+    non-Apple Clang
+  - Fixed iOS build errors
+  - Added support for building with ROCm 6.x oidnNewCUDADevice and
+    oidnNewHIPDevice no longer accept negative device IDs. If the
+    goal is to use the current device, its actual ID needs to be
+    passed.
+  - Upgraded to oneTBB 2021.12.0 in the official binaries
+  - Training:
+    - Improved training performance on CUDA and MPS devices, added
+      --compile option
+    - Added --quality option (high, balanced, fast) for selecting
+      the size of the model to train, changed the default from
+      balanced to high
+    - Added new models to the --model option (unet_small,
+      unet_large, unet_xl)
+    - Added support for training with prefiltered auxiliary
+      features by passing --aux_results to preprocess.py and
+      train.py
+    - Added experimental support for depth (z)
+
+-------------------------------------------------------------------
 Tue Apr 30 20:52:47 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
 - split out the sub shared libraries to have a proper package

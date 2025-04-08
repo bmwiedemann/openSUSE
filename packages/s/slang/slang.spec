@@ -31,7 +31,6 @@ Patch3:         0003-Enforce-use-of-setfsuid.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} >= 1210

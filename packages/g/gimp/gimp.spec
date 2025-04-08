@@ -79,12 +79,8 @@
 %global abiver 5
 %global apiver 3.0
 
-%if 0%{?sle_version}
-%bcond_with python_plugin
-%else
+# all distros actually ship with python 3.6 we can have it enabled all the time
 %bcond_without python_plugin
-%endif
-
 
 %define pkg_name gimp
 
@@ -104,6 +100,7 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
+Patch4:         0001-Avoid-type-names-and-keywords.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

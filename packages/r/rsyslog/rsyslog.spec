@@ -30,7 +30,7 @@
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2406
+%define rsyslog_major 8.2502
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix

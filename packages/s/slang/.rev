@@ -316,4 +316,12 @@
     <comment></comment>
     <requestid>1235698</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>20900a2a5afcc906e8fe3f6795072054</srcmd5>
+    <version>2.3.3+git16.89d32bb</version>
+    <time>1744127414</time>
+    <user>anag_factory</user>
+    <comment>- Drop pcre module, it hasn't been ported to pcre2 yet. (forwarded request 1267491 from anag_factory)</comment>
+    <requestid>1267513</requestid>
+  </revision>
 </revisionlist>

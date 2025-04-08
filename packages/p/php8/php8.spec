@@ -40,8 +40,8 @@
 %define psuffix %{nil}
 %endif
 
-%global apiver            20230831
-%global zendver           20230831
+%global apiver            20240924
+%global zendver           20240924
 %define extension_dir     %{_libdir}/%{php_name}/extensions
 %define php_sysconf       %{_sysconfdir}/%{php_name}
 
@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.3.19
+Version:        8.4.5
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -116,7 +116,11 @@ BuildRequires:  net-snmp-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postfix
+%if 0%{suse_version} >= 1600
 BuildRequires:  postgresql-devel
+%else
+BuildRequires:  postgresql17-devel
+%endif
 BuildRequires:  re2c
 BuildRequires:  tcpd-devel
 BuildRequires:  update-alternatives
@@ -326,7 +330,6 @@ Requires:       user(wwwrun)
 Provides:       php-fpm = %{version}
 Provides:       php-sapi = %{version}
 Obsoletes:      php7-fpm
-
 %{?systemd_ordering}
 
 %description

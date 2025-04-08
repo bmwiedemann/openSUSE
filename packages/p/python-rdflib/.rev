@@ -340,4 +340,19 @@
     <comment></comment>
     <requestid>1246400</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0b770e8ad6cb4978f6c0efbfe88a56e0</srcmd5>
+    <version>7.1.4</version>
+    <time>1744127463</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.1.4
+  * Remove old hacks against 2to3
+  * Allow multi subjects &amp; objects in graph funcs
+  * Reduce test warnings
+  * Downgrade log message about plugin
+  * Remove old hacks against 2to3
+  * Cope with Namespace annotations in Python 3.14
+  * Small docco update</comment>
+    <requestid>1267636</requestid>
+  </revision>
 </revisionlist>

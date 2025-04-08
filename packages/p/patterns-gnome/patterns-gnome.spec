@@ -17,7 +17,7 @@
 
 
 Name:           patterns-gnome
-Version:        20241112
+Version:        20250310
 Release:        0
 Summary:        Patterns for Installation (Gnome)
 License:        MIT
@@ -32,6 +32,8 @@ of the installation source setup.  Installation of this package does
 not make sense.
 
 This particular package contains all the Gnome patterns.
+
+
 
 
 
@@ -61,6 +63,7 @@ This pattern installs components for GNOME to run with Wayland and X11 technolog
 
 ################################################################################
 
+%if 0%{?is_opensuse}
 %package gnome_x11
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (X11)
@@ -84,6 +87,7 @@ technology.
 %files gnome_x11
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/gnome_x11.txt
+%endif
 
 ################################################################################
 
@@ -98,10 +102,9 @@ Provides:       pattern-visible()
 Requires:       gsettings-backend-dconf
 Requires:       pattern() = basesystem
 Requires:       pattern() = gnome_basis
-Recommends:     evince
 Recommends:     pattern() = enhanced_base
 # bsc#1065146
-%if 0%{?sle_version}
+%if 0%{?sle_version} && 0%{?sle_version} < 16000
 Recommends:     gedit
 %else
 Recommends:     gnome-text-editor
@@ -115,7 +118,7 @@ Recommends:     pinentry-gnome3
 # bsc#1164858 bsc#1081584
 # - only in Leap and SLE as we don't want to install gnome-packagekit by
 #   default on TW
-%if 0%{?sle_version}
+%if 0%{?suse_version} != 01600
 Recommends:     gnome-packagekit
 %endif
 %if !0%{?is_opensuse}
@@ -123,17 +126,19 @@ Obsoletes:      patterns-sles-gnome-basic
 %endif
 %if 0%{?is_opensuse}
 Recommends:     pattern() = gnome_games
-Recommends:     pattern() = gnome_internet
 Recommends:     pattern() = gnome_utilities
 Recommends:     pattern() = imaging
 Recommends:     pattern() = multimedia
 %endif
+Recommends:     pattern() = gnome_internet
 # #545263
 Requires:       seahorse
+%if 0%{?is_opensuse}
 Recommends:     totem
 Recommends:     pattern() = gnome_imaging
 Recommends:     pattern() = office
 Recommends:     pattern() = x11_yast
+%endif
 #
 # Official upstream
 #
@@ -143,7 +148,11 @@ Recommends:     pattern() = x11_yast
 # no longer need to hard require cheese for g-c-c user panel
 Recommends:     cheese
 Recommends:     dconf-editor
+%if 0%{?suse_version} == 01600
+Recommends:     gnome-papers
+%else
 Recommends:     evince
+%endif
 Recommends:     evolution
 Recommends:     evolution-ews
 Recommends:     gnome-backgrounds
@@ -153,13 +162,12 @@ Recommends:     gnome-clocks
 Recommends:     gnome-contacts %dnl bsc#1069699
 Recommends:     gnome-control-center-color
 Recommends:     gnome-control-center-goa
-Recommends:     gnome-desktop
 Recommends:     gnome-disk-utility %dnl boo#554954
 Recommends:     gnome-remote-desktop
 Recommends:     nautilus-sendto
 Recommends:     noto-sans-cjk-fonts
 Recommends:     orca
-%if 0%{?sle_version} && !0%{?is_opensuse}
+%if 0%{?suse_version} < 01600 && !0%{?is_opensuse}
 Recommends:     pidgin %dnl bsc#1065191
 Recommends:     planner
 %endif
@@ -206,7 +214,7 @@ Recommends:     gnome-contacts
 Recommends:     gnome-logs
 Recommends:     gnome-maps
 Recommends:     gnome-system-monitor
-%if 0%{?sle_version}
+%if 0%{?sle_version} && 0%{?sle_version} < 16000
 Recommends:     gedit
 %else
 Recommends:     gnome-text-editor
@@ -259,6 +267,9 @@ Obsoletes:      patterns-openSUSE-gnome_basis < %{version}
 %endif
 Requires:       gdm
 Requires:       gnome-session
+# ensure we have default fonts always installed
+Requires:       adobe-sourcecodepro-fonts
+Requires:       adwaita-fonts
 # from data/COMMON-DESKTOP
 Recommends:     desktop-data
 Recommends:     desktop-file-utils
@@ -276,7 +287,7 @@ Recommends:     gnome-keyring-pam
 #Requires:       gnome-control-center
 # Accessability is not an option, and performance issues if its missing (boo#1204564)
 Requires:       at-spi2-core
-%if 0%{?sle_version}
+%if 0%{?suse_version} < 1600
 # boo#1090117
 Recommends:     gnome-shell-classic
 %endif
@@ -306,10 +317,8 @@ Recommends:     yelp
 #
 # Low-level parts that we need
 #
-%if 0%{?is_opensuse}
 # bnc#430161
 Recommends:     NetworkManager
-%endif
 %if 0%{?is_opensuse}
 Recommends:     canberra-gtk-play
 %endif
@@ -499,7 +508,6 @@ Handling of digital photos and graphics
 
 ################################################################################
 
-%if 0%{?is_opensuse}
 %package gnome_internet
 %pattern_gnomedesktop
 Summary:        GNOME Internet
@@ -540,10 +548,10 @@ GNOME Internet Applications
 %files gnome_internet
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/gnome_internet.txt
-%endif
 
 ################################################################################
 
+%if 0%{?is_opensuse}
 %package gnome_multimedia
 %pattern_gnomedesktop
 Summary:        GNOME Multimedia
@@ -587,6 +595,7 @@ GNOME Multimedia
 %files gnome_multimedia
 %dir %{_docdir}/patterns
 %{_docdir}/patterns/gnome_multimedia.txt
+%endif
 
 ################################################################################
 
@@ -740,14 +749,14 @@ Package Management - Graphical Tools
 %install
 
 mkdir -p "%{buildroot}%{_docdir}/patterns"
-for i in gnome gnome_basis gnome_basic gnome_imaging gnome_x11 gnome_multimedia; do
+for i in gnome gnome_basis gnome_basic gnome_imaging gnome_internet ; do
 	echo "This file marks the pattern $i to be installed." \
 		>"%{buildroot}%{_docdir}/patterns/$i.txt"
 done
 
 %if 0%{?is_opensuse}
 for i in devel_gnome \
-    gnome_games gnome_ide gnome_internet \
+    gnome_games gnome_ide gnome_x11 gnome_multimedia \
     gnome_office \
     gnome_utilities gnome_yast sw_management_gnome; do
 	echo "This file marks the pattern $i to be installed." \

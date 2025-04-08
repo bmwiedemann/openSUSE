@@ -1,13 +1,13 @@
-Index: php-8.3.15/configure.ac
+Index: php-8.4.1/configure.ac
 ===================================================================
---- php-8.3.15.orig/configure.ac
-+++ php-8.3.15/configure.ac
-@@ -1668,7 +1668,7 @@ PHP_CONFIGURE_PART(Configuring libtool)
+--- php-8.4.1.orig/configure.ac
++++ php-8.4.1/configure.ac
+@@ -1560,7 +1560,7 @@ PHP_CONFIGURE_PART([Configuring libtool]
  
- dnl Silence warning: `ar: 'u' modifier ignored since 'D' is the default`
+ dnl Silence warning: "ar: 'u' modifier ignored since 'D' is the default".
  dnl See https://github.com/php/php-src/pull/3017
--AC_SUBST(AR_FLAGS, [cr])
-+AC_SUBST(AR_FLAGS, [Dcr])
+-AC_SUBST([AR_FLAGS], [cr])
++AC_SUBST([AR_FLAGS], [Dcr])
  
  dnl Only allow AC_PROG_CXX and AC_PROG_CXXCPP if they are explicitly called (by
  dnl PHP_REQUIRE_CXX). Otherwise AC_PROG_LIBTOOL fails if there is no working C++

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  5 16:10:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3.1:
+  * Add _ITERATOR_DEBUG_LEVEL=2 and _DEBUG defines
+  * Build system and CI tweaks
+  * Add some missing headers
+
+-------------------------------------------------------------------
 Mon Jun 19 19:53:28 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:

@@ -1,4 +1,294 @@
 -------------------------------------------------------------------
+Wed Apr  2 08:57:28 UTC 2025 - pgajdos@suse.com
+
+- version update to 8.4.5
+    BCMath:
+        Fixed bug GH-17398 (bcmul memory leak).
+    Core:
+        Fixed bug GH-17623 (Broken stack overflow detection for variable compilation).
+        Fixed bug GH-17618 (UnhandledMatchError does not take zend.exception_ignore_args=1 into account).
+        Fix fallback paths in fast_long_{add,sub}_function.
+        Fixed bug OSS-Fuzz #391975641 (Crash when accessing property backing value by reference).
+        Fixed bug GH-17718 (Calling static methods on an interface that has `__callStatic` is allowed).
+        Fixed bug GH-17713 (ReflectionProperty::getRawValue() and related methods may call hooks of overridden properties).
+        Fixed bug GH-17916 (Final abstract properties should error).
+        Fixed bug GH-17866 (zend_mm_heap corrupted error after upgrading from 8.4.3 to 8.4.4).
+        Fixed GHSA-rwp7-7vc6-8477 (Reference counting in php_request_shutdown causes Use-After-Free). (CVE-2024-11235)
+    DOM:
+        Fixed bug GH-17609 (Typo in error message: Dom\NO_DEFAULT_NS instead of Dom\HTML_NO_DEFAULT_NS).
+        Fixed bug GH-17802 (\Dom\HTMLDocument querySelector attribute name is case sensitive in HTML).
+        Fixed bug GH-17847 (xinclude destroys live node).
+        Fix using Dom\Node with Dom\XPath callbacks.
+    GD:
+        Fixed bug GH-17703 (imagescale with both width and height negative values triggers only an Exception on width).
+        Fixed bug GH-17772 (imagepalettetotruecolor crash with memory_limit=2M).
+    FFI:
+        Fix FFI Parsing of Pointer Declaration Lists.
+    FPM:
+        Fixed bug GH-17643 (FPM with httpd ProxyPass encoded PATH_INFO env).
+    LDAP:
+        Fixed bug GH-17704 (ldap_search fails when $attributes contains a non-packed array with numerical keys).
+    LibXML:
+        Fixed GHSA-wg4p-4hqh-c3g9 (Reocurrence of #72714).
+        Fixed GHSA-p3x9-6h7p-cgfc (libxml streams use wrong `content-type` header when requesting a redirected resource). (CVE-2025-1219)
+    MBString:
+        Fixed bug GH-17503 (Undefined float conversion in mb_convert_variables).
+    Opcache:
+        Fixed bug GH-17654 (Multiple classes using same trait causes function JIT crash).
+        Fixed bug GH-17577 (JIT packed type guard crash).
+        Fixed bug GH-17747 (Exception on reading property in register-based FETCH_OBJ_R breaks JIT).
+        Fixed bug GH-17715 (Null pointer deref in observer API when calling cases() method on preloaded enum).
+        Fixed bug GH-17868 (Cannot allocate memory with tracing JIT on 8.4.4).
+    PDO_SQLite:
+        Fixed GH-17837 ()::getColumnMeta() on unexecuted statement segfaults).
+        Fix cycle leak in sqlite3 setAuthorizer().
+        Fix memory leaks in pdo_sqlite callback registration.
+    Phar:
+        Fixed bug GH-17808: PharFileInfo refcount bug.
+    PHPDBG:
+        Partially fixed bug GH-17387 (Trivial crash in phpdbg lexer).
+        Fix memory leak in phpdbg calling registered function.
+    Reflection:
+        Fixed bug GH-15902 (Core dumped in ext/reflection/php_reflection.c).
+        Fixed missing final and abstract flags when dumping properties.
+    Standard:
+        Fixed bug #72666 (stat cache clearing inconsistent between file:// paths and plain paths).
+    Streams:
+        Fixed bug GH-17650 (realloc with size 0 in user_filters.c).
+        Fix memory leak on overflow in _php_stream_scandir().
+        Fixed GHSA-hgf5-96fm-v528 (Stream HTTP wrapper header check might omit basic auth header). (CVE-2025-1736)
+        Fixed GHSA-52jp-hrpf-2jff (Stream HTTP wrapper truncate redirect location to 1024 bytes). (CVE-2025-1861)
+        Fixed GHSA-pcmh-g36c-qc44 (Streams HTTP wrapper does not fail for headers without colon). (CVE-2025-1734)
+        Fixed GHSA-v8xr-gpvj-cx9g (Header parser of `http` stream wrapper does not handle folded headers). (CVE-2025-1217)
+    Windows:
+        Fixed phpize for Windows 11 (24H2).
+        Fixed GH-17855 (CURL_STATICLIB flag set even if linked with shared lib).
+    Zlib:
+        Fixed bug GH-17745 (zlib extension incorrectly handles object arguments).
+        Fix memory leak when encoding check fails.
+        Fix zlib support for large files.
+
+- version update to 8.4.4
+    Core:
+        Fixed bug GH-17234 (Numeric parent hook call fails with assertion).
+        Fixed bug GH-16892 (ini_parse_quantity() fails to parse inputs starting with 0x0b).
+        Fixed bug GH-16886 (ini_parse_quantity() fails to emit warning for 0x+0).
+        Fixed bug GH-17222 (__PROPERTY__ magic constant does not work in all constant expression contexts).
+        Fixed bug GH-17214 (Relax final+private warning for trait methods with inherited final).
+        Fixed NULL arithmetic during system program execution on Windows.
+        Fixed potential OOB when checking for trailing spaces on Windows.
+        Fixed bug GH-17408 (Assertion failure Zend/zend_exceptions.c).
+        Fix may_have_extra_named_args flag for ZEND_AST_UNPACK.
+        Fix NULL arithmetic in System V shared memory emulation for Windows.
+        Fixed bug GH-17597 (#[\Deprecated] does not work for __call() and __callStatic()).
+    DOM:
+        Fixed bug GH-17397 (Assertion failure ext/dom/php_dom.c).
+        Fixed bug GH-17486 (Incorrect error line numbers reported in Dom\HTMLDocument::createFromString).
+        Fixed bug GH-17481 (UTF-8 corruption in \Dom\HTMLDocument).
+        Fixed bug GH-17500 (Segfault with requesting nodeName on nameless doctype).
+        Fixed bug GH-17485 (upstream fix, Self-closing tag on void elements shouldn't be a parse error/warning in \Dom\HTMLDocument).
+        Fixed bug GH-17572 (getElementsByTagName returns collections with tagName-based indexing).
+    Enchant:
+        Fix crashes in enchant when passing null bytes.
+    FTP:
+        Fixed bug GH-16800 (ftp functions can abort with EINTR).
+    GD:
+        Fixed bug GH-17349 (Tiled truecolor filling looses single color transparency).
+        Fixed bug GH-17373 (imagefttext() ignores clipping rect for palette images).
+        Ported fix for libgd 223 (gdImageRotateGeneric() does not properly interpolate).
+        Added support for reading GIFs without colormap to bundled libgd.
+    Gettext:
+        Fixed bug GH-17400 (bindtextdomain SEGV on invalid domain).
+    Intl:
+        Fixed bug GH-11874 (intl causing segfault in docker images).
+    Opcache:
+        Fixed bug GH-15981 (Segfault with frameless jumps and minimal JIT).
+        Fixed bug GH-17307 (Internal closure causes JIT failure).
+        Fixed bug GH-17428 (Assertion failure ext/opcache/jit/zend_jit_ir.c:8940).
+        Fixed bug GH-17564 (Potential UB when reading from / writing to struct padding).
+    PCNTL:
+        Fixed pcntl_setcpuaffinity exception type from ValueError to TypeError for the cpu mask argument with entries type different than int/string.
+    PCRE:
+        Fixed bug GH-17122 (memory leak in regex).
+    PDO:
+        Fixed a memory leak when the GC is used to free a PDOStatment.
+        Fixed a crash in the PDO Firebird Statement destructor.
+        Fixed UAFs when changing default fetch class ctor args.
+    PgSql:
+        Fixed build failure when the constant PGRES_TUPLES_CHUNK is not present in the system.
+    Phar:
+        Fixed bug GH-17518 (offset overflow phar extractTo()).
+    PHPDBG:
+        Fix crashes in function registration + test.
+    Session:
+        Fix type confusion with session SID constant.
+        Fixed bug GH-17541 (ext/session NULL pointer dereferencement during ID reset).
+    SimpleXML:
+        Fixed bug GH-17409 (Assertion failure Zend/zend_hash.c:1730).
+    SNMP:
+        Fixed bug GH-17330 (SNMP::setSecurity segfault on closed session).
+    SPL:
+        Fixed bug GH-15833 (Segmentation fault (access null pointer) in ext/spl/spl_array.c).
+        Fixed bug GH-17516 (SplFileTempObject::getPathInfo() Undefined behavior on invalid class).
+    Standard:
+        Fixed bug GH-17447 (Assertion failure when array popping a self addressing variable).
+    Windows:
+        Fixed clang compiler detection.
+    Zip:
+        Fixed bug GH-17139 (Fix zip_entry_name() crash on invalid entry).
+
+- version update to 8.4.3
+    BcMath:
+        Fixed bug GH-17049 (Correctly compare 0 and -0).
+        Fixed bug GH-17061 (Now Number::round() does not remove trailing zeros).
+        Fixed bug GH-17064 (Correctly round rounding mode with zero edge case).
+        Fixed bug GH-17275 (Fixed the calculation logic of dividend scale).
+    Core:
+        Fixed bug OSS-Fuzz #382922236 (Duplicate dynamic properties in hooked object iterator properties table).
+        Fixed unstable get_iterator pointer for hooked classes in shm on Windows.
+        Fixed bug GH-17106 (ZEND_MATCH_ERROR misoptimization).
+        Fixed bug GH-17162 (zend_array_try_init() with dtor can cause engine UAF).
+        Fixed bug GH-17101 (AST->string does not reproduce constructor property promotion correctly).
+        Fixed bug GH-17200 (Incorrect dynamic prop offset in hooked prop iterator).
+        Fixed bug GH-17216 (Trampoline crash on error).
+    DBA:
+        Skip test if inifile is disabled.
+    DOM:
+        Fixed bug GH-17145 (DOM memory leak).
+        Fixed bug GH-17201 (Dom\TokenList issues with interned string replace).
+        Fixed bug GH-17224 (UAF in importNode).
+    Embed:
+        Make build command for program using embed portable.
+    FFI:
+        Fixed bug #79075 (FFI header parser chokes on comments).
+        Fix memory leak on ZEND_FFI_TYPE_CHAR conversion failure.
+        Fixed bug GH-16013 and bug #80857 (Big endian issues).
+    Fileinfo:
+        Fixed bug GH-17039 (PHP 8.4: Incorrect MIME content type).
+    FPM:
+        Fixed bug GH-13437 (FPM: ERROR: scoreboard: failed to lock (already locked)).
+        Fixed bug GH-17112 (Macro redefinitions).
+        Fixed bug GH-17208 (bug64539-status-json-encoding.phpt fail on 32-bits).
+    GD:
+        Fixed bug GH-16255 (Unexpected nan value in ext/gd/libgd/gd_filter.c).
+        Ported fix for libgd bug 276 (Sometimes pixels are missing when storing images as BMPs).
+    Gettext:
+        Fixed bug GH-17202 (Segmentation fault ext/gettext/gettext.c bindtextdomain()).
+    Iconv:
+        Fixed bug GH-17047 (UAF on iconv filter failure).
+    LDAP:
+        Fixed bug GH-17280 (ldap_search() fails when $attributes array has holes).
+    LibXML:
+        Fixed bug GH-17223 (Memory leak in libxml encoding handling).
+    MBString:
+        Fixed bug GH-17112 (Macro redefinitions).
+    Opcache:
+        opcache_get_configuration() properly reports jit_prof_threshold.
+        Fixed bug GH-17140 (Assertion failure in JIT trace exit with ZEND_FETCH_DIM_FUNC_ARG).
+        Fixed bug GH-17151 (Incorrect RC inference of op1 of FETCH_OBJ and INIT_METHOD_CALL).
+        Fixed bug GH-17246 (GC during SCCP causes segfault).
+        Fixed bug GH-17257 (UBSAN warning in ext/opcache/jit/zend_jit_vm_helpers.c).
+    PCNTL:
+        Fix memory leak in cleanup code of pcntl_exec() when a non stringable value is encountered past the first entry.
+    PgSql:
+        Fixed bug GH-17158 (pg_fetch_result Shows Incorrect ArgumentCountError Message when Called With 1 Argument).
+        Fixed further ArgumentCountError for calls with flexible number of arguments.
+    Phar:
+        Fixed bug GH-17137 (Segmentation fault ext/phar/phar.c).
+    SimpleXML:
+        Fixed bug GH-17040 (SimpleXML's unset can break DOM objects).
+        Fixed bug GH-17153 (SimpleXML crash when using autovivification on document).
+    Sockets:
+        Fixed bug GH-16276 (socket_strerror overflow handling with INT_MIN).
+        Fixed overflow on SO_LINGER values setting, strengthening values check on SO_SNDTIMEO/SO_RCVTIMEO for socket_set_option().
+    SPL:
+        Fixed bug GH-17198 (SplFixedArray assertion failure with get_object_vars).
+        Fixed bug GH-17225 (NULL deref in spl_directory.c).
+    Streams:
+        Fixed bug GH-17037 (UAF in user filter when adding existing filter name due to incorrect error handling).
+        Fixed bug GH-16810 (overflow on fopen HTTP wrapper timeout value).
+        Fixed bug GH-17067 (glob:// wrapper doesn't cater to CWD for ZTS builds).
+    Windows:
+        Hardened proc_open() against cmd.exe hijacking.
+    XML:
+        Fixed bug GH-1718 (unreachable program point in zend_hash).
+
+- modified patches
+  % php-build-reproducible-phar.patch (refreshed)
+
+- version update to 8.4.2
+    BcMath:
+        Fixed bug GH-16978 (Avoid unnecessary padding with leading zeros) (Saki Takamachi)
+    Calendar:
+        Fixed jdtogregorian overflow.
+        Fixed cal_to_jd julian_days argument overflow.
+    COM:
+        Fixed bug GH-16991 (Getting typeinfo of non DISPATCH variant segfaults).
+    Core:
+        Fail early in *nix configuration build script.
+        Fixed bug GH-16344 (setRawValueWithoutLazyInitialization() and skipLazyInitialization() may change initialized proxy).
+        Fixed bug GH-16727 (Opcache bad signal 139 crash in ZTS bookworm (frankenphp)).
+        Fixed bug GH-16799 (Assertion failure at Zend/zend_vm_execute.h:7469).
+        Fixed bug GH-16630 (UAF in lexer with encoding translation and heredocs).
+        Fix is_zend_ptr() huge block comparison.
+        Fixed potential OOB read in zend_dirname() on Windows.
+        Fixed bug GH-15964 (printf() can strip sign of -INF).
+    Curl:
+        Fixed bug GH-16802 (open_basedir bypass using curl extension).
+        Fix various memory leaks in curl mime handling.
+    DBA:
+        Fixed bug GH-16990 (dba_list() is now zero-indexed instead of using resource ids) (kocsismate)
+    DOM:
+        Fixed bug GH-16777 (Calling the constructor again on a DOM object after it is in a document causes UAF).
+        Fixed bug GH-16906 (Reloading document can cause UAF in iterator).
+    FPM:
+        Fixed GH-16432 (PHP-FPM 8.2 SIGSEGV in fpm_get_status).
+        Fixed bug GH-16932 (wrong FPM status output).
+    GD:
+        Fixed GH-16776 (imagecreatefromstring overflow).
+    GMP:
+        Fixed bug GH-16890 (array_sum() with GMP can loose precision (LLP64)).
+    Hash:
+        Fixed GH-16711: Segfault in mhash().
+    Opcache:
+        Fixed bug GH-16851 (JIT_G(enabled) not set correctly on other threads).
+        Fixed bug GH-16902 (Set of opcache tests fail zts+aarch64).
+        Fixed bug GH-16879 (JIT dead code skipping does not update call_level).
+    OpenSSL:
+        Prevent unexpected array entry conversion when reading key.
+        Fix various memory leaks related to openssl exports.
+        Fix memory leak in php_openssl_pkey_from_zval().
+    PDO:
+        Fixed memory leak of `setFetchMode()`.
+    Phar:
+        Fixed bug GH-16695 (phar:// tar parser and zero-length file header blocks).
+    PHPDBG:
+        Fixed bug GH-15208 (Segfault with breakpoint map and phpdbg_clear()).
+    SAPI:
+        Fixed bug GH-16998 (UBSAN warning in rfc1867).
+    SimpleXML:
+        Fixed bug GH-16808 (Segmentation fault in RecursiveIteratorIterator ->current() with a xml element input).
+    SOAP:
+        Fix make check being invoked in ext/soap.
+    Standard:
+        Fixed bug GH-16905 (Internal iterator functions can't handle UNDEF properties).
+        Fixed bug GH-16957 (Assertion failure in array_shift with self-referencing array).
+    Streams:
+        Fixed network connect poll interuption handling.
+    Windows:
+        Fixed bug GH-16849 (Error dialog causes process to hang).
+        Windows Server 2025 is now properly reported.
+
+- version update to 8.4.1
+  * Property Hooks
+  * Asymmetric Property Visibility
+  * Lazy Objects
+  * PDO driver-specific subclasses
+  * BCMath object type
+  * details: https://www.php.net/ChangeLog-8.php#8.4.1
+  * upgrading notes: https://www.php.net/manual/en/migration84.php
+
+-------------------------------------------------------------------
 Fri Mar 14 06:10:13 UTC 2025 - pgajdos@suse.com
 
 - version update to 8.3.19

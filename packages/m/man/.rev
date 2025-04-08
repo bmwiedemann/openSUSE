@@ -1108,4 +1108,15 @@
   to restore acceptable performance (boo#1232837):</comment>
     <requestid>1223351</requestid>
   </revision>
+  <revision rev="105" vrev="3">
+    <srcmd5>6457000eeba4f0f77ffc680d241c2e01</srcmd5>
+    <version>2.13.0</version>
+    <time>1744127441</time>
+    <user>anag_factory</user>
+    <comment>- Modify patch man-db-2.6.3-listall.dif
+  * If a section is specified do not show the list (boo#1240874)
+  * Wait 15 seconds instead of 7 instead for a choice
+  * Explicit mention `export' instead of `set' for MAN_POSIXLY_CORRECT</comment>
+    <requestid>1267605</requestid>
+  </revision>
 </revisionlist>

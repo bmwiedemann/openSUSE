@@ -1,0 +1,17 @@
+
+check for stdarg.h as readline.h needs HAVE_STDARG_H defined for
+rl_message function prototype
+
+
+--- a/configue.ac	2024-11-01 20:25:15.000000000 +0100
++++ b/configure.ac	2025-04-06 22:04:46.150166997 +0200
+@@ -70,7 +70,7 @@
+ AC_CHECK_LIB(dl, dlopen, dummy=yes,
+ 			AC_MSG_ERROR(dynamic linking loader is required))
+ 
+-AC_CHECK_HEADERS(string.h linux/types.h linux/if_alg.h linux/uinput.h linux/uhid.h sys/random.h)
++AC_CHECK_HEADERS(string.h stdarg.h linux/types.h linux/if_alg.h linux/uinput.h linux/uhid.h sys/random.h)
+ 
+ # basename may be only available in libgen.h with the POSIX behavior,
+ # not desired here
+

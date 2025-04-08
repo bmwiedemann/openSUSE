@@ -29,7 +29,7 @@
 %bcond_with tests
 %{?sle15_python_module_pythons}
 Name:           python-rdflib%{psuffix}
-Version:        7.1.3
+Version:        7.1.4
 Release:        0
 Summary:        A Python library for working with RDF
 License:        BSD-3-Clause
@@ -59,15 +59,11 @@ BuildRequires:  python3-typing_extensions
 Provides:       %{python_module rdflib-doc = %{version}}
 %else
 BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module html5lib}
-BuildRequires:  %{python_module isodate}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
-Requires:       python-html5lib
-Requires:       python-isodate
 Requires:       python-pyparsing
 %python_subpackages
 %endif

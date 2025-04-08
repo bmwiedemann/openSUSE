@@ -120,4 +120,12 @@ openSUSE:Factory:Staging:adi:14 ).</comment>
     <comment></comment>
     <requestid>1033497</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2e0a7a9335a590f6ed2457cdbd8aeb5a</srcmd5>
+    <version>4.4.0</version>
+    <time>1744127493</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267742</requestid>
+  </revision>
 </revisionlist>

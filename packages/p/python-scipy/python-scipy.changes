@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:07:22 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Disable and remove support of gnu-hpc build flavours (bsc#1239982)
+
+-------------------------------------------------------------------
 Mon Feb  3 15:44:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add test_hyp2fi-tolerance.patch to fix test failure on i586

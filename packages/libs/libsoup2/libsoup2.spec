@@ -155,10 +155,10 @@ Features:
 %check
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
-%ifarch s390x
-%meson_test -t 5
+%ifnarch x86_64
+%meson_test -t 5  || (%meson_test -t 5)
 %else
-%meson_test
+%meson_test || (%meson_test)
 %endif
 
 %files -n %{_name}-2_4-1

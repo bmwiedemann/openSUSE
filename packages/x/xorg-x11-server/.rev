@@ -4251,4 +4251,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     mouse gestures (CVE-2022-49737, bsc#1239750)</comment>
     <requestid>1254223</requestid>
   </revision>
+  <revision rev="441" vrev="4">
+    <srcmd5>22c66d67353f4cd33b704666071bd1f4</srcmd5>
+    <version>21.1.15</version>
+    <time>1744127400</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267280</requestid>
+  </revision>
 </revisionlist>

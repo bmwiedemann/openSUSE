@@ -591,4 +591,12 @@
   * Switching to using `puremagic` for identifying MIME types</comment>
     <requestid>1217426</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>9f529ef33f7c5b2f366c15d5f2dea4d9</srcmd5>
+    <version>3.13.4</version>
+    <time>1744127397</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1267256</requestid>
+  </revision>
 </revisionlist>

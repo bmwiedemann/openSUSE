@@ -36,6 +36,8 @@ Source2:        %{name}.keyring
 Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/pull/712
 Patch1:         dont-disable-documentation-without-latex2man.patch
+# PATCH-FIX-UPSTREAM https://github.com/libunwind/libunwind/pull/831
+Patch2:         malloc-prototype.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

@@ -1,0 +1,32 @@
+From 12dc544b9ee2acf679f027b295fe7c866549d59c Mon Sep 17 00:00:00 2001
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Date: Mon, 31 Mar 2025 15:28:58 +0200
+Subject: [PATCH 1/2] xf86: Accept devices with the kernel's efidrm driver
+
+Add a workaround to accept devices of the kernel's efidrm driver.
+Makes Xorg work on pre-configured displays with UEFI and the DRM
+graphics stack. Review of the efidrm driver happens at [1].
+
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Link: https://patchwork.freedesktop.org/series/146477/ # 1
+---
+ hw/xfree86/common/xf86platformBus.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
+index dbae465fc..0fa8ade20 100644
+--- a/hw/xfree86/common/xf86platformBus.c
++++ b/hw/xfree86/common/xf86platformBus.c
+@@ -580,6 +580,9 @@ xf86platformProbeDev(DriverPtr drvp)
+                 if (ServerIsNotSeat0()) {
+                     break;
+                 } else {
++                    /* Accept the device if the driver is efidrm */
++                    if (strcmp(xf86_platform_devices[j].attribs->driver, "efidrm") == 0)
++                        break;
+                     /* Accept the device if the driver is hyperv_drm */
+                     if (strcmp(xf86_platform_devices[j].attribs->driver, "hyperv_drm") == 0)
+                         break;
+-- 
+2.49.0
+

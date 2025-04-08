@@ -76,4 +76,19 @@ war rightfully raised in my previous one.</comment>
     #include.</comment>
     <requestid>1141568</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e630d212ede5874491bf2ebdb3a72d8c</srcmd5>
+    <version>59</version>
+    <time>1744127404</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 59
+  * INIReader: change variable visibility from private to protected
+  * Add preprocessor exclusions when INI_ALLOW_MULTILINE=0
+  * Add INIReader Sections and Keys methods
+  * If a line is longer than INI_MAX_LINE, consume input up to next
+    newline
+  * Performance improvements
+- Add service file to download source.</comment>
+    <requestid>1267386</requestid>
+  </revision>
 </revisionlist>

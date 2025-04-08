@@ -2238,4 +2238,12 @@ New upstream release</comment>
 </comment>
     <requestid>1255646</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>4724584d5fe2bd7f384a176e099d9cb5</srcmd5>
+    <version>25.04.0</version>
+    <time>1744127466</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267681</requestid>
+  </revision>
 </revisionlist>

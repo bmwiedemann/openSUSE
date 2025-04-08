@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Mar 29 07:30:02 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- uptdate to 3.13.4:
+ * License update - 2025
+ * Missing dependency typing-extensions
+
+-------------------------------------------------------------------
+Sun Mar 23 09:22:23 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to 3.13.3:
+ * Restructuring the project: no bug-fixing nor new features Latest
+ * Build and publish pure python wheel
+ * Refactor absolute imports and remove compat
+ * Refactoring and Typing
+ * Refactor: split modules
+ * Refactor: introduce state object
+ * Refactor split socket and ssl socket
+ * Refactor rename ssl classes
+ * Changes from ruff
+ * improve injection code, make backwards compat explicit, make ssl-api explicit
+ * Refactor introduce recording storage
+ * Small cleanup
+ * Target make safetest got broken
+ * Better structure
+
+-------------------------------------------------------------------
 Wed Oct 23 20:11:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.13.2:

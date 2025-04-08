@@ -2310,4 +2310,13 @@ New stable rel</comment>
     <comment> (forwarded request 1265692 from iznogood)</comment>
     <requestid>1265731</requestid>
   </revision>
+  <revision rev="263" vrev="2">
+    <srcmd5>3e4a94dc0798b1a843bc8f8158e0597e</srcmd5>
+    <version>48.0+15</version>
+    <time>1744127443</time>
+    <user>anag_factory</user>
+    <comment>- Add malcontent-control Recommends, pull in parental control
+  (malcontent) support. (forwarded request 1267088 from iznogood)</comment>
+    <requestid>1267613</requestid>
+  </revision>
 </revisionlist>

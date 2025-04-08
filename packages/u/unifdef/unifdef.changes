@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr  5 15:02:48 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add constexpr.patch to fix gcc-15 compile time error
+  (https://github.com/fanf2/unifdef/pull/19)
+
+-------------------------------------------------------------------
 Wed Aug 10 08:15:05 UTC 2022 - Martin Liška <mliska@suse.cz>
 
 - Add fix-fgets-.-size-1.patch that fixes broken package

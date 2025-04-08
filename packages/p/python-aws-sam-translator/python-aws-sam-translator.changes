@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  7 08:11:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.96.0
+  * chore(schema): update by @github-actions in (#3711)
+  * Merge main to develop by @mbfreder in (#3724)
+  * feat: skipping test if Layers is not available
+    by @Vandita2020 in (#3727)
+  * chore(deps): bump aws-actions/closed-issue-message
+    from 1 to 2 by @dependabot in (#3712)
+  * chore(schema): update by @github-actions in (#3725)
+  * fix(lambda): correcting tests by @Vandita2020 in (#3733)
+  * feat: custom domain name support for private endpoints
+    by @Vandita2020 in (#3719)
+  * fix: BasePath not included in AWS::ApiGateway::BasePathMapping
+    when defined as ["/"] by @mbfreder in (#3740)
+  * chore(schema): update by @github-actions in (#3739)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:15:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.95.0

@@ -1,4 +1,1038 @@
 -------------------------------------------------------------------
+Sat Apr 05 21:41:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 4.4.0:
+  * renamed test-package job, needed for creating zip with test data
+  * update doc
+  * ci: disable signing on windows for non-release build jobs
+  * ci: fix integrate workflow
+  * ci: remove unused test-package job from release workflow
+  * Remove unused .gitlab-ci.yml file
+  * removed dpcpp-version from release-linux-sycl-test job
+  * using libXXX.so* semantics
+  * updated dpcpp v6.0.0 runtime in package.cmake
+  * Disabled memory compression for acceleration buffer
+  * Ensuring that instances point to acceleration structures in device memory, not host memory.
+  * Removed vscode files, not part of this PR
+  * update compiler to intel llvm v6.0.0 for all release jobs also CPU
+  * update compiler to intel llvm v6.0.0 for all release jobs
+  * fixing host_device tutorial race condition
+  * fixing embree_info and embree_minimal sycl tutorials missing DL_LIBS
+  * disabled internal driver tests
+  * Moved buffer releases in host/device tutorial
+  * disabled internal driver tests for release
+  * removed bvh data host device test, not needed any more
+  * updated windows internal driver version
+  * updated windows public driver, upgraded dg2 tests to ubuntu24.04 fixed coverity issue update gfx-ubuntu24-internal/public.env for CI update linux intenal drivers fix linux release CI fix integration CI
+  * Fixed mistake in async buffer copies Fixed forest tutorial Skip pvc tests in nightly.yml fixed unititialized empty geometry commit segfault
+  * Removed redundant copies in host/device tutorial
+  * skip pvc tests
+  * removed EMBREE_SYCL_BVH_DATA_HOST_DEVICE cmake option and made it enabled by default
+  * little cleanup
+  * Fixed uninitialized memory
+  * Device buffers are now automatically updated on Geometry::commit()
+  * documentation: rtcTraversable invalidation on rtcCommit
+  * removed internal rtas builder, made EMBREE_SYCL_L0_RTAS_BUILDER the default
+  * fix issues with host/device memory API on iGPU fix blender segfault with geometry == NULL inside geometries array
+  * remove timing output from dynamic scene tutorial
+  * update internal Linux and Window driver in CI
+  * changelog, typos
+  * add CI test for BVH data in host device memory
+  * add export filters for commit with queue API functions
+  * more general documentation
+  * documentation for ray queries using RTCTraversable
+  * updating general intro documentation
+  * make rtcCommitSceneWithQueue work with out-of-order SYCL queues, too
+  * change rtcCommit???WithQueue interface to return sycl::event
+  * docu fixes
+  * revert accidental changes in ray flag settings
+  * rename memory types and account for host unified memory in buffer constructor
+  * update rtcCommitScene(|WithQueue) documentation
+  * update rtcSet(New|Shared)GeometryBuffer(|HostDevice) documentation
+  * fix wrong deallocation in multi_instance_geometry tutorial.
+  * update documentation for RTCBuffer
+  * add nightly Windows multilevel test.
+  * refactor alloc. remove global (tls) SYCL context and device.
+  * rename host_device_memory tutorial and add CI tests
+  * clear host scratch space for static scenes
+  * add cmake option for explicit host/device BVH data
+  * add sycl events for sychronization
+  * less alloc/free when creating device representation of scenen/geometry
+  * small fix for validation API
+  * add padding to tree vertex and color data buffers for safe SIMD access.
+  * create CPP from ISPC tutorials
+  * add ISPC API using RTCTraversable
+  * change API naming for buffers form 'Ex' to 'HostDevice'
+  * port forest tutorial to new host/device memory support
+  * port of multi_instanced_geometry tutorial to RTCTraversable interface was missing
+  * do not use ALIGNED_STRUCT_ macro for Scene and Geometry
+  * cleanups
+  * test address sanitizer issue
+  * rework buffer interface
+  * memory passing interface
+  * scene is now in device memory, too. USM shared memory is now only used in tutorials.
+  * add debug tutorial and restore state of other tutorials
+  * BVH buffer in explicitly managed host/device memory on systems without unified memory (e.g. dGPUs) geometry data works
+  * fix wrong assert about maxTimeSegments. fix missing sign-extension when using device memory for BVH data.
+  * Suppressed warnings with latest clang/sycl compiler
+  * Version update to 4.4.0
+  * internal ci: update dependencies
+  * remove requirement for CPU feature RDRAND
+  * refactor scene array for (multi-level) instancing into struct
+  * simplify intersect_instance and intersect_instance_array
+  * update dpcpp runtime dependencies for installation
+  * update driver versions for CI tests
+  * update sycl nightly version for CI tests
+  * Removed usage of no longer supported SYCL subgroup shuffles.
+  * fix public ci (#2732)
+  * update documentation
+  * update version in testing package
+  * update reusable workflows.
+  * bump version and update changelog
+  * Compute hwaccel adresses on the fly to prevent back-migration of BVH data.
+  * Fix include order causing unwanted dllexport symbols
+  * disable unneccessary stripping of files on Windows to WA binary signing issue.
+  * Update API documentation and changelog.
+  * Add RTC_ERROR_LEVEL_ZERO_RAYTRACING_SUPPORT_MISSING and the API functions rtcGetDeviceLastErrorMessage and rtcGetErrorString.
+  * fix unused variable warning
+  * fix sycl header path warning
+  * test new public Windows driver.
+  * update to sycl nightly-2024-06-12
+  * Cleaned up whitespace
+  * Split array of Scene* into root and instances
+  * Fixed duplicate SYCL context
+  * revert pipeline renaming
+  * basic public ci (#2725)
+  * fix typo in max_triangles_per_leaf option.
+  * Fix triangle splitting crash where FP error causes binning differences
+  * Provide a configuration setting for limiting leaf size
+  * use composite mode in release job for pvc testing due to switch to older dpcpp.
+  * clean up continouus tests and move some to nightly.
+  * use same compiler version for release as last time.
+  * remove ICX-RC tests. ICX 2024.1 is out.
+  * turn L0RTAS builder off for nightly validation test.
+  * add known issue about ISPC and macOS universal binary in changelog.
+  * use UMD migration for PVC for now because KMD migration is buggy.
+  * move function for USM prefetch into embree4.dll
+  * add test function dummy
+  * turn level zero raytracing acceleration structure build on by default.
+  * update tests to ICX 2024.1 compiler.
+  * add instruction to install intel-level-zero-gpu-raytracing to docu and changelog.
+  * fix misleading "USM allocation not enabled" exception thrown Tutorial destructor when a SYCL device could not be created successfully.
+  * update linux internal driver.
+  * add embree_info and embree_minimal to CI tests for debugging purposes.
+  * check for driver support for building RTAS properly.
+  * update Linux drivers.
+  * update Windows drivers.
+  * fix output operator, issue #486
+  * add scene flag to trigger USM shared prefetch to GPU at the end of rtcCommitScene
+  * update PVC tests.
+  * remove references to obsolete CMake variables
+  * more tests with sycl rc.
+  * use public driver for nightly PVC tests, too.
+  * regress to older SYCL version due to issues with getting profiling information.
+  * handle exception in device info querying code.
+  * fix dpcpp download script for new versions of the compiler
+  * build Windows DG2 tests with sycl-nightly, too
+  * fix release CI job.
+  * Documentation update
+  * version and changelog
+  * use sycl-5-2-0 for release binaries.
+  * bump cmake_minimum_required verion to 3.5
+  * Fix tbb macOS port name
+  * add static assert for proper RTCHitNt<N> alignment in verify.
+  * Added alignment definitions to RTCHitNt and RTCRayNt
+  * Fix for barycentric coordinate verification in
+  * remove unused image code.
+  * use public drivers for PVC, too.
+  * fixes for current sycl nightly and some warning fixes
+  * add tests for syclos release candidate.
+  * add macOS universal binary build test.
+  * update to TBB 2021.12.0
+  * Build for ARM on Apple silicon machines by default when CMAKE_OSX_ARCHITECTURES is not set.
+  * Enabled support for Universal Binaries on macOS
+  * update drivers enable l0rtas in continuous and nigtly tests
+  * Do/upgrade outdated os tests (#2711)
+  * add token permissions for github workflows.
+  * add buildbench to performance CI pipeline
+  * add SYCL version of buildbench
+  * fine tuning google benchmark
+  * more precise perf-CI measurements
+  * Do/scripts cleanup (#2701)
+  * better output of which ISPC executable is found/used
+  * test ispc 1.23.0
+  * Do/performance regression tests (#2699)
+  * remove printf
+  * test AVX512 compilation on x86 macOS in continuous test.
+  * Run Embree in AVX512 mode on AVX512 capable x86_64 machines running macOS.
+  * compile embree_info also for ARM.
+  * print warning about "flush to zero" and "denormals are zero" only on x86 systems
+  * fix missing backslash for overwriting EMBREE_TESTING_INTENSITY
+  * fix path for macos-arm binary analysis and antivirus scan (#2692)
+  * allow overriding of EMBREE_TESTING_INTENSITY for tests
+  * update documentation
+  * apply internally needed patch to glfw only when explicitly stated.
+  * use same self-compiled tbb on macOS for x86_64 and arm64 versions.
+  * update drivers
+  * some issues with nightly tests
+  * add bdba and virus scan for arm binaries, too
+  * use TBB compiled for NAS for ARM release package
+  * fix find command in package test check
+  * docu
+  * increase test epsilon for Apple Clang 14 on macOS ARM
+  * add missing tests of release packages
+  * some fixes.
+  * different names for x86 and arm macOS packages
+  * update to TBB 2021.11 and ISPC 1.22
+  * bump embree version to 4.3.1
+  * add NEON and NEON2X tests to continuous jobs again.
+  * update sycl-nightly and ICX RC
+  * Do/macos notarization update (#2684)
+  * removed AOEUAOEU string from integration test exe (#2683)
+  * Do/devel (#2682)
+  * add dependloadflag also for msvc
+  * Fail when no tests are executed.
+  * Do/fix macos test execution (#2677)
+  * updating PVC deviceID check
+  * fix artifact name
+  * move Windows DG2 ICX tests to continuous again.
+  * update docu regarding supported compilers.
+  * update Windows public driver version again.
+  * remove Windows release driver version. We use official version now.
+  * drop ICX versions from 2023
+  * remove EMBREE_LEVEL_ZERO CMake variable from presets
+  * disable ARM emultation tests for now because runner seems to be broken
+  * cleanups
+  * fixes for nightly tests
+  * revert public Windows driver
+  * add DG2 Windows tests with public and release drivers in continous CI, too
+  * added back notarization with TODO comment to mac tests
+  * make notarize.sh executable
+  * update to correct icx version
+  * add missing feature flag checks
+  * Do/release macos extern notarize (#2670)
+  * Run Windows tests in CI again
+  * Do/driver update (#2668)
+  * Do/threadsanitizer issue (#2667)
+  * fix dll dependency location for ICX 2024
+  * add dependent load flag to executables and shared libraries.
+  * test intel-llvm/nightly-2023-12-18
+  * update continouus ICX tests to 2024.0 and remove RC tests.
+  * catching exceptions in rthwif tests
+  * adding compare threshold to cornell_box test
+  * windows testing ICX 2023.2.1 (#2663)
+  * using force-delete for windows CI (#2662)
+  * fix nightly L0RTAS typo error (#2661)
+  * Sh/simd sse2neon 1.6.0 (#2660)
+  * fix coverity, upgrade all CI cmakepresets, accelerate continuous (#2659)
+  * add nightly test for validation api
+  * EMBREE_SYCL_RT_VALIDATION_API=ON and EMBREE_SYCL_IMPLICIT_DISPATCH_GLOBALS=OFF works again
+  * add ze_api header to repository directly.
+  * WA compiler issues under Windows with -D_DEBUG.
+  * make rthwif tests compatible with TBB 2023
+  * fix static linking issues with ze_wrapper library
+  * user-defined thread count precedence
+  * moving most Windows DG2 tests to nightly testing
+  * enabling usage of L0RTAS builder in CI under Windows
+  * requiring RTAS extension when enabling EMBREE_SYCL_L0_RTAS_BUILDER
+  * updating gfx-driver
+  * Add missing EMBREE_GEOMETRY_??? to embree-config.cmake
+  * updates
+  * add old include/lib directory structure for ICX 2024, too.
+  * add also weird libsycl.so version (libsycl.so.7.0.0-8 ?!?!?)
+  * add pi_win_proxy_loader.dll to release package
+  * update documentation
+  * use rockylinux for release and split linux sycl
+  * update compilation docu and version number
+  * add instance array geometry type.
+  * disable nightly bezier_round furball tests on 2 windows configs for now
+  * add tests for sycl-nightly RK version
+  * Update changelog.md
+  * add ICX release candidate tests
+  * WA for changed sycl include headers in oneAPI DPC++ 2024.0
+  * validating that rtasFormat is not ZE_RTAS_FORMAT_EXP_INVALID
+  * added argument to set resolution support for cornell_box test
+  * integration of coverity
+  * disabling L0 RTAS builder by default
+  * disabling L0 rtas builder only for release
+  * added cmake option to enable usage of L0 rtas builder
+  * properly checking if rtas extension can get loaded
+  * not using rtas_builder extension by default in rthwif tests
+  * not using rtas_builder extension by default yet
+  * removed unused file
+  * fixed deviceID check for PVC
+  * cherry pick from carlocab (#2623)
+  * do not sign the zip package after build for windows any more (#2624)
+  * update to intel-llvm 20230830
+  *  remove using sycl::fmax and using sycl::fmin
+  * Do/update compiler cmakepreset (#2621)
+  * use ubuntu 20.04 for release again and update release driver
+  * do not source dpcpp environment manually  Please enter the commit message for your changes. Lines starting
+  * consistently using main version of reusable workflow
+  * Revert "use DPCPP_SETUP_SCRIPT environment variable in test.py script"
+  * updated graphics drivers in CI
+  * use DPCPP_SETUP_SCRIPT environment variable in test.py script
+  * CI-perf sycl build on Ubuntu 22.04 (#2617)
+  * docker GPU image for perf CI to embree/ubuntu:22.04 (#2615)
+  * cleanups to sycl namespace usage
+  * fixed sub_group related compile warning
+  * - updating to dpcpp compiler sycl-nightly/20230724 - fixing compile issues in rthwif tests
+  * rthwif tests use RTAS build extension only when available
+  * using L0 RTAS build extension only when available
+  * implemented varying version of rtcGetGeometryTransform for ISPC
+  * matching rcp math between rthwif_test and BVH builder
+  * Add support for ARM64 windows platform cmake
+  * added configuration to run rtas builder tests using internal or level zero implementation
+  * Do/update driver (#2607)
+  * add memory monitor to GPU BVH build
+  * fix imgui empty label complaint on Windows
+  * adding check if rtas extension present and properly initialized
+  * checking ze_rtas_builder_procedural_geometry_info_exp_t reserved member to be 0
+  * Do/release (#2601)
+  * Do/release (#2597)
+  * fix typo (#2592)
+  * removed extra comma (#2591)
+  * setting version to 4.2.0
+  * SYCL version of Embree with GPU support is no longer in beta phase.
+  * updated changelog
+  * Added PVC runner to perf CI (#2588)
+  * clarified that rtcOccluded and occlusion filter cannot get used to gather next n hits
+  * Added rtcGetGeometryTransformFromScene API function that can get used inside SYCL kernels.
+  * Added CI feature to store results in database (#2584)
+  * Do/fix release package name sycl (#2583)
+  * Do/release test package (#2579)
+  * passing dispatch globals for through debug RTAS build API extension
+  * fix to get dispatch globals allocation working again for debugging purposes
+  * New model repository address (#2575)
+  * Improved BVH build performance on many core machines by avoiding spin locks.
+  * using zeDeviceGetProperties to query RTAS device properties
+  * - using new rtas API header - properly returning ZE_RESULT_EXP_RTAS_BUILD_DEFERRED and ZE_RESULT_ERROR_HANDLE_OBJECT_IN_USE error codes
+  * adding RTASBuilder support to ze_wrapper
+  * moving ze_rtas.h to level_zero folder
+  * using decltype to get function types in ze_wrapper
+  * init ZeWrapper in rthwif tests.
+  * fix rthwif tests with new level zero runtime loading change.
+  * adding MTL support
+  * fixing experimental disable of deviceID check
+  * fix rthwif tests for test package (#2567)
+  * load ze_loader library during runtime with dlopen/LoadLibrary. Remove EMBREE_LEVEL_ZERO CMake variable. It is used now by default.
+  * Do/integration (#2562)
+  * adding Impl to RTAS builder to have separate symbols to API function names
+  * added filter files for test execution (#2541)
+  * Do/fix fopen (#2558)
+  * replace insecure fopen with secure std::ifstream (#2557)
+  * using ZE_RESULT_EXP_ERROR_RETRY_RTAS_BUILD error code to re-try rtas build operation
+  * removed zeRTASInitExp/zeRTASExitExp functions
+  * checking that number of geometries is in range
+  * prepared L0 rtas builder to support multiple rtas formats
+  * limiting triangle pair primID delta to 5 bits
+  * L0 ray tracing support tests can use rtcore SW simulation
+  * Do/release (#2554)
+  * rebase release branch into devel (#2553)
+  * Do/release (#2551)
+  * changed package filenames (#2550)
+  * adding always_inline for Embree SYCL API functions
+  * make EMBREE_NO_SPLASH a proper CMake option.
+  * making ze_rtas_builder_geometry_exp_flag_t opaque by default
+  * updated to latest L0 rtas build API spec
+  * checking if rtas allocation is in 48 bit address range
+  * using proper ZE_STRUCTURE_TYPE_RAYTRACING_MEM_ALLOC_EXT_DESC stype for rtas allocations
+  * - changed version to 4.1.0 - added support for Intel(R) Data Center GPU Max series to changelog - removed limitation of support to specific Arc/Flex version, all products are supported now. - updated DPC++, driver, and compute-runtime versions to use
+  * returning ZE_RESULT_ERROR_INVALID_ENUMERATION error when stype is not as expected
+  * properly checking for stype of builder properties and descriptor
+  * adding Level Zero rtas header from spec
+  * updates to compile Level Zero ray tracing builder API to match spec
+  * using argument structure in bounds callback for Level Zero ray tracing build API
+  * using standard Level Zero results in Level Zero rtas build API
+  * removing ze_raytracing CI tests
+  * Do/remove macosx embree tag (#2543)
+  * cleanups to cornell_box rtas build example
+  * only including rttrace.h
+  * renamed rtbuild and rttrace API header files
+  * returning proper error codes in rtas builder
+  * adding flags to rtas builder properties
+  * adjusted Level Zero ray tracing Build API struct member names to match spec
+  * adjusted Level Zero ray tracing Build API function names to match spec
+  * implemented rtas device properties query for L0 ray tracing build API
+  * adjusted property query for parallel operation object in L0 ray tracing build API
+  * removed not required update of build arguments
+  * adopted build and size query functions of L0 ray tracing build API
+  * introduced rtas builder concept to L0 ray tracing API
+  * using L0 ray tracing API to build acceleration structure for cornell_box test
+  * * Added CMake options for sphere and curve backface culling * Moved sphere backface culling documentation to the right place
+  * Added EMBREE_BACKFACE_CULLING_SPHERES option
+  * do not use exception mechanism for BVH build retry due to TBB 2020.3
+  * update dpcpp to 20230417 and fix deprecation warnings
+  * fix config error in generated embree-addtest.cmake (#2536)
+  * fix tarball package unpacks into single folder (#2535)
+  * using proper RT allocation function to allocate RTDispatchGlobals
+  * fixed issue that caused allocation of RTDispatchGlobals by default
+  * build a deliverable testing package (#2532)
+  * fixed success job
+  * updates to compile ze_raytracing builder in isolation in separate repository
+  * properly destroying parallel build operations
+  * ci: update gfx-driver internal to ci-neo-025905
+  * all names of ze_raytracing build API implementation match spec
+  * fixed interface of some ze_raytracing API functions
+  * implemented zeRaytracingAccelFormatCompatibilityExt in ze_raytracing build API
+  * implemented build flag to skip duplicate any hit shader invokation
+  * added stype and pNext to ze_raytracing build API implementation descriptors
+  * removed rthwifGetSupportedFeatures from ze_raytracing build API
+  * introduced triangle format, quad format, and vertex format in ze_raytracing build API
+  * added arm support to changelog and doc (#2524)
+  * added EMBREE_ISA_NEON2X to embree-config.cmake (#2526)
+  * Minor fixes to performance CI (#2525)
+  * Use all models from repo
+  * added arm emulation testing to nightly (#2520)
+  * turning EMBREE_LEVEL_ZERO on in one CI test
+  * fixed success CI task
+  * update doc and fix intelstyle repo url
+  * disable furball hermite round test for now.
+  * use cmake --build instead of make in package scripts
+  * don't use -no-intel-lib along with -static-intel on Linux with SYCL enabled
+  * add imf-use-svml=false even though it seems to not work
+  * set next Embree version to 4.0.1
+  * make EMBREE_LEVEL_ZERO a proper CMake option
+  * add frexp implementation for DPC++ with -no-intel-lib
+  * changelog
+  * try no-intel-libs again along with static-intel flag
+  * - rthwif can get build standalone - creating libze_raytracing packages in CI
+  * Intel(R) Data Center GPU Flex Series is supported now
+  * update drivers
+  * add EMBREE_NO_SPLASH enviroment to disable beta splash screen (#2504)
+  * update sycl-nightly to 20230304
+  * Increase compare threshold for known issue with Apple AVX2 linear curves (#2508)
+  * Revert "disabling spatial splits in rthwif builder"
+  * use cmake --build instead of make to be able to use Ninja
+  * use Ninja for DPC++ builds
+  * fixed issue with EMBREE_BUILD_GOOGLE_BENCHMARK_FROM_SOURCE
+  * fix renamed benchmark target name for ispc tutorials
+  * fix struct/class redeclaration warning
+  * clean up google benchmark CMake cache variables
+  * download and build google benchmark from source
+  * rthwif builder no longer throws RTCError exception
+  * introduced separate priminfo_mb.h file and moved primref into builders folder
+  * disabling spatial splits in rthwif builder
+  * separated rtbuild and rttrace in rthwif
+  * removed Embree specific code out of rthwif
+  * Do/improvetesting (#2499)
+  * workaround for accidentally installed glfw (setting directory properties only works for CMake >= 3.22)
+  * don't install embree_info source code to src folder in release package
+  * prevent creation of default sycl device to make CPU versions of tutorials runnable on systems without available GPU drivers
+  * - added usage example to L0 rt build API - added zeRaytracingAccelCompatibilityExt function to L0 rt build API - added device input to ze_raytracing_build_accel_ext_desc_t descriptor
+  * ci: add ATS-M testing job
+  * fix release sycl linux build
+  * Fixed a bug that limited the size of meshes supported in RT hardware BVH builder.
+  * changelog
+  * add continuous sycl test with TBB 2020.3
+  * fix rthwif build retry for TBB 2020.3
+  * added support for RT software simulation for validation purposes
+  * Frei/devel (#2489)
+  * Updates to L0 ray tracing build API - properly naming flag enum and introducing flags uint - renaming ze_raytracing_accel_size_ext_desc_t to ze_raytracing_accel_size_ext_properties_t - introducing ze_raytracing_format_ext_t and specifying format for triangle, quad, and vertex buffers - removed ZE_RAYTRACING_BUILD_EXT_FLAG_DYNAMIC
+  * fix line.gather with time interpolation causing inconsistent sphere cap intersections
+  * calculating improved epsilon for triangles and quads in pathtracer
+  * fix small errors in test.py
+  * fix set but unused warning in tinyexr
+  * fix sycl deprecation warning
+  * update release jobs, too
+  * reintroduce setup_dpcpp and setup_gfx stages again
+  * update to sycl-nightly/20230209 and clean up .ci-env
+  * initialize debug data with time if --time is passed
+  * fix linux-PVC-2T job to use docker_gpu
+  * Remove core.autocrlf from CMake patch command
+  * set autocrlf to fix glfw patch issues in new reusable workflows (thanks @Krzysztof!)
+  * use Trevors GHA for installing drivers on-the-fly.
+  * move 2 continuous mac tests to nightly
+  * throwing error when build hardware BVH is too deep
+  * further updates to L0 ray tracing build extension
+  * fixed issue with winding order in perfect watertight ray/triangle intersector
+  * - Using proper naming convention for L0 ray tracing build extension - Adding Doxygen support to documentation of L0 ray tracing build extension - Updating documentation of L0 ray tracing build extension
+  * added back missing check_arm_neon.cpp file
+  * Improved performance for Tiger Lake, Comet Lake, Cannon Lake, Kaby Lake, and Skylake client CPUs by using 256 bit SIMD instructions by default.
+  * rthwif already uses resize, which allocates exact for static scenes, and may over allocate for dynamic scenes that increase in size
+  * Resize of empty embree vector allocates exact size to match std::vector behavior.
+  * ci: switch internal driver to ci-neo-master-025593
+  * add missing .so files for Linux CPU only version.
+  * allocating proper BVH buffer size
+  * using ZE_RELAXED_ALLOCATION_LIMITS_EXP_FLAG_MAX_SIZE mode to allocate large BVH buffers with L0
+  * throwing Embree error when BVH memory allocation failed
+  * properly initalizing pNext member of ze_raytracing_mem_alloc_ext_desc_t
+  * Improved performance for Tiger Lake CPUs.
+  * setting version to v4.1.0
+  * without -no-intel-lib, svml_dispmd.dll is also needed for CPU only version.
+  * turn off no-intel-lib for now. this causes ICX compiler bugs.
+  * Fix build error in rtcore_common.isph
+  * update GLFW to latest version
+  * some fixes in embree-config.cmake for static Embree build.
+  * add CMake variable to control building GLFW from source
+  * patch DLL loading path in ImGUI.
+  * download GLFW from source and patch DLL loading path.
+  * add vcruntime and msvcp DLLs when packaging Embree.
+  * clean up search for SYCL dependencies.
+  * also add tbbmalloc.dll/.so when packaging Embree
+  * WA on Windows when using -no-intel-lib.
+  * Windows debug mode WA for std::vector operator[] access in SYCL kernel.
+  * cleanup of source_sycl_env.sh
+  * disable statically linked TBB for rthwif builder by default.
+  * Updated beta statement and regenerated documentation.
+  * fixed interchanged windows/linux build artifacts in release.yaml
+  * regenerated documentation
+  * Added messages what Embree SYCL version is still in beta phase.
+  * Fix docu with regard to setting embree_DIR path correctly
+  * remove unused device parameter from test.py invokations
+  * remove iGPU enabled problem from known issues
+  * add "threads per EU" as criteria to filter out non RTHW cards and add max num of EUs as device selection score
+  * add embree_info tutorial and printSYCLDevice functionality
+  * add creation of startup.bat script in download_dpcpp.sh
+  * Spelling compilation.md
+  * Perf-CI compiler change to ICX (#2451)
+  * small changes in release package names
+  * add note about deprecated Intel Compiler being not officially supported anymore
+  * Fix alignment problem in ray mask tutorial
+  * Turn ispc support off by default
+  * Added third-party-programs file for Intel(R) oneAPI DPC++/C++ compiler
+  * Add reference to minimal CMake version in compile docu.
+  * update supported compilers and remove MAX_ISA from cmake config example
+  * rename RTC_FEATURE_FLAG_RAY_MASK to RTC_FEATURE_FLAG_32_BIT_RAY_MASK
+  * modify minimal_sycl tutorial to match documentation wrt specialization constants
+  * set maximum glibc version to 2.28 on Linux CPU release
+  * Add documenation for compilation with the Intel(R) oneAPI DPC++/C++ compiler.
+  * change kernel.rc encoding to UTF-8
+  * fix memleak in ray mask tutorial
+  * add explanation of the RTC_FEATURE_FLAG_RAY_MASK flag
+  * add test for ray mask tutorial
+  * modify ray tutorial to pass klockwork scan
+  * fix SYCL code when ray masks are turned off.
+  * execute trav loop when ray masks are used.
+  * add ray mask tutorial
+  * libmmd is needed on Windows with ICX in CPU only mode
+  * don't link against DPC++ intel libs when SYCL support is off.
+  * use oneTBB 2021.7.0 for mac release
+  * remove WA for old sycl standard of ICX
+  * windows and linux release use ispc 1.18.1 and tbb 2021.7.0
+  * cleanup unused configuration options
+  * remove unneccessary --include-intel-llvm
+  * turn off vsync in tutorial
+  * clean up continuous test names
+  * test tbb 2021.7.0 and ispc 1.18.1
+  * update package_linux.sh script (changes cherry-picked from Raszkowski, Krzysztof)
+  * fix Linux SYCL packaging for ICX 2023.0.0
+  * fix test script invokation on ubuntu 22.04
+  * update glibc requirements for Linux CPU build (ICX2023.0.0 requirements)
+  * update continuous and nightly tests and replace ICC with ICX
+  * use Rocky Linux 8.7 for Linux CPU release (req. of ICX 2023.0.0)
+  * fix artifact names in SYCL releases
+  * also package svml_dispmd.dll and libmmd.dll form the DPC++ redistributables on Windows
+  * remove dpcpp specific package script for Windows
+  * do not copy ze_loader library/dll. it is in the driver.
+  * Windows now uses ICX and Ninja for release build package
+  * update failing nightly tests to use ICX 2023.0.0
+  * use correct stack protection flag on Linux for ICX
+  * update release builds to use ICX 2023.0.0 and TBB 2021.5.0
+  *  move debug linux ICX test into nightly (takes too long) and change build type to release
+  * new perf CI runners, added asia_dragon workload (#2440)
+  * add tests for oneAPI DPC++ 2023.0.0 compiler
+  * Added simple performance measurements to CI (#2435)
+  * added cmake option EMBREE_RTHWIF_TBB_GIT_REPOSITORY to set git repository location of TBB
+  * added cmake option EMBREE_RTHWIF_TBB_URL to set URL to TBB version to use
+  * bugfix linei missing sphere cap use select for linei leftExists filter
+  * added rudimentary fur ball to scenegraph/xml_loader
+  * read/write images with tinyexr and stb_image
+  * fix imgui event handling
+  * compiling DPC++ release builds with all ISAs enabled
+  * added list of supported Arc GPUs
+  * updated documentation to DPC++ compiler 2022-12-14
+  * increasing testing intensity of DPC++ release builds to 4
+  * added SYCL windows release build with JIT mode
+  * fixing path to SYCL libraries when creating package under Windows
+  * fixing imgui compile issues under macOS with ICC
+  * bugfix of SYCL compilation when AVX enabled
+  * referencing embree_rthwif-targets.cmake in embree-config only when Embree compiled to static library
+  * updates to device ID detection
+  * make oneAPI DPC++ compiler (ICX) work with EMBREE_SYCL_SUPPORT on Windows
+  * add CMake option to disable direct usage of level zero
+  * some fixes for oneAPI dpcpp compiler. still WIP.
+  * ICX works again (without EMBREE_SYCL_SUPPORT) under Windows
+  * clean up dpcpp.cmake on Windos and fix compile warnings
+  * prevent warnings on Windows caused by TBB, and use of getenv and fopen
+  * add stack protector option to dpcpp on Windows
+  * removed RTC_ERROR_UNSUPPORTED_GPU error code as not required
+  * update sycl-nightly to 20221214
+  * update ImGUI
+  * Revert "switching VS studio tests <= 2017 to release mode due to long path problem."
+  * using proper SYCL device and context to allocate ray tracing hardware BVH
+  * bugfix to rtcSYCLDeviceSelector API function
+  * building Embree SYCL release on Ubuntu 20.04
+  * removing level=2 workaround in intersection_filter_sycl, seems no longer required
+  * matching intel_ray_flags_t layout for RTCRayQueryFlags
+  * - renamed RTCIntersectContext to RTCRayQueryContext - renamed RTCIntersectContextFlags to RTCRayQueryFlags
+  * updates to API documentation
+  * Upgrading to gfx-driver-ci-master-12953, ci-neo-master-025103 in CI
+  * switching VS studio tests <= 2017 to release mode due to long path problem.
+  * prefix all executables with embree_
+  * setting version to v4.0.0
+  * updated Embree version from 3 to 4 in man pages
+  * embree_rthwif is static library now to not have additional shared libraries in release package
+  * renamed embree_sycl.a to embree4_sycl.a
+  * renamed RTC_FEATURE_FLAGS_ to RTC_FEATURE_FLAG_ to be consistent with other API flag namings
+  * fixed download link, properly installing rthwif
+  * - passing DPC++ include path is not required for -fsycl compilations - cleanups to minimal tutorial CMakeList.txt
+  * using gfx-driver-ci-master-12917 in CI and disabling implicit scaling workaround
+  * updates to documentation
+  * added documentation of rtcGetSYCLDeviceFunctionPointer
+  * added documentation of rtcSetGeometryEnableFilterFunctionFromArguments API function
+  * documented rtcNewSYCLDevice, rtcIsSYCLDeviceSupported, rtcSYCLDeviceSelector, and rtcSetDeviceSYCLDevice API functions.
+  * enabling rthwif testing also under Windows
+  * updated docu link to compute runtime, documenting need to pass path to DPC++ headers
+  * removed need of using special linker and -L on Windows from documentation
+  * documentation updates
+  * introduced RTC_INTERSECT_CONTEXT_FLAG_INVOKE_ARGUMENT_FILTER to enforce argument filter invokation for each geometry
+  * use lld-link which is now shipped with dpcpp.
+  * turn EMBREE_SYCL_SUPPORT off on Windows when DPC++ compiler is not used.
+  * using releases_22ww49-ci-master-12886 windows driver in CI
+  * enabling curves in DPCPP release builds
+  * removed some workaround that disable CI tests
+  * using neo-releases-22.43.24595.35 NEO release in CI
+  * removing rt_validation_api:OFF from CI, validation API is OFF by default
+  * upgrading CI to gfx-driver-ci-master-12886 and disabling ZEBinary workarounds
+  * upgrading CI to ci-neo-master-025028 and removing ZEBinary workarounds
+  * disabing benchmark output for rthwif_test_builder_instances CI tests
+  * marking most SYCL cmake options as advanced
+  * removed EMBREE_SYCL_MBLUR cmake option
+  * changes to upgrading from Embree 3 to Embree 4 section as will as changelog
+  * updates to section Embree SYCL known issues
+  * documented that JIT compilation is preferred
+  * updates to CMake configuration docu section
+  * updates to Building Embree SYCL Applications section
+  * added optimization section on generic pointers
+  * documented RTCFeatureFlags
+  * updated documentation of rtcIntersect1/4/8/16 and rtcOccluded1/4/8/16
+  * updates to Embree SYCL API documentation
+  * enabling pre-splits in rthwif BVH builder only in high quality mode
+  * checking if ray tracing extension supported by L0
+  * enabled geometry callbacks for some CPP tutorials for testing purposes
+  * added rtcSetGeometryEnableFilterFunctionFromArguments API function
+  * multiscene_geometry tutorial uses proper feature mask
+  * regenerated CPP tutorials from ISPC version
+  * updates to fix ISPC to CPP tutorial conversion
+  * - updating to ci-neo-master-024996 and gfx-driver-ci-master-12868 in CI - enabling production ray tracing API in CI tests - enabling production ray tracing API by default in cmake - switching Windows SYCL CI tests to AOT mode
+  * introduced RTCOccludedArguments to API
+  * optimizations to intersection_filter tutorial
+  * removed _IN_GEOMETRY and _IN_ARGUMENTS cmake options as no longer required
+  * fixing issues with using Embree install package
+  * disabling SYCL by default
+  * updating to neo-releases-22.43.24595.34 in CI
+  * rtcSetDeviceSYCLDevice does not check if device is supported by Embree as user may not necessarily run on that device
+  * update sign file location
+  * added missing dependency from embree_rthwif to embree_rthwif_sycl
+  * added rtcSetDeviceSYCLDevice API call
+  * disabling geometry callbacks by default in SYCL only
+  * using ci-neo-master-024982 in CI
+  * adding rthwif_production into embree_rthwif target
+  * avoiding dispatch globals allocation when implicit dispatch globals are used
+  * marking TBB cmake variables as advanced
+  * some DPC++ to SYCL replacements in docu
+  * updating Linux DPC++ compilation and driver install instructions
+  * added L0 code to query if RT hardware supported, still kept disabled due to issues
+  * printing render frame rate and total frame rate in window
+  * setting device revision again for DG2 in AOT mode as a temporary workaround
+  * measuring frame rate displayed in the application window on the device
+  * added benchmark mode for dynamic_scene tutorial
+  * no longer passing arrays through TutorialArguments for quaternion_motion_blur tutorial
+  * no longer passing arrays through TutorialArguments for motion_blur_geometry tutorial
+  * No longer passing arrays through TutorialArguments for user_geometry and instanced_geometry tutorials. Using USM allocations for these arrays significantly improved performance.
+  * making accumulation buffer read/write
+  * - using SYCL JIT compilation by default - using EMBREE_CI_DEVICE to determine GPU test is run on - removing EMBREE_SYCL_AOT_DEVICE_REVISION cmake variable, no longer required
+  * Setting default frequency level to SIMD256 for ARM on all platforms.
+  * Refactoring of CI testing: - mainly testing JIT in continuous tests - testing internal an public release driver in continuous tests - moved some less important tests to nighty testing
+  * - building releases with public gfx driver - building releases in JIT mode - DEFAULT gfx version renamed to INTERNAL
+  * using neo-releases-22.43.24595.29 as public gfx driver in CI
+  * using gfx-driver-ci-master-12830 in CI
+  * removed geometry filter invokation from quaternion_motion_blur tutorial
+  * - renamed rtcFilterIntersection to rtcInvokeIntersectFilterFromGeometry - renamed rtcFilterOcclusion to rtcInvokeOccludedFilterFromGeometry
+  * rtcFilterIntersection and rtcFilterOcclusion only invokes geometry filter function
+  * adding instID argument to rtcForwardIntersect/Occluded functions
+  * fixed compile warning
+  * rtcForwardIntersect/Occluded do not need to handle NULL intersect arguments
+  * using default RTCIntersectContext whenever possible
+  * moving RTCIntersectContext to RTCIntersectArguments
+  * update Ubuntu docker to 22.04 for all SYCL/GPU builds
+  * implemented argument filter function support in pathtracer, keeping filter functions disabled
+  * - disabling filter function in pathtracer - disabling pathtracer tests that require filter function - enabling pathtracer testing in JIT mode
+  * removed OBJ intersection filter from pathtracer to simplify filter callbacks
+  * removed unused intersectionFilterReject function from pathtracer
+  * motion blur tutorial supports argument intersect function
+  * quaternion motion blur tutorial uses argument intersect function
+  * updated overview and platforms documentation sections
+  * optimization to next_hit tutorial to allow inlining of filter callback
+  * - hair_geometry tutorial uses argument version of filter function - improved performance of hair_geometry tutorial by stopping shadow rays when transparency close to 0
+  * not using open-linux driver for release builds for now
+  * also using open-linux-driver-ci-dev_igc-12785 in CI
+  * enabling ray masking by default in cmake
+  * bugfix on ray mask test in verify
+  * updating CI to gfx-driver-ci-master-12767
+  * bugfix on ray mask test in verify
+  * renamed IN_CONTEXT -> IN_ARGUMENTS for cmake variables and feature flags
+  * documented that an Embree SYCL device can only get used on the GPU
+  * moved invokation of CPU and GPU builder to separate functions in scene.cpp
+  * removed unused is_build variable from Embree scene
+  * Removing stream tracing API
+  * rtcFilterIntersection and rtcFilterOcclusion invokes geometry and context filter function
+  * using faster copy of org and dir for rtcForwardIntersect/Occluded
+  * - documented rtcForwardIntersect1/4/8/16 and rtcForwardOccluded1/4/8/16 - ray forwarding only forwards ray origin and direction
+  * passing SYCL context and device objects directly to rtcNewSYCLDevice
+  * renamed RTC_FEATURE_ to RTC_FEATURE_FLAGS_ in Embree API
+  * using gfx-driver-ci-master-12725 in CI
+  * Changes required for Windows ARM64
+  * bugfix to user_geometry tutorial when compiled without context user geometry callbacks
+  * using gfx-driver-ci-master-12700 in CI
+  * update mac jobs to at least TBB 2021.1.1
+  * macOS jobs use the "build" tag.
+  * fixed in export map files due to slightly changed name mangling in clang when using Embree API namespace
+  * passing context and device to rtcNewSYCLDevice
+  * removed RTC_SYCL_KERNEL makro as no longer required
+  * rtcForwardIntersect pushes instance ID
+  * user_geometry tutorial pushes instance geomID
+  * renamed rtcGetSYCLFunctionPointer to rtcGetSYCLDeviceFunctionPointer
+  * added rtcSYCLDeviceSelector API function
+  * renamed RTC_ERROR_UNSUPPORTED_DEVICE to RTC_ERROR_UNSUPPORTED_GPU
+  * removed workaround that avoided passing function pointer types as kernel argument
+  * removed unnecessary casting to user geometry and filter callback types
+  * fixed compile issue when user geometries were disabled
+  * using proper argument types for API callback type definitions
+  * - passing RTCIntersectContext to rtcIntersect and rtcOccluded functions - removing rtcIntersectEx1 function - moving all RTCIntersectContext members to RTCIntersectArguments, except instance stack
+  * added -cl-intel-greater-than-4GB-buffer-required flag to rthwif tests as bug workaround
+  * disabling some IGC workarounds
+  * using gfx-driver-ci-master-12316 in CI
+  * geometry user callback and geometry filter callback can get properly disabled using feature mask
+  * added support to use production version of ray tracing API
+  * removed ARM detection using TRY_COMPILE, no longer required
+  * add rthwif CMake export
+  * Section title format fix for "Embree Support and Contact"
+  * fixed compile warning
+  * Fixed compilation issues for ARM AArch64 processor under Linux.
+  * Set `EXCLUDE_FROM_ALL` on the tbb_static build dir to not install it
+  * enabling intensive JIT testing for DG2
+  * embree_rthwif can get compiled stand alone
+  * using new allocator in rthwif builder implementation
+  * - adding --frames <int> command line option and testing triangle_geometry_sycl with many frames - enabling triangle_geometry_sycl tutorial in PVC CI again
+  * disabling windows ICX test temporarily
+  * Frei/devel (#2309)
+  * disabling windows ICX test temporarily
+  * fix cmake_minimum_required position
+  * running release CI job only nightly
+  * Fix spelling mistake
+  * added ZE_RESULT_RAYTRACING_OPERATION_DEFERRED result to rthwif_builder_spec
+  * first draft of L0 version of rthwif_builder API
+  * removing SYCL dependency from rthwif_builder API
+  * making TBB content fetching verbose
+  * fixed compile warning related to specialization constant usage
+  * made rthwif_production implementation independent to embree specific headers
+  * Improvements and bugfixes to scene based feature mask selection - scene hierarchy is traversed completely - curves and point s sub-types are detected properly - ISPC crash fixed - pathtracers properly disables specialization constant usage in AOT mode
+  * Viewer and Pathtracer are now determining their specialization constants based on the scene
+  * renamed EMBREE_DPCPP cmake variables to EMBREE_SYCL
+  * rthwif_test: adding scratch and accel buffer bounds checking
+  * rthwif_test: adding multi-threading
+  * rthwif_test: adding benchmark mode
+  * rthwif_build: returning new size estimate from failed build
+  * rthwif_build: returning acceleration structure size
+  * rthwif_builder: using estimateSize function from SAH builder
+  * rthwif_test: adding random NULL geometries for testing
+  * rthwif_test: adding test of worst case accel bytes
+  * removing EMBREE_DPCPP_IMPLICIT_DISPATCH_GLOBALS define and added EMBREE_DPCPP_ALLOC_DISPATCH_GLOBALS define
+  * using intel_ray_query_abandon
+  * Using ray tracing allocation desciptor (ze_raytracing_mem_alloc_ext_desc_t) to allocate acceleration structure data.
+  * fixed to rtcore_scene.h
+  * rthwif_build: builder uses scratch buffer
+  * rthwif_build: matching implementation header with specification
+  * rthwif_test: using device_read_only USM allocations and increased test size
+  * rthwif_test: added mixed geometry type BVH build test
+  * rthwif_test: added instance geometry BVH test
+  * rthwif_test: added procedural geometries BVH build test
+  * rthwif_test: generalized calculation of expected output
+  * rthwif_test: testing also meshes that cannot get quadified
+  * rthwif_test: random triangle selection
+  * rthwif_test: storing triangle ID as 4th triangle index
+  * rthwif_test: adding first BVH build test
+  * rthwif_test: moved expected output generation to separate function
+  * introduced instance transformation formats in rthwif build API
+  * rthwif build API uses bounds pointer for instances to avoid read from hardware accel in top-level build
+  * rthwif builder performs check of geometry descriptors
+  * Add --compare argument to rthwif_cornell_box test
+  * Fix download gfx_driver & dpcpp scripts
+  * added EMBREE_DISABLE_DEVICEID_CHECK env option to disable deviceID check
+  * enabling spill compression disable workaround again
+  * upgrading CI to DPC++ compiler 20220914
+  * using sycl::gpu_selector_v for newer DPC++ compiler versions
+  * updates to rthwif_builder_spec, improved transformation layout spec and naming
+  * running release CI workflow only in nightly build
+  * building separate mblur BVHs over static and mblur geometry
+  * removing internal rthw BVH builder that was directly connected to Embree scene
+  * using statically build TBB in rthwif_builder implementation
+  * implemented rthwif builder thread join interface
+  * enabling binary rthw BVH build interface by default
+  * Disabling Windows DG2 CI test for internal tasking system to get faster CI turn arounds.
+  * fixed bug with invalid instance bounds in rthw BVH builder
+  * enabling implicit dispatch globals usage by default
+  * using default sub group size for kernels
+  * running continuous workflow no longer on pull requests
+  * Extensions to rthwif build API: - adding format for transformations - adding list of acceleration structures to be intersected sequentially - adding parallel build operation for parallelization
+  * enabled CI test for binary HW BVH build interface
+  * introduced EmbreeHWAccel struct to access list of HWAccels
+  * upgrading to CI to gfx-driver-ci-master-12316
+  * fixed include paths to parallel_for.h
+  * removing spill compression disable workaround
+  * ci: leave only benchmark jobs in gitlab (#2270)
+  * remove inplace version of RTHWIF_GEOMETRY_TYPE_INSTANCE
+  * updates to rthwif_test
+  * rthwif_builder uses new procedural callback that returns array of bounds
+  * renames to make rthwif_builder match spec
+  * documented accelBufferBytesOut semantics when build succeeds/fails
+  * further changes to rthwif_builder_spec
+  * added improved and documented rthwif_builder_spec
+  * Make SYCL tutorials work when iGPU is present:
+  * adding vcpkg install instructions also to docu source files
+  * Add vcpkg installation instructions
+  * fixed bug in hardware BVH builder when geometries where NULL
+  * using internal gfx-driver for DPC++ release build for now
+  * running nightly release build in github at 00:00 UTC
+  * setting JIT and AOT compile options
+  * increased SYCL test timeout to 50s
+  * disabling public gfx driver tests
+  * removed no longer required disabling of EU fusion workaround
+  * running nightly github CI at 00:00 UTC
+  * added cmake option to generate dbg info in dpcpp kernels
+  * ci: add github actions workflows
+  * using high instance mask bit in instance_geometry tutorial
+  * fixed instance mask bug with high mask bits were used
+  * Enabled trav_loop always when instances are enabled to fix issues with high instance mask bits set.
+  * getting rt_production API in sync with spec
+  * removed bvh_id from ray query and ray forward intrinsics
+  * removed bvh_level from intel_ray_query_forward_ray intrinsic
+  * properly using intel_ray_flags_t type in rt_production API
+  * Using some more descriptive names for some rt_production API functions: - intel_get_hit_barys -> intel_get_hit_barycentrics - intel_get_hit_geomID -> intel_get_hit_geometry_id - intel_get_hit_primID -> intel_get_hit_primitive_id - intel_get_hit_primID_triangle -> intel_get_hit_triangle_primitive_id - intel_get_hit_primID_procedural -> intel_get_hit_procedural_primitive_id - intel_get_hit_instID -> intel_get_hit_instance_id - intel_get_hit_instUserID -> intel_get_hit_instance_user_id - intel_get_hit_triangle_verts -> intel_get_hit_triangle_vertices
+  * renaming intel_ray_desc_t members O/D to origin/direction in rt_production API
+  * removed bvh_level from intel_ray_query_init instrinsic in rt_production API
+  * changed enumerants in rt_production API to be lower case
+  * Renamed structs in rt_production RT API: - RayFlagsINTEL -> intel_ray_flags_t - RayDescINTEL -> intel_ray_desc_t - ray_query_INTEL -> intel_ray_query_t - raytracing_acceleration_structure_INTEL -> intel_raytracing_acceleration_structure_t - float4x3_INTEL -> intel_float4x3 - HitTypeINTEL -> intel_hit_type - CandidateTypeINTEL -> intel_candidate_type_t
+  * added cmake option to switch between internal and driver RT hardware BVH builder
+  * removed old direct connection of HW BVH builder to Embree
+  * first attempt to unify internal HW builder and API HW builder
+  * parsing --jit-cache command line option in rthwif_test application
+  * TBB: Stop task_scheduler_observer when TaskScheduler is destroyed
+  * upgrading gfx driver to gfx-driver-ci-master-12117
+  * using sycl namespace instead of cl::sycl namespace
+  * fixed rtcForwardIntersect/Occluded implementation when driver HW BVH interface is used
+  * fixed wrong primitive counting in driver HW BVH interface implementation
+  * fixed wrong instanced accel passed when driver HW BUILD interface was used
+  * fixed wrong bounds propagation when driver HW BVH build interface was used
+  * passing ray_query_INTEL* to each rt_production API function
+  * renamed ray_query_t to ray_query_INTEL, and rtas_t to raytracing_acceleration_structure_INTEL
+  * added time to RayDescINTEL
+  * renamed CandidateType to CandidateTypeINTEL and prepended all enumerators with CANDIDATE_TYPE_INTEL_
+  * HitType -> HitTypeINTEL and prepending HIT_TYPE_INTEL_ to all enumerants
+  * prepending RAY_FLAGS_INTEL_ to RayFlagsINTEL enumerants
+  * RayFlagsIntel -> RayFlagsINTEL
+  * rayquery_t -> ray_query_t
+  * rt_production test uses randomized transformation for instancing
+  * rt_production API test checks local2world and world2local output
+  * moved TraceRayCtrl to rthwif_internal.h
+  * Include dpcpp compilation target info in CMake config file export
+  * Fix rounded kernel dispatch size to round up when there's a remainder
+  * fixed bug in rthwif_test when internal task scheduler is used
+  * - renamed intel_sync_ray_query to intel_ray_query_sync - using pointers to rayquery_t instead of references - renamed intel_get_ray_tnear to intel_get_ray_tmin - remove intel_get_hit_instanced_accel function
+  * no longer passing Embree device to binary HW BVH build interface
+  * using intel_get_hit_instID short form in intel_rt_production API to be consistent with geomID/primID naming
+  * added testing for intel_get_hit_instanceUserID
+  * implemented intel_get_hit_instanceUserID, intel_get_hit_world_to_object and intel_get_hit_object_to_world
+  * cleanups to rthwif_production implementation
+  * all software instancing rt_production API tests are working
+  * software instancing rt_production API test works mostly
+  * procedural triangle rt_production API test works
+  * skipping rt_production test when using public gfx driver and limiting number of errors printed
+  * adding manual dispatch globals allocation support to rt_production tests
+  * first procedural triangle test
+  * preparing test code to support procedural triangles
+  * hwinstancing tests work
+  * rt_production test can create instances
+  * moved buildAccel to scene object
+  * started to add instancing support to rt_production API test
+  * added rthwif_test_triangles_anyhit_shader_commit/reject tests
+  * rt_production API test checks committed and potential hit
+  * rt_production API test uses multiple geometries
+  * enabled user_geometry again when implicit globals are used
+  * first version of rt_producton API testing
+  * working around some regression
+  * bugfix
+  * fixed compile issue
+  * added driver HW BVH builder support for mixed mblur and static geometry scenes
+  * first motion blur support in driver HW BVH builder
+  * updates
+  * worked around compilation issue under Windows
+  * fixed compile issue with disabled DPCPP support
+  * - making rthwifGetAccelSize future proof - added support of rthw_builder=default/driver to switch between both ray tracing hardware builders
+  * connected binary interface HW BVH builder to Embree
+  * first version of binary interface to HW BVH builder
+  * Fix check for if we're compiling without AOT
+  * using sycl::ext::oneapi::property::usm::device_read_only() mode and no longer using SYCL_PI_LEVEL_ZERO_USM_ALLOCATOR explicitely
+  * fixed tagging of wrong functions with RTC_SYCL_INDIRECTLY_CALLABLE in user_geometry tutorial
+  * upgrading to DPC++ compiler 20220802
+  * added cornell_box test for production RT API
+  * using fixed 128 bytes offset to root node in HW accel
+  * added support to use intel_get_implicit_dispatch_globals intrinsic (disabled by default)
+  * adding JIT test for PVC
+  * - upgrading to DPC++ compiler sycl-nightly/20220721 - changing CL/sycl.hpp to sycl/sycl.hpp for new dpcpp compilers
+  * add tutorial benchmarks
+  * update models for GPU benchmark tests
+  * CMake Large GRF option + enabled for fcall testcases
+  * disabling specialization constant usage in AOT mode due to some DPC++ compiler bug
+  * switching to sycl-nightly/20220625
+  * ci: switch testing to PVC B4
+  * adding unused option -cl-intel-private-memory-minimal-size-per-thread XXX to dpcpp.cmake which can get used to increase private memory size when stack calls are used
+  * disabling EMBREE_INSTALL_DEPENDENCIES again by default
+  * run gpu benchmark in regular ubuntu20.04 docker and clone benchmark client with secret token
+  * merging IGC flag settings for windows and linux to common place
+  * no longer disabling __noinline for SYCL
+  * using CMake list for CMAKE_IGC_OPTIONS
+  * fixed issue where disabling JIT cache did also disable USM chunk allocator
+  * only enforcing sub-group size when geometry callbacks are enabled
+  * adding CI test that disables geometry callbacks
+  * added rtcIsSYCLDeviceSupported API function to check if Embree is supported on some SYCL device
+  * lights no longer defined as indirectly callable
+  * upgrading to gfx-driver 11261 under Windows
+  * removed no longer required environment settings from device.cpp
+  * No longer including sycl.hpp inside Embree API headers. If SYCL support is required, the user should include sycl.hpp before including the Embree API headers.
+  * upgrading to gfx-driver-ci-master-11261
+  * cleanups to rthwif implementation
+  * intel_get_hit_instanceID now properly returns instanceIndex
+  * prepending PATH to DPC++ compiler
+  * added documentation on howto workaround issues when multiple GPUs are present in the system
+  * using -j 8 in documentation, -j might run out of memory
+  * enabled JIT caching again when specialization constants are used
+  * updating Windows driver version in documentation
+  * added feature mask to pathtracer tutorial
+  * upgrading public win gfx driver to sdp/1011433 in CI
+  * building Linux DPC++ release without curve support
+  * proper options to enable large GRF mode
+  * some bugfixes to documentation of compiling Embree with DPC++
+  * setting version to 4.0.0-alpha
+  * updates to README.md.in file for tutorials
+  * added DPC++ release build
+  * added Embree DPC++ known issues docu section
+  * viewer_sycl disables JIT caching when specialization constants are used
+  * added --jit-cache command line option to disable JIT caching
+  * Exporting tasking lib only for static Embree compilation. Configuring tutorial/README.md file.
+  * setting version to 4.0.0-alpha.0
+  * increasing required GLIBCXX version to 3.4.14
+  * removed Intel Compiler 2015 from supported compilers and CI testing as we trigger some compiler bug
+  * added more shortcuts to specify RTC_FEATURE_LINEAR_CURVES, RTC_FEATURE_BEZIER_CURVES, RTC_FEATURE_BSPLINE_CURVES, RTC_FEATURE_HERMITE_CURVES, and RTC_FEATURE_CURVES
+  * added feature mask to user_geometry tutorial
+  * removed specialization constant usage from triangle_geometry_tutorial, we have the viewer for this
+  * added feature mask to quaternion_motion_blur tutorial
+  * - moved feature mask for point_geometry tutorial to beginning of file - enabled more testing for point_geometry tutorial
+  * added feature mask to multi_instanced_geometry tutorial
+  * added feature mask to motion_blur_geometry tutorial
+  * added feature mask to minimal_sycl tutorial
+  * added feature mask to intersection_filter tutorial
+  * fixed disabling of intersection filter feature through feature mask
+  * added feature mask to instanced_geometry tutorial
+  * added feature mask to hair_geometry tutorial
+  * added feature mask to grid_geometry tutorial
+  * added feature mask to dynamic_scene tutorial
+  * added feature mask to curve_geometry tutorial
+  * improved feature masks for multi-level instancing
+  * using feature mask also for viewer debug shaders
+  * moved debug shaders to viewer application only, this significantly improved JIT compile time of all other tutorials
+  * added specialization constants and command line parsing for feature mask to viewer_sycl
+  * fixing issue with feature mask and RTC_MAX_INSTANCE_LEVEL_COUNT > 1
+  * added feature flags also to ISPC API
+  * fixing compile issue when DPC++ support was disabled
+  * Added specialization constant to point geometry tutorial
+  * Added missing feature filter for motion blur
+  * Added RTC_FEATURE_NONE to common header
+  * Enabled specialization constants in SYCL triangle tutorial
+  * Added feature_mask variable to IntersectArguments and condidtionals around features.
+  * using work group size (4,4) which works on DG2 and PVC
+  * allowing rendering of arbitrary screen resolutions
+  * no longer disabling various warnings for SYCL compilation
+  * removing SYCL_LIBS, seems not required
+  * removed some workarounds that disabled some tutorials in some configs
+  * documenting that user geometry bounds callbacks are host side functions always
+  * printing CMake warning when filter and user geometry callback support in geometries are enabled
+  * consistently adding -lsycl to link flags under Windows and Linux
+  * fixes to DPC++ application compilation documentation for Windows
+  * properly installing SYCL dependency under Windows
+  * documented how to build an Embree DPC++ application
+  * enabled EMBREE_ZIP_MODE and EMBREE_INSTALL_DEPENDENCIES by default
+  * adding minimal tutorial sources to install package
+  * cleanup
+  * hide device's task arena behind execute interface
+  * remove taskingscheduler.h from default.h
+  * don't link embree_sycl to tasking
+  * clean up parallel algorithm headers
+  * move more members in inner structs
+  * move task group members into inner struct
+  * move checkIfModifiedAndSet into scene_verify.cpp
+  * tutorial_ispc and tutorial should not link agains embree_sycl
+  * fix tasking linking issues and remove rthwif library
+  * add CI tests that use the internal tasking scheduler for sycl
+  * make internal tasking scheduler's exception handling consistent with TBB
+  * adding RTC_SYCL_SIMD_WIDTH to rtcore_config.h
+  * removed reqd_sub_group_size from API function declarations, enforcing sub group size only works at kernel level
+  * making dg2 default under Linux and JIT default under Windows
+  * added DPC++ Memory Pooling section to documentation
+  * enabling memory pooling and persistent JIT caching in minimal_sycl tutorial
+  * always detecting dpcpp when EMBREE_DPCPP_SUPPORT is enabled
+  * updates to Windows build instructions with DPC++ compiler
+  * introduced RTC_SYCL_KERNEL kernel attribute
+  * linking embree target to embree_sycl target
+  * enabled SYCL chunk allocator for shared USM allocations
+  * removing SYCL allocation workaround
+  * allocator.clear() was executed too late in qbvh6_builder_sah
+  * minimal_sycl tutorial properly hits triangle now
+  * increasing timeout for SYCL CI tests to 30s
+  * added rtcSetGeometryUserDataFromScene API function to be used during rendering
+  * removing rtcInterpolate SYCL implementation
+  * enabled user_geometry_sycl again in JIT test
+  * fixed some compile warnings for Release build
+  * updated instructions on compiling Embree with DPC++ under Linux
+  * using TBB2020.2 for Windows CI tests
+  * documented that AOT compilation with multiple devices is currently not working
+  * Added documentation on how to install Windows HPG drivers.
+  * increasing ctest timeout to 20s to properly run JIT tests
+  * Revert "running Linux JIT CI test only on dg2-03 machine"
+  * getting pathtracer to work when geometry filter functions are disabled
+  * avoiding function pointers for light sampling and evaluation in pathtracer
+  * running Linux JIT CI test only on dg2-03 machine
+  * Added Embree DPC++ compilation docu
+  * Added Embree DPC++ API docu section
+  * fixed issue with SYCL benchmarking, dg2-b0-512 device config no longer supported, using just dg2 device
+  * Added documentation for EMBREE_DPCPP_AOT_DEVICES cmake option. Cleanup of EMBREE_DPCPP_AOT_DEVICES cmake option.
+  * installing SYCL dependency only when EMBREE_DPCPP_SUPPORT is enabled
+  * documented EMBREE_DPCPP_SUPPORT cmake option
+  * using newer driver for public CI testing
+  * adding CI tests that use publicly available drivers
+  * removed unused build.py and conf.py scripts
+  * updated third-party-programs files
+  * adding windows JIT test that uses gfx-driver sdp/1011314
+  * trying gfx-driver-ci-master release build
+  * updates to the Embree 3 to Embree 4 porting section in documentation
+  * added agama CI test
+  * extending download_gfx script to support agama releases
+  * passing RTCIntersectArguments through pointer to make API C99 compliant again
+  * installing only required SYCL libraries
+  * - Removed Embree 2 to Embree 3 patch script - Removed Embree 2 to Embree 3 upgrade section from documentation
+  * renamed all *.3embree3 man files to *.4embree4
+  * Renamed embree3 API include folder to embree4
+  * updated model hash to devel branch of model repo
+  * Initial commit of SYCL/DPC++ version of Embree with GPU support
+
+-------------------------------------------------------------------
+Thu Aug  3 07:17:55 UTC 2023 - Hans-Peter Jansen <hp@urpla.net>
+
+- Fix library package naming
+
+-------------------------------------------------------------------
 Thu Nov  3 07:56:31 UTC 2022 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Obsolete the -devel-static package

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 12:41:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.39.1
+  * [fix] Make LightQueue and derivatives subscriptable (#1027)
+
+-------------------------------------------------------------------
 Fri Feb  7 10:04:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.39.0

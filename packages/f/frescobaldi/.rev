@@ -236,4 +236,27 @@
 - Move to PEP517 install macros</comment>
     <requestid>1143344</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>26e203f2b1cb4709c3b2014e32db159e</srcmd5>
+    <version>4.0.1</version>
+    <time>1744127484</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.1:
+  * Fixed Python wheel packaging issues
+- Update to 4.0.0:
+  Changed
+  * Ported to PyQt6 (requires Qt &gt;=6.6) (#1780).
+  * Moved to current Python packaging tools (#1597, #1638).
+  * Use standard gettext module (#1620).
+  * Updated translations: French, German, Italian and Polish.
+  Added
+  * Automatic installation of LilyPond (#1655).
+  * Score Wizard improvements (#1690).
+  * Korean translation (#1623).
+  Fixed
+  * Docking/undocking panels on Wayland (Linux) is working again
+    thanks to the Qt6 port.
+  * Several minor bug fixes.</comment>
+    <requestid>1267344</requestid>
+  </revision>
 </revisionlist>

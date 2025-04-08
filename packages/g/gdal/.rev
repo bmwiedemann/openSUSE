@@ -854,4 +854,12 @@ Otherwise compilation fails with hard to understand error that opj_codec_set is 
   (boo#1240043). (forwarded request 1266399 from dimstar)</comment>
     <requestid>1266401</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>bb2788f8e4f692306ded61ea616f3c0c</srcmd5>
+    <version>3.10.3</version>
+    <time>1744127487</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267734</requestid>
+  </revision>
 </revisionlist>

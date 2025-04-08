@@ -245,7 +245,7 @@
  		pipecmd_pre_exec (cmd, sandbox_load, sandbox_free, sandbox);
  		p = pipeline_new_commands (cmd, nullptr);
 +# ifdef HAVE_ZIO
-+                free (name);
++		free (name);
 +# endif
  		goto got_pipeline;
  	}

@@ -1,0 +1,32 @@
+From 52909ac2d803bb2de2b291fbc6023f6bb8a4f353 Mon Sep 17 00:00:00 2001
+From: Thomas Zimmermann <tzimmermann@suse.de>
+Date: Mon, 31 Mar 2025 15:32:19 +0200
+Subject: [PATCH 2/2] xf86: Accept devices with the kernel's vesadrm driver
+
+Add a workaround to accept devices of the kernel's vesadrm driver.
+Makes Xorg work on pre-configured displays with VESA and the DRM
+graphics stack. Review of the vesadrm driver happens at [1].
+
+Signed-off-by: Thomas Zimmermann <tzimmermann@suse.de>
+Link: https://patchwork.freedesktop.org/series/146477/ # 1
+---
+ hw/xfree86/common/xf86platformBus.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/xfree86/common/xf86platformBus.c b/hw/xfree86/common/xf86platformBus.c
+index 0fa8ade20..3df1b2812 100644
+--- a/hw/xfree86/common/xf86platformBus.c
++++ b/hw/xfree86/common/xf86platformBus.c
+@@ -592,6 +592,9 @@ xf86platformProbeDev(DriverPtr drvp)
+                     /* Accept the device if the driver is simpledrm */
+                     if (strcmp(xf86_platform_devices[j].attribs->driver, "simpledrm") == 0)
+                         break;
++                    /* Accept the device if the driver is vesadrm */
++                    if (strcmp(xf86_platform_devices[j].attribs->driver, "vesadrm") == 0)
++                        break;
+                 }
+ 
+                 if (xf86IsPrimaryPlatform(&xf86_platform_devices[j]))
+-- 
+2.49.0
+

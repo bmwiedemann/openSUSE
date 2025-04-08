@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  6 17:17:02 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- to fix gcc-15 compile time errors, add bluez-5.79-c23.patch
+  (from gentoo) and bluez-5.79-stdarg.patch
+
+-------------------------------------------------------------------
 Mon Feb 17 23:17:03 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
 
 - Add supplements bluedevil6 for bluez-obexd

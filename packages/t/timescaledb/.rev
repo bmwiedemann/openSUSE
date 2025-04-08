@@ -339,4 +339,13 @@
     <comment></comment>
     <requestid>1266073</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f7562da768de441f2c6dd9f1f5579dba</srcmd5>
+    <version>2.19.2</version>
+    <time>1744127496</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.19.2
+  https://github.com/timescale/timescaledb/releases/tag/2.19.2</comment>
+    <requestid>1267772</requestid>
+  </revision>
 </revisionlist>

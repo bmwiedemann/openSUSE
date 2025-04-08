@@ -106,4 +106,14 @@
   to build with SVT-AV1 3.0.0.</comment>
     <requestid>1252893</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5a3bad7fbe82279d1b27a1c6255763ee</srcmd5>
+    <version>7.1.1</version>
+    <time>1744127429</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.1.1
+
+retry submit due to git-&gt;obs autosync delays</comment>
+    <requestid>1267797</requestid>
+  </revision>
 </revisionlist>

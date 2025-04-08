@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr  7 08:33:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.18.4:
+  + Bugs fixed:
+    - 4.18.3 regression: cursor doesn't update state when crossing
+      window boundaries
+    - Gtk.Video causes segfault inside VM with wayland backend
+    - Win32: can't resize or move windows anymore
+    - testsuite: Make reftest-compare use gsize instead of int
+    - wayland: Force setting cursor on enter
+    - Merge fixes from !8375 into 4.18
+    - inspector: Survive without installed schemas
+    - builder: Fix a menu parsing issue
+    - win32: Fix initial window state
+    - vulkan: Do not create dmabuf target images if not enabled
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Mar 29 13:59:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.18.3:

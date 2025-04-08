@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  5 03:20:31 UTC 2025 - Tony Jones <tonyj@suse.com>
+
+- Fix failure (noticed in sdiff as fatal "realloc(): invalid next size")
+
+  Original upstream report: https://debbugs.gnu.org/cgi/bugreport.cgi?bug=77265
+
+  New patch: diff-fix-allocation-typo-leading-to-crashes.patch
+
+-------------------------------------------------------------------
 Wed Feb  5 08:38:23 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - diffutils 3.11:

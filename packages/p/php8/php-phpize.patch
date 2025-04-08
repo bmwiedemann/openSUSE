@@ -3,10 +3,10 @@
  scripts/phpize.in     |    4 ++--
  2 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: php-8.0.0/scripts/Makefile.frag
+Index: php-8.4.1/scripts/Makefile.frag
 ===================================================================
---- php-8.0.0.orig/scripts/Makefile.frag	2020-11-24 18:04:03.000000000 +0100
-+++ php-8.0.0/scripts/Makefile.frag	2021-01-07 10:13:16.914490379 +0100
+--- php-8.4.1.orig/scripts/Makefile.frag
++++ php-8.4.1/scripts/Makefile.frag
 @@ -2,8 +2,8 @@
  # Build environment install
  #
@@ -18,10 +18,10 @@ Index: php-8.0.0/scripts/Makefile.frag
  
  BUILD_FILES = \
  	scripts/phpize.m4 \
-Index: php-8.0.0/scripts/phpize.in
+Index: php-8.4.1/scripts/phpize.in
 ===================================================================
---- php-8.0.0.orig/scripts/phpize.in	2020-11-24 18:04:03.000000000 +0100
-+++ php-8.0.0/scripts/phpize.in	2021-01-07 10:13:16.914490379 +0100
+--- php-8.4.1.orig/scripts/phpize.in
++++ php-8.4.1/scripts/phpize.in
 @@ -4,8 +4,8 @@
  prefix='@prefix@'
  datarootdir='@datarootdir@'

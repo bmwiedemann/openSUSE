@@ -18,13 +18,8 @@
 
 %{?sle15_python_module_pythons}
 %global flavor @BUILD_FLAVOR@%{nil}
-%define _ver 1_15_1
-%define shortname scipy
-%define pname python-%{shortname}
-%define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 
 %if "%{flavor}" == ""
- %bcond_with hpc
  %ifarch armv6l s390 m68k
   %bcond_with openblas
  %else
@@ -41,58 +36,16 @@
 %endif
 
 %if "%{flavor}" == "test"
-%bcond_with hpc
 %bcond_without test
-%define package_name %{pname}-test
+%define psuffix -test
 %else
-%define package_name %{pname}
+%define psuffix %{nil}
 %bcond_with test
 %endif
 
-%if "%{flavor}" == "gnu-hpc"
- %define compiler_family gnu
- %bcond_without hpc
- %undefine c_f_ver
-%endif
-%if "%{flavor}" == "gnu7-hpc"
- %define compiler_family gnu
- %define c_f_ver 7
- %bcond_without hpc
-%endif
+# TODO explore debundling Boost for standard
 
-%{?with_hpc:%{hpc_requires}}
-%bcond_with ringdisabled
-%if %{without hpc}
-# for file section
-%define p_python_sitearch %{python_sitearch}
-# for inside python_expand
-%define p_python_sitearch_expand %{$python_sitearch}
-%define p_prefix %{_prefix}
-%define p_bindir %{_bindir}
-%else
-%{!?compiler_family:%global compiler_family gnu}
-%{hpc_init -c %{compiler_family} %{?c_f_ver:-v %{c_f_ver}} %{?ext:-e %{ext}}}
-%define package_name %{hpc_package_name %{_ver}}
-# for file section
-%define p_python_sitearch %{hpc_python_sitearch}
-# for inside python_expand
-%define p_python_sitearch_expand $($python -c "import sysconfig as s; print(s.get_paths(vars={'platbase':'%{hpc_prefix}','base':'%{hpc_prefix}'}).get('platlib'))")
-%define p_prefix %{hpc_prefix}
-%define p_bindir %{hpc_bindir}
-# Magic for OBS Staging. Only build the flavors required by
-# other packages in the ring.
-%if %{with ringdisabled}
-ExclusiveArch:  do_not_build
-%endif
- %ifarch armv6l s390 m68k i586
-ExclusiveArch:  do_not_build
- %endif
-%{hpc_modules_init openblas}
-%endif
-
-# TODO explore debundling Boost for standard and hpc
-
-Name:           %{package_name}
+Name:           python-scipy%{?psuffix}
 Version:        1.15.1
 Release:        0
 Summary:        Scientific Tools for Python
@@ -124,7 +77,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
-%if %{without hpc}
 BuildRequires:  %{python_module numpy-devel >= 1.23.5 with %python-numpy-devel < 2.5}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
@@ -142,15 +94,6 @@ BuildRequires:  openblas-devel
 BuildRequires:  blas-devel
 BuildRequires:  lapack-devel
  %endif
-%else
-BuildRequires:  %{compiler_family}%{?c_f_ver}-compilers-hpc-macros-devel >= 1.3
-BuildRequires:  %{python_module numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel}
-BuildRequires:  libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc-devel
-BuildRequires:  lua-lmod
-BuildRequires:  suse-hpc >= 0.3
-Requires:       libopenblas%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc
-Requires:       python-numpy%{?hpc_ext}-%{compiler_family}%{?c_f_ver}-hpc >= 1.18.5
-%endif
 %python_subpackages
 
 %description
@@ -159,8 +102,6 @@ engineering. The core library is NumPy which provides convenient and
 fast N-dimensional array manipulation. The SciPy library is built to
 work with NumPy arrays, and provides many numerical routines such as
 for numerical integration and optimization.
-
-%{?with_hpc:%{hpc_python_master_package -L -a }}
 
 %prep
 %autosetup -p1 -n scipy-%{version} -a1
@@ -191,67 +132,20 @@ export FC=gfortran-10
 %python_flavored_alternatives
 origpath="$PATH"
 %{python_expand #
-%if %{with hpc}
-export PATH=$origpath
-mkdir build/hpcflavorbin
-py_ver=%{$python_version}
-%hpc_setup
-module load $python-numpy
-ln -s %{_bindir}/f2py-%{$python_bin_suffix} build/hpcflavorbin/f2py
-export PATH="$PWD/build/hpcflavorbin/:$PATH"
-%endif
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{$python_pyproject_wheel}
 }
 
 %install
 %{python_expand #
-%if %{with hpc}
-%hpc_setup
-module load $python-numpy
-%endif
-%{$python_pyproject_install --prefix %{p_prefix}}
+%{$python_pyproject_install}
 # https://github.com/scipy/scipy/issues/16310, delete in order to avoid rpmlint errors
-rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_blas_subroutines.h
-rm %{buildroot}%{p_python_sitearch_expand}/scipy/linalg/_lapack_subroutines.h
-find %{buildroot}%{p_python_sitearch_expand}/scipy/special -name '*.h' -delete
-%fdupes %{buildroot}%{p_python_sitearch_expand}
+rm %{buildroot}%{$python_sitearch}/scipy/linalg/_blas_subroutines.h
+rm %{buildroot}%{$python_sitearch}/scipy/linalg/_lapack_subroutines.h
+find %{buildroot}%{$python_sitearch}/scipy/special -name '*.h' -delete
+%fdupes %{buildroot}%{$python_sitearch}
 }
 
-%if %{with hpc}
-%define hpc_module_pname ${python_flavor}-%{shortname}
-%{python_expand #
-rm -rf %{buildroot}%{p_python_sitearch_expand}/scipy/{,core,distutils,f2py,fft,lib,linalg,ma,matrixlib,oldnumeric,polynomial,random,testing}/tests
-%hpc_write_modules_files
-#%%Module1.0#####################################################################
-
-proc ModulesHelp { } {
-
-puts stderr " "
-puts stderr "This module loads the %{pname} library built with the %{compiler_family} compiler "
-puts stderr "toolchain."
-puts stderr "\nVersion %{version}\n"
-
-}
-module-whatis "Name: %{pname} built with %{compiler_family} toolchain."
-module-whatis "Version: %{version}"
-module-whatis "Category: python module"
-module-whatis "Description: %{SUMMARY}"
-module-whatis "URL %{url}"
-
-set     version             %{version}
-
-depends-on $python-numpy
-
-prepend-path    PYTHONPATH          ${sitesearch_path}
-
-setenv          %{hpc_upcase_trans_hyph %{pname}}_DIR        %{hpc_prefix}
-setenv          %{hpc_upcase_trans_hyph %{pname}}_BIN        %{hpc_bindir}
-
-family %{shortname}
-EOF
-}
-%endif
 %endif
 
 %if %{with test}
@@ -323,23 +217,12 @@ touch debugsourcefiles.list
 %endif
 
 %if !%{with test}
-%if %{with hpc}
-%post
-%{hpc_module_delete_if_default}
-%endif
 
 %files %{python_files}
 %license LICENSE.txt
-%{p_python_sitearch}/scipy/
-%{p_python_sitearch}/scipy-%{version}*-info
+%{python_sitearch}/scipy/
+%{python_sitearch}/scipy-%{version}*-info
 
-%if %{with hpc}
-%define hpc_module_pname %{python_flavor}-scipy
-%{hpc_modules_files}
-%{hpc_dirs}
-%dir %{hpc_libdir}/python%{hpc_python_version}
-%dir %{p_python_sitearch}
-%endif
 %endif
 
 %changelog

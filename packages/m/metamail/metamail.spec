@@ -49,7 +49,7 @@ those using the Andrew toolkit) with elm.
 
 %prep
 # Workaround for boo#1225862
-%global optflags %{optflags} -fpermissive
+%global optflags %{optflags} -fpermissive -std=gnu11
 
 %setup -n metamail-2.7-19 -b 3 -b 4
 %autopatch -p1

@@ -1,7 +1,7 @@
 #
 # spec file for package gnu_parallel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20241022
+Version:        20250322
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -29,6 +29,10 @@ Source2:        https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        %name-rpmlintrc
 BuildArch:      noarch
+Obsoletes:      %name-bash-completion < %version-%release
+Provides:       %name-bash-completion = %version-%release
+Obsoletes:      %name-zsh-completion < %version-%release
+Provides:       %name-zsh-completion = %version-%release
 
 %description
 GNU Parallel is a shell tool for executing jobs in parallel using one
@@ -48,28 +52,6 @@ Group:          Documentation/HTML
 GNU Parallel is a shell tool for executing jobs in parallel using one
 or more computers.
 This subpackage contains the documentation for Parallel.
-
-%package bash-completion
-Summary:        zsh completion for GNU parallel
-Requires:       %name = %version
-Supplements:    (%name and bash-completion)
-BuildRequires:  bash
-
-%description bash-completion
-GNU Parallel is a shell tool for executing jobs in parallel using one
-or more computers.
-This subpackage contains the bash completion for Parallel.
-
-%package zsh-completion
-Summary:        zsh completion for GNU parallel
-Requires:       %name = %version
-Supplements:    (%name and zsh)
-BuildRequires:  zsh
-
-%description zsh-completion
-GNU Parallel is a shell tool for executing jobs in parallel using one
-or more computers.
-This subpackage contains the zsh completion for Parallel.
 
 %prep
 %autosetup -n parallel-%version -p1
@@ -97,11 +79,7 @@ rm "%buildroot/%_bindir/parallel.orig"
 %_bindir/sql
 %_mandir/man1/*.1*
 %_mandir/man7/*.7*
-
-%files bash-completion
 %_datadir/bash-completion/
-
-%files zsh-completion
 %_datadir/zsh/
 
 %files doc

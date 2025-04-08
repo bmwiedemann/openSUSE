@@ -116,4 +116,12 @@
     <comment></comment>
     <requestid>1062666</requestid>
   </revision>
+  <revision rev="17" vrev="8">
+    <srcmd5>b38dd8d87c1d5881521399e40782e4b8</srcmd5>
+    <version>0.4.2</version>
+    <time>1744127398</time>
+    <user>anag_factory</user>
+    <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1267253 from hsk17)</comment>
+    <requestid>1267258</requestid>
+  </revision>
 </revisionlist>

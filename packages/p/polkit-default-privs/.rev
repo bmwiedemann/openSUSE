@@ -2324,4 +2324,12 @@ for 12.3</comment>
   * profiles: whitelist kio-admin (bsc#1229913) (forwarded request 1248366 from mgerstner)</comment>
     <requestid>1248373</requestid>
   </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>015b80758855f9bfb699cad8978fcc78</srcmd5>
+    <version>1550+20250407.fdb02a6</version>
+    <time>1744127431</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267511</requestid>
+  </revision>
 </revisionlist>

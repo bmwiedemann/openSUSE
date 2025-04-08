@@ -331,4 +331,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1199558</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>eb07d706102f769748646e0572cc02ca</srcmd5>
+    <version>1.6.0</version>
+    <time>1744127464</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267652</requestid>
+  </revision>
 </revisionlist>
