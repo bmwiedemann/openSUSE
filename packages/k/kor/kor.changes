@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 08 04:51:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.1:
+  * Support slack messages in helm chart (#430)
+
+-------------------------------------------------------------------
 Thu Mar 27 10:08:29 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.6.0:
