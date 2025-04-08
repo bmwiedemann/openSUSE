@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr  7 11:42:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.5
+  * Minor under-the-hood changes/improvements
+  * Fix style option reset bug in preferences
+  * [BUG] Not all Kvantum themes are showing in Koi
+  * Added DBus interface for changing light/dark mode
+  * Several memory leak fixes; and does not start Krunner as a
+    child process anymore
+  * Chore: Removes QTest as dependency; adds QThread function
+  * Do not start scheduler function/feature when there is no
+    schedule defined
+
+-------------------------------------------------------------------
 Fri Dec 20 23:43:12 UTC 2024 - Martin von Reichenberg <martin.von.reichenberg@proton.me>
 
 - Update to the latest upstream stable version - 0.4

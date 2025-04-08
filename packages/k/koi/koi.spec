@@ -17,7 +17,7 @@
 
 
 Name:           koi
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Theme scheduling for the KDE Plasma Desktop
 License:        LGPL-3.0-only
@@ -31,7 +31,6 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 Requires:       hicolor-icon-theme
@@ -65,9 +64,11 @@ popd
 %files
 %license LICENSE
 %doc README.md
-%{_bindir}/koi
-%{_datadir}/applications/koi.desktop
-%{_datadir}/icons/hicolor/scalable/apps/koi.svg
-%{_datadir}/icons/hicolor/scalable/apps/koi_tray.svg
+%{_kf6_applicationsdir}/local.KoiDbusInterface.desktop
+%{_kf6_bindir}/koi
+%{_kf6_dbusinterfacesdir}/dev.baduhai.Koi.xml
+%{_kf6_iconsdir}/hicolor/scalable/apps/koi.svg
+%{_kf6_iconsdir}/hicolor/scalable/apps/koi_tray.svg
+%{_kf6_sharedir}/dbus-1/services/dev.baduhai.Koi.service
 
 %changelog
