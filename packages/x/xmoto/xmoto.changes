@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  5 18:32:19 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.3
+  * Website and game server migrated from Tuxfamily to xmoto.org.
+  * Updated Russian, French and Galician translation.
+  * Fullscreen mode now uses borderless fullscreen instead of
+    exclusive fullscreen.
+  * Fixed 'Hide sprites in ugly mode' hiding all sprites.
+  * Fixed broken script action key assignment.
+  * User-defined keys can now be reset to default in the options.
+  * Other minor bug fixes.
+- Update URL
+
+-------------------------------------------------------------------
 Sat Mar 11 18:55:36 UTC 2023 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.6.2

@@ -1,7 +1,7 @@
 #
 # spec file for package xmoto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           xmoto
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        2D motocross platform game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Other
-URL:            https://xmoto.tuxfamily.org/
+URL:            https://xmoto.org/
 Source0:        https://github.com/xmoto/xmoto/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-UPSTREAM xmoto-install-icon.patch - fix install xmoto icon into the correct directory
