@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr  7 17:10:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4
+  Bug fixes:
+  * Many fixes, cleanup, and refactoring across all players based
+    on fuzzing tests. Huge thanks to Alexander Miller for these.
+    There are too many to list here - please read the commit log.
+  * Fixes to SurroundOPL getchip(), fixing missing note problems.
+  * Many code typo fixes (thanks to luz paz for these).
+  * Make SOP player endian aware and many further fixes across
+    players.
+  * Fix RAD2 player crashes with files referencing unused
+    instruments.
+  * Added stress tests and many build fixes across platforms.
+  New formats:
+  * MUS,ADL: Add support for Coktel Vision game music files to
+    Visual Composer player.
+  * MID: Detect MIDI Type 1 multi-track files.
+  * PIS: Beni Tracker.
+  * MTR: Master Tracker Loader.
+  * A2M: Add new player for A2M and A2T (versions 1-14).
+  * D00: Add support for reheadered D00 songs.
+  * PLX: PALLADIX Sound System.
+  * LD0: Add support for old LOUDNESS files that don't have MIDI
+    instrument data.
+  Misc:
+  * Updated NukedOPL to master 730f8c238a152cb3314e46919789a666c9d81d82
+  * Updated ADL player to ScummVM version from Dec 7, 2020.
+- Run checks
+
+-------------------------------------------------------------------
 Tue Feb 21 23:24:21 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Fix runtime requirements for adplugdb

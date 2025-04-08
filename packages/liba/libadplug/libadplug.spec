@@ -1,7 +1,7 @@
 #
 # spec file for package libadplug
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define sover 0
-%define soname 2_3_3-%{sover}
+%define soname 2_4-%{sover}
 %define libname libadplug%{soname}
 Name:           libadplug
-Version:        2.3.3
+Version:        2.4
 Release:        0
 Summary:        AdLib Sound Player Library
 License:        LGPL-2.1-only
@@ -81,7 +81,7 @@ and remove records within a central database, or merge a set of databases
 together into one single database.
 
 %prep
-%setup -q -n "adplug-adplug-%{version}"
+%autosetup -p1 -n "adplug-adplug-%{version}"
 
 %build
 autoreconf -fiv
@@ -94,6 +94,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
+%check
+%make_build check
 
 %files -n %{libname}
 %license COPYING
