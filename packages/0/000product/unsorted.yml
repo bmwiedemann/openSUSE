@@ -1570,6 +1570,7 @@ unsorted:
   - bpfmon 
   - bpftool 
   - bpftool-bash-completion 
+  - bpftop 
   - bpftrace 
   - bpftrace-tools 
   - bpftune 
@@ -3396,6 +3397,7 @@ unsorted:
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Aeon 
+  - distribution-logos-openSUSE-Kalpa 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -3636,6 +3638,8 @@ unsorted:
   - dvdisaster-docs 
   - dvgt 
   - dwarf2json 
+  - dwarfs 
+  - dwarfs-devel 
   - dwarves 
   - dwarves-devel 
   - dwayland-devel 
@@ -4202,6 +4206,7 @@ unsorted:
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
+  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -10037,6 +10042,7 @@ unsorted:
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
+  - kde-inotify-survey 
   - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
@@ -10045,6 +10051,7 @@ unsorted:
   - kdebugsettings-lang 
   - kdeclarative-devel 
   - kdeclarative-tools 
+  - kdeconnect-kde 
   - kdeconnect-kde-lang 
   - kdeconnect-kde-zsh-completion 
   - kdecoration6-devel 
@@ -10088,6 +10095,7 @@ unsorted:
   - kdiff3 
   - kdiff3-lang 
   - kdiskmark 
+  - kdnssd 
   - kdnssd-framework-devel 
   - kdnssd-lang 
   - kdocker 
@@ -10227,7 +10235,9 @@ unsorted:
   - kf6-knotifyconfig-devel 
   - kf6-kpackage-devel 
   - kf6-kparts-devel 
+  - kf6-kpeople 
   - kf6-kpeople-devel 
+  - kf6-kpeople-imports 
   - kf6-kpeople-lang 
   - kf6-kplotting-devel 
   - kf6-kpty-devel 
@@ -11284,7 +11294,6 @@ unsorted:
   - libKF5KDcraw5 
   - libKF5KExiv2-15_0_0 
   - libKF5MediaPlayer5 
-  - libKF5MediaWiki5 
   - libKF5ModemManagerQt-devel 
   - libKF5ModemManagerQt6 
   - libKF5NetworkManagerQt-devel 
@@ -11305,6 +11314,7 @@ unsorted:
   - libKF5Syndication5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
+  - libKF6People6 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -11617,6 +11627,7 @@ unsorted:
   - libQt63DQuickScene2D6 
   - libQt63DQuickScene3D6 
   - libQt63DRender6 
+  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
@@ -12975,6 +12986,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf0 
+  - libdwarfs0_11_3 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -13124,6 +13136,7 @@ unsorted:
   - libfactory-devel 
   - libfactory-gftables 
   - libfakekey-devel 
+  - libfakekey0 
   - libfaketime 
   - libfallocate-devel 
   - libfallocate-devel-static 
@@ -14605,7 +14618,6 @@ unsorted:
   - libmediainfo-devel 
   - libmediainfo0 
   - libmediastreamer2-11 
-  - libmediawiki-devel 
   - libmedimport0 
   - libmeep32 
   - libmemcache-devel 
@@ -15324,7 +15336,7 @@ unsorted:
   - libphdi-devel 
   - libphdi-tools 
   - libphdi1 
-  - libphobos2-0_110 
+  - libphobos2-0_111 
   - libphobos2-ldc110 
   - libphonenumber-devel 
   - libphysfs-devel 
@@ -17639,6 +17651,7 @@ unsorted:
   - lnav 
   - lndir 
   - local-npm-registry 
+  - localslackirc 
   - lockfile 
   - log4cplus-devel 
   - log4cpp-devel 
@@ -19326,6 +19339,7 @@ unsorted:
   - mypaint-brushes1-devel 
   - mypaint-lang 
   - myquerytutor 
+  - myrlyn 
   - myspell-af_NA 
   - myspell-af_ZA 
   - myspell-an 
@@ -20387,6 +20401,8 @@ unsorted:
   - opencv 
   - opencv-devel 
   - opencv-doc 
+  - opencv-nogui 
+  - opencv-nogui-devel 
   - opencv3 
   - opencv3-devel 
   - opencv3-doc 
@@ -20984,6 +21000,7 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
+  - patterns-kalpa-base 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -22564,7 +22581,6 @@ unsorted:
   - perl-libxml-perl 
   - perl-local-lib 
   - perl-mapscript 
-  - perl-marisa 
   - perl-multidimensional 
   - perl-namespace-autoclean 
   - perl-namespace-clean 
@@ -22855,6 +22871,7 @@ unsorted:
   - plasma6-welcome 
   - plasma6-welcome-lang 
   - plasma6-workspace-devel 
+  - plasma6-workspace-wallpapers 
   - plasmatube 
   - plasmatube-lang 
   - plater 
@@ -23814,7 +23831,6 @@ unsorted:
   - python3-magnumclient 
   - python3-mailman-hyperkitty 
   - python3-manilaclient 
-  - python3-marisa 
   - python3-masakariclient 
   - python3-mistralclient 
   - python3-mlt 
@@ -24465,6 +24481,7 @@ unsorted:
   - python311-azure-maps-geolocation 
   - python311-azure-maps-render 
   - python311-azure-maps-route 
+  - python311-azure-maps-timezone 
   - python311-azure-media-nspkg 
   - python311-azure-media-videoanalyzer-edge 
   - python311-azure-messaging-nspkg 
@@ -24509,6 +24526,7 @@ unsorted:
   - python311-azure-mgmt-computeschedule 
   - python311-azure-mgmt-confidentialledger 
   - python311-azure-mgmt-confluent 
+  - python311-azure-mgmt-connectedcache 
   - python311-azure-mgmt-connectedvmware 
   - python311-azure-mgmt-consumption 
   - python311-azure-mgmt-containerinstance 
@@ -24551,12 +24569,14 @@ unsorted:
   - python311-azure-mgmt-dynatrace 
   - python311-azure-mgmt-edgegateway 
   - python311-azure-mgmt-edgeorder 
+  - python311-azure-mgmt-edgezones 
   - python311-azure-mgmt-education 
   - python311-azure-mgmt-elastic 
   - python311-azure-mgmt-elasticsan 
   - python311-azure-mgmt-eventgrid 
   - python311-azure-mgmt-eventhub 
   - python311-azure-mgmt-extendedlocation 
+  - python311-azure-mgmt-fabric 
   - python311-azure-mgmt-fluidrelay 
   - python311-azure-mgmt-frontdoor 
   - python311-azure-mgmt-graphservices 
@@ -24564,6 +24584,7 @@ unsorted:
   - python311-azure-mgmt-hanaonazure 
   - python311-azure-mgmt-hardwaresecuritymodules 
   - python311-azure-mgmt-hdinsight 
+  - python311-azure-mgmt-hdinsightcontainers 
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-healthdataaiservices 
   - python311-azure-mgmt-hybridcompute 
@@ -28129,6 +28150,7 @@ unsorted:
   - python312-azure-maps-geolocation 
   - python312-azure-maps-render 
   - python312-azure-maps-route 
+  - python312-azure-maps-timezone 
   - python312-azure-media-nspkg 
   - python312-azure-media-videoanalyzer-edge 
   - python312-azure-messaging-nspkg 
@@ -28173,6 +28195,7 @@ unsorted:
   - python312-azure-mgmt-computeschedule 
   - python312-azure-mgmt-confidentialledger 
   - python312-azure-mgmt-confluent 
+  - python312-azure-mgmt-connectedcache 
   - python312-azure-mgmt-connectedvmware 
   - python312-azure-mgmt-consumption 
   - python312-azure-mgmt-containerinstance 
@@ -28215,12 +28238,14 @@ unsorted:
   - python312-azure-mgmt-dynatrace 
   - python312-azure-mgmt-edgegateway 
   - python312-azure-mgmt-edgeorder 
+  - python312-azure-mgmt-edgezones 
   - python312-azure-mgmt-education 
   - python312-azure-mgmt-elastic 
   - python312-azure-mgmt-elasticsan 
   - python312-azure-mgmt-eventgrid 
   - python312-azure-mgmt-eventhub 
   - python312-azure-mgmt-extendedlocation 
+  - python312-azure-mgmt-fabric 
   - python312-azure-mgmt-fluidrelay 
   - python312-azure-mgmt-frontdoor 
   - python312-azure-mgmt-graphservices 
@@ -28228,6 +28253,7 @@ unsorted:
   - python312-azure-mgmt-hanaonazure 
   - python312-azure-mgmt-hardwaresecuritymodules 
   - python312-azure-mgmt-hdinsight 
+  - python312-azure-mgmt-hdinsightcontainers 
   - python312-azure-mgmt-healthcareapis 
   - python312-azure-mgmt-healthdataaiservices 
   - python312-azure-mgmt-hybridcompute 
@@ -31845,6 +31871,7 @@ unsorted:
   - python313-azure-maps-geolocation 
   - python313-azure-maps-render 
   - python313-azure-maps-route 
+  - python313-azure-maps-timezone 
   - python313-azure-media-nspkg 
   - python313-azure-media-videoanalyzer-edge 
   - python313-azure-messaging-nspkg 
@@ -31889,6 +31916,7 @@ unsorted:
   - python313-azure-mgmt-computeschedule 
   - python313-azure-mgmt-confidentialledger 
   - python313-azure-mgmt-confluent 
+  - python313-azure-mgmt-connectedcache 
   - python313-azure-mgmt-connectedvmware 
   - python313-azure-mgmt-consumption 
   - python313-azure-mgmt-containerinstance 
@@ -31931,12 +31959,14 @@ unsorted:
   - python313-azure-mgmt-dynatrace 
   - python313-azure-mgmt-edgegateway 
   - python313-azure-mgmt-edgeorder 
+  - python313-azure-mgmt-edgezones 
   - python313-azure-mgmt-education 
   - python313-azure-mgmt-elastic 
   - python313-azure-mgmt-elasticsan 
   - python313-azure-mgmt-eventgrid 
   - python313-azure-mgmt-eventhub 
   - python313-azure-mgmt-extendedlocation 
+  - python313-azure-mgmt-fabric 
   - python313-azure-mgmt-fluidrelay 
   - python313-azure-mgmt-frontdoor 
   - python313-azure-mgmt-graphservices 
@@ -31944,6 +31974,7 @@ unsorted:
   - python313-azure-mgmt-hanaonazure 
   - python313-azure-mgmt-hardwaresecuritymodules 
   - python313-azure-mgmt-hdinsight 
+  - python313-azure-mgmt-hdinsightcontainers 
   - python313-azure-mgmt-healthcareapis 
   - python313-azure-mgmt-healthdataaiservices 
   - python313-azure-mgmt-hybridcompute 
@@ -35379,6 +35410,7 @@ unsorted:
   - qt6-qmlcore-private-devel 
   - qt6-qmldebug-devel-static 
   - qt6-qmldom-devel-static 
+  - qt6-qmlformat-devel-static 
   - qt6-qmllocalstorage-private-devel 
   - qt6-qmlls-devel-static 
   - qt6-qmlmeta-private-devel 
@@ -35541,6 +35573,7 @@ unsorted:
   - qt6-virtualkeyboard-docs-qch 
   - qt6-virtualkeyboard-examples 
   - qt6-virtualkeyboard-private-devel 
+  - qt6-virtualkeyboardqml-private-devel 
   - qt6-wayland-devel 
   - qt6-wayland-docs-html 
   - qt6-wayland-docs-qch 
@@ -36126,7 +36159,6 @@ unsorted:
   - ruby-libdnf5 
   - ruby-libdnf5-cli 
   - ruby-libprelude 
-  - ruby-marisa 
   - ruby-obexftp 
   - ruby-packaging-helpers 
   - ruby-rrdtool 
@@ -36735,6 +36767,8 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
+  - sddm-kalpa 
+  - sddm-kalpa-kwin 
   - sddm-kalpa-lang 
   - sddm-kalpa-themes 
   - sddm-kalpa-wayland-generic 
@@ -36780,6 +36814,7 @@ unsorted:
   - sendmail-devel 
   - sendmail-starttls 
   - sendxmpp 
+  - senpai 
   - sensord 
   - seq24 
   - sequoia-octopus-librnp 
@@ -37614,6 +37649,7 @@ unsorted:
   - systemd-mini-devel 
   - systemd-network 
   - systemd-portable 
+  - systemd-presets-branding-Kalpa 
   - systemd-presets-branding-transactional-server 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 
@@ -48097,7 +48133,6 @@ unsorted:
   - typelib-1_0-WebKit2WebExtension-4_1 
   - typelib-1_0-WebKitWebProcessExtension-6_0 
   - typelib-1_0-Wnck-1_0 
-  - typelib-1_0-Workrave-1_0 
   - typelib-1_0-Wp-0_5 
   - typelib-1_0-XApp-1_0 
   - typelib-1_0-XdpGtk3-1_0 
