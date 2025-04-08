@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:26:05 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
+
+- Update to version 2.39
+  * Support GIRepository 3.0 (#817, #818, Jendrik Seipp).
+  * Fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1239860
+
+- New in version 2.38
+  * Fix: include right-pane tags without subentries in search
+    results (#794, @jendrikseipp).
+  * Upgrade to txt2tags 3.9 (@jendrikseipp).
+
+
+- New in version 2.37
+  * Improve bidirectional text support in preview mode 
+    (#781, @metemaddar).
+
+- New in version 2.36
+  * When searching for hashtags, show remainder of line after
+    hashtag in search results (@jendrikseipp).
+  * When searching for a hashtag, scroll to hashtag and highlight
+    it (@jendrikseipp).
+  * Add simple way for showing all entries: allow searching for
+    whitespace (which should be part of all days) (@jendrikseipp).
+
+- New in version 2.35
+  * Add option to auto-indent text in editor and activate it by
+    default (#561, #562, Allen Benter, Varunjay Varma).
+
+- New in version 2.34
+  * Copy/paste text into the correct text field 
+    (#677, @jendrikseipp).
+
+-------------------------------------------------------------------
 Thu May  9 20:02:38 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.33 
