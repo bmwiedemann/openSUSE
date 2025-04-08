@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Mar 30 07:55:51 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- update to version 3.1.6
+  * Add ifort and ifx support
+  * Add ftnfe support
+  * Add LLVM's flang support
+  * Add xgcc and xg++ support
+- Add patch no-BUILD_ALWAYS.patch to prevent duplicate build
+  artifacts
+
+-------------------------------------------------------------------
 Sun Oct  6 17:35:25 UTC 2024 - Christoph G <foss@grueninger.de>
 
 - update to version 3.1.5

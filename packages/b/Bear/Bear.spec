@@ -1,7 +1,7 @@
 #
 # spec file for package Bear
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %bcond_with     tests
 Name:           Bear
-Version:        3.1.5
+Version:        3.1.6
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
 URL:            https://github.com/rizsotto/Bear
 Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         no-BUILD_ALWAYS.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
