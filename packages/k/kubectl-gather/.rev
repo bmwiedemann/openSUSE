@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>dbd63d6f33b6f6e8499bb863b9218292</srcmd5>
+    <version>0.7.0</version>
+    <time>1744127550</time>
+    <user>anag_factory</user>
+    <comment>new package kubectl-gather: gather data about your cluster that may help to debug issues</comment>
+    <requestid>1267857</requestid>
+  </revision>
+</revisionlist>

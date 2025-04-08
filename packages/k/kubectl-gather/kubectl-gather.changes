@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Mar 31 06:18:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package kubectl-gather: gather data about your cluster that
+  may help to debug issues
