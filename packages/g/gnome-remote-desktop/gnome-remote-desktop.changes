@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr  7 16:27:46 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Add missing runtime dependency of fuse3
+
+-------------------------------------------------------------------
 Wed Apr  2 11:23:12 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - enforce PIE also on SLES. (bsc#1235929)

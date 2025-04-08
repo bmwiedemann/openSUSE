@@ -319,4 +319,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>- enforce PIE also on SLES. (bsc#1235929) (forwarded request 1266449 from msmeissn)</comment>
     <requestid>1266889</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>ca4e18af4b97d17d88ef91edd6113fc2</srcmd5>
+    <version>48.0</version>
+    <time>1744127537</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267846</requestid>
+  </revision>
 </revisionlist>

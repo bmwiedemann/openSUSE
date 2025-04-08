@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
 %{?systemd_ordering}
 %sysusers_requires
 
+Requires:       fuse3 >= 3.9.1
 Requires:       pipewire >= 0.3.0
 
 %description
