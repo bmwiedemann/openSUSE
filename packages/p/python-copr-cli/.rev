@@ -115,4 +115,12 @@
   - remove remove-simplejson.patch, as upstream removed simplejson</comment>
     <requestid>1230779</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>89a65870f38404d5623d53372d93412b</srcmd5>
+    <version>2.1</version>
+    <time>1744127518</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267814</requestid>
+  </revision>
 </revisionlist>

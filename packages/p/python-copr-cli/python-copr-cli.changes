@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:52:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.1
+  * python, cli: drop six dependency
+  * pylint: fix old import errors that appear as new
+  * cli: add workaround for redirect download with accept list
+
+-------------------------------------------------------------------
 Thu Dec 12 21:00:03 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.0:
