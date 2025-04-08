@@ -523,4 +523,12 @@
     <comment></comment>
     <requestid>1256211</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>de2b275f349db6d9f4a74f4702d98031</srcmd5>
+    <version>5.3.2</version>
+    <time>1744127392</time>
+    <user>anag_factory</user>
+    <comment>GNU awk 5.3.2 (forwarded request 1267184 from AndreasStieger)</comment>
+    <requestid>1267261</requestid>
+  </revision>
 </revisionlist>

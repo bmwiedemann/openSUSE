@@ -2,6 +2,7 @@
 # spec file for package gawk
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gawk
-Version:        5.3.1
+Version:        5.3.2
 Release:        0
 Summary:        Domain-specific language for text processing
 License:        GPL-3.0-or-later

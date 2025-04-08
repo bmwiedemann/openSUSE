@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr  4 16:43:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- GNU awk 5.3.2:
+  * pretty printer now produces fewer spurious newlines
+  * -no-pie linker flag is no longer required
+  * fix more subtle issues related to uninitialized array elements
+  * Associative arrays should now not grow quite as fast as they
+    used to
+  * documentation updates
+
+-------------------------------------------------------------------
 Wed Mar 19 12:13:33 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Mark profiling as non-deterministic (boo#1040589, jsc#PED-12137)
