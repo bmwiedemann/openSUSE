@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Apr  8 06:53:53 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.4.16.11 (CVE-2025-31492 [bsc#1240893])
+  - fix protected content leakage when using OIDCProviderAuthRequestMethod POST, see:
+      https://github.com/OpenIDC/mod_auth_openidc/security/advisories/GHSA-59jp-rwph-878r
+  - allow for regular Apache processing (e.g. setting response headers) when using OIDCProviderAuthRequestMethod POST
+  - core: complete case-insensitive protocol/hostname/domain-name comparisons
+
+  2.4.16.10
+  - core: compare hostnames and domains in a case insensitive way in:
+      oidc_request_check_cookie_domain
+      oidc_util_cookie_domain_valid
+      oidc_validate_redirect_url
+      oidc_cfg_parse_is_valid_url_scheme
+      oidc_discovery_target_link_uri_match
+  - cookie: fix oidc_util_cookie_domain_valid so that it checks the incoming request against OIDCCookieDomain
+    rather than the OIDCRedirectURI and displays the correct error message if they don't match
+  
+  2.4.16.9
+  - cookie: use case insensitive hostname/domain comparison in oidc_check_cookie_domain
+  - authz: remove the Location header from HTML based step up authentication redirects
+    as it may conflict with its HTTP 200 status code and confuse middle boxes
+  - metrics: avoid double-free on shutdown by not calling pthread_exit; fixes #1207; thanks @studersi
+  - metrics: upon exit, do write cached metrics into shared memory before exiting
+
+-------------------------------------------------------------------
 Fri Mar 14 22:11:35 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.4.16.8:

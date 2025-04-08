@@ -18,7 +18,7 @@
 
 
 Name:           apache2-mod_auth_openidc
-Version:        2.4.16.8
+Version:        2.4.16.11
 Release:        0
 Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0
