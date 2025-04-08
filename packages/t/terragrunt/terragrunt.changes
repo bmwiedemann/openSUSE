@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 08 04:55:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.9:
+  * Bug fixes
+    Fetching Outputs from Nested Stacks
+    Resolved an issue that prevented the correct retrieval of
+    outputs from nested stacks.
+  * What's Changed
+    - fix: corrected the logic for fetching outputs from nested
+      stacks by @denis256 in #4126
+
+-------------------------------------------------------------------
+Tue Apr 08 04:50:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.8:
+  * Documentation Updates
+    A new performance guide has been added to Terragrunt
+    documentation to offer guidance on how performance can be
+    improved when using Terragrunt or contributing to the
+    Terragrunt codebase.
+    https://terragrunt.gruntwork.io/docs/troubleshooting/performance/
+    This documentation will evolve over time, as more optional
+    optimizations become available, or are no longer necessary, as
+    they become default behavior.
+  * What's Changed
+    - feat: Add performance guide by @yhakbar in #4120
+    - build(deps): bump ruby/setup-ruby from 1.221.0 to 1.229.0 by
+      @dependabot in #4100
+    - fix: Addressing commas in external IDs by @yhakbar in #4128
+
+-------------------------------------------------------------------
 Thu Apr 03 14:05:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.7:
