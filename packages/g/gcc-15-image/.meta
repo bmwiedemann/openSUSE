@@ -1,0 +1,4 @@
+<package name="gcc-15-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI GNU Compiler Collection</title>
+  <description>GNU Compiler Collection container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
