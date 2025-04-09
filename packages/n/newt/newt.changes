@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar 31 13:34:13 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.52.25:
+  * improve Makefile (Ryan Carsten Schmidt)
+  * fix "yes" in Spanish translation
+
+-------------------------------------------------------------------
 Fri Jul 12 11:40:02 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -D_GNU_SOURCE to compilation flags because it is a required

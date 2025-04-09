@@ -411,4 +411,15 @@ If the request is OK, can you please also forward it to Factory
 soon-ish so that we can switch the default compiler?  Thanks! (forwarded request 1187069 from jamborm)</comment>
     <requestid>1187076</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ff21d46f3ab2e5e33ea0f3e96fe7399d</srcmd5>
+    <version>0.52.25</version>
+    <time>1744228158</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.52.25:
+  * improve Makefile (Ryan Carsten Schmidt)
+  * fix &quot;yes&quot; in Spanish translation
+</comment>
+    <requestid>1267841</requestid>
+  </revision>
 </revisionlist>
