@@ -27,6 +27,8 @@ URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM cfitsio-cmake-devel-scripts-destination.patch badshah400@gmail.com -- Fix installation dir for pkgconfig and cmake scripts
 Patch1:         cfitsio-cmake-devel-scripts-destination.patch
+# PATCH-FIX-UPSTREAM cfitsio-nullptr.patch hsk17@mail.de -- nullptr is keyword in C23
+Patch2:         cfitsio-nullptr.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
