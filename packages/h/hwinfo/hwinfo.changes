@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Apr 7 17:20:52 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#155
+- fix network card detection on aarch64 (bsc#1240648)
+- 23.5
+
+--------------------------------------------------------------------
 Wed Mar 19 17:37:53 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#150
