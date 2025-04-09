@@ -3397,7 +3397,6 @@ unsorted:
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Aeon 
-  - distribution-logos-openSUSE-Kalpa 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -4206,7 +4205,6 @@ unsorted:
   - fde-tpm-helper-rpm-macros 
   - fdo-client 
   - fdo-client-devel 
-  - featherpad 
   - featherpad-lang 
   - fec-devel 
   - feedbackd 
@@ -4349,6 +4347,7 @@ unsorted:
   - filebench 
   - filelight 
   - filelight-lang 
+  - filesystem-media 
   - filezilla 
   - filezilla-devel 
   - filezilla-lang 
@@ -7601,9 +7600,7 @@ unsorted:
   - gnu-unifont-otf-fonts 
   - gnu_ddrescue 
   - gnu_parallel 
-  - gnu_parallel-bash-completion 
   - gnu_parallel-doc 
-  - gnu_parallel-zsh-completion 
   - gnuastro 
   - gnuastro-bash-completion 
   - gnuastro-devel 
@@ -10042,7 +10039,6 @@ unsorted:
   - kddockwidgets-devel 
   - kddockwidgets-qt6-devel 
   - kde-fcstd-thumbnailer 
-  - kde-inotify-survey 
   - kde-inotify-survey-lang 
   - kde-l10n-devel 
   - kde-oxygen-fonts 
@@ -10051,7 +10047,6 @@ unsorted:
   - kdebugsettings-lang 
   - kdeclarative-devel 
   - kdeclarative-tools 
-  - kdeconnect-kde 
   - kdeconnect-kde-lang 
   - kdeconnect-kde-zsh-completion 
   - kdecoration6-devel 
@@ -10095,7 +10090,6 @@ unsorted:
   - kdiff3 
   - kdiff3-lang 
   - kdiskmark 
-  - kdnssd 
   - kdnssd-framework-devel 
   - kdnssd-lang 
   - kdocker 
@@ -10235,9 +10229,7 @@ unsorted:
   - kf6-knotifyconfig-devel 
   - kf6-kpackage-devel 
   - kf6-kparts-devel 
-  - kf6-kpeople 
   - kf6-kpeople-devel 
-  - kf6-kpeople-imports 
   - kf6-kpeople-lang 
   - kf6-kplotting-devel 
   - kf6-kpty-devel 
@@ -10675,6 +10667,8 @@ unsorted:
   - kubectl-dup 
   - kubectl-explore 
   - kubectl-foreach 
+  - kubectl-gather 
+  - kubectl-gather-bash-completion 
   - kubectl-neat 
   - kubectl-node-shell 
   - kubectl-np-viewer 
@@ -11314,7 +11308,6 @@ unsorted:
   - libKF5Syndication5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
-  - libKF6People6 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -11417,8 +11410,8 @@ unsorted:
   - libOpenIPMI0 
   - libOpenIPMIui1 
   - libOpenImageDenoise2 
-  - libOpenImageDenoise_core2_2_2 
-  - libOpenImageDenoise_device_cpu2_2_2 
+  - libOpenImageDenoise_core2_3_3 
+  - libOpenImageDenoise_device_cpu2_3_3 
   - libOpenImageIO2_5 
   - libOpenImageIO_Util2_5 
   - libOpenSceneGraph-devel 
@@ -11627,7 +11620,6 @@ unsorted:
   - libQt63DQuickScene2D6 
   - libQt63DQuickScene3D6 
   - libQt63DRender6 
-  - libQt6Bluetooth6 
   - libQt6Bodymovin6 
   - libQt6Charts6 
   - libQt6ChartsQml6 
@@ -11916,7 +11908,7 @@ unsorted:
   - libadolc2 
   - libadolc2-32bit 
   - libadplug-devel 
-  - libadplug2_3_3-0 
+  - libadplug2_4-0 
   - libadwaita-devel 
   - libadwaita-docs 
   - libadwaita-qt5-devel 
@@ -13027,7 +13019,7 @@ unsorted:
   - libelf-devel 
   - libelf-devel-32bit 
   - libelf1-32bit 
-  - libembree3 
+  - libembree4-4 
   - libemf2svg-devel 
   - libemf2svg1 
   - libenca0 
@@ -13136,7 +13128,6 @@ unsorted:
   - libfactory-devel 
   - libfactory-gftables 
   - libfakekey-devel 
-  - libfakekey0 
   - libfaketime 
   - libfallocate-devel 
   - libfallocate-devel-static 
@@ -14757,10 +14748,6 @@ unsorted:
   - libmplex2-2_2-0-32bit 
   - libmpris-qt5-1 
   - libmpv2 
-  - libmpx2-gcc7 
-  - libmpx2-gcc7-32bit 
-  - libmpxwrappers2-gcc7 
-  - libmpxwrappers2-gcc7-32bit 
   - libmraa2 
   - libmrss-devel 
   - libmrss0 
@@ -15419,7 +15406,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler147-32bit 
+  - libpoppler148-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -15445,20 +15432,6 @@ unsorted:
   - libpqos6 
   - libpqxx-6_4 
   - libpqxx-devel 
-  - libprelude-devel 
-  - libprelude-devel-bindings 
-  - libprelude-doc 
-  - libprelude28 
-  - libpreludecpp12 
-  - libpreludedb-devel 
-  - libpreludedb-devel-bindings 
-  - libpreludedb-doc 
-  - libpreludedb-mysql 
-  - libpreludedb-pgsql 
-  - libpreludedb-plugins 
-  - libpreludedb-sqlite 
-  - libpreludedb7 
-  - libpreludedbcpp2 
   - libpresage-devel 
   - libpresage-doc 
   - libprimecount-devel 
@@ -17757,7 +17730,6 @@ unsorted:
   - lua-fennel 
   - lua-language-server 
   - lua-libguestfs 
-  - lua-libprelude 
   - lua-lmod 
   - lua-lmod-apparmor-abstractions 
   - lua-lmod-doc 
@@ -18216,6 +18188,7 @@ unsorted:
   - manchu-fonts 
   - mandoc 
   - mandown 
+  - manga-tui 
   - mangoapp 
   - mangohud 
   - mangohud-32bit 
@@ -19901,6 +19874,7 @@ unsorted:
   - nwg-launchers 
   - nwg-look 
   - nxtvepg 
+  - nyaa 
   - nyancat 
   - nyxt 
   - o2scl-devel 
@@ -21000,7 +20974,6 @@ unsorted:
   - patterns-enlightenment-enlightenment 
   - patterns-gnome-devel_gnome 
   - patterns-gnome-gnome_ide 
-  - patterns-kalpa-base 
   - patterns-kde-devel_kde_frameworks 
   - patterns-kde-devel_kde_frameworks6 
   - patterns-kde-devel_qt5 
@@ -22577,7 +22550,6 @@ unsorted:
   - perl-libdnf5 
   - perl-libdnf5-cli 
   - perl-libintl-perl 
-  - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
   - perl-mapscript 
@@ -22871,7 +22843,6 @@ unsorted:
   - plasma6-welcome 
   - plasma6-welcome-lang 
   - plasma6-workspace-devel 
-  - plasma6-workspace-wallpapers 
   - plasmatube 
   - plasmatube-lang 
   - plater 
@@ -23248,16 +23219,9 @@ unsorted:
   - pragha-plugins-devel 
   - prboom-plus 
   - predict 
-  - prelude-correlator 
-  - prelude-lml 
-  - prelude-lml-devel 
-  - prelude-tools 
-  - preludedb-tools 
   - premake4 
   - presage 
   - presenterm 
-  - prewikka 
-  - prewikka-lang 
   - primecount 
   - primesieve 
   - primus 
@@ -23808,8 +23772,6 @@ unsorted:
   - python3-libnvme 
   - python3-liborcus 
   - python3-libpamtest 
-  - python3-libprelude 
-  - python3-libpreludedb 
   - python3-librepo 
   - python3-libreport 
   - python3-libsoc 
@@ -23895,7 +23857,6 @@ unsorted:
   - python3-pcp 
   - python3-plist 
   - python3-pocketsphinx 
-  - python3-prelude-correlator 
   - python3-presage 
   - python3-presagemate 
   - python3-pvirsh 
@@ -27034,8 +26995,6 @@ unsorted:
   - python311-scikit-sound 
   - python311-scikit-sparse 
   - python311-scipy 
-  - python311-scipy-gnu-hpc 
-  - python311-scipy_1_15_1-gnu-hpc 
   - python311-scitokens 
   - python311-scour 
   - python311-scp 
@@ -30757,8 +30716,6 @@ unsorted:
   - python312-scikit-sound 
   - python312-scikit-sparse 
   - python312-scipy 
-  - python312-scipy-gnu-hpc 
-  - python312-scipy_1_15_1-gnu-hpc 
   - python312-scitokens 
   - python312-scour 
   - python312-scp 
@@ -34406,8 +34363,6 @@ unsorted:
   - python313-scikit-sound 
   - python313-scikit-sparse 
   - python313-scipy 
-  - python313-scipy-gnu-hpc 
-  - python313-scipy_1_15_1-gnu-hpc 
   - python313-scitokens 
   - python313-scp 
   - python313-screeninfo 
@@ -36158,7 +36113,6 @@ unsorted:
   - ruby-devel 
   - ruby-libdnf5 
   - ruby-libdnf5-cli 
-  - ruby-libprelude 
   - ruby-obexftp 
   - ruby-packaging-helpers 
   - ruby-rrdtool 
@@ -36767,8 +36721,6 @@ unsorted:
   - sddm 
   - sddm-conf 
   - sddm-conf-lang 
-  - sddm-kalpa 
-  - sddm-kalpa-kwin 
   - sddm-kalpa-lang 
   - sddm-kalpa-themes 
   - sddm-kalpa-wayland-generic 
@@ -37649,7 +37601,6 @@ unsorted:
   - systemd-mini-devel 
   - systemd-network 
   - systemd-portable 
-  - systemd-presets-branding-Kalpa 
   - systemd-presets-branding-transactional-server 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 

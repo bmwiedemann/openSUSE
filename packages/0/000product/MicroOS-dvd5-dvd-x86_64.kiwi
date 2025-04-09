@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250407" schemaversion="4.1">
+<image name="OBS__MicroOS___20250408" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250407</productvar>
+      <productvar name="VERSION">20250408</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250407,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250408,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250407/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250408/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -61,6 +61,7 @@
       <repopackage name="adobe-sourcecodepro-fonts"/>
       <repopackage name="adobe-sourcesanspro-fonts"/>
       <repopackage name="adobe-sourceserifpro-fonts"/>
+      <repopackage name="adwaita-fonts"/>
       <repopackage name="adwaita-icon-theme"/>
       <repopackage name="aha"/>
       <repopackage name="alts"/>
@@ -1164,7 +1165,7 @@
       <repopackage name="libpoppler-cpp2"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt6-3"/>
-      <repopackage name="libpoppler147"/>
+      <repopackage name="libpoppler148"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libportal-gtk4-1"/>
       <repopackage name="libportal1"/>
