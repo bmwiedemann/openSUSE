@@ -6952,4 +6952,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.14; bugs: bsc#1237521 bsc#1239986</comment>
     <requestid>1256401</requestid>
   </revision>
+  <revision rev="775" vrev="1">
+    <srcmd5>84a713b62c5b09c24910bd4d854fa2e5</srcmd5>
+    <version>6.14.1</version>
+    <time>1744228189</time>
+    <user>anag_factory</user>
+    <comment>6.14.1 &amp; lockdown patches rework &amp; config updates; bugs: bsc#1012628 bsc#1207948 bsc#1225561 bsc#1231293 bsc#1237220 bsc#1237521</comment>
+    <requestid>1267508</requestid>
+  </revision>
 </revisionlist>
