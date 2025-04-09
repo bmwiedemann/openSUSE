@@ -66,7 +66,7 @@ for IPv6, proxies, and Unix sockets.
 
 %build
 make %{?_smp_mflags} \
-  CFLAGS="%{optflags} -fvisibility=hidden"
+  CFLAGS="%{optflags} -fvisibility=hidden -std=gnu99"
 
 %install
 install -D -m0755 nc %{buildroot}%{_bindir}/nc

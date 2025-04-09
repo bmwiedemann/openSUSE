@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  8 13:01:27 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu99 to CFLAGS to fix gcc15 compile time errors
+
+-------------------------------------------------------------------
 Mon Nov 22 10:16:15 UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Fix download URL. Debian has purged older versions from their
