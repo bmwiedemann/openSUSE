@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr  8 17:35:28 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.0:
+  - Features
+    * feat: Add --file flag to execute-template command
+    * feat: Add encoding template directive
+
+-------------------------------------------------------------------
+Tue Apr  8 17:32:34 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.61.0:
+  - Features
+    * feat: Remove 1Password SDK integration
+    * feat: Complete --progress and --working-tree option args
+    * feat: Prevent inapplicable filename positional arguments
+    * feat: Set LESS and LV env vars the same way that git does
+  - Fixes
+    * fix: Remove default submission when nothing is selected during promptMultichoice
+    * fix: Doc on declaratve package installation
+  - Documentation updates
+    * docs: Add note on templates in edit command
+    * docs: Update docs for using delta
+
+-------------------------------------------------------------------
 Tue Mar 11 16:46:49 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.60.1:
