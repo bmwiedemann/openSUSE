@@ -21,7 +21,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.6.10
+Version:        2.6.14
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        GPL-2.0-only WITH openvpn-openssl-exception
@@ -32,14 +32,12 @@ Source1:        https://swupdate.openvpn.org/community/releases/openvpn-%{versio
 Source3:        %{name}.README.SUSE
 Source4:        client-netconfig.up
 Source5:        client-netconfig.down
-Source7:        %{name}.keyring
+Source7:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xf554a3687412cffebdefe0a312f5f7b42f2b01e7#/%{name}.keyring
 Source8:        %{name}.service
 Source9:        %{name}.target
 Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
-Patch2:         openvpn-CVE-2024-28882.patch
-Patch3:         openvpn-CVE-2024-5594.patch
 BuildRequires:  iproute2
 BuildRequires:  libcap-ng-devel
 BuildRequires:  liblz4-devel

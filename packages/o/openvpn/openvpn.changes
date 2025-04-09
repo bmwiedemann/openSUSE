@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Apr  4 20:24:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.6.14:
+  * CVE-2025-2704: fix possible ASSERT() on OpenVPN servers using --tls-crypt-v2
+  * Linux DCO: repair source IP selection for --multihome
+- update to 2.6.13:
+  * on non-windows clients (MacOS, Linux, Unix) send "release" string from
+    uname() call as IV_PLAT_VER to server
+  * Linux: pass --timeout=0 argument to systemd-ask-password, to avoid default
+    timeout of 90 seconds
+  * improve server-side handling of clients sending usernames or passwords
+    longer than USER_PASS_LEN
+  * purge proxy authentication credentials from memory after use
+- update to 2.6.12:
+  * the fix for CVE-2024-5594 (refuse control channel messages with
+    nonprintable characters) was too strict, breaking user configurations
+  * Http-proxy: fix bug preventing proxy credentials caching
+- update to 2.6.11:
+  * CVE-2024-5594: control channel: refuse control channel messages with
+    nonprintable characters in them. Security scope: a malicious openvpn
+    peer can send garbage to openvpn log, or cause high CPU load.
+  * CVE-2024-28882: only call schedule_exit() once (on a given peer).
+    Security scope: an authenticated client can make the server "keep the
+    session" even when the server has been told to disconnect this client
+  * Fix connect timeout when using SOCKS proxies
+  * Add bracket in fingerprint message and do not warn about missing
+    verification
+  * Remove "experimental" denotation for --fast-io
+  * Correctly document ifconfig_* variables passed to scripts
+  * Documentation: make section levels consistent
+  * Samples: Update sample configurations (remove compression & old cipher
+    settings, add more informative comments)
+- update keyring, as the old one doesn't verify anymore (and attach an url)
+- remove openvpn-CVE-2024-28882.patch and openvpn-CVE-2024-5594.patch, as
+  the latest version include fixes for the CVEs
+
+-------------------------------------------------------------------
 Wed Jan 22 16:35:27 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

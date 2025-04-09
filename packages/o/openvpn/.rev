@@ -1020,4 +1020,12 @@ behaviour fixing bsc#941569</comment>
     <comment>bugowner:rjain openvpn-CVE-2024-5594 Patch applied for the submission by rjain (forwarded request 1239460 from rjain)</comment>
     <requestid>1240409</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>32e292706442f9764ab066c42a062f04</srcmd5>
+    <version>2.6.14</version>
+    <time>1744228180</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267918</requestid>
+  </revision>
 </revisionlist>
