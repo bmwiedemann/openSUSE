@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 09 04:48:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.10:
+  * fix: Back out migrate command pending resolution (#4142)
+  * fix: Fixing optional default template (#4141)
+  * feat: Implementation `backend migrate` command (#4135)
+  * feat: stack code improvements (#4136)
+  * fix: remove warning message for unimplemented backends (#4138)
+  * fix: Suppressing warning for catalog when determining default
+    file name (#4134)
+
+-------------------------------------------------------------------
 Tue Apr 08 04:55:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.9:
