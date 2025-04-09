@@ -16,7 +16,7 @@
 #
 
 
-%define _libclc_llvm_ver 19.1.0
+%define _libclc_llvm_ver 20.1.0
 %define _version %_libclc_llvm_ver%{?_rc:rc%_rc}
 %define _tagver %_libclc_llvm_ver%{?_rc:-rc%_rc}
 
@@ -31,15 +31,14 @@ Source0:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%
 Source1:        https://github.com/llvm/llvm-project/releases/download/llvmorg-%{_tagver}/%{name}-%{_version}.src.tar.xz.sig
 Source100:      %{name}-rpmlintrc
 Source101:      https://releases.llvm.org/release-keys.asc#/%{name}.keyring
-Patch0:         fix-cmake-install.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} >= 1550
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 %else
  %if 0%{?sle_version} >= 150600
-BuildRequires:  clang19-devel
-BuildRequires:  llvm19-devel
+BuildRequires:  clang20-devel
+BuildRequires:  llvm20-devel
  %endif
 %endif
 BuildRequires:  python3-base

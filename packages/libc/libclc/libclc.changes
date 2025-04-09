@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sat Apr  5 08:56:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 20.1.0 (boo#1240848);changes since 19.1.0:
+  * Disable external-calls testing for clspv targets (#127529)
+  * Allow default path when looking for llvm-spirv (#126071)
+  * Clang-format includes
+  * Optimize isfpclass-like CLC builtins (#124145)
+  * clspv: add missing clc_isnan.cl dependency (#124614)
+  * Move key math headers to CLC (#124739)
+  * Move copysign to CLC library; fix & optimize (#124598)
+  * Optimize CLC vector any/all builtins (#124568)
+  * Optimize CLC vector is(un)ordered builtins (#124546)
+  * Optimize CLC vector relational builtins (#124537)
+  * Move nextafter to the CLC library (#124097)
+  * Don't rely on fp16 pragma guards in headers (#122751)
+  * Route int bitselect through CLC; add half (#123653)
+  * Route select through __clc_select (#123647)
+  * Move mad to the CLC library (#123607)
+  * Rename include guards. NFC.
+  * Move degrees/radians to CLC library & optimize (#123222)
+  * Move smoothstep to CLC and optimize its codegen (#123183)
+  * Add missing includes to CLC headers (#118654)
+  * Add Maintainers.md for libclc (#118309)
+  * Optimize ceil/fabs/floor/rint/trunc (#119596)
+  * "[libclc] Create aliases with custom_command (#115885)" (#116025)
+  * "[libclc] Create aliases with custom_command (#115885)" for causing: https://github.com/llvm/llvm-project/issues/115942
+  * Add some include guards to CLC declarations. NFC
+  * Create aliases with custom_command (#115885)
+  * Avoid using undefined vector3 components (#115857)
+  * Use builtin_convertvector to convert between vector types (#115865)
+  * Correct use of CLC macro on two definitions
+  * Move relational functions to the CLC library (#115171)
+  * Use __clc_max in CLC functions
+  * Move abs/abs_diff to CLC library
+  * Move clcmacro.h to CLC library. NFC (#114845)
+  * Move ceil/fabs/floor/rint/trunc to CLC library (#114774)
+  * Format clc_fma.cl. NFC
+  * Format clc_tan.cl. NFC
+  * Add some include guards and format a file
+  * Move min/max/clamp into the CLC builtins library (#114386)
+  * Restore header order, which formatting broke
+  * Format clc_ldexp.cl and clc_hypot.cl. NFC
+  * Create an internal 'clc' builtins library
+  * Split off library build system into helpers
+  * Add a new target for gfx1153 (#113138)
+  * Give a helpful error when an unknown target is requested (#111528)
+  * Convert README to Markdown (#111549)
+  * Update build instructions in readme (#111369)
+  * Remove mention of BSD license in readme (#111371)
+  * Fix installation w/ ENABLE_RUNTIME_SUBNORMAL (#109926)
+  * More cross compilation fixes (#97811)
+- require llvm20/clang20 on sle15 >= sp6
+- supersedes fix-cmake-install.patch
+
+-------------------------------------------------------------------
 Fri Mar  7 12:14:05 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - buildrequire LLVMSPIRVLib also on SLE15
