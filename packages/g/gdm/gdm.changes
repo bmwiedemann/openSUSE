@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr  7 15:06:20 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Disable X11 support on SLE:
+  * SLFO will only support Wayland
+  * This is required to avoid a fallback to X11 sessions which 
+    makes GDM crash
+  * With this change gdm-exclude-61-gdm-rules-file.patch is 
+    not needed anymore
+
+-------------------------------------------------------------------
 Thu Mar 27 07:00:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - No longer rm -vrf

@@ -76,8 +76,6 @@ Patch7:         gdm-settings-utils_rename-variable.patch
 ### NOTE: Keep please SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gdm-disable-gnome-initial-setup.patch bnc#1067976 qzhao@suse.com -- Disable gnome-initial-setup runs before gdm, g-i-s will only serve for CJK people to choose the input-method after login.
 Patch1000:      gdm-disable-gnome-initial-setup.patch
-# PATCH-FIX-SLE gdm-exclude-61-gdm-rules-file.patch jsc#PED-1904 xwang@suse.com -- Exclude 61-gdm.rules file when X is not supported.
-Patch1001:      gdm-exclude-61-gdm-rules-file.patch
 
 BuildRequires:  /usr/bin/dbus-run-session
 BuildRequires:  check-devel
@@ -280,6 +278,9 @@ running display manager.
 %endif
         -Dudev-dir=%{_udevrulesdir} \
         -Dwayland-support=true \
+%if !0%{?is_opensuse}
+        -Dx11-support=false \
+%endif
         %nil
 %meson_build
 %sysusers_generate_pre %{SOURCE11} gdm gdm.conf
