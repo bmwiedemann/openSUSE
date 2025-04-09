@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr  4 09:14:10 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Add optional requires to libbcc0 for kernel-longterm-devel, if
+  kernel-longterm is in use
+
+-------------------------------------------------------------------
 Fri Mar 21 01:39:40 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Support building with cmake4

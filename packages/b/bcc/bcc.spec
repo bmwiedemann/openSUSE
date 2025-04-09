@@ -97,6 +97,7 @@ Requires:       kernel-devel >= 4.1.0
 Requires:       (kernel-debug-devel if kernel-debug)
 Requires:       (kernel-default-devel if (kernel-default or kernel-default-base))
 Requires:       (kernel-kvmsmall-devel if kernel-kvmsmall)
+Requires:       (kernel-longterm-devel if kernel-longterm)
 Requires:       (kernel-pae-devel if kernel-pae)
 Requires:       (kernel-vanilla-devel if kernel-vanilla)
 
