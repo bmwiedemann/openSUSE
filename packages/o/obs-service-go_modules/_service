@@ -1,9 +1,9 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/openSUSE/obs-service-go_modules</param>
+    <param name="url">https://github.com/openSUSE/obs-service-go_modules.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.6.4</param>
+    <param name="revision">v0.6.5</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

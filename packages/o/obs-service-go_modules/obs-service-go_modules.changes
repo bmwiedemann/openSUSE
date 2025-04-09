@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 09 05:16:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.5:
+  * feat: allow `archive` be name of the subdirectory
+  * ignore directories containing '.git' when searching for the basename (#51)
+  * doc(README): osc service disabled has been disabled
+  * Make output archives more reproducible
+
+-------------------------------------------------------------------
+Tue Apr  8 02:08:37 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service tar_scm url use .git extension by convention
+
+-------------------------------------------------------------------
 Wed Mar 26 15:06:49 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update go toolchain to Requires: golang(API) >= 1.24

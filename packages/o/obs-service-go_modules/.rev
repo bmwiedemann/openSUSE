@@ -170,4 +170,19 @@
   * Closes https://github.com/openSUSE/obs-service-go_modules/issues/62 (forwarded request 1256304 from jfkw)</comment>
     <requestid>1256317</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>37e36bc1d3aad955b55ea91a03cba7f1</srcmd5>
+    <version>0.6.5</version>
+    <time>1744228224</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.5:
+  * feat: allow `archive` be name of the subdirectory
+  * ignore directories containing '.git' when searching for the basename (#51)
+  * doc(README): osc service disabled has been disabled
+  * Make output archives more reproducible
+
+- Packaging improvements:
+  * _service tar_scm url use .git extension by convention (forwarded request 1268024 from jfkw)</comment>
+    <requestid>1268025</requestid>
+  </revision>
 </revisionlist>
