@@ -379,4 +379,12 @@
     <comment>Qt 6.9.0</comment>
     <requestid>1266665</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>4c2530b6792181972e102acbbaefe327</srcmd5>
+    <version>6.9.0</version>
+    <time>1744228147</time>
+    <user>anag_factory</user>
+    <comment>- Fix desktop files</comment>
+    <requestid>1267735</requestid>
+  </revision>
 </revisionlist>

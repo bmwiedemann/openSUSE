@@ -307,8 +307,8 @@ rm %{buildroot}%{_qt6_descriptionsdir}/QDocCatch*.json
 mkdir -p %{buildroot}%{_qt6_sharedir}/applications
 install -D -m644 %{SOURCE10} %{buildroot}%{_qt6_sharedir}/applications/org.qt.designer6.desktop
 install -D -m644 %{SOURCE11} %{buildroot}%{_qt6_sharedir}/applications/org.qt.linguist6.desktop
-install -D -m644 %{SOURCE12} %{buildroot}%{_qt6_sharedir}/applications/org.qt.assistant6.desktop
-install -D -m644 %{SOURCE13} %{buildroot}%{_qt6_sharedir}/applications/org.qt.qdbusviewer6.desktop
+install -D -m644 %{SOURCE12} %{buildroot}%{_qt6_sharedir}/applications/org.qt.qdbusviewer6.desktop
+install -D -m644 %{SOURCE13} %{buildroot}%{_qt6_sharedir}/applications/org.qt.assistant6.desktop
 
 # Icons for desktop files
 install -D -m644 src/designer/src/designer/images/designer.png %{buildroot}%{_qt6_sharedir}/icons/hicolor/128x128/apps/designer6.png
