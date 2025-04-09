@@ -18,7 +18,7 @@
 
 
 Name:           ack
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        Grep-Like Text Finder
 License:        Artistic-2.0
@@ -31,6 +31,7 @@ BuildRequires:  make
 BuildRequires:  perl >= 5.10.1
 BuildRequires:  perl(File::Next) >= 1.18
 BuildRequires:  perl(File::Temp) >= 0.19
+BuildRequires:  perl(YAML::PP)
 BuildRequires:  perl(IO::Pty)
 BuildRequires:  perl(Test::Pod) >= 1.14
 Requires:       perl >= 5.10.1

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  8 16:13:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.8.2:
+   * ack would always set a return code of 1 if -c was used. Now it
+     properly returns 1 if no files match, and 0 if any files match
+  * ack now needs YAML::PP to run its tests. Many of ack's tests
+    are stored in YAML files for flexibility
+
+-------------------------------------------------------------------
 Wed Jan  1 11:10:30 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - ack 3.8.1
