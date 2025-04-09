@@ -1959,4 +1959,13 @@ General : Update internal Libraw to snapshot 202110
     <comment>Update to 8.6.0</comment>
     <requestid>1253393</requestid>
   </revision>
+  <revision rev="227" vrev="2">
+    <srcmd5>a109a5c2fe8912dc0dae950cddb11c85</srcmd5>
+    <version>8.6.0</version>
+    <time>1744228237</time>
+    <user>anag_factory</user>
+    <comment>- Add patch:
+  * digikam-qt69.patch</comment>
+    <requestid>1268164</requestid>
+  </revision>
 </revisionlist>

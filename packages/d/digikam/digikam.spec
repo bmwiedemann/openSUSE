@@ -33,6 +33,8 @@ Source0:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        digikam.keyring
 %endif
+#PATCH-FIX-UPSTREAM
+Patch0:         digikam-qt69.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
