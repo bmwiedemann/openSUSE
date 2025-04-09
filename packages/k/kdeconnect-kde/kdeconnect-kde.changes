@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  8 15:56:51 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build against Qt 6.9:
+  * 0001-Add-missing-include.patch
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3
