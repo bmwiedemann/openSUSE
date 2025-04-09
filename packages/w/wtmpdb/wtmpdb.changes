@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 08 13:19:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.73.0+git20250408.edb8638:
+  * Release version 0.73.0
+  * expand accepted time format options
+  * use documented -t short option for last --until
+  * hurd: avoid PATH_MAX
+  * hurd: compat for lack of CLOCK_BOOTTIME
+
+-------------------------------------------------------------------
 Wed Mar 05 12:59:57 UTC 2025 - kukuk@suse.com
 
 - Update to version 0.72.0+git20250305.10803fd:

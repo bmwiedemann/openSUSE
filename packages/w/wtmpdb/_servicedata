@@ -4,4 +4,4 @@
 </service>
 <service name="tar_scm">
                 <param name="url">https://github.com/thkukuk/wtmpdb.git</param>
-              <param name="changesrevision">10803fd2a3a597a93804cef40ce8844c0bd59d90</param></service></servicedata>
+              <param name="changesrevision">edb8638a616e720616a1564ec395275b09295b8e</param></service></servicedata>

@@ -223,4 +223,17 @@
   * rotate: don't throw away microseconds calculating threshold</comment>
     <requestid>1250416</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5b6b7e8a452fcc4c256fe0c61a731501</srcmd5>
+    <version>0.73.0+git20250408.edb8638</version>
+    <time>1744228179</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.73.0+git20250408.edb8638:
+  * Release version 0.73.0
+  * expand accepted time format options
+  * use documented -t short option for last --until
+  * hurd: avoid PATH_MAX
+  * hurd: compat for lack of CLOCK_BOOTTIME</comment>
+    <requestid>1267915</requestid>
+  </revision>
 </revisionlist>
