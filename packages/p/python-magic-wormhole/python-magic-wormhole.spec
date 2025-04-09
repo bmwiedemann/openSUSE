@@ -1,7 +1,7 @@
 #
 # spec file for package python-magic-wormhole
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,13 @@
 #
 
 
-%define modname magic_wormhole
 Name:           python-magic-wormhole
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Tool for transferring files through a secure channel
 License:        MIT
 URL:            https://github.com/magic-wormhole/magic-wormhole
-Source:         https://files.pythonhosted.org/packages/source/m/%{modname}/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/magic-wormhole/magic-wormhole/pull/554 fix test under Twisted 24.10.0
-Patch0:         twisted.patch
+Source:         https://files.pythonhosted.org/packages/source/m/magic_wormhole/magic-wormhole-%{version}.tar.gz
 BuildRequires:  %{python_module Automat}
 BuildRequires:  %{python_module PyNaCl}
 BuildRequires:  %{python_module Twisted}
@@ -63,6 +60,7 @@ Requires:       python-click
 Requires:       python-cryptography
 Requires:       python-humanize
 Requires:       python-iterable-io >= 1.0.0
+Requires:       python-qrcode >= 8.0
 Requires:       python-spake2 >= 0.9
 Requires:       python-tqdm >= 4.13.0
 Requires:       python-txtorcon >= 18.0.2
@@ -116,7 +114,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n magic-wormhole-%{version}
 
 %build
 %pyproject_wheel

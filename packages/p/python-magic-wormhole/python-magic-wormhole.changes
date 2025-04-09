@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr  9 13:19:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.18.0
+  * Improve the example to act more like send/receive (#558, @OndrewBot)
+  * Display a QR code by default for "wormhole send" (#555, @ferada + @meejah)
+    This encodes "wormhole-transfer:M-word0-word1" per the spec:
+    https://github.com/magic-wormhole/magic-wormhole-protocols/blob/main/uri-scheme.md
+  * Add sequence diagram
+  * Support Read the Docs pull-request builds
+  * Drop support for Python 3.8 (#556)
+  * Add broken-link checker (#588, https://github.com/Cycloctane)
+  * Preemptively fix Click 8.2 (#584, @cjwatson)
+  * Basic support for PEP518 (#579, @SnoopJ)
+  * Add WORMHOLE_ACCEPT_FILE (#570, @haatveit)
+- Drop twisted.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Nov 12 12:42:51 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.17.0
