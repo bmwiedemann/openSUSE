@@ -408,4 +408,15 @@
   livepatching on powerpc.</comment>
     <requestid>1264976</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>85c3b0d53fc98f7d9f92bbb61b8ca4cb</srcmd5>
+    <version>13.3.1+git9426</version>
+    <time>1744228194</time>
+    <user>anag_factory</user>
+    <comment>- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+
+  in ppc64le (jsc#PED-7395).</comment>
+    <requestid>1267910</requestid>
+  </revision>
 </revisionlist>

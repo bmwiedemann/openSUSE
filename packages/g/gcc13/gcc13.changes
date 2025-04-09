@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:09:05 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+
+-------------------------------------------------------------------
 Thu Mar 27 10:05:46 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Replace gcc13-rs6000-Adjust-fpatchable-function-entry.patch with
@@ -50,7 +56,7 @@ Thu Jul 25 17:29:02 UTC 2024 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Add gcc13-rs6000-Adjust-fpatchable-function-entry.patch to fix
   the incorrect NOPs layout when -fpatchable-function-enry is passed
-  in ppc64le.
+  in ppc64le (jsc#PED-7395).
 
 -------------------------------------------------------------------
 Tue May 21 08:56:28 UTC 2024 - Richard Biener <rguenther@suse.com>
