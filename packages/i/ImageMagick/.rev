@@ -4040,4 +4040,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   - ImageMagick-gamma-should-call-GammaImage.patch</comment>
     <requestid>1248596</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>d2b0df70466e0fc0fe38672b302f9496</srcmd5>
+    <version>7.1.1.47</version>
+    <time>1744228166</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1267894</requestid>
+  </revision>
 </revisionlist>

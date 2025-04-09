@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:44:59 UTC 2025 - pgajdos@suse.com
+
+- version update to 7.1.1.47
+  * try pngalpha if png16malpha not available by @remicollet in #8034
+  * Fix statistic.c GetImageRange initializer by @mtasaka in #8010
+- modified patches
+  % ImageMagick-library-installable-in-parallel.patch (refreshed)
+
+-------------------------------------------------------------------
 Sun Feb 23 20:52:21 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 7.1.1.44
