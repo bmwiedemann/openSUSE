@@ -1,0 +1,135 @@
+Index: grub-2.12/grub-core/video/video.c
+===================================================================
+--- grub-2.12.orig/grub-core/video/video.c
++++ grub-2.12/grub-core/video/video.c
+@@ -89,6 +89,27 @@ grub_video_get_info_and_fini (struct gru
+   return GRUB_ERR_NONE;
+ }
+ 
++/* Get information about connected display.  */
++grub_err_t
++grub_video_get_edid (struct grub_video_edid_info *edid_info)
++{
++  grub_err_t err;
++
++  if (! grub_video_adapter_active)
++    return grub_error (GRUB_ERR_BAD_DEVICE, "no video mode activated");
++
++  grub_memset (edid_info, 0, sizeof (*edid_info));
++
++  if (grub_video_adapter_active->get_edid)
++    {
++      err = grub_video_adapter_active->get_edid (edid_info);
++      if (err)
++        return err;
++    }
++
++  return GRUB_ERR_NONE;
++}
++
+ /* Determine optimized blitting formation for specified video mode info.  */
+ enum grub_video_blit_format
+ grub_video_get_blit_format (struct grub_video_mode_info *mode_info)
+Index: grub-2.12/include/grub/video.h
+===================================================================
+--- grub-2.12.orig/include/grub/video.h
++++ grub-2.12/include/grub/video.h
+@@ -445,6 +445,8 @@ grub_err_t EXPORT_FUNC (grub_video_get_i
+ grub_err_t EXPORT_FUNC (grub_video_get_info_and_fini) (struct grub_video_mode_info *mode_info,
+ 					 void **framebuffer);
+ 
++grub_err_t EXPORT_FUNC (grub_video_get_edid) (struct grub_video_edid_info *edid_info);
++
+ enum grub_video_blit_format EXPORT_FUNC(grub_video_get_blit_format) (struct grub_video_mode_info *mode_info);
+ 
+ grub_err_t grub_video_set_palette (unsigned int start, unsigned int count,
+Index: grub-2.12/grub-core/loader/i386/linux.c
+===================================================================
+--- grub-2.12.orig/grub-core/loader/i386/linux.c
++++ grub-2.12/grub-core/loader/i386/linux.c
+@@ -234,6 +234,7 @@ grub_e820_add_region (struct grub_e820_m
+ static grub_err_t
+ grub_linux_setup_video (struct linux_kernel_params *params)
+ {
++  struct grub_video_edid_info edid_info;
+   struct grub_video_mode_info mode_info;
+   void *framebuffer;
+   grub_err_t err;
+@@ -245,6 +246,17 @@ grub_linux_setup_video (struct linux_ker
+   if (driver_id == GRUB_VIDEO_DRIVER_NONE)
+     return 1;
+ 
++  grub_video_get_edid (&edid_info); /* ignore errors */
++
++  /*
++   * We cannot transfer any extensions. Therefore clear
++   * the extension flag from the checksum and set the
++   * field to zero. Adding the extension flag to the
++   * checksum does the trick.
++   */
++  edid_info.checksum += edid_info.extension_flag;
++  edid_info.extension_flag = 0;
++
+   err = grub_video_get_info_and_fini (&mode_info, &framebuffer);
+ 
+   if (err)
+@@ -338,6 +350,17 @@ grub_linux_setup_video (struct linux_ker
+     }
+ #endif
+ 
++    if (grub_le_to_cpu16 (params->version) >= 0x0208)
++      {
++        grub_memcpy (params->v0208.edid_info, &edid_info,
++		     sizeof (params->v0208.edid_info));
++      }
++    else if (grub_le_to_cpu16 (params->version) >= 0x0206)
++      {
++        grub_memcpy (params->v0206.edid_info, &edid_info,
++		     sizeof (params->v0206.edid_info));
++      }
++
+   return GRUB_ERR_NONE;
+ }
+ 
+Index: grub-2.12/include/grub/i386/linux.h
+===================================================================
+--- grub-2.12.orig/include/grub/i386/linux.h
++++ grub-2.12/include/grub/i386/linux.h
+@@ -250,14 +250,15 @@ struct linux_kernel_params
+   grub_uint32_t ext_ramdisk_size;	/* 0xc4 */
+   grub_uint32_t ext_cmd_line_ptr;	/* 0xc8 */
+ 
+-  grub_uint8_t padding7[0x1b8 - 0xcc];
++  grub_uint8_t padding7[0x140 - 0xcc];
+ 
+   union
+     {
+       struct
+         {
++          grub_uint8_t padding7_1[0x1b8 - 0x140];
+           grub_uint32_t efi_system_table;	/* 1b8 */
+-          grub_uint32_t padding7_1;		/* 1bc */
++          grub_uint32_t padding7_2;		/* 1bc */
+           grub_uint32_t efi_signature;		/* 1c0 */
+           grub_uint32_t efi_mem_desc_size;	/* 1c4 */
+           grub_uint32_t efi_mem_desc_version;	/* 1c8 */
+@@ -266,8 +267,7 @@ struct linux_kernel_params
+         } v0204;
+       struct
+         {
+-          grub_uint32_t padding7_1;		/* 1b8 */
+-          grub_uint32_t padding7_2;		/* 1bc */
++          grub_uint8_t edid_info[128];  	/* 140 */
+           grub_uint32_t efi_signature;		/* 1c0 */
+           grub_uint32_t efi_system_table;	/* 1c4 */
+           grub_uint32_t efi_mem_desc_size;	/* 1c8 */
+@@ -277,8 +277,7 @@ struct linux_kernel_params
+ 	} v0206;
+       struct
+         {
+-          grub_uint32_t padding7_1;		/* 1b8 */
+-          grub_uint32_t padding7_2;		/* 1bc */
++          grub_uint8_t edid_info[128];  	/* 140 */
+           grub_uint32_t efi_signature;		/* 1c0 */
+           grub_uint32_t efi_system_table;	/* 1c4 */
+           grub_uint32_t efi_mem_desc_size;	/* 1c8 */

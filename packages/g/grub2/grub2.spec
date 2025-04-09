@@ -446,6 +446,7 @@ Patch272:       0008-appendedsig-The-grub-command-s-trusted-and-distruste.patch
 Patch273:       0009-appendedsig-documentation.patch
 Patch274:       0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
 Patch275:       grub2-btrfs-filter-non-subvol-mount.patch
+Patch276:       grub2-provide-edid.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

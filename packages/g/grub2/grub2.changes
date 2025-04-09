@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  1 09:44:49 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
+
+- Add grub2-provide-edid.patch: Grub2 already retrieves the EDID
+  from video adapters. Copy the raw data into the Linux kernel boot
+  parameters, so that Linux can use this information. The necessary
+  fields have been present in the boot parameters since at least
+  commit f8eeaaf41803 ("[PATCH] Make the bzImage format
+  self-terminating"), but never used. Within the kernel, the EDID
+  data will be propagated to graphics drivers and finally to user
+  space. (bsc#1240624)
+
+-------------------------------------------------------------------
 Thu Mar 27 04:10:39 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix grub-bls has broken builtin theme for SLE (bsc#1240090)
