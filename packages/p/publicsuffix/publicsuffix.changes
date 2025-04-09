@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 08 07:29:02 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250407:
+  * Add windsurf.app and windsurf.build (#2428)
+  * util: gTLD data autopull updates for 2025-03-28T15:18:17 UTC (#2423)
+  * feat: add Appwrite domains to the list (#2410)
+  * Add storacha.link and w3s.link (#2417)
+  * Remove `router.management` (#2409)
+  * Add dpdns.org (#2414)
+  * Add devinapps.com (#2412)
+  * add inbrowser.link and inbrowser.dev (#2413)
+  * Update public_suffix_list.dat (#2403)
+  * Add ai.kr, io.kr, it.kr, me.kr (#2407)
+  * Update pro.typeform.com contact (#2404)
+  * Add deus-canvas.com to PSL (#2405)
+  * Add oninferno.net (#2402)
+  * add deno.net (#2400)
+  * util: gTLD data autopull updates for 2025-02-28T15:17:59 UTC (#2401)
+  * Add cpanel.site to private section (#2398)
+  * Add `zone.id` to the list (#2396)
+  * Add *.zerops.app (#2393)
+  * util: gTLD data autopull updates for 2025-02-26T15:18:44 UTC (#2397)
+
+-------------------------------------------------------------------
 Wed Feb 26 08:25:29 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250224:
