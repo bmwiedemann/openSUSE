@@ -1,7 +1,7 @@
 #
 # spec file for package capstone
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,22 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-%define sover   4
+%define sover   5
 Name:           capstone
-Version:        4.0.2
+Version:        5.0.5
 Release:        0
 Summary:        A multi-platform, multi-architecture disassembly framework
 License:        BSD-3-Clause
 Group:          Development/Tools/Building
 URL:            https://www.capstone-engine.org
-Source:         https://github.com/aquynh/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/capstone-engine/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(python3)
 
 %description
 Capstone is a disassembly framework.
@@ -81,20 +85,22 @@ This package contains the Capstone bindings for Python.
 %autosetup
 
 %build
-export CFLAGS="%{optflags}"
-CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
-  LIBDIRARCH="%{_lib}" INCDIR="%{_includedir}" \
-  DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC="yes" ./make.sh
+%define __builder ninja
+%cmake \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_STATIC_LIBS=ON \
+    -DCAPSTONE_BUILD_CSTEST=OFF \
+    -DCAPSTONE_BUILD_TESTS=OFF
+%cmake_build
+
+cd .. # back to the main source directory
 
 pushd bindings/python/
 %python3_build
 popd
 
 %install
-export CFLAGS="%{optflags}"
-CAPSTONE_ARCHS="arm aarch64 mips powerpc sparc systemz x86" \
-  LIBDIRARCH="%{_lib}" INCDIR="%{_includedir}" \
-  DESTDIR=%{buildroot} V=1 CAPSTONE_STATIC="yes" ./make.sh install
+%cmake_install
 
 install -m 755 -d %{buildroot}%{_docdir}/%{name}-doc/docs
 install -m 644 -t %{buildroot}%{_docdir}/%{name}-doc/docs docs/README docs/*.pdf
@@ -127,6 +133,7 @@ sed -e '/^archive/d' -e 's|^libdir=.*|libdir=%{_libdir}|' \
 %{_includedir}/%{name}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/cmake/capstone/
 
 %files -n libcapstone-devel-static
 %{_libdir}/lib%{name}.a
