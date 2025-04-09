@@ -1259,4 +1259,14 @@ mostly-working synapse than nothing at all) and the package has been update to
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1266971</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>16ae9ee9f2216ba9881c4143b171c459</srcmd5>
+    <version>1.128.0</version>
+    <time>1744228212</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1267983 from darix
+
+- Update to 1.128.0</comment>
+    <requestid>1267985</requestid>
+  </revision>
 </revisionlist>

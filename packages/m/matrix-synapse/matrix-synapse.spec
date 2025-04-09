@@ -57,7 +57,7 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-%global Authlib_version               1.4.1
+%global Authlib_version               1.5.1
 %global lxml_version                  5.3.0
 # TODO: 2.19.2
 %global sentry_sdk_version            2.19.0
@@ -158,7 +158,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.127.1
+Version:        1.128.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
