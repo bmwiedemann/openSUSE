@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr  7 19:20:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- let Mesa-dri only require libvulkan1, libvulkan_lvp if build
+  of vulkan drivers is enabled on this platform
+
+-------------------------------------------------------------------
+Mon Apr  7 14:37:45 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- let Mesa-dri also require libvulkan_lvp; fixes startup of Wayland
+  sessions with Mesa 25.0.3 (boo#1240854)
+
+-------------------------------------------------------------------
+Mon Apr  7 09:54:36 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_clover-Don-t-include-libclc-headers.patch
+  * don't break clover with libclc 20.1.0 update (boo#1240848)
+
+-------------------------------------------------------------------
+Sun Apr  6 09:24:16 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.0.3
+  --> https://docs.mesa3d.org/relnotes/25.0.3
+
+-------------------------------------------------------------------
+Fri Apr  4 12:23:19 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- require llvm20/clang20 
+
+-------------------------------------------------------------------
 Mon Mar 31 16:20:27 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - don't apply revert_8c91624614c1f939974fe0d2d1a3baf83335cecb.patch

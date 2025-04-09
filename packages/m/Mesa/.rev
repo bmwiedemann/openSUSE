@@ -6221,4 +6221,24 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <user>dimstar_suse</user>
     <comment>Revert to 25.0.2 - test for virtio-vga issues</comment>
   </revision>
+  <revision rev="540" vrev="412">
+    <srcmd5>f9a01b0936091bc0b16ebfbeeee7d7e9</srcmd5>
+    <version>unknown</version>
+    <time>1744228163</time>
+    <user>anag_factory</user>
+    <comment>- let Mesa-dri only require libvulkan1, libvulkan_lvp if build
+  of vulkan drivers is enabled on this platform
+
+- let Mesa-dri also require libvulkan_lvp; fixes startup of Wayland
+  sessions with Mesa 25.0.3 (boo#1240854)
+
+- U_clover-Don-t-include-libclc-headers.patch
+  * don't break clover with libclc 20.1.0 update (boo#1240848)
+
+- Update to release 25.0.3
+  --&gt; https://docs.mesa3d.org/relnotes/25.0.3
+
+- require llvm20/clang20</comment>
+    <requestid>1267883</requestid>
+  </revision>
 </revisionlist>

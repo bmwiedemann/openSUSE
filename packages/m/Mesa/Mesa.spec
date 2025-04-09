@@ -43,7 +43,7 @@
 %define glamor 1
 %define _name_archive mesa
 %ifnarch s390x
-%define _version 25.0.2
+%define _version 25.0.3
 %else
 %define _version 24.1.7
 %endif
@@ -156,7 +156,7 @@
 
 Name:           Mesa%{psuffix}
 %ifnarch s390x
-Version:        25.0.2
+Version:        25.0.3
 %else
 Version:        24.1.7
 %endif
@@ -187,8 +187,8 @@ Source9:        manual-pages.tar.bz2
 Source10:       Mesa-rpmlintrc
 Source11:       Mesa.keyring
 Source12:       README-suse-maintenance.md
-Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.2.tar.xz
-Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.2.tar.xz.sig
+Source20:       https://archive.mesa3d.org/%{_name_archive}-25.0.3.tar.xz
+Source21:       https://archive.mesa3d.org/%{_name_archive}-25.0.3.tar.xz.sig
 Patch2:         n_add-Mesa-headers-again.patch
 Patch11:        u_0001-intel-genxml-Drop-from-__future__-import-annotations.patch
 Patch12:        u_0002-intel-genxml-Add-a-untyped-OrderedDict-fallback-for-.patch
@@ -211,6 +211,7 @@ Patch500:       u_dep_xcb-s390x.patch
 %ifnarch s390x
 Patch700:       u_meson-lower-python-version-requirement.patch
 Patch701:       u_intel-drop-annotations-from-spv2hex.patch
+Patch702:       U_clover-Don-t-include-libclc-headers.patch
 %endif
 %ifnarch s390x
 Patch1222040:   u_mesa-CVE-2023-45913.patch
@@ -325,10 +326,10 @@ BuildRequires:  pkgconfig(wayland-protocols) >= 1.8
 BuildRequires:  pkgconfig(wayland-server) >= 1.11
 %if 0%{with_llvm}
 %if 0%{?suse_version} >= 1550
-BuildRequires:  llvm-devel >= 15
+BuildRequires:  llvm-devel
 %else
 %if 0%{?sle_version} >= 150600
-BuildRequires:  llvm19-devel
+BuildRequires:  llvm20-devel
 %endif
 %endif
 %endif
@@ -338,7 +339,7 @@ BuildRequires:  llvm19-devel
 BuildRequires:  clang-devel
 %else
 %if 0%{?sle_version} >= 150600
-BuildRequires:  clang19-devel
+BuildRequires:  clang20-devel
 %endif
 %endif
 BuildRequires:  libclc
@@ -597,7 +598,10 @@ rendering context on an X Server. It uses a pure software renderer.
 Summary:        DRI plug-ins for 3D acceleration
 Group:          System/Libraries
 Requires:       Mesa = %{version}
+%if 0%{with_vulkan}
 Requires:       libvulkan1
+Requires:       libvulkan_lvp
+%endif
 Supplements:    Mesa
 # merged into libgallium in 24.2.3
 Provides:       libvdpau_gallium = %{version}-%{release}
@@ -903,6 +907,7 @@ cp %{SOURCE6} subprojects/packagecache/
 %ifnarch s390x
 %patch -P 700 -p1
 %patch -P 701 -p1
+%patch -P 702 -p1
 %endif
 %patch -P 1222040 -p1
 %patch -P 1222041 -p1
