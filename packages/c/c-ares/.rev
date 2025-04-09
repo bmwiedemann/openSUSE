@@ -416,4 +416,15 @@ probably belongs in same stagings as nodejs22
 (🤖: Submission of c-ares via https://src.opensuse.org/pool/c-ares/pulls/3 by adamm)</comment>
     <requestid>1234807</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>57af3ac3fc55a49b92dd001d015f7259</srcmd5>
+    <version>1.34.5</version>
+    <time>1744228185</time>
+    <user>anag_factory</user>
+    <comment>- c-ares version 1.34.5
+  * CVE-2025-31498. A use-after-free bug has been uncovered in read_answers() that
+    was introduced in v1.32.3 (bsc#1240955)
+- a531524a3d085fcd9a5e25d5f6cbdb953082c2b9.patch: upstreamed, removed</comment>
+    <requestid>1267943</requestid>
+  </revision>
 </revisionlist>
