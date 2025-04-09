@@ -1,0 +1,10 @@
+--- libs/coroutine/build.jam.orig	2025-04-07 13:03:25.986849061 +0200
++++ libs/coroutine/build.jam	2025-04-07 13:03:38.011144537 +0200
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/context//boost_context
+     /boost/core//boost_core
+-    /boost/exception//boost_exception
+     /boost/move//boost_move
+     /boost/system//boost_system
+     /boost/throw_exception//boost_throw_exception

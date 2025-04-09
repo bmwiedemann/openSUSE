@@ -104,6 +104,7 @@ Patch21:        boost-remove-cmakedir.patch
 Patch22:        boost-smart-ptr.patch
 Patch23:        https://github.com/boostorg/move/commit/5f073f8f00ee23b4502c0ad30a3aa2a5154cd1e8.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG.patch
 Patch24:        https://github.com/boostorg/move/commit/e9ff3ca0952e680871145f454925614d950cef4d.patch#/boost-missing-BOOST_MOVE_STD_NS_BEG-again.patch
+Patch25:        boost-no-exception.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -1129,6 +1130,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 22 -p1
 %patch -P 23 -p2
 %patch -P 24 -p2
+%patch -P 25
 
 %build
 find . -type f -exec chmod u+w {} +

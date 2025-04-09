@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 07 14:14:22 CEST 2025 - aschnell@suse.com
+
+- Remove requires of boost exception from boost coroutine
+  (bsc#1240357)
+- boost-no-exception.patch: added
+
+-------------------------------------------------------------------
 Mon Mar 24 13:11:58 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)

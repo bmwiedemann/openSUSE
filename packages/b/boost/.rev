@@ -1607,4 +1607,12 @@ Boost Software License 1.0 is available in SPDX format on http://www.spdx.org/li
     <comment>- Disable and remove support for gnu-hpc build flavours (bsc#1239982)</comment>
     <requestid>1266080</requestid>
   </revision>
+  <revision rev="173" vrev="5">
+    <srcmd5>d3902ee42e2657ad858d6d103033d7ea</srcmd5>
+    <version>1.87.0</version>
+    <time>1744228167</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267895</requestid>
+  </revision>
 </revisionlist>
