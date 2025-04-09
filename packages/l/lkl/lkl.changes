@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  8 06:26:57 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 823d4e3e26f
+- lkl: Implement lkl_printf and lkl_bug internally
+- lkl: fix includes for lkl_printf and lkl_bug
+
+-------------------------------------------------------------------
 Mon Apr  7 02:49:50 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 37a5caec47e9
