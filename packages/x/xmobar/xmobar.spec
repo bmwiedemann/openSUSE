@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.48.1
+Version:        0.49
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -157,7 +157,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -p1
-cabal-tweak-dep-ver base '< 4.20' '< 5'
 
 %build
 %define cabal_configure_options -f+all_extensions

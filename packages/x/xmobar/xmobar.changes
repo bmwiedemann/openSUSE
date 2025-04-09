@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr  1 17:19:52 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.49.
+  ## Version 0.49 (April, 2025)
+
+  - New plugins: `ArchUpdates` and `Accordion` (thanks, Enrico Maria)
+  - New template variable `weatherS` for `WeatherX`.
+  - New Nix flake (thanks, refaelsh)
+  - `MPRIS`: Fix for duration reported by Spotify (thanks, Claudio)
+  - Base dep up to 4.20 (thanks, Alexander)
+
+-------------------------------------------------------------------
 Mon Dec 16 08:00:53 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Re-generate spec file with a recent versions of Cabal.
