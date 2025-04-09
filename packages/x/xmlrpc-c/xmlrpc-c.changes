@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 16:36:22 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Mon Feb 24 12:55:49 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile

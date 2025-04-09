@@ -212,12 +212,16 @@ echo "Not using the embedded libexpat copy"
 rm -rvf lib/expat
 
 %build
-export CFLAGS_PERSONAL="%{optflags}"
+## -std=gnu11 as the code decidedly does not include stdbool.h but
+## includes it's own bool.h all over the place
+export CFLAGS_PERSONAL="%{optflags} -std=gnu11"
 %configure \
     --enable-libxml2-backend
 %make_build CADD="-fPIC -DPIC" AR=ar RANLIB=ranlib --jobs 1
 
 %check
+## see comment on -std=gnu11 above
+export CFLAGS_PERSONAL="%{optflags} -std=gnu11"
 %make_build check CADD="-fPIC -DPIC" AR=ar RANLIB=ranlib --jobs 1
 
 %install
