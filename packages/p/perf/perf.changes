@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  8 22:25:30 UTC 2025 - Tony Jones <tonyj@suse.com>
+
+- perf tools: annotate asm_pure_loop.S (bsc#1239906).
+
+  New patch: perf-tools-annotate-asm_pure_loop.S.patch
+
+- Add a brief explanation in spec on patch numbering convention.
+
+-------------------------------------------------------------------
 Mon Feb 10 10:49:01 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - drop perf_tools_Build_x86_32-bit_syscall_table_from_arch_x86_entry_syscalls_syscall_32.tbl.patch

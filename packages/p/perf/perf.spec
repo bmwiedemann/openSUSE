@@ -72,6 +72,17 @@ Recommends:     perf-gtk
 %{perl_requires}
 %{?libperl_requires}
 
+# Add local patches below here based on {version_pure}:
+#
+# Example: for kernel version 6.14.* {version_pure} = 614 and local patches on
+# top of this (that will be in 6.15) should be numbered 6140-6149. Unlike SLE
+# we only carry a handful of local patches in Factory.
+#
+# This avoids the perf build breaking when the kernel version in Factory
+# asynchronously updates.
+
+Patch6140:      perf-tools-annotate-asm_pure_loop.S.patch
+
 %define python_subpackage_only 1
 %python_subpackages
 
