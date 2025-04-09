@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr  7 20:49:20 UTC 2025 - Lee Duncan <lduncan@suse.com>
+
+- Change SPEC file so that open-iscsi lock files always go
+  in /run/lock/iscsi (bsc#1239107)
+
+-------------------------------------------------------------------
+Mon Apr 07 18:26:20 UTC 2025 - lduncan@suse.com
+
+- Update to version 2.1.11.suse+65.65365e1cdedb:
+  * doc: fixup iscsiadm man page option for -r (#501)
+  * Modify log function to print session id (#498)
+  * Fix minor typo ("authenticaton") (#500)
+  * Preparing for version 2.1.11 (#499)
+  * iscsid: Rate limit session reopen log messages (#492)
+  * IPv6 support for iBFT iSCSI boot (#493)
+  * Improve iscsiadm command line parsing messages (#494)
+  * More testing cleanup, and fix dprint test usage (#491)
+  * Fix a typo in test/README (#486)
+  * iscsid: Fix hang during login with scan=manual (#485)
+  * fix 4 issues which are finded when building with clang 17 (#478)
+
+-------------------------------------------------------------------
 Wed Jan 22 16:04:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

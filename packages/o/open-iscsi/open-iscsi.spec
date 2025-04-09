@@ -20,12 +20,12 @@
 
 # Ensure usr-merge does not effect existing SLE. Cannot use _sbindir
 # directly since meson macros pass that on, and meson does not like
-# setting it to "/sbin".  Also and move DB root to /var/lib/iscsi and
-# lockdir to /run/lock/iscsi for Factory but not SLE (yet)
+# setting it to "/sbin".  Also move DB root to /var/lib/iscsi. For
+# SLE, we can just ove lockdir to /run/lock/iscsi
+%define _lockdir %{_rundir}/lock/iscsi
 %if ! 0%{?is_opensuse}
 # sle
 %define _iscsi_sbindir /sbin
-%define _lockdir %{_home_dir}
 %if 0%{?suse_version} <= 1540
 %define _dbroot %{_home_dir}
 %else
@@ -35,7 +35,6 @@
 %else
 # opensuse
 %define _iscsi_sbindir /usr/sbin
-%define _lockdir %{_rundir}/lock/iscsi
 %define _dbroot %{_sharedstatedir}/iscsi
 %define _dbroot_new 1
 %endif
@@ -46,13 +45,13 @@
 %endif
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 10
+%define iscsi_patch_release 11
 %define iscsi_patch_release_suse %{iscsi_patch_release}.suse
-%define iscsi_service_tag 52.9a4cb8fdee02
+%define iscsi_service_tag 65.65365e1cdedb
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi
-Version:        2.1.10
+Version:        2.1.11
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
