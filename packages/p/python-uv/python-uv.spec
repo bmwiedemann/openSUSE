@@ -33,7 +33,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.6.12
+Version:        0.6.13
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -44,7 +44,7 @@ BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module tomli}
 BuildRequires:  alts
-BuildRequires:  cargo >= 1.83
+BuildRequires:  cargo >= 1.84
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -58,7 +58,6 @@ BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
 BuildRequires:  libstdc++6-devel-gcc13
 %endif
-BuildRequires:  cargo >= 1.80
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
 Obsoletes:      uv < %{version}

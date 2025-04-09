@@ -499,4 +499,25 @@
    * Fix invalid 'kind' reference in flat index docs</comment>
     <requestid>1267437</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d719953eb256b8f93babf21e92ce3072</srcmd5>
+    <version>0.6.13</version>
+    <time>1744228201</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.13
+ * Enhancements
+   * Add --show-version to uv python find 
+   * Remove --no-config warning from uv pip compile and uv pip sync 
+   * Skip repeated directories in PATH when searching for Python interpreters 
+   * Unset SCRIPT_PATH in relocatable activation script 
+   * Add UV_PYTHON_DOWNLOADS_JSON_URL to set custom managed python sources 
+   * Reject pyproject.toml files in uv pip compile -o 
+   * Respect the --offline flag for Git operations 
+ * Bug fixes
+   * Warn instead of error if CRC appears to be missing 
+   * Avoid infinite loop in uv export with conflicts 
+ * Rust API
+   * Update MSRV to 1.84</comment>
+    <requestid>1267949</requestid>
+  </revision>
 </revisionlist>
