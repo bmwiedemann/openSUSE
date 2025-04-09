@@ -244,6 +244,7 @@ This package contains the development files for cups-filters.
 # and then it is probably worth submitting an upstream issue report to
 # https://bugs.linuxfoundation.org for "Product: OpenPrinting" and "Component: cups-filters"
 ./autogen.sh
+export CFLAGS="%{optflags} -std=gnu11"
 # No need to set our preferred architecture-specific flags for the compiler and linker
 # via export CFLAGS="$RPM_OPT_FLAGS" and export CXXFLAGS="$RPM_OPT_FLAGS"
 # because the RPM macro configure does that.

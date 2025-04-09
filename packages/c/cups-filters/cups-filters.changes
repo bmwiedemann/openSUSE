@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:52:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Wed Oct 16 14:59:31 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).
