@@ -380,4 +380,12 @@
     <comment>Security fixes</comment>
     <requestid>1152099</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>5119ef341eca5f45970889c317876467</srcmd5>
+    <version>5.2.2</version>
+    <time>1744228177</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267905</requestid>
+  </revision>
 </revisionlist>

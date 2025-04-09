@@ -1,7 +1,7 @@
 #
 # spec file for package giflib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Patch0:         giflib-5.2.2-no-imagemagick.patch
 Patch1:         PIE.patch
 Patch2:         reproducible.patch
 Patch3:         0001-Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch
+Patch4:         giflib-bsc1240416.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  1 07:03:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * giflib-bsc1240416.patch
+    + fixing bsc#1240416: buffer overflow in function DumpScreen2RGB
+
+-------------------------------------------------------------------
 Mon Feb 26 11:29:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 5.2.2
