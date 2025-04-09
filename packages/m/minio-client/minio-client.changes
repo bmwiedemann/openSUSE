@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 08 18:50:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 20250408T153949Z:
+  * ConsoleMsg is not set by open source or AIStor, we should
+    remove this an… (#5186)
+
+-------------------------------------------------------------------
 Thu Apr 03 19:34:24 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 20250403T170756Z:
