@@ -24,7 +24,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <specification>openSUSE Tumbleweed BCI Minimal Container Image</specification>
   </description>
   <preferences>
-    <type image="docker" derived_from="obsrepositories:/opensuse/bci/bci-micro#latest">
+    <type image="docker">
       <containerconfig
           name="opensuse/bci/bci-minimal"
           tag="%OS_VERSION_ID_SP%-%RELEASE%"
@@ -65,8 +65,12 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     <package name="libzio1"/>
   </packages>
   <packages type="bootstrap">
+    <package name="bash"/>
+    <package name="ca-certificates-mozilla-prebuilt"/>
+    <package name="coreutils"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-docker"/>
+    <package name="jdupes"/>
     <package name="rpm"/>
   </packages>
 

@@ -24,6 +24,13 @@ if rpm -q compat-usrmerge-tools; then
     rpm -e compat-usrmerge-tools
 fi
 
+# don't have duplicate licenses of the same type
+jdupes -1 -L -r /usr/share/licenses
+rpm -e jdupes
+
+# Will be recreated by the next rpm(1) run as root user
+rm -v /usr/lib/sysimage/rpm/Index.db
+
 
 #=======================================
 # Clean up after zypper if it is present
