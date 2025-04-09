@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  8 13:14:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2025.1.31
+  * Added certs
+    - Subject: CN=D-TRUST BR Root CA 2 2023 O=D-Trust GmbH
+    - Subject: CN=D-TRUST EV Root CA 2 2023 O=D-Trust GmbH
+  * Removed certs
+    - Subject: CN=SwissSign Silver CA - G2 O=SwissSign AG
+- from version 2024.12.14
+  * Upload attestations to PyPI
+  * Added 3.13 classifier (#322)
+  * Test against 3.13 final
+  * Added certs
+    - Subject: CN=GLOBALTRUST 2020 O=e-commerce monitoring GmbH
+  * Removed certs
+    - Subject: CN=SecureSign RootCA11 O=Japan Certification Services, Inc.
+    - Subject: CN=Entrust Root Certification Authority - G4 O=Entrust, Inc.
+      OU=See www.entrust.net/legal-terms/(c) 2015 Entrust, Inc. - for
+      authorized use only
+    - Subject: CN=Security Communication RootCA3 O=SECOM Trust Systems CO.,LTD.
+
+-------------------------------------------------------------------
 Thu Nov  7 09:18:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Make the test suite working just with the standard library.
