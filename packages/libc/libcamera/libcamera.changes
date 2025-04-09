@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Apr  8 13:52:10 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Also bump the soname in baselibs.conf
+
+-------------------------------------------------------------------
+Tue Apr  8 06:57:18 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to release 0.5.0
+  * The abi-compliance-checker reports there are both ABI and API
+    changes in this release.
+  * Substantially less than the previous release, and ultimately
+    quite minor but unfortunately there nonetheless and so the
+    SONAME is updated to 0.5 accordingly. I do not anticipate
+    anything there that cannot be solved for applications without
+    just a recompile.
+  * This release brings in 201 commits with a huge list of fixes
+    and code clean up which I'm very happy to see, including
+    interesting fixes to the AGC and AWB handling in libipa.
+  * In regards to new features, libcamera-0.5 has aptly now got
+    the core Raspberry Pi 5 support merged!. There are still
+    patches that are currently maintained by Raspberry Pi for
+    additional features, and while the transition to upstream API's
+    continue, but I think we're all happy to see this support
+    getting in directly, and Raspberry Pi continue to lead the way
+    in upstream camera development. I look forward to the kernel
+    API's for streams being fully utilised by the PiSP platform for
+    upstream camera metadata handling. This upcoming work is also
+    supported by the CameraSensor factory and CameraSensorRaw
+    support that is now also merged in this release.
+  * Further more in the platform support, the software_isp
+    continues to be developed and is now able to measure colour
+    temperature, which will bring in improvements for AWB, and a
+    CCM can be applied while peforming debayering (at a CPU cost)
+    which will allow us to finally apply color tuning for sensors
+    on devices that need to fall back to the software ISP.
+  * New sensor support seems fairly short in this release, with the
+    IMX415 being the prominent addition.
+  * In libipa, and algorithm developments, along with many fixes
+    and improvements there is a substantial new feature that the
+    Baysian AWB algorithm from Raspberry Pi can now also be used on
+    all libipa supported IPA modules, and has shown good impovements
+    for the RkISP1 supported devices.
+  * There is minimal changes to the application support side, but
+    it is notable that now the Y444 format has been mapped to be
+    usable by the gstreamer src element. lc-compliance has seen
+    some progress which I hope will bring this to being a more
+    central part of the test infrastructure.
+  * For a full list of changes, please see:
+    https://git.libcamera.org/libcamera/libcamera.git/commit/?id=058f589ae36170935e537910f2c303b1c3ea03b3
+- Drop patch which is already included by upstream:
+  * libcamera-fix-for-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 12:19:00 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe POSIX sh compatible

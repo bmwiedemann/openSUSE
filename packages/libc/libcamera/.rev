@@ -224,4 +224,12 @@
 - Add trivial patch to fix build with gcc15:</comment>
     <requestid>1254733</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8ec78c8eea42d124ae36df77319bfddd</srcmd5>
+    <version>0.5.0</version>
+    <time>1744228186</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267957</requestid>
+  </revision>
 </revisionlist>

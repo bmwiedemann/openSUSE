@@ -16,15 +16,15 @@
 #
 
 
-%define lname       libcamera0_4
-%define lname_base  libcamera-base0_4
+%define lname       libcamera0_5
+%define lname_base  libcamera-base0_5
 %if "@BUILD_FLAVOR@" != ""
 %define extname -@BUILD_FLAVOR@
 %else
 %define extname %nil
 %endif
 Name:           libcamera%extname
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -33,7 +33,6 @@ URL:            https://libcamera.org/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
-Patch1:         libcamera-fix-for-gcc15.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 %if 0%{?suse_version} <= 1500
