@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  8 16:28:37 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- Update to tigervnc 1.15.0
+  * The native viewer and Unix servers now support the back and
+    forward mouse buttons
+  * The Unix servers can now handle any number of keys that are
+    missing from the server keyboard layout, rather than just a few
+  * x0vncserver now supports clipboard redirection
+  * The native viewer can remember the username and password when
+    reconnecting
+  * Both the native and Java viewer can now show a standard arrow
+    cursor, not just a dot cursor, if the server cursor is blank
+  * vncpasswd can now check password complexity with pwquality
+- Refreshed patches:
+  * n_tigervnc-Date-time.patch
+  * u_tigervnc-Ignore-epipe-on-write.patch
+  * n_tigervnc-Correct-path-in-desktop-file.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 16:43:25 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Only add selinux on %suse_version >= 1600

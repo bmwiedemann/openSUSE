@@ -5,22 +5,22 @@ References: bnc#864676
 
 If the VNC server closes connection after our last read and before this write, we will report error message about EPIPE.
 This situation is no error, however, we should quit normally same as when we find out that connection was closed during read.
-Index: tigervnc-1.13.1/common/rdr/FdOutStream.cxx
+Index: tigervnc-1.15.0/common/rdr/FdOutStream.cxx
 ===================================================================
---- tigervnc-1.13.1.orig/common/rdr/FdOutStream.cxx
-+++ tigervnc-1.13.1/common/rdr/FdOutStream.cxx
+--- a/common/rdr/FdOutStream.cxx
++++ b/common/rdr/FdOutStream.cxx
 @@ -133,8 +133,12 @@ size_t FdOutStream::writeFd(const uint8_t* data, size_t length)
  #endif
    } while (n < 0 && (errorNumber == EINTR));
  
 -  if (n < 0)
--    throw SystemException("write", errorNumber);
+-    throw socket_error("write", errorNumber);
 +  if (n < 0) {
 +    if (errorNumber == EPIPE)
 +      n = length; // Ignore EPIPE and fake successfull write, it doesn't matter that we are writing to closed socket, we will find out once we try to read from it.
 +    else
-+      throw SystemException("write", errorNumber);
++      throw socket_error("write", errorNumber);
 +  }
  
-   gettimeofday(&lastWrite, NULL);
+   gettimeofday(&lastWrite, nullptr);
  

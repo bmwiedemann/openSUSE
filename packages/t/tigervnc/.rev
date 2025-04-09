@@ -1103,4 +1103,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1243191</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>abf7b1eed3c0923d43bf8833766f0bc3</srcmd5>
+    <version>1.15.0</version>
+    <time>1744228188</time>
+    <user>anag_factory</user>
+    <comment>- Update to tigervnc 1.15.0
+  * The native viewer and Unix servers now support the back and
+    forward mouse buttons
+  * The Unix servers can now handle any number of keys that are
+    missing from the server keyboard layout, rather than just a few
+  * x0vncserver now supports clipboard redirection
+  * The native viewer can remember the username and password when
+    reconnecting
+  * Both the native and Java viewer can now show a standard arrow
+    cursor, not just a dot cursor, if the server cursor is blank
+  * vncpasswd can now check password complexity with pwquality
+- Refreshed patches:
+  * n_tigervnc-Date-time.patch
+  * u_tigervnc-Ignore-epipe-on-write.patch
+  * n_tigervnc-Correct-path-in-desktop-file.patch
+</comment>
+    <requestid>1267958</requestid>
+  </revision>
 </revisionlist>

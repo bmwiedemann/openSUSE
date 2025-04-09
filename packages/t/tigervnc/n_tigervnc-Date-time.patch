@@ -57,15 +57,15 @@ Index: tigervnc-1.13.1/vncviewer/vncviewer.cxx
 ===================================================================
 --- tigervnc-1.13.1.orig/vncviewer/vncviewer.cxx
 +++ tigervnc-1.13.1/vncviewer/vncviewer.cxx
-@@ -105,10 +105,9 @@ static const char *about_text()
+@@ -102,10 +102,9 @@ static const char *about_text()
    // time.
    snprintf(buffer, sizeof(buffer),
-            _("TigerVNC Viewer v%s\n"
+            _("TigerVNC viewer v%s\n"
 -             "Built on: %s\n"
-              "Copyright (C) 1999-%d TigerVNC Team and many others (see README.rst)\n"
+              "Copyright (C) 1999-%d TigerVNC team and many others (see README.rst)\n"
               "See https://www.tigervnc.org for information on TigerVNC."),
--           PACKAGE_VERSION, BUILD_TIMESTAMP, 2024);
-+           PACKAGE_VERSION, 2024);
+-           PACKAGE_VERSION, BUILD_TIMESTAMP, 2025);
++           PACKAGE_VERSION, 2025);
  
    return buffer;
  }

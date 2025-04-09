@@ -38,7 +38,7 @@
 %bcond_with selinux
 %endif
 Name:           tigervnc
-Version:        1.14.1
+Version:        1.15.0
 Release:        0
 Summary:        An implementation of VNC
 License:        GPL-2.0-only AND MIT
