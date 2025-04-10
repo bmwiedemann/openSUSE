@@ -1,7 +1,7 @@
 #
 # spec file for package goipp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define         import_path github.com/OpenPrinting/goipp
 Name:           goipp
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
-Summary:        Goipp implements the IPP core protocol in pure GO
+Summary:        Implementation of the IPP core protocol in pure GO
 License:        BSD-2-Clause
 URL:            https://github.com/OpenPrinting/goipp
 Source:         %{name}-%{version}.tar.gz
@@ -43,7 +43,7 @@ only the low-level stuff.
 %goprep %{import_path}
 
 %build
-%gobuild .
+%gobuild
 
 %install
 %gosrc

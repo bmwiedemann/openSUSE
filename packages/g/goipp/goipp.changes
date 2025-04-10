@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Apr  9 10:03:08 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.2.0:
+  * Added IntegerOrRange interface type
+  * Added non-strict comparison of Values and Attributes (check for Similarity)
+  * Fixed (Tag) Type() for TagNoValue. No it properly returns TypeVoid
+  * Added (Group) Similar(), (Groups) Similar() and (Message) Similar()
+  * Added (*Message) FixGroups()
+  * (*Message) FixGroup() replaced by NewMessageWithGroups()
+  * Added Attributes.Clone and Groups.Clone
+  * Added MakeAttr() and MakeAttrCollection(). MakeAttribute considered deprecated
+  * Added Formatter, Message.Print considered deprecated
+  * Formatter: fixed formatting of 1SetOf Collection
+  * Formatter: one more fix of formatting of 1SetOf Collection
+  * Message.AttrGroups function made public
+  * Added DeepCopy method for most types that contain values
+  * Print PDF file example updated
+  * Handling of Extended Tags Revisited
+  * Removed Accept-Encoding HTTP header in example. Go does it better
+  * Fixed go test on go 1.11
+  * Fixed Tag.String for negative tag values
+  * Improved output for Units.String() for unknown units
+  * Values.Equal now returns false when comparing Values{} and Values(nil)
+  * Collection.Equal abandoned
+  * Tests refactoring: systematic testing of Tag methods
+  * Tests refactoring: systematic testing of Value and Values methods
+  * Tests refactoring: systematic testing of Type methods
+  * Tests refactoring: systematic testing of Op methods
+  * Sparse table for Op.String replaced with map, saving 132K of memory
+  * Tests refactoring: systematic testing of Status methods
+  * Sparse table for Op.String replaced with map, saving 10K of memory
+  * Cosmetic
+  * Attributes.Equal now returns false when comparing Attributes{} and Attributes(nil)
+  * Attributes.Clone and Attributes.DeepCopy return nil for nil input
+  * Values.Clone and Values.DeepCopy return nil for nil input
+  * Fixed decoding Range and Resolution values with negative integer fields
+  * Tests refactoring: full testing of Attribute and friends
+  * Added missed Group.Clone method
+  * Groups.Equal now returns false when comparing Groups{} and Groups(nil)
+  * Groups.Clone and Groups.DeepCopy return nil for nil input
+  * Tests refactoring: full testing of Group and Groups
+  * Tests refactoring: message.go partially test-covered
+  * Tests refactoring: added NewMessageWithGroups test
+  * Tests refactoring: added Message.AttrGroups test
+  * Tests refactiring: added tests for Message.Equal and Message.Similar functions
+  * Removed unused constant (FormatterMaxWidth)
+  * Fixed error message formatting for TestMessageEqualSimilar
+  * Message.Print rewritten as a wrapper to Formatter
+  * Tests refactoring: added Message.Reset test
+  * Tests refactoring: added test for the Message.Print function
+  * Tests refactoring: 100% test coverage for Formatter
+  * Fixed building of test (duplicated TestVersion)
+  * Tests refactoring: goipp_test.go renamed to encdec_test.go and refactored
+  * Tests refactoring: 100% test coverage achieved!!!
+  * Code formatting updated
+- change set_version service to manual
+- make rpmlint happy, by adjusting the Summary field
+
+-------------------------------------------------------------------
 Thu Jul 25 22:00:29 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - since we moved to gz compression, we can remove zstd from BuildRequires
