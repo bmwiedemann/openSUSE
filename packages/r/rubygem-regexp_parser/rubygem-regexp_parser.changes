@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr  9 07:52:59 UTC 2025 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 2.10.0
+  ## [2.10.0] - 2024-12-25 - Janosch Müller
+
+  ### Added
+
+  - `#referenced_expressions`
+    - like `#referenced_expression`, but for multiplexing backrefs
+    - returns the `Group` expressions that are being referenced
+
+  ### Fixed
+
+  - fixed `#char` & `#codepoint` errors for single-digit hex escapes
+    * e.g. `\xA`
+
+  ## [2.9.3] - 2024-11-29 - Janosch Müller
+
+  ### Fixed
+
+  - fixed positive lookbehinds with character ">" being treated as named groups
+    * e.g. `(?<=foo>)`
+    * thanks to [Daniel Vandersluis](https://github.com/dvandersluis)
+
+-------------------------------------------------------------------
 Fri Jun 21 10:33:55 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 2.9.2, no changelog found
