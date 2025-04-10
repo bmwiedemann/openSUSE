@@ -26,13 +26,14 @@ Source:         https://github.com/python-restx/flask-restx/archive/%{version}.t
 # PATCH-FIX-UPSTREAM https://github.com/python-restx/flask-restx/pull/622
 Patch0:         Replace-pytz-with-zoneinfo-datetime-timezone.patch
 Patch1:         Fix-testing-with-flask.patch
+Patch2:         flask-restx-importlib.patch
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug}
 BuildRequires:  %{python_module aniso8601}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module importlib_resources}
+BuildRequires:  %{python_module importlib_resources if %python-base < 3.9}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
@@ -48,8 +49,10 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Flask
 Requires:       python-Werkzeug
 Requires:       python-aniso8601
-Requires:       python-importlib_resources
 Requires:       python-jsonschema
+%if %{python_version_nodots} < 39
+Requires:       python-importlib_resources
+%endif
 BuildArch:      noarch
 %python_subpackages
 

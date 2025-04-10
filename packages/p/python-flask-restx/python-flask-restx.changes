@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:36:56 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Remove importlib_resources from dependencies
+  * Add flask-restx-importlib.patch
+  * The project is dead, no use to send a patch upstream
+
+-------------------------------------------------------------------
 Mon Feb 24 10:33:29 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add Fix-testing-with-flask.patch

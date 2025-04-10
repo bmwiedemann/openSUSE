@@ -1,0 +1,35 @@
+Index: flask-restx-1.3.0/flask_restx/schemas/__init__.py
+===================================================================
+--- flask-restx-1.3.0.orig/flask_restx/schemas/__init__.py
++++ flask-restx-1.3.0/flask_restx/schemas/__init__.py
+@@ -7,7 +7,10 @@ and allows to validate specs against the
+ import io
+ import json
+ 
+-import importlib_resources
++try:
++    from importlib.resources import files as importlib_resources_files
++except ImportError:
++    from importlib_resources import files as importlib_resources_files
+ 
+ from collections.abc import Mapping
+ from jsonschema import Draft4Validator
+@@ -57,7 +60,7 @@ class LazySchema(Mapping):
+ 
+     def _load(self):
+         if not self._schema:
+-            ref = importlib_resources.files(__name__) / self.filename
++            ref = importlib_resources_files(__name__) / self.filename
+ 
+             with io.open(ref) as infile:
+                 self._schema = json.load(infile)
+Index: flask-restx-1.3.0/requirements/install.pip
+===================================================================
+--- flask-restx-1.3.0.orig/requirements/install.pip
++++ flask-restx-1.3.0/requirements/install.pip
+@@ -2,4 +2,4 @@ aniso8601>=0.82
+ jsonschema
+ Flask>=0.8, !=2.0.0
+ werkzeug!=2.0.0
+-importlib_resources
++importlib_resources;python_version<"3.9"
