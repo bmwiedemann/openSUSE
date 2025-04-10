@@ -71,4 +71,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x0471_70A6</comment>
     <requestid>1266533</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20115921ad4ddcae924796ea5b0a9861</srcmd5>
+    <version>20250408</version>
+    <time>1744315055</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250408 (git commit c1a774f36657):
+  * QCA: Add 8 bluetooth nvm files for WCN785x btusb
+  * QCA: Update WCN785x btusb firmware to 2.0.0-00790-3</comment>
+    <requestid>1268114</requestid>
+  </revision>
 </revisionlist>

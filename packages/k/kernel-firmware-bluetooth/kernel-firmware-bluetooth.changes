@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  9 09:59:14 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250408 (git commit c1a774f36657):
+  * QCA: Add 8 bluetooth nvm files for WCN785x btusb
+  * QCA: Update WCN785x btusb firmware to 2.0.0-00790-3
+
+-------------------------------------------------------------------
 Wed Apr  2 12:26:58 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250401 (git commit d864697fd38a):
