@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:08:02 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Add gcc14-pr119680.patch to fix cross-compiler builds with
+  --enable-host-pie.
+
+-------------------------------------------------------------------
 Thu Mar 27 08:25:48 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Add gcc14-bsc1239938.patch to allow GCC executables to be

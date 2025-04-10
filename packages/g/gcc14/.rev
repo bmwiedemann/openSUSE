@@ -183,4 +183,15 @@ next week.  Gcc7 can pick it up from there.
   required for user-space livepatching on powerpc.</comment>
     <requestid>1260501</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>5e4a4c80c4623ff033adf3eb94494496</srcmd5>
+    <version>14.2.1+git11321</version>
+    <time>1744315028</time>
+    <user>anag_factory</user>
+    <comment>- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Add gcc14-pr119680.patch to fix cross-compiler builds with
+  --enable-host-pie.</comment>
+    <requestid>1267950</requestid>
+  </revision>
 </revisionlist>

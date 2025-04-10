@@ -374,6 +374,7 @@ Patch22:        gcc14-pr118780.patch
 Patch23:        gcc13-bsc1239566.patch
 Patch24:        gcc14-bsc1239938.patch
 Patch25:        gcc14-rs6000-msplit-patch-nops.patch
+Patch26:        gcc14-pr119680.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -2375,7 +2376,7 @@ ln -s newlib-4.4.0.20231231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
-%patch -p1 -P 20 -P 22 -P 23 -P 24 -P 25
+%patch -p1 -P 20 -P 22 -P 23 -P 24 -P 25 -P 26
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
@@ -2911,7 +2912,8 @@ if ! test -z "$dir_ml"; then
 fi
 %endif
 
-# move shared libs from versionspecific dir to main libdir
+# move shared libs from versionspecific dir to main libdir, keep a copy
+# for link-editing in the .so
 for libname in \
 %if %{build_fortran}
   libgfortran \
@@ -2975,8 +2977,16 @@ for libname in \
     mv $lib %{buildroot}/%{mainlibdir}/
   done
   if test -L %{buildroot}/%{versmainlibdir}/$libname.so; then
-    ln -sf %{mainlibdir}/`readlink %{buildroot}/%{versmainlibdir}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         %{buildroot}/%{versmainlibdir}/$libname.so
+    cp %{buildroot}/%{mainlibdir}/`readlink %{buildroot}/%{versmainlibdir}/$libname.so` \
+	%{buildroot}/%{versmainlibdir}/$libname.so.tem
+    rm %{buildroot}/%{versmainlibdir}/$libname.so
+     mv %{buildroot}/%{versmainlibdir}/$libname.so.tem %{buildroot}/%{versmainlibdir}/$libname.so
+    strip -g %{buildroot}/%{versmainlibdir}/$libname.so
+  else
+    if test -e %{buildroot}/%{versmainlibdir}/$libname.so; then
+      echo ERROR: unexpected linker script for $libname.so
+      exit 1
+    fi
   fi
 %if %{biarch}
   if test -d %{buildroot}/%{versmainlibdirbi}; then
@@ -2984,8 +2994,16 @@ for libname in \
       mv $lib %{buildroot}/%{mainlibdirbi}/
     done
     if test -L %{buildroot}/%{versmainlibdirbi}/$libname.so; then
-      ln -sf %{mainlibdirbi}/`readlink %{buildroot}/%{versmainlibdirbi}/$libname.so | sed -e 's/\(.*\.so\.[^\.]*\).*/\1/'`  \
-         %{buildroot}/%{versmainlibdirbi}/$libname.so
+      cp %{buildroot}/%{mainlibdirbi}/`readlink %{buildroot}/%{versmainlibdirbi}/$libname.so`  \
+	%{buildroot}/%{versmainlibdirbi}/$libname.so.tem
+      rm %{buildroot}/%{versmainlibdirbi}/$libname.so
+      mv %{buildroot}/%{versmainlibdirbi}/$libname.so.tem %{buildroot}/%{versmainlibdirbi}/$libname.so
+      strip -g %{buildroot}/%{versmainlibdirbi}/$libname.so
+    else
+      if test -e %{buildroot}/%{versmainlibdirbi}/$libname.so; then
+        echo ERROR: unexpected linker script for $libname.so
+	exit 1
+      fi
     fi
   fi
 %endif
@@ -3005,40 +3023,50 @@ sed -i -e '/^libdir/s/\/gcc\/%{GCCDIST}\/%{gcc_dir_version}//g' %{buildroot}/%{_
 %endif
 %endif
 
-# Move libgcc_s around
+# Move libgcc_s around, make sure a version specific copy is available
+# for link editing
+chmod a+x %{buildroot}/%{_lib}/libgcc_s.so.%{libgcc_s}
 if test -L %{buildroot}/%{_lib}/libgcc_s.so; then
   rm -f %{buildroot}/%{_lib}/libgcc_s.so
-  ln -sf /%{_lib}/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdir}/libgcc_s.so
+  cp %{buildroot}//%{_lib}/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdir}/libgcc_s.so
+  strip -g %{buildroot}/%{versmainlibdir}/libgcc_s.so
 else
   mv %{buildroot}/%{_lib}/libgcc_s.so %{buildroot}/%{versmainlibdir}/
+  cp %{buildroot}//%{_lib}/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdir}/libgcc_s.so.%{libgcc_s}
+  strip -g %{buildroot}/%{versmainlibdir}/libgcc_s.so.%{libgcc_s}
 fi
-chmod a+x %{buildroot}/%{_lib}/libgcc_s.so.%{libgcc_s}
 %if 0%{?usrmerged}
 mv %{buildroot}/%{_lib}/libgcc_s.so.%{libgcc_s} %{buildroot}/%{_slibdir}/libgcc_s.so.%{libgcc_s}
 %endif
 %if %{biarch}
+chmod a+x %{buildroot}/lib/libgcc_s.so.%{libgcc_s}
 %if %{build_primary_64bit}
 if test -L %{buildroot}/lib/libgcc_s.so; then
   rm -f %{buildroot}/lib/libgcc_s.so
-  ln -sf /lib/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so
+  cp %{buildroot}/lib/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so
+  strip -g %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so
 else
   mv %{buildroot}/lib/libgcc_s.so %{buildroot}/%{versmainlibdirbi32}/
+  cp %{buildroot}/lib/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so.%{libgcc_s}
+  strip -g %{buildroot}/%{versmainlibdirbi32}/libgcc_s.so.%{libgcc_s}
 fi
 ln -sf %{versmainlibdirbi32}/libgcc_s.so %{buildroot}/%{versmainlibdirbi32}/libgcc_s_32.so
-chmod a+x %{buildroot}/lib/libgcc_s.so.%{libgcc_s}
 %if 0%{?usrmerged}
 mv %{buildroot}/lib/libgcc_s.so.%{libgcc_s} %{buildroot}/%{slibdir}/libgcc_s.so.%{libgcc_s}
 %endif
 %else
 # 32-bit biarch systems
+chmod a+x %{buildroot}/lib64/libgcc_s.so.%{libgcc_s}
 if test -L %{buildroot}/lib64/libgcc_s.so; then
   rm -f %{buildroot}/lib64/libgcc_s.so
-  ln -sf /lib64/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so
+  cp %{buildroot}/lib64/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so
+  strip -g %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so
 else
   mv %{buildroot}/lib64/libgcc_s.so %{buildroot}/%{versmainlibdirbi64}/
+  cp %{buildroot}/lib64/libgcc_s.so.%{libgcc_s} %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so.%{libgcc_s}
+  strip -g %{buildroot}/%{versmainlibdirbi64}/libgcc_s.so.%{libgcc_s}
 fi
 ln -sf %{versmainlibdirbi64}/libgcc_s.so %{buildroot}/%{versmainlibdirbi64}/libgcc_s_64.so
-chmod a+x %{buildroot}/lib64/libgcc_s.so.%{libgcc_s}
 %if 0%{?usrmerged}
 mv %{buildroot}/lib64/libgcc_s.so.%{libgcc_s} %{buildroot}/%{slibdir64}/libgcc_s.so.%{libgcc_s}
 %endif
@@ -3092,7 +3120,7 @@ chmod 644 ../testresults/*
 %endif
 # Remove files that we do not need to clean up filelist
 
-# Preserve %{GCCDIST}-gcc%{binsuffix} binary for libgccjit as it is used as a driver
+# Preserve %%{GCCDIST}-gcc%%{binsuffix} binary for libgccjit as it is used as a driver
 mv %{buildroot}/%{_prefix}/bin/%{GCCDIST}-gcc%{binsuffix} %{buildroot}
 rm -f %{buildroot}/%{_prefix}/bin/%{GCCDIST}-*
 mv %{buildroot}/%{GCCDIST}-gcc%{binsuffix} %{buildroot}/%{_prefix}/bin/
@@ -3473,6 +3501,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %versmainlib libgcc*.a
 %versmainlib libgcov.a
 %versmainlib libgcc_s*.so
+%versmainlib libgcc_s.so.%{libgcc_s}
 %versmainlib libgomp.so
 %versmainlib libgomp.a
 %versmainlib libgomp.spec
@@ -3539,6 +3568,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc14-locale.lang
 %versbiarchlib libgcc*.a
 %versbiarchlib libgcov.a
 %versbiarchlib libgcc_s*.so
+%versbiarchlib libgcc_s.so.%{libgcc_s}
 %versbiarchlib libgomp.so
 %versbiarchlib libgomp.a
 %versbiarchlib libgomp.spec
