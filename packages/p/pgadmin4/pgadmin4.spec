@@ -1,7 +1,7 @@
 #
 # spec file for package pgadmin4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %if 0%{?suse_version} > 1500
 %global pythons %primary_python
 %endif
-%global python3_authlib_min_version 1.3.0
-%global python3_azure_identity_min_version 1.15
+%global python3_authlib_min_version 1.4.0
+%global python3_azure_identity_min_version 1.19
 %global python3_azure_mgmt_rdbms_min_version 10.1
-%global python3_azure_mgmt_resource_min_version 23.0.1
+%global python3_azure_mgmt_resource_min_version 23.2.0
 %global python3_azure_mgmt_subscription_min_version 3.1.1
-%global python3_bcrypt_min_version 4.0
-%global python3_boto3_min_version 1.33
+%global python3_bcrypt_min_version 4.2
+%global python3_boto3_min_version 1.36
 %global python3_cryptography_min_version 42.0
 %global python3_eventlet_min_version 0.33.3
 %global python3_flask_babel_min_version 4.0.0
@@ -35,41 +35,42 @@
 %global python3_flask_login_min_version 0.4.1
 %global python3_flask_mail_min_version 0.9.1
 %global python3_flask_migrate_min_version 4.0
-%global python3_flask_min_version 3.0
+%global python3_flask_min_version 3.1
 %global python3_flask_paranoid_min_version 0.2.0
-%global python3_flask_security_min_version 5.4.0
-%global python3_flask_socketio_min_version 5.3.0
+%global python3_flask_security_min_version 5.5.0
+%global python3_flask_socketio_min_version 5.5.0
 %global python3_flask_sqlalchemy_min_version 3.1
 %global python3_flask_wtf_min_version 1.2
 %global python3_httpagentparser_min_version 1.9
-%global python3_jsonformatter_min_version 0.3.2
+%global python3_jsonformatter_min_version 0.3.4
 %global python3_google_api_python_client_min_version 2.0
-%global python3_google_auth_oauthlib_min_version 1.2.0
+%global python3_google_auth_oauthlib_min_version 1.2.1
+%global python3_gssapi_min_version 1.9
 %global python3_ldap3_min_version 2.5.1
 %global python3_libgravatar_min_version 1.0.0
 %global python3_pillow_min_version 9.0
 %global python3_pyotp_min_version 2.0
-%global python3_keyring_min_version 24.0
+%global python3_keyring_min_version 25.0
 %global python3_passlib_min_version 1.7.2
-%global python3_psutil_min_version 5.9.0
-%global python3_psycopg_min_version 3.1.12
+%global python3_psutil_min_version 6.1.0
+%global python3_psycopg_min_version 3.2.4
 %global python3_python_dateutil_min_version 2.8.0
-%global python3_pytz_min_version 2024.0
-%global python3_qrcode_min_version 7.0
+%global python3_pytz_min_version 2025.0
+%global python3_qrcode_min_version 8.0
 %global python3_sqlalchemy_min_version 2.0
 %global python3_sqlparse_min_version 0.3.0
 %global python3_sshtunnel_min_version 0.1.5
-%global python3_typer_min_version 0.12.0
+%global python3_typer_min_version 0.15.0
 %global python3_user_agents_min_version 2.2
-%global python3_werkzeug_min_version 3.0
-%global python3_wtforms_min_version 3.1
+%global python3_werkzeug_min_version 3.1
+%global python3_wtforms_min_version 3.2
 
 %global	pgadmin4instdir %{_libdir}/pgadmin4-%{version}
 %global	pgadmin4homedir %{_localstatedir}/lib/pgadmin
 %global user_group_name pgadmin
 
 Name:           pgadmin4
-Version:        8.8
+Version:        9.2
 Release:        0
 Summary:        Management tool for PostgreSQL
 License:        PostgreSQL
@@ -118,6 +119,7 @@ BuildRequires:  %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
 BuildRequires:  %{python_module bcrypt >= %{python3_bcrypt_min_version}}
 BuildRequires:  %{python_module cryptography >= %{python3_cryptography_min_version}}
 BuildRequires:  %{python_module eventlet >= %{python3_eventlet_min_version}}
+BuildRequires:  %{python_module gssapi >= %{python3_gssapi_min_version}}
 BuildRequires:  %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
 BuildRequires:  %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
@@ -163,6 +165,7 @@ Requires:       %{python_module Werkzeug >= %{python3_werkzeug_min_version}}
 Requires:       %{python_module bcrypt >= %{python3_bcrypt_min_version}}
 Requires:       %{python_module cryptography >= %{python3_cryptography_min_version}}
 Requires:       %{python_module eventlet >= %{python3_eventlet_min_version}}
+Requires:       %{python_module gssapi >= %{python3_gssapi_min_version}}
 Requires:       %{python_module httpagentparser >= %{python3_httpagentparser_min_version}}
 Requires:       %{python_module jsonformatter >= %{python3_jsonformatter_min_version}}
 Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
@@ -302,6 +305,7 @@ chmod -x docs/en_US/theme/pgadmin4/theme.conf
 # This package is run using the interpreter so it doesn't need the executable bit set
 chmod -x web/pgadmin/misc/bgprocess/process_executor.py
 chmod -x web/pgadmin/static/fonts/*.ttf
+chmod -x web/*/*/*/*.js
 
 rm web/regression/.gitignore
 pushd web
@@ -314,7 +318,7 @@ popd
 
 %build
 pushd web
-NODE_ENV=production NODE_OPTIONS=--max-old-space-size=2048 npx eslint --no-eslintrc -c .eslintrc.js --ext .js  --ext .jsx --ext .ts --ext .tsx . && npx webpack --config webpack.config.js --progress
+NODE_ENV=production NODE_OPTIONS=--max-old-space-size=2048 npx eslint --no-config-lookup -c .eslintrc.js --ext .js  --ext .jsx --ext .ts --ext .tsx . && npx webpack --config webpack.config.js --progress
 rm -Rf node_modules package-lock.json yarn.lock
 popd
 
