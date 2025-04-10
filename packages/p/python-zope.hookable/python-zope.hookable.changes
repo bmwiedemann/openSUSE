@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:05:37 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Thu Mar 27 00:40:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Wed Jan 22 00:59:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequire sphinx_rtd_theme. 

@@ -100,7 +100,7 @@ pushd src
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/hookable
-%{python_sitearch}/zope.hookable-%{version}.dist-info
+%{python_sitearch}/zope[_.]hookable-%{version}.dist-info
 %{python_sitearch}/zope.hookable-%{version}*-nspkg.pth
 %endif
 
