@@ -58,4 +58,14 @@
   * Replaced deprecated datetime.utcfromtimestamp. (#3)</comment>
     <requestid>1135279</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0cf92fd126797a05501df86e52062483</srcmd5>
+    <version>3.3.0</version>
+    <time>1744315177</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266255</requestid>
+  </revision>
 </revisionlist>

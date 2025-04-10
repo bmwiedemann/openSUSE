@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.logging
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ cp -r %{python3_sitelib}/jaraco/* jaraco/
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst
-%{python_sitelib}/jaraco.logging-%{version}*-info
+%{python_sitelib}/jaraco[_.]logging-%{version}.dist-info
 %{python_sitelib}/jaraco/logging.py*
 %dir %{python_sitelib}/jaraco
 %pycache_only %dir %{python_sitelib}/jaraco/__pycache__
