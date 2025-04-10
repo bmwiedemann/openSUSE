@@ -48,4 +48,17 @@
     <comment></comment>
     <requestid>1097948</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f68fcf87ce62ab92d477ecafb651439f</srcmd5>
+    <version>2.7.1</version>
+    <time>1744315167</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7.1:
+  * Wait for the IOLoop to be stopped before attempting to close it
+  * Release since we have many bug fixes.
+- Update Source URL.
+- Drop patch python-livereload-no-python2.patch, included upstream.
+- Drop {Build,}Requires on six.</comment>
+    <requestid>1268279</requestid>
+  </revision>
 </revisionlist>

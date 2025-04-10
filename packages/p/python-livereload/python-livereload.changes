@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 10 05:40:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.7.1:
+  * Wait for the IOLoop to be stopped before attempting to close it
+  * Release since we have many bug fixes.
+- Update Source URL.
+- Drop patch python-livereload-no-python2.patch, included upstream.
+- Drop {Build,}Requires on six.
+
+-------------------------------------------------------------------
 Thu Jul  6 11:51:12 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
