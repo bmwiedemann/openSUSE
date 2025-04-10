@@ -1,7 +1,7 @@
 #
 # spec file for package courier-unicode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define libsoname %{libname}8
 
 Name:           courier-unicode
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Courier Unicode Library
 License:        GPL-3.0-or-later
