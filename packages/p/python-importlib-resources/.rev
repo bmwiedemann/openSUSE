@@ -165,4 +165,12 @@ It does NOT conflict with python38 standard library.</comment>
   was pulled in anyway.</comment>
     <requestid>1157096</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8e0cc8dc64e62fcbcb2aafe261d8062b</srcmd5>
+    <version>6.5.2</version>
+    <time>1744315051</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268075</requestid>
+  </revision>
 </revisionlist>

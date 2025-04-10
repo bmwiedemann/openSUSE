@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr  8 17:52:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.5.2
+  * Replaced reference to typing_extensions with stdlib Literal.
+    (#323)
+- Previous releases since 6.1.1
+  * Updated Traversable.read_text() to reflect the errors parameter
+    (python/cpython#127012). (#321)
+  * Add type annotations for Traversable.open. (#317)
+  * Require Python 3.9 or later.
+  * Omit sentinel values from a namespace path. (#311)
+  * When inferring the caller in files() correctly detect one’s own
+    module even when the resources package source is not present.
+    (gh#python/cpython#123085)
+  * Merged fix for UTF-16 BOM handling in functional tests. (#312)
+  * When constructing ZipReader, only append the name if the
+    indicated module is a package. (python/cpython#121735)
+  * The functions is_resource(), open_binary(), open_text(),
+    path(), read_binary(), and read_text() are un-deprecated, and
+    support subdirectories via multiple positional arguments. The
+    contents() function also allows subdirectories, but remains
+    deprecated. (#303)
+  * Deferred select imports in for a speedup
+    (python/cpython#109829).
+  * Restored expectation that local standard readers are preferred
+    over degenerate readers. (#298)
+  * Restored expectation that stdlib readers are suppressed on
+    Python 3.10. (#257)
+  * Add Anchor to importlib.resources (in order for the code to
+    comply with the documentation)
+  * Future compatibility adapters now ensure that standard library
+    readers are replaced without overriding non-standard readers.
+    (#295)
+  * Fixed NotADirectoryError when calling files on a subdirectory
+    of a namespace package. (#293)
+
+-------------------------------------------------------------------
 Tue Mar 12 06:05:56 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequires zipp, it is now used by the testsuite, and

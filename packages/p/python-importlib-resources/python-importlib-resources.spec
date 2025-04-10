@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-resources
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-importlib-resources
-Version:        6.1.1
+Version:        6.5.2
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
 URL:            https://importlib-resources.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module jaraco.test >= 5.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
@@ -43,15 +44,22 @@ Requires:       python-zipp >= 3.1.0
 %python_subpackages
 
 %description
-importlib_resources is a backport of Python standard library
-importlib.resources module for older Pythons. Users of Python 3.9 and
-beyond should use the standard library module, since for these versions,
-importlib_resources just delegates to that module.
+importlib_resources is a library which provides for access to resources in
+Python packages. It provides functionality similar to pkg_resources Basic
+Resource Access API, but without all of the overhead and performance problems
+of pkg_resources.
 
-The key goal of this module is to replace parts of pkg_resources with a
-solution in Python’s stdlib that relies on well-defined APIs. This makes
-reading resources included in packages easier, with more stable and
-consistent semantics.
+In our terminology, a resource is a file tree that is located alongside an
+importable Python module. Resources can live on the file system or in a zip
+file, with support for other loader classes that implement the appropriate API
+for reading resources.
+
+importlib_resources supplies a backport of importlib.resources, enabling early
+access to features of future Python versions and making functionality available
+for older Python versions. Users are encouraged to use the Python standard
+library where suitable and fall back to this library for future compatibility.
+Developers looking for detailed API descriptions should refer to the standard
+library documentation.
 
 %prep
 %setup -q -n importlib_resources-%{version}
@@ -70,6 +78,6 @@ consistent semantics.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/importlib_resources
-%{python_sitelib}/importlib_resources-%{version}*-info
+%{python_sitelib}/importlib_resources-%{version}.dist-info
 
 %changelog
