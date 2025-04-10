@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 10 11:04:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.7.0
+  * Deprecate `InfoACELevel` and `SetInfoACELevel` (instead one
+    may use `InfoACE` together with `SetInfoLevel`)
+
+-------------------------------------------------------------------
 Sun Jan 29 13:10:58 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.6.2

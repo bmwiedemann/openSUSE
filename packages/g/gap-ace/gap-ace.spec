@@ -1,7 +1,7 @@
 #
 # spec file for package gap-ace
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-ace
-Version:        5.6.2
+Version:        5.7.0
 Release:        0
 Summary:        GAP: Advanced Coset Enumerator
 License:        MIT
@@ -46,6 +46,7 @@ from within GAP.
 
 %install
 %gappkg_simple_install
+rm -Rf "%buildroot/$moddir/src"
 %fdupes %buildroot/%_prefix
 
 %files -f %name.files
