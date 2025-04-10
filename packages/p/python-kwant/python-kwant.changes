@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  9 04:21:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove upper bound on numpy.
+- Regenerate Cython files to support Numpy 2.
+
+-------------------------------------------------------------------
 Fri Jul 12 05:44:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.5.0:

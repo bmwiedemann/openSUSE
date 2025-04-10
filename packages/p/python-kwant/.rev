@@ -64,4 +64,13 @@
 - Switch to pyproject macros.</comment>
     <requestid>1186997</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>18a5943f4ea8d3f346fd1cbacc3441d9</srcmd5>
+    <version>1.5.0</version>
+    <time>1744315115</time>
+    <user>anag_factory</user>
+    <comment>- Remove upper bound on numpy.
+- Regenerate Cython files to support Numpy 2.</comment>
+    <requestid>1268010</requestid>
+  </revision>
 </revisionlist>

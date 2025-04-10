@@ -1,7 +1,7 @@
 #
 # spec file for package python-kwant
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ URL:            https://kwant-project.org/
 Source0:        https://files.pythonhosted.org/packages/source/k/kwant/kwant-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
-BuildRequires:  %{python_module numpy-devel >= 1.18 with %python-numpy-devel < 2}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -36,9 +36,9 @@ BuildRequires:  fdupes
 BuildRequires:  lapack-devel
 BuildRequires:  mumps-devel
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy >= 1.18
 Requires:       python-scipy >= 1.3
 Requires:       python-tinyarray
-Requires:       (python-numpy >= 1.18 with python-numpy < 2)
 Recommends:     python-matplotlib
 Recommends:     python-qsymm
 Recommends:     python-sympy
@@ -68,6 +68,8 @@ functions, out-of-equilibrium local quantities.
 %setup -q -n kwant-%{version}
 
 %build
+# This prints the URL, but it also Cythonizes
+python3 setup.py --cython --url
 # CAN'T FIND mumps HEADERS
 export CFLAGS="%{optflags} -I%{_includedir}/mumps"
 %pyproject_wheel
