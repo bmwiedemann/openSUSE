@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr  3 13:46:58 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
+
+- cacti-spine 1.2.30
+  -no changes
+  -Bump/rebuild to match Cacti 1.2.30
+
+-------------------------------------------------------------------
+Tue Feb 11 17:16:54 UTC 2025 - Joel Baltazor <obs@mtlfab.com>
+
+- cacti-spine 1.2.29
+  -no changes
+  -Bump/rebuild to match Cacti 1.2.29
+
+-------------------------------------------------------------------
+Wed Oct  9 16:51:18 UTC 2024 - Joel Baltazor <obs@mtlfab.com>
+
+- cacti-spine 1.2.28
+  -issue#350: When using Ping or SNMP Uptime, host is not always detected properly
+  -issue#351: Add Ping Method where connection refused assumes host is up
+
+-------------------------------------------------------------------
 Tue May 14 18:00:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.27:
