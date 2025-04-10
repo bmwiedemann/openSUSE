@@ -20,26 +20,25 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 5faab136de1a0f70f9bdcb3d9e29e7261aeeb9b4
+%define git_version c1a774f36657e30e28a83002a8ebf5add44e02aa
 
 Name:           kernel-firmware-network
-Version:        20250219
+Version:        20250408
 Release:        0
 Summary:        Kernel firmware files for various network drivers
-License:        GPL-2.0-only AND GPL-2.0-or-later AND SUSE-Firmware
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250218.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250409.tar.gz#/kernel-firmware-tools-20250409.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
@@ -277,7 +276,8 @@ Supplements:    modalias(pci:v00009004d00006915sv*sd*bc*sc*i*)
 This package contains kernel firmware files for various network drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh network < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE

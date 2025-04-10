@@ -25,4 +25,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1247384</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b229cdd757a7d34bf33f359ebcb5e89</srcmd5>
+    <version>20250408</version>
+    <time>1744315060</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250408 (git commit c1a774f36657):
+  * linux-firmware: add firmware for Aeonsemi AS21x1x 1G/2.5G/5G/10G Ethernet Phy</comment>
+    <requestid>1268119</requestid>
+  </revision>
 </revisionlist>
