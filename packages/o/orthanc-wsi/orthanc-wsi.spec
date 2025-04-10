@@ -21,7 +21,7 @@ Name:           orthanc-wsi
 Summary:        Whole Slide Imaging for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.1
+Version:        3.2
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWSI-%{version}.tar.gz
@@ -29,10 +29,13 @@ Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWS
 Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/WSI/openlayers-10.4.0-package.tar.gz
 Source11:       orthanc-wsi-readme.SUSE
 
+BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  dcmtk
 BuildRequires:  dcmtk-devel
+BuildRequires:  doxygen
+BuildRequires:  graphviz
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 BuildRequires:  gcc13-c++
 %else
