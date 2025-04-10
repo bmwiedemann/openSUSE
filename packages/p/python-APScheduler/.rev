@@ -279,4 +279,15 @@
     <comment></comment>
     <requestid>1240308</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>5e6e4e249901d80fb7a3c7616aed39f2</srcmd5>
+    <version>3.11.0</version>
+    <time>1744315189</time>
+    <user>anag_factory</user>
+    <comment>- Actually drop {Build,}Requires on six.
+- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1268266</requestid>
+  </revision>
 </revisionlist>

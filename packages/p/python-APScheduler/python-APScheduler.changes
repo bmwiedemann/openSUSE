@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 10 03:43:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Actually drop {Build,}Requires on six.
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Wed Mar 26 00:21:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Fri Jan 24 07:28:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.11.0

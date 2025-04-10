@@ -34,14 +34,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools >= 36.2.7}
 BuildRequires:  %{python_module setuptools_scm >= 1.7.0}
-BuildRequires:  %{python_module six >= 1.4.0}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module tzlocal >= 2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytz
-Requires:       python-six >= 1.4.0
 Requires:       python-tzlocal >= 2.0
 Recommends:     python-SQLAlchemy >= 1.4
 Recommends:     python-Twisted
@@ -105,6 +103,6 @@ sed -i 's/--cov//' setup.cfg
 %doc README.rst
 %doc examples/
 %{python_sitelib}/apscheduler
-%{python_sitelib}/APScheduler-%{version}*-info
+%{python_sitelib}/[Aa][Pp][Ss]cheduler-%{version}.dist-info
 
 %changelog
