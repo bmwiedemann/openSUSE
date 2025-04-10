@@ -103,6 +103,10 @@ Source58:       openafs.cacheinfo
 Source98:       kmp_only.files
 Source99:       openafs.changes
 
+# FIX build of kernel module for version 6.14
+Patch01:        4702930f8dd87a6cad1d59ef8c127003fded1f31.patch
+Patch02:        0306f3fdac736e15620f5802bdce510d25bb2450.patch
+
 #	GENERAL BuildRequires and Requires
 #
 
@@ -124,6 +128,9 @@ BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
 BuildRequires:  swig
+%ifarch  ppc64le
+BuildRequires:  perl-rpm-packaging
+%endif
 
 Requires(post): %fillup_prereq
 
@@ -313,6 +320,9 @@ for src_file in %{S:0}  %{S:1}; do
 done
 
 %setup -q -n openafs-%{upstream_version} -T -b 0 -b 1
+
+%patch -P 01 -p1
+%patch -P 02 -p1
 
 ./regen.sh
 
