@@ -2405,4 +2405,12 @@ successfully tested on Tumbleweed x86_64</comment>
     use parameter smtpd_tls_security_level instead</comment>
     <requestid>1252359</requestid>
   </revision>
+  <revision rev="249" vrev="3">
+    <srcmd5>763ff2030259dd82d4ab4bb820e276f4</srcmd5>
+    <version>3.10.1</version>
+    <time>1744315070</time>
+    <user>anag_factory</user>
+    <comment>Fix compile for &lt; 1600 (forwarded request 1268234 from computersalat)</comment>
+    <requestid>1268236</requestid>
+  </revision>
 </revisionlist>

@@ -129,15 +129,15 @@ Requires(pre):  shadow
 # /usr/lib/postfix/bin//postfix-script: line 400: cmp: command not found
 Requires:       /usr/bin/cmp
 # /usr/lib/postfix/bin//post-install: line 667: ed: command not found
-Requires(pre):  ed
-Requires(preun):ed
-Requires(post): ed
-Requires(postun):ed
+Requires(pre):  /usr/bin/ed
+Requires(preun): /usr/bin/ed
+Requires(post): /usr/bin/ed
+Requires(postun): /usr/bin/ed
 # /usr/sbin/config.postfix needs perl
 Requires(pre):  perl
-Requires(preun):perl
+Requires(preun): perl
 Requires(post): perl
-Requires(postun):perl
+Requires(postun): perl
 
 %description
 Postfix aims to be an alternative to the widely-used sendmail program with bdb support
@@ -168,6 +168,11 @@ lmdb.
 unset AUXLIBS AUXLIBS_LDAP AUXLIBS_PCRE AUXLIBS_MYSQL AUXLIBS_PGSQL AUXLIBS_SQLITE AUXLIBS_CDB
 
 export CCARGS="${CCARGS} %{optflags} -fcommon -Wno-comments -Wno-missing-braces -fPIC"
+
+%if 0%{?suse_version} >= 1600
+export CCARGS="${CCARGS} -std=gnu17"
+%endif
+
 %ifarch s390 s390x ppc
 export CCARGS="${CCARGS} -fsigned-char"
 %endif

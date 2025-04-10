@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr  9 20:19:49 UTC 2025 - chris@computersalat.de
+
+- fix compile option -std=gnu17 (only for >= 1600)
+- sync changes file
+
+-------------------------------------------------------------------
+Tue Apr  8 17:05:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CCARGS to fix gcc15 compile time error, as
+  Wietse Venema suggests (marc.info/?l=postfix-users&m=173542420611213)
+
+-------------------------------------------------------------------
+Sun Mar 16 19:28:09 UTC 2025 - chris@computersalat.de
+
+- rework postfix-main.cf.patch
+- fix config.postfix
+  * add missing: cpifnewer "/usr/@lib@/sasl2/*" usr/@lib@/sasl2
+- rebase patches
+  * pointer_to_literals.patch
+  * postfix-linux45.patch
+  * postfix-master.cf.patch
+  * postfix-ssl-release-buffers.patch
+  * set-default-db-type.patch
+- keep spec and changes files in sync
+
+-------------------------------------------------------------------
 Tue Mar 11 00:55:16 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - update postfix-main.cf.patch
@@ -113,12 +139,12 @@ Thu Dec  5 19:05:33 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 Tue Sep 24 08:29:19 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - Missing posttls-finger in postfix though changes mention it
-  (bsc#1221501) 
+  (bsc#1221501)
 
 -------------------------------------------------------------------
 Fri Aug  9 08:48:07 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
-- Remove rcpostfix symlink [jsc#PED-266] 
+- Remove rcpostfix symlink [jsc#PED-266]
 
 -------------------------------------------------------------------
 Wed Aug  7 06:34:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
@@ -129,6 +155,19 @@ Wed Aug  7 06:34:05 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 Thu Aug  1 08:36:10 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - postfix gives warnings about deprecated parameters (bsc#1225397)
+
+-------------------------------------------------------------------
+Tue Jul  2 21:57:06 UTC 2024 - chris@computersalat.de
+
+- update postfix-main.cf.patch
+  * add smtp_dns_support_level = 
+- rebase patches
+  * fix-postfix-script.patch
+  * pointer_to_literals.patch
+  * postfix-linux45.patch
+  * postfix-ssl-release-buffers.patch
+  * postfix-vda-v14-3.0.3.patch
+  * set-default-db-type.patch
 
 -------------------------------------------------------------------
 Tue Jun 18 18:15:47 UTC 2024 - chris@computersalat.de

@@ -50,7 +50,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -682,4 +683,165 @@ sample_directory =
+@@ -682,4 +683,168 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -143,10 +143,12 @@ Index: conf/main.cf
 +relay_clientcerts = 
 +#tls_random_source = dev:/dev/urandom
 +
++# Following two parameters are deprecated and smtpd_tls_security_level covers this situation
 +#smtp_use_tls = no
-+#smtp_tls_loglevel = 0
 +#smtp_enforce_tls = no
-+smtp_tls_security_level = none
++#smtp_tls_loglevel = 0
++smtp_tls_security_level = 
++smtp_dns_support_level = 
 +smtp_tls_CAfile = 
 +smtp_tls_CApath = 
 +smtp_tls_cert_file = 
@@ -155,10 +157,11 @@ Index: conf/main.cf
 +#smtp_tls_session_cache_timeout = 3600s
 +smtp_tls_session_cache_database = 
 +
++# Following two parameters are deprecated and smtpd_tls_security_level covers this situation
 +#smtpd_use_tls = no
-+#smtpd_tls_loglevel = 0
 +#smtpd_enforce_tls = no
-+smtpd_tls_security_level = none
++#smtpd_tls_loglevel = 0
++smtpd_tls_security_level = 
 +smtpd_tls_CAfile = 
 +smtpd_tls_CApath = 
 +smtpd_tls_cert_file = 
