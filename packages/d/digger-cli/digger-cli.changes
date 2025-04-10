@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 08 19:09:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.96:
+  * support gitlab drift detection (#1936)
+
+-------------------------------------------------------------------
+Tue Apr 08 19:07:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.95:
+  * feat: allow plan persistence also for Azure environments
+    through Azure storage accounts (#1933)
+
+-------------------------------------------------------------------
 Wed Apr 02 20:05:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.94:
