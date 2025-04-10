@@ -284,7 +284,7 @@ processed mail on to the MTA (e.g. sendmail).
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
     #
     ID=$(id -u)
-    RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing -D_GNU_SOURCE"
+    RPM_OPT_FLAGS="%{optflags} -std=gnu11 -fno-strict-aliasing -D_GNU_SOURCE"
     ARCH_LIB=%{_lib}
     export ARCH_LIB
     gcc $RPM_OPT_FLAGS -I./include -o milterversion milterversion.c

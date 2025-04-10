@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  8 20:30:53 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to compiler flags, to fix gcc15 compile time
+  error, and to still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Mon Mar 17 14:24:06 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update keyring 

@@ -1319,4 +1319,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1255660</requestid>
   </revision>
+  <revision rev="128" vrev="7">
+    <srcmd5>bed265b303be8f9d83bfade1c5af2fc2</srcmd5>
+    <version>8.18.1</version>
+    <time>1744315037</time>
+    <user>anag_factory</user>
+    <comment>add -std=gnu11 to compiler flags, to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1267987 from hsk17)</comment>
+    <requestid>1268036</requestid>
+  </revision>
 </revisionlist>
