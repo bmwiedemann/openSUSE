@@ -1185,4 +1185,12 @@
   * fence_azure_arm: use azure-identity instead of msrestazure, which has been deprecated (#603)</comment>
     <requestid>1241168</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>188ca4ba4082f36f820c7cf8abdcbab3</srcmd5>
+    <version>4.16.0+git.1744277748.04ed38a</version>
+    <time>1744315208</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268437</requestid>
+  </revision>
 </revisionlist>
