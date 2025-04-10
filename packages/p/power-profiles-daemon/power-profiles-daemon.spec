@@ -17,7 +17,7 @@
 
 
 Name:           power-profiles-daemon
-Version:        0.23
+Version:        0.30
 Release:        0
 Summary:        Power profiles handling over D-Bus
 License:        GPL-3.0-or-later
@@ -124,7 +124,7 @@ This package provides zsh shell completions for powerprofilesctl.
 %{_datadir}/dbus-1/system-services/org.freedesktop.UPower.PowerProfiles.service
 %{_datadir}/polkit-1/actions/power-profiles-daemon.policy
 %{_mandir}/man1/powerprofilesctl.1%{?ext_man}
-%ghost %dir %{_localstatedir}/lib/%{name}
+%ghost %attr(0755,root,root) %dir %{_localstatedir}/lib/%{name}
 
 %files doc
 %dir %{_datadir}/gtk-doc/
