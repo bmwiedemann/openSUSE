@@ -23,11 +23,11 @@
 # built for actual users.
 %bcond_with     integration_tests
 
-%if 0%{?is_opensuse} == 0
+%if 0%{?is_opensuse} == 0 && 0%{?suse_version} < 1600
 # SUSEConnect support ("SUSE secrets") only makes sense for SLES hosts.
 %bcond_without  suseconnect
 # There is currently a known bug between buildx and SUSE secrets, so we don't
-# package docker-buildx for SLES. bsc#1233819
+# package docker-buildx for SLES<16. bsc#1233819
 %bcond_with     buildx
 %else
 %bcond_with     suseconnect
@@ -60,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.19.3
+%define buildx_version 0.22.0
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -158,7 +158,7 @@ BuildRequires:  zsh
 BuildRequires:  golang(API) = 1.22
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
-%if 0%{?sle_version} >= 150000
+%if 0%{?suse_version} >= 1500
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
 # don't need to support Docker+selinux for SLE 12 anyway.
 Requires:       (apparmor-parser or container-selinux)
@@ -172,7 +172,13 @@ Recommends:     apparmor-parser
 Requires:       apparmor-parser
 %endif
 %else
+%if 0%{?suse_version} >= 1500
+# This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
+# don't need to support Docker+selinux for SLE 12 anyway.
+Requires:       (container-selinux if selinux-policy)
+%else
 Requires:       container-selinux
+%endif
 %endif
 Requires:       ca-certificates-mozilla
 # The docker-proxy binary used to be in a separate package. We obsolete it,

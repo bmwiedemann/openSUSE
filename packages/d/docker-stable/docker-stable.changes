@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 10 03:18:42 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.22.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.22.0>
+  * Includes fixes for CVE-2025-0495. bsc#1239765
+
+-------------------------------------------------------------------
+Thu Apr 10 03:09:38 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Disable transparent SUSEConnect support for SLE-16. PED-12534
+
+  When this patchset was first added in 2013 (and rewritten over the years),
+  there was no upstream way to easily provide SLE customers with a way to build
+  container images based on SLE using the host subscription. However, with
+  docker-buildx you can now define secrets for builds (this is not entirely
+  transparent, but we can easily document this new requirement for SLE-16).
+
+  Users should use
+
+    RUN --mount=type=secret,id=SCCcredentials zypper -n ...
+
+  in their Dockerfiles, and
+
+    docker buildx build --secret id=SCCcredentials,src=/etc/zypp/credentials.d/SCCcredentials,type=file .
+
+  when doing their builds.
+
+- Now that the only blocker for docker-buildx support was removed for SLE-16,
+  enable docker-buildx for SLE-16 as well. PED-8905
+
+-------------------------------------------------------------------
+Wed Mar 26 02:36:16 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Don't use the new container-selinux conditional requires on SLE-12, as the
+  RPM version there doesn't support it. Arguably the change itself is a bit
+  suspect but we can fix that later. bsc#1237367
+
+-------------------------------------------------------------------
 Tue Mar 25 01:11:54 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Add backport for golang.org/x/oauth2 CVE-2025-22868 fix. bsc#1239185
@@ -19,6 +57,12 @@ Tue Mar 25 01:11:54 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 - Move test-related patch to the end of the patch stack:
   - 0011-TESTS-backport-fixes-for-integration-tests.patch
   + 0013-TESTS-backport-fixes-for-integration-tests.patch
+
+-------------------------------------------------------------------
+Thu Mar 20 16:09:49 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Make container-selinux requirement conditional on selinux-policy
+  (bsc#1237367)
 
 -------------------------------------------------------------------
 Wed Dec 18 05:53:11 UTC 2024 - Aleksa Sarai <asarai@suse.com>
