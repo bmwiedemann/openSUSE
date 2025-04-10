@@ -659,4 +659,18 @@
   * GO-2025-3563 CVE-2025-22871 (forwarded request 1268017 from jfkw)</comment>
     <requestid>1268018</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c3a805d89c545686ff48549ce91072fc</srcmd5>
+    <version>0.0.20250409T170536</version>
+    <time>1744315211</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250409T170536 2025-04-09T17:05:36Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3591 CVE-2025-31483 GHSA-cq88-842x-2jhp
+  * GO-2025-3594 CVE-2025-31489 GHSA-wg47-6jq2-q2hh
+  * GO-2025-3598 CVE-2025-32024 GHSA-q7rw-w4cq-2j6w
+  * GO-2025-3599 CVE-2025-32025 GHSA-fmhh-rw3h-785m (forwarded request 1268453 from jfkw)</comment>
+    <requestid>1268454</requestid>
+  </revision>
 </revisionlist>
