@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:06:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Thu Mar 27 00:40:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Wed Aug 14 14:55:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python for sle15

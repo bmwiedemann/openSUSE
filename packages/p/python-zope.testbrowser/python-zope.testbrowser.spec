@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testbrowser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,7 +101,7 @@ cd src
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/testbrowser
 %{python_sitelib}/zope.testbrowser-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.testbrowser-%{version}.dist-info
+%{python_sitelib}/zope[_.]testbrowser-%{version}.dist-info
 %endif
 
 %changelog

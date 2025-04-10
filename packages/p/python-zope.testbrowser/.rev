@@ -154,4 +154,12 @@
     <comment>- switch to modern python for sle15</comment>
     <requestid>1193900</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>0417d75689d0a38a26e0ae57c2770bfd</srcmd5>
+    <version>7.0</version>
+    <time>1744315186</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266269</requestid>
+  </revision>
 </revisionlist>
