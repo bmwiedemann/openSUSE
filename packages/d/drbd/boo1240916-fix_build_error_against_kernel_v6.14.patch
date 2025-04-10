@@ -1,0 +1,53 @@
+From 925be734ea4c3eca817bb5bf5c850fd65a855420 Mon Sep 17 00:00:00 2001
+From: Su Yue <glass.su@suse.com>
+Date: Wed, 9 Apr 2025 16:40:32 +0800
+Subject: [PATCH] drbd: fix build error against kernel v6.14
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+kernel commit f7862dfef661 ("saner replacement for debugfs_rename()")
+replaces debugfs_rename() with debugfs_change_name().
+
+Hence drbd failed to be build with v6.14:
+
+[   74s ] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_debugfs.c: In function ‘drbd_debugfs_resource_rename’:
+[   74s ] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_debugfs.c:705:17: error: implicit declaration of function ‘debugfs_rename’; did you mean ‘debugfs_remove’? [-Wimplicit-function-declaration]
+[   74s ]   705 |         new_d = debugfs_rename(drbd_debugfs_resources, resource->debugfs_res,
+[   74s ]       |                 ^~~~~~~~~~~~~~
+[   74s ]       |                 debugfs_remove
+[   74s ] /home/abuild/rpmbuild/BUILD/drbd-9.1.23-build/drbd-9.1.23/default/./drbd_debugfs.c:705:15: error: assignment to ‘struct dentry *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+[   74s ]   705 |         new_d = debugfs_rename(drbd_debugfs_resources, resource->debugfs_res,
+[   74s ]       |               ^
+[   74s ] make[3]: *** [/usr/src/linux-6.14.0-1/scripts/Makefile.build:208: drbd_debugfs.o] Error 1
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+---
+ drbd/drbd_debugfs.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/drbd/drbd_debugfs.c b/drbd/drbd_debugfs.c
+index 3f48dbee4e9a..4ed8b16a334e 100644
+--- a/drbd/drbd_debugfs.c
++++ b/drbd/drbd_debugfs.c
+@@ -771,15 +771,10 @@ void drbd_debugfs_resource_cleanup(struct drbd_resource *resource)
+ 
+ void drbd_debugfs_resource_rename(struct drbd_resource *resource, const char *new_name)
+ {
+-	struct dentry *new_d;
++	int err = debugfs_change_name(resource->debugfs_res, "%s", new_name);
+ 
+-	new_d = debugfs_rename(drbd_debugfs_resources, resource->debugfs_res,
+-				drbd_debugfs_resources, new_name);
+-	if (IS_ERR(new_d)) {
++	if (err)
+ 		drbd_err(resource, "failed to rename debugfs entry for resource\n");
+-	} else {
+-		resource->debugfs_res = new_d;
+-	}
+ }
+ 
+ static void seq_print_one_timing_detail(struct seq_file *m,
+-- 
+2.48.1
+

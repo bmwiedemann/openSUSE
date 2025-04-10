@@ -1,0 +1,50 @@
+From e9d033122c939a3a522624a78bae9e4ee032c85b Mon Sep 17 00:00:00 2001
+From: Lars Ellenberg <lars.ellenberg@linbit.com>
+Date: Thu, 27 Feb 2025 14:07:44 +0100
+Subject: [PATCH] drbd: build: deal with potentially relative paths in prep
+ step
+
+since linux 13b25489b6f8b (kbuild: change working directory to external module directory with M=, 2024-11-10)
+some Kbuild make variables may be relative paths.
+
+Wrap them in $(abspath) as necessary.
+---
+ drbd/Kbuild | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/drbd/Kbuild b/drbd/Kbuild
+index ade25d4ee70a..80ec69dcce79 100644
+--- a/drbd/Kbuild
++++ b/drbd/Kbuild
+@@ -164,7 +164,7 @@ quiet_cmd_splitdiff = SPLIT   $<
+       cmd_splitdiff = \
+ 		mkdir -p $(patches-dir) \
+ 		&& cd $(patches-dir) \
+-		&& $(PERL) $(src)/drbd-kernel-compat/splitdiff.pl < $<
++		&& $(PERL) $(abspath $(src))/drbd-kernel-compat/splitdiff.pl < $(abspath $<)
+ 
+ annotate-orig-pos := \
+ 	$(src)/drbd-kernel-compat/annotate-diff-with-original-file-position-pragmas.pl
+@@ -188,13 +188,14 @@ quiet_cmd_apply_compat_patch = PATCH   $@
+ 	if test -s $$patch ; then					\
+ 		$(PATCH) --output $$out.tmp $$orig $$patch ;		\
+ 		diff -u $$orig $$out.tmp |				\
+-		DRBDSRC=$(src)						\
+-		OUTDIR=$(obj.build)					\
+-		PATCHES_DIR=$(patches-dir)				\
+-		$(PERL) $(annotate-orig-pos)				\
+-		| $(PATCH) --output $$out $$orig ;			\
++		DRBDSRC=$(abspath $(src))				\
++		OUTDIR=$(abspath $(obj.build))				\
++		PATCHES_DIR=$(abspath $(patches-dir))			\
++		$(PERL) $(annotate-orig-pos) > $$out.annotated;		\
++		$(PATCH) --output $$out $$orig < $$out.annotated;	\
+ 		chmod --reference $$orig $$out ;			\
+ 		: rm -f $$out.tmp; 					\
++		: rm -f $$out.annotated; 				\
+ 	else { echo "\# 1 \"$$orig\""; cat $$orig; } > $$out; fi
+ 
+ orig-source = $(src)/$(s)
+-- 
+2.48.1
+

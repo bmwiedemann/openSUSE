@@ -37,12 +37,12 @@ Source3:        drbd_git_revision
 ########################
 # upstream patch
 Patch0001:  0001-drbd-Fix-memory-leak.patch
+Patch0002:  0001-drbd-build-deal-with-potentially-relative-paths-in-p.patch
 
 # suse special patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  suse-coccinelle.patch
-Patch1003:  boo1235399-fix_the_warning_of_blk_validate_limits.patch
-Patch1004:  boo1236927-fix-build_error_against_v6.13.patch
+Patch1003:  boo1240916-fix_build_error_against_kernel_v6.14.patch
 ########################
 
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
