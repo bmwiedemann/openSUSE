@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 10 13:38:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.0:
+  * Added Features
+    - Support CVSS v4 vectors [#553 @wagoodman]
+  * Additional Changes
+    - add option to always publish databases under their schema
+      direc… [#552 @asomya]
+  * Dependencies
+    - chore(deps): Bump github.com/spf13/viper from 1.19.0 to
+      1.20.1 (#548)
+    - chore(deps): Bump golang.org/x/text from 0.23.0 to 0.24.0
+      (#554)
+    - chore(deps): Bump github.com/anchore/grype from 0.90.0 to
+      0.91.0 (#551)
+    - chore(deps): Bump 8398a7/action-slack from 3.16.2 to 3.18.0
+      (#549)
+
+-------------------------------------------------------------------
 Thu Mar 27 15:09:34 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.31.0:
