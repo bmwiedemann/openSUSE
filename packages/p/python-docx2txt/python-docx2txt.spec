@@ -1,7 +1,7 @@
 #
 # spec file for package python-docx2txt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,20 +15,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-docx2txt
-Version:        0.8
+Version:        0.9
 Release:        0
 Summary:        A pure python-based utility to extract text and images from docx files
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/ankushshah89/python-docx2txt
 Source:         https://files.pythonhosted.org/packages/source/d/docx2txt/docx2txt-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
