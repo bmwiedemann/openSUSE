@@ -254,4 +254,41 @@ Changes from last request:
 </comment>
     <requestid>1253161</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b683d4055834ad619eeaf486e269ebb</srcmd5>
+    <version>25.4.8</version>
+    <time>1744315129</time>
+    <user>anag_factory</user>
+    <comment> - Update to version 25.4.8:
+  * fix: don't fail on videos with embedded images (#2590)
+  * chore: bump version to 25.4.8
+  * feat: new `ui.Text:scroll()` API for setting text to scroll horizontally or vertically (#2589)
+  * fix: ignore XQuartz `$DISPLAY` variable (#2586)
+  * feat!: switch to `resvg` as the SVG renderer (#2581)
+  * feat: allow initializing input when opening it with commands like `rename`, `create`, `find`, `filter`, etc. (#2578)
+  * refactor: deprecate `ui.Padding` and `ui.Rect:padding()` (#2574)
+  * perf!: cache UserData fields (#2572)
+  * feat: support Warp terminal image preview (#2571)
+  * fix: remove `-density` option from `magick` command in SVG previewer (#2564)
+  * feat!: enhance `fzf` integration (#2553)
+  * fix: always check whether the cursor exceeds the upper bound to guard against unexpected values (#2551)
+  * feat: new `follow` command to follow files pointed to by symlinks (#2543)
+  * feat: clear terminal before displaying EXIF data (#2541)
+  * feat!: support `arrow prev` and `arrow next` for more components (#2540)
+  * perf!: faster image preview with optimized `magick` arguments (#2533)
+  * refactor!: remove unnecessary `tasks_show` and `close_input` commands (#2530)
+  * feat: allow bulk renaming to include trailing content in addition to the required new names (#2494)
+  * feat: show error message when directory fails to load (#2527)
+  * feat: platform-specific key binding (#2526)
+  * feat: new `symlink_target` to style the target of symbolic links (#2522)
+  * feat: allow repositioning the cursor in the `rename` DDS event (#2521)
+  * perf: rewrite config parser to double the startup speed (#2508)
+  * feat: new `ya.id(&quot;app&quot;)` to get `YAZI_ID` in plugins (#2503)
+  * refactor: new `yazi-widgets` crate (#2498)
+  * feat: new `base` field for the `Url` userdata (#2492)
+  * perf: lazy compile and cache lua plugins as binary bytecode (#2490)
+  * feat!: new `@sync peek` annotation for sync previewers (#2487)
+  * feat: file navigation wraparound with new `arrow prev` and `arrow next` commands (#2485)</comment>
+    <requestid>1268089</requestid>
+  </revision>
 </revisionlist>
