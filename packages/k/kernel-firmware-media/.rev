@@ -28,4 +28,13 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update spec to make kernel-firmware-tools downloadable</comment>
     <requestid>1255832</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a6df55c4837d9530887985aa383d6ae</srcmd5>
+    <version>20250408</version>
+    <time>1744315057</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250408 (git commit c1a774f36657):
+  * qcom: update firmware binary for SM8250</comment>
+    <requestid>1268116</requestid>
+  </revision>
 </revisionlist>
