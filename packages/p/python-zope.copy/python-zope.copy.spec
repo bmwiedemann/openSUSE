@@ -80,7 +80,7 @@ Documentation is hosted at https://zopecopy.readthedocs.io/en/latest/
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/copy
 %{python_sitelib}/zope.copy-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.copy-%{version}.dist-info
+%{python_sitelib}/zope[_.]copy-%{version}.dist-info
 %endif
 
 %changelog

@@ -53,4 +53,12 @@
     <comment>- Add missing runtime dependency on zodbpickle</comment>
     <requestid>1234714</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>f502468a3a75452f8f2047e9fb22356d</srcmd5>
+    <version>5.0</version>
+    <time>1744315183</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266264</requestid>
+  </revision>
 </revisionlist>
