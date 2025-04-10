@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 10 17:36:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.22.0:
+  * Added support for HPKE (RFC 9180).
+  * GH#812: CCM ciphers will now fail before encrypting (or decrypting)
+            data beyond the limit imposed by the nonce length.
+  * GH#846: fix infinite loop with RC4 for data larger than 4GB.
+  * GH#852: handle correctly invalid PEM files with less than 3
+    lines.
+
+-------------------------------------------------------------------
 Fri Oct 18 08:53:31 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.21.0:

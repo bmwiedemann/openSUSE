@@ -447,4 +447,18 @@
   * Remove support for Python 3.5.</comment>
     <requestid>1208841</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>5b76db117959eb7eaf730737a3641d89</srcmd5>
+    <version>3.22.0</version>
+    <time>1744315215</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.22.0:
+  * Added support for HPKE (RFC 9180).
+  * GH#812: CCM ciphers will now fail before encrypting (or decrypting)
+            data beyond the limit imposed by the nonce length.
+  * GH#846: fix infinite loop with RC4 for data larger than 4GB.
+  * GH#852: handle correctly invalid PEM files with less than 3
+    lines.</comment>
+    <requestid>1268468</requestid>
+  </revision>
 </revisionlist>
