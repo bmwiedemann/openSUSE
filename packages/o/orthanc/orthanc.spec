@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.12.6
+Version:        1.12.7
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -37,11 +37,6 @@ Source10:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dic
 Source11:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/axios-0.19.0.tar.gz
 Source12:       https://orthanc.uclouvain.be/downloads/third-party-downloads/jquery-3.4.1.min.js
 Source13:       https://orthanc.uclouvain.be/downloads/third-party-downloads/dicom-web/vuejs-2.6.10.tar.gz
-
-Patch0:         dcmtk.diff
-## Patch1:         toolbox.patch
-#  Patch2:         boost.patch
-## Patch3:         sha.patch
 
 BuildRequires:  civetweb-devel
 BuildRequires:  cmake >= 2.8.0
@@ -197,7 +192,7 @@ mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
 
 #Apply dcmtk patch
-patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
+##%patch %{buildroot}/usr/src/%{name}/OrthancFramework/Resources/CMake/DcmtkConfiguration.cmake < %{P:0}
 
 #Apply remaining patches to source tree
 ## patch -p1 -d %{buildroot}/usr/src/%{name} < %{P:1}
