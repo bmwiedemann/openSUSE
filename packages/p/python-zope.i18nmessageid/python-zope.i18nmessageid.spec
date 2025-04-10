@@ -91,7 +91,7 @@ sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildin
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/i18nmessageid
-%{python_sitearch}/zope.i18nmessageid-%{version}.dist-info
+%{python_sitearch}/zope[_.]i18nmessageid-%{version}.dist-info
 %{python_sitearch}/zope.i18nmessageid-%{version}*-nspkg.pth
 %endif
 

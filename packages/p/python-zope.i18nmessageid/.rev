@@ -190,4 +190,12 @@ New dependecy of python-Pyramid</comment>
     <comment>- Explicitly BuildRequire sphinx_rtd_theme.</comment>
     <requestid>1239360</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>7a608c82199785a5c63601277c2df706</srcmd5>
+    <version>7.0</version>
+    <time>1744315185</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266267</requestid>
+  </revision>
 </revisionlist>
