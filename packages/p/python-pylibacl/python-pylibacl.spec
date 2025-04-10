@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pylibacl
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        POSIX1e ACLs for python
 License:        LGPL-2.1-or-later

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:32:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.7.2
+  * Single-bugfix release: fixed the typing stub module. Nothing
+    exercised it, and having been generated with pre-3.6 stubgen,
+    it failed to work on modern versions. No tests failed (should
+    add some), but the doc build by Sphinx failed accidentally
+    since the failure to import (which was ignored) led to a
+    missing title for the module, which Sphinx complained about.
+    Quite funny :)
+
+-------------------------------------------------------------------
 Fri Feb 21 15:10:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.7.1
