@@ -953,4 +953,12 @@ https://doc.powerdns.com/authoritative/upgrading.html</comment>
 - refreshed pdns-4.0.3_allow_dacoverride_in_capset.patch</comment>
     <requestid>1221285</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>16fdd91848f951401b33258edbdce971</srcmd5>
+    <version>4.9.4</version>
+    <time>1744315137</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268165</requestid>
+  </revision>
 </revisionlist>
