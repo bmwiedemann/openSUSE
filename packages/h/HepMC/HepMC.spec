@@ -23,7 +23,7 @@
 %define so_search 5
 %define libsearch libHepMC3search%{so_search}
 Name:           HepMC
-Version:        3.3.0
+Version:        3.3.1
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 # Note: pybind11 (BSD-3-Clause) is bundled but not used because we use the system packaged pybind11
@@ -33,7 +33,7 @@ URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/%{name}3-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pybind11-devel >= 2.6.0}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

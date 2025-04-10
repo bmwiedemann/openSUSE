@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr  9 08:22:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.1:
+  * Require cmake>3.10 for compatibility with cmake4.
+  * Multiple bugfixes and improvements.
+  * Add uproot5 to the tests
+  * Add static libraries and other fixes to HepMC3-config.
+  * Fix weights usage in the AnalysisExample.cc file.
+  * Update convert_example.cc to allow for one argument for the
+    "dump" format.
+  * Fix for a "Conditional jump or move depends on uninitialised
+    value(s)" problem detected by valgrind
+
+-------------------------------------------------------------------
 Mon Mar 24 12:16:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3.0:
