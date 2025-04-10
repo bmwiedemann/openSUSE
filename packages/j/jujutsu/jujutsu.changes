@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Apr  8 04:54:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.2:
+  * Fixed bugs
+    - Fixed problem that old commits could be re-imported from Git.
+      GitoxideLabs/gitoxide#1928
+
+-------------------------------------------------------------------
+Sat Apr  5 12:54:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.1:
+  * Security fixes
+    - Fixed SHA-1 collision attacks not being detected.
+    (GHSA-794x-2rpg-rfgr)
+  * Fixed bugs
+    - Resolved some potential build issues for packagers. #6232
+    - Fix a bug with :ours and :theirs merge tools involving
+      conflicted trees with more than two sides. #6227
+
+-------------------------------------------------------------------
+Thu Apr  3 05:18:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.28.0:
+  * Release highlights
+    - jj's configuration can now be split into multiple files more
+      easily.
+    - jj resolve now accepts built-in tools :ours and :theirs.
+    - In colocated repos, newly-created files will now appear in
+      git diff.
+    - A long-standing bug relating to empty files in the built-in
+      diff editor was fixed. #3702
+  * Breaking changes
+    - The minimum supported Rust version (MSRV) is now 1.84.0.
+    - The git.push-branch-prefix config has been removed in favor
+      of git.push-bookmark-prefix.
+    - jj abandon no longer supports --summary to suppress the list
+      of abandoned commits. The list won't show more than 10
+      commits to not clutter the console.
+    - jj unsquash has been removed in favor of jj squash and jj
+      diffedit --restore-descendants.
+    - The jj untrack subcommand has been removed in favor of jj
+      file untrack.
+    - The following deprecated revset functions have been removed:
+      branches(), remote_branches(), tracked_remote_branches(), and
+      untracked_remote_branches(), which were renamed to
+      "bookmarks".  file() and conflict(), which were renamed to
+      plural forms.  files(x, y, ..) with multiple patterns. Use
+      files(x|y|..) instead.
+    - The following deprecated template functions have been
+      removed:
+      branches(), local_branches(), and remote_branches(), which
+      were renamed to "bookmarks".
+    - The flags --all and --tracked on jj git push by themself do
+      not cause deleted bookmarks to be pushed anymore, as an
+      additional safety measure. They can now be combined with
+      --deleted instead.
+  * Deprecations
+    - core.watchman.register_snapshot_trigger has been renamed to
+      core.watchman.register-snapshot-trigger for consistency with
+      other configuration options.
+    - jj backout is deprecated in favor of jj revert.
+New features
+    - jj sign can now sign with PKCS#12 certificates through the
+      gpgsm backend.
+    - jj sign will automatically use the gpg key associated with
+      the author's email in the absence of a signing.key
+      configuration.
+    - Multiple user configs are now supported and are loaded in the
+      following precedence order:
+      - $HOME/.jjconfig.toml
+      - $XDG_CONFIG_HOME/jj/config.toml
+      - $XDG_CONFIG_HOME/jj/conf.d/*.toml
+    - The JJ_CONFIG environment variable can now contain multiple
+      paths separated by a colon (or semicolon on Windows).
+    - The command jj config list now supports showing the origin of
+      each variable via the builtin_config_list_detailed template.
+    - jj config {edit,set,unset} now prompt when multiple config
+      files are found.
+    - jj diff -r now allows multiple revisions (as long as there
+      are no gaps in the revset), such as jj diff -r 'mutable()'.
+    - jj git push now accepts a --named NAME=REVISION argument to
+      create a named bookmark and immediately push it.
+    - The 'how to resolve conflicts' hint that is shown when
+      conflicts appear can be hidden by setting
+      hints.resolving-conflicts = false.
+    - jj op diff and jj op log --op-diff now show changes to which
+      commits correspond to working copies.
+    - jj op log -d is now an alias for jj op log --op-diff.
+    - jj bookmark move --to/--from can now be abbreviated to jj
+      bookmark move -t/-f
+    - jj bookmark list now supports --sort option. Similar to git
+      branch --sort.  See jj bookmark list --help for more details.
+    - A new command jj revert is added, which is similar to jj
+      backout but adds the --destination, --insert-after, and
+      --insert-before options to customize the location of reverted
+      commits.
+    - A new command jj git root is added, which prints the location
+      of the Git directory of a repository using the Git backend.
+    - In colocated repos, any files that jj considers added in the
+      working copy will now show up in git diff (as if you had run
+      git add --intent-to-add on them).
+    - Reversing colors is now supported. For example, to highlight
+      words by reversing colors rather than underlining, you can
+      set colors."diff token"={ underline = false, reverse = true }
+      in your config.
+    - Added revsets.log-graph-prioritize, which can be used to
+      configure which branch in the jj log graph is displayed on
+      the left instead of @ (e.g.
+      coalesce(description("megamerge\n"), trunk()))
+    - jj resolve now accepts new built-in merge tools :ours and
+      :theirs.  These merge tools accept side #1 and side #2 of the
+      conflict respectively.
+  * Fixed bugs
+    - jj log -p --stat now shows diff stats as well as the default
+      color-words/git diff output. #5986
+    - The built-in diff editor now correctly handles deleted files.
+      #3702
+    - The built-in diff editor now correctly retains the executable
+      bit on newly added files when splitting. #3846
+    - jj config set/--config value parsing rule is relaxed in a way
+      that unquoted apostrophes are allowed.  #5748
+    - jj fix could previously create new conflicts when a
+      descendant of a fixed revision was already correctly
+      formatted.
+
+-------------------------------------------------------------------
 Thu Mar  6 06:29:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.27.0:
