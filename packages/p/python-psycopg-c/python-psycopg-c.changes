@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr  9 06:53:27 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 3.2.6:
+  * Fix connection semantic when using
+    target_session_attrs=prefer-standby (ticket #1021).
+- update to 3.2.5:
+  * 3x faster UUID loading thanks to C implementation
+    (tickets #447, #998).
+- update to 3.2.4:
+  * Don’t lose notifies received whilst the notifies() iterator
+    is not running (ticket #962).
+  * Make sure that the notifies callback is called during the use
+    of the notifies() generator (ticket #972).
+  * Raise the correct error returned by the database (such as
+    AdminShutdown or IdleInTransactionSessionTimeout) instead of
+    a generic OperationalError when a server error causes a client
+    disconnection (ticket #988).
+  * Build macOS dependencies from sources instead using the
+    Homebrew versions in order to avoid problems with
+    MACOSX_DEPLOYMENT_TARGET (ticket #858).
+  * Bump libpq to 17.2 in Linux and macOS binary packages.
+  * Bump libpq to 16.4 in Windows binary packages, using the
+    vcpkg library (ticket #966).
+
+-------------------------------------------------------------------
 Tue Nov 12 16:28:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:
