@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  9 13:51:38 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add Rivet-fix-hepmc-tests.patch -- Use deduce_reader in API
+  tests for HepMC 3.3.x compatibility; part of upstream commit
+  ca0d57ca to release-4-0-x development branch.
+- Add Rivet-disable-testCmdLine.patch -- Disable an outdated and
+  failing test
+
+-------------------------------------------------------------------
 Sun Mar 23 15:20:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.11:

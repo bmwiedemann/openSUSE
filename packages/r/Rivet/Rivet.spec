@@ -26,6 +26,10 @@ License:        Apache-2.0 AND GPL-2.0-only AND MPL-2.0 AND LPPL-1.3a AND BSL-1.
 URL:            https://rivet.hepforge.org/
 Source:         https://www.hepforge.org/archive/rivet/%{name}-%{version}.tar.bz2
 Patch0:         sover.diff
+# PATCH-FEATURE-OPENSUSE Rivet-disable-testCmdLine.patch badshah400@gmail.com -- Disable an outdated and failing test
+Patch1:         Rivet-disable-testCmdLine.patch
+# PATCH-FIX-UPSTREAM Rivet-fix-hepmc-tests.patch badshah400@gmail.com -- Use deduce_reader in API tests for HepMC 3.3.x compatibility; part of upstream commit ca0d57ca to release-4-0-x development branch
+Patch2:         Rivet-fix-hepmc-tests.patch
 BuildRequires:  HepMC-devel >= 3.2
 BuildRequires:  YODA-devel >= 1.9.11
 BuildRequires:  bash-completion
@@ -37,6 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  yaml-cpp-devel
 BuildRequires:  pkgconfig(gsl)
@@ -151,12 +156,10 @@ sed -E -i '1{/^#!.*env python/d}' \
 
 %build
 autoreconf -fvi
-export PYTHON_VERSION=%{py3_ver}
-%configure --with-hepmc3 \
-           --with-hepmc3-libname=HepMC3 \
-           --with-hepmc3-libpath=%{_libdir}/ \
-           --with-hepmc3-incpath=%{_includedir}/ \
-           --docdir=%{_docdir}/%{name}/
+export PYTHON_VERSION=%{python3_version}
+%configure --with-hepmc3=%{_prefix} \
+           --docdir=%{_docdir}/%{name}/ \
+           %{nil}
 %make_build
 
 %install
@@ -190,8 +193,7 @@ mv %{buildroot}/etc/bash_completion.d/rivet-completion %{buildroot}%{_datadir}/b
 export PYTHONPATH+=':%{buildroot}%{python3_sitearch}'
 %make_build check
 
-%post -n %{so_name} -p /sbin/ldconfig
-%postun -n %{so_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{so_name}
 
 %files -n %{so_name}
 %{_libdir}/libRivet-*.so

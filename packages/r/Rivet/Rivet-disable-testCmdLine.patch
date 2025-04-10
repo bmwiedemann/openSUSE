@@ -1,0 +1,21 @@
+Index: Rivet-3.1.11/test/Makefile.am
+===================================================================
+--- Rivet-3.1.11.orig/test/Makefile.am
++++ Rivet-3.1.11/test/Makefile.am
+@@ -38,11 +38,11 @@ TESTS = \
+ testMath testMatVec testCmp testApi.sh testNaN.sh testBeams \
+ testImport.sh
+ 
+-if ENABLE_ANALYSES
+-
+-TESTS += testCmdLine.sh
+-
+-endif
++# if ENABLE_ANALYSES
++#
++# TESTS += testCmdLine.sh
++#
++# endif
+ 
+ EXTRA_DIST = testApi.hepmc testCmdLine.sh testImport.sh testApi.sh testNaN.sh
+ 

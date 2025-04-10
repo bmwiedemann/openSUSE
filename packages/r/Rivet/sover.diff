@@ -1,7 +1,11 @@
-Index: Rivet-3.1.0/src/Makefile.am
+---
+ src/Makefile.am |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: Rivet-3.1.11/src/Makefile.am
 ===================================================================
---- Rivet-3.1.0.orig/src/Makefile.am
-+++ Rivet-3.1.0/src/Makefile.am
+--- Rivet-3.1.11.orig/src/Makefile.am
++++ Rivet-3.1.11/src/Makefile.am
 @@ -4,7 +4,7 @@ lib_LTLIBRARIES = libRivet.la
  
  libRivet_la_SOURCES =
