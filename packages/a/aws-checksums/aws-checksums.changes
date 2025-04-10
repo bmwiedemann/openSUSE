@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr  7 07:21:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.5
+  * Add missing extern c to new header by @DmitriyMusatkin in (#103)
+- from version 0.2.4
+  * Add init functions to support thread safe init of impls
+    by @DmitriyMusatkin in (#102)
+
+-------------------------------------------------------------------
 Thu Jan 30 12:44:02 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.3
