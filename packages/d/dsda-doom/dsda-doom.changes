@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 10 09:15:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.29
+  * Reorganized all menus
+  * Strict mode is now On by default when recording demos
+  * Don't allow saving the game on strict mode
+  * Added support for reading GAMEINFO lump ("iwad" field only)
+  * Added config option for toggling aspect ratio correction
+  * Added linear sky scrolling option for Software renderer
+  * Added smooth chainsaw bobbing (only when Uncapped FPS is on)
+  * Remove SysEx support from FluidSynth midi player
+  * automap: New colors for "Alt Secret Exit line" and
+    "Tag Finder line"
+  * Checks if a map exists before changing music with IDMUS
+  * New cheat SKILL
+
+-------------------------------------------------------------------
 Thu Mar 20 21:37:51 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove unused BuildRequire on libpcre. (The feature using pcre

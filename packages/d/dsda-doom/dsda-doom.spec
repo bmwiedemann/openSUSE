@@ -17,7 +17,7 @@
 
 
 Name:           dsda-doom
-Version:        0.28.3
+Version:        0.29.0
 Release:        0
 Summary:        DOOM source port with Hexen support and demo compatibility
 License:        GPL-2.0-or-later
@@ -71,8 +71,6 @@ It features:
 
 %build
 cd prboom2/
-mkdir -p ./usr/%_lib
-touch ./usr/%_lib/libpmjni.so.2.0.3
 %cmake -DDOOMWADDIR="%_datadir/doom" -DDSDAPWADDIR="%_datadir/doom" -D_IMPORT_PREFIX=$PWD/usr
 %cmake_build
 
