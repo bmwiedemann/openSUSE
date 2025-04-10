@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jan 20 09:14:10 UTC 2025 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- updated to version 1.6.0
+- ## 1.6.0 (2024-08-28)
+- chore: chore: bump version to v1.6.0 ([483e7ca](https://github.com/tonytonyjan/jaro_winkler/commit/483e7ca))
+- fix: add "similarity" methods and deprecate "distance" methods ([1682f94](https://github.com/tonytonyjan/jaro_winkler/commit/1682f94))
+- fix: use `rb_warn` over `rb_category_warn` for Ruby 2.7 ([0fd7b5d](https://github.com/tonytonyjan/jaro_winkler/commit/0fd7b5d))
+- test: reduce deprecation warnings ([9ada77e](https://github.com/tonytonyjan/jaro_winkler/commit/9ada77e))
+- docs: use "similarity" over "distance" in README ([97c9cbc](https://github.com/tonytonyjan/jaro_winkler/commit/97c9cbc))
+
+-------------------------------------------------------------------
 Tue Nov 14 15:08:44 UTC 2023 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 1.5.6, no changelog found
