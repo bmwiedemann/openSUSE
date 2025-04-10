@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:25:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.10
+  * Add support for Python 3.13.
+  * Receive notifications on commit (ticket #1728).
+  * Errorcodes map and errors classes updated to PostgreSQL 17.
+  * Drop support for Python 3.7.
+- Drop support-python-313.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Oct 29 05:08:18 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patch py313-tests.patch, included in:

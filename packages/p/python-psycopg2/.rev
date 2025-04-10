@@ -461,4 +461,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
 - add py313-tests.patch</comment>
     <requestid>1218908</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>ef6f0da002813aea5f73973e5302e623</srcmd5>
+    <version>2.9.10</version>
+    <time>1744315125</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268414</requestid>
+  </revision>
 </revisionlist>
