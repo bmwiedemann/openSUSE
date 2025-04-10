@@ -91,4 +91,12 @@
   * Release Python 3.13 binary packages.</comment>
     <requestid>1223752</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f18ddb83fa907a215387c8c6b4d5303f</srcmd5>
+    <version>3.2.6</version>
+    <time>1744315117</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268072</requestid>
+  </revision>
 </revisionlist>
