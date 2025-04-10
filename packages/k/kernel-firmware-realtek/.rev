@@ -33,4 +33,12 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1253120</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>67a30a709b140f44e26b867dcfd2e037</srcmd5>
+    <version>20250313</version>
+    <time>1744315062</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.15-rc1</comment>
+    <requestid>1268122</requestid>
+  </revision>
 </revisionlist>

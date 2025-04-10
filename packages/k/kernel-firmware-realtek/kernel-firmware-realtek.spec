@@ -30,8 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250311.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250409.tar.gz#/kernel-firmware-tools-20250409.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -55,6 +54,7 @@ Supplements:    modalias(pci:v000010ECd0000002Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00002502sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00002600sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00003000sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000010ECd00005000sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008125sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008126sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010ECd00008129sv*sd*bc*sc*i*)
@@ -626,6 +626,7 @@ Supplements:    modalias(usb:v17EFp7205d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v17EFp720Cd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v17EFp7214d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v17EFp721Ed*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v17EFpA359d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v17EFpA387d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v18C5p0008d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v18C5p0012d*dc*dsc*dp*ic*isc*ip*in*)
@@ -733,6 +734,7 @@ Supplements:    modalias(usb:v25D4p4CABd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2C4Ep0100d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2C4Ep0102d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v2C4Ep0104d*dc*dsc*dp*icFFiscFFipFFin*)
+Supplements:    modalias(usb:v413CpB097d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v4855p0090d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v4855p0091d*dc*dsc*dp*ic*isc*ip*in*)
@@ -776,7 +778,8 @@ Supplements:    modalias(usb:vF201p5370d*dc*dsc*dp*ic*isc*ip*in*)
 This package contains kernel firmware files for Realtek wireless drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh realtek < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE

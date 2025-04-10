@@ -22,13 +22,16 @@ r8152: usb:v17EFp7205d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp720Cd*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp7214d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFp721Ed*dc*dsc*dp*ic*isc*ip*in*
+r8152: usb:v17EFpA359d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v17EFpA387d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v2001pB301d*dc*dsc*dp*ic*isc*ip*in*
 r8152: usb:v2357p0601d*dc*dsc*dp*ic*isc*ip*in*
+r8152: usb:v413CpB097d*dc*dsc*dp*ic*isc*ip*in*
 r8169: pci:v00000001d00008168sv*sd00002410bc*sc*i*
 r8169: pci:v000010ECd00002502sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00002600sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00003000sv*sd*bc*sc*i*
+r8169: pci:v000010ECd00005000sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008125sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008126sv*sd*bc*sc*i*
 r8169: pci:v000010ECd00008129sv*sd*bc*sc*i*
