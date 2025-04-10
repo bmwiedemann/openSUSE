@@ -42,4 +42,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Update Xe3LPD DMC to v2.20</comment>
     <requestid>1252345</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7ce1ab9ac5763162ecc04a7a31b6c0d8</srcmd5>
+    <version>20250310</version>
+    <time>1744315056</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.15-rc1</comment>
+    <requestid>1268115</requestid>
+  </revision>
 </revisionlist>

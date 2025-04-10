@@ -30,8 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250311.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250409.tar.gz#/kernel-firmware-tools-20250409.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -418,6 +417,8 @@ Supplements:    modalias(pci:v00008086d0000A7ADsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B080sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B081sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B082sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B083sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000B08Fsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B090sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B091sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000B092sv*sd*bc03sc*i*)
@@ -430,13 +431,17 @@ Supplements:    modalias(pci:v00008086d0000E202sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E20Bsv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E20Csv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E20Dsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E210sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000E212sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E215sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000E216sv*sd*bc03sc*i*)
 
 %description
 This package contains kernel firmware files for Intel i915 graphics driver.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh i915 < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
