@@ -1,0 +1,86 @@
+From 4d1325fedc01defcc5053672fc8eeb47ef81db57 Mon Sep 17 00:00:00 2001
+From: Marcelo Duarte <marcelotduarte@users.noreply.github.com>
+Date: Fri, 21 Mar 2025 18:27:46 -0300
+Subject: [PATCH] fix: use only console based on PEP587 on Python 3.13
+
+---
+ cx_Freeze/executable.py   | 11 +++--------
+ setup.py                  |  6 +-----
+ tests/test_executables.py |  8 +-------
+ 3 files changed, 5 insertions(+), 20 deletions(-)
+
+diff --git a/cx_Freeze/executable.py b/cx_Freeze/executable.py
+index b19b50555..56cc0f041 100644
+--- a/cx_Freeze/executable.py
++++ b/cx_Freeze/executable.py
+@@ -11,7 +11,6 @@
+ from typing import TYPE_CHECKING
+ 
+ from cx_Freeze._compat import (
+-    ABI_THREAD,
+     EXE_SUFFIX,
+     IS_MACOS,
+     IS_MINGW,
+@@ -75,14 +74,10 @@ def base(self) -> Path:
+ 
+     @base.setter
+     def base(self, name: str | Path | None) -> None:
+-        # The default base is the legacy console, except for Python 3.13t and
+-        # Python 3.13 on macOS, that supports only the new console
++        # The default base is the legacy console, except for
++        # Python 3.13, that supports only the new console
+         version = sys.version_info[:2]
+-        if (
+-            version <= (3, 13)
+-            and ABI_THREAD == ""
+-            and not (IS_MACOS and version == (3, 13))
+-        ):
++        if version < (3, 13):
+             name = name or "console_legacy"
+         else:
+             name = name or "console"
+diff --git a/setup.py b/setup.py
+index 7185a255a..8278a42f4 100644
+--- a/setup.py
++++ b/setup.py
+@@ -285,11 +285,7 @@ def get_extensions() -> list[Extension]:
+             optional=optional,
+         )
+     ]
+-    if (
+-        version <= (3, 13)
+-        and abi_thread == ""
+-        and not (IS_MACOS and version == (3, 13))
+-    ):
++    if version < (3, 13):
+         extensions += [
+             Extension(
+                 "cx_Freeze.bases.console_legacy",
+diff --git a/tests/test_executables.py b/tests/test_executables.py
+index cdba2c9de..7e95bf161 100644
+--- a/tests/test_executables.py
++++ b/tests/test_executables.py
+@@ -12,10 +12,8 @@
+ 
+ from cx_Freeze import Executable
+ from cx_Freeze._compat import (
+-    ABI_THREAD,
+     BUILD_EXE_DIR,
+     EXE_SUFFIX,
+-    IS_MACOS,
+     IS_MINGW,
+     IS_WINDOWS,
+ )
+@@ -242,11 +240,7 @@ def test_executables(
+         ("icon.ico", "icon.icns", "icon.png", "icon.svg"),
+     ),
+ ]
+-if (
+-    sys.version_info[:2] <= (3, 13)
+-    and ABI_THREAD == ""
+-    and not (IS_MACOS and sys.version_info[:2] == (3, 13))
+-):
++if sys.version_info[:2] < (3, 13):
+     TEST_VALID_PARAMETERS += [
+         ("base", None, "console_legacy-"),
+         ("base", "console_legacy", "console_legacy-"),

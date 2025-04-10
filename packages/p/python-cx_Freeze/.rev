@@ -250,4 +250,23 @@
     <comment></comment>
     <requestid>1254702</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f8d2fabd16b9a7c9e92c76bb74818ef4</srcmd5>
+    <version>8.0.0</version>
+    <time>1744315188</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.0.0:
+  * Python 3.13 support.
+  * Python 3.13 free-threaded support for Linux and macOS.
+  * Download and extract the MSVC Redistributable files.
+  * Implement bases using PEP587 - Python Initialization Configuration.
+  * Drop Python 3.8 support.
+  * New and Improved hooks.
+  * Bug fixes and improvements.
+- Add patch use-only-console-on-python-313.patch:
+  * Only build legacy console for Python 3.12 and earlier.
+- Stop skipping Python 3.13, it's supported upstream.
+- Normalize metadata directory name.</comment>
+    <requestid>1266734</requestid>
+  </revision>
 </revisionlist>

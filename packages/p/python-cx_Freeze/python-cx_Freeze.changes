@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  3 01:23:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.0.0:
+  * Python 3.13 support.
+  * Python 3.13 free-threaded support for Linux and macOS.
+  * Download and extract the MSVC Redistributable files.
+  * Implement bases using PEP587 - Python Initialization Configuration.
+  * Drop Python 3.8 support.
+  * New and Improved hooks.
+  * Bug fixes and improvements.
+- Add patch use-only-console-on-python-313.patch:
+  * Only build legacy console for Python 3.12 and earlier.
+- Stop skipping Python 3.13, it's supported upstream.
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Thu Mar 20 07:52:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.2.10

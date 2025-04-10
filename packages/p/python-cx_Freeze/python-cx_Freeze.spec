@@ -16,16 +16,16 @@
 #
 
 
-# https://github.com/marcelotduarte/cx_Freeze/issues/2568
-%define skip_python313 1
 %define oldpython python
 Name:           python-cx_Freeze
-Version:        7.2.10
+Version:        8.0.0
 Release:        0
 Summary:        Scripts to create standalone executables from Python scripts
 License:        Python-2.0
 URL:            https://github.com/anthony-tuininga/cx_Freeze
 Source:         https://github.com/anthony-tuininga/cx_Freeze/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#marcelotduarte/cx_Freeze#2842
+Patch0:         use-only-console-on-python-313.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module filelock >= 3.12.3}
@@ -101,6 +101,6 @@ export CFLAGS="%{optflags}"
 %python_alternative %{_bindir}/cxfreeze
 %python_alternative %{_bindir}/cxfreeze-quickstart
 %{python_sitearch}/cx_Freeze
-%{python_sitearch}/cx_Freeze-%{version}.dist-info
+%{python_sitearch}/cx_[Ff]reeze-%{version}.dist-info
 
 %changelog
