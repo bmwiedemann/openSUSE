@@ -1618,4 +1618,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>1267320</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>e4123e37f78779525b3d3ff46f77d71d</srcmd5>
+    <version>1.2.9</version>
+    <time>1744315145</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.9
+  + Fixed subsonic parse error (#1719).
+  + Fixed Deezer cover provider parse error (#1716).
+  + Fixed last.fm import progress. 
+</comment>
+    <requestid>1268211</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 18:07:18 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.9
+  + Fixed subsonic parse error (#1719).
+  + Fixed Deezer cover provider parse error (#1716).
+  + Fixed last.fm import progress. 
+
+-------------------------------------------------------------------
 Sat Apr  5 15:58:04 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.8
