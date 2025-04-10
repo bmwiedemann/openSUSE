@@ -1,0 +1,55 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+INSTDIR=$(CURDIR)/debian/grommunio-dav
+phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
+
+#include /usr/share/quilt/quilt.make
+
+SUBSTVARS = -Vdist:Depends="php-mbstring"
+DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+
+%:
+	dh  $@
+
+override_dh_gencontrol:
+	dh_gencontrol -- $(SUBSTVARS)
+
+override_dh_install:
+	rm -f {INSTALL,LICENSE,DEVELOPMENT}
+	# set version number
+	echo "<?php  define('GDAV_VERSION', '${DEB_VERSION}');" > version.php
+
+	# fix file names
+	mv "config.php" "grommunio-dav.conf.php";
+
+	# Nginx conf
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d"
+	install -Dpvm 644 build/grommunio-dav.conf "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d/"
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/grommunio-dav-upstream.conf
+	install -Dpvm 644 build/grommunio-dav-upstream.conf "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d/grommunio-dav.conf"
+
+	# PHP-FPM
+	mkdir -pv "${INSTDIR}/${phpdir}/fpm/pool.d" "${INSTDIR}/usr/lib/sysusers.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/pool-grommunio-dav.conf
+	install -Dpvm 644 build/pool-grommunio-dav.conf "${INSTDIR}/${phpdir}/fpm/pool.d/"
+	cp -a build/sysuser.conf "${INSTDIR}/usr/lib/sysusers.d/grommunio-dav.conf"
+
+	# Let the DEVELEOPER_MODE be enabled for now, otherwise files will not work.
+	# sed -i "s;'DEVELOPER_MODE', true;'DEVELOPER_MODE', false;" config.php
+	sed -i 's;level = TRACE;level = INFO;' glogger.ini
+
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/pool-grommunio-dav.conf
+	install -Dm0644 build/pool-grommunio-dav.conf ${INSTDIR}/${phpdir}/fpm/php-fpm.d/pool-grommunio-dav.conf
+	dh_install
+	mkdir -p ${INSTDIR}/var/log/grommunio-dav
+	mkdir -p ${INSTDIR}/var/lib/grommunio-dav
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	dh_clean
+
+build:

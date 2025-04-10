@@ -1,0 +1,18 @@
+Source: grommunio-dav
+Section: web
+Priority: extra
+Maintainer: grommunio <dev@grommunio.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: https://grommunio.com
+
+Package: grommunio-dav
+Architecture: all
+Depends: system-user-grodav, ${misc:Depends},
+ php (>= 7.4) | php7 (>= 7.4), php-mbstring, php-sqlite3,
+ php-xml, php-curl, php-mapi-gromox, nginx, nginx-common,
+ mapi-header-php (>= 1.5), ${dist:Depends}
+Provides: system-user-grodav
+Replaces: system-user-grodav
+Breaks: system-user-grodav
+Description: grommunio-dav is CalDAV and CardDAV implementation for grommunio.

@@ -1,0 +1,39 @@
+#!/bin/sh
+# postrm script for grommunio-dav
+
+set -e
+
+# Use debconf
+. /usr/share/debconf/confmodule
+
+case "$1" in
+    purge|abort-install)
+        if [ -f /usr/share/grommunio-common/nginx/locations.d/grommunio-dav.conf ]; then
+            echo "Remove grommunio-dav config files and restart nginx"
+            rm /usr/share/grommunio-common/nginx/locations.d/grommunio-dav.conf
+            ucf --purge /usr/share/grommunio-common/nginx/locations.d/grommunio-dav.conf
+            # Following two lines are here because of a mistake, may be deleted at some point
+            rm /usr/share/grommunio-common/nginx/upstreams.d/grommunio-dav-upstream.conf
+            ucf --purge /usr/share/grommunio-common/nginx/upstreams.d/grommunio-dav-upstream.conf
+            rm /usr/share/grommunio-common/nginx/upstreams.d/grommunio-upstream.conf
+            ucf --purge /usr/share/grommunio-common/nginx/upstreams.d/grommunio-upstream.conf
+            systemctl reload nginx php
+
+            rm /etc/php7/fpm/php-fpm.d/pool-grommunio-dav.conf
+            ucf --purge /etc/php7/fpm/php-fpm.d/pool-grommunio-dav.conf
+            systemctl restart php7.4-fpm.service
+        fi
+        ;;
+
+    remove|upgrade|failed-upgrade|abort-upgrade|disappear)
+        ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

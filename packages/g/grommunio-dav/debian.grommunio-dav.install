@@ -1,0 +1,8 @@
+grommunio-dav.conf.php              etc/grommunio-dav/
+glogger.ini                         etc/grommunio-dav/
+server.php                          usr/share/grommunio-dav/
+lib                                 usr/share/grommunio-dav/
+vendor                              usr/share/grommunio-dav/
+version.php                         usr/share/grommunio-dav/
+
+build/grommunio-dav.lr              etc/logrotate.d/

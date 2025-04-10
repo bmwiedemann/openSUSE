@@ -1,0 +1,6 @@
+<?php
+
+if (!defined("GDAV_VERSION")) {
+    define("GDAV_VERSION", "@VERSION@");
+}
+

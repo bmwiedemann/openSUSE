@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Thu Apr 10 00:19:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5
+  * Set default properties like last modification time for
+    cross-device compatibility.
+  * Optimizations on CardDAV setData calls.
+  * Evaluate the new USER_PRIVILEGE_DAV flag of the user account
+    upon login.
+  * Urlencode vcaluids in anticipation of special characters.
+
+-------------------------------------------------------------------
+Wed Mar 15 15:22:50 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot grommunio-dav-1.2.0.9976bca
+  * set a default value for the errcontext parameter to support php 8.0+
+  * build: update logrotate parameters
+
+-------------------------------------------------------------------
+Tue Jan 31 11:42:18 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (snapshot 1.1.37 / git.d5b6463) for
+  build.opensuse.org

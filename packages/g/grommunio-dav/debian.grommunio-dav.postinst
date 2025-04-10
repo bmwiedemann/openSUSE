@@ -1,0 +1,57 @@
+#!/bin/sh
+# postinst script for grommunio-dav
+#
+# see: dh_installdeb(1)
+
+set -e
+
+# Use debconf
+. /usr/share/debconf/confmodule
+
+set_perms() {
+        USER="$1"
+        GROUP="$2"
+        MODE="$3"
+        FILE="$4"
+        if ! dpkg-statoverride --list "$FILE" > /dev/null 2>&1; then
+            chown -h "$USER:$GROUP" "$FILE"
+            chmod $MODE "$FILE"
+        fi
+}
+
+case "$1" in
+    configure|reconfigure)
+	# Set permissions
+	if [ -x /usr/bin/systemd-sysusers ]; then
+		/usr/bin/systemd-sysusers grommunio-dav.conf
+	else
+		getent group grodav >/dev/null || addgroup --system grodav
+		getent passwd grodav >/dev/null || \
+			adduser --system grodav --home / --no-create-home --disabled-password --ingroup grodav
+	fi
+
+        set_perms grodav root 0770 /var/lib/grommunio-dav
+        set_perms grodav grodav 0770 /var/log/grommunio-dav
+
+	ln -sfv "/etc/grommunio-dav/grommunio-dav.conf.php" "/usr/share/grommunio-dav/config.php"
+	ln -sfv "/etc/grommunio-dav/glogger.ini" "/usr/share/grommunio-dav/glogger.ini"
+
+	systemctl list-units --plain --no-legend --quiet "php*fpm.service" | \
+	awk '{print$1}' | xargs /usr/bin/systemctl try-restart
+        if [ -f /usr/share/grommunio-common/nginx/locations.d/grommunio-dav.conf ]; then
+            /usr/bin/systemctl reload nginx.service
+        fi
+        ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+        ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
