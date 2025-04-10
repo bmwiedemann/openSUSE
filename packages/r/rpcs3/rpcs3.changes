@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Wed Apr  9 19:33:29 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to rpcs3-0.0.36~git20250409:
+  * glext: Update from 2022.05.30 to 2025.02.03
+  * rsx: Remove superfluous log
+  * rsx: Track command barrier types during recording for faster instancing compatibility checks
+  * PPU LLVM: Fixup MTFSF
+  * Qt: Fix multi package install dialog on Linux
+  * ppu: Remove redundant checks on MTFSF
+  * docker: Update ffmpeg to 7.1.1
+  * Update curl to 8.13.0
+  * Update soundtouch to 2.4.0
+  * Fix compilation with newer Qt
+  * cellMic: Use full device name registration and comparison
+  * cellMic: Try to open device with different sample rates
+  * Silence sys_spu_thread_write_spu_mb
+  * Improve lwmutex_lock error logging
+  * sys_spu: Fix HW schedular limits
+  * Try msvc workaround
+  * vk: Use dynamic constant buffer offset via push constant
+  * vk: Silence compiler warning
+  * vk: Use dynamic constants offset for transform constants
+  * vk: Switch transform constants from UBO to SSBO
+  * vk: Add support for dynamic buffer offsets
+  * appimage: Do not bundle libQt6OpenGL
+  * appimage: Do not bundle Qt6VirtualKeyboard
+  * appimage: Do not bundle unused Qt6 libraries
+  * Fix #17000
+  * vm.cpp: Remove redundant cache hint
+  * PPU LLVM: Fix VMAXFP, VMINFP
+  * .github: Remove outdated pull request template
+  * README: Update VC_redist from 2019 to 2022
+  * .github: Update log path in issue templates
+  * Discord: Use vanity URL
+  * Fix macOS SDK path
+  * Update FAudio to 25.04
+  * Update SDL to 3.2.10
+  * Qt: remove discontinued QWinTaskbar code
+  * Windows: fix updating with unicode user name
+  * Fix mac build with cmake 4.0
+  * Update Windows ccache version
+  * Update docker cmake to 3.28 and update minimum to 3.28, as well as remove uneeded minimum
+  * overlays: play ICON1.PAM in save data list if possible
+  * overlays: propagate item selection to children
+  * overlays: implement video overlay class
+  * Qt/overlays: expose qt_video_source_wrapper as emu callback
+  * Overlays: set layouts dirty if children are dirty
+  * cellSaveData: properly initialize SaveDataEntry
+  * Update OpenAL to 1.24.3
+  * Qt: disable shortcuts completely if disable kb hotkeys is enabled
+  * Qt: set audio hotkey defaults to additionally need Ctrl pressed
+
+- Update to rpcs3-0.0.36~git20250330:
+  * rpcs3_version: Bump to 0.0.36
+  * input: disable pad vibration after no new data was sent for 3 seconds
+  * Fix discord after #16885
+  * Qt: fix wrong save data movie playing when selecting a different entry
+  * 7z: log error code when opening the file
+  * LLVM JIT: do not produce broken binaries on crash
+  * Update Qt to 6.8.3 and update clang compiler
+  * Qt: play ICON1.PAM in save data manager details
+  * Qt: Add qt video source class for more generic video playback
+  * Qt: play ICON1.PAM in save data manager
+  * Qt: pass game list events to base class
+  * Qt: simplify icon_ready_callback in game list
+  * VulkanMemoryAllocator: Match current master commit
+  * Add VulkanMemoryAllocator v2.3.0 submodule
+  * SPU Debug: WrDec and LSA view
+  * PPU/cellSpurs: MGS4: Fix cellSpursAddUrgentCommand race condition
+  * SPU LLVM: Dump some funcs
+  * config: Set default Driver Wake-Up Delay to 0
+  * Loader: deny boot if the firmware is too old
+  * unpkg: Restore support for PSP/Vita packages
+  * config: Increase max vblank rate to 6000
+  * overlays: hide friends list in home menu if rpcn is not configured
+  * Update Qt to 6.8.3
+  * VS/MSVC: Move LTCG and GL to CI only
+  * Windows/Qt: do not deploy dx and ffmpeg libs
+  * cellMic: log ALCenum error string
+  * Qt: fix custom icons when "Prefer game data icons" is set
+  * Qt: add option to prefer game data icons in the game list
+  * Set PSN to disconnected when net status is disconnected
+  * overlays/rpcn: Create list even if rpcn connection failed
+  * SPU LLVM: Don't use vperm2b256to128 outside of CPUTranslator.h
+  * patches: fix c_utf8 validation
+  * Fix for GCC builds
+  * rsx: Code cleanup and fix fragment texture dirty trigger
+  * rsx: Always execute pre-draw pipeline analysis regardless of flags
+  * rsx: Bypass sampling cache logic when dealing with host generated textures
+  * Fix p2p binding to vport 0
+
+-------------------------------------------------------------------
 Mon Mar 24 13:15:23 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to rpcs3-0.0.35~git20250322:
