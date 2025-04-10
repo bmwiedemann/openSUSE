@@ -386,4 +386,24 @@ Features:
 - Specify dist-info directory in %files.</comment>
     <requestid>1239691</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a34104d2f0ef51e0bc8f29964b6d9d53</srcmd5>
+    <version>5.2.0</version>
+    <time>1744315114</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.0:
+Features
+  * Add `reverse_domain_name` result property
+    #gh/john-kurkowski/tldextract#342
+Bugfixes
+  * Extend exported public interface with `ExtractResult` and
+    `update`
+    These were always meant to be public. Eases user import.
+Docs
+  * Document result fields
+  * Note all return values
+  * Colocate usage in the usage section
+  * Link to private domain docs</comment>
+    <requestid>1267941</requestid>
+  </revision>
 </revisionlist>

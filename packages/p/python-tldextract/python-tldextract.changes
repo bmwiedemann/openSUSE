@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr  8 15:06:55 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.2.0:
+Features
+  * Add `reverse_domain_name` result property
+    #gh/john-kurkowski/tldextract#342
+Bugfixes
+  * Extend exported public interface with `ExtractResult` and
+    `update`
+    These were always meant to be public. Eases user import.
+Docs
+  * Document result fields
+  * Note all return values
+  * Colocate usage in the usage section
+  * Link to private domain docs
+
+-------------------------------------------------------------------
 Thu Jan 23 04:42:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop unneeded BuildRequires on six.
