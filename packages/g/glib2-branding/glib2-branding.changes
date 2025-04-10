@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  9 02:00:47 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Update SLE version to 16. (bsc#1240822)
+
+-------------------------------------------------------------------
 Wed Feb  5 14:03:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Assign Ctrl-Alt-Delete to shutdown, as we used to have in GNOME

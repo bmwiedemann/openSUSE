@@ -208,4 +208,12 @@
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251304</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4b1b3079aa46150e25a195970f29068a</srcmd5>
+    <version>16</version>
+    <time>1744315044</time>
+    <user>anag_factory</user>
+    <comment>- Update SLE version to 16. (bsc#1240822) (forwarded request 1268006 from AZhou)</comment>
+    <requestid>1268055</requestid>
+  </revision>
 </revisionlist>

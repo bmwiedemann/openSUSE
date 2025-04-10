@@ -1,5 +1,5 @@
 #
-# spec file for package glib2-branding
+# spec file for package glib2
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -52,7 +52,7 @@ BuildArch:      noarch
 Version:        42.1
 Release:        0
 %else
-Version:        15
+Version:        16
 Release:        0
 %endif
 
