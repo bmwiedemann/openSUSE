@@ -400,4 +400,17 @@
   * Don't use inet_ntoa, it is deprecated</comment>
     <requestid>1247082</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>817e5a4a56af0d04f3876598cdd2a558</srcmd5>
+    <version>1.20.0+git.20250327</version>
+    <time>1744315052</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.20.0+git.20250327:
+  * fix: use correct maximum length for TargetName and InitiatorName
+  * refactor(TODO): cleanup todos that have been implemented for ages
+  * feat(socket): log resolved ip addresses if portal is a hostname
+  * fix(socket): restore logging of local ip and port
+  * feat(logging): include LUN into log messages</comment>
+    <requestid>1268088</requestid>
+  </revision>
 </revisionlist>

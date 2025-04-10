@@ -18,7 +18,7 @@
 
 %define         sover 10
 Name:           libiscsi
-Version:        1.20.0+git.20250104
+Version:        1.20.0+git.20250327
 Release:        0
 Summary:        iSCSI client library and utilities
 License:        GPL-2.0-only AND LGPL-2.1-only

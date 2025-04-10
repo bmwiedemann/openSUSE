@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  9 09:40:03 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0+git.20250327:
+  * fix: use correct maximum length for TargetName and InitiatorName
+  * refactor(TODO): cleanup todos that have been implemented for ages
+  * feat(socket): log resolved ip addresses if portal is a hostname
+  * fix(socket): restore logging of local ip and port
+  * feat(logging): include LUN into log messages
+
+-------------------------------------------------------------------
 Wed Feb 19 13:08:14 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.20.0+git.20250104:
