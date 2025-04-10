@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 11:47:55 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250409.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250409
+  * Added 3.3.8
+  * Don't delete jruby.sh by @headius in #2517
+
+-------------------------------------------------------------------
 Wed Mar 26 23:19:35 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250326.
