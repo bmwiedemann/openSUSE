@@ -2,6 +2,7 @@
 # spec file for package re
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +17,21 @@
 #
 
 
-%global sover   28
+%global sover   32
 %global libname lib%{name}%{sover}
 Name:           re
-Version:        3.17.0
+Version:        3.21.1
 Release:        0
 Summary:        Library for real-time communications with async I/O support
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/baresip/re
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libcrypto) >= 1.1.1
+BuildRequires:  pkgconfig(zlib)
 Obsoletes:      librem4 < %{version}
 
 %description
@@ -60,7 +62,7 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libre.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

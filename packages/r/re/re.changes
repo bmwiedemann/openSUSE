@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr  5 08:43:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.21.1:
+  * multiple memory safety fixes
+  * extended functionality relevant for library consumers
+  * optimizations and adjustments for tests
+
+-------------------------------------------------------------------
 Thu Nov  7 16:59:49 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.17.0
