@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:08:23 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250410.9086124:
+  * Simplify code calling mount_chroot
+  * Support transactional systems without overlayfs on /etc
+  * Remove unnecessary umount_etc
+
+-------------------------------------------------------------------
+Wed Apr 09 12:28:18 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250409.7ec17ae:
+  * Call cleanup when snapshots change (boo#1240932)
+  * Add cleanup command to drop broken boot entries
+  * Document --all parameter
+  * Sync the bootloader also in MicroOS
+
+-------------------------------------------------------------------
 Mon Apr 07 13:02:21 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250407.f84e1da:
