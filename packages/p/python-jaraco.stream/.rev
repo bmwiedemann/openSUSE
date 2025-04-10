@@ -66,4 +66,15 @@
   * Moved more_itertools into the dependencies.</comment>
     <requestid>1224123</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>0649e99e7875bfd714c47fba75ac4201</srcmd5>
+    <version>3.0.4</version>
+    <time>1744315178</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.
+- Use the new environment variable for Sphinx building.</comment>
+    <requestid>1266256</requestid>
+  </revision>
 </revisionlist>

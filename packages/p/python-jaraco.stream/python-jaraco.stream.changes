@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:03:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Wed Mar 26 08:02:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+- Use the new environment variable for Sphinx building.
+
+-------------------------------------------------------------------
 Thu Nov 14 09:22:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.4:

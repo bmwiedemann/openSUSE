@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.stream
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ rm -rf jaraco.stream.egg-info
 
 %build
 %pyproject_wheel
-export JARACO_PACKAGING_SPHINX_WHEEL=./dist/jaraco.stream-%{version}-py3-none-any.whl
+export BUILD_ENVIRONMENT=current
 sphinx-build -b html docs/ build/sphinx/html/
 rm -r build/sphinx/html/{.buildinfo,.doctrees}
 
@@ -76,7 +76,7 @@ rm -r build/sphinx/html/{.buildinfo,.doctrees}
 %doc NEWS.rst README.rst
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/stream/
-%{python_sitelib}/jaraco.stream-%{version}*-info
+%{python_sitelib}/jaraco[_.]stream-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc build/sphinx/html
