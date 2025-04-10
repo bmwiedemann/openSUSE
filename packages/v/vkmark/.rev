@@ -159,4 +159,41 @@
   * ws: Improve automatic window system selection</comment>
     <requestid>1238014</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d1c7635028ccdc92ccaf573e7600e91e</srcmd5>
+    <version>2025.01+git.20250317</version>
+    <time>1744315128</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2025.01+git.20250317:
+  * build: Enable precompiled headers
+  * scenes/shading: Add missing fragment stage flag for uniform descriptor set
+  * display: Properly handle Vulkan errors during probing
+  * scenes: Use dedicated uniform buffer per image when needed
+  * kms: Specify modifier for DRM framebuffers when possible
+  * kms: Use the implicit modifier gbm API when only INVALID is supported
+  * kms: Get modifiers from the primary plane compatible with the used crtc
+  * kms: Fix modifier support for legacy modesetting
+  * Update files for 2025.01 release
+  * core: Use integer arithmetic to calculate average scene FPS
+  * kms: Allow TRANSFER_DST usage for created images
+  * kms: Require VK_KHR_display and VK_KHR_surface
+  * kms: Remove commented out debugging message
+  * kms: Support immediate presentation mode
+  * kms: Support mailbox presentation mode
+  * kms: Throw exception on page flip failure
+  * kms: Deduplicate image presentation code
+  * kms: Use image queue submit fences to synchronize presentation
+  * core,scenes: Allow backends to support an image queue submit fences
+  * scenes: Use a vkQueueSubmit signal semaphore only if the backend supports them
+  * core: Show display information when listing physical devices
+  * core: List Vulkan devices without initializing all Vulkan state
+  * display: Add 'display-index' winsys option
+  * display: Add window system that uses VK_KHR_display
+  * build: Add vulkan dependency to headless window system plugin
+  * ws: Centralize window system priority defines
+  * core: Use std::optional for use_device_with_uuid option
+  * ws: NativeSystem required_extensions
+  * kms: Add missing VK_KHR_dedicated_allocation extension request</comment>
+    <requestid>1268092</requestid>
+  </revision>
 </revisionlist>

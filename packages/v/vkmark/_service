@@ -5,7 +5,7 @@
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">vkmark</param>
-    <param name="versionformat">2017.08+git.%cd</param>
+    <param name="versionformat">2025.01+git.%cd</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">
