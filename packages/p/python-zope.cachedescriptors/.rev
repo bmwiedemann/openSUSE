@@ -65,4 +65,14 @@
   * Drop support for Python 3.7, 3.8.</comment>
     <requestid>1248472</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>997967b94d94bc49695b4bc90c62aa0f</srcmd5>
+    <version>5.1</version>
+    <time>1744315180</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266260</requestid>
+  </revision>
 </revisionlist>

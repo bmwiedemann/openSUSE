@@ -61,6 +61,6 @@ persistent objects.
 %license LICENSE.txt
 %{python_sitelib}/zope/cachedescriptors
 %{python_sitelib}/zope.cachedescriptors-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.cachedescriptors-%{version}.dist-info
+%{python_sitelib}/zope[_.]cachedescriptors-%{version}.dist-info
 
 %changelog
