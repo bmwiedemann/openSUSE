@@ -129,7 +129,6 @@ Configuration module for fcitx5
 
 %install
 %cmake_install
-cat /usr/lib/rpm/suse/macros | grep suse_version
 
 %find_lang kcm_fcitx5
 %find_lang %{sname}
