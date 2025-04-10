@@ -21,21 +21,18 @@
 %endif
 
 Name:           grommunio-web
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        Web client for access to grommunio features from the web
 License:        AGPL-3.0-or-later AND GPL-3.0-only AND LGPL-2.1-only AND MIT
 Group:          Productivity/Networking/Email/Clients
 URL:            http://www.grommunio.com/
-Source:         https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-3.11/grommunio-web-%version.tar.xz
-Source2:        https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-3.11/grommunio-web-%version.tar.asc
+Source:         https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-%version/grommunio-web-%version.tar.xz
+Source2:        https://github.com/grommunio/grommunio-web/releases/download/grommunio-web-%version/grommunio-web-%version.tar.asc
 Source3:        %name.keyring
 
 %if 0%{?suse_version} >= 1590 || 0%{?sle_version} >= 150400
 %define fpmdir /etc/php8/fpm/php-fpm.d
-%endif
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-%define fpmdir /etc/php7/fpm/php-fpm.d
 %endif
 %if 0%{?rhel} || 0%{?fedora_version}
 %define fpmdir /etc/php-fpm.d
@@ -58,25 +55,6 @@ Requires:       php8-sqlite
 Requires:       php8-sysvshm
 Requires:       php8-zip
 Requires:       php8-zlib
-%endif
-%if 0%{?sle_version} && 0%{?sle_version} < 150400
-BuildRequires:  php7-gettext
-BuildRequires:  php7-json
-Requires:       php7-bcmath
-Requires:       php7-ctype
-Requires:       php7-curl
-Requires:       php7-dom
-Requires:       php7-gd
-Requires:       php7-gettext
-Requires:       php7-iconv
-Requires:       php7-json
-Requires:       php7-mbstring
-Requires:       php7-openssl
-Requires:       php7-sodium
-Requires:       php7-sqlite
-Requires:       php7-sysvshm
-Requires:       php7-zip
-Requires:       php7-zlib
 %endif
 %if 0%{?rhel} || 0%{?fedora_version}
 BuildRequires:  php-gettext
