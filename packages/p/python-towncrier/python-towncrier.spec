@@ -1,7 +1,7 @@
 #
 # spec file for package python-towncrier
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,32 +25,32 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/hawkowl/towncrier
 Source:         https://files.pythonhosted.org/packages/source/t/towncrier/towncrier-%{version}.tar.gz
+BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module importlib-resources}
-BuildRequires:  %{python_module incremental}
+BuildRequires:  %{python_module importlib-metadata >= 4.6 if %python-base < 3.10}
+BuildRequires:  %{python_module importlib-resources >= 5 if %python-base < 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module tomli if %python-base < 3.11}
 BuildRequires:  fdupes
+BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-Jinja2
 Requires:       python-click
-Requires:       python-importlib-resources
-Requires:       python-incremental
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
+%if 0%{?python_version_nodots} < 310
+Requires:       python-importlib-metadata >= 4.6
+Requires:       python-importlib-resources >= 5
+%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli
 %endif
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Twisted}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module incremental}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli}
-BuildRequires:  git-core
 # /SECTION
 %python_subpackages
 
