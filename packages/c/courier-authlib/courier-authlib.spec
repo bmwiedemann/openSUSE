@@ -1,7 +1,7 @@
 #
 # spec file for package courier-authlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           courier-authlib
-Version:        0.72.3
+Version:        0.72.4
 Release:        0
 Summary:        Courier authentication library
 License:        SUSE-GPL-3.0-with-openssl-exception
