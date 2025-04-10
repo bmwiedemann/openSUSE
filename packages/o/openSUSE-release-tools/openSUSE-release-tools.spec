@@ -21,7 +21,7 @@
 %define announcer_filename factory-package-news
 %define services osrt-slsa.target osrt-relpkggen@.timer osrt-relpkggen@.service osrt-pkglistgen@.timer osrt-pkglistgen@.service
 Name:           openSUSE-release-tools
-Version:        20250217.651e507
+Version:        20250409.44b68ff9
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -35,7 +35,6 @@ BuildRequires:  python3-PyYAML
 BuildRequires:  python3-cmdln
 BuildRequires:  python3-colorama
 BuildRequires:  python3-lxml
-BuildRequires:  python3-osc
 BuildRequires:  python3-pycurl
 BuildRequires:  python3-python-dateutil
 BuildRequires:  python3-pyxdg
@@ -150,13 +149,9 @@ Requires(pre):  shadow
 Suggests:       grafana
 BuildArch:      noarch
 %if 0%{?suse_version} > 1500
-Requires:       influxdb
-Requires:       python3-influxdb
+Requires:       influxdb2
+Requires:       python3-influxdb-client
 Requires:       telegraf
-%else
-Suggests:       influxdb
-Suggests:       python3-influxdb
-Suggests:       telegraf
 %endif
 
 %description metrics
@@ -269,7 +264,6 @@ Group:          Development/Tools/Other
 # TODO Update requirements, but for now base deps.
 Requires:       %{name} = %{version}
 Requires:       osc >= 0.165.1
-Requires:       python3-osc
 BuildArch:      noarch
 
 %description -n osclib
@@ -323,8 +317,9 @@ OSC plugin for the staging workflow, see `osc staging --help`.
 # slfo-packagelist-uploader requires python-GitPython but 15.6 providing
 # python311-GitPython only, therefore do not ship slfo-packagelist-uploader
 # in 15.6 since python3-GitPython is not available
+# metrics.py requires python3-infludbdb-client which is unavailable on 15.6
 %if 0%{?suse_version} <= 1500
-rm slfo-packagelist-uploader.py
+rm slfo-packagelist-uploader.py metrics.py
 %endif
 
 %build
@@ -412,6 +407,7 @@ exit 0
 %{_bindir}/osrt-compare_pkglist
 %{_bindir}/osrt-container_cleaner
 %{_bindir}/osrt-deptool
+%{_bindir}/osrt-devel_update
 %{_bindir}/osrt-fcc_submitter
 %{_bindir}/osrt-issue-diff
 %{_bindir}/osrt-legal-auto
@@ -505,11 +501,16 @@ exit 0
 %{_datadir}/%{source_dir}/check_maintenance_incidents.py
 
 %files metrics
-%{_bindir}/osrt-metrics
 %{_datadir}/%{source_dir}/metrics
 %exclude %{_datadir}/%{source_dir}/metrics/access
 %exclude %{_datadir}/%{source_dir}/metrics/grafana/access.json
+%if 0%{?suse_version} > 1500
+%{_bindir}/osrt-metrics
 %{_datadir}/%{source_dir}/metrics.py
+%else
+%exclude %{_bindir}/osrt-metrics
+%exclude %{_datadir}/%{source_dir}/metrics.py
+%endif
 %{_datadir}/%{source_dir}/metrics_release.py
 # To avoid adding grafana as BuildRequires since it does not live in same repo.
 %dir %{_sysconfdir}/grafana
