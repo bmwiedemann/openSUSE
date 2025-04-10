@@ -26,6 +26,8 @@ URL:            https://github.com/wjakob/nanobind
 Source:         https://github.com/wjakob/nanobind/archive/refs/tags/v%{version}.tar.gz#/nanobind-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE nanobind-installationpath.patch
 Patch1:         nanobind-installationpath.patch
+# PATCH-FIX_UPSTREAM nanobind-2.6.1-test-build.patch
+Patch2:         nanobind-2.6.1-test-build.patch
 BuildRequires:  cmake
 BuildRequires:  %{python_module base}
 BuildRequires:  python-rpm-macros
