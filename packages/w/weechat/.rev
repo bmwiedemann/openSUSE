@@ -862,4 +862,16 @@
     <comment>- Update to 4.6.0</comment>
     <requestid>1255661</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>9274915b8ca44ffbbfebeea479682296</srcmd5>
+    <version>4.6.1</version>
+    <time>1744315148</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.6.1:
+  Fixed
+  * core: consider all keys are safe in cursor context (#2244)
+  * irc: display nick changes and quit messages when option irc.look.ignore_tag_messages is enabled (#2241)
+  * perl: fix build when multiplicity is not available (#2243)</comment>
+    <requestid>1268223</requestid>
+  </revision>
 </revisionlist>

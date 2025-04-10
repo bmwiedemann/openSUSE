@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  9 19:16:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 4.6.1:
+
+  Fixed
+  * core: consider all keys are safe in cursor context (#2244)
+  * irc: display nick changes and quit messages when option irc.look.ignore_tag_messages is enabled (#2241)
+  * perl: fix build when multiplicity is not available (#2243)
+
+
+-------------------------------------------------------------------
 Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.6.0:
