@@ -1,7 +1,7 @@
 #
 # spec file for package python-ttp-templates
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           python-ttp-templates
-Version:        0.3.6
+Version:        0.3.7
 Release:        0
 Summary:        Template Text Parser Templates collections
 License:        MIT
 URL:            https://github.com/dmulyalin/ttp_templates
 Source:         https://github.com/dmulyalin/ttp_templates/archive/refs/tags/%{version}.tar.gz#/ttp_templates-%{version}.tar.gz
+Patch0:         fix-package-version.patch
 BuildRequires:  %{python_module netmiko}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -59,6 +60,6 @@ popd
 %doc README.md
 %license LICENSE
 %{python_sitelib}/ttp_templates
-%{python_sitelib}/ttp_templates-%{version}*-info
+%{python_sitelib}/ttp_templates-%{version}.dist-info
 
 %changelog

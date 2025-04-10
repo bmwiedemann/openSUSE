@@ -1,0 +1,11 @@
+diff -Nru ttp_templates-0.3.7.orig/pyproject.toml ttp_templates-0.3.7/pyproject.toml
+--- ttp_templates-0.3.7.orig/pyproject.toml	2024-01-03 13:35:12.000000000 +0100
++++ ttp_templates-0.3.7/pyproject.toml	2025-04-10 14:52:54.199703077 +0200
+@@ -1,6 +1,6 @@
+ [tool.poetry]
+ name = "ttp_templates"
+-version = "0.3.6"
++version = "0.3.7"
+ description = "Template Text Parser Templates collections"
+ license = "MIT"
+ include = [

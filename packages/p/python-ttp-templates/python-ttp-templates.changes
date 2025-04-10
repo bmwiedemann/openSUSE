@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:54:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.7
+  * Rename juniper to juniper_junos for N2G templates
+  * Added juniper_junos template for cli_ip_data plugin
+- Add patch to fix package version in pyproject.toml
+  * fix-package-version.patch
+
+-------------------------------------------------------------------
 Sat Jan 20 20:30:40 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.6:
