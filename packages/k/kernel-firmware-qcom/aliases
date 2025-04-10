@@ -109,6 +109,7 @@ msm: of:N*T*Cqcom%2Cx1e80100-mdssC*
 qaic: mhi:QAIC_TIMESYNC_PERIODIC
 qaic: pci:v000017CBd0000A080sv*sd*bc*sc*i*
 qaic: pci:v000017CBd0000A100sv*sd*bc*sc*i*
+qaic: pci:v000017CBd0000A110sv*sd*bc*sc*i*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8909-mss-pil
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8909-mss-pilC*
 qcom_q6v5_mss: of:N*T*Cqcom%2Cmsm8916-mss-pil

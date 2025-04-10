@@ -62,4 +62,16 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases</comment>
     <requestid>1266053</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6e11f91d58ca4e79339e985e9a07a0cc</srcmd5>
+    <version>20250408</version>
+    <time>1744315062</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.15-rc1
+
+- Update to version 20250408 (git commit c1a774f36657):
+  * qcom:x1e80100: Iris Support for Lenovo T14s G6 Qualcomm platform
+  * qcom:x1e80100: Support for Lenovo Yoga Slim 7 Snapdragon platform</comment>
+    <requestid>1268121</requestid>
+  </revision>
 </revisionlist>
