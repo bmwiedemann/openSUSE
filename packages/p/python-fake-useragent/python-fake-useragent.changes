@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Apr  8 10:31:46 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.1.0
+  *  Speedup ua_convert parser by @sebastian-correa in #424
+  *  Check for dunder attributes in FakeUserAgent.getattr() and
+     make safe_attrs = ['shape'] by default by @rjys365 in #454
+- Release 2.0.0
+  * Finally, we successfully switched (again) to a new data source
+    from Intoli, which allows us to have much more user-agent
+    strings again. Thank you all for your support!
+  * Important: Keep in mind that v2.0.0 does have some breaking
+    changes like platform type "pc" value is now changed to
+    "desktop" (in case you were using this). See below for all
+    breaking changes!
+  ## Breaking changes
+  * OS and browser options are now case sensitive!!
+  * Possible browser options are: ["Google", "Chrome", "Firefox",
+    "Edge", "Opera"," Safari", "Android", "Yandex Browser",
+    "Samsung Internet", "Opera Mobile", "Mobile Safari", "Firefox
+    Mobile", "Firefox iOS", "Chrome Mobile", "Chrome Mobile iOS",
+    "Mobile Safari UI/WKWebView", "Edge Mobile", "DuckDuckGo
+    Mobile", "MiuiBrowser", "Whale", "Twitter", "Facebook", "Amazon
+    Silk"]
+  * Most browser strings are case-sensitive, except for some common
+    browsers like firefox, edge, chrome, opera, safari. In these
+    cases you will receive both mobile and non-mobile user-agent
+    strings by default.
+  * Platforms types (if specified) allowed options are: ["desktop",
+    "mobile", "tablet"] (no pc anymore)
+  * Possible OS options are now increased to the following list:
+    ["Windows", "Linux", "Ubuntu", "Chrome OS", "Mac OS X",
+    "Android", "iOS"]. And again case sensitive.
+  ## Improved
+  * min_percentage option works again! And uses the percent field
+    of the user-agent data
+  * Please read the README for more examples and options.
+
+-------------------------------------------------------------------
 Thu Sep 26 18:44:11 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons.

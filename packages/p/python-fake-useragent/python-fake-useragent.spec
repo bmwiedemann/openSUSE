@@ -1,7 +1,7 @@
 #
 # spec file for package python-fake-useragent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fake-useragent
-Version:        1.5.1
+Version:        2.1.0
 Release:        0
 Summary:        Useragent faker package for Python
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/fake-useragent/fake-useragent
 Source:         https://github.com/fake-useragent/fake-useragent/archive/refs/tags/%{version}.tar.gz#/fake-useragent-%{version}.tar.gz
+BuildRequires:  %{python_module base > 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-importlib-resources
+%if %{python_version_nodots} < 310
+Requires:       python-importlib-resources > 6.0.0
+%endif
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-resources >= 6.0.0}
+BuildRequires:  %{python_module importlib-resources >= 6.0.0 if %python-base < 3.10}
 BuildRequires:  %{python_module pytest >= 7.4.0}
 # /SECTION
 %python_subpackages
@@ -61,7 +64,6 @@ rm pytest.ini
 %files %{python_files}
 %license LICENSE
 %doc README.md
-#{python_sitelib}/fake[-_]useragent*/
 %{python_sitelib}/fake_useragent
 %{python_sitelib}/fake_useragent-%{version}.dist-info
 
