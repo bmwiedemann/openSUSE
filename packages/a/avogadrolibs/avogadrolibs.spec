@@ -42,7 +42,7 @@ Source1:        https://github.com/OpenChemistry/molecules/archive/%{molecules_r
 Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev}.tar.gz#/crystals-%{crystals_rev}.tar.gz
 # PATCH-FIX-UPSTREAM not-install-gwavi.patch -- Library only used locally so no need to install this helper
 Patch0:         not-install-gwavi.patch
-BuildRequires:  cmake >= 3.24
+BuildRequires:  cmake >= 3.5
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -154,6 +154,7 @@ sed -i 's/add_subdirectory(overlayaxes)//' avogadro/qtplugins/CMakeLists.txt
   -DUSE_PYTHON:BOOL=%{?with_python:ON}%{!?with_python:OFF} \
   -DUSE_SPGLIB:BOOL=%{?with_spglib:ON}%{!?with_spglib:OFF} \
   -DOpenGL_GL_PREFERENCE=GLVND \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
   %{nil}
 %cmake_build
 
