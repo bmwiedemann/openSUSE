@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Security
-Version:        5.6.0
+Version:        5.6.1
 Release:        0
 Summary:        Quickly add security features to your Flask application
 License:        MIT
@@ -31,7 +31,7 @@ Patch1:         ignore-resourcewarning.patch
 BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module Babel >= 2.10.0}
 BuildRequires:  %{python_module Flask >= 2.3.2}
-BuildRequires:  %{python_module Flask-Babel >= 3.1.0}
+BuildRequires:  %{python_module Flask-Babel >= 4}
 BuildRequires:  %{python_module Flask-Login >= 0.6.2}
 BuildRequires:  %{python_module Flask-Mailman >= 0.3.0}
 BuildRequires:  %{python_module Flask-Principal >= 0.4.0}
@@ -50,7 +50,6 @@ BuildRequires:  %{python_module dateutil}
 BuildRequires:  %{python_module email-validator >= 2.0}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module importlib_resources >= 5.10.0}
 BuildRequires:  %{python_module passlib >= 1.7.4}
 BuildRequires:  %{python_module peewee >= 3.16.2}
 BuildRequires:  %{python_module phonenumbers}
@@ -63,7 +62,6 @@ BuildRequires:  %{python_module zxcvbn >= 4.4.28}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 2.3.2
-Requires:       python-Flask-Babel >= 3.1.0
 Requires:       python-Flask-Login >= 0.6.2
 Requires:       python-Flask-Principal >= 0.4.0
 Requires:       python-Flask-WTF >= 1.1.1
@@ -73,8 +71,8 @@ Requires:       python-bcrypt >= 4.0.1
 Requires:       python-bleach >= 6.0.0
 Requires:       python-cryptography >= 40.0.2
 Requires:       python-email-validator >= 2.0
-Requires:       python-importlib_resources >= 5.10.0
 Requires:       python-passlib >= 1.7.4
+Recommends:     python-Flask-Babel >= 4
 Recommends:     python-SQLAlchemy
 Recommends:     python-qrcode >= 7.4.2
 Recommends:     python-zxcvbn >= 4.4.28
@@ -91,6 +89,8 @@ Quickly add security features to your Flask application.
 
 %prep
 %autosetup -p1 -n flask_security-%{version}
+sed -i s/importlib_resources/importlib.resources/ flask_security/babel.py
+sed -i /importlib_resources/d pyproject.toml
 
 %build
 %pyproject_wheel

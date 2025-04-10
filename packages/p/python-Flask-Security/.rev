@@ -56,4 +56,12 @@ Refresh patches:
 - no-mongodb.patch</comment>
     <requestid>1248075</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cf29e12c664a8bb22cfd6f6a56a515ef</srcmd5>
+    <version>5.6.1</version>
+    <time>1744315110</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1267930</requestid>
+  </revision>
 </revisionlist>
