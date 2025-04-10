@@ -1,7 +1,7 @@
 #
 # spec file for package python-irc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,8 @@ Summary:        A set of Python modules for IRC support
 License:        LGPL-2.1-or-later
 URL:            https://github.com/jaraco/irc
 Source:         https://files.pythonhosted.org/packages/source/i/irc/irc-%{version}.tar.gz
-BuildRequires:  %{python_module importlib-metadata}
-BuildRequires:  %{python_module importlib-resources}
+BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
+BuildRequires:  %{python_module importlib-resources if %python-base < 3.12}
 BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
 BuildRequires:  %{python_module jaraco.logging}
@@ -40,8 +40,12 @@ BuildRequires:  %{python_module tempora >= 1.6}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 310
 Requires:       python-importlib-metadata
+%endif
+%if 0%{?python_version_nodots} < 312
 Requires:       python-importlib-resources
+%endif
 Requires:       python-jaraco.collections
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-jaraco.logging
