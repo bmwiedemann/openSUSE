@@ -17,7 +17,9 @@
 
 
 %if 0%{?suse_version} > 1500
-%define with_tests 1
+%bcond_without test
+%else
+%bcond_with test
 %endif
 Name:           python-guessit
 Version:        3.8.0
@@ -31,12 +33,7 @@ Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit
 Patch0:         remove-six.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.6.0}
-BuildRequires:  %{python_module importlib_resources}
-%if 0%{?with_tests}
-BuildRequires:  %{python_module pytest >= 5}
-BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-mock >= 3.3.1}
-%endif
+BuildRequires:  %{python_module importlib_resources if %python-base < 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module rebulk >= 3.2.0}
@@ -47,9 +44,17 @@ BuildRequires:  python-rpm-macros
 Requires:       python-babelfish >= 0.6.0
 Requires:       python-python-dateutil
 Requires:       python-rebulk >= 3.2.0
+%if %{?python_version_nodots} < 39
+Requires:       python-importlib_resources
+%endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
+%if %{with test}
+BuildRequires:  %{python_module pytest >= 5}
+BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module pytest-mock >= 3.3.1}
+%endif
 %python_subpackages
 
 %description
@@ -82,7 +87,7 @@ sed -i 's:.pytest-runner.::' setup.py
 %python_clone -a %{buildroot}%{_bindir}/guessit
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if 0%{?with_tests}
+%if %{with test}
 %check
 %pytest
 %endif
