@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 10 08:37:19 UTC 2025 - Jiri Slaby <jslaby@suse.com>
+
+- update to 4.26.0
+ * Added new tag assignment dialogue. Tag assignment can be also invoked from
+   the status bar label.
+ * Separated tag-related actions. Tag management of available tags and tag
+   assignment are different actions now. Both can be pinned to any tool bar.
+ * Prohibiting some actions from the top menu to be pinned into tool bars.
+ * Added a tool that should aid with data recovery from corrupted database
+   files.
+ * Added font scaling factor to adjust the default font size. Font scaling
+   can be set in the preferences dialogue.
+ * Displaying what's new in the application.
+ * Enforce enabled icons in menus.
+ * Showing error dialogues when configuration files are not accessible or are
+   corrupted.
+ * Displaying error messages via status bar pop-up widget when message
+   databases cannot be opened.
+ * Updated application themes to detect and match light/dark system
+   environment.
+ * Showing progress bars with amount of downloaded data and current download
+   speed in download message dialogue.
+ * Fixed attachment duplication on repeated high-volume message downloads.
+ * Enable voluntary stats sending by default. It can be disabled by the user.
+ * Using MTOM/XOP to download high-volume messages.
+ * Using QStyledItemDelegate to draw checkboxes into tag delegate.
+
+-------------------------------------------------------------------
 Tue Jan 14 08:54:55 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.25.0
