@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Apr  3 15:43:23 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 5.8.1:
+  * Multithreaded .xz decoder (lzma_stream_decoder_mt()):
+    - Fix a bug that could at least result in a crash with
+      invalid input. (bsc#1240414, CVE-2025-31115)
+    - Fix a performance bug: Only one thread was used if the whole
+      input file was provided at once to lzma_code(), the output
+      buffer was big enough, timeout was disabled, and LZMA_FINISH
+      was used. There are no bug reports about this, thus it's
+      possible that no real-world application was affected.
+  * Avoid <stdalign.h> even with C11/C17 compilers. This fixes the
+    build with Oracle Developer Studio 12.6 on Solaris 10 when the
+    compiler is in C11 mode (the header doesn't exist).
+  * Autotools: Restore compatibility with GNU make versions older
+    than 4.0 by creating the package using GNU gettext 0.23.1
+    infrastructure instead of 0.24.
+  * Update Croatian translation.
+- 5.8.0 changelog:
+  * liblzma on 32/64-bit x86: When possible, use SSE2 intrinsics
+    instead of memcpy() in the LZMA/LZMA2 decoder. In typical cases,
+    this may reduce decompression time by 0-5 %. However, when built
+    against musl libc, over 15 % time reduction was observed with
+    highly compressed files.
+  * CMake: Make the feature test macros match the Autotools-based
+    build on NetBSD, Darwin, and mingw-w64.
+  * Update the Croatian, Italian, Portuguese, and Romanian
+    translations.
+  * Update the German, Italian, Korean, Romanian, Serbian, and
+    Ukrainian man page translations.
+- Summary of changes in the 5.7.x development releases:
+  * Mark the following LZMA Utils script aliases as deprecated:
+    lzcmp, lzdiff, lzless, lzmore, lzgrep, lzegrep, and lzfgrep.
+  * liblzma:
+    - Improve LZMA/LZMA2 encoder speed on 64-bit PowerPC (both
+      endiannesses) and those 64-bit RISC-V processors that
+      support fast unaligned access.
+    - Add low-level APIs for RISC-V, ARM64, and x86 BCJ filters
+      to lzma/bcj.h. These are primarily for erofs-utils.
+    - x86/x86-64/E2K CLMUL CRC code was rewritten.
+    - Use the CRC32 instructions on LoongArch.
+  * xz:
+    - Synchronize the output file and its directory using fsync()
+      before deleting the input file. No syncing is done when xz
+      isn't going to delete the input file.
+    - Add --no-sync to disable the sync-before-delete behavior.
+    - Make --single-stream imply --keep.
+  * xz, xzdec, lzmainfo: When printing messages, replace
+    non-printable characters with question marks.
+  * xz and xzdec on Linux: Support Landlock ABI versions 5 and 6.
+  * CMake: Revise the configuration variables and some of their
+    options, and document them in the file INSTALL. CMake support
+    is no longer experimental. (It was already not experimental
+    when building for native Windows.)
+  * Add build-aux/license-check.sh.
+
+-------------------------------------------------------------------
 Sun Feb  2 08:59:56 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.6.4:
