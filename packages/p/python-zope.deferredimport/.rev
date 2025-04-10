@@ -57,4 +57,12 @@
   * Drop support for Python 3.4.</comment>
     <requestid>1135654</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>abb79b0a66994aa159eef92a9b2dc55a</srcmd5>
+    <version>5.0</version>
+    <time>1744315184</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266265</requestid>
+  </revision>
 </revisionlist>

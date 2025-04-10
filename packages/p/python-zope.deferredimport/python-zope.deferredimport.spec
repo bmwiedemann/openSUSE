@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deferredimport
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,6 @@ Documentation is hosted at https://zopedeferredimport.readthedocs.io/
 %doc README.rst
 %{python_sitelib}/zope/deferredimport
 %{python_sitelib}/zope.deferredimport-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.deferredimport-%{version}.dist-info
+%{python_sitelib}/zope[_.]deferredimport-%{version}.dist-info
 
 %changelog
