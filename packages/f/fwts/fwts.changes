@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr  8 10:40:09 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 25.03.00:
+  * lib: fwts_version.h - update to V25.03.00
+  * debian: update changelog
+  * efi_runtime: remove no_llseek which have been removed on kernel 6.12
+  * klog.json: Add more parse mode setting messages to klog database
+  * klog.json: Add the object type for evaluation messages to klog database
+  * klog.json: Add more ownerid allocate and release messages to klog database
+  * klog.json: Add package init messages to klog database
+  * klog.json: Add child missing data message to klog database
+  * klog.json: Add null object pushing message to klog database
+  * klog.json: Add EC timeout messages to klog database
+  * klog.json: Add ACPI fpdt messages to klog database
+  * klog.json: Add nfit intel messages to klog database
+  * klog.json: Add more intel pmic messages to klog database
+  * klog.json: Add more cppc checking and sending messages to klog database
+  * klog.json: Add more spcr access width messages to klog database
+  * klog.json: Add the thread create failed message to klog database
+  * fwts-test: add regression tests for APMT
+  * acpi: apmt: add tests for acpi APMT table
+  * fwts-test: cedt: sync up tests with CEDT version update
+  * acpi: cedt: update the cedt tests for CXL spec rev3.2
+
+-------------------------------------------------------------------
 Tue Mar 25 19:16:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused build dependency on pcre. The configure script
