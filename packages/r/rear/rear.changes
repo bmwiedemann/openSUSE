@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Apr 10 07:14:32 UTC 2025 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 2.9
+  Interim release to solve packaging issues on RPM-based
+  distributions and several other fixes:
+  * Create /var/run symlink dynamically during mkrescue.
+    Not having it as an actual symlink in the source tree avoids
+    the packaging problem that [23]RPM is not able to change a
+    directory into a symlink and vice-versa during package upgrade
+    (before ReaR 2.8 it was a directory, not a symlink).
+    See https://github.com/rear/rear/pull/3380
+    and https://github.com/rear/rear/issues/3375
+  * Add 'timeout' to REQUIRED_PROGS - avoids a false
+    "ERROR: Stale NFS mount point" in the recovery system.
+    See https://github.com/rear/rear/pull/3387
+    and https://github.com/rear/rear/issues/3386
+  For details see the rear-release-notes.txt file and
+  https://github.com/rear/rear/blob/rear-2.9/doc/rear-release-notes.txt
+- Version upgrade to 2.8
+  New features, bigger enhancements,
+  and possibly backward incompatible changes:
+  * New support for additional commercial backup software
+    + Veeam Backup
+    + Dell PowerProtect Data Manager
+    + CommvaultGalaxy 11 (Simpana)
+  * Bareos integration was rewritten and updated.
+  * New portable mode --portable and OUTPUT=PORTABLE, see
+    https://github.com/rear/rear/blob/master/doc/user-guide/17-Portable-Mode.adoc
+    for more information.
+  * Improved handling and protecting of secrets in
+    ReaR configuration variables. New -e/--expose-secrets option
+    to show secrets in configuration variables.
+  * New non-interactive mode -n/--non-interactive to suppress
+    all interactive questions and answers and facilitate
+    truly unattended recovery automation.
+  * NFS4SERVER as new restore method where the rescue systems
+    starts an NFS4 server to push the data to the rescue system.
+  * New OpalPBA AuthToken feature.
+  * Layout changes and fixes for S/390 DASDs (major code overhauling).
+  * Initial basic 'barrel' support, see
+    https://github.com/aschnell/barrel
+  * By default 'rear recover' wipes disks that get completely
+    recreated via DISKS_TO_BE_WIPED="" in default.conf.
+  For details see the rear-release-notes.txt file and
+  https://github.com/rear/rear/blob/rear-2.8/doc/rear-release-notes.txt
+- GRUB_RESCUE_initrd.patch is removed (no longer needed)
+  because it is fixed in ReaR 2.8
+  see https://github.com/rear/rear/issues/3122
+  and https://github.com/rear/rear/pull/3123
+
+-------------------------------------------------------------------
 Fri Feb 23 11:52:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

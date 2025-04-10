@@ -302,4 +302,12 @@
     <comment></comment>
     <requestid>1149895</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2ed746edf315923e7ba1c0935923b036</srcmd5>
+    <version>2.9</version>
+    <time>1744315167</time>
+    <user>anag_factory</user>
+    <comment>Version upgrade to ReaR 2.9 (forwarded request 1268301 from jsmeix)</comment>
+    <requestid>1268302</requestid>
+  </revision>
 </revisionlist>
