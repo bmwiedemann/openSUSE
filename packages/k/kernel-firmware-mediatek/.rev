@@ -56,4 +56,12 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update spec to make kernel-firmware-tools downloadable</comment>
     <requestid>1255833</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>2b770d41f334342e225c0f8747416af9</srcmd5>
+    <version>20250319</version>
+    <time>1744315058</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 6.15-rc1</comment>
+    <requestid>1268117</requestid>
+  </revision>
 </revisionlist>
