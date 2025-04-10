@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 09 10:03:57 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1~20250403:
+  * arb_shading_language_420pack: test uniform block matching
+  * arb_bindless_texture: fix undefined behaviour in test
+  * replay: Adapt to new S3 proxy
+  * replay: Adjust for changed S3 ETags
+  * Don't rely on old numpy promotion rules in packing tests
+  * Set numpy legacy printing options for builtin function generators
+  * ci: run tests on python 3.13 as well
+  * cmake: Add Python 3.13 to supported versions
+
+-------------------------------------------------------------------
 Wed Mar 12 12:40:54 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20250305:
