@@ -1,0 +1,95 @@
+From 722484c93995b253bc61e93867a521693d3ca0b3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 2 Apr 2025 13:29:27 +0100
+Subject: [PATCH] Fix refresh of osrelease and related grains on Python
+ 3.10+ (#712)
+
+* Fix refresh of osrelease and related grains on Python 3.10+
+
+* Add test__freedesktop_os_release_cache_is_invalidated unit test
+---
+ changelog/67932.fixed.md               |  1 +
+ salt/grains/core.py                    |  5 ++++
+ tests/pytests/unit/grains/test_core.py | 41 ++++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+)
+ create mode 100644 changelog/67932.fixed.md
+
+diff --git a/changelog/67932.fixed.md b/changelog/67932.fixed.md
+new file mode 100644
+index 0000000000..255d61b502
+--- /dev/null
++++ b/changelog/67932.fixed.md
+@@ -0,0 +1 @@
++Fix refresh of osrelease and related grains on Python 3.10+
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 94f58e8c4e..619969df9a 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -2170,6 +2170,11 @@ def _linux_distribution_data():
+ 
+     log.trace("Getting OS name, release, and codename from freedesktop_os_release")
+     try:
++        # If using platform.freedesktop_os_release we must invalidate
++        # the internal platform os_release cache to allow grains to be
++        # actually recalculated during grains_refresh
++        if hasattr(platform, "_os_release_cache"):
++            platform._os_release_cache = None
+         os_release = _freedesktop_os_release()
+         grains.update(_os_release_to_grains(os_release))
+ 
+diff --git a/tests/pytests/unit/grains/test_core.py b/tests/pytests/unit/grains/test_core.py
+index c3cf12c10f..c15a3b4360 100644
+--- a/tests/pytests/unit/grains/test_core.py
++++ b/tests/pytests/unit/grains/test_core.py
+@@ -406,6 +406,47 @@ def test__linux_lsb_distrib_data():
+     assert not has_error
+ 
+ 
++@pytest.mark.skip_unless_on_linux
++@pytest.mark.skipif(
++    sys.version_info < (3, 10),
++    reason="platform.freedesktop_os_release not available in Python < 3.10",
++)
++def test__freedesktop_os_release_cache_is_invalidated():
++    OS_RELEASE_DATA = {
++        "NAME": "openSUSE Leap",
++        "ID": "opensuse-leap",
++        "PRETTY_NAME": "openSUSE Leap 15.6",
++        "VERSION": "15.6",
++        "ID_LIKE": "suse opensuse",
++        "VERSION_ID": "15.6",
++        "ANSI_COLOR": "0;32",
++        "CPE_NAME": "cpe:/o:opensuse:leap:15.6",
++        "BUG_REPORT_URL": "https://bugs.opensuse.org",
++        "HOME_URL": "https://www.opensuse.org/",
++        "DOCUMENTATION_URL": "https://en.opensuse.org/Portal:Leap",
++        "LOGO": "distributor-logo-Leap",
++    }
++
++    class FreeDesktopOSReleaseMock:
++        def __call__(self):
++            if hasattr(platform, "_os_release_cache"):
++                assert platform._os_release_cache is None
++            return OS_RELEASE_DATA
++
++    with patch.object(
++        core, "_linux_lsb_distrib_data", MagicMock(return_value=({}, None))
++    ), patch.object(
++        core, "_freedesktop_os_release", FreeDesktopOSReleaseMock()
++    ), patch.object(
++        core,
++        "_legacy_linux_distribution_data",
++        MagicMock(return_value={"osrelease": "15.6"}),
++    ):
++        platform._os_release_cache = {"this-cache-should-be-invalidated": "foobar"}
++        ret = core._linux_distribution_data()
++        assert ret == {"osrelease": "15.6"}
++
++
+ @pytest.mark.skip_unless_on_linux
+ def test_gnu_slash_linux_in_os_name():
+     """
+-- 
+2.49.0
+

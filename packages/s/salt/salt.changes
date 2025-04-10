@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  2 15:40:46 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix refresh of osrelease and related grains on Python 3.10+
+
+- Added:
+  * fix-refresh-of-osrelease-and-related-grains-on-pytho.patch
+
+-------------------------------------------------------------------
 Thu Mar 27 15:27:34 UTC 2025 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Small refactor on the spec file

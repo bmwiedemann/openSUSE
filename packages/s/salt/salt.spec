@@ -543,6 +543,8 @@ Patch166:       ensure-the-correct-crypt-module-is-loaded.patch
 Patch167:       detect-openeuler-as-redhat-family-os.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/710
 Patch168:       fix-deb822-nonetype-object-has-no-attribute-split-71.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/67933
+Patch169:       fix-refresh-of-osrelease-and-related-grains-on-pytho.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
