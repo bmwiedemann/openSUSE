@@ -1,17 +1,26 @@
 ---
- misc/terminfo.src |    4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ misc/terminfo.src |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
 --- misc/terminfo.src
-+++ misc/terminfo.src	2018-10-29 10:23:47.271511864 +0000
-@@ -18148,8 +18148,8 @@ hazel|exec80|h80|he80|Hazeltine Executiv
++++ misc/terminfo.src	2025-04-09 11:48:19.897066102 +0000
+@@ -1263,6 +1263,10 @@ sclp|IBM s390 driver for Linux,
+ 	use=klone+color, use=ansi+cpr, use=ansi+erase,
+ 	use=ansi+local, use=linux+sfkeys, use=vt220+ufkeys,
+ 
++sclp-qemu|IBM s390 driver for Linux with QEMU VM,
++	kf1=\EOP, kf2=\EOQ, kf3=\EOR, kf4=\EOS, kf5=\E[15~,
++	use=sclp,
++
+ #### Mach
  #
  
+@@ -18189,7 +18193,7 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+ 
  ibm327x|line mode IBM 3270 style,
--	gn,
+ 	gn,
 -	clear=\r\n, el=\r, home=\r,
-+	cols#80,
-+	clear=\r\n, cr=\r, cud1=\n, el=\r, home=\r, ind=\n,
++	use=dumb,
  
  ibm3101|i3101|IBM 3101-10,
  	OTbs, am, xon,

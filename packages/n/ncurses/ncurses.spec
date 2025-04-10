@@ -36,7 +36,7 @@
 %global soname_tinfo tinfow
 %endif
 %ifarch s390x s390
-%global fallback unknown,dumb,xterm,xterm-256color,ibm327x,ms-terminal,vt100,vt102,vt220
+%global fallback unknown,dumb,xterm,xterm-256color,ibm327x,ms-terminal,vt100,vt102,vt220,sclp
 %else
 %global fallback unknown,dumb,xterm,xterm-256color,linux,ms-terminal,vt100,vt102,vt220
 %endif

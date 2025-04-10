@@ -5061,4 +5061,30 @@
     <comment>- Do not provides ncurses for *new* C++ library subpackages</comment>
     <requestid>1266831</requestid>
   </revision>
+  <revision rev="292" vrev="65">
+    <srcmd5>1e7aecbf8b6ff91e12d2feab0f69350f</srcmd5>
+    <version>unknown</version>
+    <time>1744315032</time>
+    <user>anag_factory</user>
+    <comment>- Modify patch ncurses-5.9-ibm327x.dif
+  * Add a further sclp entry for qemu s390 based systems 
+
+- Add ncurses patch 20250405
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + improve infocmp -E/-e fallback feature (report by Ville Rissanen):
+    + prefix names with &quot;ti_&quot; if they begin with a digit, e.g., 9term
+    + escape backslashes and double-quotes in description fields
+  + modify infocmp -E/-e fallback feature to reduce stricter compiler
+    warnings for the extended capability data.
+  + add sclp -TD
+  + add op to vt525 -TD
+  + update contour -TD
+- The new sclp terminfo description entry if for s390 sclp terminal lines
+- Correct offsets of patches
+  * ncurses-6.4.dif
+  * ncurses-6.5-ghostty.dif
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Make use of dumb</comment>
+    <requestid>1268153</requestid>
+  </revision>
 </revisionlist>

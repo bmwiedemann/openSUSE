@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr  9 12:03:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Add a further sclp entry for qemu s390 based systems 
+
+-------------------------------------------------------------------
+Mon Apr  7 06:14:22 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250405
+  + improve formatting/style of manpages (patches by Branden Robinson).
+  + improve infocmp -E/-e fallback feature (report by Ville Rissanen):
+    + prefix names with "ti_" if they begin with a digit, e.g., 9term
+    + escape backslashes and double-quotes in description fields
+  + modify infocmp -E/-e fallback feature to reduce stricter compiler
+    warnings for the extended capability data.
+  + add sclp -TD
+  + add op to vt525 -TD
+  + update contour -TD
+- The new sclp terminfo description entry if for s390 sclp terminal lines
+- Correct offsets of patches
+  * ncurses-6.4.dif
+  * ncurses-6.5-ghostty.dif
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Make use of dumb
+
+-------------------------------------------------------------------
 Thu Apr  3 09:19:19 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Do not provides ncurses for *new* C++ library subpackages
