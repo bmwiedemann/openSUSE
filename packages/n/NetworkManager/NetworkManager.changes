@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  9 02:42:56 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Remove '-Dhostname_persist=suse' compile option, as it's not
+  needed anymore. The behaviours of this option are mainly:
+  1. stores hostname in /etc/HOSTNAME instead of /etc/hostname.
+  2. checks DHCLIENT_SET_HOSTNAME value in /etc/sysconfig/netowrk/dhcp
+     to know whether the hostname is valid.
+  These are not desired haviours anymore.
+
+-------------------------------------------------------------------
 Tue Mar 11 13:09:26 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2069.patch: Fix build against girepository-2.0 (pygobject

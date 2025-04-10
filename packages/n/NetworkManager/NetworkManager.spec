@@ -338,7 +338,6 @@ export PYTHON=%{_bindir}/python3
     -Ddnsmasq=%{_sbindir}/dnsmasq \
     -Ddist_version=%{version} \
     -Dpolkit_agent_helper_1=%{_libexecdir}/polkit-1/polkit-agent-helper-1 \
-    -Dhostname_persist=suse \
     -Dlibaudit=%{libaudit_meson_opt} \
     -Diwd=true \
     -Dpppd=%{_sbindir}/pppd \

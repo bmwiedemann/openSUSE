@@ -2420,4 +2420,17 @@ New stable release</comment>
     <comment></comment>
     <requestid>1252134</requestid>
   </revision>
+  <revision rev="280" vrev="2">
+    <srcmd5>af66ee1b6b0ff7e35f4f329c20f34481</srcmd5>
+    <version>1.52.0</version>
+    <time>1744315045</time>
+    <user>anag_factory</user>
+    <comment>- Remove '-Dhostname_persist=suse' compile option, as it's not
+  needed anymore. The behaviours of this option are mainly:
+  1. stores hostname in /etc/HOSTNAME instead of /etc/hostname.
+  2. checks DHCLIENT_SET_HOSTNAME value in /etc/sysconfig/netowrk/dhcp
+     to know whether the hostname is valid.
+  These are not desired haviours anymore. (forwarded request 1268009 from JonathanKang)</comment>
+    <requestid>1268056</requestid>
+  </revision>
 </revisionlist>
