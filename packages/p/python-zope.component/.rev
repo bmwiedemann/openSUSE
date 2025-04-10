@@ -121,4 +121,12 @@ New dependency of python-Pyramid</comment>
   * Make accessing names that have been moved to zope.interface</comment>
     <requestid>1217992</requestid>
   </revision>
+  <revision rev="15" vrev="5">
+    <srcmd5>ed7e5b454741720d8a4560d31d69b8e1</srcmd5>
+    <version>6.0</version>
+    <time>1744315181</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266262</requestid>
+  </revision>
 </revisionlist>

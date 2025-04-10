@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.component
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -95,7 +95,7 @@ rm -rf src/zope.component.egg-info
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/component
 %{python_sitelib}/zope.component-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.component-%{version}.dist-info
+%{python_sitelib}/zope[_.]component-%{version}.dist-info
 %endif
 
 %changelog
