@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 10 04:56:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.3:
+  Helm v3.17.3 is a security (patch) release. Users are strongly
+  recommended to update to this release.
+  * Changelog
+    - Unarchiving fix e4da497 (Matt Farina)
+
+-------------------------------------------------------------------
 Thu Mar 13 18:16:55 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.17.2 (bsc#1238688, CVE-2025-22870):

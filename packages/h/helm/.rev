@@ -840,4 +840,12 @@ See changelog in:
   * build(deps): bump the k8s-io group with 7 updates</comment>
     <requestid>1254159</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cb3fcf05f5f61eaf6c8e772fa9b481ac</srcmd5>
+    <version>3.17.3</version>
+    <time>1744315164</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268277</requestid>
+  </revision>
 </revisionlist>
