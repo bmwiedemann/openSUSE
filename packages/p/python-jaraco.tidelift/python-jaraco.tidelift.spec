@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.tidelift
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,6 @@ rm -rf jaraco.tidelift.egg-info
 %doc docs/*.rst README.rst CHANGES.rst
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/tidelift
-%{python_sitelib}/jaraco.tidelift-%{version}*-info
+%{python_sitelib}/jaraco[_.]tidelift-%{version}.dist-info
 
 %changelog

@@ -51,4 +51,14 @@
 - initial package (1.5.0)</comment>
     <requestid>1193896</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0e1cd66e921e2376312e60ec484a6f15</srcmd5>
+    <version>1.5.1</version>
+    <time>1744315180</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266257</requestid>
+  </revision>
 </revisionlist>
