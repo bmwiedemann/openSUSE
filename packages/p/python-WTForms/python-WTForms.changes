@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:14:08 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.2.1:
+  * Fix :class:`~fields.SelectMultipleBase` import
+
+- Update to 3.2.0:
+  * Translations update: korean, chinese (traditional), portugese,
+    russian, dutch, kazakh, swedish, turkish, slovak, ukranian,
+    spanish, french.
+  * Move the repository to the pallets-eco organization.
+  * Stop supporting Python 3.9 and start supporting Python 3.13
+  * Removed required flag support from
+    :class:`~fields.HiddenWidget`, :class:`~fields.RangeWidget` and
+    :class:`~fields.SelectWidget` to conform to W3C
+    :class:`~wtforms.validators.NoneOf` and
+    :class:`~wtforms.validators.AnyOf` can validate multiple valued
+    fields like :class:`~fields.SelectMultipleField`
+  * Use GHA and pre-commit workflows inspired from Flask.
+  * Breaking change: Some deprecated code was removed:
+        :class:`~wtforms.Flags` can no longer be tuples.
+        iter_choices needs a tuple of 4 items
+  * Breaking change: The key for form errors moved from
+    :data:`None` to empty string "".
+  * Note. If you need to keep the old behavior you can set the
+    _form_error_key parameter of your form to :data:`None`.
+
+- Update to 3.1.2:
+    Fix :class:`~fields.SelectMultipleField` value coercion on
+    validation.
+
+-------------------------------------------------------------------
 Mon Nov 27 13:05:40 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use %{?sle15_python_module_pythons}

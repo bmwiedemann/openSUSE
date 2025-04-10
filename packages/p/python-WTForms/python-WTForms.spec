@@ -1,7 +1,7 @@
 #
 # spec file for package python-WTForms
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WTForms
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        A flexible forms validation and rendering library for Python web development
 License:        BSD-3-Clause
 URL:            https://github.com/wtforms/wtforms
-Source:         https://files.pythonhosted.org/packages/source/W/WTForms/WTForms-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/W/WTForms/wtforms-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module email-validator}
