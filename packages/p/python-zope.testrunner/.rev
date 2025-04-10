@@ -248,4 +248,12 @@
     <comment></comment>
     <requestid>1239001</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>8b04402525d32d1e0e202499e64091ba</srcmd5>
+    <version>6.6.1</version>
+    <time>1744315187</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266270</requestid>
+  </revision>
 </revisionlist>

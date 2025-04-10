@@ -90,7 +90,7 @@ $python -m zope.testrunner --test-path=src -vv
 %python_alternative %{_bindir}/zope-testrunner
 %{python_sitelib}/zope/testrunner
 %{python_sitelib}/zope.testrunner-%{version}-py*-nspkg.pth
-%{python_sitelib}/zope.testrunner-%{version}.dist-info
+%{python_sitelib}/zope[_.]testrunner-%{version}.dist-info
 %endif
 
 %changelog
