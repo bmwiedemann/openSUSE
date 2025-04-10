@@ -835,4 +835,12 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
   in update</comment>
     <requestid>1221286</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>f838d66f604f5cde84987cd1cd03397d</srcmd5>
+    <version>5.1.3</version>
+    <time>1744315202</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268420</requestid>
+  </revision>
 </revisionlist>

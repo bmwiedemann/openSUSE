@@ -2,7 +2,7 @@
 # spec file for package pdns-recursor
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -80,7 +80,8 @@ Provides:       bundled(yahttp)
 URL:            https://www.powerdns.com/
 Source:         https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
 Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2.sig
-Source11:       https://powerdns.com/powerdns-keyblock.asc#/pdns-recursor.keyring
+# on https://docs.powerdns.com/recursor/security.html but 404 right now, emailed them
+Source11:       %{name}.keyring
 Source1:        pdns-recursor.init
 Source2:        recursor.conf
 Source3:        vendor.tar.zst
