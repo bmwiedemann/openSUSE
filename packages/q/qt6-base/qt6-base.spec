@@ -42,6 +42,8 @@ URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-base-rpmlintrc
 # Patches 0-100 are upstream patches #
+# PATCH-FIX-UPSTREAM 0001-Rename-variable-being-shadowed.patch alarrosa@suse.com -- https://codereview.qt-project.org/c/qt/qtbase/+/638284
+Patch0:         0001-Rename-variable-being-shadowed.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 # No need to pollute the library dir with object files, install them in the qt6 subfolder
 Patch100:       0001-CMake-Install-objects-files-into-ARCHDATADIR.patch
@@ -173,8 +175,8 @@ Requires:       cmake(Qt6DBusPrivate) = %{real_version}
 Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6NetworkPrivate) = %{real_version}
 Requires:       cmake(Qt6OpenGLPrivate) = %{real_version}
-Requires:       cmake(Qt6SqlPrivate) = %{real_version}
 Requires:       cmake(Qt6PrintSupportPrivate) = %{real_version}
+Requires:       cmake(Qt6SqlPrivate) = %{real_version}
 Requires:       cmake(Qt6TestPrivate) = %{real_version}
 Requires:       cmake(Qt6WidgetsPrivate) = %{real_version}
 Requires:       cmake(Qt6XmlPrivate) = %{real_version}

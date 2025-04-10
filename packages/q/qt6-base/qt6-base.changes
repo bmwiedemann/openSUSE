@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr  9 06:04:33 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to rename a variable that was being shadowed and which
+  made apps that use -Werror=shadow and include this header fail
+  to build. Submitted upstream at
+  https://codereview.qt-project.org/c/qt/qtbase/+/638284 :
+  * 0001-Rename-variable-being-shadowed.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 11:03:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0:

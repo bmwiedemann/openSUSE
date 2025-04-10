@@ -576,4 +576,18 @@
     <comment>Qt 6.9.0</comment>
     <requestid>1266634</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>22dabc1126bc445d052f7a9b90253683</srcmd5>
+    <version>6.9.0</version>
+    <time>1744315053</time>
+    <user>anag_factory</user>
+    <comment>This fixes an issue with libcamera 0.5.0 in SLFO's Staging:V
+
+- Add patch to rename a variable that was being shadowed and which
+  made apps that use -Werror=shadow and include this header fail
+  to build. Submitted upstream at
+  https://codereview.qt-project.org/c/qt/qtbase/+/638284 :
+  * 0001-Rename-variable-being-shadowed.patch (forwarded request 1268057 from alarrosa)</comment>
+    <requestid>1268098</requestid>
+  </revision>
 </revisionlist>
