@@ -2150,4 +2150,12 @@
     <comment>Various upstream features and bug fixes on top of version 5.0.0</comment>
     <requestid>1252578</requestid>
   </revision>
+  <revision rev="272" vrev="8">
+    <srcmd5>d3995420b85edd8b5907eb24cf4a32da</srcmd5>
+    <version>5.0.0</version>
+    <time>1744315038</time>
+    <user>anag_factory</user>
+    <comment>Spec file adjustments for bsc#1239837 - virt-manager on SLES16</comment>
+    <requestid>1268037</requestid>
+  </revision>
 </revisionlist>

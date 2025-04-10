@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:28:25 MDT 2025 - carnold@suse.com
+
+- bsc#1239837 - [SLFO] virt-manager still has unresolved
+  dependencies in beta2
+  Remove dependencies on spice and other Gtk sources as these
+  packages don't exist in SLES16. Cleanup other dependencies.
+  virt-manager.spec
+
+-------------------------------------------------------------------
 Wed Mar 12 15:27:01 MDT 2025 - carnold@suse.com
 
 - Upstream bug fix (bsc#1027942)

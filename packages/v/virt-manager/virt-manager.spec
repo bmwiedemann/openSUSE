@@ -19,14 +19,15 @@
 %global __python %{__python3}
 %global with_guestfs               0
 %global default_hvs                "qemu,xen,lxc"
-%if 0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
     %define have_spice 1
 %else
     %define have_spice 0
 %endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
+# No spice on SLES15 so no running check build
+%if "%{flavor}" == "test" && %{have_spice}
 %bcond_without test
 %define psuffix -%{flavor}
 %else
@@ -126,36 +127,29 @@ BuildArch:      noarch
 
 %define verrel %{version}-%{release}
 Requires:       dconf
-Requires:       gstreamer-plugins-good
 Requires:       gtk3
 Requires:       python3-gobject
-# For console widget
-Requires:       python3-cairo
-Requires:       python3-dbus-python
-Requires:       python3-gobject-Gdk
-Requires:       python3-gobject-cairo
-%if %{have_spice}
-Recommends:     python3-SpiceClientGtk
-%endif
-Requires:       virt-install
 Requires:       virt-manager-common = %{verrel}
-Requires:       typelib(GtkSource)
+Requires:       vte
+Requires:       typelib(LibvirtGLib)
 
-%if %{with_guestfs}
-Requires:       python3-libguestfs
-%endif
+Recommends:     gtksourceview4
+Recommends:     libvirt-daemon-config-network
+Recommends:     (libvirt-daemon-kvm or libvirt-daemon-qemu)
+
+Suggests:       python3-libguestfs
 
 BuildRequires:  gettext
 BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
-BuildRequires:  python3-setuptools
 %if %{with test}
 BuildRequires:  python3-argcomplete
 BuildRequires:  python3-pytest
 BuildRequires:  virt-install = %{version}
 BuildRequires:  virt-manager = %{version}
 BuildRequires:  pkgconfig(vte-2.91)
+BuildRequires:  typelib(Libosinfo)
 %endif
 
 %description
@@ -172,16 +166,12 @@ Group:          System/Monitoring
 # This version not strictly required: virt-manager should work with older,
 # however varying amounts of functionality will not be enabled.
 Requires:       libosinfo >= 0.2.10
-Requires:       mkisofs
+Requires:       python3-argcomplete
 Requires:       python3-gobject
 Requires:       python3-libvirt-python >= 0.7.0
 Requires:       python3-libxml2-python
-Requires:       python3-pycurl
+Requires:       python3-requests
 Requires:       xorriso
-Requires:       typelib(AppIndicator3)
-Requires:       typelib(LibvirtGLib)
-Suggests:       python3-virt-bootstrap
-BuildRequires:  gobject-introspection
 
 %description common
 Common files used by the different virt-manager interfaces, as well as
@@ -191,11 +181,12 @@ virt-install related tools.
 Summary:        Utilities for installing virtual machines
 Group:          System/Monitoring
 
+Requires:       libvirt-client
 Requires:       virt-manager-common = %{verrel}
 
-Requires:       python3-requests
 Provides:       python3-virtinst
 Provides:       virt-clone
+Provides:       virt-xml
 Supplements:    virt-manager
 
 %description -n virt-install
@@ -337,6 +328,8 @@ fi
 %if %{?suse_version} != 1600
 %{_datadir}/applications/YaST2/virt-install.desktop
 %endif
+%dir %{_datadir}/glib-2.0
+%dir %{_datadir}/glib-2.0/schemas
 %{_datadir}/glib-2.0/schemas/org.virt-manager.virt-manager.gschema.xml
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
