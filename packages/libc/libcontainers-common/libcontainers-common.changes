@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  9 05:50:02 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- containers.conf default configuration modifications:
+  * set runc as the default OCI runtime (bsc#1239088)
+  * set nftables as the default firewall driver for netavark
+- New release 20250409
+  * bump bundled c/common to 0.59.1
+  * bump bundled c/image to 5.31.0
+  * bump bundled c/storage to 1.54.0
+
+-------------------------------------------------------------------
 Fri Feb  7 13:31:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - fix shortnames.config by updating them from upstream

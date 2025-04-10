@@ -1,10 +1,10 @@
 <services>
   <service name="download_files" mode="manual"/>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/containers/storage.git</param>
+    <param name="url">https://github.com/containers/common.git</param>
     <param name="scm">git</param>
-    <param name="filename">storage</param>
-    <param name="revision">v1.54.0</param>
+    <param name="filename">common</param>
+    <param name="revision">v0.62.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -12,15 +12,15 @@
     <param name="url">https://github.com/containers/image.git</param>
     <param name="scm">git</param>
     <param name="filename">image</param>
-    <param name="revision">v5.31.0</param>
+    <param name="revision">v5.34.3</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar_scm" mode="manual">
-    <param name="url">https://github.com/containers/common.git</param>
+    <param name="url">https://github.com/containers/storage.git</param>
     <param name="scm">git</param>
-    <param name="filename">common</param>
-    <param name="revision">v0.59.1</param>
+    <param name="filename">storage</param>
+    <param name="revision">v1.57.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>

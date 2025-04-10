@@ -635,4 +635,14 @@
 - Add missing comma to previous change (forwarded request 1244160 from dirkmueller)</comment>
     <requestid>1244162</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>79186f9a8604a7b2ecc99da8df568fd2</srcmd5>
+    <version>20250409</version>
+    <time>1744315050</time>
+    <user>anag_factory</user>
+    <comment>* New release 20250409
+* set runc as the default OCI runtime (bsc#1239088)
+* set nftables as the default firewall driver for netavark (forwarded request 1268039 from danishprakash)</comment>
+    <requestid>1268065</requestid>
+  </revision>
 </revisionlist>
