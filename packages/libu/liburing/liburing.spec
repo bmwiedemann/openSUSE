@@ -18,7 +18,7 @@
 
 %define lname   liburing2
 Name:           liburing
-Version:        2.8
+Version:        2.9
 Release:        0
 Summary:        Linux-native io_uring I/O access library
 License:        (GPL-2.0-only AND LGPL-2.1-or-later) OR MIT
@@ -27,8 +27,8 @@ URL:            https://github.com/axboe/liburing
 Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
 Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
 Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
-Patch0:         0001-test-init-mem-zero-the-ringbuf-memory.patch
-Patch1:         0001-test-rsrc_tags-use-correct-buffer-index-for-test.patch
+# PATCH-FIX-UPSTREAM - https://github.com/axboe/liburing/issues/1377
+Patch1:         923961c.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -88,16 +88,16 @@ export CPPFLAGS="%{optflags} -fno-stack-protector"
 %make_build -C src
 
 %check
-declare -a TEST_EXCLUDE=()
+declare -a TEST_EXCLUDE=( resize-rings.t )
 
 %if 0%{?sle_version} == 150500
 TEST_EXCLUDE+=( fallocate.t fd-pass.t fixed-buf-merge.t msg-ring-overflow.t nop.t poll-race-mshot.t reg-hint.t sqwait.t wq-aff.t )
 %endif
 %if 0%{?sle_version} == 150600 || 0%{?sle_version} == 150700
-TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t nop.t recvsend_bundle.t recvsend_bundle-inc.t sqwait.t )
+TEST_EXCLUDE+=( accept-non-empty.t bind-listen.t fallocate.t nop.t recvsend_bundle.t recvsend_bundle-inc.t sqwait.t timeout.t )
 %endif
 %if 0%{?suse_version} == 1600
-TEST_EXCLUDE+=( sqwait.t )
+TEST_EXCLUDE+=( read-inc-file.t sqwait.t timeout.t )
 %endif
 
 %ifarch %{arm}

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:46:39 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable resize-rings.t as it is not very stable in OBS
+- Disable timeout.t on Leap 15.6/15.7
+- Disable read-inc-file.t and timeout.t on Leap 16.0
+
+-------------------------------------------------------------------
+Fri Apr  4 08:32:20 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix test on aarch64:
+  * 923961c.patch
+
+-------------------------------------------------------------------
+Thu Apr  3 13:00:56 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.9:
+  * Add support for ring resizing
+  * Add support for registered waits
+  * Test additions and improvements
+  * Fix bug with certain ring setups with SQE128 set not fully closing
+    the ring after io_uring_queue_exit(3) had been called.
+  * Various man page fixes and updates
+- Remove upstreamed patches:
+  * 0001-test-init-mem-zero-the-ringbuf-memory.patch
+  * 0001-test-rsrc_tags-use-correct-buffer-index-for-test.patch
+
+-------------------------------------------------------------------
 Tue Feb 11 08:39:50 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - disable even more tests
