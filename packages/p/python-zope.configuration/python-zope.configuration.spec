@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.configuration
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -87,7 +87,7 @@ rm -rf zope.configuration.egg-info
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitelib}/zope
 %{python_sitelib}/zope/configuration
-%{python_sitelib}/zope.configuration-%{version}.dist-info
+%{python_sitelib}/zope[_.]configuration-%{version}.dist-info
 %{python_sitelib}/zope.configuration-6.0-*-nspkg.pth
 %endif
 

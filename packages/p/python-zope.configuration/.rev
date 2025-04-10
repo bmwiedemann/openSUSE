@@ -103,4 +103,12 @@ New dependency of python-pyramid</comment>
 - No more greedy globs in %files.</comment>
     <requestid>1231599</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5214ca2a79dae38848777a5942a9b030</srcmd5>
+    <version>6.0</version>
+    <time>1744315182</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266263</requestid>
+  </revision>
 </revisionlist>
