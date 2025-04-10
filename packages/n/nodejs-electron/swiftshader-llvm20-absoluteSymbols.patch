@@ -1,0 +1,14 @@
+--- src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp.orig	2025-04-09 20:33:23.551038841 +0200
++++ src/third_party/swiftshader/src/Reactor/LLVMJIT.cpp	2025-04-09 21:13:20.546410219 +0200
+@@ -73,6 +73,11 @@ __pragma(warning(push))
+ #	include "llvm/Transforms/IPO.h"
+ #endif
+ 
++
++#if LLVM_VERSION_MAJOR >= 20  // https://github.com/llvm/llvm-project/commit/dc11c0601577afb8f67513d041ee25dabe3555b9
++#include "llvm/ExecutionEngine/Orc/AbsoluteSymbols.h"
++#endif
++
+ #ifdef _MSC_VER
+     __pragma(warning(pop))
+ #endif

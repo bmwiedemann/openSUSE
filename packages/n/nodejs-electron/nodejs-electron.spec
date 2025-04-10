@@ -207,7 +207,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        33.4.7
+Version:        33.4.9
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -394,6 +394,7 @@ Patch3183:      vtt_scanner-missing-variant.patch
 Patch3184:      electron_usb_delegate-incomplete-UsbDeviceInfo.patch
 Patch3185:      bsc1224178-font-gc.patch
 Patch3186:      string_view-incomplete-CodePointIterator.patch
+Patch3187:      swiftshader-llvm20-absoluteSymbols.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.

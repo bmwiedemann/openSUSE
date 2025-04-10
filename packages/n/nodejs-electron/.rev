@@ -1303,4 +1303,14 @@ to Staging:F with it</comment>
     <comment>33.4.7</comment>
     <requestid>1256431</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>d614524cbcaa4fb63b3d19b991deb22d</srcmd5>
+    <version>33.4.9</version>
+    <time>1744315190</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release 33.4.9
+  * No user-visible changes
+- Add swiftshader-llvm20-absoluteSymbols.patch to fix FTBFS on aarch64</comment>
+    <requestid>1268353</requestid>
+  </revision>
 </revisionlist>

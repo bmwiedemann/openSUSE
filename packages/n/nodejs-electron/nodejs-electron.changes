@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  9 18:46:20 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.9
+  * No user-visible changes
+- Add swiftshader-llvm20-absoluteSymbols.patch to fix FTBFS on aarch64
+
+-------------------------------------------------------------------
 Thu Mar 27 10:19:49 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.7
