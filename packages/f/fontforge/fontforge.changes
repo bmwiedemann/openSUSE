@@ -107,6 +107,8 @@ Sun Mar 20 21:20:14 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * UFO include path is altered, please update your fonts if needed
   * FontForge is now compiled with -Wall by default
   * Cidmaps are now bundled
+  * Move help to gutils, help to avoid not validate strings before launching issue.
+  (CVE-2017-17521, bsc#1073014)
 - drop fix-return-statement.patch. obsolete
 
 -------------------------------------------------------------------
