@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 23 14:32:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.39.0
+  * Upgrade vibe-d dependencies
+  * LDC: Don't keep around temporary object files for static libs
+  * remove internal deprecations
+  * Tests: Implement the ability to mock the registry too 
+  * FSEntry: Set a default time for all entries 
+  * Do not use Package.storeInfo in PackageManager.store
+  * Fix #2901: VersionRange.toString() doesn't handle >0.0.0
+  * PackageManager: Make lookup lazy again
+  * Avoid linear time edge list construction.
+  * Reduce allocation overhead in determineDependencyConfigs
+  * Avoid re-allocating allconfigs_path in determineAllConfigs.
+  * Eliminate edges in the configuration graph in-place. 
+  * Cache various package information to reduce GC allocations in 
+    getPackageConfigs.
+
+-------------------------------------------------------------------
 Sun Jul 21 16:15:20 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.38.1

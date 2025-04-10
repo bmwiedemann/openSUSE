@@ -1,7 +1,7 @@
 #
 # spec file for package dub
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with dcompiler_dmd
 %endif
 Name:           dub
-Version:        1.38.1
+Version:        1.39.0
 Release:        0
 Summary:        Package manager and meta build tool for the D programming language
 License:        MIT
