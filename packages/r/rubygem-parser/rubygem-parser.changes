@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Apr  9 08:07:59 UTC 2025 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Updated to version 3.3.7.4
+
+  v3.3.7.4 (2025-03-31)
+  ---------------------
+
+  Bugs fixed:
+  * lexer-strings.rb: Avoid an exception on utf8 surrogate pair codepoints (#1051) (Earlopain)
+  * builder.rb: emit `kwargs` node for `indexasgn` when opted in (#1053) (Earlopain)
+  * builder.rb: correctly handle `...` forwarding to super with explicit block (#1049) (Earlopain)
+  * numbered parameters are valid for pattern matching pinning (#1060) (Earlopain)
+
+  v3.3.7.3 (2025-03-26)
+  ---------------------
+
+  API modifications:
+  * Bump maintenance branches to 3.2.8 and 3.1.7 (#1074) (Koichi ITO)
+
+  v3.3.7.2 (2025-03-20)
+  ---------------------
+
+  Features implemented:
+  * add prism-specific node types (#1071) (Earlopain)
+
+  Bugs fixed:
+  * builder.rb: fix hash value omission considering some local vars as constants (#1064) (Earlopain)
+
+  v3.3.7.1 (2025-02-05)
+  ---------------------
+
+  API modifications:
+  * parser/current: add -dev prefix to 3.4 branch (#1067) (Ilya Bylich)
+  * parser/current: bump 3.2 branch to 3.2.7 (#1066) (Ilya Bylich)
+
+  v3.3.7.0 (2025-01-16)
+  ---------------------
+
+  API modifications:
+  * Bump maintenance branches to 3.3.7 (#1061) (Koichi ITO)
+  * bump 3.4 branch, remove 3.0 from CI (EOL) (#1057) (Ilya Bylich)
+  * assert that version-specific checks actually run against at least one version (#1050) (Earlopain)
+
+  Features implemented:
+  * ruby34.y: reject `return` in singleton class (#1048) (Earlopain)
+
+  Bugs fixed:
+  * Fix `ruby-parse` with a folder ending in `.rb` (#1047) (Earlopain)
+
+  v3.3.6.0 (2024-11-05)
+  ---------------------
+
+  API modifications:
+  * Bump maintenance branches to 3.3.6 (#1045) (Koichi ITO)
+
+-------------------------------------------------------------------
 Mon Nov  4 17:12:18 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 3.3.5.1, no changelog found

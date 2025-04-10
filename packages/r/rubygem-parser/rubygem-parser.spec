@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-parser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-parser
-Version:        3.3.5.1
+Version:        3.3.7.4
 Release:        0
 %define mod_name parser
 %define mod_full_name %{mod_name}-%{version}
