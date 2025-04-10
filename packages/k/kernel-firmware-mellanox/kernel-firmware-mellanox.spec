@@ -20,26 +20,25 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version aaae2fb60f75b07d9c249ebe668524f7ddf51243
+%define git_version c1a774f36657e30e28a83002a8ebf5add44e02aa
 
 Name:           kernel-firmware-mellanox
-Version:        20250206
+Version:        20250408
 Release:        0
 Summary:        Kernel firmware files for Mellanox Spectrum switch driver
-License:        SUSE-Firmware AND GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250409.tar.gz#/kernel-firmware-tools-20250409.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
@@ -56,9 +55,9 @@ Supplements:    modalias(pci:v000015B3d0000CF80sv*sd*bc*sc*i*)
 %description
 This package contains kernel firmware files for Mellanox Spectrum switch driver.
 
-
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh mellanox < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
