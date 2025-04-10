@@ -76,7 +76,8 @@ for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/py
 %build
 %meson \
 %if %{without docs}
-    -Ddocs=disabled
+    -Ddocs=disabled \
+    -Dman_html=disabled
 %endif
 %meson_build
 
@@ -90,9 +91,7 @@ for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/py
 %files -n serdi
 %license COPYING
 %attr(0755,root,root) %{_bindir}/serdi
-%if %{with docs}
 %{_mandir}/man1/serdi.1%{?ext_man}
-%endif
 
 %files -n libserd-0-%{sover}
 %license COPYING
