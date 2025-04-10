@@ -1,7 +1,7 @@
 #
 # spec file for package python-cachelib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +22,15 @@ Version:        0.10.2
 Release:        0
 Summary:        A collection of cache libraries in the same API interface
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/pallets-eco/cachelib
 Source:         https://files.pythonhosted.org/packages/source/c/cachelib/cachelib-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM skip-failing-tests.patch gh#pallets-eco/cachelib#228 mcepl@suse.com
 # skip failing tests
 Patch0:         skip-failing-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  redis
@@ -42,7 +43,6 @@ BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  memcached
 # /SECTION
 %python_subpackages
@@ -54,10 +54,10 @@ A collection of cache libraries in the same API interface.
 %autosetup -p1 -n cachelib-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +76,6 @@ export PYTEST_ADDOPTS
 %license LICENSE.rst
 %doc README.rst
 %{python_sitelib}/cachelib
-%{python_sitelib}/cachelib-%{version}*-info
+%{python_sitelib}/cachelib-%{version}.dist-info
 
 %changelog

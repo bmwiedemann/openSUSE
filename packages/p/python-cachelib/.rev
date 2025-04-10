@@ -54,4 +54,13 @@
     <comment></comment>
     <requestid>1136187</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>1af167342c5a7c87fb0448a0e39d5ff7</srcmd5>
+    <version>0.10.2</version>
+    <time>1744315162</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Drop urllib3 BuildRequires due to boto3 disappearing.</comment>
+    <requestid>1268272</requestid>
+  </revision>
 </revisionlist>
