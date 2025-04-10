@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Apr 10 08:46:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.1:
+  * 5-0, 5-0 HotFix!
+    It looks like we've broken a few things in the clean up process
+    Apologizes for the disruption in the farce. Hopefully happier
+    on v0.50.1...
+    Crossing fingers and toes!
+  * Resolved Issues
+    - #3262 Crash when no shellPod is defined in config file
+    - #3261 aliases with namespace and/or labels produce an error
+    - #3258 mac silicon 0.50.0 runtime error
+    - #3257 pods are reported to run on nodes they are not running
+      on
+    - #3256 Pods view seems broken in 0.50.0
+    - #3255 Custom view does not work randomly
+
+-------------------------------------------------------------------
+Wed Apr 09 06:12:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.0:
+  * 5-O, 5-0... Spring Cleaning In Effect!
+    Careful on this upgrade!
+    We've gone thru lots of code revamp/refactor on this drop, so
+    mileage may vary!!
+  * K9s Slow?
+    It looks like K9s performance took a dive in the wrong
+    direction circa v0.40.x releases.
+    Took a big perf/cleanup pass to improve perf and think this
+    release should help a lot (famous last words...)
+      NOTE! As my dear granny use to say: You can't cook a great
+      meal without trashing the kitchen,
+    So likely I have broken a few things in the process. So thread
+    carefully and report back!
+  * Now with Super Column Blow!
+    By general demand, juice up custom views! In a feature we like
+    to refer to as Super Column Blow...
+    As of this drop, you can go full Chuck Norris and sprinkle some
+    of your JQ_FU with you custom views.
+  * Resolved Issues
+    - #3226 Filter view will show mess when filtering some string
+    - #3224 Respect kubectl.kubernetes.io/default-container
+      annotation
+    - #3222 Option to Display Resource Names Without API Version
+      Prefix
+    - #3210 Description line is buggy
+  * Dependencies
+    - chore(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+      (#3234)
+    - chore(deps): bump helm.sh/helm/v3 from 3.17.1 to 3.17.2
+      (#3235)
+    - chore(deps): bump k8s.io/apiextensions-apiserver from 0.32.2
+      to 0.32.3 (#3213)
+    - chore(deps): bump golangci/golangci-lint-action from 6.5.1 to
+      6.5.2 (#3215)
+    - chore(deps): bump k8s.io/kubectl from 0.32.2 to 0.32.3
+      (#3214)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.24 to 1.7.27 (#3216)
+
+-------------------------------------------------------------------
 Sun Mar 16 17:05:23 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.40.10:
