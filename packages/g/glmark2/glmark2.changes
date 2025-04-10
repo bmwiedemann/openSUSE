@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 09 09:52:46 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250221:
+  * NativeStateDRM: Specify modifiers for DRM framebuffer when possible
+  * NativeStateDRM: Use explicit format modifiers when possible
+  * GLStateEGL: Advertise supported format modifiers
+  * glad: Add EGL_EXT_image_dma_buf_import_modifiers extension
+  * GLStateEGL: Prefer to use eglGetProcAddress to get EGL function addresses
+  * Support the provision of GL modifiers to native state
+  * NativeStateNull: Add null native state
+  * glad: Update to latest version and add EGL_MESA_platform_surfaceless
+  * Prefer to use sync objects to synchronize rendering in offscreen mode
+  * CanvasGeneric,Options: Support multiple FBOs in offscreen mode
+  * Prepare scenes for changing Canvas FBO
+
+-------------------------------------------------------------------
 Wed Feb 19 08:56:24 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250212:
