@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20250408" schemaversion="4.1">
+<image name="OBS__MicroOS___20250409" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250408</productvar>
+      <productvar name="VERSION">20250409</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250408,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20250409,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20250409/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -607,8 +607,8 @@
       <repopackage name="libcairo2"/>
       <repopackage name="libcairomm-1_16-1"/>
       <repopackage name="libcamel-1_2-64"/>
-      <repopackage name="libcamera-base0_4"/>
-      <repopackage name="libcamera0_4"/>
+      <repopackage name="libcamera-base0_5"/>
+      <repopackage name="libcamera0_5"/>
       <repopackage name="libcanberra-gtk3-0"/>
       <repopackage name="libcanberra0"/>
       <repopackage name="libcap-ng0"/>
@@ -1448,6 +1448,7 @@
       <repopackage name="libvpx9"/>
       <repopackage name="libvte-2_91-0"/>
       <repopackage name="libvulkan1"/>
+      <repopackage name="libvulkan_lvp"/>
       <repopackage name="libwacom-data"/>
       <repopackage name="libwacom9"/>
       <repopackage name="libwavpack1"/>
@@ -1569,6 +1570,7 @@
       <repopackage name="Mesa-gallium"/>
       <repopackage name="Mesa-libEGL1"/>
       <repopackage name="Mesa-libGL1"/>
+      <repopackage name="Mesa-vulkan-device-select"/>
       <repopackage name="metatheme-adwaita-common"/>
       <repopackage name="metatheme-breeze6-common"/>
       <repopackage name="microdnf"/>

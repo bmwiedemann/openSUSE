@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250408" schemaversion="4.1">
+<image name="OBS__openSUSE___20250409" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250408</productvar>
+      <productvar name="VERSION">20250409</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250408,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250409,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250408/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250409/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1315,8 +1315,8 @@
       <repopackage name="libcairomm-1_16-1"/>
       <repopackage name="libcamd3"/>
       <repopackage name="libcamel-1_2-64"/>
-      <repopackage name="libcamera-base0_4"/>
-      <repopackage name="libcamera0_4"/>
+      <repopackage name="libcamera-base0_5"/>
+      <repopackage name="libcamera0_5"/>
       <repopackage name="libcanberra-gtk-module-common"/>
       <repopackage name="libcanberra-gtk0"/>
       <repopackage name="libcanberra-gtk2-module"/>
@@ -1326,7 +1326,7 @@
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
       <repopackage name="libcap2-32bit"/>
-      <repopackage name="libcapstone4"/>
+      <repopackage name="libcapstone5"/>
       <repopackage name="libcares2"/>
       <repopackage name="libcblas3"/>
       <repopackage name="libcbor0_11"/>
@@ -2853,6 +2853,7 @@
       <repopackage name="libvte-2_91-0"/>
       <repopackage name="libvterm0"/>
       <repopackage name="libvulkan1"/>
+      <repopackage name="libvulkan_lvp"/>
       <repopackage name="libwacom-data"/>
       <repopackage name="libwacom9"/>
       <repopackage name="libwavpack1"/>
@@ -3078,6 +3079,7 @@
       <repopackage name="Mesa-libEGL1"/>
       <repopackage name="Mesa-libGL1"/>
       <repopackage name="Mesa-libva"/>
+      <repopackage name="Mesa-vulkan-device-select"/>
       <repopackage name="messagelib"/>
       <repopackage name="messagelib-lang"/>
       <repopackage name="metamail"/>

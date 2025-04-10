@@ -15,6 +15,7 @@
     <package name="Mesa-libEGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libGL1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="Mesa-libva" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="Mesa-vulkan-device-select" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ModemManager" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ModemManager-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ModemManager-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1756,8 +1757,8 @@
     <package name="libcairomm-1_16-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcamd3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcamel-1_2-64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libcamera-base0_4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcamera0_4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcamera-base0_5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libcamera0_5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcanberra-gtk-module-common" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcanberra-gtk0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libcanberra-gtk2-module" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -1767,7 +1768,7 @@
     <package name="libcap-ng0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcap2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcap2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libcapstone4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
+    <package name="libcapstone5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="libcares2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcblas3" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="libcbor0_11" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -2880,6 +2881,7 @@
     <package name="libvte-2_91-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libvterm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libvulkan1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libvulkan_lvp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwacom9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libwavpack1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

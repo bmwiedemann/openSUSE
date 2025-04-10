@@ -141,7 +141,6 @@ unsorted:
   - Mesa-libd3d-devel 
   - Mesa-libd3d-devel-32bit 
   - Mesa-libva-32bit 
-  - Mesa-vulkan-device-select 
   - Mesa-vulkan-device-select-32bit 
   - Mesa-vulkan-overlay 
   - Mesa-vulkan-overlay-32bit 
@@ -8877,6 +8876,17 @@ unsorted:
   - ibis-devel 
   - ibis-doc 
   - ibm-data-db2 
+  - ibm-plex-fonts 
+  - ibm-plex-mono-fonts 
+  - ibm-plex-sans-arabic-fonts 
+  - ibm-plex-sans-condensed-fonts 
+  - ibm-plex-sans-devanagari-fonts 
+  - ibm-plex-sans-fonts 
+  - ibm-plex-sans-hebrew-fonts 
+  - ibm-plex-sans-kr-fonts 
+  - ibm-plex-sans-thai-fonts 
+  - ibm-plex-sans-thai-looped-fonts 
+  - ibm-plex-serif-fonts 
   - ibmswtpm2 
   - ibmtss 
   - ibmtss-base 
@@ -12465,11 +12475,11 @@ unsorted:
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
-  - libcamera-base0_4-32bit 
+  - libcamera-base0_5-32bit 
   - libcamera-cam 
   - libcamera-devel 
   - libcamera-tools 
-  - libcamera0_4-32bit 
+  - libcamera0_5-32bit 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
   - libcanberra-gtk0-32bit 
@@ -16941,7 +16951,6 @@ unsorted:
   - libvulkan1-32bit 
   - libvulkan_intel 
   - libvulkan_intel-32bit 
-  - libvulkan_lvp 
   - libvulkan_nouveau 
   - libvulkan_nouveau-32bit 
   - libvulkan_radeon 
