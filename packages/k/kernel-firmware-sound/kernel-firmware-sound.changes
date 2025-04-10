@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  9 10:02:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250408 (git commit c1a774f36657):
+  * mediatek: Add new mt8195 SOF firmware
+  * mediatek: Add new mt8188 SOF firmware
+
+-------------------------------------------------------------------
 Tue Apr  1 08:32:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250331 (git commit 0f7fe1e739bf):

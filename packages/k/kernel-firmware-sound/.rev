@@ -83,4 +83,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56: Correct filenames of SSID 103c8e1b and 103c8e1c</comment>
     <requestid>1266054</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>372b3021d1b32f46041aea49d2231b52</srcmd5>
+    <version>20250408</version>
+    <time>1744315063</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250408 (git commit c1a774f36657):
+  * mediatek: Add new mt8195 SOF firmware
+  * mediatek: Add new mt8188 SOF firmware</comment>
+    <requestid>1268123</requestid>
+  </revision>
 </revisionlist>
