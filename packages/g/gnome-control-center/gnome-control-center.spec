@@ -133,6 +133,8 @@ Recommends:     ppd-server
 Recommends:     malcontent-control
 # If the user expresses no choice, we pick the original power-profiles-daemon for now
 Suggests:       power-profiles-daemon
+# To ensure that the distribution icon is always displayed in the About section, even for minimal installations
+Recommends:     distribution-logos-openSUSE-icons
 
 %description
 The control center is GNOME's main interface for configuration of

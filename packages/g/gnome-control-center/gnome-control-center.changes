@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr  7 16:36:06 UTC 2025 - Di Lorenzo <lauro@dilorenzo.one>
+
+- Recommend distribution-logos-openSUSE-icons; to ensure that the
+  distribution icon is always displayed in the About section,
+  even for minimal installations.
+
+-------------------------------------------------------------------
 Fri Apr  4 09:37:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add malcontent-control Recommends, pull in parental control

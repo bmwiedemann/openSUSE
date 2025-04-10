@@ -2319,4 +2319,12 @@ New stable rel</comment>
   (malcontent) support. (forwarded request 1267088 from iznogood)</comment>
     <requestid>1267613</requestid>
   </revision>
+  <revision rev="264" vrev="3">
+    <srcmd5>c19b37916752081a92ec1818a627333a</srcmd5>
+    <version>48.0+15</version>
+    <time>1744315039</time>
+    <user>anag_factory</user>
+    <comment>Recommend distribution-logos-openSUSE-icons; to ensure that the distribution icon is always displayed in the About section, even for minimal installations (forwarded request 1267753 from The_Linux_Universe)</comment>
+    <requestid>1268048</requestid>
+  </revision>
 </revisionlist>
