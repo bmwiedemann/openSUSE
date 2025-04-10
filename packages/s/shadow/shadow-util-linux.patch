@@ -122,7 +122,7 @@ Index: etc/login.defs
  # Max time in seconds for login(1)
  #
  LOGIN_TIMEOUT		60
-@@ -315,14 +335,6 @@ CHARACTER_CLASS         [ABCDEFGHIJKLMNO
+@@ -285,14 +305,6 @@ USERGROUPS_ENAB yes
  #GRANT_AUX_GROUP_SUBIDS yes
  
  #
@@ -137,3 +137,26 @@ Index: etc/login.defs
  # Select the HMAC cryptography algorithm.
  # Used in pam_timestamp module to calculate the keyed-hash message
  # authentication code.
+@@ -301,3 +313,10 @@ PREVENT_NO_AUTH superuser
+ # that are available in your system.
+ #
+ #HMAC_CRYPTO_ALGO SHA512
++
++# Forces login to protect the specified environment variables if -p is not
++# used. The string value is a comma-separated list of variable names. For
++# example: "LANG,LC_MESSAGES,LC_COLLATE".  The safelist is ignored for the
++# environment variables HOME, SHELL and USER.
++#LOGIN_ENV_SAFELIST
++
+Index: lib/getdef.c
+===================================================================
+--- lib/getdef.c.orig
++++ lib/getdef.c
+@@ -76,6 +76,7 @@ struct itemdef {
+ #define FOREIGNDEFS				\
+ 	{"ALWAYS_SET_PATH", NULL},		\
+ 	{"ENV_ROOTPATH", NULL},			\
++	{"LOGIN_ENV_SAFELIST", NULL},		\
+ 	{"LOGIN_KEEP_USERNAME", NULL},		\
+ 	{"LOGIN_PLAIN_PROMPT", NULL},		\
+ 	{"MOTD_FIRSTONLY", NULL},		\

@@ -33,14 +33,18 @@ if ! test -f openSUSE:Factory/util-linux/BUILD/*/configure.ac ; then
 		osc co openSUSE:Factory util-linux
 	fi
 	cd openSUSE:Factory/util-linux
+# BEGIN HACK
+# quilt does not understand our util-linux.spec.
+	sed -i s/@BUILD_FLAVOR@// util-linux.spec
+# END HACK
 	quilt setup -d BUILD util-linux.spec
-	cd BUILD/*
+	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)
 	quilt push -a
 	cd ../../../..
 fi
 
 echo "Extracting variables from util-linux..."
-cd openSUSE:Factory/util-linux/BUILD/*
+cd $(ls -1d openSUSE:Factory/util-linux/BUILD/* | sed /SPECPARTS/d)
 (
 	grep -rh getlogindefs . |
 		sed -n 's/^.*getlogindefs[a-z_]*("\([A-Z0-9_]*\)".*$/\1/p'
@@ -68,13 +72,13 @@ if ! test -f openSUSE:Factory/pam/BUILD/*/configure.ac ; then
 	fi
 	cd openSUSE:Factory/pam
 	quilt setup -d BUILD pam.spec
-	cd BUILD/*
+	cd $(ls -1d BUILD/* | sed /SPECPARTS/d)
 	quilt push -a
 	cd ../../../..
 fi
 
 echo "Extracting variables from pam..."
-cd openSUSE:Factory/pam/BUILD/*
+cd $(ls -1d openSUSE:Factory/pam/BUILD/* | sed /SPECPARTS/d)
 grep -rh LOGIN_DEFS . |
 	sed -n 's/CRYPTO_KEY/\"HMAC_CRYPTO_ALGO\"/g;s/^.*search_key *([A-Za-z_]*, *[A-Z_]*LOGIN_DEFS, *"\([A-Z0-9_]*\)").*$/\1/p' |
 	LC_ALL=C sort -u >../../../../shadow-login_defs-check-pam.lst

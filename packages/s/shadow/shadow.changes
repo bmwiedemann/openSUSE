@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  9 00:05:49 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- shadow-util-linux.patch: util-linux-2.41 introduced new variable:
+  LOGIN_ENV_SAFELIST. Recognize it and update dependencies. The
+  patch includes gh/shadow-maint/shadow/pull#1248.
+- shadow-login_defs-check-login_defs.lst: Make the util-linux.spec
+  multibuild file compatible with quilt. Make it working with new
+  quilt.
+
+-------------------------------------------------------------------
 Thu Mar 20 06:48:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.17.4:

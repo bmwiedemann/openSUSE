@@ -84,7 +84,7 @@ Summary:        The login.defs configuration file
 # Call shadow-login_defs-check.sh before!
 Group:          System/Base
 Provides:       login_defs-support-for-pam = 1.5.2
-Provides:       login_defs-support-for-util-linux = 2.37
+Provides:       login_defs-support-for-util-linux = 2.41
 BuildArch:      noarch
 
 %description -n login_defs
