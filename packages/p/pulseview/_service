@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/sigrokproject/pulseview</param>
+    <param name="scm">git</param>
+    <param name="revision">continuous</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">0.5.0~%cd</param>
+  </service>
+  <service name="set_version" mode="manual" />
+
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">pulseview-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

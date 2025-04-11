@@ -1,7 +1,7 @@
 #
 # spec file for package pulseview
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           pulseview
-Version:        0.4.2
+Version:        0.5.0~20240813
 Release:        0
 Summary:        Qt-based GUI for sigrok
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
-URL:            https://sigrok.org
-Source0:        https://sigrok.org/download/source/pulseview/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE
-Patch0:         0001-Fix-building-with-Qt-5.15.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-broken-build-due-to-C-template-behind-C-linkage.patch
+URL:            https://sigrok.org/wiki/PulseView
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  glib2-devel
 BuildRequires:  libboost_filesystem-devel
@@ -37,7 +33,6 @@ BuildRequires:  libboost_test-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libsigrok-devel >= 0.5.2
 BuildRequires:  libsigrokdecode-devel >= 0.5.2
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Svg)
@@ -54,7 +49,6 @@ PulseView is a Qt-based GUI for sigrok.
 %autosetup -p1
 
 %build
-export CXXFLAGS="%{optflags} -fpermissive"
 %cmake -DDISABLE_WERROR=TRUE ..
 %cmake_build
 
@@ -67,7 +61,6 @@ install -m 644 -D icons/pulseview.svg %{buildroot}%{_datadir}/icons/hicolor/scal
 
 install -m 755 -d %{buildroot}%{_datadir}/applications/
 install -m 644 contrib/org.sigrok.PulseView.desktop %{buildroot}%{_datadir}/applications/org.sigrok.PulseView.desktop
-%suse_update_desktop_file -r org.sigrok.PulseView Education Engineering
 
 install -m 755 -d %{buildroot}%{_datadir}/metainfo/
 install -m 644 contrib/org.sigrok.PulseView.appdata.xml %{buildroot}%{_datadir}/metainfo/org.sigrok.PulseView.appdata.xml

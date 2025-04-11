@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 11 14:12:36 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix version, pulseview identifies itself as 0.5.0.
+- Remove obsolete -fpermissive compiler flag.
+- Remove obsolete/unnecessary suse_update_desktop_file use.
+
+-------------------------------------------------------------------
+Thu Apr 03 06:28:32 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- switch to git snapshot, no releases available for years
+  * fixes build against new boost
+- Update to version 0.4.2+20240813 (continuous branch):
+  * build.yml: Add yaml file
+  * Session: Fix issue #67 by improving error handling
+  * AnalogSignal: Recalculate scale when restoring div height
+  * Add new translators to "About" section
+  * Update Spanish translation to latest changes
+  * trace: Whitespace fix
+  * trace: fix crash on empty channel name in popup form
+  * Session: Record acquisition start time and use it when saving
+  * Trace view: Add setting to keep ruler item selected
+  * Fix warning and remove cursor pair selected state
+- remove upstream patches:
+  * 0001-Fix-broken-build-due-to-C-template-behind-C-linkage.patch
+  * 0001-Fix-building-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
 Wed Apr 28 00:17:52 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with GLib 2.68, add
