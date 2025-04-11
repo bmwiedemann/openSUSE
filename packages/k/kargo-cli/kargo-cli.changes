@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:22:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  No CLI-related changes in the changelog
+  * chore(backport release-1.4): chore(deps): update Helm to
+    v3.17.3 (#3830)
+  * chore(backport release-1.4): chore(docs): fix typo in "Logging
+    In" (#3811)
+  * chore(backport release-1.4): chore(deps): bump the go-patch
+    group with 5 updates (#3808)
+  * chore(backport release-1.4): chore(deps): bump golang from
+    1.24.1-bookworm to 1.24.2-bookworm (#3807)
+
+-------------------------------------------------------------------
 Sat Apr 05 13:00:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.0:
