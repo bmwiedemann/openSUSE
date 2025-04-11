@@ -15,46 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define ansible_collection_name community-sap_launchpad-%{version}
 
 Name:           ansible-sap-launchpad
 Summary:        Ansible collection community.sap_launchpad for SAP Automation
 License:        Apache-2.0
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 URL:            https://github.com/sap-linuxlab/community.sap_launchpad/
 Source:         %{url}archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        galaxy.yml
 
 BuildArch:      noarch
 
 
-# Python macros are required for python detection
-BuildRequires:  python-rpm-macros
-
-# Minimum python version
-%{?sle15_python_module_pythons}
-BuildRequires:  %{python_module base >= 3.11}
-Requires: %{python_module base >= 3.11}
-
-
-# Select correct supported Ansible
-%if 0%{?suse_version} >= 1600
-Requires: ansible-core
-Requires: ansible
-BuildRequires: ansible-core
-BuildRequires: ansible
-%else
-# Only Ansible 9 is supported on SLES 15
-Requires: ansible-core-2.16
-Requires: ansible-9
-BuildRequires: ansible-core-2.16
-BuildRequires: ansible-9
-%endif
-
-# Do not check any files in collections for requires
-%global __requires_exclude_from ^%{python311_sitelib}/.*$
-
+Requires:       ansible >= 9
+Requires:       ansible-core >= 2.16
+BuildRequires:  ansible >= 9
+BuildRequires:  ansible-core >= 2.16
 
 %description
 This package provides a Ansible collection community.sap_launchpad.
@@ -62,18 +40,14 @@ This package provides a Ansible collection community.sap_launchpad.
 It automates download of SAP Software for SAP installations.
 Downloads software using list of files or maintenance plan ID.
 
-
 %prep
-# Extract tarball and overwrite files
+# Extract tarball
 cd %{_builddir}
 tar -xzf %{_sourcedir}/%{name}-%{version}.tar.gz --strip-components=1
-cp %{_sourcedir}/galaxy.yml %{_builddir}/galaxy.yml
 
 %build
-cd %{_builddir}
-ls -la %{_builddir}
+# Build the Ansible collection
 ansible-galaxy collection build --output-path %{_builddir}
-ls -la %{_builddir}
 
 %install
 rm -rf %{buildroot}
@@ -83,6 +57,6 @@ ansible-galaxy collection install --force %{_builddir}/%{ansible_collection_name
   --collections-path %{buildroot}%{_datadir}/ansible/collections
 
 %files
-%{_datadir}/ansible/collections/ansible_collections/
+%{_datadir}/ansible/collections/
 
 %changelog

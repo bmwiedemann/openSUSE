@@ -10,4 +10,25 @@ This package contains Ansible Automation for downloading SAP media using API.
 Source is downstream that we are contributing to: https://github.com/sap-linuxlab/community.sap_launchpad</comment>
     <requestid>1239898</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3b9a58a91f8e9ebcb1376228cadb43c1</srcmd5>
+    <version>1.2.0</version>
+    <time>1744382798</time>
+    <user>anag_factory</user>
+    <comment>Updated with release 1.2.0
+
+- 1.2.0
+  -  Changes:
+    - sap_software_download: New Ansible Role with enhanced logic for downloading software using Ansible Module software_center_download
+    - sap_software_download: Download stack XML option
+    - software_center_download: Add option to search for latest packages 
+    - maintenance_planner modules: Add option to use Display ID instead of name
+    - Collection Readme update and preparation for 1.2.0 release
+  - Bugfixes:
+    - fix: cache gigya sdk build number
+- 1.1.1
+  - Initial release.
+</comment>
+    <requestid>1268432</requestid>
+  </revision>
 </revisionlist>

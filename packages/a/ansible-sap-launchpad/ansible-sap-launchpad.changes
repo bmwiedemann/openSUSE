@@ -1,5 +1,19 @@
 -------------------------------------------------------------------
-Fri Jan  20 09:00:00 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+Mon Apr  7 10:28:18 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.2.0
+  -  Changes:
+    - sap_software_download: New Ansible Role with enhanced logic for downloading software using Ansible Module software_center_download
+    - sap_software_download: Download stack XML option
+    - software_center_download: Add option to search for latest packages 
+    - maintenance_planner modules: Add option to use Display ID instead of name
+    - Collection Readme update and preparation for 1.2.0 release
+  - Bugfixes:
+    - fix: cache gigya sdk build number
+
+-------------------------------------------------------------------
+Fri Jan 20 09:00:00 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
 
 - 1.1.1
   - Initial release.
+
