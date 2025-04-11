@@ -15,4 +15,36 @@
     <comment></comment>
     <requestid>1085809</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ce6a22c40c2a766b4579b3ee35657d51</srcmd5>
+    <version>2.2.0</version>
+    <time>1744382968</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.0:
+  * Added
+    + New `default_domain` parameter to support absolute paths with domain
+      names
+    + New command-line interface (`url-normalize`)
+    + Query parameter filtering functionality
+    + Parameter allowlist feature for controlling accepted query parameters
+    + IDNA 2008 support via `idna` package
+  * Fixed
+    + Handle URLs with missing slashes correctly
+    + Fix decoding of reserved characters in URL paths
+    + Fix Twitter hashtag encoding in query parameters
+    + Do not encode equals sign in fragment
+    + Reverted license format in pyproject.toml to maintain Python 3.8
+      compatibility with older setuptools versions
+  * Changed
+    + **BREAKING:** Switch default scheme from 'http' to 'https'
+    + **BREAKING:** Migrated IDNA handling to use IDNA 2008 with UTS46
+      processing
+    + **BREAKING:** Updated minimum Python version to 3.8
+    + **BREAKING:** Removed sort_query_params option as it was incorrect
+    + Enhanced query normalization with parameter filtering support
+    + Updated URL cleanup to support new filtering features
+    + Changed host normalization to handle each domain label separately
+- Drop patch url-normalize-pr28-poetry-core.patch, now included.</comment>
+    <requestid>1268502</requestid>
+  </revision>
 </revisionlist>
