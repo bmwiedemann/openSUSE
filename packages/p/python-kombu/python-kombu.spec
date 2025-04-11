@@ -1,7 +1,7 @@
 #
 # spec file for package python-kombu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.4.2
+Version:        5.5.2
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -34,8 +34,11 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module amqp >= 5.1.1}
 BuildRequires:  %{python_module azure-identity >= 1.12.0}
 BuildRequires:  %{python_module boto3 >= 1.26.143}
+BuildRequires:  %{python_module google-cloud-monitoring}
+BuildRequires:  %{python_module google-cloud-pubsub}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pre-commit}
 BuildRequires:  %{python_module pycurl >= 7.43.0.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 4.5.2}

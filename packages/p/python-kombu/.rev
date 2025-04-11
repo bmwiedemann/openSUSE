@@ -1005,4 +1005,12 @@
     <comment></comment>
     <requestid>1206570</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>e05936627ccd5388f7b45819a08c4272</srcmd5>
+    <version>5.5.2</version>
+    <time>1744382965</time>
+    <user>anag_factory</user>
+    <comment>Another new dependency is needed for this: https://build.opensuse.org/requests/1268444</comment>
+    <requestid>1268445</requestid>
+  </revision>
 </revisionlist>

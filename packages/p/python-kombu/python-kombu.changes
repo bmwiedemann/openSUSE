@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr  8 14:57:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 5.5.2
+  * Bump tzdata from 2025.1 to 2025.2 by @dependabot in #2268
+  * Downgrad kafka version to make the CI green again by
+    @auvipy in #2271
+  * Attempt to fix retry loop in maybe_declare() when broken
+    connection by @olii in #2275
+  * Prepare for release: v5.5.2 by @Nusnus in #2278
+- Update to 5.5.1
+  * Update trove classifier with missing python 3.13 by
+    @auvipy in #2262
+  * Fix native_delayed_delivery for queue with explicit bindings
+    by @banksemi in #2263
+  * SQS: Fix Query Protocol Content-Type header by @hfern in #2266
+  * SQS: More Protocol Tests by @hfern in #2267
+  * Prepare for release: v5.5.1 by @Nusnus in #2270
+- Update to 5.5.0
+  * Native Delayed Delivery
+  * urllib3 instead of curl
+  * Transport: Google Pub/Sub
+  * full changelog: https://github.com/celery/kombu/releases/tag/v5.5.0
+
+-------------------------------------------------------------------
 Wed Oct  9 08:16:35 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Skip one test failing with new redis, upstream is aware of that
