@@ -18,7 +18,7 @@
 
 
 Name:           gitleaks
-Version:        8.24.2
+Version:        8.24.3
 Release:        0
 Summary:        Protect and discover secrets using Gitleaks
 License:        MIT

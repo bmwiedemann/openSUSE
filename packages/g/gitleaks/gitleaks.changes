@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 11 18:22:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.24.3:
+  * Add support for GitLab Runner Tokens (Routable) (#1820)
+  * bump repo version in pre-commit example (#1815)
+  * Fix currentLine out of bounds error (#1810)
+  * add support for Azure DevOps platform in SCM detection and link
+    (#1807)
+  * Add MaxMind license key rule (#1771)
+  * implement new openai regex pattern (#1780)
+  * A first attempt adding hooks.slack.com/triggers/ (#1792)
+  * feat(generic): tweak false-positives (#1803)
+  * chore: tweak logging and readme for GITLEAKS_CONFIG_TOML
+    feature (#1802)
+  * feat: add option to set config from env var with toml content
+    (#1662)
+
+-------------------------------------------------------------------
 Sat Mar 22 14:13:59 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 8.24.2 (8.24.1 was not released):
