@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  2 10:11:31 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Allow for ambiguity in first letter of directories in
+  %{python_sitearch}.
+
+-------------------------------------------------------------------
+Wed Feb 19 10:52:49 UTC 2025 - Matej Cepl <mcepl@suse.com>
+
+- Change macro to %{?sle15allpythons} so we build both Python 3.6
+  and Python 3.11 on SLE-15.
+
+-------------------------------------------------------------------
 Tue Feb 18 07:24:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix spelling of BSD-2-Clause license.

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Apr 10 04:56:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.2:
+  * build(deps): bump google.golang.org/grpc from 1.71.0 to 1.71.1
+    (#13895)
+  * build(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0
+    (#13909)
+  * build(deps): bump github.com/linkerd/linkerd2-proxy-api
+    (#13884)
+  * build(deps): bump tj-actions/changed-files (#13917)
+  * build(deps): bump cc from 1.2.17 to 1.2.18 (#13904)
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.8.0 to
+    1.9.0 (#13907)
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.39.0
+    (#13910)
+  * build(deps): bump errno from 0.3.10 to 0.3.11 (#13905)
+  * build(deps): bump miniz_oxide from 0.8.7 to 0.8.8 (#13914)
+  * build(deps): bump openssl-src from 300.4.2+3.4.1 to
+    300.5.0+3.5.0 (#13913)
+  * build(deps): bump hostname from 0.4.0 to 0.4.1 (#13915)
+  * build(deps): bump smallvec from 1.14.0 to 1.15.0 (#13903)
+  * build(deps): bump tokio from 1.44.1 to 1.44.2 (#13906)
+  * build(deps): bump openssl from 0.10.71 to 0.10.72 (#13901)
+  * build(deps): bump miniz_oxide from 0.8.5 to 0.8.7 (#13899)
+
+-------------------------------------------------------------------
 Wed Apr 02 20:10:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.1:

@@ -47,4 +47,14 @@
     <comment></comment>
     <requestid>1216731</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cdf64b825bd73554d047c8d978369242</srcmd5>
+    <version>0.29.37</version>
+    <time>1744382690</time>
+    <user>anag_factory</user>
+    <comment>- Make the dist-info name case-insensitive
+- Lowercase metadata directory name.
+</comment>
+    <requestid>1266126</requestid>
+  </revision>
 </revisionlist>

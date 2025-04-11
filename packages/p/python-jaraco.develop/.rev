@@ -33,4 +33,14 @@
     isn't lost when resolving placeholders.</comment>
     <requestid>1137285</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>fc376727641f52472f0d21a36af2dcbb</srcmd5>
+    <version>8.6.0</version>
+    <time>1744382705</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266230</requestid>
+  </revision>
 </revisionlist>

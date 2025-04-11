@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.path
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ touch jaraco/__init__.py
 %license LICENSE
 %dir %{python_sitelib}/jaraco/
 %{python_sitelib}/jaraco/path.py
-%{python_sitelib}/jaraco.path-%{version}*-info
+%{python_sitelib}/jaraco[_.]path-%{version}.dist-info
 %pycache_only %dir %{python_sitelib}/jaraco/__pycache__
 %pycache_only %{python_sitelib}/jaraco/__pycache__/path*.py*
 

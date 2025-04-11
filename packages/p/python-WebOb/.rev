@@ -441,4 +441,14 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1230046</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>6682cef04b05a7facfe2cbfb358e5712</srcmd5>
+    <version>1.8.9</version>
+    <time>1744382701</time>
+    <user>anag_factory</user>
+    <comment>- Make the dist-info name case-insensitive
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1266150</requestid>
+  </revision>
 </revisionlist>

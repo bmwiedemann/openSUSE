@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:42:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make the dist-info name case-insensitive
+
+-------------------------------------------------------------------
+Tue Mar 25 06:12:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Thu Nov 28 11:42:05 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Set COVERAGE to skip expensive tests

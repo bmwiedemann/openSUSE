@@ -1,7 +1,7 @@
 #
 # spec file for package python-covdefaults
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,12 @@ Version:        2.3.0
 Release:        0
 Summary:        Python coverage plugin to provide default settings
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/asottile/covdefaults
 Source:         https://github.com/asottile/covdefaults/archive/v%{version}.tar.gz#/covdefaults-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#asottile/covdefaults#164
+Patch0:         support-coverage-7.7.patch
 BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,13 +40,13 @@ BuildArch:      noarch
 Python coverage plugin to provide default settings.
 
 %prep
-%setup -q -n covdefaults-%{version}
+%autosetup -p1 -n covdefaults-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,8 @@ Python coverage plugin to provide default settings.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/covdefaults.py
+%pycache_only %{python_sitelib}/__pycache__/covdefaults.*.pyc
+%{python_sitelib}/covdefaults-%{version}.dist-info
 
 %changelog

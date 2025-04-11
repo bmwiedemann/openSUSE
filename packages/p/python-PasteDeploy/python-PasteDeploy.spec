@@ -1,7 +1,7 @@
 #
 # spec file for package python-PasteDeploy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -69,8 +69,8 @@ sed -i -e '/^addopts/s/ --cov//' pytest.ini
 %files %{python_files}
 %doc README.rst
 %license license.txt
-# %%{python_sitelib}/PasteDeploy-%%{version}*-info
-%{python_sitelib}/PasteDeploy-2.1.1*-info
+# %%{python_sitelib}/[pP]aste[dD]eploy-%{version}*-info
+%{python_sitelib}/[pP]aste[dD]eploy-2.1.1.dist-info
 %{python_sitelib}/PasteDeploy-2.1.1*-nspkg.pth
 %{python_sitelib}/paste/deploy
 

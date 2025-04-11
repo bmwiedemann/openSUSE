@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Apr  9 11:39:08 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.53:
+  * Fix regression in 1.52.
+  * Rebase libgpg-error-nobetasuffix.patch
+
+- Update to 1.52:
+  * The KEY_WOW64_xxKEY flags can now be passed to the Registry read
+    functions. [rE652328c786]
+  * In the spawn functions care about closefrom/close call is
+    interrupted. [T7478]
+  * New simple string list API. [rE47097806f1]
+  * New API for name value files. [rE7ec1f27b60]
+  * Interface changes relative to the 1.51 release:
+    - gpgrt_w32_reg_query_string          NEW (Windows only).
+    - gpgrt_strlist_t                     NEW type.
+    - gpgrt_strlist_free                  NEW.
+    - gpgrt_strlist_add                   NEW.
+    - gpgrt_strlist_tokenize              NEW.
+    - gpgrt_strlist_copy                  NEW.
+    - gpgrt_strlist_rev                   NEW.
+    - gpgrt_strlist_prev                  NEW.
+    - gpgrt_strlist_last                  NEW.
+    - gpgrt_strlist_pop                   NEW.
+    - gpgrt_strlist_find                  NEW.
+    - GPGRT_STRLIST_APPEND                NEW const.
+    - GPGRT_STRLIST_WIPE                  NEW const.
+    - gpgrt_nvc_t                         NEW type.
+    - gpgrt_nve_t                         NEW type.
+    - gpgrt_nvc_new                       NEW.
+    - gpgrt_nvc_release                   NEW.
+    - gpgrt_nvc_get_flag                  NEW.
+    - gpgrt_nvc_add                       NEW.
+    - gpgrt_nvc_set                       NEW.
+    - gpgrt_nve_set                       NEW.
+    - gpgrt_nvc_delete                    NEW.
+    - gpgrt_nvc_lookup                    NEW.
+    - gpgrt_nvc_parse                     NEW.
+    - gpgrt_nvc_write                     NEW.
+    - gpgrt_nve_next                      NEW.
+    - gpgrt_nve_name                      NEW.
+    - gpgrt_nve_value                     NEW.
+    - gpgrt_nvc_get_string                NEW.
+    - gpgrt_nvc_get_bool                  NEW.
+    - GPGRT_NVC_WIPE                      NEW const.
+    - GPGRT_NVC_PRIVKEY                   NEW const.
+    - GPGRT_NVC_SECTION                   NEW const.
+    - GPGRT_NVC_MODIFIED                  NEW const.
+
+-------------------------------------------------------------------
 Wed Nov 13 10:47:20 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.51:

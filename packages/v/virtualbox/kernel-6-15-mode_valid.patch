@@ -1,0 +1,27 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: drm_connector_helper_funcs::mode_valid() takes const mode
+References: kernel-6.15 build fix
+Patch-mainline: no
+
+Since:
+26d6fd81916e drm/connector: make mode_valid take a const struct drm_display_mode
+
+Adapt.
+---
+ src/VBox/Additions/linux/drm/vbox_mode.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/src/VBox/Additions/linux/drm/vbox_mode.c
++++ b/src/VBox/Additions/linux/drm/vbox_mode.c
+@@ -665,7 +665,11 @@ static int vbox_mode_valid(struct drm_co
+ #else
+ static enum drm_mode_status vbox_mode_valid(struct drm_connector *connector,
+ #endif
++#if RTLNX_VER_MIN(6,15,0)
++               const struct drm_display_mode *mode)
++#else
+                struct drm_display_mode *mode)
++#endif
+ {
+     return MODE_OK;
+ }

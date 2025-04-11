@@ -1,7 +1,7 @@
 #
 # spec file for package ethtool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ethtool
-Version:        6.11
+Version:        6.14
 Release:        0
 Summary:        Utility for examining and tuning Ethernet-based network interfaces
 License:        GPL-2.0-only
@@ -67,6 +67,7 @@ make install DESTDIR="%buildroot"
 %defattr(-,root,root)
 %{_sbindir}/ethtool
 %{_mandir}/man8/ethtool.8*
+%{_datadir}/metainfo/org.kernel.software.network.ethtool.metainfo.xml
 %if (0%{?suse_version} >= 1500) || (0%{?sle_version} >= 120300)
 %license COPYING
 %else

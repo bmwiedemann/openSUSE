@@ -5,7 +5,7 @@ Index: virt-manager-5.0.0/virtinst/guest.py
 ===================================================================
 --- virt-manager-5.0.0.orig/virtinst/guest.py
 +++ virt-manager-5.0.0/virtinst/guest.py
-@@ -994,6 +994,10 @@ class Guest(XMLBuilder):
+@@ -995,6 +995,10 @@ class Guest(XMLBuilder):
          self._add_default_tpm()
  
          self.clock.set_defaults(self)

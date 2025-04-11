@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:03:39 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.20.1:
+  * Do not memoize keys before they are coerced to string
+    https://github.com/simplejson/simplejson/pull/329
+
+-------------------------------------------------------------------
 Sun Sep  8 13:32:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.19.3:

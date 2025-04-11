@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:52:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Thu Sep 19 06:36:56 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Make DIGEST-MD5 work with openssl3 ( bsc#1230111 ) 

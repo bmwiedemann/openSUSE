@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebOb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,7 +74,7 @@ PYTHONPATH=./src sphinx-build -b html docs build/sphinx/html && rm -r build/sphi
 %license docs/license.txt
 %doc CHANGES.txt README.rst
 %{python_sitelib}/webob
-%{python_sitelib}/WebOb-%{version}.dist-info
+%{python_sitelib}/[wW]eb[oO]b-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n python-WebOb-doc

@@ -58,4 +58,15 @@
   * add official support for python 3.9+</comment>
     <requestid>1109523</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>35fd5d7961e8a2d3edc3c9b017301ecb</srcmd5>
+    <version>1.0.2</version>
+    <time>1744382715</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- update to 1.0.2:
+  * Correct setup.py email addr</comment>
+    <requestid>1266244</requestid>
+  </revision>
 </revisionlist>

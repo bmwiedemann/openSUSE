@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.functools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,6 @@ rm -rf jaraco.functools.egg-info
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
 %{python_sitelib}/jaraco/functools
-%{python_sitelib}/jaraco.functools-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]functools-%{version}.dist-info
 
 %changelog

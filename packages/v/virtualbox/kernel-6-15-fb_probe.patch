@@ -1,0 +1,39 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: drm_fb_helper_funcs::fb_probe is gone
+References: kernel-6.15 build fix
+Patch-mainline: no
+
+drm_fb_helper_funcs::fb_probe was dropped in:
+41ff0b424d81 drm/fb-helper: Remove struct drm_fb_helper.fb_probe
+
+This patch is incomplete -- it only makes the code to compile. So it
+needs a rewrite similar to:
+9fa154f40eb6 drm/{i915,xe}: Run DRM default client setup
+
+---
+ src/VBox/Additions/linux/drm/vbox_fb.c |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/src/VBox/Additions/linux/drm/vbox_fb.c
++++ b/src/VBox/Additions/linux/drm/vbox_fb.c
+@@ -56,6 +56,7 @@
+ # define VBOX_FBDEV_INFO(_helper) _helper.fbdev
+ #endif
+ 
++#if RTLNX_VER_MAX(6,15,0)
+ #if RTLNX_VER_MAX(4,7,0) && !RTLNX_RHEL_MAJ_PREREQ(7,4)
+ /**
+  * Tell the host about dirty rectangles to update.
+@@ -412,9 +413,12 @@ static int vboxfb_create(struct drm_fb_h
+ 
+ 	return 0;
+ }
++#endif
+ 
+ static struct drm_fb_helper_funcs vbox_fb_helper_funcs = {
++#if RTLNX_VER_MAX(6,15,0)
+ 	.fb_probe = vboxfb_create,
++#endif
+ };
+ 
+ #if RTLNX_VER_MAX(4,3,0) && !RTLNX_RHEL_MAJ_PREREQ(7,3)

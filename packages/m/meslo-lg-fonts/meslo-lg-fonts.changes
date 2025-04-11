@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr  9 19:10:42 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Use readme from master branch instead of devel
+
+-------------------------------------------------------------------
+Wed Apr  9 19:01:00 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update setup macro to reflect name change
+
+-------------------------------------------------------------------
+Wed Apr  9 18:51:55 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to downstream 1.2.2:
+  * Fix swapped italic Cyrillic glyphs (issue #37)
+  * Fix swapped bold and non-bold period glyph “.” (issue #36)
+  * Fix centering on M and N glyphs (issue #34)
+  * Remove undesired fi ligature (issue #20) 
+
+-------------------------------------------------------------------
+Wed Apr  2 13:22:45 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Recommend dotted zero (DZ) version of meslo-lg-fonts
+
+-------------------------------------------------------------------
 Sat Mar 29 14:03:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old specfile constructs.

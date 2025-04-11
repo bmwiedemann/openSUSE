@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:52:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Tue May  7 08:26:51 UTC 2024 - Peter Varkoly <varkoly@suse.com>
 
 - GCC 14: cyrus-sasl package fails (bsc#1221863)

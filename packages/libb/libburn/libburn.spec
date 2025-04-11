@@ -28,6 +28,8 @@ URL:            http://libburnia-project.org/
 Source0:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
 Source1:        http://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM
+Patch1:         libburn-1.5.6-c23.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -63,7 +65,7 @@ CD, DVD, BD (Blu-Ray) and also offers a facility for reading data blocks from
 its drives without using the normal block device I/O.
 
 %prep
-%autosetup -n %{name}-%{basever}
+%autosetup -n %{name}-%{basever} -p1
 
 %build
 %configure --disable-static

@@ -1,0 +1,65 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: Adapt to new timer interfaces
+References: kernel-6.15 build fix
+Patch-mainline: no
+
+New interface must be used since:
+8fa7292fee5c treewide: Switch/rename to timer_delete[_sync]()
+
+So:
+s/del_timer/timer_delete/
+s/del_timer_sync/timer_delete_sync/
+
+(new interfaces available since 6.2 -- bb663f0f3c39 and 9b13df3fb64e)
+
+
+hrtimer_init() unavailable since:
+9779489a31d7 hrtimers: Delete hrtimer_init()
+
+So:
+hrtimer_init() + .function set ---> hrtimer_setup()
+
+(hrtimer_setup() available since 6.13 -- 908a1d775422)
+---
+ src/VBox/Runtime/r0drv/linux/timer-r0drv-linux.c |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+--- a/src/VBox/Runtime/r0drv/linux/timer-r0drv-linux.c
++++ b/src/VBox/Runtime/r0drv/linux/timer-r0drv-linux.c
+@@ -422,7 +422,11 @@ static void rtTimerLnxStopSubTimer(PRTTI
+     }
+     else
+ #endif
++#if RTLNX_VER_MIN(6,2,0)
++        timer_delete(&pSubTimer->u.Std.LnxTimer);
++#else
+         del_timer(&pSubTimer->u.Std.LnxTimer);
++#endif
+ 
+     rtTimerLnxSetState(&pSubTimer->enmState, RTTIMERLNXSTATE_STOPPED);
+ }
+@@ -470,7 +474,11 @@ static void rtTimerLnxDestroyIt(PRTTIMER
+             hrtimer_cancel(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer);
+         else
+ #endif
++#if RTLNX_VER_MIN(6,2,0)
++            timer_delete_sync(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
++#else
+             del_timer_sync(&pTimer->aSubTimers[iCpu].u.Std.LnxTimer);
++#endif
+     }
+ 
+     /*
+@@ -1626,8 +1634,12 @@ RTDECL(int) RTTimerCreateEx(PRTTIMER *pp
+ #ifdef RTTIMER_LINUX_WITH_HRTIMER
+         if (pTimer->fHighRes)
+         {
++#if RTLNX_VER_MIN(6,13,0)
++            hrtimer_setup(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer, rtTimerLinuxHrCallback, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
++#else
+             hrtimer_init(&pTimer->aSubTimers[iCpu].u.Hr.LnxTimer, CLOCK_MONOTONIC, HRTIMER_MODE_ABS);
+             pTimer->aSubTimers[iCpu].u.Hr.LnxTimer.function     = rtTimerLinuxHrCallback;
++#endif
+         }
+         else
+ #endif

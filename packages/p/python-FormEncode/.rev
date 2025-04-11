@@ -192,4 +192,22 @@
 - Switch to autosetup macro.</comment>
     <requestid>1199779</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>947df44590a2d2a9246b512f3cbcc445</srcmd5>
+    <version>2.1.1</version>
+    <time>1744382692</time>
+    <user>anag_factory</user>
+    <comment>- Make the dist-info name case-insensitive
+- Lowercase metadata directory name.
+- Update to 2.1.1
+  * Add support for 3.13
+  * Don’t require legacy-cgi to be installed on 3.13 and later (#176)
+  * Don’t permit FieldStorageUploadConverter to be instantiated without
+    having legacy-cgi installed since it does not make sense
+  * Releases are now automated through GitHub Actions (#184)
+- Adjust upstream source name in spec file
+- Drop do-not-always-use-cgi-module.patch, merged upstream
+</comment>
+    <requestid>1266129</requestid>
+  </revision>
 </revisionlist>

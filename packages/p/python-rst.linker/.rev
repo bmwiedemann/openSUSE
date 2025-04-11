@@ -94,4 +94,14 @@
   * Also supply &quot;parallel_read_safe=True&quot;</comment>
     <requestid>1112342</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>051023e21839ebe42f837fc1e516480f</srcmd5>
+    <version>2.4.0</version>
+    <time>1744382716</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266246</requestid>
+  </revision>
 </revisionlist>

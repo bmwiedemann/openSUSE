@@ -40,4 +40,15 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092263</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>9e854183d6236a56495a450512e0a24f</srcmd5>
+    <version>2.3.0</version>
+    <time>1744382686</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-coverage-7.7.patch:
+  * Support Coverage 7.7.0 and above changes with plugins.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1265628</requestid>
+  </revision>
 </revisionlist>

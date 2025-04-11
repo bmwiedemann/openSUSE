@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr  7 20:45:18 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to upstream release 6.14
+  * Feature: list PHYs (--show-phys)
+  * Feature: target a specific PHY with some commands (--phy)
+  * Feature: more attributes for C33 PSE (--show-pse, --set-pse)
+  * Feature: source information for cable tests (--cable-test[-tdr])
+  * Feature: JSON output for module info (-m)
+  * Feature: misc RSS hash info improvements (-x)
+  * Feature: tsinfo hwtstamp provider (--{get,set}-hwtimestamp-cfg)
+  * Fix: fix wrong auto-negotiation state (no option)
+  * Fix: more explicit RSS context action (-n)
+  * Fix: print PHY address as decimal (no option)
+  * Fix: fix return value on flow hashing error (-N)
+  * Fix: fix JSON output for IRQ coalescing
+  * Fix: fix MDI-X info output (no option)
+  * Misc: add '-j' alias for --json
+  * Misc: provide AppStream metainfo XML
+
+-------------------------------------------------------------------
 Tue Oct  8 20:55:52 UTC 2024 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.11

@@ -1,7 +1,7 @@
 #
 # spec file for package python-backports.tarfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,6 +52,6 @@ Backport of CPython tarfile module
 %doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/backports
-%{python_sitelib}/backports.tarfile-%{version}.dist-info
+%{python_sitelib}/backports[_.]tarfile-%{version}.dist-info
 
 %changelog

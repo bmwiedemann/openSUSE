@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pympler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,6 @@ export COVERAGE=1
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pympler
-%{python_sitelib}/Pympler-%{version}.dist-info
+%{python_sitelib}/[pP]ympler-%{version}.dist-info
 
 %changelog

@@ -50,4 +50,14 @@
   * Require Python 3.8 or later.</comment>
     <requestid>1138503</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>bd8e269e99af31cbbe4dbc381148cdb5</srcmd5>
+    <version>2.6.0</version>
+    <time>1744382706</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266231</requestid>
+  </revision>
 </revisionlist>

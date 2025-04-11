@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1221238</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0248f783d142d3feb4ff465d23027f6d</srcmd5>
+    <version>1.1.0</version>
+    <time>1744382677</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Use the path from the READTHEDOCS_CANONICAL_URL environment
+    variable as default for notfound_urls_prefix.</comment>
+    <requestid>1265484</requestid>
+  </revision>
 </revisionlist>

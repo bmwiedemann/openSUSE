@@ -17,7 +17,7 @@
 
 
 %define oldpython python
-%{?sle15_python_module_pythons}
+%{?sle15allpythons}
 Name:           python-M2Crypto
 Version:        0.44.0
 Release:        0
@@ -33,8 +33,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing}
 BuildRequires:  %{python_module wheel}
-# For debugging
-BuildRequires:  %{python_module readline}
 BuildRequires:  fdupes
 BuildRequires:  openssl
 BuildRequires:  openssl-devel
@@ -100,8 +98,8 @@ donttest="test_verify_with_static_callback"
 
 %files %{python_files}
 %doc CHANGES LICENCE README.rst
-%{python_sitearch}/M2Crypto
-%{python_sitearch}/M2Crypto-%{version}*-info
+%{python_sitearch}/[Mm]2[Cc]rypto
+%{python_sitearch}/[Mm]2[Cc]rypto-%{version}*-info
 
 %files -n %{name}-doc
 %doc doc/*.rst

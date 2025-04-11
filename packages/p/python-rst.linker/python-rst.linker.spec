@@ -1,7 +1,7 @@
 #
 # spec file for package python-rst.linker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,6 @@ changelog.
 %doc CHANGES.rst README.rst
 # This needs a fix if there will be any more rst.* namespace packages (none on PyPI so far)
 %{python_sitelib}/rst
-%{python_sitelib}/rst.linker-%{version}*-info
+%{python_sitelib}/rst[_.]linker-%{version}.dist-info
 
 %changelog

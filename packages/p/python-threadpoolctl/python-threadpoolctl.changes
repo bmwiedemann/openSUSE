@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 10 13:23:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.6.0
+  * Added support for libraries with a path longer than 260 on Windows.
+    The supported path length is now 10 times higher but not unlimited
+    for security reasons.
+  * Dropped official support for Python 3.8.
+- Switch upstream source tarball to Github
+
+-------------------------------------------------------------------
 Thu May  2 22:00:52 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:

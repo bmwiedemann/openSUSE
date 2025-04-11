@@ -1,0 +1,14 @@
+Index: src/simutrans/tool/simtool.cc
+===================================================================
+--- old/src/simutrans/tool/simtool.cc	(revision 11680)
++++ new/src/simutrans/tool/simtool.cc	(working copy)
+@@ -2951,8 +2951,8 @@
+ 			return error;
+ 		}
+ 		bridge_builder_t::build_bridge( player, start, end, zv, bridge_height, desc, way_builder_t::weg_search(desc->get_waytype(), desc->get_topspeed(), welt->get_timeline_year_month(), type_flat));
+-		return NULL; // all checks are performed before building.
+ 	}
++	return NULL; // all checks are performed before building.
+ }
+ 
+ void tool_build_bridge_t::rdwr_custom_data(memory_rw_t *packet)

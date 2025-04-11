@@ -9,4 +9,4 @@ Before=initrd-parse-etc.service
 [Service]
 Type=oneshot
 ExecStart=/bin/sh -e -c 'if [ -f /sysroot/etc/systemd/system-preset/20-ignition.preset ]; then while read line; do systemctl --root=/sysroot $line; done < /sysroot/etc/systemd/system-preset/20-ignition.preset; fi'
-ExecStart=/bin/sh -e -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ && $1 !~ /^#/ {print "if findmnt /sysroot" $2 " >/dev/null; then umount -R /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'
+ExecStart=/bin/sh -e -c 'eval $(awk '"'"'$4 ~ /x-initrd.mount/ && $1 !~ /^#/ && ! ( $2 == "/etc" && $3 == "none" ) {print "if findmnt /sysroot" $2 " >/dev/null; then umount -R /sysroot" $2 "; fi;" }'"'"' /sysroot/etc/fstab)'

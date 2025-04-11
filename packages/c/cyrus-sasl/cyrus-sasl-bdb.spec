@@ -171,7 +171,7 @@ fi
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
 autoreconf -f
-export CFLAGS="%optflags -fno-strict-aliasing"
+export CFLAGS="%optflags -fno-strict-aliasing -std=gnu11"
 %configure --with-pic \
             --with-plugindir=%{_libdir}/sasl2 \
             --with-configdir=/etc/sasl2/:%{_libdir}/sasl2 \

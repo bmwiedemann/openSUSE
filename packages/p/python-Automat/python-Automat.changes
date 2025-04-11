@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:26:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- make it compatible with older setuptools again 
+
+-------------------------------------------------------------------
+Mon Mar 24 18:00:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- adapt to setuptools 77
+
+-------------------------------------------------------------------
 Tue Oct 29 21:04:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.8.1:

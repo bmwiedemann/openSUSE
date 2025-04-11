@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr  9 09:16:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.16
+  * ci: add ruff linting (#5182)
+  * feat(bindings): expose certificate match api (#5220)
+  * refactor: add evp pkey size/encrypt/decrypt methods (#5225)
+  * ci: add openssl-3.0-fips to general batch (#5207)
+  * refactor: implement match the same for all pkeys (#5224)
+  * ci: Fix cppcheck build (#5238)
+  * fix: tighten session ticket lifetime (#5217)
+  * refactor(bindings): use implicit linking for aws-lc (#5218)
+  * docs: fix openssl-3.0-fips provider requirements documentation (#5214)
+  * ci: add openssl-3.0-fips to valgrind (#5211)
+  * chore: bindings release 0.3.15 (#5221)
+  * feat: add s2n_connection_get_key_exchange_group (#5209)
+  * fix: Update README.md to include Rust bindings docs (#5212)
+  * ci: exclude new setuptools (#5215)
+  * Remove PQ TLS 1.2 from all Security Policies (#5194)
+  * chore: binding release 0.3.14 (#5210)
+  * chore: deprecate s2n_set (#5155)
+  * fix: handshake message length integer overflow in s2n_handshake_finish_header (#5206)
+  * ci: add openssl-3.0-fips to asan build properly (#5204)
+  * ci: add libcrypto openssl-3.0-fips to integ tests (#5202)
+
+-------------------------------------------------------------------
 Wed Apr  2 15:14:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.15

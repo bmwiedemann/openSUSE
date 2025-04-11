@@ -130,4 +130,18 @@
     <comment></comment>
     <requestid>1239434</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3c55e1f958ba350bb48c91b5f0bddd0</srcmd5>
+    <version>13.10.0</version>
+    <time>1744382728</time>
+    <user>anag_factory</user>
+    <comment>- Support older and current versions of setuptools WRT to the case of
+  the metadata directory.
+- Update to 13.10.0
+  * New ABI version 13.10
+  * Match python3-sip6-devel 6.10
+* Drop fix-license-in-setup_py.patch
+</comment>
+    <requestid>1267014</requestid>
+  </revision>
 </revisionlist>

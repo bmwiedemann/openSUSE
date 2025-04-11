@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 11 06:05:21 MDT 2025 - carnold@suse.com
+
+- Upstream features and bug fixes (bsc#1027942) (jsc#PED-8910)
+  040-virtinst-add-pstore-backend-support.patch
+  041-tests-add-pstore-test.patch
+  042-man-virt-install-Document-pstore-device.patch
+  043-tests-Increase-virtio-mem-block-size.patch
+  044-tests-test_urls-fix-dead-URL.patch
+  045-urlfetcher-add-riscv64-architecture-for-Debian.patch
+  046-virt-manager-list-virtual-networks-when-creating-new-QEMU-Session-VM.patch
+  047-virt-install-add-support-for-vDPA-network-device.patch
+  048-virt-manager-add-support-for-vDPA-network-device.patch
+  049-virt-install-detect-wayland-in-order-to-start-virt-viewer.patch
+- bsc#1241082 - [Build 20250410] virt_install fails to launch:
+  missing dependencies.
+  Spec file modifications
+
+-------------------------------------------------------------------
 Tue Apr  8 11:28:25 MDT 2025 - carnold@suse.com
 
 - bsc#1239837 - [SLFO] virt-manager still has unresolved

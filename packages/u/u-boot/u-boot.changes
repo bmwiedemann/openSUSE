@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:06:52 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 2025.04:
+  * Full changelog available at:
+    https://source.denx.de/u-boot/u-boot/-/compare/v2025.01...v2025.04
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2025.04
+  * Patches added:
+    0016-Kconfig-add-btrfs-to-standard-boot.patch
+- Disable boards which fail to build:
+  * avnetultra96rev1
+  * xilinxzynqmpvirt
+  * xilinxzynqmpzcu102rev10
+
+-------------------------------------------------------------------
 Fri Jan 24 19:20:26 UTC 2025 - Torsten Duwe <duwe@suse.com>
 
 - Add NanoPC T6 and Rock Pi 5B (both rk3588 based) as targets

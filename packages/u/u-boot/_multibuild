@@ -9,7 +9,6 @@
   <flavor>am335xevm</flavor>
   <flavor>am57xxevm</flavor>
   <flavor>arndale</flavor>
-  <flavor>avnetultra96rev1</flavor>
   <flavor>bananapi</flavor>
   <flavor>bananapim2plush3</flavor>
   <flavor>bananapim2zero</flavor>
@@ -103,8 +102,6 @@
   <flavor>turrisomnia</flavor>
   <flavor>udoo</flavor>
   <flavor>udooneo</flavor>
-  <flavor>xilinxzynqmpvirt</flavor>
-  <flavor>xilinxzynqmpzcu102rev10</flavor>
   <flavor>xilinxzynqvirt</flavor>
   <flavor>zynqzturnv5</flavor>
 </multibuild>

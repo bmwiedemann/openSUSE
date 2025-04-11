@@ -1,7 +1,7 @@
 #
 # spec file for package python-Automat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -87,7 +87,7 @@ automata (particularly deterministic finite-state transducers).
 %doc README.md
 %python_alternative %{_bindir}/automat-visualize
 %{python_sitelib}/automat
-%{python_sitelib}/Automat-%{version}.dist-info
+%{python_sitelib}/?utomat-%{version}.dist-info
 %endif
 
 %changelog

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:56:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make the dist-info name case-insensitive
+
+-------------------------------------------------------------------
+Wed Mar 26 00:39:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
+Mon Feb 10 10:10:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.1
+  * Add support for 3.13
+  * Don’t require legacy-cgi to be installed on 3.13 and later (#176)
+  * Don’t permit FieldStorageUploadConverter to be instantiated without
+    having legacy-cgi installed since it does not make sense
+  * Releases are now automated through GitHub Actions (#184)
+- Adjust upstream source name in spec file
+- Drop do-not-always-use-cgi-module.patch, merged upstream
+
+-------------------------------------------------------------------
 Tue Sep 10 04:11:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch do-not-always-use-cgi-module.patch:

@@ -197,7 +197,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2025.01
+%define archive_version 2025.04
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -227,7 +227,7 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2025.01
+Version:        2025.04
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -261,6 +261,7 @@ Patch0012:      0012-riscv-enable-CMD_BTRFS.patch
 Patch0013:      0013-Disable-timer-check-in-file-loading.patch
 Patch0014:      0014-Enable-EFI-and-ISO-partitions-suppo.patch
 Patch0015:      0015-cmd-boot-add-brom-cmd-to-reboot-to-.patch
+Patch0016:      0016-Kconfig-add-btrfs-to-standard-boot.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -577,6 +578,7 @@ done
 %endif
 %if %rockchip_idb == 1
 install -D -m 0644 idbloader.img %{buildroot}%{uboot_dir}/idbloader.img
+[ -f u-boot-rockchip-spi.bin ] && install -D -m 0644 u-boot-rockchip-spi.bin %{buildroot}%{uboot_dir}/.
 %endif
 %if %sunxi_spl == 1
 install -D -m 0644 spl/sunxi-spl.bin %{buildroot}%{uboot_dir}/sunxi-spl.bin

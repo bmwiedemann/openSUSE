@@ -7567,4 +7567,20 @@ handle manual pages that consist only of a .so directive such as
     - commit 3c85d3fda50f71755aa276cfa60807c315bfc04b (bsc#1236886)</comment>
     <requestid>1252776</requestid>
   </revision>
+  <revision rev="445" vrev="1">
+    <srcmd5>660b46af3cddfdd9a2ec0debcc453cad</srcmd5>
+    <version>257.5</version>
+    <time>1744382657</time>
+    <user>anag_factory</user>
+    <comment>- Import commit c10a66fb4dd34b86d42fa92501bd88db63df479a (merge of v257.5)
+  This merge includes the following fix:
+    9b52c10986 test-network: replace symlink to 99-default.link with a copy
+    d7577221b8 man/pstore.conf: pstore.conf template is not always installed in /etc
+    62071a984d man: coredump.conf template is not always installed in /etc (bsc#1237496)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f133e5974e69708d7491d4823780690c913f7bda...c10a66fb4dd34b86d42fa92501bd88db63df479a
+
+- Import commit f133e5974e69708d7491d4823780690c913f7bda (merge of v257.4)</comment>
+    <requestid>1268358</requestid>
+  </revision>
 </revisionlist>

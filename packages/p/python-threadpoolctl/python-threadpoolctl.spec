@@ -1,7 +1,7 @@
 #
 # spec file for package python-threadpoolctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-threadpoolctl
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Thread-pool Controls
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/joblib/threadpoolctl
-Source:         https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
+Source:         %{url}/archive/%{version}.tar.gz#/threadpoolctl-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module numpy}

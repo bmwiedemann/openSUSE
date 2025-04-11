@@ -1,0 +1,32 @@
+From 5f8217506f8425d793b04d6379971c7c6245d9e5 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 31 Mar 2025 12:40:43 +1100
+Subject: [PATCH] Support Coverage 7.7.0 and above
+
+Coverage 7.7.0 refactored the way the Plugins class is used, and as a
+consequence, the load_plugins method was renamed, and is no longer a
+class method. Check if the new method exists, and fall back to the older
+method otherwise.
+---
+ tests/covdefaults_test.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/tests/covdefaults_test.py b/tests/covdefaults_test.py
+index 2bf41c2..9f3f129 100644
+--- a/tests/covdefaults_test.py
++++ b/tests/covdefaults_test.py
+@@ -228,7 +228,13 @@ def test_configure_keeps_existing_fail_under():
+ 
+ def test_coverage_init():
+     cfg = CoverageConfig()
+-    plugin_manager = Plugins.load_plugins(['covdefaults'], cfg)
++    # Coverage 7.7.0 and above
++    if hasattr(Plugins, 'load_from_config'):
++        plugin_manager = Plugins()
++        plugin_manager.load_from_config(['covdefaults'], cfg)
++    # Coverage 7.6.12 and below
++    else:  # pragma: no cover
++        plugin_manager = Plugins.load_plugins(['covdefaults'], cfg)
+     assert plugin_manager.get('covdefaults.CovDefaults')
+ 
+ 

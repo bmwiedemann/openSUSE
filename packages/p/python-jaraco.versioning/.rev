@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>1136646</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>87f062d0fcc32dc6195f602064f1365f</srcmd5>
+    <version>1.1.0</version>
+    <time>1744382714</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266242</requestid>
+  </revision>
 </revisionlist>

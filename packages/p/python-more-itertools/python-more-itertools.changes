@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Feb 18 12:31:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.6.0
+  * `is_prime` and `nth_prime` were added
+  * `loops` was added
+  * `factor` was optimized to handle larger inputs and use less memory
+  * `spy` was optimized to enable nested calls
+  * `polynomial_from_roots` was made non-recursive and able to handle
+    larger numbers of roots
+  * `is_sorted` now only relies on less than comparisons
+  * The docstring for `outer_product` was improved
+  * The type annotations for sample were improved
+  * Python 3.13 is officially supported. Python 3.8 is no longer
+    officially supported.
+  * `mypy` checks were fixed
+
+-------------------------------------------------------------------
 Wed Oct 23 20:57:33 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.5.0:

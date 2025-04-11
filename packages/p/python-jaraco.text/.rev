@@ -165,4 +165,14 @@
     installed.</comment>
     <requestid>1219186</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>3e1152181fe559ee57ed81d2fdc31a3f</srcmd5>
+    <version>4.0.0</version>
+    <time>1744382711</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266239</requestid>
+  </revision>
 </revisionlist>

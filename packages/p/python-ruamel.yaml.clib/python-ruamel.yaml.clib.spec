@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.yaml.clib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,6 +71,6 @@ rmdir ruamel.yaml.clib
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/_ruamel_yaml*.so
-%{python_sitearch}/ruamel.yaml.clib-%{relver}*-info
+%{python_sitearch}/ruamel[_.]yaml[_.]clib-%{relver}.dist-info
 
 %changelog

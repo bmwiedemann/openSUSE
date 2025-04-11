@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  4 01:19:59 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support older and current versions of setuptools WRT to the case of
+  the metadata directory.
+
+-------------------------------------------------------------------
+Thu Apr  3 17:09:30 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 13.10.0
+  * New ABI version 13.10
+  * Match python3-sip6-devel 6.10
+* Drop fix-license-in-setup_py.patch
+
+-------------------------------------------------------------------
 Tue Jan 21 12:54:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Change license to just BSD-2-Clause. Since all files are using

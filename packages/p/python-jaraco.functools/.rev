@@ -165,4 +165,14 @@
   * Added chainable decorator.</comment>
     <requestid>1204579</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>8b458da758ffe4b9ac93706da809485e</srcmd5>
+    <version>4.1.0</version>
+    <time>1744382707</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266233</requestid>
+  </revision>
 </revisionlist>

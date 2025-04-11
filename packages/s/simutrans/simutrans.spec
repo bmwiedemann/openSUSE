@@ -16,31 +16,32 @@
 #
 
 
-%define pkgver 124-3
+%define pkgver 124-3-1
 Name:           simutrans
-Version:        124.3
+Version:        124.3.1
 Release:        0
 Summary:        Transport and Economic Simulation Game
 License:        Artistic-1.0
 Group:          Amusements/Games/Strategy/Real Time
 URL:            http://sourceforge.net/projects/simutrans/
-Source0:        simutrans-src-124-3.zip
+Source0:        simutrans-src-124-3-1.zip
 Source1:        config.default
 Source2:        http://www.simutrans.com/images/resources/simutrans-square.svg
 # PATCH-FIX-UPSTREAM http://forum.simutrans.com/index.php?topic=11173.0
 Patch0:         simutrans-fhs-home-directory.patch
 Patch1:         simutrans-makefile.patch
+# PATCH-FIX-UPSTREAM https://forum.simutrans.com/index.php/topic,23464.0.html
+Patch2:         returnNull.patch
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl2) 
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  freetype2-devel
 %if 0%{?suse_version}
 BuildRequires:  fdupes
-BuildRequires:  update-desktop-files
 %endif
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme
@@ -72,7 +73,7 @@ Makeobj is a easy to use software used to compile .dat files and .png pictures
 to simutrans .pak files.
 
 %prep
-# In the next line, remove the -v for verbose to be more quiet:
+# In the next line, remove the -v for verbose if you want to be more quiet:
 %autosetup -v -p1 -c -n simutrans
 
 cp %{SOURCE1} .
@@ -83,15 +84,11 @@ cp %{SOURCE1} .
 export CFLAGS="%{optflags}"
 export CCFLAGS="$CFLAGS"
 %make_build all makeobj
-# The build_themes.sh script does not function correctly; so we patch it with sed.
-# Upstream report: https://forum.simutrans.com/index.php/topic,23401.0.html
+# The build_themes.sh script used to be broken, see upstream report:
+# https://forum.simutrans.com/index.php/topic,23401.0.html
 cd themes.src
 sed -i 's|../../src/makeobj/makeobj|../../build/default/makeobj/makeobj|g' build_themes.sh
-sed -i 's|cd ../file_large|cd ../files_large|g' build_themes.sh
 ./build_themes.sh
-# The second sed line above fixes this error:
-# ./build_themes.sh: line 50: cd: ../file_large: No such file or directory
-
 
 %install
 # Create starter-wrapper script (not a source so we can use directory macros):
@@ -118,8 +115,7 @@ mv -v %{buildroot}%{_datadir}/%{name}/*.txt %{buildroot}%{_docdir}/%{name}
 # Install icon and .desktop file
 install -vDm644 %{SOURCE2} %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %if 0%{?suse_version}
-# We do not need the next line any more thanks to https://forum.simutrans.com/index.php/topic,23253.msg208733.html#msg208733
-#%suse_update_desktop_file -c simutrans "Simutrans" "Transportation Simulation Game" "simutrans" simutrans Game StrategyGame
+install -D -m 0644 src/linux/simutrans.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
 %fdupes %{buildroot}%{_datadir}/%{name}
 %endif
 

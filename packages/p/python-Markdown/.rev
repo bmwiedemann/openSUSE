@@ -438,4 +438,14 @@
     <comment></comment>
     <requestid>1195094</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>05d51d0fd0e07ea3ede4b56abe3639f7</srcmd5>
+    <version>3.7</version>
+    <time>1744382694</time>
+    <user>anag_factory</user>
+    <comment>- Make the metadata directory name case-insensitive.
+- Lowercase metadata directory name.
+</comment>
+    <requestid>1266131</requestid>
+  </revision>
 </revisionlist>

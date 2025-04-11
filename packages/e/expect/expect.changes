@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 21 12:23:29 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Use -std=gnu89 to avoid the new C23 default of GCC 15, the codebase
+  is still using K&R C after all.
+
+-------------------------------------------------------------------
 Sun May 12 10:24:16 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - expect-fix-implicit.patch: fixed several implicit warnings,

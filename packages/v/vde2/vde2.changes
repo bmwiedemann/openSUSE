@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr  6 20:31:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Mon Jul 15 12:46:00 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Added vde2-C99.patch to avoid a C99 violation preventing the package

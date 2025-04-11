@@ -357,4 +357,22 @@
   pip 24.2</comment>
     <requestid>1193821</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>89a0a109a07d6f4a52fe8cd171199bce</srcmd5>
+    <version>8.2.0</version>
+    <time>1744382672</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.0:
+  * fix #960: add a ``--force-write-version-files`` flag for the
+    cli
+  * fix #950: ensure to pass encodings to io usage
+  * fix #957 - add subprocess timeout control env var
+  * add sp-repo-review pre-commit hook
+  * fix #1018: allow non-normalized versions for semver
+  * fix #1103: respect GIT_CEILING_DIRECTORIES when trying to
+    find git toplevels
+  * fix #1081: add name normalized pipx entrypoint
+  * fix #1080: clean pdm from PYTHONPATH to protect mercurial</comment>
+    <requestid>1265296</requestid>
+  </revision>
 </revisionlist>

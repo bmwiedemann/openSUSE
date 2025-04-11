@@ -221,4 +221,13 @@
 - Update to version 5.1.0</comment>
     <requestid>1225320</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bfa3642151d988ba225d889ddcb86385</srcmd5>
+    <version>5.8.0</version>
+    <time>1744382678</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.8.0:
+  * Drop support for Python 3.8, now EOL.</comment>
+    <requestid>1265485</requestid>
+  </revision>
 </revisionlist>

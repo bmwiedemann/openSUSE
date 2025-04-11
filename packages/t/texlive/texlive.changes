@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 10 11:43:10 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make it build with latest gcc 
+
+-------------------------------------------------------------------
 Fri Mar 21 10:03:15 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - On 64bit architecures use only zzip_init_io

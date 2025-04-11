@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools_scm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-setuptools_scm%{psuffix}
-Version:        8.1.0
+Version:        8.2.0
 Release:        0
 Summary:        Python setuptools handler for SCM tags
 License:        MIT

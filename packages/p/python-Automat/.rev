@@ -90,4 +90,14 @@
 - remove unneded six from setup.py</comment>
     <requestid>1219405</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>9bdc58c3c29354fc5b494fbbe59beaaa</srcmd5>
+    <version>24.8.1</version>
+    <time>1744382685</time>
+    <user>anag_factory</user>
+    <comment>- make it compatible with older setuptools again 
+
+- adapt to setuptools 77</comment>
+    <requestid>1265495</requestid>
+  </revision>
 </revisionlist>

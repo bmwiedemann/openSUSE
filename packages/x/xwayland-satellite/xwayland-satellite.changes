@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 20:59:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.5.1
+  * fix: add Event::Move check preventing infinite recursion caused
+    by stale surfaces
+- Removed cargo_audit from _service due that contains vendor now
+
+-------------------------------------------------------------------
 Thu Oct 31 08:41:44 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update descriptions

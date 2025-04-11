@@ -1,7 +1,7 @@
 #
 # spec file for package python-Paste
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,7 +62,7 @@ rm tests/test_proxy.py
 %license docs/license.txt
 %doc README.rst
 %{python_sitelib}/paste
-%{python_sitelib}/Paste-%{version}.dist-info
+%{python_sitelib}/[pP]aste-%{version}.dist-info
 %{python_sitelib}/Paste-%{version}-py*-nspkg.pth
 
 %changelog

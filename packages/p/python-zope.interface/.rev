@@ -396,4 +396,14 @@
     <comment></comment>
     <requestid>1238985</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>a8e367e57c962f1e7e6de3504e1e68b5</srcmd5>
+    <version>7.2</version>
+    <time>1744382718</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Correct dist-info directory due to new setuptools.</comment>
+    <requestid>1266249</requestid>
+  </revision>
 </revisionlist>

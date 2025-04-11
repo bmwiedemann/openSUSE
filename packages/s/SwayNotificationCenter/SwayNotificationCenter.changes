@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Apr  8 17:39:33 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 0.11.0:
+  - Updated meson build instructions
+  - Fixed sources annotation
+  - block signal handlers in toggle button when updating state
+  - Fix invalid data types in configSchema.json
+  - Add MPRIS background blur for app icons
+  - Close notification with middle mouse button
+  - Mpris blacklist support
+  - Add a way to change No Notifications text
+  - Implemented xdg-activation logic
+  - Fix json parsing error in config.json
+  - Fixed image-path not being considered as theme icon
+  - Fixed swaync-client --close-all not closing the actual noti layer window
+  - Vertically center the summary/title when the notification body is empty
+  - Always unescape image and app icon paths
+  - Run script commands with "/bin/sh -c ..."
+  - Added layer-shell-cover-screen option to fix animations in Hyprland
+  - Pass hints as environment to scripts
+  - Invoke action from swaync-client (implements #437)
+  - fix: no convert upper case for the first character
+  - Removed MPRIS widget side fade
+  - Body img markup: fixed img URIs and single quotes not supported
+
+-------------------------------------------------------------------
 Fri May 31 09:16:12 UTC 2024 - Dawid Respondek <nyslay@gmail.com>
 
 - Update to version 0.10.1:

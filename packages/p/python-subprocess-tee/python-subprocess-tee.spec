@@ -1,7 +1,7 @@
 #
 # spec file for package python-subprocess-tee
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-subprocess-tee
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Captures the output of subprocesses in real-time
 License:        MIT
 URL:            https://github.com/pycontribs/subprocess-tee
-Source:         https://files.pythonhosted.org/packages/source/s/subprocess-tee/subprocess-tee-%{version}.tar.gz
-Patch1:         0001-test-test_unit.py-do-not-use-python3-rather-use-sys..patch
+Source:         https://files.pythonhosted.org/packages/source/s/subprocess-tee/subprocess_tee-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
@@ -49,7 +48,7 @@ any tool that executes long-running child processes. For those, you do want
 to provide instant feedback (progress) related to what is happening.
 
 %prep
-%autosetup -p1 -n subprocess-tee-%{version}
+%autosetup -p1 -n subprocess_tee-%{version}
 
 %build
 %pyproject_wheel

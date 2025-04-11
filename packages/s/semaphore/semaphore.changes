@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 09 05:01:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.12:
+  * Security
+    - Upgrade Terraform in Dockerfile
+
+-------------------------------------------------------------------
+Wed Apr 09 04:55:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.11:
+  * test: pass unit tests by upgrading go to 1.24
+  * ci: update go deps
+  * ci: upgrade go to 1.24, alpine 3.21
+  * feat(ui): update translations
+
+-------------------------------------------------------------------
 Mon Apr 07 11:32:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.10:

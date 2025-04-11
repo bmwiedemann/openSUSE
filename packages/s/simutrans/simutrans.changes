@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr  6 10:03:06 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3.1
+
+- Update to new version 124.3.1
+- In the words of prissi: This is mostly a bugfixing release, improving bridge building 
+(which now requires dragging or two clicks) and multitile city buildings. 
+You can change the currency symbol and a bad memory consumption bug was removed. 
+Cost and maintenance can be now much higher, so a new makeobj is needed too 
+if one wants to go that way.
+- This release is built from svn revision number 11671.
+- Added a patch "returnNull.patch" to solve a build error "this statement may fall through".
+
+-------------------------------------------------------------------
 Mon Feb  3 18:56:01 UTC 2025 - Michiel van der Wulp <michiel.vanderwulp@gmail.com> - 124.3
 
 - Remove deprecated %suse_update_desktop_file - no need any more thanks to 

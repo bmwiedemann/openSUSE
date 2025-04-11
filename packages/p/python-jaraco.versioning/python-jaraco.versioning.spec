@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.versioning
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@ Summary:        More sophisticated version manipulation (than packaging)
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.versioning
 Source:         https://files.pythonhosted.org/packages/source/j/jaraco.versioning/jaraco.versioning-1.1.0.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module setuptools >= 56}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
@@ -60,7 +60,7 @@ More sophisticated version manipulation (than packaging)
 %license LICENSE
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/versioning.py
-%{python_sitelib}/jaraco.versioning-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]versioning-%{version}.dist-info
 %dir %{python_sitelib}/jaraco/__pycache__
 %pycache_only %{python_sitelib}/jaraco/__pycache__/versioning.*.py*
 

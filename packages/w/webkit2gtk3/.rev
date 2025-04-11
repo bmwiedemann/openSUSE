@@ -1913,4 +1913,12 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment></comment>
     <requestid>1267382</requestid>
   </revision>
+  <revision rev="219" vrev="2">
+    <srcmd5>7f6c3e26ad6889cc785e237d6de36770</srcmd5>
+    <version>2.48.1</version>
+    <time>1744382676</time>
+    <user>anag_factory</user>
+    <comment>Document CVEs fixed in 2.48.1 (forwarded request 1267981 from mgorse)</comment>
+    <requestid>1268054</requestid>
+  </revision>
 </revisionlist>

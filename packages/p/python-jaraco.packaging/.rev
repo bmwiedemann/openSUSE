@@ -120,4 +120,14 @@
     allow for implicit None values.</comment>
     <requestid>1217430</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1d81a1ee0db7d7a57c1795192f0467fa</srcmd5>
+    <version>10.2.3</version>
+    <time>1744382708</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266236</requestid>
+  </revision>
 </revisionlist>

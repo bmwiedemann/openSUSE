@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 10 09:44:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.1
+  * Improved typing annotations, fixing some type errors under correct usage
+    and improving typing robustness generally -- by :user:`Dreamsorcerer`.
+
+-------------------------------------------------------------------
 Thu Mar 13 15:49:55 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 0.3.0

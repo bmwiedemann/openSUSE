@@ -2725,4 +2725,12 @@ rpmfusion/debian patches did not work ultimately
 - add: kernel-6-14.patch</comment>
     <requestid>1265175</requestid>
   </revision>
+  <revision rev="290" vrev="2">
+    <srcmd5>0528fc9f71d4cc4c4aeb4eb8d0eb4a03</srcmd5>
+    <version>7.1.6a</version>
+    <time>1744382736</time>
+    <user>anag_factory</user>
+    <comment>- build with kernel 6.15</comment>
+    <requestid>1268344</requestid>
+  </revision>
 </revisionlist>

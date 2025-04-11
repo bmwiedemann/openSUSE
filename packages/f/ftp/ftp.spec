@@ -44,7 +44,7 @@ for transferring files.
 %patch -P 2
 
 %build
-CFLAGS=$RPM_OPT_FLAGS CC="%__cc" ./configure --without-readline
+CFLAGS="$RPM_OPT_FLAGS -std=gnu11" CC="%__cc" ./configure --without-readline
 make
 
 %install

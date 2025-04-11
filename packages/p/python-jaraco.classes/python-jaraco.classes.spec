@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.classes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,6 +58,6 @@ jaraco.classes Tools for working with classes.
 %doc docs/*.rst README.rst NEWS.rst
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/classes
-%{python_sitelib}/jaraco.classes-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]classes-%{version}.dist-info
 
 %changelog

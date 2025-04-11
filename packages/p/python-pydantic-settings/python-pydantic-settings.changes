@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr  4 04:53:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.1:
+  * Fix for init source kwarg alias resolution
+  * Revert usage of positional only argument in BaseSettings.__init__
+  * Revert use of object instead of Any
+  * CLI support for optional and variadic positional args
+  * Improve env_prefix config doc
+  * Add env_nested_max_split setting
+  * Avoid using Any in BaseSettings signature to avoid mypy errors
+  * Asynchronous CLI methods in CliApp
+  * Don't explode env vars if env_nested_delimiter is empty
+- Add patch use-typing_objects.patch:
+  * Use typing_inspection.typing_objects rather than isinstance.
+- Refreshed patch fix-settings-dump.patch
+
+-------------------------------------------------------------------
 Tue Jan 28 02:23:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.7.1:

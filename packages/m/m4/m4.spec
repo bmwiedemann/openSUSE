@@ -62,7 +62,7 @@ cp -a /usr/lib/rpm/config.{sub,guess} build-aux/
 %endif
 
 %check
-%make_build check
+%make_build check CFLAGS="%{optflags} -std=gnu17"
 
 %install
 %make_install

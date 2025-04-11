@@ -54,4 +54,19 @@
     <comment></comment>
     <requestid>1081836</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>791ad36aa1a8634a64d829099d84721e</srcmd5>
+    <version>2.0</version>
+    <time>1744382674</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0:
+  * Python 3.6 or higher is now required
+  * The temporary file discovery logic was rewritten, thus it will
+    flag dangling temporary files more reliably
+  * Various metadata updates to reflect that scripttest is now a
+    PyPA project hosted on GitHub and ReadTheDocs
+  * Don't attempt to hash a named pipe to avoid indefinite hanging
+  * Include tests in source distributions</comment>
+    <requestid>1265370</requestid>
+  </revision>
 </revisionlist>

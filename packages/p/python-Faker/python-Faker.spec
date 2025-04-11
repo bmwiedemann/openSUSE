@@ -1,7 +1,7 @@
 #
 # spec file for package python-Faker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,6 +76,6 @@ sed -i -e 's:==:>=:g' setup.py
 %doc CHANGELOG.md README.rst
 %python_alternative %{_bindir}/faker
 %{python_sitelib}/faker
-%{python_sitelib}/Faker-%{version}*-info
+%{python_sitelib}/[fF]aker-%{version}.dist-info
 
 %changelog

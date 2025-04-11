@@ -1233,4 +1233,12 @@
   * source-ppc64.dif</comment>
     <requestid>1254977</requestid>
   </revision>
+  <revision rev="101" vrev="104">
+    <srcmd5>314b06daa21a3735458aaa9d86f5c241</srcmd5>
+    <version>unknown</version>
+    <time>1744382660</time>
+    <user>anag_factory</user>
+    <comment>- Make it build with latest gcc</comment>
+    <requestid>1268376</requestid>
+  </revision>
 </revisionlist>

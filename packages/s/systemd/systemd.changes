@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Apr  4 08:43:26 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Import commit c10a66fb4dd34b86d42fa92501bd88db63df479a (merge of v257.5)
+
+  This merge includes the following fix:
+
+    9b52c10986 test-network: replace symlink to 99-default.link with a copy
+    d7577221b8 man/pstore.conf: pstore.conf template is not always installed in /etc
+    62071a984d man: coredump.conf template is not always installed in /etc (bsc#1237496)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f133e5974e69708d7491d4823780690c913f7bda...c10a66fb4dd34b86d42fa92501bd88db63df479a
+
+-------------------------------------------------------------------
 Wed Mar 12 20:21:42 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - triggers.systemd: more posix.fork() conversion (bsc#1238566)
@@ -6,7 +20,7 @@ Wed Mar 12 20:21:42 UTC 2025 - Franck Bui <fbui@suse.com>
 -------------------------------------------------------------------
 Wed Mar 12 14:41:02 UTC 2025 - Franck Bui <fbui@suse.com>
 
-- Import commit f133e5974e69708d7491d4823780690c913f7bda (merge v257.4)
+- Import commit f133e5974e69708d7491d4823780690c913f7bda (merge of v257.4)
 
   For a complete list of changes, visit:
   https://github.com/openSUSE/systemd/compare/e03ffd74c4a30c1c75e05874ce18d31e503437b7...f133e5974e69708d7491d4823780690c913f7bda

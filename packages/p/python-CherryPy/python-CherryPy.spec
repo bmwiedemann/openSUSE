@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,6 +126,6 @@ donttest+=" or test_wait_publishes_periodically"
 %doc README.rst CHANGES.rst
 %python_alternative %{_bindir}/cherryd
 %{python_sitelib}/cherrypy
-%{python_sitelib}/CherryPy-%{version}.dist-info
+%{python_sitelib}/[cC]herry[pP]y-%{version}.dist-info
 
 %changelog

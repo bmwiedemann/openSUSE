@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 10 17:09:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.3:
+  * Fixed bug released in 3.2.2 in which `nested_expr` could
+    overwrite parse actions for defined content, and could truncate
+    list of items within a nested list.
+  * Released `cvt_pyparsing_pep8_names.py` conversion utility to
+    upgrade pyparsing-based programs and libraries that use legacy
+    camelCase names to use the new PEP8-compliant
+    snake_case method names.
+  * Fixed bug in `nested_expr` where nested contents were
+    stripped of whitespace when the default whitespace characters
+    were cleared
+  * Fixed bug in `rest_of_line` and the underlying `Regex` class,
+    in which matching a pattern that could match an empty string
+    (such as `".*"` or `"[A-Z]*"` would not raise
+    a `ParseException` at or beyond the end of the input
+    string. This could cause an
+    infinite parsing loop when parsing `rest_of_line` at the
+    end of the input string.
+  * Fixed syntax warning raised in `bigquery_view_parser.py`,
+    invalid escape sequence "\s".
+  * Added support for Python 3.14.
+
+-------------------------------------------------------------------
 Tue Feb  4 18:56:03 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.1:

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  8 16:39:16 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add patches from upstream to fix gcc15 compile time errors and
+  some warnings:  mjpegtools-gcc15.patch, mjpegtools-lto.patch,
+  mjpegtools-c99-configure.patch
+- add patch mjpegtools-c++-17.patch (from gentoo) to silence
+  std=c++17 warnings
+
+-------------------------------------------------------------------
 Mon May 16 18:01:58 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - mjpegtools's Makefiles try to use -lX11, but there is no

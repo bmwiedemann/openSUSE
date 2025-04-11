@@ -33,6 +33,10 @@ Patch2:         mjpegtools-getopt.patch
 Patch3:         mjpegtools-writeable_strings.patch
 Patch6:         mjpegtools-v4l-2.6.38.patch
 Patch8:         mjpegtools-2.0.0-fix-bashisms.patch
+Patch9:         mjpegtools-c++-17.patch
+Patch10:        mjpegtools-gcc15.patch
+Patch11:        mjpegtools-lto.patch
+Patch12:        mjpegtools-c99-configure.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
 BuildRequires:  libtool

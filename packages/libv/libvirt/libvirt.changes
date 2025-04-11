@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 10 14:53:16 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- cpu_map: Install Ampere-1 ARM CPU models
+  bsc#1240922
+
+-------------------------------------------------------------------
 Tue Apr  1 21:44:05 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 11.2.0
+  - jsc#PED-6556, jsc#PED-11466
   - Many incremental improvements and bug fixes, see
     https://libvirt.org/news.html#v11-2-0-2025-04-01
 

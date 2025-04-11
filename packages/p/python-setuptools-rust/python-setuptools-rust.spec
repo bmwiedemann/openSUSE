@@ -1,7 +1,7 @@
 #
 # spec file for package python-setuptools-rust
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,9 @@
 #
 
 
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-setuptools-rust
-Version:        1.10.2
+Version:        1.11.1
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
 License:        BSD-3-Clause

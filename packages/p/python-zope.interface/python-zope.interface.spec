@@ -84,7 +84,7 @@ cd src
 %files %{python_files}
 %license LICENSE.txt COPYRIGHT.txt
 %doc CHANGES.rst README.rst
-%{python_sitearch}/zope.interface-%{version}.dist-info
+%{python_sitearch}/zope[_.]interface-%{version}.dist-info
 %{python_sitearch}/zope.interface-%{version}*-nspkg.pth
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/interface

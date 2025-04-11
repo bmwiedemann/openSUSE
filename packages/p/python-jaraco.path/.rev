@@ -56,4 +56,14 @@
   * no significant changes</comment>
     <requestid>1218897</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9d4d98410c431e109ca589e9d195c437</srcmd5>
+    <version>3.7.1</version>
+    <time>1744382709</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266237</requestid>
+  </revision>
 </revisionlist>

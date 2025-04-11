@@ -77,4 +77,14 @@
   * Removed deprecated 'runner' parameter to tarball_context.</comment>
     <requestid>1165957</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>5b218b6e4af058101eb6ad8a9cd704b9</srcmd5>
+    <version>5.3.0</version>
+    <time>1744382705</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266229</requestid>
+  </revision>
 </revisionlist>

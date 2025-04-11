@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 01 11:56:36 UTC 2025 - iforster@suse.com
+
+- Update to version 2.21.0:
+  * Features
+    * Add Azure blob support for fetching ignition configs
+    * Add a check for ignition config in vendor-data (proxmoxve)
+  * Bug fixes
+    * Add pkey_cca kernel module to detect CEX domain for LUKS encryption
+- Add support for nested /etc subvolume (t-u 5.0.0)
+
+-------------------------------------------------------------------
 Thu Nov 07 19:58:35 UTC 2024 - iforster@suse.com
 
 - Update to version 2.20.0:

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr  9 08:12:01 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Do not write selinux mode to kernel command line and keep it only
+  in /etc/selinux/config (jsc#PED-12400)
+- 5.0.3
+
+-------------------------------------------------------------------
 Mon Sep 30 14:36:10 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Drop obsolete USERADD_CMD, USERDEL_PRECMD, USERDEL_POSTCMD in

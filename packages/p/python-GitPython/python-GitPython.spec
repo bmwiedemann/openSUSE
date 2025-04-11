@@ -81,6 +81,6 @@ git config --global user.name "Your Name"
 %license LICENSE
 %doc AUTHORS CHANGES README.md doc/source/*.rst
 %{python_sitelib}/git
-%{python_sitelib}/GitPython-%{version}.dist-info
+%{python_sitelib}/[gG]it[pP]ython-%{version}.dist-info
 
 %changelog

@@ -71,6 +71,16 @@ Patch31:        031-cli-Add-features-hyperv.tlbflush.direct.state-on-off.patch
 Patch32:        032-cli-Add-features-hyperv.tlbflush.extended.state-on-off.patch
 Patch33:        033-createvm-prioritize-riscv64.patch
 Patch34:        034-tests-uitests-handle-linux2020-going-EOL.patch
+Patch40:        040-virtinst-add-pstore-backend-support.patch
+Patch41:        041-tests-add-pstore-test.patch
+Patch42:        042-man-virt-install-Document-pstore-device.patch
+Patch43:        043-tests-Increase-virtio-mem-block-size.patch
+Patch44:        044-tests-test_urls-fix-dead-URL.patch
+Patch45:        045-urlfetcher-add-riscv64-architecture-for-Debian.patch
+Patch46:        046-virt-manager-list-virtual-networks-when-creating-new-QEMU-Session-VM.patch
+Patch47:        047-virt-install-add-support-for-vDPA-network-device.patch
+Patch48:        048-virt-manager-add-support-for-vDPA-network-device.patch
+Patch49:        049-virt-install-detect-wayland-in-order-to-start-virt-viewer.patch
 Patch100:       revert-363fca41-virt-install-Require-osinfo-for-non-x86-HVM-case-too.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
@@ -132,6 +142,10 @@ Requires:       python3-gobject
 Requires:       virt-manager-common = %{verrel}
 Requires:       vte
 Requires:       typelib(LibvirtGLib)
+%if 0%{?suse_version} >= 1699
+Requires:       typelib(GtkVnc)
+Requires:       typelib(Vte)
+%endif
 
 Recommends:     gtksourceview4
 Recommends:     libvirt-daemon-config-network
@@ -149,7 +163,6 @@ BuildRequires:  python3-pytest
 BuildRequires:  virt-install = %{version}
 BuildRequires:  virt-manager = %{version}
 BuildRequires:  pkgconfig(vte-2.91)
-BuildRequires:  typelib(Libosinfo)
 %endif
 
 %description
@@ -183,6 +196,7 @@ Group:          System/Monitoring
 
 Requires:       libvirt-client
 Requires:       virt-manager-common = %{verrel}
+Requires:       typelib(Libosinfo)
 
 Provides:       python3-virtinst
 Provides:       virt-clone

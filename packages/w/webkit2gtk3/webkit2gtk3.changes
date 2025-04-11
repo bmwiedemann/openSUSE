@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
 Sat Apr  5 22:05:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 2.48.1:
+- Update to version 2.48.1 (boo#1240958 boo#1240961 boo#1240962
+  boo#1240963 boo#1240964):
   + Limit the data stored in session state.
   + Remove the empty area below the title bar in Web Inspector when
     not docked.
@@ -9,6 +10,8 @@ Sat Apr  5 22:05:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
   + Fix the build with GStreamer < 1.20.
   + Fix the build with video disabled.
   + Fix the build with clang 20.
+  + Security fixes: CVE-2024-54551, CVE-2025-24208, CVE-2025-24209,
+    CVE-2025-24213, CVE-2025-24216, CVE-2025-24264, CVE-2025-30427.
 - Add 8bee9eb9.patch: fix the build on non-x86 architectures.
 
 -------------------------------------------------------------------

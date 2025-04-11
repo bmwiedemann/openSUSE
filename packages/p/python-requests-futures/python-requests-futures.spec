@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-requests-futures
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%define         short_name requests-futures
 %{?sle15_python_module_pythons}
-Name:           python-%{short_name}
-Version:        1.0.1
+Name:           python-requests-futures
+Version:        1.0.2
 Release:        0
 Summary:        Asynchronous Python HTTP Requests for Humans using Futures
 License:        Apache-2.0
 URL:            https://github.com/ross/requests-futures
-Source:         https://files.pythonhosted.org/packages/source/r/%{short_name}/%{short_name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/requests-futures/requests_futures-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.31.0
@@ -37,13 +38,13 @@ Small add-on for the python requests_ http library. Makes use of python 3.2’s
 concurrent.futures or the backport for prior versions of python.
 
 %prep
-%setup -q -n %{short_name}-%{version}
+%setup -q -n requests_futures-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +54,7 @@ concurrent.futures or the backport for prior versions of python.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/requests_futures
+%{python_sitelib}/requests[_-]futures-%{version}.dist-info
 
 %changelog

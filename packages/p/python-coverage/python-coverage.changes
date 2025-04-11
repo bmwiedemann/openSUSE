@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Mar 27 09:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.7.1
+  * The Coverage object has a new method, .Coverage.branch_stats
+    for getting simple branch information for a module.
+  * The Coverage constructor<.Coverage> now has a plugins parameter
+    for passing in plugin objects directly.
+  * Many constant tests in if statements are now recognized as
+    being optimized away.
+  * The experimental sys.monitoring support now works for branch
+    coverage if you are using Python 3.14.0 alpha 6 or newer.
+  * A few small tweaks to the sys.monitoring support for Python 3.14.
+    Please test!
+- Add setuptools77.patch to fix tests with setuptools 77
+
+-------------------------------------------------------------------
 Thu Jan  2 14:15:50 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.6.10:

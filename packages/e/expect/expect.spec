@@ -1,7 +1,7 @@
 #
 # spec file for package expect
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ expect package loaded.
 %autopatch -p0
 
 %build
-export CFLAGS="%{optflags} -fPIC -pie"
+export CFLAGS="%{optflags} -fPIC -pie -std=gnu89"
 autoreconf
 %configure \
 	--with-tcl=%_libdir \

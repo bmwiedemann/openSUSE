@@ -113,4 +113,12 @@ while the Gnu Make in Tumbleweed works correctly.
     <comment></comment>
     <requestid>1242908</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c590f9469f8b6d56497b5cdf40d307f4</srcmd5>
+    <version>124.3.1</version>
+    <time>1744382770</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268184</requestid>
+  </revision>
 </revisionlist>

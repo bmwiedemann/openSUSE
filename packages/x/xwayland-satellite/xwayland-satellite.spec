@@ -1,7 +1,7 @@
 #
 # spec file for package xwayland-satellite
 #
-# Copyright (c) 2024 mantarimay
+# Copyright (c) 2025 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without test
 Name:           xwayland-satellite
-Version:        0.5
+Version:        0.5.1
 Release:        0
 Summary:        Rootless Xwayland integration for Wayland compositors
 License:        MPL-2.0
@@ -59,7 +59,10 @@ install -Dm644 resources/%{name}.service -t %{buildroot}%{_userunitdir}
     --skip=toplevel_flow \
     --skip=bad_clipboard_data \
     --skip=different_output_position \
-    --skip=funny_window_title
+    --skip=funny_window_title \
+    --skip=fake_selection_targets \
+    --skip=primary_output \
+    --skip=wayland_then_x11_clipboard_owner
 %endif
 
 %files

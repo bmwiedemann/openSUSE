@@ -15,4 +15,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1170577</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>da8d1a07ddfa5b5d0e87102da6cb40ab</srcmd5>
+    <version>1.0.0</version>
+    <time>1744382702</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266169</requestid>
+  </revision>
 </revisionlist>

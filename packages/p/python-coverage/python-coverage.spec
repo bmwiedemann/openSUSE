@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-coverage
-Version:        7.6.10
+Version:        7.7.1
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
 URL:            https://github.com/nedbat/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/nedbat/coveragepy/commit/ba685fb8d06a2052c4916749539ef501b8080804 build: setuptools 77 doesn't like license classifiers.
+Patch:          setuptools77.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

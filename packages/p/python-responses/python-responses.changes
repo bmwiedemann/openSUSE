@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:56:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.25.7:
+  * Added support for python 3.13
+  * Added py.typed to package_data
+  * Responses can now match requests that use `data` with file-
+    like objects.
+  * Files will be read as bytes and stored in the request mock.
+  * `RequestsMock.matchers` was added. This property is an alias
+    to `responses.matchers`. See #739
+  * Removed tests from packaged wheels. See #746
+  * Improved recorder API to ease use in REPL environments. See
+    #745
+
+-------------------------------------------------------------------
 Thu Jun 20 12:40:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.3:

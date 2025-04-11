@@ -19,7 +19,7 @@
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 
 Name:           supergfxctl
-Version:        5.2.7
+Version:        1742336779.bcdca4b
 Release:        0
 Summary:        Super graphics mode controller
 License:        MPL-2.0

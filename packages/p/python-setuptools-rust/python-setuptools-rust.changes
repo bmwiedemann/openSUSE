@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 10 13:50:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.11.1
+  * Fix finding cargo artifacts when filenames are empty. #521
+
+-------------------------------------------------------------------
+Sun Mar 30 08:01:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * Drop support for Python 3.8. #479
+  * Support free-threaded Python. #502
+  * Support adding custom env vars. #504
+
+-------------------------------------------------------------------
 Wed Nov 20 00:54:23 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.10.2:

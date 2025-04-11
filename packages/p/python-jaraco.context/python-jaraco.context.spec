@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.context
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@ Additional functools in the spirit of stdlib’s functools.
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
-%{python_sitelib}/jaraco.context-%{version}*-info
+%{python_sitelib}/jaraco[_.]context-%{version}.dist-info
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/context.py*
 %dir %{python_sitelib}/jaraco/__pycache__

@@ -182,7 +182,10 @@ fi
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
 autoreconf -f
-export CFLAGS="%optflags -fno-strict-aliasing"
+## -std=gnu11 to fix gcc-15 errors
+## note there exists upstream patch to fix the code but
+## without changes to lib/md5.c which upstream has dropped
+export CFLAGS="%optflags -fno-strict-aliasing -std=gnu11"
 %configure --with-pic \
             --with-plugindir=%{_libdir}/sasl2 \
             --with-configdir=%{_sysconfdir}/sasl2/:%{_libdir}/sasl2 \

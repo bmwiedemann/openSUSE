@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,9 +49,9 @@
 
 %bcond_with ldc_tests
 
-# Dynamic compiling is not supported with LLVM >= 12
-# https://github.com/ldc-developers/ldc/issues/3747
-%global jit_support 0
+# JIT is available from LLVM >= 18
+# https://github.com/ldc-developers/ldc/pull/4774
+%global jit_support 1
 
 # LLVM LTO is too much for 32bit ARM
 %ifarch %{arm}
@@ -59,7 +59,7 @@
 %endif
 
 Name:           ldc
-Version:        1.40.0
+Version:        1.40.1
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
@@ -74,8 +74,8 @@ BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
 %if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-BuildRequires:  llvm-clang >= 15.0
-BuildRequires:  llvm-devel >= 15.0
+BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 20)
+BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 20)
 %else
 BuildRequires:  llvm-clang >= 15.0
 BuildRequires:  llvm-devel >= 15.0
@@ -242,6 +242,8 @@ popd
 %endif
 
 %install
+# Make sure it can find its own libs (help2man and cmake_install runs the binaries)
+export LD_LIBRARY_PATH="$PWD/build/%_lib"
 %cmake_install
 # Install bash completion in the right folder
 if [ ! -d %{buildroot}%{_bashcompletionsdir} ]; then
@@ -249,8 +251,6 @@ if [ ! -d %{buildroot}%{_bashcompletionsdir} ]; then
   mv %{buildroot}%{_sysconfdir}/bash_completion.d/ldc2 %{buildroot}%{_bashcompletionsdir}
   rmdir %{buildroot}%{_sysconfdir}/bash_completion.d/
 fi
-# Make sure it can find its own libs (help2man runs the binaries)
-export LD_LIBRARY_PATH="$PWD/build/%_lib"
 # Build man pages
 help2man %{buildroot}%{_bindir}/ldc2  > ldc2.1  && gzip ldc2.1
 help2man %{buildroot}%{_bindir}/ldmd2 > ldmd2.1 && gzip ldmd2.1

@@ -93,4 +93,14 @@
   * Better type hints for NonDataProperty.</comment>
     <requestid>1164373</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>40796d5c64410bcdc2441d342f24e64f</srcmd5>
+    <version>3.4.0</version>
+    <time>1744382703</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266226</requestid>
+  </revision>
 </revisionlist>

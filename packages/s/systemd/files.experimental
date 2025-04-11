@@ -120,6 +120,9 @@
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz
 %endif
+%if %{with upstream}
+%{_mandir}/man8/systemd-validatefs@.service.8.gz
+%endif
 %{_pam_vendordir}/systemd-run0
 %if %{with sd_boot}
 %{_prefix}/lib/kernel/install.d/60-ukify.install
@@ -160,6 +163,9 @@
 %{_systemd_util_dir}/systemd-tpm2-clear
 %endif
 %{_systemd_util_dir}/systemd-tpm2-setup
+%if %{with upstream}
+%{_systemd_util_dir}/systemd-validatefs
+%endif
 %{_systemd_util_dir}/ukify
 %endif
 %if %{with upstream}
@@ -246,6 +252,9 @@
 %if %{with sd_boot}
 %{_unitdir}/systemd-tpm2-setup-early.service
 %{_unitdir}/systemd-tpm2-setup.service
+%endif
+%if %{with upstream}
+%{_unitdir}/systemd-validatefs@.service
 %endif
 %{_unitdir}/systemd-vmspawn@.service
 %if %{with upstream}

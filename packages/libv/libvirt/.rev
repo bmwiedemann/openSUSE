@@ -4835,4 +4835,17 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
     https://libvirt.org/news.html#v11-2-0-2025-04-01</comment>
     <requestid>1266337</requestid>
   </revision>
+  <revision rev="421" vrev="2">
+    <srcmd5>49fc53cbb116038c56cc979bfd8790b3</srcmd5>
+    <version>11.2.0</version>
+    <time>1744382757</time>
+    <user>anag_factory</user>
+    <comment>Fix bug and add jira numbers to previous changelog entry
+
+- cpu_map: Install Ampere-1 ARM CPU models
+  bsc#1240922
+
+  - jsc#PED-6556, jsc#PED-11466</comment>
+    <requestid>1268494</requestid>
+  </revision>
 </revisionlist>

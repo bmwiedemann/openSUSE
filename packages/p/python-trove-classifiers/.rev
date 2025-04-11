@@ -163,4 +163,13 @@
   * add Plone 6.2 classifier</comment>
     <requestid>1248474</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>502e9429d3920855b17d929a14aecf45</srcmd5>
+    <version>2025.3.19.19</version>
+    <time>1744382681</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.3.19.19:
+  * fixup Django classifiers</comment>
+    <requestid>1265490</requestid>
+  </revision>
 </revisionlist>

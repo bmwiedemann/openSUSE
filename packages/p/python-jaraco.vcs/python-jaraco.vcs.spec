@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.vcs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,6 @@ Facilities for working with VCS repositories
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/vcs
-%{python_sitelib}/jaraco.vcs-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]vcs-%{version}.dist-info
 
 %changelog

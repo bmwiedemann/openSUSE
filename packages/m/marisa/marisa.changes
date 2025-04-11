@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  9 09:22:59 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- python binding still need by libkkc, reenable
+- modern python packaging
+
+-------------------------------------------------------------------
 Sun Apr  6 07:41:41 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - no consumer for perl/ruby/python3 bindings, bcond_with them

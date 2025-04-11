@@ -2158,4 +2158,12 @@
     <comment>Spec file adjustments for bsc#1239837 - virt-manager on SLES16</comment>
     <requestid>1268037</requestid>
   </revision>
+  <revision rev="273" vrev="9">
+    <srcmd5>8feefc16072a43fd26e2f5e2306a803c</srcmd5>
+    <version>5.0.0</version>
+    <time>1744382738</time>
+    <user>anag_factory</user>
+    <comment>A few new upstream features and bug fixes</comment>
+    <requestid>1268604</requestid>
+  </revision>
 </revisionlist>

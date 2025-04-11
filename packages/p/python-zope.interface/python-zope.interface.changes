@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:53:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Mon Mar 24 07:13:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct dist-info directory due to new setuptools.
+
+-------------------------------------------------------------------
 Mon Jan 20 10:32:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 7.2

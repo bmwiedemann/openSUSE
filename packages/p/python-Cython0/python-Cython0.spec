@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cython0
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ $python runtests.py -v
 %python_alternative %{_bindir}/cython
 %python_alternative %{_bindir}/cythonize
 %{python_sitearch}/Cython/
-%{python_sitearch}/Cython-%{version}*-info
+%{python_sitearch}/[cC]ython-%{version}*-info
 %{python_sitearch}/cython.py*
 %pycache_only %{python_sitearch}/__pycache__/cython*.py*
 %{python_sitearch}/pyximport/

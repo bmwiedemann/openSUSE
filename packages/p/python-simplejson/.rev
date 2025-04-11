@@ -502,4 +502,14 @@
   * https://github.com/simplejson/simplejson/pull/326</comment>
     <requestid>1199460</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f2e33b54a096cad5c435fde05c9d595c</srcmd5>
+    <version>3.20.1</version>
+    <time>1744382682</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.20.1:
+  * Do not memoize keys before they are coerced to string
+    https://github.com/simplejson/simplejson/pull/329</comment>
+    <requestid>1265492</requestid>
+  </revision>
 </revisionlist>

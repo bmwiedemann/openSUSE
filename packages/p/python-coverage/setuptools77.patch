@@ -1,0 +1,21 @@
+From ba685fb8d06a2052c4916749539ef501b8080804 Mon Sep 17 00:00:00 2001
+From: Ned Batchelder <ned@nedbatchelder.com>
+Date: Sat, 22 Mar 2025 08:59:45 -0400
+Subject: [PATCH] build: setuptools 77 doesn't like license classifiers. #1939
+
+---
+ setup.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 9aa82bf91..8fcec5e2d 100644
+--- a/setup.py
++++ b/setup.py
+@@ -19,7 +19,6 @@
+ classifiers = """\
+ Environment :: Console
+ Intended Audience :: Developers
+-License :: OSI Approved :: Apache Software License
+ Operating System :: OS Independent
+ Programming Language :: Python
+ Programming Language :: Python :: 3

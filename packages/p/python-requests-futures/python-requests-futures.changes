@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:42:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Sun Mar 30 08:00:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Correct setup.py email addr
+
+-------------------------------------------------------------------
 Thu Sep  7 11:26:07 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

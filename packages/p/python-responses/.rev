@@ -428,4 +428,22 @@
     yaml files. See #715</comment>
     <requestid>1181926</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>663f19d738714258afe1a39044c3d277</srcmd5>
+    <version>0.25.7</version>
+    <time>1744382674</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.25.7:
+  * Added support for python 3.13
+  * Added py.typed to package_data
+  * Responses can now match requests that use `data` with file-
+    like objects.
+  * Files will be read as bytes and stored in the request mock.
+  * `RequestsMock.matchers` was added. This property is an alias
+    to `responses.matchers`. See #739
+  * Removed tests from packaged wheels. See #746
+  * Improved recorder API to ease use in REPL environments. See
+    #745</comment>
+    <requestid>1265302</requestid>
+  </revision>
 </revisionlist>

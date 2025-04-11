@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:40:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.14
+  * Add IPv6 flow label support to `ip route` and `ip rule`
+  * Add `ip monitor maddress` support
+  * ss: Display seq counters as decimal for mptcp subflows
+
+-------------------------------------------------------------------
 Wed Jan 22 06:24:17 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to release 6.13

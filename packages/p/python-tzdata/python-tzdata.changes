@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:39:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.2:
+  * Upstream version 2025b released 2025-03-22T20:40:46+00:00
+  * New zone for Aysén Region in Chile which moves from -04/-03
+    to -03.
+  * Chile's Aysén Region moves from -04/-03 to -03 year-round,
+    joining Magallanes Region.
+  * Iran switched from +04 to +0330 on 1978-11-10 at 24:00, not
+    at year end.
+
+-------------------------------------------------------------------
 Sun Jan 26 19:37:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2025.1

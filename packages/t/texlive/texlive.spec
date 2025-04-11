@@ -4273,7 +4273,8 @@ This package is required by the package texlive-biber-bin.
 	    esac
 	esac > /dev/null 2>&1
     }
-    cflags -std=gnu99			XCFLAGS
+    cflags -std=gnu11			XCFLAGS
+    cflags -std=gnu++14			XCXXFLAGS
     cflags -fno-const-strings		XCFLAGS XCXXFLAGS
     cflags -fno-strict-aliasing		XCFLAGS XCXXFLAGS
     cflags -fPIC			XCFLAGS XCXXFLAGS
@@ -4620,6 +4621,7 @@ popd
     popd
 
     pushd utils/asymptote
+	CFLAGS=${CFLAGS//-std=gnu11/}
 	version=$(autoreconf --version | head -n 1 | sed -r 's/.* ([0-9.]+)$/\1/')
 	if test ${version%%.*} -ge 2 -a ${version#*.} -ge 71
 	then

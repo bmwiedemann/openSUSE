@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  9 18:38:42 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS in %check also
+
+-------------------------------------------------------------------
 Mon Mar 31 16:12:21 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error

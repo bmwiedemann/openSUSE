@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 10 09:39:10 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to version 0.15.0:
+  * chore: Release 0.15.0 (#3075)
+  * Use nvim_exec2 instead of deprecated nvim_exec (#3076)
+  * feat!: more configurable cursor animation (#3061)
+  * Fix the unit of the particle density (#3062)
+  * feat: Use multiple cursor_vfx at the same time (#3009)
+  * Fix file drop with open in tabs set to false (#3074)
+  * fix: native rendering for box drawing chars (#3033)
+  * fix: don't draw shadows for the cmdline window unless it's scrolled and displaying a message (#3064)
+  * fix!: simplify and fix the launching of neovim (#3045)
+  * Fix the z-index message windows (#3063)
+  * fix: allow blinking when blinkwait is 0 (#3055)
+  * feat: make it possible to disable the cursor hack (#3035)
+  * fix: point highlight cursor effects are properly emitted and animated (#3053)
+  * Low latency cursor animation (#3054)
+  * fix: particle vfx not being emitted for short travels (#3052)
+  * Enabled remapping of Command+Q on macOS (#3048)
+  * feat: support xdg activation (#3051)
+  * feat(env): add NEOVIDE_CONFIG env var (#3010)
+  * Revisit Fedora installation.md notes. (#3044)
+  * chore: fix nightly clippy warning (#3041)
+  * chore: update swash to fix issues with some fonts (#3025)
+  * chore!: upgrade the Ubuntu runners to 22.04 (#3037)
+  * feat: background blur for Windows (#3021)
+  * feat: rename and deprecate `neovide_transparency` to `neovide_opacity` (#2769) (#3024)
+- Updated bundled dependency:
+  * skia-m132-0.81.0.tar.gz -> skia-m135-0.83.0.tar.gz
+
+-------------------------------------------------------------------
 Mon Feb 24 10:43:23 UTC 2025 - lujianhua000@gmail.com
 
 - Update to version 0.14.1:

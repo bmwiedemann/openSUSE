@@ -81,4 +81,12 @@
   * config.h: Fix the version to match the current latest tag</comment>
     <requestid>1082926</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06facce9ba0c74e56a2c7a0e0c8211a4</srcmd5>
+    <version>1.2+31.da24cd4</version>
+    <time>1744382744</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268418</requestid>
+  </revision>
 </revisionlist>

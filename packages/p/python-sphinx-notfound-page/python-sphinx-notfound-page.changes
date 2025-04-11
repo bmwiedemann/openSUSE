@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Mar 30 08:10:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Use the path from the READTHEDOCS_CANONICAL_URL environment
+    variable as default for notfound_urls_prefix.
+
+-------------------------------------------------------------------
 Sun Nov  3 14:52:36 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

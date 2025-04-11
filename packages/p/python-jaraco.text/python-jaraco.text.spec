@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.text
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,6 +78,6 @@ fi
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/jaraco/text
-%{python_sitelib}/jaraco.text-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]text-%{version}.dist-info
 
 %changelog

@@ -309,4 +309,15 @@
 </comment>
     <requestid>1109250</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>ef4bd1ce03c1fb1616420dbbfaf30abb</srcmd5>
+    <version>2.7.1</version>
+    <time>1744382718</time>
+    <user>anag_factory</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- Add patch use-underscore-in-setup.cfg.patch:
+  * Use 'console_scripts' in setup.cfg.
+- No more greedy globs in %files.</comment>
+    <requestid>1266348</requestid>
+  </revision>
 </revisionlist>

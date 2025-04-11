@@ -6,6 +6,9 @@
 %if %{without bootstrap}
 %{_datadir}/bash-completion/completions/systemd-nspawn
 %{_datadir}/polkit-1/actions/io.systemd.mount-file-system.policy
+%if %{with upstream}
+%{_datadir}/polkit-1/actions/io.systemd.namespace-resource.policy
+%endif
 %{_datadir}/zsh/site-functions/_systemd-nspawn
 %{_mandir}/man1/systemd-nspawn.1.gz
 %{_mandir}/man5/systemd.nspawn.5.gz
@@ -63,7 +66,13 @@
 %{_unitdir}/machines.target
 %{_unitdir}/machines.target.wants/var-lib-machines.mount
 %{_unitdir}/remote-fs.target.wants/var-lib-machines.mount
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-machined.socket
+%endif
 %{_unitdir}/systemd-machined.service
+%if %{with upstream}
+%{_unitdir}/systemd-machined.socket
+%endif
 %{_unitdir}/var-lib-machines.mount
 %endif
 

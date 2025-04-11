@@ -1,7 +1,7 @@
 #
 # spec file for package python-respx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-respx
-Version:        0.21.1
+Version:        0.22.0
 Release:        0
 Summary:        Mock HTTPX with request patterns and response side effects
 License:        BSD-3-Clause
 URL:            https://github.com/lundberg/respx
 Source0:        https://github.com/lundberg/respx/archive/refs/tags/%{version}.tar.gz#/respx-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM respx-pr267-httpx0.28.patch gh#lundberg/respx#267
-Patch0:         respx-pr267-httpx0.28.patch
-# PATCH-FIX-UPSTREAM respx-pr278-httpx0.28.patch gh#lundberg/respx#278
-Patch1:         respx-pr278-httpx0.28.patch
 BuildRequires:  %{python_module Flask}
 # >= 0.28 for tests because of the Patches
 BuildRequires:  %{python_module httpx >= 0.28}

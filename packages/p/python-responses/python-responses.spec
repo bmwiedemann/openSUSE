@@ -1,7 +1,7 @@
 #
 # spec file for package python-responses
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-responses
-Version:        0.25.3
+Version:        0.25.7
 Release:        0
 Summary:        A utility library for mocking out the `requests` Python library
 License:        Apache-2.0
@@ -74,6 +74,6 @@ export PYTHONIOENCODING="utf_8"
 %doc CHANGES README.rst
 %license LICENSE
 %{python_sitelib}/responses
-%{python_sitelib}/responses-%{version}*-info
+%{python_sitelib}/responses-%{version}.dist-info
 
 %changelog

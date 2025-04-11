@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 28 16:54:45 UTC 2025 - dmueller@suse.com
+
+- Update to version v1.2+31.da24cd4:
+  * utils: better handle case of unknown option
+
+-------------------------------------------------------------------
 Tue Apr 25 10:21:11 UTC 2023 - bogdan.lezhepekov@suse.com
 
 - Update to version v1.2+30.a5431e9: (bsc#1191692)

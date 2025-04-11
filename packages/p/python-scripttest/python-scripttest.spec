@@ -1,7 +1,7 @@
 #
 # spec file for package python-scripttest
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-scripttest
-Version:        1.3
+Version:        2.0
 Release:        0
 Summary:        Helper to test command-line scripts
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/scripttest
 Source:         https://files.pythonhosted.org/packages/source/s/scripttest/scripttest-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-ScriptTest = %{version}
-Obsoletes:      %{oldpython}-ScriptTest < %{version}
-%endif
 %python_subpackages
 
 %description
@@ -47,13 +44,18 @@ output (stdout, stderr) and any file modifications.
 %setup -q -n scripttest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/scripttest.py
+%{python_sitelib}/scripttest-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/scripttest*
 
 %changelog

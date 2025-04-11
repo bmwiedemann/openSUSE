@@ -10,8 +10,8 @@ grubcfg="/sysroot/etc/default/grub"
 # for us.
 . /dracut-state.sh
 mount "${root#block:}" "${NEWROOT}"
-# Also mount x-initrd.mount flagged mounts to get the current /etc state
-awk '$4 ~ /x-initrd.mount/ { system("findmnt /sysroot" $2 " >/dev/null || mount -t " $3 " -o " $4 " " $1 " /sysroot" $2) }' /sysroot/etc/fstab
+# Mount x-initrd.mount flagged mounts, but skip the bind mount of the new nested subvolume based /etc
+awk '$4 ~ /x-initrd.mount/ && ! ( $2 == "/etc" && $3 == "none" ) { system("findmnt /sysroot" $2 " >/dev/null || mount -t " $3 " -o " $4 " " $1 " /sysroot" $2) }' /sysroot/etc/fstab
 
 orig_kernelopts="$(grep GRUB_CMDLINE_LINUX_DEFAULT "${grubcfg}")"
 orig_kernelopts="${orig_kernelopts#*=}"

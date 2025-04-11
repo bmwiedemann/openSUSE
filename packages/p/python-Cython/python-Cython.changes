@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:44:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make the dist-info name case-insensitive
+
+-------------------------------------------------------------------
+Tue Mar 25 01:11:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Wed Feb 19 09:54:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.0.12

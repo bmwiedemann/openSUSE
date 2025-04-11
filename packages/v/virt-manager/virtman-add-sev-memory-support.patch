@@ -190,7 +190,7 @@ Index: virt-manager-5.0.0/virtinst/devices/interface.py
 ===================================================================
 --- virt-manager-5.0.0.orig/virtinst/devices/interface.py
 +++ virt-manager-5.0.0/virtinst/devices/interface.py
-@@ -310,6 +310,9 @@ class DeviceInterface(Device):
+@@ -311,6 +311,9 @@ class DeviceInterface(Device):
  
      portForward = XMLChildProperty(_PortForward)
  

@@ -290,4 +290,14 @@ minor spec improvement (forwarded request 121844 from HighwayStar)</comment>
   with pytest</comment>
     <requestid>1247287</requestid>
   </revision>
+  <revision rev="33" vrev="4">
+    <srcmd5>b2f4a80501cb7b943901f03ab776940f</srcmd5>
+    <version>2.1.5</version>
+    <time>1744382695</time>
+    <user>anag_factory</user>
+    <comment>- Make the dist-info name case-insensitive
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1266133</requestid>
+  </revision>
 </revisionlist>

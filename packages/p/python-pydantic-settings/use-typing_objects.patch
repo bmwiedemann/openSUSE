@@ -1,0 +1,33 @@
+Index: pydantic_settings-2.8.1/pydantic_settings/sources.py
+===================================================================
+--- pydantic_settings-2.8.1.orig/pydantic_settings/sources.py
++++ pydantic_settings-2.8.1/pydantic_settings/sources.py
+@@ -45,6 +45,7 @@ from pydantic.dataclasses import is_pyda
+ from pydantic.fields import FieldInfo
+ from pydantic_core import PydanticUndefined
+ from typing_extensions import Annotated, _AnnotatedAlias, get_args, get_origin
++from typing_inspection import typing_objects
+ 
+ from pydantic_settings.utils import path_type_label
+ 
+@@ -1996,7 +1997,7 @@ class CliSettingsSource(EnvSettingsSourc
+             return '...'
+         elif isinstance(obj, Representation):
+             return repr(obj)
+-        elif isinstance(obj, typing_extensions.TypeAliasType):
++        elif typing_objects.is_typealiastype(obj):
+             return str(obj)
+ 
+         if not isinstance(obj, (typing_base, WithArgsTypes, type)):
+Index: pydantic_settings-2.8.1/pyproject.toml
+===================================================================
+--- pydantic_settings-2.8.1.orig/pyproject.toml
++++ pydantic_settings-2.8.1/pyproject.toml
+@@ -43,6 +43,7 @@ requires-python = '>=3.8'
+ dependencies = [
+     'pydantic>=2.7.0',
+     'python-dotenv>=0.21.0',
++    'typing-inspection>=0.4.0',
+ ]
+ dynamic = ['version']
+ 

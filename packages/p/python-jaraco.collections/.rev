@@ -152,4 +152,14 @@
     matches</comment>
     <requestid>1218896</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0a91c27cd052513b7def40784ffff4d4</srcmd5>
+    <version>5.1.0</version>
+    <time>1744382704</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266227</requestid>
+  </revision>
 </revisionlist>

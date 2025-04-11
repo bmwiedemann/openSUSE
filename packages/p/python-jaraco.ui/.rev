@@ -24,4 +24,14 @@
   * Add main module.</comment>
     <requestid>1224124</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>8ae473bf3696d5312c768a599d09b70b</srcmd5>
+    <version>2.4.0</version>
+    <time>1744382712</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266240</requestid>
+  </revision>
 </revisionlist>

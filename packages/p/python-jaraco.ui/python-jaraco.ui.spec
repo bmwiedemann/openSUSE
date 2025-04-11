@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.ui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,6 @@ User-Interface tools (mainly command-line)
 %doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/ui
-%{python_sitelib}/jaraco.ui-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]ui-%{version}.dist-info
 
 %changelog

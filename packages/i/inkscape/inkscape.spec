@@ -17,7 +17,7 @@
 
 
 Name:           inkscape
-Version:        1.4+71
+Version:        1.4.1+5
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -82,6 +82,7 @@ Recommends:     python3-imaging
 Recommends:     python3-lxml
 Recommends:     python3-numpy
 Recommends:     python3-scour
+Recommends:     python3-tinycss2
 Recommends:     python3-xml
 Obsoletes:      %{name}-extensions-dia < %{version}
 Obsoletes:      %{name}-extensions-skencil < %{version}

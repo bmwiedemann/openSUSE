@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr  4 22:48:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with OpenSSL 3.5: [bsc#1241037]
+  * Fails with "error Untested OpenSSL version" when building for
+    the upcoming OpenSSL version 3.5.
+  * Add ibmswtpm2-Build-with-OpenSSL-3.5.patch
+
+-------------------------------------------------------------------
 Tue Apr  9 15:40:49 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Package LICENSE file.

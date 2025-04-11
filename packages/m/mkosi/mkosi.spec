@@ -18,6 +18,15 @@
 
 %define pythons python3
 
+%if 0%{?suse_version} > 1600
+%ifarch x86_64 aarch64
+%bcond_without pandoc
+%else
+%bcond_with pandoc
+%endif
+%bcond_with pandoc
+%endif
+
 Name:           mkosi
 Version:        25.3
 Release:        0
@@ -32,7 +41,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 BuildRequires:  pandoc
 %endif
 BuildRequires:  python-rpm-macros
@@ -88,7 +97,7 @@ locally.
 %autosetup -p1
 
 %build
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 tools/make-man-page.sh
 %endif
 %pyproject_wheel
@@ -98,7 +107,7 @@ bin/mkosi completion bash > mkosi.bash
 %pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitelib}/mkosi
 
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 # Install man pages
 mkdir -p %{buildroot}%{_mandir}/man1
 cp %{buildroot}%{python3_sitelib}/mkosi/resources/man/mkosi.1 \
@@ -140,7 +149,7 @@ fi
 %license LICENSES
 %{_bindir}/mkosi
 %{_bindir}/mkosi-sandbox
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 %{_mandir}/man1/mkosi.1%{?ext_man}
 %{_mandir}/man1/mkosi-sandbox.1%{?ext_man}
 %endif
@@ -152,13 +161,13 @@ fi
 
 %files addon
 %{_bindir}/mkosi-addon
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 %{_mandir}/man1/mkosi-addon.1%{?ext_man}
 %endif
 
 %files initrd
 %{_bindir}/mkosi-initrd
-%ifarch x86_64 aarch64
+%if %{with pandoc}
 %{_mandir}/man1/mkosi-initrd.1%{?ext_man}
 %endif
 %dir %{_prefix}/lib/mkosi-initrd

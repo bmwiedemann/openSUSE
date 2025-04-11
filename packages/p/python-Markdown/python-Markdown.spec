@@ -1,7 +1,7 @@
 #
 # spec file for package python-Markdown
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,8 +91,8 @@ supported by the [Available Extensions][].
 %license LICENSE.md
 %doc README.md docs/*
 %python_alternative %{_bindir}/markdown_py
-%{python_sitelib}/Markdown-%{version}*-info
 %{python_sitelib}/markdown
+%{python_sitelib}/[mM]arkdown-%{version}.dist-info
 %endif
 
 %changelog

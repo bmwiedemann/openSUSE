@@ -17,14 +17,14 @@
 
 
 %{?sle15_python_module_pythons}
+# Check PyPI for version: https://pypi.org/project/PyQt6-sip/
 Name:           python-PyQt6-sip
-Version:        13.9.1
+Version:        13.10.0
 Release:        0
 Summary:        The sip module support for PyQt6
 License:        BSD-2-Clause
 URL:            https://github.com/Python-SIP/sip
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt6-sip/pyqt6_sip-%{version}.tar.gz
-Patch0:         fix-license-in-setup_py.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -58,6 +58,6 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %dir %{python_sitearch}/PyQt6
 %{python_sitearch}/PyQt6/sip*
-%{python_sitearch}/PyQt6_sip-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Qq]t6_sip-%{version}.dist-info
 
 %changelog

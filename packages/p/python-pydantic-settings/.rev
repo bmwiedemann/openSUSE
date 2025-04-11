@@ -84,4 +84,24 @@
   * Add CLI App Support</comment>
     <requestid>1240690</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>462f71989f2c0de2b2ea390e1fb8b378</srcmd5>
+    <version>2.8.1</version>
+    <time>1744382728</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.1:
+  * Fix for init source kwarg alias resolution
+  * Revert usage of positional only argument in BaseSettings.__init__
+  * Revert use of object instead of Any
+  * CLI support for optional and variadic positional args
+  * Improve env_prefix config doc
+  * Add env_nested_max_split setting
+  * Avoid using Any in BaseSettings signature to avoid mypy errors
+  * Asynchronous CLI methods in CliApp
+  * Don't explode env vars if env_nested_delimiter is empty
+- Add patch use-typing_objects.patch:
+  * Use typing_inspection.typing_objects rather than isinstance.
+- Refreshed patch fix-settings-dump.patch</comment>
+    <requestid>1267000</requestid>
+  </revision>
 </revisionlist>

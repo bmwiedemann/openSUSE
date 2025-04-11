@@ -211,6 +211,9 @@
 %{_datadir}/polkit-1/actions/org.freedesktop.login1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.systemd1.policy
 %{_datadir}/polkit-1/actions/org.freedesktop.timedate1.policy
+%if %{with upstream}
+%{_datadir}/polkit-1/rules.d/10-systemd-logind-root-ignore-inhibitors.rules.example
+%endif
 %{_datadir}/systemd/kbd-model-map
 %{_datadir}/systemd/language-fallback-map
 %if %{without bootstrap}
@@ -468,7 +471,9 @@
 %{_systemd_util_dir}/systemd
 %{_systemd_util_dir}/systemd-binfmt
 %{_systemd_util_dir}/systemd-boot-check-no-failures
+%if %{without upstream}
 %{_systemd_util_dir}/systemd-cgroups-agent
+%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-coredump
 %endif
@@ -746,6 +751,9 @@
 %endif
 %{_unitdir}/systemd-user-sessions.service
 %if %{without bootstrap}
+%if %{with upstream}
+%{_unitdir}/systemd-userdb-load-credentials.service
+%endif
 %{_unitdir}/systemd-userdbd.service
 %{_unitdir}/systemd-userdbd.socket
 %endif

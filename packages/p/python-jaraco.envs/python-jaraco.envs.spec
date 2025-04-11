@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.envs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,7 +64,7 @@ sed -i '/tox/d' setup.cfg
 %files %{python_files}
 %license LICENSE
 %doc docs/*.rst README.rst NEWS.rst
-%{python_sitelib}/jaraco.envs-%{version}*info
+%{python_sitelib}/jaraco[_.]envs-%{version}.dist-info
 %dir %{python_sitelib}/jaraco
 %{python_sitelib}/jaraco/envs.py*
 %pycache_only %dir %{python_sitelib}/jaraco/__pycache__

@@ -82,4 +82,15 @@
     <comment></comment>
     <requestid>1174768</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c531d800c10f3fea545e995b32fcf8e</srcmd5>
+    <version>0.4.2</version>
+    <time>1744382676</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.2:
+  * Use exec mode when passed a list of strings (#101)
+- drop 0001-test-test_unit.py-do-not-use-python3-rather-use-sys..patch:
+  merged upstream</comment>
+    <requestid>1265376</requestid>
+  </revision>
 </revisionlist>

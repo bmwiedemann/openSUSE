@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Mar 28 20:47:53 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.0:
+  * fix #960: add a ``--force-write-version-files`` flag for the
+    cli
+  * fix #950: ensure to pass encodings to io usage
+  * fix #957 - add subprocess timeout control env var
+  * add sp-repo-review pre-commit hook
+  * fix #1018: allow non-normalized versions for semver
+  * fix #1103: respect GIT_CEILING_DIRECTORIES when trying to
+    find git toplevels
+  * fix #1081: add name normalized pipx entrypoint
+  * fix #1080: clean pdm from PYTHONPATH to protect mercurial
+
+-------------------------------------------------------------------
 Wed Aug 14 06:22:51 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add explicit ca-certificates-mozilla for the testsuite with

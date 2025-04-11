@@ -94,7 +94,7 @@ $python runtests.py -v
 %python_alternative %{_bindir}/cython
 %python_alternative %{_bindir}/cythonize
 %{python_sitearch}/Cython/
-%{python_sitearch}/Cython-%{version}.dist-info
+%{python_sitearch}/[cC]ython-%{version}.dist-info
 %{python_sitearch}/cython.py*
 %pycache_only %{python_sitearch}/__pycache__/cython*.py*
 %{python_sitearch}/pyximport/

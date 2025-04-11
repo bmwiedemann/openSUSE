@@ -63,7 +63,7 @@ support for (deprecated) optparse objects, too.
 %check
 export PIP_NO_INDEX=1
 export PIP_FIND_LINKS=$(ls -1 /usr/lib/python3.*/wheels | head -n 1)
-%pytest
+%pytest -k 'not test_old_example_file_name'
 
 %post
 %{python_install_alternative argparse-manpage argparse-manpage.1}

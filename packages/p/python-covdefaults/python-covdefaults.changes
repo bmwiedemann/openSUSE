@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Mar 31 01:59:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-coverage-7.7.patch:
+  * Support Coverage 7.7.0 and above changes with plugins.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sun Jun 11 08:31:24 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

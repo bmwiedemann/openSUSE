@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:30:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make the dist-info name case-insensitive
+
+-------------------------------------------------------------------
+Tue Mar 25 03:17:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Thu Feb 20 08:14:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - split test dependencies into a multibuild to break cycle

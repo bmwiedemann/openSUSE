@@ -31,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    257.4
+%define systemd_version    257.5
 %define systemd_release    0
-%define archive_version    +suse.4.gf133e5974e
+%define archive_version    +suse.8.gc10a66fb4d
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -754,7 +754,6 @@ for the C APIs.
         -Dwheel-group=false \
         -Dgroup-render-mode=0660 \
         -Dutmp=false \
-        -Ddefault-hierarchy=unified \
         -Ddefault-kill-user-processes=false \
         -Dpamconfdir=no \
         -Dpamlibdir=%{_pam_moduledir} \
@@ -1068,15 +1067,12 @@ cat %{SOURCE14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 # -Dinstall_test took care of installing the unit tests only (those in
 # src/tests) and testdata directory. Here we copy the integration tests
 # including also all related scripts used to prepare and run the integration
-# tests in dedicated VMs. During the copy, all symlinks are replaced by the
-# files they point to making sure we won't try to embed dangling symlinks.
+# tests in dedicated VMs.
 mkdir -p %{buildroot}%{_testsuitedir}/integration-tests
 tar -cO \
-    --dereference \
-    --exclude=testdata \
     --exclude-vcs  \
     --exclude-vcs-ignores \
-    -C test/ . | tar -xC %{buildroot}%{_testsuitedir}/integration-tests
+    -C test/integration-tests/ . | tar -xC %{buildroot}%{_testsuitedir}/integration-tests/
 %endif
 
 %if %{without bootstrap}
@@ -1372,6 +1368,18 @@ fi
 %systemd_postun systemd-oomd.service systemd-oomd.socket
 %endif
 
+# Keep the clean section until the following issue is solved:
+# https://github.com/rpm-software-management/rpm/issues/3658
+%clean
+rm -rf \
+    $RPM_BUILD_ROOT \
+    %{name}.lang \
+    debugfiles.list \
+    debuglinks.list \
+    debugsourcefiles.list \
+    debugsources.list \
+    elfbins.list
+
 # File trigger definitions
 %if %{with filetriggers}
 %include %{SOURCE7}
@@ -1441,7 +1449,7 @@ fi
 
 %if %{with testsuite}
 %files testsuite
-%doc %{_testsuitedir}/integration-tests/README.*
+%doc %{_testsuitedir}/integration-tests/README.md
 %{_testsuitedir}
 %endif
 

@@ -1,7 +1,7 @@
 #
 # spec file for package iproute2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        6.13
+Version:        6.14
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Routing
 URL:            https://wiki.linuxfoundation.org/networking/iproute2
 # Using GPL-2.0 instead of GPL-2.0+ because of tc_skbedit.h and tc/q_multiq.c
-
-#DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
-#Git-Clone: https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/
+#DL-URL:        https://kernel.org/pub/linux/utils/net/iproute2/
+#Git-Clone:     https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/
 #Git-Mirror:    https://github.com/shemminger/iproute2 ## not regularly updated
 Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
 Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
@@ -136,7 +135,7 @@ mkdir -p "$b/%_docdir/%name"
 cp -an README* examples/bpf "$b/%_docdir/%name/"
 
 # bugzilla.opensuse.org/1205632
-# You can't parse routel output anyway so it does not matter what we output
+# You can't parse routel output anyway so it does not matter what our replacement program outputs
 rm -v "$b/%_mandir/man8/routel.8"
 cat >"$b/%_sbindir/routel" <<-EOF
 	#!/bin/sh

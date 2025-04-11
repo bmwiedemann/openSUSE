@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyJWT
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,6 @@ donttest+=" or test_ec_to_jwk_with_invalid_curve"
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/jwt
-%{python_sitelib}/PyJWT-%{version}.dist-info
+%{python_sitelib}/*-%{version}.dist-info
 
 %changelog

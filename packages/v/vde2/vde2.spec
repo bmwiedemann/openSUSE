@@ -175,6 +175,7 @@ This package contains VDE SNMP header files.
 
 %build
 autoreconf -fvi
+export CFLAGS="%{optflags} -std=gnu11"
 # --enable-experimental even tho weird it has useful features and
 #   vde2 on its own is no longer developed
 %configure \

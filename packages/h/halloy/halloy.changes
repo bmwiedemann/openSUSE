@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Apr  7 19:41:45 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2025.4:
+  + Added:
+    - All toast notifications now display the server name
+    - Server messages (join, part, etc.) are now user-aware and
+      will color nicknames accordingly
+    - Actions will be colored with the same features as regular
+      messages (nicknames, urls, etc)
+    - Shortcuts for cycling buffers with unread message(s)
+      + Cycle to next buffer with unread message(s) ctrl + `
+      + Cycle to previous buffer with unread message(s) ctrl + ~
+    - Navigate commands & emoji picker with↑ & ↓ (as well as Tab
+      & Shift +Tab)
+    - Expanded command completion and error checking/reporting
+    - Various shortcuts for https://themes.halloy.chat/
+      + The Command Bar now includes a "Discover More Themes"
+        action, which opens the website
+      + The Theme Editor now has a "Share Theme with Community"
+        option that opens the submit page with the theme payload
+        pre-filled
+    - Ability to adjust alpha value of away users
+    - New action settings section with settings to control how to
+      open buffers in response to various user actions
+  + Fixed:
+    - No longer freezes under Wayland when window(s) are not
+      visible
+    - Emoji picker is no longer case sensitive (i.e. 🤔 and
+      :THINKING: will both match 🤔)
+    - Full support for the /notice command
+      + Message text will no longer be truncated to the first word
+      + Sent notices appear in message history
+      + /notice <targets> (without any message text) will open a
+        pane for the target(s) without sending a message
+    - /msg <targets> supports more than one target when opening
+      pane(s) without sending a message
+  + Changed:
+    - Improved font rendering on Windows for better readability
+    - Sidebar buffer action settings have been moved to the new
+      action settings section
+      + sidebar.buffer_action → actions.sidebar.buffer
+      + sidebar.buffer_focused_action → 
+        actions.sidebar.focused_buffer
+
+-------------------------------------------------------------------
 Sat Mar 15 19:57:07 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2025.3:

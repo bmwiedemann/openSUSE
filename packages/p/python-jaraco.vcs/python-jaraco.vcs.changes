@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:35:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Wed Mar 26 05:48:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Fri Dec  8 09:24:09 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

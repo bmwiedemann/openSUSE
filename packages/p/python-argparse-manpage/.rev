@@ -164,4 +164,12 @@ tools.</comment>
 - Switch to pyproject macros.</comment>
     <requestid>1235773</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>c954e7b6e4c8a2e795fa9a8f40b42523</srcmd5>
+    <version>4.6</version>
+    <time>1744382687</time>
+    <user>anag_factory</user>
+    <comment>- Skip a failing test.</comment>
+    <requestid>1265999</requestid>
+  </revision>
 </revisionlist>

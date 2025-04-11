@@ -85,7 +85,7 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
 autoreconf -f
-export CFLAGS="-fno-strict-aliasing $RPM_OPT_FLAGS -DLDAP_DEPRECATED"
+export CFLAGS="-fno-strict-aliasing $RPM_OPT_FLAGS -DLDAP_DEPRECATED -std=gnu11"
 %configure --with-plugindir=%{_libdir}/sasl2 \
             --with-configdir=/etc/sasl2/:%{_libdir}/sasl2 \
             --with-saslauthd=/run/sasl2/ \

@@ -1,7 +1,7 @@
 #
 # spec file for package SwayNotificationCenter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global alt_pkg_name swaync
 
 Name:           SwayNotificationCenter
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        A simple GTK notification daemon
 License:        GPL-3.0-only

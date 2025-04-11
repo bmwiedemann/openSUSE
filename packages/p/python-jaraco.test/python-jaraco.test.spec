@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.test
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,6 @@ Testing support by jaraco
 %doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/test
-%{python_sitelib}/jaraco.test-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]test-%{version}.dist-info
 
 %changelog

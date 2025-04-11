@@ -113,6 +113,7 @@ echo exit 77 > test-suite/standalone/test-stack-overflow
 
 %build
 autoreconf -fi
+export CFLAGS="%{optflags} -std=gnu17"
 %configure \
   --disable-static \
   --with-pic \

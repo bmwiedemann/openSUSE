@@ -79,7 +79,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE.rst
 %doc README.rst docs/
 %{python_sitearch}/markupsafe/
-%{python_sitearch}/MarkupSafe-%{version}.dist-info
+%{python_sitearch}/[mM]arkup[sS]afe-%{version}.dist-info
 %endif
 
 %changelog

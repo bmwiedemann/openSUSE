@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 10 13:09:19 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250410:
+  * Allow login to podman container from tty (bsc#1238709)
+  * Add an rpmbuild test to the gitlab-ci
+
+-------------------------------------------------------------------
+Mon Apr  7 13:28:09 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
+
+- Add ugly workaround for semodule removal issues 
+  (bsc#1221342 bsc#1238062 bsc#1230643 bsc#1230938)
+  Can be dropped when PED-12491 is done.
+
+-------------------------------------------------------------------
 Thu Apr 03 11:00:29 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20250403:

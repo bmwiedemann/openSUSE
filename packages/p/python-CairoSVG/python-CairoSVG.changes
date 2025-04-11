@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  2 03:00:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to autosetup and pyproject macros.
+- Add patch use-underscore-in-setup.cfg.patch:
+  * Use 'console_scripts' in setup.cfg.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Sep  6 10:08:53 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.7.1:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:49:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.2:
+  * Use exec mode when passed a list of strings (#101)
+- drop 0001-test-test_unit.py-do-not-use-python3-rather-use-sys..patch:
+  merged upstream
+
+-------------------------------------------------------------------
 Thu May 16 15:09:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro: allows us to eliminate usage of deprecated

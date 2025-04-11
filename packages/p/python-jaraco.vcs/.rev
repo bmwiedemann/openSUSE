@@ -20,4 +20,14 @@
   * Require Python 3.8 or later.</comment>
     <requestid>1132060</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>46c403b4934bb4ae0cbb34dcdf1ec601</srcmd5>
+    <version>2.0.0</version>
+    <time>1744382713</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266241</requestid>
+  </revision>
 </revisionlist>

@@ -63,6 +63,7 @@ This package includes the header files for %{name}.
 %autosetup
 
 %build
+export CFLAGS="%{optflags} -std=gnu11"
 %cmake
 %cmake_build
 

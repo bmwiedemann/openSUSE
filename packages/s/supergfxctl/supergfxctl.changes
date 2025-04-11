@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 09 21:49:28 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 1742336779.bcdca4b:
+  * Issue_158: added nvidia_wmi_ec_backlight to nvidia modules and 
+    blacklist
+  * Update 3 files
+  * Remove a dbg
+  * add hotplug_add_type to "Integrated => Vfio" action
+  * Various fixes. Use display port method to find gpu
+  * Bump zbus and version
+  * Update deps
+- Fixed (boo#1237330)
+
+-------------------------------------------------------------------
+Mon Apr  7 13:23:07 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Revert changes about `nvidia-persistenced` cause 
+  `nvidia-compute-G06` requires it.
+
+-------------------------------------------------------------------
+Sun Apr  6 20:21:19 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Added `nvidia-persistenced` in conflict list as temporary 
+  solution (boo#1237330)
+
+-------------------------------------------------------------------
 Sun Feb 16 19:03:45 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 5.2.7:

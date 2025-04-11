@@ -324,4 +324,12 @@
     <comment>add -std=gnu17 to CFLAGS to fix gcc15 compile time error (forwarded request 1266626 from hsk17)</comment>
     <requestid>1266775</requestid>
   </revision>
+  <revision rev="44" vrev="12">
+    <srcmd5>8d532dc3d9ba12e18e8c29f297a23da2</srcmd5>
+    <version>1.4.18</version>
+    <time>1744382634</time>
+    <user>anag_factory</user>
+    <comment>in %check,  CFLAGS -std=gnu17 needed as well (forwarded request 1268224 from hsk17)</comment>
+    <requestid>1268350</requestid>
+  </revision>
 </revisionlist>

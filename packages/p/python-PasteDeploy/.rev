@@ -177,4 +177,14 @@
     <comment></comment>
     <requestid>1085764</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>39a3c082277a8c9da380b739f470aa0c</srcmd5>
+    <version>2.1.1+git.1652668078.0f0697d</version>
+    <time>1744382697</time>
+    <user>anag_factory</user>
+    <comment>- Make the dist-info name case-insensitive
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1266142</requestid>
+  </revision>
 </revisionlist>

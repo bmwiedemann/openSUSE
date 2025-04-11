@@ -17,7 +17,7 @@
 
 
 Name:           semaphore
-Version:        2.13.10
+Version:        2.13.12
 Release:        0
 Summary:        Modern UI for Ansible
 License:        MIT
@@ -31,7 +31,7 @@ Source11:       %{name}.service
 Source12:       server-config.json.example
 Source21:       %{name}-runner.service
 Source22:       runner-config.json.example
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.24
 Requires:       ansible-core
 Requires:       git-core
 

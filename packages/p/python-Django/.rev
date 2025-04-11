@@ -1332,4 +1332,19 @@
     <comment></comment>
     <requestid>1254138</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>ad8bab26d8fefde2fed05e4c4d064e26</srcmd5>
+    <version>5.1.8</version>
+    <time>1744382730</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.8
+  * CVE-2025-27556: Potential denial-of-service vulnerability in 
+    LoginView, LogoutView, and set_language() on Windows
+  * Fixed a regression in Django 5.1.7 where the removal of the single_object 
+    parameter unintentionally altered the signature and return type of 
+    LogEntryManager.log_actions()
+- update filelist to be compatible with newer setuptools 
+</comment>
+    <requestid>1267715</requestid>
+  </revision>
 </revisionlist>

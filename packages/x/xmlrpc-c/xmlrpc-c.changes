@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 10 08:26:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions for some component library subpackages
+- Simpler download URL
+
+-------------------------------------------------------------------
+Thu Apr 10 06:36:03 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.60.05
+  * Fix crash when memory allocation fails in XML parsing, when
+    built to use libxml2 XML parser. Broken in Xmlrpc-c 1.57
+    (December 2019).
+  * Build: fix failure to install interface header files when
+    using separate build directory.
+- from version 1.60.04
+  * CGI server: fix crash when client does not send content
+    type header field.
+- from version 1.60.03
+  * Fix always incorrect results, wild memory reference with
+    xmlrpc_value_new of array or structure. Always broken
+    (xmlrpc_value_new was new in Xmlrpc-c 1.43 (September 2015))
+- from version 1.60.02
+  * Build: fix compiler warning about format not being a string literal.
+- from version 1.60.01
+  * Build: fix missing options on compile of openssl.o.
+- from version 1.60
+  * Abyss HTTP server: use MSG_MORE to cause OS to send larger,
+    logically complete TCP packets.
+  * Use PKG_CONFIG environment variable for the name of the
+    pkg-config program.
+  * Abyss HTTP server: Fix memory corruption in processing of
+    "authorization" header field. Broken in Xmlrpc-c 1.41 (March 2015).
+- Add new libxmlrpc_openssl binary package
+
+-------------------------------------------------------------------
 Mon Apr  7 16:36:22 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

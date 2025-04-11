@@ -68,4 +68,14 @@
   * Added ``find_subseq``.</comment>
     <requestid>1127625</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7d79048884f63b38ab6939a4eb09e1a1</srcmd5>
+    <version>6.4.1</version>
+    <time>1744382708</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with older setuptools
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266234</requestid>
+  </revision>
 </revisionlist>

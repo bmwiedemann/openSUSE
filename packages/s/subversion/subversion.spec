@@ -283,7 +283,7 @@ do
 	fi
 	echo
 done >> build-outputs.mK
-export CFLAGS="%{apache_cflags} %{optflags} -fstack-protector -fpie"
+export CFLAGS="%{apache_cflags} %{optflags} -fstack-protector -fpie -std=gnu11"
 export CXXFLAGS="$CFLAGS"
 export APACHE_LDFLAGS="-Wl,-z,relro,-z,now"
 export LDFLAGS="-pie"

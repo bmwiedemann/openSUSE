@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr  8 17:35:12 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add libburn-1.5.6-c23.patch from upstream to fix gcc15 compile
+  time error
+
+-------------------------------------------------------------------
 Mon Jun 26 15:21:45 UTC 2023 - Dave Plater <davejplater@gmail.com>
 
 - Update to 1.5.6 (jsc#PED-5018)

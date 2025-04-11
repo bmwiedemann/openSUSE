@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 15:48:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Thu Mar 27 03:45:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Wed Mar  6 12:50:31 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Switch to getting source code from the Mercurial tip 0.2.8+hg.44

@@ -1,0 +1,49 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: inode_operations::mkdir returns struct dentry *
+References: kernel-6.15 build fix
+Patch-mainline: no
+
+inode_operations::mkdir returns struct dentry * (and not int) since:
+88d5baf69082 Change inode_operations.mkdir to return struct dentry *
+
+Adapt.
+---
+ src/VBox/Additions/linux/sharedfolders/dirops.c |   13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+--- a/src/VBox/Additions/linux/sharedfolders/dirops.c
++++ b/src/VBox/Additions/linux/sharedfolders/dirops.c
+@@ -1088,7 +1088,9 @@ static int vbsf_inode_create(struct inod
+  * @param   mode    file mode
+  * @returns 0 on success, Linux error code otherwise
+  */
+-#if RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99) || defined(DOXYGEN_RUNNING)
++#if RTLNX_VER_MIN(6,15,0)
++static struct dentry *vbsf_inode_mkdir(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
++#elif RTLNX_VER_MIN(6,3,0) || RTLNX_RHEL_RANGE(9,6, 9,99) || defined(DOXYGEN_RUNNING)
+ static int vbsf_inode_mkdir(struct mnt_idmap *idmap, struct inode *parent, struct dentry *dentry, umode_t mode)
+ #elif RTLNX_VER_MIN(5,12,0)
+ static int vbsf_inode_mkdir(struct user_namespace *ns, struct inode *parent, struct dentry *dentry, umode_t mode)
+@@ -1098,14 +1100,21 @@ static int vbsf_inode_mkdir(struct inode
+ static int vbsf_inode_mkdir(struct inode *parent, struct dentry *dentry, int mode)
+ #endif
+ {
++    int ret;
+     TRACE();
+     AssertMsg(!(mode & S_IFMT) || (mode & S_IFMT) == S_IFDIR, ("0%o\n", mode));
+-    return vbsf_create_worker(parent, dentry, (mode & ~S_IFMT) | S_IFDIR,
++
++    ret = vbsf_create_worker(parent, dentry, (mode & ~S_IFMT) | S_IFDIR,
+                                 SHFL_CF_ACT_CREATE_IF_NEW
+                               | SHFL_CF_ACT_FAIL_IF_EXISTS
+                               | SHFL_CF_ACCESS_READWRITE
+                               | SHFL_CF_DIRECTORY,
+                               false /*fStashHandle*/, false /*fDoLookup*/, NULL /*phHandle*/, NULL /*fCreated*/);
++#if RTLNX_VER_MIN(6,15,0)
++    return ERR_PTR(ret);
++#else
++    return ret;
++#endif
+ }
+ 
+ 

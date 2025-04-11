@@ -54,9 +54,12 @@
 	%define _udevrulesdir %{_prefix}/lib/udev/rules.d
 %endif
 
+# If you want to disable building Python parts, just set this to %%nil
 %global mypython python311
+%if "%mypython" != ""
 %global __mypython %{expand:%%__%{mypython}}
 %global mypython_sitelib %{expand:%%%{mypython}_sitelib}
+%endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
 Version:        7.1.6a
@@ -123,6 +126,11 @@ Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch14:        kernel-6-14.patch
+Patch15:        kernel-6-15-EXTRA_CFLAGS.patch
+Patch16:        kernel-6-15-timer.patch
+Patch17:        kernel-6-15-mkdir.patch
+Patch18:        kernel-6-15-mode_valid.patch
+Patch19:        kernel-6-15-fb_probe.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -164,10 +172,12 @@ BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  libzio-devel
 BuildRequires:  lzfse
 BuildRequires:  lzfse-devel
+%if "%mypython" != ""
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{mypython}-devel
 BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-pip
+%endif
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  rpm
 BuildRequires:  sed
@@ -333,6 +343,7 @@ Requires(pre):  net-tools-deprecated
 %description guest-tools
 VirtualBox guest addition tools.
 
+%if "%mypython" != ""
 %package -n %{mypython}-%{name}
 Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
@@ -349,12 +360,15 @@ Obsoletes:      python3-%{name}-ose < %{version}
 
 %description -n %{mypython}-%{name}
 Python XPCOM bindings to %{name}. Used e.g. by vboxgtk package.
+%endif
 
 %package devel
 Summary:        Devel files for %{name}
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+%if "%mypython" != ""
 Requires:       %{mypython}-%{name} = %{version}
+%endif
 #rename from "ose" version:
 Provides:       %{name}-ose-devel = %{version}
 Obsoletes:      %{name}-ose-devel < %{version}
@@ -463,6 +477,9 @@ rm -rf src/libs/{libpng-*,libxml2-*,libxslt-*,zlib-*,boost-*}
     --disable-java \
     --disable-docs \
     --enable-webservice \
+%if "%mypython" == ""
+    --disable-python \
+%endif
     --with-makeself=%{_bindir}/true
 
 # configure actually warns we should source env.sh (which seems like it could influence the build...)
@@ -561,11 +578,11 @@ echo "entering virtualbox(-qt) install section"
 # copy the main files to %%{_vbox_instdir}
 pushd out/linux.*/release/bin
 cp -a VBoxManage VBoxHeadless VBoxSDL VBoxNetNAT VBoxAutostart VBoxVolInfo \
-	vboxshell.py VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
+	VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
 	VBoxDxVk.so UICommon.so vboximg-mount %{buildroot}%{_vbox_instdir}
-ls -al VBoxManage VBoxHeadless VBoxSDL VBoxNetNAT VBoxAutostart VBoxVolInfo \
-	vboxshell.py VBoxBalloonCtrl webtest VBoxDTrace VBoxDbg.so \
-	VBoxDxVk.so UICommon.so vboximg-mount 0755 || :
+%if "%mypython" != ""
+cp -a vboxshell.py %{buildroot}/%{_vbox_instdir}
+%endif
 # create links to vbox tools in PATH - they could be usefull for controlling vbox from command line
 ln -s %{_vbox_instdir}/VBoxManage		%{buildroot}%{_bindir}/VBoxManage
 ln -s %{_vbox_instdir}/VBoxHeadless 		%{buildroot}%{_bindir}/VBoxHeadless
@@ -651,6 +668,8 @@ allow = true
 EOF
 # install udev helper script for creating usb devices
 install -m 0755 -D src/VBox/Installer/linux/VBoxCreateUSBNode.sh %{buildroot}%{_vbox_instdir}/VBoxCreateUSBNode.sh
+
+%if "%mypython" != ""
 echo "entering python-virtualbox install section"
 pushd out/linux.*/release/bin/sdk/installer/python
 VBOX_INSTALL_PATH=%{_vbox_instdir} %{__mypython} vboxapisetup.py install --prefix=%{_prefix} --root=%{buildroot}
@@ -658,6 +677,7 @@ popd
 install -d -m 755 %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 cp -r out/linux.*/release/bin/sdk/bindings/xpcom/python %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom
 %py3_compile %{buildroot}%{_vbox_instdir}/sdk/bindings/xpcom/python
+%endif
 
 echo "entering virtualbox-devel install section"
 cp -r out/linux.*/release/bin/sdk/bindings/auth %{buildroot}%{_vbox_instdir}/sdk/bindings
@@ -793,7 +813,9 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxDTrace
 %{_vbox_instdir}/VBoxNetNAT
 %{_vbox_instdir}/VBoxVolInfo
+%if "%mypython" != ""
 %{_vbox_instdir}/vboxshell.py
+%endif
 %{_vbox_instdir}/VBoxSysInfo.sh
 %{_vbox_instdir}/VBoxDD2.so
 %{_vbox_instdir}/VBoxDD.so
@@ -916,6 +938,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %dir /media
 %endif
 
+%if "%mypython" != ""
 %files -n %{mypython}-%{name}
 %dir %{_vbox_instdir}/sdk
 %dir %{_vbox_instdir}/sdk/bindings
@@ -924,6 +947,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxPython*.so
 %{mypython_sitelib}/vboxapi-*.egg-info
 %{mypython_sitelib}/vboxapi/
+%endif
 
 %files devel
 %dir %{_vbox_instdir}/sdk

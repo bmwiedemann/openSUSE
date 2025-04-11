@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr  3 19:47:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Just use a wildcard for the dist-info metadata to make it
+  properly work on all setuptools versions.
+
+-------------------------------------------------------------------
+Tue Apr  1 12:52:41 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Wrap the metadata directory name in a distro-based conditional
+
+-------------------------------------------------------------------
+Tue Mar 25 04:34:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Tue Dec  3 09:42:44 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to version 2.10.1 (bsc#1234038, CVE-2024-53861):

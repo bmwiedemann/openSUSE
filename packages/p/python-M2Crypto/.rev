@@ -900,4 +900,16 @@ Update to 0.36.0:
 (🤖: Submission of python-M2Crypto via https://src.opensuse.org/pool/python-M2Crypto/pulls/2 by mcepl)</comment>
     <requestid>1246575</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>7c45e5709ebedebb00fca11935deed1a</srcmd5>
+    <version>0.44.0</version>
+    <time>1744382726</time>
+    <user>anag_factory</user>
+    <comment>- Allow for ambiguity in first letter of directories in
+  %{python_sitearch}.
+
+- Change macro to %{?sle15allpythons} so we build both Python 3.6
+  and Python 3.11 on SLE-15.</comment>
+    <requestid>1266446</requestid>
+  </revision>
 </revisionlist>

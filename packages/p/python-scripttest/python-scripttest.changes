@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:33:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * Python 3.6 or higher is now required
+  * The temporary file discovery logic was rewritten, thus it will
+    flag dangling temporary files more reliably
+  * Various metadata updates to reflect that scripttest is now a
+    PyPA project hosted on GitHub and ReadTheDocs
+  * Don't attempt to hash a named pipe to avoid indefinite hanging
+  * Include tests in source distributions
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

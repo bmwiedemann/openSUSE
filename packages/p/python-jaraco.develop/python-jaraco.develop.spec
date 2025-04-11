@@ -1,7 +1,7 @@
 #
 # spec file for package python-jaraco.develop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,6 +84,6 @@ Development utilities by jaraco
 %doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/jaraco/develop
-%{python_sitelib}/jaraco.develop-%{version}.dist-info
+%{python_sitelib}/jaraco[_.]develop-%{version}.dist-info
 
 %changelog

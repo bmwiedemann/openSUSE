@@ -1671,4 +1671,13 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1250267</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b1b94ef6ce77d1c54a6f6d6467ed559a</srcmd5>
+    <version>20.29.3</version>
+    <time>1744382683</time>
+    <user>anag_factory</user>
+    <comment>- update to 20.29.3:
+  * Ignore unreadable directories in PATH</comment>
+    <requestid>1265494</requestid>
+  </revision>
 </revisionlist>

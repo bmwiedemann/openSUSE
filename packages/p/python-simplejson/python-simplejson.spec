@@ -1,7 +1,7 @@
 #
 # spec file for package python-simplejson
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-simplejson
-Version:        3.19.3
+Version:        3.20.1
 Release:        0
 Summary:        Extensible JSON encoder/decoder for Python
 License:        AFL-2.1 OR MIT
@@ -26,8 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/simplejson/simplejson
 Source:         https://files.pythonhosted.org/packages/source/s/simplejson/simplejson-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %python_subpackages
@@ -42,10 +44,10 @@ a speed boost.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf %{buildroot}%{$python_sitearch}/simplejson/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -55,6 +57,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.txt README.rst
-%{python_sitearch}/simplejson*
+%{python_sitearch}/simplejson
+%{python_sitearch}/simplejson-%{version}.dist-info
 
 %changelog

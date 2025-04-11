@@ -1,7 +1,7 @@
 #
 # spec file for package qFlipper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Graphical desktop application for updating Flipper Zero firmware
 License:        GPL-3.0-or-later
 URL:            https://github.com/flipperdevices/qFlipper
 Source:         %{name}-%{version}.tar.xz
+Patch0:         ==.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-base-devel >= 6.3
@@ -76,7 +77,7 @@ Application for updating Flipper Zero firmware - udev rules.
 The user must be in the dialout group.
 
 %prep
-%setup -q
+%autosetup -p1
 gitver=$(echo %{version} | cut -d+ -f1)
 gitdate=$(echo %{version} | tr '.' ' ' | rev | cut -d' ' -f2 | rev)
 githash=$(echo %{version} | tr '.' ' ' | rev | cut -d' ' -f1 | rev)

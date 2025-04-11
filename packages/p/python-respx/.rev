@@ -108,4 +108,19 @@
     * respx-pr278-httpx0.28.patch gh#lundberg/respx#278</comment>
     <requestid>1230776</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>babb1dab29beeadf4cb03abae647f3e3</srcmd5>
+    <version>0.22.0</version>
+    <time>1744382679</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.22.0:
+  * Support HTTPX 0.28.0, thanks @ndhansen
+  * Drop support for Python 3.7, to align with HTTPX 0.25.0
+  * Update CI test to not fail fast and cancel workflows
+  * Add dependabot to check GitHub actions packages
+  * Add Python 3.13 to test suite
+- drop respx-pr267-httpx0.28.patch,
+  respx-pr278-httpx0.28.patch: upstream</comment>
+    <requestid>1265489</requestid>
+  </revision>
 </revisionlist>

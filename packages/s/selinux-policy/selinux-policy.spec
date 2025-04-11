@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250403
+Version:        20250410
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -419,6 +419,26 @@ fi
 if [ "$1" -eq 1 ]; then
   pam-config -a --selinux
 fi
+%if 0%{?is_opensuse}
+# 2025-04-07 cahu:
+# Extremely ugly Workaround for t-u module removal issue
+# (see bsc#1221342 bsc#1238062 bsc#1230643 bsc#1230938)
+# This removes empty module folders in /var/lib/selinux that
+# are created by microOS' create-dirs-from-rpmdb on rollback when the
+# current policy has dropped the module that was still contained in an older
+# snapshot. That means the removed module will also NOT be contained
+# in previous snapshots. Also this can cause warnings during install due to rpmdb
+# still containing the path that was deleted, which should go away in the subsequent
+# installations.
+# Can be dropped once PED-12491 is implemented.
+if [ -n "${TRANSACTIONAL_UPDATE}" ]; then
+  for p in targeted minimum mls; do
+    if [ -d %{_sharedstatedir}/selinux/$p/active/modules/100 ]; then
+      find %{_sharedstatedir}/selinux/$p/active/modules/100 -type d -empty -delete -print
+    fi
+  done
+fi
+%endif
 exit 0
 
 %define post_un() \

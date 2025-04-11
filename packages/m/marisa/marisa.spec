@@ -16,7 +16,7 @@
 #
 
 
-%bcond_with python3
+%bcond_without python
 %bcond_with perl
 %bcond_with ruby
 Name:           marisa
@@ -34,17 +34,23 @@ BuildRequires:  libtool
 BuildRequires:  perl
 %endif
 BuildRequires:  pkg-config
-%if %{with python3}
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+%if %{with python}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
+BuildRequires:  swig
 %endif
 %if %{with ruby}
 BuildRequires:  ruby-devel
 %endif
-BuildRequires:  swig
 Provides:       marisa-trie = %{version}
 Obsoletes:      marisa-trie < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+
+%if %{with python}
+%define python_subpackage_only 1
+%python_subpackages
+%endif
 
 %description
 Matching Algorithm with Recursively Implemented StorAge (MARISA) is a
@@ -74,16 +80,17 @@ Requires:       %{name} = %{version}
 Perl bindings for %{name}.
 
 %endif
-%if %{with python3}
-%package -n python3-marisa
-Summary:        Python3 bindings for %{name}
+
+%if %{with python}
+%package -n python-marisa
+Summary:        Python bindings for %{name}
 Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
-%description -n python3-marisa
-Python3 bindings for %{name}.
-
+%description -n python-marisa
+Python bindings for %{name}.
 %endif
+
 %if %{with ruby}
 %package -n ruby-marisa
 Summary:        Ruby bindings for %{name}
@@ -95,21 +102,21 @@ Requires:       ruby
 Ruby bindings for %{name}.
 %endif
 
-%package devel
+%package -n marisa-devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 %if %{with perl}
 Requires:       perl-marisa = %{version}
 %endif
-%if %{with python3}
+%if %{with python}
 Requires:       python3-marisa = %{version}
 %endif
 %if %{with ruby}
 Requires:       ruby-marisa = %{version}
 %endif
 
-%description devel
+%description -n marisa-devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
@@ -130,12 +137,12 @@ popd
 %endif
 
 # build python
-%if %{with python3}
+%if %{with python}
 pushd bindings/python
 swig -Wall -c++ -python -py3 -outdir . ../marisa-swig.i
 mv ../marisa-swig_wrap.cxx .
-python3 setup.py build_ext --include-dirs=../../include --library-dirs=../../lib/marisa/.libs
-python3 setup.py build
+%python_exec setup.py build_ext --include-dirs=../../include --library-dirs=../../lib/marisa/.libs
+%python_exec setup.py build
 popd
 %endif
 
@@ -160,10 +167,9 @@ popd
 %endif
 
 # install python
-%if %{with python3}
+%if %{with python}
 pushd bindings/python
-python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
-rm -rf %{buildroot}%{python3_sitearch}/__pycache__
+%python_exec setup.py install --prefix=%{_prefix} --root=%{buildroot}
 popd
 %endif
 
@@ -205,13 +211,15 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %{rb_vendorarchdir}/%{name}.so
 
 %endif
-%if %{with python3}
-%files -n python3-marisa
+%if %{with python}
+%files %{python_files marisa}
 %defattr(-,root,root)
-%{python3_sitearch}/_marisa.*.so
-%{python3_sitearch}/marisa.py
-%{python3_sitearch}/marisa-0.0.0-py%{py3_ver}.egg-info
+%{python_sitearch}/_marisa.*.so
+%{python_sitearch}/marisa.py
+%{python_sitearch}/marisa-0.0.0-py*.egg-info
+%{python_sitearch}/__pycache__/marisa.cpython-*.pyc
 %endif
+
 %if %{with perl}
 %files -n perl-marisa
 %defattr(-,root,root)
@@ -221,7 +229,7 @@ sed -i '1s/^=head2 .*:/=head2/' %{buildroot}%{perl_archlib}/perllocal.pod
 %{perl_vendorarch}/marisa.pm
 %endif
 
-%files devel
+%files -n marisa-devel
 %defattr(-,root,root)
 %{_includedir}/%{name}
 %{_includedir}/%{name}.h

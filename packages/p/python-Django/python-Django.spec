@@ -21,7 +21,7 @@
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.1.7
+Version:        5.1.8
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
@@ -141,6 +141,6 @@ export PATH=%{_libdir}/chromium:$PATH
 %python_alternative %{_bindir}/django-admin
 %{_datadir}/bash-completion/completions/django_bash_completion-%{python_bin_suffix}.sh
 %{python_sitelib}/django
-%{python_sitelib}/Django-%{version}*-info
+%{python_sitelib}/[dD]jango-%{version}*-info
 
 %changelog

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr  7 14:19:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.8
+  * CVE-2025-27556: Potential denial-of-service vulnerability in 
+    LoginView, LogoutView, and set_language() on Windows
+  * Fixed a regression in Django 5.1.7 where the removal of the single_object 
+    parameter unintentionally altered the signature and return type of 
+    LogEntryManager.log_actions()
+
+-------------------------------------------------------------------
+Sun Mar 30 08:28:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update filelist to be compatible with newer setuptools 
+
+-------------------------------------------------------------------
 Tue Mar 18 13:01:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.1.7 (bsc#1239052)

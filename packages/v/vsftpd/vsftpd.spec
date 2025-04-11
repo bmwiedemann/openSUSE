@@ -193,7 +193,7 @@ tests.
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP
 rm dummyinc/sys/capability.h vsf_findlibs.sh
-make CFLAGS="%{optflags} -DOPENSSL_NO_SSL_INTERN -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -fPIE -fstack-protector --param=ssp-buffer-size=4 %{seccomp_opts}" \
+make CFLAGS="%{optflags} -std=gnu17 -DOPENSSL_NO_SSL_INTERN -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -fPIE -fstack-protector --param=ssp-buffer-size=4 %{seccomp_opts}" \
      LIBS="-lpam -lcap -lssl -lcrypto"
 
 %install

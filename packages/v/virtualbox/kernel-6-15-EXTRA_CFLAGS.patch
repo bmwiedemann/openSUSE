@@ -1,0 +1,23 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: Use ccflags-y instead of EXTRA_CFLAGS
+References: kernel-6.15 build fix
+Patch-mainline: no
+
+EXTRA_CFLAGS were removed in:
+e966ad0edd00 kbuild: remove EXTRA_*FLAGS support
+
+So set ccflags-y (supported in new kernels) too (support also old kernels).
+---
+ src/VBox/Installer/linux/Makefile-footer.gmk |    1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/VBox/Installer/linux/Makefile-footer.gmk
++++ b/src/VBox/Installer/linux/Makefile-footer.gmk
+@@ -115,6 +115,7 @@ VBOXMOD_EXT := ko
+ 
+ # build defs
+ EXTRA_CFLAGS += $(VBOXMOD_CFLAGS) $(addprefix -I,$(KERN_INCL) $(VBOXMOD_INCL)) $(VBOXMOD_0_KFLAGS) $(KDEBUG)
++ccflags-y += $(EXTRA_CFLAGS)
+ $(VBOXMOD_0_TARGET)-y := $(VBOXMOD_OBJS)
+ obj-m += $(VBOXMOD_0_TARGET).o
+ 
