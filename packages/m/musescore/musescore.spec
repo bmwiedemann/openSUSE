@@ -62,7 +62,8 @@ Source2:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General
 Source3:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General_Readme.md
 Source4:        https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/MuseScore_General.sf3
 Source5:        README.SUSE
-
+# PATCH-FIX-UPSTREAM
+Patch0:         musescore-qt69.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
