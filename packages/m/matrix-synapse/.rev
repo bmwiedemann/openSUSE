@@ -1269,4 +1269,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.128.0</comment>
     <requestid>1267985</requestid>
   </revision>
+  <revision rev="129" vrev="2">
+    <srcmd5>bf7731be546732a75dad2de62d918902</srcmd5>
+    <version>1.128.0</version>
+    <time>1744406567</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1268666 from darix
+
+- unlock the rust related buildrequires</comment>
+    <requestid>1268667</requestid>
+  </revision>
 </revisionlist>

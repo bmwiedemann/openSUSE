@@ -185,6 +185,10 @@ BuildRequires:  %{use_python}-pip
 BuildRequires:  %{use_python}-poetry-core >= 1.1.0
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  %{use_python}-wheel
+#global rust_version 1.84
+%if "%{?rust_version}" == ""
+BuildRequires:  cargo
+%else
 # workaround for:
 # zypper in cargo1.79 cargo cargo-packaging
 # Problem: 1: the to be installed cargo-1.81.0-150500.27.21.1.x86_64 obsoletes 'cargo1.79' provided by the to be installed cargo1.79-1.79.0-150500.11.3.1.x86_64
@@ -193,8 +197,8 @@ BuildRequires:  %{use_python}-wheel
 #
 #!BuildIgnore: cargo
 #!BuildIgnore: rust
-%global rust_version 1.82
 BuildRequires:  cargo%{rust_version}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
@@ -204,7 +208,7 @@ BuildRequires:  unzip
 %{?systemd_ordering}
 %{sysusers_requires}
 %requires_peq   %{use_python}-base
-BuildRequires:  (%{use_python}-setuptools-rust >= 1.3 with %{use_python}-setuptools-rust =< 1.11)
+BuildRequires:  %{use_python}-setuptools-rust >= 1.3
 # NOTE: Keep this is in the same order as pyproject.toml.
 # some version locks based on poetry.lock
 BuildRequires:  %{use_python}-Jinja2 >= %{Jinja2_version}
