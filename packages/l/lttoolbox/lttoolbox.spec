@@ -1,7 +1,7 @@
 #
 # spec file for package lttoolbox
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,14 @@
 
 Name:           lttoolbox
 %define lname   liblttoolbox3
-Summary:        Toolbox for lexical processing and morphological analysis
-Version:        3.7.6
+Version:        3.8.0
 Release:        0
+Summary:        Toolbox for lexical processing and morphological analysis
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://apertium.org/
-
 Source:         https://github.com/apertium/lttoolbox/archive/v%version.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  utfcpp-devel
@@ -73,20 +71,16 @@ This subpackage contains the development files for lttoolbox.
 %autosetup -p1
 
 %build
-autoreconf -fiv
-# includedir intentional, cf. bugzilla.opensuse.org/795968
-%configure --disable-static --includedir="%_includedir/%name" CPPFLAGS="-I%_includedir/utf8cpp"
-%make_build
+%cmake
+%cmake_build
 
 %install
-%make_install
-rm -f "%buildroot/%_libdir"/*.la
+%cmake_install
 
 %check
-%make_build check
+%ctest
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/lt-*
@@ -94,7 +88,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %_datadir/lttoolbox
 %_mandir/man1/lsx-*.1*
 %_mandir/man1/lt-*.1*
-%doc README
+%doc README.md
 %license COPYING
 
 %files -n %lname
