@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:27:46 CEST 2025 - ro@suse.de
+
+- update chromium-121-rust-clang_lib.patch to apply cleanly 
+
+-------------------------------------------------------------------
+Wed Apr  9 01:09:30 CEST 2025 - ro@suse.de
+
+- Chromium 135.0.7049.84
+  (stable release 2025-04-08) (boo#1240968)
+  * CVE-2025-3066: Use after free in Site Isolation 
+
+-------------------------------------------------------------------
 Fri Apr  4 10:30:57 CEST 2025 - ro@suse.de
 
 - add patch chromium-135-add_map_droppable.patch

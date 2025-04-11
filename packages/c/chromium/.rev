@@ -5549,4 +5549,16 @@ boo#1224178</comment>
   (boo#1238826, boo#1239780)</comment>
     <requestid>1267101</requestid>
   </revision>
+  <revision rev="458" vrev="1">
+    <srcmd5>a1e3fe590c83dcb6795ebd4e0d12e6d2</srcmd5>
+    <version>135.0.7049.84</version>
+    <time>1744382807</time>
+    <user>anag_factory</user>
+    <comment>- update chromium-121-rust-clang_lib.patch to apply cleanly 
+
+- Chromium 135.0.7049.84
+  (stable release 2025-04-08) (boo#1240968)
+  * CVE-2025-3066: Use after free in Site Isolation</comment>
+    <requestid>1268450</requestid>
+  </revision>
 </revisionlist>
