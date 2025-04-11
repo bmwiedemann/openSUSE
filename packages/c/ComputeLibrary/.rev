@@ -227,4 +227,22 @@
     <comment></comment>
     <requestid>1239773</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>692a0d273212f7111f93531996e825fb</srcmd5>
+    <version>25.03.1</version>
+    <time>1744382796</time>
+    <user>anag_factory</user>
+    <comment>-  Update to 25.03.1:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v25.03.1
+-  Update to 25.03:
+  * Public major release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v25.03
+</comment>
+    <requestid>1268402</requestid>
+  </revision>
 </revisionlist>
