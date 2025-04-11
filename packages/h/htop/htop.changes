@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:08:22 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.1:
+  * Support for PMAPI v3 for PCP
+  * PCP code cleanups
+  * Proper checks for strchrnul
+  * Code cleanup in the NetworkIOMeter
+  * Improved documentation for the --user option
+  * Display stuck processes on Darwin
+  * Handle issues when the monotonic clock runs backwards
+  * Fix builds using native curses on NetBSD
+
+-------------------------------------------------------------------
 Wed Mar 26 09:12:28 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4.0:

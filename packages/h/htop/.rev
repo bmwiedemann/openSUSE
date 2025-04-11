@@ -663,4 +663,20 @@
   * Update compat check for C23 compilers</comment>
     <requestid>1256151</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7b443088424ff111e83d9e50ec4540e4</srcmd5>
+    <version>3.4.1</version>
+    <time>1744382998</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4.1:
+  * Support for PMAPI v3 for PCP
+  * PCP code cleanups
+  * Proper checks for strchrnul
+  * Code cleanup in the NetworkIOMeter
+  * Improved documentation for the --user option
+  * Display stuck processes on Darwin
+  * Handle issues when the monotonic clock runs backwards
+  * Fix builds using native curses on NetBSD</comment>
+    <requestid>1268560</requestid>
+  </revision>
 </revisionlist>
