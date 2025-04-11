@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 11 09:08:14 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Updated spec to require the use of the new Ansible version.
+- Upgraded the certificate role to version 1.3.9:
+  - Added new variables for SLES_SAP_15 and SLES_SAP_16.
+  - Updated Ansible lint version to v25.
+  - Updated CI pipeline with new test requirements.
+
+-------------------------------------------------------------------
 Thu Jan 30 13:45:48 UTC 2025 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - 1.0.0

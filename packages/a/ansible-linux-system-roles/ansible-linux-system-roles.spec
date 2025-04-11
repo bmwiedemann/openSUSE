@@ -13,6 +13,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/\
 
+
 # Define individual versions for each role
 %global firewall_version 1.8.2
 %global timesync_version 1.9.2
@@ -21,7 +22,7 @@
 %global crypto_policies_version 1.4.2
 %global systemd_version 1.3.1
 %global ha_cluster_version 1.22.1
-%global certificate_version 1.3.8
+%global certificate_version 1.3.9
 %global mssql_version 2.5.2
 %global suseconnect_version 1.0.0
 %global auto_maintenance_version 1.94.2
@@ -50,31 +51,13 @@ Source999:      galaxy.yml
 
 BuildArch:      noarch
 
-# Python macros are required for python detection
-BuildRequires:  python-rpm-macros
-BuildRequires:  python311-ruamel.yaml
+BuildRequires:  python3-ruamel.yaml
+BuildRequires:  python3-Jinja2
 
-# Minimum python version
-%{?sle15_python_module_pythons}
-BuildRequires: %{python_module base >= 3.11}
-Requires:      %{python_module base >= 3.11}
-
-# Select correct supported Ansible
-%if 0%{?suse_version} >= 1600
-Requires:      ansible-core
-Requires:      ansible
-BuildRequires: ansible-core
-BuildRequires: ansible
-%else
-# Only Ansible 9 is supported on SLES 15
-Requires:      ansible-core-2.16
-Requires:      ansible-9
-BuildRequires: ansible-core-2.16
-BuildRequires: ansible-9
-%endif
-
-# Do not check any files in collections for requires
-%global __requires_exclude_from ^%{python311_sitelib}/.*$
+Requires:       ansible-core >= 2.16
+Requires:       ansible >= 9
+BuildRequires:  ansible-core >= 2.16
+BuildRequires:  ansible >= 9
 
 %description
 Linux System Roles is a collection of Ansible roles and modules that provide a
@@ -83,7 +66,6 @@ roles are designed to be used with Ansible to configure and maintain various
 aspects of a Linux system.
 
 %prep
-
 # Define roles with their versions
 roles=(
   "firewall:%{firewall_version}"
@@ -108,7 +90,6 @@ for role_entry in "${roles[@]}"; do
   role_name=${role_entry%%:*}
   role_version=${role_entry##*:}
 
-  # Extract all roles uniformly
   tar -xzf %{_sourcedir}/${role_name}-${role_version}.tar.gz -C %{_builddir}/roles \
       --transform="s/^ansible-${role_name}-${role_version}-suse/${role_name}/"
 done
@@ -153,8 +134,14 @@ for role_entry in "${roles[@]}"; do
     continue
   fi
 
+  # Skip certificate role for SLE15
+  if [[ "${role_name}" == "certificate" && 0%{?suse_version} -lt 1600 ]]; then
+    echo "Skipping certificate role for SLE15..."
+    continue
+  fi
+
   # Process the role with lsr_role2collection.py
-  python3.11 %{_builddir}/roles/auto_maintenance/lsr_role2collection.py \
+  python3 %{_builddir}/roles/auto_maintenance/lsr_role2collection.py \
       --namespace suse \
       --collection linux_system_roles \
       --role ${role_name} \
