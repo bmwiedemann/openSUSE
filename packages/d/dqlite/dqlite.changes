@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Mar  8 13:18:33 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.17.2:
+  * In replication scenario, entry_sm gets updated every time it is used
+  * Add an API for querying the last raft log entry
+  * Fix the build when liblz4 is missing and test it
+  * Propagate raft_recover errors and improve tracing
+  * Remove option to link separately-built libraft
+  * Remove dqlite-next build configuration
+  * Start instrumenting existing code with state machines
+  * Snapshot checkpointing
+  * Refactor leader.c to fix stack growth in handle_exec_sql
+  * Fix frames leak when VfsPoll fails
+
+-------------------------------------------------------------------
 Tue Aug  6 15:40:20 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.16.7:
