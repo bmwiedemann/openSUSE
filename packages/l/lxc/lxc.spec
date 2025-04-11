@@ -18,7 +18,7 @@
 
 %define         shlib_version 1
 Name:           lxc
-Version:        6.0.3
+Version:        6.0.4
 Release:        0
 URL:            http://linuxcontainers.org/
 Summary:        Userspace tools for Linux kernel containers

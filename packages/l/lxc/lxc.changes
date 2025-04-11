@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Apr  5 18:17:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.4:
+  This is the fourth bugfix release for LXC 6.0 which is supported
+  until June 2029.
+  * Changes
+    As usual this bugfix releases focus on stability and hardening.
+    Some of the highlights for this release are:
+    - Switch to the Zabbly MAC address prefix
+    - New LXC_IPV6_ENABLE lxc-net configuration key to turn IPv6
+      on/off
+    - Fixed ability to attach to application containers with
+      non-root entry point
+  * Detailed changelog
+    - LXC attach should exit on SIGCHLD
+    - confile-vlanid: undefined is not a zero value
+    - conf: log name of invalid capability in error
+    - dbus: replace hardcoded dbus address with environment
+      variable
+    - conf: warn when capabilities are disabled or libcap is not
+      found
+    - lxc/attach: Revert "- LXC attach should exit on SIGCHLD"
+    - config-bcast: fix incorrect broadcast address calculation
+    - github: Switch to native arm64 runners
+    - Added LXC_IPV6_ENABLE option for lxc-net to enable or disable
+      IPv6
+    - sysconfig/lxc: remove false comment
+    - global: Switch MAC generation to Zabbly prefix
+    - global: Switch to new MAC prefix
+    - github: Add packaging workflow
+    - tools/lxc_attach: fix ENFORCE_MEMFD_REXEC checks
+    - lxc/conf: handle rootfs open_at error in lxc_mount_rootfs
+    - lxc/caps: fix open /proc/sys/kernel/cap_last_cap
+    - lxc/start: do prctl(PR_SET_DUMPABLE) after last uid/gid
+      switch
+
+-------------------------------------------------------------------
 Fri Dec 20 05:52:32 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.3:
