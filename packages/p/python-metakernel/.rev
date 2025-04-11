@@ -208,4 +208,16 @@
   * Clean up configurability handling and docs</comment>
     <requestid>1225639</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>38f4dfd049b433fc70ce68212ef1b8f2</srcmd5>
+    <version>0.30.3</version>
+    <time>1744392444</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.30.3:
+  * Add ipython 9 compat #290 (@blink1073)
+  * Fix min version test #278 (@blink1073)
+
+  gh#Calysto/metakernel#279</comment>
+    <requestid>1268617</requestid>
+  </revision>
 </revisionlist>

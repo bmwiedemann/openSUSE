@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:45:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Fix incorrect getFinalizer() reference in
+    setPollFDNotifiers()
+- update to 3.3.0:
+  * Fix finalizer registration errors on pypi by using a thread-
+    safe sequential number generator instead of relying on object
+    id unicity and timely finalizer triggering.
+
+-------------------------------------------------------------------
 Wed Jan 22 12:50:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.2.0

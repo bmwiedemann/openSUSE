@@ -82,4 +82,24 @@
 </comment>
     <requestid>1225204</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>898bbb3b77df8195909902e3a04466f5</srcmd5>
+    <version>1.20.4</version>
+    <time>1744392443</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.20.4:
+  * Fix regression introduced in 1.20.3 that prevented using
+    `auto_now` and `auto_now_add` fields with seq or callable.
+  * Fix support of `auto_now` and `auto_now_add` fields in
+    combination with `_fill_optional`
+  * Isolate Recipe defaults to prevent modification via instances
+  * Fix setting GFK parameter by a callable
+  * Fix regression forbidding using Proxy models as GFK
+  * docs: Add missing doc on `_refresh_after_create` option
+  * Fix `Recipe.prepare` without `_quantity` (on one-to-one
+    relation)
+  * Remove deprecation warning of
+    `datetime.datetime.utcfromtimestamp`.</comment>
+    <requestid>1268609</requestid>
+  </revision>
 </revisionlist>

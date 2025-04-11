@@ -17,7 +17,7 @@
 
 
 Name:           python-libusb1
-Version:        3.2.0
+Version:        3.3.1
 Release:        0
 Summary:        Python wrapper for libusb-1.0
 # Relicensed from GPL to LGPLv2.1+ in May 2015

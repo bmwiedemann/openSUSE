@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:46:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.4:
+  * Fix regression introduced in 1.20.3 that prevented using
+    `auto_now` and `auto_now_add` fields with seq or callable.
+  * Fix support of `auto_now` and `auto_now_add` fields in
+    combination with `_fill_optional`
+  * Isolate Recipe defaults to prevent modification via instances
+  * Fix setting GFK parameter by a callable
+  * Fix regression forbidding using Proxy models as GFK
+  * docs: Add missing doc on `_refresh_after_create` option
+  * Fix `Recipe.prepare` without `_quantity` (on one-to-one
+    relation)
+  * Remove deprecation warning of
+    `datetime.datetime.utcfromtimestamp`.
+
+-------------------------------------------------------------------
 Wed Nov 13 05:08:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.20.0:

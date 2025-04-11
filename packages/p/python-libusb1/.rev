@@ -113,4 +113,18 @@
     <comment></comment>
     <requestid>1239521</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>99aeeefca88a41f3c7d1b3a5b242cd7c</srcmd5>
+    <version>3.3.1</version>
+    <time>1744392442</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.1:
+  * Fix incorrect getFinalizer() reference in
+    setPollFDNotifiers()
+- update to 3.3.0:
+  * Fix finalizer registration errors on pypi by using a thread-
+    safe sequential number generator instead of relying on object
+    id unicity and timely finalizer triggering.</comment>
+    <requestid>1268608</requestid>
+  </revision>
 </revisionlist>
