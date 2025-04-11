@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/sigrokproject/libsigrok.git</param>
+              <param name="changesrevision">f06f788118191d19fdbbb37046d3bd5cec91adb1</param></service></servicedata>

@@ -1,7 +1,7 @@
 #
 # spec file for package libsigrok
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libsigrok
-Version:        0.5.2
+Version:        0.6.0~git20241020.f06f788
 Release:        0
 %define libname %{name}4
 %define libcxxname libsigrokcxx4
@@ -25,11 +25,8 @@ Summary:        API for talking to logic analyzer hardware
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            http://sigrok.org
-Source0:        http://sigrok.org/download/source/libsigrok/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        sigrok-mime.xml
-Patch0:         0001-Use-pkg-config-for-rpc-library-detection.patch
-Patch1:         LTO-linking-fix.patch
-Patch2:         0001-tests-strutil-use-ck_assert.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -82,8 +79,8 @@ Summary:        Data files for libsigrok
 Group:          Productivity/Scientific/Electronics
 BuildArch:      noarch
 Requires:       hicolor-icon-theme
-Requires(post):    shared-mime-info
-Requires(postun):  shared-mime-info
+Requires(post): shared-mime-info
+Requires(postun): shared-mime-info
 
 %description    data
 libsigrok is a shared library written in C which provides the basic API
@@ -106,10 +103,9 @@ libraries.
 
 %prep
 %autosetup -p1
-# avoid autoconf/automake rerun
-touch aclocal.m4 Makefile.in configure
 
 %build
+autoreconf -fvi
 %configure \
         --disable-static \
         --enable-fx2lafw

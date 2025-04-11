@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:52:46 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix version, the library identifies itself as 0.6.0. This is
+  also in line with libsigrokdecode 0.6.0~git.
+
+-------------------------------------------------------------------
+Thu Apr 03 07:11:06 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- switch to git snapshot, there are no releases for years
+- Update to version 0.5.2+git20241020.f06f7881:
+  * configure: Also test for new "check" option
+  * configure: Make dependency error message more explicit
+  * configure: differ between check and yes/no
+  * input/vcd: Add parsing support for SV 'logic' type
+  * input/vcd: Add option to manually specify & enforce a samplerate
+  * bkprecision-1856d: Add implementation
+  * bkprecision-1856d: Initial driver skeleton
+  * libsigrok.h: Add config keys SR_CONF_GATE_TIME and
+    SR_CONF_FREQUENCY_COUNTER
+  * link-mso19: Refactor to remove TRIG_UPDATE_* macros
+  * link-mso19: Make mso_calc_trigger_threshold() static
+- remove (in upstream):
+  * 0001-Use-pkg-config-for-rpc-library-detection.patch
+  * 0001-tests-strutil-use-ck_assert.patch
+  * LTO-linking-fix.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 06:52:30 UTC 2020 - Jiri Slaby <jslaby@suse.com>
 
 - add 0001-tests-strutil-use-ck_assert.patch to fix build
