@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:18:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.2:
+  * 5-0, 5-0 HotFix!
+    It looks like we've broken a few (more) things in the clean up
+    process
+    This is what you get for trying to refresh a ~10 year old code
+    base
+    Apologizes for the disruption in the farce. Hopefully much
+    happier on v0.50.2...
+    Are we there yet? Crossing fingers AND toes...
+  * Resolved Issues
+    - #3267 Show some output or message when no resources are found
+    - #3266 Command alias :dp fails with "no resource meta defined
+      for deployments" error
+    - #3264 can't execute get(y) or describe(d) in StorageClass
+      view
+    - #3260 yaml view of pod will crash the app (Boom!! cannot deep
+      copy int. (Maybe??)
+  * Dependencies
+    - chore(deps): bump github.com/fsnotify/fsnotify from 1.8.0 to
+      1.9.0 (#3249)
+    - chore(deps): bump github.com/anchore/syft from 1.21.0 to
+      1.22.0 (#3250)
+    - chore(deps): bump golang from 1.24.1-alpine3.21 to
+      1.24.2-alpine3.21 (#3251)
+    - chore(deps): bump golang.org/x/text from 0.23.0 to 0.24.0
+      (#3252)
+
+-------------------------------------------------------------------
 Thu Apr 10 08:46:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.1:
