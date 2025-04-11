@@ -16,7 +16,7 @@
 #
 
 
-%global base_version 2.9.1
+%global base_version 2.9.2
 
 %global prusa_slicer_version %{base_version}
 %global prusa_slicer_tarball_version %{base_version}
@@ -47,8 +47,6 @@ Patch10:        PrusaSlicer-2.8.1-pr13761-fix-occtwrapper.patch
 Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch gh#prusa3d/PrusaSlicer#13885
 Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
-# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr14010-fix-curl.patch gh#prusa3d/PrusaSlicer#14010
-Patch14:        PrusaSlicer-2.9.0-pr14010-fix-curl.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13081-cgal6.0.patch gh#prusa3d/PrusaSlicer#13081
 Patch15:        PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14214-egl-support.patch gh#prusa3d/PrusaSlicer#14214
