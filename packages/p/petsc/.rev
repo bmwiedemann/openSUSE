@@ -398,4 +398,23 @@
     <comment></comment>
     <requestid>1266176</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>6857720a30d51d005138b9dd4968bdd3</srcmd5>
+    <version>3.23.0</version>
+    <time>1744382986</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.23.0:
+  * Long list of changes, see
+    &lt;https://petsc.org/release/changes/323/&gt;.
+- Add petsc-fix-libdir.patch Install libraries to system
+  arch compatible lib dir (e.g. 'lib64' for x86_64).
+- Drop and add hashbangs as required for non-exec and exec python
+  scripts respectively.
+- Implement a %check section and run make check.
+- Drop explicit specification of mpi library paths and allow
+  `%setup_openmpi` to export relevant paths.
+- Fix an incorrect file encoding.
+</comment>
+    <requestid>1268510</requestid>
+  </revision>
 </revisionlist>

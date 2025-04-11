@@ -2,6 +2,7 @@
 # spec file for package petsc
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Atri B. <badshah400@opensuse.org>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +22,7 @@
 
 # Please also update slepc, which is version locked with petsc
 %define pname petsc
-%define so_ver 3_22
+%define so_ver 3_23
 
 ExcludeArch:    s390 s390x
 
@@ -29,8 +30,6 @@ ExcludeArch:    s390 s390x
 %bcond_with hypre
 # Only available as openmpi flavor, and not in Factory
 %bcond_with pastix
-
-%define python_ver 3
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -48,23 +47,23 @@ ExclusiveArch:  do_not_build
 ExcludeArch:    %{ix86} %{arm}
 %endif
 
-%define package_name %{pname}%{?with_mpi:-%{mpi_flavor}}
-%define libname      lib%{pname}%{so_ver}%{?with_mpi:-%{mpi_flavor}}
-
 %if 0%{?mpi_flavor:1}
-%{bcond_without mpi}
+%bcond_without mpi
+%define mpi_suffix -%{mpi_flavor}
 %else
-%{bcond_with mpi}
+%bcond_with mpi
 %endif
+
+%define package_name %{pname}%{?mpi_suffix}
+%define libname      lib%{pname}%{so_ver}%{?mpi_suffix}
 
 %if %{without mpi}
-%define p_base %{_prefix}/
+%define p_prefix %{_prefix}/
 %else
-%define p_base %{_libdir}/mpi/gcc/%{mpi_flavor}/
+%define p_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}/
 %endif
-%define p_prefix %{p_libdir}/petsc/%{version}/%petsc_arch
-%define p_libdir %{p_base}%_lib
-%define p_include %{p_prefix}/include
+%define p_libdir %{p_prefix}%_lib
+%define p_include %{p_prefix}include
 
 %define petsc_arch linux-gnu-c-opt
 
@@ -72,49 +71,46 @@ Name:           %{package_name}
 Summary:        Portable Extensible Toolkit for Scientific Computation
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Version:        3.22.2
+Version:        3.23.0
 Release:        0
-
+URL:            https://www.mcs.anl.gov/petsc/
 Source:         https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-%{version}.tar.gz
 Patch0:         Remove-rpath-test.patch
 Patch1:         petsc-3.7-fix-pastix-detection.patch
 Patch2:         Allow-lib64-as-library-directory-for-scalapack.patch
-URL:            https://www.mcs.anl.gov/petsc/
-BuildRequires:  fdupes
-BuildRequires:  hwloc-devel
-BuildRequires:  pkg-config
-BuildRequires:  python3-base
-BuildRequires:  pkgconfig(yaml-0.1)
-
-BuildRequires:  Modules
+Patch3:         petsc-fix-libdir.patch
+BuildRequires:  bison
 BuildRequires:  blas-devel
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
+BuildRequires:  hdf5%{?mpi_suffix}-devel
+BuildRequires:  hwloc-devel
 BuildRequires:  lapack-devel
+BuildRequires:  pkg-config
+BuildRequires:  python3-base
 BuildRequires:  suitesparse-devel >= 5.6.0
-
+BuildRequires:  xz
+BuildRequires:  pkgconfig(valgrind)
+BuildRequires:  pkgconfig(yaml-0.1)
+BuildRequires:  pkgconfig(zlib)
+%if %{with hypre}
+BuildRequires:  hypre%{?mpi_suffix}-devel
+BuildRequires:  superlu-devel
+%endif
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}-devel
+BuildRequires:  %{mpi_flavor}-macros-devel
 BuildRequires:  blacs-%{mpi_flavor}-devel
-BuildRequires:  hdf5-%{mpi_flavor}-devel
- %if %{with hypre}
-BuildRequires:  hypre-%{mpi_flavor}-devel
-BuildRequires:  superlu-devel
- %endif
 BuildRequires:  ptscotch-%{mpi_flavor}-devel
 BuildRequires:  ptscotch-parmetis-%{mpi_flavor}-devel
-#!BuildIgnore:  metis-devel
+BuildRequires:  scalapack-%{mpi_flavor}-devel
  %if %{with pastix}
 BuildRequires:  pastix-%{mpi_flavor}-devel
  %endif
-BuildRequires:  scalapack-%{mpi_flavor}-devel
 %else
 BuildRequires:  metis-devel
 %endif
-
-BuildRequires:  valgrind-devel
-BuildRequires:  xz
-BuildRequires:  zlib-devel
 
 %description
 PETSc is a suite of data structures and routines for the scalable
@@ -125,7 +121,7 @@ differential equations.
 Summary:        PETSc shared libraries
 Group:          System/Libraries
 # Fixup wrong package name
-Conflicts:      libpetsc3%{?with_mpi:-%{mpi_flavor}}
+Conflicts:      libpetsc3%{?mpi_suffix}
 
 %description -n %{libname}
 PETSc is a suite of data structures and routines for the scalable
@@ -136,15 +132,17 @@ differential equations.
 Summary:        Devel files for petsc
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
-Requires:       Modules
+Requires:       hdf5%{?mpi_suffix}-devel
 Requires:       suitesparse-devel
 Requires:       pkgconfig(yaml-0.1)
+%if %{with hypre}
+Requires:       hypre%{?mpi_suffix}-devel
+Requires:       superlu-devel
+%endif
 %if %{without mpi}
 Requires:       metis-devel
 %else
 Requires:       blacs-%{mpi_flavor}-devel
-Requires:       hdf5-%{mpi_flavor}-devel
-Requires:       hypre-%{mpi_flavor}-devel
 Requires:       ptscotch-%{mpi_flavor}-devel
 Requires:       ptscotch-parmetis-%{mpi_flavor}-devel
 Requires:       scalapack-%{mpi_flavor}-devel
@@ -172,120 +170,90 @@ sed -i -e 's/MAKEFLAGS="[^"]*"//' lib/petsc/conf/rules
 # Fix shebangs in packaged scripts
 find src lib config share -type f -iname \*.py -exec sed -i \
   -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
-  -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
+  -e '1 s@#!.*env python@#!/usr/bin/python%{python3_version}@' \
   \{\} \;
 find lib/petsc/bin -type f -exec sed -i \
   -e '1 s@#!.*env sh@#!/usr/bin/sh@' \
   -e '1 s@#!.*env python3@#!/usr/bin/python3@' \
-  -e '1 s@#!.*env python@#!/usr/bin/python%{python_ver}@' \
+  -e '1 s@#!.*env python@#!/usr/bin/python%{python3_version}@' \
   \{\} \;
 
-%build
+# Add missing hashbangs for py scripts
+sed -E -i '1{s@^@#!%{_bindir}/python%{python3_version}\n@}' \
+  lib/petsc/bin/PetscBinaryIO*.py \
+  lib/petsc/bin/petsc_conf.py
 
+# Delete hashbang from non-exec script
+sed -E -i '1{\@#!.*@d}' share/petsc/bin/dmnetwork_view.py
+
+sed -E -i 's/\r$//' src/tao/leastsquares/tutorials/tomographyGenerateData.m
+
+%build
 export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
+export PETSC_LIB_DIR=%{p_libdir}
 export PETSC_ARCH=%petsc_arch
-%{?with_mpi:export LD_LIBRARY_PATH=%{p_libdir}}
+%{?with_mpi:%setup_openmpi}
 %ifarch ppc64le ppc64 s390 aarch64 x86_64
 export ARCHCFLAGS=-fPIC
 %endif
 
-python%{python_ver} ./config/configure.py \
+%{_bindir}/python%{python3_version} ./configure \
   --CFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
   --FFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
   --CXXFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
   --prefix=%{p_prefix} \
+  --with-batch=0 \
   --with-clanguage=C++ \
   --with-c-support \
   --with-fortran-interfaces=1 \
   --with-debugging=no \
-  --with-python-exec=python%{python_ver} \
-  --with-shared-libraries \
-  --with-batch=0 \
-  --with-yaml=1 \
-  --with-suitesparse=1 \
-  --with-suitesparse-lib=[%{_libdir}/libklu.so,%{_libdir}/libumfpack.so,%{_libdir}/libcholmod.so,%{_libdir}/libcolamd.so,%{_libdir}/libccolamd.so,%{_libdir}/libcamd.so,%{_libdir}/libamd.so,%{_libdir}/libspqr.so,%{_libdir}/libsuitesparseconfig.so] \
-  --with-suitesparse-include=%{_includedir}/suitesparse \
- %if %{without mpi}
-  --with-mpi=0 \
- %else
-  --with-mpi=1 \
-  --with-mpi-dir=%{p_base}\
-  --with-blacs=1 \
-  --with-blacs-include=%{p_base}/include \
-  --with-blacs-lib=[%{p_libdir}/libblacs.so] \
-  %if %{with pastix}
-  --with-pastix=1 \
-  --with-pastix-pkg-config=%{p_libdir}/pkgconfig \
-  %endif
-  --with-ptscotch=1 \
-  --with-ptscotch-include=%{p_base}/include \
-  --with-ptscotch-lib=[%{p_libdir}/libptscotch.so,%{p_libdir}/libptscotcherr.so,%{p_libdir}/libptscotcherrexit.so,%{p_libdir}/libptscotchparmetis.so] \
-  --with-scalapack=1 \
-  --with-scalapack-include=%{p_base}/include \
-  --with-scalapack-lib=[%{p_libdir}/libscalapack.so] \
-  %if %{with hypre}
-  --with-superlu=1 \
-  --with-hypre=1 \
-  --with-hypre-include=%{p_base}/include/hypre \
-  --with-hypre-lib=[%{p_libdir}/libHYPRE.so] \
-  %endif
   --with-hdf5=1 \
-  --with-hdf5-lib=[%{p_libdir}/libhdf5.so] \
-  --with-hdf5-include=%{p_base}/include \
-        || cat configure.log
- %endif
+  --with-python-exec=%{_bindir}/python%{python3_version} \
+  --with-shared-libraries \
+  --with-suitesparse=1 \
+  --with-yaml=1 \
+  %if %{with hypre}
+  --with-hypre=1 \
+  --with-superlu=1 \
+  %endif
+  %if %{without mpi}
+  --with-mpi=0 \
+  %else
+  --with-mpi=1 \
+  --with-blacs=1 \
+  --with-pastix=%{?with_pastix:1}%{!?with_pastix:0} \
+  --with-ptscotch=1 \
+  --with-scalapack=1 \
+  %endif
+ || cat configure.log
 
 %make_build
 
 %install
 export PETSC_DIR=${RPM_BUILD_DIR}/petsc-%{version}
-export PETSC_ARCH=%petsc_arch
-
-make install DESTDIR=%{buildroot}
+export PETSC_LIB_DIR=%{p_libdir}
+export PETSC_ARCH=%{petsc_arch}
+%make_install
 
 find %{buildroot}%{p_prefix}/share/petsc/examples/src -type f -ipath '*/output/*out' -delete
-rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/*.log
-rm -f %{buildroot}%{p_prefix}/lib/petsc/conf/.DIR
+rm -f %{buildroot}%{p_libdir}/conf/*.log
+rm -f %{buildroot}%{p_libdir}/conf/.DIR
 
-rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.init
-rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/*.py
-rm -rf %{buildroot}%{p_prefix}/lib/petsc/conf/modules
-
-# create symlink for libs between %%libdir and petscdir
-pushd %{buildroot}%{p_libdir}
-for f in petsc/%{version}/%petsc_arch/lib/*.so*; do
-   ln -s $f .
-done
-popd
-
-# Module files
-mkdir -p %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}
-cat << EOF > %{buildroot}/usr/share/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_flavor}}
-#%%Module
-proc ModulesHelp { } {
-        global dotversion
-        puts stderr "\tLoads the %{name}-%{petsc_arch} %version Environment"
-}
-
-module-whatis  "Loads the %{name}-%{petsc_arch} %version Environment."
-conflict %{name}-%{petsc_arch}
-setenv PETSC_ARCH %{petsc_arch}
-setenv PETSC_DIR  %{p_libdir}/petsc/%{version}/%{petsc_arch}
-prepend-path LD_LIBRARY_PATH %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib
-
-EOF
+rm -rf %{buildroot}%{p_libdir}/conf/*.init
+rm -rf %{buildroot}%{p_libdir}/conf/*.py
+rm -rf %{buildroot}%{p_libdir}/conf/modules
 
 # clean up non-include files
 find %{buildroot}%{p_include} -name \*.html  -exec rm {} \;
 find %{buildroot}%{p_include} -name makefile -exec rm {} \;
 
 sed -i \
-	-e 's!^\(#define PETSC_LIB_DIR\).*$!\1 "'%{p_prefix}/lib'"!' \
-	-e 's!^\(#define PETSC_DIR\).*$!\1 "'%{p_prefix}'"!' \
-	%{buildroot}%{p_include}/petscconf.h
+  -e 's!^\(#define PETSC_LIB_DIR\).*$!\1 "'%{p_libdir}'"!' \
+  -e 's!^\(#define PETSC_DIR\).*$!\1 "'%{p_prefix}'"!' \
+  %{buildroot}%{p_include}/petscconf.h
 
 # remove buildroot
-find %{buildroot}%{p_prefix}/lib/petsc/{conf,bin}/ -type f -print0 | \
+find %{buildroot}%{p_libdir}/{conf,bin}/ -type f -print0 | \
 while IFS= read -r -d $'\0' line ; do
   if file -e soft $line | grep -q "text" ; then
     sed -i -e 's!%{buildroot}!!g' $line
@@ -295,61 +263,42 @@ done
 for i in $(find %{buildroot}%{p_prefix}/share \( -perm /a+x -and -type f \) ) ; do
     grep -m 1 -q "^#!" $i || chmod a-x $i
 done
-chmod a+x $i %{buildroot}%{p_prefix}/lib/petsc/bin/*
+chmod a+x %{buildroot}%{p_libdir}/petsc/bin/{configureTAS,extract,tasClasses}.py
 
 # Remove CPU count from petscvariables, https://gitlab.com/petsc/petsc/-/issues/1315
 sed -i -e '/^MAKE_/ { /MAKE_NP/ d ; /MAKE_LOAD/ d ; /MAKE_TEST_NP/ d }; /^NPMAX/ d' \
-  %{buildroot}%{p_prefix}/lib/petsc/conf/petscvariables
-
-# Make pkgconfig file visible to pkg-config
-mkdir -p %{buildroot}%{p_libdir}/pkgconfig
-ln -s %{p_libdir}/petsc/%{version}/%{petsc_arch}/lib/pkgconfig/petsc.pc \
-      %{buildroot}%{p_libdir}/pkgconfig/
-for d in /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/matlab \
- /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/lib/petsc/bin \
- /usr/lib64/petsc/%{vers}/linux-gnu-c-opt/share/petsc/bin
-do
-   for i in `find %{buildroot}/$d -type f  -a -perm /a=x`
-   do
-     head -1 $i | grep -q "^#!" || chmod -x $i
-   done
-   for i in `find %{buildroot}/$d -type f -a -name "*.py" -a -not -perm /a=x`
-   do
-     head -1 $i | grep -q "^#!" && chmod a+x $i
-   done
-done
+  %{buildroot}%{p_libdir}/petsc/conf/petscvariables
 
 %fdupes %{buildroot}%{p_include}
 %fdupes %{buildroot}%{p_libdir}
 %fdupes %{buildroot}%{p_prefix}/share/petsc/examples
 
-##
-%post -n %{libname} -p /sbin/ldconfig
+%check
+%if %{with mpi}
+%setup_openmpi
+%endif
+export LD_LIBRARY_PATH+=:%{buildroot}%{p_libdir}
+%make_build check
 
-%postun -n %{libname}
-/sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%dir %{p_prefix}
-%dir %{p_prefix}/lib
 %{p_libdir}/*.so.*
-%{p_prefix}/share
+%{p_prefix}/share/petsc/
 %exclude %{p_prefix}/share/petsc/examples
 %exclude %{p_prefix}/share/petsc/saws
-%dir %{p_libdir}/petsc
-%dir %{p_libdir}/petsc/%{version}
-%{p_prefix}/lib/*.so.*
 
 %files %{?n_pre}devel
-%exclude %{p_prefix}/lib/petsc/bin/saws
-%{p_prefix}/include
-%{p_prefix}/lib/petsc
-%{p_prefix}/lib/pkgconfig
+%exclude %{p_libdir}/petsc/bin/saws
+%{p_include}/*.mod
+%{p_include}/petsc/
+%{p_include}/petsc*.h*
 %{p_libdir}/*.so
+%{p_libdir}/petsc/
+%if %{with mpi}
+%dir %{p_libdir}/pkgconfig
+%endif
 %{p_libdir}/pkgconfig/*.pc
-%{p_prefix}/lib/*.so
-%dir %{_datadir}/modules/%{name}-%{petsc_arch}
-%{_datadir}/modules/%{name}-%{petsc_arch}/%version%{?with_mpi:-%{mpi_flavor}}
 %doc %{p_prefix}/share/petsc/examples
 
 %changelog

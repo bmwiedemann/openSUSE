@@ -1,0 +1,84 @@
+From 4be95fa6ec208e7ffe3ca7adbec4e148238c19e1 Mon Sep 17 00:00:00 2001
+From: Atri Bhattacharya <badshah400@gmail.org>
+Date: Wed, 2 Apr 2025 00:51:53 +0530
+Subject: [PATCH] libdir
+
+---
+ config/PETSc/Configure.py |  6 ++++--
+ config/install.py         | 14 ++++++++------
+ 2 files changed, 12 insertions(+), 8 deletions(-)
+
+diff --git a/config/PETSc/Configure.py b/config/PETSc/Configure.py
+index b025144..251b8be 100644
+--- a/config/PETSc/Configure.py
++++ b/config/PETSc/Configure.py
+@@ -5,6 +5,8 @@ import sys
+ import re
+ import pickle
+ 
++LIB = sys.platlibdir
++
+ class Configure(config.base.Configure):
+   def __init__(self, framework):
+     config.base.Configure.__init__(self, framework)
+@@ -172,7 +174,7 @@ class Configure(config.base.Configure):
+         cflags_inc.append('-I' + os.path.join(self.petscdir.dir, 'include'))
+       fd.write('exec_prefix=${prefix}\n')
+       fd.write('includedir=${prefix}/include\n')
+-      fd.write('libdir=${prefix}/lib\n')
++      fd.write('libdir={:s}/{:s}\n'.format('${prefix}', LIB))
+ 
+       with self.setCompilers.Language('C'):
+         fd.write('ccompiler='+self.setCompilers.getCompiler()+'\n')
+@@ -448,7 +450,7 @@ prepend-path PATH "%s"
+       self.addMakeMacro('PETSC_FC_INCLUDES',self.headers.toStringNoDupes(allincludes,modinc(allincludes)))
+       self.addMakeMacro('PETSC_FC_INCLUDES_INSTALL',self.headers.toStringNoDupes(allincludes_install,modinc(allincludes_install)))
+ 
+-    LIB_DIR = os.path.join(self.installdir.dir,'lib')
++    LIB_DIR = os.path.join(self.installdir.dir,LIB)
+     self.addDefine('LIB_DIR','"'+LIB_DIR+'"')
+     # Use build dir here for 'make check' to work before 'make install'
+     PREINSTALL_LIB_DIR = os.path.join(self.petscdir.dir,self.arch.arch,'lib')
+diff --git a/config/install.py b/config/install.py
+index e438f8f..94d2374 100755
+--- a/config/install.py
++++ b/config/install.py
+@@ -2,6 +2,8 @@
+ from __future__ import print_function
+ import os, re, shutil, sys
+ 
++LIB = sys.platlibdir
++
+ if 'PETSC_DIR' in os.environ:
+   PETSC_DIR = os.environ['PETSC_DIR']
+ else:
+@@ -77,12 +79,12 @@ class Installer(script.Script):
+     self.archBinDir        = os.path.join(self.rootDir, self.arch, 'bin')
+     self.archLibDir        = os.path.join(self.rootDir, self.arch, 'lib')
+     self.destIncludeDir    = os.path.join(self.destDir, 'include')
+-    self.destConfDir       = os.path.join(self.destDir, 'lib','petsc','conf')
+-    self.destLibDir        = os.path.join(self.destDir, 'lib')
+-    self.destBinDir        = os.path.join(self.destDir, 'lib','petsc','bin')
++    self.destConfDir       = os.path.join(self.destDir, LIB,'petsc','conf')
++    self.destLibDir        = os.path.join(self.destDir, LIB)
++    self.destBinDir        = os.path.join(self.destDir, LIB,'petsc','bin')
+     self.installIncludeDir = os.path.join(self.installDir, 'include')
+-    self.installLibDir     = os.path.join(self.installDir, 'lib')
+-    self.installBinDir     = os.path.join(self.installDir, 'lib','petsc','bin')
++    self.installLibDir     = os.path.join(self.installDir, LIB)
++    self.installBinDir     = os.path.join(self.installDir, LIB,'petsc','bin')
+     self.rootShareDir      = os.path.join(self.rootDir, 'share')
+     self.destShareDir      = os.path.join(self.destDir, 'share')
+     self.rootSrcDir        = os.path.join(self.rootDir, 'src')
+@@ -344,7 +346,7 @@ class Installer(script.Script):
+       return glob.glob(os.path.join(dirname, *patterns))
+     def shell(*args):
+       return self.executeShellCommand(' '.join(args))[0]
+-    libdir = os.path.join(self.installDir, 'lib')
++    libdir = os.path.join(self.installDir, LIB)
+     if sys.platform == 'linux':
+       libraries = [
+         lib for lib in lsdir(self.destLibDir, 'lib*.so*')
+-- 
+2.49.0
+
