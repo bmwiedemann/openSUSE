@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:16:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.2:
+  * Version 0.25.2
+  * fix: don't reset namespace when running ctx in interactive
+    (#340)
+  * Bump the all group across 1 directory with 3 updates (#338)
+  * Bump crossbeam-channel from 0.5.14 to 0.5.15 (#339)
+
+-------------------------------------------------------------------
 Thu Mar 13 05:57:26 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.25.1:
