@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr  5 18:16:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 6.0.4:
+  This is the fourth bugfix release for LXCFS 6.0 which is
+  supported until June 2029.
+  * Changes
+    - Properly handle SLAB reclaimable memory in meminfo
+    - Handle empty cpuset strings
+    - Fix potential sleep interval overflows
+  * Detailed changelog
+    - meminfo: Add slab_reclaimable to MemAvailable
+    - tests/test-read: call close(2) only if there is an fd
+    - utils: fix wait_for_sock to use time_t instead of int
+    - cpuset_parse: make a check for an empty string in
+      cpu_in_cpuset()
+    - utils: move strlcpy/strlcat helpers from cgroup_utils to
+      utils
+    - lxcfs: use strlcpy when handle runtime-dir parameter
+    - proc_loadavg: Prevent integer overflow calculating the sleep
+      interval
+
+-------------------------------------------------------------------
 Fri Dec 20 05:52:47 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.3 LTS:
