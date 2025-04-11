@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:54:32 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix version, pre-versions *must* use ~ as a version delimiter.
+  A + delimiter marks versions post release.
+
+-------------------------------------------------------------------
+Thu Apr 03 06:58:01 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version libsigrokdecodeunreleased+git20241001.71f4514:
+  * max72xx: Rename max7219 to max72xx and streamline PD
+  * max7219: Add support for cascading MAX72xx chips
+  * Fix escape sequences treated as unicode laterals
+  * mcp230xx: Add an mcp230xx decoder
+  * usb_power_delivery: Handle extended message type in PD 3.0
+  * usb_packet: Handle truncated data packets.
+  * pwm: Add frequency measurement
+  * timing: Allow resetting counter on any edge
+  * avr_isp: Add even more parts
+- add %fdupes and %post for libirmp
+- cleanup of .spec
+
+-------------------------------------------------------------------
 Sat Sep 14 09:48:23 UTC 2024 - kkaempf@suse.de
 
 - Update to version libsigrokdecode-0.6.0+git20240304.0235970:

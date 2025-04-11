@@ -19,23 +19,19 @@
 Name:           libsigrokdecode
 %define libname %{name}4
 %define baseversion 0.6.0
-Version:        0.6.0+git20240304.0235970
+Version:        0.6.0~git20241001.71f4514
 Release:        0
 Summary:        Protocol Decoders for sigrok
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Electronics
 URL:            https://sigrok.org/
-
-# osb service had problems creating the tarball, I used this workaround:
-# git archive --format=tar.gz --prefix=libsigrokdecode-0.6.0+git20240304.0235970
-#   -o ../libsigrokdecode-0.6.0+git20240304.0235970.tar.gz master
-
-Source0:        https://sigrok.org/download/source/libsigrokdecode/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         libsigrokdecode-versioned-decoders.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel >= 0.9.4
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.24.0
 BuildRequires:  libsigrok-devel >= 0.3.0
@@ -55,6 +51,8 @@ are written in Python.
 Summary:        Protocol Decoder Library for sigrok
 Group:          System/Libraries
 Requires:       python3-base
+# Fix screwup
+Obsoletes:      %{libname} = 0.6.0+git20240304.0235970
 
 %description -n %{libname}
 The sigrok project aims at creating a portable, cross-platform,
@@ -90,8 +88,7 @@ API for running sigrok protocol decoders. The protocol decoders themselves
 are written in Python.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -103,9 +100,13 @@ autoreconf -fiv
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n %{libname} -p /sbin/ldconfig
+%fdupes %{buildroot}%{_datadir}/%{name}-%{baseversion}/
 
+%post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
+%post -n libirmp0 -p /sbin/ldconfig
+%postun -n libirmp0 -p /sbin/ldconfig
 
 %files -n %{libname}
 %license COPYING
