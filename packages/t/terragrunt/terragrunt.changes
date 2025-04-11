@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:17:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.12:
+  * New Features
+    Introduced no_validation attribute for stack and unit, allowing
+    users to bypass Terragrunt's validation checks when deploying
+    infrastructure. This is particularly useful in scenarios where
+    you need to deploy infrastructure that doesn't strictly adhere
+    to Terragrunt's validation rules, such as during emergency
+    deployments or when working with legacy infrastructure
+    patterns.
+  * What's Changed
+    - feat: add support for no_validation attribute for stack and
+      unit (#4149)
+    - feat: Adding a bit more docs for stacks (#4144)
+
+-------------------------------------------------------------------
+Wed Apr 09 17:53:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.11:
+  * New Features
+    Introduction of the info print command
+    As part of the CLI Redesign experiment, the info print command
+    has been introduced.
+  * What's changed
+    - feat: add info command (#4122)
+
+-------------------------------------------------------------------
 Wed Apr 09 04:48:13 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.10:
