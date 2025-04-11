@@ -297,4 +297,38 @@
   * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod (forwarded request 1251025 from jfkw)</comment>
     <requestid>1251026</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1da6e4185de7836cadff5ae8aac88cde</srcmd5>
+    <version>1.24.2</version>
+    <time>1744382993</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.24.2:
+  * *: 1.24.2 (#3983)
+  * service/test: assert error on CreateBreakpoint in TestNextInstruction (#3979)
+  * gdbserial: do not abort register reload on the first failed register (#3966)
+  * service/dap: fix race condition when launching with backend=rr (#3971)
+  * proc: limit the max length of goroutine's label map (#3928) (#3968)
+  * proc: replace Thread.Location method with a function (#3972)
+  * debugger: add missing targetMutex protection to CreateWatchpoint() (#3973)
+  * proc: relax DWARFv5 check (#3961)
+  * debugger: acquire missing lock to GuessSubstitutePath (#3963)
+  * proc: skip invalid goroutine labels when debugging on Go 1.24 (#3928) (#3962)
+  * proc: fix bug telemetry counter increment (#3967)
+  * proc: do not always allocate struct literals (#3953)
+  * Documentation: fix substitutePath explanation for DAP server (#3952)
+  * proc/core: skip tests on ppc64le (#3954)
+  * service/test: skip substitutepath test when modules disabled (#3955)
+  * proc: add support for struct literals (#3935)
+  * terminal: better question for suspended breakpoints (#3934)
+  * terminal/command: bind if condition to location earlier (#3938)
+  * cmd/dlv: fix typo (#3951)
+  * service/test: fix compile error in tests (#3949)
+  * service/debugger: fix FindLocation with child processes (#3937)
+  * goversion: add check for DWARFv5 compatibility (#3943)
+  * proc: add RegnumToString to PPC64LE architecture (#3944)
+  * *: fix various test problems with go1.25 (#3946)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod</comment>
+    <requestid>1268542</requestid>
+  </revision>
 </revisionlist>
