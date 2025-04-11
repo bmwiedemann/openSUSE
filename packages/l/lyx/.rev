@@ -946,4 +946,12 @@
     ANNOUNCE or https://www.lyx.org/announce/2_4_3.txt</comment>
     <requestid>1238261</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>f8f620b4c4c027e708ad3030447094c7</srcmd5>
+    <version>2.4.3</version>
+    <time>1744406565</time>
+    <user>dimstar_suse</user>
+    <comment>- Add qt69-fix.patch to fix compilation with Qt 6.9</comment>
+    <requestid>1268656</requestid>
+  </revision>
 </revisionlist>

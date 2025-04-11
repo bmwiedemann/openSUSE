@@ -32,6 +32,7 @@ Source1:        lyxrc.dist
 Source2:        lyx.keyring
 Source3:        http://ftp.lyx.org/pub/lyx/stable/2.4.x/lyx-%{version}.tar.xz.sig
 Source4:        README.SUSE
+Patch0:         qt69-fix.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bc
@@ -151,7 +152,7 @@ BuildArch:      noarch
 A collection of Math symbol fonts for LyX.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 TEXMF=%{_datadir}/texmf

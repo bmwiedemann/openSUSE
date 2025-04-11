@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 11 14:27:27 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Add qt69-fix.patch to fix compilation with Qt 6.9
+
+-------------------------------------------------------------------
 Thu Jan 16 13:16:49 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 2.4.3:

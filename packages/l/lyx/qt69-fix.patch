@@ -1,0 +1,28 @@
+diff -ur a/src/Compare.cpp d/src/Compare.cpp
+--- a/src/Compare.cpp	2025-03-20 10:34:23.906992061 +0100
++++ d/src/Compare.cpp	2025-04-11 14:36:14.185865549 +0200
+@@ -885,7 +885,6 @@
+ 		mergeParagraph(dest_buf_->params(), *dest_pars_, pit);
+ }
+ 
++} // namespace lyx
+ 
+ #include "moc_Compare.cpp"
+-
+-} // namespace lyx
+diff -ur a/src/support/Systemcall.cpp d/src/support/Systemcall.cpp
+--- a/src/support/Systemcall.cpp	2025-03-20 10:34:23.951991736 +0100
++++ d/src/support/Systemcall.cpp	2025-04-11 14:37:08.125468477 +0200
+@@ -702,10 +702,8 @@
+ 	}
+ }
+ 
+-
++} // namespace support
++} // namespace lyx
+ 
+ #include "moc_SystemcallPrivate.cpp"
+ #endif
+-
+-} // namespace support
+-} // namespace lyx
