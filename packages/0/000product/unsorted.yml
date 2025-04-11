@@ -8185,6 +8185,7 @@ unsorted:
   - gromacs-doc 
   - gromacs-openmpi 
   - gromit-mpx 
+  - grommunio-dav 
   - grommunio-error-pages 
   - grommunio-index 
   - grommunio-web 
@@ -8438,6 +8439,7 @@ unsorted:
   - gtkmm4-tutorial 
   - gtkmm4-tutorial-lang 
   - gtksourceview-devel 
+  - gtksourceview-lang 
   - gtksourceview-theme-yaru 
   - gtksourceview2-devel 
   - gtksourceview2-lang 
@@ -11678,7 +11680,7 @@ unsorted:
   - libQuotient-qt6-devel 
   - libQuotientQt6-0_9 
   - libRecast1 
-  - libRivet-3_1_10 
+  - libRivet-3_1_11 
   - libSDL-1_2-0-32bit 
   - libSDL2-2_0-0-32bit 
   - libSDL2_Pango4 
@@ -13814,6 +13816,7 @@ unsorted:
   - libgtkimageview0 
   - libgtkmm-2_4-1 
   - libgtksourceview-2_0-0 
+  - libgtksourceview-3_0-1 
   - libgtksourceviewmm-4_0-0 
   - libgtkspell0 
   - libgtkspell3-3-0 
@@ -15812,7 +15815,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre28 
+  - libre32 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -25424,6 +25427,7 @@ unsorted:
   - python311-google-cloud-kms 
   - python311-google-cloud-kms-inventory 
   - python311-google-cloud-logging 
+  - python311-google-cloud-pubsub 
   - python311-google-cloud-run 
   - python311-google-cloud-secret-manager 
   - python311-google-cloud-service-directory 
@@ -27179,6 +27183,7 @@ unsorted:
   - python311-sshpubkeys 
   - python311-sshtunnel 
   - python311-stack-data 
+  - python311-standard-xdrlib 
   - python311-starlette 
   - python311-statsd 
   - python311-statsmodels 
@@ -29107,6 +29112,7 @@ unsorted:
   - python312-google-cloud-kms 
   - python312-google-cloud-kms-inventory 
   - python312-google-cloud-logging 
+  - python312-google-cloud-pubsub 
   - python312-google-cloud-run 
   - python312-google-cloud-secret-manager 
   - python312-google-cloud-service-directory 
@@ -30905,6 +30911,7 @@ unsorted:
   - python312-sshpubkeys 
   - python312-sshtunnel 
   - python312-stack-data 
+  - python312-standard-xdrlib 
   - python312-starlette 
   - python312-statsd 
   - python312-statsmodels 
@@ -32345,6 +32352,7 @@ unsorted:
   - python313-curlylint 
   - python313-curtsies 
   - python313-cwcwidth 
+  - python313-cx_Freeze 
   - python313-cymem 
   - python313-cymruwhois 
   - python313-cyrtranslit 
@@ -32804,6 +32812,7 @@ unsorted:
   - python313-google-cloud-kms 
   - python313-google-cloud-kms-inventory 
   - python313-google-cloud-logging 
+  - python313-google-cloud-pubsub 
   - python313-google-cloud-run 
   - python313-google-cloud-secret-manager 
   - python313-google-cloud-service-directory 
@@ -34552,6 +34561,7 @@ unsorted:
   - python313-standard-chunk 
   - python313-standard-imghdr 
   - python313-standard-sunau 
+  - python313-standard-xdrlib 
   - python313-starlette 
   - python313-statsd 
   - python313-statsmodels 
@@ -47943,6 +47953,7 @@ unsorted:
   - typelib-1_0-GUPnPDLNAGst-2_0 
   - typelib-1_0-GUPnPIgd-1_6 
   - typelib-1_0-GUsb-1_0 
+  - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-Gck-1 
@@ -48010,8 +48021,10 @@ unsorted:
   - typelib-1_0-Gtk-2_0 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSessionLock-0_1 
+  - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSource-5 
   - typelib-1_0-GtkSpell-3_0 
+  - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Hasl-1_0 
   - typelib-1_0-Hex-4 
@@ -48030,6 +48043,7 @@ unsorted:
   - typelib-1_0-Libags-7_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
+  - typelib-1_0-Libosinfo-1_0 
   - typelib-1_0-Libproxy-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
@@ -48076,6 +48090,8 @@ unsorted:
   - typelib-1_0-Soup-2_4 
   - typelib-1_0-SpeechProvider-1_0 
   - typelib-1_0-Spelling-1 
+  - typelib-1_0-SpiceClientGlib-2_0 
+  - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-TelepathyLogger-0_2 
   - typelib-1_0-Template-1_0 
@@ -48086,6 +48102,7 @@ unsorted:
   - typelib-1_0-Uhm-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8.0 
+  - typelib-1_0-Vte-2_91 
   - typelib-1_0-Vte-3_91 
   - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
