@@ -16,4 +16,14 @@
   * Package updates and binary wheels for python 3.12.</comment>
     <requestid>1132371</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f99debe257754b6ec7f48e3ed27f8738</srcmd5>
+    <version>1.0.12</version>
+    <time>1744392441</time>
+    <user>anag_factory</user>
+    <comment>- update to elease-v1.0.12:
+  * Github Actions now provides Linux ARM runners for public
+    repos, so we can build Linux ARM wheels once more.</comment>
+    <requestid>1268607</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-murmurhash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-murmurhash
-Version:        1.0.10
+Version:        1.0.12
 Release:        0
 Summary:        Cython bindings for MurmurHash
 License:        MIT
