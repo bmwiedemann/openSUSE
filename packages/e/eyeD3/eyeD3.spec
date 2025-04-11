@@ -1,7 +1,7 @@
 #
 # spec file for package eyeD3
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,21 @@ License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://eyed3.readthedocs.io/en/latest/
 Source:         https://files.pythonhosted.org/packages/source/e/eyeD3/eyeD3-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+# PATCH-FIX-UPSTREAM gh#nicfit/eyeD3#647
+Patch0:         skip-tests-that-require-external-data.patch
+BuildRequires:  %{python_module chardet >= 4.0.0}
+BuildRequires:  %{python_module colorama >= 0.4.4}
+BuildRequires:  %{python_module deprecation >= 2.1.0}
+BuildRequires:  %{python_module factory_boy}
+BuildRequires:  %{python_module filetype >= 1.0.7}
+BuildRequires:  %{python_module idna >= 2.10}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.25.1}
+BuildRequires:  %{python_module toml >= 0.10.2}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildArch:      noarch
 # %%primary_python not available in Leap yet
 Requires:       %(echo %{python_module eyed3} | perl -pe 's{.* }{}g')
@@ -58,7 +72,6 @@ Requires:       python-idna >= 2.10
 Requires:       python-packaging >= 20.8
 Requires:       python-pyparsing >= 2.4.7
 Requires:       python-requests >= 2.25.1
-Requires:       python-six >= 1.15.0
 Requires:       python-toml >= 0.10.2
 Requires:       python-urllib3 >= 1.26.2
 Recommends:     python-grako
@@ -78,12 +91,14 @@ files containing ID3 metadata (i.e. song info).
 rm eyed3/plugins/mimetype.py
 
 %build
-%python_build
-#python3.11 setup.py build
+%pyproject_wheel
 
 %install
-%python_install
-#python3.11 setup.py install --prefix=%{_prefix} --root=%{buildroot}
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files
 %license LICENSE
@@ -96,6 +111,7 @@ rm eyed3/plugins/mimetype.py
 %{_bindir}/eyeD3
 
 %files %{python_files eyed3}
-%{python_sitelib}/eyed3*
+%{python_sitelib}/eyed3
+%{python_sitelib}/eyed3-%{version}.dist-info
 
 %changelog

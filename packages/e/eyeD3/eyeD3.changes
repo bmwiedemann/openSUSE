@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 11 03:50:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Run the testsuite.
+- Sprinkle in fdupes.
+- Remove requirement on six.
+- Add patch skip-tests-that-require-external-data.patch:
+  * Skip tests that require data files.
+
+-------------------------------------------------------------------
 Fri Nov 10 17:19:35 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Implement multipython build

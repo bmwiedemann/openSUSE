@@ -1,0 +1,27 @@
+From 7a5ba0fa586758046f55b64b2571b61f41155bfb Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 11 Apr 2025 12:56:23 +1000
+Subject: [PATCH] Skip tests if the data directory isn't found
+
+If the user hasn't populated the tests/data directory, they get test
+failures because the fixture yields None, and then tries to call methods
+on an object that is None. This feels like an anti-pattern, so use
+pytest.skip to make the testcase skip instead.
+---
+ tests/conftest.py | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index c981a3f4..0d60a0df 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -18,8 +18,7 @@ def _tempCopy(src, dest_dir) -> Path:
+ def audiofile(request, tmpdir):
+     """Makes a copy of test.mp3 and loads it using eyed3.load()."""
+     if not Path(DATA_D).exists():
+-        yield None
+-        return
++        pytest.skip("data directory not found")
+ 
+     marker = request.node.get_closest_marker("audiofile_name")
+     if marker:
