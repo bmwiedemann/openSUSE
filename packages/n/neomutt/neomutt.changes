@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Fri Apr 11 16:37:47 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20250404:
+  - Features
+    * config: don't quote enums
+    * link config dump to docs
+    * CLI: neomutt -DD -- Dump Different
+    * browser: tag select rather than descend
+  - Bug Fixes
+    * source: fix variable interpretation
+    * mutt_oauth2: refactor sasl_string computation
+    * expand tabs to spaces in compose preview
+    * fix dumping of initial values
+    * move real_name init
+    * Remove MUTT_NEWFOLDER, fix appending to mbox
+    * Respect Ignore when modifying an email's headers
+    * fix refresh on toggle hide_thread_subject
+    * buffer: fix seek
+    * add comma to single <complete-query> match
+    * notmuch: check for parse failure
+    * query: allow <>s around email addresses
+    * pager: fix normal/stripe colour
+    * fix colour leaks in pager
+    * fix array leak in the verify certificate dialog
+  - Translations
+    * 100% German
+    * 100% Turkish
+    * 96% Lithuanian
+    * 86% French
+    * 49% Chinese (Traditional)
+  - Build
+    * Deprecate some configure options that aren't used anymore
+    * build: workaround for unused-result warning
+  - Code
+    * colour refactoring
+    * debug: Chain old SEGV Handler
+    * Allow nested ARRAY_FOREACH()
+    * config: API has_been_set()
+    * config: drop ConfigSet from API functions
+    * drop obsolete pgp/smime menus
+    * array: foreach_reverse()
+    * Change description of verify-key to be crypto-scheme agnostic
+    * expando: move EnvList out of library
+    * Simplify the management of NeoMutt Commands
+    * libcli - parse the command line
+    * Split CLI Usage into sections
+    * pager: fix lost NT_PAGER notifications
+    * pager: fix refresh on config/colour changes
+    * array: upgrade get_elem_list()
+    * Buffer refactoring
+    * improve localise_config()
+    * main: drop -B (batch mode) option
+    * merge init.[ch] into main.c
+    * refactor version code
+    * neomutt: home_dir, username, env
+    * query: unify NeoMutt -D and -Q
+    * refactor main.c/init.c
+    * sidebar: streamline expando callbacks
+    * test: lots of parse coverage
+    * window refactoring
+    * window: force recalc|repaint on new windows
+
+-------------------------------------------------------------------
+Fri Apr 11 16:32:59 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20250113:
+  - Bug Fixes
+    * fix crash in folder-hook
+    * fix memory leak in compose message preview (fixes #4478)
+    * query: fix comma-separated names
+    * lua: fix lua_mutt_call()
+    * notmuch: refresh the Email if the filename changes
+    * fix: no new mail message
+    * fix display of certificate fingerprints
+    * fix prompt colour
+  - Translations
+    * 100% Czech
+    * 100% German
+    * 100% Lithuanian
+    * 100% Serbian
+    * 100% Slovakian
+    * 100% Turkish
+    * 91% French
+    * 41% Chinese (Traditional)
+  - Build
+    * Fix DT_NUMBER entries on 32-bit endian platforms
+  - Code
+    * Simplify mutt_file_fopen()
+    * colour refactoring
+    * standardise variable names for temporary files
+- Note about version 20250109:
+  Neomutt version 20250109 was submitted and then retracted by upstream due
+  to a data loss bug when moving mails to mbox folders.
+  https://github.com/neomutt/neomutt/issues/4541
+
+-------------------------------------------------------------------
 Fri Feb  7 21:10:23 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - enable autocrypt
