@@ -1421,4 +1421,15 @@
   * Added choose chat list quick action for swipe or middle click.</comment>
     <requestid>1256372</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>11d1e2a6086cd020813bd7229b087bcc</srcmd5>
+    <version>5.13.1</version>
+    <time>1744406549</time>
+    <user>dimstar_suse</user>
+    <comment>- Added 0001-Fix-build-with-Qt-6.9.patch (boo#1241069).
+- Use system libdispatch.
+- Removed build dependency on KF5Wayland, it is only needed
+  if the DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION option is enabled.</comment>
+    <requestid>1268616</requestid>
+  </revision>
 </revisionlist>

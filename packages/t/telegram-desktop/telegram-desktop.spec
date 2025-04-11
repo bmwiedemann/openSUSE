@@ -36,6 +36,8 @@ Source3:        tg_owt-dlopen-headers.tar.gz
 Patch1:         0001-dynamic-link-x.patch
 Patch2:         0002-tg_owt-h264-dlopen.patch
 Patch3:         0003-tg_owt-pipewire-1.4.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/desktop-app/lib_base/pull/268
+Patch4:         0001-Fix-build-with-Qt-6.9.patch
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  clang
@@ -52,6 +54,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
+BuildRequires:  libdispatch-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  ninja
@@ -66,7 +69,6 @@ BuildRequires:  wayland-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
 BuildRequires:  yasm
-BuildRequires:  cmake(KF5Wayland)
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -154,7 +156,7 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
-%autopatch -p1 1
+%autopatch -p1 1 4
 
 mkdir -p %{_builddir}/Libraries/ada
 mkdir -p %{_builddir}/Libraries/tg_owt

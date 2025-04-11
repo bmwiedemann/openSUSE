@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 11 07:08:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Added 0001-Fix-build-with-Qt-6.9.patch (boo#1241069).
+- Use system libdispatch.
+- Removed build dependency on KF5Wayland, it is only needed
+  if the DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION option is enabled.
+
+-------------------------------------------------------------------
 Thu Mar 27 02:40:44 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 5.13.1
