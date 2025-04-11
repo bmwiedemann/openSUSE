@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover-Report-Codecovbash
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,20 @@
 
 %define cpan_name Devel-Cover-Report-Codecovbash
 Name:           perl-Devel-Cover-Report-Codecovbash
-Version:        0.04
+Version:        0.41.0
 Release:        0
-Summary:        Generate a JSON file to be uploaded with the codecov bash script
+# v0.41.0 -> normalize -> 0.41.0
+%define cpan_version v0.41.0
 License:        MIT
+Summary:        Generate a JSON file to be uploaded with the codecov bash script
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(JSON::MaybeXS)
-BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(namespace::autoclean)
 Requires:       perl(JSON::MaybeXS)
 Requires:       perl(namespace::autoclean)
@@ -48,7 +50,7 @@ Mizune's at https://metacpan.org/release/Devel-Cover-Report-Codecov
 distribution.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
