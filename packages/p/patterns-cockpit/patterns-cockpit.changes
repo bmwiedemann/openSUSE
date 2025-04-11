@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:23:53 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add requirement on sudo as the preferred method of gaining admin 
+  rights (bsc#1240569)
+
+-------------------------------------------------------------------
 Thu Mar 13 13:58:23 UTC 2025 - Andreas Jaeger <aj@suse.com>
 
 - Remove duplicate Summary line, fix better Summary

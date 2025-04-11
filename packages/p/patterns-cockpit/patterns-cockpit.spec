@@ -47,6 +47,7 @@ Requires:       (cockpit-selinux if selinux-tools)
 Requires:       (cockpit-packagekit if PackageKit)
 Requires:       cockpit-repos
 Requires:       (cockpit-subscriptions if suseconnect-ng)
+Requires:       sudo
 
 %description
 Packages required to run the Cockpit system management service.

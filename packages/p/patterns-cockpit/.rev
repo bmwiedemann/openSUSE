@@ -7,4 +7,13 @@
     <comment>pattern to easily deploy cockpit</comment>
     <requestid>1266786</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>d9375451c05d7079d7d57daec9d6bc19</srcmd5>
+    <version>16.0</version>
+    <time>1744406560</time>
+    <user>dimstar_suse</user>
+    <comment>- Add requirement on sudo as the preferred method of gaining admin 
+  rights (bsc#1240569)</comment>
+    <requestid>1268642</requestid>
+  </revision>
 </revisionlist>
