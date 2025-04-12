@@ -3715,7 +3715,9 @@
     <package name="python313-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="python313-speechd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-text-unidecode" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python313-tinycss2" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-urllib3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python313-webencodings" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="python313-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="python313-zstandard" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="qalculate-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4080,6 +4082,7 @@
     <package name="typelib-1_0-GModule-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-GObject-2_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-GUdev-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-GVnc-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-GWeather-4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gck-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Gcr-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4106,11 +4109,13 @@
     <package name="typelib-1_0-GtkClutter-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-GtkSource-300" supportstatus="unsupported"/> <!-- reason: dvd:gedit -->
     <package name="typelib-1_0-GtkSource-4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-GtkVnc-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-Handy-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-HarfBuzz-0_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-IBus-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="typelib-1_0-JavaScriptCore-4_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Json-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Libosinfo-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-LibvirtGLib-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-Libxfce4ui-2_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="typelib-1_0-Libxfce4util-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -4136,6 +4141,7 @@
     <package name="typelib-1_0-TotemPlParser-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Tracker-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-UpowerGlib-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="typelib-1_0-Vte-3_91" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_tools -->
     <package name="typelib-1_0-WebKit2-4_1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Wnck-3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="typelib-1_0-Xdp-1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->

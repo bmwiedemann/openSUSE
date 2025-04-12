@@ -11006,6 +11006,7 @@ unsorted:
   - ldb-tools 
   - ldc 
   - ldc-bash-completion 
+  - ldc-jit-devel 
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
@@ -12015,8 +12016,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute45 
-  - libarm_compute_graph45 
+  - libarm_compute50 
+  - libarm_compute_graph50 
   - libarmadillo14 
   - libarmnn34 
   - libarmnn34-opencl 
@@ -14363,6 +14364,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
+  - libldc-jit110 
   - libldl-doc 
   - libldl3 
   - libldm-1_0-0-devel 
@@ -15319,9 +15321,9 @@ unsorted:
   - libperseus-sdr-devel 
   - libperseus-sdr-udev 
   - libperseus-sdr0 
-  - libpetsc3_22 
-  - libpetsc3_22-openmpi4 
-  - libpetsc3_22-openmpi5 
+  - libpetsc3_23 
+  - libpetsc3_23-openmpi4 
+  - libpetsc3_23-openmpi5 
   - libpff-devel 
   - libpff-tools 
   - libpff1 
@@ -17259,6 +17261,7 @@ unsorted:
   - libxmlrpc_client++9 
   - libxmlrpc_client3 
   - libxmlrpc_cpp9 
+  - libxmlrpc_openssl1 
   - libxmlrpc_packetsocket9 
   - libxmlrpc_server++9 
   - libxmlrpc_server3 
@@ -19564,6 +19567,10 @@ unsorted:
   - nekohtml 
   - nekohtml-demo 
   - nekohtml-javadoc 
+  - nelm 
+  - nelm-bash-completion 
+  - nelm-fish-completion 
+  - nelm-zsh-completion 
   - nemesis 
   - nemo 
   - nemo-devel 
@@ -25429,6 +25436,7 @@ unsorted:
   - python311-google-cloud-kms 
   - python311-google-cloud-kms-inventory 
   - python311-google-cloud-logging 
+  - python311-google-cloud-monitoring 
   - python311-google-cloud-pubsub 
   - python311-google-cloud-run 
   - python311-google-cloud-secret-manager 
@@ -25902,6 +25910,7 @@ unsorted:
   - python311-manuel-doc 
   - python311-mapserver 
   - python311-marathon 
+  - python311-marisa 
   - python311-markdown2 
   - python311-marshmallow 
   - python311-mashumaro 
@@ -29114,6 +29123,7 @@ unsorted:
   - python312-google-cloud-kms 
   - python312-google-cloud-kms-inventory 
   - python312-google-cloud-logging 
+  - python312-google-cloud-monitoring 
   - python312-google-cloud-pubsub 
   - python312-google-cloud-run 
   - python312-google-cloud-secret-manager 
@@ -29599,6 +29609,7 @@ unsorted:
   - python312-manuel-doc 
   - python312-mapserver 
   - python312-marathon 
+  - python312-marisa 
   - python312-markdown-it-py 
   - python312-markdown2 
   - python312-marshmallow 
@@ -32814,6 +32825,7 @@ unsorted:
   - python313-google-cloud-kms 
   - python313-google-cloud-kms-inventory 
   - python313-google-cloud-logging 
+  - python313-google-cloud-monitoring 
   - python313-google-cloud-pubsub 
   - python313-google-cloud-run 
   - python313-google-cloud-secret-manager 
@@ -33279,6 +33291,7 @@ unsorted:
   - python313-manuel-doc 
   - python313-mapserver 
   - python313-marathon 
+  - python313-marisa 
   - python313-markdown-it-py 
   - python313-markdown2 
   - python313-marshmallow 
@@ -34660,7 +34673,6 @@ unsorted:
   - python313-timeout-executor 
   - python313-tiny-proxy 
   - python313-tinyarray 
-  - python313-tinycss2 
   - python313-tinydb 
   - python313-tinyhtml5 
   - python313-tinyrecord 
@@ -34852,7 +34864,6 @@ unsorted:
   - python313-webassets 
   - python313-webauthn 
   - python313-webcolors 
-  - python313-webencodings 
   - python313-weblate-language-data 
   - python313-weblate-schemas 
   - python313-webruntime 
@@ -47955,7 +47966,6 @@ unsorted:
   - typelib-1_0-GUPnPDLNAGst-2_0 
   - typelib-1_0-GUPnPIgd-1_6 
   - typelib-1_0-GUsb-1_0 
-  - typelib-1_0-GVnc-1_0 
   - typelib-1_0-GVncPulse-1_0 
   - typelib-1_0-GXPS-0_1 
   - typelib-1_0-Gck-1 
@@ -48026,7 +48036,6 @@ unsorted:
   - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSource-5 
   - typelib-1_0-GtkSpell-3_0 
-  - typelib-1_0-GtkVnc-2_0 
   - typelib-1_0-Gucharmap-2_90 
   - typelib-1_0-Hasl-1_0 
   - typelib-1_0-Hex-4 
@@ -48045,7 +48054,6 @@ unsorted:
   - typelib-1_0-Libags-7_0 
   - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
-  - typelib-1_0-Libosinfo-1_0 
   - typelib-1_0-Libproxy-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
@@ -48105,7 +48113,6 @@ unsorted:
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8.0 
   - typelib-1_0-Vte-2_91 
-  - typelib-1_0-Vte-3_91 
   - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
   - typelib-1_0-WebKit2WebExtension-4_0 
