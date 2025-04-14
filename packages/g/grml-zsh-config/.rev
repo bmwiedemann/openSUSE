@@ -155,4 +155,13 @@
 - Update to 0.19.14:</comment>
     <requestid>1267688</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>513696cc7cd7ba6f09fcea1ab14982fc</srcmd5>
+    <version>0.19.18</version>
+    <time>1744628364</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.18:
+  * Cleanup zshrc #197</comment>
+    <requestid>1269168</requestid>
+  </revision>
 </revisionlist>
