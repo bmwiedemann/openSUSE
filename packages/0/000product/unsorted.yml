@@ -3097,6 +3097,7 @@ unsorted:
   - dar-lang 
   - dareader-devel 
   - darkhttpd 
+  - darkman 
   - darktable 
   - darktable-tools-basecurve 
   - darktable-tools-noise 
@@ -9808,10 +9809,6 @@ unsorted:
   - juk 
   - juk-lang 
   - jul-to-slf4j 
-  - julia 
-  - julia-compat 
-  - julia-compat-devel 
-  - julia-devel 
   - juliaup 
   - julius 
   - junction 
@@ -11013,6 +11010,10 @@ unsorted:
   - ldns-devel 
   - leafnode 
   - leafpad 
+  - leancrypto-devel 
+  - leancrypto-devel-static 
+  - leancrypto-kmp-default 
+  - leancrypto-tools 
   - lector 
   - ledger 
   - ledmon 
@@ -12019,16 +12020,12 @@ unsorted:
   - libarm_compute50 
   - libarm_compute_graph50 
   - libarmadillo14 
-  - libarmnn34 
-  - libarmnn34-opencl 
-  - libarmnnBasePipeServer34 
-  - libarmnnBasePipeServer34-opencl 
-  - libarmnnSerializer34 
-  - libarmnnSerializer34-opencl 
+  - libarmnn35 
+  - libarmnn35-opencl 
+  - libarmnnBasePipeServer35 
+  - libarmnnBasePipeServer35-opencl 
   - libarmnnTestUtils3 
   - libarmnnTestUtils3-opencl 
-  - libarmnnTfLiteParser24 
-  - libarmnnTfLiteParser24-opencl 
   - libarpack2 
   - libarprec0 
   - libarrow1900 
@@ -12991,7 +12988,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf0 
-  - libdwarfs0_11_3 
+  - libdwarfs0_12_1 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -14184,8 +14181,6 @@ unsorted:
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
-  - libjulia-compat1_10 
-  - libjulia1_10 
   - libjxl-devel 
   - libjxl-tools 
   - libjxl0_11-32bit 
@@ -14368,6 +14363,8 @@ unsorted:
   - libldl-doc 
   - libldl3 
   - libldm-1_0-0-devel 
+  - libleancrypto-fips1 
+  - libleancrypto1 
   - libled1 
   - libleechcraft-util-db-qt6-0_6_75 
   - libleechcraft-util-gui-qt6-0_6_75 
@@ -16030,7 +16027,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-4_8_1 
+  - librssguard-4_8_3 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -16550,10 +16547,10 @@ unsorted:
   - libtiff-devel-32bit 
   - libtiff-devel-docs 
   - libtiff6-32bit 
-  - libtimelineDecoder34 
-  - libtimelineDecoder34-opencl 
-  - libtimelineDecoderJson34 
-  - libtimelineDecoderJson34-opencl 
+  - libtimelineDecoder35 
+  - libtimelineDecoder35-opencl 
+  - libtimelineDecoderJson35 
+  - libtimelineDecoderJson35-opencl 
   - libtimezonemap1 
   - libtimidity-devel 
   - libtimidity2 
@@ -25588,7 +25585,6 @@ unsorted:
   - python311-inflate64 
   - python311-inflect 
   - python311-inflection 
-  - python311-influxdb 
   - python311-influxdb-client 
   - python311-ini2toml 
   - python311-ini2toml-all 
@@ -26447,6 +26443,7 @@ unsorted:
   - python311-pycountry 
   - python311-pycrdt 
   - python311-pycrdt-websocket 
+  - python311-pycrowdsec 
   - python311-pycryptodome 
   - python311-pycryptodomex 
   - python311-pyct 
@@ -30164,6 +30161,7 @@ unsorted:
   - python312-pycparser 
   - python312-pycrdt 
   - python312-pycrdt-websocket 
+  - python312-pycrowdsec 
   - python312-pycryptodome 
   - python312-pycryptodomex 
   - python312-pyct 
@@ -33834,6 +33832,7 @@ unsorted:
   - python313-pycountry 
   - python313-pycrdt 
   - python313-pycrdt-websocket 
+  - python313-pycrowdsec 
   - python313-pycryptodome 
   - python313-pycryptodomex 
   - python313-pyct 
@@ -36314,6 +36313,7 @@ unsorted:
   - ruby3.4-rubygem-launchy 
   - ruby3.4-rubygem-libyui-rake 
   - ruby3.4-rubygem-lightbox2 
+  - ruby3.4-rubygem-lint_roller 
   - ruby3.4-rubygem-liquid 
   - ruby3.4-rubygem-listen 
   - ruby3.4-rubygem-little-plugger 
