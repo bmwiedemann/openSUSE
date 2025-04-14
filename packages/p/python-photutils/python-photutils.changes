@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Apr  6 15:21:28 UTC 2025 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.2.0
+  ## New Features
+  ###  photutils.aperture
+  * Add an aperture_to_region function to convert an Aperture
+    object to an astropy Region or Regions object. [#2009]
+  ### photutils.profiles
+  * Added data_radius and data_profile attributes to the
+    RadialProfile class for calculating the raw radial profile.
+    [#2001]
+  ### photutils.segmentation
+  * Added a to_regions method to SegmentationImage that converts
+    the segment outlines to a regions.Regions object. [#2010]
+  ## Bug Fixes
+  ### photutils.segmentation
+  * Fixed an issue where the SegmentationImage polygons attribute
+    would raise an error if any source segment contained a hole.
+    [#2005]
+  ## API Changes
+  ### photutils.aperture
+  * The theta attribute of EllipticalAperture, EllipticalAnnulus,
+    RectangularAperture, and RectangularAnnulus is now always
+    returned as an angular Quantity. [#2008]
+
+-------------------------------------------------------------------
 Wed Feb 12 14:26:42 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.0

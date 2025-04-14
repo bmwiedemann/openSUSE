@@ -17,7 +17,7 @@
 
 
 Name:           python-photutils
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
