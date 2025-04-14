@@ -25,7 +25,7 @@
 %endif
 
 Name:           qucs-s
-Version:        25.1.1
+Version:        25.1.2
 Release:        0
 Summary:        Qucs with SPICE
 License:        GPL-2.0-or-later
