@@ -21,7 +21,6 @@ Version:        0.4.0
 Release:        0
 Summary:        Pure-Python robotstxt parser with support for modern conventions
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scrapy/protego
 Source:         https://files.pythonhosted.org/packages/source/P/Protego/protego-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -52,7 +51,7 @@ Protego is a pure-Python `robots.txt` parser with support for modern conventions
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/protego.py
-%{python_sitelib}/Protego-%{version}*
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/__pycache__/protego*pyc
+%{python_sitelib}/[Pp]rotego-%{version}.dist-info
 
 %changelog
