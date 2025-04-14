@@ -178,7 +178,7 @@ popd
 %license LICENSE
 %doc AUTHORS
 %{python_sitearch}/kivy
-%{python_sitearch}/Kivy-%{version}.dist-info
+%{python_sitearch}/[Kk]ivy-%{version}.dist-info
 
 %files %{python_files devel} -f kivy-devel-%{python_bin_suffix}.files
 %doc doc/sources/changelog.rst
