@@ -7,4 +7,12 @@
     <comment>required by ghc-hledger-lib</comment>
     <requestid>1253881</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3183f61b49760f5c82cdb7ce1ecd437b</srcmd5>
+    <version>0.10.1</version>
+    <time>1744628334</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1269051</requestid>
+  </revision>
 </revisionlist>
