@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 10 14:09:27 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15allpythons to also build for Python 3.11 on Leap
+
+-------------------------------------------------------------------
 Sun Mar  2 22:26:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.19

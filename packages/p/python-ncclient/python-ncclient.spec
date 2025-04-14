@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15allpythons}
 Name:           python-ncclient
 Version:        0.6.19
 Release:        0
@@ -29,15 +30,15 @@ Patch0:         allow_old_sphinx.patch
 # PATCH-FIX-UPSTREAM intersphinx-mapping.patch gh#ncclient/ncclient#604 mcepl@suse.com
 # use conditionally new form of intersphinx_mapping
 Patch1:         intersphinx-mapping.patch
+BuildRequires:  %{python_module lxml >= 3.3.0}
+BuildRequires:  %{python_module paramiko >= 1.15.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-lxml >= 3.3.0
 Requires:       python-paramiko >= 1.15.0
 BuildArch:      noarch
-BuildRequires:  %{python_module lxml >= 3.3.0}
-BuildRequires:  %{python_module paramiko >= 1.15.0}
-BuildRequires:  %{python_module pytest}
 %python_subpackages
 
 %description
