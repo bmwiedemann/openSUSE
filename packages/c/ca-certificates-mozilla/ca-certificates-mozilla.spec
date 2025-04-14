@@ -57,7 +57,6 @@ URL:            https://www.mozilla.org
 # - Watch out that blacklisted or untrusted certificates are not
 #   accidentally included!
 Source:         https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/certdata.txt
-Patch0:         remove-distrusted.patch
 Source1:        https://hg.mozilla.org/projects/nss/raw-file/default/lib/ckfw/builtins/nssckbi.h
 #Source10:       https://src.fedoraproject.org/rpms/ca-certificates/raw/master/f/certdata2pem.py
 Source10:       certdata2pem.py
@@ -87,7 +86,6 @@ from MozillaFirefox
 mkdir certs
 cd certs
 cp %{SOURCE0} .
-%patch -P 0
 cd ..
 
 install -m 644 %{SOURCE11} COPYING

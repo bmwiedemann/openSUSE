@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 10:42:18 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- reenable the distrusted certs again. the distrust is only for certs
+  issued after the distrust date, not for all certs of a CA.
+  remove: remove-distrusted.patch
+
+-------------------------------------------------------------------
 Mon Mar 31 11:42:58 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - explit remove distruted certs, as the distrust does not get exported

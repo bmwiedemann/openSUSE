@@ -902,4 +902,14 @@
 - remove-distrusted.patch: apply to certdata.txt</comment>
     <requestid>1265888</requestid>
   </revision>
+  <revision rev="69" vrev="4">
+    <srcmd5>61732982ff124e6c11c913e79914c897</srcmd5>
+    <version>2.74</version>
+    <time>1744628132</time>
+    <user>anag_factory</user>
+    <comment>- reenable the distrusted certs again. the distrust is only for certs
+  issued after the distrust date, not for all certs of a CA.
+  remove: remove-distrusted.patch</comment>
+    <requestid>1268602</requestid>
+  </revision>
 </revisionlist>
