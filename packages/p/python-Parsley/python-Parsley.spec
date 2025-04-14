@@ -1,7 +1,7 @@
 #
 # spec file for package python-Parsley
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-parsley
 Obsoletes:      %{oldpython}-Parsley-doc
 Obsoletes:      python-Parsley-doc
@@ -101,6 +101,6 @@ export LANG=en_US.UTF-8
 %pycache_only %{python_sitelib}/__pycache__/parsley.*.py*
 %{python_sitelib}/terml
 %{python_sitelib}/ometa
-%{python_sitelib}/Parsley-%{version}.dist-info
+%{python_sitelib}/[Pp]arsley-%{version}.dist-info
 
 %changelog
