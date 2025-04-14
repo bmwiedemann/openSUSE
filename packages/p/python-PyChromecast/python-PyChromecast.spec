@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyChromecast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,6 @@ multi-room setups with Audio cast devices.
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pychromecast
-%{python_sitelib}/PyChromecast-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Cc]hromecast-%{version}.dist-info
 
 %changelog
