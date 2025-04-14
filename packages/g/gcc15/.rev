@@ -47,4 +47,16 @@ since we bumped libgo SONAME as well for 15</comment>
 - Build GCC executables PIE on SLE.  [bsc#1239938]</comment>
     <requestid>1265224</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>051e0b4311b3e842f7ea9bab9d4d3c35</srcmd5>
+    <version>15.0.1+git9352</version>
+    <time>1744628141</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC trunk head, 15.0.1+git9352
+- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Add newlib-gcn-libm-fix.patch to fix newlib libm miscompilation
+  for GCN offloading.</comment>
+    <requestid>1268364</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,45 @@
+From 2ef1a37e7823b21eda524972c006e0e8c26f97b3 Mon Sep 17 00:00:00 2001
+From: Andrew Stubbs <ams@baylibre.com>
+Date: Thu, 20 Mar 2025 09:32:31 +0000
+Subject: [PATCH] Fix GCN SIMD libm bug
+
+Since January, GCC has been miscompiling Newlib libm on AMD GCN due to
+undefined behaviour in the RESIZE_VECTOR macro.  It was "working" but expanding
+the size of a vector would no longer zero the additional lanes, as it expected.
+
+See https://gcc.gnu.org/bugzilla/show_bug.cgi?id=119325
+---
+ newlib/libm/machine/amdgcn/amdgcn_veclib.h | 17 +++++++++++++++--
+ 1 file changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/newlib/libm/machine/amdgcn/amdgcn_veclib.h b/newlib/libm/machine/amdgcn/amdgcn_veclib.h
+index bd67740ac..9e9d3ebf0 100644
+--- a/newlib/libm/machine/amdgcn/amdgcn_veclib.h
++++ b/newlib/libm/machine/amdgcn/amdgcn_veclib.h
+@@ -85,8 +85,21 @@ typedef union {
+ 
+ #define RESIZE_VECTOR(to_t, from) \
+ ({ \
+-  __auto_type __from = (from); \
+-  *((to_t *) &__from); \
++  to_t __to; \
++  if (VECTOR_WIDTH (to_t) < VECTOR_WIDTH (__typeof (from))) \
++    asm ("; no-op cast %0" : "=v"(__to) : "0"(from)); \
++  else \
++    { \
++      unsigned long __mask = -1L; \
++      int lanes = VECTOR_WIDTH (__typeof (from)); \
++      __mask <<= lanes; \
++      __builtin_choose_expr ( \
++	V_SF_SI_P (to_t), \
++	({asm ("v_mov_b32 %0, 0" : "=v"(__to) : "0"(from), "e"(__mask));}), \
++	({asm ("v_mov_b32 %H0, 0\n\t" \
++	       "v_mov_b32 %L0, 0" : "=v"(__to) : "0"(from), "e"(__mask));})); \
++    } \
++  __to; \
+ })
+ 
+ /* Bit-wise cast vector FROM to type TO_T.  */
+-- 
+2.43.0
+

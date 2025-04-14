@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 10 06:17:49 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC trunk head, 15.0.1+git9352
+- Make sure link editing is done against our own shared library
+  copy rather than the installed system runtime.  [bsc#1240788]
+- Add newlib-gcn-libm-fix.patch to fix newlib libm miscompilation
+  for GCN offloading.
+
+-------------------------------------------------------------------
 Fri Mar 28 08:54:41 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC trunk head, 15.0.1+git9001

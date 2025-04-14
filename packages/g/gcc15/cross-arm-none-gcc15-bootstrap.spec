@@ -103,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git9001
+Version:        15.0.1+git9352
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -129,6 +129,8 @@ Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches for newlib
+Patch70:        newlib-gcn-libm-fix.patch
 
 # Define the canonical target and host architecture
 #   %%gcc_target_arch  is supposed to be the full target triple
@@ -311,6 +313,7 @@ only, it is not intended for any other use.
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
 ln -s newlib-4.5.0.20241231/newlib .
+%patch -p1 -P 70
 %else
 %setup -q -n gcc-%{version}
 %endif
@@ -808,7 +811,7 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 mkdir -p $RPM_BUILD_ROOT/%{?sysroot:%sysroot}
 make DESTDIR=$RPM_BUILD_ROOT install-target
 %if %{build_cp}
-# So we installed libstdc++ headers into %prefix where they conflict
+# So we installed libstdc++ headers into %%prefix where they conflict
 # with other host compilers.  Rip out the non-target specific parts
 # again.  Note not all cross targets support libstdc++, so create the
 # directory to make things easier.

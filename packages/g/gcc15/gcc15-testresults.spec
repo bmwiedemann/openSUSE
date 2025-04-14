@@ -238,7 +238,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git9001
+Version:        15.0.1+git9352
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -411,6 +411,8 @@ Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
+# Patches for newlib
+Patch70:        newlib-gcn-libm-fix.patch
 
 Summary:        Testsuite results
 License:        SUSE-Public-Domain
@@ -521,6 +523,7 @@ Results from running the gcc and target library testsuites.
 %if 0%{?nvptx_newlib:1}%{?amdgcn_newlib:1}
 %setup -q -n gcc-%{version} -a 5
 ln -s newlib-4.5.0.20241231/newlib .
+%patch -p1 -P 70
 %else
 %setup -q -n gcc-%{version}
 %endif
