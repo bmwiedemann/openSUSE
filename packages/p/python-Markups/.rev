@@ -106,4 +106,14 @@
     <comment></comment>
     <requestid>1239972</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>dda3ea5f56203f5a894796bc8a9c3e9f</srcmd5>
+    <version>4.1.0</version>
+    <time>1744628383</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269099</requestid>
+  </revision>
 </revisionlist>

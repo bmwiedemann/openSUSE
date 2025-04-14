@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 06:06:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Tue Mar 25 03:42:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Wed Jan 22 14:08:33 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add pygments.patch to fix test failure with new pygments

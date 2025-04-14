@@ -64,6 +64,6 @@ such as Markdown and reStructuredText (these two are supported by default).
 %license LICENSE
 %doc README.rst changelog
 %{python_sitelib}/markups
-%{python_sitelib}/Markups-%{version}*-info
+%{python_sitelib}/[Mm]arkups-%{version}.dist-info
 
 %changelog
