@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:52:09 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.5
+ * Preview features
+   * [airflow] Add missing AIR302 attribute check 
+   * [airflow] Expand module path check to individual symbols (AIR302) 
+   * [airflow] Extract AIR312 from AIR302 rules (AIR302, AIR312) 
+   * [airflow] Update oudated AIR301, AIR302 rules 
+   * [syntax-errors] Async comprehension in sync comprehension 
+   * [syntax-errors] Check annotations in annotated assignments 
+   * [syntax-errors] Extend annotation checks to await 
+ * Bug fixes
+   * [flake8-pie] Avoid false positive for multiple assignment with auto() (PIE796) 
+ * Rule changes
+   * [ruff] Fix RUF100 to detect unused file-level noqa directives with specific codes  
+   * [flake8-pytest-style] Avoid false positive for legacy form of pytest.raises (PT011) 
+ * Documentation
+   * Fix formatting of "See Style Guide" link 
+
+-------------------------------------------------------------------
 Sun Apr  6 18:44:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.4

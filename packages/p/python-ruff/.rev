@@ -1920,4 +1920,27 @@
    * [refurb] Document why UserDict, UserList, and UserString are preferred over dict, list, and str (FURB189)</comment>
     <requestid>1267438</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>574db665186c09e69f2bbba29a2b7a62</srcmd5>
+    <version>0.11.5</version>
+    <time>1744628137</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.5
+ * Preview features
+   * [airflow] Add missing AIR302 attribute check 
+   * [airflow] Expand module path check to individual symbols (AIR302) 
+   * [airflow] Extract AIR312 from AIR302 rules (AIR302, AIR312) 
+   * [airflow] Update oudated AIR301, AIR302 rules 
+   * [syntax-errors] Async comprehension in sync comprehension 
+   * [syntax-errors] Check annotations in annotated assignments 
+   * [syntax-errors] Extend annotation checks to await 
+ * Bug fixes
+   * [flake8-pie] Avoid false positive for multiple assignment with auto() (PIE796) 
+ * Rule changes
+   * [ruff] Fix RUF100 to detect unused file-level noqa directives with specific codes  
+   * [flake8-pytest-style] Avoid false positive for legacy form of pytest.raises (PT011) 
+ * Documentation
+   * Fix formatting of &quot;See Style Guide&quot; link</comment>
+    <requestid>1268673</requestid>
+  </revision>
 </revisionlist>
