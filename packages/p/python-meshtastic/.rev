@@ -27,4 +27,15 @@
   * update protobufs to v2.6.0</comment>
     <requestid>1252828</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>828858689182c75d78c64f8cafd71b79</srcmd5>
+    <version>2.6.1</version>
+    <time>1744628240</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.1:
+  * Work around RTS/DTR serial reset issues on Windows
+  * Fix pytest test collection on default install
+  * protobufs: v2.6.4</comment>
+    <requestid>1268763</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 12 07:36:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.1:
+  * Work around RTS/DTR serial reset issues on Windows
+  * Fix pytest test collection on default install
+  * protobufs: v2.6.4
+
+-------------------------------------------------------------------
 Thu Mar 13 17:23:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:
