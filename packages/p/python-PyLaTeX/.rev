@@ -64,4 +64,14 @@
 - Switch to pyproject macros.</comment>
     <requestid>1146989</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>681cbc90e800cbcba1665b2a4c6adb23</srcmd5>
+    <version>1.4.2</version>
+    <time>1744639713</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269115</requestid>
+  </revision>
 </revisionlist>

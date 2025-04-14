@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyLaTeX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ordered-set
@@ -123,6 +124,6 @@ PyLaTeX is a Python library for creating and compiling LaTeX files.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pylatex
-%{python_sitelib}/PyLaTeX-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Ll]a[Tt]e[Xx]-%{version}.dist-info
 
 %changelog
