@@ -685,4 +685,41 @@
   * docs: update GitHub Action assets (#5611) (forwarded request 1256079 from jfkw)</comment>
     <requestid>1256080</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2b8dd9e1ab1066b60ed709015bcd1923</srcmd5>
+    <version>2.1.1</version>
+    <time>1744628313</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.1:
+* chore: prepare release
+* chore: downgrade goreleaser to v2.8.1
+* docs: update documentation assets (#5722)
+* docs: update GitHub Action assets (#5723)
+
+- Update to version 2.1.0:
+* chore: prepare release
+* Add funcorder linter (#5630)
+* build(deps): bump github.com/mgechev/revive from 1.8.0 to 1.9.0 (#5721)
+* dev: update JSON schema
+* govet: add `httpmux` analyzer (#5717)
+* build(deps): bump github.com/timonwong/loggercheck from 0.10.1 to 0.11.0 (#5715)
+* build(deps): bump github.com/golangci/unconvert to HEAD (#5713)
+* build(deps): bump github.com/jgautheron/goconst from 1.7.1 to 1.8.1 (#5712)
+* docs: update section about vscode integration (#5706)
+* build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.3 to 2.2.4 (#5711)
+* build(deps): bump github.com/butuzov/ireturn from 0.3.1 to 0.4.0 (#5710)
+* build(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0 (#5708)
+* feat: add golangci-lint-fmt pre-commit hook (#5705)
+* build(deps): bump golang.org/x/oauth2 from 0.28.0 to 0.29.0 in /scripts/gen_github_action_config in the scripts group (#5704)
+* build(deps): bump go-simpler.org/sloglint from 0.10.1 to 0.11.0 (#5698)
+* build(deps): bump golang.org/x/sys from 0.31.0 to 0.32.0 (#5699)
+* docs: explicitly describe that the `migrate` command automatically migrate `linters.presets` (#5697)
+* build(deps): bump go-simpler.org/sloglint from 0.10.0 to 0.10.1 (#5696)
+* fix: memory leaks when using go1.(N) with golangci-lint built with with go1.(N-1) (#5695)
+* build(deps): bump github.com/securego/gosec/v2 from 2.22.2 to 2.22.3 (#5694)
+* build(deps): bump github.com/alingse/nilnesserr from 0.1.2 to 0.2.0 (#5693)
+* docs: add `redundant-test-main-exit` to `revive` rules (#5692)
+* build(deps): bump dependencies in the linter-testdata group (#5691) (forwarded request 1269028 from jfkw)</comment>
+    <requestid>1269029</requestid>
+  </revision>
 </revisionlist>

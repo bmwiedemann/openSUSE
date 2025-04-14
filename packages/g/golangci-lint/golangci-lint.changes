@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sun Apr 13 17:33:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.1.1:
+  * chore: prepare release
+  * chore: downgrade goreleaser to v2.8.1
+  * docs: update documentation assets (#5722)
+  * docs: update GitHub Action assets (#5723)
+
+-------------------------------------------------------------------
+Sat Apr 12 18:45:31 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.1.0:
+  * chore: prepare release
+  * Add funcorder linter (#5630)
+  * build(deps): bump github.com/mgechev/revive from 1.8.0 to 1.9.0 (#5721)
+  * dev: update JSON schema
+  * govet: add `httpmux` analyzer (#5717)
+  * build(deps): bump github.com/timonwong/loggercheck from 0.10.1 to 0.11.0 (#5715)
+  * build(deps): bump github.com/golangci/unconvert to HEAD (#5713)
+  * build(deps): bump github.com/jgautheron/goconst from 1.7.1 to 1.8.1 (#5712)
+  * docs: update section about vscode integration (#5706)
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.3 to 2.2.4 (#5711)
+  * build(deps): bump github.com/butuzov/ireturn from 0.3.1 to 0.4.0 (#5710)
+  * build(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0 (#5708)
+  * feat: add golangci-lint-fmt pre-commit hook (#5705)
+  * build(deps): bump golang.org/x/oauth2 from 0.28.0 to 0.29.0 in /scripts/gen_github_action_config in the scripts group (#5704)
+  * build(deps): bump go-simpler.org/sloglint from 0.10.1 to 0.11.0 (#5698)
+  * build(deps): bump golang.org/x/sys from 0.31.0 to 0.32.0 (#5699)
+  * docs: explicitly describe that the `migrate` command automatically migrate `linters.presets` (#5697)
+  * build(deps): bump go-simpler.org/sloglint from 0.10.0 to 0.10.1 (#5696)
+  * fix: memory leaks when using go1.(N) with golangci-lint built with with go1.(N-1) (#5695)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.22.2 to 2.22.3 (#5694)
+  * build(deps): bump github.com/alingse/nilnesserr from 0.1.2 to 0.2.0 (#5693)
+  * docs: add `redundant-test-main-exit` to `revive` rules (#5692)
+  * build(deps): bump dependencies in the linter-testdata group (#5691)
+  * build(deps): bump go-simpler.org/sloglint from 0.9.0 to 0.10.0 (#5688)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.15.0 to 2.16.0 (#5690)
+  * build(deps): bump github.com/bombsimon/wsl/v4 from 4.6.0 to 4.7.0 (#5689)
+  * build(deps): bump github.com/firefart/nonamedreturns from 1.0.5 to 1.0.6 (#5687)
+  * feat: add warn-unused option for fmt command (#5668)
+  * build(deps): bump github.com/polyfloyd/go-errorlint from 1.7.1 to 1.8.0 (#5686)
+  * build(deps): bump github.com/mgechev/revive from 1.7.0 to 1.8.0 (#5663)
+  * build(deps): bump github.com/kunwardeep/paralleltest from 1.0.13 to 1.0.14 (#5657)
+  * build(deps): bump github.com/tomarrell/wrapcheck/v2 from 2.10.0 to 2.11.0 (#5656)
+  * feat: colored diff for fmt command (#5652)
+  * feat: add an option to display absolute paths (#5651)
+  * feat: add config path placeholder (#5650)
+  * build(deps): bump github.com/Crocmagnon/fatcontext from 0.7.1 to 0.7.2 (#5685)
+  * docs: add link to issues related to some integrations (#5682)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.25.2 to 4.25.3 (#5680)
+  * build(deps): bump github.com/alexkohler/nakedret/v2 from 2.0.5 to 2.0.6 (#5681)
+  * docs: update demo (#5677)
+  * build(deps): bump the linter-testdata group across 2 directories with 4 updates (#5676)
+  * fix: gocritic importshadow checker (#5673)
+  * docs: fix `go get -tool` command (#5669)
+  * docs: improve default exclusions render (#5661)
+  * docs: remove tenv linter settings (#5665)
+  * dev: rewrite and simplify thanks page generation (#5662)
+  * docs: cleanup config reference (#5659)
+  * build(deps): bump github.com/Antonboom/testifylint from 1.6.0 to 1.6.1 (#5654)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.12 to 0.3.13 (#5658)
+  * build(deps): bump tar-fs and puppeteer in /docs (#5653)
+  * docs: fix settings examples (#5643)
+  * docs: improve version documentation (#5639)
+  * docs: fix config reference for formatters (#5638)
+  * build(deps): bump github.com/kunwardeep/paralleltest from 1.0.10 to 1.0.13 (#5636)
+  * docs: remove golint in nolint example (#5635)
+  * docs: add version field to configuration sample (#5632)
+  * docs: update GitHub Action assets (#5634)
+
+-------------------------------------------------------------------
 Tue Mar 25 22:03:25 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.0.2:
