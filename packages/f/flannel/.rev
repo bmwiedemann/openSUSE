@@ -236,4 +236,12 @@
 - delete unused `kube-flannel.yaml` source in the spec file, it is directly soured from the flannel source tar ball</comment>
     <requestid>1244129</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e0b16b2809115f7afe32cdb78cb7b99a</srcmd5>
+    <version>0.26.6</version>
+    <time>1744639697</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.26.6, fix CVE-2025-30204, bsc#1240516</comment>
+    <requestid>1269204</requestid>
+  </revision>
 </revisionlist>

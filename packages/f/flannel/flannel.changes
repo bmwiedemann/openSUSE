@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 09:16:14 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 0.26.6:
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+  * Bump the etcd group with 4 updates
+  * Bump the tencent group with 2 updates
+  * Organize dependabot PR's more clearly by using groups
+  * Use peer's wireguard port, not our own
+  * Bump to codeql v3
+  * Pin all GHA to a specific SHA commit
+  * Bump github.com/golang-jwt/jwt/v4 from 4.5.1 to 4.5.2 (fix CVE-2025-30204, bsc#1240516)
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+  * Bump go.etcd.io/etcd/tests/v3 from 3.5.18 to 3.5.20
+  * add missing GH_TOKEN env var in release.yaml
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc
+  * Upload chart archive with the release files
+  * make deps
+  * refactor release.yaml to reduce use of potentially vulnerable GH Actions
+  * Bump golang.org/x/net from 0.34.0 to 0.36.0
+  * enable setting CNI directory paths in helm chart
+  * Added cni file configuration on the chart
+  * Bump github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/vpc
+  * Bump github.com/avast/retry-go/v4 from 4.6.0 to 4.6.1
+
+-------------------------------------------------------------------
 Fri Feb  7 11:23:27 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - add `go-modules` for automated creation of go vendored modules tarball
