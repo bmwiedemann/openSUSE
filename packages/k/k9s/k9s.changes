@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:56:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.3:
+  * Maintenance Release!
+    A bit more code spring cleaning/TLC and address a few bugs:
+    - [RBAC View] Fix issue bombing out on RBAC cluster roles
+    - [Custom Views] Fix issue with parsing jq filters and bombing
+      out (Big Thanks to Pierre for flagging it!)
+
+-------------------------------------------------------------------
 Fri Apr 11 05:18:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.2:
