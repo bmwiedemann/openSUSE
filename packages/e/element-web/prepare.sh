@@ -25,36 +25,37 @@ tar xzvf element-web-${version}.tar.gz
 cd element-web-${version}
 changes=$(grep "^Changes in \[$last_packaged_version\]" -B10000 CHANGELOG.md |  head -n -2 | sed -e '/^==*$/d' -e 's/Changes in \[\([^\[]*\)\].*/Version \1/' -e 's/^\([^-].*\)$/  \1/' -e 's/\[.*\](\(.*\))/\1/g' -e 's/^ *Version /Version /g')
 
-echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
+tmpdir="$(mktemp -d)"
+mkdir -pv "$tmpdir/home"
+oldhome="$HOME"
+export HOME="$tmpdir/home"
+
 yarn cache clean
 rm -rf node_modules/
-yarn install --pure-lockfile --ignore-engines || : # this will download tha packages into the offline cache
+#cp "$oldwd/yarn.lock" ./
+yarn install  --frozen-lockfile --ignore-engines --ignore-platform  --ignore-scripts --link-duplicates || : # this will download the packages
 
-# download some additional dependencie that slips through this earlier method
-cd ./npm-packages-offline-cache/
+#Remove non-free binaries, starting with a few common file extensions
+find . -name '*.node' -print -delete
+find . -name '*.jar' -print -delete
+find . -name '*.dll' -print -delete
+find . -name '*.exe' -print -delete
+find . -name '*.dylib' -print -delete
+find . -name '*.so' -print -delete
+find . -name '*.o' -print -delete
+find . -name '*.a' -print -delete
 
-# fill sentry-cli cache with mock binaries for all architecutres
-mkdir -p sentry-cli
-cd sentry-cli
-sentry_cli_version=$(ls ../@sentry-cli-*.tgz | sed -e 's/.*cli-//' -e 's/.tgz//')
-for arch in i686 x86_64 aarch64 armv7 riscv64 ppc64 ppc64le s390x; do
-	url="https://downloads.sentry-cdn.com/sentry-cli/${sentry_cli_version}/sentry-cli-Linux-${arch}"
-	filehash=$(echo -n "$url" | md5sum | cut -c1-6)
-	target="${filehash}-sentry-cli-Linux-${arch/_/-}"
-	#wget -O "$target" "$url"
-	echo '#!/bin/bash' > "$target"
-	echo '' >> "$target"
-	echo "echo ${sentry_cli_version}" >> "$target"
-	chmod +x "$target"
-done
-cd ..
+#now detect the rest. This should catch all ELFs that may be executed. We use sponge to avoid a race condition between find and rm
+find . -type f| sponge |\
+    xargs -P"$(nproc)" -- sh -c 'file -S "$@" | grep -v '\'': .*script'\'' | grep '\'': .*executable'\'' | tee /dev/stderr | sed '\''s/: .*//'\'' | xargs rm -fv'
 
-cd ..
+rm -f "${oldwd}/vendor.tar.zst"
+ZSTD_CLEVEL=19 ZSTD_NBTHREADS=$(nproc) tar --zstd --sort=name -Scf "${oldwd}/vendor.tar.zst" node_modules
+export HOME="$oldhome"
 
-tar czf npm-packages-offline-cache.tar.gz ./npm-packages-offline-cache
-cp npm-packages-offline-cache.tar.gz "$oldwd/"
 cd "$oldwd"
-echo -e "\n\nDONE creating npm dependency offline cache file 'npm-packages-offline-cache.tar.gz'"
+rm -rf "$tmpdir"
+echo -e "\n\nDONE creating npm offline dependencies archive 'vendor.tar.zst'"
 
 read -p "Write changes?"
 osc vc -m "${changes}" element-web.changes

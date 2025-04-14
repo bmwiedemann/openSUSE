@@ -17,14 +17,14 @@
 
 
 Name:           element-web
-Version:        1.11.96
+Version:        1.11.97
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        AGPL-3.0-only or GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://github.com/vector-im/element-web
 Source0:        https://github.com/vector-im/element-web/archive/v%{version}.tar.gz#/element-web-%{version}.tar.gz
-Source1:        npm-packages-offline-cache.tar.gz
+Source1:        vendor.tar.zst
 Source2:        jitsi_external_api.min.js
 Source3:        prepare.sh
 Patch0:         fix-webpack-oom.patch
@@ -33,6 +33,7 @@ BuildRequires:  nodejs-packaging
 BuildRequires:  yarn
 BuildRequires:  rust
 BuildRequires:  cargo
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description
@@ -42,20 +43,9 @@ A glossy Matrix collaboration client - web files
 %autosetup -n element-web-%{version} -a1 -p1
 
 %build
-echo 'yarn-offline-mirror "./npm-packages-offline-cache"' > .yarnrc
-ls -l ./npm-packages-offline-cache | head
-
-# fix some strange dependency
-#cp npm-packages-offline-cache/matrix-analytics-events-0.0.1.tgz \
-#   npm-packages-offline-cache/@matrix-analytics-events-0.0.1.tgz
-#ls -l ./npm-packages-offline-cache/*matrix-analytics-events*
-
-#sed -i -e 's|    matrix-analytics-events "github:matrix-org/matrix-analytics-events.git#[^"]*"|    matrix-analytics-events "^0.0.1"|' yarn.lock
-#sed -i -e 's|"matrix-analytics-events@github:matrix-org/matrix-analytics-events#[^"]*"|matrix-analytics-events@^0.0.1|' yarn.lock
-
 export SENTRYCLI_SKIP_DOWNLOAD=1
 
-yarn install --offline --pure-lockfile
+yarn build
 
 mkdir -p webapp
 cp %{SOURCE2} ./webapp/jitsi_external_api.min.js
