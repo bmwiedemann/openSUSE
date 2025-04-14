@@ -800,4 +800,14 @@
     <comment></comment>
     <requestid>1249604</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>06f4dc4bf89dc776325f57f59e3f22d1</srcmd5>
+    <version>16.2.15.83+g635361e68c0</version>
+    <time>1744628125</time>
+    <user>anag_factory</user>
+    <comment>- Update to 16.2.15-83-g635361e68c0:
+  + Fix FTBFS on GCC 15 (bsc#1239885)
+</comment>
+    <requestid>1268582</requestid>
+  </revision>
 </revisionlist>
