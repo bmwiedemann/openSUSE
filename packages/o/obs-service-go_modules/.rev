@@ -185,4 +185,13 @@
   * _service tar_scm url use .git extension by convention (forwarded request 1268024 from jfkw)</comment>
     <requestid>1268025</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e0df2cc357fa86e1faa1203f5545779f</srcmd5>
+    <version>0.6.6</version>
+    <time>1744628310</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.6:
+  * Preserve symlinks on shutil.copytree archive to tempdir refs #66 (forwarded request 1269021 from jfkw)</comment>
+    <requestid>1269022</requestid>
+  </revision>
 </revisionlist>

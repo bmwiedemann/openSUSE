@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 13 17:17:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.6.6:
+  * Preserve symlinks on shutil.copytree archive to tempdir refs #66
+
+-------------------------------------------------------------------
 Wed Apr 09 05:16:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.6.5:
