@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr 13 11:23:56 UTC 2025 - meissner@suse.com
+
+- Update to version 2.5.0:
+  * Update sigstore-go to pick up bug fixes (#4150)
+  * Update golangci-lint to v2, update golangci-lint-action (#4143)
+  * Feat/non filename completions (#4115)
+  * update builder to use go1.24.1 (#4116)
+  * Add support for new bundle specification for attesting/verifying OCI image attestations (#3889)
+  * Remove cert log line (#4113)
+  * cmd/cosign/cli: fix typo in ignoreTLogMessage (#4111)
+  * bump to latest scaffolding release for testing (#4099)
+  * increase 2e2_test docker compose tiemout to 180s (#4091)
+  * Fix replace with compliant image mediatype (#4077)
+  * Add TSA certificate related flags and fields for cosign attest (#4079)
+- Security issues fixed:
+  - CVE-2024-6104: cosign: hashicorp/go-retryablehttp: url might write sensitive information to log file (bsc#1227031)
+  - CVE-2024-51744: cosign: github.com/golang-jwt/jwt/v4: Bad documentation of error handling in ParseWithClaims can lead to potentially dangerous situations in golang-jwt (bsc#1232985)
+  - CVE-2025-27144: cosign: github.com/go-jose/go-jose/v4,github.com/go-jose/go-jose/v3: Go JOSE's Parsing Vulnerable to Denial of Service (bsc#1237682)
+  - CVE-2025-22870: cosign: golang.org/x/net/proxy: proxy bypass using IPv6 zone IDs (bsc#1238693)
+  - CVE-2025-22868: cosign: golang.org/x/oauth2/jws: Unexpected memory consumption during token parsing in golang.org/x/oauth2 (bsc#1239204)
+  - CVE-2025-22869: cosign: golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh (bsc#1239337)
+
+-------------------------------------------------------------------
 Thu Feb 20 14:58:15 UTC 2025 - meissner@suse.com
 
 - Update to version 2.4.3:
