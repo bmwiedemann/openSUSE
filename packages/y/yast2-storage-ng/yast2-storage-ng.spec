@@ -17,7 +17,7 @@
 
 
 Name:           yast2-storage-ng
-Version:        5.0.28
+Version:        5.0.29
 Release:        0
 Summary:        YaST2 - Storage Configuration
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -26,8 +26,8 @@ URL:            https://github.com/yast/yast-storage-ng
 
 Source:         %{name}-%{version}.tar.bz2
 
-# Encryption#use_key_file_in_commit
-BuildRequires:  libstorage-ng-ruby >= 4.5.144
+# RB_FILESYSTEM_MOUNT_READ_ONLY
+BuildRequires:  libstorage-ng-ruby >= 4.5.246
 BuildRequires:  update-desktop-files
 # Replace PackageSystem with Package
 BuildRequires:  yast2 >= 4.4.38
@@ -48,8 +48,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:parallel_tests)
 
 # findutils for xargs
 Requires:       findutils
-# Encryption#use_key_file_in_commit
-Requires:       libstorage-ng-ruby >= 4.5.144
+# RB_FILESYSTEM_MOUNT_READ_ONLY
+Requires:       libstorage-ng-ruby >= 4.5.246
 # Require libstorage bindings for the current Ruby version (bsc#1235598)
 Requires:       libstorage-ng-ruby-%{rb_ver}
 # Replace PackageSystem with Package
