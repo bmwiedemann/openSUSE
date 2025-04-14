@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 11 18:10:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.10:
+  * Features
+    - Added --client-signing-algorithms flag (#1974)
+  * Fixes / Misc
+    - emit unpopulated values when marshalling (#2438)
+    - pkg/api: better logs when algorithm registry rejects a key
+      (#2429)
+    - chore: improve mysql readiness checks (#2397)
+    - Added --client-signing-algorithms flag (#1974)
+  * Security fixes (over the last releases):
+    - CVE-2024-6104: rekor: hashicorp/go-retryablehttp: url might write sensitive information to log file (bsc#1227053)
+    - CVE-2023-45288: rekor: golang.org/x/net/http2: close connections when receiving too many headers (bsc#1236519)
+    - CVE-2025-27144: rekor: gopkg.in/go-jose/go-jose.v2,github.com/go-jose/go-jose/v4,github.com/go-jose/go-jose/v3: Go JOSE's Parsing Vulnerable to Denial of Service (bsc#1237638)
+    - CVE-2025-22868: rekor: golang.org/x/oauth2/jws: Unexpected memory consumption during token parsing in golang.org/x/oauth2 (bsc#1239191)
+    - CVE-2025-22869: rekor: golang.org/x/crypto/ssh: Denial of Service in the Key Exchange of golang.org/x/crypto/ssh (bsc#1239327)
+    - CVE-2025-30204: rekor: github.com/golang-jwt/jwt/v5: jwt-go allows excessive memory allocation during header parsing (bsc#1240468)
+
+-------------------------------------------------------------------
 Tue Jan 28 08:22:57 UTC 2025 - meissner@suse.com
 
 - Update to version 1.3.9 (jsc#SLE-23476):
