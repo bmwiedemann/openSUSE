@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 06:03:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Wed Mar 26 00:43:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Wed Mar 19 23:35:22 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.8.1:

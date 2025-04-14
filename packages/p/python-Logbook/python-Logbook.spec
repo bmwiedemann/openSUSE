@@ -76,6 +76,6 @@ kill %%1
 %license LICENSE
 %doc README.md CHANGES
 %{python_sitearch}/logbook
-%{python_sitearch}/Logbook-%{version}.dist-info
+%{python_sitearch}/[Ll]ogbook-%{version}.dist-info
 
 %changelog
