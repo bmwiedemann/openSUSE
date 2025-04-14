@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Apr 11 10:48:15 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to version 3.12.0:
+  * Diagnostic byte positions: A new macro,
+    JSON_DIAGNOSTIC_POSITIONS, introduces member functions to query
+    the byte positions of values in the input they were parsed from.
+  * Enhanced conversion macros: The conversion macros for arbitrary
+    types now include several upgrades: All macros are templated,
+    supporting json, ordered_json, and any other basic_json
+    specialization.
+  * Derived classes can now be seamlessly converted to/from JSON
+    using the new NLOHMANN_DEFINE_DERIVED_TYPE_* macros.
+  * Support for std::optional: The library now supports conversions
+    from/to std::optional types when compiled with C++17.
+  * Flexible string compatibility: Functions patch, diff, and
+    flatten now work with arbitrary string types.
+  * Binary format enhancements: The BJData mapping now supports
+    draft 3, including optimized binary array types. The BSON
+    mapping has added support for unsigned 64-bit integers. The
+    get_number function used in the binary format implementations
+    has been optimized to read multiple bytes at once.
+  * Multidimensional array conversion: Multidimensional C-style
+    arrays can now be directly converted to JSON.
+  * Filesystem paths in UTF-8: The conversions from/to
+    std::filesystem::path are now encoded to UTF-8 strings by
+    default on all operating systems.
+  * CMake 4.0 support.
+
+-------------------------------------------------------------------
 Sat Apr 20 18:27:48 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - add upstream signing key and verify source signature

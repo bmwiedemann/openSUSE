@@ -1,7 +1,7 @@
 #
 # spec file for package nlohmann_json
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nlohmann_json
-Version:        3.11.3
+Version:        3.12.0
 Release:        0
 Summary:        JSON for Modern C++
 License:        MIT
@@ -28,7 +28,7 @@ Source:         https://github.com/nlohmann/json/releases/download/v%{version}/j
 Source2:        https://github.com/nlohmann/json/releases/download/v%{version}/json.tar.xz.asc#/json-%{version}.tar.xz.asc
 Source3:        https://keybase.io/nlohmann/pgp_keys.asc?fingerprint=797167ae41c0a6d9232e48457f3cea63ae251b69#/%{name}.keyring
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.1
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 
 %description
