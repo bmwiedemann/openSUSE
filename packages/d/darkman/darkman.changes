@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Feb 18 18:47:27 UTC 2025 - Viacheslav Ostroukh <opensuse-dev@slavouti.ch> - 2.0.1
+
+- Update to version 2.0.1
+  * Full diff at https://gitlab.com/WhyNotHugo/darkman/-/compare/v1.5.4...v2.0.1
+- Add 0001-fix-dependencies.patch
+  * Bump Go version to 1.18, since package dependencies require it
+  * Sanitize dependencies with `go mod tidy`
+
+-------------------------------------------------------------------
+Sun Jul 23 13:43:25 UTC 2023 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.5.4
+  * Switch to Go lang
+  * Full diff at https://gitlab.com/WhyNotHugo/darkman/-/compare/v0.2.0...v1.5.4
+
+-------------------------------------------------------------------
+Wed Mar 31 09:13:46 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 0.2.0
