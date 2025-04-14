@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:56:17 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.6.5
+  * file: Fix broken conditional to exit on allowed error
+  * Disconnect from buffer signals when data object is released
+  * Update README after switchover to meson
+  * Translation Updates
+
+-------------------------------------------------------------------
 Tue Mar 25 11:36:31 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.6.4

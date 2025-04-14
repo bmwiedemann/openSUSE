@@ -18,7 +18,7 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
