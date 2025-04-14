@@ -1,7 +1,7 @@
 #
 # spec file for package python-Cheetah3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -98,6 +98,6 @@ $python Cheetah/Tests/Test.py
 %python_alternative %{_bindir}/cheetah-analyze
 %python_alternative %{_bindir}/cheetah-compile
 %{python_sitearch}/Cheetah
-%{python_sitearch}/CT3-%{version}*info
+%{python_sitearch}/[Cc][Tt]3-%{version}.dist-info
 
 %changelog
