@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr  3 10:19:59 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable liboqs on armv6
+
+-------------------------------------------------------------------
 Mon Mar 24 15:53:48 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - FIPS: Mark SHA-1 as non-approved in the SLI for all operations. [jsc#PED-12224]

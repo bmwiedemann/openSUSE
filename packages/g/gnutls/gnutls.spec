@@ -35,7 +35,11 @@
 # disable for now, as our OBS builds do not work with it. Marcus 20220511
 #bcond_without kcapi
 %bcond_with kcapi
+%ifarch armv6l armv6hl
+%bcond_with liboqs
+%else
 %bcond_without liboqs
+%endif
 %else
 %bcond_with kcapi
 %bcond_with liboqs
