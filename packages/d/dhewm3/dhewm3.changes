@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 13 16:51:40 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires pkgconfig(x11) to fix building
+
+-------------------------------------------------------------------
 Sat Aug  3 17:49:33 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.4

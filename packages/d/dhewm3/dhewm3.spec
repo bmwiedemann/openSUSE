@@ -1,7 +1,7 @@
 #
 # spec file for package dhewm3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(x11)
 Provides:       bundled(miniz)
 
 %description

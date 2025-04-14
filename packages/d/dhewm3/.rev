@@ -121,4 +121,12 @@ Fixes many problems with the original DOOM 3 release, especially on modern Linux
     <comment></comment>
     <requestid>1193783</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2cd60bcdfcf49daef0a737b588c64616</srcmd5>
+    <version>1.5.4</version>
+    <time>1744628320</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269036</requestid>
+  </revision>
 </revisionlist>
