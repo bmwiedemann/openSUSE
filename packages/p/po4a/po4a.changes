@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 20:17:56 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Update licence tag to GPL-2.0-or-later to match the
+  actual package licence. 
+
+-------------------------------------------------------------------
 Tue Jul  2 13:51:42 CEST 2024 - mls@suse.de
 
 - Add a workaround to fix building against perl-5.40.0 which added

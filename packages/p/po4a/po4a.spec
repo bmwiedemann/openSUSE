@@ -1,7 +1,7 @@
 #
 # spec file for package po4a
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           po4a
 Version:        0.73
 Release:        0
 Summary:        Framework to translate documentation and other materials
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 %if "%{_vendor}" == "debbuild"
 Group:          text
 %else
