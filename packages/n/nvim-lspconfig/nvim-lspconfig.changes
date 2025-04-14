@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 13 00:58:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.0.0:
+  * feat: require Nvim 0.10+
+  * refactor: deprecate util functions
+  * refactor: deprecate util.get_lsp_clients
+  * refactor: deprecate add_hook_before/after
+  * docs: cleanup
+  * refactor: deprecate get_active_client_by_name
+  * feat: rpmspec
+  * feat(bqls): Add bqls support
+  * fix(openedge_ls): Update configuration
+  * feat(tinymist): implement simple workspace commands
+  * stylelint config update
+  * refactor: replace all instances of vim.loop with vim.uv
+
+-------------------------------------------------------------------
 Sun Apr  6 15:15:04 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.8.0:

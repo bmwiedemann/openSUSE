@@ -143,4 +143,24 @@
   * fix(tblgen): find tablegen_compile_commands.yml (forwarded request 1267416 from rrahl0)</comment>
     <requestid>1267417</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f3aa4904217a8f822bccd0cbc688d0be</srcmd5>
+    <version>2.0.0</version>
+    <time>1744628280</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.0:
+  * feat: require Nvim 0.10+
+  * refactor: deprecate util functions
+  * refactor: deprecate util.get_lsp_clients
+  * refactor: deprecate add_hook_before/after
+  * docs: cleanup
+  * refactor: deprecate get_active_client_by_name
+  * feat: rpmspec
+  * feat(bqls): Add bqls support
+  * fix(openedge_ls): Update configuration
+  * feat(tinymist): implement simple workspace commands
+  * stylelint config update
+  * refactor: replace all instances of vim.loop with vim.uv (forwarded request 1268908 from rrahl0)</comment>
+    <requestid>1268909</requestid>
+  </revision>
 </revisionlist>
