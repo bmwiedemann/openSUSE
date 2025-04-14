@@ -1,7 +1,7 @@
 #
 # spec file for package varnish
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           varnish
-Version:        7.6.0
+Version:        7.7.0
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -160,8 +160,7 @@ fi
 %postun
 %service_del_postun varnish.service varnishlog.service
 
-%post   -n %library_name -p /sbin/ldconfig
-%postun -n %library_name -p /sbin/ldconfig
+%ldconfig_scriptlets -n %library_name
 
 %files
 %_unitdir/*.service

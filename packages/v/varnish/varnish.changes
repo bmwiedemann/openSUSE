@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 13 19:01:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.7.0
+  * The `linux` jail gained control of transparent huge pages
+    settings.
+  * An issue has been fixed which could cause a crash when varnishd
+    receives an invalid Content-Range header from a backend.
+  * Timestamping for HTTP/2 requests (when idle period begins) has
+    been switched to be more in line with HTTP/1.
+  * VSV-15: The client connection is now always closed when a
+    malformed request is received. [CVE-2025-30346, boo#1239892]
+
+-------------------------------------------------------------------
 Sat Oct  5 15:23:58 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 7.6.0
