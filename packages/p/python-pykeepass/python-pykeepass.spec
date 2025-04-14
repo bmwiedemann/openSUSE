@@ -1,7 +1,7 @@
 #
 # spec file for package python-pykeepass
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pykeepass
-Version:        4.1.0.post1
+Version:        4.1.1.post1
 Release:        0
 Summary:        Low-level library to interact with keepass databases
 License:        GPL-3.0-only
@@ -65,7 +65,7 @@ export PYTHONDONTWRITEBYTECODE=1
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %{python_sitelib}/pykeepass/
 %{python_sitelib}/pykeepass-%{version}.dist-info/
 
