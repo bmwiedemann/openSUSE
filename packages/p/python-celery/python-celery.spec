@@ -1,7 +1,7 @@
 #
 # spec file for package python-celery
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.4.0
+Version:        5.5.1
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
@@ -44,7 +44,7 @@ Requires:       python-click >= 8.0.3
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
-Requires:       python-kombu >= 5.3
+Requires:       python-kombu >= 5.5
 Requires:       python-python-dateutil
 Requires:       python-tzdata
 Requires:       python-vine >= 5.0.0
@@ -61,20 +61,26 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module azure-storage-blob}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
 BuildRequires:  %{python_module cryptography >= 36.0.2}
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
 BuildRequires:  %{python_module gevent}
+BuildRequires:  %{python_module google-cloud-firestore}
 BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module moto >= 2.2.6}
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pymongo >= 4.0.2}
 BuildRequires:  %{python_module pytest >= 4.5.0}
 BuildRequires:  %{python_module pytest-click}
 BuildRequires:  %{python_module pytest-subtests}
+BuildRequires:  %{python_module redis}
+
 %if %{with ringdisabled}
 ExclusiveArch:  do-not-build
 %endif

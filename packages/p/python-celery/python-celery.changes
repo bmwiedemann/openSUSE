@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr  8 10:51:40 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 5.5.1
+  * Fixed "AttributeError: list object has no attribute strip" with
+    quorum queues and failover brokers by @Nusnus in #9657
+  * Prepare for release: v5.5.1 by @Nusnus in #9660
+- Update to 5.5.0
+  * Redis Broker Stability Improvements
+  * pycurl replaced with urllib3
+  * RabbitMQ Quorum Queues Support
+  * Soft Shutdown Mechanism
+  * Pydantic Support
+  * Google Pub/Sub Transport
+  * Python 3.13 Support
+  * REMAP_SIGTERM Support
+  * Database Backend Improvements
+  * see full changelog: https://github.com/celery/celery/releases/tag/v5.5.0
+- Add new test dependencies
+
+-------------------------------------------------------------------
 Wed Jul  3 13:17:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.4.0
