@@ -1,7 +1,7 @@
 #
 # spec file for package armnn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,12 +44,8 @@
 %bcond_with armnn_tests
 %endif
 # flatbuffers-devel is available on Leap 15.2+/SLE15SP2+
-# But tensorflow-lite >= 2.10 is only avaialble on Tumbleweed
-%if 0%{?suse_version} > 1500
-%bcond_without armnn_flatbuffers
-%else
+# But tensorflow-lite has been dropped from Tumbleweed
 %bcond_with armnn_flatbuffers
-%endif
 # ONNX is available on Leap 15.2+/SLE15SP2+, but there is a compatibility issue
 # with ONNX 1.7.0 in Tumbleweed - https://github.com/ARM-software/armnn/issues/419
 %if 0%{?sle_version} >= 150200
@@ -57,9 +53,9 @@
 %else
 %bcond_with armnn_onnx
 %endif
-%define version_major 24
-%define version_minor 11
-%define version_lib 34
+%define version_major 25
+%define version_minor 02
+%define version_lib 35
 %define version_lib_testutils 3
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
@@ -101,6 +97,7 @@ BuildRequires:  tensorflow2-lite-devel >= 2.10
 %if %{with compute_cl}
 # Mesa-libOpenCl is required for tests
 BuildRequires:  Mesa-libOpenCL
+BuildRequires:  flatbuffers-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  opencl-headers
@@ -391,7 +388,6 @@ protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname 
   -DBUILD_PYTHON_SRC=OFF \
 %endif
 
-
 %if 0%{?suse_version} > 1500
 %cmake_build
 %else
@@ -463,7 +459,6 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %doc README.md
 %license LICENSE
 %if %{with armnn_tests}
-%{_bindir}/ExecuteNetwork
 %if %{with armnn_flatbuffers}
 %{_bindir}/TfLite*-Armnn
 %endif

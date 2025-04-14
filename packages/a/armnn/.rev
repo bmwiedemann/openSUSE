@@ -117,4 +117,15 @@
     <comment></comment>
     <requestid>1227952</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e97eda66014872e37de9adb8be53bf30</srcmd5>
+    <version>25.02</version>
+    <time>1744628347</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.02:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v25.02
+- Disable TF-Lite support as it is going away from Tumbleweed
+</comment>
+    <requestid>1269118</requestid>
+  </revision>
 </revisionlist>
