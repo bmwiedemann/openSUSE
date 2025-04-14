@@ -17,7 +17,7 @@
 
 
 Name:           orage
-Version:        4.20.0
+Version:        4.20.1
 Release:        0
 Summary:        Time-managing Application for the Xfce Desktop Environment
 License:        GPL-2.0-or-later
@@ -34,8 +34,8 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libical) >= 3.0
 BuildRequires:  pkgconfig(libnotify) >= 0.7.0
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.16.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.16.0
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.20.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.20.0
 Recommends:     %{name}-lang = %{version}-%{release}
 # use /usr/bin/play to play notification sounds
 Recommends:     sox
