@@ -725,4 +725,12 @@
                     release archives</comment>
     <requestid>1265155</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>01f6af08a2a51968e0ea4065ef30708d</srcmd5>
+    <version>2.7.1</version>
+    <time>1744639686</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1269185</requestid>
+  </revision>
 </revisionlist>

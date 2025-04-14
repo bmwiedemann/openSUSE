@@ -186,7 +186,7 @@ Mon Feb 12 20:44:14 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Update to 2.6.0: 
   * Security fixes:
-    - CVE-2023-52425 (boo#1219559)  
+    - CVE-2023-52425 (boo#1219559, bsc#1221563)  
       -- Fix quadratic runtime issues with big tokens
       that can cause denial of service, in partial where
       dealing with compressed XML input.  Applications
