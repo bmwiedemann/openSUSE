@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Apr 11 07:33:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.8:
+  + This release adds the following features:
+    - Add the updated UEFI db as a new HSI attribute
+    - Add two new plugins that can update the UEFI Signature Database and KEK
+  + This release fixes the following bugs:
+    - Add /sys/firmware/efi/efivars to ReadWritePaths
+    - Avoid any DPAUX IO if the BnR DPCD does not match
+    - Be more careful falling back to older emulation versions
+    - Detect the Firehose protocol features if not automatically sent
+    - Do not match SMC Redfish method on non-Supermicro hardware
+    - Do not show prompts or messages in --json mode
+    - Fix a critical warning when enumerating DTH135K0C
+    - Make the EFI LOADOPT either a path or ShimHive when setting metadata
+    - Match lowercase directory names when checking for ESP
+    - Only allow UEFI capsule updates on UEFI-capable architectures
+    - Set the version format when using fwupdtool install offline
+    - Support segment value 0 in the ccgx-dmc image parser
+
+-------------------------------------------------------------------
 Tue Mar 25 16:35:12 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.7:

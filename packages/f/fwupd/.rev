@@ -877,4 +877,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1265890</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>d489c68b2249244195a9cbd3e4539f4d</srcmd5>
+    <version>2.0.8</version>
+    <time>1744628121</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1268556</requestid>
+  </revision>
 </revisionlist>
