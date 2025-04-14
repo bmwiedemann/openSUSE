@@ -100,6 +100,8 @@ Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
 Patch2:         spandsp3.patch
+# PATCH-FIX-UPSTREAM va-codecs-check-size.patch boo#1239937 mgorse@suse.com -- skip codecs that report maximum width or height lower than minimum.
+Patch3:         va-codecs-check-size.patch
 
 %if %{with fdk_aac}
 BuildRequires:  pkgconfig(fdk-aac) >= 0.1.4
