@@ -1,6 +1,7 @@
 #
 # spec file for package ripcalc
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           ripcalc
-Version:        0.1.13
+Version:        0.2.4
 Release:        0
 Summary:        Tool for network addresses
 License:        GPL-3.0-or-later
