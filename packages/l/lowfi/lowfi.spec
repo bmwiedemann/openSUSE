@@ -17,7 +17,7 @@
 
 
 Name:           lowfi
-Version:        1.5.6
+Version:        1.6.0
 Release:        0
 Summary:        An extremely simple lofi player
 License:        MIT

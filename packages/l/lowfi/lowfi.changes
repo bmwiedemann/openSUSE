@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 12 07:59:13 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.6.0:
+  * Add mpv and vim-like keybindings by @beune in #57
+  * docs: update controls by @danielwerg in #58
+  * chore: update chillhop track list by @danielwerg in #56
+  *  fix: show volume bar (mpris) by @danielwerg in #59
+  *  docs: fix typos and spelling by @danielwerg in #62
+
+-------------------------------------------------------------------
 Thu Feb 13 10:52:46 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.5.6:
