@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 03:37:53 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 5.1.0:
+  * Bump toolchain version to stable
+  * Apply fix for clippy error "double_ended_iterator_last"
+  * Make `segments` mutable in testing code
+  * Update Cargo.lock
+
+-------------------------------------------------------------------
 Fri Mar  7 13:40:23 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 5.0.0:

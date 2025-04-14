@@ -497,4 +497,17 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1253096</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>41299605195dfa1e8135534f3ef45785</srcmd5>
+    <version>5.1.0</version>
+    <time>1744639698</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.1.0:
+  * Bump toolchain version to stable
+  * Apply fix for clippy error &quot;double_ended_iterator_last&quot;
+  * Make `segments` mutable in testing code
+  * Update Cargo.lock
+</comment>
+    <requestid>1269202</requestid>
+  </revision>
 </revisionlist>
