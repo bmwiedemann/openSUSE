@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:54:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add upstream fixes:
+  * 0001-xwayland-Only-pass-actual-mime-type-offers-to-Waylan.patch
+  * 0001-backends-drm-also-clean-up-pending-commits-with-lega.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 10:05:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.4

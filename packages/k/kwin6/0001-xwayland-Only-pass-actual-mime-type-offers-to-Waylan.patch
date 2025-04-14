@@ -1,0 +1,49 @@
+From 81e4ccf3eb95bf67e4c62c7b9d17646883f742eb Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 5 Apr 2025 21:43:21 +0200
+Subject: [PATCH] xwayland: Only pass actual mime type offers to Wayland
+ clients
+
+Wayland clients shouldn't see any ICCCM internal target atoms, only actual
+mime type offers.
+---
+ src/xwayland/selection.cpp        | 8 +++++++-
+ src/xwayland/selection_source.cpp | 2 +-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/xwayland/selection.cpp b/src/xwayland/selection.cpp
+index 69a4d73af4..e7d3473cee 100644
+--- a/src/xwayland/selection.cpp
++++ b/src/xwayland/selection.cpp
+@@ -71,8 +71,14 @@ QStringList Selection::atomToMimeTypes(xcb_atom_t atom)
+     } else if (atom == atoms->uri_list) {
+         mimeTypes << QStringLiteral("text/uri-list")
+                   << QStringLiteral("text/x-uri");
++    } else if (atom == atoms->targets || atom == atoms->timestamp) {
++        // Ignore known ICCCM internal atoms
+     } else {
+-        mimeTypes << atomName(atom);
++        const QString atomNameName = atomName(atom);
++        // Ignore other non-mimetype atoms
++        if (atomNameName.contains(QLatin1Char('/'))) {
++            mimeTypes << atomNameName;
++        }
+     }
+     return mimeTypes;
+ }
+diff --git a/src/xwayland/selection_source.cpp b/src/xwayland/selection_source.cpp
+index b5c16e0445..0b04e2c0e5 100644
+--- a/src/xwayland/selection_source.cpp
++++ b/src/xwayland/selection_source.cpp
+@@ -221,7 +221,7 @@ void X11Source::handleTargets()
+ 
+         const auto mimeStrings = Selection::atomToMimeTypes(value);
+         if (mimeStrings.isEmpty()) {
+-            // TODO: this should never happen? assert?
++            // Skip invalid/internal mime types
+             continue;
+         }
+ 
+-- 
+2.47.1
+

@@ -39,6 +39,9 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-xwayland-Only-pass-actual-mime-type-offers-to-Waylan.patch
+Patch2:         0001-backends-drm-also-clean-up-pending-commits-with-lega.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libcap-progs
