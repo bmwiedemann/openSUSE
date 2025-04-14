@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 12 07:42:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.8.3
+  * Exclude completions of binding pattern variable initializers
+  * Fixed a symbol display crash on expando members write locations 
+  * Fix errors on type assertions in erasableSyntaxOnly
+  * Fix serialization of accessor types in declaration files. 
+  * Ban old-style type assertions under erasableSyntaxOnly
+  * fix(60887): Incorrect Formatting on if (a) try {} finally {} 
+  * Fix to use string literal type in ArrayBuffer's Symbol.toStringTag
+  * fix(61167): Incorrect "Import may be converted to a default import" 
+  * Treat contextually typed functions in JS files as typed 
+  * update deps
+
+-------------------------------------------------------------------
 Wed Mar  5 13:59:28 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.8.2
