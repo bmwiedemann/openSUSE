@@ -1,7 +1,7 @@
 #
 # spec file for package hugo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hugo
-Version:        0.131.0
+Version:        0.146.3
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -25,9 +25,10 @@ Group:          System/Management
 URL:            https://github.com/gohugoio/hugo
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        remove-wasm-tomath.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.23
 BuildRequires:  pkgconfig(libsass)
 BuildRequires:  pkgconfig(libwebp)
 

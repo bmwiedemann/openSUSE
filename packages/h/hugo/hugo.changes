@@ -1,4 +1,717 @@
 -------------------------------------------------------------------
+Sun Apr 13 21:31:08 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.146.3:
+  * releaser: Bump versions for release of 0.146.3
+  * tpl: Make any layout set in front matter higher priority
+  * tpl: Fix it so embedded render-codeblock-goat is used even if custom render-codeblock exists
+  * releaser: Prepare repository for 0.147.0-DEV
+
+-------------------------------------------------------------------
+Fri Apr 11 17:25:13 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.146.2:
+  * releaser: Bump versions for release of 0.146.2
+  * tpl: Fix codeblock hook resolve issue
+  * tpl: Fix legacy section mappings
+  * tpl: Resolve layouts/all.html for all html output formats
+  * tpl: Fix some baseof lookup issues
+  * releaser: Prepare repository for 0.147.0-DEV
+- Packaging improvements:
+  * Add patch remove-wasm-tomath.patch refs boo#1241131 hugo needs a package for
+    dependency javy JS to WebAssembly toolchain (Rust)
+    - Original patch by darix
+    - Removes JS to WASM functionality used for server-side rendering of LaTeX to MathML
+    - .wasm compiled binaries already being removed, see previous changelog
+    - Imposes unmet dependency on javy JS to WASM toolchain
+    - Drop patch if and when a javy package is available boo#1241131
+
+-------------------------------------------------------------------
+Thu Apr 10 16:44:46 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.146.1:
+  * releaser: Bump versions for release of 0.146.1
+  * tpl: Skip dot and temp files inside /layouts
+  * releaser: Prepare repository for 0.147.0-DEV
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
+Thu Apr 10 14:57:56 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.146.0:
+  * releaser: Bump versions for release of 0.146.0
+  * tpl: Warn and skip non-hook templates inside /layouts/_markup
+  * Squashed 'docs/' changes from d1a251933..dc7a9ae12
+  * tpl: Add a partial lookup cache
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.8.0 to 1.9.0
+  * build(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0
+  * build(deps): bump github.com/evanw/esbuild from 0.25.1 to 0.25.2
+  * tpl: Add templates.Current
+  * build(deps): bump golang.org/x/image from 0.25.0 to 0.26.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.3 to 2.2.4
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.15.0 to 2.16.0
+  * commands/new: Improve theme creation
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.39.0
+  * build(deps): bump github.com/bep/imagemeta from 0.10.0 to 0.11.0
+  * deps: Upgrade github.com/gohugoio/hugo-goldmark-extensions/passthrough v0.3.0 => v0.3.1
+  * tpl/tplimpl: Update embedded pagination template
+  * Reimplement and simplify Hugo's template system
+  * config: Use the non-global logger for deprecations when possible
+  * tpl/time: Add time.In function
+  * resources: Add option to silence dependency deprecation warnings
+  * tpl/tplimpl: Fix full screen option in vimeo and youtube shortcodes
+  * common/hreflect: Replace the map/RWMutex method cache with sync.Map
+  * build(deps): bump golang.org/x/tools from 0.30.0 to 0.31.0
+  * build(deps): bump github.com/getkin/kin-openapi from 0.129.0 to 0.131.0
+  * build(deps): bump github.com/spf13/afero from 1.11.0 to 1.14.0
+  * build(deps): bump github.com/bep/imagemeta from 0.9.0 to 0.10.0
+  * build(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to 5.2.2
+  * build(deps): bump github.com/evanw/esbuild from 0.24.2 to 0.25.1
+  * build(deps): bump github.com/bep/godartsass/v2 from 2.4.0 to 2.4.1
+  * build(deps): bump golang.org/x/net from 0.35.0 to 0.37.0
+  * common/hexec: Remove github.com/cli/safeexec
+  * parser/metadecoder: Improve errors for non-map XML root values
+  * identity: Use clear to clear the finder seen map
+  * build(deps): bump github.com/bep/godartsass/v2 from 2.3.2 to 2.4.0
+  * commands/gen: Set url in command pages to /docs/reference/commands/
+  * cache: Apply httpcache defaults for polling config
+  * build(deps): bump golang.org/x/image from 0.24.0 to 0.25.0
+  * deps: Upgrade golang.org/x/mod v0.23.0 => v0.24.0
+  * build(deps): bump github.com/bep/overlayfs from 0.9.2 to 0.10.0
+  * build(deps): bump github.com/bep/lazycache from 0.7.0 to 0.8.0
+  * tpl/tplimpl: Add loading attribute to Vimeo shortcode
+  * build(deps): bump github.com/bep/imagemeta from 0.8.4 to 0.9.0
+  * build(deps): bump github.com/bep/simplecobra from 0.5.0 to 0.6.0
+  * commands: Add --omitEmpty flag to gen chromastyles
+  * tpl: Add trailing newline to robots.txt template
+  * commands: Skip flaky test on Windows
+  * resources/image: Mark loong64 as FMA-using architecture
+  * releaser: Prepare repository for 0.146.0-DEV
+
+-------------------------------------------------------------------
+Wed Feb 26 15:41:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.145.0:
+  * releaser: Bump versions for release of 0.145.0
+  * github: Build docker image with both extended and withdeploy tags
+  * all: Typo fixes
+  * deps: Upgrade github.com/rogpeppe/go-internal v1.13.1 => v1.14.1
+  * Use the page path and not the backing filename as the last resort in the default sort
+  * all: Run modernize -fix ./...
+  * build(deps): bump github.com/yuin/goldmark-emoji from 1.0.4 to 1.0.5
+  * tpl: HTTPS the instagram Shortcode JS
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+  * build(deps): bump github.com/tetratelabs/wazero from 1.8.2 to 1.9.0
+  * Add transform.PortableText
+  * readme: Fix relative links in Editions section
+  * Fix some related content issues with content adapters
+  * Fix potential nilpointer in httpcache config
+  * hugolib: Deprecate _build front matter key in favor of build
+  * snap: Update Node.js to 22.x
+
+-------------------------------------------------------------------
+Wed Feb 19 12:17:04 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.144.2:
+  * releaser: Bump versions for release of 0.144.2
+  * Fix --printPathWarnings when site calls templates.Defer
+  * releaser: Prepare repository for 0.145.0-DEV
+
+-------------------------------------------------------------------
+Tue Feb 18 12:14:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.144.1:
+  * releaser: Bump versions for release of 0.144.1
+  * markup/goldmark: Fix panic on empty Markdown header
+  * releaser: Prepare repository for 0.145.0-DEV
+
+-------------------------------------------------------------------
+Mon Feb 17 16:22:31 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.144.0:
+  * releaser: Bump versions for release of 0.144.0
+  * markup/goldmark: Fix panic on stray attribute nodes
+  * Fix Position for passthrough hooks
+  * Fix auto generated header ids so they don't contain e.g. hyperlink destinations (note)
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1
+  * build(deps): bump github.com/sanity-io/litter from 1.5.7 to 1.5.8
+  * config/allconfig: Deprecate :filename and :slugorfilename tokens
+  * resources/page: Revise the new contentbasename permalinks tokens
+  * resources/page: Add :contentbasename and :contentbasenameorslug permalink tokens
+  * Add autoID for definition terms
+  * build(deps): bump github.com/sanity-io/litter from 1.5.5 to 1.5.7
+  * build(deps): bump github.com/gohugoio/hugo-goldmark-extensions/extras
+  * config: Fix server.redirects.fromRe being ignored unless server.redirects.from is also set
+  * internal/warpc: Enable KaTeX mhchem extension
+  * Update README.md
+  * build(deps): bump golang.org/x/tools from 0.29.0 to 0.30.0
+  * modules: Add GOAUTH to module config
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump google.golang.org/api from 0.206.0 to 0.221.0
+  * Support menus as maps in content adapters
+  * js/esbuild: Add drop option
+  * Squashed 'docs/' changes from 73a01565c..d1a251933
+  * build(deps): bump github.com/bep/imagemeta from 0.8.3 to 0.8.4
+  * config: Remove unused code
+  * commands: Use punctuation consistently in short description
+  * Upgrade to Go 1.24
+  * Deprecate kind, lang, and path from front matter
+  * commands: Move the CHMOD event filter up
+  * build(deps): bump golang.org/x/image from 0.22.0 to 0.24.0
+  * build(deps): bump golang.org/x/mod from 0.22.0 to 0.23.0
+  * build(deps): bump github.com/gohugoio/hashstructure from 0.3.0 to 0.5.0
+  * build(deps): bump github.com/bep/simplecobra from 0.4.0 to 0.5.0
+  * parser: Handle org-mode filetags as slice
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.32.4 to 1.36.1
+  * build(deps): bump github.com/getkin/kin-openapi from 0.123.0 to 0.129.0
+  * build(deps): bump github.com/spf13/pflag from 1.0.5 to 1.0.6
+  * Add ContentTypes to config
+  * all: Remove deprecated build tags
+  * helpers: Add Chroma styles to docs.yaml
+  * commands: Validate style argument passed to gen chromastyles
+  * Update CONTRIBUTING.md
+  * Move "print unused templates" after renderDeferred
+  * Add some more server options/improvements
+  * Fix shortcode name in error message on self-closing shortcodes with no .Inner
+  * releaser: Prepare repository for 0.144.0-DEV
+
+-------------------------------------------------------------------
+Tue Feb  4 08:57:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.143.1:
+  * releaser: Bump versions for release of 0.143.1
+  * Fix RSS with baseURL with sub dir when render hooks is enabled
+  * mage: Simplify magefile
+  * common/hugo: Adjust deprecation timing and message
+  * Re-introduce the LRU-evicted identities in change set calculation
+  * releaser: Prepare repository for 0.144.0-DEV
+
+-------------------------------------------------------------------
+Sat Feb  1 15:56:04 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.143.0:
+  * releaser: Bump versions for release of 0.143.0
+  * Fix some server/watch rebuild issues
+  * Don't re-render aliases on server rebuilds
+  * tpl/tplimpl: Remove leading whitespaces produced by Youtube shortcode
+  * Fix "concurrent map iteration and map write" in pages from data
+  * resources: Remove debug statement
+  * Fix TailwindCSS related server rebuild issue
+  * markup/goldmark: Trim space from blockquote render hook text
+  * Fix some server rebuild issues for non-HTML custom output formats
+  * parser/pageparser: Don't allow parameters after closing tag in shortcodes
+  * Fix cascade with overlapping sections
+  * tpl/tplimpl: Improve shortcode test coverage
+  * tpl/tplimpl: Deprecate gist shortcode
+  * resources: Remove conditional used for debugging
+  * resources: Add responseHeaders option to resources.GetRemote
+  * tpl/tplimpl: Skip TestTemplateFuncsExamples on s390x
+  * Squashed 'docs/' changes from 4429eeeea..73a01565c
+  * Make cascade front matter order deterministic
+  * tpl/tplimpl: Deprecate comment shortcode
+  * markup/goldmark: Fix typo in func comment
+  * releaser: Prepare repository for 0.143.0-DEV
+
+-------------------------------------------------------------------
+Wed Jan 22 12:20:52 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.142.0:
+  * releaser: Bump versions for release of 0.142.0
+  * Fix render hook's PlainText with typographer extension enabled
+  * Improve assert
+  * Improve assertions
+  * Also handle inline HTML comments
+  * Do not warn on potentially unsafe HTML comments when unsafe=false
+  * Fix build with Go 1.24
+  * tpl/tplimpl: Fix context in shortcode error messages
+  * resources: Fix 2 image file cache key issues
+  * tpl: Add loading attribute to qr shortcode
+  * releaser: Prepare repository for 0.142.0-DEV
+
+-------------------------------------------------------------------
+Thu Jan 16 13:11:18 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.141.0:
+  * releaser: Bump versions for release of 0.141.0
+  * tpl/tplimpl: Simplify some test assertions
+  * common/paths: Fix docstring
+  * Squashed 'docs/' changes from f0f4bcb24..4429eeeea
+  * docs: Regen CLI docs
+  * tpl/tplimpl: Deprecate twitter shortcode in favor of x shortcode
+  * commands: Fix spelling in comment
+  * commands: Set up the glboal logger early
+  * commands: Add --printZero to the config command
+  * For render hooks, only fallback to HTML (or the defaultOutputFormat) template
+  * tpl/collections: Use MapRange/SetIterKey/SetIterValue for Where, Sort and Merge
+  * deps: Upgrade github.com/gohugoio/hashstructure from 0.1.0 to 0.3.0
+  * tpl/collections: Add BenchmarkWhereMap
+  * tpl/collections: Add BenchmarkSortMap
+  * tpl/collections: Add Merge benchmark
+  * resources/images: Refactor golden image tests to locate them closer to the implementation
+  * resources/images: Add some mask tests
+  * resources/images: Add images.Mask
+  * tpl/tplimpl: Use plain text for image render hook alt attribute
+  * Adjust error handling in ToMath vs try  (note)
+  * resources/images: Add some golden tests for images.QR
+  * Fix branch resource overlapping bundle path
+  * templates: Fix handling of multiple defers in the same template
+  * tpl/images: Change signature of images.QR to images.QR TEXT OPTIONS
+  * resources/images: Add some golden tests for images.Text
+  * images.Text: Add "alignx" option for horizontal alignment
+  * images: Rework the golden tests
+  * Fix NPX issue with TailwindCSS v4
+  * build(deps): bump golang.org/x/tools from 0.28.0 to 0.29.0
+  * build(deps): bump golang.org/x/net from 0.33.0 to 0.34.0
+  * snap: Always package latest stable version of Go
+  * docs: Regen CLI docs
+  * Squashed 'docs/' changes from 8390a4a3a..f0f4bcb24
+  * create: Respect --noBuildLock in hugo new
+  * build(deps): bump github.com/evanw/esbuild from 0.24.0 to 0.24.2
+  *  tpl/images: Format the QR hashes as hex
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.14.0 to 2.15.0
+  * resources: Replace error handling in GetRemote with try (note)
+  * tpl/images: Add images.QR function
+  * Add try
+  * resources: Add FromOpts for more effective resource creation
+  * Fix server refresh on 404 template changes
+  * markup/highlight: Remove noHl option
+  * releaser: Prepare repository for 0.141.0-DEV
+
+-------------------------------------------------------------------
+Mon Dec 30 15:01:53 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.140.2:
+  * releaser: Bump versions for release of 0.140.2
+  * Print cli usage of `hugo gen chromastyles` alongside css
+  * build(deps): bump golang.org/x/net from 0.32.0 to 0.33.0
+  * config/allconfig: Fix slice of language configs
+  * config/allconfig: Throw error when output format is not defined
+  * Fix same resource file published more than once
+  * markup/highlight: Add wrapperClass option
+  * Update README.md
+  * releaser: Prepare repository for 0.141.0-DEV
+
+-------------------------------------------------------------------
+Mon Dec 23 16:26:35 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.140.1:
+  * releaser: Bump versions for release of 0.140.1
+  * Update gocloud and docs for S3-Compatible Endpoints
+  * js/esbuild: Don't try to resolve packages in /assets marked as external
+  * Fix union, complement, symdiff, and intersect for transient resources
+  * release: Add withdeploy deb extended archives
+  * common/loggers: Write PrintTimerIfDelayed output to stdErr
+  * build(deps): bump github.com/spf13/cast from 1.7.0 to 1.7.1
+  * hugolib: Fix fallbacks for menu entry Name and Title
+  * releaser: Prepare repository for 0.141.0-DEV
+
+-------------------------------------------------------------------
+Tue Dec 17 14:20:55 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.140.0:
+  * releaser: Bump versions for release of 0.140.0
+  * js/esbuild: Add missing es2024 target
+  * Fix panic on server rebuilds when using both base templates and template.Defer
+  * js: Fix js.Batch for multihost setups
+  * parser/pageparser: Fix Org Mode summary delimiter assignment
+  * Fix a rebuild on resource rename case
+  * js/esbuild: Add runners after scripts
+  * js/esbuild: Batch: Avoid nil Instances slice
+  * tpl/tplimpl: Fix title attribute in details shortcode
+  * tpl/tplimpl: Update youtube shortcode
+  * tpl/tplimpl: Update details shortcode
+  * tpl/collections: Allow querify to accept a map argument
+  * js/esbuild: Build groups in order of their ID
+  * tpl/tplimpl: Add details shortcode
+  * Write all logging (INFO, WARN, ERROR) to stderr
+  * js/esbuild: Add platform option
+  * Add config option disableDefaultLanguageRedirect
+  * Add js.Batch
+  * build(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+  * Upgrade to Go 1.23.4
+  * build(deps): bump golang.org/x/tools from 0.27.0 to 0.28.0
+  * Remove some old and unused shell scripts
+  * build(deps): bump github.com/hairyhenderson/go-codeowners
+  * Squashed 'docs/' changes from 227aab619..8390a4a3a
+  * Fix Sass imports on the form index.{scss,sass}
+  * build(deps): bump golang.org/x/net from 0.31.0 to 0.32.0
+  * markup/goldmark: Fix blockquote render hook text parsing
+  * releaser: Bump versions for release of 0.139.4
+
+-------------------------------------------------------------------
+Sat Dec 14 19:16:21 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.5:
+  * releaser: Bump versions for release of 0.139.5
+
+-------------------------------------------------------------------
+Mon Dec  9 17:45:23 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.4:
+  * releaser: Bump versions for release of 0.139.4
+  * tpl/tplimpl: Escape Markdown attributes in render hooks and shortcodes
+  * deps: Upgrade github.com/bep/godartsass/v2 v2.3.1 => v2.3.2
+  * common/maps: Simplify TestScratchSetInMap/DeleteInMap
+  * markup/tableofcontents: Cast Fragments.ToHTML args to int
+  * releaser: Prepare repository for 0.140.0-DEV
+
+-------------------------------------------------------------------
+Fri Nov 29 15:36:56 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.3:
+  * releaser: Bump versions for release of 0.139.3
+  * Fix server edits of resources included in shortcode/hooks
+  * Fix some typos
+  * build(deps): bump github.com/bep/godartsass/v2 from 2.3.0 to 2.3.1
+  * build(deps): bump github.com/tetratelabs/wazero from 1.8.1 to 1.8.2
+  * commands: Fix flaw in the livereload logic
+  * releaser: Prepare repository for 0.140.0-DEV
+
+-------------------------------------------------------------------
+Sat Nov 23 15:33:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.2:
+  * releaser: Bump versions for release of 0.139.2
+  * modules: Skip empty lines in modules.txt
+  * releaser: Prepare repository for 0.140.0-DEV
+
+-------------------------------------------------------------------
+Sat Nov 23 14:13:46 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.1:
+  * releaser: Bump versions for release of 0.139.1
+  * Revert "build(deps): bump github.com/tdewolff/minify/v2 from 2.20.37 to 2.21.1"
+  * minifiers: Add failing test for upstream bug
+  * dartsass: Fix nilpointer on Close when Dart Sass isn't installed
+  * common: Fix some GoDoc typos
+  * readme: Update dependency list
+  * releaser: Prepare repository for 0.140.0-DEV
+
+-------------------------------------------------------------------
+Mon Nov 18 16:17:45 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.139.0:
+  * releaser: Bump versions for release of 0.139.0
+  * dartsass: Fix error message
+  * Make sure term is always set
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/cloudfront
+  * dartsass: Add silenceDeprecations option
+  * dartsass: Remove support for v1 of the protocol/binary (note)
+  * build(deps): bump google.golang.org/api from 0.191.0 to 0.206.0
+  * build(deps): bump github.com/aws/aws-sdk-go-v2 from 1.30.3 to 1.32.4
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.7.0 to 1.8.0
+  * Squashed 'docs/' changes from 159c843fd..227aab619
+  * deps: Upgrade github.com/bep/imagemeta v0.8.1 => v0.8.3
+  * docs: Regen CLI docs
+  * Remove deprecations <= v0.122.0 (note)
+  * release: Add missing withdeploy archive for arm64 Linux
+  * Fix extra newline/paragraphs issue with .RenderShortcodes
+  * build(deps): bump golang.org/x/tools from 0.26.0 to 0.27.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.20.37 to 2.21.1
+  * build(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0
+  * build(deps): bump golang.org/x/image from 0.21.0 to 0.22.0
+  * Run go mod tidy
+  * docs: Regenerate CLI docs
+  * commands: Add -O flag to server to open browser
+  * Preserve input type.
+  * deps: Upgrade github.com/yuin/goldmark v1.7.4 => v1.7.8
+  * server: Strip ANSI escape codes from browser error log
+  * build(deps): bump golang.org/x/sync from 0.8.0 to 0.9.0
+  * build(deps): bump github.com/hairyhenderson/go-codeowners
+  * parser/metadecoders: Add benchmark
+  * Add site.Store and hugo.Store and Shortcode.Store
+  * Squashed 'docs/' changes from ccb1b97cb..159c843fd
+  * markup/goldmark: Fix typo in error message
+  * markup/goldmark: Improve the raw HTML omitted warning
+  * releaser: Prepare repository for 0.139.0-DEV
+
+-------------------------------------------------------------------
+Wed Nov  6 11:22:34 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.138.0:
+  * releaser: Bump versions for release of 0.138.0
+  * Fix concurrent map read and map write in short page lookups
+  * Alias Page.Scratch to Page.Store (note)
+  * releaser: Prepare repository for 0.138.0-DEV
+
+-------------------------------------------------------------------
+Tue Nov  5 11:49:09 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.137.1:
+  * releaser: Bump versions for release of 0.137.1
+  * common/hugo: Add withdeploy to the version string printed in hugo version
+  * markup: Goldmark log "Raw HTML omitted" warning also for inline HTML
+  * build: Add missing withdeploy archive for Windows
+  * commands: Print the "deploy not available" error message even if flags provided
+  * tpl/tplimpl: Create an embedded comment shortcode
+  * releaser: Prepare repository for 0.138.0-DEV
+
+-------------------------------------------------------------------
+Mon Nov  4 16:04:06 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.137.0:
+  * releaser: Bump versions for release of 0.137.0
+  * Do not watch directories with no mounted files in it
+  * markup/goldmark: Only log Raw HTML omitted WARN on block entering
+  * markup/goldmark: Add warning (using Warnidf) on Goldmark <!-- raw HTML omitted -->
+  * Fix stale pages on rebuilds in GetPage with short refs
+  * Fix some  RenderShortcodes error cases
+  * Update README.md
+  * resources: Address Dart Sass deprecation of global built-in functions
+  * github: Adjust test workflow to install Dart Sass v1.80.3
+  * deps: Upgrade github.com/bep/godartsass/v2 v2.1.0 => v2.2.0
+  * Update README.md
+  * Build without the deploy feature by default
+  * deps: Upgrade github.com/bep/lazycache v0.6.0 => v0.7.0
+  * dynacache: Fix potential deadlocks on panics in GetOrCreate
+  * releaser: Prepare repository for 0.137.0-DEV
+
+-------------------------------------------------------------------
+Thu Oct 24 12:26:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.5:
+  * releaser: Bump versions for release of 0.136.5
+  * hugolib/commands: Fix stuck server error issues
+
+-------------------------------------------------------------------
+Tue Oct 22 08:35:58 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.4:
+  * releaser: Bump versions for release of 0.136.4
+  * tpl/transform: Revert unmarshal whitespace removal
+  * releaser: Prepare repository for 0.137.0-DEV
+
+-------------------------------------------------------------------
+Mon Oct 21 13:31:54 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.3:
+  * releaser: Bump versions for release of 0.136.3
+  * docker: Fix permission issues in Dockerfile
+  * Make sure that HugoSites is always closed when done
+  * tpl/strings: Add TrimSpace function
+  * common/herrors: Fix the deferred error message cleaner regexp
+  * tpl/transform: Don't fail on "no data to transform"
+  * releaser: Prepare repository for 0.137.0-DEV
+
+-------------------------------------------------------------------
+Thu Oct 17 14:30:05 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.2:
+  * releaser: Bump versions for release of 0.136.2
+  * docker: Fix Dart Sass ARM64 arch mismatch, /cache permissions
+  * releaser: Prepare repository for 0.137.0-DEV
+
+-------------------------------------------------------------------
+Wed Oct 16 16:05:18 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.1:
+  * releaser: Bump versions for release of 0.136.1
+  * Never sanitize when url set in front matter
+  * Remove erroneously permalink validation
+  * create/skeletons: Add delimiters to archetype front matter
+  * releaser: Prepare repository for 0.137.0-DEV
+
+-------------------------------------------------------------------
+Tue Oct 15 13:17:24 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.136.0:
+  * releaser: Bump versions for release of 0.136.0
+  * circleci: Use default docker image
+  * docs: Regen CLI docs
+  * resources/page: Adjust the permalinks colon implementation a little
+  * resources/page: Allow colons in permalinks to be escaped
+  * commands: Use consistent style when describing subcommands
+  * build(deps): bump github.com/tetratelabs/wazero from 1.8.0 to 1.8.1
+  * build(deps): bump golang.org/x/image from 0.20.0 to 0.21.0
+  * build(deps): bump github.com/yuin/goldmark-emoji from 1.0.3 to 1.0.4
+  * config: Imrove uglyurls section test
+  * config: Fix uglyurls map parse
+  * create/skeletons: Honor --format flag when creating default archetype
+  * hugolib: Make .Site.Author deprecation warning clearer
+  * Upgrade to latest Go version + Some Docker image improvements (note)
+  * ci: Build multi-platform image with cross-compilation
+  * tpl/tplimpl: Trim descriptions rather than just chomp
+  * build(deps): bump golang.org/x/tools from 0.23.0 to 0.26.0
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.12.0 to 1.13.1
+  * build(deps): bump github.com/evanw/esbuild from 0.23.1 to 0.24.0
+  * build(deps): bump github.com/hairyhenderson/go-codeowners
+  * tailwind: Pin Tailwind 4 test to alpha 26 or later
+  * resources/page: Treat null dates as zero dates
+  * resources/page: Improve front matter date validation
+  * commands: Add "hugo build" as an alias for "hugo"
+  * markup/goldmark: Change default cell alignment in table render hook
+  * tests: Address deprecation warnings and errors
+  * releaser: Prepare repository for 0.136.0-DEV
+
+-------------------------------------------------------------------
+Fri Sep 27 13:17:08 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.135.0:
+  * releaser: Bump versions for release of 0.135.0
+  * build(deps): bump golang.org/x/mod from 0.19.0 to 0.21.0
+  * build(deps): bump github.com/bep/helpers from 0.4.0 to 0.5.0
+  * build(deps): bump golang.org/x/net from 0.28.0 to 0.29.0
+  * resources/page: Validate predefined front matter dates
+  * build(deps): bump golang.org/x/image from 0.19.0 to 0.20.0
+  * github: Trigger image workflow on release.published
+  * tailwind: Pin Tailwind 4 test to alpha 24
+  * tpl/compare: Use any data type for compare.Conditional condition
+  * deps: Upgrade github.com/gobuffalo/flect v1.0.2 => v1.0.3
+  * releaser: Prepare repository for 0.135.0-DEV
+
+-------------------------------------------------------------------
+Thu Sep 19 14:28:20 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.134.3:
+  * releaser: Bump versions for release of 0.134.3
+  * tpl: Remove RSS deprecation site.Author check
+  * modules: Improve console output on hugo mod init
+  * commands: Ignore "module does not exist" errors in hugo mod init
+  * Add exclusion for helix .bck files
+  * hugolib: Move hugolib/site_new.go into hugolib/site.go
+  * libsass: Resolve directory paths to directory index files
+  * dartsass: Resolve directory paths to directory index files
+  * internal/warpc: Improve the JS plugin API
+  * releaser: Prepare repository for 0.135.0-DEV
+
+-------------------------------------------------------------------
+Tue Sep 10 10:46:33 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.134.2:
+  * releaser: Bump versions for release of 0.134.2
+  * Don't count HTML markup in auto summaries
+  * releaser: Prepare repository for 0.135.0-DEV
+
+-------------------------------------------------------------------
+Thu Sep  5 10:17:50 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.134.1:
+  * releaser: Bump versions for release of 0.134.1
+  * Fix stray end p tag in Obsidian callout titles
+  * Make ContentWithoutSummary return Content when summary is fetched from front matter
+  * Squashed 'docs/' changes from a49697e53..ccb1b97cb
+  * releaser: Prepare repository for 0.135.0-DEV
+
+-------------------------------------------------------------------
+Tue Sep  3 09:54:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.134.0:
+  * releaser: Bump versions for release of 0.134.0
+  * Update Dockerfile
+  * markup/goldmark/blockquotes: Improve some tests
+  * Add support for Obsidian type blockquote alerts
+  * Squashed 'docs/' changes from fcc3ed651..a49697e53
+  * Rename  hstring.RenderedHTML => hstring.HTML
+  * github: Try to fix "no space left on device" on MacOS
+  * Make all renderhook Text methods return template.HTML
+  * Add Markdown render hooks for tables
+  * create/skeletons: Clean up lang attribute in base template
+  * Fix deprecation warning for resources.ToCSS
+  * tpl/resources: Improve resources.Concat error message
+  * tpl: Trim whitespace from google_analytics.html
+  * Add Page.Contents with scope support
+  * deps: Upgrade github.com/bep/golibsass v1.1.1 => v1.2.0
+  * build(deps): bump github.com/evanw/esbuild from 0.23.0 to 0.23.1
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.2 to 2.2.3
+  * output: Fix docshelper template lookup order for AMP pages
+  * hugolib: Add a test for overriding _internal templates
+  * releaser: Prepare repository for 0.134.0-DEV
+
+-------------------------------------------------------------------
+Mon Aug 26 13:58:46 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.133.1:
+  * releaser: Bump versions for release of 0.133.1
+  * Revert "Adjust Circleci workflow to make the Docker images build"
+  * Adjust Circleci workflow to make the Docker images build
+  * Fix missing method NameNormalized panic
+  * deps: Upgraded github.com/bep/imagemeta v0.8.0 => v0.8.1
+  * config: Fix pagination deprecation messages
+  * Revert "releaser: Rework the run conditions"
+  * Revert "circleci: Upgrade to version 2.1 of the schema"
+  * circleci: Upgrade to version 2.1 of the schema
+  * releaser: Rework the run conditions
+  * Revert "releaser: Rework the run conditions"
+  * releaser: Rework the run conditions
+  * releaser: Prepare repository for 0.134.0-DEV
+
+-------------------------------------------------------------------
+Sat Aug 17 19:57:41 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.133.0:
+  * releaser: Bump versions for release of 0.133.0
+  * Add config options page.nextPrevSortOrder/nextPrevInSectionSortOrder
+  * build(deps): bump gocloud.dev from 0.38.0 to 0.39.0
+  * deps: Upgrade github.com/tetratelabs/wazero v1.7.4-0.20240805170331-2b12e189eeec => v1.8.0
+  * Upgrade to Go 1.23
+  * releaser: Prepare repository for 0.133.0-DEV
+
+-------------------------------------------------------------------
+Wed Aug 14 17:42:03 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements (TODO: do not forward to Factory until):
+  * Remove bundled .wasm compiled units and compile from JS source:
+    - ./internal/warpc/wasm
+    - ./internal/warpc/wasm/greet.wasm
+    - ./internal/warpc/wasm/quickjs.wasm
+    - ./internal/warpc/wasm/renderkatex.wasm
+
+-------------------------------------------------------------------
+Wed Aug 14 17:36:28 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.132.2:
+  * releaser: Bump versions for release of 0.132.2
+  * markup/goldmark/blockquotes: Fix handling of lower/mixed case GitHub alerts
+  * tpl/transform: Don't run ToMath tests in parallel
+  * resources: Add URI GetRemote error
+  * loggers: Omit map nil check
+  * github: Add workflow_dispatch to the Docker workflow
+  * github: Simplify Docker workflow / only trigger on new tags
+  * github: Simplify Docker workflow
+  * releaser: Prepare repository for 0.133.0-DEV
+
+-------------------------------------------------------------------
+Wed Aug 14 17:35:27 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.132.1:
+  * releaser: Bump versions for release of 0.132.1
+  * github: Adjust image workflow
+  * Fix nilpointer regression with empty blockquotes
+  * releaser: Prepare repository for 0.133.0-DEV
+
+-------------------------------------------------------------------
+Wed Aug 14 17:34:56 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.132.0:
+  * releaser: Bump versions for release of 0.132.0
+  * internal/warpc: Add license headers
+  * Improve Katex error handling and fix handling of large expressions
+  * Add katex option ThrowOnError
+  * Add some more KaTeX options
+  * tpl/transform: Make Plainify and ToMath return template.HTML
+  * deps: Upgrade github.com/bep/imagemeta v0.7.6 => v0.8.0
+  * Fix compare of uints and ints in eq, gt etc.
+  * docs: Regen docshelper
+  * Add build time math rendering
+  * github: Turn off the image workflow for pull request
+  * github: Update image actions versions and some adjustments
+  * github: Build and publish Docker image on release
+  * Squashed 'docs/' changes from 9b06f951e..fcc3ed651
+  * github: Update GitHub actions versions
+  * markup: Add blockquote render hooks
+  * markup/goldmark/codeblocks: Simplify codeblcok hook code
+  * Add render hooks for inline and block passthrough snippets
+  * build(deps): bump golang.org/x/net from 0.27.0 to 0.28.0
+  * build(deps): bump golang.org/x/image from 0.18.0 to 0.19.0
+  * tpl/cast: Improve float
+  * Skip TestEchoParam
+  * build(deps): bump github.com/bep/imagemeta from 0.7.5 to 0.7.6 (#12720)
+  * Fix deprecation errors
+  * releaser: Prepare repository for 0.132.0-DEV
+
+-------------------------------------------------------------------
 Fri Aug 02 14:34:51 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.131.0:

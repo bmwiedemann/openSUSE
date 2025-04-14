@@ -1344,4 +1344,28 @@
   * Update to BuildRequires: golang(API) &gt;= 1.21 matching go.mod (forwarded request 1191224 from jfkw)</comment>
     <requestid>1191225</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5b1d4f3caf37db35361e8121aeae2a47</srcmd5>
+    <version>0.146.3</version>
+    <time>1744628328</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.146.3:
+  * releaser: Bump versions for release of 0.146.3
+  * tpl: Make any layout set in front matter higher priority
+  * tpl: Fix it so embedded render-codeblock-goat is used even if custom render-codeblock exists
+  * releaser: Prepare repository for 0.147.0-DEV
+
+- Update to version 0.146.2:
+  * releaser: Bump versions for release of 0.146.2
+  * tpl: Fix codeblock hook resolve issue
+  * tpl: Fix legacy section mappings
+  * tpl: Resolve layouts/all.html for all html output formats
+  * tpl: Fix some baseof lookup issues
+  * releaser: Prepare repository for 0.147.0-DEV
+- Packaging improvements:
+  * Add patch remove-wasm-tomath.patch refs boo#1241131 hugo needs a package for
+    dependency javy JS to WebAssembly toolchain (Rust)
+    - Original patch by darix (forwarded request 1269052 from jfkw)</comment>
+    <requestid>1269053</requestid>
+  </revision>
 </revisionlist>
