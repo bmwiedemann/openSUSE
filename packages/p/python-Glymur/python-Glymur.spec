@@ -78,6 +78,6 @@ donttest+="test_config_dir_on_windows"
 %python_alternative %{_bindir}/jp2dump
 %python_alternative %{_bindir}/tiff2jp2
 %{python_sitelib}/glymur
-%{python_sitelib}/Glymur-%{version}.dist-info
+%{python_sitelib}/[Gg]lymur-%{version}.dist-info
 
 %changelog
