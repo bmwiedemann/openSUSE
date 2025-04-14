@@ -1,7 +1,7 @@
 #
 # spec file for package python-IMAPClient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,6 @@ Version:        3.0.1
 Release:        0
 Summary:        Pythonic IMAP client library
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mjs/imapclient/
 Source0:        https://github.com/mjs/imapclient/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -67,7 +66,7 @@ sed -i 's:#!::' imapclient/interact.py
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/IMAPClient-%{version}.dist-info
 %{python_sitelib}/imapclient
+%{python_sitelib}/[Ii][Mm][Aa][Pp][Cc]lient-%{version}.dist-info
 
 %changelog

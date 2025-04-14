@@ -80,4 +80,14 @@
 - initial packaging</comment>
     <requestid>1137294</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ff2b2b7377b8367175c6ca45e193a51e</srcmd5>
+    <version>3.0.1</version>
+    <time>1744628378</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269077</requestid>
+  </revision>
 </revisionlist>
