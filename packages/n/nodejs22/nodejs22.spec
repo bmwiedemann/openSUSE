@@ -31,7 +31,7 @@
 %endif
 
 Name:           nodejs22
-Version:        22.13.1
+Version:        22.14.0
 Release:        0
 
 # Double DWZ memory limits
@@ -209,6 +209,7 @@ BuildRequires:  gcc48-c++
 %if 0%{?suse_version} == 1315
 %if %node_version_number >= 17
 BuildRequires:  gcc12-c++
+BuildRequires:  gcc12-PIE
 %define forced_gcc_version 12
 %else
 %if %node_version_number >= 14
@@ -226,6 +227,7 @@ BuildRequires:  gcc7-c++
 %if 0%{?suse_version} == 1500
 %if %node_version_number >= 17
 BuildRequires:  gcc12-c++
+BuildRequires:  gcc12-PIE
 %define forced_gcc_version 12
 %endif
 %endif
@@ -397,9 +399,9 @@ Provides:       bundled(ada) = 2.9.2
 
 Provides:       bundled(node-acorn) = 8.14.0
 Provides:       bundled(node-acorn-walk) = 8.3.4
-Provides:       bundled(node-amaro) = 0.2.0
+Provides:       bundled(node-amaro) = 0.3.0
 Provides:       bundled(node-cjs-module-lexer) = 1.4.1
-Provides:       bundled(node-corepack) = 0.30.0
+Provides:       bundled(node-corepack) = 0.31.0
 Provides:       bundled(node-minimatch) = 10.0.1
 Provides:       bundled(node-undici) = 6.21.1
 
@@ -930,7 +932,7 @@ export CI_JS_SUITES=default
 export NODE_TEST_NO_INTERNET=1
 
 %if %{node_version_number} >= 12
-find test \( -name \*.out -or -name \*.js \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
+find test \( -name \*.out -or -name \*.js -or -name \*.snapshot \) -exec sed -i 's,Use `node ,Use `node%{node_version_number} ,' {} \;
 %endif
 
 %if %{node_version_number} >= 20
@@ -957,8 +959,12 @@ rm test/parallel/test-dns-cancel-reverse-lookup.js \
    test/parallel/test-dns-resolveany.js
 # multicast test fail since no socket?
 rm test/parallel/test-dgram-membership.js
+%if %{node_version_number} >= 22
 # ::1 not defined in OBS on TW - https://github.com/openSUSE/obs-build/issues/848
 rm test/report/test-report-exclude-network.js
+# missing ICU test data for 15.6/15.7/SLFO
+ln test/fixtures/icu/localizationData-v74.2.json test/fixtures/icu/localizationData-v73.2.json
+%endif
 
 %if %{node_version_number} >= 18
 # OBS broken /etc/hosts -- https://github.com/openSUSE/open-build-service/issues/13104
