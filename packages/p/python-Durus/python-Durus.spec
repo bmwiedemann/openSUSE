@@ -1,7 +1,7 @@
 #
 # spec file for package python-Durus
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 Name:           python-Durus
@@ -30,7 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -67,6 +68,6 @@ export CFLAGS="%{optflags}"
 %doc ACKS.txt CHANGES.txt README.md doc/FAQ.txt
 %python_alternative %{_bindir}/durus
 %{python_sitearch}/durus
-%{python_sitearch}/Durus-%{version}.dist-info
+%{python_sitearch}/[Dd]urus-%{version}.dist-info
 
 %changelog
