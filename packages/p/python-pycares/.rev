@@ -102,4 +102,18 @@
     <comment></comment>
     <requestid>1236862</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5220da56bc982777df7a254b89f66c4e</srcmd5>
+    <version>4.6.0</version>
+    <time>1744628120</time>
+    <user>anag_factory</user>
+    <comment>- Clean up the SPEC file.
+- Update to 4.6.0
+  * Swap out is_all_ascii for built-in str.isascii by @bdraco in (#209)
+  * Fixup tests by @saghul in (#214)
+  * Add initial type annotations by @Dreamsorcerer in (#212)
+  * Fix module has no attribute type errors by @Dreamsorcerer in (#211)
+</comment>
+    <requestid>1268555</requestid>
+  </revision>
 </revisionlist>

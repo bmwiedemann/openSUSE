@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pycares
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT
@@ -32,7 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/p/pycares/pycares
 Patch0:         cleanup_tests.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c-ares-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -49,13 +49,11 @@ resolutions asynchronously
 %prep
 %autosetup -p1 -n pycares-%{version}
 
-rm -Rf
-
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -66,6 +64,7 @@ rm -Rf
 %files %{python_files}
 %license LICENSE
 %doc ChangeLog README.rst
-%{python_sitearch}/*
+%{python_sitearch}/pycares
+%{python_sitearch}/pycares-%{version}*-info
 
 %changelog
