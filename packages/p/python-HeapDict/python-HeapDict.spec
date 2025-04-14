@@ -1,7 +1,7 @@
 #
 # spec file for package python-HeapDict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,8 +59,8 @@ important for many algorithms such as Dijkstra's Algorithm and A*.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/heapdict.py*
-%pycache_only %{python_sitelib}/__pycache__/heapdict*
-%{python_sitelib}/HeapDict-%{version}.dist-info
+%{python_sitelib}/heapdict.py
+%pycache_only %{python_sitelib}/__pycache__/heapdict*pyc
+%{python_sitelib}/[Hh]eap[Dd]ict-%{version}.dist-info
 
 %changelog
