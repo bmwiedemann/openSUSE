@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:28:45 UTC 2025 - trenn@suse.de
+
+- Update to version 2.0.36.56+git.0a3a991:
+  * lanserv: Mark serial channels special
+  * sol: Refcount sol instance in ipmid_changed
+  * lanserv: Set the channel info accurately for system interface
+  * lanserv: Allow serial IPMI connections on channels besides 15
+  * lanserv: Add limits to the receive queue
+  * lanserv: Add timing for messages
+  * lanserv: Fix a bug in response handling for LAN messages
+  * lanserv: Yet another message dup bug
+  * lanserv: Fix a bug in message duplication
+  * lanserv: Remove one more unnecessary memset
+  * lanserv: Remove unnecessary memsets
+  * lanserv: Add the cmd to the things check for response matching
+  * lanserv: Add a function to allocate and free message
+  * lanserv: Fix a memory leak
+  * lanserv: Don't allocate a new message for SMI handling
+  * lanserv: Rework naming and message handling a bit
+  * lanserv: More malloc/free cleanups
+  * lanserv: Clean up memory handling
+  * lanserv: Remove functions from channel and use sysinfo
+  * lanserv: Create and use a message queue type
+  * lanserv: Separate out the receive queue
+  * lanserv: Reduce the size of the sim_addr_t passed around
+  * lanserv: Get lun 2 commands working
+  * lanserv: Rework receive queue to not have a dummy first byte
+  * lanserv: More message routing work
+  * lanserv: More work on the message routing
+  * lanserv: More rework
+  * lanserv: More work on restructure
+  * lanserv: Rework address names
+  * lanserv: More restructuring on message handling
+  * lanserv: Move check_msg_length() to serv.c
+  * lanserv: Round-robin sessions
+  * lanserv: Rework the send message handling
+  * lan: Don't set reponse LUN to 2 in bridged messages
+  * lanserv: Allow RMCP authtype for no session messages
+  * github: Add readline to the dependencies
+  * Remove support for UCD SNMP
+  * ipmish: Fix snmp trap handling
+  * lanserv: Use ssize_t for the return value of read()
+  * lanserv: Get rid of the rmcpplus session member
+  * lanserv: Preserve handle when clearing session data
+  * lanserv: Don't allow user 0 to be configured
+  * utils:md5: Handle data for md5 cannot be NULL
+  * lanserv: Validate message ordering at authentication
+  * lanserv: Don't assign session privilege until after auth is done
+  * lanserv: Clear out session data on a close
+  * utils: Check for NULL before freeing MD5 data
+  * lib:lan: Reject a zero sid
+  * sample: Fix data parsing in ipmicmd
+  * ui: Pass in a sockaddr_in to SNMP trap handler
+  * Fix gen_random()
+  * lanserv: Check that authdata is initialized before cleanup
+
+-------------------------------------------------------------------
 Wed Sep 25 10:40:09 UTC 2024 - trenn@suse.de
 
 - Fix bsc#1229910 CVE-2024-42934 by below 2 patches:
