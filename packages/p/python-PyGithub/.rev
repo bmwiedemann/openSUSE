@@ -383,4 +383,41 @@
     <comment></comment>
     <requestid>1222076</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ac9b2a435e05375dc76cb88c6b80650e</srcmd5>
+    <version>2.6.1</version>
+    <time>1744639709</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Update to 2.6.1
+  ## Bug Fixes
+  * Fix broken pickle support for Auth classes by @EnricoMi 
+    in #3211
+  * Remove schema from Deployment, remove message attribute by 
+    @EnricoMi in #3223
+  * Fix incorrect deprecated import by @EnricoMi in #3225
+  * Add CodeSecurityConfigRepository returned by 
+    get_repos_for_code_security_config by @EnricoMi in #3219
+  * Make GitTag.verification return GitCommitVerification by 
+    @EnricoMi in #3226
+  ## Maintenance
+  * Mention removal of AppAuth.private_key in changelog by 
+    @EnricoMi in #3212
+- Update to 2.6.0
+  ## Breaking Changes
+  * Rework Views and Clones by @EnricoMi in #3168
+  * Fix typos by @kianmeng in #3086
+  ## New Features
+  * Add capability for global laziness by @EnricoMi in #2746
+  * Add Support for GitHub Copilot Seat Management in 
+    Organizations by @pashafateev in #3082
+  * Get branches where commit is head by @EnricoMi in #3083
+  * Support downloading a Release Asset by @neel-m in #3060
+  * Add Repository.merge_upstream method by @Felixoid in #3175
+  * Support updating pull request draft status by @didot in #3104
+  * Add transfer ownership method to Repository by 
+    @tanannie22 in #3091</comment>
+    <requestid>1269109</requestid>
+  </revision>
 </revisionlist>

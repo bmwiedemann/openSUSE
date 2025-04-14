@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Apr 14 06:16:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Wed Apr  9 14:07:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.6.1
+  ## Bug Fixes
+  * Fix broken pickle support for Auth classes by @EnricoMi 
+    in #3211
+  * Remove schema from Deployment, remove message attribute by 
+    @EnricoMi in #3223
+  * Fix incorrect deprecated import by @EnricoMi in #3225
+  * Add CodeSecurityConfigRepository returned by 
+    get_repos_for_code_security_config by @EnricoMi in #3219
+  * Make GitTag.verification return GitCommitVerification by 
+    @EnricoMi in #3226
+  ## Maintenance
+  * Mention removal of AppAuth.private_key in changelog by 
+    @EnricoMi in #3212
+- Update to 2.6.0
+  ## Breaking Changes
+  * Rework Views and Clones by @EnricoMi in #3168
+  * Fix typos by @kianmeng in #3086
+  ## New Features
+  * Add capability for global laziness by @EnricoMi in #2746
+  * Add Support for GitHub Copilot Seat Management in 
+    Organizations by @pashafateev in #3082
+  * Get branches where commit is head by @EnricoMi in #3083
+  * Support downloading a Release Asset by @neel-m in #3060
+  * Add Repository.merge_upstream method by @Felixoid in #3175
+  * Support updating pull request draft status by @didot in #3104
+  * Add transfer ownership method to Repository by 
+    @tanannie22 in #3091
+  * Add enable and disable a Workflow by @nickrmcclorey in #3088
+  * Add support for managing Code Security Configrations 
+    by @billnapier in #3095
+  * Allow for private_key / sign function in AppAuth by 
+    @EnricoMi in #3065
+  ## full changelog: https://github.com/PyGithub/PyGithub/releases/tag/v2.6.0
+- Add missing test requirement
+
+-------------------------------------------------------------------
+Wed Mar 26 00:48:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Thu Nov  7 06:44:31 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update to 2.5.0

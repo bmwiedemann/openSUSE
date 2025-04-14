@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyGithub
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyGithub
-Version:        2.5.0
+Version:        2.6.1
 Release:        0
 Summary:        Python library to use the GitHub API v3
 License:        LGPL-3.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module PyNaCl >= 1.4.0}
 BuildRequires:  %{python_module cryptography >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.14.0}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 4.0.0}
@@ -76,6 +77,6 @@ sed -i s/--color=yes// pyproject.toml
 %license COPYING COPYING.LESSER
 %doc README.md
 %{python_sitelib}/github
-%{python_sitelib}/PyGithub-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Gg]ithub-%{version}.dist-info
 
 %changelog
