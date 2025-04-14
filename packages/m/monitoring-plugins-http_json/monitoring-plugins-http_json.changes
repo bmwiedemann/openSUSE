@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:58:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0
+  * Add Timestamp checks.
+  * Add unreachable-state option to icinga2 config.
+  * Improve error handling.
+  * Add cli invalid-json-state to change exit code for invalid
+    JSON.
+
+-------------------------------------------------------------------
 Thu May 16 18:25:45 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0
