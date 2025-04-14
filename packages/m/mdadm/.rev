@@ -1577,4 +1577,13 @@ which haven't landed upstream yet
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1252074</requestid>
   </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>c69d25598ca724529d99907aa34d5bd1</srcmd5>
+    <version>4.4</version>
+    <time>1744628133</time>
+    <user>anag_factory</user>
+    <comment>- IMSM RAID0 2 disks to RAID10 4 disks migration fix
+  add 1006-imsm-Fix-RAID0-to-RAID10-migration.patch (bsc#1241001) (forwarded request 1268424 from alnovak)</comment>
+    <requestid>1268644</requestid>
+  </revision>
 </revisionlist>

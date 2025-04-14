@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 10:54:06 UTC 2025 - Ales Novak <alnovak@suse.com>
+
+- IMSM RAID0 2 disks to RAID10 4 disks migration fix
+  add 1006-imsm-Fix-RAID0-to-RAID10-migration.patch (bsc#1241001)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:42:52 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - cleanup 1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
