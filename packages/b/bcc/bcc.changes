@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:41:59 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to version 0.34.0
+  * Support for kernel up to 6.13
+  * Bump cmake minimum version to 3.12
+    * drop 0001-Bump-CMake-minimum-version-to-3.12.patch
+  * statsnoop: Display syscall name with -s
+  * readahead: Fix incorrect page accessed count since kernel 5.16
+  * libbpf-tools/opensnoop: Add new fields
+  * libbpf-tools: hardirqs/softirqs: Fix logarithmic calculation issue
+  * libbpf-tools/hardirqs: have better default display and add CPU column
+  * libbpf-tools/klockstat: Better stack dump and summary info
+  * libbpf-tools/sigsnoop: Support real-time signals and thread comm
+  * libbpf-tools/statsnoop: Support more syscalls
+  * libbpf-tools/memleak: Some fixes and better messages
+  * tools/opensnoop: Add new fields and fix bad mode value
+  * tools/profile: Prioritize using the cpu-cycles hardware event
+  * tools/tcpdrop: Add support for dumping TCP drop reasons
+  * Fix event name too long error in python source
+  * doc update, other bug fixes and example improvement.
+  * enable deterministic bytecode generation
+    * drop deterministic_luajit.patch
+
+-------------------------------------------------------------------
 Fri Apr  4 09:14:10 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Add optional requires to libbcc0 for kernel-longterm-devel, if
