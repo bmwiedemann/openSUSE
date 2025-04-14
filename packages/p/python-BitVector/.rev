@@ -40,4 +40,14 @@
   * Use the load tests protocol to run the testsuite.</comment>
     <requestid>1232732</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>e3ba9dbcb5a39b194b77e3a138fa12ed</srcmd5>
+    <version>3.5.0</version>
+    <time>1744628369</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269069</requestid>
+  </revision>
 </revisionlist>

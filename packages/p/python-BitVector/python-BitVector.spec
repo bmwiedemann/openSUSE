@@ -1,7 +1,7 @@
 #
 # spec file for package python-BitVector
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,6 @@ etc.
 %files %{python_files}
 %doc README
 %{python_sitelib}/BitVector
-%{python_sitelib}/BitVector-%{version}.dist-info
+%{python_sitelib}/[Bb]it[Vv]ector-%{version}.dist-info
 
 %changelog
