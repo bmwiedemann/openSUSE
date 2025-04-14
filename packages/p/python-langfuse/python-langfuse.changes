@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Apr 11 20:57:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.60.2:
+  * fix(cost-tracking): handle none values in OpenAI schema
+- update to 2.60.1:
+  * fix(openai): remove unused openai.resources import
+- update to 2.60.0:
+  * feat(openai): add Response API support
+  * fix(ingestion_consumer): mask before multimodal handling
+- update to 2.59.7:
+  * feat(client): add native environments
+- update to 2.59.6:
+  * fix(openai): handle missing text property on streamed
+    completion
+- update to 2.59.5:
+  * Resolve runtime error with openai extension when metadata is
+    missing
+  * fix(openai): apply langfuse_mask
+- update to 2.59.4:
+  * fix(langchain): cached token usage
+- update to 2.59.3:
+  * fix(openai): implement aclose on async stream responses
+- update to 2.59.2:
+  * fix(serializer): NaN handling
+  * feat(prompts): add commit message to prompt creation
+- update to 2.59.1:
+  * perf(ingestion): make max event and batch size configurable
+- update to 2.59.0:
+  * feat(api): expose public api client
+  * feat(client): add async api client
+- update to 2.58.2:
+  * fix(openai): handle usage object without mutation
+  * fix(media): retry requests upload errors
+- update to 2.58.1:
+  * fix(llama-index): workflow integration
+- update to 2.58.0:
+  * feat: update prompts and invalidate cache
+- update to 2.57.13:
+  * fix(langchain): add run_id check on_llm_error
+- update to 2.57.12:
+  * fix(decorators): merge trace tags and metadata on updates
+- update to 2.57.11:
+  * fix(openai): allow non in token_details
+- update to 2.57.10:
+  * fix(langchain): mitigate missing run_id on_chain_error
+  * fix(openai): allow for none values in usage details in
+    https://github.com/langfuse/langfuse-
+    python/commit/4d47959fcb5cc473ba8bf59c72ed8dc2c6429677
+- update to 2.57.9:
+  * feat(langchain): add debug level to langsmith:hidden tagged
+    spans
+- update to 2.57.8:
+  * perf(decorator): remove get_caller_module
+- update to 2.57.7:
+  * fix(api-models): usage unit to optional
+- update to 2.57.6:
+  * chore(models): update fern api
+- update to 2.57.5:
+  * fix(serializer): remove unnecessary log statement by
+- update to 2.57.4:
+  * fix: add project_id to urls returned by
+    langfuse_context.get_current_trace_url
+- update to 2.57.3:
+  * fix(dataset+decorator): item observer with top-level
+    generation
+- update to 2.57.2:
+  * perf: memory usage on repeat instantiation
+- update to 2.57.1:
+  * chore(singleton): shutdown on reset
+- update to 2.56.2:
+  * feat(media): utility to resolve media references with media
+    content
+  * fix(media): add timeout to reference resolution
+  * chore(deps): bump the langchain group with 2 updates
+- update to 2.56.1:
+  * fix(client): pass timeout to FernLangfuse
+  * fix(openai): pass metadata when model distillation feat is
+    used
+  * chore(deps-dev): bump pytest from 8.3.3 to 8.3.4
+  * chore(deps-dev): bump the langchain group with 5 updates
+  * chore(deps): bump django from 5.0.9 to 5.0.10 in
+    /examples/django_example
+  * chore(deps-dev): bump boto3 from 1.35.76 to 1.35.77
+- update to 2.56.0:
+  * chore(deps): bump the langchain group across 1 directory with
+    2 updates
+  * chore(ci): update to v3 docker compose
+  * feat: use projectid when generating trace urls
+
+-------------------------------------------------------------------
 Wed Nov 20 15:19:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.54.1:

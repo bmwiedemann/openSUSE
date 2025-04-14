@@ -74,4 +74,41 @@
     @shawnzhu and @hassiebp in</comment>
     <requestid>1225319</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d79d36d56e21a9f23e59d264d1301349</srcmd5>
+    <version>2.60.2</version>
+    <time>1744628160</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.60.2:
+  * fix(cost-tracking): handle none values in OpenAI schema
+- update to 2.60.1:
+  * fix(openai): remove unused openai.resources import
+- update to 2.60.0:
+  * feat(openai): add Response API support
+  * fix(ingestion_consumer): mask before multimodal handling
+- update to 2.59.7:
+  * feat(client): add native environments
+- update to 2.59.6:
+  * fix(openai): handle missing text property on streamed
+    completion
+- update to 2.59.5:
+  * Resolve runtime error with openai extension when metadata is
+    missing
+  * fix(openai): apply langfuse_mask
+- update to 2.59.4:
+  * fix(langchain): cached token usage
+- update to 2.59.3:
+  * fix(openai): implement aclose on async stream responses
+- update to 2.59.2:
+  * fix(serializer): NaN handling
+  * feat(prompts): add commit message to prompt creation
+- update to 2.59.1:
+  * perf(ingestion): make max event and batch size configurable
+- update to 2.59.0:
+  * feat(api): expose public api client
+  * feat(client): add async api client
+- update to 2.58.2:
+  * fix(openai): handle usage object without mutation</comment>
+    <requestid>1268730</requestid>
+  </revision>
 </revisionlist>
