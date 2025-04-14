@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 11 18:36:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.57:
+  * Bump helm.sh/helm/v3 from 3.17.0 to 3.17.3
+  * Update mesheryctl/tests/e2e/003-design/01-design-list.bats
+  * [Docs] Generated documentation for Integration
+  * [Docs] Generated documentation for Integration
+  * [Docs] Release Notes for Meshery
+  * [Docs] Update mesheryctl docs
+  * [Docs] Update table of contents
+  * [Docs] Update table of contents and sidebar styles
+  * [Docs] Updated test report in Jekyll
+  * [Fix] Update event streamer API route and enhance event status
+    query logic
+  * chore(mesheryctl-e2e): update test regex
+  * feat(mesheryctl): add e2e test on system context subcommand
+  * fix(mesheryctl-model): fix model export with a non existing
+    version raising a panic
+
+-------------------------------------------------------------------
 Tue Apr  8 07:38:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.56:
