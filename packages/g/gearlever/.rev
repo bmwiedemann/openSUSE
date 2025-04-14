@@ -96,4 +96,16 @@
     <comment></comment>
     <requestid>1256324</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>eec5522ef9d4f137970c576ca674c2f3</srcmd5>
+    <version>3.1.1</version>
+    <time>1744628271</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.1:
+  * Added searchbar icon
+- Update to 3.1.0:
+  * Added support for AppImages using dwarfs filesystem
+</comment>
+    <requestid>1268816</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        3.0.2
+Version:        3.1.1
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  gtk4-tools
 BuildRequires:  meson
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gio-2.0)
+Requires:       dwarfs
 Requires:       flatpak-spawn
 Requires:       p7zip
 Requires:       python3-dbus-python
@@ -57,6 +58,7 @@ in-place or keep multiple versions side-by-side.
 %suse_update_desktop_file %{appid}
 %fdupes %{buildroot}/%{_prefix}
 rm %{buildroot}/%{_datadir}/gearlever/gearlever/assets/demo.AppImage
+find %{buildroot} -iname 'meson.build' -delete
 
 %files
 %license COPYING
