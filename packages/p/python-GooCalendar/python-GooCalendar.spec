@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooCalendar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016-2023 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -54,6 +54,6 @@ A calendar widget for GTK using PyGoocanvas (Gnome widget linrary).
 %license LICENSE
 %doc README COPYRIGHT
 %{python_sitelib}/goocalendar
-%{python_sitelib}/GooCalendar-%{version}.dist-info
+%{python_sitelib}/[Gg]oo[Cc]alendar-%{version}.dist-info
 
 %changelog

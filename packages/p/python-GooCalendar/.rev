@@ -95,4 +95,14 @@
   * Add colors and font-desc properties to Calendar</comment>
     <requestid>1140315</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>8815c28e5da454383549f3b2853e0528</srcmd5>
+    <version>0.8.0</version>
+    <time>1744628376</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269075</requestid>
+  </revision>
 </revisionlist>

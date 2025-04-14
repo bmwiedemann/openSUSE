@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:54:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Tue Mar 25 02:40:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Sun Jan 21 17:43:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - enable sle15 pythons build
