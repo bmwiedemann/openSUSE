@@ -1,7 +1,7 @@
 #
 # spec file for package cryfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           cryfs
-Version:        0.11.3
+Version:        1.0.1
 Release:        0
 Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
@@ -30,20 +30,19 @@ Source:         https://github.com/cryfs/cryfs/releases/download/%{version}/%{na
 Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # 0x5D5EC7BC6F1443EC2AF7177A9E6C996C991D25E1
 Source2:        %{name}.keyring
-Patch0:         https://github.com/cryfs/cryfs/commit/38849c22aa34c5fad10091e066a520dd831462b3.patch
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.25
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_atomic-devel >= 1.65.1
-BuildRequires:  libboost_chrono-devel >= 1.65.1
-BuildRequires:  libboost_filesystem-devel >= 1.65.1
-BuildRequires:  libboost_program_options-devel >= 1.65.1
-BuildRequires:  libboost_system-devel >= 1.65.1
-BuildRequires:  libboost_thread-devel >= 1.65.1
+BuildRequires:  libboost_atomic-devel >= 1.84.0
+BuildRequires:  libboost_chrono-devel >= 1.84.0
+BuildRequires:  libboost_filesystem-devel >= 1.84.0
+BuildRequires:  libboost_program_options-devel >= 1.84.0
+BuildRequires:  libboost_system-devel >= 1.84.0
+BuildRequires:  libboost_thread-devel >= 1.84.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  cmake(range-v3)
 BuildRequires:  cmake(spdlog)
-BuildRequires:  pkgconfig(fuse) >= 2.8.6
+BuildRequires:  pkgconfig(fuse) >= 2.9.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libssl)
 

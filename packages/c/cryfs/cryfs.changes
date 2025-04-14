@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Mar 22 17:16:21 UTC 2025 - munix9@googlemail.com
+
+- Update to version 1.0.1:
+  Backwards Compatibility
+  * Filesystems created with CryFS 0.11.x and CryFS 1.0.0 are fully
+    compatible with each other. The storage format hasn't changed.
+  * This means filesystems created with 0.10.x or 0.11.x can be 
+    mounted without requiring a migration.
+  * Filesystems created with 1.0.0 or 0.11.x can be mounted by
+    CryFS 0.10.x, but only if you configure it to use a cipher
+    supported by CryFS 0.10.x, e.g. AES-256-GCM. The new default,
+    XChaCha20-Poly1305, is not supported by CryFS 0.10.x.
+
+  Fixes/Improvements
+  * Added a man page for cryfs-unmount
+  * Fixed small inaccuracy in calculation of free space in statvfs
+  * Fix an issue when using -o atime mount options
+
+- Remove 38849c22aa34c5fad10091e066a520dd831462b3.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Mon Nov  6 15:55:42 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 -  Fix build with RPM 4.19: unnumbered patches are no longer
