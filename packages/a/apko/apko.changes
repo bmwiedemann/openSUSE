@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:48:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.7:
+  * apk: fix cached APKINDEX to be world readable (#1621)
+  * Use a lazy layerWriter for writing tar files (#1616)
+  * Rewrite writeTar in terms of iterators (#1615)
+  * For multi-layer images, include all layers (#1611)
+  * Consider deps resolved if other resolved deps already provide
+    them (#1606)
+  * refactor: slim down interface requirements for fetching
+    packages (#1614)
+  * Drop pkg/apk/tarball (#1613)
+  * Un-abstract the tarball package (#1609)
+  * Pass through ReadAt to tarfs (#1607)
+  * build(deps): bump go.step.sm/crypto from 0.59.1 to 0.60.0
+    (#1592)
+  * build(deps): bump golang.org/x/sys from 0.31.0 to 0.32.0
+    (#1601)
+  * build(deps): bump google.golang.org/api from 0.225.0 to 0.228.0
+    (#1591)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.11.0 to
+    0.11.1 (#1594)
+  * build(deps): bump goreleaser/goreleaser-action from 6.2.1 to
+    6.3.0 (#1597)
+  * build(deps): bump step-security/harden-runner from 2.11.0 to
+    2.11.1 (#1599)
+  * build(deps): bump golang.org/x/sync from 0.12.0 to 0.13.0
+    (#1602)
+  * build(deps): bump github/codeql-action from 3.27.9 to 3.28.14
+    (#1603)
+
+-------------------------------------------------------------------
 Tue Apr 01 17:31:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.6:
