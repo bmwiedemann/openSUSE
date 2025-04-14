@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:33:21 UTC 2025 - Andreas Schneider <asn@cryptomilk.org>
+
+- Remove glew dependency
+  * Added mangohud-remove-glew-dep.patch
+
+-------------------------------------------------------------------
 Wed Mar  5 10:10:36 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.1:

@@ -35,6 +35,9 @@ Source4:        https://github.com/KhronosGroup/Vulkan-Headers/archive/v%{vulkan
 Source5:        https://github.com/epezent/implot/archive/refs/tags/v%{implot_ver}.zip#/implot-%{implot_ver}.tar.gz
 Source6:        https://wrapdb.mesonbuild.com/v2/implot_%{implot_ver}-1/get_patch#/implot-%{implot_ver}-1-wrap.zip
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM mangohud-remove-glew-dep.patch
+# https://github.com/flightlessmango/MangoHud/commit/9da183900bc6f7af0f3cb907d9370aec54a11a91.patch
+Patch0:         mangohud-remove-glew-dep.patch
 BuildRequires:  AppStream
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150500
 BuildRequires:  gcc12-c++
@@ -48,7 +51,6 @@ BuildRequires:  python3-mako
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libdrm)
