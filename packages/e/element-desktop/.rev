@@ -1217,4 +1217,43 @@ Version 1.11.93
     <comment></comment>
     <requestid>1256474</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>04eed54b5465d3293280a5932bb5331d</srcmd5>
+    <version>1.11.97</version>
+    <time>1744642228</time>
+    <user>anag_factory</user>
+    <comment>- Version 1.11.97
+  ## ✨ Features
+  * New room list: reduce padding between avatar and room list border (https://github.com/element-hq/element-web/pull/29634). Contributed by @florianduros.
+  * Bundle Element Call with Element Web packages (https://github.com/element-hq/element-web/pull/29309). Contributed by @t3chguy.
+  * Hide an event notification if it is redacted (https://github.com/element-hq/element-web/pull/29605). Contributed by @Half-Shot.
+  * Docker: Use nginx-unprivileged as base image (https://github.com/element-hq/element-web/pull/29353). Contributed by @AndrewFerr.
+  * Switch away from nesting React trees and mangling the DOM (https://github.com/element-hq/element-web/pull/29586). Contributed by @t3chguy.
+  * New room list: add notification decoration (https://github.com/element-hq/element-web/pull/29552). Contributed by @florianduros.
+  * RoomListStore: Unread filter should match rooms that were marked as unread (https://github.com/element-hq/element-web/pull/29580). Contributed by @MidhunSureshR.
+  * Add support for hiding videos (https://github.com/element-hq/element-web/pull/29496). Contributed by @Half-Shot.
+  * Use an outline icon for the report room button (https://github.com/element-hq/element-web/pull/29573). Contributed by @robintown.
+  * Generate/load pickle key on SSO (https://github.com/element-hq/element-web/pull/29568). Contributed by @Jujure.
+  * Add report room dialog button/dialog. (https://github.com/element-hq/element-web/pull/29513). Contributed by @Half-Shot.
+  * RoomListViewModel: Make the active room sticky in the list (https://github.com/element-hq/element-web/pull/29551). Contributed by @MidhunSureshR.
+  * Replace checkboxes with Compound checkboxes, and appropriately label each checkbox. (https://github.com/element-hq/element-web/pull/29363). Contributed by @Half-Shot.
+  * New room list: add selection decoration (https://github.com/element-hq/element-web/pull/29531). Contributed by @florianduros.
+  * Simplified Sliding Sync (https://github.com/element-hq/element-web/pull/28515). Contributed by @dbkr.
+  * Add ability to hide images after clicking &quot;show image&quot; (https://github.com/element-hq/element-web/pull/29467). Contributed by @Half-Shot.
+  ## 🐛 Bug Fixes
+  * Fix scroll issues in memberlist (https://github.com/element-hq/element-web/pull/29392). Contributed by @MidhunSureshR.
+  * Ensure clicks on spoilers do not get handled by the hidden content (https://github.com/element-hq/element-web/pull/29618). Contributed by @t3chguy.
+  * New room list: add cursor pointer on room list item (https://github.com/element-hq/element-web/pull/29627). Contributed by @florianduros.
+  * Fix missing ambiguous url tooltips on Element Desktop (https://github.com/element-hq/element-web/pull/29619). Contributed by @t3chguy.
+  * New room list: fix spacing and padding (https://github.com/element-hq/element-web/pull/29607). Contributed by @florianduros.
+  * Make fetchdep check out matching branch name (https://github.com/element-hq/element-web/pull/29601). Contributed by @dbkr.
+  * Fix MFileBody fileName not considering `filename` (https://github.com/element-hq/element-web/pull/29589). Contributed by @t3chguy.
+  * Fix token expiry racing with login causing wrong error to be shown (https://github.com/element-hq/element-web/pull/29566). Contributed by @t3chguy.
+  * Fix bug which caused startup to hang if the clock was wound back since a previous session (https://github.com/element-hq/element-web/pull/29558). Contributed by @richvdh.
+  * RoomListViewModel: Reset any primary filter on secondary filter change (https://github.com/element-hq/element-web/pull/29562). Contributed by @MidhunSureshR.
+  * RoomListStore: Unread filter should only filter rooms having unread counts (https://github.com/element-hq/element-web/pull/29555). Contributed by @MidhunSureshR.
+  ## Security
+  * Fix for bsc#1240990 / CVE-2025-32026 / GHSA-69q3-jg79-cg79</comment>
+    <requestid>1269253</requestid>
+  </revision>
 </revisionlist>
