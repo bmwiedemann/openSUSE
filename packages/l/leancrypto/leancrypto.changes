@@ -1,0 +1,221 @@
+-------------------------------------------------------------------
+Thu Apr 10 08:11:26 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- updated to 1.3.0
+  * Allow CPU entropy sources to be used as seed sources with meson option "seedsource=cpu"
+  * Ensure full clean run on vintage system without AVX2 (thanks to "David C. Rankin" <drankinatty@gmail.com>)
+  * EFI: compilation support on AARCH64 
+  * Meson: reduce number of object files to speed up compilation process
+  * Intel assembler: add endbr[64|32] to every function and ensure IBT is enabled
+  * ARMv8 assembler / ELF: add BTI and PAC support
+  * *Full FIPS 140 compliance*: Invoke PCT, add integrity test for ELF compilations, enable FIPS compilation by default
+  * ML-DSA: add external-mu support; new API: lc_dilithium_ctx_external_mu
+  * Add optional Jitter RNG entropy source
+  * Add SLH-DSA-Ascon-128[s|f]  (by default they are disabled, enable with meson configuration options `slh_dsa_ascon_128s` and `slh_dsa_ascon_128f`)
+  * ML-KEM: use common poly_tobytes / poly_compress including fix for kyberslash for ARMv8 (thus all ML-KEM implementations have proper protections against it)
+  * ML-KEM: reduce code duplication
+  * Big-Endian: fixes on X.509 key usage processing, ML-KEM modulus tester
+
+- Changes 1.2.0
+
+  * Locking für seeded_rng added to avoid requiring the caller providing a lock
+  * Addition of ASN.1 decoder, X.509 parser, PKCS#7 / CMS parser
+  * Addition of ASN.1 encoder, X.509 generator, PKCS#7 / CMS generator for ML-DSA, SLH-DSA, ML-DSA-ED25519
+  * ML-DSA-ED25519: Hybrid implementation changed to match definition https://www.ietf.org/archive/id/draft-ietf-lamps-pq-composite-sigs-03.html
+  * RISCV64: Keccak - add assembler and ZBB implementation
+  * RISCV64: ML-KEM - add assembler implementation
+  * RISCV64: ML-DSA - add assembler implementation
+  * Add FIPS 140 mode (as of now, it does not yet implement full FIPS 140 compliance)
+  * Ascon AEAD, Hash, XOF, Ascon-Keccak: Update to comply with SP800-232
+  * Dilithium AVX2: Add side channel analysis
+  * leancrypto passes X.509 IETF-Hackathon tests: https://ietf-hackathon.github.io/pqc-certificates/pqc_hackathon_results_certs_r4_automated_tests.html
+  * Add compilation support for (U)EFI environment
+  * RISCV64 RVV: ML-KEM, ML-DSA - add assembler implementation using RVV support
+  * Seeded DRNG: Require a reseed after 2**14 bytes to comply with AIS20/31 3.0 DRG.4 and the discussed upcoming changes to SP800-90A.
+  * SHA-512 / 384 / 256: Addition of AVX2, SHA_NI, SHA_NI-512, ARMv8 Neon, ARMv8 CE, RISCV ASM, RISCV ZBB acceleration
+  * Add lc_init API
+  * Intel non-AVX2 systems: remove all SIGILL causes by ensuring no AVX2 code is executed
+  * Linux kernel: support version 6.13 kernel crypto signature API
+  * Allow switching the central leancrypto seeded RNG instance with a caller-provided RNG
+  * ML-KEM: fix poly_frombytes to perform the loading operation modulo 3329 (instead of modulo 4096) - thanks to Daiki Ueno for reporting it
+
+- Changes 1.1.0
+
+  * ML-KEM remove modulus check of decapsulation key (not required by FIPS 203)
+  * ML-KEM: add key pair PCT API - leancrypto cannot invoke it itself as it does not know when both keys are provided from outside
+  * ML-DSA: add consistency with FIPS 204 - the signature changes as the input data handling is added (if you want to apply the old signature, use the new lc_dilithium_[sign|verify]_ctx API with ctx->ml_dsa_internal = 1)
+  * ML-DSA: add API to allow caller to provide a user context as allowed by FIPS 204, to invoke ML-DSA.Sign_internal, ML-DSA.Verify_internal and HashML-DSA
+  * ML-KEM: rename source code directory to ml-kem
+  * ML-DSA: rename source code directory to ml-dsa
+  * BIKE: Add NIST round 4 KEM candiate
+  * ML-DSA: Add support to retain the expanded key to increase the performance of signature operations by 15 to 20%
+  * ML-DSA: add key pair PCT API - leancrypto will not invoke it, but provides it for FIPS 140 support
+  * SLH-DSA: Add SLH-DSA-SHAKE-256s, SLH-DSA-SHAKE-256f, SLH-DSA-SHAKE-192s, SLH-DSA-SHAKE-192f, SLH-DSA-SHAKE-128s, SLH-DSA-SHAKE-128f
+  * ML-DSA, ML-KEM, SLH-DSA, BIKE, Hash, AEAD, RNG, HMAC, HKDF, symmetric: move API implementation from H to C file - this implies that no RUST wrappers are needed
+  * Linux kernel: ML-DSA / SLH-DSA sigver input changed to be compliant to existing kernel structures: req->src SGL contains signature || msg, req->dst SGL is not processed
+
+- Changes 1.0.1
+
+  * fix: Kyber keygen - add LC_KYBER_K to initial hash (change is only relevant when storing keys as seed and for interoperability)
+  * fix: Dilithium keygen - add dimensions K and L (change is only relevant when storing keys as seed and for interoperability)
+  * small performance improvements for hasher apps
+
+- Changes 1.0.0
+
+  * enhancement: add Doxygen support - it is automatically compiled if Doxygen is present
+  * enhancement: add Dilithium-ED25519 stream mode operation (i.e. init/update/final)
+  * due to the Dilithium-ED25519 stream mode support, the Dilithium-ED25519 now used ED25519ph signature algorithm mode
+  * Dilithium API change: the stream mode uses struct lc_dilithium_ctx instead of lc_hash_ctx to reflect the newly added Dilithium-ED25519 API - the lc_dilithium_ctx can be allocated on the stack or heap using LC_DILITHIUM_CTX_ON_STACK or lc_dilithium_ctx_alloc
+  * enhancement: add Dilithium-ED25519 as Linux kernel akcipher algorithm
+  * enhancement: make Kyber-X25519 as Linux kernel kpp algorithm consistent with the standalone Kyber kpp implementation and add a tester
+  * seeded_rng: when using the ESDM as entropy source, use DRBG without prediction resistance. When having heavy respawning of applications, using the PR DRBG will strain the entropy source significantly.
+  * Dilithium: add edge case tests as referenced by https://github.com/usnistgov/ACVP/pull/1525.patch and https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/G8Zf0hC-uu0/m/Kb3qNJb0AwAJ
+
+- Changes 0.11.0
+
+  * security fix: fix possible leak of message in Kyber
+  * Kyber: reduce memory footprint, use common lc_memcmp_secure API
+  * Ascon-Keccak: include the tag length into the IV and thus implicitly authenticate the tag length (thanks to Markku-Juhani Saarinen to suggest this)
+  * Kyber: change standard API such that caller can select Kyber type
+  * Dilithium: change standard API such that caller can select Dilithium type
+  * security: addition of Timecop and instrumentation of tests to find side-channels
+  * enhancement: add Linux kernel crypto API support for Ascon / Ascon-Keccak
+  * fix: performance of seeded RNG by setting reseed threshold to 1MB
+  * fix: Linux kernel warning on return thunk
+  * enhancement: add ASM ARMv7 and ARMv8 implementation for X25519
+  * enhancement: add Ascon support for XDRBG
+  * enhancement: performance increase for XDRBG256
+  * enhancement: add ED25519ph to support Dilithium hybrid init/update/final handling
+
+- Changes 0.10.1
+
+  * enhancement: Linux kernel - Kyber: allow parallel compilation of all Kyber types including all optimizations
+  * enhancement: Linux kernel - Dilithium: allow parallel compilation of all Dilithium types including all optimizations
+  * add additional hardening compiler flags stipulated by openssf.org
+
+- Changes 0.10.0
+
+  * enhancement: add Sponge APIs
+  * enhancement: add Ascon Keccak 512 and 256
+  * update AEAD: add lc_aead_enc|dec_init and change all AEAD algo's tag calculation to now perform MAC(AAD || ciphertext) instead of MAC(ciphertext || AAD) - this brings it in line with all AEAD algorithms
+  * enhancement: add Ascon AEAD 128 and 128b
+  * rename API lc_shake to lc_xof
+  * enhancement: add Ascon Hash 128 and 128a
+  * enhancement: add Ascon XOF and XOFa
+  * enhancement: add Ascon 128/128a hasher apps
+  * large data tests can now execute on small systems by using smaller memory sizes
+  * remove riscv64 hash assembler directory: it is a duplicate of the riscv32 assembler code
+  * Kyber 768: Add AVX2, ARMv8, ARMv7 support
+  * Dilithium 65: Add AVX2, ARMv8, ARMv7 support
+  * Enable compilation of Kyber 1024, Kyber-768 and Kyber-512 at the same time (APIs starting with lc_kyber_768/lc_kex_768 refer to Kyber-768, APIs starting with lc_kyber_512/lc_kex_512 refer to Kyber-512, all others refer to Kyber-1024)
+  * Enable compilation of Dilithium 87, Dilithium-65 and Dilithium-44 at the same time (APIs starting with lc_dilithium_65 refer to Dilithium-768, APIs starting with lc_dilithium_44 refer to Dilithium-44, all others refer to Dilithium-87)
+  * enhancement: Windows is now supported as target platform using the MINGW compiler with full acceleration support
+  * Dilithium: update SampleInBall implementation following https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/y8ul-ZcVWI4 - implementation is fully checked against NIST ACVP Demo server
+
+- Changes 0.9.2
+
+  * fix: update "reduce memory footprint of Keccak state" to handle big-endian systems
+  * enhancement: Seed the lc_seeded_rng with (random.c || Jitter RNG)
+
+- Changes 0.9.1
+
+  * fix: move XOR-256 memory definitions to lc_memory_support.h as otherwise compilation of external applications and libraries fail due to missing xor256.h
+
+- Changes 0.9.0
+
+  * enhancement: X/ED25519: enable 128 bit mode on Intel for both, kernel and user
+    space
+  * add Rust binding support
+  * enhancement: reduce memory footprint of Keccak state
+  * enhancement: add cSHAKE re-init support
+  * fix: KMAC-AEAD / cSHAKE-AEAD - ensure proper re-initialization
+  * enhancement: add RISC-V 64 bit Keccak - currently disabled due to a bug
+  * enhancement: compile Dilithium ARMv8 support in Linux kernel (excluding the SIMD Keccak operation)
+  * fix: fix ARM-CE detection logic
+  * fix: potential Kyber side channel
+  * fix: KMAC min MAC size is 32 bits
+  * enhancement: use accelerated XOR for KMAC/cSHAKE AEAD
+  * fix: enable poly_compress_avx for Linux kernel compilation when GCC >= 13 is present
+  * enhancement: add interface code to register leancrypto with Linux kernel crypto API
+
+- Changes 0.8.0:
+
+  * enhancement: add applications
+  * enhancement: add Dilithium ARMv8 support (including SHAKE 2x ARMv8 support)
+  * enhancement: add Dilithium ARMv7 support
+  * enhancement: add Kyber ARMv7 support
+  * reduce memory footprint of Dilithium and Kyber
+  * enhancement: Add Kyber-X25519 KEM, KEX, and IES
+  * enhancement: Add Dilithium-ED25519
+  * hardening: use -fzero-call-used-regs=used-gpr if available to counter ROP
+    attacks
+  * fix: Add fork-detection for seeded_rng
+  * update XDRBG256 implementation based on latest draft
+
+- Changes 0.7.0:
+
+  * enhancement: add XDRBG256 - the SHAKE256-based DRNG discussed for SP800-90A
+    inclusion (almost idential to cSHAKE/KMAC DRNG specified with leancrypto)
+  * enhancement: add SymKMAC AEAD algorithm - it uses 100 bytes less context than
+    SymHMAC (it is less than 1024 bytes now), uses accelerated Keccak for KDF and
+    authentication but is otherwise identical to SymHMAC
+  * Kyber: switch responder and initiator definitions
+  * enhancement: add ESDM seed source to seed lc_seeded_rng
+  * editorial: reformat code using clang-format and provided configuration file
+  * Dilithium: Update implementation to match FIPS 204 (draft from Aug 24, 2023)
+  * Kyber: Update implementation to match FIPS 203 (draft from Aug 24, 2023)
+  * enhancement: Dilithium and Kyber security strengths are selectable via Meson options
+  * Kyber KEM: Update shared secret KDF (as the KDF is now removed from FIPS 203,
+    it can be adjusted to be more performant and consistent with SP800-108)
+  * Kyber KEX: Updated shared secret KDF to use SP800-108 compliant KMAC KDF
+  * enhancement: Add input parameter validatino to Kyber as specified in FIPS 203
+  * enhancement: consolidate all testing requiring an RNG to use selftest_rng
+
+- Changes 0.6.0:
+
+  * enhancement: Linux - add memfd_secret(2) support for secure memory allocation
+  * fix: documentation of lc_kyber_keypair
+  * enhancement: remove the rng_ctx parameter in all Kyber APIs except the key
+    generation - internally lc_seeded_rng is used instead
+  * enhancement: use -Wmissing-prototypes and fix reported issues
+  * enhancement: provide standalone CBC, CTR, KW implementation
+  * enhancement: provide AESNI implementation
+  * enhancement: provide AES ARM CE implementation
+  * enhancement: provide AES RISC-V 64 assembler implementation
+  * enhancement: provide Linux kernel configuration option to enable startup
+    health tests
+  * fix: apply fixes such that all self tests and regression tests pass when compiled for Linux kernel
+  * fix: properly zeroize memory when using the workspace memory
+
+- Changes 0.5.3:
+
+  * convert to safe min/max implementations
+  * enhancement: allow kernel modules to be compiled directly from installed user space headers
+  * enhancement: make ARMv8 code compile on macOS
+
+-------------------------------------------------------------------
+Sun Feb  5 20:56:14 UTC 2023 - Stephan Mueller <smueller@chronox.de>
+
+- leancrypto version 0.5.2
+
+  Pretesting of ARMv8 Kyber
+
+-------------------------------------------------------------------
+Sun Jan  8 16:22:33 UTC 2023 - Stephan Mueller <smueller@chronox.de>
+
+- leancrypto version 0.5.1 
+
+-------------------------------------------------------------------
+Fri Nov 25 08:18:22 UTC 2022 - Stephan Mueller <smueller@chronox.de>
+
+- merge kernel definition into common SPEC file
+
+-------------------------------------------------------------------
+Fri Nov 25 07:56:44 UTC 2022 - Stephan Mueller <smueller@chronox.de>
+
+- Add Linux kernel module spec file 
+
+-------------------------------------------------------------------
+Fri Nov 25 07:29:26 UTC 2022 - Stephan Mueller <smueller@chronox.de>
+
+- Add static compilation support of leancrypto
