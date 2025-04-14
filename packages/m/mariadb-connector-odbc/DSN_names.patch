@@ -8,12 +8,12 @@ changes in available options between ODBC driver versions.
 The sample DSN config file is manually maintained based on
 these options.
 
-Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
+Index: mariadb-connector-odbc-3.2.5-src/driver/ma_dsn.c
 ===================================================================
---- mariadb-connector-odbc-3.1.10-ga-src.orig/ma_dsn.c
-+++ mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
-@@ -34,56 +34,56 @@
- 
+--- mariadb-connector-odbc-3.2.5-src.orig/driver/ma_dsn.c
++++ mariadb-connector-odbc-3.2.5-src/driver/ma_dsn.c
+@@ -39,75 +39,75 @@
+    DsnKeysSwitch below in this file, and index defines in this file, accordingly */
  MADB_DsnKey DsnKeys[]=
  {
 -  {"DSN",            offsetof(MADB_Dsn, DSNName),           DSN_TYPE_STRING, 0, 0}, /* 0 */
@@ -42,8 +42,6 @@ Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
 -  {"AUTO_RECONNECT", offsetof(MADB_Dsn, Reconnect),         DSN_TYPE_OPTION, MADB_OPT_FLAG_AUTO_RECONNECT,0},
 -  {"NO_PROMPT",      offsetof(MADB_Dsn, ConnectPrompt),     DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_PROMPT,0},
 -  {"CHARSET",        offsetof(MADB_Dsn, CharacterSet),      DSN_TYPE_COMBO,  0, 0},
--  {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_STRING, 0, 0},
--  {"PLUGIN_DIR",     offsetof(MADB_Dsn, ConnCPluginsDir),   DSN_TYPE_STRING, 0, 0},
 +    {"NamedPipe",      offsetof(MADB_Dsn, IsNamedPipe),       DSN_TYPE_OPTION, MADB_OPT_FLAG_NAMED_PIPE, 0}, /* MADB_DSNKEY_NAMEDPIPE_INDEX */
 +    {"TCPIP",          offsetof(MADB_Dsn, IsTcpIp),           DSN_TYPE_BOOL,   0, 0}, /* DSNKEY_TCPIP_INDEX */
 +    {"SERVER",         offsetof(MADB_Dsn, ServerName),        DSN_TYPE_STRING, 0, 0}, /* DSNKEY_SERVER_INDEX     */
@@ -56,7 +54,12 @@ Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
 +    {"AUTO_RECONNECT", offsetof(MADB_Dsn, Reconnect),         DSN_TYPE_OPTION, MADB_OPT_FLAG_AUTO_RECONNECT,0},
 +    {"NO_PROMPT",      offsetof(MADB_Dsn, ConnectPrompt),     DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_PROMPT,0},
 +    {"CHARSET",        offsetof(MADB_Dsn, CharacterSet),      DSN_TYPE_COMBO,  0, 0},
-+    {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_STRING, 0, 0},
+   /* TODO: this has to be removed.Changed to bool to take less memory : ) The problem is changed
+    * indexes of other elements of this array. I think they are relied upon in the setup dialog
+    */
+-  {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_BOOL, 0, 0},
+-  {"PLUGIN_DIR",     offsetof(MADB_Dsn, ConnCPluginsDir),   DSN_TYPE_STRING, 0, 0},
++    {"TRACE",          offsetof(MADB_Dsn, TraceFile),         DSN_TYPE_BOOL, 0, 0},
 +    {"PLUGIN_DIR",     offsetof(MADB_Dsn, ConnCPluginsDir),   DSN_TYPE_STRING, 0, 0},
    /* SSL */
 -  {"SSLKEY",         offsetof(MADB_Dsn, SslKey),            DSN_TYPE_STRING, 0, 0},
@@ -78,6 +81,20 @@ Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
 -  {"TLSKEYPWD",      offsetof(MADB_Dsn, TlsKeyPwd),         DSN_TYPE_STRING, 0, 0},
 -  {"INTERACTIVE",    offsetof(MADB_Dsn, InteractiveClient), DSN_TYPE_BOOL,   0, 0},
 -  {"FORWARDONLY",    offsetof(MADB_Dsn, ForceForwardOnly),  DSN_TYPE_OPTION, MADB_OPT_FLAG_FORWARD_CURSOR, 0},
+-  {"SCHEMANOERROR",  offsetof(MADB_Dsn, NeglectSchemaParam),DSN_TYPE_BOOL,   0, 0},
+-  {"READ_TIMEOUT",   offsetof(MADB_Dsn, ReadTimeout),       DSN_TYPE_INT,    0, 0},
+-  {"WRITE_TIMEOUT",  offsetof(MADB_Dsn, WriteTimeout),      DSN_TYPE_INT,    0, 0}, /* 40 */
+-  {"NOLOCALINFILE",  offsetof(MADB_Dsn, DisableLocalInfile),DSN_TYPE_BOOL,   0, 0},
+-  {"NULLISCURRENT",  offsetof(MADB_Dsn, NullSchemaMeansCurrent),DSN_TYPE_BOOL, 0, 0},
+-  {"STREAMRS",       offsetof(MADB_Dsn, StreamResult),      DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_CACHE, 0},
+-  {"ATTR",           offsetof(MADB_Dsn, Attributes),        DSN_TYPE_STRING, 0, 0},
+-  {"EDSERVER",       offsetof(MADB_Dsn, EdPrepareOnServer), DSN_TYPE_BOOL,   0, 0},
+-  {"PREPONCLIENT",   offsetof(MADB_Dsn, PrepareOnClient),   DSN_TYPE_BOOL,   0, 0},
+-  {"PSCACHESIZE",    offsetof(MADB_Dsn, PsCacheSize),       DSN_TYPE_INT,    0, 0},
+-  {"MAXCACHEKEY",    offsetof(MADB_Dsn, PsCacheMaxKeyLen),  DSN_TYPE_INT,    0, 0},
+-  {"PCALLBACK",      offsetof(MADB_Dsn, ParamCallbacks),    DSN_TYPE_BOOL,   0, 0},
+-  {"RCALLBACK",      offsetof(MADB_Dsn, ResultCallbacks),   DSN_TYPE_BOOL,   0, 0}, /* 50 */
+-  {"NOBIGINT",       offsetof(MADB_Dsn, NoBigint),          DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_BIGINT, 0},
 +    {"SSLKEY",         offsetof(MADB_Dsn, SslKey),            DSN_TYPE_STRING, 0, 0},
 +    {"SSLCERT",        offsetof(MADB_Dsn, SslCert),           DSN_TYPE_STRING, 0, 0}, /* 20 */
 +    {"SSLCA",          offsetof(MADB_Dsn, SslCa),             DSN_TYPE_STRING, 0, 0},
@@ -97,6 +114,21 @@ Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
 +    {"TLSKEYPWD",      offsetof(MADB_Dsn, TlsKeyPwd),         DSN_TYPE_STRING, 0, 0},
 +    {"INTERACTIVE",    offsetof(MADB_Dsn, InteractiveClient), DSN_TYPE_BOOL,   0, 0},
 +    {"FORWARDONLY",    offsetof(MADB_Dsn, ForceForwardOnly),  DSN_TYPE_OPTION, MADB_OPT_FLAG_FORWARD_CURSOR, 0},
++    {"SCHEMANOERROR",  offsetof(MADB_Dsn, NeglectSchemaParam),DSN_TYPE_BOOL,   0, 0},
++    {"READ_TIMEOUT",   offsetof(MADB_Dsn, ReadTimeout),       DSN_TYPE_INT,    0, 0},
++    {"WRITE_TIMEOUT",  offsetof(MADB_Dsn, WriteTimeout),      DSN_TYPE_INT,    0, 0}, /* 40 */
++    {"NOLOCALINFILE",  offsetof(MADB_Dsn, DisableLocalInfile),DSN_TYPE_BOOL,   0, 0},
++    {"NULLISCURRENT",  offsetof(MADB_Dsn, NullSchemaMeansCurrent),DSN_TYPE_BOOL, 0, 0},
++    {"STREAMRS",       offsetof(MADB_Dsn, StreamResult),      DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_CACHE, 0},
++    {"ATTR",           offsetof(MADB_Dsn, Attributes),        DSN_TYPE_STRING, 0, 0},
++    {"EDSERVER",       offsetof(MADB_Dsn, EdPrepareOnServer), DSN_TYPE_BOOL,   0, 0},
++    {"PREPONCLIENT",   offsetof(MADB_Dsn, PrepareOnClient),   DSN_TYPE_BOOL,   0, 0},
++    {"PSCACHESIZE",    offsetof(MADB_Dsn, PsCacheSize),       DSN_TYPE_INT,    0, 0},
++    {"MAXCACHEKEY",    offsetof(MADB_Dsn, PsCacheMaxKeyLen),  DSN_TYPE_INT,    0, 0},
++    {"PCALLBACK",      offsetof(MADB_Dsn, ParamCallbacks),    DSN_TYPE_BOOL,   0, 0},
++    {"RCALLBACK",      offsetof(MADB_Dsn, ResultCallbacks),   DSN_TYPE_BOOL,   0, 0}, /* 50 */
++    {"NOBIGINT",       offsetof(MADB_Dsn, NoBigint),          DSN_TYPE_OPTION, MADB_OPT_FLAG_NO_BIGINT, 0},
+ 
    /* Aliases. Here offset is index of aliased key */
 -  {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
 -  {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
@@ -104,12 +136,21 @@ Index: mariadb-connector-odbc-3.1.10-ga-src/ma_dsn.c
 -  {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
 -  {"SSLFP",          DSNKEY_FP_INDEX,                       DSN_TYPE_STRING, 0, 1},
 -  {"SSLFPLIST",      DSNKEY_FPLIST_INDEX,                   DSN_TYPE_STRING, 0, 1},
+-  {"NO_CACHE",       DSNKEY_STREAMRS_INDEX,                 DSN_TYPE_BOOL,   0, 1},
 +    {"SERVERNAME",     DSNKEY_SERVER_INDEX,                   DSN_TYPE_STRING, 0, 1},
 +    {"USER",           DSNKEY_UID_INDEX,                      DSN_TYPE_STRING, 0, 1},
 +    {"PASSWORD",       DSNKEY_PWD_INDEX,                      DSN_TYPE_STRING, 0, 1},
 +    {"DB",             DSNKEY_DATABASE_INDEX,                 DSN_TYPE_COMBO,  0, 1},
 +    {"SSLFP",          DSNKEY_FP_INDEX,                       DSN_TYPE_STRING, 0, 1},
 +    {"SSLFPLIST",      DSNKEY_FPLIST_INDEX,                   DSN_TYPE_STRING, 0, 1},
++    {"NO_CACHE",       DSNKEY_STREAMRS_INDEX,                 DSN_TYPE_BOOL,   0, 1},
  
    /* Terminating Null */
    {NULL, 0, DSN_TYPE_BOOL,0,0}
+@@ -767,4 +767,4 @@ SQLULEN MADB_DsnToString(MADB_Dsn *Dsn,
+   }
+   return TotalLength;
+ }
+-/* }}} */
+\ No newline at end of file
++/* }}} */

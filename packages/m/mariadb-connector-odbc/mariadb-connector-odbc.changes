@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 14 12:17:05 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- Update to upstream version 3.2.5
+  * ODBC-454 Error in SQLForeignKeys in keys of FK parameters only and no FK
+  * ODBC-449 Fractional seconds could be lost with SQLExecDirect
+  * ODBC-437 Driver returns wrong unicode string length
+  see https://mariadb.com/kb/en/about-mariadb-connector-odbc/
+  for comprehensinve list of changes
+
+- mariadb.keyring: upstream release keyring
+- mysql_header_path.patch, iconv.patch: dropped, unnecessary
+- nosoname.patch DSN_names.patch: refreshed
+
+-------------------------------------------------------------------
 Thu Nov  5 12:17:02 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - New upstream version 3.1.10
