@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 06:02:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
+Tue Mar 25 03:08:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Mon Sep 11 07:07:11 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-future-requirement.patch, drop requirement on future

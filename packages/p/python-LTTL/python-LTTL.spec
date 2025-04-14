@@ -1,7 +1,7 @@
 #
 # spec file for package python-LTTL
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,6 @@ sed -i 's/\r$//' README.rst
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/LTTL
-%{python_sitelib}/LTTL-%{version}.dist-info
+%{python_sitelib}/[Ll][Tt][Tt][Ll]-%{version}.dist-info
 
 %changelog
