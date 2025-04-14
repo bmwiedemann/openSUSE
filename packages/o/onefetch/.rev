@@ -467,4 +467,19 @@
   * add Powershell snippet to run onefetch automatically #1453</comment>
     <requestid>1235632</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2710f129a861569689a33b9b03856a8d</srcmd5>
+    <version>2.24.0</version>
+    <time>1744628317</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.0:
+  * add language support for Lean #1509
+  * add language support for Typst #1508
+  * add language support for Razor #1521
+  * more idiomatic way to fetch HEAD refs #1515
+  * more idiomatic way to fetch repository remote URL #1516
+  * update holyc language logo #1543
+  * update wiki powershell-snippet #1542</comment>
+    <requestid>1269030</requestid>
+  </revision>
 </revisionlist>

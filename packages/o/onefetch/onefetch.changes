@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 13 18:49:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.0:
+  * add language support for Lean #1509
+  * add language support for Typst #1508
+  * add language support for Razor #1521
+  * more idiomatic way to fetch HEAD refs #1515
+  * more idiomatic way to fetch repository remote URL #1516
+  * update holyc language logo #1543
+  * update wiki powershell-snippet #1542
+
+-------------------------------------------------------------------
 Tue Jan  7 13:08:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.23.1:
