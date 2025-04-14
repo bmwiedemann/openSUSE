@@ -44,4 +44,14 @@
   * minor improvements (forwarded request 1208649 from rrahl0)</comment>
     <requestid>1208652</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>625b22a17722cff492994919bd13b236</srcmd5>
+    <version>1.5.17</version>
+    <time>1744639710</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269110</requestid>
+  </revision>
 </revisionlist>
