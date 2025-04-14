@@ -503,7 +503,8 @@ echo exit 0 > tests/read7.sub
 	screen -D -m %make_build -j1 TESTSCRIPT=%{SOURCE4} check
   kill -TERM $pid
 %if 0%{?do_profiling} && !0%{?want_reproducible_builds}
-  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback}"
+  rm -f jobs.gcda
+  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback} -fprofile-correction"
   %make_build $makeopts "$profilecflags" clean
 %endif
   %make_build $makeopts "$profilecflags" all

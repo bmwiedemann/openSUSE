@@ -2073,4 +2073,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>Skip PGO with %want_reproducible_builds (boo#1040589) (forwarded request 1251745 from bmwiedemann)</comment>
     <requestid>1251754</requestid>
   </revision>
+  <revision rev="198" vrev="19">
+    <srcmd5>f989d771697b5319ad92b567a6b73672</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1744628110</time>
+    <user>anag_factory</user>
+    <comment>- Make it build even on s390 with profiling</comment>
+    <requestid>1267821</requestid>
+  </revision>
 </revisionlist>
