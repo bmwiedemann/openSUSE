@@ -1833,4 +1833,19 @@ CVE-2020-13871 boo#1172646</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1254257</requestid>
   </revision>
+  <revision rev="161" vrev="3">
+    <srcmd5>0fc6e2ad05edbb872c27662bccb375d1</srcmd5>
+    <version>3.49.1</version>
+    <time>1744642224</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.49.1:
+  * CVE-2025-29087, bsc#1241020: Fix a bug in the concat_ws()
+    function, introduced in version 3.44.0, that could lead to a
+    memory error if the separator string is very large (hundreds
+    of megabytes).
+  * CVE-2025-29088, bsc#1241078: Enhanced the
+    SQLITE_DBCONFIG_LOOKASIDE interface to make it  more robust
+    against misuse.</comment>
+    <requestid>1269271</requestid>
+  </revision>
 </revisionlist>
