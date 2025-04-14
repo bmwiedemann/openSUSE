@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr  5 15:02:34 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6.2:
+  * Fixed issue with handling IPv6 link-local addresses without interface
+  * Updated manpage
+
+-------------------------------------------------------------------
 Sat Jan  4 17:55:43 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.6.1:
