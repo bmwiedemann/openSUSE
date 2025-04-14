@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:57:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.6:
+  * pipelines: cmake/build: Use verbose mode by default (#1910)
+  * Include /usr/local paths in generateShbangDeps; drop /bin
+    (#1909)
+  * fix(pipelines/git-checkout): preserve ownership of existing
+    files (#1893)
+  * sbin-merge: reorder default pipeline path (#1907)
+  * Move apko's tarball package into melange (#1906)
+  * Upgrade golangci-lint to 1.64.8 (#1904)
+  * build(deps): bump the gomod group across 1 directory with 6
+    updates (#1879)
+  * build(deps): bump the actions group across 1 directory with 5
+    updates (#1895)
+  * deprecate goreleaser build pipeline (#1892)
+  * test.go: Invoke apkofs.DirFS with option to create dir if
+    missing (#1897)
+  * github: fixup presubmit workflow (#1900)
+  * fix random issue with package.full-version (#1898)
+  * Improve failure message for usrmerge linter (#1894)
+
+-------------------------------------------------------------------
 Mon Apr 07 04:41:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.5:
