@@ -1,7 +1,7 @@
 #
 # spec file for package bpftrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 # Use default LLVM unless it is not yet supported
 %if 0%{?suse_version} >= 1600
- %if 0%{?product_libs_llvm_ver} > 19
- %define llvm_major_version 19
+ %if 0%{?product_libs_llvm_ver} > 20
+ %define llvm_major_version 20
  %else
  %define llvm_major_version %{nil}
  %endif
@@ -49,19 +49,15 @@
 %endif
 
 Name:           bpftrace
-Version:        0.21.3
+Version:        0.23.1
 Release:        0
 Summary:        High-level tracing language for Linux eBPF
 License:        Apache-2.0
 Group:          Development/Tools/Debuggers
 URL:            https://github.com/iovisor/bpftrace
 Source:         https://github.com/iovisor/bpftrace/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-tools-bashreadline-fix-probe-for-dynamically-linked-.patch bsc#1232536
-Patch0:         0001-tools-bashreadline-fix-probe-for-dynamically-linked-.patch
-Patch1:         0002-Drop-support-for-LLVM-12-and-below.patch
-Patch2:         0003-cmake-Allow-any-LLVM-release-for-debug-builds.patch
-# PATCH-FIX-UPSTREAM 0004-Bump-max-LLVM-version-to-19-3433.patch bpftrace/bpftrace##3433
-Patch3:         0004-Bump-max-LLVM-version-to-19-3433.patch
+# PATCH-FIX-UPSTREAM 0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch bsc#1239774
+Patch0:         0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch
 BuildRequires:  %cc_package
 BuildRequires:  binutils
 BuildRequires:  binutils-devel
@@ -133,6 +129,8 @@ chmod +x %{buildroot}%{_datadir}/bpftrace/tools/old/*.bt
 %files
 %{_bindir}/bpftrace
 %{_bindir}/bpftrace-aotrt
+# TODO: bash completion should be its own package
+%{_datadir}/bash-completion/completions/bpftrace
 %{_mandir}/man8/bpftrace.8%{?ext_man}
 %doc README.md docs/
 %license LICENSE

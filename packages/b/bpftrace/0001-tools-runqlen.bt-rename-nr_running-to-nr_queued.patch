@@ -1,0 +1,107 @@
+From beba5c0b47933db767f71900f67fb77d2976e9ed Mon Sep 17 00:00:00 2001
+From: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+Date: Tue, 25 Mar 2025 09:48:54 +0800
+Subject: [PATCH 1/1] tools/runqlen.bt: rename nr_running to nr_queued
+
+With "sched/fair: Fix statistics with delayed dequeue" series (more
+specifically torvalds/linux@736c55a02c47) several fields in "struct
+cfs_rq" is renamed, leading to runqlen.bt to fail at runtime with the
+following error:
+
+  ERROR: Struct/union of type 'struct cfs_rq' does not contain a field named 'nr_running'
+      $len = $my_q->nr_running;
+
+Move existing runqlen script to tools/old/, create a copy of the original with
+with nr_running changed to nr_queued in its place, and has GitHub CI use the
+old version of runqlen for testing.
+
+While at it, also touch up the comment regarding BTF.
+
+Link: https://lore.kernel.org/all/20241202174606.4074512-1-vincent.guittot@linaro.org/
+Signed-off-by: Shung-Hsi Yu <shung-hsi.yu@suse.com>
+---
+ tools/old/runqlen.bt     | 41 ++++++++++++++++++++++++++++++++++++++++
+ tools/runqlen.bt         |  8 ++++----
+ 3 files changed, 45 insertions(+), 4 deletions(-)
+ create mode 100755 tools/old/runqlen.bt
+
+diff --git a/tools/old/runqlen.bt b/tools/old/runqlen.bt
+new file mode 100755
+index 00000000..23a7fb85
+--- /dev/null
++++ b/tools/old/runqlen.bt
+@@ -0,0 +1,41 @@
++#!/usr/bin/env bpftrace
++/*
++ * runqlen.bt	CPU scheduler run queue length as a histogram.
++ *		For Linux, uses bpftrace, eBPF.
++ *
++ * This is a bpftrace version of the bcc tool of the same name.
++ *
++ * For Linux < 6.14.
++ *
++ * Copyright 2018 Netflix, Inc.
++ * Licensed under the Apache License, Version 2.0 (the "License")
++ *
++ * 07-Oct-2018	Brendan Gregg	Created this.
++ */
++
++#ifndef BPFTRACE_HAVE_BTF
++#include <linux/sched.h>
++
++// Without BTF, we'll need to declare some of this struct manually,
++// since it isn't available to be #included. This will need maintenance to match
++// your kernel version. It is from kernel/sched/sched.h:
++struct cfs_rq {
++	struct load_weight load;
++	unsigned int nr_running;
++	unsigned int h_nr_running;
++};
++#endif
++
++BEGIN
++{
++	printf("Sampling run queue length at 99 Hertz... Hit Ctrl-C to end.\n");
++}
++
++profile:hz:99
++{
++	$task = (struct task_struct *)curtask;
++	$my_q = (struct cfs_rq *)$task->se.cfs_rq;
++	$len = (uint64)$my_q->nr_running;
++	$len = $len > 0 ? $len - 1 : 0;	// subtract currently running task
++	@runqlen = lhist($len, 0, 100, 1);
++}
+diff --git a/tools/runqlen.bt b/tools/runqlen.bt
+index 5d8730a1..394a7b3d 100755
+--- a/tools/runqlen.bt
++++ b/tools/runqlen.bt
+@@ -14,13 +14,13 @@
+ #ifndef BPFTRACE_HAVE_BTF
+ #include <linux/sched.h>
+ 
+-// Until BTF is available, we'll need to declare some of this struct manually,
++// Without BTF, we'll need to declare some of this struct manually,
+ // since it isn't available to be #included. This will need maintenance to match
+ // your kernel version. It is from kernel/sched/sched.h:
+ struct cfs_rq {
+ 	struct load_weight load;
+-	unsigned int nr_running;
+-	unsigned int h_nr_running;
++	unsigned int nr_queued;
++	unsigned int h_nr_queued;
+ };
+ #endif
+ 
+@@ -33,7 +33,7 @@ profile:hz:99
+ {
+ 	$task = (struct task_struct *)curtask;
+ 	$my_q = (struct cfs_rq *)$task->se.cfs_rq;
+-	$len = (uint64)$my_q->nr_running;
++	$len = (uint64)$my_q->nr_queued;
+ 	$len = $len > 0 ? $len - 1 : 0;	// subtract currently running task
+ 	@runqlen = lhist($len, 0, 100, 1);
+ }
+-- 
+2.49.0
+

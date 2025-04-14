@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Mon Apr 14 05:40:35 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.23.1
+  * Fix build failures due to missing location.hh 
+
+-------------------------------------------------------------------
+Thu Mar 27 07:06:04 UTC 2025 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Fix runqlen tool to work on 6.14 kernel (bsc#1239774)
+  * add 0001-tools-runqlen.bt-rename-nr_running-to-nr_queued.patch
+- Update to 0.23.0
+  * Breaking Changes
+    * Remove '-kk' command line opt, surface some BPF errors by
+      default, and make '-k' surface probe read errors
+  * Added
+    * offsetof() now supports sub fields
+      e.g. offsetof(struct Foo, bar.a.b);
+    * Pointers may now be used in if conditions, tenary conditions and
+      as operands in logical AND and OR expressions
+    * len now also accepts ustack and kstack as arguments
+    * Add ability to cast int to an enum
+    * Added warning when strcontains() is used on strings that are too
+      big and may cause verifier issues
+    * Add support for LLVM 20
+  * Changed
+    * probe builtin is now represented as a string type
+    * Change bpftrace help flag output from stderr to stdout
+    * Change max_strlen default from 64 to 1024
+    * Add feature check for castable map reads
+    * Increase default values for max_bpf_progs and max_probes
+    * Allow use of variables before they are assigned
+  * Removed
+    * Drop support for LLVM 14 and 15
+  * Fixed
+    * Fix json output for none type
+    * Fix bug where strftime() %f specifier could be off by up to 1s
+    * Fix pid, tid and ustack when running bpftrace in containers with
+      PID namespacing
+    * Do not generate functions for empty attach points
+    * Fix ternary expression to accept all types
+    * Fix feature detection for tracing program types
+    * Fix strcontains() correctness bug where matches could be lost if
+      both strings are non-literal
+    * Fix str() bug where optional size parameter did not count
+      towards NUL terminator
+  * Tools
+    * Fix dcsnoop.bt on newer kernels
+- Update to 0.22.1
+  * Fixed
+    * Do not generate functions for empty attach points
+  * Tools
+    * Switch all bio* tools to tracepoints
+    * Fix dcsnoop.bt on newer kernels
+- Update to 0.22.0
+  * Breaking Changes
+    * Return uint32 instead of uint64 for pid and tid builtins
+    * Remove multi-map delete functionality
+    * Add lexical/block scoping for variables
+    * Replace default map printing on SIGUSR1 with custom signal
+      handling probes
+  * Added
+    * Bump max supported LLVM version to 19
+      * drop 0002-Drop-support-for-LLVM-12-and-below.patch
+      * drop 0003-cmake-Allow-any-LLVM-release-for-debug-builds.patch
+      * drop 0004-Bump-max-LLVM-version-to-19-3433.patch
+    * Add --dry-run CLI option
+    * Enable avg map reads in kernel space (implicit casting)
+    * Enable for-loops in multiple probes
+    * For-loops: Allow sharing variables between the main probe and
+      the loop's body
+    * Parse C++ Class and Inheritance from Debug Info
+    * Add an optional size parameter to path
+    * Allow tuples to be used as map keys
+    * Add has_key function for maps
+    * Add ability to attach kprobes to inlined functions
+    * Variable declarations with let
+    * Support symbolizing enum values using %s specifier in printf()
+    * Configuration option to suppress printing maps by default at
+      program exit
+    * Add symbol_source config to source uprobe locations from either
+      DWARF or the Symbol Table
+    * Introduce builtin to access percpu kernel data
+  * Changed
+    * Merge output into stdout when -lv
+    * Stream output when printing maps
+    * Only print kernel headers not found message if parsing fails
+    * Add mandatory "stage" argument to the -d CLI option
+    * Allow simultaneous use of -v and -d
+    * Remove length limitations for the buf builtin function
+    * Change delete API to accept a map and key as separate args
+    * Symbolize enums when used in maps
+  * Removed
+    * Remove the -dd CLI option
+    * Drop support for LLVM 12 and below
+    * Remove ALLOW_UNSAFE_PROBE compiler flag
+  * Fixed
+    * Fix verifier error when array indexing through pointer
+    * Fix segfault for multi-tracepoint probes
+    * Fix verifier error from misaligned stack access when using
+      strings as map keys
+    * Fix min/max map functions
+    * Fix stack mode for stack builtin
+    * Fix lldb support in appimage builds
+    * Fix parsing large unsigned int strings as positional params
+    * Fix json formatting for strftime function
+    * Fix BTF/DWARF parsing for structs contained in arrays
+    * Fix integer comparisons and auto casting for scratch variables
+    * Fix tuple resizing
+    * Handle invalid BTF without crashing
+    * Fix json formatting for hex values
+    * Fix binary operations on integers always returning 64 bit values
+    * Fix verifier error when comparing result of len()
+    * Fix type back propagation for map keys
+    * Fix crash by adding checks for bad var/map assignments
+    * Fix field access and offsetof for strings that are builtin types
+    * Fix crash when using castable per-cpu map types as map keys
+    * Fix loop values with per-cpu aggregations
+  * Docs
+    * Remove mention of unsupported character literals
+  * Tools
+    * Fix bashreadline tool probe for dynamically linked readline and drop
+      0001-tools-bashreadline-fix-probe-for-dynamically-linked-.patch
+- Bump maximum support LLVM version to 20
+
+-------------------------------------------------------------------
 Thu Dec 26 12:57:46 UTC 2024 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
 
 - Support building with LLVM 19
