@@ -2,9 +2,11 @@
  Doc/tools/extensions/pyspecific.py |    7 ++++++-
  1 file changed, 6 insertions(+), 1 deletion(-)
 
---- a/Doc/tools/extensions/pyspecific.py
-+++ b/Doc/tools/extensions/pyspecific.py
-@@ -385,7 +385,12 @@ class DeprecatedRemoved(Directive):
+Index: Python-3.9.22/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.9.22.orig/Doc/tools/extensions/pyspecific.py	2025-04-08 17:21:55.000000000 +0200
++++ Python-3.9.22/Doc/tools/extensions/pyspecific.py	2025-04-11 09:49:58.417019238 +0200
+@@ -407,7 +407,12 @@
                                     translatable=False)
              node.append(para)
          env = self.state.document.settings.env

@@ -99,7 +99,7 @@
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 %bcond_without profileopt
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.21
+Version:        3.9.22
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -194,9 +194,6 @@ Patch50:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM sphinx-802.patch mcepl@suse.com
 # status_iterator method moved between the Sphinx versions
 Patch51:        sphinx-802.patch
-# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
-# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
-Patch52:        CVE-2025-0938-sq-brackets-domain-names.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -469,7 +466,6 @@ other applications.
 %patch -p1 -P 48
 %patch -p1 -P 50
 %patch -p1 -P 51
-%patch -p1 -P 52
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

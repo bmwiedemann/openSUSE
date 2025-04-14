@@ -10,9 +10,11 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
  Misc/NEWS.d/next/Documentation/2022-10-19-07-15-52.gh-issue-98366.UskMXF.rst |    1 +
  2 files changed, 5 insertions(+), 4 deletions(-)
 
---- a/Doc/tools/extensions/pyspecific.py
-+++ b/Doc/tools/extensions/pyspecific.py
-@@ -26,7 +26,7 @@ try:
+Index: Python-3.9.22/Doc/tools/extensions/pyspecific.py
+===================================================================
+--- Python-3.9.22.orig/Doc/tools/extensions/pyspecific.py	2025-04-11 09:49:58.417019238 +0200
++++ Python-3.9.22/Doc/tools/extensions/pyspecific.py	2025-04-11 09:50:56.818993764 +0200
+@@ -27,7 +27,7 @@
      from sphinx.errors import NoUri
  except ImportError:
      from sphinx.environment import NoUri
@@ -21,7 +23,7 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
  from sphinx.util import status_iterator, logging
  from sphinx.util.nodes import split_explicit_title
  from sphinx.writers.text import TextWriter, TextTranslator
-@@ -110,7 +110,7 @@ class ImplementationDetail(Directive):
+@@ -111,7 +111,7 @@
  
      def run(self):
          pnode = nodes.compound(classes=['impl-detail'])
@@ -30,7 +32,7 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
          content = self.content
          add_text = nodes.strong(label, label)
          if self.arguments:
-@@ -179,7 +179,7 @@ class AuditEvent(Directive):
+@@ -180,7 +180,7 @@
          else:
              args = []
  
@@ -39,16 +41,18 @@ Subject: [PATCH 1/2] fix(doc-tools): use sphinx.locale._ as gettext() for
          text = label.format(name="``{}``".format(name),
                              args=", ".join("``{}``".format(a) for a in args if a))
  
-@@ -358,7 +358,7 @@ class DeprecatedRemoved(Directive):
+@@ -380,7 +380,7 @@
          else:
              label = self._removed_label
  
 -        label = translators['sphinx'].gettext(label)
 +        label = sphinx_gettext(label)
-         text = label.format(deprecated=self.arguments[0], removed=self.arguments[1])
+         text = label.format(deprecated=version[0], removed=version[1])
          if len(self.arguments) == 3:
              inodes, messages = self.state.inline_text(self.arguments[2],
---- /dev/null
-+++ b/Misc/NEWS.d/next/Documentation/2022-10-19-07-15-52.gh-issue-98366.UskMXF.rst
+Index: Python-3.9.22/Misc/NEWS.d/next/Documentation/2022-10-19-07-15-52.gh-issue-98366.UskMXF.rst
+===================================================================
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ Python-3.9.22/Misc/NEWS.d/next/Documentation/2022-10-19-07-15-52.gh-issue-98366.UskMXF.rst	2025-04-11 09:50:08.952333342 +0200
 @@ -0,0 +1 @@
 +Use sphinx.locale._ as the gettext function in pyspecific.py.
