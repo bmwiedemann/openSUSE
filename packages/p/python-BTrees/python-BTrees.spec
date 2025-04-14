@@ -1,7 +1,7 @@
 #
 # spec file for package python-BTrees
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -82,7 +82,7 @@ This package contains the files needed for binding the %{name} C module.
 %license COPYRIGHT.txt LICENSE.txt
 %exclude %{python_sitearch}/BTrees/*.h
 %{python_sitearch}/BTrees
-%{python_sitearch}/BTrees-%{version}*-info
+%{python_sitearch}/[Bb][Tt]rees-%{version}.dist-info
 
 %files %{python_files devel}
 %{python_sitearch}/BTrees/*.h
