@@ -198,4 +198,13 @@
 </comment>
     <requestid>1224331</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a1826fbdb895a36c77b395443f6d4f17</srcmd5>
+    <version>0.20241108</version>
+    <time>1744628273</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-llvm20-build.patch to fix build with LLVM 20.
+</comment>
+    <requestid>1268906</requestid>
+  </revision>
 </revisionlist>
