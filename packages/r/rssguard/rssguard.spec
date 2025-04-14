@@ -16,9 +16,9 @@
 #
 
 
-%define libver  4_8_1
+%define libver  4_8_3
 Name:           rssguard
-Version:        4.8.1
+Version:        4.8.3
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -29,10 +29,6 @@ Source1:        %{name}.changes
 # PATCH-FIX-OPENSUSE rssguard-4.8.1-add_library_version.patch aloisio@gmx.com -- add version to shared library
 Patch0:         rssguard-4.8.1-add_library_version.patch
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
@@ -80,26 +76,22 @@ Shared library for %{name} to be used by external plugins.
 find src/librssguard -name "*.h" -exec chmod -x {} \;
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-13
-%endif
-%cmake -DBUILD_WITH_QT6:BOOL=ON \
-%if 0%{?suse_version} > 1600 || 0%{?sle_version} >= 150600
+%cmake_qt6 -DBUILD_WITH_QT6:BOOL=ON \
+%if 0%{?suse_version} > 1600 || 0%{?sle_version} > 150600
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=ON \
 %else
     -DENABLE_MEDIAPLAYER_LIBMPV:BOOL=OFF \
 %endif
     -DUSE_SYSTEM_SQLITE:BOOL=ON
-%cmake_build
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 # install autostart
 mkdir -pv %{buildroot}%{_datadir}/autostart
 %fdupes -s %{buildroot}
 
-%post -n lib%{name}-%{libver} -p /sbin/ldconfig
-%postun -n lib%{name}-%{libver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}-%{libver}
 
 %files
 %license LICENSE.md
