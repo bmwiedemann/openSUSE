@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 12 21:56:44 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- update to 2.40.4
+  Bugfixes:
+   * Fix loading presets config on Windows 
+     (gh#fastfetch-cli/fastfetch#1682) 
+     - Regression of v2.40.0
+   * Remove the prefix `v` of Hyprland version on Arch Linux (WM, 
+     Linux)
+- update to 2.40.3
+  Bugfixes:
+   * Fix loading example configs from presets directory 
+     (gh#fastfetch-cli/fastfetch#1672) 
+     - Regression of v2.40.2
+   * Mark kitty image protocol support for warp terminal on macOS 
+     too (Logo)
+
+-------------------------------------------------------------------
 Fri Apr  4 19:29:35 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.40.2
