@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 14 06:42:54 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.5
+  Added features:
+  * Add an advanced setting for setting the "Add New Torrent"
+    dialog as modal
+  Bug fixes:
+  * Improve command line parameters serialization
+  * Declare missing color IDs for theming
+
+-------------------------------------------------------------------
 Wed Feb 19 06:59:11 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.4
