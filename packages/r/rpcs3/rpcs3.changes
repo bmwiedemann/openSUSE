@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Apr 13 03:14:52 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250412:
+  * Update to Qt 6.9.0
+  * vk: Fix typo in NVIDIA-specific stencil unresolve path
+  * Qt: fix visibility check of table widget items
+  * use fixed uruntime version
+  * reduce appimage size
+  * rsx: Replace robin_hood with ankerl::unordered_dense
+
+-------------------------------------------------------------------
 Wed Apr  9 19:33:29 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to rpcs3-0.0.36~git20250409:
