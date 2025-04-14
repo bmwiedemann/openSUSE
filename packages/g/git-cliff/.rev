@@ -233,4 +233,36 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1233631</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ff530da8b75ba8f2c9c823f825a6ecd</srcmd5>
+    <version>2.8.0</version>
+    <time>1744628288</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.0:
+  * cli: Support initializing config with a custom filename
+  * config: Discover the configuration file when run in a sub directory
+  * git: Improve the set commit range error
+  * monorepo: Automatically set include-path for current directory
+  * remote: Support enabling native TLS
+  * repo: Allow running from sub directories
+  * config: Allow environment overwrites when using builtin config
+  * fixtures: Update the arguments for custom GitLab API fixture test
+  * monorepo: Do not set include-path if workdir is set
+  * remote: Fix detection of GitLab merge request sha
+  * lib: Add changelog modifier callback to run function
+  * lint: Use a shared lint config for the workspace
+  * lint: Apply clippy suggestions
+  * docker: Fix typo in comment
+  * highlights: Add link to the Nix flake
+  * jujutsu: Update links to the upstream documentation
+  * lib: Allow doc lint
+  * license: Update copyright years
+  * tips: Extend the merge commit filter example
+  * website: Add highlights for 2.8.0
+  * fixture: Add fixture for include-path
+  * build: Bump MSRV to 1.83.0
+  * lint: Allow false positive lint
+</comment>
+    <requestid>1268913</requestid>
+  </revision>
 </revisionlist>

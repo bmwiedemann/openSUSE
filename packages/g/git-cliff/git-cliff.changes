@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 13 03:28:38 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.8.0:
+  * cli: Support initializing config with a custom filename
+  * config: Discover the configuration file when run in a sub directory
+  * git: Improve the set commit range error
+  * monorepo: Automatically set include-path for current directory
+  * remote: Support enabling native TLS
+  * repo: Allow running from sub directories
+  * config: Allow environment overwrites when using builtin config
+  * fixtures: Update the arguments for custom GitLab API fixture test
+  * monorepo: Do not set include-path if workdir is set
+  * remote: Fix detection of GitLab merge request sha
+  * lib: Add changelog modifier callback to run function
+  * lint: Use a shared lint config for the workspace
+  * lint: Apply clippy suggestions
+  * docker: Fix typo in comment
+  * highlights: Add link to the Nix flake
+  * jujutsu: Update links to the upstream documentation
+  * lib: Allow doc lint
+  * license: Update copyright years
+  * tips: Extend the merge commit filter example
+  * website: Add highlights for 2.8.0
+  * fixture: Add fixture for include-path
+  * build: Bump MSRV to 1.83.0
+  * lint: Allow false positive lint
+
+-------------------------------------------------------------------
 Sat Dec 21 04:55:18 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Attempt to build by ignoring rust version.
