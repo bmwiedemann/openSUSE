@@ -1,7 +1,7 @@
 #
 # spec file for package sad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sad
-Version:        0.4.31
+Version:        0.4.32
 Release:        0
 Summary:        CLI search and replace batch file editing tool
 URL:            https://github.com/ms-jpq/sad
@@ -27,7 +27,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  python3
 BuildRequires:  zstd
-Recommends:     fzf
+Recommends:     fzf >= 0.38.0
 
 %description
 Basically sad is a Batch File Edit tool.
