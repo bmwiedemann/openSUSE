@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-ntc-templates
 Version:        7.8.0
 Release:        0
@@ -35,8 +36,8 @@ Suggests:       python-ruamel.yaml
 Suggests:       python-yamllint
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pyaml}
 BuildRequires:  %{python_module invoke}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module textfsm >= 1.1.0}
@@ -62,10 +63,6 @@ sed -i 's/6.0.0/%{version}/' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%if 0%{suse_version} <= 1500
-# https://github.com/networktocode/ntc-templates/issues/743
-rm tests/cisco_ios/show_access-list/cisco_ios_show_access-list.raw
-%endif
 # https://github.com/networktocode/ntc-templates/issues/743 (closed but still an open issue)
 # -> skip tests: arista_eos_show_ip_access-lists, cisco_ios_show_access-list, cisco_nxos_show_ip_bgp_neighbors, cisco_nxos_show_ip_bgp_neighbors_with_policy_names
 # https://github.com/networktocode/ntc-templates/issues/958

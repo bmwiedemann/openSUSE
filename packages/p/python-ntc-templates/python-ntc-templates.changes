@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 10 15:59:28 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons (align with poetry)
+- Correct PyYAML BuildRequires
+- Remove no longer needed test workaround
+
+-------------------------------------------------------------------
 Thu Mar 20 19:39:01 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.8.0
