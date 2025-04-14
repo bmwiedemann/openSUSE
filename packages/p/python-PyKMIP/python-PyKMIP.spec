@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyKMIP
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,7 @@ sed -i '/"enum-compat",/d' setup.py
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/kmip
-%{python_sitelib}/PyKMIP-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Kk][Mm][Ii][Pp]-%{version}.dist-info
 %python_alternative %{_bindir}/pykmip-server
 
 %changelog
