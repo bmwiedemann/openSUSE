@@ -1,7 +1,7 @@
 #
 # spec file for package python-Glances
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -124,7 +124,7 @@ export LANG=en_US.UTF-8
 %python_alternative %{_bindir}/glances
 %python_alternative %{_mandir}/man1/glances.1%{?ext_man}
 %{python_sitelib}/glances
-%{python_sitelib}/Glances-%{version}.dist-info
+%{python_sitelib}/[Gg]lances-%{version}.dist-info
 %exclude %{python_sitelib}/glances/outputs/static/.eslintrc.js
 %exclude %{python_sitelib}/glances/outputs/static/.gitignore
 %exclude %{python_sitelib}/glances/outputs/static/.prettierrc.js

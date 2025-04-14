@@ -276,4 +276,14 @@
     Docker image)</comment>
     <requestid>1161123</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>7d586ed78a17e8cddd3d2a7f99fc61ac</srcmd5>
+    <version>3.4.0.5</version>
+    <time>1744628373</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269073</requestid>
+  </revision>
 </revisionlist>
