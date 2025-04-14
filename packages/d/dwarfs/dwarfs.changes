@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sun Apr 13 19:46:34 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.12.1: 
+Features
+  * Added --memory-limit=auto to mkdwarfs to use a more reasonable
+    (hopefully) default for the block queue. The old default of
+    1 GiB was quite arbitrary and definitely not suitable for
+    low-end systems. The new auto default will determine the limit
+    based on the number of workers (which in turn is based on the
+    number of CPUs), the block size, and the amount of physical
+    memory of the system.
+  * Replaced vector_byte_buffer with malloc_byte_buffer, which is
+    internally based around a simple buffer that doesn't incur the
+    cost of initializing each element like std::vector. Especially
+    for large blocks which are known to be overwritten immediately,
+    this can save a few CPU cycles.
+- Changes in version 0.12.0:
+  * New Licensing Conditions: Instead of being all GPL-3.0 like all
+    the previous releases, this release changes the license of a
+    large fraction of the DwarFS code to MIT. All tools and
+    libraries that only read DwarFS images are now MIT-licensed.
+    Everything else (e.g. mkdwarfs) is still GPL-3.0 for the time
+    being.
+
+Bugfixes
+  * Changes for compatibility with Boost.Process v2.
+
+Features
+  * Re-licensed all libraries required for reading DwarFS images
+    under the MIT license. The source of all tools that just read
+    DwarFS images (i.e. everything except for mkdwarfs) are also
+    under the MIT license now. Everything else is still GPL-3.0.
+    gh#mhx/dwarfs#255
+  * New hotness categorizer in mkdwarfs that allows a list of "hot"
+    files to be stored in distinct file system blocks.
+  * New explicit ordering mode in mkdwarfs that allows files to be
+    ordered accoring to the order in a given list file.
+  * dwarfs now shows the version of the FUSE library used.
+  * New dwarfs options preload_all and preload_category to populate
+    the block cache immediately after mounting.
+  * New dwarfs option analysis_file that can be used for profiling
+    and as input to mkdwarfs new hotness categorizer and explicit
+    ordering mode.
+  * New dwarfs option block_allocator that allows the user to
+    switch from a malloc-based block allocator to an mmap-based
+    one. This can help with returning memory back to the system if
+    the blocks are evicted from the cache.
+
+-------------------------------------------------------------------
 Fri Apr  4 07:31:03 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Use SRPM base name for devel subpackage

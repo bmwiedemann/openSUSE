@@ -7,4 +7,41 @@
     <comment>FUSE file system; typically better performance and compression ratio than e.g. SquashFS</comment>
     <requestid>1267050</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>52cea858dfa598f23a569e2347930665</srcmd5>
+    <version>0.12.1</version>
+    <time>1744628336</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.1: 
+Features
+  * Added --memory-limit=auto to mkdwarfs to use a more reasonable
+    (hopefully) default for the block queue. The old default of
+    1 GiB was quite arbitrary and definitely not suitable for
+    low-end systems. The new auto default will determine the limit
+    based on the number of workers (which in turn is based on the
+    number of CPUs), the block size, and the amount of physical
+    memory of the system.
+  * Replaced vector_byte_buffer with malloc_byte_buffer, which is
+    internally based around a simple buffer that doesn't incur the
+    cost of initializing each element like std::vector. Especially
+    for large blocks which are known to be overwritten immediately,
+    this can save a few CPU cycles.
+- Changes in version 0.12.0:
+  * New Licensing Conditions: Instead of being all GPL-3.0 like all
+    the previous releases, this release changes the license of a
+    large fraction of the DwarFS code to MIT. All tools and
+    libraries that only read DwarFS images are now MIT-licensed.
+    Everything else (e.g. mkdwarfs) is still GPL-3.0 for the time
+    being.
+Bugfixes
+  * Changes for compatibility with Boost.Process v2.
+Features
+  * Re-licensed all libraries required for reading DwarFS images
+    under the MIT license. The source of all tools that just read
+    DwarFS images (i.e. everything except for mkdwarfs) are also
+    under the MIT license now. Everything else is still GPL-3.0.
+    gh#mhx/dwarfs#255
+  * New hotness categorizer in mkdwarfs that allows a list of &quot;hot&quot;</comment>
+    <requestid>1269054</requestid>
+  </revision>
 </revisionlist>
