@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:14:08 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2.12+git.20250411:
+  * Release version 2.12
+  * Call ecryptfs/fscrypt before pam_unix (#30)
+  * Don't exit with error if admin disabled pam-config
+
+-------------------------------------------------------------------
 Wed Sep 11 13:54:08 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add PreRequires for pam-extra, several other packages depend on

@@ -857,4 +857,15 @@
   * Only add pam_limits if available</comment>
     <requestid>1200145</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>f01b95b1c612807833829118ca57fff3</srcmd5>
+    <version>2.12+git.20250411</version>
+    <time>1744628123</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12+git.20250411:
+  * Release version 2.12
+  * Call ecryptfs/fscrypt before pam_unix (#30)
+  * Don't exit with error if admin disabled pam-config</comment>
+    <requestid>1268563</requestid>
+  </revision>
 </revisionlist>
