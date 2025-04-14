@@ -1193,4 +1193,15 @@
     <comment></comment>
     <requestid>1268437</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>759398d4fede002e5025cbbccf43aa0c</srcmd5>
+    <version>4.16.0+git.1744277748.04ed38ab</version>
+    <time>1744639701</time>
+    <user>anag_factory</user>
+    <comment>- Set minimum python version to 3.11 for azure-arm
+- Update to version 4.16.0+git.1744277748.04ed38ab:
+  * fence_sbd: Add crashdump option (jsc#PED-11931)
+- Do not hardcode python 3.11 in azure-arm subpackage.</comment>
+    <requestid>1269209</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define agent_list aliyun alom apc apc_snmp aws azure_arm bladecenter brocade cisco_mds cisco_ucs drac5 dummy eaton_snmp eaton_ssh emerson eps evacuate gce hds_cb hpblade ibmblade ibmz ibm_powervs ibm_vpc ifmib ilo ilo_moonshot ilo_mp ilo_ssh intelmodular ipdu ipmilan ironic kdump lpar mpath netio powerman pve raritan rcd_serial redfish rsa rsb sanbox2 sbd scsi vbox virsh vmware vmware_rest wti zvm
 Name:           fence-agents
 Summary:        Set of unified programs capable of host isolation ("fencing")
-Version:        4.16.0+git.1744277748.04ed38a
+Version:        4.16.0+git.1744277748.04ed38ab
 Release:        0
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Productivity/Clustering/HA
@@ -387,12 +387,13 @@ Requires:       fence-agents-common = %{version}-%{release}
 %if 0%{?rhel} && 0%{?rhel} < 9
 Requires:       python3-azure-sdk
 %else
-Requires:       python311-azure-core
-Requires:       python311-azure-identity
-Requires:       python311-azure-mgmt-compute
-Requires:       python311-azure-mgmt-network
-Requires:       python311-pexpect
-Requires:       python311-pycurl
+Requires:       python3 >= 3.11
+Requires:       python3-azure-core
+Requires:       python3-azure-identity
+Requires:       python3-azure-mgmt-compute
+Requires:       python3-azure-mgmt-network
+Requires:       python3-pexpect
+Requires:       python3-pycurl
 %endif
 BuildArch:      noarch
 Conflicts:      %{name} < %{version}-%{release}
