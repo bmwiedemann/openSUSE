@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Feb 10 12:00:38 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to version 25.0. Upstream changed versioning to the year.
+ * This new version contains 195 activities, including 5 new ones.
+ * New translation to Sanskrit
+ * First relase using Qt6
+- Packaging revamp.
+  * Switch build requirements to Qt6.
+
+-------------------------------------------------------------------
 Thu May 23 19:12:23 UTC 2024 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Update to version 4.1
