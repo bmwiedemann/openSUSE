@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:48:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * add support for password extractor
+- update to 3.2.0:
+  * **setup:** switch from setup.py to setup.cfg
+- update to 3.1.0:
+  * test on Python 3.13
+  * build!: drop support for Python 3.9
+  * officially support Python 3.12
+  * the minimum officially supported version of Python is
+    now 3.10. The helper might continue to work with older
+    versions but
+- update to 1.5.0:
+  * check if password file exists before running `pass`
+    (b50ca3b), closes #371
+- update to 1.4.1:
+  * improve error message for unknown username extractor
+
+-------------------------------------------------------------------
 Fri Mar 15 08:23:55 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Testing on SLE-15 is just too much.
