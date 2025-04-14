@@ -198,4 +198,14 @@
   * OpenID Connect Dynamic Client Registration implementation.</comment>
     <requestid>1255455</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>ccc52f96736813e9c2ae3c57c819f6ae</srcmd5>
+    <version>1.5.1</version>
+    <time>1744628366</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269067</requestid>
+  </revision>
 </revisionlist>

@@ -84,6 +84,6 @@ $python -mpytest tests/clients
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/%{modname}
-%{python_sitelib}/Authlib-%{version}.dist-info
+%{python_sitelib}/[Aa]uthlib-%{version}.dist-info
 
 %changelog
