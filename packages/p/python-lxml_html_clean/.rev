@@ -16,4 +16,14 @@ Need since python-lxml &gt;= 5.2.0 among others for calibre.</comment>
     <comment></comment>
     <requestid>1225616</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5db4581f1e0a21c8fefdaaf33e8b711a</srcmd5>
+    <version>0.4.2</version>
+    <time>1744628159</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.2:
+  * lxml_html_clean now correctly handles HTML input as bytes as
+    it did before the 0.2.0 release.</comment>
+    <requestid>1268729</requestid>
+  </revision>
 </revisionlist>
