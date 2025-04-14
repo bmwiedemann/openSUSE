@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Apr  5 11:22:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20250401:
+ - scamper:
+  * move items that require privilege (opening files, unlinking files,
+    opening raw sockets, datalink interfaces) into scamper_priv.c and
+    have each follow a consistent pattern.  previously these were
+    distributed throughout many source code files.
+  * add build option that allows scamper to decide if it will do
+    privilege separation at run time.
+    the --enable-scamper-privsep=rootonly configure option enables this
+    behavior.  if run with root privileges, scamper will do privilege
+    separation.  if not run with root privileges, scamper will not.
+    --enable-scamper-privsep=yes (the default) does privilege separation
+    regardless of root privilege status.
+    note: the previous --disable-privsep configure option has become
+    --disable-scamper-privsep
+  * restructure the way that blocked tasks (tasks that share a probe
+    signature) are handled
+  * add -O mss=foo option to ping, which will include mss option to
+    TCP syn probe methods.
+  * ignore packets on the datalink interface associated with a probe
+    that has a timestamp after the datalink packet's timestamp.
+  * increase scamper -H holdtime limit from 10s to 60s.
+  - python module:
+  * add ScamperCtrl.outfile setter
+  * fix ScamperFile filter_types
+ - libscamperfile:
+  * handle termination HTTP chunk correctly (noticed running unit tests
+    on MacOS, which has a stricter strtol)
+  * be more accepting when processing HTTP headers
+ - libscamperctrl:
+  * fix bug when reading partial control messages from mux
+ - tests:
+  * add unit test for prefixtree implementation
+  * add tests for parsing HTTP headers
+
+-------------------------------------------------------------------
 Sat Mar  1 11:50:34 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20250227:
