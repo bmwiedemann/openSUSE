@@ -563,4 +563,21 @@
 </comment>
     <requestid>1231407</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9bf5cd0b31738eb12813918254083f21</srcmd5>
+    <version>1.17.13</version>
+    <time>1744628285</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.17.13:
+  * support `x.y-nightly` channel to allow testing nightlies on release branches
+  * If nightly check is going slowly inform user
+  * Update deps
+  * Fix default --project handling
+  * Fix a call signature bug
+  * Use correct way to show error message when launching from manifest
+  * Use config setting for manifest launch
+  * Launch exact Julia version from manifest
+</comment>
+    <requestid>1268916</requestid>
+  </revision>
 </revisionlist>

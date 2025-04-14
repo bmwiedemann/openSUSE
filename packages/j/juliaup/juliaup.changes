@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 13 03:32:26 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.17.13:
+  * support `x.y-nightly` channel to allow testing nightlies on release branches
+  * If nightly check is going slowly inform user
+  * Update deps
+  * Fix default --project handling
+  * Fix a call signature bug
+  * Use correct way to show error message when launching from manifest
+  * Use config setting for manifest launch
+  * Launch exact Julia version from manifest
+
+-------------------------------------------------------------------
 Mon Dec 16 13:03:06 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update vendored dependencies.
