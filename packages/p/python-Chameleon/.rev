@@ -258,4 +258,14 @@ New dependency of python-Pyramid</comment>
   * Fix load_module deprecation warnings for Python &gt;= 3.10.</comment>
     <requestid>1234569</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>37bed150ddec247ee83ed43f0ce5c803</srcmd5>
+    <version>4.6.0</version>
+    <time>1744628370</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269070</requestid>
+  </revision>
 </revisionlist>

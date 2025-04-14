@@ -65,6 +65,6 @@ version of Python (2.5 and up, including 3.x and pypy).
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/chameleon
-%{python_sitelib}/Chameleon-%{version}.dist-info
+%{python_sitelib}/[Cc]hameleon-%{version}.dist-info
 
 %changelog
