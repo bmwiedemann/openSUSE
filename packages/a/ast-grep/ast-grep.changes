@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:29:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.36.3:
+  * fix: transformation indent #1405
+  * feat: YAML schema validation for node and field types e0a5a47
+  * chore(deps): update dependency @ast-grep/napi to v0.36.2 f291ef3
+  * fix(deps): update rust crate crossterm to 0.29.0 4c62fe5
+
+-------------------------------------------------------------------
 Fri Mar 21 07:07:39 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.36.2:
