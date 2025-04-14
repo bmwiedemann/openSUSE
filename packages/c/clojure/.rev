@@ -319,4 +319,14 @@
   * Update to tools.deps 0.22.1492</comment>
     <requestid>1245242</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>16f89f720bbc57d280aca7f2dc94e4c9</srcmd5>
+    <version>1.12.0.1530</version>
+    <time>1744642234</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.0.1530:
+  * Update to tools.deps 0.23.1512
+  * Also accept file for -Sdeps, and check it for staleness</comment>
+    <requestid>1269300</requestid>
+  </revision>
 </revisionlist>
