@@ -1,7 +1,7 @@
 #
 # spec file for package epson-inkjet-printer-escpr
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           epson-inkjet-printer-escpr
-Version:        1.7.22
+Version:        1.8.6
 Release:        0
 Summary:        Epson ESC/P-R Inkjet Printer Driver
 License:        GPL-2.0-only
 Group:          Hardware/Printing
 URL:            https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
 # Example URL to download Source0: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
-Source0:        epson-inkjet-printer-escpr-%{version}-1lsb3.2.tar.gz
-# PATCH-FIX-UPSTREAM bug_x86_64.patch -- fix a segfault on x64_64 (probably manifested with GCC7 use)
-# https://aur.archlinux.org/cgit/aur.git/plain/bug_x86_64.patch?h=epson-inkjet-printer-escpr
-Patch0:         bug_x86_64.patch
+Source0:        epson-inkjet-printer-escpr-%{version}-1.tar.gz
 # This software is a filter program used with CUPS:
 Requires:       cups
 # SLE12 needs special BuildRequires.
@@ -64,9 +61,10 @@ installed package see the PPD files in this directory:
 %{_datadir}/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
+export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
 # Specify location of CUPS filter and ppd files explicitly.
 # Use the explicite value 'epson-inkjet-printer-escpr' and not the RPM macro 'name'
 # so that it could be built as well with a different package name

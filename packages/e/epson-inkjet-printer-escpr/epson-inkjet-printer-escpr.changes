@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr  9 19:28:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix Factory submission by actually dropping bug_x86_64.patch
+  Fixes boo#1241007
+
+-------------------------------------------------------------------
+Mon Nov 18 02:05:09 UTC 2024 - Xu Zhao <i@xuzhao.net>
+
+- Update to 1.8.6:
+  * Supported new models.
+- Remove bug_x86_64.patch.
+
+-------------------------------------------------------------------
 Thu Feb 22 11:39:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

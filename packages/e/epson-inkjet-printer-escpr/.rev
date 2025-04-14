@@ -271,4 +271,12 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149262 from dimstar)</comment>
     <requestid>1149359</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>666aa69aacffe412c72f548b70445192</srcmd5>
+    <version>1.8.6</version>
+    <time>1744639671</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269119</requestid>
+  </revision>
 </revisionlist>
