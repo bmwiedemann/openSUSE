@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 15:12:47 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons to build for Python 3.11 on Leap
+  (project is now Python 3.9+)
+
+-------------------------------------------------------------------
 Fri Apr  4 08:01:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.13.0

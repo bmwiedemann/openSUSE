@@ -122,4 +122,12 @@
 - Drop fix-version-in-pyproject.patch, fixed upstream</comment>
     <requestid>1267107</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6bda29c852df9babfd415fb83e46f169</srcmd5>
+    <version>1.13.0</version>
+    <time>1744639679</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269145</requestid>
+  </revision>
 </revisionlist>

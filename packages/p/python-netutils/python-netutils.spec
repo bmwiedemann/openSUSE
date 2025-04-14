@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-netutils
 Version:        1.13.0
 Release:        0
@@ -32,11 +33,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Recommends:     python-napalm
+BuildArch:      noarch
 %if 0%{?python_version_nodots} >= 313
 Requires:       python-legacycrypt
 %endif
-Recommends:     python-napalm
-BuildArch:      noarch
 %python_subpackages
 
 %description
