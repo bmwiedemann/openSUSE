@@ -6,7 +6,7 @@ Index: gnulib-tests/gnulib.mk
 ===================================================================
 --- gnulib-tests/gnulib.mk.orig
 +++ gnulib-tests/gnulib.mk
-@@ -1528,10 +1528,10 @@ EXTRA_DIST += test-getloadavg.c signatur
+@@ -1548,10 +1548,10 @@ EXTRA_DIST += getlocalename_l-unsafe.h l
  
  ## begin gnulib module getlogin-tests
  
