@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr  5 14:37:26 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.9.4:
+  * Minor improvement for _linux_wav_play
+  * Minor improvement to Set-Cookie detection
+  * Minor update of fingerprinting methods
+  * Implement experimental --http2
+  * Minor update (adding support for silent mode)
+  * Update of six third-party library
+  * Minor update for the automatic reporting
+  * Fix #5885 (unhandled exception)
+  * Fix #5881 (Add luanginxmore tamper script)
+  * Fix #5857 (Parameters "--csrf-method“ and "--csrf-data" are ignored)
+
+-------------------------------------------------------------------
 Sat Jan  4 17:21:22 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.9:
