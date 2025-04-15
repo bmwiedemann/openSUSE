@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 15 09:14:52 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 1.2.14:
+  * documentation updates
+  * IEC958 fixes
+  * hctltest1.py: Skip read/write if no values in element
+  * alsamixer: fix return value in pyalsamixerelement_getvolumedb()
+  * alsaseq: Fix type check in set_time()
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.13_v1.2.14#alsa-python
+
+-------------------------------------------------------------------
 Thu Jun 13 15:03:18 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 1.2.12:
