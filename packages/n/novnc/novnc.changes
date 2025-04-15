@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 10 18:15:48 UTC 2025 - Manu Maier <mmanu84@outlook.de>
+
+- Update to 1.6.0
+    Application:
+      * Updated GUI with a more modern styling
+      * Settings can now be configured via defaults.json and mandatory.json
+      * Support for relative WebSocket URLs
+    Library:
+      * Session will resize faster, making the client feel more responsive
+      * Support for back and forward mouse buttons
+      * Support for H.264 encoding
+      * Support for Zlib encoding
+- Fix patch novnc-1.5.0-fix-interpreter.patch
+    * Renamed to patch novnc-1.6.0-fix-interpreter.patch
+
+-------------------------------------------------------------------
 Sat Jun 22 20:08:46 UTC 2024 - Manu Maier <mmanu84@outlook.de>
 
 - Update to 1.5.0
