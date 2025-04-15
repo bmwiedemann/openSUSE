@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Locale
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.440000
+Version:        1.450000
 Release:        0
-%define cpan_version 1.44
+%define cpan_version 1.45
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Localization support for DateTime.pm
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -29,7 +29,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Check) >= 0.011
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.11.0
 BuildRequires:  perl(CPAN::Meta::Requirements)
 BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
 BuildRequires:  perl(File::ShareDir)
@@ -46,14 +46,14 @@ BuildRequires:  perl(Test2::Require::Module)
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::File::ShareDir::Dist)
 BuildRequires:  perl(Test::More) >= 1.302015
-BuildRequires:  perl(namespace::autoclean) >= 0.19
+BuildRequires:  perl(namespace::autoclean) >= 0.190
 Requires:       perl(Dist::CheckConflicts) >= 0.02
 Requires:       perl(File::ShareDir)
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Params::ValidationCompiler) >= 0.13
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Library::String)
-Requires:       perl(namespace::autoclean) >= 0.19
+Requires:       perl(namespace::autoclean) >= 0.190
 Provides:       perl(DateTime::Locale) = %{version}
 Provides:       perl(DateTime::Locale::Base) = %{version}
 Provides:       perl(DateTime::Locale::Catalog) = %{version}
@@ -72,7 +72,7 @@ If you want to know what methods are available for locale objects, then
 please read the DateTime::Locale::FromData documentation.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
