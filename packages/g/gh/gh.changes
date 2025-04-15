@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:03:38 UTC 2025 - pdostal@suse.com
+
+- Update to version 2.70.0:
+  * Explain job log resolution reason
+  * Document UNKNOWN STEP in run view
+  * Add `$` anchor to log file regexps
+  * Test normal job run log is preferred over legacy one
+  * Prefer normal job run log file over legacy one
+  * Explain when a negative number prefix appears
+  * Improve explanation for missing step logs
+  * Explain the `UNKNWON STEP` placeholder
+  * Replace `UNKNOWN` with `UNKNOWN STEP` in job run log
+  * Explain why step logs are preferred
+  * test(prompter): fix invalid comment
+  * test(prompter):  fix race condition
+  * Ensure markdown confirm prompt shows editor name
+  * fix(prompter): remove needless default value assignment
+  * test(prompter): doc how accessible prompter tests work
+  * test(prompter): describe why echo is editorcmd
+  * test(prompter): use *testing.T instead
+  * Add missing `gc.AssertExpectations` calls
+  * Add tests for `IsPinned` method
+  * Simplify cosign verification example by not using a regex.
+  * chore: go mod tidy
+  * fix(prompter): pass io to `huh` and refactor tests
+  * fix(prompter): update `huh` and fix tests
+  * refactor(prompter): rename speechSynthesizerFriendlyPrompter to accessiblePrompter
+  * doc(prompter env): accessible prompter includes braille reader
+  * chore: go mod tidy
+  * Merge pull request #10749 from malancas/update-to-sigstore-go-v0.7.1
+  * Update pkg/cmd/run/shared/presentation.go
+  * Apply suggestions from code review
+  * Test for explicit config disable of label colors
+  * Use truthy value for `GH_COLOR_LABELS`
+  * test(prompter):  re-add skipped test for accessible confirm default
+  * doc(help): label GH_ACCESSIBLE_PROMPTER as preview
+  * fix(prompter): rename GH_ACCESSIBLE_PROMPTER
+  * refactor(prompter): explicit return values
+  * doc(prompter): remove senseless comment
+  * refactor(prompter): remove unused variable
+  * test(prompter): timeout for tests is 1s
+  * fix(prompter): use os.lookupenv for accessible prompter
+  * test(prompter): remove needless NO_COLOR set
+  * test: use example.com in tests
+  * doc: comment typos and formatting
+  * test(prompter): add basic survey prompter test
+  * test(prompter): fix race conditions
+  * doc(envs): speech synthesis prompter
+  * Escape dots in regexp pattern in example command
+  * Verify fallback to job run logs when step logs are missing
+  * Verify job run logs attached in `attachRunLog` test
+  * Update `run_log.zip` fixture
+  * Fallback to print entire job run log if step logs are missing
+  * Add `Log` to `Job` data structure
+  * Add `jobLogFilenameRegexp` function
+  * Extract job name sanitization as a separate function
+  * Deprecate ColorScheme.Gray for ColorScheme.Muted
+  * ci: pin third party actions to commit sha
+  * doc(prompter): clarify comments
+  * refactor(prompter): less magic strings
+  * fix(prompter): remove impossible condition
+  * fix(prompter): notes about Confirm default
+  * fix(prompter): input returns default when blank
+  * test(prompter): more tests for bad input
+  * Refactor ColorScheme initializer
+  * Add label color env var to help topic, unused fix
+  * refactor(prompter): rename env var for speech synthesizer friendly prompter
+  * docs(prompter): doc prompter interface
+  * fix(linter): linter errors
+  * test(prompter): move to external package
+  * test(prompter): skip vt10x tests on Windows
+  * Fix comment language
+  * Introduce `color_labels` support, update commands
+  * test(prompter): remove needless variable declaration
+  * tests(prompter): rename huhprompter
+  * test(prompter): replace assert with require
+  * fix(prompter): rename huhprompter
+  * test(prompter): `go-expect` based prompter tests
+  * feat(prompter): include `no` as false-y value
+  * test(prompter): remove t.parallel calls
+  * fix(md prompter): accessible prompt allows blank
+  * feat(md prompter): md prompt respects blankAllowed
+  * feat(prompter): add accessible prompter support
+  * Remove deprecated note on gray color functions
+  * Regenerate mocks
+  * Remove configuration setting vestage
+  * Remove out of scope configuration setting change
+  * Implement tests for muted logic, standardize reset
+  * Remove out of scope changes, update list commands
+  * Accessible color config boilerplate, colors update
+  * Acceptance test issue/pr create/edit with project
+  * Update pkg/cmd/attestation/verify/verify.go
+  * test(release view): fix indentation
+  * doc(formatting): add line breaks for readability
+  * Renaming tabl eheader variables for maintainability
+  * doc(formatting): update sprig func descriptions
+  * test(many): fix whitespace in tests expectations
+  * updated test
+  * added minor caveat
+  * Tweaked language a bit, improved error message.
+  * Rewrote the gh at verify --help text to a) clarify and b) document the verificationResult object.
+  * doc(run shared): clarify 404 handling
+  * Fixes #10590
+  * docs: add Sprig library functions to help topics
+  * chore: update go-gh to v2.12.0
+  * Implement and fix tests for table headers
+  * test(run list): update rulesets test name
+  * doc(run list): add enterprise ruleset notes
+  * refactor(tests): update test name for org workflows
+  * docs(run list): doc runs without workflow names
+  * fix(run list): do not fail on org workflows
+  * Fix typos in CONTRIBUTING.md
+  * Underline table headers if colors enabled but no theme
+  * Ensure table headers are thematically contrasting
+  * [gh ext] Fix `GitKind` extension directory path
+  * More cleanup
+  * `./script/sign` cleanup
+  * Add initial test
+  * Show host name in repo creation prompts
+
+-------------------------------------------------------------------
 Mon Mar 24 11:54:18 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.69.0:
