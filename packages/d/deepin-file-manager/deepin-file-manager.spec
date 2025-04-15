@@ -39,6 +39,7 @@ Patch3:         update-taglib-interface.patch
 Patch4:         fix-build-on-icu-75.patch
 # PATCH-FIX-UPSTRAM include-string_utils_h.patch hillwood@opensuse.org - Include string_utils.h to fix build on Tumbleweed
 Patch5:         include-string_utils_h.patch
+Patch6:         drop-pcre.patch
 Patch99:        harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
@@ -56,7 +57,6 @@ BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libmimetic-devel
 BuildRequires:  libqt5-linguist
-BuildRequires:  pcre-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  udisks2-qt5-devel >= 5.0.0
 BuildRequires:  update-desktop-files
