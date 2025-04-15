@@ -18,10 +18,10 @@
 
 %define cpan_name Alien-Libxml2
 Name:           perl-Alien-Libxml2
-Version:        0.190.0
+Version:        0.200.0
 Release:        0
-# 0.19 -> normalize -> 0.190.0
-%define cpan_version 0.19
+# 0.20 -> normalize -> 0.200.0
+%define cpan_version 0.20
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Install the C libxml2 library on your system
 URL:            https://metacpan.org/release/%{cpan_name}

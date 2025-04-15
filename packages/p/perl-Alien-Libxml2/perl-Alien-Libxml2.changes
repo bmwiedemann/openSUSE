@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar 20 05:33:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.200.0 (0.20)
+   see /usr/share/doc/packages/perl-Alien-Libxml2/Changes
+
+  0.20      2025-03-19 07:43:21 -0600
+    - Blacklisted older versions of libxml2 with CVEs (gh#43, gh#45)
+
+-------------------------------------------------------------------
 Mon Feb 10 22:11:13 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
