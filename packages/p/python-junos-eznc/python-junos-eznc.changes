@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 12:17:24 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons, project is Python 3.8+
+
+-------------------------------------------------------------------
 Wed Nov 27 08:56:52 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Add get-telnetlib-from-netmiko.patch, telnetlib was removed from
