@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 19 05:33:40 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.8002
+   see /usr/share/doc/packages/perl-ExtUtils-Depends/Changes
+
+  0.8002
+      - fix UNC path bug - https://rt.cpan.org/Ticket/Display.html?id=102436
+      - fix get_makefile_vars losing path components if space-quoted and >1 dep,
+        which was breaking CPAN module "true" which depends on two modules
+
+-------------------------------------------------------------------
 Mon May 17 03:06:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.8001

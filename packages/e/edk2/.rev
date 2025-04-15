@@ -121,4 +121,14 @@
     <comment></comment>
     <requestid>1254672</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>f1a08af5198bae34003b190fc588a3a2</srcmd5>
+    <version>202502</version>
+    <time>1744728294</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to fix CVE-2024-38797 - boo#1240985:
+  * 10928.patch
+</comment>
+    <requestid>1269123</requestid>
+  </revision>
 </revisionlist>

@@ -111,4 +111,25 @@
 - skip python 3.6 (needs FontTools which needs scipy)</comment>
     <requestid>1111925</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>40bcdf13df9116c7db0b82bc52580e45</srcmd5>
+    <version>0.12.1</version>
+    <time>1744728440</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.1:
+  * clear glyph.lib on glyph.clear
+- update to 0.12.0:
+  * Loop over all possibilities and test if one of them is
+    disabled
+- update to 0.11.0:
+  * add `.readthedocs.yaml`
+  * Remove some big memory attributes from all defcon objects on
+    delete
+  * Mark regex/docstring as raw to fix SyntaxWarning invalid
+    escape seq
+  * Remove a useless shebang line in a non-executable test script
+  * Remove guideline color key when setting color none
+  * Update tested python versions</comment>
+    <requestid>1269476</requestid>
+  </revision>
 </revisionlist>

@@ -63,4 +63,14 @@
     - Fix race condition in a forked environment (hirose31) #4</comment>
     <requestid>249345</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fd78d8618836dd150b1f369d8537e0bb</srcmd5>
+    <version>0.70.0</version>
+    <time>1744728400</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1269392</requestid>
+  </revision>
 </revisionlist>

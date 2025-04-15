@@ -188,4 +188,16 @@
     and Python 3.12.</comment>
     <requestid>1128726</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f8e3508178430bede85c3034a92ee32d</srcmd5>
+    <version>1.1.0</version>
+    <time>1744728442</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Dropped official support for Python 3.7 and 3.8.
+  * Dropped official support for Django 3.2, 4.0, 4.1, and 5.0.
+  * Added official support for Django 5.2.
+  * Updated some old code to use more modern conventions.</comment>
+    <requestid>1269474</requestid>
+  </revision>
 </revisionlist>

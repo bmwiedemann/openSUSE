@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Mar 26 16:03:04 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Update to 0.11.0
+  see /usr/share/nvim/runtime/doc/news.txt for list of full changes
+ * build with translations
+ * refresh lua-dev-deps.tar.gz
+
+-------------------------------------------------------------------
 Fri Feb 14 19:33:35 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - use make targets from upstream for tests

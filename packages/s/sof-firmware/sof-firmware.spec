@@ -24,7 +24,7 @@ Name:           sof-firmware
 Summary:        Firmware data files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        2025.01
+Version:        2025.01.1
 Release:        0
 URL:            https://www.sofproject.org/
 BuildRequires:  fdupes
@@ -53,6 +53,7 @@ Supplements:    modalias(pci:v00008086d00007728sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007E28sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007F50sv*sd*bc*sc*i*)
 # snd-sof-pci-intel-ptl
+Supplements:    modalias(pci:v00008086d0000E328sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000E428sv*sd*bc*sc*i*)
 # snd-sof-pci-intel-skl
 Supplements:    modalias(pci:v00008086d00009D71sv*sd*bc*sc*i*)

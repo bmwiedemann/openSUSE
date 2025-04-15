@@ -250,4 +250,17 @@
     <comment></comment>
     <requestid>893996</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>77d6aed96a99aacae67c41504a2b9804</srcmd5>
+    <version>0.8002</version>
+    <time>1744728324</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.8002
+   see /usr/share/doc/packages/perl-ExtUtils-Depends/Changes
+  0.8002
+      - fix UNC path bug - https://rt.cpan.org/Ticket/Display.html?id=102436
+      - fix get_makefile_vars losing path components if space-quoted and &gt;1 dep,
+        which was breaking CPAN module &quot;true&quot; which depends on two modules (forwarded request 1268721 from tinita)</comment>
+    <requestid>1269245</requestid>
+  </revision>
 </revisionlist>

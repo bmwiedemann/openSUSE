@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Mar 18 05:35:24 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.250.0 (0.25)
+   see /usr/share/doc/packages/perl-Tie-Hash-DBD/Changes
+
+  0.25	- 17 Mar 2025, H.Merijn Brand
+      * Add ro option (ReadOnly)
+      * Add support for serializers JSON::MaybeXS, JSON::XS & JSON::SIMD
+      * Doc fixes for groff-1.24
+      * It's 2024
+      * Fix parallel testing for SQLite
+      * Tested with perl-5.40
+
+-------------------------------------------------------------------
 Sat Jan  7 03:08:08 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.24

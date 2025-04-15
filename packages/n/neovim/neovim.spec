@@ -22,7 +22,7 @@
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.10.4
+Version:        0.11.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -31,10 +31,10 @@ Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{v
 Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
-Source10:       https://github.com/neovim/deps/raw/5a1f71cceb24990a0b15fd9a472a5f549f019248/opt/lua-dev-deps.tar.gz
+Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
 # PATCH-FIX-OPENSUSE: ensure installed tree-sitter-vimdoc is enabled in order to test to succeed
 Patch0:         0001-neovim-0.10.4-install-treesitter-vimdoc.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -51,19 +51,16 @@ BuildRequires:  lua51-compat-5.3
 BuildRequires:  lua51-lpeg
 BuildRequires:  lua51-luarocks
 BuildRequires:  lua51-luv
-BuildRequires:  lua51-mpack
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libluv)
-BuildRequires:  pkgconfig(libutf8proc)
-BuildRequires:  pkgconfig(libuv) >= 1.42.0
+BuildRequires:  pkgconfig(libutf8proc) >= 2.10.0
+BuildRequires:  pkgconfig(libuv) >= 1.50.0
 BuildRequires:  pkgconfig(luajit)
-BuildRequires:  pkgconfig(msgpack-c)
-BuildRequires:  pkgconfig(termkey)
-BuildRequires:  pkgconfig(tree-sitter) >= 0.20.9
-BuildRequires:  pkgconfig(unibilium) >= 2.0.0
+BuildRequires:  pkgconfig(tree-sitter) >= 0.25.3
+BuildRequires:  pkgconfig(unibilium) >= 2.1.2
 BuildRequires:  pkgconfig(vterm) >= 0.3.3
 BuildRequires:  treesitter_grammar(tree-sitter-vimdoc)
 Requires:       gperf
@@ -73,15 +70,15 @@ Requires:       lua51-compat-5.3
 Requires:       lua51-lpeg
 Requires:       lua51-luarocks
 Requires:       lua51-luv
-Requires:       lua51-mpack
-Requires:       tree-sitter-c >= 0.21.3
-Requires:       tree-sitter-lua
-Requires:       tree-sitter-markdown
+Requires:       tree-sitter-c >= 0.23.4
+Requires:       tree-sitter-lua >= 0.3.0
+Requires:       tree-sitter-markdown >= 0.4.1
 Requires:       tree-sitter-python
-Requires:       tree-sitter-query >= 0.4.0
-Requires:       tree-sitter-vim
-Requires:       tree-sitter-vimdoc >= 3.0.0
+Requires:       tree-sitter-query >= 0.5.1
+Requires:       tree-sitter-vim >= 0.5.0
+Requires:       tree-sitter-vimdoc >= 3.0.1
 Requires:       xdg-utils
+Recommends:     inotify-tools
 Recommends:     python3-neovim
 Recommends:     wl-clipboard
 Recommends:     xsel
@@ -127,6 +124,7 @@ USERNAME=OBS
        -DCMAKE_COLOR_MAKEFILE=OFF -DLTO_ENABLE=ON \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+       -DENABLE_TRANSLATIONS=ON \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
 %make_build
 

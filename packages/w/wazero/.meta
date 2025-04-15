@@ -1,0 +1,5 @@
+<package name="wazero" project="openSUSE:Factory">
+  <title>wazero</title>
+  <description>wazero is a WebAssembly Core Specification 1.0 and 2.0 compliant runtime written in Go. It has zero dependencies, and doesn't rely on CGO. This means you can run applications in other languages and still keep cross compilation.</description>
+  <url>https://github.com/tetratelabs/wazero</url>
+</package>

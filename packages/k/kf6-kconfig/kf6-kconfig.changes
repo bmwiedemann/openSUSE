@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:32:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * It compiles fine without qt6.9 deprecated methods
+  * KDesktopFile: Always put [Desktop Entry] group first
+  * Fix build warning
+  * Fix double unescaping of config keys
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

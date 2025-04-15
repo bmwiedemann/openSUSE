@@ -1,7 +1,7 @@
 #
 # spec file for package hugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,8 +20,12 @@
 %bcond_with hsi
 %bcond_without system_flann
 %bcond_without lapack
-# Cannot use EGL unless glew bug https://github.com/nigels-com/glew/issues/315 is fixed
+# Note: Build with EGL support *only* if wxwidgets supports EGL too
+%if 0%{?suse_version} > 1650
+%bcond_without egl
+%else
 %bcond_with egl
+%endif
 Name:           hugin
 Version:        %{mversion}.1
 Release:        0
@@ -39,7 +43,6 @@ BuildRequires:  exiftool
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libexiv2-devel
@@ -50,9 +53,9 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  vigra-devel
 BuildRequires:  wxGTK3-devel >= 3.1.5
+BuildRequires:  pkgconfig(epoxy)
 Requires:       enblend-enfuse >= 3.2
 # needed for photo stiching (bnc#822775)
 Requires:       make
@@ -96,21 +99,18 @@ mv src/translations/cs_CZ.po src/translations/cs.po
 # Doesn't define the ZLIB::ZLIB target needed by OpenEXR 3
 rm CMakeModules/FindZLIB.cmake
 %cmake \
-	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
-	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
-	-DCMAKE_SKIP_RPATH:BOOL=OFF \
-	-DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
-	-DBUILD_WITH_EGL:BOOL=%{?with_egl:ON}%{!?with_egl:OFF} \
-        -DUSE_GDKBACKEND_X11:BOOL=%{?with_egl:OFF}%{!?with_egl:ON}
+  -DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
+  -DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
+  -DBUILD_WITH_EGL:BOOL=%{?with_egl:ON}%{!?with_egl:OFF} \
+  -DUSE_GDKBACKEND_X11:BOOL=%{?with_egl:OFF}%{!?with_egl:ON} \
+  -DBUILD_WITH_EPOXY:BOOL=ON \
+	%{nil}
 
 %cmake_build
 
 %install
 %cmake_install
 
-%suse_update_desktop_file hugin 2DGraphics
-%suse_update_desktop_file PTBatcherGUI 2DGraphics
-%suse_update_desktop_file calibrate_lens_gui 2DGraphics
 # locales
 %find_lang %{name}
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:38:50 UTC 2025 - Dan Čermák <dcermak@suse.com>
+
+- Explicitly require dracut (was implicitly pulled in by the kernel)
+
+-------------------------------------------------------------------
 Thu Jan 23 11:01:53 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Change to python3: ansible moved to python 3 back in 2018. We

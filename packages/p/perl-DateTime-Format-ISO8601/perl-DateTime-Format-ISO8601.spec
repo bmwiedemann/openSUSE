@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Format-ISO8601
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,22 @@
 
 %define cpan_name DateTime-Format-ISO8601
 Name:           perl-DateTime-Format-ISO8601
-Version:        0.16
+Version:        0.170.0
 Release:        0
-Summary:        Parses ISO8601 formats
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Parses ISO8601 formats
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DateTime) >= 1.45
+BuildRequires:  perl(DateTime) >= 1.450
 BuildRequires:  perl(DateTime::Format::Builder) >= 0.77
 BuildRequires:  perl(Params::ValidationCompiler) >= 0.26
-BuildRequires:  perl(Specio) >= 0.18
+BuildRequires:  perl(Specio) >= 0.180
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Exporter)
 BuildRequires:  perl(Specio::Library::Builtins)
@@ -39,15 +41,18 @@ BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::More) >= 1.302015
 BuildRequires:  perl(namespace::autoclean)
 BuildRequires:  perl(parent)
-Requires:       perl(DateTime) >= 1.45
+Requires:       perl(DateTime) >= 1.450
 Requires:       perl(DateTime::Format::Builder) >= 0.77
 Requires:       perl(Params::ValidationCompiler) >= 0.26
-Requires:       perl(Specio) >= 0.18
+Requires:       perl(Specio) >= 0.180
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Exporter)
 Requires:       perl(Specio::Library::Builtins)
 Requires:       perl(namespace::autoclean)
 Requires:       perl(parent)
+Provides:       perl(DateTime::Format::ISO8601) = %{version}
+Provides:       perl(DateTime::Format::ISO8601::Types) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -55,8 +60,9 @@ Parses almost all ISO8601 date and time formats. ISO8601 time-intervals
 will be supported in a later release.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:08:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.12.1:
+  * clear glyph.lib on glyph.clear
+- update to 0.12.0:
+  * Loop over all possibilities and test if one of them is
+    disabled
+- update to 0.11.0:
+  * add `.readthedocs.yaml`
+  * Remove some big memory attributes from all defcon objects on
+    delete
+  * Mark regex/docstring as raw to fix SyntaxWarning invalid
+    escape seq
+  * Remove a useless shebang line in a non-executable test script
+  * Remove guideline color key when setting color none
+  * Update tested python versions
+
+-------------------------------------------------------------------
 Mon Sep 18 09:19:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.3:

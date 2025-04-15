@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:22:09 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.3.0.20250303:
+  * Modify slow log format (#75)
+  * Set slow threshold when log to stdout (#74)
+  * Clean log (#73)
+  * Update searpc-named-pipe-transport.c (#68)
+  * Add log to stdout (#72)
+  * Support write with non-blocking (#71)
+
+-------------------------------------------------------------------
 Mon Oct 21 08:43:14 UTC 2024 - info@paolostivanin.com
 
 - Update to version 3.3.0.20240726:

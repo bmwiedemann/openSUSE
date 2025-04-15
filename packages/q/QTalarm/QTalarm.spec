@@ -1,7 +1,7 @@
 #
 # spec file for package QTalarm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define  _name  qtalarm
 Name:           QTalarm
-Version:        2.5.1
+Version:        3.0.0
 Release:        0
 Summary:        A handy alarm clock Program written in QT
 License:        GPL-3.0-only
@@ -28,11 +28,12 @@ Source:         https://github.com/CountMurphy/QTalarm/archive/%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-base-common-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Widgets)
 
 %description
 A handy alarm clock Program written in QT.
@@ -43,10 +44,10 @@ Features:
  * Custom Date alarms
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%qmake5
+%qmake6
 %make_jobs
 
 %install

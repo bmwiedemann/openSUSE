@@ -1454,4 +1454,16 @@ update to 5.76
     <comment></comment>
     <requestid>1163127</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>5a8caa772219f8c6c410dad56f6d89b0</srcmd5>
+    <version>6.780.0</version>
+    <time>1744728319</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.780.0 (6.78)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+  6.78      2025-02-20 00:32:06Z
+      - Don't warn on proxy as unrecognized option for LWP::UserAgent-&gt;new
+        (GH#469) (Austin Hill) (forwarded request 1268689 from tinita)</comment>
+    <requestid>1269242</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package tiny
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tiny
-Version:        0.12.0+git2
+Version:        0.13.0+git2
 Release:        0
 Summary:        Terminal IRC client written in Rust
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR BSD-2-Clause) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MIT
@@ -26,6 +26,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(dbus-1)
 Requires:       pkgconfig(dbus-1)
 Requires:       pkgconfig(openssl)
 
@@ -43,7 +44,7 @@ install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/tiny %{buildroot}%{_bindir}/tiny
 
 %check
-%{cargo_test}
+%{cargo_test} --workspace --exclude '*termbox*'
 
 %files
 %license LICENSE

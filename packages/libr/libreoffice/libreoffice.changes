@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 13 19:29:21 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 25.2.2.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.2/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.2/RC2
+- Remove patch, merged upstream:
+  * fix_poppler_25.02.patch
+
+-------------------------------------------------------------------
 Thu Mar  6 08:52:15 UTC 2025 - Hsiu-Ming Chang <cges30901@gmail.com>
 
 - Add fix_poppler_25.02.patch to fix pdf import with poppler >= 25.02

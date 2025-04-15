@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 14 09:14:51 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- fab6906c5d1c16b046187485a7cb136b3659d42b.patch: fix build with
+  OpenSSL 3.5.0 (bsc#1241050)
+
+-------------------------------------------------------------------
 Thu Apr 10 09:47:03 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - Update to 22.14.0

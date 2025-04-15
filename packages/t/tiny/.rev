@@ -115,4 +115,12 @@
 - Remove cargo_config to adopt new vendored tarball scheme.</comment>
     <requestid>1161708</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>06f83adac0b66ab8ccd4c602bc0b703c</srcmd5>
+    <version>0.13.0+git2</version>
+    <time>1744728350</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269291</requestid>
+  </revision>
 </revisionlist>

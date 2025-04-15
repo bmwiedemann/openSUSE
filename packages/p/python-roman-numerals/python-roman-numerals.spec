@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-roman-numerals
 Version:        3.1.0
 Release:        0
@@ -25,15 +26,15 @@ URL:            https://github.com/AA-Turner/roman-numerals/
 Source:         https://files.pythonhosted.org/packages/source/r/roman-numerals/roman_numerals-%{version}.tar.gz
 BuildRequires:  %{python_module flit-core >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Suggests:       python-mypy = 1.15.0
+Suggests:       python-pyright = 1.1.394
+Suggests:       python-ruff = 0.9.7
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 8}
 # /SECTION
-BuildRequires:  fdupes
-Suggests:       python-mypy == 1.15.0
-Suggests:       python-ruff == 0.9.7
-Suggests:       python-pyright == 1.1.394
-BuildArch:      noarch
 %python_subpackages
 
 %description

@@ -111,4 +111,19 @@
 </comment>
     <requestid>1216660</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2550d3f7f0cb6397702c20c88e76d69f</srcmd5>
+    <version>3.3.0.20250303</version>
+    <time>1744728410</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.0.20250303:
+  * Modify slow log format (#75)
+  * Set slow threshold when log to stdout (#74)
+  * Clean log (#73)
+  * Update searpc-named-pipe-transport.c (#68)
+  * Add log to stdout (#72)
+  * Support write with non-blocking (#71)
+</comment>
+    <requestid>1269442</requestid>
+  </revision>
 </revisionlist>

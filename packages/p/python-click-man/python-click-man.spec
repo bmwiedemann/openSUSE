@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-man
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Automate generation of man pages for python click applications
 License:        MIT

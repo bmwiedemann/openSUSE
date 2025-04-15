@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:32:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250410 (git commit 6a006cef10ce):
+  * xe: Update GUC to v70.44.1 for BMG and LNL
+  * i915: Update GUC to v70.44.1 for i915 platforms
+
+-------------------------------------------------------------------
 Wed Apr  9 10:11:47 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 6.15-rc1

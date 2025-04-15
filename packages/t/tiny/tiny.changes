@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Apr 06 15:46:09 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.13.0+git2:
+  * Auto-fix some recent lints
+  * Update tiny version in Cargo.lock
+  * Release v0.13.0
+  * Use IndexMap in byte_seq_parser macro (#438)
+  * Improve handling of IRC color code (0x03) without colors afterwards (#435)
+  * Fix default-features deprecation warning
+
+- skip testing termbox examples due to compilation issues
+
+-------------------------------------------------------------------
+Thu Oct 31 11:12:57 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Fix build finding dbus-1.pc by installing dbus-1-devel
+
+-------------------------------------------------------------------
+Sun Oct 20 09:53:02 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.12.0+git15:
+  * Fix rustls deprecation warning
+  * Refactor termbox attribute values and make it clear that they can be manipulated w bit sets
+  * Remove msg_area::Line::force_recalculation
+  * Fix a warning, new lints
+  * Upgrade ring to 0.17
+  * Fix assigning_clones lints
+  * Improve matching when highligting mentions
+  * Use dbus instead of zbus for desktop notifications
+  * Remove `WidgetRet::Quit` and `TUIRet::Quit`:
+  * Some renaming in TUI for consistency, documentation
+  * Refactor TUI event type:
+  * Remove a redundant `pub`
+  * Update tokio
+- Use recomprizz instead of recompress in _service
+
+-------------------------------------------------------------------
 Tue Mar 26 10:47:01 UTC 2024 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Update to version 0.12.0+git2:

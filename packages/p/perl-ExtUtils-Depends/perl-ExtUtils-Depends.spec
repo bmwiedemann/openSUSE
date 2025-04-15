@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-Depends
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %define cpan_name ExtUtils-Depends
 Name:           perl-ExtUtils-Depends
-Version:        0.8001
+Version:        0.8002
 Release:        0
 #Upstream: SUSE-Public-Domain
-Summary:        Easily build XS extensions that depend on XS extensions
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Easily build XS extensions that depend on XS extensions
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/X/XA/XAOC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.44
+BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(ExtUtils::MakeMaker) >= 7.44
 %{perl_requires}
 
@@ -39,12 +40,17 @@ functions and typemaps provided by other perl extensions. This means that a
 perl extension is treated like a shared library that provides also a C and
 an XS interface besides the perl one.
 
-This works as long as the base extension is loaded with the RTLD_GLOBAL
-flag (usually done with a
+This works as long as the base (or "producing") extension is loaded with
+the 'RTLD_GLOBAL' flag (usually done with a
 
 	sub dl_load_flags {0x01}
 
-in the main .pm file) if you need to use functions defined in the module.
+in the main _.pm_ file) if you need to use functions defined in the module.
+That "producing" extension will also need to tell ExtUtils::MakeMaker the
+specific functions to export, with arguments to 'WriteMakefile' like:
+
+  FUNCLIST => [qw(function_name)],
+  DL_FUNCS => { 'Extension::Name' => [] },
 
 The basic scheme of operation is to collect information about a module in
 the instance, and then store that data in the Perl library where it may be
@@ -95,7 +101,7 @@ normally need to use this:
   @deps = Mymod::Install::Files->deps;
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

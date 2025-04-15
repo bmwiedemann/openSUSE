@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Apr 03 11:16:30 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 16.0.3:
+  * chore: bump version to 16.0.3 (#1094)
+  * Fix aqua CLI and JetBrains Aqua conflict (#1092)
+  * Fix `pixi self-update` running when `pixi` is not installed with the … (#1087)
+  * added silent install option for winget (#1089)
+  * i18n(app.yml): new language lt (#1069)
+  * Add German translations to localization file (#1065)
+  * Update jetbrains-toolbox-updater (#1077)
+  * fix:(emacs): fix issue #1075 (#1076)
+  * i18n(app.yml): new language zh_CN (#1072)
+  * Add JetBrains Toolbox via jetbrains-toolbox-updater (#1064)
+  * docs: fix `--log-filter` link in `--help` (#1073)
+  * FIX: Allow for -beta OR -current detection and use the correct system upgrade command for the OpenBSD step (#1066)
+  * Create Armv7l debian package (#1068)
+  * feat(sudo): add run0 as a sudo variant (#1067)
+  * chore(deps): bump ring from 0.17.8 to 0.17.13 (#1062)
+  * fix(sudo): fix sudo detection & pre-sudo for GSudo (#1058)
+  * feat(pixi): add support for `pixi global` (#1037)
+  * Run `conda clean` after `conda update` if `cleanup = true` (#1047)
+  * Add pipxu step (#1052)
+  * Add "Cinnamon spices" step (#1055)
+  * fix(poetry): parse arg in script shebang line (#1028)
+  * fix: uBlue OS should be detected as FedoraImmutable (#1043)
+  * feat(vscode): updated extensions for a given profile (#1022)
+  * docs: fix typo in description (#1032)
+  * Add zigup step (#1030)
+  * Run `juliaup gc` if cleanup is enabled (#1031)
+  * chore: update toolchain to 1.84.1. apply clippy fixes & rustfmt (#1026)
+  * feat: support VSCodium (#788)
+  * fix: do not run asdf update if version >= 0.15.0 (#1008)
+  * Add Fedora Copr to Readme.md (#1005)
+  * Detect Elan self update disabled (e.g. installed from distro repos) (#998)
+  * fix: Executor::spawn()/output() should not use their _checked() variants
+  * refactor(uv step): check self update result if self-update feat is available (#1000)
+  * fix: dont ignore rpm-ostree when bootc is found (#999)
+
+-------------------------------------------------------------------
 Wed Jan 01 11:37:35 UTC 2025 - gerald_chen@foxmail.com
 
 - Update to version 16.0.2:

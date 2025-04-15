@@ -688,4 +688,14 @@
   * Fixes missing include for older wxWidgets version (3.1 series) (forwarded request 1225903 from smolsheep)</comment>
     <requestid>1226439</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>50df5cd5b23a37f6a888e2de0ca4f00f</srcmd5>
+    <version>2024.0.1</version>
+    <time>1744728361</time>
+    <user>anag_factory</user>
+    <comment>* Build with EGL support on Tumbleweed, as wxwidgets is also similarly configured (boo#1235150).
+* Build with libepoxy instead of glew for better wayland performance.
+* Drop use of deprecated %suse_update_desktop_file macro. (forwarded request 1269276 from badshah400)</comment>
+    <requestid>1269324</requestid>
+  </revision>
 </revisionlist>

@@ -4356,4 +4356,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1266451</requestid>
   </revision>
+  <revision rev="289" vrev="2">
+    <srcmd5>f0974adb844f9690e99c7e89ba9143df</srcmd5>
+    <version>9.2.3</version>
+    <time>1744727924</time>
+    <user>anag_factory</user>
+    <comment>- all glib2 versions are recent enough to use pcre2:
+  * qemu-linux-user: drop pcre (by Andreas Stieger)
+- Correct wrong bug mentioned in changelog (bsc#1236329)
+</comment>
+    <requestid>1268741</requestid>
+  </revision>
 </revisionlist>

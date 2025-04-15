@@ -2955,4 +2955,13 @@ Note: I checked the GPG signature with both the expired and the refreshed key, a
     <comment>- remove unused pcre build dependency (forwarded request 1254508 from AndreasStieger)</comment>
     <requestid>1254512</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>ac100144c691986aa76410a999412d46</srcmd5>
+    <version>4.1.0</version>
+    <time>1744728287</time>
+    <user>anag_factory</user>
+    <comment>changelog update: add missing
+- remove upstream py313-aa-notify.patch (forwarded request 1268894 from cboltz)</comment>
+    <requestid>1268895</requestid>
+  </revision>
 </revisionlist>

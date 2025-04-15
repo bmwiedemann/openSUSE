@@ -85,7 +85,7 @@
 %global with_gcc 12
 %endif
 Name:           libreoffice
-Version:        25.2.1.2
+Version:        25.2.2.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -141,8 +141,6 @@ Patch991:       libreoffice-no-destdircheck.patch
 Patch992:       python34-no-f-strings.patch
 # PATCH-FIX-OPENSUSE override date in clucene files (boo#1047218)
 Patch995:       reproducible-clucene.patch
-# PATCH-FIX-UPSTREAM boo#1237484 Fix PDF imports with poppler 25.02
-Patch1001:      fix_poppler_25.02.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1135,8 +1133,6 @@ sed -i -e /CppunitTest_sc_statistical_functions_test/d sc/Module_sc.mk
 if grep -q setSegmentInfoStartVersion /usr/include/CLucene/index/IndexWriter.h ; then
 %patch -P 995 -p1
 fi
-
-%patch -P 1001 -p1
 
 # Do not generate doxygen timestamp
 echo "HTML_TIMESTAMP = NO" >> odk/docs/cpp/Doxyfile

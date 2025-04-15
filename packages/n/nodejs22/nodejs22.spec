@@ -173,6 +173,7 @@ Patch305:       qemu_timeouts_arches.patch
 Patch307:       v8-i586.patch
 Patch309:       gcc13.patch
 Patch311:       old_cares.patch
+Patch312:       fab6906c5d1c16b046187485a7cb136b3659d42b.patch
 
 BuildRequires:  pkg-config
 BuildRequires:  fdupes
@@ -703,6 +704,7 @@ popd
 %patch -P 307 -p1
 %patch -P 309 -p1
 %patch -P 311 -p1
+%patch -P 312 -p1
 
 %if %{node_version_number} == 12
 # minimist security update - patch50
@@ -959,9 +961,7 @@ rm test/parallel/test-dns-cancel-reverse-lookup.js \
    test/parallel/test-dns-resolveany.js
 # multicast test fail since no socket?
 rm test/parallel/test-dgram-membership.js
-%if %{node_version_number} >= 22
-# ::1 not defined in OBS on TW - https://github.com/openSUSE/obs-build/issues/848
-rm test/report/test-report-exclude-network.js
+%if %{node_version_number} >= 20
 # missing ICU test data for 15.6/15.7/SLFO
 ln test/fixtures/icu/localizationData-v74.2.json test/fixtures/icu/localizationData-v73.2.json
 %endif

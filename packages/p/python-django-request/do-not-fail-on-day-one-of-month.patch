@@ -1,8 +1,8 @@
-Index: django-request-1.6.3/tests/test_managers.py
+Index: django-request-1.7.0/tests/test_managers.py
 ===================================================================
---- django-request-1.6.3.orig/tests/test_managers.py
-+++ django-request-1.6.3/tests/test_managers.py
-@@ -66,6 +66,7 @@ class RequestQuerySetTest(TestCase):
+--- django-request-1.7.0.orig/tests/test_managers.py
++++ django-request-1.7.0/tests/test_managers.py
+@@ -68,6 +68,7 @@ class RequestQuerySetTest(TestCase):
          qs = Request.objects.all().year(self.request.time.year + 1)
          self.assertEqual(qs.count(), 0)
  
@@ -10,13 +10,13 @@ Index: django-request-1.6.3/tests/test_managers.py
      def test_month(self):
          qs = Request.objects.all().month(year=None, month=None, date=now())
          self.assertEqual(qs.count(), 1)
-@@ -78,6 +79,7 @@ class RequestQuerySetTest(TestCase):
+@@ -80,6 +81,7 @@ class RequestQuerySetTest(TestCase):
          )
          self.assertEqual(qs.count(), 0)
  
 +    @override_settings(USE_TZ=True, TIME_ZONE='Africa/Nairobi')
      def test_month_without_date(self):
-         now_month = now().strftime('%b')
+         now_month = now().strftime("%b")
          qs = Request.objects.all().month(
 @@ -103,7 +105,7 @@ class RequestQuerySetTest(TestCase):
  

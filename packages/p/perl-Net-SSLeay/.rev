@@ -377,4 +377,13 @@
     <comment></comment>
     <requestid>1163126</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>102cb63df77deafe0bf81a85e9d36268</srcmd5>
+    <version>1.940.0</version>
+    <time>1744728316</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with openssl &gt;= 3.4.1
+  * Add patch test-32_x509_get_cert_info-allow-single-colon.patch (forwarded request 1268244 from lmulling)</comment>
+    <requestid>1269239</requestid>
+  </revision>
 </revisionlist>

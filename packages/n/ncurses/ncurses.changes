@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:59:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250412
+  + add pangoterm -TD
+  + add kf1 to kf5 to sclp (report by Werner Fink)
+  + add vt100+pf1-pf4 -TD
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Skip the further entry as now aprt of the common `sclp' entry
+  * Add ansi.sys entry to ibm327x for coloring support
+
+-------------------------------------------------------------------
 Wed Apr  9 12:03:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch ncurses-5.9-ibm327x.dif

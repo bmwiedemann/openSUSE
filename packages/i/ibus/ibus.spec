@@ -76,6 +76,10 @@ Patch15:        ibus-socket-name-compatibility.patch
 # PATCH-FIX-UPSTREAM ibus-ui-gtk3-restart-via-systemd.patch
 # Allow ibus-ui-gtk3 to restart ibus-daemon when it is launched by systemd
 Patch16:        ibus-ui-gtk3-restart-via-systemd.patch
+# PATCH-FIX-UPSTREAM ibus-gcc15.patch
+Patch17:        ibus-gcc15-1.patch
+# PATCH-FIX-UPSTREAM ibus-gcc15-2.patch
+Patch18:        ibus-gcc15-2.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -237,6 +241,8 @@ cp -r %{SOURCE11} .
 %patch -P 15 -p1
 %endif
 %patch -P 16 -p1
+%patch -P 17 -p1
+%patch -P 18 -p1
 
 %build
 %configure --disable-static \

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:19:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.5.1
+  * Bump workflow versions
+  * README: Remove references to Python 2
+  * README: Update packaging overview
+  * fix: Correct entrypoint
+  * pre-commit: Bump versions
+
+-------------------------------------------------------------------
 Mon Feb 10 16:48:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.5.0

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-RSS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XML-RSS
 Name:           perl-XML-RSS
-Version:        1.640.0
+Version:        1.650.0
 Release:        0
-# 1.64 -> normalize -> 1.640.0
-%define cpan_version 1.64
+# 1.65 -> normalize -> 1.650.0
+%define cpan_version 1.65
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Creates and updates RSS files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -87,7 +87,7 @@ formatted accordingly. E.g:
     );
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

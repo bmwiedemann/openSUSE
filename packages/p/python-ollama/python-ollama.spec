@@ -1,7 +1,7 @@
 #
 # spec file for package python-ollama
 #
-# Copyright (c) 2024 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?sle15_python_module_pythons}
 Name:           python-ollama
-Version:        0.4.5
+Version:        0.4.7
 Release:        0
 License:        MIT
 Summary:        Ollama python bindings
 Group:          Development/Languages/Python
-Url:            https://github.com/ollama/ollama-python
+URL:            https://github.com/ollama/ollama-python
 Source:         https://files.pythonhosted.org/packages/source/o/ollama/ollama-%{version}.tar.gz
 BuildRequires:  %{python_module httpx >= 0.27.0}
 BuildRequires:  %{python_module pip}
@@ -43,7 +44,7 @@ Official ollama python bindings
 
 %build
 %pyproject_wheel
-               
+
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}

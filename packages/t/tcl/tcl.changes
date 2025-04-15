@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr  7 13:41:54 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Version 8.6.16:
+  * [02d5d6] unneeded path normalization
+  * [cfdf80] zlib stream returns negative checksums
+  * [2c237b] regression in tzdata, %z instead of offset TZ-name
+  * [43c94f] Tcl will not start properly if there is an init.tcl 
+    file in the current dir
+  * [f2b5f8] clock scan of leapsecond: wrong result
+  * [0b809c] Segfault in TclOO with coroutines
+
+-------------------------------------------------------------------
 Tue Sep 24 09:15:58 UTC 2024 - Reinhard Max <max@suse.com>
 
 - TCL_PACKAGE_PATH now needs to be a unix-style path separated by

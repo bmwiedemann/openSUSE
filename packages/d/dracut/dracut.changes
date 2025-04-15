@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 09:39:58 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.722.g16d7e0c3:
+  * refactor(multipath): remove custom multipathd.service
+  * chore(multipath): remove `rd_NO_MULTIPATH` kernel command line option
+  * feat(systemd): add new systemd-validatefs@.service
+  * fix(dmsquash-live): do not check ISO md5 if image filesystem (bsc#1240919)
+  * fix(dmsquash-live): use load_fstype to load driver for filesystems
+
+-------------------------------------------------------------------
 Thu Apr 03 12:10:51 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.714.gee616a76:

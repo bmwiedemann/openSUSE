@@ -1,0 +1,90 @@
+-------------------------------------------------------------------
+Tue Feb 18 15:24:27 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.9.0:
+  * ci: update Go floor to 1.22 and run CI with 1.22/1.24 (#2379)
+  * wazevo(amd64): reserve dx when calling memmove to support go 1.24 (#2378)
+  * docs: add yoke to community users (#2377)
+  * runtime: return nil interface not nil pointer on error (#2376)
+  * compiler: fix ARMv8 regression introduced in #2345 (#2365)
+  * CI: use Linux ARM runners. (#2366)
+  * ci: removes unnecessary cache (#2369)
+  * Update to latest TinyGo and Rust (#2368)
+  * Fixes libsodium workflow (#2364)
+  * Fix comment from #2355. (#2363)
+  * sysfs: always reopen directory before readdir (#2355)
+  * Fix integration tests. (#2361)
+
+-------------------------------------------------------------------
+Sat Nov 23 21:55:22 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.8.2:
+  * arm64: account for imported functions when encoding relocation islands (#2346)
+  * compiler: require ARMv8.1 (#2345)
+  * chore: update action deps (#2344)
+  * Enable compiler on NetBSD, DragonFly, illumos and Solaris (#2343)
+  * Add DragonFly, illumos, Solaris to CI. (#2341)
+  * Add *BSD to CI. (#2338)
+  * Fix users list (#2334)
+  * Add Modus to "who's using wazero" list (#2333)
+  * experimental: clarify memory allocator context is for module instantiation (#2331)
+
+-------------------------------------------------------------------
+Thu Oct  3 22:48:52 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.8.1:
+  * cli: clarifies it is possible to escape the mount in help (#2328)
+  * example: fixes deallocate error in Rust (#2327)
+  * sysfs: disallow absolute symlinks (#2324)
+  * Fix descriptor.Table buffer growth calc (#2311)
+  * sysfs: reopening file doesn't update fd (#2319)
+  * experimental: allow custom memory allocator Reallocate to fail (#2315)
+  * compiler: ResolveImportedFunction should infer the typeID from the importing module (#2314)
+  * Show close for concurrent-instantiation example (#2309)
+  * ci: Updates TinyGo to 0.33 (#2304)
+
+-------------------------------------------------------------------
+Wed Aug 14 13:41:47 UTC 2024 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.8.0:
+  * ci: upgrade to Go 1.23 (#2301)
+  * Improves ImportResolver example (#2299)
+  * Add experimental ImportResolver (#2298)
+  * doc: adds comments on simultaneous compilation (#2295)
+  * Update Benthos to Redpanda Connect (#2291)
+  * Add support for Emscripten version 3.1.57 (#2290)
+  * ci: tests with Go 1.23rc2 (#2277)
+  * backend: stop allocating ValueDefinitions (#2288)
+  * backend: removes unnecessary ValueDefinition fields (#2287)
+  * ssa: removes valueIDToInstruction slice (#2286)
+  * ssa: removes map use for Value aliasing (#2285)
+  * ssa: stores types in higher 4-bits of Variable (#2284)
+  * ssa: removes unnecessary definition (#2283)
+  * Uses unsafe.String where possible (#2282)
+  * test: correctly makes all example tests runnable (#2281)
+  * threads: lock around invocations of memory.Grow (#2279)
+  * doc: adds comments on anonymous module names (#2275)
+  * ci: merges spectests into normal make test (#2273)
+  * interpreter: removes unneeded stack walks (#2274)
+  * ci: cleanup vs directory (#2272)
+  * Removes integration_test/vs (#2270)
+  * regalloc: complete de-virtualization (#2269)
+  * regalloc: removes unused Instr.AddedBeforeRegAlloc api (#2268)
+  * regalloc: simplifies findOrSpillAllocatable (#2267)
+  * compiler: removes unnecessary code paths (#2266)
+  * backend: de-virtualize regalloc  (#2265)
+  * ssa: simplifies initializeCurrentBlockKnownBounds (#2263)
+  * regalloc: use less memory in liveness analysis (#2262)
+  * regalloc: fast access to vrState (#2261)
+  * amd64: fixes lowerSqmulRoundSat (#2260)
+  * Prevents direct use of host functions via ExportedFunction (#2259)
+  * Revert tinygo reflect.SliceHeader specialization (#2210)
+  * regalloc: eliminates unnecessary Instr loop (#2258)
+  * regalloc: simplifies livenessAnalysis/finalizeStartReg (#2256)
+  * frontend: reuses br_table tmp slice correctly (#2253)
+  * validation: avoids allocation per br_table (#2252)
+  * compiler: memory usage optimization around br_table (#2251)
+  * ssa: removes redundantParameterIndexToValue map (#2250)
+  * ci: removes amd64/macOS tests (#2248)
+  * ssa: reuses slices for basicBlock.params (#2247)
+  * Removes dead codes (#2246)

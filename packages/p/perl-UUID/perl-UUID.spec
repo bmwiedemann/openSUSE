@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UUID
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name UUID
 Name:           perl-UUID
-Version:        0.360.0
+Version:        0.370.0
 Release:        0
-# 0.36 -> normalize -> 0.360.0
-%define cpan_version 0.36
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
 License:        Artistic-2.0
 Summary:        Universally Unique Identifier library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -63,7 +63,7 @@ in RFC4122bis, version 14, and may change in the future. RFC4122bis is
 noted to replace RFC4122, if approved.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v4.0.3
-%define pyeggversion 4.0.3
+%define tarversion v4.1.0
+%define pyeggversion 4.1.0
 
 Name:           apparmor
-Version:        4.0.3
+Version:        4.1.0
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -82,16 +82,6 @@ Patch6:         apache-extra-profile-include-if-exists.diff
 # add path for precompiled cache (only done/applied if precompiled_cache is enabled)
 Patch7:         apparmor-enable-precompiled-cache.diff
 
-# Mesa: new cachedir in Mesa 24.2.2 (merged upstream 2024-09-30 https://gitlab.com/apparmor/apparmor/-/merge_requests/1333)
-Patch10:        mesa-cachedir.diff
-
-# add python 3.13 fixes/workarounds
-Patch11:        python313.patch
-
-# PATCH-FIX-UPSTREAM https://gitlab.com/apparmor/apparmor/-/merge_requests/1495 utils: adjusts aa-notify tests to handle Python 3.13+
-# to finish python313 support
-Patch12:        py313-aa-notify.patch
-
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -114,6 +104,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-notify2
 BuildRequires:  python3-psutil
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-tk
 %endif
 
 %if %{with ruby}
@@ -215,6 +206,7 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 Requires:       libapparmor1 = %{version}
 Requires:       python3
+Requires:       python3-tk
 Requires:       python(abi) = %{py3_ver}
 
 %description -n python3-apparmor
@@ -358,9 +350,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %if %{with precompiled_cache}
 %patch -P 7
 %endif
-%patch -p1 -P 10
-%patch -p1 -P 11
-%patch -p1 -P 12
 
 %build
 export SUSE_ASNEEDED=0
@@ -576,6 +565,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %doc %{_mandir}/man5/apparmor.vim.5.gz
 %doc %{_mandir}/man7/apparmor.7.gz
 %doc %{_mandir}/man7/apparmor_xattrs.7.gz
+%doc %{_mandir}/man8/aa-load.8.gz
 %doc %{_mandir}/man8/aa-status.8.gz
 %doc %{_mandir}/man8/aa-teardown.8.gz
 %doc %{_mandir}/man8/apparmor_parser.8.gz
@@ -715,6 +705,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/vpnns
 %config(noreplace) %{_sysconfdir}/apparmor.d/wike
 %config(noreplace) %{_sysconfdir}/apparmor.d/wpcom
+%config(noreplace) %{_sysconfdir}/apparmor.d/Xorg
 %config(noreplace) %{_sysconfdir}/apparmor.d/zgrep
 
 %config(noreplace) %{_sysconfdir}/apparmor.d/apache2.d/phpsysinfo
@@ -728,6 +719,7 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %files utils
 %defattr(-,root,root)
 %dir %{_sysconfdir}/apparmor
+%config(noreplace) %{_sysconfdir}/apparmor/default_unconfined.template
 %config(noreplace) %{_sysconfdir}/apparmor/easyprof.conf
 %config(noreplace) %{_sysconfdir}/apparmor/logprof.conf
 %config(noreplace) %{_sysconfdir}/apparmor/notify.conf
@@ -758,6 +750,9 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %{_bindir}/aa-easyprof
 %dir %{_datadir}/apparmor
 %{_datadir}/apparmor/easyprof/
+%dir %{_datadir}/polkit-1
+%dir %{_datadir}/polkit-1/actions
+%{_datadir}/polkit-1/actions/net.apparmor.pkexec.aa-notify.policy
 %dir %{_localstatedir}/log/apparmor
 %doc %{_mandir}/man5/logprof.conf.5.gz
 %doc %{_mandir}/man8/apparmor_notify.8.gz

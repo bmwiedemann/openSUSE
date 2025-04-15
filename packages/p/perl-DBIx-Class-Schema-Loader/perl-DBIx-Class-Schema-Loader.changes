@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 20 05:34:14 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.07053
+   see /usr/share/doc/packages/perl-DBIx-Class-Schema-Loader/Changes
+
+  0.07053 - 2025-03-19
+          - fix: properly pass connect_info.options to make_schema_at (gh#59 - thanks @XSven)
+          - docs: fix tpyo (gh#26 - thanks @onefloid)
+
+-------------------------------------------------------------------
 Sun Jan  7 03:06:16 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.07052

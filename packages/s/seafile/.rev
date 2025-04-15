@@ -197,4 +197,25 @@
 </comment>
     <requestid>1216661</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dabcae840a39bb70568716bd50bada0b</srcmd5>
+    <version>9.0.13</version>
+    <time>1744728411</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.13:
+  * Support lock office file on linux (#2889)
+  * Add stopped by logout sync error (#2894)
+  * Check and load ca path (#2885)
+  * Use int as return value (#2874)
+  * Check if dir is ignored and if file exists when record &quot;index error&quot; (#2863)
+  * Don't set timeout for fs-id-list (#2862)
+  * Add option to ignore symbol link (#2861)
+  * Ignore case conflict error on linux (#2857)
+  * Support GNUTLS (#2848)
+  * Ignore checkout . and .. (#2841)
+  * Hide windows incompatible path msg by default (#2847)
+  * Check pwd hash and add crypt header (#2844)
+</comment>
+    <requestid>1269443</requestid>
+  </revision>
 </revisionlist>

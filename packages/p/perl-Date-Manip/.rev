@@ -608,4 +608,23 @@
    see /usr/share/doc/packages/perl-Date-Manip/Changes (forwarded request 1235335 from tinita)</comment>
     <requestid>1235360</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>6a8d08dac0fe0e7f506dfd1425d594f4</srcmd5>
+    <version>6.970.0</version>
+    <time>1744728322</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.970.0 (6.97)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+  6.97  2025-03-02
+    -  Fix to avoid warnings in perl 5.41.*
+           The newest development version of perl gives 'possible precedence
+           problem' warnings for a few lines. Those lines have been fixed by
+           adding some parentheses to avoid any precedence ambiguity.
+           Reported in GitHub #51
+    -  Added a requested alternative to 'ago'.
+           Requested in GitHub #50
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2025a). (forwarded request 1268702 from tinita)</comment>
+    <requestid>1269244</requestid>
+  </revision>
 </revisionlist>

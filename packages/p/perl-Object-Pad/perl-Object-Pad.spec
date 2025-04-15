@@ -18,10 +18,10 @@
 
 %define cpan_name Object-Pad
 Name:           perl-Object-Pad
-Version:        0.819.0
+Version:        0.820.0
 Release:        0
-# 0.819 -> normalize -> 0.819.0
-%define cpan_version 0.819
+# 0.820 -> normalize -> 0.820.0
+%define cpan_version 0.820
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple syntax for lexical field-based objects
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,14 +30,14 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(File::ShareDir) >= 1.00
+BuildRequires:  perl(File::ShareDir) >= 1.0.0
 BuildRequires:  perl(Module::Build) >= 0.4004
 BuildRequires:  perl(Test2::V0) >= 0.000148
 BuildRequires:  perl(XS::Parse::Keyword) >= 0.470
 BuildRequires:  perl(XS::Parse::Keyword::Builder) >= 0.480
 BuildRequires:  perl(XS::Parse::Sublike) >= 0.350
 BuildRequires:  perl(XS::Parse::Sublike::Builder) >= 0.350
-Requires:       perl(File::ShareDir) >= 1.00
+Requires:       perl(File::ShareDir) >= 1.0.0
 Requires:       perl(XS::Parse::Keyword) >= 0.470
 Requires:       perl(XS::Parse::Sublike) >= 0.350
 Provides:       perl(Object::Pad) = %{version}

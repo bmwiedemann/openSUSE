@@ -41,6 +41,8 @@ BuildRequires:  python3
 BuildRequires:  rust
 BuildRequires:  rust-std
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
@@ -56,9 +58,9 @@ BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}-%{release}
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc11
-BuildRequires:  gcc11-c++
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
 %else
 BuildRequires:  gcc-c++
 %endif
@@ -102,9 +104,9 @@ directory = './vendor'
 EOF
 
 %build
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-11"
-export CXX="g++-11"
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-12"
+export CXX="g++-12"
 %endif
 export CARGO_HOME=`pwd`/cargo-home/
 mkdir -p build && cd build

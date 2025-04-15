@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Mar 17 05:34:44 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.150.0 (5.15)
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+
+  5.15 2025-03-16T18:47:47
+   - Make JSON::Validator::Util::is_bool return true when passed perl v5.36+ builtin booleans #275
+   - Fix wrong resolving of responses component using $ref #277
+   - Fix array coercion for array parameters with a $ref schema #274
+
+-------------------------------------------------------------------
 Tue Mar  7 03:06:49 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.14

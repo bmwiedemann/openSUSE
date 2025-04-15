@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-SSLeay
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ Summary:        Perl bindings for OpenSSL and LibreSSL
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/C/CH/CHRISN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+# PATCH-FIX-UPSTREAM: Fix build with openssl >= 3.4.1
+Patch:          test-32_x509_get_cert_info-allow-single-colon.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Net::SSLeay) = %{version}
@@ -47,7 +49,7 @@ This module provides Perl bindings for libssl (an SSL/TLS API) and
 libcrypto (a cryptography API).
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -p1 -n %{cpan_name}-%{cpan_version}
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

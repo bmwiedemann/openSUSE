@@ -1,7 +1,7 @@
 #
 # spec file for package seafile-client
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           seafile-client
-Version:        9.0.9
+Version:        9.0.13
 Release:        0
 Summary:        Cloud storage client
 License:        GPL-3.0-only
@@ -84,7 +84,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/seafile.appdata.xml
 %doc README.md
 %license LICENSE
 %{_bindir}/seafile-applet
-%{_datadir}/applications/seafile.desktop
+%{_datadir}/applications/com.seafile.seafile-applet.desktop
 %{_datadir}/icons/hicolor/128x128
 %{_datadir}/icons/hicolor/128x128/apps
 %{_datadir}/icons/hicolor/128x128/apps/seafile.png

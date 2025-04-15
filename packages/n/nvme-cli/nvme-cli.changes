@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Apr 14 09:34:18 UTC 2025 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 2.13:
+  * Release v2.13
+  * doc: Regenerate all docs for v2.13
+  * nvme-print: print new fields of nvme_id_independent_id_ns
+  * plugins/lm: Refine Sequence Indicator description and macro usage
+  * plugins/solidigm: Updated SMART PLL Lock Loss counters field
+  * nvme-print: display fw-rev in list-subsys output
+  * nvme-print: display model in list-subsys output
+  * nvme-cli: attach ns to local controller if none specified
+  * Revert "nvme-print-json: display only verbose output"
+  * nvme: fix to set nvme_io_args reftag value
+  * netapp-ontapdev: add subsysname to regular output
+  * nvme-print: use allocation error string variable
+  * plugins: add NVMe feature extension
+  * nvme-print: add nvme_show_perror() variable number arguments
+  * nvme-print-json: set allocation error string directly
+  * ocp: Fix print_formatted_var_size_str and json_add_formatted_var_size_str
+  * ocp: replace no-uuid option help string to use no_uuid variable
+  * plugins/lm: Pass numd option to nvme_lm_migration_recv
+  * plugins: sort subdir list as alphabetical order
+  * plugins: move meson.build solidigm-nvme.c into solidigm/meson.build
+  * completions: Update solidigm parse-telemetry-log --sourcefile
+  * documentation: Updated solidigm parse-telemetry-log source-file.
+  * plugins/solidigm: Fix parse-telemetry-log command parsing error handling.
+  * plugins/solidigm: parse-telemetry-log aware of OCP2.5 binaries
+  * sndk: Add documentation for Sandisk plugin commands
+  * sandisk: Add sandisk plugin
+  * netapp-ontapdev: add subsysname to the verbose output
+  * sed: add SED man pages
+
+-------------------------------------------------------------------
 Tue Mar 18 16:16:08 UTC 2025 - Martin Wilck <mwilck@suse.com>
 
 - Don't generate /etc/nvme/hostnqn in build environments

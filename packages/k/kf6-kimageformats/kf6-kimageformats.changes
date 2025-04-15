@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:33:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add missing include mocs
+  * It compiles fine without qt6.9 deprecated methods
+  * PSD: use linear profile on float images
+  * It compiles fine without kf6.12 deprecated methods
+  * Write tests for hej2 format
+  * heif: enable saving of hej2 format
+  * CI: Enable heif so we make sure it compiles
+  * writetest: special handling for HEIF format
+  * readtest: special handling for HEIF format
+  * heif: disable AVCI decoder for libheif before 1.19.6
+  * SKIP tests when libheif configuration is incomplete
+  * heif: enable reading images with native 16 bit depth
+  * Use of heif_context_add_XMP_metadata instead heif_context_add_XMP_metadata2
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

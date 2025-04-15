@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:39:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build with EGL support on Tumbleweed, as wxwidgets is also
+  similarly configured (boo#1235150).
+- Build with libepoxy instead of glew for better wayland
+  performance.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Fri Nov 22 20:42:25 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to version 2024.0.1:

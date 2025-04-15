@@ -3,16 +3,15 @@
     <param name="url">https://github.com/osa1/tiny</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">2f1cd40dc7d4a37960f2662571b10c46a5d69dc6</param>
+    <param name="revision">73f2401c0225f0a42fb0b9dfd920fdb67c00756e</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">socvirnyl.estela@gmail.com</param>
   </service>
   <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
-    <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+  <service mode="manual" name="recomprizz">
+    <param name="target">tiny-*.tar</param>
   </service>
   <service mode="manual" name="set_version"/>
   <service name="cargo_vendor" mode="manual">

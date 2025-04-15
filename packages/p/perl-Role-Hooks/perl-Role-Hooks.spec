@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Role-Hooks
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define cpan_name Role-Hooks
 Name:           perl-Role-Hooks
-Version:        0.008
+Version:        0.8.0
 Release:        0
+# 0.008 -> normalize -> 0.8.0
+%define cpan_version 0.008
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Role callbacks
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
@@ -34,6 +36,8 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
 Requires:       perl(Class::Method::Modifiers)
 Requires:       perl(List::Util) >= 1.45
+Provides:       perl(Role::Hooks) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,7 +45,7 @@ This module allows a role to run a callback when it is applied to a class
 or to another role.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

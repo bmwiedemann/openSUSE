@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 14 20:24:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.2:
+  * Adding more type hints
+  * adding the ability to make a stableset immutable
+
+-------------------------------------------------------------------
 Mon Oct 28 23:05:16 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (5.2.3)

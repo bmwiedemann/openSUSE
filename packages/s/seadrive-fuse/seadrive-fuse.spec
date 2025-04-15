@@ -1,7 +1,7 @@
 #
 # spec file for package seadrive-fuse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           seadrive-fuse
-Version:        2.0.28
+Version:        3.0.13
 Release:        0
 Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only
 URL:            https://github.com/haiwen/seadrive-fuse/
 Source0:        https://github.com/haiwen/seadrive-fuse/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  argon2-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -39,20 +40,16 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
-BuildRequires:  sqlite-devel
-%else
-BuildRequires:  pkgconfig(sqlite3)
-%endif
 
 %description
 The Drive client enables you to access files on the server without
 syncing to local disk. It works like a network drive.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 ./autogen.sh

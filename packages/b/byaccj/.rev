@@ -119,4 +119,14 @@
     <comment>fix build with gcc 14 (bsc#1221696)</comment>
     <requestid>1159649</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>8db7095a8fcf19320ec6685fc363c667</srcmd5>
+    <version>1.15</version>
+    <time>1744728284</time>
+    <user>anag_factory</user>
+    <comment>- add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to
+  still allow build on SLE / Leap 15
+</comment>
+    <requestid>1268759</requestid>
+  </revision>
 </revisionlist>

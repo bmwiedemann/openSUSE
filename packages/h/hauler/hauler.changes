@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:10:25 UTC 2025 - dmueller@suse.com
+
+- Update to version 1.2.2 (bsc#1241184, CVE-2024-0406):
+  * cleanup new tlog flag typos and add shorthand (#426)
+  * default public transparency log verification to false to be airgap friendly but allow override (#425)
+  * bump github.com/golang-jwt/jwt/v4 (#423)
+  * bump the go_modules group across 1 directory with 2 updates (#422)
+  * bump github.com/go-jose/go-jose/v3 (#417)
+  * bump github.com/go-jose/go-jose/v4 (#415)
+  * clear default manifest name if product flag used with sync (#412)
+  * updates for v1.2.0 (#408)
+  * fixed remote code (#407)
+  * added remote file fetch to load (#406)
+  * added remote and multiple file fetch to sync (#405)
+  * updated save flag and related logs (#404)
+  * updated load flag and related logs [breaking change] (#403)
+  * updated sync flag and related logs [breaking change] (#402)
+  * upgraded api update to v1/updated dependencies (#400)
+  * fixed consts for oci declarations (#398)
+  * fix for correctly grabbing platform post cosign 2.4 updates (#393)
+  * use cosign v2.4.1+carbide.2 to address containerd annotation in index.json (#390)
+  * Bump the go_modules group across 1 directory with 2 updates (#385)
+  * replace mholt/archiver with mholt/archives (#384)
+  * forked cosign bump to 2.4.1 and use as a library vs embedded binary (#383)
+  * cleaned up registry and improved logging (#378)
+  * Bump golang.org/x/crypto in the go_modules group across 1 directory (#377)
+- drop
+  0001-Bump-the-go_modules-group-across-1-directory-with-2-.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Wed Jan 29 10:25:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Bump-the-go_modules-group-across-1-directory-with-2-.patch

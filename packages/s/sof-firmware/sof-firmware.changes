@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:23:56 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v2025.01.1:
+ * Fixes to ASUS Zenbook S 14 and S 16 bugs
+ * topology backports for Intel LNL systems
+ * topology2: add sof-lnl-cs42l43-l0-cs35l56-l23-4ch
+- Update supplements
+
+-------------------------------------------------------------------
 Wed Feb 19 09:37:34 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to v2025.01:

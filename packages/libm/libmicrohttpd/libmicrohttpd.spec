@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2023 SUSE LLC
 # Copyright (c) 2010,2011,2012  Stephan Kleine
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ URL:            https://www.gnu.org/software/libmicrohttpd/
 Source0:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=90068#/%{name}.keyring
+Patch0:         libmicrohttpd-1.0.1-curl-8.13.0.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
@@ -98,8 +99,8 @@ Headers, pkg-config files, so link and other development files for %{name}
   --enable-https \
   --enable-curl \
   --disable-static \
-  --disable-examples
-
+  --disable-examples \
+  %{nil}
 %make_build
 
 %install

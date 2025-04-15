@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Apr 14 13:22:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.98.0:
+  * Features
+    - feat(autodiscovery): add support for k8s initContainers
+      (#4569) @luilegeant (#4570)
+  * Bug Fixes
+    - fix(udash): correctly handle error if udash doesn't exist
+      @olblak (#4767)
+  * Maintenance
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.15.0
+      @updateclibot[bot] (#4810)
+    - deps(go): bump module github.com/drone/go-scm to v1.40.0
+      @updateclibot[bot] (#4802)
+    - deps(go): bump module helm.sh/helm/v3 to v3.17.3
+      @updateclibot[bot] (#4791)
+    - deps: Update ubuntu runner for codeql-analysis.yml @olblak
+      (#4768)
+    - deps(go): bump module golang.org/x/net to v0.39.0
+      @updateclibot[bot] (#4757)
+    - deps(go): bump module golang.org/x/oauth2 to v0.29.0
+      @updateclibot[bot] (#4747)
+    - deps(go): bump module cuelang.org/go to v0.12.1
+      @updateclibot[bot] (#4737)
+    - deps: Bump Golang version to 1.24.2 @updateclibot[bot]
+      (#4719)
+    - deps(go): bump module github.com/goccy/go-yaml to v1.17.1
+      @updateclibot[bot] (#4721)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#4718)
+    - deps: use one PR per golang major update @olblak (#4560)
+    - deps: automerge golang patch update version @olblak (#4559)
+    - fix(updatecli): ignore some Go module version update for
+      github.com/hashicorp/hcl/v2 @olblak (#4699)
+    - deps: bump github.com/minamijoyo/hcledit to v0.2.17 @olblak
+      (#4585)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.16.2
+      @updateclibot[bot] (#4668)
+    - chore(deps): Bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+      5.2.2 @dependabot[bot] (#4511)
+    - ci: update to golangci v2 configuration && fix reported
+      linting issues @olblak (#4568)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#4555)
+    - deps: bump golangci-lint to v2.0.2 @updateclibot[bot] (#4550)
+  * Documentation
+    - doc: add Criteo to ADOPTERS.md @alikhil (#4765)
+    - doc: add Mbrella ADOPTERS.md @loispostula (#4738)
+
+-------------------------------------------------------------------
 Mon Mar 31 07:58:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.97.0:

@@ -1269,4 +1269,14 @@
 </comment>
     <requestid>1249238</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>bd9883e359704eb11d39f9adeb1ab46a</srcmd5>
+    <version>10.4.0</version>
+    <time>1744728415</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.4.0:
+  * https://peazip.github.io/changelog.html
+</comment>
+    <requestid>1269436</requestid>
+  </revision>
 </revisionlist>

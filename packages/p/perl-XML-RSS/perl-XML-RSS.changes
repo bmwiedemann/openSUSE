@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Feb 24 05:34:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.650.0 (1.65)
+   see /usr/share/doc/packages/perl-XML-RSS/Changes
+
+  1.65    2025-02-23
+      - Fix <*:guid> outside a feed's item element
+          - https://github.com/shlomif/perl-XML-RSS/issues/24
+          - Thanks to @steve-piner
+
+-------------------------------------------------------------------
 Wed Oct 16 05:36:36 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.640.0 (1.64)

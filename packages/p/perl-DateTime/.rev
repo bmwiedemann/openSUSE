@@ -537,4 +537,17 @@
 </comment>
     <requestid>1156541</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>249bc11aeaeb3f1b44f4b2f397ce3cd0</srcmd5>
+    <version>1.660.0</version>
+    <time>1744728317</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.660.0 (1.66)
+   see /usr/share/doc/packages/perl-DateTime/Changes
+  1.66   2025-02-18
+  - Require Specio 0.50. That release has a bug fix for validation of integer values. Without the fix,
+    DateTime could accept non-integer values for things like nanoseconds. Reported by @HGuillemet. GH
+    #145. (forwarded request 1268687 from tinita)</comment>
+    <requestid>1269241</requestid>
+  </revision>
 </revisionlist>

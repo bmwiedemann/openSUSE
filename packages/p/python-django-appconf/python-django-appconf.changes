@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:07:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Dropped official support for Python 3.7 and 3.8.
+  * Dropped official support for Django 3.2, 4.0, 4.1, and 5.0.
+  * Added official support for Django 5.2.
+  * Updated some old code to use more modern conventions.
+
+-------------------------------------------------------------------
 Sat Nov 25 12:57:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.6:

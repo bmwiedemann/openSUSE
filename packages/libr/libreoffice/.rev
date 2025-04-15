@@ -3652,4 +3652,17 @@ Petr</comment>
     <comment></comment>
     <requestid>1250743</requestid>
   </revision>
+  <revision rev="305" vrev="1">
+    <srcmd5>142bea14c51f94d2b110c4968aacadc7</srcmd5>
+    <version>25.2.2.2</version>
+    <time>1744728258</time>
+    <user>anag_factory</user>
+    <comment>- Update to 25.2.2.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/25.2.2/RC1
+    https://wiki.documentfoundation.org/Releases/25.2.2/RC2
+- Remove patch, merged upstream:
+  * fix_poppler_25.02.patch</comment>
+    <requestid>1269055</requestid>
+  </revision>
 </revisionlist>

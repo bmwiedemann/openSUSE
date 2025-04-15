@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kguiaddons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,26 @@
 %define qt6_version 6.7.0
 
 %define rname kguiaddons
-# Full KF6 version (e.g. 6.9.0)
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
+# Full KF6 version (e.g. 6.13.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.12.0
+Version:        6.13.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -48,6 +61,16 @@ BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-client) >= 1.15
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  cmake(Shiboken6)
+BuildRequires:  cmake(PySide6)
+%endif
+# /SECTION
 Requires:       libKF6GuiAddons6 = %{version}
 # https://community.kde.org/Plasma/Plasma_6#Coinstallability
 Provides:       kguiaddons = %{version}
@@ -82,11 +105,24 @@ Requires:       libKF6GuiAddons6 = %{version}
 The KDE GUI addons provide utilities for graphical user interfaces in the areas
 of colors, fonts, text, images, keyboard input. Development files.
 
+%if %{with kde_python_bindings}
+%package -n python3-kf6-kguiaddons
+Summary:        Python bindings for kf6-kguiaddons
+
+%description -n python3-kf6-kguiaddons
+This package provides Python bindings for kf6-kguiaddons.
+%endif
+
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 \
+  -DBUILD_QCH:BOOL=TRUE \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -118,5 +154,10 @@ of colors, fonts, text, images, keyboard input. Development files.
 %{_kf6_includedir}/KGuiAddons/
 %{_kf6_libdir}/libKF6GuiAddons.so
 %{_kf6_pkgconfigdir}/KF6GuiAddons.pc
+
+%if %{with kde_python_bindings}
+%files -n python3-kf6-kguiaddons
+%{mypython_sitearch}/*.so
+%endif
 
 %changelog

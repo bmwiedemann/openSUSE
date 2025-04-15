@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 11 05:33:41 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-Net-CIDR/ChangeLog
+
+  0.23
+  2025-03-09   brian d foy <briandfoy@pobox.com>
+  	* Allow unabbreviated IPv6 addresses.
+  0.22
+  2025-03-09  Sam Varshavchik  <mrsam@courier-mta.com>
+  	* Improve several error messages.
+  2025-03-09   brian d foy <briandfoy@pobox.com>
+  	* Allow unabbreviated IPv6 addresses.
+
+-------------------------------------------------------------------
 Wed Mar 31 03:08:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.21

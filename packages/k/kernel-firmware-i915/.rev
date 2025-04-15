@@ -50,4 +50,14 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 6.15-rc1</comment>
     <requestid>1268115</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0dffa8cdff252e311a72d8426bc169ce</srcmd5>
+    <version>20250410</version>
+    <time>1744728306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250410 (git commit 6a006cef10ce):
+  * xe: Update GUC to v70.44.1 for BMG and LNL
+  * i915: Update GUC to v70.44.1 for i915 platforms</comment>
+    <requestid>1269193</requestid>
+  </revision>
 </revisionlist>

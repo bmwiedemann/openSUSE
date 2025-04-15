@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-CIDR
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,21 @@
 
 %define cpan_name Net-CIDR
 Name:           perl-Net-CIDR
-Version:        0.21
+Version:        0.230.0
 Release:        0
-Summary:        Manipulate IPv4/IPv6 netblocks in CIDR notation
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Manipulate IPv4/IPv6 netblocks in CIDR notation
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MR/MRSAM/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/M/MR/MRSAM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 1
+Provides:       perl(Net::CIDR) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,7 +46,7 @@ their parameters consist of validated IPs or CIDRs. See cidrvalidate() and
 BUGS, below, for more information.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

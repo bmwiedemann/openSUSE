@@ -163,4 +163,13 @@
 - Build with PIE (bsc#1239949)</comment>
     <requestid>1268585</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8ccb00b90049835a9dc058ea64466a28</srcmd5>
+    <version>22.14.0</version>
+    <time>1744728325</time>
+    <user>anag_factory</user>
+    <comment>- fab6906c5d1c16b046187485a7cb136b3659d42b.patch: fix build with
+  OpenSSL 3.5.0 (bsc#1241050)</comment>
+    <requestid>1269251</requestid>
+  </revision>
 </revisionlist>

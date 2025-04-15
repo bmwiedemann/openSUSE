@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Mar 18 05:34:58 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.930.0 (0.93)
+   see /usr/share/doc/packages/perl-Spreadsheet-Read/Changes
+
+  0.93	- 17 Mar 2025, H.Merijn Brand
+      * Add ranges and cellranges
+
+  0.92	- 06 Jan 2025, H.Merijn Brand
+      * Make strict_eol default to 1 for CSV when supported
+      * Show detected EOL for CSV in xlscat when known
+      * Add SECURITY.md
+      * It's 2025
+
+-------------------------------------------------------------------
 Sun Sep  1 05:33:13 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.910.0 (0.91)

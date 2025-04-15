@@ -17,15 +17,14 @@
 
 
 Name:           hauler
-Version:        1.1.1
-%global git_commit 090f4dc905e1d68b5a3e41e04feafe6063c85639
+Version:        1.2.2
+%global git_commit 5021f3ab6b364a5172fe9fece97bf3742ab1b4ce
 Release:        0
 Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/rancherfederal/hauler
 Source:         %{name}-%{version}.tar.zst
-Patch1:         0001-Bump-the-go_modules-group-across-1-directory-with-2-.patch
 Source1:        vendor.tar.zst
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cosign

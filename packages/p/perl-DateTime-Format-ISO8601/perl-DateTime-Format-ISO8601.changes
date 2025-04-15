@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Feb 23 05:31:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.170.0 (0.17)
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.17     2025-02-22
+
+  - Fixed an issue with converting floating point second values to nanoseconds. These could be
+    converted to numbers which Perl stringified as an integer, but which really had a non-integer
+    component. Fixed by @n1vux (Bill Ricker). Fixes GH #14 via PR #15.
+
+-------------------------------------------------------------------
 Tue Feb 16 10:22:08 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - updated to 0.16

@@ -1,8 +1,8 @@
-Index: peazip-10.3.0.src/dev/project_peach.lpi
+Index: peazip-10.4.0.src/dev/project_peach.lpi
 ===================================================================
---- peazip-10.3.0.src.orig/dev/project_peach.lpi
-+++ peazip-10.3.0.src/dev/project_peach.lpi
-@@ -1650,7 +1650,7 @@
+--- peazip-10.4.0.src.orig/dev/project_peach.lpi
++++ peazip-10.4.0.src/dev/project_peach.lpi
+@@ -1653,7 +1653,7 @@
      </CodeGeneration>
      <Linking>
        <Debugging>

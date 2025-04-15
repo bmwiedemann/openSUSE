@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Mar  3 05:34:36 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.970.0 (6.97)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  6.97  2025-03-02
+    -  Fix to avoid warnings in perl 5.41.*
+           The newest development version of perl gives 'possible precedence
+           problem' warnings for a few lines. Those lines have been fixed by
+           adding some parentheses to avoid any precedence ambiguity.
+           Reported in GitHub #51
+    -  Added a requested alternative to 'ago'.
+           Requested in GitHub #50
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2025a).
+
+-------------------------------------------------------------------
 Thu Dec 12 16:15:14 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.960.0 (6.96)

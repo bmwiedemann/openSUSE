@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Apr 12 10:32:50 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- update to 0.25.3:
+  Full changelog: https://github.com/tree-sitter/tree-sitter/releases/tag/v0.25.3
+  Bug Fixes
+    * Fixed an infinite loop that could happen in some grammars during error
+       recovery if the end of the file was reached.
+    * Fixed a parser-generation error where internal character set constants were
+      given external linkage, which could cause linking errors on some platforms
+      if multiple Tree-sitter parsers were linked into the same application.
+- update to 0.25.2:
+  Full changelog: https://github.com/tree-sitter/tree-sitter/releases/tag/v0.25.2
+  Bug Fixes
+    * Fixed a crash that could occur when loading WASM-compiled languages that
+      were generated with an earlier version of the Tree-sitter CLI.
+    * Fixed incorrect tokenization when using WASM-compiled languages, if the
+      language's external scanner did not assign to result_symbol
+    * Fixed an infinite loop that could occur if external scanners returned
+      empty extra tokens
+
+-------------------------------------------------------------------
 Mon Feb  3 14:43:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.25.1:

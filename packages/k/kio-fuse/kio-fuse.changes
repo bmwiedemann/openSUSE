@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 12 18:02:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Pull in kio-extras5 when kio-extras (6) is installed, so e.g.
+  smb and sftp also work with kio-fuse, not only in dolphin
+  (boo#1226378).
+
+-------------------------------------------------------------------
 Sat Dec  9 22:14:57 UTC 2023 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to version 5.1.0:

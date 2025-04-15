@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:47:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.7:
+  * client: remove sha256 as it's already available in the digest
+  * client: improve error messaging on connection failure
+  * chore: bump httpx from 0.27.2 to 0.28.1
+  * chore: ensure imports are sorted
+  * examples: fix create examples
+  * examples: update create example
+  * fix: don't run lints on all Python versions
+  * fix: formatting & CI
+  * chore: add tests for checking sha in blob request
+- update to 0.4.6:
+  * add create api changes to support ollama v0.5.5
+
+-------------------------------------------------------------------
 Wed Jan  8 09:22:05 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable tests as it requires python-pydantic, which is not in

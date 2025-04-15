@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Mar  6 05:33:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.9.0 (v2.9.0)
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.9.0   Wed Mar  5 22:27:28 CST 2025
+
+          [ENHANCEMENTS]
+          assert_arrayref_of() no longer requires the array to have at
+          least one element.
+
+          New assert_arrayref_nonempty_of() has the same behavior as
+          assert_arrayref_of(), but requires at least one element.
+
+-------------------------------------------------------------------
 Sat Jan  4 05:30:31 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.8.0 (v2.8.0)

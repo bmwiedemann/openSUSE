@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kwidgetsaddons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,26 @@
 %define qt6_version 6.7.0
 
 %define rname kwidgetsaddons
-# Full KF6 version (e.g. 6.9.0)
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
+# Full KF6 version (e.g. 6.13.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kwidgetsaddons
-Version:        6.12.0
+Version:        6.13.0
 Release:        0
 Summary:        Large set of desktop widgets
 License:        LGPL-2.1-or-later
@@ -42,6 +55,16 @@ BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  cmake(Shiboken6)
+BuildRequires:  cmake(PySide6)
+%endif
+# /SECTION
 
 %description
 This repository contains add-on widgets and classes for applications
@@ -64,13 +87,26 @@ Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 This repository contains add-on widgets and classes for applications
 that use the Qt Widgets module.
 
+%if %{with kde_python_bindings}
+%package -n python3-kf6-kwidgetsaddons
+Summary:        Python interface for kf6-kwidgetsaddons
+
+%description -n python3-kf6-kwidgetsaddons
+This package provides a python interface for kf6-kwidgetsaddons.
+%endif
+
 %lang_package -n libKF6WidgetsAddons6
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
 %build
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE
+%cmake_kf6 \
+  -DBUILD_QCH:BOOL=TRUE \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -97,6 +133,11 @@ that use the Qt Widgets module.
 %{_kf6_includedir}/KWidgetsAddons/
 %{_kf6_libdir}/libKF6WidgetsAddons.so
 %{_kf6_plugindir}/designer/kwidgetsaddons6widgets.so
+
+%if %{with kde_python_bindings}
+%files -n python3-kf6-kwidgetsaddons
+%{mypython_sitearch}/*.so
+%endif
 
 %files -n libKF6WidgetsAddons6-lang -f kwidgetsaddons6.lang
 

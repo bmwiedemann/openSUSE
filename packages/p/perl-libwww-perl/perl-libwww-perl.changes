@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 20 05:33:39 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.780.0 (6.78)
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.78      2025-02-20 00:32:06Z
+      - Don't warn on proxy as unrecognized option for LWP::UserAgent->new
+        (GH#469) (Austin Hill)
+
+-------------------------------------------------------------------
 Fri Mar 22 16:41:21 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.77

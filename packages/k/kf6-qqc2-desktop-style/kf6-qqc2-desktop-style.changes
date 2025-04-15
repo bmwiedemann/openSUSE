@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:34:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add missing include mocs
+  * Frame: Use corner radius
+  * It compiles fine without qt6.9 deprecated methods
+  * It compiles fine without kf6.12 deprecated methods
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

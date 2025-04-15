@@ -1,7 +1,7 @@
 #
 # spec file for package tcl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 
 Name:           tcl
 URL:            http://www.tcl.tk
-Version:        8.6.15
+Version:        8.6.16
 Release:        0
 %define         rrc %{nil}
 %define TCL_MINOR %(echo %version | cut -c1-3)
-%define itclver 4.3.0
+%define itclver 4.3.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        The Tcl Programming Language
 License:        TCL

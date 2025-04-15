@@ -733,4 +733,12 @@
   - lots of new ids (forwarded request 1225299 from msmeissn)</comment>
     <requestid>1225300</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>734a41538e60d5f482545cd7097455b2</srcmd5>
+    <version>1.1.22</version>
+    <time>1744728301</time>
+    <user>anag_factory</user>
+    <comment>Fix installation issue (forwarded request 1269169 from krop)</comment>
+    <requestid>1269182</requestid>
+  </revision>
 </revisionlist>

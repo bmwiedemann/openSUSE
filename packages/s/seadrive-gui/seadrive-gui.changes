@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:57:35 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.13:
+  * https://github.com/haiwen/seadrive-gui/compare/v2.0.28...v3.0.13
+- Add fix-return-value.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 02:17:46 UTC 2024 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Revert to 2.0.28

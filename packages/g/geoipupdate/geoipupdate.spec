@@ -24,7 +24,6 @@ License:        Apache-2.0 OR MIT
 Group:          Productivity/Networking/Other
 URL:            https://github.com/maxmind/geoipupdate
 Source0:        %{name}-%{version}.tar.gz
-# go mod vendor && tar cf vendor.tar.gz vendor/
 Source1:        vendor.tar.gz
 Source2:        geoipupdate.timer
 Source3:        geoipupdate.service
@@ -84,16 +83,16 @@ sed -ri \
 
 %if 0%{?suse_version} >= 1500
 %pre
-%service_add_pre %{name}.service
+%service_add_pre %{name}.service %{name}.timer
 
 %post
-%service_add_post %{name}.service
+%service_add_post %{name}.service %{name}.timer
 
 %preun
-%service_del_preun %{name}.service
+%service_del_preun %{name}.service %{name}.timer
 
 %postun
-%service_del_postun %{name}.service
+%service_del_postun %{name}.service %{name}.timer
 %endif
 
 %files

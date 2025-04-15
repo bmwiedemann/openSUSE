@@ -1,22 +1,38 @@
 [Unit]
-Description=Update GeoIP databases
+Description=Update of GeoIP2/GeoLite2 databases
 Documentation=man:geoipupdate(1) man:GeoIP.conf(5)
 
 [Service]
-# added automatically, for details please see
-# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-ProtectSystem=full
-ProtectHome=true
-PrivateDevices=true
-ProtectHostname=true
-ProtectClock=true
-ProtectKernelTunables=true
-ProtectKernelModules=true
-ProtectKernelLogs=true
-ProtectControlGroups=true
-RestrictRealtime=true
-# end of automatic additions 
 Type=oneshot
-WorkingDirectory=/var/lib/GeoIP
 
 ExecStart=/usr/bin/geoipupdate
+
+AmbientCapabilities=
+CapabilityBoundingSet=
+KeyringMode=private
+LockPersonality=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+MountFlags=private
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectClock=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectHostname=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+RemoveIPC=yes
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+SystemCallFilter=@basic-io @file-system @io-event @network-io @process @signal flock fsync madvise uname
+
+ReadWritePaths=/var/lib/GeoIP
+WorkingDirectory=/var/lib/GeoIP

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:32:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add missing include mocs
+  * Mimetypes: replace TODO comment with link to s-m-i MR
+  * Drop no longer needed export of KJobPrivate & KCompositeJobPrivate
+  * It compiles fine without qt6.9 deprecated methods
+  * KDirWatch: Constify the 'path' variable
+  * Require CI to pass on FreeBSD
+  * KProcessList: Return login names based on ruid in the FreeBSD impl
+  * KDirWatch: Support the "direct" mode of the libinotify-kqueue library
+  * KShell:tildeExpand: Return filename if homedir is empty (kde#317513)
+  * Bump min required SharedMimeInfo to 2.1
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

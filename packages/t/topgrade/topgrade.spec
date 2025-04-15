@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        16.0.2
+Version:        16.0.3
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only

@@ -96,7 +96,8 @@
         <package name="python3"/>
         <package name="python3-xml"/>
 
-        <!-- for dracut -->
+        <!-- dracut & stuff for dracut -->
+        <package name="dracut"/>
         <package name="keyutils"/>
         <package name="wicked"/>
         <package name="dmraid"/>

@@ -5087,4 +5087,18 @@
   * Make use of dumb</comment>
     <requestid>1268153</requestid>
   </revision>
+  <revision rev="293" vrev="66">
+    <srcmd5>c937fbc6533240a95409e0bb36523f1a</srcmd5>
+    <version>unknown</version>
+    <time>1744727918</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250412
+  + add pangoterm -TD
+  + add kf1 to kf5 to sclp (report by Werner Fink)
+  + add vt100+pf1-pf4 -TD
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Skip the further entry as now aprt of the common `sclp' entry
+  * Add ansi.sys entry to ibm327x for coloring support</comment>
+    <requestid>1269306</requestid>
+  </revision>
 </revisionlist>

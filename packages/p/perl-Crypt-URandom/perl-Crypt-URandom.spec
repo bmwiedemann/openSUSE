@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-URandom
 Name:           perl-Crypt-URandom
-Version:        0.530.0
+Version:        0.540.0
 Release:        0
-# 0.53 -> normalize -> 0.530.0
-%define cpan_version 0.53
+# 0.54 -> normalize -> 0.540.0
+%define cpan_version 0.54
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide non blocking randomness
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:32:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add missing include mocs
+  * ECMAddTests.cmake: add support to pass environment variables and compile definitions
+  * tests: Fix cmake deprecation warning
+  * ECMEnableSanitizers.cmake: replace tabs with spaces
+  * KDECompilerSettings: default to C++20 for level 6.13
+  * ECMEnableSanitizers.cmake: fix GCC's "note: variable tracking size limit exceeded" when using asan
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Date-Manip
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.960.0
+Version:        6.970.0
 Release:        0
-# 6.96 -> normalize -> 6.960.0
-%define cpan_version 6.96
+# 6.97 -> normalize -> 6.970.0
+%define cpan_version 6.97
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,7 +30,7 @@ Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.67
-BuildRequires:  perl(Test::Inter) >= 1.09
+BuildRequires:  perl(Test::Inter) >= 1.90.0
 Provides:       perl(Date::Manip) = %{version}
 Provides:       perl(Date::Manip::Base) = %{version}
 Provides:       perl(Date::Manip::DM5) = %{version}
@@ -918,7 +918,7 @@ Each of these tasks is trivial (one or two lines at most) with this
 package.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

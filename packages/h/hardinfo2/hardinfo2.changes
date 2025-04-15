@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Apr 11 15:14:01 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.2.10: 
+  * PACKAGING: Check if a missing package message window appears
+    on program start, after installing on empty system. IMPORTANT
+  * Fixed sparc32 & sparc64 building
+  * Added Release info in CMakeLists.txt
+  * Added Packaging check for improved hardinfo2 package
+    across distros.
+  * Added Arch Linux branch building for makepkg & CPack
+  * Fixed homepath not found after first storage benchmark run
+  * Cachemem improved for non high precision clocks
+  * Added Vendefoul Wolf & Winux distros
+  * Minor: Removed Garbage Collector, Fixed many MemLeaks,
+    Improved scroll to results, 3 possible crashes
+  * Minor: Fixed fedora URL, Added default 250 benchmark results
+  * Fixes for RedHat & ALT Linux Icons
+  * Russian, Danish, Brazilian language updated
+
+-------------------------------------------------------------------
 Sat Feb 22 16:39:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.7:

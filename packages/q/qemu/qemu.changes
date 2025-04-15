@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 11 18:28:37 UTC 2025 - dfaggioli@suse.com
+
+- all glib2 versions are recent enough to use pcre2:
+  * qemu-linux-user: drop pcre (by Andreas Stieger)
+- Correct wrong bug mentioned in changelog (bsc#1236329)
+
+-------------------------------------------------------------------
 Wed Apr 02 00:32:54 UTC 2025 - dfaggioli@suse.com
 
 - Update to latest stable release (9.2.3)
   Full backport list here:
    https://lore.kernel.org/qemu-devel/44124379-3349-45cf-9238-8a847d8b2770@tls.msk.ru/
-  Fixes: bsc#1240005
+  Fixes: bsc#1236329
   Highlights include:
   * hw/intc/aspeed: Fix IRQ handler mask check
   * hw/misc/aspeed_hace: Fix buffer overflow in has_padding function
@@ -32,7 +39,7 @@ Wed Apr 02 00:32:54 UTC 2025 - dfaggioli@suse.com
   * hw/net/smc91c111: Sanitize packet length on tx
   * hw/net/smc91c111: Sanitize packet numbers
   * ppc/pnv/occ: Fix common area sensor offsets
-  * xen: No need to flush the mapcache for grants (bsc#1240005)
+  * xen: No need to flush the mapcache for grants (bsc#1236329)
   * net: move backend cleanup to NIC cleanup
   * net: parameterize the removing client from nc list
   * util/qemu-timer.c: Don't warp timer from timerlist_rearm()

@@ -823,4 +823,12 @@ sqlite3 patch I will submit in a moment.</comment>
   * [0de6c1] Fix crash in [child invokehidden info frame]</comment>
     <requestid>1202886</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>2c92c0ab21afd36f4a9d037323e09ede</srcmd5>
+    <version>8.6.16</version>
+    <time>1744727916</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1269302</requestid>
+  </revision>
 </revisionlist>

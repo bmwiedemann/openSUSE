@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr  6 15:18:18 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires pkgconfig(gl), pkgconfig(glu)
+
+-------------------------------------------------------------------
 Sun Mar 30 18:24:47 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.1:

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:23:06 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.13:
+  * Support lock office file on linux (#2889)
+  * Add stopped by logout sync error (#2894)
+  * Check and load ca path (#2885)
+  * Use int as return value (#2874)
+  * Check if dir is ignored and if file exists when record "index error" (#2863)
+  * Don't set timeout for fs-id-list (#2862)
+  * Add option to ignore symbol link (#2861)
+  * Ignore case conflict error on linux (#2857)
+  * Support GNUTLS (#2848)
+  * Ignore checkout . and .. (#2841)
+  * Hide windows incompatible path msg by default (#2847)
+  * Check pwd hash and add crypt header (#2844)
+
+-------------------------------------------------------------------
 Mon Oct 21 08:44:07 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.9:

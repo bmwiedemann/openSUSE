@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Apr 12 14:22:05 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add ibus-gcc15-1.patch and ibus-gcc15-2.patch from upstream to
+  fix gcc15 compile time errors
+
+-------------------------------------------------------------------
 Fri Nov  8 13:27:39 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Upstream update to 1.5.31

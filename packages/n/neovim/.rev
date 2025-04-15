@@ -1493,4 +1493,12 @@ FIXES (LSP):
 </comment>
     <requestid>1246157</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>b559e772ce686be01e3d4302400cfcb8</srcmd5>
+    <version>0.11.0</version>
+    <time>1744728445</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1269227 from rrahl0)</comment>
+    <requestid>1269228</requestid>
+  </revision>
 </revisionlist>

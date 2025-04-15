@@ -525,4 +525,13 @@ BTW: should go to 13.1
     <comment></comment>
     <requestid>1150509</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>16af8fe4b661d024868bbe48d2dcb152</srcmd5>
+    <version>1.0.1</version>
+    <time>1744728291</time>
+    <user>anag_factory</user>
+    <comment>- fix build with curl 8.13.0 (boo#1241036)
+  add libmicrohttpd-1.0.1-curl-8.13.0.patch</comment>
+    <requestid>1269062</requestid>
+  </revision>
 </revisionlist>

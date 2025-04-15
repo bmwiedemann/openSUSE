@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:33:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Fix icon bundling on Android 
+  * Add missing since information
+  * ColumnView: More reliable touch horizontal scrolling
+  * ColumnView: watch columns implicitwidth change
+  * HeaderFooterLayout: introduce spacing property
+  * Add missing include mocs
+  * DialogLayer: force header style when on global pagestack
+  * PageRow: Fix the navigation buttons disappearing in certain situations
+  * Workaround for multiple engine types registration (kde#497616)
+  * Fix loading page header for pages with titleDelegate in PagePool
+  * Add missing include
+  * NavigationTabBar: don't use left/right padding in implicitWidth (kde#500229)
+  * NavigationTabBar: don't use availableWidth in contentWidth (kde#500229)
+  * dialogs/DialogHeaderTopContent: always place close button top right
+  * dialogs/DialogHeaderTopContent: remove margin instead of adding
+  * Increase KF/QT deprecated version
+  * Improve breeze icons install
+  * layout/FormLayout: scroll to focus item if necesary
+  * BasicTheme: Allow creation without a QML engine
+  * NavigationTabButton: Don't bold selected
+  * Dialog: make header contents composable
+  * Revert "InlineMessage: fix link opening and hover handlers"
+  * Update dependency version to 6.13.0
+  * ShadowedImage: Hide ShadowedTexture with software rendering
+  * Dialog: guard even harder against null parent
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

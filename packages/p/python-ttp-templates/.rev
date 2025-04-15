@@ -43,4 +43,14 @@
     <comment></comment>
     <requestid>1268409</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>35dc8f195bd7fa19848c95069457ec19</srcmd5>
+    <version>0.3.7</version>
+    <time>1744728354</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1269254 from crameleon
+
+Enable sle15_python_module_pythons (align with ttp and poetry)</comment>
+    <requestid>1269315</requestid>
+  </revision>
 </revisionlist>

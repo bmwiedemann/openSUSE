@@ -66,4 +66,15 @@
   * Update to HarfBuzz 11.0.0</comment>
     <requestid>1265482</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e2a8db80e4c3cdc6e352cd330bca6c6f</srcmd5>
+    <version>0.49.0</version>
+    <time>1744728352</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1268410 from glaubitz
+
+- Update to 0.49.0
+    * Update to HarfBuzz 11.0.1</comment>
+    <requestid>1269314</requestid>
+  </revision>
 </revisionlist>

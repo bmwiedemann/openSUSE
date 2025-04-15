@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-DNS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.490.0
+Version:        1.500.0
 Release:        0
-# 1.49 -> normalize -> 1.490.0
-%define cpan_version 1.49
+# 1.50 -> normalize -> 1.500.0
+%define cpan_version 1.50
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,7 +31,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Carp) >= 1.1
-BuildRequires:  perl(Digest::HMAC) >= 1.03
+BuildRequires:  perl(Digest::HMAC) >= 1.30.0
 BuildRequires:  perl(Digest::MD5) >= 2.37
 BuildRequires:  perl(Digest::SHA) >= 5.23
 BuildRequires:  perl(Encode) >= 2.26
@@ -55,7 +55,7 @@ BuildRequires:  perl(overload) >= 1.06
 #BuildRequires:  perl(warnings) >= 1.05
 Requires:       perl(base) >= 2.13
 Requires:       perl(Carp) >= 1.1
-Requires:       perl(Digest::HMAC) >= 1.03
+Requires:       perl(Digest::HMAC) >= 1.30.0
 Requires:       perl(Digest::MD5) >= 2.37
 Requires:       perl(Digest::SHA) >= 5.23
 Requires:       perl(Encode) >= 2.26
@@ -147,6 +147,7 @@ Provides:       perl(Net::DNS::RR::OPT::TCP_KEEPALIVE)
 Provides:       perl(Net::DNS::RR::OPT::ZONEVERSION)
 Provides:       perl(Net::DNS::RR::PTR)
 Provides:       perl(Net::DNS::RR::PX)
+Provides:       perl(Net::DNS::RR::RESINFO)
 Provides:       perl(Net::DNS::RR::RP)
 Provides:       perl(Net::DNS::RR::RRSIG)
 Provides:       perl(Net::DNS::RR::RT)
@@ -196,7 +197,7 @@ The programmer should be familiar with the structure of a DNS packet and
 the zone file presentation format described in RFC1035.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

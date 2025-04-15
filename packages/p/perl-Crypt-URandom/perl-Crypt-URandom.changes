@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Mar 16 05:31:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.540.0 (0.54)
+   see /usr/share/doc/packages/perl-Crypt-URandom/Changes
+
+  0.54  Sat Mar 15 20:37:13 2025
+       - Reverse solaris changes and remove errstr checks.  Thanks to eserte for GH#18
+
+-------------------------------------------------------------------
 Sun Feb  9 05:29:48 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.530.0 (0.53)

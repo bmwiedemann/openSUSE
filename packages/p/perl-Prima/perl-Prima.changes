@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Mar 13 05:35:13 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.76
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.76 2025-03-12
+   - Implement gt::Grid geometry emulating Tk::grid
+   - 'run Prima' is no more, Prima->run it is now (because `use v5.36` ruins it)
+
+-------------------------------------------------------------------
 Sun Dec 22 05:31:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.75

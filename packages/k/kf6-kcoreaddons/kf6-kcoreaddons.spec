@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-kcoreaddons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,26 @@
 %define qt6_version 6.7.0
 
 %define rname kcoreaddons
-# Full KF6 version (e.g. 6.12.0)
+
+%bcond_without kde_python_bindings
+%if %{with kde_python_bindings}
+%if 0%{suse_version} > 1500
+%define pythons %{primary_python}
+%else
+%{?sle15_python_module_pythons}
+%endif
+%define mypython %pythons
+%define __mypython %{expand:%%__%{mypython}}
+%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+%endif
+
+# Full KF6 version (e.g. 6.13.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcoreaddons
-Version:        6.12.0
+Version:        6.13.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -44,6 +57,16 @@ BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
+# SECTION bindings
+%if %{with kde_python_bindings}
+BuildRequires:  %{mypython}-build
+BuildRequires:  %{mypython}-devel >= 3.9
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{mypython}-wheel
+BuildRequires:  cmake(Shiboken6)
+BuildRequires:  cmake(PySide6)
+%endif
+# /SECTION
 Requires:       shared-mime-info >= 1.8
 
 %description
@@ -78,6 +101,14 @@ such as manipulating mime types, autosaving files, creating backup files,
 generating random sequences, performing text manipulations such as macro
 replacement, accessing user information and many more. Development files.
 
+%if %{with kde_python_bindings}
+%package -n python3-kf6-kcoreaddons
+Summary:        Python bindings for kf6-kcoreaddons
+
+%description -n python3-kf6-kcoreaddons
+This package provides Python bindings for kf6-kcoreaddons.
+%endif
+
 %lang_package
 
 %prep
@@ -85,7 +116,13 @@ replacement, accessing user information and many more. Development files.
 
 %build
 # ENABLE_PCH breaks the build locally with 'error: is pie differs in PCH file vs. current file'
-%cmake_kf6 -DBUILD_QCH:BOOL=TRUE -DENABLE_PCH:BOOL=FALSE
+%cmake_kf6 \
+  -DBUILD_QCH:BOOL=TRUE \
+  -DENABLE_PCH:BOOL=FALSE \
+%if %{with kde_python_bindings}
+  -DPython_EXECUTABLE:STRING=%{__mypython}
+%endif
+%{nil}
 
 %kf6_build
 
@@ -118,6 +155,11 @@ replacement, accessing user information and many more. Development files.
 %dir %{_kf6_datadir}/jsonschema
 %{_kf6_datadir}/jsonschema/kpluginmetadata.schema.json
 %{_kf6_libdir}/libKF6CoreAddons.so
+
+%if %{with kde_python_bindings}
+%files -n python3-kf6-kcoreaddons
+%{mypython_sitearch}/*.so
+%endif
 
 %files lang -f kf6-kcoreaddons.lang
 

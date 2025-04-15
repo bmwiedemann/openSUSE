@@ -1,7 +1,7 @@
 #
 # spec file for package gap-normalizinterface
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-normalizinterface
-Version:        1.3.7
+Version:        1.4.0
 Release:        0
 Summary:        GAP: wrapper for Normaliz
 License:        GPL-2.0-or-later

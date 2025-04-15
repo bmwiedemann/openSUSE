@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr  9 20:34:23 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix build with openssl >= 3.4.1
+  * Add patch test-32_x509_get_cert_info-allow-single-colon.patch
+
+-------------------------------------------------------------------
 Fri Mar 22 19:08:41 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Remove Use-constants-X509_VERSION_3-and-X509_REQ_VERSION_1-when-available.patch

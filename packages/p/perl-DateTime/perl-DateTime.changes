@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Feb 19 05:32:22 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.660.0 (1.66)
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.66   2025-02-18
+
+  - Require Specio 0.50. That release has a bug fix for validation of integer values. Without the fix,
+    DateTime could accept non-integer values for things like nanoseconds. Reported by @HGuillemet. GH
+    #145.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:16:40 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 11 09:10:31 UTC 2025 - Antonello Tartamo <antonello.tartamo@suse.com>
+
+- Updated to version 1.69.0
+  * [Build] Override MACOSX_DEPLOYMENT_TARGET for gRPC Python. (#37997) 
+
+-------------------------------------------------------------------
 Sun Dec 22 11:37:26 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.68.1:

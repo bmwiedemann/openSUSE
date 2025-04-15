@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-gui
-Version:        2.0.28
+Version:        3.0.13
 Release:        0
 Summary:        GUI part of seafile drive
 License:        GPL-3.0-only
@@ -25,6 +25,8 @@ URL:            https://github.com/haiwen/seadrive-gui/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM
 Patch1:         fix-cmake-exec-name.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         fix-return-value.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cmake
@@ -37,15 +39,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(uuid)
-Requires:       seadrive-fuse >= 2.0.22
-%if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version}
-BuildRequires:  jansson-devel
-BuildRequires:  qt5-linguist
-BuildRequires:  qt5-qtbase-devel
-BuildRequires:  qt5-qtconnectivity-devel
-BuildRequires:  qt5-qtwebkit
-BuildRequires:  sqlite-devel
-%else
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Designer)
@@ -59,14 +52,13 @@ BuildRequires:  cmake(Qt5WebEngineCore)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(sqlite3)
-%endif
+Requires:       seadrive-fuse = %{version}
 
 %description
 This package provides a graphical user interface for seadrive-fuse
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fPIE -pie"

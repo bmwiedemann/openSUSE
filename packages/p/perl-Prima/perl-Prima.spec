@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Prima
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.75000
+Version:        1.76000
 Release:        0
-%define cpan_version 1.75
+%define cpan_version 1.76
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
@@ -29,8 +29,6 @@ Source0:        https://cpan.metacpan.org/authors/id/K/KA/KARASIK/%{cpan_name}-%
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Prima) = %{version}
-%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  giflib-devel
@@ -61,7 +59,7 @@ Builder and POD viewer are included. The toolkit can interoperate with
 other popular event loop libraries.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

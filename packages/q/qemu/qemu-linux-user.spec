@@ -38,7 +38,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  bison
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
-BuildRequires:  (pcre-devel-static if glib2-devel-static < 2.73 else pcre2-devel-static)
+BuildRequires:  pcre2-devel-static
 # passing filelist check for /usr/lib/binfmt.d
 BuildRequires:  systemd
 BuildRequires:  zlib-devel-static

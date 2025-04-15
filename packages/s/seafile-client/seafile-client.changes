@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:26:23 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.0.13:
+  * Fix overload error on linux
+  * Avoid passing environment variables when launching other applications (#1604)
+  * Add stopped by logout sync error (#1603)
+  * Escape filename when set header (#1602)
+  * Only check server url when username is empty (#1600)
+  * Fix local opening (#1598)
+  * Fix the tooltip of repo items (#1591)
+  * Fix wayland window associations by renaming .desktop file (#1570)
+  * check synced db before check if unsync repo (#1578)
+
+-------------------------------------------------------------------
 Mon Oct 21 08:47:32 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.0.9:

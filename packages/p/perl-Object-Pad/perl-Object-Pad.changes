@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Feb 27 05:35:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.820.0 (0.820)
+   see /usr/share/doc/packages/perl-Object-Pad/Changes
+
+  0.820   2025-02-26
+          [BUGFIXES]
+           * Account for perl 5.41.9's GV-less stash optimisation (RT159823)
+
+-------------------------------------------------------------------
 Tue Jan 28 17:59:07 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Fix dependency for Leap 15 (for older perl versions we need the

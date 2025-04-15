@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 14 19:51:56 UTC 2025 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to 1.29.0
+  * Update Compute Engine API to revision 20250320
+- Update to 1.28.0
+  * Update Compute Engine API to revision 20250302
+- Update to 1.27.0
+  * Allow Protobuf 6.x
+  * remove setup.cfg configuration for creating universal wheels
+- Update to 1.26.0
+  * Update Compute Engine API to revision 20250211
+- Update to 1.25.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- Update to 1.24.0
+  * Update Compute Engine API to revision 20250107
+- Update to 1.23.0
+  * Update Compute Engine API to revision 20241201
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- Update to 1.22.0
+  * Update Compute Engine API to revision 20241105
+- Update to 1.21.0
+  * Update Compute Engine API to revision 20241015
+- Update to 1.20.1
+  * disable universe-domain validation
+- Update to 1.20.0
+  * Add support for  Python 3.13
+- Update to 1.19.2
+  * Retry and timeout values do not propagate in requests during pagination
+- Update to 1.19.1
+  * Allow protobuf 5.x
+- Update to 1.19.0
+  * Update Compute Engine API to revision 20240430
+
+-------------------------------------------------------------------
 Sun Apr 14 07:39:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18:

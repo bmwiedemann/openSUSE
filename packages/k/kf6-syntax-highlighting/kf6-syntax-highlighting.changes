@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:34:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add Devicetree Source syntax highlighting
+  * CMakeLists.txt - Don't include quiet packages in the feature summary
+  * Fix build with Qt 6.10
+  * It compiles fine without qt6.9 deprecated methods
+  * Update Elixir Syntax, Add EEx/HEEx
+  * Add "echo" keyword to Gleam
+  * Update dependency version to 6.13.0
+  * Add example SPDX and alerts comments in test.gleam
+  * Replace inlined license by SPDX-License-Identifier in gleam.xml top comment
+  * Refactor `alerts` keywords to `crash keywords` and add `import keyword` list
+  * Increment gleam.xml version number
+  * Add example documentation comments
+  * Refactor comments and improve import highlighting
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

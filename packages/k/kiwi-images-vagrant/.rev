@@ -107,4 +107,12 @@
   should be good to go by now. (forwarded request 1239809 from dimstar)</comment>
     <requestid>1239843</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>1de7b5c40772ada4a86e054b1c4a8a3e</srcmd5>
+    <version>1.0</version>
+    <time>1744728281</time>
+    <user>anag_factory</user>
+    <comment>Explicitly require dracut (was implicitly pulled in by the kernel)</comment>
+    <requestid>1269493</requestid>
+  </revision>
 </revisionlist>

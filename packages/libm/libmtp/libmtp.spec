@@ -99,8 +99,8 @@ make %{?_smp_mflags}
 #install -c -m 644 libmtp.fdi $RPM_BUILD_ROOT/usr/share/hal/fdi/information/20thirdparty/10-usb-music-players-libmtp.fdi
 if [ "%_lib" != "lib" ];
 then
-	mkdir -p %{buildroot}/%{_udevrulesdir}
-	mv %{buildroot}/usr/%_lib/udev %{buildroot}/%{_udevrulesdir}
+	mkdir -p %{buildroot}/%{_udevdir}
+	mv %{buildroot}/usr/%_lib/udev/* %{buildroot}/%{_udevdir}
 fi
 rm -rf %{buildroot}%{_datadir}/doc/libmtp*
 find %{buildroot} -type f -name "*.la" -delete -print

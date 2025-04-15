@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 01:16:35 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Add more hardening options, restrict write access to system
+- Update twice a week, following current MaxMind release schedule
+- Track timer units in scriptlets
+
+-------------------------------------------------------------------
 Mon Mar 10 09:53:16 UTC 2025 - valentin.lefebvre@suse.com
 
 - Update to version 7.1.0:

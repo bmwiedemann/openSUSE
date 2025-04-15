@@ -1,9 +1,9 @@
-Index: django-request-1.6.0/tests/test_managers.py
+Index: django-request-1.7.0/tests/test_managers.py
 ===================================================================
---- django-request-1.6.0.orig/tests/test_managers.py
-+++ django-request-1.6.0/tests/test_managers.py
-@@ -134,12 +134,14 @@ class RequestQuerySetTest(TestCase):
-         qs = Request.objects.all().week(year='foo', week='1')
+--- django-request-1.7.0.orig/tests/test_managers.py
++++ django-request-1.7.0/tests/test_managers.py
+@@ -136,12 +136,14 @@ class RequestQuerySetTest(TestCase):
+         qs = Request.objects.all().week(year="foo", week="1")
          self.assertIsNone(qs)
  
 +    @override_settings(USE_TZ=True, TIME_ZONE='Africa/Nairobi')

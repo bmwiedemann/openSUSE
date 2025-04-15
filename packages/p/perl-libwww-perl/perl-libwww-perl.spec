@@ -1,7 +1,7 @@
 #
 # spec file for package perl-libwww-perl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.770.0
+Version:        6.780.0
 Release:        0
-# 6.77 -> normalize -> 6.770.0
-%define cpan_version 6.77
+# 6.78 -> normalize -> 6.780.0
+%define cpan_version 6.78
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        The World-Wide Web library for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,16 +33,16 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Encode::Locale)
 BuildRequires:  perl(File::Listing) >= 6
 BuildRequires:  perl(HTML::Entities)
-BuildRequires:  perl(HTML::HeadParser) >= 3.71
+BuildRequires:  perl(HTML::HeadParser) >= 3.710
 BuildRequires:  perl(HTTP::CookieJar::LWP)
 BuildRequires:  perl(HTTP::Cookies) >= 6
 BuildRequires:  perl(HTTP::Daemon) >= 6.12
 BuildRequires:  perl(HTTP::Date) >= 6
 BuildRequires:  perl(HTTP::Negotiate) >= 6
-BuildRequires:  perl(HTTP::Request) >= 6.18
-BuildRequires:  perl(HTTP::Request::Common) >= 6.18
-BuildRequires:  perl(HTTP::Response) >= 6.18
-BuildRequires:  perl(HTTP::Status) >= 6.18
+BuildRequires:  perl(HTTP::Request) >= 6.180
+BuildRequires:  perl(HTTP::Request::Common) >= 6.180
+BuildRequires:  perl(HTTP::Response) >= 6.180
+BuildRequires:  perl(HTTP::Status) >= 6.180
 BuildRequires:  perl(LWP::MediaTypes) >= 6
 BuildRequires:  perl(Module::Load)
 BuildRequires:  perl(Net::HTTP) >= 6.18
@@ -51,26 +51,26 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::RequiresInternet)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(URI) >= 1.10
+BuildRequires:  perl(URI) >= 1.100
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(WWW::RobotRules) >= 6
 BuildRequires:  perl(parent) >= 0.217
 Requires:       perl(Encode::Locale)
 Requires:       perl(File::Listing) >= 6
 Requires:       perl(HTML::Entities)
-Requires:       perl(HTML::HeadParser) >= 3.71
+Requires:       perl(HTML::HeadParser) >= 3.710
 Requires:       perl(HTTP::Cookies) >= 6
 Requires:       perl(HTTP::Date) >= 6
 Requires:       perl(HTTP::Negotiate) >= 6
-Requires:       perl(HTTP::Request) >= 6.18
-Requires:       perl(HTTP::Request::Common) >= 6.18
-Requires:       perl(HTTP::Response) >= 6.18
-Requires:       perl(HTTP::Status) >= 6.18
+Requires:       perl(HTTP::Request) >= 6.180
+Requires:       perl(HTTP::Request::Common) >= 6.180
+Requires:       perl(HTTP::Response) >= 6.180
+Requires:       perl(HTTP::Status) >= 6.180
 Requires:       perl(LWP::MediaTypes) >= 6
 Requires:       perl(Module::Load)
 Requires:       perl(Net::HTTP) >= 6.18
 Requires:       perl(Try::Tiny)
-Requires:       perl(URI) >= 1.10
+Requires:       perl(URI) >= 1.100
 Requires:       perl(URI::Escape)
 Requires:       perl(WWW::RobotRules) >= 6
 Requires:       perl(parent) >= 0.217
@@ -107,7 +107,7 @@ Recommends:     perl(LWP::Protocol::https) >= 6.06
 The World-Wide Web library for Perl
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

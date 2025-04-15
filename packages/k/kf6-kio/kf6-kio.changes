@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:33:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Add missing include mocs
+  * KFileWidget and KDirOperator: Fix saving and loading preview settings (kde#501743)
+  * Add missing includes
+  * KUrlNavigatorButtonBase: Fix foreground color with accent color headers (kde#501803)
+  * PasteDialog: make text follow combobox and vice versa
+  * PasteDialog: make MIME type handling fancier (kde#499348)
+  * It compiles fine without qt6.9 deprecated methods
+  * It compiles fine without kf6.12 deprecated methods
+  * Fix touch interaction (kde#501708)
+  * SkipDialog: show msg with plaintext (kde#488910)
+  * KFileWidget: Allow saving single file with double quotes (kde#426728)
+  * kurlnavigator: change frame border when in focus
+  * KCoreDirLister: use std::unordered_map for KCoreDirListerCacheDirectoryData
+  * KCoreDirLister: Refactor the two QLists for Holding and Listing KCoreDirListers into QHash
+  * RenameDialog: Enable word wrap for text content (kde#497732)
+  * trash: Fix typo in ScanFilesInTrashOption enumeration
+  * KFileWidget: drop broken workaround for old s-m-i octet-stream file suffix (kde#501085)
+  * Use appropriate icon for blank file (kde#501462)
+  * KNewFileMenu: Forbid saving file or folder with ~USERNAME as name
+  * Scrolling with touch in KDirOperator
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

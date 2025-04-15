@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:36:18 UTC 2025 - trenn@suse.de
+
+- Update to version 2.0.19.13.g63e0223:
+  * libnuma.c: Introduce numa_preferred_err()
+  * numactl: Add --show option support for MPOL_WEIGHTED_INTERLEAVE
+  * Add numa_get_weighted_interleave_mask() API
+  * libnuma: Add APIs for weighted-interleaved allocations
+  * libnuma.c: Fix memleak in numa_has_home_node()
+  * Replace fgrep with grep -F to fix warning
+  * Make numa_available respect EPERM
+
+-------------------------------------------------------------------
 Thu Oct 10 08:37:28 UTC 2024 - trenn@suse.de
 
 - Update to version 2.0.18.10.g6c14bd5:

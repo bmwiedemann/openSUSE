@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.14
-%define patchversion 6.14.1
-%define git_commit ca98696802d9f864b2b9d3b968415d4e68cf4906
+%define patchversion 6.14.2
+%define git_commit 55121542d9314a8aa36ae7bbc5416da7a09560bb
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-kvmsmall
-Version:        6.14.1
+Version:        6.14.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gca98696
+Release:        <RELEASE>.g5512154
 %else
 Release:        0
 %endif
@@ -357,14 +357,14 @@ Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
+# Use OrderWithRequires to instruct the package manager to schedule the
+# installation of bootloader and dracut related tools as if they were
+# required. This will ensure they're there for post scripts without hard
+# requiring them. (boo#1228659, boo#1240785)
+OrderWithRequires(post): udev
+OrderWithRequires(post): systemd-boot
+OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -499,14 +499,14 @@ Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
+# Use OrderWithRequires to instruct the package manager to schedule the
+# installation of bootloader and dracut related tools as if they were
+# required. This will ensure they're there for post scripts without hard
+# requiring them. (boo#1228659, boo#1240785)
+OrderWithRequires(post): udev
+OrderWithRequires(post): systemd-boot
+OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -834,7 +834,7 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%variant" == "-rt" && 0%livepatch_rt))
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%flavor" == "rt" && 0%livepatch_rt))
 %if "%livepatch" == "kgraft"
 %define patch_package %{livepatch}-patch
 %else

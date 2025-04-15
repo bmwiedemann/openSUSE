@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 14:15:00 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons to only build for Python 3.11 on Leap
+  (does not build with old pytest anymore)
+
+-------------------------------------------------------------------
 Wed Mar 12 14:15:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - use pytest macro rather than calling pytest directly

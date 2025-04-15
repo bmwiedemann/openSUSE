@@ -133,4 +133,12 @@
     <comment>revert to 2.0.28</comment>
     <requestid>1225207</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be6236e717c156b65dcf978895bb6b14</srcmd5>
+    <version>3.0.13</version>
+    <time>1744728417</time>
+    <user>anag_factory</user>
+    <comment>update to 3.0.13</comment>
+    <requestid>1269448</requestid>
+  </revision>
 </revisionlist>

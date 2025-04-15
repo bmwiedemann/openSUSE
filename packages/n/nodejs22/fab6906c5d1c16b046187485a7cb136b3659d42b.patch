@@ -1,0 +1,37 @@
+From fab6906c5d1c16b046187485a7cb136b3659d42b Mon Sep 17 00:00:00 2001
+From: Richard Lau <rlau@redhat.com>
+Date: Mon, 17 Mar 2025 03:42:55 +0000
+Subject: [PATCH] test: update parallel/test-tls-dhe for OpenSSL 3.5
+
+The output of the `s_client` command invoked by the test has changed
+in the OpenSSL 3.5.0 version of `s_client`. Update the test so that
+it works with both the old and new output -- the `s_client` binary
+being run may not be at the exact same version of OpenSSL as used
+by Node.js so the updated test allows either output.
+
+PR-URL: https://github.com/nodejs/node/pull/57477
+Refs: https://github.com/openssl/openssl/pull/26734
+Reviewed-By: Antoine du Hamel <duhamelantoine1995@gmail.com>
+Reviewed-By: Colin Ihrig <cjihrig@gmail.com>
+Reviewed-By: Xuguang Mei <meixuguang@gmail.com>
+Reviewed-By: Luigi Pinca <luigipinca@gmail.com>
+---
+ test/parallel/test-tls-dhe.js | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/test/parallel/test-tls-dhe.js b/test/parallel/test-tls-dhe.js
+index b4f0337c43fa57..89cda5f52a6b31 100644
+--- a/test/parallel/test-tls-dhe.js
++++ b/test/parallel/test-tls-dhe.js
+@@ -85,7 +85,10 @@ function test(dhparam, keylen, expectedCipher) {
+ 
+     execFile(opensslCli, args, common.mustSucceed((stdout) => {
+       assert(keylen === null ||
+-             stdout.includes(`Server Temp Key: DH, ${keylen} bits`));
++             // s_client < OpenSSL 3.5
++             stdout.includes(`Server Temp Key: DH, ${keylen} bits`) ||
++             // s_client >= OpenSSL 3.5
++             stdout.includes(`Peer Temp Key: DH, ${keylen} bits`));
+       assert(stdout.includes(`Cipher    : ${expectedCipher}`));
+       server.close();
+     }));

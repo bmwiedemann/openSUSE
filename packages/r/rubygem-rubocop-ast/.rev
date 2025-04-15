@@ -225,4 +225,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221909</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2e9bc8d53c9cbaa4d006696e2f6cb818</srcmd5>
+    <version>1.44.0</version>
+    <time>1744728335</time>
+    <user>anag_factory</user>
+    <comment>Updated to version 1.44.0
+
+Needed to fix
+https://build.opensuse.org/requests/1268558</comment>
+    <requestid>1268966</requestid>
+  </revision>
 </revisionlist>

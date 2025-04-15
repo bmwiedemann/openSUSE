@@ -43,6 +43,8 @@ Requires:       fuse3
 BuildRequires:  kio-extras5
 # While kio itself can make use of this, it's most likely used through dolphin
 Supplements:    dolphin
+# Make sure the protocols in a Plasma 6 session also work via kio-fuse (boo#1226375)
+Requires:       (kio-extras5 if kio-extras)
 
 %description
 kio-fuse is a daemon which makes KIO URLs accessible to KIO unaware

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Feb 25 05:34:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-UUID/Changes
+
+  0.37 Mon Feb 24 04:25:27 EST 2025
+    - Fix build under gcc-15 default ISO C23.
+      - Thanks Petr Pisar. [rt.cpan.org #159112]
+
+-------------------------------------------------------------------
 Sun Jun 23 16:50:11 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 0.360.0 (0.36)

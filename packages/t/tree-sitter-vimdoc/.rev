@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1229583</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f1bd6116e625193cf3d36ac104e92b27</srcmd5>
+    <version>3.0.1</version>
+    <time>1744728447</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.1:
+  * fix(tests): adapt expected to heading changes (forwarded request 1269630 from rrahl0)</comment>
+    <requestid>1269631</requestid>
+  </revision>
 </revisionlist>

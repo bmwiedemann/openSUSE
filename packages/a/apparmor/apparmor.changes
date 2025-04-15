@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 19:53:37 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to ApppArmor 4.1.0
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_4.1.0
+    for the detailed upstream changelog
+- remove upstream py313-aa-notify.patch
+
+-------------------------------------------------------------------
 Wed Mar 19 18:51:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove unused pcre build dependency
@@ -12,6 +20,32 @@ Fri Feb 21 13:29:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Wed Feb 19 13:36:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix commented out macros
+
+-------------------------------------------------------------------
+Tue Feb 18 21:05:51 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.1 beta5
+- remove upstream(ed) patches
+  - aa-notify-polkit--mr-1540.diff
+  - aa-notify-ttkthemes-fallback--mr1324-partial.diff
+  - libapparmor-fixes--mr-1536.diff
+
+-------------------------------------------------------------------
+Thu Feb 13 22:28:04 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- add libapparmor-fixes--mr-1536.diff to fix Leap 15.x and i586 build
+- add aa-notify-polkit--mr-1540.diff to remove DESTDIR from polkit file
+- own /usr/share/polkit-1 and /usr/share/polkit-1/actions
+
+-------------------------------------------------------------------
+Wed Feb 12 18:28:29 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 4.1 beta4
+- drop upstream(ed) patches:
+  - mesa-cachedir.diff
+  - python313.patch
+- (Build)Require python3-tk - used by latest aa-notify
+- add aa-notify-ttkthemes-fallback--mr1324-partial.diff
 
 -------------------------------------------------------------------
 Wed Feb  5 14:40:53 UTC 2025 - Dirk Müller <dmueller@suse.com>

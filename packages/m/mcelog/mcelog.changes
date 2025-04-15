@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:34:24 UTC 2025 - trenn@suse.de
+
+- Update to version 204:
+  * Enable offline retries by default
+  * Add ability to retry failed page offlines with an exponential backoff
+  * Fix misspelling in variable name
+
+-------------------------------------------------------------------
 Wed Jan 22 15:32:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

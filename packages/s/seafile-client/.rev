@@ -193,4 +193,22 @@
 </comment>
     <requestid>1216663</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>df3fcb92e6348d17d1e3ded3f0d04d69</srcmd5>
+    <version>9.0.13</version>
+    <time>1744728412</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.0.13:
+  * Fix overload error on linux
+  * Avoid passing environment variables when launching other applications (#1604)
+  * Add stopped by logout sync error (#1603)
+  * Escape filename when set header (#1602)
+  * Only check server url when username is empty (#1600)
+  * Fix local opening (#1598)
+  * Fix the tooltip of repo items (#1591)
+  * Fix wayland window associations by renaming .desktop file (#1570)
+  * check synced db before check if unsync repo (#1578)
+</comment>
+    <requestid>1269444</requestid>
+  </revision>
 </revisionlist>

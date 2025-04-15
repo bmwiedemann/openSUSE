@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 09:26:06 UTC 2025 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 1.13:
+  * Release v1.13
+  * doc: Regenerate all docs for v1.13
+  * fabrics: retry connect command on EINTR
+  * types: Fix Live Migration SEQIND Shift and Mask
+  * types: add performance characteristics attribute type values
+  * util: add performance characteristics feature decode function
+  * types: add performance characteristics feature access values
+  * types: add performance attribute structures
+  * types: Update nvme_id_independent_id_ns fields based on NVMe 2.1 spec
+  * mock.c: fix checking of HAVE_GLIBC_IOCTL
+  * libnvme: do not byte swap command dwords
+  * ioctl: return status code when using liburing
+  * src: update include directive
+  * gitignore: ignore .build-tools
+  * tree: add routine to fetch subsys firmware rev
+  * tree: add routine to fetch subsys model
+- add liburing dependency only for newer distros
+
+-------------------------------------------------------------------
 Mon Mar 17 10:18:04 UTC 2025 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 1.12:

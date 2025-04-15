@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr  5 12:33:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.13.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.13.0
+- Changes since 6.12.0:
+  * Fix build with Qt 6.10
+  * try to improve test stability
+  * don't move the cursor to the current drop location for file drops (kde#501618)
+  * Try to flush less often to disk (kde#501508)
+  * Adapt unit test to changes in KF::SyntaxHighlighting
+  * It compiles fine without kf6.12 deprecated methods
+  * Add Text to Speech actions to context menu
+  * cut down to right integer size
+  * use _commit for safer swap files on Windows
+  * ensure we don't run into corner cases in Qt for font sizes (kde#500766)
+  * KateScrollBar: Add minimap actions to context menu
+  * trigger dictionary load
+  * Update dependency version to 6.13.0
+
+-------------------------------------------------------------------
 Tue Mar 11 09:29:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

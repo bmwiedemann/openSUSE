@@ -17,10 +17,10 @@
 #
 
 
-%define tarversion v4.0.3
+%define tarversion v4.1.0
 
 Name:           libapparmor
-Version:        4.0.3
+Version:        4.1.0
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later
@@ -36,6 +36,7 @@ BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dejagnu
 BuildRequires:  flex
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

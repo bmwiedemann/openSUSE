@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:08:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.0:
+  * MultiplePermissionsRequiredMixin didn't do
+    object-level permission checks.
+  * RecentLoginRequiredMixin no longer throws
+    error about GET requests in Django >= 5.0
+
+-------------------------------------------------------------------
 Thu Nov  7 12:37:38 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.16.0 (after 3 years!)
