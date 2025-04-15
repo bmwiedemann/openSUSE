@@ -43,4 +43,13 @@
   * fix: allow captures, quantifiers after MISSING keyword (forwarded request 1242859 from rrahl0)</comment>
     <requestid>1242860</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>682c8911a4e969175d7054cec8936759</srcmd5>
+    <version>0.5.1</version>
+    <time>1744728448</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.1:
+  * nothing of relevance (forwarded request 1269632 from rrahl0)</comment>
+    <requestid>1269633</requestid>
+  </revision>
 </revisionlist>
