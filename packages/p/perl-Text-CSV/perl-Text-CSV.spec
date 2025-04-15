@@ -18,10 +18,10 @@
 
 %define cpan_name Text-CSV
 Name:           perl-Text-CSV
-Version:        2.50.0
+Version:        2.60.0
 Release:        0
-# 2.05 -> normalize -> 2.50.0
-%define cpan_version 2.05
+# 2.06 -> normalize -> 2.60.0
+%define cpan_version 2.06
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Comma-separated values manipulator (using XS or PurePerl)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,7 +36,7 @@ Provides:       perl(Text::CSV) = %{version}
 Provides:       perl(Text::CSV::ErrorDiag)
 Provides:       perl(Text::CSV_PP) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(Text::CSV_XS) >= 1.590
+Recommends:     perl(Text::CSV_XS) >= 1.600
 %{perl_requires}
 
 %description
@@ -47,7 +47,7 @@ default, and when Text::CSV_XS is not available, falls back on
 Text::CSV_PP, which is bundled in the same distribution as this module.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
