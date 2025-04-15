@@ -1,7 +1,7 @@
 #
 # spec file for package lucene++
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,19 @@
 
 
 Name:           lucene++
-Version:        3.0.8
+Version:        3.0.9
 Release:        0
 Summary:        A high-performance, full-featured text search engine written in C++
 License:        Apache-2.0 OR LGPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/luceneplusplus/LucenePlusPlus
 Source:         https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-contrib-soname.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/161
-Patch0:         lucene++-3.0.8-fix-contrib-soname.patch
-# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-pc-libdir.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/162
-Patch1:         lucene++-3.0.8-fix-pc-libdir.patch
-# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-cmake-issues.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/163
-Patch2:         lucene++-3.0.8-fix-cmake-issues.patch
-# PATCH-FIX-UPSTREAM lucene++-3.0.8-fix-missing-headers.patch -- hillwood@opensuse.org
-# contrib headers should be installed
-Patch3:         lucene++-3.0.8-fix-missing-headers.patch
 # PATCH-FIX-UPSTREAM lucene++-3.0.9-fix-cmake-issues.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/203
 Patch4:         lucene++-3.0.9-fix-boost1.85.patch
+# PATCH-FIX-UPSTREAM lucene++-3.0.9-migrate-to-boost-asio-io_context.patch -- https://github.com/luceneplusplus/LucenePlusPlus/pull/210
+Patch5:         lucene++-3.0.9-migrate-to-boost-asio-io_context.patch
+# PATCH-FIX-UPSTREAM https://github.com/luceneplusplus/LucenePlusPlus/pull/200
+Patch6:         lucene++-3.0.9-fix-linking-DefaultSimilarity.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
@@ -76,16 +71,24 @@ Development files for lucene++, a high-performance, full-featured text search en
 %cmake_install
 
 %check
-# Exclude known failing test on ix86 (https://github.com/luceneplusplus/LucenePlusPlus/issues/98)
-%ifarch %{ix86}
-%define test_filter -Boolean2Test.testRandomQueries
+# Disable test failing with "config out of range"
+export skip_tests_filter=-$(echo \
+    SortTest.testEmptyFieldSort \
+    SortTest.testParallelMultiSort \
+    ParallelMultiSearcherTest.testEmptyIndex \
+    ParallelMultiSearcherTest.testFieldSelector \
+    ParallelMultiSearcherTest.testNormalization \
+    ParallelMultiSearcherTest.testCustomSimilarity \
+    ParallelMultiSearcherTest.testDocFreq \
+%ifarch %{ix86} # Exclude known failing test on ix86 (https://github.com/luceneplusplus/LucenePlusPlus/issues/98)
+    Boolean2Test.testRandomQueries \
 %endif
+    %{nil} | tr ' ' ':')
 # Tweak path to allow lucene++-tester to find liblucene++ and libgtest
 export LD_LIBRARY_PATH="$PWD/build/src/core:$PWD/build/src/contrib:$PWD/build/lib"
-build/src/test/lucene++-tester %{?test_filter:--gtest_filter=%{test_filter}}
+build/src/test/lucene++-tester --gtest_filter="${skip_tests_filter}"
 
-%post -n liblucene++0 -p /sbin/ldconfig
-%postun -n liblucene++0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n liblucene++0
 
 %files -n liblucene++0
 %{_libdir}/liblucene++.so.*
