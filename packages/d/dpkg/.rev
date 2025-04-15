@@ -497,4 +497,12 @@ The link of update-alternatives should also be changed from deb to dpkg.</commen
     <comment></comment>
     <requestid>1193271</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>9f6ff463b1222a19c2581a0eeb0d46f5</srcmd5>
+    <version>1.22.18</version>
+    <time>1744727914</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269274</requestid>
+  </revision>
 </revisionlist>

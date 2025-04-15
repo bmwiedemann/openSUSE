@@ -1,7 +1,7 @@
 #
 # spec file for package update-alternatives
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           update-alternatives
-Version:        1.22.11
+Version:        1.22.18
 Release:        0
 Summary:        Maintain symbolic links determining default commands
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Patch1:         update-alternatives-slavetomaster.patch
 Patch2:         openssl.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
