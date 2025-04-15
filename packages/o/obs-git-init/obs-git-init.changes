@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 11 07:05:52 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- fix the URL, gitea.opensuse.org yields NXDOMAIN
+
+-------------------------------------------------------------------
 Fri Mar 21 13:36:21 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.2.1

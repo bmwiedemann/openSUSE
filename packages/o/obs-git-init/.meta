@@ -1,4 +1,5 @@
 <package name="obs-git-init" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="openSUSE:Tools" package="obs-git-init"/>
 </package>

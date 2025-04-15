@@ -21,7 +21,7 @@ Version:        0.2.1
 Release:        0
 Summary:        A help service to setup git repositories for OBS
 License:        GPL-2.0-or-later
-URL:            https://gitea.opensuse.org/adrianSuSE/obs-git-init
+URL:            https://src.opensuse.org/adrianSuSE/obs-git-init
 Source0:        %{name}-%{version}.tar.xz
 Requires:       perl(Config::INI)
 Requires:       perl(Config::IniFiles)
