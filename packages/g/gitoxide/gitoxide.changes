@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr  8 06:53:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.42.0:
+  * add first 'debug' version of gix diff file
+  * use revspecs for revision and path
+  * CVE-2025-31130: use collision-detecting SHA-1 hash boo#1240872
+
+-------------------------------------------------------------------
 Sat Feb 15 15:14:24 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add workaround-cargo-bug.patch -- There is currently a bug with cargo
@@ -18,6 +26,8 @@ Sat Feb 15 15:14:24 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
   * add --tree-favor to gix merge tree|commit. With it one can
     decide which side to favor in case of irreconcilable
     tree-conflicts.
+  * CVE-2025-22620: gix-worktree-state specifies 0777 permissions
+    when checking out executable files (boo#1236139)
 
 -------------------------------------------------------------------
 Sat Nov 30 08:29:48 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>

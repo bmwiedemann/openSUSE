@@ -17,7 +17,7 @@
 
 
 Name:           gitoxide
-Version:        0.41.0
+Version:        0.42.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
 License:        Apache-2.0 OR MIT
