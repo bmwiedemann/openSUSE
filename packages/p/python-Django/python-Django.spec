@@ -21,12 +21,12 @@
 %bcond_with memcached
 %{?sle15_python_module_pythons}
 Name:           python-Django
-Version:        5.1.8
+Version:        5.2
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/5.1/Django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/5.2/Django-%{version}.tar.gz
 Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
@@ -51,13 +51,12 @@ BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-Pillow >= 6.2.0
 Requires:       python-asgiref >= 3.7.0
 Requires:       python-sqlparse >= 0.3.1
-Requires:       python-tzdata
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2
+Recommends:     python-Pillow >= 6.2.0
 Recommends:     python-PyYAML
 Recommends:     python-argon2-cffi >= 19.1.0
 Recommends:     python-bcrypt
