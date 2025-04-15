@@ -17,16 +17,13 @@
 
 
 Name:           amazon-ssm-agent
-Version:        3.3.1957.0
+Version:        3.3.2299.0
 Release:        0
 Summary:        Amazon Remote System Config Management
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/amazon-ssm-agent
 Source0:        https://github.com/aws/amazon-ssm-agent/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Fix proxy bypass using IPv6 zone IDs in golang.org/x/net (CVE-2025-22870)
-# Partial patch taken from https://cs.opensource.google/go/x/net/+/cde1dda944dcf6350753df966bb5bda87a544842
-Patch0:         CVE-2025-22870.patch
 BuildRequires:  go >= 1.21
 BuildRequires:  pkgconfig(systemd)
 Requires:       systemd
@@ -98,7 +95,6 @@ environment that are configured for Systems Manager.
 
 %prep
 %setup -q
-%patch -P0 -p1
 sed -i -e 's#const[ \s]*Version.*#const Version = "%{version}"#g' agent/version/version.go
 sed -i 's#/bin/#/sbin/#' packaging/linux/amazon-ssm-agent.service
 sed -i 's#var defaultWorkerPath = "/usr/bin/"#var defaultWorkerPath = "/usr/sbin/"#' agent/appconfig/constants_unix.go
