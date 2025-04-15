@@ -211,4 +211,19 @@
     <comment>- Actually drop BuildRequires on six.</comment>
     <requestid>1243233</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9da8e49378a90859bec1103f2403a8e7</srcmd5>
+    <version>2.15</version>
+    <time>1744742807</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.15
+  * fixed build error missing conditional ICU &lt; 70 in UnicodeSetIterator()
+  * fixed Enum arg parser with broken strict aliasing rules (Jakub Wilk)
+- Refresh remove_six.patch
+
+- Wrap the metadata directory name in a distro-based conditional
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1269329</requestid>
+  </revision>
 </revisionlist>

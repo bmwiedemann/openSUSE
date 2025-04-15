@@ -16,10 +16,10 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %global modname PyICU
+%{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
@@ -71,6 +71,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES CREDITS README.md
 %{python_sitearch}/icu
-%{python_sitearch}/PyICU-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Ii][Cc][Uu]-%{version}*-info
 
 %changelog

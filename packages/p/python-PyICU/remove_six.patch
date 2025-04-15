@@ -1,29 +1,12 @@
----
- setup.py                       |    7 +++----
- test/test_BytesTrie.py         |    2 +-
- test/test_Charset.py           |    4 ++--
- test/test_Collator.py          |    4 ++--
- test/test_LayoutEngine.py      |    2 +-
- test/test_Locale.py            |    2 +-
- test/test_LocaleData.py        |   14 +++++++-------
- test/test_LocaleMatcher.py     |    2 +-
- test/test_PythonReplaceable.py |    2 +-
- test/test_Script.py            |    8 ++++----
- test/test_TimeZone.py          |    2 +-
- test/test_Transliterator.py    |    4 ++--
- test/test_UCharsTrie.py        |    2 +-
- 13 files changed, 27 insertions(+), 28 deletions(-)
-
-Index: pyicu-2.13.1/setup.py
-===================================================================
---- pyicu-2.13.1.orig/setup.py
-+++ pyicu-2.13.1/setup.py
+diff -Nru pyicu-2.15.orig/setup.py pyicu-2.15/setup.py
+--- pyicu-2.15.orig/setup.py	2025-03-23 10:55:56.000000000 +0100
++++ pyicu-2.15/setup.py	2025-04-11 11:37:48.987583659 +0200
 @@ -1,4 +1,3 @@
 -
  import os, sys
  
  try:
-@@ -195,7 +194,7 @@ else:
+@@ -195,7 +194,7 @@
      except:
          if not _cflags:
              raise RuntimeError('''
@@ -32,7 +15,7 @@ Index: pyicu-2.13.1/setup.py
  variable to the flags required by the C++ compiler to find the header files
  for ICU, and possibly -std=c++11 if using ICU version >= 60 or -std=c++17 if using ICU version >= 75
              ''')
-@@ -234,7 +233,7 @@ else:
+@@ -234,7 +233,7 @@
  Please install pkg-config on your system or set the PYICU_LFLAGS environment
  variable to the flags required by the linker to find the libraries for ICU
              ''')
@@ -41,16 +24,15 @@ Index: pyicu-2.13.1/setup.py
  
  if 'PYICU_LIBRARIES' in os.environ:
      _libraries = os.environ['PYICU_LIBRARIES'].split(os.pathsep)
-@@ -283,4 +282,4 @@ setup(name="PyICU",
+@@ -283,4 +282,4 @@
                               libraries=_libraries)],
        package_dir={"": "py"},
        packages=['icu'],
 -      tests_require=['pytest', 'six'])
 +      tests_require=['pytest'])
-Index: pyicu-2.13.1/test/test_BytesTrie.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_BytesTrie.py
-+++ pyicu-2.13.1/test/test_BytesTrie.py
+diff -Nru pyicu-2.15.orig/test/test_BytesTrie.py pyicu-2.15/test/test_BytesTrie.py
+--- pyicu-2.15.orig/test/test_BytesTrie.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_BytesTrie.py	2025-04-11 11:37:48.987966786 +0200
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -60,10 +42,9 @@ Index: pyicu-2.13.1/test/test_BytesTrie.py
  
  from unittest import TestCase, main
  from icu import *
-Index: pyicu-2.13.1/test/test_Charset.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Charset.py
-+++ pyicu-2.13.1/test/test_Charset.py
+diff -Nru pyicu-2.15.orig/test/test_Charset.py pyicu-2.15/test/test_Charset.py
+--- pyicu-2.15.orig/test/test_Charset.py	2024-10-28 10:57:12.000000000 +0100
++++ pyicu-2.15/test/test_Charset.py	2025-04-11 11:37:48.988161345 +0200
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -73,7 +54,7 @@ Index: pyicu-2.13.1/test/test_Charset.py
  
  from unittest import TestCase, main
  from icu import *
-@@ -59,7 +59,7 @@ class TestCharset(TestCase):
+@@ -59,7 +59,7 @@
      def testUnicode(self):
  
          bytes = u'beaut\xe9 probable'.encode('iso-8859-1')
@@ -82,10 +63,9 @@ Index: pyicu-2.13.1/test/test_Charset.py
  
          self.assertTrue(ustring.encode('iso-8859-1') == bytes)
  
-Index: pyicu-2.13.1/test/test_Collator.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Collator.py
-+++ pyicu-2.13.1/test/test_Collator.py
+diff -Nru pyicu-2.15.orig/test/test_Collator.py pyicu-2.15/test/test_Collator.py
+--- pyicu-2.15.orig/test/test_Collator.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_Collator.py	2025-04-11 11:37:48.988362728 +0200
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -95,7 +75,7 @@ Index: pyicu-2.13.1/test/test_Collator.py
  
  from unittest import TestCase, main
  from icu import *
-@@ -44,7 +44,7 @@ class TestCollator(TestCase):
+@@ -44,7 +44,7 @@
  
          collator = Collator.createInstance(Locale.getFrance())
          input = open(self.filePath('noms.txt'), 'rb')
@@ -104,10 +84,9 @@ Index: pyicu-2.13.1/test/test_Collator.py
          input.close()
          ecole = names[0]
  
-Index: pyicu-2.13.1/test/test_LayoutEngine.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_LayoutEngine.py
-+++ pyicu-2.13.1/test/test_LayoutEngine.py
+diff -Nru pyicu-2.15.orig/test/test_LayoutEngine.py pyicu-2.15/test/test_LayoutEngine.py
+--- pyicu-2.15.orig/test/test_LayoutEngine.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_LayoutEngine.py	2025-04-11 11:37:48.988552187 +0200
 @@ -22,7 +22,7 @@
  # ====================================================================
  #
@@ -117,23 +96,9 @@ Index: pyicu-2.13.1/test/test_LayoutEngine.py
  
  from unittest import TestCase, main
  from icu import *
-Index: pyicu-2.13.1/test/test_Locale.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Locale.py
-+++ pyicu-2.13.1/test/test_Locale.py
-@@ -21,7 +21,7 @@
- # DEALINGS IN THE SOFTWARE.
- # ====================================================================
- 
--import sys, os, six
-+import sys, os
- 
- from unittest import TestCase, main
- from icu import *
-Index: pyicu-2.13.1/test/test_LocaleData.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_LocaleData.py
-+++ pyicu-2.13.1/test/test_LocaleData.py
+diff -Nru pyicu-2.15.orig/test/test_LocaleData.py pyicu-2.15/test/test_LocaleData.py
+--- pyicu-2.15.orig/test/test_LocaleData.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_LocaleData.py	2025-04-11 11:37:48.988916789 +0200
 @@ -22,7 +22,7 @@
  #
  # This is a python translation of ICU's LocaleDataTest.java
@@ -143,7 +108,7 @@ Index: pyicu-2.13.1/test/test_LocaleData.py
  
  from unittest import TestCase, main
  from icu import *
-@@ -110,8 +110,8 @@ class TestLocaleData(TestCase):
+@@ -110,8 +110,8 @@
                                      break
                      if existsInScript == False:
                          print_output("ExemplarSet containment failed for locale : "+ locale)
@@ -154,7 +119,7 @@ Index: pyicu-2.13.1/test/test_LocaleData.py
              self.assertTrue(locale + " case-folded is a superset", exemplarSets[1].containsAll(exemplarSets[0]))
              if (exemplarSets[1] == exemplarSets[0]):
                  ++equalCount
-@@ -156,10 +156,10 @@ class TestLocaleData(TestCase):
+@@ -156,10 +156,10 @@
                              if existsInScript == False and h == 0:
                                  print_output("ExemplarSet containment failed for locale,option,type : " \
                                        + locale + "," + str(option) + "," + str(esType))
@@ -169,10 +134,9 @@ Index: pyicu-2.13.1/test/test_LocaleData.py
              self.assertTrue(locale + " case-folded is a superset", exemplarSets[2].containsAll(exemplarSets[0]))
              self.assertTrue(locale + " case-folder is a superset", exemplarSets[3].containsAll(exemplarSets[1]))
              if (exemplarSets[2] == exemplarSets[0]):
-Index: pyicu-2.13.1/test/test_LocaleMatcher.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_LocaleMatcher.py
-+++ pyicu-2.13.1/test/test_LocaleMatcher.py
+diff -Nru pyicu-2.15.orig/test/test_LocaleMatcher.py pyicu-2.15/test/test_LocaleMatcher.py
+--- pyicu-2.15.orig/test/test_LocaleMatcher.py	2024-10-29 11:06:30.000000000 +0100
++++ pyicu-2.15/test/test_LocaleMatcher.py	2025-04-11 11:37:48.989158288 +0200
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -182,10 +146,9 @@ Index: pyicu-2.13.1/test/test_LocaleMatcher.py
  
  from unittest import TestCase, main, SkipTest
  from icu import *
-Index: pyicu-2.13.1/test/test_PythonReplaceable.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_PythonReplaceable.py
-+++ pyicu-2.13.1/test/test_PythonReplaceable.py
+diff -Nru pyicu-2.15.orig/test/test_Locale.py pyicu-2.15/test/test_Locale.py
+--- pyicu-2.15.orig/test/test_Locale.py	2023-04-14 20:45:50.000000000 +0200
++++ pyicu-2.15/test/test_Locale.py	2025-04-11 11:37:48.988729704 +0200
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -195,10 +158,33 @@ Index: pyicu-2.13.1/test/test_PythonReplaceable.py
  
  from unittest import TestCase, main
  from icu import *
-Index: pyicu-2.13.1/test/test_Script.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Script.py
-+++ pyicu-2.13.1/test/test_Script.py
+diff -Nru pyicu-2.15.orig/test/test_PythonReplaceable.py pyicu-2.15/test/test_PythonReplaceable.py
+--- pyicu-2.15.orig/test/test_PythonReplaceable.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_PythonReplaceable.py	2025-04-11 11:37:48.989340013 +0200
+@@ -21,7 +21,7 @@
+ # DEALINGS IN THE SOFTWARE.
+ # ====================================================================
+ 
+-import sys, os, six
++import sys, os
+ 
+ from unittest import TestCase, main
+ from icu import *
+diff -Nru pyicu-2.15.orig/test/test_Regex.py pyicu-2.15/test/test_Regex.py
+--- pyicu-2.15.orig/test/test_Regex.py	2023-08-25 22:56:17.000000000 +0200
++++ pyicu-2.15/test/test_Regex.py	2025-04-11 11:37:48.990151824 +0200
+@@ -21,7 +21,7 @@
+ # DEALINGS IN THE SOFTWARE.
+ # ====================================================================
+ 
+-import sys, os, six
++import sys, os
+ 
+ from unittest import TestCase, main
+ from icu import *
+diff -Nru pyicu-2.15.orig/test/test_Script.py pyicu-2.15/test/test_Script.py
+--- pyicu-2.15.orig/test/test_Script.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_Script.py	2025-04-11 11:37:48.989518271 +0200
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -208,7 +194,7 @@ Index: pyicu-2.13.1/test/test_Script.py
  
  from unittest import TestCase, main
  from icu import *
-@@ -53,7 +53,7 @@ class TestScript(TestCase):
+@@ -53,7 +53,7 @@
  
          # iterating codepoints not UChar
          names = [Script.getScript(cp).getShortName()
@@ -217,7 +203,7 @@ Index: pyicu-2.13.1/test/test_Script.py
          if unicode_32bit:
              self.assertEqual(['Latn', 'Deva', 'Hani', 'Hani'], names)
          else:
-@@ -83,10 +83,10 @@ class TestScript(TestCase):
+@@ -83,10 +83,10 @@
              self.assertEqual(str(u), char)
          elif is_unicode_32bit():
              self.assertEqual(len(char), 1)
@@ -230,10 +216,9 @@ Index: pyicu-2.13.1/test/test_Script.py
  
  if __name__ == "__main__":
      main()
-Index: pyicu-2.13.1/test/test_TimeZone.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_TimeZone.py
-+++ pyicu-2.13.1/test/test_TimeZone.py
+diff -Nru pyicu-2.15.orig/test/test_TimeZone.py pyicu-2.15/test/test_TimeZone.py
+--- pyicu-2.15.orig/test/test_TimeZone.py	2024-10-03 03:38:26.000000000 +0200
++++ pyicu-2.15/test/test_TimeZone.py	2025-04-11 11:37:48.989672705 +0200
 @@ -21,7 +21,7 @@
  # ====================================================================
  #
@@ -243,10 +228,9 @@ Index: pyicu-2.13.1/test/test_TimeZone.py
  
  from unittest import TestCase, main
  from icu import *
-Index: pyicu-2.13.1/test/test_Transliterator.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Transliterator.py
-+++ pyicu-2.13.1/test/test_Transliterator.py
+diff -Nru pyicu-2.15.orig/test/test_Transliterator.py pyicu-2.15/test/test_Transliterator.py
+--- pyicu-2.15.orig/test/test_Transliterator.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_Transliterator.py	2025-04-11 11:37:48.989846134 +0200
 @@ -22,7 +22,7 @@
  # ====================================================================
  #
@@ -256,7 +240,7 @@ Index: pyicu-2.13.1/test/test_Transliterator.py
  
  from unittest import TestCase, main
  from icu import *
-@@ -50,7 +50,7 @@ class TestTransliterator(TestCase):
+@@ -50,7 +50,7 @@
          string = UnicodeString("Shang4hai3 zi4lai2shui3 lai2 zi4 hai3 shang4")
          result = u'Sh\xe0ngh\u01cei z\xecl\xe1ishu\u01d0 l\xe1i z\xec h\u01cei sh\xe0ng'
  
@@ -265,10 +249,9 @@ Index: pyicu-2.13.1/test/test_Transliterator.py
          self.assertTrue(trans.transliterate(string) == result)
          self.assertTrue(string == result)
  
-Index: pyicu-2.13.1/test/test_UCharsTrie.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_UCharsTrie.py
-+++ pyicu-2.13.1/test/test_UCharsTrie.py
+diff -Nru pyicu-2.15.orig/test/test_UCharsTrie.py pyicu-2.15/test/test_UCharsTrie.py
+--- pyicu-2.15.orig/test/test_UCharsTrie.py	2021-04-01 23:28:41.000000000 +0200
++++ pyicu-2.15/test/test_UCharsTrie.py	2025-04-11 11:37:48.989998022 +0200
 @@ -21,7 +21,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
@@ -278,11 +261,10 @@ Index: pyicu-2.13.1/test/test_UCharsTrie.py
  
  from unittest import TestCase, main
  from icu import *
-Index: pyicu-2.13.1/test/test_Regex.py
-===================================================================
---- pyicu-2.13.1.orig/test/test_Regex.py
-+++ pyicu-2.13.1/test/test_Regex.py
-@@ -21,7 +21,7 @@
+diff -Nru pyicu-2.15.orig/test/test_UnicodeSet.py pyicu-2.15/test/test_UnicodeSet.py
+--- pyicu-2.15.orig/test/test_UnicodeSet.py	2024-11-16 20:41:35.000000000 +0100
++++ pyicu-2.15/test/test_UnicodeSet.py	2025-04-11 11:38:05.928520422 +0200
+@@ -20,7 +20,7 @@
  # DEALINGS IN THE SOFTWARE.
  # ====================================================================
  
