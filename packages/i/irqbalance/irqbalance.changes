@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Apr 11 10:44:04 UTC 2025 - trenn@suse.de
+
+- Introduce multibuild and conditionally build either via meson or
+  autoconf build environment
+- Update to version 1.9.4.77.git+d913f60:
+  * Increase file descriptor limit via systemd service file
+  * Properly embed EnvironmentFile sourced systemd configs into meson and autonconf
+  * Unify meson and autoconf: Install executables to sbin
+- Remove mainline integrated patch:
+D Set-fd-limit.patch
+
+-------------------------------------------------------------------
+Fri Mar 28 13:21:52 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Provide 2 systemd Environment files, a package provided one and a
+  possibly existing user provided one overwriting default env vars
+  provided by the package if found.
+  EnvironmentFile=/usr/lib/irqbalance/defaults.env
+  EnvironmentFile=-/etc/irqbalance/defaults.env
+- Remove fillup dependency due to above changes
+
+-------------------------------------------------------------------
+Wed Mar 26 17:51:37 UTC 2025 - trenn@suse.de
+
+- Blacklist/Ban megaraid_sas driver (bsc#1238559)
+- Update to version 1.9.4.71.git+be5e3b8:
+  * Fix the wrong string existence checking condition
+  * check_platform_device: Check the length of path
+  * Check API command length, allow up to 16384
+  * fix some GCC fanalyzer warnings
+  * Use EPERM instead of EIO when try setting irq affinity fails
+  * irqbalance.1: a , b => a, b; it's type => its type
+  * Check info->moved before updating
+  * Add CAP_SETPCAP to CapabilityBoundingSet in irqbalance.service
+  * Version option should return 0 rather than 1
+  * Minor punctuation fix.
+  * define IRQBALANCE_ARGS as empty string to squelch systemd warning
+  * Track IRQ "slots" count per CPU to avoid overflowing
+  * meson: use find_library for numa
+  * meson: replace generic array with files()
+  * Drop ProtectKernelTunables
+  * meson: add a minimum version decorator
+  * meson: drop redundant install_man() options
+  * meson: move build files to repository root
+  * cast void pointer to actual type
+  * add void to fix strict-prototypes
+  * fix 32-bit formats
+  * Check fflush() return value
+  * irqbalance-ui: check if using a negative index of buffer
+D sysconfig.irqbalance
+This file was outdated, better use the upstream one
+A irqbalance_banmod.diff
+
+-------------------------------------------------------------------
 Wed Jan 22 15:42:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

@@ -15,13 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
-%endif
+%bcond_with meson
 Name:           irqbalance
-Version:        1.9.4.0.git+f8b8cdd
+Version:        1.9.4.77.git+d913f60
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
@@ -29,18 +25,20 @@ Group:          System/Daemons
 URL:            https://github.com/Irqbalance/irqbalance
 #Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source:         %{name}-%{version}.tar.gz
-Source3:        sysconfig.irqbalance
-Patch1:         Set-fd-limit.patch
+Patch1:         irqbalance_banmod.diff
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libsystemd)
-Requires(pre):  %fillup_prereq
+BuildRequires:  pkgconfig(systemd)
 Recommends:     %{name}-ui
 ExcludeArch:    s390 s390x
 %{?systemd_ordering}
+%if %{with meson}
+BuildRequires:  meson
+%endif
 %ifarch x86_64 %{?x86_64}
 BuildRequires:  pkgconfig(libnl-3.0)
 %endif
@@ -65,39 +63,43 @@ Text UI for the IRQ balance daemon.
 %autopatch -p1
 
 %build
+%if %{with meson}
+%meson -Dpkgconfdir=%{_distconfdir}/default -Dusrconfdir=%{_sysconfdir}/default
+%meson_build
+%else
+
 NOCONFIGURE=1 ./autogen.sh
 %configure \
     --with-systemd \
+    --with-pkgconfdir=%{_distconfdir}/default \
+    --with-usrconfdir=%{_sysconfdir}/default \
 %ifarch x86_64 %{?x86_64}
     --enable-thermal
 %endif
 
 %make_build LDFLAGS="-Wl,-z,relro,-z,now" CFLAGS="%{optflags} -fPIE -pie $(ncurses6-config --cflags)" LDFLAGS="$(ncurses6-config --libs)"
-cp %{SOURCE3} .
+%endif
 
 %install
+%if %{with meson}
+%meson_install
+%else
 %make_install
+%endif
 
-mkdir -p %{buildroot}%{_fillupdir}/
-install -m 0644 sysconfig.irqbalance %{buildroot}%{_fillupdir}/
-sed -ie "s|EnvironmentFile=.*|EnvironmentFile=%{_sysconfdir}/sysconfig/irqbalance|g" misc/irqbalance.service
-# Remove syslog.target in systemd service file; not provided by systemd anymore
-sed -ie "s|After=syslog.target||g" misc/irqbalance.service
-# Remove ProtectKernelTunables=yes. See https://github.com/Irqbalance/irqbalance/issues/308
-sed -ie "s|ProtectKernelTunables=yes||g" misc/irqbalance.service
-install -D -m 0644 misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
 %if 0%{?suse_version} < 1600
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 %endif
 
+%if %{without meson}
 %check
 %make_build check
+%endif
 
 %pre
 %service_add_pre irqbalance.service
 
 %post
-%fillup_only %{name}
 %service_add_post irqbalance.service
 
 %preun
@@ -115,7 +117,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcirqbalance
 %endif
 %{_unitdir}/irqbalance.service
 %{_mandir}/man1/irqbalance.1%{?ext_man}
-%{_fillupdir}/sysconfig.irqbalance
+%{_distconfdir}/default/irqbalance.env
 
 %files ui
 %{_sbindir}/irqbalance-ui

@@ -646,4 +646,54 @@ D proc-interrupts.patch
     <comment></comment>
     <requestid>1240935</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>22c0732044ab9ac2269dcf3ae84300af</srcmd5>
+    <version>1.9.4.77.git+d913f60</version>
+    <time>1744742809</time>
+    <user>anag_factory</user>
+    <comment>- Introduce multibuild and conditionally build either via meson or
+  autoconf build environment
+- Update to version 1.9.4.77.git+d913f60:
+  * Increase file descriptor limit via systemd service file
+  * Properly embed EnvironmentFile sourced systemd configs into meson and autonconf
+  * Unify meson and autoconf: Install executables to sbin
+- Remove mainline integrated patch:
+D Set-fd-limit.patch
+- Provide 2 systemd Environment files, a package provided one and a
+  possibly existing user provided one overwriting default env vars
+  provided by the package if found.
+  EnvironmentFile=/usr/lib/irqbalance/defaults.env
+  EnvironmentFile=-/etc/irqbalance/defaults.env
+- Remove fillup dependency due to above changes
+- Blacklist/Ban megaraid_sas driver (bsc#1238559)
+- Update to version 1.9.4.71.git+be5e3b8:
+  * Fix the wrong string existence checking condition
+  * check_platform_device: Check the length of path
+  * Check API command length, allow up to 16384
+  * fix some GCC fanalyzer warnings
+  * Use EPERM instead of EIO when try setting irq affinity fails
+  * irqbalance.1: a , b =&gt; a, b; it's type =&gt; its type
+  * Check info-&gt;moved before updating
+  * Add CAP_SETPCAP to CapabilityBoundingSet in irqbalance.service
+  * Version option should return 0 rather than 1
+  * Minor punctuation fix.
+  * define IRQBALANCE_ARGS as empty string to squelch systemd warning
+  * Track IRQ &quot;slots&quot; count per CPU to avoid overflowing
+  * meson: use find_library for numa
+  * meson: replace generic array with files()
+  * Drop ProtectKernelTunables
+  * meson: add a minimum version decorator
+  * meson: drop redundant install_man() options
+  * meson: move build files to repository root
+  * cast void pointer to actual type
+  * add void to fix strict-prototypes
+  * fix 32-bit formats
+  * Check fflush() return value
+  * irqbalance-ui: check if using a negative index of buffer
+D sysconfig.irqbalance
+This file was outdated, better use the upstream one
+A irqbalance_banmod.diff
+</comment>
+    <requestid>1269344</requestid>
+  </revision>
 </revisionlist>

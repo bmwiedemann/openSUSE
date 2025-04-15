@@ -1,0 +1,10 @@
+diff --git a/misc/irqbalance.env b/misc/irqbalance.env
+index 84cb843..3875dbe 100644
+--- a/misc/irqbalance.env
++++ b/misc/irqbalance.env
+@@ -41,4 +41,4 @@
+ #    Append any args here to the irqbalance daemon as documented in the man
+ #    page.
+ #
+-IRQBALANCE_ARGS=""
++IRQBALANCE_ARGS="--banmod megaraid_sas"
