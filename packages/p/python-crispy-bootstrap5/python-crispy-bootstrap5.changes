@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:03:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.4
+  * Added Python 3.13 support.
+  * Added support for Django 5.2.
+
+-------------------------------------------------------------------
 Sun Mar 23 21:30:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap5
-Version:        2024.10
+Version:        2025.4
 Release:        0
 Summary:        Bootstrap5 template pack for django-crispy-forms
 License:        MIT
