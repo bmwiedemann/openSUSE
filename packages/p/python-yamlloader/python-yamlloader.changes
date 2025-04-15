@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 16:20:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up the SPEC file.
+
+-------------------------------------------------------------------
+Mon Apr 14 14:05:53 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons, no longer builds with old Python
+
+-------------------------------------------------------------------
 Thu May  2 22:18:34 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.1:

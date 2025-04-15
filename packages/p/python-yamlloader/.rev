@@ -60,4 +60,14 @@
   * release: 1.2.2 add Python 3.11 support</comment>
     <requestid>1171472</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>31dbb9034c1ab6e147377fcafbddacc5</srcmd5>
+    <version>1.4.1</version>
+    <time>1744742808</time>
+    <user>anag_factory</user>
+    <comment>- Clean up the SPEC file.
+- Enable sle15_python_module_pythons, no longer builds with old Python
+</comment>
+    <requestid>1269330</requestid>
+  </revision>
 </revisionlist>

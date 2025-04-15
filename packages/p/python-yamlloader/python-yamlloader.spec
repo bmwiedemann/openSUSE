@@ -1,7 +1,7 @@
 #
 # spec file for package python-yamlloader
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?sle15_python_module_pythons}
 Name:           python-yamlloader
 Version:        1.4.1
 Release:        0
-License:        MIT
 Summary:        Ordered YAML loader and dumper for PyYAML
-URL:            https://github.com/Phynix/yamlloader
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/Phynix/yamlloader
 Source:         https://files.pythonhosted.org/packages/source/y/yamlloader/yamlloader-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -46,19 +47,19 @@ feature of regular dicts.)
 
 %prep
 %setup -q -n yamlloader-%{version}
-%autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # there are no tests at all. Sorry.
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/yamlloader
+%{python_sitelib}/yamlloader-%{version}*-info
 
 %changelog
