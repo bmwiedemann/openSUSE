@@ -4327,7 +4327,6 @@ unsorted:
   - ffmpeg-7-libswscale-devel 
   - ffmpeg-7-mini-devel 
   - ffmpeg-7-mini-libs 
-  - ffmpegthumbs-kf5 
   - ffmsindex 
   - ffnvcodec-devel 
   - fftw3-devel 
@@ -7242,7 +7241,6 @@ unsorted:
   - git-doc 
   - git-filter-repo 
   - git-fzlog 
-  - git-gui 
   - git-lfs 
   - git-merge-changelog 
   - git-mr 
@@ -7263,7 +7261,6 @@ unsorted:
   - gitea-tea-zsh-completion 
   - gitg 
   - gitg-lang 
-  - gitk 
   - gitlab-container-registry 
   - gitleaks 
   - gitleaks-bash-completion 
@@ -7377,6 +7374,8 @@ unsorted:
   - glasskube-cli-fish-completion 
   - glasskube-cli-zsh-completion 
   - glaze-devel 
+  - glbinding-aux-devel 
+  - glbinding-devel 
   - gle-devel 
   - gleam 
   - glew 
@@ -10342,7 +10341,6 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats 
   - kimageformats-eps 
   - kimagemapeditor 
   - kimagemapeditor-lang 
@@ -10355,8 +10353,6 @@ unsorted:
   - kio-admin 
   - kio-admin-lang 
   - kio-devel 
-  - kio-extras5 
-  - kio-extras5-lang 
   - kio-gdrive-lang 
   - kio-stash 
   - kio-stash-lang 
@@ -11286,8 +11282,6 @@ unsorted:
   - libKChart6-3 
   - libKChart6-3-lang 
   - libKDb3-4 
-  - libKF5Activities5 
-  - libKF5ActivitiesStats1 
   - libKF5Attica5 
   - libKF5CalendarCore5 
   - libKF5CalendarEvents5 
@@ -11300,7 +11294,6 @@ unsorted:
   - libKF5ItemModels5 
   - libKF5KDELibs4Support5 
   - libKF5KDcraw5 
-  - libKF5KExiv2-15_0_0 
   - libKF5MediaPlayer5 
   - libKF5ModemManagerQt-devel 
   - libKF5ModemManagerQt6 
@@ -13557,6 +13550,8 @@ unsorted:
   - libglade2-doc 
   - libgladeui-2-13 
   - libgladeui-2-devel 
+  - libglbinding-aux3 
+  - libglbinding3 
   - libgle3 
   - libglfw-devel 
   - libglfw2 
@@ -14215,7 +14210,6 @@ unsorted:
   - libkdsingleapplication1_1 
   - libkdsoap-server-qt6-2 
   - libkdsoap-server2 
-  - libkdsoap2 
   - libkdstatemachineeditor_core-qt6-2 
   - libkdstatemachineeditor_core2 
   - libkdstatemachineeditor_debuginterfaceclient-qt6-2 
@@ -14253,7 +14247,6 @@ unsorted:
   - libkeccak-devel 
   - libkeccak1 
   - libkeduvocdocument-devel 
-  - libkexiv2 
   - libkexiv2-devel 
   - libkexiv2-qt6-devel 
   - libkeybinder0 
@@ -14262,7 +14255,6 @@ unsorted:
   - libkgraphviewer0 
   - libkim-api2 
   - libkioarchive-devel 
-  - libkioarchive5 
   - libkioarchive6-devel 
   - libkissfft-float131 
   - libkkc-devel 
@@ -14339,6 +14331,8 @@ unsorted:
   - liblasso-devel 
   - liblasso3 
   - liblastfm-qt5-devel 
+  - liblastfm-qt6-devel 
+  - liblastfm6-1 
   - liblastfm_fingerprint5-1 
   - liblastlog2-devel 
   - liblaszip8 
@@ -14809,6 +14803,8 @@ unsorted:
   - libmwaw-tools 
   - libmxml1 
   - libmygpo-qt5-devel 
+  - libmygpo-qt6-1 
+  - libmygpo-qt6-devel 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
@@ -23765,6 +23761,13 @@ unsorted:
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
+  - python3-kf6-kcoreaddons 
+  - python3-kf6-kguiaddons 
+  - python3-kf6-knotifications 
+  - python3-kf6-kstatusnotifieritem 
+  - python3-kf6-kunitconversion 
+  - python3-kf6-kwidgetsaddons 
+  - python3-kf6-kxmlgui 
   - python3-kiwi 
   - python3-kiwi_crossprepare_plugin 
   - python3-ktoblzcheck 
@@ -27242,6 +27245,7 @@ unsorted:
   - python311-tabulate 
   - python311-tap.py 
   - python311-targetcli-fb 
+  - python311-tariff 
   - python311-taskgroup 
   - python311-tasklib 
   - python311-taskw 
@@ -30973,6 +30977,7 @@ unsorted:
   - python312-tabulate 
   - python312-tap.py 
   - python312-targetcli-fb 
+  - python312-tariff 
   - python312-taskgroup 
   - python312-tasklib 
   - python312-taskw 
@@ -34627,6 +34632,7 @@ unsorted:
   - python313-tabulate 
   - python313-tap.py 
   - python313-targetcli-fb 
+  - python313-tariff 
   - python313-taskgroup 
   - python313-tasklib 
   - python313-taskw 
@@ -34677,7 +34683,6 @@ unsorted:
   - python313-tinyrecord 
   - python313-tinyrpc 
   - python313-titlecase 
-  - python313-tk 
   - python313-tkreadonly 
   - python313-tld 
   - python313-tldextract 
@@ -36373,6 +36378,7 @@ unsorted:
   - ruby3.4-rubygem-pg 
   - ruby3.4-rubygem-pkg-config 
   - ruby3.4-rubygem-po_to_json 
+  - ruby3.4-rubygem-prism 
   - ruby3.4-rubygem-propshaft 
   - ruby3.4-rubygem-pry 
   - ruby3.4-rubygem-pry-doc 
@@ -37787,8 +37793,6 @@ unsorted:
   - tempo-cli 
   - tenmon 
   - tennebon-dynamic-wallpaper 
-  - tensorflow-lite 
-  - tensorflow-lite-devel 
   - termcap-devel 
   - termcap-devel-static 
   - terminator 
@@ -47449,7 +47453,6 @@ unsorted:
   - tiro-telugu-fonts 
   - tix 
   - tj 
-  - tk 
   - tk-32bit 
   - tk-devel 
   - tkdiff 
@@ -48759,6 +48762,7 @@ unsorted:
   - wayshot 
   - waysip 
   - wayvnc 
+  - wazero 
   - wbg 
   - wbxml2-tools 
   - wcd 
@@ -49186,7 +49190,6 @@ unsorted:
   - xgc 
   - xh 
   - xhfsutil 
-  - xhost 
   - xhtml-dtd 
   - xindy 
   - xindy-rules 
