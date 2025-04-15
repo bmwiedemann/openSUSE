@@ -647,4 +647,14 @@ Switching over to update-alternatives for python 3 would be a huge undertaking a
     <comment></comment>
     <requestid>1244766</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>236238225aac87e9e0c00e73480c42d3</srcmd5>
+    <version>1.3.10</version>
+    <time>1744742810</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.10:
+  * Fix undefined variable errors when strict_undefined=True when
+    using a nested list comprehension.</comment>
+    <requestid>1269360</requestid>
+  </revision>
 </revisionlist>
