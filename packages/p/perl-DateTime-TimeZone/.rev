@@ -730,4 +730,16 @@
     changes for Paraguay. (forwarded request 1239665 from tinita)</comment>
     <requestid>1239748</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>44b8922c5419493d39288702fc02612b</srcmd5>
+    <version>2.650.0</version>
+    <time>1744742822</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.650.0 (2.65)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.65    2025-03-25
+  - This release is based on version 2025b of the Olson database. This release includes contemporary
+    changes for Chile. (forwarded request 1269379 from tinita)</comment>
+    <requestid>1269437</requestid>
+  </revision>
 </revisionlist>

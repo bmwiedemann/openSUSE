@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Mar 26 05:34:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.650.0 (2.65)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.65    2025-03-25
+
+  - This release is based on version 2025b of the Olson database. This release includes contemporary
+    changes for Chile.
+
+-------------------------------------------------------------------
 Wed Jan 22 21:20:58 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.640.0 (2.64)

@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.640.0
+Version:        2.650.0
 Release:        0
-# 2.64 -> normalize -> 2.640.0
-%define cpan_version 2.64
+# 2.65 -> normalize -> 2.650.0
+%define cpan_version 2.65
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -104,6 +104,7 @@ Provides:       perl(DateTime::TimeZone::America::Chicago) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Chihuahua) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Ciudad_Juarez) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Costa_Rica) = %{version}
+Provides:       perl(DateTime::TimeZone::America::Coyhaique) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Cuiaba) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Danmarkshavn) = %{version}
 Provides:       perl(DateTime::TimeZone::America::Dawson) = %{version}
