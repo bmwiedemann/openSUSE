@@ -18,7 +18,7 @@
 
 %define ack_version		1.0.9
 %define airline_version		0.11
-%define ale_version		3.3.0
+%define ale_version		4.0.0
 %define align_version_orig	37-43
 %define align_version		37.43
 %define a_version		2.18
@@ -27,20 +27,21 @@
 %define calendar_version	2.5
 %define colorsel_version	20110107
 %define colorschemes_version	1.0
+%define cscope_maps_version	20210418
 %define diffchanges_tag		346dae2
 %define diffchanges_version	0.6+g346dae2
-%define editorconfig_version	1.1.1
+%define editorconfig_version	1.2.1
 %define file_line_version	1.0+20161020
 %define fugitive_version	3.7
 %define gitdiff_version		2
 %define gnupg_version		2.7.1
-%define latex_version		1.10.0+20220519
+%define latex_version		1.10.0+20250111
 %define locateopen_version	1.3
-%define markdown_version	2.0.0+20220926
+%define markdown_version	2.0.0+20240920
 %define matrix_version		1.10
 %define minibufexpl_version	6.3.2
 %define multiplesearch_version	1.3
-%define neomutt_version		20220612
+%define neomutt_version		20241013
 %define NERDcommenter_version	2.7.0
 %define NERDtree_version	7.1.3
 %define project_version		1.4.1
@@ -106,17 +107,17 @@ Source36:       https://github.com/vim-airline/vim-airline/archive/refs/tags/v%{
 Source37:       https://github.com/dense-analysis/ale/archive/refs/tags/v%{ale_version}.tar.gz#/vimplugin-ale-%{ale_version}.tar.gz
 Source38:       https://github.com/dhruvasagar/vim-table-mode/archive/refs/tags/v%{table_mode_version}.tar.gz#/vimplugin-table-mode-%{table_mode_version}.tar.gz
 Source39:       https://github.com/aliou/bats.vim/archive/refs/tags/v%{bats_version}.tar.gz#/vimplugin-bats-%{bats_version}.tar.gz
-Source40:       https://cscope.sourceforge.net/cscope_maps.vim
 # from _service
 Source100:      file-line-%{file_line_version}.tar.xz
 Source101:      vim-markdown-%{markdown_version}.tar.xz
 Source102:      neomutt.vim-%{neomutt_version}.tar.xz
 Source103:      salt-vim-%{salt_version}.tar.xz
 Source104:      vim-latex-%{latex_version}.tar.xz
+Source105:      cscope-maps-%{cscope_maps_version}.tar.xz
 Source200:      gitrebase.vim
 Source300:      global-rsync-filter
 Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/contrib/vim/spec.snippets
-Source1001:     check_for_updates.pl
+Source1001:     check_for_updates.py
 Patch0:         salt-syntax-avoid-multiline-lets.patch
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
@@ -736,7 +737,7 @@ Usage:
      Press <c-w>o again: the previous set of windows is restored
 
 %prep
-%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a100 -a101 -a102 -a103 -a104
+%setup -q -c -n %{name} -a1 -a2 -a3 -a4 -a5 -a6 -a7 -a9 -a10 -a11 -a12 -a13 -a14 -a15 -a16 -a17 -a18 -a19 -a20 -a21 -a22 -a23 -a24 -a26 -a27 -a28 -a30 -a31 -a32 -a33 -a34 -a35 -a36 -a37 -a38 -a39 -a100 -a101 -a102 -a103 -a104 -a105
 pushd salt-vim-%{salt_version}
 %patch -P 0 -p1
 popd
@@ -763,6 +764,7 @@ chmod -v 644 taglist-%{taglist_version}/doc/taglist.txt
 # BEGIN EXCLUDES
 cat > ale-%{ale_version}/.rsync-filter <<EOF
 - /supported-tools.md
+- /test-files/
 EOF
 
 cat > bufexplorer-%{bufexplorer_version}/.rsync-filter <<EOF
@@ -773,6 +775,10 @@ cat > editorconfig-vim-%{editorconfig_version}/.rsync-filter <<EOF
 - /plugin/editorconfig-core-py/
 - /tests/
 - /mkzip.sh
+EOF
+
+cat > neomutt.vim-%{neomutt_version}/.rsync-filter <<EOF
+- /tests/
 EOF
 
 cat > nerdtree-%{NERDtree_version}/.rsync-filter <<EOF
@@ -833,8 +839,6 @@ for i in */; do
 	rsync -FFXHav --filter='merge %{SOURCE300}' \
 		"$i" %buildroot/%{vimplugin_dir}/
 done
-
-install -m 644 %{SOURCE40} %buildroot/%vimplugin_dir/plugin/
 
 install -d %buildroot/%vimplugin_dir/after/ftplugin/
 install -m 644 %{SOURCE200} %buildroot/%vimplugin_dir/after/ftplugin/
@@ -936,6 +940,9 @@ fi \
 %vimplugin_dir/autoload/asyncomplete/sources/ale.vim
 %vimplugin_dir/doc/ale*
 %vimplugin_dir/ftplugin/ale-*.vim
+%dir %vimplugin_dir/lua/
+%vimplugin_dir/lua/ale/
+%vimplugin_dir/lspconfig.vim
 %vimplugin_dir/plugin/ale.vim
 %dir %vimplugin_dir/rplugin
 %dir %vimplugin_dir/rplugin/python3
@@ -986,6 +993,7 @@ fi \
 
 %files -n vim-plugin-cscope
 %defattr(-,root,root,0755)
+%doc cscope-maps-%{cscope_maps_version}/README.md
 %vimplugin_dir/plugin/cscope_maps.vim
 
 %files -n vim-plugin-diffchanges
@@ -997,6 +1005,7 @@ fi \
 %defattr(-,root,root,0755)
 %license editorconfig-vim-%{editorconfig_version}/LICENSE
 %vimplugin_dir/plugin/editorconfig.vim
+%vimplugin_dir/ftdetect/editorconfig.vim
 %vimplugin_dir/autoload/editorconfig_core/
 %vimplugin_dir/autoload/editorconfig_core.vim
 %vimplugin_dir/autoload/editorconfig.vim
