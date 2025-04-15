@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 13 12:14:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.0
+  * Force precision to 16 in audio drivers.
+  * Avoid 100% CPU usage when paused.
+  * Display audio driver in use in verbose mode.
+
+-------------------------------------------------------------------
 Tue Dec  3 19:11:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.0
