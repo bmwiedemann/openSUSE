@@ -20,10 +20,17 @@ Name:           orthanc-authorization
 Summary:        Authorisation plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancAuthorization-%{version}.tar.gz
+Source1:        https://orthanc.uclouvain.be/downloads/third-party-downloads/curl-8.9.0.tar.gz
+Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/gtest-1.8.1.tar.gz
+Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/jsoncpp-1.9.5.tar.gz
+Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/e2fsprogs-1.44.5.tar.gz
+Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/boost_1_86_0_bcpdigest-1.12.5.tar.gz
+
+Patch0:         static_build.patch
 
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
@@ -55,10 +62,12 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Plugin for authorization
 
 %prep
-%autosetup -p2 -n OrthancAuthorization-%{version}
+%autosetup -p1 -n OrthancAuthorization-%{version}
 
 #OrthancPlugins may ask for additional files to be loaded
 #Putting them into this folder prevents download of sources from the web
+mkdir -p ThirdPartyDownloads
+cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} ThirdPartyDownloads/.
 
 %build
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200

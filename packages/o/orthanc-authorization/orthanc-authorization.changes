@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 10 17:08:28 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.9.1
+  * static_build.patch added
+  * The plugin is now using the HttpClient from the Orthanc core instead of its
+    own HttpClient which should enable support for https since the plugin
+    is not built with SSL support.
+  * New default permission to upload to ^/DICOM_WEB_ROOT/studies/([.0-9]+)
+    (https://orthanc.uclouvain.be/bugs/show_bug.cgi?id=244)
+
+-------------------------------------------------------------------
 Thu Feb 27 18:14:19 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.9.0
