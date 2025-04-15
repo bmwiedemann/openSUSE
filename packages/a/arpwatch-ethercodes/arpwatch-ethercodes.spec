@@ -1,7 +1,7 @@
 #
 # spec file for package arpwatch-ethercodes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           arpwatch-ethercodes
-Version:        20241212
+Version:        20250404
 Release:        0
 Summary:        Ethercodes Data for arpwatch
 License:        BSD-3-Clause
