@@ -1684,4 +1684,17 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1268413</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>8659ccc5a1515a4e6aff7ce4427c6bc5</srcmd5>
+    <version>20250411</version>
+    <time>1744742802</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250411:
+  * Introduce unconfined mysqld_systemd_helper_t (bsc#1240949)
+  * Set mysqld_t permissive until we have tested it thorougly (bsc#1240949)
+  * Fix label of mysqld (bsc#1240949)
+  * Initial policy for snapper 50-etc plugin (bsc#1236671)
+</comment>
+    <requestid>1269261</requestid>
+  </revision>
 </revisionlist>

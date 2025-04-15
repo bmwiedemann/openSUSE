@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 11 16:24:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20250411:
+  * Introduce unconfined mysqld_systemd_helper_t (bsc#1240949)
+  * Set mysqld_t permissive until we have tested it thorougly (bsc#1240949)
+  * Fix label of mysqld (bsc#1240949)
+  * Initial policy for snapper 50-etc plugin (bsc#1236671)
+
+-------------------------------------------------------------------
 Thu Apr 10 13:09:19 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250410:
