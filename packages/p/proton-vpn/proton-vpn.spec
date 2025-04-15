@@ -16,23 +16,20 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
-%global pythons python3
-%else
-%global pythons python311
-%endif
+%{?sle15_python_module_pythons}%{!?sle15_python_module_pythons:%define pythons python3}
 Name:           proton-vpn
-Version:        4.9.5
+Version:        4.9.6
 Release:        0
 Summary:        Official Proton VPN client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://github.com/ProtonVPN/proton-vpn-gtk-app
-Source:         https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/v%{version}.tar.gz
+Source0:        https://github.com/ProtonVPN/proton-vpn-gtk-app/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module distro}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proton-core}
 BuildRequires:  %{python_module proton-vpn-api-core >= 0.42.1}
 BuildRequires:  %{python_module proton-vpn-network-manager >= 0.12.13}
@@ -42,10 +39,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-BuildRequires:  gobject-introspection
-BuildRequires:  gtk3-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libnotify)
 Requires:       %{pythons}-dbus-python
 Requires:       %{pythons}-distro
 Requires:       %{pythons}-gobject
@@ -66,28 +63,25 @@ The Proton VPN client is easy to use and packed with advanced features
 carefully designed to improve your online security.
 
 %prep
-%setup -q -n proton-vpn-gtk-app-%{version}
+%autosetup -n proton-vpn-gtk-app-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%fdupes %{buildroot}%{python_sitelib}/
+%pyproject_install
+%fdupes %{buildroot}%{python_sitelib}
 
-mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/
-mkdir -p %{buildroot}/%{_datadir}/applications
-cp rpmbuild/SOURCES/proton-vpn-logo.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/proton-vpn.svg
-
-%suse_update_desktop_file -c proton-vpn "Proton VPN" "Proton VPN Client" protonvpn-app proton-vpn "GTK;Network;Utility"
+install -Dm0644 rpmbuild/SOURCES/proton-vpn-logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/proton-vpn-logo.svg
+install -Dm0644 ./rpmbuild/SOURCES/protonvpn-app.desktop %{buildroot}%{_datadir}/applications/proton-vpn.desktop
 
 %files
 %doc README.md
 %license LICENSE COPYING.md
-%{_datadir}/applications/proton-vpn.desktop
-%{_datadir}/icons/hicolor/scalable/apps/proton-vpn.svg
-%{python_sitelib}/proton/
-%{python_sitelib}/proton_vpn_gtk_app-%{version}*.egg-info
 %{_bindir}/protonvpn-app
+%{_datadir}/applications/proton-vpn.desktop
+%{_datadir}/icons/hicolor/scalable/apps/proton-vpn-logo.svg
+%{python_sitelib}/proton
+%{python_sitelib}/proton_vpn_gtk_app-%{version}.dist-info
 
 %changelog

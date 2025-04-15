@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  8 17:30:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 4.9.6:
+  * nothing of relevance
+- update spec file:
+  * switch to autosetup
+  * remove update-dekstop-files
+  * switch to pyproject macros
+  * use sle15 macros for defining which python version
+
+-------------------------------------------------------------------
 Mon Mar 31 10:17:47 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
 
 - Update package to 4.9.5
