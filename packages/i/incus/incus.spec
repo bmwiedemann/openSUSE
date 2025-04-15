@@ -30,8 +30,8 @@
 %endif
 
 Name:           incus
-Version:        6.9
-%define tag_version 6.9.0
+Version:        6.11
+%define tag_version 6.11.0
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -82,6 +82,7 @@ Requires:       attr
 Requires:       ebtables
 BuildRequires:  dnsmasq
 Requires:       dnsmasq
+Requires:       lego
 Requires:       lxcfs
 Requires:       lxcfs-hooks-lxc
 Requires:       rsync
@@ -439,6 +440,8 @@ grep -q '^root:' /etc/subgid || \
 %defattr(-,root,root)
 %{_bindir}/incus-benchmark
 %{_bindir}/incus-simplestreams
+%{_bindir}/incus-generate-config
+%{_bindir}/incus-generate-database
 %{_bindir}/lxc-to-incus
 %{_sbindir}/incus-fuidshift
 %{_sbindir}/incus-migrate

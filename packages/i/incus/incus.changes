@@ -1,4 +1,151 @@
 -------------------------------------------------------------------
+Mon Apr 14 11:10:09 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 6.11:
+  * Allow ICMP and low ports for unprivileged users in OCI containers by @gwenya in #1706
+  * doc: Clarify virtiofsd requirements by @stgraber in #1718
+  * Fix generate-database usage for incusd/db by @breml in #1719
+  * Do not allow mounting of custom block volume snapshots by @presztak in #1720
+  * generate-database: Abstract db connection / db transaction by @breml in #1721
+  * Fix snapshot size handling in cross-pool copy/move by @presztak in #1717
+  * generate-database: Accept interface in PrepareStmts by @breml in #1725
+  * Simplify evaluateShorthandFilter by reducing nesting levels by @presztak in #1727
+  * incusd/storage: Don't use sparse writer on thick LVM by @stgraber in #1729
+  * generate-database: Add support for marshal to JSON by @breml in #1731
+  * Fixed incus edk2 path overwrite issue by @nanjj in #1726
+  * Do not download instance types if cache loadable by @nanjj in #1732
+  * Clarify security.secureboot setting by @gwenya in #1740
+  * Fix DNS for isolated OVN networks by @gwenya in #1738
+  * Allow announcing extra routes through DHCPv4 by @gwenya in #1734
+  * Fix link parsing failure on non-ethernet devices by @stgraber in #1742
+  * Fix revert on OCI container creation failure by @gwenya in #1744
+  * generate-database: Handle non tx DB connections by @breml in #1745
+  * incus file edit extension by @gwenya in #1746
+  * Cleanup internal API endpoints by @stgraber in #1747
+  * Tweak help message for rebuild by @stgraber in #1754
+  * Use lego binary for DNS-01 challenge by @accuser in #1753
+  * incusd/storage/zfs: Fix ZFS CreateVolume deletes pre-existing data on failure by @mrstux in #1749
+  * incus/file: Always use 1MB chunks for SFTP by @stgraber in #1758
+  * Use the correct path for ingesting DNS-01 challenge certificate outputs by @accuser in #1759
+  * incusd/bgp: Rework start/stop logic by @stgraber in #1761
+  * incusd/network/ovn: Skip existing static routes by @stgraber in #1762
+  * incusd/instance/qemu: Set caching-mode with intel-iommu by @stgraber in #1772
+  * incus-agent: Improve SFTP performance by @stgraber in #1773
+  * incusd/network/ovn: Keep getting router name when network none by @diegofernandes in #1771
+  * make incus copy --device xx,type=none drop remaining device properties by @schnoddelbotz in #1764
+  * incusd/instance/qemu: rtc base localtime for windows by @nanjj in #1767
+  * Add option to configure DNS server for bridge and OVN networks by @gwenya in #1739
+  * Use lego binary for http 01 challenge by @accuser in #1770
+  * Handle live migration between QEMU versions by @stgraber in #1775
+  * incusd/instance/qemu: Skip to link nvram to itself by @nanjj in #1760
+  * Switch to new MAC address prefix by @stgraber in #1776
+  * client: Fix spelling errors found by codespell by @cjwatson in #1777
+  * Add ipv4.dhcp.expiry option for ovn networks by @gwenya in #1781
+  * Configure DHCP on existing instance interfaces when it is enabled on a network by @gwenya in #1780
+  * incusd/instance/edk2: Select SecureBoot capable firmware on Debian by @stgraber in #1782
+  * Fix some go  vet warnings by @stgraber in #1784
+  * Clear gofumpt by @stgraber in #1803
+  * Fix some BGP issues by @stgraber in #1805
+  * incusd/instance/qemu: bad pid check by @nanjj in #1806
+  * Fix spelling errors and run codespell automatically by @cjwatson in #1778
+  * incus/file: Properly handle relative source paths by @stgraber in #1809
+  * cmd/storage: incorrect CLI syntax in storage pool creation examples by @ViniRodrig in #1810
+  * Improve DB performance by @stgraber in #1811
+  * incusd/network/ovn: Fix default DNS IPv4 server by @stgraber in #1812
+  * Extend OS detection logic by @stgraber in #1813
+  * Add allocated CPU time to instance state by @bensmrs in #1807
+  * incusd/certificates: Properly handle bad PEM data by @stgraber in #1816
+  * Extra generate-database features by @masnax in #1817
+  * incusd/network/common: Handle missing BGP peer by @stgraber in #1818
+  * incusd/cluster/evacuate: Don't live-migrate stopped instances by @stgraber in #1819
+  * Fix generator table pluralization by @masnax in #1823
+  * incusd/instance/qemu enable s4 by default by @nanjj in #1820
+  * Add support for USB NICs by @bensmrs in #1814
+  * incusd/storage/s3 Fixed minio client mc too ambious issue by @nanjj in #1821
+  * incusd/networks: Validate configuration on join too by @stgraber in #1824
+  * Update gomod for go-jwt vulnerability by @stgraber in #1825
+  * cmd/generate-database/db: Fix GetNames spacing by @masnax in #1826
+  * github: Rework issue templates by @stgraber in #1827
+  * Update Debian installation documentation by @gibmat in #1830
+  * Extend minio client naming by @gibmat in #1829
+  * Various fixes from address set PR by @stgraber in #1831
+  * incusd/instance/lxc: Cleanup OCI mount paths by @stgraber in #1834
+  * Add io.bus=usb for disks by @bensmrs in #1835
+  * golangci: Upgrade to version 2 by @stgraber in #1836
+  * golangci: Disable STI005 error checks by @stgraber in #1841
+  * Standalone changes from the Linstor branch by @stgraber in #1842
+  * incusd/storage/s3 minio client check enhancement by @nanjj in #1839
+  * incusd/network/ovn: Remove internal routes to forward/load-balancers by @stgraber in #1843
+  * incusd/instance/edk2: Always prefer the EDK2 override by @stgraber in #1847
+  * Fixes from Linstor branch by @stgraber in #1846
+  * Add linstor storage driver by @luissimas in #1621
+  * Add linstor.remove_snapshots config option by @luissimas in #1848
+  * doc/support: Update feature release version by @bensmrs in #1853
+  * incusd/instance: Don't enforce device/config validation on snapshots by @stgraber in #1854
+  * OCI entrypoint configuration by @gwenya in #1845
+- update to 6.10.1:
+  * incusd/network/bridge: Fix deletion of tunnels and dummy devices by @montag451 in #1698
+  * Translations update from Hosted Weblate by @weblate in #1710
+  * Provide the RBD keeyring to QEMU by @stgraber in #1709
+  * incusd/storage/ceph: Re-introduce keyring parsing by @stgraber in #1716
+  * Move IOMMU handling under configuration option by @stgraber in #1715
+- update to 6.10:
+  * incusd/instance/drivers/qmp: Handle missing log directory by @stgraber in #1604
+  * incus-user: keep track of socket path used to connect to the server by @bboozzoo in #1607
+  * incus-user: unify logging, support --verbose and --debug by @bboozzoo in #1606
+  * Add project support to profiles in preseed init by @megheaiulian in #1608
+  * incusd/network/ovn: Fix bad route check by @stgraber in #1616
+  * incus/file/pull: Ensure we have a leading / in all paths by @stgraber in #1617
+  * incus/file/pull: Read files in chunks by @stgraber in #1623
+  * doc/installing: mention incus group on NixOS by @dawidd6 in #1622
+  * incus/file/pull: Actually make read buffer 1MiB by @stgraber in #1624
+  * Translations update from Hosted Weblate by @weblate in #1639
+  * incusd/device/disk: Allow virtiofsd on non-x86 by @stgraber in #1638
+  * Translations update from Hosted Weblate by @weblate in #1640
+  * Translations update from Hosted Weblate by @weblate in #1642
+  * incusd/instance/drivers/qemu: Add IOMMU device by @stgraber in #1644
+  * incus/file: Remove unused function by @stgraber in #1645
+  * Translations update from Hosted Weblate by @weblate in #1646
+  * incus/network/info (ovn): Fix object not found. by @rxtom in #1628
+  * incusd/instance/drivers: Improve NUMA balancing by @lnutimura in #1626
+  * incusd/network/bridge: Fix deletion of tunnels and dummy devices by @montag451 in #1627
+  * incus/file: Move from path to filepath by @stgraber in #1647
+  * Added LZ4 support for incus import by @Spitfireap in #1611
+  * Add vrf parameter for routed-nic devices by @ibot3 in #1615
+  * Translations update from Hosted Weblate by @weblate in #1648
+  * Translations update from Hosted Weblate by @weblate in #1651
+  * Move generators to the cmd package by @stgraber in #1652
+  * Fix incorrect volume group naming when vg_name is not specified by @presztak in #1653
+  * Rename incus-generate and incus-doc by @breml in #1654
+  * Implement smbios11 config keys by @stgraber in #1655
+  * Fix instance copy error when using '--refresh' flag by @presztak in #1658
+  * Fix docs for load balancer create backend by @gwenya in #1661
+  * incusd/instance/utils: Only check uid/gid for containers by @stgraber in #1662
+  * incusd/main_nsexec: Fix change_namespaces fallback to handle multiple… by @stgraber in #1664
+  * Check if disk is remote when migrating with an extra disk by @presztak in #1669
+  * incusd/instance/edk2: Look for bios.bin in /usr/share/seabios by @stgraber in #1672
+  * Replace ast.Package with types.Package by @breml in #1665
+  * list/format: provide more information on error by @rxtom in #1666
+  * Add additional validation when joining a new cluster member by @presztak in #1680
+  * Upgrade flosch/pongo2 to v6 by @nanjj in #1677
+  * incusd/resources: Prevent concurrent runs and cache data for 10s by @stgraber in #1681
+  * Fix importing from older backups by @stgraber in #1683
+  * fix: Don't attempt to download signatures for oci by @m2Giles in #1685
+  * Ensure directories have 755 permissions in incus file push -p command by @presztak in #1687
+  * devcontainer: Update Go to 1.23 by @breml in #1689
+  * Make "Code generated" comments for generate-database Go conformant by @breml in #1690
+  * Disclaimer internal tool for generate-database and generate-config by @breml in #1694
+  * Truncate the block file during custom volume migration by @presztak in #1696
+  * Rework virtiofsd uid/gid map handling by @stgraber in #1692
+  * Remove unused arguments and parameters by @presztak in #1699
+  * generate-database: Use deferred func to map errors & make generated code self-sufficient by @breml in #1695
+  * incus/top: Fix handling of all-projects by @stgraber in #1701
+  * Ceph refactor by @MadnessASAP in #1538
+  * incus/file: Port remaining functions to SFTP by @HassanAlsamahi in #1649
+  * Add filtering to all API collections by @gwenya in #1679
+  * Add provider for DNS-01 ACME challenge by @accuser in #1668
+
+-------------------------------------------------------------------
 Sat Jan 25 19:32:34 UTC 2025 - Maciej Borzecki <maciek.borzecki@gmail.com>
 
 - update to 6.9:
