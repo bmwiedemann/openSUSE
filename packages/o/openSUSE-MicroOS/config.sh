@@ -104,7 +104,6 @@ cat >/etc/fstab.script <<"EOF"
 #!/bin/sh
 set -eux
 
-/usr/sbin/setup-fstab-for-overlayfs
 # If /var is on a different partition than /...
 if [ "$(findmnt -snT / -o SOURCE)" != "$(findmnt -snT /var -o SOURCE)" ]; then
 	# ... set options for autoexpanding /var
