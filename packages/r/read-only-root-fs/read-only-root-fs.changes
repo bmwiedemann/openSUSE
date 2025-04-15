@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 15 14:23:08 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.0+git20250415.7e7aea4:
+  * Add missing dependency on mountpoint
+
+-------------------------------------------------------------------
+Tue Apr 15 13:03:01 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Add missing dependencies for %post
+
+-------------------------------------------------------------------
+Mon Apr 14 13:26:18 UTC 2025 - fvogt@suse.com
+
+- Update to version 1.0+git20250414.6ef7163:
+  * Add a note why we need to keep 10-read-only-root-fs.conf around
+  * Migrate from /etc overlays to subvolumes
+- Switch _service to use mode="manual"
+
+-------------------------------------------------------------------
 Wed Feb 28 15:15:15 UTC 2024 - fvogt@suse.com
 
 - Update to version 1.0+git20240228.d85232a:

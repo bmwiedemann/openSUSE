@@ -1,7 +1,7 @@
 #
 # spec file for package read-only-root-fs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           read-only-root-fs
-Version:        1.0+git20240228.d85232a
+Version:        1.0+git20250415.7e7aea4
 Release:        0
 Summary:        Files and Scripts for a RO root fileystem
 License:        GPL-2.0-or-later
@@ -28,17 +28,19 @@ Source1:        README.packaging.txt
 BuildRequires:  dracut
 BuildRequires:  update-bootloader-rpm-macros
 Requires:       dracut
-Requires(post): /usr/bin/mkdir /usr/bin/cat /usr/bin/sed
-Requires(post): gawk
+Requires(post): /usr/bin/mv /usr/bin/rsync /usr/bin/gawk /usr/sbin/btrfs
 Requires(post): snapper
 # Required if system with new /etc/fstab entries is supposed to be updated
-Conflicts:      transactional-update < 2.15
+Conflicts:      transactional-update < 5.0.0
+# Support for /etc as subvolume
+Conflicts:      combustion < 1.5
+Conflicts:      ignition < 2.21.0
 BuildArch:      noarch
 %{update_bootloader_requires}
 
 %description
 Files, scripts and directories to run the system with a
-read-only root filesystem with %{_sysconfdir} writeable via overlayfs.
+read-only root filesystem with nested writable %{_sysconfdir} BTRFS subvolume.
 
 This package should never be installed in an already running
 system! It should only be selected by a system role for a
@@ -64,12 +66,10 @@ have a writable /root or /home, additional fstab entries can be added.
 
 %install
 cp -a etc usr %{buildroot}
-mkdir -p %{buildroot}%{_localstatedir}/lib/overlay/work-etc
 
 %post
-if [ "$1" = 1 ] ; then
-    %{_sbindir}/setup-fstab-for-overlayfs
-    mkdir -p %{_localstatedir}/lib/overlay/1/etc
+if [ "$1" = 1 -a "`findmnt -n -o FSTYPE -l /`" = "btrfs" ] ; then
+    %{_libexecdir}/setup-etc-subvol
 fi
 if [ ! -e /boot/writable -a "`findmnt -n -o FSTYPE -l /`" = "btrfs" ]; then
     %{_sbindir}/mksubvolume /boot/writable
@@ -90,9 +90,10 @@ exit 0
 
 %files
 %license COPYING
-%{_sbindir}/setup-fstab-for-overlayfs
-%{_localstatedir}/lib/overlay
+%{_libexecdir}/setup-etc-subvol
 %{_prefix}/lib/dracut/dracut.conf.d/10-read-only-root-fs.conf
+%dir %{_prefix}/lib/dracut/modules.d/50writable-etc
+%{_prefix}/lib/dracut/modules.d/50writable-etc/*
 %{_prefix}/lib/systemd/system-preset/*
 %dir %{_prefix}/lib/systemd/system/systemd-udevd.service.d
 %{_prefix}/lib/systemd/system/systemd-udevd.service.d/etcmount.conf

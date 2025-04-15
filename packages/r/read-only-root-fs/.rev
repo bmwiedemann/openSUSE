@@ -151,4 +151,12 @@
   * etc/grub.d/01_suse_ro_root: Don't btrfs-mount-subvol inside grub-emu</comment>
     <requestid>1152966</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b6b9177e1cf7cdfc4a9befd36b5efde4</srcmd5>
+    <version>1.0+git20250415.7e7aea4</version>
+    <time>1744742832</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269648</requestid>
+  </revision>
 </revisionlist>
