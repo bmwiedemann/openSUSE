@@ -39,6 +39,8 @@ Patch2:         GraphicsMagick-CVE-2025-27795.patch
 Patch3:         GraphicsMagick-CVE-2025-27796.patch
 # use return value of realloc function
 Patch4:         GraphicsMagick-return-value.patch
+# CVE-2025-32460 [bsc#1241150], heap-based buffer over-read in ReadJXLImage
+Patch5:         GraphicsMagick-CVE-2025-32460.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

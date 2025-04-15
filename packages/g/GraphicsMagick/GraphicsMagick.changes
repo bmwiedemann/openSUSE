@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:15:10 UTC 2025 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2025-32460 [bsc#1241150], heap-based buffer over-read in ReadJXLImage
+  + GraphicsMagick-CVE-2025-32460.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 08:58:02 UTC 2025 - pgajdos@suse.com
 
 - security update

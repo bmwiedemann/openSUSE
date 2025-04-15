@@ -1323,4 +1323,15 @@ New Features:
   + GraphicsMagick-return-value.patch</comment>
     <requestid>1266057</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>2fa749cb4abcd557783180ab6d51f0e7</srcmd5>
+    <version>1.3.45</version>
+    <time>1744742824</time>
+    <user>anag_factory</user>
+    <comment>- security update
+- added patches
+  fix CVE-2025-32460 [bsc#1241150], heap-based buffer over-read in ReadJXLImage
+  + GraphicsMagick-CVE-2025-32460.patch</comment>
+    <requestid>1269453</requestid>
+  </revision>
 </revisionlist>
