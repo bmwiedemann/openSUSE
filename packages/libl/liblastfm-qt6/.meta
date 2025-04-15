@@ -1,0 +1,6 @@
+<package name="liblastfm-qt6" project="openSUSE:Factory">
+  <title>Qt 6 port of liblastfm</title>
+  <description>liblastfm is a collection of libraries to help you integrate Last.fm services
+into your applications.</description>
+  <url>https://github.com/Mazhoon/liblastfm</url>
+</package>
