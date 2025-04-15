@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Apr 13 17:28:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 3.2.1:
+  * The generated code avoids -Wundef warnings in C++ mode
+
+-------------------------------------------------------------------
+Sat Apr 12 07:17:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to version 3.2:
+  * generated code now avoids several types of compiler warnings
+  * The input file may now use Windows line terminators (CR/LF)
+    instead of Unix line terminators (LF)
+    Note: This is an incompatible change. If you want to use a
+    keyword that ends in a CR byte, such as xyz<CR>, write it as
+    "xyz\r".
+
+-------------------------------------------------------------------
 Tue May 24 19:22:01 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - stop linking dynamic content per full url, this breaks

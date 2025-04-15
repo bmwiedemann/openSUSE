@@ -2,6 +2,7 @@
 # spec file for package gperf
 #
 # Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gperf
-Version:        3.1
+Version:        3.2.1
 Release:        0
 Summary:        A Compiler Tool for Generating Perfect Hash Functions
 License:        GPL-3.0-or-later
@@ -25,10 +26,9 @@ Group:          Development/Languages/C and C++
 URL:            https://gnu.org/software/gperf/
 Source0:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz.sig
-# From https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
-Source2:        %{name}.keyring
+Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
 Patch0:         testsuite-race.patch
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 
 %description
 A perfect hash function is simply: a hash function and a data structure
