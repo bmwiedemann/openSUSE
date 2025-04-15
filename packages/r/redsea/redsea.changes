@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:35:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.0
+  * RDS2 streams + RFT support.
+  * Streams as hex.
+  * Show RadioText A/B flag with --show-partial
+  * Improve CSV loading speed.
+  * Removed schema.json (it's not maintained) - the same
+    information is now in the wiki.
+
+-------------------------------------------------------------------
 Mon Mar  3 21:55:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.1.1

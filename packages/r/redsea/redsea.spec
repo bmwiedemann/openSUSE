@@ -18,7 +18,7 @@
 
 
 Name:           redsea
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        An RDS decoder
 License:        MIT
