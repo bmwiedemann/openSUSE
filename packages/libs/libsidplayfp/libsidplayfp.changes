@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 13 12:13:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.13.0
+  * Add support for c++23 where available.
+  * Reworked power on delay.
+  * Correctly link to pthread library.
+  * Add proper compiler flag when enabling sse4.
+  * resid/residfp: Use more bits for the 8580 filter cutoff
+    (VICE bug 2098).
+  * resid: reduce aliasing noise (VICE bug 2116).
+
+-------------------------------------------------------------------
 Tue Dec  3 19:10:13 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.0
