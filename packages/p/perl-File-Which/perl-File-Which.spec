@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Which
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,20 @@
 
 %define cpan_name File-Which
 Name:           perl-File-Which
-Version:        1.27
+Version:        1.270.0
 Release:        0
-Summary:        Perl implementation of the which utility as an API
+# 1.27 -> normalize -> 1.270.0
+%define cpan_version 1.27
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Perl implementation of the which utility as an API
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(File::Which) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,8 +54,9 @@ does not provide it, install App::pwhich which provides a command line
 interface to this API.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN
 chmod a+x corpus/test-bin-unix/0
 # MANUAL END
@@ -69,7 +74,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc author.yml Changes README
+%doc Changes README
 %license LICENSE
 
 %changelog
