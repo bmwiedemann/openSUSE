@@ -1,0 +1,17 @@
+
+ - C23 has "bool" as a keyword
+ - gcc-15 compiles w/ -std=gnu23 by default
+ - the code in lib/asn1 dates from before 2012, it defines and uses
+   it's own "bool", so compile the code there w/ -std=gnu11
+
+--- a/lib/asn1/Makefile	2019-01-08 23:13:13.000000000 +0100
++++ b/lib/asn1/Makefile	2025-04-13 09:21:22.870024546 +0200
+@@ -4,6 +4,8 @@
+ 
+ include ../../Make.rules
+ 
++CFLAGS += -std=gnu11
++
+ libasn1.a: $(LIBFILES)
+ libasn1-efi.a: $(EFILIBFILES)
+ 

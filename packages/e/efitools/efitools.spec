@@ -25,6 +25,7 @@ URL:            https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.gi
 Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.git/snapshot/%{name}-%{version}.tar.gz
 Patch1:         efitools-disable-efisigned.patch
 Patch2:         efitools-bsc1220470-fix-gcc14-errors.patch
+Patch3:         efitools-c23.patch
 BuildRequires:  gnu-efi
 BuildRequires:  help2man
 BuildRequires:  openssl-devel

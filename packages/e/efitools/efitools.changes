@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 13 07:17:01 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add efitools-c23.patch to fix gcc-15 compile time errors
+
+-------------------------------------------------------------------
 Fri Mar  8 03:40:04 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add efitools-bsc1220470-fix-gcc14-errors.patch to fix gcc-14
