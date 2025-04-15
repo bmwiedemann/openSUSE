@@ -1,0 +1,5 @@
+<package name="libmygpo-qt6" project="openSUSE:Factory">
+  <title>C++/Qt Client Library for gpodder.net</title>
+  <description>libmygpo-qt is a Qt Library that wraps the gpodder.net Web API.</description>
+  <url>https://github.com/Mazhoon/libmygpo-qt</url>
+</package>
