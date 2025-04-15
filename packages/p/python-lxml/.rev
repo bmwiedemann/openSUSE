@@ -1123,4 +1123,19 @@ Send to Staging:E.
     <comment></comment>
     <requestid>1203784</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>a52685fb1958a45f5ca1a6305def1b04</srcmd5>
+    <version>5.3.2</version>
+    <time>1744742811</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.2 (bsc#1237370, CVE-2025-24928):
+  * This release resolves CVE-2025-24928 as described in
+  * https://gitlab.gnome.org/GNOME/libxml2/-/issues/847
+  * GH#440: Some tests were adapted for libxml2 2.14.0.
+  * LP#2097175: ``DTD(external_id=&quot;…&quot;)`` erroneously required a
+    byte string as ID value.
+  * GH#450: ``iterparse()`` internally triggered the
+    `DeprecationWarning`` added in lxml 5.3.0 when parsing HTML.</comment>
+    <requestid>1269361</requestid>
+  </revision>
 </revisionlist>

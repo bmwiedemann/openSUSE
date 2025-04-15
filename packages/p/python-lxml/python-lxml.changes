@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 14 20:23:23 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.2 (bsc#1237370, CVE-2025-24928):
+  * This release resolves CVE-2025-24928 as described in
+  * https://gitlab.gnome.org/GNOME/libxml2/-/issues/847
+  * GH#440: Some tests were adapted for libxml2 2.14.0.
+  * LP#2097175: ``DTD(external_id="…")`` erroneously required a
+    byte string as ID value.
+  * GH#450: ``iterparse()`` internally triggered the
+    `DeprecationWarning`` added in lxml 5.3.0 when parsing HTML.
+
+-------------------------------------------------------------------
 Wed Sep 25 13:33:01 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - 5.3.0 (2024-08-10)
