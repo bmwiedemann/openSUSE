@@ -1,7 +1,7 @@
 #
 # spec file for package perl-File-Slurper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,21 @@
 
 %define cpan_name File-Slurper
 Name:           perl-File-Slurper
-Version:        0.014
+Version:        0.14.0
 Release:        0
+# 0.014 -> normalize -> 0.14.0
+%define cpan_version 0.014
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, sane and efficient module to slurp a file
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Warnings)
+Provides:       perl(File::Slurper) = %{version}
+%undefine       __perllib_provides
 Recommends:     perl(PerlIO::utf8_strict)
 %{perl_requires}
 
@@ -38,8 +42,9 @@ All functions are optionally exported. All functions throw exceptions on
 errors, write functions don't return any meaningful value.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
