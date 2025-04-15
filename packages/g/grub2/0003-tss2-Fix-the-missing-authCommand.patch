@@ -1,0 +1,66 @@
+From 041164d00e79ffd2433675a5dd5b824833b9fc6a Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 7 Apr 2025 16:29:17 +0800
+Subject: [PATCH 3/7] tss2: Fix the missing authCommand
+
+grub_tpm2_readpublic() and grub_tpm2_testparms() didn't check
+authCommand when marshaling the input data buffer. Currently, there is
+no caller using non-NULL authCommand. However, to avoid the potential
+issue, the conditional check is added to insert authCommand into the
+input buffer if necessary.
+
+Also fix a few pointer checks.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/lib/tss2/tpm2_cmd.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/grub-core/lib/tss2/tpm2_cmd.c b/grub-core/lib/tss2/tpm2_cmd.c
+index cd0c6fd31..211d807d5 100644
+--- a/grub-core/lib/tss2/tpm2_cmd.c
++++ b/grub-core/lib/tss2/tpm2_cmd.c
+@@ -341,6 +341,8 @@ grub_tpm2_readpublic (const TPMI_DH_OBJECT_t objectHandle,
+   /* Marshal */
+   grub_tpm2_buffer_init (&in);
+   grub_tpm2_buffer_pack_u32 (&in, objectHandle);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+   if (in.error != 0)
+     return TPM_RC_FAILURE;
+ 
+@@ -398,7 +400,7 @@ grub_tpm2_load (const TPMI_DH_OBJECT_t parent_handle,
+   /* Marshal */
+   grub_tpm2_buffer_init (&in);
+   grub_tpm2_buffer_pack_u32 (&in, parent_handle);
+-  if (authCommand)
++  if (authCommand != NULL)
+     grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+   grub_Tss2_MU_TPM2B_Marshal (&in, inPrivate->size, inPrivate->buffer);
+   grub_Tss2_MU_TPM2B_PUBLIC_Marshal (&in, inPublic);
+@@ -461,9 +463,9 @@ grub_tpm2_loadexternal (const TPMS_AUTH_COMMAND_t *authCommand,
+ 
+   /* Marshal */
+   grub_tpm2_buffer_init (&in);
+-  if (authCommand)
++  if (authCommand != NULL)
+     grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+-  if (inPrivate)
++  if (inPrivate != NULL)
+     grub_Tss2_MU_TPM2B_SENSITIVE_Marshal (&in, inPrivate);
+   else
+     grub_tpm2_buffer_pack_u16 (&in, 0);
+@@ -1023,6 +1025,8 @@ grub_tpm2_testparms (const TPMT_PUBLIC_PARMS_t *parms,
+   /* Marshal */
+   grub_tpm2_buffer_init (&in);
+   grub_Tss2_MU_TPMT_PUBLIC_PARMS_Marshal (&in, parms);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
+   if (in.error != 0)
+     return TPM_RC_FAILURE;
+ 
+-- 
+2.43.0
+

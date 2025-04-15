@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 11 02:59:51 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Measure the envblk used by pre_loadenv
+  * 0001-prep_loadenv-Measure-the-environment-block-into-PCR-.patch
+- Enable PowerPC 64 support for tss2 and tpm2_key_protector
+  * 0001-tpm2_key_protector-Add-grub-emu-support.patch
+  * 0001-tss2-Adjust-bit-fields-for-big-endian-targets.patch
+  * 0002-term-ieee1275-serial-Cast-0-to-proper-type.patch
+  * 0003-ieee1275-Consolidate-repeated-definitions-of-IEEE127.patch
+  * 0004-ieee1275-ibmvpm-Move-TPM-initialization-functions-to.patch
+  * 0005-ieee1275-tcg2-Refactor-grub_ieee1275_tpm_init.patch
+  * 0006-ieee1275-tcg2-Add-TCG2-driver-for-ieee1275-PowerPC-f.patch
+  * 0007-tpm2_key_protector-Enable-build-for-powerpc_ieee1275.patch
+- Dump PCRs when TPM unsealing fails
+  * 0001-tpm2_key_protector-Dump-PCRs-on-policy-fail.patch
+  * 0002-tpm2_key_protector-Add-tpm2_dump_pcr-command.patch
+- Add 'NV index' handle support to tpm2_key_protector
+  * 0003-tss2-Fix-the-missing-authCommand.patch
+  * 0004-tss2-Add-TPM-2.0-NV-index-commands.patch
+  * 0005-tpm2_key_protector-Unseal-key-from-a-buffer.patch
+  * 0006-tpm2_key_protector-Support-NV-index-handles.patch
+  * 0007-util-grub-protect-Support-NV-index-mode.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 09:44:49 UTC 2025 - Thomas Zimmermann <tzimmermann@suse.com>
 
 - Add grub2-provide-edid.patch: Grub2 already retrieves the EDID

@@ -1,0 +1,218 @@
+From 8c0b5f200352603e53b799fca7b63f845a978f19 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 26 Nov 2024 15:39:43 -0500
+Subject: [PATCH 4/7] ieee1275/ibmvpm: Move TPM initialization functions to own
+ file
+
+Move common initialization functions from the ibmvtpm driver module into
+tcg2.c that will be moved into the new TCG2 driver in a subsequent patch.
+Make the functions available to the ibmvtpm driver as public functions
+and variables.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/Makefile.core.def           |  1 +
+ grub-core/commands/ieee1275/ibmvtpm.c | 44 ++-----------------
+ grub-core/lib/ieee1275/tcg2.c         | 61 +++++++++++++++++++++++++++
+ include/grub/ieee1275/tpm.h           | 31 ++++++++++++++
+ 4 files changed, 97 insertions(+), 40 deletions(-)
+ create mode 100644 grub-core/lib/ieee1275/tcg2.c
+ create mode 100644 include/grub/ieee1275/tpm.h
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index 40427165e..c5fd796d4 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1155,6 +1155,7 @@ module = {
+   name = tpm;
+   common = commands/tpm.c;
+   ieee1275 = commands/ieee1275/ibmvtpm.c;
++  ieee1275 = lib/ieee1275/tcg2.c;
+   enable = powerpc_ieee1275;
+ };
+ 
+diff --git a/grub-core/commands/ieee1275/ibmvtpm.c b/grub-core/commands/ieee1275/ibmvtpm.c
+index dd30c7432..284673217 100644
+--- a/grub-core/commands/ieee1275/ibmvtpm.c
++++ b/grub-core/commands/ieee1275/ibmvtpm.c
+@@ -23,46 +23,10 @@
+ #include <grub/types.h>
+ #include <grub/tpm.h>
+ #include <grub/ieee1275/ieee1275.h>
++#include <grub/ieee1275/tpm.h>
+ #include <grub/mm.h>
+ #include <grub/misc.h>
+ 
+-static grub_ieee1275_ihandle_t tpm_ihandle;
+-static grub_uint8_t tpm_version;
+-
+-static void
+-tpm_get_tpm_version (void)
+-{
+-  grub_ieee1275_phandle_t vtpm;
+-  char buffer[20];
+-
+-  if (!grub_ieee1275_finddevice ("/vdevice/vtpm", &vtpm) &&
+-      !grub_ieee1275_get_property (vtpm, "compatible", buffer,
+-				   sizeof (buffer), NULL) &&
+-      !grub_strcmp (buffer, "IBM,vtpm20"))
+-    tpm_version = 2;
+-}
+-
+-static grub_err_t
+-tpm_init (void)
+-{
+-  static int init_success = 0;
+-
+-  if (!init_success)
+-    {
+-      if (grub_ieee1275_open ("/vdevice/vtpm", &tpm_ihandle) < 0)
+-	{
+-	  tpm_ihandle = GRUB_IEEE1275_IHANDLE_INVALID;
+-	  return GRUB_ERR_UNKNOWN_DEVICE;
+-	}
+-
+-      init_success = 1;
+-
+-      tpm_get_tpm_version ();
+-    }
+-
+-  return GRUB_ERR_NONE;
+-}
+-
+ static int
+ ibmvtpm_2hash_ext_log (grub_uint8_t pcrindex,
+ 		       grub_uint32_t eventtype,
+@@ -88,7 +52,7 @@ ibmvtpm_2hash_ext_log (grub_uint8_t pcrindex,
+ 
+   INIT_IEEE1275_COMMON (&args.common, "call-method", 8, 2);
+   args.method = (grub_ieee1275_cell_t) "2hash-ext-log";
+-  args.ihandle = tpm_ihandle;
++  args.ihandle = grub_ieee1275_tpm_ihandle;
+   args.pcrindex = pcrindex;
+   args.eventtype = eventtype;
+   args.description = (grub_ieee1275_cell_t) description;
+@@ -136,7 +100,7 @@ grub_tpm_measure (unsigned char *buf, grub_size_t size, grub_uint8_t pcr,
+   grub_dprintf ("tpm", "log_event, pcr = %d, size = 0x%" PRIxGRUB_SIZE ", %s\n",
+ 		pcr, size, description);
+ 
+-  if (tpm_version == 2)
++  if (grub_ieee1275_tpm_version == 2)
+     return tpm2_log_event (buf, size, pcr, description);
+ 
+   return GRUB_ERR_NONE;
+@@ -149,5 +113,5 @@ grub_tpm_present (void)
+    * Call tpm_init() "late" rather than from GRUB_MOD_INIT() so that device nodes
+    * can be found.
+    */
+-  return tpm_init() == GRUB_ERR_NONE;
++  return grub_ieee1275_tpm_init() == GRUB_ERR_NONE;
+ }
+diff --git a/grub-core/lib/ieee1275/tcg2.c b/grub-core/lib/ieee1275/tcg2.c
+new file mode 100644
+index 000000000..1819d1447
+--- /dev/null
++++ b/grub-core/lib/ieee1275/tcg2.c
+@@ -0,0 +1,61 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2024 IBM Corporation
++ *  Copyright (C) 2024 Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include <grub/types.h>
++#include <grub/tpm.h>
++#include <grub/ieee1275/tpm.h>
++#include <grub/mm.h>
++#include <grub/misc.h>
++
++grub_ieee1275_ihandle_t grub_ieee1275_tpm_ihandle;
++grub_uint8_t grub_ieee1275_tpm_version;
++
++static void
++tpm_get_tpm_version (void)
++{
++  grub_ieee1275_phandle_t vtpm;
++  char buffer[20];
++
++  if (!grub_ieee1275_finddevice ("/vdevice/vtpm", &vtpm) &&
++      !grub_ieee1275_get_property (vtpm, "compatible", buffer,
++                                  sizeof (buffer), NULL) &&
++      !grub_strcmp (buffer, "IBM,vtpm20"))
++    grub_ieee1275_tpm_version = 2;
++}
++
++grub_err_t
++grub_ieee1275_tpm_init (void)
++{
++  static int init_success = 0;
++
++  if (!init_success)
++    {
++      if (grub_ieee1275_open ("/vdevice/vtpm", &grub_ieee1275_tpm_ihandle) < 0)
++	{
++	  grub_ieee1275_tpm_ihandle = GRUB_IEEE1275_IHANDLE_INVALID;
++	  return GRUB_ERR_UNKNOWN_DEVICE;
++	}
++
++      init_success = 1;
++
++      tpm_get_tpm_version ();
++    }
++
++  return GRUB_ERR_NONE;
++}
+diff --git a/include/grub/ieee1275/tpm.h b/include/grub/ieee1275/tpm.h
+new file mode 100644
+index 000000000..9575c1c68
+--- /dev/null
++++ b/include/grub/ieee1275/tpm.h
+@@ -0,0 +1,31 @@
++/*
++ *  GRUB  --  GRand Unified Bootloader
++ *  Copyright (C) 2024  Free Software Foundation, Inc.
++ *
++ *  GRUB is free software: you can redistribute it and/or modify
++ *  it under the terms of the GNU General Public License as published by
++ *  the Free Software Foundation, either version 3 of the License, or
++ *  (at your option) any later version.
++ *
++ *  GRUB is distributed in the hope that it will be useful,
++ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
++ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ *  GNU General Public License for more details.
++ *
++ *  You should have received a copy of the GNU General Public License
++ *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef GRUB_IEEE1275_TPM_HEADER
++#define GRUB_IEEE1275_TPM_HEADER      1
++
++#include <grub/err.h>
++#include <grub/types.h>
++#include <grub/ieee1275/ieee1275.h>
++
++extern grub_ieee1275_ihandle_t grub_ieee1275_tpm_ihandle;
++extern grub_uint8_t grub_ieee1275_tpm_version;
++
++extern grub_err_t grub_ieee1275_tpm_init (void);
++
++#endif
+-- 
+2.43.0
+

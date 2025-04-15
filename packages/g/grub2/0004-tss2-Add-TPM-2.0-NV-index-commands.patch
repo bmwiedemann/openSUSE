@@ -1,0 +1,413 @@
+From 75c480885ab00fb9bc046fe214df60007116aef2 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 7 Apr 2025 16:29:18 +0800
+Subject: [PATCH 4/7] tss2: Add TPM 2.0 NV index commands
+
+The following TPM 2.0 commands are introduced to tss2 to access the
+TPM non-volatile memory associated with the NV index handles:
+  - TPM2_NV_DefineSpace,
+  - TPM2_NV_UndefineSpace,
+  - TPM2_NV_ReadPublic,
+  - TPM2_NV_Read,
+  - TPM2_NV_Write.
+
+The related marshal/unmarshal functions are also introduced.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/lib/tss2/tpm2_cmd.c   | 201 ++++++++++++++++++++++++++++++++
+ grub-core/lib/tss2/tpm2_cmd.h   |  32 +++++
+ grub-core/lib/tss2/tss2_mu.c    |  39 +++++++
+ grub-core/lib/tss2/tss2_mu.h    |  12 ++
+ grub-core/lib/tss2/tss2_types.h |   6 +
+ 5 files changed, 290 insertions(+)
+
+diff --git a/grub-core/lib/tss2/tpm2_cmd.c b/grub-core/lib/tss2/tpm2_cmd.c
+index 211d807d5..6d25db1ab 100644
+--- a/grub-core/lib/tss2/tpm2_cmd.c
++++ b/grub-core/lib/tss2/tpm2_cmd.c
+@@ -1045,3 +1045,204 @@ grub_tpm2_testparms (const TPMT_PUBLIC_PARMS_t *parms,
+ 
+   return TPM_RC_SUCCESS;
+ }
++
++TPM_RC_t
++grub_tpm2_nv_definespace (const TPMI_RH_PROVISION_t authHandle,
++			  const TPMS_AUTH_COMMAND_t *authCommand,
++			  const TPM2B_AUTH_t *auth,
++			  const TPM2B_NV_PUBLIC_t *publicInfo)
++{
++  TPM_RC_t rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG_t tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC_t responseCode;
++
++  if (publicInfo == NULL)
++    return TPM_RC_VALUE;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, authHandle);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (auth != NULL)
++    grub_Tss2_MU_TPM2B_Marshal (&in, auth->size, auth->buffer);
++  else
++    grub_tpm2_buffer_pack_u16 (&in, 0);
++  grub_Tss2_MU_TPM2B_NV_PUBLIC_Marshal (&in, publicInfo);
++  if (in.error != 0)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = tpm2_submit_command (tag, TPM_CC_NV_DefineSpace, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (out.error != 0)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC_t
++grub_tpm2_nv_undefinespace (const TPMI_RH_PROVISION_t authHandle,
++			    const TPMI_RH_NV_INDEX_t nvIndex,
++			    const TPMS_AUTH_COMMAND_t *authCommand)
++{
++  TPM_RC_t rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG_t tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC_t responseCode;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, authHandle);
++  grub_tpm2_buffer_pack_u32 (&in, nvIndex);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (in.error != 0)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = tpm2_submit_command (tag, TPM_CC_NV_UndefineSpace, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (out.error != 0)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC_t
++grub_tpm2_nv_readpublic (const TPMI_RH_NV_INDEX_t nvIndex,
++			 const TPMS_AUTH_COMMAND_t *authCommand,
++			 TPM2B_NV_PUBLIC_t *nvPublic,
++			 TPM2B_NAME_t *nvName)
++{
++  TPM_RC_t rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG_t tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC_t responseCode;
++  grub_uint32_t param_size;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, nvIndex);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  if (in.error != 0)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = tpm2_submit_command (tag, TPM_CC_NV_ReadPublic, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_Tss2_MU_TPM2B_NV_PUBLIC_Unmarshal (&out, nvPublic);
++  grub_Tss2_MU_TPM2B_NAME_Unmarshal (&out, nvName);
++  if (out.error != 0)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC_t
++grub_tpm2_nv_read (const TPMI_RH_NV_AUTH_t authHandle,
++		   const TPMI_RH_NV_INDEX_t nvIndex,
++		   const TPMS_AUTH_COMMAND_t *authCommand,
++		   const grub_uint16_t size,
++		   const grub_uint16_t offset,
++		   TPM2B_MAX_NV_BUFFER_t *data)
++{
++  TPM_RC_t rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG_t tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC_t responseCode;
++  grub_uint32_t param_size;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, authHandle);
++  grub_tpm2_buffer_pack_u32 (&in, nvIndex);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_tpm2_buffer_pack_u16 (&in, size);
++  grub_tpm2_buffer_pack_u16 (&in, offset);
++  if (in.error != 0)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = tpm2_submit_command (tag, TPM_CC_NV_Read, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (tag == TPM_ST_SESSIONS)
++    grub_tpm2_buffer_unpack_u32 (&out, &param_size);
++  grub_Tss2_MU_TPM2B_NAX_NV_BUFFER_Unmarshal (&out, data);
++  if (out.error != 0)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
++
++TPM_RC_t
++grub_tpm2_nv_write (const TPMI_RH_NV_AUTH_t authHandle,
++		    const TPMI_RH_NV_INDEX_t nvIndex,
++		    const TPMS_AUTH_COMMAND_t *authCommand,
++		    const TPM2B_MAX_NV_BUFFER_t *data,
++		    const grub_uint16_t offset)
++{
++  TPM_RC_t rc;
++  struct grub_tpm2_buffer in;
++  struct grub_tpm2_buffer out;
++  TPMI_ST_COMMAND_TAG_t tag = authCommand ? TPM_ST_SESSIONS : TPM_ST_NO_SESSIONS;
++  TPM_RC_t responseCode;
++
++  /* Marshal */
++  grub_tpm2_buffer_init (&in);
++  grub_tpm2_buffer_pack_u32 (&in, authHandle);
++  grub_tpm2_buffer_pack_u32 (&in, nvIndex);
++  if (authCommand != NULL)
++    grub_Tss2_MU_TPMS_AUTH_COMMAND_Marshal (&in, authCommand);
++  grub_Tss2_MU_TPM2B_Marshal (&in, data->size, data->buffer);
++  grub_tpm2_buffer_pack_u16 (&in, offset);
++  if (in.error != 0)
++    return TPM_RC_FAILURE;
++
++  /* Submit */
++  grub_tpm2_buffer_init (&out);
++  rc = tpm2_submit_command (tag, TPM_CC_NV_Write, &responseCode, &in, &out);
++  if (rc != TPM_RC_SUCCESS)
++    return rc;
++  if (responseCode != TPM_RC_SUCCESS)
++    return responseCode;
++
++  /* Unmarshal */
++  if (out.error != 0)
++    return TPM_RC_FAILURE;
++
++  return TPM_RC_SUCCESS;
++}
+diff --git a/grub-core/lib/tss2/tpm2_cmd.h b/grub-core/lib/tss2/tpm2_cmd.h
+index d313cba00..90b42efec 100644
+--- a/grub-core/lib/tss2/tpm2_cmd.h
++++ b/grub-core/lib/tss2/tpm2_cmd.h
+@@ -154,4 +154,36 @@ extern TPM_RC_t
+ grub_tpm2_testparms (const TPMT_PUBLIC_PARMS_t *parms,
+ 		     const TPMS_AUTH_COMMAND_t *authCommand);
+ 
++extern TPM_RC_t
++grub_tpm2_nv_definespace (const TPMI_RH_PROVISION_t authHandle,
++			  const TPMS_AUTH_COMMAND_t *authCommand,
++			  const TPM2B_AUTH_t *auth,
++			  const TPM2B_NV_PUBLIC_t *publicInfo);
++
++extern TPM_RC_t
++grub_tpm2_nv_undefinespace (const TPMI_RH_PROVISION_t authHandle,
++			    const TPMI_RH_NV_INDEX_t nvIndex,
++			    const TPMS_AUTH_COMMAND_t *authCommand);
++
++extern TPM_RC_t
++grub_tpm2_nv_readpublic (const TPMI_RH_NV_INDEX_t nvIndex,
++			 const TPMS_AUTH_COMMAND_t *authCommand,
++			 TPM2B_NV_PUBLIC_t *nvPublic,
++			 TPM2B_NAME_t *nvName);
++
++extern TPM_RC_t
++grub_tpm2_nv_read (const TPMI_RH_NV_AUTH_t authHandle,
++		   const TPMI_RH_NV_INDEX_t nvIndex,
++		   const TPMS_AUTH_COMMAND_t *authCommand,
++		   const grub_uint16_t size,
++		   const grub_uint16_t offset,
++		   TPM2B_MAX_NV_BUFFER_t *data);
++
++extern TPM_RC_t
++grub_tpm2_nv_write (const TPMI_RH_NV_AUTH_t authHandle,
++		    const TPMI_RH_NV_INDEX_t nvIndex,
++		    const TPMS_AUTH_COMMAND_t *authCommand,
++		    const TPM2B_MAX_NV_BUFFER_t *data,
++		    const grub_uint16_t offset);
++
+ #endif /* ! GRUB_TPM2_COMMANDS_HEADER */
+diff --git a/grub-core/lib/tss2/tss2_mu.c b/grub-core/lib/tss2/tss2_mu.c
+index 86134cc0a..816e5b37f 100644
+--- a/grub-core/lib/tss2/tss2_mu.c
++++ b/grub-core/lib/tss2/tss2_mu.c
+@@ -17,6 +17,7 @@
+  *  along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+  */
+ 
++#include <grub/mm.h>
+ #include <grub/misc.h>
+ 
+ #include <tss2_mu.h>
+@@ -572,6 +573,37 @@ grub_Tss2_MU_TPMT_TK_VERIFIED_Marshal (grub_tpm2_buffer_t buffer,
+   grub_Tss2_MU_TPM2B_Marshal (buffer, p->digest.size, p->digest.buffer);
+ }
+ 
++void
++grub_Tss2_MU_TPMS_NV_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
++				     const TPMS_NV_PUBLIC_t *p)
++{
++  grub_tpm2_buffer_pack_u32 (buffer, p->nvIndex);
++  grub_tpm2_buffer_pack_u16 (buffer, p->nameAlg);
++  grub_tpm2_buffer_pack_u32 (buffer, p->attributes);
++  grub_Tss2_MU_TPM2B_Marshal (buffer, p->authPolicy.size, p->authPolicy.buffer);
++  grub_tpm2_buffer_pack_u16 (buffer, p->dataSize);
++}
++
++void
++grub_Tss2_MU_TPM2B_NV_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
++				      const TPM2B_NV_PUBLIC_t *p)
++{
++  grub_uint32_t start;
++  grub_uint16_t size;
++
++  if (p != NULL)
++    {
++      grub_tpm2_buffer_pack_u16 (buffer, p->size);
++
++      start = buffer->size;
++      grub_Tss2_MU_TPMS_NV_PUBLIC_Marshal (buffer, &p->nvPublic);
++      size = grub_cpu_to_be16 (buffer->size - start);
++      grub_memcpy (&buffer->data[start - sizeof (grub_uint16_t)], &size, sizeof (size));
++    }
++  else
++    grub_tpm2_buffer_pack_u16 (buffer, 0);
++}
++
+ static void
+ __Tss2_MU_TPM2B_BUFFER_Unmarshal (grub_tpm2_buffer_t buffer,
+ 				  TPM2B_t *p, grub_uint16_t bound)
+@@ -982,6 +1014,13 @@ grub_Tss2_MU_TPM2B_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
+   grub_Tss2_MU_TPMS_NV_PUBLIC_Unmarshal (buffer, &p->nvPublic);
+ }
+ 
++void
++grub_Tss2_MU_TPM2B_NAX_NV_BUFFER_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_MAX_NV_BUFFER_t *p)
++{
++  TPM2B_BUFFER_UNMARSHAL (buffer, TPM2B_MAX_NV_BUFFER_t, p);
++}
++
+ void
+ grub_Tss2_MU_TPM2B_NAME_Unmarshal (grub_tpm2_buffer_t buffer,
+ 				   TPM2B_NAME_t *n)
+diff --git a/grub-core/lib/tss2/tss2_mu.h b/grub-core/lib/tss2/tss2_mu.h
+index 8f82126e1..6440de57c 100644
+--- a/grub-core/lib/tss2/tss2_mu.h
++++ b/grub-core/lib/tss2/tss2_mu.h
+@@ -193,6 +193,14 @@ extern void
+ grub_Tss2_MU_TPMT_TK_VERIFIED_Marshal (grub_tpm2_buffer_t buffer,
+                                        const TPMT_TK_VERIFIED_t *p);
+ 
++extern void
++grub_Tss2_MU_TPMS_NV_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
++				     const TPMS_NV_PUBLIC_t *p);
++
++extern void
++grub_Tss2_MU_TPM2B_NV_PUBLIC_Marshal (grub_tpm2_buffer_t buffer,
++				      const TPM2B_NV_PUBLIC_t *p);
++
+ extern void
+ grub_Tss2_MU_TPMS_AUTH_RESPONSE_Unmarshal (grub_tpm2_buffer_t buffer,
+ 					   TPMS_AUTH_RESPONSE_t *p);
+@@ -336,6 +344,10 @@ extern void
+ grub_Tss2_MU_TPM2B_NV_PUBLIC_Unmarshal (grub_tpm2_buffer_t buffer,
+ 					TPM2B_NV_PUBLIC_t *p);
+ 
++extern void
++grub_Tss2_MU_TPM2B_NAX_NV_BUFFER_Unmarshal (grub_tpm2_buffer_t buffer,
++					    TPM2B_MAX_NV_BUFFER_t *p);
++
+ extern void
+ grub_Tss2_MU_TPM2B_NAME_Unmarshal (grub_tpm2_buffer_t buffer,
+ 				   TPM2B_NAME_t *n);
+diff --git a/grub-core/lib/tss2/tss2_types.h b/grub-core/lib/tss2/tss2_types.h
+index 5b1a7947d..bddde7191 100644
+--- a/grub-core/lib/tss2/tss2_types.h
++++ b/grub-core/lib/tss2/tss2_types.h
+@@ -270,6 +270,7 @@ typedef TPM_HANDLE_t TPMI_RH_NV_INDEX_t;
+ 
+ /* TPM_HT_t Constants */
+ typedef grub_uint8_t TPM_HT_t;
++#define TPM_HT_NV_INDEX   ((TPM_HT_t) 0x01)
+ #define TPM_HT_PERMANENT  ((TPM_HT_t) 0x40)
+ #define TPM_HT_PERSISTENT ((TPM_HT_t) 0x81)
+ 
+@@ -300,6 +301,7 @@ typedef TPM_HANDLE_t TPM_HC_t;
+ #define TPM_HR_HANDLE_MASK   ((TPM_HC_t) 0x00FFFFFF)
+ #define TPM_HR_RANGE_MASK    ((TPM_HC_t) 0xFF000000)
+ #define TPM_HR_SHIFT         ((TPM_HC_t) 24)
++#define TPM_HR_NV_INDEX      ((TPM_HC_t) (TPM_HT_NV_INDEX << TPM_HR_SHIFT))
+ #define TPM_HR_PERSISTENT    ((TPM_HC_t) (TPM_HT_PERSISTENT << TPM_HR_SHIFT))
+ #define TPM_HR_PERMANENT     ((TPM_HC_t) (TPM_HT_PERMANENT << TPM_HR_SHIFT))
+ #define TPM_PERSISTENT_FIRST ((TPM_HC_t) (TPM_HR_PERSISTENT + 0))
+@@ -308,6 +310,7 @@ typedef TPM_HANDLE_t TPM_HC_t;
+ #define TPM_PERMANENT_LAST   ((TPM_HC_t) TPM_RH_LAST)
+ 
+ /* TPM Handle Type Checks */
++#define TPM_HT_IS_NVINDEX(HANDLE) (((HANDLE) >> TPM_HR_SHIFT) == TPM_HT_NV_INDEX)
+ #define TPM_HT_IS_PERMANENT(HANDLE) (((HANDLE) >> TPM_HR_SHIFT) == TPM_HT_PERMANENT)
+ #define TPM_HT_IS_PERSISTENT(HANDLE) (((HANDLE) >> TPM_HR_SHIFT) == TPM_HT_PERSISTENT)
+ 
+@@ -334,8 +337,11 @@ typedef grub_uint32_t TPM_CC_t;
+ #define TPM_CC_ReadPublic       ((TPM_CC_t) 0x00000173)
+ #define TPM_CC_StartAuthSession ((TPM_CC_t) 0x00000176)
+ #define TPM_CC_PolicyPCR        ((TPM_CC_t) 0x0000017f)
++#define TPM_CC_NV_DefineSpace   ((TPM_CC_t) 0x0000012a)
+ #define TPM_CC_NV_Read          ((TPM_CC_t) 0x0000014e)
+ #define TPM_CC_NV_ReadPublic    ((TPM_CC_t) 0x00000169)
++#define TPM_CC_NV_Write         ((TPM_CC_t) 0x00000137)
++#define TPM_CC_NV_UndefineSpace ((TPM_CC_t) 0x00000122)
+ #define TPM_CC_GetCapability    ((TPM_CC_t) 0x0000017a)
+ #define TPM_CC_PCR_Read         ((TPM_CC_t) 0x0000017e)
+ #define TPM_CC_Load             ((TPM_CC_t) 0x00000157)
+-- 
+2.43.0
+

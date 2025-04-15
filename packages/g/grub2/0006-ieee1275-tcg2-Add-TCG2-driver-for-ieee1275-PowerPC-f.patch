@@ -1,0 +1,161 @@
+From ff14b89bda0445b97ad43b7cdbc5f20345f20006 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 26 Nov 2024 15:39:45 -0500
+Subject: [PATCH 6/7] ieee1275/tcg2: Add TCG2 driver for ieee1275 PowerPC
+ firmware
+
+Follow recent extensions of EFI support providing a TCG2 driver with
+a public API for getting the maximum TPM command size and passing a TPM
+command through to the TPM 2. Implement this functionality using ieee1275
+PowerPC firmware API calls. Move tcg2.c into the TCG2 driver.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/Makefile.core.def   |   3 +-
+ grub-core/lib/ieee1275/tcg2.c | 102 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 104 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
+index c5fd796d4..8ecedf986 100644
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
+@@ -1155,7 +1155,6 @@ module = {
+   name = tpm;
+   common = commands/tpm.c;
+   ieee1275 = commands/ieee1275/ibmvtpm.c;
+-  ieee1275 = lib/ieee1275/tcg2.c;
+   enable = powerpc_ieee1275;
+ };
+ 
+@@ -2576,8 +2575,10 @@ module = {
+   common = lib/tss2/tss2.c;
+   efi = lib/efi/tcg2.c;
+   emu = lib/tss2/tcg2_emu.c;
++  powerpc_ieee1275 = lib/ieee1275/tcg2.c;
+   enable = efi;
+   enable = emu;
++  enable = powerpc_ieee1275;
+   cppflags = '-I$(srcdir)/lib/tss2';
+ };
+ 
+diff --git a/grub-core/lib/ieee1275/tcg2.c b/grub-core/lib/ieee1275/tcg2.c
+index ea01a30eb..40161c2f9 100644
+--- a/grub-core/lib/ieee1275/tcg2.c
++++ b/grub-core/lib/ieee1275/tcg2.c
+@@ -23,6 +23,8 @@
+ #include <grub/mm.h>
+ #include <grub/misc.h>
+ 
++#include <tcg2.h>
++
+ grub_ieee1275_ihandle_t grub_ieee1275_tpm_ihandle = GRUB_IEEE1275_IHANDLE_INVALID;
+ 
+ grub_err_t
+@@ -53,3 +55,103 @@ grub_ieee1275_tpm_init (void)
+ 
+   return GRUB_ERR_NONE;
+ }
++
++grub_err_t
++grub_tcg2_get_max_output_size (grub_size_t *size)
++{
++  struct tpm_get_maximum_cmd_size
++  {
++    struct grub_ieee1275_common_hdr common;
++    grub_ieee1275_cell_t method;
++    grub_ieee1275_cell_t ihandle;
++    grub_ieee1275_cell_t catch_result;
++    grub_ieee1275_cell_t size;
++  };
++  struct tpm_get_maximum_cmd_size args;
++  static bool error_displayed = false;
++  grub_err_t err;
++
++  err = grub_ieee1275_tpm_init ();
++  if (err != GRUB_ERR_NONE)
++      return err;
++
++  INIT_IEEE1275_COMMON (&args.common, "call-method", 2, 2);
++  args.method = (grub_ieee1275_cell_t) "get-maximum-cmd-size";
++  args.ihandle = grub_ieee1275_tpm_ihandle;
++
++  if (IEEE1275_CALL_ENTRY_FN (&args) == -1)
++    return GRUB_ERR_INVALID_COMMAND;
++
++  /*
++   * args.catch_result is set if firmware does not support get-maximum-cmd-size.
++   * rc is GRUB_IEEE1275_CELL_FALSE (0) on failure.
++   */
++  if (args.catch_result)
++    {
++      if (error_displayed == false)
++	{
++	  error_displayed = true;
++	  return grub_error (GRUB_ERR_BAD_DEVICE,
++			     "get-maximum-cmd-size failed: Firmware is likely too old");
++	}
++      return GRUB_ERR_INVALID_COMMAND;
++    }
++
++  *size = args.size;
++
++  return GRUB_ERR_NONE;
++}
++
++grub_err_t
++grub_tcg2_submit_command (grub_size_t input_size,
++			  grub_uint8_t *input,
++			  grub_size_t output_size,
++			  grub_uint8_t *output)
++{
++  struct tpm_pass_through_to_tpm
++  {
++    struct grub_ieee1275_common_hdr common;
++    grub_ieee1275_cell_t method;
++    grub_ieee1275_cell_t ihandle;
++    grub_ieee1275_cell_t buf_size;
++    grub_ieee1275_cell_t buf_addr;
++    grub_ieee1275_cell_t catch_result;
++    grub_ieee1275_cell_t resp_size;
++  };
++  struct tpm_pass_through_to_tpm args;
++  static bool error_displayed = false;
++  grub_err_t err;
++
++  if (input_size == 0 || input == NULL ||
++      output_size == 0 || output == NULL)
++    return GRUB_ERR_BAD_ARGUMENT;
++
++  err = grub_ieee1275_tpm_init ();
++  if (err != GRUB_ERR_NONE)
++      return err;
++
++  INIT_IEEE1275_COMMON (&args.common, "call-method", 4, 2);
++  args.method = (grub_ieee1275_cell_t) "pass-through-to-tpm";
++  args.ihandle = grub_ieee1275_tpm_ihandle;
++  args.buf_size = (grub_ieee1275_cell_t) input_size;
++  args.buf_addr = (grub_ieee1275_cell_t) input;
++
++  if (IEEE1275_CALL_ENTRY_FN (&args) == -1)
++    return GRUB_ERR_INVALID_COMMAND;
++
++  /* args.catch_result is set if firmware does not support pass-through-to-tpm. */
++  if (args.catch_result)
++    {
++      if (error_displayed == false)
++	{
++	  error_displayed = true;
++	  return grub_error (GRUB_ERR_BAD_DEVICE,
++			     "pass-through-to-tpm failed: Firmware is likely too old");
++	}
++      return GRUB_ERR_INVALID_COMMAND;
++    }
++
++  grub_memcpy (output, input, args.resp_size);
++
++  return GRUB_ERR_NONE;
++}
+-- 
+2.43.0
+

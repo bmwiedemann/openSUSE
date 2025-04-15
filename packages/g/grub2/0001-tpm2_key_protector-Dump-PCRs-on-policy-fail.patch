@@ -1,0 +1,253 @@
+From 617dab9e476e8ea5aa314dcc5412bbd8a6f1f465 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Mon, 7 Apr 2025 16:29:15 +0800
+Subject: [PATCH 1/7] tpm2_key_protector: Dump PCRs on policy fail
+
+PCR mismatch is one common cause of TPM key unsealing fail. Since the
+system may be compromised, it is not safe to boot into OS to get the PCR
+values and TPM eventlog for the further investigation.
+
+To provide some hints, GRUB now dumps PCRs on policy fail, so the user
+can check the current PCR values. PCR 0~15 are chosen to cover the
+firmware, bootloader, and OS.
+
+The sample output:
+
+PCR Mismatch! Check firmware and bootloader before typing passphrase!
+TPM PCR [sha256]:
+  00: 17401f37710984c1d8a03a81fff3ab567ae9291bac61e21715b890ee28879738
+  01: 7a114329ba388445a96e8db2a072785937c1b7a8803ed7cc682b87f3ff3dd7a8
+  02: 11c2776849e8e24b7d80c926cbc4257871bffa744dadfefd3ed049ce25143e05
+  03: 6c33b362073e28e30b47302bbdd3e6f9cee4debca3a304e646f8c68245724350
+  04: 62d38838483ecfd2484ee3a2e5450d8ca3b35fc72cda6a8c620f9f43521c37d1
+  05: d8a85cb37221ab7d1f2cc5f554dbe0463acb6784b5b8dc3164ccaa66d8fff0e1
+  06: 9262e37cbe71ed4daf815b4a4881fb7251c9d371092dde827557d5368121e10e
+  07: 219d542233be492d62b079ffe46cf13396a8c27e520e88b08eaf2e6d3b7e70f5
+  08: de1f61c973b673e505adebe0d7e8fb65fde6c24dd4ab4fbaff9e28b18df6ecd3
+  09: c1de7274fa3e879a16d7e6e7629e3463d95f68adcfd17c477183846dccc41c89
+  10: 0000000000000000000000000000000000000000000000000000000000000000
+  11: 0000000000000000000000000000000000000000000000000000000000000000
+  12: 0000000000000000000000000000000000000000000000000000000000000000
+  13: 0000000000000000000000000000000000000000000000000000000000000000
+  14: 9ab9ebe4879a7f4dd00c04f37e79cfd69d0dd7a8bcc6b01135525b67676a3e40
+  15: 0000000000000000000000000000000000000000000000000000000000000000
+  16: 0000000000000000000000000000000000000000000000000000000000000000
+  17: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  18: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  19: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  20: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  21: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  22: ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  23: 0000000000000000000000000000000000000000000000000000000000000000
+error: failed to unseal sealed key (TPM2_Unseal: 0x99d).
+error: no key protector provided a usable key for luks (af16e48f-746b-4a12-aae1-c14dcee429e0).
+
+If the user happens to have the PCR values for key sealing, the PCR dump
+can be used to identify the changed PCRs and narrow down the scope for
+closer inspection.
+
+Please note that the PCR dump is trustworthy only if the GRUB binary is
+authentic, so the user has to check the GRUB binary thoroughly before
+using the PCR dump.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ .../commands/tpm2_key_protector/module.c      | 118 +++++++++++++++++-
+ 1 file changed, 114 insertions(+), 4 deletions(-)
+
+diff --git a/grub-core/commands/tpm2_key_protector/module.c b/grub-core/commands/tpm2_key_protector/module.c
+index 74e79a545..d5e530f77 100644
+--- a/grub-core/commands/tpm2_key_protector/module.c
++++ b/grub-core/commands/tpm2_key_protector/module.c
+@@ -790,7 +790,7 @@ tpm2_protector_simple_policy_seq (const tpm2_protector_context_t *ctx,
+ 
+ static grub_err_t
+ tpm2_protector_unseal (tpm2key_policy_t policy_seq, TPM_HANDLE_t sealed_handle,
+-		       grub_uint8_t **key, grub_size_t *key_size)
++		       grub_uint8_t **key, grub_size_t *key_size, bool *dump_pcr)
+ {
+   TPMS_AUTH_COMMAND_t authCmd = {0};
+   TPM2B_SENSITIVE_DATA_t data;
+@@ -801,6 +801,8 @@ tpm2_protector_unseal (tpm2key_policy_t policy_seq, TPM_HANDLE_t sealed_handle,
+   TPM_RC_t rc;
+   grub_err_t err;
+ 
++  *dump_pcr = false;
++
+   /* Start Auth Session */
+   nonceCaller.size = TPM_SHA256_DIGEST_SIZE;
+   symmetric.algorithm = TPM_ALG_NULL;
+@@ -820,6 +822,13 @@ tpm2_protector_unseal (tpm2key_policy_t policy_seq, TPM_HANDLE_t sealed_handle,
+   rc = grub_tpm2_unseal (sealed_handle, &authCmd, &data, NULL);
+   if (rc != TPM_RC_SUCCESS)
+     {
++      /*
++       * Trigger PCR dump on policy fail
++       * TPM_RC_S (0x800) | TPM_RC_1 (0x100) | RC_FMT (0x80) | TPM_RC_POLICY_FAIL (0x1D)
++       */
++      if (rc == 0x99D)
++	*dump_pcr = true;
++
+       err = grub_error (GRUB_ERR_BAD_DEVICE, "failed to unseal sealed key (TPM2_Unseal: 0x%x)", rc);
+       goto error;
+     }
+@@ -845,6 +854,91 @@ tpm2_protector_unseal (tpm2key_policy_t policy_seq, TPM_HANDLE_t sealed_handle,
+   return err;
+ }
+ 
++#define TPM_PCR_STR_SIZE (sizeof (TPMU_HA_t) * 2 + 1)
++
++static grub_err_t
++tpm2_protector_get_pcr_str (const TPM_ALG_ID_t algo, grub_uint32_t index, char *pcr_str, grub_uint16_t buf_size)
++{
++  TPML_PCR_SELECTION_t pcr_sel = {
++    .count = 1,
++    .pcrSelections = {
++      {
++	.hash = algo,
++	.sizeOfSelect = 3,
++	.pcrSelect = {0}
++      },
++    }
++  };
++  TPML_DIGEST_t digest = {0};
++  grub_uint16_t i;
++  TPM_RC_t rc;
++
++  if (buf_size < TPM_PCR_STR_SIZE)
++    {
++      grub_snprintf (pcr_str, buf_size, "insufficient buffer");
++      return GRUB_ERR_OUT_OF_MEMORY;
++    }
++
++  TPMS_PCR_SELECTION_SelectPCR (&pcr_sel.pcrSelections[0], index);
++
++  rc = grub_tpm2_pcr_read (NULL, &pcr_sel, NULL, NULL, &digest, NULL);
++  if (rc != TPM_RC_SUCCESS)
++    {
++      grub_snprintf (pcr_str, buf_size, "TPM2_PCR_Read: 0x%x", rc);
++      return GRUB_ERR_BAD_DEVICE;
++    }
++
++  /* Check the returned digest number and size */
++  if (digest.count != 1 || digest.digests[0].size > sizeof (TPMU_HA_t))
++    {
++      grub_snprintf (pcr_str, buf_size, "invalid digest");
++      return GRUB_ERR_BAD_DEVICE;
++    }
++
++  /* Print the digest to the buffer */
++  for (i = 0; i < digest.digests[0].size; i++)
++    grub_snprintf (pcr_str + 2 * i, buf_size - 2 * i, "%02x", digest.digests[0].buffer[i]);
++
++  return GRUB_ERR_NONE;
++}
++
++static void
++tpm2_protector_dump_pcr (const TPM_ALG_ID_t bank)
++{
++  const char *algo_name;
++  char pcr_str[TPM_PCR_STR_SIZE];
++  grub_uint8_t i;
++  grub_err_t err;
++
++  if (bank == TPM_ALG_SHA1)
++    algo_name = "sha1";
++  else if (bank == TPM_ALG_SHA256)
++    algo_name = "sha256";
++  else if (bank == TPM_ALG_SHA384)
++    algo_name = "sha384";
++  else if (bank == TPM_ALG_SHA512)
++    algo_name = "sha512";
++  else
++    algo_name = "other";
++
++  /* Try to fetch PCR 0 */
++  err = tpm2_protector_get_pcr_str (bank, 0, pcr_str, sizeof (pcr_str));
++  if (err != GRUB_ERR_NONE)
++    {
++      grub_printf ("Unsupported PCR bank [%s]: %s\n", algo_name, pcr_str);
++      return;
++    }
++
++  grub_printf ("TPM PCR [%s]:\n", algo_name);
++
++  grub_printf ("  %02d: %s\n", 0, pcr_str);
++  for (i = 1; i < TPM_MAX_PCRS; i++)
++    {
++      tpm2_protector_get_pcr_str (bank, i, pcr_str, sizeof (pcr_str));
++      grub_printf ("  %02d: %s\n", i, pcr_str);
++    }
++}
++
+ static grub_err_t
+ tpm2_protector_srk_recover (const tpm2_protector_context_t *ctx,
+ 			    grub_uint8_t **key, grub_size_t *key_size)
+@@ -859,6 +953,7 @@ tpm2_protector_srk_recover (const tpm2_protector_context_t *ctx,
+   tpm2key_policy_t policy_seq = NULL;
+   tpm2key_authpolicy_t authpol = NULL;
+   tpm2key_authpolicy_t authpol_seq = NULL;
++  bool dump_pcr = false;
+   grub_err_t err;
+ 
+   /*
+@@ -924,7 +1019,7 @@ tpm2_protector_srk_recover (const tpm2_protector_context_t *ctx,
+   /* Iterate the authpolicy sequence to find one that unseals the key */
+   FOR_LIST_ELEMENTS (authpol, authpol_seq)
+     {
+-      err = tpm2_protector_unseal (authpol->policy_seq, sealed_handle, key, key_size);
++      err = tpm2_protector_unseal (authpol->policy_seq, sealed_handle, key, key_size, &dump_pcr);
+       if (err == GRUB_ERR_NONE)
+         break;
+ 
+@@ -952,13 +1047,20 @@ tpm2_protector_srk_recover (const tpm2_protector_context_t *ctx,
+ 	    goto exit2;
+ 	}
+ 
+-      err = tpm2_protector_unseal (policy_seq, sealed_handle, key, key_size);
++      err = tpm2_protector_unseal (policy_seq, sealed_handle, key, key_size, &dump_pcr);
+     }
+ 
+   /* Pop error messages on success */
+   if (err == GRUB_ERR_NONE)
+     while (grub_error_pop ());
+ 
++  /* Dump PCRs if necessary */
++  if (dump_pcr == true)
++    {
++      grub_printf ("PCR Mismatch! Check firmware and bootloader before typing passphrase!\n");
++      tpm2_protector_dump_pcr (ctx->bank);
++    }
++
+  exit2:
+   grub_tpm2_flushcontext (sealed_handle);
+ 
+@@ -978,6 +1080,7 @@ tpm2_protector_nv_recover (const tpm2_protector_context_t *ctx,
+ {
+   TPM_HANDLE_t sealed_handle = ctx->nv;
+   tpm2key_policy_t policy_seq = NULL;
++  bool dump_pcr = false;
+   grub_err_t err;
+ 
+   /* Create a basic policy sequence based on the given PCR selection */
+@@ -985,7 +1088,14 @@ tpm2_protector_nv_recover (const tpm2_protector_context_t *ctx,
+   if (err != GRUB_ERR_NONE)
+     goto exit;
+ 
+-  err = tpm2_protector_unseal (policy_seq, sealed_handle, key, key_size);
++  err = tpm2_protector_unseal (policy_seq, sealed_handle, key, key_size, &dump_pcr);
++
++  /* Dump PCRs if necessary */
++  if (dump_pcr == true)
++    {
++      grub_printf ("PCR Mismatch! Check firmware and bootloader before typing passphrase!\n");
++      tpm2_protector_dump_pcr (ctx->bank);
++    }
+ 
+  exit:
+   grub_tpm2_flushcontext (sealed_handle);
+-- 
+2.43.0
+

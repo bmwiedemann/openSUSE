@@ -1,0 +1,61 @@
+From e2ffbaf62f0a97caa1e4214be7ee71db0a49ad6c Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 14 Jan 2025 14:28:35 +0800
+Subject: [PATCH] prep_loadenv: Measure the environment block into PCR 9
+
+Since the firmware is not aware of the environment block in the PReP
+partition, the measurement of PCR 4 does not include that block. To
+close the gap, prep_loadenv now measures the block into PCR 9.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/commands/prep_loadenv.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+diff --git a/grub-core/commands/prep_loadenv.c b/grub-core/commands/prep_loadenv.c
+index 109b7ca5a..5b8ade8db 100644
+--- a/grub-core/commands/prep_loadenv.c
++++ b/grub-core/commands/prep_loadenv.c
+@@ -11,6 +11,7 @@
+ #include <grub/i18n.h>
+ #include <grub/gpt_partition.h>
+ #include <regex.h>
++#include <grub/tpm.h>
+ 
+ GRUB_MOD_LICENSE ("GPLv3+");
+ 
+@@ -122,6 +123,7 @@ prep_read_envblk (const char *devname)
+   char *buf = NULL;
+   grub_device_t dev = NULL;
+   grub_envblk_t envblk = NULL;
++  grub_err_t err;
+ 
+   dev = grub_device_open (devname);
+   if (!dev)
+@@ -140,6 +142,23 @@ prep_read_envblk (const char *devname)
+   if (grub_disk_read (dev->disk, dev->disk->partition->len - (GRUB_ENVBLK_PREP_SIZE >> GRUB_DISK_SECTOR_BITS), 0, GRUB_ENVBLK_PREP_SIZE, buf))
+     goto fail;
+ 
++  /*
++   * Measure the environment block in the PReP partition
++   * The firmware is not aware of this block, so the content of the environment
++   * block is not measured into PCR 4.
++   */
++  if (grub_tpm_present () == true)
++    {
++      err = grub_tpm_measure ((unsigned char*)buf, GRUB_ENVBLK_PREP_SIZE, GRUB_BINARY_PCR, "PReP envblk");
++      if (err != GRUB_ERR_NONE && grub_is_tpm_fail_fatal () == true)
++	{
++	  grub_errno = err;
++	  goto fail;
++	}
++      else
++	grub_errno = GRUB_ERR_NONE;
++    }
++
+   envblk = grub_envblk_open (buf, GRUB_ENVBLK_PREP_SIZE);
+   if (!envblk)
+     {
+-- 
+2.43.0
+

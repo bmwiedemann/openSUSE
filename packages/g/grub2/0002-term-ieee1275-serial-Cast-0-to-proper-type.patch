@@ -1,0 +1,31 @@
+From 29d1bd2a96948bc120cb5906188117f670797fcf Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 26 Nov 2024 15:39:41 -0500
+Subject: [PATCH 2/7] term/ieee1275/serial: Cast 0 to proper type
+
+Cast 0 to proper type grub_ieee1275_ihandle_t. This type is
+used for struct grub_serial_port's handle that assigns or
+compares with IEEE1275_IHANDLE_INVALID.
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/term/ieee1275/serial.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/term/ieee1275/serial.c b/grub-core/term/ieee1275/serial.c
+index 0e4cac4c4..9bc44b306 100644
+--- a/grub-core/term/ieee1275/serial.c
++++ b/grub-core/term/ieee1275/serial.c
+@@ -25,7 +25,7 @@
+ #include <grub/i18n.h>
+ #include <grub/ieee1275/console.h>
+ 
+-#define IEEE1275_IHANDLE_INVALID  ((grub_ieee1275_cell_t) 0)
++#define IEEE1275_IHANDLE_INVALID  ((grub_ieee1275_ihandle_t) 0)
+ 
+ struct ofserial_hash_ent
+ {
+-- 
+2.43.0
+

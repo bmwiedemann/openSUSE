@@ -447,6 +447,22 @@ Patch273:       0009-appendedsig-documentation.patch
 Patch274:       0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
 Patch275:       grub2-btrfs-filter-non-subvol-mount.patch
 Patch276:       grub2-provide-edid.patch
+Patch277:       0001-prep_loadenv-Measure-the-environment-block-into-PCR-.patch
+Patch278:       0001-tpm2_key_protector-Add-grub-emu-support.patch
+Patch279:       0001-tss2-Adjust-bit-fields-for-big-endian-targets.patch
+Patch280:       0002-term-ieee1275-serial-Cast-0-to-proper-type.patch
+Patch281:       0003-ieee1275-Consolidate-repeated-definitions-of-IEEE127.patch
+Patch282:       0004-ieee1275-ibmvpm-Move-TPM-initialization-functions-to.patch
+Patch283:       0005-ieee1275-tcg2-Refactor-grub_ieee1275_tpm_init.patch
+Patch284:       0006-ieee1275-tcg2-Add-TCG2-driver-for-ieee1275-PowerPC-f.patch
+Patch285:       0007-tpm2_key_protector-Enable-build-for-powerpc_ieee1275.patch
+Patch286:       0001-tpm2_key_protector-Dump-PCRs-on-policy-fail.patch
+Patch287:       0002-tpm2_key_protector-Add-tpm2_dump_pcr-command.patch
+Patch288:       0003-tss2-Fix-the-missing-authCommand.patch
+Patch289:       0004-tss2-Add-TPM-2.0-NV-index-commands.patch
+Patch290:       0005-tpm2_key_protector-Unseal-key-from-a-buffer.patch
+Patch291:       0006-tpm2_key_protector-Support-NV-index-handles.patch
+Patch292:       0007-util-grub-protect-Support-NV-index-mode.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

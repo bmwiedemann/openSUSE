@@ -1,0 +1,23 @@
+From 6811f6f09d61996a3acbc4fc0414e45964f0e2d9 Mon Sep 17 00:00:00 2001
+From: Stefan Berger <stefanb@linux.ibm.com>
+Date: Tue, 26 Nov 2024 15:39:46 -0500
+Subject: [PATCH 7/7] tpm2_key_protector: Enable build for powerpc_ieee1275
+
+Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/Makefile.core.def | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: grub-2.12/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.12.orig/grub-core/Makefile.core.def
++++ grub-2.12/grub-core/Makefile.core.def
+@@ -2645,6 +2645,7 @@ module = {
+   /* The plaform support of tpm2_key_protector depends on the tcg2 implementation in tss2. */
+   enable = efi;
+   enable = emu;
++  enable = powerpc_ieee1275;
+   cppflags = '-I$(srcdir)/lib/tss2';
+ };
+ 
