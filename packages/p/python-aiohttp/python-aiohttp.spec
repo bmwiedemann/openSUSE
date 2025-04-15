@@ -19,14 +19,13 @@
 %bcond_with docs
 %{?sle15_python_module_pythons}
 Name:           python-aiohttp
-Version:        3.11.11
+Version:        3.11.16
 Release:        0
 Summary:        Asynchronous HTTP client/server framework
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/aiohttp
 Source:         https://files.pythonhosted.org/packages/source/a/aiohttp/aiohttp-%{version}.tar.gz
 Patch0:         test_no_warnings_fix.patch
-Patch1:         test_relax_import_time.patch
 Requires:       python-aiohappyeyeballs >= 2.3.0
 Requires:       python-aiosignal >= 1.1.2
 Requires:       python-attrs >= 17.3.0

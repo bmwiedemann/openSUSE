@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Apr 15 09:18:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.11.16
+  * Replaced deprecated asyncio.iscoroutinefunction with its
+    counterpart from inspect
+  * Fixed :class:multidict.CIMultiDict being mutated when passed
+    to :class:aiohttp.web.Response -- by :user:bdraco.
+- from version 3.11.15
+  * Reverted explicitly closing sockets if an exception is raised
+    during create_connection
+    This change originally appeared in aiohttp 3.11.13
+  * Improved performance of WebSocket buffer handling
+  * Improved performance of serializing headers
+- from version 3.11.14
+  * Fixed an issue where dns queries were delayed indefinitely
+    when an exception occurred in a trace.send_dns_cache_miss
+  * Fixed DNS resolution on platforms that don't support
+    socket.AI_ADDRCONFIG
+  * The connector now raises :exc:aiohttp.ClientConnectionError
+    instead of :exc:OSError when failing to explicitly close the
+    socket after :py:meth:asyncio.loop.create_connection fails
+  * Break cyclic references at connection close when there was
+    a traceback
+  * Break cyclic references when there is an exception handling
+    a request
+  * Improved logging on non-overlapping WebSocket client protocols
+    to include the remote address
+  * Improved performance of parsing content types by adding a cache
+    in the same manner currently done with mime types
+- from version 3.11.13
+  * Removed a break statement inside the finally block in
+    :py:class:~aiohttp.web.RequestHandler
+  * Changed connection creation to explicitly close sockets if an
+    exception is raised in the event loop's create_connection method
+  * Fixed test test_write_large_payload_deflate_compression_data_in_\
+    eof_writelines failing with Python 3.12.9+ or 3.13.2+
+  * Added human-readable error messages to the exceptions for WebSocket
+    disconnects due to PONG not being received
+    Previously, the error messages were empty strings, which made it
+    hard to determine what went wrong.
+- from version 3.11.12
+  * MultipartForm.decode() now follows RFC1341 7.2.1 with a CRLF
+    after the boundary
+  * Restored the missing total_bytes attribute to EmptyStreamReader
+  * Updated :py:func:~aiohttp.request to make it accept _RequestOptions
+    kwargs.
+  * Improved logging of HTTP protocol errors to include the remote address
+  * Added aiohttp-openmetrics to list of third-party libraries
+  * Added missing files to the source distribution to fix Makefile targets
+  * Added a cythonize-nodeps target to run Cython without invoking pip to
+    install dependencies
+  * Started building armv7l musllinux wheels
+  * The CI/CD workflow has been updated to use upload-artifact v4 and
+    download-artifact v4 GitHub Actions
+  * Restored support for zero copy writes when using Python 3.12 versions
+    3.12.9 and later or Python 3.13.2+
+    Zero copy writes were previously disabled due to CVE-2024-12254 which
+    is resolved in these Python versions.
+- Drop test_relax_import_time.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon Jan  6 19:02:59 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.11:
