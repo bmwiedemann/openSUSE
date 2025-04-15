@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr  2 05:35:28 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.680.0 (4.68)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  4.68 2025-04-01
+
+      [ FIX ]
+      - handle passing of hash keys as args with a mix of dashed and non dashed (GH #270, thanks to kocoureasy for the patch)
+
+-------------------------------------------------------------------
 Thu Jan  9 05:30:16 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.670.0 (4.67)

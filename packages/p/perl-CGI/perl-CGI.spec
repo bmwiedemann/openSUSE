@@ -18,10 +18,10 @@
 
 %define cpan_name CGI
 Name:           perl-CGI
-Version:        4.670.0
+Version:        4.680.0
 Release:        0
-# 4.67 -> normalize -> 4.670.0
-%define cpan_version 4.67
+# 4.68 -> normalize -> 4.680.0
+%define cpan_version 4.68
 License:        Artistic-2.0
 Summary:        Handle Common Gateway Interface requests and responses
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,15 +31,15 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(File::Temp) >= 0.17
-BuildRequires:  perl(HTML::Entities) >= 3.69
+BuildRequires:  perl(HTML::Entities) >= 3.690
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(Test::Warn) >= 0.3
-BuildRequires:  perl(URI) >= 1.76
+BuildRequires:  perl(URI) >= 1.760
 BuildRequires:  perl(parent) >= 0.225
 Requires:       perl(File::Temp) >= 0.17
-Requires:       perl(HTML::Entities) >= 3.69
-Requires:       perl(URI) >= 1.76
+Requires:       perl(HTML::Entities) >= 3.690
+Requires:       perl(URI) >= 1.760
 Requires:       perl(parent) >= 0.225
 Provides:       perl(CGI)
 Provides:       perl(CGI::Carp) = %{version}
@@ -49,7 +49,7 @@ Provides:       perl(CGI::HTML::Functions)
 Provides:       perl(CGI::MultipartBuffer)
 Provides:       perl(CGI::Pretty) = %{version}
 Provides:       perl(CGI::Push)
-Provides:       perl(CGI::Util) = %{version}
+Provides:       perl(CGI::Util) = 4.670.0
 Provides:       perl(Fh) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -69,7 +69,7 @@ CGI.pm was included in the perl distribution from perl v5.4 to v5.20,
 however is has now been removed from the perl core...
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
