@@ -1,7 +1,7 @@
 #
 # spec file for package alsa-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,8 @@
 
 
 %define build_hwdep_loader	0
-%if 0%{?suse_version} >  1140
-%define have_gtk3	1
-%else
-%define have_gtk3	0
-%endif
 Name:           alsa-tools
-Version:        1.2.11
+Version:        1.2.14
 Release:        0
 Summary:        Various ALSA Tools
 License:        GPL-2.0-or-later
@@ -37,7 +32,6 @@ Source4:        sbipatches.tar.bz2
 Source5:        rmedigicontrol.desktop
 Source7:        rmedigicontrol.png
 # upstream fixes
-Patch1:         0001-hdajackretask-Fix-build-with-gcc7.patch
 # build fixes
 Patch101:       alsa-tools-no_m4_dir.dif
 BuildRequires:  alsa-devel
@@ -45,11 +39,9 @@ BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection
 BuildRequires:  gtk2-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  libtool
 BuildRequires:  update-desktop-files
-%if %{have_gtk3}
-BuildRequires:  gtk3-devel
-%endif
 
 %description
 This is a meta package for collection of sub-packages.
@@ -299,7 +291,6 @@ Hammerfall DSP soundcard series.
 
 %prep
 %setup -q -a 4
-%patch -P 1 -p1
 cp %{SOURCE3} .
 %patch -P 101 -p1
 
@@ -315,11 +306,7 @@ ALL_PACKS="$ALL_PACKS pcxhrloader mixartloader vxloader"
 %endif
 
 ALL_PACKS="$ALL_PACKS envy24control rmedigicontrol echomixer"
-
-%if %{have_gtk3}
 ALL_PACKS="$ALL_PACKS hdajackretask hdajacksensetest"
-%endif
-
 ALL_PACKS="$ALL_PACKS hdspconf hdspmixer"
 echo "$ALL_PACKS" > .allpacks
 
@@ -524,7 +511,6 @@ exit 0
 %doc echomixer/COPYING
 %doc echomixer/README
 
-%if %{have_gtk3}
 %files -n hdajackretask
 %{_bindir}/hdajackretask
 %{_datadir}/applications/hdajackretask.desktop
@@ -534,7 +520,6 @@ exit 0
 
 %files -n hdajacksensetest
 %{_bindir}/hdajacksensetest
-%endif
 
 %files -n hdspconf
 %{_bindir}/hdspconf
