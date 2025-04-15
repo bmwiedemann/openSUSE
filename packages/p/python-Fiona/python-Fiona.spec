@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fiona
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Fiona
-Version:        1.9.6
+Version:        1.10.1
 Release:        0
 Summary:        Module for reading and writing spatial data files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/Toblerity/Fiona
 Source:         https://files.pythonhosted.org/packages/source/f/fiona/fiona-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM - Fix leak in set_proj_search_path
-Patch:          https://github.com/Toblerity/Fiona/pull/1314.patch
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -38,27 +35,27 @@ BuildRequires:  libgdal-devel
 BuildRequires:  proj
 BuildRequires:  proj-devel
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 17
-Requires:       python-click >= 4.0
-Requires:       python-click-plugins >= 1.0
-Requires:       python-cligj
-Requires:       python-munch
-Requires:       python-six >= 1.7
+Requires:       python-attrs >= 19.2
+Requires:       python-certifi
+Requires:       python-click >= 8.0
+Requires:       python-click-plugins
+Requires:       python-cligj >= 0.5
 Recommends:     python-Shapely
 Recommends:     python-boto3
-Recommends:     python-certifi
+Recommends:     python-pyparsing
 # SECTION test requirements
 BuildRequires:  %{python_module Shapely}
-BuildRequires:  %{python_module attrs >= 17}
+BuildRequires:  %{python_module aiohttp}
+BuildRequires:  %{python_module attrs >= 19.2}
 BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module click >= 4.0}
-BuildRequires:  %{python_module click-plugins >= 1.0}
-BuildRequires:  %{python_module cligj}
-BuildRequires:  %{python_module munch}
+BuildRequires:  %{python_module click >= 8.0}
+BuildRequires:  %{python_module click-plugins}
+BuildRequires:  %{python_module cligj >= 0.5}
+BuildRequires:  %{python_module fsspec}
+BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pyproj}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module six >= 1.7}
 # /SECTION
 Recommends:     fiona-fio
 %python_subpackages
@@ -89,7 +86,7 @@ using OGR's Fiona package.
 
 %check
 # The following require network
-skiptests="wheel or test_open_zip_https or test_open_http or test_collection_http or test_collection_zip_http"
+skiptests="wheel or test_open_zip_https or test_open_http or test_collection_http or test_collection_zip_http or test_opener_fsspec_zip_http_fs"
 # Reason for this failure not recorded
 skiptests="$skiptests or GPSTrackMaker"
 # December 2022: test_no_append_driver_cannot_append has started failing for FlatGeobuf and GeoJSONSeq only
@@ -106,7 +103,7 @@ mv fiona_temp fiona
 %doc CHANGES.txt CREDITS.txt README.rst
 %license LICENSE.txt
 %{python_sitearch}/fiona
-%{python_sitearch}/fiona-%{version}*-info
+%{python_sitearch}/fiona-%{version}.dist-info
 
 %files -n fiona-fio
 %license LICENSE.txt

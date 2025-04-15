@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Apr 10 06:40:53 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.10.1:
+  * Bug fixes:
+    + Logging in the CRS class no longer tries to print representations of
+      objects that may be NULL when searching for authority matches.
+    + The truncate VSI plugin callback has been implemented.
+    + The Pyopener registry and VSI plugin have been rewritten to avoid
+      filename conflicts and to be compatible with multithreading.
+    + A CSLConstList ctypedef has been added and is used where appropriate.
+    + Fiona model objects have a informative, printable representation again.
+    + Fiona can again set fields with values that are instances of classes
+      derived from date, time, and datetime.
+    + Fiona's python opener VSI plugin prefix has been changed to
+      "vsifiopener"
+    + Add a 16-bit integer type "int16" based on OGR's OSFTInt16 integer
+      sub-type.
+    + Allow a GeoJSON collection's layer name to be set on opening in
+      write mode
+    + An implementation of the VSI flush callback has been added to
+      _vsiopener.pyx.
+    + Openers are now registered only by urlpath. The mode is no longer
+      considered as OGR drivers may use a mix of modes when creating a
+      new dataset.
+  * New features:
+   + All supported Fiona field types are now represented by classes in
+     fiona.schema.
+   + The filter, map, and reduce CLI commands from the public domain
+     version 1.1.0 of fio-planet have been incorporated into Fiona's core
+     set of commands
+   + Python openers can now support discovery of auxiliary "sidecar" files
+     like .aux.xml, .msk, and .tfw files for GeoTIFFs.
+- Drop patch 1314.patch, now included upstream.
+
+-------------------------------------------------------------------
 Wed Jun 19 19:49:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.6
