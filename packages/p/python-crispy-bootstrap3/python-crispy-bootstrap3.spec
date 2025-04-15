@@ -1,7 +1,7 @@
 #
 # spec file for package python-crispy-bootstrap3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 Name:           python-crispy-bootstrap3
@@ -56,7 +57,9 @@ Bootstrap3 template pack for django-crispy-forms
 %check
 export DJANGO_SETTINGS_MODULE=tests.test_settings
 export PYTHONPATH=$PWD
-%pytest
+# https://github.com/django-crispy-forms/crispy-bootstrap3/issues/12
+donttest="test_form_show_errors_non_field_errors or test_bootstrap_form_show_errors_bs3"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

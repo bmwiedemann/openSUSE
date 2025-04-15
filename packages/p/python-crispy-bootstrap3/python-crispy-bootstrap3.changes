@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:09:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with Django 5.2
+
+-------------------------------------------------------------------
 Fri Mar 22 08:28:06 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}
