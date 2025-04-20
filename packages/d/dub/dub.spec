@@ -23,7 +23,7 @@
 %bcond_with dcompiler_dmd
 %endif
 Name:           dub
-Version:        1.39.0
+Version:        1.40.0
 Release:        0
 Summary:        Package manager and meta build tool for the D programming language
 License:        MIT
@@ -33,8 +33,9 @@ Source:         https://github.com/dlang/dub/archive/v%{version}.tar.gz#/%{name}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 %if %{with dcompiler_dmd}
-BuildRequires:  dmd
+BuildRequires:  dmd >= 2.076
 BuildRequires:  phobos-devel
+BuildRequires:  phobos-devel-static
 %else
 BuildRequires:  ldc
 BuildRequires:  ldc-phobos-devel
@@ -70,6 +71,11 @@ echo "enum dubVersion = \"%{version}\";" >> source/dub/version_.d
 %endif
   -ofbin/dub -w -O \
   -version=DubUseCurl -Isource -L-lcurl @build-files.txt
+
+%check
+for unit_test in simple mutex variables version; do
+  DUB=bin/%{name} PATH=$PATH:bin test/run-unittest.sh $unit_test
+done
 
 %install
 mkdir -p %{buildroot}%{_bindir}/
