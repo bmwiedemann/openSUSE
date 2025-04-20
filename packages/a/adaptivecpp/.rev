@@ -58,4 +58,12 @@ AFAIK we do miss an open source SYCL implementation in Factory.</comment>
   0002-Remove-realpath-in-acpp.patch</comment>
     <requestid>1235204</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3335c31ce23cc7bb3f440db6b9283cae</srcmd5>
+    <version>24.10.0</version>
+    <time>1745134532</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1270916</requestid>
+  </revision>
 </revisionlist>

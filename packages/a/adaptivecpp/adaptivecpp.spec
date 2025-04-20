@@ -2,6 +2,7 @@
 # spec file for package adaptivecpp
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           adaptivecpp
-Version:        24.10.0~0
+Version:        24.10.0
 Release:        0
 Summary:        Open implementation of SYCL for CPUs and GPUs
 License:        BSD-2-Clause
@@ -25,9 +26,9 @@ URL:            https://adaptivecpp.github.io
 Source:         %{name}-%{version}.tar.gz
 Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
 Patch2:         0002-Remove-realpath-in-acpp.patch
+Patch3:         adaptivecpp-24.10.0-cmake4.patch
 BuildRequires:  boost-devel
-BuildRequires:  clang
-BuildRequires:  clang-devel
+BuildRequires:  clang19-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -36,8 +37,7 @@ BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_fiber-devel
 BuildRequires:  libboost_test-devel
 BuildRequires:  libedit-devel
-BuildRequires:  llvm
-BuildRequires:  llvm-devel
+BuildRequires:  llvm19-devel
 BuildRequires:  make
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -158,6 +158,7 @@ Development files for AdaptiveCpp
 %endif
 
 %files devel
+%license LICENSE
 %{_includedir}/AdaptiveCpp/
 %dir %{_prefix}/lib/cmake/
 %{_prefix}/lib/cmake/AdaptiveCpp/
@@ -167,22 +168,28 @@ Development files for AdaptiveCpp
 %{_prefix}%{_sysconfdir}/AdaptiveCpp/acpp-core.json
 
 %files -n libacpp-common
+%license LICENSE
 %{_prefix}/lib/libacpp-common.so
 
 %files -n libacpp-clang
+%license LICENSE
 %{_prefix}/lib/libacpp-clang.so
 
 %files -n libacpp-rt
+%license LICENSE
 %{_prefix}/lib/libacpp-rt.so
 
 %files -n libacpp-bitcode
+%license LICENSE
 %dir %{_prefix}/lib/hipSYCL/
 %{_prefix}/lib/hipSYCL/bitcode/
 
 %files -n libacpp-rt-omp
+%license LICENSE
 %{_prefix}/lib/hipSYCL/librt-backend-omp.so
 
 %files -n libacpp-llvm-to-backend
+%license LICENSE
 %dir %{_prefix}/lib/hipSYCL/
 %{_prefix}/lib/hipSYCL/llvm-to-backend/
 

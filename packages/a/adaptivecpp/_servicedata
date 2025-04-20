@@ -1,4 +1,6 @@
 <servicedata>
-<service name="tar_scm">
-                <param name="url">https://github.com/AdaptiveCpp/AdaptiveCpp.git</param>
-              <param name="changesrevision">7677cf6eefd8ab46d66168cd07ab042109448124</param></service></servicedata>
+  <service name="tar_scm">
+    <param name="url">https://github.com/AdaptiveCpp/AdaptiveCpp.git</param>
+    <param name="changesrevision">7677cf6eefd8ab46d66168cd07ab042109448124</param>
+  </service>
+</servicedata>

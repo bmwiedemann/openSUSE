@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 18 08:24:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with cmake4 boo#1239788 adaptivecpp-24.10.0-cmake4.patch
+- version is 24.10.0 because the package packs tags without offset
+- pin to llvm19
+
+-------------------------------------------------------------------
 Fri Jan 03 22:30:08 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 24.10.0~0:
