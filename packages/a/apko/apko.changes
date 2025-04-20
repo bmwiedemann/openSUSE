@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 19 15:36:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.1:
+  * apk cache: ignore error on cache tmpfile chmod (#1631)
+
+-------------------------------------------------------------------
+Wed Apr 16 15:36:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.26.0:
+  This release is a minor bump to signal that some potentially (and
+  if so, unintentional) breaking changes around so: providers and
+  PATH.
+  This release also introduces experimental support for an opt-in
+  layering field that does automatic layering of packages based on
+  some heuristics, with the goal of reducing waste by deduplicating
+  contents between image builds.
+  * What's Changed
+    - version.go: Ignore soname-versioned provides/depends for
+      shlibs by @sergiodj in #1619
+    - Implement generic layering by @jonjohnsonjr in #1617
+    - Update default PATH to support sbin-merge by @xnox in #1620
+    - Do not retry with jitter when discoveringKeys in offline
+      mode. by @sfc-gh-ptabor in #1610
+    - CacheDir support for apko lock by @sfc-gh-ptabor in #1612
+    - Fix reproducibility test digest by @jonjohnsonjr in #1622
+    - build(deps): bump google.golang.org/api from 0.228.0 to
+      0.229.0 by @dependabot in #1623
+    - layering: Synthesize directory timestamps by @jonjohnsonjr in
+      #1624
+
+-------------------------------------------------------------------
 Mon Apr 14 07:48:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.25.7:
