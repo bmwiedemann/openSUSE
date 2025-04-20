@@ -1,0 +1,217 @@
+-------------------------------------------------------------------
+Sat Apr 19 18:46:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update upstream URL
+
+-------------------------------------------------------------------
+Wed Jul 10 23:03:29 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.2.13
+  * Document/GUI/Header Modem/Default Modems
+    + Update User Manual for recent changes.
+    + Estimated Relay transmit time not updating on TX panel modem change.
+    + Header Modem using interval timer RX state delay, corrected.
+    + Olivia Modem Names to Uppercase.
+    + Remove redundant TX_SEGMENTED check.
+    + Add code for relay repeat counters, interval timer.
+
+-------------------------------------------------------------------
+Sun Apr 21 15:33:28 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 2.2.12
+  * Tabs/Relay Options/GUI/Fluid
+    + Save selected Tab panel state on exit
+    + Restore selected panel on restart.
+    + Corrected Widget Event Settings (FLUID).
+    + Add Header/Data Repeat Counters for Relay file transmissions.
+    + Add transmit time widget for relay files.
+    + Move relay auto save checkboxes to config panel.
+    + Corrected default Olivia modem tag names.
+    + Add code to correctly restore RX panel data on file selection
+      changes.
+  * font browser
+    + update font browser class to use std::list vice computed
+      array size to enumerate system fonts
+  * Document/GUI/Header Modem/Default Modems
+    + Update User Manual for recent changes.
+    + Estimated Relay transmit time not updating on TX panel modem
+      change.
+    + Header Modem using interval timer RX state delay, corrected.
+    + Olivia Modem Names to Uppercase.
+    + Remove redundant TX_SEGMENTED check.
+    + Add code for relay repeat counters, interval timer.
+  * Compatibility/Modem Switch
+    + Add leading linefeed to [bxx:end] tags
+    + Add delay to allow FLDIGI the time to switch modems
+
+-------------------------------------------------------------------
+Sun Dec 31 09:53:14 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.11
+  * Add code to save interval timer values
+  * Adjust GUI widget alignment
+  * Update user documents
+
+-------------------------------------------------------------------
+Sun Nov  5 07:49:33 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.10
+  * Relay/Check Saves
+    + Change load relay file at start to a menu item. Odd GUI
+      behaviour on MacOSX 10.15.
+    + Add save relay data menu item.
+    + Check RX panel file for 100% complete prior to saving.
+    + Rename checkbox to save relay files on exit. Removed load at
+      start code.
+  * rs df merge: merge KK5VD and W1HKJ independent mods
+  * Online Conditions/Thread locks
+    + Restore code lost.
+    + Add code to indicate FLDIGI is online when both data stream
+      and XMLRPC are actively connected between FLAMP and FLDIGI.
+    + Use guard_lock class in place of pthread_mutex locks.
+  * RX Panel/GUI cosmetic
+    + Add callback function cb_rx_queue to rx_queue widget via FLUID.
+    + Changed RX panel redraw from entire panel to specific widgets.
+  * Font display artifacts issue when redrawing RX panel.
+    + Adjust position/size of various widgets (cosmetic).
+    + Removed some commented out code.
+    + Prevent 100% save (if selected) when reloading relay files.
+    + Issue get_fldigi_modems() on reconnects to FLDIGI.
+  * UI design: change user interface design to use fluid definition file
+  * TOD implementation merge with branch pu/rs
+    + change to operate in a separate thread
+    + allow flamp to run without fldigi executing
+    + periodically test main dialog indicator of connection state 
+      for and make connection to fldigi
+    + use single exit point from program
+  * Replay/XMLRPC/M4/Modem/Documentation/GUI
+    + Add "modem.get_io_names" Prefiltered 8 bit compatible modem
+      listfrom FLDIGI.
+    + Update depreciated M4 macros.
+    + Update modem timimg table based on "modem.get_io_names" input.
+    + Add Receive Queue data/retore option for Relay Ops.
+    + Remove depreciated modem List.
+    + Append depreciated list to initial start-up modem list.
+    + GUI Interval timer widget position change.
+    + HAMCAST broke on XMLRPC timeout change, updated wait_for_rx().
+    + Add dummy file to keep directory "build-aux" in the git tree.
+    + New "relay" directory to store saved relay data. (.nbmes/FLAMP/relay)
+    + Updated scripting to handle dynamic modem list verification testing.
+    + Remove depreciated default modem names no longer present in FLDIGI.
+    + Update user document based on above changes.
+
+-------------------------------------------------------------------
+Sun Sep  3 23:00:33 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.09
+  * Update to documentation received from Rich, N1EE
+  * Add THOR-11, THOR-32, THOR-44 and THOR-56 to list of supported
+    modes
+  * Text Editor mod: fix for compiler warning
+  * xmlrpc server
+    + add xmlrpc server to support external creation and execution
+      of flamp script files
+      . "flamp.create_script", "i:s", "create script 'pathname', 'script_text'"
+      . "flamp.execute_script", "n:s", "execute script 'pathname'" 
+   * fltk 1.4.x mods: compatability modifications
+   * Main Window Icon: fix Fltk transparency bug for flrig icon.
+- update to version 2.2.08
+  * Fix logic error in transmit_camp.cxx
+  * deprecate "using namespace std" to prevent name conflicts
+    with g++ c11.
+  * User Interface - Combobox fixes
+    . Fixed several edge case behaviors with Combobox widgets
+
+-------------------------------------------------------------------
+Thu Jun 29 09:45:39 UTC 2023 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fix build for Tumbleweed and Factory
+- New specfile based on fldigi specflie
+
+-------------------------------------------------------------------
+Sun Aug 15 11:15:38 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.07
+  * fix tagSearch logic error introduced with openSUSE Tumbleweed
+    modifications
+- update to version 2.2.06
+  * add XmlRpc client ID
+  * fix errors and warnings exposed by gcc 11.1.1
+  * change fltk.m4 to accept version 1.4.x
+  * changes to data i/o query timing
+  * increase timeouts for xml
+  MXE build
+  * remove regex from build
+  fldigi i/o
+  * changes to data i/o query timing
+
+-------------------------------------------------------------------
+Mon Jul 29 20:58:22 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.05
+  * limit sock block size to 8096 for transfer to fldigi
+  * add time interval between blocks to allow receiving
+    socket to flush it's receive buffers
+  * clean up warnings
+  * add LOG_INFO statements to transfer function
+  * correct computation of time intervals
+  * changed FLAMP SCRIPT variable TX_INTERVAL to float
+  * update documentation
+
+-------------------------------------------------------------------
+Sun Feb  3 01:28:12 UTC 2019 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 2.2.04
+
+-------------------------------------------------------------------
+Sat Apr 30 20:10:45 UTC 2016 - dl8fcl@t-online.de
+
+- update to version 2.2.03
+
+-------------------------------------------------------------------
+Tue Apr 28 00:37:52 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.2.02
+  requires libflxmlrpc
+
+-------------------------------------------------------------------
+Sat Apr  4 15:26:45 UTC 2015 - dl8fcl@darc.de
+
+- update to version 2.2.01
+
+-------------------------------------------------------------------
+Fri Dec 26 20:05:41 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.2.00
+
+-------------------------------------------------------------------
+Tue Feb  4 19:29:44 UTC 2014 - dl8fcl@darc.de
+
+- update to version 2.1.02
+
+-------------------------------------------------------------------
+Tue Oct 29 10:19:24 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1.01 
+
+-------------------------------------------------------------------
+Mon Jul 29 22:21:51 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.1.00 
+
+-------------------------------------------------------------------
+Fri May 10 21:19:02 UTC 2013 - dl8fcl@darc.de
+
+- update to version 2.0.00
+  improments to the NBEMS suite 
+
+-------------------------------------------------------------------
+Sun Nov 18 23:29:53 UTC 2012 - dl8fcl@darc.de
+
+- update to version 1.0.01, Maintenance release 
+
+-------------------------------------------------------------------
+Mon Nov  5 22:11:22 UTC 2012 - dl8fcl@darc.de
+
+- import into buildservice 
+

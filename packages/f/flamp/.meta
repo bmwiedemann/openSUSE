@@ -1,0 +1,4 @@
+<package name="flamp" project="openSUSE:Factory">
+  <title>flamp</title>
+  <description>Flamp is a program for AMP or Amateur Multicast Protocol. An flamp session will transmit one or more files with one or more iterations of the transmission. Each file is broken into blocks, each of which has a check sum. The receiving station saves the blocks that pass check sum. Successive transmissions will fill in the missing blocks provided that the new blocks pass the check sum. After the transmission sequence, the entire file is assembled and may be saved. May be provided by retransmitting the entire file or by the sending station only sending the missing blocks.</description>
+</package>
