@@ -99,4 +99,32 @@ https://hackweek.opensuse.org/21/projects/add-mbr-binary-format-support-to-the-f
     (cf. transcriptaze#6). (forwarded request 1244370 from jfkw)</comment>
     <requestid>1244375</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>366b5d3b46fb8e8485cf4a8037038f5e</srcmd5>
+    <version>0.15.0</version>
+    <time>1745134577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.0
+  Changes
+  * Fix issue running fq without a home directory.
+  Format changes
+  * avc_nalu Decode payload into a rbsp struct (raw byte sequence
+    payload) and only introduce a sub-buffer if de-emulation
+    prevention was done.
+  * hevc_nalu Decode payload into a rbsp struct.
+  * matroska Update specification.
+  * mp4
+    + Add a skip_samples option to not add fields or decode
+      samples at all. Useful when dealing with broken mp4 files.
+    + Add a truncated_size field if allow_truncated is used and
+      we had to truncate. Useful when dealing with broken mp4
+      files.
+    + pcmC Decode box.
+    + chnl Decode box
+    + Don't decode samples for ipcm track format. Could end up with
+      a huge array and not be very useful.
+    + trun Skip samples array if there are no sample flags.
+    + uuid Decode tfxd and tfrf boxes. (forwarded request 1270994 from mnhauke)</comment>
+    <requestid>1271001</requestid>
+  </revision>
 </revisionlist>

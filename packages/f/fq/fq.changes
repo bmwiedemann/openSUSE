@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Apr 19 18:43:16 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0
+  Changes
+  * Fix issue running fq without a home directory.
+  Format changes
+  * avc_nalu Decode payload into a rbsp struct (raw byte sequence
+    payload) and only introduce a sub-buffer if de-emulation
+    prevention was done.
+  * hevc_nalu Decode payload into a rbsp struct.
+  * matroska Update specification.
+  * mp4
+    + Add a skip_samples option to not add fields or decode
+      samples at all. Useful when dealing with broken mp4 files.
+    + Add a truncated_size field if allow_truncated is used and
+      we had to truncate. Useful when dealing with broken mp4
+      files.
+    + pcmC Decode box.
+    + chnl Decode box
+    + Don't decode samples for ipcm track format. Could end up with
+      a huge array and not be very useful.
+    + trun Skip samples array if there are no sample flags.
+    + uuid Decode tfxd and tfrf boxes.
+
+-------------------------------------------------------------------
 Sat Feb  8 16:17:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.0:
