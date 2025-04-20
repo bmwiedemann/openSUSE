@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Apr 19 15:46:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.4.5:
+  * The Teleport Terraform Provider now supports setting the
+    Managed Updates v2 resources autoupdate_config and
+    autoupdate_version. #54109
+  * Fix a bug in managed updates v1 causing updaters v2 and AWS
+    integrations to never update if weekdays were set in the
+    cluster_maintenance_config resource. #54088
+  * Teleport-update: ensure teleport-upgrade is always disabled
+    when teleport-update is used. #54087
+  * Added an option for users to select database roles when
+    connecting to PostgreSQL databases using WebUI. #54068
+  * Allow the use of expressions in the Where condition on Role
+    RBAC rules for the Bot resource. #54065
+  * Machine and Workload Identity: Increase the maximum allowed bot
+    certificate TTL to 7 days, up from 24 hours. Larger values than
+    the default 12 hours must be explicitly requested using the new
+    --max-session-ttl flag in tctl bots add. #54063
+  * Teleport-update: Improve defaulting for update groups. #54050
+  * Fixed VNet on MacOS with hardware keys. #54037
+  * Added SAML IdP service provider preset for Microsoft Entra
+    External ID. #54021
+  * Fixed TLS errors when switching between VNet apps on Windows.
+    #54010
+
+-------------------------------------------------------------------
+Wed Apr 16 16:30:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.4.4:
+  * Fixed formatting of Ed25519 SSH keys for PuTTY users. #53972
+  * Support Oracle join method in Workload Identity templating and
+    rule evaluation. #53945
+  * Workload ID: the Kubernetes, Podman, and Docker attestors now
+    capture the container image digest. #53939
+  * Fixed web UI and tsh issues when a SAML metadata URL takes an
+    unusually long time to respond. #53933
+  * Updated Go to 1.23.8. #53918
+  * Added support for specifying a WorkloadIdentity-specific
+    maximum TTL. #53902
+  * Fixed Azure VM auto discovery when not filtering by resource
+    group. #53899
+  * Added new proxy_protocol_allow_downgrade field to the
+    proxy_service configuration in support of environments where
+    single stack IPv6 sources are connecting to single stack IPv4
+    destinations. This feature is not compatible with IP pinning.
+    #53885
+  * Support for managing the WorkloadIdentity resource in the
+    Teleport Kubernetes Operator. #53862
+  * Added detailed audit events for SFTP sessions on agentless
+    nodes. #53836
+  * Teleport-update: Add last_update metadata and update tracking
+    UUID. #53828
+  * Restrict agent update days to Mon-Thu on Cloud. #53765
+
+-------------------------------------------------------------------
 Wed Apr  9 04:59:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.4.3:
