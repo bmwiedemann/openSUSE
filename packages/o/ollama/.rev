@@ -370,4 +370,28 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Add support for AMD Strix Halo GPUs</comment>
     <requestid>1256309</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a910cc08485188625ecd554b6298922c</srcmd5>
+    <version>0.6.5</version>
+    <time>1745134588</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ollama to the video group
+- Update to version 0.6.5:
+  * Add support for mistral-small
+  * Fix issues with spm tokenizer for Gemma 3 models
+  * Add checks for values falling out of sliding window cache
+  * Improve file descriptor management for tensors and
+    Pull operations
+  * Add gfx1200 &amp; gfx1201 GPU support on Linux
+  * Optimize sliding window attention and KV cache implementations
+  * Implement loading tensors in 32KiB chunks for better performance
+  * Add autotemplate for gemma3 models
+  * Add benchmarking for ollama server performance
+  * Fix file handling in /proc/cpuinfo discovery
+  * Support heterogeneous KV cache layer sizes in memory estimation
+  * Fix debug logging for memory estimates
+  * Improve error handling for empty logits and tensor data reading
+  * Return model capabilities from the show endpoint</comment>
+    <requestid>1271013</requestid>
+  </revision>
 </revisionlist>

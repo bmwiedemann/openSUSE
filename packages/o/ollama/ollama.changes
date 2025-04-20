@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Apr 19 22:07:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add ollama to the video group
+
+- Update to version 0.6.5:
+  * Add support for mistral-small
+  * Fix issues with spm tokenizer for Gemma 3 models
+  * Add checks for values falling out of sliding window cache
+  * Improve file descriptor management for tensors and
+    Pull operations
+  * Add gfx1200 & gfx1201 GPU support on Linux
+  * Optimize sliding window attention and KV cache implementations
+  * Implement loading tensors in 32KiB chunks for better performance
+  * Add autotemplate for gemma3 models
+  * Add benchmarking for ollama server performance
+  * Fix file handling in /proc/cpuinfo discovery
+  * Support heterogeneous KV cache layer sizes in memory estimation
+  * Fix debug logging for memory estimates
+  * Improve error handling for empty logits and tensor data reading
+  * Return model capabilities from the show endpoint
+
+-------------------------------------------------------------------
 Tue Mar 25 04:02:26 UTC 2025 - me@levitati.ng
 
 - Update to version 0.6.2:
@@ -20,7 +42,7 @@ Tue Mar 18 14:22:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 -------------------------------------------------------------------
 Fri Mar 14 01:22:06 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Update BuildRequires to go1.24 
+- Update BuildRequires to go1.24
 
 - Update to version 0.6.0:
   * New model: Gemma 3
