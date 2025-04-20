@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 19 13:06:44 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.2.3:
+  * Fix issues introduced by the stb_image fix introduced in 9.2.1 which
+    could cause hangs or crashes when certain wallpaper images are used.
+
+-------------------------------------------------------------------
 Mon Mar 31 12:30:21 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.2.2:
