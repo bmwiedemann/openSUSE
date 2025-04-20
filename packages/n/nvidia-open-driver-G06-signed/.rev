@@ -731,4 +731,16 @@
     <comment>- update non-CUDA variant to 570.133.07 (bsc#1239653)</comment>
     <requestid>1254260</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>1fc1313985ff6522b953ed55b440495f</srcmd5>
+    <version>570.144</version>
+    <time>1745134523</time>
+    <user>dimstar_suse</user>
+    <comment>- update CUDA variant to 570.133.20
+
+- update non-CUDA variant to 570.144 (boo#1241231)
+
+- limit build of -azure flavor to SP6</comment>
+    <requestid>1270905</requestid>
+  </revision>
 </revisionlist>

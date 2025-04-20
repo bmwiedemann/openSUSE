@@ -16,8 +16,8 @@
 #
 
 
-%define gfx_version 570.133.07
-%define cuda_version 570.124.06
+%define gfx_version 570.144
+%define cuda_version 570.133.20
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 %if "%{flavor}" == "cuda"
@@ -92,8 +92,8 @@ BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
 %ifnarch aarch64
-# available on SLE, but not on ALP ...
-%if !0%{?is_opensuse} && 0%{?suse_version} < 1600
+# limit build of -azure flavor to SP6
+%if (!0%{?is_opensuse} && (0%{?sle_version} >= 150600 && 0%{?sle_version} < 150700))
 BuildRequires:  kernel-syms-azure
 %endif
 %endif

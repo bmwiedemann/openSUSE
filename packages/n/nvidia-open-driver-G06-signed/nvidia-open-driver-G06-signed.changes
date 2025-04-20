@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 18 20:39:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 570.133.20
+
+-------------------------------------------------------------------
+Tue Apr 15 13:17:48 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 570.144 (boo#1241231)
+
+-------------------------------------------------------------------
+Mon Mar 31 18:27:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- limit build of -azure flavor to SP6 
+
+-------------------------------------------------------------------
 Sat Mar 15 01:45:38 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 570.133.07 (bsc#1239653) 
