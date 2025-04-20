@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Apr 19 09:52:05 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 6.1.1:
+ - Improvements:
+  * MUC: Return message id after sending
+ - Bug Fixes:
+  * VoiceRequests: Don’t parse errors
+  * MDS: Make by attribute configurable
+- update to version 6.1.0:
+ - New
+  * MDS: Allow setting MDS assist on message
+ - Improvements:
+  * SASL: Improve logging
+ - Change:
+  * MDS: Simplify set_mds()
+- update to version 6.0.2:
+ - Improvements:
+  * Retraction: Parse id attribute for tombstones
+ - Bug Fixes:
+  * OpenPGP: Depreacted pubkey date attribute
+- update to version 6.0.1:
+ - Improvements:
+  * DiscoInfo: Add more MUC config fields
+ - Bug Fixes:
+  * DiscoInfo: Return correct values in get_field_value()
+  * JID: Raise error on IRIs with auth component
+- update to version 6.0.0:
+ - Change:
+  * JID: Remove default arguments
+ - Bug Fixes:
+  * Moderation: Parse moderation messages correctly (#164)
+
+-------------------------------------------------------------------
 Thu Sep 19 22:51:18 UTC 2024 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 5.0.4:
