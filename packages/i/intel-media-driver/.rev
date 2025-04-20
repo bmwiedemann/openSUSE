@@ -500,4 +500,12 @@ versions of libva(2)</comment>
   * bugfixes and support for new hardware</comment>
     <requestid>1244760</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>835f0aac3b409fc34d8d9a1a84d68abf</srcmd5>
+    <version>25.1.4</version>
+    <time>1745134530</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1270907</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 16 14:38:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.1.4:
+  * PTL New Changes:
+    - Upstream decoding and VP9 encoding support
+    - Fixed HEVC decoding hang issue with error concealment
+  * Legacy platform Fixes and Improvement:
+    - Enabled AV1 encoding ARGB support on MTL
+    - Fixed heap corruption issue caused by AVP interface on TGL
+    - Fixed video processing corruption issue for UYVY to RGB32
+      cover
+
+-------------------------------------------------------------------
 Mon Feb 10 13:16:11 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 25.1.1
