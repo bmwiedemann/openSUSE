@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Apr 17 18:23:54 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1744914226.24548346:
+  * Bump @eslint-community/eslint-utils from 4.6.0 to 4.6.1
+  * Add signal guard for schedule_iso minion tasks
+  * Avoid security review by not packaging sysctl config for Tumbleweed
+  * Fix jobs sometimes ending up without group after retry on deadlocks
+  * Bump ace-builds from 1.39.1 to 1.40.0
+  * Bump synckit from 0.11.3 to 0.11.4
+  * Bump @pkgr/core from 0.2.2 to 0.2.4
+  * Bump @eslint-community/eslint-utils from 4.5.1 to 4.6.0
+  * Reload only specific AppArmor profiles on updates
+  * Ignore short Git service outages
+  * Bump eslint-config-prettier from 10.1.1 to 10.1.2
+  * Bump @pkgr/core from 0.2.1 to 0.2.2
+  * Change text body on build absent in parent_group_overview
+  * Change phrasing in docs as suggested in review
+  * Mention drop-in config file for worker like for the other config files
+  * Bump synckit from 0.11.2 to 0.11.3
+  * Ensure `…-restart@.path` units don't run into inotify limit
+  * Restart AppArmor service when updating workers
+  * Rollback retries applied for full-stack test preventing ci from failing
+  * Allow web UI services to read client config
+  * Bump @pkgr/core from 0.2.0 to 0.2.1
+  * Bump eslint from 9.23.0 to 9.24.0
+  * Bump bootstrap from 5.3.4 to 5.3.5
+  * Consider all config files in unit for auto-reloading workers
+  * Update apparmor profiles after adding config sub directories
+  * Dependency cron 2025-04-05
+  * Adapt scripts to recent config file changes
+  * Simplify Utils::check_download_url
+  * Simplify Utils::parse_assets_from_settings
+  * Simplify Utils::_round_a_bit
+  * Add signatures in OpenQA::Utils
+  * Avoid Perl warning when showing group overview with e.g. `only_tagged=2`
+  * Bump bootstrap from 5.3.3 to 5.3.4
+  * Bump synckit from 0.11.1 to 0.11.2
+  * Emphasize drop-in configurations in documentation
+  * Prevent config files from being moved on updates
+  * Fix use of defaults if database config is not present
+  * Update documentation after previous configuration changes
+  * Install default config under `/usr/share/doc/openqa/examples`
+  * Add Utils.pm to fully_covered in Codecov
+  * Use the signal guard in download_asset
+  * Improve retrieving substring in OpenQA::Utils
+  * Bump eslint-plugin-prettier from 5.2.5 to 5.2.6
+  * Extend connection limit of ws server to handle more workers
+  * Use more signatures in OpenQA::Utils
+  * Simplify Utils::get_url_short
+  * Use signatures in Utils::get_url_short
+  * Avoid unhandled output in `t/20-stale-job…` after 8c5a3a43
+  * Use signatures on Task/Asset/Download.pm
+  * Remove unused module imports in ws server code
+  * Improve scalability by only sending worker status on ws server ack
+  * Avoid hardcoding /tmp to ensure compatibility with varied environments
+  * Update worker tests with tempdirs under /tmp and not in worktree
+  * Bump @eslint/config-helpers from 0.2.0 to 0.2.1
+  * Bump @eslint/plugin-kit from 0.2.7 to 0.2.8
+  * Fix typo in infopanel
+  * Improve job priority display
+  * Check if the taskname exists if not avoid undefined value
+  * Avoid accidentally considering `/usr/etc` the `etc/ from devel checkout
+  * Update tempdir path to /tmp to cleanup worktree for workers tests
+  * Support all config features for `workers.ini` as well
+  * Use consistent temporary database path
+  * Add hyperlinks to the products log
+  * CI: Bump codecov uploader to 5.3.0
+
+-------------------------------------------------------------------
 Fri Mar 28 16:14:24 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1743174385.0bd1f0a8:

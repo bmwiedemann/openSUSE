@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+# define _distconfdir for openSUSE Leap 15 and SLE 15 (like other packages such as libvpl do)
+%if 0%{?suse_version} < 1550
+%define _distconfdir %{_prefix}%{_sysconfdir}
+%endif
 
 # can't use linebreaks here!
 %define openqa_main_service openqa-webui.service
@@ -90,7 +94,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1743174385.0bd1f0a8
+Version:        5.1744914226.24548346
 Release:        0
 Summary:        The openQA web-frontend, scheduler and tools
 License:        GPL-2.0-or-later
@@ -107,6 +111,7 @@ BuildRequires:  openSUSE-release
 BuildRequires:  sles-release
 %endif
 BuildRequires:  %{build_requires}
+BuildRequires:  apparmor-rpm-macros
 BuildRequires:  local-npm-registry
 Requires:       perl(Minion) >= 10.0
 Requires:       %{main_requires}
@@ -381,6 +386,11 @@ export LANG=en_US.UTF-8
 rm -rf %{buildroot}/%{_sysusersdir}
 %endif
 
+%if 0%{?suse_version} > 1560
+# the limit set via sysctl is already present on Tumbleweed and packaging sysctl config would require a security review
+rm -rf %{buildroot}/%{_prefix}/lib/sysctl.d/01-openqa-reload-worker-auto-restart.conf
+%endif
+
 mkdir -p %{buildroot}%{_bindir}
 ln -s %{_datadir}/openqa/script/client %{buildroot}%{_bindir}/openqa-client
 ln -s %{_datadir}/openqa/script/openqa-cli %{buildroot}%{_bindir}/openqa-cli
@@ -526,9 +536,14 @@ if [ -x /usr/bin/systemctl ] && [ $1 -ge 1 ]; then
 fi
 # restart other services
 %service_del_postun %{openqa_extra_services}
-%restart_on_update apparmor
+# reload AppArmor profiles
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.share.openqa.script.openqa
+%apparmor_reload %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.openqa
 
 %postun worker
+# reload AppArmor profiles
+%apparmor_reload %{_sysconfdir}/apparmor.d/usr.share.openqa.script.worker
+%apparmor_reload %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.worker
 # restart worker services on updates; does *not* include services for worker slots unless openqa-worker.target
 # is running at the time of the update
 %service_del_postun %{openqa_worker_services}
@@ -561,9 +576,16 @@ fi
 %{_sbindir}/rcopenqa-websockets
 %{_sbindir}/rcopenqa-webui
 %{_sbindir}/rcopenqa-livehandler
+%ghost %config(noreplace) %attr(0644,geekotest,root) %{_sysconfdir}/openqa/openqa.ini
+%ghost %config(noreplace) %attr(0640,geekotest,root) %{_sysconfdir}/openqa/database.ini
 %dir %{_sysconfdir}/openqa
-%config(noreplace) %attr(-,geekotest,root) %{_sysconfdir}/openqa/openqa.ini
-%config(noreplace) %attr(-,geekotest,root) %{_sysconfdir}/openqa/database.ini
+%dir %{_sysconfdir}/openqa/openqa.ini.d
+%dir %{_sysconfdir}/openqa/database.ini.d
+%dir %{_distconfdir}/openqa
+%dir %{_distconfdir}/openqa/openqa.ini.d
+%dir %{_distconfdir}/openqa/database.ini.d
+%{_datadir}/doc/openqa/examples/openqa.ini
+%{_datadir}/doc/openqa/examples/database.ini
 %dir %{_datadir}/openqa
 %config %{_sysconfdir}/logrotate.d
 # apache vhost
@@ -668,6 +690,11 @@ fi
 %endif
 
 %files common
+%if 0%{?suse_version} < 1550
+%dir %{_distconfdir}
+%endif
+%dir %{_datadir}/doc/openqa
+%dir %{_datadir}/doc/openqa/examples
 %dir %{_datadir}/openqa
 %{_datadir}/openqa/lib
 %exclude %{_datadir}/openqa/lib/OpenQA/CacheService/
@@ -698,8 +725,14 @@ fi
 %{_sbindir}/rcopenqa-slirpvde
 %{_sbindir}/rcopenqa-vde_switch
 %{_sbindir}/rcopenqa-worker
-%config(noreplace) %{_sysconfdir}/openqa/workers.ini
-%config(noreplace) %attr(0400,_openqa-worker,root) %{_sysconfdir}/openqa/client.conf
+%ghost %config(noreplace) %{_sysconfdir}/openqa/workers.ini
+%ghost %config(noreplace) %attr(0400,_openqa-worker,root) %{_sysconfdir}/openqa/client.conf
+%dir %{_sysconfdir}/openqa/workers.ini.d
+%dir %{_sysconfdir}/openqa/client.conf.d
+%dir %{_distconfdir}/openqa/workers.ini.d
+%dir %{_distconfdir}/openqa/client.conf.d
+%{_datadir}/doc/openqa/examples/workers.ini
+%{_datadir}/doc/openqa/examples/client.conf
 # apparmor profile
 %dir %{_sysconfdir}/apparmor.d
 %config %{_sysconfdir}/apparmor.d/usr.share.openqa.script.worker
@@ -738,6 +771,9 @@ fi
 %dir %{_localstatedir}/lib/openqa/pool/1
 %if 0%{?suse_version} > 1500
 %{_sysusersdir}/%{name}-worker.conf
+%endif
+%if 0%{?suse_version} <= 1560
+%{_prefix}/lib/sysctl.d/01-openqa-reload-worker-auto-restart.conf
 %endif
 
 %files client
