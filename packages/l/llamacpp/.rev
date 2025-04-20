@@ -41,4 +41,13 @@
     <comment>- Update to version 4889:</comment>
     <requestid>1253529</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5c8b6f15606f8e03185f682bbd40d225</srcmd5>
+    <version>5158</version>
+    <time>1745134581</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove convert_hf_to_gguf.py
+- Update to version 5158:</comment>
+    <requestid>1271007</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Apr 19 21:35:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove convert_hf_to_gguf.py
+
+- Update to version 5158:
+    * Added support for new models:
+        ~ Llama 4 text-only
+        ~ IBM Granite 3.3 FIM tokens
+        ~ Qwen3 and Qwen3MoE
+        ~ BailingMoE (Ling)
+        ~ Trillion 7B model
+        ~ PLM GGUF Conversion & Inference
+        ~ RWKV v7 architecture
+        ~ GPT2, Bloom and CodeShell tied word embeddings
+        ~ EXAONE tied word embeddings
+        ~ DeepSeek V2/V3 MLA implementation
+        ~ Gemma 3 fixes and improvements
+    * Improved hardware acceleration support:
+        ~ Vulkan: Multiple optimizations for flash attention,
+          coopmat2, and shader performance
+        ~ OpenCL: Fixed profiling, improved Adreno GPU
+          identification, added multi and vision rope
+    * Performance optimizations:
+        ~ AVX512 implementation of GEMM for Q4_Kx8
+        ~ Faster SSM scan
+        ~ Block interleaving support for Q4_K quantization
+          on x86 AVX2
+        ~ PowerPC-specific optimizations
+    * Infrastructure improvements:
+        ~ Added ability to lazy-load safetensors remotely
+          without downloading
+        ~ Refactored downloading system to handle mmproj
+          with -hf option
+        ~ Added support for custom HF endpoint
+        ~ Added RPC backend with added commands
+        ~ Improved server with support for listening on unix
+          sockets
+    * Added image processing capabilities:
+        ~ Introduced libmtmd for image token handling
+        ~ Added image_manipulation and llava_uhd classes
+        ~ Fixed CPU-only CLIP image encoding
+        ~ Fixed clip loading GGUFs with missing description
+    * Bug fixes:
+        ~ Fixed compilation issues on various platforms
+          (s390x, POWER9, AIX, FreeBSD)
+        ~ Fixed memory leaks and allocation issues
+        ~ Fixed Ctrl+D/newline handling
+        ~ Fixed thread joining on server exit
+        ~ Fixed various backend-specific bugs
+
+-------------------------------------------------------------------
 Sat Mar 15 03:31:53 UTC 2025 - zzndb001@gmail.com
 
 - Update to version 4889:

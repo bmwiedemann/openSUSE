@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/ggerganov/llama.cpp.git</param>
-              <param name="changesrevision">9f2250ba722738ec0e6ab684636268a79160c854</param></service></servicedata>
+              <param name="changesrevision">9f2250ba722738ec0e6ab684636268a79160c854</param></service><service name="tar_scm">
+                <param name="url">https://github.com/ggml-org/llama.cpp.git</param>
+              <param name="changesrevision">00137157fca3d17b90380762b4d7cc158d385bd3</param></service></servicedata>
