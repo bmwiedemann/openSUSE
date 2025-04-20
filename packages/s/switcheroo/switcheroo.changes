@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 19 21:54:35 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 2.4.0
+  * rewrite naming logic to ensure no collisions or omission
+  * add remove alpha when input does not support alpha but output
+    does
+  * put an arbitrary limit on 4M pixels for thumbnail generation
+    and only load 10... 
+  * mark heic and heif as supports animation
+  * check for gs and zip and let user know what's wrong gracefully
+  * don't add images that already exist
+  * add warning about unsupported files
+  * simplify input formatting for magick command
+
+-------------------------------------------------------------------
 Mon Feb  3 07:18:18 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 2.3.1

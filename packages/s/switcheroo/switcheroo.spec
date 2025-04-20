@@ -18,9 +18,9 @@
 
 
 %define appid   io.gitlab.adhami3310.Converter
-%define rurl    69eeb90b1c2fdb32fa6bb1651b736bec
+%define rurl    4a9a2f156d9b795415d518403decb59c
 Name:           switcheroo
-Version:        2.3.1
+Version:        2.4.0
 Release:        0
 Summary:        Convert and manipulate images
 License:        GPL-3.0-only
