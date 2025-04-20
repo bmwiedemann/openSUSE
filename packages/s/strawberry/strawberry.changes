@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 18 20:01:49 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.10
+  + Fixed Discord rich presence showing bogus artist and album.
+  + Fixed incorrect ID3v2 comment tag.
+  + Removed Genius lyrics.
+
+-------------------------------------------------------------------
 Wed Apr  9 18:07:18 UTC 2025 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.9

@@ -1630,4 +1630,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1268211</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>604a7f713408af890614aa876ec51eee</srcmd5>
+    <version>1.2.10</version>
+    <time>1745134526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.10
+  + Fixed Discord rich presence showing bogus artist and album.
+  + Fixed incorrect ID3v2 comment tag.
+  + Removed Genius lyrics.
+</comment>
+    <requestid>1270901</requestid>
+  </revision>
 </revisionlist>

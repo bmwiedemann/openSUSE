@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.9
+Version:        1.2.10
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -98,7 +98,7 @@ Features:
   - Edit tags on music files
   - Fetch tags from MusicBrainz
   - Album cover art from Last.fm, Musicbrainz, Discogs, Musixmatch, Deezer, Tidal, Qobuz and Spotify
-  - Song lyrics from Lyrics.com, Genius, Musixmatch, ChartLyrics, lyrics.ovh and lololyrics.com
+  - Song lyrics from Musixmatch, ChartLyrics, lyrics.ovh and lololyrics.com
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
