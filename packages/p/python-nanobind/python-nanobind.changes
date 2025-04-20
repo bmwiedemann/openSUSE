@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 19 10:50:29 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.7.0
+  * for details about changes see 
+    github.com/wjakob/nanobind/blob/master/docs/changelog.rst
+- adapt nanobind-installationpath.patch to fit 2.7.0
+- drop nanobind-2.6.1-test-build.patch:  upstreamed
+
+-------------------------------------------------------------------
 Wed Apr  9 14:51:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add nanobind-2.6.1-test-build.patch to fix test on single
