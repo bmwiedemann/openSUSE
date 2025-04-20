@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:28:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.12:
+  * Fixed #8158: Flip footnote back reference icon for right-to-left
+    languages
+
+-------------------------------------------------------------------
 Tue Apr  1 08:03:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.11:
