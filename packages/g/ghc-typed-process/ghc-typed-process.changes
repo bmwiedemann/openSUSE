@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 12 12:28:58 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update typed-process to version 0.2.13.0.
+  ## 0.2.13.0
+
+  * Format stdout and stderr in `ExitCodeException` assuming they are in
+    UTF-8.  See [#87](https://github.com/fpco/typed-process/pull/87).
+    Thanks to @9999years for the legwork on this change.
+
+-------------------------------------------------------------------
 Wed Aug 21 09:33:46 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update typed-process to version 0.2.12.0.
