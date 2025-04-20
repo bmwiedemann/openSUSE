@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Switch back to list view after editing or deleting an incidence
+  * Fix placeholder message
+  * Set window icon
+  * Add icon for F-droid store listing
+  * Use the KAboutData singleton from KCoreAddons
+  * Port to AboutKDEPage from AboutKDE
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

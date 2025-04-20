@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 21:13:49 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 20.1.3.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Enable LLDB Python bindings on Leap 15.6 and newer.
+- Rebase llvm-do-not-install-static-libraries.patch.
+
+-------------------------------------------------------------------
 Sat Apr  5 15:09:31 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 20.1.2.

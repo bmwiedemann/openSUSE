@@ -44,4 +44,15 @@
   * implemented chunked blake</comment>
     <requestid>1141941</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>50fd3a17947e993c2a70bcf758c9c97f</srcmd5>
+    <version>0.12.0</version>
+    <time>1744828743</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264890</requestid>
+  </revision>
 </revisionlist>

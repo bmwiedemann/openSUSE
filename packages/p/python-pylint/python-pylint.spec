@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %bcond_without tests
 %{?sle15_python_module_pythons}
 Name:           python-pylint
-Version:        3.3.1
+Version:        3.3.6
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
@@ -35,8 +35,8 @@ BuildRequires:  python-rpm-macros
 Requires:       python-dill >= 0.3.7
 Requires:       python-platformdirs >= 2.2
 Requires:       python-tomlkit >= 0.10.1
-Requires:       (python-astroid >= 3.3.4 with python-astroid < 3.4.0~dev0)
-Requires:       (python-isort >= 4.2.5 with python-isort < 6)
+Requires:       (python-astroid >= 3.3.8 with python-astroid < 4.0.0~dev0)
+Requires:       (python-isort >= 4.2.5 with python-isort < 7)
 Requires:       (python-mccabe >= 0.6 with python-mccabe < 0.8)
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
@@ -46,10 +46,10 @@ Requires:       python-typing-extensions >= 3.10
 %endif
 %if %{with tests}
 # SECTION pylint deps
-BuildRequires:  %{python_module astroid >= 3.3.4 with %python-astroid < 3.4.0~dev0}
+BuildRequires:  %{python_module astroid >= 3.3.8 with %python-astroid < 4.0.0~dev0}
 BuildRequires:  %{python_module dill >= 0.3.7}
 BuildRequires:  %{python_module enchant}
-BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 6}
+BuildRequires:  %{python_module isort >= 4.2.5 with %python-isort < 7}
 BuildRequires:  %{python_module mccabe >= 0.6 with %python-mccabe < 0.8}
 BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module tomli >= 1.1.0 if %python-base < 3.11}

@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Tue Apr 15 09:57:43 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.49.0:
+  * Skip date check when release worfklow is manually invoked
+  * Escape special characters when git-ignoring files
+  * Add test that shows problems with git-ignoring files with special characters
+  * Fix crash when dragging from below the end of the diff upwards and then staging the range
+  * Refactor: extract function clampLineIdx
+  * Update translation files from crowdin
+  * fix: update vscode color to logo color
+  * Add a command to select all commits of the current branch
+  * Show "hooks disabled" in title bar of commit message editor
+  * Cleanup: don't render the commit length when typing in the description
+  * Prefill the commit subject with the skipHook prefix when pressing `w`
+  * Use dario.cat/mergo instead of github.com/imdario/mergo
+  * Bump go-git
+  * Add `runCommand` function to Go template syntax
+  * Move test from commit to branch
+  * Print which git version we are using for running integration tests
+  * Remove conditional code related to git earlier than 2.22
+  * Remove canUsePushTrack parameter of obtainBranches function
+  * Bump minimum required git version to 2.22
+  * Provide conflict resolution dialogs for non-textual conflicts
+  * Allow chaining of FileSystem methods
+  * Better main view display for conflicing files
+  * Fix the bug described in the previous commit
+  * Add test demonstrating problem with main view display when pressing `e` in a stack of branches
+  * Add pageUp/pageDown/top/bottom keybindings to focused command log panel
+  * Add pageUp/pageDown/top/bottom keybindings to confirmation panel
+  * Cleanup: remove unused interfaces for helpers
+  * Cleanup: get rid of the variadic parameter of ContextMgr.Push
+  * Enable AutoRenderHyperLinks for the tooltip view
+  * Bump gocui
+  * Update kidpix link in README to active url
+  * Add a breaking changes entry for using shell aliases
+  * Add config os.shellFunctionsFile
+  * Reorder configs in OSConfig
+  * Revert commits related to using an interactive shell for running shell commands
+  * Update disabled message
+  * Add integration test
+  * Fix discarding submodule changes in nested folders
+  * Cleanup: rename predicate params (test -> predicate)
+  * Bump generics dependency
+  * Fix display of renamed files
+  * Add test showing problem with the display of renamed files
+  * feat: Implement range stash drop
+  * Fix race with PTYs in integration tests
+  * Cleanup: remove pointless `if` statement
+  * Corrected interactive rebase keybinds example in README.md
+  * Add "Absolute path" item to the file view's copy menu
+  * Fix the bug mentioned in the previous commit
+  * Add test for checking out a file from a range selection of commits
+  * Add test for checking out a file from a commit
+  * Fix double '#' on hexadecimal colors
+  * Let users to define custom icons and color for files on the config file
+  * Add newlines for correct markdown
+  * Allow passing refresh scope to WithGpgHandling
+  * fix: Make tag operation use GPG helper to run signing in sub-process
+  * refactor: Express WithGpgHelper with a config key parameter
+  * refactor: Make commit.gpgSign match official capitalization
+  * refactor: Rename UsingGpg to make room for Gpg Tag logic
+  * Add in missing "deprecated" yaml tags
+  * Remove deprecated configs from auto generated config.md
+  * Include empty arrays and maps in the generated Config.md
+  * Add comments with more information
+  * Remove text that is now unused
+  * Commit without pre-commit hooks is independent on prefix
+  * feat(submodules): add method to bulk init and update submodules
+  * Specify a go release minor version
+  * Add a root item ("/") if files at top level have changed
+  * Make Node.path private
+  * Use Path directly instead of GetPath getter inside the filetree package
+  * Use GetPath accessor outside of filetree package
+  * Rename Name to Path in File and CommitFile
+  * Cleanup: make integration test assertions for files panel more specific
+  * Fix postFilterTest to actually do what it says
+  * Add a "Content of selected file" entry to the copy menu for commit files
+  * Drop the git config cache when getting focus
+  * Cleanup: remove more unnecessary type arguments
+  * Revert "Skip post-checkout hook when discarding changes"
+  * Support home and end as alternatives to '<' and '>'
+  * Commit only tracked files in tracked only filter view
+  * Show staged but untracked files in tracked only filter view
+  * Add hint to not copy the whole defaults section into the config file
+  * Ignore commit prefixes with an empty pattern
+  * URL encode gitlab brackets to make consistent with branch names
+  * Add an integration test for a config with a negative refspec
+  * Update to go 1.24
+  * Add acme editor preset
+  * Fix release schedule again
+  * Set tab titles after reloading user config
+  * Set view titles in configureViewProperties rather than createAllViews
+  * Cleanup: standardize on accessing translations via gui.c.Tr
+  * Fix layout of options view for non-english languages
+  * Use Rewording instead of Committing when rewording the head commit
+  * Use a WithWaitingStatus for rewording a non-head commit
+  * Avoid double Refresh when rewording the head commit
+  * Don't call OnCommitSuccess in handleReword
+  * Support fish when running shell command
+  * Remove unnecessary type arguments
+  * Remove unused functions
+  * Validate properties of customCommand when commandMenu is used
+  * Add commandMenu property to custom commands
+  * Extract a method CustomCommand.GetDescription
+  * Change customCommand fields to pointers
+  * Don't set showOutput explicitly
+  * Fix a small mistake in Custom_Command_Keybindings.md
+  * Fix wrong comment
+  * Migrate to only doing marshalling twice, and compare via deep copy
+  * Set up benchmark on migration
+  * Fix release script once again
+  * Fix release script
+  * Remove obsolete filtering from setComment
+  * Filter out [dev] comments earlier
+  * Add launch config for debugging the schema generation
+  * Skip post-checkout hook when discarding changes
+  * Improve the error message when users have gpg signing turned on
+  * Change side panel width calculation to work for larger numbers
+  * Improve release workflow
+  * Filter out [dev] comments when generating config doc
+  * Use refs in jsonschema userconfig generator
+  * Make commit prefixes migration only return true if it enters if statement
+  * Change TestCommitPrefixMigrations to compare only strings
+  * Change test to use named struct fields instead of positional fields
+  * Use indentation of 2 when rewriting auto-migrated config file
+  * docs: Add reference to confirmation key to intro message
+  * Disable global keybinds while popups are active
+  * Fix auto-release schedule
+  * Fix race condition with reselecting the focused branch and rendering
+  * Update README.md
+  * Replace --include-untracked with -u in stash show command for compatibility and update failing tests
+  * Add --include-untracked flag to stash show command
+  * Validate keys of custom commands
+  * Validate that Universal.JumpToBlock array has 5 elements
+  * Validate keybindings
+  * Add a few missing keybindings to docs/keybindings/Custom_Keybindings.md
+  * Move labelByKey to config package
+  * Add a gui.tabWidth config
+  * Add a tabWidth parameter to WrapViewLinesToWidth to match gocui
+  * Bump gocui
+  * Add a "Copy to clipboard" menu to the Commit Files panel
+  * Cleanup: simplify and tighten test expectations related to clipboard
+  * Fix description of showFileTree
+  * feat: Support multiple commit prefixes
+  * Add option to copy commit message body
+  * Use personal access token to push tag
+  * Fix issue where latest tag wasn't obtained early enough in auto-release script
+  * README.md: Update Sponsors
+  * Suppress error logs when killing process on Windows
+  * Don't try killing processes if we already know the command finished
+  * Update translations from Crowdin
+  * Change update_language_files.sh script to rename pt-PT to pt
+  * Add some more information to pkg/i18n/translations/README.md
+  * Fix json schema for context of CustomCommand
+  * fix: properly detect icon for BAZEL and WORKSPACE files
+  * Handle pasting multi-line commit messages
+  * Bump gocui
+  * Swap position of checkout-commit and checkout-branch menu items
+  * go-deadlock version bump to fix crash with go 1.23
+  * Bump gocui
+  * Fix possible crash when deleting a branch while filtering is active
+  * Improve and adapt commit persistence test-cases
+  * Implement reboot-resistant commit message persistence
+  * Show filter state in top right corner of Files panel frame
+  * Show current files filter as radio buttons
+  * Allow user to switch filter when showing only conflicts
+  * Allow user to filter the files view to only show untracked files
+  * Fix incorrect stash diff after rename
+  * Disable staging and unstaging lines or hunks when the diff context size is 0
+  * Fix tag truncated when copying to clipboard
+  * Improve error reporting on config migration
+  * Show confirmation menu when trying to amend changes while there are conflicts
+  * Fix flicker when showing the status of a background fetch
+  * Extract the inner part of WithWaitingStatus as a synchronous variant of it
+  * Add option to delete local and remote tag
+  * Rename NoTags to CommitHasNoTags
+  * Integration tests for copy tags to clipboard
+  * Add copy commit tags to clipboard toast message
+  * Document copy tag keybinding
+  * Copy Tags to clipboard
+  * Show background fetch status in bottom line
+  * Remove call to Render()
+  * Expose {{.SelectedCommitRange}} to custom commands
+  * Fix checking out a different branch while pushing a branch for the first time
+  * Only avoid the blank line at end of view if view is not editable
+  * Bump gocui
+  * Add '--' to 'git rev-list' to disambiguate branch name from path
+
+-------------------------------------------------------------------
 Sun Feb 09 10:57:01 UTC 2025 - andrea.manzini@suse.com
 
 - Update to version 0.45.2:

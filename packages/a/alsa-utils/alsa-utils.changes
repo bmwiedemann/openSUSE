@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:58:48 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-utils 1.2.14:
+  * alsactl: info updates
+  * Man page fixes
+  * alsactl: AMD acp-pdm-mach link
+  * alsa-info.sh: Add alsa-ucm package to package filter
+  * Topology: NHLT: Intel: Improve error message for DMIC enable conflict
+  * Topology: NHLT: Intel: Fix mono DMIC configure for MTL platform
+  * Topology: NHLT: Intel: Fix DMA slots config in SSP blob
+  * amixer: fix unknown TVL sequence print
+  * arecordmidi2: fix unitialization variable error in read_ump_raw()
+  * aseqdump: Fix typos in messages
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.13_v1.2.14#alsa-utils
+- Drop obsoleted patches:
+  0001-alsactl-90-alsa-restore.rules-fix-alsa_restore_go-st.patch
+  0002-alsactl-90-alsa-restore.rules-fix-AMD-acp-pdm-mach-l.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 11:25:32 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Yet another fix for alsactl for AMD acp dmic:

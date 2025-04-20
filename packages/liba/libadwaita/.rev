@@ -401,4 +401,24 @@
     <comment>New stable branch release (forwarded request 1253257 from iznogood)</comment>
     <requestid>1253376</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>71547a836ab5b08bcfd29e12ca7e2fe0</srcmd5>
+    <version>1.7.2</version>
+    <time>1744898806</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.2:
+  + Adjust GtkWindowControls styles for GTK 4.18.4 changes.
+
+- Update to version 1.7.1:
+  + Build:
+    - Don't install internal static library
+    - Fix build with older gobject-introspection versions
+  + Avoid needlessly reassigning CSS classes for swipe shadows
+  + AdwAboutDialog/Window: Clarify :translator-credits docs
+  + AdwNavigationView: fix :visible-page-tag notifications
+  + AdwStyleManager: Fix font name docs
+  + AdwToastOverlay: Fix accessible role in documentation
+  + Updated translations. (forwarded request 1269161 from iznogood)</comment>
+    <requestid>1269686</requestid>
+  </revision>
 </revisionlist>

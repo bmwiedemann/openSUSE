@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 17 09:49:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop perf-tools-annotate-asm_pure_loop.S.patch: 6.14.2, which is
+  in Factory, contains this patch already (boo#1241339).
+
+-------------------------------------------------------------------
+Wed Apr  9 04:45:08 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- drop conditional perf-core (see below), 6.14 hit factory already
+
+-------------------------------------------------------------------
 Tue Apr  8 22:25:30 UTC 2025 - Tony Jones <tonyj@suse.com>
 
 - perf tools: annotate asm_pure_loop.S (bsc#1239906).

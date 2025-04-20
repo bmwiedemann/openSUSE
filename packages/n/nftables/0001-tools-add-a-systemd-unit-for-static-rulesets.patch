@@ -1,9 +1,11 @@
-From f08b34c9cba43879259c0b095c50efd3e6e66250 Mon Sep 17 00:00:00 2001
+From 5150f2e49b4b17bdaf7c02299a3b08e9fcc45345 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 28 Feb 2025 19:45:01 +0100
 Subject: [PATCH] tools: add a systemd unit for static rulesets
-References: https://lore.kernel.org/netfilter-devel/20250228205935.59659-1-jengelh@inai.de/T/#u (v1)
-Notes-v2: the Documentation= line needed a "man:" infix
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: https://lore.kernel.org/netfilter-devel/20250308182250.98098-1-jengelh@inai.de/T/#u
 
 There is a customer request (bugreport) for wanting to trivially load a ruleset
 from a well-known location on boot, forwarded to me by M. Gerstner. A systemd
@@ -15,18 +17,39 @@ https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/nftables/nftable
 https://gitlab.archlinux.org/archlinux/packaging/packages/nftables
 
 Cc: Matthias Gerstner <matthias.gerstner@suse.com>
+Cc: Kevin Fenzi <kevin@scrye.com>
+Cc: Francesco Colista <fcolista@alpinelinux.org>
+Cc: Sébastien Luttringer <seblu@archlinux.org>
 ---
  .gitignore                |  1 +
+ INSTALL                   |  6 ++++++
  Makefile.am               | 16 ++++++++++++----
  configure.ac              | 10 ++++++++++
  files/nftables/main.nft   | 24 ++++++++++++++++++++++++
  tools/nftables.service.8  | 18 ++++++++++++++++++
  tools/nftables.service.in | 21 +++++++++++++++++++++
- 6 files changed, 86 insertions(+), 4 deletions(-)
+ 7 files changed, 92 insertions(+), 4 deletions(-)
  create mode 100644 files/nftables/main.nft
  create mode 100644 tools/nftables.service.8
  create mode 100644 tools/nftables.service.in
 
+diff --git a/INSTALL b/INSTALL
+index 5d45ec98..0c48c989 100644
+--- a/INSTALL
++++ b/INSTALL
+@@ -42,6 +42,12 @@ Installation instructions for nftables
+ 	The base directory for arch-independent files. Defaults to
+ 	$prefix/share.
+ 
++ --with-unitdir=
++
++	Directory for systemd unit files. Defaults to the value obtained from
++	pkg-config for systemd.pc, and ${prefix}/lib/systemd/system as a
++	fallback.
++
+  --disable-debug
+ 
+ 	Disable debugging
 diff --git a/Makefile.am b/Makefile.am
 index fb64105d..050991f4 100644
 --- a/Makefile.am

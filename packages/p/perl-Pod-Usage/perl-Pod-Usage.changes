@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Mar 30 05:33:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.05
+   see /usr/share/doc/packages/perl-Pod-Usage/Changes
+
+  2.05      2025-03-29
+  - merged PR #27, fixing spurious Exporter inheritance
+  2.04      2025-03-25
+  - merged three pull requests, removing the internal Pod::PlainText
+  - fixed Github: Relies on formatter to inherit from Exporter #17
+
+-------------------------------------------------------------------
 Sun May 22 03:09:07 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.03

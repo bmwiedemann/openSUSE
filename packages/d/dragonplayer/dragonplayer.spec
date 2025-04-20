@@ -1,7 +1,7 @@
 #
 # spec file for package dragonplayer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define rname dragon
 %bcond_without released
 Name:           dragonplayer
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later

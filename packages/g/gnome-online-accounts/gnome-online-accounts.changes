@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 13 07:26:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.54.2:
+  + Bugs fixed:
+    - Improve OAuth2 credential performance
+    - Fix hung dialog for OAuth providers
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 16 15:28:30 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.1:

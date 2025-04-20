@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa-demo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  automake
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  glslang-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool
@@ -42,7 +41,6 @@ BuildRequires:  vulkan-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(osmesa)

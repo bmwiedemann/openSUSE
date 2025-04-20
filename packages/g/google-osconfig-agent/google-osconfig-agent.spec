@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-osconfig-agent
-Version:        20250115.01
+Version:        20250320.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -33,10 +33,8 @@ URL:            https://%{provider_prefix}
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-# PATCH-FIX-UPSTREAM - gh/golang/glog#74 - Fix vulnerability when creating log files (CVE-2024-45339)
-Patch0:         CVE-2024-45339.patch
 # PATCH-FIX-UPSTREAM - Fix unexpected memory consumption during token parsing in golang.org/x/oauth2
-Patch1:         CVE-2025-22868.patch
+Patch0:         CVE-2025-22868.patch
 BuildRequires:  golang(API) >= 1.22.4
 BuildRequires:  golang-packaging
 Requires:       google-guest-configs
@@ -53,14 +51,13 @@ Google Cloud OSConfig Agent
 %prep
 %setup -q -n %{repo}-%{version}
 %setup -q -D -T -a 1 -n %{repo}-%{version}
-%patch -P0 -p0
 pushd vendor/golang.org/x/oauth2
-%patch -P1 -p1
+%patch -P0 -p1
 popd
 
 %build
 %goprep %{import_path}
-CGO_ENABLED=0 go build -ldflags="-s -w -X main.version=%{version}-%{release}" -mod=vendor -o google_osconfig_agent
+CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}-%{release}" -mod=vendor -o google_osconfig_agent
 
 %install
 install -d %{buildroot}%{_bindir}

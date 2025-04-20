@@ -466,4 +466,14 @@
   + Updated translations. (forwarded request 1253144 from iznogood)</comment>
     <requestid>1253367</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>b5664db06933980e30e21fddb373e469</srcmd5>
+    <version>48.1</version>
+    <time>1744828799</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Fix broken ctrl shortcuts on some setups.
+  + Fix trapped focus during pause. (forwarded request 1268674 from iznogood)</comment>
+    <requestid>1269667</requestid>
+  </revision>
 </revisionlist>

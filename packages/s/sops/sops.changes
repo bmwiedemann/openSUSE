@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 16 15:44:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.10.2:
+  * build(deps): Bump the go group with 13 updates by @dependabot
+    in #1834
+  * Use latest 1.24 Go version for release build by @hiddeco in
+    #1836
+  * Remove reserved keyword check from YAML store's LoadPlainFile()
+    by @felixfontein in #1829
+  * build(deps): Bump the go group with 9 updates by @dependabot in
+    #1839
+  * build(deps): Bump github/codeql-action from 3.28.13 to 3.28.15
+    in the ci group by @dependabot in #1840
+  * Release 3.10.2 release by @felixfontein in #1841
+
+-------------------------------------------------------------------
 Mon Mar 31 18:45:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.10.1:

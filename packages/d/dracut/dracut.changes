@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 17 05:40:51 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.725.g1df2cbe1:
+  * fix(dracut-init): assign real path to srcmods (bsc#1241114)
+
+-------------------------------------------------------------------
+Wed Apr 16 12:44:44 UTC 2025 - antonio.feijoo@suse.com
+
+- Update to version 059+suse.723.g780a5518:
+  * fix(dracut.spec): require jq for nvmf (bsc#1239603)
+
+-------------------------------------------------------------------
 Mon Apr 14 09:39:58 UTC 2025 - antonio.feijoo@suse.com
 
 - Update to version 059+suse.722.g16d7e0c3:

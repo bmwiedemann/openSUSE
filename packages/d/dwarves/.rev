@@ -358,4 +358,12 @@
 - update to 1.8 release</comment>
     <requestid>1204898</requestid>
   </revision>
+  <revision rev="45" vrev="4">
+    <srcmd5>90c1b783451d81a69e9538b2d938c8a6</srcmd5>
+    <version>1.27</version>
+    <time>1744985659</time>
+    <user>anag_factory</user>
+    <comment>- Make package build succeed with cmake 4.0</comment>
+    <requestid>1270043</requestid>
+  </revision>
 </revisionlist>

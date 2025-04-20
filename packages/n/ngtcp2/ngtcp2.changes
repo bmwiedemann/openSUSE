@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 20:23:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.0
+  * Avoid limiting CWND during path validation.
+  * Avoid PMTUD if it is disabled by configuration.
+- Use SRPM name as a base for -devel subpackage.
+
+-------------------------------------------------------------------
 Sat Feb  8 21:23:45 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

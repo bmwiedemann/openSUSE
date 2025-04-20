@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Raise window on activation
+  * Remove invalid parameter
+  * Set window icon
+  * lyricswidget do not display the string "I18N_ARGUMENT_MISSING"
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -1,5 +1,5 @@
 #
-# spec file for package glib2
+# spec file
 #
 # Copyright (c) 2025 SUSE LLC
 #

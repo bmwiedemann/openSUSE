@@ -2387,4 +2387,12 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment></comment>
     <requestid>1267156</requestid>
   </revision>
+  <revision rev="292" vrev="2">
+    <srcmd5>ea15a41cb3843048ec9ad1445d060b5c</srcmd5>
+    <version>2.84.1</version>
+    <time>1744898817</time>
+    <user>anag_factory</user>
+    <comment>Update the changelog to add CVE bugID: gdatetime: Fix integer overflow when parsing very long ISO8601 inputs (CVE-2025-3360, bsc#1240897) (forwarded request 1269415 from qzhao)</comment>
+    <requestid>1269691</requestid>
+  </revision>
 </revisionlist>

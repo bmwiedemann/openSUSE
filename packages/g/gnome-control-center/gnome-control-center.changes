@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Apr 14 15:47:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Keyboard: Fix duplicated "Search" entries in the Custom
+    Shortcuts
+  + Network: Fix bad memory access in wsec_size_group_clear()
+  + Power: Set suspend notice message visible by default
+  + Printers: Run printer details response callback when closing
+    dialog
+  + Wellbeing:
+    - Don't make screen time row activatable
+    - Fix NAN handling for chart labels
+    - Fix chart height calculation for partially filled week
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr  7 16:36:06 UTC 2025 - Di Lorenzo <lauro@dilorenzo.one>
 
 - Recommend distribution-logos-openSUSE-icons; to ensure that the

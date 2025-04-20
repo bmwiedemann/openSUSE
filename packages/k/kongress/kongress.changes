@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * Appdata: add display size
+  * Remove unused string from Android manifest
+  * Optimize layout for mobile
+  * Also save speakers name in favorite callendar
+  * Rework favorite handling
+  * Add missing starred icon
+  * Ignore the new Fluent QQC style in APKs
+  * Update Android Gradle plugin version to 8.6.0
+  * Show speaker name(s)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

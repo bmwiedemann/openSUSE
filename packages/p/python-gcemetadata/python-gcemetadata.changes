@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr  8 20:18:43 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch te SLE 15 build setup to also use a macro instead of referencing
+  the Python 3.11 interpreter directly.
+
+-------------------------------------------------------------------
+Mon Apr  7 19:12:27 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Switch to a defined Python interpreter. Use the primary interpreter
+  in SLE 16 and later distribution and Python 3.11 for SLE 15 SP4 and
+  later.
+
+-------------------------------------------------------------------
 Mon Jul 22 19:08:19 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Obsolete the Python 3.6 build

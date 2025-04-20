@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 01:48:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Wed Sep 18 12:24:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-types-PyYAML, required by edumfa

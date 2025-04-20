@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:45:52 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.1.0:
+  * fix tests
+  * fix acc goreleaser
+  * fix acc goreleaser
+  * fix tests
+  * fix tests
+  * update test workflow
+  * v1.1.0
+  * update wf
+  * update changelog
+  * update fdw
+  * fix fdw version
+  * new fdw and new db
+  * db 14.17.0-dev.10
+  * new binaries tarred with --disable-copyfile macos
+  * upgrade pipe-fittings
+  * new darwin-arm64.txz tarred with --disable-copyfile macos
+  * 14.17.0-dev.8 and also test on darwin amd
+  * darwin-amd64.txz
+  * 14.17.0-dev.7 and also test on linux arm
+  * linux-arm64.txz
+  * 14.17.0-dev.6
+  * new bin for linux amd64
+  * set the DYLIB path for pg_dump and pg_restore bins
+  * go back to zonkyio bins
+  * run test on macos arm and linux amd
+  * run test on macos arm and linux amd
+  * changes
+  * new linux amd64 bin
+  * again try with the locally built pg (with extensions)
+  * again try with the locally built pg (with ssl)
+  * again try with the locally built pg
+  * upload new
+  * update link to download the txz which we got from zonkyio and added dump and restore
+  * update link to download the txz which has been built locally source
+  * update link to download the txz which has been built locally from source
+  * Revert "remove backup code"
+  * fix tests
+  * run acc tests on macos as well
+  * remove backup code
+  * update postgres database version and digest
+  * setup oras
+  * fix file ids
+  * update curl commands
+  * update build db image workflow to build the new db package
+  * Fix issue where plugin start timeout was getting limited to 60s. Closes #4477 (#4493)
+  * Added RateLimiterFromProto and RateLimiterasProto (#4500)
+  * Upgrade to pipe-fittings v2, go-kit v1 (#4485)
+  * Upgrade net and crypto to remediate vulnerabilities (#4462)
+  * Fix link to plugins in README
+  * Update README.md (#4442)
+  * update readme tagline (#4441)
+  * Update README.md (#4440)
+  * Update to FDW v1.12.0 (#4415)
+  * Update steampipe to use SDK v5.11.0
+  * Update to use pipe-fittings v1.6.0 (#4414)
+  * Release issue template
+  * Simplify install block in README
+  * update tests
+  * v1.0.0-rc.3
+  * Update README.md (#4411)
+  * v1.0.0-rc.2
+  * [dep][go](deps): Bump github.com/hashicorp/hcl/v2 from 2.20.1 to 2.22.0 (#4364)
+  * [dep][go](deps): Bump github.com/bgentry/speakeasy from 0.1.0 to 0.2.0 (#4372)
+  * Rename CloudMetadata to PipesMetadata, move to pipe-fittings pipes package
+  * [dep][actions](deps): Bump docker/login-action from 2 to 3 (#4370)
+  * [dep][go](deps): Bump github.com/jackc/pgx/v5 from 5.6.0 to 5.7.1 (#4408)
+  * [dep][go](deps): Bump github.com/containerd/containerd (#4405)
+  * Update broken link to CLA (#4403)
+  * tidy
+  * update and enable config precedence tests
+  * update version
+  * Update SteampipeWorkspaceProfile to warn for removed args in workspace instead or erroring, fix timing flag, fix implicit workspaces
+  * updated fdw for config dir parsing change
+  * Remove args
+  * Fix issue where steampipe was parsing all files in config dir
+  * update caching tests
+  * update fdw to fix caching
+  * fdw update
+  * fdw v1.12.0-rc.0
+  * update sdk ref
+  * update sdk ref
+  * update workflows
+  * update pipe-fittings and plugin-sdk refs
+  * move snapshotPanelData into steampipe from pf
+  * remove leftover references of cloudhost, modlocation, dashboard options
+  * update release workflow
+  * update release workflow - checkout pipe-fittings
+  * update release workflow - no assets required
+  * update version
+  * removed EnvIntrospection
+  * removed EnvCloudHost & EnvCloudToken and deprecation handling
+  * removed snapshot file(unused)
+  * removed EnvModLocation
+  * removed watch arg from query
+  * removed mod-location arg and all references
+  * removed EnvModLocation & EnvIntrospection
+  * remove powerpipe notification
+  * update version
+  * update and re-enable snapshot tests
+  * fix snapshot and output
+  * Changing plugins hub url to correct one. (#4401)
+  * fix cloud query issue and re-enable cloud tests
+  * Update README.md (#4400)
+  * Update README.md (#4399)
+  * skip tests - add TODOs
+  * skip tests - add TODOs
+  * fix cache tests
+  * timing streaming
+  * acc
+  * comments
+  * remove named query tests
+  * remove introspection tests
+  * publish snapshot working
+  * finally working
+  * snapshot output and export working
+  * app specific for sp plugin
+  * update test workflow 7
+  * update test workflow 6
+  * update test workflow 5
+  * update test workflow 4
+  * update test workflow 3
+  * update test workflow 2
+  * update test workflow
+  * working 1
+  * use pf correct branch
+  * use 1.6.x pf
+  * Fix unit test
+  * Fix unit tests
+  * go.mod
+  * Update workflow
+  * Update tests
+  * building
+  * rename Connection to SteampipeConnection remove unneeded code use CloudMetadata from pipe-fittings
+  * use sdk branch
+  * Update SteampipeOptionsBlockMapping to only include supported global options, rationalise options code
+  * fix paths
+  * clean
+  * cd steampipe
+  * path
+  * checkout pipe-fittings
+  * tidy
+  * query display and query result moved to pipe fittings
+  * remove unused display options
+  * steampipe timing working
+  * timing broken
+  * fix plugin list
+  * remove list subcommand
+  * tidy imports
+  * fix `term` transitive dependency error
+  * fix references
+  * rebase fixes
+  * tidy
+  * compiles but needs testing
+  * compile fixes, move more utils to pipe-fittings
+  * steampipe compiles
+  * remove terminal options
+  * rebased
+  * tidy refs
+  * compiles and seems to work connection state not populating
+  * steampipe compiles
+  * working on it
+  * working on it
+  * working on it
+  * working on it
+  * working on it
+  * move stuff to pipe-fittings
+  * Revert "initial snapshot refactoring"
+  * Revert "remove use of snapshotRequired"
+  * Revert "go mod tidy"
+  * go mod tidy
+  * remove use of snapshotRequired comment out non compiling code for now
+  * initial snapshot refactoring
+  * update version
+  * dashboardexecute -> snapshot
+  * remove dashboard, check options from workspace profile & default config
+  * remove ui/dashboard
+  * remove unnecessary funcs from pkg/modinstaller
+  * remove control testdata
+  * remove controlexecute and controlstatus and remove control and benchmark refs from dashboardexecute
+  * remove pkg/dashboard/dashboardassets
+  * remove pkg/dashboard/dashboardserver
+  * remove dashboard service from service cmd
+  * remove mod cmd
+  * remove dashboard cmd
+  * remove pkg/controldisplay
+  * remove check cmd
+  * remove variable cmd
+
+-------------------------------------------------------------------
 Wed Feb 19 13:20:16 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Kickoff with version 1.0.3

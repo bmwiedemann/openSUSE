@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontMath
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,6 @@ A set of objects for performing math operations on font data.
 %doc README.md
 %license License.txt
 %{python_sitelib}/fontMath
-%{python_sitelib}/fontMath-%{version}*-info
+%{python_sitelib}/fontmath-%{version}.dist-info
 
 %changelog

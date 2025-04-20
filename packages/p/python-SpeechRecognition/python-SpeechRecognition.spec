@@ -1,7 +1,7 @@
 #
 # spec file for package python-SpeechRecognition
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,7 +105,7 @@ ignore+=" --ignore tests/test_whisper_recognition.py"
 %files %{python_files}
 %license LICENSE.txt
 %{python_sitelib}/speech_recognition
-%{python_sitelib}/SpeechRecognition-%{version}.dist-info
+%{python_sitelib}/speechrecognition-%{version}.dist-info
 %dir %{_datadir}/speech_recognition/
 %dir %{_datadir}/speech_recognition/pocketsphinx-data
 

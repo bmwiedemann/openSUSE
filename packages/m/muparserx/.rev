@@ -31,4 +31,12 @@
     <comment>- Update to release 4.0.12</comment>
     <requestid>1069427</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a700c09362b767a9b293926ab9a69bc2</srcmd5>
+    <version>4.0.12</version>
+    <time>1744828968</time>
+    <user>anag_factory</user>
+    <comment>- Support building with cmake 4.0</comment>
+    <requestid>1270045</requestid>
+  </revision>
 </revisionlist>

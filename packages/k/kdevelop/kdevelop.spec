@@ -1,7 +1,7 @@
 #
 # spec file for package kdevelop
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,11 +20,11 @@
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
 
-%define libkdev_major 61
+%define libkdev_major 62
 
 %bcond_without released
 Name:           kdevelop
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Plugin-extensible IDE for C/C++ and other programming languages
 License:        GPL-2.0-or-later

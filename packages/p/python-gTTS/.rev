@@ -234,4 +234,15 @@ Features
   * Language added: `fr-CA` (French (Canada))</comment>
     <requestid>1223983</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cfa3c81f9240b1406be8977f191bb538</srcmd5>
+    <version>2.5.4</version>
+    <time>1744828740</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264870</requestid>
+  </revision>
 </revisionlist>

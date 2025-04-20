@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftputil
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,14 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15allpythons}
 Name:           python-ftputil
-Version:        3.4
+Version:        5.1.0
 Release:        0
 Summary:        High-level FTP client library (virtual file system and more) for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            http://ftputil.sschwarzer.net/
+URL:            http://ftputil.sschwarzer.net/
 Source:         https://files.pythonhosted.org/packages/source/f/ftputil/ftputil-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,13 +53,11 @@ servers in different timezones.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-mkdir -p %{buildroot}%{_docdir}
-%python_expand cp -r %{buildroot}%{_prefix}/doc/ftputil %{buildroot}%{_docdir}/%{$python_prefix}-ftputil
-rm -rf %{buildroot}%{_prefix}/doc/ftputil
 
 %files %{python_files}
-%{_docdir}/%{python_prefix}-ftputil
 %license LICENSE
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/ftputil
+%{python_sitelib}/ftputil-%{version}*.egg-info
 
 %changelog

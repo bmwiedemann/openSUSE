@@ -34,6 +34,8 @@ Patch6:         sbl-sppkdev.patch
 Patch7:         sbl-orca-python3.patch
 # PAtCH-FIX-UPSTREAM sbl-gcc14.patch
 Patch8:         sbl-gcc14.patch
+# fixes to make gcc-15 happy
+Patch9:         sbl-gcc15.patch
 BuildRequires:  bluez-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libusb-devel
@@ -69,10 +71,11 @@ this python module enables orca to use brld for braille output
 %patch -P 6 -p1
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE" \
-	LIB_CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_BSD_SOURCE -fPIC $(pkg-config speech-dispatcher --cflags)"
+make %{?_smp_mflags} CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_DEFAULT_SOURCE" \
+	LIB_CFLAGS="%{optflags} -fcommon -D_POSIX_C_SOURCE=2 -D_DEFAULT_SOURCE -fPIC $(pkg-config speech-dispatcher --cflags)"
 
 %install
 %make_install LIBINSTPATH=%{_libdir}

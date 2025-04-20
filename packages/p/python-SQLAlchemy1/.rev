@@ -69,4 +69,14 @@
 - Switch to pyproject macros.</comment>
     <requestid>1201952</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4d54c36ece8b2d624409315196c4eba7</srcmd5>
+    <version>1.4.54</version>
+    <time>1744828627</time>
+    <user>anag_factory</user>
+    <comment>- Wrap the metadata directory name in a distro-based conditional
+
+- Lowercase metadata directory name.</comment>
+    <requestid>1266161</requestid>
+  </revision>
 </revisionlist>

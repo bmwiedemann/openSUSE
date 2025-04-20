@@ -6241,4 +6241,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
 - require llvm20/clang20</comment>
     <requestid>1267883</requestid>
   </revision>
+  <revision rev="541" vrev="413">
+    <srcmd5>cd6464f56d331c2be96080efa37062e0</srcmd5>
+    <version>unknown</version>
+    <time>1745134476</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 25.0.4
+  --&gt; https://docs.mesa3d.org/relnotes/25.0.4</comment>
+    <requestid>1270885</requestid>
+  </revision>
 </revisionlist>

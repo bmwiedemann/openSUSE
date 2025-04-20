@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.39
+Version:        2.0.40
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
@@ -93,7 +93,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES.rst README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
+%if 0%{?suse_version} > 1600
+%{python_sitearch}/sqlalchemy-%{version}.dist-info
+%else
 %{python_sitearch}/SQLAlchemy-%{version}.dist-info
+%endif
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

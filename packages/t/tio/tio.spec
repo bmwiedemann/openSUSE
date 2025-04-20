@@ -1,7 +1,7 @@
 #
 # spec file for package tio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tio
-Version:        3.8
+Version:        3.9
 Release:        0
 Summary:        Simple TTY terminal I/O application
 License:        GPL-2.0-or-later

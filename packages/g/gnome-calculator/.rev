@@ -541,4 +541,18 @@
   + Fixed conversions not working. (forwarded request 1255205 from iznogood)</comment>
     <requestid>1255569</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>9dabf5531d428dd88f344c517e48602f</srcmd5>
+    <version>48.1</version>
+    <time>1744898788</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Fix converter not visible when exchange rate refresh is set to
+    never.
+  + Align the text in the converter entries to right in RTL layout.
+  + Use GNOME-hosted exchange rates instead of external sources.
+  + Improved exchange rate handling.
+  + Updated translation. (forwarded request 1268805 from iznogood)</comment>
+    <requestid>1269673</requestid>
+  </revision>
 </revisionlist>

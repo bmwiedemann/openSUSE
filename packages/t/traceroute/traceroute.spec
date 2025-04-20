@@ -1,7 +1,7 @@
 #
 # spec file for package traceroute
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           traceroute
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Packet route path tracing utility
 License:        GPL-2.0-or-later

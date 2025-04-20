@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 06:54:11 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix build problems on SLE15-SP7 by not treating unused-variable
+  and unused-but-set-variable as errors.
+- Prefix CXX_FLAGS with %(optflags) to make sure we don't loose them.
+- Make sure we build with a recommended or newer version of level-zero.
+
+-------------------------------------------------------------------
 Thu Jan 23 09:42:26 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Don't explicitly require libigc2 for libze_intel_gpu

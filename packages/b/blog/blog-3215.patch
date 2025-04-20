@@ -1,0 +1,134 @@
+---
+ blog.service                      |    1 +
+ blogd.c                           |    2 +-
+ libconsole/console.c              |    8 +++++++-
+ libconsole/tty.c                  |   11 +++++++++++
+ systemd-ask-password-blog.path    |    7 +++++--
+ systemd-ask-password-blog.service |    9 ++++++---
+ 6 files changed, 31 insertions(+), 7 deletions(-)
+
+--- blog.service
++++ blog.service	2025-04-17 13:09:41.774994278 +0000
+@@ -6,6 +6,7 @@ After=systemd-vconsole-setup.service sys
+ Before=systemd-ask-password-blog.service
+ ConditionKernelCommandLine=!blog.enable=0
+ ConditionVirtualization=!container
++ConditionPathExists=/dev/console
+ IgnoreOnIsolate=true
+ RefuseManualStart=true
+ 
+--- blogd.c
++++ blogd.c	2025-04-17 12:23:43.672968636 +0000
+@@ -325,7 +325,7 @@ int main(int argc, char *argv[])
+ 	    o.c_cc[VMIN]  = CMIN;
+ 	}
+ #if defined(__s390__) || defined(__s390x__)
+-	if (major(c->dev) == 4 && minor(c->dev) == 65) {
++	if (major(c->dev) == 4 && minor(c->dev) == 64) {
+ 	    ioctl(c->fd, TIOCSBRK);
+ 	    usleep(1000);
+ 	}
+--- systemd-ask-password-blog.path
++++ systemd-ask-password-blog.path	2025-04-17 13:09:00.655744933 +0000
+@@ -2,9 +2,12 @@
+ Description=Forward Password Requests to Plymouth Directory Watch
+ Documentation=http://www.freedesktop.org/wiki/Software/systemd/PasswordAgents
+ DefaultDependencies=no
+-Conflicts=shutdown.target
+ After=blog.service
+-Before=basic.target shutdown.target
++Before=paths.target cryptsetup.target
++Conflicts=emergency.service
++Before=emergency.service
++Conflicts=shutdown.target
++Before=shutdown.target
+ ConditionKernelCommandLine=!blog.enable=0
+ ConditionPathExists=/run/blogd.pid
+ ConditionVirtualization=!container
+--- systemd-ask-password-blog.service
++++ systemd-ask-password-blog.service	2025-04-17 13:08:53.699871915 +0000
+@@ -2,12 +2,15 @@
+ Description=Forward Password Requests to Blogd as a Plymouth agent
+ Documentation=http://www.freedesktop.org/wiki/Software/systemd/PasswordAgents
+ DefaultDependencies=no
+-Conflicts=shutdown.target
+-After=blog.service
+-Before=shutdown.target
++After=blog.service systemd-vconsole-setup.service
++Conflicts=emergency.service
++Before=emergency.service
++Conflicts=shutdown.target initrd-switch-root.target
++Before=shutdown.target initrd-switch-root.target
+ ConditionKernelCommandLine=!blog.enable=0
+ ConditionVirtualization=!container
+ ConditionPathExists=/run/blogd.pid
+ 
+ [Service]
+ ExecStart=/usr/bin/systemd-tty-ask-password-agent --watch --plymouth
++SystemCallArchitectures=native
+--- libconsole/console.c
++++ libconsole/console.c	2025-04-17 12:44:55.791489867 +0000
+@@ -598,11 +598,17 @@ static int consinitIO(struct console *ne
+     memset(&newc->ltio, 0, sizeof(newc->ltio));
+     memset(&newc->otio, 0, sizeof(newc->otio));
+     memset(&newc->ctio, 0, sizeof(newc->ctio));
++
++#if defined(__s390__) || defined(__s390x__)
++    if (major(newc->dev) == 4 && minor(newc->dev) == 64)
++	return 1;
++#endif
+     if ((tflags = fcntl(newc->fd, F_GETFL)) < 0)
+ 	warn("can not get terminal flags of %s", newc->tty);
+ 
+     tflags &= ~(O_NONBLOCK);
+     tflags |=   O_NOCTTY;
++
+     if (fcntl(newc->fd, F_SETFL, tflags) < 0)
+ 	warn("can not set terminal flags of %s", newc->tty);
+ 
+@@ -1319,7 +1325,7 @@ static void ask_for_password(void)
+ 		(major(c->dev) == 227 && minor(c->dev) >= 1))
+ 		len = asprintf(&message, BOLD RED "\n\r%s: " NORM, pwprompt);
+ 	    else
+-		len = asprintf(&message, "\n\r>> %s: ", pwprompt);
++		len = asprintf(&message, "\n\r===>> %s: ", pwprompt);
+ #else
+ 	    if (c->flags & CON_SERIAL)
+ 		len = asprintf(&message, BOLD RED "\n\r%s: " NORM, pwprompt);
+--- libconsole/tty.c
++++ libconsole/tty.c	2025-04-17 12:52:55.030111493 +0000
+@@ -15,6 +15,7 @@
+ #include <signal.h>
+ #include <sys/inotify.h>
+ #include <sys/ioctl.h>
++#include <sys/sysmacros.h>
+ #include <sys/stat.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+@@ -52,6 +53,9 @@ int request_tty(const char *tty)
+ {
+     struct sigaction saved_sighup;
+     int fd = -1, nd, wd;
++#if defined(__s390__) || defined(__s390x__)
++    struct stat sb;
++#endif
+ 
+     fd = open("/dev/tty", O_RDWR|O_NOCTTY|O_CLOEXEC|O_NONBLOCK);
+     if (fd >= 0) {
+@@ -95,9 +99,16 @@ int request_tty(const char *tty)
+ 	    break;
+ 	}
+ 
++#if defined(__s390__) || defined(__s390x__)
++	if (fstat(fd, &sb) == 0 && major(sb.st_dev) == 4 && minor(sb.st_dev) == 64)
++	    goto noblock;
++#endif
+ 	flags = fcntl(fd, F_GETFL);
+ 	flags &= ~O_NONBLOCK;
+ 	fcntl(fd, F_SETFL, flags);
++#if defined(__s390__) || defined(__s390x__)
++    noblock:
++#endif
+ 
+ 	if (ret >= 0)
+ 	    break;	/* Success */

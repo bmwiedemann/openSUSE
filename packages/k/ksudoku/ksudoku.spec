@@ -1,7 +1,7 @@
 #
 # spec file for package ksudoku
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ksudoku
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later

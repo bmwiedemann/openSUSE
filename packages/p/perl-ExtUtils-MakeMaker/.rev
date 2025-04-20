@@ -279,4 +279,90 @@
     <comment></comment>
     <requestid>1077430</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>b61ad68168b95f6078cdf8e3a91995a6</srcmd5>
+    <version>7.74</version>
+    <time>1744985683</time>
+    <user>anag_factory</user>
+    <comment>- Update Do_not_set_RPATH_by_default.patch
+- updated to 7.74
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker/Changes
+  7.74    Wed  9 Apr 13:28:16 BST 2025
+      No changes since v7.73_01
+  7.73_01 Sun 30 Mar 11:45:44 BST 2025
+      Core fixes:
+      - WriteEmptyMakefile now produces the same target types as WriteMakefile
+      VMS fixes:
+      - fixed pm_to_blib regression
+      Macosx fixes:
+      - stop MacOS dropping LIBS=&gt;&quot;-framework X&quot; with no &quot;-l&quot; libs
+  7.72    Fri 14 Mar 10:15:56 GMT 2025
+      No changes since v7.71_08
+  7.71_08 Sat  8 Mar 23:39:43 GMT 2025
+      Core fixes:
+      - Fixed split_command with multi-line oneliner
+      Win32 fixes:
+      - Reverted a change from v7.36 to fix RT#144085
+      - Win32 Liblist stop false positives on multi-LIB (RT#53676)
+      Test fixes:
+      - Added Test::Utils::write_file
+      - test oneliner with multi-line
+      QA fixes:
+      - use GHA for all Strawberry, cut down AppVeyor
+      - CI parallel build &amp; test on Strawberry
+      - CI parallel test on MSVC build (nmake no parallel capability)
+      - Add test for PM_FILTER
+  7.71_07 Wed  5 Mar 21:32:41 GMT 2025
+      Core fixes:
+      - Liblist work with Config.libpth supporting paths with spaces
+      Win32 fixes:
+      - Win32 Liblist test for system library
+      Test fixes:
+      - Added test of XS loading other XS, using C symbols within
+  7.71_06 Mon  3 Mar 16:40:57 GMT 2025
+      BSD fixes:
+      - RT#117800 affecting BSD make fixed
+      - distmeta and co fixed when using make -j
+      QA fixes:
+      - Added Windows MSVC-built Perl CI
+      - Added Windows Strawberry Perl CI
+      - Added FreeBSD CI
+  7.71_05 Fri 28 Feb 16:53:16 GMT 2025
+      Enhancements:
+      - Reinstated %Recognized_Att_Keys
+      Win32 fixes:
+      - GNU Make supports spaces in deps on Win32 as elsewhere
+      Test fixes:
+      - Various improvements to MakeMaker::Test::Setup::XS
+      QA fixes:
+      - Added disttest checks to CI
+  7.71_04 Mon 24 Feb 15:15:59 GMT 2025
+      Doc fixes:
+      - Typo fixed in MM_Unix
+      Test fixes:
+      - execute bit removed from two .t files
+      QA fixes:
+      - removed Travis and non-working macos-11 CI config
+  7.71_03 Wed 19 Feb 01:11:31 GMT 2025
+      VMS fixes:
+      - Avoid uninitialized value in MM_VMS::_fixin_replace_shebang
+      - Take care with '.' in init_dirscan on VMS
+  7.71_02 Fri 22 Nov 18:37:30 GMT 2024
+      Core Fixes:
+      - maybe_command() now handles an undefined or empty argument
+      Macosx fixes:
+      - rpath requires a minimum of Darwin 9
+      - Fix rpath issue on MacOSX, it only accepts a single path
+      Doc fixes:
+      - typos were squashed
+      Removals:
+      - Removed support for NeXT
+      - Removed support for GNU DLD
+  7.71_01 Mon 24 Jun 15:08:55 BST 2024
+      Core fixes:
+      - Set META status as &quot;unstable&quot; for -TRIAL releases
+      Test fixes:
+      - Add DISTVNAME to tests (forwarded request 1270027 from tinita)</comment>
+    <requestid>1270271</requestid>
+  </revision>
 </revisionlist>

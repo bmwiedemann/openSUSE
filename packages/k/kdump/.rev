@@ -1424,4 +1424,14 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
 </comment>
     <requestid>1250183</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>988be4bd618262d8c4fbfb2474a14a65</srcmd5>
+    <version>2.0.18</version>
+    <time>1744985707</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.0.18
+  * set KDUMP_CPUs to 32 by default (bsc#1240769, jsc#PED-9894, 
+    bsc#1237754, bsc#1239999)</comment>
+    <requestid>1270563</requestid>
+  </revision>
 </revisionlist>

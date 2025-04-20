@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-rjsmin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define mod_name rjsmin
 %{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
-Version:        1.2.2
+Version:        1.2.4
 Release:        0
 Summary:        A JavaScript minifier written in Python
 License:        Apache-2.0
@@ -59,7 +59,7 @@ rm -rf %{buildroot}%{_datadir}/doc/rjsmin
 
 %files %{python_files}
 %license LICENSE
-%doc README.md docs/CHANGES
+%doc README.md
 %{python_sitearch}/rjsmin.py
 %{python_sitearch}/_rjsmin*
 %pycache_only %{python_sitearch}/__pycache__/rjsmin*

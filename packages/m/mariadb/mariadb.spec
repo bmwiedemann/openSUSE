@@ -81,6 +81,7 @@ Patch7:         mariadb-10.4.12-fix-install-db.patch
 Patch10:        fix-pamdir.patch
 Patch11:        gcc13-fix.patch
 Patch12:	mariadb-fix-testsuite-openssl3.2.3.patch
+Patch13:        mariadb-11.7.2-MDEV-36078-PCRE2-10.45-breaks-main.func_regexp_pcre-.patch
 # needed for bison SQL parser and wsrep API
 BuildRequires:  bison
 BuildRequires:  cmake
@@ -364,6 +365,7 @@ find . -name "*.jar" -type f -exec rm --verbose -f {} \;
 %endif
 %patch -P 11 -p1
 %patch -P 12 -p1
+%patch -P 13 -p1
 
 cp %{_sourcedir}/suse-test-run .
 

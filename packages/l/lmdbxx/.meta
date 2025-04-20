@@ -1,4 +1,5 @@
 <package name="lmdbxx" project="openSUSE:Factory">
   <title>C++11 wrapper for the LMDB embedded B+ tree database library.</title>
   <description>This is a comprehensive C++ wrapper for the LMDB embedded database library, offering both an error-checked procedural interface and an object-oriented resource interface with RAII semantics.</description>
+  <devel project="network:messaging:matrix" package="lmdbxx"/>
 </package>

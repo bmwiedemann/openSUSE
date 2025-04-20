@@ -1,4 +1,423 @@
 -------------------------------------------------------------------
+Thu Apr 17 16:00:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 11.0.0:
+  * add ability to regenerate access tokens
+  * drop SSPI auth support and more Windows files
+  * localize theme names
+  * improve incorrect ROOT_URL warning
+  * admin user view
+  * welcome screen for user dashboard
+  * improve "URL" handling in markdown editor
+  * display to maintainers in pull request when it is editable
+  * simplify pronouns in user settings
+  * split Forgejo landing page template to allow patching or removing Forgejo
+    introduction section
+  * set default release title to tag name
+  * add quota overview
+  * allow opening a single-file diff from file history view
+  * reduce noise in the timeline of issues and pull requests. If certain
+    timeline events are performed within a certain timeframe of each other with
+    no other events in between, they will be combined into a single timeline
+    event, and any contradictory actions will be canceled and not displayed.
+    The older the events, the wider the timeframe will become.
+  * i18n: make Danish available in UI
+  * Updates from Codeberg Translate
+  * Features
+  * return run_number in workflow dispatch
+  * add more sorting to own repository list
+  * add sort parameter to list issues API
+  * make it possible to track the progress of manually triggered workflows
+  * interpret Precedence: auto_reply as an auto reply
+  * parse multipart/related parts as attachments & guess filename
+  * added missing nuget V2 properties to API
+  * order the user's organization list alphabetically
+  * in code search, add query string for boolean operators and phrase search
+  * in code search, replace fuzzy search with union search for indexer
+  * set default value of UseCompatSSHURI to true
+  * add pronoun privacy option
+  * commit API endpoint to rename an organization
+  * fill website field when migrating from external
+  * commit use Project-URL metadata field to get a PyPI package's homepage URL
+  * improve Forgejo diagnostics
+  * sourcehut webhook: submit SSH URL for private repository or when pre-filled
+  * add configurable cooldown to claim usernames
+  * don't allow blocking the doer
+  * Alt Linux Apt-Rpm repository support for Forgejo packages
+  * add search action jobs for API routes, repo, org and global level
+  * add summary card for repos and releases
+  * add synchronization for SSH keys for OpenID Connect
+  * initial support for localization and pluralization with go-i18n-JSON-v2 format
+  * permit to download patch and diff file between tags and branches
+  * remove SHA1 for support for ssh rsa signing
+  * show link to download directory
+  * validate input for default_{merge,update}_style
+  * include platform information on rubygems compact index API
+  * listening on abstract domain sockets
+  * forbid blocked users from reopening issues
+  * allow collaborators to read their own permissions
+  * more permissive markup commit hash detection
+  * don't give system users roles on comments
+  * fix(ui): make tag dropdown clickable again
+  * fix: match PackageBlob.HashBlake2b definition and migration
+  * fix(UI): i18n: improve naming
+  * fix: package_blob.has_blake2b may be null
+  * fix: redirect to submodule instead of throwing 500 error when viewing submodule entry
+  * fix(migrations): transfer PR flow information
+  * : fix(i18n): fix several usages of i18n
+  * Update module golang.org/x/net to v0.38.0 (v11.0/forgejo)
+  * 4108-empty-slice-encoded-to-null
+  * chore: branding import path
+  * fix(ui): Do not check for vertical-align
+  * Update module code.forgejo.org/forgejo/act to v1.25.1 (forgejo)
+  * fix ci dashboard e2e test
+  * build: require node v20
+  * Update Node.js to v22 (forgejo)
+  * chore(renovate): update settings for latest version
+  * Update module github.com/buildkite/terminal-to-html/v3 to v3.16.8 (forgejo)
+  * Update module github.com/caddyserver/certmagic to v0.22.2 (forgejo)
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.212.0 (forgejo)
+  * remove an extraneous } in issue dependencies template
+  * chore(release-notes): Forgejo v10.0.3
+  * Update module github.com/golang-jwt/jwt/v5 to v5.2.2 [SECURITY] (forgejo)
+  * Update module github.com/go-sql-driver/mysql to v1.9.1 (forgejo)
+  * Update mcr.microsoft.com/devcontainers/go Docker tag to v1.24 (forgejo)
+  * chore(release-notes): Forgejo v10.0.2
+  * Update module github.com/redis/go-redis/v9 to v9.7.3 (forgejo)
+  * consider issues in repository accessible via access table
+  * chore(release-notes): Forgejo v7.0.14
+  * chore(renovate): add yamllint to automerge
+  * Update module gitlab.com/gitlab-org/api/client-go to v0.126.0 (forgejo)
+  * Update dependency yamllint to v1.36.2 (forgejo)
+  * chore(dependency): upgrade gof3 v3.10.6
+  * Update dependency eslint-import-resolver-typescript to v4 (forgejo)
+  * chore: add @vitejs/plugin-vue to renovate automerge
+  * Update dependency @vitejs/plugin-vue to v5.2.3 (forgejo)
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.205.0 (forgejo)
+  * branding: update API descriptions
+  * Update module
+  * github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker
+    to v3.2.1 (forgejo)
+  * Update dependency yamllint to v1.36.1 (forgejo)
+  * Update data.forgejo.org/oci/bitnami/postgresql Docker tag to v16 (forgejo)
+  * Update dependency @playwright/test to v1.51.0 (forgejo)
+  * Update vitest monorepo to v3.0.8 (forgejo)
+  * Update linters (forgejo)
+  * Update dependency happy-dom to v17.4.4 (forgejo)
+  * Update dependency @stoplight/spectral-cli to v6.14.3 (forgejo)
+  * perf: avoid sorting team names for ComposeMetas
+  * chore(runner): return errors created by connect
+  * perf: optimize converting releases to feed items
+  * [gitea] week 2025-12 cherry pick (gitea/main -> forgejo)
+  * Update dependency mermaid to v11.5.0 (forgejo)
+  * Update module github.com/editorconfig/editorconfig-core-go/v2 to v2.6.3 (forgejo)
+  * chore(ui): remove unused template "shared/user/blocked_users"
+  * handle deleted user modifying event state in gitlab migration
+  * Update dependency yamllint to v1.36.0 (forgejo)
+  * i18n: ensure consistent indent style for next locales
+  * fix(api): miss-spelled description, corrected to public
+  * Update module github.com/go-webauthn/webauthn to v0.12.2 (forgejo)
+  * Update module github.com/minio/minio-go/v7 to v7.0.88 (forgejo)
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.195.1 (forgejo)
+  * ui: improve branch/tag dropdown selector consistency
+  * Update module github.com/msteinert/pam to v2 (forgejo)
+  * Update linters (forgejo)
+  * Update dependency happy-dom to v17.4.3 (forgejo)
+  * Update dependency globals to v16 (forgejo)
+  * Update dependency eslint-plugin-vue to v10 (forgejo)
+  * Update dependency eslint-plugin-unicorn to v57 (forgejo)
+  * Update dependency @stylistic/eslint-plugin-js to v4 (forgejo)
+  * Update Node.js to v22 (forgejo)
+  * [gitea] week 2025-11 cherry pick (gitea/main -> forgejo)
+  * fix(ui): use usual and consistent size for project icons of 16
+  * fix(ui): improve milestone/project header consistency
+  * chore(ui): improve svg icon margin consistency
+  * revert issue rendering for <a> element
+  * chore: modernize import
+  * fix(i18n): make HasKey aware of newStyleMessages
+  * feat(ui themes): better place for theme list ctx, testing
+  * chore(ui): always use primary button color inside modals
+  * fix(ui): 2fa verify alignment
+  * Update module google.golang.org/grpc to v1.71.0 (forgejo)
+  * i18n: use ellipsis character
+  * Update module golang.org/x/tools/cmd/deadcode to v0.31.0 (forgejo)
+  * Update module golang.org/x/oauth2 to v0.28.0 (forgejo)
+  * Update module github.com/caddyserver/certmagic to v0.22.0 (forgejo)
+  * Update module golang.org/x/image to v0.25.0 (forgejo)
+  * Update module golang.org/x/crypto to v0.36.0 (forgejo)
+  * Update module github.com/urfave/cli/v2 to v2.27.6 (forgejo)
+  * improve error handling of commit rendering
+  * Update module golang.org/x/net to v0.36.0 (forgejo)
+  * Update module github.com/prometheus/client_golang to v1.21.1 (forgejo)
+  * correct logging if caller has generics
+  * Update module github.com/golangci/golangci-lint/cmd/golangci-lint to v1.64.6 (forgejo)
+  * Update dependency go to v1.24.1 (forgejo)
+  * introduce distant federation server mock
+  * fix the modularity for migration v18
+  * Update module github.com/opencontainers/image-spec to v1.1.1 (forgejo)
+  * [gitea] week 2025-10 cherry pick (gitea/main -> forgejo)
+  * feat(build): linter for missing msgid definitions
+  * Fix: Force all repo tab buttons to be the same height
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.185.0 (forgejo)
+  * fix(ui): add header to org settings /blocked users page
+  * fix(ui): use discussions icon in issue list entries
+  * Update module github.com/jhillyerd/enmime/v2 to v2.1.0 (forgejo)
+  * i18n(en): a few source fixes
+  * Update module github.com/PuerkitoBio/goquery to v1.10.2 (forgejo)
+  * Update dependency happy-dom to v17.1.8 (forgejo)
+  * Update dependency @stylistic/stylelint-plugin to v3.1.2 (forgejo)
+  * Update module code.forgejo.org/f3/gof3/v3 to v3.10.4 (forgejo)
+  * chore(ci): ensure the manually cached Go can be run
+  * chore(upgrade): switch to code.forgejo.org/forgejo/levelqueue
+  * Update module github.com/ProtonMail/go-crypto to v1.1.6 (forgejo)
+  * Update module golang.org/x/oauth2 to v0.27.0 (forgejo)
+  * Update module golang.org/x/crypto to v0.35.0 (forgejo)
+  * Update module golang.org/x/tools/gopls to v0.18.1 (forgejo)
+  * job list response to avoid wrapped body.
+  * Update https://data.forgejo.org/forgejo/forgejo-build-publish action to v5.3.4 (forgejo)
+  * Update https://data.forgejo.org/forgejo/forgejo-build-publish action to v5.3.3 (forgejo)
+  * Update renovate to v39.178.1 (forgejo)
+  * chore: add empty secret table fixtures
+  * Update data.forgejo.org/oci/golang Docker tag to v1.24 (forgejo)
+  * feat(ui): include MIME type for archive links in folder download
+  * fix(ui): improvements around folder download
+  * i18n(en): shorten banner text for archived repos
+  * [gitea] week 2025-09 cherry pick (gitea/main -> forgejo)
+  * fix(repo): return code 400 instead of 500 for invalid archive type
+  * Update module golang.org/x/crypto to v0.34.0 (forgejo)
+  * Fix invalid swagger syntax of $ref with sibling
+  * Update x/tools (forgejo)
+  * Update module github.com/prometheus/client_golang to v1.21.0 (forgejo)
+  * Update module github.com/meilisearch/meilisearch-go to v0.31.0 (forgejo)
+  * fix(example conf): add .webp to ALLOWED_TYPES
+  * linting: fix typos, add toml validation
+  * Update Zig gitignore
+  * return 404 for empty repositories
+  * Update module github.com/buildkite/terminal-to-html/v3 to v3.16.6 (forgejo)
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.171.2 (forgejo)
+  * chore: add a make option to disable stripping binaries for debug builds
+  * Revert "Update module github.com/minio/minio-go/v7 to v7.0.86 (forgejo) (#6945)"
+  * feat(ui): add MIME types for generated archives
+  * i18n: translation updates from Gitea
+  * forgejo migrations numbering in comments and rename latest migration file
+  * native parsing of ssh certificate key
+  * Update dependency happy-dom to v17 (forgejo)
+  * Update golang packages to v1.24 (forgejo) (minor)
+  * Update module github.com/minio/minio-go/v7 to v7.0.86 (forgejo)
+  * Also substitute COPYRIGHT HOLDER and the organization in BSD 4-Clause license
+  * delay deleting authorization token
+  * i18n: reword archive.title and archive.title.date in english locale
+  * Update dependency webpack to v5.98.0 (forgejo)
+  * feat(ui): always show restart button for Actions jobs
+  * Update dependency globals to v15.15.0 (forgejo)
+  * Update module github.com/buildkite/terminal-to-html/v3 to v3.16.5 (forgejo)
+  * Add possibility of removed content to 404 page
+  * Reduce links in chat notifications to avoid multiple previews
+  * Update dependency esbuild-loader to v4.3.0 (forgejo)
+  * fix(ui): hide extra PR property labels on title edit
+  * Update module golang.org/x/net to v0.35.0 (forgejo)
+  * Update dependency postcss to v8.5.2 (forgejo)
+  * Fix api returns internal server error when not found should be returned
+  * fix(ui): release: set default release title to tag name
+  * fix(ui): use "organization name" in coldown messages for orgs
+  * Lock file maintenance (forgejo)
+  * Update module github.com/minio/minio-go/v7 to v7.0.85 (forgejo)
+  * Update renovate to v39.164.1 (forgejo)
+  * always set stripped slashes on http request
+  * [gitea] week 2025-07 cherry pick (gitea/main -> forgejo)
+  * chore(api): Improve description for repoCheckCollaborator
+  * chore(release-notes): fix Forgejo v10.0.1 & v7.0.13 blog post URL (again) [skip ci]
+  * chore(release-notes): fix Forgejo v10.0.1 & v7.0.13 blog post URL
+  * fix(ui): hide 'New migration' button on org pages with migrations disabled (#6850)
+  * chore(release-notes): Forgejo v7.0.13
+  * chore(release-notes): Forgejo v10.0.1
+  * fix(sec): Forgejo Actions web routes
+  * fix(sec): permission check for project issue
+  * Update module golang.org/x/crypto to v0.33.0 (forgejo)
+  * [skip ci] Fix flaky clipboard test
+  * Update module github.com/go-enry/go-enry/v2 to v2.9.2 (forgejo)
+  * fix(ui): make Finish review button work again
+  * avoid y-axis clipping for branch name
+  * ui: update styling of comment headers and role labels
+  * Fix comment form e2e test
+  * chore(i18n): lint errors
+  * Update module golang.org/x/sys to v0.30.0 (forgejo)
+  * chore: teach lint-locale about locale_next
+  * add commit limit for webhook payload
+  * ui: remove divider in code search
+  * fix(ui): remove code search git grep warning
+  * Update dependency go to v1.23.6 (forgejo)
+  * make author search case insenstive
+  * chore(renovate): override platform version
+  * Update renovate to v39.158.2 (forgejo)
+  * Update vitest monorepo to v3 (forgejo) (major)
+  * Pin dependency codespell to 2.4.1 (forgejo)
+  * FromAsCasting warning from Dockerfile
+  * Lock file maintenance (forgejo)
+  * Update renovate to v39.156.1 (forgejo)
+  * Update dependency markdownlint-cli to v0.44.0 (forgejo)
+  * Update dependency happy-dom to v16.8.1 (forgejo)
+  * Update dependency @playwright/test to v1.50.1 (forgejo)
+  * Update dependency @vitest/eslint-plugin to v1.1.25 (forgejo)
+  * use correct default branch for migrated wiki
+  * consider HEAD requests to be pulls
+  * chore: remove deadcode
+  * chore: Remove ChangeMilestoneStatus
+  * Transient model for federated unstar
+  * chore: fix ci failure
+  * Disable autofocus on the dashboard repository search box
+  * fix(ui): disable PR review button in archived repos
+  * chore: remove deadcode in models/user
+  * chore: load 2fa status for user search when needed
+  * check for webauthn in 2fa user search
+  * disallow blame on directories
+  * render issue titles consistently
+  * Set explore pages to configurable default sort
+  * chore: consistent docker image and action references
+  * fix(i18n): use translate key as fallback
+  * fix(i18n): add forgotten translatable string
+  * ui: update language stats layout and click behavior
+  * Update module
+  * github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker
+    to v3.2.0 (forgejo)
+  * Update renovate to v39.136.1 (forgejo)
+  * chore: Update renovate to v39.136.0
+  * chore: remove usages of sort.Sort
+  * [gitea] week 2025-05 cherry pick (gitea/main -> forgejo)
+  * nit(i18n): update password update instruction
+  * add non allowed domain translation
+  * chore: teach set module about iter.Seq
+  * [skip ci] chore: adjust i18n entries in CODEOWNERS
+  * chore: fix typos, decap a few i18n strings
+  * code review alt repository
+  * Update module github.com/go-git/go-git/v5 to v5.13.2 (forgejo)
+  * Release-note and file rename for Alt Linux Apt-RPM support
+  * chore(security): update security.txt with new expiration date
+  * Update dependency codespell to v2.4.0 (forgejo)
+  * fix(tests): prevent frontend test dependency on system locale
+  * ci: fix go version check
+  * Lock file maintenance (forgejo)
+  * Update module github.com/minio/minio-go/v7 to v7.0.84 (forgejo)
+  * [gitea] week 2025-04 cherry pick (gitea/main -> forgejo)
+  * fix(ui): add triangle down octicon to code search options dropdown
+  * enh(ui): Remove DiffFileList component
+  * fix(ui): prevent overflow of branch selector in commit graph
+  * Hide git note add button for commit, if commit already has a note
+  * chore(renovate): fix self-update config [skip ci]
+  * fix(i18n): flatten next locales
+  * Update renovate Docker tag to v39.115.4 (forgejo)
+  * Update dependency katex to v0.16.21 (forgejo)
+  * Fix mention and emoji expansion & Improve leaving list completion
+  * Reset content of comment edit field on cancel
+  * reduce noise for the v303 migration
+  * Update dependency go to v1.23.5 (forgejo)
+  * Update module google.golang.org/protobuf to v1.36.3 (forgejo)
+  * avoid Gitea migration warnings (take 2)
+  * fix(ui): correct switch ordering
+  * chore(ci): upgrade forgejo-build-publish/build@v5.3.1
+  * Fix inline file preview for rendered files
+  * Update renovate Docker tag to v39.111.0 (forgejo)
+  * tests(e2e): Various fixes to visual testing
+  * Update https://data.forgejo.org/infrastructure/issue-action action to v1.3.0 (forgejo)
+  * Update postcss (forgejo)
+  * Update module google.golang.org/grpc to v1.70.0 (forgejo)
+  * Update dependency @github/relative-time-element to v4.4.5 (forgejo)
+  * add a buffer writer to the logger, for internal use
+  * Update renovate Docker tag to v39.106.0 (forgejo)
+  * Update dependency katex to v0.16.20 (forgejo)
+  * Update data.forgejo.org/renovate/renovate Docker tag to v39.106.0 (forgejo)
+  * Make switch larger on touchscreen devices
+  * Use redesigned switch on commit graph page
+  * Use flex for switch items
+  * Prevent vertical stretching of the switch
+  * Apply switch redesign to more areas
+  * Fix minor misalignment
+  * Do not report warning when git shows new reference
+  * [gitea] week 2025-03 cherry pick (gitea/main -> forgejo)
+  * Update x/tools (forgejo)
+  * Update module code.forgejo.org/forgejo/act to v1.23.1 (forgejo)
+  * Update renovate Docker tag to v39.103.0 (forgejo)
+  * Update module code.gitea.io/sdk/gitea to v0.20.0 (forgejo)
+  * fix inline file preview for files with encoded URL, fix #5069
+  * Remove source branch from pr list, fix #5009, #6080
+  * Update module gitlab.com/gitlab-org/api/client-go to v0.119.0 (forgejo)
+  * Update module github.com/editorconfig-checker/editorconfig-checker/v3/cmd/editorconfig-checker to v3.1.1 (forgejo)
+  * Update dependency asciinema-player to v3.8.2 (forgejo)
+  * port(gitea#31954): Add lock for parallel maven upload
+  * Update dependency monaco-editor to v0.52.2 (forgejo)
+  * Update module github.com/caddyserver/certmagic to v0.21.6 (forgejo)
+  * Update dependency typescript to v5.7.3 (forgejo)
+  * Added alt's to <img>
+  * chore(renovate): manual name replacement
+  * Update data.forgejo.org/renovate/renovate Docker tag to v39.93.0 (forgejo)
+  * Update data.forgejo.org/oci/alpine Docker tag to v3.21 (forgejo)
+  * Update module google.golang.org/protobuf to v1.36.2 (forgejo)
+  * Update module github.com/ProtonMail/go-crypto to v1.1.4 (forgejo)
+  * Update module github.com/go-git/go-git/v5 to v5.13.1 (forgejo)
+  * upgrade gof3 package and driver
+  * Replace data.forgejo.org/forgejo-contrib/renovate Docker tag with data.forgejo.org/renovate/renovate (forgejo)
+  * chore: remove illegal git usage
+  * chore(deps): Update gitlab api to updated library
+  * Update module golang.org/x/net to v0.34.0 (forgejo)
+  * Update forgejo/forgejo-build-publish action to v5.3.0 (forgejo)
+  * Update module github.com/minio/minio-go/v7 to v7.0.83 (forgejo)
+  * Lock file maintenance (forgejo)
+  * Update module github.com/alecthomas/chroma/v2 to v2.15.0 (forgejo)
+  * Update dependency fast-glob to v3.3.3 (forgejo)
+  * Update renovate to v39.91.0 (forgejo)
+  * fix(ui): show oauth divider on signup page
+  * chore: update ignores
+  * add files to compare
+  * UI switch redesign
+  * chore(ci): use mirror for obtaining go-xsd-duration
+  * Update dependency happy-dom to v16 (forgejo)
+  * chore: bump renovate to v39.90.0
+  * Rewrite OpenGraph Header
+  * fix(code search): empty mode dropdown when keyword is empty
+  * i18n(en): consistency improvements
+  * Update module github.com/PuerkitoBio/goquery to v1.10.1 (forgejo)
+  * Update dependency @vitest/eslint-plugin to v1.1.22 (forgejo)
+  * Fix editing pr review
+  * Make new table modal work when editing a issue
+  * fix(ui): use primary color for button in table modal
+  * Update module github.com/caddyserver/certmagic to v0.21.5 (forgejo)
+  * Fix edit cancel button
+  * Fix issue/comment menus
+  * Update renovate Docker tag to v39.86.0 (forgejo)
+  * use DateUtils for blocked users list
+  * chore(release-notes): Forgejo v10.0.0
+  * Rework user profile settings
+  * xorm needs to be lowercase otherwise it is ignored
+  * Update code.forgejo.org/oci/alpine Docker tag to v3.21 (forgejo)
+  * chore(branding): strip metadata information from the footer
+  * Cosmetic changes and fixes around repo homepage
+  * Refactor e2e tests to simplify authentication setup
+  * [gitea] week 2024-53 cherry pick (gitea/main -> forgejo)
+  * Fix overflow in git notes
+  * cmd/dump: add option flag to skip repository archives
+  * Rework new repo dialog
+  * chore(i18n): user/label translations in danish/latvian
+  * Revert "Update dependency idiomorph to v0.4.0"
+  * chore(release): v10.0 is cut, v9.0 is soon to be EOL
+  * When comparing in repos, mention that pull request creation requires sign-in
+  * enable releases and/or wiki if user set the options in repo migration
+  * federation with allow lists
+- remove patch fix-CVE-2025-3445.patch and fix-CVE-2025-22869.patch,
+  as upstream updated the dependencies
+- remove patch dont-strip.patch, as upstream implemented a variable way of
+  achieving the same goal
+
+-------------------------------------------------------------------
+Wed Apr 16 07:17:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVE-2025-3445.patch, for fixing bsc#1241245, bsc#2024-0406
+
+-------------------------------------------------------------------
 Sun Mar 23 17:10:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 10.0.3:

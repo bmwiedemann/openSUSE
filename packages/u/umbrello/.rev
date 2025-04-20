@@ -1740,4 +1740,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 24.12.3 (forwarded request 1250391 from krop)</comment>
     <requestid>1251022</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>f8f7483c4dce375c7e522332e5cdbcf4</srcmd5>
+    <version>25.04.0</version>
+    <time>1744986030</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
+    <requestid>1270551</requestid>
+  </revision>
 </revisionlist>

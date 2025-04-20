@@ -1,7 +1,7 @@
 #
 # spec file for package python-sigstore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -25,53 +24,53 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sigstore
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        A tool for signing Python package distributions
 License:        Apache-2.0
 URL:            https://github.com/sigstore/sigstore-python
 Source:         https://github.com/sigstore/sigstore-python/archive/v%{version}.tar.gz#/sigstore-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module flit-core >= 3.2}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module rfc3161-client}
+BuildRequires:  %{python_module PyJWT >= 2.1}
 BuildRequires:  %{python_module cryptography >= 42}
+BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module id >= 1.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 4.2}
+BuildRequires:  %{python_module pyOpenSSL >= 23.0.0}
 BuildRequires:  %{python_module pyasn1 >= 0.6}
 BuildRequires:  %{python_module pydantic >= 2}
-BuildRequires:  %{python_module PyJWT >= 2.1}
-BuildRequires:  %{python_module pyOpenSSL >= 23.0.0}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module rfc3161-client}
 BuildRequires:  %{python_module rfc8785 >= 0.1.2}
 BuildRequires:  %{python_module rich >= 13.0}
 BuildRequires:  %{python_module sigstore-protobuf-specs == 0.3.2}
 BuildRequires:  %{python_module sigstore-rekor-types == 0.0.18}
-BuildRequires:  %{python_module tuf >= 5.0}
+BuildRequires:  %{python_module tuf >= 6.0}
+BuildRequires:  python-rpm-macros
 
 # SECTION test requirements
 BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module pretend}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module importlib_resources if %python-base < 3.11}
+BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-PyJWT >= 2.1
 Requires:       python-cryptography >= 42
 Requires:       python-id >= 1.1.0
 Requires:       python-platformdirs >= 4.2
+Requires:       python-pyOpenSSL >= 23.0.0
 Requires:       python-pyasn1 >= 0.6
 Requires:       python-pydantic >= 2
-Requires:       python-PyJWT >= 2.1
-Requires:       python-pyOpenSSL >= 23.0.0
 Requires:       python-requests
+Requires:       python-rfc3161-client
 Requires:       python-rfc8785 >= 0.1.2
 Requires:       python-rich >= 13.0
 Requires:       python-sigstore-protobuf-specs == 0.3.2
 Requires:       python-sigstore-rekor-types == 0.0.18
-Requires:       python-tuf >= 5.0
+Requires:       python-tuf >= 6.0
 Requires:       (python-importlib_resources if python-base < 3.11)
-Requires:       python-rfc3161-client
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

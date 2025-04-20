@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:20:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Add patch avoid-dbm-sqlite3.patch:
+  * Avoid dbm.sqlite3 to support testing with Python 3.13.
+
+-------------------------------------------------------------------
 Sat Apr 20 13:26:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:

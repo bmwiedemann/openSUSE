@@ -107,7 +107,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.11
+Version:        3.11.12
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -188,9 +188,6 @@ Patch19:        bso1227999-reproducible-builds.patch
 Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
 Patch24:        add-loongarch64-support.patch
-# PATCH-FIX-UPSTREAM CVE-2025-0938-sq-brackets-domain-names.patch bsc#1236705 mcepl@suse.com
-# functions `urllib.parse.urlsplit` and `urlparse` accept domain names including square brackets
-Patch25:        CVE-2025-0938-sq-brackets-domain-names.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -454,7 +451,6 @@ other applications.
 %patch -p1 -P 19
 %patch -p1 -P 22
 %patch -p1 -P 24
-%patch -p1 -P 25
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

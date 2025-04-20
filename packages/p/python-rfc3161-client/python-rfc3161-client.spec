@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -26,18 +27,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-rfc3161-client
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Python library implementing the Time-Stamp Protocol (TSP) described in RFC 3161
 License:        Apache-2.0
 URL:            https://github.com/trailofbits/rfc3161-client
 Source:         https://files.pythonhosted.org/packages/source/r/rfc3161-client/rfc3161_client-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin >= 1.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module devel}
+BuildRequires:  python-rpm-macros
 
 BuildRequires:  cargo >= 1.56.0
 BuildRequires:  cargo-packaging
@@ -46,11 +47,11 @@ BuildRequires:  rust >= 1.56.0
 %if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module rfc3161-client == %{version}}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography >= 43}
 BuildRequires:  %{python_module pretend}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 BuildRequires:  fdupes

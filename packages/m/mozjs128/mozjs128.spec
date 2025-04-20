@@ -88,6 +88,8 @@ Patch24:        mozjs128-CVE-2024-50602.patch
 Patch25:        mozjs128-CVE-2024-11403.patch
 # PATCH-FIX-UPSTREAM mozjs128-CVE-2024-11498.patch CVE-2024-11498 bsc#1233786 qzhao@suse.com -- Check height limit in modular trees.
 Patch26:        mozjs128-CVE-2024-11498.patch
+# PATCH-FIX-UPSTREAM libtheora-avoid-negative-shift.patch bsc#1234837 mgorse@suse.com -- avoid negative shift in huffdec.c.
+Patch27:        libtheora-avoid-negative-shift.patch
 BuildRequires:  cargo
 BuildRequires:  ccache
 BuildRequires:  clang
@@ -176,6 +178,7 @@ pushd ../..
 %patch -P 24 -p1
 %patch -P 25 -p1
 %patch -P 26 -p1
+%patch -P 27 -p1
 
 %if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure

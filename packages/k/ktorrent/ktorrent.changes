@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add line breaks to about dialog credit text
+  * (mostly) port away from KStandardAction
+  * Port to QCheckBox::checkStateChanged.
+  * Switch to a working boost mirror.
+  * Use QList directly.
+  * downloadorder: Port QRegExp to QRegularExpression.
+  * Use QStringView include instead of QStringRef.
+  * Adapt to API changes as a result of Qt5Compat removal in libktorrent.
+  * Remove support for non UTF-8 encoded torrents.
+  * syndication: port away from QTextCodec.
+  * Port from deprecated QMouseEvent::y() method.
+  * Remove unused Solid dependency
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

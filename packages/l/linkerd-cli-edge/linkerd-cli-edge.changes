@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Apr 16 17:50:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.3:
+  * build(deps): bump linkerd-extension-init from 0.1.3 to 0.1.4
+    (#13943)
+  * build(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2
+    (#13941)
+  * fix(CLI): Check that the Gateway API version includes v1
+    resources (#13938)
+  * build(deps): bump h2 from 0.4.8 to 0.4.9 (#13939)
+  * build(deps): bump cc from 1.2.18 to 1.2.19 (#13935)
+  * build(deps): bump github.com/prometheus/client_golang (#13920)
+  * build(deps): bump tj-actions/changed-files (#13936)
+  * build(deps): bump anyhow from 1.0.97 to 1.0.98 (#13934)
+  * build(deps): bump data-encoding from 2.8.0 to 2.9.0 (#13933)
+  * build(deps-dev): bump webpack from 5.97.1 to 5.99.5 in /web/app
+    (#13930)
+  * build(deps): bump the clap group with 2 updates (#13932)
+  * build(deps): bump github.com/prometheus/client_model from 0.6.1
+    to 0.6.2 (#13931)
+  * fix(CLI): Print specific command when prompting to install the
+    Gateway API
+  * build(deps): bump rustls from 0.23.25 to 0.23.26 (#13928)
+  * build(deps): bump backon from 1.4.1 to 1.5.0 (#13919)
+  * build(deps): bump helm.sh/helm/v3 from 3.17.2 to 3.17.3
+    (#13921)
+
+-------------------------------------------------------------------
 Thu Apr 10 04:56:55 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.2:

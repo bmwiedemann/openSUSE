@@ -1,7 +1,7 @@
 #
 # spec file for package amazon-ecs-init
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.53.0
+Version:        1.64.0
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0

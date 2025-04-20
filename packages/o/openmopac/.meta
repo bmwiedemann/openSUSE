@@ -4,5 +4,6 @@
 variety of semi-empirical quantum chemistry methods based on the neglect of
 diatomic differential overlap (NDDO) approximation and fit primarily for
 gas-phase thermochemistry</description>
+  <devel project="science" package="openmopac"/>
   <url>https://openmopac.github.io</url>
 </package>

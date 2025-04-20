@@ -90,4 +90,12 @@
   * Ngtcp2 port</comment>
     <requestid>1244413</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9c5b81979c8c0f4e161a4b60354ec73</srcmd5>
+    <version>1.9.0</version>
+    <time>1744986114</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.9.0</comment>
+    <requestid>1270642</requestid>
+  </revision>
 </revisionlist>

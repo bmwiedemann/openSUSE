@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 16 12:14:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.6.16
+  * Fix bswap use on Android
+  * add templates and guidelines
+  * Improve test dls downloading
+  * Implement a-law/u-law wave format decoding for dls
+  * Fix logic error in loop boundary check
+  * Addition fix of #37: fix SonivoxTestEnvironment getTmp()
+  * Implement WAVE_FORMAT_MPEGLAYER3 decoding for dls
+  * Rescue commented logging calls
+  * Selectable verbosity level
+
+-------------------------------------------------------------------
+Fri Dec 20 14:29:19 UTC 2024 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.6.15
+  * Add chorus, reverb dry and master gain for sonivoxrender
+  * The new host wrapper
+  * Implement hwng for macOS and fallback ReadAt for other
+    platforms
+  * Fix wt_200k_G.c "initializer element is not constant" error
+    with GCC < 8.1
+- Disable tests. They require downloading a soundfont file from
+  a 3rd party website with this release.
+
+-------------------------------------------------------------------
 Sun Oct 13 15:27:43 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.6.14

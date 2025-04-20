@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:18:46 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove bad dependency from openmpi5-testsuite to openmpi5-testsuite-libs
+
+-------------------------------------------------------------------
 Sat Mar 29 14:47:03 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Remove support for gnu-hpc build flavours.

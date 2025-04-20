@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Fix missing action buttons on mobile settings and metadata pages
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix the spacebar play/pause action when specific buttons have focus (kde#476532)
+  * Restore the minimized Elisa instance when opened again (kde#472768)
+  * Start playing track when opened externally (kde#423007)
+  * Update track data using the correct index (kde#498357)
+  * Connect genreRemoved signal to data models (kde#492353)
+  * libvlc: Set media player role to "Music" (kde#492316)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

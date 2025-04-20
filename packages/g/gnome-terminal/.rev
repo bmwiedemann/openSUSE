@@ -2548,4 +2548,17 @@
   * Updated translations. (forwarded request 1253411 from iznogood)</comment>
     <requestid>1253706</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>c40e6dfe157609749d88fecdd805d19a</srcmd5>
+    <version>3.56.1</version>
+    <time>1744898798</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.1:
+  + Updated translations.
+
+- Update to version 3.56.0+3:
+  * build: Bump vte req version
+  * Updated translations. (forwarded request 1268943 from iznogood)</comment>
+    <requestid>1269681</requestid>
+  </revision>
 </revisionlist>

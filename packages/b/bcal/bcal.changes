@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:59:06 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/jarun/bcal/commit/b9de4fa9c0e29c2a4d55ddde007111c029364f6c
+  https://github.com/jarun/bcal/commit/ea290b19c0ba0c7a8e34c640eac1260dc0b7269a
+  + bcal-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Apr 18 15:16:35 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4

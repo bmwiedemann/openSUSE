@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * flatpak: Update the used perl version
+  * Add xml/yaml linting
+  * Fix Theme change not being saved (kde#495973)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

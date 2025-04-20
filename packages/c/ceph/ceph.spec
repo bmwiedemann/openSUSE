@@ -138,7 +138,7 @@
 # main package definition
 #################################################################################
 Name:		ceph
-Version:	16.2.15.83+g635361e68c0
+Version:	16.2.15.84+gb9c09b69575
 Release:	0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch:		2
@@ -154,7 +154,7 @@ License:	LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group:		System/Filesystems
 %endif
 URL:		http://ceph.com/
-Source0:	%{?_remote_tarball_prefix}ceph-16.2.15-83-g635361e68c0.tar.bz2
+Source0:	%{?_remote_tarball_prefix}ceph-16.2.15-84-gb9c09b69575.tar.bz2
 %if 0%{?suse_version}
 # _insert_obs_source_lines_here
 ExclusiveArch:  x86_64 aarch64 ppc64le s390x riscv64
@@ -1215,7 +1215,7 @@ This package provides Ceph default alerts for Prometheus.
 # common
 #################################################################################
 %prep
-%autosetup -p1 -n ceph-16.2.15-83-g635361e68c0
+%autosetup -p1 -n ceph-16.2.15-84-gb9c09b69575
 
 %build
 # Disable lto on systems that do not support symver attribute
@@ -1378,6 +1378,19 @@ make DESTDIR=%{buildroot} install
 # we have dropped sysvinit bits
 rm -f %{buildroot}/%{_sysconfdir}/init.d/ceph
 popd
+
+#
+# python's setuptools v76 introduces a simplified shebang
+# generation which results in cephfs-top and cephfs-shell just
+# saying "#!python", rather than "#!/usr/bin/python3.xx".
+# The former of course is invalid.  The correct solution for
+# ceph is presumably to somehow switch to using `pip` instead
+# (see https://packaging.python.org/en/latest/discussions/setup-py-deprecated/)
+# but for the sake of expedience right now we're just fixing
+# the invalid shebang lines here with a bit of sed.
+#
+sed -i s:^#\!python$:#\!$(readlink -f %{_bindir}/python3):g %{buildroot}%{_bindir}/cephfs-top
+sed -i s:^#\!python$:#\!$(readlink -f %{_bindir}/python3):g %{buildroot}%{_bindir}/cephfs-shell
 
 %if 0%{with seastar}
 # package crimson-osd with the name of ceph-osd

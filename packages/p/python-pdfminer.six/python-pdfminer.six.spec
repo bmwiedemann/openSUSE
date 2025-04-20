@@ -1,7 +1,7 @@
 #
 # spec file for package python-pdfminer.six
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdfminer.six
-Version:        20231228
+Version:        20250327
 Release:        0
 Summary:        PDF parser and analyzer
 License:        MIT
 URL:            https://github.com/pdfminer/pdfminer.six
 Source:         https://github.com/pdfminer/pdfminer.six/archive/%{version}.tar.gz#/pdfminer.six-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module charset-normalizer >= 2.0.0}
 BuildRequires:  %{python_module cryptography >= 36.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools-git-versioning}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-charset-normalizer >= 2.0.0
 Requires:       python-cryptography >= 36.0.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pdfminer3k = %{version}
 Obsoletes:      python-pdfminer3k < %{version}
 BuildArch:      noarch
@@ -55,6 +56,7 @@ sed -i '1i #!%{_bindir}/python3' tools/dumppdf.py tools/pdf2txt.py
 sed -i "s/__VERSION__/%{version}/g" pdfminer/__init__.py
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %install
@@ -83,6 +85,6 @@ mv %{buildroot}%{_bindir}/pdf2txt.py %{buildroot}%{_bindir}/pdf2txt
 %python_alternative %{_bindir}/dumppdf
 %python_alternative %{_bindir}/pdf2txt
 %{python_sitelib}/pdfminer
-%{python_sitelib}/pdfminer.six-*.dist-info
+%{python_sitelib}/pdfminer[_.]six-%{version}.dist-info
 
 %changelog

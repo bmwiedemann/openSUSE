@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:48:12 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add extra requirements for selinux policies to cockpit-selinux-policies
+  so it can't be installed before selinux or policycoreutils
+
+-------------------------------------------------------------------
+Fri Apr 11 13:27:42 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Add a requires for either sudo or polkit for assuming admin rights
+  (bsc#1240569)
+
+-------------------------------------------------------------------
+Mon Apr  7 10:41:09 UTC 2025 - Alice Brooks <alice.brooks@suse.com>
+
+- Ensure cockpit-selinux-policies always installs the selinux policy
+  regardless of selinuxenabled status (bsc#1240787 and bsc#1240421)
+
+-------------------------------------------------------------------
 Wed Mar 19 06:56:06 UTC 2025 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Patch python bridge to handle dbus message endianness correctly

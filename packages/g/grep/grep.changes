@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 10 20:40:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.12:
+  * Searching a directory with at least 100,000 entries no longer
+    fails with "Operation not supported" and exit status 2.
+  * -mN where 1 < N no longer mistakenly lseeks to end of input
+    merely because standard output is /dev/null.
+  * The --unix-byte-offsets (-u) option was removed, it was a no-op
+    since 3.7
+- Calls to the egrep and fgrep commands now again issue an
+  obsolescence warning, as upstream has been doing since 3.8.
+  Commands are deprecated since 2.5.3 (2007). Replacements are
+  grep -E and -F, respectively. (drop efgrep-warning.patch)
+- package license file in -lang
+
+-------------------------------------------------------------------
 Wed Apr 10 20:20:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - restore texinfo macros for SLE15

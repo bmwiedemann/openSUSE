@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Mar 29 09:46:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Add `typing_extensions.TypeForm` from PEP 747.
+  * Add `typing_extensions.get_annotations`, a backport of
+  * `inspect.get_annotations` that adds features specified
+  * by PEP 649.
+  * Backport `evaluate_forward_ref` from CPython
+  * Update PEP 728 implementation to a newer version of the PEP.
+  * Copy the coroutine status of functions and methods wrapped
+    with `@typing_extensions.deprecated`. 
+  * Fix bug where `TypeAliasType` instances could be subscripted
+    even where they were not generic.
+  * Fix bug where a subscripted `TypeAliasType` instance did not
+    have all attributes of the original `TypeAliasType` instance
+    on older Python versions.
+  * Fix bug where subscripted `TypeAliasType` instances (and some
+    other subscripted objects) had wrong parameters if they were
+    directly subscripted with an `Unpack` object.
+
+-------------------------------------------------------------------
 Sat Jun  8 13:12:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.2:

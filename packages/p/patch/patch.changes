@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Apr 12 19:05:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.8:
+  * The --follow-symlinks option now applies to output files as
+    well as input
+  * 'patch' now supports file timestamps after 2038 even on
+    traditional GNU/Linux platforms where time_t defaults to 32
+    bits.
+  * 'patch' no longer creates files with names containing
+    newlines, as encouraged by POSIX.1-2024.
+  * Patches can no longer contain NUL ('\0') bytes in diff
+    directive lines. These bytes would otherwise cause
+    unpredictable behavior.
+  * Patches can now contain sequences of spaces and tabs around
+    line numbers and in other places where POSIX requires support
+    for these sequences.
+  * --enable-gcc-warnings no longer uses expensive static checking.
+    Use --enable-gcc-warnings=expensive if you still want it.
+  * Fix undefined or ill-defined behavior in unusual cases, such as
+    very large sizes, possible stack overflow, I/O errors, memory
+    exhaustion, races with other processes, and signals arriving at
+    inopportune moments.
+  * Remove old "Plan B" code, designed for machines with 16-bit
+    pointers
+  * Assume C99 or later; previously it assumed C89 or later.
+  * Port to current GCC, Autoconf, Gnulib, etc.
+- drop patches included pstream or obsolete:
+  * abort-when-cleaning-up-fails.patch
+  * dont-follow-symlinks-unless-asked.patch
+  * ed-style-01-missing-input-files.patch
+  * ed-style-02-fix-arbitrary-command-execution.patch
+  * ed-style-03-update-test-Makefile.patch
+  * ed-style-04-invoke-ed-directly.patch
+  * ed-style-05-minor-cleanups.patch
+  * ed-style-06-fix-test-failure.patch
+  * ed-style-07-dont-leak-tmp-file.patch
+  * ed-style-08-dont-leak-tmp-file-multi.patch
+  * fix-segfault-mangled-rename.patch
+  * fix-swapping-fake-lines-in-pch_swap.patch
+  * pass-the-correct-stat-to-backup-files.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 12:19:54 UTC 2024 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - CVE-2019-20633.patch: Fix double-free/OOB read in pch.c (bsc#1167721)

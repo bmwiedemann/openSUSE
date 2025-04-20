@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * etmcalendar.cpp - logic improvements in updateItem()
+  * calendarbase.h - Akonadi::Item CalendarBase::item() - remove qcDebug()
+  * src/calendarbase.cpp - clean old '#if 0' cruft
+  * Add xml/yaml linting
+  * Fix dependancy
+  * Rename Composer to ComposerJob
+  * [kalendarac] Use state config to store things
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Adapt to move of KeyResolver to MessageComposer namespace
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Don't create missing KMime header objects during serialization
+  * Prepare for upcoming KMime::Header::SingleMailbox changes
+  * Only create MIME headers that actually exists during deserialization
+  * Reuse the QString buffer used during QDataStream deserialization
+  * Add Spam special mail collection
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

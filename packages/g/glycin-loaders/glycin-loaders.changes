@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 11 13:55:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.1:
+  + Fixed:
+    - Fix editing for PNGs and JPEGs that are already rotated via
+      an orientation tag in the Exif data.
+    - Remove rotation via legacy Exif rotation entries when editing
+      PNG images to not make them aditionally rotated after
+      editing. This is a fix just for legacy Exif entries via tEXt
+      and zTEx chunks with keyword "Raw profile type exif".
+    - Revert to using sRGB instead of Rec2020 to pass images with
+      ICC profile to GTK. This fixes some color deviations when
+      displaying the images.
+    - glycin: Allow additional syscalls needed for armv7 and on
+      Alpine Linux in sandbox.
+
+-------------------------------------------------------------------
 Fri Mar 14 14:00:48 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.0:

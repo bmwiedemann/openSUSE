@@ -52,4 +52,12 @@
 - drop support-zoneinfo.patch (upstream)</comment>
     <requestid>1184021</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3cabb72f6ba208acbf61968b31059a05</srcmd5>
+    <version>2.8.0</version>
+    <time>1744828939</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269958</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Change KDEPIM_DEV_VERSION
+  * Remove FeatureSummary as we use ECMFeatureSummary
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

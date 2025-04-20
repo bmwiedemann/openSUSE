@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 16 18:01:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.4:
+  * chore: release 2.35.4
+  * chore(release): release v2.35.4
+  * Revert "chore: update Nelm module"
+  * Revert "fix(deploy): possible panic in tracking Flux Canary
+    resource"
+  * Revert "fix(deploy): allow `werf.io/sensitive: false` for
+    Secrets"
+  * Revert "fix(deploy): default kubeconfig not used"
+  * chore(channels): revert alpha
+
+-------------------------------------------------------------------
+Wed Apr 16 17:59:20 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.3:
+  * fix(deploy): default kubeconfig not used
+
+-------------------------------------------------------------------
+Wed Apr 16 17:51:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.2:
+  * chore: release 2.35.2
+  * docs(build, secrets): update example
+  * test(build, secrets): remove from e2e simple test
+  * fix(build, secrets): fix secrets validation error when
+    rendering config
+  * fix(deploy): allow `werf.io/sensitive: false` for Secrets
+  * fix(deploy): possible panic in tracking Flux Canary resource
+  * chore: task format
+  * fix(build, imageSpec): invalidate cache (breaking changes)
+  * fix(build, imageSpec): keep essential werf-stage-content-digest
+    label
+  * chore: update Nelm module
+  * refactor(cleanup): update logging message
+  * chore(release): 2 alpha,beta,ea
+
+-------------------------------------------------------------------
 Thu Apr 10 09:15:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.1:

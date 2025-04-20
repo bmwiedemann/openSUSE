@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Don't crash when favicon image provider is not available
+  * Fix navigation coloring with breeze style
+  * Improve message in download notification banner
+  * Disable effects when software renderer is used
+  * Appdata: add display size
+  * Fix i18n macro
+  * Add missing quote
+  * Improve i18n
+  * Add support for new QtWebEngine permission types
+  * Added version checks for corrosion, qcoro and futuresql
+  * AdBlock: Add websocket support
+  * README.md replace kdesrc-build with kde-builder
+  * Fix appdata to align with appstream spec
+  * Update Rust packages
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -8,5 +8,4 @@ integrate obconf with LXAppearance to provide a better user experience.
 Most of the source code are taken from ObConf written by its authors
 with some modifications added by LXAppearance developers to make it a
 plugin.</description>
-  <devel project="X11:lxde" package="lxappearance-obconf" />
 </package>

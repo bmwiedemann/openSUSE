@@ -20,7 +20,7 @@
 %define gcisover 1-0_0_0
 
 Name:           gnome-calculator
-Version:        48.0.2
+Version:        48.1
 Release:        0
 Summary:        A GNOME Calculator Application
 License:        GPL-3.0-or-later

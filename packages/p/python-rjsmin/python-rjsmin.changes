@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:05:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.4
+  * Update Benchmarks
+  * Update doc theme
+  * Update project boilerplate
+- from version 1.2.3
+  * Add support for Python 3.13
+  * Update project boilerplate
+- Drop docs/CHANGES from %doc section, removed upstream
+
+-------------------------------------------------------------------
 Mon Jan  8 06:38:41 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Build without devel-instrumentation

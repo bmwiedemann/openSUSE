@@ -1,0 +1,6 @@
+<package name="perl-Test-CheckGitStatus" project="openSUSE:Factory">
+  <title>Check git status after every test</title>
+  <description>This module can be used to check if your git directory has any modified or untracked files. You can use it in your unit tests, and it will check the status after each test file.
+</description>
+  <url>https://metacpan.org/dist/Test-CheckGitStatus</url>
+</package>

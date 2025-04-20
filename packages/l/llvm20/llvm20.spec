@@ -19,7 +19,7 @@
 %global _sonum  20
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 2
+%global _patch_level 3
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme20 1
@@ -49,10 +49,10 @@
 
 %ifarch aarch64 ppc64le s390x x86_64
 %bcond_without lldb
-%if %{suse_version} > 1600
+%if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %bcond_without lldb_python
 %else
-# LLDB Python bindings require Swig 4, which SLE/Leap don't have.
+# LLDB Python bindings require Swig 4, which SLE/Leap <= 15.5 don't have.
 %bcond_with lldb_python
 %endif
 %else
@@ -1298,7 +1298,7 @@ rm %{buildroot}%{_mandir}/man1/llvm-{exegesis,locstats}.1
 %global cpython_pkg_soabi %(%{python_bin} -c "import sysconfig; print(sysconfig.get_config_var('SOABI'))")
 rm %{buildroot}%{python_pkg_sitearch}/lldb/_lldb.%{cpython_pkg_soabi}.so
 liblldb=$(basename $(readlink -e %{buildroot}%{_libdir}/liblldb.so))
-ln -vsf "../../../${liblldb}" %{buildroot}%{python3_sitearch}/lldb/_lldb.%{cpython_pkg_soabi}.so
+ln -vsf "../../../${liblldb}" %{buildroot}%{python_pkg_sitearch}/lldb/_lldb.%{cpython_pkg_soabi}.so
 %endif
 
 # Stuff we don't want to include

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:59:42 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 1.25.0
+  * Add ROMFS support (see also "mpremote romfs" cmd with "query", "build", and "deploy" sub-commands)
+    ROMFS defines a read-only, memory-mappable, extensible filesystem that can contain arbitrary resources,
+	including precompiled mpy files, and allows executing bytecode directly from the filesystem.
+	This makes importing significantly faster and use a lot less memory.
+  * Inline assembler now supports 32-bit RISC-V assembly code via the newly implemented @micropython.asm_rv32 decorator.
+  * Datagram TLS (DTLS) is now supported by the tls module and enabled on the alif, mimxrt, renesas-ra, rp2, stm32 and unix ports.
+  * mpremote command-line tool now supports recursive remove via the new "rm -r"
+  * mpremote now supports relative URLs in the package.json for installing from the local filesystem
+  * "mpremote mount" has optimised readline support
+  * full support for tuples and start/end arguments in str.startswith() and str.endswith() methods
+  * vfs.mount() with no arguments now returns a list of mounted filesystems
+  * marshal module has been added with dumps() and loads() functions
+  * MicroPython native linker mpy_ld.py now includes support for linking in static libraries automatically
+  * native modules now support 32-bit RISC-V code
+  * force _FILE_OFFSET_BITS=64 to fix 32-bit file ABI
+  * enable VfsRom on standard and coverage variants
+  * use the bare metal mbedTLS config in the coverage buiid
+  * add recursive mutex support
+  * main: add coverage test for mounting ROMFS filesystem at startup
+- Drop fix_re_sub_test_on_python3.13.patch as not needed anymore
+
+-------------------------------------------------------------------
 Mon Mar 17 12:24:36 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Add fix_re_sub_test_on_python3.13.patch to fix re_sub test

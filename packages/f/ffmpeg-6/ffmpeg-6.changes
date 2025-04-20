@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Mar 21 05:24:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2025-22921.patch:
+  Backport 7f9c7f98 from upstream, clear array length when
+  freeing it.
+  (CVE-2025-22921, bsc#1237382)
+
+-------------------------------------------------------------------
+Fri Mar 21 04:49:12 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2025-25473.patch:
+  Backport c08d3004 from upstream, clear FFFormatContext packet.
+  When packet_buffer is used in mux.c, and if a muxing process fails
+  at a point where packets remained in said queue.
+  (CVE-2025-25473, bsc#1237351)
+
+-------------------------------------------------------------------
+Fri Mar 21 04:22:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2025-0518.patch:
+  Backport b5b6391d from upstream, fixes memory data leak when
+  use sscanf().
+  (CVE-2025-0518, bsc#1236007)
+
+-------------------------------------------------------------------
+Fri Mar 21 03:52:18 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2025-22919.patch:
+  Backport 1446e37d from upstream, check for valid sample rate
+  As the sample rate <= 0 is invalid.
+  (CVE-2025-22919, bsc#1237371)
+
+-------------------------------------------------------------------
+Fri Mar 21 03:21:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-12361.patch:
+  Backport 4065ff69 from upstream, add check for av_packet_new_side_data()
+  to avoid null pointer dereference if allocation fails.
+  (CVE-2024-12361, bsc#1237358)
+
+-------------------------------------------------------------------
+Fri Mar 21 02:48:12 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-35365.patch:
+  Backport ced5c5fdb from upstream, Fix double-free on error.
+  (CVE-2024-35365, bsc#1235091)
+
+-------------------------------------------------------------------
+Fri Mar 21 02:06:21 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-6-CVE-2024-35368.patch:
+  Backport 45133009 from upstream, After having created the
+  AVBuffer that is put into frame->buf[0], ownership of several
+  objects Fix double-free on the AVFrame is unreferenced.
+  (CVE-2024-35368, bsc#1234028)
+
+-------------------------------------------------------------------
 Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
@@ -8,11 +65,14 @@ Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 Wed Jan  1 11:13:35 UTC 2025 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 6.1.2 and fix Factory build.
-- Remove incorporated patches:
-  0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch,
-  ffmpeg-6-CVE-2024-7055.patch and ffmpeg-6-CVE-2024-32230.patch
-  Upstream changes:
-  See /usr/shar/doc/packages/ffmpeg-6/Changelog
+  avcodec/pnmdec: Use 64bit for input size check (CVE-2024-7055, bsc#1229026)
+  avcodec/mpegvideo_enc: Fix 1 line and one column images (CVE-2024-32230, bsc#1227296)
+  avcodec/tests: rename the bundled Mesa AV1 vulkan video headers.
+  etc
+- Remove patches already merged to upstream:
+  0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
+  ffmpeg-6-CVE-2024-7055.patch
+  ffmpeg-6-CVE-2024-32230.patch
 
 -------------------------------------------------------------------
 Mon Sep 30 12:34:56 UTC 2024 - olaf@aepfle.de
@@ -22,16 +82,34 @@ Mon Sep 30 12:34:56 UTC 2024 - olaf@aepfle.de
   (ffmpeg#11013, vlc#28811)
 
 -------------------------------------------------------------------
+Sun Sep 29 07:36:13 UTC 2024 - Cliff Zhao <qzhao@suse.com>
+
+- Update ffmpeg-6.spec:
+  Disable xvid plugin build and dependence, since legal reviewers
+  are concerned xvid patents have not expired in Brazil, which should
+  not be used in a commercial context.
+  https://en.wikipedia.org/wiki/Xvid
+
+-------------------------------------------------------------------
 Thu Sep 26 10:02:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer build against libmfx; build also 15.5 against libvpl
- (boo#1230983)
+ (boo#1230983, boo#1219494)
+
+- dropping support for libmfx below covers:
+  * libmfx: improper input validation (CVE-2023-48368, bsc#1226897)
+  * libmfx: improper buffer restrictions (CVE-2023-45221, bsc#1226898)
+  * libmfx: out-of-bounds read (CVE-2023-22656, bsc#1226899)
+  * libmfx: out-of-bounds write (CVE-2023-47282, bsc#1226900)
+  * libmfx: improper buffer restrictions (CVE-2023-47169, bsc#1226901)
+  * Multiple vulnerabilities in the Intel Media SDK (libmfx1) (bsc#1226892)
+  * Drop libmfx dependency from our product (jira #PED-10024)
 
 -------------------------------------------------------------------
 Fri Sep  6 15:06:21 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-7055.patch:
-  Backporting 3faadbe2 from upstream, Use 64bit for input size check,
+  Backport 3faadbe2 from upstream, Use 64bit for input size check,
   Fixes: out of array read, Fixes: poc3.
   (CVE-2024-7055, bsc#1229026)
 
@@ -65,14 +143,14 @@ Fri Jul 26 14:28:59 UTC 2024 - Filip Kastl <filip.kastl@suse.com>
 Tue Jul  2 12:26:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-32230.patch:
-  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  Backport 96449cfe from upstream, Fix 1 line and one column images.
   (CVE-2024-32230, bsc#1227296)
 
 -------------------------------------------------------------------
 Tue Jul  2 11:57:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-32228.patch:
-  Backporting 45964876 from upstream, Fix segfault on invalid film
+  Backport 45964876 from upstream, Fix segfault on invalid film
   grain metadata.
   (CVE-2024-32228, bsc#1227277)
 
@@ -80,7 +158,7 @@ Tue Jul  2 11:57:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Tue Jul  2 11:56:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-32228-shim-5d7f234e.patch:
-  Backporting 5d7f234e from upstream, document that there can be multiple
+  Backport 5d7f234e from upstream, document that there can be multiple
   complex filtergraphs to prepare dependence code for CVE-2024-32228.
   (CVE-2024-32228, bsc#1227277)
 
@@ -88,7 +166,7 @@ Tue Jul  2 11:56:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Tue Jul  2 11:55:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch:
-  Backporting f50382cb from upstream, implement AFGS1 parsing.
+  Backport f50382cb from upstream, implement AFGS1 parsing.
   to prepare dependence code for CVE-2024-32228.
   (CVE-2024-32228, bsc#1227277)
 
@@ -96,7 +174,7 @@ Tue Jul  2 11:55:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Tue Jul  2 11:54:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-6-CVE-2024-32228-shim-1535d338.patch:
-  Backporting 1535d338 from upstream, add AOM film grain synthesis,
+  Backport 1535d338 from upstream, add AOM film grain synthesis,
   to prepare dependence code for CVE-2024-32228.
   (CVE-2024-32228, bsc#1227277)
 
@@ -104,14 +182,14 @@ Tue Jul  2 11:54:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Thu Apr 23 14:05:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50008.patch:
-  Backporting 5f87a68c from upstream, Fix memory leaks.
+  Backport 5f87a68c from upstream, Fix memory leaks.
   (CVE-2023-50008, bsc#1223254)
 
 -------------------------------------------------------------------
 Thu Apr 23 12:22:53 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-CVE-2023-50007.patch:
-  Backporting b1942734 from upstream, Fix crash with EOF handling.
+  Backport b1942734 from upstream, Fix crash with EOF handling.
   (CVE-2023-50007, bsc#1223253)
 
 -------------------------------------------------------------------
@@ -179,6 +257,9 @@ Mon Jan 15 11:11:08 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
   * VAAPI AV1 encoder
   * ffprobe XML output schema changed to account for multiple variable-fields elements within the same parent element
   * ffprobe -output_format option added as an alias of -of
+  * avfilter/vf_minterpolate: Check pts before division (CVE-2023-51798, bsc#1223304)
+  * avfilter/vf_weave: Fix odd height handling (CVE-2023-51793, bsc#1223272)
+  * avfilter/vf_gradfun: Do not overread last line (CVE-2023-51793, bsc#122325)
 - Remove patch6 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 - Prefer libvpl to libmfx: the latter is deprecated
 - Delete ffmpeg-6-private-devel package as it is only needed to build libav-tools

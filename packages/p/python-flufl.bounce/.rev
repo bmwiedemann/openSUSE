@@ -71,4 +71,15 @@
 - Switch to autosetup and pyproject macros.</comment>
     <requestid>1145318</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>479b5c78dabd11d4fd2b5d3c29b8a49f</srcmd5>
+    <version>4.0</version>
+    <time>1744828735</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264865</requestid>
+  </revision>
 </revisionlist>

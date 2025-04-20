@@ -1,7 +1,7 @@
-Index: curl-8.11.0/lib/getenv.c
+Index: curl-8.13.0/lib/getenv.c
 ===================================================================
---- curl-8.11.0.orig/lib/getenv.c
-+++ curl-8.11.0/lib/getenv.c
+--- curl-8.13.0.orig/lib/getenv.c
++++ curl-8.13.0/lib/getenv.c
 @@ -29,6 +29,14 @@
  
  #include "memdebug.h"
@@ -16,7 +16,7 @@ Index: curl-8.11.0/lib/getenv.c
 +
  static char *GetEnv(const char *variable)
  {
- #if defined(_WIN32_WCE) || defined(CURL_WINDOWS_UWP) || \
+ #if defined(CURL_WINDOWS_UWP) || defined(UNDER_CE) || \
 @@ -69,7 +77,7 @@ static char *GetEnv(const char *variable
      /* else rc is bytes needed, try again */
    }
@@ -26,11 +26,11 @@ Index: curl-8.11.0/lib/getenv.c
    return (env && env[0]) ? strdup(env) : NULL;
  #endif
  }
-Index: curl-8.11.0/configure.ac
+Index: curl-8.13.0/configure.ac
 ===================================================================
---- curl-8.11.0.orig/configure.ac
-+++ curl-8.11.0/configure.ac
-@@ -5370,6 +5370,8 @@ fi
+--- curl-8.13.0.orig/configure.ac
++++ curl-8.13.0/configure.ac
+@@ -5384,6 +5384,8 @@ fi
  
  CURL_PREPARE_CONFIGUREHELP_PM
  

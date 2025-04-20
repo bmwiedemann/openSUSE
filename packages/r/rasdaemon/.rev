@@ -194,4 +194,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>1156945</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>03437ff2dbeb110d1b18820eece68fc9</srcmd5>
+    <version>0.8.3.0.git+db0870e</version>
+    <time>1744828956</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269985</requestid>
+  </revision>
 </revisionlist>

@@ -17,4 +17,12 @@ Required by ffmpeg-6 after https://build.opensuse.org/request/show/1101501 makes
     <comment></comment>
     <requestid>1163692</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eba1a120d6633b2aaf740869f732f72c</srcmd5>
+    <version>5.264.1</version>
+    <time>1744985674</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270196</requestid>
+  </revision>
 </revisionlist>

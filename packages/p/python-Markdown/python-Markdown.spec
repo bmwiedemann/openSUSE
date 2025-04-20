@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-Markdown%{psuffix}
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause

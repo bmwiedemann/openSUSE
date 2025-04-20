@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 15 10:26:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.4
+  * Bump crt checksums by @DmitriyMusatkin in (#730)
+
+-------------------------------------------------------------------
+Mon Apr  7 07:02:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.3
+  * Fix assignment operator in Optional by @sfod in (#720)
+  * Fix clang error in string view by @sbiscigl in (#728)
+- from version 0.32.2
+  * Revert checksums header install location change
+    by @DmitriyMusatkin in (#726)
+- from version 0.31.2
+  * Fix flaky CBOR test by @graebm in (#718)
+  * Use latest PQ TLS Cipher Preference in Tests by @alexw91 in (#717)
+  * Fix "std-compat" CI to actually test what it's supposed to
+    by @graebm in (#719)
+  * Fix IP address being labelled "bad" for too long by @graebm in (#723)
+  * Initialize checksums explicitly by @DmitriyMusatkin in (#722)
+
+-------------------------------------------------------------------
 Tue Mar 18 08:24:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.31.1

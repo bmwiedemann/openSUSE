@@ -72,6 +72,6 @@ $python -m doctest -v src/zc/customdoctests/tests.py
 %doc README.txt
 %dir %{python_sitelib}/zc
 %{python_sitelib}/zc/customdoctests
-%{python_sitelib}/zc.customdoctests-%{version}.dist-info
+%{python_sitelib}/zc_customdoctests-%{version}.dist-info
 
 %changelog

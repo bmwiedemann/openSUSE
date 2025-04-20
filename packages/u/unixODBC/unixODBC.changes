@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 10 21:18:32 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS to fix gcc15 compile time errors
+
+-------------------------------------------------------------------
 Wed Mar 20 07:56:32 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1221709: Fix build with gcc14

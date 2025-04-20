@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 18 13:34:31 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Fixes boo#1241065: Update Requires: python3-libarchive-c >= 4
+    adding minimum version to ensure API compatibility new function
+    signature first released in python3-libarchive-c version 4.0:
+    old: new_archive_read_disk(path, **kw)
+    new: with new_archive_read_disk(path, flags, lookup)
+    Runtime error raised:
+    TypeError: new_archive_read_disk() got an unexpected keyword argument 'mtime'
+
+-------------------------------------------------------------------
 Sun Apr 13 17:17:38 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.6.6:

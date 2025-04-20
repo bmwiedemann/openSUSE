@@ -1,7 +1,7 @@
 #
 # spec file for package krecorder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           krecorder
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Audio recording application
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ Source1:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11

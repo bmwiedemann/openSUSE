@@ -1,7 +1,7 @@
 #
 # spec file for package python-EditorConfig
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
-%define modname editorconfig-core-py
+%define modname editorconfig
 Name:           python-EditorConfig
-Version:        0.12.4+git.1707726233.2740dee
+Version:        0.17.0+git.1743012229.8dca1b6
 Release:        0
 Summary:        File Locator and Interpreter for Python
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://editorconfig.org
-Source0:        %{modname}-%{version}.tar.xz
+# Source0:        https://files.pythonhosted.org/packages/source/e/%%{modname}/%%{modname}-%%{version}.tar.gz
+Source0:        editorconfig-core-py-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -39,7 +40,7 @@ EditorConfig C Core. EditorConfig Python core can be used as a
 command line program or as an importable library.
 
 %prep
-%autosetup -p1 -n %{modname}-%{version}
+%autosetup -p1 -n editorconfig-core-py-%{version}
 
 %build
 %pyproject_wheel
@@ -62,6 +63,6 @@ ctest -VV --output-on-failure . || /bin/true
 %license LICENSE.* COPYING
 %doc README.rst
 %{python_sitelib}/editorconfig
-%{python_sitelib}/EditorConfig-%(echo %{version}|cut -d+ -f 1)*-info
+%{python_sitelib}/editorconfig-%(echo %{version}|cut -d+ -f 1)*-info
 
 %changelog

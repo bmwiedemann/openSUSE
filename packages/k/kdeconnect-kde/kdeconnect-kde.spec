@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdeconnect-kde
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -33,7 +33,7 @@ Source2:        applications.keyring
 %endif
 Source100:      kdeconnect-kde.SuSEfirewall
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Add-missing-include.patch
+Patch0:         0001-Fix-build-on-32bit-archs.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}

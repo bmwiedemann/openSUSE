@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:57:41 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use python3-Jinja2 and python3-glad2 for BuildRequires instead
+  of using multi-versioned python packages.
+- Add support for building on Leap 15.6 with python3.11 only.
+
+-------------------------------------------------------------------
 Thu Mar 28 10:22:06 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons} to make libplacebo5 build with

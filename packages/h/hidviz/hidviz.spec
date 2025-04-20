@@ -1,7 +1,7 @@
 #
 # spec file for package hidviz
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hidviz
-Version:        0.2
+Version:        0.2.1
 Release:        0
 Summary:        A tool for in-depth analysis of USB HID devices communication
 License:        GPL-3.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  asio-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(libusb-1.0)

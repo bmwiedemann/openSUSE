@@ -20,6 +20,7 @@ patches:
   Tk-804.029-refcnt.diff: -p0
   Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch: -p0
   Tk-804-config-C99.diff: -p0 PATCH-FIX-UPSTREAM fix gcc14 build error https://github.com/eserte/perl-tk/issues/98
+  Tk-804.036-gcc15.patch: -p0 PATCH-FIX-UPSTREAM fix gcc15 build error https://github.com/eserte/perl-tk/issues/112
 preamble: |-
   BuildRequires:  liberation-fonts
   BuildRequires:  libjpeg-devel

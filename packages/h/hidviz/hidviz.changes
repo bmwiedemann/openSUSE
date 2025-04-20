@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 11:26:11 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.2.1
+  Build fixes:
+  * fixed build with gcc-15
+  * fixed build with cmake 4.0 and newer
+
+-------------------------------------------------------------------
 Thu Mar 16 09:14:21 UTC 2023 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.2

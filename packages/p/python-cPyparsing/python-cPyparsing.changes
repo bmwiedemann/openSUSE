@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Mar 26 04:15:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+- Run the testsuite.
+
+-------------------------------------------------------------------
 Wed Jan  3 10:05:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

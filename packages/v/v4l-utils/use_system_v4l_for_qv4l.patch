@@ -1,24 +1,94 @@
-Index: v4l-utils-1.22.1/utils/qv4l2/Makefile.am
+Index: v4l-utils-1.28.1/meson.build
 ===================================================================
---- v4l-utils-1.22.1.orig/utils/qv4l2/Makefile.am
-+++ v4l-utils-1.22.1/utils/qv4l2/Makefile.am
-@@ -6,8 +6,8 @@ qv4l2_SOURCES = qv4l2.cpp general-tab.cp
-   raw2sliced.cpp qv4l2.h capture-win.h general-tab.h vbi-tab.h raw2sliced.h \
-   v4l2-tpg-core.c v4l2-tpg-colors.c
- nodist_qv4l2_SOURCES = moc_qv4l2.cpp moc_general-tab.cpp moc_capture-win.cpp moc_vbi-tab.cpp qrc_qv4l2.cpp
--qv4l2_LDADD = ../../lib/libv4l2/libv4l2.la ../../lib/libv4lconvert/libv4lconvert.la \
--  ../libv4l2util/libv4l2util.la ../libmedia_dev/libmedia_dev.la
-+qv4l2_LDADD = ../libmedia_dev/libmedia_dev.la
-+qv4l2_SOURCES +=- ../libv4l2util/frequencies.c
- qv4l2_CPPFLAGS = -I$(top_srcdir)/utils/common
+--- v4l-utils-1.28.1.orig/meson.build
++++ v4l-utils-1.28.1/meson.build
+@@ -386,13 +386,17 @@ man_pages = []
  
- if WITH_QTGL
-@@ -21,6 +21,8 @@ endif
- qv4l2_CPPFLAGS += $(ALSA_CFLAGS) -Wno-psabi
- qv4l2_LDFLAGS += $(ALSA_LIBS) -pthread
+ i18n_gettext_arguments = ['--directory=' + source_root,
+                           '--keyword=_', '--keyword=N_', '--keyword=P_:1,2']
++if get_option('qv4l2').disabled()
+ subdir('libdvbv5-po')
+ subdir('v4l-utils-po')
  
-+qv4l2_LDFLAGS += -lv4l2 -lv4lconvert
+ subdir('lib')
++else
++  ir_bpf_enabled = false
++endif
+ 
++subdir('utils')
+ if get_option('v4l-utils')
+-    subdir('utils')
+     subdir('contrib')
+ else
+     ir_bpf_enabled = false
+Index: v4l-utils-1.28.1/utils/qv4l2/meson.build
+===================================================================
+--- v4l-utils-1.28.1.orig/utils/qv4l2/meson.build
++++ v4l-utils-1.28.1/utils/qv4l2/meson.build
+@@ -23,14 +23,17 @@ qv4l2_sources = files(
+     'v4l2-tpg-core.c',
+     'vbi-tab.cpp',
+     'vbi-tab.h',
++    '../libv4l2util/frequencies.c',
+ )
+ 
++dep_libv4l2 = dependency('libv4l2')
++dep_libv4lconvert = dependency('libv4lconvert')
 +
- EXTRA_DIST = enterbutt.png exit.png fileopen.png qv4l2_24x24.png qv4l2_64x64.png qv4l2.png qv4l2.svg \
-   snapshot.png video-television.png fileclose.png qv4l2_16x16.png qv4l2_32x32.png qv4l2.desktop \
-   qv4l2.qrc saveraw.png qv4l2.pro qv4l2.1 fullscreenexit.png fullscreen.png start.png step.png
+ qv4l2_deps = [
+     dep_alsa,
+     dep_gl,
+     dep_libmedia_dev,
+     dep_libv4l2,
+-    dep_libv4l2util,
+     dep_libv4lconvert,
+     dep_qt,
+     dep_qt_opengl,
+Index: v4l-utils-1.28.1/utils/meson.build
+===================================================================
+--- v4l-utils-1.28.1.orig/utils/meson.build
++++ v4l-utils-1.28.1/utils/meson.build
+@@ -19,6 +19,7 @@ endforeach
+ # Libraries
+ subdir('libcecutil')
+ subdir('libmedia_dev')
++if get_option('qv4l2').disabled()
+ subdir('libv4l2util')
+ 
+ # Utils
+@@ -30,8 +31,10 @@ subdir('ir-ctl')
+ subdir('ivtv-ctl')
+ subdir('keytable')
+ subdir('media-ctl')
++endif
+ subdir('qv4l2')
+ subdir('qvidcap')
++if get_option('qv4l2').disabled()
+ subdir('rds-ctl')
+ subdir('v4l2-ctl')
+ subdir('v4l2-dbg')
+@@ -41,3 +44,4 @@ subdir('v4l2-tracer')
+ # Compliance tools
+ subdir('cec-compliance')
+ subdir('v4l2-compliance')
++endif
+Index: v4l-utils-1.28.1/utils/qvidcap/meson.build
+===================================================================
+--- v4l-utils-1.28.1.orig/utils/qvidcap/meson.build
++++ v4l-utils-1.28.1/utils/qvidcap/meson.build
+@@ -20,6 +20,7 @@ qvidcap_sources = files(
+     'v4l2-info.cpp',
+     'v4l2-tpg-colors.c',
+     'v4l2-tpg-core.c',
++    '../libv4l2util/frequencies.c',
+ )
+ 
+ qvidcap_deps = [
+@@ -27,7 +28,6 @@ qvidcap_deps = [
+     dep_gl,
+     dep_libmedia_dev,
+     dep_libv4l2,
+-    dep_libv4l2util,
+     dep_libv4lconvert,
+     dep_qt,
+     dep_qt_opengl,

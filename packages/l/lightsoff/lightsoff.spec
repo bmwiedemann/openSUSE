@@ -17,7 +17,7 @@
 
 
 Name:           lightsoff
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        Lights Out Game for GNOME
 License:        GPL-2.0-or-later

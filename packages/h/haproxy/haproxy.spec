@@ -14,7 +14,19 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 
+# => notes regarding QUIC in README.SUSE.PACKAGING
+%if 0%{?suse_version} > 1600
+%bcond_without quic
+%else
 %bcond_with quic
+%endif
+
+%if 0%{?suse_version} > 1500
+%bcond_with    rc_symlink
+%else
+%bcond_without rc_symlink
+%endif
+
 %if 0%{?suse_version} >= 1230
 %bcond_without tcp_fast_open
 %bcond_without network_namespace
@@ -53,7 +65,7 @@
 %endif
 
 Name:           haproxy
-Version:        3.1.6+git0.d929ca290
+Version:        3.1.7+git0.c3f408945
 Release:        0
 #
 #
@@ -99,6 +111,8 @@ Source3:        local.usr.sbin.haproxy.apparmor
 Source4:        haproxy.cfg
 Source5:        haproxy-user.conf
 Source6:        haproxy-tmpfiles.conf
+Source7:        README.SUSE
+Source8:        README.SUSE.PACKAGING
 Patch1:         haproxy-1.6.0_config_haproxy_user.patch
 Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
@@ -135,6 +149,7 @@ the most work done from every CPU cycle.
 
 %prep
 %autosetup -p1
+cp %{SOURCE7} .
 
 %build
 make %{?_smp_mflags} \
@@ -170,6 +185,7 @@ make %{?_smp_mflags} \
     USE_PROMEX=1 \
     %if %{with quic}
     USE_QUIC=1 \
+    USE_QUIC_OPENSSL_COMPAT=1 \
     %endif
     %if %{with opentracing}
     USE_OT=1 \
@@ -195,7 +211,9 @@ install -D -m 0755 admin/halog/halog %{buildroot}%{_sbindir}/haproxy-halog
 
 %if %{with systemd}
 install -D -m 0644 admin/systemd/%{pkg_name}.service  %{buildroot}%{_unitdir}/%{pkg_name}.service
+%if %{with rc_symlinks}
 ln -sf /sbin/service   %{buildroot}%{_sbindir}/rc%{pkg_name}
+%endif
 %if %{with sysusers}
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/haproxy-user.conf
 %endif
@@ -270,7 +288,7 @@ getent passwd %{pkg_name} >/dev/null || \
 %files
 %defattr(-,root,root,-)
 %license LICENSE
-%doc CHANGELOG README.md
+%doc README.SUSE CHANGELOG README.md
 %doc doc/* examples/
 %doc admin/netsnmp-perl/ admin/selinux/
 %dir               %attr(-,root,haproxy) %{_sysconfdir}/%{pkg_name}
@@ -289,7 +307,9 @@ getent passwd %{pkg_name} >/dev/null || \
 %endif
 %{_sbindir}/haproxy
 %{_sbindir}/haproxy-halog
+%if %{with rc_symlinks}
 %{_sbindir}/rchaproxy
+%endif
 %dir %attr(-,root,haproxy) %{pkg_home}
 %{_mandir}/man1/%{pkg_name}.1.gz
 %dir %{_datadir}/vim

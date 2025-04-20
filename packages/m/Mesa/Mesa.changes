@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 18 17:14:50 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to release 25.0.4
+  --> https://docs.mesa3d.org/relnotes/25.0.4
+
+-------------------------------------------------------------------
 Mon Apr  7 19:20:37 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - let Mesa-dri only require libvulkan1, libvulkan_lvp if build

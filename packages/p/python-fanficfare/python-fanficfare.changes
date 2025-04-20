@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Apr  1 20:53:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.44.0:
+  - adapter_storiesonlinenet(et al): Add always_login
+    option. Closes #1185
+  - Improve logpage updating
+  - Implementing Timed One Time Password(TOTP) 2FA Exception and
+    collection
+  - adapter_literotica: Fixed incorrect parsing for get url from
+    webpage option, thanks dbhmw! #1182 & #1183
+  - Note on open_pages_in_browser for MacOS users linking to
+    #1142
+  - adapter_asianfanficscom: Add inject_chapter_image
+    option. Closes #1143
+  - ffnet only: try_shortened_title_urls option #1166
+  - Revert "adapter_fanfictionnet: Attempt chapter from m. (vs
+    www) when chapter not found"
+  - adapter_ficbooknet: Fix additional metadata collection,
+    thanks dbhmw
+  - Add support for 'directimages' with use_browser_cache, thanks
+    nsapa #1180
+  - AO3 use_archive_transformativeworks_org option
+  - Add remove_empty_p option, usually for AO3/OTW. #1177
+  - adapter_storiesonlinenet: Change parsing for when the
+    description/details contains extraneous /div tag #1176
+    thanks, bpothier
+  - adapter_fimfictionnet: Fetch stories only found in
+    bookshelf. #1174 thanks, dbhmw
+  - adapter_syosetucom: site update #1173 thanks, praschke
+  - BrowserCache Chrome Block: Treat entry missing headers same
+    as not found. #1167 #1169
+
+-------------------------------------------------------------------
 Sun Mar  2 22:28:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.43.0:

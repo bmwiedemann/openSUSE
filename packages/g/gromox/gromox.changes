@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 15 21:48:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.45
+  * emsmdb: avoid emissions of PR_MESSAGE_SIZE in fastdownctx
+    streams (this makes PST export possible).
+  * email_lib: fix a lost space in IMAP BODYSTRUCTURE response.
+  * mysql_adaptor: add support for nesting mlists in permission
+    checks.
+  * Recognize the IANA Character Set names `utf-16le`, `utf-16be`
+    (and 32) when converting from RFC5322 to MAPI.
+
+-------------------------------------------------------------------
 Wed Mar 26 23:17:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim excess keys from keyring

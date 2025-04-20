@@ -348,4 +348,13 @@
   https://github.com/timescale/timescaledb/releases/tag/2.19.2</comment>
     <requestid>1267772</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>23cfb64d0aa90a7ee0b91280d678fad0</srcmd5>
+    <version>2.19.3</version>
+    <time>1744828862</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.19.3
+  https://github.com/timescale/timescaledb/releases/tag/2.19.3</comment>
+    <requestid>1269732</requestid>
+  </revision>
 </revisionlist>

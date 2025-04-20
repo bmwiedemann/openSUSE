@@ -1,0 +1,3 @@
+Notes regarding QUIC (only available on Tumbleweed):
+
+We currently only build with OpenSSL, this requires setting "limited-quic" in the "global" configuration section (which comes with missing out on 0-RTT support).

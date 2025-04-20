@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-proton-vpn-api-core
-Version:        0.42.3
+Version:        0.42.4
 Release:        0
 Summary:        Proton VPN API library
 License:        GPL-3.0-or-later

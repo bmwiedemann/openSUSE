@@ -18,7 +18,7 @@
 
 %define soversion 3
 Name:           sonivox
-Version:        3.6.14
+Version:        3.6.16
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0
@@ -75,7 +75,7 @@ export CC=gcc-13 CXX=g++-13
 
 %cmake -DBUILD_SONIVOX_STATIC:BOOL=FALSE \
        -DBUILD_EXAMPLE:BOOL=FALSE \
-       -DBUILD_TESTING:BOOL=TRUE
+       -DBUILD_TESTING:BOOL=FALSE
 
 %cmake_build
 
@@ -83,9 +83,6 @@ export CC=gcc-13 CXX=g++-13
 %cmake_install
 
 %ldconfig_scriptlets -n libsonivox%{soversion}
-
-%check
-%ctest
 
 %files -n libsonivox%{soversion}
 %license LICENSE

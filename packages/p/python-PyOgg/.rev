@@ -77,4 +77,15 @@
 - Switch to pyproject macros.</comment>
     <requestid>1245777</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>59cb9fa73c014e00cb3f66fcbb032871</srcmd5>
+    <version>0.6.14a1</version>
+    <time>1744828703</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264835</requestid>
+  </revision>
 </revisionlist>

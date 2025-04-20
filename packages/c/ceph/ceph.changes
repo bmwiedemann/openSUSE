@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 04:09:58 UTC 2025 - Tim Serong <tserong@suse.com>
+
+- Update to 16.2.15-84-gb9c09b69575:
+  + ceph.spec.in: Fix cephfs-{top,shell} shebangs with setuptools >= 76
+
+-------------------------------------------------------------------
 Fri Apr 11 07:55:21 UTC 2025 - Tim Serong <tserong@suse.com>
 
 - Update to 16.2.15-83-g635361e68c0:

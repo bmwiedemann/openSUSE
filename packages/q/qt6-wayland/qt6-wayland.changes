@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 07:31:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-Client-Reset-mFrameCallbackTimedOut-when-showing-a-w.patch
+
+-------------------------------------------------------------------
 Wed Apr  2 11:03:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0:

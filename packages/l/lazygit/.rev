@@ -79,4 +79,41 @@ expertise with the git command line.</comment>
   * Update chinese translation for pull requests (forwarded request 1244477 from amanzini)</comment>
     <requestid>1244506</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f4d5edbd9158d93f1e811b797813a11</srcmd5>
+    <version>0.49.0</version>
+    <time>1744828808</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.49.0:
+  * Skip date check when release worfklow is manually invoked
+  * Escape special characters when git-ignoring files
+  * Add test that shows problems with git-ignoring files with special characters
+  * Fix crash when dragging from below the end of the diff upwards and then staging the range
+  * Refactor: extract function clampLineIdx
+  * Update translation files from crowdin
+  * fix: update vscode color to logo color
+  * Add a command to select all commits of the current branch
+  * Show &quot;hooks disabled&quot; in title bar of commit message editor
+  * Cleanup: don't render the commit length when typing in the description
+  * Prefill the commit subject with the skipHook prefix when pressing `w`
+  * Use dario.cat/mergo instead of github.com/imdario/mergo
+  * Bump go-git
+  * Add `runCommand` function to Go template syntax
+  * Move test from commit to branch
+  * Print which git version we are using for running integration tests
+  * Remove conditional code related to git earlier than 2.22
+  * Remove canUsePushTrack parameter of obtainBranches function
+  * Bump minimum required git version to 2.22
+  * Provide conflict resolution dialogs for non-textual conflicts
+  * Allow chaining of FileSystem methods
+  * Better main view display for conflicing files
+  * Fix the bug described in the previous commit
+  * Add test demonstrating problem with main view display when pressing `e` in a stack of branches
+  * Add pageUp/pageDown/top/bottom keybindings to focused command log panel
+  * Add pageUp/pageDown/top/bottom keybindings to confirmation panel
+  * Cleanup: remove unused interfaces for helpers
+  * Cleanup: get rid of the variadic parameter of ContextMgr.Push
+  * Enable AutoRenderHyperLinks for the tooltip view (forwarded request 1269569 from alarrosa)</comment>
+    <requestid>1269700</requestid>
+  </revision>
 </revisionlist>

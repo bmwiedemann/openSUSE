@@ -17,7 +17,7 @@
 
 
 Name:           gnome-online-accounts
-Version:        3.54.1
+Version:        3.54.2
 Release:        0
 Summary:        GNOME service to access online accounts
 License:        LGPL-2.0-or-later

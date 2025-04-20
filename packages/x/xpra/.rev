@@ -710,4 +710,41 @@
     <comment></comment>
     <requestid>1265909</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>7d5c338a7d3e754a211e086419192168</srcmd5>
+    <version>6.4.0+git20250410.63a3b70d</version>
+    <time>1745134491</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit
+- For some reason /usr/bin/{run_scaled,xpra,xpra_launcher} were all having
+  &quot;#!python&quot; put as the 1st line resulting in a wrong-interpreter error
+  * Adding a find command that will use set to replace &quot;#!python&quot; with
+  &quot;/usr/bin/python3&quot;
+
+- Update to version 6.4.0+git20250410.63a3b70d:
+  * try to add a device if we can't find any
+  * match upstream api change
+  * newer versions of signtool require us to specify the digest
+  * #4553 use 'network+events' logger for key network events
+  * stronger type hints
+  * some hello requests should not require authentication
+  * #4552 save opengl probe result
+  * use a consistent type for 'encodings'
+  * add info on private notification list
+  * try 3.1 beta1
+  * correctly disable chunks framing for clients that don't support it
+  * we use wmi to query the OS
+  * don't try pkgconfig again since it errors out
+  * better type hints
+  * derp: amf is not python
+  * update tests for da6c6c1ca51f79bbca9e64c76e6c74bddd9f31d6
+  * log number of bytes peeked
+  * jitter may not be defined (network-state mixin)
+  * move suspended flag to top level source class
+  * show install-lts-repo in command usage help
+  * don't enable nvidia on riscv
+  * bump version
+  * don't show menu entries that don't work</comment>
+    <requestid>1271017</requestid>
+  </revision>
 </revisionlist>

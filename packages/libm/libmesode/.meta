@@ -1,5 +1,4 @@
 <package name="libmesode" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="network:messaging:xmpp" package="libmesode"/>
 </package>

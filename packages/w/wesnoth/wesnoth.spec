@@ -1,7 +1,7 @@
 #
 # spec file for package wesnoth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define boost_min_version 1.67
 Name:           wesnoth
-Version:        1.18.3
+Version:        1.18.4
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later

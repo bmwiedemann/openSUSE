@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix Wikidata cache path
+  * Remove unused string from Android manifest
+  * Use KPublicTransport.TransportIcon to show line logos
+  * Rename f-droid icon to begin according to name in AndroidManifest
+  * Add icon for f-droid file listing
+  * Don't hide tunneled waterways unconditionally
+  * Don't draw unintended outlines around waterway areas
+  * Add infrastructure for determining close way types
+  * Initial support for textured line fills
+  * Implement limiting labels to a bounding polygon
+  * Update static build versions for 24.12
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

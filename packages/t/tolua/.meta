@@ -12,6 +12,5 @@ namespace, classes, and methods to Lua. It also provides
 facilities to create Lua modules.
 
 </description>
-  <devel project="devel:languages:lua" package="tolua"/>
   <url>http://www.tecgraf.puc-rio.br/~celes/tolua/</url>
 </package>

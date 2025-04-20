@@ -838,4 +838,16 @@
   + Updated translations. (forwarded request 1253524 from iznogood)</comment>
     <requestid>1253727</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>f694aebe7bda3350125eeae50f905014</srcmd5>
+    <version>3.54.2</version>
+    <time>1744898795</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.54.2:
+  + Bugs fixed:
+    - Improve OAuth2 credential performance
+    - Fix hung dialog for OAuth providers
+  + Updated translations. (forwarded request 1268940 from iznogood)</comment>
+    <requestid>1269679</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package cervisia
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           cervisia
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -33,7 +33,6 @@ BuildRequires:  subversion-devel
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5ItemViews)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Parts)
@@ -82,13 +81,10 @@ export CFLAGS="%{optflags} -fPIC"
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_kxmlguidir}/cervisia/
 %{_kf5_kxmlguidir}/cervisiapart/
-%{_kf5_libdir}/libkdeinit5_cervisia.so
-%{_kf5_libdir}/libkdeinit5_cvsaskpass.so
-%{_kf5_libdir}/libkdeinit5_cvsservice.so
 %{_kf5_mandir}/man1/cervisia.1%{ext_man}
 %{_kf5_notifydir}/cervisia.notifyrc
-%{_kf5_plugindir}/cervisiapart5.so
-%{_kf5_servicesdir}/org.kde.cervisiapart5.desktop
+%dir %{_kf5_plugindir}/kf5/parts
+%{_kf5_plugindir}/kf5/parts/cervisiapart.so
 %{_kf5_servicesdir}/org.kde.cvsservice5.desktop
 
 %files lang -f %{name}.lang

@@ -1,7 +1,7 @@
 #
 # spec file for package python-OSMPythonTools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,6 +61,6 @@ A library to access OpenStreetMap related services
 %doc README.md
 %license LICENSE
 %{python_sitelib}/%{modname}
-%{python_sitelib}/%{modname}-%{version}*-info
+%{python_sitelib}/osmpythontools-%{version}.dist-info
 
 %changelog

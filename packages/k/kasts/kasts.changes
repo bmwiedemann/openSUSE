@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * snapcraft: Sync fixes into release
+  * Fix header anchoring after qt6.9 update (kde#502429)
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix dialog boxes after recent Kirigami updates (kde#501876)
+  * Properly implement single instance behaviour (kde#482840)
+  * Do not open a second instance if app is already running (kde#482840)
+  * Only retry db fails if it's due to the db being locked (kde#500697)
+  * Fix width of entry page in case of long wrapped lines (kde#496606)
+  * Set a dark enough background on header (kde#496776)
+  * Make unplayed count label auto-adapt its width to value (kde#491587)
+  * Fix path being passed to taglib and avoid opening non-existent files (kde#499723)
+  * Fix sort order in episode lists (kde#499712)
+  * Call KIconTheme::initTheme to fix icon recoloring on other platforms (kde#491713)
+  * Fix synchronization button on start page (kde#498690)
+  * Fix sidebar/bottombar button state (kde#488563)
+  * Port to Kirigami-Addons ConfigurationModule (kde#497853)
+  * Use KConfig.WindowStateSaver to handle window geometry (kde#491091)
+  * Retrieve duration from file as soon as it's downloaded (kde#497448)
+  * On startup, remove feed entries with empty URL on startup (kde#495961)
+- Drop patch:
+  * 0001-Fix-dialog-boxes-after-recent-Kirigami-updates.patch
+
+-------------------------------------------------------------------
 Wed Mar 26 08:09:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (kde#501876)

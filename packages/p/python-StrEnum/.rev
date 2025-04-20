@@ -17,4 +17,15 @@
   * Support configparser changes in Python 3.12.</comment>
     <requestid>1236754</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c5f54d8bc15d7293c9b3f3fa29c65aad</srcmd5>
+    <version>0.4.15</version>
+    <time>1744828721</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264851</requestid>
+  </revision>
 </revisionlist>

@@ -5,5 +5,4 @@ of the installation source setup.  Installation of this package does
 not make sense. 
 
 This particular package contains the lxde desktop patterns.</description>
-  <devel project="X11:lxde" package="patterns-lxde"/>
 </package>

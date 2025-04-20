@@ -1,7 +1,7 @@
 #
 # spec file for package mailcommon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           mailcommon
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -63,8 +63,8 @@ BuildRequires:  cmake(KPim6MessageViewer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Mime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6TemplateParser) >= %{kpim6_version}
-BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiPlugin) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}

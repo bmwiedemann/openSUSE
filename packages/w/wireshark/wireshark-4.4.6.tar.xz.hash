@@ -1,0 +1,53 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+wireshark-4.4.6.tar.xz: 46802228 bytes
+SHA256(wireshark-4.4.6.tar.xz)=4fffcee3d18d1daac12f780c2e8da511824dffb3b0fd6446b53ab7516538edcd
+SHA1(wireshark-4.4.6.tar.xz)=bab4fbc7b394f120644e8f1931156d10d7037f56
+
+Wireshark-4.4.6-x64.exe: 87330024 bytes
+SHA256(Wireshark-4.4.6-x64.exe)=d1925b045300c34ea8082b7ec0d79aeae31edf01eb9fdd9b69e069ece785ca93
+SHA1(Wireshark-4.4.6-x64.exe)=cd8b9e5dffe7235b69e7ab17422a567a33667466
+
+Wireshark-4.4.6-arm64.exe: 68796800 bytes
+SHA256(Wireshark-4.4.6-arm64.exe)=50f080cc9a8a58b0b6ea881749b90f0cb3308360c346b5249ae89324581c31b7
+SHA1(Wireshark-4.4.6-arm64.exe)=ff7990ba4e73b8a565ccf7802fa87218986c0f9a
+
+Wireshark-4.4.6-x64.msi: 63913984 bytes
+SHA256(Wireshark-4.4.6-x64.msi)=5b13c415d412704fe6ac66b961378e4baf03060729fb0fd757c03e57dcb1b9fa
+SHA1(Wireshark-4.4.6-x64.msi)=b10dc96b5a6f7b64e2fa1bf5ac4493efcfb53a23
+
+WiresharkPortable64_4.4.6.paf.exe: 64481568 bytes
+SHA256(WiresharkPortable64_4.4.6.paf.exe)=4cb8db4999e1b4100a665f09c3da3aa3c12f4361c3ad89a70db6014b77a24505
+SHA1(WiresharkPortable64_4.4.6.paf.exe)=90b40faa5e7dadcbddda247339f4ca6ce78a2190
+
+Wireshark 4.4.6 Arm 64.dmg: 65465899 bytes
+SHA256(Wireshark 4.4.6 Arm 64.dmg)=37a664d6e4708266553c7b6b734b214b90385b1fd58a6bf1a173eb73284cb4dd
+SHA1(Wireshark 4.4.6 Arm 64.dmg)=a38c0e1b73ddc7a68993e6bf2649e5c427726147
+
+Wireshark 4.4.6 Intel 64.dmg: 69187477 bytes
+SHA256(Wireshark 4.4.6 Intel 64.dmg)=b68394def6666d6922d82e37ec8fca456bb17a10b9b678e479b6002d58fc43de
+SHA1(Wireshark 4.4.6 Intel 64.dmg)=8a9491df1d520e44bda95b3384533d13d7e7b4c3
+
+You can validate these hashes using the following commands (among others):
+
+    Windows: certutil -hashfile Wireshark-win64-x.y.z.exe SHA256
+    Linux (GNU Coreutils): sha256sum wireshark-x.y.z.tar.xz
+    macOS: shasum -a 256 "Wireshark x.y.z Arm 64.dmg"
+    Other: openssl sha256 wireshark-x.y.z.tar.xz
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEWlrbp9vqbD+HIk8ZgiRKeOb+ruoFAmf/7ucACgkQgiRKeOb+
+rupmOw/+IC9K7B88gEuL4pzsievJf+1xyhA3LySgYFBOku0hsMY1/lo4Wip47qDq
+NO7Di1oruPLLXHqLWeiN2AroNfrS8lavB41e3Yx61/yPT/Og9TXjsoNbaiUe9WHE
+D81NLwUIhrWKbR2mm8TJsFgok3SCK5sY0LmFfGeLE9BCRw5oqNuQPYlAWMA6v9gC
+d7asm581kIB4MoSEwwFgZWTArMXTKL/m1+cQHgBGxrnJreSECJIxEnVNCgSUZ6qE
+Hj4P/6bhfDcddBr9niIN8SfGwkC8MhyoJt+TO0srT8o2D9AoUcGUWFEgrhk8yfU9
+1hcj3JaCs+c6LA5gOgVAf9q/Y4T39qRjLgTfLOKUhwaNsHtxp4QCeG/XCk4WGOwd
+BorZh40dLxw+I3fDTXkLYZ0DqmszR/xWsEaLZn0x6aZR0E+Bd1zUxtMUf6xszcqX
+y8MOulN34NUsGqXzMU2A0+KDCEhxasL05mVCr8SlG/28muXtUVyLmpGtsNWTJOPk
+bAG66nyPQv5uRBdvjQCwx/lW67zzMslxDD9kErgjbOoyl7yEIDUeeH7eYuhHYH0Y
+JArmRdRq0waGoS009FVKEPsk9xOYXip2q9/KpsiYxPiwPnv2cwLd9gGiaunvDSz4
+WYHwllYf6Un3Iu/eGEMZuvAnLIuZ9HFwMgrnva2nbMScKYOjXNQ=
+=xJFN
+-----END PGP SIGNATURE-----

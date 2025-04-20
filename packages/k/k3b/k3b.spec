@@ -1,7 +1,7 @@
 #
 # spec file for package k3b
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later

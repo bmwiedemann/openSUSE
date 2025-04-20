@@ -66,6 +66,6 @@ sed -i 's/\r$//' README.md README.rst
 %doc README.md README.rst
 %license COPYING LICENSE
 %{python_sitelib}/pyogg
-%{python_sitelib}/PyOgg-%{version}.dist-info
+%{python_sitelib}/pyogg-%{version}.dist-info
 
 %changelog

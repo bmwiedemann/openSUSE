@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 19:29:44 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add gcc15.patch (from upstream) and plugins-gcc15.patch to fix
+  gcc-15 compile time errors
+
+-------------------------------------------------------------------
 Thu Mar 20 17:13:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with pcre2

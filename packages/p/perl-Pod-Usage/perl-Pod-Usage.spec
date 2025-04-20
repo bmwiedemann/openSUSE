@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Pod-Usage
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Pod-Usage
 Name:           perl-Pod-Usage
-Version:        2.03
+Version:        2.05
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -47,7 +47,7 @@ description (if present) of the command line options and arguments. If the
 verbose level is 2, then the entire manual page is printed.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

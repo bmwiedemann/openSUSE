@@ -1,7 +1,7 @@
 #
 # spec file for package pim-data-exporter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           pim-data-exporter
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Data exporter for KDE PIM applications
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemViews) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}

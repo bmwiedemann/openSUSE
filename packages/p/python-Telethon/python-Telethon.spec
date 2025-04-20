@@ -64,6 +64,6 @@ chmod -x *.rst LICENSE
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/telethon
-%{python_sitelib}/Telethon-%{version}.dist-info
+%{python_sitelib}/telethon-%{version}.dist-info
 
 %changelog

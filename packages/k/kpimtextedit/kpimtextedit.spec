@@ -1,7 +1,7 @@
 #
 # spec file for package kpimtextedit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpimtextedit
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Qt-6.9.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}

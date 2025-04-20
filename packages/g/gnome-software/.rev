@@ -1282,4 +1282,15 @@ New stable release</comment>
 </comment>
     <requestid>1253163</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>5d17bf55ac87d80cb3398a355bd4e36f</srcmd5>
+    <version>48.1</version>
+    <time>1744898747</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Improve contrast of some app safety ratings in dark mode
+  + Improve error handling when fetching app reviews
+  + Updated translations. (forwarded request 1268456 from iznogood)</comment>
+    <requestid>1269657</requestid>
+  </revision>
 </revisionlist>

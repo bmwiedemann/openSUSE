@@ -1921,4 +1921,12 @@ don't affect Linux. (forwarded request 1226975 from mgorse)</comment>
     <comment>Document CVEs fixed in 2.48.1 (forwarded request 1267981 from mgorse)</comment>
     <requestid>1268054</requestid>
   </revision>
+  <revision rev="220" vrev="3">
+    <srcmd5>ccc4dbb1c65686b9f4e50e799caf9771</srcmd5>
+    <version>2.48.1</version>
+    <time>1744898838</time>
+    <user>anag_factory</user>
+    <comment>will sync to SLE 15 again, and this simplifies the spec. (forwarded request 1270249 from dimstar)</comment>
+    <requestid>1270250</requestid>
+  </revision>
 </revisionlist>

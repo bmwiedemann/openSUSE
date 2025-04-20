@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 10:54:24 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: glew-devel as it is not used for build.
+
+-------------------------------------------------------------------
 Sat Apr  3 12:57:30 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Drop -march=native to avoid compile-time CPU-detection (boo#1100677)

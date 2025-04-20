@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 18 12:00:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.2:
+  * fix: Correcting incorrect procedures in advanced-usage.md
+  * Update and fix to `k3kcli` for new ClusterSet integration
+    (#321)
+  * Add `clusterset` commands (#319)
+  * Fix delete cli (#281)
+  * fix typo (#300)
+
+-------------------------------------------------------------------
 Fri Mar 21 06:01:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.1:

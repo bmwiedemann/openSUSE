@@ -31,13 +31,13 @@ BuildRequires:  cmake
 BuildRequires:  pkgconfig(glfw3)
 
 %description
-glbinding is a cross-platform C++ binding for the OpenGL API.
+glbinding is a C++ binding for the OpenGL API.
 
 %package -n %{shlib}
-Summary:        Shared library for glbinding
+Summary:        C++ binding for the OpenGL API
 
 %description -n %{shlib}
-glbinding is a cross-platform C++ binding for the OpenGL API.
+glbinding is a C++ binding for the OpenGL API.
 
 This package provides the shared library for glbinding.
 
@@ -46,7 +46,7 @@ Summary:        Headers and objects to build against glbinding
 Requires:       %{shlib} = %{version}
 
 %description devel
-glbinding is a cross-platform C++ binding for the OpenGL API.
+glbinding is a C++ binding for the OpenGL API.
 
 This package provides headers and objects to build against %{name}.
 
@@ -54,19 +54,19 @@ This package provides headers and objects to build against %{name}.
 Summary:        Auxiliary shared library for glbinding
 
 %description -n libglbinding-aux3
-glbinding is a cross-platform C++ binding for the OpenGL API.
+glbinding is a C++ binding for the OpenGL API.
 
 This package provides the shared library for additional, auxiliary features as
 logging, meta information, or debugging functionality
 
-%package -n glbinding-aux-devel
+%package aux-devel
 Summary:        Headers and objects for building against glbinding's auxiliary features
 Requires:       %{shlib} = %{version}
 Requires:       libglbinding-aux3 = %{version}
 Requires:       %{name}-devel = %{version}
 
-%description -n glbinding-aux-devel
-glbinding is a cross-platform C++ binding for the OpenGL API.
+%description aux-devel
+glbinding is a C++ binding for the OpenGL API.
 
 This package provides the headers and objects to build against glbinding's
 auxiliary features including logging, meta information, or debugging
@@ -107,7 +107,7 @@ rm %{buildroot}%{_datadir}/glbinding/{LICENSE,README.md}
 %license LICENSE
 %{_libdir}/libglbinding-aux.so.3*
 
-%files -n glbinding-aux-devel
+%files aux-devel
 %license LICENSE
 %{_libdir}/libglbinding-aux.so
 %{_includedir}/glbinding-aux/

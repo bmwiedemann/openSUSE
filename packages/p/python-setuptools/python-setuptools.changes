@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Mar 30 07:55:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 78.1.0:
+  * Restore access to _get_vc_env with a warning.
+
+-------------------------------------------------------------------
+Mon Mar 24 17:42:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 78.0.2
+  * Reverted distutils changes that broke the monkey patching of command 
+    classes.
+  * Temporarily remove requests from integration tests.
+
+-------------------------------------------------------------------
+Sat Mar 22 07:38:14 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to 77.0.3:
+  * Temporarily convert error for license glob patterns containing
+    ../ into a deprecation warning to allow an accomodation period
+  * Better error messages for packaging.
+  * Avoided eagerly raising an exception when license-files is
+    defined simultaneously inside and outside of pyproject.toml.
+  * Added initial support for license expression (PEP 639)
+  * Store License-Files in .dist-info/licenses subfolder and
+    added support for recursive globs for license_files (PEP 639)
+  * Bump core metadata version to 2.4.
+  * Updated vendored copy of wheel to v0.45.1
+
+-------------------------------------------------------------------
 Tue Feb 25 20:32:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 75.8.0:

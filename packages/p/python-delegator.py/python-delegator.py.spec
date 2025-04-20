@@ -1,7 +1,7 @@
 #
 # spec file for package python-delegator.py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,7 @@ cp %{SOURCE1} .
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/delegator.py
-%pycache_only %{python_sitelib}/__pycache__/delegator.*.py*
-%{python_sitelib}/delegator.py-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/delegator.*.pyc
+%{python_sitelib}/delegator_py-%{version}.dist-info
 
 %changelog

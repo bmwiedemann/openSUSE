@@ -270,4 +270,15 @@
 - No more greedy globs in %files.</comment>
     <requestid>1166531</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>5e5acd936874a5f82066b25a4777e138</srcmd5>
+    <version>0.12.1</version>
+    <time>1744828723</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264853</requestid>
+  </revision>
 </revisionlist>

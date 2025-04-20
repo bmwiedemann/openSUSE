@@ -1,7 +1,7 @@
 #
 # spec file for package transactional-update
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2021 Neal Gompa
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        5.0.1
+Version:        4.8.3
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -74,17 +74,11 @@ Requires:       lsof
 Requires:       psmisc
 Requires:       tukit = %{version}-%{release}
 Requires:       zypper
-Requires:       (tukit-snapper-plugin if (snapper and read-only-root-fs))
 # Parameter --drop-if-no-change requires it
 Recommends:     inotify-tools
 Recommends:     rebootmgr
 Suggests:       tukitd = %{version}-%{release}
 Conflicts:      health-checker < 1.8
-# Support for /etc as subvolume
-Conflicts:      read-only-root-fs < 1.0+git20250410
-Conflicts:      sdbootutil < 1+git20250409
-# Includes policy for the 50-etc snapper plugin
-Conflicts:      selinux-policy < 20250411
 
 %description
 transactional-update is a tool to update a system in an atomic
@@ -107,26 +101,16 @@ License:        GPL-2.0-or-later
 Group:          System/Boot
 Supplements:    (tukit and kernel)
 Requires:       tukit = %{version}-%{release}
+BuildArch:      noarch
 Conflicts:      transactional-update < 3.0.0
 
 %description -n dracut-%{name}
 This package contains the dracut modules for handling early boot aspects
 for transactional updates.
 
-%package -n tukit-snapper-plugin
-Summary:        Snapper plugin for creating r/w /etc subvolumes
-License:        GPL-2.0-or-later
-Group:          System/Fhs
-Requires:       tukit = %{version}-%{release}
-BuildArch:      noarch
-
-%description -n tukit-snapper-plugin
-This package contains the snapper plugin for creating /etc subvolumes on a
-read-only system.
-
 %package -n %{libname}
 Summary:        Library for doing transactional updates using Btrfs snapshots
-License:        GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          System/Libraries
 Requires:       btrfsprogs
 Requires:       rsync
@@ -149,7 +133,7 @@ functionality to manage transactional systems.
 
 %package -n %{devname}
 Summary:        Development files for tukit library
-License:        GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 Provides:       tukit-devel = %{version}-%{release}
 Provides:       tukit-devel = %{version}-%{release}
@@ -161,6 +145,7 @@ transactional updates using btrfs snapshots.
 
 %package zypp-config
 Summary:        Zypper rule to prevent uninstallation of transactional-update
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 BuildArch:      noarch
 Requires:       transactional-update = %{version}-%{release}
@@ -281,7 +266,7 @@ done
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
-%license COPYING gpl-2.0.txt
+%license COPYING
 %doc NEWS
 %doc %{_docdir}/%{name}/transactional-update.txt
 %if 0%{?suse_version} > 1500
@@ -294,6 +279,9 @@ done
 %{_unitdir}/transactional-update-cleanup.service
 %{_unitdir}/transactional-update-cleanup.timer
 %{_sbindir}/transactional-update
+%if %{?suse_version} <= 1500
+%dir %{_distconfdir}
+%endif
 %{_distconfdir}/transactional-update.conf
 %{_mandir}/man5/transactional-update.conf.5*
 %{_mandir}/man8/transactional-update.8*
@@ -318,16 +306,9 @@ done
 %dir %{_prefix}/lib/dracut
 %dir %{_prefix}/lib/dracut/modules.d
 %{_prefix}/lib/dracut/modules.d/50transactional-update/
-%{_libexecdir}/transactional-update-sync-etc-state
-
-%files -n tukit-snapper-plugin
-%license COPYING gpl-2.0.txt
-%dir %{_prefix}/lib/snapper
-%dir %{_prefix}/lib/snapper/plugins
-%{_prefix}/lib/snapper/plugins/50-etc
 
 %files -n %{libname}
-%license COPYING gpl-2.0.txt lgpl-2.1.txt
+%license COPYING lgpl-2.1.txt
 %{_libdir}/libtukit.so.%{somajor}{,.*}
 
 %files -n tukitd
@@ -340,7 +321,7 @@ done
 %{_prefix}/share/dbus-1/interfaces/org.opensuse.tukit.Transaction.xml
 
 %files -n %{devname}
-%license COPYING gpl-2.0.txt lgpl-2.1.txt
+%license COPYING lgpl-2.1.txt
 %{_includedir}/tukit/
 %{_libdir}/libtukit.so
 %{_libdir}/pkgconfig/tukit.pc

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Apr 17 15:02:51 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.22.0:
+  * foot.ini options:
+    * Added main.alpha-mode option to change how alpha is handled on
+      background colors not set by the terminal but by programs like vim.
+      Defaults to "default", which sets the alpha only on cells with
+      the terminal default background color, not including cells
+      with the same RGB value as the terminal default background color.
+    * Added tweak.dim-amount option to tweak how much dimmed colors are
+      dimmed by when explicit values have not been configured.
+      Such auto-calculated dimmed colors are now more consistent in being
+      less intense and closer to black. Similarly brightened colors are
+      more consistently more intense and closer to white, as determined by
+      the original tweak.bold-text-in-bright-amount option.
+    * Virtual modifiers in key bindings are now recognized and mapped to
+      the corresponding real modifier, eg Alt instead of Mod1 and
+      Super instead of Mod4.
+    * Default regex used in url.regex has been changed to be much more strict.
+  * Added support for compositor toplevel edge constraints to prevent
+    resizing foot via its CSDs in the constrained directions. This also allows
+    a tiled window to be resized via its CSDs unless the compositor has
+    indicated that the toplevel has edge constraints.
+  * Fixed keybindings to work under compositors like Mutter that send
+    virtual modifiers in keyboard events.
+  * Fixed crash in URL mode when activating a second URL.
+  * Fixed URL mode to not mangle double-width characters in copied URLs.
+  * Fixed issue where changing the window size would remove empty lines.
+  * Added new themes: molokai, night-owl.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.22.0 for more details.
+
+-------------------------------------------------------------------
 Mon Mar 17 15:50:58 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.21.0:

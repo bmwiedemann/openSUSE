@@ -7,4 +7,20 @@
     <comment>Replace python3-azuremetadat, DR 1189121, with generic Python package</comment>
     <requestid>1189122</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>677adea463b1c40d436eb9cf10dd0fdb</srcmd5>
+    <version>5.1.6</version>
+    <time>1745134511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update build setup
+  + Switch source tarball name to be consistent with other tools of
+    similar nature
+  + Set the modules directory properly
+
+- Version 5.1.6
+  + Handle queries of attributes that return an empty list properly
+  + Switch the package build to a specific Python interpreter set
+    by the project configuration in the Build Service</comment>
+    <requestid>1270873</requestid>
+  </revision>
 </revisionlist>

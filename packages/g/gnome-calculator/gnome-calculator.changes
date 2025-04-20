@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 12 18:21:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fix converter not visible when exchange rate refresh is set to
+    never.
+  + Align the text in the converter entries to right in RTL layout.
+  + Use GNOME-hosted exchange rates instead of external sources.
+  + Improved exchange rate handling.
+  + Updated translation.
+
+-------------------------------------------------------------------
 Sat Mar 22 08:14:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0.2:

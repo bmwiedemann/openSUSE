@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:41:30 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.1.6:
+  * Let getaddrinfo(3) select the default IPv4 or IPv6 protocol version
+    when it is not explicitly specified on the command line
+  * No more mandatory default to IPv4, follow rfc3484 and
+    the similar ping(1) behaviour. Drop DEF_AF macro.
+
+-------------------------------------------------------------------
 Tue Dec 19 18:58:12 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.1.5:

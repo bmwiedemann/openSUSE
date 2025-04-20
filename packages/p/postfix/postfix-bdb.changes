@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 16:07:52 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- update postfix-main.cf.patch
+  * remove duplicated entry smtp_dns_support_level
+
+-------------------------------------------------------------------
 Wed Apr  9 20:19:49 UTC 2025 - chris@computersalat.de
 
 - fix compile option -std=gnu17 (only for >= 1600)

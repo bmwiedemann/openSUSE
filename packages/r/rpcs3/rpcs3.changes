@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 17 20:33:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update fix-test-files.patch
+
+-------------------------------------------------------------------
+Thu Apr 17 20:07:36 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250417:
+  * Fix game list update for auto-detection VFS games folder (#17051)
+  * Qt: Add checkboxes to vfs list to make selection more user friendly
+  * git: Remove unused code
+  * Qt: use image_change_callback function to ensure the member is valid
+  * Qt: use unique_ptr in qt_video_source
+  * Qt: Fix gamelist icon after stopping a movie
+  * Qt: fix game list image reset after a movie was stopped
+  * sceNpTrophy: Send signals asynchronously
+  * Qt/input: accumulate button presses between gui refresh
+  * Add Menu Key (used by 8bitdo Pro 2 controller
+  * rsx: Avoid reallocating scratch buffers every draw call when processing instancing data
+  * rsx: Fix simple_array<T>::erase_if
+  * evdev: log positive axis config
+
+-------------------------------------------------------------------
 Sun Apr 13 03:14:52 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 0.0.36~git20250412:

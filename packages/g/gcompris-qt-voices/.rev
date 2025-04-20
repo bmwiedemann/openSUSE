@@ -188,4 +188,12 @@ please place in same staging as gcompris-qt
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1184066</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>46ac17f73cf0a0ee8c93212b943f381d</srcmd5>
+    <version>25.0~20250315</version>
+    <time>1744985829</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270192</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package akonadi-calendar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           akonadi-calendar
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later

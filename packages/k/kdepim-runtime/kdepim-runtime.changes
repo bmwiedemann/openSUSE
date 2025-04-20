@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Use queued connection for GetEvents result signal
+  * Fix storing OAuth credentials together with regular password
+  * Change KDEPIM_DEV_VERSION
+  * iCal File resource - fix create dialog "File or URL" filter (kde#492336)
+  * singlefileresourceconfigwidgetbase.h - remove unused variable mOkButton
+  * settingsdialog.ui - fix a warning reported by designer
+  * Fix compile warning for overloaded-virtual
+  * urlconfigurationdialog.ui - move the protocol buttons into a QButtonGroup (kde#455787)
+  * Don't access payload when it's not available (kde#490307)
+  * Move in common directory. We need to add activities support in ldap in kaddressbook
+  * agents/newmailnotifier: use <br/> for notifications
+  * Simplify some of the warning
+  * Modernize EWS code
+  * Activate by default plasma activities
+  * Add xml/yaml linting
+  * Add parent
+  * Remove duplicate ImapAclAttribute class
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Remove unused forward declaration
+  * SingleFileResource: port away from deprecated/removed KJob API
+  * Don't disable password field if password is not found
+  * Add KWallet back for a fallback if QtKeychain doesn't find a password
+  * Show QKeychain error with a notification
+  * Port IMAP resource away from KWallet
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

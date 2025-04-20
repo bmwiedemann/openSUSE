@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 15 12:21:24 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.2.3:
+  * bump deps
+  * use `toml` instead of plaintext (#2244)
+  * Fix unable to start espanso (#2220)
+  * Prevent Espanso Sync Tool window from stealing focus. (#2212)
+  * Remove espanso migrate (#2174)
+  * fix rustc version not working (#2176)
+  * fix `clippy` lints (#2171)
+  * update level of very verbose wayland log (#2107)
+  * add support to detect wayland compositor in use (#2101)
+  * Resolve issue with cursor placement when using multi-byte 
+    characters (#2063)
+  * add `locale` and `offset` to date module schema (#2040)
+  * Show regex in search bar (#1998)
+  * fix clippy warnings and tests (#2002)
+  * Improve form size constraints and text overflow behavior (#1991)
+  * Word separators
+  * Support non-ASCII characters in triggers on macOS (#1967)
+  * fix(inject): attach modifiers state to the next record on x11 (#1680)
+  * fix links in yaml schemas (#1952)
+  * Use new sctk api (#1901)
+  * Add option to open config folder to context menu (#1870)
+  * feat(render): add support for pwsh (#1824)
+
+-------------------------------------------------------------------
 Sun Aug 18 07:59:10 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - refactor package to use a _service file

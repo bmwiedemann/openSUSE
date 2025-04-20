@@ -8,5 +8,6 @@
   - tool to add a file or directory to squashfs filesystems
 * replace-backhand
   - tool to replace files in squashfs filesystems</description>
+  <devel project="filesystems" package="backhand"/>
   <url>https://github.com/wcampbell0x2a/backhand</url>
 </package>

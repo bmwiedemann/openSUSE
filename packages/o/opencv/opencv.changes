@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 17:59:51 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add opencv-qt6_9-highgui-linking-test.patch: Fix highgui module
+  linkage with Qt 6.9 libraries [gh#opencv/opencv#27223,
+  QTBUG-134774].
+- Build with ninja; add BuildRequires: ninja.
+
+-------------------------------------------------------------------
 Thu Apr  3 07:55:55 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Make devel package conflicts between different flavors explicit.

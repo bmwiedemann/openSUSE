@@ -1,7 +1,7 @@
 #
 # spec file for package python-flufl.bounce
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,6 @@ cp %{SOURCE1} .
 %dir %{python_sitelib}/flufl
 %{python_sitelib}/flufl/bounce
 %{python_sitelib}/flufl.bounce-*.pth
-%{python_sitelib}/flufl.bounce-%{version}.dist-info
+%{python_sitelib}/flufl_bounce-%{version}.dist-info
 
 %changelog

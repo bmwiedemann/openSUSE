@@ -30,7 +30,7 @@
 %endif
 %endif
 Name:           forgejo
-Version:        10.0.3
+Version:        11.0.0
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -51,15 +51,10 @@ Source10:       %{name}.apparmor
 Source11:       %{name}.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
-# updated vendored go modules, for fix-CVE-2025-22869.patch
-Source14:       vendor.tar.gz
 Source98:       README.SUSE
 Source99:       get-sources.sh
 Patch0:         custom-app.ini.patch
-Patch1:         dont-strip.patch
-Patch2:         fix-CVE-2025-22869.patch
-BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.23.6
+BuildRequires:  golang(API) >= 1.24
 ## node >= 20
 %if 0%{?suse_version} == 1500
 BuildRequires:  nodejs-devel-default
@@ -139,7 +134,6 @@ builtin functionality.
 
 %prep
 %autosetup -p1 -n %{name}-src-%{version}
-tar xf %{SOURCE14} -C %{_builddir}/%{name}-src-%{version}/
 local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 cp %{SOURCE98} .
 
@@ -147,7 +141,7 @@ cp %{SOURCE98} .
 %sysusers_generate_pre %{SOURCE6} %{name} %{name}.conf
 export TAGS="bindata timetzdata sqlite sqlite_unlock_notify"
 export EXTRA_GOFLAGS="-buildmode=pie -mod=vendor"
-%make_build build
+STRIP=0 %make_build build
 go build ${EXTRA_GOFLAGS} -o contrib/environment-to-ini/environment-to-ini contrib/environment-to-ini/environment-to-ini.go
 
 %install

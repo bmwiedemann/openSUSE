@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPika
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,6 +60,6 @@ cp -r ../pypika-%{version}/pypika/tests ./pypika
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/pypika
-%{python_sitelib}/PyPika-%{version}.dist-info
+%{python_sitelib}/pypika-%{version}.dist-info
 
 %changelog

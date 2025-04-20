@@ -1,7 +1,7 @@
 #
 # spec file for package baloo-widgets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define rname baloo-widgets
 %bcond_without released
 Name:           baloo-widgets
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only

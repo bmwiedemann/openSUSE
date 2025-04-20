@@ -1826,4 +1826,16 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1266393</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>50c745194a1b7ce32f101284e0fc2bad</srcmd5>
+    <version>1.84.2</version>
+    <time>1744898812</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.84.2:
+  + Closed bugs and merge requests: GtkNotebook.pages GListModel is
+    inaccessible from GJS.
+
+- Exclude s390x arch from testing, to unstable/slow to test ok. (forwarded request 1269165 from iznogood)</comment>
+    <requestid>1269688</requestid>
+  </revision>
 </revisionlist>

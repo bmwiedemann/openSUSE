@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Apr 16 17:59:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.24.0:
+  * cargo: coreos-installer release 0.24.0
+  * docs/release-notes: update for release 0.24.0
+  * cargo: update dependencies
+  * Sync repo templates ⚙
+  * build(deps): bump tokio from 1.43.0 to 1.44.2
+  * build(deps): bump flate2 from 1.0.35 to 1.1.1
+  * build(deps): bump openssl from 0.10.71 to 0.10.72
+  * build(deps): bump nmstate from 2.2.41 to 2.2.43
+  * build(deps): bump libc from 0.2.170 to 0.2.171
+  * build(deps): bump tempfile from 3.19.0 to 3.19.1
+  * build(deps): bump reqwest from 0.12.12 to 0.12.15
+  * build(deps): bump serde from 1.0.218 to 1.0.219
+  * build(deps): bump uuid from 1.14.0 to 1.16.0
+  * build(deps): bump tempfile from 3.17.1 to 3.19.0
+  * Sync repo templates ⚙
+  * build(deps): bump textwrap from 0.16.1 to 0.16.2
+  * build(deps): bump bytes from 1.10.0 to 1.10.1
+  * build(deps): bump ring from 0.17.9 to 0.17.13
+  * build(deps): bump thiserror from 2.0.11 to 2.0.12
+  * build(deps): bump anyhow from 1.0.96 to 1.0.97
+  * build(deps): bump serde_json from 1.0.139 to 1.0.140
+  * Fix cargo clippy (warnings)
+  * build(deps): bump nmstate from 2.2.39 to 2.2.41
+  * workflows/rust: bump lints toolchain to 1.84.1
+  * Cargo.toml: bump MSRV to 1.84.1
+  * build(deps): bump libc from 0.2.169 to 0.2.170
+  * build(deps): bump uuid from 1.13.1 to 1.14.0
+  * build(deps): bump serde from 1.0.217 to 1.0.218
+  * build(deps): bump anyhow from 1.0.95 to 1.0.96
+  * build(deps): bump serde_json from 1.0.138 to 1.0.139
+  * build(deps): bump zstd from 0.13.2 to 0.13.3
+  * build(deps): bump tempfile from 3.17.0 to 3.17.1
+  * cargo: require byte-unit 5.1.6 or greater
+  * build(deps): bump byte-unit from 4.0.19 to 5.1.6
+  * hash: remove deprecated funcion and add updated one
+  * docs: re-gen manpages with clap_mangen 0.2.26
+  * build(deps): bump nix from 0.27.1 to 0.29.0
+  * build(deps): bump reqwest from 0.12.9 to 0.12.12
+  * build(deps): bump serde_json from 1.0.133 to 1.0.138
+  * build(deps): bump serde_with from 3.11.0 to 3.12.0
+  * build(deps): bump rand from 0.8.5 to 0.9.0
+  * build(deps): bump tempfile from 3.14.0 to 3.16.0
+  * build(deps): bump uuid from 1.11.0 to 1.13.1
+  * signing-keys: drop Fedora 40 key
+  * signing-keys: add Fedora 43 key
+  * s390x: remove 'sdboot' before generating new one
+  * s390x: use more meaningfull long options for genprotimg
+  * build(deps): bump clap_mangen from 0.2.24 to 0.2.26
+  * build(deps): bump openssl from 0.10.68 to 0.10.70
+  * build(deps): bump libc from 0.2.168 to 0.2.169
+  * build(deps): bump anyhow from 1.0.94 to 1.0.95
+  * build(deps): bump glob from 0.3.1 to 0.3.2
+  * build(deps): bump serde from 1.0.215 to 1.0.217
+  * build(deps): bump thiserror from 2.0.6 to 2.0.11
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * build(deps): bump libc from 0.2.164 to 0.2.168
+  * build(deps): bump anyhow from 1.0.93 to 1.0.94
+  * build(deps): bump thiserror from 1.0.69 to 2.0.6
+  * build(deps): bump bytes from 1.8.0 to 1.9.0
+  * dockerfile: update to `fedora:41`
+  * build(deps): bump rustls from 0.23.16 to 0.23.18
+  * build(deps): bump nmstate from 2.2.38 to 2.2.39
+  * build(deps): bump url from 2.5.3 to 2.5.4
+  * build(deps): bump actions/checkout from 3 to 4
+  * Sync repo templates ⚙
+  * build(deps): bump flate2 from 1.0.34 to 1.0.35
+  * build(deps): bump libc from 0.2.162 to 0.2.164
+  * build(deps): bump serde_json from 1.0.132 to 1.0.133
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * build(deps): bump serde_with from 3.9.0 to 3.11.0
+
+-------------------------------------------------------------------
 Wed Nov 13 14:37:40 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.23.0:

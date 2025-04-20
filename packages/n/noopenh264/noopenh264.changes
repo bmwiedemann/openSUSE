@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Apr 16 09:55:23 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
+
+- Add baselibs.conf for multilib support
+- Clean up some unneeded spec stanzas
+
+-------------------------------------------------------------------
+Mon Apr  7 14:11:40 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
+
+- Adjust to make it work for openSUSE's packaging model
+
+-------------------------------------------------------------------
+Wed Apr  2 11:30:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Initial packaging for openSUSE.

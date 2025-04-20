@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 19:49:45 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libtheora-avoid-negative-shift.patch: avoid negative shift in
+  huffdec.c (bsc#1234837 CVE-2024-56431).
+
+-------------------------------------------------------------------
 Thu Dec 11 13:12:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add mozjs115-CVE-2024-11498.patch:

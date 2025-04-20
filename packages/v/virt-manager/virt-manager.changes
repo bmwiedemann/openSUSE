@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 14 22:57:32 MDT 2025 - carnold@suse.com
+
+- Spec file changes for including the correct dependencies
+  depending on the distro. (bsc#1241082 and bsc#1241119)
+
+-------------------------------------------------------------------
 Fri Apr 11 06:05:21 MDT 2025 - carnold@suse.com
 
 - Upstream features and bug fixes (bsc#1027942) (jsc#PED-8910)

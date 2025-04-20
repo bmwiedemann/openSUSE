@@ -36,6 +36,8 @@
 %else
 %bcond_with arm_compute_lib
 %endif
+# tests fail to build with llvm20 - https://github.com/apache/tvm/issues/17823
+%bcond_with cpptest
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
@@ -80,8 +82,10 @@ BuildRequires:  dmlc-core-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git
+%if %{with cpptest}
 BuildRequires:  gmock
 BuildRequires:  gtest
+%endif
 BuildRequires:  llvm-devel
 BuildRequires:  memory-constraints
 BuildRequires:  openblas-devel
@@ -233,6 +237,7 @@ sed -i -r 's|#!/usr/bin/python3(.*)|#!/usr/bin/python3|' %{buildroot}%{_bindir}/
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+%if %{with cpptest}
 pushd %{__builddir}
 %cmake_build cpptest
 popd
@@ -248,6 +253,7 @@ export PYTHONDONTWRITEBYTECODE=1
 ctestflags="-E (TextureCopy|TvmVMMemoryManagerTest|AProfileParser.DefaultSVESupportSVESupport|AProfileParser.DefaultFP16Support)"
 %ctest $ctestflags
 }
+%endif
 
 %if %{with pytest}
 mkdir python_gen

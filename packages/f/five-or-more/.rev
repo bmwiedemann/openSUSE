@@ -269,4 +269,13 @@
     <comment>New stable rel (forwarded request 1253477 from iznogood)</comment>
     <requestid>1253720</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9205e4f764316148415c3c1554c83658</srcmd5>
+    <version>48.1</version>
+    <time>1744828802</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Don't create window in startup phase. (forwarded request 1268807 from iznogood)</comment>
+    <requestid>1269675</requestid>
+  </revision>
 </revisionlist>

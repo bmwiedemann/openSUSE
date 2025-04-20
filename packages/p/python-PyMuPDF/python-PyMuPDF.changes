@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  1 10:55:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Fix packaging with new setuptools
+
+-------------------------------------------------------------------
 Mon Mar 17 09:06:01 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Compile everything with -DNDEBUG to fix reference to undefined symbols

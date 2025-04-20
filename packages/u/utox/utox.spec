@@ -1,7 +1,7 @@
 #
 # spec file for package utox
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Version:        0.18.1
 Release:        0
 Summary:        The lightweight Tox client
 License:        MIT
-Group:          Productivity/Networking/Instant Messenger
 URL:            https://utox.org/
 Source:         https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz
 Source1:        https://github.com/uTox/uTox/releases/download/v%{version}/%{realname}-%{version}-full.tar.gz.asc
 Source2:        uTox.keyring
 BuildRequires:  c-toxcore-devel
-BuildRequires:  cmake >= 3.2
+BuildRequires:  cmake >= 3.5
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
 BuildRequires:  filter_audio-devel
@@ -58,7 +57,8 @@ Lightweight Tox client.
       -DENABLE_ASAN=OFF \
       -DENABLE_TESTS=OFF \
       -DENABLE_AUTOUPDATE=OFF \
-      -DENABLE_LTO=ON
+      -DENABLE_LTO=ON \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %make_jobs V=1
 
 %install
@@ -66,6 +66,9 @@ Lightweight Tox client.
 %suse_update_desktop_file -r %{name} Network Telephony
 
 %fdupes %{buildroot}
+
+%check
+%ctest
 
 %if 0%{?suse_version} < 1500
 %post

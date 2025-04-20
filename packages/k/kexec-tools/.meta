@@ -4,5 +4,4 @@
 currently running kernel to do something with it. A currently running
 kernel may be asked to start the loaded kernel on reboot, or to start
 the loaded kernel after it panics.</description>
-  <devel project="Kernel:kdump" package="kexec-tools"/>
 </package>

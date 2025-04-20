@@ -73,6 +73,6 @@ ufoLib2 is a UFO font processing library.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/ufoLib2
-%{python_sitelib}/ufoLib2-%{version}*-info
+%{python_sitelib}/ufolib2-%{version}.dist-info
 
 %changelog

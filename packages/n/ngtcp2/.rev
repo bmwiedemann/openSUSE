@@ -152,4 +152,12 @@
   * ngtcp2_ksl: Use proper type</comment>
     <requestid>1244412</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c50c3d717723b13ceef815ffe5403597</srcmd5>
+    <version>1.12.0</version>
+    <time>1744986134</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.12.0</comment>
+    <requestid>1270643</requestid>
+  </revision>
 </revisionlist>

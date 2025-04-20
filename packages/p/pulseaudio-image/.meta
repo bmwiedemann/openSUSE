@@ -1,4 +1,5 @@
 <package name="pulseaudio-image" project="openSUSE:Factory">
   <title>openSUSE Tumbleweed Pulseaudio</title>
   <description>Pulseaudio container based on the openSUSE Tumbleweed Base Container Image.</description>
+  <devel project="devel:BCI:Tumbleweed" package="pulseaudio-image"/>
 </package>

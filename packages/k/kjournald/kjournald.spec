@@ -1,7 +1,7 @@
 #
 # spec file for package kjournald
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kjournald
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Qt browser for journald database
 License:        LGPL-2.1-or-later
@@ -36,6 +36,7 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}

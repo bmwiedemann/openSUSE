@@ -65,7 +65,7 @@ component configuration files.
 
 %build
 autoreconf -fi
-export CFLAGS="%{optflags} -fcommon"
+export CFLAGS="%{optflags} -fcommon -std=gnu11"
 %configure \
   --enable-largefile \
   --with-tcpwrappers \

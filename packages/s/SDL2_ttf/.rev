@@ -102,4 +102,14 @@
     <comment>- Update to release 2.24</comment>
     <requestid>1234616</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>fc1637bdc20d929fb67159bfe0a59d67</srcmd5>
+    <version>2.24.0</version>
+    <time>1744986121</time>
+    <user>anag_factory</user>
+    <comment>- Add baselibs.conf
+  Some proprietary 32-bit games need this and don’t provide
+  versions that work with Tumbleweed.</comment>
+    <requestid>1270659</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,8 @@
+Packaging notes regarding QUIC:
+
+We enable QUIC for Tumbleweed where OpenSSL 3.x is the default.
+OpenSSL is not the perfect fit, but it's better than nothing - the best recommendation by HAProxy currently seems to be AWS-LC, but we do not ship it.
+
+https://github.com/haproxy/wiki/wiki/SSL-Libraries-Support-Status#tldr
+
+Note to remove USE_QUIC_OPENSSL_COMPAT if switching to a different implementation in the future.

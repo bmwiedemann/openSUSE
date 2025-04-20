@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:41:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * collectioncombobox.cpp - add a connect to deal with the combobox changes (kde#498551)
+  * agenttypedialog.cpp - UI improvements (kde#499398)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

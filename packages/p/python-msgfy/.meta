@@ -4,5 +4,6 @@
 error message.
 
 </description>
+  <devel project="devel:languages:python" package="python-msgfy"/>
   <url>https://github.com/thombashi/msgfy</url>
 </package>

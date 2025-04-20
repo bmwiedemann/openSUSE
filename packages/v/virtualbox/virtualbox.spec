@@ -62,8 +62,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.1.6a
-%define rversion 7.1.6
+Version:        7.1.8
+%define rversion %version
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-or-later
@@ -78,6 +78,7 @@ URL:            https://www.virtualbox.org/
 # script virtualbox-patch-source.sh will do the job :)
 # WARNING: This is not a comment, but the real command to repack source
 #%%(bash %%{_sourcedir}/virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2)
+#Source:        https://download.virtualbox.org/virtualbox/7.1.8/VirtualBox-7.1.8.tar.bz2
 Source0:        VirtualBox-%{version}-patched.tpxz
 Source1:        UserManual.pdf
 Source3:        virtualbox-60-vboxguest.rules
@@ -125,7 +126,6 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
-Patch14:        kernel-6-14.patch
 Patch15:        kernel-6-15-EXTRA_CFLAGS.patch
 Patch16:        kernel-6-15-timer.patch
 Patch17:        kernel-6-15-mkdir.patch

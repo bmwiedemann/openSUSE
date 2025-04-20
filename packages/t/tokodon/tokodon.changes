@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * flatpak: Update qtwebview
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Set a dedicated user agent (kde#499276)
+  * Improve refreshing the main timeline, other misc fixes (kde#495996)
+  * Add support for posting more than 4 media attachments (kde#495588)
+  * Add support for viewing audio attachments (kde#495889)
+  * Add a "Post" action when viewing your own profile (kde#497694)
+  * Don't show the navigation tab bar when loading (kde#497920)
+  * Fix crash when receiving unknown notifications (kde#497915)
+  * Add even more missing icons for Android (kde#497717)
+  * Add a button to follow/unfollow hashtags (kde#497582)
+  * Note if server didn't provide an explicit reason for closed registration (kde#495584)
+  * Word wrap the "Posted on" text (kde#496789)
+  * Make sure to request custom emojis with authorization (kde#495585)
+  * Add a better string for severance events (kde#496613)
+  * Update read marker when streaming posts come in (kde#495159)
+  * Don't show "Pinned posts" marker in notifications (kde#495110)
+  * Fix the page stack not clearing properly when logging in (kde#496058)
+  * Add back "Local" and "Global" timelines to the mobile sidebar (kde#496739)
+  * Fix some PlaceholderMessages not having the correct width (kde#496762)
+  * Fix files not saving on Android (kde#496010)
+  * Add missing Android icons (kde#496059)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

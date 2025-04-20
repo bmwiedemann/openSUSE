@@ -2,17 +2,15 @@
     <service name="obs_scm" mode="manual">
         <param name="scm">git</param>
         <param name="url">https://github.com/osandov/drgn.git</param>
-        <param name="revision">refs/tags/v0.0.30</param>
-        <!--<param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>-->
-        <param name="versionformat">@PARENT_TAG@</param>
-        <param name="versionrewrite-pattern">v(.*)</param>
-        <param name="versionrewrite-replacement">\1</param>
+        <param name="revision">main</param>
+        <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.g%h</param>
+        <param name="versionrewrite-pattern">v([^+]*\+git[1-9].*)|v([^+]*)\+git0.*</param>
+        <param name="versionrewrite-replacement">\1\2</param>
     </service>
     <service name="set_version" mode="manual"/>
-    <service mode="buildtime" name="tar">
-    </service>
-    <service mode="buildtime" name="recompress">
+    <service name="tar" mode="manual"/>
+    <service name="recompress" mode="manual">
         <param name="file">*.tar</param>
-        <param name="compression">gz</param>
+        <param name="compression">xz</param>
     </service>
 </services>

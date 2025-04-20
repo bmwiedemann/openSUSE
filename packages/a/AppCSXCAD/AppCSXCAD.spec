@@ -30,7 +30,6 @@ BuildRequires:  CSXCAD-devel
 BuildRequires:  QCSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt

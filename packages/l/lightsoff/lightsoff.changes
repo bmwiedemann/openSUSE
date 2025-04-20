@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 12 18:48:37 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Don't create window in startup phase.
+  + Don't set prgname.
+
+-------------------------------------------------------------------
 Sun Mar 16 09:31:44 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

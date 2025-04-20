@@ -1262,4 +1262,26 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
     <comment></comment>
     <requestid>1252726</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>c5763ac11ec4b535fbff4a34bef10856</srcmd5>
+    <version>2.0.40</version>
+    <time>1744828625</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.40
+  * Support has been re-added for the MySQL-Connector/Python DBAPI
+    using the mysql+mysqlconnector:// URL scheme.
+  * Added support for specifying a list of columns for SET NULL and
+    SET DEFAULT actions of ON DELETE clause of foreign key definition
+    on PostgreSQL.
+  * Implemented support for the GROUPS frame specification in window
+    functions by adding groups option to over() and FunctionElement.over().
+  * Fixed regression in ORM Annotated Declarative class interpretation
+    caused by typing_extension==4.13.0 that introduced a different
+    implementation for TypeAliasType.
+  * More changes, see upstream changelog
+- Wrap the metadata directory name in a distro-based conditional.
+- Lowercase metadata directory name.
+</comment>
+    <requestid>1266119</requestid>
+  </revision>
 </revisionlist>

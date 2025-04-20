@@ -2,6 +2,7 @@
 # spec file for package curl
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +30,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.12.1
+Version:        8.13.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -41,8 +42,10 @@ Source4:        https://daniel.haxx.se/mykey.asc#/curl.keyring
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
-#PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
+# PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
 Patch3:         curl-disabled-redirect-protocol-message.patch
+# PATCH-FIX-UPSTREAM curl-8.13.0-CloseSocket.patch fix Leap build
+Patch4:         curl-8.13.0-CloseSocket.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -226,22 +229,26 @@ popd
 
 %if !%{with mini}
 %files
+%license COPYING
 %doc README RELEASE-NOTES CHANGES.md
 %doc docs/{BUGS.md,FAQ,FEATURES.md,TODO,TheArtOfHttpScripting.md}
 %{_bindir}/curl
 %{_mandir}/man1/curl.1%{?ext_man}
 
 %files zsh-completion
+%license COPYING
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_curl
 
 %files fish-completion
+%license COPYING
 %dir %{_datadir}/fish/
 %dir %{_datadir}/fish/vendor_completions.d/
 %{_datadir}/fish/vendor_completions.d/curl.fish
 
 %files -n libcurl-devel
+%license COPYING
 %{_bindir}/curl-config
 %{_includedir}/curl
 %dir %{_datadir}/aclocal/
@@ -250,6 +257,7 @@ popd
 %{_libdir}/pkgconfig/libcurl.pc
 
 %files -n libcurl-devel-doc
+%license COPYING
 %{_mandir}/man1/curl-config.1%{?ext_man}
 %{_mandir}/man3/*
 %doc docs/libcurl/symbols-in-versions

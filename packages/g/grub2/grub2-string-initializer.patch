@@ -1,0 +1,33 @@
+
+this patch to the grub2 sources is taken from:
+
+git.savannah.gnu.org/gitweb/?p=gnulib.git;a=patch;h=25df6dc4
+github.com/coreutils/gnulib/commit/25df6dc4
+
+From 25df6dc4253480a343dde3376ce6fd99c316a532 Mon Sep 17 00:00:00 2001
+From: Bruno Haible <bruno@clisp.org>
+Date: Thu, 3 Apr 2025 00:45:30 +0200
+Subject: [PATCH] Silence some -Wunterminated-string-initialization warnings.
+
+* lib/base32.c (base32_encode): Mark b32str as not NUL-terminated.
+* lib/base64.c (b64c): Mark as not NUL-terminated.
+* lib/bcp47.c (struct script): Mark the 'code' field as not
+NUL-terminated.
+* lib/striconveh.c (mem_cd_iconveh_internal): Mark hex as not
+NUL-terminated.
+* lib/unicase/special-casing.in.h (struct special_casing_rule): Mark the
+'code' field as not NUL-terminated.
+
+
+--- a/grub-core/lib/gnulib/base64.c
++++ b/grub-core/lib/gnulib/base64.c
+@@ -59,7 +59,7 @@ to_uchar (char ch)
+   return ch;
+ }
+ 
+-static const char b64c[64] =
++static const char b64c[64] _GL_ATTRIBUTE_NONSTRING =
+   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+ 
+ /* Base64 encode IN array of size INLEN into OUT array. OUT needs
+

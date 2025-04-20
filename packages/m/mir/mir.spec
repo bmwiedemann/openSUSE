@@ -36,7 +36,7 @@
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.20.1
+Version:        2.20.2
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -56,6 +56,7 @@ BuildRequires:  gcovr
 BuildRequires:  git-core
 BuildRequires:  gnu-free-fonts
 BuildRequires:  graphviz
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  lcov
 BuildRequires:  libatomic1
 BuildRequires:  libboost_filesystem-devel
@@ -333,13 +334,12 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %files demos
 %license COPYING.GPL*
 %doc README.md
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
+%dir %{_datadir}/%{name}
 %{_bindir}/mir_demo_*
 %{_bindir}/mir-x11-kiosk*
 %{_bindir}/miral-*
 %{_datadir}/applications/miral-shell.desktop
 %{_datadir}/icons/hicolor/scalable/apps/spiral-logo.svg
+%{_datadir}/%{name}/expected_wlcs_failures.list
 
 %changelog

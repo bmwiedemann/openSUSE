@@ -105,4 +105,16 @@ Pushing GNOME 45.rc packages</comment>
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205418</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>7ceef36a89a2b874dc7284a1ac41e15d</srcmd5>
+    <version>48.1</version>
+    <time>1744828783</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Start as part of gnome-session.
+  + Use notification categories
+  + Modernize USSD dialog
+  + Updated translations. (forwarded request 1268467 from iznogood)</comment>
+    <requestid>1269658</requestid>
+  </revision>
 </revisionlist>

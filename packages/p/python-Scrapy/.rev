@@ -289,4 +289,15 @@
   * Added the CLOSESPIDER_PAGECOUNT_NO_ITEM setting</comment>
     <requestid>1227933</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1eef574ab85c784bcfdafb6a247cd644</srcmd5>
+    <version>2.12.0</version>
+    <time>1744828715</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264848</requestid>
+  </revision>
 </revisionlist>

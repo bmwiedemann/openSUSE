@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 14 10:55:39 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- drop -std=gnu11, add tcp_wrappers_7.6-gcc15.patch, adapted from
+  debian, to support dependant packages such as quota or rpcbind
+
+-------------------------------------------------------------------
+Sun Apr 13 15:02:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- compile w/ -std=gnu11 to fix gcc15 compile time error, and to
+  still allow build on Leap 15.6
+
+-------------------------------------------------------------------
 Mon Nov 11 11:04:24 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - hosts.allow/hosts.deny: remove executable bit

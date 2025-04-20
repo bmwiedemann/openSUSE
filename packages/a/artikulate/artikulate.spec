@@ -1,7 +1,7 @@
 #
 # spec file for package artikulate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           artikulate
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause

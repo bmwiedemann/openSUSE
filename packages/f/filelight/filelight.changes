@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * don't let file groups be clickable
+  * contextmenucontext: make sure openterminal is called with local urls
+  * contextmenucontext: open terminal at local file path (kde#498184)
+  * Use the KAboutData singleton from KCoreAddons
+  * Show headers in qtc6
+  * Update org.kde.filelight.appdata.xml
+  * Added Daniel Bagge as adopter
+  * Added adopter Thibault Molleman
+  * Added supporter Henning Lammert
+  * Added Supporter
+  * Bump KF and/or QT versions in ecm_set_disabled_deprecation_versions
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

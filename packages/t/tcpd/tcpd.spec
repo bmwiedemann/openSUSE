@@ -65,6 +65,7 @@ Patch32:        tcp_wrappers_%{version}-ipv6-host-match.patch
 Patch33:        tcp_wrappers_%{version}-ipv6-mapped-v4.patch
 Patch34:        tcp_wrappers_%{version}-ipv6.fix.fix3.diff
 Patch35:        tcp_wrappers_%{version}-gcc14.patch
+Patch36:        tcp_wrappers_%{version}-gcc15.patch
 BuildRequires:  linux-kernel-headers
 Provides:       nkitb:%{_sbindir}/tcpd
 # bug437293
@@ -139,6 +140,7 @@ to compile and link programs against the TCP wrapper library.
 %patch -P 33 -p1
 %patch -P 34
 %patch -P 35 -p1
+%patch -P 36 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

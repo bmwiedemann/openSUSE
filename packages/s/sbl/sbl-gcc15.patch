@@ -1,0 +1,79 @@
+--- a/brld/brld.c	2013-03-17 15:02:27.000000000 +0100
++++ b/brld/brld.c	2025-04-16 21:41:43.613731105 +0200
+@@ -321,7 +321,7 @@
+   brltbl = texttbl;
+ 
+ /* start braille-thread */
+-  result = pthread_create (&thread_id, NULL, thread_brl, NULL);
++  result = pthread_create (&thread_id, NULL, (void * (*)(void *))thread_brl, NULL);
+   if (result != 0)
+    {
+      fprintf (stderr, "error: could not create braille thread\n");
+--- a/brld/libbrld.c	2013-03-17 15:02:27.000000000 +0100
++++ b/brld/libbrld.c	2025-04-16 21:39:00.857911681 +0200
+@@ -35,7 +35,7 @@
+ 
+ int brld_open (char *host, int port)
+ {
+-  struct hostent *hp, *gethostbyname ();
++  struct hostent *hp;
+ 
+   struct sockaddr_in sad;       /* inet socket */
+ 
+--- a/sbl/Fhp/brlconf.h	2013-03-17 15:02:27.000000000 +0100
++++ b/sbl/Fhp/brlconf.h	2025-04-16 22:37:42.779155578 +0200
+@@ -14,7 +14,7 @@
+  * GNU General Public License, as published by the Free Software
+  * Foundation.  Please see the file COPYING for details.
+ */
+-#ifndef _BRLCONf_H
++#ifndef _BRLCONF_H
+ #define _BRLCONF_H
+ #include "../brl.h"
+ struct brlinfo fhpdevs[] = {
+--- a/sbl/speech/softspeech_server.c	2013-03-17 15:02:27.000000000 +0100
++++ b/sbl/speech/softspeech_server.c	2025-04-16 22:23:58.804848272 +0200
+@@ -1938,7 +1938,7 @@
+    {
+      subprocess_t *p = &proc[pnum];
+ 
+-     fprintf (db_fp, "p = 0x%08x\n", (unsigned) p);
++     fprintf (db_fp, "p = 0x%08x\n", (uintptr_t) p);
+      if (p->argv != NULL)
+        fprintf (db_fp, "proc %d (%s)\n", pnum, p->argv[0]);
+      fprintf (db_fp, "to_active   = %d\n", p->to_active);
+@@ -2170,7 +2170,7 @@
+   if (*mlp != m)
+    {
+      fprintf (db_fp, "Call of free for non allocated block"
+-              ", ptr = 0x%08x (%s, %d)!\n", (unsigned) ptr, f, l);
++              ", ptr = 0x%08x (%s, %d)!\n", (uintptr_t) ptr, f, l);
+      return;
+    }
+   total_alloc -= m->size;
+@@ -2193,12 +2193,12 @@
+   if (*mlp != m)
+    {
+      fprintf (db_fp, "block not allocated, ptr = 0x%08x (%s, %d)!\n",
+-              (unsigned) ptr, f, l);
++              (uintptr_t) ptr, f, l);
+    }
+   else
+    {
+      fprintf (db_fp, "block ok, ptr = 0x%08x (%s, %d)!\n",
+-              (unsigned) ptr, f, l);
++              (uintptr_t) ptr, f, l);
+    }
+ }
+ 
+--- a/sbl/kbdsniff.c	2013-03-17 15:02:27.000000000 +0100
++++ b/sbl/kbdsniff.c	2025-04-16 21:37:54.280531161 +0200
+@@ -22,7 +22,7 @@
+ 
+ int kbd_open (int port)
+ {
+-  struct hostent *hp, *gethostbyname ();
++  struct hostent *hp;
+ 
+   struct sockaddr_in sock_addr;
+ 

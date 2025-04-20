@@ -1,0 +1,510 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2025-01-04 19:58 +0100
+Subject: Tone down use of inverse color attr in monochrome mode
+References: https://github.com/iptraf-ng/iptraf-ng/pull/41
+
+diff --git src/attrs.h src/attrs.h
+index d963550..64c8fcf 100644
+--- src/attrs.h
++++ src/attrs.h
+@@ -13,8 +13,9 @@ extern int BARPTRATTR;
+ extern int DLGTEXTATTR;
+ extern int DLGHIGHATTR;
+ extern int DLGBOXATTR;
+-extern int DESCATTR;
+ extern int STATUSBARATTR;
++extern int KEYBARATTR;
++extern int KEYHIGHATTR;
+ extern int IPSTATATTR;
+ extern int IPSTATLABELATTR;
+ extern int DESKTEXTATTR;
+diff --git src/deskman.c src/deskman.c
+index 812552f..7c00a28 100644
+--- src/deskman.c
++++ src/deskman.c
+@@ -29,8 +29,9 @@ int BARPTRATTR;
+ int DLGTEXTATTR;
+ int DLGBOXATTR;
+ int DLGHIGHATTR;
+-int DESCATTR;
+ int STATUSBARATTR;
++int KEYBARATTR;
++int KEYHIGHATTR;
+ int IPSTATLABELATTR;
+ int IPSTATATTR;
+ int DESKTEXTATTR;
+@@ -57,7 +58,7 @@ void draw_desktop(void)
+ 	int row;		/* counter for desktop construction */
+ 
+ 	scrollok(stdscr, 0);
+-	attrset(STATUSBARATTR);
++	attrset(KEYBARATTR);
+ 	move(0, 0);
+ 	printw("%*c", COLS, ' ');	/* these two print the top n' bottom */
+ 	move(LINES - 1, 0);
+@@ -149,19 +150,19 @@ void stdkeyhelp(WINDOW * win)
+ 
+ void sortkeyhelp(void)
+ {
+-	tx_printkeyhelp("S", "-sort  ", stdscr, HIGHATTR, STATUSBARATTR);
++	tx_printkeyhelp("S", "-sort  ", stdscr, KEYHIGHATTR, KEYBARATTR);
+ }
+ 
+ void stdexitkeyhelp(void)
+ {
+-	tx_printkeyhelp("X", "-exit", stdscr, HIGHATTR, STATUSBARATTR);
++	tx_printkeyhelp("X", "-exit", stdscr, KEYHIGHATTR, KEYBARATTR);
+ 	tx_coloreol();
+ }
+ 
+ void scrollkeyhelp(void)
+ {
+ 	tx_printkeyhelp("Up/Down/PgUp/PgDn", "-scroll window  ", stdscr,
+-			HIGHATTR, STDATTR);
++			KEYHIGHATTR, KEYBARATTR);
+ }
+ 
+ void tabkeyhelp(WINDOW * win)
+@@ -171,7 +172,7 @@ void tabkeyhelp(WINDOW * win)
+ 
+ void indicate(char *message)
+ {
+-	attrset(STATUSBARATTR);
++	attrset(KEYBARATTR);
+ 	mvprintw(LINES - 1, 0, "%*c", COLS, ' ');
+ 	mvprintw(LINES - 1, 1, "%s", message);
+ 	refresh();
+@@ -240,11 +241,12 @@ void standardcolors(int color)
+ 		BARSTDATTR = COLOR_PAIR(15) | A_BOLD;
+ 		BARHIGHATTR = COLOR_PAIR(11) | A_BOLD;
+ 		BARPTRATTR = COLOR_PAIR(18) | A_BOLD;
+-		DESCATTR = COLOR_PAIR(2);
++		STATUSBARATTR = COLOR_PAIR(2);
+ 		DLGTEXTATTR = COLOR_PAIR(2);
+ 		DLGBOXATTR = COLOR_PAIR(6);
+ 		DLGHIGHATTR = COLOR_PAIR(12);
+-		STATUSBARATTR = STDATTR;
++		KEYBARATTR = STDATTR;
++		KEYHIGHATTR = HIGHATTR;
+ 		IPSTATLABELATTR = COLOR_PAIR(2);
+ 		IPSTATATTR = COLOR_PAIR(12);
+ 		DESKTEXTATTR = COLOR_PAIR(7);
+@@ -264,22 +266,23 @@ void standardcolors(int color)
+ 		IPV6ATTR = COLOR_PAIR(19);
+ 		UNKNATTR = COLOR_PAIR(4) | A_BOLD;
+ 	} else {
+-		STDATTR = A_REVERSE;
+-		HIGHATTR = A_REVERSE;
+-		BOXATTR = A_REVERSE;
++		STDATTR = A_NORMAL;
++		HIGHATTR = A_BOLD;
++		BOXATTR = A_NORMAL;
+ 		ACTIVEATTR = A_BOLD;
+-		BARSTDATTR = A_NORMAL;
+-		BARHIGHATTR = A_BOLD;
++		BARSTDATTR = A_REVERSE;
++		BARHIGHATTR = A_REVERSE | A_BOLD;
+ 		BARPTRATTR = A_NORMAL;
+-		DESCATTR = A_BOLD;
++		STATUSBARATTR = A_REVERSE;
+ 		DLGBOXATTR = A_REVERSE;
+ 		DLGTEXTATTR = A_REVERSE;
+-		DLGHIGHATTR = A_BOLD;
+-		STATUSBARATTR = A_REVERSE;
++		DLGHIGHATTR = A_REVERSE | A_BOLD;
++		KEYBARATTR = A_REVERSE;
++		KEYHIGHATTR = A_REVERSE | A_BOLD;
+ 		IPSTATLABELATTR = A_REVERSE;
+ 		IPSTATATTR = A_STANDOUT;
+ 		DESKTEXTATTR = A_NORMAL;
+-		PTRATTR = A_REVERSE;
++		PTRATTR = A_BOLD;
+ 		FIELDATTR = A_BOLD;
+ 		ERRBOXATTR = A_BOLD;
+ 		ERRTXTATTR = A_NORMAL;
+diff --git src/fltedit.c src/fltedit.c
+index 300487f..b5e96c2 100644
+--- src/fltedit.c
++++ src/fltedit.c
+@@ -222,13 +222,13 @@ void modify_host_parameters(struct filterlist *fl)
+ 	tx_colorwin(win);
+ 
+ 	move(LINES - 1, 1);
+-	tx_printkeyhelp("Up/Down", "-move ptr ", stdscr, HIGHATTR,
+-			STATUSBARATTR);
+-	tx_printkeyhelp("I", "-insert ", stdscr, HIGHATTR, STATUSBARATTR);
+-	tx_printkeyhelp("A", "-add to list ", stdscr, HIGHATTR, STATUSBARATTR);
+-	tx_printkeyhelp("D", "-delete ", stdscr, HIGHATTR, STATUSBARATTR);
+-	tx_printkeyhelp("Enter", "-edit ", stdscr, HIGHATTR, STATUSBARATTR);
+-	tx_printkeyhelp("X/Ctrl+X", "-exit", stdscr, HIGHATTR, STATUSBARATTR);
++	tx_printkeyhelp("Up/Down", "-move ptr ", stdscr, KEYHIGHATTR,
++			KEYBARATTR);
++	tx_printkeyhelp("I", "-insert ", stdscr, KEYHIGHATTR, KEYBARATTR);
++	tx_printkeyhelp("A", "-add to list ", stdscr, KEYHIGHATTR, KEYBARATTR);
++	tx_printkeyhelp("D", "-delete ", stdscr, KEYHIGHATTR, KEYBARATTR);
++	tx_printkeyhelp("Enter", "-edit ", stdscr, KEYHIGHATTR, KEYBARATTR);
++	tx_printkeyhelp("X/Ctrl+X", "-exit", stdscr, KEYHIGHATTR, KEYBARATTR);
+ 
+ 	update_panels();
+ 	doupdate();
+diff --git src/fltmgr.c src/fltmgr.c
+index 5b7e19c..beac32a 100644
+--- src/fltmgr.c
++++ src/fltmgr.c
+@@ -25,8 +25,7 @@ fltmgr.c - filter list management routines
+ 
+ void makestdfiltermenu(struct MENU *menu)
+ {
+-	tx_initmenu(menu, 9, 31, (LINES - 8) / 2, (COLS - 31) / 2 + 15, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(menu, 9, 31, (LINES - 8) / 2, (COLS - 31) / 2 + 15);
+ 	tx_additem(menu, " ^D^efine new filter...",
+ 		   "Defines a new set of IP filter parameters");
+ 	tx_additem(menu, " ^A^pply filter...", "Applies a defined filter");
+@@ -224,15 +223,14 @@ void operate_select(struct ffnode *ffiles, struct ffnode **item, int *aborted)
+ 	struct ffnode *pptr;
+ 	struct scroll_list list;
+ 
+-	tx_listkeyhelp(STDATTR, HIGHATTR);
++	tx_listkeyhelp(KEYBARATTR, KEYHIGHATTR);
+ 	update_panels();
+ 	doupdate();
+ 
+ 	pptr = ffiles;
+ 
+ 	tx_init_listbox(&list, 60, 10, (COLS - 60) / 2 - 2,
+-			(LINES - 10) / 2 - 2, STDATTR, BOXATTR, BARSTDATTR,
+-			HIGHATTR);
++			(LINES - 10) / 2 - 2);
+ 
+ 	tx_set_listbox_title(&list, "Select Filter", 1);
+ 
+diff --git src/fltselect.c src/fltselect.c
+index 4be6243..c660eff 100644
+--- src/fltselect.c
++++ src/fltselect.c
+@@ -28,8 +28,7 @@ struct filterstate ofilter;
+ 
+ void makemainfiltermenu(struct MENU *menu)
+ {
+-	tx_initmenu(menu, 8, 18, (LINES - 8) / 2, (COLS - 31) / 2, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(menu, 8, 18, (LINES - 8) / 2, (COLS - 31) / 2);
+ 	tx_additem(menu, " ^I^P...", "Manages IP packet filters");
+ 	tx_additem(menu, " ^A^RP",
+ 		   "Toggles Address Resolution Protocol filter");
+diff --git src/ifstats.c src/ifstats.c
+index 1b687b6..dd85985 100644
+--- src/ifstats.c
++++ src/ifstats.c
+@@ -692,13 +692,12 @@ void selectiface(char *ifname, int withall, int *aborted)
+ 		ptmp->next_entry = list;
+ 		list = ptmp;
+ 	}
+-	tx_listkeyhelp(STDATTR, HIGHATTR);
++	tx_listkeyhelp(KEYBARATTR, KEYHIGHATTR);
+ 
+ 	ptmp = list;
+ 
+ 	tx_init_listbox(&scrolllist, 24, 14, (COLS - 24) / 2 - 9,
+-			(LINES - 14) / 2, STDATTR, BOXATTR, BARSTDATTR,
+-			HIGHATTR);
++			(LINES - 14) / 2);
+ 
+ 	tx_set_listbox_title(&scrolllist, "Select Interface", 1);
+ 
+diff --git src/iptraf.c src/iptraf.c
+index e5dcb64..1883edf 100644
+--- src/iptraf.c
++++ src/iptraf.c
+@@ -115,8 +115,7 @@ static void term_usr2_handler(int s __unused)
+ 
+ static void init_break_menu(struct MENU *break_menu)
+ {
+-	tx_initmenu(break_menu, 6, 20, (LINES - 6) / 2, COLS / 2, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(break_menu, 6, 20, (LINES - 6) / 2, COLS / 2);
+ 	tx_additem(break_menu, " By packet ^s^ize",
+ 		   "Displays packet counts by packet size range");
+ 	tx_additem(break_menu, " By TCP/UDP ^p^ort",
+@@ -149,8 +148,7 @@ static void program_interface(void)
+ 	loadfilters();
+ 	indicate("");
+ 
+-	tx_initmenu(&menu, 15, 35, (LINES - 16) / 2, (COLS - 35) / 2, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(&menu, 15, 35, (LINES - 16) / 2, (COLS - 35) / 2);
+ 
+ 	tx_additem(&menu, " IP traffic ^m^onitor",
+ 		   "Displays current IP traffic information");
+@@ -521,7 +519,7 @@ int main(int argc, char **argv)
+ 	 * hide all into tui_top_panel(char *msg)
+ 	 * */
+ 	draw_desktop();
+-	attrset(STATUSBARATTR);
++	attrset(KEYBARATTR);
+ 	mvprintw(0, 1, "%s %s", IPTRAF_NAME, IPTRAF_VERSION);
+ 
+ 	/* simplify */
+diff --git src/itrafmon.c src/itrafmon.c
+index 6255160..3e72859 100644
+--- src/itrafmon.c
++++ src/itrafmon.c
+@@ -47,12 +47,12 @@ static void rotate_ipmon_log(int s __unused)
+ static void ipmonhelp(void)
+ {
+ 	move(LINES - 1, 1);
+-	tx_printkeyhelp("Up/Dn/PgUp/PgDn", "-scroll  ", stdscr, HIGHATTR,
+-			STATUSBARATTR);
++	tx_printkeyhelp("Up/Dn/PgUp/PgDn", "-scroll  ", stdscr, KEYHIGHATTR,
++			KEYBARATTR);
+ 	move(LINES - 1, 43);
+-	tx_printkeyhelp("W", "-chg actv win  ", stdscr, HIGHATTR,
+-			STATUSBARATTR);
+-	tx_printkeyhelp("S", "-sort TCP  ", stdscr, HIGHATTR, STATUSBARATTR);
++	tx_printkeyhelp("W", "-chg actv win  ", stdscr, KEYHIGHATTR,
++			KEYBARATTR);
++	tx_printkeyhelp("S", "-sort TCP  ", stdscr, KEYHIGHATTR, KEYBARATTR);
+ 	stdexitkeyhelp();
+ }
+ 
+@@ -60,11 +60,11 @@ static void uniq_help(int what)
+ {
+ 	move(LINES - 1, 25);
+ 	if (!what)
+-		tx_printkeyhelp("M", "-more TCP info   ", stdscr, HIGHATTR,
+-				STATUSBARATTR);
++		tx_printkeyhelp("M", "-more TCP info   ", stdscr, KEYHIGHATTR,
++				KEYBARATTR);
+ 	else
+-		tx_printkeyhelp("Lft/Rt", "-vtcl scrl  ", stdscr, HIGHATTR,
+-				STATUSBARATTR);
++		tx_printkeyhelp("Lft/Rt", "-vtcl scrl  ", stdscr, KEYHIGHATTR,
++				KEYBARATTR);
+ }
+ 
+ static void markactive(int curwin, WINDOW * tw, WINDOW * ow)
+diff --git src/landesc.c src/landesc.c
+index d51c094..2c5be20 100644
+--- src/landesc.c
++++ src/landesc.c
+@@ -203,8 +203,7 @@ static struct eth_desc *select_eth_desc(const struct eth_desc *hd)
+ 		return NULL;
+ 	}
+ 
+-	tx_init_listbox(&slist, COLS, 20, 0, (LINES - 20) / 2, STDATTR, BOXATTR,
+-			BARSTDATTR, HIGHATTR);
++	tx_init_listbox(&slist, COLS, 20, 0, (LINES - 20) / 2);
+ 
+ 	tx_set_listbox_title(&slist, "Address", 1);
+ 	tx_set_listbox_title(&slist, "Description", 19);
+@@ -327,8 +326,7 @@ void manage_eth_desc(unsigned linktype)
+ 	int row = 1;
+ 	int aborted = 0;
+ 
+-	tx_initmenu(&menu, 7, 31, (LINES - 6) / 2, (COLS - 31) / 2, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(&menu, 7, 31, (LINES - 6) / 2, (COLS - 31) / 2);
+ 	tx_additem(&menu, " ^A^dd description...",
+ 		   "Adds a description for a MAC address");
+ 	tx_additem(&menu, " ^E^dit description...",
+diff --git src/options.c src/options.c
+index 64830f2..1c332c3 100644
+--- src/options.c
++++ src/options.c
+@@ -28,9 +28,7 @@ struct OPTIONS options;
+ 
+ static void makeoptionmenu(struct MENU *menu)
+ {
+-	tx_initmenu(menu, 20, 40, (LINES - 19) / 2 - 1, (COLS - 40) / 16,
+-		    BOXATTR, STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR,
+-		    DESCATTR);
++	tx_initmenu(menu, 20, 40, (LINES - 19) / 2 - 1, (COLS - 40) / 16);
+ 	tx_additem(menu, " ^R^everse DNS lookups",
+ 		   "Toggles resolution of IP addresses into host names");
+ 	tx_additem(menu, " TCP/UDP ^s^ervice names",
+@@ -65,8 +63,7 @@ static void makeoptionmenu(struct MENU *menu)
+ 
+ static void maketimermenu(struct MENU *menu)
+ {
+-	tx_initmenu(menu, 8, 35, (LINES - 19) / 2 + 7, (COLS - 35) / 2, BOXATTR,
+-		    STDATTR, HIGHATTR, BARSTDATTR, BARHIGHATTR, DESCATTR);
++	tx_initmenu(menu, 8, 35, (LINES - 19) / 2 + 7, (COLS - 35) / 2);
+ 
+ 	tx_additem(menu, " TCP ^t^imeout...",
+ 		   "Sets the length of time before inactive TCP entries are considered idle");
+diff --git src/serv.c src/serv.c
+index 8354af6..f97d37f 100644
+--- src/serv.c
++++ src/serv.c
+@@ -1270,8 +1270,7 @@ static void operate_portselect(struct porttab **table, struct porttab **node,
+ 	struct scroll_list list;
+ 	char listtext[20];
+ 
+-	tx_init_listbox(&list, 25, 22, (COLS - 25) / 2, (LINES - 22) / 2,
+-			STDATTR, BOXATTR, BARSTDATTR, HIGHATTR);
++	tx_init_listbox(&list, 25, 22, (COLS - 25) / 2, (LINES - 22) / 2);
+ 
+ 	tx_set_listbox_title(&list, "Select Port/Range", 1);
+ 
+diff --git src/tui/listbox.c src/tui/listbox.c
+index daecf66..ab8b0d9 100644
+--- src/tui/listbox.c
++++ src/tui/listbox.c
+@@ -7,6 +7,7 @@
+ 
+ #include "iptraf-ng-compat.h"
+ 
++#include "attrs.h"
+ #include "winops.h"
+ #include "labels.h"
+ #include "listbox.h"
+@@ -16,25 +17,25 @@
+ #define SCROLLDOWN 1
+ 
+ void tx_init_listbox(struct scroll_list *list, int width, int height,
+-		     int startx, int starty, int mainattr, int borderattr,
+-		     int selectattr, int keyattr)
++		     int startx, int starty)
+ {
+ 	memset(list, 0, sizeof(struct scroll_list));
+ 	list->borderwin = newwin(height, width, starty, startx);
+ 	list->borderpanel = new_panel(list->borderwin);
+-	wattrset(list->borderwin, borderattr);
++	wattrset(list->borderwin, BOXATTR);
+ 	tx_box(list->borderwin, ACS_VLINE, ACS_HLINE);
+ 
+ 	list->win = newwin(height - 2, width - 2, starty + 1, startx + 1);
+ 	list->panel = new_panel(list->win);
+-	wattrset(list->win, mainattr);
++	wattrset(list->win, STDATTR);
+ 	tx_colorwin(list->win);
+ 
+-	list->mainattr = mainattr;
+-	list->selectattr = selectattr;
++	list->mainattr = STDATTR;
++	list->selectattr = BARSTDATTR;
+ 	list->height = height;
+ 	list->width = width;
+-	list->keyattr = keyattr;
++	list->keybarattr = KEYBARATTR;
++	list->keyhighattr = KEYHIGHATTR;
+ 	list->row = 0;
+ 
+ 	tx_stdwinset(list->win);
+@@ -141,7 +142,7 @@ void tx_operate_listbox(struct scroll_list *list, int *aborted)
+ 
+ 	list->textptr = list->textlist;
+ 
+-	tx_listkeyhelp(list->mainattr, list->keyattr);
++	tx_listkeyhelp(list->keybarattr, list->keyhighattr);
+ 	update_panels();
+ 	doupdate();
+ 
+diff --git src/tui/listbox.h src/tui/listbox.h
+index 510bbf1..f7c683d 100644
+--- src/tui/listbox.h
++++ src/tui/listbox.h
+@@ -18,7 +18,8 @@ struct scroll_list {
+ 	int width;
+ 	int mainattr;
+ 	int selectattr;
+-	int keyattr;
++	int keybarattr;
++	int keyhighattr;
+ 	int row;
+ 
+ 	WINDOW *win;
+@@ -28,8 +29,7 @@ struct scroll_list {
+ };
+ 
+ void tx_init_listbox(struct scroll_list *list, int width, int height,
+-		     int startx, int starty, int mainattr, int borderattr,
+-		     int selectattr, int keyattr);
++		     int startx, int starty);
+ void tx_set_listbox_title(struct scroll_list *list, char *text, int x);
+ void tx_add_list_entry(struct scroll_list *list, char *node, char *text);
+ void tx_show_listbox(struct scroll_list *list);
+diff --git src/tui/menurt.c src/tui/menurt.c
+index fb3f002..bf95698 100644
+--- src/tui/menurt.c
++++ src/tui/menurt.c
+@@ -9,15 +9,14 @@ menurt.c - ncurses-based menu definition module
+ 
+ #include "iptraf-ng-compat.h"
+ 
++#include "attrs.h"
+ #include "menurt.h"
+ #include "winops.h"
+ #include "labels.h"
+ 
+ /* initialize menu system */
+ 
+-void tx_initmenu(struct MENU *menu, int y1, int x1, int y2, int x2,
+-		 int borderattr, int normalattr, int highattr,
+-		 int barnormalattr, int barhighattr, int descattr)
++void tx_initmenu(struct MENU *menu, int y1, int x1, int y2, int x2)
+ {
+ 	menu->itemlist = NULL;
+ 	menu->itemcount = 0;
+@@ -38,12 +37,14 @@ void tx_initmenu(struct MENU *menu, int y1, int x1, int y2, int x2,
+ 	nonl();
+ 	cbreak();
+ 
+-	menu->borderattr = borderattr;
+-	menu->normalattr = normalattr;
+-	menu->highattr = highattr;
+-	menu->barnormalattr = barnormalattr;
+-	menu->barhighattr = barhighattr;
+-	menu->descriptionattr = descattr;
++	menu->borderattr = BOXATTR;
++	menu->normalattr = STDATTR;
++	menu->highattr = HIGHATTR;
++	menu->barnormalattr = BARSTDATTR;
++	menu->barhighattr = BARHIGHATTR;
++	menu->statusattr = STATUSBARATTR;
++	menu->keybarattr = KEYBARATTR;
++	menu->keyhighattr = KEYHIGHATTR;
+ }
+ 
+ /* add menu item */
+@@ -183,7 +184,7 @@ void tx_operatemenu(struct MENU *menu, int *position, int *aborted)
+ 	int ch;
+ 	char *keyptr;
+ 
+-	tx_menukeyhelp(menu->normalattr, menu->highattr);
++	tx_menukeyhelp(menu->keybarattr, menu->keyhighattr);
+ 	*aborted = 0;
+ 	menumoveto(menu, &itemptr, row);
+ 
+@@ -198,7 +199,7 @@ void tx_operatemenu(struct MENU *menu, int *position, int *aborted)
+ 		 * Print item description
+ 		 */
+ 
+-		wattrset(menu->descwin, menu->descriptionattr);
++		wattrset(menu->descwin, menu->statusattr);
+ 		tx_colorwin(menu->descwin);
+ 		mvwprintw(menu->descwin, 0, 0, " %s", itemptr->desc);
+ 		update_panels();
+diff --git src/tui/menurt.h src/tui/menurt.h
+index 03c8b5a..ad3d6c5 100644
+--- src/tui/menurt.h
++++ src/tui/menurt.h
+@@ -41,13 +41,13 @@ struct MENU {
+ 	int highattr;
+ 	int barnormalattr;
+ 	int barhighattr;
+-	int descriptionattr;
++	int statusattr;
++	int keybarattr;
++	int keyhighattr;
+ 	char shortcuts[SHORTCUTSTRLEN_MAX];
+ };
+ 
+-void tx_initmenu(struct MENU *menu, int y1, int x1, int y2, int x2,
+-		 int borderattr, int normalattr, int highattr,
+-		 int barnormalattr, int barhighattr, int descattr);
++void tx_initmenu(struct MENU *menu, int y1, int x1, int y2, int x2);
+ void tx_additem(struct MENU *menu, char *item, char *desc);
+ void tx_showitem(struct MENU *menu, struct ITEM *itemptr, int selected);
+ void tx_showmenu(struct MENU *menu);

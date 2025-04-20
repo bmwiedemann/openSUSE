@@ -73,4 +73,15 @@
 The block &quot;update to version 0.0.11&quot; was duplicated and therefore removed for clarity</comment>
     <requestid>1201366</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4bc0f689633685197108e9cbd5ea2254</srcmd5>
+    <version>0.0.13</version>
+    <time>1744828764</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.13:
+ - License change to 0BSD.
+ - Django staticfile.json test (info).
+ - Various minor fixes, style improvements, etc.</comment>
+    <requestid>1269450</requestid>
+  </revision>
 </revisionlist>

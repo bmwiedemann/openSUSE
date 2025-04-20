@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * snapcraft: Sync core24 changes
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * Fix openflagMap values
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

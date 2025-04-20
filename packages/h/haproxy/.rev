@@ -1629,4 +1629,12 @@
     <comment>- Update to version 3.1.6+git0.d929ca290:</comment>
     <requestid>1255020</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>44fa97000958bb786ac1de8687260368</srcmd5>
+    <version>3.1.7+git0.c3f408945</version>
+    <time>1745134502</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.7+git0.c3f408945:</comment>
+    <requestid>1270823</requestid>
+  </revision>
 </revisionlist>

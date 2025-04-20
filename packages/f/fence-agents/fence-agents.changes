@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 09:07:00 UTC 2025 - varkoly@suse.com
+
+- Update to version 4.16.0+git.1744878140.5acc05b1:
+  * [virt] fix build with libxml 2.14
+
+-------------------------------------------------------------------
 Mon Apr 14 08:30:06 UTC 2025 - varkoly@suse.com
 
 - Set minimum python version to 3.11 for azure-arm
@@ -6,7 +12,7 @@ Mon Apr 14 08:30:06 UTC 2025 - varkoly@suse.com
   * fence_sbd: Dump more information when crashdump option is enabled
   * build: make INITCONFDIR available for agents
   * fence_sbd: Send crashdump msg when crashdump option is set in reboot_cycle function
-  * fence_sbd: Add crashdump option (jsc#PED-11931)
+  * fence_sbd: Add crashdump option (jsc#PED-11931) (jsc#PED-12611)
   * fence_compute/fence_evacuate: dont use deprecated inspect.getargspec()
   * fence_ibm_vpc: refresh bearer-token in connect() if token data is corrupt, and avoid edge-case of writing empty token file
   * azure_fence.py: fix managed identity authentication (#605)

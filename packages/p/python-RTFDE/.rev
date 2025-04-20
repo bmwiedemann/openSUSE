@@ -25,4 +25,15 @@
 - Enable sle15_python_module_pythons.</comment>
     <requestid>1225325</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2f9cd0d891198222c1950057a3080e71</srcmd5>
+    <version>0.1.1</version>
+    <time>1744828709</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264842</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 10:16:09 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Add fix_cve_2024_0406.patch to patch github.com/mholt/archive dependency
+  for bsc#1241187 / CVE-2024-0406 / GHSA-rhh4-rh7c-7r5v
+
+-------------------------------------------------------------------
 Mon Mar 17 10:16:47 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.7.0

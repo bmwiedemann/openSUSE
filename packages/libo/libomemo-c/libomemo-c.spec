@@ -39,6 +39,7 @@ This is a fork of libsignal-protocol-c, an implementation of Signal's ratcheting
 Summary:        Development files for libomemo-c
 Group:          Development/Libraries/C and C++
 Requires:       %{c_lib} = %{version}
+Requires:       protobuf-c-devel
 
 %description -n libomemo-c-devel
 Development files and headers for libomemo-c

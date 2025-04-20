@@ -716,8 +716,6 @@
         <!-- Make it easier to add encryption later, like with https://github.com/lnussel/addimageencryption -->
         <package name="device-mapper"/>
         <package name="cryptsetup"/>
-        <!-- New version with /etc as subvolume -->
-        <package name="read-only-root-fs &gt;= 1.0+git20250414"/>
     </packages>
     <packages type="image" profiles="SelfInstall,kvm-and-xen,VMware,MS-HyperV,VirtualBox,Pine64,RaspberryPi,RaspberryPi2,Rock64,Vagrant,DigitalOcean-Cloud">
         <!-- Needed for initial configuration, except on OpenStack-Cloud, where cloud-init is used -->

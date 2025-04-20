@@ -17,6 +17,13 @@ Tue Apr  1 23:38:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
     in fragments as key frames
   * avcodec/libx265: resolve build failure for
     libx265.so.n, n >= 213
+  * avfilter/buffersrc: check for valid sample rate.
+    (CVE-2025-22919, bsc#1237371)
+  * avfilter/af_pan: Fix sscanf() use.
+    (CVE-2025-0518, bsc#1236007)   
+  * avformat/iamf_parse: add missing constrains for num_parameters
+    in audio_element_oub().
+    (CVE-2025-1816, bsc#1238728)
 - Delete ffmpeg-7-CVE-2025-22919.patch,
   ffmpeg-7-CVE-2025-0518.patch, ffmpeg-7-CVE-2025-1816.patch
   (merged)
@@ -35,7 +42,7 @@ Sun Mar 23 23:21:26 UTC 2025 - Mia Herkt <mia@0x0.st>
 Fri Mar 21 15:28:30 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-1816.patch:
-  Backporting 0526535c from upstream, add missing constrains for
+  Backport 0526535c from upstream, add missing constrains for
   num_parameters in audio_element_oub().
   (CVE-2025-1816, bsc#1238728)
 
@@ -54,7 +61,7 @@ Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-22921.patch:
-  Backporting 7f9c7f98 from upstream, clear array length when
+  Backport 7f9c7f98 from upstream, clear array length when
   freeing it.
   (CVE-2025-22921, bsc#1237382)
 
@@ -62,7 +69,7 @@ Fri Feb 19 05:17:22 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-25473.patch:
-  Backporting c08d3004 from upstream, clear FFFormatContext packet.
+  Backport c08d3004 from upstream, clear FFFormatContext packet.
   When packet_buffer is used in mux.c, and if a muxing process fails
   at a point where packets remained in said queue.
   (CVE-2025-25473, bsc#1237351)
@@ -71,7 +78,7 @@ Fri Feb 19 04:27:06 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-0518.patch:
-  Backporting b5b6391d from upstream, fixes memory data leak when
+  Backport b5b6391d from upstream, fixes memory data leak when
   use sscanf().
   (CVE-2025-0518, bsc#1236007)
 
@@ -79,7 +86,7 @@ Fri Feb 19 03:18:02 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 Fri Feb 19 02:58:01 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-22919.patch:
-  Backporting 1446e37d from upstream, check for valid sample rate
+  Backport 1446e37d from upstream, check for valid sample rate
   As the sample rate <= 0 is invalid.
   (CVE-2025-22919, bsc#1237371)
 
@@ -185,14 +192,14 @@ Wed Aug  7 07:37:24 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Sat Aug  3 08:52:26 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-fix-crashes.patch:
-  Backporting 5b87869c from upstream, fix track handling when mixing
+  Backport 5b87869c from upstream, fix track handling when mixing
   IAMF and video tracks, Fixes crashes when muxing the two together.
 
 -------------------------------------------------------------------
 Tue Jul  5 14:18:52 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2024-32229.patch:
-  Backporting a528a54e from upstream, Fix buffer offset for yuv422p
+  Backport a528a54e from upstream, Fix buffer offset for yuv422p
   input.
   (CVE-2024-32229, bsc#1227295)
 
@@ -200,14 +207,14 @@ Tue Jul  5 14:18:52 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 Tue Jul  2 12:26:28 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2024-32230.patch:
-  Backporting 96449cfe from upstream, Fix 1 line and one column images.
+  Backport 96449cfe from upstream, Fix 1 line and one column images.
   (CVE-2024-32230, bsc#1227296)
 
 -------------------------------------------------------------------
 Tue Jul  2 11:57:01 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2024-32228.patch:
-  Backporting 45964876 from upstream, Fix segfault on invalid film
+  Backport 45964876 from upstream, Fix segfault on invalid film
   grain metadata.
   (CVE-2024-32228, bsc#1227277)
 

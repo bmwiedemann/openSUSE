@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix build on macOS due to not having Wayland (variant 2) (kde#497136)
+  * KWatchGnuPG: Remove tray icon and quit app if window is closed (kde#384271)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

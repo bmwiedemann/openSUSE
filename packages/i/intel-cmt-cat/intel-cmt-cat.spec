@@ -22,7 +22,7 @@
 %define libpqosMajor 6
 %global make_flags EXTRA_CFLAGS="%{optflags}" SHARED=y PREFIX=%{buildroot}/%{_prefix} MAN_DIR=%{buildroot}/%{_mandir}/man8 LIB_INSTALL_DIR=%{buildroot}%{_libdir}/
 Name:           intel-cmt-cat
-Version:        24.05.12.git+c5f4492
+Version:        24.05.17.git+f1325a9
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause

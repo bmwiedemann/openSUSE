@@ -102,6 +102,7 @@ cp %{SOURCE3} .
 #rm -f aclocal.m4
 autoreconf -fi
 rm -r autom4te.cache
+export CFLAGS="%{optflags} -std=gnu17"
 %configure \
   --with-usrlibdir=%{_libdir} \
 %if 0%{?suse_version} < 1550

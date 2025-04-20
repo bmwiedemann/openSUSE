@@ -95,4 +95,13 @@
     <comment></comment>
     <requestid>1267703</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>b49d7a5b3b309fefdecba5e77c70a8e8</srcmd5>
+    <version>128.9.0</version>
+    <time>1744898750</time>
+    <user>anag_factory</user>
+    <comment>- Add libtheora-avoid-negative-shift.patch: avoid negative shift in
+  huffdec.c (bsc#1234837 CVE-2024-56431). (forwarded request 1268482 from mgorse)</comment>
+    <requestid>1269660</requestid>
+  </revision>
 </revisionlist>

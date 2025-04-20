@@ -8,5 +8,4 @@
   - Lua bindings, lua-keybinder
   - Python bindings, python-keybinder
   - An examples directory with programs in C, Lua, Python and Vala.</description>
-  <devel project="X11:lxde" package="keybinder"/>
 </package>

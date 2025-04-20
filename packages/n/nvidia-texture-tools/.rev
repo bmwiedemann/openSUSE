@@ -159,4 +159,12 @@
     <comment></comment>
     <requestid>884213</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>554990a88c153e876bd2b96db84efed8</srcmd5>
+    <version>2.1.2</version>
+    <time>1744828947</time>
+    <user>anag_factory</user>
+    <comment>Drop BuildRequires: glew-devel as it is not used for build. (forwarded request 1269971 from badshah400)</comment>
+    <requestid>1269975</requestid>
+  </revision>
 </revisionlist>

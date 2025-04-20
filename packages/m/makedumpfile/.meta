@@ -4,5 +4,4 @@
 copies only the necessary pages for analysis with various dump levels,
 and can compress the page data. The obtained dump file can by analyzed
 via gdb or crash utility.</description>
-  <devel project="Kernel:kdump" package="makedumpfile"/>
 </package>

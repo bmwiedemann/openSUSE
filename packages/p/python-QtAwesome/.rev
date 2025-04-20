@@ -174,4 +174,15 @@
     <comment></comment>
     <requestid>1164109</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7d075c658081c079272c0968ec613ca5</srcmd5>
+    <version>1.3.1</version>
+    <time>1744828708</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264840</requestid>
+  </revision>
 </revisionlist>

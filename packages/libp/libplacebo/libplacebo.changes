@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 17 08:39:44 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Use python3-Jinja2 and python3-glad2 for BuildRequires instead of
+  using multi-versioned python packages.
+- Add support for building on Leap 15.6 with python3.11 only.
+
+-------------------------------------------------------------------
 Tue Jul  2 13:43:01 UTC 2024 - llyyr <llyyr@yukari.in>
 
 - Update libplacebo to version 7.349.0. See details in:

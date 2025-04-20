@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Apr 13 07:29:20 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.80.1:
+  * a11y: gtk4: Fix text offsets
+  * a11y: gtk4: Fix retrieving word segments
+  * widget: Show preedit even if cursor is invisible
+  * emulation: Fix OSC 111
+  * ci: Remove incorrect master-only build option
+  * widget: a11y: Enable a11y by default on gtk4 also
+  * ci: Update from master
+
+-------------------------------------------------------------------
 Sat Mar 15 22:07:48 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 0.80.0:

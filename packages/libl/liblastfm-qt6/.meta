@@ -2,5 +2,6 @@
   <title>Qt 6 port of liblastfm</title>
   <description>liblastfm is a collection of libraries to help you integrate Last.fm services
 into your applications.</description>
+  <devel project="KDE:Qt6" package="liblastfm-qt6"/>
   <url>https://github.com/Mazhoon/liblastfm</url>
 </package>

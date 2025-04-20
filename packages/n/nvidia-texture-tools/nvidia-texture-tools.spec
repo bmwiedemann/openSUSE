@@ -1,7 +1,7 @@
 #
 # spec file for package nvidia-texture-tools
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel

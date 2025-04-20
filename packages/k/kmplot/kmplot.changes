@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Don't specify the type when saving, the filename is enough
+  * Add xml/yaml linting
+  * Add an option that controls whether to build docs
+  * Set window icon
+  * remove checks on Qt<6
+  * replace slots/signals by Q_SLOTS/Q_SIGNALS
+  * replace emit by Q_EMIT
+  * update deprecated MouseEvent constructor
+  * replace globalPos() with globalPosition().toPoint()
+  * replace qAsConst with std::as_const
+  * Replace QT_USE_FAST_CONCATENATION & QT_USE_FAST_OPERATOR_PLUS with QT_USE_QSTRINGBUILDER
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -215,4 +215,12 @@
     <comment>Detect the correct kernel on aarch64 (jsc#PED-10545)</comment>
     <requestid>1217087</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>b33f2bdb902df3e4b16a9155ad309ca8</srcmd5>
+    <version>5.3.5</version>
+    <time>1744986088</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1270629</requestid>
+  </revision>
 </revisionlist>

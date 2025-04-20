@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,150 @@
 
 %define cpan_name Tk
 Name:           perl-Tk
-Version:        804.036
+Version:        804.36.0
 Release:        0
+# 804.036 -> normalize -> 804.36.0
+%define cpan_version 804.036
 #Upstream: SUSE-Public-Domain
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND Zlib
 Summary:        Tk - a Graphical User Interface Toolkit
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SR/SREZIC/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/S/SR/SREZIC/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Patch0:         Tk-804.029-event.diff
 Patch1:         Tk-804.029-macro.diff
 Patch2:         Tk-804.029-null.diff
 Patch3:         Tk-804.029-refcnt.diff
 Patch4:         Tk-804.036-fix-strlen-vs-int-pointer-confusion.patch
+# PATCH-FIX-UPSTREAM fix gcc15 build error https://github.com/eserte/perl-tk/issues/112
+Patch5:         Tk-804.036-gcc15.patch
 # PATCH-FIX-UPSTREAM fix gcc14 build error https://github.com/eserte/perl-tk/issues/98
-Patch5:         Tk-804-config-C99.diff
+Patch6:         Tk-804-config-C99.diff
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Tie::Watch)
+Provides:       perl(Tk) = %{version}
+Provides:       perl(Tk::Adjuster) = 4.8.0
+Provides:       perl(Tk::After) = 4.8.0
+Provides:       perl(Tk::Animation) = 4.8.0
+Provides:       perl(Tk::Balloon) = 4.13.0
+Provides:       perl(Tk::Bitmap) = 4.4.0
+Provides:       perl(Tk::BrowseEntry) = 4.15.0
+Provides:       perl(Tk::Button) = 4.10.0
+Provides:       perl(Tk::Canvas) = 4.13.0
+Provides:       perl(Tk::Checkbutton) = 4.6.0
+Provides:       perl(Tk::Clipboard) = 4.9.0
+Provides:       perl(Tk::CmdLine) = 4.7.0
+Provides:       perl(Tk::ColorDialog) = 4.14.0
+Provides:       perl(Tk::ColorEditor) = 4.14.0
+Provides:       perl(Tk::ColorSelect) = 4.14.0
+Provides:       perl(Tk::Compound) = 4.4.0
+Provides:       perl(Tk::Configure) = 4.9.0
+Provides:       perl(Tk::Derived) = 4.11.0
+Provides:       perl(Tk::Dialog) = 4.5.0
+Provides:       perl(Tk::DialogBox) = 4.16.0
+Provides:       perl(Tk::DirTree) = 4.22.0
+Provides:       perl(Tk::DirTreeDialog)
+Provides:       perl(Tk::Dirlist) = 4.4.0
+Provides:       perl(Tk::DragDrop) = 4.15.0
+Provides:       perl(Tk::DragDrop::Common) = 4.5.0
+Provides:       perl(Tk::DragDrop::Local) = 4.4.0
+Provides:       perl(Tk::DragDrop::Rect) = 4.12.0
+Provides:       perl(Tk::DragDrop::SunConst) = 4.4.0
+Provides:       perl(Tk::DragDrop::SunDrop) = 4.6.0
+Provides:       perl(Tk::DragDrop::SunSite) = 4.7.0
+Provides:       perl(Tk::DragDrop::Win32Drop) = 4.4.0
+Provides:       perl(Tk::DragDrop::Win32Site) = 4.9.0
+Provides:       perl(Tk::DragDrop::XDNDDrop) = 4.7.0
+Provides:       perl(Tk::DragDrop::XDNDSite) = 4.7.0
+Provides:       perl(Tk::DropSite) = 4.8.0
+Provides:       perl(Tk::DummyEncode) = 4.7.0
+Provides:       perl(Tk::DummyEncode::X11ControlChars)
+Provides:       perl(Tk::DummyEncode::iso8859_1)
+Provides:       perl(Tk::English) = 4.6.0
+Provides:       perl(Tk::Entry) = 4.18.0
+Provides:       perl(Tk::ErrorDialog) = 4.8.0
+Provides:       perl(Tk::Event) = 4.40.0
+Provides:       perl(Tk::Event::IO) = 4.9.0
+Provides:       perl(Tk::FBox) = 4.21.0
+Provides:       perl(Tk::FileSelect) = 4.18.0
+Provides:       perl(Tk::FloatEntry) = 4.4.0
+Provides:       perl(Tk::Font) = 4.4.0
+Provides:       perl(Tk::Frame) = 4.10.0
+Provides:       perl(Tk::HList) = 4.15.0
+Provides:       perl(Tk::IO) = 4.6.0
+Provides:       perl(Tk::IconList) = 4.7.0
+Provides:       perl(Tk::Image) = 4.11.0
+Provides:       perl(Tk::InputO) = 4.4.0
+Provides:       perl(Tk::ItemStyle) = 4.4.0
+Provides:       perl(Tk::JPEG) = 4.3.0
+Provides:       perl(Tk::LabEntry) = 4.6.0
+Provides:       perl(Tk::LabFrame) = 4.10.0
+Provides:       perl(Tk::LabRadiobutton) = 4.4.0
+Provides:       perl(Tk::Label) = 4.6.0
+Provides:       perl(Tk::LabeledEntryLabeledRadiobutton) = 4.4.0
+Provides:       perl(Tk::Labelframe) = 4.3.0
+Provides:       perl(Tk::Listbox) = 4.15.0
+Provides:       perl(Tk::MMtry) = 4.11.0
+Provides:       perl(Tk::MMutil) = 4.26.0
+Provides:       perl(Tk::MainWindow) = 4.15.0
+Provides:       perl(Tk::MakeDepend) = 4.16.0
+Provides:       perl(Tk::Menu) = 4.23.0
+Provides:       perl(Tk::Menu::Button)
+Provides:       perl(Tk::Menu::Cascade)
+Provides:       perl(Tk::Menu::Checkbutton)
+Provides:       perl(Tk::Menu::Item) = 4.6.0
+Provides:       perl(Tk::Menu::Radiobutton)
+Provides:       perl(Tk::Menu::Separator)
+Provides:       perl(Tk::Menubar) = 4.6.0
+Provides:       perl(Tk::Menubutton) = 4.5.0
+Provides:       perl(Tk::Message) = 4.6.0
+Provides:       perl(Tk::MsgBox) = 4.2.0
+Provides:       perl(Tk::Mwm) = 4.4.0
+Provides:       perl(Tk::NBFrame) = 4.4.0
+Provides:       perl(Tk::NoteBook) = 4.12.0
+Provides:       perl(Tk::Optionmenu) = 4.14.0
+Provides:       perl(Tk::PNG) = 4.4.0
+Provides:       perl(Tk::Pane) = 4.7.0
+Provides:       perl(Tk::Panedwindow) = 4.4.0
+Provides:       perl(Tk::Photo) = 4.6.0
+Provides:       perl(Tk::Pixmap) = 4.4.0
+Provides:       perl(Tk::Pretty) = 4.6.0
+Provides:       perl(Tk::ProgressBar) = 4.15.0
+Provides:       perl(Tk::ROText) = 4.11.0
+Provides:       perl(Tk::Radiobutton) = 4.6.0
+Provides:       perl(Tk::Region) = 4.6.0
+Provides:       perl(Tk::Reindex) = 4.6.0
+Provides:       perl(Tk::ReindexedROText) = 4.4.0
+Provides:       perl(Tk::ReindexedText) = 4.4.0
+Provides:       perl(Tk::Scale) = 4.4.0
+Provides:       perl(Tk::Scrollbar) = 4.10.0
+Provides:       perl(Tk::Spinbox) = 4.7.0
+Provides:       perl(Tk::Stats) = 4.4.0
+Provides:       perl(Tk::Submethods) = 4.5.0
+Provides:       perl(Tk::TList) = 4.6.0
+Provides:       perl(Tk::Table) = 4.16.0
+Provides:       perl(Tk::Text) = 4.31.0
+Provides:       perl(Tk::Text::Tag) = 4.4.0
+Provides:       perl(Tk::TextEdit) = 4.5.0
+Provides:       perl(Tk::TextList) = 4.6.0
+Provides:       perl(Tk::TextUndo) = 4.15.0
+Provides:       perl(Tk::Tiler) = 4.13.0
+Provides:       perl(Tk::TixGrid) = 4.10.0
+Provides:       perl(Tk::Toplevel) = 4.6.0
+Provides:       perl(Tk::Trace) = 4.9.0
+Provides:       perl(Tk::Tree) = 4.720.0
+Provides:       perl(Tk::Widget) = 4.37.0
+Provides:       perl(Tk::WinPhoto) = 4.5.0
+Provides:       perl(Tk::Wm) = 4.15.0
+Provides:       perl(Tk::X) = 4.5.0
+Provides:       perl(Tk::X11Font) = 4.7.0
+Provides:       perl(Tk::Xlib) = 4.4.0
+Provides:       perl(Tk::Xrm) = 4.5.0
+Provides:       perl(Tk::install) = 4.4.0
+Provides:       perl(Tk::widgets) = 4.5.0
+Provides:       perl(WidgetDemo) = 4.12.0
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  liberation-fonts
@@ -74,9 +201,16 @@ Perl API is essentially the same as Tk800 series Tk800.025 but has not
 been verified as compliant. There ARE differences see pod/804delta.pod.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p0
+%autosetup  -n %{cpan_name}-%{cpan_version} -N
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%patch -P0 -p0
+%patch -P1 -p0
+%patch -P2 -p0
+%patch -P3 -p0
+%patch -P4 -p0
+%patch -P5 -p0
+%patch -P6 -p0
 # MANUAL BEGIN
 find . -type f -name "Tcl-pTk" -print0 | xargs -0 chmod +x
 find . -type f -name "mkVFunc" -print0 | xargs -0 chmod +x

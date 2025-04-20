@@ -1092,4 +1092,15 @@ Fixes:
 </comment>
     <requestid>1184881</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>78593427962560fd487baebd77bd097b</srcmd5>
+    <version>7.349.0</version>
+    <time>1744985677</time>
+    <user>anag_factory</user>
+    <comment>- Use python3-Jinja2 and python3-glad2 for BuildRequires instead of
+  using multi-versioned python packages.
+- Add support for building on Leap 15.6 with python3.11 only.
+</comment>
+    <requestid>1270219</requestid>
+  </revision>
 </revisionlist>

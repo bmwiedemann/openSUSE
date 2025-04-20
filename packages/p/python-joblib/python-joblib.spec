@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/j/joblib/joblib-%
 Patch1:         also-filter-new-fork-warning.patch
 # PATCH-FIX-UPSTREAM https://github.com/joblib/joblib/pull/1632 DOC Make doctest compatible with numpy 2.2
 Patch2:         numpy22.patch
+# PATCH-FIX-UPSTREAM https://github.com/joblib/loky/pull/450 FIX remove link to resource_tracker._pid in child processes
+Patch3:         loky_resource_tracker.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}

@@ -1,7 +1,7 @@
 #
 # spec file for package tinygettext
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,11 @@ Version:        0.1.1469459657.bf66a57
 Release:        0
 Summary:        A simple gettext replacement
 License:        Zlib
-Group:          Development/Libraries/C and C++
-Url:            https://github.com/tinygettext/tinygettext
+URL:            https://github.com/tinygettext/tinygettext
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FEATURE-UPSTREAM create-lib-with-so-ver.patch -- Create library with so version
 Patch0:         create-lib-with-so-ver.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  pkgconfig
@@ -41,7 +40,6 @@ to store or distribute .po files separately from the software itself.
 
 %package -n lib%{name}0
 Summary:        Shared library of %{name}
-Group:          System/Libraries
 
 %description -n lib%{name}0
 This package contains the shared library of %{name}
@@ -57,7 +55,7 @@ This package contains the development files, like headers etc, for %{name}.
 %autosetup -p1
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %check

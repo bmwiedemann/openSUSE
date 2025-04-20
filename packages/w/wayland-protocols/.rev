@@ -391,4 +391,16 @@
     <comment></comment>
     <requestid>1246589</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>3e47870a9fc04c9a5cfa8a5b1f8a459b</srcmd5>
+    <version>1.43</version>
+    <time>1745134475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.43:
+  * add toplevel tags protocol
+  * added toplevel edge constraints to xdg-shell
+- Changes from version 1.42:
+  * New version of the cursor shape protocol</comment>
+    <requestid>1270805</requestid>
+  </revision>
 </revisionlist>

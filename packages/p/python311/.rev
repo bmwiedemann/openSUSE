@@ -1538,4 +1538,41 @@ C API
     <comment></comment>
     <requestid>1252659</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>e46184ed50e17f8e0ebffa9b4cc98e2f</srcmd5>
+    <version>3.11.12</version>
+    <time>1744828639</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.11.12:
+  - gh-131809: Update bundled libexpat to 2.7.1
+  - gh-131261: Upgrade to libexpat 2.7.0
+  - gh-105704: When using urllib.parse.urlsplit() and
+    urllib.parse.urlparse() host parsing would not reject domain
+    names containing square brackets ([ and ]). Square brackets
+    are only valid for IPv6 and IPvFuture hosts according to RFC
+    3986 Section 3.2.2 (bsc#1236705, CVE-2025-0938,
+    gh#python/cpython#105704).
+  - gh-121284: Fix bug in the folding of rfc2047 encoded-words
+    when flattening an email message using a modern email
+    policy. Previously when an encoded-word was too long for
+    a line, it would be decoded, split across lines, and
+    re-encoded. But commas and other special characters in the
+    original text could be left unencoded and unquoted. This
+    could theoretically be used to spoof header lines using a
+    carefully constructed encoded-word if the resulting rendered
+    email was transmitted or re-parsed.
+  - gh-80222: Fix bug in the folding of quoted strings
+    when flattening an email message using a modern email
+    policy. Previously when a quoted string was folded so that
+    it spanned more than one line, the surrounding quotes and
+    internal escapes would be omitted. This could theoretically
+    be used to spoof header lines using a carefully constructed
+    quoted string if the resulting rendered email was transmitted
+    or re-parsed.
+  - gh-119511: Fix a potential denial of service in the imaplib
+    module. When connecting to a malicious server, it could
+    cause an arbitrary amount of memory to be allocated. On many
+    systems this is harmless as unused virtual memory is only</comment>
+    <requestid>1269623</requestid>
+  </revision>
 </revisionlist>

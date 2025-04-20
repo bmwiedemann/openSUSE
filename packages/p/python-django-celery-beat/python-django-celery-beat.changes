@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 16 08:56:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.8.0
+  * Remove usages of deprecated setuptools API setuptools.command.test
+  * Clean up running of setup.py as it's deprecated
+  * Add PeriodicTaskInline to the schedule admin to showing tasks 
+    using the schedule
+  * Add official support for Django 5.2.
+  * Issue 796: remove days of the week from human readable description
+    when the whole week is specified.
+  * Fix the time calculation problem caused by start_time
+  * Added Python 3.13 support.
+
+-------------------------------------------------------------------
 Sat Jun 29 17:21:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.0:

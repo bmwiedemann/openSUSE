@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:37:04 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Enable sle15_python_module_pythons (project is Python 3.8+)
+- No longer remove Junos tests
+
+-------------------------------------------------------------------
 Tue Dec 10 08:07:24 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.0:

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Apr 15 20:28:46 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 137.0.2
+  * Fixed file picker not being displayed when exporting passwords
+    on macOS in about:logins for some users. (bmo#1956266)
+  * Fixed accessibility issues with the new PDF signature feature.
+    (bmo#1956110, bmo#1952571)
+  * Fixed an issue where using the context menu to paste in the
+    Style Editor would insert the code twice. (bmo#1955854)
+  * Fixed functional regressions in our XSLT support introduced
+    in 137. (bmo#1954841)
+  * Fixed a tooltip flickering issue on Windows that affected some
+    users when hovering. (bmo#1958631)
+  * Fixed an issue where Firefox would not respond to clicks in some
+    HTML5 video players. (bmo#1959251)
+  * Fixed an issue where radio inputs behaved incorrectly when
+    preventDefault() was called on the click event. (bmo#1957956)
+  * Fixed an issue that caused some Firefox users to restart their
+    browser multiple times to complete an update. (bmo#1959492)
+  MFSA 2025-25
+  * CVE-2025-3608 (bmo#1951554)
+    Race condition in nsHttpTransaction could lead to memory corruption
+- Mozilla Firefox 137.0.1
+  * Fixed an issue where folder shortcuts on Windows were incorrectly
+    treated as files during file uploads, preventing selecting files
+    within the target folder. (bmo#1958222)
+  * Fixed a crash experienced by Windows users when downloading files
+    with Qihoo 360 Total Security Antivirus software installed. (bmo#1958112)
+  * Fixed an occasional startup crash. (bmo#1958293)
+
+-------------------------------------------------------------------
 Sun Apr  6 13:51:28 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Migrate from deprecated %suse_update_desktop_file to

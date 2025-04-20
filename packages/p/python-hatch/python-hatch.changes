@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 16 07:11:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.14.1
+  * Remove uses of the deprecated --no-python-version-warning
+    flag when using pip
+
+-------------------------------------------------------------------
 Thu Dec 19 17:05:14 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Add fix-with-latest-hatchling.patch to restore compatibility with

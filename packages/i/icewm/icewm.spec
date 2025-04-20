@@ -1,7 +1,7 @@
 #
 # spec file for package icewm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global lites icewm icewmhint icewmbg icesh icewm-session
 Name:           icewm
-Version:        3.6.0
+Version:        3.7.3
 Release:        0
 Summary:        Window Manager with a Taskbar
 License:        LGPL-2.1-or-later
@@ -34,7 +34,7 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gettext-runtime >= 0.20.0
+BuildRequires:  gettext-runtime >= 0.21.0
 BuildRequires:  libtool
 BuildRequires:  lzip
 BuildRequires:  pkgconfig
@@ -176,7 +176,6 @@ done
   --disable-silent-rules             \
   --with-cfgdir=%{_sysconfdir}/icewm \
   --with-icesound=alsa               \
-  --enable-i18n                      \
   --enable-nls                       \
   --enable-corefonts                 \
   --enable-menus-fdo                 \

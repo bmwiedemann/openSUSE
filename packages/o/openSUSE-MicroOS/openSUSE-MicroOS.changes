@@ -1,9 +1,4 @@
 -------------------------------------------------------------------
-Wed Apr  9 08:49:32 UTC 2025 - Fabian Vogt <fvogt@suse.com>
-
-- config.sh/disk.sh: Support for new read-only-root-fs with /etc as subvolume
-
--------------------------------------------------------------------
 Fri Mar 28 21:18:11 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Set the timeout via sdbootutil

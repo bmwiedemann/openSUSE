@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs.types
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ A collection of types (mostly exception classes) for use with |calmjs|_.
 %license LICENSE
 %doc CHANGES.rst README.rst
 %{python_sitelib}/calmjs
-%{python_sitelib}/calmjs.types-%{version}*-info
+%{python_sitelib}/calmjs_types-%{version}.dist-info
 %{python_sitelib}/calmjs.types-%{version}*-nspkg.pth
 
 %changelog

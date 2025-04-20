@@ -20,7 +20,7 @@
 %define package_version 0_2-0
 
 Name:           libmanette
-Version:        0.2.11
+Version:        0.2.12
 Release:        0
 Summary:        A simple GObject game controller library
 License:        LGPL-2.1-or-later

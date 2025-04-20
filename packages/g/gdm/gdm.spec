@@ -335,6 +335,9 @@ ln -s ../sbin/gdm %{buildroot}%{_bindir}/gdm
 
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE9} %{buildroot}%{_tmpfilesdir}/gdm.conf
+%if !0%{?is_opensuse}
+sed -e '#/var/lib/gdm/\.pulse#d' -i %{buildroot}%{_tmpfilesdir}/gdm.conf
+%endif
 
 mkdir -p %{buildroot}%{_prefix}/lib/systemd/logind.conf.d
 install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/reserveVT.conf
@@ -342,7 +345,9 @@ install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/systemd/logind.conf.d/rese
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE11} %{buildroot}%{_sysusersdir}/gdm.conf
 
+%if 0%{?is_opensuse}
 install -D -m 644 %{SOURCE20} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
+%endif
 
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}/help
@@ -409,9 +414,11 @@ fi
 %dir %{_datadir}/dconf
 %dir %{_datadir}/dconf/profile
 %{_datadir}/dconf/profile/gdm
+%if 0%{?is_opensuse}
 %dir %{_datadir}/factory/var
 %dir %{_datadir}/factory/var/lib
 %{_datadir}/factory/var/lib/gdm
+%endif
 %{_datadir}/gdm/
 %{_datadir}/gnome-session/sessions/gnome-login.session
 %{_pam_moduledir}/pam_gdm.so
@@ -419,8 +426,10 @@ fi
 %{_libexecdir}/gdm/gdm-*
 %{_libexecdir}/gdm/gdmflexiserver
 %ghost %attr(750,gdm,gdm) %dir %{_localstatedir}/lib/gdm
+%if 0%{?is_opensuse}
 %attr(0700, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm/.pulse
 %attr(0600, gdm, gdm) %ghost %{_localstatedir}/lib/gdm/.pulse/default.pa
+%endif
 %ghost %attr(711,root,gdm) %dir %{_localstatedir}/log/gdm
 %ghost %attr(1755,root,root) /var/cache/gdm
 %ghost %attr(711,root,gdm) %dir /run/gdm

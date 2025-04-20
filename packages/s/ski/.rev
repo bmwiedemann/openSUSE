@@ -55,4 +55,16 @@
     <comment></comment>
     <requestid>1155924</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3a7517fed5460717a321c84f4f0a605d</srcmd5>
+    <version>6.15</version>
+    <time>1744898850</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.15:
+  * Fix minor bug related to Python 3 decoding.
+  * Make player more conspicuous on a black screen.
+- Drop BuildRequires update-desktop-files
+</comment>
+    <requestid>1267402</requestid>
+  </revision>
 </revisionlist>

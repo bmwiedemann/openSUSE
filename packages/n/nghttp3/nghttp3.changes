@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 20:46:24 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.0
+  * Explicitly deny new server-initiated bidirectional streams.
+  * Reworked fuzz testing resilience.
+- Use SRPM name as a base for -devel subpackage.
+
+-------------------------------------------------------------------
 Sat Feb  8 21:27:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.0:

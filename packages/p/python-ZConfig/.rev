@@ -145,4 +145,15 @@ source URL fixed</comment>
     <comment></comment>
     <requestid>1239258</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>23c0b8e6714807747e212f53f7b8dd08</srcmd5>
+    <version>4.2</version>
+    <time>1744828726</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264856</requestid>
+  </revision>
 </revisionlist>

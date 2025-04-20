@@ -32,7 +32,7 @@
 # ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.3.0+git20250311.d6b60eda
+Version:        6.4.0+git20250410.63a3b70d
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -141,6 +141,7 @@ Recommends:     %{python_ver}-paramiko
 Recommends:     %{python_ver}-pyinotify
 #Recommends:     python3-pynacl
 #Recommends:     python3-pyparsing
+Recommends:     %{python_ver}-pyu2f
 Recommends:     %{python_ver}-pyxdg
 #Recommends:     python3-setuptools
 #Recommends:     python3-six
@@ -249,6 +250,13 @@ mv %{buildroot}%{_sysconfdir}/pam.d/xpra %{buildroot}%{_pam_vendordir}
 
 %fdupes -s %{buildroot}
 rm -v %{buildroot}%{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org/COPYING
+
+# 20250419: For some reason these are copied from "build/scripts-3.13",
+# then end up with "#!python" at the top ...
+find %{buildroot}%{_bindir} \( -name xpra \
+  -o -name xpra_launcher \
+  -o -name run_scaled \) \
+  -exec sed -i 's@#!python$@#!%{_bindir}/python3@' {} +
 
 %pre
 getent group xpra >/dev/null || groupadd -r xpra

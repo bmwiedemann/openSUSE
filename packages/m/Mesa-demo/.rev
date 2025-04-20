@@ -277,4 +277,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment></comment>
     <requestid>1137242</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>1ceae3e7e7bfb41e9075ffab17ac4077</srcmd5>
+    <version>9.0.0</version>
+    <time>1744985650</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269979</requestid>
+  </revision>
 </revisionlist>

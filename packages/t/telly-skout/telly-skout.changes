@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Add 25.04.0 release description
+  * TV Spielfilm fetcher: fix "Select Favorites" page does not list channels
+  * Improve handling of gaps/overlaps in the programs (kde#502258)
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Speed up program description update (kde#497954)
+  * "Favorites" page: wrap header (kde#497747)
+  * TV Spielfilm fetcher: fix program stop time before start time (kde#497738)
+  * "Favorites" page: add refetch button (kde#497598)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

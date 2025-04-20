@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:06:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.23.0:
+  * Prepare release v4.23.0
+  * chore: use a fixed version of goreleaser
+  * chore: update linter (#2507)
+  * Add DNS provider for Axelname (#2495)
+  * Add DNS provider for Baidu Cloud (#2505)
+  * pdns: fix TXT record cleanup for wildcard domains (#2500)
+  * feat: add delay option for TLSALPN challenge (#2499)
+  * designate: speed up API requests by using filters (#2498)
+  * chore: update linter (#2492)
+  * chore: update dependencies (#2491)
+  * allinkl: remove ReturnInfo (#2490)
+  * route53: adds option to use private zone (#2162)
+  * cloudflare: make base URL configurable (#2484)
+  * chore: fix feature request template (#2485)
+  * tests: compare RSA priv keys ignoring precomputed (#2481)
+  * tests: change ns (#2482)
+  * fix: retry on alreadyReplaced error (#2475)
+  * websupport: migrate to API v2 (#2479)
+  * Add DNS provider for Active24 (#2478)
+  * chore: related timer with context.Done (#2471)
+  * chore: update dependencies (#2470)
+  * fix: kill hook when the command is stuck (#2469)
+  * dnssimple: use GetZone (#2467)
+  * Add DNS provider for F5 XC (#2409)
+  * edgedns: add account switch key option (#2460)
+  * infoblox: update API client to v2 (#2459)
+  * feat: add INFOBLOX_CA_CERTIFICATE option (#2458)
+  * docs: this is not the API URL for Porkbun
+  * Add DNS provider for Metaregistrar (#2455)
+  * chore: update issue templates
+  * Add DNS provider for BookMyName (#2316)
+  * fix: malformed log messages (#2452)
+  * chore: use go1.23 (#2446)
+  * Detach v4.22.2
+
+-------------------------------------------------------------------
 Tue Feb 18 06:03:13 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.22.2:

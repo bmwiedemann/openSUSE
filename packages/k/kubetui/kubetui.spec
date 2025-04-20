@@ -24,8 +24,8 @@ License:        MIT
 URL:            https://github.com/sarub0b0/kubetui
 Source0:        kubetui-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
-BuildRequires:  cargo1.82
 BuildRequires:  zstd
 
 %description

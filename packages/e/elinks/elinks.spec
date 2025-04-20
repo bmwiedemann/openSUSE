@@ -80,7 +80,7 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/vernum.c
 %build
 # required for ruby patch
 sh ./autogen.sh
-export CFLAGS="%{optflags} -fno-strict-aliasing"
+export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu11"
 %configure \
     --sysconfdir=%{_sysconfdir}/elinks \
     --enable-bittorrent \

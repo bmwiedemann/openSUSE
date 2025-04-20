@@ -19,4 +19,12 @@
   * Add support for Meson build system</comment>
     <requestid>1267811</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c5ef97d92e82689e3bd2849611e31035</srcmd5>
+    <version>0.5.1</version>
+    <time>1744898971</time>
+    <user>anag_factory</user>
+    <comment>- Fix libomemo-c-devel dependencies. protobuf-c is required.</comment>
+    <requestid>1270189</requestid>
+  </revision>
 </revisionlist>

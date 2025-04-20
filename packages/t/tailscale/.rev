@@ -255,4 +255,13 @@
   * Helsinki is added as a DERP region. (forwarded request 1264693 from rrahl0)</comment>
     <requestid>1264694</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>323a3fde7db987c3f131af8b0b30b2f4</srcmd5>
+    <version>1.82.5</version>
+    <time>1744986123</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.82.5:
+  * A panic issue related to CUBIC congestion control in userspace mode is resolved. (forwarded request 1270796 from rrahl0)</comment>
+    <requestid>1270797</requestid>
+  </revision>
 </revisionlist>

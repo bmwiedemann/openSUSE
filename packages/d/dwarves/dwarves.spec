@@ -104,12 +104,13 @@ for processing DWARF, a debugging data format for ELF files.
 %build
 sv="$PWD/lib.v"
 ver=$(echo %version | cut -d+ -f1)
-echo "DWARVES_$ver{ global: *; };" >"$sv"
+echo "DWARVES_$ver { global: *; };" >"$sv"
 %cmake \
 %if 0%{?have_libbpf}
 	-DLIBBPF_EMBEDDED=OFF \
 %endif
-	-DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
+	-DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv" \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.28
 %cmake_build
 
 %install

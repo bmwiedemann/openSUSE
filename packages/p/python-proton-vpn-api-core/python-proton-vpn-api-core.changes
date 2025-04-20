@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 14 10:57:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.42.4:
+  * fix: [VPNLINUX-1191] swallow&re-schedule server refresh when we receive HTTP code 429
+  * fix: [VPNLINUX-1191] swallow&re-schedule when we receive HTTP code 429 from refreshers
+
+-------------------------------------------------------------------
 Thu Mar 27 13:14:43 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
 
 - Update to 0.42.3:

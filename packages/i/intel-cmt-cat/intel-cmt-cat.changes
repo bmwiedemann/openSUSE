@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:42:16 UTC 2025 - trenn@suse.de
+
+- Update to version 24.05.17.git+f1325a9:
+  * appqos_client: update vulnerable dependencies
+  * lib: Fix calloc arguments that are in the wrong order
+  * appqos_client: update dependencies
+  * The cpusetsize is increased in sched_getaffinity and sched_setaffinity functions
+  * appqos_client: update 3rd party dependencies
+
+-------------------------------------------------------------------
 Mon Oct 14 08:54:57 UTC 2024 - trenn@suse.de
 
 - Move to the new tag/version model, by using yy/mm in the version

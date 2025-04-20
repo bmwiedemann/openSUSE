@@ -5,5 +5,4 @@
 JSON (JavaScript Object Notation) is a format for serializing data based on the syntax for JavaScript data structures.
 
 dkjson is written in Lua without any dependencies, but when LPeg is available dkjson uses it to speed up decoding.</description>
-  <devel project="devel:languages:lua" package="lua-dkjson"/>
 </package>

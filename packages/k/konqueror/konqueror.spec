@@ -1,7 +1,7 @@
 #
 # spec file for package konqueror
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           konqueror
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: webenginepart/autotests/webengine_testutils.h is neither built nor installed in our package.
@@ -137,6 +137,7 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 %{_kf6_appstreamdir}/org.kde.konqueror.appdata.xml
 %{_kf6_bindir}/kfmclient
 %{_kf6_bindir}/konqueror
+%{_kf6_configdir}/konqautofiltersrc
 %{_kf6_configdir}/useragenttemplatesrc
 %{_kf6_configkcfgdir}/konqueror.kcfg
 %{_kf6_datadir}/kbookmark/
@@ -199,6 +200,7 @@ rm -r %{buildroot}%{_kf6_plugindir}/kwebkitpart
 %{_kf6_plugindir}/konqueror/kpartplugins/searchbarplugin.so
 %{_kf6_plugindir}/konqueror/sidebar/
 %{_kf6_plugindir}/konqueror_kget_browser_integration.so
+%{_kf6_plugindir}/temporarysavedir.so
 %{_kf6_plugindir}/uachangerplugin.so
 %{_kf6_plugindir}/webarchiverplugin.so
 %{_kf6_plugindir}/webenginepart/

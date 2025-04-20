@@ -2473,4 +2473,12 @@ New Features
     <comment>- Upgrade to release 9.20.7</comment>
     <requestid>1255588</requestid>
   </revision>
+  <revision rev="218" vrev="1">
+    <srcmd5>6905b272777718c3289027cc9e5ca1b6</srcmd5>
+    <version>9.20.8</version>
+    <time>1744985698</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.8</comment>
+    <requestid>1270284</requestid>
+  </revision>
 </revisionlist>

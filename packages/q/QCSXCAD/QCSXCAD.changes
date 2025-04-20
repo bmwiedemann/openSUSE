@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:30:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: glew-devel it is not used for build.
+
+-------------------------------------------------------------------
 Sun Dec 31 20:34:33 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.6.3

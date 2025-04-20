@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 17 08:37:49 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.0:
+  + Improve some parts of the library (see the reference manual for
+    changes).
+  + Experiment with new Encoding interfaces and classes, but the
+    code has been removed (a simpler approach is planned).
+  + Improve the documentation.
+  + Write more unit tests.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Dec  7 13:04:57 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.2.1:

@@ -41,6 +41,8 @@ License:        GPL-3.0-or-later AND (GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-o
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-wayland-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Client-Reset-mFrameCallbackTimedOut-when-showing-a-w.patch
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-platformsupport-private-devel
 BuildRequires:  cmake(Qt6Core) = %{real_version}

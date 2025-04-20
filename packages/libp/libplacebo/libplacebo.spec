@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
-%{?sle15_python_module_pythons}
 %define sover   349
+%if 0%{?suse_version} < 1600
+%define py_min_ver 11
+%endif
 Name:           libplacebo
 Version:        7.349.0
 Release:        0
@@ -35,10 +37,10 @@ BuildRequires:  gcc13-c++
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 %endif
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module glad2}
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
+BuildRequires:  python3%{?py_min_ver}-Jinja2
+BuildRequires:  python3%{?py_min_ver}-glad2
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(glfw3)
@@ -93,6 +95,9 @@ help understand and demonstrate the various options provided by %{name}.
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
+%if 0%{?suse_version} < 1600
+export PYTHON=%{_bindir}/python3.%{py_min_ver}
+%endif
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13
@@ -112,8 +117,7 @@ export CXX=g++-13
 %check
 %meson_test
 
-%post -n %{name}%{sover} -p /sbin/ldconfig
-%postun -n %{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
 %files -n %{name}%{sover}
 %doc README.md

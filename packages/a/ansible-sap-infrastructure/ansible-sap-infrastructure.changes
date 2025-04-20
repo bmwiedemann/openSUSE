@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Thu Apr 10 14:42:45 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.1.2
+  - Bugfixes
+    - collection - Bump vmware.vmware_rest to 4.5.0
+    - collection - Use amazon.aws.ec2_placement_group
+    - collection - implement changelogs/changelog.yaml
+    - sap_vm_provision - AWS tag pacemaker for fence agent stonith:external/ec2
+    - sap_vm_provision - update azure.azcollection minimum version requirement
+    - sap_vm_provision/sap_vm_temp_vip - Add dynamic group handling for provisioning
+    - sap_vm_verify - stub code comments and reorder
+
+-------------------------------------------------------------------
+Fri Jan 20 09:00:00 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.1.1
+  - Initial release

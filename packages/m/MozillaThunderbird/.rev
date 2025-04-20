@@ -5831,4 +5831,22 @@ I cannot test locally unfortunately.
     created in offline mode</comment>
     <requestid>1267257</requestid>
   </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>9ab4cf0ab1d87bf736190bd305e97758</srcmd5>
+    <version>128.9.2</version>
+    <time>1744828865</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird ESR 128.9.2
+  * Two-factor auth via text or email did not work with Office 365 using Oauth2
+  * IRC channel was not visible after restart
+  * Global indexing failed when processing email with invalid calendar data
+  MFSA 2025-27
+  * CVE-2025-3522 (bmo#1955372)
+    Leak of hashed Window credentials via crafted attachment URL
+  * CVE-2025-2830 (bmo#1956379)
+    Information Disclosure of /tmp directory listing
+  * CVE-2025-3523 (bmo#1958385)
+    User Interface (UI) Misrepresentation of attachment URL</comment>
+    <requestid>1269739</requestid>
+  </revision>
 </revisionlist>

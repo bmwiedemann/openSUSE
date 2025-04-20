@@ -18,7 +18,7 @@
 
 %define sover   3
 Name:           fluidsynth
-Version:        2.4.4
+Version:        2.4.5
 Release:        0
 Summary:        A Real-Time Software Synthesizer That Uses Soundfont(tm)
 License:        LGPL-2.1-or-later
@@ -102,8 +102,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %postun
 %systemd_user_postun %{name}.service
 
-%post -n libfluidsynth%{sover} -p /sbin/ldconfig
-%postun -n libfluidsynth%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfluidsynth%{sover}
 
 %files
 %license LICENSE

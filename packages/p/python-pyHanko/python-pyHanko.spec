@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://github.com/MatthiasValvekens/pyHanko
 Source:         https://github.com/MatthiasValvekens/pyHanko/archive/refs/tags/v%{version}.tar.gz#/pyhanko-%{version}.tar.gz
 BuildRequires:  %{python_module FontTools}
+BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module certomancer}
@@ -81,6 +82,6 @@ The lack of open-source CLI tooling to handle digitally signing and stamping PDF
 %files %{python_files}
 %python_alternative %{_bindir}/pyhanko
 %{python_sitelib}/pyhanko
-%{python_sitelib}/pyHanko-%{version}.dist-info
+%{python_sitelib}/pyhanko-%{version}.dist-info
 
 %changelog

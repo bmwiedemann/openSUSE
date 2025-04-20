@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 27 03:57:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+- Add BuildRequires on Pillow for the testsuite.
+
+-------------------------------------------------------------------
 Fri Feb 21 14:49:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.25.3

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Apr 16 06:17:16 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250415.2340bbf:
+  * udp: Propagate errors on listening and brand new sockets
+  * udp: Minor re-organisation of udp_sock_recverr()
+  * udp: Add udp_pktinfo() helper
+  * udp: Deal with errors as we go in udp_sock_fwd()
+  * udp: Pass socket & flow information direction to error handling functions
+  * udp: Be quieter about errors on UDP receive
+  * udp: Fix breakage of UDP error handling by PKTINFO support
+  * conf: Honour --dns-forward for local resolver even with --no-map-gw
+  * conf: Split add_dns_resolv() into separate IPv4 and IPv6 versions
+  * udp, udp_flow: Track our specific address on socket interfaces
+  * inany: Improve ASSERT message for bad socket family
+  * udp: Use PKTINFO cmsgs to get destination address for received datagrams
+  * tcp_splice: Don't clobber errno before checking for EAGAIN
+  * tcp_splice: Don't double count bytes read on EINTR
+  * conf: Add missing return in conf_nat(), fix --map-guest-addr none
+  * udp_flow: Save 8 bytes in struct udp_flow on 64-bit architectures
+  * udp_flow: Don't discard packets that arrive between bind() and connect()
+  * udp: Fold udp_splice_prepare and udp_splice_send into udp_sock_to_sock
+  * udp: Rework udp_listen_sock_data() into udp_sock_fwd()
+  * udp_flow: Take pif and port as explicit parameters to udp_flow_from_sock()
+  * udp: Move UDP_MAX_FRAMES to udp.c
+  * udp: Merge vhost-user and "buf" listening socket paths
+  * udp: Split spliced forwarding path from udp_buf_reply_sock_data()
+  * udp: Parameterize number of datagrams handled by udp_*_reply_sock_data()
+  * udp: Don't bother to batch datagrams from "listening" socket
+  * udp: Polish udp_vu_sock_info() and remove from vu specific code
+  * udp: Make udp_sock_recv() take max number of frames as a parameter
+  * udp: Use connect()ed sockets for initiating side
+  * udp: support traceroute in direction tap-socket
+  * passt-repair: Ensure that read buffer is NULL-terminated
+  * udp: Correct some seccomp filter annotations
+  * udp: Simplify updates to UDP flow timestamp
+  * udp: Remove redundant udp_at_sidx() call in udp_tap_handler()
+  * passt-repair: Correct off-by-one error verifying name
+  * migrate, tcp: bind() migrated sockets in repair mode
+  * platform requirements: Add test for address conflicts with TCP_REPAIR
+  * platform requirements: Add attributes to die() function
+  * platform requirements: Fix clang-tidy warning
+  * udp: Improve name of UDP related ICMP sending functions
+  * udp: Don't attempt to forward ICMP socket errors to other sockets
+  * pasta, passt-repair: Support multiple events per read() in inotify handlers
+  * udp: correct source address for ICMP messages
+  * build: normalize arm targets
+  * udp: Add helper function for creating connected UDP socket
+  * udp: Always hash socket facing flowsides
+  * udp: Better handling of failure to forward from reply socket
+  * udp: Share more logic between vu and non-vu reply socket paths
+  * udp_vu: Factor things out of udp_vu_reply_sock_data() loop
+  * udp: Simplify checking of epoll event bits
+  * udp: Common invocation of udp_sock_errs() for vhost-user and "buf" paths
+  * packet: Upgrade severity of most packet errors
+  * packet: ASSERT on signs of pool corruption
+  * util: Add abort_with_msg() and ASSERT_WITH_MSG() helpers
+  * packet: Rework packet_get() versus packet_get_try()
+  * packet: Move checks against PACKET_MAX_LEN to packet_check_range()
+  * packet: Avoid integer overflows in packet_get_do()
+  * packet: Correct type of PACKET_MAX_LEN
+  * tap: Clarify calculation of TAP_MSGS
+  * tap: Make size of pool_tap[46] purely a tuning parameter
+  * packet: More cautious checks to avoid pointer arithmetic UB
+  * vu_common: Tighten vu_packet_check_range()
+
+-------------------------------------------------------------------
 Thu Mar 20 14:38:07 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250320.32f6212:

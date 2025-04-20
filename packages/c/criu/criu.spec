@@ -68,6 +68,7 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 BuildRequires:  nftables-devel
+BuildRequires:  pkgconfig(libselinux)
 %endif
 %if 0%{?use_asciidoctor}
 BuildRequires:  rubygem(asciidoctor)

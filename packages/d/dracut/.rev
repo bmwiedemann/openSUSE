@@ -2474,4 +2474,16 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>1269213</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>06a527b271c2217643f2c7994b94b57f</srcmd5>
+    <version>059+suse.725.g1df2cbe1</version>
+    <time>1745134487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 059+suse.725.g1df2cbe1:
+  * fix(dracut-init): assign real path to srcmods (bsc#1241114)
+
+- Update to version 059+suse.723.g780a5518:
+  * fix(dracut.spec): require jq for nvmf (bsc#1239603)</comment>
+    <requestid>1270158</requestid>
+  </revision>
 </revisionlist>

@@ -149,7 +149,7 @@ diff --git a/gdb/python/lib/gdb/command/rpm-suggestions.py b/gdb/python/lib/gdb/
 new file mode 100644
 --- /dev/null
 +++ b/gdb/python/lib/gdb/command/rpm-suggestions.py
-@@ -0,0 +1,552 @@
+@@ -0,0 +1,525 @@
 +# Copyright 2023 Free Software Foundation, Inc.
 +
 +# This program is free software; you can redistribute it and/or modify
@@ -287,17 +287,10 @@ new file mode 100644
 +
 +    # Return True if rpm-suggestion is disabled for any reason.
 +    def rpm_suggestion_is_disabled():
-+        global param_build_id_verbose
-+
 +        # If /usr/lib/ is not being used to find debug information
 +        # then there's no point offering any RPMs as GDB would not
 +        # find the newly installed content.
 +        if not using_suitable_debug_file_directory():
-+            return True
-+
-+        # For backwards compatibility, if build-id-verbose is set to
-+        # zero, then disable RPM suggestion.
-+        if param_build_id_verbose.value == 0:
 +            return True
 +
 +        # Is 'rpm-suggestion enabled' set to 'off'?
@@ -682,26 +675,6 @@ new file mode 100644
 +
 +# Create the 'info rpm-suggestions' commands.
 +rpm_suggestion_info()
-+
-+# Create the 'build-id-verbose' parameter.  This is implemented as an
-+# integer for backward compatibility reasons.  It would be nice to
-+# convert this to a boolean, but it's not clear if that will break
-+# existing users uses of this flag.
-+
-+class build_id_verbose(gdb.Parameter):
-+    """
-+    Level 0 disable printing the missing debug filesname,
-+    Level 1 (default) enables printing the missing debug filenames,
-+    """
-+
-+    set_doc = "Set debugging level of the build-id locator."
-+    show_doc = "Show debugging level of the build-id locator."
-+
-+    def __init__(self):
-+        super().__init__("build-id-verbose", gdb.COMMAND_NONE, gdb.PARAM_ZINTEGER)
-+        self.value = 1
-+
-+param_build_id_verbose = build_id_verbose()
 diff --git a/gdb/testsuite/gdb.base/gdbinit-history.exp b/gdb/testsuite/gdb.base/gdbinit-history.exp
 --- a/gdb/testsuite/gdb.base/gdbinit-history.exp
 +++ b/gdb/testsuite/gdb.base/gdbinit-history.exp
@@ -711,7 +684,7 @@ diff --git a/gdb/testsuite/gdb.base/gdbinit-history.exp b/gdb/testsuite/gdb.base
  
 -    set common_history [list "set height 0" "set width 0"]
 +    set common_history [list "set height 0" "set width 0" \
-+			    "set build-id-verbose 0"]
++			    "set rpm-suggestion enabled off"]
  
      set test_dir [standard_output_file history_test]
      remote_exec host "mkdir -p $test_dir"
@@ -760,7 +733,7 @@ diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
  		   {-iex "set height 0"} \
 -		   {-iex "set width 0"}]]
 +		   {-iex "set width 0"} \
-+		   {-iex "set build-id-verbose 0"}]]
++		   {-iex "set rpm-suggestion enabled off"}]]
  
      # If DEBUGINFOD_URLS is set, gdb will try to download sources and
      # debug info for f.i. system libraries.  Prevent this.
@@ -770,7 +743,7 @@ diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
  
 +    # Turn off the missing debug info messages as the testsuite does
 +    # not expect them.
-+    send_gdb "set build-id-verbose 0\n"
++    send_gdb "set rpm-suggestion enabled off\n"
 +    gdb_expect 10 {
 +	-re "$gdb_prompt $" {
 +	    verbose "Disabled the missing debug info messages." 2
@@ -792,9 +765,9 @@ diff --git a/gdb/testsuite/lib/mi-support.exp b/gdb/testsuite/lib/mi-support.exp
      }
 +    # Turn off the missing debug info messages as the testsuite does
 +    # not expect them.
-+    send_gdb "190-gdb-set build-id-verbose 0\n"
++    send_gdb "190-gdb-set rpm-suggestion enabled off\n"
 +    gdb_expect 10 {
-+	-re ".*190-gdb-set build-id-verbose 0\r\n190\\\^done\r\n$mi_gdb_prompt$" {
++	-re ".*190-gdb-set rpm-suggestion enabled off\r\n190\\\^done\r\n$mi_gdb_prompt$" {
 +	    verbose "Disabled the missing debug info messages." 2
 +	}
 +	timeout {

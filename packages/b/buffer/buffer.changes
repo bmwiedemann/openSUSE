@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 12:00:37 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15
+  + buffer-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Jan 22 15:22:40 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup spec file:

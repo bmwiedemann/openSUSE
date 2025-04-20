@@ -73,4 +73,15 @@
 - created package using py2pack</comment>
     <requestid>1219724</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a7e9495d3b2774efefe2e62bab40ed3c</srcmd5>
+    <version>1.8.3</version>
+    <time>1744828716</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264849</requestid>
+  </revision>
 </revisionlist>

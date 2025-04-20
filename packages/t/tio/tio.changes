@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Apr 13 12:15:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.9
+  * Fix parsing of timestamp options.
+  * Update plaintext man page.
+  * Add character mapping examples.
+  * Fix pattern matching memory corruption.
+
+-------------------------------------------------------------------
 Sat Nov 30 11:26:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.8

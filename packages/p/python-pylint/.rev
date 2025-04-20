@@ -740,4 +740,41 @@
     <comment></comment>
     <requestid>1203869</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1fafb974bd94796cba480f2bf729fd8c</srcmd5>
+    <version>3.3.6</version>
+    <time>1744828755</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.6:
+  * Fix a false positive for used-before-assignment when an inner function's
+    return type * annotation is a class defined at module scope.
+  * Fix false positives for use-implicit-booleaness-not-comparison,
+    use-implicit-booleaness-not-comparison-to-string and
+    use-implicit-booleaness-not-comparison-to-zero when chained comparisons
+    are checked.
+  * Fix a false positive for invalid-getnewargs-ex-returned when the tuple or
+    dict has been assigned to a name.
+  * Remove getopt and optparse from the list of deprecated modules.
+  * Fixed conditional import x.y causing false positive
+    possibly-used-before-assignment.
+  * Fix a crash when something besides a class is found in an except handler.
+  * Fixed raising invalid-name when using camelCase for private methods with
+    two leading underscores.
+  * Fixes &quot;skipped files&quot; count calculation; the previous method was
+    displaying an arbitrary number.
+  * Fixes a crash that occurred when pylint was run in a container on a host
+    with cgroupsv2 and restrictions on CPU usage.
+  * Relaxed the requirements for isort so pylint can benefit from isort 6.
+  * Fix false positives for undefined-variable for classes using Python 3.12
+    generic type syntax.
+  * Fix a false positive for use-implicit-booleaness-not-len. No lint should
+    be emitted for generators (len is not defined for generators).
+  * Fix Unable to import 'collections.abc' (import-error) on Python 3.13.1.
+  * Fix a false positive for potential-index-error when an indexed iterable
+    contains a starred element that evaluates to more than one item.
+  * Fixes the issue with --source-root option not working when the source
+    files are in a subdirectory of the source root (e.g. when using a /src
+    layout).</comment>
+    <requestid>1267802</requestid>
+  </revision>
 </revisionlist>

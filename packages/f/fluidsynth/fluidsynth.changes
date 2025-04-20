@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 15 10:43:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.5
+  * Fix SDL3 intercepting signals, causing CTRL+C to not quit
+    fluidsynth.
+  * Fix a few flaws in the AWE32 NRPN implementation.
+  * A regression introduced in 2.4.4 broke drum preset selection
+    for XG MIDIs.
+  * Fix fluidsynth's systemd user daemon being unable to create
+    lock file on some distros.
+  * Fix fluidsynth ignoring initialFilterFc generator limits.
+  * A regression introduced in 2.3.6 prevented SF2 NRPN messages
+    from being processed correctly.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Sun Mar 16 21:27:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.4

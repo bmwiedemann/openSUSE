@@ -2381,4 +2381,13 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1254871</requestid>
   </revision>
+  <revision rev="148" vrev="2">
+    <srcmd5>0394809f3bddb6d58e02c18bc964132a</srcmd5>
+    <version>20</version>
+    <time>1744985702</time>
+    <user>anag_factory</user>
+    <comment>- Enable LLDB Python bindings on Leap 15.6 and newer.
+</comment>
+    <requestid>1270295</requestid>
+  </revision>
 </revisionlist>

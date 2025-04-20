@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:34:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 3.21.0:
+  * GTK added standalone main window
+  * wasapi: Add WASAPI Audio module
+  * add contact commands
+  * many bug fixes and functionality improvements
+- fixes build, and build with cmake 4 (boo#1239788)
+
+-------------------------------------------------------------------
 Fri Oct 25 11:49:51 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 
 - Do not hardcode the openssl version [bsc#1219879]

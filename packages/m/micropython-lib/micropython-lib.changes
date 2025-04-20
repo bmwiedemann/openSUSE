@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr 16 12:19:29 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Update to 1.25.0
+  * inspect: Implement iscoroutinefunction and iscoroutine.
+  * inspect: Add basic unit tests.
+  * inspect: Fix isgenerator logic.
+  * usb-device-cdc: Optimise writing small data so it doesn't require alloc.
+  * aiohttp: Allow headers to be passed to a WebSocketClient.
+  * aiohttp: Fix header case sensitivity.
+  * requests: Use the host in the redirect url, not the one in headers.
+  * unix-ffi/machine: Use libc if librt is not present.
+  * unix-ffi/json: Accept both str and bytes as arg for json.loads().
+  * lora-sx126x: Fix invert_iq_rx / invert_iq_tx behaviour.
+  * nrf24l10: Bump minor version.
+  * nrf24l01: Optimize status reading.
+  * nrf24l01: Properly handle timeout.
+  * nrf24l01: Increase startup delay.
+  * umqtt.simple: Restore legacy ssl/ssl_params arguments.
+  * mip: Make mip.install() skip /rom*/lib directories.
+  * github/workflows: Update actions/upload-artifact to v4.
+  * mip: Allow relative URLs in package.json.
+  * requests: Bump version to 0.10.1.
+  * requests: Do not leak header modifications when calling request.
+  * unittest: Always use "raise" with an argument.
+  * unittest: Allow SkipTest to work within a subTest.
+  * tools/ci.sh: Enable unittest tests.
+  * aioespnow,webrepl: Use recommended network.WLAN.IF_[AP|STA] constants.
+  * umqtt.simple: Add optional socket timeout to connect method.
+
+-------------------------------------------------------------------
 Fri Feb  7 11:48:45 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Update to 1.24.1

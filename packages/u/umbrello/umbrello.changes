@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Make text in the welcome window readable when using a dark theme
+  * In xml dtd fix error "xmllint: validity error : Redefinition of element"
+  * Update dtd's from test files in models
+  * tools/xmllint2dtd: catch additional issues
+  * tools/lint-xmi-files: new script for validation check of existing xmi files
+  * tools/xmllint2dtd: moved from doc/xml
+  * Fix more crashes when no diagram is available
+  * Fix crash bug on pressing 'Fit' or '100%' when no diagram is available (kde#502347)
+  * Use KDE version release schema as umbrello version
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Re-add developer info to appdata
+  * Fix build with cmake 4
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

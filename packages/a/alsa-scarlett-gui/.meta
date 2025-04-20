@@ -1,5 +1,6 @@
 <package name="alsa-scarlett-gui" project="openSUSE:Factory">
   <title></title>
   <description>A Gtk4 GUI for the ALSA controls presented by the Linux kernel Focusrite Scarlett2 USB Protocol Mixer Driver.</description>
+  <devel project="multimedia:apps" package="alsa-scarlett-gui"/>
   <url>https://github.com/geoffreybennett/alsa-scarlett-gui</url>
 </package>

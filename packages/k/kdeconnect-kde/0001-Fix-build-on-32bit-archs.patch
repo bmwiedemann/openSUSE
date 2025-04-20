@@ -1,0 +1,25 @@
+From 08da25dd36f2ae868862d4a2b40cc5d0db5ccb18 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Mon, 14 Apr 2025 09:46:10 +0200
+Subject: [PATCH] Fix build on 32bit archs
+
+---
+ core/backends/bluetooth/multiplexchannel.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/backends/bluetooth/multiplexchannel.cpp b/core/backends/bluetooth/multiplexchannel.cpp
+index 0accf06..6c7cca3 100644
+--- a/core/backends/bluetooth/multiplexchannel.cpp
++++ b/core/backends/bluetooth/multiplexchannel.cpp
+@@ -52,7 +52,7 @@ qint64 MultiplexChannel::bytesToWrite() const
+ qint64 MultiplexChannel::readData(char *data, qint64 maxlen)
+ {
+     if (maxlen <= state->read_buffer.size() || state->read_buffer.size() > 0) {
+-        const auto num_to_read = std::min(maxlen, state->read_buffer.size());
++        const auto num_to_read = std::min<qint64>(maxlen, state->read_buffer.size());
+         std::memcpy(data, state->read_buffer.data(), num_to_read);
+         state->read_buffer.remove(0, num_to_read);
+         Q_EMIT state->readAvailable();
+-- 
+2.49.0
+

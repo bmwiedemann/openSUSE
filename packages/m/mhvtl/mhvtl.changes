@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 17 18:05:54 UTC 2025 - lduncan@suse.com
+
+- Update to version 1.72_release+0.70719883aae2:
+  * mhvtl.spec: Bump version to 1.7-2
+  * Logical Block Protection: Fix CRC32C BE/LE flip in block read
+  * mhvtl.ko: Bump kernel version to 0.18.32 / 2025-02-12
+  * Kernel config: fix error in scanning for scsi_host arg
+  * Kernel compatability: fix issue with struct bus_type
+  * mhvtl.ko: Clean up kernel module logging pr_ strings to remove duplicate information
+  * mhvtl.ko: Bump kernel version now support for kernel v6.14 incorporated
+  * mhvtl.ko: remove 'config.h' during make clean
+  * Fix naming and .sdev_configure signature for kernel v6.14
+  * Remove reference to Nutanix
+  * Revert "fix compile warnings on 32bit re ambiguity of my_id size"
+  * Fix bug in make_vtl_media that prevents detection of WORM media
+  * fix compile warnings on 32bit re ambiguity of my_id size
+
+-------------------------------------------------------------------
 Sat Oct 05 14:34:28 UTC 2024 - lduncan@suse.com
 
 - Update to version 1.71_release+26.3f767890cdb2:

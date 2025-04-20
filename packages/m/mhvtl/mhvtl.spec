@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.71_release+26.3f767890cdb2
+Version:        1.72_release+0.70719883aae2
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -78,7 +78,7 @@ module, plus a character device "back end" to pass the SCSI commands
 through to user-space daemons.
 
 %prep
-%setup -qn %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 [ -z "$SOURCE_DATE_EPOCH" ] || export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH

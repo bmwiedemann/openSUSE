@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:54:03 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.14:
+  * Disable and delete alsalisp code
+  * include: prefer alsa/asoundlib.h for apps, dependency cleanups
+  * seq: Define new events for UMP EP/FB change notifications
+  * control: remap improvements
+  * pcm: tstamp mode fixes
+  * rawmidi: ump fixes and tied device flag extensions
+  * seq: fix UMP handling and other minot fixes
+  * ucm: add sys-card substitution, etc
+  * test/playmidi1: fix compilation caused by conflict between midifile.h and ump_msg.h
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.13_v1.2.14#alsa-lib
+- Drop obsoleted patches:
+  0001-src-Versions.in.in-Update-_tempo_base-name.patch
+  0002-configure-Make-sequencer-dependent-on-rawmidi.patch
+  0003-seq-include-UMP-headers.patch
+
+-------------------------------------------------------------------
 Sun Nov 24 08:56:17 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Fix header inclusions for implicit dependnecies (bsc#1233682)

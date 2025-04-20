@@ -1,7 +1,7 @@
 #
 # spec file for package libplacebo5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%{?sle15_python_module_pythons}
+
 %define libname libplacebo
 %define sover   264
+%if 0%{?suse_version} < 1600
+%define py_min_ver 11
+%endif
 Name:           libplacebo5
 Version:        5.264.1
 Release:        0
@@ -32,8 +35,8 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 0.63.0
 BuildRequires:  pkgconfig
-BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module glad2}
+BuildRequires:  python3%{?py_min_ver}-Jinja2
+BuildRequires:  python3%{?py_min_ver}-glad2
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(glfw3)
@@ -89,6 +92,9 @@ help understand and demonstrate the various options provided by %{libname}.
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
+%if 0%{?suse_version} < 1600
+export PYTHON=%{_bindir}/python3.%{py_min_ver}
+%endif
 %meson -Dglslang=disabled -Dd3d11=disabled -Dtests=true \
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} > 150400
        -Ddemos=true \
@@ -104,8 +110,7 @@ cp %{SOURCE1} ./demos/3rdparty/nuklear/
 %check
 %meson_test
 
-%post -n %{libname}%{sover} -p /sbin/ldconfig
-%postun -n %{libname}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}%{sover}
 
 %files -n %{libname}%{sover}
 %doc README.md

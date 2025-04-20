@@ -368,4 +368,15 @@ Library should now retry on the suddenly-common TimedOutError.
     <comment></comment>
     <requestid>1253928</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>980f57634c73b1b99275f9bfda972fd0</srcmd5>
+    <version>1.39.0</version>
+    <time>1744828722</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264852</requestid>
+  </revision>
 </revisionlist>

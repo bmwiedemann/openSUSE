@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix possible violation of weak ordering compare function (kde#500030)
+  * Add KCrash to required packages
+  * Enable KCrash for kjournald browser
+  * Appdata: add display size
+  * Update year number in overview
+  * Do not display ...-coredump@ special units
+  * Explicitly name parameter to avoid warning
+  * Minor cleanups in test case
+  * Restructure filter generation
+  * Refactor filter expressions for better clause overview
+  * Print all sort elements in filter debug
+  * Provide UTC hover information for time to make it understandible
+  * Fix padding and alignment of clear button in filter list
+  * Introduce filter configuration gadget
+  * Port all library QML elements to QML_ELEMENT type registration
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

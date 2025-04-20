@@ -41,4 +41,13 @@
   * Skipped non-200 HTTP responses for Anubis by @dogancanbakir in #1541 (forwarded request 1253676 from dheidler)</comment>
     <requestid>1253766</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2a2ad71fb09b2269d79ecab31b22cf82</srcmd5>
+    <version>2.7.0</version>
+    <time>1744828807</time>
+    <user>anag_factory</user>
+    <comment>Add fix_cve_2024_0406.patch to patch github.com/mholt/archive dependency
+for bsc#1241187 / CVE-2024-0406 / GHSA-rhh4-rh7c-7r5v (forwarded request 1269571 from dheidler)</comment>
+    <requestid>1269655</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package libgme
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define soname 0
 Name:           libgme
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Collection of video game music file emulators
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            https://bitbucket.org/mpyne/game-music-emu/wiki/Home
-Source0:        https://bitbucket.org/mpyne/game-music-emu/downloads/game-music-emu-%{version}.tar.xz
+URL:            https://github.com/libgme/game-music-emu
+Source0:        https://github.com/libgme/game-music-emu/releases/download/%{version}/%{name}-%{version}-src.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -70,18 +70,17 @@ The developmental files that must be installed in order to compile applications
 which use libgme.
 
 %prep
-%setup -q -n game-music-emu-%{version}
+%autosetup -p1
 sed -i 's/\r$//' changes.txt design.txt gme.txt license.txt readme.txt
 
 %build
-%cmake
+%cmake -DGME_BUILD_STATIC=OFF
 %make_build
 
 %install
 %cmake_install
 
-%post -n libgme%{soname} -p /sbin/ldconfig
-%postun -n libgme%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgme%{soname}
 
 %files -n libgme%{soname}
 %license license.txt

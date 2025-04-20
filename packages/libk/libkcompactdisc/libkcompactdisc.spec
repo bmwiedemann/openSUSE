@@ -1,7 +1,7 @@
 #
 # spec file for package libkcompactdisc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 %endif
 %bcond_without released
 Name:           libkcompactdisc%{?pkg_suffix}
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later

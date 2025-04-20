@@ -1,5 +1,6 @@
 Author: Bernhard M. Wiedemann <bwiedemann suse de>
 Date: 2018-08-30
+Updated: 2025-04-14
 
 https://bugzilla.opensuse.org/show_bug.cgi?id=1062303
 
@@ -12,10 +13,9 @@ in /usr/sbin/amazon-ecs-init differs in ELF section .gopclntab
 
 See https://reproducible-builds.org/ for why this matters.
 
-Index: amazon-ecs-init-1.18.0-1/scripts/gobuild.sh
-===================================================================
---- amazon-ecs-init-1.18.0-1.orig/scripts/gobuild.sh
-+++ amazon-ecs-init-1.18.0-1/scripts/gobuild.sh
+diff -Nru amazon-ecs-init-1.64.0-1.orig/scripts/gobuild.sh amazon-ecs-init-1.64.0-1/scripts/gobuild.sh
+--- amazon-ecs-init-1.64.0-1.orig/scripts/gobuild.sh	2022-09-14 21:39:38.000000000 +0200
++++ amazon-ecs-init-1.64.0-1/scripts/gobuild.sh	2025-04-14 10:42:42.629494434 +0200
 @@ -15,7 +15,7 @@
  set -x
  set -e
@@ -24,4 +24,4 @@ Index: amazon-ecs-init-1.18.0-1/scripts/gobuild.sh
 +export BUILDDIR="$TOPWD/build"
  export GOPATH="${TOPWD}/ecs-init/:${BUILDDIR}"
  export SRCPATH="${BUILDDIR}/src/github.com/aws/amazon-ecs-init"
- 
+ export GO111MODULE="auto"

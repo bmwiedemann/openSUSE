@@ -1,7 +1,7 @@
 #
 # spec file for package kdebugsettings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdebugsettings
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later

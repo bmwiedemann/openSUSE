@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Add option for obeying file info regarding continuous mode (kde#497715)
+  * Pgp signatures in pdf files (kde#481266)
+  * Signatures: Don't do too small background images (kde#499746)
+  * Fix apparent hang in files with lots of entries in a choice field (kde#498729)
+  * Watch the QEvent::ApplicationPaletteChange in the proper object (kde#498441)
+  * Fix scroll down/up at the last/first page in single page, non-continuous mode (kde#498038)
+  * Add Option to specify custom default zoom level (kde#491545)
+  * Use automatic font size picking for new signature annotations (kde#443403)
+  * Change default scroll overlap to 10% (kde#476759)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

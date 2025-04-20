@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:18:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Require python3-PyQt6 in firewall-applet, since that's preferred
+  over PyQt5.
+
+-------------------------------------------------------------------
 Wed Jan 22 15:57:29 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

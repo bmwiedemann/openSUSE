@@ -1077,4 +1077,13 @@
     <comment></comment>
     <requestid>1266886</requestid>
   </revision>
+  <revision rev="125" vrev="9">
+    <srcmd5>04b30bbef03d883aa81d2c106c5939f4</srcmd5>
+    <version>20241218</version>
+    <time>1744898842</time>
+    <user>anag_factory</user>
+    <comment>- Do not force-require chrony, but rather ntp-daemon and Suggest
+  chrony as the default we want (boo#1233542).</comment>
+    <requestid>1270252</requestid>
+  </revision>
 </revisionlist>

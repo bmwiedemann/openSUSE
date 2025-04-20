@@ -1,7 +1,7 @@
 #
 # spec file for package azure-cli-telemetry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ License:        MIT
 Group:          System/Management
 URL:            https://github.com/Azure/azure-cli
 Source:         https://files.pythonhosted.org/packages/source/a/azure-cli-telemetry/azure-cli-telemetry-%{version}.tar.gz
-Patch:          act_relax-portalocker.patch
+Patch0:         act_relax-portalocker.patch
 BuildRequires:  %{pythons}-azure-nspkg >= 3.0.0
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools

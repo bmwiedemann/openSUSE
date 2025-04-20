@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 17 06:58:56 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.37.0:
+  * fix: use docker image instead #1930
+  * chore(deps): update dependency @ast-grep/napi to v0.36.3 3dca58c
+  * fix: update crate a88a073
+  * perf: more efficient node ancestor calculation a1ed329
+
+-------------------------------------------------------------------
 Mon Apr 14 08:29:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.36.3:

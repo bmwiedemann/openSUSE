@@ -1,7 +1,7 @@
 #
 # spec file for package python-backports.entry_points_selectable
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,6 @@ fi
 %{python_sitelib}/backports/entry_points_selectable.py*
 %pycache_only %dir %{python_sitelib}/backports/__pycache__
 %pycache_only %{python_sitelib}/backports/__pycache__/*
-%{python_sitelib}/backports.entry_points_selectable-%{version}*-info
+%{python_sitelib}/backports_entry_points_selectable-%{version}.dist-info
 
 %changelog

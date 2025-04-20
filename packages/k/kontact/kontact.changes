@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Change KDEPIM_DEV_VERSION
+  * use KONTACT_RELEASE_VERSION_DATE
+  * Add xml/yaml linting
+  * Next stable version will be store in 25.04 sub folder
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Remove unused forward declaration
+  * Stripping .desktop suffix from legacy AppStream ID
+  * Update org.kde.kontact.appdata.xml
+  * Adding  Kevin Krammer as adopter
+  * Remove #if unnecessary now
+  * Update org.kde.kontact.appdata.xml
+  * Added new supporter
+  * Prepare to use stable/unstable url
+  * Added supporter Matthew Lamont
+  * Use correct url now
+  * Add verify action
+  * Don't use kf6 master
+  * Use org.kde.kalendarac
+  * Add icon for windows
+  * Add appx build
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

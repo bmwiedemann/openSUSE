@@ -1,0 +1,15 @@
+Index: src/benzene.c
+===================================================================
+--- src.orig/benzene.c
++++ src/benzene.c
+@@ -238,7 +238,9 @@ int jump[MAXNV]; /* How many edges are B
+ int jumpname[MAXNV]; /* What is the name of the vertex at the end of that edge ? */
+ 
+ 
+-static int canon();
++static int 
++canon(int colour_prev[], EDGE *can_numberings[][MAXE], 
++      int *num_can_numberings, int *num_can_numberings_or_pres);
+ 
+ 
+ static int markvalue_v = 30000;

@@ -113,4 +113,15 @@
 - add no-2to3.patch for better compatibility with newer setuptools</comment>
     <requestid>1141948</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>82d22deb9f6ff4788032720455451319</srcmd5>
+    <version>2.0.0</version>
+    <time>1744828711</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264844</requestid>
+  </revision>
 </revisionlist>

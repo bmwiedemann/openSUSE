@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Apr 14 18:00:22 UTC 2025 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 6.14.0
+  - xfs_scrub_all: localize the strings in the program
+  - xfs_protofile: add messages to localization catalog
+  - Makefile: inject package name/version/bugreport into pot file
+  - xfs_scrub_all: rename source code to .py.in
+  - xfs_protofile: rename source code to .py.in
+  - xfs_repair: handling a block with bad crc, bad uuid, and bad magic number needs fixing
+  - xfs_repair: fix stupid argument error in verify_inode_chunk
+  - xfs_repair: fix infinite loop in longform_dir2_entry_check*
+  - xfs_repair: fix crash in reset_rt_metadir_inodes
+  - xfs_repair: don't recreate /quota metadir if there are no quota inodes
+  - xfs_repair: fix wording of error message about leftover CoW blocks on the rt device
+  - xfs_io: Add cachestat syscall support
+  - xfs_io: Add RWF_DONTCACHE support to preadv2
+  - xfs_io: Add RWF_DONTCACHE support to pwritev2
+  - xfs_io: Add support for preadv2
+  - make: remove the .extradep file in libxfs on "make clean"
+  - xfs_{admin,repair},man5: tell the user to mount with nouuid for snapshots
+  - xfsprogs: Fix mismatched return type of filesize()
+  - xfs_io: don't fail FS_IOC_FSGETXATTR on filesystems that lack support
+  - configure: additionally get icu-uc from pkg-config
+  - xfs_scrub: use the display mountpoint for reporting file corruptions
+  - xfs_scrub: don't warn about zero width joiner control characters
+  - xfs_scrub: fix buffer overflow in string_escape
+  - xfs_db: add command to copy directory trees out of filesystems
+  - xfs_db: make listdir more generally useful
+  - xfs_db: use an empty transaction to try to prevent livelocks in path_navigate
+  - xfs_db: pass const pointers when we're not modifying them
+  - mkfs: enable reflink on the realtime device
+  - mkfs: validate CoW extent size hint when rtinherit is set
+  - xfs_logprint: report realtime CUIs
+  - xfs_repair: validate CoW extent size hint on rtinherit directories
+  - xfs_repair: allow realtime files to have the reflink flag set
+  - xfs_repair: rebuild the realtime refcount btree
+  - xfs_repair: reject unwritten shared extents
+  - xfs_repair: check existing realtime refcountbt entries against observed refcounts
+  - xfs_repair: compute refcount data for the realtime groups
+  - xfs_repair: find and mark the rtrefcountbt inode
+  - xfs_repair: use realtime refcount btree data to check block types
+  - xfs_repair: allow CoW staging extents in the realtime rmap records
+  - xfs_spaceman: report health of the realtime refcount btree
+  - xfs_db: add rtrefcount reservations to the rgresv command
+  - xfs_db: copy the realtime refcount btree
+  - xfs_db: support the realtime refcountbt
+  - xfs_db: display the realtime refcount btree contents
+  - man: document userspace API changes due to rt reflink
+  - mkfs: create the realtime rmap inode
+  - xfs_logprint: report realtime RUIs
+  - xfs_repair: reserve per-AG space while rebuilding rt metadata
+  - xfs_repair: rebuild the bmap btree for realtime files
+  - xfs_repair: check for global free space concerns with default btree slack levels
+  - xfs_repair: rebuild the realtime rmap btree
+  - xfs_repair: always check realtime file mappings against incore info
+  - xfs_repair: check existing realtime rmapbt entries against observed rmaps
+  - xfs_repair: find and mark the rtrmapbt inodes
+  - xfs_repair: refactor realtime inode check
+  - xfs_repair: create a new set of incore rmap information for rt groups
+  - xfs_repair: use realtime rmap btree data to check block types
+  - xfs_repair: flag suspect long-format btree blocks
+  - xfs_repair: tidy up rmap_diffkeys
+  - xfs_spaceman: report health status of the realtime rmap btree
+  - xfs_db: add an rgresv command
+  - xfs_db: make fsmap query the realtime reverse mapping tree
+  - xfs_db: copy the realtime rmap btree
+  - xfs_db: support the realtime rmapbt
+  - xfs_db: display the realtime rmap btree contents
+  - xfs_db: don't abort when bmapping on a non-extents/bmbt fork
+  - xfs_db: compute average btree height
+  - man: document userspace API changes due to rt rmap
+  - xfs_scrub: try harder to fill the bulkstat array with bulkstat()
+  - xfs_scrub: ignore freed inodes when single-stepping during phase 3
+  - xfs_scrub: hoist the phase3 bulkstat single stepping code
+  - xfs_scrub: don't blow away new inodes in bulkstat_single_step
+  - xfs_scrub: return early from bulkstat_for_inumbers if no bulkstat data
+  - xfs_scrub: don't complain if bulkstat fails
+  - xfs_scrub: don't
+  - xfs_scrub: don't double-scan inodes during phase 3
+  - xfs_scrub: actually iterate all the bulkstat records
+  - xfs_scrub: selectively re-run bulkstat after re-running inumbers
+  - xfs_scrub: remove flags argument from scrub_scan_all_inodes
+  - xfs_scrub: call bulkstat directly if we're only scanning user files
+  - xfs_scrub: don't report data loss in unlinked inodes twice
+  - man: document new XFS_BULK_IREQ_METADIR flag to bulkstat
+  - xfs_db: obfuscate rt superblock label when metadumping
+  - mkfs,xfs_repair: don't pass a daddr as the flags argument
+
+- drop mkfs-fix-filesize-function-compilation-error-on-32-b.patch
+  The fix is now included in the v6.14.0 release.
+
+-------------------------------------------------------------------
 Sat Mar  1 10:03:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile: remove implicit %defattr, trim -n arguments

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 16 14:49:23 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 1.27.5
+  * https://nginx.org/en/CHANGES
+  * Changed the maximum size limit for SSL sessions cached in shared
+    memory has been raised to 8192.
+  * Fixed in the "grpc_ssl_password_file", "proxy_ssl_password_file",
+    and "uwsgi_ssl_password_file" directives when loading SSL certificates
+    and encrypted keys from variables; the bug had appeared in 1.23.1.
+  * Fixed in the $ssl_curve and $ssl_curves variables when using pluggable
+    curves in OpenSSL.
+
+-------------------------------------------------------------------
 Thu Apr  3 23:21:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Added nginx-man.patch to enable manpage 8 (boo#1240675).

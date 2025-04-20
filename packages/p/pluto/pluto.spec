@@ -17,7 +17,7 @@
 
 
 Name:           pluto
-Version:        5.21.3
+Version:        5.21.4
 Release:        0
 Summary:        A cli tool to help discover deprecated apiVersions in Kubernetes
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         pluto-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
+BuildRequires:  go >= 1.23.1
 BuildRequires:  zsh
 
 %description

@@ -38,7 +38,6 @@ BuildRequires:  cmake(vtk) >= 9.3
 BuildRequires:  pkgconfig(assimp)
 BuildRequires:  pkgconfig(draco)
 BuildRequires:  pkgconfig(eigen3)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)

@@ -80,4 +80,15 @@
 - Drop patch 406-google-cloud-speech.patch, included upstream.</comment>
     <requestid>1230671</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>0c6820c2f073fe57d177b4a4b580f29c</srcmd5>
+    <version>3.12.0</version>
+    <time>1744828718</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264850</requestid>
+  </revision>
 </revisionlist>

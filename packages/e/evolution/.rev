@@ -2661,4 +2661,24 @@ New stable rel</comment>
     <comment>New stable branch release (forwarded request 1253067 from iznogood)</comment>
     <requestid>1253076</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>f426087634478b9ac426b6d46fccb275</srcmd5>
+    <version>3.56.1</version>
+    <time>1744898765</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.1:
+  + Bug Fixes:
+    - Mail: Magic Spacebar sometimes doesn't switch mail
+    - Remove Attachments fails with signed messages
+    - ECompEditor: Buttons to add attachments do nothing
+    - &quot;New-&gt;...&quot; actions missing in UI customization dialog
+    - Composer: Prompt for &quot;send with shortcut&quot; doesn't work
+    - e-convert.js: Exception on convert to plain text
+
+- Drop pkgconfig(gladeui-2.0) BuildRequires and stop passing
+  WITH_GLADE_CATALOG=ON to cmake, no longer build the optional
+  glade support. Following this, drop the  glade-catalog-evolution
+  sub-package. (forwarded request 1268547 from iznogood)</comment>
+    <requestid>1269662</requestid>
+  </revision>
 </revisionlist>

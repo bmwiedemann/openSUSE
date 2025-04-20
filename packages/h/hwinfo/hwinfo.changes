@@ -1,4 +1,59 @@
 --------------------------------------------------------------------
+Wed Apr 16 16:45:55 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#161
+- fix aarch64 cpu detection (bsc#1241295)
+- 24.0
+
+--------------------------------------------------------------------
+Wed Apr 16 15:42:23 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#160
+- add touchpad class (bsc#1241295)
+
+--------------------------------------------------------------------
+Wed Apr 16 15:10:58 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#159
+- update pci, usb, and sdio data  (bsc#1241295)
+
+--------------------------------------------------------------------
+Wed Apr 16 14:29:55 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#158
+- capture more x86 fields from /proc/cpuinfo (bsc#1241295)
+
+--------------------------------------------------------------------
+Tue Apr 15 15:50:18 UTC 2025 - wfeldt@opensuse.org
+
+- Add support for installing to prefixes other than /usr with
+  INSTALL_PREFIX (bsc#1241295)
+
+--------------------------------------------------------------------
+Tue Apr 15 15:41:52 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#102
+- Closes #61: refactors redundant condition (bsc#1241295)
+
+--------------------------------------------------------------------
+Tue Apr 15 15:40:27 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#110
+- remove malloc.h headers usage (bsc#1241295)
+
+--------------------------------------------------------------------
+Tue Apr 15 11:06:11 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#147
+- Don't create unused /sbin on install (bsc#1241295)
+
+--------------------------------------------------------------------
+Tue Apr 15 09:14:53 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#157
+- Free additional memory fields to prevent hd leaks (bsc#1241295)
+
+--------------------------------------------------------------------
 Mon Apr 7 17:20:52 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#155

@@ -2,5 +2,4 @@
   <title>Kernel firmware files for Nvidia Tegra and graphics drivers</title>
   <description>This package contains Linux kernel firmware files for Nvidia Tegra and graphics drivers.
 The package is managed semi-automatically via kernel-firmware-tools helper scripts.</description>
-  <devel project="Kernel:firmware" package="kernel-firmware-nvidia"/>
 </package>

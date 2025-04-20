@@ -1,7 +1,7 @@
 #
 # spec file for package sudo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %endif
 
 Name:           sudo
-Version:        1.9.15p5
+Version:        1.9.16p2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC

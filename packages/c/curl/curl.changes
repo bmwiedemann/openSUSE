@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Apr 11 17:36:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix Leap build add curl-8.13.0-CloseSocket.patch
+
+-------------------------------------------------------------------
+Wed Apr  9 11:05:46 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.13.0:
+  * Changes:
+    - curl: add write-out variable 'tls_earlydata'
+    - curl: make --url support a file with URLs
+    - gnutls: set priority via --ciphers
+    - IMAP: add CURLOPT_UPLOAD_FLAGS and --upload-flags
+    - lib: add CURLFOLLOW_OBEYCODE and CURLFOLLOW_FIRSTONLY
+    - OpenSSL/quictls: add support for TLSv1.3 early data
+    - rustls: add support for CERTINFO
+    - rustls: add support for SSLKEYLOGFILE
+    - rustls: support ECH w/ DoH lookup for config
+    - rustls: support native platform verifier
+    - var: add a '64dec' function that can base64 decode a string
+  * Bugfixes:
+    - conn: fix connection reuse when SSL is optional
+    - hash: use single linked list for entries
+    - http2: detect session being closed on ingress handling
+    - http2: reset stream on response header error
+    - http: remove a HTTP method size restriction
+    - http: version negotiation
+    - httpsrr: fix port detection
+    - libssh: fix freeing of resources in disconnect
+    - libssh: fix scp large file upload for 32-bit size_t systems
+    - openssl-quic: do not iterate over multi handles
+    - openssl: check return value of X509_get0_pubkey
+    - openssl: drop support for old OpenSSL/LibreSSL versions
+    - openssl: fix crash on missing cert password
+    - openssl: fix pkcs11 URI checking for key files.
+    - openssl: remove bad `goto`s into other scope
+    - setopt: illegal CURLOPT_SOCKS5_AUTH should return error
+    - setopt: setting PROXYUSERPWD after PROXYUSERNAME/PASSWORD is fine
+    - sshserver.pl: adjust `AuthorizedKeysFile2` cutoff version
+    - sshserver: fix excluding obsolete client config lines
+    - SSLCERTS: list support for SSL_CERT_FILE and SSL_CERT_DIR
+    - tftpd: prefix TFTP protocol error `E*` constants with `TFTP_`
+    - tool_operate: fail SSH transfers without server auth
+    - url: call protocol handler's disconnect in Curl_conn_free
+    - urlapi: remove percent encoded dot sequences from the URL path
+    - urldata: remove 'hostname' from struct Curl_async
+  * Rebase patches:
+    - libcurl-ocloexec.patch
+    - curl-secure-getenv.patch
+
+-------------------------------------------------------------------
 Thu Feb 13 13:34:05 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 8.12.1:

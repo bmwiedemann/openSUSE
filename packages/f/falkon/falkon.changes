@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * PyFalkon: port away from deprecated API
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix crash when loading folder in bookmarks toolbar (kde#501535)
+  * Show history & bookmark url in menu on mouse hover (kde#448238)
+  * Open all URLs in command line arguments (kde#413195)
+  * Add "Preffer color scheme" option (kde#439891)
+  * Use angle backend for GPU acceleration on Qt 6.9+ (kde#497691)
+  * Add missing default SiteSettings for intenal pages (kde#497463)
+  * Add option to add site permissions in preferences (kde#495391)
+  * Fix KIO scheme handler (kde#491247)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

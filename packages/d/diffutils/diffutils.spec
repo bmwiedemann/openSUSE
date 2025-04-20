@@ -18,7 +18,7 @@
 
 
 Name:           diffutils
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        GNU diff Utilities
 License:        GFDL-1.2-only AND GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://www.gnu.org/software/diffutils/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=diffutils&download=1#/%{name}.keyring
-Patch1:         diff-fix-allocation-typo-leading-to-crashes.patch
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 

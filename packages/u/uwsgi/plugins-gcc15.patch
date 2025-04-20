@@ -1,0 +1,22 @@
+--- a/plugins/pty/pty.c	2015-10-15 21:42:00.000000000 +0200
++++ b/plugins/pty/pty.c	2025-04-15 19:52:18.375871303 +0200
+@@ -307,7 +307,8 @@
+ 	uwsgi_pty_setterm(0);
+ 
+ 	if (upty.uremote) {
+-		signal(SIGWINCH, uwsgi_pty_winch);
++		// cast uwsgi_pty_winch() to make gcc-15 happy
++		signal(SIGWINCH, (__sighandler_t)uwsgi_pty_winch);
+ 		// send current terminal size
+ 		uwsgi_pty_winch();
+ 	}
+--- a/plugins/tuntap/tuntap.c	2014-05-08 13:57:00.000000000 +0200
++++ b/plugins/tuntap/uwsgi/tuntap.c	2025-04-15 19:57:34.451944153 +0200
+@@ -535,5 +535,6 @@
+ 	.name = "tuntap",
+ 	.options = uwsgi_tuntap_options,
+ 	.post_jail = uwsgi_tuntap_client,
+-	.jail = uwsgi_tuntap_router,
++	// cast uwsgi_tuntap_router() to make gcc-15 happy
++	.jail = (void (*)(int (*)(void *), char **))uwsgi_tuntap_router,
+ };

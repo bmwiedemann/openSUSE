@@ -299,4 +299,28 @@
     implementation of type parameter defaults (PEP 696).</comment>
     <requestid>1179515</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7372d773577f9919eeaa1c209b5d042a</srcmd5>
+    <version>4.13.0</version>
+    <time>1744828624</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * Add `typing_extensions.TypeForm` from PEP 747.
+  * Add `typing_extensions.get_annotations`, a backport of
+  * `inspect.get_annotations` that adds features specified
+  * by PEP 649.
+  * Backport `evaluate_forward_ref` from CPython
+  * Update PEP 728 implementation to a newer version of the PEP.
+  * Copy the coroutine status of functions and methods wrapped
+    with `@typing_extensions.deprecated`. 
+  * Fix bug where `TypeAliasType` instances could be subscripted
+    even where they were not generic.
+  * Fix bug where a subscripted `TypeAliasType` instance did not
+    have all attributes of the original `TypeAliasType` instance
+    on older Python versions.
+  * Fix bug where subscripted `TypeAliasType` instances (and some
+    other subscripted objects) had wrong parameters if they were
+    directly subscripted with an `Unpack` object.</comment>
+    <requestid>1265375</requestid>
+  </revision>
 </revisionlist>

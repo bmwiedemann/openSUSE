@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 28 01:49:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+
+-------------------------------------------------------------------
 Mon Mar 17 01:50:54 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Python 3.11 is the first flavor built, fix removal of nspkg.pth.

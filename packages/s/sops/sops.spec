@@ -18,7 +18,7 @@
 
 
 Name:           sops
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Simple and flexible tool for managing secrets
 License:        MPL-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Simple and flexible tool for managing secrets

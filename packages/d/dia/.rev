@@ -388,4 +388,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment></comment>
     <requestid>1186461</requestid>
   </revision>
+  <revision rev="53" vrev="14">
+    <srcmd5>26e08bab9a42d1959daab0b82372c5a6</srcmd5>
+    <version>0.97.3</version>
+    <time>1744898837</time>
+    <user>anag_factory</user>
+    <comment>add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to still allow build on Leap 15.6 (forwarded request 1268893 from hsk17)</comment>
+    <requestid>1269787</requestid>
+  </revision>
 </revisionlist>

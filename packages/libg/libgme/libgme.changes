@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:12:08 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.6.4
+  * Extended the support of fade length in gme_info_t.
+  * Added an ability to change fade duration by the new
+    gme_set_fade_msecs() function.
+  * Implemented RSN support via the gme_player.
+  * Fixed several bugs at the GBS support.
+  * Added an API to disable SPC echo completely
+    (gme_disable_echo(Music_Emu*, int disable)) that can be used
+    to avoid conflicts with external effects processors.
+  * Implemented support for all known NSF chips.
+  * Added support for more track info at M3U support.
+  * The logic of the multi-channel output was changed to resolve
+    the problem of the incorrect work.
+  * Shared library now built with the exported symbols list and
+    proper versioning enabled.
+  * Added ability to build both static and shared libraries via
+    CMake in the same build.
+- Project moved to github, change URL, Source0.
+- Use ldconfig_scriptlets macro.
+
+-------------------------------------------------------------------
 Wed Jun 15 13:55:43 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove bad %defattr - not needed and causes SHLIB non-executable

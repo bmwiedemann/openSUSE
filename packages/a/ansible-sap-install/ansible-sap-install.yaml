@@ -1,0 +1,120 @@
+# Configuration file for collection changes before build.
+# Collection: community.sap_install
+
+# Types of changes used by collection_update.py
+# remove_paths - Remove specific directories and files that are no longer needed.
+# remove_lines - Remove specific lines containing certain patterns from files.
+# replace_text - Replace specific text strings within files.
+# update_yaml_key - Update specific keys in YAML files with new values.
+# append_yaml_list - Append items to a list in a YAML file.
+
+changes:
+  # Main collection changes
+
+  - type: remove_paths
+    # Remove all 'meta/main.yml' files within any role directory.
+    paths:
+      - "roles/*/meta/main.yml"
+
+  - type: remove_lines
+    # Remove specific lines from README.md and all role README.md files.
+    # This is used to clean up any leftover Ansible Lint markers.
+    files:
+      - "README.md"
+      - "roles/*/README.md"
+    patterns:
+      - "\\[Ansible Lint"
+
+  - type: replace_text
+    # Replace specific text strings in galaxy.yml and README.md files.
+    # This is used to update the namespace and repository links from 'community' to 'suse'.
+    files:
+      - "galaxy.yml"
+      - "README.md"
+    replacements:
+      - { find: "namespace: community", replace: "namespace: suse" }
+      - { find: "github.com/sap-linuxlab/community", replace: "github.com/SUSE/community" }
+      - { find: "documentation:.*", replace: "documentation: https://github.com/SUSE/community.sap_install/blob/main/README.md" }
+
+  - type: replace_text
+    # Replace hyperlinks in README.md and all role README.md files.
+    # This is used to update the repository links from 'sap-linuxlab' to 'SUSE'.
+    files:
+      - "README.md"
+      - "roles/*/README.md"
+    replacements:
+      - { find: "github.com/sap-linuxlab/community.sap_install", replace: "github.com/SUSE/community.sap_install" }
+      - { find: "github.com/sap-linuxlab/community.sap_infrastructure", replace: "github.com/SUSE/community.sap_infrastructure" }
+      - { find: "github.com/sap-linuxlab/ansible.playbooks_for_sap", replace: "github.com/SUSE/ansible.playbooks_for_sap" }
+
+  - type: update_yaml_key
+    # Update the 'authors' key in galaxy.yml to 'SUSE'.
+    files:
+      - "galaxy.yml"
+    key: "authors"
+    value:
+      - SUSE
+
+  - type: update_yaml_key
+    # Update the 'build_ignore' key in galaxy.yml to ignore specific files and directories during the build process.
+    # This is used to exclude test files, git directories, linting configuration files, and workflows.
+    files:
+      - "galaxy.yml"
+    key: "build_ignore"
+    value:
+      - "tests"
+      - "roles/*/tests"
+      - ".git*"
+      - "roles/.git*"
+      - "roles/*/.git*"
+      - ".ansible-lint"
+      - "roles/*/.ansible-lint"
+      - ".yamllint*"
+      - "roles/*/.yamllint*"
+      - ".pylintrc*"
+      - "bindep*"
+      - ".pre-commit-config.yaml"
+      - "workflows"
+
+
+  - type: remove_lines
+    # Remove Red Hat collection from the sap_general_preconfigure, role sap_hana_preconfigure, sap_hana_install
+    # Role only uses linux_system_roles only for selinux, which is not included yet.
+    files:
+      - "roles/sap_general_preconfigure/README.md"
+      - "roles/sap_general_preconfigure/defaults/main.yml"
+      - "roles/sap_general_preconfigure/meta/argument_specs.yml"
+      - "roles/sap_hana_preconfigure/README.md"
+      - "roles/sap_hana_preconfigure/defaults/main.yml"
+      - "roles/sap_hana_preconfigure/meta/argument_specs.yml"
+      - "roles/sap_hana_install/defaults/main.yml"
+    patterns:
+      - "redhat.rhel_system_roles"
+
+  - type: replace_text
+    # Update the '_sap_install_collection' variable from 'community.sap_install' to 'suse.sap_install' in specific files.
+    files:
+      - "roles/sap_general_preconfigure/defaults/main.yml"
+      - "roles/sap_swpm/defaults/main.yml"
+    replacements:
+      - { find: "_sap_install_collection: 'community.sap_install'", replace: "_sap_install_collection: 'suse.sap_install'" }
+
+
+  - type: remove_lines
+    # Remove Red Hat collection from the sap_ha_pacemaker_cluster role.
+    files:
+      - "roles/sap_ha_pacemaker_cluster/README.md"
+      - "roles/sap_ha_pacemaker_cluster/defaults/main.yml"
+      - "roles/sap_ha_pacemaker_cluster/meta/argument_specs.yml"
+    patterns:
+      - "redhat.rhel_system_roles"
+      - "For community/upstream, use 'fedora.linux_system_roles'"
+
+  - type: replace_text
+  # Replace 'fedora.linux_system_roles' with 'suse.linux_system_roles' in specific files in the sap_ha_pacemaker_cluster role.
+    files:
+      - "roles/sap_ha_pacemaker_cluster/README.md"
+      - "roles/sap_ha_pacemaker_cluster/defaults/main.yml"
+      - "roles/sap_ha_pacemaker_cluster/meta/argument_specs.yml"
+    replacements:
+      - { find: "fedora.linux_system_roles", replace: "suse.linux_system_roles" }

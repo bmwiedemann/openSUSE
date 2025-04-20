@@ -288,4 +288,12 @@
     <comment>- Update to release 3.2.7</comment>
     <requestid>1254746</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>783d5a2a53efd40a7233873a7ff045c7</srcmd5>
+    <version>3.2.7</version>
+    <time>1744985647</time>
+    <user>anag_factory</user>
+    <comment>add bugrefs</comment>
+    <requestid>1269966</requestid>
+  </revision>
 </revisionlist>

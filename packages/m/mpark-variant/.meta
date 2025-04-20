@@ -4,4 +4,5 @@
 Based on my implementation of std::variant for libc++
 Continuously tested against libc++'s std::variant test suite.
 </description>
+  <devel project="network:messaging:matrix" package="mpark-variant"/>
 </package>

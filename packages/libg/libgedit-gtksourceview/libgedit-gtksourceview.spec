@@ -1,7 +1,7 @@
 #
 # spec file for package libgedit-gtksourceview
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 
 Name:           libgedit-gtksourceview
-Version:        299.4.0
+Version:        299.5.0
 Release:        0
 Summary:        Source code editing widget
 License:        LGPL-2.1-or-later

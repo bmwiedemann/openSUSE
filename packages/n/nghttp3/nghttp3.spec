@@ -19,12 +19,12 @@
 %global soname  libnghttp3
 %global sover   9
 Name:           nghttp3
-Version:        1.7.0
+Version:        1.9.0
 Release:        0
 Summary:        Implementation of Hypertext Transfer Protocol version 3 in C
 License:        MIT
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/ngtcp2/nghttps
+URL:            https://nghttp2.org/nghttp3/
 Source0:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz
 Source1:        https://github.com/ngtcp2/nghttp3/releases/download/v%{version}/nghttp3-%{version}.tar.xz.asc
 Source2:        nghttp3.keyring
@@ -35,37 +35,40 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cunit)
 
 %description
-nghttp3 is an implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C.
-
-It does not depend on any particular QUIC transport implementation.
-
-This library implements RFC 9114 HTTP/3. It does not support server push.
-
-The following extensions have been implemented:
-
-Extensible Prioritization Scheme for HTTP
-Bootstrapping WebSockets with HTTP/3
+nghttp3 is an implementation of RFC 9114 HTTP/3 mapping over QUIC and
+RFC 9204 QPACK in C.
 
 %package -n %{soname}-%{sover}
-Summary:        Shared library for nghttp3
+Summary:        Hypertext Transfer Protocol version 3 implementation
 Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
-Shared C libraries for implementation of Hypertext Transfer Protocol
-version 3.
+nghttp3 is an implementation of RFC 9114 HTTP/3 mapping over QUIC and
+RFC 9204 QPACK in C.
 
-%package -n %{soname}-devel
+It does not depend on any particular QUIC transport implementation.
+
+This library implements RFC 9114 HTTP/3. It does not support server
+push.
+
+The following extensions have been implemented:
+
+* Extensible Prioritization Scheme for HTTP
+* Bootstrapping WebSockets with HTTP/3
+
+%package devel
 Summary:        Development files for nghttp3
 Group:          Development/Languages/C and C++
 Requires:       %{soname}-%{sover} = %{version}
-Provides:       %{name}-devel = %{version}
+Provides:       libnghttp3-devel = %{version}-%{release}
+Obsoletes:      libnghttp3-devel < %{version}-%{release}
 
-%description -n %{soname}-devel
+%description devel
 Development files for usage with libnghttp3, which implements
 Hypertext Transfer Protocol version 3.
 
 %prep
-%setup -q -n nghttp3-%{version}
+%autosetup -n nghttp3-%{version} -p1
 
 %build
 %configure \
@@ -96,7 +99,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %license COPYING
 %{_libdir}/%{soname}.so.%{sover}*
 
-%files -n %{soname}-devel
+%files devel
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{soname}.so

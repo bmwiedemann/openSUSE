@@ -77,6 +77,8 @@ Thu Feb 20 15:48:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
     `GPowerProfileMonitorDBus`
   + Various bugs fixed.
   + Updated translations.
+  + gdatetime: Fix integer overflow when parsing very long ISO8601 inputs.
+  (CVE-2025-3360, bsc#1240897)
 - Rebase patches with quilt.
 
 -------------------------------------------------------------------

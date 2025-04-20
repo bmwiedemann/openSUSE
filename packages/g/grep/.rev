@@ -827,4 +827,12 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment>- removes testsuite.patch in older distributions</comment>
     <requestid>1223315</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>c7dff09d7aeb02d4e94b842ef21b93bd</srcmd5>
+    <version>3.12</version>
+    <time>1745134489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1269943</requestid>
+  </revision>
 </revisionlist>

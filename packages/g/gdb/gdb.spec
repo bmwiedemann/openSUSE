@@ -182,9 +182,8 @@ Patch13:        gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
 Patch16:        gdb-remove-qnx-neutrino-support.patch
 Patch17:        gdb-backport-buildid-related-changes.patch
 Patch18:        gdb-add-rpm-suggestion-script.patch
-Patch19:        gdb-add-deprecated-settings-py-script.patch
-Patch20:        gdb-6.6-buildid-locate-tests.patch
-Patch21:        gdb-catchpoint-re-set.patch
+Patch19:        gdb-6.6-buildid-locate-tests.patch
+Patch20:        gdb-catchpoint-re-set.patch
 #Fedora Packages end
 
 # Fedora patches fixup
@@ -656,7 +655,6 @@ find -name "*.info*"|xargs rm -f
 %patch -P 18 -p1
 %patch -P 19 -p1
 %patch -P 20 -p1
-%patch -P 21 -p1
 #Fedora patching end
 
 %patch -P 1000 -p1

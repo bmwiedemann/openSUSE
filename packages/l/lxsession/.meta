@@ -4,5 +4,4 @@
 is used to automatically start a set of applications and set up a working desktop
 environment. Moreover, the session manager is able to remember the applications in
 use when a user logs out and to restart them the next time the user logs in. </description>
-  <devel project="X11:lxde" package="lxsession"/>
 </package>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 23:20:54 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Add baselibs.conf
+  Some proprietary 32-bit games need this and don’t provide
+  versions that work with Tumbleweed.
+
+-------------------------------------------------------------------
 Mon Mar  3 23:28:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.8

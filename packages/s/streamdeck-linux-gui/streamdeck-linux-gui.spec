@@ -1,7 +1,7 @@
 #
 # spec file for package streamdeck-linux-gui
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://streamdeck-linux-gui.github.io/streamdeck-linux-gui/
 Source:         https://files.pythonhosted.org/packages/source/s/streamdeck-linux-gui/streamdeck_linux_gui-%{version}.tar.gz
 Source1:        70-streamdeck.rules
+# PATCH-FIX-OPENSUSE python313.patch to remove version restriction
+Patch0:         python313.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry
@@ -58,7 +60,7 @@ Obsoletes:      streamdeck-ui < %{version}
 A service, Web Interface, and UI for interacting with your computer using a Stream Deck
 
 %prep
-%setup -q -n streamdeck_linux_gui-%{version}
+%autosetup -p1 -n streamdeck_linux_gui-%{version}
 
 %build
 %pyproject_wheel

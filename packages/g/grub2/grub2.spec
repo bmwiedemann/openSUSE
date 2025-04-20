@@ -463,6 +463,7 @@ Patch289:       0004-tss2-Add-TPM-2.0-NV-index-commands.patch
 Patch290:       0005-tpm2_key_protector-Unseal-key-from-a-buffer.patch
 Patch291:       0006-tpm2_key_protector-Support-NV-index-handles.patch
 Patch292:       0007-util-grub-protect-Support-NV-index-mode.patch
+Patch293:       grub2-string-initializer.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

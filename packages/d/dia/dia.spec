@@ -111,6 +111,7 @@ cp $RPM_SOURCE_DIR/font-test*dia .
 %build
 autoreconf -f -i
 intltoolize --force
+export CFLAGS="%{optflags} -std=gnu11"
 %configure\
 	--disable-static\
 	--disable-gnome\

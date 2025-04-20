@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 17 20:26:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- build with selinux support (bsc#1238136)
+
+-------------------------------------------------------------------
 Mon Mar 31 16:20:39 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to criu 4.1:

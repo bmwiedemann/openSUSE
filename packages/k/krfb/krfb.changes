@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * pw: fix memcpy size
+  * Set window icon
+  * Add xml/yaml linting
+  * Fix build with Qt 6.10
+  * invitationsrfbserver.cpp use 4 space indentation not 8 space indentation
+  * Added supporter KjetilS
+  * Added domportera supporter
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

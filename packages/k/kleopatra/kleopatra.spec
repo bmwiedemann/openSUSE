@@ -1,7 +1,7 @@
 #
 # spec file for package kleopatra
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           kleopatra
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Certificate manager and GUI for OpenPGP and CMS cryptography
 License:        GPL-2.0-or-later
@@ -91,8 +91,6 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 
 %find_lang %{name} --with-html --all-name
 
-%ldconfig_scriptlets
-
 %files
 %license LICENSES/*
 %doc %lang(en) %{_kf6_htmldir}/en/kleopatra/
@@ -106,18 +104,11 @@ Kleopatra is a certificate manager and GUI for OpenPGP and CMS cryptography.
 %{_kf6_configdir}/kleopatradebugcommandsrc
 %{_kf6_debugdir}/kleopatra.categories
 %{_kf6_debugdir}/kleopatra.renamecategories
-%{_kf6_iconsdir}/hicolor/*/apps/kleopatra.png
+%{_kf6_iconsdir}/hicolor/*/apps/kleopatra.*
 %{_kf6_iconsdir}/hicolor/*/apps/org.kde.kwatchgnupg.*
-%{_kf6_libdir}/libkleopatraclientcore.so.*
-%{_kf6_libdir}/libkleopatraclientgui.so.*
-%dir %{_kf6_plugindir}/pim6/
-%dir %{_kf6_plugindir}/pim6/kcms
-%dir %{_kf6_plugindir}/pim6/kcms/kleopatra
-%{_kf6_plugindir}/pim6/kcms/kleopatra/kleopatra_config_gnupgsystem.so
 %dir %{_kf6_sharedir}/kio
 %dir %{_kf6_sharedir}/kio/servicemenus
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_decryptverifyfiles.desktop
-%{_kf6_sharedir}/kio/servicemenus/kleopatra_decryptverifyfolders.desktop
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_signencryptfiles.desktop
 %{_kf6_sharedir}/kio/servicemenus/kleopatra_signencryptfolders.desktop
 %{_kf6_sharedir}/mime/packages/application-vnd-kde-kleopatra.xml

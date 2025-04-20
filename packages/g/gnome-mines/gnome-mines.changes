@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 12 18:49:56 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fixed running app as GApplication service
+  + Fixed save settings on close
+  + Make the application d-bus activatable
+
+-------------------------------------------------------------------
 Sun Mar 30 20:14:21 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

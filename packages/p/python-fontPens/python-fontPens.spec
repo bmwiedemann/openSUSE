@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontPens
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,6 @@ A collection of classes implementing the pen protocol for manipulating glyphs.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/fontPens
-%{python_sitelib}/fontPens-%{version}.dist-info
+%{python_sitelib}/fontpens-%{version}.dist-info
 
 %changelog

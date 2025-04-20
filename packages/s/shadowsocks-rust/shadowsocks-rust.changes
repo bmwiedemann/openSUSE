@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Apr  7 09:33:03 UTC 2025 - Marguerite Su <i@marguerite.su>
+
+- Update version to 1.23.0
+  * local-fake-dns switched storage engine from sled to rocksdb,
+    users should delete the old database file and let sslocal
+    recreate it ageain
+  * refactor: change error handling to be strongly-typed 
+  * fix: mips-* reenabled, moka automatically switches to a
+    fallback impl for AtomicU64 
+
+-------------------------------------------------------------------
 Mon Jan  6 08:27:53 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix start failure by systemd

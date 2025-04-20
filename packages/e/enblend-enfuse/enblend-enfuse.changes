@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 10:33:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: glew-devel as it is not used for build.
+
+-------------------------------------------------------------------
 Sat Mar 27 21:13:25 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Add enblend-enfuse-4.2-gcc-10.patch: Fix build with GCC 10

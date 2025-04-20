@@ -108,4 +108,14 @@
 -Pmw import</comment>
     <requestid>1137810</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>1ca9a203131a95b5cc813393897e9af5</srcmd5>
+    <version>2.1.1</version>
+    <time>1744828757</time>
+    <user>anag_factory</user>
+    <comment>- Clean up the SPEC file.
+- drop python2 remnants, add sle15_python_module_pythons
+</comment>
+    <requestid>1269317</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %global gnutls_soname libngtcp2_crypto_gnutls
 %global gnutls_sover 8
 Name:           ngtcp2
-Version:        1.10.0
+Version:        1.12.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
@@ -38,49 +38,54 @@ BuildRequires:  pkgconfig(gnutls) >= 3
 BuildRequires:  pkgconfig(libnghttp3) >= 1.0.0
 
 %description
-ngtcp2 is an effort to implement RFC9000 QUIC protocol.
+ngtcp2 is an implementation of the QUIC protocol (RFC 9000)
+with a C library API.
 
 %package -n %{soname}-%{sover}
-Summary:        Shared library for ngtcp2
+Summary:        Implementation of the IETF QUIC protocol
 Group:          System/Libraries
 
 %description -n %{soname}-%{sover}
-Shared C libraries for implementation of QUIC Protocol
+ngtcp2 is an implementation of the QUIC protocol (RFC 9000)
+with a C library API.
 
 %package -n %{gnutls_soname}%{gnutls_sover}
-Summary:        Shared library for ngtcp2 - GNUTLS backend
+Summary:        The ngtcp2 crypto API with GNUTLS as a backend
 Group:          System/Libraries
 
 %description -n %{gnutls_soname}%{gnutls_sover}
-Shared C libraries for implementation of QUIC Protocol - GNUTLS backend
+ngtcp2 is an implementation of the QUIC protocol (RFC 9000).
+This package contains the crypto API of ngtcp2, which was built using
+GNUTLS as the cryptographic provider.
 
 %package -n python3-ngtcp2
 Summary:        Python3 bindings for ngtcp2
 Group:          Development/Libraries/Python
 
 %description -n python3-ngtcp2
-Python bindings for implementation of QUIC Protocol
+Python bindings for the ngtcp2 implementation of the QUIC protocol.
 
-%package -n %{soname}-devel
+%package devel
 Summary:        Development files for ngtcp2
 Group:          Development/Languages/C and C++
 Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
 Requires:       %{soname}-%{sover} = %{version}
-Provides:       %{name}-devel
+Provides:       libngtcp2-devel = %{version}-%{release}
+Obsoletes:      libngtcp2-devel < %{version}-%{release}
 
-%description -n %{soname}-devel
-Development files for usage with libngtcp2, which implements
-QUIC Protocol.
+%description devel
+Development files for use with libngtcp2, which implements the
+QUIC protocol.
 
 %package doc
 Summary:        Documentation for ngtcp2
 Group:          Documentation/HTML
 
 %description doc
-Documentation for ngtcp2, which includes a shared C library
+Documentation for ngtcp2, which includes shared C libraries.
 
 %prep
-%setup -q -n ngtcp2-%{version}
+%autosetup -n ngtcp2-%{version} -p1
 
 %build
 %configure \
@@ -119,7 +124,7 @@ rm -rf %{buildroot}%{_mandir}/man1/* \
 %license COPYING
 %{_libdir}/%{gnutls_soname}.so.%{gnutls_sover}*
 
-%files -n %{soname}-devel
+%files devel
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/*.h
 %{_libdir}/%{soname}.so

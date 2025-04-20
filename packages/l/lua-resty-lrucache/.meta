@@ -3,6 +3,5 @@
   <description>
 This library implements a simple LRU cache for OpenResty and the ngx_lua module.
   </description>
-  <devel project="devel:languages:lua" package="lua-resty-lrucache"/>
   <url>https://github.com/openresty/lua-resty-lrucache</url>
 </package>

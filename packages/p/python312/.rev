@@ -1682,4 +1682,41 @@
       (bsc#1238450, CVE-2025-1795)</comment>
     <requestid>1251951</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>9c196737db46cc242f52fba08d139871</srcmd5>
+    <version>3.12.10</version>
+    <time>1744985679</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.12.10:
+  - gh-131852: msgfmt no longer adds the POT-Creation-Date to
+    generated .mo files for consistency with GNU msgfmt.
+  - gh-85012: Correctly reset msgctxt when compiling messages in
+    msgfmt.
+  - gh-131050: test_ssl.test_dh_params is skipped if the
+    underlying TLS library does not support finite-field
+    ephemeral Diffie-Hellman.
+  - gh-119727: Add --single-process command line option to Python
+    test runner (regrtest). Patch by Victor Stinner.
+  - gh-131809: Update bundled libexpat to 2.7.1
+  - gh-131261: Upgrade to libexpat 2.7.0
+  - gh-127371: Avoid unbounded buffering for
+    tempfile.SpooledTemporaryFile.writelines(). Previously, disk
+    spillover was only checked after the lines iterator had been
+    exhausted. This is now done after each line is written.
+  - gh-121284: Fix bug in the folding of rfc2047 encoded-words
+    when flattening an email message using a modern email
+    policy. Previously when an encoded-word was too long for
+    a line, it would be decoded, split across lines, and
+    re-encoded. But commas and other special characters in the
+    original text could be left unencoded and unquoted. This
+    could theoretically be used to spoof header lines using a
+    carefully constructed encoded-word if the resulting rendered
+    email was transmitted or re-parsed.
+  - gh-116608: undeprecate functional API for importlib.resources
+  - gh-132075: Fix possible use of socket address structures
+    with uninitialized members. Now all structure members are
+    initialized with zeroes by default.
+  - gh-132002: Fix crash when deallocating contextvars.ContextVar</comment>
+    <requestid>1269059</requestid>
+  </revision>
 </revisionlist>

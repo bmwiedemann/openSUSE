@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix crash when double clicking on terminal scroll bar (kde#501191)
+  * Call setHandleWidth() to set initial size for splitDragHandleSize (kde#498078)
+  * 'Allow escape sequences for links' setting fix in new sessions (kde#469511)
+  * Add HamburgerMenu only once per instance (kde#495029)
+  * Fix opening Tab Properties when spamming middle click (kde#449390)
+  * ensure we don't use an invalidated mimeData (kde#491726)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

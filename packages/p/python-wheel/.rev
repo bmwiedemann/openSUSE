@@ -402,4 +402,14 @@
     files having the ABI tag in the file name</comment>
     <requestid>1225987</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>8c77311b4ef101c13271adbd1900211f</srcmd5>
+    <version>0.45.1</version>
+    <time>1744828631</time>
+    <user>anag_factory</user>
+    <comment>- Add tests.patch to fix (some) tests with setuptools 77
+- Skip license tests failing with setuptools 77
+</comment>
+    <requestid>1269237</requestid>
+  </revision>
 </revisionlist>

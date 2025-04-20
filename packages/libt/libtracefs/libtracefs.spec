@@ -1,7 +1,7 @@
 #
 # spec file for package libtracefs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only
@@ -81,8 +81,7 @@ This subpackage contains the header files.
 
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libtracefs.so.1*
@@ -91,6 +90,7 @@ This subpackage contains the header files.
 %files tools
 %_bindir/sqlhist
 %_mandir/man1/*
+%_datadir/bash-completion/
 
 %files devel
 %_includedir/*

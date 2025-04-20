@@ -1,4 +1,4 @@
-From ba74d639178916221c748b0d5d89f7ac4f5ed669 Mon Sep 17 00:00:00 2001
+From 4ec79b42c94c9c8e0ea15817bc32eb899df17b52 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 22 Apr 2017 14:00:33 +0200
 Subject: [PATCH] Revert "Disallow executing Dolphin as root on Linux"
@@ -7,14 +7,14 @@ This reverts commit 0bdd8e0b0516555c6233fdc7901e9b417cf89791.
 We ship a desktop file to open dolphin as root and we allow YaST on the
 desktop. So this patch is absolutely pointless for us.
 ---
- src/main.cpp | 11 -------------
- 1 file changed, 11 deletions(-)
+ src/main.cpp | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-Index: dolphin-24.01.80git.20240701T140601~e2f316578/src/main.cpp
-===================================================================
---- dolphin-24.01.80git.20240701T140601~e2f316578.orig/src/main.cpp	2024-07-01 16:06:01.000000000 +0200
-+++ dolphin-24.01.80git.20240701T140601~e2f316578/src/main.cpp	2024-07-01 22:12:17.154311426 +0200
-@@ -59,20 +59,6 @@
+diff --git a/src/main.cpp b/src/main.cpp
+index 0d2f825..c128c53 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -51,21 +51,6 @@ constexpr auto dolphinTranslationDomain{"dolphin"};
  
  int main(int argc, char **argv)
  {
@@ -32,6 +32,10 @@ Index: dolphin-24.01.80git.20240701T140601~e2f316578/src/main.cpp
 -        return EXIT_FAILURE;
 -    }
 -#endif
- 
+-
      /**
       * trigger initialisation of proper icon theme
+      */
+-- 
+2.49.0
+

@@ -67,7 +67,7 @@ index 00000000000..c2b9a1134bd
 +
 +clean_restart ${binfile}
 +
-+gdb_test_no_output "set build-id-verbose 1"
++gdb_test_no_output "set rpm-suggestion enabled on"
 +
 +set test "zypper hint printed"
 +if { ![gdb_breakpoint main qualified] } {

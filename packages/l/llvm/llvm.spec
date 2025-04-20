@@ -24,7 +24,7 @@
 
 %ifarch aarch64 ppc64le s390x x86_64
 %define has_lldb 1
-%if %{suse_version} > 1600
+%if %{suse_version} >= 1600 || 0%{?sle_version} >= 150600
 %define has_lldb_python 1
 %endif
 %endif

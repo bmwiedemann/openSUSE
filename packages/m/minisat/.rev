@@ -57,4 +57,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>992468</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>592066761b00a7f42fd20856e3412224</srcmd5>
+    <version>2.2.1+20230206</version>
+    <time>1744898969</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.1+20230206:
+  * utils/System.*: use fpu_control only on glibc
+- use -DCMAKE_POLICY_VERSION_MINIMUM=3.10 to support cmake 4
+- use %cmake_build</comment>
+    <requestid>1270182</requestid>
+  </revision>
 </revisionlist>

@@ -31,4 +31,19 @@
     <comment></comment>
     <requestid>1251220</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef00c51de24c78de3db50944f8a022f0</srcmd5>
+    <version>3.3.15</version>
+    <time>1744985656</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.15
+  * restorecon.py: exclude more paths
+  * Improve disable_ipv6 plugin then_text
+  * Update generated configuration files
+  * Update translations
+- patch 9e54f6a661330070ad25a0e86f197b3530bfc5c7.patch removed since
+  it is not needeed anymore
+</comment>
+    <requestid>1270007</requestid>
+  </revision>
 </revisionlist>

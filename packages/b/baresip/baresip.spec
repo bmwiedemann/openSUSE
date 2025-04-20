@@ -2,6 +2,7 @@
 # spec file for package baresip
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +17,10 @@
 #
 
 
-%global sover   18
+%global sover   20
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        3.16.0
+Version:        3.21.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -30,8 +31,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ilbc-devel
 BuildRequires:  jack-devel
-#BuildRequires:  openssl-devel
-BuildRequires:  libopenssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sndio-devel
 BuildRequires:  pkgconfig(alsa)
@@ -47,6 +46,7 @@ BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libcrypto) >= 1.1.1
 BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libmp3lame)
 BuildRequires:  pkgconfig(libmpg123)
@@ -127,11 +127,11 @@ This package contains the shared library needed to run programs compiled with
 baresip
 
 %prep
-%setup -q
+%autosetup -p1
 mv modules/mqtt/README.md README.mqtt
-sed 's|/usr/local/lib|%{_libdir}/|g' -i src/config.c
-sed 's|/usr/local/lib|%{_libdir}/|g' -i docs/examples/config
-sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
+sed 's|%{_prefix}/local/lib|%{_libdir}/|g' -i src/config.c
+sed 's|%{_prefix}/local/lib|%{_libdir}/|g' -i docs/examples/config
+sed 's|%{_prefix}/local/share|%{_datadir}/|g' -i docs/examples/config
 
 %build
 %cmake \
@@ -141,6 +141,9 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %install
 %cmake_install
 
+%check
+%ctest
+
 %ldconfig_scriptlets -n %{libname}
 
 %files
@@ -149,6 +152,7 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %doc docs/examples
 %{_bindir}/baresip
 %{_datadir}/baresip
+%{_datadir}/applications/com.github.baresip.desktop
 %dir %{_libdir}/baresip
 %dir %{_libdir}/baresip/modules
 %{_libdir}/baresip/modules/aac.so
@@ -157,6 +161,7 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/aubridge.so
 %{_libdir}/baresip/modules/auconv.so
 %{_libdir}/baresip/modules/aufile.so
+%{_libdir}/baresip/modules/augain.so
 %{_libdir}/baresip/modules/auresamp.so
 %{_libdir}/baresip/modules/ausine.so
 %{_libdir}/baresip/modules/codec2.so
@@ -208,14 +213,17 @@ sed 's|/usr/local/share|%{_datadir}/|g' -i docs/examples/config
 %{_libdir}/baresip/modules/webrtc_aec.so
 
 %files devel
+%license LICENSE
 %{_libdir}/lib%{name}.so
 %{_includedir}/%{name}.h
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %files -n %{libname}
+%license LICENSE
 %{_libdir}/libbaresip.so.%{sover}*
 
 %files video
+%license LICENSE
 %{_libdir}/baresip/modules/av1.so
 %{_libdir}/baresip/modules/avfilter.so
 %{_libdir}/baresip/modules/avcodec.so

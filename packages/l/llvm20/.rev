@@ -40,4 +40,16 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1267342</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f556f43d039a360b0a59bcbb4955e0a3</srcmd5>
+    <version>20.1.3</version>
+    <time>1744985701</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.1.3.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Enable LLDB Python bindings on Leap 15.6 and newer.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1270294</requestid>
+  </revision>
 </revisionlist>

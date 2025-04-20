@@ -120,7 +120,9 @@ BuildRequires:  gcc-fortran
 BuildRequires:  mpi-selector
 Requires:       mpi-selector
 Requires(preun): mpi-selector
+%if !0%{?testsuite}
 Requires:       %{name}-libs = %{version}
+%endif
 
 %ifarch x86_64
 BuildRequires:  libnuma-devel

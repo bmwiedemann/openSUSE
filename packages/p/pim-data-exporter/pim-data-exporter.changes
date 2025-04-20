@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Change KDEPIM_DEV_VERSION
+  * Use PIMDATAEXPORTER_RELEASE_VERSION_DATE
+  * Add xml/yaml linting
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Remove unimplemented method
+  * Stripping .desktop suffix from legacy AppStream ID.
+  * Store PIMDATAEXPORTER_WITH_KUSERFEEDBACK in config.h
+  * Not necessary to build as single apps now it's in kontact meta package
+  * Add appx-qt6 support
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

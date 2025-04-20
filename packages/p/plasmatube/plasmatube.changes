@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix condition
+  * Appdata: add display size
+  * Add missing LICENSE
+  * Fix spacing between video player items
+  * Explicitly say if there's no description set for the video
+  * Show the video queue in PeerTube again
+  * Fix avatars not loading for channel pages in PeerTube
+  * Cache QtQuick image network requests
+  * Fix the subscribe button not prompting the user to login
+  * Hide recommended videos on PeerTube
+  * Note in the README that only the latest server versions are supported
+  * Fix channel avatars for videos in PeerTube
+  * Fix comment avatars in PeerTube
+  * Bump copyright dates for the new year
+  * Fix the channel subscriptions export action using the wrong icon
+  * Add a button to channel pages to open in the browser
+  * Add better placeholders for many of the grid views
+  * Display a "No Playlists" placeholder message instead of nothing
+  * Fix thumbnails and other images in PeerTube
+  * Fix welcome page pushing a new column onto the page
+  * Enable subscriptions import button even if you have none
+  * Allow changing the protocol used to connect to instances
+  * Port to AboutKDEPage from AboutKDE
+  * Introduce parsing of Piped media formats
+  * Fallback to HLS url if neither nor adaptive or combined format urls are found
+  * Port from Kirigami Add-ons Banner to Kirigami InlineMessage
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

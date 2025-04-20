@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  9 21:18:51 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require LLVM >= 14 for -mllvm -wasm-enable-sjlj.
+
+-------------------------------------------------------------------
 Wed Mar 19 22:56:23 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version (wasi-sdk-)25.

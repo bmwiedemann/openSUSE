@@ -17,7 +17,7 @@
 
 
 Name:           loupe
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        A simple image viewer application
 License:        GPL-3.0-or-later

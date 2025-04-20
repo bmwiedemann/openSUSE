@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/DiskUsageAnalyzer
 Source0:        %{name}-%{version}.tar.zst
+# PATCH-FIX-UPSTREAM baobab-Improve-Scaning-Speed_cpu.patch -- Improve Scaning Speed and Memory Usage
+Patch0:         baobab-Improve-Scaning-Speed_cpu.patch
 
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils

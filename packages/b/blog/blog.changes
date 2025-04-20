@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Apr 17 13:04:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch blog-3215.patch
+  * Try to avoid blocking mode of 3215 console on s390x as holding
+    the output at `MORE' stops blogd, that is that it can not see
+    any messages over its socket like switch of the root file system. 
+
+-------------------------------------------------------------------
+Thu Apr 17 09:50:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch blog-install.patch
+  * Fixes install problems
+  * Use module-setup.sh to install in BUILDROOT
+
+-------------------------------------------------------------------
+Wed Apr 16 13:04:40 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.34
+  * Make it work on s390x (still no 3215 console)
+    This is a bug fix release.  But still no support in conmode
+    3215 as there is a race triggered by using conmode 3215.
+    The order of the systemd units seems to change with this
+    console mode.
+
+-------------------------------------------------------------------
+Fri Apr 11 06:15:37 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Use rpm-config-SUSE instead of suse-module-tools for suse version
+  above 1550 and add code for the missing macros for older
+  distributions like leap 15.6
+
+-------------------------------------------------------------------
+Thu Apr 10 13:59:41 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- The suse-module-tools are required at build otherwise blog
+  is not in the initrd 
+
+-------------------------------------------------------------------
 Thu Apr  3 14:20:30 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.32

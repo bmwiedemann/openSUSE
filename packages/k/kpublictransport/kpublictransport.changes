@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Add support for cancelled trips/stops for MOTIS
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Sync OSM data types from KOSMIndoorMap (kde#497034)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

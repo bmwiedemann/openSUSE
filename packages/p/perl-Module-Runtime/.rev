@@ -120,4 +120,13 @@
     <comment>1</comment>
     <requestid>535197</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e4c971cd1f962d488014ebef7c62b124</srcmd5>
+    <version>0.17.0</version>
+    <time>1744985682</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.17.0 (0.017)
+   see /usr/share/doc/packages/perl-Module-Runtime/Changes (forwarded request 1270015 from tinita)</comment>
+    <requestid>1270269</requestid>
+  </revision>
 </revisionlist>

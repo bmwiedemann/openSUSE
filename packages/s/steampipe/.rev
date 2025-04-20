@@ -7,4 +7,41 @@
     <comment>Please consider to add steampipe to Tumbleweed. Thank you!</comment>
     <requestid>1247155</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ceafa8b92d56052d868a962bd95d673</srcmd5>
+    <version>1.1.0</version>
+    <time>1744828856</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0:
+  * fix tests
+  * fix acc goreleaser
+  * fix acc goreleaser
+  * fix tests
+  * fix tests
+  * update test workflow
+  * v1.1.0
+  * update wf
+  * update changelog
+  * update fdw
+  * fix fdw version
+  * new fdw and new db
+  * db 14.17.0-dev.10
+  * new binaries tarred with --disable-copyfile macos
+  * upgrade pipe-fittings
+  * new darwin-arm64.txz tarred with --disable-copyfile macos
+  * 14.17.0-dev.8 and also test on darwin amd
+  * darwin-amd64.txz
+  * 14.17.0-dev.7 and also test on linux arm
+  * linux-arm64.txz
+  * 14.17.0-dev.6
+  * new bin for linux amd64
+  * set the DYLIB path for pg_dump and pg_restore bins
+  * go back to zonkyio bins
+  * run test on macos arm and linux amd
+  * run test on macos arm and linux amd
+  * changes
+  * new linux amd64 bin
+  * again try with the locally built pg (with extensions) (forwarded request 1269447 from ph03nix)</comment>
+    <requestid>1269736</requestid>
+  </revision>
 </revisionlist>

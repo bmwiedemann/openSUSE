@@ -1,7 +1,7 @@
 #
 # spec file for package ark
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ark
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -67,10 +67,10 @@ Obsoletes:      ark-devel
 %description
 This is a KDE application to work with compressed archives.
 
-%package -n libkerfuffle24
+%package -n libkerfuffle25
 Summary:        KDE Archiver Tool
 
-%description -n libkerfuffle24
+%description -n libkerfuffle25
 This is a KDE application to work with compressed archives.
 
 %lang_package
@@ -89,7 +89,7 @@ This is a KDE application to work with compressed archives.
 %find_lang %{name} --with-man --with-html --all-name
 
 
-%ldconfig_scriptlets -n libkerfuffle24
+%ldconfig_scriptlets -n libkerfuffle25
 
 %files
 %doc %lang(en) %{_kf6_htmldir}/en/ark/
@@ -111,7 +111,7 @@ This is a KDE application to work with compressed archives.
 %dir %{_kf6_plugindir}/kf6/kio_dnd
 %{_kf6_plugindir}/kf6/kio_dnd/extracthere.so
 
-%files -n libkerfuffle24
+%files -n libkerfuffle25
 %{_kf6_libdir}/libkerfuffle.so.*
 
 %files lang -f %{name}.lang

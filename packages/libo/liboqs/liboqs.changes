@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 17 16:03:16 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 0.13.0:
+  - Key encapsulation mechanisms                                                                                                                                                             
+    - New API: Added a deterministic key generation and API for KEMs (only ML-KEM supported at the moment).
+    - ML-KEM: Changed the default ML-KEM implementation to [PQCP's mlkem-native](https://github.com/pq-code-package/mlkem-native). There are three variants: Portable C, AVX2, and AArch64. Large +parts of these implementations are formally verified: all of the C code is verified for memory and type safety using [CBMC](https://github.com/diffblue/cbmc) and the functional correctness +of the core AArch64 assembly routines is verified using [HOL-Light](https://github.com/jrh13/hol-light).
+    - ML-KEM: Added support for the ML-KEM implementation from [Nvidia cuPQC](https://developer.nvidia.com/cupqc), a GPU accelerated cryptography library.
+    - ML-KEM: Implementation from mlkem-native upstream updated to add Pair-wise Consistency Test (PCT) and Intel CET support.
+    - ML-KEM: Improved testing of ML-KEM keys.
+    - HQC: Disabled HQC by default until [a new security flaw](https://groups.google.com/a/list.nist.gov/g/pqc-forum/c/Wiu4ZQo3fP8) is fixed.
+
+  - Digital signature schemes
+    - ML-DSA: Improved testing for ML-DSA.
+    - CROSS: Updated to NIST Additional Signatures Round 2 version.
+    - MAYO: Updated to NIST Additional Signatures Round 2 version.
+    - UOV: Added support for UOV algorithm from NIST Additional Signatures Round 2.
+
+-------------------------------------------------------------------
 Tue Dec 10 07:51:25 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 0.12.0:

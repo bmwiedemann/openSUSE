@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 14:27:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.2.12:
+  + Add a deadzone for Steam Deck analog sticks.
+  + Fix build with older gobject-introspection.
+
+-------------------------------------------------------------------
 Mon Mar 17 10:56:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop baselibs.conf: no longer build libmanette-0_2-0-32bit: the

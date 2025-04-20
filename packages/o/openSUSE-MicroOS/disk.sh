@@ -1,8 +1,6 @@
 #!/bin/bash
 set -euxo pipefail
 
-/usr/libexec/setup-etc-subvol
-
 echo "####### BOOTLOADER INSTALL (disk.sh)"
 
 if [ -x /usr/bin/sdbootutil ]; then

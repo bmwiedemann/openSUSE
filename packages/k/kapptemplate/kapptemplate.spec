@@ -1,7 +1,7 @@
 #
 # spec file for package kapptemplate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kapptemplate
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -35,13 +35,16 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
+BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons)
 # Disabled upstream
 # BuildRequires:  cmake(KF6NewStuff) >= %%{kf6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      kapptemplate5 < %{version}

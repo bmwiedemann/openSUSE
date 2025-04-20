@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 17:16:33 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Fix broken ctrl shortcuts on some setups.
+  + Fix trapped focus during pause.
+
+-------------------------------------------------------------------
 Fri Mar 14 17:22:45 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

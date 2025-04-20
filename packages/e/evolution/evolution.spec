@@ -20,7 +20,7 @@
 %define _version %(echo %{version} | grep -E -o '[0-9]+\.[0-9]+\.[0-9]+')
 
 Name:           evolution
-Version:        3.56.0
+Version:        3.56.1
 Release:        0
 # FIXME: check if note on license is still valid (comment before license)
 Summary:        The Integrated GNOME Mail, Calendar, and Address Book Suite
@@ -55,7 +55,6 @@ BuildRequires:  pkgconfig(gail-3.0) >= 3.2.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.24.0
 BuildRequires:  pkgconfig(geocode-glib-2.0)
 BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
-BuildRequires:  pkgconfig(gladeui-2.0) >= 3.10.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gnome-autoar-0) >= 0.1.1
 BuildRequires:  pkgconfig(gnome-autoar-gtk-0) >= 0.1.1
@@ -100,22 +99,6 @@ Evolution consists of modular components (at the moment: mailer,
 calendar, and address book) that should make daily life easier. Because
 of the modular design, it is possible to plug new components into
 Evolution or embed the existing ones in other applications.
-
-%package -n glade-catalog-evolution
-Summary:        Glade catalog for the Evolution groupware library
-Group:          Development/Tools/GUI Builders
-Requires:       %{name} = %{version}
-Requires:       glade
-Supplements:    (glade and %{name}-devel)
-
-%description -n glade-catalog-evolution
-Evolution consists of modular components (at the moment: mailer,
-calendar, and address book) that should make daily life easier. Because
-of the modular design, it is possible to plug new components into
-Evolution or embed the existing ones in other applications.
-
-This package provides a catalog for Glade, to allow the use of Evolution
-widgets in Glade.
 
 %package -n evolution-plugin-bogofilter
 Summary:        Bogofilter plugin for the Evolution groupware suite
@@ -187,7 +170,6 @@ to develop applications that require these.
 %cmake \
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir} \
   -DENABLE_YTNEF=OFF \
-  -DWITH_GLADE_CATALOG=ON \
   -DENABLE_GTK_DOC=ON \
   -DCMAKE_SKIP_INSTALL_RPATH=OFF
 %cmake_build
@@ -299,10 +281,6 @@ to develop applications that require these.
 %{_libdir}/evolution-data-server/camel-providers/libcamelrss.so
 %{_libdir}/evolution-data-server/camel-providers/libcamelrss.urls
 %{_libdir}/evolution/modules/module-rss.so
-
-%files -n glade-catalog-evolution
-%{_libdir}/glade/modules/libgladeevolution.so
-%{_datadir}/glade/catalogs/evolution.xml
 
 %files -n evolution-plugin-bogofilter
 %{_datadir}/metainfo/org.gnome.Evolution-bogofilter.metainfo.xml

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-MakeMaker
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name ExtUtils-MakeMaker
 Name:           perl-ExtUtils-MakeMaker
-Version:        7.70
+Version:        7.74
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Create a module Makefile
@@ -64,8 +64,6 @@ See L<ExtUtils::MakeMaker::FAQ> for details of the design and usage.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version} -p1
-
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 export BUILDING_AS_PACKAGE=1

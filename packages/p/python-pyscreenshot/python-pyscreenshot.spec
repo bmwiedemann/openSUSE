@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyscreenshot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,7 +63,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wxPython}
 BuildRequires:  ImageMagick
 BuildRequires:  gnome-screenshot
-BuildRequires:  maim
+# test_maim is not being run
+# BuildRequires:  maim
 BuildRequires:  pqiv-gdkpixbuf
 BuildRequires:  xdpyinfo
 BuildRequires:  xmessage

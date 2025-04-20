@@ -1,7 +1,7 @@
 #
 # spec file for package fs-uae
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  zip
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gthread-2.0)
@@ -79,7 +78,7 @@ export CXXFLAGS="%optflags -fPIC"
 %else
   --disable-jit
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install

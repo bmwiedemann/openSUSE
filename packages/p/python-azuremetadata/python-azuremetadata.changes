@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 17 15:32:56 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Update build setup
+  + Switch source tarball name to be consistent with other tools of
+    similar nature
+  + Set the modules directory properly
+
+-------------------------------------------------------------------
+Fri Apr  4 19:08:39 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
+
+- Version 5.1.6
+  + Handle queries of attributes that return an empty list properly
+  + Switch the package build to a specific Python interpreter set
+    by the project configuration in the Build Service
+
+-------------------------------------------------------------------
 Thu May 30 17:37:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Replace python3-azuremetadata with universal packaging

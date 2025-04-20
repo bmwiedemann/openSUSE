@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyYAML
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,6 @@ ulimit -Sn 2048
 %doc CHANGES README.md examples/
 %{python_sitearch}/yaml
 %{python_sitearch}/_yaml
-%{python_sitearch}/PyYAML-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Yy][Aa][Mm][Ll]-%{version}.dist-info
 
 %changelog

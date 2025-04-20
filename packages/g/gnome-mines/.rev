@@ -294,4 +294,15 @@
   + Updated translations. (forwarded request 1265601 from iznogood)</comment>
     <requestid>1265729</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>f8a3a91faacecdcd9aaa399ac6d55b9d</srcmd5>
+    <version>48.1</version>
+    <time>1744828803</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Fixed running app as GApplication service
+  + Fixed save settings on close
+  + Make the application d-bus activatable (forwarded request 1268811 from iznogood)</comment>
+    <requestid>1269678</requestid>
+  </revision>
 </revisionlist>

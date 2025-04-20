@@ -1,7 +1,7 @@
 #
 # spec file for package python-crispy-bootstrap4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Bootstrap4 template pack for django-crispy-forms
 License:        MIT
 URL:            https://github.com/django-crispy-forms/crispy-bootstrap4
 Source:         https://github.com/django-crispy-forms/crispy-bootstrap4/archive/refs/tags/%{version}.tar.gz#/crispy-bootstrap4-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/django-crispy-forms/crispy-bootstrap4/pull/34 Added Django 5.2. support.
+Patch:          django52.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

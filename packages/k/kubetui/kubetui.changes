@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 18:30:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- relax version constraint on cargo to allow versions equal to or
+  newer than 1.82
+
+-------------------------------------------------------------------
 Sat Mar 29 07:51:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.0:

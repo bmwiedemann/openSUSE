@@ -48,4 +48,15 @@
 - Remove out of date skips.</comment>
     <requestid>1153083</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>28dea369b334c7327e2afb1e6f524bbf</srcmd5>
+    <version>0.2.4</version>
+    <time>1744828739</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264868</requestid>
+  </revision>
 </revisionlist>

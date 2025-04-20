@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           itinerary
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -118,7 +118,7 @@ Itinerary and boarding pass management application.
 excluded_tests+="itinerary-self-test"
 %ifarch %{ix86}
 # Rounding issue on x86
-excluded_tests+="|timelinemodeltest|transfertest"
+excluded_tests+="|timelinemodeltest|transfertest|localizertest|"
 %endif
 
 %ctest --exclude-regex "($excluded_tests)"

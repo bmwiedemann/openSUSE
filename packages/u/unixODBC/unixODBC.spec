@@ -77,6 +77,7 @@ perl -i -pe 's{^ACLOCAL_AMFLAGS.*}{}' Makefile.am
 export -n LANG LINGUAS LC_ALL
 rm -rf libltdl
 autoreconf -fvi
+export CFLAGS="%{optflags} -std=gnu17"
 %configure \
     --with-gnu-ld \
     --enable-ltdllib \

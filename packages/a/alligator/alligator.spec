@@ -1,7 +1,7 @@
 #
 # spec file for package alligator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           alligator
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        RSS/Atom feed reader
 License:        GPL-2.0-or-later
@@ -73,6 +73,7 @@ Alligator is a RSS/Atom feed reader.
 %doc README.md
 %license LICENSES/*
 %{_kf6_bindir}/alligator
+%{_kf6_debugdir}/alligator.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/alligator.svg
 %{_kf6_applicationsdir}/org.kde.alligator.desktop
 %{_kf6_appstreamdir}/org.kde.alligator.appdata.xml

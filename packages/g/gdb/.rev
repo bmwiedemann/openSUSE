@@ -3826,4 +3826,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
     <comment>Fix bsc#1240047.</comment>
     <requestid>1256455</requestid>
   </revision>
+  <revision rev="186" vrev="4">
+    <srcmd5>bdb2c2d290ed59796cbe2bce6489c53d</srcmd5>
+    <version>15.2</version>
+    <time>1744985641</time>
+    <user>anag_factory</user>
+    <comment>Fix bsc#1240838: Don't mention dnf in docs, and drop &quot;rpm-suggestion build-id-mode&quot;.</comment>
+    <requestid>1267603</requestid>
+  </revision>
 </revisionlist>

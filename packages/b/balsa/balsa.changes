@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Apr 17 06:17:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.5:
+  + fix connection issues with broken IMAP servers
+  + add limited support for CardDAV address books
+  + always store user credentials in the Secret Service if possible
+  + improve dealing with user credentials iff the Secret Service is
+    unusable
+  + improve saving attachments
+  + improved setup wizard with server probing
+  + add support for Web Key Directory (WKD) GnuPG keys
+  + improve crypto user interface
+  + add optional DKIM and DMARC checks
+  + prefer TLS connections over STARTTLS
+  + Webkit 4.1 support
+  + use XDG-compliant user data folder layout
+  + remove deprecated stuff (SQLite2, Rubrica, ige-mac-integration)
+  + lots of bug fixes
+  + documentation updates (yet incomplete)
+  + port to meson
+- Drop balsa-webkitgtk-bump.patch: Fixed upstream.
+- Switch to git checkout via source service.
+- Add meson BuildRequries and macros following upstreams port.
+- Align Buildrequires with what meson setup checks for, follow
+  upstream defaults.
+
+-------------------------------------------------------------------
 Sun Mar 12 13:21:24 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add balsa-webkitgtk-bump.patch: Port to build against

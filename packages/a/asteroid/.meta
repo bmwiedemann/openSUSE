@@ -4,5 +4,5 @@
 using OpenGL, GLUT, and optionally GTK and SDL_mixer.
 It features a variety of powerups, taunting aliens, 3D textured asteroids,
 face-melting sound effects, and infinite playability.</description>
-  <devel project="games" package="asteroid" />
+  <devel project="games" package="asteroid"/>
 </package>

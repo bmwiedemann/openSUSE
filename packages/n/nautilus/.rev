@@ -1738,4 +1738,20 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations. (forwarded request 1253534 from iznogood)</comment>
     <requestid>1253728</requestid>
   </revision>
+  <revision rev="221" vrev="1">
+    <srcmd5>7122573cb77f3caf5e34c6e1fbf22c3c</srcmd5>
+    <version>48.1</version>
+    <time>1744898800</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Bugfixes:
+    - Fix switching from tree view to grid
+    - Fix opening new window of starred folder
+    - Fix selecting Google Drive files with file chooser
+    - Run script files in their location
+    - Disallow duplicate bookmarks
+  + Cleanups: Update screenshots
+  + Updated translations. (forwarded request 1268956 from iznogood)</comment>
+    <requestid>1269683</requestid>
+  </revision>
 </revisionlist>

@@ -195,4 +195,12 @@
   * Linux 6.11 support</comment>
     <requestid>1207351</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4e28e5d975af4b2e11e216b86efb9530</srcmd5>
+    <version>20250329</version>
+    <time>1744828770</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20250329</comment>
+    <requestid>1269585</requestid>
+  </revision>
 </revisionlist>

@@ -7,4 +7,12 @@
     <comment> C++ binding for the OpenGL API </comment>
     <requestid>1269383</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>06db475f5b4c2f35190741eb02efca69</srcmd5>
+    <version>3.5.0</version>
+    <time>1744898944</time>
+    <user>anag_factory</user>
+    <comment>- Expand/trim descriptions per guideline.</comment>
+    <requestid>1270108</requestid>
+  </revision>
 </revisionlist>

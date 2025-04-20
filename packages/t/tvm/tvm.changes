@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:27:57 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable cpptest until build with llvm20 fixed upstream
+  https://github.com/apache/tvm/issues/17823
+
+-------------------------------------------------------------------
 Tue Feb 11 12:35:15 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 0.19.0:

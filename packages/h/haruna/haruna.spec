@@ -17,7 +17,7 @@
 
 
 Name:           haruna
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
@@ -30,6 +30,9 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf6-extra-cmake-modules >= 6.0
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Breeze)
+%if 0%{?suse_version} > 1500
+BuildRequires:  cmake(KDSingleApplication-qt6)
+%endif
 BuildRequires:  cmake(KF6ColorScheme) >= 6.0.0
 BuildRequires:  cmake(KF6Config)
 BuildRequires:  cmake(KF6CoreAddons)

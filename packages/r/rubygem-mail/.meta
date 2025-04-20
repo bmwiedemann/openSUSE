@@ -1,5 +1,5 @@
 <package name="rubygem-mail" project="openSUSE:Factory">
-  <title>rubygem-mail-2_4</title>
+  <title>Mail provides a nice Ruby DSL for making, sending and reading emails</title>
   <description>A really Ruby Mail handler.</description>
   <devel project="devel:languages:ruby:extensions" package="rubygem-mail"/>
   <url>https://github.com/mikel/mail</url>

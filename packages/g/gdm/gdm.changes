@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 14 16:36:58 UTC 2025 - Joan Torres <joan.torres@suse.com>
+
+- SLES16 won't ship pulseaudio-gdm-hooks so remove the last missing
+  bits.
+
+-------------------------------------------------------------------
 Mon Apr  7 15:06:20 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - Disable X11 support on SLE:

@@ -7,6 +7,5 @@ Deno offers an alternate build, where the v8 engine is referenced through a stat
 This package exists just to test rusty_v8 in isolation. It will generate binaries that include full debug symbols/tables.
 
 Users should refer to the deno package for an integrated build without development symbols.</description>
-  <devel project="devel:languages:javascript" package="rusty_v8"/>
   <url>https://github.com/denoland/rusty_v8/</url>
 </package>

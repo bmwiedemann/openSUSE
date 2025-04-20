@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  8 11:13:22 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS to fix gcc15 compile time errors
+
+-------------------------------------------------------------------
 Mon Feb 26 07:50:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

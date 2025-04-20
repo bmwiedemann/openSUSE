@@ -88,4 +88,20 @@ see https://build.opensuse.org/project/show/openSUSE:Factory:Staging:adi:73
     <comment></comment>
     <requestid>1199747</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01a49ff0a51a450fbabe5dc5bcfd37bb</srcmd5>
+    <version>3.1.0</version>
+    <time>1744985670</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on pytest-benchmark for running the test suite. 
+
+- Update to 3.1.0
+  * Improved performance of ``as_traceback`` by a large factor.
+  * Dropped support for now-EOL Python 3.8 and added 3.13 in the
+    test grid.
+- Drop more-aggressive-location-stripping.patch, fixed upstream
+- Drop vendore-reraise-from-six.patch, merged upstream
+- Renumber patches</comment>
+    <requestid>1270149</requestid>
+  </revision>
 </revisionlist>

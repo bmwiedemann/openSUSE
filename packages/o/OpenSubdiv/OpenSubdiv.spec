@@ -1,7 +1,7 @@
 #
 # spec file for package OpenSubdiv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2020 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,7 +33,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glfw3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(xcursor)

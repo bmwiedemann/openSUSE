@@ -1,7 +1,7 @@
 #
 # spec file for package enblend-enfuse
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  gsl-devel
 BuildRequires:  help2man
 BuildRequires:  libICE-devel

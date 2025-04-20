@@ -192,4 +192,12 @@
   * 0001-AlarmForm-create-duration-and-snooze-models-correctl.patch</comment>
     <requestid>1256132</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>37fd9d1a2bcb8f7e16b104b70a6476d0</srcmd5>
+    <version>25.04.0</version>
+    <time>1744985895</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
+    <requestid>1270379</requestid>
+  </revision>
 </revisionlist>

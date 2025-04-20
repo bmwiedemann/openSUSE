@@ -99,4 +99,12 @@
   * eSCL: support both forms, scan:SupportedIntent and scan:Intent in capabilities (forwarded request 1255084 from rrahl0)</comment>
     <requestid>1255085</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>68ec2d72c2ccdce714bc5cd46da11ea1</srcmd5>
+    <version>0.99.34</version>
+    <time>1744828915</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269820</requestid>
+  </revision>
 </revisionlist>

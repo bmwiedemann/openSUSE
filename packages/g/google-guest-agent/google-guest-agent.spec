@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20250327.01
+Version:        20250411.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -61,7 +61,7 @@ popd
 %goprep %{import_path}
 for bin in google_guest_agent google_metadata_script_runner; do
     pushd "$bin"
-    CGO_ENABLED=0 go build -ldflags="-s -w -X main.version=%{version}" -mod=vendor
+    CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}" -mod=vendor
     popd
 done
 

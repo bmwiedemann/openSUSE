@@ -7,4 +7,15 @@
     <comment>required by edumfa</comment>
     <requestid>1202148</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>451ab1943c2f958e5320273aca6043bd</srcmd5>
+    <version>6.0.12.20240917</version>
+    <time>1744828744</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264894</requestid>
+  </revision>
 </revisionlist>

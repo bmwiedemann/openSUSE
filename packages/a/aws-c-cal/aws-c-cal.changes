@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 10:13:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Updare to version 0.9.0
+  * Drop support for macOS <10.15 and iOS<11 by @TingDaoK in (#214)
+
+-------------------------------------------------------------------
 Wed Apr  2 14:58:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.8.9

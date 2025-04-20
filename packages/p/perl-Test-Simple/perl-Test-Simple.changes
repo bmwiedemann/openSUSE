@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Mar 30 05:33:57 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302210
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302210  2025-03-29 12:06:57-07:00 America/Los_Angeles
+
+      - Alexander Hartmaier   - fix typo in Test2::Util::Trace docs
+      - Karen Etheridge       - documentation fixes throughout for affect vs effect
+      - Yasuharu Iida feat    - Test2::Tools::Warnings warns called in void context
+      - bernhard Eliminate    - Remove unnecessary empty list assignments
+      - Graham Knop calculate - CAN_SIGSYS when called rather than as a constant
+
+-------------------------------------------------------------------
 Thu Jan 23 05:32:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302209

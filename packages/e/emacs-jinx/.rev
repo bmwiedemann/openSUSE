@@ -133,4 +133,25 @@
   * Preserve alist of loaded dictionaries (gh#rrthomas/enchant#402)</comment>
     <requestid>1245406</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dcb470bb7fc05e7d1699e9519929bd2</srcmd5>
+    <version>2.1</version>
+    <time>1744986119</time>
+    <user>anag_factory</user>
+    <comment>- Rebase 0001-Only-export-necessary-symbols.-Fixes-105.patch
+  against version 2.1
+- Update to version 2.1:
+  * README: Update suggested Vertico configuration
+  * Offer lower-case words for saving in personal dictionary
+  * Improve lighter and menu, also include correct word next
+    to correct all.
+  * Add ~jinx-dir-local-words~ saved in ~.dir-locals.el~.
+    Words can be added to the ~.dir-locals.el~ with the ~/~ key
+    in the ~jinx-correct~ dialog
+  * ~jinx-correct~: For capitalized words, offer lower case variants to save in
+    personal dictionary and file local variables.
+  * Add ~help-echo~ to the Jinx overlays to show possibly actions
+    to perform on highlighted word</comment>
+    <requestid>1270686</requestid>
+  </revision>
 </revisionlist>

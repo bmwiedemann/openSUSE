@@ -643,4 +643,12 @@
     <comment>Ghostscript version upgrade to 10.05.0 fixes CVE-2025-27830 (bsc#1240074) CVE-2025-27831 (bsc#1240075) CVE-2025-27832 (bsc#1240077) CVE-2025-27833 (bsc#1240078) CVE-2025-27834 (bsc#1240079) CVE-2025-27835 (bsc#1240080) CVE-2025-27836 (bsc#1240081) (forwarded request 1266108 from jsmeix)</comment>
     <requestid>1266109</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>5356a80a553b78ecd29bd7db61043ac4</srcmd5>
+    <version>10.05.0</version>
+    <time>1744828670</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269536</requestid>
+  </revision>
 </revisionlist>

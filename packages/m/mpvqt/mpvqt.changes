@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 15 22:32:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.1
+  * add unobserveProperty function and add id argument to
+    observeProperty
+  * mpvcontroller: load config file from
+    `<config folder>/mpvqt/mpvqt.conf`
+
+-------------------------------------------------------------------
 Wed Jul 31 11:58:55 UTC 2024 - Javier Llorente <javier@opensuse.org>
 
 - Update to 1.0.1

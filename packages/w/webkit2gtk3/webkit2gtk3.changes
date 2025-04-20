@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr  9 18:11:08 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Remove conditionals related to SLE 15. It is unlikely that we
+  will sync to SLE 15 again, and this simplifies the spec.
+
+-------------------------------------------------------------------
 Sat Apr  5 22:05:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.48.1 (boo#1240958 boo#1240961 boo#1240962
-  boo#1240963 boo#1240964):
+  boo#1240963 boo#1240964 boo#1240986 boo#1240987):
   + Limit the data stored in session state.
   + Remove the empty area below the title bar in Web Inspector when
     not docked.

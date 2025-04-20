@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:27 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * snapcraft: Fix metainfo filename
+  * snapcraft: Sync core24 to release
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Show taskbar progress when timer is running on Linux/FreeBSD
+  * Fix crash when launching second instance
+  * Remove unused string from Android manifest
+  * Port to the new KLocalizedQmlContext API
+  * Bump minimum KF version to 6.8
+  * Remove explicit KDE_COMPILERSETTINGS_LEVEL
+  * Remove qt_policy that's not needed
+  * Remove now unused resources.qrc
+  * Fix the reference to KAboutData in GlobalMenu
+  * Add brand colors
+  * Disable kFDbusAddons on Haiku too
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -115,4 +115,12 @@
     <comment>- add patch fix-CVE-2025-30204.patch, for fixing bsc#1240506 (forwarded request 1266276 from rrahl0)</comment>
     <requestid>1266277</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>5eddeb49b1c3b9f66e89cf4eb303b1f0</srcmd5>
+    <version>0.25.1</version>
+    <time>1744828918</time>
+    <user>anag_factory</user>
+    <comment>- add patch fix-CVEs.patch to fix bsc#1241235, bsc#1237674 (forwarded request 1269823 from rrahl0)</comment>
+    <requestid>1269824</requestid>
+  </revision>
 </revisionlist>

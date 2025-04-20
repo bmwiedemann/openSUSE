@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * Update maintainer
+  * Change constants container to QHash
+  * Don't format complex numbers in the display
+  * Implement re, im, conj, arg
+  * Remove limitations on undefined domains that are now defined
+  * Enable parsing for 'i', '∠' and add button to UI
+  * Add complex number support to knumber library
+  * Calculate max size when creating bit edit (kde#494207)
+  * Set bit edit to editable when clearing
+  * Fix binary token insertion
+  * Refactor bit edit to improve graphics. (kde#453777)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

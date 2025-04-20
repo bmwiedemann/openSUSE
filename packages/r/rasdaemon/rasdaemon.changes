@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Fri Apr 11 12:51:25 UTC 2025 - trenn@suse.de
+
+- CXL device support (bsc#1241023, jsc#PED-12657)
+- Update to version 0.8.3.0.git+db0870e:
+  * ras-diskerror-handler.h: fix checkpatch warnings
+  * Use the right dev_t decoding for diskerror handler
+  * rasdaemon: Add new modules supported by HiSilicon common section
+  * rasdaemon: ras-mc-ctl: Update logging of CXL memory module data to align with CXL spec rev 3.1
+  * rasdaemon: ras-mc-ctl: Update logging of CXL DRAM event data to align with CXL spec rev 3.1
+  * rasdaemon: ras-mc-ctl: Update logging of CXL general media event data to align with CXL spec rev 3.1
+  * rasdaemon: ras-mc-ctl: Update logging of common event data to align with CXL spec rev 3.1
+  * rasdaemon: ras-mc-ctl: Fix logging of memory event type in CXL DRAM error table
+  * rasdaemon: cxl: Update memory module event to CXL spec rev 3.1
+  * rasdaemon: cxl: Update CXL DRAM event to CXL spec rev 3.1
+  * rasdaemon: cxl: Update CXL general media event to CXL spec rev 3.1
+  * rasdaemon: cxl: Add Component Identifier formatting for CXL spec rev 3.1
+  * rasdaemon: cxl: Update common event to CXL spec rev 3.1
+  * rasdaemon: cxl: Add automatic indexing for storing CXL fields in SQLite database
+  * rasdaemon: cxl: Fix mismatch in region field's name with kernel DRAM trace event
+  * rasdaemon: cxl: Fix logging of memory event type of DRAM trace event
+  * rasdaemon: Fix for parsing error when trace event's format file is larger than PAGE_SIZE
+  * rasdaemon: Add page offline support for cxl memory
+  * Add labels for ASRock X370 Taichi
+  * Add labels for ASRock X570 Creator
+  * Add labels for ASRock X570S PG Riptide
+  * rasdaemon: mce: decode io port for bus error
+  * rasdaemon: arm: do not print error msg if field not found
+  * rasdaemon: add DE error type for AMD
+  * rasdaemon: Fix the display format of JaguarMicro vendor no standard errors
+  * rasdaemon: bump to version 0.8.2
+  * ras-page-isolation.h: remove extra parenthesis
+  * rasdaemon: check if sscanf() processed all arguments on dev_name
+  * ras-page-isolation.h: fix most coding style issues
+  * ras-page-isolation: fix location_fields size
+  * ras-page-isolation: fix additional coding style issues
+  * ras-page-isolation: make memory_location_field static
+  * ras-page-isolation: use snprintf() instead of sprintf()
+  * mce-intel-ivb/mce-intel-sb: remove code commented with #if 0
+  * rasdaemon: use __func__ instead of the name of the function
+  * ipmitool SEL logging of AER CEs on OpenBMC platforms
+  * The rasdaemon service may fail to be started for the first time.
+  * New feature: support memory row CE threshold policy
+  * ras-page-isolation: drop an unused variable
+  * Fix the bug that `config->env` is greater than `ulong_max` when units->val=1
+  * rasdaemon: Modify support for vendor-specific machine check error information
+  * rasdaemon: ras-mc-ctl: Log hpa and region info from cxl_general_media and cxl_dram tables
+  * rasdaemon: CXL: Extract, log and record region info from cxl_general_media and cxl_dram events
+  * rasdaemon: CXL: Fix uncorrectable macro spelling
+  * rasdaemon: ras-non-standard-handler: Fix checkpatch warning
+  * rasdaemon: ras-events: Fix warning ‘filter_ras_mc_event’ defined but not used
+  * rasdaemon: ras-arm-handler: Fix checkpatch warning length exceeds 120 columns
+  * rasdaemon: ras-events: removed obselete code under #if 0
+  * rasdaemon: ras-mce-handler: Fix checkpatch errors
+  * rasdaemon: rbtree: removed unused definition for RB_ROOT
+  * rasdaemon: Fix for compilation warning in ras-memory-failure-handler.c
+  * rasdaemon: Fix mem_fail_event build breakage
+  * ras-events: fix -d option to work again
+  * ci.yml: Change the name of the second job
+  * ci.yml: place checkpatch check in separate
+  * ci.yml: run checkpatch when doing tests
+  * Makefile.am: add types.h to the list of headers
+  * scripts/checkpatch.pl: add support for checking SPDX
+  * rasdaemon: enforce SPDX license tags
+  * ras-events: demote log information about trace being enabled/disabled
+  * rasdaemon: cleanup coding style
+  * ras-events: make returned error code consistent
+  * rasdaemon: add .editorconfig file to follow our coding style
+  * ras-report.h: avoid long lines
+  * types.h: remove whitespaces
+  * types.h: don't depend on linux/bits.h
+  * ras-events: don't use extern inside a C file
+  * rasdaemon: don't use unsafe strcpy, strcat and sprintf
+  * types.h: add an implementation for strscpy() and strscat()
+  * ras-events: drop a dead code to check number of CPUs
+  * ras-report: fix coding style and string fill issues
+  * non-standard-jaguarmicro: avoid CamelCase
+  * checkpatch.pl: warn also about strcat and sprintf usages
+  * rasdaemon: alphabetically sort includes
+  * ras-arm-handler: use GENMASK() macro
+  * rasdaemon: move type macros to a separate header (types.h)
+  * ras-arm-handler: Parse and log ARM Processor Error Info table
+  * rasdaemon: fix some typos and correct spelling
+  * scripts/checkpatch.pl: set default mode to strict
+  * ras-arm-handler: cope with latest upstream changes
+  * scripts/checkpatch.pl: some improvements to reduce false positives
+  * scripts/checkpatch.pl: do some additional cleanups
+  * rasdaemon: adjust install targets for the spec to be build
+  * ras-aer-handler: handle errors when running ipmitool
+  * rbtree.h: Fix an issue introduced by checkpatch logic
+  * rasdaemon: mce-amd-smca: Optimizing decoding of MCA_CTL_SMU bits
+  * Cleanup MCE error log on non-x86 args
+  * contrib/qemu_einj.py: make it more generic to allow other einj types
+  * rasdaemon: add mem_fail_event trigger
+  * trigger: parse only once TRIGGER_DIR env variable
+  * ras-mc-handler: cleanup trigger logic
+  * rasdaemon: add mc_event trigger
+  * util/arm_einj.py: fix a typo at virt-addr
+  * util/arm_einj.py: remove a debug print
+  * util/arm_einj.py: add an utility for ARM error injection via QEMU
+  * ras-arm-handler: be compatible with upstream Kernel
+  * Do a coding style cleanup with regards to tabs and white spaces
+  * rasdaemon: Add Corrected Internal Error for aer_cor_errors
+  * rasdaemon: Update SMCA bank error descriptions
+  * Add Lenovo P920 DIMM labels
+  * rasdaemon: Fix for vendor errors are not recorded in the SQLite database if some cpus are offline
+  * mce-amd-smca: update smca_hwid to use smca_bank_types
+  * labels/asrock: Add DIMM labels for ASRock Rack X570D4U
+  * rasdaemon: Add support to parse microcode field of mce tracepoint
+  * rasdaemon: Add support to parse the PPIN field of mce tracepoint
+  * rasdaemon: ras-mc-ctl: Add support to display mcastatus_msg string
+  * rasdaemon: ras-mc-ctl: Add support for CXL memory module trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL DRAM trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL general media trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL generic trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL poison trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL overflow trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL AER correctable trace events
+  * rasdaemon: ras-mc-ctl: Add support for CXL AER uncorrectable trace events
+  * rasdaemon: ras-memory-failure-handler: update memory failure action page types
+  * rasdaemon: Fix build warnings unused variable if AMP RAS errors is not enabled
+  * labels/asus: Add DIMM labels for Asus PRIME X570-P
+  * Use block_rq_error if RHEL >= 9.1
+  * rasdaemon: Add error decoding for MCA_CTL_SMU extended bits
+  * rasdaemon: labels/apple add MacPro 1,1 and 2,1 models
+  * rasdaemon: labels/intel add DQ57TM vendor and model
+
+-------------------------------------------------------------------
 Mon Mar 11 11:51:38 UTC 2024 - msuchanek@suse.com
 
 - Update to version 0.8.0.49.git+f9cb13b:

@@ -1,7 +1,7 @@
 #
 # spec file for package analitza
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           analitza
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(eigen3)
-BuildRequires:  pkgconfig(glew)
 Requires:       libAnalitza9 = %{version}
 Obsoletes:      analitza5 < %{version}
 Provides:       analitza5 = %{version}

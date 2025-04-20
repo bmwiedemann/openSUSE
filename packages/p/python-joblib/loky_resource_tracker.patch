@@ -1,0 +1,82 @@
+From 85c9aa634bbfb08d3ea692ff1cef5f5e25a0d71e Mon Sep 17 00:00:00 2001
+From: tommoral <thomas.moreau.2010@gmail.com>
+Date: Tue, 15 Apr 2025 02:31:05 +0200
+Subject: [PATCH 1/6] FIX remove link to pid in child resource_tracker
+
+---
+ joblib/externals/loky/backend/popen_loky_posix.py |  2 +-
+ joblib/externals/loky/backend/spawn.py            | 22 ++++++++--------------
+ 2 files changed, 9 insertions(+), 15 deletions(-)
+
+Index: joblib-1.4.2/joblib/externals/loky/backend/popen_loky_posix.py
+===================================================================
+--- joblib-1.4.2.orig/joblib/externals/loky/backend/popen_loky_posix.py
++++ joblib-1.4.2/joblib/externals/loky/backend/popen_loky_posix.py
+@@ -120,7 +120,7 @@ class Popen:
+             reduction._mk_inheritable(tracker_fd)
+             self._fds += [child_r, child_w, tracker_fd]
+             if sys.version_info >= (3, 8) and os.name == "posix":
+-                mp_tracker_fd = prep_data["mp_tracker_args"]["fd"]
++                mp_tracker_fd = prep_data["mp_tracker_fd"]
+                 self.duplicate_for_child(mp_tracker_fd)
+ 
+             from .fork_exec import fork_exec
+Index: joblib-1.4.2/joblib/externals/loky/backend/spawn.py
+===================================================================
+--- joblib-1.4.2.orig/joblib/externals/loky/backend/spawn.py
++++ joblib-1.4.2/joblib/externals/loky/backend/spawn.py
+@@ -82,11 +82,10 @@ def get_preparation_data(name, init_main
+     from .resource_tracker import _resource_tracker
+ 
+     _resource_tracker.ensure_running()
+-    d["tracker_args"] = {"pid": _resource_tracker._pid}
+     if sys.platform == "win32":
+-        d["tracker_args"]["fh"] = msvcrt.get_osfhandle(_resource_tracker._fd)
++        d["tracker_fd"] = msvcrt.get_osfhandle(_resource_tracker._fd)
+     else:
+-        d["tracker_args"]["fd"] = _resource_tracker._fd
++        d["tracker_fd"] = _resource_tracker._fd
+ 
+     if sys.version_info >= (3, 8) and os.name == "posix":
+         # joblib/loky#242: allow loky processes to retrieve the resource
+@@ -105,10 +104,7 @@ def get_preparation_data(name, init_main
+         # process is created (othewise the child won't be able to use it if it
+         # is created later on)
+         mp_resource_tracker.ensure_running()
+-        d["mp_tracker_args"] = {
+-            "fd": mp_resource_tracker._fd,
+-            "pid": mp_resource_tracker._pid,
+-        }
++        d["mp_tracker_fd"] = mp_resource_tracker._fd
+ 
+     # Figure out whether to initialise main in the subprocess as a module
+     # or through direct execution (or to leave it alone entirely)
+@@ -172,23 +168,21 @@ def prepare(data, parent_sentinel=None):
+     if "orig_dir" in data:
+         process.ORIGINAL_DIR = data["orig_dir"]
+ 
+-    if "mp_tracker_args" in data:
++    if "mp_tracker_fd" in data:
+         from multiprocessing.resource_tracker import (
+             _resource_tracker as mp_resource_tracker,
+         )
+ 
+-        mp_resource_tracker._fd = data["mp_tracker_args"]["fd"]
+-        mp_resource_tracker._pid = data["mp_tracker_args"]["pid"]
+-    if "tracker_args" in data:
++        mp_resource_tracker._fd = data["mp_tracker_fd"]
++    if "tracker_fd" in data:
+         from .resource_tracker import _resource_tracker
+ 
+-        _resource_tracker._pid = data["tracker_args"]["pid"]
+         if sys.platform == "win32":
+-            handle = data["tracker_args"]["fh"]
++            handle = data["tracker_fd"]
+             handle = duplicate(handle, source_process=parent_sentinel)
+             _resource_tracker._fd = msvcrt.open_osfhandle(handle, os.O_RDONLY)
+         else:
+-            _resource_tracker._fd = data["tracker_args"]["fd"]
++            _resource_tracker._fd = data["tracker_fd"]
+ 
+     if "init_main_from_name" in data:
+         _fixup_main_from_name(data["init_main_from_name"])

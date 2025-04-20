@@ -1,5 +1,6 @@
 <package name="python-certbot-dns-ovh" project="openSUSE:Factory">
   <title>OVH DNS Authenticator plugin for Certbot</title>
   <description>OVH DNS Authenticator plugin for Certbot</description>
+  <devel project="devel:languages:python:certbot" package="python-certbot-dns-ovh"/>
   <url>https://github.com/certbot/certbot</url>
 </package>

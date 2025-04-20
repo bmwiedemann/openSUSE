@@ -222,8 +222,8 @@ new file mode 100644
 +# Reinitialize GDB and see if we get a dnf suggestion.
 +clean_restart
 +
-+gdb_test "set build-id-verbose 1" "" \
-+    "set build-id-verbose"
++gdb_test "set rpm-suggestion enabled on" "" \
++    "turn on rpm-suggestion feature"
 +
 +# GDB only makes build-id based RPM suggestions if /usr/lib is in
 +# the debug-file-directory list, the reason being that system RPMs

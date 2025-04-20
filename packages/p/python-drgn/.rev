@@ -119,4 +119,21 @@
     <comment></comment>
     <requestid>1252113</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bc94a3f9c54a3e8d1ce1b1d959d1d21d</srcmd5>
+    <version>0.0.31</version>
+    <time>1744986039</time>
+    <user>anag_factory</user>
+    <comment>- Update to drgn-0.0.31:
+  * New command line options and APIs for controlling how debugging
+    information is found
+  * Improved debuginfod integration
+  * Stack tracing through unknown kernel modules with ORC
+  * New helpers
+  * Bug fixes
+- Drop upstreamed patches:
+  * libdrgn-kdump-prepare-for-incompatible-changes-in-li.patch
+  * libdrgn-kdump-simplify-getting-the-PRSTATUS-attribut.patch</comment>
+    <requestid>1270555</requestid>
+  </revision>
 </revisionlist>

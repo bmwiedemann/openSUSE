@@ -655,4 +655,15 @@
   * otp: Show the QR code in a separate window if necessary (bsc#1231177)</comment>
     <requestid>1204945</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>2eba937847e169cd2752ff3839590d09</srcmd5>
+    <version>1.5.5</version>
+    <time>1745134486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.5:
+  * user: Add field to add the user to specified groups (bsc#1241215)
+  * Add title and description to remaining modules
+- Remove changesauthor from _service</comment>
+    <requestid>1269600</requestid>
+  </revision>
 </revisionlist>

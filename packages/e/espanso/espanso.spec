@@ -1,7 +1,7 @@
 #
 # spec file for package espanso
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         __rustflags -Clink-arg=-I/usr/include/libxkbcommon
 
 Name:           espanso
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        A cross-platform Text Expander written in Rust
 License:        GPL-3.0-only
@@ -29,13 +29,13 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  gcc-c++
-BuildRequires:  libopenssl-devel
-BuildRequires:  libnotify4
 BuildRequires:  libXtst-devel
-BuildRequires:  xdotool-devel
+BuildRequires:  libnotify4
+BuildRequires:  libopenssl-devel
 BuildRequires:  libxkbcommon-devel
 BuildRequires:  libxkbcommon-x11-devel
 BuildRequires:  wxGTK3-devel >= 3.0
+BuildRequires:  xdotool-devel
 %if 0%{?suse_version} < 1600
 BuildRequires:  libstdc++6-devel-gcc13
 %endif

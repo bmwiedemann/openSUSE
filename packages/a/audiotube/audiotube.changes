@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix loading certain artist pages
+  * cmake: Require ytmisicapi 1.10.2
+  * Update to ytmusicapi 1.10.2
+  * Fixes for the software renderer
+  * Update tested ytmusicapi version to 1.10.1
+  * Fix loading albums without id
+  * Appdata: add display size
+  * Fix skipping based on lyrics (skipping in general is still broken)
+  * center lyrics horizontally
+  * Update ytmusicapi to 1.9.0
+  * LyricsModel: Fix error handling
+  * MaximizedPlayerPage: solve some unqualified accesses
+  * Unify lyrics font size
+  * Add synchronized lyrics
+  * Removed empty line just in case
+  * Added Alessio Adamo as supporter
+  * Add the album name to MaximizedPlayerPage
+  * flatpak: Update dependencies
+  * Fix appdata to align with appstream spec
+  * Fix parsing certain playlists
+  * flatpak: Update runtime to 6.8
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

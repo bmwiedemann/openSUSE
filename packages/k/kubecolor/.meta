@@ -1,5 +1,6 @@
 <package name="kubecolor" project="openSUSE:Factory">
   <title></title>
   <description>A command-line wrapper used to add colors to your kubectl output.</description>
+  <devel project="devel:kubic" package="kubecolor"/>
   <url>https://kubecolor.github.io/</url>
 </package>

@@ -367,4 +367,29 @@
     <comment></comment>
     <requestid>1252745</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>24588eb4f30a726ebc797627604a175c</srcmd5>
+    <version>4.2.1</version>
+    <time>1744828804</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.2.1:
+  + Fix the problem that the process does not exit cleanly (after a
+    timeout) when running as GApplication service.
+  + Revert commit
+    https://gitlab.gnome.org/GNOME/gnome-nibbles/-/commit/fd432d46e4f8139a2489d4b66ad89f85be7a22e3
+    as it causes the volume to vary during the playing of a sound
+    file. This revert brings back the gsound build dependency. (forwarded request 1268944 from iznogood)</comment>
+    <requestid>1269682</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>ced4fddbb1efeca2d7a1826b26127631</srcmd5>
+    <version>4.2.2</version>
+    <time>1744985839</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.2.2:
+  + Fix issues:
+    - glgo/GNOME/gnome-nibbles#74
+    - glgo/GNOME/gnome-nibbles#75 (forwarded request 1270184 from iznogood)</comment>
+    <requestid>1270272</requestid>
+  </revision>
 </revisionlist>

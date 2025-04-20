@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add QML bindings for the CAP API
+  * Port away from deprecated QDateTime/QTimeZone API
+  * Explicitly handle unknown certainty/urgency/severity
+  * Add missing include
+  * cmake: Raise minimum cmake version to 3.16
+  * Unify CAP enum parsing
+  * Use HTTPS API endpoint for GeoNames
+  * Remove clang-format CI job
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

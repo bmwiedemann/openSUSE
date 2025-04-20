@@ -93,7 +93,7 @@ export LANG=en_US.UTF8
 %python_alternative %{_bindir}/zconfig
 %python_alternative %{_bindir}/zconfig_schema2html
 %{python_sitelib}/ZConfig
-%{python_sitelib}/ZConfig-%{version}.dist-info
+%{python_sitelib}/zconfig-%{version}.dist-info
 
 %files %{python_files doc}
 %doc docs/

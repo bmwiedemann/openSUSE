@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package v4l-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,47 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "qv4l2"
 %global psuffix -%{flavor}
+
+%ifarch armv7l armv7hl aarch64
+# Qt6 doesn't have gl support in these archs
+%bcond_with qvidcap
+%else
+%if 0%{?suse_version} == 1500
+# Neither does Qt in SLE15
+%bcond_with qvidcap
+%else
+%bcond_without qvidcap
+%endif
+%endif
+
 %endif
 %define _udevdir %(pkg-config --variable udevdir udev)
 %define so_ver 0
 %define sname v4l-utils
 Name:           v4l-utils%{?psuffix}
-Version:        1.24.1
+Version:        1.28.1
 Release:        0
 Summary:        Utilities for video4linux
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://linuxtv.org/downloads/v4l-utils/
-Source0:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2
-Source1:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.bz2.asc
+Source0:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.xz
+Source1:        https://linuxtv.org/downloads/v4l-utils/%{sname}-%{version}.tar.xz.asc
 Source2:        %{sname}.keyring
 Source100:      baselibs.conf
 Patch0:         use_system_v4l_for_qv4l.patch
 Patch1:         v4l-utils-32bitfix.patch
 BuildRequires:  alsa-devel
-BuildRequires:  autoconf
-BuildRequires:  automake
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 Requires:       libv4l = %{version}
 %if "%{flavor}" == ""
@@ -50,12 +67,15 @@ BuildRequires:  doxygen
 BuildRequires:  kernel-headers
 %endif
 %if "%{flavor}" == "qv4l2"
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Platform)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(libv4lconvert)
 %endif
@@ -99,6 +119,15 @@ Requires:       libdvbv5-%{so_ver} = %{version}
 %description -n libdvbv5-devel
 The libdvbv5-devel package contains libraries and header files for
 developing applications that use libdvbv5.
+
+%package -n libdvbv5-gconv
+Summary:        Gconv files with the charsets For Digital TV
+License:        GPL-2.0-only
+Requires:       libdvbv5-%{so_ver} = %{version}
+
+%description -n libdvbv5-gconv
+Some digital TV standards define their own charsets. Add library
+support for them: EN 300 468 and ARIB STD-B24
 
 %package -n libv4l
 Summary:        Collection of video4linux support libraries
@@ -179,38 +208,46 @@ qv4l2 is a test control and streaming test application for video4linux.
 %autosetup -p1 -n %{sname}-%{version}
 
 %build
-autoreconf -vfi
-%configure \
-  --disable-static \
-  --disable-silent-rules \
-%if "%{flavor}" == "qv4l2"
-  --disable-libdvbv5 \
-%else
-  --disable-qv4l2 \
+%if 0%{?suse_version} == 1500
+export CC=gcc-13
+export CXX=g++-13
 %endif
-  --with-udevdir=%{_udevdir}
 
+%meson \
+  -Dudevdir=%{_udevdir} \
+  -Ddoxygen-doc=disabled \
+  -Ddoxygen-man=false \
+  -Ddoxygen-html=false \
+  -Dbpf=disabled \
 %if "%{flavor}" == "qv4l2"
-export CXXFLAGS="-std=c++14 %{optflags}"
-%make_build -C utils/libmedia_dev
-%make_build -C utils/libv4l2util
-%make_build -C utils/qv4l2
+  -Dqv4l2=enabled \
+%if %{with qvidcap}
+  -Dqvidcap=enabled \
 %else
-%make_build
+  -Dqvidcap=disabled \
 %endif
+  -Dlibdvbv5=disabled \
+  -Dv4l-plugins=false \
+  -Dv4l-utils=false \
+  -Dv4l-wrappers=false \
+  -Dv4l2-compliance-libv4l=false \
+  -Dv4l2-ctl-libv4l=false \
+  -Dv4l2-ctl-stream-to=false \
+%else
+  -Dqv4l2=disabled \
+  -Dqvidcap=disabled \
+  -Dlibdvbv5=enabled \
+%endif
+  %{nil}
+%meson_build
 
 %install
-%if "%{flavor}" == "qv4l2"
-%make_install -C utils/qv4l2
-%suse_update_desktop_file -N "QV4l2" -G "V4L2 Test Utility" -r qv4l2 Qt AudioVideo Video TV
-
-%else
-%make_install
+%meson_install
+%if "%{flavor}" == ""
+install -dm 0755 %{buildroot}%{_libdir}/gconv/gconv-modules.d
+mv %{buildroot}%{_libdir}/gconv/gconv-modules %{buildroot}%{_libdir}/gconv/gconv-modules.d/libdvbv5.conf
 %find_lang "%{name}"
 %find_lang libdvbv5
-
-# Not needed (links to plugins in libv4l subdir)
-rm %{buildroot}%{_libdir}/{v4l1compat.so,v4l2convert.so}
 %endif
 
 find %{buildroot} -type f -name "*.la" -delete -print
@@ -218,6 +255,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %if "%{flavor}" == ""
 %post -n libdvbv5-%{so_ver} -p /sbin/ldconfig
 %postun -n libdvbv5-%{so_ver} -p /sbin/ldconfig
+%post -n libdvbv5-gconv -p %{_sbindir}/iconvconfig
+%postun -n libdvbv5-gconv -p %{_sbindir}/iconvconfig
 %post -n libv4l1-%{so_ver} -p /sbin/ldconfig
 %postun -n libv4l1-%{so_ver} -p /sbin/ldconfig
 %post -n libv4l2-%{so_ver} -p /sbin/ldconfig
@@ -262,8 +301,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc ChangeLog README.md TODO
 %{_bindir}/decode_tm6000
 %{_bindir}/v4l2-compliance
+%{_bindir}/v4l2-tracer
 %{_sbindir}/v4l2-dbg
 %{_mandir}/man1/v4l2-compliance.1%{?ext_man}
+%{_mandir}/man1/v4l2-tracer.1%{?ext_man}
 
 %files -n dvb-utils
 %license COPYING
@@ -282,6 +323,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/libdvbv5/
 %{_libdir}/libdvbv5.so
 %{_libdir}/pkgconfig/libdvbv5*.pc
+
+%files -n libdvbv5-gconv
+%{_libdir}/gconv/*.so
+%{_libdir}/gconv/gconv-modules.d/libdvbv5.conf
 
 %files -n libv4l
 %license COPYING.libv4l
@@ -321,6 +366,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/icons/hicolor/scalable/apps
 %{_datadir}/icons/hicolor/*/apps/qv4l2.*
 %{_mandir}/man1/qv4l2.1%{?ext_man}
+%if %{with qvidcap}
+%{_bindir}/qvidcap
+%{_datadir}/applications/qvidcap.desktop
+%{_datadir}/icons/hicolor/*/apps/qvidcap.*
+%{_mandir}/man1/qvidcap.1%{?ext_man}
+%endif
+
 %endif
 
 %changelog

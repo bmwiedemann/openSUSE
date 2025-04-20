@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Apr 18 12:38:48 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.1.7+git0.c3f408945:
+  * [RELEASE] Released version 3.1.7
+  * BUG/MINOR: rhttp: ensure GOAWAY can be emitted after reversal
+  * BUG/MINOR: rhttp: fix reconnect if timeout connect unset
+  * BUG/MINOR: mux-h2: prevent past scheduling with idle connections
+  * MINOR: compiler: rely on builtin detection for __builtin_unreachable()
+  * MINOR: debug: make ha_stuck_warning() print the whole message at once
+  * MINOR: debug: make ha_stuck_warning() only work for the current thread
+  * MEDIUM: wdt: always make the faulty thread report its own warnings
+  * MINOR: pass a valid buffer pointer to ha_thread_dump_one()
+  * MINOR: debug: remove unused case of thr!=tid in ha_thread_dump_one()
+  * MINOR: debug: always reset the dump pointer when done
+  * MINOR: tinfo: keep a copy of the pointer to the thread dump buffer
+  * MINOR: debug: protect ha_dump_backtrace() against risks of re-entrance
+  * MINOR: tools: protect dladdr() against reentrant calls from the debug handler
+  * MINOR: tools: also protect the library name resolution against concurrent accesses
+  * BUG/MINOR: debug: detect and prevent re-entrance in ha_thread_dump_fill()
+  * BUG/MINOR: wdt/debug: avoid signal re-entrance between debugger and watchdog
+  * BUG/MINOR debug: fix !USE_THREAD_DUMP in ha_thread_dump_fill()
+  * BUG/MINOR: threads: set threads_idle and threads_harmless even with no threads
+  * BUILD: makefile: enable backtrace by default on musl
+  * MINOR: compiler: add ASSUME_NONNULL() to tell the compiler a pointer is valid
+  * MINOR: compiler: also enable __builtin_assume() for ASSUME()
+  * MINOR: compiler: add a new "ASSUME" macro to help the compiler
+  * MINOR: compiler: add a __has_builtin() macro to detect features more easily
+  * BUG/MEDIUM: hlua: fix hlua_applet_{http,tcp}_fct() yield regression (lost data)
+  * BUG/MINOR: h3: reject request URI with invalid characters
+  * BUG/MINOR: h3: reject invalid :path in request
+  * BUG/MINOR: h3: filter upgrade connection header
+  * BUG/MEDIUM: h3: trim whitespaces in header value prior to QPACK encoding
+  * BUG/MEDIUM: h3: trim whitespaces when parsing headers value
+  * MINOR: debug: detect call instructions and show the branch target in backtraces
+  * MINOR: debug: in call traces, dump the 8 bytes before the return address, not after
+  * MINOR: tools: let dump_addr_and_bytes() support dumping before the offset
+  * BUILD: quic: fix overflow in global tune
+  * MINOR: quic: define quic_tune
+  * MINOR: quic: transform pacing settings into a global option
+  * MINOR: quic: allow BBR testing without pacing
+  * MINOR: quic: remove references to burst in quic-cc-algo parsing
+  * BUG/MEDIUM: http-ana: Report 502 from req analyzer only during rsp forwarding
+  * BUG/MINOR: http-ana: Properly detect client abort when forwarding the response
+  * DOC: config: add the missing "force-cfg-parser-pause" to the global kw index
+  * DOC: config: add the missing "profiling.memory" to the global kw index
+  * BUG/MINOR: debug: remove the trailing \n from BUG_ON() statements
+  * BUG/MINOR: hlua: fix invalid errmsg use in hlua_init()
+  * BUG/MINOR: backend: do not use the source port when hashing clientip
+  * BUG/MEDIUM: sample: fix risk of overflow when replacing multiple regex back-refs
+  * BUG/MINOR: log: fix CBOR encoding with LOG_VARTEXT_START() + lf_encode_chunk()
+  * CLEANUP: log: adjust _lf_cbor_encode_byte() comment
+  * BUG/MINOR: hlua_fcn: fix potential UAF with Queue:pop_wait()
+  * MINOR: task: add thread safe notification_new and notification_wake variants
+  * TESTS: Fix build for filltab25.c
+  * BUG/MEDIUM: stream: Fix a possible freeze during a forced shut on a stream
+  * DOC: update INSTALL to reflect the minimum compiler version
+  * BUILD: quic_sock: address a strict-aliasing build warning with gcc 5 and 6
+  * BUG/MEDIUM: backend: fix reuse with set-dst/set-dst-port
+  * BUG/MINOR: backend: do not overwrite srv dst address on reuse
+  * BUG/MINOR: rhttp: fix incorrect dst/dst_port values
+  * BUILD: compiler: undefine the CONCAT() macro if already defined
+  * DOC: config: fix two missing "content" in "tcp-request" examples
+  * BUG/MINOR: config: silence .notice/.warning/.alert in discovery mode
+  * BUG/MINOR: log: fix gcc warn about truncating NUL terminator while init char arrays
+  * BUG/MINOR: mux-quic: remove extra BUG_ON() in _qcc_send_stream()
+  * BUG/MEDIUM: mux-quic: fix crash on RS/SS emission if already close local
+  * BUG/MEDIUM: peers: prevent learning expiration too far in futur from unsync node
+  * BUG/MINOR: peers: fix expire learned from a peer not converted from ms to ticks
+  * MINOR: log: support "raw" logformat node typecast
+
+-------------------------------------------------------------------
+Tue Mar 25 18:12:19 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Build with QUIC on Tumbleweed
+
+-------------------------------------------------------------------
 Fri Mar 21 13:41:55 UTC 2025 - mrueckert@suse.de
 
 - Update to version 3.1.6+git0.d929ca290:

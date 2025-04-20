@@ -137,4 +137,25 @@
     <comment></comment>
     <requestid>1198702</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>01cb5f12340000aa1c57fea5e40172d7</srcmd5>
+    <version>3.0.1</version>
+    <time>1744898968</time>
+    <user>anag_factory</user>
+    <comment>- Drop BuildRequires on gdcm to skip tests.
+
+- version 3.0.1
+  * patch removed: pydicom-pr1908-fixpillow.patch
+  * patch removed: pydicom-pr2076-np2.patch
+  * some tests disabled
+  * changes in 3.0.1:
+    * Changed logging of missing plugin imports to use :attr:`logging.DEBUG` (:issue:`2128`).
+    * Include all :mod:`~pydicom.examples` module datasets with the package (:issue:`2128`, :issue:`2131`)
+    * Fixed an invalid VR value in the private data dictionary (:issue:`2132`).
+    * Fixed checking for *Bits Stored* when converting *Float Pixel Data* and *Double Float
+      Pixel Data* using the :mod:`~pydicom.pixels` backend (:issue:`2135`).
+    * Fixed decoding of pixel data for images with *Bits Allocated* of 1 when frame boundaries are not aligned with byte boundaries (:issue:`2134`).
+  * changes in 3.0: seer release_notes/v3.0.0.rst</comment>
+    <requestid>1270154</requestid>
+  </revision>
 </revisionlist>

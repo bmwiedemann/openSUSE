@@ -1,10 +1,10 @@
-Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
+Index: sudo-1.9.16p2/plugins/sudoers/sudoers.in
 ===================================================================
---- sudo-1.9.15p2.orig/plugins/sudoers/sudoers.in
-+++ sudo-1.9.15p2/plugins/sudoers/sudoers.in
-@@ -41,32 +41,23 @@
- ##
- ## Defaults specification
+--- sudo-1.9.16p2.orig/plugins/sudoers/sudoers.in
++++ sudo-1.9.16p2/plugins/sudoers/sudoers.in
+@@ -50,29 +50,23 @@ Defaults!@visudo@ env_keep += "SUDO_EDIT
+ ## arbitrary commands under sudo.
+ @secure_path_config@Defaults secure_path="@secure_path@"
  ##
 -## You may wish to keep some of the following environment variables
 -## when running commands via sudo.
@@ -29,9 +29,6 @@ Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
 -## Uncomment to enable special input methods.  Care should be taken as
 -## this may allow users to subvert the command being run via sudo.
 -# Defaults env_keep += "XMODIFIERS GTK_IM_MODULE QT_IM_MODULE QT_IM_SWITCHER"
--##
--## Uncomment to use a hard-coded PATH instead of the user's to find commands
--# Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 +## Prevent environment variables from influencing programs in an
 +## unexpected or harmful way (CVE-2005-2959, CVE-2005-4158, CVE-2006-0151)
 +Defaults always_set_home
@@ -50,9 +47,9 @@ Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
 +## Use this PATH instead of the user's to find commands.
 +Defaults secure_path="/usr/sbin:/usr/bin:/sbin:/bin"
  ##
- ## Uncomment to restore the historic behavior where a command is run in
- ## the user's own terminal.
-@@ -81,7 +72,6 @@
+ ## Uncomment to disable "use_pty" when running commands as root.
+ ## Commands run as non-root users will run in a pseudo-terminal,
+@@ -94,7 +88,6 @@ Defaults!@visudo@ env_keep += "SUDO_EDIT
  ## Set maxseq to a smaller number if you don't have unlimited disk space.
  # Defaults log_output
  # Defaults!/usr/bin/sudoreplay !log_output
@@ -60,9 +57,9 @@ Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
  # Defaults!REBOOT !log_output
  # Defaults maxseq = 1000
  ##
-@@ -95,6 +85,12 @@
- ## slower by these options and also can clutter up the logs.
- # Defaults!PKGMAN !intercept, !log_subcmds
+@@ -112,6 +105,12 @@ Defaults!@visudo@ env_keep += "SUDO_EDIT
+ ## modules such as pam_faillock will not be printed.
+ # Defaults !pam_silent
  
 +## In the default (unconfigured) configuration, sudo asks for the root password.
 +## This allows use of an ordinary user account for administration of a freshly
@@ -73,7 +70,7 @@ Index: sudo-1.9.15p2/plugins/sudoers/sudoers.in
  ##
  ## Runas alias specification
  ##
-@@ -110,13 +106,5 @@ root ALL=(ALL:ALL) ALL
+@@ -127,13 +126,5 @@ root ALL=(ALL:ALL) ALL
  ## Same thing without a password
  # %wheel ALL=(ALL:ALL) NOPASSWD: ALL
  

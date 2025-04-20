@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Persist new Show Hidden Files setting
+  * Add option to show hidden files
+  * Use 6.10 baloo
+  * Remove cfitsio build system
+  * Fix presentation of image size integers (kde#488639)
+  * browsermainpage: Add contentsMargins around mUrlNavigatorContainer
+  * Do not duplicate MIME types in list of supported image formats
+  * birdseyeview: Use actual dpr
+  * Add xml/yaml linting
+  * Replace QHoverEvent::pos() with position().toPoint()
+  * appdata remove mention of "Konqueror web browser" from https://apps.kde.org/gwenview
+  * Fix incorrect numbering in full screen mode for the first image (kde#406105)
+  * Added supporter Steven Dunbar
+  * Added supporter  Alex Gurenko
+  * Adde supporter retrokestrel
+  * Added supporter elbekai
+  * Adding supporter Florent Tassy
+  * Fix -Wdangling-reference
+  * Disable wayland on Haiku
+  * Avoid QList clones when testing for indexed color
+  * Fix color management for images in premultipled alpha format
+  * Fix garbled colors when scaling indexed-color images (kde#459627)
+  * rasterimageview: use QRectF, QPointF and QSizeF
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

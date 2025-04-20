@@ -330,4 +330,18 @@ SPDX format - plus it appears as though only one license relevant binary is crea
 </comment>
     <requestid>1233155</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>3114cca520dfc3c7e5bad03c5b478351</srcmd5>
+    <version>2.9.0</version>
+    <time>1744828846</time>
+    <user>anag_factory</user>
+    <comment>- Add BuildRequires: libX11-devel
+  * needed for tumbleweed build after dropping glew-devel
+- a52_init fix is needed only for leap 15.x
+- Drop unnecessary dependency on glew; has not been used since
+  version 2.6.0 and replaced by GLAD
+  (https://github.com/scummvm/scummvm/commit/21b0d6d).
+</comment>
+    <requestid>1269728</requestid>
+  </revision>
 </revisionlist>

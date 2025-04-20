@@ -634,4 +634,22 @@
       users should instead pass cryptography priate key instances. This is in preparation for deprecating pyOpenSSL's PKey entirely.</comment>
     <requestid>1243130</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>376203823333090cc98ae3751dfbd5ba</srcmd5>
+    <version>25.0.0</version>
+    <time>1744828629</time>
+    <user>anag_factory</user>
+    <comment>- Wrap the metadata directory name in a distro-based conditional
+
+- Normalize metadata directory name.</comment>
+    <requestid>1266172</requestid>
+  </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>b8f44ccb5e33d6d0d7351a019066b8b7</srcmd5>
+    <version>25.0.0</version>
+    <time>1745134482</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1270975</requestid>
+  </revision>
 </revisionlist>

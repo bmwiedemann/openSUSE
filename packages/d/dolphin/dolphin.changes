@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * kstandarditemlistwidget: make overlay icons independant of preview size (kde#500428)
+  * Fix crash when opening new tab with search (kde#500101)
+  * dolphinview: Add widget parameter to elided QToolTip::showText (kde#500009)
+  * kitemlistkeyboardsearchmanager: smarter search start position (kde#422951)
+  * Removed unused imports to QUuid,quuid (kde#197009)
+  * Added code for a "Rename Tab" feature. (kde#197009)
+  * implement shortcut action for file creation (kde#462899)
+  * Ignore diacritical marks for keyboard search (kde#482394)
+  * Refactor Overlay Handling (kde#497372)
+  * Icons: when adding overlays pass in the output size (kde#498211)
+  * information panel: scale according dpr (kde#497576)
+  * Improve trash context menu UI (kde#498132)
+  * Elide file names in the middle again (kde#497664)
+  * Fix focus changing when unminimising on X11 (kde#497803)
+  * Update copyright to 2025 (kde#474515)
+  * Mirror details view mode for right-to-left languages (kde#449211)
+  * Have special keyboard controls in selection mode (kde#458091)
+  * dolphinview: Update thumbnail on filename change (kde#497555)
+  * ViewProperties: Return nullptr if viewPropertiesString is empty (kde#495878)
+  * DolphinViewContainer: make sure searchbox is initialized before setSearchPath (kde#497021)
+  * Make "open path" and "open path in new tab" scroll to the selected item (kde#495613)
+  * DolphinTabPage: Update container view url on redirection (kde#496414)
+  * DolphinViewContainer: set searchPath on redirect, check for connected urlNavigator (kde#496387)
+  * DolphinView: beginAnchoredSelection after setSelected in selectNextItem (kde#495371)
+  * natural sort: exclude extension when comparing filenames (kde#416025)
+  * generalviewsettingspage: Use qobject_cast instead of static_cast (kde#492741)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

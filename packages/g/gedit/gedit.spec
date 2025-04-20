@@ -1,7 +1,7 @@
 #
 # spec file for package gedit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%bcond_without  python_bindings
-%define api_ver 48.1
+%define api_ver 48.2
 
 Name:           gedit
-Version:        48.1
+Version:        48.2
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Text/Editors
-URL:            https://wiki.gnome.org/Apps/Gedit
+URL:            https://gedit-text-editor.org
 Source0:        %{name}-%{version}.tar.zst
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
@@ -38,7 +37,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  iso-codes-devel
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base >= 3.2.3
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(glib-2.0) >= 2.64
@@ -46,45 +44,27 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
 BuildRequires:  pkgconfig(gspell-1) >= 1.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
-BuildRequires:  pkgconfig(libgedit-gtksourceview-300)
 BuildRequires:  pkgconfig(libgedit-amtk-5)
+BuildRequires:  pkgconfig(libgedit-gtksourceview-300)
 BuildRequires:  pkgconfig(libgedit-tepl-6) >= 6.11
 BuildRequires:  pkgconfig(libpeas-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(vapigen) >= 0.25.1
 BuildRequires:  pkgconfig(x11)
-Requires:       python3-cairo
-Requires:       python3-gobject
-#bnc#910913 - plugin snippets depend on this package
-Requires:       python3-gobject-cairo
 Recommends:     iso-codes
 Provides:       gedit2 = %{version}
 Obsoletes:      gedit2 < %{version}
-%if %{with python_bindings}
-# See bnc#847114 - plugins generally depend on it
-Requires:       python3-gedit
-%endif
 # Throws "Settings schema 'org.gnome.desktop.interface' is not installed"
 #   in WSLg without this; see boo#1198312
 Requires:       gsettings-desktop-schemas
+Obsoletes:      python3-gedit < 48.2
 
 %description
 Gedit is a UTF-8 text editor for the GNOME environment.
 
 It features a multi-document frame, syntax highlighting, autoindent
 options, autosave, and plugins.
-
-%package -n python3-gedit
-Summary:        Python bindings for gedit
-Group:          Development/Languages/Python
-BuildArch:      noarch
-
-%description -n python3-gedit
-Gedit is a UTF-8 text editor for the GNOME
-environment.
-
-This package provides the python bindings, based on gobject-introspection.
 
 %package devel
 Summary:        Development files for the gedit text editor
@@ -94,9 +74,6 @@ Provides:       gedit2-devel = %{version}
 Obsoletes:      gedit2-devel < %{version}
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
-%if %{with python_bindings}
-Requires:       python3-gedit
-%endif
 
 %description devel
 Gedit is a UTF-8 text editor for the GNOME
@@ -163,11 +140,6 @@ This subpackage contains the header files for creating gedit plugins.
 
 %{_libdir}/gedit/plugins/libquickhighlight.so
 %{_mandir}/man1/gedit.1%{?ext_man}
-
-%if %{with python_bindings}
-%files -n python3-gedit
-%{python3_sitelib}/gi/
-%endif
 
 %files devel
 %doc CONTRIBUTING.md

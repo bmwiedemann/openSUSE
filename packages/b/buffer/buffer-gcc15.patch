@@ -1,0 +1,57 @@
+--- buffer.c	2025-04-17 11:46:36.948674598 +0000
++++ buffer.c	2025-04-17 11:54:33.505803217 +0000
+@@ -135,13 +135,13 @@ static char *rcsid = "$Header: /a/swan/h
+ #define M *1024*1024
+ 
+ /* Some forward declarations */
+-void byee();
++void byee(int);
+ void start_reader_and_writer();
+-void parse_args();
++void parse_args(int, char**);
+ void set_handlers();
+ void buffer_allocate();
+ void report_proc();
+-int do_size();
++int do_size(char *);
+ void get_buffer();
+ void reader();
+ void writer();
+@@ -152,7 +152,7 @@ void test_writer();
+ int fill_block();
+ void get_next_filled_block();
+ int data_to_write();
+-void write_blocks_to_stdout();
++void write_blocks_to_stdout(int, int);
+ void write_block_to_stdout();
+ void pr_out();
+ void end_writer();
+--- sem.c	2025-04-17 11:46:36.948719674 +0000
++++ sem.c	2025-04-17 11:54:17.480141665 +0000
+@@ -49,7 +49,7 @@ union semun {
+ extern void report_proc();
+ 
+ /* Used to end the program - on error */
+-extern void byee();
++extern void byee(int);
+ 
+ 
+ 
+--- sem.h	2025-04-17 11:46:36.948752321 +0000
++++ sem.h	2025-04-17 11:52:52.458366082 +0000
+@@ -27,10 +27,10 @@
+  * semaphores */
+ 
+ /* Allocate new semaphores */
+-int new_sems();
++int new_sems(int);
+ 
+ /* Perform actions on semaphores */
+-void sem_set();
+-void lock();
+-void unlock();
+-void remove_sems();
++void sem_set(int, int, int);
++void lock(int, int);
++void unlock(int, int);
++void remove_sems(int);

@@ -1,7 +1,7 @@
 #
-# spec file for package python3-gcemetadata
+# spec file for package python-gcemetadata
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,13 @@
 #
 
 
+%if 0%{?suse_version} >= 1600
+%define pythons %{primary_python}
+%else
 %{?sle15_python_module_pythons}
+%endif
+%global _sitelibdir %{%{pythons}_sitelib}
+
 %define upstream_name gcemetadata
 Name:           python-gcemetadata
 Version:        1.0.4
@@ -26,17 +32,17 @@ License:        GPL-3.0-or-later
 Group:          System/Management
 URL:            https://github.com/SUSE/Enceladus
 Source0:        %{upstream_name}-%{version}.tar.bz2
-Requires:       python
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{pythons}-pip
+BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Obsoletes:      python3-gcemetadata < %{version}
+Obsoletes:      python310-gcemetadata < %{version}
+Obsoletes:      python311-gcemetadata < %{version}
+Obsoletes:      python312-gcemetadata < %{version}
+Obsoletes:      python313-gcemetadata < %{version}
 BuildArch:      noarch
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
-%python_subpackages
 
 %description
 A module for collecting instance metadata from Google Compute Engine.
@@ -44,32 +50,21 @@ A module for collecting instance metadata from Google Compute Engine.
 %prep
 %autosetup -p1 -n %{upstream_name}-%{version}
 
-
 %build
 %pyproject_wheel
-
 
 %install
 %pyproject_install
 install -d -m 755 %{buildroot}/%{_mandir}/man1
 install -m 644 man/man1/gcemetadata.1 %{buildroot}/%{_mandir}/man1
-%python_clone -a %{buildroot}%{_bindir}/%{upstream_name}
-%python_clone -a %{buildroot}%{_mandir}/man1/gcemetadata.1
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes %{buildroot}%{_sitelibdir}
 
-
-%post
-%python_install_alternative gcemetadata gcemetadata.1%{?ext_man}
-
-%postun
-%python_uninstall_alternative gcemetadata
-
-%files %{python_files}
+%files
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/%{upstream_name}
-%{python_sitelib}/%{upstream_name}
-%{python_sitelib}/%{upstream_name}-%{version}*-info
-%python_alternative %{_mandir}/man1/%{upstream_name}.1%{?ext_man}
+%{_bindir}/%{upstream_name}
+%{_sitelibdir}/%{upstream_name}
+%{_sitelibdir}/%{upstream_name}-%{version}*-info
+%{_mandir}/man1/%{upstream_name}.1%{?ext_man}
 
 %changelog

@@ -2238,4 +2238,19 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1266391</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>a727f4c4ca0638cc022007cee151bed0</srcmd5>
+    <version>48.2</version>
+    <time>1744898808</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Fix animated cursors
+  + Announce workspace changes to screen reader
+  + Fix popups showing in some situations
+  + Fix wrong cursor after window animations
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations. (forwarded request 1269164 from iznogood)</comment>
+    <requestid>1269687</requestid>
+  </revision>
 </revisionlist>

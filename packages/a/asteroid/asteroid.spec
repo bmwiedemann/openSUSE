@@ -24,11 +24,10 @@ Version:        1.2.1
 Release:        0
 Summary:        Modern version of the classic arcade Game
 License:        GPL-3.0
-Group:          Amusements/Games/Action/Arcade
 Url:            https://chazomaticus.github.io/asteroid/
 Source0:        %{name}-%{version}+git-64869df.tar.bz2
 Source1:        generate-service-file.sh
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
@@ -56,7 +55,8 @@ sed -i -e 's|${OPENGL_LIBRARIES}|-lm ${OPENGL_LIBRARIES}|' \
 
 %build
 # Not works build with %%cmake
-cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix}
+cmake . -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
@@ -64,6 +64,9 @@ make %{?_smp_mflags}
 
 %suse_update_desktop_file %{name}
 %fdupes -s %{buildroot}%{_prefix}
+
+%check
+%ctest
 
 %files
 %defattr(-,root,root,-)

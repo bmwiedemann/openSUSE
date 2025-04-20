@@ -88,10 +88,8 @@ doxygen doxyfile.dox
 popd
 
 %else
-%cmake  \
-  -DBUILD_SHARED_LIBS:BOOL=ON \
-  -DBUILD_EXAMPLES:BOOL=OFF \
-  %nil
+%cmake -DBUILD_SHARED_LIBS:BOOL=ON -DBUILD_EXAMPLES:BOOL=OFF \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.28
 %cmake_build
 %endif
 
@@ -107,8 +105,7 @@ cp -r doc/html %buildroot%_docdir/%name-devel-doc/
 
 %fdupes %buildroot/%_prefix
 
-%post -n lib%name%libbase -p /sbin/ldconfig
-%postun -n lib%name%libbase -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%name%libbase
 
 %if "%flavor" != "doc"
 %files -n lib%name%libbase

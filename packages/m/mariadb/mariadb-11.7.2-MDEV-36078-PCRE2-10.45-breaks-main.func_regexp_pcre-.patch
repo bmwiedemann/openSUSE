@@ -1,0 +1,89 @@
+From bc13c8e4ae3cf8335f569dc0cff11d655e136f86 Mon Sep 17 00:00:00 2001
+From: Sergei Golubchik <serg@mariadb.org>
+Date: Wed, 26 Mar 2025 12:32:34 +0100
+Subject: [PATCH] MDEV-36078 PCRE2 10.45 breaks main.func_regexp_pcre due to
+ change in PCRE
+
+10.45 is correct, update test results to match.
+
+allow builds with <10.45 too (for old distros) but remove the buggy test
+---
+ cmake/pcre.cmake                        |  4 ++--
+ mysql-test/main/func_regexp_pcre.result | 28 +------------------------
+ mysql-test/main/func_regexp_pcre.test   |  2 +-
+ 3 files changed, 4 insertions(+), 30 deletions(-)
+
+Index: mariadb-11.7.2/cmake/pcre.cmake
+===================================================================
+--- mariadb-11.7.2.orig/cmake/pcre.cmake
++++ mariadb-11.7.2/cmake/pcre.cmake
+@@ -57,8 +57,8 @@ MACRO(BUNDLE_PCRE2)
+   ExternalProject_Add(
+     pcre2
+     PREFIX   "${dir}"
+-    URL "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.44/pcre2-10.44.zip"
+-    URL_MD5 dfab8313154b3377a6959c3b6377841e
++    URL "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.45/pcre2-10.45.zip"
++    URL_MD5 873da56c6469ec207ca5c5ae9688b83a
+     INSTALL_COMMAND ""
+     CMAKE_ARGS
+       "-DCMAKE_WARN_DEPRECATED=FALSE"
+Index: mariadb-11.7.2/mysql-test/main/func_regexp_pcre.result
+===================================================================
+--- mariadb-11.7.2.orig/mysql-test/main/func_regexp_pcre.result
++++ mariadb-11.7.2/mysql-test/main/func_regexp_pcre.result
+@@ -60,7 +60,7 @@ INSERT INTO t1 VALUES ('1'),('௨');
+ INSERT INTO t2 VALUES ('\\p{Cyrillic}'),('\\p{Greek}'),('\\p{Latin}');
+ INSERT INTO t2 VALUES ('\\p{Han}'),('\\p{Hangul}');
+ INSERT INTO t2 VALUES ('\\p{Sinhala}'), ('\\p{Tamil}');
+-INSERT INTO t2 VALUES ('\\p{L}'),('\\p{Ll}'),('\\p{Lu}'),('\\p{L&}');
++INSERT INTO t2 VALUES ('\\p{L}'), /* buggy before v10.45 ('\\p{Ll}'),('\\p{Lu}'),*/ ('\\p{L&}');
+ INSERT INTO t2 VALUES ('[[:alpha:]]'),('[[:digit:]]');
+ SELECT class, ch, ch RLIKE class FROM t1, t2 ORDER BY BINARY class, BINARY ch;
+ class	ch	ch RLIKE class
+@@ -168,32 +168,6 @@ class	ch	ch RLIKE class
+ \p{Latin}	ප	0
+ \p{Latin}	㐗	0
+ \p{Latin}	갷	0
+-\p{Ll}	1	0
+-\p{Ll}	A	0
+-\p{Ll}	a	1
+-\p{Ll}	À	0
+-\p{Ll}	à	1
+-\p{Ll}	Σ	0
+-\p{Ll}	σ	1
+-\p{Ll}	Я	0
+-\p{Ll}	я	1
+-\p{Ll}	௨	0
+-\p{Ll}	ප	0
+-\p{Ll}	㐗	0
+-\p{Ll}	갷	0
+-\p{Lu}	1	0
+-\p{Lu}	A	1
+-\p{Lu}	a	0
+-\p{Lu}	À	1
+-\p{Lu}	à	0
+-\p{Lu}	Σ	1
+-\p{Lu}	σ	0
+-\p{Lu}	Я	1
+-\p{Lu}	я	0
+-\p{Lu}	௨	0
+-\p{Lu}	ප	0
+-\p{Lu}	㐗	0
+-\p{Lu}	갷	0
+ \p{L}	1	0
+ \p{L}	A	1
+ \p{L}	a	1
+Index: mariadb-11.7.2/mysql-test/main/func_regexp_pcre.test
+===================================================================
+--- mariadb-11.7.2.orig/mysql-test/main/func_regexp_pcre.test
++++ mariadb-11.7.2/mysql-test/main/func_regexp_pcre.test
+@@ -41,7 +41,7 @@ INSERT INTO t1 VALUES ('1'),('௨');
+ INSERT INTO t2 VALUES ('\\p{Cyrillic}'),('\\p{Greek}'),('\\p{Latin}');
+ INSERT INTO t2 VALUES ('\\p{Han}'),('\\p{Hangul}');
+ INSERT INTO t2 VALUES ('\\p{Sinhala}'), ('\\p{Tamil}');
+-INSERT INTO t2 VALUES ('\\p{L}'),('\\p{Ll}'),('\\p{Lu}'),('\\p{L&}');
++INSERT INTO t2 VALUES ('\\p{L}'), /* buggy before v10.45 ('\\p{Ll}'),('\\p{Lu}'),*/ ('\\p{L&}');
+ INSERT INTO t2 VALUES ('[[:alpha:]]'),('[[:digit:]]');
+ # Use "ORDER BY BINARY" to avoid dependency on the default utf8 collation
+ SELECT class, ch, ch RLIKE class FROM t1, t2 ORDER BY BINARY class, BINARY ch;

@@ -20,21 +20,19 @@
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        1.0.5
+Version:        1.1
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
-Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{name}-%{version}.tar.gz
+Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{nameupper}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  godot >= 4.3
-BuildRequires:  godot-runner >= 4.3
+BuildRequires:  godot >= 4.4
+BuildRequires:  godot-runner >= 4.4
 BuildRequires:  vendored_licenses_packager
 # currently no godot binary
 ExcludeArch:    %arm
-# build fails: Segmentation fault godot --headless --verbose --import
-ExcludeArch:    %ix86
 ExcludeArch:    %power64
 
 %description
@@ -65,9 +63,9 @@ target_file_path=$target_dir/$template_name
 mkdir -p $target_dir
 cp %{_bindir}/godot-runner $target_file_path
 sed -i "s/binary_format\/embed_pck=false/binary_format\/embed_pck=true/" ./export_presets.cfg
+cp assets/fonts/Roboto-License.txt font_Roboto-License.txt
 cp addons/README.md addons_README.md
 cp Misc/Linux/com.orama_interactive.%{nameupper}.desktop com.orama_interactive.%{nameupper}.desktop
-rm pixelorama_data/.gdignore
 mkdir binary
 %vendored_licenses_packager_prep addons
 
@@ -97,7 +95,7 @@ install -D -p -m 0644 Misc/Linux/com.orama_interactive.%{nameupper}.appdata.xml 
 %fdupes -s %{buildroot}/%{_prefix}
 
 %files
-%license LICENSE addons_README.md
+%license LICENSE addons_README.md font_Roboto-License.txt
 %doc CHANGELOG.md CONTRIBUTING.md README.md
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256

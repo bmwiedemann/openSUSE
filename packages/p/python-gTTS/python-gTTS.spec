@@ -1,7 +1,7 @@
 #
 # spec file for package python-gTTS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,6 @@ sentences where the speech would naturally pause.
 %license LICENSE
 %python_alternative %{_bindir}/gtts-cli
 %{python_sitelib}/gtts
-%{python_sitelib}/gTTS-%{version}.dist-info
+%{python_sitelib}/gtts-%{version}.dist-info
 
 %changelog

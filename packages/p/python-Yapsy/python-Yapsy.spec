@@ -1,7 +1,7 @@
 #
 # spec file for package python-Yapsy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,7 +60,7 @@ find yapsy/ -name "*.py" -exec sed -i -e  '/^#!\s\?\/usr\/bin\/\(env\s\)\?python
 
 %files %{python_files}
 %{python_sitelib}/yapsy
-%{python_sitelib}/Yapsy-%{version}*-info
+%{python_sitelib}/yapsy-%{version}.dist-info
 %doc CHANGELOG.txt README.txt
 %license LICENSE.txt
 

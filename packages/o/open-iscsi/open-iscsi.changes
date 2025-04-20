@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 15:51:37 UTC 2025 - lduncan@suse.com
+
+- Update to version 2.1.11.suse+66.13c070123738:
+  * Fix iscsid.conf NOP configuration (bsc#1240541)
+
+-------------------------------------------------------------------
 Mon Apr  7 20:49:20 UTC 2025 - Lee Duncan <lduncan@suse.com>
 
 - Change SPEC file so that open-iscsi lock files always go

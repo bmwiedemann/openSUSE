@@ -1,7 +1,7 @@
 #
 # spec file for package kio-extras
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio-extras
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -37,6 +37,7 @@ BuildRequires:  libmtp-devel
 BuildRequires:  libssh-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
+BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  cmake(KDSoap-qt6)
 BuildRequires:  cmake(KDSoapWSDiscoveryClient)
 BuildRequires:  cmake(KExiv2Qt6)
@@ -52,6 +53,7 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
+BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6SyntaxHighlighting) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
@@ -73,6 +75,7 @@ BuildRequires:  pkgconfig(OpenEXR) >= 3.0
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libimobiledevice-1.0)
 BuildRequires:  pkgconfig(libplist-2.0)
+BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libtirpc)
 BuildRequires:  pkgconfig(smbclient)
 BuildRequires:  pkgconfig(taglib)
@@ -135,12 +138,16 @@ This is the development package for libkioarchive6
 %license LICENSES/*
 %doc %lang(en) %{_kf6_htmldir}/en/kcontrol6/
 %doc %lang(en) %{_kf6_htmldir}/en/kioworker6/
+%{_datadir}/mime/packages/org.kde.kio.smb.xml
 %{_kf6_applicationsdir}/*.desktop
 %{_kf6_configkcfgdir}/jpegcreatorsettings5.kcfg
 %{_kf6_debugdir}/kio-extras.categories
 %{_kf6_debugdir}/kio-extras.renamecategories
+%{_kf6_libexecdir}/smbnotifier
 %dir %{_kf6_plugindir}/kf6/kded/
 %{_kf6_plugindir}/kf6/kded/filenamesearchmodule.so
+%{_kf6_plugindir}/kf6/kded/smbwatcher.so
+%{_kf6_plugindir}/kf6/kded/wpad-detector.so
 %dir %{_kf6_plugindir}/kf6/kfileitemaction
 %{_kf6_plugindir}/kf6/kfileitemaction/forgetfileitemaction.so
 %{_kf6_plugindir}/kf6/kfileitemaction/kactivitymanagerd_fileitem_linking_plugin.so
@@ -154,8 +161,10 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/kf6/kio/kio_filenamesearch.so
 %{_kf6_plugindir}/kf6/kio/man.so
 %{_kf6_plugindir}/kf6/kio/mtp.so
+%{_kf6_plugindir}/kf6/kio/nfs.so
 %{_kf6_plugindir}/kf6/kio/recentlyused.so
 %{_kf6_plugindir}/kf6/kio/sftp.so
+%{_kf6_plugindir}/kf6/kio/smb.so
 %{_kf6_plugindir}/kf6/kio/thumbnail.so
 %dir %{_kf6_plugindir}/kf6/kiod
 %{_kf6_plugindir}/kf6/kiod/kmtpd.so
@@ -180,17 +189,14 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_netpref.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_proxy.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings_qwidgets/kcm_webshortcuts.so
+%{_kf6_sharedir}/dbus-1/services/org.kde.kmtpd5.service
+%dir %{_kf6_sharedir}/kio_filenamesearch
+%{_kf6_sharedir}/kio_filenamesearch/kio-filenamesearch-grep
 %{_kf6_sharedir}/kio_info/
 %{_kf6_sharedir}/konqueror/
 %{_kf6_sharedir}/remoteview/
 %{_kf6_sharedir}/solid/
-%{_kf6_sharedir}/dbus-1/services/org.kde.kmtpd5.service
-%{_kf6_plugindir}/kf6/kded/smbwatcher.so
-%{_kf6_plugindir}/kf6/kio/smb.so
-%{_kf6_libexecdir}/smbnotifier
-%dir %{_kf6_sharedir}/kio_filenamesearch
-%{_kf6_sharedir}/kio_filenamesearch/kio-filenamesearch-grep
-%{_datadir}/mime/packages/org.kde.kio.smb.xml
+%{_libexecdir}/wpad-detector-helper
 %exclude %{_kf6_applicationsdir}/kcm_trash.desktop
 
 %files -n trash_kcm

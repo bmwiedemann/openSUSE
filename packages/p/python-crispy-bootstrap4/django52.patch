@@ -1,0 +1,479 @@
+From cea2cdb8a2d5b134d83a50e322d0b0952bfa14e3 Mon Sep 17 00:00:00 2001
+From: David Smith <smithdc@gmail.com>
+Date: Mon, 24 Feb 2025 13:21:31 +0000
+Subject: [PATCH] Added Django 5.2. support.
+
+---
+ CHANGELOG.md                                  |  1 +
+ setup.py                                      |  1 +
+ .../bootstrap_form_show_errors_bs4_false.html |  5 +-
+ ...strap_form_show_errors_bs4_false_lt52.html | 72 +++++++++++++++++++
+ .../bootstrap_form_show_errors_bs4_true.html  |  5 +-
+ ...tstrap_form_show_errors_bs4_true_lt52.html | 71 ++++++++++++++++++
+ ...rm_show_errors_non_field_errors_false.html |  6 +-
+ ...ow_errors_non_field_errors_false_lt52.html | 40 +++++++++++
+ ...orm_show_errors_non_field_errors_true.html |  6 +-
+ ...how_errors_non_field_errors_true_lt52.html | 51 +++++++++++++
+ tests/test_form_helper.py                     | 18 +++++
+ tests/test_layout_objects.py                  |  2 +-
+ tox.ini                                       |  5 +-
+ 13 files changed, 270 insertions(+), 13 deletions(-)
+ create mode 100644 tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt52.html
+ create mode 100644 tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt52.html
+ create mode 100644 tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false_lt52.html
+ create mode 100644 tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true_lt52.html
+
+diff --git a/setup.py b/setup.py
+index cfbdaa1..f5d48e7 100644
+--- a/setup.py
++++ b/setup.py
+@@ -40,6 +40,7 @@ def get_long_description():
+         "Framework :: Django :: 4.2",
+         "Framework :: Django :: 5.0",
+         "Framework :: Django :: 5.1",
++        "Framework :: Django :: 5.2",
+         "License :: OSI Approved :: MIT License",
+         "Operating System :: OS Independent",
+         "Programming Language :: Python :: 3",
+diff --git a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false.html b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false.html
+index 64982b3..02bc19e 100644
+--- a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false.html
++++ b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false.html
+@@ -3,7 +3,7 @@
+         <label for="id_email" class=" requiredField"> email<span class="asteriskField">*</span> </label>
+         <div class="">
+             <div class="input-group">
+-                <input type="text" name="email" value="invalidemail" maxlength="30" aria-describedby="id_email_helptext" aria-invalid="true"
++                <input type="text" name="email" value="invalidemail" maxlength="30" aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+                        class="textinput textInput inputtext form-control is-invalid" required id="id_email" />
+                 <div class="input-group-append"><span class="input-group-text">whatever</span></div>
+             </div>
+@@ -24,6 +24,7 @@
+                     required
+                     id="id_first_name"
+                     aria-invalid="true"
++                    aria-describedby="id_first_name_error"
+                 />
+             </div>
+         </div>
+@@ -33,7 +34,7 @@
+         <div class="">
+             <div class="input-group">
+                 <div class="input-group-prepend"><span class="input-group-text">foo</span></div>
+-                <input type="text" name="last_name" value="last_name_too_long" maxlength="5" aria-invalid="true"
++                <input type="text" name="last_name" value="last_name_too_long" maxlength="5" aria-invalid="true" aria-describedby="id_last_name_error"
+                        class="textinput textInput inputtext form-control is-invalid" required id="id_last_name" />
+                 <div class="input-group-append"><span class="input-group-text">bar</span></div>
+             </div>
+diff --git a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt52.html b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt52.html
+new file mode 100644
+index 0000000..64982b3
+--- /dev/null
++++ b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt52.html
+@@ -0,0 +1,72 @@
++<form method="post">
++    <div id="div_id_email" class="form-group">
++        <label for="id_email" class=" requiredField"> email<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <input type="text" name="email" value="invalidemail" maxlength="30" aria-describedby="id_email_helptext" aria-invalid="true"
++                       class="textinput textInput inputtext form-control is-invalid" required id="id_email" />
++                <div class="input-group-append"><span class="input-group-text">whatever</span></div>
++            </div>
++            <small id="hint_id_email" class="form-text text-muted">Insert your email</small>
++        </div>
++    </div>
++    <div id="div_id_first_name" class="form-group">
++        <label for="id_first_name" class=" requiredField">first name<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">blabla</span></div>
++                <input
++                    type="text"
++                    name="first_name"
++                    value="first_name_too_long"
++                    maxlength="5"
++                    class="textinput textInput inputtext form-control is-invalid"
++                    required
++                    id="id_first_name"
++                    aria-invalid="true"
++                />
++            </div>
++        </div>
++    </div>
++    <div id="div_id_last_name" class="form-group">
++        <label for="id_last_name" class=" requiredField">last name<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">foo</span></div>
++                <input type="text" name="last_name" value="last_name_too_long" maxlength="5" aria-invalid="true"
++                       class="textinput textInput inputtext form-control is-invalid" required id="id_last_name" />
++                <div class="input-group-append"><span class="input-group-text">bar</span></div>
++            </div>
++        </div>
++    </div>
++    <div id="div_id_password1" class="form-group">
++        <label for="id_password1" class=" requiredField">password<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <input type="password" name="password1" maxlength="30" class="textinput textInput form-control" required id="id_password1" />
++                <div class="input-group-append"><span class="input-group-text">whatever</span></div>
++            </div>
++        </div>
++    </div>
++    <div id="div_id_password2" class="form-group">
++        <label
++            for="id_password2"
++            class=" requiredField"
++        >
++            re-enter password<span class="asteriskField">*</span>
++        </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">blabla</span></div>
++                <input
++                    type="password"
++                    name="password2"
++                    maxlength="30"
++                    class="textinput textInput form-control"
++                    required
++                    id="id_password2"
++                />
++            </div>
++        </div>
++    </div>
++</form>
+diff --git a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true.html b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true.html
+index de7039c..504346b 100644
+--- a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true.html
++++ b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true.html
+@@ -3,7 +3,7 @@
+         <label for="id_email" class=" requiredField"> email<span class="asteriskField">*</span> </label>
+         <div class="">
+             <div class="input-group">
+-                <input type="text" name="email" value="invalidemail" maxlength="30" aria-invalid="true" aria-describedby="id_email_helptext"
++                <input type="text" name="email" value="invalidemail" maxlength="30" aria-invalid="true" aria-describedby="id_email_helptext id_email_error"
+                        class="textinput textInput inputtext form-control is-invalid" required id="id_email" />
+                 <div class="input-group-append"><span class="input-group-text">whatever</span></div>
+                 <span id="error_1_id_email" class="invalid-feedback"><strong>Enter a valid email address.</strong></span>
+@@ -21,7 +21,7 @@
+         <div class="">
+             <div class="input-group">
+                 <div class="input-group-prepend"><span class="input-group-text">blabla</span></div>
+-                <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-invalid="true"
++                <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-invalid="true" aria-describedby="id_first_name_error"
+                        class="textinput textInput inputtext form-control is-invalid" required id="id_first_name" />
+                 <span id="error_1_id_first_name" class="invalid-feedback"><strong>Ensure this value has at most 5 characters (it has 19).</strong></span>
+             </div>
+@@ -41,6 +41,7 @@
+                     required
+                     id="id_last_name"
+                     aria-invalid="true"
++                    aria-describedby="id_last_name_error"
+                 />
+                 <div class="input-group-append"><span class="input-group-text">bar</span></div>
+                 <span id="error_1_id_last_name" class="invalid-feedback"><strong>Ensure this value has at most 5 characters (it has 18).</strong></span>
+diff --git a/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt52.html b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt52.html
+new file mode 100644
+index 0000000..de7039c
+--- /dev/null
++++ b/tests/results/bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt52.html
+@@ -0,0 +1,71 @@
++<form method="post">
++    <div id="div_id_email" class="form-group">
++        <label for="id_email" class=" requiredField"> email<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <input type="text" name="email" value="invalidemail" maxlength="30" aria-invalid="true" aria-describedby="id_email_helptext"
++                       class="textinput textInput inputtext form-control is-invalid" required id="id_email" />
++                <div class="input-group-append"><span class="input-group-text">whatever</span></div>
++                <span id="error_1_id_email" class="invalid-feedback"><strong>Enter a valid email address.</strong></span>
++            </div>
++            <small id="hint_id_email" class="form-text text-muted">Insert your email</small>
++        </div>
++    </div>
++    <div id="div_id_first_name" class="form-group">
++        <label
++            for="id_first_name"
++            class=" requiredField"
++        >
++            first name<span class="asteriskField">*</span>
++        </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">blabla</span></div>
++                <input type="text" name="first_name" value="first_name_too_long" maxlength="5" aria-invalid="true"
++                       class="textinput textInput inputtext form-control is-invalid" required id="id_first_name" />
++                <span id="error_1_id_first_name" class="invalid-feedback"><strong>Ensure this value has at most 5 characters (it has 19).</strong></span>
++            </div>
++        </div>
++    </div>
++    <div id="div_id_last_name" class="form-group">
++        <label for="id_last_name" class=" requiredField"> last name<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">foo</span></div>
++                <input
++                    type="text"
++                    name="last_name"
++                    value="last_name_too_long"
++                    maxlength="5"
++                    class="textinput textInput inputtext form-control is-invalid"
++                    required
++                    id="id_last_name"
++                    aria-invalid="true"
++                />
++                <div class="input-group-append"><span class="input-group-text">bar</span></div>
++                <span id="error_1_id_last_name" class="invalid-feedback"><strong>Ensure this value has at most 5 characters (it has 18).</strong></span>
++            </div>
++        </div>
++    </div>
++    <div
++        id="div_id_password1"
++        class="form-group"
++    >
++        <label for="id_password1" class=" requiredField"> password<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <input type="password" name="password1" maxlength="30" class="textInput textinput form-control" required id="id_password1" />
++                <div class="input-group-append"><span class="input-group-text">whatever</span></div>
++            </div>
++        </div>
++    </div>
++    <div id="div_id_password2" class="form-group">
++        <label for="id_password2" class=" requiredField"> re-enter password<span class="asteriskField">*</span> </label>
++        <div class="">
++            <div class="input-group">
++                <div class="input-group-prepend"><span class="input-group-text">blabla</span></div>
++                <input type="password" name="password2" maxlength="30" class="textInput textinput form-control" required id="id_password2" />
++            </div>
++        </div>
++    </div>
++</form>
+\ No newline at end of file
+diff --git a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false.html b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false.html
+index 070ed63..70e767f 100644
+--- a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false.html
++++ b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false.html
+@@ -6,7 +6,7 @@
+     </div>
+     <div id="div_id_email" class="form-group"> <label for="id_email" class=" requiredField"> email<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext" aria-invalid="true"
++        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_email"> <small
+                 id="hint_id_email" class="form-text text-muted">Insert your email</small> </div>
+     </div>
+@@ -22,12 +22,12 @@
+     </div>
+     <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class=" requiredField"> first name<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="first_name" maxlength="5" aria-invalid="true"
++        <div> <input type="text" name="first_name" maxlength="5" aria-invalid="true" aria-describedby="id_first_name_error"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_first_name"> </div>
+     </div>
+     <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class=" requiredField"> last name<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true"
++        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true" aria-describedby="id_last_name_error"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_last_name"> </div>
+     </div>
+     <div id="div_id_datetime_field" class="form-group"> 
+diff --git a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false_lt52.html b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false_lt52.html
+new file mode 100644
+index 0000000..70e767f
+--- /dev/null
++++ b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_false_lt52.html
+@@ -0,0 +1,40 @@
++<form method="post">
++    <div class="form-group">
++        <div id="div_id_is_company" class="custom-control  custom-checkbox"> <input type="checkbox" name="is_company"
++                class="checkboxinput custom-control-input" id="id_is_company"> <label for="id_is_company"
++                class="custom-control-label"> company </label> </div>
++    </div>
++    <div id="div_id_email" class="form-group"> <label for="id_email" class=" requiredField"> email<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_email"> <small
++                id="hint_id_email" class="form-text text-muted">Insert your email</small> </div>
++    </div>
++    <div id="div_id_password1" class="form-group"> <label for="id_password1" class=" requiredField"> password<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="password" name="password1" maxlength="30" class="textinput textInput form-control" required
++                id="id_password1"> </div>
++    </div>
++    <div id="div_id_password2" class="form-group"> <label for="id_password2" class=" requiredField"> re-enter
++            password<span class="asteriskField">*</span> </label>
++        <div> <input type="password" name="password2" maxlength="30" class="textinput textInput form-control" required
++                id="id_password2"> </div>
++    </div>
++    <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class=" requiredField"> first name<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="first_name" maxlength="5" aria-invalid="true" aria-describedby="id_first_name_error"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_first_name"> </div>
++    </div>
++    <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class=" requiredField"> last name<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true" aria-describedby="id_last_name_error"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_last_name"> </div>
++    </div>
++    <div id="div_id_datetime_field" class="form-group"> 
++        <label class=" requiredField">date time<span class="asteriskField">*</span> </label>
++        <div> <input type="text" name="datetime_field_0" class="dateinput form-control is-invalid" required
++                id="id_datetime_field_0" aria-invalid="true"><input type="text" name="datetime_field_1"
++                aria-invalid="true" class="timeinput form-control is-invalid" required id="id_datetime_field_1">
++        </div>
++    </div>
++</form>
+\ No newline at end of file
+diff --git a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true.html b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true.html
+index 5f71148..780fa74 100644
+--- a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true.html
++++ b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true.html
+@@ -11,7 +11,7 @@
+     </div>
+     <div id="div_id_email" class="form-group"> <label for="id_email" class=" requiredField"> email<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext" aria-invalid="true"
++        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext id_email_error" aria-invalid="true"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_email"> <span
+                 id="error_1_id_email" class="invalid-feedback"><strong>This field is required.</strong></span> <small
+                 id="hint_id_email" class="form-text text-muted">Insert your email</small> </div>
+@@ -28,14 +28,14 @@
+     </div>
+     <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class=" requiredField"> first name<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="first_name" maxlength="5"  aria-invalid="true"
++        <div> <input type="text" name="first_name" maxlength="5"  aria-invalid="true" aria-describedby="id_first_name_error"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_first_name"> <span
+                 id="error_1_id_first_name" class="invalid-feedback"><strong>This field is required.</strong></span>
+         </div>
+     </div>
+     <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class=" requiredField"> last name<span
+                 class="asteriskField">*</span> </label>
+-        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true"
++        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true" aria-describedby="id_last_name_error"
+                 class="textinput textInput inputtext form-control is-invalid" required id="id_last_name"> <span
+                 id="error_1_id_last_name" class="invalid-feedback"><strong>This field is required.</strong></span>
+         </div>
+diff --git a/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true_lt52.html b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true_lt52.html
+new file mode 100644
+index 0000000..5f71148
+--- /dev/null
++++ b/tests/results/bootstrap4/test_form_helper/test_form_show_errors_non_field_errors_true_lt52.html
+@@ -0,0 +1,51 @@
++<form method="post">
++    <div class="alert alert-block alert-danger">
++        <ul class="m-0">
++            <li>Passwords dont match</li>
++        </ul>
++    </div>
++    <div class="form-group">
++        <div id="div_id_is_company" class="custom-control  custom-checkbox"> <input type="checkbox" name="is_company"
++                class="checkboxinput custom-control-input" id="id_is_company"> <label for="id_is_company"
++                class="custom-control-label"> company </label> </div>
++    </div>
++    <div id="div_id_email" class="form-group"> <label for="id_email" class=" requiredField"> email<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="email" maxlength="30" aria-describedby="id_email_helptext" aria-invalid="true"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_email"> <span
++                id="error_1_id_email" class="invalid-feedback"><strong>This field is required.</strong></span> <small
++                id="hint_id_email" class="form-text text-muted">Insert your email</small> </div>
++    </div>
++    <div id="div_id_password1" class="form-group"> <label for="id_password1" class=" requiredField"> password<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="password" name="password1" maxlength="30" class="textinput textInput form-control" required
++                id="id_password1"> </div>
++    </div>
++    <div id="div_id_password2" class="form-group"> <label for="id_password2" class=" requiredField"> re-enter
++            password<span class="asteriskField">*</span> </label>
++        <div> <input type="password" name="password2" maxlength="30" class="textinput textInput form-control" required
++                id="id_password2"> </div>
++    </div>
++    <div id="div_id_first_name" class="form-group"> <label for="id_first_name" class=" requiredField"> first name<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="first_name" maxlength="5"  aria-invalid="true"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_first_name"> <span
++                id="error_1_id_first_name" class="invalid-feedback"><strong>This field is required.</strong></span>
++        </div>
++    </div>
++    <div id="div_id_last_name" class="form-group"> <label for="id_last_name" class=" requiredField"> last name<span
++                class="asteriskField">*</span> </label>
++        <div> <input type="text" name="last_name" maxlength="5" aria-invalid="true"
++                class="textinput textInput inputtext form-control is-invalid" required id="id_last_name"> <span
++                id="error_1_id_last_name" class="invalid-feedback"><strong>This field is required.</strong></span>
++        </div>
++    </div>
++    <div id="div_id_datetime_field" class="form-group"> 
++        <label class=" requiredField">date time<span class="asteriskField">*</span> </label>
++        <div> <input type="text" name="datetime_field_0" class="dateinput form-control is-invalid" required
++                id="id_datetime_field_0" aria-invalid="true"><input type="text" name="datetime_field_1" aria-invalid="true"
++                class="timeinput form-control is-invalid" required id="id_datetime_field_1"> <span
++                id="error_1_id_datetime_field" class="invalid-feedback"><strong>This field is required.</strong></span>
++        </div>
++    </div>
++</form>
+\ No newline at end of file
+diff --git a/tests/test_form_helper.py b/tests/test_form_helper.py
+index b2524d5..166c051 100644
+--- a/tests/test_form_helper.py
++++ b/tests/test_form_helper.py
+@@ -127,6 +127,11 @@ def test_form_show_errors_non_field_errors(settings):
+             "bootstrap4/test_form_helper/"
+             "test_form_show_errors_non_field_errors_true_lt50.html"
+         )
++    elif django.VERSION < (5, 2):
++        expected = parse_expected(
++            "bootstrap4/test_form_helper/"
++            "test_form_show_errors_non_field_errors_true_lt52.html"
++        )
+     else:
+         expected = parse_expected(
+             "bootstrap4/test_form_helper/"
+@@ -143,6 +148,11 @@ def test_form_show_errors_non_field_errors(settings):
+             "bootstrap4/test_form_helper/"
+             "test_form_show_errors_non_field_errors_false_lt50.html"
+         )
++    elif django.VERSION < (5, 2):
++        expected = parse_expected(
++            "bootstrap4/test_form_helper/"
++            "test_form_show_errors_non_field_errors_false_lt52.html"
++        )
+     else:
+         expected = parse_expected(
+             "bootstrap4/test_form_helper/"
+@@ -477,6 +487,10 @@ def test_bootstrap_form_show_errors_bs4():
+         expected = (
+             "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt50.html"
+         )
++    elif django.VERSION < (5, 2):
++        expected = (
++            "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true_lt52.html"
++        )
+     else:
+         expected = (
+             "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_true.html"
+@@ -487,6 +501,10 @@ def test_bootstrap_form_show_errors_bs4():
+         expected = (
+             "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt50.html"
+         )
++    elif django.VERSION < (5, 2):
++        expected = (
++            "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false_lt52.html"
++        )
+     else:
+         expected = (
+             "bootstrap4/test_form_helper/bootstrap_form_show_errors_bs4_false.html"
+diff --git a/tests/test_layout_objects.py b/tests/test_layout_objects.py
+index 37fcbd0..5adea3b 100644
+--- a/tests/test_layout_objects.py
++++ b/tests/test_layout_objects.py
+@@ -236,7 +236,7 @@ def test_accordion_and_accordiongroup(self):
+ 
+         accordion_id = match.group(1)
+ 
+-        assert html.count('<div class="card mb-2"') == 2
++        assert html.count('<div class="card mb-2') == 2
+         assert html.count('<div class="card-header"') == 2
+ 
+         assert html.count('data-parent="#{}"'.format(accordion_id)) == 2

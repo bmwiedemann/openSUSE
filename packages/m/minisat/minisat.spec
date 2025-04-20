@@ -18,7 +18,7 @@
 
 Name:           minisat
 URL:            http://minisat.se/MiniSat.html
-Version:        2.2.1+20200902
+Version:        2.2.1+20230206
 Release:        0
 Summary:        SAT solver
 License:        MIT
@@ -68,8 +68,9 @@ Headers and libraries for the minisat package.
 
 %build
 %define __builder ninja
-%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name}
-%make_jobs
+%cmake -DMINISAT_INSTALL_CMAKE_DIR=%{_libdir}/cmake/%{name} \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.10
+%cmake_build
 
 %install
 %cmake_install

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-mines
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        Minesweeper Game for GNOME
 License:        GPL-3.0-or-later
@@ -72,6 +72,7 @@ mines while receiving clues for the location of the mines.
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Mines*
 %{_mandir}/man6/%{name}.6%{?ext_man}
 %{_datadir}/metainfo/org.gnome.Mines.metainfo.xml
+%{_datadir}/dbus-1/services/org.gnome.Mines.service
 
 %files lang -f %{name}.lang
 

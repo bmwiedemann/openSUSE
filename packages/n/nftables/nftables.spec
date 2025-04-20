@@ -22,7 +22,7 @@
 %define pyversion 0.1
 
 Name:           nftables
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Userspace utility to access the nf_tables packet filter
 License:        GPL-2.0-only
@@ -48,7 +48,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libmnl) >= 1.0.4
-BuildRequires:  pkgconfig(libnftnl) >= 1.2.8
+BuildRequires:  pkgconfig(libnftnl) >= 1.2.9
 BuildRequires:  pkgconfig(xtables) >= 1.6.1
 %python_subpackages
 
@@ -93,9 +93,11 @@ BuildArch:      noarch
 Python bindings for nftables
 
 %prep
-%autosetup -p1
+%setup -q
 # remove unused shebang
 sed -i '1{/bin/d}' py/src/nftables.py
+rm -f files/nftables/main.nft
+%patch -P 1 -p1
 
 %build
 autoreconf -fi

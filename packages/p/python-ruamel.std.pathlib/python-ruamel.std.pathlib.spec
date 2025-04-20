@@ -1,7 +1,7 @@
 #
 # spec file for package python-ruamel.std.pathlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,6 @@ Version:        0.12.0
 Release:        0
 Summary:        Improvements over the standard pathlib module and pathlib2 package
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://sourceforge.net/projects/ruamel-std-pathlib/
 Source:         https://files.pythonhosted.org/packages/source/r/ruamel.std.pathlib/ruamel.std.pathlib-%{version}.tar.gz
 BuildRequires:  %{python_module orjson}
@@ -47,6 +46,7 @@ Improvements over the standard pathlib module and pathlib2 package.
 %install
 export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
@@ -55,6 +55,6 @@ export RUAMEL_NO_PIP_INSTALL_CHECK=1
 %dir %{python_sitelib}/ruamel/std
 %{python_sitelib}/ruamel/std/pathlib
 %{python_sitelib}/ruamel.std.pathlib-%{version}-py3*-nspkg.pth
-%{python_sitelib}/ruamel.std.pathlib-%{version}.dist-info
+%{python_sitelib}/ruamel_std_pathlib-%{version}.dist-info
 
 %changelog

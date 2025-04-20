@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Fri Apr 18 17:16:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.20:
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+    (#4158)
+  * build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0
+    (#4159)
+  * build(deps): bump github.com/ProtonMail/go-crypto from 1.1.6 to
+    1.2.0 (#4161)
+  * feat: Adding markdownlint v2 to GitHub Actions workflows
+    (#4175)
+  * feat: Adding codespell workflow (#4173)
+  * feat: Adding `lint.yml` and `strict-lint.yml` workflows for
+    GitHub Actions (#4172)
+  * fix: Improving getting started guide (#4174)
+  * feat: Adding `build-no-proxy.yml` workflow (#4171)
+
+-------------------------------------------------------------------
+Fri Apr 18 05:44:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.19:
+  * New Features
+    - OpenTelemetry traces are now integrated into find and list
+      commands
+      Please see the release for example screenshots
+      https://github.com/gruntwork-io/terragrunt/releases/tag/v0.77.19
+  * What's Changed
+    - feat: add telemetry for find/list (#4165)
+
+-------------------------------------------------------------------
+Fri Apr 18 05:34:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.18:
+  * New Features
+    - Support for HCL formatting with the render command
+      As part of the CLI Redesign experiment, the render command
+      now supports HCL formatting for rendered configurations,
+      which is the default output format.
+      Using the render command with HCL formatting allows users to
+      get a quick, minimal evaluation of Terragrunt unit
+      configurations with as much pre-processing done as possible.
+      Using the render command with HCL formatting offers a way to
+      resolve complex HCL function evaluation, include merging or
+      string interpolation, etc. to achieve equivalent Terragrunt
+      HCL configurations that are easier to reason about.
+  * What's Changed
+    - feat: Adding `render` with HCL formatting (#4164)
+
+-------------------------------------------------------------------
+Wed Apr 16 19:32:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.17:
+  * New Features
+    - Introduction of the render command
+      As part of the CLI Redesign experiment, the render command
+      has been introduced.
+      The render command allows users to easily render Terragrunt
+      unit configurations with reduced complexity, making it easier
+      to understand configurations at a glance.
+      The introduction of the render command is part of the
+      eventual deprecation of the existing render-json command,
+      which will be deprecated by the end of the CLI Redesign. The
+      render command is a higher level command, that offers the
+      ability to write to stdout, in addition to writing to files,
+      and will support HCL configurations in addition to JSON
+      (coming soon).
+      To learn more about the render command, read the official
+      documentation here.
+      https://terragrunt.gruntwork.io/docs/reference/cli-options/#render
+  * What's Changed
+    - feat: Adding docs for `backend migrate` (#4140)
+    - feat: Adding `render` command (#4145)
+    - build(deps): bump ruby/setup-ruby from 1.229.0 to 1.230.0 (#4162)
+
+-------------------------------------------------------------------
+Wed Apr 16 19:23:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.16:
+  * New Features
+    - Introduction of the backend migrate command
+      As part of the CLI Redesign experiment, the backend migrate
+      command has been introduced.
+      The backend migrate command allows you to simply migrate
+      state between different units (or renames of units) without
+      manually running OpenTofu/Terraform state migration commands.
+      To learn more about the backend migrate command, read the
+      official docs.
+  * What's Changed
+    - feat: Improve error explainer to catch stack values errors
+      (#4163)
+    - feat: Support state migration between different backends
+      (#4154)
+    - fix: disable tf rc file overwriting for non-cached commands
+      (#4155)
+    - fix: Deprecated flags msg for experimental command (#4146)
+
+-------------------------------------------------------------------
+Wed Apr 16 19:06:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.15:
+  * New Features
+    - Introduction of the dag graph command
+      As part of the CLI Redesign experiment, the dag graph command
+      has been introduced.
+  * What's Changed
+    - feat: add dag graph command (#4143)
+    - docs: Adding migration guide for adopting Terragrunt Stacks
+      (#4152)
+
+-------------------------------------------------------------------
 Sat Apr 12 07:34:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.14:

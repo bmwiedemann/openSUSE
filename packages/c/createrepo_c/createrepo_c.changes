@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 19 07:41:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.1:
+  * Fix a file descriptor and memory leak in an error path of cr_detect_compression()
+  * Allow incremental parsing without filelists or other xml
+- fix build with cmake 4 boo#1239788 createrepo_c-1.2.1-cmake4.patch
+
+-------------------------------------------------------------------
 Sun Aug 11 19:31:41 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Repair manpage links by removing a spurious backslash escape

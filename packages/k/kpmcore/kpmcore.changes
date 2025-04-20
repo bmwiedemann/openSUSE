@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix a memory leak by actually freeing a correct pointer
+  * kpmcore tests seem to require C++20. Adjust test/CMakeLists.txt accordingly.
+  * Add lazy_itable_init=0 and lazy_journal_init=0 to ext4 features.
+  * Add xml/yaml linting
+  * Add operation to set partition label
+  * Add 1 to handleWidth in partresize widget. (kde#499064)
+  * Allow applications to set the LUKS2 PBKDF
+  * Limix exfat labels to 11 characters. (kde#496400)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

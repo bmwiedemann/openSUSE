@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 15:53:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.10:
+  * chore(deps): Update github.com/expr-lang/expr to v1.17.0 fixing
+    CVE-2025-29786 (#22651)
+  * fix(cli): wrong variable to store --no-proxy value (cherry-pick
+    #21226) (#22590)
+
+-------------------------------------------------------------------
 Thu Apr 03 05:17:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.9:

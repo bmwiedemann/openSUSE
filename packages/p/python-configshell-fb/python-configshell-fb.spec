@@ -38,7 +38,6 @@ BuildRequires:  git
 BuildRequires:  python-rpm-macros
 Requires:       %{_bindir}/env
 Requires:       python-pyparsing
-Requires:       python-urwid
 Provides:       python-configshell = %{version}-%{release}
 Obsoletes:      python-configshell < %{version}
 BuildArch:      noarch

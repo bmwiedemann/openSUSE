@@ -329,4 +329,14 @@
     Session, such that the pickled contents of the file are not</comment>
     <requestid>1169355</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b519525d42157a8248f8ced203166ea6</srcmd5>
+    <version>1.13.0</version>
+    <time>1744828758</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Add patch avoid-dbm-sqlite3.patch:
+  * Avoid dbm.sqlite3 to support testing with Python 3.13.</comment>
+    <requestid>1269441</requestid>
+  </revision>
 </revisionlist>

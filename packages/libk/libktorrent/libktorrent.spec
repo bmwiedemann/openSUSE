@@ -1,7 +1,7 @@
 #
 # spec file for package libktorrent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           libktorrent
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Torrent Downloading Library
 License:        GPL-2.0-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
@@ -69,7 +68,6 @@ Requires:       cmake(KF6Archive) >= %{kf6_version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6KIO) >= %{kf6_version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
-Requires:       cmake(Qt6Core5Compat) >= %{qt6_version}
 Requires:       cmake(Qt6Network) >= %{qt6_version}
 Requires:       gmp-devel >= 6.0.0
 Requires:       pkgconfig(libgcrypt) >= 1.4.5

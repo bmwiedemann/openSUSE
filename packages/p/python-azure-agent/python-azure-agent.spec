@@ -18,10 +18,12 @@
 
 %if 0%{?suse_version} >= 1600
 %define pythons %{primary_python}
-%elif 0%{?suse_version} = 1315
+%else
+%if 0%{?suse_version} == 1315
 %define pythons python
 %else
 %define pythons python3
+%endif
 %endif
 %global _sitelibdir %{%{pythons}_sitelib}
 
@@ -46,7 +48,11 @@ BuildRequires:  dos2unix
 
 BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
+# azure-agent is maintained in SLE 12 codestream but wheel in 12-SP1 one
+# disable this BuildRequires as work-around in 12 GA
+%if 0%{?sle_version} >= 120100
 BuildRequires:  %{pythons}-wheel
+%endif
 BuildRequires:  distribution-release
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros

@@ -1,7 +1,7 @@
 #
 # spec file for package opencsg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,21 @@
 
 
 Name:           opencsg
-Version:        1.6.0
+Version:        1.8.1
 Release:        0
 Summary:        Constructive Solid Geometry rendering library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.opencsg.org/
 Source:         https://www.opencsg.org/OpenCSG-%{version}.tar.gz
-BuildRequires:  freeglut-devel
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libXmu-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  libqt5-qtbase-devel
+%ifarch %{arm32} %{arm64}
+BuildRequires:  pkgconfig(gl)
+%endif
 
 %description
 OpenCSG is a library that does image-based Constructive Solid
@@ -55,8 +58,6 @@ This package contains the documentation for opencsg.
 %package devel
 Summary:        Development files for opencsg, a CSG rendering library
 Group:          Development/Libraries/C and C++
-Requires:       freeglut-devel
-Requires:       glew-devel
 Requires:       libopencsg1 = %{version}
 
 %description devel
@@ -68,24 +69,15 @@ applications that want to make use of opencsg.
 
 %prep
 %setup -q -n OpenCSG-%{version}
-# use system glew
-rm -rf glew
 
 %build
-# do not build glew and examples
-cd src
-# rpath is evil
-sed -i 's@-Wl,-rpath,\.\./lib@@' Makefile
-%qmake5
-%make_build
+%cmake -DBUILD_EXAMPLE:BOOL=OFF
+%cmake_build
 
 %install
-mkdir -p %{buildroot}%{_prefix}
-mv include %{buildroot}%{_includedir}
-mv lib %{buildroot}%{_libdir}
+%cmake_install
 
-%post -n libopencsg1 -p /sbin/ldconfig
-%postun -n libopencsg1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopencsg1
 
 %files -n libopencsg1
 %license copying.txt doc/license/gpl-3.0.txt doc/license/gpl-2.0.txt

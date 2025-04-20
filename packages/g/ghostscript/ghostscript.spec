@@ -183,7 +183,7 @@ rm -rf openjpeg
 # Derive build timestamp from latest changelog entry
 export SOURCE_DATE_EPOCH=$(date -d "$(head -n 2 %{_sourcedir}/%{name}.changes | tail -n 1 | cut -d- -f1 )" +%{s})
 # Set our preferred architecture-specific flags for the compiler and linker:
-export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC -std=gnu11"
 export CXXFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
 export LDFLAGS="-pie"
 autoreconf -fi

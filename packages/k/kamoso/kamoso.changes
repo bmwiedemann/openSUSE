@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Update sampleImagePath only if not already set
+  * Remove temporary image file on exit
+  * Fix selection color
+  * Delay update of the sample image
+  * Don't try to use OpenGL functions if no context available
+  * Add developer name and launchable tags to appdata
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

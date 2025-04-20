@@ -1,7 +1,7 @@
 #
 # spec file for package aws-nitro-enclaves-cli
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %define ne_system_group ne
 %define ne_rundir %_rundir/nitro_enclaves
 
-
 Name:           aws-nitro-enclaves-cli
-Version:        1.3.0~git1.db34c02
+Version:        1.4.2~git0.6e8512e
 Release:        0
 Summary:        Tools for managing enclaves
 License:        Apache-2.0
-Url:            https://github.com/aws/aws-nitro-enclaves-cli
+URL:            https://github.com/aws/aws-nitro-enclaves-cli
 ExclusiveArch:  aarch64 x86_64
 Patch0:         %name.patch
 Source0:        %name-%version.tar.xz
 Source1:        vendor.tar.xz
 Source3:        aws-nitro-enclaves-cli-rpmlintrc
-Source9:        aws-nitro-enclaves-sdk-bootstrap-203242d54e4fbb9b5d57b49e73c947226e08ce82.tar.xz
+Source9:        aws-nitro-enclaves-sdk-bootstrap-f718dea60a9d9bb8b8682fd852ad793912f3c5db.tar.xz
 Requires(pre):  system-group-%ne_system_group = %version-%release
 Requires(post): coreutils
 Requires:       aws-nitro-enclaves-binaryblobs
 Requires:       jq
-BuildRequires:  cargo > 1.58
+BuildRequires:  cargo > 1.81
 BuildRequires:  clang
 BuildRequires:  glibc-devel-static
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  rust > 1.58
+BuildRequires:  rust > 1.81
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(openssl)
 
 %description
 A collection of tools and commands used for managing the lifecycle of
@@ -50,6 +51,7 @@ and it can be used to start, manage, and terminate enclaves.
 %package -n aws-nitro-enclaves-binaryblobs-upstream
 Summary:        Upstream kernel binary for AWS Nitro Enclaves
 Provides:       aws-nitro-enclaves-binaryblobs = %version-%release
+
 %description  -n aws-nitro-enclaves-binaryblobs-upstream
 This package contains a kernel binary and a helper binary, which is
 used by the nitro-cli build-enclave command to generate a Enclave
@@ -111,6 +113,7 @@ _EOF_
   nitro-cli build-enclave --docker-uri hello-enclave:1.0 --output-file hello.eif
   nitro-cli run-enclave --eif-path hello.eif --cpu-count 2 --memory 512 --debug-mode --attach-console
 _EOR_
+
 %install
 %if 0%{?__debug_package}
 rustflags='-Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2'
@@ -181,8 +184,10 @@ cp -aviLt "$_" "${suc}"
 %_sysusersdir/*.conf
 
 %pre -n system-group-%ne_system_group -f system-group-%ne_system_group.pre
+
 %pre
 %service_add_pre nitro-enclaves-allocator.service nitro-enclaves-vsock-proxy.service
+
 %post
 if test "$1" -eq 1
 then
@@ -197,8 +202,10 @@ chown -v '0:%ne_system_group' "${ld}"
 %tmpfiles_create %_tmpfilesdir/%name.conf
 %udev_rules_update
 %service_add_post nitro-enclaves-allocator.service nitro-enclaves-vsock-proxy.service
+
 %preun
 %service_del_preun nitro-enclaves-allocator.service nitro-enclaves-vsock-proxy.service
+
 %postun
 %service_del_postun_without_restart nitro-enclaves-allocator.service nitro-enclaves-vsock-proxy.service
 
@@ -225,4 +232,3 @@ chown -v '0:%ne_system_group' "${ld}"
 %_datadir/nitro_enclaves/blobs
 
 %changelog
-

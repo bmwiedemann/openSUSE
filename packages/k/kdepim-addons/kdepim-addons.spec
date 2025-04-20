@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -50,6 +50,7 @@ BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
+BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
@@ -147,9 +148,13 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf6_plugindir}/pim6/contacteditor/
 %{_kf6_plugindir}/pim6/importwizard/
 %{_kf6_plugindir}/pim6/kaddressbook/
+%dir %{_kf6_plugindir}/pim6/kcms
+%{_kf6_plugindir}/pim6/kcms/kleopatra/
 %{_kf6_plugindir}/pim6/kmail/
+%{_kf6_plugindir}/pim6/ldapactivities/
 %{_kf6_plugindir}/pim6/libksieve/
 %{_kf6_plugindir}/pim6/mailtransport/
+%{_kf6_plugindir}/pim6/mailtransportactivities/
 %{_kf6_plugindir}/pim6/messageviewer/
 %{_kf6_plugindir}/pim6/pimcommon
 %{_kf6_plugindir}/pim6/templateparser/

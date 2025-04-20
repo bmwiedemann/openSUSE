@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:31:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.1
+  * The Verifier now enforces that the EKU (Extended Key Usage)
+    explicitly includes the `id-kp-timeStamping` OID (#120)
+  * The Verifier now searches for the leaf certificate in the
+    Timestamp Response instead of using the first one provided (#121)
+
+-------------------------------------------------------------------
 Tue Jan 21 08:27:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version (1.0.0)

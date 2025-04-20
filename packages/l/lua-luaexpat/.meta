@@ -3,5 +3,4 @@
   <description>
 LuaExpat is a SAX XML parser based on the Expat library.
   </description>
-  <devel project="devel:languages:lua" package="lua-luaexpat"/>
 </package>

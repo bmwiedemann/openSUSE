@@ -17,7 +17,7 @@
 
 
 Name:           gnome-system-monitor
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        A process monitor for the GNOME desktop
 License:        GPL-2.0-or-later

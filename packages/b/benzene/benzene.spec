@@ -1,7 +1,7 @@
 #
 # spec file for package benzene
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/sagemath/sage/tree/develop/build/pkgs/benzene
 Source:         https://mirrors.mit.edu/sage/spkg/upstream/benzene/%name-%version.tar.bz2
+# fix build with gcc15
+Patch0:         benzene-gcc15.patch
 BuildRequires:  gmp-devel >= 4.3.2
 
 %description

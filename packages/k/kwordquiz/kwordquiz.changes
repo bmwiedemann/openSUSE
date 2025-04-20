@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix opening files from command line (kde#487774)
+  * Add xml/yaml linting
+  * Edit org.kde.kwordquiz.appdata.xml
+  * Fix compile against kf6.10
+  * remove unnecessary macros. QT_USE_FAST_CONCATENATION and QT_USE_FAST_OPERATOR_PLUS are superseeded with QT_USE_STRINGBUILDER. These variables are added by default using KDECompilerSettings>=5.85, no need to specify them (https://api.kde.org/ecm/kde-module/KDECompilerSettings.html#modern-code)
+  * Remove unimplemented methods
+  * Port to AboutKDEPage from AboutKDE
+  * Remove explicit quit connection with QQmlApplicationEngine
+  * Don't duplicate code
+  * Fix creating new decks (kde#496591)
+  * Add craft build support
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

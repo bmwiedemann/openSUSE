@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 15 18:18:01 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- Add BuildRequires: libX11-devel
+  * needed for tumbleweed build after dropping glew-devel
+- a52_init fix is needed only for leap 15.x
+
+-------------------------------------------------------------------
+Tue Apr 15 16:09:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop unnecessary dependency on glew; has not been used since
+  version 2.6.0 and replaced by GLAD
+  (https://github.com/scummvm/scummvm/commit/21b0d6d).
+
+-------------------------------------------------------------------
 Mon Dec 23 13:06:00 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - Update to 2.9.0

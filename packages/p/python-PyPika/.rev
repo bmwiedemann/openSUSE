@@ -7,4 +7,15 @@
     <comment>New package (original submitted didn’t provide any specific reason for inclusion).</comment>
     <requestid>1198445</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9632e69165d902452b3d126b05e99e47</srcmd5>
+    <version>0.48.9</version>
+    <time>1744828705</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264836</requestid>
+  </revision>
 </revisionlist>

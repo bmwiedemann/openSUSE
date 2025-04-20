@@ -19,7 +19,7 @@
 %bcond_with profiling
 
 Name:           gjs
-Version:        1.84.1
+Version:        1.84.2
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
@@ -110,10 +110,12 @@ Mozilla SpiderMonkey JavaScript engine.
 %meson_install
 
 %check
+%ifnarch s390x
 export DISPLAY=:98
 Xvfb :98 >& Xvfb.log & trap "kill $! || true" EXIT
 sleep 10
 %meson_test
+%endif
 
 %ldconfig_scriptlets -n libgjs0
 

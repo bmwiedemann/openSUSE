@@ -1,0 +1,65 @@
+# Configuration file for collection changes before build.
+# Collection: community.sap_operations
+
+# Types of changes used by collection_update.py
+# remove_paths - Remove specific directories and files that are no longer needed.
+# remove_lines - Remove specific lines containing certain patterns from files.
+# replace_text - Replace specific text strings within files.
+# update_yaml_key - Update specific keys in YAML files with new values.
+# append_yaml_list - Append items to a list in a YAML file.
+
+changes:
+  # Main collection changes
+
+  - type: remove_paths
+    # Remove all unsupported roles.
+    # Remove all 'meta/main.yml' files within any role directory.
+    paths:
+      - "roles/sap_rhsm"
+      - "roles/sap_fapolicy"
+      - "roles/*/meta/main.yml"
+
+  - type: remove_lines
+    # Remove specific lines from README.md and all role README.md files.
+    # This is used to clean up any mention of unsupported roles and leftover Ansible Lint markers.
+    files:
+      - "README.md"
+      - "roles/*/README.md"
+    patterns:
+      - "sap_rhsm"
+      - "sap_fapolicy"
+      - "\\[Ansible Lint"
+
+  - type: replace_text
+    # Replace specific text strings in galaxy.yml and README.md files.
+    # This is used to update the namespace and repository links from 'community' to 'suse'.
+    files:
+      - "galaxy.yml"
+      - "README.md"
+    replacements:
+      - { find: "namespace: community", replace: "namespace: suse" }
+      - { find: "github.com/sap-linuxlab/community", replace: "github.com/SUSE/community" }
+      - { find: "documentation:.*", replace: "documentation: https://github.com/SUSE/community.sap_operations/blob/main/README.md" }
+
+  - type: update_yaml_key
+    # Update the 'authors' key in galaxy.yml to 'SUSE'.
+    files:
+      - "galaxy.yml"
+    key: "authors"
+    value:
+      - SUSE
+
+  - type: update_yaml_key
+    # Update the 'build_ignore' key in galaxy.yml to ignore specific files and directories during the build process.
+    # This is used to exclude test files, git directories, linting configuration files, and workflows.
+    files:
+      - "galaxy.yml"
+    key: "build_ignore"
+    value:
+      - "tests"
+      - ".git*"
+      - ".ansible-lint"
+      - ".yamllint*"
+      - ".pylintrc*"
+      - "bindep*"
+      - ".pre-commit-config.yaml"

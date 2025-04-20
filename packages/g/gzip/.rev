@@ -544,4 +544,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment>Prepare for RPM 4.20 (forwarded request 1152170 from dimstar)</comment>
     <requestid>1152254</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7768c493c153c9af4906e070b9490620</srcmd5>
+    <version>1.14</version>
+    <time>1744828696</time>
+    <user>anag_factory</user>
+    <comment>gzip 1.14 (forwarded request 1268508 from AndreasStieger)</comment>
+    <requestid>1269335</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package scummvm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,7 +70,7 @@ BuildRequires:  nasm
 BuildRequires:  fdupes
 BuildRequires:  fribidi-devel
 BuildRequires:  giflib-devel
-BuildRequires:  glew-devel
+BuildRequires:  libX11-devel
 BuildRequires:  liba52-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libspeechd-devel
@@ -101,9 +101,11 @@ These engines are in a worse state, but allow to play extra games.
 # build the endianness test without optimization otherwise gcc is too smart
 # and optimize everything away, making the test fail
 sed -i '/tmp_endianness_check.cpp/ s/$CXXFLAGS/$CXXFLAGS -fno-lto -O0/' configure
+%if 0%{?suse_version} < 1600
 #allow to use liba52 from svn
 sed -i '/a52_init/s@(0)@()@' configure
 sed -i '/a52_init/s@(0)@()@' audio/decoders/ac3.cpp
+%endif
 
 %build
 # scummvm relies on -gsplit-dwarf which is incompatible with -flto

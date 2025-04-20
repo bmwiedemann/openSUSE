@@ -1,7 +1,7 @@
 #
 # spec file for package krdc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           krdc
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -39,8 +39,8 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libssh-devel
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  shared-mime-info
-BuildRequires:  cmake(FreeRDP) >= 2.10
-BuildRequires:  cmake(FreeRDP-Client) >= 2.10
+BuildRequires:  cmake(FreeRDP) >= 3.0
+BuildRequires:  cmake(FreeRDP-Client) >= 3.0
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -62,6 +62,8 @@ BuildRequires:  cmake(PlasmaActivities) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(WinPR)
+# FIXME: temporary, see sr#1245247
+BuildRequires:  pkgconfig(fuse3)
 Requires:       freerdp
 Requires:       kf6-breeze-icons
 

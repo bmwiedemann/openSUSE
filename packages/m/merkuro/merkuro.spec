@@ -1,7 +1,7 @@
 #
 # spec file for package merkuro
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 %define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF6Contacts) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
@@ -62,6 +63,7 @@ BuildRequires:  cmake(KPim6IdentityManagementQuick) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailCommon) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MailTransport) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MimeTreeParserCore) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6AkonadiSearch) >= %{kpim6_version}
 BuildRequires:  cmake(Plasma) >= %{plasma6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}

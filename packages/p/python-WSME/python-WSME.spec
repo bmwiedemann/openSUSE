@@ -1,7 +1,7 @@
 #
 # spec file for package python-WSME
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -71,7 +71,7 @@ with focus on extensibility, framework-independence and improved type handling.
 %doc README.rst examples
 %{python_sitelib}/wsme
 %{python_sitelib}/wsmeext
-%{python_sitelib}/WSME-%{version}.dist-info
+%{python_sitelib}/wsme-%{version}.dist-info
 %{python_sitelib}/WSME-%{version}-py*-nspkg.pth
 
 %changelog

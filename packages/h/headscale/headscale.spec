@@ -30,6 +30,7 @@ Source4:        headscale.systemd.service
 Source5:        config-example.yaml
 Source6:        derp-example.yaml
 Patch0:         fix-CVE-2025-30204.patch
+Patch1:         fix-CVEs.patch
 BuildRequires:  golang-packaging
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools

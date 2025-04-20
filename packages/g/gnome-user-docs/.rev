@@ -819,4 +819,13 @@ New stable release</comment>
     <comment>New stable rel (forwarded request 1253475 from iznogood)</comment>
     <requestid>1253719</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>a596b79d0f360d9a786c3cf906ebe8f8</srcmd5>
+    <version>48.1</version>
+    <time>1744898785</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Updated translations. (forwarded request 1268784 from iznogood)</comment>
+    <requestid>1269671</requestid>
+  </revision>
 </revisionlist>

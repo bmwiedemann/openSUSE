@@ -26,7 +26,7 @@ URL:            http://baller.tuxfamily.org/
 #Git-Clone:     git://git.tuxfamily.org/gitroot/baller/baller.git
 Source:         http://download.tuxfamily.org/baller/ballerburg-%{version}.tar.gz
 Source1:        %{name}.xpm
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 #BuildRequires:  pkgconfig(SDL_gfx)
@@ -42,7 +42,7 @@ Eckhard Kruse's original Ballerburg from 1987 ported to SDL.
 %setup -q
 
 %build
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}
 
 %install
@@ -51,6 +51,9 @@ install -D -m0644 %{S:1} %{buildroot}/%{_datadir}/pixmaps/%{name}.xpm
 %suse_update_desktop_file -c %{name} %{name} "Turn-based castle computer game" %{name} %{name} Game BoardGame
 rm -rf %{buildroot}%{_datadir}/doc/ballerburg/
 %find_lang %{name}
+
+%check
+%ctest
 
 %files -f %{name}.lang
 %license COPYING.txt

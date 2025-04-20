@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix kde#501420:  Locking quick search phrase does not work
+  * Fix Saving a page in the built-in browser to HDD opens multiple portals (kde#500361)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

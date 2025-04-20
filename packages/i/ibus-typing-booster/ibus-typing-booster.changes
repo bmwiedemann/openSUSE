@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Apr 19 15:28:53 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.36
+- Skip the itb_emoji.py doctests if rapidfuzz or enchant could not be imported
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/664)
+- Use rapidfuzz to improve emoji and Unicode character search performance
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/679)
+- Do not try to complete on empty input when word predictions are disabled
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/684)
+- Translation update from Weblate (it 100%)
+
+-------------------------------------------------------------------
+Fri Apr 18 11:23:27 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.34
+- Add trigger hotkeys for temporary word/emoji prediction, by David Mandelberg
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/pull/658)
+- Translation update from Weblate (kab 75.1%)
+
+-------------------------------------------------------------------
+Tue Apr 15 19:50:31 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.33
+- Add /usr/local/share/m17n/, /usr/share/m17n/, ~/.m17n.d/ to <observed-paths>
+  in /usr/share/ibus/component/typing-booster.xml
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/661)
+- Some optimization and code cleanup of the emoji search code (about 30% faster)
+- Translation update from Weblate (es 94.9%)
+
+-------------------------------------------------------------------
 Wed Apr 09 18:04:31 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.31

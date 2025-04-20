@@ -97,7 +97,7 @@ export LC_ALL=en_US.UTF-8
 %license LICENSE
 %doc *.rst
 %{python_sitelib}/OpenSSL/
-%{python_sitelib}/pyOpenSSL-%{version}.dist-info
+%{python_sitelib}/py[Oo]pen[Ss][Ss][Ll]-%{version}.dist-info
 %endif
 
 %changelog

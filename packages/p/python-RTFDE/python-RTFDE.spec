@@ -1,7 +1,7 @@
 #
 # spec file for package python-RTFDE
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -65,6 +65,6 @@ A library for extracting HTML content from RTF encapsulated HTML as commonly fou
 %doc README.md
 %license LICENSE
 %{python_sitelib}/RTFDE
-%{python_sitelib}/RTFDE-%{version}.dist-info
+%{python_sitelib}/rtfde-%{version}.dist-info
 
 %changelog

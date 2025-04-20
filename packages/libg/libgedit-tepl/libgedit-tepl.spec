@@ -1,7 +1,7 @@
 #
 # spec file for package libgedit-tepl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define api_ver 6
-%define lib_ver %{api_ver}-2
+%define lib_ver %{api_ver}-3
 
 Name:           libgedit-tepl
-Version:        6.12.0
+Version:        6.13.0
 Release:        0
 Summary:        Text Editor Product Line
 License:        LGPL-3.0-or-later
@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libgedit-amtk-5)
 BuildRequires:  pkgconfig(libgedit-gfls-1)
-BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.1.0
+BuildRequires:  pkgconfig(libgedit-gtksourceview-300) >= 299.4.0
 BuildRequires:  pkgconfig(libhandy-1) >= 1.6
 BuildRequires:  pkgconfig(uchardet)
 

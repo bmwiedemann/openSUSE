@@ -1,4 +1,5 @@
 <package name="python-nmcli" project="openSUSE:Factory">
   <title>Python NetworkManager CLI bindings</title>
   <description>A python wrapper library for the network-manager cli client</description>
+  <devel project="devel:languages:python" package="python-nmcli"/>
 </package>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 17:27:11 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Applied patch from jbohac for bsc#1240769, jsc#PED-9894,
+  bsc#1237754, bsc#1239999: KDUMP_CPUS=32
+- 5.0.4
+
+-------------------------------------------------------------------
 Thu Feb 27 11:48:40 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Applied patch from jbohac for bsc#1237754, let KDUMP_CPUS=0

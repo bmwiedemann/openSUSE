@@ -6,5 +6,4 @@ small memory footprint for those who like simplicity.
 In GNOME and Xfce the clipboard manager will be started automatically. For 
 other desktops or window managers you should also install a panel with a 
 system tray or notification area if you want to use this package.</description>
-  <devel project="X11:lxde" package="parcellite"/>
 </package>

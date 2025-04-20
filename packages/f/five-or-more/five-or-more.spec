@@ -17,7 +17,7 @@
 
 
 Name:           five-or-more
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        "Five or More" Game for GNOME
 License:        GPL-2.0-or-later

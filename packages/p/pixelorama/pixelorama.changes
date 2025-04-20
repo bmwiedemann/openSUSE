@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 13 12:00:00 UTC 2025 - cunix@mail.de
+
+- Update to 1.1
+  Added:
+  * Tilemap layers
+  * Audio layers
+  * Indexed mode
+  * Text tool
+  * Color curves image and layer effect
+  * Load custom Godot shaders as image and layer effects
+  * Importing OpenRaster ".ora" and Aseprite ".ase"/".aseprite" files
+  * Reset layout option
+  * Multiple grids
+  * StartupWMClass in .desktop file
+  And much more
+- enabled i586 builds
+
+-------------------------------------------------------------------
 Sun Feb 16 12:00:00 UTC 2025 - cunix@mail.de
 
 - restored source uri

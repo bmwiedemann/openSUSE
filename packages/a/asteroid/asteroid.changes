@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 20 22:40:17 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Added %check section
+- Removed Group:  no longer used
+
+-------------------------------------------------------------------
 Wed Jun  1 17:37:33 UTC 2016 - nemysis@openSUSE.org
 
 * Update for gtk3 (and gtk2)

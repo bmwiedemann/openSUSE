@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sat Mar 29 16:45:19 UTC 2025 - suse.snooper541@passmail.net
+
+- Initial version 1+git20240623.0ac6155:
+  * Add fwpdversion, which reports PD controller versions on Framework Laptops
+  * Bring back fwchargelimit and framework_oem_ec_commands
+  * Add LPC support for the AMD Framework Laptops
+

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * fix accessing wrong option in pagesizeoption
+  * implement internalValueList for the page size option
+  * do not use Qt 6.8 API
+  * re-evaluate page size option when options are reloaded sizes may change with Flatbed and ADF scanners also remember previous sizes and try to re-apply (kde#498906)
+  * forward a status message for every return code except SANE_STATUS_GOOD
+  * Show headers in qtc6
+  * add function to retrieve a preview scan
+  * remove Qt6 ifdefs
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -1,7 +1,7 @@
 #
 # spec file for package kontrast
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kontrast
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0

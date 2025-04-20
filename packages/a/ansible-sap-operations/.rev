@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0375477658de126dcf3d7332c4a01ccd</srcmd5>
+    <version>0.9.1</version>
+    <time>1744828760</time>
+    <user>anag_factory</user>
+    <comment>bugowner: marcel.mamula (marcel.mamula@suse.com)
+This package contains Ansible Automation for operating SAP landscape.
+Downstream source is located at https://github.com/SUSE/community.sap_operations</comment>
+    <requestid>1269247</requestid>
+  </revision>
+</revisionlist>

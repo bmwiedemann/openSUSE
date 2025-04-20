@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -104,6 +104,6 @@ export ZEO4_SERVER=1
 %python_alternative %{_bindir}/zeopack
 %python_alternative %{_bindir}/zeo-nagios
 %{python_sitelib}/ZEO
-%{python_sitelib}/ZEO-%{version}*-info
+%{python_sitelib}/zeo-%{version}.dist-info
 
 %changelog

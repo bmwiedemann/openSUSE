@@ -1,0 +1,10 @@
+<package name="ansible-sap-install" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a Ansible collection suse.sap_install.
+
+It automates the installation of various SAP software components,
+ including SAP HANA, SAP NetWeaver, and SAP S/4HANA.
+
+This collection can be used to simplify and accelerate the deployment,
+management, and operation of SAP systems on Linux platforms.</description>
+</package>

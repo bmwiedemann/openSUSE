@@ -1,7 +1,7 @@
 #
 # spec file for package umbrello
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 %bcond_without released
 Name:           umbrello
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 17 08:58:54 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 2.0.0
+  * many new user modules, vastly improved REST client infrastructure
+  * do not try to get a new token if the token was just issued
+  * Fix build on illumos
+  * dp action catalog 
+  * fixed Swagger additionalProperties processing 
+  * fixed a bug converting arguments to fit the Swagger schema
+  * allow reflection in module init and del closures
+  * added a DiscordRestClient module
+  * fixed setting the column size on types created from VARCHAR
+  * fixed a bug with the cast<>() operator and compatible type
+  * do not close sockets when there is an I/O timeout
+  * fixed outputting complex data structures with deleted objects
+  * gmail app 
+  * fixed the -= operator with *hash lvalues 
+  * logger module
+  * expanded api 
+  * fixed static method resolution
+  * range operator fix
+  * thread local storage fix
+
+-------------------------------------------------------------------
 Sun May 26 11:34:21 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 1.19.2

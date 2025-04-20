@@ -1,5 +1,6 @@
 <package name="tekton-cli" project="openSUSE:Factory">
   <title>Tekton Pipelines CLI</title>
   <description>The Tekton Pipelines CLI project provides a command-line interface (CLI) for interacting with Tekton, an open-source framework for Continuous Integration and Delivery (CI/CD) systems.</description>
+  <devel project="devel:kubic" package="tekton-cli"/>
   <url>https://github.com/tektoncd/cli</url>
 </package>

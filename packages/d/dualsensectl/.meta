@@ -2,5 +2,6 @@
   <title>dualsensectl</title>
   <description>DualSense Control [DualSenseCTL] is a tool for controlling Sony PlayStation 5 DualSense
 controllers on Linux.</description>
+  <devel project="hardware" package="dualsensectl"/>
   <url>https://github.com/nowrep/dualsensectl</url>
 </package>

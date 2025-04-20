@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * remove unnecessary macros. QT_USE_FAST_CONCATENATION and QT_USE_FAST_OPERATOR_PLUS are superseeded with QT_USE_STRINGBUILDER. This variable is added by default using KDECompilerSettings>=5.85, no need to specify it (https://api.kde.org/ecm/kde-module/KDECompilerSettings.html#modern-code)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

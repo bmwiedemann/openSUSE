@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 18 18:29:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Explicitly label act_relax-portalocker.patch as Patch0
+
+-------------------------------------------------------------------
 Mon Nov 25 12:47:21 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to relax python-portalocker version dependency in setup.py

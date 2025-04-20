@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Apr 16 14:08:02 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.16.3:
+   * Bugfix/input pin title too wide (gh#nextcloud/desktop#8055)
+   * use standard way to find the checkum type and really send it
+     to server (gh#nextcloud/desktop#8057)
+   * fix Windows build (gh#nextcloud/desktop#8068)
+   * use our own craft cache on windows (gh#nextcloud/desktop#8069)
+   * gui/macOS: Do not assume accountState will always be valid in
+     socket controller (gh#nextcloud/desktop#8074)
+   * gui/macOS: Fix broken file provider domain progress reporting
+     in settings window (gh#nextcloud/desktop#8079)
+   * gui/tray: change the status icon background colour again
+     (gh#nextcloud/desktop#8082)
+   * set `CFBundleDevelopmentRegion` to `"en"` and set
+     `CFBundleAllowMixedLocalizations` (gh#nextcloud/desktop#8085)
+   * gui/macOS: Fix memory issues in Objective-C++ code for
+     FileProvider support (gh#nextcloud/desktop#8089)
+   * fix(mac): bump deployment target to 12.0
+     (gh#nextcloud/desktop#8115)
+   * fix(gui): remove ignored file notifications from Activity
+     list (gh#nextcloud/desktop#8116)
+   * fix(mac-crafter): Work around broken consecutive shell
+     integration builds (gh#nextcloud/desktop#8117)
+   * Bugfix/delete errors (gh#nextcloud/desktop#8124)
+   * remove costly availability check that is never used
+     (gh#nextcloud/desktop#8123)
+   * fix crash within FolderStatusModelTest
+     (gh#nextcloud/desktop#8125)
+   * fix: move array to correct value in dict
+     (gh#nextcloud/desktop#8126)
+   * remove bogus check that tried to check for existing case
+     clash conflict (gh#nextcloud/desktop#8129)
+   * stop using QFile api to delete a single local file
+     (gh#nextcloud/desktop#8130)
+   * fix: try to correct mtime on upsyncs
+     (gh#nextcloud/desktop#8131)
+   * Bugfix/use newer bulk upload checksum header
+     (gh#nextcloud/desktop#8137)
+   * Bugfix/slow bulk upload (gh#nextcloud/desktop#8139)
+   * disable use of bulk upload for small files
+     (gh#nextcloud/desktop#8141)
+   * simplify deletions of invalid read-only items: do not
+     interrupt sync (gh#nextcloud/desktop#8153)
+   * fix(PinState): don't trigger sync when file's PinState
+     changed to Unspecified. (gh#nextcloud/desktop#8157)
+   * skip single test or whole test file for macOS: they are
+     broken (gh#nextcloud/desktop#8163)
+   * Exclude NavigationPaneHelper from non-Windows compile
+     (gh#nextcloud/desktop#8158)
+   * Use AccountPtr in Account signals instead of raw pointer
+     (gh#nextcloud/desktop#8159)
+   * fix(theme): correct dark/light mode check on Win10
+     (gh#nextcloud/desktop#8162)
+   * fix(msi): allow custom installation directory
+     (gh#nextcloud/desktop#8166)
+   * fix(migration): import proxy and general settings from legacy
+     config. (gh#nextcloud/desktop#8169)
+   * use specific revision for KDE blueprints that matches the
+     craft cache (gh#nextcloud/desktop#8172)
+
+-------------------------------------------------------------------
 Wed Mar 19 18:08:30 UTC 2025 - Natasha Ament <stacheldrahtje@gmail.com>
 
 - Update to version 3.16.2:

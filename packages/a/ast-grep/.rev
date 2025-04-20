@@ -848,4 +848,16 @@
   * fix(deps): update rust crate crossterm to 0.29.0 4c62fe5</comment>
     <requestid>1269175</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3d472d266ccf9fc789be59987336d9ce</srcmd5>
+    <version>0.37.0</version>
+    <time>1744898978</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.37.0:
+  * fix: use docker image instead #1930
+  * chore(deps): update dependency @ast-grep/napi to v0.36.3 3dca58c
+  * fix: update crate a88a073
+  * perf: more efficient node ancestor calculation a1ed329</comment>
+    <requestid>1270194</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package kontact
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           kontact
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -72,6 +72,9 @@ KOrganizer as views in one window.
 
 %install
 %kf6_install
+
+# Drop exotic resolutions
+rm -r %{buildroot}%{_kf6_iconsdir}/hicolor/{44x44,144x144}
 
 %find_lang %{name} --with-html --all-name
 

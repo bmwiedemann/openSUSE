@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * snapcraft: Sync fixes into stable.
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Make joining remote rooms more reliable (kde#487253)
+  * Stop emojis from destroying your message (kde#479587)
+  * Fix Getting Member Objects (kde#498649)
+  * Add button to view pinned messages in a room (kde#497427)
+  * Add an option to disable encryption in new chats (kde#498375)
+  * Fix web shortcuts not doing anything (kde#496434)
+  * Remove system information from device display name (kde#496901)
+  * Make the room list slightly narrower by default (kde#496722)
+  * Make sure the loading text for a new login wraps (kde#493869)
+  * Fix Sed Edits (kde#496313)
+  * PollHandler: Ensure that m_pollStartEvent is always initialized to null (kde#493649)
+  * Make fullscreen images focused when they're opened (kde#484322)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

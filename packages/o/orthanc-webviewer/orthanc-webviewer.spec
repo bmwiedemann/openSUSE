@@ -1,8 +1,8 @@
 #
 # spec file for package orthanc-webviewer
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2024 Dr. Axel Braun
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           orthanc-webviewer
 Summary:        Web Viewer plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        2.8
+Version:        2.10
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancWebViewer-%{version}.tar.gz
@@ -33,7 +33,6 @@ Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web
 Source6:        https://orthanc.uclouvain.be/downloads/third-party-downloads/web-viewer/pdfjs-2.5.207-dist.zip
 Source11:       orthanc-webviewer-readme.SUSE
 Source12:       webviewer.json
-Patch0:         Cachemanager.patch
 
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200

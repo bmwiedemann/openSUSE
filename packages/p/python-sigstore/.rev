@@ -7,4 +7,16 @@
     <comment>New package python-sigstore</comment>
     <requestid>1239307</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>760a24b196b55ac6ef830561b0bc90c2</srcmd5>
+    <version>3.6.2</version>
+    <time>1744828889</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.2:
+  * Fixed issue where a trust root with multiple rekor keys was not considered
+    valid.
+  * Upgraded python-tuf dependency to 6.0.
+  * Updated the embedded TUF root to version 12</comment>
+    <requestid>1269750</requestid>
+  </revision>
 </revisionlist>

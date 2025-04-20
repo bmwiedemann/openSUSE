@@ -1,5 +1,4 @@
 <package name="lua-lyaml" project="openSUSE:Factory">
   <title>lyaml</title>
   <description>LibYAML binding for Lua.</description>
-  <devel project="devel:languages:lua" package="lua-lyaml"/>
 </package>

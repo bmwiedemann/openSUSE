@@ -3,5 +3,4 @@
   <description>This module adds support for accepting CLI arguments easily using multiple notations and argument types.
 
 cliargs allows you to define required, optional, and flag arguments.</description>
-  <devel project="devel:languages:lua" package="lua-cliargs"/>
 </package>

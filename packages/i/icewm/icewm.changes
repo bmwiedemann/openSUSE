@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:14:37 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.7.3:
+  * Add ColorQuickSwitchBorder themable preference for issue #736.
+  * Make 4 graph widths themable for issue #178.
+  * Support grabbing two keys simultaneously by a single keybinding
+    definition when both keys are bound to the same keysym.
+  * Add support for the _NET_WM_MOVERESIZE_CANCEL protocol option.
+  * Add -Await option to icesh to wait for and select new client windows.
+  * Unset DESKTOP_AUTOSTART_ID, DESKTOP_STARTUP_ID, XDG_ACTIVATION_TOKEN.
+  * Add the "usertime" and "x11time" commands to icesh.
+  * Improved loading of fonts in non-Latin environments.
+  * Always allow both scrollbars to process the same key event.
+  * When a key event is handled, don't propagate it further.
+  * Support locales with three letter language codes.
+  * Enforce a limit of 8 mouse pointer buttons, as more is impossible.
+  * Support keybindings to shifted XF86keysyms like XF86AudioPause.
+  * Better guard the integrity of window move/size operations.
+  * Increase the maximum number of icewmbg backgrounds to 8000.
+  * Let icewmbg also support the AVIF image format.
+  * Improve support for properties with COMPOUND_TEXT in icesh.
+  * Let icesh accept UTF-8 strings in properties.
+
+-------------------------------------------------------------------
 Wed Oct  9 01:15:23 UTC 2024 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add explicit pkgconfig(librsvg-2.0) BuildRequires: Needed support

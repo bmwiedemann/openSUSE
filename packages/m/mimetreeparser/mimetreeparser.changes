@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix two deprecation warnings
+  * Disable one test on Windows
+  * test: Add debug output when failing to open file
+  * Require test on all system
+  * Display all alternatives for extension in save dialog
+  * messageviewer: Add missing icons to actions
+  * messageviewer: Use short date format
+  * Add xml/yaml linting
+  * Const'ify pointer
+  * Remove duplicate headers from cpp/h files
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Fix compile with unity support
+  * Hide MailViewer's footer when there is no attachments
+  * Unify horizontal padding in MailPartModel
+  * Use Qt:: namespace
+  * Use more appropriate icon
+  * Bump mimetreeparser version
+  * Add some helpful default message menu items
+  * Add MessageViewerWindow
+  * Query certificate when clicking on a link for an unknown certificate
+  * Adapt test to change in libkleo
+  * We have it all time now with kf6.8
+  * Remove explicit quit connection with QQmlApplicationEngine
+  * Require passing tests on Linux and on FreeBSD
+  * Use DecryptVerifyJob to decrypt and/or verify inline PGP message blocks
+  * Avoid test failure because of different date/time text representation
+  * Use new singular mailbox API for sender header
+  * Fix gpgme++ includes
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:32 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

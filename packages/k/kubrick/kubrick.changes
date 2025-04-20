@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * It compiles fine without qt6.9 deprecated methods
+  * Add xml/yaml linting
+  * Added supporter ThonkDifferent
+  * Stripping '.desktop' suffix from legacy AppStream ID.
+  * Show headers in qtc6
+  * Add apple bundle info
+  * Add macos support
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

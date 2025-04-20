@@ -2733,4 +2733,12 @@ rpmfusion/debian patches did not work ultimately
     <comment>- build with kernel 6.15</comment>
     <requestid>1268344</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>309ce0eca6836331a5c17a583ab2310f</srcmd5>
+    <version>7.1.8</version>
+    <time>1744985665</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.1.8</comment>
+    <requestid>1270106</requestid>
+  </revision>
 </revisionlist>

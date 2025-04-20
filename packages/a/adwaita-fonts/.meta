@@ -2,5 +2,6 @@
   <title>Adwaita Fonts</title>
   <description>Adwaita Sans, a variation of Inter, and Adwaita Mono, Iosevka
 customized to match Inter.</description>
+  <devel project="GNOME:Factory" package="adwaita-fonts"/>
   <url>https://gitlab.gnome.org/GNOME/adwaita-fonts</url>
 </package>

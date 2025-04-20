@@ -1361,4 +1361,19 @@ New upstream release</comment>
   * emulation: Don't allow BEL termination of the progress sequence (forwarded request 1253410 from iznogood)</comment>
     <requestid>1253705</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>60d183ba6c100fd067f73c607a459db0</srcmd5>
+    <version>0.80.1</version>
+    <time>1744898797</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.80.1:
+  * a11y: gtk4: Fix text offsets
+  * a11y: gtk4: Fix retrieving word segments
+  * widget: Show preedit even if cursor is invisible
+  * emulation: Fix OSC 111
+  * ci: Remove incorrect master-only build option
+  * widget: a11y: Enable a11y by default on gtk4 also
+  * ci: Update from master (forwarded request 1268942 from iznogood)</comment>
+    <requestid>1269680</requestid>
+  </revision>
 </revisionlist>

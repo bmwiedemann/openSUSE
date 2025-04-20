@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr  4 12:22:24 UTC 2025 - Zdenek Kubala <zkubala@suse.cz>
+
+- Update to 3.3.15
+  * restorecon.py: exclude more paths
+  * Improve disable_ipv6 plugin then_text
+  * Update generated configuration files
+  * Update translations
+
+- patch 9e54f6a661330070ad25a0e86f197b3530bfc5c7.patch removed since
+  it is not needeed anymore
+
+-------------------------------------------------------------------
 Fri Mar  7 12:13:30 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix license tag, it's GPL-3.0-or-later.

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 11 06:54:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.1:
+  + Bug Fix: Handle changed server pool in WebDAV collection
+    sources.
+
+-------------------------------------------------------------------
 Fri Mar 14 12:48:32 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.56.0:

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix incorrect icon and color theme under Windows (kde#403134, kde#431009, kde#445517, kde#460465, kde#469709)
+  * Initialize KDevFileManagerPlugin synchronously (kde#385916)
+  * sublime: don't hide the active tool view when another one is raised (kde#427288)
+  * Sublime::MainWindow: don't disable updates while restoring state (kde#381310)
+  * sublime: don't remove the DockWidgetFloatable feature (kde#445321)
+  * Eliminate a fork of KXmlGui's applyMainWindowSettings() (kde#494237)
+  * Fix locations on Declarations in macro expansions (kde#496985)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 12:52:49 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add sbl-gcc15.patch to fix gcc-15 compile time errors
+
+-------------------------------------------------------------------
 Sun Apr 21 16:41:04 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add sbl-gcc14.patch: fix an implicit  declaration.

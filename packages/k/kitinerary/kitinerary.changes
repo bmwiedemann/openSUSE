@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Add extractor script for Kolumbus ferries
+  * Handle more date/time format variants in the Eventbrite extractor
+  * Update booking.com extractor expressions
+  * Add Eventlook ticket Extractor
+  * fix spdx header
+  * Add Tootoot.fm extractor
+  * Add Preemly.eu Ticket extractor
+  * Don't crash on VDV tickets without a TicketBasicData block
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix extracting Amtrak tickets with multi-line station names (kde#501409)
+  * Handle the (new?) multi-column LH boarding pass layout (kde#498569)
+  * Increase upper PDF page limit for extraction (kde#498570)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

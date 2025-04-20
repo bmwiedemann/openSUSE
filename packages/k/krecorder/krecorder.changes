@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix context menu showing when opening a recording
+  * Store recording history in state data
+  * Simplify QJsonArray to QString conversion
+  * Add icon for F-Droid listing
+  * Update Android Gradle plugin version to 8.6.0
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

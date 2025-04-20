@@ -1,0 +1,27 @@
+From bd453d10f236503166ad640fd5f3dd787b41e852 Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Fri, 11 Apr 2025 07:15:24 +0200
+Subject: [PATCH] maint: include errno.h
+To: bug-gzip@gnu.org
+Cc: Sarah Julia Kriesch <ada.lovelace@gmx.de>
+
+Found building for s390x on openSUSE
+---
+ dfltcc.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/dfltcc.c b/dfltcc.c
+index 9f86581..7333757 100644
+--- a/dfltcc.c
++++ b/dfltcc.c
+@@ -18,6 +18,7 @@
+ #include <config.h>
+ 
+ #include <stdlib.h>
++#include <errno.h>
+ 
+ #ifdef HAVE_SYS_SDT_H
+ # include <sys/sdt.h>
+-- 
+2.49.0
+

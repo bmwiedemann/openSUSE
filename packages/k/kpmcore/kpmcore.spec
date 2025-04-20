@@ -1,7 +1,7 @@
 #
 # spec file for package kpmcore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kpmcore
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        KDE Partition Manager core library
 License:        GPL-3.0-or-later
@@ -50,7 +50,7 @@ other projects.
 
 %package devel
 Summary:        Development package for KDE Partition Manager core library
-Requires:       libkpmcore12 = %{version}
+Requires:       libkpmcore13 = %{version}
 
 %description devel
 Library for managing partitions. Common code for KDE Partition Manager and
@@ -58,11 +58,12 @@ other projects.
 
 Development package for kpmcore.
 
-%package -n libkpmcore12
+%package -n libkpmcore13
 Summary:        KDE Partition Manager core library
 Requires:       kpmcore >= %{version}
+Obsoletes:      libkpmcore12
 
-%description -n libkpmcore12
+%description -n libkpmcore13
 Library for managing partitions. Common code for KDE Partition Manager and
 other projects.
 
@@ -84,7 +85,7 @@ Main kpmcore library.
 
 %find_lang kpmcore --all-name
 
-%ldconfig_scriptlets -n libkpmcore12
+%ldconfig_scriptlets -n libkpmcore13
 
 %files
 %{_kf6_dbuspolicydir}/org.kde.kpmcore.*.conf
@@ -93,7 +94,7 @@ Main kpmcore library.
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kpmcore.externalcommand.policy
 %{_libexecdir}/kpmcore_externalcommand
 
-%files -n libkpmcore12
+%files -n libkpmcore13
 %license LICENSES/*
 %{_kf6_libdir}/libkpmcore.so.*
 

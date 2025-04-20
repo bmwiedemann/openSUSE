@@ -45,7 +45,7 @@ Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  go-md2man
-Requires:       python3-libarchive-c
+Requires:       python3-libarchive-c >= 4
 Requires:       golang(API) >= 1.24
 BuildArch:      noarch
 %if %{with needs_external_argparse}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:21:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add (huge) django52.patch to fix compatibility with Django 5.2
+
+-------------------------------------------------------------------
 Tue Nov 19 12:44:10 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.10:

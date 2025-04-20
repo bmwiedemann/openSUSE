@@ -1,3 +1,19 @@
+Wed Apr 16 14:05:01 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 5.1.0
+  * When the path encoding is specified as UTF-8, send `OPTS UTF8 ON` if
+    the server supports it
+  * ftputil uses `ftplib.FTP` as default session factory, but explicitly
+    sets the path encoding to latin-1 (regardless of the Python
+    version). This is the same behavior as in ftputil 4.0.0 or earlier
+    if running under Python 3.8 or earlier.
+  * If client code uses a custom session factory (i. e. the
+    `session_factory` argument of the `FTPHost` constructor), ftputil
+    will take the path encoding to use for `bytes` paths from the
+    `encoding` attribute of an FTP session from this factory. If there's
+    no such attribute, an exception is raised.
+
+
 -------------------------------------------------------------------
 Wed Apr 10 14:20:00 UTC 2024 - Christian Keil <keil@dfn-cert.de>
 

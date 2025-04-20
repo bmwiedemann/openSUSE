@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 17 02:37:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pytest-benchmark for running the test suite. 
+
+-------------------------------------------------------------------
+Thu Apr 10 12:43:29 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.0
+  * Improved performance of ``as_traceback`` by a large factor.
+  * Dropped support for now-EOL Python 3.8 and added 3.13 in the
+    test grid.
+- Drop more-aggressive-location-stripping.patch, fixed upstream
+- Drop vendore-reraise-from-six.patch, merged upstream
+- Renumber patches
+
+-------------------------------------------------------------------
 Mon Sep  9 12:30:08 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick patch from Fedora to fix testsuite with Python 3.13

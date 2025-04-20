@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://gitlab.gnome.org/GNOME/gnome-terminal.git</param>
     <param name="scm">git</param>
+    <param name="revision">3.56.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">3.56.0</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 14:26:07 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- update to 1.8.1^20250410d23d30f49 (jsc#PED-12282):
+  * Update github.com/hashicorp/vault/api to 1.16.0
+
+-------------------------------------------------------------------
 Fri Apr 11 06:06:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.8.1:

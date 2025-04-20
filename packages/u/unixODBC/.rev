@@ -428,4 +428,12 @@
   Add unixODBC-gcc14.patch</comment>
     <requestid>1159779</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>ef872b8099023c5def4fb2d59d220a3b</srcmd5>
+    <version>2.3.12</version>
+    <time>1744828657</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269489</requestid>
+  </revision>
 </revisionlist>

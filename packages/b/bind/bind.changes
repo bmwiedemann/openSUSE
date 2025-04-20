@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:51:44 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.8
+  New Features:
+  * Add support for EDE 20 (Not Authoritative)
+  * Add support for EDE 7 and EDE 8.
+  * `dig` can now display the received BADVERS message during
+    negotiation.
+  * Add an `rndc` command to reset some statistics counters.
+  
+  Bug Fixes:
+  * Restore NSEC3 closest-encloser lookup improvements.
+  * Stop caching lack of EDNS support.
+  * Fix resolver statistics counters for timed-out responses.
+  * Nested DNS validation could cause an assertion failure.
+  * Wait for memory reclamation to finish in `named-checkconf`.
+  * Ensure `max-clients-per-query` is at least `clients-per-query`.
+  * Fix write after free in validator code.
+  * Don't enforce NOAUTH/NOCONF flags in DNSKEYs.
+  * Fix several small DNSSEC timing issues.
+  * Fix inconsistency in CNAME/DNAME handling during resolution.
+
+-------------------------------------------------------------------
 Mon Mar 24 10:45:35 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.7

@@ -2,6 +2,7 @@
 # spec file for package gzip
 #
 # Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gzip
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later
@@ -33,12 +34,11 @@ Patch6:         zdiff.diff
 # PATCH FIX OPENSUSE BNC#799561 - zgrep silently fails on LZMA compressed files
 Patch7:         xz_lzma_zstd.patch
 Patch8:         manpage-no-date.patch
+Patch9:         gzip-1.14-s390x-errno.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
 BuildRequires:  xz
-Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 Conflicts:      alternative(gzip)
 Provides:       alternative(gzip)
 
@@ -56,6 +56,7 @@ times.
 %patch -P 6
 %patch -P 7 -p1
 %patch -P 8 -p1
+%patch -P 9 -p1
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \
@@ -116,12 +117,6 @@ ln -sf %{_bindir}/gzip %{_bindir}/gunzip %{_bindir}/zcat %{buildroot}/bin
 %endif
 ln -sf zmore %{buildroot}%{_bindir}/zless
 ln -sf zmore.1 %{buildroot}%{_mandir}/man1/zless.1
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
 %license COPYING

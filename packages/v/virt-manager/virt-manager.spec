@@ -20,13 +20,15 @@
 %global with_guestfs               0
 %global default_hvs                "qemu,xen,lxc"
 %if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
+    %define is_sles16 0
     %define have_spice 1
 %else
+    %define is_sles16 1
     %define have_spice 0
 %endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
-# No spice on SLES15 so no running check build
+# No spice on SLES16 so no running check build
 %if "%{flavor}" == "test" && %{have_spice}
 %bcond_without test
 %define psuffix -%{flavor}
@@ -141,11 +143,6 @@ Requires:       gtk3
 Requires:       python3-gobject
 Requires:       virt-manager-common = %{verrel}
 Requires:       vte
-Requires:       typelib(LibvirtGLib)
-%if 0%{?suse_version} >= 1699
-Requires:       typelib(GtkVnc)
-Requires:       typelib(Vte)
-%endif
 
 Recommends:     gtksourceview4
 Recommends:     libvirt-daemon-config-network
@@ -157,6 +154,13 @@ BuildRequires:  gettext
 BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-docutils
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if %{is_sles16}
+%define __requires_exclude typelib\\(AppIndicator3|SpiceClientGtk|SpiceClientGLib|GtkSource\\) = 3.0
+%else
+# GtkSource = 4 is available everywhere we run this version of virt-manager
+%define __requires_exclude typelib\\(GtkSource\\) = 3.0
+%endif
 %if %{with test}
 BuildRequires:  python3-argcomplete
 BuildRequires:  python3-pytest
@@ -196,7 +200,6 @@ Group:          System/Monitoring
 
 Requires:       libvirt-client
 Requires:       virt-manager-common = %{verrel}
-Requires:       typelib(Libosinfo)
 
 Provides:       python3-virtinst
 Provides:       virt-clone
@@ -216,10 +219,10 @@ machine).
 %if %{default_hvs}
 %global _default_hvs --default-hvs %{default_hvs}
 %endif
-%if ! %{have_spice}
-%global _default_graphics -Ddefault-graphics=vnc
-%else
+%if %{have_spice}
 %global _default_graphics -Ddefault-graphics=spice
+%else
+%global _default_graphics -Ddefault-graphics=vnc
 %endif
 %meson \
     -Ddefault-hvs=%{default_hvs} \
@@ -233,7 +236,7 @@ machine).
 %meson_install
 
 # YaST is not used on SLES16
-%if %{?suse_version} != 1600
+%if ! %{?is_sles16}
 mkdir -p %{buildroot}/%{_datadir}/YaST2/clients/
 install -m644 %SOURCE1 %{buildroot}/%{_datadir}/YaST2/clients/virt-install.rb
 mkdir -p %{buildroot}/%{_datadir}/applications/YaST2/
@@ -339,7 +342,7 @@ fi
 
 %{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%if %{?suse_version} != 1600
+%if ! %{?is_sles16}
 %{_datadir}/applications/YaST2/virt-install.desktop
 %endif
 %dir %{_datadir}/glib-2.0
@@ -368,7 +371,7 @@ fi
 %{_bindir}/virt-xml
 %{_datadir}/bash-completion/completions/virt-xml
 
-%if %{?suse_version} != 1600
+%if ! %{?is_sles16}
 %dir %{_datadir}/YaST2
 %dir %{_datadir}/YaST2/clients
 %dir %{_datadir}/applications/YaST2

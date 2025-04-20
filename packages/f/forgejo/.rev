@@ -454,4 +454,49 @@
 - fix url for the keyring (forwarded request 1255422 from rrahl0)</comment>
     <requestid>1255423</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>08b28ced52c5265ee47d5b0889cd862e</srcmd5>
+    <version>10.0.3</version>
+    <time>1744828903</time>
+    <user>anag_factory</user>
+    <comment>- add patch fix-CVE-2025-3445.patch, for fixing bsc#1241245, bsc#2024-0406 (forwarded request 1269825 from rrahl0)</comment>
+    <requestid>1269826</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>1e5230a3fff20a742830417cb688d5e1</srcmd5>
+    <version>11.0.0</version>
+    <time>1744986073</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.0.0:
+  * add ability to regenerate access tokens
+  * drop SSPI auth support and more Windows files
+  * localize theme names
+  * improve incorrect ROOT_URL warning
+  * admin user view
+  * welcome screen for user dashboard
+  * improve &quot;URL&quot; handling in markdown editor
+  * display to maintainers in pull request when it is editable
+  * simplify pronouns in user settings
+  * split Forgejo landing page template to allow patching or removing Forgejo
+    introduction section
+  * set default release title to tag name
+  * add quota overview
+  * allow opening a single-file diff from file history view
+  * reduce noise in the timeline of issues and pull requests. If certain
+    timeline events are performed within a certain timeframe of each other with
+    no other events in between, they will be combined into a single timeline
+    event, and any contradictory actions will be canceled and not displayed.
+    The older the events, the wider the timeframe will become.
+  * i18n: make Danish available in UI
+  * Updates from Codeberg Translate
+  * Features
+  * return run_number in workflow dispatch
+  * add more sorting to own repository list
+  * add sort parameter to list issues API
+  * make it possible to track the progress of manually triggered workflows
+  * interpret Precedence: auto_reply as an auto reply
+  * parse multipart/related parts as attachments &amp; guess filename
+  * added missing nuget V2 properties to API (forwarded request 1270596 from rrahl0)</comment>
+    <requestid>1270597</requestid>
+  </revision>
 </revisionlist>

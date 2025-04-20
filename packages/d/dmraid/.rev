@@ -474,4 +474,12 @@ See lib/register/dmreg.c and tools/dmevent_tool.c (both have GPL-2.0 license) (f
     <comment></comment>
     <requestid>1154004</requestid>
   </revision>
+  <revision rev="65" vrev="4">
+    <srcmd5>6997e9aa23ed4f4c30bd699a3397ad2f</srcmd5>
+    <version>1.0.0.rc16.3</version>
+    <time>1744985652</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269982</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 11 04:45:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- diffutils 3.12:
+  * diff -r no longer merely summarizes when comparing an empty
+    regular file to a nonempty regular file.
+  * diff -y no longer crashes when given nontrivial differences
+- drop diff-fix-allocation-typo-leading-to-crashes.patch
+
+-------------------------------------------------------------------
 Sat Apr  5 03:20:31 UTC 2025 - Tony Jones <tonyj@suse.com>
 
 - Fix failure (noticed in sdiff as fatal "realloc(): invalid next size")

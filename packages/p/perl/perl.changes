@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 14 11:17:06 CEST 2025 - mls@suse.de
+
+- update to 5.40.2
+  * fix heap buffer overflow with tr// [bsc#1241083] [CVE-2024-56406]
+
+-------------------------------------------------------------------
 Thu Mar 20 12:06:19 CET 2025 - mls@suse.de
 
 - Drop BerkeleyDB support from core perl [jsc#PED-12413]

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 13:33:14 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build
+
+-------------------------------------------------------------------
 Tue Jan 21 06:51:18 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.0:

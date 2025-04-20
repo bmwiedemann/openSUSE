@@ -73,6 +73,6 @@ spatial indexing features for the spatially curious Python user.
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/rtree
-%{python_sitelib}/Rtree-%{version}.dist-info
+%{python_sitelib}/rtree-%{version}.dist-info
 
 %changelog

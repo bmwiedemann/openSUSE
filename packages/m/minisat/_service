@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/stp/minisat</param>
     <param name="scm">git</param>
     <param name="filename">minisat</param>
@@ -8,7 +8,7 @@
     <param name="versionrewrite-pattern">releases/(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

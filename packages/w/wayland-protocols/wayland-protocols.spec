@@ -18,7 +18,7 @@
 
 
 Name:           wayland-protocols
-Version:        1.41
+Version:        1.43
 Release:        0
 Summary:        Wayland protocols that add functionality not available in the core protocol
 License:        MIT

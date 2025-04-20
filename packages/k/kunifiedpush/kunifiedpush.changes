@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:54 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Register the MessageReciever in the AndroidManifest.xml again
+  * Allow querying the available UnifiedPush distributors on Android
+  * Add a better description to the KCM
+  * Show headers in qtc6
+  * Qt6WebSockets is not required with KUNIFIEDPUSH_CLIENT_ONLY
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

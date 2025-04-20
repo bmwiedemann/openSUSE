@@ -1,7 +1,7 @@
 #
 # spec file for package python-fontParts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -94,7 +94,7 @@ export PYTHONDONTWRITEBYTECODE=1
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/fontParts
-%{python_sitelib}/fontParts-%{version}.dist-info
+%{python_sitelib}/fontparts-%{version}.dist-info
 %endif
 
 %changelog

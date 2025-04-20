@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Mar 20 22:01:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Add %check section
+
+-------------------------------------------------------------------
 Wed Feb 14 15:55:05 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add alure-cmake-3.28.patch: Fix build using CMake 3.28: set

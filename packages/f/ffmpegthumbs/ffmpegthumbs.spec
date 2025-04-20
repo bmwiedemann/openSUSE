@@ -1,7 +1,7 @@
 #
 # spec file for package ffmpegthumbs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ffmpegthumbs
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later

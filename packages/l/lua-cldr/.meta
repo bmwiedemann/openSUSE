@@ -4,6 +4,5 @@
 The Unicode CLDR provides key building blocks for software to support
 the world's languages, with the largest and most extensive standard
 repository of locale data available.</description>
-  <devel project="devel:languages:lua" package="lua-cldr"/>
   <url>https://github.com/alerque/cldr-lua</url>
 </package>

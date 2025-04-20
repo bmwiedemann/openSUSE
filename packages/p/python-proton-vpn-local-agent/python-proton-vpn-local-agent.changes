@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 14 10:59:10 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.4.5:
+  * local_agent_rs/Cargo.toml: Relax on dependency versions
+  * python-proton-vpn-local-agent/src: replaced pyo3_asyncio_0_21 by pyo3_async_runtimes
+  * python-proton-vpn-local-agent/Cargo.toml
+  * Improve how pyo3-async-runtimes is used
+  * fix: [VPNLINUX-1195] merge community update
+
+-------------------------------------------------------------------
 Thu Mar 27 14:56:45 UTC 2025 - Szymon Scholz <raspherdev@pm.me>
 
 - Update to 1.4.4:

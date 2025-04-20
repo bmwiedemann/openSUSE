@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kasts
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Kirigami-based podcast player
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-dialog-boxes-after-recent-Kirigami-updates.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
@@ -40,12 +38,15 @@ BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.7
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Syndication) >= %{kf6_version}
 BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
+BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -102,6 +103,7 @@ Its main features are:
 %{_kf6_iconsdir}/hicolor/scalable/apps/kasts-tray-*.svg
 %{_kf6_iconsdir}/hicolor/scalable/apps/kasts.svg
 %{_kf6_libdir}/libKMediaSession.so
+%{_kf6_qmldir}/org/kde/kmediasession/
 
 %files lang -f %{name}.lang
 

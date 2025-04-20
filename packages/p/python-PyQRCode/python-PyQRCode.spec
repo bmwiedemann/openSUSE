@@ -84,7 +84,7 @@ rm -rvf build/sphinx/html/{.buildinfo,.doctrees}
 %license LICENSE
 %doc README.rst CHANGES.rst
 %python_alternative %{_bindir}/pyqr
-%{python_sitelib}/PyQRCodeNG-%{version}*-info
+%{python_sitelib}/pyqrcodeng-%{version}.dist-info
 %{python_sitelib}/pyqrcodeng
 
 %files -n %{name}-doc

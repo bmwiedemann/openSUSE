@@ -60,6 +60,6 @@ mv new-pytest.ini pytest.ini
 %doc README.md
 %license LICENSE
 %{python_sitelib}/strenum
-%{python_sitelib}/StrEnum-%{version}.dist-info
+%{python_sitelib}/strenum-%{version}.dist-info
 
 %changelog

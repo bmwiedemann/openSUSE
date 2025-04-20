@@ -575,4 +575,12 @@
     <comment></comment>
     <requestid>1265955</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>a93e347a4d3f388debcd65f2368678b9</srcmd5>
+    <version>4.1</version>
+    <time>1744986091</time>
+    <user>anag_factory</user>
+    <comment>- build with selinux support (bsc#1238136)</comment>
+    <requestid>1270639</requestid>
+  </revision>
 </revisionlist>

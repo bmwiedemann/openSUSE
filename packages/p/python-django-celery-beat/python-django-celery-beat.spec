@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-celery-beat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           python-django-celery-beat
-Version:        2.6.0
+Version:        2.8.0
 Release:        0
 Summary:        Database-backed Periodic Tasks
 License:        BSD-3-Clause
 URL:            https://github.com/celery/django-celery-beat
-Source:         https://files.pythonhosted.org/packages/source/d/django-celery-beat/django-celery-beat-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-celery-beat/django_celery_beat-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -32,6 +32,7 @@ BuildRequires:  %{python_module celery >= 5.2.3}
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module cron-descriptor >= 1.2.32}
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module django-timezone-field >= 5.0}
 BuildRequires:  %{python_module ephem}
 BuildRequires:  %{python_module importlib-metadata}
@@ -58,7 +59,7 @@ BuildArch:      noarch
 Database-backed Periodic Tasks.
 
 %prep
-%autosetup -p1 -n django-celery-beat-%{version}
+%autosetup -p1 -n django_celery_beat-%{version}
 
 %build
 %pyproject_wheel

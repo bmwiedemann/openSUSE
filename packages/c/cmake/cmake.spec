@@ -2,7 +2,7 @@
 # spec file for package cmake
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,14 +45,14 @@
 %else
 %bcond_with full
 %endif
-%define shortversion 3.30
+%define shortversion 3.31
 %if 0%{?suse_version} && 0%{?suse_version} <= 1500
 %define pyver 311
 %else
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        3.31.6
+Version:        3.31.7
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause

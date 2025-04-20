@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:25 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * KPart: use apps.kde.org as homepage in metadata
+  * KPart: drop since kf6 unused "Id" from metadata
+  * Add xml/yaml linting
+  * Add reuse files for app icon
+  * Use dragonplayer app icon from breeze-icons
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

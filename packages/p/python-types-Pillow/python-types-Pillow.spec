@@ -1,7 +1,7 @@
 #
 # spec file for package python-types-Pillow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,6 @@ Typing stubs for Pillow
 %files %{python_files}
 %doc CHANGELOG.md
 %{python_sitelib}/PIL-stubs
-%{python_sitelib}/types_Pillow-%{version}.dist-info
+%{python_sitelib}/types_pillow-%{version}.dist-info
 
 %changelog

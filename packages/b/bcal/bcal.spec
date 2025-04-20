@@ -1,7 +1,7 @@
 #
 # spec file for package bcal
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Dilawar Singh <dilawar.s.rajput@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ URL:            http://www.github.com/jarun/bcal
 Version:        2.4
 Release:        0
 Source0:        https://github.com/jarun/bcal/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/jarun/bcal/commit/b9de4fa9c0e29c2a4d55ddde007111c029364f6c
+Patch0:         bcal-gcc15.patch
 BuildRequires:  readline-devel
 ExcludeArch:    %ix86 %arm %ppc
 
@@ -36,7 +38,7 @@ and cannot calculate the hex address offset for (512 - 16) MiB immediately, or
 the value when the 43rd bit of a 64-bit address is set, bcal is for you.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags}"

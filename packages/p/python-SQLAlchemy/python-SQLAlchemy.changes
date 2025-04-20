@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr  1 11:16:59 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0.40
+  * Support has been re-added for the MySQL-Connector/Python DBAPI
+    using the mysql+mysqlconnector:// URL scheme.
+  * Added support for specifying a list of columns for SET NULL and
+    SET DEFAULT actions of ON DELETE clause of foreign key definition
+    on PostgreSQL.
+  * Implemented support for the GROUPS frame specification in window
+    functions by adding groups option to over() and FunctionElement.over().
+  * Fixed regression in ORM Annotated Declarative class interpretation
+    caused by typing_extension==4.13.0 that introduced a different
+    implementation for TypeAliasType.
+  * More changes, see upstream changelog
+- Wrap the metadata directory name in a distro-based conditional.
+
+-------------------------------------------------------------------
+Tue Mar 25 08:18:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Thu Mar 13 07:53:14 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - Update to 2.0.39

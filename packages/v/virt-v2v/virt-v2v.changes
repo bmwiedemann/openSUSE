@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 16 12:54:26 MDT 2025 - carnold@suse.com
+
+- Update to virt-v2v 2.7.12 (jsc#PED-8910)
+  * Various Build fixes and enhancements
+  * Various test and test data fixes and enhancements
+  * Updates to documentation
+  * mlcustomize: ignore sriov vioprot.* files too
+  * mlcustomize: don't inject .pdb files
+  * mlcustomize: Only use osinfo id for virtio-win path matching
+  * mlcustomize: virtio-win: clarify virtio-1.0 support
+  * mlcustomize: make windows q35 check independent of virtio
+    drivers
+  * mlcustomize: virtio-win: stop checking osinfo for virtio
+    drivers
+  * mltools: Strip out all libosinfo driver plumbing
+  * mlutils: Remove need for OCaml OUnit2
+  * mltools: Remove need for OCaml OUnit2 
+  * mlstdutils: Remove need for OCaml OUnit2
+  * mltools: Fix de-oUnit-ized tests
+  * mltools: decouple and simplify osinfo device support checks
+  * v2v: Use nbdcopy --blkhash in verbose mode
+    Requires nbdcopy >= 1.23.1
+  * v2v: Print nbdcopy command in debug output
+  * convert: Move blank disk rejection test earlier
+  * convert: Move 'typ' and 'package_format' assignments later
+  * convert: Split out choosing the root and setting up the inspect
+    struct
+  * convert: Simplify how we create the "Converting ..." message
+  * convert: Change API for Libosinfo_utils.get_os_by_short_id
+  * lib: Factor out command line parsing of the --root option
+  * input/parse_domain_from_vmx.ml:
+    Allow sataN:M.deviceType = "disk"
+
+-------------------------------------------------------------------
 Wed Mar 12 15:00:24 MDT 2025 - carnold@suse.com
 
 - Update to virt-v2v 2.7.8 (jsc#PED-8910)

@@ -36,7 +36,7 @@ MASM-compatible assembler based on JWasm
 %build
 # Workaround for boo#1225948
 %global optflags %{optflags} -fpermissive
-%make_build -f Makefile-Linux-GCC-64.mak CFLAGS="%{optflags}"
+%make_build -f Makefile-Linux-GCC-64.mak CFLAGS="%{optflags} -std=gnu11"
 
 %install
 mkdir -p %{buildroot}%{_bindir}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 19:54:36 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libtheora-avoid-negative-shift.patch: avoid negative shift in
+  huffdec.c (bsc#1234837 CVE-2024-56431).
+
+-------------------------------------------------------------------
 Mon Apr  7 13:44:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 128.9.0:

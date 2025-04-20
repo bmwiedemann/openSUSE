@@ -1,7 +1,7 @@
 #
 # spec file for package python-wheel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,6 +39,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/pypa/wheel
 Source:         https://github.com/pypa/wheel/archive/%{version}.tar.gz#/wheel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pypa/wheel/pull/651 fix test failures
+Patch:          tests.patch
 # Bootstrap: Don't BuildRequire setuptools or pip here!
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
@@ -97,7 +99,8 @@ export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
 %if %{with test}
 export LC_ALL=en_US.utf8
 export PYTHONDONTWRITEBYTECODE=1
-%pytest
+# license tests failing with setuptools 77: https://github.com/pypa/wheel/issues/658
+%pytest -k "not (test_licenses_default or test_licenses_deprecated or test_licenses_override)"
 %endif
 
 %if !%{with test}

@@ -1240,4 +1240,34 @@ Pushing GNOME 45.rc packages</comment>
     <comment> (forwarded request 1253254 from iznogood)</comment>
     <requestid>1253374</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>450c79f353dac51d330ae1d314666be7</srcmd5>
+    <version>48.2</version>
+    <time>1744985694</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Update links to new website domain name:
+    https://gedit-text-editor.org
+  + It is no longer possible to implement plugins in Python.
+  + New features:
+    - Reset All button in the preferences dialog.
+    - In the Spell Checker plugin: be able to configure the default
+      language used for the spell-checking in new documents.
+  + Code refactorings:
+    - In GeditWindow and GeditPreferencesDialog.
+    - Don't use the g_slice_*() functions (deprecated).
+    - In the Spell Checker plugin.
+  + MS Windows: change default font to Consolas.
+  + macOS: install an icon.
+  + Metainfo: improve it.
+  + Some updates to the user manual.
+  + Improve the devel documentation.
+  + Updated translations.
+- Update URL to new home.
+- Bump api_ver define.
+- Drop python3-gedit sub-package and obsolete it following upstream
+  changes. Further, drop all python BuildRequires and Requires, no
+  longer needed, nor used. (forwarded request 1270242 from iznogood)</comment>
+    <requestid>1270279</requestid>
+  </revision>
 </revisionlist>

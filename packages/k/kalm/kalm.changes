@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Android: package Kirigami Addons icons
+  * Appdata: add display size
+  * Remove unused string from Android manifest
+  * Appdata: use developer ID org.kde
+  * Fix Linux CI build for GCC < 14
+  * Fix Linux CI build
+  * QmlFormat.cmake: avoid CMake policy warning CMP0175
+  * Get qmlformat from Qt CMake files instead of searching for it
+  * Let kconfigxt do QML registration
+  * self-test: use correct executable
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.27.31
+Version:        2.27.36
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -40,6 +40,9 @@ BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+%if 0%{?suse_version} > 1600
+BuildRequires: python3-rapidfuzz
+%endif
 # Because of “from packing import version”:
 BuildRequires:  python3-packaging
 BuildRequires:  python3-pyenchant
@@ -69,15 +72,9 @@ Recommends:     python3-langtable
 Recommends:     python3-regex
 # To play a sound on error:
 Recommends:     python3-simpleaudio
-%if 0%{?sle_version} >= 120200
+# To make emoji and Unicode symbol matching faster:
+Recommends:     python3-rapidfuzz
 BuildRequires:  python3-pyxdg
-%endif
-%if 0%{?suse_version} == 1320
-BuildRequires:  myspell-de
-BuildRequires:  myspell-en
-BuildRequires:  myspell-es
-BuildRequires:  myspell-it_IT
-%else
 BuildRequires:  myspell-de
 BuildRequires:  myspell-de_DE
 BuildRequires:  myspell-en
@@ -86,7 +83,6 @@ BuildRequires:  myspell-es
 BuildRequires:  myspell-es_ES
 BuildRequires:  myspell-fr_FR
 BuildRequires:  myspell-it_IT
-%endif
 
 %description
 Ibus-typing-booster is a context sensitive completion
@@ -94,7 +90,7 @@ input method to speedup typing.
 
 %prep
 %setup -q
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
 %endif
@@ -111,7 +107,7 @@ gzip -n --force --best %{buildroot}/%{_datadir}/%{name}/data/*.{txt,json} \
     %{buildroot}/%{_datadir}/%{name}/data/annotations/*.xml \
     %{buildroot}/%{_datadir}/%{name}/data/annotationsDerived/*.xml
 
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 #install inscript2 keymaps
 test -d %{buildroot}%{_datadir}/m17n/icons || mkdir -p %{buildroot}%{_datadir}/m17n/icons
 cp -p inscript2/IM/* %{buildroot}%{_datadir}/m17n/
@@ -127,9 +123,7 @@ cp -p inscript2/icons/* %{buildroot}%{_datadir}/m17n/icons
 %check
 export LC_ALL=en_US.UTF-8
 export M17NDIR=%{buildroot}%{_datadir}/m17n/
-%if 0%{?suse_version} > 1520
 #AS_VALIDATE_NONET=1 appstreamcli validate --pedantic --no-net %{buildroot}/%{_datadir}/metainfo/*.metainfo.xml
-%endif
 desktop-file-validate \
     %{buildroot}%{_datadir}/applications/ibus-setup-typing-booster.desktop
 desktop-file-validate \
@@ -205,7 +199,7 @@ fi
 %{_ibus_libexecdir}/ibus-setup-typing-booster
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.engine.typing-booster.gschema.xml
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} < 1600
 %dir %{_datadir}/m17n
 %{_datadir}/m17n/*.mim
 %dir %{_datadir}/m17n/icons

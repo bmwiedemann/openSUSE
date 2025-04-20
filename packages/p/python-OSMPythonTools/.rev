@@ -25,4 +25,15 @@
 - spec cleanups</comment>
     <requestid>1136455</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bafc381f08936d4ec239c58300cd6614</srcmd5>
+    <version>0.3.5</version>
+    <time>1744828700</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264821</requestid>
+  </revision>
 </revisionlist>

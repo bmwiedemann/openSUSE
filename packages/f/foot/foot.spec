@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
@@ -49,7 +49,7 @@ BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(wayland-scanner)
-BuildRequires:  pkgconfig(xkbcommon) >= 1.0.0
+BuildRequires:  pkgconfig(xkbcommon) >= 1.8.0
 
 %description
 A Wayland terminal emulator.

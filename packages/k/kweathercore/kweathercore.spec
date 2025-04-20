@@ -1,7 +1,7 @@
 #
 # spec file for package kweathercore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kweathercore
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Library to facilitate retrieval of weather information
 License:        LGPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  doxygen
 BuildRequires:  cmake(KF6Holidays) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Positioning) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
@@ -79,6 +80,9 @@ Required headers to build components based on kweathercore.
 %find_lang %{name} --all-name
 
 %ldconfig_scriptlets -n libKWeatherCore6
+
+%files
+%{_kf6_qmldir}/org/kde/weathercore/
 
 %files -n libKWeatherCore6
 %license LICENSES/*

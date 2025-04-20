@@ -1,0 +1,38 @@
+-------------------------------------------------------------------
+Thu Apr 10 07:30:46 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 1.5.3
+  - Initial release
+
+  - Bugfixes:
+    - collection - Cleanup the changelog(s)
+    - collection - Use the correct ansible-galaxy option in README.md files
+    - collection - gh issue templates
+    - collection and sap_hostagent - ansible-lint fixes
+    - sap*preconfigure - Use correct RHEL versions in task names
+    - sap*preconfigure - sysctl checks fail when config file has comments
+    - sap_*_preconfigure/SLES - Enhance saptune handling and detection
+    - sap_*_preconfigure/Suse - Enhance saptune revert logic
+    - sap_*_preconfigure/Suse - Switch saptune from present
+    - sap_general_preconfigure - Fix check mode for sysctl
+    - sap_general_preconfigure - Remove unused file configure-etc-hosts.yml
+    - sap_general_preconfigure - Update the package name of the IBM Power tools for RHEL 10
+    - sap_general_preconfigure - fix var role prefix
+    - sap_general_preconfigure, sap_maintain_etc_hosts - Ignore comments
+    - sap_general_preconfigure/SLES - Add etc hosts setup to configure steps
+    - sap_ha_pacemaker_cluster - fix ASCS constraint
+    - sap_ha_pacemaker_cluster - fix ASCS/ERS systemd
+    - sap_ha_pacemaker_cluster - fix NWAS
+    - sap_ha_pacemaker_cluster - fix internal-error
+    - sap_ha_pacemaker_cluster - fix package detection on RHEL
+    - sap_ha_pacemaker_cluster - fix(check-mode)
+    - sap_ha_pacemaker_cluster - several bug fixes
+    - sap_ha_pacemaker_cluster - stonith location constraints
+    - sap_hana_install - Update fapolicyd conditionals
+    - sap_hana_preconfigure - Fix check mode for largesend.conf - ppc64le
+    - sap_hana_preconfigure - Update the package name of the RHEL 10 Power tools
+    - sap_hana_preconfigure - fix check mode in two tasks
+    - sap_hana_preconfigure/SLES - Add package libltdl7 to vars
+    - sap_swpm - Fix link in README.md
+    - sap_swpm - remove duplicate section credentials_anydb_ibmdb2
+    - sap_swpm - removed duplicates from credentials_hana section

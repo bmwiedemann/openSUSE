@@ -103,4 +103,41 @@
     <comment></comment>
     <requestid>1165707</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>85274da505f07e23b0b50b77d2bc658d</srcmd5>
+    <version>1.64.0</version>
+    <time>1744828781</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.64.0-1
+  * Cache Agent version 1.64.0
+- from version 1.63.1-1
+  * Cache Agent version 1.63.1
+- from version 1.63.0-1
+  * Cache Agent version 1.63.0
+- from version 1.62.2-1
+  * Cache Agent version 1.62.2
+- from version 1.62.1-1
+  * Fix bug in cgroup mount for rpm builds
+- from version 1.62.0-1
+  * Update golang version 1.18.3
+- from version 1.61.3-1
+  * Cache Agent version 1.61.3
+- from version 1.61.2-1
+  * Cache Agent version 1.61.2
+- from version 1.61.1-1
+  * Cache Agent version 1.61.1
+  * Install script no longer fails on systems using cgroups v2
+  * Add GO111MODULE=on to honnef.co/go/tools/cmd/staticcheck
+- from version 1.61.0-1
+  * Cache Agent version 1.61.0
+  * Check ipv4 routes for default network interface instead
+    of defaulting to eth0
+- from version 1.60.1-1
+  * Cache Agent version 1.60.1
+- from version 1.60.0-1
+  * Cache Agent version 1.60.0
+  * Add volume plugin to rpm/deb package
+- from version 1.59.0-1 (forwarded request 1269180 from glaubitz)</comment>
+    <requestid>1269696</requestid>
+  </revision>
 </revisionlist>

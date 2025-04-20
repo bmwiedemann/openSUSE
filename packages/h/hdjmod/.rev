@@ -241,4 +241,14 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
   * Compatibility with Linux 6.12</comment>
     <requestid>1205564</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8a86c3aef436c57516daf3e07eb33031</srcmd5>
+    <version>1.37</version>
+    <time>1744828860</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.37
+  * Compatibility with Linux 6.15
+- Add service file to download source files based on spec file</comment>
+    <requestid>1269730</requestid>
+  </revision>
 </revisionlist>

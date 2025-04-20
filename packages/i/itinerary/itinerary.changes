@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Fix typo in Qt translation catalog exclusion pattern
+  * Add 25.04.0 release notes
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Override instead of merge destination names when applying new journeys (kde#474096)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

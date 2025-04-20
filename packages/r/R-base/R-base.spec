@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.4.3
+Version:        4.5.0
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -319,6 +319,8 @@ This package provides the core of R, i.e. all that is in base.
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-utils.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/RGui.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/grDevices.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/grid.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/methods.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/parallel.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/stats.mo
 %lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/tcltk.mo
@@ -359,6 +361,7 @@ This package provides the core of R, i.e. all that is in base.
 %dir %{_libdir}/R/library/translations/hu/LC_MESSAGES
 %lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-base.mo
 %lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-graphics.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-methods.mo
 %lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-parallel.mo
 %lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-splines.mo
 %lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-stats.mo
@@ -409,7 +412,9 @@ This package provides the core of R, i.e. all that is in base.
 %dir %{_libdir}/R/library/translations/ne
 %dir %{_libdir}/R/library/translations/ne/LC_MESSAGES
 %lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-base.mo
 %lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-compiler.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-parallel.mo
 %lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/RGui.mo
 
 %dir %{_libdir}/R/library/translations/nn
@@ -681,7 +686,9 @@ This package provides R-compiler, one of the R-core packages.
 %lang(da) %{_libdir}/R/library/translations/da/LC_MESSAGES/R-compiler.mo
 %lang(de) %{_libdir}/R/library/translations/de/LC_MESSAGES/R-compiler.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/R-compiler.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-compiler.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R-compiler.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-compiler.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-compiler.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-compiler.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/R-compiler.mo
@@ -1015,8 +1022,11 @@ This package provides R-splines, one of R-core packages.
 %lang(de) %{_libdir}/R/library/translations/de/LC_MESSAGES/splines.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/R-splines.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/splines.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-splines.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/splines.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R-splines.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/splines.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/splines.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-splines.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/splines.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-splines.mo
@@ -1114,6 +1124,7 @@ This package provides R-stats4, one of R-core packages.
 %lang(de) %{_libdir}/R/library/translations/de/LC_MESSAGES/R-stats4.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/R-stats4.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R-stats4.mo
+%lang(hu) %{_libdir}/R/library/translations/hu/LC_MESSAGES/R-stats4.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-stats4.mo
 %lang(ja) %{_libdir}/R/library/translations/ja/LC_MESSAGES/R-stats4.mo
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/R-stats4.mo
@@ -1155,6 +1166,7 @@ This package provides R-tcltk, one of R-core packages.
 %lang(de) %{_libdir}/R/library/translations/de/LC_MESSAGES/tcltk.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/R-tcltk.mo
 %lang(en) %{_libdir}/R/library/translations/en@quot/LC_MESSAGES/tcltk.mo
+%lang(es) %{_libdir}/R/library/translations/es/LC_MESSAGES/R-tcltk.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/R-tcltk.mo
 %lang(fr) %{_libdir}/R/library/translations/fr/LC_MESSAGES/tcltk.mo
 %lang(it) %{_libdir}/R/library/translations/it/LC_MESSAGES/R-tcltk.mo
@@ -1165,6 +1177,7 @@ This package provides R-tcltk, one of R-core packages.
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/tcltk.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-tcltk.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/tcltk.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-tcltk.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/R-tcltk.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/tcltk.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-tcltk.mo
@@ -1189,6 +1202,7 @@ This package provides R-tools, one of R-core packages.
 
 %dir %{_libdir}/R/library/tools/
 %{_libdir}/R/library/tools/DESCRIPTION
+%{_libdir}/R/library/tools/wre.txt
 %{_libdir}/R/library/tools/help/
 %{_libdir}/R/library/tools/html/
 %{_libdir}/R/library/tools/INDEX
@@ -1213,6 +1227,7 @@ This package provides R-tools, one of R-core packages.
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/tools.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-tools.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/tools.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-tools.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/R-tools.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/tools.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-tools.mo
@@ -1266,6 +1281,7 @@ This package provides R-utils, one of R-core packages.
 %lang(ko) %{_libdir}/R/library/translations/ko/LC_MESSAGES/utils.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/R-utils.mo
 %lang(lt) %{_libdir}/R/library/translations/lt/LC_MESSAGES/utils.mo
+%lang(ne) %{_libdir}/R/library/translations/ne/LC_MESSAGES/R-utils.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/R-utils.mo
 %lang(pl) %{_libdir}/R/library/translations/pl/LC_MESSAGES/utils.mo
 %lang(pt_BR) %{_libdir}/R/library/translations/pt_BR/LC_MESSAGES/R-utils.mo
@@ -1370,7 +1386,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.8
+Version:        2.1.8.1
 Release:        %release
 Requires:       R-base
 
@@ -1425,7 +1441,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.88
+Version:        0.8.90
 Release:        %release
 Requires:       R-base
 
@@ -1518,7 +1534,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.64
+Version:        7.3.65
 Release:        %release
 Requires:       R-base
 
@@ -1643,7 +1659,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.167
+Version:        3.1.168
 Release:        %release
 Requires:       R-base
 

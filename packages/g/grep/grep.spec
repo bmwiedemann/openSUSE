@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -29,7 +29,6 @@ Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        %{name}.keyring
 Source4:        profile.sh
 Source5:        %{name}-rpmlintrc
-Patch0:         efgrep-warning.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  makeinfo
@@ -107,5 +106,6 @@ ln -sf %{_bindir}/grep %{buildroot}/bin/grep
 %{_infodir}/grep.info%{?ext_info}
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog

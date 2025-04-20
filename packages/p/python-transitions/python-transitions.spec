@@ -17,6 +17,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-transitions
 Version:        0.9.2
 Release:        0
@@ -26,9 +27,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/pytransitions/transitions
 Source:         https://files.pythonhosted.org/packages/source/t/transitions/transitions-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pytransitions/transitions/pull/653 remove Python 2 crumbs
-Patch:          remove-py2-crumbs.patch
+Patch0:         remove-py2-crumbs.patch
 # PATCH-FIX-UPSTREAM https://github.com/a-detiste/transitions/pull/1 remove more python crumbs
-Patch:          iteritems.patch
+Patch1:         iteritems.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

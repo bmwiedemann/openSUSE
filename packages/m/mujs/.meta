@@ -3,6 +3,5 @@
   <description>
 MuJS is a lightweight Javascript interpreter designed for embedding in other software to extend them with scripting capabilities.
   </description>
-  <devel project="devel:languages:javascript" package="mujs"/>
   <url>https://mujs.com</url>
 </package>

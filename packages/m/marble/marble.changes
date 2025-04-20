@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Appdata: add display size to behaim
+  * Fix AstroConfig target include
+  * Export Map: Fix format of QFileDialog filter string
+  * Appdata: add display size
+  * Fix build with Qt 6.9
+  * Don't try to compare a QString with enum
+  * [nightly-flatpak] Add kirigami-addons dependency
+  * Use QTest directly
+  * Remove warning about invalid signal/slot connect
+  * Added icon for F-Droid Listing
+  * Fix translation for Marble Maps
+  * Fix translation of marble behaim
+  * Remove usage of some Qt CMake usage with ECMQmlModule
+  * Don't build behaim or marble-maps targets in non-KF builds
+  * Make marker-color SimpleStyle GeoJSON parsing compliant
+  * Add categories to Behaim desktop file
+  * Don't treat natural=cliff ways as areas
+  * Add unit test for natural=cliff ways
+  * Fix unit tests with osmconvert present locally
+  * behaim: fix Exec in desktop file
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

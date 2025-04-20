@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Changes since 25.03.90:
+  * Fix scaling button not working out of the box (kde#485094)
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Rework fullscreen mode to fix bugs related to window appearing on wrong screen and floating bar disappearing in various occasions (kde#501187)
+  * Rdp: use signal/slot for setRemoteCursor to avoid cross-thread method call (kde#499847)
+  * Rdp: add support for domain field in authentication. Internally it's stored as a query parameter in the QUrl BUG: 498810 (kde#498810)
+  * Rdp preferences: rework the form to avoid huge height (kde#487732)
+  * Move all GUI operations from RdpSession to RdpView.  Run freerdp_connect() inside a thread so it doesn't block the GUI (kde#497766)
+  * Add the nativeVirtualKey value to fake keyrelease events generated to unpress modifiers (kde#497111)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

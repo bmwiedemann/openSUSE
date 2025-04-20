@@ -108,4 +108,15 @@
 </comment>
     <requestid>1268816</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ff35fca7b642ceec1f77e9291fc80dac</srcmd5>
+    <version>3.2.1</version>
+    <time>1744898974</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.1
+  * New feature: &quot;Update all&quot;, for both the CLI and UI
+  * Fixed some issues for apps using dwarfs filesystem 
+</comment>
+    <requestid>1270124</requestid>
+  </revision>
 </revisionlist>

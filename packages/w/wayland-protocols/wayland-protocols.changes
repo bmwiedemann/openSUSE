@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 18 08:21:39 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to version 1.43:
+  * add toplevel tags protocol
+  * added toplevel edge constraints to xdg-shell
+- Changes from version 1.42:
+  * New version of the cursor shape protocol
+
+-------------------------------------------------------------------
 Mon Feb 17 20:30:33 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.41:

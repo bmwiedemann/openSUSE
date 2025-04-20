@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * AlarmForm: create duration and snooze models correctly
+  * alarmform: Fix dialogs not showing any options
+  * Add xml/yaml linting
+  * Port to AboutKDEPage from AboutKDE
+  * Focus search box in the "Add Timezone" dialog when opened
+  * Fix switching between powerdevil and wakeup polling (kde#496296)
+  * Use the display name of the current timezone instead of the id
+  * Set time format to "system default" if kclockd isn't running
+  * Add icons to the "About KDE" and "About Clock" buttons under Settings
+  * Port from Kirigami Add-ons Banner to Kirigami InlineMessage
+- Drop patch:
+  * 0001-AlarmForm-create-duration-and-snooze-models-correctl.patch
+
+-------------------------------------------------------------------
 Wed Mar 26 08:10:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix:

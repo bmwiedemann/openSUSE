@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * Appdata: add display size
+  * mobile/Tables: Fix inverted value tables
+  * mobile/Dictionary: Cleanups
+  * mobile/Tables: Fix issues found in testing
+  * mobile: Also use ExpressionInput when entering plots and tables
+  * mobile: Add the highlighter to ExpressionInput
+  * mobile: Convert ExpressionInput into a TextArea
+  * remove unnecessary macros. QT_USE_FAST_CONCATENATION and QT_USE_FAST_OPERATOR_PLUS are superseeded with QT_USE_STRINGBUILDER. These variables are added by default using KDECompilerSettings>=5.85, no need to specify them (https://api.kde.org/ecm/kde-module/KDECompilerSettings.html#modern-code)
+  * mobile: Add history to the ExpressionInput component
+  * mobile/plots: Show examples for 2D and 3D plots (kde#496432)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

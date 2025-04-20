@@ -7,6 +7,5 @@ See lua-TestAssertion an extension which provides many Lua friendly
 assertions. It allows a simple and efficient way to write tests
 (without OO style). Some tests could be marked as TODO or skipped.
 Errors could be fully checked with error_like().</description>
-  <devel project="devel:languages:lua" package="lua-testmore"/>
   <url>https://framagit.org/fperrad/lua-TestMore</url>
 </package>

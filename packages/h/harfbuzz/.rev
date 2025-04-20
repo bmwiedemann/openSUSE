@@ -1177,4 +1177,18 @@ New stable rel</comment>
   + Various testing fixes and improvements. (forwarded request 1267275 from iznogood)</comment>
     <requestid>1267614</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>d5d3d16fa8dc6847940037a65b587396</srcmd5>
+    <version>11.1.0</version>
+    <time>1744985684</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.1.0:
+  + Include bidi mirroring variants of the requested codepoints
+    when subsetting. The new HB_SUBSET_FLAGS_NO_BIDI_CLOSURE can be
+    used to disable this behaviour.
+  + Various bug fixes.
+  + Various build fixes and improvements.
+  + Various test suite improvements. (forwarded request 1270193 from iznogood)</comment>
+    <requestid>1270274</requestid>
+  </revision>
 </revisionlist>

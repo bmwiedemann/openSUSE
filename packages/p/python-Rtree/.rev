@@ -24,4 +24,15 @@
 - Stop using libdir macro, which now doesn't return /usr/lib64.</comment>
     <requestid>1245774</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>3f1a79fdf7433657528ebf3f4f7c94b6</srcmd5>
+    <version>1.3.0</version>
+    <time>1744828710</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264843</requestid>
+  </revision>
 </revisionlist>

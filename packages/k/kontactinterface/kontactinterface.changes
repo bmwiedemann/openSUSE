@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:58 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix pinentry parenting on wayland
+  * Fix build with Qt 6.10
+  * Add xml/yaml linting
+  * Remove FeatureSummary as we use ECMFeatureSummary
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -21,10 +21,11 @@ Name:           leancrypto
 Version:        1.3.0
 Release:        1.1
 Summary:        Cryptographic library with stack-only support and PQC-safe algorithms
-License:        BSD-2-Clause OR GPL-2.0-only
+License:        BSD-3-Clause OR GPL-2.0-only
 URL:            https://www.leancrypto.org
 Source0:        https://www.leancrypto.org/%{name}/releases/%{name}-%{version}/%{name}-%{version}.tar.xz
 Source1:        https://www.leancrypto.org/%{name}/releases/%{name}-%{version}/%{name}-%{version}.tar.xz.asc
+Source2:	https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Patch0:		fix-aarch64.patch
 BuildRequires:  meson
 BuildRequires:  %kernel_module_package_buildreqs

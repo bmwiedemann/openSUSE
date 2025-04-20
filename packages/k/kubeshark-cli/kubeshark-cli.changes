@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:29:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 52.7.0:
+  * Release Highlights
+    This update adds new Helm options, improves GitOps
+    compatibility, and enhances traffic capture with AF_PACKET. It
+    also fixes bugs related to CLI exit, packet loss, Kafka
+    crashes, and watchdog stability.
+    Keywords: AF_PACKET, BPF, Dex, PVC, Kafka, Packet loss, Scripts
+  * Bug Fixes & New Features
+    - Added support for tapping network interface traffic using
+      AF_PACKET. This can be configured by entering a BPF
+      expression (e.g., net 0.0.0.0/0) in the BPF OVERRIDE field in
+      the Settings dialog. Useful when expected traffic is not
+      being captured.
+    - Added the Helm value tap.dashboard.completeStreamingEnabled,
+      which sets the default mode for full (with payload) or
+      partial (without payload) processing. This option can also be
+      controlled from the dashboard.
+    - Added the Helm value tap.auth.dexOidc.bypassSslCaCheck, which
+      allows communication with a Dex IdP using an unknown SSL
+      Certificate Authority, preventing SSL CA-related errors.
+    - Added support for azure-csi-premium for RWX PVC volumes
+      (https://github.com/kubernetes-sigs/azuredisk-csi-driver/tree/master/deploy/example/sharedisk).
+    - Disabled the online chat option by default.
+    - Added support for a GitOps-friendly mode where dynamically
+      changed configmap and secret values are preserved during Helm
+      upgrades, avoiding CI/CD system overrides while Kubeshark is
+      running.
+    - Enabled the kubeshark CLI to use a proprietary configuration
+      file.
+    - Fixed a protocol matcher bug caused by packet loss (#1746).
+    - Fixed a panic that occasionally occurred in the Kafka
+      dissector.
+    - Fixed a bug where the watchdog function could crash the
+      Worker when no traffic was being processed on the node.
+    - Fixed a bug in the kubeshark scripts command where it didn't
+      exit properly upon receiving ^C.
+
+-------------------------------------------------------------------
 Tue Mar 25 05:43:14 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 52.6.0:

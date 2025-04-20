@@ -1,7 +1,7 @@
 #
 # spec file for package kdump
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,7 @@
 %define dracutlibdir %{_prefix}/lib/dracut
 
 Name:           kdump
-Version:        2.0.17
+Version:        2.0.18
 Release:        0
 Summary:        Kernel crash dump scripts and utilities
 License:        GPL-2.0-or-later
@@ -92,9 +92,9 @@ BuildRequires:  qemu-vgabios
 %endif
 Requires:       /usr/bin/sed
 Requires:       dracut >= 047
-Requires:       ethtool
 Requires:       kexec-tools
 Requires:       makedumpfile
+Requires:	ethtool
 %ifarch ppc64 ppc64le
 Requires:       servicelog
 BuildRequires:  servicelog

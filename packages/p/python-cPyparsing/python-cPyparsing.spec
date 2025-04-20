@@ -1,7 +1,7 @@
 #
 # spec file for package python-cPyparsing
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cPyparsing
 Version:        2.4.7.2.3.2
 Release:        0
 Summary:        Cython implementation of PyParsing
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/evhub/cpyparsing
 Source:         https://files.pythonhosted.org/packages/source/c/cPyparsing/cPyparsing-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
@@ -49,12 +47,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# no tests in PyPi tarball and no release tags in GitHub repo https://github.com/evhub/cpyparsing/issues/3
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python ./tests/cPyparsing_test.py
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/cPyparsing.cpython-*-*-linux-gnu.so
-%{python_sitearch}/cPyparsing-%{version}.dist-info
+%{python_sitearch}/cpyparsing-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package kwave
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kwave
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -99,7 +99,7 @@ and scroll capability.
 %{_kf6_applicationsdir}/org.kde.kwave.desktop
 %{_kf6_appstreamdir}/org.kde.kwave.appdata.xml
 %{_kf6_bindir}/kwave
-%{_kf6_iconsdir}/hicolor/*/*/*.svgz
+%{_kf6_iconsdir}/hicolor/*/*/*.svg
 %{_kf6_libdir}/libkwave*.so.*
 %{_kf6_plugindir}/kwave/
 %{_kf6_sharedir}/kwave/

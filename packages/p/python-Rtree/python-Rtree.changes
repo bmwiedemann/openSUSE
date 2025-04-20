@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 08:01:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Fri Feb 14 03:17:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

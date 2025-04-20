@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Fix editor tab state save / restore (kde#501786)
+  * Do not rescan translation memory if no project is loaded (kde#501646)
+  * Do not return QVector with an empty AltTrans Only return a QVector containing data when data actually exists for at least one field of the AltTrans struct. (kde#494500)
+  * Make TsStorage/XliffStorage::isEmpty work again (kde#496916)
+  * Initialize style and icon theme properly (kde#495249)
+  * Accept unicode chars in regexps (kde#495785)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

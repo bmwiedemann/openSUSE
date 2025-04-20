@@ -1,7 +1,7 @@
 #
 # spec file for package alsa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@
 %endif
 
 Name:           alsa
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        Advanced Linux Sound Architecture
 License:        LGPL-2.1-or-later
@@ -63,9 +63,6 @@ Source34:       alsa-init.sh
 # from https://www.alsa-project.org/files/pub/gpg-release-key-v1.txt
 Source35:       alsa.keyring
 # upstream fixes
-Patch1:         0001-src-Versions.in.in-Update-_tempo_base-name.patch
-Patch2:         0002-configure-Make-sequencer-dependent-on-rawmidi.patch
-Patch3:         0003-seq-include-UMP-headers.patch
 # rest suse fixes
 Patch101:       alsa-lib-ignore-non-accessible-ALSA_CONFIG_PATH.patch
 BuildRequires:  doxygen
@@ -169,7 +166,6 @@ autoreconf -fi
   --disable-static \
   --enable-symbolic-functions \
   --disable-aload \
-  --disable-alisp \
 %if !%enable_topology
   --disable-topology \
 %endif

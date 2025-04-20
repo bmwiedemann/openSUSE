@@ -1,7 +1,7 @@
 #
 # spec file for package kdepim-runtime
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150500
 %bcond_without etebase
@@ -27,7 +27,7 @@
 %bcond_with kolabxml
 %bcond_without released
 Name:           kdepim-runtime
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -69,6 +69,8 @@ BuildRequires:  cmake(KPim6AkonadiCalendar) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiContactWidgets) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6AkonadiMime) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonAkonadi) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6PimCommonActivities) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GAPI) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IdentityManagementWidgets) >= %{kpim6_version}
@@ -149,7 +151,7 @@ use PIM applications.
 %dir %{_kf6_plugindir}/pim6/akonadi/config
 %{_kf6_plugindir}/pim6/akonadi/config/*.so
 %dir %{_kf6_plugindir}/pim6/kcms
-%dir %{_kf6_plugindir}/pim6/kcms/kaddressbook/
+%dir %{_kf6_plugindir}/pim6/kcms/common/
 %dir %{_kf6_plugindir}/pim6/mailtransport
 %{_kf6_plugindir}/pim6/mailtransport/mailtransport_akonadiplugin.so
 %{_kf6_sharedir}/akonadi/

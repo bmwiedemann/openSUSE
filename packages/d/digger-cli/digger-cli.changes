@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:02:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.97:
+  * Pass through web-identity-token-file location to setup-aws
+
+-------------------------------------------------------------------
 Tue Apr 08 19:09:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.96:

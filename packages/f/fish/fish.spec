@@ -27,6 +27,7 @@ URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
 Source100:      fish.keyring
+Patch0:         fish-3.7.1-drop-pcre-tests.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -106,6 +107,7 @@ if [ "$1" = 0 ]; then
 fi
 
 %files -f %{name}.lang
+%license COPYING doc_src/license.rst
 %dir %{_sysconfdir}/fish
 %config(noreplace) %{_sysconfdir}/%{name}/*
 %{_bindir}/fish
@@ -118,6 +120,7 @@ fi
 %{_datadir}/pixmaps/fish.png
 
 %files devel
+%license COPYING doc_src/license.rst
 %{_datadir}/pkgconfig/fish.pc
 
 %changelog

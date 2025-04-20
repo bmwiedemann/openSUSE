@@ -1,0 +1,81 @@
+From e4556c59f0c8250da7c16759432b2ac0a5ac9d9f Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 31 Mar 2025 11:40:12 +0300
+Subject: [PATCH] Client: Reset mFrameCallbackTimedOut when showing a window
+
+When a window is hidden, the corresponding expose event is sent
+asynchronously. So, a buffer (and a frame callback) can be attached
+after the window is hidden.
+
+QWaylandWindow::initWindow() handles that case by attaching a nil buffer
+to the surface, but it skips resetting the frame callback things.
+
+If mFrameCallbackTimedOut is not reset, then the window can get stuck
+in the unexposed state and not show up after the second setVisible(true).
+
+This change makes the initWindow() function also reset frame callback
+data. It fixes some windows not showing up after remapping them.
+
+Change-Id: I8952ffed24844c73721c4f689786146c317e014d
+Reviewed-by: David Edmundson <davidedmundson@kde.org>
+(cherry picked from commit 3a48c2b92565cde21a9330f125e61487391921c4)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/client/qwaylandwindow.cpp | 13 ++++++++++---
+ src/client/qwaylandwindow_p.h |  1 +
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/client/qwaylandwindow.cpp b/src/client/qwaylandwindow.cpp
+index 7a3bf6dd..578a84e9 100644
+--- a/src/client/qwaylandwindow.cpp
++++ b/src/client/qwaylandwindow.cpp
+@@ -106,6 +106,7 @@ void QWaylandWindow::initWindow()
+      */
+     mSurface->attach(nullptr, 0, 0);
+     mSurface->commit();
++    resetFrameCallback();
+ 
+     if (window()->type() == Qt::Desktop)
+         return;
+@@ -325,6 +326,15 @@ void QWaylandWindow::resetSurfaceRole()
+     delete std::exchange(mShellSurface, nullptr);
+     delete std::exchange(mSubSurfaceWindow, nullptr);
+     emit surfaceRoleDestroyed();
++
++    resetFrameCallback();
++    mInFrameRender = false;
++    mWaitingToApplyConfigure = false;
++    mExposed = false;
++}
++
++void QWaylandWindow::resetFrameCallback()
++{
+     {
+         QMutexLocker lock(&mFrameSyncMutex);
+         if (mFrameCallback) {
+@@ -338,10 +348,7 @@ void QWaylandWindow::resetSurfaceRole()
+         killTimer(mFrameCallbackCheckIntervalTimerId);
+         mFrameCallbackCheckIntervalTimerId = -1;
+     }
+-    mInFrameRender = false;
+     mFrameCallbackTimedOut = false;
+-    mWaitingToApplyConfigure = false;
+-    mExposed = false;
+ }
+ 
+ QWaylandWindow *QWaylandWindow::fromWlSurface(::wl_surface *surface)
+diff --git a/src/client/qwaylandwindow_p.h b/src/client/qwaylandwindow_p.h
+index 1a99efb8..ac08f1f0 100644
+--- a/src/client/qwaylandwindow_p.h
++++ b/src/client/qwaylandwindow_p.h
+@@ -351,6 +351,7 @@ private:
+     bool shouldCreateShellSurface() const;
+     bool shouldCreateSubSurface() const;
+     void resetSurfaceRole();
++    void resetFrameCallback();
+     QPlatformScreen *calculateScreenFromSurfaceEvents() const;
+     void setOpaqueArea(const QRegion &opaqueArea);
+     bool isOpaque() const;
+-- 
+2.49.0
+

@@ -25,9 +25,6 @@
 ExclusiveArch:  do-not-build
 %endif
 
-%define usegcc11 0%{?sle_version} && 0%{?sle_version} < 160000
-%define use_jxl !(0%{?sle_version} && 0%{?sle_version} < 160000)
-
 %if "%{flavor}" == "gtk3"
 %define _gtknamesuffix gtk3
 %define _pkgname_no_slpp libwebkit2gtk3
@@ -107,11 +104,7 @@ BuildRequires:  flex
 %if 0%{?_with_backtrace}
 BuildRequires:  libbacktrace-devel
 %endif
-%if %usegcc11
-BuildRequires:  gcc11-c++
-%else
 BuildRequires:  gcc-c++ >= 11.2
-%endif
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gperf >= 3.0.1
 BuildRequires:  hyphen-devel
@@ -131,10 +124,6 @@ BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(fontconfig) >= 2.13.0
 BuildRequires:  pkgconfig(freetype2) >= 2.9.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
-BuildRequires:  pkgconfig(icu-i18n)
-%if %usegcc11
-BuildRequires:  pkgconfig(glproto)
-%endif
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.18.4
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
@@ -148,6 +137,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(icu-i18n)
 %if "%{flavor}" == "gtk3" || "%{flavor}" == "gtk3-soup2"
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 %endif
@@ -159,9 +149,7 @@ BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 2.7.4
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavif) >= 0.9.0
-%if %{use_jxl}
 BuildRequires:  pkgconfig(libjxl)
-%endif
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
@@ -480,10 +468,6 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DOCUMENTATION=OFF \
   -DUSE_LIBBACKTRACE=%[ %{defined _with_backtrace} ? "ON" : "OFF" ] \
-%if %usegcc11
-  -DCMAKE_C_COMPILER=gcc-11 \
-  -DCMAKE_CXX_COMPILER=g++-11 \
-%endif
   -DPORT=GTK \
 %if "%{flavor}" == "gtk4"
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkitgtk%{_wk2sover} \
@@ -506,13 +490,6 @@ export PYTHON=%{_bindir}/python3
 %ifarch aarch64
   -DENABLE_JIT=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
-%else
-%if 0%{?sle_version} && 0%{?sle_version} < 160000
-  -DUSE_SYSTEM_MALLOC=ON \
-%endif
-%endif
-%if !%{use_jxl}
-  -DUSE_JPEGXL=OFF \
 %endif
   -DUSE_SYSTEM_SYSPROF_CAPTURE=NO \
   -DUSE_FLITE=OFF \

@@ -8,6 +8,5 @@ Lua. tolua++ includes new features oriented to c++ such as:
 as well as other features and bugfixes. 
 
 </description>
-  <devel project="devel:languages:lua" package="lua-toluapp"/>
   <url>http://www.codenix.com/~tolua/</url>
 </package>

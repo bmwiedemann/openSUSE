@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Apr 12 13:58:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Remember initial layout when restarting game after reshuffling
+  + Ensure boards remain solvable when possible after reshuffling
+    remaining tiles
+  + Always show New Game button when no moves are left
+  + Cycle through hints instead of always picking random ones
+  + Allow inspecting game after finishing it
+  + Show scores for current layout when opening Scores dialog
+  + Fix Score dialog title being visible when it should not be
+  + Replace GNOME tile with White Dragon tile in Postmodern theme
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 16 09:12:55 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

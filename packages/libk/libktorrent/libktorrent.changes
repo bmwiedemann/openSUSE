@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:00 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add missing CMakeFindDependencyMacro for find_dependency
+  * Add QByteArrayView overloads for SHA1 hash
+  * Remove unnecessary copy when loading torrent hash
+  * Add missing include
+  * Explicitely cast C string to QString.
+  * Reserve encoded string size
+  * Use -DQT_NO_CAST_FROM_ASCII
+  * Port File::open uses to use string literals
+  * Use QStringLiteral
+  * Use QLatin1StringView
+  * Use QDir::NoDotAndDotDot and QDir::isEmpty
+  * No need to construct a full string here
+  * Port URLEncoder to use string literals
+  * Use QString() instead of ""
+  * Fix windows build not finding boost.
+  * Reduce dependency on boost.
+  * Use QList directly.
+  * Remove size argument from CacheFile::unmap function.
+  * KIO::TransferJob::isErrorPage has been deprecated in KF6.
+  * Fix initialization order.
+  * Switch to CamelCase Qt/KF includes and C++ style C includes.
+  * Port away from Qt5Compat.
+  * Send and receive IPv6 peers via peer exchange
+  * Link with libnetwork on Haiku
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

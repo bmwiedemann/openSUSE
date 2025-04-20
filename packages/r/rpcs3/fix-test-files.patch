@@ -1,10 +1,10 @@
 diff --git a/rpcs3/CMakeLists.txt b/rpcs3/CMakeLists.txt
-index 3556502..1cc40e6 100644
+index a80c630..b5e790f 100644
 --- a/rpcs3/CMakeLists.txt
 +++ b/rpcs3/CMakeLists.txt
 @@ -197,7 +197,5 @@ if (NOT ANDROID)
              DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)
-         install(DIRECTORY ../bin/git
+         install(DIRECTORY ../bin/GuiConfigs
              DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)
 -        install(DIRECTORY ../bin/test
 -            DESTINATION ${CMAKE_INSTALL_DATADIR}/rpcs3)

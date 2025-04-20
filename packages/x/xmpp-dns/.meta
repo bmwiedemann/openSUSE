@@ -1,5 +1,4 @@
 <package name="xmpp-dns" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="network:messaging:xmpp" package="xmpp-dns"/>
 </package>

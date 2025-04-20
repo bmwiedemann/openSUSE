@@ -2166,4 +2166,12 @@
     <comment>A few new upstream features and bug fixes</comment>
     <requestid>1268604</requestid>
   </revision>
+  <revision rev="274" vrev="10">
+    <srcmd5>481ec1dee1d2dead3dacbd01f796a0cb</srcmd5>
+    <version>5.0.0</version>
+    <time>1744985717</time>
+    <user>anag_factory</user>
+    <comment>Fixes dependencies on Tumbleweed and other distros</comment>
+    <requestid>1270608</requestid>
+  </revision>
 </revisionlist>

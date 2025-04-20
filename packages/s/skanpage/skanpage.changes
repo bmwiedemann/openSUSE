@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * bring back setting the name filter index in file dialogs
+  * simplify scan preview and selection areas (kde#499486)
+  * update Readme
+  * log errors during file I/O
+  * add image import to command line and add additional multi-page test file
+  * fix import page counting
+  * Update sane-airscan to 0.99.32 and add update-check
+  * fix option updating after reload more than the state may change, e.g. min/max, valueList etc. (kde#497880)
+  * Explicitly set tesseract and leptonica as required dependencies
+  * Add xml/yaml linting
+  * make tesseract a hard dependency
+  * improve printing support - implement page ranges - implement current page printing - support reverse printing (kde#497185)
+  * use non-deprecated Kirigami import
+  * Added supporter donnnadie
+  * Port to KConfig.WindowStateSaver (kde#489108)
+  * Added supporter oreggero
+  * switch to new preview scan functionality from KSaneCore
+  * coding style
+  * Port ExportWindow to Kirigami.Dialog, change icons, and add button text
+  * use KIO to save files to remote folders (kde#476210)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

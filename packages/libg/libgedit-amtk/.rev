@@ -23,4 +23,13 @@
     <comment>SCripted push of GNOME 47</comment>
     <requestid>1205475</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2988864d061b838698c7f015e44040b5</srcmd5>
+    <version>5.9.1</version>
+    <time>1744985693</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.9.1:
+  + Updated translations. (forwarded request 1270225 from iznogood)</comment>
+    <requestid>1270278</requestid>
+  </revision>
 </revisionlist>

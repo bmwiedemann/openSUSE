@@ -1,7 +1,7 @@
 #
 # spec file for package python-SPARQLWrapper
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,6 @@ format.
 %doc README.rst AUTHORS.md
 %python_alternative %{_bindir}/rqw
 %{python_sitelib}/SPARQLWrapper
-%{python_sitelib}/SPARQLWrapper-%{version}.dist-info
+%{python_sitelib}/sparqlwrapper-%{version}.dist-info
 
 %changelog

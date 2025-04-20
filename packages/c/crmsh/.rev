@@ -3473,4 +3473,20 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1266812</requestid>
   </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>dafd72983866e8eddf3d31ab6f29702b</srcmd5>
+    <version>5.0.0+20250417.367bbfad</version>
+    <time>1744899012</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270229</requestid>
+  </revision>
+  <revision rev="364" vrev="1">
+    <srcmd5>ee7758abcc326e66787cda20bac41582</srcmd5>
+    <version>5.0.0+20250418.bb6c26c2</version>
+    <time>1745134510</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1270864</requestid>
+  </revision>
 </revisionlist>

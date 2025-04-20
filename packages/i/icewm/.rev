@@ -784,4 +784,32 @@
     <comment></comment>
     <requestid>1206435</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>41c3d9c884a6e2b83dea3650d1cb0b2d</srcmd5>
+    <version>3.7.3</version>
+    <time>1744828665</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.7.3:
+  * Add ColorQuickSwitchBorder themable preference for issue #736.
+  * Make 4 graph widths themable for issue #178.
+  * Support grabbing two keys simultaneously by a single keybinding
+    definition when both keys are bound to the same keysym.
+  * Add support for the _NET_WM_MOVERESIZE_CANCEL protocol option.
+  * Add -Await option to icesh to wait for and select new client windows.
+  * Unset DESKTOP_AUTOSTART_ID, DESKTOP_STARTUP_ID, XDG_ACTIVATION_TOKEN.
+  * Add the &quot;usertime&quot; and &quot;x11time&quot; commands to icesh.
+  * Improved loading of fonts in non-Latin environments.
+  * Always allow both scrollbars to process the same key event.
+  * When a key event is handled, don't propagate it further.
+  * Support locales with three letter language codes.
+  * Enforce a limit of 8 mouse pointer buttons, as more is impossible.
+  * Support keybindings to shifted XF86keysyms like XF86AudioPause.
+  * Better guard the integrity of window move/size operations.
+  * Increase the maximum number of icewmbg backgrounds to 8000.
+  * Let icewmbg also support the AVIF image format.
+  * Improve support for properties with COMPOUND_TEXT in icesh.
+  * Let icesh accept UTF-8 strings in properties.
+</comment>
+    <requestid>1269524</requestid>
+  </revision>
 </revisionlist>

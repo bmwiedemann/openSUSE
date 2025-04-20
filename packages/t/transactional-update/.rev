@@ -1317,4 +1317,12 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
     <comment></comment>
     <requestid>1269297</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>b1cdd083f069f2b61f54ee4c72650195</srcmd5>
+    <version>4.8.3</version>
+    <time>1744898843</time>
+    <user>anag_factory</user>
+    <comment>Revert t-u to 4.x</comment>
+    <requestid>1270254</requestid>
+  </revision>
 </revisionlist>

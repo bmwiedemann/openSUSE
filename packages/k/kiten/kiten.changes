@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix font size in results view
+  * Set background color for body
+  * Add line break to about dialog credit text
+  * Add xml/yaml linting
+  * Remove unimplemented methods
+  * Show headers in qtc6
+  * Add windows support
+  * Use QList directly
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

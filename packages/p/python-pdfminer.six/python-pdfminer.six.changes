@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Apr  7 05:17:52 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 20250327:
+  * Added
+    + Support for Python 3.13
+    + Support for zipped jpeg's
+    + Fuzzing harnesses for integration into Google's OSS-Fuzz
+    + Support for setuptools-git-versioning version 2.0.0
+  * Changed
+    + Reduce memory overhead on runlength encoding by using lists
+    + Using pyproject.toml instead of setup.py
+    + Updated Python 3.7 syntax to 3.8
+    + Updated all Python version specifications to a minimum of 3.8
+    + Using absolute instead of relative imports
+    + Using standard library functions for ascii85 and asciihex
+  * Fixed
+    + TypeError when CID character widths are not parseable as floats
+    + TypeError raised by extract_text method with compressed PDF file
+    + PSBaseParser can't handle tokens split across end of buffer
+    + TypeError when CropBox is an indirect object reference
+    + Remove redundant line to be able to recognize rectangles
+    + Support indirect objects for filters
+    + Make sure bytes is bytes where it counts
+    + TypeError when corrupt PDF object reference cannot be parsed as int
+    + TypeError when corrupt PDF literal cannot be converted to str
+    + ValueError when corrupt PDF specifies a negative xref location
+    + ValueError when corrupt PDF specifies an invalid mediabox
+    + RecursionError when corrupt PDF specifies a recursive /Pages object
+    + TypeError when corrupt PDF specifies text-positioning operators with
+      invalid values
+    + inline image parsing fails when stream data contains "EI\n"
+    + TypeError when parsing object reference as mediabox
+    + Resolving mediabox and pdffont
+    + Keywords that aren't terminated by the pattern END_KEYWORD before
+      end-of-stream are parsed
+    + ValueError wrong error message when specifying codec for text output
+    + Resolve stream filter parameters
+    + Reading cmap's with whitespace in the name
+    + Optimize apply_png_predictor by using lists
+  * Deprecated
+    + The third argument (generation number) to PDFObjRef
+  * Removed
+    + Support for Python 3.8
+    + Deprecated tools, functions and classes
+
+-------------------------------------------------------------------
 Sun Jan  7 20:34:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 20231228:

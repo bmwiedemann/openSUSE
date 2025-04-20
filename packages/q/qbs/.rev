@@ -209,4 +209,12 @@ Initial import of qbs 1.10.1
     <comment>Update to 2.5.1</comment>
     <requestid>1252503</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2085fe54d7260580d9266bc2850baa0b</srcmd5>
+    <version>2.6.1</version>
+    <time>1744828966</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.6.1</comment>
+    <requestid>1270035</requestid>
+  </revision>
 </revisionlist>

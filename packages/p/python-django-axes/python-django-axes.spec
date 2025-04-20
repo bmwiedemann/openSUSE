@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-axes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-axes
-Version:        6.4.0
+Version:        7.0.2
 Release:        0
 License:        MIT
 Summary:        Keep track of failed login attempts in Django-powered sites
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-axes
-Source:         https://files.pythonhosted.org/packages/source/d/django-axes/django-axes-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-axes/django_axes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module asgiref >= 3.6.0}
 BuildRequires:  %{python_module django-ipware >= 3}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module tzdata}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Django >= 3.2
-Requires:       python-django-ipware >= 3
+Requires:       python-Django >= 4.2
+Requires:       python-asgiref >= 3.6.0
+Suggests:       python-django-ipware >= 3
 BuildArch:      noarch
 
 %python_subpackages
@@ -44,20 +48,19 @@ BuildArch:      noarch
 Keep track of failed login attempts in Django-powered sites.
 
 %prep
-%setup -q -n django-axes-%{version}
+%setup -q -n django_axes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 export DJANGO_SETTINGS_MODULE=tests.settings
 rm pyproject.toml
-# see https://github.com/jazzband/django-axes/issues/1012
-%pytest -k 'not test_log_data_truncated'
+%pytest
 
 %files %{python_files}
 %doc CHANGES.rst README.rst

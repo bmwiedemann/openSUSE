@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:53:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Fri Feb 14 03:56:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Don't use %_libdir, it doesn't work for noarch packages

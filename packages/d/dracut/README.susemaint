@@ -411,8 +411,10 @@ f3fffa1e fix(systemd-veritysetup): install dm-verity kernel module
 d10455ad feat(lsinitrd.sh): print stored dracut cmdline
 6b30662e fix(nfs): libnfsidmap plugins not added in some distributions
 59af2fff fix(crypt): install dm_crypt module in non-hostonly mode as well
+dea50f64 fix(crypt): always install s390 crypto modules
 541ae946 fix(dmsquash-live): use load_fstype to load driver for filesystems
 c6906fea fix(dmsquash-live): do not check ISO md5 if image filesystem
 1b5669c1 feat(systemd): add new systemd-validatefs@.service
 e8f72ed9 chore(multipath): remove `rd_NO_MULTIPATH` kernel command line option
 5e87b68c refactor(multipath): remove custom multipathd.service
+bb6d0c11 fix(dracut-init): assign real path to srcmods

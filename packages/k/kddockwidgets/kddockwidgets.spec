@@ -27,7 +27,7 @@
 %define soversion 2_2
 %define rname kddockwidgets
 Name:           kddockwidgets%{?pkg_suffix}
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        Qt dock widget library, suitable for replacing QDockWidget
 License:        GPL-2.0-only OR GPL-3.0-only

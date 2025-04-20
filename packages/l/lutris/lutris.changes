@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 06:50:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Move selinux dependency
+
+-------------------------------------------------------------------
 Mon Mar 24 13:01:47 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Fix gaming under selinux (bsc#1206292)

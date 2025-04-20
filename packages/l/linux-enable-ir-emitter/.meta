@@ -4,5 +4,6 @@
 directly enabled out-of-the box (at the very least, the kernel must recognize
 your infrared camera). It can automatically configure almost any (UVC) infrared
 emitter.</description>
+  <devel project="hardware" package="linux-enable-ir-emitter"/>
   <url>https://github.com/EmixamPP/linux-enable-ir-emitter</url>
 </package>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:50 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add missing CMakeFindDependencyMacro for find_dependency
+  * Use QTEST_GUILESS_MAIN
+  * Add xml/yaml linting
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Fix i18n
+  * Fix initial state
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

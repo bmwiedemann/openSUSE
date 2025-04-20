@@ -1,7 +1,7 @@
 #
 # spec file for package python-QtAwesome
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,7 +78,7 @@ dos2unix CHANGELOG.md README.md
 %license LICENSE.txt
 %doc CHANGELOG.md README.md
 %{python_sitelib}/qtawesome
-%{python_sitelib}/QtAwesome-%{version}.dist-info
+%{python_sitelib}/qtawesome-%{version}.dist-info
 %python_alternative %{_bindir}/qta-browser
 
 %changelog

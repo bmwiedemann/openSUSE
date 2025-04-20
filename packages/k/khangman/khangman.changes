@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Close the dialog on ok/cancel button press
+  * Fix saving/cancelling settings
+  * Add support for non-Latin alphabets.
+  * Add xml/yaml linting
+  * remove unnecessary macros. QT_USE_FAST_CONCATENATION and QT_USE_FAST_OPERATOR_PLUS are superseeded with QT_USE_STRINGBUILDER. This variable is added by default using KDECompilerSettings>=5.85, no need to specify it (https://api.kde.org/ecm/kde-module/KDECompilerSettings.html#modern-code)
+  * Port to AboutKDEPage, remove dedicated files
+  * Allow to build without deprecated method
+  * Add windows support
+  * Drop unused kconfigwidgets dependency
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

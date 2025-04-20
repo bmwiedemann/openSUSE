@@ -19,4 +19,15 @@
 - Bump libver (forwarded request 1229044 from iznogood)</comment>
     <requestid>1229727</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>547f59bf1c0e5ed3d2c610301881d1d1</srcmd5>
+    <version>6.13.0</version>
+    <time>1744985692</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.13.0:
+  + New and removed API: see the API reference.
+  + Updated translations.
+- Bump libver. (forwarded request 1270224 from iznogood)</comment>
+    <requestid>1270277</requestid>
+  </revision>
 </revisionlist>

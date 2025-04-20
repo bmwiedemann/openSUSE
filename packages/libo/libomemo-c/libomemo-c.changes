@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 09:55:55 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Fix libomemo-c-devel dependencies. protobuf-c is required.
+
+-------------------------------------------------------------------
 Tue Apr  8 05:16:28 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.1:

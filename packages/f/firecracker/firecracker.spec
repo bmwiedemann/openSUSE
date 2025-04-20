@@ -24,11 +24,11 @@ License:        Apache-2.0
 URL:            https://firecracker-microvm.github.io/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  cargo1.82
 BuildRequires:  clang
 BuildRequires:  cmake
-BuildRequires:  rust1.82
+BuildRequires:  rust
 BuildRequires:  pkgconfig(libseccomp)
 ExclusiveArch:  x86_64 aarch64
 

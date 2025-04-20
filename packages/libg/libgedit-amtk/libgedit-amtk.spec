@@ -1,7 +1,7 @@
 #
 # spec file for package libgedit-amtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define api_ver 5
 
 Name:           libgedit-amtk
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        An Actions, Menus and Toolbars Kit
 License:        LGPL-3.0-or-later

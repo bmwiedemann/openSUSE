@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Mar 22 01:08:05 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+- Remove Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Mon Feb 26 14:55:51 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

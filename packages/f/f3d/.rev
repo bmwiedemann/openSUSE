@@ -135,4 +135,12 @@
   * Added support for armature visualization with --armature CLI option (glTF only)</comment>
     <requestid>1239157</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d8ab3772ebb09d28d9ef94412218abea</srcmd5>
+    <version>3.0.0</version>
+    <time>1744828776</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269637</requestid>
+  </revision>
 </revisionlist>

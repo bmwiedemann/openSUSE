@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.8.0.49.git+f9cb13b
+Version:        0.8.3.0.git+db0870e
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
@@ -58,7 +58,8 @@ an utility for reporting current error counts from the EDAC sysfs files.
 # on old autoconf versions
 ln -s README.md README
 autoreconf -fvi
-%configure --enable-all --with-sysconfdefdir=%{_sysconfdir}/sysconfig
+%configure --enable-all \
+	   --with-sysconfdefdir=%{_sysconfdir}/sysconfig
 CFLAGS="%{optflags}" make %{?_smp_mflags} V=1
 
 %install
@@ -96,6 +97,10 @@ mv %{buildroot}%{_sysconfdir}/sysconfig/rasdaemon %{buildroot}/%{_fillupdir}/sys
 %{_mandir}/*/*
 %{_unitdir}/*.service
 %dir %{_sysconfdir}/ras
+%dir %{_sysconfdir}/ras/dimm_labels.d
+%dir %{_sysconfdir}/ras/triggers
+%{_sysconfdir}/ras/triggers/mc_event_trigger
+%{_sysconfdir}/ras/triggers/mem_fail_trigger
 %dir %{_localstatedir}/lib/rasdaemon
 %ghost %{_localstatedir}/lib/rasdaemon/ras-mc_event.db
 %attr (644,root,root) %{_fillupdir}/sysconfig.rasdaemon

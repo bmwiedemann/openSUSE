@@ -17,20 +17,20 @@
 
 
 Name:           setroubleshoot-plugins
-Version:        3.3.14
+Version:        3.3.15
 Release:        0
 Summary:        Helps troubleshoot SELinux problems
 License:        GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://gitlab.com/setroubleshoot/plugins/
-Source:         https://releases.pagure.org/setroubleshoot/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM regenerate to fix build with python 3.13
-Patch0:         https://gitlab.com/setroubleshoot/plugins/-/commit/9e54f6a661330070ad25a0e86f197b3530bfc5c7.patch
+# download url has different package name, add "plugins-" before last occurence of name macro
+#source         https://gitlab.com/setroubleshoot/plugins/-/archive/setroubleshoot-plugins-3.3.15/plugins-setroubleshoot-plugins-3.3.15.tar.gz
+Source:         setroubleshoot-plugins-3.3.15.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  perl-XML-Parser
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 # Introduction of get_package_nvr functions
 Requires:       setroubleshoot-server >= 3.3.23
 BuildArch:      noarch

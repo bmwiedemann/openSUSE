@@ -1316,4 +1316,15 @@
     <comment>New stable branch release (forwarded request 1253068 from iznogood)</comment>
     <requestid>1253077</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>21dbbc8736bcf33befe85b6dfa701401</srcmd5>
+    <version>3.56.1</version>
+    <time>1744898774</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.1:
+  + Bug Fixes:
+    - m365: Empty Junk and then Empty Trash produces error
+    - m365: Cannot unset message label (forwarded request 1268548 from iznogood)</comment>
+    <requestid>1269663</requestid>
+  </revision>
 </revisionlist>

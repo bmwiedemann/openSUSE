@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 12:48:54 MDT 2025 - carnold@suse.com
+
+- Update Copyright year
+- Exclude the Requires on sysconfig-netconfig for SLES16 and newer
+
+-------------------------------------------------------------------
 Mon Oct 21 15:28:41 MDT 2024 - carnold@suse.com
 
 - Detect the correct kernel on aarch64 (jsc#PED-10545)

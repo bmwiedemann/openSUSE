@@ -31,4 +31,15 @@
     <comment>- Python 3.11 is the first flavor built, fix removal of nspkg.pth.</comment>
     <requestid>1253576</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>7e0e34b2b4cb9b30832a9e4143e1a8ed</srcmd5>
+    <version>1.0.1</version>
+    <time>1744828748</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264897</requestid>
+  </revision>
 </revisionlist>

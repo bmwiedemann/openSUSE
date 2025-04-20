@@ -94,4 +94,41 @@
   - Option to disable boxes flow layout analysis when using pdf2txt</comment>
     <requestid>1137442</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>97a82c667a8ae5a91323dfa9431200bc</srcmd5>
+    <version>20250327</version>
+    <time>1744828753</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20250327:
+  * Added
+    + Support for Python 3.13
+    + Support for zipped jpeg's
+    + Fuzzing harnesses for integration into Google's OSS-Fuzz
+    + Support for setuptools-git-versioning version 2.0.0
+  * Changed
+    + Reduce memory overhead on runlength encoding by using lists
+    + Using pyproject.toml instead of setup.py
+    + Updated Python 3.7 syntax to 3.8
+    + Updated all Python version specifications to a minimum of 3.8
+    + Using absolute instead of relative imports
+    + Using standard library functions for ascii85 and asciihex
+  * Fixed
+    + TypeError when CID character widths are not parseable as floats
+    + TypeError raised by extract_text method with compressed PDF file
+    + PSBaseParser can't handle tokens split across end of buffer
+    + TypeError when CropBox is an indirect object reference
+    + Remove redundant line to be able to recognize rectangles
+    + Support indirect objects for filters
+    + Make sure bytes is bytes where it counts
+    + TypeError when corrupt PDF object reference cannot be parsed as int
+    + TypeError when corrupt PDF literal cannot be converted to str
+    + ValueError when corrupt PDF specifies a negative xref location
+    + ValueError when corrupt PDF specifies an invalid mediabox
+    + RecursionError when corrupt PDF specifies a recursive /Pages object
+    + TypeError when corrupt PDF specifies text-positioning operators with
+      invalid values
+    + inline image parsing fails when stream data contains &quot;EI\n&quot;
+    + TypeError when parsing object reference as mediabox</comment>
+    <requestid>1267469</requestid>
+  </revision>
 </revisionlist>

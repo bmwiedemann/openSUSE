@@ -7,4 +7,12 @@
     <comment>Add kio-admin to factory. Depends on sr#1248374 and sr#1248373</comment>
     <requestid>1248398</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3e21eff9956abaaf040f24acf638a106</srcmd5>
+    <version>25.04.0</version>
+    <time>1744985934</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
+    <requestid>1270421</requestid>
+  </revision>
 </revisionlist>

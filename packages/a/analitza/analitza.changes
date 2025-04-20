@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:51:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build
+  (glew is only needed for win32).
+
+-------------------------------------------------------------------
+Mon Apr 14 07:06:20 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Add xml/yaml linting
+  * analyzer simplificator: Account for unary roots
+  * declarative: Make AnalitzaWrapper a bit more resilient
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

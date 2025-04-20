@@ -1171,4 +1171,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1255245</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>a8c763cae2d6dd0dd55b464885802dc4</srcmd5>
+    <version>5.40.2</version>
+    <time>1744828621</time>
+    <user>anag_factory</user>
+    <comment>update to 5.40.2</comment>
+    <requestid>1269212</requestid>
+  </revision>
 </revisionlist>

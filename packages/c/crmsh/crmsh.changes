@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 18 14:42:07 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250418.bb6c26c2:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: ui_sbd: Improve log info when adjust sbd related timeout
+  * Dev: doc: Update crm.8.adoc for using -F/--force option for leveraging maintenance mode
+  * Dev: sbd: Leverage maintenance mode when need to restart cluster (jsc#PED-11931)
+
+-------------------------------------------------------------------
+Thu Apr 17 08:27:07 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250417.367bbfad:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: behave: Adjust functional test for previous commit
+  * Dev: ui_sbd: Show fence_sbd parameter in 'sbd configure show'
+  * Dev: doc: Update doc/crm.8.adoc to add crashdump option
+  * Dev: ui_sbd: Add 'crashdump' option for 'sbd purge' command
+  * Dev: ui_sbd: Refactor the condition for configuring crashdump
+  * Dev: ui_sbd: Compare crashdump watchdog timeout value if configured
+  * Dev: ui_sbd: Add warning to emphasize that kdump service is required
+  * Dev: ui_sbd: Update the re pattern to match the possible arguments
+  * Dev: ui_sbd: Configure crashdump watchdog timeout (jsc#PED-11931)
+
+-------------------------------------------------------------------
 Thu Apr 03 08:31:40 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250403.1442a04a:

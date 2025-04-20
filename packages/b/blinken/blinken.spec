@@ -1,7 +1,7 @@
 #
 # spec file for package blinken
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           blinken
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Simon Says Game
 License:        GPL-2.0-or-later
@@ -39,9 +39,8 @@ BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
-BuildRequires:  cmake(Phonon4Qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Obsoletes:      blinken5 < %{version}

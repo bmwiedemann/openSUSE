@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:38:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build
+
+-------------------------------------------------------------------
+Mon Apr 14 07:06:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- Too many changes since 25.03.90, only listing bugfixes:
+  * Show proper error message when trying to apply a mix and all tracks are disabled (kde#502610)
+  * Fix Extract clip with multiple selection (kde#485517)
+  * Fix documentation link to JogShuttle (kde#502618)
+  * Fix timeline audio thumbnails for clips with multiple streams and different channel count (kde#501280)
+  * Make Remove timeline preview work with undo/redo (kde#502192)
+  * Fix clear history broken BUG: 499544 FIXED-IN: 25.04.0 (kde#499544)
+  * Fix glaxnimate connection not terminated on app close on Windows (kde#473036)
+  * Text based edit: with multiple text selection, create multiple markers (kde#498259)
+  * Better default height for assets info box, remember its size (kde#502089)
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Too many changes since 24.12.3, only listing bugfixes:
+  * Correclty restore all audio streams in restore audio operation. Also, we should use active tracks not audio target tracks to restore (kde#474140)
+  * When opening a project file with a custom effect that is not on the system, use the MLT base effect to correctly recover the project (kde#460928)
+  * Remove unsupported html tags from notifications (kde#174560)
+  * Fix speed dialog mnemonics and tab order (kde#501565)
+  * Fix profile change aborted when switching from empty project (kde#500751)
+  * Insert space should move guides if they are not locked (kde#500773)
+  * Add keyboard shortut for render filename field (kde#500772)
+  * Fix rendering files with an ampersand in name is broken on linux (kde#500794)
+  * Fix saved tracker effect doesn't work (kde#501227)
+  * Fix replacing color clip (kde#501394)
+  * Fix transcoding and proxying of clips with cover art (kde#496599)
+  * Fix effects with analysis step like loudness 2 pass and tracker broken on cut clips or on tracks (kde#492729)
+  * Ensure proxy clips have a fixed frame rate (using vsync 1) (kde#499559)
+  * Fix incorrect behavior / crash on single item deletion (kde#499570)
+  * Fix crash trying to import invalid keyframe data from clipboard (kde#499531)
+  * Fix crash setting empty name for folder (kde#499070)
+  * Better fix for expand library clips broken with proxies (kde#499171)
+  * Fix effects layout broken on resize (kde#498749)
+  * Reassemble proxy profile elements in the correct order after validation (kde#485356)
+  * Fix the spinbox range for title position and size (kde#487950)
+  * Ensure sequence clips in timeline are not resized to smaller when hiding a track (kde#498178)
+  * Fix crash saving effect stack (kde#498124)
+  * Fix reload or proxy clip losing tags, markers, force aspect ratio (kde#498014)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

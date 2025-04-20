@@ -60,6 +60,7 @@ ExclusiveArch: do_not_build
 # Enable python311 for SLE15 in addition to the regular python3 which is python 3.6
 %{?sle15allpythons}
 %endif
+%define __builder ninja
 
 Name:           %{pname}%{psuffix}
 Version:        4.11.0
@@ -73,11 +74,14 @@ Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{pn
 # Several modules from the opencv_contrib package
 Source1:        https://github.com/opencv/opencv_contrib/archive/%{version}.tar.gz#/opencv_contrib-%{version}.tar.gz
 Source99:       opencv-rpmlintrc
+# PATCH-FIX-UPSTREAM opencv-qt6_9-highgui-linking-test.patch gh#opencv/opencv#27223 badshah400@gmail.com -- Fix highgui module linking against Qt 6.9; patch sent upstream
+Patch0:         opencv-qt6_9-highgui-linking-test.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libeigen3-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  memory-constraints
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 # OpenJPEGTargets.cmake erroneously requires the binaries
 BuildRequires:  openjpeg2
@@ -386,7 +390,7 @@ BuildArch:      noarch
 This package contains the documentation and examples for the OpenCV library.
 
 %prep
-%autosetup -n %{pname}-%{version} -a 1
+%autosetup -p1 -n %{pname}-%{version} -a 1
 
 # Only copy over modules we need
 mv opencv_contrib-%{version}/modules/{aruco,face,tracking,optflow,plot,shape,superres,videostab,ximgproc} modules/
@@ -409,9 +413,7 @@ pushd $PWD
 %cmake \
       -DCMAKE_BUILD_TYPE=Release \
       -DBUILD_WITH_DEBUG_INFO=ON \
-%if %{with tests}
-      -DBUILD_TESTS=ON \
-%endif
+      -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
       -DOPENCV_INCLUDE_INSTALL_PATH=%{_includedir} \
       -DOPENCV_LICENSES_INSTALL_PATH=%{_licensedir}/%{name} \
       -DOPENCV_GENERATE_PKGCONFIG=ON \

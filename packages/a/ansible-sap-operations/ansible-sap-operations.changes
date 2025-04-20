@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Thu Apr 10 14:38:36 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- Updated downstream transformation
+- Removed python dependencies and macros from spec file
+
+-------------------------------------------------------------------
+Fri Jan  20 09:00:00 UTC 2025 - Marcel Mamula <marcel.mamula@suse.com>
+
+- 0.9.1
+  - Initial release.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Feb 16 14:45:19 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to 6.15:
+  * Fix minor bug related to Python 3 decoding.
+  * Make player more conspicuous on a black screen.
+- Drop BuildRequires update-desktop-files
+
+-------------------------------------------------------------------
 Mon Feb 26 13:25:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

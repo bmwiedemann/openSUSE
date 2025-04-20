@@ -21,4 +21,12 @@
   * Updated code generation tools</comment>
     <requestid>1248476</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c5dec54dc4869eb9e4d517d3cee7fae4</srcmd5>
+    <version>0.3.2</version>
+    <time>1744828888</time>
+    <user>anag_factory</user>
+    <comment>- Revert back to 0.3.2, it's only requirement requires that version.</comment>
+    <requestid>1269749</requestid>
+  </revision>
 </revisionlist>

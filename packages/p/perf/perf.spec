@@ -81,8 +81,6 @@ Recommends:     perf-gtk
 # This avoids the perf build breaking when the kernel version in Factory
 # asynchronously updates.
 
-Patch6140:      perf-tools-annotate-asm_pure_loop.S.patch
-
 %define python_subpackage_only 1
 %python_subpackages
 
@@ -204,9 +202,6 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %{_bindir}/perf
 %{_bindir}/trace
 %{_prefix}/lib/%{name}-core
-%if %{version_pure} < 614
-%{_datadir}/%{name}-core
-%endif
 %{_mandir}/man1/perf*
 
 %files gtk

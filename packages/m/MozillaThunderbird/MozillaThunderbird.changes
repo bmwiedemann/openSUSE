@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 15 20:16:38 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird ESR 128.9.2
+  * Two-factor auth via text or email did not work with Office 365 using Oauth2
+  * IRC channel was not visible after restart
+  * Global indexing failed when processing email with invalid calendar data
+  MFSA 2025-27
+  * CVE-2025-3522 (bmo#1955372)
+    Leak of hashed Window credentials via crafted attachment URL
+  * CVE-2025-2830 (bmo#1956379)
+    Information Disclosure of /tmp directory listing
+  * CVE-2025-3523 (bmo#1958385)
+    User Interface (UI) Misrepresentation of attachment URL
+
+-------------------------------------------------------------------
 Sat Apr  5 06:04:41 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird ESR 128.9.1

@@ -2431,4 +2431,14 @@ New stable rel</comment>
     <comment>New stable branch release (forwarded request 1253066 from iznogood)</comment>
     <requestid>1253075</requestid>
   </revision>
+  <revision rev="264" vrev="1">
+    <srcmd5>2cb850dfeb5fc89220de8db6e0e304d3</srcmd5>
+    <version>3.56.1</version>
+    <time>1744898762</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.56.1:
+  + Bug Fix: Handle changed server pool in WebDAV collection
+    sources. (forwarded request 1268543 from iznogood)</comment>
+    <requestid>1269661</requestid>
+  </revision>
 </revisionlist>

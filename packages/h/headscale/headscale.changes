@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 08:06:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add patch fix-CVEs.patch to fix bsc#1241235, bsc#1237674
+
+-------------------------------------------------------------------
 Tue Apr  1 14:53:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVE-2025-30204.patch, for fixing bsc#1240506

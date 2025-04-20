@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -109,6 +109,6 @@ exit $exit_code
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/pymysql
-%{python_sitelib}/PyMySQL-%{version}*-info
+%{python_sitelib}/pymysql-%{version}.dist-info
 
 %changelog

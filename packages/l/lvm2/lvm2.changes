@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Tue Apr 15 08:05:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
+
+- LVM filter behaves unexpectedly for MPIO devices in SLES15SP5 (bsc#1216938)
+  * set lvm.conf devices.multipath_wwids_file=""
+
+-------------------------------------------------------------------
 Mon Mar  7 06:30:00 UTC 2025 - Heming Zhao <heming.zhao@suse.com>
 
 - Fixes the lvm2-testsuite case fsadm-btrfs.sh (bsc#1238857)

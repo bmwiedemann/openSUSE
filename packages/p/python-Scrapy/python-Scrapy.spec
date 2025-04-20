@@ -1,7 +1,7 @@
 #
 # spec file for package python-Scrapy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -130,7 +130,7 @@ skiplist="$skiplist or test_start_requests_laziness"
 %license LICENSE
 %doc AUTHORS README.rst
 %{python_sitelib}/scrapy
-%{python_sitelib}/Scrapy-%{version}.dist-info
+%{python_sitelib}/scrapy-%{version}.dist-info
 %python_alternative %{_bindir}/scrapy
 
 %files -n %{name}-doc

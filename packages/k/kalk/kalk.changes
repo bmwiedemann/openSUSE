@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Fix History feature
+  * Switch to the new KConfig CMake API
+  * Remove the remaining import versions from QML
+  * Bump KF minimum version to 6.8, port to new KLocalizedQmlContext API
+  * Fix the "History" action not doing anything
+  * Remove not needed QTP0001 policy
+  * Bump copyright year in KAboutData
+  * Remove seemingly unused debug context property
+  * Remove duplicate line in the CMake
+  * Require passing tests on the CI
+  * Fix the heap-use-after-free bug in QalculateEngine::calculate
+  * Remove duplicate line
+  * Add escape key handling
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

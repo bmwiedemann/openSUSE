@@ -188,4 +188,33 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1255628</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7d32697906bfec08f4951a0a975083f4</srcmd5>
+    <version>1.25.0</version>
+    <time>1744986054</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.25.0
+  * Add ROMFS support (see also &quot;mpremote romfs&quot; cmd with &quot;query&quot;, &quot;build&quot;, and &quot;deploy&quot; sub-commands)
+    ROMFS defines a read-only, memory-mappable, extensible filesystem that can contain arbitrary resources,
+	including precompiled mpy files, and allows executing bytecode directly from the filesystem.
+	This makes importing significantly faster and use a lot less memory.
+  * Inline assembler now supports 32-bit RISC-V assembly code via the newly implemented @micropython.asm_rv32 decorator.
+  * Datagram TLS (DTLS) is now supported by the tls module and enabled on the alif, mimxrt, renesas-ra, rp2, stm32 and unix ports.
+  * mpremote command-line tool now supports recursive remove via the new &quot;rm -r&quot;
+  * mpremote now supports relative URLs in the package.json for installing from the local filesystem
+  * &quot;mpremote mount&quot; has optimised readline support
+  * full support for tuples and start/end arguments in str.startswith() and str.endswith() methods
+  * vfs.mount() with no arguments now returns a list of mounted filesystems
+  * marshal module has been added with dumps() and loads() functions
+  * MicroPython native linker mpy_ld.py now includes support for linking in static libraries automatically
+  * native modules now support 32-bit RISC-V code
+  * force _FILE_OFFSET_BITS=64 to fix 32-bit file ABI
+  * enable VfsRom on standard and coverage variants
+  * use the bare metal mbedTLS config in the coverage buiid
+  * add recursive mutex support
+  * main: add coverage test for mounting ROMFS filesystem at startup
+- Drop fix_re_sub_test_on_python3.13.patch as not needed anymore
+</comment>
+    <requestid>1270586</requestid>
+  </revision>
 </revisionlist>

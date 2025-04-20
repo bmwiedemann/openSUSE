@@ -1,7 +1,7 @@
 #
 # spec file for package ksanecore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ksanecore
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Qt interface for the SANE library for scanner hardware
 License:        LGPL-2.1-only OR LGPL-3.0-only

@@ -1,5 +1,6 @@
 <package name="qoi" project="openSUSE:Factory">
   <title>Quite OK Image Format</title>
   <description>The “Quite OK Image Format” for fast, lossless image compression.</description>
+  <devel project="multimedia:libs" package="qoi"/>
   <url>https://github.com/phoboslab/qoi</url>
 </package>

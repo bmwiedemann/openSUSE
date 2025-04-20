@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 14 13:21:23 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- udate to 10.8.1:
+  * Patch Changes
+    - Removed bright white highlighting, which didn't look good on
+      some light themes #9389.
+    - If there is no pnpm related configuration in package.json,
+      onlyBuiltDependencies will be written to pnpm-workspace.yaml
+      file #9404.
+    - The patch file path saved by the pnpm patch-commit and
+      patch-remove commands should be a relative path #9403.
+
+-------------------------------------------------------------------
 Tue Apr  8 04:50:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 10.8:

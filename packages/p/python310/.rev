@@ -1004,4 +1004,52 @@
 </comment>
     <requestid>1252710</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>02b717f3031a1f242bf8a8807915ef6f</srcmd5>
+    <version>3.10.17</version>
+    <time>1744828637</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.10.17:
+  - gh-131809: Update bundled libexpat to 2.7.1
+  - gh-131261: Upgrade to libexpat 2.7.0
+  - gh-105704: When using urllib.parse.urlsplit() and
+    urllib.parse.urlparse() host parsing would not reject domain
+    names containing square brackets ([ and ]). Square brackets
+    are only valid for IPv6 and IPvFuture hosts according to RFC
+    3986 Section 3.2.2 (bsc#1236705, CVE-2025-0938,
+    gh#python/cpython#105704).
+  - gh-121284: Fix bug in the folding of rfc2047 encoded-words
+    when flattening an email message using a modern email
+    policy. Previously when an encoded-word was too long for
+    a line, it would be decoded, split across lines, and
+    re-encoded. But commas and other special characters in the
+    original text could be left unencoded and unquoted. This
+    could theoretically be used to spoof header lines using a
+    carefully constructed encoded-word if the resulting rendered
+    email was transmitted or re-parsed.
+  - gh-80222: Fix bug in the folding of quoted strings
+    when flattening an email message using a modern email
+    policy. Previously when a quoted string was folded so that
+    it spanned more than one line, the surrounding quotes and
+    internal escapes would be omitted. This could theoretically
+    be used to spoof header lines using a carefully constructed
+    quoted string if the resulting rendered email was transmitted
+    or re-parsed.
+  - gh-119511: Fix a potential denial of service in the imaplib
+    module. When connecting to a malicious server, it could
+    cause an arbitrary amount of memory to be allocated. On many
+    systems this is harmless as unused virtual memory is only</comment>
+    <requestid>1269057</requestid>
+  </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>60c5c1d24fb556b2bd0c50b56e2783d5</srcmd5>
+    <version>3.10.17</version>
+    <time>1744985672</time>
+    <user>anag_factory</user>
+    <comment>- Add gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
+  which makes test_ssl not to stop ThreadedEchoServer on OSError,
+  which makes test_ssl pass with OpenSSL 3.5 (bsc#1241067,
+  gh#python/cpython!126572)</comment>
+    <requestid>1270151</requestid>
+  </revision>
 </revisionlist>

@@ -94,4 +94,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1224721</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>5a9821e7a584fe5e6923473dfbbc35bc</srcmd5>
+    <version>0.12.3</version>
+    <time>1744828737</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264867</requestid>
+  </revision>
 </revisionlist>

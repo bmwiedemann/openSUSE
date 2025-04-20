@@ -2451,4 +2451,13 @@
 - Rebase gnome-shell-add-app-to-desktop.patch. (forwarded request 1253669 from dimstar)</comment>
     <requestid>1253732</requestid>
   </revision>
+  <revision rev="146" vrev="1">
+    <srcmd5>94cddcefaa56dd02e386e1940e89c2c3</srcmd5>
+    <version>48.1</version>
+    <time>1744898803</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Updated translations. (forwarded request 1269013 from iznogood)</comment>
+    <requestid>1269684</requestid>
+  </revision>
 </revisionlist>

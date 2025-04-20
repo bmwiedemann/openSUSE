@@ -200,4 +200,12 @@
   * 0001-Fix-dialog-boxes-after-recent-Kirigami-updates.patch</comment>
     <requestid>1256131</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3b296ec8b3ed512ffc299cc152ed0f24</srcmd5>
+    <version>25.04.0</version>
+    <time>1744985885</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
+    <requestid>1270366</requestid>
+  </revision>
 </revisionlist>

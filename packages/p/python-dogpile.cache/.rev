@@ -463,4 +463,15 @@
     element of this enum.</comment>
     <requestid>1172118</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>4ba196e17f86d6d5679d2d451cfa7c35</srcmd5>
+    <version>1.3.3</version>
+    <time>1744828732</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264862</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,40 @@
+From 4fea03d3cef673917d30ca70ab693e2f851f7260 Mon Sep 17 00:00:00 2001
+From: Adam Williamson <awilliam@redhat.com>
+Date: Fri, 21 Jun 2024 12:32:19 -0700
+Subject: [PATCH] Avoid using dbm.sqlite3 (#242)
+
+Python 3.13 added a new dbm backend, dbm.sqlite3, as the most-
+preferred choice when you do `import dbm`. This backend causes
+our test suite to fail with sqlite3 threading violations. This
+tweaks our dbm loading to just skip sqlite3 and try the other
+possible backends in the same order as Python < 3.13 did.
+
+Signed-off-by: Adam Williamson <awilliam@redhat.com>
+---
+ beaker/_compat.py | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/beaker/_compat.py b/beaker/_compat.py
+index d7bac174..fd2ed42e 100644
+--- a/beaker/_compat.py
++++ b/beaker/_compat.py
+@@ -28,10 +28,17 @@
+     import http.cookies as http_cookies
+     from base64 import b64decode as _b64decode, b64encode as _b64encode
+ 
++    # this reproduces the default behavior of Python 3.0 to 3.12
++    # Python 3.13 added dbm.sqlite3 as the first choice, but it
++    # doesn't work for us due to threading violations:
++    # https://github.com/bbangert/beaker/issues/242
+     try:
+-        import dbm as anydbm
++        import dbm.gnu as anydbm
+     except:
+-        import dumbdbm as anydbm
++        try:
++            import dbm.ndbm as anydbm
++        except:
++            import dbm.dumb as anydbm
+ 
+     def b64decode(b):
+         return _b64decode(b.encode('ascii'))

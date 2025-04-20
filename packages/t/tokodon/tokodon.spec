@@ -1,7 +1,7 @@
 #
 # spec file for package tokodon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
@@ -41,6 +41,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 0.11.40
@@ -49,10 +50,10 @@ BuildRequires:  cmake(KF6Purpose) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(KUnifiedPush) >= 1.0.0
-BuildRequires:  cmake(MpvQt)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain)
+BuildRequires:  cmake(Qt6Multimedia) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
@@ -101,7 +102,6 @@ community.
 %{_kf6_bindir}/tokodon
 %{_kf6_debugdir}/tokodon.categories
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.tokodon.svg
-%{_kf6_iconsdir}/hicolor/scalable/actions/*.svg
 %{_kf6_notificationsdir}/tokodon.notifyrc
 %{_kf6_plugindir}/kf6/purpose/tokodonplugin.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.tokodon.service

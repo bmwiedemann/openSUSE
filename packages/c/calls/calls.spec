@@ -1,7 +1,7 @@
 #
 # spec file for package calls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           calls
-Version:        47.0
+Version:        48.1
 Release:        0
 Summary:        A phone dialer and call handler
 License:        GPL-3.0-only AND MIT

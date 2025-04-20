@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/iptraf-ng/iptraf-ng/
 Source:         https://github.com/iptraf-ng/iptraf-ng/archive/v%version.tar.gz
+Patch1:         reduce-inverse-color.patch
 BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  xz
@@ -38,7 +39,7 @@ interface statistics and activity indicators, TCP/UDP traffic
 breakdowns, and LAN station packet and byte counts.
 
 %prep
-%autosetup -n %name-%version -p1
+%autosetup -n %name-%version -p0
 
 %build
 %{?make_build}%{!?make_build:make %{?_smp_mflags}} CFLAGS="%optflags -D_GNU_SOURCE"

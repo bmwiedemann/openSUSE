@@ -24,7 +24,7 @@
 %define pythons python3
 %endif
 Name:           python-openvino-telemetry
-Version:        2025.0.0
+Version:        2025.1.0
 Release:        0
 Summary:        Module for use with openVINO toolkit to send usage statistics with user consent
 License:        Apache-2.0

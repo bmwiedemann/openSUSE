@@ -1,0 +1,12 @@
+diff -rub libdisplaydevice-2025.115.133852/src/CMakeLists.txt libdisplaydevice-2025.115.133852-patched/src/CMakeLists.txt
+--- libdisplaydevice-2025.115.133852/src/CMakeLists.txt	2025-04-03 04:10:30.841140527 +0200
++++ libdisplaydevice-2025.115.133852-patched/src/CMakeLists.txt	2025-04-03 04:25:06.454029460 +0200
+@@ -22,5 +22,8 @@
+         libdisplaydevice::common
+         libdisplaydevice::platform)
+ 
++set_target_properties(libdisplaydevice_common PROPERTIES VERSION ${PROJECT_VERSION}
++                                                   SOVERSION ${PROJECT_VERSION})
++
+ # Create an alias for the main target
+ add_library(libdisplaydevice::display_device ALIAS libdisplaydevice_display_device)

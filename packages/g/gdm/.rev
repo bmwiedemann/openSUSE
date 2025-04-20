@@ -2165,4 +2165,13 @@
     <comment></comment>
     <requestid>1267847</requestid>
   </revision>
+  <revision rev="279" vrev="6">
+    <srcmd5>8120e6fb476ee5f0bda6a5761036cee9</srcmd5>
+    <version>48.0</version>
+    <time>1744898820</time>
+    <user>anag_factory</user>
+    <comment>- SLES16 won't ship pulseaudio-gdm-hooks so remove the last missing
+  bits. (forwarded request 1269582 from jtorres)</comment>
+    <requestid>1269692</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Beaker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,14 @@ URL:            https://github.com/bbangert/beaker
 Source:         https://github.com/bbangert/beaker/archive/%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Support pymemcache
 Patch0:         support-pymemcache.patch
+# PATCH-FIX-UPSTREAM gh#AdamWill/beaker#4fea03d3cef673917d30ca70ab693e2f851f7260
+Patch1:         avoid-dbm-sqlite3.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module dbm}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pymemcache}
@@ -37,6 +40,7 @@ BuildRequires:  %{python_module pymongo}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  glibc-locale
 BuildRequires:  python-rpm-macros
@@ -88,10 +92,10 @@ Features include:
 %autosetup -p1 -n beaker-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -109,6 +113,6 @@ pytest tests
 %license LICENSE
 %doc README.rst CHANGELOG
 %{python_sitelib}/beaker/
-%{python_sitelib}/Beaker-%{version}-py*.egg-info
+%{python_sitelib}/beaker-%{version}.dist-info
 
 %changelog

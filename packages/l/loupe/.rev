@@ -129,4 +129,22 @@
     <comment>New stable branch release (forwarded request 1253101 from iznogood)</comment>
     <requestid>1253362</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>562c6547d959b32bc315cc009a1ced79</srcmd5>
+    <version>48.1</version>
+    <time>1744828797</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Fixed:
+    - Crash when closing the window, probably in the exact moment
+      when the animnation for hiding controls starts.
+    - Editing does not work correctly if PNGs or JPEGs are already
+      rotated via an Exif orientation entry before editing.
+    - Printed pages don't contain anything or garbled output. This
+      is a temporary workaround for
+      &lt;https://gitlab.gnome.org/GNOME/gtk/-/issues/7464&gt;, using the
+      cairo renderer for the rotation and scaling of the image in
+      the print preparation. (forwarded request 1268640 from iznogood)</comment>
+    <requestid>1269665</requestid>
+  </revision>
 </revisionlist>

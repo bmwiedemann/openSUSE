@@ -3,7 +3,7 @@
     <param name="url">https://github.com/turbot/steampipe.git</param>
     <param name="scm">git</param>
     <param name="revision">main</param>
-    <param name="version">v1.0.3</param>
+    <param name="version">v1.1.0</param>
   	<param name="versionrewrite-pattern">v(.*)</param>
 	<param name="changesgenerate">enable</param>
   </service>

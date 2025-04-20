@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 16 20:40:21 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.4.6
+  * Bug in EtherCAT dissector with ECS order.
+  * QUIC dissector breaks when src and dst change.
+  * Trailing octet after IPv4 packet end is not detected or displayed in raw bytes.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.4.6.html
+
+-------------------------------------------------------------------
 Mon Feb 24 21:26:41 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.4.5

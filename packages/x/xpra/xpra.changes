@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Sat Apr 19 22:43:07 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- For some reason /usr/bin/{run_scaled,xpra,xpra_launcher} were all having
+  "#!python" put as the 1st line resulting in a wrong-interpreter error
+  * Adding a find command that will use set to replace "#!python" with
+  "/usr/bin/python3"
+
+-------------------------------------------------------------------
+Thu Apr 10 16:36:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250410.63a3b70d:
+  * try to add a device if we can't find any
+  * match upstream api change
+  * newer versions of signtool require us to specify the digest
+  * #4553 use 'network+events' logger for key network events
+  * stronger type hints
+  * some hello requests should not require authentication
+  * #4552 save opengl probe result
+  * use a consistent type for 'encodings'
+  * add info on private notification list
+  * try 3.1 beta1
+  * correctly disable chunks framing for clients that don't support it
+  * we use wmi to query the OS
+  * don't try pkgconfig again since it errors out
+  * better type hints
+  * derp: amf is not python
+  * update tests for da6c6c1ca51f79bbca9e64c76e6c74bddd9f31d6
+  * log number of bytes peeked
+  * jitter may not be defined (network-state mixin)
+  * move suspended flag to top level source class
+  * show install-lts-repo in command usage help
+  * don't enable nvidia on riscv
+  * bump version
+  * don't show menu entries that don't work
+  * fix cython qrencode method name
+  * prettify
+  * missed from 55587f0c5a5530ede14e27e0c7b2bc63301c5a9f
+  * don't send pings to closed or pending clients
+  * stronger type hints
+  * #2539 custom window cursors should not apply to the headerbar
+  * cursors belong to windows
+  * remove debug logging
+  * split cursor into a separate module (match server side)
+  * redundant: ModuleNotFoundError is a subclass of ImportError
+  * missing module should not propagate
+  * with Python >= 3.13 we must use setuptools
+  * derp
+  * #4449 match any of the layouts supported
+  * #4545 add xpra-audio-server package for the pulseaudio dependency
+  * preserve option type, lists should not be None values
+  * fix parsing of csv / lists
+  * fix shutdown errors closing pipe
+  * #4544 make it possible to install audio components without pulseaudio
+  * #2539 enable the headerbar in more cases
+  * don't duplicate the platform name
+  * always show the xpra menu in the headerbar
+  * don't save keyboard layout when restoring it
+  * add type hints and debug logging
+  * doh: remove debug logging
+  * #4449 automatically switch to matching ibus layout if we find one
+  * wait for the UI thread to run before enabling events
+  * better type hints
+  * log server event type in debug mode
+  * don't log message when a default translation is available
+  * move suspend + resume to network-state
+  * add end of anonymous sponsor
+  * more generic suspend+resume handling
+  * don't send pings when suspended
+  * remove duplicate timer: the server module already has one
+  * stop sending audio on suspend, restart on resume
+  * fix session not resuming screen updates
+  * prettify
+  * #511 install AMF headers via MSYS2
+  * #4542 add toggle for window border
+  * #4542 add menu entry to grab/ungrab the window
+  * #4542 add shortcut for window menu
+  * show the window specific menu when clicking the window icon
+  * make menu items reusable
+  * don't paint the border corners twice
+  * delay import until it is needed (usually it is not)
+  * nicer order for shortcuts
+  * update the release notes
+  * #4540 adjust fbo coordinates, never discard low alpha values
+  * silently ignore 'BufferError's
+  * log xvfb process info
+  * we must always use a valid depth, not 0 (which means auto)
+  * fail faster if xvfb process terminates
+  * add docstring
+  * make it clearer what this button does
+  * add info on easy switching
+  * use the simpler subcommands
+  * more graceful handling of invalid module names
+  * use the simpler form
+  * KeyError is thrown if username does not exist
+  * #4433 clearify --auth's application scope
+  * #4540 add 'blend' shader for painting border
+  * start documenting subsystem prefix
+  * stricter exception type
+  * better type hints
+  * #4534 home must be writable
+  * remove redundant exception
+  * type hint to match signature
+  * #4533 better type hints for time values
+  * add type hints to X11 bindings singleton functions
+  * #4535 env name should match definition
+  * #4535 this function must return a single path
+  * #4532 we have to include the parent directory
+  * Bugfix: Include pam_*.h within the security/ subdirectory
+
+-------------------------------------------------------------------
 Wed Mar 12 14:04:35 UTC 2025 - scott.bradnick@suse.com
 
 - Update to version 6.3.0+git20250311.d6b60eda:

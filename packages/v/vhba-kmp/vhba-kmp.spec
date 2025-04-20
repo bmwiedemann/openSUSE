@@ -1,7 +1,7 @@
 #
 # spec file for package vhba-kmp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vhba-kmp
-Version:        20240917
+Version:        20250329
 Release:        0
 Summary:        Virtual SCSI Host Bus Adapter
 License:        GPL-2.0-or-later

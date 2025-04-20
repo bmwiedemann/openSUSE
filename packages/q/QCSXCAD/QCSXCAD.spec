@@ -1,7 +1,7 @@
 #
 # spec file for package QCSXCAD
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,6 @@ Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/
 BuildRequires:  CSXCAD-devel
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
-BuildRequires:  glew-devel
 BuildRequires:  lzma-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel

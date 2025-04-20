@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.proxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -92,11 +92,11 @@ rm -rf zope.proxy.egg-info
 %exclude %{python_sitearch}/zope/proxy/proxy.h
 %{python_sitearch}/zope/proxy
 %{python_sitearch}/zope.proxy-%{version}-py*-nspkg.pth
-%{python_sitearch}/zope.proxy-%{version}.dist-info
+%{python_sitearch}/zope[_.]proxy-%{version}.dist-info
 
 %files %{python_files devel}
-%dir %{python_sysconfig_path include}/zope.proxy
-%{python_sysconfig_path include}/zope.proxy/*
+%dir %{python_sysconfig_path include}/zope_proxy
+%{python_sysconfig_path include}/zope_proxy/*
 %{python_sitearch}/zope/proxy/proxy.h
 %endif
 

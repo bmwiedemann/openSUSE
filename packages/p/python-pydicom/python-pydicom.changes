@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 17 05:22:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop BuildRequires on gdcm to skip tests.
+
+-------------------------------------------------------------------
+Sun Mar 23 17:15:52 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.0.1
+  * patch removed: pydicom-pr1908-fixpillow.patch
+  * patch removed: pydicom-pr2076-np2.patch
+  * some tests disabled
+  * changes in 3.0.1:
+    * Changed logging of missing plugin imports to use :attr:`logging.DEBUG` (:issue:`2128`).
+    * Include all :mod:`~pydicom.examples` module datasets with the package (:issue:`2128`, :issue:`2131`)
+    * Fixed an invalid VR value in the private data dictionary (:issue:`2132`).
+    * Fixed checking for *Bits Stored* when converting *Float Pixel Data* and *Double Float
+      Pixel Data* using the :mod:`~pydicom.pixels` backend (:issue:`2135`).
+    * Fixed decoding of pixel data for images with *Bits Allocated* of 1 when frame boundaries are not aligned with byte boundaries (:issue:`2134`).
+  * changes in 3.0: seer release_notes/v3.0.0.rst
+  
+-------------------------------------------------------------------
 Wed Sep  4 07:18:47 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pydicom-pr2076-np2.patch backport of gh#pydicom/pydicom#2076

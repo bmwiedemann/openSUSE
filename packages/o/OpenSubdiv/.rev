@@ -53,4 +53,12 @@
 - Use %patch -P N instead of deprecated %patchN.</comment>
     <requestid>1149192</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ccb2ea63b3bd3e2f0109061160b9bc71</srcmd5>
+    <version>3.6.0</version>
+    <time>1744828927</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269942</requestid>
+  </revision>
 </revisionlist>

@@ -163,4 +163,12 @@
   * Correct return type for wrap_hash (fixes build on i386).</comment>
     <requestid>1218875</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5d10116f345e2b8df0dfa2ebe5495d3d</srcmd5>
+    <version>6.1</version>
+    <time>1744828752</time>
+    <user>anag_factory</user>
+    <comment>Make it compatible with new setuptools</comment>
+    <requestid>1266268</requestid>
+  </revision>
 </revisionlist>

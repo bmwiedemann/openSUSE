@@ -1,12 +1,13 @@
 ---
  Doc/tools/extensions/c_annotations.py   |    6 +++++-
  Doc/tools/extensions/glossary_search.py |   12 ++++++++++--
- Doc/tools/extensions/pyspecific.py      |    5 ++++-
- 3 files changed, 19 insertions(+), 4 deletions(-)
+ 2 files changed, 15 insertions(+), 3 deletions(-)
 
---- a/Doc/tools/extensions/c_annotations.py
-+++ b/Doc/tools/extensions/c_annotations.py
-@@ -117,7 +117,11 @@ def add_annotations(app: Sphinx, doctree
+Index: Python-3.12.10/Doc/tools/extensions/c_annotations.py
+===================================================================
+--- Python-3.12.10.orig/Doc/tools/extensions/c_annotations.py	2025-04-08 13:35:47.000000000 +0200
++++ Python-3.12.10/Doc/tools/extensions/c_annotations.py	2025-04-11 21:16:39.007011463 +0200
+@@ -117,7 +117,11 @@
      state = app.env.domaindata["c_annotations"]
      refcount_data = state["refcount_data"]
      stable_abi_data = state["stable_abi_data"]
@@ -19,9 +20,11 @@
          par = node.parent
          if par["domain"] != "c":
              continue
---- a/Doc/tools/extensions/glossary_search.py
-+++ b/Doc/tools/extensions/glossary_search.py
-@@ -30,8 +30,16 @@ def process_glossary_nodes(
+Index: Python-3.12.10/Doc/tools/extensions/glossary_search.py
+===================================================================
+--- Python-3.12.10.orig/Doc/tools/extensions/glossary_search.py	2025-04-08 13:35:47.000000000 +0200
++++ Python-3.12.10/Doc/tools/extensions/glossary_search.py	2025-04-11 21:16:39.007340209 +0200
+@@ -30,8 +30,16 @@
      else:
          terms = app.env.glossary_terms = {}
  
@@ -40,17 +43,3 @@
              term = glossary_item[0].astext()
              definition = glossary_item[-1]
  
---- a/Doc/tools/extensions/pyspecific.py
-+++ b/Doc/tools/extensions/pyspecific.py
-@@ -25,7 +25,10 @@ from sphinx.domains.python import PyFunc
- from sphinx.locale import _ as sphinx_gettext
- from sphinx.util.docutils import SphinxDirective
- from sphinx.writers.text import TextWriter, TextTranslator
--from sphinx.util.display import status_iterator
-+try:
-+    from sphinx.util.display import status_iterator
-+except ModuleNotFoundError:
-+    from sphinx.util import status_iterator
- 
- 
- ISSUE_URI = 'https://bugs.python.org/issue?@action=redirect&bpo=%s'

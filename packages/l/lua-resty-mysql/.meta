@@ -3,6 +3,5 @@
   <description>
 This Lua library is a MySQL client driver for the ngx_lua nginx module.
   </description>
-  <devel project="devel:languages:lua" package="lua-resty-mysql"/>
   <url>https://github.com/openresty/lua-resty-mysql</url>
 </package>

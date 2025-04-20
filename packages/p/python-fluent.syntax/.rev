@@ -7,4 +7,15 @@
     <comment>Rename of python-fluent, and upgraded to latest version of 0.19.0.</comment>
     <requestid>1139838</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2c490c142dac2f3cb9ab38fc2a045a96</srcmd5>
+    <version>0.19.0</version>
+    <time>1744828734</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264864</requestid>
+  </revision>
 </revisionlist>

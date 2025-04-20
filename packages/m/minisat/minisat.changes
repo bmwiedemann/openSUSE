@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 06:07:50 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 2.2.1+20230206:
+  * utils/System.*: use fpu_control only on glibc
+- use -DCMAKE_POLICY_VERSION_MINIMUM=3.10 to support cmake 4
+- use %cmake_build
+
+-------------------------------------------------------------------
 Wed Jul 27 07:30:00 UTC 2022 - Jiri Slaby <jslaby@suse.cz>
 
 - add CMakeLists-use-absolute-libdir-in-rpath-handling.patch

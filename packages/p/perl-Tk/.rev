@@ -384,4 +384,13 @@
     <comment></comment>
     <requestid>1186446</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>6704595fdd7071ee9d318804882ca160</srcmd5>
+    <version>804.36.0</version>
+    <time>1744985658</time>
+    <user>anag_factory</user>
+    <comment>Fix build with gcc15
+See also https://build.opensuse.org/requests/1269266 (forwarded request 1269956 from tinita)</comment>
+    <requestid>1270025</requestid>
+  </revision>
 </revisionlist>

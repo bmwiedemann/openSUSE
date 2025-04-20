@@ -62,7 +62,7 @@ chmod +w src/scripts.x
 mkdir -p ../bin
 ln -snf /bin/true ../bin/compress
 PATH=$PWD/../bin:$PATH
-%global optflags %{optflags} -fcommon
+%global optflags %{optflags} -fcommon -std=gnu11
 %configure \
 	--with-openssl
 

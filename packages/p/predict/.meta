@@ -2,5 +2,6 @@
   <title>Satellite tracking and orbital prediction</title>
   <description>PREDICT is a multi-user satellite tracking and orbital prediction program.
 Beyond displaying data, it can operate antenna rotators.</description>
+  <devel project="hamradio" package="predict"/>
   <url>https://www.qsl.net/kd2bd/predict.html</url>
 </package>

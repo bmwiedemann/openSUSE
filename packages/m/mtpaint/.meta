@@ -6,6 +6,5 @@ and offers basic painting and palette manipulation tools. Its main
 file format is PNG, although it can also handle JPEG, GIF, TIFF, BMP,
 XPM, and XBM files.
   </description>
-  <devel project="X11:lxde" package="mtpaint"/>
   <url>http://mtpaint.sourceforge.net/</url>
 </package>

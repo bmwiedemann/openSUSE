@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>eac237954508658eb3c9042d057b2e2c</srcmd5>
+    <version>1.5.3</version>
+    <time>1744828762</time>
+    <user>anag_factory</user>
+    <comment>bugowner: mmamula (marcel.mamula@suse.com)
+This package contains Ansible Automation for installation of SAP landscape.
+Downstream source is located at https://github.com/SUSE/community.sap_install</comment>
+    <requestid>1269277</requestid>
+  </revision>
+</revisionlist>

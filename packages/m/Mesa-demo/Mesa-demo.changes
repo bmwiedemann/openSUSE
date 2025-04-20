@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 11:07:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: glew-devel as it is not used for build.
+
+-------------------------------------------------------------------
 Thu Dec 21 02:30:52 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove old rpm constructs that are long defaulted.

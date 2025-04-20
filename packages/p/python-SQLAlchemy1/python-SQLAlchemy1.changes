@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr  1 12:56:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Wrap the metadata directory name in a distro-based conditional
+
+-------------------------------------------------------------------
+Tue Mar 25 08:39:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Thu Sep 19 07:17:48 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.4.54:

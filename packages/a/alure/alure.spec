@@ -1,7 +1,7 @@
 #
 # spec file for package alure
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,7 @@ Patch3:         fix-link-flac.patch
 Patch4:         fix-FLUIDSYNTH_CFLAGS.patch
 Patch5:         fix-dumb2.patch
 Patch6:         alure-cmake-3.28.patch
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -81,7 +81,8 @@ developing applications that use %{name}.
 	-DBUILD_STATIC=OFF	\
 	-DDYNLOAD=OFF		\
 	-DMPG123=ON		\
-	-DMODPLUG=ON
+	-DMODPLUG=ON \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -93,6 +94,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 rm -rf %{buildroot}%{_datadir}/doc/%{name}/html
 # fix encoding
 sed -i 's/\r$//' docs/html/javascript/main.js docs/html/styles/1.css
+
+%check
+%ctest
 
 %post -n lib%{name}%{sover} -p /sbin/ldconfig
 %postun -n lib%{name}%{sover} -p /sbin/ldconfig

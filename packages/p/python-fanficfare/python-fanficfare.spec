@@ -20,7 +20,7 @@
 %define modnamedown fanficfare
 %define skip_python2 1
 Name:           python-fanficfare
-Version:        4.43.0
+Version:        4.44.0
 Release:        0
 Summary:        Tool for making eBooks from stories on fanfiction and other web sites
 License:        GPL-3.0-only
@@ -77,7 +77,7 @@ dos2unix DESCRIPTION.rst README.md
 
 %install
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/%{modnamedown}
+%python_clone -a %{buildroot}%{_bindir}/fanficfare
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %post
@@ -92,8 +92,8 @@ dos2unix DESCRIPTION.rst README.md
 %files %{python_files}
 %license LICENSE
 %doc DESCRIPTION.rst README.md
-%python_alternative %{_bindir}/%{modnamedown}
-%{python_sitelib}/%{modname}-%{version}*-info
-%{python_sitelib}/%{modnamedown}
+%python_alternative %{_bindir}/fanficfare
+%{python_sitelib}/[fF]anficfare-%{version}*-info
+%{python_sitelib}/[fF]anficfare
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-SQLAlchemy1
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -91,7 +91,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
+%if 0%{?suse_version} > 1600
+%{python_sitearch}/sqlalchemy-%{version}.dist-info
+%else
 %{python_sitearch}/SQLAlchemy-%{version}.dist-info
+%endif
 
 %files -n %{name}-doc
 %doc doc/

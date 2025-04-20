@@ -7,5 +7,6 @@ The default generated password set is copy/paste friendly without extended
 characters that would break the default copy selection you get when
 double-clicking a word. They also are don't break quotation strings (quote
 marks, double quotes or backticks).</description>
+  <devel project="security" package="pwtool"/>
   <url>https://www.usenix.org.uk/content/pwtool.html</url>
 </package>

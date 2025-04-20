@@ -1,7 +1,7 @@
 #
 # spec file for package python-Send2Trash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,6 @@ export LANG=en_US.UTF8
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/send2trash
 %{python_sitelib}/send2trash
-%{python_sitelib}/Send2Trash-%{version}.dist-info
+%{python_sitelib}/send2trash-%{version}.dist-info
 
 %changelog

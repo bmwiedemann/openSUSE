@@ -27,8 +27,10 @@ Source:         https://github.com/WebAssembly/wasi-libc/archive/refs/tags/wasi-
 Source1:        wasi-libc-rpmlintrc
 Patch1:         workaround-broken-makefile.patch
 Patch2:         ignore-intc-macros.patch
-BuildRequires:  clang > 10
-BuildRequires:  llvm > 10
+# Build uses LLVM option -wasm-enable-sjlj, which was introduced in LLVM 14.
+# (https://github.com/llvm/llvm-project/commit/77b921b870aacfd531ff449166937e0de6a377bc)
+BuildRequires:  clang > 14
+BuildRequires:  llvm > 14
 BuildArch:      noarch
 
 %description

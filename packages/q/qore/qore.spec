@@ -1,7 +1,7 @@
 #
 # spec file for package qore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 David Nichols <david@qore.org>
 # Copyright (c) 2014 Petr Vanek <petr@yarpen.cz>
 #
@@ -42,7 +42,7 @@
 %global user_module_dir %{mydatarootdir}/qore-modules/
 %global libname libqore12
 Name:           qore
-Version:        1.19.2
+Version:        2.0.0
 Release:        1%{dist}
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -64,12 +64,12 @@ BuildRequires:  libbz2-devel
 BuildRequires:  libtool
 BuildRequires:  mpfr-devel
 BuildRequires:  openssl-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
 Requires:       %{_bindir}/env
 Requires(post): shared-mime-info
-Requires(postun):shared-mime-info
+Requires(postun): shared-mime-info
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -102,7 +102,7 @@ functionality.
 
 %files -n libqore12
 %defattr(-,root,root,-)
-%{_libdir}/libqore.so.12.4.1
+%{_libdir}/libqore.so.12.5.0
 %{_libdir}/libqore.so.12
 %doc README.md README-MODULES RELEASE-NOTES AUTHORS ABOUT
 %license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
@@ -126,7 +126,7 @@ and also for user modules delivered with Qore and also example programs.
 
 %files doc
 %defattr(-,root,root,-)
-%doc docs/lang docs/modules/* examples/
+%doc docs/lang docs/modules/* examples/ README.md README-MODULES RELEASE-NOTES AUTHORS ABOUT
 %license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
 
 %package devel
@@ -221,7 +221,7 @@ rm %{buildroot}/%{_libdir}/libqore.la
 %fdupes -s docs
 
 %check
-export QORE_MODULE_DIR=qlib
+export QORE_MODULE_DIR=qlib:modules/reflection:${RPM_BUILD_ROOT}%{module_dir}/%{version}
 ./qore examples/test/qore/threads/background.qtest
 ./qore examples/test/qore/threads/deadlock.qtest
 ./qore examples/test/qore/threads/max-threads-count.qtest

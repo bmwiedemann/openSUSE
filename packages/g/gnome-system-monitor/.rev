@@ -912,4 +912,14 @@
     <comment>New stable rel (forwarded request 1253468 from iznogood)</comment>
     <requestid>1253715</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>b644ca0b8480c610b0d74cdadb07930a</srcmd5>
+    <version>48.1</version>
+    <time>1744898790</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Save expander states.
+  + Updated translations. (forwarded request 1268806 from iznogood)</comment>
+    <requestid>1269674</requestid>
+  </revision>
 </revisionlist>

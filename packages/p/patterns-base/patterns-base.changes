@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:13:32 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not force-require chrony, but rather ntp-daemon and Suggest
+  chrony as the default we want (boo#1233542).
+
+-------------------------------------------------------------------
 Thu Apr  3 08:37:18 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Replace sle_version is !is_opensuse macro (bsc#1240642).

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:10:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.14:
+  * 'gzip -d' no longer omits the last partial output buffer when
+     the input ends unexpectedly on an IBM Z platform.
+  * 'gzip -l' no longer misreports lengths of multimember inputs
+  * 'gzip -S' now rejects suffixes containing '/'.
+  * The GZIP environment variable is now silently ignored except
+    for the options -1 (--fast) through -9 (--best), --rsyncable,
+    and --synchronous.
+  * 'zmore' is no longer installed on platforms lacking 'more'
+  * now decompresses significantly faster by computing CRCs via a
+    slice by 8 algorithm, and faster yet on x86-64 platforms that
+    support pclmul instructions
+- add gzip-1.14-s390x-errno.patch
+
+-------------------------------------------------------------------
 Tue Feb 27 11:10:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

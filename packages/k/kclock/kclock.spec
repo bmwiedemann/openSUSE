@@ -1,7 +1,7 @@
 #
 # spec file for package kclock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without  released
 Name:           kclock
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Clock application for Plasma
 License:        GPL-2.0-or-later
@@ -32,8 +32,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-AlarmForm-create-duration-and-snooze-models-correctl.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}

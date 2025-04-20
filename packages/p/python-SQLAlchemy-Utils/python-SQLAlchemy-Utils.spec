@@ -104,6 +104,6 @@ rm tests/types/test_uuid.py
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/sqlalchemy_utils
-%{python_sitelib}/SQLAlchemy_Utils-%{version}.dist-info
+%{python_sitelib}/sqlalchemy_utils-%{version}.dist-info
 
 %changelog

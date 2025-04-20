@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:10:38 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5.5:
+  * user: Add field to add the user to specified groups (bsc#1241215)
+  * Add title and description to remaining modules
+- Remove changesauthor from _service
+
+-------------------------------------------------------------------
 Tue Oct 01 14:07:29 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5.3:

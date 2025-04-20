@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:20:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + Fix animated cursors
+  + Announce workspace changes to screen reader
+  + Fix popups showing in some situations
+  + Fix wrong cursor after window animations
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Apr  1 14:12:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 18 07:37:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.82.5:
+  * A panic issue related to CUBIC congestion control in userspace mode is resolved.
+
+-------------------------------------------------------------------
 Thu Mar 27 19:50:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.82.0:

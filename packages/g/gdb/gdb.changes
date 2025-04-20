@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr  7 09:46:31 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Fix MISSING for 16.0.
+
+-------------------------------------------------------------------
+Thu Apr  3 13:20:03 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to fedora rawhide @ bbf9637.
+  Patched dropped:
+  * gdb-add-deprecated-settings-py-script.patch
+- Update to fedora rawhide @ 4170428.
+  Drop the 'set/show build-id-verbose' setting.  Users should
+  instead use the 'set/show rpm-suggestion enabled' setting.
+  Patched modified:
+  * gdb-6.6-buildid-locate-tests.patch
+  * gdb-add-rpm-suggestion-script.patch
+  * gdb-testsuite-add-gdb.suse-zypper-hint.exp.patch
+- Patches modified (bsc#1240838):
+  * gdb-add-rpm-suggestion-script-suse.patch
+
+-------------------------------------------------------------------
+Thu Apr  3 13:10:55 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh (bsc#1221763):
+  * Remove yama ptrace_scope == 1 kfails.
+
+-------------------------------------------------------------------
 Thu Mar 27 12:24:34 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Patches added:

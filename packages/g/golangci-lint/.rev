@@ -722,4 +722,22 @@
 * build(deps): bump dependencies in the linter-testdata group (#5691) (forwarded request 1269028 from jfkw)</comment>
     <requestid>1269029</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3f344dee66a4261d75343be6219087bb</srcmd5>
+    <version>2.1.2</version>
+    <time>1744828851</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.2:
+  * chore: prepare release
+  * docs: fix default value of linters.exclusions.generated (#5735)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.14 to 0.3.15 (#5732)
+  * dev: simplify mnd implementation (#5731)
+  * build(deps): bump github.com/ldez/usetesting from 0.4.2 to 0.4.3 (#5729)
+  * build(deps): bump github.com/ldez/exptostd from 0.4.2 to 0.4.3 (#5730)
+  * build(deps): bump mvdan.cc/gofumpt from 0.7.0 to 0.8.0 (#5728)
+  * build(deps): bump github.com/ghostiam/protogetter from 0.3.13 to 0.3.14 (#5727)
+  * docs: update GitHub Action assets (#5724)
+  * docs: update changelog (forwarded request 1269722 from jfkw)</comment>
+    <requestid>1269723</requestid>
+  </revision>
 </revisionlist>

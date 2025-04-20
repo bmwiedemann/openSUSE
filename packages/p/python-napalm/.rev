@@ -211,4 +211,12 @@
   * Use vendored telnetlib provided by netmiko</comment>
     <requestid>1229703</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>4c433dda5383d4a28f64824b5db33319</srcmd5>
+    <version>5.0.0</version>
+    <time>1744828895</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269789</requestid>
+  </revision>
 </revisionlist>

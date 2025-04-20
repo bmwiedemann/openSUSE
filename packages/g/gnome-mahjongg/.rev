@@ -287,4 +287,22 @@
     <comment>New stable rel (forwarded request 1253471 from iznogood)</comment>
     <requestid>1253717</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>08f73eb9fa43958c7e9d318dfdf90482</srcmd5>
+    <version>48.1</version>
+    <time>1744828800</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Remember initial layout when restarting game after reshuffling
+  + Ensure boards remain solvable when possible after reshuffling
+    remaining tiles
+  + Always show New Game button when no moves are left
+  + Cycle through hints instead of always picking random ones
+  + Allow inspecting game after finishing it
+  + Show scores for current layout when opening Scores dialog
+  + Fix Score dialog title being visible when it should not be
+  + Replace GNOME tile with White Dragon tile in Postmodern theme
+  + Updated translations. (forwarded request 1268794 from iznogood)</comment>
+    <requestid>1269672</requestid>
+  </revision>
 </revisionlist>

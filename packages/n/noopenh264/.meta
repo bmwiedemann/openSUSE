@@ -1,0 +1,6 @@
+<package name="noopenh264" project="openSUSE:Factory">
+  <title>Fake implementation of the OpenH264 library</title>
+  <description>Fake implementation of the OpenH264 library we can link from
+regardless of the actual library being available.</description>
+  <url>https://codeberg.org/distro-openh264/noopenh264</url>
+</package>

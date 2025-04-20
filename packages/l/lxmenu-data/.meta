@@ -6,5 +6,4 @@ http://lxde.sourceforge.net/
 
 This package provides files required to build freedesktop.org 
 menu spec-compliant desktop menus for LXDE.</description>
-  <devel project="X11:lxde" package="lxmenu-data"/>
 </package>

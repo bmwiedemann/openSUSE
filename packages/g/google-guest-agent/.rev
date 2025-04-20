@@ -597,4 +597,14 @@
     <comment></comment>
     <requestid>1267147</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>788e8dd4df74b43d81d1323e1f56febe</srcmd5>
+    <version>20250411.00</version>
+    <time>1744828779</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250411.00
+  * Re-enable disabled services if the core plugin was enabled (#521)
+- Add -buildmode=pie to go build command line (bsc#1239944) (forwarded request 1269147 from glaubitz)</comment>
+    <requestid>1269694</requestid>
+  </revision>
 </revisionlist>

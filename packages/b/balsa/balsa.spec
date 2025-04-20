@@ -1,7 +1,7 @@
 #
 # spec file for package balsa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,47 +17,26 @@
 
 
 Name:           balsa
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        The GNOME Mail Program
 License:        GPL-2.0-or-later
-URL:            https://pawsa.fedorapeople.org/balsa/
-Source0:        %{url}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM balsa-webkitgtk-bump.patch -- Build against webkit2gtk-4.1
-Patch0:         balsa-webkitgtk-bump.patch
+URL:            https://gitlab.gnome.org/GNOME/balsa
+Source0:        %{name}-%{version}.tar.zst
 
-BuildRequires:  compface-devel
 BuildRequires:  fdupes
-BuildRequires:  intltool
-BuildRequires:  libesmtp-devel
-BuildRequires:  libtool
-BuildRequires:  openldap2-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python3-html2text
-BuildRequires:  yelp-tools
+BuildRequires:  meson
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(fribidi)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(gpgme) >= 1.8.0
-BuildRequires:  pkgconfig(gspell-1)
-BuildRequires:  pkgconfig(gssrpc)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4.0
-BuildRequires:  pkgconfig(gtksourceview-4)
-BuildRequires:  pkgconfig(kadm-client)
-BuildRequires:  pkgconfig(kadm-server)
-BuildRequires:  pkgconfig(kdb)
-BuildRequires:  pkgconfig(krb5)
-BuildRequires:  pkgconfig(krb5-gssapi)
-BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libical) >= 2.0.0
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(gpgme)
+BuildRequires:  pkgconfig(gthread-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libical)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mit-krb5)
-BuildRequires:  pkgconfig(mit-krb5-gssapi)
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
 
 %description
@@ -75,33 +54,20 @@ An e-mail client for GNOME. It supports
 %autosetup -p1
 
 %build
-./bootstrap.sh
-%configure\
-	--disable-static\
-	--enable-more-warnings\
-	--with-canberra\
-	--with-ldap\
-	--with-gpgme\
-	--with-spell-checker=gspell\
-	--with-gtksourceview\
-	--with-sqlite\
-	--with-rubrica\
-	--with-gss\
-	--with-compface\
-	--with-html-widget=webkit2
-%make_build
+%meson \
+	%{nil}
+%meson_build
 
 %install
-%make_install
+%meson_install
+
 %find_lang %{name} %{?no_lang_C}
-find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
 %doc README.md ChangeLog NEWS TODO AUTHORS HACKING
 %doc docs/mh-mail-HOWTO docs/vconvert.awk docs/pine2vcard
-%doc %{_datadir}/help/C/%{name}/
 %{_bindir}/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/balsa/

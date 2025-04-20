@@ -44,4 +44,12 @@ The reason why overriding alias is needed can be found here from upstream author
     <comment></comment>
     <requestid>1244252</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>b1a039c77152cd1efd4ea7c3df4d3574</srcmd5>
+    <version>0.9.7</version>
+    <time>1744986064</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270593</requestid>
+  </revision>
 </revisionlist>

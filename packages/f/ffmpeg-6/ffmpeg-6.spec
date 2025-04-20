@@ -60,7 +60,13 @@
 %bcond_with    smbclient
 %bcond_with    x264
 %bcond_with    x265
+
+# openSUSE legal reviewers are concerned xvid patents and should not be used in commercial context.
+%if !0%{?is_opensuse}
 %bcond_with    xvid
+%else
+%bcond_without xvid
+%endif
 
 %if 0%{?suse_version} > 1500
 %bcond_without mysofa
@@ -70,7 +76,6 @@
 %bcond_without vulkan
 %bcond_without amrwb
 %bcond_without opencore
-%bcond_without xvid
 %else
 %bcond_with mysofa
 %bcond_with vidstab
@@ -91,7 +96,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://ffmpeg.org/
 
-#Freshcode-URL:    http://freshcode.club/projects/ffmpeg
+#Freshcode-URL: http://freshcode.club/projects/ffmpeg
 #Git-Clone:     git://source.ffmpeg.org/ffmpeg
 Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
@@ -125,6 +130,13 @@ Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
 Patch97:        ffmpeg-c99.patch
+Patch98:        ffmpeg-6-CVE-2024-35368.patch
+Patch99:        ffmpeg-6-CVE-2024-35365.patch
+Patch100:       ffmpeg-6-CVE-2024-12361.patch
+Patch101:       ffmpeg-6-CVE-2025-22919.patch
+Patch102:       ffmpeg-6-CVE-2025-0518.patch
+Patch103:       ffmpeg-6-CVE-2025-25473.patch
+Patch104:       ffmpeg-6-CVE-2025-22921.patch
 #
 # preamble is present twice, watch out
 #
@@ -671,6 +683,8 @@ LDFLAGS="%_lto_cflags" \
 %endif
 %if %{with xvid}
 	--enable-libxvid \
+%else
+	--disable-libxvid \
 %endif
 %if !0%{?BUILD_ORIG}
 	--enable-muxers \
@@ -826,6 +840,7 @@ Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-6-rpmlintrc
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-6.keyring
+
 Patch1:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
@@ -839,6 +854,7 @@ Patch12:        0001-avutil-hwcontext-Don-t-assume-frames_uninit-is-reent.patch
 Patch13:        0001-avfilter-vf_codecview-fix-heap-buffer-overflow.patch
 Patch14:        0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 Patch90:        ffmpeg-chromium.patch
 Patch91:        ffmpeg-dlopen-openh264.patch
 Patch92:        ffmpeg-CVE-2023-50007.patch
@@ -846,6 +862,14 @@ Patch93:        ffmpeg-CVE-2023-50008.patch
 Patch94:        ffmpeg-6-CVE-2024-32228-shim-1535d338.patch
 Patch95:        ffmpeg-6-CVE-2024-32228-shim-f50382cb.patch
 Patch97:        ffmpeg-c99.patch
+Patch99:        ffmpeg-6-CVE-2024-35368.patch
+Patch100:       ffmpeg-6-CVE-2024-35365.patch
+Patch101:       ffmpeg-6-CVE-2024-12361.patch
+Patch102:       ffmpeg-6-CVE-2025-22919.patch
+Patch103:       ffmpeg-6-CVE-2025-0518.patch
+Patch104:       ffmpeg-6-CVE-2025-25473.patch
+Patch105:       ffmpeg-6-CVE-2025-22921.patch
+
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

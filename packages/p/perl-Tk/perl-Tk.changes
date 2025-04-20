@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 21:47:41 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Add Tk-804.036-gcc15.patch, https://github.com/eserte/perl-tk/issues/112
+
+-------------------------------------------------------------------
 Mon Jul  8 12:40:38 UTC 2024 - pgajdos@suse.com
 
 - mirror last changes in cpanspec.yml

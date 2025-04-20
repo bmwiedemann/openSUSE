@@ -122,4 +122,14 @@
   there seems to be no real use of this. (forwarded request 1253742 from dimstar)</comment>
     <requestid>1253751</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ac907dcff0aef3f6636c043532220da</srcmd5>
+    <version>0.2.12</version>
+    <time>1744898777</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.12:
+  + Add a deadzone for Steam Deck analog sticks.
+  + Fix build with older gobject-introspection. (forwarded request 1268641 from iznogood)</comment>
+    <requestid>1269666</requestid>
+  </revision>
 </revisionlist>

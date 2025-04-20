@@ -25,7 +25,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/Liblist.pm
 ===================================================================
 --- ExtUtils-MakeMaker-7.36.orig/lib/ExtUtils/Liblist.pm
 +++ ExtUtils-MakeMaker-7.36/lib/ExtUtils/Liblist.pm
-@@ -89,6 +89,11 @@ libraries.  LD_RUN_PATH is a colon separ
+@@ -90,6 +90,11 @@ libraries.  LD_RUN_PATH is a colon separ
  in LDLOADLIBS. It is passed as an environment variable to the process
  that links the shared library.
  
@@ -41,7 +41,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MM_Unix.pm
 ===================================================================
 --- ExtUtils-MakeMaker-7.36.orig/lib/ExtUtils/MM_Unix.pm
 +++ ExtUtils-MakeMaker-7.36/lib/ExtUtils/MM_Unix.pm
-@@ -1074,7 +1074,7 @@ sub xs_make_dynamic_lib {
+@@ -1118,7 +1118,7 @@ sub xs_make_dynamic_lib {
      }
  
      my $ld_run_path_shell = "";
@@ -54,7 +54,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MakeMaker.pm
 ===================================================================
 --- ExtUtils-MakeMaker-7.36.orig/lib/ExtUtils/MakeMaker.pm
 +++ ExtUtils-MakeMaker-7.36/lib/ExtUtils/MakeMaker.pm
-@@ -317,7 +317,7 @@ sub full_setup {
+@@ -318,7 +318,7 @@ sub full_setup {
      PERM_DIR PERM_RW PERM_RWX MAGICXS
      PL_FILES PM PM_FILTER PMLIBDIRS PMLIBPARENTDIRS POLLUTE
      PREREQ_FATAL PREREQ_PM PREREQ_PRINT PRINT_PREREQ PUREPERL_ONLY
@@ -63,7 +63,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MakeMaker.pm
      XSBUILD XSMULTI XSOPT XSPROTOARG XS_VERSION
      clean depend dist dynamic_lib linkext macro realclean tool_autosplit
  
-@@ -503,6 +503,26 @@ sub new {
+@@ -507,6 +507,26 @@ sub new {
          $self->_PRINT_PREREQ;
     }
  
@@ -90,7 +90,7 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MakeMaker.pm
      print "MakeMaker (v$VERSION)\n" if $Verbose;
      if (-f "MANIFEST" && ! -f "Makefile" && ! $UNDER_CORE){
          check_manifest();
-@@ -2837,6 +2857,40 @@ precedence.  A typemap in the current di
+@@ -2825,6 +2845,40 @@ precedence.  A typemap in the current di
  precedence, even if it isn't listed in TYPEMAPS.  The default system
  typemap has lowest precedence.
  
@@ -135,10 +135,10 @@ Index: ExtUtils-MakeMaker-7.36/lib/ExtUtils/MM_Any.pm
 ===================================================================
 --- ExtUtils-MakeMaker-7.36.orig/lib/ExtUtils/MM_Any.pm
 +++ ExtUtils-MakeMaker-7.36/lib/ExtUtils/MM_Any.pm
-@@ -2437,6 +2437,7 @@ sub init_others {
+@@ -2439,6 +2439,7 @@ sub init_others {
+         if (grep $_, @libs[0..2]) {
              # LD_RUN_PATH now computed by ExtUtils::Liblist
-             ($self->{EXTRALIBS},  $self->{BSLOADLIBS},
-              $self->{LDLOADLIBS}, $self->{LD_RUN_PATH}) = @libs;
+             @$self{qw(EXTRALIBS BSLOADLIBS LDLOADLIBS LD_RUN_PATH)} = @libs;
 +            $self->{LD_RUN_PATH} = "" unless $self->{USE_MM_LD_RUN_PATH};
              last;
          }

@@ -1,7 +1,7 @@
 #
 # spec file for package knetwalk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           knetwalk
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Puzzle game
 License:        GPL-2.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}

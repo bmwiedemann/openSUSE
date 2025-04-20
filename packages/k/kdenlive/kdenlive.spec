@@ -1,7 +1,7 @@
 #
 # spec file for package kdenlive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kdenlive
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -32,11 +32,11 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  shared-mime-info
 BuildRequires:  rttr-devel
+BuildRequires:  shared-mime-info
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Bookmarks) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
@@ -58,6 +58,7 @@ BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
+BuildRequires:  cmake(OpenTimelineIO)
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
@@ -70,8 +71,12 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(Imath)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libv4l2)
 BuildRequires:  pkgconfig(mlt++-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(mlt-framework-7) >= %{mlt_version}
@@ -107,7 +112,7 @@ work.
 %autosetup -p1
 
 %build
-%cmake_kf6 -DBUILD_WITH_QT6:BOOL=TRUE
+%cmake_kf6 -DFETCH_OTIO:BOOL=FALSE
 
 %kf6_build
 

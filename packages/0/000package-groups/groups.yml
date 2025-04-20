@@ -45,6 +45,7 @@ common_locks:
   - libLLVM16: [locked]
   - libLLVM19: [locked]
   - clang17: [locked]
+  - clang20: [locked]
   - gnome-backgrounds: [locked]
   - gcc12: [locked]
   - gcc14: [locked]

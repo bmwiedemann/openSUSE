@@ -72,4 +72,32 @@
     <comment></comment>
     <requestid>1191822</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>7fb6be1b1befd0c586d4b68e0efb6209</srcmd5>
+    <version>0.17.0+git.1743012229.8dca1b6</version>
+    <time>1744828749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.17.0+git.1743012229.8dca1b6:
+  * chore(deps): update dependency setuptools to v78 (#70)
+  * chore(deps): update dependency setuptools to &gt;=77.0.3 (#69)
+  * chore(deps): update dependency setuptools to v77 (#68)
+  * chore(deps): update dependency setuptools to &gt;=76.1.0 (#66)
+  * chore(deps): update dependency setuptools to v76 (#67)
+  * chore(deps): update dependency setuptools to &gt;=75.8.2 (#65)
+  * chore(deps): update dependency setuptools to &gt;=75.8.1 (#64)
+  * chore(deps): update tests digest to 38e1f14 (#63)
+  * chore(deps): update tests digest to 7d75ceb (#62)
+  * chore(deps): update dependency setuptools to &gt;=75.8.0 (#61)
+  * chore(deps): update dependency setuptools to v75 (#60)
+  * Add renovate for auto updating dependencies (#58)
+  * Bump version to 0.17.0 (#57)
+  * Use alpine 3.21 (CMake 3.21), bump tests (#56)
+  * Use alpine instead of Debian image for testing (#55)
+  * Move the metadata into `PEP 621`-compliant `pyproject.toml` (#54)
+  * Add CI for Runtime Test (#53)
+  * Require CMake 3.16.3 (#52)
+- Lowercase metadata directory name.
+</comment>
+    <requestid>1265435</requestid>
+  </revision>
 </revisionlist>

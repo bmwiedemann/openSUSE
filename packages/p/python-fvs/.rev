@@ -18,4 +18,15 @@ bottle for easier rollback in case the something went wrong.</comment>
     <comment>- specl cleanups</comment>
     <requestid>1136452</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>55d34856018491660f528e8204add770</srcmd5>
+    <version>0.3.4</version>
+    <time>1744828739</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264869</requestid>
+  </revision>
 </revisionlist>

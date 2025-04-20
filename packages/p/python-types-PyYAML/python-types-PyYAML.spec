@@ -1,7 +1,7 @@
 #
 # spec file for package python-types-PyYAML
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,11 @@ Summary:        Typing stubs for PyYAML
 License:        Apache-2.0
 URL:            https://github.com/python/typeshed
 Source:         https://files.pythonhosted.org/packages/source/t/types-PyYAML/types-PyYAML-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,6 +48,6 @@ Typing stubs for PyYAML
 %files %{python_files}
 %doc CHANGELOG.md
 %{python_sitelib}/yaml-stubs/
-%{python_sitelib}/types_PyYAML-%{version}*.dist-info
+%{python_sitelib}/types_pyyaml-%{version}.dist-info
 
 %changelog

@@ -3,8 +3,8 @@
     <param name="url">https://github.com/grafana/alloy</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.8.1</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="revision">163180649c1694d3fb0010e18a68a308835a3caa</param>
+    <param name="versionformat">v1.8.1^%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">disable</param>
   </service>

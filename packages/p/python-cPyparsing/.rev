@@ -107,4 +107,15 @@
     <comment>- require setuptools</comment>
     <requestid>1136454</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>66f16a5e088c2bbd930c99a9dc5a5d04</srcmd5>
+    <version>2.4.7.2.3.2</version>
+    <time>1744828729</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264860</requestid>
+  </revision>
 </revisionlist>

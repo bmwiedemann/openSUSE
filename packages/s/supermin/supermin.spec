@@ -1,7 +1,7 @@
 #
 # spec file for package supermin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -54,7 +54,7 @@ BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(rpm)
 Requires:       distribution-release
 Requires:       e2fsprogs
-%if 0%{?suse_version} < 1599
+%if 0%{?suse_version} < 1600
 Requires:       sysconfig-netconfig
 %endif
 Requires:       tar

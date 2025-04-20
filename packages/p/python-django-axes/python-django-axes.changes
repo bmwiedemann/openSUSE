@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 16 08:28:19 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.0.2
+  * Add session hash to access log.
+  * Add test matrix support for Django 5.1.
+  * Drop support for EOL Django 3.2.
+  * Add support for dynamic cooloff time calculation from request.
+    This is a breaking change.
+  * Add Python 3.13 support.
+  * Default to using settings.AUTH_USER_MODEL.USERNAME_FIELD for
+    resolving settings.AXES_USERNAME_FORM_FIELD if otherwise unset
+    (previously "username").
+
+-------------------------------------------------------------------
 Fri May  3 07:27:02 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.4.0:

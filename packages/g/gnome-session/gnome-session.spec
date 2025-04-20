@@ -16,10 +16,10 @@
 #
 
 
-%define basever 47
+%define basever 48
 
 Name:           gnome-session
-Version:        47.0.1
+Version:        48.0
 Release:        0
 Summary:        Session Tools for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -171,7 +171,7 @@ ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_
 
 %files core
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS ChangeLog NEWS README.md
 %{_bindir}/gnome-session
 %{_bindir}/gnome-session-inhibit
 %{_bindir}/gnome-session-quit

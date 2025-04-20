@@ -1,7 +1,7 @@
 #
 # spec file for package python-tblib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,19 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tblib%{?psuffix}
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Traceback serialization library
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/ionelmc/python-tblib
 Source:         https://files.pythonhosted.org/packages/source/t/tblib/tblib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/ionelmc/python-tblib/pull/77 vendore reraise() from six
-Patch0:         vendore-reraise-from-six.patch
-# PATCH-FIX-UPSTREAM https://github.com/ionelmc/python-tblib/issues/74 More aggressive location stripping. Ref #74.
-Patch1:         more-aggressive-location-stripping.patch
 # PATCH-FIX-FEDORA https://src.fedoraproject.org/rpms/python-tblib/blob/rawhide/f/0001-test_pickle_exception-even-harder-location-stripping.patch
-Patch2:         test_pickle_exception-even-harder-location-stripping.patch
+Patch1:         test_pickle_exception-even-harder-location-stripping.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,6 +42,7 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Twisted}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tblib == %{version}}
 %endif
@@ -93,7 +89,7 @@ the pickle support.
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE
 %{python_sitelib}/tblib
-%{python_sitelib}/tblib-%{version}*-info
+%{python_sitelib}/tblib-%{version}.dist-info
 %endif
 
 %changelog

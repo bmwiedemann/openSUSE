@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:52 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Change KDEPIM_DEV_VERSION
+  * Require test on all system
+  * Add categories to desktop file
+  * Add xml/yaml linting
+  * Clean up
+  * Remove FeatureSummary as we use ECMFeatureSummary
+  * Stripping .desktop suffix from legacy AppStream ID.
+  * We have it all time now with kf6.8
+  * Remove #if unnecessary now
+  * Use QT_QUICK_CONTROLS_STYLE (fix qml style on windows)
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

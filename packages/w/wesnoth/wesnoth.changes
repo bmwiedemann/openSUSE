@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Feb 22 17:15:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.18.4:
+  Campaigns
+  * Eastern Invasion
+    - S04c: achievement now only triggers when escaping with all
+      knights alive
+    - S11/S99: flying units can no longer enter prison cells via
+      the river
+    - S12: fixed Dra-Nak (if present) having incorrect traits
+      and portraits
+    - S17b: AI is now more forced to recruit only higher-level
+      units when gold reserves get too high
+    - S99: prisoners now escape if their jailers are killed
+  Editor
+  * Added Show Tool Information toggle option in the menus and
+    toolbar to allow hiding the informational tooltip on the edge
+    of the screen that shows the current editor tool's usage and
+    palette information
+  Translations
+  * Updated translations: Arabic, Bengali, British English,
+    Chinese (Simplified), Czech, Dutch, Finnish, German,
+    Hungarian, Italian, Norwegian, Spanish, Turkish
+  User interface
+  * Search filter should now be case-insensitive for more than
+    just ASCII characters
+  * Fixed the palette button not being clickable after scrolling
+    in palette widget without moving the cursor
+  WML Engine
+  * Fix crash when weapon specials' filters lead to infinite
+    recursion
+  Miscellaneous and Bug Fixes
+  * Fixed the Load Game dialog forgetting the filename filter when
+    changing directory
+
+-------------------------------------------------------------------
 Sun Nov 10 06:11:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.18.3:

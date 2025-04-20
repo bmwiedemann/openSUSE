@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 18 14:07:44 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.10.3
+  * get_charts: fix #751: parse_video returns always a video ID
+    or None
+  * get_artist: Fix singles being renamed to "Singles & EPs"
+  * search: fix #758 missing views key for "songs" filtered
+
+-------------------------------------------------------------------
 Fri Mar  7 07:44:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.10.2

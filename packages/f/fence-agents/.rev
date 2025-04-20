@@ -1204,4 +1204,15 @@
 - Do not hardcode python 3.11 in azure-arm subpackage.</comment>
     <requestid>1269209</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>6fdf6fee7dfa6bb6ef34b5bc5c149f4c</srcmd5>
+    <version>4.16.0+git.1744878140.5acc05b1</version>
+    <time>1744899017</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.16.0+git.1744878140.5acc05b1:
+  * [virt] fix build with libxml 2.14
+
+  * fence_sbd: Add crashdump option (jsc#PED-11931) (jsc#PED-12611)</comment>
+    <requestid>1270232</requestid>
+  </revision>
 </revisionlist>

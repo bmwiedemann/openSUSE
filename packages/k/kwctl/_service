@@ -1,0 +1,5 @@
+<services>
+<service  name="cargo_vendor" mode="manual">
+<param name="src">kwctl-1.23.0</param>
+</service>
+</services>

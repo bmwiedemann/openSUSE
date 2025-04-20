@@ -33,7 +33,7 @@ Source0:        https://github.com/intel/compute-runtime/archive/%{version}/comp
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with level_zero}
-BuildRequires:  level-zero-devel
+BuildRequires:  level-zero-devel >= 1.19.2
 %endif
 BuildRequires:  libigc-devel
 BuildRequires:  libigdgmm-devel >= 22.3.0
@@ -74,7 +74,9 @@ This package provides offloading to an Intel GPU via the oneAPI level zero inter
 
 # Needed for gcc12+
 %if 0%{?suse_version} > 1500
-export CXXFLAGS="-Wno-error=maybe-uninitialized -Wno-error=mismatched-new-delete"
+export CXXFLAGS="%{optflags} -Wno-error=maybe-uninitialized -Wno-error=mismatched-new-delete"
+%else
+export CXXFLAGS="%{optflags} -Wno-error=unused-variable -Wno-error=unused-but-set-variable"
 %endif
 
 %cmake \

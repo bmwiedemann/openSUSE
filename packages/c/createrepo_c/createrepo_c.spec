@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2022 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,6 @@
 #
 
 
-%{!?make_build: %global make_build make %{?_smp_mflags}}
 %define major 1
 %define libname lib%{name}%{major}
 %define devname lib%{name}-devel
@@ -45,15 +45,18 @@
 %bcond_without as_createrepo
 %endif
 Name:           createrepo_c
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        RPM repository metadata generation utility
 License:        GPL-2.0-or-later
 Group:          System/Packages
 URL:            https://github.com/rpm-software-management/createrepo_c
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# part of https://github.com/rpm-software-management/createrepo_c/pull/438
+# accidentally also fixes boo#1239788
+Patch0:         createrepo_c-1.2.1-cmake4.patch
 BuildRequires:  bash-completion
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.7.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  git-core
@@ -214,8 +217,7 @@ if [ ! -f %{_bindir}/createrepo_c ]; then
 fi
 %endif
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %doc README.md

@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.32
+Version:        2.34
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -26,6 +26,17 @@ Group:          System/Base
 URL:            https://github.com/bitstreamout/showconsole
 Source:         https://github.com/bitstreamout/showconsole/archive/v%{version}.tar.gz#/showconsole-%{version}.tar.gz
 Source1:        blog-rpmlintrc
+Patch0:         blog-install.patch
+Patch1:         blog-3215.patch
+BuildRequires:  bash
+%if 0%{suse_version} >= 1550
+# regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
+BuildRequires:  rpm-config-SUSE >= 0.g11
+%{regenerate_initrd_requires}
+%else
+Requires(post): /usr/bin/mkdir
+Recommends:     suse-module-tools
+%endif
 Requires(post): coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       sysvinit-tools:/sbin/blogd
@@ -78,6 +89,8 @@ the LSB startproc command.
 
 %prep
 %setup -q -n showconsole-%version
+%patch -P0
+%patch -P1
 for l in rt util pthread
 do
     ln -sf %{_libdir}/lib${l}.so.[0-9] lib${l}.so
@@ -104,7 +117,7 @@ make V=1 %{?_smp_mflags} CC="%__cc" \
     BOOT_LOGFILE=%{_localstatedir}/log/boot.log \
     BOOT_OLDLOGFILE=%{_localstatedir}/log/boot.old
 
-rm -vf %{buildroot}%{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
+rm %{buildroot}%{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 
 %post   -n libblogger%{sonum} -p /sbin/ldconfig
 %postun -n libblogger%{sonum} -p /sbin/ldconfig
@@ -112,13 +125,25 @@ rm -vf %{buildroot}%{_unitdir}/systemd-ask-password-blog.service.wants/systemd-v
 %post   plymouth
 ln -sf ../systemd-vconsole-setup.service %{_unitdir}/systemd-ask-password-blog.service.wants/
 test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-%{?regenerate_initrd_post}
+%if 0%{suse_version} >= 1550
+%{regenerate_initrd_post}
+%else
+! command -v mkdir >/dev/null || mkdir -p /run/regenerate-initrd/
+test ! -d /run/regenerate-initrd || > /run/regenerate-initrd/all
+%endif
 
 %postun plymouth
 test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
 %posttrans plymouth
-%{?regenerate_initrd_posttrans}
+%if 0%{suse_version} >= 1550
+%{regenerate_initrd_posttrans}
+%else
+if test -x /usr/lib/module-init-tools/regenerate-initrd-posttrans
+then
+    /usr/lib/module-init-tools/regenerate-initrd-posttrans
+fi
+%endif
 
 %files
 %defattr(-,root,root)
@@ -159,45 +184,46 @@ test -x /bin/systemctl && /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 %dir %{_prefix}/lib/dracut/
 %dir %{_prefix}/lib/dracut/modules.d/
 %dir %{_prefix}/lib/dracut/modules.d/99blog/
-%dir %{_unitdir}/basic.target.wants/
 %dir %{_unitdir}/default.target.wants/
 %dir %{_unitdir}/emergency.target.wants/
 %dir %{_unitdir}/initrd-switch-root.target.wants/
 %dir %{_unitdir}/rescue.target.wants/
 %dir %{_unitdir}/sysinit.target.wants/
-%dir %{_unitdir}/shutdown.target.wants/
+%dir %{_unitdir}/halt.target.wants/
 %dir %{_unitdir}/reboot.target.wants/
 %dir %{_unitdir}/poweroff.target.wants/
 %dir %{_unitdir}/kexec.target.wants/
 %dir %{_unitdir}/local-fs-pre.target.wants/
 %dir %{_unitdir}/systemd-ask-password-blog.service.wants/
 %{_prefix}/lib/dracut/modules.d/99blog/module-setup.sh
-%{_unitdir}/blog-final.service
+%{_unitdir}/blog-halt.service
+%{_unitdir}/blog-kexec.service
+%{_unitdir}/blog-poweroff.service
 %{_unitdir}/blog-quit.service
+%{_unitdir}/blog-reboot.service
 %{_unitdir}/blog-store-messages.service
-%{_unitdir}/blog-switch-root.service
 %{_unitdir}/blog-switch-initramfs.service
+%{_unitdir}/blog-switch-root.service
+%{_unitdir}/blog-umount.service
 %{_unitdir}/blog.service
 %{_unitdir}/systemd-ask-password-blog.path
 %{_unitdir}/systemd-ask-password-blog.service
-%{_unitdir}/blog-umount.service
-%{_unitdir}/basic.target.wants/blog.service
 %{_unitdir}/default.target.wants/blog-quit.service
 %{_unitdir}/emergency.target.wants/blog-quit.service
+%{_unitdir}/halt.target.wants/blog-halt.service
+%{_unitdir}/halt.target.wants/blog-switch-initramfs.service
 %{_unitdir}/initrd-switch-root.target.wants/blog-switch-root.service
 %{_unitdir}/initrd-switch-root.target.wants/blog.service
-%{_unitdir}/rescue.target.wants/blog-quit.service
-%{_unitdir}/sysinit.target.wants/blog-store-messages.service
-%{_unitdir}/sysinit.target.wants/systemd-ask-password-blog.path
-%{_unitdir}/shutdown.target.wants/blog-final.service
-%{_unitdir}/reboot.target.wants/blog-final.service
-%{_unitdir}/poweroff.target.wants/blog-final.service
-%{_unitdir}/kexec.target.wants/blog-final.service
-%{_unitdir}/shutdown.target.wants/blog-switch-initramfs.service
-%{_unitdir}/reboot.target.wants/blog-switch-initramfs.service
-%{_unitdir}/poweroff.target.wants/blog-switch-initramfs.service
+%{_unitdir}/kexec.target.wants/blog-kexec.service
 %{_unitdir}/kexec.target.wants/blog-switch-initramfs.service
 %{_unitdir}/local-fs-pre.target.wants/blog-umount.service
-%ghost %{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
+%{_unitdir}/poweroff.target.wants/blog-poweroff.service
+%{_unitdir}/poweroff.target.wants/blog-switch-initramfs.service
+%{_unitdir}/reboot.target.wants/blog-reboot.service
+%{_unitdir}/reboot.target.wants/blog-switch-initramfs.service
+%{_unitdir}/rescue.target.wants/blog-quit.service
+%{_unitdir}/sysinit.target.wants/blog-store-messages.service
+%{_unitdir}/sysinit.target.wants/blog.service
+%ghost %attr(0644,root,root) %{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 
 %changelog

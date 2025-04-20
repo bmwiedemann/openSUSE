@@ -1,7 +1,7 @@
 #
 # spec file for package dolphin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           dolphin
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -156,11 +156,13 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf6_applicationsdir}/org.kde.dolphi
 %{_kf6_configkcfgdir}/dolphin_*.kcfg
 %{_kf6_dbusinterfacesdir}/org.freedesktop.FileManager1.xml
 %{_kf6_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
+%dir %{_kf6_libdir}/kconf_update_bin
+%{_kf6_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
 %{_kf6_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf6_sharedir}/kconf_update/dolphin_detailsmodesettings.upd
 %{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.py
 %{_kf6_sharedir}/kconf_update/dolphin_directorysizemode.upd
-
+%{_kf6_sharedir}/kconf_update/dolphin_statusandlocationbarssettings.upd
 %dir %{_kf6_sharedir}/kglobalaccel
 %{_kf6_sharedir}/kglobalaccel/org.kde.dolphin.desktop
 %{_userunitdir}/plasma-dolphin.service

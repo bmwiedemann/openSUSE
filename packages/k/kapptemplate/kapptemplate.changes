@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Show error message when the template archive cannot be loaded
+  * Delete only newly created files on failure
+  * Add Windows CI
+  * Set Breeze style as default style
+  * Drop unused dependencies
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

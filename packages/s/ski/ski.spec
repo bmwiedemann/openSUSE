@@ -1,7 +1,7 @@
 #
 # spec file for package ski
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ski
-Version:        6.14
+Version:        6.15
 Release:        0
 Summary:        Skiing simulation with curses interface in python
 License:        BSD-3-Clause
@@ -29,7 +29,6 @@ Patch0:         %{name}-%{name}.desktop.patch
 Requires:       python3
 Requires:       python3-curses
 Requires:       python3-pygame
-BuildRequires:  update-desktop-files
 BuildArch:      noarch
 
 %description
@@ -52,14 +51,12 @@ fancy graphical user interfaces to have a good time.
 %install
 %make_install
 
-%suse_update_desktop_file %{name}
-
 %files
 %license COPYING
 %doc NEWS README
 %dir %{_datadir}/appdata/
 %{_bindir}/%{name}
-%{_datadir}/appdata/ski.xml
+%{_datadir}/appdata/ski.adoc
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man6/%{name}.6%{?ext_man}

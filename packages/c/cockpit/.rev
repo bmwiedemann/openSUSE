@@ -652,4 +652,19 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
 - npm modules updated, since new version</comment>
     <requestid>1265212</requestid>
   </revision>
+  <revision rev="58" vrev="4">
+    <srcmd5>af3073ec4bcac45fcc0335509bcb8557</srcmd5>
+    <version>334.1</version>
+    <time>1744985700</time>
+    <user>anag_factory</user>
+    <comment>- Add extra requirements for selinux policies to cockpit-selinux-policies
+  so it can't be installed before selinux or policycoreutils
+
+- Add a requires for either sudo or polkit for assuming admin rights
+  (bsc#1240569)
+
+- Ensure cockpit-selinux-policies always installs the selinux policy
+  regardless of selinuxenabled status (bsc#1240787 and bsc#1240421)</comment>
+    <requestid>1270288</requestid>
+  </revision>
 </revisionlist>

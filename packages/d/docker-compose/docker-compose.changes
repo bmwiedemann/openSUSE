@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:36:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.1:
+  * Fixes
+    - Use bind API for bind mounts by @ndeloof in #12733
+    - Prefer bind API by @ndeloof in #12734
+  * Internal
+    - CI(bin-image): free disk space by @crazy-max in #12732
+    - Fix zizmor security alerts on GHA workflows by @glours in
+      #12737
+    - Chore: make function comment match function name by @dufucun
+      in #12748
+    - Migrate to use github.com/moby/go-archive by @thaJeztah in
+      #12716
+  * Dependencies
+    - Build(deps): bump github.com/moby/buildkit from 0.20.1 to
+      0.20.2 by @dependabot in #12667
+    - Build(deps): bump google.golang.org/grpc from 1.71.0 to
+      1.71.1 by @dependabot in #12691
+    - Build(deps): bump go.uber.org/mock from 0.5.0 to 0.5.1 by
+      @dependabot in #12720
+    - Build(deps): bump golang.org/x/crypto from 0.32.0 to 0.35.0
+      by @dependabot in #12745
+    - Bump buildkit v0.21.0, buildx v0.23.0 by @thaJeztah in #12754
+    - Downgrade go-difflib and go-spew to tagged releases by
+      @thaJeztah in #12755
+    - Bump github.com/docker/docker, github.com/docker/cli v28.1.0
+      by @thaJeztah in #12738
+    - go.mod: bump github.com/docker/docker-credential-helpers
+      v0.9.3
+    - go.mod: bump golang.org/x/net v0.39.0
+    - go.mod: bump golang.org/x/term v0.31.0
+    - go.mod: bump golang.org/x/text v0.24.0
+    - go.mod: bump golang.org/x/time v0.11.0
+
+-------------------------------------------------------------------
 Fri Apr 11 05:17:37 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.0:

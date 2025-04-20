@@ -3,6 +3,5 @@
   <description>
 This Lua library implements a WebSocket server and client libraries based on the ngx_lua module.
   </description>
-  <devel project="devel:languages:lua" package="lua-resty-websocket"/>
   <url>https://github.com/openresty/lua-resty-websocket</url>
 </package>

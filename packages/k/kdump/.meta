@@ -15,5 +15,4 @@ For example, if you are debugging kernel-default, you will need:
 
 These packages are not needed to create the dump and can be installed
 after a crash dump has occured.</description>
-  <devel project="Kernel:kdump" package="kdump"/>
 </package>

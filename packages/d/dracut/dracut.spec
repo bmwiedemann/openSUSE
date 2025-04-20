@@ -25,7 +25,7 @@
 %endif
 
 Name:           dracut
-Version:        059+suse.722.g16d7e0c3
+Version:        059+suse.725.g1df2cbe1
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -69,6 +69,7 @@ Conflicts:      btrfsprogs < 3.18
 # suse-module-tools >= 15.4.7 is prepared for the removal of mkinitrd-suse.sh
 Conflicts:      suse-module-tools < 15.4.7
 %{?systemd_requires}
+Requires:       (jq if nvme-cli)
 
 %description
 Dracut contains tools to create a bootable initramfs for Linux kernels >= 2.6.

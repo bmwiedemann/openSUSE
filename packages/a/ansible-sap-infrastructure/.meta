@@ -1,0 +1,17 @@
+<package name="ansible-sap-infrastructure" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a Ansible collection suse.sap_infrastructure.
+
+It automates the provisioning of SAP infrastructure across various platforms:
+- AWS EC2 Virtual Server instances
+- Google Cloud Compute Engine Virtual Machines
+- IBM Cloud, Intel Virtual Servers
+- IBM Cloud, Power Virtual Servers
+- Microsoft Azure Virtual Machines
+- IBM PowerVM Virtual Machines
+
+Ensure that you install all required packages, python modules and collections.
+https://github.com/SUSE/community.sap_infrastructure/tree/main/roles/sap_vm_provision#requirements
+
+Package and collection dependencies are not installed along with this package!</description>
+</package>

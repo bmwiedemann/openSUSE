@@ -1,7 +1,7 @@
 #
 # spec file for package vcontrold
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,17 +21,17 @@ Version:        v0.98.10+git20210418.977e6f5
 Release:        0
 Summary:        Daemon for communication with Viessmann heating controllers
 License:        GPL-3.0-or-later
-Url:            https://github.com/openv/vcontrold
+URL:            https://github.com/openv/vcontrold
 Source0:        %{name}-%{version}.tar
 Source1:        system-user-vcontrold.conf
 Source2:        vcontrold.service
 Source3:        vcontrold-tmpfiles.conf
 BuildRequires:  c_compiler
+BuildRequires:  cmake >= 3.5
 BuildRequires:  python3-docutils
-BuildRequires:  cmake
-BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       group(dialout)
 %sysusers_requires
 
@@ -46,7 +46,7 @@ sed -i -e 's/nobody/vcontrold/' xml/300/vcontrold.xml
 %build
 %sysusers_generate_pre "%{SOURCE1}" "%{name}"
 #
-%cmake
+%cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 
 %install
@@ -67,6 +67,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/vcontrold
 touch %{buildroot}%{_sysconfdir}/vcontrold/{vcontrold,vito}.xml
 #
 ln -s service %{buildroot}%{_sbindir}/rcvcontrold
+
+%check
+%ctest
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -98,4 +101,3 @@ ln -s service %{buildroot}%{_sbindir}/rcvcontrold
 %{_sysusersdir}/system-user-%{name}.conf
 
 %changelog
-

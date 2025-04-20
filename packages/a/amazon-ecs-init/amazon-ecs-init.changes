@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:50:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.64.0-1
+  * Cache Agent version 1.64.0
+- from version 1.63.1-1
+  * Cache Agent version 1.63.1
+- from version 1.63.0-1
+  * Cache Agent version 1.63.0
+- from version 1.62.2-1
+  * Cache Agent version 1.62.2
+- from version 1.62.1-1
+  * Fix bug in cgroup mount for rpm builds
+- from version 1.62.0-1
+  * Update golang version 1.18.3
+- from version 1.61.3-1
+  * Cache Agent version 1.61.3
+- from version 1.61.2-1
+  * Cache Agent version 1.61.2
+- from version 1.61.1-1
+  * Cache Agent version 1.61.1
+  * Install script no longer fails on systems using cgroups v2
+  * Add GO111MODULE=on to honnef.co/go/tools/cmd/staticcheck
+- from version 1.61.0-1
+  * Cache Agent version 1.61.0
+  * Check ipv4 routes for default network interface instead
+    of defaulting to eth0
+- from version 1.60.1-1
+  * Cache Agent version 1.60.1
+- from version 1.60.0-1
+  * Cache Agent version 1.60.0
+  * Add volume plugin to rpm/deb package
+- from version 1.59.0-1
+  * Cache Agent version 1.59.0
+  * Log what pre-start is doing
+- from version 1.58.0-2
+  * Cache Agent version 1.58.0
+  * Add exec prerequisites to ecs-anywhere installation script
+- from version 1.57.1-1
+  * Cache Agent version 1.57.1
+  * Enable AL2 support for ECS-A
+  * Initialize docker client lazily
+- from version 1.57.0-1
+  * Cache Agent version 1.57.0
+- from version 1.56.0-1
+  * Cache Agent version 1.56.0
+- from version 1.55.5-1
+  * Cache Agent version 1.55.5
+- from version 1.55.4-1
+  * Cache Agent version 1.55.4
+  * GPU updates for ECS Anywhere
+  * Introduce new configuration variable ECS\_OFFHOST\_INTROSPECTION\_NAME
+    to specify the primary network interface name to block offhost agent
+    introspection port access.
+- from version 1.55.3-1
+  * Cache Agent version 1.55.3
+- from version 1.55.2-1
+  * Cache Agent version 1.55.2
+- from version 1.55.1-1
+  * Cache Agent version 1.55.1
+- from version 1.55.0-1
+  * Cache Agent version 1.55.0
+- from version 1.54.1-1
+  * Cache Agent version 1.54.1
+- from version 1.54.0-1
+  * Cache Agent version 1.54.0
+- Add -buildmode=pie to go build command line (bsc#1239945)
+- Refresh reproducible.patch
+
+-------------------------------------------------------------------
 Fri Apr  5 14:33:17 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use full URL for sources.

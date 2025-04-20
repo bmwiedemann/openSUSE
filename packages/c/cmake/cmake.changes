@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 11 15:23:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.31.7:
+  * fix FindCUDAToolkit doesn't find CUPTI in CUDA installations
+    from runfile
+  * fix file(MAKE_DIRECTORY): creates RESULT and <variable> folders
+  * fix Wrong detection of LINKER_PUSHPOP_STATE_SUPPORTED
+  * fix cmake-gui: Invalid error message "Error: could not load cache"
+  * fix build with curl 8.13.0 (boo#1241036)
+
+-------------------------------------------------------------------
 Wed Mar 26 14:14:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Switch cmake-gui builds to Qt6.

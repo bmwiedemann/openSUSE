@@ -935,4 +935,12 @@
     <comment>qt69 build fix</comment>
     <requestid>1266805</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>913958377deb7906515697e45454ca09</srcmd5>
+    <version>25.04.0</version>
+    <time>1744985790</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
+    <requestid>1270468</requestid>
+  </revision>
 </revisionlist>

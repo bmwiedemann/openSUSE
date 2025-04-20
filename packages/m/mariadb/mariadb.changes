@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 15 05:59:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with pcre2 10.45 boo#1241198, adding
+  mariadb-11.7.2-MDEV-36078-PCRE2-10.45-breaks-main.func_regexp_pcre-.patch
+  based on upstream
+
+-------------------------------------------------------------------
+Fri Apr  4 19:02:40 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Update constraints for riscv64
+
+-------------------------------------------------------------------
 Wed Feb 19 21:55:34 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update list of skipped tests

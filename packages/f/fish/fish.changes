@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 16:39:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- drop tests failing with pcre2 10.45 (boo#1241199)
+  add fish-3.7.1-drop-pcre-tests.patch
+
+-------------------------------------------------------------------
 Fri Jun 14 12:38:33 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

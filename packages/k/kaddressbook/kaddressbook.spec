@@ -1,7 +1,7 @@
 #
 # spec file for package kaddressbook
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.3.3
+%define kpim6_version 6.4.0
 
 %bcond_without released
 Name:           kaddressbook
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -124,6 +124,8 @@ This package includes the user guide for KAddressbook in HTML format.
 %dir %{_kf6_plugindir}/pim6/
 %dir %{_kf6_plugindir}/pim6/kcms/
 %dir %{_kf6_plugindir}/pim6/kcms/kaddressbook/
+%{_kf6_plugindir}/pim6/kcms/kaddressbook/kaddressbook_config_activities.so
+%{_kf6_plugindir}/pim6/kcms/kaddressbook/kaddressbook_config_ldap.so
 %{_kf6_plugindir}/pim6/kcms/kaddressbook/kaddressbook_config_plugins.so
 %{_kf6_plugindir}/pim6/kcms/kaddressbook/kaddressbook_config_userfeedback.so
 %{_kf6_plugindir}/kaddressbookpart.so

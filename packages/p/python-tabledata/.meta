@@ -1,4 +1,5 @@
 <package name="python-tabledata" project="openSUSE:Factory">
   <title></title>
   <description>Python library to represent tabular data</description>
+  <devel project="devel:languages:python" package="python-tabledata"/>
 </package>

@@ -192,4 +192,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment>Update to version 20250320.32f6212 (forwarded request 1254759 from dancermak)</comment>
     <requestid>1255645</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a6d7406fcf24b3fa1b7257c2f2f9fae3</srcmd5>
+    <version>20250415.2340bbf</version>
+    <time>1744985648</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269969</requestid>
+  </revision>
 </revisionlist>

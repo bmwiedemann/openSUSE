@@ -7,4 +7,12 @@
     <comment>New package, required by python-sigstore</comment>
     <requestid>1239298</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fb8e1df556360ef2a7f3f136e4406d4f</srcmd5>
+    <version>1.0.1</version>
+    <time>1744828953</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269992</requestid>
+  </revision>
 </revisionlist>

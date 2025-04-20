@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 06:13:16 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to 0.0.13:
+ - License change to 0BSD.
+ - Django staticfile.json test (info).
+ - Various minor fixes, style improvements, etc.
+
+-------------------------------------------------------------------
 Fri Sep  6 19:26:21 UTC 2024 - Sebastian Wagner <sebix@sebix.at>
 
 - run tests with pytest, as setuptools lost its test command

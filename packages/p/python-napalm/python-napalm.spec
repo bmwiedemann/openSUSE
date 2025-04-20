@@ -1,7 +1,7 @@
 #
 # spec file for package python-napalm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-napalm
 Version:        5.0.0
 Release:        0
@@ -98,9 +99,6 @@ sed -i '1{/env python/d}' napalm/pyIOSXR/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# FIXME: JunOS related unit tests are know to be broken with junos-eznc-2.3.0.
-# Do not run those for now. https://github.com/napalm-automation/napalm/issues/1060
-rm -Rf test/junos/
 %pytest
 
 %post

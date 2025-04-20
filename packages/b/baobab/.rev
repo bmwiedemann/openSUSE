@@ -473,4 +473,13 @@
     <comment>New stable branch release (forwarded request 1253145 from iznogood)</comment>
     <requestid>1253368</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>ad731850cddaaeb07e1ce16c9d1337fc</srcmd5>
+    <version>48.0</version>
+    <time>1744898779</time>
+    <user>anag_factory</user>
+    <comment>- Add baobab-Improve-Scaning-Speed_cpu.patch: Improve Scaning Speed
+  and Memory Usage. (forwarded request 1268779 from iznogood)</comment>
+    <requestid>1269668</requestid>
+  </revision>
 </revisionlist>

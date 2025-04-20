@@ -1,0 +1,9 @@
+<package name="ansible-sap-operations" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a Ansible collection suse.sap_operations.
+
+It automates suite of day to day operations for existing SAP landscape.
+
+This collection can be used to execute sapcontrol functions,
+update SAP profiles, configure firewall rules, execute RFC, etc.</description>
+</package>

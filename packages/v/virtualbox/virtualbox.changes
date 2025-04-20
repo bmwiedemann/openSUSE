@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:59:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1.8
+  * VMM: Fixed issue when VM clock went backwards in rare
+    circumstances.
+  * Graphics: Fixed issue when assertion was triggered on
+    restoring VM state if VMSVGA graphics adapter was used
+    without 3D acceleration.
+  * Linux Guest Additions: Fixed issue when VBoxClient could
+    crash in XWayland guest.
+- Delete kernel-6-14.patch (obsolete)
+
+-------------------------------------------------------------------
 Wed Apr  9 09:02:26 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - build with kernel 6.15, add:

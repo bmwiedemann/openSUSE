@@ -118,4 +118,15 @@
     __future__ import annotations` on NamedTuple</comment>
     <requestid>1245169</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>5df13419762cf5d75c6526e4bcc1a8a2</srcmd5>
+    <version>0.17.1</version>
+    <time>1744828745</time>
+    <user>anag_factory</user>
+    <comment>- Normalize metadata directory name.
+
+Requires python-setuptools 78 to build successfully.
+</comment>
+    <requestid>1264895</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:45:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.20.0:
+  * Features
+    - allow for specifying more than one event type to log in s3
+      drivers (0f88aaa)
+    - optimize aws s3_v2 Write() code (29d3c47)
+    - refresh replica list on network errors immediately (819aa46)
+    - registry: add v1 statistics API endpoint (d155bc9)
+    - rewrite s3_v2 driver from deprecated aws-sdk-go to
+      aws-sdk-go-v2 (4d4d339)
+    - switch aws cloudfront signer from aws-sdk-go to aws-sdk-go-v2
+      (2d7245b)
+  * Bug Fixes
+    - adjust maximum value of chunksize option for s3 storage
+      drivers (b3a9288)
+    - avoid appending directory as file path in s3 driver Walk
+      (2aad72e)
+    - fix potential resource leak by ensuring the response body is
+      closed in HTTPReadSeeker (d476f92)
+    - honour aws part size limit when re-uploading objects in aws
+      s3_v2 driver (5ea107d)
+    - improve storage driver logging, redirect driver logs to the
+      main logger (5efa19d)
+    - new installations via omnibus lock the file system (d02e775)
+    - prevent panics due to nil pointer dereference in s3 v2
+      (68f6712)
+    - proper error handling in s3_v2 Delete() call (2812633)
+    - set proper boundary when re-uploading parts (7c22aa1)
+    - stop report to sentry on redis ctx deadline in
+      checkOngoingRename (6d472a5)
+    - take manifest subject ID references into account during
+      online GC (b0355e7)
+    - use the right context for goroutine cancelation (b2e6be2)
+  * Build
+    - deps: update dependency danger-review to v2.1.0 (8c1a69a)
+    - deps: update module cloud.google.com/go/storage to v1.51.0
+      (9caabc9)
+    - deps: update module cloud.google.com/go/storage to v1.51.0,
+      adjust code to make CI pass (6ea9bb5)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.79.1 (376c6e0)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.79.2 (6153705)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.17.1
+      (02e2e54)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azcore to v1.18.0
+      (1891708)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.9.0
+      (e7e3c7e)
+    - deps: update module github.com/getsentry/sentry-go to v0.32.0
+      (41dba64)
+    - deps: update module github.com/jackc/pgx/v5 to v5.7.4
+      (535eedf)
+    - deps: update module github.com/prometheus/client_golang to
+      v1.22.0 (87f4cb4)
+    - deps: update module github.com/spf13/viper to v1.20.1
+      (46e48b0)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.126.0 (60dcd75)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.127.0 (211c92a)
+    - deps: update module gitlab.com/gitlab-org/labkit to v1.23.2
+      (7853ab6)
+    - deps: update module go.uber.org/mock to v0.5.1 (e0a9cbc)
+    - deps: update module golang.org/x/crypto to v0.37.0 (e6dbcd4)
+    - deps: update module golang.org/x/net to v0.38.0 (21ab302)
+    - deps: update module golang.org/x/net to v0.39.0 (ed38664)
+    - deps: update module golang.org/x/oauth2 to v0.29.0 (84dbf5d)
+    - deps: update module google.golang.org/api to v0.228.0
+      (7e6433d)
+    - deps: update module google.golang.org/api to v0.229.0
+      (e40ae14)
+
+-------------------------------------------------------------------
 Mon Mar 24 17:34:45 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.19.0:

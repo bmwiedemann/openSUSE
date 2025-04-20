@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 14 20:11:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.1.2
+  * Allow for expressing protocol dependency on sets.
+  * Support for more advanced bitwise operations with statements.
+  * Set element auto-merge now skips elements with
+    timeout/expiration.
+  * Memory footprint reduction for set elements.
+  * Updated `nft monitor` to report flowtable events.
+  * Support for merging bitmask matching in set/map with
+    -o/--optimize.
+  * Improved MPTCP support with symbol table for subtypes.
+
+-------------------------------------------------------------------
+Sat Mar  8 21:24:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update 0001-tools-add-a-systemd-unit-for-static-rulesets.patch
+  from new submission.
+
+-------------------------------------------------------------------
 Tue Mar  4 08:01:21 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-tools-add-a-systemd-unit-for-static-rulesets.patch

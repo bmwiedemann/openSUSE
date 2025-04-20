@@ -104,4 +104,12 @@ as the default openmpi implementation is still openmpi4.</comment>
 - Disable gnu-hpc build flavours (bsc#1239982)</comment>
     <requestid>1265555</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>bb70fa48492571249c750bb91f6d6f36</srcmd5>
+    <version>5.0.7</version>
+    <time>1744828644</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269645</requestid>
+  </revision>
 </revisionlist>

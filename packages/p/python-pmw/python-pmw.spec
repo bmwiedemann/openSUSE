@@ -1,7 +1,7 @@
 #
 # spec file for package python-pmw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?sle15_python_module_pythons}
 Name:           python-pmw
 Version:        2.1.1
 Release:        0
@@ -26,15 +25,13 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pmw.sourceforge.net/
 Source:         https://files.pythonhosted.org/packages/source/P/Pmw/Pmw-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-tk
 BuildArch:      noarch
-%ifpython2
-Obsoletes:      %{oldpython}-pmw < %{version}
-Provides:       %{oldpython}-pmw = %{version}
-%endif
 %python_subpackages
 
 %description
@@ -49,13 +46,14 @@ sed -i '1d' Pmw/Pmw_1_3_3/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.
 sed -i '1d' Pmw/Pmw_2_1_1/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.py # Fix non-executable scripts
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/[pP]mw
+%{python_sitelib}/pmw-%{version}*-info
 
 %changelog

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:17:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.0:
+  https://github.com/kubermatic/kubeone/releases/tag/v1.10.0
+  Upgrade notes:
+  https://docs.kubermatic.com/kubeone/v1.10/tutorials/upgrading/upgrading-from-1.9-to-1.10/
+  Urgent Upgrade Notes
+  (No, really, you MUST read this before you upgrade)
+  * Disallow using machine-controller and operating-system-manager
+    with the cloud provider none (.cloudProvider.none). If you're
+    affected by this change, you have to either disable
+    machine-controller and/or operating-system-manager, or switch
+    from the cloud provider none to a supported cloud provider
+    (#3369, @kron4eg)
+  * The Calico VXLAN optional addon has been removed from KubeOne.
+    This addon has been non-functional for the past several
+    releases. If you still need and use this addon, we advise using
+    the addons mechanism to deploy it (#3568, @kron4eg)
+  * The minimum kernel version for Kubernetes 1.32+ clusters is
+    4.19. Trying to provision a cluster with Kubernetes 1.32 or
+    upgrade an existing cluster to Kubernetes 1.32, where nodes are
+    not satisfying this requirement, will result in a pre-flight
+    check failure (#3590, @kron4eg)
+
+-------------------------------------------------------------------
 Fri Feb 07 08:25:17 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.9.2:

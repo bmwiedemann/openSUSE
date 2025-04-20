@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Mar 14 12:55:26 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Build for kernel-longterm also under aarch64 and be a bit more strict
+  with the openSUSE versions.
+
+-------------------------------------------------------------------
 Fri Feb  7 18:35:12 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Build for kernel-longterm (boo#1236919).

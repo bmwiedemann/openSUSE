@@ -97,8 +97,8 @@ Summary:        Firewall panel applet
 Group:          Productivity/Networking/Security
 Requires:       firewall-config = %{version}-%{release}
 Requires:       hicolor-icon-theme
+Requires:       python3-PyQt6
 Requires:       python3-gobject
-Requires:       python3-qt5
 
 %description -n firewall-applet
 The firewall panel applet provides a status information of firewalld and also

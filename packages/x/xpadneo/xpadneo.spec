@@ -26,8 +26,8 @@ URL:            https://github.com/atar-axis/xpadneo
 Source0:        https://github.com/atar-axis/xpadneo/archive/v%{version}.tar.gz#/%name-%version.tar.gz
 Source1:        preamble
 BuildRequires:  %{kernel_module_package_buildreqs}
-%if 0%{?suse_version} > 1600
-%ifarch x86_64
+%if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
+%ifarch x86_64 aarch64
 BuildRequires:  kernel-longterm-devel
 %endif
 %endif

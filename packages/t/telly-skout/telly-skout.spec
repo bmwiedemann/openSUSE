@@ -1,7 +1,7 @@
 #
 # spec file for package telly-skout
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           telly-skout
-Version:        24.12.3
+Version:        25.04.0
 Release:        0
 Summary:        Kirigami TV guide
 License:        LGPL-2.1-or-later

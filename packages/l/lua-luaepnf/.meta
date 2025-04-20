@@ -7,6 +7,5 @@ more difficult error handling and keeping track of captured information
 becomes. luaepnf enhances usage of LPeg grammars by building an abstract
 syntax tree (AST) for the input and providing tools for error reporting,
 as well as offering syntax sugar and shortcuts for accessing LPeg's features.</description>
-  <devel project="devel:languages:lua" package="lua-luaepnf"/>
   <url>https://github.com/siffiejoe/lua-luaepnf</url>
 </package>

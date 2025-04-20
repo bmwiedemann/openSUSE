@@ -1613,4 +1613,22 @@ Index: gnome-session.changes
     <comment>Early Staging of GNOME 48.rc</comment>
     <requestid>1251330</requestid>
   </revision>
+  <revision rev="214" vrev="1">
+    <srcmd5>d625def2344e1c0c3d0c985c6cd15d5b</srcmd5>
+    <version>48.0</version>
+    <time>1744898781</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.0:
+  + The gnome-session script no longer re-runs itself as a
+    subprocess.
+  + GNOME OS CI was ported to use a CI template.
+  + Integrated new CI-based release process.
+  + Fix bugs caused by systemd v257's inhibitor behavior changes.
+  + Make `gnome-session --version` print to stdout rather than
+    syslog.
+  + README updates.
+  + Updated translations.
+- Bump basever define to 48, following upstream changes. (forwarded request 1268781 from iznogood)</comment>
+    <requestid>1269669</requestid>
+  </revision>
 </revisionlist>

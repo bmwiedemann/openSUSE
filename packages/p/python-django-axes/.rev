@@ -100,4 +100,12 @@
   * Drop setuptools and pkg_resources dependencies. [Viicos]</comment>
     <requestid>1171533</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>94722e271350972db90636286e2c6d80</srcmd5>
+    <version>7.0.2</version>
+    <time>1744828939</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1269959</requestid>
+  </revision>
 </revisionlist>

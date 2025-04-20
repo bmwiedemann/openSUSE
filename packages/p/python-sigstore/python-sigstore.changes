@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 01:48:26 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.6.2:
+  * Fixed issue where a trust root with multiple rekor keys was not considered
+    valid.
+  * Upgraded python-tuf dependency to 6.0.
+  * Updated the embedded TUF root to version 12
+
+-------------------------------------------------------------------
 Tue Jan 21 08:19:18 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version (3.6.1)

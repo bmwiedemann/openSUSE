@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 11:52:33 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- v1.46.0
+  * :set_max_depth <number> and :unset_max_depth
+  * clear cache when files are deleted in staging area
+  * recompute preview transform when source file changed since last preview
+
+-------------------------------------------------------------------
 Tue Apr  1 11:30:34 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - v1.45.1

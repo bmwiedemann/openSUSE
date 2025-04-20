@@ -1,6 +1,5 @@
 <package name="biome" project="openSUSE:Factory">
   <title>Biome</title>
   <description>A toolchain for maintaining web projects.</description>
-  <devel project="devel:languages:javascript" package="biome"/>
   <url>https://biomejs.dev/</url>
 </package>

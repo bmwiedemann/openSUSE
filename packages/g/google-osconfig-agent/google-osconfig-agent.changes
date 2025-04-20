@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:11:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250320.00
+  * Bump github.com/envoyproxy/protoc-gen-validate from 1.1.0 to 1.2.1 (#797)
+- from version 20250318.00
+  * Bump go.opentelemetry.io/otel/sdk/metric from 1.32.0 to 1.35.0 (#793)
+- from version 20250317.02
+  * Bump cel.dev/expr from 0.18.0 to 0.22.0 (#792)
+  * Bump github.com/golang/glog from 1.2.3 to 1.2.4 in the go_modules group (#785)
+- from version 20250317.01
+  * Bump cloud.google.com/go/logging from 1.12.0 to 1.13.0 (#774)
+- from version 20250317.00
+  * Add tests for retryutil package. (#795)
+- from version 20250306.00
+  * Update OWNERS (#794)
+- from version 20250206.01
+  * Use separate counters for pre- and post-patch reboots. (#788)
+- from version 20250206.00
+  * Update owners (#789)
+- from version 20250203.00
+  * Fix the vet errors for contants in logging (#786)
+- from version 20250122.00
+  * change available package check (#783)
+- from version 20250121.00
+  * Fix Inventory reporting e2e tests. (#782)
+- from version 20250120.00
+  * fix e2e tests (#781)
+- Add -buildmode=pie to go build command line (bsc#1239948)
+- Drop CVE-2024-45339.patch, merged upstream
+- Renumber patches
+
+-------------------------------------------------------------------
 Tue Mar 11 11:28:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add patch to fix unexpected memory consumption during token

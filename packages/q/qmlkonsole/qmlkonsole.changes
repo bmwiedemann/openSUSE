@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:07:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:43:07 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Command line compatibility options
+  * Appdata: add display size
+  * Call closeWindow() on the initial page instead of the current page
+  * Don't crash if the SHELL environment variable is missing
+  * SavedCommandsDialog: Explicitly set Kirigami.Dialog padding to 0
+  * SavedCommandsDialog: Port to the standard Kirigami item delegates
+  * SavedCommandsDialog: Fit the content height up to the old height
+  * SavedCommandsDialog: Remove duplicate close action
+
+-------------------------------------------------------------------
 Tue Mar  4 13:01:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

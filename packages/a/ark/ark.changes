@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:06:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.0/
+- No code change since 25.03.90
+
+-------------------------------------------------------------------
+Sat Mar 29 08:42:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.03.90
+  * New feature release
+- Changes since 24.12.3:
+  * Remove nanoseconds from timestamp (kde#499032)
+  * Add job to publish on Microsoft Store (and build appx)
+  * Add xml/yaml linting
+  * CMake proofreading
+  * Add missing include
+  * Treat absolute paths as relative paths during extraction
+  * Adding Dia_FIX & Alex Gurenko as supporters
+  * Added supporter Andreas Pietzowski
+  * Added Travis McCoy as supporter
+  * Added supporter Marco Rebhan
+  * Fix -Wdangling-reference
+  * Add traling commas to all enums
+
+-------------------------------------------------------------------
 Tue Mar  4 13:00:37 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 24.12.3

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Mar 25 05:58:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Lowercase metadata directory name.
+
+-------------------------------------------------------------------
 Wed Jan 22 00:59:12 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Explicitly BuildRequire sphinx_rtd_theme. 

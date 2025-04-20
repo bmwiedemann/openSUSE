@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr  1 16:05:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Make it compatible with older setuptools
+
+-------------------------------------------------------------------
+Fri Mar 28 01:36:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize metadata directory name.
+- Normalize include directory name.
+
+-------------------------------------------------------------------
 Mon Oct 28 21:51:48 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1:
