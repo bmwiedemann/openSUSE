@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Apr 19 08:46:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.30
+  * Revert a change that caused menu transparency issues in medium quality
+
+- Update to 2.4.28
+  * Improved joystick support
+  * Remove non-SDL2 platform code and add SDL2 controller rumble support
+  * Fix authentication when behind CGNAT (requires updated client and server)
+  * Fix libcurl deprecation warnings
+  * Fix c-ares deprecation warnings
+  * Add Dockerfile for bzfs container
+  * Fix various memory leaks, crashes, buffer overflows, divide by zero errors
+  * Fix skewed textures that occurred when the window size changed
+  * Add support for pasting text into text inputs
+  * Kick all replay viewers when an incompatible replay is loaded
+
+-------------------------------------------------------------------
 Thu Feb 22 10:34:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
