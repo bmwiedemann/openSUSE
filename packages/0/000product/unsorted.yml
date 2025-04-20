@@ -607,7 +607,10 @@ unsorted:
   - ansible-linux-system-roles 
   - ansible-navigator 
   - ansible-runner 
+  - ansible-sap-infrastructure 
+  - ansible-sap-install 
   - ansible-sap-launchpad 
+  - ansible-sap-operations 
   - ansible-terraform-inventory 
   - ansible-test 
   - ansible-variables 
@@ -1964,6 +1967,7 @@ unsorted:
   - cargo1.83 
   - cargo1.84 
   - cargo1.85 
+  - cargo1.86 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2194,9 +2198,6 @@ unsorted:
   - clang15 
   - clang15-devel 
   - clang15-doc 
-  - clang17 
-  - clang17-devel 
-  - clang17-doc 
   - clang18 
   - clang18-devel 
   - clang18-doc 
@@ -4406,6 +4407,7 @@ unsorted:
   - flameshot-bash-completion 
   - flameshot-fish-completion 
   - flameshot-zsh-completion 
+  - flamp 
   - flann-devel 
   - flannel 
   - flannel-k8s-yaml 
@@ -4561,6 +4563,7 @@ unsorted:
   - frame-devel 
   - framel 
   - framel-devel 
+  - framework-ectool 
   - framework-inputmodule-control 
   - framework-inputmodule-udev-rules 
   - framework-laptop-kmp-default 
@@ -7292,7 +7295,6 @@ unsorted:
   - glab-fish-completion 
   - glab-zsh-completion 
   - glade 
-  - glade-catalog-evolution 
   - glade-catalog-gitg 
   - glade-catalog-gtkdatabox 
   - glade-catalog-gtkhtml 
@@ -10857,8 +10859,10 @@ unsorted:
   - kwayland-devel 
   - kwayland-integration 
   - kwayland6-devel 
+  - kwctl 
   - kweather 
   - kweather-lang 
+  - kweathercore 
   - kweathercore-devel 
   - kwidgetsaddons-devel 
   - kwikdisk 
@@ -11347,8 +11351,6 @@ unsorted:
   - libLASi2 
   - libLHAPDF-6_5_4 
   - libLLVM15 
-  - libLLVM17 
-  - libLLVM17-32bit 
   - libLLVM18 
   - libLLVM18-32bit 
   - libLLVM19 
@@ -11357,7 +11359,6 @@ unsorted:
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib20 
   - libLTO15 
-  - libLTO17 
   - libLTO18 
   - libLTO19 
   - libLTO20 
@@ -11370,7 +11371,7 @@ unsorted:
   - libMagickCore-7_Q16HDRI10-32bit 
   - libMagickWand-7_Q16HDRI10-32bit 
   - libMathMLSolver0_3 
-  - libMpvQt1 
+  - libMpvQt2 
   - libMrm4 
   - libMyGUICommon3_4_3 
   - libMyGUIEngine3_4_3 
@@ -12159,7 +12160,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot1 
-  - libbaresip18 
+  - libbaresip20 
   - libbarvinok23 
   - libbase-javadoc 
   - libbaseencode-devel 
@@ -12605,8 +12606,6 @@ unsorted:
   - libclBLAS2 
   - libclFFT2 
   - libclang-cpp15 
-  - libclang-cpp17 
-  - libclang-cpp17-32bit 
   - libclang-cpp18 
   - libclang-cpp18-32bit 
   - libclang-cpp19 
@@ -12897,6 +12896,7 @@ unsorted:
   - libdispatch-devel 
   - libdispatch1_3 
   - libdisplay-info-devel 
+  - libdisplaydevice0_0_0 
   - libdjvulibre-devel 
   - libdlib19_24_6 
   - libdlm 
@@ -12970,6 +12970,7 @@ unsorted:
   - libdvbv5-0 
   - libdvbv5-0-32bit 
   - libdvbv5-devel 
+  - libdvbv5-gconv 
   - libdvdnav-devel 
   - libdvdnav4-32bit 
   - libdvdread-devel 
@@ -14205,7 +14206,7 @@ unsorted:
   - libkdecorations2private10 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdevplatform61 
+  - libkdevplatform62 
   - libkdsingleapplication-qt6-1_1 
   - libkdsingleapplication1_1 
   - libkdsoap-server-qt6-2 
@@ -14409,7 +14410,6 @@ unsorted:
   - liblkl0 
   - libllama 
   - liblldb15 
-  - liblldb17 
   - liblldb18 
   - liblldb19 
   - liblldb20 
@@ -14885,11 +14885,9 @@ unsorted:
   - libnghttp2-14-32bit 
   - libnghttp2-devel 
   - libnghttp3-9 
-  - libnghttp3-devel 
   - libngspice-devel 
   - libngspice0 
   - libngtcp2-16 
-  - libngtcp2-devel 
   - libngtcp2_crypto_gnutls8 
   - libnice 
   - libnice-devel 
@@ -15029,7 +15027,6 @@ unsorted:
   - libomnithread4 
   - libomp-devel 
   - libomp15-devel 
-  - libomp17-devel 
   - libomp18-devel 
   - libomp19-devel 
   - libomp20-devel 
@@ -15079,6 +15076,7 @@ unsorted:
   - libopencv_face411 
   - libopencv_gapi411 
   - libopencv_highgui411 
+  - libopencv_highgui411-qt6 
   - libopencv_imgcodecs411 
   - libopencv_objdetect411 
   - libopencv_optflow411 
@@ -15087,6 +15085,8 @@ unsorted:
   - libopencv_videostab411 
   - libopencv_ximgproc411 
   - libopendkim11 
+  - libopenh264-8 
+  - libopenh264-devel 
   - libopenhpi4 
   - libopenjp2-7-32bit 
   - libopenjph0_21 
@@ -15117,14 +15117,14 @@ unsorted:
   - libopentimelineio0 
   - libopentracing-cpp1 
   - libopenvdb11_0 
-  - libopenvino2500 
-  - libopenvino_c2500 
-  - libopenvino_ir_frontend2500 
-  - libopenvino_onnx_frontend2500 
-  - libopenvino_paddle_frontend2500 
-  - libopenvino_pytorch_frontend2500 
-  - libopenvino_tensorflow_frontend2500 
-  - libopenvino_tensorflow_lite_frontend2500 
+  - libopenvino2510 
+  - libopenvino_c2510 
+  - libopenvino_ir_frontend2510 
+  - libopenvino_onnx_frontend2510 
+  - libopenvino_paddle_frontend2510 
+  - libopenvino_pytorch_frontend2510 
+  - libopenvino_tensorflow_frontend2510 
+  - libopenvino_tensorflow_lite_frontend2510 
   - libopenvswitch-3_5-0 
   - liboping-devel 
   - liboping0 
@@ -16015,7 +16015,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
-  - librocksdb9 
+  - librocksdb10 
   - librocsgraphtheory0 
   - librpma0 
   - librrd8 
@@ -17534,7 +17534,6 @@ unsorted:
   - llcbench 
   - lld 
   - lld15 
-  - lld17 
   - lld18 
   - lld19 
   - lld20 
@@ -17546,8 +17545,6 @@ unsorted:
   - lldb-devel 
   - lldb15 
   - lldb15-devel 
-  - lldb17 
-  - lldb17-devel 
   - lldb18 
   - lldb18-devel 
   - lldb19 
@@ -17578,19 +17575,6 @@ unsorted:
   - llvm15-polly 
   - llvm15-polly-devel 
   - llvm15-vim-plugins 
-  - llvm17 
-  - llvm17-devel 
-  - llvm17-doc 
-  - llvm17-gold 
-  - llvm17-libc++-devel 
-  - llvm17-libc++1 
-  - llvm17-libc++abi-devel 
-  - llvm17-libc++abi1 
-  - llvm17-libclang13 
-  - llvm17-opt-viewer 
-  - llvm17-polly 
-  - llvm17-polly-devel 
-  - llvm17-vim-plugins 
   - llvm18 
   - llvm18-devel 
   - llvm18-doc 
@@ -18688,11 +18672,7 @@ unsorted:
   - minder 
   - minder-lang 
   - mined 
-  - minetest 
-  - minetest-data 
   - minetest-game 
-  - minetest-lang 
-  - minetestserver 
   - mingetty 
   - mingw32-binutils 
   - mingw32-binutils-debug 
@@ -19693,6 +19673,7 @@ unsorted:
   - nftables-devel 
   - nftlb 
   - nghttp2 
+  - nghttp3-devel 
   - nginx 
   - nginx-macros 
   - nginx-module-brotli 
@@ -19708,6 +19689,7 @@ unsorted:
   - ngspice-doc 
   - ngspice-scripts 
   - ngspice-xspice-cm 
+  - ngtcp2-devel 
   - nh2ps 
   - nheko 
   - nheko-zsh-completion 
@@ -20391,6 +20373,8 @@ unsorted:
   - opencv-doc 
   - opencv-nogui 
   - opencv-nogui-devel 
+  - opencv-qt6 
+  - opencv-qt6-devel 
   - opencv3 
   - opencv3-devel 
   - opencv3-doc 
@@ -20639,14 +20623,6 @@ unsorted:
   - osgi-service-subsystem 
   - osgi-service-subsystem-javadoc 
   - osinfo-db-tools 
-  - osmo-bsc 
-  - osmo-bsc-abisip-find 
-  - osmo-bsc-bs11-utils 
-  - osmo-bsc-ipaccess-utils 
-  - osmo-bsc-meas-utils 
-  - osmo-bts 
-  - osmo-bts-omldummy 
-  - osmo-bts-virtual 
   - osmo-e1d 
   - osmo-e1d-devel 
   - osmo-fl2k 
@@ -20656,7 +20632,6 @@ unsorted:
   - osmo-gtphub 
   - osmo-hlr 
   - osmo-mgw 
-  - osmo-msc 
   - osmo-mslookup-client 
   - osmo-pcap 
   - osmo-pcu 
@@ -22296,6 +22271,7 @@ unsorted:
   - perl-Test-CPAN-Meta 
   - perl-Test-CheckChanges 
   - perl-Test-CheckDeps 
+  - perl-Test-CheckGitStatus 
   - perl-Test-CheckManifest 
   - perl-Test-Class 
   - perl-Test-Class-Most 
@@ -23513,6 +23489,7 @@ unsorted:
   - python-azure-agent-config-micro 
   - python-azure-agent-config-server 
   - python-azure-agent-test 
+  - python-azuremetadata 
   - python-barbicanclient-doc 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
@@ -23530,6 +23507,7 @@ unsorted:
   - python-dbus-python-common-devel 
   - python-debtcollector-doc 
   - python-designateclient-doc 
+  - python-ec2metadata 
   - python-efl-doc 
   - python-efl-examples 
   - python-falcon-doc 
@@ -23537,6 +23515,7 @@ unsorted:
   - python-freezerclient-doc 
   - python-furo-doc 
   - python-fuse-doc 
+  - python-gcemetadata 
   - python-gevent-doc 
   - python-glanceclient-doc 
   - python-gobject-common-devel 
@@ -23695,7 +23674,6 @@ unsorted:
   - python3-cinderclient 
   - python3-clang 
   - python3-clang15 
-  - python3-clang17 
   - python3-clang18 
   - python3-clang19 
   - python3-clang20 
@@ -23805,7 +23783,6 @@ unsorted:
   - python3-linkchecker 
   - python3-lldb 
   - python3-lldb15 
-  - python3-lldb17 
   - python3-lldb18 
   - python3-lldb19 
   - python3-lldb20 
@@ -24730,7 +24707,6 @@ unsorted:
   - python311-azure-synapse-nspkg 
   - python311-azure-synapse-spark 
   - python311-azure-template 
-  - python311-azuremetadata 
   - python311-babelfish 
   - python311-backoff 
   - python311-backports.entry_points_selectable 
@@ -25209,7 +25185,6 @@ unsorted:
   - python311-easywatch 
   - python311-ebcdic 
   - python311-ec2imgutils 
-  - python311-ec2metadata 
   - python311-ecdsa 
   - python311-ed25519 
   - python311-edgegrid-python 
@@ -25378,7 +25353,6 @@ unsorted:
   - python311-gTTS 
   - python311-gTTS-token 
   - python311-gast 
-  - python311-gcemetadata 
   - python311-gcsfs 
   - python311-gcsfs-fuse 
   - python311-gear 
@@ -27071,6 +27045,7 @@ unsorted:
   - python311-sidpy 
   - python311-sievelib 
   - python311-signedjson 
+  - python311-sigstore 
   - python311-sigstore-protobuf-specs 
   - python311-sigstore-rekor-types 
   - python311-simple-websocket 
@@ -28402,7 +28377,6 @@ unsorted:
   - python312-azure-synapse-nspkg 
   - python312-azure-synapse-spark 
   - python312-azure-template 
-  - python312-azuremetadata 
   - python312-babelfish 
   - python312-backoff 
   - python312-backports.entry_points_selectable 
@@ -28894,7 +28868,6 @@ unsorted:
   - python312-easywatch 
   - python312-ebcdic 
   - python312-ec2imgutils 
-  - python312-ec2metadata 
   - python312-ecdsa 
   - python312-ed25519 
   - python312-edgegrid-python 
@@ -29063,7 +29036,6 @@ unsorted:
   - python312-gTTS 
   - python312-gTTS-token 
   - python312-gast 
-  - python312-gcemetadata 
   - python312-gcsfs 
   - python312-gcsfs-fuse 
   - python312-gear 
@@ -30801,6 +30773,7 @@ unsorted:
   - python312-sidpy 
   - python312-sievelib 
   - python312-signedjson 
+  - python312-sigstore 
   - python312-sigstore-protobuf-specs 
   - python312-sigstore-rekor-types 
   - python312-simple-websocket 
@@ -32127,7 +32100,6 @@ unsorted:
   - python313-azure-synapse-nspkg 
   - python313-azure-synapse-spark 
   - python313-azure-template 
-  - python313-azuremetadata 
   - python313-babelfish 
   - python313-backoff 
   - python313-backports.entry_points_selectable 
@@ -32601,7 +32573,6 @@ unsorted:
   - python313-easywatch 
   - python313-ebcdic 
   - python313-ec2imgutils 
-  - python313-ec2metadata 
   - python313-ecdsa 
   - python313-ed25519 
   - python313-edgegrid-python 
@@ -32769,7 +32740,6 @@ unsorted:
   - python313-gTTS 
   - python313-gTTS-token 
   - python313-gast 
-  - python313-gcemetadata 
   - python313-gcsfs 
   - python313-gcsfs-fuse 
   - python313-gear 
@@ -34452,6 +34422,7 @@ unsorted:
   - python313-sidpy 
   - python313-sievelib 
   - python313-signedjson 
+  - python313-sigstore 
   - python313-sigstore-protobuf-specs 
   - python313-sigstore-rekor-types 
   - python313-simple-websocket 
@@ -36531,6 +36502,8 @@ unsorted:
   - rust1.84-src 
   - rust1.85 
   - rust1.85-src 
+  - rust1.86 
+  - rust1.86-src 
   - rustdesk-server 
   - rustdesk-server-hbbr 
   - rustdesk-server-hbbs 
@@ -48103,8 +48076,6 @@ unsorted:
   - typelib-1_0-Soup-2_4 
   - typelib-1_0-SpeechProvider-1_0 
   - typelib-1_0-Spelling-1 
-  - typelib-1_0-SpiceClientGlib-2_0 
-  - typelib-1_0-SpiceClientGtk-3_0 
   - typelib-1_0-TelepathyFarstream-0_6 
   - typelib-1_0-TelepathyLogger-0_2 
   - typelib-1_0-Template-1_0 
@@ -48115,7 +48086,7 @@ unsorted:
   - typelib-1_0-Uhm-1_0 
   - typelib-1_0-Urfkill-0_0 
   - typelib-1_0-Vips-8.0 
-  - typelib-1_0-Vte-2_91 
+  - typelib-1_0-Vte-3_91 
   - typelib-1_0-WebKit-6_0 
   - typelib-1_0-WebKit2-4_0 
   - typelib-1_0-WebKit2WebExtension-4_0 

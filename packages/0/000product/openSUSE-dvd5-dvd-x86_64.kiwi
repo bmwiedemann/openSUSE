@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20250415" schemaversion="4.1">
+<image name="OBS__openSUSE___20250420" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20250415</productvar>
+      <productvar name="VERSION">20250420</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250415,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20250420,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250415/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20250420/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1577,7 +1577,7 @@
       <repopackage name="libgedit-gtksourceview"/>
       <repopackage name="libgedit-gtksourceview-300-3"/>
       <repopackage name="libgedit-gtksourceview-lang"/>
-      <repopackage name="libgedit-tepl-6-2"/>
+      <repopackage name="libgedit-tepl-6-3"/>
       <repopackage name="libgedit-tepl-6-lang"/>
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
@@ -1737,7 +1737,7 @@
       <repopackage name="libharfbuzz-icu0"/>
       <repopackage name="libharfbuzz-subset0"/>
       <repopackage name="libharfbuzz0"/>
-      <repopackage name="libhd23"/>
+      <repopackage name="libhd24"/>
       <repopackage name="libheif-aom"/>
       <repopackage name="libheif-dav1d"/>
       <repopackage name="libheif-ffmpeg"/>
@@ -1845,7 +1845,7 @@
       <repopackage name="libKDSoapWSDiscoveryClient0"/>
       <repopackage name="libKEduVocDocument5"/>
       <repopackage name="libKEduVocDocument5-lang"/>
-      <repopackage name="libkerfuffle24"/>
+      <repopackage name="libkerfuffle25"/>
       <repopackage name="libkexiv2"/>
       <repopackage name="libkexiv2-qt6"/>
       <repopackage name="libKExiv2Qt6-0"/>
@@ -3610,7 +3610,6 @@
       <repopackage name="python3-createrepo_c"/>
       <repopackage name="python3-cupshelpers"/>
       <repopackage name="python3-firewall"/>
-      <repopackage name="python3-gedit"/>
       <repopackage name="python3-ldb"/>
       <repopackage name="python3-louis"/>
       <repopackage name="python3-smbios"/>
@@ -4199,13 +4198,15 @@
       <repopackage name="typelib-1_0-Secret-1"/>
       <repopackage name="typelib-1_0-Shumate-1_0"/>
       <repopackage name="typelib-1_0-Soup-3_0"/>
+      <repopackage name="typelib-1_0-SpiceClientGlib-2_0"/>
+      <repopackage name="typelib-1_0-SpiceClientGtk-3_0"/>
       <repopackage name="typelib-1_0-Spiel-1_0"/>
       <repopackage name="typelib-1_0-TelepathyGlib-0_12"/>
       <repopackage name="typelib-1_0-Tepl-6"/>
       <repopackage name="typelib-1_0-TotemPlParser-1_0"/>
       <repopackage name="typelib-1_0-Tracker-3_0"/>
       <repopackage name="typelib-1_0-UpowerGlib-1_0"/>
-      <repopackage name="typelib-1_0-Vte-3_91"/>
+      <repopackage name="typelib-1_0-Vte-2_91"/>
       <repopackage name="typelib-1_0-WebKit2-4_1"/>
       <repopackage name="typelib-1_0-Wnck-3_0"/>
       <repopackage name="typelib-1_0-Xdp-1_0"/>
