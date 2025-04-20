@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Apr 19 18:31:42 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.com>
+
+- Update to version 3.88.24:
+  * fixed authOmanagement detector integration test failure (#4013)
+  * Update canary.go (#4070)
+  * updated 24 a letter detectors with indeterminate verification error returns (#4061)
+  * feat(detectors): docker auth detector (#2677)
+  * Added support for indeterminate verification for letter `B` detectors (#4049)
+  * [Fix] Fixed Okta Detector Integration Test Case input (#4053)
+  * [Fix] Updated DigitalOcean Token Detector (#4052)
+  * [Fix] Updated DigitalOceanV2 Detector (#4050)
+  * (fix) Indeterminate verification issue in Clickup detector (#4047)
+  * Improved Baremetrics detector regex pattern (#4060)
+  * fix(deps): update module golang.org/x/net to v0.38.0 [security] (#4064)
+  * Improved Besttime detector regex pattern (#4059)
+  * Okta Detector - Added Check for Indeterminate Verification Results (#4045)
+  * [feat] Addition of Detector - Azure Subsciprtion Keys (#3998)
+  * Allow filesystem exclusion to eagerly prune the enumerated tree (#4008)
+  * fix(deps): update aws-sdk-go-v2 monorepo (#4037)
+  * fix(deps): update module github.com/aws/smithy-go to v1.22.3 (#4038)
+  * [Feat] Plaid API Analyzer (#4004)
+  * fix(deps): update module github.com/getsentry/sentry-go to v0.32.0 (#4030)
+  * updated go.mod (#4033)
+  * add custom build middleware to replace user agent (#4032)
+  * Better Test Output For Git Diff Parsing (#4018)
+  * updated convert api detector (#4017)
+  * Bitly Detector - Added support for indeterminate verification (#4031)
+  * (fix) domain regex issue in JiraToken detector  (#4005)
+  * Include complete gcp key for analysis (#4029)
+  * fix(deps): update module github.com/envoyproxy/protoc-gen-validate to v1.2.1 (#4028)
+  * fix(deps): update module go.uber.org/mock to v0.5.1 (#4019)
+  * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.2.1 (#4026)
+  * chore(deps): update sigstore/cosign-installer action to v3.8.1 (#4021)
+  * Reverted cloud.google.com/go/secretmanager to v1.14.2 (#4022)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.14.6 (#4012)
+  * fix(deps): update github.com/lrstanley/bubblezone digest to e13639e (#4003)
+  * fix(deps): update module github.com/xo/dburl to v0.23.6 (#4016)
+  * fix(deps): update github.com/avast/apkparser digest to e2100ee (#3965)
+  * [Fix] - Migrated github.com/xanzy/go-gitlab to gitlab.com/gitlab-org/api/client-go
+  * editing jenkins source to encode URLs
+
+-------------------------------------------------------------------
 Mon Apr 07 08:25:38 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.88.23:
