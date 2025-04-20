@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 16 14:28:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 22.7.1:
+  * Use GO:L3 on OCL Usages (#231)
+  * Add Size Check When checking NoOptimizationPadding (#230)
+  * Add MOCS variable for Xe2 (#228)
+  * Force Tile4 instead of Linear for flipchain resources (#229)
+  * Fix for type incompatibilities (#227)
+  * Fix to resolve Media and NEO sharing issue with Xe2compression
+    on BMG (#226)
+
+-------------------------------------------------------------------
 Mon Feb 10 12:19:14 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 22.6.0
