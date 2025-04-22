@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 18 10:30:50 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Bugs fixed:
+    - TOC occasionally doesn't work
+    - Crash moving over or clicking on title
+    - When searchbar has an existing query but is deselected,
+      Ctrl+F should refocus and select-all existing text of the
+      SearchEntry
+    - Fullscreen window based on metadata
+    - help: List "search-not-found.png" in media files
+    - Fix rendering lags when view is zoomed in and text is
+      selected
+    - Various memory leak fix
+    - Various fix for document signature
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 13 08:14:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

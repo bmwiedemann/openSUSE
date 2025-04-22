@@ -32,4 +32,25 @@
   packages removed. (forwarded request 1252839 from dimstar)</comment>
     <requestid>1252846</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a77285c25785527e4bae0127daf317c6</srcmd5>
+    <version>48.1</version>
+    <time>1745335781</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Bugs fixed:
+    - TOC occasionally doesn't work
+    - Crash moving over or clicking on title
+    - When searchbar has an existing query but is deselected,
+      Ctrl+F should refocus and select-all existing text of the
+      SearchEntry
+    - Fullscreen window based on metadata
+    - help: List &quot;search-not-found.png&quot; in media files
+    - Fix rendering lags when view is zoomed in and text is
+      selected
+    - Various memory leak fix
+    - Various fix for document signature
+  + Updated translations. (forwarded request 1270806 from iznogood)</comment>
+    <requestid>1271337</requestid>
+  </revision>
 </revisionlist>
