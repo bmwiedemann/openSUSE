@@ -874,4 +874,16 @@
   * perl: fix build when multiplicity is not available (#2243)</comment>
     <requestid>1268223</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>2acf5ea58128e0d35704b8db6357a000</srcmd5>
+    <version>4.6.2</version>
+    <time>1745335763</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.6.2:
+
+  Fixed
+  * core: fix write of weechat.log to stdout with weechat-headless --stdout (#2247)
+  * core: add refresh of window title on buffer switch, when option weechat.look.window_title is set</comment>
+    <requestid>1271254</requestid>
+  </revision>
 </revisionlist>
