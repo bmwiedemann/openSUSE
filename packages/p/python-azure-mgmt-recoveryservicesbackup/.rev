@@ -297,4 +297,18 @@
     CHANGELOG.md file provided with this package (forwarded request 1170678 from glaubitz)</comment>
     <requestid>1170788</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2a5797bea8bc63196edc794b4bb11386</srcmd5>
+    <version>9.2.0</version>
+    <time>1745335610</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section (forwarded request 1270819 from glaubitz)</comment>
+    <requestid>1270861</requestid>
+  </revision>
 </revisionlist>
