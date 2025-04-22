@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 21 19:50:12 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.12.3:
+Bugfixes
+  * Automatic image offset detection (for images using a custom
+    header) did not work correctly if the header contained a
+    string that would be identified as the start of a v1 section
+    header (these were only used before dwarfs-0.3.0).
+    If there was either "DWARFS\x02\x00" or "DWARFS\x02\x01" in
+    the header, offset detection would fail. The check has been
+    modified to peek further into the data and ensure this really
+    is a v1 section header, and also checking if the next section
+    header position can be derived from the length field.
+    It is still possible to construct a file system image where
+    offset detection will ultimately fail, but it is much less
+    likely with the change.
+- Changes in version 0.12.2:
+Bugfixes
+  *The dwarfs-0.12.0 release introduced a performance regression
+   where FLAC compression took more than twice as long as in the
+   previous releases. This has been fixed. FLAC decompression was
+   unaffected.
+
+-------------------------------------------------------------------
 Sun Apr 13 19:46:34 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.12.1: 

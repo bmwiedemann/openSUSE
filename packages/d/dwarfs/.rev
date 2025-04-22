@@ -44,4 +44,31 @@ Features
   * New hotness categorizer in mkdwarfs that allows a list of &quot;hot&quot;</comment>
     <requestid>1269054</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>39fed70a427610c4e7eaad6e8e8a52e7</srcmd5>
+    <version>0.12.3</version>
+    <time>1745335687</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.3:
+Bugfixes
+  * Automatic image offset detection (for images using a custom
+    header) did not work correctly if the header contained a
+    string that would be identified as the start of a v1 section
+    header (these were only used before dwarfs-0.3.0).
+    If there was either &quot;DWARFS\x02\x00&quot; or &quot;DWARFS\x02\x01&quot; in
+    the header, offset detection would fail. The check has been
+    modified to peek further into the data and ensure this really
+    is a v1 section header, and also checking if the next section
+    header position can be derived from the length field.
+    It is still possible to construct a file system image where
+    offset detection will ultimately fail, but it is much less
+    likely with the change.
+- Changes in version 0.12.2:
+Bugfixes
+  *The dwarfs-0.12.0 release introduced a performance regression
+   where FLAC compression took more than twice as long as in the
+   previous releases. This has been fixed. FLAC decompression was
+   unaffected.</comment>
+    <requestid>1271206</requestid>
+  </revision>
 </revisionlist>
