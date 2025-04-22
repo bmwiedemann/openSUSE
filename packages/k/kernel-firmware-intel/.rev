@@ -43,4 +43,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1266052</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>12e485c04e1216519521668fe7c1fc2c</srcmd5>
+    <version>20250419</version>
+    <time>1745335534</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250419 (git commit 5aa42075d00c):
+  * intel: ish: Update license file for ISH</comment>
+    <requestid>1271051</requestid>
+  </revision>
 </revisionlist>
