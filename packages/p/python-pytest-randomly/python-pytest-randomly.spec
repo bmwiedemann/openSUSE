@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-randomly
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 URL:            https://github.com/pytest-dev/pytest-randomly
 Source:         https://github.com/pytest-dev/pytest-randomly/archive/%{version}.tar.gz#/pytest-randomly-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
