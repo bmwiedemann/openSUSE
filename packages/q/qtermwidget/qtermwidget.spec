@@ -19,16 +19,15 @@
 %define  qt_ver 6
 %define  sover  2
 Name:           qtermwidget
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        The terminal widget for QTerminal
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/lxqt/qtermwidget
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5.0
 %if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
 %endif

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 17 22:35:54 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Fixed the problem with characters like '/'(U+29F8)
+  * Close the session correctly before destroying it
+  * Fixed URL highlighting on wrapping
+  * Handle double-column and small characters correctly on
+    calculating text width
+  * Fixed problem with characters wider than monospace
+  * Support combining characters
+  * Make too wide characters fit into available space
+  * Get rid of "Mq", which sometimes persisted at the top left
+    corner after the display was updated.
+  * Added support for auto-hiding inactive mouse cursor
+  * Fixed cursor blinking with subterminals
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Thu Jan 16 13:00:34 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Disable libutempter, it doesn't work anymore with the switch
