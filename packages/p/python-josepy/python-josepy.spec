@@ -19,14 +19,14 @@
 %define libname josepy
 %{?sle15_python_module_pythons}
 Name:           python-%{libname}
-Version:        1.15.0
+Version:        2.0.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
 URL:            https://github.com/certbot/josepy
 Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 1.5}
 BuildRequires:  %{python_module pip}

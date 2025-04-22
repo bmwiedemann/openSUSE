@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 17 18:07:11 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.0.0
+  * Breaking Change: PyOpenSSL has been fully removed. - Dropped objects:
+    - josepy.util.ComparableX509
+      - Functions now expect cryptography.x509 objects: josepy.json_util.encode_cert josepy.json_util.encode_csr josepy.jws.Header.x5c.encoder
+      - Functions now return cryptography.x509 objects: josepy.json_util.decode_cert josepy.json_util.decode_csr josepy.jws.Header.x5c.decoder
+  * Dropped support for Python 3.8.
+
+-------------------------------------------------------------------
 Wed Feb  5 08:59:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.15.0
