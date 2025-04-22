@@ -1,4 +1,188 @@
 -------------------------------------------------------------------
+Mon Apr 21 20:11:11 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1745266261.8745de3:
+  * tidy: Enforce blank lines before subs
+  * New script: os-autoinst-generate-needle-preview
+  * Revert removal of '%cmd' after regressions
+  * Remove unused variables and exports from testapi
+  * backend: Make screen check time exceed check configurable
+  * backend: Make stall detection factor configurable
+  * Retry syswrite in myjsonrpc if not all bytes were written
+  * Update Perl::Tidy to 20250311
+  * CI: Bump to codecov-action@v5
+  * Bring up network devices to avoid "(tapX): Operation not permitted"
+  * Prevent conflicts to ensure eth iface is assigned to one firewalld zone
+  * Mention for what asset types `autoinst_url` can be used
+  * Better error when syswrite fails in myjsonrpc
+  * Consistently use try/catch instead of 'if ' everywhere
+  * Enable validation of resumed asset downloads in svirt backend
+  * Avoid leftover rsync processes on svirt host
+  * Check for correct git warning when cloning an empty repository
+  * Adapt check for git error message to new version
+  * Fix regression from 055d2e67 in _set_ip arguments
+  * Ensure full coverage in the project
+  * Create test for script os-autoinst-openvswitch
+  * Enable is_shutdown to be used after "power('off')" on qemu
+  * Retry asset sync in svirt backend after timeouts
+  * testapi: allow keeping mouse in place after clicking
+  * script: Mark uncoverable package import as such
+  * codecov: Mark consoles/ as completely covered
+  * scripts: Rely on Pod::Usage being installed
+  * t: Cover invalid JSON in vars.json
+  * perltidy: Use new --pack-operator-types option
+  * perltidy: Update to 20250214.0.0
+  * Fix test API function `force_soft_failure`
+  * Fix return value of _dbus_call
+  * Fix log colors
+  * Use more Mojo::File operations in baseclass
+  * Use more Mojo::File operations in ocr.pm
+  * Use more Mojo::File operations in testapi.pm
+  * Use more Mojo::File operations in tools/
+  * t: Use Mojo::File in 04-check_vars_docu.t
+  * consoles: Simplify s3270 code
+  * Extract while loop body method in consoles::s3270
+  * Simplify consoles::s3270
+  * Add support for newline seperator in SCHEDULE variable
+  * Fix timeout of SSH commands after fc8ab5395 and ca4f085c
+  * Add unit test for code coverage of consoles/s3270.pm
+  * Remove undefined _kill_window() function from consoles/s3270.pm
+  * Use Feature::Compat::Try in testapi
+  * Use Feature::Compat::Try in script/os-autoinst-openvswitch
+  * Use Feature::Compat::Try in script/isotovideo
+  * Use Feature::Compat::Try in script/check_qemu_oom
+  * Use Feature::Compat::Try in osutils
+  * Use Feature::Compat::Try in consoles::sshXtermIPMI
+  * Use Feature::Compat::Try in consoles::VNC
+  * Use Feature::Compat::Try in consoles::VMWare
+  * Use Feature::Compat::Try in commands
+  * Use Feature::Compat::Try in bmwqemu
+  * Use Feature::Compat::Try in basetest
+  * Use Feature::Compat::Try in backend::qemu
+  * Use Feature::Compat::Try in backend::ipmi
+  * Use Feature::Compat::Try in backend::generalhw
+  * Use Feature::Compat::Try in backend::baseclass
+  * Use Feature::Compat::Try in autotest
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Proc
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Utils
+  * Use Feature::Compat::Try in OpenQA::Isotovideo::Runner
+  * Use Feature::Compat::Try in t
+  * Ensure a clean swtpm directory
+  * Use Feature::Compat::Try in place of Try::Tiny
+  * t: Add reason for undefined Pod::Coverage result
+  * Avoid duplicating common rsync arguments in svirt code
+  * Show download statistics in svirt backend when downloading assets
+  * Use distinct and lower timeout for rsync call in svirt backend
+  * Extend timeout for rsync commands done by the svirt backend to 15 min
+  * Add dependency on Feature::Compat::Try
+  * t: Consistently use Test::Exception method instead of manual eval checks
+  * t: Fix check for simplified Test::Exception
+  * Remove unused 'try' import
+  * Fix documentation for force_soft_failure and record_soft_failure
+  * t: Capture SYNC_ASSETS_HOOK debug output
+  * Remove unused module Test::MockModule from 01-test-needle
+  * Remove Test::Fatal dependency
+  * Modify connect_and_login() test to catch multiline carp warning
+  * Apply suggestions from code review
+  * Add unit tests for consoles/s3270.pm
+  * t: Use more simple prototyped Test::Exceptions functions
+  * t: Focus on using Test::Exception only instead of Test::Fatal
+  * t: Ensure we use implicit Test::Exception in all places
+  * Fix race condition when autotest terminates
+  * Make it obvious when autotest receives SIGTERM in any case
+  * Increase vnctest script coverage
+  * Remove call to unmock from code review suggestion
+  * Fix error handling when reading output of SSH commands after 0d09ec97e
+  * Remove time comparison with dv_timings_last_check
+  * Add complete statement coverage for consoles::sshVirtshSUT
+  * qemu: Use proper check for defined
+  * Fix error handling when reading output of SSH commands after 0d09ec97e
+  * qemu: Fix warning when saving non-attached storage
+  * Add full code coverage for consoles/sshXtermIPMI.pm
+  * Call SYNC_ASSETS_HOOK before downloading fresh needles too
+  * Add unit tests for consoles/sshXtermIPMI.pm
+  * Extend documentation of SSH related timeout parameters
+  * Allow specifying the timeout on `get_cmd_output` calls
+  * Avoid endless loop in case of SSH read errors in `check_ssh_serial`
+  * Add more code coverage for video_stream.pm
+  * Clone the disk image with nvram for vmware guest
+  * Update loadtestdir with correct paths
+  * Fix passing of variables
+  * Extract method in OpenQA::Isotovideo::Dewebsockify
+  * t: Fix 'The signatures feature is experimental' in t/39-dewebsockify.t
+  * Add test coverage for sshXtermVt
+  * Add coverage for tags subroutine when called with more than 2
+  * Update perltidy to 20250105
+  * t: Fix hidden output of 'diag explain'
+  * Add test covering dewebsockify modulino
+  * Make script/dewebsockify a Modulino
+  * Improve test for websocket error handling
+  * Update Perl::Tidy to 20240903
+  * Add test for needles::tags subroutine
+  * Remove save subroutine since is not used anymore
+  * Refactor _load_image bmwqemu::diag in one line
+  * Add test for needle tag duplication
+  * Add handle needle new invalid click point
+  * Add handle broken json file for new needle
+  * Add test for json file not under needle directory
+  * Correct link to ci badge
+  * autotest/loadtest: Update test fullname along with name when duplicated
+  * Add subtests for commands.pm
+  * Fix warn+return precendence
+  * Remove extra arguments from testapi::send_key()
+  * Modify loadtestdir in autotest for more code coverage
+  * t: cover both old and new qemu paths in 18-backend-qemu.t
+  * Revert incorrect fixes for qemu test coverage
+  * Remove unreachable states in tests 18-backend-qemu
+  * Fix code coverage for qemu.pm
+  * t: fix tests for #2550 for old and new qemu
+  * Fix test of qemu backend
+  * Enable multifd support
+  * Remove redundant newline in "GOT GO" message
+  * autotest: Simplify with post-if
+  * Add unit test for 'ensure_installed' to improve code coverage
+  * Drop some orphaned lines about gocrbin
+  * Add more subtests for distribution.pm
+  * Replace print with bmwqemu::diag in autotest.pm
+  * Add subtest for autotest.pm
+  * Add test for the old net ssh2 error
+  * Slightly simplify autotest
+  * Remove _typing_limit subroutine because it's never used
+  * Update t/08-autotest.t
+  * Remove subs on vnc_base that are already declared on base
+  * Enable more unit test code for codecoverage
+  * Add more subtests for autotest.pm
+  * Add script/check_qemu_oom to fully covered paths on codecov
+  * Add lockapi fully coverage 100% in codecov
+  * Add lockapi::mutex_wait test in t/30-mmapi.t
+  * Skip 28-signalblocker test in qemu emulation
+  * Export handle_read_error function from read_json
+  * Set a bmwqemu diag uncoverable
+  * Refactor utility functions for myjsonrpc
+  * Add coverage test for written bytes errors
+  * Avoid adding message about termination from myjsonrpc as reason
+  * Fix unhandled output "Sending tests_done" in t/08-autotest.t
+  * Avoid Perl warning about when handling tags to assert
+  * Ensure full statement coverage in consoles::sshVirtsh
+  * Extend sshVirtsh console test coverage
+  * Add logging and error handling
+  * video_stream: add support for ustreamer >= 6.10
+  * video_stream: add support for RGB3 format
+  * video_stream: typo fix
+  * video_stream: adjust raw sink name for ustreamer >= 6.5
+  * Fix: console reset on milestone loading
+  * codecov: Mark basetest as completely covered
+  * basetest: Simplify record_screenfail to increase coverage
+  * Remove obsolete basetest::ocr_checklist
+  * cv: Mark extraordinary error handling as uncoverable
+  * Handle PID logging in Xvnc test
+  * Cover deprecation logging
+  * Remove obsolete amt backend
+  * Make actually use of `%python_support_requires` for Python support
+  * snd2png: Clamping fix
+  * dist: Bump version to semver-compliant 5
+
+-------------------------------------------------------------------
 Fri Mar 28 04:03:07 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1743091574.1f9ae10:
