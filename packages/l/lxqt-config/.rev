@@ -655,4 +655,12 @@ this patch makes lxqt-config also include desktop files with the x-lxqt category
   * Better layout for Appearance → GTK Style.</comment>
     <requestid>1244246</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ef01689b7801902214f3ac1cb8bb0997</srcmd5>
+    <version>2.2.0</version>
+    <time>1745335608</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271086</requestid>
+  </revision>
 </revisionlist>

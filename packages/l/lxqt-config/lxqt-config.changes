@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 20 16:35:38 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Replaced qMin, qMax, qBound, qRound, and qAbs with standard
+    functions, and cleaned up the code.
+  * let Keyboard and Mouse Settings be shown partially under
+    Wayland
+  * Apply cursor changes to GTK in Keyboard and Mouse settings if
+    needed
+  * Fixed screen images with different scales in the monitors page
+    of LXQt Monitor Settings
+  * Cleaned up the code of fast options in LXQt Monitor Settings
+
+-------------------------------------------------------------------
 Fri Feb  7 18:17:21 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.1:
