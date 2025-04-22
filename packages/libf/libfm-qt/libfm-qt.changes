@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 17 21:22:26 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Code cleanup and Update
+  * Custom options are enabled for local terminals list
+  * Common apps are listed in "Open With" menu when multiple files
+    with different MIME types are selected
+  * Try better to change directory on mounting by clicking in the
+    side pane
+
+-------------------------------------------------------------------
 Wed Nov  6 21:15:56 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:

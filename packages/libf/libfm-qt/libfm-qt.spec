@@ -16,10 +16,10 @@
 #
 
 
-%define   _ver  15
+%define   _ver  16
 %define  _name  libfm-qt6
 Name:           libfm-qt
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Core library of PCManFM-Qt (Qt binding for libfm)
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -27,13 +27,13 @@ URL:            https://github.com/lxqt/libfm-qt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
-BuildRequires:  cmake(lxqt-menu-data)
+BuildRequires:  cmake(lxqt-menu-data) = %{version}
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
