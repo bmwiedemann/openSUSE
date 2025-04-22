@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-money
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,8 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-django-money
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Django support for using money and currency fields
 License:        BSD-3-Clause
@@ -29,18 +27,18 @@ Source:         https://github.com/django-money/django-money/archive/%{version}.
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 1.11
-Requires:       python-py-moneyed >= 0.8.0
+Requires:       python-Django >= 2.2
+Requires:       python-py-moneyed >= 2.0
 Requires:       python-setuptools
 Recommends:     python-certifi
 Suggests:       python-django-reversion
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module Django >= 1.11}
+BuildRequires:  %{python_module Django >= 2.2}
 BuildRequires:  %{python_module django-reversion}
-BuildRequires:  %{python_module py-moneyed >= 0.8.0}
-BuildRequires:  %{python_module pytest >= 3.1.0}
+BuildRequires:  %{python_module py-moneyed >= 2.0}
+BuildRequires:  %{python_module pytest >= 8.2}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module setuptools}
 # /SECTION
@@ -66,9 +64,7 @@ PYTHONPATH=.
 export DJANGO_SETTINGS_MODULE=tests.settings
 export PYTHONPATH=$(pwd -P)
 # we don't have python-mixer and it is needed only for tests
-# test_currency_field_null_switch_not_triggered_from_default_currency is
-# expected to fail according to gh#django-money/django-money#638
-%pytest -k "not (mixer or test_no_deprecation_warning or test_currency_field_null_switch_not_triggered_from_default_currency)"
+%pytest -k "not mixer"
 
 %files %{python_files}
 %doc README.rst
