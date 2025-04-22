@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Apr 22 12:07:24 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.21.1:
+  Bug Fixes:
+  * Don’t truncate branch name
+  * Hi extension icon wasnt working as it was in the wrong aray
+  Miscellaneous Tasks:
+  * Add MS DOS icon for *.com
+  * Add ruby icon for config.ru, Gemfile, Gemfile.lock, procfile,
+    rake, rakefile and change ruby icon
+  * Add python icon for *.pxd and *.pyx
+  * Add markdown icon for *.mdx
+  * Add fsharp icon for *.f# and *.fsscript
+  * Add clojure icon for *.cljc and *.edn
+
+-------------------------------------------------------------------
 Wed Apr  2 13:45:01 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.0:

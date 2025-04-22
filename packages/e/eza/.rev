@@ -1074,4 +1074,23 @@
   * Fix unused PermissionsPlus fields</comment>
     <requestid>1266568</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>8536eec03e3fb198810a5593ada774d1</srcmd5>
+    <version>0.21.1</version>
+    <time>1745335868</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.1:
+  Bug Fixes:
+  * Don’t truncate branch name
+  * Hi extension icon wasnt working as it was in the wrong aray
+  Miscellaneous Tasks:
+  * Add MS DOS icon for *.com
+  * Add ruby icon for config.ru, Gemfile, Gemfile.lock, procfile,
+    rake, rakefile and change ruby icon
+  * Add python icon for *.pxd and *.pyx
+  * Add markdown icon for *.mdx
+  * Add fsharp icon for *.f# and *.fsscript
+  * Add clojure icon for *.cljc and *.edn</comment>
+    <requestid>1271888</requestid>
+  </revision>
 </revisionlist>
