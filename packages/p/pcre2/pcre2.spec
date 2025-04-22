@@ -2,7 +2,7 @@
 # spec file for package pcre2
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,22 @@
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 Name:           pcre2
-Version:        10.44
+Version:        10.45
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
-License:        BSD-3-Clause
+# code: BSD-3-Clause WITH PCRE2-exception
+# testdata: Public Domain
+# JIT-compiler: BSD-2-Clause
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause AND SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
-URL:            https://www.pcre.org
-Source0:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
-Source2:        https://github.com/PhilipHazel/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
+URL:            https://pcre2project.github.io/pcre2/
+Source0:        https://github.com/PCRE2Project/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source2:        https://github.com/PCRE2Project/pcre2/releases/download/%{name}-%{version}/%{name}-%{version}.tar.bz2.sig
+# https://github.com/PCRE2Project/pcre2/blob/master/SECURITY.md
 Source3:        %{name}.keyring
 Source4:        baselibs.conf
 # PATCH-FIX-OPENSUSE tchvatal@suse.cz upstream thinks it is good idea to use rpath, taken from RH
 Patch1:         pcre2-10.10-multilib.patch
-# PATCH-FIX-UPSTREAM: patch fixes issue #415 on GitHub: Test suite fails when targeting i686, fix taken from PR #418
-Patch2:         pcre2-10.44-github-issue-415.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -52,6 +54,7 @@ API.
 
 %package        devel
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception
 Group:          Development/Libraries/C and C++
 Requires:       libpcre2-16-0 = %{version}
 Requires:       libpcre2-32-0 = %{version}
@@ -69,6 +72,7 @@ API.
 
 %package        devel-static
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          Development/Libraries/C and C++
 Requires:       pcre2-devel = %{version}
 
@@ -84,6 +88,7 @@ This package contains static versions of the PCRE2 libraries.
 
 %package -n libpcre2-8-0
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          System/Libraries
 
 %description -n libpcre2-8-0
@@ -99,6 +104,7 @@ This PCRE2 library variant supports 8-bit and UTF-8 strings.
 
 %package -n libpcre2-16-0
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          System/Libraries
 
 %description -n libpcre2-16-0
@@ -113,6 +119,7 @@ libpcre2-16 supports 16-bit and UTF-16 strings.
 
 %package -n libpcre2-32-0
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          System/Libraries
 
 %description -n libpcre2-32-0
@@ -127,6 +134,7 @@ libpcre2-32 supports 32-bit and UTF-32 strings.
 
 %package -n libpcre2-posix3
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          System/Libraries
 
 %description -n libpcre2-posix3
@@ -141,6 +149,7 @@ pcre2-posix provides a POSIX-compatible API to the PCRE2 engine.
 
 %package doc
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception
 Group:          Documentation/HTML
 BuildArch:      noarch
 
@@ -154,6 +163,7 @@ API.
 
 %package tools
 Summary:        A library for Perl-compatible regular expressions
+License:        BSD-3-Clause WITH PCRE2-exception AND BSD-2-Clause
 Group:          Productivity/Text/Utilities
 Recommends:     %{name}-doc
 
@@ -216,37 +226,37 @@ export LANG=POSIX
 %ldconfig_scriptlets -n libpcre2-posix3
 
 %files -n libpcre2-8-0
-%license COPYING LICENCE
-%doc AUTHORS ChangeLog NEWS README
+%license LICENCE.md
+%doc AUTHORS.md ChangeLog NEWS README
 %{_libdir}/libpcre2-8.so.*
 
 %files -n libpcre2-16-0
-%license LICENCE
+%license LICENCE.md
 %{_libdir}/libpcre2-16.so.*
 
 %files -n libpcre2-32-0
-%license LICENCE
+%license LICENCE.md
 %{_libdir}/libpcre2-32.so.*
 
 %files -n libpcre2-posix3
-%license LICENCE
+%license LICENCE.md
 %{_libdir}/libpcre2-posix.so.*
 
 %files tools
-%license LICENCE
+%license LICENCE.md
 %{_bindir}/pcre2grep
 %{_bindir}/pcre2test
 %{_mandir}/man1/pcre2grep.1%{?ext_man}
 %{_mandir}/man1/pcre2test.1%{?ext_man}
 
 %files doc
-%license COPYING LICENCE
-%doc AUTHORS ChangeLog NEWS README
+%license LICENCE.md
+%doc AUTHORS.md ChangeLog NEWS README
 %doc doc/html doc/*.txt
 %doc %{_defaultdocdir}/pcre2-doc
 
 %files devel
-%license LICENCE
+%license LICENCE.md
 %{_bindir}/pcre2-config
 %{_includedir}/*
 %{_libdir}/*.so
@@ -258,7 +268,7 @@ export LANG=POSIX
 %{_mandir}/man3/*%{ext_man}
 
 %files devel-static
-%license LICENCE
+%license LICENCE.md
 %{_libdir}/*.a
 
 %changelog

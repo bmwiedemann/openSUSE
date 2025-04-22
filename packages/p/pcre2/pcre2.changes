@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Mar 30 15:44:02 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 10.45:
+  * New upstream maintainers (and signing key)
+  * Update Unicode support to UCD 16
+  * Case-insensitive matching of Unicode properties Ll, Lt, and Lu
+    has been changed to match Perl
+  * Case-insensitive matching of backreferences now respects the
+    PCRE2_EXTRA_CASELESS_RESTRICT option
+  * Parsing of the \x escape is stricter, and is no longer parsed
+    as an escape for the NUL character if not followed by '{' or
+    a hexadecimal digit. Use \x00 instead.
+  * Add a new feature called scan substring. This is a type of
+    assertion which matches the content of a capturing block to a
+    sub-pattern.
+  * Add support for UTS#18 compatible character classes
+  * Add support for Perl-style extended character classes
+  * JIT compilation now fails with the new error code
+    PCRE2_ERROR_JIT_UNSUPPORTED for patterns which use features not
+    supported by the JIT compiler.
+  * New options PCRE2_EXTRA_NO_BS0 (disallow \0 as an escape for
+    the NUL character); PCRE2_EXTRA_PYTHON_OCTAL (use Python
+    disambiguation rules for deciding whether \12 is a
+    backreference or an octal escape); PCRE2_EXTRA_NEVER_CALLOUT
+    (disable callout syntax entirely); PCRE2_EXTRA_TURKISH_CASING
+    (use Turkish rules for case-insensitive matching).
+  * Add new API function pcre2_set_optimize() for
+    controlling which optimizations are enabled.
+  * A variety of extensions have been made to pcre2_substitute()
+    and its syntax for replacement strings. These now support:
+    \123 octal escapes; titlecasing \u\L; \1 backreferences; \g<1>
+    and $<NAME> backreferences; $& $` $' and $_; new function
+    pcre2_set_substitute_case_callout() to allow locale-aware case
+    transformation.
+- drop pcre2-10.44-github-issue-415.patch, included upstream
+- update license to BSD-3-Clause WITH PCRE2-exception and cascade
+  to subpackages and parts (boo#1240358)
+
+-------------------------------------------------------------------
 Fri Aug 16 17:37:57 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix GitHub issue #415: Test suite fails when targeting i686.
