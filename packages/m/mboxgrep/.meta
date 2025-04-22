@@ -1,0 +1,7 @@
+<package name="mboxgrep" project="openSUSE:Factory">
+  <title>Mailbox scanning tool</title>
+  <description>mboxgrep is a small utility that scans a mailbox for messages matching a
+regular expression. Found messages can be either displayed on standard output,
+counted, deleted, piped to a shell command or written to another mailbox.</description>
+  <url>https://mboxgrep.org/</url>
+</package>
