@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Mail
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,6 +65,6 @@ sed -i 's/test_unicode_sender/_test_unicode_sender/' tests.py
 %license LICENSE
 %{python_sitelib}/flask_mail.py
 %pycache_only %{python_sitelib}/__pycache__/flask_mail.*.py*
-%{python_sitelib}/Flask_Mail-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Mm]ail-%{version}.dist-info
 
 %changelog

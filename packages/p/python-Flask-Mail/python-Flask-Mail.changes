@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 02:19:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
 Sun Feb 11 05:34:56 UTC 2024 - John Vandenberg <jayvdb@gmail.com>
 
 - Update test syntax.
