@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 19 22:05:31 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Important: Please read the migration guide in regards to v3.3.6 changes
+
+- Version 3.3.6 changes
+  * The incoming request path is now cleaned before being used to
+    match the router rules and sent to the backends. Any /../, /./ or duplicate
+    slash segments in the request path is interpreted and/or collapsed.
+
+-------------------------------------------------------------------
+Sat Apr 19 22:04:38 UTC 2025 - Eric Torres <eric.torres@its-et.me>
+
+- Please read the migration guide in regards to v3.3.5 changes
+
+- Version 3.3.5 changes
+  - k8s/gatewayapi
+    * Set scheme to https with BackendTLSPolicy (#11586 by rtribotte)
+  - middleware
+    * Revert compress middleware algorithms priority to v2 behavior (#11641 by rtribotte)
+    * Do not abort request when response content-type is malformed (#11628 by kevinpollet)
+    * Compress data on flush when compression is not started (#11583 by kevinpollet)
+
+-------------------------------------------------------------------
 Mon Mar 31 00:02:54 UTC 2025 - Eric Torres <eric.torres@its-et.me>
 
 - Change traefik user's home directory to /var/lib/traefik. This
