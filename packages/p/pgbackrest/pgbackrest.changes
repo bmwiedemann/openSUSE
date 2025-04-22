@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Apr 22 01:26:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.55.0
+  Verification Improvements and PostgreSQL 18 Support
+  - Bug Fixes:
+    - Fix block incremental restore issue on non-default
+      repository. (Reviewed by David Christensen, Aleksander
+      Łukasz. Reported by Aleksander Łukasz.)
+    - Do not set recovery_target_timeline=current for PostgreSQL <
+      12. (Reviewed by Stefan Fercot.)
+    - Fix expire archive range logging. (Reviewed by Stefan Fercot.
+      Reported by Aleš Zelený.)
+    - Fix error reporting for queries with no results. (Reviewed by
+      Stefan Fercot. Reported by Susantha Bathige.)
+  - Features:
+    - Verify recovery target timeline. (Reviewed by Stefan Fercot.)
+    - Allow verification of a specified backup. (Contributed by
+      Maxim Michkov. Reviewed by David Steele.)
+    - Add support for S3/GCS requester pays. (Contributed by
+      Timothée Peignier. Reviewed by David Steele.)
+    - PostgreSQL 18 experimental support. (Reviewed by Stefan
+      Fercot.)
+    - Allow connections to PostgreSQL on abstract domain sockets.
+      (Reviewed by Chris Bandy. Suggested by Chris Bandy.)
+    - Add numeric output to version command. (Contributed by Stefan
+      Fercot. Reviewed by David Steele.)
+  - Improvements:
+    - Allow backup command to operate on remote repositories.
+      (Reviewed by Stefan Fercot.)
+    - Use lz4 for protocol compression. (Reviewed by Stefan
+      Fercot.)
+    - Calculate content-md5 on S3 only when required. (Reviewed by
+      David Christensen.)
+    - Warn when a value for a multi-key option is overwritten.
+      (Reviewed by David Christensen, Stefan Fercot.)
+    - Add detail logging for expired archive path. (Contributed by
+      Stefan Fercot. Reviewed by David Steele.)
+    - Remove support for PostgreSQL 9.4. (Reviewed by Stefan
+      Fercot.)
+    - Remove autoconf/make build. (Reviewed by David Christensen.)
+  - Documentation Improvements:
+    - Fix documentation for specifying multiple stanzas with
+      tls-server-auth. (Reviewed by David Christensen, Stefan
+      Fercot. Suggested by Terry MacAndrew.)
+    - Clarify incremental backup expiration. (Reviewed by Stefan
+      Fercot.)
+    - Clarify requirement for local/remote pgBackRest versions to
+      match. (Contributed by Greg Clough. Reviewed by David
+      Steele.)
+    - Add FAQ about exporting self-contained cluster. (Contributed
+      by Stefan Fercot. Reviewed by David Steele.)
+    - Caveat --tablespace-map-all regarding tablespace creation.
+      (Reviewed by Stefan Fercot, Christophe Courtois. Suggested by
+      Christophe Courtois.)
+    - Clarify behavior of --repo-retention-full-type. (Reviewed by
+      Antoine Beaupré. Suggested by Antoine Beaupré.)
+    - Change --process-max recommendation for object stores to
+      --repo-bundle. (Reviewed by Stefan Fercot.)
+    - Update unix_socket_directory to unix_socket_directories.
+      (Contributed by hyunkyu han. Reviewed by David Steele.)
+    - Recommend not placing spool-path within pg_xlog/pg_wal.
+      (Reviewed by Martín Marqués, Don Seiler. Suggested by Martín
+      Marqués.)
+- refreshed patches:
+  - libpq-fe.h_localisation.patch
+  - use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Mon Jan 20 16:46:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.54.2
