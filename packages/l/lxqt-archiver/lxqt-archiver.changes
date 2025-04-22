@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 17 23:38:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Building is done with 7zip by default
+  * Use 7z to open rar archives
+  * Show password prompt with list-protected 7z archives
+  * Added dedicated support for bsdtar
+  * Show targets of link items
+  * Added some menu bar icons
+  * Added window titles to dialogs
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Nov  6 21:25:52 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 1.1.0:
