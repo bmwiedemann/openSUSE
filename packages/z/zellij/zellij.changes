@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 21 11:48:49 UTC 2025 - gerald_chen@foxmail.com
+
+- Update to version 0.42.2:
+  * chore(release): v0.42.2
+  * chore: update patch version
+  * fix(utils): Re-export prost (#4133)
+  * docs(changelog): deps upgrade
+  * fix(deps): fix --locked build on rust 1.86 (#4118)
+  * performance(render): improve rendering performance by consolidating renders and introducing repaint_delay (#4100)
+  * build: Don't re-export foreign crates in utils (#4087)
+  * build: Don't use default features (#4086)
+  * chore: Introduce workspace dependencies (#4085)
+  * refactor(terminal): log scroll region as tuple rather than Option<tuple> (#4082)
+  * chore(repo): update development version
+  * chore(release): v0.42.1
+  * docs(changelog): windows terminal fix
+  * fix(mouse): fix mouse handling in windows terminal (#4065) (#4076)
+  * chore(repo): update development version
+
+-------------------------------------------------------------------
 Wed Mar 19 10:09:44 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Include about.wasm plugin to build.
