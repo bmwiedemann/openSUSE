@@ -378,4 +378,12 @@
   * Fixed a regression that broke case-insensitive filtering in some cases.</comment>
     <requestid>1241222</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>fd5a1b50b6eba3a62829663c650f8d7f</srcmd5>
+    <version>2.2.0</version>
+    <time>1745335591</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270851</requestid>
+  </revision>
 </revisionlist>

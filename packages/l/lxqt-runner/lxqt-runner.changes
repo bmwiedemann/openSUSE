@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Apr 17 22:53:52 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Make HOME and END keys work inside the text entry
+  * Wayland screens are handled by using their names, not numbers
+  * The width is set by percentage on Wayland (in config dialog)
+  * Best positioning of lxqt-runner with multi-screen Wayland
+  * Implemented show/hide behavior for the Wayland shortcut
+  * Added some tooltips on Wayland
+
+-------------------------------------------------------------------
 Wed Jan 29 15:44:36 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.2:
