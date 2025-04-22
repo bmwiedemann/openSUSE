@@ -134,7 +134,7 @@ Wed Mar 12 08:12:21 UTC 2025 - XLiang@suse.com
   * Dev: migration: fix incorrect bindnetaddr when migrating a multicast cluster (jsc#PED-8252)
   * Fix: migration: IndexError when there is only one interface (jsc#PED-8252)
   * Dev: migration: refine the message about unsupported component version (jsc#PED-8252)
-  * Dev: migration: add a message about corosync.conf.bak (jsc#PED-82582)
+  * Dev: migration: add a message about corosync.conf.bak (jsc#PED-8252)
   * Fix: migration: should not report need migration when the cluster has some non-fatal problems which need manual fix (jsc#PED-8252)
   * Dev: migration: no need to check if cluster services is stopped (jsc#PED-8252)
   * Dev: migration: add a checker for cib schema version (jsc#PED-8252)
