@@ -46,5 +46,4 @@ LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/
 ENV LANG="C.UTF-8"
 ENV RUBY_VERSION="%%rb_ver%%"
 ENV RUBY_MAJOR="%%rb_maj%%"
-
 RUN set -euo pipefail; sed -i 's/--format-executable/--no-format-executable/' /etc/gemrc
