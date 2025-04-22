@@ -93,4 +93,27 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek: Add new mt8188 SOF firmware</comment>
     <requestid>1268123</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1572e5de7936fd8dcabe5a2fdfa20f7c</srcmd5>
+    <version>20250415</version>
+    <time>1745335536</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250415 (git commit 2f411c10e457):
+  * intel: avs: Update topology file for I2S Analog Devices 4567
+  * intel: avs: Update topology file for I2S Realtek 5663
+  * intel: avs: Update topology file for I2S Realtek 5640
+  * intel: avs: Update topology file for I2S Realtek 5514
+  * intel: avs: Update topology file for I2S Realtek 298
+  * intel: avs: Update topology file for I2S Realtek 286
+  * intel: avs: Update topology file for I2S Realtek 274
+  * intel: avs: Update topology file for I2S Nuvoton 8825
+  * intel: avs: Update topology file for I2S Maxim 98927
+  * intel: avs: Update topology file for I2S Maxim 98373
+  * intel: avs: Update topology file for I2S Maxim 98357a
+  * intel: avs: Update topology file for HDAudio codecs
+  * intel: avs: Update topology file for HDMI codecs
+  * intel: avs: Update topology file for Digital Microphone Array
+  * intel: avs: Update topology file for I2S Dialog 7219</comment>
+    <requestid>1271052</requestid>
+  </revision>
 </revisionlist>

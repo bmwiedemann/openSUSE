@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 15 14:55:33 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250415 (git commit 2f411c10e457):
+  * intel: avs: Update topology file for I2S Analog Devices 4567
+  * intel: avs: Update topology file for I2S Realtek 5663
+  * intel: avs: Update topology file for I2S Realtek 5640
+  * intel: avs: Update topology file for I2S Realtek 5514
+  * intel: avs: Update topology file for I2S Realtek 298
+  * intel: avs: Update topology file for I2S Realtek 286
+  * intel: avs: Update topology file for I2S Realtek 274
+  * intel: avs: Update topology file for I2S Nuvoton 8825
+  * intel: avs: Update topology file for I2S Maxim 98927
+  * intel: avs: Update topology file for I2S Maxim 98373
+  * intel: avs: Update topology file for I2S Maxim 98357a
+  * intel: avs: Update topology file for HDAudio codecs
+  * intel: avs: Update topology file for HDMI codecs
+  * intel: avs: Update topology file for Digital Microphone Array
+  * intel: avs: Update topology file for I2S Dialog 7219
+
+-------------------------------------------------------------------
 Wed Apr  9 10:02:02 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250408 (git commit c1a774f36657):
