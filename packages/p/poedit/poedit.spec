@@ -1,7 +1,7 @@
 #
 # spec file for package poedit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,6 @@ Requires:       gettext-tools
 BuildRequires:  cld2-devel
 %endif
 %if %{with crowdin_integration}
-BuildRequires:  cpprest-devel >= 2.5.0
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(openssl)
 %endif
