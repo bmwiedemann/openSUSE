@@ -17,7 +17,7 @@
 
 
 Name:           papi
-Version:        7.1.0
+Version:        7.2.0b2
 Release:        0
 Summary:        Performance Application Programming Interface
 License:        BSD-3-Clause
@@ -25,7 +25,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://icl.cs.utk.edu/papi/index.html
 Source:         http://icl.cs.utk.edu/projects/papi/downloads/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch1:         python3.patch
 
 BuildRequires:  autoconf >= 2.61
 BuildRequires:  automake
@@ -37,7 +36,6 @@ BuildRequires:  libsensors4-devel
 BuildRequires:  linux-kernel-headers
 BuildRequires:  ncurses-devel
 BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #PAPI doesn't support the s390 architecture
 ExcludeArch:    s390 s390x
 %ifarch %ix86 x86_64 ia64
@@ -94,7 +92,6 @@ This package contains the PAPI runtime library.
 
 %prep
 %setup -q -n %{name}-%{version}
-%autopatch -p1
 
 # Create baselibs.conf dynamically
 cat > %{_sourcedir}/baselibs.conf  <<EOF
@@ -118,6 +115,9 @@ export CFLAGS="%{optflags} -Wno-unused-parameter"
 
 make DOCDIR=%{_defaultdocdir}/%{name} %{?_smp_mflags}
 
+# Remove env usage from shebangs on every *.py file
+find . -name "*.py" -exec sed -i 's"#!/usr/bin/env python3"#!/usr/bin/python3"g' {} +
+
 %install
 # for some reason this isn't being created by install before cp of
 # papi_hl_output_writer.py occurs, which results in %{_bindir} as regular file
@@ -133,6 +133,7 @@ chrpath --delete %{buildroot}%{_libdir}/*.so*
 /sbin/ldconfig
 
 %files
+%license LICENSE.txt
 %defattr(-,root,root)
 %{_bindir}/papi_clockres
 %{_bindir}/papi_command_line
@@ -150,7 +151,7 @@ chrpath --delete %{buildroot}%{_libdir}/*.so*
 %{_bindir}/papi_hl_output_writer.py
 %{_datadir}/%{name}
 %{_bindir}/papi_avail
-%doc ChangeLog*.txt LICENSE.txt README.md RELEASENOTES.txt
+%doc ChangeLog*.txt README.md RELEASENOTES.txt
 
 %files devel
 %defattr(-,root,root)
