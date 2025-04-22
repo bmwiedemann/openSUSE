@@ -462,4 +462,12 @@ Dependency update required for rubocop update:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221908</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>256cbab29916ee902dadb6b1b20d3587</srcmd5>
+    <version>1.75.2</version>
+    <time>1745335563</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.75.2</comment>
+    <requestid>1269738</requestid>
+  </revision>
 </revisionlist>
