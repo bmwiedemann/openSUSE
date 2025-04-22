@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Mon Apr 21 14:51:45 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.1.1330:
+ * patch 9.1.1330: may receive E315 in terminal
+ * patch 9.1.1329: cannot get information about command line completion
+ * patch 9.1.1328: too many strlen() calls in indent.c
+ * patch 9.1.1327: filetype: nroff detection can be improved
+ * runtime(doc): cross-link :| meaning :p and explain E749
+ * runtime(doc): style: clarify to prefer 2 spaces after a sentence
+ * runtime(pov): deprecate `#render` and `#statistics` in syntax script
+ * patch 9.1.1326: invalid cursor position after 'tagfunc'
+ * runtime(keymaps): update Brazilian keymaps
+ * patch 9.1.1325: tests: not checking error numbers properly
+ * runtime(doc): clarify 'includeexpr' is not used for <cfile>
+ * runtime(filetype): improve *.h filetype detection
+ * runtime(indent-tests): Raise timeouts for "search*()"es
+ * runtime(indent-tests): Annotate timed "search*()"es for tracing
+ * runtime(indent-tests): Instrument timed "search*()" calls
+ * patch 9.1.1324: undefined behaviour if X11 connection dies
+ * patch 9.1.1323: b:undo_ftplugin not executed when re-using buffer
+ * runtime(nix): set iskeyword and b:match_words in ftplugin
+ * runtime(doc): clarify "nearest" value for 'completeopt'
+ * runtime(doc): Tweak documentation style a bit
+ * patch 9.1.1322: small delete register cannot paste multi-line correctly
+ * patch 9.1.1321: filetype: MS ixx and mpp files are not recognized
+ * patch 9.1.1320: filetype: alsoft config files are not recognized
+ * patch 9.1.1319: Various typos in the code, issue with test_inst_complete.vim
+ * patch 9.1.1318: tests: test_format fails
+ * runtime(jjdescription): Don't require a space to start comments
+ * patch 9.1.1317: noisy error when restoring folds from session fails
+ * patch 9.1.1316: missing memory allocation failure in os_mswin.c
+ * patch 9.1.1315: completion: issue with fuzzy completion and 'completefuzzycollect'
+ * patch 9.1.1314: max allowed string width too small
+ * patch 9.1.1313: compile warning about uninitialized value
+ * patch 9.1.1312: tests: Test_backupskip() fails when HOME is defined
+ * patch 9.1.1311: completion: not possible to limit number of matches
+ * patch 9.1.1310: completion: redundant check for preinsert effect
+ * runtime(gleam): Update ftplugin, use recommended_style config variable
+ * patch 9.1.1309: tests: no test for 'pummaxwidth' with non-truncated "kind"
+ * runtime: set 'cpoptions' for line-continuation in various runtime files
+ * runtime(tar): remove dependency on netrw#WinPath, include mapping doc
+ * runtime(netrw): remove deprecated functions
+ * patch 9.1.1308: completion: cannot order matches by distance to cursor
+ * patch 9.1.1307: make syntax does not reliably detect different flavors
+ * patch 9.1.1306: completion menu rendering can be improved
+ * patch 9.1.1305: completion menu active after switching windows/tabs
+ * patch 9.1.1304: filetype: some man files are not recognized
+ * runtime(netrw): upstream snapshot of v180
+ * patch 9.1.1303: missing out-of-memory check in linematch.c
+ * patch 9.1.1302: Coverity warns about using uninitialized value
+ * patch 9.1.1301: completion: cannot configure completion functions with 'complete'
+ * patch 9.1.1300: wrong detection of -inf
+ * runtime(doc): update enum helptext
+ * patch 9.1.1299: filetype: mbsyncrc files are not recognized
+ * runtime(doc): update options.txt and clarify 'wildmode' further
+ * runtime(gleam): update Maintainer and filetype options
+ * patch 9.1.1298: define_function() is too long
+ * patch 9.1.1297: Ctrl-D scrolling can get stuck
+ * runtime(new-tutor): update tutor and correct comandline completion
+ * patch 9.1.1296: completion: incorrect truncation logic
+ * patch 9.1.1295: clientserver: does not handle :stopinsert correctly
+ * runtime(doc): disable last-position-jump in diff mode
+ * runtime(doc): Improve 'wildmode' setting desciption
+ * patch 9.1.1294: gui tabline menu does not use confirm when closing tabs
+ * runtime(doc): correct backslash escaping comma example
+ * patch 9.1.1293: comment plugin does not handle 'exclusive' selection for comment object
+ * patch 9.1.1292: statusline not correctly evaluated
+ * runtime(sh): Do not look up a "sh" utility in $PATH for "sh_13.sh"
+ * runtime(filetype): make shell filetype detection more robust
+ * patch 9.1.1291: too many strlen() calls in buffer.c
+ * runtime(keymaps): include 2 Brazilian Keymaps
+ * runtime(vim): Update-base-syntax, match full :*grep, :make, :sort and :filter commands
+ * patch 9.1.1290: tests: missing cleanup in test_filetype.vim
+ * patch 9.1.1289: tests: no test for matchparen plugin with WinScrolled event
+ * runtime(remind): include remind.vim ftplugin
+ * runtime(vim): Update base-syntax, improve :command highlighting
+ * runtime(help): add omni completion and 'iskeyword' to filetype plugin
+ * runtime(lf): improve syntax script, add filetype plugin
+ * patch 9.1.1288: Using wrong window in ll_resize_stack()
+ * runtime(doc): rename wrong option to 'pummaxwidth'
+ * patch 9.1.1287: quickfix code can be further improved
+ * patch 9.1.1286: filetype: help files not detected when 'iskeyword' includes ":"
+ * patch 9.1.1285: Vim9: no error message for missing method after "super."
+ * patch 9.1.1284: not possible to configure pum truncation char
+ * runtime(lua): fix whitespace style issues in lua ftplugin
+ * runtime(lua): improve foldexpr, add vim9 script version
+ * runtime(doc): Fix minor typo in options.txt
+ * runtime(fstab): set formatoptions-=t in filetype plugin
+ * runtime(svelte): add matchit support to svelte filetype plugin
+ * patch 9.1.1283: quickfix stack is limited to 10 items
+ * patch 9.1.1282: Build and test failure without job feature
+ * patch 9.1.1281: extra newline output when editing stdin
+ * patch 9.1.1280: trailing additional semicolon in get_matches_in_str()
+ * patch 9.1.1279: Vim9: null_object and null_class are no reserved names
+ * patch 9.1.1278: Vim9: too long functions in vim9type.c
+ * runtime(vim): Update base-syntax, match full :redir command
+ * patch 9.1.1277: tests: trailing comment char in test_popupwin
+ * patch 9.1.1276: inline word diff treats multibyte chars as word char
+ * runtime(doc): update WinScrolled documentation
+ * runtime(vim): Update base-syntax, improve :set backslash handling
+ * patch 9.1.1275: MS-Windows: Not possible to pass additional flags to Make_mvc
+ * patch 9.1.1274: Vim9: no support for object<type> as variable type
+ * patch 9.1.1273: Coverity warns about using uninitialized value
+ * patch 9.1.1272: completion: in keyword completion Ctrl_P cannot go back after Ctrl_N
+ * runtime(sh): Update syntax file, command substitution opening paren at EOL
+ * patch 9.1.1271: filetype: Power Query files are not recognized
+ * translation(ru): fix and updated messages translation
+ * runtime(doc): clarify the use of change marks when writing a buffer
+ * runtime(zip): add *.whl to the list of zip extensions
+ * patch 9.1.1270: missing out-of-memory checks in buffer.c
+ * runtime(doc): update pi_zip.txt with current list of zip file extensions
+ * patch 9.1.1269: completion: compl_shown_match is updated when starting keyword completion
+ * patch 9.1.1268: filetype: dax files are not recognized
+ * runtime(openPlugin): fix E480 when opening URLs with wildcards on Windows
+ * patch 9.1.1267: Vim9: no support for type list/dict<object<any>>
+ * patch 9.1.1266: MS-Windows: type conversion warnings
+ * translation(ru): Updated messages translation
+ * patch 9.1.1265: tests: no tests for typing normal char during completion
+ * runtime(rust): set formatprg to rustfmt
+ * patch 9.1.1264: Vim9: error when comparing objects
+ * runtime(doc): update last change date for diff.txt
+ * runtime(doc): Update the tuple help text
+ * patch 9.1.1263: string length wrong in get_last_inserted_save()
+ * patch 9.1.1262: heap-buffer-overflow with narrow 'pummaxwidth' value
+ * patch 9.1.1261: No test for 'pummaxwidth' non-truncated items
+ * runtime(debversions): Add release name for Debian 15 - duke
+ * patch 9.1.1260: Hang when filtering buffer with NUL bytes
+ * runtime(odin): add new keywords to syntax script
+ * patch 9.1.1259: some issues with comment package and tailing spaces
+ * runtime(java): Make changes for JDK 24 in syntax script
+
+-------------------------------------------------------------------
+Sat Apr 19 17:27:21 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update apparmor.vim to latest version (from AppArmor 4.1.0)
+  - add more units for rlimit rules
+
+-------------------------------------------------------------------
 Tue Apr  1 16:22:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu11 to CFLAGS to fix gcc15 compile time error, and to

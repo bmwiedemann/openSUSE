@@ -7984,4 +7984,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1267069</requestid>
   </revision>
+  <revision rev="385" vrev="1">
+    <srcmd5>998d107c0341bf42a2d8830dd959720d</srcmd5>
+    <version>9.1.1330</version>
+    <time>1745335548</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.1330:
+ * patch 9.1.1330: may receive E315 in terminal
+ * patch 9.1.1329: cannot get information about command line completion
+ * patch 9.1.1328: too many strlen() calls in indent.c
+ * patch 9.1.1327: filetype: nroff detection can be improved
+ * runtime(doc): cross-link :| meaning :p and explain E749
+ * runtime(doc): style: clarify to prefer 2 spaces after a sentence
+ * runtime(pov): deprecate `#render` and `#statistics` in syntax script
+ * patch 9.1.1326: invalid cursor position after 'tagfunc'
+ * runtime(keymaps): update Brazilian keymaps
+ * patch 9.1.1325: tests: not checking error numbers properly
+ * runtime(doc): clarify 'includeexpr' is not used for &lt;cfile&gt;
+ * runtime(filetype): improve *.h filetype detection
+ * runtime(indent-tests): Raise timeouts for &quot;search*()&quot;es
+ * runtime(indent-tests): Annotate timed &quot;search*()&quot;es for tracing
+ * runtime(indent-tests): Instrument timed &quot;search*()&quot; calls
+ * patch 9.1.1324: undefined behaviour if X11 connection dies
+ * patch 9.1.1323: b:undo_ftplugin not executed when re-using buffer
+ * runtime(nix): set iskeyword and b:match_words in ftplugin
+ * runtime(doc): clarify &quot;nearest&quot; value for 'completeopt'
+ * runtime(doc): Tweak documentation style a bit
+ * patch 9.1.1322: small delete register cannot paste multi-line correctly
+ * patch 9.1.1321: filetype: MS ixx and mpp files are not recognized
+ * patch 9.1.1320: filetype: alsoft config files are not recognized
+ * patch 9.1.1319: Various typos in the code, issue with test_inst_complete.vim
+ * patch 9.1.1318: tests: test_format fails
+ * runtime(jjdescription): Don't require a space to start comments
+ * patch 9.1.1317: noisy error when restoring folds from session fails
+ * patch 9.1.1316: missing memory allocation failure in os_mswin.c
+ * patch 9.1.1315: completion: issue with fuzzy completion and 'completefuzzycollect'</comment>
+    <requestid>1271181</requestid>
+  </revision>
 </revisionlist>

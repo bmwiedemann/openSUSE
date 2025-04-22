@@ -166,8 +166,8 @@ syn match sdRLimit /\v^\s*set\s+rlimit\s+(nofile|ofile|nproc|rtprio)\s+\<\=\s+[0
 syn match sdRLimit /\v^\s*set\s+rlimit\s+(locks|sigpending)\s+\<\=\s+[0-9]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 syn match sdRLimit /\v^\s*set\s+rlimit\s+(fsize|data|stack|core|rss|as|memlock|msgqueue)\s+\<\=\s+[0-9]+([KMG]B)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 syn match sdRLimit /\v^\s*set\s+rlimit\s+nice\s+\<\=\s+(-1?[0-9]|-20|1?[0-9])\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
-syn match sdRLimit /\v^\s*set\s+rlimit\s+cpu\s+\<\=\s+[0-9]+(seconds|minutes|hours|days)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
-syn match sdRLimit /\v^\s*set\s+rlimit\s+rttime\s+\<\=\s+[0-9]+(ms|seconds|minutes)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
+syn match sdRLimit /\v^\s*set\s+rlimit\s+cpu\s+\<\=\s+[0-9]+\s*(s|sec|second|seconds|min|minute|minutes|h|hour|hours|d|day|days|week|weeks)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
+syn match sdRLimit /\v^\s*set\s+rlimit\s+rttime\s+\<\=\s+[0-9]+\s*(us|microsecond|microseconds|ms|millisecond|milliseconds|s|sec|second|seconds|min|minute|minutes|h|hour|hours|d|day|days|week|weeks)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 syn match sdRLimit /\v^\s*set\s+rlimit\s+(cpu|rttime|nofile|nproc|rtprio|locks|sigpending|fsize|data|stack|core|rss|as|memlock|msgqueue|nice)\s+\<\=\s+infinity\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdComment
 
 " userns
