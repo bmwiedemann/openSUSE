@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 15 09:47:25 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250415.4b9e2c35:
+  * ttm: add a new match pattern for the package naming in Leap 16
+
+-------------------------------------------------------------------
+Thu Apr 10 10:54:58 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250410.ecae7c5c:
+  * verify-build-and-generatelists: Update default Gitea URL to use SSH authentication
+
+-------------------------------------------------------------------
+Thu Apr 10 10:08:28 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250410.c8a6692d:
+  * verify-build-and-generate: For SLFO based products, wait for SUSE:SLFO:Main:Build to be done building.
+
+-------------------------------------------------------------------
 Wed Apr 09 09:47:00 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250409.44b68ff9:
