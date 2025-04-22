@@ -1,3 +1,10 @@
+gpxsee (13.39) stable; urgency=low
+
+  * Added support for Vakaros VKX files.
+  * Improved ENC maps rendering performance.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 19 Apr 2025 18:05:11 +0200
+
 gpxsee (13.38) stable; urgency=low
 
   * Added support for Velocitek VTK files.
