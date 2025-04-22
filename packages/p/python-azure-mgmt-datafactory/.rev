@@ -371,4 +371,15 @@
 - Rename LICENSE.txt to LICENSE in %files section (forwarded request 1235132 from glaubitz)</comment>
     <requestid>1235174</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d71adb5c986d1cbc2509e18983e92dcd</srcmd5>
+    <version>9.2.0</version>
+    <time>1745337551</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1271344 from glaubitz)</comment>
+    <requestid>1271846</requestid>
+  </revision>
 </revisionlist>
