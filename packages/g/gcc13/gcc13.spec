@@ -3476,8 +3476,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %versmainlib *crt*.o
 %versmainlib libgcc*.a
 %versmainlib libgcov.a
-%versmainlib libgcc_s*.so
-%versmainlib libgcc_s.so.%{libgcc_s}
+%versmainlib libgcc_s*.so*
 %versmainlib libgomp.so
 %versmainlib libgomp.a
 %versmainlib libgomp.spec
@@ -3543,8 +3542,7 @@ cat cpplib%{binsuffix}.lang gcc%{binsuffix}.lang > gcc13-locale.lang
 %versbiarchlib *crt*.o
 %versbiarchlib libgcc*.a
 %versbiarchlib libgcov.a
-%versbiarchlib libgcc_s*.so
-%versbiarchlib libgcc_s.so.%{libgcc_s}
+%versbiarchlib libgcc_s*.so*
 %versbiarchlib libgomp.so
 %versbiarchlib libgomp.a
 %versbiarchlib libgomp.spec

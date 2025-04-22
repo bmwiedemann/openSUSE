@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 22 14:31:57 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Fix s390x build by using a glob for installed libgcc_s.so and
+  libgcc_s.so.1 which only appears when the former is a linker
+  script.  [bsc#1241549]
+
+-------------------------------------------------------------------
 Tue Apr  8 11:09:05 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Make sure link editing is done against our own shared library

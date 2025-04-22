@@ -419,4 +419,14 @@
   in ppc64le (jsc#PED-7395).</comment>
     <requestid>1267910</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>ab739b6c791b78ad7ff26e70e5a629c8</srcmd5>
+    <version>13.3.1+git9426</version>
+    <time>1745352872</time>
+    <user>anag_factory</user>
+    <comment>- Fix s390x build by using a glob for installed libgcc_s.so and
+  libgcc_s.so.1 which only appears when the former is a linker
+  script.  [bsc#1241549]</comment>
+    <requestid>1271908</requestid>
+  </revision>
 </revisionlist>
