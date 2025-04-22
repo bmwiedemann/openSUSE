@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Paranoid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -72,6 +72,6 @@ cp %{SOURCE99} .
 %files %{python_files}
 %license LICENSE
 %{python_sitelib}/flask_paranoid
-%{python_sitelib}/Flask_Paranoid-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Pp]aranoid-%{version}.dist-info
 
 %changelog
