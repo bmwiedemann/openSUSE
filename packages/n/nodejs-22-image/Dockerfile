@@ -46,4 +46,3 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/nodejs-22-image/README.md"
 ENV NODE_VERSION="22"
-
