@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 21 16:20:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.8.16
+  * fix typo in a directory authority rule file
+  * fix a sandbox issue for bandwidth authority and a conflux issue
+    on the control port
+  * client fix about relay flag usage
+
+-------------------------------------------------------------------
 Wed Feb  5 18:26:41 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - tor 0.4.8.14
