@@ -86,4 +86,17 @@
     <comment>New stable rel (forwarded request 1253461 from iznogood)</comment>
     <requestid>1253709</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d65c67f871a81543dd3483aba72104c6</srcmd5>
+    <version>0.4.8</version>
+    <time>1745335780</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.8:
+  + Improve initial dictionary selection which is particularly
+    useful for languages which don't typically use spaces to
+    separate word boundaries.
+  + Build system fixes for building without enchant
+  + Updated translations. (forwarded request 1270696 from iznogood)</comment>
+    <requestid>1271336</requestid>
+  </revision>
 </revisionlist>

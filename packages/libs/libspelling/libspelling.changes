@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 18 05:36:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.8:
+  + Improve initial dictionary selection which is particularly
+    useful for languages which don't typically use spaces to
+    separate word boundaries.
+  + Build system fixes for building without enchant
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Mar 16 08:45:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.7:
