@@ -46,5 +46,4 @@ ENV JAVA_BINDIR="/usr/lib64/jvm/java-21-openjdk-21/bin"
 ENV JAVA_HOME="/usr/lib64/jvm/java-21-openjdk-21"
 ENV JAVA_ROOT="/usr/lib64/jvm/java-21-openjdk-21"
 ENV JAVA_VERSION="21"
-
 RUN set -euo pipefail; [ -d $JAVA_HOME ]; [ -d $JAVA_BINDIR ]; [ -f "$JAVA_BINDIR/java" ] && [ -x "$JAVA_BINDIR/java" ]
