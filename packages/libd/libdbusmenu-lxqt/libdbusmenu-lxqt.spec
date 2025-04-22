@@ -18,17 +18,15 @@
 
 %define  _ver   0
 Name:           libdbusmenu-lxqt
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        A Qt implementation of the DBusMenu protocol
 License:        LGPL-2.0-or-later
-Group:          System/Libraries
 URL:            https://github.com/lxqt/libdbusmenu-lxqt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
-#uildRequires:  libqjson-devel
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  cmake(Qt6Core) >= 6.3.0
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt6DBus)

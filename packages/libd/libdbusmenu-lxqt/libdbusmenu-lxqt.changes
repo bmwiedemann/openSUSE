@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 23:49:20 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 0.3.0:
+  * A workaround is added for a Qt crash on reloading menus
+  * Code Cleanup
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Nov  6 21:13:12 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 0.2.0:
