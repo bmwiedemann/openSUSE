@@ -16,8 +16,8 @@ Mon Apr 14 09:26:06 UTC 2025 - Daniel Wagner <dwagner@suse.de>
   * ioctl: return status code when using liburing
   * src: update include directive
   * gitignore: ignore .build-tools
-  * tree: add routine to fetch subsys firmware rev
-  * tree: add routine to fetch subsys model
+  * tree: add routine to fetch subsys firmware rev (bsc#1240518)
+  * tree: add routine to fetch subsys model (bsc#1240518)
 - add liburing dependency only for newer distros
 
 -------------------------------------------------------------------
