@@ -72,4 +72,15 @@
 - Update Requires from setup.py (forwarded request 1252028 from glaubitz)</comment>
     <requestid>1252377</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>20675035a98b50994e370d6d9e1c87fe</srcmd5>
+    <version>2.0.2</version>
+    <time>1745337547</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1271326 from glaubitz)</comment>
+    <requestid>1271843</requestid>
+  </revision>
 </revisionlist>
