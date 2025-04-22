@@ -1229,4 +1229,12 @@
         Fixed GHSA-p3x9-6h7p-cgfc (libxml streams use wrong `content-type` header when requesting a redirected resource). (CVE-2025-1219)</comment>
     <requestid>1267591</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>fc8a51b3d3394978cde1b2e23fe83a1f</srcmd5>
+    <version>8.4.6</version>
+    <time>1745335546</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271170</requestid>
+  </revision>
 </revisionlist>

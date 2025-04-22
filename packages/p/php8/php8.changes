@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Apr 18 06:10:13 UTC 2025 - Manu Maier <mmanu84@outlook.de>
+
+- version update to 8.4.6
+    BCMath:
+        Fixed pointer subtraction for scale.
+    Core:
+        Fixed property hook backing value access in multi-level inheritance.
+        Fixed accidentally inherited default value in overridden virtual properties.
+        Fixed bug GH-17376 (Broken JIT polymorphism for property hooks added to child class).
+        Fixed bug GH-17913 (ReflectionFunction::isDeprecated() returns incorrect results for closures created from magic __call()).
+        Fixed bug GH-17941 (Stack-use-after-return with lazy objects and hooks).
+        Fixed bug GH-17988 (Incorrect handling of hooked props without get hook in get_object_vars()).
+        Fixed bug GH-17998 (Skipped lazy object initialization on primed SIMPLE_WRITE cache).
+        Fixed bug GH-17998 (Assignment to backing value in set hook of lazy proxy calls hook again).
+        Fixed bug GH-17961 (use-after-free during dl()'ed module class destruction).
+        Fixed bug GH-15367 (dl() of module with aliased class crashes in shutdown).
+        Fixed OSS-Fuzz #403308724.
+        Fixed bug GH-13193 again (Significant performance degradation in 'foreach').
+    DBA:
+        Fixed assertion violation when opening the same file with dba_open multiple times.
+    DOM:
+        Fixed bug GH-17991 (Assertion failure dom_attr_value_write).
+        Fix weird unpack behaviour in DOM.
+        Fixed bug GH-18090 (DOM: Svg attributes and tag names are being lowercased).
+        Fix xinclude destruction of live attributes.
+    Fuzzer:
+        Fixed bug GH-18081 (Memory leaks in error paths of fuzzer SAPI).
+    GD:
+        Fixed bug GH-17984 (calls with arguments as array with references).
+
+    LDAP:
+        Fixed bug GH-18015 (Error messages for ldap_mod_replace are confusing).
+
+    Mbstring:
+        Fixed bug GH-17989 (mb_output_handler crash with unset http_output_conv_mimetypes).
+    Opcache:
+        Fixed bug GH-15834 (Segfault with hook "simple get" cache slot and minimal JIT).
+        Fixed bug GH-17966 (Symfony JIT 1205 assertion failure).
+        Fixed bug GH-18037 (SEGV Zend/zend_execute.c).
+        Fixed bug GH-18050 (IN_ARRAY optimization in DFA pass is broken).
+        Fixed bug GH-18113 (stack-buffer-overflow ext/opcache/jit/ir/ir_sccp.c).
+        Fixed bug GH-18112 (NULL access with preloading and INI option).
+        Fixed bug GH-18107 (Opcache CFG jmp optimization with try-finally breaks the exception table).
+    PDO:
+        Fix memory leak when destroying PDORow.
+    Standard:
+        Fix memory leaks in array_any() / array_all().
+    SOAP:
+        Fixed bug #66049 (Typemap can break parsing in parse_packet_soap leading to a segfault) .
+    SPL:
+        Fixed bug GH-18018 (RC1 data returned from offsetGet causes UAF in ArrayObject).
+    Treewide:
+        Fixed bug GH-17736 (Assertion failure zend_reference_destroy()).
+    Windows:
+        Fixed bug GH-17836 (zend_vm_gen.php shouldn't break on Windows line endings).
+
+-------------------------------------------------------------------
 Wed Apr  2 08:57:28 UTC 2025 - pgajdos@suse.com
 
 - version update to 8.4.5
