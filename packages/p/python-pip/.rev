@@ -1019,4 +1019,12 @@
   * Upgrade urllib3 to 1.26.20</comment>
     <requestid>1219342</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>2fcd2443cadae7f64e0dd309e653c6db</srcmd5>
+    <version>25.0.1</version>
+    <time>1745335540</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271132</requestid>
+  </revision>
 </revisionlist>

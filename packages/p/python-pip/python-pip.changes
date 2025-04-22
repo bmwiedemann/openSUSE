@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Apr 17 12:40:51 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 25.0.1
+  * Fix an unsupported type annotation on Python 3.10 and earlier. 
+    (#13181)
+  * Fix a regression where truststore would never be used while 
+    installing build dependencies. (#13186)
+  * Deprecate the no-python-version-warning flag as it has long done 
+    nothing since Python 2 support was removed in pip 21.0. (#13154)
+  * Prefer to display PEP 639 License-Expression in pip show if
+    metadata version is at least 2.4. (#13112)
+  * Support PEP 639 License-Expression and License-File metadata 
+    fields in JSON output. pip inspect and pip install --report now 
+    emit license_expression and license_file fields in the metadata 
+    object, if the corresponding fields are present in the installed 
+    METADATA file. (#13134)
+  * Files in the network cache will inherit the read/write permissions 
+    of pip’s cache directory (in addition to the current user retaining 
+    read/write access). This enables a single cache to be shared among 
+    multiple users. (#11012)
+  * Return the size, along with the number, of files cleared on pip 
+    cache purge and pip cache remove (#12176)
+  * Cache python-requires checks while filtering potential installation 
+    candidates. (#13128)
+  * Optimize package collection by avoiding unnecessary URL parsing and 
+    other processing. (#13132)
+  * Reorder the encoding detection when decoding a requirements file, 
+    relying on UTF-8 over the locale encoding by default, matching the 
+    documented behaviour. (#12771)
+  * The pip version self check is disabled on EXTERNALLY-MANAGED 
+    environments. (#11820)
+  * Fix a security bug allowing a specially crafted wheel to execute 
+    code during installation. (#13079)
+  * The inclusion of packaging 24.2 changes how pre-release specifiers 
+    with < and > behave. Including a pre-release version with these 
+    specifiers now implies accepting pre-releases (e.g., <2.0dev can 
+    include 1.0rc1). To avoid implying pre-releases, avoid specifying 
+    them (e.g., use <2.0). The exception is !=, which never implies 
+    pre-releases. (#13163)
+  * The --cert and --client-cert command-line options are now 
+    respected while installing build dependencies. Consequently, the 
+    private _PIP_STANDALONE_CERT environment variable is no longer 
+    used. (#5502)
+  * The --proxy command-line option is now respected while installing 
+    build dependencies. (#6018)
+
+
+-------------------------------------------------------------------
 Wed Oct 30 08:10:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.3.1:
