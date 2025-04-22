@@ -45,7 +45,6 @@ LABEL org.opensuse.release-stage="released"
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/gcc-15-image/README.md"
 LABEL io.artifacthub.package.logo-url="https://gcc.gnu.org/img/gccegg-65.png"
 ENV GCC_VERSION="%%gcc_minor_version%%"
-
 # symlink all versioned gcc & g++ binaries to unversioned
 # ones in /usr/local/bin so that plain gcc works
 RUN set -euo pipefail; for gcc_bin in $(rpm -ql gcc15 gcc15-c++ gcc15-fortran |grep ^/usr/bin/ ); do \
