@@ -48,7 +48,6 @@ LABEL usage="This container is enabled and supported only on a SLE15+ host."
 ENV SPACK_ROOT="/usr"
 ENV CURRENTLY_BUILDING_DOCKER_IMAGE="1"
 ENV container="docker"
-
 ENTRYPOINT ["/bin/bash", "/usr/share/spack/docker/entrypoint.bash"]
 CMD ["interactive-shell"]
 
