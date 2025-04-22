@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 17 21:32:40 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Drag-and-drop is enhanced on Desktop, such that neighboring
+    items aren't displaced as far as possible.
+  * Custom options for terminals are supported
+  * Tab sizes are made better, for preventing small tab texts from
+    becoming elided as far as possible
+  * Going up is prevented when Backspace is kept pressed inside the
+    transient filter-bar
+  * Wayland screens are handled by using their names, because
+    Wayland doesn't have the concept of primary screen
+  * String replacement is allowed in bulk renaming
+  * Context menu items are added for opening the containing folder
+    in 'search:///'
+  * Added Ctrl+Shift+NUMBER as the shortcut for changing the view
+    mode
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Nov  6 21:41:17 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:

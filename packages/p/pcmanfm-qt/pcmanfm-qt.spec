@@ -17,11 +17,10 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/pcmanfm-qt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -58,7 +57,6 @@ PCManFM-Qt is the Qt port of the LXDE file manager PCManFM
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
-Group:          System/GUI/LXQt
 Requires:       %{name} = %{version}
 Requires:       kf6-breeze-icons
 Supplements:    (%{name} and branding-upstream)
