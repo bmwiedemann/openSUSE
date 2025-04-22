@@ -1,7 +1,7 @@
 #
 # spec file for package python-PeakUtils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,6 @@ detection.
 %doc README.rst
 %license LICENSE.txt
 %{python_sitelib}/peakutils
-%{python_sitelib}/PeakUtils-%{version}.dist-info
+%{python_sitelib}/[Pp]eak[Uu]tils-%{version}.dist-info
 
 %changelog
