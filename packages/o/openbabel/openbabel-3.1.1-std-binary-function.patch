@@ -1,0 +1,194 @@
+
+github.com/openbabel/openbabel/issues/2461
+github.com/openbabel/openbabel/pull/2464
+
+pull/2464 committed as github.com/openbabel/openbabel/commit/b59ba6d;
+only use first commit of pull/2464 here, this is
+github.com/openbabel/openbabel/commit/e2f9cca,
+adapted to opensuse source tree (no kekulize.h):
+
+From e2f9cca93219e180bc814eada74b05ed7fba2f70 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Mon, 25 Apr 2022 11:55:17 +0900
+Subject: [PATCH] refactor: do not use `std::binary_function`, which is removed
+ in C++17
+
+fix #2461
+---
+ include/openbabel/inchiformat.h | 1 -
+ include/openbabel/plugin.h      | 2 +-
+ scripts/openbabel-R.i           | 7 -------
+ scripts/openbabel-csharp.i      | 7 -------
+ scripts/openbabel-java.i        | 7 -------
+ scripts/openbabel-perl.i        | 7 -------
+ scripts/openbabel-php.i         | 7 -------
+ scripts/openbabel-python.i      | 7 -------
+ scripts/openbabel-ruby.i        | 7 -------
+ src/ops/sort.cpp                | 2 +-
+ 10 files changed, 2 insertions(+), 52 deletions(-)
+
+diff --git a/include/openbabel/inchiformat.h b/include/openbabel/inchiformat.h
+index 9e2db80549..0033a22766 100644
+--- a/include/openbabel/inchiformat.h
++++ b/include/openbabel/inchiformat.h
+@@ -131,7 +131,6 @@ class InChIFormat : public OBMoleculeFormat
+   // and "CH4" is less than "C2H6"
+   // and "CH4" is less than "ClH" (hydrogen chloride)
+   struct InchiLess
+-    : public std::binary_function<const std::string&, const std::string&, bool>
+   {
+     bool operator()(const std::string& s1, const std::string& s2) const
+     {
+diff --git a/include/openbabel/plugin.h b/include/openbabel/plugin.h
+index 9f1b1efd72..16c235fa3c 100644
+--- a/include/openbabel/plugin.h
++++ b/include/openbabel/plugin.h
+@@ -38,7 +38,7 @@ namespace OpenBabel
+ ///@{
+ 
+ /// @brief Case insensitive string comparison for PluginMapType key.
+-struct OBERROR CharPtrLess : public std::binary_function<const char*,const char*, bool>
++struct OBERROR CharPtrLess
+ {
+   bool operator()(const char* p1,const char* p2) const
+   { return strcasecmp(p1,p2)<0; }
+diff --git a/scripts/openbabel-R.i b/scripts/openbabel-R.i
+index 0a655f168b..b6b4c6ccc6 100644
+--- a/scripts/openbabel-R.i
++++ b/scripts/openbabel-R.i
+@@ -293,13 +293,6 @@ CAST_GENERICDATA_TO(VirtualBond)
+ 
+ %include <openbabel/chains.h>
+ %include <openbabel/typer.h>
+-
+-// To avoid warning in plugin.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-csharp.i b/scripts/openbabel-csharp.i
+index df323504af..77d9d15701 100644
+--- a/scripts/openbabel-csharp.i
++++ b/scripts/openbabel-csharp.i
+@@ -831,13 +831,6 @@ CAST_GENERICDATA_TO(VirtualBond);
+ 
+ %include <openbabel/chains.h>
+ %include <openbabel/typer.h>
+-
+-// To avoid warning in plugin.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-java.i b/scripts/openbabel-java.i
+index c88f3c5e16..2e525e2ab3 100644
+--- a/scripts/openbabel-java.i
++++ b/scripts/openbabel-java.i
+@@ -249,13 +249,6 @@ CAST_GENERICDATA_TO(VirtualBond)
+ 
+ %include <openbabel/chains.h>
+ %include <openbabel/typer.h>
+-
+-// To avoid warning in plugin.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-perl.i b/scripts/openbabel-perl.i
+index 0dbc69342d..b06a50cda1 100644
+--- a/scripts/openbabel-perl.i
++++ b/scripts/openbabel-perl.i
+@@ -194,13 +194,6 @@ CAST_GENERICDATA_TO(VirtualBond)
+ 
+ %import <openbabel/chains.h>
+ %import <openbabel/typer.h>
+-
+-// To avoid warning in oberror.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(Dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-php.i b/scripts/openbabel-php.i
+index 6d2346bc34..83ee9c6354 100644
+--- a/scripts/openbabel-php.i
++++ b/scripts/openbabel-php.i
+@@ -226,13 +226,6 @@ CAST_GENERICDATA_TO(VirtualBond)
+ 
+ %include <openbabel/chains.h>
+ %include <openbabel/typer.h>
+-
+-// To avoid warning in plugin.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-python.i b/scripts/openbabel-python.i
+index 2d361e8ebb..7ddde52b72 100644
+--- a/scripts/openbabel-python.i
++++ b/scripts/openbabel-python.i
+@@ -267,13 +267,6 @@ CAST_GENERICDATA_TO(SquarePlanarStereo)
+ 
+ %include <openbabel/chains.h>
+ %include <openbabel/typer.h>
+-
+-// To avoid warning in plugin.h about "Nothing known about std::binary_function"
+-namespace std {
+-        template <T1, T2, T3>
+-        class binary_function {};
+-}
+-%template(dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/scripts/openbabel-ruby.i b/scripts/openbabel-ruby.i
+index 6bdfd6b86b..0e5afcb536 100644
+--- a/scripts/openbabel-ruby.i
++++ b/scripts/openbabel-ruby.i
+@@ -215,13 +215,6 @@ CAST_GENERICDATA_TO(SquarePlanarStereo)
+ 
+ %import <openbabel/chains.h>
+ %import <openbabel/typer.h>
+-
+-// To avoid warning in oberror.h about "Nothing known about std::binary_function"
+-namespace std { 
+-        template <T1, T2, T3>
+-        class binary_function {}; 
+-}
+-%template(Dummy) std::binary_function <const char *, const char *, bool>;
+ %include <openbabel/plugin.h>
+ 
+ // To avoid warning in oberror.h about "Nothing known about std::stringbuf"
+diff --git a/src/ops/sort.cpp b/src/ops/sort.cpp
+index 38e052487a..79aa7b88c1 100644
+--- a/src/ops/sort.cpp
++++ b/src/ops/sort.cpp
+@@ -29,7 +29,7 @@ namespace OpenBabel
+ {
+ 
+ template<class T>
+-struct Order : public std::binary_function<std::pair<OBBase*,T>, std::pair<OBBase*,T>, bool>
++struct Order
+ {
+   Order(OBDescriptor* pDesc, bool rev) : _pDesc(pDesc), _rev(rev){}
+   bool operator()(std::pair<OBBase*,T> p1, std::pair<OBBase*,T> p2) const
+

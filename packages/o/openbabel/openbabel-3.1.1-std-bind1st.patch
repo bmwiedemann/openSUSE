@@ -1,0 +1,98 @@
+
+github.com/openbabel/openbabel/pull/2001
+github.com/openbabel/openbabel/commit/90df8dd
+
+
+From 90df8ddbd622b91c027e469d2df8c0570f7dc645 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Wed, 3 Aug 2022 23:10:11 +0900
+Subject: [PATCH] Remove deprecated std::bind1st and std::binder1st (#2001)
+
+---
+ src/formats/povrayformat.cpp |  4 ++--
+ src/stereo/perception.cpp    | 16 +++++-----------
+ 2 files changed, 7 insertions(+), 13 deletions(-)
+
+diff --git a/src/formats/povrayformat.cpp b/src/formats/povrayformat.cpp
+index 0cd50f6b10..214a24e924 100644
+--- a/src/formats/povrayformat.cpp
++++ b/src/formats/povrayformat.cpp
+@@ -523,7 +523,7 @@ namespace OpenBabel
+ 
+         /* ---- Add a pigment - statement for start-atom of bond ---- */
+         bond_type = bond->GetBeginAtom() -> GetType();
+-        bond_type.erase(remove_if(bond_type.begin(), bond_type.end(), bind1st(equal_to<char>(), '.')), bond_type.end());
++        bond_type.erase(remove(bond_type.begin(), bond_type.end(), '.'), bond_type.end());
+         ofs << "\t    pigment{color Color_"
+             << bond_type
+             << "}" << endl;
+@@ -584,7 +584,7 @@ namespace OpenBabel
+ 
+         /* ---- Add a pigment - statement for end-atom of bond i ---- */
+         bond_type = bond->GetEndAtom() -> GetType();
+-        bond_type.erase(remove_if(bond_type.begin(), bond_type.end(), bind1st(equal_to<char>(), '.')), bond_type.end());
++        bond_type.erase(remove(bond_type.begin(), bond_type.end(), '.'), bond_type.end());
+ 
+         ofs << "\t    pigment{color Color_"
+             << bond_type
+diff --git a/src/stereo/perception.cpp b/src/stereo/perception.cpp
+index 7c9fcc3484..f25bfcf813 100644
+--- a/src/stereo/perception.cpp
++++ b/src/stereo/perception.cpp
+@@ -2969,9 +2969,6 @@ namespace OpenBabel {
+   }
+ 
+   void StereoRefToImplicit(OBMol& mol, OBStereo::Ref atomId) {
+-    // The following is for use in replace_if(...) below
+-    const std::binder1st<std::equal_to<OBStereo::Ref> > equal_to_atomId = std::bind1st (equal_to<OBStereo::Ref>(), atomId);
+-
+     std::vector<OBGenericData*> vdata = mol.GetAllData(OBGenericDataType::StereoData);
+     for (std::vector<OBGenericData*>::iterator data = vdata.begin(); data != vdata.end(); ++data) {
+       OBStereo::Type datatype = ((OBStereoBase*)*data)->GetType();
+@@ -2987,23 +2984,20 @@ namespace OpenBabel {
+       if (datatype == OBStereo::CisTrans) {
+         OBCisTransStereo *ct = dynamic_cast<OBCisTransStereo*>(*data);
+         OBCisTransStereo::Config ct_cfg = ct->GetConfig();
+-        replace_if(ct_cfg.refs.begin(), ct_cfg.refs.end(), equal_to_atomId, (OBStereo::Ref) OBStereo::ImplicitRef);
++        replace(ct_cfg.refs.begin(), ct_cfg.refs.end(), atomId, (OBStereo::Ref) OBStereo::ImplicitRef);
+         ct->SetConfig(ct_cfg);
+       }
+       else if (datatype == OBStereo::Tetrahedral) {
+         OBTetrahedralStereo *ts = dynamic_cast<OBTetrahedralStereo*>(*data);
+         OBTetrahedralStereo::Config ts_cfg = ts->GetConfig();
+         if (ts_cfg.from == atomId) ts_cfg.from = OBStereo::ImplicitRef;
+-        replace_if(ts_cfg.refs.begin(), ts_cfg.refs.end(), equal_to_atomId, (OBStereo::Ref) OBStereo::ImplicitRef);
++        replace(ts_cfg.refs.begin(), ts_cfg.refs.end(), atomId, (OBStereo::Ref) OBStereo::ImplicitRef);
+         ts->SetConfig(ts_cfg);
+       }
+     }
+   }
+ 
+   void ImplicitRefToStereo(OBMol& mol, OBStereo::Ref centerId, OBStereo::Ref newId) {
+-    // The following is for use in replace_if(...) below
+-    const std::binder1st<std::equal_to<OBStereo::Ref> > equal_to_implicitRef = std::bind1st (equal_to<OBStereo::Ref>(), (OBStereo::Ref) OBStereo::ImplicitRef);
+-
+     std::vector<OBGenericData*> vdata = mol.GetAllData(OBGenericDataType::StereoData);
+     for (std::vector<OBGenericData*>::iterator data = vdata.begin(); data != vdata.end(); ++data) {
+       OBStereo::Type datatype = ((OBStereoBase*)*data)->GetType();
+@@ -3022,9 +3016,9 @@ namespace OpenBabel {
+         if (ct_cfg.begin == centerId || ct_cfg.end == centerId) {
+           // Assumption: the first two refs are on the begin atom, the last two on the end atom
+           if (ct_cfg.begin == centerId)
+-            replace_if(ct_cfg.refs.begin(), ct_cfg.refs.begin()+2, equal_to_implicitRef, (OBStereo::Ref) newId);
++            replace(ct_cfg.refs.begin(), ct_cfg.refs.begin()+2, (OBStereo::Ref) OBStereo::ImplicitRef, (OBStereo::Ref) newId);
+           if (ct_cfg.end == centerId)
+-            replace_if(ct_cfg.refs.begin()+2, ct_cfg.refs.end(), equal_to_implicitRef, (OBStereo::Ref) newId);
++            replace(ct_cfg.refs.begin()+2, ct_cfg.refs.end(), (OBStereo::Ref) OBStereo::ImplicitRef, (OBStereo::Ref) newId);
+           ct->SetConfig(ct_cfg);
+         }
+       }
+@@ -3033,7 +3027,7 @@ namespace OpenBabel {
+         OBTetrahedralStereo::Config ts_cfg = ts->GetConfig();
+         if (ts_cfg.center == centerId) {
+           if (ts_cfg.from == OBStereo::ImplicitRef) ts_cfg.from = newId;
+-          replace_if(ts_cfg.refs.begin(), ts_cfg.refs.end(), equal_to_implicitRef, (OBStereo::Ref) newId);
++          replace(ts_cfg.refs.begin(), ts_cfg.refs.end(), (OBStereo::Ref) OBStereo::ImplicitRef, (OBStereo::Ref) newId);
+           ts->SetConfig(ts_cfg);
+         }
+       }

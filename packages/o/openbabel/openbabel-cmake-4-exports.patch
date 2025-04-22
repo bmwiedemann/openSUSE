@@ -1,0 +1,19 @@
+
+policy CMP0065 (enable link flags such that symbols are exported from
+executables) was added in cmake version 3.4, set to OLD by default,
+and removed in cmake version 4
+
+ensure the OLD linking behaviour for test_runner to fix test failures
+
+
+--- a/test/CMakeLists.txt	2020-05-08 17:38:02.000000000 +0200
++++ b/test/CMakeLists.txt	2025-04-19 18:30:34.700723621 +0200
+@@ -148,6 +148,7 @@
+ endif()
+ 
+ add_executable(test_runner ${srclist} obtest.cpp)
++set_target_properties(test_runner PROPERTIES ENABLE_EXPORTS TRUE)
+ target_link_libraries(test_runner ${libs})
+ if(NOT BUILD_SHARED AND NOT BUILD_MIXED)
+   set_target_properties(test_runner PROPERTIES LINK_SEARCH_END_STATIC TRUE)
+

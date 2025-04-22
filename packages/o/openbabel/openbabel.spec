@@ -46,6 +46,16 @@ Patch2:         openbabel-3.1.1-version-number.patch
 Patch3:         openbabel-3.1.1-gcc-12.patch
 # PATCH-FIX-UPSTREAM openbabel-3.1.1-wx-stl-compat.patch -- Fix build with wxWidgets using STL (gh#openbabel/openbabel!2527)
 Patch4:         openbabel-3.1.1-wx-stl-compat.patch
+# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-binary-function.patch -- part of github.com/openbabel/openbabel/pull/2464
+Patch5:         openbabel-3.1.1-std-binary-function.patch
+# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-bind1st.patch -- github.com/openbabel/openbabel/pull/2001
+Patch6:         openbabel-3.1.1-std-bind1st.patch
+# PATCH-FIX-UPSTREAM openbabel-3.1.1-std-bind2nd.patch -- github.com/openbabel/openbabel/pull/2569
+Patch7:         openbabel-3.1.1-std-bind2nd.patch
+# PATCH-FIX-UPSTREAM openbabel-cmake-4.patch -- github.com/openbabel/openbabel/pull/2784
+Patch8:         openbabel-cmake-4.patch
+# ensure previous cmake behaviour to fix test failures
+Patch9:         openbabel-cmake-4-exports.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  inchi-devel >= 1.04

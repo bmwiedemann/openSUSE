@@ -1,0 +1,86 @@
+
+github.com/openbabel/openbabel/pull/2569
+github.com/openbabel/openbabel/commit/f827a72
+
+
+From f33412937390b2b0d0c0e91a1ed1274e1dd24157 Mon Sep 17 00:00:00 2001
+From: Eisuke Kawashima <e-kwsm@users.noreply.github.com>
+Date: Mon, 30 Jan 2023 07:40:37 +0900
+Subject: [PATCH] refactor: remove deprecated std::bind2nd
+
+c.f. #2001
+---
+ src/confsearch.cpp         | 4 ++--
+ src/formats/fchkformat.cpp | 8 ++++----
+ src/formats/vaspformat.cpp | 4 ++--
+ 3 files changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/src/confsearch.cpp b/src/confsearch.cpp
+index 5e6cc2d1e8..5f85a8ff2f 100644
+--- a/src/confsearch.cpp
++++ b/src/confsearch.cpp
+@@ -131,7 +131,7 @@ namespace OpenBabel
+ 
+     const double arr[] = {3.0, 2.0, 1.5, 1.0, 0.5, 0.25};
+     std::vector<double> vec (arr, arr + sizeof(arr) / sizeof(arr[0]) );
+-    vec.erase(std::remove_if(vec.begin(), vec.end(), std::bind2nd(std::less<double>(), (cutoff + 0.1) )), vec.end());
++    vec.erase(std::remove_if(vec.begin(), vec.end(), [=](double v) { return v < cutoff + 0.1; }), vec.end());
+     vec.push_back(cutoff);
+ 
+     levels = vec;
+@@ -443,7 +443,7 @@ int OBForceField::DiverseConfGen(double rmsd, unsigned int nconfs, double energy
+     UpdateConformersFromTree(&_mol, _energies, &divposes, verbose);
+ 
+     // Add back the energy offset
+-    transform(_energies.begin(), _energies.end(), _energies.begin(), bind2nd(std::plus<double>(), energy_offset));
++    transform(_energies.begin(), _energies.end(), _energies.begin(), [=](double e) { return e + energy_offset; });
+ 
+     // Clean up
+     delete [] store_initial;
+diff --git a/src/formats/fchkformat.cpp b/src/formats/fchkformat.cpp
+index 886e073623..cf334f9a86 100644
+--- a/src/formats/fchkformat.cpp
++++ b/src/formats/fchkformat.cpp
+@@ -665,16 +665,16 @@ namespace OpenBabel
+            no atom numbers < 0 or > Natoms */
+         if (NBond.end() != find_if(NBond.begin(),
+                                    NBond.end(),
+-                                   bind2nd(less_equal<int>(), 0)) ||
++                                   [](int i) { return i <= 0; }) ||
+             NBond.end() != find_if(NBond.begin(),
+                                    NBond.end(),
+-                                   bind2nd(greater<int>(), MxBond)) ||
++                                   [=](int i) { return i > MxBond; }) ||
+             IBond.end() != find_if(IBond.begin(),
+                                    IBond.end(),
+-                                   bind2nd(less<int>(), 0)) ||
++                                   [](int i) { return i < 0; }) ||
+             IBond.end() != find_if(IBond.begin(),
+                                    IBond.end(),
+-                                   bind2nd(greater<int>(), Natoms)))
++                                   [=](int i) { return i > Natoms; }))
+           {
+             error_msg << "Invalid connectivity : check the \"NBond\" and/or"
+                       << " \"IBond\" section(s).";
+diff --git a/src/formats/vaspformat.cpp b/src/formats/vaspformat.cpp
+index 1c8aaa6d4f..376b533a12 100644
+--- a/src/formats/vaspformat.cpp
++++ b/src/formats/vaspformat.cpp
+@@ -534,7 +534,7 @@ namespace OpenBabel {
+             for (size_t natom = 0; natom < pmol->NumAtoms(); ++natom) {
+               const vector3 dxyz = currXyz[natom] - prevXyz[natom];
+               vector3::const_iterator iter = std::find_if(dxyz.begin(), dxyz.end(),
+-                      std::bind2nd(std::not_equal_to<double>(), 0.0));
++                  [](double v) { return v != 0.0; });
+               if (iter != dxyz.end()) dipGrad[natom].SetRow(iter - dxyz.begin(),
+                                                             (currDm - prevDm) / *iter);
+             }
+@@ -588,7 +588,7 @@ namespace OpenBabel {
+       if (max != 0.0) {
+         // Normalize
+         std::transform(Intensities.begin(), Intensities.end(), Intensities.begin(),
+-                       std::bind2nd(std::divides<double>(), max / 100.0));
++                       [=](double v) { return v / (max / 100.0); });
+       } else {
+         Intensities.clear();
+       }

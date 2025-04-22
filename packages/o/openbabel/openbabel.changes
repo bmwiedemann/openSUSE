@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 19 17:05:53 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add openbabel-cmake-4.patch and openbabel-cmake-4-exports.patch
+  to fix cmake-4 failures
+
+-------------------------------------------------------------------
+Sat Apr 19 15:44:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add patches from upstream to fix compiler deprecation warnings
+  * openbabel-3.1.1-std-binary-function.patch,
+  * openbabel-3.1.1-std-bind1st.patch,
+  * openbabel-3.1.1-std-bind2nd.patch
+
+-------------------------------------------------------------------
 Fri Mar 14 01:53:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, needed for Python 3.12+.

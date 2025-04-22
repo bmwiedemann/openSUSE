@@ -1,0 +1,44 @@
+
+cf. https://github.com/openbabel/openbabel/pull/2784
+
+
+--- a/CMakeLists.txt	2020-05-08 17:38:02.000000000 +0200
++++ b/CMakeLists.txt	2025-04-16 16:30:45.258797826 +0200
+@@ -1,6 +1,6 @@
+-# Please ensure that any changes remain compliant with 3.1.
++# Please ensure that any changes remain compliant with 3.10.
+ if(NOT EMBED_OPENBABEL)
+-  cmake_minimum_required(VERSION 3.1)
++  cmake_minimum_required(VERSION 3.10)
+ endif()
+ 
+ project(openbabel)
+@@ -10,9 +10,6 @@
+ 
+ if(COMMAND cmake_policy)
+   cmake_policy(SET CMP0003 NEW)
+-  if(POLICY CMP0042)
+-    cmake_policy(SET CMP0042 OLD)
+-  endif()
+ endif()
+ 
+ include (CheckCXXCompilerFlag)
+--- a/doc/examples/static_executable/CMakeLists.txt	2020-05-08 17:38:02.000000000 +0200
++++ b/doc/examples/static_executable/CMakeLists.txt	2025-04-16 16:30:45.258797826 +0200
+@@ -25,7 +25,7 @@
+ #
+ 
+ # This line is required for cmake backwards compatibility.
+-cmake_minimum_required(VERSION 2.6)
++cmake_minimum_required(VERSION 3.10)
+ 
+ # Name of your project
+ project(myproject)
+--- a/scripts/CMakeLists.txt	2020-05-08 17:38:02.000000000 +0200
++++ b/scripts/CMakeLists.txt	2025-04-16 16:30:45.258797826 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.6.0)
++cmake_minimum_required(VERSION 3.10)
+ # Library versioning (used in Mac Python bindings)x
+ set(SOVERSION 4)
+ 
