@@ -17,7 +17,7 @@
 
 
 Name:           qalculate-gtk
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12
 BuildRequires:  pkgconfig(libqalculate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
+Requires:       qalculate-data >= %{version}
 
 %description
 Qalculate! is a multi-purpose cross-platform desktop calculator. It is

@@ -135,4 +135,37 @@
     <comment></comment>
     <requestid>1237864</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28be6f6ce497e9a27284d692e48068c1</srcmd5>
+    <version>5.5.1</version>
+    <time>1745335667</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.5.1
+  - Fix segfault when deleting object
+  - Fix mode menu items sometimes not functioning properly after a
+    mode has been added or removed
+  - Fix right status context menu not updated
+  - Fix keyboard shortcut input dialog when modifier is released
+    first
+  - Fix date (month off by one) in history context menu
+  - Fix roman numerals shown as &quot;Other&quot;
+  - Fix copy unformatted ASCII without units when unit is placed
+    before quantity
+  - Fix previous result displayed with changed output format
+    despite cleared result after modified input format
+  - Fix and improve tooltips
+  - Indicate input and output base using overline and underline in
+    programming keypad when input and output base differs
+  - Fix solve() function with replace() function as first argument
+    (fixes solve2() function) (libqalculate)
+  - Fix &quot;where&quot; operator using (in)equality in variable
+    (libqalculate)
+  - Return x=ae^(ir) (with r instead of n) for abs(x)=x
+    (libqalculate)
+  - Minor bug fixes and feature enhancements
+- ensure that qalculate-data is installed as otherwise the program
+  complains about missing datafiles
+</comment>
+    <requestid>1271115</requestid>
+  </revision>
 </revisionlist>
