@@ -1313,4 +1313,12 @@ to Staging:F with it</comment>
 - Add swiftshader-llvm20-absoluteSymbols.patch to fix FTBFS on aarch64</comment>
     <requestid>1268353</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>1a3d2377c35de2caa1782547395a291a</srcmd5>
+    <version>33.4.10</version>
+    <time>1745335634</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271081</requestid>
+  </revision>
 </revisionlist>

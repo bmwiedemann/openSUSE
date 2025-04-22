@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 19 08:45:19 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 33.4.10
+  * Fixed ElectronAccessibilityUI bug.
+  * Fixed an inverted conditional that caused broken window borders on Wayland.
+
+-------------------------------------------------------------------
 Wed Apr  9 18:46:20 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.9
