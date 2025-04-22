@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>42c9cecc022ab85fb86733b9d691266f</srcmd5>
+    <version>0.289</version>
+    <time>1745335799</time>
+    <user>anag_factory</user>
+    <comment>New read-only FUSE driver for accessing HFS+ filesystems</comment>
+    <requestid>1271532</requestid>
+  </revision>
+</revisionlist>
