@@ -169,4 +169,22 @@
   * issue 18: Problems with rotated text (monospace font only)</comment>
     <requestid>1080113</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>76d429c70217357fcb0a1146fcede918</srcmd5>
+    <version>2.3.9</version>
+    <time>1745335542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.3.9 
+  * Remove support for building with pre-X11R7 versions of X
+  * Remove support for building with pre-C89 versions of C
+  * Require xproto &gt;= 7.0.22 for _X_UNUSED
+  * meson: Add option to build with meson
+  * fix potential buffer overrun in _XftGlyphDefault
+  * issue 19: Problem loading &quot;SourceCodePro-Regular&quot; font in Fedora
+  * build-fix for older versions of freetype2: FT_HAS_SVG was added
+    late in 2021
+  * issue 21: remove redundant/out-of-place prototype for XftNameUnparse
+  * manpage formatting-fixes</comment>
+    <requestid>1271163</requestid>
+  </revision>
 </revisionlist>

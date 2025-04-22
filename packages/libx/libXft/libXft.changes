@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 21 11:24:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.3.9 
+  * Remove support for building with pre-X11R7 versions of X
+  * Remove support for building with pre-C89 versions of C
+  * Require xproto >= 7.0.22 for _X_UNUSED
+  * meson: Add option to build with meson
+  * fix potential buffer overrun in _XftGlyphDefault
+  * issue 19: Problem loading "SourceCodePro-Regular" font in Fedora
+  * build-fix for older versions of freetype2: FT_HAS_SVG was added
+    late in 2021
+  * issue 21: remove redundant/out-of-place prototype for XftNameUnparse
+  * manpage formatting-fixes
+
+-------------------------------------------------------------------
 Tue Apr 18 11:23:43 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- Updat to version 2.3.8
+- Update to version 2.3.8
   * configure: Use LT_INIT from libtool 2 instead of deprecated
     AC_PROG_LIBTOOL
   * add check for missing glyph in XftFontCheckGlyph()
