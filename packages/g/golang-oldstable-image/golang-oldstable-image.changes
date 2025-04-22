@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- stylistic changes to pass dockerfmt
+
+-------------------------------------------------------------------
 Wed Feb 12 15:38:34 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - go 1.24 for stable, move oldstable to 1.23
