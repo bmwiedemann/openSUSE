@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri Apr 18 21:00:00 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Use obs_scm for sources, since it uses a tarball of a Git tag
+  from GitHub anyway
+
+-------------------------------------------------------------------
+Tue Apr 15 10:48:20 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Initial package (at version 2.0.2)
