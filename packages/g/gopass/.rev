@@ -65,4 +65,12 @@
   - [chore] use the same version of golangci-lint (#2948)</comment>
     <requestid>1226118</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fcb1c72d6168e35c649b56bbb9567f88</srcmd5>
+    <version>1.15.16</version>
+    <time>1745335696</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.15.16:</comment>
+    <requestid>1271210</requestid>
+  </revision>
 </revisionlist>
