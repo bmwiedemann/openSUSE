@@ -16,11 +16,11 @@
 #
 
 
-%define project         github.com/kubernetes-sigs/cri-tools
+%define project         sigs.k8s.io/cri-tools
 %define name_source1    crictl.yaml
 
 Name:           cri-tools
-Version:        1.24.1
+Version:        1.32.0
 Release:        0
 Summary:        CLI and validation tools for Kubelet Container Runtime Interface
 License:        Apache-2.0
@@ -29,9 +29,10 @@ Url:            https://github.com/kubernetes-sigs/cri-tools
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name_source1}
 Source2:        rpmlintrc
+Source3:        vendor.tar.gz
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.17
+BuildRequires:  golang(API) >= 1.24
 # disable stripping of binaries
 %{go_nostrip}
 
@@ -52,10 +53,12 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 export BUILDMODE_ARGS="-buildmode=pie"
-# the buildmode pie is currently not supported for ppc64
-if [ %{_arch} = "ppc64" ]; then
-    unset BUILDMODE_ARGS
-fi
+# `-buildmode=pie` with "internal linking" is not yet supported on linux/s390x platform
+# https://github.com/golang/go/blob/a63907808d14679c723e566cb83acc76fc8cafc2/src/internal/platform/supported.go#L223-L232
+# https://github.com/golang/go/issues/64875#issuecomment-1870734528
+# if [ %{_arch} = "s390x" ]; then
+#    unset BUILDMODE_ARGS
+# fi
 
 go build $BUILDMODE_ARGS \
          -o bin/crictl \

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Feb 28 13:28:57 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.0:
+  * Ref for changelog: https://github.com/kubernetes-sigs/cri-tools/releases/tag/v1.32.0
+
+- update: `%define project sigs.k8s.io/cri-tools`
+
+- bump: `BuildRequires:  golang(API) >= 1.24`
+
+- update _service file to add `go_modules` service to generate the `vendor.tar.gz`
+  * update .spec file to add the vendor tarball as source
+
+-------------------------------------------------------------------
 Thu May 19 23:57:55 UTC 2022 - jkowalczyk@suse.com
 
 - Update to version 1.24.1:

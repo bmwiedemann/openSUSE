@@ -272,4 +272,17 @@
     <comment></comment>
     <requestid>982783</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>da5eb6dbf339a6adc28f52cc2fdc9bca</srcmd5>
+    <version>1.32.0</version>
+    <time>1745335632</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.32.0:
+  * Ref for changelog: https://github.com/kubernetes-sigs/cri-tools/releases/tag/v1.32.0
+- update: `%define project sigs.k8s.io/cri-tools`
+- bump: `BuildRequires:  golang(API) &gt;= 1.24`
+- update _service file to add `go_modules` service to generate the `vendor.tar.gz`
+  * update .spec file to add the vendor tarball as source (forwarded request 1255939 from psaggu)</comment>
+    <requestid>1271087</requestid>
+  </revision>
 </revisionlist>
