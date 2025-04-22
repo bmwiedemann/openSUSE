@@ -1,7 +1,7 @@
 #
 # spec file for package python-Bottleneck
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,6 +57,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc README.rst RELEASE.rst
 %{python_sitearch}/bottleneck/
-%{python_sitearch}/Bottleneck-%{version}.dist-info
+%{python_sitearch}/[Bb]ottleneck-%{version}.dist-info
 
 %changelog

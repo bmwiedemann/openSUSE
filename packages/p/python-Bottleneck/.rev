@@ -161,4 +161,12 @@ This is a dependency of python-pandas.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1230797</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>946478a5184f53b636fbc7077a6765f1</srcmd5>
+    <version>1.4.2</version>
+    <time>1745335698</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271217</requestid>
+  </revision>
 </revisionlist>
