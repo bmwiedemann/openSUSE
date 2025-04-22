@@ -17,17 +17,16 @@
 
 
 Name:           qterminal
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          System/X11/Terminals
 URL:            https://github.com/lxqt/qterminal
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  hicolor-icon-theme
 %if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
