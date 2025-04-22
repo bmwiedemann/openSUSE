@@ -722,4 +722,18 @@
   * Fix SyntaxWarning: invalid escape sequence '\s'</comment>
     <requestid>1252398</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>4a639c160784b5675f74015635893963</srcmd5>
+    <version>5.8.3</version>
+    <time>1745335794</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.8.3
+  * Install dependencies rpm-build and squashfs at runtime if needed
+  * Drop DNF support
+
+- Version 5.8.2
+  * Warn about adding staging repos
+  * Gracefully handle zypper exit code 106 (repos without cache present)</comment>
+    <requestid>1271861</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define pythons %{use_python}
 
 Name:           opi
-Version:        5.8.1
+Version:        5.8.3
 Release:        0
 Summary:        OBS Package Installer (CLI)
 License:        GPL-3.0-only
@@ -56,8 +56,8 @@ Requires:       python3-rpm
 Requires:       python3-termcolor
 Requires:       zypper
 # for rpm building and snap extracting
-Requires:       rpm-build
-Requires:       squashfs
+Recommends:     rpm-build
+Recommends:     squashfs
 
 %description
 OBS Package Installer (CLI)

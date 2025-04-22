@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 22 11:55:21 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.8.3
+  * Install dependencies rpm-build and squashfs at runtime if needed
+  * Drop DNF support
+
+-------------------------------------------------------------------
+Tue Apr 22 08:08:48 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 5.8.2
+  * Warn about adding staging repos
+  * Gracefully handle zypper exit code 106 (repos without cache present)
+
+-------------------------------------------------------------------
 Wed Mar 12 11:08:05 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Version 5.8.1
