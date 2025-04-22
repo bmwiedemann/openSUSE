@@ -222,4 +222,12 @@
     <comment>- skip testing with Django on SLFO</comment>
     <requestid>1204071</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>98ae133cf61ece0d355adb8dc0a261f0</srcmd5>
+    <version>3.3.3</version>
+    <time>1745335862</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271876</requestid>
+  </revision>
 </revisionlist>

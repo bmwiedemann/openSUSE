@@ -1,7 +1,7 @@
 #
 # spec file for package python-factory_boy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-factory_boy
-Version:        3.3.1
+Version:        3.3.3
 Release:        0
 Summary:        Python test fixtures
 License:        MIT
@@ -26,7 +26,7 @@ URL:            https://github.com/rbarrois/factory_boy
 Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/factory_boy-%{version}.tar.gz
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  fdupes

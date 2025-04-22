@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 22 12:08:31 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.3
+  * New:
+    - Publish type annotations
+- Changes from 3.3.2
+  * Bugfix:
+    - Fix docs generation
+  * New:
+    - Add support for Python 3.13
+
+-------------------------------------------------------------------
 Thu Sep 26 10:37:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - skip testing with Django on SLFO
