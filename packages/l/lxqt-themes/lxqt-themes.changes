@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 17 22:49:54 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Made Color Picker divider visible in Clearlooks and Leech
+  * Fixed the text color of appview in Fancy Menu
+  * Added basic styling for the mount plugin in Clearlooks and
+    Leech
+  * Added Graphite theme
+  * Removed borders from the calendar widget
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Nov  6 21:39:14 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 2.1.0:

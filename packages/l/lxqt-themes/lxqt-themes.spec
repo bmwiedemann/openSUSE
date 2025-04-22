@@ -17,18 +17,16 @@
 
 
 Name:           lxqt-themes
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Themes, graphics and icons for LXQt
 License:        LGPL-2.1-or-later
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-themes
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        logo.tar.xz
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
