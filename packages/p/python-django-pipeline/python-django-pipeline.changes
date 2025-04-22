@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:30:03 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.0.0
+  * Drop support for Python 3.8
+  * Confirm support for Django 5.1 and drop support for Django 3.2
+  * Add Python 3.12 support
+  * Replace deprecated .warn method with .warning
+  * Update sourcemap paths when concatenating source files
+  * Ensure correct compiler error styling and strip ANSI escape sequences
+- Add upstream django52.patch to fix build with Django 5.2
+- Fix packaging errors, create a doc subpackage because of it
+
+-------------------------------------------------------------------
 Sat Sep  3 04:13:02 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
 
 - Make one test compatible with Django 4.1

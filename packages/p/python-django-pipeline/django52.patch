@@ -1,0 +1,72 @@
+From b3fa383ba6563fa800c1913280792bed2aafb313 Mon Sep 17 00:00:00 2001
+From: d9pouces <github@19pouces.net>
+Date: Wed, 16 Apr 2025 22:27:20 +0200
+Subject: [PATCH 3/3] fix: fix #834, by supporting both all (django 5.1-) and
+ find_all (django 5.2) keywords in the find method
+
+---
+ pipeline/finders.py | 10 +++++-----
+ pyproject.toml      |  1 +
+ 2 files changed, 6 insertions(+), 5 deletions(-)
+
+diff --git a/pipeline/finders.py b/pipeline/finders.py
+index b0ce890e..05a12912 100644
+--- a/pipeline/finders.py
++++ b/pipeline/finders.py
+@@ -18,7 +18,7 @@
+ class PipelineFinder(BaseStorageFinder):
+     storage = staticfiles_storage
+ 
+-    def find(self, path, all=False):
++    def find(self, path, all=False, find_all=False):
+         if not settings.PIPELINE_ENABLED:
+             return super().find(path, all)
+         else:
+@@ -29,7 +29,7 @@ def list(self, ignore_patterns):
+ 
+ 
+ class ManifestFinder(BaseFinder):
+-    def find(self, path, all=False):
++    def find(self, path, all=False, find_all=False):
+         """
+         Looks for files in PIPELINE.STYLESHEETS and PIPELINE.JAVASCRIPT
+         """
+@@ -37,7 +37,7 @@ def find(self, path, all=False):
+         for elem in chain(settings.STYLESHEETS.values(), settings.JAVASCRIPT.values()):
+             if normpath(elem["output_filename"]) == normpath(path):
+                 match = safe_join(settings.PIPELINE_ROOT, path)
+-                if not all:
++                if not (all or find_all):
+                     return match
+                 matches.append(match)
+         return matches
+@@ -47,7 +47,7 @@ def list(self, *args):
+ 
+ 
+ class CachedFileFinder(BaseFinder):
+-    def find(self, path, all=False):
++    def find(self, path, all=False, find_all=False):
+         """
+         Work out the uncached name of the file and look that up instead
+         """
+@@ -56,7 +56,7 @@ def find(self, path, all=False):
+         except ValueError:
+             return []
+         path = ".".join((start, extn))
+-        return find(path, all=all) or []
++        return find(path, all=(all or find_all)) or []
+ 
+     def list(self, *args):
+         return []
+diff --git a/pyproject.toml b/pyproject.toml
+index 369a34e4..271ddccd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,6 +19,7 @@ classifiers = [
+     "Framework :: Django :: 4.2",
+     "Framework :: Django :: 5.0",
+     "Framework :: Django :: 5.1",
++    "Framework :: Django :: 5.2",
+     "Intended Audience :: Developers",
+     "License :: OSI Approved :: MIT License",
+     "Operating System :: OS Independent",
