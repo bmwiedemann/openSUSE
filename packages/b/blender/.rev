@@ -1499,4 +1499,12 @@ Enable cycles-osl in build</comment>
     <comment></comment>
     <requestid>1254207</requestid>
   </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>ca8fde671e0685506a9f7b98a5fe6a33</srcmd5>
+    <version>4.4.0</version>
+    <time>1745335565</time>
+    <user>anag_factory</user>
+    <comment>discontinue use of openCollada to deprecate pcre</comment>
+    <requestid>1270159</requestid>
+  </revision>
 </revisionlist>

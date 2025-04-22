@@ -20,14 +20,23 @@
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
+# use osc build --with=debugbuild to turn this on
+%bcond_with debugbuild
+
 %bcond_with is_snapshot
+
+%bcond_with blender_ua
 
 %ifarch x86_64
 %bcond_without embree
 %bcond_without oidn
+%bcond_without oneapi_support
+%bcond_without oceansim
 %else
 %bcond_with embree
 %bcond_with oidn
+%bcond_with oneapi_support
+%bcond_with oceansim
 %endif
 
 %ifarch x86_64 aarch64
@@ -36,39 +45,33 @@
 %bcond_with openpgl
 %endif
 
+# TBD: contributions welcome
+%bcond_with usd
+%bcond_with openxr
+
 %bcond_with optix
 %define optix_version 7.4
 
-%if 0%{?suse_version} >= 1550
-%bcond_without system_audaspace
+%if 0%{?suse_version} > 1550
+
+%bcond_without pipewire
+
+%global py3ver 3.13
+%global py3pkg python313
+
 %else
-%bcond_without system_audaspace
+
+%bcond_with pipewire
+
 %global force_boost_version 1_75_0
-%global force_gcc_version 14
+%global force_gcc_version   14
+
+%global py3ver 3.11
+%global py3pkg python311
 %endif
 
-%bcond_with clang
-
-%bcond_with blender_ua
-
-# Set this to 1 for fixing bugs.
-%define debugbuild 0
-
-# Define the version of python3 that blender is going to build against.
-%if 0%{?suse_version} >= 1550
-%define py3ver 3.13
-%define py3pkg python313
-%else
-%define py3ver 3.11
-%define py3pkg python311
-%endif
-# this is mostly needed on leap for PySound.cpp as we build the intree audaspace
 %if %{without system_audaspace}
-%if 0%{?suse_version} >= 1600
-%define numpy_include_path %{_libdir}/python%{py3ver}/site-packages/numpy/_core/include/
-%else
-%define numpy_include_path %{_libdir}/python%{py3ver}/site-packages/numpy/core/include/
-%endif
+%define numpy_include_path %(%{_bindir}/python%{py3ver} -c "import numpy; print(numpy.get_include())")
 %endif
 
 # Blender version: source/blender/blenkernel/BKE_blender_version.h
@@ -77,16 +80,6 @@
 # necessary.
 %define _version %(echo %{version} | cut -b 1-3)
 %define _suffix %(echo %{_version} | tr -d '.')
-
-%bcond_without alembic
-%bcond_without collada
-%bcond_without opensubdiv
-%bcond_without openvdb
-%bcond_without osl
-%bcond_without system_glew
-# TBD: contributions welcome
-%bcond_with usd
-%bcond_with openxr
 
 %global pkg_name blender
 
@@ -116,33 +109,9 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/115320
 Patch1:         cmake_manpage_fix.patch
-%if %{with mold}
-BuildRequires:  mold
-%endif
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests
-BuildRequires:  OpenColorIO-devel >= 2.0
-BuildRequires:  OpenEXR-devel
-BuildRequires:  OpenImageIO < 3
-BuildRequires:  OpenImageIO-devel < 3
-BuildRequires:  SDL2-devel
-BuildRequires:  clang-devel
-BuildRequires:  cmake
-BuildRequires:  desktop-file-utils
-BuildRequires:  distribution-release
-BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
-BuildRequires:  gettext-tools
-BuildRequires:  graphviz
-BuildRequires:  help2man
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  jack-audio-connection-kit-devel
-BuildRequires:  libboost_atomic%{?force_boost_version}-devel
-BuildRequires:  libboost_date_time%{?force_boost_version}-devel
-BuildRequires:  libboost_filesystem%{?force_boost_version}-devel
-BuildRequires:  libboost_iostreams%{?force_boost_version}-devel
-BuildRequires:  libboost_locale%{?force_boost_version}-devel
 %if "%{?force_boost_version}" == ""
 BuildRequires:  libboost_numpy3-devel
 BuildRequires:  libboost_python3-devel
@@ -150,40 +119,35 @@ BuildRequires:  libboost_python3-devel
 BuildRequires:  libboost_numpy-py3-%{?force_boost_version}-devel
 BuildRequires:  libboost_python-py3-%{?force_boost_version}-devel
 %endif
-BuildRequires:  libboost_program_options%{?force_boost_version}-devel
-BuildRequires:  libboost_regex%{?force_boost_version}-devel
-BuildRequires:  libboost_serialization%{?force_boost_version}-devel
-BuildRequires:  libboost_system%{?force_boost_version}-devel
-BuildRequires:  libboost_thread%{?force_boost_version}-devel
-BuildRequires:  libboost_wave%{?force_boost_version}-devel
+BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
+BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libharu-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libomp-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libpulse-devel
-BuildRequires:  libspnav-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  llvm-devel
-BuildRequires:  lzo-devel
 BuildRequires:  ninja
-BuildRequires:  openal-soft-devel
-BuildRequires:  pcre-devel
-BuildRequires:  perl-Text-Iconv
-BuildRequires:  pkgconfig
 BuildRequires:  potrace-devel
-BuildRequires:  shared-mime-info
-BuildRequires:  update-desktop-files
 BuildRequires:  xz
-BuildRequires:  xz-devel
+BuildRequires:  (cmake(OpenAL) or  pkgconfig(openal))
+BuildRequires:  (cmake(OpenImageIO) >= 2.5 with cmake(OpenImageIO) < 3)
+BuildRequires:  (cmake(SDL2) or pkgconfig(sdl2))
+BuildRequires:  (cmake(SndFile) or pkgconfig(sndfile))
+BuildRequires:  (pkgconfig(gmp) or gmp-devel)
+BuildRequires:  cmake(Alembic)
+BuildRequires:  cmake(Clang)
+BuildRequires:  cmake(LLVM)
+BuildRequires:  cmake(OpenColorIO) >= 2
+BuildRequires:  cmake(OpenEXR)
+BuildRequires:  cmake(OpenImageDenoise)
+BuildRequires:  cmake(TBB)
+BuildRequires:  cmake(Tiff)
 BuildRequires:  cmake(pugixml)
-BuildRequires:  cmake(zstd)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(epoxy)
+BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(fribidi)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(level-zero)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -191,31 +155,55 @@ BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libdecor-0)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(shaderc)
-BuildRequires:  pkgconfig(sndfile)
+BuildRequires:  pkgconfig(spnav)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-scanner)
-%ifarch x86_64
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xxf86vm)
+%if %{with embree}
+BuildRequires:  cmake(embree)
+%endif
+%if %{with openpgl}
+BuildRequires:  cmake(openpgl)
+%endif
+%if %{with oneapi_support}
 # oneVPL only available on x86_64 atm
 BuildRequires:  pkgconfig(vpl)
 %endif
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(xrender)
-BuildRequires:  pkgconfig(xxf86vm)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  openvdb-devel
+BuildRequires:  cmake(OSL) > 1.13
+BuildRequires:  cmake(OpenSubdiv)
+BuildRequires:  pkgconfig(blosc)
+%if %{with usd}
+BuildRequires:  cmake(pxr)
+%endif
+%if %{with pipewire}
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 1.1.0
+%endif
+BuildRequires:  pkgconfig(audaspace) >= 1.6
+Requires:       audaspace-deviceplugin
+Requires:       audaspace-fileplugin
+%if %{with optix}
+BuildRequires:  nvidia-optix-headers
+%endif
+%if %{with debugbuild}
+BuildRequires:  pkgconfig(valgrind)
+%endif
 Requires:       %{py3pkg}-base
 Requires:       %{py3pkg}-numpy
 Requires:       %{py3pkg}-requests
@@ -225,54 +213,6 @@ Recommends:     %name-demo = %version
 # current locale handling doesn't create locale(..) provides correctly
 Recommends:     %name-lang = %version
 Provides:       %{pkg_name}-%{_suffix} = %{version}
-BuildRequires:  gcc%{?force_gcc_version}-c++
-BuildRequires:  pkgconfig(OpenEXR)
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gmpxx)
-%else
-BuildRequires:  gmp-devel
-%endif
-# conditional requirements
-%if 0%{?debugbuild} == 1
-BuildRequires:  pkgconfig(valgrind)
-%endif
-%if 0%{?is_opensuse} == 1
-BuildRequires:  pkgconfig(jemalloc)
-%endif
-%if %{with alembic}
-BuildRequires:  alembic-devel
-%endif
-%if %{with collada}
-BuildRequires:  openCOLLADA-devel
-%endif
-%if %{with embree}
-BuildRequires:  cmake(embree)
-%endif
-%if %{with oidn}
-BuildRequires:  OpenImageDenoise-devel >= 2
-%endif
-%if %{with openpgl}
-BuildRequires:  openpgl-devel >= 0.5
-%endif
-%if %{with opensubdiv}
-BuildRequires:  OpenSubdiv-devel
-%endif
-%if %{with openvdb}
-BuildRequires:  openvdb-devel
-BuildRequires:  tbb-devel
-BuildRequires:  pkgconfig(blosc)
-%endif
-%if %{with optix}
-BuildRequires:  nvidia-optix-headers
-%endif
-%if %{with osl}
-BuildRequires:  OpenShadingLanguage-devel > 1.13
-%endif
-%if %{with system_audaspace}
-BuildRequires:  pkgconfig(audaspace) >= 1.6
-Requires:       audaspace-deviceplugin
-Requires:       audaspace-fileplugin
-%endif
 %ifarch x86_64
 Obsoletes:      %{pkg_name}-cycles-devel = %{version}
 Provides:       %{pkg_name}-cycles-devel = %{version}
@@ -332,29 +272,17 @@ popd
 mv blender-assets-%{version} release/datafiles/assets
 
 rm -rf extern/libopenjpeg
-%if %{with system_glew}
 rm -rf extern/glew
 # silence warning about missing includedir
 mkdir -p extern/glew/include
 sed -i 's|NOT WITH_SYSTEM_GLEW|WITH_SYSTEM_GLEW|' source/blender/gpu/CMakeLists.txt
-%endif
 
 for i in $(grep -rl "%{_bindir}/env python"); do sed -i '1s@^#!.*@#!%{_bindir}/python%{py3ver}@' ${i}; done
 
 %build
-export SUSE_ASNEEDED=0
-%if %{with clang}
-export CC="clang"
-export CXX="clang++"
-%define _lto_cflags -flto=full
-%else
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
-%endif
-%endif
-%if %{with mold}
-%define build_ldflags -fuse-ld=mold
 %endif
 
 echo "optflags: " %{optflags}
@@ -379,6 +307,7 @@ cmake ../ \
       -DWITH_MEM_VALGRIND:BOOL=OFF \
       -DWITH_ASSERT_ABORT:BOOL=OFF \
 %endif
+      -DWITH_LIBS_PRECOMPILED=OFF \
       -DCMAKE_CXX_STANDARD=17 \
       -DWITH_CLANG:BOOL=ON \
       -DWITH_LLVM:BOOL=ON \
@@ -388,36 +317,23 @@ cmake ../ \
       -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
       -DBUILD_SHARED_LIBS:BOOL=OFF \
       -DWITH_INSTALL_PORTABLE:BOOL=OFF \
-%if 0%{?is_opensuse} == 1
       -DWITH_MEM_JEMALLOC:BOOL=ON \
-%endif
-%if %{with alembic}
       -DWITH_ALEMBIC:BOOL=ON \
-%endif
       -DWITH_AUDASPACE:BOOL=ON \
-%if %{with system_audaspace}
       -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
-%endif
       -DWITH_BUILDINFO:BOOL=OFF \
       -DWITH_BULLET:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
       -DFFMPEG_ROOT_DIR:PATH=%{_includedir}/ffmpeg \
       -DWITH_CODEC_SNDFILE:BOOL=ON \
       -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
-%ifarch ppc ppc64 ppc64le
-      -DWITH_CYCLES:BOOL=OFF \
-      -DWITH_CYCLES_EMBREE:BOOL=OFF \
-%else
       -DWITH_CYCLES:BOOL=ON \
-%if %{with osl}
       -DWITH_CYCLES_OSL:BOOL=ON \
       -DOSL_SHADER_HINT:PATH=%{_datadir}/OpenShadingLanguage \
-%endif
 %if %{with embree}
       -DWITH_CYCLES_EMBREE:BOOL=ON \
 %else
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
-%endif
 %endif
       -DWITH_DRACO:BOOL=ON \
       -DWITH_FFTW3:BOOL=ON \
@@ -437,33 +353,27 @@ cmake ../ \
       -DWITH_LZO:BOOL=ON \
       -DWITH_SYSTEM_EIGEN3:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
+      -DWITH_SYSTEM_FREETYPE:BOOL=ON \
       -DWITH_MOD_FLUID:BOOL=ON \
-%ifnarch x86_64
-      -DWITH_MOD_OCEANSIM:BOOL=OFF \
-%else
+      -DWITH_FRIBIDI:BOOL=ON \
+%if %{with oceansim}
       -DWITH_MOD_OCEANSIM:BOOL=ON \
+%else
+      -DWITH_MOD_OCEANSIM:BOOL=OFF \
 %endif
       -DWITH_MOD_REMESH:BOOL=ON \
       -DWITH_NANOVDB:BOOL=ON \
       -DWITH_OPENAL:BOOL=ON \
-%if %{with collada}
-      -DWITH_OPENCOLLADA:BOOL=ON \
-%else
       -DWITH_OPENCOLLADA:BOOL=OFF \
-%endif
       -DWITH_OPENCOLORIO:BOOL=ON \
 %if %{with oidn}
       -DWITH_OPENIMAGEDENOISE:BOOL=ON \
 %endif
       -DWITH_OPENMP:BOOL=ON \
-%if %{with opensubdiv}
       -DWITH_OPENSUBDIV:BOOL=ON \
       -DOPENSUBDIV_OSDGPU_LIBRARY:FILE=%{_libdir}/libosdGPU.so \
-%endif
-%if %{with openvdb}
       -DWITH_OPENVDB:BOOL=ON \
       -DWITH_OPENVDB_BLOSC:BOOL=ON \
-%endif
       -DWITH_POTRACE:BOOL=ON \
       -DWITH_PUGIXML:BOOL=ON \
       -DWITH_PYTHON:BOOL=ON \
@@ -477,15 +387,13 @@ cmake ../ \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
-%if %{with usd}
       -DWITH_USD:BOOL=ON \
+%if %{with usd}
+      -DWITH_MATERIALX:BOOL=ON \
 %else
-      -DWITH_USD:BOOL=OFF \
-%endif
       -DWITH_MATERIALX:BOOL=OFF \
-%if 0%{?is_opensuse} == 1
-      -DWITH_MEM_JEMALLOC:BOOL=ON \
 %endif
+      -DWITH_MEM_JEMALLOC:BOOL=ON \
       -DWITH_JACK:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DWITH_GHOST_XDND:BOOL=ON \
@@ -507,7 +415,8 @@ cmake ../ \
       -DWITH_CYCLES_HIP_BINARIES:BOOL=ON \
       -DWITH_CYCLES_DEVICE_HIPRT:BOOL=ON \
       -DWITH_CYCLES_DEVICE_ONEAPI:BOOL=ON \
-      -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON
+      -DWITH_CYCLES_ONEAPI_BINARIES:BOOL=ON \
+      %{nil}
 
 %cmake_build
 

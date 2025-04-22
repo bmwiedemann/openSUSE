@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Mar 24 16:55:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- the big conditionals and BuildRequires cleanup
+  - all bconds which were on all the time got removed
+  - as many BR as possible got convert to cmake() and pkgconfig()
+    format
+  - fall back BR now use the (foo or bar) syntax
+  - cleaned up many BR which were no longer used, including boost
+    libraries no longer needed, openCollada and many more.
+  - always build with jemalloc
+  - force system freetype2
+
+-------------------------------------------------------------------
 Tue Mar 18 15:53:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.4.0
