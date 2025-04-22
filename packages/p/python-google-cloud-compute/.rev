@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>1269358</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3942bd10620d5f41e574116bc5156d7d</srcmd5>
+    <version>1.29.0</version>
+    <time>1745335621</time>
+    <user>anag_factory</user>
+    <comment>Add bug reference bsc#1241310 (forwarded request 1270130 from seanmarlow)</comment>
+    <requestid>1270636</requestid>
+  </revision>
 </revisionlist>

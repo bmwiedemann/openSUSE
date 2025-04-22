@@ -21,7 +21,7 @@ Mon Apr 14 19:51:56 UTC 2025 - Sean Marlow <sean.marlow@suse.com>
   * Fix typing issue with gRPC metadata when key ends in -bin
 - Update to 1.22.0
   * Update Compute Engine API to revision 20241105
-- Update to 1.21.0
+- Update to 1.21.0 (bsc#1241310)
   * Update Compute Engine API to revision 20241015
 - Update to 1.20.1
   * disable universe-domain validation
