@@ -17,11 +17,10 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/lxqt/xdg-desktop-portal-lxqt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc

@@ -53,4 +53,12 @@
   * Fixed the initial path (forwarded request 1222013 from AndnoVember)</comment>
     <requestid>1223221</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>983944844f646c514870e3eabe727ada</srcmd5>
+    <version>1.2.0</version>
+    <time>1745335580</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270843</requestid>
+  </revision>
 </revisionlist>
