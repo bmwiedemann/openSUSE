@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8c9d4a7fa6ca9b4d37bf0367964dffcb</srcmd5>
+    <version>3.29.4</version>
+    <time>1745335814</time>
+    <user>anag_factory</user>
+    <comment>needed for building new chromium/electron. The chromium tarball no longer contains a free version.</comment>
+    <requestid>1271770</requestid>
+  </revision>
+</revisionlist>

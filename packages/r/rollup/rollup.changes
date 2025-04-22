@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Apr 15 17:39:42 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Initial packaging of version 3.29.4.
+  This is the last Rollup version that is provided as human-readable JS
+  and does not require a complicated bootstrap step (see rhbz#2359230)
