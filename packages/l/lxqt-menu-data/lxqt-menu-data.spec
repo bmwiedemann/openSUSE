@@ -18,17 +18,16 @@
 
 %global debug_package %{nil}
 Name:           lxqt-menu-data
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Menu files for LXQt Panel, Configuration Center and PCManFM-Qt
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-menu-data
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Patch1:         001-lxqt-applications-menu-2.0.0.patch
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(lxqt2-build-tools)
@@ -40,7 +39,6 @@ and PCManFM-Qt/libfm-qt.
 
 %package devel
 Summary:        Tools for building lxqt-panel, lxqt-config, libfm-qt
-Group:          Development/Tools/Building
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 
