@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 17 14:14:49 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 4.2.0:
+  * Modernized the strings by using 'QLatin1StringView' and string
+    operators. Also removed the 'xdgmacros' header
+
+-------------------------------------------------------------------
 Wed Nov  6 21:45:03 UTC 2024 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 4.1.0:
