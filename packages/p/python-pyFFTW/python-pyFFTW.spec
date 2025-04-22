@@ -87,6 +87,6 @@ export CFLAGS="%{optflags} -Wno-incompatible-pointer-types"
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/pyfftw
-%{python_sitearch}/pyFFTW-%{version}*-info
+%{python_sitearch}/py[Ff][Ff][Tt][Ww]-%{version}.dist-info
 
 %changelog

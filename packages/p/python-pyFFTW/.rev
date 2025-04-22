@@ -122,4 +122,12 @@
   * Require Python &gt;=3.10 and update pdm.lock/CI workflows</comment>
     <requestid>1243182</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>5e111bad302961911f03afbbba6ea628</srcmd5>
+    <version>0.15.0</version>
+    <time>1745335705</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271222</requestid>
+  </revision>
 </revisionlist>
