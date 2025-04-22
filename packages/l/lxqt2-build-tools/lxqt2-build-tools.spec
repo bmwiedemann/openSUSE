@@ -18,7 +18,7 @@
 
 %define _name lxqt-build-tools
 Name:           lxqt2-build-tools
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Core build tools for LXQt
 License:        BSD-3-Clause
