@@ -1,7 +1,7 @@
 #
 # spec file for package python-GooseMPL
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -79,6 +79,6 @@ using matplotlib.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/GooseMPL
-%{python_sitelib}/GooseMPL-%{version}.dist-info
+%{python_sitelib}/[Gg]oose[Mm][Pp][Ll]-%{version}.dist-info
 
 %changelog

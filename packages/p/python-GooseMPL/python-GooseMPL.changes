@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 01:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
 Sun Oct  6 16:06:22 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.15.0
