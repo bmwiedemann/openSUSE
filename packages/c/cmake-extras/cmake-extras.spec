@@ -23,6 +23,7 @@ License:        GPL-3.0-or-later
 Group:          Development/Tools/Building
 URL:            https://gitlab.com/ubports/development/core/cmake-extras
 Source:         https://gitlab.com/ubports/development/core/cmake-extras/-/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:         cmake-extras-1.8-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  vala
 BuildRequires:  qmlpluginexports-qt5
