@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Apr 18 21:15:07 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.10.0:
+  * caddytls: Allow missing ECH meta file
+  * caddytls: Prefer managed wildcard certs over individual subdomain certs (#6959)
+  * caddytls: Add remote_ip to HTTP cert manager (close #6952)
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 (#6960)
+  * caddyauth: Set authentication provider error in placeholder (#6932)
+  * go.mod: Upgrade acmez and certmagic
+  * admin: Remove host checking for UDS (close #6832)
+  * reverseproxy: Add valid Upstream to DialInfo in active health checks (#6949)
+  * Fix the incorrect parameter order (#6951)
+  * chore: fix comment (#6950)
+  * caddyhttp: Document side effect of HTTP/3 early data (close #6936)
+  * go.mod: Upgrade to libdns 1.0 beta APIs (requires upgraded DNS providers)
+  * events: Refactor; move Event into core, so core can emit events (#6930)
+  * caddytls: Temporarily treat "" and "@" as equivalent for DNS publication
+  * go.mod: Upgrade CertMagic
+  * go.mod: Minor dependency upgrades
+  * caddytls: Don't publish HTTPS record for CNAME'd domain (fix #6922)
+  * core: add modular `network_proxy` support (#6399)
+  * update quic-go to v0.50.1 (#6918)
+  * chore: Modernize a couple for loops
+  * caddytls: Initialize permission module earlier (fix #6901)
+  * caddyfile: Fix formatting for backquote wrapped braces (#6903)
+  * caddytls: Convert AP subjects to punycode
+  * caddytls: Don't publish ECH configs if other records don't exist
+  * requestbody: Fix ContentLength calculation after body replacement (#6896)
+  * requestbody: Add set option to replace request body (#5795)
+  * headers: Allow nil HeaderOps (fix #6893)
+  * caddytls: Minor fixes for ECH
+  * caddytls: Fix TrustedCACerts backwards compatibility (#6889)
+  * caddytls: Pointer receiver (fix #6885)
+  * caddyfile: add error handling for unrecognized subdirective/options in various modules (#6884)
+  * reverseproxy: more comments about buffering and add new tests (#6778)
+  * chore: Remove unnecessary explicit type parameters
+  * caddytls: Reorder provisioning steps (fix #6877)
+  * ci: fix Go matrix (#6846)
+  * caddytls: Only make DNS solver if not already set (fix #6880)
+  * cmd: Promote undo maxProcs func to caller
+  * cmd: Only set memory/CPU limits on run (fix #6879)
+  * caddypki: Remove lifetime check at Caddyfile parse (fix #6878)
+  * go.mod: Upgrade dependencies
+  * caddytls: Fix broken refactor
+  * caddytls: Enhance ECH documentation
+  * Update min go version in readme
+  * readme: update Twitter name and link (#6874)
+  * build(deps): bump github.com/cloudflare/circl from 1.3.3 to 1.3.7 (#6876)
+  * caddytls: Encrypted ClientHello (ECH) (#6862)
+  * build(deps): bump github.com/go-jose/go-jose/v3 from 3.0.3 to 3.0.4 (#6871)
+  * chore: upgrade cobra (#6868)
+  * Fix typo in TLS group x25519mlkem768
+  * caddytest: Support configuration defaults override (#6850)
+  * chore: update quic-go to v0.50.0 (#6854)
+  * go.mod: remove glog dependency (#6838)
+  * chore: ci: upgrade Go version to 1.24 (#6839)
+  * tests: tests for error handling & metrics in admin endpoints (#6805)
+  * caddytls: Support post-quantum key exchange mechanism X25519MLKEM768
+  * file_server: use the UTC timezone for modified time (#6830)
+  * Revert "logging: Always set fields func; fix #6829"
+  * logging: Always set fields func; fix #6829
+  * admin: fix index validation for PUT requests (#6824)
+  * reverseproxy: ignore duplicate collector registration error (#6820)
+  * build(deps): bump github.com/golang/glog from 1.2.2 to 1.2.4 (#6814)
+  * fix: update broken link to Ardan Labs (#6800)
+  * reverse_proxy: re-add healthy upstreams metric (#6806)
+  * caddytls: Refactor sni matcher (#6812)
+  * cmd: automatically set GOMEMLIMIT (#6809)
+  * caddyhttp: ResponseRecorder sets stream regardless of 1xx
+  * caddytls: Fix sni_regexp matcher to obtain layer4 contexts (#6804)
+  * chore: don't use deprecated `archives.format_overrides.format` (#6807)
+  * chore: update quic-go to v0.49.0 (#6803)
+  * go.mod: Upgrade CertMagic to v0.21.7
+  * reverseproxy: Via header (#6275)
+  * logging: Fix crash if logging error is not HandlerError (#6777)
+  * caddytls: Initial support for ACME profiles
+  * fastcgi: improve parsePHPFastCGI docs (#6779)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+  * Use BuildRequires: two-digit golang(API) >= 1.x rather than
+    three digit 1.x.y default from go mod init defaults. Currently
+    the Provides: golang(API) expression is major version
+    (two-digit) only. We ship new go releases sufficiently quickly
+    that this has not often been an issue. Consideration is being
+    given to the best way to handle the new three digit go.mod
+    required minimum Go version.
+
+-------------------------------------------------------------------
 Sun Jan 12 17:06:12 UTC 2025 - eric.torres@its-et.me
 
 - Update to version 2.9.1:

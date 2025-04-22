@@ -17,7 +17,7 @@
 
 
 Name:           caddy
-Version:        2.9.1
+Version:        2.10.0
 Release:        0
 Summary:        Fast, multi-platform web server with automatic HTTPS
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source4:        https://github.com/caddyserver/dist/raw/v%{version}/welcome/inde
 Source5:        caddy.sysusers
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  golang(API) >= 1.22.3
+BuildRequires:  golang(API) >= 1.24
 %{?systemd_requires}
 %{sysusers_requires}
 
