@@ -322,4 +322,12 @@
 - drop support-python-313.patch (upstream)</comment>
     <requestid>1225327</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>9de4ae98259b97c09ef98e999106e2d1</srcmd5>
+    <version>0.24.4</version>
+    <time>1745335703</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271221</requestid>
+  </revision>
 </revisionlist>
