@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- stylistic changes to pass dockerfmt
+
+-------------------------------------------------------------------
 Thu Mar 13 08:52:18 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Add failsafe to not create invalid compat symlinks
