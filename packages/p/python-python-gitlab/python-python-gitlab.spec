@@ -17,36 +17,42 @@
 
 
 Name:           python-python-gitlab
-Version:        4.13.0
+Version:        5.6.0
 Release:        0
 Summary:        Python module for interacting with the GitLab API
 License:        LGPL-3.0-only
 URL:            https://github.com/python-gitlab/python-gitlab
 Source:         https://files.pythonhosted.org/packages/source/p/python_gitlab/python_gitlab-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION requirements
-BuildRequires:  %{python_module gql >= 3.5.0 }
-BuildRequires:  %{python_module httpx >= 0.27.2}
-BuildRequires:  %{python_module requests >= 2.23.2}
-BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
+# https://github.com/python-gitlab/python-gitlab/blob/main/pyproject.toml#L19
+BuildRequires:  %{python_module PyYAML >= 6.0.1}
+# relax constraint, as Tumbleweed already has 3.x
+BuildRequires:  %{python_module argcomplete >= 1.10.0 with %python-argcomplete < 4 }
+BuildRequires:  %{python_module gql >= 3.5.0 with %python-gql < 4 }
+BuildRequires:  %{python_module requests >= 2.32.0}
+BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module httmock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module respx}
+BuildRequires:  %{python_module trio}
 # /SECTION
+# SECTION runtime requirements
 Requires:       python-PyYAML >= 6.0.1
-Requires:       python-argcomplete >= 1.10.0
-Requires:       python-gql >= 3.5.0
-Requires:       python-httpx >= 0.27.2
-Requires:       python-requests >= 2.23.2
-Requires:       python-requests-toolbelt >= 0.9.1
+Requires:       python-requests >= 2.32.3
+Requires:       python-requests-toolbelt >= 1.0.0
+# relax constraint, as Tumbleweed already has 3.x
+Requires:       (python-argcomplete >= 1.10.0 with python-argcomplete < 4)
+Requires:       (python-gql >= 3.5.2 with python-gql < 4)
+# /SECTION
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

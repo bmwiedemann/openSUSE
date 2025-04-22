@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Fri Apr 18 06:14:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 5.6.0:
+  * Features
+    - group: Add support for group level MR approval rules
+      (304bdd0)
+- update to 5.5.0:
+  * Chores Add deprecation warning for mirror_pull functions
+    (7f6fd5c) Relax typing constraints for response action
+    (f430078) tests: Catch deprecation warnings (0c1af08)
+  * Documentation Add usage of pull mirror (9b374b2) Remove old
+    pull mirror implementation (9e18672)
+  * Features projects: Add pull mirror class (2411bff)
+- update to 5.4.0:
+  * Bug Fixes
+    - api: Make type ignores more specific where possible (e3cb806)
+    - api: Return the new commit when calling cherry_pick (de29503)
+    - files: Add optional ref parameter for cli project-file raw
+      (#3032) (22f03bd)
+  * Chores
+    - Fix missing space in deprecation message (ba75c31)
+    - Fix pytest deprecation (95db680)
+    - Fix warning being generated (0eb5eb0)
+    - Resolve DeprecationWarning message in CI run (accd5aa)
+    - ci: Set a 30 minute timeout for 'functional' tests (e8d6953)
+    - deps: Update all non-major dependencies (939505b)
+    - deps: Update all non-major dependencies (cbd4263)
+    - deps: Update gitlab (#3088, 9214b83)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.7.1-ee.0
+      (#3082, 1e95944)
+    - deps: Update mypy to 1.14 and resolve issues (671e711)
+    - test: Prevent 'job_with_artifact' fixture running forever
+      (e4673d8)
+  * Continuous Integration
+    - Use gitlab-runner:v17.7.1 for the CI (2dda9dc)
+  * Features
+    - api: Add argument that appends extra HTTP headers to a
+      request (fb07b5c)
+    - api: Add support for external status check (175b355)
+    - api: Narrow down return type of download methods using
+      typing.overload (44fd9dc)
+    - api: Narrow down return type of ProjectFileManager.raw using
+      typing.overload (36d9b24)
+- update to 5.3.1:
+  * Bug Fixes
+    - api: Allow configuration of keep_base_url from file (f4f7d7a)
+    - registry-protection: Fix api url (8c1aaa3)
+  * Chores
+    - Bump to 5.3.1 (912e1a0)
+    - deps: Update dependency jinja2 to v3.1.5 [security] (01d4194)
+- update to 5.3.0:
+  * Chores
+    - deps: Update gitlab/gitlab-ee docker tag to v17.7.0-ee.0
+      (#3070, 62b7eb7)
+    - renovate: Update httpx and respx again (aa07449)
+  * Features
+    - api: Support the new registry protection rule endpoint
+      (40af1c8)
+- update to 5.2.0:
+  * Chores
+    - deps: Update all non-major dependencies (1e02f23)
+    - deps: Update all non-major dependencies (6532e8c)
+    - deps: Update all non-major dependencies (8046387)
+    - deps: Update codecov/codecov-action action to v5 (735efff)
+    - deps: Update dependency commitizen to v4 (9306362)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.6.1-ee.0
+      (#3053, f2992ae)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.6.2-ee.0
+      (#3065, db0db26)
+    - deps: Update pre-commit hook commitizen-tools/commitizen to
+      v4 (a8518f1)
+    - docs: Fix CHANGELOG tracebacks codeblocks (9fe372a)
+    - renovate: Pin httpx until respx is fixed (b70830d)
+  * Documentation
+    - api-usage: Fix link to Gitlab REST API Authentication Docs
+      (#3059, f460d95)
+  * Features
+    - api: Add project templates (#3057, 0d41da3)
+    - feat(api): Added project template classes to templates.py
+    - feat(api): Added project template managers to Project in
+      project.py
+    - docs(merge_requests): Add example of creating mr with
+      description template
+    - test(templates): Added unit tests for templates
+    - docs(templates): added section for project templates
+    - graphql: Add async client (288f39c)
+- update to 5.1.0:
+  * Chores
+    - deps: Update all non-major dependencies (9061647)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.6.0-ee.0
+      (#3044, 79113d9)
+    - deps: Update all non-major dependencies (62da12a)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.5.2-ee.0
+      (#3041, d39129b)
+    - deps: Update pre-commit hook maxbrunet/pre-commit-renovate to
+      v39 (11458e0)
+    - deps: Update all non-major dependencies (7e62136)
+    - deps: Update dependency pytest-cov to v6 (ffa88b3)
+    - deps: Update all non-major dependencies (d4b52e7)
+    - deps: Update all non-major dependencies (541a7e3)
+    - deps: Update gitlab/gitlab-ee docker tag to v17.5.1-ee.0
+      (8111f49)
+  * Features
+    - api: Get single project approval rule (029695d)
+    - cli: Enable token rotation via CLI (0cb8171)
+    - const: Add new Planner role to access levels (bdc8852)
+    - api: Support list and delete for group service accounts
+      (#2963, 499243b)
+    - files: Add support for more optional flags (f51cd52)
+- update to 5.0.0:
+  * Breaking
+    - feat: remove support for Python 3.8, require 3.9 or higher
+      (#3005)
+  * Bug Fixes
+    - fix(api): set `_repr_attr` for project approval rules to name
+      attr (#3011)
+  * Chores
+    - chore: add testing of Python 3.14
+    - chore(deps): update dependency ubuntu to v24 (6fda15d)
+    - chore(deps): update all non-major dependencies (1e4326b)
+    - chore(deps): update gitlab/gitlab-ee docker tag to
+      v17.5.0-ee.0 (c02a392)
+    - chore: add Python 3.13 as supported (#3012)
+    - chore: remove "v3" question from issue template (#3017)
+    - chore(deps): update all non-major dependencies (b3834dc)
+    - chore(deps): update gitlab/gitlab-ee docker tag to
+      v17.4.2-ee.0 (1cdfe40)
+  * Documentation
+    - docs(users): update Gitlab docs links (#3022) (3739b5d)
+  * Testing
+    - test: add test for to_json() method
+
+-------------------------------------------------------------------
 Sun Mar  9 14:56:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.13.0:
