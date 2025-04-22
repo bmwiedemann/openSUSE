@@ -2,6 +2,7 @@
 # spec file for package aws-checksums
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.2.5
+Version:        0.2.7
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -75,7 +76,8 @@ This package contains the development files.
 %build
 %define __builder ninja
 %cmake \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    %{nil}
 %make_jobs
 
 %check
@@ -85,10 +87,10 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %install
 %cmake_install
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{library_soversion}
 
 %files -n %{name}-bin
+%license LICENSE
 %{_bindir}/checksum-profile
 
 %files -n lib%{name}%{library_soversion}
@@ -98,6 +100,7 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %{_libdir}/*.so.%{library_version}
 
 %files -n lib%{name}-devel
+%license LICENSE
 %{_libdir}/cmake/%{name}/
 %{_libdir}/*.so
 %{_includedir}/*

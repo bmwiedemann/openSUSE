@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 20 12:53:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.2.7:
+  * remove thread unsafe false positives
+
+-------------------------------------------------------------------
 Mon Apr  7 07:21:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.5
