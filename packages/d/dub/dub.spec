@@ -73,6 +73,9 @@ echo "enum dubVersion = \"%{version}\";" >> source/dub/version_.d
   -version=DubUseCurl -Isource -L-lcurl @build-files.txt
 
 %check
+%if %{without dcompiler_dmd}
+export DC=ldc2
+%endif
 for unit_test in simple mutex variables version; do
   DUB=bin/%{name} PATH=$PATH:bin test/run-unittest.sh $unit_test
 done

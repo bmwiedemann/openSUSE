@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 12:56:54 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix unit tests when ldc2 is used instead of dmd
+
+-------------------------------------------------------------------
 Wed Apr 16 06:55:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.40.0
