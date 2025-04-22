@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 22 06:50:13 UTC 2025 - Stefan Schubert <schubi@suse.de>
+
+- Calling "sdbootutil set-timeout" with the correct parameters
+  (bsc#1236578).
+- 5.0.16
+
+-------------------------------------------------------------------
 Thu Feb 27 08:44:41 UTC 2025 - Stefan Schubert <schubi@suse.de>
 
 - Enabled secure boot for grub2-bls (jsc#PED-10703).
+- 5.0.15
 
 -------------------------------------------------------------------
 Thu Jan  9 11:26:59 UTC 2025 - Stefan Schubert <schubi@suse.de>
