@@ -48,7 +48,6 @@ ENV RNDC_KEYSIZE="512"
 ENV NAMED_ARGS=""
 ENV NAMED_INITIALIZE_SCRIPTS=""
 ENV NAMED_CONF="/etc/named.conf"
-
 EXPOSE 53/tcp 53/udp 953/tcp 853/tcp 443/tcp
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY healthcheck.sh /usr/local/bin/healthcheck.sh

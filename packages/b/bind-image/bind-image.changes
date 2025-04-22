@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- stylistic changes to pass dockerfmt
+
+-------------------------------------------------------------------
 Mon Apr  7 09:18:00 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Fix ownership of /var/lib/named/master
