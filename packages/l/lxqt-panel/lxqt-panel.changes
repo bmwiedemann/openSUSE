@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 17 21:53:05 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Wayland screens are handled by using their names, not numbers
+  * Added tooltip to plugin-dom
+  * Prevent redundant writing to the config file on startup
+  * Added an option for the text color of Custom Command
+  * Updated manpage
+  * Changed "desktop" to "screen" in Panel's config dialog
+  * Enabled PageDown/PageUp for Fancy Menu
+  * Removed menu-cache support
+  * Removed debug messages for "UnknownProperty" errors in Status
+    Notifier
+
+-------------------------------------------------------------------
 Thu Jan 16 17:55:45 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated package to use git_am style patches
