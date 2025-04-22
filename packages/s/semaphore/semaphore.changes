@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 20 06:48:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.14 (2.13.13 was not released):
+  * Bugfixes
+    - Integrations: fixed authentication for Bitbucket webhook
+    - Fixed template cloning
+    - Fixed Terraform flags in task params
+    - Fixed task log issue with text color: #2268 and #2859
+
+-------------------------------------------------------------------
 Wed Apr 09 05:01:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.12:
