@@ -25,13 +25,13 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           gajim
-Version:        1.9.5
+Version:        2.1.1
 Release:        0
 Summary:        XMPP client written in Python and GTK
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Talk/Clients
 URL:            https://gajim.org/
-Source:         https://gajim.org/downloads/1.9/gajim-%{version}.tar.gz
+Source:         https://gajim.org/downloads/2.1/gajim-%{version}.tar.gz
 BuildRequires:  %{python_module nbxmpp >= 5.0.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module precis-i18n >= 1.0.0}
@@ -46,14 +46,28 @@ BuildRequires:  p11-kit-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-generators >= 20220912
 BuildRequires:  python-rpm-macros >= 20220912
+BuildRequires:  python3-base >= 3.11
 BuildRequires:  sqlite3 >= 3.35.0
 BuildRequires:  update-desktop-files
+Requires:       %{python_flavor}-cryptography >= 3.4.8
+Requires:       %{python_flavor}-css-parser
+Requires:       %{python_flavor}-emoji >= 2.6.0
 Requires:       %{python_flavor}-gobject-Gdk
-Requires:       %{python_flavor}-gobject-cairo
+Requires:       %{python_flavor}-gobject-cairo >= 1.16.0
 Requires:       %{python_flavor}-gssapi
-Requires:       %{python_flavor}-nbxmpp >= 5.0.1
-Requires:       %{python_flavor}-omemo-dr
-Requires:       %{python_flavor}-qrcode
+Requires:       %{python_flavor}-nbxmpp >= 6.1.1
+Requires:       %{python_flavor}-omemo-dr >= 1.0.0
+Requires:       %{python_flavor}-qrcode >= 7.3.1
+Requires:       python3-base >= 3.11
+#Requires:       %{python_flavor}-GLib >= 2.66.0
+#Requires:       %{python_flavor}-Gtk4 >= 4.14.0
+#Requires:       %{python_flavor}-GtkSourceView5
+Requires:       %{python_flavor}-keyring
+Requires:       %{python_flavor}-packaging
+#Requires:       %{python_flavor}-Pango >= 1.50.0
+Requires:       %{python_flavor}-Pillow >= 9.1.0
+Requires:       %{python_flavor}-SQLAlchemy >= 2.0.0
+Requires:       %{python_flavor}-precis-i18n
 Requires:       ca-certificates-mozilla
 Requires:       sqlite3 >= 3.35.0
 Requires:       typelib(GtkSource) = 4

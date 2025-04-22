@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Sat Apr 19 19:25:39 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 2.1.1:
+ - Improvements:
+  * OMEMO: Unify terminology regarding blind trust
+  * ExceptionDialog: Don’t open multiple dialogs (#8370)
+  * GroupChat: Show voice request errors (#12225)
+  * ChatFilters: Increase width of dropdowns
+  * StartChat: Improve row layout
+  * StartChat: Show contact addresses (#12261)
+  * StartChat: Make contact list more compact
+ - Change:
+  * Raise nbxmpp version
+ - Bug Fixes:
+  * MDS: Check if account is connected (#12271)
+  * Search: Ignore obsolete corrected messages (#11804)
+  * Search: Don’t show moderated messages (#12163)
+  * Message actions box: Fix pressing space to focus input; prevent error with no contact (#12267)
+  * StartChat: Consider show value "chat" the same as "online"
+  * MDS: Set by attribute correctly
+  * Catch exceptions when pasting text from clipboard (#12258)
+  * Account sidebar: Fix setting status for multiple accounts (#12257)
+- update to version 2.1.0:
+ - New:
+  * Support XEP-0490: Message Displayed Synchronization
+  * Add activity feed
+ - Improvements:
+  * Start Chat: Use language symbol and code instead of flag (#12249)
+  * Group chat info: Use better fitting language icon
+  * Start chat: Add 'Execute Command…' menu item (#12246)
+  * Chat banner: Use better icon for chat details/settings
+ - Change:
+  * Raise nbxmpp version
+  * Remove unread message confirmation dialog at shutdown (#12248)
+ - Bug Fixes:
+  * EmojiChooser: Fix segfault after choosing emoji
+  * Nickname: Display published nickname correctly
+  * StatusIcon: Correctly show menu (#12165)
+  * MUC: Don’t fail on affiliation change
+  * ChatList: Make sure chatlist sorts always after pin/unpin
+  * Debug console: Fix initial send button state
+- update to version 2.0.4:
+ - Improvements:
+  * Code widget: Improve handling for single line entries
+  * GroupchatRoster: Improve participant sorting
+  * StartChat: Add Sort by Status option
+  * Assistants: Improve button order and color-coding
+ - Bug Fixes:
+  * Storage: Fix error on big queries (#12148)
+  * Disable start chat buttons if no accounts are active
+  * Account wizard: Fix selecting default connection type in advanced settings (#12236)
+  * MUC: Ignore invites sent by other devices of ours
+  * MUC: Don’t fail on presence from bare jids (#12232)
+- update to version 2.0.3:
+ - New:
+  * Store/Restore the size of dialogs
+ - Improvements:
+  * Group chats: Improve strings for events
+ - Bug Fixes:
+  * MUC: Fix handling affiliation/role change error handling
+  * StatusIcon: Show correct state for mute sounds option
+  * AdHoc: Don't fail if dataform widget is not set when cancelling (#12227)
+  * Chat: Send read marker only when chat is at bottom
+  * ChatControl: Handle autoscroll-changed without active chat (#12226)
+  * MUC: Don’t fail on displaying affiliation change
+- update to version 2.0.2:
+ - New:
+  * Use XEP-0172 nickname of contacts not in roster (#11476)
+  * Moderation: Support Message Moderation 0.3.0
+ - Improvements:
+  * Moderation: Improve moderation text
+  * Remove 'ambiguous-address' URI processing (#12192)
+  * Simplify URI context menu (#12207)
+  * Improve confirmation dialog strings
+ - Change:
+  * Don't handle file URIs
+  * Display a warning when trying to add domain JID
+ - Bug Fixes:
+  * MessageInput: Do not crash on message send (#12158)
+  * MUC: Ensure MUCData is initiated with jid string (#12222)
+  * ContactNameWidget: Add more conditions for enabling edit mode (#12221)
+  * Helpers: Check for empty bytes objects when loading file async (#12220)
+  * HistoryExport: Export messages in ascending order (#12218)
+  * StartChatDialog: Do not crash, when dialog closes after starting new chat (#12213)
+  * Make dragged chat stick to cursor
+  * Menus: Create menu on button click (#12214)
+  * Ad-hoc commands: Expand list of commands vertically (#12206)
+  * History export: Skip ResourceContacts for export (#12208)
+- update to version 2.0.1:
+ - Improvements:
+  * Start Chat: Add confirmation dialog for 'Forget this Group Chat' action (#12199)
+ - Bug Fixes:
+  * MUC: Don’t query avatars if not allowed
+  * EventStorage: Serialize JIDs correctly
+  * StartChat: Don't crash when groupchat is in Roster
+  * SettingsDialog: Fix showing dialogs
+  * Preferences: Show missing titles for settings again
+  * Show audio input selection again (for voice messages)
+  * Preferences: Update themes list when removing theme
+- update to version 2.0.0:
+ - New:
+  * Port to Gtk4
+  * Generate previews with multiple processes
+  * Add Manage Roster Dialog
+  * Add message row menu entry for moderating all messages of participant
+  * Add new completion popover
+ - Improvements:
+  * DebugConsole: Use Dropdown for account selection and improve account order
+  * StatusIcon: Consider suspended state on show/hide action
+  * Features: Hide not maintained features
+  * Preferences: Hide Audio/Video settings
+  * Don’t close chat on remove contact action
+  * Chat: Add remove contact menu entry
+  * NickChooser: Show error tooltip for invalid nicknames
+  * Control: Disable message selection via Escape key
+  * Make exporting/removing individual chat history accessible
+  * HistoryExport: Allow exporting individual chats
+  * Add profile name to window title (#12168)
+  * GroupChatVoiceRequestButton: Fix updating content, scroll content, improve test
+  * MessageActionsBox: Enable more actions for offline message composing
+  * MessageActionsBox: Enable message composing while offline (#11759)
+  * FullMessageWindow: Wrap text and add padding
+  * StartChat: Make dialog look more compact
+  * VoiceRequestsButton: Show JID for each request
+  * ChatFilter: Add account filter
+  * Chat Filters: Use a popover for filters and add roster group filter
+  * Message Actions Box: Show user feedback when pasting images (#11489)
+  * Start Chat: Include contact groups in search
+  * Group Chats: Add 'Direct Message' menu item to participants menu (#12146)
+  * Logging: Harmonize logging timestamps
+  * Preview: Use native theme colors and improve styling
+  * MessageRowActions: Don't show actions if message selection is active
+  * Preview: Style and layout improvements
+  * Preview: Show controls on hover and improve styling
+  * Debug Console: Use different colors depending on light/dark preference
+ - Change:
+  * Raise nbxmpp version
+  * Require Python 3.11
+  * Remove legacy config code and migration
+  * Plugins: Rename tooltip extension point
+  * Remove Roster
+  * Remove Synchronize Accounts Dialog
+  * Remove Bookmark Dialog
+  * Preview: Raise default size from 300 to 400
+  * Windows: Store images in the users Downloads folder
+  * Disable Jingle file transfer support
+ - Performance:
+  * Message display: Reduce maximum message length to 1000 characters
+ - Bug Fixes:
+  * BitsOfBinary: Fix module data handling
+  * ChatStack: Fix leak with Previews when switching to another workspace
+  * Blocking: Don’t convert to lower case when saving
+  * Fix app.window.add_chat() calls and add typings for chat type
+  * Labels: Fix Pango word/character wrapping
+  * Hide drop area after file drop (#12143)
+  * MessageActionsBox: Fix message input scrolling out of view (#12158)
+  * Profile: Fix handling async result while closing (#12159)
+  * PasswordDialog: Show dialog for multiple accounts
+  * Contacts: Check for existing chat contacts when adding group chat contact
+  * NicknameCompletion: Only consider incoming messages
+  * RosterItemExchange: Fix accessing contact subscription
+  * Debug Console: Fix search occurrence position (#11999)
+  * Voice Message: Handle error when temp folder is not available
+  * Translations: Use standard ngettext method (#11997)
+
+-------------------------------------------------------------------
 Thu Mar 20 03:45:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to BuildRequires: libpcre2-8-0 
