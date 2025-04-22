@@ -1,7 +1,7 @@
 #
 # spec file for package python-netCDF4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -111,6 +111,6 @@ popd
 %python_alternative %{_bindir}/nc4tonc3
 %python_alternative %{_bindir}/ncinfo
 %{python_sitearch}/netCDF4
-%{python_sitearch}/netCDF4-%{version}.dist-info
+%{python_sitearch}/net[Cc][Dd][Ff]4-%{version}.dist-info
 
 %changelog

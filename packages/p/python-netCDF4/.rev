@@ -454,4 +454,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1219471</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a92c1a485d7267841a4c17db9303aa14</srcmd5>
+    <version>1.7.1.post2</version>
+    <time>1745335700</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271219</requestid>
+  </revision>
 </revisionlist>
