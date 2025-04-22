@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 22 13:58:34 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Remove unnecessary BuildRequires, update to go1.24
+
+-------------------------------------------------------------------
+Tue Apr 22 13:37:25 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.0:
+  * chore(preprocess): remove unnecessary checking for dir
+  * feat: add support for embedded xpui in v8 snapshot
+  * fix: add support for Spotify `1.2.62`
+  * chore(deps): bump golang.org/x/net from 0.38.0 to 0.39.0 (#3368)
+  * fix: add `$lineClamp` key to styled components processing (#3370)
+  * fix: update `resizeHost` selector & `Topbar` button styling
+  * chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 (#3359)
+  * chore(cmd/apply): correct grammar
+  * chore(deps): bump golang.org/x/net from 0.35.0 to 0.37.0 (#3342)
+  * fix(wrapper): left topbar icons & run scroll fix on `1.2.56` and lower
+  * docs(lyrics-plus): update readme to warn Genius is disabled (#3344)
+
+-------------------------------------------------------------------
 Thu Mar 13 11:23:58 UTC 2025 - jan.kuzilek@suse.com
 
 - Update to version 2.39.5:
