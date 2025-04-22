@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- stylistic changes to pass dockerfmt
+
+-------------------------------------------------------------------
 Fri Mar  7 07:03:45 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Unset NOTIFY_SOCKET in entrypoint
