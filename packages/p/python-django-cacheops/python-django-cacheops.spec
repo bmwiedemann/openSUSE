@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-cacheops
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-cacheops
-Version:        7.1
+Version:        7.2
 Release:        0
 Summary:        Django ORM cache with automatic granular event-driven invalidation
 License:        BSD-3-Clause
@@ -27,15 +27,15 @@ Source:         https://files.pythonhosted.org/packages/source/d/django_cacheops
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-django >= 1.8
+Requires:       python-Django >= 3.2
 Requires:       python-funcy >= 1.8
 Requires:       python-redis >= 3.0.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module before-after}
 BuildRequires:  %{python_module dill}
-BuildRequires:  %{python_module django >= 1.8}
 BuildRequires:  %{python_module funcy >= 1.8}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module redis >= 3.0.0}
@@ -51,7 +51,7 @@ It uses `redis <http://redis.io/>`_ as backend for ORM cache and redis or
 filesystem for simple time-invalidated one.
 
 %prep
-%setup -q -n django_cacheops-%{version}
+%autosetup -p1 -n django_cacheops-%{version}
 
 %build
 %python_build

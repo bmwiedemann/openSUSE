@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 22 06:33:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 7.2
+  * support and test against Python 3.13 and Django 5.1/5.2
+  * updated md5 to set usedforsecurity for FIPS compliance
+  * skip ArrayField in exact conds
+
+-------------------------------------------------------------------
 Thu Nov  7 13:44:39 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 7.1
