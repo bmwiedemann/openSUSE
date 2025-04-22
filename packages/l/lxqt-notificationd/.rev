@@ -387,4 +387,12 @@
   * Fixed transparent notifications with System theme on Wayland. (forwarded request 1233096 from AndnoVember)</comment>
     <requestid>1233458</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4e55a565a2186967392215923c12e223</srcmd5>
+    <version>2.2.0</version>
+    <time>1745335597</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270855</requestid>
+  </revision>
 </revisionlist>
