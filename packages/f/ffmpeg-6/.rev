@@ -184,4 +184,12 @@ I am sorry for the messy submission before. (forwarded request 1139042 from iDes
     <comment></comment>
     <requestid>1270302</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>1fc4ac1e93719d15d015800b17d7afcb</srcmd5>
+    <version>6.1.2</version>
+    <time>1745335831</time>
+    <user>anag_factory</user>
+    <comment>Add CVE bugID for previous update and correct old ID typo. (forwarded request 1271169 from qzhao)</comment>
+    <requestid>1271214</requestid>
+  </revision>
 </revisionlist>

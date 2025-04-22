@@ -68,6 +68,7 @@ Wed Jan  1 11:13:35 UTC 2025 - Dave Plater <davejplater@gmail.com>
   avcodec/pnmdec: Use 64bit for input size check (CVE-2024-7055, bsc#1229026)
   avcodec/mpegvideo_enc: Fix 1 line and one column images (CVE-2024-32230, bsc#1227296)
   avcodec/tests: rename the bundled Mesa AV1 vulkan video headers.
+  avformat/dxa: Adjust order of operations around block align (CVE-2024-36613, bsc#1235092)
   etc
 - Remove patches already merged to upstream:
   0001-avcodec-tests-rename-the-bundled-Mesa-AV1-vulkan-vid.patch
@@ -259,7 +260,7 @@ Mon Jan 15 11:11:08 UTC 2024 - Enrico Belleri <kilgore.trout@idesmi.eu>
   * ffprobe -output_format option added as an alias of -of
   * avfilter/vf_minterpolate: Check pts before division (CVE-2023-51798, bsc#1223304)
   * avfilter/vf_weave: Fix odd height handling (CVE-2023-51793, bsc#1223272)
-  * avfilter/vf_gradfun: Do not overread last line (CVE-2023-51793, bsc#122325)
+  * avfilter/vf_gradfun: Do not overread last line (CVE-2023-50010, bsc#1223256)
 - Remove patch6 0001-avfilter-vf_libplacebo-remove-deprecated-field.diff
 - Prefer libvpl to libmfx: the latter is deprecated
 - Delete ffmpeg-6-private-devel package as it is only needed to build libav-tools
