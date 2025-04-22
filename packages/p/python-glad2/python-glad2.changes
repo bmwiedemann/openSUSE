@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Apr 18 07:35:58 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Restore mistakenly removed %python_subpackages macro that
+  prevented package renaming as python3-glad2.
+
+-------------------------------------------------------------------
+Wed Apr 16 15:24:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.0.8:
+  * files: updates to latest specifications.
+  * rust: replace static mut references with addr_of.
+  * Replace setup.py with pyproject.toml [gh#Dav1dde/glad##490].
+- Rework package:
+  * Drop support for multiple python versions and build only for
+    default python3; this is a command line app, not a python
+    library.
+  * Switch to pyproject_* macros for build.
+  * Keep zero-sized template code which is used and filled in when
+    producing generated code.
+  * Add Provides: glad to package.
+  * Drop python-Jinja2 from BuildRequires; run-time but not build
+    dependency.
+  * Drop python-setuptools from Requires.
+  * Delete unnecessary hashbang from a non-executable file.
+  * Drop update-alternatives post scripts and related requires.
+  * Add Obsoletes against current pythons packages.
+
+-------------------------------------------------------------------
 Wed Jun 19 07:07:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.6:

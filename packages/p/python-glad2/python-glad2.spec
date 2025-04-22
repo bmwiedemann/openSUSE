@@ -1,7 +1,7 @@
 #
 # spec file for package python-glad2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,53 +16,49 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%define pythons python3
 Name:           python-glad2
-Version:        2.0.6
+Version:        2.0.8
 Release:        0
-Summary:        Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator
+Summary:        Command line utility to load/generate multi-language GL/GLES/EGL/GLX/WGL code
 License:        MIT
 URL:            https://github.com/Dav1dde/glad
-Source:         https://files.pythonhosted.org/packages/source/g/glad2/glad2-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/g/glad2/glad2-%{version}.tar.gz
 Source1:        python-glad2-rpmlintrc
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module Jinja2}
-# /SECTION
 BuildRequires:  fdupes
-Requires:       python-Jinja2
-Requires:       python-setuptools
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools > 61.0
+BuildRequires:  python3-wheel
+Requires:       python3-Jinja2
+Provides:       glad
+Obsoletes:      python311-glad2 < %{version}
+Obsoletes:      python312-glad2 < %{version}
+Obsoletes:      python313-glad2 < %{version}
 BuildArch:      noarch
-Requires(post): %{_sbindir}/update-alternatives
-Requires(postun): %{_sbindir}/update-alternatives
 %python_subpackages
 
 %description
-Multi-Language GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specifications.
+Glad is a command line utility to generate GL/GLES/EGL/GLX/WGL loader code
+based on the official specifications for using as bundled source code with
+apps.
 
 %prep
-%setup -q -n glad2-%{version}
+%autosetup -n glad2-%{version}
+sed -Ei "1{\@%{_bindir}/env python@d}" glad/__main__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-find %(buildroot) -name 'glsc2.*' -delete # empty files
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/glad
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%post
-%python_install_alternative glad
-
-%postun
-%python_uninstall_alternative glad
+%pyproject_install
+%fdupes %{buildroot}%{python3_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%python_alternative %{_bindir}/glad
-%{python_sitelib}/*
+%{_bindir}/glad
+%{python3_sitelib}/glad/
+%{python3_sitelib}/glad2-%{version}*.*-info
 
 %changelog
