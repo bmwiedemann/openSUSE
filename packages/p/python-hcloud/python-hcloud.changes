@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 17 08:19:19 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- update to 2.4.0
+  * server public ipv4 and ipv6 properties are nullable (#455)
+  * drop support for python 3.8 (#458)
+  * add equality checks to domains (#481)
+  * support python 3.13 (#451) (4a514c7)
+  * retry requests when the api gateway errors (#430) (f63ac8b)
+  * retry requests when the api returns a conflict error (#430) (f63ac8b)
+  * retry requests when the network timed outs (#430) (f63ac8b)
+  * retry requests when the rate limit was reached (#430) (f63ac8b)
+  * add exponential and constant backoff function (#416) (fe7ddf6)
+  * deprecate ServerType included_traffic property (#423) (3d56ac5)
+  * use exponential backoff when retrying requests (#417) (f306073)
+  * add exponential and constant backoff function (#416) (fe7ddf6)
+  * deprecate ServerType included_traffic property (#423) (3d56ac5)
+  * use exponential backoff when retrying requests (#417) (f306073)
+  * add `trace_id` to API exceptions ([#404](#404)) ([8375261](8375261))
+  * allow using a custom poll_interval function ([#403](#403)) ([93eb56b](93eb56b))
+  * make `Client.poll_interval` a private property ([#398](#398)) ([d5f24db](d5f24db))
+  * make `Client.request` `tries` a private argument ([#399](#399)) ([428ea7e](428ea7e))
+  * move `hcloud.__version__.VERSION` to `hcloud.__version__` ([#397](#397)) ([4e3f638](4e3f638)), closes [#234](#234)
+  * remove deprecated `hcloud.hcloud` module ([#401](#401)) ([db37e63](db37e63))
+  * remove deprecated `include_wildcard_architecture` argument in `IsosClient.get_list` and `IsosClient.get_all` ([#402](#402)) ([6b977e2](6b977e2))
+  * return empty dict on empty responses in `Client.request` ([#400](#400)) ([9f46adb](9f46adb))
+  * return full rebuild response in `Client.servers.rebuild` ([#406](#406)) ([1970d84](1970d84))
+
+-------------------------------------------------------------------
 Sat Apr 20 20:39:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.35.0:
