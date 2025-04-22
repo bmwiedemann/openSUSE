@@ -1,8 +1,61 @@
 -------------------------------------------------------------------
+Thu Apr 17 14:11:25 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- update to 4.0.1
+  https://github.com/fish-shell/fish-shell/releases/tag/4.0.1
+  * Key combinations using the super (Windows/command) key can be bound using
+    the super- prefix (#11217).
+  * Konsole’s menu shows the “Open folder with” option again (#11198).
+  * $fish_color_search_match will now only be applied to the foreground color
+    if it has an explicit foreground. For example, this allows setting:
+  * set -g fish_color_search_match --reverse
+  * Cursor shape commands (\e[2 q) are no longer sent in non-interactive shells
+    or in redirections (#11255).
+  * status gained a is-interactive-read subcommand, to check whether the script
+    is being called from an interactive read invocation.
+  * fish’s background tasks are now started in a way that avoids an error on
+    macOS Terminal.app (#11181).
+  * Using key combinations within qemu should work correctly.
+  * Prompts containing control characters no longer cause incorrect display of
+    command lines (#11252).
+  * Cancelling the command-line in Vi mode displays correctly again (#11261).
+  * The acidhub prompt properly displays the git branch again (#11179).
+  * Completions for wine correctly include files again (#11202).
+  * On macOS, paths from /etc/paths and /etc/manpaths containing colons are
+    handled correctly (#10684). This functionality was included in the 4.0.0
+    release notes but was missing from the source code.
+  * The XTerm modifyOtherKeys keyboard encoding is no longer used under WezTerm,
+    as it does not work correctly in all layouts (#11204).
+  * option-left and other similar keys should now work in iTerm versions before 3.5.12;
+    the kitty keyboard protocol is now disabled on these versions (#11192).
+  * The kitty keyboard protocol is no longer used under Midnight Commander, as
+    it does not work correctly (#10640).
+  * fish now sends the commandline along with the OSC 133 semantic prompt command
+    start sequence. This fixes a test in the kitty terminal (#11203).
+  * Git completions for third-party commands like “git-absorb” are completed
+    correctly again (#11205).
+  * Completions for diskutil no longer produce an error (#11201).
+  * The output of certain error messages no longer prints newlines to standard
+    output (#11248).
+  * A number of crashes have been fixed, including file names longer than 255
+    bytes (#11221), using fish on a btrfs filesystem (#11219), history files 
+    that do not have the expected format (#11236), and pasting into an empty
+    command line (#11256).
+- Remove fish-3.7.1-drop-pcre-tests.patch, no problem for 4.0.x
+
+-------------------------------------------------------------------
 Tue Apr 15 16:39:20 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - drop tests failing with pcre2 10.45 (boo#1241199)
   add fish-3.7.1-drop-pcre-tests.patch
+
+-------------------------------------------------------------------
+Sun Jan 12 22:20:32 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 4.0~b1
+  https://fishshell.com/blog/rustport/
+  - new BR: cargo
+  - add service to pull the rust vendored deps
 
 -------------------------------------------------------------------
 Fri Jun 14 12:38:33 UTC 2024 - pgajdos@suse.com

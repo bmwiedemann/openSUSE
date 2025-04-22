@@ -1,7 +1,7 @@
 #
 # spec file for package fish
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fish
-Version:        3.7.1
+Version:        4.0.1
 Release:        0
 Summary:        The "friendly interactive shell"
 # see bundled doc_src/license.rst
@@ -26,8 +26,9 @@ Group:          System/Shells
 URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source1:        https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz.asc
+Source2:        vendor.tar.zst
 Source100:      fish.keyring
-Patch0:         fish-3.7.1-drop-pcre-tests.patch
+BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
@@ -37,6 +38,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  pcre2-devel >= 10.21
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  zstd
 # for tests
 BuildRequires:  procps
 Requires:       awk
@@ -59,7 +61,7 @@ Group:          Development/Libraries/C and C++
 This package contains development files for the fish shell.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a2 -n %{name}-%{version}
 
 # fix E: env-script-interpreter
 find share/tools -type f -name *.py -exec \
@@ -89,9 +91,7 @@ rm %{buildroot}/%{_datadir}/doc/packages/fish/.buildinfo
 %endif
 
 %check
-pushd build
 %make_build test
-popd
 
 %post
 # Add fish to the list of allowed shells in /etc/shells
