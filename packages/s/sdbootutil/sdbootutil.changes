@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 21 13:43:47 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250421.7ffd25a:
+  * Report when PCR 15 cannot be predicted
+  * Reap failed keys
+  * Improve asking passwords (bsc#1241171)
+
+-------------------------------------------------------------------
 Thu Apr 10 12:08:23 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250410.9086124:
