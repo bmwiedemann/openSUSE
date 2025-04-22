@@ -56,6 +56,6 @@ Socket.IO integration for Flask applications.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/flask_socketio
-%{python_sitelib}/Flask_SocketIO-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Ss]ocket[Ii][Oo]-%{version}.dist-info
 
 %changelog
