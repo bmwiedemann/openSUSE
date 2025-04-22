@@ -1368,4 +1368,31 @@
     - Original patch by darix (forwarded request 1269052 from jfkw)</comment>
     <requestid>1269053</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>3e345e76e76e5fa06ccc30e90a906885</srcmd5>
+    <version>0.146.6</version>
+    <time>1745335664</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.146.6:
+  * releaser: Bump versions for release of 0.146.6
+  * tpl: Fix when layout specified in front matter and no match is found
+  * Update watchtestscripts.sh
+  * releaser: Prepare repository for 0.147.0-DEV
+
+- Update to version 0.146.5:
+  * releaser: Bump versions for release of 0.146.5
+  * build(deps): bump github.com/yuin/goldmark from 1.7.8 to 1.7.9
+  * tpl: Fix language handling in partials
+  * releaser: Prepare repository for 0.147.0-DEV
+
+- Update to version 0.146.4:
+  * releaser: Bump versions for release of 0.146.4
+  * tpl: Fix issue with partials without suffix
+  * tpl: Avoid panic on nonsensical return construct
+  * tpl: Fix the case for a shortcode in a nested folder only
+  * tpl: Add proper file context to template parse errors
+  * tpl: Make {{ template &quot;partials/foo.html&quot; . }} work in older setups
+  * releaser: Prepare repository for 0.147.0-DEV (forwarded request 1271103 from jfkw)</comment>
+    <requestid>1271111</requestid>
+  </revision>
 </revisionlist>
