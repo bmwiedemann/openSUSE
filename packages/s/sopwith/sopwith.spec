@@ -1,7 +1,7 @@
 #
 # spec file for package sopwith
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           sopwith
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        SDL port of the %{name} game
 License:        GPL-2.0-or-later
 Group:          Amusements/Games/Action/Arcade
 URL:            https://github.com/fragglet/sdl-sopwith
 Source0:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz
-Source1:        https://github.com/fragglet/sdl-sopwith/releases/download/sdl-sopwith-%{version}/sdl-sopwith-%{version}.tar.gz.asc
-Source2:        %{name}.keyring
 Source3:        %{name}.png
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
