@@ -120,4 +120,13 @@
     <comment>Prepare for RPM 4.20 (forwarded request 1149021 from dimstar)</comment>
     <requestid>1149416</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>9ad4ae13aaba2aebb7b7a7bbef8a3a6c</srcmd5>
+    <version>1.0.2</version>
+    <time>1745335758</time>
+    <user>anag_factory</user>
+    <comment>- Run spec-cleaner
+- Use pkgconfig for SDL2, fixes building for Leap (forwarded request 1271185 from Kieltux)</comment>
+    <requestid>1271237</requestid>
+  </revision>
 </revisionlist>

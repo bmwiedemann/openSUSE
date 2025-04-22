@@ -1,7 +1,7 @@
 #
 # spec file for package hedgewars
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %bcond_with server
 %bcond_with videorec
-
 # FPC (Pascal) engine is disabled on some 32-bit archs due to a FPC bug
-%ifarch %ppc
+%ifarch %{ppc}
 %bcond_without engine_c
 %else
 %bcond_with engine_c
 %endif
-
 Name:           hedgewars
 Version:        1.0.2
 Release:        0
@@ -33,22 +31,34 @@ Summary:        Turn-based artillery game, featuring fighting hedgehogs
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.hedgewars.org/
-Source:         http://hedgewars.org/download/releases/hedgewars-src-%{version}.tar.bz2
+Source:         https://hedgewars.org/download/releases/hedgewars-src-%{version}.tar.bz2
 Source99:       %{name}-rpmlintrc
 Patch0:         hedgewars-disable_fpc_workaround.patch
 # PATCH-FIX-OPENSUSE hedgewars-1.0.2-rpath.patch -- Fix RPATH with non-system library path
 Patch1:         hedgewars-1.0.2-rpath.patch
-BuildRequires:  SDL2-devel
-BuildRequires:  SDL2_image-devel
-BuildRequires:  SDL2_mixer-devel
-BuildRequires:  SDL2_net-devel
-BuildRequires:  SDL2_ttf-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+# Required for QAbstractFileEngine*, which is no longer public since Qt5.12
+BuildRequires:  libQt5Core-private-headers-devel
+BuildRequires:  libphysfs-devel >= 3.0
+BuildRequires:  libpng-devel
+BuildRequires:  libqt5-linguist-devel
+BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig(SDL2_image)
+BuildRequires:  pkgconfig(SDL2_mixer)
+BuildRequires:  pkgconfig(SDL2_net)
+BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(lua5.1)
+BuildRequires:  pkgconfig(sdl2)
+Requires:       %{name}-data = %{version}
+Recommends:     %{name}-server = %{version}
+ExcludeArch:    armv6l armv6hl
 %if %{with engine_c}
 BuildRequires:  clang
 BuildRequires:  ghc
@@ -58,23 +68,12 @@ BuildRequires:  fpc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  libphysfs-devel >= 3.0
-BuildRequires:  libpng-devel
-# Required for QAbstractFileEngine*, which is no longer public since Qt5.12
-BuildRequires:  libQt5Core-private-headers-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(lua5.1)
-Requires:       %{name}-data = %{version}
-Recommends:     %{name}-server = %{version}
-
 # to build server
 %if %{with server}
 BuildRequires:  ghc
-BuildRequires:  ghc-bytestring-devel
 # BuildRequires:  ghc-dataenc-devel
 BuildRequires:  ghc-SHA-devel
+BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-entropy-devel
 BuildRequires:  ghc-hslogger-devel
@@ -87,7 +86,6 @@ BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-zlib-devel
 %endif
-ExcludeArch:    armv6l armv6hl
 
 %description
 Hedgewars is a turn-based artillery game where slow-moving hedgehocks fight
@@ -159,7 +157,7 @@ rm %{buildroot}%{_datadir}/pixmaps/hedgewars.xpm
 %files
 %doc README.md ChangeLog.txt
 %license COPYING Fonts_LICENSE.txt
-%doc %{_mandir}/man6/*
+%{_mandir}/man6/*
 %{_datadir}/applications/*.desktop
 %{_datadir}/mime/packages/%{name}.xml
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
