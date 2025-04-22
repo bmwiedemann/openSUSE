@@ -1,0 +1,8 @@
+<package name="libecap" project="openSUSE:Factory">
+  <title>Library implementing the eCAP interface for application filtering modules</title>
+  <description>eCAP is a software interface that allows a network application, such as an HTTP
+proxy or an ICAP server, to outsource content analysis and adaptation to a
+loadable module. The functionality is similar to the ICAP protocol (RFC 3507),
+but implemented as function calls instead of network interactions.</description>
+  <url>https://www.e-cap.org/</url>
+</package>
