@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-phonenumber-field
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-django-phonenumber-field
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        International phone number field for django models
 License:        MIT

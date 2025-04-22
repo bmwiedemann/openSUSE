@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:00:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.1.0
+  * Remove non-geo phone numbers from the SplitPhoneNumberWidget
+  * Add support for Django 5.2
+  * Add support for Python 3.13
+  * Drop support for Django 3.2
+
+-------------------------------------------------------------------
 Mon Nov 11 15:34:55 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 8.0.0
