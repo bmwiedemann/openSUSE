@@ -1,0 +1,19 @@
+Index: clevis-21/src/pins/pkcs11/meson.build
+===================================================================
+--- clevis-21.orig/src/pins/pkcs11/meson.build
++++ clevis-21/src/pins/pkcs11/meson.build
+@@ -1,4 +1,4 @@
+-pcscd = find_program('pcscd', required: false)
++pcscd = find_program(['pcscd', '/usr/sbin/pcscd', '/sbin/pcscd'], required: false)
+ pkcs11tool = find_program('pkcs11-tool', required: false)
+ pcscd_disable_polkit = false
+ git = find_program('git', required: false)
+@@ -12,7 +12,7 @@ endif
+ GIT_VERSION_FLAG = '-DGIT_VERSION="' + git_version + '"'
+ 
+ if pcscd.found()
+-  pcscd_options = run_command('pcscd', '--help', check: false)
++  pcscd_options = run_command('/usr/sbin/pcscd', '--help', check: false)
+   pcscd_disable_polkit = pcscd_options.stdout().strip().contains('disable-polkit')
+   if not pcscd_disable_polkit
+     warning('pcscd does not have --disable-polkit option')

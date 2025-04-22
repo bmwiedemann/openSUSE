@@ -15,4 +15,49 @@
     <comment>- drop ncat requirement from clevis-systemd (boo#1211580) (forwarded request 1088317 from AndreasStieger)</comment>
     <requestid>1088319</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd095fdbe448dc9d8a079e3a84bc584f</srcmd5>
+    <version>21</version>
+    <time>1745335797</time>
+    <user>anag_factory</user>
+    <comment>Draft request
+UNTESTED
+
+
+- Create packages:
+  * clevis-pin_tpm2
+  * clevis-pin_pkcs11
+  * clevis-pin-sss
+  * clevis-pin-tang
+- Add 0002-find-pcscd.patch
+- Update to version 21:
+  * [EXPERIMENTAL] Add PKCS#11 pin basic functionality (5b07e40)
+  * Ensure dnf builddep is installed in Fedora (#466) (2b34226)
+  * udisks2: check for EINTR when reading in recover_key() (4c6d5d9)
+  * udisks2: check if variables are NULL before calling unref (eea777f)
+  * Fix README.md to include tang https configuration (#175) (#417) (4bddd5e)
+  * Prevent Address in use error (601d0a9)
+  * Fedora test build fix (3420001)
+  * luks/udisks2: explicitly NULL-terminate buffer (251a888)
+  * pins/sss: intialize variable before use (0938231)
+  * Fix DNS resolution in initramfs (#367) (bebb037)
+  * Upgrade checkout version (v3-&gt;v4) (#452) (ea7a8e1)
+  * Fix killing of child process of clevisloop (c03dbf3)
+  * Added language and misspell check for markdown files (#439) (fee1db3)
+  * luks: decouple dracut from systemd unlocker (afe91eb)
+  * luks: move dracut out of systemd directory (cfefdde)
+  * Include manual compilation steps (#433) (ec16c7a)
+  * Avoid execution of Github actions for Markdown (#427) (c9f2066)
+  * Upgrade version for checkout Github action (#429) (4764b66)
+  * Fix README.md to include &quot;tang&quot; pin (#424) (3add946)
+  * Use jose, not pwmake, for password generation (#418) (4d23eda)
+  * Use quay.io version of Fedora Rawhide container (#425) (bf9e1cd)
+  * Add bash syntax highlighting to README.md (#414) (7c23279)
+  * Fix README.md to include correct sss example (#409) (eb92459)
+  * Fix Github actions by using latest ubuntu distro (#411) (c1a8aff)
+  * documenting parameter to pass args to cryptsetup (96726a2)
+  * initial test of passing args to 'crypsetup open' (0666b88)
+  * passing args to 'crypsetup open' (forwarded request 1270955 from iDesmI)</comment>
+    <requestid>1271352</requestid>
+  </revision>
 </revisionlist>
