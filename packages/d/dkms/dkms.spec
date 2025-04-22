@@ -1,7 +1,7 @@
 #
 # spec file for package dkms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dkms
-Version:        3.1.3
+Version:        3.1.6
 Release:        0
 Summary:        Dynamic Kernel Module Support Framework
 License:        GPL-2.0-only
@@ -25,8 +25,6 @@ Group:          System/Kernel
 URL:            https://github.com/dell/dkms
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      %{name}.rpmlintrc
-# PATCH-FIX-OPENSUSE fix-weak-modules_dkms_in.patch boo#1194723
-Patch1:         fix-weak-modules_dkms_in.patch
 BuildRequires:  make
 BuildRequires:  pkgconfig(systemd)
 Requires:       bash > 1.99
@@ -76,7 +74,6 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
-%autopatch -p1 1
 
 %build
 
@@ -139,6 +136,7 @@ exit 0
 %{_sbindir}/rcdkms
 %{_prefix}/lib/kernel/install.d/40-%{name}.install
 %{_localstatedir}/lib/%{name}
+%{_libexecdir}/%{name}
 %{_tmpfilesdir}/dkms.conf
 %{_mandir}/man8/dkms.8%{ext_man}
 %{_unitdir}/dkms.service
