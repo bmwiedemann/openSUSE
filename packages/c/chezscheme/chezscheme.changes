@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 20 17:23:43 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build for all architectures, not only x86_64
+- use system liblz4 and zlib
+
+-------------------------------------------------------------------
 Thu Jan  2 04:12:35 UTC 2025 - Xu Zhao <i@xuzhao.net>
 
 - remove redundant submodule source files
