@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 43.0.0}
 BuildRequires:  %{python_module distro >= 1.0.1}
 BuildRequires:  %{python_module importlib-metadata if %python-base < 3.10}
-BuildRequires:  %{python_module josepy >= 1.13.0}
+BuildRequires:  %{python_module josepy >= 2.0.0}
 BuildRequires:  %{python_module parsedatetime >= 2.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyRFC3339}
@@ -44,7 +44,7 @@ Requires:       python-configargparse >= 1.5.3
 Requires:       python-configobj >= 5.0.6
 Requires:       python-cryptography >= 43.0.0
 Requires:       python-distro >= 1.0.1
-Requires:       python-josepy >= 1.9.0
+Requires:       python-josepy >= 2.0.0
 Requires:       python-parsedatetime >= 2.4
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
@@ -63,8 +63,7 @@ certbot is a free, automated certificate authority that aims
 to lower the barriers to entry for encrypting all HTTP traffic on the internet.
 
 %prep
-%setup -q -n certbot-%{version}
-%autopatch -p1
+%autosetup -p1 -n certbot-%{version}
 
 %build
 %pyproject_wheel
@@ -94,7 +93,7 @@ fi
 %license LICENSE.txt
 %doc README.rst
 %{python_sitelib}/certbot
-%{python_sitelib}/certbot-%{version}*info
+%{python_sitelib}/certbot-%{version}.dist-info
 %python_alternative %{_bindir}/certbot
 
 %changelog
