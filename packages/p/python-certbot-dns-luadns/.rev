@@ -386,4 +386,29 @@
     <comment>certbot version bump</comment>
     <requestid>1254995</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>511b4c7f9e49ad3f79ee99e50e7283e5</srcmd5>
+    <version>4.0.0</version>
+    <time>1745335748</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.0:
+  * Added
+    + The --preferred-profile and --required-profile flags allow requesting
+      a profile.
+  * Changed
+    + Certificates now renew with 1/3rd of lifetime left (or 1/2 of lifetime
+      left, if the lifetime is shorter than 10 days).
+    + removed acme.crypto_util._pyopenssl_cert_or_req_all_names
+    + removed acme.crypto_util._pyopenssl_cert_or_req_san
+    + removed acme.crypto_util.dump_pyopenssl_chain
+    + removed acme.crypto_util.gen_ss_cert
+    + removed certbot.crypto_util.dump_pyopenssl_chain
+    + removed certbot.crypto_util.pyopenssl_load_certificate
+  * Fixed
+    + Moved RewriteEngine on directive added during apache http01
+      authentication to the end of the virtual host, so that it overwrites
+      any RewriteEngine off directives that already exist and allows
+      redirection to the challenge URL.</comment>
+    <requestid>1271248</requestid>
+  </revision>
 </revisionlist>
