@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-HTTPAuth
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -15,6 +15,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-HTTPAuth
@@ -58,7 +59,7 @@ Simple extension that provides Basic and Digest HTTP authentication for Flask ro
 %license LICENSE
 %doc README.md
 %{python_sitelib}/flask_httpauth.py*
-%{python_sitelib}/Flask_HTTPAuth-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Hh][Tt][Tt][Pp][Aa]uth-%{version}.dist-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog
