@@ -17,16 +17,15 @@
 
 
 Name:           screengrab
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        GPL-2.0-only
-Group:          System/X11/Utilities
 URL:            https://github.com/lxqt/screengrab
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
