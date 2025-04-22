@@ -47,5 +47,4 @@ LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/
 ENV PYTHON_VERSION="%%py313_ver%%"
 ENV PATH="$PATH:/root/.local/bin"
 ENV PIP_VERSION="%%pip_ver%%"
-
 RUN set -euo pipefail; install -d -m 0755 /root/.local/bin

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- stylistic changes to pass dockerfmt
+
+-------------------------------------------------------------------
 Tue Mar 11 08:26:36 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Add latest tag, remove python3 compat symlinks
