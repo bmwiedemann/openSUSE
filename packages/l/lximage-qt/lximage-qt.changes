@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 17 23:42:57 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.0:
+  * Used the device pixel ration of the window on Wayland
+  * Fixes and workarounds for multi-screen scaling issues on
+    Wayland
+  * Fixed an old issue in showing GIF animations with pixel ratios
+    > 1
+  * Code Cleanup
+- Removed Group: declarations, no longer used
+
+-------------------------------------------------------------------
 Wed Jan 29 15:43:38 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.1:

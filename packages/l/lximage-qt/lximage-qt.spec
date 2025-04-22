@@ -17,16 +17,15 @@
 
 
 Name:           lximage-qt
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
-Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/lxqt/lximage-qt
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
