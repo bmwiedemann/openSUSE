@@ -1,0 +1,14 @@
+Index: eventlet-0.39.1/tests/ssl_test.py
+===================================================================
+--- eventlet-0.39.1.orig/tests/ssl_test.py
++++ eventlet-0.39.1/tests/ssl_test.py
+@@ -80,7 +80,8 @@ class SSLTest(tests.LimitedTestCase):
+             sock.recv(8192)
+             try:
+                 self.assertEqual(b'', sock.recv(8192))
+-            except greenio.SSL.ZeroReturnError:
++            except (greenio.SSL.ZeroReturnError,
++                    BrokenPipeError):
+                 pass
+ 
+         sock = listen_ssl_socket()

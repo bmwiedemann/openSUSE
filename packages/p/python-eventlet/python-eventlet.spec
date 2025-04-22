@@ -25,6 +25,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://eventlet.net
 Source:         https://files.pythonhosted.org/packages/source/e/eventlet/eventlet-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE: fix-test-with-openssl-3.5.0.patch bsc#1241037 -- based on PR 1034
+Patch1:         fix-test-with-openssl-3.5.0.patch
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}

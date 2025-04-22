@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 13:33:34 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix broken test with openssl 3.5.0:
+  * Add patch fix-test-with-openssl-3.5.0.patch
+
+-------------------------------------------------------------------
 Mon Apr  7 12:41:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.39.1
