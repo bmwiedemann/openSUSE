@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 22 07:33:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4
+  * Update and ship license in dist files, by Byron Sakiadis
+  * Support for Python 3.12
+  * Support for Python 3.13
+  * Drop support of EOL python 3.8
+- Limit Python files matched in %files section
+- Rename README.rst to README.md in %doc section
+
+-------------------------------------------------------------------
 Wed May  3 09:14:04 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3:
