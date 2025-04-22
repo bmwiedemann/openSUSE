@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 20 06:35:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.4:
+  * Rel v0.50.4 (#3293)
+  * Feature/default_view (#2866)
+  * fix: set default request timeout to 120 seconds (#3253)
+  * feat: add hostPathVolume (docker) (#3277)
+  * fix: respect insecure flag when switch context (#3292)
+  * plugins: add a plugin to start an alpine:latest container in
+    current context/namespace (#3265)
+  * Add plugin to temporarily scale down/up all deployments,
+    statefulsets, and daemonsets in a namespace using szero (#3259)
+  * update slack invite link
+
+-------------------------------------------------------------------
 Mon Apr 14 07:56:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.3:
