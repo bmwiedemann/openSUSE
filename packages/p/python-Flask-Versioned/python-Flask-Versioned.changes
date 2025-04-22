@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 02:19:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
 Mon Mar 10 00:41:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove timebomb now that Python 3.12 is no longer the first flavor built.

@@ -61,6 +61,6 @@ Add version info to file paths.
 %dir %{python_sitelib}/flaskext/versioned/
 %{python_sitelib}/flaskext/versioned/__init__.py
 %pycache_only %{python_sitelib}/flaskext/versioned/__pycache__/
-%{python_sitelib}/Flask_Versioned-%{full_version}.dist-info
+%{python_sitelib}/[Ff]lask_[Vv]ersioned-%{full_version}.dist-info
 
 %changelog

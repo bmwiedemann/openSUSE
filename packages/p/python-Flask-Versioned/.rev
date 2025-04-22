@@ -24,4 +24,12 @@
 - Add a rudimentary check by importing the module built.</comment>
     <requestid>1251610</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>717627970efe49e3c022f73ee70fb48c</srcmd5>
+    <version>0.9.4</version>
+    <time>1745335729</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271233</requestid>
+  </revision>
 </revisionlist>
