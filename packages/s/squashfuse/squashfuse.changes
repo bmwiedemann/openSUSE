@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 14 07:16:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.6.0:
+  * Add `.` and `..` in directory listings.
+  * Add `--enable-broken-directory-offsets` configure option to
+    compensate for a macOS FUSE-T bug.
+  * Fix 32-bit builds
+  * Add nix as a supported build type
+- Add pkgconfig(libzstd) BuildRequires, add zstd support.
+- Add pkgconfig(fuse3) BuildRequires, add fuse3 support.
+- Drop pkgconfig(fuse) BuildRequires and fuse Requires: fuse3
+  support is sufficient.
+- Add pkgconfig(liblz4) BuildRequires, add lz4 support.
+- Add pkgconfig(lzo2) BuildRequires, add lzo support.
+- Replace xz-devel with pkgconfig(liblzma) BuildRequires.
+
+-------------------------------------------------------------------
 Wed Oct 18 16:03:24 UTC 2023 - Egbert Eich <eich@suse.com>
 
 - update to version 0.5.0
