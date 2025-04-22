@@ -2098,4 +2098,19 @@
   * fix(deps): update module github.com/brianvoe/gofakeit/v7 to v7.2.1 (#4026) (forwarded request 1270993 from ph03nix)</comment>
     <requestid>1271000</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>7f84f513b6421620ddeb88e92de2a3cf</srcmd5>
+    <version>3.88.25</version>
+    <time>1745335856</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.88.25:
+  * fix(deps): update module github.com/couchbase/gocb/v2 to v2.10.0 (#4075)
+  * fix(deps): update module github.com/xo/dburl to v0.23.7 (#4072)
+  * fix(deps): update module github.com/gabriel-vasile/mimetype to v1.4.9 (#4071)
+  * Stop logging chunks (#4056)
+  * [Fix] Fix Abyssale Detector Typo (#4067)
+  * fix(deps): update module github.com/go-ldap/ldap/v3 to v3.4.11 (#4066)
+  * fix(deps): update module cloud.google.com/go/secretmanager to v1.14.7 (#4065) (forwarded request 1271282 from ph03nix)</comment>
+    <requestid>1271866</requestid>
+  </revision>
 </revisionlist>
