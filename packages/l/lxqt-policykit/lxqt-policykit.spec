@@ -17,16 +17,15 @@
 
 
 Name:           lxqt-policykit
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later
-Group:          System/GUI/LXQt
 URL:            https://github.com/lxqt/lxqt-policykit
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6WindowSystem)
