@@ -34,7 +34,6 @@ Patch2:         lua_add_getCurrentWarpSpeed.patch
 Patch3:         lua_fix_multivar.patch
 Patch4:         lua_add_commandBypassSelfDestruct.patch
 Patch5:         lua_fix_commandCombatManeuver.patch
-BuildRequires:  SDL2-devel
 BuildRequires:  bsdtar
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -42,6 +41,8 @@ BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  glm-devel
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  sfml2-devel
 BuildRequires:  xorg-x11
 %if 0%{?sle_version:1}
