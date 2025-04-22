@@ -17,7 +17,7 @@
 
 
 Name:           python-certbot-dns-ovh
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        OVH DNS Authenticator plugin for Certbot
 License:        Apache-2.0
