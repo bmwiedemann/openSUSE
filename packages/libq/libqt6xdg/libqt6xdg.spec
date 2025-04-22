@@ -17,10 +17,10 @@
 
 
 %define _name libqtxdg
-%define _sover 4.1.0
+%define _sover 4.2.0
 %define sover 4
 Name:           libqt6xdg
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Qt implementation of freedesktop.org xdg specs
 License:        LGPL-2.1-only AND SUSE-LGPL-2.1-with-digia-exception-1.1
@@ -28,9 +28,6 @@ URL:            https://github.com/lxqt/libqtxdg
 Source0:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-
-# PATCH-FIX-UPSTREAM <sfalken@opensuse.org> (gh#lxqt/libqtxdg#311)
-Patch0:         %{url}/commit/35ce74f1510a9f41b2aff82fd1eda63014c3fe2b.patch
 
 BuildRequires:  cmake >= 3.18.0
 BuildRequires:  fdupes

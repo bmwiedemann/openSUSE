@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 17 14:10:04 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 4.2.0:
+  * Adapted to changes in private headers of Qt 6.9
+- Dropped 35ce74f1510a9f41b2aff82fd1eda63014c3fe2b.patch
+
+-------------------------------------------------------------------
 Mon Apr  7 17:33:22 UTC 2025 - Shawn Dunn <sfalken@cloverleaf-linux.org>
 
 - Add: 35ce74f1510a9f41b2aff82fd1eda63014c3fe2b.patch
