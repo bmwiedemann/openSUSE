@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xerces-c)
 
 %description

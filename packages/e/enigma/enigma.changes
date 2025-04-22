@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr  8 08:38:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Require libx11-devel to fix build
+
+-------------------------------------------------------------------
 Sat Aug 28 13:40:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.30
