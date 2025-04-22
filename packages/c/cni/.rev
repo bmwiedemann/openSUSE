@@ -276,4 +276,12 @@
     <comment></comment>
     <requestid>1189187</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b6e3000b98fd637cf3c3c98aa0ab69ee</srcmd5>
+    <version>1.3.0</version>
+    <time>1745335681</time>
+    <user>anag_factory</user>
+    <comment>New upstream release 1.3.0 (forwarded request 1267844 from dancermak)</comment>
+    <requestid>1271175</requestid>
+  </revision>
 </revisionlist>
