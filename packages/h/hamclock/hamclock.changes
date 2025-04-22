@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Sun Apr 20 17:21:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.16:
+  * new: add DXPeditions data pane
+  * new: add automatic upgrade option
+  * new: add get_dxpeds RESTful command
+  * new: add RTTY VOACAP mode
+  * change: current satellite az and el are now shown above pass
+  * change: RESTful set_bmp can now display any image in the map area
+  * change: add support for more UDP XML packet formats
+  * change: UDP spots may be filtered to only those made by own call
+  * fix: more download speed improvements
+  * fix: DX Cluster rounding could move spot time into the future
+  * fix: DX Cluster spot was updated only if it moved to a different band
+  * fix: SpcWx rankings were not initialized if not using Auto
+
+-------------------------------------------------------------------
+Thu Mar  6 19:33:06 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- initial, minimal package

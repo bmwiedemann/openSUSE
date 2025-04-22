@@ -1,0 +1,7 @@
+<package name="hamclock" project="openSUSE:Factory">
+  <title>Clock and map with additional information for amateur radio</title>
+  <description>HamClock is a kiosk-style application that provides real time space weather,
+radio propagation models, operating events and other information particularly
+useful to the radio amateur.</description>
+  <url>https://clearskyinstitute.com/ham/HamClock/</url>
+</package>

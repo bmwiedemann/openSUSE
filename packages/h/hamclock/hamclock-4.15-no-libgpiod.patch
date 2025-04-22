@@ -1,0 +1,16 @@
+Index: ESPHamClock/Makefile
+===================================================================
+--- ESPHamClock.orig/Makefile
++++ ESPHamClock/Makefile
+@@ -34,11 +34,6 @@ ifeq ($(shell uname -s), NetBSD)
+     LIBS += -lexecinfo -lm
+ endif
+ 
+-# Linux needs libgpiod
+-ifeq ($(shell find /usr/lib -name libgpiod.a | wc -l), 1)
+-    LIBS += -lgpiod
+-endif
+-
+ 
+ # make CXXFLAGS available to sub makes
+ export CXXFLAGS

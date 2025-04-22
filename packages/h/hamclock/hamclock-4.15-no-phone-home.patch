@@ -1,0 +1,40 @@
+Index: ESPHamClock/ESPHamClock.cpp
+===================================================================
+--- ESPHamClock.orig/ESPHamClock.cpp
++++ ESPHamClock/ESPHamClock.cpp
+@@ -467,16 +467,6 @@ void setup()
+         NVWriteTZ (NV_DE_TZ, de_tz);
+     }
+ 
+-    // ask to update if new version available -- never returns if update succeeds
+-    if (!skip_skip) {
+-        char nv[50];
+-        if (newVersionIsAvailable (nv, sizeof(nv)) && askOTAupdate (nv, false)) {
+-            if (askPasswd ("upgrade", false))
+-                doOTAupdate(nv);
+-            eraseScreen();
+-        }
+-    }
+-
+     // init sensors
+     initBME280();
+ 
+@@ -927,18 +917,7 @@ static void checkTouch()
+     } else if (!SHOWING_PANE_0() && dx_info_for_sat && inBox (s, dx_info_b)) {
+         drawDXSatMenu(s);
+     } else if (inBox (s, version_b)) {
+-        char nv[50];
+-        if (newVersionIsAvailable(nv, sizeof(nv))) {
+-            if (askOTAupdate (nv, false) && askPasswd ("upgrade", false))
+-                doOTAupdate(nv);
+-        } else {
+             eraseScreen();
+-            tft.setTextColor (RA8875_WHITE);
+-            tft.setCursor (tft.width()/8, tft.height()/3);
+-            selectFontStyle (BOLD_FONT, SMALL_FONT);
+-            tft.print ("You're up to date!");        // match webserver response
+-            wdDelay(3000);
+-        }
+         initScreen();
+     } else if (inBox (s, wifi_b)) {
+         // depends on what is currently displayed
