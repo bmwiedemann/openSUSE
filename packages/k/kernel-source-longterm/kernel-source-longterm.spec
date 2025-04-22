@@ -17,18 +17,20 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.23
-%define git_commit 9ae5b54122a7935617eab19bb3670b05c11edcac
+%define patchversion 6.12.24
+%define git_commit 726c2d06ad1d81b68e479b3bdffd8f8b7af66c72
 %define variant -longterm%{nil}
+%define gcc_package gcc
+%define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source-longterm
-Version:        6.12.23
+Version:        6.12.24
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9ae5b54
+Release:        <RELEASE>.g726c2d0
 %else
 Release:        0
 %endif
@@ -150,6 +152,7 @@ Recommends:     dwarves >= 1.22
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 Recommends:     kernel-install-tools
 %endif
+Recommends:     %gcc_package
 %obsolete_rebuilds %name
 
 # Force bzip2 instead of lzma compression to
@@ -269,6 +272,8 @@ fi
 	linux-%kernelrelease%variant linux-%kernelrelease-vanilla
 cd linux-%kernelrelease-vanilla
 %_sourcedir/apply-patches --vanilla %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
 rm -f $(find . -name ".gitignore")
 # Hardlink duplicate files automatically (from package fdupes).
 %fdupes $PWD
@@ -277,6 +282,8 @@ cd ..
 
 cd linux-%kernelrelease%variant
 %_sourcedir/apply-patches %_sourcedir/series.conf %my_builddir %symbols
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
 rm -f $(find . -name ".gitignore")
 
 if [ -f %_sourcedir/localversion ] ; then
@@ -317,7 +324,8 @@ popd
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # OBS checks don't like /usr/bin/env in script interpreter lines
 grep -Elr '^#! */usr/bin/env ' %{buildroot}/usr/src/linux* | while read f; do
-    sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
+    sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' \
+        -re '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
 done
 # kernel-source and kernel-$flavor-devel are built independently, but the
 # shipped sources (/usr/src/linux/) need to be older than generated files

@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.23
-%define git_commit 9ae5b54122a7935617eab19bb3670b05c11edcac
+%define patchversion 6.12.24
+%define git_commit 726c2d06ad1d81b68e479b3bdffd8f8b7af66c72
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -31,15 +31,17 @@
 %define supported_modules_check 0
 %define build_flavor longterm
 %define generate_compile_commands 1
+%define gcc_package gcc
+%define gcc_compiler gcc
 
 %include %_sourcedir/kernel-spec-macros
 
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.12.23
+Version:        6.12.24
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g9ae5b54
+Release:        <RELEASE>.g726c2d0
 %else
 Release:        0
 %endif
@@ -59,8 +61,8 @@ BuildRequires:  flex
 # does not expand %%(...)
 %if "%build_flavor" == "syzkaller"
 # Needed by scripts/gcc-plugin.sh
-BuildRequires:  gcc-c++
-BuildRequires:  gcc-devel
+BuildRequires:  %gcc_package-c++
+BuildRequires:  %gcc_package-devel
 %endif
 BuildRequires:  hmaccalc
 BuildRequires:  libopenssl-devel
@@ -73,6 +75,7 @@ BuildRequires:  pesign-obs-integration
 # pahole for CONFIG_DEBUG_INFO_BTF
 BuildRequires:  dwarves >= 1.22
 %endif
+BuildRequires:  %gcc_package
 # for objtool
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
@@ -354,14 +357,14 @@ Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
+# Use OrderWithRequires to instruct the package manager to schedule the
+# installation of bootloader and dracut related tools as if they were
+# required. This will ensure they're there for post scripts without hard
+# requiring them. (boo#1228659, boo#1240785)
+OrderWithRequires(post): udev
+OrderWithRequires(post): systemd-boot
+OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -489,14 +492,14 @@ Requires:       suse-module-tools
 # For depmod (modutils is a dependency provided by both module-init-tools and
 # kmod-compat)
 Requires(post): modutils
-# This Requires is wrong, because the post/postun scripts have a
-# test -x update-bootloader, having perl-Bootloader is not a hard requirement.
-# But, there is no way to tell rpm or yast to schedule the installation
-# of perl-Bootloader before kernel-binary.rpm if both are in the list of
-# packages to install/update. Likewise, this is true for dracut.
-# Need a perl-Bootloader with /usr/lib/bootloader/bootloader_entry
-Requires(post): perl-Bootloader >= 0.4.15
-Requires(post): dracut
+# Use OrderWithRequires to instruct the package manager to schedule the
+# installation of bootloader and dracut related tools as if they were
+# required. This will ensure they're there for post scripts without hard
+# requiring them. (boo#1228659, boo#1240785)
+OrderWithRequires(post): udev
+OrderWithRequires(post): systemd-boot
+OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
 Requires(post): distribution-release
@@ -766,6 +769,7 @@ Requires:       dwarves >= 1.22
 Provides:       kernel-preempt-devel = %version-%release
 %endif
 %endif
+Requires:       %gcc_package
 %obsolete_rebuilds %name-devel
 PreReq:         coreutils
 
@@ -802,7 +806,7 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%variant" == "-rt" && 0%livepatch_rt))
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%flavor" == "rt" && 0%livepatch_rt))
 %if "%livepatch" == "kgraft"
 %define patch_package %{livepatch}-patch
 %else
@@ -1258,6 +1262,9 @@ cd linux-%srcversion
 %endif
 	%_sourcedir/series.conf .. $SYMBOLS
 
+sed -i -e 's/\$(CROSS_COMPILE)gcc/\$(CROSS_COMPILE)%gcc_compiler/g' Makefile
+grep '\$(CROSS_COMPILE)%gcc_compiler' Makefile
+
 cd %kernel_build_dir
 
 # Override the timestamp 'uname -v' reports with the source timestamp and
@@ -1452,7 +1459,7 @@ done
 
 %if 0%{?klp_ipa_clones} && %generate_compile_commands
     # Generate compile_commands.json
-    make compile_commands.json
+    make compile_commands.json $MAKE_ARGS
 %endif
 
 %install
@@ -1770,8 +1777,8 @@ if [ %CONFIG_MODULES = y ]; then
             %rpm_install_dir/%cpu_arch_flavor \
             $(echo %srcversion | sed -r 's/^([0-9]+)\.([0-9]+).*/\1 \2/')
     else
-       echo "export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor" > %rpm_install_dir/%cpu_arch_flavor/Makefile
-       echo "include ../../../%{basename:%src_install_dir}/Makefile" >> %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo 'export KBUILD_OUTPUT = %obj_install_dir/%cpu_arch_flavor' > %rpm_install_dir/%cpu_arch_flavor/Makefile
+       echo 'include ../../../%{basename:%src_install_dir}/Makefile' >> %rpm_install_dir/%cpu_arch_flavor/Makefile
     fi
 fi
 
@@ -1950,7 +1957,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     add_dirs_to_filelist %my_builddir/optional-modules > %my_builddir/kernel-optional.files
 %endif
 
-%if 0%{?sle_version} >= 150000
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150000
     # By default, loading unsupported modules is disabled on SLE through
     # /etc/modprobe.d/10-unsupported-modules.conf from the suse-module-tools
     # package.
@@ -1961,7 +1968,7 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
     # multiversion(kernel).
 
     modprobe_d_dir=/etc/modprobe.d
-    %if 0%{?sle_version} > 150300
+    %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
     modprobe_d_dir=/lib/modprobe.d
     %endif
     %if %{usrmerged}
