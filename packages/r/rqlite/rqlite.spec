@@ -17,7 +17,7 @@
 
 
 Name:           rqlite
-Version:        8.36.16
+Version:        8.36.18
 Release:        0
 Summary:        Distributed relational database built on SQLite
 License:        MIT

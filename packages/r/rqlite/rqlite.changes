@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 20 13:04:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.36.18:
+  * Follow redirects when building sqlite-vec
+  * Support Commit Hook registration
+  * Support registering Update Hooks at the database level
+
+-------------------------------------------------------------------
 Thu Apr  3 19:48:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.16:
