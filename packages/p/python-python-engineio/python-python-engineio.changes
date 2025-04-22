@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 10:52:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.12.0
+  * Optimize packet parsing to avoid unnecessary calls to
+    JSON parser (#399)
+  * Pass `environ` as a second argument to callable option
+    `cors_allowed_origins` #398)
+
+-------------------------------------------------------------------
 Sun Mar 23 17:44:26 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 4,11,2
