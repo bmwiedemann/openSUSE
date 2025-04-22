@@ -18,7 +18,7 @@
 
 
 Name:           lxqt-session
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ Patch2:         0002-fix-xdg-desktop-portal-lxqt.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/lxqt/lxqt-session/pull/571
 Patch3:         0003-add-option-for-miriway.patch
 
-BuildRequires:  cmake >= 3.18.0
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 17 23:27:16 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to version 2.2.0:
+  * Prevented a second lxqt-session process
+  * Provided a D-Bus method for launching apps under LXQt session
+  * When disabling auto-start entries, do it only for LXQt
+  * Show error message if an auto-start name starts with dot or
+    contains slash
+  * Changed the default cursor size to 24
+  * Fixed the focus order in the config GUI
+  * Best positioning of Leave dialog with multi-screen Wayland
+
+-------------------------------------------------------------------
 Thu Jan 16 18:45:33 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Added:

@@ -1436,4 +1436,12 @@ comply with openSUSE policy
 </comment>
     <requestid>1244264</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bf4e1bc155870f250497ec2f5f2e29cf</srcmd5>
+    <version>2.2.0</version>
+    <time>1745335594</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270853</requestid>
+  </revision>
 </revisionlist>
