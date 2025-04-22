@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyUSID
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -76,7 +76,7 @@ sed -i -e /pytest-runner/d -e /six/d setup.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pyUSID-%{version}.dist-info
 %{python_sitelib}/pyUSID
+%{python_sitelib}/py[Uu][Ss][Ii][Dd]-%{version}.dist-info
 
 %changelog

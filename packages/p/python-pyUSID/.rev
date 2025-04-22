@@ -122,4 +122,12 @@
     <comment>- Restrict numpy to &lt; 2.</comment>
     <requestid>1186296</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>4378852d87912925a5758543f5bec3fc</srcmd5>
+    <version>0.0.12</version>
+    <time>1745335709</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271224</requestid>
+  </revision>
 </revisionlist>
