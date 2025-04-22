@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 20 21:37:53 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- Drop ExclusiveArch - at least s390x and ppc64le also build
+  successfully, so there's no point in listing lots of archs in
+  "ExclusiveArch"
+
+-------------------------------------------------------------------
 Fri Nov 22 08:37:32 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-selenium
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,6 @@ Requires:       python-trio-websocket >= 0.9
 Requires:       python-typing-extensions >= 4.9
 Requires:       python-urllib3
 Requires:       python-websocket-client >= 1.8
-ExclusiveArch:  %{ix86} x86_64 %arm aarch64 riscv64
 %python_subpackages
 
 %description
