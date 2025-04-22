@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 19 08:36:38 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.1
+  Updated:
+  * Updated Dutch translation.
+  Fixed:
+  * qm files are created in CMAKE_BINARY_DIR.
+- Drop patch:
+  * q4wine-cmake-fix-oot-build.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Tue Apr 15 09:29:05 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  Initial Qt6 release
+  Updated:
+  * CMake minimum version requirement set to 3.24.
+  * SingleApplication is used instead of obsolete
+    QtSingleApplication.
+  * Wine AppDB browser is marked as obsolete and disabled by
+    default.
+  * Cleanup legacy code and files.
+  * PrefixSetupWizzard: Added missing win8, win8.1, win10, win11
+    options versions.
+- Add patch:
+  * q4wine-cmake-fix-oot-build.patch
+
+-------------------------------------------------------------------
 Mon Oct 25 21:35:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.13.13

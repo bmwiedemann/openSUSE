@@ -1,7 +1,7 @@
 #
 # spec file for package q4wine
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,35 @@
 
 
 Name:           q4wine
-Version:        1.3.13
+Version:        1.4.1
 Release:        0
 Summary:        Qt GUI for WINE
 License:        GPL-3.0-only
 Group:          System/Emulators/PC
-URL:            http://q4wine.brezblock.org.ua/
+URL:            https://q4wine.brezblock.org.ua/
 Source0:        https://github.com/brezerk/q4wine/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 2.8.0
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fuseiso
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icoutils
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 Requires:       fuseiso
 Requires:       icoutils
 Requires:       sudo
 Requires:       wine
 Recommends:     %{name}-lang
+# src/third-party/SingleApplication-3.5.2 is licensed under MIT
+Provides:       bundled(SingleApplication) = 3.5.2
 
 %description
 Q4Wine is a Qt-based GUI for WINE. It can help manage Wine
@@ -66,50 +67,35 @@ General features:
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-mkdir build
-cd build
-cmake .. \
-    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DCMAKE_C_FLAGS="%{optflags}" \
-    -DCMAKE_CXX_FLAGS="%{optflags}" \
-    -DCMAKE_NO_BUILTIN_CHRPATH=ON \
-    -DLIBS_ENTRY_PATH=%{_libdir}
-make %{?_smp_mflags} VERBOSE=1
+%cmake \
+  -DLIBS_ENTRY_PATH=%{_libdir} \
+  -DCMAKE_NO_BUILTIN_CHRPATH=ON \
+  -DCMAKE_SHARED_LINKER_FLAGS=""
+%cmake_build
 
 %install
-pushd build
-%make_install
-popd
-rm -fr %{buildroot}%{_datadir}/icons/ubuntu-mono-dark/
+%cmake_install
+rm -vRf %{buildroot}%{_datadir}/icons/ubuntu-mono-dark/
 %find_lang %{name} --with-qt
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
-%{_bindir}/%{name}
-%{_bindir}/%{name}-cli
-%{_bindir}/%{name}-helper
-%{_datadir}/%{name}/
-%exclude %{_datadir}/%{name}/l10n/
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/*/*/*
+%doc AUTHORS.md Changelog.md README.md
+%{_bindir}/q4wine
+%{_bindir}/q4wine-cli
+%{_bindir}/q4wine-helper
+%{_datadir}/q4wine
+%exclude %{_datadir}/%{name}/l10n
+%{_datadir}/applications/q4wine.desktop
+%{_datadir}/metainfo/ua.org.brezblock.q4wine.appdata.xml
+%{_datadir}/icons/hicolor/scalable/apps/q4wine*.svg
 %{_libdir}/lib%{name}*
-%{_mandir}/man?/*
+%{_mandir}/man1/q4wine*%{?ext_man}
 
 %files lang -f %{name}.lang
-%dir %{_datadir}/%{name}/l10n/
+%dir %{_datadir}/%{name}/l10n
 
 %changelog
