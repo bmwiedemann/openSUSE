@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 17 23:17:24 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Updated to version 0.2.0:
+  * Added manpages
+  * Support default compositor and screenlocker
+  * Search for compositor setting in fallback dirs
+  * Use predefined build values in the startup script
+  * Support full path of compositor
+  * R emoved obsolete mozilla env var
+  * Corrected D-Bus error message
+- Refactor 0003-configuration-changes-for-default-niri-session.patch
+- Refactor 0005-configuration-changes-for-default-hyprland-session.patch
+- Refactor 0007-configuration-changes-for-default-sway-session.patch
+
+-------------------------------------------------------------------
 Sat Mar 29 19:06:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated labwc config patch to include LABWC_CONFIG_DIR

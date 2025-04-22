@@ -56,4 +56,12 @@
     <comment>- Updated labwc config patch to include LABWC_CONFIG_DIR</comment>
     <requestid>1265431</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c5bb336317b0842a761915c03cc5d0e1</srcmd5>
+    <version>0.2.0</version>
+    <time>1745335605</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270911</requestid>
+  </revision>
 </revisionlist>

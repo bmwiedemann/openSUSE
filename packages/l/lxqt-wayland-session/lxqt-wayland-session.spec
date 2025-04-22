@@ -18,7 +18,7 @@
 
 
 Name:           lxqt-wayland-session
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -41,7 +41,7 @@ Patch5:         0006-configuration-changes-for-default-river-session.patch
 ## PATCH-CONFIGURATION-openSUSE 0007-configuration-changes-for-default-sway-session.patch
 Patch6:         0007-configuration-changes-for-default-sway-session.patch
 
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -179,6 +179,8 @@ compositor with LXQt
 %{_bindir}/startlxqtwayland
 %{_datadir}/lxqt/wayland/firstrun/autostart
 %{_datadir}/wayland-sessions/lxqt-wayland.desktop
+%{_mandir}/man?/%{name}.?%{?ext_man}
+%{_mandir}/man?/startlxqtwayland.?%{?ext_man}
 
 %files -n lxqt-hyprland-session
 %license LICENSE.BSD
