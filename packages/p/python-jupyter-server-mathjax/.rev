@@ -51,4 +51,12 @@
 </comment>
     <requestid>1172851</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>59e404e3860210216be38c2aa09ba8f9</srcmd5>
+    <version>0.2.6</version>
+    <time>1745335732</time>
+    <user>anag_factory</user>
+    <comment>- Do not copy the LICENSE file from the metadata directory, it's shipped.</comment>
+    <requestid>1271234</requestid>
+  </revision>
 </revisionlist>

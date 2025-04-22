@@ -1,7 +1,7 @@
 #
 # spec file for package python-jupyter-server-mathjax
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,6 @@ to all python flavors.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-cp %{buildroot}%{python3_sitelib}/jupyter_server_mathjax-%{version}.dist-info/LICENSE .
 cp %{buildroot}%{python3_sitelib}/jupyter_server_mathjax/static/LICENSE LICENSE-STATIC
 %jupyter_move_config
 

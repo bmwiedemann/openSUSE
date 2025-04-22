@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 02:24:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not copy the LICENSE file from the metadata directory, it's shipped.
+
+-------------------------------------------------------------------
 Thu May  9 06:50:31 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build from source not whl from pypi.
