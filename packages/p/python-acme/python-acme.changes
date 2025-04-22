@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 22 03:28:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Added
+    + The --preferred-profile and --required-profile flags allow requesting
+      a profile.
+  * Changed
+    + Certificates now renew with 1/3rd of lifetime left (or 1/2 of lifetime
+      left, if the lifetime is shorter than 10 days).
+    + removed acme.crypto_util._pyopenssl_cert_or_req_all_names
+    + removed acme.crypto_util._pyopenssl_cert_or_req_san
+    + removed acme.crypto_util.dump_pyopenssl_chain
+    + removed acme.crypto_util.gen_ss_cert
+    + removed certbot.crypto_util.dump_pyopenssl_chain
+    + removed certbot.crypto_util.pyopenssl_load_certificate
+  * Fixed
+    + Moved RewriteEngine on directive added during apache http01
+      authentication to the end of the virtual host, so that it overwrites
+      any RewriteEngine off directives that already exist and allows
+      redirection to the challenge URL.
+
+-------------------------------------------------------------------
 Fri Mar 21 12:18:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.3.0

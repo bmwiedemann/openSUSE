@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 %define libname acme
 Name:           python-%{libname}
-Version:        3.3.0
+Version:        4.0.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/a/%{libname}/%{libname}-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography >= 43.0.0}
-BuildRequires:  %{python_module josepy >= 1.13.0}
+BuildRequires:  %{python_module josepy >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 25.0.0}
 BuildRequires:  %{python_module pyRFC3339}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 43.0.0
-Requires:       python-josepy >= 1.13.0
+Requires:       python-josepy >= 2.0.0
 Requires:       python-pyOpenSSL >= 25.0.0
 Requires:       python-pyRFC3339
 Requires:       python-pytz >= 2019.3
@@ -61,7 +61,6 @@ Python library implementing the Automatic Certificate Management Environment
 
 %install
 %pyproject_install
-# remove duplicates
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{libname}
 
 %check
@@ -71,6 +70,6 @@ Python library implementing the Automatic Certificate Management Environment
 %license LICENSE.txt
 %pycache_only %{python_sitelib}/%{libname}/__pycache__
 %{python_sitelib}/%{libname}
-%{python_sitelib}/%{libname}-%{version}*info
+%{python_sitelib}/%{libname}-%{version}.dist-info
 
 %changelog
