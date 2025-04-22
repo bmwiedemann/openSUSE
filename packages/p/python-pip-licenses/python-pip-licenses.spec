@@ -1,7 +1,7 @@
 #
 # spec file for package python-pip-licenses
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pip-licenses
-Version:        4.4.0
+Version:        5.0.0
 Release:        0
 Summary:        Python packages license list
 License:        MIT
 URL:            https://github.com/raimon49/pip-licenses
-Source:         https://files.pythonhosted.org/packages/source/p/pip-licenses/pip-licenses-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pip-licenses/pip_licenses-%{version}.tar.gz
 BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -31,6 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PrettyTable
 Requires:       python-pip
+Requires:       python-tomli
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -40,6 +41,8 @@ BuildRequires:  %{python_module PrettyTable}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
+BuildRequires:  %{python_module tomli-w}
+BuildRequires:  %{python_module tomli}
 BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 # /SECTION
@@ -49,10 +52,10 @@ BuildRequires:  %{python_module wheel}
 Dump the software license list of Python packages installed with pip.
 
 %prep
-%autosetup -p1 -n pip-licenses-%{version}
+%autosetup -p1 -n pip_licenses-%{version}
 
-sed -i '/addopts/d' setup.cfg
-sed -i '/pytest-/d' setup.cfg
+sed -i '/addopts/d' pyproject.toml
+sed -i '/pytest-/d' pyproject.toml
 sed -i '1{/^#!/d}' piplicenses.py
 
 %build
