@@ -18,7 +18,7 @@
 
 
 Name:           gedit-plugins
-Version:        48.1
+Version:        48.2
 Release:        0
 Summary:        A collection of plugins for gedit
 License:        GPL-2.0-or-later
@@ -26,13 +26,10 @@ Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gedit/PluginsLists
 Source0:        %{name}-%{version}.tar.zst
 Source1:        gedit-plugins.SUSE
-# PATCH-FIX-UPSTREAM bracketcompletion-use-key-release-event-to-work-wi.patch boo#1027448 bgo#778737 hillwood@opensuse.org -- Switch to use key release event for ibus pinyin input method
-Patch0:         bracketcompletion-use-key-release-event-to-work-wi.patch
 
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
 # configure tests for python gi-bindings of gucharmap
 BuildRequires:  typelib-1_0-Gucharmap-2_90
 BuildRequires:  vala >= 0.28.0
@@ -88,117 +85,33 @@ This package contains a number of plugins for gedit, such as:
  * Show tabbar: A plugin to show or hide the gedit tabbar
  * Terminal: A terminal widget accessible from the bottom panel
 
-%package -n %{name}-data
-Summary:        Common data required by gedit plugins
-Group:          Productivity/Text/Editors
-Requires:       gedit
-
-%description -n %{name}-data
-Common files required by all gedit plugins
-
 %package -n gedit-plugin-bookmarks
 Summary:        Gedit bookmarks plugin
 Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
 Provides:       gedit-plugins:%{_libdir}/gedit/plugins/bookmarks.plugin
 
 %description -n gedit-plugin-bookmarks
 The gedit bookmarks plugin.
 
-%package -n gedit-plugin-bracketcompletion
-Summary:        Gedit bracketcompletion plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/bracketcompletion.plugin
-
-%description -n gedit-plugin-bracketcompletion
-The gedit bracketcompletion plugin.
-
-%package -n gedit-plugin-charmap
-Summary:        Gedit charmap plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/charmap.plugin
-
-%description -n gedit-plugin-charmap
-The gedit charmap plugin.
-
-%package -n gedit-plugin-codecomment
-Summary:        Gedit codecomment plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/codecomment.plugin
-
-%description -n gedit-plugin-codecomment
-The gedit codecomment plugin.
-
-%package -n gedit-plugin-colorpicker
-Summary:        Gedit colorpicker plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/colorpicker.plugin
-
-%description -n gedit-plugin-colorpicker
-The gedit colorpicker plugin.
-
 %package -n gedit-plugin-drawspaces
 Summary:        Gedit drawspaces plugin
 Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
 Provides:       gedit-plugins:%{_libdir}/gedit/plugins/drawspaces.plugin
 
 %description -n gedit-plugin-drawspaces
 The gedit drawspaces plugin.
 
-%package -n gedit-plugin-joinlines
-Summary:        Gedit joinlines plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/joinlines.plugin
-
-%description -n gedit-plugin-joinlines
-The gedit joinlines plugin
-
-%package -n gedit-plugin-multiedit
-Summary:        Gedit multiedit plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/multiedit.plugin
-
-%description -n gedit-plugin-multiedit
-The gedit multiedit plugin
-
 %package -n gedit-plugin-smartspaces
 Summary:        Gedit smartspaces plugin
 Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
 Provides:       gedit-plugins:%{_libdir}/gedit/plugins/smartspaces.plugin
 
 %description -n gedit-plugin-smartspaces
 The gedit smartspaces plugin
 
-%package -n gedit-plugin-session-saver
-Summary:        Gedit session-saver plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/session-saver.plugin
-
-%description -n gedit-plugin-session-saver
-The gedit session-saver plugin
-
-%package -n gedit-plugin-terminal
-Summary:        Gedit terminal plugin
-Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
-Provides:       gedit-plugins:%{_libdir}/gedit/plugins/terminal.plugin
-
-%description -n gedit-plugin-terminal
-The gedit terminal plugin
-
 %package -n gedit-plugin-wordcompletion
 Summary:        Gedit wordcompletion plugin
 Group:          Productivity/Text/Editors
-Requires:       %{name}-data = %{version}
 Provides:       gedit-plugins:%{_libdir}/gedit/plugins/wordcompletion.plugin
 
 %description -n gedit-plugin-wordcompletion
@@ -212,14 +125,7 @@ install -m644 %{SOURCE1} .
 
 %build
 %meson \
-    -Dplugin_bracketcompletion=false \
-    -Dplugin_charmap=false           \
-    -Dplugin_codecomment=false       \
-    -Dplugin_colorpicker=false       \
-    -Dplugin_joinlines=false         \
-    -Dplugin_multiedit=false         \
-    -Dplugin_sessionsaver=false      \
-    -Dplugin_terminal=false
+	%{nil}
 %meson_build
 
 %install
@@ -233,40 +139,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc gedit-plugins.SUSE
 %doc %{_datadir}/help/C/gedit
 
-%files -n %{name}-data
-# Common files
-%{_libdir}/gedit/plugins/gpdefs.py*
-
 %files -n gedit-plugin-bookmarks
 ## Explicitly list all plugins so we know when we miss one
 # bookmarks
 %{_datadir}/metainfo/gedit-bookmarks.metainfo.xml
 %{_libdir}/gedit/plugins/bookmarks.plugin
 %{_libdir}/gedit/plugins/libbookmarks.so
-
-%dnl %files -n gedit-plugin-bracketcompletion
-%dnl # bracketcompletion
-%dnl %{_datadir}/metainfo/gedit-bracketcompletion.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/bracketcompletion.plugin
-%dnl %{_libdir}/gedit/plugins/bracketcompletion.py*
-
-%dnl %files -n gedit-plugin-charmap
-%dnl # charmap
-%dnl %{_datadir}/metainfo/gedit-charmap.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/charmap.plugin
-%dnl %{_libdir}/gedit/plugins/charmap/
-
-%dnl %files -n gedit-plugin-codecomment
-%dnl # codecomment
-%dnl %{_datadir}/metainfo/gedit-codecomment.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/codecomment.plugin
-%dnl %{_libdir}/gedit/plugins/codecomment.py*
-
-%dnl %files -n gedit-plugin-colorpicker
-%dnl # colorpicker
-%dnl %{_datadir}/metainfo/gedit-colorpicker.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/colorpicker.plugin
-%dnl %{_libdir}/gedit/plugins/colorpicker.py*
 
 %files -n gedit-plugin-drawspaces
 # drawspaces
@@ -275,36 +153,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gedit/plugins/libdrawspaces.so
 %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.drawspaces.gschema.xml
 
-%dnl %files -n gedit-plugin-joinlines
-%dnl # joinlines
-%dnl %{_datadir}/metainfo/gedit-joinlines.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/joinlines.plugin
-%dnl %{_libdir}/gedit/plugins/joinlines.py*
-
-%dnl %files -n gedit-plugin-multiedit
-%dnl # multiedit
-%dnl %{_datadir}/metainfo/gedit-multiedit.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/multiedit.plugin
-%dnl %{_libdir}/gedit/plugins/multiedit/
-
 %files -n gedit-plugin-smartspaces
 # smartspaces
 %{_datadir}/metainfo/gedit-smartspaces.metainfo.xml
 %{_libdir}/gedit/plugins/smartspaces.plugin
 %{_libdir}/gedit/plugins/libsmartspaces.so
-
-%dnl %files -n gedit-plugin-session-saver
-%dnl # session-saver
-%dnl %{_datadir}/gedit/plugins/sessionsaver/
-%dnl %{_libdir}/gedit/plugins/sessionsaver.plugin
-%dnl %{_libdir}/gedit/plugins/sessionsaver/
-
-%dnl %files -n gedit-plugin-terminal
-%dnl # terminal
-%dnl %{_datadir}/metainfo/gedit-terminal.metainfo.xml
-%dnl %{_libdir}/gedit/plugins/terminal.plugin
-%dnl %{_libdir}/gedit/plugins/terminal.py*
-%dnl %{_datadir}/glib-2.0/schemas/org.gnome.gedit.plugins.terminal.gschema.xml
 
 %files -n gedit-plugin-wordcompletion
 # wordcompletion

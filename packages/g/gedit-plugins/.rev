@@ -593,4 +593,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment></comment>
     <requestid>1265681</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>011658914a504d176ac5c5497bdf8813</srcmd5>
+    <version>48.2</version>
+    <time>1745335767</time>
+    <user>anag_factory</user>
+    <comment> (forwarded request 1271273 from dimstar)</comment>
+    <requestid>1271278</requestid>
+  </revision>
 </revisionlist>

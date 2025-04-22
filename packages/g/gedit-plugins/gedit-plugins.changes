@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 17 09:43:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.2:
+  + All plugins implemented in Python have been removed.
+  + Update some URLs.
+  + Small code maintenance.
+  + Updated translations.
+- Drop bracketcompletion-use-key-release-event-to-work-wi.patch:
+  The plugin it patched is dropped upstream.
+- Drop all the python-based plugins following upstream.
+
+-------------------------------------------------------------------
 Mon Mar 31 06:45:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python-based plugins, as they are not compatible with the
