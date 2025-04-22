@@ -53,4 +53,12 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1142154</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>d682a8643da828aa2abc8a9b3765f44e</srcmd5>
+    <version>0.5.0</version>
+    <time>1745335717</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271226</requestid>
+  </revision>
 </revisionlist>

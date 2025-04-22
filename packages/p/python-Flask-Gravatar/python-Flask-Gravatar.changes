@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 02:19:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support both lowercased and unnormalized metadata directory names.
+
+-------------------------------------------------------------------
 Mon Jan 29 04:30:07 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-connection-stack.patch:

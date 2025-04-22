@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Gravatar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,6 @@ export LC_CTYPE=en_US@UTF-8
 %doc AUTHORS CHANGES.rst README.rst
 %license LICENSE
 %{python_sitelib}/flask_gravatar
-%{python_sitelib}/Flask_Gravatar-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Gg]ravatar-%{version}.dist-info
 
 %changelog
