@@ -1,6 +1,7 @@
 #
 # spec file for package hobbits
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,18 +29,18 @@ Source:         https://github.com/Mahlet-Inc/hobbits/archive/v%{version}.tar.gz
 Source1:        https://bitbucket.org/jpommier/pffft/get/%{pffft_hash}.zip#/pffft-%{pffft_hash}.zip
 Patch0:         hobbits-dont-hardcode-python3-version.patch
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
-BuildRequires:  fdupes
 BuildRequires:  python3-devel
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  unzip
-BuildRequires:  hicolor-icon-theme
 Provides:       bundled(pffft)
 
 %description
@@ -56,8 +57,7 @@ A GUI for bit-based analysis, processing, and visualization.
 This subpackage contains files for developing applications thatwant to make use of hobbits.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 # 3rd party
 cd external/pffft/
