@@ -1943,4 +1943,17 @@
    * Fix formatting of &quot;See Style Guide&quot; link</comment>
     <requestid>1268673</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8cae03eb4c0a700686c36abfb0b60ac2</srcmd5>
+    <version>0.11.6</version>
+    <time>1745335543</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.6
+ * Preview features
+   * Avoid adding whitespace to the end of a docstring after an escaped quote 
+   * [airflow] Extract AIR311 from AIR301 rules (AIR301, AIR311)
+ * Bug fixes
+   * Raise syntax error when \ is at end of file</comment>
+    <requestid>1271168</requestid>
+  </revision>
 </revisionlist>
