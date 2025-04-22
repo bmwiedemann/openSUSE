@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-jwt-extended
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-JWT-Exten
 BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module PyJWT >= 2.0}
 BuildRequires:  %{python_module Werkzeug >= 0.14}
-BuildRequires:  %{python_module cryptography >= 41.0.6}
+BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 1.0
 Requires:       python-PyJWT >= 2.0
 Requires:       python-Werkzeug >= 0.14
-Suggests:       python-cryptography >= 41.0.6
+Suggests:       python-cryptography >= 3.3.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -73,6 +73,6 @@ Web Tokens easier. These include:
 %license LICENSE
 %doc README.md
 %{python_sitelib}/flask_jwt_extended
-%{python_sitelib}/Flask_JWT_Extended-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Jj][Ww][Tt]_[Ee]xtended-%{version}.dist-info
 
 %changelog

@@ -53,4 +53,12 @@
   * Support python 3.12 and add support for flask 3.0</comment>
     <requestid>1140113</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>6b02939fb36849b448f4211d124f6aea</srcmd5>
+    <version>4.6.0</version>
+    <time>1745335722</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271228</requestid>
+  </revision>
 </revisionlist>
