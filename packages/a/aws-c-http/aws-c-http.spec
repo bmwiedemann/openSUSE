@@ -2,6 +2,7 @@
 # spec file for package aws-c-http
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1_0_0
 Name:           aws-c-http
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
@@ -28,15 +29,14 @@ URL:            https://github.com/awslabs/aws-c-http
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  cmake(aws-checksums)
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(aws-c-cal)
 BuildRequires:  cmake(aws-c-common)
 BuildRequires:  cmake(aws-c-compression)
 BuildRequires:  cmake(aws-c-io)
 BuildRequires:  cmake(s2n)
 BuildRequires:  pkgconfig(libcrypto)
-BuildRequires:  ninja
-BuildRequires:  pkgconfig
 
 %description
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
@@ -67,21 +67,17 @@ This package contains the development files.
 %define __builder ninja
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_MODULE_PATH=%{_libdir}/cmake
-%make_jobs
-
-# Testsuite currently fails
-#%%check
-#export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
-#%%ctest
+    -DCMAKE_MODULE_PATH=%{_libdir}/cmake \
+    %{nil}
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{library_soversion}
 
 %files
+%license LICENSE
 %{_bindir}/*
 
 %files -n lib%{name}%{library_soversion}
@@ -90,6 +86,7 @@ This package contains the development files.
 %{_libdir}/*.so.%{library_version}
 
 %files devel
+%license LICENSE
 %{_libdir}/cmake/
 %{_libdir}/*.so
 %{_includedir}/*
