@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/cosign:%%cosign_version%%-%RELEASE%
 #!BuildTag: opensuse/cosign:%%cosign_version%%
-#!BuildTag: opensuse/cosign:2.4
+#!BuildTag: opensuse/cosign:2.5
 #!BuildTag: opensuse/cosign:2
 #!BuildTag: opensuse/cosign:latest
 
@@ -32,7 +32,7 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of cosign that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' cosign | \
-    cut -d '.' -f -2)" = "2.4" ]
+    cut -d '.' -f -2)" = "2.5" ]
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
