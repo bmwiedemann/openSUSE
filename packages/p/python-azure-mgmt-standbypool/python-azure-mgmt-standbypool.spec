@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt-standbypool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-standbypool
-Version:        1.0.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Standbypool Management Client Library for Python
 License:        MIT
@@ -33,10 +34,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
+Requires:       python-typing_extensions >= 4.6.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
 Requires:       (python-azure-mgmt-core >= 1.3.2 with python-azure-mgmt-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
-Requires:       python-typing_extensions >= 4.6.0
 Conflicts:      python-azure-sdk <= 2.0.0
 BuildArch:      noarch
 
