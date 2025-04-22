@@ -64,4 +64,14 @@
     <comment></comment>
     <requestid>1251492</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>14819189ff8eb093e598f17c879ee0cc</srcmd5>
+    <version>5.5.1</version>
+    <time>1745335668</time>
+    <user>anag_factory</user>
+    <comment>- ensure that qalculate-data is installed as otherwise the program
+  complains about missing datafiles and even fails to start
+</comment>
+    <requestid>1271116</requestid>
+  </revision>
 </revisionlist>

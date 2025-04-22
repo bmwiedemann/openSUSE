@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 21 00:10:02 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- ensure that qalculate-data is installed as otherwise the program
+  complains about missing datafiles and even fails to start
+
+-------------------------------------------------------------------
 Thu Mar  6 18:17:12 UTC 2025 - pallas wept <pallaswept@proton.me>
 
 - Update to 5.5.1 

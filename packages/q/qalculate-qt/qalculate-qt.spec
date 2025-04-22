@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(libqalculate) >= %{version}
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires:       libqalculate23 >= %{version}
+Requires:       qalculate-data >= %{version}
 
 %description
 Qalculate! is a multi-purpose cross-platform desktop calculator. It is
