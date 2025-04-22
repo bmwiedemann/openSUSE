@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 08:29:32 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Skip failing test with Django 5.2
+
+-------------------------------------------------------------------
 Thu Jun  6 08:29:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:

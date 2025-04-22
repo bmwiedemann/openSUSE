@@ -59,4 +59,12 @@
   * Added support for psycopg3 for runmailer_pc</comment>
     <requestid>1178930</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>d4e4bef26ffa08fd0ccedf4cfcc61dbe</srcmd5>
+    <version>2.3.2</version>
+    <time>1745335776</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271580</requestid>
+  </revision>
 </revisionlist>
