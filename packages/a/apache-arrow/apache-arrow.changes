@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Apr 21 14:34:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- to fix cmake-4 build problems, upgrade bundled mimalloc from
+  2.0.6 to 2.0.9 and add apache-arrow-19.0.1-mimalloc-version.patch;
+  mimalloc changes according to readme.md:
+  * 2.0.9:
+    - Supports building with asan and improved [Valgrind] support.
+    - Support abitrary large alignments, in particular for
+      `std::pmr` pools.
+    - Added C++ STL allocators attached to a specific heap.
+    - Heap walks now visit all object (including huge objects).
+    - Support Windows nano server containers.
+    - Various small bug fixes.
+  * 2.0.7:
+    - Initial support for [Valgrind] for leak testing and heap
+      block overflow detection.
+    - Initial support for attaching heaps to a speficic memory area.
+    - Fix `realloc` behavior for zero size blocks,
+    - Remove restriction to integral multiple of the alignment in
+      `alloc_align`.
+    - Improved aligned allocation performance.
+    - Reduced contention with many threads on few processors.
+    - VS2022 support.
+    - Support `pkg-config`.
+
+-------------------------------------------------------------------
 Fri Mar 28 08:47:10 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Re-enable flight, grpc has been fixed boo#1237422

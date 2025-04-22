@@ -35,7 +35,7 @@
 # See git submodule /cpp/submodules/parquet-testing pointing to the correct revision
 %define parquet_testing_commit c7cf1374cf284c0c73024cd1437becea75558bf8
 # See cpp/thirdparty/versions.txt, replace by BuildRequires: pkgconfig(mimalloc) as soon as gh#apache/arrow#42211 is resolved
-%define arrow_mimalloc_build_version v2.0.6
+%define arrow_mimalloc_build_version v2.0.9
 Name:           apache-arrow
 Version:        19.0.1
 Release:        0
@@ -48,6 +48,7 @@ Source0:        https://github.com/apache/arrow/archive/apache-arrow-%{version}.
 Source1:        https://github.com/apache/arrow-testing/archive/%{arrow_testing_commit}.tar.gz#/arrow-testing-%{version}.tar.gz
 Source2:        https://github.com/apache/parquet-testing/archive/%{parquet_testing_commit}.tar.gz#/parquet-testing-%{version}.tar.gz
 Source3:        https://github.com/microsoft/mimalloc/archive/%{arrow_mimalloc_build_version}.tar.gz#/mimalloc-%{arrow_mimalloc_build_version}.tar.gz
+Patch100:       apache-arrow-19.0.1-mimalloc-version.patch
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes

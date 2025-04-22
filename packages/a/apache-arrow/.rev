@@ -586,4 +586,34 @@ apache-arrow is being used more and more by python numeric packages like pandas 
 </comment>
     <requestid>1264972</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>4fea3bebca184932a9ab59349dbabc64</srcmd5>
+    <version>19.0.1</version>
+    <time>1745335684</time>
+    <user>anag_factory</user>
+    <comment>- to fix cmake-4 build problems, upgrade bundled mimalloc from
+  2.0.6 to 2.0.9 and add apache-arrow-19.0.1-mimalloc-version.patch;
+  mimalloc changes according to readme.md:
+  * 2.0.9:
+    - Supports building with asan and improved [Valgrind] support.
+    - Support abitrary large alignments, in particular for
+      `std::pmr` pools.
+    - Added C++ STL allocators attached to a specific heap.
+    - Heap walks now visit all object (including huge objects).
+    - Support Windows nano server containers.
+    - Various small bug fixes.
+  * 2.0.7:
+    - Initial support for [Valgrind] for leak testing and heap
+      block overflow detection.
+    - Initial support for attaching heaps to a speficic memory area.
+    - Fix `realloc` behavior for zero size blocks,
+    - Remove restriction to integral multiple of the alignment in
+      `alloc_align`.
+    - Improved aligned allocation performance.
+    - Reduced contention with many threads on few processors.
+    - VS2022 support.
+    - Support `pkg-config`.
+</comment>
+    <requestid>1271193</requestid>
+  </revision>
 </revisionlist>
