@@ -7,4 +7,12 @@
     <comment>This is a dependency for obs://Education/Plot package</comment>
     <requestid>1132691</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a13fb4e26dd1ce079f24a9fa603b2a43</srcmd5>
+    <version>2.7.1</version>
+    <time>1745335707</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271223</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyGLM
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Version:        2.7.1
 Release:        0
 Summary:        OpenGL Mathematics library for Python
 # Bundled GLM is MIT, everything else is Zlib
-License:        Zlib AND MIT
+License:        MIT AND Zlib
 URL:            https://github.com/Zuzu-Typ/PyGLM
 # Tests missing from PyPI sources, use service file to include tests and glm submodule
 Source:         %{modname}-%{version}.tar.xz
@@ -61,6 +61,6 @@ export CFLAGS="%{optflags}"
 %license COPYING LICENSE
 %{python_sitearch}/glm.*.so
 %{python_sitearch}/glm-stubs/
-%{python_sitearch}/PyGLM-%{version}.dist-info
+%{python_sitearch}/[Pp]y[Gg][Ll][Mm]-%{version}.dist-info
 
 %changelog
