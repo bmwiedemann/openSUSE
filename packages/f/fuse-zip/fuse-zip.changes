@@ -1,0 +1,116 @@
+-------------------------------------------------------------------
+Sun Apr 20 20:22:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.7.2+git.1733961742.3715770:
+  * README: change character case in headings, add reference to INSTALL file
+  * fix setting read-only flag in DOS permissions field, add tests for permissions
+  * fix st_nlink for directories
+  * fix st_nlink for hardlinked files
+  * add more license headers
+  * add links to distributions and known uses
+  * add editorconfig file
+  * update tests for FUSE 2.9.9
+  * update wiki suprepo
+  * version 0.7.2
+
+-------------------------------------------------------------------
+Fri Apr  6 12:06:27 UTC 2018 - lazy.kent@opensuse.org
+
+- Update to 0.4.5.
+  * Print error message and exit on nonexistent file in read-only
+    mode.
+  * Check return value of chdir().
+  * Fixed errors found by static code analysis.
+- Add BuildRequires: pkgconfig(bzip2).
+- Changes in 0.4.3.
+  * License changed to GPLv3 or later.
+  * Support mknod() system call.
+  * Fixed out of bounds write on sparse file.
+  * Fixed timestamp and file attribute fields saving into archive.
+
+-------------------------------------------------------------------
+Wed Mar  2 13:46:10 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.4.2.
+  * Added mkdir -p to enable custom "prefix".
+  *  Properly handle ZIP_SOURCE_SUPPORTS call introduced in libzip
+     1.0.
+- Drop fuse-zip-Makefile-prefix.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Feb  3 10:41:43 UTC 2016 - lazy.kent@opensuse.org
+
+- Update to 0.4.1.
+  * Fixed problem with subdir module support.
+  * Applied Makefile conventions from GNU Coding Standards.
+- Drop fuse-zip-0.2.13-nostrip.patch: fixed upstream.
+- Add fuse-zip-Makefile-prefix.patch: add mkdir -p to enable custom
+  "prefix" location when running make install.
+- Fix build dependensies: pkgconfig(libzip) >= 0.11.2.
+- Update the URL tag.
+
+-------------------------------------------------------------------
+Wed Jan 15 19:04:25 UTC 2014 - lazy.kent@opensuse.org
+
+- Update to 0.4.0.
+  * Symbolic links.
+  * UNIX file permissions and owner info.
+  * DOS file attributes.
+  * Creation/access time.
+
+-------------------------------------------------------------------
+Mon Dec  9 18:14:04 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.3.2.
+  * No changes for Linux users.
+
+-------------------------------------------------------------------
+Sat Dec  7 17:32:12 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.3.1.
+  * Fixed compilation problems.
+  * Fixed memory reservation.
+- Drop fuse-zip-0.3.0-linker.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Sat Jun 29 06:35:24 UTC 2013 - lazy.kent@opensuse.org
+
+- Update to 0.3.0.
+  * ZIP64 support.
+  * Relative and absolute paths support.
+- BuildRequires libzip >= 0.11 (Zip64 support).
+- Drop fuse-zip-0.2.13-libzip.patch and
+  fuse-zip-0.2.13-libzip-0.10.patch (fixed upstream).
+- Use pkgconfig(*) as build dependencies.
+
+-------------------------------------------------------------------
+Wed Aug 29 16:17:12 UTC 2012 - lazy.kent@opensuse.org
+
+- Add fuse-zip-0.2.13-libzip-0.10.patch: fix compilation against
+  libzip-0.10.
+
+-------------------------------------------------------------------
+Mon Nov  7 10:12:23 UTC 2011 - lazy.kent@opensuse.org
+
+- Corrected License tag.
+- Use full URL as a source.
+- spec clean up.
+
+-------------------------------------------------------------------
+Mon Apr  4 11:00:37 UTC 2011 - lazy.kent@opensuse.org
+
+- patch to locate libzip header file
+- added LICENSE to docs
+
+-------------------------------------------------------------------
+Mon Dec 27 02:17:45 UTC 2010 - lazy.kent@opensuse.org
+
+- update to 0.2.13
+- nostrip patch refresh
+- patch to fix "as-needed" issue
+
+-------------------------------------------------------------------
+Sun Sep 12 14:09:17 UTC 2010 - lazy.kent.suse@gmail.com
+
+- initial package created - 0.2.12
+

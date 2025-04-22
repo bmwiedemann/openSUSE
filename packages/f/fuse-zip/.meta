@@ -1,0 +1,11 @@
+<package name="fuse-zip" project="openSUSE:Factory">
+  <title>File System to Navigate, Extract, Create and Modify ZIP Archives</title>
+  <description>With fuse-zip you really can work with ZIP archives as real directories. Unlike
+KIO or Gnome VFS, it can be used in any application without modifications.
+Unlike other FUSE filesystems, only fuse-zip provides write support to ZIP
+archives. Also, fuse-zip is faster that all known implementations on large
+archives with many files.
+
+</description>
+  <url>http://code.google.com/p/fuse-zip/</url>
+</package>
