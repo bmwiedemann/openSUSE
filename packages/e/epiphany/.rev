@@ -1813,4 +1813,28 @@ New stable rel</comment>
     <comment>New stable branch release (forwarded request 1252803 from iznogood)</comment>
     <requestid>1252845</requestid>
   </revision>
+  <revision rev="217" vrev="1">
+    <srcmd5>ebf9727f27b317f244c1510ad14f6114</srcmd5>
+    <version>48.1</version>
+    <time>1745335884</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + This release notably fixes CVE-2025-3839.
+  + Bugs fixed:
+    - Crash when trying to select download location
+    - Crash in escape_csv_field() when exporting passwords
+    - Adding WhatsApp as a web app crashes
+    - Pressing Escape key in addressbar resets the cursor to
+      beginning of the widget
+    - Epiphay shouldn't show the privacy dialog in incognito mode
+    - (CVE-2025-3839) Require user interaction before opening URL
+      in external application
+    - Code cleanup
+    - window: fix crash when force closing window without session
+    - Several fixes for password export
+    - Remove Granite support from Tech Preview and Canary
+    - find-toolbar: fix crash on load-changed
+  + Updated translations. (forwarded request 1271858 from iznogood)</comment>
+    <requestid>1271912</requestid>
+  </revision>
 </revisionlist>
