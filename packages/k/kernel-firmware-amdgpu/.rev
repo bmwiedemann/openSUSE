@@ -101,4 +101,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update dcn 3.1.4 firmware to 8.0.78.0</comment>
     <requestid>1266050</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>aa2feb3f1b551c26bc067ab76804e111</srcmd5>
+    <version>20250419</version>
+    <time>1745335532</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250419 (git commit 5aa42075d00c):
+  * amdgpu: update vcn 4.0.5 firmware
+  * amdgpu: update psp 14.0.0 firmware
+  * amdgpu: update vcn 4.0.2 firmware
+  * amdgpu: update psp 13.0.4 firmware
+  * amdgpu: update gc 11.0.1 firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update psp 14.0.4 firmware
+  * amdgpu: update gc 11.5.2 firmware
+  * amdgpu: update vcn 5.0.0 firmware
+  * amdgpu: update smu 14.0.3 firmware
+  * amdgpu: update psp 14.0.3 firmware
+  * amdgpu: update gc 12.0.1 firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update smu 14.0.2 firmware
+  * amdgpu: update psp 14.0.2 firmware
+  * amdgpu: update gc 12.0.0 firmware
+  * amdgpu: update vega20 firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update vega12 firmware
+  * amdgpu: update vcn 4.0.4 firmware
+  * amdgpu: update smu 13.0.7 firmware
+  * amdgpu: update psp 13.0.7 firmware
+  * amdgpu: update gc 11.0.2 firmware
+  * amdgpu: update vega10 firmware
+  * amdgpu: update psp 13.0.5 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update psp 13.0.10 firmware
+  * amdgpu: update gc 11.0.3 firmware</comment>
+    <requestid>1271050</requestid>
+  </revision>
 </revisionlist>
