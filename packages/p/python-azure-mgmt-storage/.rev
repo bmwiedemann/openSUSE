@@ -307,4 +307,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1250016 from glaubitz)</comment>
     <requestid>1250030</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c40a5ef7008e7961e45c0053d72003ff</srcmd5>
+    <version>22.2.0</version>
+    <time>1745337548</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 22.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1271332 from glaubitz)</comment>
+    <requestid>1271844</requestid>
+  </revision>
 </revisionlist>
