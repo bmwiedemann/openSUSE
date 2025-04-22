@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 22 04:11:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250420: 
+  * types: Fix comment
+  * vk: Properly initialize multi draw extension
+  * rsx: de-uglify buffer upload restructure
+  * Copy debug self elf properly (#17070)
+  * PPU Debugger/Memory: STDCX/STWCX breakpoints, make vm::_ref const
+  * rsx: Fix arm64 build
+  * rsx/vk: Retire the concept of heap being in "critical" state
+  * vk: Fix extension wrangling
+  * vk: Rework multi-heap health checks for performance
+  * vk: Rework heap checks to be explicit
+  * vk: Optimize heap check iterator
+  * rsx: Optimize static heap allocations
+  * vk: Use robin_hood for renderpass caches
+  * vk: Rework extension wrangling
+  * vk: Implement EXT_multi_draw support
+  * vk: Use garbage collector to handle buffer views
+  * Apr 18, 2025
+  * vk: Refactor the heap manager
+  * vk: Add automatic heap management
+  * PPU: Fix memory write breakpoints for 13 instructions
+  * Implement sys_spu_image_open_by_fd
+  * sys_spu: Fix sys_spu_image_open
+
+-------------------------------------------------------------------
 Thu Apr 17 20:33:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update fix-test-files.patch
