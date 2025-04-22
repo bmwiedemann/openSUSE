@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        10.4
+Version:        11.1.1
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only
@@ -32,23 +32,25 @@ Source0:        secrets-%{version}.tar.zst
 Patch0:         fix-test.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 0.64.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-PyKCS11
 BuildRequires:  python3-base >= 3.8.0
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 4.0.7.post1
+BuildRequires:  python3-pykeepass >= 4.1.1
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-yubico
 BuildRequires:  python3-validators
 BuildRequires:  python3-zxcvbn-rs-py
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.73.0
-BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66
-BuildRequires:  pkgconfig(gtk4) >= 4.5.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(glib-2.0) >= 2.73.1
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.66.0
+BuildRequires:  pkgconfig(gtk4) >= 4.15.3
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.52.0
 
 Requires:       opensc
 Requires:       python3-PyKCS11
