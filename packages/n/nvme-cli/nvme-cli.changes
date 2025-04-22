@@ -7,12 +7,12 @@ Mon Apr 14 09:34:18 UTC 2025 - Daniel Wagner <dwagner@suse.de>
   * nvme-print: print new fields of nvme_id_independent_id_ns
   * plugins/lm: Refine Sequence Indicator description and macro usage
   * plugins/solidigm: Updated SMART PLL Lock Loss counters field
-  * nvme-print: display fw-rev in list-subsys output
-  * nvme-print: display model in list-subsys output
+  * nvme-print: display fw-rev in list-subsys output (bsc#1240518)
+  * nvme-print: display model in list-subsys output (bsc#1240518)
   * nvme-cli: attach ns to local controller if none specified
   * Revert "nvme-print-json: display only verbose output"
   * nvme: fix to set nvme_io_args reftag value
-  * netapp-ontapdev: add subsysname to regular output
+  * netapp-ontapdev: add subsysname to regular output (bsc#1240518)
   * nvme-print: use allocation error string variable
   * plugins: add NVMe feature extension
   * nvme-print: add nvme_show_perror() variable number arguments
@@ -28,7 +28,7 @@ Mon Apr 14 09:34:18 UTC 2025 - Daniel Wagner <dwagner@suse.de>
   * plugins/solidigm: parse-telemetry-log aware of OCP2.5 binaries
   * sndk: Add documentation for Sandisk plugin commands
   * sandisk: Add sandisk plugin
-  * netapp-ontapdev: add subsysname to the verbose output
+  * netapp-ontapdev: add subsysname to the verbose output (bsc#1240518)
   * sed: add SED man pages
 
 -------------------------------------------------------------------
@@ -590,7 +590,7 @@ Fri Aug 02 08:27:05 UTC 2024 - Daniel Wager <daniel.wagner@suse.com>
   * fabrics: Always pass hostid and hostnqn (bsc#1226216)
   * plugins/ssstc: Replace __uint16_t with uint16_t
   * plugins/solidigm: Added log pages to vs-internal-logs
-  * sed: perform a tper revert after lsp revert
+  * sed: perform a tper revert after lsp revert (bsc#1240656)
   * plugins/nbft: Use default library logging
   * docs: Add missing OCP plugin docs to meson
   * ocp: Switch OCP plugin to use semantic versioning
