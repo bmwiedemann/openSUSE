@@ -26,6 +26,10 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
 Source0:        %{name}-%{version}.tar.zst
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32914.patch boo#1241164 mgorse@suse.com -- fix read out of buffer bounds under soup_multipart_new_from_message.
+Patch0:         libsoup-CVE-2025-32914.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32908.patch boo#1241223 mgorse@suse.com -- soup-server-http2: Check validity of the constructed connection URI.
+Patch1:         libsoup-CVE-2025-32908.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
@@ -140,7 +144,7 @@ mv %{buildroot}%{_datadir}/doc/%{name}-%{api_version} %{buildroot}%{_docdir}
 # Run the regression tests using GnuTLS NORMAL priority
 export G_TLS_GNUTLS_PRIORITY=NORMAL
 %ifarch s390x
-%meson_test -t 5
+%meson_test -t 5 || (%meson_test -t 5)
 %else
 %meson_test
 %endif

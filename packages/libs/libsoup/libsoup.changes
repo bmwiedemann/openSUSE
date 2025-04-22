@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 21 21:54:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add CVE fixes:
+  + libsoup-CVE-2025-32914.patch (boo#1241164 CVE-2025-32914)
+  + libsoup-CVE-2025-32908.patch (boo#1241223 CVE-2025-32908)
+
+-------------------------------------------------------------------
+Sun Apr  6 11:14:14 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rerun tests once for s390x should they fail, tests for this arch
+  is very flaky.
+
+-------------------------------------------------------------------
 Fri Mar 21 19:33:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.6.5:
