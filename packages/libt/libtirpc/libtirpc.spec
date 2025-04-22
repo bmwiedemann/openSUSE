@@ -26,6 +26,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         https://download.sourceforge.net/libtirpc/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM libtirpc-1.3.6-gcc15-part1.patch -- git.linux-nfs.org/?p=steved/libtirpc.git;a=patch;h=d473f1e
+Patch1:         libtirpc-1.3.6-gcc15-part1.patch
+# PATCH-FIX-UPSTREAM libtirpc-1.3.6-gcc15-part2.patch -- git.linux-nfs.org/?p=steved/libtirpc.git;a=patch;h=240ee6c
+Patch2:         libtirpc-1.3.6-gcc15-part2.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5)
 
