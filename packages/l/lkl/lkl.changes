@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 22 11:07:46 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 8e9e83c36b32
+- lkl: tests: handler lkl_init failures
+- lkl: remove string functions duplicate implementation
+- lkl: Remove use of CONFIG_NO_BOOTMEM
+- lkl: Remove use of CONFIG_HAVE_MEMBLOCK
+- lkl: Remove use of CONFIG_ARCH_NO_COHERENT_DMA_MMAP
+- lkl: Remove use of CONFIG_FLAT_NODE_MEM_MAP
+- lkl: Remove use of CONFIG_RWSEM_GENERIC_SPINLOCK
+- lkl: fix lklfuse.sh umount
+
+-------------------------------------------------------------------
 Tue Apr  8 06:26:57 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 823d4e3e26f

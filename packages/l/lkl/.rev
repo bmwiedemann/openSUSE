@@ -48,4 +48,20 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
     <comment></comment>
     <requestid>1267925</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>40bb8a659c5c1681160eab89adfd65f2</srcmd5>
+    <version>0.6.4+git.1b46d9f9178</version>
+    <time>1745337553</time>
+    <user>anag_factory</user>
+    <comment>- Merge opensuse-kernel/SLE15-SP6 8e9e83c36b32
+- lkl: tests: handler lkl_init failures
+- lkl: remove string functions duplicate implementation
+- lkl: Remove use of CONFIG_NO_BOOTMEM
+- lkl: Remove use of CONFIG_HAVE_MEMBLOCK
+- lkl: Remove use of CONFIG_ARCH_NO_COHERENT_DMA_MMAP
+- lkl: Remove use of CONFIG_FLAT_NODE_MEM_MAP
+- lkl: Remove use of CONFIG_RWSEM_GENERIC_SPINLOCK
+- lkl: fix lklfuse.sh umount (forwarded request 1271892 from dmdiss)</comment>
+    <requestid>1271893</requestid>
+  </revision>
 </revisionlist>
