@@ -409,4 +409,41 @@
 - version update to 2.7.7 [bsc#1226181][bsc#1226182]</comment>
     <requestid>1223669</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4d11659c7740aefca7035f4d9f03db2b</srcmd5>
+    <version>2.8.8</version>
+    <time>1745335816</time>
+    <user>anag_factory</user>
+    <comment>- fix keyring (https://github.com/composer/composer/issues/12009)
+- modified sources
+  % php-composer2.keyring
+
+- Update to version 2.8.8
+  - Fixed json schema issues with version validation
+  - Fixed issues running on 32bit machines
+- Update to version 2.8.7
+  - Added COMPOSER_MAX_PARALLEL_PROCESS env var to control max amount of parallel processes Composer will start
+  - Added zstd/brotli presence in diagnose command output
+  - Fixed error handler to avoid spamming deprecation notices
+  - Fixed InstalledVersions returning duplicate data at Composer runtime
+  - Fixed handling of --with ... constraints to make them apply to packages replaced a package with a different name
+  - Fixed deprecation warnings showing up in IDE code inspections within the vendor dir
+  - Fixed a few json schema completeness issues
+  - Fixed issue autoloading files with a .phar inside the path
+- Update to version 2.8.6
+  - Added COMPOSER_WITH_DEPENDENCIES and COMPOSER_WITH_ALL_DEPENDENCIES env vars to enable the --with[-all]-dependencies flags
+  - Added COMPOSER_SKIP_SCRIPTS env var to tell Composer to skip certain script handlers by script names (comma separated)
+  - Fixed handling of backslash in folder names when creating archives
+  - Fixed detection of containerd for containers to avoid warning about root usage
+- Update to version 2.8.5
+  - Fixed InstalledVersions regression from 2.8.4 when reload() is used
+  - Fixed psr-0/psr-4 rules having unstable order in vendor/composer/autoload*.php
+  - Fixed a few warnings happening incorrectly in edge cases
+- Update to version 2.8.4
+  - Fixed exit code of the audit command not being meaningful (now 1 for vulnerabilities and 2 for abandoned, 3 for both)
+  - Fixed issue on plugin upgrade when it defines multiple classes
+  - Fixed duplicate errors appearing in the output depending on php settings
+  - Fixed InstalledVersions returning duplicate data in some instances</comment>
+    <requestid>1271833</requestid>
+  </revision>
 </revisionlist>

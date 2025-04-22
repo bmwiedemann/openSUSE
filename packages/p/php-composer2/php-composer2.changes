@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Apr 22 10:31:49 UTC 2025 - pgajdos@suse.com
+
+- fix keyring (https://github.com/composer/composer/issues/12009)
+- modified sources
+  % php-composer2.keyring
+
+-------------------------------------------------------------------
+Thu Apr 17 08:07:49 UTC 2025 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.8.8
+  - Fixed json schema issues with version validation
+  - Fixed issues running on 32bit machines
+- Update to version 2.8.7
+  - Added COMPOSER_MAX_PARALLEL_PROCESS env var to control max amount of parallel processes Composer will start
+  - Added zstd/brotli presence in diagnose command output
+  - Fixed error handler to avoid spamming deprecation notices
+  - Fixed InstalledVersions returning duplicate data at Composer runtime
+  - Fixed handling of --with ... constraints to make them apply to packages replaced a package with a different name
+  - Fixed deprecation warnings showing up in IDE code inspections within the vendor dir
+  - Fixed a few json schema completeness issues
+  - Fixed issue autoloading files with a .phar inside the path
+- Update to version 2.8.6
+  - Added COMPOSER_WITH_DEPENDENCIES and COMPOSER_WITH_ALL_DEPENDENCIES env vars to enable the --with[-all]-dependencies flags
+  - Added COMPOSER_SKIP_SCRIPTS env var to tell Composer to skip certain script handlers by script names (comma separated)
+  - Fixed handling of backslash in folder names when creating archives
+  - Fixed detection of containerd for containers to avoid warning about root usage
+- Update to version 2.8.5
+  - Fixed InstalledVersions regression from 2.8.4 when reload() is used
+  - Fixed psr-0/psr-4 rules having unstable order in vendor/composer/autoload*.php
+  - Fixed a few warnings happening incorrectly in edge cases
+- Update to version 2.8.4
+  - Fixed exit code of the audit command not being meaningful (now 1 for vulnerabilities and 2 for abandoned, 3 for both)
+  - Fixed issue on plugin upgrade when it defines multiple classes
+  - Fixed duplicate errors appearing in the output depending on php settings
+  - Fixed InstalledVersions returning duplicate data in some instances
+  - Fixed installed.php sorting to be deterministic
+  - Fixed bump-after-update failing when using inline constraints
+  - Fixed create-project command to now disable symlinking when used with a path repo as argument
+  - Fixed validate --no-check-publish to hide publish errors entirely as they are irrelevant
+  - Fixed audit command returning a failing code when composer audit fails as this should not trigger build failures, but running audit as standard part of your build is probably a terrible idea anyway
+  - Fixed curl usage to disable multiplexing on broken versions when proxies are in use
+- Update to version 2.8.3
+  - Fixed react/promise requirement to allow 2.x installs again
+  - Fixed some issues when lock:false is set in require and bump commands
+- Update to version 2.8.2
+  - Fixed crash while suggesting providers if they have no description
+  - Fixed issues creating lock files violating the schema in some circumstances
+  - Fixed create-project regression in 2.8.1 when using path repos with relative paths
+  - Fixed ctrl-C aborts not working inside text prompts
+  - Fixed git failing silently when git cannot read a repo due to ownership violations
+  - Fixed handling of signals in non-PHP binaries run via proxies
+- Update to version 2.8.1
+  - Fixed init command regression when no license is provided
+  - Fixed --strict-ambiguous flag handling whereas it sometimes did not report all issues
+  - Fixed create-project to inherit the target folder's permissions for installed project files
+  - Fixed a few cases where the prompt for using a parent dir's composer.json fails to work correctly
+- Update to version 2.8.0
+  - BC Warning: Fixed https_proxy env var falling back to http_proxy's value. The fallback and warning have now been removed per the 2.7.3 release notes
+  - Added --patch-only flag to the update command to restrict updates to patch versions and make an update of all deps safer
+  - Added --abandoned flag to the audit command to configure how abandoned packages should be treated, overriding the audit.abandoned config setting
+  - Added --ignore-severity flag to the audit command to ignore one or more advisory severities
+  - Added --bump-after-update flag to the update command to run bump after the update is done
+  - Added a way to control which scripts receive additional CLI arguments and where they appear in the command, see the docs
+  - Added allow-missing-requirements config setting to skip the error when the lock file is not fulfilling the composer.json's dependencies
+  - Added a JSON schema for the composer.lock file
+  - Added better support for Bitbucket app passwords when cloning repos / installing from source
+  - Added --type flag to filter packages by type(s) in the reinstall command
+  - Added --strict-ambiguous flag to the dump-autoload command to make it return with an error code if duplicate classes are found
+  - Added warning in dump-autoload when vendor files have been deleted
+  - Added warnings for each missing platform package when running create-project to avoid having to run it again and again
+  - Added sorting of packages in allow-plugins when sort-packages is enabled
+  - Added suggestion of provider packages / polyfills when an ext or lib package is missing
+  - Improved interactive package update selection by first outputting all packages and their possible updates
+  - Improved dependency resolution failure output by sorting the output in a deterministic and (often) more logical way
+  - Fixed PHP 8.4 deprecation warnings about E_STRICT
+  - Fixed init command to validate the given license identifier
+  - Fixed version guessing to be more deterministic on feature branches if it appears that it could come from either of two mainline branches
+  - Fixed COMPOSER_ROOT_VERSION env var handling to treat 1.2 the same as 1.2.x-dev and not 1.2.0
+  - Fixed require command skipping new stability flags from the lock file, causing invalid lock file diffs
+  - Fixed php://stdin potentially being open several times when running Composer programmatically
+  - Fixed handling of platform packages in why-not command and partial updates
+- Added source signature and keyring
+
+-------------------------------------------------------------------
 Tue Nov 12 12:43:04 UTC 2024 - pgajdos@suse.com
 
 - version update to 2.7.9

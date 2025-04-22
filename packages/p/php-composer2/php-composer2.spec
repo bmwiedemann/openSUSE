@@ -1,7 +1,7 @@
 #
 # spec file for package php-composer2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,17 @@
 
 
 Name:           php-composer2
-Version:        2.7.9
+Version:        2.8.8
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://getcomposer.org/
-Source0:        https://getcomposer.org/download/%{version}/composer.phar
-Source1:        https://github.com/composer/composer/raw/%{version}/LICENSE
+Source0:        https://github.com/composer/composer/releases/download/%{version}/composer.phar
+Source1:        https://github.com/composer/composer/releases/download/%{version}/composer.phar.asc
+Source2:        https://github.com/composer/composer/raw/%{version}/LICENSE
+# 161DFBE342889F01DDAC4E61CBB3D576F2A0946F
+Source3:       %{name}.keyring
 BuildRequires:  php-phar
 Requires:       php >= 7.2.5
 Requires:       php-curl
@@ -48,7 +51,7 @@ and libraries.
 
 %prep
 %setup -q -c -T
-cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 
