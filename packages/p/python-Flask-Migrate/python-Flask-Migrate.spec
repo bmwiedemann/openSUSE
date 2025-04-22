@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Migrate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,6 @@ as command line arguments for Flask-Script.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/flask_migrate
-%{python_sitelib}/Flask_Migrate-%{version}.dist-info
+%{python_sitelib}/[Ff]lask_[Mm]igrate-%{version}.dist-info
 
 %changelog

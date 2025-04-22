@@ -148,4 +148,12 @@
   * Add `--purge` flag to the `stamp` command #540 (commit)</comment>
     <requestid>1161524</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>b4ee7cf1c4463f08e6b3a676562751cf</srcmd5>
+    <version>4.0.7</version>
+    <time>1745335725</time>
+    <user>anag_factory</user>
+    <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
+    <requestid>1271230</requestid>
+  </revision>
 </revisionlist>
