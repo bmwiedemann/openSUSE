@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyX
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -74,6 +74,6 @@ chmod -x %{buildroot}%{$python_sitelib}/pyx/data/lfs/createlfs.py
 %license LICENSE
 %doc AUTHORS CHANGES README.md
 %{python_sitelib}/pyx/
-%{python_sitelib}/PyX-%{version}*-info/
+%{python_sitelib}/[Pp]y[Xx]-%{version}.dist-info
 
 %changelog
