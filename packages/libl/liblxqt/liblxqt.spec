@@ -17,7 +17,7 @@
 
 
 Name:           liblxqt
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Core utility library for LXQt
 License:        LGPL-2.1-or-later

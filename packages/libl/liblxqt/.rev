@@ -401,4 +401,12 @@
   * Update some minimum required versions (#343) (forwarded request 1221983 from AndnoVember)</comment>
     <requestid>1223243</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>87870f982f4dbc246bc48136dbcfbbc2</srcmd5>
+    <version>2.2.0</version>
+    <time>1745335573</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270836</requestid>
+  </revision>
 </revisionlist>
