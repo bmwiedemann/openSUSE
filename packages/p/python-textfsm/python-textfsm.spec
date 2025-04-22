@@ -1,7 +1,7 @@
 #
 # spec file for package python-textfsm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textfsm
-Version:        1.1.3
+Version:        2.1.0
 Release:        0
 Summary:        Python module for parsing semi-structured text into python tables
 License:        Apache-2.0
 URL:            https://github.com/google/textfsm
 Source:         https://github.com/google/textfsm/archive/v%{version}.tar.gz#/textfsm-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE https://github.com/google/textfsm/issues/118
-Patch0:         correct-version.patch
-# https://github.com/google/textfsm/commit/c8843d69daa9b565fea99a0283ad13c324d5b563
-Patch1:         python-textfsm-no-python2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

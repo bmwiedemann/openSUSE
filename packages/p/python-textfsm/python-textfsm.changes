@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 17 06:48:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.0
+  * Improved routine for terminal dimensions.
+  * Improve clarity or variable names
+  * Remove TerminalSize function .... no longer needed
+  * Refactor pager class
+- Update to version 2.0.0
+  * Makes use of shutil library for terminal operations.
+- Drop not longer needed patches:
+  * correct-version.patch
+  * python-textfsm-no-python2.patch
+
+-------------------------------------------------------------------
 Mon Jan 29 10:03:54 UTC 2024 - pgajdos@suse.com
 
 - do not require six
