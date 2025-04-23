@@ -471,4 +471,12 @@
     <comment></comment>
     <requestid>1267721</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>5d8f381b246ccdd08cfdebcdad227929</srcmd5>
+    <version>20250310</version>
+    <time>1745414284</time>
+    <user>anag_factory</user>
+    <comment>- Switch to Loupe and Papers for TW. (forwarded request 1270585 from fcrozat)</comment>
+    <requestid>1271335</requestid>
+  </revision>
 </revisionlist>

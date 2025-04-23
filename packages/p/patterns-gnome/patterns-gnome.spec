@@ -40,8 +40,8 @@ This particular package contains all the Gnome patterns.
 
 
 
-################################################################################
 
+################################################################################
 %package gnome
 %pattern_graphicalenvironments
 Summary:        GNOME Desktop Environment (Wayland)
@@ -148,7 +148,7 @@ Recommends:     pattern() = x11_yast
 # no longer need to hard require cheese for g-c-c user panel
 Recommends:     cheese
 Recommends:     dconf-editor
-%if 0%{?suse_version} == 01600
+%if 0%{?suse_version} >= 01600
 Recommends:     gnome-papers
 %else
 Recommends:     evince
@@ -486,7 +486,7 @@ Requires:       pattern() = gnome_basis
 #
 # Official upstream
 #
-Recommends:     eog
+Recommends:     loupe
 #
 # Packages that really make sense
 #
