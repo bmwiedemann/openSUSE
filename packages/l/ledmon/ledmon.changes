@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 02:47:04 UTC 2025 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Add a patch to fix string2ibpi function (bsc#1241207):
+  * 260.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 03:33:30 UTC 2024 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Update to version 1.1.0:

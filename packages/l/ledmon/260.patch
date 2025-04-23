@@ -1,0 +1,32 @@
+From 5c5b04e6c2068571c6bd19adfdcda12d618f9edc Mon Sep 17 00:00:00 2001
+From: Blazej Kucman <blazej.kucman@intel.com>
+Date: Wed, 16 Apr 2025 12:26:38 +0200
+Subject: [PATCH] utils: Fix string2ibpi function
+
+string2ibpi does not compare strings correctly, the function uses strncmp,
+which in case strings of different lengths, may return incorrect value
+if substrings of given max length are identical. In this function whole
+strings must be identical.
+
+Fix is to change strncmp to strcmp.
+
+Fixes intel/ledmon#259
+Fixes: 94818457f615 ("Add struct for mapping ibpi statuses to strings. (#211)")
+Signed-off-by: Blazej Kucman <blazej.kucman@intel.com>
+---
+ src/lib/utils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/lib/utils.c b/src/lib/utils.c
+index bad35eb4..2fe0f764 100644
+--- a/src/lib/utils.c
++++ b/src/lib/utils.c
+@@ -765,7 +765,7 @@ enum led_ibpi_pattern string2ibpi(const char *name)
+ 		if (!input_name)
+ 			continue;
+ 
+-		if (strncmp(input_name, name, strlen(input_name)) == 0)
++		if (strcmp(input_name, name) == 0)
+ 			return ipbi_names[i].ibpi;
+ 	}
+ 
