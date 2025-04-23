@@ -37,4 +37,15 @@
   + Multiple coverity fixes (forwarded request 1253862 from iznogood)</comment>
     <requestid>1253866</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a08991aafbd8067f5bb70e5a3bd22ae5</srcmd5>
+    <version>3.9.2</version>
+    <time>1745414285</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.9.2:
+  + Fix installing pre-generated documentation in tarballs
+  + Performance improvements in handling parser errors
+  + Fixes for issues reported by OSS Fuzz (forwarded request 1270938 from iznogood)</comment>
+    <requestid>1271338</requestid>
+  </revision>
 </revisionlist>
