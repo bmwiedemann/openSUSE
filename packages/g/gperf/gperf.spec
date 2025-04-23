@@ -18,7 +18,7 @@
 
 
 Name:           gperf
-Version:        3.2.1
+Version:        3.3
 Release:        0
 Summary:        A Compiler Tool for Generating Perfect Hash Functions
 License:        GPL-3.0-or-later
@@ -27,7 +27,6 @@ URL:            https://gnu.org/software/gperf/
 Source0:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/pub/gnu/gperf/gperf-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=1871#/%{name}.keyring
-Patch0:         testsuite-race.patch
 BuildRequires:  c++_compiler
 
 %description

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 20 14:07:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.3:
+  * Speedup: gperf is now between 2x and 2.5x faster
+- drop testsuite-race.patch, seems no longer needed
+
+-------------------------------------------------------------------
 Sun Apr 13 17:28:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to version 3.2.1:
