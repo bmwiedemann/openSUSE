@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 22 08:22:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.9.13
+  * Drop support for Django 3.x and 4.1
+  * Add support for Django 5.2
+
+-------------------------------------------------------------------
 Fri Aug 30 10:26:30 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.9.12

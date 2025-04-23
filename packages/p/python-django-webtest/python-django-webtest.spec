@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-webtest
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-webtest
-Version:        1.9.12
+Version:        1.9.13
 Release:        0
 Summary:        Django integration for WebTest
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/django-webtest/django-webtest
 Source:         https://files.pythonhosted.org/packages/source/d/django-webtest/django_webtest-%{version}.tar.gz
-BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module Django >= 4.2}
 BuildRequires:  %{python_module WebTest >= 1.3.3}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django
+Requires:       python-Django >= 4.2
 Requires:       python-WebTest >= 1.3.3
 %python_subpackages
 
