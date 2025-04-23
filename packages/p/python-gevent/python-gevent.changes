@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 22 08:44:56 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Handle BrokenPipeError in src/gevent/ssl.py [bsc#1241037]
+  * Upstream PR: https://github.com/gevent/gevent/pull/2103
+  * Add gevent-openssl35-test-fix.patch
+
+-------------------------------------------------------------------
 Wed Oct 23 11:07:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 24.10.3

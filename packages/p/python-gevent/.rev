@@ -804,4 +804,12 @@
   - Drop gh-2031-cython-workaround.patch, merged upstream</comment>
     <requestid>1217397</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>601b413f14c62496ab447480f4c0a405</srcmd5>
+    <version>24.10.3</version>
+    <time>1745414300</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271903</requestid>
+  </revision>
 </revisionlist>

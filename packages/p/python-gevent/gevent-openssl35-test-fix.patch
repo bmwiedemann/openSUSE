@@ -1,0 +1,27 @@
+From 366178299fe8d85b34e5f27da505e807470cfae4 Mon Sep 17 00:00:00 2001
+From: Pedro Monreal <pmgdeb@gmail.com>
+Date: Tue, 22 Apr 2025 15:32:21 +0200
+Subject: [PATCH] Deal with BrokenPipeError since openssl 3.4.x. Follows from
+ gh-127257 and gh-115627.
+
+---
+ src/gevent/ssl.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/gevent/ssl.py b/src/gevent/ssl.py
+index a2cd5ca4c..55831e050 100644
+--- a/src/gevent/ssl.py
++++ b/src/gevent/ssl.py
+@@ -451,6 +451,12 @@ def read(self, nbytes=2014, buffer=None):
+                 if self.suppress_ragged_eofs:
+                     return b'' if buffer is None else bytes_read
+                 raise
++            except BrokenPipeError:
++                # Deal with BrokenPipeError from openssl 3.4.x and up
++                # Follows from gh-127257 and gh-115627
++                if self.suppress_ragged_eofs:
++                    return b'' if buffer is None else bytes_read
++                raise
+             except SSLError as ex:
+                 # All the other SSLxxxxxError classes extend SSLError,
+                 # so catch it last.

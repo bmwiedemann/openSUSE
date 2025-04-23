@@ -1,7 +1,7 @@
 #
 # spec file for package python-gevent
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Source0:        https://github.com/gevent/gevent/archive/%{version}.tar.gz#/geve
 Source100:      %{name}-rpmlintrc
 # PATCH-FEATURE-OPENSUSE gevent-opensuse-nocolor-tests.patch code@bnavigator.de -- Avoid colorization of test output in obs runners
 Patch2:         gevent-opensuse-nocolor-tests.patch
+# PATCH-FEATURE-OPENSUSE gevent-openssl35-test-fix.patch pmonreal@suse.com -- Handle BrokenPipeError
+Patch3:         gevent-openssl35-test-fix.patch
 BuildRequires:  %{python_module Cython >= 3.0.2}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
