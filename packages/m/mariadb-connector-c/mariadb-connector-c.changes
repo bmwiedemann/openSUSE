@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 22 17:58:02 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 3.4.5:
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-5-release-notes/
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-4-release-notes/
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-3-release-notes/
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-2-release-notes/
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-1-release-notes/
+  * https://mariadb.com/kb/en/mariadb-connector-c-3-4-0-release-notes/
+- Refresh mariadb-connector-c-2.3.1_unresolved_symbols.patch
+
+-------------------------------------------------------------------
 Wed Feb  5 14:11:15 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 -  Update to 3.3.13:
