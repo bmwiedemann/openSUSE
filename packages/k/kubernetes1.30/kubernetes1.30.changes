@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:07:09 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.30.12:
+  * Fix race for sending errors in watch
+  * fix handle terminating pvc when kubelet rebuild dsw
+  * add e2e test to reproduce unexpected unmount after kubelet is restarted
+  * do not install handler for /metrics/slis using sync.Once
+
+-------------------------------------------------------------------
 Tue Mar 25 12:59:18 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643                                     
