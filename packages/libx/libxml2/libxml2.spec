@@ -26,7 +26,7 @@
 
 %{?sle15allpythons}
 Name:           libxml2%{?dash}%{flavor}
-Version:        2.13.7
+Version:        2.13.8
 Release:        0
 License:        MIT
 Summary:        A Library to Manipulate XML Files

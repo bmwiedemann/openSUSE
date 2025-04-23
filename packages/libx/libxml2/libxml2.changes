@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 17 17:14:42 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.13.8:
+  + Security:
+    - [CVE-2025-32415] schemas: Fix heap buffer overflow in
+      xmlSchemaIDCFillNodeTables.
+    - [CVE-2025-32414] python: Read at most len/4 characters.
+- bug references: [bsc#1241453], [bsc#1241551]
+
+-------------------------------------------------------------------
 Fri Mar 28 18:28:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.13.7:

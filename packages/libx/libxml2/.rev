@@ -1223,4 +1223,17 @@
     - parser: Fix parsing of DTD content (forwarded request 1265279 from iznogood)</comment>
     <requestid>1265700</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>5334710e09bd989a7accb424d2a98b98</srcmd5>
+    <version>2.13.8</version>
+    <time>1745422004</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.13.8:
+  + Security:
+    - [CVE-2025-32415] schemas: Fix heap buffer overflow in
+      xmlSchemaIDCFillNodeTables.
+    - [CVE-2025-32414] python: Read at most len/4 characters.
+- bug references: [bsc#1241453], [bsc#1241551]</comment>
+    <requestid>1271897</requestid>
+  </revision>
 </revisionlist>
