@@ -284,4 +284,40 @@
 - Extend storage model schema with LVM (gh#agama-project/agama#2089).</comment>
     <requestid>1256465</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>0dc2189b7969e35269c2e2ae11a312e2</srcmd5>
+    <version>0</version>
+    <time>1745426384</time>
+    <user>anag_factory</user>
+    <comment>- Version 14
+
+- CLI: wait a bit between selecting the product to install and
+  registering it so the Web UI has enough time to process all
+  events (gh#agama-project/agama#2274)
+
+- Allow to log in into multiple systems (gh#agama-project/agama#2261).
+- Do not interactively ask for accepting insecure connections.
+
+- Report and emit changes to the connections states. (gh#agama-project/agama#2247).
+- Do not write wireless security settings when they are not used.
+
+- Add missing help to finish command (gh#agama-project/agama#2272).
+
+- Replace --api option by --host (gh#agama-project/agama#2271).
+
+- Prevent agama-web-server from getting stuck in the POST
+  /api/profile/autoyast calls (gh#agama-project/agama#2259).
+- Temporarily disable AutoYaST profiles fetch errors.
+
+- Allow to specify extra kernel parameters in profile
+  (jsc#PED-10810)
+
+- Made `--api URL` work with `agama profile`
+  (gh#agama-project/agama#2103)
+  - Added /api/profile on the backend
+  - JSON validation error are more readable now
+  - Error messages do not start with &quot;Anyhow(...)&quot;
+  - Backend errors include causes</comment>
+    <requestid>1272124</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Tue Apr 22 14:14:52 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 14
+
+-------------------------------------------------------------------
+Tue Apr 22 11:16:29 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- CLI: wait a bit between selecting the product to install and
+  registering it so the Web UI has enough time to process all
+  events (gh#agama-project/agama#2274)
+
+-------------------------------------------------------------------
+Mon Apr 21 13:42:13 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Allow to log in into multiple systems (gh#agama-project/agama#2261).
+- Do not interactively ask for accepting insecure connections.
+
+-------------------------------------------------------------------
+Mon Apr 21 12:46:07 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Report and emit changes to the connections states. (gh#agama-project/agama#2247).
+- Do not write wireless security settings when they are not used.
+
+-------------------------------------------------------------------
+Wed Apr 16 10:45:33 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Add missing help to finish command (gh#agama-project/agama#2272).
+
+-------------------------------------------------------------------
+Wed Apr 16 05:40:39 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Replace --api option by --host (gh#agama-project/agama#2271).
+
+-------------------------------------------------------------------
+Fri Apr 11 06:53:04 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Prevent agama-web-server from getting stuck in the POST
+  /api/profile/autoyast calls (gh#agama-project/agama#2259).
+- Temporarily disable AutoYaST profiles fetch errors.
+
+-------------------------------------------------------------------
+Thu Apr 10 20:24:06 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to specify extra kernel parameters in profile
+  (jsc#PED-10810)
+
+-------------------------------------------------------------------
+Wed Apr  9 09:06:18 UTC 2025 - Martin Vidner <mvidner@suse.com>
+
+- Made `--api URL` work with `agama profile`
+  (gh#agama-project/agama#2103)
+  - Added /api/profile on the backend
+  - JSON validation error are more readable now
+  - Error messages do not start with "Anyhow(...)"
+  - Backend errors include causes
+
+-------------------------------------------------------------------
+Wed Apr  9 05:35:22 UTC 2025 - José Iván López González <jlopez@suse.com>
+
+- Add HTTP API for configuring iSCSI (gh#agama-project/agama#2231).
+
+-------------------------------------------------------------------
+Tue Apr  8 22:04:03 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- "agama download" do not crash if it cannot mount a file system
+  (gh#agama-project/agama#2253).
+
+-------------------------------------------------------------------
+Mon Apr  7 14:02:57 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Skip exporting scripts, files, bootloader and softare section
+  in profile if they are empty (gh#agama-project/agama#2250)
+
+-------------------------------------------------------------------
+Tue Apr  1 12:44:57 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Make the extension version attribute optional, search the version
+  automatically if it is missing (related to jsc#AGM-100)
+
+-------------------------------------------------------------------
+Fri Mar 28 21:45:05 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Allow to specify bootloader timeout in profile (jsc#PED-10810)
+
+-------------------------------------------------------------------
+Mon Mar 27 13:27:19 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add NM dhcp settings to network model (gh#agama-project/agama#2189).
+
+-------------------------------------------------------------------
 Thu Mar 27 12:40:02 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 13
