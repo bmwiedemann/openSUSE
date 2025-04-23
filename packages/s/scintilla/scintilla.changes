@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 05:51:46 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.5.6:
+  * Disallow changing case of protected text. Bug #2463.
+  * Return enumeration type from MarkerSymbolDefined to match
+    MarkerDefine. Bug #2469.
+  * On Qt, draw clipped UTF-8 text correctly. Bug #2464.
+  * On Qt, avoid a dwell start when the mouse is moved outside the
+    Scintilla widget. Bug #2466.
+  * On Qt, autoCompleteSelection converts from local encoding when
+    not in Unicode mode. Bug #2465. 
+
+-------------------------------------------------------------------
 Sat Mar 15 08:36:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 5.5.5:
