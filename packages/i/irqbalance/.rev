@@ -696,4 +696,13 @@ A irqbalance_banmod.diff
 </comment>
     <requestid>1269344</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>29b031567f9266bd243e7d771fc20636</srcmd5>
+    <version>1.9.4.77.git+d913f60</version>
+    <time>1745414283</time>
+    <user>anag_factory</user>
+    <comment>- Adopt license to GPL-2.0-only according to COPYING as suggested
+  by licensedigger</comment>
+    <requestid>1272050</requestid>
+  </revision>
 </revisionlist>

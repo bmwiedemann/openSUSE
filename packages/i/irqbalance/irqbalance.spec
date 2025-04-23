@@ -20,7 +20,7 @@ Name:           irqbalance
 Version:        1.9.4.77.git+d913f60
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 Group:          System/Daemons
 URL:            https://github.com/Irqbalance/irqbalance
 #Source:         https://github.com/Irqbalance/irqbalance/archive/refs/tags/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
