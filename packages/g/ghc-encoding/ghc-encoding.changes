@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 15 19:23:26 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update encoding to version 0.10.2.
+  Changes from 0.10 to 0.10.2
+  ---------------------------
+
+  * Allow ghc-prim-0.13.
+  * Allow Cabal-3.14.
+
+-------------------------------------------------------------------
 Sun Apr  6 18:39:05 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update encoding to version 0.10.1.

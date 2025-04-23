@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        A library for various character encodings
 License:        BSD-3-Clause
