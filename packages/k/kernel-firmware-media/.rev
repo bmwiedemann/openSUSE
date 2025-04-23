@@ -37,4 +37,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: update firmware binary for SM8250</comment>
     <requestid>1268116</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b8001beedea642ff8e0756276d30005c</srcmd5>
+    <version>20250422</version>
+    <time>1745414306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * qcom: vpu: add video firmware binary for qcm6490</comment>
+    <requestid>1271970</requestid>
+  </revision>
 </revisionlist>
