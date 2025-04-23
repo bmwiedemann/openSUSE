@@ -74,4 +74,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom:x1e80100: Support for Lenovo Yoga Slim 7 Snapdragon platform</comment>
     <requestid>1268121</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5c6a1462d9163e586df4e45005097a3a</srcmd5>
+    <version>20250422</version>
+    <time>1745414308</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * qcom: add QUPv3 firmware for QCS9100 platform</comment>
+    <requestid>1271972</requestid>
+  </revision>
 </revisionlist>

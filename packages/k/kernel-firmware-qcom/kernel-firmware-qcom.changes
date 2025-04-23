@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 22 15:17:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250422 (git commit 944acaa23457):
+  * qcom: add QUPv3 firmware for QCS9100 platform
+
+-------------------------------------------------------------------
 Wed Apr  9 10:12:01 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 6.15-rc1
