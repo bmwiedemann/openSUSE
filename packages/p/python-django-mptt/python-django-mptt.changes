@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 17 09:52:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 0.17
+  * Added support for Python 3.13 and Django 5.1 and 5.2.
+  * Dropped Django < 4.2.
+
+-------------------------------------------------------------------
 Thu Jul 18 14:43:23 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 0.16
