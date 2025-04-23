@@ -266,4 +266,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1249617</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>230ca8464cef9f48eda96bd384a59f2d</srcmd5>
+    <version>13.0.0</version>
+    <time>1745414462</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 13.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1272121 from glaubitz)</comment>
+    <requestid>1272153</requestid>
+  </revision>
 </revisionlist>

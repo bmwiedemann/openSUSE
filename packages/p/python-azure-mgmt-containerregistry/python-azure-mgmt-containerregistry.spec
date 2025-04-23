@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-containerregistry
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library
 License:        MIT
