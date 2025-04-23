@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:10:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.1.0
+  * Raise the minimum Django version to 4.2
+  * Fix DeprecationWarnings about form default templates
+  * Fixed 'djdt' is not a registered namespace
+  * Dark mode support
+  * Added Python 3.13 to the CI matrix.
+  * Removed support for Python 3.8 as it has reached end of life.
+  * Added support for the LoginRequiredMiddleware introduced in Django 5.1.
+  * Add Django 5.2 to tox matrix
+  * Make show toolbar callback function async/sync compatible.
+  * Refactor on csp_nonce usage with django-csp
+  * more changes, see upstream changelog
+
+-------------------------------------------------------------------
 Fri Feb  9 08:34:56 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.3
