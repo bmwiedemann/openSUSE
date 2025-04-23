@@ -1,7 +1,18 @@
 -------------------------------------------------------------------
+Wed Apr 16 05:51:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.1
+  * Add: option [auth] ldap_ignore_attribute_create_modify_timestamp for support of Authentik LDAP server
+  * Extend: [storage] hook supports now placeholder for "cwd" and "path" (and catches unsupported placeholders)
+  * Extend: log and create base folders if not existing during startup
+  * Fix: auth/htpasswd related to detection and use of bcrypt
+  * Fix: location of lock file for in case of dedicated cache folder is activated
+- Restored Radicale.rpmlintrc, still needed
+
+-------------------------------------------------------------------
 Sat Mar 22 23:36:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
-- update to 3.5.0:
+- Update to 3.5.0:
   * Default type for authentication changed from "none" to "denyall" to prevent unexpected access after initial installation (secure-by-default)
   * Reverse proxy base prefix stripping was adjusted/fixed, in case of issues check new option and your reverse proxy configuration
   * InfCloud WebUI can be now be served "bundled", see https://github.com/Kozea/Radicale/wiki/Client-InfCloud
@@ -22,8 +33,8 @@ Sat Mar 22 23:36:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
   * Fix: proper base_prefix stripping if running behind reverse proxy
   * Cosmetics: extend list of used modules with their version on startup
   * Review: Apache reverse proxy config example
-- enable upstream tests
-- remove Radicale.rpmlintrc, as that is not needed anymore
+- Enable upstream tests
+- Remove Radicale.rpmlintrc, as that is not needed anymore
 
 -------------------------------------------------------------------
 Mon Jan 13 21:00:07 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
@@ -126,7 +137,7 @@ Fri Jun  7 07:20:17 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
   * Enhancement: extend logging with step where bad PUT request failed
   * Fix: support for recurrence "full day"
   * Fix: list of web_files related to HTML pages
-  * Test: update/adjustments for workflows (pytest>=7, typeguard<4.3) 
+  * Test: update/adjustments for workflows (pytest>=7, typeguard<4.3)
 
 -------------------------------------------------------------------
 Sun May  5 10:21:51 UTC 2024 - Ákos Szőts <szotsaki@gmail.com>
@@ -230,7 +241,7 @@ Sat Jan 22 07:29:12 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>
 - Update to 3.1.2
   * Verify that base prefix starts with '/' but doesn't end with '/'
   * Improve base prefix log message
-  * Never send body for HEAD requests (again) 
+  * Never send body for HEAD requests (again)
 
 -------------------------------------------------------------------
 Wed Jan 19 17:01:23 UTC 2022 - Ákos Szőts <szotsaki@gmail.com>

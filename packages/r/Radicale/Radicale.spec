@@ -26,7 +26,7 @@
 %define vo_min_ver 0.9.6
 %define pk_min_ver 1.1.0
 Name:           Radicale
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ Source:         https://github.com/Kozea/Radicale/archive/v%{version}.tar.gz
 Source1:        radicale.service
 Source2:        system-user-%{pkg_user_group}.conf
 Source3:        radicale.firewalld
+Source4:        %{name}.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  pkgconfig
@@ -54,6 +55,7 @@ Requires:       python3 >= %{py_min_ver}
 Requires:       python3-defusedxml
 Requires:       python3-passlib
 Requires:       python3-pika >= %{pk_min_ver}
+Requires:       python3-requests
 Requires:       python3-vobject >= %{vo_min_ver}
 Recommends:     apache2-utils
 Recommends:     python3-bcrypt
