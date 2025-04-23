@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:08:56 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (version) - 1.32.4
+  * kubernetes (versionminus1) - 1.31.8
+  * kubernetes (versionminus2) - 1.30.12
+
+-------------------------------------------------------------------
 Wed Mar 12 06:31:12 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
