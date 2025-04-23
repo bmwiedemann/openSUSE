@@ -6968,4 +6968,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.14.2 &amp; OrderWithRequires &amp; ath11k stalls fix &amp; Disable CONFIG_LATENCYTOP &amp; other fixes; bugs: boo#1228659 boo#1241038 bsc#1012628 bsc#1240857 bsc#1240877 bsc#1241134</comment>
     <requestid>1269112</requestid>
   </revision>
+  <revision rev="777" vrev="1">
+    <srcmd5>3cc49fbc1f9c2ed374cce66c3a6880c0</srcmd5>
+    <version>6.14.3</version>
+    <time>1745414312</time>
+    <user>anag_factory</user>
+    <comment>6.14.3 &amp; disable CONFIG_SYSFS_SYSCALL &amp; other fixes; bugs: boo#1228659 boo#1240785 boo#1241038 bsc#1012628</comment>
+    <requestid>1271133</requestid>
+  </revision>
 </revisionlist>

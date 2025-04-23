@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.14
-%define patchversion 6.14.2
-%define git_commit 55121542d9314a8aa36ae7bbc5416da7a09560bb
+%define patchversion 6.14.3
+%define git_commit 493ad77ba98a034285665e3ab1b19655d20d3b53
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-lpae
-Version:        6.14.2
+Version:        6.14.3
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g5512154
+Release:        <RELEASE>.g493ad77
 %else
 Release:        0
 %endif
@@ -364,6 +364,7 @@ Requires(post): modutils
 OrderWithRequires(post): udev
 OrderWithRequires(post): systemd-boot
 OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): update-bootloader
 OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
@@ -500,6 +501,7 @@ Requires(post): modutils
 OrderWithRequires(post): udev
 OrderWithRequires(post): systemd-boot
 OrderWithRequires(post): perl-Bootloader
+OrderWithRequires(post): update-bootloader
 OrderWithRequires(post): dracut
 # Install the package providing /etc/SuSE-release early enough, so that
 # the grub entry has correct title (bnc#757565)
