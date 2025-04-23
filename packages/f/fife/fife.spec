@@ -1,7 +1,7 @@
 #
 # spec file for package fife
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Nelson Marques <nmarques@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,7 @@ BuildRequires:  tinyxml-devel
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openal)
