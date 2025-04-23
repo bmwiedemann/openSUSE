@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:41:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 0.6.16
+
+   * This release includes preliminary support for the pylock.toml file format,
+     as standardized in PEP 751.
+   * As of this release, pylock.toml is supported in the following commands:
+     * To export a uv.lock to the pylock.toml format, run: uv export -o pylock.toml
+     * To generate a pylock.toml file from a set of requirements, run: uv pip compile -o pylock.toml -r requirements.in
+     * To install from a pylock.toml file, run: uv pip sync pylock.toml or uv pip install -r pylock.toml
+ * Enhancements
+   * Add PEP 751 support to uv pip compile 
+   * Add uv export support for PEP 751 
+   * Accept requirements.txt (verbatim) as a format on the CLI 
+   * Add UV_NO_EDITABLE environment variable to set --no-editable on all invocations 
+   * Add pylock.toml to uv pip install and uv pip sync 
+   * Add a brief sleep before sending SIGINT to child processes 
+   * Add upload time to uv.lock 
+   * Allow updating Git sources by name 
+   * Cache which git in uv init 
+   * Enable --dry-run with --locked / --frozen for uv sync 
+   * Infer output type in uv export 
+   * Make uv init resilient against broken git 
+   * Respect build constraints for uv run --with dependencies 
+   * Split UV_INDEX on all whitespace 
+   * Support build constraints in uv tool and PEP723 scripts. 
+   * Use suffix from uvx binary when searching for uv binary 
+   * Update version formatting to use cyan color 
+   * Add debug logs for version file search 
+   * Fix SourceNotAllowed error message during Python discovery 
+   * Obfuscate password in credentials debug messages 
+   * Obfuscate possible tokens in URL logs 
+   * Validate that PEP 751 entries don't include multiple sources 
+   * Add uv-build and uv_build aliases to uv init --build-backend 
+   * Emit dedicated error message for Conda environment.yml files 
+ * Preview features
+   * Build backend: Add reference docs and schema 
+   * Build backend: Check module dir exists for sdist build 
+   * Build backend: Fix sdist with long directories 
+ * Bug fixes
+   * Align supported config-settings with example in docs 
+   * Ensure virtual environment is compatible with interpreter on sync 
+   * Fix PythonDownloadRequest parsing for partial keys 
+   * Fix pre-release exclusive comparison operator in uv-pep440 
+   * Forward additional signals to the child process in uv run 
+   * Omit PEP 751 version for source trees 
+   * Patch CC and CCX entries in sysconfig for cross-compiled aarch64 Python distributions 
+   * Properly handle authentication for HTTP 302 redirect URLs 
+   * Set 4MB stack size for all threads, introduce UV_STACK_SIZE 
+   * Show PyPy downloads during uv python list 
+   * Add subdirectory to Direct URL for local directories 
+   * Prefer stable releases over pre-releases in uv python install 
+   * Write requested Python variant to pin file in uv init 
+   * Revert "Properly handle authentication for 302 redirect URLs" 
+   * Error when tool.uv.sources is set in system-level configuration file 
+   * Split workspace members onto their own lines in uv init 
+ * Documentation
+   * Fix CLI reference with code block 
+   * Fix lockfile note 
+   * Fix typo in a reference 
+   * Improve docs for uv python list --only-downloads and --only-installed 
+   * Update note on lack of musl distributions to ARM-only 
+   * Add section on shebangs for scripts 
+   * Display aliases for long and short args in the CLI reference 
+   * Fix highlight line in explicit index documentation 
+   * Add explicit source (matching PyTorch guide) 
+   * Fix link to issue 
+   * Fix grammatical error in FastAPI guide 
+   * Add --locked to uv sync in GitHub Actions guide 
+   * Improve formatting for "all" default-groups setting documentation 
+   * Replace --frozen with --locked in Docker integration guide 
+   * Add lockfile note about PEP 751 
+   * Extend the reference documentation for uv pip sync 
+   * Fix mismatched pip interface header / nav titles 
+ * Performance
+   * Avoid querying GitHub on repeated install invocations 
+
+-------------------------------------------------------------------
 Tue Apr  8 16:43:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.6.13

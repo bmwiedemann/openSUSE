@@ -520,4 +520,41 @@
    * Update MSRV to 1.84</comment>
     <requestid>1267949</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1370b739f3cd9fae2ac6d6486b53dd5d</srcmd5>
+    <version>0.6.16</version>
+    <time>1745426410</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.16
+   * This release includes preliminary support for the pylock.toml file format,
+     as standardized in PEP 751.
+   * As of this release, pylock.toml is supported in the following commands:
+     * To export a uv.lock to the pylock.toml format, run: uv export -o pylock.toml
+     * To generate a pylock.toml file from a set of requirements, run: uv pip compile -o pylock.toml -r requirements.in
+     * To install from a pylock.toml file, run: uv pip sync pylock.toml or uv pip install -r pylock.toml
+ * Enhancements
+   * Add PEP 751 support to uv pip compile 
+   * Add uv export support for PEP 751 
+   * Accept requirements.txt (verbatim) as a format on the CLI 
+   * Add UV_NO_EDITABLE environment variable to set --no-editable on all invocations 
+   * Add pylock.toml to uv pip install and uv pip sync 
+   * Add a brief sleep before sending SIGINT to child processes 
+   * Add upload time to uv.lock 
+   * Allow updating Git sources by name 
+   * Cache which git in uv init 
+   * Enable --dry-run with --locked / --frozen for uv sync 
+   * Infer output type in uv export 
+   * Make uv init resilient against broken git 
+   * Respect build constraints for uv run --with dependencies 
+   * Split UV_INDEX on all whitespace 
+   * Support build constraints in uv tool and PEP723 scripts. 
+   * Use suffix from uvx binary when searching for uv binary 
+   * Update version formatting to use cyan color 
+   * Add debug logs for version file search 
+   * Fix SourceNotAllowed error message during Python discovery 
+   * Obfuscate password in credentials debug messages 
+   * Obfuscate possible tokens in URL logs 
+   * Validate that PEP 751 entries don't include multiple sources</comment>
+    <requestid>1272193</requestid>
+  </revision>
 </revisionlist>
