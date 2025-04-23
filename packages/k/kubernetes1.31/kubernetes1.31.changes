@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:00:51 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.8:
+  * Fix race for sending errors in watch
+  * fix handle terminating pvc when kubelet rebuild dsw
+  * add e2e test to reproduce unexpected unmount after kubelet is restarted
+
+-------------------------------------------------------------------
 Tue Mar 25 12:57:44 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643                                     

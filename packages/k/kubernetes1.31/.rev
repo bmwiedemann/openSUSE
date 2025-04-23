@@ -71,4 +71,12 @@ CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643
 https://github.com/kubernetes/kubernetes/issues/130786</comment>
     <requestid>1255971</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c8ed9db36f140b52012aace09b54f5cc</srcmd5>
+    <version>1.31.8</version>
+    <time>1745426407</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – April, 2025: Update to version 1.31.8</comment>
+    <requestid>1272186</requestid>
+  </revision>
 </revisionlist>
