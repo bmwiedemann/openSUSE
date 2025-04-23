@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 07 10:05:23 CEST 2025 - aschnell@suse.com
+
+- use correct btrfs binary for target commands in snbk
+  (gh#openSUSE/snapper#998)
+- version 0.12.2
+
+-------------------------------------------------------------------
+Tue Feb 04 10:10:41 CET 2025 - aschnell@suse.com
+
+- avoid running 'btrfs qgroup clear-stale' if quota is disabled
+  (gh#openSUSE/snapper#987)
+
+-------------------------------------------------------------------
+Fri Jan 17 07:07:43 CET 2025 - aschnell@suse.com
+
+- avoid build dependency e2fsprogs-devel
+
+-------------------------------------------------------------------
 Tue Dec 17 09:14:46 CET 2024 - aschnell@suse.com
 
 - make some binary paths used in snbk configurable
@@ -83,7 +101,7 @@ Tue Mar 19 14:58:12 CET 2024 - aschnell@suse.com
 - improved error message (gh#openSUSE/snapper#864)
 
 -------------------------------------------------------------------
-Sat  9 Mar 09:44:17 GMT 2024 - infinity0@pwned.gg
+Sat Mar 09 09:44:17 GMT 2024 - infinity0@pwned.gg
 
 - add support for quarterly snapshots
 
@@ -659,7 +677,7 @@ Wed Sep  6 09:53:12 CEST 2017 - aschnell@suse.com
 -------------------------------------------------------------------
 Thu Aug  3 18:12:17 UTC 2017 - lslezak@suse.com
 
-- fixed table formatting for non-ACSII characters (bsc#1051901)
+- fixed table formatting for non-ASCII characters (bsc#1051901)
   (::mbrtowc behavior has been changed in glibc-2.22)
 - version 0.5.1
 

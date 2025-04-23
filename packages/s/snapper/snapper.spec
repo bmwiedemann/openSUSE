@@ -35,7 +35,7 @@
 %bcond_with coverage
 
 Name:           snapper
-Version:        0.12.1
+Version:        0.12.2
 Release:        0
 Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
@@ -53,7 +53,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
-BuildRequires:  e2fsprogs-devel
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
 BuildRequires:  libbtrfs-devel
