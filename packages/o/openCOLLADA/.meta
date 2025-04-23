@@ -1,5 +1,0 @@
-<package name="openCOLLADA" project="openSUSE:Factory">
-  <title>Collada 3D import and export libraries</title>
-  <description>OpenCOLLADA is a stream based reader and writer library for COLLADA files</description>
-  <devel project="graphics" package="openCOLLADA"/>
-</package>
