@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:29:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1
+  * Fix issue when compiling without SBC_BUILD_WITH_SSE_SUPPORT.
+- Update to version 2.0
+  * Fix issue with SSE primitives on non-x86.
+- Drop patch:
+  * fix-build-on-non-x86.patch (not longer needed)
+- Use ldconfig_scriptlets macro
+- Use correct Group tags
+- Specfile cleanup
+
+-------------------------------------------------------------------
 Thu May 16 14:44:18 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Re-download fix-build-on-non-x86.patch: minor changes in the

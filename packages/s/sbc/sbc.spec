@@ -1,8 +1,9 @@
 #
 # spec file for package sbc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 B1 Systems GmbH, Vohburg, Germany.
+# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +19,8 @@
 
 
 %define sonum 1
-
 Name:           sbc
-Version:        1.5
+Version:        2.1
 Release:        0
 Summary:        Bluetooth Low-Complexity, Sub-Band Codec Utilities
 License:        GPL-2.0-or-later
@@ -28,10 +28,8 @@ Group:          Hardware/Mobile
 URL:            https://www.kernel.org/pub/linux/bluetooth
 Source:         https://www.kernel.org/pub/linux/bluetooth/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
-Patch1:         https://git.kernel.org/pub/scm/bluetooth/sbc.git/patch/?id=909a9bdf7ab143e1f0baaf9736baebd3cd79aacf#/fix-build-on-non-x86.patch
-BuildRequires:  libsndfile-devel
-BuildRequires:  pkg-config
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(sndfile)
 
 %description
 The package contains utilities for using the SBC codec.
@@ -39,7 +37,7 @@ The package contains utilities for using the SBC codec.
 %package -n libsbc%{sonum}
 Summary:        Bluetooth Low-Complexity, Sub-Band Codec Library
 License:        LGPL-2.1-or-later
-Group:          Hardware/Mobile
+Group:          System/Libraries
 
 %description -n libsbc%{sonum}
 The package contains libraries for using the SBC codec.
@@ -47,48 +45,40 @@ The package contains libraries for using the SBC codec.
 %package devel
 Summary:        Development files for libsbc%{sonum}
 License:        GPL-2.0-or-later
-Group:          Development/Sources
+Group:          Development/Languages/C and C++
 Requires:       libsbc%{sonum} = %{version}
 
 %description devel
-Development files for the SBC library
+Development files for the SBC library.
 
 %prep
 %autosetup -p1
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
-rm %{buildroot}/%{_libdir}/libsbc.la
+rm -v %{buildroot}/%{_libdir}/libsbc.la
 
-%clean
-%{?buildroot:%__rm -rf "%{buildroot}"}
-
-%post -n libsbc%{sonum} -p /sbin/ldconfig
-
-%postun -n libsbc%{sonum} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libsbc%{sonum}
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc ChangeLog README
-/usr/bin/sbc*
+%{_bindir}/sbcdec
+%{_bindir}/sbcenc
+%{_bindir}/sbcinfo
 
 %files -n libsbc%{sonum}
-%defattr(-,root,root)
-%{_libdir}/libsbc.so.%{sonum}
-%{_libdir}/libsbc.so.%{sonum}.*
+%license COPYING.LIB
+%{_libdir}/libsbc.so.%{sonum}*
 
 %files devel
-%defattr(-,root,root)
-%dir /usr/include/sbc
-/usr/include/sbc/sbc.h
-%{_libdir}/pkgconfig/sbc.pc
-%{_libdir}/libsbc.a
+%dir %{_includedir}/sbc
+%{_includedir}/sbc/sbc.h
 %{_libdir}/libsbc.so
+%{_libdir}/pkgconfig/sbc.pc
 
 %changelog
