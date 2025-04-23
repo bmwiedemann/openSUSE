@@ -1,8 +1,8 @@
-Index: b/plugins/keyboard/gsd-keyboard-manager.c
+Index: gnome-settings-daemon-48.1/plugins/keyboard/gsd-keyboard-manager.c
 ===================================================================
---- a/plugins/keyboard/gsd-keyboard-manager.c
-+++ b/plugins/keyboard/gsd-keyboard-manager.c
-@@ -251,7 +251,11 @@ get_sources_from_xkb_config (GsdKeyboard
+--- gnome-settings-daemon-48.1.orig/plugins/keyboard/gsd-keyboard-manager.c
++++ gnome-settings-daemon-48.1/plugins/keyboard/gsd-keyboard-manager.c
+@@ -250,7 +250,11 @@ get_sources_from_xkb_config (GsdKeyboard
                  else
                          id = g_strdup (layouts[i]);
  

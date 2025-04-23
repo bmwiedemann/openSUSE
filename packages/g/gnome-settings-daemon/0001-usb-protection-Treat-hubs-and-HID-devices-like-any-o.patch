@@ -20,11 +20,11 @@ gadget, this will require users to "enroll" them the same ways.
  .../gsd-usb-protection-manager.c              | 58 +++++--------------
  1 file changed, 15 insertions(+), 43 deletions(-)
 
-Index: gnome-settings-daemon-48.alpha.1/plugins/usb-protection/gsd-usb-protection-manager.c
+Index: gnome-settings-daemon-48.1/plugins/usb-protection/gsd-usb-protection-manager.c
 ===================================================================
---- gnome-settings-daemon-48.alpha.1.orig/plugins/usb-protection/gsd-usb-protection-manager.c
-+++ gnome-settings-daemon-48.alpha.1/plugins/usb-protection/gsd-usb-protection-manager.c
-@@ -679,56 +679,28 @@ on_usbguard_signal (GDBusProxy *proxy,
+--- gnome-settings-daemon-48.1.orig/plugins/usb-protection/gsd-usb-protection-manager.c
++++ gnome-settings-daemon-48.1/plugins/usb-protection/gsd-usb-protection-manager.c
+@@ -674,56 +674,28 @@ on_usbguard_signal (GDBusProxy *proxy,
                   * If this device advertises also interfaces outside the HID class, or the
                   * HUB class, it is suspect. It could be a false positive because this could
                   * be a "smart" keyboard for example, but at this stage is better be safe. */

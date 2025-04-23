@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Apr 19 07:10:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Cleanups and fixes
+  + Power:
+    - Ensure the backlight interface signal gets emitted on startup
+    - Avoid using uninitialized value when restoring brightness
+  + Sharing: Fixes to shutdown of sharing services
+  + Updated translations.
+- Drop gnome-settings-daemon-fix-stop-service.patch, 411.patch and
+  413.patch, fixed upstream.
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
 Tue Apr 01 09:29:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0+3:

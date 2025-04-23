@@ -1618,4 +1618,21 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment></comment>
     <requestid>1266390</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>ae96b7d520f5787d0dc12ad0cb8346a3</srcmd5>
+    <version>48.1</version>
+    <time>1745414287</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Cleanups and fixes
+  + Power:
+    - Ensure the backlight interface signal gets emitted on startup
+    - Avoid using uninitialized value when restoring brightness
+  + Sharing: Fixes to shutdown of sharing services
+  + Updated translations.
+- Drop gnome-settings-daemon-fix-stop-service.patch, 411.patch and
+  413.patch, fixed upstream.
+- Rebase patches with quilt. (forwarded request 1271073 from iznogood)</comment>
+    <requestid>1271340</requestid>
+  </revision>
 </revisionlist>
