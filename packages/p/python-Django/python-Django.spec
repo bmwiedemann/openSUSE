@@ -53,6 +53,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python
 Requires:       python-asgiref >= 3.7.0
 Requires:       python-sqlparse >= 0.3.1
+Requires:       python-tzdata
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     python-Jinja2 >= 2.9.2

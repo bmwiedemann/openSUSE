@@ -1355,4 +1355,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1269472</requestid>
   </revision>
+  <revision rev="130" vrev="2">
+    <srcmd5>7f30749264a4c8602bf88601bcd51c8d</srcmd5>
+    <version>5.2</version>
+    <time>1745414305</time>
+    <user>anag_factory</user>
+    <comment>- Add missing runtime dependency on tzdata</comment>
+    <requestid>1271967</requestid>
+  </revision>
 </revisionlist>

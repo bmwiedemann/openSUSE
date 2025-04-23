@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 15:46:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add missing runtime dependency on tzdata
+
+-------------------------------------------------------------------
 Mon Apr  7 15:02:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2
