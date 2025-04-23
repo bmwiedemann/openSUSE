@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 21 13:20:21 UTC 2025 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
+
+- Add gh-issue-73141.patch to repair random segmentation faults (boo#1240764)
+
+-------------------------------------------------------------------
 Wed Apr  2 16:21:00 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

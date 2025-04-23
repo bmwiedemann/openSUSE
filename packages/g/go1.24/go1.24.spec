@@ -141,6 +141,8 @@ Patch7:         dont-force-gold-on-arm64.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-8 when bootstrapping with gcc8-go
 Patch8:         gcc-go.patch
 Patch9:         go-fixseccomp.patch
+# PATCH-FIX-UPSTREAM https://github.com/golang/go/issues/73141 https://go-review.googlesource.com/c/go/+/662455
+Patch10:        gh-issue-73141.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -243,6 +245,8 @@ Go standard library compiled to a dynamically loadable shared object libstd.so
 sed -i "s/\$gcc_go_version/%{gcc_go_version}/" $RPM_SOURCE_DIR/gcc-go.patch
 %patch -P 8 -p1
 %endif
+
+%patch -P 10 -p1
 
 cp %{SOURCE4} .
 

@@ -122,4 +122,12 @@
     describing naming format of llvm-tsan_commit.tar.xz</comment>
     <requestid>1266903</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec60f04bbba010d8ef3bda32a4a1982f</srcmd5>
+    <version>1.24.2</version>
+    <time>1745414279</time>
+    <user>anag_factory</user>
+    <comment>Add gh-issue-73141.patch to repair random segmentation faults (boo#1240764) (forwarded request 1271898 from crameleon)</comment>
+    <requestid>1272001</requestid>
+  </revision>
 </revisionlist>
