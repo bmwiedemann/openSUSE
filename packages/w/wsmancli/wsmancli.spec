@@ -1,7 +1,7 @@
 #
 # spec file for package wsmancli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Summary:        Command line client utilities for WS-Management
 License:        BSD-3-Clause
 Group:          System/Management
 Source:         %{name}-%{version}.tar.bz2
+Patch1:         ab8eba36e2ea108ebf4c4942da6d1703706849f4.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

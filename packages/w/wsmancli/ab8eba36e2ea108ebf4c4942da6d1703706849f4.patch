@@ -1,0 +1,69 @@
+commit ab8eba36e2ea108ebf4c4942da6d1703706849f4
+Author: Klaus Kämpf <kkaempf@gmail.com>
+Date:   Mon Mar 3 19:58:48 2025 +0100
+
+    Add flag to enfore https transport scheme
+    
+    https could only be choosen if a client certificate (cainfo) was
+    passed, resulting in problems like #18
+    
+    This adds a `--https` option enforcing https transport even in absence
+    of certificate information.
+    
+    Fixes #18
+    
+    Signed-off-by: Klaus Kämpf <kkaempf@gmail.com>
+
+diff --git a/ChangeLog b/ChangeLog
+index af1a121..c68c487 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,6 @@
++Version 2.8.1
++  - add '--https' option to enforce https scheme (issue #16)
++
+ Version 2.8.0
+   - fix compatibility with Openwsman 2.8.0
+   - fix compiler warnings
+diff --git a/configure.in b/configure.in
+index f2c11b8..ce2fa9f 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1,6 +1,6 @@
+ dnl Process this file with autoconf to produce a configure script.
+ 
+-AC_INIT(wsmancli, 2.8.0)
++AC_INIT(wsmancli, 2.8.1)
+ AC_CONFIG_SRCDIR(wsmancli.spec.in)
+ AM_INIT_AUTOMAKE(AC_PACKAGE_NAME, AC_PACKAGE_VERSION)
+ AM_CONFIG_HEADER(config.h)
+diff --git a/src/wsman.c b/src/wsman.c
+index 961677a..6abf2ed 100644
+--- a/src/wsman.c
++++ b/src/wsman.c
+@@ -86,6 +86,7 @@ static char *proxy_upwd = NULL;
+ 
+ 
+ static long int non_interactive = 0;
++static long int use_https = 0;
+ static long int debug_level = -1;
+ static char *encoding = NULL;
+ static char *test_case = NULL;
+@@ -195,6 +196,8 @@ static char wsman_parse_options(int argc, char **argv)
+ 	u_option_entry_t options[] = {
+ 		{"non-interactive", 0, U_OPTION_ARG_NONE, &non_interactive,
+ 			"Non interactive mode, don't ask for credentials", NULL},
++		{"https", 0, U_OPTION_ARG_NONE, &use_https,
++			"Enforce https scheme for transport", NULL},
+ 		{"version", 'q', U_OPTION_ARG_NONE, &my_version,
+ 			"Display application version", NULL},
+ 		{"debug", 'd', U_OPTION_ARG_INT, &debug_level,
+@@ -783,7 +786,7 @@ int main(int argc, char **argv)
+ 		cl = wsmc_create(server,
+ 				server_port,
+ 				url_path,
+-				cainfo ? "https" : "http",
++				(cainfo || use_https) ? "https" : "http",
+ 				username,
+ 				password);
+ 	}
