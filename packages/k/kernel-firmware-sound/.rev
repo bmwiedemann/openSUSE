@@ -116,4 +116,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel: avs: Update topology file for I2S Dialog 7219</comment>
     <requestid>1271052</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>38d2992a13389cd7e56beddcaf4d8af1</srcmd5>
+    <version>20250422</version>
+    <time>1745414311</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * ASoC: tas2781: Swap channel for SPI projects.</comment>
+    <requestid>1271974</requestid>
+  </revision>
 </revisionlist>
