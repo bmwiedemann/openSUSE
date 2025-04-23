@@ -272,4 +272,39 @@
   (gh#agama-project/agama#2224).</comment>
     <requestid>1265197</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0b73de8f09e6c14f107a9ca6d2d409ff</srcmd5>
+    <version>14</version>
+    <time>1745426393</time>
+    <user>anag_factory</user>
+    <comment>- Version 14
+
+- Fixed detection of iBFT (bsc#1239046).
+- Removed offload_card from iSCSI (bsc#1231385).
+
+- bsc#1238038
+  - copy NVMe configuration files from inst-sys to target
+    (gh#agama-project/agama#2257).
+
+- Allow to specify extra kernel parameters for bootloader
+  (jsc#PED-10810)
+
+- Add auto-installation support for iSCSI
+ (gh#agama-project/agama#2231).
+
+- Write the registration URL to the installed system (bsc#1239316).
+
+- Make the extension version attribute optional, search the version
+  automatically if it is missing (related to jsc#AGM-100)
+
+- Allow to specify bootloader timeout in profile (jsc#PED-10810)
+
+- Copy the hostname to the installed system if it exists
+  (gh#agama-project/agama#2226).
+
+- Properly map AutoYaST scripts &quot;source&quot; to &quot;content&quot;
+- Always display the patterns from extensions (related to
+  jsc#AGM-100)</comment>
+    <requestid>1272126</requestid>
+  </revision>
 </revisionlist>
