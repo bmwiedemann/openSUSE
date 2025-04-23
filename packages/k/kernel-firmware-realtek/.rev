@@ -41,4 +41,16 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 6.15-rc1</comment>
     <requestid>1268122</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a5e4f9ec04580b007b19a847e5e2da49</srcmd5>
+    <version>20250422</version>
+    <time>1745414309</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * rtw89: 8922a: update element RF TXPWR to R40
+  * rtw89: 8852c: update element RF TXPWR to R78
+  * rtw89: 8852c: add fw v0.27.125.0 with format version 2
+  * Revert &quot;rtw89: 8852c: update fw to v0.27.125.0&quot;</comment>
+    <requestid>1271973</requestid>
+  </revision>
 </revisionlist>
