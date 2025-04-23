@@ -33,4 +33,27 @@
 - Use autosetup instead of setup+patch</comment>
     <requestid>1037290</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>98692be04602d1890d2c5e883c766a5f</srcmd5>
+    <version>0.15.0</version>
+    <time>1745414322</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1271860 from mcalabkova
+
+- Update to version 0.15.0:
+    * Add Django 5.1, remove Python 3.5, Release 0.15.0 (#269)
+    * Added support for Python 3.12, Django 5.0. (#267)
+    * Added readthedocs.yaml configuration file. (#263)
+    * Added .pre-commit-config.yaml and `Contributing` docs section. (#264)
+    * chore: Add support for 4.2 (#262)
+    * Added Python 3.11, run tests on ubuntu-20.04
+    * add requires_python
+    * Reformat docs/conf.py for latest version of black.
+  - Drop merged patches:
+    * merged_10881330.patch
+    * merged_pr_233.patch
+  - Add django52.patch making the testsuite compatible with Django 5.2
+  - Convert to _service workflow since the new release is not tagged</comment>
+    <requestid>1272115</requestid>
+  </revision>
 </revisionlist>

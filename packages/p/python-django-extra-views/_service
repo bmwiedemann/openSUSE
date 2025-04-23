@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="versionformat">0.15.0</param>
+    <param name="url">https://github.com/AndrewIngram/django-extra-views</param>
+    <param name="filename">django-extra-views</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="exclude">.*</param>
+    <param name="revision">571f5e2</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>
