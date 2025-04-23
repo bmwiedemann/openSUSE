@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 08:54:23 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzdnn to version 1.1.2
+  * Fixes for branch 1.1 for z17 machine with Telum 2 AI processor
+  * Features
+    - Improvement to tensor_dump.c for new data types
+    - Improvement to software saturation
+    - Improvements to tests throughout
+  * Fixes
+    - Performance fix for stickify/unstickify when using hardware support
+  * Refer https://github.com/IBM/zDNN/compare/v1.1.1...v1.1.2
+
+-------------------------------------------------------------------
 Thu Mar 13 10:37:06 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Drop special C++ build requires and setting of CC or CXX, libzdnn

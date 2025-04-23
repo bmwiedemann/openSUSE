@@ -17,13 +17,13 @@
 
 
 Name:           libzdnn
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        IBM Z Deep Learning Library
 License:        Apache-2.0
 Group:          Development/Libraries/Other
 URL:            https://github.com/IBM/zDNN
-Source:         zDNN-1.1.1.tar.gz
+Source:         zDNN-1.1.2.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 
