@@ -19,16 +19,12 @@
 %define so_ver 10
 %define __builder ninja
 Name:           cfitsio
-Version:        4.5.0
+Version:        4.6.2
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        NASA-1.3
 URL:            https://heasarc.gsfc.nasa.gov/fitsio/
 Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM cfitsio-cmake-devel-scripts-destination.patch badshah400@gmail.com -- Fix installation dir for pkgconfig and cmake scripts
-Patch1:         cfitsio-cmake-devel-scripts-destination.patch
-# PATCH-FIX-UPSTREAM cfitsio-nullptr.patch hsk17@mail.de -- nullptr is keyword in C23
-Patch2:         cfitsio-nullptr.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -87,7 +83,7 @@ in FITS files.
 
 %build
 %cmake \
-  -DINCLUDE_INSTALL_DIR=%{_includedir}/cfitsio \
+  -DCMAKE_INSTALL_INCLUDEDIR=include/cfitsio \
   -DUSE_BZIP2=ON \
   -DTESTS=ON \
   -DUTILS=ON \
@@ -103,7 +99,6 @@ in FITS files.
 %cmake_install
 
 %check
-# testsuite
 %ctest
 
 %ldconfig_scriptlets -n libcfitsio%{so_ver}
@@ -115,14 +110,17 @@ in FITS files.
 %{_bindir}/fitsverify
 %{_bindir}/fpack
 %{_bindir}/funpack
+%{_bindir}/imcopy
+%{_bindir}/speed
 
 %files devel
 %license licenses/License.txt
+%{_bindir}/cookbook
+%{_bindir}/smem
 %{_includedir}/%{name}/
 %{_libdir}/libcfitsio.so
 %{_libdir}/pkgconfig/cfitsio.pc
 %{_libdir}/cmake/%{name}/
-%{_libdir}/%{name}-%{version}/
 
 %files devel-doc
 %doc docs/{cfitsio.ps,cfortran.doc,fitsio.doc,fitsio.ps,quick.ps}
