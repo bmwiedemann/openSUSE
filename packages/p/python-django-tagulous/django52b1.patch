@@ -1,0 +1,94 @@
+From d80ef84bddb98d7485583d25df7131992c589f13 Mon Sep 17 00:00:00 2001
+From: Stephen Wolff <stephen@maxgatedigital.com>
+Date: Wed, 12 Mar 2025 09:30:47 +0000
+Subject: [PATCH] Fix issue with serializers monkeypatching in Django 5.2b1
+
+Related to #187
+
+---
+
+For more details, open the [Copilot Workspace session](https://copilot-workspace.githubnext.com/radiac/django-tagulous/issues/187?shareId=XXXX-XXXX-XXXX-XXXX).
+---
+ tagulous/serializers/base.py | 31 ++++++++++++++++++++++---------
+ tests/test_serializers.py    | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 50 insertions(+), 9 deletions(-)
+
+diff --git a/tagulous/serializers/base.py b/tagulous/serializers/base.py
+index 6170070..4e8012c 100644
+--- a/tagulous/serializers/base.py
++++ b/tagulous/serializers/base.py
+@@ -62,16 +62,29 @@ def monkeypatch_get_model(serializer):
+     Given a model identifier, get the model - unless it's a TaggedModel, in
+     which case return a temporary fake model to get it serialized.
+     """
+-    old_get_model = serializer._get_model
++    if hasattr(serializer, "_get_model"):
++        old_get_model = serializer._get_model
+ 
+-    def _get_model(model_identifier):
+-        RealModel = old_get_model(model_identifier)
++        def _get_model(model_identifier):
++            RealModel = old_get_model(model_identifier)
+ 
+-        if issubclass(RealModel, TaggedModel):
+-            Model = RealModel._detag_to_serializable()
+-        else:
+-            Model = RealModel
++            if issubclass(RealModel, TaggedModel):
++                Model = RealModel._detag_to_serializable()
++            else:
++                Model = RealModel
++
++            return Model
++
++        serializer._get_model = _get_model
++    else:
++        def _get_model(model_identifier):
++            RealModel = serializer.get_model(model_identifier)
++
++            if issubclass(RealModel, TaggedModel):
++                Model = RealModel._detag_to_serializable()
++            else:
++                Model = RealModel
+ 
+-        return Model
++            return Model
+ 
+-    serializer._get_model = _get_model
++        serializer.get_model = _get_model
+diff --git a/tests/test_serializers.py b/tests/test_serializers.py
+index 8b910b6..529d856 100644
+--- a/tests/test_serializers.py
++++ b/tests/test_serializers.py
+@@ -343,3 +343,31 @@ def test_many_to_one(self):
+         self.assertInstanceEqual(obj, name="test", singletag="test", tags="test")
+         self.assertEqual(obj.many_to_one.count(), 1)
+         self.assertEqual(obj.many_to_one.first().name, "rfk1")
++
++    def test_monkeypatch_get_model(self):
++        """
++        Test monkeypatch_get_model function handles the absence of _get_model attribute
++        """
++        from tagulous.serializers import base
++        from django.core.serializers import python as python_serializer
++
++        # Ensure the test case runs in a Django 5.2b1 environment
++        if not hasattr(python_serializer, "get_model"):
++            self.skipTest("Django version is not 5.2b1 or later")
++
++        # Backup original get_model method
++        original_get_model = python_serializer.get_model
++
++        try:
++            # Remove _get_model attribute if it exists
++            if hasattr(python_serializer, "_get_model"):
++                del python_serializer._get_model
++
++            # Apply monkeypatch
++            base.monkeypatch_get_model(python_serializer)
++
++            # Check if the monkeypatch works without _get_model attribute
++            self.assertTrue(hasattr(python_serializer, "get_model"))
++        finally:
++            # Restore original get_model method
++            python_serializer.get_model = original_get_model

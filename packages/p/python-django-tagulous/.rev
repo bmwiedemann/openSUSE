@@ -23,4 +23,12 @@
   - Switch to upstream tarball because of tests</comment>
     <requestid>1223465</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7c6dac320f6354a3305ecc47e8088952</srcmd5>
+    <version>2.1.0</version>
+    <time>1745414320</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270981</requestid>
+  </revision>
 </revisionlist>

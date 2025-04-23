@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 17 11:25:51 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream django52b1.patch adding compatibility with Django 5.2b1
+- Skip tests failing with released Django 5.2
+
+-------------------------------------------------------------------
 Mon Nov 11 16:32:37 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.1.0
