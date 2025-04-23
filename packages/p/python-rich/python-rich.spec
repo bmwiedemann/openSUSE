@@ -41,6 +41,7 @@ Suggests:       python-ipywidgets >= 7.5.1
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module attrs}
 # /SECTION
 %python_subpackages
 
