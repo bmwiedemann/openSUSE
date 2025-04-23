@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 21 07:29:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.54:
+  * Fix a regression in 1.52 which did not allow to open UNC
+    specified files on Windows. [rE28ae4ee194]
+  * Ignore log file specification from the Registry in the gpg-error
+    tool.
+
+-------------------------------------------------------------------
 Wed Apr  9 11:39:08 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.53:
