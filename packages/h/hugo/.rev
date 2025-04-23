@@ -1395,4 +1395,23 @@
   * releaser: Prepare repository for 0.147.0-DEV (forwarded request 1271103 from jfkw)</comment>
     <requestid>1271111</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>9b700ecb4fc9728004eb226cfccb69f7</srcmd5>
+    <version>0.146.7</version>
+    <time>1745426401</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.146.7:
+  * releaser: Bump versions for release of 0.146.7
+  * Revert the breaking change from 0.146.0 with dots in content filenames
+  * tpl: Fix indeterminate template lookup with templates with and without lang
+  * parser/metadecoders: Add CSV targetType (map or slice) option to transform.Unmarshal
+  * build(deps): bump github.com/yuin/goldmark-emoji from 1.0.5 to 1.0.6
+  * build(deps): bump github.com/bep/imagemeta from 0.11.0 to 0.12.0
+  * tpl/collections: Fix where ... not in with empty slice
+  * tpl: Fix layout fall back logic when layout is set in front matter but not found
+  * tpl: Detect and fail on infinite template recursion
+  * build(deps): bump github.com/yuin/goldmark from 1.7.9 to 1.7.10
+  * releaser: Prepare repository for 0.147.0-DEV (forwarded request 1272038 from jfkw)</comment>
+    <requestid>1272171</requestid>
+  </revision>
 </revisionlist>
