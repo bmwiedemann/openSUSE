@@ -2,7 +2,7 @@
 # spec file for package paralleloverhead
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(sdl2)
 
 %description

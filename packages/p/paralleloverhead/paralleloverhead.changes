@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 16:44:57 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires pkgconfig(glesv2), fixes building
+
+-------------------------------------------------------------------
 Fri Feb 14 15:07:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Build with distro provides CFLAGS
