@@ -1,0 +1,2284 @@
+From 7ffdddcdb500e65f1e76d958c8a1116289445d25 Mon Sep 17 00:00:00 2001
+From: Dominik Holler <github@hollyhome.ath.cx>
+Date: Tue, 25 Mar 2025 13:24:38 +0000
+Subject: [PATCH 4/4] chore(deps): update module golang.org/x/net to v0.36.0
+ [security]
+
+Signed-off-by: Dominik Holler <github@hollyhome.ath.cx>
+(cherry picked from commit f499bdbd3ff6c46cdf189c20dae3026aa8264f2a)
+Signed-off-by: Caleb Crane <ccrane@suse.de>
+---
+ go.mod                                        |   2 +-
+ go.sum                                        |   4 +-
+ vendor/golang.org/x/net/context/BUILD.bazel   |   8 +-
+ vendor/golang.org/x/net/context/context.go    | 112 ++++-
+ vendor/golang.org/x/net/context/go17.go       |  72 ---
+ vendor/golang.org/x/net/context/go19.go       |  20 -
+ vendor/golang.org/x/net/context/pre_go17.go   | 300 -----------
+ vendor/golang.org/x/net/context/pre_go19.go   | 109 ----
+ vendor/golang.org/x/net/http2/BUILD.bazel     |   2 +-
+ vendor/golang.org/x/net/http2/config.go       |   2 +-
+ vendor/golang.org/x/net/http2/config_go124.go |   2 +-
+ vendor/golang.org/x/net/http2/http2.go        |  39 +-
+ vendor/golang.org/x/net/http2/server.go       | 125 ++---
+ vendor/golang.org/x/net/http2/transport.go    | 347 ++-----------
+ vendor/golang.org/x/net/http2/write.go        |   3 +-
+ .../x/net/internal/httpcommon/BUILD.bazel     |  17 +
+ .../x/net/internal/httpcommon/ascii.go        |  53 ++
+ .../httpcommon}/headermap.go                  |  24 +-
+ .../x/net/internal/httpcommon/request.go      | 467 ++++++++++++++++++
+ vendor/golang.org/x/net/proxy/per_host.go     |   8 +-
+ vendor/modules.txt                            |   5 +-
+ 21 files changed, 773 insertions(+), 948 deletions(-)
+ delete mode 100644 vendor/golang.org/x/net/context/go17.go
+ delete mode 100644 vendor/golang.org/x/net/context/go19.go
+ delete mode 100644 vendor/golang.org/x/net/context/pre_go17.go
+ delete mode 100644 vendor/golang.org/x/net/context/pre_go19.go
+ create mode 100644 vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
+ create mode 100644 vendor/golang.org/x/net/internal/httpcommon/ascii.go
+ rename vendor/golang.org/x/net/{http2 => internal/httpcommon}/headermap.go (74%)
+ create mode 100644 vendor/golang.org/x/net/internal/httpcommon/request.go
+
+diff --git a/go.mod b/go.mod
+index 80e021ef61..54a4cce704 100644
+--- a/go.mod
++++ b/go.mod
+@@ -57,7 +57,7 @@ require (
+ 	github.com/vishvananda/netlink v1.3.0
+ 	github.com/wadey/gocovmerge v0.0.0-20160331181800-b5bfa59ec0ad
+ 	golang.org/x/crypto v0.35.0
+-	golang.org/x/net v0.33.0
++	golang.org/x/net v0.36.0
+ 	golang.org/x/sync v0.11.0
+ 	golang.org/x/sys v0.30.0
+ 	golang.org/x/term v0.29.0
+diff --git a/go.sum b/go.sum
+index 1360c75b3b..6b69a1944b 100644
+--- a/go.sum
++++ b/go.sum
+@@ -2675,8 +2675,8 @@ golang.org/x/net v0.23.0/go.mod h1:JKghWKKOSdJwpW2GEx0Ja7fmaKnMsbu+MWVZTokSYmg=
+ golang.org/x/net v0.24.0/go.mod h1:2Q7sJY5mzlzWjKtYUEXSlBWCdyaioyXzRB2RtU8KVE8=
+ golang.org/x/net v0.25.0/go.mod h1:JkAGAh7GEvH74S6FOH42FLoXpXbE/aqXSrIQjXgsiwM=
+ golang.org/x/net v0.26.0/go.mod h1:5YKkiSynbBIh3p6iOc/vibscux0x38BZDkn8sCUPxHE=
+-golang.org/x/net v0.33.0 h1:74SYHlV8BIgHIFC/LrYkOGIwL19eTYXQ5wc6TBuO36I=
+-golang.org/x/net v0.33.0/go.mod h1:HXLR5J+9DxmrqMwG9qjGCxZ+zKXxBru04zlTvWlWuN4=
++golang.org/x/net v0.36.0 h1:vWF2fRbw4qslQsQzgFqZff+BItCvGFQqKzKIzx1rmoA=
++golang.org/x/net v0.36.0/go.mod h1:bFmbeoIPfrw4sMHNhb4J9f6+tPziuGjq7Jk/38fxi1I=
+ golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
+ golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
+ golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
+diff --git a/vendor/golang.org/x/net/context/BUILD.bazel b/vendor/golang.org/x/net/context/BUILD.bazel
+index 2c15af1a35..976349f58f 100644
+--- a/vendor/golang.org/x/net/context/BUILD.bazel
++++ b/vendor/golang.org/x/net/context/BUILD.bazel
+@@ -2,13 +2,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_library")
+ 
+ go_library(
+     name = "go_default_library",
+-    srcs = [
+-        "context.go",
+-        "go17.go",
+-        "go19.go",
+-        "pre_go17.go",
+-        "pre_go19.go",
+-    ],
++    srcs = ["context.go"],
+     importmap = "kubevirt.io/kubevirt/vendor/golang.org/x/net/context",
+     importpath = "golang.org/x/net/context",
+     visibility = ["//visibility:public"],
+diff --git a/vendor/golang.org/x/net/context/context.go b/vendor/golang.org/x/net/context/context.go
+index cf66309c4a..db1c95fab1 100644
+--- a/vendor/golang.org/x/net/context/context.go
++++ b/vendor/golang.org/x/net/context/context.go
+@@ -3,29 +3,31 @@
+ // license that can be found in the LICENSE file.
+ 
+ // Package context defines the Context type, which carries deadlines,
+-// cancelation signals, and other request-scoped values across API boundaries
++// cancellation signals, and other request-scoped values across API boundaries
+ // and between processes.
+ // As of Go 1.7 this package is available in the standard library under the
+-// name context.  https://golang.org/pkg/context.
++// name [context], and migrating to it can be done automatically with [go fix].
+ //
+-// Incoming requests to a server should create a Context, and outgoing calls to
+-// servers should accept a Context. The chain of function calls between must
+-// propagate the Context, optionally replacing it with a modified copy created
+-// using WithDeadline, WithTimeout, WithCancel, or WithValue.
++// Incoming requests to a server should create a [Context], and outgoing
++// calls to servers should accept a Context. The chain of function
++// calls between them must propagate the Context, optionally replacing
++// it with a derived Context created using [WithCancel], [WithDeadline],
++// [WithTimeout], or [WithValue].
+ //
+ // Programs that use Contexts should follow these rules to keep interfaces
+ // consistent across packages and enable static analysis tools to check context
+ // propagation:
+ //
+ // Do not store Contexts inside a struct type; instead, pass a Context
+-// explicitly to each function that needs it. The Context should be the first
++// explicitly to each function that needs it. This is discussed further in
++// https://go.dev/blog/context-and-structs. The Context should be the first
+ // parameter, typically named ctx:
+ //
+ //	func DoSomething(ctx context.Context, arg Arg) error {
+ //		// ... use ctx ...
+ //	}
+ //
+-// Do not pass a nil Context, even if a function permits it. Pass context.TODO
++// Do not pass a nil [Context], even if a function permits it. Pass [context.TODO]
+ // if you are unsure about which Context to use.
+ //
+ // Use context Values only for request-scoped data that transits processes and
+@@ -34,9 +36,30 @@
+ // The same Context may be passed to functions running in different goroutines;
+ // Contexts are safe for simultaneous use by multiple goroutines.
+ //
+-// See http://blog.golang.org/context for example code for a server that uses
++// See https://go.dev/blog/context for example code for a server that uses
+ // Contexts.
+-package context // import "golang.org/x/net/context"
++//
++// [go fix]: https://go.dev/cmd/go#hdr-Update_packages_to_use_new_APIs
++package context
++
++import (
++	"context" // standard library's context, as of Go 1.7
++	"time"
++)
++
++// A Context carries a deadline, a cancellation signal, and other values across
++// API boundaries.
++//
++// Context's methods may be called by multiple goroutines simultaneously.
++type Context = context.Context
++
++// Canceled is the error returned by [Context.Err] when the context is canceled
++// for some reason other than its deadline passing.
++var Canceled = context.Canceled
++
++// DeadlineExceeded is the error returned by [Context.Err] when the context is canceled
++// due to its deadline passing.
++var DeadlineExceeded = context.DeadlineExceeded
+ 
+ // Background returns a non-nil, empty Context. It is never canceled, has no
+ // values, and has no deadline. It is typically used by the main function,
+@@ -49,8 +72,73 @@ func Background() Context {
+ // TODO returns a non-nil, empty Context. Code should use context.TODO when
+ // it's unclear which Context to use or it is not yet available (because the
+ // surrounding function has not yet been extended to accept a Context
+-// parameter).  TODO is recognized by static analysis tools that determine
+-// whether Contexts are propagated correctly in a program.
++// parameter).
+ func TODO() Context {
+ 	return todo
+ }
++
++var (
++	background = context.Background()
++	todo       = context.TODO()
++)
++
++// A CancelFunc tells an operation to abandon its work.
++// A CancelFunc does not wait for the work to stop.
++// A CancelFunc may be called by multiple goroutines simultaneously.
++// After the first call, subsequent calls to a CancelFunc do nothing.
++type CancelFunc = context.CancelFunc
++
++// WithCancel returns a derived context that points to the parent context
++// but has a new Done channel. The returned context's Done channel is closed
++// when the returned cancel function is called or when the parent context's
++// Done channel is closed, whichever happens first.
++//
++// Canceling this context releases resources associated with it, so code should
++// call cancel as soon as the operations running in this [Context] complete.
++func WithCancel(parent Context) (ctx Context, cancel CancelFunc) {
++	return context.WithCancel(parent)
++}
++
++// WithDeadline returns a derived context that points to the parent context
++// but has the deadline adjusted to be no later than d. If the parent's
++// deadline is already earlier than d, WithDeadline(parent, d) is semantically
++// equivalent to parent. The returned [Context.Done] channel is closed when
++// the deadline expires, when the returned cancel function is called,
++// or when the parent context's Done channel is closed, whichever happens first.
++//
++// Canceling this context releases resources associated with it, so code should
++// call cancel as soon as the operations running in this [Context] complete.
++func WithDeadline(parent Context, d time.Time) (Context, CancelFunc) {
++	return context.WithDeadline(parent, d)
++}
++
++// WithTimeout returns WithDeadline(parent, time.Now().Add(timeout)).
++//
++// Canceling this context releases resources associated with it, so code should
++// call cancel as soon as the operations running in this [Context] complete:
++//
++//	func slowOperationWithTimeout(ctx context.Context) (Result, error) {
++//		ctx, cancel := context.WithTimeout(ctx, 100*time.Millisecond)
++//		defer cancel()  // releases resources if slowOperation completes before timeout elapses
++//		return slowOperation(ctx)
++//	}
++func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
++	return context.WithTimeout(parent, timeout)
++}
++
++// WithValue returns a derived context that points to the parent Context.
++// In the derived context, the value associated with key is val.
++//
++// Use context Values only for request-scoped data that transits processes and
++// APIs, not for passing optional parameters to functions.
++//
++// The provided key must be comparable and should not be of type
++// string or any other built-in type to avoid collisions between
++// packages using context. Users of WithValue should define their own
++// types for keys. To avoid allocating when assigning to an
++// interface{}, context keys often have concrete type
++// struct{}. Alternatively, exported context key variables' static
++// type should be a pointer or interface.
++func WithValue(parent Context, key, val interface{}) Context {
++	return context.WithValue(parent, key, val)
++}
+diff --git a/vendor/golang.org/x/net/context/go17.go b/vendor/golang.org/x/net/context/go17.go
+deleted file mode 100644
+index 0c1b867937..0000000000
+--- a/vendor/golang.org/x/net/context/go17.go
++++ /dev/null
+@@ -1,72 +0,0 @@
+-// Copyright 2016 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build go1.7
+-
+-package context
+-
+-import (
+-	"context" // standard library's context, as of Go 1.7
+-	"time"
+-)
+-
+-var (
+-	todo       = context.TODO()
+-	background = context.Background()
+-)
+-
+-// Canceled is the error returned by Context.Err when the context is canceled.
+-var Canceled = context.Canceled
+-
+-// DeadlineExceeded is the error returned by Context.Err when the context's
+-// deadline passes.
+-var DeadlineExceeded = context.DeadlineExceeded
+-
+-// WithCancel returns a copy of parent with a new Done channel. The returned
+-// context's Done channel is closed when the returned cancel function is called
+-// or when the parent context's Done channel is closed, whichever happens first.
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete.
+-func WithCancel(parent Context) (ctx Context, cancel CancelFunc) {
+-	ctx, f := context.WithCancel(parent)
+-	return ctx, f
+-}
+-
+-// WithDeadline returns a copy of the parent context with the deadline adjusted
+-// to be no later than d. If the parent's deadline is already earlier than d,
+-// WithDeadline(parent, d) is semantically equivalent to parent. The returned
+-// context's Done channel is closed when the deadline expires, when the returned
+-// cancel function is called, or when the parent context's Done channel is
+-// closed, whichever happens first.
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete.
+-func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc) {
+-	ctx, f := context.WithDeadline(parent, deadline)
+-	return ctx, f
+-}
+-
+-// WithTimeout returns WithDeadline(parent, time.Now().Add(timeout)).
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete:
+-//
+-//	func slowOperationWithTimeout(ctx context.Context) (Result, error) {
+-//		ctx, cancel := context.WithTimeout(ctx, 100*time.Millisecond)
+-//		defer cancel()  // releases resources if slowOperation completes before timeout elapses
+-//		return slowOperation(ctx)
+-//	}
+-func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
+-	return WithDeadline(parent, time.Now().Add(timeout))
+-}
+-
+-// WithValue returns a copy of parent in which the value associated with key is
+-// val.
+-//
+-// Use context Values only for request-scoped data that transits processes and
+-// APIs, not for passing optional parameters to functions.
+-func WithValue(parent Context, key interface{}, val interface{}) Context {
+-	return context.WithValue(parent, key, val)
+-}
+diff --git a/vendor/golang.org/x/net/context/go19.go b/vendor/golang.org/x/net/context/go19.go
+deleted file mode 100644
+index e31e35a904..0000000000
+--- a/vendor/golang.org/x/net/context/go19.go
++++ /dev/null
+@@ -1,20 +0,0 @@
+-// Copyright 2017 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build go1.9
+-
+-package context
+-
+-import "context" // standard library's context, as of Go 1.7
+-
+-// A Context carries a deadline, a cancelation signal, and other values across
+-// API boundaries.
+-//
+-// Context's methods may be called by multiple goroutines simultaneously.
+-type Context = context.Context
+-
+-// A CancelFunc tells an operation to abandon its work.
+-// A CancelFunc does not wait for the work to stop.
+-// After the first call, subsequent calls to a CancelFunc do nothing.
+-type CancelFunc = context.CancelFunc
+diff --git a/vendor/golang.org/x/net/context/pre_go17.go b/vendor/golang.org/x/net/context/pre_go17.go
+deleted file mode 100644
+index 065ff3dfa5..0000000000
+--- a/vendor/golang.org/x/net/context/pre_go17.go
++++ /dev/null
+@@ -1,300 +0,0 @@
+-// Copyright 2014 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !go1.7
+-
+-package context
+-
+-import (
+-	"errors"
+-	"fmt"
+-	"sync"
+-	"time"
+-)
+-
+-// An emptyCtx is never canceled, has no values, and has no deadline. It is not
+-// struct{}, since vars of this type must have distinct addresses.
+-type emptyCtx int
+-
+-func (*emptyCtx) Deadline() (deadline time.Time, ok bool) {
+-	return
+-}
+-
+-func (*emptyCtx) Done() <-chan struct{} {
+-	return nil
+-}
+-
+-func (*emptyCtx) Err() error {
+-	return nil
+-}
+-
+-func (*emptyCtx) Value(key interface{}) interface{} {
+-	return nil
+-}
+-
+-func (e *emptyCtx) String() string {
+-	switch e {
+-	case background:
+-		return "context.Background"
+-	case todo:
+-		return "context.TODO"
+-	}
+-	return "unknown empty Context"
+-}
+-
+-var (
+-	background = new(emptyCtx)
+-	todo       = new(emptyCtx)
+-)
+-
+-// Canceled is the error returned by Context.Err when the context is canceled.
+-var Canceled = errors.New("context canceled")
+-
+-// DeadlineExceeded is the error returned by Context.Err when the context's
+-// deadline passes.
+-var DeadlineExceeded = errors.New("context deadline exceeded")
+-
+-// WithCancel returns a copy of parent with a new Done channel. The returned
+-// context's Done channel is closed when the returned cancel function is called
+-// or when the parent context's Done channel is closed, whichever happens first.
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete.
+-func WithCancel(parent Context) (ctx Context, cancel CancelFunc) {
+-	c := newCancelCtx(parent)
+-	propagateCancel(parent, c)
+-	return c, func() { c.cancel(true, Canceled) }
+-}
+-
+-// newCancelCtx returns an initialized cancelCtx.
+-func newCancelCtx(parent Context) *cancelCtx {
+-	return &cancelCtx{
+-		Context: parent,
+-		done:    make(chan struct{}),
+-	}
+-}
+-
+-// propagateCancel arranges for child to be canceled when parent is.
+-func propagateCancel(parent Context, child canceler) {
+-	if parent.Done() == nil {
+-		return // parent is never canceled
+-	}
+-	if p, ok := parentCancelCtx(parent); ok {
+-		p.mu.Lock()
+-		if p.err != nil {
+-			// parent has already been canceled
+-			child.cancel(false, p.err)
+-		} else {
+-			if p.children == nil {
+-				p.children = make(map[canceler]bool)
+-			}
+-			p.children[child] = true
+-		}
+-		p.mu.Unlock()
+-	} else {
+-		go func() {
+-			select {
+-			case <-parent.Done():
+-				child.cancel(false, parent.Err())
+-			case <-child.Done():
+-			}
+-		}()
+-	}
+-}
+-
+-// parentCancelCtx follows a chain of parent references until it finds a
+-// *cancelCtx. This function understands how each of the concrete types in this
+-// package represents its parent.
+-func parentCancelCtx(parent Context) (*cancelCtx, bool) {
+-	for {
+-		switch c := parent.(type) {
+-		case *cancelCtx:
+-			return c, true
+-		case *timerCtx:
+-			return c.cancelCtx, true
+-		case *valueCtx:
+-			parent = c.Context
+-		default:
+-			return nil, false
+-		}
+-	}
+-}
+-
+-// removeChild removes a context from its parent.
+-func removeChild(parent Context, child canceler) {
+-	p, ok := parentCancelCtx(parent)
+-	if !ok {
+-		return
+-	}
+-	p.mu.Lock()
+-	if p.children != nil {
+-		delete(p.children, child)
+-	}
+-	p.mu.Unlock()
+-}
+-
+-// A canceler is a context type that can be canceled directly. The
+-// implementations are *cancelCtx and *timerCtx.
+-type canceler interface {
+-	cancel(removeFromParent bool, err error)
+-	Done() <-chan struct{}
+-}
+-
+-// A cancelCtx can be canceled. When canceled, it also cancels any children
+-// that implement canceler.
+-type cancelCtx struct {
+-	Context
+-
+-	done chan struct{} // closed by the first cancel call.
+-
+-	mu       sync.Mutex
+-	children map[canceler]bool // set to nil by the first cancel call
+-	err      error             // set to non-nil by the first cancel call
+-}
+-
+-func (c *cancelCtx) Done() <-chan struct{} {
+-	return c.done
+-}
+-
+-func (c *cancelCtx) Err() error {
+-	c.mu.Lock()
+-	defer c.mu.Unlock()
+-	return c.err
+-}
+-
+-func (c *cancelCtx) String() string {
+-	return fmt.Sprintf("%v.WithCancel", c.Context)
+-}
+-
+-// cancel closes c.done, cancels each of c's children, and, if
+-// removeFromParent is true, removes c from its parent's children.
+-func (c *cancelCtx) cancel(removeFromParent bool, err error) {
+-	if err == nil {
+-		panic("context: internal error: missing cancel error")
+-	}
+-	c.mu.Lock()
+-	if c.err != nil {
+-		c.mu.Unlock()
+-		return // already canceled
+-	}
+-	c.err = err
+-	close(c.done)
+-	for child := range c.children {
+-		// NOTE: acquiring the child's lock while holding parent's lock.
+-		child.cancel(false, err)
+-	}
+-	c.children = nil
+-	c.mu.Unlock()
+-
+-	if removeFromParent {
+-		removeChild(c.Context, c)
+-	}
+-}
+-
+-// WithDeadline returns a copy of the parent context with the deadline adjusted
+-// to be no later than d. If the parent's deadline is already earlier than d,
+-// WithDeadline(parent, d) is semantically equivalent to parent. The returned
+-// context's Done channel is closed when the deadline expires, when the returned
+-// cancel function is called, or when the parent context's Done channel is
+-// closed, whichever happens first.
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete.
+-func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc) {
+-	if cur, ok := parent.Deadline(); ok && cur.Before(deadline) {
+-		// The current deadline is already sooner than the new one.
+-		return WithCancel(parent)
+-	}
+-	c := &timerCtx{
+-		cancelCtx: newCancelCtx(parent),
+-		deadline:  deadline,
+-	}
+-	propagateCancel(parent, c)
+-	d := deadline.Sub(time.Now())
+-	if d <= 0 {
+-		c.cancel(true, DeadlineExceeded) // deadline has already passed
+-		return c, func() { c.cancel(true, Canceled) }
+-	}
+-	c.mu.Lock()
+-	defer c.mu.Unlock()
+-	if c.err == nil {
+-		c.timer = time.AfterFunc(d, func() {
+-			c.cancel(true, DeadlineExceeded)
+-		})
+-	}
+-	return c, func() { c.cancel(true, Canceled) }
+-}
+-
+-// A timerCtx carries a timer and a deadline. It embeds a cancelCtx to
+-// implement Done and Err. It implements cancel by stopping its timer then
+-// delegating to cancelCtx.cancel.
+-type timerCtx struct {
+-	*cancelCtx
+-	timer *time.Timer // Under cancelCtx.mu.
+-
+-	deadline time.Time
+-}
+-
+-func (c *timerCtx) Deadline() (deadline time.Time, ok bool) {
+-	return c.deadline, true
+-}
+-
+-func (c *timerCtx) String() string {
+-	return fmt.Sprintf("%v.WithDeadline(%s [%s])", c.cancelCtx.Context, c.deadline, c.deadline.Sub(time.Now()))
+-}
+-
+-func (c *timerCtx) cancel(removeFromParent bool, err error) {
+-	c.cancelCtx.cancel(false, err)
+-	if removeFromParent {
+-		// Remove this timerCtx from its parent cancelCtx's children.
+-		removeChild(c.cancelCtx.Context, c)
+-	}
+-	c.mu.Lock()
+-	if c.timer != nil {
+-		c.timer.Stop()
+-		c.timer = nil
+-	}
+-	c.mu.Unlock()
+-}
+-
+-// WithTimeout returns WithDeadline(parent, time.Now().Add(timeout)).
+-//
+-// Canceling this context releases resources associated with it, so code should
+-// call cancel as soon as the operations running in this Context complete:
+-//
+-//	func slowOperationWithTimeout(ctx context.Context) (Result, error) {
+-//		ctx, cancel := context.WithTimeout(ctx, 100*time.Millisecond)
+-//		defer cancel()  // releases resources if slowOperation completes before timeout elapses
+-//		return slowOperation(ctx)
+-//	}
+-func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc) {
+-	return WithDeadline(parent, time.Now().Add(timeout))
+-}
+-
+-// WithValue returns a copy of parent in which the value associated with key is
+-// val.
+-//
+-// Use context Values only for request-scoped data that transits processes and
+-// APIs, not for passing optional parameters to functions.
+-func WithValue(parent Context, key interface{}, val interface{}) Context {
+-	return &valueCtx{parent, key, val}
+-}
+-
+-// A valueCtx carries a key-value pair. It implements Value for that key and
+-// delegates all other calls to the embedded Context.
+-type valueCtx struct {
+-	Context
+-	key, val interface{}
+-}
+-
+-func (c *valueCtx) String() string {
+-	return fmt.Sprintf("%v.WithValue(%#v, %#v)", c.Context, c.key, c.val)
+-}
+-
+-func (c *valueCtx) Value(key interface{}) interface{} {
+-	if c.key == key {
+-		return c.val
+-	}
+-	return c.Context.Value(key)
+-}
+diff --git a/vendor/golang.org/x/net/context/pre_go19.go b/vendor/golang.org/x/net/context/pre_go19.go
+deleted file mode 100644
+index ec5a638033..0000000000
+--- a/vendor/golang.org/x/net/context/pre_go19.go
++++ /dev/null
+@@ -1,109 +0,0 @@
+-// Copyright 2014 The Go Authors. All rights reserved.
+-// Use of this source code is governed by a BSD-style
+-// license that can be found in the LICENSE file.
+-
+-//go:build !go1.9
+-
+-package context
+-
+-import "time"
+-
+-// A Context carries a deadline, a cancelation signal, and other values across
+-// API boundaries.
+-//
+-// Context's methods may be called by multiple goroutines simultaneously.
+-type Context interface {
+-	// Deadline returns the time when work done on behalf of this context
+-	// should be canceled. Deadline returns ok==false when no deadline is
+-	// set. Successive calls to Deadline return the same results.
+-	Deadline() (deadline time.Time, ok bool)
+-
+-	// Done returns a channel that's closed when work done on behalf of this
+-	// context should be canceled. Done may return nil if this context can
+-	// never be canceled. Successive calls to Done return the same value.
+-	//
+-	// WithCancel arranges for Done to be closed when cancel is called;
+-	// WithDeadline arranges for Done to be closed when the deadline
+-	// expires; WithTimeout arranges for Done to be closed when the timeout
+-	// elapses.
+-	//
+-	// Done is provided for use in select statements:
+-	//
+-	//  // Stream generates values with DoSomething and sends them to out
+-	//  // until DoSomething returns an error or ctx.Done is closed.
+-	//  func Stream(ctx context.Context, out chan<- Value) error {
+-	//  	for {
+-	//  		v, err := DoSomething(ctx)
+-	//  		if err != nil {
+-	//  			return err
+-	//  		}
+-	//  		select {
+-	//  		case <-ctx.Done():
+-	//  			return ctx.Err()
+-	//  		case out <- v:
+-	//  		}
+-	//  	}
+-	//  }
+-	//
+-	// See http://blog.golang.org/pipelines for more examples of how to use
+-	// a Done channel for cancelation.
+-	Done() <-chan struct{}
+-
+-	// Err returns a non-nil error value after Done is closed. Err returns
+-	// Canceled if the context was canceled or DeadlineExceeded if the
+-	// context's deadline passed. No other values for Err are defined.
+-	// After Done is closed, successive calls to Err return the same value.
+-	Err() error
+-
+-	// Value returns the value associated with this context for key, or nil
+-	// if no value is associated with key. Successive calls to Value with
+-	// the same key returns the same result.
+-	//
+-	// Use context values only for request-scoped data that transits
+-	// processes and API boundaries, not for passing optional parameters to
+-	// functions.
+-	//
+-	// A key identifies a specific value in a Context. Functions that wish
+-	// to store values in Context typically allocate a key in a global
+-	// variable then use that key as the argument to context.WithValue and
+-	// Context.Value. A key can be any type that supports equality;
+-	// packages should define keys as an unexported type to avoid
+-	// collisions.
+-	//
+-	// Packages that define a Context key should provide type-safe accessors
+-	// for the values stores using that key:
+-	//
+-	// 	// Package user defines a User type that's stored in Contexts.
+-	// 	package user
+-	//
+-	// 	import "golang.org/x/net/context"
+-	//
+-	// 	// User is the type of value stored in the Contexts.
+-	// 	type User struct {...}
+-	//
+-	// 	// key is an unexported type for keys defined in this package.
+-	// 	// This prevents collisions with keys defined in other packages.
+-	// 	type key int
+-	//
+-	// 	// userKey is the key for user.User values in Contexts. It is
+-	// 	// unexported; clients use user.NewContext and user.FromContext
+-	// 	// instead of using this key directly.
+-	// 	var userKey key = 0
+-	//
+-	// 	// NewContext returns a new Context that carries value u.
+-	// 	func NewContext(ctx context.Context, u *User) context.Context {
+-	// 		return context.WithValue(ctx, userKey, u)
+-	// 	}
+-	//
+-	// 	// FromContext returns the User value stored in ctx, if any.
+-	// 	func FromContext(ctx context.Context) (*User, bool) {
+-	// 		u, ok := ctx.Value(userKey).(*User)
+-	// 		return u, ok
+-	// 	}
+-	Value(key interface{}) interface{}
+-}
+-
+-// A CancelFunc tells an operation to abandon its work.
+-// A CancelFunc does not wait for the work to stop.
+-// After the first call, subsequent calls to a CancelFunc do nothing.
+-type CancelFunc func()
+diff --git a/vendor/golang.org/x/net/http2/BUILD.bazel b/vendor/golang.org/x/net/http2/BUILD.bazel
+index 78bb76156f..85f763e4a4 100644
+--- a/vendor/golang.org/x/net/http2/BUILD.bazel
++++ b/vendor/golang.org/x/net/http2/BUILD.bazel
+@@ -14,7 +14,6 @@ go_library(
+         "flow.go",
+         "frame.go",
+         "gotrack.go",
+-        "headermap.go",
+         "http2.go",
+         "pipe.go",
+         "server.go",
+@@ -34,5 +33,6 @@ go_library(
+         "//vendor/golang.org/x/net/http/httpguts:go_default_library",
+         "//vendor/golang.org/x/net/http2/hpack:go_default_library",
+         "//vendor/golang.org/x/net/idna:go_default_library",
++        "//vendor/golang.org/x/net/internal/httpcommon:go_default_library",
+     ],
+ )
+diff --git a/vendor/golang.org/x/net/http2/config.go b/vendor/golang.org/x/net/http2/config.go
+index de58dfb8dc..ca645d9a1a 100644
+--- a/vendor/golang.org/x/net/http2/config.go
++++ b/vendor/golang.org/x/net/http2/config.go
+@@ -60,7 +60,7 @@ func configFromServer(h1 *http.Server, h2 *Server) http2Config {
+ 	return conf
+ }
+ 
+-// configFromServer merges configuration settings from h2 and h2.t1.HTTP2
++// configFromTransport merges configuration settings from h2 and h2.t1.HTTP2
+ // (the net/http Transport).
+ func configFromTransport(h2 *Transport) http2Config {
+ 	conf := http2Config{
+diff --git a/vendor/golang.org/x/net/http2/config_go124.go b/vendor/golang.org/x/net/http2/config_go124.go
+index e3784123c8..5b516c55ff 100644
+--- a/vendor/golang.org/x/net/http2/config_go124.go
++++ b/vendor/golang.org/x/net/http2/config_go124.go
+@@ -13,7 +13,7 @@ func fillNetHTTPServerConfig(conf *http2Config, srv *http.Server) {
+ 	fillNetHTTPConfig(conf, srv.HTTP2)
+ }
+ 
+-// fillNetHTTPServerConfig sets fields in conf from tr.HTTP2.
++// fillNetHTTPTransportConfig sets fields in conf from tr.HTTP2.
+ func fillNetHTTPTransportConfig(conf *http2Config, tr *http.Transport) {
+ 	fillNetHTTPConfig(conf, tr.HTTP2)
+ }
+diff --git a/vendor/golang.org/x/net/http2/http2.go b/vendor/golang.org/x/net/http2/http2.go
+index c7601c909f..6c18ea230b 100644
+--- a/vendor/golang.org/x/net/http2/http2.go
++++ b/vendor/golang.org/x/net/http2/http2.go
+@@ -34,11 +34,19 @@ import (
+ )
+ 
+ var (
+-	VerboseLogs                    bool
+-	logFrameWrites                 bool
+-	logFrameReads                  bool
+-	inTests                        bool
+-	disableExtendedConnectProtocol bool
++	VerboseLogs    bool
++	logFrameWrites bool
++	logFrameReads  bool
++	inTests        bool
++
++	// Enabling extended CONNECT by causes browsers to attempt to use
++	// WebSockets-over-HTTP/2. This results in problems when the server's websocket
++	// package doesn't support extended CONNECT.
++	//
++	// Disable extended CONNECT by default for now.
++	//
++	// Issue #71128.
++	disableExtendedConnectProtocol = true
+ )
+ 
+ func init() {
+@@ -51,8 +59,8 @@ func init() {
+ 		logFrameWrites = true
+ 		logFrameReads = true
+ 	}
+-	if strings.Contains(e, "http2xconnect=0") {
+-		disableExtendedConnectProtocol = true
++	if strings.Contains(e, "http2xconnect=1") {
++		disableExtendedConnectProtocol = false
+ 	}
+ }
+ 
+@@ -407,23 +415,6 @@ func (s *sorter) SortStrings(ss []string) {
+ 	s.v = save
+ }
+ 
+-// validPseudoPath reports whether v is a valid :path pseudo-header
+-// value. It must be either:
+-//
+-//   - a non-empty string starting with '/'
+-//   - the string '*', for OPTIONS requests.
+-//
+-// For now this is only used a quick check for deciding when to clean
+-// up Opaque URLs before sending requests from the Transport.
+-// See golang.org/issue/16847
+-//
+-// We used to enforce that the path also didn't start with "//", but
+-// Google's GFE accepts such paths and Chrome sends them, so ignore
+-// that part of the spec. See golang.org/issue/19103.
+-func validPseudoPath(v string) bool {
+-	return (len(v) > 0 && v[0] == '/') || v == "*"
+-}
+-
+ // incomparable is a zero-width, non-comparable type. Adding it to a struct
+ // makes that struct also non-comparable, and generally doesn't add
+ // any size (as long as it's first).
+diff --git a/vendor/golang.org/x/net/http2/server.go b/vendor/golang.org/x/net/http2/server.go
+index b55547aec6..b640deb0e0 100644
+--- a/vendor/golang.org/x/net/http2/server.go
++++ b/vendor/golang.org/x/net/http2/server.go
+@@ -50,6 +50,7 @@ import (
+ 
+ 	"golang.org/x/net/http/httpguts"
+ 	"golang.org/x/net/http2/hpack"
++	"golang.org/x/net/internal/httpcommon"
+ )
+ 
+ const (
+@@ -812,8 +813,7 @@ const maxCachedCanonicalHeadersKeysSize = 2048
+ 
+ func (sc *serverConn) canonicalHeader(v string) string {
+ 	sc.serveG.check()
+-	buildCommonHeaderMapsOnce()
+-	cv, ok := commonCanonHeader[v]
++	cv, ok := httpcommon.CachedCanonicalHeader(v)
+ 	if ok {
+ 		return cv
+ 	}
+@@ -2233,25 +2233,25 @@ func (sc *serverConn) newStream(id, pusherID uint32, state streamState) *stream
+ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*responseWriter, *http.Request, error) {
+ 	sc.serveG.check()
+ 
+-	rp := requestParam{
+-		method:    f.PseudoValue("method"),
+-		scheme:    f.PseudoValue("scheme"),
+-		authority: f.PseudoValue("authority"),
+-		path:      f.PseudoValue("path"),
+-		protocol:  f.PseudoValue("protocol"),
++	rp := httpcommon.ServerRequestParam{
++		Method:    f.PseudoValue("method"),
++		Scheme:    f.PseudoValue("scheme"),
++		Authority: f.PseudoValue("authority"),
++		Path:      f.PseudoValue("path"),
++		Protocol:  f.PseudoValue("protocol"),
+ 	}
+ 
+ 	// extended connect is disabled, so we should not see :protocol
+-	if disableExtendedConnectProtocol && rp.protocol != "" {
++	if disableExtendedConnectProtocol && rp.Protocol != "" {
+ 		return nil, nil, sc.countError("bad_connect", streamError(f.StreamID, ErrCodeProtocol))
+ 	}
+ 
+-	isConnect := rp.method == "CONNECT"
++	isConnect := rp.Method == "CONNECT"
+ 	if isConnect {
+-		if rp.protocol == "" && (rp.path != "" || rp.scheme != "" || rp.authority == "") {
++		if rp.Protocol == "" && (rp.Path != "" || rp.Scheme != "" || rp.Authority == "") {
+ 			return nil, nil, sc.countError("bad_connect", streamError(f.StreamID, ErrCodeProtocol))
+ 		}
+-	} else if rp.method == "" || rp.path == "" || (rp.scheme != "https" && rp.scheme != "http") {
++	} else if rp.Method == "" || rp.Path == "" || (rp.Scheme != "https" && rp.Scheme != "http") {
+ 		// See 8.1.2.6 Malformed Requests and Responses:
+ 		//
+ 		// Malformed requests or responses that are detected
+@@ -2265,15 +2265,16 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+ 		return nil, nil, sc.countError("bad_path_method", streamError(f.StreamID, ErrCodeProtocol))
+ 	}
+ 
+-	rp.header = make(http.Header)
++	header := make(http.Header)
++	rp.Header = header
+ 	for _, hf := range f.RegularFields() {
+-		rp.header.Add(sc.canonicalHeader(hf.Name), hf.Value)
++		header.Add(sc.canonicalHeader(hf.Name), hf.Value)
+ 	}
+-	if rp.authority == "" {
+-		rp.authority = rp.header.Get("Host")
++	if rp.Authority == "" {
++		rp.Authority = header.Get("Host")
+ 	}
+-	if rp.protocol != "" {
+-		rp.header.Set(":protocol", rp.protocol)
++	if rp.Protocol != "" {
++		header.Set(":protocol", rp.Protocol)
+ 	}
+ 
+ 	rw, req, err := sc.newWriterAndRequestNoBody(st, rp)
+@@ -2282,7 +2283,7 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+ 	}
+ 	bodyOpen := !f.StreamEnded()
+ 	if bodyOpen {
+-		if vv, ok := rp.header["Content-Length"]; ok {
++		if vv, ok := rp.Header["Content-Length"]; ok {
+ 			if cl, err := strconv.ParseUint(vv[0], 10, 63); err == nil {
+ 				req.ContentLength = int64(cl)
+ 			} else {
+@@ -2298,84 +2299,38 @@ func (sc *serverConn) newWriterAndRequest(st *stream, f *MetaHeadersFrame) (*res
+ 	return rw, req, nil
+ }
+ 
+-type requestParam struct {
+-	method                  string
+-	scheme, authority, path string
+-	protocol                string
+-	header                  http.Header
+-}
+-
+-func (sc *serverConn) newWriterAndRequestNoBody(st *stream, rp requestParam) (*responseWriter, *http.Request, error) {
++func (sc *serverConn) newWriterAndRequestNoBody(st *stream, rp httpcommon.ServerRequestParam) (*responseWriter, *http.Request, error) {
+ 	sc.serveG.check()
+ 
+ 	var tlsState *tls.ConnectionState // nil if not scheme https
+-	if rp.scheme == "https" {
++	if rp.Scheme == "https" {
+ 		tlsState = sc.tlsState
+ 	}
+ 
+-	needsContinue := httpguts.HeaderValuesContainsToken(rp.header["Expect"], "100-continue")
+-	if needsContinue {
+-		rp.header.Del("Expect")
+-	}
+-	// Merge Cookie headers into one "; "-delimited value.
+-	if cookies := rp.header["Cookie"]; len(cookies) > 1 {
+-		rp.header.Set("Cookie", strings.Join(cookies, "; "))
+-	}
+-
+-	// Setup Trailers
+-	var trailer http.Header
+-	for _, v := range rp.header["Trailer"] {
+-		for _, key := range strings.Split(v, ",") {
+-			key = http.CanonicalHeaderKey(textproto.TrimString(key))
+-			switch key {
+-			case "Transfer-Encoding", "Trailer", "Content-Length":
+-				// Bogus. (copy of http1 rules)
+-				// Ignore.
+-			default:
+-				if trailer == nil {
+-					trailer = make(http.Header)
+-				}
+-				trailer[key] = nil
+-			}
+-		}
+-	}
+-	delete(rp.header, "Trailer")
+-
+-	var url_ *url.URL
+-	var requestURI string
+-	if rp.method == "CONNECT" && rp.protocol == "" {
+-		url_ = &url.URL{Host: rp.authority}
+-		requestURI = rp.authority // mimic HTTP/1 server behavior
+-	} else {
+-		var err error
+-		url_, err = url.ParseRequestURI(rp.path)
+-		if err != nil {
+-			return nil, nil, sc.countError("bad_path", streamError(st.id, ErrCodeProtocol))
+-		}
+-		requestURI = rp.path
++	res := httpcommon.NewServerRequest(rp)
++	if res.InvalidReason != "" {
++		return nil, nil, sc.countError(res.InvalidReason, streamError(st.id, ErrCodeProtocol))
+ 	}
+ 
+ 	body := &requestBody{
+ 		conn:          sc,
+ 		stream:        st,
+-		needsContinue: needsContinue,
++		needsContinue: res.NeedsContinue,
+ 	}
+-	req := &http.Request{
+-		Method:     rp.method,
+-		URL:        url_,
++	req := (&http.Request{
++		Method:     rp.Method,
++		URL:        res.URL,
+ 		RemoteAddr: sc.remoteAddrStr,
+-		Header:     rp.header,
+-		RequestURI: requestURI,
++		Header:     rp.Header,
++		RequestURI: res.RequestURI,
+ 		Proto:      "HTTP/2.0",
+ 		ProtoMajor: 2,
+ 		ProtoMinor: 0,
+ 		TLS:        tlsState,
+-		Host:       rp.authority,
++		Host:       rp.Authority,
+ 		Body:       body,
+-		Trailer:    trailer,
+-	}
+-	req = req.WithContext(st.ctx)
+-
++		Trailer:    res.Trailer,
++	}).WithContext(st.ctx)
+ 	rw := sc.newResponseWriter(st, req)
+ 	return rw, req, nil
+ }
+@@ -3270,12 +3225,12 @@ func (sc *serverConn) startPush(msg *startPushRequest) {
+ 		// we start in "half closed (remote)" for simplicity.
+ 		// See further comments at the definition of stateHalfClosedRemote.
+ 		promised := sc.newStream(promisedID, msg.parent.id, stateHalfClosedRemote)
+-		rw, req, err := sc.newWriterAndRequestNoBody(promised, requestParam{
+-			method:    msg.method,
+-			scheme:    msg.url.Scheme,
+-			authority: msg.url.Host,
+-			path:      msg.url.RequestURI(),
+-			header:    cloneHeader(msg.header), // clone since handler runs concurrently with writing the PUSH_PROMISE
++		rw, req, err := sc.newWriterAndRequestNoBody(promised, httpcommon.ServerRequestParam{
++			Method:    msg.method,
++			Scheme:    msg.url.Scheme,
++			Authority: msg.url.Host,
++			Path:      msg.url.RequestURI(),
++			Header:    cloneHeader(msg.header), // clone since handler runs concurrently with writing the PUSH_PROMISE
+ 		})
+ 		if err != nil {
+ 			// Should not happen, since we've already validated msg.url.
+diff --git a/vendor/golang.org/x/net/http2/transport.go b/vendor/golang.org/x/net/http2/transport.go
+index 090d0e1bdb..f26356b9cd 100644
+--- a/vendor/golang.org/x/net/http2/transport.go
++++ b/vendor/golang.org/x/net/http2/transport.go
+@@ -25,7 +25,6 @@ import (
+ 	"net/http"
+ 	"net/http/httptrace"
+ 	"net/textproto"
+-	"sort"
+ 	"strconv"
+ 	"strings"
+ 	"sync"
+@@ -35,6 +34,7 @@ import (
+ 	"golang.org/x/net/http/httpguts"
+ 	"golang.org/x/net/http2/hpack"
+ 	"golang.org/x/net/idna"
++	"golang.org/x/net/internal/httpcommon"
+ )
+ 
+ const (
+@@ -375,6 +375,7 @@ type ClientConn struct {
+ 	doNotReuse       bool       // whether conn is marked to not be reused for any future requests
+ 	closing          bool
+ 	closed           bool
++	closedOnIdle     bool                     // true if conn was closed for idleness
+ 	seenSettings     bool                     // true if we've seen a settings frame, false otherwise
+ 	seenSettingsChan chan struct{}            // closed when seenSettings is true or frame reading fails
+ 	wantSettingsAck  bool                     // we sent a SETTINGS frame and haven't heard back
+@@ -1089,10 +1090,12 @@ func (cc *ClientConn) idleStateLocked() (st clientConnIdleState) {
+ 
+ 	// If this connection has never been used for a request and is closed,
+ 	// then let it take a request (which will fail).
++	// If the conn was closed for idleness, we're racing the idle timer;
++	// don't try to use the conn. (Issue #70515.)
+ 	//
+ 	// This avoids a situation where an error early in a connection's lifetime
+ 	// goes unreported.
+-	if cc.nextStreamID == 1 && cc.streamsReserved == 0 && cc.closed {
++	if cc.nextStreamID == 1 && cc.streamsReserved == 0 && cc.closed && !cc.closedOnIdle {
+ 		st.canTakeNewRequest = true
+ 	}
+ 
+@@ -1155,6 +1158,7 @@ func (cc *ClientConn) closeIfIdle() {
+ 		return
+ 	}
+ 	cc.closed = true
++	cc.closedOnIdle = true
+ 	nextID := cc.nextStreamID
+ 	// TODO: do clients send GOAWAY too? maybe? Just Close:
+ 	cc.mu.Unlock()
+@@ -1271,23 +1275,6 @@ func (cc *ClientConn) closeForLostPing() {
+ // exported. At least they'll be DeepEqual for h1-vs-h2 comparisons tests.
+ var errRequestCanceled = errors.New("net/http: request canceled")
+ 
+-func commaSeparatedTrailers(req *http.Request) (string, error) {
+-	keys := make([]string, 0, len(req.Trailer))
+-	for k := range req.Trailer {
+-		k = canonicalHeader(k)
+-		switch k {
+-		case "Transfer-Encoding", "Trailer", "Content-Length":
+-			return "", fmt.Errorf("invalid Trailer key %q", k)
+-		}
+-		keys = append(keys, k)
+-	}
+-	if len(keys) > 0 {
+-		sort.Strings(keys)
+-		return strings.Join(keys, ","), nil
+-	}
+-	return "", nil
+-}
+-
+ func (cc *ClientConn) responseHeaderTimeout() time.Duration {
+ 	if cc.t.t1 != nil {
+ 		return cc.t.t1.ResponseHeaderTimeout
+@@ -1299,22 +1286,6 @@ func (cc *ClientConn) responseHeaderTimeout() time.Duration {
+ 	return 0
+ }
+ 
+-// checkConnHeaders checks whether req has any invalid connection-level headers.
+-// per RFC 7540 section 8.1.2.2: Connection-Specific Header Fields.
+-// Certain headers are special-cased as okay but not transmitted later.
+-func checkConnHeaders(req *http.Request) error {
+-	if v := req.Header.Get("Upgrade"); v != "" {
+-		return fmt.Errorf("http2: invalid Upgrade request header: %q", req.Header["Upgrade"])
+-	}
+-	if vv := req.Header["Transfer-Encoding"]; len(vv) > 0 && (len(vv) > 1 || vv[0] != "" && vv[0] != "chunked") {
+-		return fmt.Errorf("http2: invalid Transfer-Encoding request header: %q", vv)
+-	}
+-	if vv := req.Header["Connection"]; len(vv) > 0 && (len(vv) > 1 || vv[0] != "" && !asciiEqualFold(vv[0], "close") && !asciiEqualFold(vv[0], "keep-alive")) {
+-		return fmt.Errorf("http2: invalid Connection request header: %q", vv)
+-	}
+-	return nil
+-}
+-
+ // actualContentLength returns a sanitized version of
+ // req.ContentLength, where 0 actually means zero (not unknown) and -1
+ // means unknown.
+@@ -1360,25 +1331,7 @@ func (cc *ClientConn) roundTrip(req *http.Request, streamf func(*clientStream))
+ 		donec:                make(chan struct{}),
+ 	}
+ 
+-	// TODO(bradfitz): this is a copy of the logic in net/http. Unify somewhere?
+-	if !cc.t.disableCompression() &&
+-		req.Header.Get("Accept-Encoding") == "" &&
+-		req.Header.Get("Range") == "" &&
+-		!cs.isHead {
+-		// Request gzip only, not deflate. Deflate is ambiguous and
+-		// not as universally supported anyway.
+-		// See: https://zlib.net/zlib_faq.html#faq39
+-		//
+-		// Note that we don't request this for HEAD requests,
+-		// due to a bug in nginx:
+-		//   http://trac.nginx.org/nginx/ticket/358
+-		//   https://golang.org/issue/5522
+-		//
+-		// We don't request gzip if the request is for a range, since
+-		// auto-decoding a portion of a gzipped document will just fail
+-		// anyway. See https://golang.org/issue/8923
+-		cs.requestedGzip = true
+-	}
++	cs.requestedGzip = httpcommon.IsRequestGzip(req.Method, req.Header, cc.t.disableCompression())
+ 
+ 	go cs.doRequest(req, streamf)
+ 
+@@ -1492,10 +1445,6 @@ func (cs *clientStream) writeRequest(req *http.Request, streamf func(*clientStre
+ 	cc := cs.cc
+ 	ctx := cs.ctx
+ 
+-	if err := checkConnHeaders(req); err != nil {
+-		return err
+-	}
+-
+ 	// wait for setting frames to be received, a server can change this value later,
+ 	// but we just wait for the first settings frame
+ 	var isExtendedConnect bool
+@@ -1659,26 +1608,39 @@ func (cs *clientStream) encodeAndWriteHeaders(req *http.Request) error {
+ 	// we send: HEADERS{1}, CONTINUATION{0,} + DATA{0,} (DATA is
+ 	// sent by writeRequestBody below, along with any Trailers,
+ 	// again in form HEADERS{1}, CONTINUATION{0,})
+-	trailers, err := commaSeparatedTrailers(req)
+-	if err != nil {
+-		return err
+-	}
+-	hasTrailers := trailers != ""
+-	contentLen := actualContentLength(req)
+-	hasBody := contentLen != 0
+-	hdrs, err := cc.encodeHeaders(req, cs.requestedGzip, trailers, contentLen)
++	cc.hbuf.Reset()
++	res, err := encodeRequestHeaders(req, cs.requestedGzip, cc.peerMaxHeaderListSize, func(name, value string) {
++		cc.writeHeader(name, value)
++	})
+ 	if err != nil {
+-		return err
++		return fmt.Errorf("http2: %w", err)
+ 	}
++	hdrs := cc.hbuf.Bytes()
+ 
+ 	// Write the request.
+-	endStream := !hasBody && !hasTrailers
++	endStream := !res.HasBody && !res.HasTrailers
+ 	cs.sentHeaders = true
+ 	err = cc.writeHeaders(cs.ID, endStream, int(cc.maxFrameSize), hdrs)
+ 	traceWroteHeaders(cs.trace)
+ 	return err
+ }
+ 
++func encodeRequestHeaders(req *http.Request, addGzipHeader bool, peerMaxHeaderListSize uint64, headerf func(name, value string)) (httpcommon.EncodeHeadersResult, error) {
++	return httpcommon.EncodeHeaders(req.Context(), httpcommon.EncodeHeadersParam{
++		Request: httpcommon.Request{
++			Header:              req.Header,
++			Trailer:             req.Trailer,
++			URL:                 req.URL,
++			Host:                req.Host,
++			Method:              req.Method,
++			ActualContentLength: actualContentLength(req),
++		},
++		AddGzipHeader:         addGzipHeader,
++		PeerMaxHeaderListSize: peerMaxHeaderListSize,
++		DefaultUserAgent:      defaultUserAgent,
++	}, headerf)
++}
++
+ // cleanupWriteRequest performs post-request tasks.
+ //
+ // If err (the result of writeRequest) is non-nil and the stream is not closed,
+@@ -2066,218 +2028,6 @@ func (cs *clientStream) awaitFlowControl(maxBytes int) (taken int32, err error)
+ 	}
+ }
+ 
+-func validateHeaders(hdrs http.Header) string {
+-	for k, vv := range hdrs {
+-		if !httpguts.ValidHeaderFieldName(k) && k != ":protocol" {
+-			return fmt.Sprintf("name %q", k)
+-		}
+-		for _, v := range vv {
+-			if !httpguts.ValidHeaderFieldValue(v) {
+-				// Don't include the value in the error,
+-				// because it may be sensitive.
+-				return fmt.Sprintf("value for header %q", k)
+-			}
+-		}
+-	}
+-	return ""
+-}
+-
+-var errNilRequestURL = errors.New("http2: Request.URI is nil")
+-
+-func isNormalConnect(req *http.Request) bool {
+-	return req.Method == "CONNECT" && req.Header.Get(":protocol") == ""
+-}
+-
+-// requires cc.wmu be held.
+-func (cc *ClientConn) encodeHeaders(req *http.Request, addGzipHeader bool, trailers string, contentLength int64) ([]byte, error) {
+-	cc.hbuf.Reset()
+-	if req.URL == nil {
+-		return nil, errNilRequestURL
+-	}
+-
+-	host := req.Host
+-	if host == "" {
+-		host = req.URL.Host
+-	}
+-	host, err := httpguts.PunycodeHostPort(host)
+-	if err != nil {
+-		return nil, err
+-	}
+-	if !httpguts.ValidHostHeader(host) {
+-		return nil, errors.New("http2: invalid Host header")
+-	}
+-
+-	var path string
+-	if !isNormalConnect(req) {
+-		path = req.URL.RequestURI()
+-		if !validPseudoPath(path) {
+-			orig := path
+-			path = strings.TrimPrefix(path, req.URL.Scheme+"://"+host)
+-			if !validPseudoPath(path) {
+-				if req.URL.Opaque != "" {
+-					return nil, fmt.Errorf("invalid request :path %q from URL.Opaque = %q", orig, req.URL.Opaque)
+-				} else {
+-					return nil, fmt.Errorf("invalid request :path %q", orig)
+-				}
+-			}
+-		}
+-	}
+-
+-	// Check for any invalid headers+trailers and return an error before we
+-	// potentially pollute our hpack state. (We want to be able to
+-	// continue to reuse the hpack encoder for future requests)
+-	if err := validateHeaders(req.Header); err != "" {
+-		return nil, fmt.Errorf("invalid HTTP header %s", err)
+-	}
+-	if err := validateHeaders(req.Trailer); err != "" {
+-		return nil, fmt.Errorf("invalid HTTP trailer %s", err)
+-	}
+-
+-	enumerateHeaders := func(f func(name, value string)) {
+-		// 8.1.2.3 Request Pseudo-Header Fields
+-		// The :path pseudo-header field includes the path and query parts of the
+-		// target URI (the path-absolute production and optionally a '?' character
+-		// followed by the query production, see Sections 3.3 and 3.4 of
+-		// [RFC3986]).
+-		f(":authority", host)
+-		m := req.Method
+-		if m == "" {
+-			m = http.MethodGet
+-		}
+-		f(":method", m)
+-		if !isNormalConnect(req) {
+-			f(":path", path)
+-			f(":scheme", req.URL.Scheme)
+-		}
+-		if trailers != "" {
+-			f("trailer", trailers)
+-		}
+-
+-		var didUA bool
+-		for k, vv := range req.Header {
+-			if asciiEqualFold(k, "host") || asciiEqualFold(k, "content-length") {
+-				// Host is :authority, already sent.
+-				// Content-Length is automatic, set below.
+-				continue
+-			} else if asciiEqualFold(k, "connection") ||
+-				asciiEqualFold(k, "proxy-connection") ||
+-				asciiEqualFold(k, "transfer-encoding") ||
+-				asciiEqualFold(k, "upgrade") ||
+-				asciiEqualFold(k, "keep-alive") {
+-				// Per 8.1.2.2 Connection-Specific Header
+-				// Fields, don't send connection-specific
+-				// fields. We have already checked if any
+-				// are error-worthy so just ignore the rest.
+-				continue
+-			} else if asciiEqualFold(k, "user-agent") {
+-				// Match Go's http1 behavior: at most one
+-				// User-Agent. If set to nil or empty string,
+-				// then omit it. Otherwise if not mentioned,
+-				// include the default (below).
+-				didUA = true
+-				if len(vv) < 1 {
+-					continue
+-				}
+-				vv = vv[:1]
+-				if vv[0] == "" {
+-					continue
+-				}
+-			} else if asciiEqualFold(k, "cookie") {
+-				// Per 8.1.2.5 To allow for better compression efficiency, the
+-				// Cookie header field MAY be split into separate header fields,
+-				// each with one or more cookie-pairs.
+-				for _, v := range vv {
+-					for {
+-						p := strings.IndexByte(v, ';')
+-						if p < 0 {
+-							break
+-						}
+-						f("cookie", v[:p])
+-						p++
+-						// strip space after semicolon if any.
+-						for p+1 <= len(v) && v[p] == ' ' {
+-							p++
+-						}
+-						v = v[p:]
+-					}
+-					if len(v) > 0 {
+-						f("cookie", v)
+-					}
+-				}
+-				continue
+-			}
+-
+-			for _, v := range vv {
+-				f(k, v)
+-			}
+-		}
+-		if shouldSendReqContentLength(req.Method, contentLength) {
+-			f("content-length", strconv.FormatInt(contentLength, 10))
+-		}
+-		if addGzipHeader {
+-			f("accept-encoding", "gzip")
+-		}
+-		if !didUA {
+-			f("user-agent", defaultUserAgent)
+-		}
+-	}
+-
+-	// Do a first pass over the headers counting bytes to ensure
+-	// we don't exceed cc.peerMaxHeaderListSize. This is done as a
+-	// separate pass before encoding the headers to prevent
+-	// modifying the hpack state.
+-	hlSize := uint64(0)
+-	enumerateHeaders(func(name, value string) {
+-		hf := hpack.HeaderField{Name: name, Value: value}
+-		hlSize += uint64(hf.Size())
+-	})
+-
+-	if hlSize > cc.peerMaxHeaderListSize {
+-		return nil, errRequestHeaderListSize
+-	}
+-
+-	trace := httptrace.ContextClientTrace(req.Context())
+-	traceHeaders := traceHasWroteHeaderField(trace)
+-
+-	// Header list size is ok. Write the headers.
+-	enumerateHeaders(func(name, value string) {
+-		name, ascii := lowerHeader(name)
+-		if !ascii {
+-			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
+-			// field names have to be ASCII characters (just as in HTTP/1.x).
+-			return
+-		}
+-		cc.writeHeader(name, value)
+-		if traceHeaders {
+-			traceWroteHeaderField(trace, name, value)
+-		}
+-	})
+-
+-	return cc.hbuf.Bytes(), nil
+-}
+-
+-// shouldSendReqContentLength reports whether the http2.Transport should send
+-// a "content-length" request header. This logic is basically a copy of the net/http
+-// transferWriter.shouldSendContentLength.
+-// The contentLength is the corrected contentLength (so 0 means actually 0, not unknown).
+-// -1 means unknown.
+-func shouldSendReqContentLength(method string, contentLength int64) bool {
+-	if contentLength > 0 {
+-		return true
+-	}
+-	if contentLength < 0 {
+-		return false
+-	}
+-	// For zero bodies, whether we send a content-length depends on the method.
+-	// It also kinda doesn't matter for http2 either way, with END_STREAM.
+-	switch method {
+-	case "POST", "PUT", "PATCH":
+-		return true
+-	default:
+-		return false
+-	}
+-}
+-
+ // requires cc.wmu be held.
+ func (cc *ClientConn) encodeTrailers(trailer http.Header) ([]byte, error) {
+ 	cc.hbuf.Reset()
+@@ -2294,7 +2044,7 @@ func (cc *ClientConn) encodeTrailers(trailer http.Header) ([]byte, error) {
+ 	}
+ 
+ 	for k, vv := range trailer {
+-		lowKey, ascii := lowerHeader(k)
++		lowKey, ascii := httpcommon.LowerHeader(k)
+ 		if !ascii {
+ 			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
+ 			// field names have to be ASCII characters (just as in HTTP/1.x).
+@@ -2434,9 +2184,12 @@ func (rl *clientConnReadLoop) cleanup() {
+ 	// This avoids a situation where new connections are constantly created,
+ 	// added to the pool, fail, and are removed from the pool, without any error
+ 	// being surfaced to the user.
+-	const unusedWaitTime = 5 * time.Second
++	unusedWaitTime := 5 * time.Second
++	if cc.idleTimeout > 0 && unusedWaitTime > cc.idleTimeout {
++		unusedWaitTime = cc.idleTimeout
++	}
+ 	idleTime := cc.t.now().Sub(cc.lastActive)
+-	if atomic.LoadUint32(&cc.atomicReused) == 0 && idleTime < unusedWaitTime {
++	if atomic.LoadUint32(&cc.atomicReused) == 0 && idleTime < unusedWaitTime && !cc.closedOnIdle {
+ 		cc.idleTimer = cc.t.afterFunc(unusedWaitTime-idleTime, func() {
+ 			cc.t.connPool().MarkDead(cc)
+ 		})
+@@ -2457,6 +2210,13 @@ func (rl *clientConnReadLoop) cleanup() {
+ 	}
+ 	cc.cond.Broadcast()
+ 	cc.mu.Unlock()
++
++	if !cc.seenSettings {
++		// If we have a pending request that wants extended CONNECT,
++		// let it continue and fail with the connection error.
++		cc.extendedConnectAllowed = true
++		close(cc.seenSettingsChan)
++	}
+ }
+ 
+ // countReadFrameError calls Transport.CountError with a string
+@@ -2549,9 +2309,6 @@ func (rl *clientConnReadLoop) run() error {
+ 			if VerboseLogs {
+ 				cc.vlogf("http2: Transport conn %p received error from processing frame %v: %v", cc, summarizeFrame(f), err)
+ 			}
+-			if !cc.seenSettings {
+-				close(cc.seenSettingsChan)
+-			}
+ 			return err
+ 		}
+ 	}
+@@ -2646,7 +2403,7 @@ func (rl *clientConnReadLoop) handleResponse(cs *clientStream, f *MetaHeadersFra
+ 		Status:     status + " " + http.StatusText(statusCode),
+ 	}
+ 	for _, hf := range regularFields {
+-		key := canonicalHeader(hf.Name)
++		key := httpcommon.CanonicalHeader(hf.Name)
+ 		if key == "Trailer" {
+ 			t := res.Trailer
+ 			if t == nil {
+@@ -2654,7 +2411,7 @@ func (rl *clientConnReadLoop) handleResponse(cs *clientStream, f *MetaHeadersFra
+ 				res.Trailer = t
+ 			}
+ 			foreachHeaderElement(hf.Value, func(v string) {
+-				t[canonicalHeader(v)] = nil
++				t[httpcommon.CanonicalHeader(v)] = nil
+ 			})
+ 		} else {
+ 			vv := header[key]
+@@ -2778,7 +2535,7 @@ func (rl *clientConnReadLoop) processTrailers(cs *clientStream, f *MetaHeadersFr
+ 
+ 	trailer := make(http.Header)
+ 	for _, hf := range f.RegularFields() {
+-		key := canonicalHeader(hf.Name)
++		key := httpcommon.CanonicalHeader(hf.Name)
+ 		trailer[key] = append(trailer[key], hf.Value)
+ 	}
+ 	cs.trailer = trailer
+@@ -3324,7 +3081,7 @@ func (cc *ClientConn) writeStreamReset(streamID uint32, code ErrCode, ping bool,
+ 
+ var (
+ 	errResponseHeaderListSize = errors.New("http2: response header list larger than advertised limit")
+-	errRequestHeaderListSize  = errors.New("http2: request header list larger than peer's advertised limit")
++	errRequestHeaderListSize  = httpcommon.ErrRequestHeaderListSize
+ )
+ 
+ func (cc *ClientConn) logf(format string, args ...interface{}) {
+@@ -3508,16 +3265,6 @@ func traceFirstResponseByte(trace *httptrace.ClientTrace) {
+ 	}
+ }
+ 
+-func traceHasWroteHeaderField(trace *httptrace.ClientTrace) bool {
+-	return trace != nil && trace.WroteHeaderField != nil
+-}
+-
+-func traceWroteHeaderField(trace *httptrace.ClientTrace, k, v string) {
+-	if trace != nil && trace.WroteHeaderField != nil {
+-		trace.WroteHeaderField(k, []string{v})
+-	}
+-}
+-
+ func traceGot1xxResponseFunc(trace *httptrace.ClientTrace) func(int, textproto.MIMEHeader) error {
+ 	if trace != nil {
+ 		return trace.Got1xxResponse
+diff --git a/vendor/golang.org/x/net/http2/write.go b/vendor/golang.org/x/net/http2/write.go
+index 6ff6bee7e9..fdb35b9477 100644
+--- a/vendor/golang.org/x/net/http2/write.go
++++ b/vendor/golang.org/x/net/http2/write.go
+@@ -13,6 +13,7 @@ import (
+ 
+ 	"golang.org/x/net/http/httpguts"
+ 	"golang.org/x/net/http2/hpack"
++	"golang.org/x/net/internal/httpcommon"
+ )
+ 
+ // writeFramer is implemented by any type that is used to write frames.
+@@ -351,7 +352,7 @@ func encodeHeaders(enc *hpack.Encoder, h http.Header, keys []string) {
+ 	}
+ 	for _, k := range keys {
+ 		vv := h[k]
+-		k, ascii := lowerHeader(k)
++		k, ascii := httpcommon.LowerHeader(k)
+ 		if !ascii {
+ 			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
+ 			// field names have to be ASCII characters (just as in HTTP/1.x).
+diff --git a/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel b/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
+new file mode 100644
+index 0000000000..225d78b08c
+--- /dev/null
++++ b/vendor/golang.org/x/net/internal/httpcommon/BUILD.bazel
+@@ -0,0 +1,17 @@
++load("@io_bazel_rules_go//go:def.bzl", "go_library")
++
++go_library(
++    name = "go_default_library",
++    srcs = [
++        "ascii.go",
++        "headermap.go",
++        "request.go",
++    ],
++    importmap = "kubevirt.io/kubevirt/vendor/golang.org/x/net/internal/httpcommon",
++    importpath = "golang.org/x/net/internal/httpcommon",
++    visibility = ["//vendor/golang.org/x/net:__subpackages__"],
++    deps = [
++        "//vendor/golang.org/x/net/http/httpguts:go_default_library",
++        "//vendor/golang.org/x/net/http2/hpack:go_default_library",
++    ],
++)
+diff --git a/vendor/golang.org/x/net/internal/httpcommon/ascii.go b/vendor/golang.org/x/net/internal/httpcommon/ascii.go
+new file mode 100644
+index 0000000000..ed14da5afc
+--- /dev/null
++++ b/vendor/golang.org/x/net/internal/httpcommon/ascii.go
+@@ -0,0 +1,53 @@
++// Copyright 2025 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++package httpcommon
++
++import "strings"
++
++// The HTTP protocols are defined in terms of ASCII, not Unicode. This file
++// contains helper functions which may use Unicode-aware functions which would
++// otherwise be unsafe and could introduce vulnerabilities if used improperly.
++
++// asciiEqualFold is strings.EqualFold, ASCII only. It reports whether s and t
++// are equal, ASCII-case-insensitively.
++func asciiEqualFold(s, t string) bool {
++	if len(s) != len(t) {
++		return false
++	}
++	for i := 0; i < len(s); i++ {
++		if lower(s[i]) != lower(t[i]) {
++			return false
++		}
++	}
++	return true
++}
++
++// lower returns the ASCII lowercase version of b.
++func lower(b byte) byte {
++	if 'A' <= b && b <= 'Z' {
++		return b + ('a' - 'A')
++	}
++	return b
++}
++
++// isASCIIPrint returns whether s is ASCII and printable according to
++// https://tools.ietf.org/html/rfc20#section-4.2.
++func isASCIIPrint(s string) bool {
++	for i := 0; i < len(s); i++ {
++		if s[i] < ' ' || s[i] > '~' {
++			return false
++		}
++	}
++	return true
++}
++
++// asciiToLower returns the lowercase version of s if s is ASCII and printable,
++// and whether or not it was.
++func asciiToLower(s string) (lower string, ok bool) {
++	if !isASCIIPrint(s) {
++		return "", false
++	}
++	return strings.ToLower(s), true
++}
+diff --git a/vendor/golang.org/x/net/http2/headermap.go b/vendor/golang.org/x/net/internal/httpcommon/headermap.go
+similarity index 74%
+rename from vendor/golang.org/x/net/http2/headermap.go
+rename to vendor/golang.org/x/net/internal/httpcommon/headermap.go
+index 149b3dd20e..92483d8e41 100644
+--- a/vendor/golang.org/x/net/http2/headermap.go
++++ b/vendor/golang.org/x/net/internal/httpcommon/headermap.go
+@@ -1,11 +1,11 @@
+-// Copyright 2014 The Go Authors. All rights reserved.
++// Copyright 2025 The Go Authors. All rights reserved.
+ // Use of this source code is governed by a BSD-style
+ // license that can be found in the LICENSE file.
+ 
+-package http2
++package httpcommon
+ 
+ import (
+-	"net/http"
++	"net/textproto"
+ 	"sync"
+ )
+ 
+@@ -82,13 +82,15 @@ func buildCommonHeaderMaps() {
+ 	commonLowerHeader = make(map[string]string, len(common))
+ 	commonCanonHeader = make(map[string]string, len(common))
+ 	for _, v := range common {
+-		chk := http.CanonicalHeaderKey(v)
++		chk := textproto.CanonicalMIMEHeaderKey(v)
+ 		commonLowerHeader[chk] = v
+ 		commonCanonHeader[v] = chk
+ 	}
+ }
+ 
+-func lowerHeader(v string) (lower string, ascii bool) {
++// LowerHeader returns the lowercase form of a header name,
++// used on the wire for HTTP/2 and HTTP/3 requests.
++func LowerHeader(v string) (lower string, ascii bool) {
+ 	buildCommonHeaderMapsOnce()
+ 	if s, ok := commonLowerHeader[v]; ok {
+ 		return s, true
+@@ -96,10 +98,18 @@ func lowerHeader(v string) (lower string, ascii bool) {
+ 	return asciiToLower(v)
+ }
+ 
+-func canonicalHeader(v string) string {
++// CanonicalHeader canonicalizes a header name. (For example, "host" becomes "Host".)
++func CanonicalHeader(v string) string {
+ 	buildCommonHeaderMapsOnce()
+ 	if s, ok := commonCanonHeader[v]; ok {
+ 		return s
+ 	}
+-	return http.CanonicalHeaderKey(v)
++	return textproto.CanonicalMIMEHeaderKey(v)
++}
++
++// CachedCanonicalHeader returns the canonical form of a well-known header name.
++func CachedCanonicalHeader(v string) (string, bool) {
++	buildCommonHeaderMapsOnce()
++	s, ok := commonCanonHeader[v]
++	return s, ok
+ }
+diff --git a/vendor/golang.org/x/net/internal/httpcommon/request.go b/vendor/golang.org/x/net/internal/httpcommon/request.go
+new file mode 100644
+index 0000000000..4b70553179
+--- /dev/null
++++ b/vendor/golang.org/x/net/internal/httpcommon/request.go
+@@ -0,0 +1,467 @@
++// Copyright 2025 The Go Authors. All rights reserved.
++// Use of this source code is governed by a BSD-style
++// license that can be found in the LICENSE file.
++
++package httpcommon
++
++import (
++	"context"
++	"errors"
++	"fmt"
++	"net/http/httptrace"
++	"net/textproto"
++	"net/url"
++	"sort"
++	"strconv"
++	"strings"
++
++	"golang.org/x/net/http/httpguts"
++	"golang.org/x/net/http2/hpack"
++)
++
++var (
++	ErrRequestHeaderListSize = errors.New("request header list larger than peer's advertised limit")
++)
++
++// Request is a subset of http.Request.
++// It'd be simpler to pass an *http.Request, of course, but we can't depend on net/http
++// without creating a dependency cycle.
++type Request struct {
++	URL                 *url.URL
++	Method              string
++	Host                string
++	Header              map[string][]string
++	Trailer             map[string][]string
++	ActualContentLength int64 // 0 means 0, -1 means unknown
++}
++
++// EncodeHeadersParam is parameters to EncodeHeaders.
++type EncodeHeadersParam struct {
++	Request Request
++
++	// AddGzipHeader indicates that an "accept-encoding: gzip" header should be
++	// added to the request.
++	AddGzipHeader bool
++
++	// PeerMaxHeaderListSize, when non-zero, is the peer's MAX_HEADER_LIST_SIZE setting.
++	PeerMaxHeaderListSize uint64
++
++	// DefaultUserAgent is the User-Agent header to send when the request
++	// neither contains a User-Agent nor disables it.
++	DefaultUserAgent string
++}
++
++// EncodeHeadersParam is the result of EncodeHeaders.
++type EncodeHeadersResult struct {
++	HasBody     bool
++	HasTrailers bool
++}
++
++// EncodeHeaders constructs request headers common to HTTP/2 and HTTP/3.
++// It validates a request and calls headerf with each pseudo-header and header
++// for the request.
++// The headerf function is called with the validated, canonicalized header name.
++func EncodeHeaders(ctx context.Context, param EncodeHeadersParam, headerf func(name, value string)) (res EncodeHeadersResult, _ error) {
++	req := param.Request
++
++	// Check for invalid connection-level headers.
++	if err := checkConnHeaders(req.Header); err != nil {
++		return res, err
++	}
++
++	if req.URL == nil {
++		return res, errors.New("Request.URL is nil")
++	}
++
++	host := req.Host
++	if host == "" {
++		host = req.URL.Host
++	}
++	host, err := httpguts.PunycodeHostPort(host)
++	if err != nil {
++		return res, err
++	}
++	if !httpguts.ValidHostHeader(host) {
++		return res, errors.New("invalid Host header")
++	}
++
++	// isNormalConnect is true if this is a non-extended CONNECT request.
++	isNormalConnect := false
++	var protocol string
++	if vv := req.Header[":protocol"]; len(vv) > 0 {
++		protocol = vv[0]
++	}
++	if req.Method == "CONNECT" && protocol == "" {
++		isNormalConnect = true
++	} else if protocol != "" && req.Method != "CONNECT" {
++		return res, errors.New("invalid :protocol header in non-CONNECT request")
++	}
++
++	// Validate the path, except for non-extended CONNECT requests which have no path.
++	var path string
++	if !isNormalConnect {
++		path = req.URL.RequestURI()
++		if !validPseudoPath(path) {
++			orig := path
++			path = strings.TrimPrefix(path, req.URL.Scheme+"://"+host)
++			if !validPseudoPath(path) {
++				if req.URL.Opaque != "" {
++					return res, fmt.Errorf("invalid request :path %q from URL.Opaque = %q", orig, req.URL.Opaque)
++				} else {
++					return res, fmt.Errorf("invalid request :path %q", orig)
++				}
++			}
++		}
++	}
++
++	// Check for any invalid headers+trailers and return an error before we
++	// potentially pollute our hpack state. (We want to be able to
++	// continue to reuse the hpack encoder for future requests)
++	if err := validateHeaders(req.Header); err != "" {
++		return res, fmt.Errorf("invalid HTTP header %s", err)
++	}
++	if err := validateHeaders(req.Trailer); err != "" {
++		return res, fmt.Errorf("invalid HTTP trailer %s", err)
++	}
++
++	trailers, err := commaSeparatedTrailers(req.Trailer)
++	if err != nil {
++		return res, err
++	}
++
++	enumerateHeaders := func(f func(name, value string)) {
++		// 8.1.2.3 Request Pseudo-Header Fields
++		// The :path pseudo-header field includes the path and query parts of the
++		// target URI (the path-absolute production and optionally a '?' character
++		// followed by the query production, see Sections 3.3 and 3.4 of
++		// [RFC3986]).
++		f(":authority", host)
++		m := req.Method
++		if m == "" {
++			m = "GET"
++		}
++		f(":method", m)
++		if !isNormalConnect {
++			f(":path", path)
++			f(":scheme", req.URL.Scheme)
++		}
++		if protocol != "" {
++			f(":protocol", protocol)
++		}
++		if trailers != "" {
++			f("trailer", trailers)
++		}
++
++		var didUA bool
++		for k, vv := range req.Header {
++			if asciiEqualFold(k, "host") || asciiEqualFold(k, "content-length") {
++				// Host is :authority, already sent.
++				// Content-Length is automatic, set below.
++				continue
++			} else if asciiEqualFold(k, "connection") ||
++				asciiEqualFold(k, "proxy-connection") ||
++				asciiEqualFold(k, "transfer-encoding") ||
++				asciiEqualFold(k, "upgrade") ||
++				asciiEqualFold(k, "keep-alive") {
++				// Per 8.1.2.2 Connection-Specific Header
++				// Fields, don't send connection-specific
++				// fields. We have already checked if any
++				// are error-worthy so just ignore the rest.
++				continue
++			} else if asciiEqualFold(k, "user-agent") {
++				// Match Go's http1 behavior: at most one
++				// User-Agent. If set to nil or empty string,
++				// then omit it. Otherwise if not mentioned,
++				// include the default (below).
++				didUA = true
++				if len(vv) < 1 {
++					continue
++				}
++				vv = vv[:1]
++				if vv[0] == "" {
++					continue
++				}
++			} else if asciiEqualFold(k, "cookie") {
++				// Per 8.1.2.5 To allow for better compression efficiency, the
++				// Cookie header field MAY be split into separate header fields,
++				// each with one or more cookie-pairs.
++				for _, v := range vv {
++					for {
++						p := strings.IndexByte(v, ';')
++						if p < 0 {
++							break
++						}
++						f("cookie", v[:p])
++						p++
++						// strip space after semicolon if any.
++						for p+1 <= len(v) && v[p] == ' ' {
++							p++
++						}
++						v = v[p:]
++					}
++					if len(v) > 0 {
++						f("cookie", v)
++					}
++				}
++				continue
++			} else if k == ":protocol" {
++				// :protocol pseudo-header was already sent above.
++				continue
++			}
++
++			for _, v := range vv {
++				f(k, v)
++			}
++		}
++		if shouldSendReqContentLength(req.Method, req.ActualContentLength) {
++			f("content-length", strconv.FormatInt(req.ActualContentLength, 10))
++		}
++		if param.AddGzipHeader {
++			f("accept-encoding", "gzip")
++		}
++		if !didUA {
++			f("user-agent", param.DefaultUserAgent)
++		}
++	}
++
++	// Do a first pass over the headers counting bytes to ensure
++	// we don't exceed cc.peerMaxHeaderListSize. This is done as a
++	// separate pass before encoding the headers to prevent
++	// modifying the hpack state.
++	if param.PeerMaxHeaderListSize > 0 {
++		hlSize := uint64(0)
++		enumerateHeaders(func(name, value string) {
++			hf := hpack.HeaderField{Name: name, Value: value}
++			hlSize += uint64(hf.Size())
++		})
++
++		if hlSize > param.PeerMaxHeaderListSize {
++			return res, ErrRequestHeaderListSize
++		}
++	}
++
++	trace := httptrace.ContextClientTrace(ctx)
++
++	// Header list size is ok. Write the headers.
++	enumerateHeaders(func(name, value string) {
++		name, ascii := LowerHeader(name)
++		if !ascii {
++			// Skip writing invalid headers. Per RFC 7540, Section 8.1.2, header
++			// field names have to be ASCII characters (just as in HTTP/1.x).
++			return
++		}
++
++		headerf(name, value)
++
++		if trace != nil && trace.WroteHeaderField != nil {
++			trace.WroteHeaderField(name, []string{value})
++		}
++	})
++
++	res.HasBody = req.ActualContentLength != 0
++	res.HasTrailers = trailers != ""
++	return res, nil
++}
++
++// IsRequestGzip reports whether we should add an Accept-Encoding: gzip header
++// for a request.
++func IsRequestGzip(method string, header map[string][]string, disableCompression bool) bool {
++	// TODO(bradfitz): this is a copy of the logic in net/http. Unify somewhere?
++	if !disableCompression &&
++		len(header["Accept-Encoding"]) == 0 &&
++		len(header["Range"]) == 0 &&
++		method != "HEAD" {
++		// Request gzip only, not deflate. Deflate is ambiguous and
++		// not as universally supported anyway.
++		// See: https://zlib.net/zlib_faq.html#faq39
++		//
++		// Note that we don't request this for HEAD requests,
++		// due to a bug in nginx:
++		//   http://trac.nginx.org/nginx/ticket/358
++		//   https://golang.org/issue/5522
++		//
++		// We don't request gzip if the request is for a range, since
++		// auto-decoding a portion of a gzipped document will just fail
++		// anyway. See https://golang.org/issue/8923
++		return true
++	}
++	return false
++}
++
++// checkConnHeaders checks whether req has any invalid connection-level headers.
++//
++// https://www.rfc-editor.org/rfc/rfc9114.html#section-4.2-3
++// https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.2-1
++//
++// Certain headers are special-cased as okay but not transmitted later.
++// For example, we allow "Transfer-Encoding: chunked", but drop the header when encoding.
++func checkConnHeaders(h map[string][]string) error {
++	if vv := h["Upgrade"]; len(vv) > 0 && (vv[0] != "" && vv[0] != "chunked") {
++		return fmt.Errorf("invalid Upgrade request header: %q", vv)
++	}
++	if vv := h["Transfer-Encoding"]; len(vv) > 0 && (len(vv) > 1 || vv[0] != "" && vv[0] != "chunked") {
++		return fmt.Errorf("invalid Transfer-Encoding request header: %q", vv)
++	}
++	if vv := h["Connection"]; len(vv) > 0 && (len(vv) > 1 || vv[0] != "" && !asciiEqualFold(vv[0], "close") && !asciiEqualFold(vv[0], "keep-alive")) {
++		return fmt.Errorf("invalid Connection request header: %q", vv)
++	}
++	return nil
++}
++
++func commaSeparatedTrailers(trailer map[string][]string) (string, error) {
++	keys := make([]string, 0, len(trailer))
++	for k := range trailer {
++		k = CanonicalHeader(k)
++		switch k {
++		case "Transfer-Encoding", "Trailer", "Content-Length":
++			return "", fmt.Errorf("invalid Trailer key %q", k)
++		}
++		keys = append(keys, k)
++	}
++	if len(keys) > 0 {
++		sort.Strings(keys)
++		return strings.Join(keys, ","), nil
++	}
++	return "", nil
++}
++
++// validPseudoPath reports whether v is a valid :path pseudo-header
++// value. It must be either:
++//
++//   - a non-empty string starting with '/'
++//   - the string '*', for OPTIONS requests.
++//
++// For now this is only used a quick check for deciding when to clean
++// up Opaque URLs before sending requests from the Transport.
++// See golang.org/issue/16847
++//
++// We used to enforce that the path also didn't start with "//", but
++// Google's GFE accepts such paths and Chrome sends them, so ignore
++// that part of the spec. See golang.org/issue/19103.
++func validPseudoPath(v string) bool {
++	return (len(v) > 0 && v[0] == '/') || v == "*"
++}
++
++func validateHeaders(hdrs map[string][]string) string {
++	for k, vv := range hdrs {
++		if !httpguts.ValidHeaderFieldName(k) && k != ":protocol" {
++			return fmt.Sprintf("name %q", k)
++		}
++		for _, v := range vv {
++			if !httpguts.ValidHeaderFieldValue(v) {
++				// Don't include the value in the error,
++				// because it may be sensitive.
++				return fmt.Sprintf("value for header %q", k)
++			}
++		}
++	}
++	return ""
++}
++
++// shouldSendReqContentLength reports whether we should send
++// a "content-length" request header. This logic is basically a copy of the net/http
++// transferWriter.shouldSendContentLength.
++// The contentLength is the corrected contentLength (so 0 means actually 0, not unknown).
++// -1 means unknown.
++func shouldSendReqContentLength(method string, contentLength int64) bool {
++	if contentLength > 0 {
++		return true
++	}
++	if contentLength < 0 {
++		return false
++	}
++	// For zero bodies, whether we send a content-length depends on the method.
++	// It also kinda doesn't matter for http2 either way, with END_STREAM.
++	switch method {
++	case "POST", "PUT", "PATCH":
++		return true
++	default:
++		return false
++	}
++}
++
++// ServerRequestParam is parameters to NewServerRequest.
++type ServerRequestParam struct {
++	Method                  string
++	Scheme, Authority, Path string
++	Protocol                string
++	Header                  map[string][]string
++}
++
++// ServerRequestResult is the result of NewServerRequest.
++type ServerRequestResult struct {
++	// Various http.Request fields.
++	URL        *url.URL
++	RequestURI string
++	Trailer    map[string][]string
++
++	NeedsContinue bool // client provided an "Expect: 100-continue" header
++
++	// If the request should be rejected, this is a short string suitable for passing
++	// to the http2 package's CountError function.
++	// It might be a bit odd to return errors this way rather than returing an error,
++	// but this ensures we don't forget to include a CountError reason.
++	InvalidReason string
++}
++
++func NewServerRequest(rp ServerRequestParam) ServerRequestResult {
++	needsContinue := httpguts.HeaderValuesContainsToken(rp.Header["Expect"], "100-continue")
++	if needsContinue {
++		delete(rp.Header, "Expect")
++	}
++	// Merge Cookie headers into one "; "-delimited value.
++	if cookies := rp.Header["Cookie"]; len(cookies) > 1 {
++		rp.Header["Cookie"] = []string{strings.Join(cookies, "; ")}
++	}
++
++	// Setup Trailers
++	var trailer map[string][]string
++	for _, v := range rp.Header["Trailer"] {
++		for _, key := range strings.Split(v, ",") {
++			key = textproto.CanonicalMIMEHeaderKey(textproto.TrimString(key))
++			switch key {
++			case "Transfer-Encoding", "Trailer", "Content-Length":
++				// Bogus. (copy of http1 rules)
++				// Ignore.
++			default:
++				if trailer == nil {
++					trailer = make(map[string][]string)
++				}
++				trailer[key] = nil
++			}
++		}
++	}
++	delete(rp.Header, "Trailer")
++
++	// "':authority' MUST NOT include the deprecated userinfo subcomponent
++	// for "http" or "https" schemed URIs."
++	// https://www.rfc-editor.org/rfc/rfc9113.html#section-8.3.1-2.3.8
++	if strings.IndexByte(rp.Authority, '@') != -1 && (rp.Scheme == "http" || rp.Scheme == "https") {
++		return ServerRequestResult{
++			InvalidReason: "userinfo_in_authority",
++		}
++	}
++
++	var url_ *url.URL
++	var requestURI string
++	if rp.Method == "CONNECT" && rp.Protocol == "" {
++		url_ = &url.URL{Host: rp.Authority}
++		requestURI = rp.Authority // mimic HTTP/1 server behavior
++	} else {
++		var err error
++		url_, err = url.ParseRequestURI(rp.Path)
++		if err != nil {
++			return ServerRequestResult{
++				InvalidReason: "bad_path",
++			}
++		}
++		requestURI = rp.Path
++	}
++
++	return ServerRequestResult{
++		URL:           url_,
++		NeedsContinue: needsContinue,
++		RequestURI:    requestURI,
++		Trailer:       trailer,
++	}
++}
+diff --git a/vendor/golang.org/x/net/proxy/per_host.go b/vendor/golang.org/x/net/proxy/per_host.go
+index d7d4b8b6e3..32bdf435ec 100644
+--- a/vendor/golang.org/x/net/proxy/per_host.go
++++ b/vendor/golang.org/x/net/proxy/per_host.go
+@@ -7,6 +7,7 @@ package proxy
+ import (
+ 	"context"
+ 	"net"
++	"net/netip"
+ 	"strings"
+ )
+ 
+@@ -57,7 +58,8 @@ func (p *PerHost) DialContext(ctx context.Context, network, addr string) (c net.
+ }
+ 
+ func (p *PerHost) dialerForRequest(host string) Dialer {
+-	if ip := net.ParseIP(host); ip != nil {
++	if nip, err := netip.ParseAddr(host); err == nil {
++		ip := net.IP(nip.AsSlice())
+ 		for _, net := range p.bypassNetworks {
+ 			if net.Contains(ip) {
+ 				return p.bypass
+@@ -108,8 +110,8 @@ func (p *PerHost) AddFromString(s string) {
+ 			}
+ 			continue
+ 		}
+-		if ip := net.ParseIP(host); ip != nil {
+-			p.AddIP(ip)
++		if nip, err := netip.ParseAddr(host); err == nil {
++			p.AddIP(net.IP(nip.AsSlice()))
+ 			continue
+ 		}
+ 		if strings.HasPrefix(host, "*.") {
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 02d160e83b..49a5e6c1fe 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -500,8 +500,8 @@ golang.org/x/exp/typeparams
+ # golang.org/x/mod v0.21.0
+ ## explicit; go 1.22.0
+ golang.org/x/mod/semver
+-# golang.org/x/net v0.33.0
+-## explicit; go 1.18
++# golang.org/x/net v0.36.0
++## explicit; go 1.23.0
+ golang.org/x/net/bpf
+ golang.org/x/net/context
+ golang.org/x/net/html
+@@ -511,6 +511,7 @@ golang.org/x/net/http/httpguts
+ golang.org/x/net/http2
+ golang.org/x/net/http2/hpack
+ golang.org/x/net/idna
++golang.org/x/net/internal/httpcommon
+ golang.org/x/net/internal/iana
+ golang.org/x/net/internal/socket
+ golang.org/x/net/internal/socks
+-- 
+2.49.0
+

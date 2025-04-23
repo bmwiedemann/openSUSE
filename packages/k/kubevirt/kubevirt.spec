@@ -30,7 +30,7 @@
 %endif
 
 Name:           kubevirt
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -41,8 +41,10 @@ Source1:        kubevirt_containers_meta
 Source2:        kubevirt_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
-Patch1:         0001-feat-pass-timeout-from-virt-monitor-to-virt-tail.patch
-Patch2:         0002-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+Patch1:         0001-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+Patch2:         0002-chore-deps-update-module-golang.org-x-crypto-to-v0.3.patch
+Patch3:         0003-chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch
+Patch4:         0004-chore-deps-update-module-golang.org-x-net-to-v0.36.0.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -288,9 +290,6 @@ install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}
 # Install network stuff
 mkdir -p %{buildroot}%{_datadir}/kube-virt/virt-handler
 install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-virt/virt-handler/
-
-# virt-launcher SELinux policy needs to land in virt-handler container
-install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}%{_datadir}/kube-virt/virt-handler/
 
 # Persistent reservation helper configuration files
 mkdir -p %{buildroot}%{_datadir}/kube-virt/pr-helper

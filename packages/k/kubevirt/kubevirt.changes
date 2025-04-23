@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 23 03:40:04 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Remove custom SELinux policy from virt-launcher container
+
+-------------------------------------------------------------------
+Tue Apr 22 18:53:39 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
+
+- Update to version 1.5.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.5.0
+- Drop patches
+  0001-feat-pass-timeout-from-virt-monitor-to-virt-tail.patch
+- Add patches
+  0002-chore-deps-update-module-golang.org-x-crypto-to-v0.3.patch (bsc#1239328)
+  0003-chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch (bsc#1239190)
+  0004-chore-deps-update-module-golang.org-x-net-to-v0.36.0.patch (bsc#1238704)
+- Rename patch
+  0002-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+  0001-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+
+-------------------------------------------------------------------
 Fri Jan 17 23:44:08 UTC 2025 - Caleb Crane <caleb.crane@suse.com>
 
 - Fix guest-console-log failure during live migration and Harvester upgrades

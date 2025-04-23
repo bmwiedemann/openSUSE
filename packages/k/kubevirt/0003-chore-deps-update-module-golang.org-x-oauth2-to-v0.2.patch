@@ -1,0 +1,171 @@
+From 67b8508618aedc451ee6444cec4457c9a495c931 Mon Sep 17 00:00:00 2001
+From: Dominik Holler <github@hollyhome.ath.cx>
+Date: Tue, 25 Mar 2025 13:25:01 +0000
+Subject: [PATCH 3/4] chore(deps): update module golang.org/x/oauth2 to v0.27.0
+ [security]
+
+Signed-off-by: Dominik Holler <github@hollyhome.ath.cx>
+(cherry picked from commit 5c5498f01d1c184de219eb707ad64b6d25460cef)
+Signed-off-by: Caleb Crane <ccrane@suse.de>
+---
+ go.mod                               |  2 +-
+ go.sum                               |  3 ++-
+ vendor/golang.org/x/oauth2/LICENSE   |  4 ++--
+ vendor/golang.org/x/oauth2/README.md | 15 +++++----------
+ vendor/golang.org/x/oauth2/oauth2.go |  2 +-
+ vendor/golang.org/x/oauth2/pkce.go   |  4 ++--
+ vendor/golang.org/x/oauth2/token.go  |  7 +++++++
+ vendor/modules.txt                   |  4 ++--
+ 8 files changed, 22 insertions(+), 19 deletions(-)
+
+diff --git a/go.mod b/go.mod
+index a634375229..80e021ef61 100644
+--- a/go.mod
++++ b/go.mod
+@@ -145,7 +145,7 @@ require (
+ 	go.mongodb.org/mongo-driver v1.8.4 // indirect
+ 	golang.org/x/exp/typeparams v0.0.0-20230203172020-98cc5a0785f9 // indirect
+ 	golang.org/x/mod v0.21.0 // indirect
+-	golang.org/x/oauth2 v0.21.0 // indirect
++	golang.org/x/oauth2 v0.27.0 // indirect
+ 	golang.org/x/text v0.22.0 // indirect
+ 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240701130421-f6361c86f094 // indirect
+ 	google.golang.org/protobuf v1.34.2 // indirect
+diff --git a/go.sum b/go.sum
+index c972c85d61..1360c75b3b 100644
+--- a/go.sum
++++ b/go.sum
+@@ -2717,8 +2717,9 @@ golang.org/x/oauth2 v0.16.0/go.mod h1:hqZ+0LWXsiVoZpeld6jVt06P3adbS2Uu911W1SsJv2
+ golang.org/x/oauth2 v0.17.0/go.mod h1:OzPDGQiuQMguemayvdylqddI7qcD9lnSDb+1FiwQ5HA=
+ golang.org/x/oauth2 v0.18.0/go.mod h1:Wf7knwG0MPoWIMMBgFlEaSUDaKskp0dCfrlJRJXbBi8=
+ golang.org/x/oauth2 v0.20.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
+-golang.org/x/oauth2 v0.21.0 h1:tsimM75w1tF/uws5rbeHzIWxEqElMehnc+iW793zsZs=
+ golang.org/x/oauth2 v0.21.0/go.mod h1:XYTD2NtWslqkgxebSiOHnXEap4TF09sJSc7H1sXbhtI=
++golang.org/x/oauth2 v0.27.0 h1:da9Vo7/tDv5RH/7nZDz1eMGS/q1Vv1N/7FCrBhI9I3M=
++golang.org/x/oauth2 v0.27.0/go.mod h1:onh5ek6nERTohokkhCD/y2cV4Do3fxFHFuAejCkRWT8=
+ golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+ golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+ golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+diff --git a/vendor/golang.org/x/oauth2/LICENSE b/vendor/golang.org/x/oauth2/LICENSE
+index 6a66aea5ea..2a7cf70da6 100644
+--- a/vendor/golang.org/x/oauth2/LICENSE
++++ b/vendor/golang.org/x/oauth2/LICENSE
+@@ -1,4 +1,4 @@
+-Copyright (c) 2009 The Go Authors. All rights reserved.
++Copyright 2009 The Go Authors.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+@@ -10,7 +10,7 @@ notice, this list of conditions and the following disclaimer.
+ copyright notice, this list of conditions and the following disclaimer
+ in the documentation and/or other materials provided with the
+ distribution.
+-   * Neither the name of Google Inc. nor the names of its
++   * Neither the name of Google LLC nor the names of its
+ contributors may be used to endorse or promote products derived from
+ this software without specific prior written permission.
+ 
+diff --git a/vendor/golang.org/x/oauth2/README.md b/vendor/golang.org/x/oauth2/README.md
+index 781770c204..48dbb9d84c 100644
+--- a/vendor/golang.org/x/oauth2/README.md
++++ b/vendor/golang.org/x/oauth2/README.md
+@@ -5,15 +5,6 @@
+ 
+ oauth2 package contains a client implementation for OAuth 2.0 spec.
+ 
+-## Installation
+-
+-~~~~
+-go get golang.org/x/oauth2
+-~~~~
+-
+-Or you can manually git clone the repository to
+-`$(go env GOPATH)/src/golang.org/x/oauth2`.
+-
+ See pkg.go.dev for further documentation and examples.
+ 
+ * [pkg.go.dev/golang.org/x/oauth2](https://pkg.go.dev/golang.org/x/oauth2)
+@@ -33,7 +24,11 @@ The main issue tracker for the oauth2 repository is located at
+ https://github.com/golang/oauth2/issues.
+ 
+ This repository uses Gerrit for code changes. To learn how to submit changes to
+-this repository, see https://golang.org/doc/contribute.html. In particular:
++this repository, see https://go.dev/doc/contribute.
++
++The git repository is https://go.googlesource.com/oauth2.
++
++Note:
+ 
+ * Excluding trivial changes, all contributions should be connected to an existing issue.
+ * API changes must go through the [change proposal process](https://go.dev/s/proposal-process) before they can be accepted.
+diff --git a/vendor/golang.org/x/oauth2/oauth2.go b/vendor/golang.org/x/oauth2/oauth2.go
+index 09f6a49b80..74f052aa9f 100644
+--- a/vendor/golang.org/x/oauth2/oauth2.go
++++ b/vendor/golang.org/x/oauth2/oauth2.go
+@@ -56,7 +56,7 @@ type Config struct {
+ 	// the OAuth flow, after the resource owner's URLs.
+ 	RedirectURL string
+ 
+-	// Scope specifies optional requested permissions.
++	// Scopes specifies optional requested permissions.
+ 	Scopes []string
+ 
+ 	// authStyleCache caches which auth style to use when Endpoint.AuthStyle is
+diff --git a/vendor/golang.org/x/oauth2/pkce.go b/vendor/golang.org/x/oauth2/pkce.go
+index 50593b6dfe..6a95da975c 100644
+--- a/vendor/golang.org/x/oauth2/pkce.go
++++ b/vendor/golang.org/x/oauth2/pkce.go
+@@ -21,7 +21,7 @@ const (
+ //
+ // A fresh verifier should be generated for each authorization.
+ // S256ChallengeOption(verifier) should then be passed to Config.AuthCodeURL
+-// (or Config.DeviceAccess) and VerifierOption(verifier) to Config.Exchange
++// (or Config.DeviceAuth) and VerifierOption(verifier) to Config.Exchange
+ // (or Config.DeviceAccessToken).
+ func GenerateVerifier() string {
+ 	// "RECOMMENDED that the output of a suitable random number generator be
+@@ -51,7 +51,7 @@ func S256ChallengeFromVerifier(verifier string) string {
+ }
+ 
+ // S256ChallengeOption derives a PKCE code challenge derived from verifier with
+-// method S256. It should be passed to Config.AuthCodeURL or Config.DeviceAccess
++// method S256. It should be passed to Config.AuthCodeURL or Config.DeviceAuth
+ // only.
+ func S256ChallengeOption(verifier string) AuthCodeOption {
+ 	return challengeOption{
+diff --git a/vendor/golang.org/x/oauth2/token.go b/vendor/golang.org/x/oauth2/token.go
+index 5bbb332174..109997d77c 100644
+--- a/vendor/golang.org/x/oauth2/token.go
++++ b/vendor/golang.org/x/oauth2/token.go
+@@ -49,6 +49,13 @@ type Token struct {
+ 	// mechanisms for that TokenSource will not be used.
+ 	Expiry time.Time `json:"expiry,omitempty"`
+ 
++	// ExpiresIn is the OAuth2 wire format "expires_in" field,
++	// which specifies how many seconds later the token expires,
++	// relative to an unknown time base approximately around "now".
++	// It is the application's responsibility to populate
++	// `Expiry` from `ExpiresIn` when required.
++	ExpiresIn int64 `json:"expires_in,omitempty"`
++
+ 	// raw optionally contains extra metadata from the server
+ 	// when updating a token.
+ 	raw interface{}
+diff --git a/vendor/modules.txt b/vendor/modules.txt
+index 2c0e55dc48..02d160e83b 100644
+--- a/vendor/modules.txt
++++ b/vendor/modules.txt
+@@ -520,8 +520,8 @@ golang.org/x/net/ipv6
+ golang.org/x/net/proxy
+ golang.org/x/net/trace
+ golang.org/x/net/websocket
+-# golang.org/x/oauth2 v0.21.0
+-## explicit; go 1.18
++# golang.org/x/oauth2 v0.27.0
++## explicit; go 1.23.0
+ golang.org/x/oauth2
+ golang.org/x/oauth2/internal
+ # golang.org/x/sync v0.11.0
+-- 
+2.49.0
+

@@ -751,4 +751,23 @@ SLE identical and thus derived from a common source. Thanks!
     <comment></comment>
     <requestid>1238605</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e3439de0d334fb9b364e5cae6d87b3cb</srcmd5>
+    <version>1.5.0</version>
+    <time>1745414340</time>
+    <user>anag_factory</user>
+    <comment>- Remove custom SELinux policy from virt-launcher container
+- Update to version 1.5.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.5.0
+- Drop patches
+  0001-feat-pass-timeout-from-virt-monitor-to-virt-tail.patch
+- Add patches
+  0002-chore-deps-update-module-golang.org-x-crypto-to-v0.3.patch (bsc#1239328)
+  0003-chore-deps-update-module-golang.org-x-oauth2-to-v0.2.patch (bsc#1239190)
+  0004-chore-deps-update-module-golang.org-x-net-to-v0.36.0.patch (bsc#1238704)
+- Rename patch
+  0002-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch
+  0001-Ensure-SEV-VMs-use-stateless-OVMF-firmware.patch</comment>
+    <requestid>1272049</requestid>
+  </revision>
 </revisionlist>
