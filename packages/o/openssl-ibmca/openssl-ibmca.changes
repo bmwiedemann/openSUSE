@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Apr 23 08:33:06 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade openssl-ibmca to version 2.5.0
+  * Provider: Add support for OSSL_PKEY_PARAM_RSA_DERIVE_FROM_PQ on import
+  * Provider: Add support for SignMessage and VerifyMessage API for ECDSA and RSA
+  * Provider: Allow the DHKEM-IKM option for EC keygen, but use fallback provider
+  * Provider: Allow ECDSA deterministic signatures, but use fallback
+  * Engine: Enable external AES-GCM IV when libica is in FIPS mode
+  * Bug fixes   
+- Removed obsolete patches
+  * openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-is-in-FIPS-mode.patch
+  * openssl-ibmca-02-test-provider-Do-not-link-against-libica-use-dlopen-instead.patch
+  * openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-after-setting-env-vars.patch
+  * openssl-ibmca-04-engine-Fix-compile-error.patch
+  * openssl-ibmca-05-provider-Fix-segfault-with-openssl-list-key-managers.patch
+  * openssl-ibmca-06-Provider-Fix-segfault-with-openssl-list-signature-algorithms-verbose.patch
+  * openssl-ibmca-07-engine-Fix-Do-not-report-errors-if-libica-does-not-support-EC.patch
+  * openssl-ibmca-08-Fix-compiler-error-for-undefined-ERR_pop_to_mark.patch
+
+-------------------------------------------------------------------
 Wed Feb 19 13:25:55 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied additonal patches(bsc#1237344)

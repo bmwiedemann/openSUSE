@@ -36,7 +36,7 @@ Name:           openssl-ibmca-engine
 Name:           openssl-ibmca-provider
 %endif
 
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
 License:        Apache-2.0
@@ -60,14 +60,6 @@ Requires:       libopenssl3
 ExclusiveArch:  s390x
 
 ###
-Patch10:        openssl-ibmca-01-engine-Enable-external-AES-GCM-IV-when-libica-is-in-FIPS-mode.patch
-Patch11:        openssl-ibmca-02-test-provider-Do-not-link-against-libica-use-dlopen-instead.patch
-Patch12:        openssl-ibmca-03-test-provider-Explicitly-initialize-OpenSSL-after-setting-env-vars.patch
-Patch13:        openssl-ibmca-04-engine-Fix-compile-error.patch
-Patch14:        openssl-ibmca-05-provider-Fix-segfault-with-openssl-list-key-managers.patch
-Patch15:        openssl-ibmca-06-Provider-Fix-segfault-with-openssl-list-signature-algorithms-verbose.patch
-Patch16:        openssl-ibmca-07-engine-Fix-Do-not-report-errors-if-libica-does-not-support-EC.patch
-Patch17:        openssl-ibmca-08-Fix-compiler-error-for-undefined-ERR_pop_to_mark.patch
 ###
 
 %description
