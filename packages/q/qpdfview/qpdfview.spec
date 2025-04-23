@@ -1,7 +1,7 @@
 #
 # spec file for package qpdfview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,30 +25,35 @@ Summary:        Tabbed document viewer in Qt
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://launchpad.net/qpdfview
-Source:         https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz
-Source1:        https://launchpad.net/%{name}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz.asc
+Source:         %{url}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz
+Source1:        %{url}/trunk/%{version}/+download/%{name}-%{pver}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
+%if 0%{?suse_version} >= 1699
+BuildRequires:  pkgconfig(cups)
+%else
+BuildRequires:  cups-devel
+%endif
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(libspectre)
-BuildRequires:  pkgconfig(poppler-qt5)
+BuildRequires:  pkgconfig(poppler-qt6)
+BuildRequires:  pkgconfig(synctex)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-plugin-pdf
-Requires:       libqt5_sql_backend
+Requires:       qt6-sql-sqlite
 Recommends:     %{name}-lang
 Suggests:       %{name}-plugin-djvu
 Suggests:       %{name}-plugin-image
@@ -115,57 +120,47 @@ This plugin is required to read PostScript documents
 %autosetup -p1 -n %{name}-%{pver}
 
 %build
-%global _libqt5_qmake %{_libqt5_qmake} -makefile %{name}.pro
-%{_libqt5_bindir}/lrelease translations/*.ts
-%qmake5 PLUGIN_INSTALL_PATH=%{_libdir}/%{name} "CONFIG += c++17"
-%make_build
+%{_qt6_bindir}/lrelease %{name}.pro
+%qmake6 %{name}.pro \
+    PLUGIN_INSTALL_PATH=%{_libdir}/%{name}
+%qmake6_build
 
 %install
-%qmake5_install
+%qmake6_install
 %fdupes %{buildroot}
 %find_lang %{name} --with-qt
-
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license COPYING
 %doc CHANGES CONTRIBUTORS README TODO
 %{_bindir}/%{name}
-%dir %{_libdir}/%{name}/
-%dir %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%{_datadir}/metainfo/qpdfview.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
+%dir %{_datadir}/%{name}
+%doc %{_datadir}/%{name}/help.html
 
 %files plugin-djvu
-%{_libdir}/%{name}/libqpdfview_djvu.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}_djvu.so
 
 %files plugin-image
-%{_libdir}/%{name}/libqpdfview_image.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}_image.so
 
 %files plugin-pdf
-%{_libdir}/%{name}/libqpdfview_pdf.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}_pdf.so
 
 %files plugin-ps
-%{_libdir}/%{name}/libqpdfview_ps.so
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/lib%{name}_ps.so
 
 %files lang -f %{name}.lang
-%lang(ast) %{_datadir}/%{name}/%{name}_ast.qm
-%lang(nds) %{_datadir}/%{name}/%{name}_nds.qm
-%if 0%{?sle_version} < 159000
-%lang(ber) %{_datadir}/%{name}/%{name}_ber.qm
-%lang(rue) %{_datadir}/%{name}/%{name}_rue.qm
-%lang(zgh) %{_datadir}/%{name}/%{name}_zgh.qm
+%if 0%{?sle_version}
+%{_datadir}/%{name}/%{name}_???.qm
 %endif
-%doc %{_datadir}/%{name}/help*.html
+%doc %{_datadir}/%{name}/help_*.html
 
 %changelog
