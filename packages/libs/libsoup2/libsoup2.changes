@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 18 21:38:24 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add more CVE fixes:
+  + ef6c4bf6.patch (boo#1240750 CVE-2025-2784)
+  + 96c22b67.patch (boo#1240750 CVE-2025-2784)
+  + 19124679.patch (boo#1240752 CVE-2025-32050)
+  + a5b86bfc.patch (boo#1240756 CVE-2025-32052)
+  + 5739a090.patch (boo#1240757 CVE-2025-32053)
+
+-------------------------------------------------------------------
 Fri Apr  4 19:42:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Increase test timeout for all arches except x86_64 and run tests

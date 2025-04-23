@@ -1,7 +1,7 @@
 #
 # spec file for package libsoup2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,16 @@ Patch8:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/29b96fab.patch
 Patch9:         https://gitlab.gnome.org/GNOME/libsoup/-/commit/a35222dd.patch
 # PATCH-FIX-UPSTREAM 4c9e75c6.patch boo#1233287 mgorse@suse.com -- fix an intermittent test failure.
 Patch10:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/4c9e75c6.patch
+# PATCH-FIX-UPSTREAM ef6c4bf6.patch boo#1240750 mgorse@suse.com -- fix a potential overflow.
+Patch11:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/ef6c4bf6.patch
+# PATCH-FIX-UPSTREAM 96c22b67.patch boo#1240750 mgorse@suse.com -- add better coverage of skip_insignificant_space.
+Patch12:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/96c22b67.patch
+# PATCH-FIX-UPSTREAM 19124679.patch boo#1240752 mgorse@suse.com -- Fix using int instead of size_t for strcspn return.
+Patch13:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/19124679.patch
+# PATCH-FIX-UPSTREAM a5b86bfc.patch boo#1240756 mgorse@suse.com -- fix heap buffer overflow in soup_content_sniffer_sniff.
+Patch14:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/a5b86bfc.patch
+# PATCH-FIX-UPSTREAM 5739a090.patch boo#1240757 mgorse@suse.com -- fix heap buffer overflow in soup_content_sniffer.c:sniff_feed_or_html
+Patch15:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/5739a090.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50
