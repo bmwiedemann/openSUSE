@@ -33,6 +33,7 @@ Requires:       python-attrs >= 19.2.0
 Requires:       python-pytest >= 7.0
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module attrs >= 19.2.0}
 BuildRequires:  %{python_module pytest >= 7.0}
 # /SECTION
 %python_subpackages

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 12:59:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- pytest made attrs optional, add it here
+
+-------------------------------------------------------------------
 Fri Jan 17 08:45:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.14.1:
