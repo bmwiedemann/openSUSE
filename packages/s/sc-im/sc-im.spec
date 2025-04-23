@@ -1,7 +1,7 @@
 #
 # spec file for package sc-im
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,9 @@ BuildRequires:  pkgconfig(libxls)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(xlsxwriter)
+# Currently causing build failures as of libxlsxwriter 1.2.2
+# See gh#andmarti1424/sc-im#948 for bug report
+# BuildRequires:  pkgconfig(xlsxwriter)
 
 %description
 Spreadsheet Calculator Improvised, aka sc-im, is an ncurses based,
