@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pytils
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        A Russian-specific string utility module
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/y10h/pytils
 Source:         https://files.pythonhosted.org/packages/source/p/pytils/pytils-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-311.patch, gh#last-partizan/pytils#50
-Patch0:         python-311.patch
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,10 +43,10 @@ transliteration, etc.)
 %autosetup -p1 -n pytils-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

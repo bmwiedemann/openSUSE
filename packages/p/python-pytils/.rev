@@ -33,4 +33,27 @@
 </comment>
     <requestid>1066953</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>43666215833a9ee192ca79f0ab1ed6e5</srcmd5>
+    <version>0.4.3</version>
+    <time>1745414346</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1271287 from glaubitz
+
+- Update to 0.4.3
+    * Fix invalid escape sequence in numeral.choose_plural.py
+    * RegExp syntax error
+    * Remove redundant (?u) inline flags
+    * The u prefix for strings is no longer necessary in Python &gt;= 3.0
+  - from version 0.4.2
+    * (identical to version 0.4.3)
+  - Drop python-311.patch, merged upstream
+  - Switch build system from setuptools to pyproject.toml
+    * Add python-pip and python-wheel to BuildRequires
+    * Replace %python_build with %pyproject_wheel
+    * Replace %python_install with %pyproject_install
+  - Update BuildRequires from pyproject.toml
+  - Use Python 3.11 on SLE-15 by default</comment>
+    <requestid>1272114</requestid>
+  </revision>
 </revisionlist>
