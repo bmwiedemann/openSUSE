@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Apr 20 20:27:08 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add -std=gnu17 to CFLAGS to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Tue Apr  8 06:07:24 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build even on s390 with profiling 

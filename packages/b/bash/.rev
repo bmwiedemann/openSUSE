@@ -2081,4 +2081,12 @@ Upstream declares the bash license to be GPL-3.0+ - not GPL-2.0+ (forwarded requ
     <comment>- Make it build even on s390 with profiling</comment>
     <requestid>1267821</requestid>
   </revision>
+  <revision rev="199" vrev="20">
+    <srcmd5>1fb106ca40a944ee9f172e627e3ef9a7</srcmd5>
+    <version>5.2.MACRO</version>
+    <time>1745422002</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1271572</requestid>
+  </revision>
 </revisionlist>

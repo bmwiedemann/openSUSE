@@ -360,7 +360,8 @@ echo exit 0 > tests/read7.sub
       set +o noclobber
   }
   LARGEFILE="$(getconf LFS_CFLAGS)"
-  CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g"
+  # add -std=gnu17 to build w/ gcc-15; not needed for bash-5.3
+  CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g -std=gnu17"
   LDFLAGS=""
   #
   # Never ever put -DMUST_UNBLOCK_CHLD herein as this breaks bash
