@@ -1,7 +1,7 @@
 #
 # spec file for package python-matrix_common
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/matrix-org/matrix-python-common
 Source:         https://github.com/matrix-org/matrix-python-common/archive/refs/tags/v%{version}.tar.gz#/matrix-python-common-%{version}-gh.tar.gz
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

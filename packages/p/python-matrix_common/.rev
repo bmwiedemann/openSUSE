@@ -37,4 +37,17 @@
   https://github.com/matrix-org/matrix-python-common/releases/tag/v1.3.0</comment>
     <requestid>1010938</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d94e668e447fca2f4f29f5b408175c3b</srcmd5>
+    <version>1.3.0</version>
+    <time>1745426413</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1272196 from darix
+
+- add attrs to the build requires since it was dropped from the
+  package where it was pulled in in the past
+
+- Update to 1.3.0</comment>
+    <requestid>1272197</requestid>
+  </revision>
 </revisionlist>

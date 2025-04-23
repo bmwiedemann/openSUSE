@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 14:15:27 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add attrs to the build requires since it was dropped from the
+  package where it was pulled in in the past
+
+-------------------------------------------------------------------
 Sun Oct  9 22:13:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Provide PyPI name
@@ -8,7 +14,7 @@ Sun Oct  9 22:13:02 UTC 2022 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Tue Sep 27 19:55:22 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.3.0
+- Update to 1.3.0 
   https://github.com/matrix-org/matrix-python-common/releases/tag/v1.3.0
 
 -------------------------------------------------------------------
