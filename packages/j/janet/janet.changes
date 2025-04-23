@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 16 10:52:03 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.38.0:
+  * Add `bundle/replace`
+  * Add CLI flags for the `bundle/` module to install and manage bundles.
+  * Improve `?` peg special termination behavior
+  * Add IEEE hex floats to grammar.
+  * Add buffer peg literal support
+  * Improve `split` peg special edge case behavior
+  * Add Arm64 .msi support
+  * Add `no-reuse` argument to `net/listen` to disable reusing server sockets
+  * Add `struct/rawget`
+  * Fix `deep=` and `deep-not=` to better handle degenerate cases with mutable table keys
+  * Long strings will now dedent on `\r\n` instead of just `\n`.
+  * Add `ev/to-file` for synchronous resource operations
+
+-------------------------------------------------------------------
 Sun Dec 15 02:14:29 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.37.1:
