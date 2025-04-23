@@ -7,4 +7,12 @@
     <comment>needed for building new chromium/electron. The chromium tarball no longer contains a free version.</comment>
     <requestid>1271770</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ecfe8fd5f02824110d51194539b3bc51</srcmd5>
+    <version>3.29.5</version>
+    <time>1745414327</time>
+    <user>anag_factory</user>
+    <comment>update to latest 3.x</comment>
+    <requestid>1272029</requestid>
+  </revision>
 </revisionlist>

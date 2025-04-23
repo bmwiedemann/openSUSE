@@ -17,12 +17,12 @@
 
 
 Name:           rollup
-Version:        3.29.4
+Version:        3.29.5
 Release:        0
 Summary:        Module bundler for JavaScript
 License:        BSD-2-Clause
 URL:            https://github.com/rollup/rollup
-Source:         https://registry.npmjs.org/rollup/-/rollup-3.29.4.tgz
+Source:         https://registry.npmjs.org/rollup/-/rollup-%{version}.tgz
 Provides:       nodejs-rollup
 BuildRequires:  nodejs
 BuildRequires:  nodejs-packaging

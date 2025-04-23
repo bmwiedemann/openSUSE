@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 22 20:46:24 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 3.29.5
+  * Fix Dom clobbering vulnerability (CVE-2024-43788 bsc#1241587)
+
+-------------------------------------------------------------------
 Tue Apr 15 17:39:42 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Initial packaging of version 3.29.4.
