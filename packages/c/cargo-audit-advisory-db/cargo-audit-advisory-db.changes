@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 11 02:21:43 UTC 2025 - william.brown@suse.com
+
+- Update to version 20250411:
+  * Assigned RUSTSEC-2025-0024 to crossbeam-channel (#2278)
+  * Add crossbeam-channel advisory re upstream MR #1187 (#2277)
+  * Update patched version list for RUSTSEC-2025-0023
+  * Add references to RUSTSEC-2025-0021
+  * Assigned RUSTSEC-2025-0023 to tokio (#2273)
+  * Add unsound advisory for Tokio 7232 (#2272)
+  * Change our policy from 90 days to 270 days for unmaintained (#2032)
+  * Assigned RUSTSEC-2025-0022 to openssl (#2271)
+  * Added rustsec advisory for two UAFs in rust-openssl (#2270)
+  * Assigned RUSTSEC-2025-0021 to gix-features (#2269)
+
+-------------------------------------------------------------------
 Tue Mar 04 01:06:21 UTC 2025 - william.brown@suse.com
 
 - Update to version 20250304:
