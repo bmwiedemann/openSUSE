@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ compression, or compatibility with any other compression library; instead, it
 aims for high speeds and reasonable compression.
 
 %package -n %{libname}
-Summary:        Shared library from snappy
+Summary:        A compressor/decompressor library favoring time
 
 %description -n %{libname}
 Snappy is a compression/decompression library. It does not aim for maximum
@@ -86,8 +86,7 @@ install -m 644 %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 %check
 %ctest
 
-%post   -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license COPYING

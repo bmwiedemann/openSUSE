@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 17 12:41:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update summary of the most prominently installed (sub)package.
+
+-------------------------------------------------------------------
 Sat Mar 22 15:51:54 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
