@@ -104,7 +104,7 @@ autoreconf -fi
 DEFCCNAME=DIR:/run/user/%%{uid}/krb5cc; export DEFCCNAME
 # FIXME: you should use the %%configure macro
 %configure \
-        CFLAGS="%{optflags} -I%{_includedir}/et -fno-strict-aliasing -D_GNU_SOURCE -fPIC $(getconf LFS_CFLAGS)" \
+        CFLAGS="%{optflags} -I%{_includedir}/et -fno-strict-aliasing -D_GNU_SOURCE -fPIC $(getconf LFS_CFLAGS) -std=gnu11" \
         CPPFLAGS="-I%{_includedir}/et " \
         SS_LIB="-lss" \
     --sysconfdir=%{_sysconfdir} \
