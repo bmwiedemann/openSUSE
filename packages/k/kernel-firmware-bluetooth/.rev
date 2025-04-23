@@ -81,4 +81,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update WCN785x btusb firmware to 2.0.0-00790-3</comment>
     <requestid>1268114</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af379cac73d4b7e491b6b92ae36d853d</srcmd5>
+    <version>20250422</version>
+    <time>1745414306</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * rtl_bt: Update RTL8852BT/RTL8852BE-VT BT USB FW to 0x1881_BA06</comment>
+    <requestid>1271969</requestid>
+  </revision>
 </revisionlist>
