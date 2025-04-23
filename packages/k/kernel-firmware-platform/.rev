@@ -44,4 +44,13 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 6.15-rc1</comment>
     <requestid>1268120</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7a5817e4e75b9fa823511f1bdd3f6fdc</srcmd5>
+    <version>20250422</version>
+    <time>1745414307</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250422 (git commit 944acaa23457):
+  * bmi260: Add BMI260 IMU initial configuration data file</comment>
+    <requestid>1271971</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 22 15:17:01 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250422 (git commit 944acaa23457):
+  * bmi260: Add BMI260 IMU initial configuration data file
+
+-------------------------------------------------------------------
 Wed Apr  9 10:12:00 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 6.15-rc1
