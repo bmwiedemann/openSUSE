@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 23 12:55:39 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.32.4:
+  * Fix race for sending errors in watch
+  * CHANGELOG-1.32: fix release note about kubeadm upgrade phases
+  * Fix implementation of ContainsCIDR to allow non-equal addresses
+  * fix handle terminating pvc when kubelet rebuild dsw
+  * add e2e test to reproduce unexpected unmount after kubelet is restarted
+
+-------------------------------------------------------------------
 Tue Mar 25 12:36:22 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - CVE-2025-1767: GitRepo Volume Inadvertent Local Repository Access, bsc#1239643 

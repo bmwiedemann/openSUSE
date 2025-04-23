@@ -22,7 +22,7 @@
 %define baseversionminus1 1.31
 
 Name:           kubernetes%{baseversion}
-Version:        1.32.3
+Version:        1.32.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -66,6 +66,7 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
+
 
 
 
