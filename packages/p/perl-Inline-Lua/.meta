@@ -1,0 +1,7 @@
+<package name="perl-Inline-Lua" project="openSUSE:Factory">
+  <title>Perl extension for embedding Lua scripts into Perl code</title>
+  <description>Inline::Lua allows you to write functions in Lua. Those of you who are not yet familiar with Lua should have a cursory glance at http://www.lua.org/ to get a taste of this language. In short:
+
+Lua was designed to be embedded into other applications and not so much as a language on its own. However, despite its small set of language features, it is an extremely powerful and expressive language. Its strong areas are an elegant and yet concise syntax, good overall performance and a beautiful implementation of some concepts from the world of functional programming.</description>
+  <url>https://metacpan.org/dist/Inline-Lua</url>
+</package>

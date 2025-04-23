@@ -1,0 +1,14 @@
+diff -ru a/Makefile.PL b/Makefile.PL
+--- a/Makefile.PL	2020-10-25 15:52:22.000000000 +0100
++++ b/Makefile.PL	2025-04-04 14:32:39.686358717 +0200
+@@ -9,7 +9,8 @@
+     my @config;
+ 
+     sub get_lua_config {
+-        my %args = map { split /\s*=\s*/ } @ARGV;
++        my %args = map { split /\s*=\s*/, $_, 2 } @ARGV;
++
+ 
+         my $libs = $args{'LIBS'};
+         my $inc  = $args{'INC'};
+
