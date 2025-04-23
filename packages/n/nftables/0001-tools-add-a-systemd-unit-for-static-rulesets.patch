@@ -1,16 +1,16 @@
-From 5150f2e49b4b17bdaf7c02299a3b08e9fcc45345 Mon Sep 17 00:00:00 2001
+From d47ba75b254179f07061dd7782b5d73c9991fdc5 Mon Sep 17 00:00:00 2001
 From: Jan Engelhardt <jengelh@inai.de>
 Date: Fri, 28 Feb 2025 19:45:01 +0100
 Subject: [PATCH] tools: add a systemd unit for static rulesets
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-References: https://lore.kernel.org/netfilter-devel/20250308182250.98098-1-jengelh@inai.de/T/#u
+References: https://lore.kernel.org/netfilter-devel/20250417145055.2700920-1-jengelh@inai.de/
 
 There is a customer request (bugreport) for wanting to trivially load a ruleset
 from a well-known location on boot, forwarded to me by M. Gerstner. A systemd
 service unit is hereby added to provide that functionality. This is based on
-various distributions attempting to do same, cf.
+various distributions attempting to do same, for example,
 
 https://src.fedoraproject.org/rpms/nftables/tree/rawhide
 https://gitlab.alpinelinux.org/alpine/aports/-/blob/master/main/nftables/nftables.initd
@@ -21,14 +21,13 @@ Cc: Kevin Fenzi <kevin@scrye.com>
 Cc: Francesco Colista <fcolista@alpinelinux.org>
 Cc: Sébastien Luttringer <seblu@archlinux.org>
 ---
- .gitignore                |  1 +
  INSTALL                   |  6 ++++++
  Makefile.am               | 16 ++++++++++++----
  configure.ac              | 10 ++++++++++
- files/nftables/main.nft   | 24 ++++++++++++++++++++++++
- tools/nftables.service.8  | 18 ++++++++++++++++++
+ files/nftables/main.nft   | 22 ++++++++++++++++++++++
+ tools/nftables.service.8  | 17 +++++++++++++++++
  tools/nftables.service.in | 21 +++++++++++++++++++++
- 7 files changed, 92 insertions(+), 4 deletions(-)
+ 6 files changed, 88 insertions(+), 4 deletions(-)
  create mode 100644 files/nftables/main.nft
  create mode 100644 tools/nftables.service.8
  create mode 100644 tools/nftables.service.in
@@ -90,7 +89,7 @@ index fb64105d..050991f4 100644
 +	${AM_V_GEN}${MKDIR_P} tools
 +	${AM_V_at}sed -e 's|@''sbindir''@|${sbindir}|g;s|@''pkgsysconfdir''@|${pkgsysconfdir}|g' <${srcdir}/tools/nftables.service.in >$@
 diff --git a/configure.ac b/configure.ac
-index 80a64813..64a164e5 100644
+index a4552df7..805af74a 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -114,6 +114,16 @@ AC_CHECK_DECLS([getprotobyname_r, getprotobynumber_r, getservbyport_r], [], [],
@@ -112,18 +111,16 @@ index 80a64813..64a164e5 100644
  		libnftables.pc				\
 diff --git a/files/nftables/main.nft b/files/nftables/main.nft
 new file mode 100644
-index 00000000..8e62f9bc
+index 00000000..d3171fd3
 --- /dev/null
 +++ b/files/nftables/main.nft
-@@ -0,0 +1,24 @@
+@@ -0,0 +1,22 @@
 +#!/usr/sbin/nft -f
 +
 +# template static firewall configuration file
 +#
 +# copy this over to /etc/nftables/rules/main.nft as a starting point for
 +# configuring a rule set which will be loaded by nftables.service.
-+
-+flush ruleset
 +
 +table inet filter {
 +	chain input {
@@ -142,10 +139,10 @@ index 00000000..8e62f9bc
 +#include "/etc/nftables/rules/forwarding.nft"
 diff --git a/tools/nftables.service.8 b/tools/nftables.service.8
 new file mode 100644
-index 00000000..4a83b01c
+index 00000000..bb88dc46
 --- /dev/null
 +++ b/tools/nftables.service.8
-@@ -0,0 +1,18 @@
+@@ -0,0 +1,17 @@
 +.TH nftables.service 8 "" "nftables" "nftables admin reference"
 +.SH Name
 +nftables.service \(em Static Firewall Configuration with nftables.service
@@ -155,9 +152,8 @@ index 00000000..4a83b01c
 +.PP
 +To use this service, you need to create the main configuration file in
 +/etc/nftables/rules/main.nft. A template for this can be copied from
-+/usr/share/doc/nftables/main.nft. The static firewall configuration can be
-+split up into multiple files which are included from the main.nft
-+configuration file.
++/usr/share/doc/nftables/main.nft. Alternatively, `nft list ruleset >main.nft`
++could be used to save the active configuration (if any) to the file.
 +.PP
 +Once the desired static firewall configuration is in place, it can be tested by
 +running `systemctl start nftables.service`. To enable the service at boot time,
@@ -166,7 +162,7 @@ index 00000000..4a83b01c
 +\fBnft\fP(8)
 diff --git a/tools/nftables.service.in b/tools/nftables.service.in
 new file mode 100644
-index 00000000..f2f07126
+index 00000000..2ac7e6fd
 --- /dev/null
 +++ b/tools/nftables.service.in
 @@ -0,0 +1,21 @@
@@ -185,12 +181,12 @@ index 00000000..f2f07126
 +StandardInput=null
 +ProtectSystem=full
 +ProtectHome=true
-+ExecStart=@sbindir@/nft -f @pkgsysconfdir@/rules/main.nft
-+ExecReload=@sbindir@/nft -f @pkgsysconfdir@/rules/main.nft
++ExecStart=@sbindir@/nft 'flush ruleset; include "@pkgsysconfdir@/rules/main.nft"'
++ExecReload=@sbindir@/nft 'flush ruleset; include "@pkgsysconfdir@/rules/main.nft"'
 +ExecStop=@sbindir@/nft flush ruleset
 +
 +[Install]
 +WantedBy=sysinit.target
 -- 
-2.48.1
+2.49.0
 
