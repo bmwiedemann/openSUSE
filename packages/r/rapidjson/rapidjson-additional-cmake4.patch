@@ -1,0 +1,18 @@
+--- a/RapidJSONConfig.cmake.in	2021-10-15 08:34:41.000000000 +0200
++++ b/RapidJSONConfig.cmake.in	2025-04-21 13:30:18.525986832 +0200
+@@ -1,6 +1,6 @@
+ ################################################################################
+ # CMake minimum version required
+-cmake_minimum_required(VERSION 3.0)
++cmake_minimum_required(VERSION 3.5)
+ 
+ ################################################################################
+ # RapidJSON source dir
+--- a/example/CMakeLists.txt	2021-10-15 08:34:41.000000000 +0200
++++ b/example/CMakeLists.txt	2025-04-21 13:26:53.763332803 +0200
+@@ -1,4 +1,4 @@
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.5)
+ 
+ if(POLICY CMP0054)
+   cmake_policy(SET CMP0054 NEW)

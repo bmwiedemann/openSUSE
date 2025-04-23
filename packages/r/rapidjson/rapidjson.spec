@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://rapidjson.org/
 Source0:        %{name}-%{version}.tar.xz
+Patch1:         rapidjson-cmake4.patch
+Patch2:         rapidjson-additional-cmake4.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -55,7 +57,7 @@ RapidJSON is a header-only JSON parser and generator for C++.
 This package contains development headers and examples.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i -e 's:-Werror::g' CMakeLists.txt
 
 %build

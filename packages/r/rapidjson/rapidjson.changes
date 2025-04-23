@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:52:41 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add rapidjson-cmake4.patch from upstream to fix cmake-4 build
+  failure
+- Add rapidjson-additional-cmake4.patch to fix
+  cmake_minimum_required in the packaged RapidJSONConfig.cmake
+  and to fix another build failure
+
+-------------------------------------------------------------------
 Fri Jan 14 21:24:15 UTC 2022 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.1.0+git20211015.4d6cb081
