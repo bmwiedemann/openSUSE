@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 23 10:00:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Convert back to _service; source-as-a-submodule is not
+  permitted yet.
+
+-------------------------------------------------------------------
+Wed Apr 23 09:56:43 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 1.53.0+git.1736064647.1430e33:
+  * doc: editorial changes for man page
+  * doc: add missing patchlet for fixing par.1
+  * test: we currently do not support non-UTF8 wide characters
+  * fix: use swprintf(3) for wchar_t string.
+  * chore: don't ignore existing environmental variables
+  * feat: add README.md and LICENSE
+  * Add another test case. Karel Hynek Mácha: Cikáni
+  * Make tests working even with Latin-1 and UTF-8 texts.
+  * add a Makefile that sets up variables for the protoMakefile from upstream
+  * fix cross compilation
+
+-------------------------------------------------------------------
+Mon Apr 14 14:00:32 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to upstream git submodule.
+
+-------------------------------------------------------------------
 Thu Jul 18 13:14:46 UTC 2024 - mcepl@cepl.eu
 
 - Switch from dead upstream to the current soft fork at

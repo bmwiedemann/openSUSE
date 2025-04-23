@@ -1,5 +1,5 @@
 <services>
-  <service name="obs_scm" mode="manual">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://git.sr.ht/~mcepl/par</param>
     <param name="versionprefix">1.53.0+git</param>
@@ -7,10 +7,9 @@
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">mcepl@cepl.eu</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
-    <param name="compression">gz</param>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
+    <param name="compression">gz</param>
   </service>
   <service name="set_version" mode="manual"/>
 </services>

@@ -1,7 +1,7 @@
 #
 # spec file for package par_text
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define upname par
 Name:           par_text
-Version:        1.53.0+git.1721308378.56c5d7a
+Version:        1.53.0+git.1736064647.1430e33
 Release:        0
 Summary:        Paragraph reformatter
 License:        MIT
 Group:          Productivity/Text/Convertors
 URL:            http://www.nicemice.net/par/
-Source0:        par-%{version}.tar.gz
+Source0:        %{upname}-%{version}.tar.gz
 # I hope that these two packages are so specialised, they
 # shouldn't be on one system.
 Conflicts:      par
@@ -47,7 +47,7 @@ If there are suffixes, spaces are inserted before them so that they all
 end in the same column.
 
 %prep
-%autosetup -p1 -n %{upname}-%{version}
+%setup -q -n %{upname}-%{version}
 
 %build
 %make_build -f protoMakefile CFLAGS="%{optflags}" $*
