@@ -248,4 +248,39 @@
  (gh#agama-project/agama#2160).</comment>
     <requestid>1256469</requestid>
   </revision>
+  <revision rev="15" vrev="15">
+    <srcmd5>9755acc750468488f1b288c76de2b15c</srcmd5>
+    <version>0</version>
+    <time>1745426385</time>
+    <user>anag_factory</user>
+    <comment>- Version 14
+
+- Process the product changed event so the UI can better react on
+  registering the product shortly after that
+  (gh#agama-project/agama#2274)
+
+- Rework the network page to (gh#agama-project/agama#2247):
+  - Fix several problems with Wi-Fi networks handling.
+  - Improve error reporting when the connection failed.
+  - Use a regular form to connect, instead of the old &quot;drawer&quot;
+    component.
+  - Drop the &quot;disconnect&quot; and &quot;forget&quot; actions by now.
+  - Reduce the amount of requests to the backend.
+
+- Shorten storage device names.
+- Move LVM logical volumes to partitions, if possible.
+- Add MenuButton component (gh#agama-project/agama#2241).
+
+- Improve the interface to display and edit the iSCSI initiator
+  (bsc#1239046, bsc#1231385, gh#agama-project/agama#2269).
+
+- Fix flickering issue during loading and progress transitions
+  (gh#agama-project/agama#2240, gh#agama-project/agama#2255).
+
+- Fix layout of iSCSI page (gh#agama-project/agama#2231).
+
+- Fix reloading data after reprobing devices
+  (gh#agama-project/agama#2235).</comment>
+    <requestid>1272125</requestid>
+  </revision>
 </revisionlist>
