@@ -3831,7 +3831,9 @@ unsorted:
   - envoy-build-tools 
   - envsubst-mini 
   - envy24control 
+  - eog 
   - eog-devel 
+  - eog-lang 
   - eog-plugin-exif-display 
   - eog-plugin-export-to-folder 
   - eog-plugin-fit-to-width 
@@ -7374,7 +7376,6 @@ unsorted:
   - gluegen2-devel 
   - glusterfs 
   - glusterfs-devel 
-  - glycin-loaders 
   - glycin-loaders-devel 
   - glyr-devel 
   - glyrc 
@@ -10954,7 +10955,6 @@ unsorted:
   - ldc-runtime-devel 
   - ldirectord 
   - ldns-devel 
-  - leafnode 
   - leafpad 
   - leancrypto-devel 
   - leancrypto-devel-static 
@@ -11196,7 +11196,6 @@ unsorted:
   - libGLw1 
   - libGLwM1 
   - libGammu8 
-  - libGeneratedSaxParser0_3 
   - libGraphicsMagick++-devel 
   - libGraphicsMagickWand-Q16-2 
   - libHACD3_17 
@@ -11316,7 +11315,6 @@ unsorted:
   - libMagick++-devel-32bit 
   - libMagickCore-7_Q16HDRI10-32bit 
   - libMagickWand-7_Q16HDRI10-32bit 
-  - libMathMLSolver0_3 
   - libMpvQt2 
   - libMrm4 
   - libMyGUICommon3_4_3 
@@ -11351,10 +11349,6 @@ unsorted:
   - libOkteta3 
   - libOpenCL1 
   - libOpenCL1-32bit 
-  - libOpenCOLLADABaseUtils0_3 
-  - libOpenCOLLADAFramework0_3 
-  - libOpenCOLLADASaxFrameworkLoader0_3 
-  - libOpenCOLLADAStreamWriter0_3 
   - libOpenColorIO2_4 
   - libOpenEXR-3_2-31-32bit 
   - libOpenEXRCore-3_2-31-32bit 
@@ -11677,7 +11671,6 @@ unsorted:
   - libTMCG-devel 
   - libTMCG18 
   - libThePEG30 
-  - libUTF0_3 
   - libUil4 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
@@ -12376,7 +12369,6 @@ unsorted:
   - libbudgie-private0 
   - libbudgie-raven-plugin0 
   - libbudgietheme0 
-  - libbuffer0_3 
   - libbullet-devel 
   - libbullet3_17 
   - libburn-devel 
@@ -13298,7 +13290,6 @@ unsorted:
   - libftdi1 
   - libftdi1-devel 
   - libftgl2 
-  - libftoa0_3 
   - libftxf-devel 
   - libftxf1 
   - libftxr-devel 
@@ -14067,7 +14058,7 @@ unsorted:
   - libjacknet0-32bit 
   - libjackserver0 
   - libjackserver0-32bit 
-  - libjanet1_37 
+  - libjanet1_38 
   - libjansson-devel 
   - libjasper-devel 
   - libjasper7-32bit 
@@ -14963,9 +14954,6 @@ unsorted:
   - libopamgt-devel 
   - libopamgt0 
   - libopasadb1_0_0 
-  - libopenCOLLADA-devel 
-  - libopenCOLLADA-doc 
-  - libopenCOLLADA-utils 
   - libopenEMS0 
   - libopen_amp0 
   - libopenal0 
@@ -17587,8 +17575,6 @@ unsorted:
   - lookbook-lang 
   - loook 
   - loudmouth-devel 
-  - loupe 
-  - loupe-lang 
   - lout 
   - love 
   - love-0_7_2 
@@ -21651,6 +21637,7 @@ unsorted:
   - perl-Import-Into 
   - perl-Importer 
   - perl-Inline 
+  - perl-Inline-Lua 
   - perl-Inline-Python 
   - perl-Iterator 
   - perl-Iterator-Util 
@@ -24391,6 +24378,7 @@ unsorted:
   - python311-azure-mgmt-batch 
   - python311-azure-mgmt-batchai 
   - python311-azure-mgmt-billing 
+  - python311-azure-mgmt-billingbenefits 
   - python311-azure-mgmt-botservice 
   - python311-azure-mgmt-cdn 
   - python311-azure-mgmt-chaos 
@@ -24475,6 +24463,7 @@ unsorted:
   - python311-azure-mgmt-iotfirmwaredefense 
   - python311-azure-mgmt-iothub 
   - python311-azure-mgmt-iothubprovisioningservices 
+  - python311-azure-mgmt-iotoperations 
   - python311-azure-mgmt-keyvault 
   - python311-azure-mgmt-kubernetesconfiguration 
   - python311-azure-mgmt-kusto 
@@ -28060,6 +28049,7 @@ unsorted:
   - python312-azure-mgmt-batch 
   - python312-azure-mgmt-batchai 
   - python312-azure-mgmt-billing 
+  - python312-azure-mgmt-billingbenefits 
   - python312-azure-mgmt-botservice 
   - python312-azure-mgmt-cdn 
   - python312-azure-mgmt-chaos 
@@ -28144,6 +28134,7 @@ unsorted:
   - python312-azure-mgmt-iotfirmwaredefense 
   - python312-azure-mgmt-iothub 
   - python312-azure-mgmt-iothubprovisioningservices 
+  - python312-azure-mgmt-iotoperations 
   - python312-azure-mgmt-keyvault 
   - python312-azure-mgmt-kubernetesconfiguration 
   - python312-azure-mgmt-kusto 
@@ -31782,6 +31773,7 @@ unsorted:
   - python313-azure-mgmt-batch 
   - python313-azure-mgmt-batchai 
   - python313-azure-mgmt-billing 
+  - python313-azure-mgmt-billingbenefits 
   - python313-azure-mgmt-botservice 
   - python313-azure-mgmt-cdn 
   - python313-azure-mgmt-chaos 
@@ -31866,6 +31858,7 @@ unsorted:
   - python313-azure-mgmt-iotfirmwaredefense 
   - python313-azure-mgmt-iothub 
   - python313-azure-mgmt-iothubprovisioningservices 
+  - python313-azure-mgmt-iotoperations 
   - python313-azure-mgmt-keyvault 
   - python313-azure-mgmt-kubernetesconfiguration 
   - python313-azure-mgmt-kusto 
@@ -49266,8 +49259,6 @@ unsorted:
   - xsane 
   - xscope 
   - xscreensaver-data-extra 
-  - xsd 
-  - xsd-doc 
   - xsel 
   - xsession 
   - xsetmode 

@@ -377,8 +377,6 @@
     <package name="enchant-2-backend-hunspell" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="enchant-data" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="envsubst" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
-    <package name="eog" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="eog-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="epson-inkjet-printer-escpr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="erofs-utils" supportstatus="unsupported"/> <!-- reason: dvd:erofs-utils -->
     <package name="espeak" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
@@ -547,6 +545,7 @@
     <package name="glibc-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="glibc-locale-base" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="glycin-loaders" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-bluetooth" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-bluetooth-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gnome-browser-connector" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3033,6 +3032,8 @@
     <package name="lokalize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="lokalize-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="lomoco" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="loupe" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="loupe-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="lrzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="lsb-release" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="lsof" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
