@@ -1284,4 +1284,13 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
 </comment>
     <requestid>1266119</requestid>
   </revision>
+  <revision rev="122" vrev="2">
+    <srcmd5>025c248f660927d4566ed28f2a4ef692</srcmd5>
+    <version>2.0.40</version>
+    <time>1745414295</time>
+    <user>anag_factory</user>
+    <comment>- Update files to support modern and older setuptools, lowercase and
+  uppercase dist-info file, in Factory and Leap.</comment>
+    <requestid>1271880</requestid>
+  </revision>
 </revisionlist>

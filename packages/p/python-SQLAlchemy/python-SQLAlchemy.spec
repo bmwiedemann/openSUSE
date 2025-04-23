@@ -93,11 +93,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %license LICENSE
 %doc CHANGES.rst README.rst README.dialects.rst README.unittests.rst
 %{python_sitearch}/sqlalchemy/
-%if 0%{?suse_version} > 1600
-%{python_sitearch}/sqlalchemy-%{version}.dist-info
-%else
-%{python_sitearch}/SQLAlchemy-%{version}.dist-info
-%endif
+%{python_sitearch}/[sS][qQ][lL][aA]lchemy-%{version}.dist-info
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc
