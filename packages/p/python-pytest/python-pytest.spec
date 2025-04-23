@@ -33,32 +33,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest%{psuffix}
-Version:        8.3.4
+Version:        8.3.5
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest
 Source:         https://files.pythonhosted.org/packages/source/p/pytest/pytest-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pytest-dev/pytest/pull/13113 Fix selftests with Pygments >= 2.19.0
-# fresh from the oven at the time of patching, may need refresh
-Patch:          pygments.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 6}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tomli >= 1 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
-Requires:       python-attrs >= 19.2.0
-%if 0%{?python_version_nodots} < 311
-Requires:       python-exceptiongroup >= 1.0.0
-%endif
 Requires:       python-iniconfig
 Requires:       python-packaging
 Requires:       python-pluggy >= 1.5
 Requires:       python-setuptools
-Requires:       (python-tomli >= 1 if python-base < 3.11)
+Recommends:     python-attrs >= 19.2.0
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts

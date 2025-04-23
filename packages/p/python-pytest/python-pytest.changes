@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 22 12:27:46 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.3.5
+  * Bug fixes
+    - #11777: Fixed issue where sequences were still being shortened
+      even with -vv verbosity.
+    - #12888: Fixed broken input when using Python 3.13+ and a libedit
+      build of Python, such as on macOS or with uv-managed Python
+      binaries from the python-build-  standalone project.
+      This could manifest e.g. by a broken prompt when using Pdb,
+      or seeing empty inputs with manual usage of input() and
+      suspended capturing.
+    - #13026: Fixed AttributeError{.interpreted-text role="class"}
+      crash when using --import-mode=importlib when top-level directory
+      same name as another module of   the standard library.
+    - #13053: Fixed a regression in pytest 8.3.4 where, when using
+      --import-mode=importlib, a directory containing py file with
+      the same name would cause an ImportError
+    - #13083: Fixed issue where pytest could crash if one of the
+      collected directories got removed during collection.
+  * Improved documentation
+    - #12842: Added dedicated page about using types with pytest.
+      See types{.interpreted-text role="ref"} for detailed usage.
+  * Contributor-facing changes
+    - #13112: Fixed selftest failures in test_terminal.py with Pygments >= 2.19.0
+    - #13256: Support for Towncrier versions released in 2024 has been re-enabled
+      when building Sphinx docs -- by webknjaz{.interpreted-text role="user"}.
+- Drop pygments.patch, because now in upstream.
+
+-------------------------------------------------------------------
 Tue Jan  7 14:12:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream pygments.patch to fix compatibility with new Pygments
