@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 23 15:45:03 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.4:
+  * fix(preprocess): add missing `--spice-main-elevated`
+
+-------------------------------------------------------------------
+Wed Apr 23 13:21:29 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.2:
+  * fix(preprocess): check if `> 0` for context menu
+
+-------------------------------------------------------------------
+Wed Apr 23 08:12:06 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.1:
+  * feat(preprocess): merge `windows` & `linux` case
+  * chore(preprocess): remove `currentFile`
+  * feat: more logging shown to users
+  * fix: remove unused appending
+
+-------------------------------------------------------------------
 Tue Apr 22 13:58:34 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Remove unnecessary BuildRequires, update to go1.24
