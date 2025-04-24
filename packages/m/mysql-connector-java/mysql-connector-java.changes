@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 24 11:08:50 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to Version 9.3.0
+  - Fixes CVE-2025-30706, bsc#1241693
+  - Fix for Bug#117294 (Bug#37523180), Updatable ResultSet fails
+    with 'Parameter index out of range'.
+  - Fix for Bug#20802830, RESULTSET UPDATE METHODS NOT CHECKING
+    VALIDITY OF RESULTSET.
+  - WL#16723, DatabaseMetaData clean up.
+  - WL#16756, Implement missing methods in
+    DatabaseMetaDataUsingInfoSchema.
+  - Fix for Bug#20279671, PROCEDURE EXECUTION FAILS WHEN THE
+    PARAMETER NAME CONTAINS ESCAPE CHARACTER.
+  - Fix for Bug#37311996, allow only Krb5LoginModule in Kerberos
+    authentication.
+  - Fix for Bug#19857207, EXECUTE ON CALLABLESTATEMENT RESULTS
+    IN ARRAYINDEXOUTOFBOUNDSEXCEPTION.
+  - Fix for Bug#117027 (Bug#37415840), Mysql connector use an
+    uneffective way to match numericValue.
+  - Fix for Bug#19829452, PARAMETER INDEX VALIDATION NOT PROPER
+    IN CALLABLESTATEMENT.
+
+-------------------------------------------------------------------
 Mon Jan 27 13:48:27 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to Version 9.2.0

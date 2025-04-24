@@ -463,4 +463,12 @@
     <comment>9.2.0</comment>
     <requestid>1243269</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>ef5a83c01f39069797d19105a39f6465</srcmd5>
+    <version>9.3.0</version>
+    <time>1745508402</time>
+    <user>anag_factory</user>
+    <comment>Upgrade to 9.3.0, fixes CVE-2025-30706, bsc#1241693</comment>
+    <requestid>1272389</requestid>
+  </revision>
 </revisionlist>
