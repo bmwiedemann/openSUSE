@@ -29,6 +29,7 @@ License:        GPL-2.0-only OR MIT
 Group:          Development/Tools/Version Control
 URL:            https://github.com/newren/git-filter-repo
 Source0:        https://github.com/newren/git-filter-repo/releases/download/v%{version}/%{name}-%{version}.tar.xz
+Patch0:         Don-t-crash-on-multi-line-config-values.patch
 BuildArch:      noarch
 BuildRequires:  %{python_module devel}
 BuildRequires:  git-core

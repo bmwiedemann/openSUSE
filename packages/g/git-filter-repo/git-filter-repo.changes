@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 24 06:14:02 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
+
+- add Don-t-crash-on-multi-line-config-values.patch (#659)
+
+-------------------------------------------------------------------
 Sat Apr 19 08:50:17 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - update to 2.47.0: 
