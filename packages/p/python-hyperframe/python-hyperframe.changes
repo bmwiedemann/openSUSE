@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 16 15:14:00 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 6.1.0
+  * API Changes (Backward Incompatible)
+    * Support for Python 3.6 has been removed.
+    * Support for Python 3.7 has been removed.
+    * Support for Python 3.8 has been removed.
+  * API Changes (Backward Compatible)
+    * Support for Python 3.10 has been added.
+    * Support for Python 3.11 has been added.
+    * Support for Python 3.12 has been added.
+    * Support for Python 3.13 has been added.
+    * Updated packaging and testing infrastructure.
+    * Code cleanup and linting.
+    * Improved type hints.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:26:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)
