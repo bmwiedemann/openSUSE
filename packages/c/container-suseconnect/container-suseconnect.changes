@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr 23 17:14:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.1:
+  * Bump github.com/mssola/capture from 1.0.0 to 1.1.0
+  * Log everything to stderr
+  * Code formatting
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * Also allow optionally to pass down the system_token
+  * Various golangci-lint v2.1x warnings fixed
+  * Remove use of urfave/cli and replace it with flag
+
+-------------------------------------------------------------------
 Tue Mar  5 20:58:41 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove unnecessary packaging buildrequires

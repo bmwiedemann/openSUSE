@@ -23,4 +23,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157381</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63e7d49d3a170c300ebc05363b316ab0</srcmd5>
+    <version>2.5.1</version>
+    <time>1745508339</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.1:
+  * Bump github.com/mssola/capture from 1.0.0 to 1.1.0
+  * Log everything to stderr
+  * Code formatting
+  * Bump github.com/stretchr/testify from 1.9.0 to 1.10.0
+  * Also allow optionally to pass down the system_token
+  * Various golangci-lint v2.1x warnings fixed
+  * Remove use of urfave/cli and replace it with flag</comment>
+    <requestid>1272246</requestid>
+  </revision>
 </revisionlist>

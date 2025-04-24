@@ -4,8 +4,8 @@
         <param name="scm">git</param>
         <param name="filename">container-suseconnect</param>
         <param name="exclude">.git</param>
-        <param name="versionformat">2.5.0</param>
-        <param name="revision">v2.5.0</param>
+        <param name="versionformat">2.5.1</param>
+        <param name="revision">v2.5.1</param>
     </service>
     <service mode="manual" name="recompress">
         <param name="file">*.tar</param>
