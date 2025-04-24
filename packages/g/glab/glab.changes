@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Apr 24 06:37:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.56.0:
+  * feat(securefile): add project secure file create support
+  * chore: Update command examples following new style guide
+  * fix(release): allow use of commit log for release notes
+  * fix: readibility & consistency of persing pipeline variable
+    error
+  * refactor: Explicit nil return for error in successful snippet
+    creation
+  * chore: apply new style guide for MR command examples
+  * fix: Initialize factory HTTP client with error handling to
+    support stub behavior
+  * chore: apply new style guide for misc ci command help texts
+  * chore: apply new style guide for more cli ci command help texts
+  * chore: Change plaintext syntax to 'console' for examples
+  * chore: apply new style guide for cli ci command help texts
+  * chore(docs): update examples to $># format
+  * chore(docs): update example to $># format
+  * chore: apply new style guide for more cli help texts
+  * docs: Add docs change to clear a couple of Vale warnings
+  * chore: Update Vale rules for project
+  * chore: apply new style guide for cli help texts
+  * chore(docs): update example to $># format
+  * chore(docs): update example to $># format
+  * chore(docs): update example to `$>#` format
+  * chore(docs): update example to $># format
+  * chore(docs): update example to $># format
+  * chore: disable markdownlint rule MD014
+  * fix: change the example cli help example section
+  * feat: ouput option json for project search
+  * chore: Update linting tools in project
+  * feat(issue): Implement the `--epic` option for `issue list`
+  * docs: Fix last markdownlint errors, restore linting
+  * feat(securefile): add project secure file remove support
+  * chore: restrict access to test job artifacts
+  * fix(project): remove extra --tag option from "publish catalog"
+    command
+  * feat(securefile): add project secure file download support
+  * chore(deps): update module golang.org/x/oauth2 to v0.29.0
+  * chore(deps): update module go.uber.org/mock to v0.5.1
+  * chore(deps): update module golang.org/x/crypto to v0.37.0
+  * feat(securefile): add project secure file list support
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.127.0
+  * fix(update-check): environment variable has higher priority
+  * chore: Update glamour version
+  * ci: update commit lint to the latest version
+  * feat(logout): support token removal
+  * fix(ci list): correct timezone format
+  * chore(deps): update dependency @commitlint/config-conventional
+    ^19.8.0
+  * chore(deps): update dependency @commitlint/read to ^19.8.0
+  * chore(deps): bump golang to v1.24.2
+  * chore(ci): enable dependency proxy
+  * chore(deps): update module github.com/gdamore/tcell/v2 to
+    v2.8.1
+  * chore(deps): update dependency @commitlint/format to ^19.8.0
+  * chore(deps): update dependency danger-review to v2.1.0
+  * refactor: set HTTPClient without factory
+  * chore: Fixing homebrew pull request version bump
+  * chore(deps): update module github.com/spf13/viper to v1.20.1
+  * docs(examples): update all examples
+  * chore(deps): update module k8s.io/client-go to v0.32.3
+
+-------------------------------------------------------------------
 Tue Mar 25 05:40:12 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.55.0:
