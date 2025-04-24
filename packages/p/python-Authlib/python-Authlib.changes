@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 23 10:49:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.2
+  * Forbid fragments in ``redirect_uris``. :issue:`714`
+  * Fix invalid characters in ``error_description``. :issue:`720`
+  * Add ``claims_cls``` parameter for client's ``parse_id_token``
+    method. :issue:`725`
+
+-------------------------------------------------------------------
 Mon Apr 14 05:42:44 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
