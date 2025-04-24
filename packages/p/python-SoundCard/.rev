@@ -92,4 +92,12 @@
   * fixes silence recording on macOS</comment>
     <requestid>1179658</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a5691dab07c6df05078709d893a0480c</srcmd5>
+    <version>0.4.4</version>
+    <time>1745508346</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272262</requestid>
+  </revision>
 </revisionlist>
