@@ -157,4 +157,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1157358</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5e0a92c062d8200b2c161c08d2332b7a</srcmd5>
+    <version>2.4.3</version>
+    <time>1745512124</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.3
+  * Declare support for Python 3.13 (#326)
+- from version 2.4.2
+  * Client should pass client_options.api_key to auth library (#321)
+- Adjust upstream source name in spec file (forwarded request 1272445 from glaubitz)</comment>
+    <requestid>1272452</requestid>
+  </revision>
 </revisionlist>

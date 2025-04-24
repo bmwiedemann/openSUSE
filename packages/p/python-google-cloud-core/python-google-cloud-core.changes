@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 24 13:52:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.4.3
+  * Declare support for Python 3.13 (#326)
+- from version 2.4.2
+  * Client should pass client_options.api_key to auth library (#321)
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Tue Mar  5 20:25:21 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Obsolete Python 3.6 build for SLE 15 SP4 and openSUSE Leap 15.4 and later

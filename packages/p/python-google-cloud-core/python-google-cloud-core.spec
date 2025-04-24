@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-core
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-core
-Version:        2.4.1
+Version:        2.4.3
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-cloud-core
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_core/google_cloud_core-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module google-api-core >= 1.31.6}
 BuildRequires:  %{python_module google-auth >= 1.25.0}
@@ -49,7 +49,7 @@ common helpers (e.g. base ``Client`` classes) used by all of the
 ``google-cloud-*`` packages.
 
 %prep
-%setup -q -n google-cloud-core-%{version}
+%setup -q -n google_cloud_core-%{version}
 
 %build
 %pyproject_wheel
