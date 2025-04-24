@@ -188,8 +188,12 @@ Patch19:        bso1227999-reproducible-builds.patch
 Patch22:        gh120226-fix-sendfile-test-kernel-610.patch
 # PATCH-FIX-UPSTREAM Add platform triplets for 64-bit LoongArch gh#python/cpython#30939 glaubitz@suse.com
 Patch24:        add-loongarch64-support.patch
+# PATCH-FIX-UPSTREAM gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch bsc#1241067 mcepl@suse.com
+# don't stop ThreadedEchoServer on OSError, makes test_ssl fail with OpenSSL 3.5
+Patch25:        gh-126572-test_ssl-no-stop-ThreadedEchoServer-OSError.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
@@ -451,6 +455,7 @@ other applications.
 %patch -p1 -P 19
 %patch -p1 -P 22
 %patch -p1 -P 24
+%patch -p1 -P 25
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac

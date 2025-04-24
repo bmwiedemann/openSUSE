@@ -1575,4 +1575,12 @@ C API
     systems this is harmless as unused virtual memory is only</comment>
     <requestid>1269623</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>f1e04a0e3d7f80e7dee0aaaba0983460</srcmd5>
+    <version>3.11.12</version>
+    <time>1745508293</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1270996</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,82 @@
+From 3d390148c05a7ea2d401c4633e7d4db75ebf97d9 Mon Sep 17 00:00:00 2001
+From: Petr Viktorin <encukou@gmail.com>
+Date: Thu, 7 Nov 2024 11:07:02 +0100
+Subject: [PATCH] gh-126500: test_ssl: Don't stop ThreadedEchoServer on OSError
+ in ConnectionHandler; rely on __exit__ (GH-126503)
+
+If `read()` in the ConnectionHandler thread raises `OSError` (except `ConnectionError`),
+the ConnectionHandler shuts down the entire ThreadedEchoServer,
+preventing further connections.
+It also does that for `EPROTOTYPE` in `wrap_conn`.
+
+As far as I can see, this is done to avoid the server thread getting stuck,
+forgotten, in its accept loop. However, since 2011 (5b95eb90a7167285b6544b50865227c584943c9a)
+the server is used as a context manager, and its `__exit__` does `stop()` and `join()`.
+(I'm not sure if we *always* used `with` since that commit, but currently we do.)
+
+Make sure that the context manager *is* used, and remove the `server.stop()`
+calls from ConnectionHandler.
+(cherry picked from commit c9cda1608edf7664c10f4f467e24591062c2fe62)
+
+Co-authored-by: Petr Viktorin <encukou@gmail.com>
+---
+ Lib/test/test_ssl.py |   17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
+
+Index: Python-3.11.12/Lib/test/test_ssl.py
+===================================================================
+--- Python-3.11.12.orig/Lib/test/test_ssl.py	2025-04-19 19:55:02.157545844 +0200
++++ Python-3.11.12/Lib/test/test_ssl.py	2025-04-19 19:55:05.014552345 +0200
+@@ -2516,7 +2516,6 @@
+                 # See also http://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
+                 if e.errno != errno.EPROTOTYPE and sys.platform != "darwin":
+                     self.running = False
+-                    self.server.stop()
+                     self.close()
+                 return False
+             else:
+@@ -2651,10 +2650,6 @@
+                     self.close()
+                     self.running = False
+ 
+-                    # normally, we'd just stop here, but for the test
+-                    # harness, we want to stop the server
+-                    self.server.stop()
+-
+     def __init__(self, certificate=None, ssl_version=None,
+                  certreqs=None, cacerts=None,
+                  chatty=True, connectionchatty=False, starttls_server=False,
+@@ -2688,21 +2683,33 @@
+         self.conn_errors = []
+         threading.Thread.__init__(self)
+         self.daemon = True
++        self._in_context = False
+ 
+     def __enter__(self):
++        if self._in_context:
++            raise ValueError('Re-entering ThreadedEchoServer context')
++        self._in_context = True
+         self.start(threading.Event())
+         self.flag.wait()
+         return self
+ 
+     def __exit__(self, *args):
++        assert self._in_context
++        self._in_context = False
+         self.stop()
+         self.join()
+ 
+     def start(self, flag=None):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.flag = flag
+         threading.Thread.start(self)
+ 
+     def run(self):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.sock.settimeout(1.0)
+         self.sock.listen(5)
+         self.active = True
