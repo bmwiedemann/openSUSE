@@ -130,7 +130,7 @@
    BASIC_JDKLIB_LIBS_TARGET=""
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -874,6 +874,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
+@@ -873,6 +873,11 @@ INSTALL_SYSCONFDIR=@sysconfdir@
  # Libraries
  #
  
@@ -2015,7 +2015,7 @@
  #
  # Controls compatibility mode for JKS and PKCS12 keystore types.
  #
-@@ -336,6 +388,13 @@ package.definition=sun.misc.,\
+@@ -332,6 +384,13 @@ package.definition=sun.misc.,\
  #
  security.overridePropertiesFile=true
  
@@ -2932,7 +2932,7 @@
      private static final String PUBLIC = "public";
      private static final String PRIVATE = "private";
      private static final String SECRET = "secret";
-@@ -401,9 +406,10 @@ abstract class P11Key implements Key, Length {
+@@ -414,9 +419,10 @@ abstract class P11Key implements Key, Length {
                      new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
  
@@ -2945,7 +2945,7 @@
  
          return switch (algorithm) {
              case "RSA" -> P11RSAPrivateKeyInternal.of(session, keyID, algorithm,
-@@ -455,7 +461,8 @@ abstract class P11Key implements Key, Length {
+@@ -468,7 +474,8 @@ abstract class P11Key implements Key, Length {
  
          public String getFormat() {
              token.ensureValid();
@@ -2955,11 +2955,6 @@
                  return null;
              } else {
                  return "RAW";
-@@ -1625,4 +1632,3 @@ final class SessionKeyRef extends PhantomReference<P11Key> {
-         this.clear();
-     }
- }
--
 --- a/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 +++ b/src/jdk.crypto.cryptoki/share/classes/sun/security/pkcs11/SunPKCS11.java
 @@ -26,6 +26,9 @@
@@ -2970,7 +2965,7 @@
 +import java.lang.invoke.MethodHandles;
 +import java.lang.invoke.MethodType;
  import java.util.*;
- 
+ import java.util.stream.Collectors;
  import java.security.*;
 @@ -42,10 +45,12 @@ import javax.security.auth.callback.PasswordCallback;
  
@@ -3055,7 +3050,7 @@
                      return new SunPKCS11(new Config(newConfigName));
                  }
              });
-@@ -336,9 +397,19 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -325,9 +386,19 @@ public final class SunPKCS11 extends AuthProvider {
              // request multithreaded access first
              initArgs.flags = CKF_OS_LOCKING_OK;
              PKCS11 tmpPKCS11;
@@ -3077,7 +3072,7 @@
              } catch (PKCS11Exception e) {
                  if (debug != null) {
                      debug.println("Multi-threaded initialization failed: " + e);
-@@ -353,8 +424,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -342,8 +413,9 @@ public final class SunPKCS11 extends AuthProvider {
                  } else {
                      initArgs.flags = 0;
                  }
@@ -3089,7 +3084,7 @@
              }
              p11 = tmpPKCS11;
  
-@@ -1400,11 +1472,52 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1388,11 +1460,52 @@ public final class SunPKCS11 extends AuthProvider {
          }
  
          @Override
@@ -3142,7 +3137,7 @@
              try {
                  return newInstance0(param);
              } catch (PKCS11Exception e) {
-@@ -1761,6 +1874,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1749,6 +1862,9 @@ public final class SunPKCS11 extends AuthProvider {
          try {
              session = token.getOpSession();
              p11.C_Logout(session.id());
@@ -3256,7 +3251,7 @@
              }
              if (omitInitialize == false) {
                  try {
-@@ -1976,4 +2004,194 @@ static class SynchronizedPKCS11 extends PKCS11 {
+@@ -2012,4 +2040,194 @@ static class SynchronizedPKCS11 extends PKCS11 {
          super.C_GenerateRandom(hSession, randomData);
      }
  }
@@ -4166,3 +4161,4 @@
 +        }
 +    }
 +}
+
