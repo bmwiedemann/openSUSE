@@ -1,0 +1,57 @@
+From 59c0d0c48389219455950298c4e33aa23d659e3a Mon Sep 17 00:00:00 2001
+From: vlefebvre <valentin.lefebvre@suse.com>
+Date: Tue, 22 Apr 2025 07:45:30 +0000
+Subject: [PATCH] move zzipwrap's .pc from $libdir to $datadir
+
+* zzip's .pc files has been moved from $libdir/pkgconfig to
+  $datadir/pkgconfig. Do the same for zzipwrap.
+
+Signed-off-by: vlefebvre <valentin.lefebvre@suse.com>
+---
+ zzipwrap/CMakeLists.txt | 2 +-
+ zzipwrap/Makefile.am    | 2 +-
+ zzipwrap/Makefile.in    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/zzipwrap/CMakeLists.txt b/zzipwrap/CMakeLists.txt
+index a9f1088..cff1732 100644
+--- a/zzipwrap/CMakeLists.txt
++++ b/zzipwrap/CMakeLists.txt
+@@ -84,7 +84,7 @@ set(outdir ${CMAKE_CURRENT_BINARY_DIR})
+ 
+ if(ZZIP_PKGCONFIG)
+ install(FILES ${outdir}/zzipwrap.pc 
+-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" )
++    DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
+ endif()
+ 
+ install(FILES ${libzzipwrap_HDRS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/zzip )
+diff --git a/zzipwrap/Makefile.am b/zzipwrap/Makefile.am
+index 2c5b471..6f83125 100644
+--- a/zzipwrap/Makefile.am
++++ b/zzipwrap/Makefile.am
+@@ -35,7 +35,7 @@ zzipwrap_LDFLAGS =  @ZZIPLIB_LDFLAGS@
+ zzipwrap_LDADD = libzzipwrap.la @RESOLVES@ ../zzip/libzzip.la -lz
+ 
+ # ----------------------------------------------------------------------
+-pkgconfigdir=$(libdir)/pkgconfig
++pkgconfigdir=$(datarootdir)/pkgconfig
+ pkgconfig_HEADERS= zzipwrap.pc
+ 
+ zzipwrap.pc : Makefile
+diff --git a/zzipwrap/Makefile.in b/zzipwrap/Makefile.in
+index 95f869f..8823f73 100644
+--- a/zzipwrap/Makefile.in
++++ b/zzipwrap/Makefile.in
+@@ -381,7 +381,7 @@ pkgconfig_libdir = @pkgconfig_libdir@
+ pkgconfig_libfile = @pkgconfig_libfile@
+ 
+ # ----------------------------------------------------------------------
+-pkgconfigdir = $(libdir)/pkgconfig
++pkgconfigdir = $(datarootdir)/pkgconfig
+ prefix = @prefix@
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
+-- 
+2.49.0
+

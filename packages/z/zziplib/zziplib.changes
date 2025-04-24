@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Apr 23 09:18:04 UTC 2025 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Release to 0.13.79:
+  * fixed #174 #175 #176 on buffer-overflow in mmapped.c
+  * create afl testbuild to have clean debug environment
+  * validate #164 #166 as being fixed in 0.13.78 alreaedy
+  * add same 0xFFFu overrun check for #175 into zip.c
+  * fix asan missing dir_close in zziptest.c
+  * bump cmake_minimum to 3.10 to make cmake 4 happy #173
+  * combine testbuilds.py and zziptest.py into make test_X
+  * seperate make zziptestdownloads to have option for those files
+  * and otherwise just skip tests that need a downloaded file
+  * not only check files to be the same am/cm but also ABI lib-symbols
+  * automake tests for every ubuntu version (including 32 and 64on32)
+  * testcases for largefile builds as well - and 32bit builds
+  * make tests that use automakes `*.pc` - with corrected cmake install
+  * make an error on largefile-mismatch in 3264 builds
+  * start a zzip32.h to get all the 3264 definitions declared
+  * need zzip_plugin_off_t() to detected largefile problems
+  * switch to BSD exitcodes when not using ZIP_xx exitcodes
+  * introduce ZZIP_PLUGIN_TYPE_32BIT for forced 32bit variants
+  * need -DLARGEFILE=ON to force 64bit builds
+  * `make missing32` shows the 32on64 symbols
+  * cut out CMakeScripts/TestLargefileSensitive.cmake
+  * move *.pc from $libdir/pkgconfig to $datadir/pkgconfig
+- Move other pc files from $libdir to $datadir
+  [+ zziplib-move-zzipwrap-pc-from-libdir-to-datadir.patch]
+  [+ zziplib-move-pc-to-share-pkgconfig.patch]
+
+-------------------------------------------------------------------
 Fri Mar 21 21:57:39 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to clear FTBFS with cmake4

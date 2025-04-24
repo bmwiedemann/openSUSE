@@ -1,0 +1,53 @@
+From 4c82735049c6a4e5c2e3b1cb02b7d0bdfbd3b546 Mon Sep 17 00:00:00 2001
+From: Guido Draheim <guidod@gmx.de>
+Date: Wed, 23 Apr 2025 00:09:17 +0200
+Subject: [PATCH] move pc to share/pkgconfig #177
+
+---
+ SDL/CMakeLists.txt | 2 +-
+ SDL/Makefile.am    | 2 +-
+ SDL/Makefile.in    | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/SDL/CMakeLists.txt b/SDL/CMakeLists.txt
+index e46f7a4..e48226c 100644
+--- a/SDL/CMakeLists.txt
++++ b/SDL/CMakeLists.txt
+@@ -71,7 +71,7 @@ add_custom_command(OUTPUT SDL_rwops_zzip.pc
+ add_custom_target(pkgconfig-sdl ALL DEPENDS SDL_rwops_zzip.pc)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/SDL_rwops_zzip.pc
+-        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig" )
++        DESTINATION "${CMAKE_INSTALL_DATADIR}/pkgconfig" )
+ endif(ZZIP_PKGCONFIG)
+ endif(SDL_FOUND)
+ 
+diff --git a/SDL/Makefile.am b/SDL/Makefile.am
+index c66d443..ef3992f 100644
+--- a/SDL/Makefile.am
++++ b/SDL/Makefile.am
+@@ -33,7 +33,7 @@ install-sdl : install-data # and not the binary
+ CLEANFILES = *.pc *.omf
+ # ----------------------------------------------------------------------
+ # we do not install a library, so this about equivalent to some SDL.pc
+-pkgconfigdir=$(libdir)/pkgconfig
++pkgconfigdir=$(datarootdir)/pkgconfig
+ pkgconfig_HEADERS= SDL_rwops_zzip.pc
+ ERRNULL= 2>/dev/null
+ 
+diff --git a/SDL/Makefile.in b/SDL/Makefile.in
+index 1eff3ea..3c107a5 100644
+--- a/SDL/Makefile.in
++++ b/SDL/Makefile.in
+@@ -370,7 +370,7 @@ pkgconfig_libdir = @pkgconfig_libdir@
+ pkgconfig_libfile = @pkgconfig_libfile@
+ # ----------------------------------------------------------------------
+ # we do not install a library, so this about equivalent to some SDL.pc
+-pkgconfigdir = $(libdir)/pkgconfig
++pkgconfigdir = $(datarootdir)/pkgconfig
+ prefix = @prefix@
+ program_transform_name = @program_transform_name@
+ psdir = @psdir@
+-- 
+2.49.0
+
