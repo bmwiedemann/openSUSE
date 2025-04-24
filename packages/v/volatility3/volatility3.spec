@@ -1,7 +1,7 @@
 #
 # spec file for package volatility3
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           volatility3
-Version:        2.5.2
+Version:        2.11.0
 Release:        0
 Summary:        Volatile memory artifact extraction utility framework
 #License:        BSD-2-Clause-Patent and CC-PDDC
@@ -35,7 +35,6 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildRequires:  pkgconfig(python3)
 Requires:       capstone >= 3.0.0
-Requires:       python3-distorm3
 Requires:       python3-pefile >= 2017.8.1
 Requires:       python3-pycryptodome
 Requires:       python3-yara >= 3.8.0

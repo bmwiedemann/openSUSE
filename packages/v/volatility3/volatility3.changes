@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 22 10:44:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.11.0
+  * Many new plugins, see upstream changelog
+  * Support for configuration files for common CLI options
+  * linux.kmsg: Supports older kernels
+  * Support for Python 3.12
+  * userassist with timeliner support
+  * Clang no longer using long unsigned int for pointers
+  * argcomplete support
+  * Output formatting and filtering in the CLI
+  * Additional architecture data files for vmscan
+  * Python 3.8 is now the minimum supported version of python
+- python-distorm3 is not needed anymore
+
+-------------------------------------------------------------------
 Fri May  3 19:46:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Rewrite of the Python packaging not to use superfluous %python_subpackages.
