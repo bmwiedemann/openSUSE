@@ -5561,4 +5561,19 @@ boo#1224178</comment>
   * CVE-2025-3066: Use after free in Site Isolation</comment>
     <requestid>1268450</requestid>
   </revision>
+  <revision rev="459" vrev="1">
+    <srcmd5>6737444a404e245fed04c13ac74e2d77</srcmd5>
+    <version>135.0.7049.95</version>
+    <time>1745508335</time>
+    <user>anag_factory</user>
+    <comment>- add patch chromium-135-gperf-output.patch from upstream
+  to fix compilation when using gperp-3.2 and above
+  which resolved the issue with the FALLTHROUGH comment 
+
+- Chromium 135.0.7049.95
+  (stable release 2025-04-15) (boo#1241288)
+  * CVE-2025-3619: Heap buffer overflow in Codecs
+  * CVE-2025-3620: Use after free in USB</comment>
+    <requestid>1272232</requestid>
+  </revision>
 </revisionlist>

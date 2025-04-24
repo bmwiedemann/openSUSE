@@ -106,7 +106,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        135.0.7049.84
+Version:        135.0.7049.95
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -157,6 +157,7 @@ Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
 Patch376:       chromium-135-add_map_droppable.patch
+Patch377:       chromium-135-gperf-output.patch
 # conditionally applied patches
 # patch where ffmpeg < 5
 Patch1002:      chromium-125-ffmpeg-5.x-reordered_opaque.patch
