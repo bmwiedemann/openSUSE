@@ -28,6 +28,7 @@ URL:            https://www.kernel.org/pub/software/network/ethtool/
 Source:         https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.xz
 Source2:        https://www.kernel.org/pub/software/network/ethtool/%{name}-%{version}.tar.sign
 Source3:        %{name}.keyring
+Patch1:         misc-fix-AppStream-metainfo-XML.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  pkgconfig
 BuildRequires:  xz
@@ -53,7 +54,7 @@ BuildArch:      noarch
 bash command line completion support for ethtool.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export CFLAGS="%optflags -Wall -Wextra -Wstrict-prototypes -Wformat-security -Wpointer-arith"

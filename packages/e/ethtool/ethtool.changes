@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 09:49:38 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
+
+- fix AppStream metainfo XML file
+  * misc-fix-AppStream-metainfo-XML.patch
+
+-------------------------------------------------------------------
 Mon Apr  7 20:45:18 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 6.14

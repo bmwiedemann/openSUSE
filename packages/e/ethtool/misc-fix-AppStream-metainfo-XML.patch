@@ -1,0 +1,35 @@
+From: Daniel Rusek <mail@asciiwolf.com>
+Date: Wed, 16 Apr 2025 22:12:47 +0200
+Subject: misc: fix AppStream metainfo XML
+Patch-mainline: submitted - 2025-04-11 - CAB-mu-TgZ5ewRzn45Q5LrGtEKWGhrafP39enmV0DAYvTkU5mwQ@mail.gmail.com
+References: none
+
+As pointed out in the Debian downstream report, as ethtool is a
+command-line tool the XML root myst have the type property set to
+console-application.
+
+Additionally with the type propety set to desktop, ethtool is user
+uninstallable via GUI (such as GNOME Software or KDE Discover).
+
+Fixes: 02d505bba6fe ("Add AppStream metainfo XML with modalias documented supported hardware.")
+---
+ org.kernel.software.network.ethtool.metainfo.xml | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/org.kernel.software.network.ethtool.metainfo.xml
++++ b/org.kernel.software.network.ethtool.metainfo.xml
+@@ -1,5 +1,5 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<component type="desktop">
++<component type="console-application">
+   <id>org.kernel.software.network.ethtool</id>
+   <metadata_license>MIT</metadata_license>
+   <name>ethtool</name>
+@@ -11,6 +11,7 @@
+   </description>
+   <url type="homepage">https://www.kernel.org/pub/software/network/ethtool/</url>
+   <provides>
++    <binary>ethtool</binary>
+     <modalias>pci:v*d*sv*sd*bc02sc80i*</modalias>
+   </provides>
+ </component>
