@@ -141,7 +141,7 @@ cp %{SOURCE8} .
 # Make elixir happy with Unicode
 export LANG=en_US.UTF-8
 export PYTHON=%{_bindir}/python3
-make all %{_make_args} %{?_smp_mflags}
+make all %{_make_args} -j1
 
 %install
 # Make elixir happy with Unicode

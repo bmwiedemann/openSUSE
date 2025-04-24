@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 02:53:26 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Force non parallel build, this has been the cause of some
+  intermittent build failures.
+
+-------------------------------------------------------------------
 Wed Feb 19 16:07:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add rabbitmq-server-allow-elixir-1.18.patch: Allow building CLI
