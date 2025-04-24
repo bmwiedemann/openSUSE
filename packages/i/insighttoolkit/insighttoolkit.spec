@@ -1,7 +1,7 @@
 #
 # spec file for package insighttoolkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 Angelos Tzotsos <tzotsos@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,8 +37,11 @@
 %bcond_with python
 %endif
 
+# Tests disabled because they require downloading separate data files
+%bcond_with tests
+
 Name:           insighttoolkit
-Version:        5.4.0
+Version:        5.4.3
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
@@ -52,7 +55,6 @@ BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gdcm-devel
-BuildRequires:  gtest
 BuildRequires:  hdf5-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
@@ -126,7 +128,6 @@ This package provides the modules for ITK's python bindings.
 %autosetup -p1 -n %{tarname}-%{version}
 
 %build
-# Tests disabled because no KWStyle pkg for openSUSE
 %cmake \
   -DITK_INSTALL_LIBRARY_DIR:PATH=%{_lib}/ \
   -DITK_INSTALL_INCLUDE_DIR:PATH=include/%{name}/ \
@@ -135,17 +136,17 @@ This package provides the modules for ITK's python bindings.
   -DITK_INSTALL_DOC_DIR=share/doc/packages/%{name}/ \
   -DBUILD_EXAMPLES:BOOL=ON \
   -DBUILD_SHARED_LIBS:BOOL=ON \
-  -DBUILD_TESTING:BOOL=OFF \
+  -DBUILD_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
   -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=ON \
   -DITK_USE_FFTWD:BOOL=ON \
   -DITK_USE_FFTWF:BOOL=ON \
+  -DITK_USE_KWSTYLE:BOOL=OFF \
   -DITK_USE_SYSTEM_LIBRARIES:BOOL=ON \
-  -DITK_USE_SYSTEM_CASTXML:BOOL=ON \
   -DITK_USE_SYSTEM_GDCM:BOOL=ON \
+  -DITK_USE_SYSTEM_GOOGLETEST:BOOL=OFF \
 %if %{without system_eigen}
   -DITK_USE_SYSTEM_EIGEN:BOOL=OFF \
 %endif
-  -DITK_USE_SYSTEM_SWIG:BOOL=ON \
   -DITK_USE_SYSTEM_VXL:BOOL=OFF \
   -DVXL_BUILD_CORE_NUMERICS:BOOL=OFF \
   -DITK_FORBID_DOWNLOADS=ON \
@@ -155,11 +156,17 @@ This package provides the modules for ITK's python bindings.
 
 %install
 %cmake_install
-
 %fdupes %{buildroot}/%{_prefix}
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+# Installed using %%license anyway
+rm %{buildroot}/%{_docdir}/%{name}/{LICENSE,NOTICE}
+
+%if %{with tests}
+%check
+%ctest
+%endif
+
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE NOTICE
