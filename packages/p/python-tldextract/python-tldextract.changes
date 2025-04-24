@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 23 19:17:24 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.3.0:
+Features
+  * Add result field registry_suffix
+    To complement the existing public suffix field suffix
+    #gh/john-kurkowski/tldextract#344
+  * Add result property top_domain_under_public_suffix
+    #gh/john-kurkowski/tldextract#344
+  * Add result property top_domain_under_registry_suffix
+    #gh/john-kurkowski/tldextract#344
+  * Deprecate registered_domain property
+    Use top_domain_under_public_suffix instead, which has the same
+    behavior but a more accurate name
+Bugfixes
+  * Fix missing reverse_domain_name property in CLI --json output
+Misc
+  * Expand internal suffix_index return type to be richer than
+    bools, and include the registry suffix during trie traversal
+    #gh/john-kurkowski/tldextract#344
+
+-------------------------------------------------------------------
 Tue Apr  8 15:06:55 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 5.2.0:
