@@ -23,4 +23,26 @@
     <comment>- Add missing BuildRequires on importlib-metadata.</comment>
     <requestid>1159711</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e4831229cc88def953aaa0c474f65972</srcmd5>
+    <version>1.0.4</version>
+    <time>1745508400</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.4:
+  * Reverting requirements in base.txt to those of 1.0.1
+- 1.0.3:
+  * Remove support for DSA
+- 1.0.2:
+  * Updated requirements and actions
+  * Limit to Python 3.10, since that is the only version supported for
+    currently supported Salt onedir architecture
+  * Adjusted requirements versions for various dependencies
+  * Updated GitHub Actions for recent EOL of Python 3.7 and 3.8, using
+    Salt 3006.9 and 3007.1, also use of psutil.AccessDenied
+- 1.0.1:
+  * Properly configure the SSHD server when FIPS is enabled/enforced
+    on a system (#179)
+- Skip some tests failing with python &gt; 3.11</comment>
+    <requestid>1272353</requestid>
+  </revision>
 </revisionlist>

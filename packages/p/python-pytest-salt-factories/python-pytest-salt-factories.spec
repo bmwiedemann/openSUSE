@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-salt-factories
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,38 +16,43 @@
 #
 
 
-%define _version 1.0.0
-%define _rc_version rc27
+%define _version 1.0.4
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
+
 Name:           python-pytest-salt-factories
-Version:        %{_version}~%{_rc_version}
+Version:        %{_version}
 Release:        0
 Summary:        A pytest plugin for testing Salt
 License:        Apache-2.0
 URL:            https://pytest-salt-factories.readthedocs.io/en/latest/
-Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-factories/pytest-salt-factories-%{_version}%{_rc_version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pytest-salt-factories/pytest_salt_factories-%{_version}.tar.gz
 # PATCH-FIX-OPENSUSE fix_unit_tests.patch  this patch is removing the workaround in the unit test implementation so the test can pass when using our openSUSE Salt 3006.0 package
 Patch1:         fix_unit_tests.patch
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module docker}
 BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-shell-utilities}
 BuildRequires:  %{python_module pytest-subtests}
 BuildRequires:  %{python_module pytest-system-statistics}
+BuildRequires:  %{python_module pyzmq}
+BuildRequires:  %{python_module salt}
 BuildRequires:  %{python_module setuptools >= 50.3.2}
 BuildRequires:  %{python_module setuptools-declarative-requirements}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module tornado}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-salt
 BuildRequires:  salt-master
+Requires:       python-PyYAML
 Requires:       python-attrs >= 19.2.0
 Requires:       python-msgpack
 Requires:       python-psutil
@@ -72,8 +77,7 @@ Requires(postun): update-alternatives
 A pytest plugin for testing Salt.
 
 %prep
-%setup -q -n pytest-salt-factories-%{_version}%{_rc_version}
-%autopatch -p1
+%autosetup -p1 -n pytest_salt_factories-%{_version}
 
 %build
 %pyproject_wheel
@@ -85,10 +89,31 @@ A pytest plugin for testing Salt.
 
 %check
 export PYTHONDONTWRITEBYTECODE=1
-export PYTHONPATH=%{buildroot}%{python_sitelib}
-
 # Run test and exclude some that doesn't work fine in OBS.
-pytest-%{python_bin_suffix} -vvv -k 'not ssh and not echoext'
+donttest="ssh or echoext"
+# Flaky tests for aarch64, ppc, arm
+donttest+=" or test_all_messages_received"
+
+# All these tests are failing with python >3.11
+# tests/integration/factories/cli/test_salt.py::test_merged_json_out
+# tests/integration/factories/cli/test_salt.py::test_merged_json_out_disabled
+python312_donttest=" or test_merged_json_out or test_merged_json_out_disabled"
+# tests/integration/factories/daemons/master/test_master.py::test_salt_cp_minion_id_as_first_argument
+python312_donttest+=" or test_salt_cp_minion_id_as_first_argument"
+# tests/integration/factories/daemons/master/test_master.py::test_salt_cp_explicit_minion_tgt
+python312_donttest+=" or test_salt_cp_explicit_minion_tgt"
+# tests/integration/factories/daemons/minion/test_minion.py::test_minion
+python312_donttest+=" or test_minion"
+# tests/integration/factories/daemons/minion/test_minion.py::test_show_jid
+# tests/integration/factories/daemons/proxy/test_proxy_minion.py::test_show_jid
+python312_donttest+=" or test_show_jid"
+# tests/integration/factories/daemons/proxy/test_proxy_minion.py::test_proxy_minion
+python312_donttest+=" or test_proxy_minion"
+# tests/integration/utils/saltext/test_log_handlers.py::test_logs_forwarded_from_sub_processes
+python312_donttest+=" or test_logs_forwarded_from_sub_processes"
+python313_donttest=$python312_donttest
+
+%pytest -k "not ($donttest ${$python_donttest})" ${$python_ignore}
 
 %post
 %python_install_alternative salt-factories
@@ -100,7 +125,7 @@ pytest-%{python_bin_suffix} -vvv -k 'not ssh and not echoext'
 %license LICENSE
 %doc README.rst CHANGELOG.rst
 %{python_sitelib}/saltfactories
-%{python_sitelib}/pytest_salt_factories-%{_version}%{_rc_version}*-info
+%{python_sitelib}/pytest_salt_factories-%{_version}*-info
 %python_alternative %{_bindir}/salt-factories
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 10 11:22:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 1.0.4:
+  * Reverting requirements in base.txt to those of 1.0.1
+- 1.0.3:
+  * Remove support for DSA
+- 1.0.2:
+  * Updated requirements and actions
+  * Limit to Python 3.10, since that is the only version supported for
+    currently supported Salt onedir architecture
+  * Adjusted requirements versions for various dependencies
+  * Updated GitHub Actions for recent EOL of Python 3.7 and 3.8, using
+    Salt 3006.9 and 3007.1, also use of psutil.AccessDenied
+- 1.0.1:
+  * Properly configure the SSHD server when FIPS is enabled/enforced
+    on a system (#179)
+
+- Skip some tests failing with python > 3.11
+
+-------------------------------------------------------------------
 Wed Mar 20 05:29:34 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on importlib-metadata. 
