@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 22 22:39:42 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 20250416T181326Z:
+  * feat: add deletemarker info for batch status (#5191)
+  * mirror: skip status message from excluded buckets (#5190)
+  * typo: fix typo in tracing error for path (#5189)
+  * fix: update better error handling (#5188)
+
+-------------------------------------------------------------------
 Tue Apr 08 18:50:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 20250408T153949Z:
