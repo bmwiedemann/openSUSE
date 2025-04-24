@@ -26,4 +26,41 @@
   * Exclude google-auth 2.24.0 and 2.25.0</comment>
     <requestid>1184010</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07ba4575cc6a56fc77313f357711f7a0</srcmd5>
+    <version>3.31.1</version>
+    <time>1745512122</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.31.1
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 3.31.0
+  * Add option to enable fetching dependencies
+  * Support for git proxy setup
+  * **deps:** Require grpc-google-iam-v1 &gt;= 0.14.0
+  * Updates to proto message comments
+- from version 3.30.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 3.29.0
+  * [google-cloud-build] Add GoModule to Artifact and Results messages and new
+    GO_MODULE_H1 hash type (#13416)
+  * [google-cloud-build] Add option to enable structured logging (#13430)
+- from version 3.28.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 3.27.1
+  * Disable universe-domain validation (#13242)
+- from version 3.27.0
+  * [google-cloud-build] Add PrivateServiceConnect option to WorkerPool (#13221)
+- from version 3.26.0
+  * Add support for Python 3.13 (#13206)
+- from 3.25.0
+  * Add LEGACY_BUCKET option to DefaultLogsBucketBehavior
+  * Sanitize docs
+- from version 3.24.2
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 3.24.1 (forwarded request 1272439 from glaubitz)</comment>
+    <requestid>1272443</requestid>
+  </revision>
 </revisionlist>
