@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 24 09:57:57 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 8.3.0:
+  * PrefersColorSchemeSettings: add gsetting
+  * Implement dark mode snoozing
+  * Update translation template
+  * Update translations
+
+-------------------------------------------------------------------
 Thu Feb 13 14:46:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 8.2.0:

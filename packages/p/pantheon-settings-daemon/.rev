@@ -25,4 +25,12 @@
   * Get correct total size for system updates (forwarded request 1245704 from rrahl0)</comment>
     <requestid>1245708</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a97ef646e9d6558ea92e8eda16f32325</srcmd5>
+    <version>8.3.0</version>
+    <time>1745508399</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272369</requestid>
+  </revision>
 </revisionlist>
