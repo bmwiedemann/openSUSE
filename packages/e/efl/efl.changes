@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 23 21:49:13 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- to fix gcc-15 compile time errors, add efl-1.26.3-header.patch
+  from upstream, and add -std=gnu11 to CFLAGS
+- fix URL of efl git website
+
+-------------------------------------------------------------------
 Sun Mar 16 08:08:57 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Make scim conditional, which is Factory drop candidate 

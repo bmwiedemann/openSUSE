@@ -56,13 +56,15 @@ Release:        0
 # TODO: split package to separate packages and specify licenses correctly
 Summary:        Enlightenment Foundation Libraries - set of libraries used (not only) by E17
 License:        BSD-2-Clause AND LGPL-2.1-only AND Zlib
-URL:            https://git.enlightenment.org/core/efl.git
+URL:            https://git.enlightenment.org/enlightenment/efl
 Source:         https://download.enlightenment.org/rel/libs/efl/%{name}-%{version}.tar.xz
 Patch1:         efl-no-neon.patch
 # PATCH-FIX-UPSTREAM
 Patch2:         https://git.enlightenment.org/enlightenment/efl/commit/d9ec36e1de4c2a70ac82dc66a72c282dc42037b7.patch
 # PATCH-FIX-OPENSUSE drop scim
 Patch3:         efl_scim.patch
+# PATCH-FIX-UPSTREAM
+Patch4:         efl-1.26.3-header.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -465,7 +467,7 @@ INCLUDEDIR+=" -I$(pkg-config --variable=includedir libinput)"
 %endif
 
 # efl intentionally compares string pointers in alot of places rather then strings this stops obs complaining
-export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDEDIR}"
+export CFLAGS="%{optflags}%{?mageia: -g} -Wno-address %{?enable_wayland:$INCLUDEDIR} -std=gnu11"
 
 %meson \
 %if 0%{?physics_present}

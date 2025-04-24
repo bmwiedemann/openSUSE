@@ -521,4 +521,12 @@ Needed for poppler 24.06 - where that requested library actually no longer exist
 - Add patch efl_scim.patch</comment>
     <requestid>1254071</requestid>
   </revision>
+  <revision rev="57" vrev="35">
+    <srcmd5>789105de1e56088725bee5d75baea9d3</srcmd5>
+    <version>unknown</version>
+    <time>1745508309</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272273</requestid>
+  </revision>
 </revisionlist>
