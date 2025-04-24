@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 13:55:14 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add x11 to explicit BuildRequires, as we depended upon sdl2
+  implicitly pulling it in previously.
+
+-------------------------------------------------------------------
 Sun Jan 26 18:06:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5.2

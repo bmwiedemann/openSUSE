@@ -38,7 +38,9 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
+# changelog.txt in the archive is only sometimes updated
 
 %description
 Commander Genius is a software piece that interprets the Commander
