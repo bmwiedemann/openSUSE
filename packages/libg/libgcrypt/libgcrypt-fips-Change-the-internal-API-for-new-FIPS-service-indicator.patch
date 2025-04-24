@@ -1,0 +1,140 @@
+From 4799914966a7f94f41e1ed5b7b62fded7ba09704 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 12 Dec 2024 11:03:38 +0900
+Subject: [PATCH 01/19] fips: Change the internal API for new FIPS service
+ indicator.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt-int.h (fips_service_indicator_init): Initialize by 0.
+(fips_service_indicator_mark_success): Remove.
+(fips_service_indicator_mark_non_compliant): New.
+* cipher/kdf.c (_gcry_kdf_derive): Follow the change of the API.
+* cipher/md.c (_gcry_md_hash_buffer): Likewise.
+(_gcry_md_hash_buffers_extract): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/kdf.c     | 17 +++++++++--------
+ cipher/md.c      |  8 ++++----
+ src/gcrypt-int.h |  9 +++------
+ 3 files changed, 16 insertions(+), 18 deletions(-)
+
+diff --git a/cipher/kdf.c b/cipher/kdf.c
+index 1eae2b90..71156ea4 100644
+--- a/cipher/kdf.c
++++ b/cipher/kdf.c
+@@ -248,6 +248,7 @@ _gcry_kdf_derive (const void *passphrase, size_t passphraselen,
+                   size_t keysize, void *keybuffer)
+ {
+   gpg_err_code_t ec;
++  int is_compliant_algo = 0;
+ 
+   if (!passphrase)
+     {
+@@ -279,35 +280,32 @@ _gcry_kdf_derive (const void *passphrase, size_t passphraselen,
+       break;
+ 
+     case GCRY_KDF_PBKDF2:
++      is_compliant_algo = 1;
+       if (!saltlen || !iterations)
+         ec = GPG_ERR_INV_VALUE;
+       else
+         {
+-          int is_compliant = 1;
+-
+           if (fips_mode ())
+             {
+               /* FIPS requires minimum passphrase length, see FIPS 140-3 IG D.N */
+               if (passphraselen < 8)
+-                is_compliant &= 0;
++                fips_service_indicator_mark_non_compliant ();
+ 
+               /* FIPS requires minimum salt length of 128 b (SP 800-132 sec. 5.1, p.6) */
+               if (saltlen < 16)
+-                is_compliant &= 0;
++                fips_service_indicator_mark_non_compliant ();
+ 
+               /* FIPS requires minimum iterations bound (SP 800-132 sec 5.2, p.6) */
+               if (iterations < 1000)
+-                is_compliant &= 0;
++                fips_service_indicator_mark_non_compliant ();
+ 
+               /* Check minimum key size */
+               if (keysize < 14)
+-                is_compliant &= 0;
++                fips_service_indicator_mark_non_compliant ();
+             }
+ 
+           ec = _gcry_kdf_pkdf2 (passphrase, passphraselen, subalgo,
+                                 salt, saltlen, iterations, keysize, keybuffer);
+-          if (!ec)
+-            fips_service_indicator_mark_success (is_compliant);
+         }
+       break;
+ 
+@@ -326,6 +324,9 @@ _gcry_kdf_derive (const void *passphrase, size_t passphraselen,
+       break;
+     }
+ 
++  if (!ec && !is_compliant_algo && fips_mode ())
++    fips_service_indicator_mark_non_compliant ();
++
+  leave:
+   return ec;
+ }
+diff --git a/cipher/md.c b/cipher/md.c
+index c2bd18c6..ef2fc5a4 100644
+--- a/cipher/md.c
++++ b/cipher/md.c
+@@ -1286,8 +1286,8 @@ _gcry_md_hash_buffer (int algo, void *digest,
+ 
+   if (fips_mode ())
+     {
+-      int is_compliant = spec->flags.fips;
+-      fips_service_indicator_mark_success (is_compliant);
++      if (!spec->flags.fips)
++        fips_service_indicator_mark_non_compliant ();
+     }
+ }
+ 
+@@ -1384,8 +1384,8 @@ _gcry_md_hash_buffers_extract (int algo, unsigned int flags, void *digest,
+ 
+   if (fips_mode ())
+     {
+-      int is_compliant = spec->flags.fips;
+-      fips_service_indicator_mark_success (is_compliant);
++      if (!spec->flags.fips)
++        fips_service_indicator_mark_non_compliant ();
+     }
+ 
+   return 0;
+diff --git a/src/gcrypt-int.h b/src/gcrypt-int.h
+index 7f894737..aa49d766 100644
+--- a/src/gcrypt-int.h
++++ b/src/gcrypt-int.h
+@@ -303,13 +303,10 @@ unsigned long _gcry_thread_context_get_fsi (void);
+ #define fips_service_indicator_init() do \
+   {                                      \
+     if (fips_mode ())                    \
+-      _gcry_thread_context_set_fsi (1);  \
+-  } while (0)
+-#define fips_service_indicator_mark_success(is_compliant) do \
+-  {                                                          \
+-    if (is_compliant && fips_mode ())                        \
+-      _gcry_thread_context_set_fsi (0);                      \
++      _gcry_thread_context_set_fsi (0);  \
+   } while (0)
++/* Should be used only when fips_mode()==TRUE.  */
++#define fips_service_indicator_mark_non_compliant() _gcry_thread_context_set_fsi (1)
+ 
+ /* Return a pointer to a string containing a description of the error
+    code in the error value ERR.  */
+-- 
+2.49.0
+

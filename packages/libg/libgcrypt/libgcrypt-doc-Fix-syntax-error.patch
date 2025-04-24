@@ -1,0 +1,31 @@
+From 22e65f6f5b8dbddf925151894426e4c06d33803b Mon Sep 17 00:00:00 2001
+From: Werner Koch <wk@gnupg.org>
+Date: Thu, 13 Mar 2025 18:06:37 +0100
+Subject: [PATCH 14/14] doc: Fix syntax error
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+--
+
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ doc/gcrypt.texi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/gcrypt.texi b/doc/gcrypt.texi
+index 6e82a41b..eeab1a78 100644
+--- a/doc/gcrypt.texi
++++ b/doc/gcrypt.texi
+@@ -1082,7 +1082,7 @@ When using ``dynamic'' service indicator, this command with FLAGS=0
+ disables all rejections.
+ @example
+   gcry_control (GCRYCTL_FIPS_REJECT_NON_FIPS, 0);
+-@endexample
++@end example
+ 
+ @end table
+ 
+-- 
+2.49.0
+

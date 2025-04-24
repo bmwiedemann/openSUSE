@@ -1,0 +1,43 @@
+From c6a092abbe7bea315394b15f28fd231dae0e4d7c Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 24 Dec 2024 17:01:45 +0900
+Subject: [PATCH 16/19] fips,ecc: Add rejecting or marking for
+ gcry_pk_get_curve.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/ecc-curves.c (_gcry_ecc_get_curve): Check under FIPS mode.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/ecc-curves.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/cipher/ecc-curves.c b/cipher/ecc-curves.c
+index fe0a1eb2..975f6a07 100644
+--- a/cipher/ecc-curves.c
++++ b/cipher/ecc-curves.c
+@@ -844,6 +844,15 @@ _gcry_ecc_get_curve (gcry_sexp_t keyparms, int iterator, unsigned int *r_nbits)
+           if (r_nbits)
+             *r_nbits = domain_parms[idx].nbits;
+         }
++
++      if (fips_mode () && !domain_parms[idx].fips)
++        {
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++            return NULL;
++          else
++            fips_service_indicator_mark_non_compliant ();
++        }
++
+       return result;
+     }
+ 
+-- 
+2.49.0
+

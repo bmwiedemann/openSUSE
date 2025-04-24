@@ -1,0 +1,60 @@
+From 132f346232b33fe41ffee3b3870ec189626676e7 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 16 Dec 2024 14:14:24 +0900
+Subject: [PATCH 07/19] tests,fips: Rename t-fips-service-ind.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* tests/t-fips-service-ind.c: Rename from t-digest.c.
+* tests/Makefile.am (tests_bin): Follow the change.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ tests/Makefile.am                          | 2 +-
+ tests/{t-digest.c => t-fips-service-ind.c} | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename tests/{t-digest.c => t-fips-service-ind.c} (99%)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 93774fe9..3170a58e 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -25,7 +25,7 @@ tests_bin = \
+         version t-secmem mpitests t-sexp t-convert \
+ 	t-mpi-bit t-mpi-point t-lock \
+ 	prime basic keygen pubkey hmac hashtest t-kdf keygrip \
+-	aeswrap random t-kem t-mlkem t-thread-local t-digest
++	aeswrap random t-kem t-mlkem t-thread-local t-fips-service-ind
+ 
+ if USE_RSA
+ tests_bin += pkcs1v2 t-rsa-pss t-rsa-15 t-rsa-testparm
+diff --git a/tests/t-digest.c b/tests/t-fips-service-ind.c
+similarity index 99%
+rename from tests/t-digest.c
+rename to tests/t-fips-service-ind.c
+index e2b1ce32..31c1fc72 100644
+--- a/tests/t-digest.c
++++ b/tests/t-fips-service-ind.c
+@@ -1,4 +1,4 @@
+-/* t-digest.c - MD regression tests
++/* t-fips-service-ind.c - FIPS service indicator regression tests
+  * Copyright (C) 2024 g10 Code GmbH
+  *
+  * This file is part of Libgcrypt.
+@@ -27,7 +27,7 @@
+ #include <string.h>
+ #include <assert.h>
+ 
+-#define PGM "t-digest"
++#define PGM "t-fips-service-ind"
+ 
+ #include "t-common.h"
+ static int in_fips_mode;
+-- 
+2.49.0
+

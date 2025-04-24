@@ -1,0 +1,80 @@
+From 0414e126b939f0b11ecf441908d923e87c1caf02 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 6 Mar 2025 08:57:51 +0900
+Subject: [PATCH 06/14] fips,cipher: Add GCRY_FIPS_FLAG_REJECT_PK_FLAGS.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_FIPS_FLAG_REJECT_PK_FLAGS): New.
+* cipher/pubkey-util.c (_gcry_pk_util_parse_flaglist): Keep the
+behavior of 1.10.
+* cipher/rsa.c (rsa_decrypt, rsa_sign): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/pubkey-util.c | 2 +-
+ cipher/rsa.c         | 4 ++--
+ src/gcrypt.h.in      | 3 ++-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/cipher/pubkey-util.c b/cipher/pubkey-util.c
+index 9c927638..e7355569 100644
+--- a/cipher/pubkey-util.c
++++ b/cipher/pubkey-util.c
+@@ -202,7 +202,7 @@ _gcry_pk_util_parse_flaglist (gcry_sexp_t list,
+ 
+   if (fips_mode () && igninvflag)
+     {
+-      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+         rc = GPG_ERR_INV_FLAG;
+       else
+         fips_service_indicator_mark_non_compliant ();
+diff --git a/cipher/rsa.c b/cipher/rsa.c
+index dce76414..7e086df4 100644
+--- a/cipher/rsa.c
++++ b/cipher/rsa.c
+@@ -1504,7 +1504,7 @@ rsa_decrypt (gcry_sexp_t *r_plain, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+     {
+       if (fips_mode ())
+         {
+-          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+             {
+               rc = GPG_ERR_INV_FLAG;
+               goto leave;
+@@ -1649,7 +1649,7 @@ rsa_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+     {
+       if (fips_mode ())
+         {
+-          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+             {
+               rc = GPG_ERR_INV_FLAG;
+               goto leave;
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index fe3db16a..a282268d 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1991,11 +1991,12 @@ char *gcry_get_config (int mode, const char *what);
+ #define GCRY_FIPS_FLAG_REJECT_CIPHER_MODE   (1 << 8)
+ /**/
+ #define GCRY_FIPS_FLAG_REJECT_PK_ECC_K      (1 << 10)
++#define GCRY_FIPS_FLAG_REJECT_PK_FLAGS      (1 << 11)
+ 
+ #define GCRY_FIPS_FLAG_REJECT_MD \
+   (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
+ 
+-/* Note: Don't reject MD5, PK MD, PK GOST and PK SM2 */
++/* Note: Don't reject MD5, PK MD, PK GOST, PK SM2, PK ECC K, and PK FLAGS */
+ #define GCRY_FIPS_FLAG_REJECT_COMPAT110 \
+   (GCRY_FIPS_FLAG_REJECT_MD_OTHERS      \
+    | GCRY_FIPS_FLAG_REJECT_MAC          \
+-- 
+2.49.0
+

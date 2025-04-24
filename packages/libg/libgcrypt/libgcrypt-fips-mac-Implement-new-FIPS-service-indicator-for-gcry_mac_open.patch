@@ -1,0 +1,115 @@
+From fcb0c7004b0b6b318fdcced2bf61d9acb1e28cfc Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 13 Dec 2024 14:25:02 +0900
+Subject: [PATCH 04/19] fips,mac: Implement new FIPS service indicator for
+ gcry_mac_open.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_MAC_FLAG_REJECT_NON_FIPS): New.
+* cipher/mac.c (mac_open): Have FLAGS, instead of SECURE.  Reject when
+GCRY_MAC_FLAG_REJECT_NON_FIPS, otherwise, mark non compliant.
+(_gcry_mac_open): Follow the change.
+* src/visibility.c (gcry_mac_open): Add initialization for FIPS
+service indicator.
+(gcry_mac_setkey): Likewise.  Don't reject but mark.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/mac.c     | 15 +++++++++++----
+ src/gcrypt.h.in  |  3 ++-
+ src/visibility.c |  5 +++--
+ 3 files changed, 16 insertions(+), 7 deletions(-)
+
+diff --git a/cipher/mac.c b/cipher/mac.c
+index 128ac53d..0df48fd7 100644
+--- a/cipher/mac.c
++++ b/cipher/mac.c
+@@ -513,11 +513,13 @@ check_mac_algo (int algorithm)
+  * Open a message digest handle for use with algorithm ALGO.
+  */
+ static gcry_err_code_t
+-mac_open (gcry_mac_hd_t * hd, int algo, int secure, gcry_ctx_t ctx)
++mac_open (gcry_mac_hd_t * hd, int algo, unsigned int flags, gcry_ctx_t ctx)
+ {
+   const gcry_mac_spec_t *spec;
+   gcry_err_code_t err;
+   gcry_mac_hd_t h;
++  int secure = !!(flags & GCRY_MAC_FLAG_SECURE);
++  int reject_non_fips = !!(flags & GCRY_MAC_FLAG_REJECT_NON_FIPS);
+ 
+   spec = spec_from_algo (algo);
+   if (!spec)
+@@ -525,7 +527,12 @@ mac_open (gcry_mac_hd_t * hd, int algo, int secure, gcry_ctx_t ctx)
+   else if (spec->flags.disabled)
+     return GPG_ERR_MAC_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    return GPG_ERR_MAC_ALGO;
++    {
++      if (reject_non_fips)
++        return GPG_ERR_MAC_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (!spec->ops)
+     return GPG_ERR_MAC_ALGO;
+   else if (!spec->ops->open || !spec->ops->write || !spec->ops->setkey ||
+@@ -643,10 +650,10 @@ _gcry_mac_open (gcry_mac_hd_t * h, int algo, unsigned int flags,
+   gcry_err_code_t rc;
+   gcry_mac_hd_t hd = NULL;
+ 
+-  if ((flags & ~GCRY_MAC_FLAG_SECURE))
++  if ((flags & ~(GCRY_MAC_FLAG_SECURE | GCRY_MAC_FLAG_REJECT_NON_FIPS)))
+     rc = GPG_ERR_INV_ARG;
+   else
+-    rc = mac_open (&hd, algo, !!(flags & GCRY_MAC_FLAG_SECURE), ctx);
++    rc = mac_open (&hd, algo, flags, ctx);
+ 
+   *h = rc ? NULL : hd;
+   return rc;
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index 96bf88f6..2a378639 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1560,7 +1560,8 @@ enum gcry_mac_algos
+ /* Flags used with the open function.  */
+ enum gcry_mac_flags
+   {
+-    GCRY_MAC_FLAG_SECURE = 1   /* Allocate all buffers in "secure" memory.  */
++    GCRY_MAC_FLAG_SECURE = 1,  /* Allocate all buffers in "secure" memory.  */
++    GCRY_MAC_FLAG_REJECT_NON_FIPS = 2   /* Reject non-FIPS-compliant algo.  */
+   };
+ 
+ /* Create a MAC handle for algorithm ALGO.  FLAGS may be given as an bitwise OR
+diff --git a/src/visibility.c b/src/visibility.c
+index 44b05eb2..7699f14f 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -946,7 +946,7 @@ gcry_mac_open (gcry_mac_hd_t *handle, int algo, unsigned int flags,
+       *handle = NULL;
+       return gpg_error (fips_not_operational ());
+     }
+-
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_mac_open (handle, algo, flags, ctx));
+ }
+ 
+@@ -962,8 +962,9 @@ gcry_mac_setkey (gcry_mac_hd_t hd, const void *key, size_t keylen)
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
+ 
++  fips_service_indicator_init ();
+   if (fips_mode () && keylen < 14)
+-    return GPG_ERR_INV_VALUE;
++    fips_service_indicator_mark_non_compliant ();
+ 
+   return gpg_error (_gcry_mac_setkey (hd, key, keylen));
+ }
+-- 
+2.49.0
+

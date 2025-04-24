@@ -1,0 +1,188 @@
+From 3478caac62c712547f7c0e07f4cf9602bc317997 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 6 Dec 2024 14:33:58 +0900
+Subject: [PATCH 4/5] fips,md: Implement new FIPS service indicator for
+ gcry_md_hash_*.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/md.c (md_enable): Add an NO_REJECT argument.
+(md_open): Check flags against GCRY_MD_FLAG_FIPS_NO_REJECTION to
+call md_enable.
+(_gcry_md_enable): Follow the change.
+(_gcry_md_hash_buffer): Don't reject but keep the computation.
+Call fips_service_indicator_mark_success.
+(_gcry_md_hash_buffers_extract): Likewise.
+* src/gcrypt.h.in (GCRY_MD_FLAG_FIPS_NO_REJECTION): New.
+* src/visibility.c (gcry_md_hash_buffer, gcry_md_hash_buffers): Call
+fips_service_indicator_init.
+(gcry_md_hash_buffers_ext): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/md.c      | 32 +++++++++++++++++++++++---------
+ src/gcrypt.h.in  |  1 +
+ src/visibility.c |  3 +++
+ 3 files changed, 27 insertions(+), 9 deletions(-)
+
+diff --git a/cipher/md.c b/cipher/md.c
+index 1991c331..c2bd18c6 100644
+--- a/cipher/md.c
++++ b/cipher/md.c
+@@ -285,7 +285,7 @@ struct gcry_md_context
+ #define CTX_MAGIC_NORMAL 0x11071961
+ #define CTX_MAGIC_SECURE 0x16917011
+ 
+-static gcry_err_code_t md_enable (gcry_md_hd_t hd, int algo);
++static gcry_err_code_t md_enable (gcry_md_hd_t hd, int algo, int no_reject);
+ static void md_close (gcry_md_hd_t a);
+ static void md_write (gcry_md_hd_t a, const void *inbuf, size_t inlen);
+ static byte *md_read( gcry_md_hd_t a, int algo );
+@@ -517,7 +517,8 @@ md_open (gcry_md_hd_t *h, int algo, unsigned int flags)
+ 
+       if (algo)
+ 	{
+-	  err = md_enable (hd, algo);
++	  err = md_enable (hd, algo,
++                           !!(flags & GCRY_MD_FLAG_FIPS_NO_REJECTION));
+ 	  if (err)
+ 	    md_close (hd);
+ 	}
+@@ -554,7 +555,7 @@ _gcry_md_open (gcry_md_hd_t *h, int algo, unsigned int flags)
+ 
+ 
+ static gcry_err_code_t
+-md_enable (gcry_md_hd_t hd, int algorithm)
++md_enable (gcry_md_hd_t hd, int algorithm, int no_reject)
+ {
+   struct gcry_md_context *h = hd->ctx;
+   const gcry_md_spec_t *spec;
+@@ -576,7 +577,7 @@ md_enable (gcry_md_hd_t hd, int algorithm)
+     err = GPG_ERR_DIGEST_ALGO;
+ 
+   /* Any non-FIPS algorithm should go this way */
+-  if (!err && !spec->flags.fips && fips_mode ())
++  if (!err && !no_reject && !spec->flags.fips && fips_mode ())
+     err = GPG_ERR_DIGEST_ALGO;
+ 
+   if (!err && h->flags.hmac && spec->read == NULL)
+@@ -619,7 +620,7 @@ md_enable (gcry_md_hd_t hd, int algorithm)
+ gcry_err_code_t
+ _gcry_md_enable (gcry_md_hd_t hd, int algorithm)
+ {
+-  return md_enable (hd, algorithm);
++  return md_enable (hd, algorithm, 0);
+ }
+ 
+ 
+@@ -1260,7 +1261,7 @@ _gcry_md_hash_buffer (int algo, void *digest,
+       iov.off = 0;
+       iov.len = length;
+ 
+-      if (spec->flags.disabled || (!spec->flags.fips && fips_mode ()))
++      if (spec->flags.disabled)
+         log_bug ("gcry_md_hash_buffer failed for algo %d: %s",
+                 algo, gpg_strerror (gcry_error (GPG_ERR_DIGEST_ALGO)));
+ 
+@@ -1273,7 +1274,7 @@ _gcry_md_hash_buffer (int algo, void *digest,
+       gcry_md_hd_t h;
+       gpg_err_code_t err;
+ 
+-      err = md_open (&h, algo, 0);
++      err = md_open (&h, algo, GCRY_MD_FLAG_FIPS_NO_REJECTION);
+       if (err)
+         log_bug ("gcry_md_open failed for algo %d: %s",
+                 algo, gpg_strerror (gcry_error(err)));
+@@ -1282,6 +1283,12 @@ _gcry_md_hash_buffer (int algo, void *digest,
+       memcpy (digest, md_read (h, algo), md_digest_length (algo));
+       md_close (h);
+     }
++
++  if (fips_mode ())
++    {
++      int is_compliant = spec->flags.fips;
++      fips_service_indicator_mark_success (is_compliant);
++    }
+ }
+ 
+ 
+@@ -1336,7 +1343,7 @@ _gcry_md_hash_buffers_extract (int algo, unsigned int flags, void *digest,
+ 
+   if (!hmac && spec->hash_buffers)
+     {
+-      if (spec->flags.disabled || (!spec->flags.fips && fips_mode ()))
++      if (spec->flags.disabled)
+         return GPG_ERR_DIGEST_ALGO;
+ 
+       spec->hash_buffers (digest, digestlen, iov, iovcnt);
+@@ -1348,7 +1355,8 @@ _gcry_md_hash_buffers_extract (int algo, unsigned int flags, void *digest,
+       gcry_md_hd_t h;
+       gpg_err_code_t rc;
+ 
+-      rc = md_open (&h, algo, (hmac? GCRY_MD_FLAG_HMAC:0));
++      rc = md_open (&h, algo, ((hmac? GCRY_MD_FLAG_HMAC:0)
++                               | GCRY_MD_FLAG_FIPS_NO_REJECTION));
+       if (rc)
+         return rc;
+ 
+@@ -1374,6 +1382,12 @@ _gcry_md_hash_buffers_extract (int algo, unsigned int flags, void *digest,
+       md_close (h);
+     }
+ 
++  if (fips_mode ())
++    {
++      int is_compliant = spec->flags.fips;
++      fips_service_indicator_mark_success (is_compliant);
++    }
++
+   return 0;
+ }
+ 
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index 2f61a0bc..18d04a38 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1318,6 +1318,7 @@ enum gcry_md_flags
+   {
+     GCRY_MD_FLAG_SECURE = 1,  /* Allocate all buffers in "secure" memory.  */
+     GCRY_MD_FLAG_HMAC   = 2,  /* Make an HMAC out of this algorithm.  */
++    GCRY_MD_FLAG_FIPS_NO_REJECTION = 4,  /* Don't reject for FIPS.  */
+     GCRY_MD_FLAG_BUGEMU1 = 0x0100
+   };
+ 
+diff --git a/src/visibility.c b/src/visibility.c
+index 8f76b854..be5deda1 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -1281,6 +1281,7 @@ gcry_md_hash_buffer (int algo, void *digest,
+       (void)fips_not_operational ();
+       fips_signal_error ("called in non-operational state");
+     }
++  fips_service_indicator_init ();
+   _gcry_md_hash_buffer (algo, digest, buffer, length);
+ }
+ 
+@@ -1293,6 +1294,7 @@ gcry_md_hash_buffers (int algo, unsigned int flags, void *digest,
+       (void)fips_not_operational ();
+       fips_signal_error ("called in non-operational state");
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_hash_buffers (algo, flags, digest, iov, iovcnt));
+ }
+ 
+@@ -1306,6 +1308,7 @@ gcry_md_hash_buffers_ext (int algo, unsigned int flags, void *digest,
+       (void)fips_not_operational ();
+       fips_signal_error ("called in non-operational state");
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_hash_buffers_extract (algo, flags, digest,
+                                                    digestlen, iov, iovcnt));
+ }
+-- 
+2.49.0
+

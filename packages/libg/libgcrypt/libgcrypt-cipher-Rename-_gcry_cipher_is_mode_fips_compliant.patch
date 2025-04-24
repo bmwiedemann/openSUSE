@@ -1,0 +1,64 @@
+From 6b0fbb7e5e0da77787e3a87d74359ee21c44904e Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Tue, 28 Jan 2025 13:45:39 -0300
+Subject: [PATCH 1/2] cipher: Rename _gcry_cipher_is_mode_fips_compliant
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/cipher.c (_gcry_cipher_is_mode_fips_compliant): Rename to
+_gcry_cipher_mode_fips_compliance for better clarity and change the
+return type to gcry_err_code_t.
+* cipher/cipher.c (_gcry_cipher_mode_fips_compliance): Use
+gcry_cipher_modes instead of int for mode.
+* tests/t-fips-service-ind.c (check_cipher_o_s_e_d_c): Fix typo in fail.
+--
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/cipher.c            | 7 ++++---
+ tests/t-fips-service-ind.c | 2 +-
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/cipher/cipher.c b/cipher/cipher.c
+index b5420671..3b7970b3 100644
+--- a/cipher/cipher.c
++++ b/cipher/cipher.c
+@@ -504,8 +504,9 @@ _gcry_cipher_open (gcry_cipher_hd_t *handle,
+   return rc;
+ }
+ 
+-int
+-_gcry_cipher_is_mode_fips_compliant(int mode)
++
++gcry_err_code_t
++_gcry_cipher_mode_fips_compliance (enum gcry_cipher_modes mode)
+ {
+   switch (mode)
+     {
+@@ -555,7 +556,7 @@ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+               err = 0;
+             }
+         }
+-      else if ((err = _gcry_cipher_is_mode_fips_compliant(mode)))
++      else if ((err = _gcry_cipher_mode_fips_compliance (mode)))
+         {
+           if (!fips_check_rejection (GCRY_FIPS_FLAG_REJECT_CIPHER_MODE))
+             {
+diff --git a/tests/t-fips-service-ind.c b/tests/t-fips-service-ind.c
+index 74521bb3..ed5f8d3f 100644
+--- a/tests/t-fips-service-ind.c
++++ b/tests/t-fips-service-ind.c
+@@ -767,7 +767,7 @@ check_cipher_o_s_e_d_c (int reject)
+ 
+           err = gcry_cipher_set_decryption_tag (h, tag, 16);
+           if (err)
+-            fail ("gcry_cipher_set_decryption_tag %d failed: %s\n", tvidx<
++            fail ("gcry_cipher_set_decryption_tag %d failed: %s\n", tvidx,
+                    gpg_strerror (err));
+       }
+ 
+-- 
+2.49.0
+

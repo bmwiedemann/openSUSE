@@ -1,0 +1,45 @@
+From b4eb23dc01a40e13d542fbfc5169dffa7fae5677 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 19 Dec 2024 14:16:02 +0900
+Subject: [PATCH 13/19] Fix the previous change.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/pubkey.c (_gcry_pk_sign_md): Fix memory leak.
+(_gcry_pk_verify_md): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/pubkey.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/cipher/pubkey.c b/cipher/pubkey.c
+index 11bf1ec9..4d7743cc 100644
+--- a/cipher/pubkey.c
++++ b/cipher/pubkey.c
+@@ -626,7 +626,7 @@ _gcry_pk_sign_md (gcry_sexp_t *r_sig, const char *tmpl, gcry_md_hd_t hd_orig,
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        return GPG_ERR_PUBKEY_ALGO;
++        rc = GPG_ERR_PUBKEY_ALGO;
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+@@ -708,7 +708,7 @@ _gcry_pk_verify_md (gcry_sexp_t s_sig, const char *tmpl, gcry_md_hd_t hd_orig,
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        return GPG_ERR_PUBKEY_ALGO;
++        rc = GPG_ERR_PUBKEY_ALGO;
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-- 
+2.49.0
+

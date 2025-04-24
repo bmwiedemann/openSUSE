@@ -1,0 +1,40 @@
+From 3bdb59c21b77711cf7d44d692a7a02f5f469033e Mon Sep 17 00:00:00 2001
+From: Lucas Mulling via Gcrypt-devel <gcrypt-devel@gnupg.org>
+Date: Wed, 26 Feb 2025 17:19:22 -0300
+Subject: [PATCH 04/14] cipher: Differentiate igninvflag in the SLI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/pubkey-util.c (_gcry_pk_util_parse_flaglist): Differentiate use
+of igninvflag.
+
+GnuPG-bug-id: 7338
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/pubkey-util.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/cipher/pubkey-util.c b/cipher/pubkey-util.c
+index 68defea6..9c927638 100644
+--- a/cipher/pubkey-util.c
++++ b/cipher/pubkey-util.c
+@@ -200,6 +200,14 @@ _gcry_pk_util_parse_flaglist (gcry_sexp_t list,
+         }
+     }
+ 
++  if (fips_mode () && igninvflag)
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        rc = GPG_ERR_INV_FLAG;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
++
+   if (r_flags)
+     *r_flags = flags;
+   if (r_encoding)
+-- 
+2.49.0
+

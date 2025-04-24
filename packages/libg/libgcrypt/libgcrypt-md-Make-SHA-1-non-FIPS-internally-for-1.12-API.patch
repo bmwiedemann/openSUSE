@@ -1,0 +1,154 @@
+From 4ee91a94bcdad32aed4364d09e3daf8841fa579f Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 11 Mar 2025 14:01:11 +0900
+Subject: [PATCH 11/14] md: Make SHA-1 non-FIPS internally for 1.12 API.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_FIPS_FLAG_REJECT_MD_SHA1): New.
+* cipher/md.c (check_digest_algo_spec, _gcry_md_open, md_enable)
+(_gcry_md_enable, md_copy): Care about SHA1.
+* cipher/sha1.c (_gcry_digest_spec_sha1): Make SHA1 non-FIPS.
+* tests/t-fips-service-ind.c (check_mac_o_w_r_c): SHA1 is non-FIPS.
+(check_md_o_w_r_c, check_hash_buffer, check_hash_buffers): Likewise.
+(main): Add GCRY_FIPS_FLAG_REJECT_MD_SHA1 for gcry_control.
+
+--
+
+For 1.10 ABI (which 1.11 keeps), SHA1 is an approved hash function
+(while its use in public key crypto is non-FIPS).
+
+For 1.12 API, the dynamic FIPS service indicator is going to be added.
+
+In 1.11.1 implementation, we are trying to support 1.12 dynamic FIPS
+service indicator in forward-compatible way.  For this purpose,
+internally, it's specified as non-FIPS in _gcry_digest_spec_sha1.
+
+Note that update for tests/basic.c and tests/pkcs1v2.c are needed to
+use SHA256 (or one of approved hash functions) in 1.12, so that test
+program can be a reference for programmers.
+
+Co-authored-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/md.c                | 10 ++++++++++
+ cipher/sha1.c              |  2 +-
+ src/gcrypt.h.in            |  1 +
+ tests/t-fips-service-ind.c |  9 +++++----
+ 4 files changed, 17 insertions(+), 5 deletions(-)
+
+Index: libgcrypt-1.11.0/cipher/md.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/md.c
++++ libgcrypt-1.11.0/cipher/md.c
+@@ -451,6 +451,8 @@ check_digest_algo_spec (int algo, const
+ 
+   if (algo == GCRY_MD_MD5)
+     reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++  else if (algo == GCRY_MD_SHA1)
++    reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_SHA1);
+   else
+     reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
+ 
+@@ -590,6 +592,8 @@ _gcry_md_open (gcry_md_hd_t *h, int algo
+ 
+           if (algo == GCRY_MD_MD5)
+             reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++          else if (algo == GCRY_MD_SHA1)
++            reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_SHA1);
+           else
+             reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
+ 
+@@ -625,6 +629,8 @@ md_enable (gcry_md_hd_t hd, int algorith
+ 
+   if (algorithm == GCRY_MD_MD5)
+     reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++  else if (algorithm == GCRY_MD_SHA1)
++    reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_SHA1);
+   else
+     reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
+ 
+@@ -703,6 +709,8 @@ _gcry_md_enable (gcry_md_hd_t hd, int al
+ 
+           if (algorithm == GCRY_MD_MD5)
+             reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++          else if (algorithm == GCRY_MD_SHA1)
++            reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_SHA1);
+           else
+             reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
+ 
+@@ -780,6 +788,8 @@ md_copy (gcry_md_hd_t ahd, gcry_md_hd_t
+ 
+           if (spec->algo == GCRY_MD_MD5)
+             reject |= fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++          else if (spec->algo == GCRY_MD_SHA1)
++            reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_SHA1);
+           else
+             reject |= fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
+         }
+Index: libgcrypt-1.11.0/cipher/sha1.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/sha1.c
++++ libgcrypt-1.11.0/cipher/sha1.c
+@@ -759,7 +759,7 @@ static const gcry_md_oid_spec_t oid_spec
+ 
+ const gcry_md_spec_t _gcry_digest_spec_sha1 =
+   {
+-    GCRY_MD_SHA1, {0, 1},
++    GCRY_MD_SHA1, {0, 0},
+     "SHA1", asn, DIM (asn), oid_spec_sha1, 20,
+     sha1_init, _gcry_md_block_write, sha1_final, sha1_read, NULL,
+     _gcry_sha1_hash_buffers,
+Index: libgcrypt-1.11.0/src/gcrypt.h.in
+===================================================================
+--- libgcrypt-1.11.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.11.0/src/gcrypt.h.in
+@@ -1982,6 +1982,7 @@ char *gcry_get_config (int mode, const c
+ #define GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2   (1 << 7)
+ #define GCRY_FIPS_FLAG_REJECT_CIPHER_MODE   (1 << 8)
+ /**/
++#define GCRY_FIPS_FLAG_REJECT_MD_SHA1       (1 << 9)
+ #define GCRY_FIPS_FLAG_REJECT_PK_ECC_K      (1 << 10)
+ #define GCRY_FIPS_FLAG_REJECT_PK_FLAGS      (1 << 11)
+ 
+Index: libgcrypt-1.11.0/tests/t-fips-service-ind.c
+===================================================================
+--- libgcrypt-1.11.0.orig/tests/t-fips-service-ind.c
++++ libgcrypt-1.11.0/tests/t-fips-service-ind.c
+@@ -1107,7 +1107,7 @@ check_mac_o_w_r_c (int reject)
+ #if USE_SHA1
+     { GCRY_MAC_HMAC_SHA1, "hmac input abc", 14, "hmac key input", 14,
+       "\xc9\x62\x9d\x16\x0f\xc2\xc4\xcd\x38\xac\x3a\x00\xdc\x29\x61\x03"
+-      "\x69\x50\xd7\x3a" },
++      "\x69\x50\xd7\x3a", 1 },
+ #endif
+     { GCRY_MAC_HMAC_SHA256, "hmac input abc", 14, "hmac key input", 14,
+       "\x6a\xda\x4d\xd5\xf3\xa7\x32\x9d\xd2\x55\xc0\x7f\xe6\x0a\x93\xb8"
+@@ -1264,7 +1264,7 @@ check_md_o_w_r_c (int reject)
+ #if USE_SHA1
+     { GCRY_MD_SHA1, "abc", 3,
+       "\xA9\x99\x3E\x36\x47\x06\x81\x6A\xBA\x3E"
+-      "\x25\x71\x78\x50\xC2\x6C\x9C\xD0\xD8\x9D" },
++      "\x25\x71\x78\x50\xC2\x6C\x9C\xD0\xD8\x9D", 1 },
+ #endif
+     { GCRY_MD_SHA256, "abc", 3,
+       "\xba\x78\x16\xbf\x8f\x01\xcf\xea\x41\x41\x40\xde\x5d\xae\x22\x23"
+@@ -1389,7 +1389,7 @@ check_digests (void)
+ #endif
+     { GCRY_MD_SHA1, "abc", 3,
+       "\xA9\x99\x3E\x36\x47\x06\x81\x6A\xBA\x3E"
+-      "\x25\x71\x78\x50\xC2\x6C\x9C\xD0\xD8\x9D" },
++      "\x25\x71\x78\x50\xC2\x6C\x9C\xD0\xD8\x9D", 1 },
+     { GCRY_MD_SHA256, "abc", 3,
+       "\xba\x78\x16\xbf\x8f\x01\xcf\xea\x41\x41\x40\xde\x5d\xae\x22\x23"
+       "\xb0\x03\x61\xa3\x96\x17\x7a\x9c\xb4\x10\xff\x61\xf2\x00\x15\xad" },
+@@ -1701,6 +1701,7 @@ main (int argc, char **argv)
+                    | GCRY_FIPS_FLAG_REJECT_CIPHER_MODE
+                    | GCRY_FIPS_FLAG_REJECT_PK_MD
+                    | GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2
++                   | GCRY_FIPS_FLAG_REJECT_MD_SHA1
+                    | GCRY_FIPS_FLAG_REJECT_PK_ECC_K
+                    | GCRY_FIPS_FLAG_REJECT_PK_FLAGS
+                    | GCRY_FIPS_FLAG_REJECT_COMPAT110)));

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Apr 13 20:10:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Differentiate use of SHA1 in the service level indicator [jsc#PED-12227]
+  * Include upstream SLI revamp and fips certification fixes
+  * Add patches:
+    - libgcrypt-fips-Introduce-an-internal-API-for-FIPS-service-indicator.patch
+    - libgcrypt-fips-Introduce-GCRYCTL_FIPS_SERVICE_INDICATOR-and-the-macro.patch
+    - libgcrypt-fips-kdf-Implement-new-FIPS-service-indicator-for-gcry_kdf_derive.patch
+    - libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_hash_.patch
+    - libgcrypt-fips-tests-Add-t-digest.patch
+    - libgcrypt-fips-Change-the-internal-API-for-new-FIPS-service-indicator.patch
+    - libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_open-API.patch
+    - libgcrypt-fips-tests-Add-tests-for-md_open-write-read-close-for-t-digest.patch
+    - libgcrypt-fips-mac-Implement-new-FIPS-service-indicator-for-gcry_mac_open.patch
+    - libgcrypt-fips-cipher-Implement-new-FIPS-service-indicator-for-cipher_open.patch
+    - libgcrypt-tests-fips-Add-gcry_mac_open-tests.patch
+    - libgcrypt-tests-fips-Rename-t-fips-service-ind.patch
+    - libgcrypt-tests-fips-Move-KDF-tests-to-t-fips-service-ind.patch
+    - libgcrypt-tests-fips-Add-gcry_cipher_open-tests.patch
+    - libgcrypt-fips-md-gcry_md_copy-should-care-about-FIPS-service-indicator.patch
+    - libgcrypt-fips-cipher-Implement-FIPS-service-indicator-for-gcry_pk_hash_-API.patch
+    - libgcrypt-fips-Introduce-GCRYCTL_FIPS_REJECT_NON_FIPS.patch
+    - libgcrypt-Fix-the-previous-change.patch
+    - libgcrypt-fips-Rejection-by-GCRYCTL_FIPS_REJECT_NON_FIPS-not-by-open-flags.patch
+    - libgcrypt-fips-cipher-Add-behavior-not-to-reject-but-mark-non-compliant.patch
+    - libgcrypt-fips-ecc-Add-rejecting-or-marking-for-gcry_pk_get_curve.patch
+    - libgcrypt-tests-Add-more-tests-to-tests-t-fips-service-ind.patch
+    - libgcrypt-fips-ecc-Check-DATA-in-gcry_pk_sign-verify-in-FIPS-mode.patch
+    - libgcrypt-fips-cipher-Fix-memory-leak-for-gcry_pk_hash_sign.patch
+    - libgcrypt-build-Improve-__thread-specifier-check.patch
+    - libgcrypt-cipher-Check-and-mark-non-compliant-cipher-modes-in-the-SLI.patch
+    - libgcrypt-cipher-Rename-_gcry_cipher_is_mode_fips_compliant.patch
+    - libgcrypt-cipher-Don-t-differentiate-GCRY_CIPHER_MODE_CMAC-in-FIPS-mode.patch
+    - libgcrypt-cipher-rsa-Mark-reject-SHA1-unknown-with-RSA-signature-generation.patch
+    - libgcrypt-md-Fix-gcry_md_algo_info-to-mark-reject-under-FIPS-mode.patch
+    - libgcrypt-md-Use-check_digest_algo_spec-in-_gcry_md_selftest.patch
+    - libgcrypt-tests-Update-t-fips-service-ind-using-GCRY_MD_SHA256-for-KDF-tests.patch
+    - libgcrypt-fips-cipher-Do-the-computation-when-marking-non-compliant.patch
+    - libgcrypt-tests-Allow-tests-with-USE_RSA.patch
+    - libgcrypt-cipher-Add-KAT-for-non-rfc6979-ECDSA-with-fixed-k.patch
+    - libgcrypt-cipher-Differentiate-use-of-label-K-in-the-SLI.patch
+    - libgcrypt-cipher-Differentiate-igninvflag-in-the-SLI.patch
+    - libgcrypt-cipher-Differentiate-no-blinding-flag-in-the-SLI.patch
+    - libgcrypt-fips-cipher-Add-GCRY_FIPS_FLAG_REJECT_PK_FLAGS.patch
+    - libgcrypt-cipher-ecc-Fix-for-supplied-K.patch
+    - libgcrypt-cipher-visibility-Differentiate-use-of-random-override-in-the-SLI.patch
+    - libgcrypt-cipher-fips-Fix-for-random-override.patch
+    - libgcrypt-md-Make-SHA-1-non-FIPS-internally-for-1.12-API.patch
+    - libgcrypt-fips-Fix-GCRY_FIPS_FLAG_REJECT_MD.patch
+    - libgcrypt-doc-Add-about-GCRYCTL_FIPS_SERVICE_INDICATOR.patch
+    - libgcrypt-doc-Fix-syntax-error.patch
+  * Rebase patches:
+    - libgcrypt-FIPS-SLI-kdf-leylength.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 09:28:25 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix redefinition error of 'rol64'. Remove not used rol64()

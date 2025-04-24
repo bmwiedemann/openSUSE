@@ -1,0 +1,83 @@
+From ca8bf05e111b41e482a2a4b34cda6bcf5aa1f27e Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 6 Mar 2025 09:45:36 +0900
+Subject: [PATCH 09/14] cipher,fips: Fix for random-override.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/pubkey-util.c (gcry_pk_util_data_to_mpi): Keep
+the behavior of 1.10.
+* src/visibility.c (gcry_pk_random_override_new): Likewise.
+* tests/t-fips-service-ind.c (main): Use GCRY_FIPS_FLAG_REJECT_PK_FLAGS.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/pubkey-util.c       | 6 +++---
+ src/visibility.c           | 2 +-
+ tests/t-fips-service-ind.c | 1 +
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/cipher/pubkey-util.c b/cipher/pubkey-util.c
+index 66a04f13..0e67f892 100644
+--- a/cipher/pubkey-util.c
++++ b/cipher/pubkey-util.c
+@@ -975,7 +975,7 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t input, gcry_mpi_t *ret_mpi,
+             {
+               if (fips_mode ())
+                 {
+-                  if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++                  if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+                     {
+                       sexp_release (list);
+                       rc = GPG_ERR_INV_FLAG;
+@@ -1162,7 +1162,7 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t input, gcry_mpi_t *ret_mpi,
+             {
+               if (fips_mode ())
+                 {
+-                  if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++                  if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+                     {
+                       sexp_release (list);
+                       rc = GPG_ERR_INV_FLAG;
+@@ -1272,7 +1272,7 @@ _gcry_pk_util_data_to_mpi (gcry_sexp_t input, gcry_mpi_t *ret_mpi,
+         {
+           if (fips_mode ())
+             {
+-              if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++              if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+                 {
+                   sexp_release (list);
+                   rc = GPG_ERR_INV_FLAG;
+diff --git a/src/visibility.c b/src/visibility.c
+index ccd0de69..edb972bc 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -1091,7 +1091,7 @@ gcry_pk_random_override_new (gcry_ctx_t *r_ctx, const unsigned char *p, size_t l
+ 
+   if (fips_mode ())
+     {
+-      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_FLAGS))
+         return gpg_error (GPG_ERR_INV_OP);
+       else
+         fips_service_indicator_mark_non_compliant ();
+diff --git a/tests/t-fips-service-ind.c b/tests/t-fips-service-ind.c
+index 0ece55b8..0a270b38 100644
+--- a/tests/t-fips-service-ind.c
++++ b/tests/t-fips-service-ind.c
+@@ -1835,6 +1835,7 @@ main (int argc, char **argv)
+                    | GCRY_FIPS_FLAG_REJECT_PK_MD
+                    | GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2
+                    | GCRY_FIPS_FLAG_REJECT_PK_ECC_K
++                   | GCRY_FIPS_FLAG_REJECT_PK_FLAGS
+                    | GCRY_FIPS_FLAG_REJECT_COMPAT110)));
+ 
+   check_md_o_w_r_c (1);
+-- 
+2.49.0
+

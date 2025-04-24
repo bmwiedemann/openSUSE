@@ -1,0 +1,85 @@
+From 60db2a175d120aba6818de49638b36006878abf7 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Wed, 18 Dec 2024 14:14:37 +0900
+Subject: [PATCH 10/19] fips,md: gcry_md_copy should care about FIPS service
+ indicator.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/md.c (md_copy): In a case of non-compliant, mark with
+fips_service_indicator_mark_non_compliant.
+* src/visibility.c (gcry_md_copy): Initialize the indicator.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/md.c      | 11 +++++++++++
+ src/visibility.c |  1 +
+ 2 files changed, 12 insertions(+)
+
+diff --git a/cipher/md.c b/cipher/md.c
+index 666e1dfa..08a564ad 100644
+--- a/cipher/md.c
++++ b/cipher/md.c
+@@ -673,6 +673,7 @@ md_copy (gcry_md_hd_t ahd, gcry_md_hd_t *b_hd)
+   GcryDigestEntry *ar, *br;
+   gcry_md_hd_t bhd;
+   size_t n;
++  int is_compliant_algo = 1;
+ 
+   if (ahd->bufpos)
+     md_write (ahd, NULL, 0);
+@@ -699,10 +700,15 @@ md_copy (gcry_md_hd_t ahd, gcry_md_hd_t *b_hd)
+   b->list = NULL;
+   b->debug = NULL;
+ 
++  if (!a->list)
++    is_compliant_algo = 0;
++
+   /* Copy the complete list of algorithms.  The copied list is
+      reversed, but that doesn't matter. */
+   for (ar = a->list; ar; ar = ar->next)
+     {
++      const gcry_md_spec_t *spec = ar->spec;
++
+       if (a->flags.secure)
+         br = xtrymalloc_secure (ar->actual_struct_size);
+       else
+@@ -714,6 +720,8 @@ md_copy (gcry_md_hd_t ahd, gcry_md_hd_t *b_hd)
+           goto leave;
+         }
+ 
++      is_compliant_algo &= spec->flags.fips;
++
+       memcpy (br, ar, ar->actual_struct_size);
+       br->next = b->list;
+       b->list = br;
+@@ -724,6 +732,9 @@ md_copy (gcry_md_hd_t ahd, gcry_md_hd_t *b_hd)
+ 
+   *b_hd = bhd;
+ 
++  if (!is_compliant_algo)
++    fips_service_indicator_mark_non_compliant ();
++
+  leave:
+   return err;
+ }
+diff --git a/src/visibility.c b/src/visibility.c
+index d219f1a6..c9d07f0b 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -1232,6 +1232,7 @@ gcry_md_copy (gcry_md_hd_t *bhd, gcry_md_hd_t ahd)
+       *bhd = NULL;
+       return gpg_error (fips_not_operational ());
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_copy (bhd, ahd));
+ }
+ 
+-- 
+2.49.0
+

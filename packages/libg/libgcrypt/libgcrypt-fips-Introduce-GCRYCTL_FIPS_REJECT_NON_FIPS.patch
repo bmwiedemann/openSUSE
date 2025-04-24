@@ -1,0 +1,261 @@
+From e52adf0948c60b2e9accd7996fcece0f9b443763 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 19 Dec 2024 11:30:28 +0900
+Subject: [PATCH 12/19] fips: Introduce GCRYCTL_FIPS_REJECT_NON_FIPS.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRYCTL_FIPS_REJECT_NON_FIPS): New.
+(GCRY_FIPS_FLAG_REJECT_*): New.
+* src/fips.c (struct gcry_thread_context): Add flags_reject_non_fips.
+(the_tc): Add initial value.
+(_gcry_thread_context_set_reject): New.
+(_gcry_thread_context_check_rejection): New.
+* src/gcrypt-int.h (fips_check_rejection): New.
+* src/global.c (_gcry_vcontrol): Handle GCRYCTL_FIPS_REJECT_NON_FIPS.
+* tests/t-fips-service-ind.c (main): Use GCRYCTL_FIPS_REJECT_NON_FIPS.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/ecc-curves.c        |  7 ++++++-
+ cipher/pubkey.c            | 34 ++++++++++++++++++++++++++--------
+ src/fips.c                 | 17 ++++++++++++++++-
+ src/gcrypt-int.h           |  9 ++++++++-
+ src/gcrypt.h.in            | 28 ++++++++++++++++++++++++++--
+ src/global.c               |  7 +++++++
+ tests/t-fips-service-ind.c |  2 ++
+ 7 files changed, 91 insertions(+), 13 deletions(-)
+
+Index: libgcrypt-1.11.0/cipher/ecc-curves.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/ecc-curves.c
++++ libgcrypt-1.11.0/cipher/ecc-curves.c
+@@ -645,7 +645,12 @@ _gcry_ecc_fill_in_curve (unsigned int nb
+      possible to bypass this check by specifying the curve parameters
+      directly.  */
+   if (fips_mode () && !domain_parms[idx].fips )
+-    fips_service_indicator_mark_non_compliant ();
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        return GPG_ERR_NOT_SUPPORTED;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+ 
+   switch (domain_parms[idx].model)
+     {
+Index: libgcrypt-1.11.0/cipher/pubkey.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/pubkey.c
++++ libgcrypt-1.11.0/cipher/pubkey.c
+@@ -510,7 +510,12 @@ prepare_datasexp_to_be_signed (const cha
+       algo = _gcry_md_get_algo (hd);
+ 
+       if (fips_mode () && algo == GCRY_MD_SHA1)
+-        fips_service_indicator_mark_non_compliant ();
++        {
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++            return GPG_ERR_DIGEST_ALGO;
++          else
++            fips_service_indicator_mark_non_compliant ();
++        }
+ 
+       digest_name = _gcry_md_algo_name (algo);
+       digest_size = (int)_gcry_md_get_algo_dlen (algo);
+@@ -538,7 +543,12 @@ prepare_datasexp_to_be_signed (const cha
+ 	  return GPG_ERR_DIGEST_ALGO;
+ 	}
+       else if (fips_mode () && algo == GCRY_MD_SHA1)
+-        fips_service_indicator_mark_non_compliant ();
++        {
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++            return GPG_ERR_DIGEST_ALGO;
++          else
++            fips_service_indicator_mark_non_compliant ();
++        }
+ 
+       digest_size = (int)_gcry_md_get_algo_dlen (algo);
+       digest = _gcry_md_read (hd, algo);
+@@ -611,11 +621,15 @@ _gcry_pk_sign_md (gcry_sexp_t *r_sig, co
+   if (rc)
+     goto leave;
+ 
+-  if (!spec->flags.fips && fips_mode ())
+-    fips_service_indicator_mark_non_compliant ();
+-
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
++  else if (!spec->flags.fips && fips_mode ())
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        return GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->sign)
+     rc = spec->sign (r_sig, s_data, keyparms);
+   else
+@@ -689,11 +703,15 @@ _gcry_pk_verify_md (gcry_sexp_t s_sig, c
+   if (rc)
+     goto leave;
+ 
+-  if (!spec->flags.fips && fips_mode ())
+-    fips_service_indicator_mark_non_compliant ();
+-
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
++  else if (!spec->flags.fips && fips_mode ())
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        return GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->verify)
+     rc = spec->verify (s_sig, s_data, keyparms);
+   else
+Index: libgcrypt-1.11.0/src/fips.c
+===================================================================
+--- libgcrypt-1.11.0.orig/src/fips.c
++++ libgcrypt-1.11.0/src/fips.c
+@@ -70,15 +70,30 @@ static enum module_states current_state;
+ 
+ struct gcry_thread_context {
+   unsigned long fips_service_indicator;
++  unsigned int flags_reject_non_fips;
+ };
+ 
+ #ifdef HAVE_GCC_STORAGE_CLASS__THREAD
+-static __thread struct gcry_thread_context the_tc;
++static __thread struct gcry_thread_context the_tc = {
++  0, GCRY_FIPS_FLAG_REJECT_DEFAULT
++};
+ #else
+ #error libgcrypt requires thread-local storage to support FIPS mode
+ #endif
+ 
+ void
++_gcry_thread_context_set_reject (unsigned int flags)
++{
++  the_tc.flags_reject_non_fips = flags;
++}
++
++int
++_gcry_thread_context_check_rejection (unsigned int flag)
++{
++  return !!(the_tc.flags_reject_non_fips & flag);
++}
++
++void
+ _gcry_thread_context_set_fsi (unsigned long fsi)
+ {
+   the_tc.fips_service_indicator = fsi;
+Index: libgcrypt-1.11.0/src/gcrypt-int.h
+===================================================================
+--- libgcrypt-1.11.0.orig/src/gcrypt-int.h
++++ libgcrypt-1.11.0/src/gcrypt-int.h
+@@ -297,6 +297,12 @@ void _gcry_set_log_handler (gcry_handler
+ void _gcry_set_gettext_handler (const char *(*f)(const char*));
+ void _gcry_set_progress_handler (gcry_handler_progress_t cb, void *cb_data);
+ 
++void _gcry_thread_context_set_reject (unsigned int flags);
++int _gcry_thread_context_check_rejection (unsigned int flag);
++
++#define fips_check_rejection(flag) \
++  _gcry_thread_context_check_rejection (flag)
++
+ void _gcry_thread_context_set_fsi (unsigned long fsi);
+ unsigned long _gcry_thread_context_get_fsi (void);
+ #define fips_service_indicator_init() do \
+@@ -305,7 +311,8 @@ unsigned long _gcry_thread_context_get_f
+       _gcry_thread_context_set_fsi (0);  \
+   } while (0)
+ /* Should be used only when fips_mode()==TRUE.  */
+-#define fips_service_indicator_mark_non_compliant() _gcry_thread_context_set_fsi (1)
++#define fips_service_indicator_mark_non_compliant() \
++  _gcry_thread_context_set_fsi (1)
+ 
+ /* Return a pointer to a string containing a description of the error
+    code in the error value ERR.  */
+Index: libgcrypt-1.11.0/src/gcrypt.h.in
+===================================================================
+--- libgcrypt-1.11.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.11.0/src/gcrypt.h.in
+@@ -338,7 +338,8 @@ enum gcry_ctl_cmds
+     GCRYCTL_MD_CUSTOMIZE = 88,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 89,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 90,
+-    GCRYCTL_FIPS_SERVICE_INDICATOR = 91
++    GCRYCTL_FIPS_SERVICE_INDICATOR = 91,
++    GCRYCTL_FIPS_REJECT_NON_FIPS = 92
+   };
+ 
+ /* Perform various operations defined by CMD. */
+@@ -1971,7 +1972,30 @@ void gcry_log_debugsxp (const char *text
+ char *gcry_get_config (int mode, const char *what);
+ 
+ /* Convinience macro to access the FIPS service indicator.  */
+-#define gcry_get_fips_service_indicator() gcry_control (GCRYCTL_FIPS_SERVICE_INDICATOR)
++#define gcry_get_fips_service_indicator()       \
++  gcry_control (GCRYCTL_FIPS_SERVICE_INDICATOR)
++
++#define GCRY_FIPS_FLAG_REJECT_KDF           (1 << 0)
++#define GCRY_FIPS_FLAG_REJECT_MD_MD5        (1 << 1)
++#define GCRY_FIPS_FLAG_REJECT_MD_OTHERS     (1 << 2)
++#define GCRY_FIPS_FLAG_REJECT_MAC           (1 << 3)
++#define GCRY_FIPS_FLAG_REJECT_CIPHER        (1 << 4)
++#define GCRY_FIPS_FLAG_REJECT_PK            (1 << 5)
++
++#define GCRY_FIPS_FLAG_REJECT_MD \
++  (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
++
++/* Note: Don't reject MD5 */
++#define GCRY_FIPS_FLAG_REJECT_COMPAT110 \
++  (GCRY_FIPS_FLAG_REJECT_MD_OTHERS      \
++   | GCRY_FIPS_FLAG_REJECT_MAC          \
++   | GCRY_FIPS_FLAG_REJECT_CIPHER       \
++   | GCRY_FIPS_FLAG_REJECT_KDF          \
++   | GCRY_FIPS_FLAG_REJECT_PK)
++
++#define GCRY_FIPS_FLAG_REJECT_DEFAULT \
++  GCRY_FIPS_FLAG_REJECT_COMPAT110
++
+ 
+ /* Log levels used by the internal logging facility. */
+ enum gcry_log_levels
+Index: libgcrypt-1.11.0/src/global.c
+===================================================================
+--- libgcrypt-1.11.0.orig/src/global.c
++++ libgcrypt-1.11.0/src/global.c
+@@ -791,6 +791,13 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+       rc = _gcry_fips_indicator ();
+       break;
+ 
++    case GCRYCTL_FIPS_REJECT_NON_FIPS:
++      {
++        unsigned int flags = va_arg (arg_ptr, unsigned int);
++        _gcry_thread_context_set_reject (flags);
++      }
++      break;
++
+     case GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER:
+       /* Get FIPS Service Indicator for a given symmetric algorithm and
+        * optional mode. Returns GPG_ERR_NO_ERROR if algorithm is allowed or
+Index: libgcrypt-1.11.0/tests/t-fips-service-ind.c
+===================================================================
+--- libgcrypt-1.11.0.orig/tests/t-fips-service-ind.c
++++ libgcrypt-1.11.0/tests/t-fips-service-ind.c
+@@ -1007,6 +1007,8 @@ main (int argc, char **argv)
+   if (debug)
+     xgcry_control ((GCRYCTL_SET_DEBUG_FLAGS, 1u , 0));
+ 
++  xgcry_control ((GCRYCTL_FIPS_REJECT_NON_FIPS, 0));
++
+   check_digests ();
+   check_kdf_derive ();
+   check_md_o_w_r_c ();

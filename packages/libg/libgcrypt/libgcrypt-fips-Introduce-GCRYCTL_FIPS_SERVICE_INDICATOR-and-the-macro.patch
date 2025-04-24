@@ -1,0 +1,101 @@
+From f51f4e98930e6b2175e85fe8a95b8b6a15ad5efa Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 5 Dec 2024 11:34:32 +0900
+Subject: [PATCH 2/5] fips: Introduce GCRYCTL_FIPS_SERVICE_INDICATOR and the
+ macro.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/fips.c (_gcry_fips_indicator): New.
+* src/g10lib.h (_gcry_fips_indicator): New.
+* src/gcrypt.h.in (GCRYCTL_FIPS_SERVICE_INDICATOR): New.
+(gcry_get_fips_service_indicator): New.
+* src/global.c (_gcry_vcontrol): Handle GCRYCTL_FIPS_SERVICE_INDICATOR.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ src/fips.c      | 11 +++++++++++
+ src/g10lib.h    |  2 ++
+ src/gcrypt.h.in |  6 +++++-
+ src/global.c    |  4 ++++
+ 4 files changed, 22 insertions(+), 1 deletion(-)
+
+Index: libgcrypt-1.11.0/src/fips.c
+===================================================================
+--- libgcrypt-1.11.0.orig/src/fips.c
++++ libgcrypt-1.11.0/src/fips.c
+@@ -364,6 +364,17 @@ _gcry_fips_test_operational (void)
+   return result;
+ }
+ 
++gpg_err_code_t
++_gcry_fips_indicator (void)
++{
++  /* If anything recorded, it means that the operation is not
++     supported under FIPS mode.  */
++  if (_gcry_thread_context_get_fsi ())
++    return GPG_ERR_NOT_SUPPORTED;
++
++  return 0;
++}
++
+ int
+ _gcry_fips_indicator_cipher (va_list arg_ptr)
+ {
+Index: libgcrypt-1.11.0/src/g10lib.h
+===================================================================
+--- libgcrypt-1.11.0.orig/src/g10lib.h
++++ libgcrypt-1.11.0/src/g10lib.h
+@@ -468,6 +468,8 @@ void _gcry_fips_signal_error (const char
+            _gcry_fips_signal_error (__FILE__, __LINE__, NULL, 1, (a))
+ #endif
+ 
++gpg_err_code_t _gcry_fips_indicator (void);
++
+ int _gcry_fips_indicator_cipher (va_list arg_ptr);
+ int _gcry_fips_indicator_hash (va_list arg_ptr);
+ int _gcry_fips_indicator_mac (va_list arg_ptr);
+Index: libgcrypt-1.11.0/src/gcrypt.h.in
+===================================================================
+--- libgcrypt-1.11.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.11.0/src/gcrypt.h.in
+@@ -337,7 +337,8 @@ enum gcry_ctl_cmds
+     GCRYCTL_FIPS_SERVICE_INDICATOR_PK_FLAGS = 87,
+     GCRYCTL_MD_CUSTOMIZE = 88,
+     GCRYCTL_FIPS_SERVICE_INDICATOR_PK = 89,
+-    GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 90
++    GCRYCTL_FIPS_SERVICE_INDICATOR_HASH = 90,
++    GCRYCTL_FIPS_SERVICE_INDICATOR = 91
+   };
+ 
+ /* Perform various operations defined by CMD. */
+@@ -1966,6 +1967,9 @@ void gcry_log_debugsxp (const char *text
+ 
+ char *gcry_get_config (int mode, const char *what);
+ 
++/* Convinience macro to access the FIPS service indicator.  */
++#define gcry_get_fips_service_indicator() gcry_control (GCRYCTL_FIPS_SERVICE_INDICATOR)
++
+ /* Log levels used by the internal logging facility. */
+ enum gcry_log_levels
+   {
+Index: libgcrypt-1.11.0/src/global.c
+===================================================================
+--- libgcrypt-1.11.0.orig/src/global.c
++++ libgcrypt-1.11.0/src/global.c
+@@ -787,6 +787,10 @@ _gcry_vcontrol (enum gcry_ctl_cmds cmd,
+       rc = _gcry_fips_run_selftests (1);
+       break;
+ 
++    case GCRYCTL_FIPS_SERVICE_INDICATOR:
++      rc = _gcry_fips_indicator ();
++      break;
++
+     case GCRYCTL_FIPS_SERVICE_INDICATOR_CIPHER:
+       /* Get FIPS Service Indicator for a given symmetric algorithm and
+        * optional mode. Returns GPG_ERR_NO_ERROR if algorithm is allowed or

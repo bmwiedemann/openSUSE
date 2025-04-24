@@ -1,0 +1,160 @@
+From 54a6617b3679cfeb6d986ddf3c9c73641929f02c Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 4 Mar 2025 10:32:49 +0900
+Subject: [PATCH 4/4] fips,cipher: Do the computation when marking
+ non-compliant.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/ecc-ecdsa.c (_gcry_ecc_ecdsa_sign): Continue the computation
+when marking non-compliant.
+* cipher/pubkey.c (_gcry_pk_encrypt, _gcry_pk_sign): Likewise.
+(_gcry_pk_sign_md, _gcry_pk_verify, _gcry_pk_verify_md): Likewise.
+(_gcry_pk_testkey): Likewise.
+
+--
+
+Fixes-commit: a776b692669af7a6c089779989b626c4795e30b0
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/ecc-ecdsa.c |  6 ++++--
+ cipher/pubkey.c    | 48 ++++++++++++++++++++++++++++++++++------------
+ 2 files changed, 40 insertions(+), 14 deletions(-)
+
+diff --git a/cipher/ecc-ecdsa.c b/cipher/ecc-ecdsa.c
+index cb9a001c..9da8e6dc 100644
+--- a/cipher/ecc-ecdsa.c
++++ b/cipher/ecc-ecdsa.c
+@@ -111,10 +111,12 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input, gcry_mpi_t k_supplied, mpi_ec_t ec,
+                        || hashalgo == GCRY_MD_SHAKE256))
+                     {
+                       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-                        rc = GPG_ERR_DIGEST_ALGO;
++                        {
++                          rc = GPG_ERR_DIGEST_ALGO;
++                          goto leave;
++                        }
+                       else
+                         fips_service_indicator_mark_non_compliant ();
+-                      goto leave;
+                     }
+ 
+                   /* Use Pornin's method for deterministic DSA.  If this
+diff --git a/cipher/pubkey.c b/cipher/pubkey.c
+index c28ec124..3778f482 100644
+--- a/cipher/pubkey.c
++++ b/cipher/pubkey.c
+@@ -330,11 +330,15 @@ _gcry_pk_encrypt (gcry_sexp_t *r_ciph, gcry_sexp_t s_data, gcry_sexp_t s_pkey)
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->encrypt)
++
++  if (spec->encrypt)
+     rc = spec->encrypt (r_ciph, s_data, keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+@@ -448,11 +452,15 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->sign)
++
++  if (spec->sign)
+     rc = spec->sign (r_sig, s_hash, keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+@@ -649,11 +657,15 @@ _gcry_pk_sign_md (gcry_sexp_t *r_sig, const char *tmpl, gcry_md_hd_t hd_orig,
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->sign)
++
++  if (spec->sign)
+     rc = spec->sign (r_sig, s_data, keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+@@ -688,11 +700,15 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->verify)
++
++  if (spec->verify)
+     rc = spec->verify (s_sig, s_hash, keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+@@ -736,11 +752,15 @@ _gcry_pk_verify_md (gcry_sexp_t s_sig, const char *tmpl, gcry_md_hd_t hd_orig,
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->verify)
++
++  if (spec->verify)
+     rc = spec->verify (s_sig, s_data, keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+@@ -777,11 +797,15 @@ _gcry_pk_testkey (gcry_sexp_t s_key)
+   else if (!spec->flags.fips && fips_mode ())
+     {
+       if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-        rc = GPG_ERR_PUBKEY_ALGO;
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
+       else
+         fips_service_indicator_mark_non_compliant ();
+     }
+-  else if (spec->check_secret_key)
++
++  if (spec->check_secret_key)
+     rc = spec->check_secret_key (keyparms);
+   else
+     rc = GPG_ERR_NOT_IMPLEMENTED;
+-- 
+2.49.0
+

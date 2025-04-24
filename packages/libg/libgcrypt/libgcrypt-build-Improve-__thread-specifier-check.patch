@@ -1,0 +1,41 @@
+From 42e8858566e32080aaf818b168f34c698a9ef084 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 9 Jan 2025 10:15:50 +0900
+Subject: [PATCH 1/1] build: Improve __thread specifier check.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* configure.ac (AC_COMPILE_IFELSE __thread): Move the declaration to
+global, referring the variable with (void) in main to avoid an error
+buidling with -Werror=unused-variable.  Don't need to include
+stdlib.h.
+
+--
+
+Reported-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ configure.ac | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index d708f89a..f38e20c5 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1495,8 +1495,9 @@ fi
+ AC_CACHE_CHECK([whether compiler supports '__thread' storage class specifier],
+        [gcry_cv_gcc_storage_class__thread],
+        [gcry_cv_gcc_storage_class__thread=no
+-        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <stdlib.h>],
+-          [static  __thread  int bar;]
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM(
++          [[static __thread int bar;]],
++          [[(void)bar;]]
+           )],
+           [gcry_cv_gcc_storage_class__thread=yes])])
+ if test "$gcry_cv_gcc_storage_class__thread" = "yes" ; then
+-- 
+2.49.0
+

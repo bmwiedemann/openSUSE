@@ -1,0 +1,298 @@
+From 9757e280794f537efc82c4eaa9a2944ece6a068a Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 12 Dec 2024 11:40:31 +0900
+Subject: [PATCH] fips,md: Implement new FIPS service indicator for
+ gcry_md_open API.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_MD_FLAG_FIPS_NO_REJECTION): Remove.
+(GCRY_MD_FLAG_REJECT_NON_FIPS): New.
+* cipher/md.c (struct gcry_md_context): Add reject_non_fips.
+(md_enable): Remove NO_REJECT argument.
+(md_open): Change the FLAGS handling.
+(_gcry_md_open): Add checking of FIPS compliance against ALGO.
+(_gcry_md_enable): Likewise.
+(_gcry_md_hash_buffer): Follow the change of md_open change
+which now defaults to no rejection.
+(_gcry_md_hash_buffers_extract): Likewise.
+* src/visibility.c (gcry_md_open): Add fips_service_indicator_init.
+(gcry_md_enable): Likewise.
+(gcry_md_setkey): Don't reject but mark non-compliance.
+* tests/t-kdf.c (check_fips_gcry_kdf_derive): Add a test with
+non-compliant hash function.
+* cipher/mac-hmac.c (_gcry_mac_type_spec_hmac_md5): It's not
+compliant.
+* cipher/md5.c (gcry_md_oid_spec_t oid_spec_md5): It's not compliant.
+* tests/t-digest.c (check_hash_buffer, check_hash_buffers): MD5
+tests enabled.
+
+--
+
+See 6376 for the MD5 compliance change in the past.  This commit
+reverts the change in:
+	dc4a60e2d70bc52ba2955f8e676341d675ab89a0
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/mac-hmac.c |  2 +-
+ cipher/md.c       | 57 +++++++++++++++++++++++++++++++++++++++--------
+ cipher/md5.c      |  2 +-
+ src/gcrypt.h.in   |  2 +-
+ src/visibility.c  |  6 +++--
+ tests/t-digest.c  |  6 ++---
+ tests/t-kdf.c     | 12 ++++++++++
+ 7 files changed, 69 insertions(+), 18 deletions(-)
+
+Index: libgcrypt-1.11.0/cipher/mac-hmac.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/mac-hmac.c
++++ libgcrypt-1.11.0/cipher/mac-hmac.c
+@@ -1413,7 +1413,7 @@ const gcry_mac_spec_t _gcry_mac_type_spe
+ #endif
+ #if USE_MD5
+ const gcry_mac_spec_t _gcry_mac_type_spec_hmac_md5 = {
+-  GCRY_MAC_HMAC_MD5, {0, 1}, "HMAC_MD5",
++  GCRY_MAC_HMAC_MD5, {0, 0}, "HMAC_MD5",
+   &hmac_ops
+ };
+ #endif
+Index: libgcrypt-1.11.0/cipher/md.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/md.c
++++ libgcrypt-1.11.0/cipher/md.c
+@@ -275,6 +275,7 @@ struct gcry_md_context
+     unsigned int finalized:1;
+     unsigned int bugemu1:1;
+     unsigned int hmac:1;
++    unsigned int reject_non_fips:1;
+   } flags;
+   size_t actual_handle_size;     /* Allocated size of this handle. */
+   FILE  *debug;
+@@ -285,7 +286,7 @@ struct gcry_md_context
+ #define CTX_MAGIC_NORMAL 0x11071961
+ #define CTX_MAGIC_SECURE 0x16917011
+ 
+-static gcry_err_code_t md_enable (gcry_md_hd_t hd, int algo, int no_reject);
++static gcry_err_code_t md_enable (gcry_md_hd_t hd, int algo);
+ static void md_close (gcry_md_hd_t a);
+ static void md_write (gcry_md_hd_t a, const void *inbuf, size_t inlen);
+ static byte *md_read( gcry_md_hd_t a, int algo );
+@@ -508,6 +509,7 @@ md_open (gcry_md_hd_t *h, int algo, unsi
+       ctx->flags.secure = secure;
+       ctx->flags.hmac = hmac;
+       ctx->flags.bugemu1 = !!(flags & GCRY_MD_FLAG_BUGEMU1);
++      ctx->flags.reject_non_fips = !!(flags & GCRY_MD_FLAG_REJECT_NON_FIPS);
+     }
+ 
+   if (! err)
+@@ -517,8 +519,7 @@ md_open (gcry_md_hd_t *h, int algo, unsi
+ 
+       if (algo)
+ 	{
+-	  err = md_enable (hd, algo,
+-                           !!(flags & GCRY_MD_FLAG_FIPS_NO_REJECTION));
++	  err = md_enable (hd, algo);
+ 	  if (err)
+ 	    md_close (hd);
+ 	}
+@@ -543,24 +544,44 @@ _gcry_md_open (gcry_md_hd_t *h, int algo
+ 
+   if ((flags & ~(GCRY_MD_FLAG_SECURE
+                  | GCRY_MD_FLAG_HMAC
++                 | GCRY_MD_FLAG_REJECT_NON_FIPS
+                  | GCRY_MD_FLAG_BUGEMU1)))
+     rc = GPG_ERR_INV_ARG;
+   else
+     rc = md_open (&hd, algo, flags);
+ 
+   *h = rc? NULL : hd;
++
++  if (!rc && fips_mode ())
++    {
++      GcryDigestEntry *entry = hd->ctx->list;
++      /* No ENTRY means that ALGO==0.
++         It's not yet known, if it's FIPS compliant or not.  */
++      int is_compliant_algo = 1;
++
++      if (entry)
++        {
++          const gcry_md_spec_t *spec = entry->spec;
++          is_compliant_algo = spec->flags.fips;
++        }
++
++      if (!is_compliant_algo)
++        fips_service_indicator_mark_non_compliant ();
++    }
++
+   return rc;
+ }
+ 
+ 
+ 
+ static gcry_err_code_t
+-md_enable (gcry_md_hd_t hd, int algorithm, int no_reject)
++md_enable (gcry_md_hd_t hd, int algorithm)
+ {
+   struct gcry_md_context *h = hd->ctx;
+   const gcry_md_spec_t *spec;
+   GcryDigestEntry *entry;
+   gcry_err_code_t err = 0;
++  int reject_non_fips = h->flags.reject_non_fips;
+ 
+   for (entry = h->list; entry; entry = entry->next)
+     if (entry->spec->algo == algorithm)
+@@ -577,7 +598,7 @@ md_enable (gcry_md_hd_t hd, int algorith
+     err = GPG_ERR_DIGEST_ALGO;
+ 
+   /* Any non-FIPS algorithm should go this way */
+-  if (!err && !no_reject && !spec->flags.fips && fips_mode ())
++  if (!err && reject_non_fips && !spec->flags.fips && fips_mode ())
+     err = GPG_ERR_DIGEST_ALGO;
+ 
+   if (!err && h->flags.hmac && spec->read == NULL)
+@@ -620,7 +641,26 @@ md_enable (gcry_md_hd_t hd, int algorith
+ gcry_err_code_t
+ _gcry_md_enable (gcry_md_hd_t hd, int algorithm)
+ {
+-  return md_enable (hd, algorithm, 0);
++  gcry_err_code_t rc;
++
++  rc = md_enable (hd, algorithm);
++  if (!rc && fips_mode ())
++    {
++      GcryDigestEntry *entry = hd->ctx->list;
++      /* No ENTRY means, something goes wrong.  */
++      int is_compliant_algo = 0;
++
++      if (entry)
++        {
++          const gcry_md_spec_t *spec = entry->spec;
++          is_compliant_algo = spec->flags.fips;
++        }
++
++      if (!is_compliant_algo)
++        fips_service_indicator_mark_non_compliant ();
++    }
++
++  return rc;
+ }
+ 
+ 
+@@ -1274,7 +1314,7 @@ _gcry_md_hash_buffer (int algo, void *di
+       gcry_md_hd_t h;
+       gpg_err_code_t err;
+ 
+-      err = md_open (&h, algo, GCRY_MD_FLAG_FIPS_NO_REJECTION);
++      err = md_open (&h, algo, 0);
+       if (err)
+         log_bug ("gcry_md_open failed for algo %d: %s",
+                 algo, gpg_strerror (gcry_error(err)));
+@@ -1355,8 +1395,7 @@ _gcry_md_hash_buffers_extract (int algo,
+       gcry_md_hd_t h;
+       gpg_err_code_t rc;
+ 
+-      rc = md_open (&h, algo, ((hmac? GCRY_MD_FLAG_HMAC:0)
+-                               | GCRY_MD_FLAG_FIPS_NO_REJECTION));
++      rc = md_open (&h, algo, (hmac? GCRY_MD_FLAG_HMAC:0));
+       if (rc)
+         return rc;
+ 
+Index: libgcrypt-1.11.0/cipher/md5.c
+===================================================================
+--- libgcrypt-1.11.0.orig/cipher/md5.c
++++ libgcrypt-1.11.0/cipher/md5.c
+@@ -314,7 +314,7 @@ static const gcry_md_oid_spec_t oid_spec
+ 
+ const gcry_md_spec_t _gcry_digest_spec_md5 =
+   {
+-    GCRY_MD_MD5, {0, 1},
++    GCRY_MD_MD5, {0, 0},
+     "MD5", asn, DIM (asn), oid_spec_md5, 16,
+     md5_init, _gcry_md_block_write, md5_final, md5_read, NULL,
+     NULL,
+Index: libgcrypt-1.11.0/src/gcrypt.h.in
+===================================================================
+--- libgcrypt-1.11.0.orig/src/gcrypt.h.in
++++ libgcrypt-1.11.0/src/gcrypt.h.in
+@@ -1320,7 +1320,7 @@ enum gcry_md_flags
+   {
+     GCRY_MD_FLAG_SECURE = 1,  /* Allocate all buffers in "secure" memory.  */
+     GCRY_MD_FLAG_HMAC   = 2,  /* Make an HMAC out of this algorithm.  */
+-    GCRY_MD_FLAG_FIPS_NO_REJECTION = 4,  /* Don't reject for FIPS.  */
++    GCRY_MD_FLAG_REJECT_NON_FIPS = 4,  /* Reject non-FIPS-compliant algo.  */
+     GCRY_MD_FLAG_BUGEMU1 = 0x0100
+   };
+ 
+Index: libgcrypt-1.11.0/src/visibility.c
+===================================================================
+--- libgcrypt-1.11.0.orig/src/visibility.c
++++ libgcrypt-1.11.0/src/visibility.c
+@@ -1204,7 +1204,7 @@ gcry_md_open (gcry_md_hd_t *h, int algo,
+       *h = NULL;
+       return gpg_error (fips_not_operational ());
+     }
+-
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_open (h, algo, flags));
+ }
+ 
+@@ -1219,6 +1219,7 @@ gcry_md_enable (gcry_md_hd_t hd, int alg
+ {
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_enable (hd, algo));
+ }
+ 
+@@ -1382,8 +1383,9 @@ gcry_md_setkey (gcry_md_hd_t hd, const v
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
+ 
++  fips_service_indicator_init ();
+   if (fips_mode () && keylen < 14)
+-    return GPG_ERR_INV_VALUE;
++    fips_service_indicator_mark_non_compliant ();
+ 
+   return gpg_error (_gcry_md_setkey (hd, key, keylen));
+ }
+Index: libgcrypt-1.11.0/tests/t-digest.c
+===================================================================
+--- libgcrypt-1.11.0.orig/tests/t-digest.c
++++ libgcrypt-1.11.0/tests/t-digest.c
+@@ -48,8 +48,7 @@ check_digests (void)
+     const char *expect;
+     int expect_failure;
+   } tv[] = {
+-#undef ENABLE_THIS_AFTER_T6376_CHANGE_REVISED
+-#ifdef ENABLE_THIS_AFTER_T6376_CHANGE_REVISED
++#if USE_MD5
+     { GCRY_MD_MD5, "abc", 3,
+       "\x90\x01\x50\x98\x3C\xD2\x4F\xB0\xD6\x96\x3F\x7D\x28\xE1\x7F\x72", 1 },
+ #endif
+Index: libgcrypt-1.11.0/tests/t-kdf.c
+===================================================================
+--- libgcrypt-1.11.0.orig/tests/t-kdf.c
++++ libgcrypt-1.11.0/tests/t-kdf.c
+@@ -2008,6 +2008,18 @@ check_fips_gcry_kdf_derive (void)
+       "\xd8\x36\x62",
+       1 /* not-compliant because key size too small */
+     },
++    {
++      "passwordPASSWORDpassword", 24,
++      GCRY_KDF_PBKDF2, GCRY_MD_BLAKE2B_512,
++      "saltSALTsaltSALTsaltSALTsaltSALTsalt", 36,
++      4096,
++      60,
++      "\xa4\x6b\x53\x35\xdb\xdd\xa3\xd2\x5d\x19\xbb\x11\xfe\xdd\xd9\x9e"
++      "\x45\x2a\x7c\x34\x47\x41\x98\xca\x31\x74\xb6\x34\x22\xac\x83\xb0"
++      "\x38\x6e\xf5\x93\x0f\xf5\x16\x46\x0b\x97\xdc\x6c\x27\x5b\xe7\x25"
++      "\xc2\xcb\xec\x50\x02\xc6\x52\x8b\x34\x68\x53\x65",
++      1 /* not-compliant because subalgo is not the one of approved */
++    }
+   };
+ 
+   int tvidx;

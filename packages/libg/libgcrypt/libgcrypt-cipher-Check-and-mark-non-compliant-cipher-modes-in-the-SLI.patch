@@ -1,0 +1,236 @@
+From 9f0fd2656d7d7ba26fcf95cc64d2514ae9ac8ec1 Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Fri, 24 Jan 2025 09:57:49 -0300
+Subject: [PATCH] cipher: Check and mark non-compliant cipher modes in the SLI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/cipher.c (_gcry_cipher_open_internal): Check and mark if the
+cipher mode is compliant and reject accordingly.
+(_gcry_cipher_is_mode_fips_compliant): New.
+* src/gcrypt.h.in (GCRY_FIPS_FLAG_REJECT_CIPHER_MODE): New.
+* tests/t-fips-service-ind.c (check_cipher_o_s_e_d_c): Add test to
+verify that the service level indication is correctly set for non-
+compliant cipher modes, and correctly rejected if
+GCRY_FIPS_FLAG_REJECT_CIPHER_MODE is set.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/cipher.c            | 43 ++++++++++++++++++----
+ src/gcrypt.h.in            |  1 +
+ tests/t-fips-service-ind.c | 74 +++++++++++++++++++++++++++++++++-----
+ 3 files changed, 104 insertions(+), 14 deletions(-)
+
+diff --git a/cipher/cipher.c b/cipher/cipher.c
+index 74dc2df7..b5420671 100644
+--- a/cipher/cipher.c
++++ b/cipher/cipher.c
+@@ -504,6 +504,26 @@ _gcry_cipher_open (gcry_cipher_hd_t *handle,
+   return rc;
+ }
+ 
++int
++_gcry_cipher_is_mode_fips_compliant(int mode)
++{
++  switch (mode)
++    {
++    case GCRY_CIPHER_MODE_ECB:
++    case GCRY_CIPHER_MODE_CBC:
++    case GCRY_CIPHER_MODE_CFB:
++    case GCRY_CIPHER_MODE_CFB8:
++    case GCRY_CIPHER_MODE_OFB:
++    case GCRY_CIPHER_MODE_CTR:
++    case GCRY_CIPHER_MODE_CCM:
++    case GCRY_CIPHER_MODE_XTS:
++    case GCRY_CIPHER_MODE_AESWRAP:
++      return GPG_ERR_NO_ERROR;
++    default:
++      return GPG_ERR_NOT_SUPPORTED;
++    }
++}
++
+ 
+ gcry_err_code_t
+ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+@@ -523,14 +543,25 @@ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+     err = GPG_ERR_CIPHER_ALGO;
+   else if (spec->flags.disabled)
+     err = GPG_ERR_CIPHER_ALGO;
+-  else if (!spec->flags.fips && fips_mode ())
++  else if (fips_mode ())
+     {
+-      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_CIPHER))
+-        err = GPG_ERR_CIPHER_ALGO;
+-      else
++      if (!spec->flags.fips)
+         {
+-          fips_service_indicator_mark_non_compliant ();
+-          err = 0;
++          if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_CIPHER))
++            err = GPG_ERR_CIPHER_ALGO;
++          else
++            {
++              fips_service_indicator_mark_non_compliant ();
++              err = 0;
++            }
++        }
++      else if ((err = _gcry_cipher_is_mode_fips_compliant(mode)))
++        {
++          if (!fips_check_rejection (GCRY_FIPS_FLAG_REJECT_CIPHER_MODE))
++            {
++              fips_service_indicator_mark_non_compliant ();
++              err = 0;
++            }
+         }
+     }
+   else
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index fcb6a327..1a6f7269 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1988,6 +1988,7 @@ char *gcry_get_config (int mode, const char *what);
+ #define GCRY_FIPS_FLAG_REJECT_PK            (1 << 5)
+ #define GCRY_FIPS_FLAG_REJECT_PK_MD         (1 << 6)
+ #define GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2   (1 << 7)
++#define GCRY_FIPS_FLAG_REJECT_CIPHER_MODE   (1 << 8)
+ 
+ #define GCRY_FIPS_FLAG_REJECT_MD \
+   (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
+diff --git a/tests/t-fips-service-ind.c b/tests/t-fips-service-ind.c
+index fe963fa5..74521bb3 100644
+--- a/tests/t-fips-service-ind.c
++++ b/tests/t-fips-service-ind.c
+@@ -606,27 +606,41 @@ check_cipher_o_s_e_d_c (int reject)
+ {
+   static struct {
+     int algo;
++    int mode;
+     const char *key;
+     int keylen;
++    const char *tag;
++    int taglen;
+     const char *expect;
+     int expect_failure;
+   } tv[] = {
+ #if USE_DES
+-      { GCRY_CIPHER_3DES,
+-	"\xe3\x34\x7a\x6b\x0b\xc1\x15\x2c\x64\x2a\x25\xcb\xd3\xbc\x31\xab"
+-	"\xfb\xa1\x62\xa8\x1f\x19\x7c\x15", 24,
+-        "\x3f\x1a\xb8\x83\x18\x8b\xb5\x97", 1 },
++   { GCRY_CIPHER_3DES, GCRY_CIPHER_MODE_ECB,
++	 "\xe3\x34\x7a\x6b\x0b\xc1\x15\x2c\x64\x2a\x25\xcb\xd3\xbc\x31\xab"
++	 "\xfb\xa1\x62\xa8\x1f\x19\x7c\x15", 24,
++     "", -1,
++     "\x3f\x1a\xb8\x83\x18\x8b\xb5\x97", 1 },
+ #endif
+-      { GCRY_CIPHER_AES,
+-	"\x2b\x7e\x15\x16\x28\xae\xd2\xa6\xab\xf7\x15\x88\x09\xcf\x4f\x3c", 16,
+-        "\x5c\x71\xd8\x5d\x26\x5e\xcd\xb5\x95\x40\x41\xab\xff\x25\x6f\xd1" }
++   { GCRY_CIPHER_AES, GCRY_CIPHER_MODE_ECB,
++	 "\x2b\x7e\x15\x16\x28\xae\xd2\xa6\xab\xf7\x15\x88\x09\xcf\x4f\x3c", 16,
++     "", -1,
++     "\x5c\x71\xd8\x5d\x26\x5e\xcd\xb5\x95\x40\x41\xab\xff\x25\x6f\xd1" },
++   { GCRY_CIPHER_AES128, GCRY_CIPHER_MODE_SIV,
++	 "\xff\xfe\xfd\xfc\xfb\xfa\xf9\xf8\xf7\xf6\xf5\xf4\xf3\xf2\xf1\xf0"
++	 "\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff", 32,
++     "\x51\x66\x54\xc4\xe1\xb5\xd9\x37\x31\x52\xdb\xea\x35\x10\x8b\x7b", 16,
++     "\x83\x69\xf6\xf3\x20\xff\xa2\x72\x31\x67\x15\xcf\xf4\x75\x01\x9a", 1 }
+   };
++
+   const char *pt = "Shohei Ohtani 2024: 54 HR, 59 SB";
+   int ptlen;
+   int tvidx;
+   unsigned char out[MAX_DATA_LEN];
+   gpg_error_t err;
+ 
++  unsigned char tag[16];
++  size_t taglen = 0;
++
+   ptlen = strlen (pt);
+   assert (ptlen == 32);
+   for (tvidx=0; tvidx < DIM(tv); tvidx++)
+@@ -640,10 +654,12 @@ check_cipher_o_s_e_d_c (int reject)
+                  tvidx);
+ 
+       blklen = gcry_cipher_get_algo_blklen (tv[tvidx].algo);
++
+       assert (blklen != 0);
+       assert (blklen <= ptlen);
+       assert (blklen <= DIM (out));
+-      err = gcry_cipher_open (&h, tv[tvidx].algo, GCRY_CIPHER_MODE_ECB, 0);
++      assert (tv[tvidx].taglen <= 16);
++      err = gcry_cipher_open (&h, tv[tvidx].algo, tv[tvidx].mode, 0);
+       if (err)
+         {
+           if (in_fips_mode && reject && tv[tvidx].expect_failure)
+@@ -694,6 +710,18 @@ check_cipher_o_s_e_d_c (int reject)
+           continue;
+         }
+ 
++      if (tv[tvidx].taglen >= 0)
++        {
++          err = gcry_cipher_info (h, GCRYCTL_GET_TAGLEN, NULL, &taglen);
++          if (err)
++              fail ("gcry_cipher_info %d failed: %s\n", tvidx,
++                    gpg_strerror (err));
++
++          if (taglen != tv[tvidx].taglen)
++              fail ("gcry_cipher_info %d failed: taglen mismatch %d != %ld\n", tvidx,
++                    tv[tvidx].taglen, taglen);
++        }
++
+       err = gcry_cipher_encrypt (h, out, MAX_DATA_LEN, pt, blklen);
+       if (err)
+         {
+@@ -714,6 +742,35 @@ check_cipher_o_s_e_d_c (int reject)
+           putc ('\n', stderr);
+         }
+ 
++      if (tv[tvidx].taglen >= 0)
++        {
++           err = gcry_cipher_gettag (h, tag, tv[tvidx].taglen);
++           if (err)
++              fail ("gcry_cipher_gettag %d failed: %s", tvidx,
++                     gpg_strerror(err));
++
++          if (memcmp (tv[tvidx].tag, tag, tv[tvidx].taglen))
++            {
++              int i;
++
++              fail ("gcry_cipher_gettag %d: tag mismatch\n", tvidx);
++              fputs ("got:", stderr);
++              for (i=0; i < 16 ; i++)
++                fprintf (stderr, " %02x", tag[i]);
++              putc ('\n', stderr);
++            }
++
++          err = gcry_cipher_reset (h);
++          if (err)
++            fail("gcry_cipher_reset %d failed: %s", tvidx,
++                  gpg_strerror(err));
++
++          err = gcry_cipher_set_decryption_tag (h, tag, 16);
++          if (err)
++            fail ("gcry_cipher_set_decryption_tag %d failed: %s\n", tvidx<
++                   gpg_strerror (err));
++      }
++
+       err = gcry_cipher_decrypt (h, out, blklen, NULL, 0);
+       if (err)
+         {
+@@ -1483,6 +1540,7 @@ main (int argc, char **argv)
+ 
+   xgcry_control ((GCRYCTL_FIPS_REJECT_NON_FIPS,
+                   (GCRY_FIPS_FLAG_REJECT_MD_MD5
++                   | GCRY_FIPS_FLAG_REJECT_CIPHER_MODE
+                    | GCRY_FIPS_FLAG_REJECT_PK_MD
+                    | GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2
+                    | GCRY_FIPS_FLAG_REJECT_COMPAT110)));
+-- 
+2.49.0
+

@@ -1,0 +1,300 @@
+From a776b692669af7a6c089779989b626c4795e30b0 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 20 Dec 2024 13:36:12 +0900
+Subject: [PATCH 15/19] fips,cipher: Add behavior not to reject but mark
+ non-compliant.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/dsa.c (dsa_check_keysize): Check reject flag for rejection,
+or mark non-comliant in FIPS mode.
+* cipher/ecc-ecdsa.c (_gcry_ecc_ecdsa_sign): Likewise.
+* cipher/ecc.c (ecc_sign, ecc_verify): Likewise.
+* cipher/pubkey.c (_gcry_pk_encrypt, _gcry_pk_sign): Likewise.
+(_gcry_pk_verify, _gcry_pk_testkey, _gcry_pk_genkey): Likewise.
+(_gcry_pk_get_nbits, _gcry_pk_get_curve): Likewise.
+* src/visibility.c (gcry_pk_encrypt): Initialize the indicator.
+(gcry_pk_decrypt, gcry_pk_sign, gcry_pk_verify): Likewise.
+(gcry_pk_testkey, gcry_pk_genkey), gcry_pk_get_nbits)
+(gcry_pk_get_curve): Likewise.
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/dsa.c       |  7 ++++-
+ cipher/ecc-ecdsa.c |  5 +++-
+ cipher/ecc.c       | 10 +++++--
+ cipher/pubkey.c    | 74 ++++++++++++++++++++++++++++++++++++++--------
+ src/visibility.c   |  9 +++++-
+ 5 files changed, 87 insertions(+), 18 deletions(-)
+
+diff --git a/cipher/dsa.c b/cipher/dsa.c
+index e559f9f5..564edf8d 100644
+--- a/cipher/dsa.c
++++ b/cipher/dsa.c
+@@ -150,7 +150,12 @@ static gpg_err_code_t
+ dsa_check_keysize (unsigned int nbits)
+ {
+   if (fips_mode () && nbits < 2048)
+-    return GPG_ERR_INV_VALUE;
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        return GPG_ERR_INV_VALUE;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+ 
+   return 0;
+ }
+diff --git a/cipher/ecc-ecdsa.c b/cipher/ecc-ecdsa.c
+index 871b0371..cb9a001c 100644
+--- a/cipher/ecc-ecdsa.c
++++ b/cipher/ecc-ecdsa.c
+@@ -110,7 +110,10 @@ _gcry_ecc_ecdsa_sign (gcry_mpi_t input, gcry_mpi_t k_supplied, mpi_ec_t ec,
+                       (hashalgo == GCRY_MD_SHAKE128
+                        || hashalgo == GCRY_MD_SHAKE256))
+                     {
+-                      rc = GPG_ERR_DIGEST_ALGO;
++                      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++                        rc = GPG_ERR_DIGEST_ALGO;
++                      else
++                        fips_service_indicator_mark_non_compliant ();
+                       goto leave;
+                     }
+ 
+diff --git a/cipher/ecc.c b/cipher/ecc.c
+index 65525207..8896afd0 100644
+--- a/cipher/ecc.c
++++ b/cipher/ecc.c
+@@ -952,7 +952,10 @@ ecc_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+                   || (ec->dialect == ECC_DIALECT_SAFECURVE
+                       && ctx.hash_algo != GCRY_MD_SHAKE256)))
+             {
+-              rc = GPG_ERR_DIGEST_ALGO;
++              if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++                rc = GPG_ERR_DIGEST_ALGO;
++              else
++                fips_service_indicator_mark_non_compliant ();
+               goto leave;
+             }
+         }
+@@ -1074,7 +1077,10 @@ ecc_verify (gcry_sexp_t s_sig, gcry_sexp_t s_data, gcry_sexp_t s_keyparms)
+                   || (ec->dialect == ECC_DIALECT_SAFECURVE
+                       && ctx.hash_algo != GCRY_MD_SHAKE256)))
+             {
+-              rc = GPG_ERR_DIGEST_ALGO;
++              if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++                rc = GPG_ERR_DIGEST_ALGO;
++              else
++                fips_service_indicator_mark_non_compliant ();
+               goto leave;
+             }
+         }
+diff --git a/cipher/pubkey.c b/cipher/pubkey.c
+index 4d7743cc..aacf9f5a 100644
+--- a/cipher/pubkey.c
++++ b/cipher/pubkey.c
+@@ -328,7 +328,12 @@ _gcry_pk_encrypt (gcry_sexp_t *r_ciph, gcry_sexp_t s_data, gcry_sexp_t s_pkey)
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    rc = GPG_ERR_PUBKEY_ALGO;
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        rc = GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->encrypt)
+     rc = spec->encrypt (r_ciph, s_data, keyparms);
+   else
+@@ -441,7 +446,12 @@ _gcry_pk_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_hash, gcry_sexp_t s_skey)
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    rc = GPG_ERR_PUBKEY_ALGO;
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        rc = GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->sign)
+     rc = spec->sign (r_sig, s_hash, keyparms);
+   else
+@@ -663,7 +673,12 @@ _gcry_pk_verify (gcry_sexp_t s_sig, gcry_sexp_t s_hash, gcry_sexp_t s_pkey)
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    rc = GPG_ERR_PUBKEY_ALGO;
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        rc = GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->verify)
+     rc = spec->verify (s_sig, s_hash, keyparms);
+   else
+@@ -747,7 +762,12 @@ _gcry_pk_testkey (gcry_sexp_t s_key)
+   if (spec->flags.disabled)
+     rc = GPG_ERR_PUBKEY_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    rc = GPG_ERR_PUBKEY_ALGO;
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        rc = GPG_ERR_PUBKEY_ALGO;
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+   else if (spec->check_secret_key)
+     rc = spec->check_secret_key (keyparms);
+   else
+@@ -826,11 +846,21 @@ _gcry_pk_genkey (gcry_sexp_t *r_key, gcry_sexp_t s_parms)
+   spec = spec_from_name (name);
+   xfree (name);
+   name = NULL;
+-  if (!spec || spec->flags.disabled || (!spec->flags.fips && fips_mode ()))
++  if (!spec || spec->flags.disabled)
+     {
+       rc = GPG_ERR_PUBKEY_ALGO; /* Unknown algorithm.  */
+       goto leave;
+     }
++  else if (!spec->flags.fips && fips_mode ())
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        {
++          rc = GPG_ERR_PUBKEY_ALGO;
++          goto leave;
++        }
++      else
++        fips_service_indicator_mark_non_compliant ();
++    }
+ 
+   if (spec->generate)
+     rc = spec->generate (list, r_key);
+@@ -866,12 +896,22 @@ _gcry_pk_get_nbits (gcry_sexp_t key)
+ 
+   if (spec_from_sexp (key, 0, &spec, &parms))
+     return 0; /* Error - 0 is a suitable indication for that.  */
++
+   if (spec->flags.disabled)
+-    return 0;
+-  if (!spec->flags.fips && fips_mode ())
+-    return 0;
++    nbits = 0;                  /* Error */
++  else if (!spec->flags.fips && fips_mode ())
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        nbits = 0;              /* Error */
++      else
++        {
++          fips_service_indicator_mark_non_compliant ();
++          nbits = spec->get_nbits (parms);
++        }
++    }
++  else
++    nbits = spec->get_nbits (parms);
+ 
+-  nbits = spec->get_nbits (parms);
+   sexp_release (parms);
+   return nbits;
+ }
+@@ -1004,10 +1044,18 @@ _gcry_pk_get_curve (gcry_sexp_t key, int iterator, unsigned int *r_nbits)
+     }
+ 
+   if (spec->flags.disabled)
+-    return NULL;
+-  if (!spec->flags.fips && fips_mode ())
+-    return NULL;
+-  if (spec->get_curve)
++    result = NULL;
++  else if (!spec->flags.fips && fips_mode ())
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
++        result = NULL;
++      else
++        {
++          fips_service_indicator_mark_non_compliant ();
++          result = spec->get_curve (keyparms, iterator, r_nbits);
++        }
++    }
++  else if (spec->get_curve)
+     result = spec->get_curve (keyparms, iterator, r_nbits);
+ 
+   sexp_release (keyparms);
+diff --git a/src/visibility.c b/src/visibility.c
+index d22c8b59..e02d6cfe 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -1022,6 +1022,7 @@ gcry_pk_encrypt (gcry_sexp_t *result, gcry_sexp_t data, gcry_sexp_t pkey)
+       *result = NULL;
+       return gpg_error (fips_not_operational ());
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_encrypt (result, data, pkey));
+ }
+ 
+@@ -1033,6 +1034,7 @@ gcry_pk_decrypt (gcry_sexp_t *result, gcry_sexp_t data, gcry_sexp_t skey)
+       *result = NULL;
+       return gpg_error (fips_not_operational ());
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_decrypt (result, data, skey));
+ }
+ 
+@@ -1044,6 +1046,7 @@ gcry_pk_sign (gcry_sexp_t *result, gcry_sexp_t data, gcry_sexp_t skey)
+       *result = NULL;
+       return gpg_error (fips_not_operational ());
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_sign (result, data, skey));
+ }
+ 
+@@ -1065,6 +1068,7 @@ gcry_pk_verify (gcry_sexp_t sigval, gcry_sexp_t data, gcry_sexp_t pkey)
+ {
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_verify (sigval, data, pkey));
+ }
+ 
+@@ -1089,6 +1093,7 @@ gcry_pk_testkey (gcry_sexp_t key)
+ {
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_testkey (key));
+ }
+ 
+@@ -1100,6 +1105,7 @@ gcry_pk_genkey (gcry_sexp_t *r_key, gcry_sexp_t s_parms)
+       *r_key = NULL;
+       return gpg_error (fips_not_operational ());
+     }
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_pk_genkey (r_key, s_parms));
+ }
+ 
+@@ -1138,7 +1144,7 @@ gcry_pk_get_nbits (gcry_sexp_t key)
+       (void)fips_not_operational ();
+       return 0;
+     }
+-
++  fips_service_indicator_init ();
+   return _gcry_pk_get_nbits (key);
+ }
+ 
+@@ -1161,6 +1167,7 @@ gcry_pk_get_curve (gcry_sexp_t key, int iterator, unsigned int *r_nbits)
+       (void)fips_not_operational ();
+       return NULL;
+     }
++  fips_service_indicator_init ();
+   return _gcry_pk_get_curve (key, iterator, r_nbits);
+ }
+ 
+-- 
+2.49.0
+

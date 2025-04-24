@@ -1,0 +1,139 @@
+From 2f6d2db1a4c28775a568c1f81ca127d2daebaf1c Mon Sep 17 00:00:00 2001
+From: Lucas Mulling via Gcrypt-devel <gcrypt-devel@gnupg.org>
+Date: Wed, 26 Feb 2025 12:29:54 -0300
+Subject: [PATCH 03/14] cipher: Differentiate use of label K in the SLI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/ecc.c (ecc_sign, ecc_verify): Use of label K is not allowed in
+fips mode, differentiate with the GCRY_FIPS_FLAG_REJECT_PK_ECC_K flag.
+* src/gcrypt.h.in: New GCRY_FIPS_FLAG_REJECT_PK_ECC_K.
+* tests/t-fips-service-ind.c (check_pk_hash_sign_verify): Mark non
+compliant use of label.
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/ecc.c               | 26 +++++++++++++++++++++++++-
+ src/gcrypt.h.in            |  2 ++
+ tests/t-fips-service-ind.c | 11 ++++++-----
+ 3 files changed, 33 insertions(+), 6 deletions(-)
+
+diff --git a/cipher/ecc.c b/cipher/ecc.c
+index d331a014..569e41f6 100644
+--- a/cipher/ecc.c
++++ b/cipher/ecc.c
+@@ -961,7 +961,16 @@ ecc_sign (gcry_sexp_t *r_sig, gcry_sexp_t s_data, gcry_sexp_t keyparms)
+     log_mpidump ("ecc_sign   data", data);
+ 
+   if (ctx.label)
+-    rc = _gcry_mpi_scan (&k, GCRYMPI_FMT_USG, ctx.label, ctx.labellen, NULL);
++    {
++      if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_ECC_K))
++        {
++          rc = GPG_ERR_INV_DATA;
++          goto leave;
++        }
++      else
++        fips_service_indicator_mark_non_compliant ();
++      rc = _gcry_mpi_scan (&k, GCRYMPI_FMT_USG, ctx.label, ctx.labellen, NULL);
++    }
+   if (rc)
+     goto leave;
+ 
+@@ -1118,6 +1127,21 @@ ecc_verify (gcry_sexp_t s_sig, gcry_sexp_t s_data, gcry_sexp_t s_keyparms)
+   rc = _gcry_pk_util_data_to_mpi (s_data, &data, &ctx);
+   if (rc)
+     goto leave;
++
++  if (ctx.label)
++    {
++      if (fips_mode ())
++        {
++          if(fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK_ECC_K))
++            {
++              rc = GPG_ERR_INV_DATA;
++              goto leave;
++            }
++          else
++            fips_service_indicator_mark_non_compliant ();
++        }
++    }
++
+   if (DBG_CIPHER)
+     log_mpidump ("ecc_verify data", data);
+ 
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index 1a6f7269..fe3db16a 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1989,6 +1989,8 @@ char *gcry_get_config (int mode, const char *what);
+ #define GCRY_FIPS_FLAG_REJECT_PK_MD         (1 << 6)
+ #define GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2   (1 << 7)
+ #define GCRY_FIPS_FLAG_REJECT_CIPHER_MODE   (1 << 8)
++/**/
++#define GCRY_FIPS_FLAG_REJECT_PK_ECC_K      (1 << 10)
+ 
+ #define GCRY_FIPS_FLAG_REJECT_MD \
+   (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
+diff --git a/tests/t-fips-service-ind.c b/tests/t-fips-service-ind.c
+index a082b258..0ece55b8 100644
+--- a/tests/t-fips-service-ind.c
++++ b/tests/t-fips-service-ind.c
+@@ -728,7 +728,7 @@ check_pk_hash_sign_verify (void)
+       "ce4014c68811f9a21a1fdb2c0e6113e06db7ca93b7404e78dc7ccd5ca89a4ca9#)))",
+       "(data(flags raw)(hash %s %b)(label %b))",
+       "94a1bbb14b906a61a280f245f9e93c7f3b4a6247824f5d33b9670787642a68de",
+-      0, 0
++      1, 0,
+     }
+   };
+   int tvidx;
+@@ -827,7 +827,7 @@ check_pk_hash_sign_verify (void)
+       if (ec == GPG_ERR_INV_OP)
+         {
+           /* libgcrypt is old, no support of the FIPS service indicator.  */
+-          fail ("gcry_pk_hash test %d unexpectedly failed to check the FIPS service indicator.\n",
++          fail ("gcry_pk_hash_sign test %d unexpectedly failed to check the FIPS service indicator.\n",
+                 tvidx);
+           goto next;
+         }
+@@ -835,7 +835,7 @@ check_pk_hash_sign_verify (void)
+       if (in_fips_mode && !tv[tvidx].expect_failure && ec)
+         {
+           /* Success with the FIPS service indicator == 0 expected, but != 0.  */
+-          fail ("gcry_pk_hash test %d unexpectedly set the indicator in FIPS mode.\n",
++          fail ("gcry_pk_hash_sign test %d unexpectedly set the indicator in FIPS mode.\n",
+                 tvidx);
+           goto next;
+         }
+@@ -859,7 +859,7 @@ check_pk_hash_sign_verify (void)
+       if (ec == GPG_ERR_INV_OP)
+         {
+           /* libgcrypt is old, no support of the FIPS service indicator.  */
+-          fail ("gcry_pk_hash test %d unexpectedly failed to check the FIPS service indicator.\n",
++          fail ("gcry_pk_hash_verify test %d unexpectedly failed to check the FIPS service indicator.\n",
+                 tvidx);
+           goto next;
+         }
+@@ -867,7 +867,7 @@ check_pk_hash_sign_verify (void)
+       if (in_fips_mode && !tv[tvidx].expect_failure && ec)
+         {
+           /* Success with the FIPS service indicator == 0 expected, but != 0.  */
+-          fail ("gcry_pk_hash test %d unexpectedly set the indicator in FIPS mode.\n",
++          fail ("gcry_pk_hash_verify test %d unexpectedly set the indicator in FIPS mode.\n",
+                 tvidx);
+           goto next;
+         }
+@@ -1834,6 +1834,7 @@ main (int argc, char **argv)
+                    | GCRY_FIPS_FLAG_REJECT_CIPHER_MODE
+                    | GCRY_FIPS_FLAG_REJECT_PK_MD
+                    | GCRY_FIPS_FLAG_REJECT_PK_GOST_SM2
++                   | GCRY_FIPS_FLAG_REJECT_PK_ECC_K
+                    | GCRY_FIPS_FLAG_REJECT_COMPAT110)));
+ 
+   check_md_o_w_r_c (1);
+-- 
+2.49.0
+

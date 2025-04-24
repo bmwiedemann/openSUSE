@@ -1,0 +1,74 @@
+From ce4755d5c5500cede6d7d380fdab2d15f5d77796 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Wed, 26 Feb 2025 10:23:28 +0900
+Subject: [PATCH 2/4] md: Use check_digest_algo_spec in _gcry_md_selftest.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/md.c (check_digest_algo_spec): New.
+(check_digest_algo): Use check_digest_algo_spec.
+(_gcry_md_selftest): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/md.c | 22 +++++++++++++---------
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+
+diff --git a/cipher/md.c b/cipher/md.c
+index caf33afc..a8027e9e 100644
+--- a/cipher/md.c
++++ b/cipher/md.c
+@@ -436,15 +436,10 @@ _gcry_md_algo_name (int algorithm)
+ 
+ 
+ static gcry_err_code_t
+-check_digest_algo (int algo)
++check_digest_algo_spec (int algo, const gcry_md_spec_t *spec)
+ {
+-  const gcry_md_spec_t *spec;
+   int reject = 0;
+ 
+-  spec = spec_from_algo (algo);
+-  if (!spec)
+-    return GPG_ERR_DIGEST_ALGO;
+-
+   if (spec->flags.disabled)
+     return GPG_ERR_DIGEST_ALGO;
+ 
+@@ -466,6 +461,17 @@ check_digest_algo (int algo)
+   return 0;
+ }
+ 
++static gcry_err_code_t
++check_digest_algo (int algo)
++{
++  const gcry_md_spec_t *spec = spec_from_algo (algo);
++
++  if (!spec)
++    return GPG_ERR_DIGEST_ALGO;
++  else
++    return check_digest_algo_spec (algo, spec);
++}
++
+ 
+ /****************
+  * Open a message digest handle for use with algorithm ALGO.
+@@ -1808,9 +1814,7 @@ _gcry_md_selftest (int algo, int extended, selftest_report_func_t report)
+   const gcry_md_spec_t *spec;
+ 
+   spec = spec_from_algo (algo);
+-  if (spec && !spec->flags.disabled
+-      && (spec->flags.fips || !fips_mode ())
+-      && spec->selftest)
++  if (spec && !check_digest_algo_spec (algo, spec) && spec->selftest)
+     ec = spec->selftest (algo, extended, report);
+   else
+     {
+-- 
+2.49.0
+

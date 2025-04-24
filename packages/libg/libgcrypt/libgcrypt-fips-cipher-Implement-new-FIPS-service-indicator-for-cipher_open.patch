@@ -1,0 +1,122 @@
+From 69a5d0ed18a3ddc6f297de783c7cef5ad2257df0 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Fri, 13 Dec 2024 14:40:53 +0900
+Subject: [PATCH 05/19] fips,cipher: Implement new FIPS service indicator for
+ cipher_open.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_CIPHER_FLAG_REJECT_NON_FIPS): New.
+* cipher/cipher.c (_gcry_cipher_open_internal): Don't reject
+but mark the service indicator in FIPS mode.
+(cipher_setkey): Likewise.
+* src/visibility.c (gcry_cipher_open): Initialize the service
+indicator.
+(gcry_cipher_setkey): Likewise.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/cipher.c  | 23 +++++++++++++++++++----
+ src/gcrypt.h.in  |  3 ++-
+ src/visibility.c |  4 ++--
+ 3 files changed, 23 insertions(+), 7 deletions(-)
+
+diff --git a/cipher/cipher.c b/cipher/cipher.c
+index 898bb58f..7ffacf05 100644
+--- a/cipher/cipher.c
++++ b/cipher/cipher.c
+@@ -509,7 +509,8 @@ gcry_err_code_t
+ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+ 			    int algo, int mode, unsigned int flags)
+ {
+-  int secure = (flags & GCRY_CIPHER_SECURE);
++  int secure = !!(flags & GCRY_CIPHER_SECURE);
++  int reject_non_fips = !!(flags & GCRY_CIPHER_FLAG_REJECT_NON_FIPS);
+   gcry_cipher_spec_t *spec;
+   gcry_cipher_hd_t h = NULL;
+   gcry_err_code_t err;
+@@ -524,7 +525,15 @@ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+   else if (spec->flags.disabled)
+     err = GPG_ERR_CIPHER_ALGO;
+   else if (!spec->flags.fips && fips_mode ())
+-    err = GPG_ERR_CIPHER_ALGO;
++    {
++      if (reject_non_fips)
++        err = GPG_ERR_CIPHER_ALGO;
++      else
++        {
++          fips_service_indicator_mark_non_compliant ();
++          err = 0;
++        }
++    }
+   else
+     err = 0;
+ 
+@@ -535,7 +544,8 @@ _gcry_cipher_open_internal (gcry_cipher_hd_t *handle,
+ 		     | GCRY_CIPHER_ENABLE_SYNC
+ 		     | GCRY_CIPHER_CBC_CTS
+ 		     | GCRY_CIPHER_CBC_MAC
+-                     | GCRY_CIPHER_EXTENDED))
++                     | GCRY_CIPHER_EXTENDED
++                     | GCRY_CIPHER_FLAG_REJECT_NON_FIPS))
+ 	  || ((flags & GCRY_CIPHER_CBC_CTS) && (flags & GCRY_CIPHER_CBC_MAC))))
+     err = GPG_ERR_CIPHER_ALGO;
+ 
+@@ -765,7 +775,12 @@ cipher_setkey (gcry_cipher_hd_t c, byte *key, size_t keylen)
+ 	     See "Implementation Guidance for FIPS 140-2, A.9 XTS-AES
+ 	     Key Generation Requirements" for details.  */
+ 	  if (buf_eq_const (key, key + keylen, keylen))
+-	    return GPG_ERR_WEAK_KEY;
++            {
++              if ((c->flags & GCRY_CIPHER_FLAG_REJECT_NON_FIPS))
++                return GPG_ERR_WEAK_KEY;
++              else
++                fips_service_indicator_mark_non_compliant ();
++            }
+ 	}
+     }
+   else if (c->mode == GCRY_CIPHER_MODE_SIV)
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index 2a378639..2ed9914b 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -992,7 +992,8 @@ enum gcry_cipher_flags
+     GCRY_CIPHER_ENABLE_SYNC = 2,  /* Enable CFB sync mode. */
+     GCRY_CIPHER_CBC_CTS     = 4,  /* Enable CBC cipher text stealing (CTS). */
+     GCRY_CIPHER_CBC_MAC     = 8,  /* Enable CBC message auth. code (MAC).  */
+-    GCRY_CIPHER_EXTENDED    = 16  /* Enable extended AES-WRAP.  */
++    GCRY_CIPHER_EXTENDED    = 16, /* Enable extended AES-WRAP.  */
++    GCRY_CIPHER_FLAG_REJECT_NON_FIPS = 32 /* Reject non-FIPS-compliant algo.  */
+   };
+ 
+ /* Methods used for AEAD IV generation. */
+diff --git a/src/visibility.c b/src/visibility.c
+index 7699f14f..d219f1a6 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -736,7 +736,7 @@ gcry_cipher_open (gcry_cipher_hd_t *handle,
+       *handle = NULL;
+       return gpg_error (fips_not_operational ());
+     }
+-
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_cipher_open (handle, algo, mode, flags));
+ }
+ 
+@@ -751,7 +751,7 @@ gcry_cipher_setkey (gcry_cipher_hd_t hd, const void *key, size_t keylen)
+ {
+   if (!fips_is_operational ())
+     return gpg_error (fips_not_operational ());
+-
++  fips_service_indicator_init ();
+   return gcry_error (_gcry_cipher_setkey (hd, key, keylen));
+ }
+ 
+-- 
+2.49.0
+

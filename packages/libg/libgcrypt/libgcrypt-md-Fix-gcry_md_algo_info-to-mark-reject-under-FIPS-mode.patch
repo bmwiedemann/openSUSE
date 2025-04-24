@@ -1,0 +1,82 @@
+From 2f17a98a80b155e750ab77d4703e33612e545d58 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Tue, 25 Feb 2025 16:27:25 +0900
+Subject: [PATCH 1/4] md: Fix gcry_md_algo_info to mark/reject under FIPS mode.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/md.c (check_digest_algo): Fix for marking non-compliance.
+* src/visibility.c (gcry_md_algo_info): Add check with
+fips_is_operational.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/md.c      | 26 ++++++++++++++++++++++----
+ src/visibility.c |  3 +++
+ 2 files changed, 25 insertions(+), 4 deletions(-)
+
+diff --git a/cipher/md.c b/cipher/md.c
+index f600e7bb..caf33afc 100644
+--- a/cipher/md.c
++++ b/cipher/md.c
+@@ -436,16 +436,34 @@ _gcry_md_algo_name (int algorithm)
+ 
+ 
+ static gcry_err_code_t
+-check_digest_algo (int algorithm)
++check_digest_algo (int algo)
+ {
+   const gcry_md_spec_t *spec;
++  int reject = 0;
+ 
+-  spec = spec_from_algo (algorithm);
+-  if (spec && !spec->flags.disabled && (spec->flags.fips || !fips_mode ()))
++  spec = spec_from_algo (algo);
++  if (!spec)
++    return GPG_ERR_DIGEST_ALGO;
++
++  if (spec->flags.disabled)
++    return GPG_ERR_DIGEST_ALGO;
++
++  if (!fips_mode ())
+     return 0;
+ 
+-  return GPG_ERR_DIGEST_ALGO;
++  if (spec->flags.fips)
++    return 0;
++
++  if (algo == GCRY_MD_MD5)
++    reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_MD5);
++  else
++    reject = fips_check_rejection (GCRY_FIPS_FLAG_REJECT_MD_OTHERS);
++
++  if (reject)
++    return GPG_ERR_DIGEST_ALGO;
+ 
++  fips_service_indicator_mark_non_compliant ();
++  return 0;
+ }
+ 
+ 
+diff --git a/src/visibility.c b/src/visibility.c
+index e02d6cfe..4134446a 100644
+--- a/src/visibility.c
++++ b/src/visibility.c
+@@ -1373,6 +1373,9 @@ gcry_md_info (gcry_md_hd_t h, int what, void *buffer, size_t *nbytes)
+ gcry_error_t
+ gcry_md_algo_info (int algo, int what, void *buffer, size_t *nbytes)
+ {
++  if (!fips_is_operational ())
++    return gpg_error (fips_not_operational ());
++  fips_service_indicator_init ();
+   return gpg_error (_gcry_md_algo_info (algo, what, buffer, nbytes));
+ }
+ 
+-- 
+2.49.0
+

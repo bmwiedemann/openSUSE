@@ -54,6 +54,54 @@ Patch106:       libgcrypt-FIPS-jitter-errorcodes.patch
 Patch107:       libgcrypt-FIPS-jitter-whole-entropy.patch
 #PATCH-FIX-SUSE Remove not used rol64() definition after removing the built-in jitter rng
 Patch108:       libgcrypt-rol64-redefinition.patch
+#PATCH-FIX-UPSTREAM jsc#PED-12227: SLI revamp and differentiate SHA1 in the service level indicator
+Patch200:       libgcrypt-fips-Introduce-an-internal-API-for-FIPS-service-indicator.patch
+Patch201:       libgcrypt-fips-Introduce-GCRYCTL_FIPS_SERVICE_INDICATOR-and-the-macro.patch
+Patch202:       libgcrypt-fips-kdf-Implement-new-FIPS-service-indicator-for-gcry_kdf_derive.patch
+Patch203:       libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_hash_.patch
+Patch204:       libgcrypt-fips-tests-Add-t-digest.patch
+Patch205:       libgcrypt-fips-Change-the-internal-API-for-new-FIPS-service-indicator.patch
+Patch206:       libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_open-API.patch
+Patch207:       libgcrypt-fips-tests-Add-tests-for-md_open-write-read-close-for-t-digest.patch
+Patch208:       libgcrypt-fips-mac-Implement-new-FIPS-service-indicator-for-gcry_mac_open.patch
+Patch209:       libgcrypt-fips-cipher-Implement-new-FIPS-service-indicator-for-cipher_open.patch
+Patch210:       libgcrypt-tests-fips-Add-gcry_mac_open-tests.patch
+Patch211:       libgcrypt-tests-fips-Rename-t-fips-service-ind.patch
+Patch212:       libgcrypt-tests-fips-Move-KDF-tests-to-t-fips-service-ind.patch
+Patch213:       libgcrypt-tests-fips-Add-gcry_cipher_open-tests.patch
+Patch214:       libgcrypt-fips-md-gcry_md_copy-should-care-about-FIPS-service-indicator.patch
+Patch215:       libgcrypt-fips-cipher-Implement-FIPS-service-indicator-for-gcry_pk_hash_-API.patch
+Patch216:       libgcrypt-fips-Introduce-GCRYCTL_FIPS_REJECT_NON_FIPS.patch
+Patch217:       libgcrypt-Fix-the-previous-change.patch
+Patch218:       libgcrypt-fips-Rejection-by-GCRYCTL_FIPS_REJECT_NON_FIPS-not-by-open-flags.patch
+Patch219:       libgcrypt-fips-cipher-Add-behavior-not-to-reject-but-mark-non-compliant.patch
+Patch220:       libgcrypt-fips-ecc-Add-rejecting-or-marking-for-gcry_pk_get_curve.patch
+Patch221:       libgcrypt-tests-Add-more-tests-to-tests-t-fips-service-ind.patch
+Patch222:       libgcrypt-fips-ecc-Check-DATA-in-gcry_pk_sign-verify-in-FIPS-mode.patch
+Patch223:       libgcrypt-fips-cipher-Fix-memory-leak-for-gcry_pk_hash_sign.patch
+Patch224:       libgcrypt-build-Improve-__thread-specifier-check.patch
+Patch225:       libgcrypt-cipher-Check-and-mark-non-compliant-cipher-modes-in-the-SLI.patch
+Patch226:       libgcrypt-cipher-Rename-_gcry_cipher_is_mode_fips_compliant.patch
+Patch227:       libgcrypt-cipher-Don-t-differentiate-GCRY_CIPHER_MODE_CMAC-in-FIPS-mode.patch
+Patch228:       libgcrypt-cipher-rsa-Mark-reject-SHA1-unknown-with-RSA-signature-generation.patch
+Patch229:       libgcrypt-md-Fix-gcry_md_algo_info-to-mark-reject-under-FIPS-mode.patch
+Patch230:       libgcrypt-md-Use-check_digest_algo_spec-in-_gcry_md_selftest.patch
+Patch231:       libgcrypt-tests-Update-t-fips-service-ind-using-GCRY_MD_SHA256-for-KDF-tests.patch
+Patch232:       libgcrypt-fips-cipher-Do-the-computation-when-marking-non-compliant.patch
+Patch233:       libgcrypt-tests-Allow-tests-with-USE_RSA.patch
+Patch234:       libgcrypt-cipher-Add-KAT-for-non-rfc6979-ECDSA-with-fixed-k.patch
+Patch235:       libgcrypt-cipher-Differentiate-use-of-label-K-in-the-SLI.patch
+Patch236:       libgcrypt-cipher-Differentiate-igninvflag-in-the-SLI.patch
+Patch237:       libgcrypt-cipher-Differentiate-no-blinding-flag-in-the-SLI.patch
+Patch238:       libgcrypt-fips-cipher-Add-GCRY_FIPS_FLAG_REJECT_PK_FLAGS.patch
+Patch239:       libgcrypt-cipher-ecc-Fix-for-supplied-K.patch
+Patch240:       libgcrypt-cipher-visibility-Differentiate-use-of-random-override-in-the-SLI.patch
+Patch241:       libgcrypt-cipher-fips-Fix-for-random-override.patch
+Patch243:       libgcrypt-md-Make-SHA-1-non-FIPS-internally-for-1.12-API.patch
+Patch244:       libgcrypt-fips-Fix-GCRY_FIPS_FLAG_REJECT_MD.patch
+Patch245:       libgcrypt-doc-Add-about-GCRYCTL_FIPS_SERVICE_INDICATOR.patch
+Patch246:       libgcrypt-doc-Fix-syntax-error.patch
+
 BuildRequires:  automake >= 1.14
 BuildRequires:  libgpg-error-devel >= 1.49
 BuildRequires:  libtool
@@ -138,7 +186,7 @@ export CFLAGS="%{optflags} $(getconf LFS_CFLAGS)"
 %check
 make -k check
 # run the regression tests also in FIPS mode
-LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check || true
+LIBGCRYPT_FORCE_FIPS_MODE=1 make -k check
 
 %install
 %make_install

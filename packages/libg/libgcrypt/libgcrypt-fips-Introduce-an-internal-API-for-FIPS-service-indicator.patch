@@ -1,0 +1,332 @@
+From e1cf3123282525693b646499eb7efe4f2be4010a Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 5 Dec 2024 11:06:37 +0900
+Subject: [PATCH 1/5] fips: Introduce an internal API for FIPS service
+ indicator.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* configure.ac (HAVE_GCC_STORAGE_CLASS__THREAD): New.
+* src/fips.c (struct gcry_thread_context): New.
+(_gcry_thread_context_set_fsi, _gcry_thread_context_get_fsi): New.
+* src/gcrypt-int.h (fips_service_indicator_init): New macro.
+(fips_service_indicator_mark_success): New macro.
+* tests/Makefile.am (tests_bin): Add t-thread-local.
+* tests/t-thread-local.c: New.
+
+--
+
+GnuPG-bug-id: 7340
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ configure.ac           |  14 +++
+ src/fips.c             |  21 ++++-
+ src/gcrypt-int.h       |  12 +++
+ tests/Makefile.am      |   2 +-
+ tests/t-thread-local.c | 196 +++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 243 insertions(+), 2 deletions(-)
+ create mode 100644 tests/t-thread-local.c
+
+diff --git a/configure.ac b/configure.ac
+index a7f922b1..d708f89a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1489,6 +1489,20 @@ if test "$gcry_cv_gcc_attribute_sysv_abi" = "yes" ; then
+    fi
+ fi
+ 
++#
++# Check whether compiler support '__thread' storage class specifier.
++#
++AC_CACHE_CHECK([whether compiler supports '__thread' storage class specifier],
++       [gcry_cv_gcc_storage_class__thread],
++       [gcry_cv_gcc_storage_class__thread=no
++        AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <stdlib.h>],
++          [static  __thread  int bar;]
++          )],
++          [gcry_cv_gcc_storage_class__thread=yes])])
++if test "$gcry_cv_gcc_storage_class__thread" = "yes" ; then
++   AC_DEFINE(HAVE_GCC_STORAGE_CLASS__THREAD,1,
++     [Defined if compiler supports "__thread" storage class specifier])
++fi
+ 
+ # Restore flags.
+ CFLAGS=$_gcc_cflags_save;
+diff --git a/src/fips.c b/src/fips.c
+index cf91baa8..58fb69df 100644
+--- a/src/fips.c
++++ b/src/fips.c
+@@ -67,10 +67,29 @@ GPGRT_LOCK_DEFINE (fsm_lock);
+    used while in fips mode. Change this only while holding fsm_lock. */
+ static enum module_states current_state;
+ 
++struct gcry_thread_context {
++  unsigned long fips_service_indicator;
++};
++
++#ifdef HAVE_GCC_STORAGE_CLASS__THREAD
++static __thread struct gcry_thread_context the_tc;
++#else
++#error libgcrypt requires thread-local storage to support FIPS mode
++#endif
++
++void
++_gcry_thread_context_set_fsi (unsigned long fsi)
++{
++  the_tc.fips_service_indicator = fsi;
++}
+ 
++unsigned long
++_gcry_thread_context_get_fsi (void)
++{
++  return the_tc.fips_service_indicator;
++}
+ 
+ 
+-
+ static void fips_new_state (enum module_states new_state);
+ 
+ 
+diff --git a/src/gcrypt-int.h b/src/gcrypt-int.h
+index 074ea071..7f894737 100644
+--- a/src/gcrypt-int.h
++++ b/src/gcrypt-int.h
+@@ -298,6 +298,18 @@ void _gcry_set_log_handler (gcry_handler_log_t f, void *opaque);
+ void _gcry_set_gettext_handler (const char *(*f)(const char*));
+ void _gcry_set_progress_handler (gcry_handler_progress_t cb, void *cb_data);
+ 
++void _gcry_thread_context_set_fsi (unsigned long fsi);
++unsigned long _gcry_thread_context_get_fsi (void);
++#define fips_service_indicator_init() do \
++  {                                      \
++    if (fips_mode ())                    \
++      _gcry_thread_context_set_fsi (1);  \
++  } while (0)
++#define fips_service_indicator_mark_success(is_compliant) do \
++  {                                                          \
++    if (is_compliant && fips_mode ())                        \
++      _gcry_thread_context_set_fsi (0);                      \
++  } while (0)
+ 
+ /* Return a pointer to a string containing a description of the error
+    code in the error value ERR.  */
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 423bc1cd..52f7dd61 100644
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -25,7 +25,7 @@ tests_bin = \
+         version t-secmem mpitests t-sexp t-convert \
+ 	t-mpi-bit t-mpi-point t-lock \
+ 	prime basic keygen pubkey hmac hashtest t-kdf keygrip \
+-	aeswrap random t-kem t-mlkem
++	aeswrap random t-kem t-mlkem t-thread-local
+ 
+ if USE_RSA
+ tests_bin += pkcs1v2 t-rsa-pss t-rsa-15 t-rsa-testparm
+diff --git a/tests/t-thread-local.c b/tests/t-thread-local.c
+new file mode 100644
+index 00000000..285f197f
+--- /dev/null
++++ b/tests/t-thread-local.c
+@@ -0,0 +1,196 @@
++/* t-mlkem.c - Check the thread local storage
++ * Copyright (C) 2024 g10 Code GmbH
++ *
++ * This file is part of Libgcrypt.
++ *
++ * Libgcrypt is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU Lesser General Public License as
++ * published by the Free Software Foundation; either version 2.1 of
++ * the License, or (at your option) any later version.
++ *
++ * Libgcrypt is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU Lesser General Public License for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this program; if not, see <https://www.gnu.org/licenses/>.
++ * SPDX-License-Identifier: LGPL-2.1+
++ */
++
++/* For now, this program simply test __thread storage class specifier.
++ * After we implement thread local context for libgcrypt, we will
++ * modity to test the feature.  */
++
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif
++#include <stdarg.h>
++#include <stdio.h>
++#include <ctype.h>
++#include <stdlib.h>
++#include <string.h>
++#include <errno.h>
++#if HAVE_PTHREAD
++# include <pthread.h>
++#endif
++
++#define PGM "t-thread-local"
++
++#include "t-common.h"
++#include "../src/gcrypt-testapi.h"
++
++/* Mingw requires us to include windows.h after winsock2.h which is
++   included by gcrypt.h.  */
++#ifdef _WIN32
++# include <windows.h>
++#endif
++
++#ifdef _WIN32
++# define THREAD_RET_TYPE  DWORD WINAPI
++# define THREAD_RET_VALUE 0
++#else
++# define THREAD_RET_TYPE  void *
++# define THREAD_RET_VALUE NULL
++#endif
++
++#define N_TESTS 1
++
++#define N_THREADS 19
++
++static __thread unsigned long t;
++
++struct thread_arg_s
++{
++  int no;
++};
++
++#if defined(HAVE_PTHREAD) || defined(_WIN32)
++/* Checking the local storage thread.  */
++static THREAD_RET_TYPE
++check_ls_thread (void *argarg)
++{
++  struct thread_arg_s *arg = argarg;
++
++  t = arg->no;
++  info ("a thread update the local storage: %lu", t);
++
++  gcry_free (arg);
++  return THREAD_RET_VALUE;
++}
++#endif
++
++static void
++check_thread_local (void)
++{
++  struct thread_arg_s *arg;
++
++#ifdef _WIN32
++  HANDLE threads[N_THREADS];
++  int i;
++  int rc;
++
++  t = N_THREADS;
++  for (i=0; i < N_THREADS; i++)
++    {
++      arg = gcry_xmalloc (sizeof *arg);
++      arg->no = i;
++      threads[i] = CreateThread (NULL, 0, check_ls_thread, arg, 0, NULL);
++      if (!threads[i])
++        die ("error creating a thread %d: rc=%d",
++             i, (int)GetLastError ());
++    }
++
++  for (i=0; i < N_THREADS; i++)
++    {
++      rc = WaitForSingleObject (threads[i], INFINITE);
++      if (rc == WAIT_OBJECT_0)
++        info ("a thread %d has terminated", i);
++      else
++        fail ("waiting for a thread %d failed: %d",
++              i, (int)GetLastError ());
++      CloseHandle (threads[i]);
++    }
++
++#elif HAVE_PTHREAD
++  pthread_t threads[N_THREADS];
++  int rc, i;
++
++  t = N_THREADS;
++  for (i=0; i < N_THREADS; i++)
++    {
++      arg = gcry_xmalloc (sizeof *arg);
++      arg->no = i;
++      pthread_create (&threads[i], NULL, check_ls_thread, arg);
++    }
++
++  for (i=0; i < N_THREADS; i++)
++    {
++      rc = pthread_join (threads[i], NULL);
++      if (rc)
++        fail ("pthread_join failed for a thread %d: %s",
++              i, strerror (errno));
++      else
++        info ("a thread %d has terminated", i);
++    }
++#else
++  (void)arg;
++#endif /*!_WIN32*/
++  if (t != N_THREADS)
++    fail ("failed t=%lu\n", t);
++  else
++    info ("success");
++}
++
++int
++main (int argc, char **argv)
++{
++  int last_argc = -1;
++
++  if (argc)
++    { argc--; argv++; }
++
++  while (argc && last_argc != argc)
++    {
++      last_argc = argc;
++      if (!strcmp (*argv, "--"))
++        {
++          argc--; argv++;
++          break;
++        }
++      else if (!strcmp (*argv, "--help"))
++        {
++          fputs ("usage: " PGM " [options]\n"
++                 "Options:\n"
++                 "  --verbose       print timings etc.\n"
++                 "  --debug         flyswatter\n",
++                 stdout);
++          exit (0);
++        }
++      else if (!strcmp (*argv, "--verbose"))
++        {
++          verbose++;
++          argc--; argv++;
++        }
++      else if (!strcmp (*argv, "--debug"))
++        {
++          verbose += 2;
++          debug++;
++          argc--; argv++;
++        }
++      else if (!strncmp (*argv, "--", 2))
++        die ("unknown option '%s'", *argv);
++    }
++
++  xgcry_control ((GCRYCTL_DISABLE_SECMEM, 0));
++  if (!gcry_check_version (GCRYPT_VERSION))
++    die ("version mismatch\n");
++  if (debug)
++    xgcry_control ((GCRYCTL_SET_DEBUG_FLAGS, 1u , 0));
++  xgcry_control ((GCRYCTL_ENABLE_QUICK_RANDOM, 0));
++  xgcry_control ((GCRYCTL_INITIALIZATION_FINISHED, 0));
++
++  check_thread_local ();
++
++  return !!error_count;
++}
+-- 
+2.49.0
+

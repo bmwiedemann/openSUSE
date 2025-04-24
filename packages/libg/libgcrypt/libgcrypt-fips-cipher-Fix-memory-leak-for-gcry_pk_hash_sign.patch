@@ -1,0 +1,76 @@
+From 5e925e6c348450bf80b4560abac9a035903bff59 Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Mon, 6 Jan 2025 12:01:56 +0900
+Subject: [PATCH 19/19] fips,cipher: Fix memory leak for gcry_pk_hash_sign.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* cipher/pubkey.c (prepare_datasexp_to_be_signed): Release
+copied HD when error.
+
+--
+
+GnuPG-bug-id: 7338
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ cipher/pubkey.c | 21 +++++++++++++++++----
+ 1 file changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/cipher/pubkey.c b/cipher/pubkey.c
+index aacf9f5a..c28ec124 100644
+--- a/cipher/pubkey.c
++++ b/cipher/pubkey.c
+@@ -512,7 +512,10 @@ prepare_datasexp_to_be_signed (const char *tmpl, gcry_md_hd_t hd,
+   /* Check if it has fixed hash name or %s */
+   s = strstr (tmpl, "(hash ");
+   if (s == NULL)
+-    return GPG_ERR_DIGEST_ALGO;
++    {
++      _gcry_md_close (hd);
++      return GPG_ERR_DIGEST_ALGO;
++    }
+ 
+   s += 6;
+   if (!strncmp (s, "%s", 2))
+@@ -522,7 +525,10 @@ prepare_datasexp_to_be_signed (const char *tmpl, gcry_md_hd_t hd,
+       if (fips_mode () && algo == GCRY_MD_SHA1)
+         {
+           if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-            return GPG_ERR_DIGEST_ALGO;
++            {
++              _gcry_md_close (hd);
++              return GPG_ERR_DIGEST_ALGO;
++            }
+           else
+             fips_service_indicator_mark_non_compliant ();
+         }
+@@ -541,7 +547,11 @@ prepare_datasexp_to_be_signed (const char *tmpl, gcry_md_hd_t hd,
+ 
+       digest_name_supplied = xtrymalloc (p - s + 1);
+       if (!digest_name_supplied)
+-	return gpg_error_from_syserror ();
++        {
++          rc = gpg_err_code_from_syserror ();
++          _gcry_md_close (hd);
++          return rc;
++        }
+       memcpy (digest_name_supplied, s, p - s);
+       digest_name_supplied[p - s] = 0;
+ 
+@@ -555,7 +565,10 @@ prepare_datasexp_to_be_signed (const char *tmpl, gcry_md_hd_t hd,
+       else if (fips_mode () && algo == GCRY_MD_SHA1)
+         {
+           if (fips_check_rejection (GCRY_FIPS_FLAG_REJECT_PK))
+-            return GPG_ERR_DIGEST_ALGO;
++            {
++              _gcry_md_close (hd);
++              return GPG_ERR_DIGEST_ALGO;
++            }
+           else
+             fips_service_indicator_mark_non_compliant ();
+         }
+-- 
+2.49.0
+

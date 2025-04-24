@@ -1,0 +1,42 @@
+From b9eb8f4cb81801d68580627ad2188607a8c5f2ec Mon Sep 17 00:00:00 2001
+From: NIIBE Yutaka <gniibe@fsij.org>
+Date: Thu, 13 Mar 2025 15:01:21 +0900
+Subject: [PATCH 12/14] fips: Fix GCRY_FIPS_FLAG_REJECT_MD.
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* src/gcrypt.h.in (GCRY_FIPS_FLAG_REJECT_MD): Include SHA1.
+
+--
+
+Fixes-commit: 4ee91a94bcdad32aed4364d09e3daf8841fa579f
+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>
+Signed-off-by: Lucas Mülling <lucas.mulling@suse.com>
+---
+ src/gcrypt.h.in | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/gcrypt.h.in b/src/gcrypt.h.in
+index b2b8853f..a9c36aa6 100644
+--- a/src/gcrypt.h.in
++++ b/src/gcrypt.h.in
+@@ -1994,10 +1994,12 @@ char *gcry_get_config (int mode, const char *what);
+ #define GCRY_FIPS_FLAG_REJECT_PK_ECC_K      (1 << 10)
+ #define GCRY_FIPS_FLAG_REJECT_PK_FLAGS      (1 << 11)
+ 
+-#define GCRY_FIPS_FLAG_REJECT_MD \
+-  (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
++#define GCRY_FIPS_FLAG_REJECT_MD                                \
++  (GCRY_FIPS_FLAG_REJECT_MD_MD5 | GCRY_FIPS_FLAG_REJECT_MD_SHA1 \
++   | GCRY_FIPS_FLAG_REJECT_MD_OTHERS)
+ 
+-/* Note: Don't reject MD5, PK MD, PK GOST, PK SM2, PK ECC K, and PK FLAGS */
++/* Note: Don't reject MD5, PK MD, PK GOST, PK SM2,
++                      SHA1, PK ECC K, and PK FLAGS */
+ #define GCRY_FIPS_FLAG_REJECT_COMPAT110 \
+   (GCRY_FIPS_FLAG_REJECT_MD_OTHERS      \
+    | GCRY_FIPS_FLAG_REJECT_MAC          \
+-- 
+2.49.0
+
