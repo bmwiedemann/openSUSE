@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Apr 23 16:03:27 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.1:
+  - [XrdPss] Enable crc32c as a valid checksum for XrdPss
+    (gh#xrootd/xrootd#2457).
+  * Major bug fixes.
+    - [PMark] Fix null pointer dereference when initializing
+      packet marking handle.
+    - [XrdSsi] Fix null pointer dereference in
+      XrdSsiFileReq::Finalize() (gh#xrootd/xrootd#2469).
+  * Minor bug fixes.
+    - [CMake] Fix install rule for XrdPfc headers
+      (gh#xrootd/xrootd#2478).
+    - [RPM] Workaround for %pre being evaluated before sources are
+      unpacked (gh#xrootd/xrootd#2460).
+    - [XrdHttp] Do not use base64 encoding with crc32c checksums
+      (gh#xrootd/xrootd#2456).
+    - [XrdPfc] Add XrdPfcPurgeQuota plugin to install targets.
+    - [XrdThrottle] Fix Features() function implementation
+      (gh#xrootd/xrootd#2483).
+    - [XrdTpc] Fix third-party copy transfers of small files with
+      curl 8.x (gh#xrootd/xrootd#2470, gh#xrootd/xrootd#2475).
+  * Miscellaneous.
+    - [Misc] Fix GCC 15 compiler warnings.
+    - [Tests] Add new tests for third-party copy transfers with
+      tokens (gh#xrootd/xrootd#2441).
+    - [Tests] Add simple integration test for XCache
+      (gh#xrootd/xrootd#2477).
+    - [XrdCl] Implement description for kXR_fattr requests.
+    - [XrdCl] Update description of kXR_open requests with
+      remaining flags.
+    - [XrdOuc] Use correct format for pthread_t on GNU/Hurd
+      (gh#xrootd/xrootd#2465).
+    - [XrdPss] Include environment CGI info when proxying
+      checksum.
+    - [XrdThrottle] Ensure all virtuals are overrides
+      (gh#xrootd/xrootd#2483).
+    - [XrdTls] Fix deprecation warnings with OpenSSL 3.4 and
+      later.
+
+-------------------------------------------------------------------
 Tue Feb 18 06:20:25 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: tinyxml-devel as it is an impediment to

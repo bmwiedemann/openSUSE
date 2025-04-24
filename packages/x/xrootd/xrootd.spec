@@ -49,7 +49,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.7.3
+Version:        5.8.1
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -563,7 +563,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %attr(-,xrootd,xrootd) %config(noreplace) %{_sysconfdir}/%{pname}/xrootd-http.cfg
 %attr(-,xrootd,xrootd) %dir %{_var}/log/%{pname}
 %attr(-,xrootd,xrootd) %dir %{_var}/spool/%{pname}
-%ghost %dir /run/%{pname}
+%ghost %attr(-,xrootd,xrootd) %dir /run/%{pname}
 
 %files server-libs
 %license COPYING.LGPL LICENSE
@@ -579,7 +579,9 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_libdir}/libXrdOfsPrepGPI-%{plugver}.so
 %{_libdir}/libXrdOssCsi-%{plugver}.so
 %{_libdir}/libXrdOssSIgpfsT-%{plugver}.so
+%{_libdir}/libXrdOssStats-%{plugver}.so
 %{_libdir}/libXrdPfc-%{plugver}.so
+%{_libdir}/libXrdPfcPurgeQuota-%{plugver}.so
 %{_libdir}/libXrdPss-%{plugver}.so
 %{_libdir}/libXrdSsi-%{plugver}.so
 %{_libdir}/libXrdSsiLog-%{plugver}.so
