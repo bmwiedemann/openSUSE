@@ -18,7 +18,7 @@
 
 %define appid it.mijorus.gearlever
 Name:           gearlever
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Manage AppImages
 License:        GPL-3.0-or-later
@@ -37,6 +37,7 @@ Requires:       dwarfs
 Requires:       flatpak-spawn
 Requires:       python3-dbus-python
 Requires:       python3-pyxdg
+Requires:       squashfs
 
 %description
 An utility to manage AppImages with ease! Gear lever will organize and manage

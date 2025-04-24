@@ -119,4 +119,14 @@
 </comment>
     <requestid>1270124</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ddb852840fd507bcc5530ddb55933fec</srcmd5>
+    <version>3.2.2</version>
+    <time>1745508341</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.2:
+  * Improved support for apps using squashfs
+</comment>
+    <requestid>1272254</requestid>
+  </revision>
 </revisionlist>
