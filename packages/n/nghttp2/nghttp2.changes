@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr  5 13:58:34 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- version update to 1.65.0
+  * Change clang-format options by @tatsuhiro-t in #2240
+  * build(deps): bump github.com/quic-go/quic-go from 0.46.0 to 0.47.0 by @dependabot in #2243
+  * build(deps): bump golang.org/x/net from 0.28.0 to 0.29.0 by @dependabot in #2244
+  * nghttp2_map: Port ngtcp2 changes by @tatsuhiro-t in #2245
+  * h2load: Fix UDP datagram send/recv metric by @tatsuhiro-t in #2248
+  * build(deps): bump golang.org/x/net from 0.29.0 to 0.30.0 by @dependabot in #2252
+  * fix race condition on h1 connection close by @TuxInvader in #2249
+  * Gha ubuntu 24.04 by @tatsuhiro-t in #2254
+  * GHA: Run tests for i686-w64-mingw32 host by @tatsuhiro-t in #2255
+  * cmake: Fix c-ares v1.34.0 version detection failure by @tatsuhiro-t in #2256
+  * fix: -Wextra-semi errors in nghttp2_helper.h by @codebytere in #2258
+  * clang-format macros that do not need semicolon at the end by @tatsuhiro-t in #2259
+  * Remove extra semicolons by @tatsuhiro-t in #2260
+  * Bump ngtcp2 and its dependencies by @tatsuhiro-t in #2261
+  * Do not allow '@' in :authority or host field values by @tatsuhiro-t in #2262
+  * h2load: GRO buffer size should be 64KiB by @tatsuhiro-t in #2263
+  * Bump libbpf to v1.4.6 by @tatsuhiro-t in #2264
+  * Update nghttp2_check_authority doc by @tatsuhiro-t in #2265
+
+-------------------------------------------------------------------
 Tue Nov 12 10:57:02 UTC 2024 - pgajdos@suse.com
 
 - version update to 1.64.0
