@@ -16,10 +16,10 @@
 #
 
 
-%define pkg_version 20210910-3.1
+%define pkg_version 20250104-3.1
 %define sover 0
 Name:           libedit
-Version:        20210910.3.1
+Version:        20250104.3.1
 Release:        0
 Summary:        Command Line Editing and History Library
 License:        BSD-3-Clause
@@ -28,11 +28,6 @@ URL:            https://www.thrysoee.dk/editline/
 Source0:        https://www.thrysoee.dk/editline/libedit-%{pkg_version}.tar.gz
 Source1:        README.SUSE
 Source2:        baselibs.conf
-Patch0:         libedit-20180525-manpage-conflicts.patch
-Patch1:         libedit-hidden-symbols.patch
-# For patch0
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(ncurses)
 
@@ -71,7 +66,6 @@ This package holds the development files for libedit.
 cp %{SOURCE1} .
 
 %build
-autoreconf -fiv
 %configure \
   --disable-static \
   --disable-silent-rules

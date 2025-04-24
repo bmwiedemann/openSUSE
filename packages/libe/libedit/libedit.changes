@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 13 13:26:37 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to 20250104:
+  * all: sync with upstream source
+  * doc/Makefile.am: fix regression.  Name all manpage links as
+    el_* (e.g. el_history.3) to avoid conflicts.
+  * src/chartype.c: Add missing stdint.h
+  * src/sys.h, src/reallocarr.c: Remove unused sys/cdefs.h
+    include, to compile against musl libc
+  * src/sys.h: Add __sun guard around sys/types.h in sys.h
+- drop libedit-20180525-manpage-conflicts.patch and
+  libedit-hidden-symbols.patch: upstreamed
+- no need for autoreconf and it's BuildRequires:
+
+-------------------------------------------------------------------
 Wed Apr  5 15:01:43 UTC 2023 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - libedit-hidden-symbols.patch: hide strlcpy and strlcat 
