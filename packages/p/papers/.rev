@@ -53,4 +53,19 @@
   + Updated translations. (forwarded request 1270806 from iznogood)</comment>
     <requestid>1271337</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1be199f95cccc76153751c3d73e259b4</srcmd5>
+    <version>48.2</version>
+    <time>1745508390</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.2:
+  + Bugs fixed:
+    - Temporary downloaded files are not cleared on close
+    - Exiting fullscreen dragging the headerbar doesn't cause the
+      window controls to reappear
+    - Clamp the signing selection to the selected page area
+    - Cannot open a document on a specific page from terminal
+  + Updated translatios. (forwarded request 1272312 from iznogood)</comment>
+    <requestid>1272346</requestid>
+  </revision>
 </revisionlist>
