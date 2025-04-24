@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 16 17:35:22 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20250416.
+  git-annex (10.20250416) upstream; urgency=medium
+
+    * Added the mask special remote.
+    * updatecluster, updateproxy: When a remote that has no annex-uuid is
+      configured as annex-cluster-node, warn and avoid writing bad data to
+      the git-annex branch.
+    * Fix build without the assistant.
+    * fsck: Avoid complaining about required content of dead repositories.
+    * drop: Avoid redundant object directory thawing.
+    * httpalso: Windows url fix.
+    * Added remote.name.annex-web-options config, which is a per-remote
+      version of the annex.web-options config.
+    * migrate: Fix --remove-size to work when a file is not present.
+      Fixes reversion introduced in version 10.20231129.
+    * Support git remotes that use a IPV6 link-local address with a zone ID.
+    * Support git remotes that use an url with a user name that is URL
+      encoded, or in the case of an "scp-style" url, a user name that must be
+      encoded to be legal in an URL.
+    * Fix git-lfs special remote ssh endpoint discovery when the repository
+      path is URL encoded.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 16 Apr 2025 13:34:40 -0400
+
+-------------------------------------------------------------------
 Thu Mar 20 17:11:33 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20250320.
