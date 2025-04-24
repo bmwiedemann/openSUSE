@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Apr 22 14:30:48 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use static baselibs.conf.
+
+-------------------------------------------------------------------
+Sat Apr 12 12:07:26 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Split build into multiple flavours for GLX and EGL builds.
+- Drop baselibs.conf file and generate it in specfile based on
+  build flavor.
+- Add glew-rename-EGL-library.patch: Append suffix to shared
+  library built with EGL support to allow parallel installation
+  with the GLX compatible flavor
+- Pass linker flag -Wl,--version-script to handle scenario where
+  both EGL and GLX symbols may be required.
+- Use bcond_with(out) to enable/disable egl instead of 'bcond egl
+  1 (0)' for compatibility with Leap.
+- Revise BuildRequires and Requires appropriate to each flavor.
+- devel pkg: Promote pkgconfig(glu) from Recommends to Requires;
+  it is anyway auto-required because it is listed as a dependency
+  in glew's pkgconfig file.
+- Drop unneeded glew.rpmlintrc file.
+
+-------------------------------------------------------------------
 Tue Mar 25 22:21:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on pkgconfig(xext) to the devel package
