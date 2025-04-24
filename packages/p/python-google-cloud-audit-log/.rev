@@ -7,4 +7,30 @@
     <comment>initial submission</comment>
     <requestid>1134396</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7be09cab12b98a895f63c7281591666e</srcmd5>
+    <version>0.3.2</version>
+    <time>1745512120</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.2
+  * Allow protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+  * Resolve issue where pre-release versions of dependencies are installed
+- from version 0.3.1
+  * Updates audit_log proto with PermissionType (#13616)
+- from version 0.3.0
+  * Add `google/cloud/audit/bigquery_audit_metadata_pb2.py`
+  * Add PolicyViolation. this will only be present when access is denied
+    due to Organization Policy
+  * Add support for Python 3.12 (#113)
+  * Add the principal field to the ServiceAccountDelegationInfo
+  * Introduce compatibility with native namespace packages (#117)
+  * Update AuditLog proto to include all new changes in Audit Logging
+  * **deps:** Require protobuf &gt;= 3.20.2, protobuf &gt;= 6
+  * Regenerate pb2 files for compatibility with protobuf 5.x
+- Adjust upstream source name in spec file
+- Switch upstream tarball to PyPi as tests are now included there
+- Update BuildRequires and Requires from setup.py (forwarded request 1272425 from glaubitz)</comment>
+    <requestid>1272426</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-audit-log
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-audit-log
-Version:        0.2.5
+Version:        0.3.2
 Release:        0
 Summary:        Google Cloud Audit Protos
 License:        Apache-2.0
-URL:            https://github.com/googleapis/python-audit-log
-Source:         https://github.com/googleapis/python-audit-log/archive/refs/tags/v%{version}.tar.gz#/google-cloud-audit-log-%{version}-gh.tar.gz
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-audit-log
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_audit_log/google_cloud_audit_log-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module googleapis-common-protos >= 1.56.2}
-BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module protobuf >= 3.20.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-googleapis-common-protos >= 1.56.2
-Requires:       python-protobuf >= 3.19.5
+Requires:       python-protobuf >= 3.20.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,7 +42,7 @@ BuildArch:      noarch
 Google Cloud Audit Protos
 
 %prep
-%autosetup -p1 -n python-audit-log-%{version}
+%autosetup -p1 -n google_cloud_audit_log-%{version}
 
 %build
 %pyproject_wheel
@@ -55,10 +55,10 @@ Google Cloud Audit Protos
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.rst
 %license LICENSE
+%exclude %{python_sitelib}/docs
 %{python_sitelib}/google/cloud/audit
-%{python_sitelib}/google_cloud_audit_log-%{version}-*.pth
 %{python_sitelib}/google_cloud_audit_log-%{version}.dist-info
 
 %changelog

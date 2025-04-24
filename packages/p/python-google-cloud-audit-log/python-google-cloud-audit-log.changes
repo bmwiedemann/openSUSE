@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 24 12:38:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.3.2
+  * Allow protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+  * Resolve issue where pre-release versions of dependencies are installed
+- from version 0.3.1
+  * Updates audit_log proto with PermissionType (#13616)
+- from version 0.3.0
+  * Add `google/cloud/audit/bigquery_audit_metadata_pb2.py`
+  * Add PolicyViolation. this will only be present when access is denied
+    due to Organization Policy
+  * Add support for Python 3.12 (#113)
+  * Add the principal field to the ServiceAccountDelegationInfo
+  * Introduce compatibility with native namespace packages (#117)
+  * Update AuditLog proto to include all new changes in Audit Logging
+  * **deps:** Require protobuf >= 3.20.2, protobuf >= 6
+  * Regenerate pb2 files for compatibility with protobuf 5.x
+- Adjust upstream source name in spec file
+- Switch upstream tarball to PyPi as tests are now included there
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sun Dec 17 20:11:18 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add tests
