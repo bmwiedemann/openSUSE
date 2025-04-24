@@ -1,0 +1,28 @@
+---
+ systemd/leafnode@.service.in |   13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+Index: leafnode-2.0.0~git.1745441740.a8cac4f/systemd/leafnode@.service.in
+===================================================================
+--- leafnode-2.0.0~git.1745441740.a8cac4f.orig/systemd/leafnode@.service.in	2025-04-23 22:55:40.000000000 +0200
++++ leafnode-2.0.0~git.1745441740.a8cac4f/systemd/leafnode@.service.in	2025-04-23 23:05:42.550810393 +0200
+@@ -3,6 +3,19 @@
+ Documentation=man:leafnode(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions
+ ExecStart=@sbindir@/leafnode
+ StandardInput=socket
+ User=news

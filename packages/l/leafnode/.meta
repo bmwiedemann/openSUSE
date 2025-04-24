@@ -1,0 +1,10 @@
+<package name="leafnode" project="openSUSE:Factory">
+  <title>A Leaf Site NNTP Server</title>
+  <description>Leafnode is a small NNTP server for leaf sites without permanent
+connections to the Internet. It supports a subset of NNTP and is able
+to automatically fetch the newsgroups the user reads regularly from the
+ISP's news server.
+
+</description>
+  <url>http://sourceforge.net/projects/leafnode/</url>
+</package>
