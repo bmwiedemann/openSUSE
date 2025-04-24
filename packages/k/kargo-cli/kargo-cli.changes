@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Apr 24 13:53:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.3:
+  * chore: manual backport of #3835 (#3885)
+  * chore(backport release-1.4): fix(chart): PromotionTask
+    validation registration (#3883)
+  * chore(backport release-1.4): docs: document OCI annotations
+    (#3878)
+
+-------------------------------------------------------------------
 Wed Apr 16 18:05:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.2:
