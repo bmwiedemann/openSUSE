@@ -1,0 +1,76 @@
+From 0d159d85cd29ea1b4c3abfde2de2c92ad91ddd53 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 14 Apr 2025 15:24:55 +0200
+Subject: [PATCH 4/5] [gdb/testsuite] Fix regexp in
+ gdb.multi/pending-bp-del-inferior.exp
+
+With test-case gdb.multi/pending-bp-del-inferior.exp, occasionally I run into:
+...
+(gdb) info breakpoints^M
+Num     Type           Disp Enb Address    What^M
+3       dprintf        keep y   <MULTIPLE> ^M
+        printf "in foo"^M
+3.1                         y   0x004004dc in foo at $c:21 inf 2^M
+3.2                         y   0x004004dc in foo at $c:21 inf 1^M
+(gdb) FAIL: $exp: bp_pending=false: info breakpoints before inferior removal
+...
+
+The FAIL happens because the test-case expects:
+- breakpoint location 3.1 to be in inferior 1, and
+- breakpoint location 3.2 to be in inferior 2
+but it's the other way around.
+
+I managed to reproduce this with a trigger patch in
+compare_symbols from gdb/linespec.c:
+...
+   uia = (uintptr_t) a.symbol->symtab ()->compunit ()->objfile ()->pspace ();
+   uib = (uintptr_t) b.symbol->symtab ()->compunit ()->objfile ()->pspace ();
+
+-  if (uia < uib)
+-    return true;
+   if (uia > uib)
++    return true;
++  if (uia < uib)
+     return false;
+...
+
+Fix this by allowing the alternative order.
+
+Tested on x86_64-linux.
+
+PR testsuite/32202
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32202
+---
+ .../gdb.multi/pending-bp-del-inferior.exp        | 16 ++++++++++------
+ 1 file changed, 10 insertions(+), 6 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.multi/pending-bp-del-inferior.exp b/gdb/testsuite/gdb.multi/pending-bp-del-inferior.exp
+index 12c0a84bb02..2226acb5d78 100644
+--- a/gdb/testsuite/gdb.multi/pending-bp-del-inferior.exp
++++ b/gdb/testsuite/gdb.multi/pending-bp-del-inferior.exp
+@@ -183,12 +183,16 @@ proc do_dprintf_test { bp_pending } {
+ 		 "\\s+printf \"in $bp_func\""]
+ 	set bp_pattern_after $bp_pattern_before
+     } else {
+-	set bp_pattern_before \
+-	    [multi_line \
+-		 "$bp_number\\s+dprintf\\s+keep\\s+y\\s+<MULTIPLE>\\s*" \
+-		 "\\s+printf \"in $bp_func\"" \
+-		 "$bp_number\\.1\\s+y\\s+$::hex in $bp_func at \[^\r\n\]+ inf 1" \
+-		 "$bp_number\\.2\\s+y\\s+$::hex in $bp_func at \[^\r\n\]+ inf 2"]
++	set res {}
++	foreach inf_a { 1 2 } inf_b { 2 1 } {
++	    lappend res \
++		[multi_line \
++		     "$bp_number\\s+dprintf\\s+keep\\s+y\\s+<MULTIPLE>\\s*" \
++		     "\\s+printf \"in $bp_func\"" \
++		     "$bp_number\\.1\\s+y\\s+$::hex in $bp_func at \[^\r\n\]+ inf $inf_a" \
++		     "$bp_number\\.2\\s+y\\s+$::hex in $bp_func at \[^\r\n\]+ inf $inf_b"]
++	}
++	set bp_pattern_before "([join $res "|"])"
+ 
+ 	set bp_pattern_after \
+ 	    [multi_line \
+-- 
+2.43.0
+

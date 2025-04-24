@@ -1,0 +1,49 @@
+From c11539f634a9479e3979c93bc19e0a79457c2c7d Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Thu, 16 Jan 2025 15:00:11 +0100
+Subject: [PATCH] [gdb/testsuite] Fix gdb.dwarf2/implptr.exp regression
+
+When running test-case gdb.dwarf2/implptr.exp on target board unix/-m32, we
+get:
+...
+(gdb) PASS: gdb.dwarf2/implptr.exp: print ***l in implptr:bar
+break implptr.c:34^M
+No compiled code for line 34 in file "implptr.c".^M
+Make breakpoint pending on future shared library load? (y or [n]) n^M
+(gdb) FAIL: $exp: set baz breakpoint for implptr (got interactive prompt)
+...
+
+This is a regression since commit dcaa85e58c4 ("gdb: reject inserting
+breakpoints between functions").
+
+The .debug_line info does not contain an entry with a line number lower than
+36, so gdb cannot map it to an address.
+
+Fix this by setting a breakpoint at the function containing line 34 instead.
+
+Tested on x86_64-linux.
+
+PR testsuite/32477
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=32477
+---
+ gdb/testsuite/gdb.dwarf2/implptr.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/implptr.exp b/gdb/testsuite/gdb.dwarf2/implptr.exp
+index a3f9c6162ce..fa1b68ea8cb 100644
+--- a/gdb/testsuite/gdb.dwarf2/implptr.exp
++++ b/gdb/testsuite/gdb.dwarf2/implptr.exp
+@@ -63,7 +63,7 @@ proc implptr_test_bar {} {
+ proc implptr_test_baz {} {
+     global csrcfile
+     set line [gdb_get_line_number "baz breakpoint" $csrcfile]
+-    gdb_test "break implptr.c:$line" "Breakpoint 3.*" \
++    gdb_test "break add" "Breakpoint 3.*" \
+ 	"set baz breakpoint for implptr"
+     gdb_continue_to_breakpoint "continue to baz breakpoint for implptr"
+ 
+
+base-commit: c9c1feacc153c8715c93c9ca3b6433bbc5b6f9ab
+-- 
+2.43.0
+

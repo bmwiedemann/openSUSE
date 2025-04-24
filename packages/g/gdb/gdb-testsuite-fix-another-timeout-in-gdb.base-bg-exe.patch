@@ -1,0 +1,57 @@
+From 89af915786888dbdfdc2026be1d71eb587c2968e Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Wed, 9 Apr 2025 15:46:13 +0200
+Subject: [PATCH] [gdb/testsuite] Fix another timeout in
+ gdb.base/bg-execution-repeat.exp
+
+With a gdb 16.2 based package, I ran into:
+...
+(gdb) PASS: gdb.base/bg-execution-repeat.exp: c 1&: input still accepted
+interrupt
+(gdb) PASS: gdb.base/bg-execution-repeat.exp: c 1&: interrupt
+set var do_wait=0
+(gdb) PASS: gdb.base/bg-execution-repeat.exp: c 1&: set var do_wait=0
+continue&
+Cannot execute this command while the selected thread is running.
+(gdb)
+Program received signal SIGINT, Interrupt.
+PASS: gdb.base/bg-execution-repeat.exp: c 1&: continue&
+0x00007ffff7cf1503 in clock_nanosleep@GLIBC_2.2.5 () from /lib64/libc.so.6
+FAIL: gdb.base/bg-execution-repeat.exp: c 1&: breakpoint hit 2 (timeout)
+...
+
+Fix this by waiting for "Program received signal SIGINT, Interrupt" after
+issuing the interrupt command.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.base/bg-execution-repeat.exp | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/gdb/testsuite/gdb.base/bg-execution-repeat.exp b/gdb/testsuite/gdb.base/bg-execution-repeat.exp
+index 61f26f30f46..7ee84c9e57b 100644
+--- a/gdb/testsuite/gdb.base/bg-execution-repeat.exp
++++ b/gdb/testsuite/gdb.base/bg-execution-repeat.exp
+@@ -67,6 +67,17 @@ proc test {continue_cmd} {
+     # enable the "set var" command with an interrupt / continue& pair.
+     gdb_test -no-prompt-anchor "interrupt"
+ 
++    set test "interrupt received"
++    set re [string_to_regexp "Program received signal SIGINT, Interrupt."]
++    gdb_expect {
++	-re $re {
++	    pass $test
++	}
++	timeout {
++	    fail "$test (timeout)"
++	}
++    }
++
+     # Allow the breakpoint to trigger.
+     gdb_test -no-prompt-anchor "set var do_wait=0"
+ 
+
+base-commit: f60ba4bfaa3d9f499aa0b16d278b969a3074b0e1
+-- 
+2.43.0
+

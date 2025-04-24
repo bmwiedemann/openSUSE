@@ -1,7 +1,7 @@
-From 2723a9ea67f16593591c4db9101e423ff73e6353 Mon Sep 17 00:00:00 2001
+From cc96eb70e17260381e6c59c8de671468b59eee7f Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Thu, 16 Jan 2025 09:39:55 +0100
-Subject: [PATCH 31/37] [gdb/testsuite] Fix timeouts in
+Subject: [PATCH] [gdb/testsuite] Fix timeouts in
  gdb.threads/step-over-thread-exit.exp
 
 Once in a while, I run into a timeout in test-case
@@ -58,10 +58,10 @@ index 8eb93995657..98cc94e9528 100644
  		    }
  		}
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index c32dccab43e..008c1b83c1e 100644
+index 577eb9368cf..b103c117258 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -977,6 +977,10 @@ proc fill_in_default_prompt {prompt_regexp with_anchor} {
+@@ -1024,6 +1024,10 @@ proc command_to_message { command } {
  #   if one of them matches.  If MESSAGE is empty COMMAND will be used.
  # -prompt PROMPT_REGEXP specifies a regexp matching the expected prompt
  #   after the command output.  If empty, defaults to "$gdb_prompt $".
@@ -72,7 +72,7 @@ index c32dccab43e..008c1b83c1e 100644
  # -lbl specifies that line-by-line matching will be used.
  # EXPECT_ARGUMENTS will be fed to expect in addition to the standard
  #   patterns.  Pattern elements will be evaluated in the caller's
-@@ -1076,6 +1080,7 @@ proc gdb_test_multiple { command message args } {
+@@ -1123,6 +1127,7 @@ proc gdb_test_multiple { command message args } {
  
      set line_by_line 0
      set prompt_regexp ""
@@ -80,7 +80,7 @@ index c32dccab43e..008c1b83c1e 100644
      for {set i 0} {$i < [llength $args]} {incr i} {
  	set arg [lindex $args $i]
  	if { $arg  == "-prompt" } {
-@@ -1083,6 +1088,8 @@ proc gdb_test_multiple { command message args } {
+@@ -1130,6 +1135,8 @@ proc gdb_test_multiple { command message args } {
  	    set prompt_regexp [lindex $args $i]
  	} elseif { $arg == "-lbl" } {
  	    set line_by_line 1
@@ -89,7 +89,7 @@ index c32dccab43e..008c1b83c1e 100644
  	} else {
  	    set user_code $arg
  	    break
-@@ -1094,7 +1101,7 @@ proc gdb_test_multiple { command message args } {
+@@ -1141,7 +1148,7 @@ proc gdb_test_multiple { command message args } {
  	error "Too few arguments to gdb_test_multiple"
      }
  
@@ -97,7 +97,9 @@ index c32dccab43e..008c1b83c1e 100644
 +    set prompt_regexp [fill_in_default_prompt $prompt_regexp $prompt_anchor]
  
      if { $message == "" } {
- 	set message $command
+ 	set message [command_to_message $command]
+
+base-commit: cd4f4a663f82e2f8bee58f3ef000964a2dd82769
 -- 
 2.43.0
 

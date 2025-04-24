@@ -367,6 +367,9 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32688
     "FAIL: gdb.threads/thread-specific-bp.exp: non_stop=on: continue to end"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31308
+    "FAIL: gdb.arch/amd64-init-x87-values.exp: check_setting_mxcsr_before_enable: check new value of MXCSR is still in place"
+
 ) # kfail
 
 kfail_sle12=(
@@ -437,6 +440,10 @@ kfail_sle12=(
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into bar"
     "FAIL: gdb.dwarf2/frame-inlined-in-outer-frame.exp: step into foo"
     "FAIL: gdb.base/list-dot-nodebug.exp: debug=none: runto: run to bar"
+    "FAIL: gdb.base/errno.exp: pthreads-static-macros: runto: run to main"
+    "FAIL: gdb.base/errno.exp: pthreads-static: runto: run to main"
+    "FAIL: gdb.base/errno.exp: static-macros: runto: run to main"
+    "FAIL: gdb.base/errno.exp: static: runto: run to main"
 
     # Fails on both i586 and s390x/-m31 for SLE-12-SP3, but does not reproduce
     # on s390x/-m31 for SLE-12-SP5 with trunk.

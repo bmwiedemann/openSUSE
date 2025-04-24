@@ -1,0 +1,78 @@
+From a4f602690bdc46428b7e9003612b524dec3ab014 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 14 Apr 2025 13:05:35 +0200
+Subject: [PATCH 3/5] [gdb/testsuite] Fix another timeout in
+ gdb.base/bg-execution-repeat.exp
+
+With test-case gdb.base/bg-execution-repeat.exp, occasionally I run into a
+timeout:
+...
+(gdb) c 1&
+Will stop next time breakpoint 1 is reached.  Continuing.
+(gdb) PASS: $exp: c 1&: c 1&
+
+Breakpoint 2, foo () at bg-execution-repeat.c:23
+23        return 0; /* set break here */
+PASS: $exp: c 1&: breakpoint hit 1
+
+Will stop next time breakpoint 2 is reached.  Continuing.
+(gdb) PASS: $exp: c 1&: repeat bg command
+print 1
+$1 = 1
+(gdb) PASS: $exp: c 1&: input still accepted
+interrupt
+(gdb) PASS: $exp: c 1&: interrupt
+
+Program received signal SIGINT, Interrupt.
+foo () at bg-execution-repeat.c:24
+24      }
+PASS: $exp: c 1&: interrupt received
+set var do_wait=0
+(gdb) PASS: $exp: c 1&: set var do_wait=0
+continue&
+Continuing.
+(gdb) PASS: $exp: c 1&: continue&
+FAIL: $exp: c 1&: breakpoint hit 2 (timeout)
+...
+
+I can reproduce it reliably by adding a "sleep (1)" before the "do_wait = 1"
+in the .c file.
+
+The timeout happens as follows:
+- with the inferior stopped at main, gdb continues (command c 1&)
+- the inferior hits the breakpoint at foo
+- gdb continues (using the repeat command functionality)
+- the inferior is interrupted
+- inferior variable do_wait gets set to 0.  The assumption here is that the
+  inferior has progressed enough that do_wait is set to 1 at that point, but
+  that happens not to be the case.  Consequently, this has no effect.
+- gdb continues
+- the inferior sets do_wait to 1
+- the inferior enters the wait function, and wait for do_wait to become 0,
+  which never happens.
+
+Fix this by moving the "do_wait = 1" to before the first call to foo.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.base/bg-execution-repeat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.base/bg-execution-repeat.c b/gdb/testsuite/gdb.base/bg-execution-repeat.c
+index d5b48ee4f94..3e9132b3ee5 100644
+--- a/gdb/testsuite/gdb.base/bg-execution-repeat.c
++++ b/gdb/testsuite/gdb.base/bg-execution-repeat.c
+@@ -37,9 +37,9 @@ main (void)
+ {
+   alarm (60);
+ 
++  do_wait = 1;
+   foo ();
+ 
+-  do_wait = 1;
+   wait ();
+   /* do_wait set to 0 externally.  */
+ 
+-- 
+2.43.0
+

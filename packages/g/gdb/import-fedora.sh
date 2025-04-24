@@ -9,9 +9,6 @@ skip_patches=(
     gdb-6.8-bz466901-backtrace-full-prelinked.patch
 
     # Dropped by fedora.
-    gdb-rhbz1156192-recursive-dlopen-test.patch
-    gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch
-    gdb-test-bt-cfi-without-die.patch
 )
 
 usage ()

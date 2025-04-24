@@ -20,7 +20,7 @@ SLFO
 
 archs="x86_64 i586"
 
-version=15.2
+version=16.3
 
 usage ()
 {

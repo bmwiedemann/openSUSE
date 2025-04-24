@@ -1,7 +1,8 @@
-From 6de9111c512de99fd8cb3ea89f9890b1d72f6ef0 Mon Sep 17 00:00:00 2001
+From da210b312eab6444f6d20d62dc6c3c47413b93b2 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Fri, 21 Apr 2023 09:12:35 +0200
-Subject: [PATCH] Compile ada hello world for skip_ada_tests
+Date: Mon, 7 Apr 2025 13:53:56 +0200
+Subject: [PATCH 15/48] [gdb/testsuite] Compile ada hello world for
+ skip_ada_tests
 
 For openSUSE Leap 15.0 with gcc-PIE installed (which makes gcc create PIE
 executables by default) we get:
@@ -41,10 +42,10 @@ gdb/testsuite/ChangeLog:
  2 files changed, 39 insertions(+)
 
 diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
-index 4bf1368f29f..7d8fbf01fbd 100644
+index 05151d3d8f1..4d04d597474 100644
 --- a/gdb/testsuite/lib/ada.exp
 +++ b/gdb/testsuite/lib/ada.exp
-@@ -90,12 +90,43 @@ proc gdb_compile_ada_1 {source dest type options} {
+@@ -109,12 +109,43 @@ proc gdb_compile_ada_1 {source dest type options} {
  # compile was successful.
  
  proc gdb_compile_ada {source dest type options} {
@@ -89,18 +90,18 @@ index 4bf1368f29f..7d8fbf01fbd 100644
  # used a different naming convention from many of the other gdb tests,
  # and this difference was preserved during the conversion to
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 990d0c8a70f..6c1f59ef4a6 100644
+index 5d909e937db..fda55e06277 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -145,6 +145,7 @@ load_lib cache.exp
+@@ -157,6 +157,7 @@ load_lib cache.exp
  load_lib gdb-utils.exp
  load_lib memory.exp
  load_lib check-test-names.exp
 +load_lib ada.exp
  
- # The path to the GDB binary to test.
- global GDB
-@@ -2538,6 +2539,13 @@ proc allow_ada_tests {} {
+ # The path to the GCORE script to test.
+ global GCORE
+@@ -2715,6 +2716,13 @@ proc allow_ada_tests {} {
  	# Currently gdb_ada_compile doesn't support remote host.
  	return 0
      }
@@ -114,8 +115,6 @@ index 990d0c8a70f..6c1f59ef4a6 100644
      return 1
  }
  
-
-base-commit: af4a87e2b3c2ac5acae1e6f4405fc59e1218de74
 -- 
-2.35.3
+2.43.0
 

@@ -1,4 +1,350 @@
 -------------------------------------------------------------------
+Wed Apr 23 08:28:56 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Mention fixup-gdb-6.5-gcore-buffer-limit-test.patch.
+
+-------------------------------------------------------------------
+Tue Apr 22 14:19:23 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Mention changes in GDB 16:
+  * GDB now supports watchpoints for tagged data pointers (see
+    https://en.wikipedia.org/wiki/Tagged_pointer) on amd64, such
+    as the one used by the Linear Address Masking (LAM) feature
+    provided by Intel.
+  * Debugging support for Intel MPX has been removed.  This
+    includes the removal of:
+    * MPX register support
+    * the commands "show/set mpx bound" (deprecated since GDB 15)
+    * i386 and amd64 implementation of the hooks report_signal_info
+      and get_siginfo_type.
+  * GDB now supports printing of asynchronous events from the
+    Intel Processor Trace during 'record instruction-history',
+    'record function-call-history' and all stepping commands.
+    This can be controlled with the new "set record btrace pt
+    event-tracing" command.
+  * GDB now supports printing of ptwrite payloads from the Intel
+    Processor Trace during 'record instruction-history', 'record
+    function-call-history' and all stepping commands.  The payload
+    is also accessible in Python as a RecordAuxiliary object.
+    Printing is customizable via a ptwrite filter function in
+    Python.  By default, the raw ptwrite payload is printed for
+    each ptwrite that is encountered.
+  * For breakpoints that are created in the 'pending' state, any
+    'thread' or 'task' keywords are parsed at the time the
+    breakpoint is created, rather than at the time the breakpoint
+    becomes non-pending.
+  * Thread-specific breakpoints are only inserted into the
+    program space in which the thread of interest is running.
+    In most cases program spaces are unique for each inferior,
+    so this means that thread-specific breakpoints will usually
+    only be inserted for the inferior containing the thread of
+    interest.  The breakpoint will be hit no less than before.
+  * For ARM targets, the offset of the pc in the jmp_buf has
+    been fixed to match glibc 2.20 and later.  This should only
+    matter when not using libc probes.  This may cause breakage
+    when using an incompatible libc, like uclibc or newlib, or
+    an older glibc.
+  * MTE (Memory Tagging Extension) debugging is now supported on
+    AArch64 baremetal targets.
+  * In a record session, when a forward emulation reaches the end
+    of the reverse history, the warning message has been changed
+    to indicate that the end of the history has been reached.  It
+    also specifies that the forward execution can continue, and
+    the recording will also continue.
+  * The Ada 'Object_Size attribute is now supported.
+  * New bash script gstack uses GDB to print stack traces of
+    running processes.
+  * Python API:
+    * Added gdb.record.clear.  Clears the trace data of the
+      current recording.  This forces re-decoding of the trace for
+      successive commands.
+    * Added the new event source gdb.tui_enabled.
+    * New module gdb.missing_objfile that facilitates dealing with
+      missing objfiles when opening a core-file.
+    * New function gdb.missing_objfile.register_handler that can
+     register an instance of a sub-class of
+     gdb.missing_debug.MissingObjfileHandler as a handler for
+     missing objfiles.
+    * New class gdb.missing_objfile.MissingObjfileHandler which
+      can be sub-classed to create handlers for missing objfiles.
+    * The 'signed' argument to gdb.Architecture.integer_type()
+      will no longer accept non-bool types.
+    * The gdb.MICommand.installed property can only be set to True
+      or False.
+    * The 'qualified' argument to gdb.Breakpoint constructor will
+      no longer accept non-bool types.
+    * Added the gdb.Symbol.is_artificial attribute.
+  * Debugger Adapter Protocol changes:
+    * The "scopes" request will now return a scope holding global
+      variables from the stack frame's compilation unit.
+    * The "scopes" request will return a "returnValue" scope
+      holding the return value from the latest "stepOut" command,
+      when appropriate.
+    * The "launch" and "attach" requests were rewritten in
+      accordance with some clarifications to the spec.  Now they
+      can be sent at any time after the "initialized" event, but
+      will not take effect (or send a response) until after the
+      "configurationDone" request has been sent.
+    * The "variables" request will not return artificial symbols.
+  * New commands:
+    * show jit-reader-directory
+      Show the name of the directory that "jit-reader-load" uses
+      for relative file names.
+    * set style line-number foreground COLOR
+      set style line-number background COLOR
+      set style line-number intensity VALUE
+      Control the styling of line numbers printed by GDB.
+    * set style command foreground COLOR
+      set style command background COLOR
+      set style command intensity VALUE
+      Control the styling of GDB commands when displayed by GDB.
+    * set style title foreground COLOR
+      set style title background COLOR
+      set style title intensity VALUE
+      This style now applies to the header line of lists, for
+      example the first line of the output of "info breakpoints".
+      Previous uses of this style have been replaced with the new
+      "command" style.
+    * set warn-language-frame-mismatch [on|off]
+      show warn-language-frame-mismatch
+      Control the warning that is emitted when specifying a
+      language that does not match the current frame's language.
+    * maintenance info inline-frames [ADDRESS]
+      New command which displays GDB's inline-frame information
+      for the current address, or for ADDRESS if specified.  The
+      output identifies inlined frames which start at the
+      specified address.
+    * maintenance info blocks [ADDRESS]
+      New command which displays information about all of the
+      blocks at ADDRESS, or at the current address if ADDRESS is
+      not given.  Blocks are listed starting at the inner global
+      block out to the most inner block.
+    * info missing-objfile-handlers
+      List all the registered missing-objfile handlers.
+    * enable missing-objfile-handler LOCUS HANDLER
+      disable missing-objfile-handler LOCUS HANDLER
+      Enable or disable a missing-objfile handler with a name
+      matching the regular expression HANDLER, in LOCUS.  LOCUS
+      can be 'global' to operate on global missing-objfile
+      handler, 'progspace' to operate on handlers within the
+      current program space, or can be a regular expression which
+      is matched against the filename of the primary executable in
+      each program space.
+  * Changed commands:
+    * remove-symbol-file
+      This command now supports file-name completion.
+    * remove-symbol-file -a ADDRESS
+      The ADDRESS expression can now be a full expression
+      consisting of multiple terms, e.g. 'function + 0x1000'
+      (without quotes), previously only a single term could be
+      given.
+    * target core
+      target exec
+      target tfile
+      target ctf
+      compile file
+      maint print c-tdesc
+      save gdb-index
+      These commands now require their filename argument to be
+      quoted if it contains white space or quote characters.  If
+      the argument contains no such special characters then
+      quoting is not required.
+    * maintenance print remote-registers
+      Add an "Expedited" column to the output of the command.  It
+      indicates which registers were included in the last stop
+      reply packet received by GDB.
+    * show configuration
+      Now includes the version of GNU Readline library that GDB is
+      using.
+  * New remote packets:
+    * vFile:stat
+      Return information about files on the remote system.  Like
+      vFile:fstat but takes a filename rather than an open file
+      descriptor.
+    * x addr,length
+      Given ADDR and LENGTH, fetch LENGTH units from the memory at
+      address ADDR and send the fetched data in binary format.
+      This packet is equivalent to 'm', except that the data in
+      the response are in binary format.
+    * binary-upload in qSupported reply
+      If the stub sends back 'binary-upload+' in it's qSupported
+      reply, then GDB will, where possible, make use of the 'x'
+      packet.  If the stub doesn't report this feature supported,
+      then GDB will not use the 'x' packet.
+
+-------------------------------------------------------------------
+Sun Apr 20 21:00:52 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to 16.3.
+  Patches dropped:
+  * gdb-16.2.90.6c82a557806.17-04-2025.patch
+  Maintenance script qa-local.sh:
+  * Update version to 16.3.
+- Patches added:
+  * gdb-testsuite-fix-timeout-in-gdb.threads-inf-thr-cou.patch
+
+-------------------------------------------------------------------
+Thu Apr 17 11:39:08 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to current gdb-16-branch (gdb 16.2.90).
+  Patches dropped:
+  * core-target-open-segfault.patch
+  * tui-wrefresh-issue.patch
+  * gdb-rhbz2354997-gstack-drop-readnever.patch
+  * gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+  * gdb-tdep-backport-i386_canonicalize_syscall-rewrite-.patch
+  Patches added:
+  * gdb-16.2.90.6c82a557806.17-04-2025.patch
+
+-------------------------------------------------------------------
+Mon Apr 14 14:43:51 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add gdb.base/errno.exp FAILs for PR29244 (SLE-12).
+  * Add PR31308 kfail.
+- Maintenance script import-patches.sh:
+  * Handle filename clash with existing file.
+- Patches added:
+  * gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+  * gdb-block-sigterm-during-fetch_inferior_event.patch
+  * gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.1.patch
+  * gdb-testsuite-fix-regexp-in-gdb.multi-pending-bp-del.patch
+  * gdb-testsuite-fix-timeout-in-gdb.threads-main-thread.patch
+  * gdb-testsuite-fix-gdb.threads-clone-attach-detach.ex.patch
+
+-------------------------------------------------------------------
+Sat Apr 12 09:52:17 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to fedora rawhide @ c65d4ba.
+  Sources dropped:
+  * gdb-gstack.man
+- Update to fedora rawhide @ 73a92e4.
+  Patched dropped:
+  * gdb-6.5-bz218379-ppc-solib-trampoline-test.patch
+- Update to fedora rawhide @ df0d4c2.
+  Patches added:
+  * core-target-open-segfault.patch
+  * tui-wrefresh-issue.patch
+- Update to fedora rawhide @ 5506bde.
+  Patched dropped:
+  * gdb-6.6-bz237572-ppc-atomic-sequence-test.patch
+- Update to fedora rawhide @ 98da3e0.
+  Patched dropped:
+  * gdb-6.5-gcore-buffer-limit-test.patch
+  * fixup-gdb-6.5-gcore-buffer-limit-test.patch
+- Update to fedora rawhide @ a65de0f.
+  Patched dropped:
+  * gdb-rhbz1084404-ppc64-s390x-wrong-prologue-skip-O2-g-3of3.patch
+- Update to fedora rawhide @ 7183fb3.
+  Patches added:
+  * gdb-rhbz2354997-gstack-drop-readnever.patch
+- Update to fedora rawhide @ f9c4079.
+  Patches dropped:
+  * gdb-rhbz-818343-set-solib-absolute-prefix-testcase.patch
+
+-------------------------------------------------------------------
+Mon Apr  7 09:52:41 UTC 2025 - Tom de Vries <tdevries@suse.com>
+
+- Update to fedora rawhide @ c65d4ba.
+  Patched dropped:
+  * gdb-6.6-buildid-locate-tests.patch
+  Patches modified:
+  * gdb-add-rpm-suggestion-script.patch
+- Update to fedora rawhide @ 12e32a6.
+  Patches modified:
+  * gdb-add-rpm-suggestion-script.patch
+  * gdb-backport-buildid-related-changes.patch
+  * gdb-remove-qnx-neutrino-support.patch
+- Update to fedora rawhide @ 264209d.
+  Maintenance script import-fedora.sh:
+  * Drop gdb-rhbz1156192-recursive-dlopen-test.patch
+    from skip_patches.
+- Update to fedora rawhide @ 020018c.
+  Maintenance script import-fedora.sh:
+  * Drop gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch from
+    skip_patches.
+- Update to fedora rawhide @ 1e3eb79.
+  Maintenance script import-fedora.sh:
+  * Drop gdb-rhbz1261564-aarch64-hw-watchpoint-test.patch from
+    skip_patches.
+- Update to fedora rawhide @ 1a098a7.
+  Patches dropped:
+  * gdb-6.3-gstack-20050411.patch
+  * gdb-testsuite-require-can_spawn_for_attach-in-gdb.ba.patch
+- Update to fedora rawhide @ 5fc2d96.
+  Patches dropped:
+  * gdb-backport-buildid-related-changes.patch
+  * gdb-catchpoint-re-set.patch
+  * gdb-remove-qnx-neutrino-support.patch
+- Update to fedora rawhide @ 6b0ca99 (gdb 16.2).
+  Patches updated (fedora):
+  * gdb-add-rpm-suggestion-script.patch
+  Maintenance script qa-local.sh:
+  * Update version to 16.2.
+  Patches updated:
+  * gdb-testsuite-ada-pie.patch
+  * gdb-tui-enable-work-around-libncurses-segfault.patch
+  * gdb-guile-use-scm_debug_typing_strictness-0.patch
+  * add-gdbarch_dwarf2_reg_piece_offset-hook.patch
+  * gdb-testsuite-fix-gdb.ada-big_packed_array.exp-on-s3.patch
+  * gdb-cli-add-ignore-errors-command.patch
+  * fixup-gdb-add-rpm-suggestion-script.patch
+  Patches dropped:
+  * gdb-testsuite-fix-another-regexp-in-gdb.threads-step.patch  
+  * gdb-testsuite-fix-error-in-gdb.server-server-kill-py.patch
+  * gdb-testsuite-fix-timeout-in-gdb.tui-resize-2.exp.patch
+  * fix-gdb.dap-step-out.exp-on-s390x.patch
+  * fix-gdb.dwarf2-shortpiece.exp-on-s390x.patch
+  * gdb-build-fix-unused-var-in-corelow.c.patch
+  * gdb-exp-fix-gdb.fortran-intrinsics.exp-fail-on-arm.patch
+  * gdb-prune-inferior-after-switching-inferior.patch
+  * gdb-record-fix-out-of-bounds-write-in-aarch64_record.patch
+  * gdb-symtab-fix-target-type-of-complex-long-double-on.patch
+  * gdb-symtab-return-correct-reader-for-top-level-cu-in.patch
+  * gdb-tdep-fix-arm-thumb2-hw-breakpoint.patch
+  * gdb-tdep-fix-recording-of-t1-push.patch
+  * gdb-tdep-handle-sycall-statx-for-arm-linux.patch
+  * gdb-tdep-handle-syscall-clock_gettime64-for-arm-linu.patch
+  * gdb-tdep-s390-add-arch15-record-replay-support.patch
+  * gdb-testsuite-avoid-intermittent-failures-on-a-debug.patch
+  * gdb-testsuite-don-t-use-set-auto-solib-add-off.patch
+  * gdb-testsuite-fix-gdb.ada-mi_task_arg.exp-on-arm-lin.patch
+  * gdb-testsuite-fix-gdb.arch-arm-pseudo-unwind.exp-wit.patch
+  * gdb-testsuite-fix-gdb.arch-arm-single-step-kernel-he.patch
+  * gdb-testsuite-fix-gdb.arch-riscv-tdesc-regs.exp.patch
+  * gdb-testsuite-fix-gdb.base-empty-host-env-vars.exp.patch
+  * gdb-testsuite-fix-gdb.base-list-dot-nodebug-and-make.patch
+  * gdb-testsuite-fix-gdb.cp-m-static.exp-on-arm.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-fixed-point.exp-on-.patch
+  * gdb-testsuite-fix-gdb.dwarf2-dw2-lines.exp-on-arm-li.patch
+  * gdb-testsuite-fix-gdb.fortran-array-bounds.exp-on-ar.patch
+  * gdb-testsuite-fix-gdb.python-py-format-address.exp-o.patch
+  * gdb-testsuite-fix-gdb.python-py-format-string.exp-wi.patch
+  * gdb-testsuite-fix-gdb.python-py-mi-cmd.exp-with-pyth.patch
+  * gdb-testsuite-fix-gdb.threads-leader-exit-attach.exp.patch
+  * gdb-testsuite-fix-regexp-in-gdb.ada-mi_var_access.ex.patch
+  * gdb-testsuite-fix-regexp-in-gdb.arch-i386-disp-step-.patch
+  * gdb-testsuite-fix-regexp-in-gdb.threads-stepi-over-c.patch
+  * gdb-testsuite-fix-timeout-in-gdb.mi-mi-multi-command.patch
+  * handle-address-class-annotation-for-s390x-in-some-te.patch
+  * opcodes-fix-std-gnu23-compatibility-wrt-static_asser.patch
+  * s390-add-arch15-concurrent-functions-facility-insns.patch
+  * s390-add-arch15-instruction-names.patch
+  * s390-add-arch15-instructions.patch
+  * s390-align-opcodes-to-lower-case.patch
+  * s390-fix-disassembly-of-optional-addressing-operands.patch
+  * s390-relax-risbg-n-z-risb-h-l-gz-rns-ros-rxs-bgt-ope.patch
+  * s390-simplify-dis-assembly-of-insn-operands-with-con.patch
+  * s390-treat-addressing-operand-sequence-as-one-in-dis.patch
+  * use-setvariable-in-gdb.dap-scopes.exp.patch
+  Patches added:
+  * gdb-testsuite-fix-gdb.dwarf2-implptr.exp-regression.patch
+  * gdb-testsuite-work-around-pr32850.patch
+  * gdb-symtab-fix-gdb.base-fission-macro.exp-with-unix-.patch
+  * gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.patch
+- Add "BuildRequires: glibc-locale" for gdb:testsuite to fix
+  SLFO testsuite failures.
+-------------------------------------------------------------------
 Mon Apr  7 09:46:31 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Maintenance script qa.sh:

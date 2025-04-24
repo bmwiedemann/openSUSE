@@ -1,47 +1,86 @@
+From e76eb034e25f53ef2c17eab700e95d07bbbdc7aa Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 7 Apr 2025 15:09:37 +0200
+Subject: [PATCH] [gdb/tui] Don't try deferred curses initialization twice
+
+I noticed that if deferred curses initialization fails, for instance when
+using TERM=dumb, and we try the same again, we run into the same error:
+...
+$ TERM=dumb gdb -batch -ex "tui enable" -ex "tui enable"
+Cannot enable the TUI: terminal doesn't support cursor addressing [TERM=dumb]
+Cannot enable the TUI: terminal doesn't support cursor addressing [TERM=dumb]
+...
+
+I think it's better to try deferred curses initialization only once.
+
+Fix this by changing bool tui_finish_init into a tribool, and using
+TRIBOOL_UNKNOWN to represent the "initialization failed" state, such that we
+get instead:
+...
+$ TERM=dumb gdb -batch -ex "tui enable" -ex "tui enable"
+Cannot enable the TUI: terminal doesn't support cursor addressing [TERM=dumb]
+Cannot enable the TUI
+...
+
+Tested on x86_64-linux.
+---
+ gdb/tui/tui.c | 20 +++++++++++++++++---
+ 1 file changed, 17 insertions(+), 3 deletions(-)
+
 diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
-index 828e42bccf7..551a72e3992 100644
+index 59aa1bc1483..06a899e2418 100644
 --- a/gdb/tui/tui.c
 +++ b/gdb/tui/tui.c
-@@ -57,7 +57,7 @@
+@@ -67,7 +67,12 @@ show_tui_debug (struct ui_file *file, int from_tty,
  
  /* Tells whether the TUI is active or not.  */
  bool tui_active = false;
 -static bool tui_finish_init = true;
-+static int tui_init = -1;
++
++/* Tells whether the TUI should do deferred curses initialization.
++   If TRIBOOL_TRUE, then yes.  If TRIBOOL_FALSE. then no (because
++   initialization is already done).  If TRIBOOL_UNKNOWN, then no (because
++   initialization failed).  */
++static tribool tui_finish_init = TRIBOOL_TRUE;
  
  enum tui_key_mode tui_current_key_mode = TUI_COMMAND_MODE;
  
-@@ -363,7 +363,13 @@ tui_enable (void)
+@@ -390,7 +395,13 @@ tui_enable (void)
    /* To avoid to initialize curses when gdb starts, there is a deferred
       curses initialization.  This initialization is made only once
       and the first time the curses mode is entered.  */
 -  if (tui_finish_init)
-+  if (tui_init == 0)
++  if (tui_finish_init == TRIBOOL_UNKNOWN)
 +    {
-+      /* Initalization failed before, just throw a generic error, don't try
-+	 again.  Workaround for segfault in libncurses5 bsc#1179210.  */
++      /* Initialization failed before, just throw a generic error, don't try
++	 again.  */
 +      error (_("Cannot enable the TUI"));
 +    }
-+  else if (tui_init == -1)
++  else if (tui_finish_init == TRIBOOL_TRUE)
      {
        WINDOW *w;
        SCREEN *s;
-@@ -383,6 +389,8 @@ tui_enable (void)
+@@ -410,6 +421,9 @@ tui_enable (void)
        if (!gdb_stderr->isatty ())
  	error (_("Cannot enable the TUI when output is not a terminal"));
  
-+      tui_init = 0;
++      /* Don't try initialization again.  */
++      tui_finish_init = TRIBOOL_UNKNOWN;
 +
        s = newterm (NULL, stdout, stdin);
  #ifdef __MINGW32__
        /* The MinGW port of ncurses requires $TERM to be unset in order
-@@ -435,7 +443,8 @@ tui_enable (void)
-       tui_set_win_focus_to (TUI_SRC_WIN);
-       keypad (TUI_CMD_WIN->handle.get (), TRUE);
-       wrefresh (TUI_CMD_WIN->handle.get ());
+@@ -468,7 +482,7 @@ tui_enable (void)
+       tui_set_win_focus_to (tui_src_win ());
+       keypad (tui_cmd_win ()->handle.get (), TRUE);
+       wrefresh (tui_cmd_win ()->handle.get ());
 -      tui_finish_init = false;
-+
-+      tui_init = 1;
++      tui_finish_init = TRIBOOL_FALSE;
      }
    else
      {
+
+base-commit: eaacf3d48a7f16f56d5a69d5fb03ac3638d7b957
+-- 
+2.43.0
+

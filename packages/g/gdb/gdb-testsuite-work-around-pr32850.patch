@@ -1,0 +1,58 @@
+From 6d61b107f71d644ab35e8d7fe1c156d4f00c33fc Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 8 Apr 2025 14:56:06 +0200
+Subject: [PATCH] [gdb/testsuite] Work around PR32850
+
+---
+ .../gdb.dwarf2/dw2-step-between-different-inline-functions.c  | 4 +++-
+ .../gdb.dwarf2/dw2-step-between-inline-func-blocks.c          | 3 ++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-step-between-different-inline-functions.c b/gdb/testsuite/gdb.dwarf2/dw2-step-between-different-inline-functions.c
+index 5e4fe47b28e..594906e1378 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-step-between-different-inline-functions.c
++++ b/gdb/testsuite/gdb.dwarf2/dw2-step-between-different-inline-functions.c
+@@ -54,6 +54,8 @@ extern void *foo_label_6 (void);
+ void
+ foo (void)
+ {
++  void *goto_target = &foo_label_6;
++
+   /* This label is used to find the start of 'foo' when generating the
+      debug information.  */
+   asm ("foo_label: .globl foo_label");
+@@ -76,7 +78,7 @@ foo (void)
+      destination address be a global label so that we can generate DWARF
+      that has ranges that start exactly at the destination address.  */
+   if (global_var > 0)
+-    goto *(&foo_label_6);
++    goto *(goto_target);
+ 
+   LABEL (4);
+   ++global_var;
+diff --git a/gdb/testsuite/gdb.dwarf2/dw2-step-between-inline-func-blocks.c b/gdb/testsuite/gdb.dwarf2/dw2-step-between-inline-func-blocks.c
+index 7fdf1bb2c86..62d42506a10 100644
+--- a/gdb/testsuite/gdb.dwarf2/dw2-step-between-inline-func-blocks.c
++++ b/gdb/testsuite/gdb.dwarf2/dw2-step-between-inline-func-blocks.c
+@@ -49,6 +49,7 @@ extern void *foo_label_6 (void);
+ void
+ foo (void)
+ {
++  void *goto_target = &foo_label_6;
+   /* This label is used to find the start of 'foo' when generating the
+      debug information.  */
+   asm ("foo_label: .globl foo_label");
+@@ -71,7 +72,7 @@ foo (void)
+      destination address be a global label so that we can generate DWARF
+      that has ranges that start exactly at the destination address.  */
+   if (global_var > 0)
+-    goto *(&foo_label_6);
++    goto *(goto_target);
+ 
+   LABEL (4);
+   ++global_var;
+
+base-commit: c11539f634a9479e3979c93bc19e0a79457c2c7d
+-- 
+2.43.0
+

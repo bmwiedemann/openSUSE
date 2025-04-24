@@ -1,0 +1,102 @@
+From f60ba4bfaa3d9f499aa0b16d278b969a3074b0e1 Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Tue, 21 Jan 2025 15:23:19 +0100
+Subject: [PATCH] [gdb/symtab] Fix gdb.base/fission-macro.exp with unix/-m32
+
+When running test-case gdb.base/fission-macro.exp on openSUSE Tumbleweed
+(using gcc 14) with target board unix/-m32, I get:
+...
+(gdb) info macro FIRST^M
+Defined at /data/vries/gdb/src/gdb/testsuite/gdb.base/fission-macro.c:0^M
+-DFIRST=1^M
+(gdb) FAIL: $exp: \
+  dwarf_version=5: dwarf_bits=32: strict_dwarf=0: info macro FIRST
+...
+instead of the expected:
+...
+(gdb) info macro FIRST^M
+Defined at /data/vries/gdb/src/gdb/testsuite/gdb.base/fission-macro.c:18^M
+(gdb) PASS: $exp: \
+  dwarf_version=5: dwarf_bits=32: strict_dwarf=0: info macro FIRST
+...
+
+A dwarf-5 .debug_str_offsets section starts with a header consisting of:
+- an initial length (4 bytes for 32-bit and 12 bytes for 64-bit),
+- a 2 byte version string, and
+- 2 bytes padding
+so in total 8 bytes for 32-bit and 16 bytes for 64-bit.
+
+This offset is calculated here in dwarf_decode_macros:
+...
+      str_offsets_base = cu->header.addr_size;
+...
+which is wrong for both dwarf-5 cases (and also happens to be wrong for
+dwarf-4).
+
+Fix this by computing str_offsets_base correctly for dwarf-5, for both the
+32-bit and 64-bit case.
+
+Likewise, fix this for dwarf-4, using str_offsets_base 0.  We can only test
+this with gcc-15, because gcc 14 and earlier don't have the fix for
+PR debug/115066.
+
+Tested on x86_64-linux.
+
+Tested test-case using a current gcc trunk build, and gcc 14.
+
+Approved-By: Tom Tromey <tom@tromey.com>
+
+PR symtab/31897
+Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=31897
+---
+ gdb/dwarf2/read.c                        | 12 +++++++++++-
+ gdb/testsuite/gdb.base/fission-macro.exp |  8 ++++++--
+ 2 files changed, 17 insertions(+), 3 deletions(-)
+
+diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
+index 49fb219f03d..f0873f189d3 100644
+--- a/gdb/dwarf2/read.c
++++ b/gdb/dwarf2/read.c
+@@ -21610,7 +21610,17 @@ dwarf_decode_macros (struct dwarf2_cu *cu, unsigned int offset,
+       str_offsets_section = &cu->dwo_unit->dwo_file
+ 			       ->sections.str_offsets;
+       str_section = &cu->dwo_unit->dwo_file->sections.str;
+-      str_offsets_base = cu->header.addr_size;
++      if (cu->header.version <= 4)
++	str_offsets_base = 0;
++      else
++	{
++	  bfd *abfd = str_offsets_section->get_bfd_owner ();
++	  unsigned int bytes_read = 0;
++	  read_initial_length (abfd, str_offsets_section->buffer, &bytes_read,
++			       false);
++	  const bool is_dwarf64 = bytes_read != 4;
++	  str_offsets_base = is_dwarf64 ? 16 : 8;
++	}
+     }
+   else
+     {
+diff --git a/gdb/testsuite/gdb.base/fission-macro.exp b/gdb/testsuite/gdb.base/fission-macro.exp
+index 705e3dd0c4b..9e5d5c0a0d5 100644
+--- a/gdb/testsuite/gdb.base/fission-macro.exp
++++ b/gdb/testsuite/gdb.base/fission-macro.exp
+@@ -66,8 +66,12 @@ proc do_tests { dwarf_version dwarf_bits strict_dwarf } {
+     gdb_test "info macro FOURTH" "#define FOURTH 4"
+ }
+ 
+-foreach_with_prefix dwarf_version {5} {
+-    foreach_with_prefix dwarf_bits {32} {
++foreach_with_prefix dwarf_version {4 5} {
++    if { $dwarf_version == 4 && [gcc_major_version] < 15 } {
++	# Gcc does not contain fix for PR debug/115066.
++	continue
++    }
++    foreach_with_prefix dwarf_bits {32 64} {
+ 	foreach_with_prefix strict_dwarf {0 1} {
+ 	    do_tests $dwarf_version $dwarf_bits $strict_dwarf
+ 	}
+
+base-commit: 6d61b107f71d644ab35e8d7fe1c156d4f00c33fc
+-- 
+2.43.0
+

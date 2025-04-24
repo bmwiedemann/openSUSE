@@ -1,0 +1,41 @@
+From 4a68297ef46cc70405341b51a476b08119d8173f Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Fri, 18 Apr 2025 10:11:39 +0200
+Subject: [PATCH] [gdb/testsuite] Fix timeout in gdb.threads/inf-thr-count.exp
+
+With test-case gdb.threads/inf-thr-count.exp, check-readmore and
+READMORE_SLEEP=1000 I run into:
+...
+(gdb) set variable spin = 0^M
+(gdb) ^M
+Thread 1 "inf-thr-count" hit Breakpoint 2, breakpt () at /data/vries/gdb/src/gdb/testsuite/gdb.threads/inf-thr-count.c:49^M
+49      }^M
+FAIL: gdb.threads/inf-thr-count.exp: set 'spin' flag to allow main thread to exit (timeout)
+PASS: gdb.threads/inf-thr-count.exp: wait for main thread to stop
+...
+
+Fix this by using -no-prompt-anchor.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.threads/inf-thr-count.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/inf-thr-count.exp b/gdb/testsuite/gdb.threads/inf-thr-count.exp
+index 1c85c955384..81f98b7e6a0 100644
+--- a/gdb/testsuite/gdb.threads/inf-thr-count.exp
++++ b/gdb/testsuite/gdb.threads/inf-thr-count.exp
+@@ -163,7 +163,7 @@ gdb_test "with print thread-events on -- p \$_inferior_thread_count" \
+ 
+ # Set a variable in the inferior, this will cause the second thread to
+ # exit.
+-gdb_test_no_output "set variable spin = 0" \
++gdb_test_no_output -no-prompt-anchor "set variable spin = 0" \
+     "set 'spin' flag to allow main thread to exit"
+ 
+ # When the second thread exits, the main thread joins with it, and
+
+base-commit: f233e8e366bcf513f3e1364db71f6773f52918fa
+-- 
+2.43.0
+

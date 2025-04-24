@@ -1,6 +1,6 @@
-From fe0e6edbcb65ab5eca50c1a0ad8ddc9844f8ea98 Mon Sep 17 00:00:00 2001
+From cd4f4a663f82e2f8bee58f3ef000964a2dd82769 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Mon, 27 Jan 2025 09:23:18 +0100
+Date: Tue, 28 Jan 2025 20:56:17 +0100
 Subject: [PATCH] [gdb/guile] Use SCM_DEBUG_TYPING_STRICTNESS 0
 
 I build gdb with libguile v2.0.9, and ran into:
@@ -21,22 +21,24 @@ We were already using this for c++20 due to a Werror=volatile in SCM_UNPACK
 when using libguile v2.0.10.
 
 Tested on x86_64-linux.
+
+Approved-By: Tom Tromey <tom@tromey.com>
 ---
- gdb/guile/guile-internal.h | 22 +++++++++++++++++++++-
- 1 file changed, 21 insertions(+), 1 deletion(-)
+ gdb/guile/guile-internal.h | 23 ++++++++++++++++++-----
+ 1 file changed, 18 insertions(+), 5 deletions(-)
 
 diff --git a/gdb/guile/guile-internal.h b/gdb/guile/guile-internal.h
-index be16fee0dd2..6665bfc7813 100644
+index 8d83b8b808a..85e08ca905d 100644
 --- a/gdb/guile/guile-internal.h
 +++ b/gdb/guile/guile-internal.h
-@@ -27,10 +27,30 @@
- #include "hashtab.h"
- #include "extension-priv.h"
- #include "symtab.h"
--#include "libguile.h"
+@@ -30,12 +30,25 @@
  #include "objfiles.h"
  #include "top.h"
  
+-#if __cplusplus >= 202002L
+-/* Work around Werror=volatile in SCM_UNPACK for
+-   SCM_DEBUG_TYPING_STRICTNESS == 1.  Reported upstream:
+-   https://debbugs.gnu.org/cgi/bugreport.cgi?bug=65333 .  */
 +/* For libguile v2.0.9 and SCM_DEBUG_TYPING_STRICTNESS == 1, SCM_UNPACK(x) is
 +   defined as:
 +
@@ -55,14 +57,13 @@ index be16fee0dd2..6665bfc7813 100644
 +   The former form causes a Werror=sequence-point with gcc 7-14.
 +
 +   Work around these problem by using SCM_DEBUG_TYPING_STRICTNESS == 0.  */
-+#define SCM_DEBUG_TYPING_STRICTNESS 0
-+#include "libguile.h"
-+
+ #define SCM_DEBUG_TYPING_STRICTNESS 0
+-#endif
+ #include "libguile.h"
+ 
  struct block;
- struct frame_info;
- struct objfile;
 
-base-commit: 94df6741bbabaa9a51960446b2af4c0bed01b54b
+base-commit: e76eb034e25f53ef2c17eab700e95d07bbbdc7aa
 -- 
 2.43.0
 

@@ -62,6 +62,11 @@ for f in $files; do
     # Fix patch.patch.
     f=$(echo "$f" \
 	     | sed 's/\.patch\.patch/.patch/')
+
+    if [ -f "$f" ]; then
+	f=$(echo "$f" \
+		| sed 's/\.patch$/.1.patch/')
+    fi
     
     # Copy.
     cp "$dir"/"$orig_f" tmp.patches/"$f"

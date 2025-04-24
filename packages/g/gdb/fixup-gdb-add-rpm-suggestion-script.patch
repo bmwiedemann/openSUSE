@@ -1,23 +1,26 @@
-From a7d9abecbc24e3d68746ea5b905eba11913980e1 Mon Sep 17 00:00:00 2001
+From 58f16ab37bf553b15bcd2a7582f7d662a3816407 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Tue, 25 Mar 2025 17:15:01 +0100
-Subject: [PATCH 2/2] fixup-gdb-add-rpm-suggestion-script.patch
+Subject: [PATCH 11/56] fixup-gdb-add-rpm-suggestion-script.patch
 
 ---
- gdb/python/lib/gdb/command/rpm-suggestions.py | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ gdb/python/lib/gdb/command/rpm-suggestions.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/gdb/python/lib/gdb/command/rpm-suggestions.py b/gdb/python/lib/gdb/command/rpm-suggestions.py
-index bb049bc66e7..066ce98d947 100644
+index bcae2ba2fd7..6c550bed448 100644
 --- a/gdb/python/lib/gdb/command/rpm-suggestions.py
 +++ b/gdb/python/lib/gdb/command/rpm-suggestions.py
-@@ -510,8 +510,7 @@ class rpm_suggestion_build_id_mode(gdb.Parameter):
+@@ -503,8 +503,11 @@ class rpm_suggestion_build_id_mode(gdb.Parameter):
  
  # The 'info rpm-suggestions' command.
  class rpm_suggestion_info(gdb.Command):
 -    """Relist any RPM installation suggestions that have been made
--    since the executable was last changed."""
-+    """Relist any RPM installation suggestions that have been made since the executable was last changed."""
++    """Relist RPM installation suggestions.
++
++    Relist any RPM installation suggestions that have been made
+     since the executable was last changed."""
++
      def __init__(self):
          super().__init__("info rpm-suggestions", gdb.COMMAND_NONE, gdb.COMPLETE_NONE)
  

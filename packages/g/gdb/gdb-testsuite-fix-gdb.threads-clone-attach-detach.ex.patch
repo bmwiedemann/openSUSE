@@ -1,0 +1,52 @@
+From 06ca9655c99ce4881f922a5cbac092f0ed0a958b Mon Sep 17 00:00:00 2001
+From: Tom de Vries <tdevries@suse.de>
+Date: Mon, 14 Apr 2025 18:25:57 +0200
+Subject: [PATCH] [gdb/testsuite] Fix gdb.threads/clone-attach-detach.exp
+
+With test-case gdb.threads/clone-attach-detach.exp I usually get:
+...
+(gdb) attach <pid> &^M
+Attaching to program: clone-attach-detach, process <pid>^M
+[New LWP <lwp>]^M
+(gdb) PASS: $exp: bg attach <n>: attach
+[Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib64/libthread_db.so.1".^M
+...
+but sometimes I run into:
+...
+(gdb) attach <pid> &^M
+Attaching to program: clone-attach-detach, process <pid>^M
+[New LWP <lwp>]^M
+(gdb) [Thread debugging using libthread_db enabled]^M
+Using host libthread_db library "/lib64/libthread_db.so.1".^M
+FAIL: $exp: bg attach <n>: attach (timeout)
+...
+
+I managed to reproduce this using make target check-readmore and
+READMORE_SLEEP=100.
+
+Fix this using -no-prompt-anchor.
+
+Tested on x86_64-linux.
+---
+ gdb/testsuite/gdb.threads/clone-attach-detach.exp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gdb/testsuite/gdb.threads/clone-attach-detach.exp b/gdb/testsuite/gdb.threads/clone-attach-detach.exp
+index de1f6a445a4..21e9649bab1 100644
+--- a/gdb/testsuite/gdb.threads/clone-attach-detach.exp
++++ b/gdb/testsuite/gdb.threads/clone-attach-detach.exp
+@@ -74,7 +74,7 @@ set attempts 3
+ for {set attempt 1} {$attempt <= $attempts} {incr attempt} {
+     with_test_prefix "bg attach $attempt" {
+ 
+-	gdb_test "attach $testpid &" \
++	gdb_test -no-prompt-anchor "attach $testpid &" \
+ 	    "Attaching to program.*process $testpid.*" \
+ 	    "attach"
+ 
+
+base-commit: e026bf5856f23e9f2bb65b1b01c52d77f106ade8
+-- 
+2.43.0
+
