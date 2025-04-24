@@ -1,7 +1,7 @@
 #
 # spec file for package iptables
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,6 +20,12 @@
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
+%endif
+
+%if 0%{?suse_version} == 1600 && !0%{?is_opensuse}
+%bcond_with legacy_backend
+%else
+%bcond_without legacy_backend
 %endif
 
 Name:           iptables
@@ -51,12 +57,17 @@ BuildRequires:  pkgconfig(libnfnetlink) >= 1.0.0
 BuildRequires:  pkgconfig(libnftnl) >= 1.2.6
 Requires:       netcfg >= 11.6
 Requires:       xtables-plugins = %version-%release
+%if %{with legacy_backend}
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
+%else
+Provides:		%name-backend-nft = %version-%release
+Obsoletes:		%name-backend-nft < %version-%release
 %endif
 # During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,
 # iptables-restore-translate and iptables-translate were moved from iptables-nft subpackage
@@ -74,7 +85,6 @@ Group:          Productivity/Networking/Security
 Requires:       iptables >= 1.8.0
 %if %{with libalternatives}
 Requires:       alts
-BuildRequires:  alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -200,17 +210,29 @@ rm -f "$b/%_sysconfdir/xtables.conf" # packaging bug
 for i in iptables iptables-restore iptables-save ip6tables ip6tables-restore \
     ip6tables-save arptables arptables-restore arptables-save ebtables \
     ebtables-restore ebtables-save; do
-%if ! %{with libalternatives}
-	ln -fsv "%_sysconfdir/alternatives/$i" "$b/%_sbindir/$i"
+%if %{with legacy_backend}
+	%if !%{with libalternatives}
+		ln -fsv "%_sysconfdir/alternatives/$i" "$b/%_sbindir/$i"
+	%else
+		ln -fsv %_bindir/alts "$b/%_sbindir/$i"
+	%endif
 %else
-	ln -fsv %_bindir/alts "$b/%_sbindir/$i"
+	ln -fsv %_sbindir/xtables-nft-multi "$b/%_sbindir/$i"
 %endif
 done
+
+%if %{without legacy_backend}
+	rm "$b/%_sbindir/xtables-legacy-multi"
+	rm $b/%_sbindir/iptables-legacy*
+	rm $b/%_sbindir/ip6tables-legacy*
+	ln -fsv %_sbindir/xtables-nft-multi $b/%_bindir/iptables-xml
+%endif
 
 %if 0%{?suse_version}
 %fdupes %buildroot/%_prefix
 %endif
 
+%if %{with legacy_backend}
 %if %{with libalternatives}
 mkdir -pv "$b/%_datadir/libalternatives/iptables"
 cat >"$b/%_datadir/libalternatives/iptables/1.conf" <<-EOF
@@ -307,6 +329,7 @@ if test "$1" = 0; then
 	update-alternatives --remove ebtables "%_sbindir/xtables-nft-multi"
 fi
 %endif
+%endif
 
 %post   -n libipq0 -p /sbin/ldconfig
 %postun -n libipq0 -p /sbin/ldconfig
@@ -322,21 +345,24 @@ fi
 %_bindir/iptables-xml
 %_sbindir/arptables-*translate*
 %_sbindir/iptables-apply
-%_sbindir/iptables-legacy*
 %_sbindir/iptables-nft*
 %_sbindir/iptables-*translate*
 %_sbindir/ip6tables-apply
-%_sbindir/ip6tables-legacy*
 %_sbindir/ip6tables-nft*
 %_sbindir/ip6tables-*translate*
 %_sbindir/arptables-nft*
 %_sbindir/ebtables-nft*
 %_sbindir/ebtables-*translate*
-%_sbindir/xtables*
+%_sbindir/xtables-monitor
+%_sbindir/xtables-nft-multi
 %_mandir/man1/*tables*
 %_mandir/man8/*tables*
+%if %{with legacy_backend}
+%_sbindir/iptables-legacy*
+%_sbindir/ip6tables-legacy*
+%_sbindir/xtables-legacy-multi
 # backend-legacy (implicit)
-%if ! %{with libalternatives}
+%if !%{with libalternatives}
 %ghost %_sysconfdir/alternatives/iptables
 %ghost %_sysconfdir/alternatives/iptables-restore
 %ghost %_sysconfdir/alternatives/iptables-save
@@ -357,15 +383,25 @@ fi
 %_datadir/libalternatives/iptables-save/1.conf
 %dir %_datadir/libalternatives/iptables-save
 %endif
+%endif
 %_sbindir/iptables
 %_sbindir/iptables-restore
 %_sbindir/iptables-save
 %_sbindir/ip6tables
 %_sbindir/ip6tables-restore
 %_sbindir/ip6tables-save
+%if %{without legacy_backend}
+%_sbindir/arptables
+%_sbindir/arptables-restore
+%_sbindir/arptables-save
+%_sbindir/ebtables
+%_sbindir/ebtables-restore
+%_sbindir/ebtables-save
+%endif
 
+%if %{with legacy_backend}
 %files backend-nft
-%if ! %{with libalternatives}
+%if !%{with libalternatives}
 %ghost %_sysconfdir/alternatives/iptables
 %ghost %_sysconfdir/alternatives/iptables-restore
 %ghost %_sysconfdir/alternatives/iptables-save
@@ -417,6 +453,7 @@ fi
 %_sbindir/ebtables
 %_sbindir/ebtables-restore
 %_sbindir/ebtables-save
+%endif
 
 %files -n xtables-plugins
 %_libdir/xtables/
