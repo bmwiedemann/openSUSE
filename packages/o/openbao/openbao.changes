@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 24 06:58:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.1:
+  * Release v2.2.1 (#1255)
+  * Backport core deps (#1252)
+  * Return quoted string when -output-curl-string flag is passed
+    #1038 (#1238) (#1250)
+  * build: update Go version and dependencies (#1209) (#1246)
+  * Fix vulns (#1126) (#1245)
+  * Fix vault/diagnose test failure (#1221) (#1247)
+  * Do not encode empty subproblems in ACME (#1236) (#1248)
+  * Fix name of org-level maintainers team (#1237) (#1249)
+
+-------------------------------------------------------------------
 Wed Mar 05 18:15:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.2.0:
