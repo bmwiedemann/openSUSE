@@ -19,7 +19,7 @@
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 42
 # Make sure to update `upgrades` as well!
-%define ver 24.11.1
+%define ver 24.11.3
 %define _ver _24_11
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -597,7 +597,6 @@ Requires:       bzip2
 Requires:       expect
 Requires:       gcc-c++
 Requires:       libnuma-devel
-%ts_depends:     openmpi4-gnu-hpc-devel
 Requires:       pam
 Requires:       pdsh
 Requires:       perl-%{name} = %version
@@ -642,6 +641,10 @@ autoreconf
 [ -e $(pwd)/mybin ] && PATH=$(pwd)/mybin:$PATH
 %if 0%{?suse_version} < 1500
 export CFLAGS="-std=gnu99 %optflags"
+%endif
+# HDF5 specific flags are needed as slurm in not compatible with HDF5 114 api
+%if 0%{?suse_version} >= 1600
+export CFLAGS+=" -DH5_USE_112_API -DH5Oget_info_vers=1"
 %endif
 %configure --enable-shared \
            --disable-static \
@@ -798,7 +801,7 @@ Cflags: -I\${includedir}
 Libs: -L\${libdir} -lslurm
 Description: Slurm API
 Name:           %{pname}
-Version:        %{version}
+Version:        24.11.2
 EOF
 
 # Enable rotation of log files

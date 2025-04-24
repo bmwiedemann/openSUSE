@@ -1704,4 +1704,12 @@
   * Fix issue when jobs were preempted for licenses even if there (forwarded request 1244326 from eeich)</comment>
     <requestid>1244329</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>3ace2a29ad8c14aeb30dc918437bf2b1</srcmd5>
+    <version>24.11.3</version>
+    <time>1745508428</time>
+    <user>anag_factory</user>
+    <comment>- removed openmpi4-hpc dependency for test suite (forwarded request 1272423 from mslacken)</comment>
+    <requestid>1272424</requestid>
+  </revision>
 </revisionlist>
