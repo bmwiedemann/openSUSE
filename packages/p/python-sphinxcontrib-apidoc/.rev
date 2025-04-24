@@ -77,4 +77,13 @@
   * Use release/v1 branch of pypi release workflow</comment>
     <requestid>1140271</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ec4498d1659d67374963679b707d16fd</srcmd5>
+    <version>0.5.0</version>
+    <time>1745508429</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch sphinx-82.patch to support Sphinx &gt;= 8.2
+  gh#sphinx-contrib/apidoc#23</comment>
+    <requestid>1272431</requestid>
+  </revision>
 </revisionlist>

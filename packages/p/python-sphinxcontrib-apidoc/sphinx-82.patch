@@ -1,0 +1,23 @@
+From d9440398976ad305697527fb5e27d8c3b5869fb7 Mon Sep 17 00:00:00 2001
+From: Karolina Surma <ksurma@redhat.com>
+Date: Thu, 3 Apr 2025 13:52:07 +0200
+Subject: [PATCH] Annotate the list of strings correctly for Sphinx 8.2+
+
+This also works with an older Sphinx, tested on 8.1.3.
+---
+ sphinxcontrib/apidoc/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: sphinxcontrib-apidoc-0.5.0/sphinxcontrib/apidoc/__init__.py
+===================================================================
+--- sphinxcontrib-apidoc-0.5.0.orig/sphinxcontrib/apidoc/__init__.py
++++ sphinxcontrib-apidoc-0.5.0/sphinxcontrib/apidoc/__init__.py
+@@ -24,7 +24,7 @@ def setup(app: Sphinx) -> Dict[str, Any]
+     app.add_config_value('apidoc_module_dir', None, 'env', [str])
+     app.add_config_value('apidoc_output_dir', 'api', 'env', [str])
+     app.add_config_value('apidoc_template_dir', 'templates', 'env', [str])
+-    app.add_config_value('apidoc_excluded_paths', [], 'env', [[str]])
++    app.add_config_value('apidoc_excluded_paths', [], 'env', list[str])
+     app.add_config_value('apidoc_separate_modules', False, 'env', [bool])
+     app.add_config_value('apidoc_toc_file', None, 'env', [str, bool])
+     app.add_config_value('apidoc_module_first', False, 'env', [bool])

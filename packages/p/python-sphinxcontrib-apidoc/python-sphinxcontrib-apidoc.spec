@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-apidoc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            http://www.sphinx-doc.org/
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-apidoc/sphinxcontrib-apidoc-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM sphinx-82.patch gh#sphinx-contrib/apidoc#23
+Patch0:         sphinx-82.patch
 BuildRequires:  %{python_module pbr >= 4.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
