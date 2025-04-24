@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 22 20:09:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.10.2
+  * Bugfix (defect introduced: date 19991116): when appending a
+    setting to a main.cf or master.cf file that did not end in a
+    newline character, the "postconf -e" command did not add an
+    extra newline character before appending the new setting, causing
+    information to become garbled.
+  * Bugfix (defect introduced: Postfix 2.3, date 20051222): the
+    Dovecot auth client did not attempt to create a new connection
+    after an I/O error on an existing connection.
+  * Improved and corrected error messages when converting (host or
+    service) information to (symbolic text, numerical text, or
+    binary) form.
+  * Documentation: updated link to Dovecot documentation.
+
+-------------------------------------------------------------------
 Tue Apr 15 16:07:52 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - update postfix-main.cf.patch
