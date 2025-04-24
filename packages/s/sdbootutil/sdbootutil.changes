@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 19:15:22 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250423.61ca94f:
+  * Revert "Use filesystem order in grub2-bls" (bsc#1241046)
+
+-------------------------------------------------------------------
+Wed Apr 23 13:15:56 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250423.7e34390:
+  * Check if TPM2 is in lockout (bsc#1241168)
+  * Retry password when mismatch
+
+-------------------------------------------------------------------
 Mon Apr 21 13:43:47 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250421.7ffd25a:
