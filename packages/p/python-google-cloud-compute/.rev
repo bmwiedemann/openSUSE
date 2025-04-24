@@ -31,4 +31,13 @@
     <comment>Add bug reference bsc#1241310 (forwarded request 1270130 from seanmarlow)</comment>
     <requestid>1270636</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bb5ade75117b48477a7c8828163c35e0</srcmd5>
+    <version>1.30.0</version>
+    <time>1745512123</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.30.0
+  * Update Compute Engine API to revision 20250415 (#13800) (forwarded request 1272442 from glaubitz)</comment>
+    <requestid>1272451</requestid>
+  </revision>
 </revisionlist>
