@@ -380,4 +380,22 @@
     <comment></comment>
     <requestid>1255999</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b6c746495d5ea43a4f634f62cd8f2671</srcmd5>
+    <version>3.3.1</version>
+    <time>1745508360</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.1:
+  * remove License classifier in favor of a SPDX license
+    expression, #231
+  * reorganize and cleanup many tests
+  * add optional group and sep arguments' to .to01(), #230 - as
+    well as util.ba2hex() and util.ba2base()
+  * ignore whitespace in util.base2ba() and util.hex2ba()
+  * check for embedded nul characters when extending (and
+    initializing) bitarray from string
+  * improve testing
+  * add double precision floating point number example</comment>
+    <requestid>1272311</requestid>
+  </revision>
 </revisionlist>
