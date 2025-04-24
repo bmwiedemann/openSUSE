@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 17 18:29:47 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix name clash of parse_range between common/parse-utils.c and
+  libblkid.a from util-linux-2.41
+  (btrfsprogs-libblkid-static-lib-clash.patch).
+
+-------------------------------------------------------------------
 Thu Apr  3 00:00:00 CEST 2025 - dsterba@suse.cz
 
 - update to 6.14
