@@ -18,13 +18,12 @@
 
 %define         appid io.elementary.quick-settings
 Name:           pantheon-quick-settings
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Access frequently used settings and system actions
 License:        GPL-3.0-or-later
 URL:            https://github.com/elementary/quick-settings
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         https://patch-diff.githubusercontent.com/raw/elementary/quick-settings/pull/91.patch#/fix-uint.patch
 BuildRequires:  accountsservice-vala
 BuildRequires:  fdupes
 BuildRequires:  meson
@@ -48,7 +47,7 @@ BuildRequires:  pkgconfig(wingpanel)
 %lang_package
 
 %prep
-%autosetup -p1 -n quick-settings-%{version}
+%autosetup -n quick-settings-%{version}
 
 %build
 %meson

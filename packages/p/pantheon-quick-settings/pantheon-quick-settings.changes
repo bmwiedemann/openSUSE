@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 24 10:02:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.2.0:
+  * Adapt to uid_t being an available type since Vala 0.56.17
+  * Cleaner shutdown or restart
+  * Add "Prevent Sleep" toggle
+  * Update translation template
+  * DarkModeToggle: use Settings daemon key
+  * Make PreventSleepToggle self contained
+  * Show suspend button not lock when actually suspending in greeter
+  * Update screenshot
+- remove patch fix-uint.patch, as upstream integrated the patch
+
+-------------------------------------------------------------------
 Wed Mar  5 15:57:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.1.0:
