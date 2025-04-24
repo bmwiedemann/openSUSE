@@ -27,7 +27,7 @@
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -130,7 +130,7 @@
             filesystem="btrfs"
             format="qcow2"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -162,7 +162,7 @@
             filesystem="btrfs"
             format="vmdk"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -198,14 +198,14 @@
             filesystem="xfs"
             format="qcow2"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
             bundle_format="%N-VM.%A-%M.%m.%p-%I"
         >
             <bootloader name="grub2" timeout="1"/>
-            <size unit="G">1</size>
+            <size unit="G">2</size>
         </type>
     </preferences>
 
@@ -219,7 +219,7 @@
             filesystem="btrfs"
             format="vhdx"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"
@@ -252,7 +252,7 @@
             filesystem="btrfs"
             format="vhdx"
             firmware="uefi"
-            efipartsize="33"
+            efipartsize="512"
             bootpartition="false"
             bootkernel="custom"
             devicepersistency="by-uuid"

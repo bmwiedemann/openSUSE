@@ -236,4 +236,14 @@
     <comment></comment>
     <requestid>1268361</requestid>
   </revision>
+  <revision rev="30" vrev="30">
+    <srcmd5>901575881e1c440f241312cec6037f22</srcmd5>
+    <version>84.87.1</version>
+    <time>1745508299</time>
+    <user>anag_factory</user>
+    <comment>- Bump disk size of the Cloud flavor to 2GiB
+
+- [EFI] resize ESP partition in Minimal-VM images (bsc#1240118)</comment>
+    <requestid>1272107</requestid>
+  </revision>
 </revisionlist>

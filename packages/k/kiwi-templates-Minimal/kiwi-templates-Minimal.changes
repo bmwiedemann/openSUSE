@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 23 09:17:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Bump disk size of the Cloud flavor to 2GiB
+
+-------------------------------------------------------------------
+Mon Apr 14 12:50:24 UTC 2025 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
+
+- [EFI] resize ESP partition in Minimal-VM images (bsc#1240118) 
+
+-------------------------------------------------------------------
 Fri Mar 28 21:18:11 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Set the timeout via sdbootutil
