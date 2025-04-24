@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Apr 23 15:06:24 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.22.8.
+  Full changelog: https://github.com/jelmer/dulwich/releases/tag/dulwich-0.22.8
+  * porcelain: respect 'abbrev' argument when describing annotated-tagless repositories by @jayaddison in #1482
+  * Provide gpgme-config on Ubuntu by @jelmer in #1487
+  * Docstrings for constructors of repo.Repo and repo.MemoryRepo by @marnanel in #1490
+  * add support for the git option "index.skipHash" by @rggjan in #1488
+  * Skip-worktree support, sparse checkout impl by @lmmx in #1495
+  * Add default values for IndexEntry by @jelmer in #1496
+  * Allow passing in plain strings to tag_create by @jelmer in #1500
+  * feat(cone-mode): sparse checkout cone mode support by @lmmx in #1497
+  * Add note on comparison with other Git libraries by @jelmer in #1501
+
+-------------------------------------------------------------------
 Thu Dec 26 00:55:26 UTC 2024 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.22.7.
