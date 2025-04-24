@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 14:27:12 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add explicit BuildRequires: glew-devel since openscg-devel no
+  longer pulls it in.
+
+-------------------------------------------------------------------
 Mon Dec 30 15:59:12 UTC 2024 - Torsten Gruner <simmphonie@opensuse.org>
 
 - build with C++17 version. Needed by cgal 6.

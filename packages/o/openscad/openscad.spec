@@ -1,7 +1,7 @@
 #
 # spec file for package openscad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{suse_version} < 1600
 %define gccver 13
@@ -36,6 +37,7 @@ BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  flex
 BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  glew-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
