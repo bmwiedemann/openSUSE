@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 23 08:32:35 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.21.4
+  * additional checks in PhaseOne correction tag 0x412 processing
+  * Do not apply canon metadata crop to DNG files
+  * Make sure the profile_length is the same size as the allocated memory.
+  * fix: remove duplicated supported camera
+  * check split_col/split_row values in phase_one_correct
+  * Prevent out-of-bounds read in fuji 0xf00c tag parser
+  * prevent OOB reads in phase_one_correct 
+- modified sources
+  % baselibs.conf
+- fixes:
+  * CVE-2025-43964 [bsc#1241584] 
+  * CVE-2025-43962 [bsc#1241585]
+  * CVE-2025-43961 [bsc#1241643]
+  * CVE-2025-43963 [bsc#1241642]
+
+-------------------------------------------------------------------
 Fri Jan 31 07:03:32 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.21.3:
