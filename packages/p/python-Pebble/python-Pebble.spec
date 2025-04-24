@@ -16,14 +16,17 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Pebble
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Threading and multiprocessing eye-candy for Python
 License:        LGPL-3.0-only
 URL:            https://github.com/noxdafox/pebble
-Source:         https://files.pythonhosted.org/packages/source/P/Pebble/Pebble-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pebble/pebble-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -39,13 +42,13 @@ Pebble provides an API to manage threads and processes within an application.
 It wraps Python’s standard library threading and multiprocessing objects.
 
 %prep
-%setup -q -n Pebble-%{version}
+%setup -q -n pebble-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +58,6 @@ It wraps Python’s standard library threading and multiprocessing objects.
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pebble
-%{python_sitelib}/Pebble-%{version}*
+%{python_sitelib}/[Pp]ebble-%{version}*
 
 %changelog
