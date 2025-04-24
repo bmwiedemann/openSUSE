@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 14:28:54 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add patch, fix for bsc#1239909 / CVE-2025-2588:
+  * CVE-2025-2588.patch
+
+-------------------------------------------------------------------
 Thu Aug 24 09:28:41 UTC 2023 - Otto Hollmann <otto.hollmann@suse.com>
 
 - Update to 1.14.1

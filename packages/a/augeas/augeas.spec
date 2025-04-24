@@ -1,7 +1,7 @@
 #
 # spec file for package augeas
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source3:        baselibs.conf
 Patch0:         augeas-modprobe-lense.patch
 # from https://patch-diff.githubusercontent.com/raw/hercules-team/augeas/pull/755.patch
 Patch1:         gcc9-disable-broken-test.patch
+Patch2:         CVE-2025-2588.patch
 BuildRequires:  glibc-locale
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
