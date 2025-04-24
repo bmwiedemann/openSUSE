@@ -104,4 +104,16 @@
   * Label flaky test</comment>
     <requestid>1225096</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ada97b42c5d2da30bf774cebd3cdbdde</srcmd5>
+    <version>1.3.2</version>
+    <time>1745508325</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.3.2:
+  * Fix type annotations for Bokeh &gt;= 3.7
+  * Test on CPython 3.14
+  * Test and build wheels for PyPy 3.11
+  * Test PyPy 3.10 on all 3 major OSes</comment>
+    <requestid>1272310</requestid>
+  </revision>
 </revisionlist>
