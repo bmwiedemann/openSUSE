@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 07:38:41 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Fix license, it's MIT
+  https://github.com/PyO3/setuptools-rust/blob/v1.11.1/LICENSE
+
+-------------------------------------------------------------------
 Thu Apr 10 13:50:49 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.11.1

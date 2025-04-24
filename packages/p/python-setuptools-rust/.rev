@@ -145,4 +145,13 @@
     <comment></comment>
     <requestid>1268417</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1b86e29a496a97b9dfe6cc9f216a8453</srcmd5>
+    <version>1.11.1</version>
+    <time>1745508296</time>
+    <user>anag_factory</user>
+    <comment>- Fix license, it's MIT
+  https://github.com/PyO3/setuptools-rust/blob/v1.11.1/LICENSE</comment>
+    <requestid>1272073</requestid>
+  </revision>
 </revisionlist>

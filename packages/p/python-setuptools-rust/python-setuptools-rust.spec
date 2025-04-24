@@ -21,7 +21,7 @@ Name:           python-setuptools-rust
 Version:        1.11.1
 Release:        0
 Summary:        Setuptools plugin for Rust extensions
-License:        BSD-3-Clause
+License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/PyO3/setuptools-rust
 Source:         https://files.pythonhosted.org/packages/source/s/setuptools_rust/setuptools_rust-%{version}.tar.gz
