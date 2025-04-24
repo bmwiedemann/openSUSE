@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Apr 24 03:04:02 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.27+6 (April 2025 CPU)
+  * CVEs
+    + CVE-2025-21587, bsc#1241274
+    + CVE-2025-30691, bsc#1241275
+    + CVE-2025-30698, bsc#1241276
+  * Changes
+    + JDK-8195675: Call to insertText with single character
+      from custom Input Method ignored
+    + JDK-8202926: Test java/awt/Focus/
+      /WindowUpdateFocusabilityTest/
+      /WindowUpdateFocusabilityTest.html fails
+    + JDK-8216539: tools/jar/modularJar/Basic.java timed out
+    + JDK-8268364: jmethod clearing should be done during
+      unloading
+    + JDK-8273914: Indy string concat changes order of
+      operations
+    + JDK-8294316: SA core file support is broken on macosx-x64
+      starting with macOS 12.x
+    + JDK-8306408: Fix the format of several tables in
+      building.md
+    + JDK-8309841: Jarsigner should print a warning if an entry
+      is removed
+    + JDK-8312049: runtime/logging/ClassLoadUnloadTest can be
+      improved
+    + JDK-8320916: jdk/jfr/event/gc/stacktrace/
+      /TestParallelMarkSweepAllocationPendingStackTrace.java failed
+      with "OutOfMemoryError: GC overhead limit exceeded"
+    + JDK-8327650: Test java/nio/channels/DatagramChannel/
+      /StressNativeSignal.java timed out
+    + JDK-8328242: Add a log area to the PassFailJFrame
+    + JDK-8331863: DUIterator_Fast used before it is constructed
+    + JDK-8336012: Fix usages of jtreg-reserved properties
+    + JDK-8337494: Clarify JarInputStream behavior
+    + JDK-8337692: Better TLS connection support
+    + JDK-8338430: Improve compiler transformations
+    + JDK-8339560: Unaddressed comments during code review of
+      JDK-8337664
+    + JDK-8339810: Clean up the code in sun.tools.jar.Main to
+      properly close resources and use ZipFile during extract
+    + JDK-8339931: Update problem list for
+      WindowUpdateFocusabilityTest.java
+    + JDK-8340387: Update OS detection code to recognize
+      Windows Server 2025
+    + JDK-8341424: GHA: Collect hs_errs from build time failures
+    + JDK-8342562: Enhance Deflater operations
+    + JDK-8342704: GHA: Report truncation is broken after
+      JDK-8341424
+    + JDK-8343007: Enhance Buffered Image handling
+    + JDK-8343474: [updates] Customize README.md to specifics
+      of update project
+    + JDK-8343599: Kmem limit and max values swapped when
+      printing container information
+    + JDK-8343786: [11u] GHA: Bump macOS and Xcode versions to
+      macos-13 and XCode 14.3.1
+    + JDK-8344589: Update IANA Language Subtag Registry to
+      Version 2024-11-19
+    + JDK-8345509: Bump update version of OpenJDK: 11.0.27
+    + JDK-8346587: Distrust TLS server certificates anchored by
+      Camerfirma Root CAs
+    + JDK-8347427: JTabbedPane/8134116/Bug8134116.java has no
+      license header
+    + JDK-8347847: Enhance jar file support
+    + JDK-8347965: (tz) Update Timezone Data to 2025a
+    + JDK-8349603: [21u, 17u, 11u] Update GHA JDKs after Jan/25
+      updates
+    + JDK-8352097: (tz) zone.tab update missed in 2025a backport
+    + JDK-8354087: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.27
+
+-------------------------------------------------------------------
 Wed Jan 22 12:36:15 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.26+4 (January 2025 CPU)
