@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:57:58 UTC 2025 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.5.2
+  * Migrate from evdevice.fn to evdevice.path by @lunegh in #75
+
+-------------------------------------------------------------------
 Tue Apr  8 18:52:59 UTC 2025 - Jannik Seiler <seil0@mosad.xyz>
 
 - Update to 0.5.1
