@@ -1,0 +1,337 @@
+From cb72de6caff51b79c0e5ef13dbd7a79754e3de35 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Thu, 17 Apr 2025 22:13:43 +0800
+Subject: [PATCH] Fix PowerPC CAS reboot to evaluate menu context
+
+The Client Architecture Support (CAS) negotiation between the firmware
+and the operating system kernel can result in a reboot, allowing the
+firmware to reinitialize itself to satisfy the request. In this case,
+grub is expected to resume from the previous session by booting the
+entry recorded in the boot-last-label OpenFirmware property.
+
+However, the current implementation fails when a CAS-triggered reboot
+originates from a menu entry within a submenu. For example, when booting
+into a Btrfs snapshot. The root cause is that the menu context is not
+evaluated. As a result, if the resumed boot entry relies on any
+evaluated variables, the behavior becomes undefined.
+
+This patch addresses the issue by storing both the entry ID and its
+content in the boot-last-label property. The ID is used to descend into
+the correct menu context, ensuring the entry is executed in the same
+environment it was originally selected from.
+
+A caret (^) is used to separate the entry ID from its content. The
+resulting format in boot-last-label looks like this:
+
+  gnulinux-simple-2315b72a-17f2-4537-bc62-63da478ce1dd^setparams 'SLES 15-SP6'
+
+      set gfxpayload=text
+      insmod gzio
+      insmod part_gpt
+      insmod btrfs
+      search --no-floppy --fs-uuid --set=root 2315b72a-17f2- ...
+      echo	'Loading Linux 6.4.0-150600.23.25-default ...'
+      linux	/boot/vmlinux-6.4.0-150600.23.25-default root=UUID= ...
+      echo	'Loading initial ramdisk ...'
+      initrd	/boot/initrd-6.4.0-150600.23.25-default
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/normal/main.c       | 60 ++++++++++++++++++++++--------
+ grub-core/normal/menu.c       | 45 +++++++++++++++++++++-
+ grub-core/normal/menu_entry.c | 70 +++++++++++++++++++++++++++++++++--
+ grub-core/script/execute.c    |  7 ----
+ 4 files changed, 154 insertions(+), 28 deletions(-)
+
+diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
+index c9eda889ca..091450e53c 100644
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -365,21 +365,6 @@ grub_normal_execute (const char *config, int nested, int batch)
+     {
+       menu = read_config_file (config);
+ 
+-#ifdef GRUB_MACHINE_IEEE1275
+-      int boot;
+-      boot = 0;
+-      char *script = NULL;
+-      char *dummy[1] = { NULL };
+-      if (! grub_ieee1275_cas_reboot (&script) && script)
+-        {
+-          if (! grub_script_execute_new_scope (script, 0, dummy))
+-            boot = 1;
+-        }
+-      grub_free (script);
+-      if (boot)
+-        grub_command_execute ("boot", 0, 0);
+-#endif
+-
+       /* Ignore any error.  */
+       grub_errno = GRUB_ERR_NONE;
+     }
+@@ -393,7 +378,50 @@ grub_normal_execute (const char *config, int nested, int batch)
+     {
+       if (menu && menu->size)
+ 	{
+-
++#ifdef GRUB_MACHINE_IEEE1275
++	  char *entry_id = NULL;
++	  char *delim;
++	  const char *chosen;
++
++	  if (grub_ieee1275_cas_reboot (&entry_id) != 0)
++	    goto enter_menu;
++
++	  if ((delim = grub_strchr (entry_id, '^')) != NULL)
++	    *delim = '\0';
++	  else
++	    goto enter_menu;
++
++	  chosen = grub_env_get ("chosen") ? : "";
++	  if (! grub_strlen (chosen))
++	    {
++	      grub_env_set ("default", entry_id);
++	      grub_env_set ("timeout", "0");
++	    }
++	  else
++	    {
++	      delim = entry_id;
++	      while ((delim = grub_strchr (delim, '>')) != NULL)
++		{
++		  if (delim[1] == '>')
++		    {
++		      delim += 2;
++		      continue;
++		    }
++		  *delim = '\0';
++		  if (grub_strcmp (chosen, entry_id) == 0)
++		    {
++		      grub_env_set ("default", delim + 1);
++		      grub_env_set ("timeout", "0");
++		      break;
++		    }
++		  *delim++ = '>';
++		}
++	      if (delim == NULL)
++		grub_dprintf ("normal", "CAS triggered but find no match: %s\n", entry_id);
++	    }
++ enter_menu:
++	  grub_free (entry_id);
++#endif
+ 	  grub_boot_time ("Entering menu");
+ 	  grub_show_menu (menu, nested, 0);
+ 	  if (nested)
+diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
+index dfdf0c7268..897da6abac 100644
+--- a/grub-core/normal/menu.c
++++ b/grub-core/normal/menu.c
+@@ -33,6 +33,9 @@
+ #include <grub/gfxterm.h>
+ #include <grub/dl.h>
+ #include <grub/crypttab.h>
++#ifdef GRUB_MACHINE_IEEE1275
++#include <grub/ieee1275/ieee1275.h>
++#endif
+ 
+ /* Time to delay after displaying an error message about a default/fallback
+    entry failing to boot.  */
+@@ -318,8 +321,31 @@ grub_menu_execute_entry(grub_menu_entry_t entry, int auto_boot)
+     grub_env_set ("default", ptr + 1);
+   else
+     grub_env_unset ("default");
++#ifdef GRUB_MACHINE_IEEE1275
++  char *cas_entry_id = NULL;
++  char *cas_entry_source;
++  const char *id;
++  const char *sourcecode = entry->sourcecode;
+ 
++  id = grub_env_get ("chosen") ? : "";
++
++  if (grub_ieee1275_cas_reboot (&cas_entry_id) != 0)
++    goto exec_new_scope;
++
++  if ((cas_entry_source = grub_strchr (cas_entry_id, '^')) != NULL)
++    *cas_entry_source++ = '\0';
++  else
++    goto exec_new_scope;
++
++  if (grub_strcmp (id, cas_entry_id) == 0)
++    sourcecode = cas_entry_source;
++
++ exec_new_scope:
++  grub_script_execute_new_scope (sourcecode, entry->argc, entry->args);
++  grub_free (cas_entry_id);
++#else
+   grub_script_execute_new_scope (entry->sourcecode, entry->argc, entry->args);
++#endif
+ 
+   if (errs_before != grub_err_printed_errors)
+     grub_wait_after_message ();
+@@ -327,8 +353,23 @@ grub_menu_execute_entry(grub_menu_entry_t entry, int auto_boot)
+   errs_before = grub_err_printed_errors;
+ 
+   if (grub_errno == GRUB_ERR_NONE && grub_loader_is_loaded ())
+-    /* Implicit execution of boot, only if something is loaded.  */
+-    grub_command_execute ("boot", 0, 0);
++    {
++#ifdef GRUB_MACHINE_IEEE1275
++      char *entry_data;
++
++      entry_data = grub_xasprintf ("%s^%s", id, sourcecode);
++      if (entry_data)
++	grub_ieee1275_set_boot_last_label (entry_data);
++      else
++	grub_print_error ();
++      grub_free (entry_data);
++#endif
++      /* Implicit execution of boot, only if something is loaded.  */
++      grub_command_execute ("boot", 0, 0);
++#ifdef GRUB_MACHINE_IEEE1275
++      grub_ieee1275_set_boot_last_label ("");
++#endif
++    }
+ 
+   if (errs_before != grub_err_printed_errors)
+     grub_wait_after_message ();
+diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
+index 06682a396d..bbd05e5638 100644
+--- a/grub-core/normal/menu_entry.c
++++ b/grub-core/normal/menu_entry.c
+@@ -29,6 +29,9 @@
+ #include <grub/charset.h>
+ #include <grub/safemath.h>
+ #include <grub/crypttab.h>
++#ifdef GRUB_MACHINE_IEEE1275
++#include <grub/ieee1275/ieee1275.h>
++#endif
+ 
+ enum update_mode
+   {
+@@ -78,6 +81,9 @@ struct screen
+   int completion_shown;
+ 
+   int submenu;
++#ifdef GRUB_MACHINE_IEEE1275
++  char *id;
++#endif
+ 
+   struct per_term_screen *terms;
+   unsigned nterms;
+@@ -578,6 +584,9 @@ destroy_screen (struct screen *screen)
+   grub_free (screen->killed_text);
+   grub_free (screen->lines);
+   grub_free (screen->terms);
++#ifdef GRUB_MACHINE_IEEE1275
++  grub_free (screen->id);
++#endif
+   grub_free (screen);
+ }
+ 
+@@ -599,6 +608,11 @@ make_screen (grub_menu_entry_t entry)
+   screen->lines = grub_malloc (sizeof (struct line));
+   if (! screen->lines)
+     goto fail;
++#ifdef GRUB_MACHINE_IEEE1275
++  screen->id = grub_strdup (entry->id);
++  if (! screen->id)
++    goto fail;
++#endif
+ 
+   /* Initialize the first line which must be always present.  */
+   if (! init_line (screen, screen->lines))
+@@ -1215,14 +1229,64 @@ run (struct screen *screen)
+     script[size] = '\0';
+   }
+   grub_script_execute_new_scope (script, 0, dummy);
+-  grub_free (script);
+ 
+   if (errs_before != grub_err_printed_errors)
+     grub_wait_after_message ();
+ 
+   if (grub_errno == GRUB_ERR_NONE && grub_loader_is_loaded ())
+-    /* Implicit execution of boot, only if something is loaded.  */
+-    grub_command_execute ("boot", 0, 0);
++    {
++#ifdef GRUB_MACHINE_IEEE1275
++      char *entry_data = NULL;
++      const char *chosen;
++      const char *ptr;
++      grub_size_t sz = 0;
++      char *buf = NULL;
++      char *optr;
++
++      chosen = grub_env_get ("chosen") ? : "";
++      for (ptr = screen->id; *ptr; ptr++)
++	sz += (*ptr == '>') ? 2 : 1;
++      sz++;
++      sz += grub_strlen (chosen);
++      sz++;
++      buf = grub_malloc (sz);
++      if (!buf)
++	{
++	  grub_print_error ();
++	  goto exec_boot;
++	}
++      optr = buf;
++      if (*chosen != '\0')
++	{
++	  optr = grub_stpcpy (optr, chosen);
++	  *optr++ = '>';
++	}
++      for (ptr = screen->id; *ptr; ptr++)
++	{
++	  if (*ptr == '>')
++	    *optr++ = '>';
++	  *optr++ = *ptr;
++	}
++      *optr = 0;
++      entry_data = grub_xasprintf ("%s^%s", buf, script);
++      if (entry_data)
++	grub_ieee1275_set_boot_last_label (entry_data);
++      else
++	grub_print_error ();
++      grub_free (entry_data);
++      grub_free (buf);
++      grub_free (script);
++      script = NULL;
++ exec_boot:
++#endif
++      /* Implicit execution of boot, only if something is loaded.  */
++      grub_command_execute ("boot", 0, 0);
++#ifdef GRUB_MACHINE_IEEE1275
++      grub_ieee1275_set_boot_last_label ("");
++#endif
++    }
++
++  grub_free (script);
+ 
+   if (screen->submenu)
+     {
+diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
+index dab8fd2aeb..14ff09094f 100644
+--- a/grub-core/script/execute.c
++++ b/grub-core/script/execute.c
+@@ -28,9 +28,6 @@
+ #include <grub/extcmd.h>
+ #include <grub/i18n.h>
+ #include <grub/verify.h>
+-#ifdef GRUB_MACHINE_IEEE1275
+-#include <grub/ieee1275/ieee1275.h>
+-#endif
+ 
+ /* Max digits for a char is 3 (0xFF is 255), similarly for an int it
+    is sizeof (int) * 3, and one extra for a possible -ve sign.  */
+@@ -886,10 +883,6 @@ grub_script_execute_sourcecode (const char *source)
+   grub_err_t ret = 0;
+   struct grub_script *parsed_script;
+ 
+-#ifdef GRUB_MACHINE_IEEE1275
+-  grub_ieee1275_set_boot_last_label (source);
+-#endif
+-
+   while (source)
+     {
+       char *line;
+-- 
+2.49.0
+

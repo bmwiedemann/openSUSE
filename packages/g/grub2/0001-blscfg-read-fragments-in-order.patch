@@ -1,0 +1,259 @@
+From 434b014e20ebb7930599fe30e09441af6b449fef Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 14 Apr 2025 08:52:26 +0800
+Subject: [PATCH] blscfg: read fragments in order
+
+The PCR 9 measurements of BLS entry files made by blscfg module are
+performed in "readdir" order, which depends on the filesystem and is
+therefore inherently unpredictable and unreliable. To make future PCR
+values more predictable, the entries should be processed in a
+deterministic order, such as alphabetically by filename.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/commands/blscfg.c | 164 ++++++++++++++++++++++--------------
+ 1 file changed, 103 insertions(+), 61 deletions(-)
+
+diff --git a/grub-core/commands/blscfg.c b/grub-core/commands/blscfg.c
+index 343c7ae989..10996722cf 100644
+--- a/grub-core/commands/blscfg.c
++++ b/grub-core/commands/blscfg.c
+@@ -55,6 +55,15 @@ struct keyval
+ 
+ static struct bls_entry *entries = NULL;
+ 
++struct bls_fragment
++{
++  struct bls_fragment *next;
++  struct bls_fragment *prev;
++  char *filename;
++};
++typedef struct bls_fragment *bls_fragment_t;
++static bls_fragment_t fragments;
++
+ #define FOR_BLS_ENTRIES(var) FOR_LIST_ELEMENTS (var, entries)
+ 
+ /* BLS appears to make paths relative to the filesystem that snippets are
+@@ -466,69 +475,41 @@ struct read_entry_info {
+   grub_file_t file;
+ };
+ 
+-static int read_entry (
+-    const char *filename,
+-    const struct grub_dirhook_info *dirhook_info UNUSED,
+-    void *data)
++static int
++read_entry (const char *filename)
+ {
+   grub_size_t m = 0, n, clip = 0;
+   int rc = 0;
+   char *p = NULL;
+   grub_file_t f = NULL;
+   struct bls_entry *entry;
+-  struct read_entry_info *info = (struct read_entry_info *)data;
+-
+-  grub_dprintf ("blscfg", "filename: \"%s\"\n", filename);
++  char *slash;
+ 
+-  n = grub_strlen (filename);
++  grub_dprintf ("blscfg", "read_entry: \"%s\"\n", filename);
+ 
+-  if (info->file)
+-    {
+-      f = info->file;
+-    }
+-  else
+-    {
+-      if (filename[0] == '.')
+-	return 0;
++  f = grub_file_open (filename, GRUB_FILE_TYPE_CONFIG);
+ 
+-      if (n <= 5)
+-	return 0;
+-
+-      if (grub_strcmp (filename + n - 5, ".conf") != 0)
+-	return 0;
+-
+-      p = grub_xasprintf ("(%s)%s/%s", info->devid, info->dirname, filename);
+-
+-      f = grub_file_open (p, GRUB_FILE_TYPE_CONFIG);
+-      if (!f)
+-	goto finish;
+-    }
++  if (!f)
++    goto finish;
+ 
+   entry = grub_zalloc (sizeof (*entry));
+   if (!entry)
+     goto finish;
+ 
+-  if (info->file)
+-    {
+-      char *slash;
++  /* Strip .conf */
++  n = grub_strlen (filename);
+ 
+-      if (n > 5 && !grub_strcmp (filename + n - 5, ".conf") == 0)
+-	clip = 5;
++  if (n > 5 && !grub_strcmp (filename + n - 5, ".conf") == 0)
++    clip = 5;
+ 
+-      slash = grub_strrchr (filename, '/');
+-      if (!slash)
+-	slash = grub_strrchr (filename, '\\');
++  slash = grub_strrchr (filename, '/');
++  if (!slash)
++    slash = grub_strrchr (filename, '\\');
+ 
+-      while (*slash == '/' || *slash == '\\')
+-	slash++;
++  while (*slash == '/' || *slash == '\\')
++    slash++;
+ 
+-      m = slash ? slash - filename : 0;
+-    }
+-  else
+-    {
+-      m = 0;
+-      clip = 5;
+-    }
++  m = slash ? slash - filename : 0;
+   n -= m;
+ 
+   entry->filename = grub_strndup(filename + m, n - clip);
+@@ -573,10 +554,7 @@ static int read_entry (
+       if (rc < 0)
+ 	break;
+     }
+-  
+-    if (info->devid)
+-      entry->devid = grub_strdup(info->devid);
+-
++    entry->devid = grub_file_get_device_name (filename);
+     if (!rc)
+       bls_add_entry(entry);
+ 
+@@ -590,6 +568,73 @@ finish:
+   return 0;
+ }
+ 
++static int
++collect_fragments (
++    const char *filename,
++    const struct grub_dirhook_info *dirhook_info UNUSED,
++    void *data)
++{
++  grub_size_t n;
++  char *p = NULL;
++  struct read_entry_info *info = (struct read_entry_info *)data;
++  bls_fragment_t fragment, f, last;
++
++  if (filename[0] == '.')
++    return 0;
++
++  n = grub_strlen (filename);
++  if (n <= 5)
++    return 0;
++
++  if (grub_strcmp (filename + n - 5, ".conf") != 0)
++    return 0;
++
++  p = grub_xasprintf ("(%s)%s/%s", info->devid, info->dirname, filename);
++
++  fragment = grub_zalloc (sizeof (*fragment));
++  fragment->filename = grub_strdup (p);
++
++  if (!fragments)
++    {
++      fragments = fragment;
++      return 0;
++    }
++
++  FOR_LIST_ELEMENTS (f, fragments)
++    {
++      int rc;
++      rc = grub_strcmp(fragment->filename, f->filename);
++      if (!rc)
++	{
++	  grub_free (fragment);
++	  return 0;
++	}
++      if (rc < 0)
++	{
++	  fragment->next = f;
++	  if (f->prev)
++	    f->prev->next = fragment;
++	  fragment->prev = f->prev;
++	  f->prev = fragment;
++	  if (f == fragments)
++	    {
++	      fragments = fragment;
++	      fragment->prev = NULL;
++	    }
++	  return 0;
++	}
++      last = f;
++    }
++
++  if (last)
++    {
++      last->next = fragment;
++      fragment->prev = last;
++    }
++
++  return 0;
++}
++
+ static grub_envblk_t saved_env = NULL;
+ 
+ static int UNUSED
+@@ -1007,6 +1052,7 @@ static int find_entry (struct find_entry_info *info)
+   const char *blsdir = info->dirname;
+   int fallback = 0;
+   int r = 0;
++  bls_fragment_t fragment;
+ 
+   if (!blsdir) {
+     blsdir = grub_env_get ("blsdir");
+@@ -1024,8 +1070,14 @@ static int find_entry (struct find_entry_info *info)
+   read_entry_info.devid = info->devid;
+ 
+ read_fallback:
+-  r = blsdir_fs->fs_dir (blsdir_dev, read_entry_info.dirname, read_entry,
++  r = blsdir_fs->fs_dir (blsdir_dev, read_entry_info.dirname, collect_fragments,
+ 			 &read_entry_info);
++  FOR_LIST_ELEMENTS (fragment, fragments)
++    {
++      grub_dprintf ("blscfg", "read_entry: %s\n", fragment->filename);
++      read_entry (fragment->filename);
++    }
++
+   if (r != 0) {
+       grub_dprintf ("blscfg", "read_entry returned error\n");
+       grub_err_t e;
+@@ -1060,21 +1112,11 @@ bls_load_entries (const char *path)
+       .fs = NULL,
+       .dirname = NULL,
+   };
+-  struct read_entry_info rei = {
+-      .devid = NULL,
+-      .dirname = NULL,
+-  };
+ 
+   if (path) {
+     len = grub_strlen (path);
+     if (grub_strcmp (path + len - 5, ".conf") == 0) {
+-      rei.file = grub_file_open (path, GRUB_FILE_TYPE_CONFIG);
+-      if (!rei.file)
+-	return grub_errno;
+-      /*
+-       * read_entry() closes the file
+-       */
+-      return read_entry(path, NULL, &rei);
++      return read_entry (path);
+     } else if (path[0] == '(') {
+       devid = path + 1;
+ 
+-- 
+2.49.0
+

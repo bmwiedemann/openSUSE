@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 23 09:25:57 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix reading bls fragments in file-system dependent order that is not
+  predictable (bsc#1241046)
+  * 0001-blscfg-read-fragments-in-order.patch
+
+-------------------------------------------------------------------
+Wed Apr 23 07:55:59 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix PPC CAS reboot failure work when initiated via submenu (bsc#1241132)
+  * 0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
+
+-------------------------------------------------------------------
 Sun Apr 13 11:05:48 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add grub2-string-initializer.patch, part of upstream gnulib
