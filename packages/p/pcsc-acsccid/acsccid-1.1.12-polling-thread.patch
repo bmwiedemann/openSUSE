@@ -1,7 +1,7 @@
-Index: acsccid-1.1.11/src/ifdhandler.c
+Index: acsccid-1.1.12/src/ifdhandler.c
 ===================================================================
---- acsccid-1.1.11.orig/src/ifdhandler.c
-+++ acsccid-1.1.11/src/ifdhandler.c
+--- acsccid-1.1.12.orig/src/ifdhandler.c
++++ acsccid-1.1.12/src/ifdhandler.c
 @@ -433,7 +433,7 @@ EXTERNAL RESPONSECODE IFDHCloseChannel(D
  
  
@@ -37,7 +37,7 @@ Index: acsccid-1.1.11/src/ifdhandler.c
  #endif
  
  
-@@ -703,7 +713,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -705,7 +715,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -46,7 +46,7 @@ Index: acsccid-1.1.11/src/ifdhandler.c
  				}
  
  				if ((PROTOCOL_ICCD_A == ccid_desc->bInterfaceProtocol)
-@@ -711,7 +721,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -713,7 +723,7 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				{
  					*Length = sizeof(void *);
  					if (Value)
@@ -55,7 +55,7 @@ Index: acsccid-1.1.11/src/ifdhandler.c
  				}
  			}
  			break;
-@@ -763,6 +773,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
+@@ -765,6 +775,44 @@ EXTERNAL RESPONSECODE IFDHGetCapabilitie
  				}
  			}
  			break;

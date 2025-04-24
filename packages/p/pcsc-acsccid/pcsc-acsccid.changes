@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 24 02:33:13 UTC 2025 - Godfrey Chung <godfrey.chung@acs.com.hk>
+
+- Updated to version 1.1.12.
+  * Add the following readers support:
+    WalletMate II 2S CL Reader
+    WalletMate V3 Upgrade
+    AIR60 1S Dual Reader
+  * Rename WalletMate II V2 Upgrade to WalletMate V2 Upgrade.
+  * Enable WalletMate II 2S (composite device) as multi-slot reader.
+  * Enable the 2nd interface of WalletMate II 2S as SAM slot.
+  * Enable the 3rd interface of WalletMate II 2S as SAM slot.
+  * Fix the typo for ACM1552U-ZW in src/supported_readers.txt.
+  * Enable AIR60 (composite device) as multi-slot reader.
+  * Enable the 3rd interface of AIR60 as SAM slot.
+  * Enable AIR60 to use bStatus in IFDHICCPresence().
+- Replaced acsccid-1.1.11-polling-thread.patch with
+  acsccid-1.1.12-polling-thread.patch.
+- Replaced acsccid-1.1.11-polling-unplug.patch with
+  acsccid-1.1.12-polling-unplug.patch.
+
+-------------------------------------------------------------------
 Mon Jun 10 07:52:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N syntax instead of deprecated %patchN.
