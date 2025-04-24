@@ -2408,7 +2408,7 @@
      private static final long serialVersionUID = -2575874101938349339L;
  
      private static final String PUBLIC = "public";
-@@ -393,9 +398,10 @@ abstract class P11Key implements Key, Length {
+@@ -406,9 +411,10 @@ abstract class P11Key implements Key, Length {
                      new CK_ATTRIBUTE(CKA_EXTRACTABLE),
          });
  
@@ -2422,7 +2422,7 @@
  
          switch (algorithm) {
          case "RSA":
-@@ -450,7 +456,8 @@ abstract class P11Key implements Key, Length {
+@@ -463,7 +469,8 @@ abstract class P11Key implements Key, Length {
  
          public String getFormat() {
              token.ensureValid();
@@ -3285,14 +3285,15 @@
          d(SIG, "RawDSA",        P11Signature,
                  List.of("NONEwithDSA"),
                  m(CKM_DSA));
-@@ -1144,9 +1356,21 @@ public final class SunPKCS11 extends AuthProvider {
-             if (ds == null) {
+@@ -1120,9 +1332,22 @@ public final class SunPKCS11 extends AuthProvider {
                  continue;
              }
+             boolean allowLegacy = config.getAllowLegacy();
 +            descLoop:
              for (Descriptor d : ds) {
                  Integer oldMech = supportedAlgs.get(d);
                  if (oldMech == null) {
++                    // check all required mechs are supported
 +                    if (d.requiredMechs != null) {
 +                        // Check that other mechanisms required for the
 +                        // service are supported before listing it as
@@ -3304,10 +3305,10 @@
 +                            }
 +                        }
 +                    }
-                     supportedAlgs.put(d, integerMech);
-                     continue;
-                 }
-@@ -1220,11 +1444,52 @@ public final class SunPKCS11 extends AuthProvider {
+ 
+                     // assume full support if no mech info available
+                     if (!allowLegacy && mechInfo != null) {
+@@ -1211,11 +1436,52 @@ public final class SunPKCS11 extends AuthProvider {
          }
  
          @Override
@@ -3360,7 +3361,7 @@
              try {
                  return newInstance0(param);
              } catch (PKCS11Exception e) {
-@@ -1244,6 +1509,8 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1235,6 +1501,8 @@ public final class SunPKCS11 extends AuthProvider {
                  } else if (algorithm.endsWith("GCM/NoPadding") ||
                             algorithm.startsWith("ChaCha20-Poly1305")) {
                      return new P11AEADCipher(token, algorithm, mechanism);
@@ -3369,7 +3370,7 @@
                  } else {
                      return new P11Cipher(token, algorithm, mechanism);
                  }
-@@ -1579,6 +1846,9 @@ public final class SunPKCS11 extends AuthProvider {
+@@ -1570,6 +1838,9 @@ public final class SunPKCS11 extends AuthProvider {
          try {
              session = token.getOpSession();
              p11.C_Logout(session.id());
@@ -3855,7 +3856,7 @@
      /**
       * Connects this object to the specified PKCS#11 library. This method is for
       * internal use only.
-@@ -1625,7 +1677,7 @@ public class PKCS11 {
+@@ -1661,7 +1713,7 @@ public class PKCS11 {
  static class SynchronizedPKCS11 extends PKCS11 {
  
      SynchronizedPKCS11(String pkcs11ModulePath, String functionListName)
@@ -3864,7 +3865,7 @@
          super(pkcs11ModulePath, functionListName);
      }
  
-@@ -1911,4 +1963,194 @@ static class SynchronizedPKCS11 extends PKCS11 {
+@@ -1947,4 +1999,194 @@ static class SynchronizedPKCS11 extends PKCS11 {
          super.C_GenerateRandom(hSession, randomData);
      }
  }
@@ -4121,7 +4122,7 @@
  }
 --- a/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
 +++ b/src/jdk.crypto.cryptoki/share/native/libj2pkcs11/p11_convert.c
-@@ -1515,6 +1515,10 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSlow(JNIEnv *env, jobject jParam,
+@@ -1518,6 +1518,10 @@ CK_VOID_PTR jMechParamToCKMechParamPtrSlow(JNIEnv *env, jobject jParam,
          case CKM_PBE_SHA1_DES3_EDE_CBC:
          case CKM_PBE_SHA1_DES2_EDE_CBC:
          case CKM_PBA_SHA1_WITH_SHA1_HMAC:
@@ -4132,7 +4133,7 @@
              ckpParamPtr = jPbeParamToCKPbeParamPtr(env, jParam, ckpLength);
              break;
          case CKM_PKCS5_PBKD2:
-@@ -1658,13 +1662,13 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
+@@ -1661,13 +1665,13 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
      // retrieve java values
      jPbeParamsClass = (*env)->FindClass(env, CLASS_PBE_PARAMS);
      if (jPbeParamsClass == NULL) { return NULL; }
@@ -4148,7 +4149,7 @@
      if (fieldID == NULL) { return NULL; }
      jSalt = (*env)->GetObjectField(env, jParam, fieldID);
      fieldID = (*env)->GetFieldID(env, jPbeParamsClass, "ulIteration", "J");
-@@ -1680,15 +1684,15 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
+@@ -1683,15 +1687,15 @@ jPbeParamToCKPbeParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pLength)
  
      // populate using java values
      ckParamPtr->ulIteration = jLongToCKULong(jIteration);
@@ -4167,7 +4168,7 @@
      if ((*env)->ExceptionCheck(env)) {
          goto cleanup;
      }
-@@ -1767,31 +1771,59 @@ void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, job
+@@ -1770,31 +1774,59 @@ void copyBackPBEInitializationVector(JNIEnv *env, CK_MECHANISM *ckMechanism, job
      }
  }
  
@@ -4236,7 +4237,7 @@
      fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "saltSource", "J");
      if (fieldID == NULL) { return NULL; }
      jSaltSource = (*env)->GetLongField(env, jParam, fieldID);
-@@ -1807,36 +1839,60 @@ jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pL
+@@ -1810,36 +1842,60 @@ jPkcs5Pbkd2ParamToCKPkcs5Pbkd2ParamPtr(JNIEnv *env, jobject jParam, CK_ULONG *pL
      fieldID = (*env)->GetFieldID(env, jPkcs5Pbkd2ParamsClass, "pPrfData", "[B");
      if (fieldID == NULL) { return NULL; }
      jPrfData = (*env)->GetObjectField(env, jParam, fieldID);
@@ -4340,7 +4341,7 @@
                       // PBE mechs, WTLS mechs, CMS mechs,
                       // CKM_EXTRACT_KEY_FROM_KEY, CKM_OTP, CKM_KIP,
                       // CKM_DSA_PARAMETER_GEN?, CKM_GOSTR3410_*
-@@ -517,12 +533,11 @@ void jBooleanArrayToCKBBoolArray(JNIEnv *env, const jbooleanArray jArray, CK_BBO
+@@ -528,12 +544,11 @@ void jBooleanArrayToCKBBoolArray(JNIEnv *env, const jbooleanArray jArray, CK_BBO
      jboolean* jpTemp;
      CK_ULONG i;
  
@@ -4355,7 +4356,7 @@
      jpTemp = (jboolean*) calloc(*ckpLength, sizeof(jboolean));
      if (jpTemp == NULL) {
          throwOutOfMemoryError(env, 0);
-@@ -559,12 +574,11 @@ void jByteArrayToCKByteArray(JNIEnv *env, const jbyteArray jArray, CK_BYTE_PTR *
+@@ -570,12 +585,11 @@ void jByteArrayToCKByteArray(JNIEnv *env, const jbyteArray jArray, CK_BYTE_PTR *
      jbyte* jpTemp;
      CK_ULONG i;
  
@@ -4370,7 +4371,7 @@
      jpTemp = (jbyte*) calloc(*ckpLength, sizeof(jbyte));
      if (jpTemp == NULL) {
          throwOutOfMemoryError(env, 0);
-@@ -606,12 +620,11 @@ void jLongArrayToCKULongArray(JNIEnv *env, const jlongArray jArray, CK_ULONG_PTR
+@@ -617,12 +631,11 @@ void jLongArrayToCKULongArray(JNIEnv *env, const jlongArray jArray, CK_ULONG_PTR
      jlong* jTemp;
      CK_ULONG i;
  
@@ -4385,7 +4386,7 @@
      jTemp = (jlong*) calloc(*ckpLength, sizeof(jlong));
      if (jTemp == NULL) {
          throwOutOfMemoryError(env, 0);
-@@ -648,12 +661,11 @@ void jCharArrayToCKCharArray(JNIEnv *env, const jcharArray jArray, CK_CHAR_PTR *
+@@ -659,12 +672,11 @@ void jCharArrayToCKCharArray(JNIEnv *env, const jcharArray jArray, CK_CHAR_PTR *
      jchar* jpTemp;
      CK_ULONG i;
  
@@ -4400,7 +4401,7 @@
      jpTemp = (jchar*) calloc(*ckpLength, sizeof(jchar));
      if (jpTemp == NULL) {
          throwOutOfMemoryError(env, 0);
-@@ -690,12 +702,11 @@ void jCharArrayToCKUTF8CharArray(JNIEnv *env, const jcharArray jArray, CK_UTF8CH
+@@ -701,12 +713,11 @@ void jCharArrayToCKUTF8CharArray(JNIEnv *env, const jcharArray jArray, CK_UTF8CH
      jchar* jTemp;
      CK_ULONG i;
  
@@ -5854,6 +5855,3 @@
 +        }
 +    }
 +}
--- 
-2.45.2
-
