@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 24 06:57:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.5:
+  * ci: refresh dev dependencies (#2515)
+  * ci: use official create-github-app-token action (#2499) (#2503)
+  * ci: refresh dev dependencies (#2495)
+  * Add missing closing parentheses (#2467) (#2485)
+  * ci: refresh dev dependencies (#2475)
+  * Fix codespell issues (#2478) (#2482)
+  * update the pip-compile details in the readme (#2472) (#2479)
+  * Add Ansible 11.4.0 porting guide. (#2468) (#2469)
+
+-------------------------------------------------------------------
 Tue Mar 25 20:38:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.18.4:
