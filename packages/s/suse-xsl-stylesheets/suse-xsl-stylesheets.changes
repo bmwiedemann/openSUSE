@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:39:55 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.10
+
+- Update to 2.95.10
+  - Fix DOCTEAM-1772: Adjust <link rel="next|prev"> (#708)
+  - Fix problem with GitHub URL &amp; masquerading (#707)
+
+-------------------------------------------------------------------
 Wed Mar 26 13:17:32 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.9
 
 - Update to 2.95.9
