@@ -1,7 +1,7 @@
 #
 # spec file for package python-ftfy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 %define         skip_python2 1
 Name:           python-ftfy
-Version:        6.0.3
+Version:        6.3.1
 Release:        0
 Summary:        Python module for repairing mis-decoded Unicode text
 License:        MIT
 URL:            https://github.com/rspeer/python-ftfy
-Source:         https://github.com/rspeer/python-ftfy/archive/refs/tags/v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM update-wcwidth.patch gh#rspeer/python-ftfy@5d975c6bb183
-Patch1:         update-wcwidth.patch
+Source0:        https://github.com/rspeer/python-ftfy/archive/refs/tags/v%{version}.tar.gz
+Source99:       python-ftfy.rpmlintrc
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-wcwidth
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
