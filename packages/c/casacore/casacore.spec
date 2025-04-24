@@ -1,7 +1,7 @@
 #
 # spec file for package casacore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,7 @@
 #
 
 
-# ninja too old on openSUSE Leap 15.1
-%if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150100
-%bcond_with ninja
-%else
 %global __builder ninja
-%bcond_without ninja
-%endif
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
@@ -66,18 +60,17 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.6.1
+Version:        3.7.1
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
 URL:            https://github.com/casacore/casacore
 Source:         https://github.com/casacore/casacore/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source99:       casacore-rpmlintrc
-# PATCH-FIX-UPSTREAM casacore-fitsio-header.patch badshah400@gmail.com -- Fix location of cfitsio headers used in sources
-Patch1:         casacore-fitsio-header.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -86,6 +79,7 @@ BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  lapack-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_python3-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -100,9 +94,6 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-config
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
 BuildRequires:  fftw3-openmp-devel
-%endif
-%if %{with ninja}
-BuildRequires:  ninja
 %endif
 
 %description
@@ -175,8 +166,9 @@ mkdir -p %{buildroot}%{my_libdir}/pkgconfig/
 mv %{buildroot}%{my_prefix}/lib/pkgconfig/*.pc %{buildroot}%{my_libdir}/pkgconfig/
 fi
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%fdupes %{buildroot}%{my_incdir}/casacore/
+
+%ldconfig_scriptlets -n %{shlib}
 
 %files
 %{my_bindir}/*
