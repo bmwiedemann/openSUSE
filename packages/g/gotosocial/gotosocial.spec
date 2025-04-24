@@ -17,7 +17,7 @@
 
 
 Name:           gotosocial
-Version:        0.18.3
+Version:        0.19.0
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
@@ -28,8 +28,6 @@ Source1:        %{name}-%{version}-vendor.tar.xz
 Source2:        vendor_yarn.sh
 Source3:        gotosocial.sysusers
 Patch0:         default-settings.patch
-# PATCH-FIX-UPSTREAM: Bump golang-jwt (bsc#1240492)
-Patch1:         bump_jwt.patch
 BuildRequires:  apparmor-profiles
 BuildRequires:  apparmor-rpm-macros
 BuildRequires:  golang-packaging

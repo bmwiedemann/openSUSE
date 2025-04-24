@@ -41,4 +41,12 @@
 </comment>
     <requestid>1266282</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>beedcf263f7fe281e320fc3de906ccac</srcmd5>
+    <version>0.19.0</version>
+    <time>1745508384</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0 (forwarded request 1272304 from fl4nn)</comment>
+    <requestid>1272327</requestid>
+  </revision>
 </revisionlist>

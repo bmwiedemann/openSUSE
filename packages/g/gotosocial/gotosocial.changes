@@ -1,11 +1,34 @@
 -------------------------------------------------------------------
-Tue Apr  1 15:57:46 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Thu Apr 24 06:08:56 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Remove bump_jwt.patch, this is now part of the release
+- Update to 0.19.0
+  * [feature] OAuth token scope enforcement
+  * [feature] Token review / invalidation
+    You can now review and invalidate tokens issued for your account
+    in the settings panel
+  * [feature] Create and manage applications in the settings panel
+  * [feature] Gallery-style profile layout option
+    You can now choose to lay out the web view of your profile in a
+    'gram style gallery
+  * [feature] Support for two-factor authentication
+  * [feature] Edit domain permissions
+    You can now edit the obfuscate and public and private comment
+    fields in domain permissions (blocks/allows)
+  * [feature] Lots of web view tweaks
+    nicer media rendering on chrome, proper blurhash support,
+    much better support for keyboard-based page navigation,
+    wider font support for different scripts, tidier status info bar
+    and more
+
+-------------------------------------------------------------------
+Tue Apr  1 15:57:46 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Backport golang-jwt version bump (bsc#1240492, CVE-2025-30204)
   by adding bump_jwt.patch
 
 -------------------------------------------------------------------
-Fri Mar 21 10:18:28 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Fri Mar 21 10:18:28 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.18.3
   * [bugfix] Avoid nil ptr if maintenance router can't be started
@@ -16,7 +39,7 @@ Fri Mar 21 10:18:28 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3907)
 
 -------------------------------------------------------------------
-Tue Mar 11 09:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Tue Mar 11 09:31:24 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.18.2:
   * [bugfix] fix refreshed additional media info being ignored
@@ -41,14 +64,14 @@ Tue Mar 11 09:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3844)
 
 -------------------------------------------------------------------
-Mon Feb 24 11:35:47 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Mon Feb 24 11:35:47 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.18.1:
   * [feature] Use ETag for robots.txt to prevent mishaps
     (gh#superseriousbusiness/gotosocial#3829)
 
 -------------------------------------------------------------------
-Sat Feb 22 16:20:40 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Sat Feb 22 16:20:40 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.18.0:
   * Status edit support: You can now edit your own statuses, and see
@@ -108,7 +131,7 @@ Sat Feb 22 16:20:40 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3798)
 
 -------------------------------------------------------------------
-Wed Feb 12 17:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Wed Feb 12 17:31:24 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.17.4:
   * SECURITY: this release addresses a dereferencing bug which,
@@ -117,24 +140,24 @@ Wed Feb 12 17:31:24 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
 - Exclude build for failing architectures
 
 -------------------------------------------------------------------
-Tue Jan 28 21:21:41 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Tue Jan 28 21:21:41 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Adjust config file permissions and AppArmor profile
 
 -------------------------------------------------------------------
-Tue Jan 28 18:55:45 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Tue Jan 28 18:55:45 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Move templates to config dir
 
 -------------------------------------------------------------------
-Fri Jan 10 13:39:57 UTC 2025 - Flann van der Eik <fl4nn@posteo.de>
+Fri Jan 10 13:39:57 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Build web assets in OBS instead of using the upstream binaries
   by vendoring the yarn dependencies with the help of vendor_yarn.sh
   inspired by https://build.opensuse.org/requests/1221612/changes
 
 -------------------------------------------------------------------
-Wed Nov  6 17:49:49 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+Wed Nov  6 17:49:49 UTC 2024 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.17.3:
   * [bugfix] sets the max value placeholders to MaxInt32 instead of
@@ -143,7 +166,7 @@ Wed Nov  6 17:49:49 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3507)
 
 -------------------------------------------------------------------
-Tue Nov  5 15:56:24 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+Tue Nov  5 15:56:24 UTC 2024 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.17.2:
   * [feature] add support for hinting via api/v_/instance
@@ -164,7 +187,7 @@ Tue Nov  5 15:56:24 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
 
 
 -------------------------------------------------------------------
-Mon Oct 21 14:15:20 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+Mon Oct 21 14:15:20 UTC 2024 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Enable Wazero / WASM cache by default
 - Rebase default-settings.patch
@@ -182,7 +205,7 @@ Mon Oct 21 14:15:20 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3444)
 
 -------------------------------------------------------------------
-Tue Oct 15 15:10:35 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+Tue Oct 15 15:10:35 UTC 2024 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Remove vendor.tar.gz, upstream already delivers this as part
   of the release tarball
@@ -435,7 +458,7 @@ Tue Oct 15 15:10:35 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
     (gh#superseriousbusiness/gotosocial#3436)
 
 -------------------------------------------------------------------
-Sat Sep 28 17:15:13 UTC 2024 - Flann van der Eik <fl4nn@posteo.de>
+Sat Sep 28 17:15:13 UTC 2024 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Use build flags recommended by upstream
 - Replace the pre-compiled assets with the ones provided by upstream
