@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %endif
 %define major 1
 Name:           PackageKit%{?pkg_suffix}
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later

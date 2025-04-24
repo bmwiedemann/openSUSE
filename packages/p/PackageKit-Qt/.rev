@@ -219,4 +219,12 @@ Comment: something is rotten with the license. I don't believe it's
     <comment>Update to 1.1.1 (forwarded request 1073945 from krop)</comment>
     <requestid>1074641</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26ebf06dc86436dff54d8efbabe2b2ce</srcmd5>
+    <version>1.1.2</version>
+    <time>1745508302</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272132</requestid>
+  </revision>
 </revisionlist>
