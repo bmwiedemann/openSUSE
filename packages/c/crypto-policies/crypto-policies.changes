@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr  9 12:32:47 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update crypto-policies-enable-SHA1-sigver-in-DEFAULT.patch
+
+-------------------------------------------------------------------
 Thu Mar 27 10:37:18 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the nss version requirement since the mlkem768secp256r1
