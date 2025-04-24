@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-artifact-registry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,29 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-artifact-registry
-Version:        1.11.3
+Version:        1.16.0
 Release:        0
 Summary:        Google Cloud Artifact Registry API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-artifact-registry
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-artifact-registry/google-cloud-artifact-registry-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_artifact_registry/google_cloud_artifact_registry-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module google-api-core >= 1.34.1}
-BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
+BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
-BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module protobuf >= 3.20.2}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.1
-Requires:       python-google-auth
-Requires:       python-grpc-google-iam-v1 >= 0.12.4
+Requires:       python-google-auth >= 2.14.1
+Requires:       python-grpc-google-iam-v1 >= 0.14.0
 Requires:       python-proto-plus >= 1.22.3
-Requires:       python-protobuf >= 3.19.5
+Requires:       python-protobuf >= 3.20.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,7 +48,7 @@ BuildArch:      noarch
 Google Cloud Artifact Registry API client library
 
 %prep
-%autosetup -p1 -n google-cloud-artifact-registry-%{version}
+%autosetup -p1 -n google_cloud_artifact_registry-%{version}
 
 %build
 %pyproject_wheel
