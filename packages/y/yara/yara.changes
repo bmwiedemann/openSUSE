@@ -4,6 +4,18 @@ Fri Mar 21 15:25:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 - remove unused pcre build dependency
 
 -------------------------------------------------------------------
+Sat Dec 28 14:58:39 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 4.5.2:
+  * Increase the limit for the maximum number of rows in dotnet module (608fb3d).
+  * Limit resource names to 1000 character at most (3f5b4c7).
+  * Recover from syntax error at the end of an included file (4fc1ff8).
+  * BUGFIX: Crash while parsing PE Rich headers with certain files (cbc982d).
+  * BUGFIX: Segfault with regular expressions that matched the zero-length string (8616165).
+  * BUGFIX: Mitigate stack overflow when scanning very deep directory trees (2a9f61d).
+  * BUGFIX: Fix regression introduced in 6209630 (44fd094).
+
+-------------------------------------------------------------------
 Tue Aug 27 07:47:31 UTC 2024 - ming li <mli@suse.com>
 
 - update to 4.5.1:
