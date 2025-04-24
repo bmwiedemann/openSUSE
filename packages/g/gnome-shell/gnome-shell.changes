@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 24 08:58:07 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Drop gnome-shell-executable-path-not-absolute.patch: The original
+  patch did not work as expected, and assuming gsettings is in the
+  bin dir of gnome-shell is not correct, so keep relative path
+  (bsc#1241666).
+
+-------------------------------------------------------------------
 Mon Apr 14 05:36:07 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 48.1:

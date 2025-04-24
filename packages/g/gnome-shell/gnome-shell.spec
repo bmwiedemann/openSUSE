@@ -35,10 +35,8 @@ Source1:        libgnome-volume-control-0.gitmodule.tar.zst
 # SOURCE-FEATURE-OPENSUSE noise-texture boo#1176418 qkzhu@suse.com -- Add noise-texture as the default greeter background, used by patch4.
 Source100:      noise-texture.png
 
-# PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
-Patch1:         gnome-shell-executable-path-not-absolute.patch
 # PATCH-FIX-UPSTREAM gnome-shell-fix-cursor-on-hide-preedit.patch glgo#GNOME/gnome-shell!3318 alynx.zhou@suse.com -- Correctly reset cursor when hide preedit
-Patch2:         gnome-shell-fix-cursor-on-hide-preedit.patch
+Patch1:         gnome-shell-fix-cursor-on-hide-preedit.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
