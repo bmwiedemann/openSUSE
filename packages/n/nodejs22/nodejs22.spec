@@ -939,6 +939,10 @@ find test \( -name \*.out -or -name \*.js -or -name \*.snapshot \) -exec sed -i 
 
 %if %{node_version_number} >= 20
 rm test/parallel/test-strace-openat-openssl.js
+
+# https://github.com/nodejs/node/pull/57269 -- nghttp2 dropped priority support
+rm test/parallel/test-http2-client-set-priority.js
+rm test/parallel/test-http2-priority-event.js
 %endif
 
 # Update the python3 executable name to point at forced python version

@@ -172,4 +172,13 @@
   OpenSSL 3.5.0 (bsc#1241050)</comment>
     <requestid>1269251</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>519e0b24bda18b2e0f89bdd0bf6c1981</srcmd5>
+    <version>22.14.0</version>
+    <time>1745508293</time>
+    <user>anag_factory</user>
+    <comment>- drop http2 priority checks as new nghttp2 dropped this
+  unused feature</comment>
+    <requestid>1272221</requestid>
+  </revision>
 </revisionlist>

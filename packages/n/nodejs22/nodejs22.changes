@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 14:46:18 UTC 2025 - Adam Majer <adam.majer@suse.de>
+
+- drop http2 priority checks as new nghttp2 dropped this
+  unused feature
+
+-------------------------------------------------------------------
 Mon Apr 14 09:14:51 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - fab6906c5d1c16b046187485a7cb136b3659d42b.patch: fix build with
