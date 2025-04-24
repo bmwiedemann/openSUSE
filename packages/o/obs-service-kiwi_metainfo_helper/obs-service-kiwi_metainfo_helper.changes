@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr  7 11:54:26 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Do the replacements also in the "config.sh" file in Kiwi builds
+  (bsc#1240886)
+
+-------------------------------------------------------------------
 Mon Sep 30 14:13:12 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - don't replace %BASE_DIGEST% with empty string when not available

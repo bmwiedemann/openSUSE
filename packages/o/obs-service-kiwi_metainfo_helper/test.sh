@@ -3,23 +3,23 @@ set -eu
 tmpdir=$(mktemp -d)
 trap 'rm -rf ${tmpdir}' EXIT
 
-sourcedir="$(realpath "$(dirname $0)")"
+sourcedir="$(realpath "$(dirname "$0")")"
 script="${sourcedir}/kiwi_metainfo_helper"
 
-cd $tmpdir
+cd "$tmpdir"
 
 # Setup environment
 
-mkdir -p ${tmpdir}/repos/
-cp "${sourcedir}/sles-release-15.4-150400.32.2.x86_64.rpm" ${tmpdir}/repos/
+mkdir -p "${tmpdir}/repos/"
+cp "${sourcedir}/sles-release-15.4-150400.32.2.x86_64.rpm" "${tmpdir}/repos/"
 
 # Mock "date"
-export PATH=${tmpdir}:$PATH
-cat >${tmpdir}/date <<'EOF'
+export PATH="${tmpdir}:$PATH"
+cat >"${tmpdir}/date" <<'EOF'
 #!/bin/sh
 exec /usr/bin/date -d "2018-10-30T09:19:02.074934628Z" "$@"
 EOF
-chmod a+x ${tmpdir}/date
+chmod a+x "${tmpdir}/date"
 
 cat >.data <<EOF
 DISTURL="obs://build.opensuse.org/openSUSE:Factory/images/0f40c57dd619e1dff9e512949b6bca09-opensuse-tumbleweed-image:docker"
@@ -174,3 +174,36 @@ BASE_REFNAME=registry.suse.com/bci/bci-base:15.6
 BASE_DIGEST=sha256:cee5bd9e5a186dc1cca01e523f588f4c19c6c45abaa47139f7c021c289cb4c04
 EOF
 rm -r containers/annotation
+
+# test processing .kiwi and config.sh in Kiwi builds
+cat >.data <<EOF
+RELEASE=42
+DISTURL="obs://build.opensuse.org/openSUSE:Factory/test/0f40c57dd619e1dff9e512949b6bca09-test"
+RECIPEFILE=_service:foobar:test.kiwi
+BUILD_ARCH=aarch64:aarch64_ilp32:armv8l
+EOF
+export BUILD_DIST=.dist
+
+cat >test.kiwi - <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="8.0" name="test" displayname="Test (Build %RELEASE%)">
+</image>
+EOF
+
+cat >config.sh - <<EOF
+echo "Build: %RELEASE%" > /var/log/build
+EOF
+
+bash "${script}"
+
+diff -u test.kiwi - <<EOF
+<?xml version="1.0" encoding="utf-8"?>
+<image schemaversion="8.0" name="test" displayname="Test (Build 42)">
+</image>
+EOF
+
+diff -u config.sh - <<EOF
+echo "Build: 42" > /var/log/build
+EOF
+
+rm test.kiwi config.sh

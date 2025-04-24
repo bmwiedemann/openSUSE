@@ -22,6 +22,11 @@ if [ -e "${BUILD_DATA}" ]; then
 	fi
 
 	files=("${RECIPEFILE}")
+
+	# process also the config.sh script in Kiwi builds
+	if [ "${RECIPEFILE##*.}" == "kiwi" ] && [ -f "config.sh" ]; then
+		files+=("config.sh")
+	fi
 else
 	echo "Warning: No build data found - chroot build?"
 	DISTURL="local"
@@ -34,6 +39,16 @@ else
 		echo "No kiwi recipe, Dockerfile or helm chart found - exiting"
 		exit 0
 	fi
+
+	# process also the config.sh script in Kiwi builds
+	for kiwi_file in *.kiwi; do 
+		if [ -f "$kiwi_file" ]; then
+			if [ -f "config.sh" ]; then
+				files+=("config.sh")
+			fi
+			break
+		fi
+	done
 fi
 
 # generate %SOURCEURL% based on DISTURL with a special case for build.suse.de
