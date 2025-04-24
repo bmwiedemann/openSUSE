@@ -1,3 +1,16 @@
+gpxsee (13.41) stable; urgency=low
+
+  * Fixed switched ENC maps units multipliers (broken in 13.40).
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 24 Apr 2025 06:32:21 +0200
+
+gpxsee (13.40) stable; urgency=high
+
+  * Fixed Vakaros VKX MIME magic detection.
+  * Improved ENC maps style/rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 23 Apr 2025 22:52:03 +0200
+
 gpxsee (13.39) stable; urgency=low
 
   * Added support for Vakaros VKX files.

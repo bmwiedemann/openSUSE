@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 24 06:30:36 CEST 2025 - tumic@cbox.cz
+
+- Update to version 13.41
+  * Fixed switched ENC maps units multipliers (broken in 13.40)
+
+-------------------------------------------------------------------
+Wed Apr 23 22:48:04 CEST 2025 - tumic@cbox.cz
+
+- Update to version 13.40
+  * Fixed Vakaros VKX MIME magic detection.
+  * Improved ENC maps style/rendering.
+
+-------------------------------------------------------------------
 Sat Apr 19 18:02:51 CEST 2025 - tumic@cbox.cz
 
 - Update to version 13.39
