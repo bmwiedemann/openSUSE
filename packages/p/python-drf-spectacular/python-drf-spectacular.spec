@@ -26,28 +26,29 @@ Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST fr
 License:        BSD-3-Clause
 URL:            https://github.com/tfranzel/drf-spectacular
 Source:         https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf_spectacular-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
-BuildRequires:  %{python_module djangorestframework >= 3.10.3}
+BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module django-oauth-toolkit}
+BuildRequires:  %{python_module djangorestframework >= 3.10.3}
 BuildRequires:  %{python_module inflection >= 0.3.1}
 BuildRequires:  %{python_module jsonschema >= 2.6.0}
-BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module psycopg}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module uritemplate >= 2.0.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Django >= 2.2
+Requires:       python-PyYAML >= 5.1
 Requires:       python-djangorestframework >= 3.10.3
 Requires:       python-inflection >= 0.3.1
 Requires:       python-jsonschema >= 2.6.0
-Requires:       python-PyYAML >= 5.1
 Requires:       python-uritemplate >= 2.0.0
 Suggests:       python-drf-spectacular-sidecar
 BuildArch:      noarch
@@ -73,6 +74,6 @@ rm -r tests/contrib
 
 %files %{python_files}
 %{python_sitelib}/drf_spectacular
-%{python_sitelib}/drf_spectacular-%{version}.*info
+%{python_sitelib}/drf_spectacular-%{version}.dist-info
 
 %changelog

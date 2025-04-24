@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1238969</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>a963c76ed97a60cb81650b5679aef3ef</srcmd5>
+    <version>0.28.0</version>
+    <time>1745508355</time>
+    <user>anag_factory</user>
+    <comment>- Add missing BuildRequires on tzdata.</comment>
+    <requestid>1272290</requestid>
+  </revision>
 </revisionlist>
