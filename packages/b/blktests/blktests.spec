@@ -1,7 +1,7 @@
 #
 # spec file for package blktests
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           blktests
-Version:        0+20240213.ac3d8d0
+Version:        0+20250415.9aa2023
 Release:        0
 Summary:        Linux kernel block layer testing framework
 License:        GPL-2.0-or-later

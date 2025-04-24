@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Wed Apr 23 14:28:05 UTC 2025 - sebastian.chlad@suse.com
+
+- Update to version 0+20250415.9aa2023:
+  * nvme: add testcase for secure concatenation
+  * nvme: add testcase for TLS-encrypted connections
+  * common/nvme: handle option '--concat' for _nvme_connect_subsys
+  * common/nvme: TLS target support
+  * common/nvme: add '--tls' argument to _nvme_connect_subsys()
+  * nvme/rc: introduce _have_libnvme_ver()
+  * nvme/rc: introduce _have_tlshd_ver() and _have_systemd_tlshd_service()
+  * common/rc,fio: factor out _compare_three_version_numbers()
+  * common/rc: introduce _systemctl_start() and _systemctl_stop()
+  * common/rc: introduce _have_systemctl_unit()
+  * nvme/061: add test teardown and setup fabrics target during I/O
+  * nvme/060: add test nvme fabrics target resetting during I/O
+  * common/nvme: move nvmf_wait_for_state to common code
+  * common/nvme: add debug nvmet path variable
+  * nvme/025: use character device for nvme effects-log command
+  * src/Makefile: include CFLAGS in probe macros
+  * zbd/012: avoid fio stop by I/O scheduler set failure
+  * common/nvme: use correct local wwnn/wwpn for rport removal
+  * tests/throtl: add a new test 006
+  * common/xfs: verify xfs_io supports statx atomic write attributes
+  * common/xfs: add _test_dev_suits_xfs() to verify logical block size will work
+  * tests: use test device min io to support bs > ps
+  * common/xfs: use min io for fs blocksize
+  * common: add and use min io for fio
+  * block/032: make error messages clearer if mkfs or mount fails
+  * common/xfs: ignore first umount error on _xfs_mkfs_and_mount()
+  * nvme/059: add atomic write tests
+  * scsi/009: add atomic write tests
+  * srp: skip test if scsi_transport_srp module is loaded and in use
+  * nvme/056: Add check for empty ddp capabilities
+  * nvme/058: detach loop device after test finish
+  * nvme/053: do not use awk
+  * tests: Remove unnecessary '&&' in requires() functions
+  * throtl: fix the race between submitting IO and setting cgroup.procs
+  * throtl/002: calculate block-size based on device max-sectors setting
+  * common/rc: test _have_driver before checking driver parameter
+  * tests/rnbd: Implement RNBD regression test
+  * tests/rnbd: Add a basic RNBD test
+  * zbd/012: Test higher queue depths
+  * common/ublk: update io_uring setting during the tests
+  * block/035: use the common functions _io_uring_enable/_io_uring_restore
+  * common/rc: introduce _io_uring_enable/_io_uring_restore
+  * blktests: src/miniublk.c: fix segment fault when io_uring is disabled
+  * nvme/049: update fio_output msg check for io_uring_cmd support
+  * throtl/{002,003}: update max_sectors setting
+  * blktests: src/miniublk.c: fix unaligned mmap offset for 64K page size
+  * nvme: add test for rapid namespace remapping
+  * nvme: add test for basic ANA support
+  * nvme: delete all ana_groups when removing a port
+  * nvme: add argument '--ports' to _nvmet_target_setup()
+  * nvme: add _setup_nvmet_ns_ana()
+  * nvme: add _setup_nvmet_port_ana()
+  * zbd/012: Test requeuing of zoned writes and queue freezing
+  * nvme/056: add test for nvme-tcp zero-copy offload
+  * contrib: add remote target setup/cleanup script
+  * nvme/030: only run against kernel soft target
+  * common/nvme: add digest options to __nvme_connect_subsys()
+  * nvme/rc: introduce remote target support
+  * nvme/{041-045,051,055}: double-quote def_* variable references
+  * nvme: add test for writing to file-ns just after disabling it
+  * nvme/052: move nvmf_wait_for_ns() to common/nvme
+  * block/035: enable io_uring if it is disabled
+  * nvme/029: capture all the FULL log from test_user_io
+  * nvme/039: check for logical block size of test device
+  * nvme: delete all namespaces in _remove_nvmet_subsystem()
+  * throtl: set "io" to subtree_control only if required
+  * nvme: drop arguments from _create_nvmet_port()
+  * nvme: rework fcloop
+  * nvme/052: do not create namespace when setting up the target
+  * nvme/017: do not create namespace when setting up the target
+  * nvme/016: do not create namespace when setting up the target
+  * nvme: move _nvmet_target_setup() to common/nvme
+  * nvme/rc: Implement --blkdev none for _nvmet_target_setup()
+  * tests/throtl: add a new test 005
+  * tests/throtl: add a new test 004
+  * tests/throtl: add a new test 003
+  * tests/throtl: add a new test 002
+  * tests/throtl: add first test for blk-throttle
+  * common/nvme, nvme/{016,017,051,052}: introduce def_nsid
+  * nvme, md/001: support only long options for _create_nvmet_subsystem()
+  * common/nvme, nvme/{016,017,052}: improve _create_nvmet_ns()
+  * common/nvme, nvme/003: specify "--port none" to _nvme_connect_subsys()
+  * nvme: pass in port parameter to _nvme_connect_subsys()
+  * nvme: check for controller device in _nvme_connect_subsys()
+  * nvme: simplify _get_nvmet_ports()
+  * nvme: return error from _find_nvme_ns()
+  * nvme: fix fc port clean up failure
+  * nvme/{rc,002,016,017,030}: pass port ID to genctr helper functions
+  * nvme: introduce wwnn/wwpn helper functions
+  * nvme: sanitize transport parameter in _create_nvmet_port()
+  * nvme, md/001: make trtype argument to _create_nvmet_port() optional
+  * nvme/038: use nvme_trtype instead of hardcoding
+  * common/rc: Uniform the style of skip reasons
+  * block/027: setup scsi_debug with MQ
+  * nvme: test the nvme reservation feature
+  * nvme/{rc,002,016,017,030,052}, md/001: introduce --resv_enable argument
+  * common/multipath-over-rdma: remove dir /tmp/fio-state-files
+  * common/fio: dont save the fio verify.state file
+  * block/031: remove the fio verify.state file
+  * nvme/{033-037}: timeout while waiting for nvme passthru namespace device
+  * nvme/052: wait for namespace removal before recreating namespace
+  * nvme: add test for controller rescan under I/O load
+  * nvme/032: skip on non-PCI devices
+  * nvme/{033-037,039}: skip passthru tests on multipath devices
+  * zbd/011: add test for DM resource limits stacking
+  * loop/011: skip if running on kernel older than v6.9.11
+  * dm/002: add --retry option to dmsetup remove command
+  * md: add regression test for "md/md-bitmap: fix writing non bitmap pages"
+  * nvme: move helper functions to common/nvme
+  * nbd/rc: check nbd-server port readiness in _start_nbd_server()
+  * loop/010: skip when kernel is older than v6.11
+  * loop/010: do not assume /dev/loop0
+  * dm/002: do not assume 512 byte block size
+  * nvme: add test for creating/deleting file-ns
+  * loop: Add regression test for unsupported backing file fallocate
+  * nbd/004: drop the check for "couldn't allocate config" message
+  * check: confirm dependent commands
+  * block/038: support built-in null_blk
+  * block: add regression test for null-blk concurrently power/submit_queues test
+  * nvme: add regression test for concurrently enable/disable nvmet ns
+  * loop: Detect a race condition between loop detach and open
+  * README: add dependent command descriptions
+  * blktests: fix how we handle waiting for nbd to connect
+  * tests/dm: add dm-dust general functionality test
+  * nvme/rc,srp/rc,common/multipath-over-rdma: rename use_rxe to USE_RXE
+  * nvme/{rc,016,017}: rename nvme_num_iter to NVME_NUM_ITER
+  * nvme/{rc,010,017,031,034,035}: rename nvme_img_size to NVME_IMG_SIZE
+  * nvme/{021,022,025,026,027,028}: do not hard code target blkdev type
+  * nvme/{007,009,011,013,015,020,024}: drop duplicate nvmet blkdev type tests
+  * nvme/{006,008,010,012,014,019,023}: support NVMET_BLKDEV_TYPES
+  * nvme/{002-031,033-038,040-045,047,048}: support NMVET_TRTYPES
+  * nvme/rc: introduce NVMET_BLKDEV_TYPES
+  * nvme/rc: add blkdev type environment variable
+  * nvme/rc: introduce NVMET_TRTYPES
+  * common/rc: introduce _check_conflict_and_set_default()
+  * meta/{018,019}: add test cases to check _set_combined_conditions
+  * common/rc: introduce _set_combined_conditions
+  * meta/{016,017}: add test cases to check repeated test case runs
+  * check: use set_conditions() for the CAN_BE_ZONED test cases
+  * check: support test case repeat by different conditions
+  * check: factor out _run_test()
+  * nvme/039: adjust to util-linux v2.40 dmesg format change
+  * nbd/002: repeat partition existence check for ioctl interface
+  * nbd/002: fix wrong -L/-nonetlink option usage
+  * block/033: additional fix
+  * block/034: add the missing +x mode
+  * nvme/{003,006,007}: remove the blank line
+  * block/033: fix the output when ublk prog not avaiable
+  * block/037: add test to cover blk-cgroup vs. disk rebind
+  * block/036: test return EIO from BLKRRPART
+  * block/035: Report IOPS
+  * block/035: Test shared queue fairness
+  * scsi/008: Test SCSI disk data lifetime support
+  * common/fio: Fix the _run_fio() return code
+  * nvme/rc: fix shellcheck warning SC2086
+  * nvme/{013,014}: fix device filename
+  * nvme/011: fix filename path
+  * nvme/028: drop unused nvmedev
+  * nvme: don't assume namespace id
+  * nvme/{041,042,043,044,045,048}: do not pass default host{nqn|id} to _nvme_connect_subsys
+  * nvme: drop default subsysnqn argument from _nvmet_passthru_target_connect
+  * nvme: drop default subsysnqn argument from _nvme_passthru_target_{setup|cleanup}
+  * nvme: drop default subsysnqn argument from _nvme_{connect|disconnect}_subsys
+  * nvme: drop default trtype argument for _nvmet_passthru_target_connect
+  * nvme: drop default trtype argument for _nvmet_connect_subsys
+  * nvme/031: do not open code target setup/cleanup
+  * nvme/rc: do not cleanup external managed loop device
+  * nvme/rc: remove unused connect options
+  * nvme/rc: add nqn/uuid args to target setup/cleanup helper
+  * nvme/rc: connect subsys only support long options
+  * nvme/{014,015,018,019,020,023,024,026,045,046}: use long command line option for nvme
+  * nvme/rc: use long command line option for nvme
+  * nvme/{012,013,035}: check return value of _xfs_run_fio_verify_io
+  * common/xfs: propagate errors from _xfs_run_fio_verify_io
+  * nvme/rc: log error if stale configuration is found
+  * nvme/rc: silence fcloop cleanup failures
+  * nvme/rc: silence error on module unload for fc
+  * nvme/048: make queue count check retry-able
+  * nvme/048: remove unused argument for set_qid_max
+  * nbd/001: wait for the device node to show up before running parted
+  * nvme: Add passthru error logging tests to nvme/039
+  * nvme/029: reserve hugepages for lager allocations
+  * nbd/001: change to use lsblk raw output format
+
+-------------------------------------------------------------------
 Fri Feb 16 09:07:44 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0+20240213.ac3d8d0:
