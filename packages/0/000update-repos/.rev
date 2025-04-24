@@ -17043,4 +17043,18 @@ Switch to repomd for 42.1, its susetags are bugged</comment>
     <user>staging-bot</user>
     <comment>Automatic update</comment>
   </revision>
+  <revision rev="2677" vrev="2677">
+    <srcmd5>7096ed3af95a3f61db7e3ef3477c6ca1</srcmd5>
+    <version>unknown</version>
+    <time>1745488725</time>
+    <user>dimstar_suse</user>
+    <comment>No longer refresh 15.3 / 15.4 update channels; EOL distros</comment>
+  </revision>
+  <revision rev="2678" vrev="2678">
+    <srcmd5>0c0f6b70ecc4852d3fc37695fc227c38</srcmd5>
+    <version>unknown</version>
+    <time>1745489863</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update</comment>
+  </revision>
 </revisionlist>
