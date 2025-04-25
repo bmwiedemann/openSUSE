@@ -382,4 +382,13 @@
     <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
     <requestid>1270338</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>b5a8fdf8a41d16539744e9dd91c6deba</srcmd5>
+    <version>25.04.0</version>
+    <time>1745612407</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream fix (kde#501535)
+  * 0001-Fix-crash-when-creating-bookmarks-toolbar.patch</comment>
+    <requestid>1272773</requestid>
+  </revision>
 </revisionlist>

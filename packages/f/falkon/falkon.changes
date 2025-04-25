@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 18:12:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix (kde#501535)
+  * 0001-Fix-crash-when-creating-bookmarks-toolbar.patch
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0
