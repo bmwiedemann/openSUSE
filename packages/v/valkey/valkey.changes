@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 24 16:52:15 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 8.0.3:
+  * CVE-2025-21605: Limit output buffer for unauthenticated clients
+    (boo#1241708)
+  * Optimize RDB load performance and fix cluster mode resizing on
+    replica side
+  * Fix memory leak in forgotten node ping ext code path
+  * Fix cluster info sent stats for message with light header
+  * Fix module LatencyAddSample still work when
+    latency-monitor-threshold is 0
+  * Fix potential crash in radix tree recompression of huge keys
+  * Fix error "SSL routines::bad length" when connTLSWrite is called
+    second time with smaller buffer
+  * Fix temp file leak druing replication error handling
+  * Fix ACL LOAD crash on replica since the primary client don't
+    has a user
+  * Fix RANDOMKEY infinite loop during CLIENT PAUSE
+  * fix: add samples to stream object consumer trees
+  * Fix cluster slot stats assertion during promotion of replica
+  * Fix panic in primary when blocking shutdown after previous
+    block with timeout
+  * Ignore stale gossip packets that arrive out of order
+  * Fix incorrect lag reported in XINFO GROUPS
+  * Avoid shard id update of replica if not matching with primary
+    shard id
+
+-------------------------------------------------------------------
 Wed Jan  8 17:22:51 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 8.0.2:

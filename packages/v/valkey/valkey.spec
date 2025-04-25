@@ -4,6 +4,7 @@
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) Jonathan Wright
 # Copyright (c) Neal Gompa
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} BUILD_WITH_SYSTEMD=yes BUILD_TLS=yes
 
 Name:           valkey
-Version:        8.0.2
+Version:        8.0.3
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -212,6 +213,7 @@ echo "See %{_docdir}/%{name}/README.SUSE to continue"
 %{_rpmmacrodir}/macros.%{name}
 
 %files compat-redis
+%license COPYING
 %{_libexecdir}/migrate_redis_to_valkey.bash
 %{_bindir}/redis-*
 %{_sbindir}/redis-*
