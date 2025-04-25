@@ -138,4 +138,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update gc 11.0.3 firmware</comment>
     <requestid>1271050</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>bb97a8163f29b29a81b2080654e7bba5</srcmd5>
+    <version>20250419</version>
+    <time>1745612305</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272713</requestid>
+  </revision>
 </revisionlist>
