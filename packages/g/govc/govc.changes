@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Thu Apr 24 19:29:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.0:
+  * chore: Update version.go for v0.50.0
+  * chore(gh): update release
+  * build(deps): bump mxschmitt/action-tmate from 3.19 to 3.20
+  * vcsim: Populate guest.ipStack property for container backed VMs
+  * Handle the duration field as string
+  * api: Rewrite lookup service URLs on DNS error
+  * vcsim: Add minimal json-rpc support
+  * vcsim: Use the simulator's URL.Host in NFC lease URLs
+  * govc: Support Datastore Cluster in import.ova command
+  * govc: Add import.ova -net flag
+  * fix: vcsim -load Datastore summary.url property
+  * govc: Add -lease option to import/export commands
+  * govc: Support -p and -s in with single task.set
+  * docs: remove legacy docs links
+  * docs: update kb urls
+  * chore(deps): go mod tidy
+  * build(deps): bump golang.org/x/text from 0.23.0 to 0.24.0
+  * govc: Add vm.policy.ls command
+  * docs: Update various API reference links
+  * vcsim: support multiple VirtualSystemType in
+    OvfManager.CreateImportSpec
+  * govc: Support snapshot.export
+  * chore: vim25/xml: sync with Go 1.24 encoding/xml
+  * fix: vcsim: fix PropertyFilter/Collector memory leak
+  * build(deps): bump goreleaser/goreleaser-action from 6.2.1 to
+    6.3.0
+  * api: add PodVMOverheadInfo type and HostCapability field
+  * refactor: header check
+  * chore: gofmt -w -r 'interface{} -> any' .
+  * chore: update copyright
+  * vcsim: fix integer type conversion
+  * chore(deps): update bundler to v2 for dependabot
+  * build(deps): bump actions/cache from 4.2.2 to 4.2.3
+  * build(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2
+  * build(deps): bump actions/setup-go from 5.3.0 to 5.4.0
+  * chore: update `vmware/govc` and `vmware/vcsim` dockerfiles
+  * api: use `crypto/rand` for nonce generation
+  * api: use `ParseInt` and add `int32` bounds check
+  * chore: update codeql workflow
+  * govc: fix integer type conversion
+  * govc: fix integer type conversion for `guest.chown`
+  * build(deps): bump actions/stale from 9.0.0 to 9.1.0
+  * build(deps): bump actions/setup-go from 5.0.0 to 5.3.0
+  * chore(gh): update dependabot
+  * toolbox: fix codeql go/zipslip
+  * chore(gh): update release workflow
+  * chore(gh): update unit tests workflow
+  * chore(gh): update build workflow
+  * chore(gh): update linting workflow
+  * chore(gh): update govc tests workflow
+  * chore(gh): update wip workflow
+  * chore(gh): add lock workflow
+  * chore(gh): update stale workflow
+  * chore(gh): update docker workflow
+  * chore(gh): update greeting workflow
+  * chore(gh): update codeql workflow
+  * chore(gh): update to `ubuntu-latest` runner
+  * vcsim: Add vapi support for CategoryID and TagID fields
+  * govc: Add '-id' option for tags.category and tags create
+    commands
+  * api: Add optional CategoryID,TagID fields for category and tag
+    creation
+
+-------------------------------------------------------------------
 Wed Mar 12 05:58:26 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.49.0:
