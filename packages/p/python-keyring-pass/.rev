@@ -19,4 +19,15 @@
   - v0.8.0: migrate to Poetry &amp; add configurable binary</comment>
     <requestid>1137571</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4df1449b504d6c4ce9fff45b10024f39</srcmd5>
+    <version>0.9.3</version>
+    <time>1745612348</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.3:
+  - moved __main__ code to main.py
+- Add missing Requires: password-store
+</comment>
+    <requestid>1272500</requestid>
+  </revision>
 </revisionlist>

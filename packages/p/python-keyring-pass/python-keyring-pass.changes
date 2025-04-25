@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Apr 24 09:30:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.9.3:
+  - moved __main__ code to main.py
+- Add missing Requires: password-store
+
+-------------------------------------------------------------------
 Mon Jan  8 13:14:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.9.2:
