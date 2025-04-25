@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:25:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 9.6.3:
+  * INS-933 - pullPolicyNotAlways is crashing webhook mutations
+    (#1115)
+  * Bump golang.org/x/net from 0.33.0 to 0.36.0 (#1108)
+  * Bump k8s.io/client-go from 0.32.0 to 0.32.2 (#1103)
+  * Bump k8s.io/apimachinery from 0.32.0 to 0.32.2 (#1102)
+  * Bump sigs.k8s.io/controller-runtime from 0.19.3 to 0.20.2
+    (#1101)
+  * fixed pdbMinAvailableGreaterThanHPAMinReplicas and added
+    validation for pdbMinAvailableEqualToHPAMinReplicas. (#1073)
+
+-------------------------------------------------------------------
 Thu Jan 02 17:12:53 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 9.6.1:
