@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:00:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.22:
+  * Experiments Completed
+    The cli-redesign experiment is now complete.
+    If you were previously using the flag --experiment cli-redesign
+    to opt in to experimental functionality, you no longer have to
+    do so. Note that if you are, you will simply get a warning that
+    it is no longer necessary.
+  * What's Changed
+    - chore: Complete CLI Redesign experiment (#4189)
+    - feat: Adding base tests (#4176)
+
+-------------------------------------------------------------------
+Thu Apr 24 19:42:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.77.21:
+  * New Features
+    - Introduction of hcl commands
+      As part of the CLI Redesign experiment, the hcl commands have
+      been introduced.
+      The hcl commands allow users to directly interact with HCL
+      content independent of the underlying functionality they
+      support.
+      The functionality of the hcl commands replace existing
+      functionality that is soon to be deprecated:
+        hclfmt --> hcl fmt
+        hclvalidate --> hcl validate
+        validate-inputs --> hcl validate --inputs
+        validate-inputs --strict-validate --> hcl validate --inputs --strict
+  * What's Changed
+    - fix: Update status of cli-redesign experiment (#4188)
+    - feat: `hcl` commands docs (#4180)
+    - fix: Fix spelling (#4179)
+    - feat: Implementation of `hcl` commands (#4169)
+    - feat: add symbol link experiemnt in discovery process (#4177)
+    - fix: Adding redirect from /docs/reference/experiment-mode to
+      /docs/reference/experiments (#4178)
+    - build(deps): bump github.com/charmbracelet/bubbles from
+      0.20.0 to 0.21.0 (#4160)
+
+-------------------------------------------------------------------
 Fri Apr 18 17:16:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.77.20:
