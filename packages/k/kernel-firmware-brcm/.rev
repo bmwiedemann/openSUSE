@@ -17,4 +17,16 @@ After this PR, there will be a delete request for kernel-firmware.
 </comment>
     <requestid>1245288</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>528ff57d42451465f243575b515b8926</srcmd5>
+    <version>20250206</version>
+    <time>1745612309</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272720</requestid>
+  </revision>
 </revisionlist>

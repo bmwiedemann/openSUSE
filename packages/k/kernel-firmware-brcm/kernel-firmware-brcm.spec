@@ -26,12 +26,11 @@ Name:           kernel-firmware-brcm
 Version:        20250206
 Release:        0
 Summary:        Kernel firmware files for Broadcom wireless drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -39,17 +38,19 @@ Source11:       topicprovs
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Provides:       bcm43xx-firmware:/lib/firmware/brcm/brcmfmac43430-sdio.bin
+Supplements:    modalias(bcma:m04BFid0812rev11cl*)
+Supplements:    modalias(bcma:m04BFid0812rev17cl*)
+Supplements:    modalias(bcma:m04BFid0812rev18cl*)
 Supplements:    modalias(pci:v000014E4d00004354sv*sd*bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004355sv000014E4sd00004355bc02sc80i*)
 Supplements:    modalias(pci:v000014E4d00004365sv000014E4sd00004365bc02sc80i*)
@@ -110,16 +111,13 @@ Supplements:    modalias(usb:v0A5CpBD1Ed*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0A5CpBD1Fd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0A5CpBD27d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v13B1p0039d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(bcma:m04BFid0812rev11cl*)
-Supplements:    modalias(bcma:m04BFid0812rev17cl*)
-Supplements:    modalias(bcma:m04BFid0812rev18cl*)
 
 %description
 This package contains kernel firmware files for Broadcom wireless drivers.
 
-
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh brcm < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
