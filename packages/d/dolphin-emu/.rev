@@ -173,4 +173,13 @@
   * Fixed build with fmt 11.1.</comment>
     <requestid>1253313</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7d03dcd863096ee16fd614d3c6224f68</srcmd5>
+    <version>2503a</version>
+    <time>1745612332</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2503a
+  * https://github.com/dolphin-emu/dolphin/compare/2503...2503a</comment>
+    <requestid>1272468</requestid>
+  </revision>
 </revisionlist>
