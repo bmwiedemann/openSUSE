@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 24 13:10:41 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Add %{?sle15_python_module_pythons}
+
+-------------------------------------------------------------------
 Mon Mar  3 10:03:40 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - initial version 5.8 

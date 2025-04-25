@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-backrefs
 Version:        5.8
 Release:        0
