@@ -17,7 +17,7 @@
 
 
 Name:           python-meshtastic
-Version:        2.6.1
+Version:        2.6.2
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
@@ -49,9 +49,6 @@ A Python client for use with Meshtastic devices. This small library (and example
 
 %prep
 %setup -q -n meshtastic-%{version}
-
-# Remove hidden file
-rm -v meshtastic/.gitignore
 
 %build
 %pyproject_wheel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:54:57 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to 2.6.2:
+  * fixing tcp_interface 100% cpu usage bug
+
+-------------------------------------------------------------------
 Sat Apr 12 07:36:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.6.1:
@@ -14,6 +20,13 @@ Thu Mar 13 17:23:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
     section with `--set`, using a configuration transaction.
   * update README
   * update protobufs to v2.6.0
+
+-------------------------------------------------------------------
+Thu Mar 13 16:09:55 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to 2.6.0
+  * Enable setting things from more than one configuration section
+    with --set, using a configuration transaction
 
 -------------------------------------------------------------------
 Thu Mar  6 11:28:09 UTC 2025 - Adrian Schröter <adrian@suse.de>
