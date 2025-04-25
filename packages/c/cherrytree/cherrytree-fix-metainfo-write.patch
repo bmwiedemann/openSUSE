@@ -1,0 +1,14 @@
+diff --git a/scripts/metainfo_xml_write.py b/scripts/metainfo_xml_write.py
+index d199038..0d3ada5 100755
+--- a/scripts/metainfo_xml_write.py
++++ b/scripts/metainfo_xml_write.py
+@@ -39,7 +39,7 @@ def main(args):
+     assert len(releases) == 1
+     releases[0].text = "\n  "
+     release_Element = ET.SubElement(releases[0], "release", version=VERSION, date=DATE)
+-    tree.write(METAINFO_XML_FILEPATH)
++    tree.write(METAINFO_XML_FILEPATH, xml_declaration=True, method='xml', encoding='UTF-8')
+ 
+ if __name__ == '__main__':
+     import sys
+

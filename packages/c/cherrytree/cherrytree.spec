@@ -1,7 +1,7 @@
 #
 # spec file for package cherrytree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -26,12 +26,14 @@ URL:            https://www.giuspen.com/cherrytree/
 Source0:        %{name}-%{version}.tar.xz
 #PATCH-FIX-OPENSUSE cherrytree-set-git-version.patch malcolmlewis@opensuse.org -- Set git version in help about.
 Patch0:         cherrytree-set-git-version.patch
+Patch1:         cherrytree-fix-metainfo-write.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python3-lxml
-BuildRequires:  update-desktop-files
+BuildRequires:  desktop-file-utils
+BuildRequires:  appstream-glib
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
@@ -64,12 +66,12 @@ file with extension ".ctd".
 %cmake_install
 # Remove old mime registration files
 rm %{buildroot}%{_datadir}/mime-info/cherrytree.*
-%suse_update_desktop_file -G "Hierarchical Notes Utility" cherrytree TextEditor
 %find_lang %{name} %{?no_lang_C}
 %fdupes -s %{buildroot}%{_datadir}
 
 %check
-## Empty section added as per rpmlint report
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
+desktop-file-validate %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
 %license license.txt
