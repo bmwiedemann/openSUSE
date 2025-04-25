@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Change conflicts filesystem < 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.
+
+-------------------------------------------------------------------
 Wed Apr  9 09:59:49 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250408 (git commit c1a774f36657):
