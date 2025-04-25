@@ -105,4 +105,18 @@
     <comment>- 38.patch: pending build fixes against newer cockpit</comment>
     <requestid>1193023</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b43a7941dd470149de6c4369b1f89606</srcmd5>
+    <version>0.1.3~git0.41f9fbc</version>
+    <time>1745612402</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.3~git0.41f9fbc:
+  * FEAT: add ci
+  * FEAT: drop rome and use styelint and eslint
+  * FIX: update makefile to support updated translation utils
+  * FEAT: explicitly specify cockpit-tukit is only supported on transacional systems
+  * use typescript types provided by upstream
+  * drop 38.patch</comment>
+    <requestid>1272677</requestid>
+  </revision>
 </revisionlist>

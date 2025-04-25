@@ -1,7 +1,7 @@
 #
 # spec file for package cockpit-tukit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           cockpit-tukit
-Version:        0.1.2~git0.647b3e3
+Version:        0.1.3~git0.41f9fbc
 Release:        0%{?dist}
 Summary:        Cockpit module for Transactional Update
 License:        LGPL-2.1-or-later
@@ -26,9 +25,7 @@ URL:            https://github.com/openSUSE/cockpit-tukit
 Source:         %{name}-%{version}.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
-Source12:       node_modules.sums
 %include %_sourcedir/node_modules.spec.inc
-Patch1:         38.patch
 Patch2:         load-css-overrides.patch
 BuildArch:      noarch
 BuildRequires:  appstream-glib
@@ -56,7 +53,6 @@ local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts|| ( find
 %build
 mkdir -p pkg
 cp -r %{_datadir}/cockpit/devel/lib pkg/lib
-npx patch-package
 NODE_ENV=production npm run build
 
 %install
@@ -68,7 +64,7 @@ find %{buildroot}%{_datadir}/cockpit/ -name '*.map' | xargs --no-run-if-empty rm
 
 %files
 %doc README.md
-%license LICENSE dist/index.js.LEGAL.txt dist/index.css.LEGAL.txt
+%license LICENSE dist/index.js.LEGAL.txt
 %{_datadir}/cockpit
 %{_datadir}/metainfo/*
 
