@@ -394,4 +394,31 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   * Return model capabilities from the show endpoint</comment>
     <requestid>1271013</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b6140f6c98c96f456ed6cb627be31984</srcmd5>
+    <version>0.6.6</version>
+    <time>1745612343</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.6:
+  * New model: IBM Granite 3.3
+  * New model: DeepCoder
+  * New, faster model downloading: OLLAMA_EXPERIMENT=client2
+    ollama serve will run Ollama using a new downloader with
+    improved performance and reliability when running ollama pull
+  * Fixed memory leak issues when running Gemma 3, Mistral Small
+    3.1 and other models on Ollama
+  * Improved performance of ollama create when importing models
+    from Safetensors
+  * Ollama will now allow tool function parameters with either a
+    single type or an array of types
+  * Fixed certain out-of-memory issues caused by not reserving
+    enough memory at startup
+  * Fixed nondeterministic model unload order
+  * Included the items and $defs fields to properly handle array
+    types in the API
+  * OpenAI-Beta headers are now included in the CORS safelist
+  * Fixed issue where model tensor data would be corrupted when
+    importing models from Safetensors</comment>
+    <requestid>1272498</requestid>
+  </revision>
 </revisionlist>
