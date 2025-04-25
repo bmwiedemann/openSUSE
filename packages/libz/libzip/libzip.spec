@@ -67,6 +67,8 @@ Summary:        C library for reading, creating, and modifying zip archives
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libzip%{sover} = %{version}
+# tools are referenced in libzip-targets*.cmake and must be installed
+Requires:       libzip-tools = %{version}
 
 %description devel
 libzip is a C library for reading, creating, and modifying zip

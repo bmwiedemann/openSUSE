@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 12:21:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Fix libzip-devel dependencies. libzip-targets*.cmake create
+  CMake targets for zipcmp, zipmerge and ziptool.
+
+-------------------------------------------------------------------
 Sat Feb 22 18:45:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.11.3:

@@ -529,4 +529,13 @@
     <comment></comment>
     <requestid>1248178</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>c12fb3ebac9b5d03d1ae09a0e687ec3b</srcmd5>
+    <version>1.11.3</version>
+    <time>1745612291</time>
+    <user>anag_factory</user>
+    <comment>- Fix libzip-devel dependencies. libzip-targets*.cmake create
+  CMake targets for zipcmp, zipmerge and ziptool. (forwarded request 1272422 from krop)</comment>
+    <requestid>1272433</requestid>
+  </revision>
 </revisionlist>
