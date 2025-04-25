@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:26:57 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update 0.16.0:
+  * Security fix (CVE-2025-43859, bsc#1241872)
+    Reject certain malformed Transfer-Encoding: chunked bodies that
+    were previously accepted. These could have enabled
+    request-smuggling attacks when an h11-based HTTP server was placed
+    behind a load balancer with a matching bug in its chunked
+    handling.
+
+    Advisory with more details:
+    https://github.com/python-hyper/h11/security/advisories/GHSA-vqfr-h8mv-ghfj
+- 0.15.0:
+  * Reject Content-Lengths >= 1 zettabyte (1 billion terabytes) early,
+    without attempting to parse the integer (#181)
+
+-------------------------------------------------------------------
 Mon Jan 29 21:36:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - spec cleanup
