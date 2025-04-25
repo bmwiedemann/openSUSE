@@ -19,6 +19,15 @@ index e7549470..b68c1710 100644
  	auth2-gss.o gss-serv.o gss-serv-krb5.o \
  	loginrec.o auth-pam.o auth-shadow.o auth-sia.o \
  	sftp-server.o sftp-common.o \
+@@ -155,7 +156,7 @@ SSHD_AUTH_OBJS=sshd-auth.o \
+ 	groupaccess.o auth-bsdauth.o auth2-hostbased.o auth2-kbdint.o \
+ 	auth2-none.o auth2-passwd.o auth2-pubkey.o auth2-pubkeyfile.o \
+ 	auth2-gss.o gss-serv.o gss-serv-krb5.o \
+-	monitor_wrap.o auth-krb5.o \
++	monitor_wrap.o auth-krb5.o kexgsss.o \
+ 	audit.o audit-bsm.o audit-linux.o platform.o \
+ 	loginrec.o auth-pam.o auth-shadow.o auth-sia.o \
+ 	sandbox-null.o sandbox-rlimit.o sandbox-darwin.o \
 @@ -523,7 +523,7 @@ regress-prep:
  	    ln -s `cd $(srcdir) && pwd`/regress/Makefile `pwd`/regress/Makefile
  
@@ -2534,11 +2543,11 @@ index 2ce89fe9..ebf76c7f 100644
 +    {MONITOR_REQ_GSSSIGN, 0, mm_answer_gss_sign},
 +    {MONITOR_REQ_GSSUPCREDS, 0, mm_answer_gss_updatecreds},
 +#endif
+     {MONITOR_REQ_STATE, MON_ONCE, mm_answer_state},
  #ifdef WITH_OPENSSL
      {MONITOR_REQ_MODULI, 0, mm_answer_moduli},
- #endif
 @@ -293,6 +302,10 @@ monitor_child_preauth(struct ssh *ssh, struct monitor *pmonitor)
- 	/* Permit requests for moduli and signatures */
+ 	monitor_permit(mon_dispatch, MONITOR_REQ_STATE, 1);
  	monitor_permit(mon_dispatch, MONITOR_REQ_MODULI, 1);
  	monitor_permit(mon_dispatch, MONITOR_REQ_SIGN, 1);
 +#ifdef GSSAPI
@@ -2869,9 +2878,9 @@ diff -up a/readconf.c.gsskex b/readconf.c
 --- a/readconf.c.gsskex	2021-08-20 06:03:49.000000000 +0200
 +++ b/readconf.c	2021-08-27 12:25:42.556421509 +0200
 @@ -67,6 +67,7 @@
- #include "uidswap.h"
  #include "myproposal.h"
  #include "digest.h"
+ #include "version.h"
 +#include "ssh-gss.h"
  
  #include "fips.h"
@@ -3020,9 +3029,9 @@ diff -up a/servconf.c.gsskex b/servconf.c
 --- a/servconf.c.gsskex	2021-08-20 06:03:49.000000000 +0200
 +++ b/servconf.c	2021-08-27 12:28:15.887735189 +0200
 @@ -70,6 +70,7 @@
- #include "auth.h"
  #include "myproposal.h"
  #include "digest.h"
+ #include "version.h"
 +#include "ssh-gss.h"
  #include "fips.h"
  
@@ -3297,8 +3306,8 @@ index 60de6087..db5c65bc 100644
 --- a/ssh.1
 +++ b/ssh.1
 @@ -503,7 +503,13 @@ For full details of the options listed below, and their possible values, see
- .It GatewayPorts
- .It GlobalKnownHostsFile
+ .It ForwardX11Timeout
+ .It ForwardX11Trusted
  .It GSSAPIAuthentication
 +.It GSSAPIKeyExchange
 +.It GSSAPIClientIdentity
@@ -3307,9 +3316,9 @@ index 60de6087..db5c65bc 100644
 +.It GSSAPIRenewalForcesRekey
 +.It GSSAPIServerIdentity
 +.It GSSAPITrustDns
+ .It GatewayPorts
+ .It GlobalKnownHostsFile
  .It HashKnownHosts
- .It Host
- .It HostbasedAcceptedAlgorithms
 @@ -624,6 +624,8 @@
  (supported message integrity codes),
  .Ar kex
@@ -3691,7 +3700,11 @@ index 60b2aaf7..d92f03aa 100644
  		sshpkt_fatal(ssh, r, "%s: send", __func__);
  	sshbuf_free(buf);
  }
-@@ -2347,6 +2348,48 @@ do_ssh2_kex(struct ssh *ssh)
+diff --git a/sshd-auth.c b/sshd-auth.c
+index 60b2aaf7..d92f03aa 100644
+--- a/sshd-auth.c
++++ b/sshd-auth.c
+@@ -840,6 +840,48 @@ do_ssh2_kex(struct ssh *ssh)
  
  	free(hkalgs);
  
@@ -3740,11 +3753,11 @@ index 60b2aaf7..d92f03aa 100644
  	/* start key exchange */
  	if ((r = kex_setup(ssh, myproposal)) != 0)
  		fatal_r(r, "kex_setup");
-@@ -2362,7 +2405,18 @@ do_ssh2_kex(struct ssh *ssh)
-  #ifdef OPENSSL_HAS_ECC
+@@ -855,7 +898,18 @@ do_ssh2_kex(struct ssh *ssh)
+ # ifdef OPENSSL_HAS_ECC
  	kex->kex[KEX_ECDH_SHA2] = kex_gen_server;
-  #endif
--#endif
+ # endif /* OPENSSL_HAS_ECC */
+-#endif /* WITH_OPENSSL */
 +# ifdef GSSAPI
 +	if (options.gss_keyex) {
 +		kex->kex[KEX_GSS_GRP1_SHA1] = kexgss_server;
@@ -3759,7 +3772,7 @@ index 60b2aaf7..d92f03aa 100644
 +#endif /* WITH_OPENSSL */
  	kex->kex[KEX_C25519_SHA256] = kex_gen_server;
  	kex->kex[KEX_KEM_SNTRUP761X25519_SHA512] = kex_gen_server;
-  	kex->kex[KEX_KEM_MLKEM768X25519_SHA256] = kex_gen_server;
+ 	kex->kex[KEX_KEM_MLKEM768X25519_SHA256] = kex_gen_server;
 diff --git a/sshd_config b/sshd_config
 index 19b7c91a..2c48105f 100644
 --- a/sshd_config

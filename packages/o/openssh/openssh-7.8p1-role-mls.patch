@@ -276,8 +276,8 @@ diff -up openssh/monitor.h.role-mls openssh/monitor.h
 --- openssh/monitor.h.role-mls	2018-08-20 07:57:29.000000000 +0200
 +++ openssh/monitor.h	2018-08-22 11:14:56.818430941 +0200
 @@ -55,6 +55,10 @@ enum monitor_reqtype {
- 	MONITOR_REQ_GSSCHECKMIC = 48, MONITOR_ANS_GSSCHECKMIC = 49,
  	MONITOR_REQ_TERM = 50,
+ 	MONITOR_REQ_STATE = 51, MONITOR_ANS_STATE = 52,
  
 +#ifdef WITH_SELINUX
 +	MONITOR_REQ_AUTHROLE = 80,

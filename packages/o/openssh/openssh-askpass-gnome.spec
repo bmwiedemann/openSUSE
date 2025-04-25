@@ -18,14 +18,15 @@
 
 %define _name openssh
 Name:           openssh-askpass-gnome
-Version:        9.9p2
+Version:        10.0p2
+%define wrongly_named_version 10.0p1
 Release:        0
 Summary:        A GNOME-Based Passphrase Dialog for OpenSSH
 License:        BSD-2-Clause
 Group:          Productivity/Networking/SSH
 URL:            https://www.openssh.com/
-Source:         https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz
-Source42:       https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{version}.tar.gz.asc
+Source0:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{wrongly_named_version}.tar.gz
+Source1:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/%{_name}-%{wrongly_named_version}.tar.gz.asc
 Requires:       %{_name}-clients = %{version}
 Supplements:    packageand(openssh-clients:libgtk-3-0)
 %if 0%{?suse_version} >= 1550
@@ -40,7 +41,7 @@ for executing commands on a remote machine. This package contains a
 GNOME-based passphrase dialog for OpenSSH.
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p1 -n %{_name}-%{wrongly_named_version}
 
 %build
 cd contrib

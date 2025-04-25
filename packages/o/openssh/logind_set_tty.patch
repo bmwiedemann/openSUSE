@@ -14,8 +14,8 @@ index f0ea07e7b..35dcf45f1 100644
  	$(LD) -o $@ $(SSHOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(GSSLIBS) $(CHANNELLIBS)
  
  sshd$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHDOBJS)
--	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
-+	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS) $(LIBWTMPDB) $(LIBSYSTEMD)
+-	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS)
++	$(LD) -o $@ $(SSHDOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(CHANNELLIBS) $(LIBSYSTEMD)
  
  sshd-session$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHD_SESSION_OBJS)
  	$(LD) -o $@ $(SSHD_SESSION_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
@@ -195,6 +195,6 @@ index 86caf83b2..8b413190b 100644
 +}
 +#endif
 +
- 
  /**
   ** Low-level libutil login() functions
+  **/

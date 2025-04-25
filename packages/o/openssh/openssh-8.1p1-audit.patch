@@ -1122,7 +1122,7 @@ Index: openssh-8.9p1/monitor.c
  #include "ssherr.h"
  #include "sk-api.h"
 @@ -107,6 +108,8 @@ extern u_int utmp_len;
- extern struct sshbuf *loginmsg;
+ extern struct include_list includes;
  extern struct sshauthopt *auth_opts; /* XXX move to permanent ssh->authctxt? */
  
 +extern void destroy_sensitive_data(struct ssh *);
@@ -1878,12 +1878,9 @@ Index: openssh-8.9p1/session.c
  #endif
  	if (s->ttyfd != -1)
  		ret = do_exec_pty(ssh, s, command);
-@@ -1550,8 +1562,11 @@ do_child(struct ssh *ssh, Session *s, co
- 	sshpkt_fmt_connection_id(ssh, remote_id, sizeof(remote_id));
+@@ -1550,6 +1562,9 @@ do_child(struct ssh *ssh, Session *s, co
  
- 	/* remove hostkey from the child's memory */
--	destroy_sensitive_data();
-+	destroy_sensitive_data(ssh);
+ 	/* remove keys from memory */
  	ssh_packet_clear_keys(ssh);
 +	/* Don't audit this - both us and the parent would be talking to the
 +	   monitor over a single socket, with no synchronization. */
@@ -2075,9 +2072,9 @@ Index: openssh-8.9p1/sshd-session.c
  #endif
  #include "monitor_wrap.h"
 +#include "audit.h"
- #include "ssh-sandbox.h"
  #include "auth-options.h"
  #include "version.h"
+ #include "ssherr.h"
 @@ -265,8 +266,8 @@ struct sshbuf *loginmsg;
  struct sshbuf *loginmsg;
  
@@ -2086,9 +2083,9 @@ Index: openssh-8.9p1/sshd-session.c
 -void demote_sensitive_data(void);
 +void destroy_sensitive_data(struct ssh *);
 +void demote_sensitive_data(struct ssh *);
- static void do_ssh2_kex(struct ssh *);
  
- /*
+ /* XXX reduce to stub once postauth split */
+ int
 @@ -382,18 +383,40 @@ grace_alarm_handler(int sig)
  	_exit(EXIT_LOGIN_GRACE);
  }
@@ -2173,42 +2170,42 @@ Index: openssh-8.9p1/sshd-session.c
  		}
  		/* Certs do not need demotion */
  	}
-@@ -443,7 +489,7 @@ reseed_prngs(void)
- }
- 
- static void
--privsep_preauth_child(void)
-+privsep_preauth_child(struct ssh *ssh)
- {
- 	gid_t gidset[1];
- 
-@@ -458,7 +504,7 @@ privsep_preauth_child(void)
- 	reseed_prngs();
- 
- 	/* Demote the private keys to public keys. */
--	demote_sensitive_data();
-+	demote_sensitive_data(ssh);
- 
- 	/* Demote the child */
- 	if (privsep_chroot) {
-@@ -493,7 +539,7 @@ privsep_preauth(struct ssh *ssh)
- 	pmonitor->m_pkex = &ssh->kex;
- 
- 	box = ssh_sandbox_init(pmonitor);
--	pid = fork();
-+	pmonitor->m_pid = pid = fork();
- 	if (pid == -1) {
- 		fatal("fork of unprivileged child failed");
- 	} else if (pid != 0) {
-@@ -538,7 +584,7 @@ privsep_preauth(struct ssh *ssh)
- 		/* Arrange for logging to be sent to the monitor */
- 		set_log_handler(mm_log_handler, pmonitor);
- 
--		privsep_preauth_child();
-+		privsep_preauth_child(ssh);
- 		setproctitle("%s", "[net]");
- 		if (box != NULL)
- 			ssh_sandbox_child(box);
+#@@ -443,7 +489,7 @@ reseed_prngs(void)
+# }
+# 
+# static void
+#-privsep_preauth_child(void)
+#+privsep_preauth_child(struct ssh *ssh)
+# {
+# 	gid_t gidset[1];
+# 
+#@@ -458,7 +504,7 @@ privsep_preauth_child(void)
+# 	reseed_prngs();
+# 
+# 	/* Demote the private keys to public keys. */
+#-	demote_sensitive_data();
+#+	demote_sensitive_data(ssh);
+# 
+# 	/* Demote the child */
+# 	if (privsep_chroot) {
+#@@ -493,7 +539,7 @@ privsep_preauth(struct ssh *ssh)
+# 	pmonitor->m_pkex = &ssh->kex;
+# 
+# 	box = ssh_sandbox_init(pmonitor);
+#-	pid = fork();
+#+	pmonitor->m_pid = pid = fork();
+# 	if (pid == -1) {
+# 		fatal("fork of unprivileged child failed");
+# 	} else if (pid != 0) {
+#@@ -538,7 +584,7 @@ privsep_preauth(struct ssh *ssh)
+# 		/* Arrange for logging to be sent to the monitor */
+# 		set_log_handler(mm_log_handler, pmonitor);
+# 
+#-		privsep_preauth_child();
+#+		privsep_preauth_child(ssh);
+# 		setproctitle("%s", "[net]");
+# 		if (box != NULL)
+# 			ssh_sandbox_child(box);
 @@ -582,7 +628,7 @@ privsep_postauth(struct ssh *ssh, Authct
  	pmonitor->m_sendfd = -1;
  
@@ -2218,7 +2215,7 @@ Index: openssh-8.9p1/sshd-session.c
  
  	reseed_prngs();
  
-@@ -2311,6 +2358,9 @@ main(int ac, char **av)
+@@ -1352,6 +1398,9 @@ main(int ac, char **av)
  	do_authenticated(ssh, authctxt);
  
  	/* The connection has been terminated. */
@@ -2228,7 +2225,7 @@ Index: openssh-8.9p1/sshd-session.c
  	ssh_packet_get_bytes(ssh, &ibytes, &obytes);
  	verbose("Transferred: sent %llu, received %llu bytes",
  	    (unsigned long long)obytes, (unsigned long long)ibytes);
-@@ -2491,6 +2541,15 @@ do_ssh2_kex(struct ssh *ssh)
+@@ -1397,6 +1446,15 @@ do_ssh2_kex(struct ssh *ssh)
  void
  cleanup_exit(int i)
  {
@@ -2244,7 +2241,7 @@ Index: openssh-8.9p1/sshd-session.c
  	extern int auth_attempted; /* monitor.c */
  
  	if (the_active_state != NULL && the_authctxt != NULL) {
-@@ -2525,7 +2593,9 @@ cleanup_exit(int i)
+@@ -1413,7 +1471,9 @@ cleanup_exit(int i)
  	}
  #ifdef SSH_AUDIT_EVENTS
  	/* done after do_cleanup so it can cancel the PAM auth 'thread' */

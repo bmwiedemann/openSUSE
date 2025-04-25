@@ -128,7 +128,7 @@ Index: openssh-8.9p1/Makefile.in
 --- openssh-8.9p1.orig/Makefile.in
 +++ openssh-8.9p1/Makefile.in
 @@ -27,6 +27,8 @@ SFTP_SERVER=$(libexecdir)/sftp-server
- SSHD_SESSION=$(libexecdir)/sshd-session
+ SSHD_AUTH=$(libexecdir)/sshd-auth
  SSH_PKCS11_HELPER=$(libexecdir)/ssh-pkcs11-helper
  SSH_SK_HELPER=$(libexecdir)/ssh-sk-helper
 +SSH_LDAP_HELPER=$(libexecdir)/ssh-ldap-helper
@@ -168,7 +168,7 @@ Index: openssh-8.9p1/Makefile.in
  	$(LD) -o $@ $(SFTPSERVER_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat -lssh $(LIBS)
  
 @@ -421,6 +429,10 @@ install-files:
-	$(INSTALL) -m 0755 $(STRIP_OPT) sshd-session$(EXEEXT) $(DESTDIR)$(SSHD_SESSION)$(EXEEXT)
+ 	$(INSTALL) -m 0755 $(STRIP_OPT) sshd-auth$(EXEEXT) $(DESTDIR)$(SSHD_AUTH)$(EXEEXT)
  	$(INSTALL) -m 4711 $(STRIP_OPT) ssh-keysign$(EXEEXT) $(DESTDIR)$(SSH_KEYSIGN)$(EXEEXT)
  	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-pkcs11-helper$(EXEEXT) $(DESTDIR)$(SSH_PKCS11_HELPER)$(EXEEXT)
 +	if test ! -z "$(INSTALL_SSH_LDAP_HELPER)" ; then \

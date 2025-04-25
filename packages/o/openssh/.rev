@@ -1955,4 +1955,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1267606</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>83cc07f1c0e568928f94fe3ac24e02b2</srcmd5>
+    <version>10.0p2</version>
+    <time>1745612302</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272617</requestid>
+  </revision>
 </revisionlist>

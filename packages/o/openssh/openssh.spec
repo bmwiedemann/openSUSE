@@ -59,14 +59,15 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        9.9p2
+Version:        10.0p2
+%define wrongly_named_version 10.0p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
 Group:          Productivity/Networking/SSH
 URL:            https://www.openssh.com/
-Source0:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz
-Source1:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{version}.tar.gz.asc
+Source0:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{wrongly_named_version}.tar.gz
+Source1:        https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-%{wrongly_named_version}.tar.gz.asc
 Source2:        sshd.pamd
 Source3:        README.SUSE
 Source4:        README.kerberos
@@ -131,14 +132,12 @@ Patch39:        openssh-8.1p1-use-openssl-kdf.patch
 Patch40:        openssh-8.1p1-ed25519-use-openssl-rng.patch
 Patch41:        openssh-fips-ensure-approved-moduli.patch
 Patch42:        openssh-link-with-sk.patch
-Patch43:        openssh-reenable-dh-group14-sha1-default.patch
 Patch45:        openssh-8.4p1-ssh_config_d.patch
 Patch46:        openssh-whitelist-syscalls.patch
 Patch47:        openssh-8.4p1-vendordir.patch
 Patch48:        openssh-8.4p1-pam_motd.patch
 Patch49:        openssh-do-not-send-empty-message.patch
 Patch50:        openssh-openssl-3.patch
-Patch51:        wtmpdb.patch
 Patch52:        logind_set_tty.patch
 Patch54:        openssh-mitigate-lingering-secrets.patch
 Patch102:       openssh-7.8p1-role-mls.patch
@@ -146,11 +145,10 @@ Patch103:       openssh-6.6p1-privsep-selinux.patch
 Patch104:       openssh-6.6p1-keycat.patch
 Patch105:       openssh-6.6.1p1-selinux-contexts.patch
 Patch106:       openssh-7.6p1-cleanup-selinux.patch
+Patch107:       openssh-send-extra-term-env.patch
 # 200 - 300  --  Patches submitted to upstream
 # PATCH-FIX-UPSTREAM -- https://github.com/openssh/openssh-portable/pull/452 boo#1229010
 Patch200:       0001-auth-pam-Immediately-report-instructions-to-clients-and-fix-handling-in-ssh-client.patch
-# PATCH-FIX-UPSTREAM -- https://bugzilla.mindrot.org/show_bug.cgi?id=3655#c4
-Patch201:       fix-x11-regression-bsc1229449.patch
 # 1000 - 2000  --  Conditional patches
 %if %{with crypto_policies}
 # PATCH-FIX-OPENSUSE bsc#1211301 Add crypto-policies support
@@ -339,7 +337,7 @@ This package contains the FIPS-140 CAVS (Cryptographic Algorithm
 Validation Program/Suite) related tests of OpenSSH.
 
 %prep
-%setup -q
+%setup -q -n "%{name}-%{wrongly_named_version}"
 cp %{SOURCE3} %{SOURCE4} %{SOURCE11} .
 
 %autopatch -p1
@@ -396,7 +394,6 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
     --disable-lastlog \
     --with-logind \
 %endif
-    --enable-dsa-keys \
     --with-security-key-builtin \
     --target=%{_target_cpu}-suse-linux
 
@@ -632,6 +629,7 @@ test -f /etc/ssh/ssh_config.rpmsave && mv -v /etc/ssh/ssh_config.rpmsave /etc/ss
 %attr(0755,root,root) %{_libexecdir}/ssh/sftp-server
 %attr(0444,root,root) %{_libexecdir}/ssh/sftp-server%{CHECKSUM_SUFFIX}
 %attr(0755,root,root) %{_libexecdir}/ssh/sshd-session
+%attr(0755,root,root) %{_libexecdir}/ssh/sshd-auth
 %if 0%{?suse_version} < 1600
 %dir %{_sysconfdir}/slp.reg.d
 %config %{_sysconfdir}/slp.reg.d/ssh.reg

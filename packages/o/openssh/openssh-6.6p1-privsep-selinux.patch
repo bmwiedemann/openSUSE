@@ -81,7 +81,7 @@ Index: openssh-9.3p2/session.c
 @@ -1487,9 +1495,6 @@ do_pwchange(Session *s)
  	if (s->ttyfd != -1) {
  		fprintf(stderr,
- 		    "You must change your password now and login again!\n");
+ 		    "You must change your password now and log in again!\n");
 -#ifdef WITH_SELINUX
 -		setexeccon(NULL);
 -#endif
@@ -98,14 +98,15 @@ Index: openssh-9.3p2/session.c
  		exit(sftp_server_main(i, argv, s->pw));
  	}
  
-Index: openssh-9.3p2/sshd-session.c
+Index: openssh-10/sshd-auth.c
 ===================================================================
---- openssh-9.3p2.orig/sshd-session.c
-+++ openssh-9.3p2/sshd-session.c
-@@ -342,6 +342,10 @@ privsep_preauth_child(struct ssh *ssh)
- 	/* Demote the private keys to public keys. */
- 	demote_sensitive_data(ssh);
- 
+--- openssh-10.orig/sshd-auth.c
++++ openssh-10/sshd-auth.c
+@@ -200,6 +200,11 @@ privsep_preauth_child(struct ssh *ssh)
+ 	if ((box = ssh_sandbox_init(pmonitor)) == NULL)
+ 		fatal_f("ssh_sandbox_init failed");
+ #endif
++
 +#ifdef WITH_SELINUX
 +	ssh_selinux_change_context("sshd_net_t");
 +#endif
@@ -113,7 +114,11 @@ Index: openssh-9.3p2/sshd-session.c
  	/* Demote the child */
  	if (privsep_chroot) {
  		/* Change our root directory */
-@@ -444,7 +448,7 @@ privsep_postauth(struct ssh *ssh, Authct
+Index: openssh-9.3p2/sshd-session.c
+===================================================================
+--- openssh-9.3p2.orig/sshd-session.c
++++ openssh-9.3p2/sshd-session.c
+@@ -490,7 +490,7 @@ privsep_postauth(struct ssh *ssh, Authct
  	 * fd passing, as AFAIK PTY allocation on this platform doesn't require
  	 * special privileges to begin with.
  	 */

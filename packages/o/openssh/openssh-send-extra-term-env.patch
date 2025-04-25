@@ -1,0 +1,30 @@
+Index: openssh-10.0p1/ssh_config
+===================================================================
+--- openssh-10.0p1.orig/ssh_config
++++ openssh-10.0p1/ssh_config
+@@ -49,6 +49,10 @@ Host *
+     SendEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+     SendEnv LC_IDENTIFICATION LC_ALL
+ 
++# Send environment variables useful for terminal identification.
++    SendEnv LC_TERMINAL LC_TERMINAL_VERSION
++    SendEnv COLORTERM TERM_PROGRAM TERM_PROGRAM_VERSION
++
+ #   PasswordAuthentication yes
+ #   HostbasedAuthentication no
+ #   GSSAPIAuthentication no
+Index: openssh-10.0p1/sshd_config
+===================================================================
+--- openssh-10.0p1.orig/sshd_config
++++ openssh-10.0p1/sshd_config
+@@ -123,6 +123,10 @@ AcceptEnv LANG LC_CTYPE LC_NUMERIC LC_TI
+ AcceptEnv LC_PAPER LC_NAME LC_ADDRESS LC_TELEPHONE LC_MEASUREMENT
+ AcceptEnv LC_IDENTIFICATION LC_ALL
+ 
++# Accept environment variables useful for terminal identification.
++AcceptEnv LC_TERMINAL LC_TERMINAL_VERSION
++AcceptEnv COLORTERM TERM_PROGRAM TERM_PROGRAM_VERSION
++
+ # Example of overriding settings on a per-user basis
+ #Match User anoncvs
+ #	X11Forwarding no

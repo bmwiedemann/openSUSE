@@ -16,7 +16,7 @@ Index: openssh-8.8p1/Makefile.in
  STRIP_OPT=@STRIP_OPT@
 @@ -70,7 +71,7 @@ MKDIR_P=@MKDIR_P@
  
- TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) sshd-session$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT)
+ TARGETS=ssh$(EXEEXT) sshd$(EXEEXT) sshd-session$(EXEEXT) sshd-auth$(EXEEXT) ssh-add$(EXEEXT) ssh-keygen$(EXEEXT) ssh-keyscan${EXEEXT} ssh-keysign${EXEEXT} ssh-pkcs11-helper$(EXEEXT) ssh-agent$(EXEEXT) scp$(EXEEXT) sftp-server$(EXEEXT) sftp$(EXEEXT) ssh-sk-helper$(EXEEXT) $(SK_STANDALONE)
  
 -TARGETS += cavstest-ctr$(EXEEXT)
 +TARGETS += cavstest-ctr$(EXEEXT) cavstest-kdf$(EXEEXT)

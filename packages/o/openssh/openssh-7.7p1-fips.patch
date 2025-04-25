@@ -574,8 +574,8 @@ Index: openssh-9.6p1/readconf.c
 --- openssh-9.6p1.orig/readconf.c
 +++ openssh-9.6p1/readconf.c
 @@ -71,6 +71,8 @@
- #include "myproposal.h"
  #include "digest.h"
+ #include "version.h"
  
 +#include "fips.h"
 +
@@ -642,9 +642,9 @@ Index: openssh-9.6p1/servconf.c
 --- openssh-9.6p1.orig/servconf.c
 +++ openssh-9.6p1/servconf.c
 @@ -68,6 +68,7 @@
- #include "auth.h"
  #include "myproposal.h"
  #include "digest.h"
+ #include "version.h"
 +#include "fips.h"
  
  #if !defined(SSHD_PAM_SERVICE)
@@ -785,14 +785,14 @@ Index: openssh-9.6p1/sshd.c
 --- openssh-9.6p1.orig/sshd.c
 +++ openssh-9.6p1/sshd.c
 @@ -128,6 +128,8 @@
- #include "addr.h"
  #include "srclimit.h"
+ #include "atomicio.h"
  
 +#include "fips.h"
 +
  /* Re-exec fds */
  #define REEXEC_DEVCRYPTO_RESERVED_FD	(STDERR_FILENO + 1)
- #define REEXEC_STARTUP_PIPE_FD		(STDERR_FILENO + 2)
+ #define REEXEC_CONFIG_PASS_FD		(STDERR_FILENO + 2)
 Index: openssh-9.6p1/sshd_config.5
 ===================================================================
 --- openssh-9.6p1.orig/sshd_config.5

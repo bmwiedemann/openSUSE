@@ -444,7 +444,7 @@ Index: openssh-8.8p1/ssh.c
  
  /* Saves a copy of argv for setproctitle emulation */
 @@ -632,6 +634,10 @@ main(int ac, char **av)
- 	u_int j;
+ 	struct utsname utsname;
  	struct ssh_conn_info *cinfo = NULL;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a
@@ -459,7 +459,7 @@ Index: openssh-8.8p1/sshd.c
 --- openssh-8.8p1.orig/sshd.c
 +++ openssh-8.8p1/sshd.c
 @@ -1547,6 +1547,10 @@ main(int ac, char **av)
- 	struct connection_info connection_info;
+ 	struct utsname utsname;
  	sigset_t sigmask;
  
 +	/* initialize fips - can go before ssh_malloc_init(), since that is a

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 10 08:16:09 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- "Update" to openssh 10.0p2:
+  * No changes for askpass, see main package changelog for
+    details.
+
+-------------------------------------------------------------------
+Wed Apr  9 09:33:10 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to openssh 10.0p1:
+  * No changes for askpass, see main package changelog for
+    details.
+
+-------------------------------------------------------------------
 Mon Sep 23 06:16:59 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to openssh 9.9p1:
