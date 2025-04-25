@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:24:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.10:
+  * Use virtconsole for stdout, and serial in microvm. (#1947)
+  * Add config/env var support for microVM usage; display boot logs
+    in debug (#1945)
+  * Re-add xattr allowlist from readlinkFS (#1942)
+  * Update declarative capabilities; add functionality to set
+    within QEMU (#1944)
+  * Revert "fix: propagate Range field of subpackages (#1939)"
+    (#1941)
+
+-------------------------------------------------------------------
+Thu Apr 24 15:31:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.9:
+  * If the install location is customized at all, these find
+    commands will fail and cause the build to exit. Wrapping it in
+    a validifity check is a simple way to prevent this from failing
+    outright. (#1943)
+  * Add support for declarative file capabilities (#1938)
+  * fix: propagate Range field of subpackages (#1939)
+
+-------------------------------------------------------------------
 Fri Apr 18 19:15:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.8:
