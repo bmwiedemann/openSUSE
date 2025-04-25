@@ -34,4 +34,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for Aeonsemi AS21x1x 1G/2.5G/5G/10G Ethernet Phy</comment>
     <requestid>1268119</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>36e2e802998d1643b4dfeabeb05b842e</srcmd5>
+    <version>20250408</version>
+    <time>1745612315</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272732</requestid>
+  </revision>
 </revisionlist>
