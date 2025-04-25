@@ -26,21 +26,21 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.8.1
+Version:        2.9.1
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-settings
 Source:         https://files.pythonhosted.org/packages/source/p/pydantic-settings/pydantic_settings-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support Pydantic 2.10 changes.
-Patch0:         fix-settings-dump.patch
-# PATCH-FIX-OPENSUSE Use typing_inspection.typing_objects (adapted from upstream)
-Patch1:         use-typing_objects.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module azure-keyvault-secrets >= 4.8}
+BuildRequires:  %{python_module google-auth}
+BuildRequires:  %{python_module google-cloud-secret-manager >= 2.23.1}
 BuildRequires:  %{python_module pydantic-settings = %{version}}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
@@ -48,11 +48,13 @@ BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-pydantic >= 2.3.0
+Requires:       python-pydantic >= 2.7.0
 Requires:       python-python-dotenv >= 0.21.0
 Requires:       python-typing-inspection >= 0.4.0
-Suggests:       python-pyyaml >= 6.0.1
+Suggests:       python-PyYAML >= 6.0.1
 Suggests:       python-tomli >= 2.0.1
+Suggests:       python-google-cloud-secret-manager >= 2.23.1
+Suggests:       python-azure-keyvault-secrets >= 4.8
 BuildArch:      noarch
 %python_subpackages
 
@@ -74,7 +76,7 @@ Settings management using Pydantic, this is the new official home of Pydantic's 
 %check
 %if %{with test}
 # This test requires azure
-skiptest="test_docs_examples[docs/index.md:1803-1847]"
+skiptest="test_docs_examples[docs/index.md:1847-1890]"
 %pytest -k "not ($skiptest)"
 %endif
 

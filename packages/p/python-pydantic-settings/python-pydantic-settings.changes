@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Apr 24 05:53:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.9.1:
+  * Drop support for Python 3.8
+  * Switch to typing-inspection
+  * Refactor sources.py into a subpackage
+  * Add support for AWS Secrets Manager
+  * Fix minor typo: conotations => connotations
+  * Azure Key Vault: Don't load disabled secret
+  * Add support for GCP Secret Manager
+  * CLI JSON Optional Default
+  * Fix for env nested enum
+  * CLI submodel suppress
+  * Cli retrieve unknown args
+  * Update pydantic
+- Drop patches:
+  * fix-settings-dump.patch
+  * use-typing_objects.patch
+
+-------------------------------------------------------------------
 Fri Apr  4 04:53:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.8.1:
