@@ -218,4 +218,14 @@
     <comment></comment>
     <requestid>1270572</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d73183a37e82b05676d4001ab0b8cf63</srcmd5>
+    <version>1.0.9</version>
+    <time>1745612323</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.9
+  * Resolve https://github.com/advisories/GHSA-vqfr-h8mv-ghfj with h11 
+    dependency update. (#1008)</comment>
+    <requestid>1272749</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 25 11:36:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.0.9
+  * Resolve https://github.com/advisories/GHSA-vqfr-h8mv-ghfj with h11 
+    dependency update. (#1008)
+
+-------------------------------------------------------------------
 Wed Apr 16 14:22:23 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 1.0.8

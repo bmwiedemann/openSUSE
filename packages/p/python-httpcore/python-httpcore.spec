@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpcore%{psuffix}
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
@@ -43,8 +43,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
+Requires:       python-h11 >= 0.16
 Requires:       (python-anyio >= 3 with python-anyio < 5)
-Requires:       (python-h11 >= 0.13.0 with python-h11 < 0.15)
 Requires:       (python-sniffio >= 1.0 with python-sniffio < 2)
 Recommends:     python-h2 >= 3.0
 Recommends:     python-socksio >= 1.0
