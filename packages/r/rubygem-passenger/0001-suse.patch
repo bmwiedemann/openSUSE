@@ -4,11 +4,13 @@ Date:   Wed Sep 30 17:39:13 2015 +0200
 
     suse patch
 
-Index: passenger-5.2.2/src/cxx_supportlib/ResourceLocator.h
+Index: passenger-6.0.26/src/cxx_supportlib/ResourceLocator.h
 ===================================================================
---- passenger-5.2.2.orig/src/cxx_supportlib/ResourceLocator.h
-+++ passenger-5.2.2/src/cxx_supportlib/ResourceLocator.h
-@@ -105,12 +105,12 @@
+--- passenger-6.0.26.orig/src/cxx_supportlib/ResourceLocator.h
++++ passenger-6.0.26/src/cxx_supportlib/ResourceLocator.h
+@@ -104,14 +104,14 @@ public:
+ 		} else {
+ 			const string &root = _installSpec;
  			originallyPackaged  = true;
 -			packagingMethod     = "unknown";
 +			packagingMethod     = "rpm";
@@ -25,11 +27,11 @@ Index: passenger-5.2.2/src/cxx_supportlib/ResourceLocator.h
  			buildSystemDir      = root;
  		}
  	}
-Index: passenger-5.0.26/src/cxx_supportlib/Utils.cpp
+Index: passenger-6.0.26/src/cxx_supportlib/Utils.cpp
 ===================================================================
---- passenger-5.0.26.orig/src/cxx_supportlib/Utils.cpp
-+++ passenger-5.0.26/src/cxx_supportlib/Utils.cpp
-@@ -636,7 +636,7 @@ const char *
+--- passenger-6.0.26.orig/src/cxx_supportlib/Utils.cpp
++++ passenger-6.0.26/src/cxx_supportlib/Utils.cpp
+@@ -265,7 +265,7 @@ const char *
  getSystemTempDir() {
  	const char *temp_dir = getenv("TMPDIR");
  	if (temp_dir == NULL || *temp_dir == '\0') {
@@ -38,11 +40,11 @@ Index: passenger-5.0.26/src/cxx_supportlib/Utils.cpp
  	}
  	return temp_dir;
  }
-Index: passenger-5.0.26/src/helper-scripts/meteor-loader.rb
+Index: passenger-6.0.26/src/helper-scripts/meteor-loader.rb
 ===================================================================
---- passenger-5.0.26.orig/src/helper-scripts/meteor-loader.rb
-+++ passenger-5.0.26/src/helper-scripts/meteor-loader.rb
-@@ -107,9 +107,8 @@
+--- passenger-6.0.26.orig/src/helper-scripts/meteor-loader.rb
++++ passenger-6.0.26/src/helper-scripts/meteor-loader.rb
+@@ -107,9 +107,8 @@ module PhusionPassenger
          abort "This program may only be invoked from Passenger (error: $PASSENGER_SPAWN_WORK_DIR not set)."
        end
  
@@ -53,11 +55,11 @@ Index: passenger-5.0.26/src/helper-scripts/meteor-loader.rb
        PhusionPassenger.locate_directories(passenger_root)
  
        PhusionPassenger.require_passenger_lib 'loader_shared_helpers'
-Index: passenger-5.0.26/src/helper-scripts/rack-loader.rb
+Index: passenger-6.0.26/src/helper-scripts/rack-loader.rb
 ===================================================================
---- passenger-5.0.26.orig/src/helper-scripts/rack-loader.rb
-+++ passenger-5.0.26/src/helper-scripts/rack-loader.rb
-@@ -46,9 +46,8 @@
+--- passenger-6.0.26.orig/src/helper-scripts/rack-loader.rb
++++ passenger-6.0.26/src/helper-scripts/rack-loader.rb
+@@ -46,9 +46,8 @@ module PhusionPassenger
        record_journey_step_end('SUBPROCESS_EXEC_WRAPPER', 'STEP_PERFORMED')
        record_journey_step_begin('SUBPROCESS_WRAPPER_PREPARATION', 'STEP_IN_PROGRESS')
  
@@ -68,11 +70,11 @@ Index: passenger-5.0.26/src/helper-scripts/rack-loader.rb
        PhusionPassenger.locate_directories(passenger_root)
  
        PhusionPassenger.require_passenger_lib 'loader_shared_helpers'
-Index: passenger-5.0.26/src/helper-scripts/rack-preloader.rb
+Index: passenger-6.0.26/src/helper-scripts/rack-preloader.rb
 ===================================================================
---- passenger-5.0.26.orig/src/helper-scripts/rack-preloader.rb
-+++ passenger-5.0.26/src/helper-scripts/rack-preloader.rb
-@@ -48,9 +48,8 @@
+--- passenger-6.0.26.orig/src/helper-scripts/rack-preloader.rb
++++ passenger-6.0.26/src/helper-scripts/rack-preloader.rb
+@@ -48,9 +48,8 @@ module PhusionPassenger
        record_journey_step_end('SUBPROCESS_EXEC_WRAPPER', 'STEP_PERFORMED')
        record_journey_step_begin('SUBPROCESS_WRAPPER_PREPARATION', 'STEP_IN_PROGRESS')
  
@@ -83,11 +85,11 @@ Index: passenger-5.0.26/src/helper-scripts/rack-preloader.rb
        PhusionPassenger.locate_directories(passenger_root)
  
        PhusionPassenger.require_passenger_lib 'loader_shared_helpers'
-Index: passenger-5.0.26/src/ruby_supportlib/phusion_passenger.rb
+Index: passenger-6.0.26/src/ruby_supportlib/phusion_passenger.rb
 ===================================================================
---- passenger-5.0.26.orig/src/ruby_supportlib/phusion_passenger.rb
-+++ passenger-5.0.26/src/ruby_supportlib/phusion_passenger.rb
-@@ -111,18 +111,20 @@ module PhusionPassenger
+--- passenger-6.0.26.orig/src/ruby_supportlib/phusion_passenger.rb
++++ passenger-6.0.26/src/ruby_supportlib/phusion_passenger.rb
+@@ -118,18 +118,20 @@ module PhusionPassenger
          instance_variable_set("@#{field}", value)
        end
      else
@@ -115,8 +117,8 @@ Index: passenger-5.0.26/src/ruby_supportlib/phusion_passenger.rb
        @apache2_module_path   = "#{source_root}/buildout/apache2/mod_passenger.so".freeze
        @ruby_extension_source_dir = "#{source_root}/src/ruby_native_extension".freeze
        @nginx_module_source_dir   = "#{source_root}/src/nginx_module".freeze
-@@ -232,7 +234,7 @@ module PhusionPassenger
-   #  2. It is faster than plan require() because it doesn't need to
+@@ -240,7 +242,7 @@ module PhusionPassenger
+   #  2. It is faster than plain require() because it doesn't need to
    #     scan the entire load path.
    def self.require_passenger_lib(name)
 -    require("#{ruby_libdir}/phusion_passenger/#{name}")
@@ -124,30 +126,29 @@ Index: passenger-5.0.26/src/ruby_supportlib/phusion_passenger.rb
    end
  
    # Forward define public_api.rb methods for code that tries to hook
-
-Index: passenger-6.0.8/src/ruby_supportlib/phusion_passenger/admin_tools.rb
+Index: passenger-6.0.26/src/ruby_supportlib/phusion_passenger/admin_tools.rb
 ===================================================================
---- passenger-6.0.8.orig/src/ruby_supportlib/phusion_passenger/admin_tools.rb	2021-04-20 17:08:10.314555766 +0200
-+++ passenger-6.0.8/src/ruby_supportlib/phusion_passenger/admin_tools.rb	2021-04-20 17:12:59.480306216 +0200
-@@ -31,7 +31,7 @@
+--- passenger-6.0.26.orig/src/ruby_supportlib/phusion_passenger/admin_tools.rb
++++ passenger-6.0.26/src/ruby_supportlib/phusion_passenger/admin_tools.rb
+@@ -31,7 +31,7 @@ module PhusionPassenger
            return ENV[name]
          end
        end
 -      return Dir['/tmp/systemd-private-*-{httpd,nginx}.service-*/tmp'].first || "/tmp"
 +      return Dir['/tmp/systemd-private-*-{httpd,nginx}.service-*/tmp'].first || '/var/run/passenger'
      end
-
+ 
      def self.process_is_alive?(pid)
-Index: passenger-6.0.12/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb
+Index: passenger-6.0.26/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb
 ===================================================================
---- passenger-6.0.12.orig/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb	2021-12-25 10:51:01.284679312 +0100
-+++ passenger-6.0.12/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb	2021-12-25 10:51:44.492963010 +0100
-@@ -106,7 +106,7 @@
+--- passenger-6.0.26.orig/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb
++++ passenger-6.0.26/src/ruby_supportlib/phusion_passenger/admin_tools/instance_registry.rb
+@@ -106,7 +106,7 @@ module PhusionPassenger
          # systemd's PrivateTmp feature works like an inverted OSX, apache gets its own
          # TMPDIR and users use /tmp, however the path is often too long because socket paths can
          # only be up to 108 characters long.
 -        [string_env("TMPDIR"), "/tmp", "/var/run/passenger-instreg",*Dir['/tmp/systemd-private-*-{httpd,nginx,apache2}.service-*/tmp']].compact
 +        [string_env("TMPDIR"), "/var/run/passenger", "/var/run/passenger-instreg",*Dir['/tmp/systemd-private-*-{httpd,nginx,apache2}.service-*/tmp']].compact
        end
-
+ 
        def string_env(name)

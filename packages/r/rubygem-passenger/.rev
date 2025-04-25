@@ -178,4 +178,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221888</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>95b62d0082383a26d3528d90f5c696dc</srcmd5>
+    <version>6.0.26</version>
+    <time>1745612334</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1268621 from rubhanazeem
+
+- New upstream release 6.0.26, see bundled CHANGELOG
+- Adapt 0001-suse.patch and 0002-fix-shebangs.patch for 6.0.26</comment>
+    <requestid>1272466</requestid>
+  </revision>
 </revisionlist>

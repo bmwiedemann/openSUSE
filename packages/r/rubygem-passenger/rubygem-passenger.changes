@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:35:52 UTC 2025 - Rubhan Azeem <rubhan.azeem@suse.com>
+
+- New upstream release 6.0.26, see bundled CHANGELOG
+- Adapt 0001-suse.patch and 0002-fix-shebangs.patch for 6.0.26
+
+-------------------------------------------------------------------
 Mon Nov  4 17:12:40 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 6.0.23, see bundled CHANGELOG
