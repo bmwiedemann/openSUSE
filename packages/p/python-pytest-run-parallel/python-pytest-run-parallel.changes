@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Apr 24 11:10:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.4.2
+  * Upgrade gh-action-pypi-publish to fix metadata error
+  * Remove deprecated argument in pytest_report_collectionfinish
+  * Report manually marked single-threaded tests
+  * Detect unsafe calls that occur under assigments
+- Add i586.patch to fix behaviour on 32 bit
+
+-------------------------------------------------------------------
+Tue Apr 22 12:12:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Initial packaging (v0.4.0), needed by pydantic
