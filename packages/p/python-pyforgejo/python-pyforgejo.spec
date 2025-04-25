@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyforgejo
-Version:        2.0.0
+Version:        2.0.2
 Release:        0
 Summary:        A client library for accessing the Forgejo API
 License:        MIT
@@ -26,10 +26,12 @@ URL:            https://codeberg.org/harabat/pyforgejo
 Source0:        https://files.pythonhosted.org/packages/source/p/pyforgejo/pyforgejo-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module httpx >= 0.20}
+BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
-BuildRequires:  %{python_module pydantic >= 2.9.2}
-BuildRequires:  %{python_module python-dotenv}
+BuildRequires:  %{python_module poetry-core >= 2.0.0}
+BuildRequires:  %{python_module pydantic >= 2.11.2}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-dotenv >= 1.1.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -72,7 +74,7 @@ try to be compatible with gitea.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no tests at this point
+#tests need internet
 
 %files %{python_files}
 %license LICENSE

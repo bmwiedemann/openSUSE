@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Apr 17 14:56:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.0.2:
+  * update pyproject.toml
+  * regenerate client
+  * update dev dependencies
+  * switch from poetry to uv
+  * publish with uv to testpypi
+  * format pyproject.toml
+  * pyproject: remove invalid packages field
+  * Add py.typed file
+  * pyproject: limit to first poetry version that supports PEP 621
+  * add dev dependencies
+  * format tests
+  * format readme
+  * update poetry lock file
+
+-------------------------------------------------------------------
+Mon Apr 14 10:36:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.0.1:
+  * update pyproject.toml
+  * regenerate client
+  * format tests
+  * add test for repoGetContents endpoint
+  * switch from conda to uv
+  * switch to OpenAPI 3 in dev
+  * add API specs
+  * update api resources
+  * update dev steps
+  * use different production and testing tokens
+  * add POST tests
+  * update pyproject format
+  * format with ruff
+  * update ruff settings
+  * add tests
+  * update install guidance
+  * mention 1.0 branch
+  * update client to Forgejo 10
+  * update development guidance
+  * update formatting of .env block
+  * update formatting of api token in .env file
+  * add lock file
+  * add dev dependencies
+  * update readme for 2.0
+
+-------------------------------------------------------------------
 Thu Feb  6 23:36:34 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.0.0:
