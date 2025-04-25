@@ -23,6 +23,13 @@
 %define sover 0
 %define sordversion %(pkg-config --modversion sord-0)
 %define serdversion %(pkg-config --modversion serd-0)
+
+%if 0%{?suse_version} > 1500
+%define _python %{primary_python}
+%else
+%define _python python3
+%endif
+
 Name:           lilv
 Version:        0.24.24
 Release:        0
@@ -51,6 +58,7 @@ BuildRequires:  pkgconfig(serd-0) >= 0.30.0
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(sord-0) >= 0.13
 BuildRequires:  pkgconfig(sratom-0) >= 0.6.10
+BuildRequires:  pkgconfig(zix-0)
 # lilv 0.22 require new API of sord 0.13
 # Since sord sover unchanged from 0.12, explicitly require here.
 Requires(pre):  liblilv-0-%{sover} = %{version}
@@ -78,12 +86,12 @@ Requires:       liblilv-0-%{sover} = %{version}
 Lilv is a C library to make use of LV2 plugins in applications.
 This subpackage contains the development files for liblilv.
 
-%package        -n python3-lilv
+%package        -n %{_python}-lilv
 Summary:        Python 3 bindings for lilv
 Group:          Development/Libraries/Python
 Requires:       liblilv-0-%{sover} = %{version}
 
-%description    -n python3-lilv
+%description    -n %{_python}-lilv
 Lilv is a C library to make use of LV2 plugins in applications.
 This subpackage contains the Python 3 bindings for lilv.
 
@@ -133,8 +141,8 @@ rmdir %{buildroot}%{_sysconfdir}/bash_completion.d
 %{_defaultdocdir}/lilv-0/
 %endif
 
-%files -n python3-lilv
-%{python_sitelib}/lilv.py
-%pycache_only %{python_sitelib}/__pycache__/lilv.*.pyc
+%files -n %{_python}-lilv
+%{python3_sitelib}/lilv.py
+%pycache_only %{python3_sitelib}/__pycache__/lilv.*.pyc
 
 %changelog

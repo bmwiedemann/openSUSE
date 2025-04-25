@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Apr 24 11:15:12 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Rework the way the preferred python flavor is used as prefix so
+  it also works with Slowroll
+
+-------------------------------------------------------------------
+Thu Apr 24 06:00:53 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add BuildRequires for pkgconfig(zix) which was pulled in
+  indirectly but is actually required since 0.24.22.
+- Generate the python subpackage with the python flavored prefix
+  it's being used instead of always using python3
+
+-------------------------------------------------------------------
 Sun Jan 19 04:24:55 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Enable development documentation for Tumbleweed
