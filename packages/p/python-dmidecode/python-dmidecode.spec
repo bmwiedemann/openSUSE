@@ -20,13 +20,14 @@
 %define modname dmidecode
 %{?sle15_python_module_pythons}
 Name:           python-dmidecode
-Version:        3.12.3
+Version:        3.12.3+git.1676426290.4fdb678
 Release:        0
 Summary:        Python module to access DMI data
 License:        GPL-2.0-only
 Group:          System/Libraries
 URL:            https://github.com/nima/python-dmidecode
-Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%{version}.tar.gz#/python-dmidecode-%{version}.tar.gz
+# Source0:        https://github.com/nima/python-dmidecode/archive/refs/tags/v%%{version}.tar.gz#/python-dmidecode-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source99:       python-dmidecode.rpmlintrc
 # PATCH-FIX-UPSTREAM gcc7-inline.patch gh#nima/python-dmidecode#35 mcepl@suse.com
 # Don't use inline keyword.
@@ -65,7 +66,7 @@ of the 'dmidecode' utility, and presents the data as python data
 structures or as XML data using libxml2.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -113,7 +114,7 @@ fi
 %ghost %{_datadir}/python-dmidecode/pymap.xml
 %{_datadir}/python-dmidecode/pymap-%{python_bin_suffix}.xml
 # %%{python_sitearch}/python_dmidecode-%%{version}*-info
-%{python_sitearch}/python_dmidecode-3.12.2*-info
+%{python_sitearch}/python_dmidecode-*-info
 %{python_sitearch}/dmidecode.py
 %{python_sitearch}/dmidecodemod.*.so
 %pycache_only %{python_sitearch}/__pycache__/dmidecode*.pyc

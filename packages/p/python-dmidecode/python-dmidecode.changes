@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 25 15:20:48 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 3.12.2+git.1676426290.4fdb678:
+  * Fix dmi_cache_size_2 will add unit twice.
+  * v3.12.3
+  * Add defined BIGENDIAN in types.h
+  * Solve dmi_memory_device_extended_size WORD issue
+  * Add bus address for type 09 in pymap.xml
+
+-------------------------------------------------------------------
 Mon Mar  3 10:46:32 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add patch fix-loglevel.patch to fix invalid log level error.

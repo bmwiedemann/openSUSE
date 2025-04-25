@@ -166,4 +166,18 @@
   gh#nima/python-dmidecode#60 bsc#1237685</comment>
     <requestid>1249683</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2b81a6150c1c8350b8188c31dddb4432</srcmd5>
+    <version>3.12.3+git.1676426290.4fdb678</version>
+    <time>1745612405</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.2+git.1676426290.4fdb678:
+  * Fix dmi_cache_size_2 will add unit twice.
+  * v3.12.3
+  * Add defined BIGENDIAN in types.h
+  * Solve dmi_memory_device_extended_size WORD issue
+  * Add bus address for type 09 in pymap.xml
+</comment>
+    <requestid>1272758</requestid>
+  </revision>
 </revisionlist>
