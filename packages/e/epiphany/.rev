@@ -1845,4 +1845,13 @@ New stable rel</comment>
     <comment></comment>
     <requestid>1272204</requestid>
   </revision>
+  <revision rev="219" vrev="1">
+    <srcmd5>d04e4bf6546c064238073e6b8b30611a</srcmd5>
+    <version>48.3</version>
+    <time>1745612385</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.3:
+  + Fix crash when opening downloaded file. (forwarded request 1272580 from iznogood)</comment>
+    <requestid>1272603</requestid>
+  </revision>
 </revisionlist>
