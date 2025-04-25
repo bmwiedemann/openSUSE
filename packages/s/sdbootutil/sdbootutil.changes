@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Apr 25 13:37:14 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250425.25d659b:
+  * get-timeout for sd-boot return unsigned value
+  * jeos-firstboot-enroll: drop unused variable
+  * jeos-firstboot-enroll: continue if no enrollment (bsc#1236583)
+  * jeos-firstboot-enroll: hide keyctl output
+  * jeos-firstboot-enroll: add title and description
+
+-------------------------------------------------------------------
 Wed Apr 23 19:15:22 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250423.61ca94f:
