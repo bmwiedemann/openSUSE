@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 23 15:10:46 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.45.1:
+  - ci: switch from using sha1 to sha256.
+  - ci(keys): regenerate rsa*.pem keys as well
+  - fix: make the package compatible with OpenSSL >= 3.4 (don’t
+    rely on LEGACY crypto-policies)
+  - chore: package also system_shadowing directory to make builds more reliable
+
+-------------------------------------------------------------------
+Thu Apr 17 04:09:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.45.0:
+  - chore: preparing 0.45.0 release
+  - fix(lib,ssl): rewrite ssl_accept, ssl_{read,write}_nbio for better error handling
+  - fix: replace m2_PyBuffer_Release with native PyBuffer_Release
+  - chore: build Windows builds with Python 3.13 as well
+  - fix: remove support for Engine
+  - chore: use actual license of the project
+  - ci(Debian): make M2Crypto buildable on Debian (bsc#1240965)
+  - swig: Workaround for reading sys/select.h ending with wrong types.
+  - ci: bump required setuptools version because of change in naming strategy
+  - fix: add fix for build with older GCC
+  - fix: remove AnyStr and Any types
+
+-------------------------------------------------------------------
 Wed Apr  2 10:11:31 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Allow for ambiguity in first letter of directories in

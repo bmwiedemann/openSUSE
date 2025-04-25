@@ -19,7 +19,7 @@
 %define oldpython python
 %{?sle15allpythons}
 Name:           python-M2Crypto
-Version:        0.44.0
+Version:        0.45.1
 Release:        0
 Summary:        Crypto and SSL toolkit for Python
 License:        BSD-2-Clause
