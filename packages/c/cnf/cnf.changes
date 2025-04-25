@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 22 07:34:59 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- Fix Obsolete of a scout-command-not-found to <= 0.2.9
+
+-------------------------------------------------------------------
 Wed Mar 26 08:04:54 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - do not auto update vendored dependencies - fixes Leap 15.6 build problem 

@@ -39,7 +39,7 @@ BuildRequires:  clang
 #BuildRequires:  linux-glibc-devel
 
 # replaces old Python program
-Obsoletes:      scout-command-not-found < 0.2.8
+Obsoletes:      scout-command-not-found <= 0.2.9
 Provides:       command-not-found = %{version}-%{release}
 Provides:       scout-command-not-found = %{version}-%{release}
 # cnf-rs was not the best name
