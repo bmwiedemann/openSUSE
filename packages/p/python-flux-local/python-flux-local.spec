@@ -1,7 +1,7 @@
 #
 # spec file for package python-flux-local
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,37 +18,35 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flux-local
-Version:        7.0.0
+Version:        7.4.0
 Release:        0
 Summary:        Set of tools for managing a flux gitops repository
 License:        Apache-2.0
 URL:            https://github.com/allenporter/flux-local
 Source:         https://files.pythonhosted.org/packages/source/f/flux-local/flux_local-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 #
 BuildRequires:  %{python_module aiofiles >= 24.1.0}
-BuildRequires:  %{python_module GitPython >= 3.1.43}
+BuildRequires:  %{python_module GitPython >= 3.1.44}
+BuildRequires:  %{python_module PyYAML >= 6.0.2}
 BuildRequires:  %{python_module mashumaro >= 3.15}
 BuildRequires:  %{python_module nest-asyncio >= 1.6.0}
-BuildRequires:  %{python_module PyYAML >= 6.0.2}
-BuildRequires:  %{python_module python-slugify >= 8.0.4}
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 8.3.3}
-BuildRequires:  %{python_module pytest-asyncio >= 0.25.0}
+BuildRequires:  %{python_module pytest >= 8.3.5}
+BuildRequires:  %{python_module pytest-asyncio >= 0.25.3}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-GitPython >= 3.1.44
+Requires:       python-PyYAML >= 6.0.2
 Requires:       python-aiofiles >= 24.1.0
-Requires:       python-GitPython >= 3.1.43
 Requires:       python-mashumaro >= 3.15
 Requires:       python-nest-asyncio >= 1.6.0
-Requires:       python-python-slugify >= 8.0.4
-Requires:       python-PyYAML >= 6.0.2
 # Note: flux-local provides repo testing using pytest
-Requires:       python-pytest >= 8.3.3
-Requires:       python-pytest-asyncio >= 0.25.0
+Requires:       python-pytest >= 8.3.5
+Requires:       python-pytest-asyncio >= 0.25.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:02:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.4.0:
+  * What's Changed
+    - Update install instructions by @allenporter in #858
+    - Add support for targetNamespace by @weisdd in #866
+
+-------------------------------------------------------------------
+Fri Mar 21 16:49:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.3.0:
+  * What's Changed
+    - Add support for HelmRelease disableSchemaValidation and
+      disableOpenAPIValidation by @allenporter in #856
+    - Remove unnecessary slugify dependency by @filipposc5 in #849
+  * Developer updates
+    - Update tag to avoid drifting repo by @allenporter in #852
+    - chore(deps): update dependency ruff to v0.10.0 by @renovate
+      in #850
+    - chore(deps): update pre-commit hook
+      charliermarsh/ruff-pre-commit to v0.10.0 by @renovate in #851
+    - chore(deps): update dependency yamllint to v1.36.0 by
+      @renovate in #846
+    - chore(deps): update pre-commit hook adrienverge/yamllint to
+      v1.36.0 by @renovate in #847
+    - chore(deps): update docker.io/bitnami/kubectl docker tag to
+      v1.32.3 by @renovate in #848
+
+-------------------------------------------------------------------
+Thu Mar  6 17:22:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.2.1:
+  * What's Changed
+    - Make OCI chartRef work with optional namespace by @Alexsaphir
+      in #844
+
+-------------------------------------------------------------------
+Wed Mar  5 10:49:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.2.0:
+  * What's Changed
+    - Fix OCIRepository support in get cluster by @allenporter in
+      #843
+    - Detect more images from commonly used crds by @buroa in #833
+
+-------------------------------------------------------------------
+Wed Mar  5 10:46:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.1.0:
+  * What's Changed
+    - fix: remove kubectl from Dockefile by @onedr0p in #822
+    - Add get cluster --only-images flag to limit output by
+      @allenporter in #835
+    - Add --output=json for most commands by @allenporter in #836
+    - Add label selector in internal code that walks the repo and
+      matches Kustomization and HelmReleases by @allenporter in
+      #837
+    - Add --label-selector command line flags by @allenporter in
+      #839
+    - Add a flag --skip-kinds to omit kind from the output by
+      @allenporter in #840
+    - Pass OCIRepository chart ref tag to helm --version by
+      @allenporter in #841
+  * Developer updates
+    - chore(deps): update dependency pip to v25 by @renovate in
+      #825
+    - feat(actions): bump actions/setup-python to v5 by @layertwo
+      in #827
+    - chore(deps): update pre-commit hook psf/black to v25 by
+      @renovate in #829
+    - chore(deps): update dependency black to v25 by @renovate in
+      #828
+
+-------------------------------------------------------------------
 Fri Jan  3 08:52:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.0.0:
