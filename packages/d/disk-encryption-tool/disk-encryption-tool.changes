@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:43:01 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250424.b1779d6:
+  * Drop keyctl timeout
+
+-------------------------------------------------------------------
 Mon Mar 24 13:17:06 UTC 2025 - aplanas@suse.com
 
 - Update to version 1+git20241213.2504619:
