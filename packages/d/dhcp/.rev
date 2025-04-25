@@ -1289,4 +1289,13 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
 </comment>
     <requestid>1237520</requestid>
   </revision>
+  <revision rev="144" vrev="20">
+    <srcmd5>251c474d6881c6771334d3250dbfe60a</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1745612292</time>
+    <user>anag_factory</user>
+    <comment>- Add compile option '-std=gnu17' to fix build with gcc15.
+  [bsc#1241472]</comment>
+    <requestid>1272454</requestid>
+  </revision>
 </revisionlist>

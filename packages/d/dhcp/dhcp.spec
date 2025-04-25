@@ -242,6 +242,9 @@ popd
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 CFLAGS="%{optflags} -D_GNU_SOURCE -W -Wall -Wno-unused -fcommon -fno-strict-aliasing"
+%if 0%{?suse_version} > 1600
+  CFLAGS="$CFLAGS -std=gnu17"
+%endif
 %ifarch ppc ppc64 s390x
   # bugs 134590, 171532
   CFLAGS="$CFLAGS -fsigned-char"
