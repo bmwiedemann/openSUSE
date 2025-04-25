@@ -32,4 +32,12 @@
     <comment>- update newer-dependencies.patch, fixes bsc#1235367 bsc#1239493 bsc#1234598 (forwarded request 1252447 from rrahl0)</comment>
     <requestid>1252448</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>ede90560b0a0ee1ede31d870f790276b</srcmd5>
+    <version>0.9.2</version>
+    <time>1745612338</time>
+    <user>anag_factory</user>
+    <comment>- update newer-dependencies.patch, fixing bsc#1241819 (forwarded request 1272486 from rrahl0)</comment>
+    <requestid>1272487</requestid>
+  </revision>
 </revisionlist>
