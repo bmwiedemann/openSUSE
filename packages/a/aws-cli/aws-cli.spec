@@ -24,14 +24,14 @@
 %global _sitelibdir %{%{pythons}_sitelib}
 
 Name:           aws-cli
-Version:        1.37.2
+Version:        1.40.0
 Release:        0
 Summary:        Amazon Web Services Command Line Interface
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/aws/aws-cli
 Source0:        https://github.com/aws/%{name}/archive/refs/tags/%{version}.tar.gz
-Patch0:         ac_update-docutils.patch
+Patch0:         ac_relax-depends.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       groff
@@ -42,13 +42,13 @@ BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
 BuildRequires:  %{pythons}-wheel
 Requires:       %{pythons}
-Requires:       %{pythons}-botocore >= 1.36.2
+Requires:       %{pythons}-botocore >= 1.38.1
 Requires:       %{pythons}-six
 Requires:       (%{pythons}-PyYAML >= 3.10 with %{pythons}-PyYAML <= 6.1)
 Requires:       (%{pythons}-colorama >= 0.2.5 with %{pythons}-colorama <= 0.5.0)
-Requires:       (%{pythons}-docutils >= 0.10 with %{pythons}-docutils < 0.30)
+Requires:       (%{pythons}-docutils >= 0.18.1 with %{pythons}-docutils < 0.30)
 Requires:       (%{pythons}-rsa >= 3.1.2 with %{pythons}-rsa < 5.0.0)
-Requires:       (%{pythons}-s3transfer >= 0.11.0 with %{pythons}-s3transfer < 0.12.0)
+Requires:       (%{pythons}-s3transfer >= 0.12.0 with %{pythons}-s3transfer < 0.13.0)
 
 %description
 The AWS Command Line Interface (CLI) is a unified tool to manage AWS
