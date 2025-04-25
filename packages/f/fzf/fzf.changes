@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:53:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.61.3:
+  * Revert tmux change as it caused tmux run-shell 'fzf --tmux' to fail
+  * More environment variables for child processes
+
+-------------------------------------------------------------------
+Wed Apr 23 06:03:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.61.2:
+  * Fixed panic when using header border without pointer/marker
+  * Fixed --tmux option when already inside a tmux popup
+  * Bug fixes and improvements in CTRL-T binding of fish
+  * Added --no-tty-default option to make fzf search for the current
+   TTY device instead of defaulting to /dev/tty
+- add license file to all subpackages as per packaging guidelines
+
+-------------------------------------------------------------------
 Mon Apr  7 00:46:57 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 0.61.1:

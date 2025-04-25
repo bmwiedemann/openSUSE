@@ -2,6 +2,7 @@
 # spec file for package fzf
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +19,7 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.61.1
+Version:        0.61.3
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -173,23 +174,28 @@ go test -v -x -mod=vendor ${BUILDMOD} -a \
 %{_datadir}/fzf/shell
 
 %files tmux
+%license LICENSE
 %{_bindir}/fzf-tmux
 %{_mandir}/man1/fzf-tmux.1%{?ext_man}
 
 %files bash-integration
+%license LICENSE
 %config %{_sysconfdir}/profile.d/fzf-bash.sh
 
 %files fish-integration
+%license LICENSE
 %dir %{_datadir}/fish
 %dir %{_datadir}/fish/vendor_functions.d
 %{_datadir}/fish/vendor_functions.d/fzf_key_bindings.fish
 
 %files zsh-integration
+%license LICENSE
 %{_datadir}/zsh
 %dir %{_sysconfdir}/zsh_completion.d
 %config %{_sysconfdir}/zsh_completion.d/fzf-key-bindings
 
 %files -n vim-fzf
+%license LICENSE
 %doc README-VIM.md
 %dir %{_datadir}/vim
 %dir %{vimplugin_dir}
