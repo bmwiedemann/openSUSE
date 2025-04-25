@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Apr 25 13:25:09 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.22.2:
+  * Make clippy work again
+  * Specify perf improvements
+  * Remove dependency on once_cell
+  * Add icon for '.stowrc' files
+  * Use a hashmap when possible for file extension matching
+  * Clean up glob matching code
+  * Bump uutils_term_grid from 0.6.0 to 0.7.0
+
+-------------------------------------------------------------------
 Tue Apr 22 12:07:24 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.21.1:
