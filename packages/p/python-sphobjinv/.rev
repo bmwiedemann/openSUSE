@@ -68,4 +68,22 @@
     <comment></comment>
     <requestid>1163248</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>be4b31ad0f43f15cff8f373424d11af9</srcmd5>
+    <version>2.3.1.2</version>
+    <time>1745612378</time>
+    <user>anag_factory</user>
+    <comment>- skip some failing tests with Sphinx 8.2, gh#bskinn/sphobjinv#314
+- Update to 2.3.1.2
+  * Added support for Python 3.13.
+  * Dropped support for Python 3.8 (EOL).
+  * Bumped Read the Docs Python version to 3.12.
+- 2.3.1.1
+  * Added formal support for Python 3.12.
+  * Removed formal support for Python 3.7, which is end-of-life.
+  * Convert README from reST to Markdown (#289, fixes #287).
+  * Fix some broken/redirecting docs links (#289).
+  * Adjust flake8 configuration to account for some new lint warnings/errors (#289).</comment>
+    <requestid>1272588</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 24 12:49:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- skip some failing tests with Sphinx 8.2, gh#bskinn/sphobjinv#314
+- Update to 2.3.1.2
+  * Added support for Python 3.13.
+  * Dropped support for Python 3.8 (EOL).
+  * Bumped Read the Docs Python version to 3.12.
+- 2.3.1.1
+  * Added formal support for Python 3.12.
+  * Removed formal support for Python 3.7, which is end-of-life.
+  * Convert README from reST to Markdown (#289, fixes #287).
+  * Fix some broken/redirecting docs links (#289).
+  * Adjust flake8 configuration to account for some new lint warnings/errors (#289).
+
+-------------------------------------------------------------------
 Wed Mar 27 20:53:45 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

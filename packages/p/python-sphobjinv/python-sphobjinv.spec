@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphobjinv
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,9 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-sphobjinv
-Version:        2.3.1
+Version:        2.3.1.2
 Release:        0
 Summary:        Sphinx objectsinv Inspection/Manipulation Tool
 License:        MIT
@@ -34,7 +32,7 @@ Requires:       python-attrs >= 19.2
 Requires:       python-certifi
 Requires:       python-jsonschema >= 3.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx}
@@ -69,7 +67,9 @@ sed -i '1{/^#!/d}' src/sphobjinv/_vendored/fuzzywuzzy/*.py
 ignoretests="--ignore tests/test_cli.py --ignore tests/test_cli_nonlocal.py"
 # Errors with invalid inventory source type: we didn't build the docs and don't have the inventory there
 sed -i 's/--doctest-glob="README.rst"//' tox.ini
-%pytest $ignoretests
+# failing tests with sphinx 8.2, gh#bskinn/sphobjinv#314
+donttest="test_name_lead_chars"
+%pytest -k "not ($donttest)" $ignoretests
 
 %post
 %python_install_alternative sphobjinv
@@ -78,7 +78,7 @@ sed -i 's/--doctest-glob="README.rst"//' tox.ini
 %python_uninstall_alternative sphobjinv
 
 %files %{python_files}
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/sphobjinv
 %{python_sitelib}/sphobjinv
