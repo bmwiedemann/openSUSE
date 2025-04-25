@@ -47,4 +47,32 @@
   * add maximum page_size to ListService API documentation</comment>
     <requestid>1181702</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f4e8aff5d91c795299aceb5f3739c4e0</srcmd5>
+    <version>1.14.2</version>
+    <time>1745612393</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.2
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 1.14.1
+  * **deps:** Require grpc-google-iam-v1 &gt;= 0.14.0
+- from version 1.14.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 1.13.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 1.12.1
+  * Disable universe-domain validation (#13245)
+- from version 1.12.0
+  * Add support for Python 3.13 (#13209)
+- from version 1.11.6
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 1.11.5
+  * Allow Protobuf 5.x (#12869)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py (forwarded request 1272624 from glaubitz)</comment>
+    <requestid>1272659</requestid>
+  </revision>
 </revisionlist>
