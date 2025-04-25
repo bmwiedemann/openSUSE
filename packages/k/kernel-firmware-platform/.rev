@@ -53,4 +53,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * bmi260: Add BMI260 IMU initial configuration data file</comment>
     <requestid>1271971</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>9997a53bcf92eaf31832aedbdf8af9ea</srcmd5>
+    <version>20250422</version>
+    <time>1745612317</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272735</requestid>
+  </revision>
 </revisionlist>
