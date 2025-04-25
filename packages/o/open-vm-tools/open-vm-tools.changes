@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 16 21:49:08 UTC 2025 - Kirk Allan <kallan@suse.com>
+
+- (bsc#1237147): Newer version of containerd do not have the directory
+/usr/share/go/1.x/contrib/src/github.com/containerd/containerd/api.
+Update detect-suse-location.patch to point to the directory
+/usr/share/go/1.x/contrib/src/github.com/containerd/containerd/vendor/github.com/containerd/containerd/api
+to find the needed files and update the tasks.proto file to import from
+github.com/containerd/containerd/vendor/github.com/containerd/containerd/api
+
+-------------------------------------------------------------------
 Thu Mar 27 16:13:06 UTC 2025 - Kirk Allan <kallan@suse.com>
 
 - (bsc#1237180): Ensure vmtoolsd.service and vgauthd.service

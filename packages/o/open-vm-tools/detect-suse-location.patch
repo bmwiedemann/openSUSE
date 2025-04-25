@@ -1,11 +1,42 @@
 --- a/open-vm-tools/configure.ac
 +++ b/open-vm-tools/configure.ac
-@@ -741,7 +741,7 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[
-    AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/api/services/tasks/v1)
+@@ -738,11 +738,23 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[
+        fi
+    done
+    shared_prefix=$src_prefix/github.com
+-   AC_SUBST(TYPES_DIR, github.com/containerd/containerd/api/types)
+-   AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/api/services/tasks/v1)
++
++   vendor_sub_path=""
++   vendor_search_str="import weak "
++   vendor_replace_str="import "
++   if test -d $shared_prefix/containerd/containerd/vendor/github.com/containerd/containerd/api; then
++       vendor_sub_path=vendor/github.com/containerd/containerd
++       vendor_search_str="import \"github.com\/containerd\/containerd\/api"
++       vendor_replace_str="import \"github.com\/containerd\/containerd\/vendor\/github.com\/containerd\/containerd\/api"
++   fi
++   AC_SUBST(DEP_VENDOR_SEARCH_STR, $vendor_search_str)
++   AC_SUBST(DEP_VENDOR_REPLACE_STR, $vendor_replace_str)
++
++   AC_SUBST(TYPES_DIR, github.com/containerd/containerd/$vendor_sub_path/api/types)
++   AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/$vendor_sub_path/api/services/tasks/v1)
     AC_SUBST(DEP_PROTOPATH, $src_prefix)
-    AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/api/services/containers/v1)
+-   AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/api/services/containers/v1)
 -   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/gogo/protobuf)
++   AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/$vendor_sub_path/api/services/containers/v1)
 +   AC_SUBST(GOGO_PROTOPATH, $shared_prefix/containerd/containerd/vendor/github.com/gogo/protobuf)
     AC_CHECK_FILE([${CONTAINERD_PROTOPATH}/containers.proto],
                   [],
                   [AC_VMW_CONTAINERINFO_MSG(["containerd package"])])
+
+--- a/open-vm-tools/services/plugins/containerInfo/Makefile.am
++++ b/open-vm-tools/services/plugins/containerInfo/Makefile.am
+@@ -84,7 +84,7 @@ $(TYPES_DIR)/task/task.pb.cc: %.pb.cc :
+ 	$(PROTOC) --cpp_out=. -I$(GOGO_PROTOPATH) -I. $<
+ 
+ tasks.proto: $(TASKS_PROTOPATH)/tasks.proto
+-	sed 's/import weak /import /' $< > $@
++	sed 's/$(DEP_VENDOR_SEARCH_STR)/$(DEP_VENDOR_REPLACE_STR)/' $< > $@
+ 
+ containers.proto: $(CONTAINERD_PROTOPATH)/containers.proto
+ 	sed 's/import weak /import /' $< > $@
