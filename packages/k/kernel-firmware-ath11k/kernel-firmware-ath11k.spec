@@ -20,18 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 30f36b8b90531c5a88ea02fac3f94a1a32145a77
+%define git_version c8af472e05cbe2545724dc5d36e4677e668ed55c
 
 Name:           kernel-firmware-ath11k
-Version:        20250227
+Version:        20250424
 Release:        0
 Summary:        Kernel firmware files for Atheros Qualcomm WiFi drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250228.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -45,8 +44,7 @@ Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Supplements:    modalias(pci:v000017CBd00001101sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000017CBd00001103sv*sd*bc*sc*i*)
@@ -56,7 +54,8 @@ Supplements:    modalias(pci:v000017CBd00001104sv*sd*bc*sc*i*)
 This package contains kernel firmware files for Atheros Qualcomm WiFi drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh ath11k < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
