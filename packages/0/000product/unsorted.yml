@@ -1984,6 +1984,8 @@ unsorted:
   - casacore-devel 
   - casacore-openmpi4 
   - casacore-openmpi4-devel 
+  - casacore-openmpi5 
+  - casacore-openmpi5-devel 
   - caslon-fonts 
   - casync 
   - catalan-pos-dict 
@@ -7328,6 +7330,8 @@ unsorted:
   - gleam 
   - glew 
   - glew-devel 
+  - glew_EGL 
+  - glew_EGL-devel 
   - glfw-doc 
   - glfw2-devel 
   - gli-devel 
@@ -10955,6 +10959,7 @@ unsorted:
   - ldc-runtime-devel 
   - ldirectord 
   - ldns-devel 
+  - leafnode 
   - leafpad 
   - leancrypto-devel 
   - leancrypto-devel-static 
@@ -11191,6 +11196,7 @@ unsorted:
   - libGLC0 
   - libGLEW2_2 
   - libGLEW2_2-32bit 
+  - libGLEW_EGL2_2 
   - libGLU1-32bit 
   - libGLw-devel 
   - libGLw1 
@@ -12439,6 +12445,7 @@ unsorted:
   - libcaribou0 
   - libcasacore8 
   - libcasacore8-openmpi4 
+  - libcasacore8-openmpi5 
   - libcblas3-32bit 
   - libcbor-devel 
   - libcbor-doc 
