@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:31:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * Potentially Breaking
+    Since we now populate etc/ld.so.cache, we expect content to
+    change from the previous release, and it's possible that this
+    will have observable effects (positive, we hope) on the images
+    at runtime.
+  * What's Changed
+    - generate /etc/ld.so.cache by @dannf in #1629
+    - Drop experimental tag from layering by @jonjohnsonjr in #1635
+    - Apko 0.26.0 regression: Build with base stopped working. by
+      @sfc-gh-ptabor in #1633
+    - Apko keyrings to recognize key suffixes when lost during
+      fetch: by @sfc-gh-ptabor in #1630
+    - ldso-cache: Fix small nits by @jonjohnsonjr in #1634
+
+-------------------------------------------------------------------
 Sat Apr 19 15:36:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.1:
