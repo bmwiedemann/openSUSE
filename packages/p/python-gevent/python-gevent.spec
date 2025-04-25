@@ -26,7 +26,7 @@
 %bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        24.10.3
+Version:        25.4.2
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT
@@ -39,6 +39,7 @@ Patch2:         gevent-opensuse-nocolor-tests.patch
 # PATCH-FEATURE-OPENSUSE gevent-openssl35-test-fix.patch pmonreal@suse.com -- Handle BrokenPipeError
 Patch3:         gevent-openssl35-test-fix.patch
 BuildRequires:  %{python_module Cython >= 3.0.2}
+BuildRequires:  %{python_module backports.entry_points_selectable}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module dnspython}
@@ -58,6 +59,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libuv)
+Requires:       python-backports.entry_points_selectable
 Requires:       python-cffi
 Requires:       python-dnspython
 Requires:       python-greenlet >= 3.0.0

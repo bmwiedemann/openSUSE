@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:37:04 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 25.4.2: [bsc#1241067, bsc#1241037]
+  * Make gevent's queue classes subscriptable to match the standard
+    library. See issue #2102.
+  * Make the c-ares resolver build on Windows.
+  * The gevent testsuite runs a copy of the test_ssl from cpython but
+    the follwoing change has not been ported yet:
+    - gh-126500: test_ssl: Don't stop ThreadedEchoServer on OSError
+      in ConnectionHandler [gh#python/cpython/pull/126503]
+    - Rebase gevent-openssl35-test-fix.patch
+    - Upstream PR: [gh#gevent/gevent/pull/2103]
+
+-------------------------------------------------------------------
+Thu Apr 24 09:55:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 25.4.1
+  * Remove some legacy code that supported Python 2 for compatibility
+    with the upcoming releases of Cython 3.1.
+  * Add a new environment variable and configuration setting to control
+    whether blocking reports are printed by the monitor thread.
+  * Add initial support for Python 3.14a7.
+  * Fix using gevent’s BackdoorServer with Unix sockets.
+  * Do not use pywsgi in a security-conscious environment. Fix one
+    security issue related to HTTP 100 Continue handling. See issue #2075.
+
+-------------------------------------------------------------------
 Tue Apr 22 08:44:56 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Handle BrokenPipeError in src/gevent/ssl.py [bsc#1241037]

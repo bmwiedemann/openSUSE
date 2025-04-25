@@ -1,27 +1,185 @@
-From 366178299fe8d85b34e5f27da505e807470cfae4 Mon Sep 17 00:00:00 2001
-From: Pedro Monreal <pmgdeb@gmail.com>
-Date: Tue, 22 Apr 2025 15:32:21 +0200
-Subject: [PATCH] Deal with BrokenPipeError since openssl 3.4.x. Follows from
- gh-127257 and gh-115627.
-
----
- src/gevent/ssl.py | 6 ++++++
- 1 file changed, 6 insertions(+)
-
-diff --git a/src/gevent/ssl.py b/src/gevent/ssl.py
-index a2cd5ca4c..55831e050 100644
---- a/src/gevent/ssl.py
-+++ b/src/gevent/ssl.py
-@@ -451,6 +451,12 @@ def read(self, nbytes=2014, buffer=None):
-                 if self.suppress_ragged_eofs:
-                     return b'' if buffer is None else bytes_read
-                 raise
-+            except BrokenPipeError:
-+                # Deal with BrokenPipeError from openssl 3.4.x and up
-+                # Follows from gh-127257 and gh-115627
-+                if self.suppress_ragged_eofs:
-+                    return b'' if buffer is None else bytes_read
-+                raise
-             except SSLError as ex:
-                 # All the other SSLxxxxxError classes extend SSLError,
-                 # so catch it last.
+Index: gevent-25.4.2/src/greentest/3.11/test_ssl.py
+===================================================================
+--- gevent-25.4.2.orig/src/greentest/3.11/test_ssl.py
++++ gevent-25.4.2/src/greentest/3.11/test_ssl.py
+@@ -2492,7 +2492,6 @@ class ThreadedEchoServer(threading.Threa
+                 # See also http://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
+                 if e.errno != errno.EPROTOTYPE and sys.platform != "darwin":
+                     self.running = False
+-                    self.server.stop()
+                     self.close()
+                 return False
+             else:
+@@ -2627,10 +2626,6 @@ class ThreadedEchoServer(threading.Threa
+                     self.close()
+                     self.running = False
+ 
+-                    # normally, we'd just stop here, but for the test
+-                    # harness, we want to stop the server
+-                    self.server.stop()
+-
+     def __init__(self, certificate=None, ssl_version=None,
+                  certreqs=None, cacerts=None,
+                  chatty=True, connectionchatty=False, starttls_server=False,
+@@ -2664,21 +2659,33 @@ class ThreadedEchoServer(threading.Threa
+         self.conn_errors = []
+         threading.Thread.__init__(self)
+         self.daemon = True
++        self._in_context = False
+ 
+     def __enter__(self):
++        if self._in_context:
++            raise ValueError('Re-entering ThreadedEchoServer context')
++        self._in_context = True
+         self.start(threading.Event())
+         self.flag.wait()
+         return self
+ 
+     def __exit__(self, *args):
++        assert self._in_context
++        self._in_context = False
+         self.stop()
+         self.join()
+ 
+     def start(self, flag=None):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.flag = flag
+         threading.Thread.start(self)
+ 
+     def run(self):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.sock.settimeout(1.0)
+         self.sock.listen(5)
+         self.active = True
+Index: gevent-25.4.2/src/greentest/3.10/test_ssl.py
+===================================================================
+--- gevent-25.4.2.orig/src/greentest/3.10/test_ssl.py
++++ gevent-25.4.2/src/greentest/3.10/test_ssl.py
+@@ -2485,7 +2485,6 @@ class ThreadedEchoServer(threading.Threa
+                 # See also http://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
+                 if e.errno != errno.EPROTOTYPE and sys.platform != "darwin":
+                     self.running = False
+-                    self.server.stop()
+                     self.close()
+                 return False
+             else:
+@@ -2620,9 +2619,6 @@ class ThreadedEchoServer(threading.Threa
+                     self.close()
+                     self.running = False
+ 
+-                    # normally, we'd just stop here, but for the test
+-                    # harness, we want to stop the server
+-                    self.server.stop()
+ 
+     def __init__(self, certificate=None, ssl_version=None,
+                  certreqs=None, cacerts=None,
+@@ -2657,21 +2653,33 @@ class ThreadedEchoServer(threading.Threa
+         self.conn_errors = []
+         threading.Thread.__init__(self)
+         self.daemon = True
++        self._in_context = False
+ 
+     def __enter__(self):
++        if self._in_context:
++            raise ValueError('Re-entering ThreadedEchoServer context')
++        self._in_context = True
+         self.start(threading.Event())
+         self.flag.wait()
+         return self
+ 
+     def __exit__(self, *args):
++        assert self._in_context
++        self._in_context = False
+         self.stop()
+         self.join()
+ 
+     def start(self, flag=None):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.flag = flag
+         threading.Thread.start(self)
+ 
+     def run(self):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.sock.settimeout(1.0)
+         self.sock.listen(5)
+         self.active = True
+Index: gevent-25.4.2/src/greentest/3.12/test_ssl.py
+===================================================================
+--- gevent-25.4.2.orig/src/greentest/3.12/test_ssl.py
++++ gevent-25.4.2/src/greentest/3.12/test_ssl.py
+@@ -2300,7 +2300,6 @@ class ThreadedEchoServer(threading.Threa
+                 # See also http://erickt.github.io/blog/2014/11/19/adventures-in-debugging-a-potential-osx-kernel-bug/
+                 if e.errno != errno.EPROTOTYPE and sys.platform != "darwin":
+                     self.running = False
+-                    self.server.stop()
+                     self.close()
+                 return False
+             else:
+@@ -2435,10 +2434,6 @@ class ThreadedEchoServer(threading.Threa
+                     self.close()
+                     self.running = False
+ 
+-                    # normally, we'd just stop here, but for the test
+-                    # harness, we want to stop the server
+-                    self.server.stop()
+-
+     def __init__(self, certificate=None, ssl_version=None,
+                  certreqs=None, cacerts=None,
+                  chatty=True, connectionchatty=False, starttls_server=False,
+@@ -2472,21 +2467,33 @@ class ThreadedEchoServer(threading.Threa
+         self.conn_errors = []
+         threading.Thread.__init__(self)
+         self.daemon = True
++        self._in_context = False
+ 
+     def __enter__(self):
++        if self._in_context:
++            raise ValueError('Re-entering ThreadedEchoServer context')
++        self._in_context = True
+         self.start(threading.Event())
+         self.flag.wait()
+         return self
+ 
+     def __exit__(self, *args):
++        assert self._in_context
++        self._in_context = False
+         self.stop()
+         self.join()
+ 
+     def start(self, flag=None):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.flag = flag
+         threading.Thread.start(self)
+ 
+     def run(self):
++        if not self._in_context:
++            raise ValueError(
++                'ThreadedEchoServer must be used as a context manager')
+         self.sock.settimeout(1.0)
+         self.sock.listen(5)
+         self.active = True
+Index: gevent-25.4.2/src/greentest/3.9/test_ssl.py
+===================================================================
+--- gevent-25.4.2.orig/src/greentest/3.9/test_ssl.py
++++ gevent-25.4.2/src/greentest/3.9/test_ssl.py
+@@ -2559,10 +2559,6 @@ class ThreadedEchoServer(threading.Threa
+                     self.close()
+                     self.running = False
+ 
+-                    # normally, we'd just stop here, but for the test
+-                    # harness, we want to stop the server
+-                    self.server.stop()
+-
+     def __init__(self, certificate=None, ssl_version=None,
+                  certreqs=None, cacerts=None,
+                  chatty=True, connectionchatty=False, starttls_server=False,
