@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Apr 24 04:03:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.34.1:
+  * Fixes
+    + fix clippy lints for Rust 1.86
+    + Allow JSON BigInt to validate against float schema
+    + Ensure ValidationInfo.field_name is correct on validator reuse
+    + Coerce 'timedelta' schema constraints
+    + Add support for extra keys validation for model fields
+    + Revert by_alias default value change for to_json() and
+      to_jsonable_python()
+    + Skip reusing after validators in prebuilt schemas
+    + Skip reusing wrap validators / serializers for prebuilt variants
+    + Add cls_name to typed-dict schema
+    + Coerce validator constraints to their valid type
+    + Use core schema fns to initalize SchemaValidators in the test suite
+    + Fix enum strict JSON validation when validators are present
+    + Add support for validating v7 UUIDs
+    + Refactor LookupKey logic to reduce redundancy
+    + Add support for UUIDv6 and UUIDv8 validation
+    + Remove unneeded Option map in PyMultiHostUrl.build
+    + bump to PyO3 0.23.5, support PyPy 3.11
+    + Fix strict behavior for unions
+    + Improving the alias configuration API for validation and serialization
+    + Fix float multiple_of validation for negative numbers
+    + Fix wasm preview
+    + Raise validation error when unhashable items added to a set
+    + Fix condition before using prebuilt validator/serializer
+    + minimal upgrade to PyO3 0.23 (ignoring deprecations)
+    + Use UserWarning from pyo3
+    + Forward default_value calls to the underlying schema for
+      DefinitionRefValidator
+    + fix type hint for SerializationInfo.round_trip
+    + Include JSON Schema input core schema in function schemas
+    + fix wasteful to_python() calls checking for undefined
+    + Fix ValueError on year zero
+    + optimize refcounting op in datetime creation
+    + Drop 3.8 support
+    + Fix: dataclass InitVars shouldn't be required on serialization
+  * Performance
+    + Clean up PydanticUnexpectedValueError
+    + Memory usage optimization via reuse of SchemaValidator and
+      SchemaSerializer
+  * New Features
+    + Add new arguments-v3 schema
+    + Add TzInfo.__new__ stub method
+    + Support free-threaded Python 3.13t
+
+-------------------------------------------------------------------
 Sat Jan 25 10:32:49 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update ot 2.27.2

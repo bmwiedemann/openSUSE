@@ -107,4 +107,41 @@
     <comment></comment>
     <requestid>1240303</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>00258ea2b68b5d9fc07c3002f1b0c2f0</srcmd5>
+    <version>2.34.1</version>
+    <time>1745612274</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.34.1:
+  * Fixes
+    + fix clippy lints for Rust 1.86
+    + Allow JSON BigInt to validate against float schema
+    + Ensure ValidationInfo.field_name is correct on validator reuse
+    + Coerce 'timedelta' schema constraints
+    + Add support for extra keys validation for model fields
+    + Revert by_alias default value change for to_json() and
+      to_jsonable_python()
+    + Skip reusing after validators in prebuilt schemas
+    + Skip reusing wrap validators / serializers for prebuilt variants
+    + Add cls_name to typed-dict schema
+    + Coerce validator constraints to their valid type
+    + Use core schema fns to initalize SchemaValidators in the test suite
+    + Fix enum strict JSON validation when validators are present
+    + Add support for validating v7 UUIDs
+    + Refactor LookupKey logic to reduce redundancy
+    + Add support for UUIDv6 and UUIDv8 validation
+    + Remove unneeded Option map in PyMultiHostUrl.build
+    + bump to PyO3 0.23.5, support PyPy 3.11
+    + Fix strict behavior for unions
+    + Improving the alias configuration API for validation and serialization
+    + Fix float multiple_of validation for negative numbers
+    + Fix wasm preview
+    + Raise validation error when unhashable items added to a set
+    + Fix condition before using prebuilt validator/serializer
+    + minimal upgrade to PyO3 0.23 (ignoring deprecations)
+    + Use UserWarning from pyo3
+    + Forward default_value calls to the underlying schema for
+      DefinitionRefValidator</comment>
+    <requestid>1272286</requestid>
+  </revision>
 </revisionlist>

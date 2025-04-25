@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pydantic-core
 #
 # Copyright (c) 2025 SUSE LLC
 #
@@ -26,13 +26,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-core%{psuffix}
-Version:        2.27.2
+Version:        2.34.1
 Release:        0
 Summary:        Core functionality for pydantic validation and serialization
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-core
 Source0:        https://files.pythonhosted.org/packages/source/p/pydantic-core/pydantic_core-%{version}.tar.gz
 Source1:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module maturin >= 1}
 BuildRequires:  %{python_module pip}
@@ -46,6 +47,7 @@ BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pydantic-core == %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-run-parallel}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 %endif
