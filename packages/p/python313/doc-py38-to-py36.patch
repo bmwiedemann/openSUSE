@@ -8,9 +8,11 @@
  Doc/tools/extensions/patchlevel.py      |    9 ++---
  7 files changed, 87 insertions(+), 66 deletions(-)
 
---- a/Doc/conf.py
-+++ b/Doc/conf.py
-@@ -17,6 +17,9 @@ sys.path.append(os.path.abspath('include
+Index: Python-3.13.3/Doc/conf.py
+===================================================================
+--- Python-3.13.3.orig/Doc/conf.py	2025-04-11 21:52:28.845065297 +0200
++++ Python-3.13.3/Doc/conf.py	2025-04-11 21:55:28.065280454 +0200
+@@ -18,6 +18,9 @@
  # Python specific content from Doc/Tools/extensions/pyspecific.py
  from pyspecific import SOURCE_URI
  
@@ -20,16 +22,16 @@
  # General configuration
  # ---------------------
  
-@@ -90,7 +93,7 @@ highlight_language = 'python3'
+@@ -92,7 +95,7 @@
  
  # Minimum version of sphinx required
  # Keep this version in sync with ``Doc/requirements.txt``.
--needs_sphinx = '8.1.3'
+-needs_sphinx = '8.2.0'
 +needs_sphinx = '4.2.0'
  
  # Create table of contents entries for domain objects (e.g. functions, classes,
  # attributes, etc.). Default is True.
-@@ -359,7 +362,7 @@ html_short_title = f'{release} Documenta
+@@ -361,7 +364,7 @@
  # (See .readthedocs.yml and https://docs.readthedocs.io/en/stable/reference/environment-variables.html)
  is_deployment_preview = os.getenv("READTHEDOCS_VERSION_TYPE") == "external"
  repository_url = os.getenv("READTHEDOCS_GIT_CLONE_URL", "")
@@ -38,7 +40,7 @@
  html_context = {
      "is_deployment_preview": is_deployment_preview,
      "repository_url": repository_url or None,
-@@ -604,6 +607,16 @@ extlinks = {
+@@ -606,6 +609,16 @@
  }
  extlinks_detect_hardcoded_links = True
  
@@ -55,9 +57,11 @@
  # Options for c_annotations extension
  # -----------------------------------
  
---- a/Doc/tools/check-warnings.py
-+++ b/Doc/tools/check-warnings.py
-@@ -228,7 +228,8 @@ def fail_if_regression(
+Index: Python-3.13.3/Doc/tools/check-warnings.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/check-warnings.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/check-warnings.py	2025-04-11 21:55:11.212002463 +0200
+@@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
                  if filename in warning:
@@ -67,8 +71,10 @@
                          print("  {line}: {msg}".format_map(match))
          return -1
      return 0
---- a/Doc/tools/extensions/audit_events.py
-+++ b/Doc/tools/extensions/audit_events.py
+Index: Python-3.13.3/Doc/tools/extensions/audit_events.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/extensions/audit_events.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/extensions/audit_events.py	2025-04-11 21:55:11.212275615 +0200
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -79,7 +85,7 @@
  
  from docutils import nodes
  from sphinx.errors import NoUri
-@@ -12,12 +9,11 @@ from sphinx.transforms.post_transforms i
+@@ -12,12 +9,11 @@
  from sphinx.util import logging
  from sphinx.util.docutils import SphinxDirective
  
@@ -96,7 +102,7 @@
  
  logger = logging.getLogger(__name__)
  
-@@ -32,16 +28,16 @@ _SYNONYMS = [
+@@ -32,16 +28,16 @@
  
  class AuditEvents:
      def __init__(self) -> None:
@@ -117,7 +123,7 @@
      ) -> None:
          if name in self.events:
              self._check_args_match(name, args)
-@@ -49,7 +45,7 @@ class AuditEvents:
+@@ -49,7 +45,7 @@
              self.events[name] = args
          self.sources.setdefault(name, []).append(source)
  
@@ -126,7 +132,7 @@
          current_args = self.events[name]
          msg = (
              f"Mismatched arguments for audit-event {name}: "
-@@ -60,7 +56,7 @@ class AuditEvents:
+@@ -60,7 +56,7 @@
          if len(current_args) != len(args):
              logger.warning(msg)
              return
@@ -135,7 +141,7 @@
              if a1 == a2:
                  continue
              if any(a1 in s and a2 in s for s in _SYNONYMS):
-@@ -73,7 +69,7 @@ class AuditEvents:
+@@ -73,7 +69,7 @@
          name_clean = re.sub(r"\W", "_", name)
          return f"audit_event_{name_clean}_{source_count}"
  
@@ -144,7 +150,7 @@
          for name in sorted(self.events.keys()):
              yield name, self.events[name], self.sources[name]
  
-@@ -97,7 +93,7 @@ def audit_events_purge(
+@@ -97,7 +93,7 @@
  def audit_events_merge(
      app: Sphinx,
      env: BuildEnvironment,
@@ -153,7 +159,7 @@
      other: BuildEnvironment,
  ) -> None:
      """In Sphinx parallel builds, this merges audit_events from subprocesses."""
-@@ -126,14 +122,16 @@ class AuditEvent(SphinxDirective):
+@@ -126,14 +122,16 @@
          ),
      ]
  
@@ -176,7 +182,7 @@
          else:
              args = []
          ids = []
-@@ -169,7 +167,7 @@ class audit_event_list(nodes.General, no
+@@ -169,7 +167,7 @@
  
  
  class AuditEventListDirective(SphinxDirective):
@@ -185,7 +191,7 @@
          return [audit_event_list()]
  
  
-@@ -181,7 +179,11 @@ class AuditEventListTransform(SphinxPost
+@@ -181,7 +179,11 @@
              return
  
          table = self._make_table(self.app.builder, self.env.docname)
@@ -198,7 +204,7 @@
              node.replace_self(table)
  
      def _make_table(self, builder: Builder, docname: str) -> nodes.table:
-@@ -217,8 +219,8 @@ class AuditEventListTransform(SphinxPost
+@@ -217,8 +219,8 @@
          builder: Builder,
          docname: str,
          name: str,
@@ -209,8 +215,10 @@
      ) -> nodes.row:
          row = nodes.row()
          name_node = nodes.paragraph("", nodes.Text(name))
---- a/Doc/tools/extensions/availability.py
-+++ b/Doc/tools/extensions/availability.py
+Index: Python-3.13.3/Doc/tools/extensions/availability.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/extensions/availability.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/extensions/availability.py	2025-04-11 21:55:11.212578519 +0200
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -221,7 +229,7 @@
  
  from docutils import nodes
  from sphinx import addnodes
-@@ -55,7 +53,7 @@ class Availability(SphinxDirective):
+@@ -55,7 +53,7 @@
      optional_arguments = 0
      final_argument_whitespace = True
  
@@ -230,7 +238,7 @@
          title = sphinx_gettext("Availability")
          refnode = addnodes.pending_xref(
              title,
-@@ -79,7 +77,7 @@ class Availability(SphinxDirective):
+@@ -79,7 +77,7 @@
  
          return [cnode]
  
@@ -239,7 +247,7 @@
          """Parse platform information from arguments
  
          Arguments is a comma-separated string of platforms. A platform may
-@@ -98,12 +96,13 @@ class Availability(SphinxDirective):
+@@ -98,12 +96,13 @@
              platform, _, version = arg.partition(" >= ")
              if platform.startswith("not "):
                  version = False
@@ -255,7 +263,7 @@
              logger.warning(
                  "Unknown platform%s or syntax '%s' in '.. availability:: %s', "
                  "see %s:KNOWN_PLATFORMS for a set of known platforms.",
-@@ -116,7 +115,7 @@ class Availability(SphinxDirective):
+@@ -116,7 +115,7 @@
          return platforms
  
  
@@ -264,9 +272,11 @@
      app.add_directive("availability", Availability)
  
      return {
---- a/Doc/tools/extensions/c_annotations.py
-+++ b/Doc/tools/extensions/c_annotations.py
-@@ -9,22 +9,18 @@ Configuration:
+Index: Python-3.13.3/Doc/tools/extensions/c_annotations.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/extensions/c_annotations.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/extensions/c_annotations.py	2025-04-11 21:55:11.212780990 +0200
+@@ -9,22 +9,18 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
  
@@ -292,7 +302,7 @@
  
  ROLE_TO_OBJECT_TYPE = {
      "func": "function",
-@@ -35,20 +31,20 @@ ROLE_TO_OBJECT_TYPE = {
+@@ -35,20 +31,20 @@
  }
  
  
@@ -317,7 +327,7 @@
  class StableABIEntry:
      # Role of the object.
      # Source: Each [item_kind] in stable_abi.toml is mapped to a C Domain role.
-@@ -67,7 +63,7 @@ class StableABIEntry:
+@@ -67,7 +63,7 @@
      struct_abi_kind: str
  
  
@@ -326,7 +336,7 @@
      refcount_data = {}
      refcounts = refcount_filename.read_text(encoding="utf8")
      for line in refcounts.splitlines():
-@@ -103,7 +99,7 @@ def read_refcount_data(refcount_filename
+@@ -103,7 +99,7 @@
      return refcount_data
  
  
@@ -335,7 +345,7 @@
      stable_abi_data = {}
      with open(stable_abi_file, encoding="utf8") as fp:
          for record in csv.DictReader(fp):
-@@ -123,11 +119,14 @@ def add_annotations(app: Sphinx, doctree
+@@ -123,11 +119,14 @@
              continue
          if not par[0].get("ids", None):
              continue
@@ -352,7 +362,7 @@
              if ROLE_TO_OBJECT_TYPE[record.role] != objtype:
                  msg = (
                      f"Object type mismatch in limited API annotation for {name}: "
-@@ -234,7 +233,7 @@ def _unstable_api_annotation() -> nodes.
+@@ -234,7 +233,7 @@
      )
  
  
@@ -361,7 +371,7 @@
      classes = ["refcount"]
      if result_refs is None:
          rc = sphinx_gettext("Return value: Always NULL.")
-@@ -254,7 +253,7 @@ class LimitedAPIList(SphinxDirective):
+@@ -254,7 +253,7 @@
      optional_arguments = 0
      final_argument_whitespace = True
  
@@ -370,7 +380,7 @@
          state = self.env.domaindata["c_annotations"]
          content = [
              f"* :c:{record.role}:`{record.name}`"
-@@ -277,13 +276,23 @@ def init_annotations(app: Sphinx) -> Non
+@@ -277,13 +276,23 @@
      )
  
  
@@ -395,8 +405,10 @@
      return {
          "version": "1.0",
          "parallel_read_safe": True,
---- a/Doc/tools/extensions/glossary_search.py
-+++ b/Doc/tools/extensions/glossary_search.py
+Index: Python-3.13.3/Doc/tools/extensions/glossary_search.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/extensions/glossary_search.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/extensions/glossary_search.py	2025-04-11 21:55:11.212983043 +0200
 @@ -1,18 +1,14 @@
  """Feature search results for glossary items prominently."""
  
@@ -418,7 +430,7 @@
  
  logger = logging.getLogger(__name__)
  
-@@ -52,7 +48,7 @@ def write_glossary_json(app: Sphinx, _ex
+@@ -52,7 +48,7 @@
      dest.write_text(json.dumps(app.env.glossary_terms), encoding='utf-8')
  
  
@@ -427,8 +439,10 @@
      app.connect('doctree-resolved', process_glossary_nodes)
      app.connect('build-finished', write_glossary_json)
  
---- a/Doc/tools/extensions/patchlevel.py
-+++ b/Doc/tools/extensions/patchlevel.py
+Index: Python-3.13.3/Doc/tools/extensions/patchlevel.py
+===================================================================
+--- Python-3.13.3.orig/Doc/tools/extensions/patchlevel.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Doc/tools/extensions/patchlevel.py	2025-04-11 21:55:11.213150035 +0200
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -438,7 +452,7 @@
  
  CPYTHON_ROOT = Path(
      __file__,  # cpython/Doc/tools/extensions/patchlevel.py
-@@ -26,7 +26,7 @@ class version_info(NamedTuple):  # noqa:
+@@ -26,7 +26,7 @@
      major: int  #: Major release number
      minor: int  #: Minor release number
      micro: int  #: Patch release number
@@ -447,7 +461,7 @@
      serial: int  #: Serial release number
  
  
-@@ -37,7 +37,8 @@ def get_header_version_info() -> version
+@@ -37,7 +37,8 @@
      defines = {}
      patchlevel_h = PATCHLEVEL_H.read_text(encoding="utf-8")
      for line in patchlevel_h.splitlines():
@@ -457,7 +471,7 @@
              name, value = m.groups()
              defines[name] = value
  
-@@ -50,7 +51,7 @@ def get_header_version_info() -> version
+@@ -50,7 +51,7 @@
      )
  
  

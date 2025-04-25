@@ -1,0 +1,95 @@
+commit 2b0e2b2893a821ca36cd65a204bed932741ac189
+Author: Filipe Laíns 🇵🇸 <lains@riseup.net>
+Date:   Tue Nov 26 13:46:33 2024 +0000
+
+    GH-126985: move pyvenv.cfg detection from site to getpath (#126987)
+
+---
+ Lib/test/test_sysconfig.py |   67 ---------------------------------------------
+ 1 file changed, 1 insertion(+), 66 deletions(-)
+
+Index: Python-3.13.3/Lib/test/test_sysconfig.py
+===================================================================
+--- Python-3.13.3.orig/Lib/test/test_sysconfig.py	2025-04-15 14:13:08.581364697 +0200
++++ Python-3.13.3/Lib/test/test_sysconfig.py	2025-04-15 14:13:54.955529034 +0200
+@@ -110,6 +110,7 @@
+             **venv_create_args,
+         )
+ 
++
+     def test_get_path_names(self):
+         self.assertEqual(get_path_names(), sysconfig._SCHEME_KEYS)
+ 
+@@ -604,72 +605,6 @@
+         suffix = sysconfig.get_config_var('EXT_SUFFIX')
+         self.assertTrue(suffix.endswith('-darwin.so'), suffix)
+ 
+-    @requires_subprocess()
+-    def test_config_vars_depend_on_site_initialization(self):
+-        script = textwrap.dedent("""
+-            import sysconfig
+-
+-            config_vars = sysconfig.get_config_vars()
+-
+-            import json
+-            print(json.dumps(config_vars, indent=2))
+-        """)
+-
+-        with self.venv() as venv:
+-            site_config_vars = json.loads(venv.run('-c', script).stdout)
+-            no_site_config_vars = json.loads(venv.run('-S', '-c', script).stdout)
+-
+-        self.assertNotEqual(site_config_vars, no_site_config_vars)
+-        # With the site initialization, the virtual environment should be enabled.
+-        self.assertEqual(site_config_vars['base'], venv.prefix)
+-        self.assertEqual(site_config_vars['platbase'], venv.prefix)
+-        #self.assertEqual(site_config_vars['prefix'], venv.prefix)  # # FIXME: prefix gets overwriten by _init_posix
+-        # Without the site initialization, the virtual environment should be disabled.
+-        self.assertEqual(no_site_config_vars['base'], site_config_vars['installed_base'])
+-        self.assertEqual(no_site_config_vars['platbase'], site_config_vars['installed_platbase'])
+-
+-    @requires_subprocess()
+-    def test_config_vars_recalculation_after_site_initialization(self):
+-        script = textwrap.dedent("""
+-            import sysconfig
+-
+-            before = sysconfig.get_config_vars()
+-
+-            import site
+-            site.main()
+-
+-            after = sysconfig.get_config_vars()
+-
+-            import json
+-            print(json.dumps({'before': before, 'after': after}, indent=2))
+-        """)
+-
+-        with self.venv() as venv:
+-            config_vars = json.loads(venv.run('-S', '-c', script).stdout)
+-
+-        self.assertNotEqual(config_vars['before'], config_vars['after'])
+-        self.assertEqual(config_vars['after']['base'], venv.prefix)
+-        #self.assertEqual(config_vars['after']['prefix'], venv.prefix)  # FIXME: prefix gets overwriten by _init_posix
+-        #self.assertEqual(config_vars['after']['exec_prefix'], venv.prefix)  # FIXME: exec_prefix gets overwriten by _init_posix
+-
+-    @requires_subprocess()
+-    def test_paths_depend_on_site_initialization(self):
+-        script = textwrap.dedent("""
+-            import sysconfig
+-
+-            paths = sysconfig.get_paths()
+-
+-            import json
+-            print(json.dumps(paths, indent=2))
+-        """)
+-
+-        with self.venv() as venv:
+-            site_paths = json.loads(venv.run('-c', script).stdout)
+-            no_site_paths = json.loads(venv.run('-S', '-c', script).stdout)
+-
+-        self.assertNotEqual(site_paths, no_site_paths)
+-
+-
+ class MakefileTests(unittest.TestCase):
+ 
+     @unittest.skipIf(sys.platform.startswith('win'),

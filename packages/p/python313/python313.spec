@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.2
+Version:        3.13.3
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -222,6 +222,12 @@ Patch40:        fix-test-recursion-limit-15.6.patch
 # PATCH-FIX-SLE doc-py38-to-py36.patch mcepl@suse.com
 # Make documentation extensions working with Python 3.6
 Patch41:        doc-py38-to-py36.patch
+# PATCH-FIX-UPSTREAM gh126985-mv-pyvenv.cfg2getpath.patch mcepl@suse.com
+# Remove tests failing in test_sysconfig
+Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
+# PATCH-FIX-UPSTREAM gh-132535-rsrc-warn-test_timeout.patch gh#python/cpython#132535 mcepl@suse.com
+# allows test_timeout tests to pass
+Patch43:        gh-132535-rsrc-warn-test_timeout.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -655,12 +661,6 @@ EXCLUDE="$EXCLUDE test_external_inspection test_faulthandler test_os test_posix 
 # so that ifconfig output has "HWaddr <something>".  Some kvm instances
 # done have any such interface breaking the uuid module.
 EXCLUDE="$EXCLUDE test_uuid"
-
-# bsc#1195140 and bpo#37169 - test_capi is failing on openSUSE, and not sure why
-EXCLUDE="$EXCLUDE test_capi"
-
-# Failing tests on python 3.13
-EXCLUDE="$EXCLUDE test_regrtest test_sysconfig"
 
 # Limit virtual memory to avoid spurious failures
 if test $(ulimit -v) = unlimited || test $(ulimit -v) -gt 10000000; then

@@ -1,0 +1,94 @@
+From 0e461dd411e9ec3dbdf376435154ca2834bcab51 Mon Sep 17 00:00:00 2001
+From: Serhiy Storchaka <storchaka@gmail.com>
+Date: Wed, 16 Apr 2025 00:24:56 +0300
+Subject: [PATCH] gh-132535: Fix resource warnings in test_timeout
+
+They were emitted if internet connection was not available.
+---
+ Lib/test/test_timeout.py |   43 ++++++++++++++++---------------------------
+ 1 file changed, 16 insertions(+), 27 deletions(-)
+
+Index: Python-3.13.3/Lib/test/test_timeout.py
+===================================================================
+--- Python-3.13.3.orig/Lib/test/test_timeout.py	2025-04-08 15:54:08.000000000 +0200
++++ Python-3.13.3/Lib/test/test_timeout.py	2025-04-15 23:45:55.028517897 +0200
+@@ -26,10 +26,8 @@
+     """Test case for socket.gettimeout() and socket.settimeout()"""
+ 
+     def setUp(self):
+-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+-
+-    def tearDown(self):
+-        self.sock.close()
++        self.sock = self.enterContext(
++            socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+ 
+     def testObjectCreation(self):
+         # Test Socket creation
+@@ -113,8 +111,6 @@
+     def setUp(self):
+         raise NotImplementedError()
+ 
+-    tearDown = setUp
+-
+     def _sock_operation(self, count, timeout, method, *args):
+         """
+         Test the specified socket method.
+@@ -142,12 +138,10 @@
+     """TCP test case for socket.socket() timeout functions"""
+ 
+     def setUp(self):
+-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
++        self.sock = self.enterContext(
++            socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+         self.addr_remote = resolve_address('www.python.org.', 80)
+ 
+-    def tearDown(self):
+-        self.sock.close()
+-
+     def testConnectTimeout(self):
+         # Testing connect timeout is tricky: we need to have IP connectivity
+         # to a host that silently drops our packets.  We can't simulate this
+@@ -190,19 +184,16 @@
+         # for the current configuration.
+ 
+         skip = True
+-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+-        timeout = support.LOOPBACK_TIMEOUT
+-        sock.settimeout(timeout)
+-        try:
+-            sock.connect((whitehole))
+-        except TimeoutError:
+-            pass
+-        except OSError as err:
+-            if err.errno == errno.ECONNREFUSED:
+-                skip = False
+-        finally:
+-            sock.close()
+-            del sock
++        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
++            try:
++                timeout = support.LOOPBACK_TIMEOUT
++                sock.settimeout(timeout)
++                sock.connect((whitehole))
++            except TimeoutError:
++                pass
++            except OSError as err:
++                if err.errno == errno.ECONNREFUSED:
++                    skip = False
+ 
+         if skip:
+             self.skipTest(
+@@ -269,10 +260,8 @@
+     """UDP test case for socket.socket() timeout functions"""
+ 
+     def setUp(self):
+-        self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+-
+-    def tearDown(self):
+-        self.sock.close()
++        self.sock = self.enterContext(
++            socket.socket(socket.AF_INET, socket.SOCK_DGRAM))
+ 
+     def testRecvfromTimeout(self):
+         # Test recvfrom() timeout

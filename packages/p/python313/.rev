@@ -591,4 +591,41 @@
       (bsc#1238450 CVE-2025-1795)</comment>
     <requestid>1251953</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5d4062f27189f9d44beb46048ef6cfe5</srcmd5>
+    <version>3.13.3</version>
+    <time>1745612270</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.13.3:
+  - Tools/Demos
+    - gh-131852: msgfmt no longer adds the POT-Creation-Date to
+      generated .mo files for consistency with GNU msgfmt.
+    - gh-85012: Correctly reset msgctxt when compiling messages
+      in msgfmt.
+    - gh-130025: The iOS testbed now correctly handles symlinks
+      used as Python framework references.
+  - Tests
+    - gh-131050: test_ssl.test_dh_params is skipped if the
+      underlying TLS library does not support finite-field
+      ephemeral Diffie-Hellman.
+    - gh-129200: Multiple iOS testbed runners can now be started
+      at the same time without introducing an ambiguity over
+      simulator ownership.
+    - gh-130292: The iOS testbed will now run successfully on a
+      machine that has not previously run Xcode tests (such as CI
+      configurations).
+    - gh-130293: The tests of terminal colorization are no longer
+      sensitive to the value of the TERM variable in the testing
+      environment.
+    - gh-126332: Add unit tests for pyrepl.
+  - Security
+    - gh-131809: Update bundled libexpat to 2.7.1
+    - gh-131261: Upgrade to libexpat 2.7.0
+    - gh-127371: Avoid unbounded buffering for
+      tempfile.SpooledTemporaryFile.writelines(). Previously,
+      disk spillover was only checked after the lines iterator
+      had been exhausted. This is now done after each line is
+      written.</comment>
+    <requestid>1270150</requestid>
+  </revision>
 </revisionlist>
