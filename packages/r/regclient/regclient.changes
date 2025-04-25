@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:31:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.3:
+  * Features:
+    - Add ref.AddDigest method that does not unset the tag. (PR
+      910)
+    - Adding a regctl registry whoami command. (PR 912)
+    - Improve regctl image check-base output. (PR 917)
+    - regsync option to abort on errors. (PR 924)
+    - Improve fallback tag handling. (PR 925)
+    - regctl flag to ignore missing images on delete. (PR 930)
+  * Fixes:
+    - Validate registry names. (PR 911)
+    - Escape regexp example. (PR 920)
+    - Auth header parsing. (PR 936)
+  * Changes:
+    - Update supported Go releases to 1.22, 1.23, and 1.24. (PR
+      909)
+    - Modernize Go to the 1.22 specs. (PR 910)
+    - Refactor cobra commands. (PR 915)
+    - Include Docker Hub repository documentation. (PR 918)
+    - Move documentation pointers to the website. (PR 939)
+
+-------------------------------------------------------------------
 Sun Feb 16 08:52:14 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.8.2:
