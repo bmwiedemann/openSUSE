@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Apr 24 10:11:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.2.20:
+  * Bump version to 0.2.20
+  * And one more memory optimization + code correctness fixes
+  * TailStatus - Pass by ref and avoid heap allocs
+  * Improved memory usage part 2/2
+  * Improved memory usage part 1/2
+  * Don't leak current prefs
+  * Minor optimization and cleanup around process execution
+  * Some more fixes
+  * Use std::vector instead of QList for TailDeviceInfo list
+  * Don't leak QTableWidgetItem's
+  * Minor log silence
+  * Tailscale update / auto update settings & command options
+
+-------------------------------------------------------------------
 Wed Apr 02 04:47:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.19:
