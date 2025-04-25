@@ -46,4 +46,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: add video firmware binary for qcm6490</comment>
     <requestid>1271970</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93dc11c54229144d4883f59966d63249</srcmd5>
+    <version>20250424</version>
+    <time>1745612313</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.
+
+- Update to version 20250424 (git commit c8af472e05cb):
+  * qcom: vpu: update video firmware binary for SA8775p</comment>
+    <requestid>1272728</requestid>
+  </revision>
 </revisionlist>
