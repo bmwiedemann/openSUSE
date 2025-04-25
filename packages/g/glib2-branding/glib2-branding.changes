@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Apr 24 07:00:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update defaults to match current situation:
+  + Remove banshee preference: banshee has not been shipped since
+    2016.
+  + Add Loupe to the preferred applications for images
+  + Do not use Eog by default. As it's alphabetically before
+    Loupe, Eog would always win the way it was listed (when
+    installed).
+  + Explicitly set image/tiff to org.gnome.Loupe as Eog is no
+    longer part of the default installations.
+
+-------------------------------------------------------------------
 Wed Apr  9 02:00:47 UTC 2025 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Update SLE version to 16. (bsc#1240822)

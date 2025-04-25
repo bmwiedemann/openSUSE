@@ -216,4 +216,12 @@
     <comment>- Update SLE version to 16. (bsc#1240822) (forwarded request 1268006 from AZhou)</comment>
     <requestid>1268055</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>ebf3e7ce6337b208bb06246a82fc6132</srcmd5>
+    <version>16</version>
+    <time>1745612301</time>
+    <user>anag_factory</user>
+    <comment>Fix comment inside conf file (forwarded request 1272565 from dimstar)</comment>
+    <requestid>1272605</requestid>
+  </revision>
 </revisionlist>
