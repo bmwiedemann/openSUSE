@@ -53,4 +53,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * Revert &quot;rtw89: 8852c: update fw to v0.27.125.0&quot;</comment>
     <requestid>1271973</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>66be0b690ed400409d51738c03a1162f</srcmd5>
+    <version>20250422</version>
+    <time>1745612320</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272740</requestid>
+  </revision>
 </revisionlist>
