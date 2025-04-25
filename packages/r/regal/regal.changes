@@ -1,4 +1,133 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:08:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1:
+  This release is the same tag as v0.33.1, please see that release
+  for the release notes.
+  Another v0.33.1 was released to trigger the rebuilding of some
+  assets that were deleted in a draft release.
+  * New Rule: in-wildcard-key
+    Using a wildcard variable (_) for the key in the key-value form
+    of iteration (some _, value in collection) is never needed, and
+    can be replaced by the simple some value in … form . This rule
+    flags cases where the key iteration is redundant. (Read more)
+  * New Rule: confusing-alias
+    While import aliases can improve readability, aliasing an
+    import reference that is also imported without an alias is
+    confusing, as both names point to the same resource. This rule
+    catches such cases. (Read more)
+  * New Rule: mixed-iteration
+    Rego supports different styles of collection iteration. While
+    "reference style" iteration (collection[_]) can be concise for
+    deeply nested structures, mixing it with the some .. in style
+    within a single iteration expression makes for code that’s more
+    difficult to follow. This rule encourages consistency within a
+    single iteration statement. (Read more)
+  * New Rule: narrow-argument
+    This new rule analyzes function arguments to suggest narrowing
+    them down to the minimal value the function depends on. This
+    can improve clarity and reusability. The rule considers
+    incrementally defined functions across all their definitions.
+    This is a powerful but opinionated rule and is thus in the
+    custom category and is not on by default. See the documentation
+    for how to enable it if you’re curious to try it out! (Read
+    more)
+  * Performance Improvements
+    Several improvements have been made to reduce memory
+    allocations and improve overall linting performance. Numbers
+    below refer to Regal’s benchmark for linting its own policies.
+    - Optimized config loading and parsing, saving around 2.7
+      million allocations (#1491).
+    - Reduced allocations by approximately 2 million (#1494).
+    - Improved the performance of the use-strings-count rule,
+      saving almost 1 million allocations (#1465).
+    - Optimized reference comparisons and small iteration patterns,
+      saving around 300k allocations (#1472).
+    - Included performance enhancements alongside an update to the
+      external-reference rule to make it more configurable (#1496).
+  * OPA v1.3.0
+    Regal has been upgraded to use OPA v1.3.0. This brings several
+    upstream improvements, including support for the new one-liner
+    grouping in formatting (see OPA#6760). (#1459)
+  * Bug Fixes
+    - Fixed a bug in the handling of Rego input from stdin. Thanks
+      @tokyowizard for the report! (#1474)
+    - Fixed a panic that could occur in FindConfigRoots when
+      supplied with unexpected arguments. (#1487)
+  * Other Rule Updates
+    - The external-reference rule can now be configured with a
+      maximum number of allowed external references, instead of
+      solely flagging all external uses within a function. If you
+      previously had this rule disabled, you might want to try
+      enabling it now, and possibly tweak its configuration to your
+      liking. (#1496)
+    - The rule-length rule now has a separate setting
+      (max-test-rule-length) with a higher default value (60 vs 30)
+      for test rules, acknowledging that tests often include
+      substantial data. (#1476)
+    - Updated documentation for the rule-named-if rule based on
+      community feedback received via the page feedback form
+      (please let us know if you see issues! & thanks for the
+      report!) (#1463)
+  * Dependencies
+    This release also updates Regals dependencies as follows.
+    - github.com/open-policy-agent/opa v1.2.0 -> v1.3.0
+    - github.com/prometheus/client_golang v1.21.0 -> v1.21.1
+    - go.opentelemetry.io/otel v1.34.0 -> v1.35.0
+    - go.opentelemetry.io/otel/metric v1.34.0 -> v1.35.0
+    - go.opentelemetry.io/otel/sdk v1.34.0 -> v1.35.0
+    - go.opentelemetry.io/otel/trace v1.34.0 -> v1.35.0
+    - golang.org/x/crypto v0.35.0 -> v0.36.0
+    - golang.org/x/net v0.36.0 -> v0.38.0
+    - golang.org/x/sync v0.11.0 -> v0.12.0
+    - golang.org/x/sys v0.30.0 -> v0.31.0
+    - golang.org/x/text v0.22.0 -> v0.23.0
+    - google.golang.org/protobuf v1.36.4 -> v1.36.5
+  * Changelog
+    - automated: update capabilities by @github-actions in #1458
+    - OPA 1.3.0 by @anderseknert in #1459
+    - Parameterize some tests by @anderseknert in #1460
+    - automated: update capabilities by @github-actions in #1461
+    - build(deps): bump the dependencies group with 2 updates by
+      @dependabot in #1462
+    - docs: rule-named-if by @charlieegan3 in #1463
+    - Some perf fixes by @anderseknert in #1465
+    - Rule: in-wildcard-key by @anderseknert in #1466
+    - Increase coverage by @anderseknert in #1467
+    - build(deps): bump github/codeql-action from 3.28.13 to
+      3.28.14 in the dependencies group by @dependabot in #1468
+    - perf: various improvements by @anderseknert in #1472
+    - Rule: confusing-alias by @anderseknert in #1470
+    - Add benchmark for testing all rules individually by
+      @anderseknert in #1469
+    - Rule: mixed-iteration by @anderseknert in #1475
+    - Add max-test-rule-length setting to rule-length rule by
+      @anderseknert in #1476
+    - fix: ensure policy from stdin is enumerated correctly by
+      @anderseknert in #1474
+    - automated: update capabilities by @github-actions in #1477
+    - builtins.RegalIsFormatted: recover from formatter panics by
+      @srenatus in #1481
+    - automated: update capabilities by @github-actions in #1482
+    - build(deps): bump github/codeql-action from 3.28.14 to
+      3.28.15 in the dependencies group by @dependabot in #1484
+    - Fix unnecessary-some rule not working after OPA 1.0+ by
+      @anderseknert in #1485
+    - FindConfigRoots: return error, not panic by @srenatus in
+      #1487
+    - perf: Improve how config is parsed, and when by @anderseknert
+      in #1491
+    - Rule: narrow-argument by @anderseknert in #1488
+    - build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 by
+      @dependabot in #1490
+    - build(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2
+      in the dependencies group by @dependabot in #1495
+    - Make external-reference rule less annoying by @anderseknert
+      in #1496
+    - docs: fix docs that still used v0 syntax by @anderseknert in
+      #1494
+
+-------------------------------------------------------------------
 Fri Mar 28 06:38:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package regal: linter and language server for Rego, bringing
