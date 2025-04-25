@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Apr 25 08:21:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.17
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 0.10.16
+  * **deps:** Require grpc-google-iam-v1 >= 0.14.0
+- from version 0.10.15
+  * Add Base Image URI to Container
+  * Add BuildConfig to Services for configuring Run functions
+  * Add BuildInfo to Revision for displaying BuildConfig used
+    for a specific revision deployment
+  * Add creator field to Execution
+  * Add project_descriptor to BuildspackBuild
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+  * Some typos were fixed and formatting changed
+- from version 0.10.14
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 0.10.13
+  * Support manual instance count in Cloud Run for manual scaling feature
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Nov 18 14:17:15 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.10.12
