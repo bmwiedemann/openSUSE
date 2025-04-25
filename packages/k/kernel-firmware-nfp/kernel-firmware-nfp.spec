@@ -26,27 +26,25 @@ Name:           kernel-firmware-nfp
 Version:        20250206
 Release:        0
 Summary:        Kernel firmware files for Netronome Flow Processor driver
-License:        SUSE-Firmware AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Supplements:    modalias(pci:v000019EEd00003800sv000019EEsd*bc*sc*i*)
 Supplements:    modalias(pci:v000019EEd00003803sv000019EEsd*bc*sc*i*)
@@ -64,9 +62,9 @@ Supplements:    modalias(pci:v00001DA8d00006003sv00001DA8sd*bc*sc*i*)
 %description
 This package contains kernel firmware files for Netronome Flow Processor driver.
 
-
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh nfp < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
