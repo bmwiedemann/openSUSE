@@ -25,4 +25,24 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment></comment>
     <requestid>1252648</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b681fe311bf122f2fe32b7b51c2ea9f7</srcmd5>
+    <version>20250423</version>
+    <time>1745612312</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.
+
+- Update to version 20250423 (git commit c67433231cbd):
+  * iwlwifi: add Bz/gl FW for core95-82 release
+  * iwlwifi: update ty/So/Ma firmwares for core95-82 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core95-82 release
+
+- Update to version 20250422 (git commit 32f3227b67c0):
+  * iwlwifi: add Bz-hr FW for core93-123 release</comment>
+    <requestid>1272725</requestid>
+  </revision>
 </revisionlist>

@@ -20,18 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 89ba9b7ce05c8dac3b659b6a0ebc87a601fc35b1
+%define git_version c67433231cbd8bcf90b5563bed22fc7a62bbc2bc
 
 Name:           kernel-firmware-iwlwifi
-Version:        20250312
+Version:        20250423
 Release:        0
 Summary:        Kernel firmware files for Intel wireless drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250311.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -60,8 +59,7 @@ Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Provides:       iwl1000-ucode = %{version}
 Obsoletes:      iwl1000-ucode < %{version}
@@ -539,7 +537,8 @@ Supplements:    modalias(pci:v00008086d0000E440sv*sd*bc*sc*i*)
 This package contains kernel firmware files for Intel wireless drivers.
 
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh iwlwifi < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE

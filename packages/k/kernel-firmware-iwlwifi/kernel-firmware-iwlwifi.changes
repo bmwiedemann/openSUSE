@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Change conflicts filesystem < 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.
+
+-------------------------------------------------------------------
+Thu Apr 24 06:17:11 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250423 (git commit c67433231cbd):
+  * iwlwifi: add Bz/gl FW for core95-82 release
+  * iwlwifi: update ty/So/Ma firmwares for core95-82 release
+  * iwlwifi: update cc/Qu/QuZ firmwares for core95-82 release
+
+-------------------------------------------------------------------
+Wed Apr 23 13:35:06 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250422 (git commit 32f3227b67c0):
+  * iwlwifi: add Bz-hr FW for core93-123 release
+
+-------------------------------------------------------------------
 Thu Mar 13 06:40:12 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20250312 (git commit 89ba9b7ce05c):
