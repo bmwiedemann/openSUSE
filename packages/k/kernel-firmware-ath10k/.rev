@@ -36,4 +36,16 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update spec to make kernel-firmware-tools downloadable</comment>
     <requestid>1255830</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>fe027c0d64f5d1c15bc9bfd5c6e33a2e</srcmd5>
+    <version>20250206</version>
+    <time>1745612306</time>
+    <user>anag_factory</user>
+    <comment>- Change conflicts filesystem &lt; 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.</comment>
+    <requestid>1272714</requestid>
+  </revision>
 </revisionlist>
