@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:30:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.61:
+  * General
+    - Bump @babel/runtime-corejs3 from 7.17.8 to 7.27.0 in
+      /install/docker-extension/ui @dependabot (#14377)
+  * Meshery CLI
+    - [mesheryct] e2e tes for model search command @gourav-k-shaw
+      (#14445)
+    - [mesheryctl] add csv import in model import command @riyaa14
+      (#14061)
+  * Maintenance
+    - Bump dotenv from 16.4.5 to 16.4.7 in /ui @dependabot (#13437)
+    - feat: fix settings spec faliures @ianrwhitney (#14467)
+    - feat: fixed pef playwright flainess @ianrwhitney (#14446)
+    - [mesheryct] e2e tes for model search command @gourav-k-shaw
+      (#14445)
+  * Documentation
+    - [Docs] Add notes about the shape of deployment in the
+      Component Shape Guide @weilirs (#13704)
+    - Fixed Auto-Generated Release Notes Rendering Issue with
+      Square Brackets @vr-varad (#14026)
+    - [DOCS] adding details regarding --config flag @gourav-k-shaw
+      (#14474)
+- update to 0.8.60:
+  No CLI-related changes in this release
+
+-------------------------------------------------------------------
+Fri Apr 25 06:27:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.59:
+  * Meshery CLI
+    - use iacFileType from core schema @aabidsofi19 (#14473)
+    - export command setup function fix @gourav-k-shaw (#14442)
+  * Maintenance
+    - Update regal-lint.yml to apply OPA formatting @RanitMukherjee
+      (#13365)
+    - export command setup function fix @gourav-k-shaw (#14442)
+    - fix: updated pr number and sha for manaul dispatch @ianrwhitney
+      (#14453)
+  * Documentation
+    - Fixed infrastructure management guide with better dependency
+      deployme… @zihanKuang (#14089)
+    - fix:error-code-handler.js broken link @FaheemOnHub (#14462)
+    - Recursive reeval @aabidsofi19 (#14399)
+
+-------------------------------------------------------------------
 Sun Apr 20 06:44:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.58:
