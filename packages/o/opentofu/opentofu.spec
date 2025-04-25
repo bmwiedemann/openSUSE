@@ -19,7 +19,7 @@
 %define executable_name tofu
 
 Name:           opentofu
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Declaratively manage your cloud infrastructure
 License:        MPL-2.0
@@ -30,7 +30,7 @@ Source1:        vendor.tar.gz
 Source99:       opentofu-rpmlintrc
 BuildRequires:  bash-completion
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.22.8
+BuildRequires:  golang(API) >= 1.22.12
 # See: https://github.com/hashicorp/opentofu/issues/22807
 ExcludeArch:    %{ix86} %{arm}
 
