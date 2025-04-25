@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Change conflicts filesystem < 84 to conflicts filesystem without
+  may-perform-usrmerge. Version 84 is specific to Tumbleweed; CODE
+  16 uses Version 16; yet we need to ensure we get an up-to-date
+  version of filesystem. Relying on the recently introduced provides
+  instructing zypp about the usrmerge is perfect for this use case.
+
+-------------------------------------------------------------------
+Fri Apr 25 06:41:07 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250424 (git commit c8af472e05cb):
+  * ath12k: WCN7850 hw2.0: update to WLAN.HMT.1.1.c5-00284-QCAHMTSWPL_V1.0_V2.0_SILICONZ-3
+  * ath12k: QCN9274 hw2.0: update board-2.bin
+
+-------------------------------------------------------------------
 Tue Feb 11 09:26:37 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Fix license description for kernel-firmware-tools package
