@@ -308,4 +308,12 @@
     <user>anag+factory</user>
     <comment>restore packaging</comment>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>7b43f8468f0f22f3101caaf1680047ef</srcmd5>
+    <version>5.4.7</version>
+    <time>1745612282</time>
+    <user>anag_factory</user>
+    <comment>- Fix license: it is MIT, not GPL-3.0-or-later.</comment>
+    <requestid>1272084</requestid>
+  </revision>
 </revisionlist>

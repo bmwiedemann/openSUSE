@@ -29,7 +29,7 @@ Name:           lua54%{name_ext}
 Version:        5.4.7
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
-License:        GPL-3.0-or-later
+License:        MIT
 Group:          Development/Languages/Other
 URL:            https://www.lua.org
 Source:         https://www.lua.org/ftp/lua-%{version}.tar.gz
