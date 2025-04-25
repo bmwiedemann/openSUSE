@@ -1,0 +1,36 @@
+From 55cb82a5a24cbc672c24dd92e9862a0ab782a2f5 Mon Sep 17 00:00:00 2001
+From: Giuseppe D'Angelo <giuseppe.dangelo@kdab.com>
+Date: Thu, 10 Apr 2025 15:16:02 +0200
+Subject: [PATCH] Fix build with Qt 6.9
+
+These private APIs have now changed and QDataBuffer checks that
+the types are trivially destructible / trivially copyable.
+---
+ src/view/quick/qopengl2pexvertexarray_p.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/view/quick/qopengl2pexvertexarray_p.h b/src/view/quick/qopengl2pexvertexarray_p.h
+index f80975e..6505833 100644
+--- a/src/view/quick/qopengl2pexvertexarray_p.h
++++ b/src/view/quick/qopengl2pexvertexarray_p.h
+@@ -80,6 +80,8 @@ public:
+     operator QPointF() const {return QPointF(x,y);}
+ };
+ 
++Q_DECLARE_TYPEINFO(QOpenGLPoint, Q_PRIMITIVE_TYPE);
++
+ struct QOpenGLRect
+ {
+     QOpenGLRect(const QRectF &r)
+@@ -96,6 +98,8 @@ struct QOpenGLRect
+     operator QRectF() const {return QRectF(left, top, right-left, bottom-top);}
+ };
+ 
++Q_DECLARE_TYPEINFO(QOpenGLRect, Q_PRIMITIVE_TYPE);
++
+ class QOpenGL2PEXVertexArray
+ {
+ public:
+-- 
+2.49.0
+

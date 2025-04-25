@@ -87,4 +87,13 @@
     <comment></comment>
     <requestid>1243634</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3a364675b36b073e86d44850e5ff4199</srcmd5>
+    <version>2.0.0</version>
+    <time>1745612331</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change:
+  * 0001-Fix-build-with-Qt-6.9.patch</comment>
+    <requestid>1272458</requestid>
+  </revision>
 </revisionlist>

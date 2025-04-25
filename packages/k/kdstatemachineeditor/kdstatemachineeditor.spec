@@ -44,6 +44,8 @@ URL:            https://kdab.github.io/KDStateMachineEditor/
 Source:         https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/KDStateMachineEditor-v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- work around build issue caused by graphviz packaging decisions
 Patch0:         0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-build-with-Qt-6.9.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen
 BuildRequires:  graphviz-devel >= 2.30.1
