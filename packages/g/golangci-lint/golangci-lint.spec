@@ -17,13 +17,13 @@
 
 
 Name:           golangci-lint
-Version:        2.1.2
+Version:        2.1.5
 Release:        0
 Summary:        A fast Go linters runner
 License:        GPL-3.0-only
 URL:            https://golangci-lint.run
-Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.23
 
 %description

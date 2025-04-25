@@ -740,4 +740,35 @@
   * docs: update changelog (forwarded request 1269722 from jfkw)</comment>
     <requestid>1269723</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>db762c5a2b268de67bcc44aab66af697</srcmd5>
+    <version>2.1.5</version>
+    <time>1745612362</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.5:
+  * chore: prepare release (#5765)
+  * docs: update GitHub Action assets (#5764)
+
+- Update to version 2.1.4:
+  * chore: prepare release (#5763)
+  * docs: update GitHub Action assets (#5762)
+- Packaging improvements:
+  * _service recompress change from xz to gz. The source archive is
+    not large and xz unpack times are noticeably slower. If gz is
+    not ideal for a given application, zstd is a good alternative.
+
+- Update to version 2.1.3:
+  * chore: prepare release
+  * docs: GoLand IDE support v2 (#5758)
+  * build(deps): bump go.augendre.info/fatcontext from 0.7.2 to 0.8.0 (#5757)
+  * fix: convert uint as pointer of uint for the migration (#5755)
+  * docs: GoLand IDE only support v1 for now (#5750)
+  * fix: related information position (#5746)
+  * dev: disable check-generated job (#5742)
+  * fix: add go.mod hash to the cache salt (#5739)
+  * fix: order of staticcheck settings during migration (#5741)
+  * docs: update section about GoLand integration (#5740)
+  * docs: update GitHub Action assets (#5738) (forwarded request 1272538 from jfkw)</comment>
+    <requestid>1272539</requestid>
+  </revision>
 </revisionlist>

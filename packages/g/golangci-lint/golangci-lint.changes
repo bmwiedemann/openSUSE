@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Apr 24 20:15:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.1.5:
+  * chore: prepare release (#5765)
+  * docs: update GitHub Action assets (#5764)
+
+-------------------------------------------------------------------
+Thu Apr 24 18:55:17 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.1.4:
+  * chore: prepare release (#5763)
+  * docs: update GitHub Action assets (#5762)
+- Packaging improvements:
+  * _service recompress change from xz to gz. The source archive is
+    not large and xz unpack times are noticeably slower. If gz is
+    not ideal for a given application, zstd is a good alternative.
+
+-------------------------------------------------------------------
+Thu Apr 24 18:53:18 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.1.3:
+  * chore: prepare release
+  * docs: GoLand IDE support v2 (#5758)
+  * build(deps): bump go.augendre.info/fatcontext from 0.7.2 to 0.8.0 (#5757)
+  * fix: convert uint as pointer of uint for the migration (#5755)
+  * docs: GoLand IDE only support v1 for now (#5750)
+  * fix: related information position (#5746)
+  * dev: disable check-generated job (#5742)
+  * fix: add go.mod hash to the cache salt (#5739)
+  * fix: order of staticcheck settings during migration (#5741)
+  * docs: update section about GoLand integration (#5740)
+  * docs: update GitHub Action assets (#5738)
+
+-------------------------------------------------------------------
 Tue Apr 15 16:38:29 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.1.2:
