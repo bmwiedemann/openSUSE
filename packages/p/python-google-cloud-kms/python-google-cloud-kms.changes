@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:14:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.1
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 3.4.0
+  * Support PQC asymmetric signing algorithms ML_DSA_65 and SLH_DSA_SHA2_128s (#13538)
+  * Add a PublicKeyFormat enum to allow specifying the format the
+- from version 3.3.1
+  * **deps:** Require grpc-google-iam-v1 >= 0.14.0
+- from version 3.3.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 3.2.2
+  * Modify enum comment (#13410)
+- from version 3.2.1
+  * Code documentation improvements (#13366)
+- from version 3.2.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+  * A comment for enum `CryptoKeyVersionAlgorithm` is changed (#13305)
+- from version 3.1.1
+  * Disable universe-domain validation (#13243)
+- from version 3.1.0
+  * Add support for Python 3.13 (#13207)
+- from version 3.0.0
+  * Pagination feature is introduced for method ListKeyHandles in service Autokey
+  * Adding a state field for AutokeyConfig
+  * Pagination feature is introduced for method ListKeyHandles in service Autokey
+  * A comment for field destroy_scheduled_duration in message .google.cloud.kms.v1.CryptoKey
+    is updated for the default duration
+  * Field service_resolvers in message .google.cloud.kms.v1.EkmConnection is
+    Explicitly is marked as to have field behavior of Optional
+- from version 2.24.2
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 2.24.1
+  * Allow Protobuf 5.x (#12867)
+- from version 2.24.0
+  * Support Key Access Justifications policy configuration
+- from version 2.23.0
+  * Add client library for KMS Autokey service, which enables automated KMS
+    key provision and management
+- from version 2.22.0
+  * Introduce Long-Running Operations (LRO) for KMS
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Apr 20 20:48:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.21.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-kms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms
-Version:        2.21.4
+Version:        3.4.1
 Release:        0
 Summary:        Cloud Key Management Service (KMS) API API client library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/GoogleCloudPlatform/google-cloud-python
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms/google-cloud-kms-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_kms/google_cloud_kms-%{version}.tar.gz
 BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
-BuildRequires:  %{python_module protobuf >= 3.19}
+BuildRequires:  %{python_module protobuf >= 3.20.2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
@@ -39,6 +39,7 @@ Requires:       python-google-api-core >= 1.34.1
 Requires:       python-google-auth
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires:       python-proto-plus >= 1.22.3
+Requires:       python-protobuf >= 3.20.2
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
 BuildArch:      noarch
@@ -48,7 +49,7 @@ BuildArch:      noarch
 Cloud Key Management Service (KMS) API API client library
 
 %prep
-%setup -q -n google-cloud-kms-%{version}
+%setup -q -n google_cloud_kms-%{version}
 
 %build
 %pyproject_wheel
