@@ -38,6 +38,8 @@ Source2:        mariadb.keyring
 Source3:        baselibs.conf
 Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
 Patch4:         private_library.patch
+Patch5:         mariadb-connector-c-3.4.5-gcc15.patch
+Patch6:         mariadb-connector-c-3.4.5-gcc15-part2.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig

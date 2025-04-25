@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 23 21:22:36 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add patches from upstream to fix gcc-15 compile time errors:
+  * mariadb-connector-c-3.4.5-gcc15.patch
+  * mariadb-connector-c-3.4.5-gcc15-part2.patch
+
+-------------------------------------------------------------------
 Tue Apr 22 17:58:02 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.4.5:

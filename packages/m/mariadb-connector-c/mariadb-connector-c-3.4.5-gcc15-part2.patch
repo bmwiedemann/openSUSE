@@ -1,0 +1,21 @@
+
+part of github.com/mariadb-corporation/mariadb-connector-c/commit/02ceb06
+
+From 02ceb060960ea502e1715cc30ee29b98af6e1cdf Mon Sep 17 00:00:00 2001
+From: Georg Richter <georg@mariadb.com>
+Date: Wed, 23 Apr 2025 21:30:03 +0200
+Subject: [PATCH] CONC-756: Update zlib to 1.3.1
+
+diff --git a/libmariadb/ma_alloc.c b/libmariadb/ma_alloc.c
+index d6db279e7..718d92a0f 100644
+--- a/libmariadb/ma_alloc.c
++++ b/libmariadb/ma_alloc.c
+@@ -172,6 +172,8 @@ void *ma_multi_malloc(myf myFlags, ...)
+   size_t tot_length,length;
+ 
+   va_start(args,myFlags);
++  /* keep gcc15 happy */
++  (void)myFlags;
+   tot_length=0;
+   while ((ptr=va_arg(args, char **)))
+   {
