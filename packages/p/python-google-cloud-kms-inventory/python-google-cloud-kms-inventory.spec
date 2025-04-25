@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-kms-inventory
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms-inventory
-Version:        0.2.6
+Version:        0.2.14
 Release:        0
 Summary:        Google Cloud Kms Inventory API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-cloud-kms-inventory
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-kms-inventory/google-cloud-kms-inventory-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud-kms_inventory/google_cloud_kms_inventory-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -33,14 +33,14 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module google-api-core >= 1.34.1}
 BuildRequires:  %{python_module google-cloud-kms >= 2.3.0}
 BuildRequires:  %{python_module proto-plus >= 1.22.3}
-BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module protobuf >= 3.20.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.1
 Requires:       python-google-auth
 Requires:       python-google-cloud-kms >= 2.3.0
 Requires:       python-proto-plus >= 1.22.3
-Requires:       python-protobuf >= 3.19.5
+Requires:       python-protobuf >= 3.20.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -48,7 +48,7 @@ BuildArch:      noarch
 Google Cloud Kms Inventory API client library
 
 %prep
-%autosetup -p1 -n google-cloud-kms-inventory-%{version}
+%autosetup -p1 -n google_cloud_kms_inventory-%{version}
 
 %build
 %pyproject_wheel

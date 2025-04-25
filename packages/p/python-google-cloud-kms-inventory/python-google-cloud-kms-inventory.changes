@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:33:01 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.14
+  * [Many APIs] Allow Protobuf 6.x
+- from version 0.2.13
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 0.2.12
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 0.2.11
+  * Disable universe-domain validation (#13243)
+- from version 0.2.10
+  * Add support for Python 3.13 (#13207)
+- from version 0.2.9
+  * **deps:** allow google-cloud-kms 3.x
+- from version 0.2.8
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 0.2.7
+  * Allow Protobuf 5.x (#12867)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sat Apr 20 15:34:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.2.6:
