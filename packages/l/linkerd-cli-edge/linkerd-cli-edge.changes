@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Apr 24 19:36:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.4:
+  * build(deps): bump libc from 0.2.171 to 0.2.172 (#13944)
+  * proxy: v2.294.0 (#13958)
+  * build(deps): bump proc-macro2 from 1.0.94 to 1.0.95 (#13945)
+  * build(deps): bump rand from 0.9.0 to 0.9.1 (#13949)
+  * build(deps): bump tj-actions/changed-files (#13950)
+  * build(deps-dev): bump webpack from 5.99.5 to 5.99.6 in /web/app
+    (#13952)
+  * build(deps): bump signal-hook-registry from 1.4.2 to 1.4.5
+    (#13954)
+  * build(deps): bump the clap group with 2 updates (#13955)
+  * build(deps): bump http-proxy-middleware from 2.0.7 to 2.0.9 in
+    /web/app (#13957)
+  * build(deps): bump softprops/action-gh-release from 2.2.1 to
+    2.2.2 (#13956)
+
+-------------------------------------------------------------------
 Wed Apr 16 17:50:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.3:
