@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Apr 24 11:41:01 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250424:
+  * Add lp.dev to public_suffix_list.dat (#2391)
+  * fix: autopin dependencies (#2430)
+  * Run go mod tidy
+  * Bump golang.org/x/net from 0.33.0 to 0.38.0 in /tools (#2438)
+  * Add mmv.kr / vki.kr (#2442)
+  * dev.project-study.com (#2444)
+  * add `preview.site` (#2445)
+  * Add `luyani.app` (#2440)
+  * Add objectstorage.ch (#2439)
+  * Add val.run (#2432)
+  * Update public_suffix_list.dat (#2437)
+  * Add seg.ar to public_suffix_list.dat (#2433)
+  * Add convex.app and convex.site (#2436)
+  * Add e2b.app (#2431)
+  * Add *.devinapps.com (#2435)
+  * Add rules for Amazon Cognito (#2366)
+  * add `figma.site` (#2429)
+
+-------------------------------------------------------------------
 Tue Apr 08 07:29:02 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20250407:
