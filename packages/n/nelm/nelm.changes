@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Apr 25 18:24:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.1:
+  * chore: bump alpha
+  * chore: release 1.2.1
+  * fix: `release plan` shows insignificant changes for no reason
+  * chore: bump channels
+
+-------------------------------------------------------------------
+Thu Apr 24 15:21:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Features
+    - enable colors by default in some popular CI systems (d3aa7b8)
+  * Bug Fixes
+    - Buildah reexec sets wrong HOME dir (4eb656e)
+    - default kubeconfig not used on empty string kubeconfigpath
+      action option (ffc2132)
+  * Changelog
+    - chore: release 1.2.0
+    - feat: enable colors by default in some popular CI systems
+    - refactor: move log color setup outside of actions
+    - refactor: get rid of EnvSettings and Configuration structs of
+      Helm
+    - chore: update 3p-helm and common-go modules
+    - fix: Buildah reexec sets wrong HOME dir
+    - fix: default kubeconfig not used on empty string
+      kubeconfigpath action option
+    - docs: Add production readiness note
+
+-------------------------------------------------------------------
 Wed Apr 16 15:37:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.5:
