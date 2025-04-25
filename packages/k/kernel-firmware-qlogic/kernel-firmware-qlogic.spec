@@ -26,12 +26,11 @@ Name:           kernel-firmware-qlogic
 Version:        20250206
 Release:        0
 Summary:        Kernel firmware files for QLogic network drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later AND GPL-2.0-only
+License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -43,49 +42,33 @@ Source15:       topicprovs
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Provides:       qlogic-firmware = %{version}
 Obsoletes:      qlogic-firmware < %{version}
-Supplements:    modalias(pci:v00001657d00000013sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001657d00000014sv*sd*bc0Csc04i00*)
-Supplements:    modalias(pci:v00001657d00000017sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001657d00000021sv*sd*bc0Csc04i00*)
-Supplements:    modalias(pci:v00001657d00000022sv*sd*bc0Csc04i00*)
-Supplements:    modalias(pci:v00001657d00000023sv*sd*bc0Csc04i00*)
-Supplements:    modalias(pci:v00001657d00000014sv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v00001657d00000022sv*sd*bc02sc00i*)
 Supplements:    modalias(fs-ipathfs)
-Supplements:    modalias(pci:v00001077d00007220sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00007322sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001FC1d00000010sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001634sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001636sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001644sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001654sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001656sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001664sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00001666sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00008070sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00008090sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d0000165Csv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00008080sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d0000165Esv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d00008084sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001016sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001020sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001080sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001216sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001240sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00001280sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001634sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001636sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001644sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001654sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001656sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d0000165Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d0000165Esv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001664sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00001666sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002031sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002061sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002071sv*sd*bc*sc*i*)
@@ -107,19 +90,34 @@ Supplements:    modalias(pci:v00001077d00005422sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00005432sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00006312sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00006322sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00007220sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00007322sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008001sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008021sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008031sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008044sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00008070sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00008080sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00008084sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00008090sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008432sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d0000F001sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001657d00000013sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001657d00000014sv*sd*bc02sc00i*)
+Supplements:    modalias(pci:v00001657d00000014sv*sd*bc0Csc04i00*)
+Supplements:    modalias(pci:v00001657d00000017sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001657d00000021sv*sd*bc0Csc04i00*)
+Supplements:    modalias(pci:v00001657d00000022sv*sd*bc02sc00i*)
+Supplements:    modalias(pci:v00001657d00000022sv*sd*bc0Csc04i00*)
+Supplements:    modalias(pci:v00001657d00000023sv*sd*bc0Csc04i00*)
+Supplements:    modalias(pci:v00001FC1d00000010sv*sd*bc*sc*i*)
 
 %description
 This package contains kernel firmware files for QLogic network drivers.
 
-
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh qlogic < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
