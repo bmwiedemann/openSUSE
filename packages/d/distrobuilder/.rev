@@ -60,4 +60,12 @@
   * systemd: Apply overrides even when nesting is enabled (forwarded request 1266989 from rrahl0)</comment>
     <requestid>1266990</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>538d75e2e7007a558c258032283b33db</srcmd5>
+    <version>3.2</version>
+    <time>1745612339</time>
+    <user>anag_factory</user>
+    <comment>- add fix-CVE-2025-22872.patch, for fixing bsc#1241834 (forwarded request 1272489 from rrahl0)</comment>
+    <requestid>1272490</requestid>
+  </revision>
 </revisionlist>

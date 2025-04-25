@@ -25,6 +25,7 @@ URL:            https://github.com/lxc/distrobuilder
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Patch0:         pie.patch
+Patch1:         fix-CVE-2025-22872.patch
 BuildRequires:  debootstrap
 BuildRequires:  git-core
 BuildRequires:  gpg2

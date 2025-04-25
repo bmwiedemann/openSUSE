@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:09:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- add fix-CVE-2025-22872.patch, for fixing bsc#1241834
+
+-------------------------------------------------------------------
 Fri Apr  4 01:55:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.2:
