@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-firestore
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,27 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-firestore
-Version:        2.13.1
+Version:        2.20.2
 Release:        0
 Summary:        Google Cloud Firestore API client library
 License:        Apache-2.0
 URL:            https://github.com/googleapis/python-firestore
-Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-firestore/google-cloud-firestore-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/g/google_cloud_firestore/google_cloud_firestore-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module google-api-core >= 1.34.0}
 BuildRequires:  %{python_module google-cloud-core >= 1.4.1}
 BuildRequires:  %{python_module proto-plus >= 1.22.0}
-BuildRequires:  %{python_module protobuf >= 3.19.5}
+BuildRequires:  %{python_module protobuf >= 3.20.2}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-google-api-core >= 1.34.0
 Requires:       python-google-cloud-core >= 1.4.1
 Requires:       python-proto-plus >= 1.22.0
-Requires:       python-protobuf >= 3.19.5
+Requires:       python-protobuf >= 3.20.2
 Suggests:       python-proto-plus >= 1.22.2
 BuildArch:      noarch
 %python_subpackages
@@ -47,7 +47,7 @@ BuildArch:      noarch
 Google Cloud Firestore API client library
 
 %prep
-%autosetup -p1 -n google-cloud-firestore-%{version}
+%autosetup -p1 -n google_cloud_firestore-%{version}
 
 %build
 %pyproject_wheel
@@ -70,7 +70,6 @@ Google Cloud Firestore API client library
 %python_alternative %{_bindir}/fixup_firestore_admin_v1_keywords.py
 %python_alternative %{_bindir}/fixup_firestore_v1_keywords.py
 %{python_sitelib}/google/cloud/firestore*
-%{python_sitelib}/google_cloud_firestore-%{version}-*.pth
 %{python_sitelib}/google_cloud_firestore-%{version}.dist-info
 
 %changelog

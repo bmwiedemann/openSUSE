@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Thu Apr 24 23:43:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.20.2
+  * Allow Protobuf 6.x (#1028)
+  * Remove setup.cfg configuration for creating universal wheels (#1030)
+- from version 2.20.1
+  * Bump default deadline on CreateDatabase and RestoreDatabase to 2 minutes (#975)
+  * Client-side path validation for batch.update (#1021)
+  * Watch thread deadlock on exit (#1014)
+- from version 2.20.0
+  * Support not_equal queries for none and nan (#988)
+  * Clean up resources on Watch close (#1004)
+  * Populate transaction attributes after commit (#977)
+- from version 2.19.0
+  * Add Database.SourceInfo and Database.source_info (information about
+    database provenance, specifically for restored databases) (#963)
+  * Query profiling part 1: synchronous (#938)
+  * Query profiling part 2: asynchronous (#961)
+- from version 2.18.0
+  * Support returning computed distance and set distance thresholds
+    on VectorQueries (#960)
+  * Remove custom retry loop (#948)
+- from version 2.17.2
+  * Allow protobuf 5.x; require protobuf >= 3.20.2 (#950)
+  * Support async vector search from a collection (#949)
+- from version 2.17.1
+  * Allow protobuf 5.x (#919)
+- from version 2.17.0
+  * Support async Vector Search (#901)
+  * Use generator for stream results (#926)
+- from version 2.16.1
+  * __repr__ method in vector.py (#903)
+  * Allow 14 week backup retention for Firestore daily backups (#899)
+- from version 2.16.0
+  * A new message `Backup` is added
+  * A new message `BackupSchedule` is added
+  * A new message `CreateBackupScheduleRequest` is added
+  * A new message `DailyRecurrence` is added
+  * A new message `DeleteBackupRequest` is added
+  * A new message `DeleteBackupScheduleRequest` is added
+  * A new message `GetBackupRequest` is added
+  * A new message `GetBackupScheduleRequest` is added
+  * A new message `ListBackupSchedulesRequest` is added
+  * A new message `ListBackupSchedulesResponse` is added
+  * A new message `ListBackupsRequest` is added
+  * A new message `ListBackupsResponse` is added
+  * A new message `RestoreDatabaseMetadata` is added
+  * A new message `RestoreDatabaseRequest` is added
+  * A new message `UpdateBackupScheduleRequest` is added
+  * A new message `WeeklyRecurrence` is added
+  * A new method `CreateBackupSchedule` is added to service `FirestoreAdmin`
+  * A new method `DeleteBackup` is added to service `FirestoreAdmin`
+  * A new method `DeleteBackupSchedule` is added to service `FirestoreAdmin`
+  * A new method `GetBackup` is added to service `FirestoreAdmin`
+  * A new method `GetBackupSchedule` is added to service `FirestoreAdmin`
+  * A new method `ListBackups` is added to service `FirestoreAdmin`
+  * A new method `ListBackupSchedules` is added to service `FirestoreAdmin`
+  * A new method `RestoreDatabase` is added to service `FirestoreAdmin`
+  * A new method `UpdateBackupSchedule` is added to service `FirestoreAdmin`
+  * A new resource_definition `firestore.googleapis.com/Backup` is added
+  * A new resource_definition `firestore.googleapis.com/BackupSchedule` is added
+  * Add ExplainMetrics field to RunAggregationQueryResponse
+  * Add ExplainMetrics field to RunQueryResponse
+  * Add ExplainOptions field to RunAggregationQueryRequest
+  * Add ExplainOptions field to RunQueryRequest
+  * Add new types ExplainOptions, ExplainMetrics, PlanSummary, ExecutionStats
+  * Add Vector Index API (#894)
+  * Add VectorSearch API
+  * Support Vector Search (#896)
+  * Add google-auth as a direct dependency (#875)
+  * Correct BackupSchedule recurrence docs that mentioned
+    specific time of day (#898)
+  * Fix docs structure for Firestore (#868)
+- from version 2.15.0
+  * Add DeleteDatabase API and delete protection
+  * Find emulator project id from environment variable
+  * Fix formatting due to unclosed backtick
+  * Improve the documentation on Document.fields (#831)
+  * Update Database API description
+- from version 2.14.0
+  * Add support for Python 3.12 (#795)
+  * Expose Firestore namespace ID fields in import/export APIs to stable
+  * Expose Firestore PITR fields in Database to stable
+  * Expose Firestore snapshot_time field in export API to stable
+  * Introduce compatibility with native namespace packages (#792)
+  * SERVER_TIMESTAMP should survive deep copies (#820)
+  * Remove used of deprecated `datetime.datetime.utcnow()`
+    and `datetime.utcfromtimestamp()`
+  * Use `retry_async` instead of `retry` in async client
+  * Assorted typo fixes and whitespace updates
+  * Deprecate google.cloud.firestore_v1.rate_limiter.utcnow
+- Adjust upstream source name in spec file
+- Drop google_cloud_firestore-%{version}-*.pth from %files section
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Dec 13 12:37:56 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Initial version 2.13.1 (jsc#PED-6697)
