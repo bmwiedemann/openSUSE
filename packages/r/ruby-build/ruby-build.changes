@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Apr 24 21:56:15 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250424.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250424
+  * Honor `$JAVA_HOME` in `require_java` by @ntkme in #2523
+  * Update truffleruby-dev to use newer ubuntu download by @rwstauner in #2524
+  * Update jruby-dev to use newer ubuntu download by @eregon in #2525
+
+-------------------------------------------------------------------
 Sat Apr 19 19:46:50 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250418.
