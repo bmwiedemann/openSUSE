@@ -1,0 +1,61 @@
+From bf7b04b1665167e6bac527428c874150c6366df2 Mon Sep 17 00:00:00 2001
+From: Lucas Mulling <lucas.mulling@suse.com>
+Date: Thu, 24 Apr 2025 15:48:32 -0300
+Subject: [PATCH] misc: Fix OpenSSH banner parsing
+
+Signed-off-by: Lucas Mulling <lucas.mulling@suse.com>
+---
+ src/misc.c                     | 6 ++++--
+ tests/unittests/torture_misc.c | 5 +++++
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/src/misc.c b/src/misc.c
+index 95512f0d..c18aac93 100644
+--- a/src/misc.c
++++ b/src/misc.c
+@@ -1426,6 +1426,7 @@ int ssh_analyze_banner(ssh_session session, int server)
+         char *tmp = NULL;
+         unsigned long int major = 0UL;
+         unsigned long int minor = 0UL;
++        int off = 0;
+ 
+         /*
+          * The banner is typical:
+@@ -1445,8 +1446,9 @@ int ssh_analyze_banner(ssh_session session, int server)
+             }
+ 
+             errno = 0;
+-            minor = strtoul(openssh + 10, &tmp, 10);
+-            if ((tmp == (openssh + 10)) ||
++            off = major >= 10 ? 11: 10;
++            minor = strtoul(openssh + off, &tmp, 10);
++            if ((tmp == (openssh + off)) ||
+                 ((errno == ERANGE) && (major == ULONG_MAX)) ||
+                 ((errno != 0) && (major == 0)) ||
+                 (minor > 100)) {
+diff --git a/tests/unittests/torture_misc.c b/tests/unittests/torture_misc.c
+index bd6bf96e..b2320a94 100644
+--- a/tests/unittests/torture_misc.c
++++ b/tests/unittests/torture_misc.c
+@@ -448,6 +448,7 @@ static void torture_ssh_analyze_banner(void **state) {
+     assert_server_banner_accepted("SSH-2.0-OpenSSH");
+     assert_int_equal(0, session->openssh);
+ 
++
+     /* OpenSSH banners: big enough to extract major and minor versions */
+     assert_client_banner_accepted("SSH-2.0-OpenSSH_5.9p1");
+     assert_int_equal(SSH_VERSION_INT(5, 9, 0), session->openssh);
+@@ -487,6 +488,10 @@ static void torture_ssh_analyze_banner(void **state) {
+     assert_server_banner_accepted("SSH-2.0-OpenSSH-keyscan");
+     assert_int_equal(0, session->openssh);
+ 
++    /* OpenSSH banners: Double digit in major version */
++    assert_server_banner_accepted("SSH-2.0-OpenSSH_10.0p1");
++    assert_int_equal(SSH_VERSION_INT(10, 0, 0), session->openssh);
++
+     ssh_free(session);
+ }
+ 
+-- 
+2.49.0
+

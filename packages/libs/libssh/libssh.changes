@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 23 19:59:55 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix build and tests with OpenSSH >= 10.0
+  * Use %make_build instead of naked make
+  * Add patches:
+    - libssh-CmakeLists-Fix-multiple-digit-major-version-for-OpenSSH.patch
+    - libssh-misc-Fix-OpenSSH-banner-parsing.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 19:08:10 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Move global config dir to /usr/etc/libssh (bsc#1222716)

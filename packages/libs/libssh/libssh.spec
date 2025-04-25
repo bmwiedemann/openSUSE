@@ -46,6 +46,10 @@ Source4:        libssh_server.config
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM: libssh tries to read config from wrong crypto-policies location (bsc#1222716)
 Patch0:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
+# PATCH-FIX-UPSTREAM: fix build with OpenSSH >= 10.0
+Patch1:         libssh-CmakeLists-Fix-multiple-digit-major-version-for-OpenSSH.patch
+# PATCH-FIX-UPSTREAM: fix OpenSSH banner parsing
+Patch2:         libssh-misc-Fix-OpenSSH-banner-parsing.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
@@ -124,7 +128,7 @@ Development headers for the SSH library.
     -DGLOBAL_CLIENT_CONFIG="%{_sysconfdir}/libssh/libssh_client.config" \
     -DGLOBAL_BIND_CONFIG="%{_sysconfdir}/libssh/libssh_server.config"
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %if !%{with test}

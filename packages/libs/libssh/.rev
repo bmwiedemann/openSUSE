@@ -808,4 +808,12 @@ ProxyCommand parsing in ssh configuration files:
     <comment></comment>
     <requestid>1248929</requestid>
   </revision>
+  <revision rev="77" vrev="4">
+    <srcmd5>721f72a3f3d750ad5d393d6e6e54a136</srcmd5>
+    <version>0.11.1</version>
+    <time>1745612297</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272585</requestid>
+  </revision>
 </revisionlist>
