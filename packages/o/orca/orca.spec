@@ -16,6 +16,8 @@
 #
 
 
+%global __requires_exclude typelib\\(Wnck\\)
+
 Name:           orca
 Version:        48.0
 Release:        0
@@ -51,6 +53,7 @@ Requires:       python3-gobject-Gdk
 Requires:       python3-louis
 Requires:       python3-speechd
 Recommends:     brltty >= 3.9
+Recommends:     typelib(Wnck) = 3.0
 BuildArch:      noarch
 
 %description

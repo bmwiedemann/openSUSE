@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:23:35 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Downgrade Wnck to Recommends. It is an optional dependency and
+  is not used under Wayland (bsc#1241516).
+
+-------------------------------------------------------------------
 Mon Mar 17 09:39:39 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:
