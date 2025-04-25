@@ -1,4 +1,1065 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:14:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.0:
+  * release-1.14.0 (#12867)
+  * fix: compute vpols autogen in CLI provider (#12871) (#12874)
+  * refactor: improve new policy types api and test coverage
+    (#12864) (#12872)
+  * fix: remove cached autogen pols (#12852) (#12865)
+  * fix: regex to parse kinds correctly (#11763) (#12863)
+  * refactor: ivpols engine (#12855) (#12862)
+  * fix: missing docs for new policy types (#12856) (#12858)
+  * refactor: cel policies autogen (#12832) (#12854)
+  * feat: add cel expression support to attestors (#12835) (#12853)
+  * chore(deps): bump golang.org/x/net in /hack/controller-gen
+    (#12846) (#12851)
+  * chore: rename cel helper payload() to extractPayload() (#12844)
+    (#12848)
+  * rename fields (#12817) (#12845)
+  * refactor: converge vpol and ivpol status structs (#12823)
+    (#12831)
+  * chore: rename imagedata.Get to image.GetMetadata (#12826)
+    (#12830)
+  * feat: relax variable validation checks for generate clone type
+    (#12792) (#12829)
+  * rename globalcontext.Get to globalContext.Get (#12825) (#12828)
+  * refactor: autogen cel package (#12811) (#12827)
+  * Fix global context chainsaw test  (#12801) (#12824)
+  * add and use template for imageverification policies (#12803)
+    (#12821)
+  * chore: rename image verify to image validating (#12812)
+    (#12822)
+  * fix(cleanup): respect resourceFilters from kyverno config
+    (#12808) (#12814)
+  * fix: restrict validationActions in IVPOLs (#12810) (#12813)
+  * use template instead of random sleep intervals (#12804)
+    (#12809)
+  * chore: add local CLI tests for the new policy types in the
+    workflow (… (#12758) (#12807)
+  * fix: skip VAP generation in case autogen is enabled (#12770)
+    (#12802)
+  * feat: Relax immutability requirements on match statements for
+    generate rules (#12784) (#12800)
+  * refactor: cel autogen package (#12789) (#12798)
+  * fix: restrict failurePolicy to either Fail or Ignore (#12793)
+    (#12796)
+  * fix: add default value for actions in VPOLs (#12686) (#12794)
+  * resource.Post API (#12732) (#12791)
+  * version update kubectl (#12607) (#12790)
+  * feat: improve ivpol autogen API (#12781) (#12783)
+  * chore: add chainsaw tests for exceptions in the reports
+    (#12751) (#12769)
+  * fix: CanAutoGen logic (#12779) (#12780)
+  * chore: add local CLI tests for the new policy types in the
+    workflow (#12755) (#12773)
+  * chore: bump controller gen (#12765) (#12778)
+  * chore: fix ivpol chainsaw tests for reports (#12653) (#12777)
+  * Apply PolicyException on Background Scanning for ivpol and vpol
+    (#12750) (#12772)
+  * fix: skip webhook registration if vap is generated from
+    validate.cel subrule (#12767) (#12771)
+  * refactor: cel libs names, return types and cleanup TODOs
+    (#12757) (#12774)
+  *  Add HorizontalPodAutoscaler to admission-controller (#10586)
+     (#12768)
+  * feat(helm): Add `dnsconfig` value to deployments (#12608)
+    (#12737)
+  * fix: allow policy creation if GVK is not found (#12722)
+    (#12763)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#12743) (#12760)
+  * Fix Namespace Selector Error Propagation and Scope Policy for
+    Accurate Rule Evaluation (#12744) (#12756)
+  * feat: add --markdownLinks to cli docs command (#12734) (#12754)
+  * [fix] The source property is populated for VP, VAP and
+    ImageValidatingPolicy (#12727) (#12753)
+  * fix: job returns success if configmap is not found (#12621)
+    (#12736)
+  * fix: evaluate celexceptions with ivpol in CLI (#12728) (#12735)
+  * fix VPOL and IVPOL for Kyverno test command (#12730) (#12733)
+  * chainsaw test for http (#12721) (#12731)
+  * fix-fail-only-flag (#12600) (#12725)
+  * chore: add --noDate to cli docs command (#12712) (#12724)
+  * feat(cli): return an error if tests are required (#12395)
+    (#12723)
+  * fix: add result count for VPs in the CLI (#12711) (#12718)
+  * fix: Update Go version to fix CVE-2025-22871 vulnerability
+    (#12714) (#12719)
+  * align naming of ImageValidatingPolicy related code (#12703)
+    (#12716)
+  * fix: forbid json and k8s resources at the same time in the CLI
+    (#12699) (#12700)
+  * chore: add chainsaw test for policies with the same name
+    (#12652) (#12682)
+  * feat: add cli test command support for ivpols (#12660) (#12679)
+  * fix: add missing nil check in pss validation (#12636) (#12671)
+  * chore: add policy-ready step template for validating-policies
+    (#12546) (#12669)
+  * chore: add ivpol report labels (#12650) (#12654)
+  * chore: disable global context test (#12648) (#12649)
+  * fix: enable imagedata for ivpol (#12568) (#12613)
+  * fix: rename autogen configuration (#12605) (#12612)
+  * release 1.14.0-rc.1 (#12610)
+  * fix: pod controllers autogen api (#12603) (#12604)
+  * Add Webhook validation for IVPOL (#12577) (#12588)
+  * feat: improve vpol api for autogen (#12582) (#12585)
+  * chore: add tests for background reporting (#12579) (#12581)
+  * fix: use correct resource in cli processor (#12575) (#12578)
+  * chore: add Chainsaw test for ivpol admission reporting (#12576)
+    (#12580)
+  * fix: CLI policies processing order (VPOL) (#12567) (#12571)
+  * fix: enable k8s resource lookup for ivpol (#12569) (#12570)
+  * fix: CLI policies processing order (#12561) (#12565)
+  * Chainsaw tests: globalcontextentry (#12533) (#12564)
+  * feat: bump kube libs to 1.32 (cherry-pick #12555) (#12559)
+  * chore: chainsaw tests for ivpol autogen (#12548) (#12560)
+  * chore: update tooling deps (#12553) (#12554)
+  * chore: update supported k8s versions (#12310) (#12551)
+  * chore: cherry-pick #12515 (#12550)
+  * chore: remove unused field in vap processor (#12545) (#12547)
+  * Minor fixes in feature flags reademe file (#12503) (#12541)
+  * chore: use kube 1.32 by default in makefile (#12334) (#12540)
+  * chore: vpol block ephemeral containers (#12536) (#12537)
+  * chainsaw-test imagedata arch (#12500) (#12535)
+  * feat: support json for ivpol via CLI apply (#12511) (#12534)
+  * add chainsaw test for parse-sa (#12502) (#12532)
+  * handle runtime error (#12487) (#12531)
+  * refactor: vpol generation api (#12482) (#12519)
+  * fix: image verify exception flake (#12516) (#12518)
+  * chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+    4.5.2 (#12496) (#12509)
+  * feat: release 1.14.0-alpha.1 (#12498)
+  * feat: rename image verification policy to image validating
+    policy (#12439)
+  * feat: support ivpol via CLI apply (#12492)
+  * feat: basic exception support in ivpols (#12478)
+  * chore(deps): bump the otel group across 1 directory with 10
+    updates (#12490)
+  * chore(deps): bump fossas/fossa-action from 1.5.0 to 1.6.0
+    (#12489)
+  * chore(deps): bump actions/download-artifact (#12464)
+  * fix: vpol validating webhook configuration (#12481)
+  * chore(deps): bump actions/upload-artifact from 4.6.1 to 4.6.2
+    (#12460)
+  * chore(deps): bump actions/download-artifact from 4.2.0 to 4.2.1
+    (#12459)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#12470)
+  * feat: support json in CLI test (#12454)
+  * Add ValidatingPolicy Validation Webhook (#12479)
+  * chore: skip webhook registration if vap is generated (#12474)
+  * feat: adopt psa to v1.32.3 (#12457)
+  * chore: add some cel lib unit tests (#12458)
+  * chore(deps): bump actions/upload-artifact (#12463)
+  * chore(deps): bump github/codeql-action from 3.28.11 to 3.28.12
+    (#12462)
+  * chore: add api-group-resources to dependabot config (#12451)
+  * chore: enable ivpol chainsaw tests in CI (#12452)
+  * chore: add some cel unit tests (#12453)
+  * chore: bump a couple of deps (#12450)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#12445)
+  * feat: add imagedata cel lib (#12442)
+  * chore: move imageverify cel lib (#12449)
+  * chore(deps): bump actions/download-artifact (#12444)
+  * chore(deps): bump actions/download-artifact from 4.1.9 to 4.2.0
+    (#12443)
+  * chore: bump kube deps to 1.32.3 (#12437)
+  * fix: engine response for ivpol background scanning (#12436)
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.1 to
+    6.5.2 (#12430)
+  * fix: set correct policy for ivpols (#12434)
+  * fix: check if response includes a policy for ivpol (#12433)
+  * Implement Reporting and Background scan for
+    ImageVerificationPolicy (#12432)
+  * fix: autogen status for ivpol (#12431)
+  * feat: simplify resource cel lib (#12427)
+  * feat: simplify resource cel lib (#12426)
+  * feat: add globalcontext CEL lib (#12425)
+  * chainsaw test to check messageExpression interpolation (#12415)
+  * feat: enable mutating webhook for ivpol (#12423)
+  * chore: make function comment match function name (#12417)
+  * chore(deps): bump docker/login-action from 3.3.0 to 3.4.0
+    (#12422)
+  * feat: reconcile `ivpol.status` (#12392)
+  * feat: add cel user lib (#12414)
+  * Update ADOPTERS.md (#12411)
+  * feat: add user info in cel engine (#12410)
+  * feat: webhook integration image verification policies (#12403)
+  * feat: support vps in cli test command (#12384)
+  * chore(deps): bump aquasecurity/trivy-action from 0.29.0 to
+    0.30.0 (#12406)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/azure (#12401)
+  * solves the cronjob autogen nested path issue (#12383)
+  * chore(deps): bump golangci/golangci-lint-action from 6.5.0 to
+    6.5.1 (#12402)
+  * fix: image parse func and add chainsaw tests (#12396)
+  * Fix: data access in audit annotations (#12394)
+  * fix: add missing context type and http type in ivpols (#12393)
+  * feat: register webhook for ivpol (#12391)
+  * Fix: data access in message expressions (#12390)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+    (#12388)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/aws (#12389)
+  * feat: mock list resources in context (#12380)
+  * Minor fixes in Contributing and Development docs (#12377)
+  * fix: providing the http provider in the compiler (#12379)
+  * feat: make image ref parsing a static function (#12374)
+  * chore: improve error handling (#12376)
+  * chore(deps): bump fluxcd/flux2 from 2.4.0 to 2.5.1 (#12359)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.9.0 to
+    1.9.1 (#12370)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12371)
+  * feat: webhook handlers for image verification (#12318)
+  * chore(deps): bump goreleaser/goreleaser-action from 6.1.0 to
+    6.2.1 (#12347)
+  * chore(deps): bump actions/setup-python from 5.3.0 to 5.4.0
+    (#12362)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#12364)
+  * fix: use pointer in context config map getter (#12365)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#12363)
+  * feat: support mock in CLI for VPs (#12344)
+  * chore(deps): bump sonarsource/sonarcloud-github-action (#12358)
+  * chore(deps): bump actions/download-artifact from 4.1.8 to 4.1.9
+    (#12360)
+  * chore(deps): bump actions/download-artifact (#12361)
+  * chore(deps): bump gomodules.xyz/jsonpatch/v2 from 2.4.0 to
+    2.5.0 (#12354)
+  * fix: Update copyrights to 2025 (#12356)
+  * chore(deps): bump slsa-framework/slsa-github-generator (#12349)
+  * chore(deps): bump azure/setup-helm in
+    /.github/actions/run-tests (#12351)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.20.2 to
+    0.20.3 (#12355)
+  * chore(deps): bump actions/upload-artifact from 4.5.0 to 4.6.1
+    (#12348)
+  * chore(deps): bump actions/upload-artifact (#12350)
+  * chore(deps): bump azure/setup-helm from 4.2.0 to 4.3.0 (#12346)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.8.15 to
+    1.9.0 (#12331)
+  * fix: nits in cel context lib (#12333)
+  * Add CEL context.Lib to the imageverification compiler (#12337)
+  * chore(deps): bump sigstore/cosign-installer (#12343)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#12342)
+  * chore(deps): bump github/codeql-action from 3.27.9 to 3.28.11
+    (#12341)
+  * chore(deps): bump sigstore/cosign-installer from 3.7.0 to 3.8.1
+    (#12340)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#12339)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+    (#12332)
+  * chore(deps): bump golangci/golangci-lint-action from 6.1.1 to
+    6.5.0 (#12322)
+  * chore: add dryrun as label (#11962)
+  * Add CEL HTTP Lib to the imageverification compiler (#12335)
+  * chore(deps): bump codecov/codecov-action from 5.1.1 to 5.4.0
+    (#12321)
+  * chore(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.1
+    (#12327)
+  * chore: remove unused code (#12325)
+  * chore(deps): bump fossas/fossa-action from 1.4.0 to 1.5.0
+    (#12328)
+  * chore(deps): bump golang.org/x/crypto from 0.35.0 to 0.36.0
+    (#12330)
+  * feat: skip applying a VP which is converted to VAP (#12312)
+  * feat: add parse image reference function (#12317)
+  * feat: support rest mapper in cli with cluster enabled (#12319)
+  * chore(deps): bump helm/kind-action in
+    /.github/actions/run-tests (#12324)
+  * chore(deps): bump helm/chart-testing-action from 2.6.1 to 2.7.0
+    (#12323)
+  * chore(deps): bump helm/kind-action from 1.11.0 to 1.12.0
+    (#12320)
+  * chore: ignore kyverno.tar file (#12314)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12307)
+  * chore: add policy api unit tests (#12315)
+  * Cel HTTP Lib (#12241)
+  * Skip reporting for vpol when vap generation is enabled (#12311)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/azure (#12306)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/aws (#12305)
+  * feat(vp): implement gctx in context library (#12055)
+  * feat: support json payload via CLI apply command (#12296)
+  * feat: support GVK to GVR mapping in the CLI (#12301)
+  * feat: add api-group-resources codegen (#12303)
+  * fix: use object key in json image verification (#12298)
+  * docs: add popular use cases section to README (#12297)
+  * chore: remove dead code (#12302)
+  * feat: support CELPolicyException in the report-controller
+    (#12287)
+  * chore(deps): bump google.golang.org/grpc from 1.70.0 to 1.71.0
+    (#12295)
+  * chore(deps): bump github.com/prometheus/client_golang (#12294)
+  * feat: autogenerate image verification policies for pod
+    controllers (#12290)
+  * feat: add cel evaluator for json payload (#12288)
+  * chore: add policy API unit tests (#12289)
+  * chore(deps): bump github.com/opencontainers/image-spec (#12285)
+  * fix: autogen refactor (#12286)
+  * chore: add unit tests (#12281)
+  * feat: image verify performance fix and tests (#12282)
+  * feat: add evaluation config to image verification policies
+    (#12279)
+  * Update post-delete-configmap.yaml (#12240)
+  * fix(gctx): add event handler before informer start (#12263)
+  * chore: add VP/CEL unit tests (#12271)
+  * Indicate in report result the origin, admission, or background
+    (#12056)
+  * chore: remove mutatingpolicies (#12261)
+  * feat: add new field to control VAP generation per policy
+    (#12242)
+  * fix chainsaw test (#12272)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.13.2 to
+    5.14.0 (#12269)
+  * feat(test): image verification on any payload (#12266)
+  * changes if condition to check for RegExp field (#12237)
+  * feat: context function to request resources from api server
+    (#12181)
+  * feat: generate VAPs given celexceptions (#12255)
+  * chore: add VP/CEL unit tests (#12264)
+  * feat: add evaluation mode to api (#12262)
+  * chore(deps): bump github.com/go-jose/go-jose/v3 from 3.0.3 to
+    3.0.4 (#12257)
+  * fix(gctx): remove unnecessary json Marshal/Unmarshal operations
+    to reduce memory usage (#12201)
+  * fix(gctx): fix gctx projection cache (#12226)
+  * feat: add evaluator for image verification policies (#12251)
+  * feat: improve validating policy api (#12243)
+  * feat: create patchers and apply mutations (#12253)
+  * chore: bump kube deps to 1.32.2 (#12252)
+  * feat: add cel library for image verification (#12233)
+  * chore: add VP api unit tests (#12248)
+  * Add aggegration toggle for clusterRoles (#12234)
+  * feat: introduce generic exception interface (#12244)
+  * feat: stop reusing
+    admissionregistrationv1.ValidatingAdmissionPolicySpec (#12246)
+  * chore: add codecov config and exclude api generated files
+    (#12245)
+  * feat: generate VAPs from VPs (#12222)
+  * chore(deps): bump golang.org/x/crypto from 0.34.0 to 0.35.0
+    (#12239)
+  * Adds kyverno_info metric (#12128)
+  * chore: add cel unit tests (#12232)
+  * chore: add CEL unit tests (#12230)
+  * chore(deps): bump golang.org/x/crypto from 0.33.0 to 0.34.0
+    (#12228)
+  * chore(refactor): refactor image verification packages (#12220)
+  * feat: add mpol.spec.admission and mpol.spec.background (#12218)
+  * chore(deps): bump github.com/notaryproject/notation-go (#12214)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12210)
+  * fix: add unit tests for cosign keyed image verification
+    (#12217)
+  * chore(deps): bump github.com/prometheus/client_golang (#12215)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+    (#12216)
+  * feat: cosign verifier for new image verifier crd (#12196)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/aws (#12209)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/azure (#12208)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.8.14 to
+    1.8.15 (#12211)
+  * Update _pdb.tpl (#11970)
+  * chore: add resource manifests in autogen tests (#12205)
+  * Validating policy audit annotations (#12115)
+  * fix: modify celexception flake test (#12192)
+  * feat: support celexceptions in the CLI `apply` command (#12182)
+  * chore: bump cobra dependency (#12199)
+  * fix: add result count for VPs in the CLI (#12193)
+  * chore: format conformance.yaml workflow file (#12194)
+  * fix: publish codecov reports (#12197)
+  * feat(gctx): add jmespath caching through projections (#11833)
+  * fix: codegen (#12195)
+  * feat: add notary verifier with tsa support (#12160)
+  * chore(deps): bump
+    github.com/awslabs/amazon-ecr-credential-helper/ecr-login
+    (#12178)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/azure (#12179)
+  * use serviceAccountName instead of deprecated serviceAccount
+    (#12158)
+  * chore: cel policies nits (#12184)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.20.1 to
+    0.20.2 (#12180)
+  * README: fix markdown syntax (#12176)
+  * feat: add MutatingPolicies CRD (#12150)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/gcp (#12170)
+  * chore: remove applyconfiguration (#12174)
+  * feat: add image data context (#12175)
+  * feat: compile and evaluate autogen rules (#12163)
+  * refactor: status manager (#12173)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/aws (#12167)
+  * add get to rbac.authorization.k8s.io (#12043)
+  * fix: modify the client URL for finegrained validatingpolicies
+    (#12171)
+  * fix CEL autogen (#12165)
+  * chore(deps): bump github.com/sigstore/sigstore from 1.8.12 to
+    1.8.14 (#12168)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/hashivault
+    (#12169)
+  * update the docs for logging (#12140)
+  * feat: configure admission and background flag for
+    ValidatingPolicies (#12153)
+  * structuring log (#12111)
+  * fix: Certificate Renewer Does Not Remove Old CA Certificate
+    From Secret (#12073)
+  * feat: add types for image verification attestors (#12080)
+  * fix: sort autogen resources list (#12162)
+  * chore: remove vp and celpolex from the kyverno group (#12156)
+  * feat: aggregate vpol.status.conditions (#12133)
+  * Add helm changelog for reports-server related fix (#12144)
+  * fix: update match conditions for autogen rules (#12146)
+  * chore: move celexceptions to the new group (#12143)
+  * update issue templates (#12145)
+  * Don't fail disabling reports CRDs when sanitychecks is disabled
+    (for use with reports-server) (#12129)
+  * feat: add cel-autogen chainsaw tests (#12135)
+  * feat: add image data fetching support (#12134)
+  * chore(deps): bump golang.org/x/crypto from 0.32.0 to 0.33.0
+    (#12131)
+  * feat: add status.autogen (#12109)
+  * feat: use dedicated group for new policies (#12123)
+  * feat: compile and evaluate polex's match conditions (#12113)
+  * log action and message when creating event (#12092)
+  * feat: add autogen pod controllers to webhooks (#12112)
+  * feat: implement background scan (#12101)
+  * feat: use namespace in bg scan instead of just labels (#12102)
+  * chore: remove polex match constraints (#12103)
+  * feat: validate CELPolicyExceptions (#12083)
+  * feat: add vpol status (#11956)
+  * chore: make validating policies e2e tests required (#12100)
+  * feat: add validating policies to reports aggregation (#12096)
+  * chore(deps): bump golang.org/x/text from 0.21.0 to 0.22.0
+    (#12094)
+  * feat: add reporting to validating admission handler (#12090)
+  * chore: add celpolicyexceptions in helm chart (#12084)
+  * feat: consider Warn validation action (#12081)
+  * fix(flag): lookup kubeconfig only after parsing (#12082)
+  * refactor: webhook server/handlers (#12079)
+  * chore: remove polex compiler (#12078)
+  * tests: add chainsaw test for image data loading (#12077)
+  * chore(deps): bump ubuntu from `80dd3c3` to `7229784` in
+    /.devcontainer (#12074)
+  * chore(deps): bump sigs.k8s.io/release-utils from 0.10.0 to
+    0.11.0 (#12076)
+  * chore(deps): bump github.com/fluxcd/pkg/oci from 0.43.1 to
+    0.45.0 (#12059)
+  * feat: consider validation actions (#12072)
+  * feat: implement match conditions failure policy (#12071)
+  * chore(deps): bump sigs.k8s.io/release-utils from 0.9.0 to
+    0.10.0 (#12060)
+  * feat: add context provider in admission handling (#12070)
+  * feat: compile CEL exceptions (#12066)
+  * feat: add message expression support to validating policies
+    (#12063)
+  * feat: create image data loader (#12036)
+  * chore: add validating policies chainsaw tests (#12062)
+  * feat: add admission request cel variable (#12054)
+  * feat: add validation message in cel engine response (#12052)
+  * fix: remove 1.27 and 1.28 from tests (#12061)
+  * feat: use v1 of ValidatingAdmissionPolicies (#12050)
+  * fix: match the old object against the object selector for VAPs
+    in the CLI (#12051)
+  * feat: add CEL PolicyException CRD (#12038)
+  * feat: process cel engine response in webhook handler (#12047)
+  * feat: support adminssion review in cel engine (#12046)
+  * feat: use more admission attributes (#12044)
+  * fix: cel lib get config map return type (#12042)
+  * feat: use admission attributes (#12041)
+  * fix: error handling and reduce log clutter (#11979)
+  * replace ghcr.io to reg.kyverno.io (#12031)
+  * feat(validating policies): add support for ns and object
+    selectors (#12034)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#12027)
+  * feat: execute handler (#12033)
+  * fix: don't sort cel policies (#12028)
+  * fix: bad usage of wait group (#12029)
+  * chore(deps): bump github.com/evanphx/json-patch/v5 from 5.9.10
+    to 5.9.11 (#12025)
+  * feat: watch validating policies (#12008)
+  * feat: add rest config support in setup code (#12019)
+  * feat: add validation action to VPs (#12017)
+  * fix: test typo (#12016)
+  * feat: add validating policy webhook handler (#12015)
+  * chore(deps): bump github.com/evanphx/json-patch/v5 from 5.9.0
+    to 5.9.10 (#12014)
+  * chore(deps): bump github.com/sigstore/rekor from 1.3.7 to 1.3.9
+    (#12013)
+  * refactor: use k8s wait group (#12010)
+  * fix: make flags compatible with controller-runtime (#12009)
+  * chore(deps): bump google.golang.org/grpc from 1.69.4 to 1.70.0
+    (#11991)
+  * feat: register cel context lib (#12007)
+  * feat: add autogen package for ValidatingPolicies (#11996)
+  * test: add more cli vp tests (#12006)
+  * feat: implement cel engine context provider (#11995)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.20.0 to
+    0.20.1 (#11992)
+  * chore: remove unused functions in autogen (#11993)
+  * feat: add support for more context elements (#11986)
+  * Fix default value for apiCall context (#11733)
+  * fix: implement cel context lib correctly (#11983)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.13.1 to
+    5.13.2 (#11981)
+  * refactor: reduce generic policy interface (#11977)
+  * refactor: reduce generic policy interface (#11974)
+  * feat: introduce evaluation results in cel engine (#11971)
+  * Add OVHcloud in ADOPTERS.md (#11966)
+  * feat: add validating policy engine api wrapper (#11963)
+  * fix: cli schema generation (#11959)
+  * feat: add namespace support in CLI values (#11958)
+  * chore: bump k8s 0.32.1 (#11954)
+  * feat: use policy provider (#11947)
+  * feat: add generic policy interface (#11922)
+  * chore(deps): bump the otel group across 1 directory with 10
+    updates (#11952)
+  * log non fatal parsing errors (#11932)
+  * feat: add MAP's mutation logic for the CLI (#11946)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.19.4 to
+    0.20.0 (#11944)
+  * chore(deps): bump github.com/google/go-containerregistry
+    (#11941)
+  * chore(deps): bump github.com/notaryproject/notation-go (#11940)
+  * feat(cli,apply): load validating policies (#11933)
+  * feat: register webhook configurations for validatingpolicies
+    (#11892)
+  * fix the result column for Kyverno test (#11842)
+  * fix:[Bug] [CLI] CEL scanning a namespace yaml object makes
+    Kyverno crash (#11834)
+  * Update ADOPTERS.md (#11936)
+  * feat: update annotations of kyverno images (#11935)
+  * chore(deps): bump github.com/notaryproject/notation-core-go
+    from 1.1.0 to 1.2.0 (#11926)
+  * chore: add 1.13.1 and 1.13.2 to issue templates (#11930)
+  * chore: use v1 of VAPs in the tests (#11929)
+  * chore: move CEL package to admissionpolicy package (#11931)
+  * refactor: cleanup cli apply functions (#11928)
+  * chore(deps): bump sigs.k8s.io/kustomize/api from 0.18.0 to
+    0.19.0 (#11925)
+  * Implement Object type checking based on OpenAPI v3 schema
+    (#11919)
+  * feat: add CEL variables type checking (#11920)
+  * feat: add auditAnnotation in CEL Compiler (#11918)
+  * feat: add CEL variables support (#11913)
+  * chore(deps): bump google.golang.org/grpc from 1.69.2 to 1.69.4
+    (#11911)
+  * feat: add validating policy compiler (#11906)
+  * chore(deps): bump github.com/fluxcd/pkg/oci from 0.43.0 to
+    0.43.1 (#11903)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#11901)
+  * chore(deps): bump github.com/go-git/go-billy/v5 from 5.6.1 to
+    5.6.2 (#11902)
+  * feat: add context cel lib to get config map (#11898)
+  * feat: setup validating policy cel environment (#11897)
+  * feat: add support for loading validating policies in the cli
+    (#11883)
+  * chore: bump a couple of deps (#11890)
+  * refactor: get policy helper (#11891)
+  * chore: bump a couple of deps (#11879)
+  * chore(deps): bump github.com/google/cel-go from 0.22.0 to
+    0.22.1 (#11880)
+  * chore: bump a couple of deps (#11878)
+  * feat: bump kube deps to 1.32 (#11877)
+  * chore: bump a couple of deps (#11876)
+  * chore: bump go-git to 5.13.0 (#11860)
+  * fix(reports-controller): add a flag to disable reports sanity
+    checks (#11867)
+  * Add Tigera to Kyverno ADOPTERS.md (#11874)
+  * chore(deps): bump github.com/go-git/go-billy/v5 from 5.6.0 to
+    5.6.1 (#11837)
+  * feat: add validating policy crd in helm chart (#11870)
+  * feat: add kyverno vap API (#11790)
+  * fix: sorting in fix test command (#11869)
+  * Add flag for JSON output in policy reports (#11840)
+  * remove policy exception dependancy from globalcontext and add
+    some tests (#11788)
+  * fix global context error message logic error (#11815)
+  * Fix: Policy with failureActionOverrides not applying desired
+    failure actions in desired namespaces (#11811)
+  * fix panic when rules are empty (#11821)
+  * Fix panic in background controller when updating Generate rule
+    (#11835)
+  * chore(deps): bump
+    github.com/sigstore/sigstore/pkg/signature/kms/azure (#11791)
+  * chore: bump x/net 0/33/0 (#11825)
+  * chore: bump python to 3.13.1 (#11800)
+  * fix: cleanup unwanted files (#11803)
+  * chore(deps): bump helm/kind-action from 1.10.0 to 1.11.0
+    (#11774)
+  * fix: update chainsaw test apply timeout to 30s (#11794)
+  * chore(deps): bump helm/kind-action in
+    /.github/actions/run-tests (#11775)
+  * fix: copy all the fields of public keys when splitting (#11770)
+  * fix: [Helm] mergeOverwrite overwrites nested objects #11536
+    (#11584)
+  * Mutate existing CLI support (#11453)
+  * fix: exemption error caused by convertChecks function (#11780)
+  * chore(deps): bump actions/upload-artifact from 4.4.3 to 4.5.0
+    (#11783)
+  * chore(deps): bump actions/upload-artifact (#11784)
+  * fix: remove extra line in configmsp (#11762)
+  * fix: pin ubuntu version to 22.04 in custom sigstore conformance
+    tests (#11772)
+  * distributed labels in group, version, and resource so it
+    doesn't exceed (#11620)
+  * chore(deps): bump github/codeql-action from 3.27.7 to 3.27.9
+    (#11757)
+  * chore(deps): bump google.golang.org/grpc from 1.68.1 to 1.69.0
+    (#11761)
+  * chore(deps): bump the otel group across 1 directory with 10
+    updates (#11759)
+  * fix: revert default background scan interval to 1h (#11754)
+  * chore(deps): bump github/codeql-action from 3.27.6 to 3.27.7
+    (#11741)
+  * fix/duplicate-test-entries-deduplication (#11709)
+  * chore(deps): bump sigs.k8s.io/structured-merge-diff/v4 (#11751)
+  * chore(deps): bump golang.org/x/crypto from 0.30.0 to 0.31.0
+    (#11749)
+  * chore(deps): bump the kubernetes group across 2 directories
+    with 7 updates (#11743)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#11742)
+  * chore(deps): bump github.com/aquilax/truncate from 1.0.0 to
+    1.0.1 (#11744)
+  * chore(deps): bump sonarsource/sonarcloud-github-action (#11725)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#11731)
+  * chore(deps): bump github.com/onsi/gomega from 1.36.0 to 1.36.1
+    (#11735)
+  * chore(deps): bump github.com/fluxcd/pkg/oci from 0.41.1 to
+    0.42.0 (#11732)
+  * chore(deps): bump golang.org/x/crypto from 0.29.0 to 0.30.0
+    (#11712)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#11727)
+  * chore(deps): bump google.golang.org/grpc from 1.68.0 to 1.68.1
+    (#11711)
+  * chore(deps): bump codecov/codecov-action from 5.0.7 to 5.1.1
+    (#11726)
+  * chore(deps): bump kyverno/action-install-chainsaw (#11716)
+  * chore(deps): bump github/codeql-action from 3.27.5 to 3.27.6
+    (#11706)
+  * chore(deps): bump kyverno/action-install-chainsaw from 0.2.11
+    to 0.2.12 (#11715)
+  * fix(readme): add changelog for
+    spec.validate[*].allowExistingViolations field in kyverno chart
+    (#11714)
+  * fix: add metrics-server Helm repo (#11717)
+  * fix: properly verify precondition in old object validation
+    (#11644)
+  * feat: Show textual diff when generate test fails (#11674)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.19.2 to
+    0.19.3 (#11698)
+  * chore(deps): bump ubuntu from `278628f` to `80dd3c3` in
+    /.devcontainer (#11697)
+  * fix: api call chainsaw tests (#11682)
+  * Fix(doc): correct invalid links in documentation (#11681)
+  * fix: check the patchedResources in kyverno-test (#11686)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#11691)
+  * add allowExistingViolations option in policy chart (#11656)
+  * Print generate output cli (#11634)
+  * chore(deps): bump github.com/google/gnostic-models (#11676)
+  * fix(chart): global image registry bug in 3.3.3 (#11604)
+  * chore(deps): bump github.com/onsi/gomega from 1.35.1 to 1.36.0
+    (#11669)
+  * fix: add conversion function in Helm template (#11651)
+  * feat: add/improve error logs (#11657)
+  * fix(policy chart): fix the merging of policyExclude
+    customizations to avoid wrong overrides (#11653)
+  * fix: use deleteOptions in cleanup controller (#11662)
+  * chore(deps): bump github.com/stretchr/testify from 1.9.0 to
+    1.10.0 (#11660)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#11659)
+  * chore(deps): bump the kubernetes group across 2 directories
+    with 7 updates (#11640)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.19.1 to
+    0.19.2 (#11647)
+  * chore(deps): bump codecov/codecov-action from 5.0.4 to 5.0.7
+    (#11650)
+  * chore(deps): bump sigstore/scaffolding from 0.7.16 to 0.7.17
+    (#11641)
+  * chore(deps): bump github/codeql-action from 3.27.4 to 3.27.5
+    (#11642)
+  * chore(deps): bump codecov/codecov-action from 5.0.2 to 5.0.4
+    (#11625)
+  * fix: Open the mutated resources file in append mode to allow
+    additions to it (#11619)
+  * Context vars with labelselector (#11608)
+  * fix: kubernetes and kyverno version annotations in
+    kyverno-policies helm chart to match installed kyverno release
+    and supported versions from Chart.yaml with override option
+    (kyverno#1165) (#11258)
+  * chore(deps): bump aquasecurity/trivy-action from 0.28.0 to
+    0.29.0 (#11624)
+  * fix: return nil error when trigger resource not found for a
+    subresouces (#11594)
+  * Passed the deleteOptions to the DeleteResource client (#11484)
+  * chore(deps): bump actions/checkout in
+    /.github/actions/run-tests (#11612)
+  * chore(deps): bump ubuntu from `99c3519` to `278628f` in
+    /.devcontainer (#11610)
+  * chore(deps): bump codecov/codecov-action from 5.0.0 to 5.0.2
+    (#11611)
+  * fix(background-controller): reduce logging for URs (#11616)
+  * fix(ci): run conformance upgrade on schedule (#11602)
+  * fix: use ephemeralreportsfor reports controller in helm
+    (#11600)
+  * feat(ci): test upgrade conformance (#11498)
+  * chore(deps): bump github/codeql-action from 3.27.3 to 3.27.4
+    (#11598)
+  * fix: use generate name for background scan reports (#11586)
+  * chore(deps): bump sigs.k8s.io/structured-merge-diff/v4 (#11596)
+  * chore(deps): bump codecov/codecov-action from 4.6.0 to 5.0.0
+    (#11597)
+  * fix: add a check for nil rule response (#11591)
+  * Add missing error check (#11587)
+  * feat: Add Manifest Index to ImageRegistry context (#9883)
+  * fix: update explicit webhook based on the policy type (#11580)
+  * chore(deps): bump github/codeql-action from 3.27.1 to 3.27.3
+    (#11575)
+  * chore(deps): bump the otel group across 1 directory with 10
+    updates (#11566)
+  * chore(deps): bump github/codeql-action from 3.27.0 to 3.27.1
+    (#11568)
+  * Set the UserAgent in client-go based calls to kube-apiserver
+    (#11569)
+  * Add SHA1 and MD5 hash functions to JMESPath (#11564)
+  * chore(deps): bump rajatjindal/krew-release-bot from 0.0.46 to
+    0.0.47 (#11567)
+  * toggle for autogen version (#11535)
+  * chore(deps): bump goreleaser/goreleaser-action from 6.0.0 to
+    6.1.0 (#11556)
+  * chore(deps): bump golang.org/x/crypto from 0.28.0 to 0.29.0
+    (#11557)
+  * chore(deps): bump google.golang.org/grpc from 1.67.1 to 1.68.0
+    (#11559)
+  * fix: panic for nil rule response when processing old object
+    (#11550)
+  * fix: add 'immutable fields in the policy validation msg for
+    FluxCD' (#11549)
+  * chore(deps): bump sigstore/scaffolding from 0.7.15 to 0.7.16
+    (#11548)
+  * fix: match failure action case insensitively for validating old
+    object (#11486)
+  * fix: remove logic that uses annotation to skip image
+    verification (#11529)
+  * fix(validate): custom match conditions errors (#11461)
+  * set the defautl namespace for policy (#11505)
+  * Autogenv2 rule evaluation logic (#11434)
+  * chore(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.0 to
+    4.5.1 (#11526)
+  * chore: change controller rated limiting queue (#11509)
+  * fix: use webhook object instead of a list (#11516)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#11521)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#11520)
+  * fix(chart): correct behavior for global image registry (#11482)
+  * chore(deps): bump github.com/onsi/gomega from 1.35.0 to 1.35.1
+    (#11510)
+  * fix: switch configmap removal to use post-delete helm hook
+    (#11504)
+  * fix: add celPreconditions in autogen rules (#11503)
+  * fix: support VAP stable version v1 in the CLI (#11501)
+  * chore(deps): bump github.com/onsi/gomega from 1.34.2 to 1.35.0
+    (#11487)
+  * chore(deps): bump sigstore/scaffolding from 0.7.13 to 0.7.15
+    (#11499)
+  * fix: add emitWarning field in v2beta1 (#11489)
+  * fix: use digest instead of tag for custom-sigstore-tuf
+    conformance test (#11492)
+  * feat: skip azure keychain based login for mcr registry (#11480)
+  * chore(deps): bump sigs.k8s.io/controller-tools in
+    /hack/controller-gen (#11478)
+  * chore(deps): bump github.com/dgraph-io/ristretto from 0.1.1 to
+    0.2.0 (#11456)
+  * chore(deps): bump github.com/go-git/go-billy/v5 from 5.5.0 to
+    5.6.0 (#11455)
+  * chore(deps): bump the kubernetes group across 2 directories
+    with 7 updates (#11465)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.19.0 to
+    0.19.1 (#11471)
+  * chore(deps): bump actions/setup-go in
+    /.github/actions/setup-build-env (#11473)
+  * chore(deps): bump actions/setup-python from 5.2.0 to 5.3.0
+    (#11472)
+  * chore(deps): bump actions/checkout from 4.2.1 to 4.2.2 (#11464)
+  * chore(deps): bump github.com/fatih/color from 1.17.0 to 1.18.0
+    (#11457)
+  * chore(deps): bump github/codeql-action from 3.26.13 to 3.27.0
+    (#11458)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#11459)
+  * Introduced the DeletionPropagationPolicy field in CleanupPolicy
+    and C… (#11368)
+  * chore: bump sigstore/sigstore to 1.8.10 (#11448)
+  * fix[breaking]: disable exceptions by default (#11426)
+  * fix: update match logic for old object validation (#11427)
+  * chore(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#11437)
+  * chore(deps): bump ubuntu from `d4f6f70` to `99c3519` in
+    /.devcontainer (#11440)
+  * feat: improve webhooks rules generation (#11419)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#11439)
+  * chore(deps): bump actions/upload-artifact from 4.4.0 to 4.4.3
+    (#11438)
+  * feat(ci): enhance load testing (#11429)
+  * chore(deps): bump github.com/prometheus/client_golang (#11413)
+  * chore(deps): bump sigstore/scaffolding from 0.7.12 to 0.7.13
+    (#11423)
+  * feat: add options to configure resync period for informers in
+    helm chart (#11420)
+  * refactor: introduce autogen interface (#11418)
+  * Selector with mutate target (#11208)
+  * chore(deps): bump ubuntu from `ab64a83` to `d4f6f70` in
+    /.devcontainer (#11415)
+  * refactor: move autogen v1 and v2 packages (#11416)
+  * fix: use autogen v2 in exceptions controller (#11397)
+  * chore(deps): bump
+    go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    (#11402)
+  * chore(deps): bump aquasecurity/trivy-action from 0.27.0 to
+    0.28.0 (#11410)
+  * chore: Bump python installation in helm test to 3.8.13 as the
+    installation action doesnt support ubuntu 24 (#11409)
+  * chore(deps): bump github/codeql-action from 3.26.12 to 3.26.13
+    (#11403)
+  * feat: update engine response.generatedResources to support
+    multiple resource (#11398)
+  * Added GetNames and GetKinds function (#11327)
+  * chore: add delay after policy gets ready (#11344)
+  * chore(deps): bump ubuntu from `b359f10` to `ab64a83` in
+    /.devcontainer (#11393)
+  * chore(deps): bump the otel group across 1 directory with 9
+    updates (#11392)
+  * chore(deps): bump sigstore/scaffolding from 0.7.11 to 0.7.12
+    (#11391)
+  * chore(deps): bump sigs.k8s.io/controller-tools in
+    /hack/controller-gen (#11385)
+  * feat: add helm configuration for reporting in different rules
+    (#11376)
+  * chore(deps): bump aquasecurity/trivy-action from 0.26.0 to
+    0.27.0 (#11383)
+  * Reports controller circuit breaker (#11329)
+  * Add permission command to generate ClusterRole and
+    ClusterRoleBinding (#11211)
+  * feat(cache): use shallow copy instead of deep copy (#11378)
+  * chore(deps): bump actions/upload-artifact (#11375)
+  * chore(deps): bump actions/upload-artifact from 4.4.2 to 4.4.3
+    (#11374)
+  * chore(deps): bump sigs.k8s.io/kustomize/api from 0.17.3 to
+    0.18.0 (#11373)
+  * chore(deps): bump aquasecurity/trivy-action from 0.25.0 to
+    0.26.0 (#11363)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#11366)
+  * feat: add --backgroundReports flag to disable mutateexisting
+    and generate reporting (#11361)
+  * chore(deps): bump actions/upload-artifact (#11364)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#11365)
+  * chore(deps): bump actions/upload-artifact from 4.4.1 to 4.4.2
+    (#11362)
+  * add support for shallow substitution (#11058)
+  * chore: Add a new field in the test results CRD to specify
+    patched resources (#11297)
+  * chore(deps): bump aquasecurity/trivy-action from 0.24.0 to
+    0.25.0 (#11352)
+  * chore(deps): bump actions/checkout from 4.2.0 to 4.2.1 (#11351)
+  * chore(deps): bump github/codeql-action from 3.26.11 to 3.26.12
+    (#11350)
+  * chore(deps): bump actions/upload-artifact from 4.4.0 to 4.4.1
+    (#11353)
+  * chore(deps): bump actions/upload-artifact (#11354)
+  * Added chainsaw test for the ttl based cleanup poliy (#11328)
+  * fix: transfer image verify iamges to kyverno (#11340)
+  * fix: Allow images to be pulled from insecure registry when
+    allowInsecureRegistry flag is set to true (#10934) (#11243)
+  * chore: use ptr package (#11346)
+  * Test/ttl cleanup deletion policy (#11277)
+  * fix: isolate report creation context for mutate in admission
+    (#11304)
+  * fix: use aws mirror of trivy db to fix rate limiter issue
+    (#11342)
+  * chore: use more chainsaw step templates (#11324)
+  * fix: add permission for mutate existing report test (#11339)
+  * chore(deps): bump sonarsource/sonarcloud-github-action (#11332)
+  * chore(deps): bump sigstore/cosign-installer (#11335)
+  * chore(deps): bump sigstore/cosign-installer from 3.6.0 to 3.7.0
+    (#11334)
+  * chore(deps): bump golang.org/x/crypto from 0.27.0 to 0.28.0
+    (#11337)
+  * chore(deps): bump actions/cache in
+    /.github/actions/setup-caches (#11336)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#11333)
+  * chore: use more chainsaw step templates (#11317)
+  * Updated autogenv2 package (#11212)
+  * chore(deps): bump github.com/sigstore/cosign/v2 from 2.4.0 to
+    2.4.1 (#11321)
+  * chore(deps): bump github/codeql-action from 3.26.10 to 3.26.11
+    (#11320)
+  * chore: use more chainsaw step templates (#11313)
+  * chore: bump chainsaw (#11280)
+  * chore: use more chainsaw step templates (#11311)
+  * chore: use more chainsaw step templates (#11308)
+  * chore: use more chainsaw step templates (#11303)
+  * chore: use more chainsaw step templates (#11300)
+  * chore(deps): bump golangci/golangci-lint-action from 6.1.0 to
+    6.1.1 (#11298)
+  * chore: use more chainsaw step templates (#11296)
+  * chore: use more chainsaw step templates (#11293)
+  * feat: use more chainsaw test templates (#11285)
+  * feat: add reporting to mutate and generate rules (#11265)
+  * chore(deps): bump kyverno/action-install-chainsaw (#11290)
+  * chore(deps): bump kyverno/action-install-chainsaw from 0.2.10
+    to 0.2.11 (#11289)
+  * chore(deps): bump cbrgm/cleanup-stale-branches-action (#11288)
+  * chore(deps): bump codecov/codecov-action from 4.5.0 to 4.6.0
+    (#11287)
+  * chore(deps): bump ubuntu from `dfc1087` to `b359f10` in
+    /.devcontainer (#11286)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#11275)
+  * chore(deps): bump github.com/theupdateframework/go-tuf/v2
+    (#11282)
+  * feat: use more chainsaw test templates (#11281)
+  * chore(deps): bump fluxcd/flux2 from 2.3.0 to 2.4.0 (#11274)
+  * chore(deps): bump google.golang.org/grpc from 1.67.0 to 1.67.1
+    (#11276)
+  * chore(deps): bump github/codeql-action from 3.26.9 to 3.26.10
+    (#11273)
+  * fix(refactor): move breaker resource counter to pkg (#11271)
+  * Minor changes in dev docs (#11266)
+  * fix: overwrite the managed-by label for target resources
+    (#11267)
+  * update PR templates for supported versions (#11262)
+  * chore(deps): bump
+    zgosalvez/github-actions-ensure-sha-pinned-actions (#11264)
+  * add Corestream as an adopter (#11263)
+  * Added propagationPolicy to TTL controller for resource deletion
+    (#11207)
+  * chore: pin go.opentelemetry.io/otel/semconv/v1.24.0 (#11256)
+  * fix: foreach list validation (#11222)
+  * chore: remove uneeded cleanupJobs keys from values.yaml and
+    README (#11242)
+  * chore(deps): bump actions/checkout from 4.1.7 to 4.2.0 (#11244)
+  * chore(deps): bump github/codeql-action from 3.26.8 to 3.26.9
+    (#11221)
+  * fix: policy status updates not stabilising (#11236)
+  * feat: add dumpPatch flag (#11237)
+  * fix: webhooks reconciliation with policies (#11233)
+  * fix: webhooks reconciliation when no policies (#11230)
+  * fix(webhook): error variable (#11225)
+  * chore(deps): bump sigstore/scaffolding from 0.7.9 to 0.7.11
+    (#11220)
+  * fix: print out errors (#11218)
+  * fix(status): status comparison is wrong (#11203)
+  * feat: allow generate pattern changes (#11202)
+  * chore(deps): bump go.uber.org/automaxprocs from 1.5.3 to 1.6.0
+    (#11213)
+  * chore(deps): bump google.golang.org/grpc from 1.66.2 to 1.67.0
+    (#11201)
+  * fix: skip processing the oldObject for audit policies (#10233)
+  * chore(deps): bump github/codeql-action from 3.26.7 to 3.26.8
+    (#11200)
+  * chore(deps): bump github.com/open-policy-agent/opa from 0.67.1
+    to 0.68.0 (#11199)
+  * feature: Added test.imagePullSecrets config in values.yaml
+    (#11180) (#11195)
+  * chore: add more chainsaw tests for `generate.foreach` (#11140)
+  * fix: remove unused functions (#11190)
+  * chore(deps): bump sigs.k8s.io/controller-tools in
+    /hack/controller-gen (#11187)
+  * chore(deps): bump github.com/prometheus/client_golang (#11186)
+  * fix(chart,kyverno): update dashboard to support Grafana 11
+    (#11070)
+  * chore(deps): bump the kubernetes group across 2 directories
+    with 1 update (#11179)
+  * chore(deps): bump ubuntu from `8a37d68` to `dfc1087` in
+    /.devcontainer (#11166)
+  * chore: bump chainsaw (#11161)
+  * feat: add helm upgrade tests (#11163)
+  * chore(deps): bump the otel group across 1 directory with 7
+    updates (#11170)
+  * chore: update dependabot gomod config (#11164)
+  * fix: Added missing label info in the cleanup metrics (#10321)
+    (#11147)
+  * chore(deps): bump github.com/fluxcd/pkg/oci from 0.41.0 to
+    0.41.1 (#11153)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+    (#11152)
+  * chore(deps): bump github/codeql-action from 3.26.6 to 3.26.7
+    (#11150)
+  * fix: Updated Go version to v1.23.1 to address CVE-2024-34156
+    (#11112)
+  * move governance (#11138)
+  * fix: go releaser config (#11135)
+  * chore(deps): bump k8s.io/apiextensions-apiserver in the
+    kubernetes group (#11130)
+  * chore: add dependabot groups for k8s and otel (#11116)
+  * fix: expect base64 string in raw tuf root (#11117)
+  * chore(deps): bump k8s.io/kube-aggregator from 0.31.0 to 0.31.1
+    (#11111)
+  * chore(deps): bump k8s.io/cli-runtime from 0.31.0 to 0.31.1
+    (#11107)
+  * chore(deps): bump google.golang.org/grpc from 1.66.1 to 1.66.2
+    (#11109)
+  * chore: fix sonar exclusions (#11119)
+  * chore(deps): bump k8s.io/api from 0.31.0 to 0.31.1 (#11108)
+  * chore(deps): bump
+    go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    (#11110)
+  * feat: add flag to pass tuf root directly (#11103)
+  * fix broken oss-fuzz build (#11101)
+  * feat: use pointer in rule (validate field) (#11095)
+  * chore: bump otel libs (#11096)
+  * chore(deps): bump github.com/sigstore/sigstore-go from 0.6.1 to
+    0.6.2 (#11093)
+  * fix: make webhook cleanup setup optional and add cleanup ci
+    test (#11077)
+  * feat: use pointer in rule (mutation field) (#11078)
+  * chore: fix sonar exclusions (take 2) (#11074)
+  * chore: reduce jobs run on push (#11080)
+  * feat: use pointer in rule (generate field) (#11076)
+  * fix: policy report generation for namespaced policies in CLI
+    (#10923)
+  * chore: fix sonar exclusions (#11072)
+  * feat: use pointer in rule (exclude field) (#11050)
+  * chore: remove MarcelMue (#11066)
+  * fix: avoid generating empty urs (#11065)
+  * chore(deps): bump google.golang.org/grpc from 1.66.0 to 1.66.1
+    (#11062)
+  * chore(deps): bump sigstore/scaffolding from 0.7.8 to 0.7.9
+    (#11061)
+  * support HTTP headers in service API calls (#11041)
+  * Generate Policy Exceptions (#9987)
+  * Update CONTRIBUTORS.md (#11053)
+  * added Anudeep to CONTRIBUTORS.md (#11054)
+  * fix: make match field required in rule API (#11048)
+  * bug: print failure message when rule fails in kyverno apply
+    (#9166)
+  * feat: use pointer in rule (#11037)
+
+-------------------------------------------------------------------
 Sat Feb 08 08:33:56 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.13.4:
