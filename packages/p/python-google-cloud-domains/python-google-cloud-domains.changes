@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:14:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.10.1
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 1.10.1
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 1.9.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 1.8.1
+  * Disable universe-domain validation (#13242)
+- from version 1.8.0
+  * Add support for Python 3.13 (#13204)
+- from version 1.7.5
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 1.7.4
+  * Allow Protobuf 5.x (#12866)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jun 19 07:11:47 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.3:

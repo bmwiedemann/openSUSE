@@ -32,4 +32,30 @@
   * deps: [Many APIs] Require google-api-core&gt;=1.34.1</comment>
     <requestid>1181685</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0e1a887d91eae00099f0ab86e6dd157c</srcmd5>
+    <version>1.10.1</version>
+    <time>1745612393</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.10.1
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 1.10.1
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 1.9.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 1.8.1
+  * Disable universe-domain validation (#13242)
+- from version 1.8.0
+  * Add support for Python 3.13 (#13204)
+- from version 1.7.5
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 1.7.4
+  * Allow Protobuf 5.x (#12866)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py</comment>
+    <requestid>1272658</requestid>
+  </revision>
 </revisionlist>
