@@ -123,4 +123,12 @@
     <comment>- add patch fix-CVEs.patch to fix bsc#1241235, bsc#1237674 (forwarded request 1269823 from rrahl0)</comment>
     <requestid>1269824</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>51216def2e194d54a8648fd28681193e</srcmd5>
+    <version>0.25.1</version>
+    <time>1745612341</time>
+    <user>anag_factory</user>
+    <comment>- update fix-CVEs.patch for fixing bsc#1241801 (forwarded request 1272491 from rrahl0)</comment>
+    <requestid>1272492</requestid>
+  </revision>
 </revisionlist>

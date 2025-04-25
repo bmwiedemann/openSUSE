@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:13:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update fix-CVEs.patch for fixing bsc#1241801
+
+-------------------------------------------------------------------
 Wed Apr 16 08:06:07 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - add patch fix-CVEs.patch to fix bsc#1241235, bsc#1237674
