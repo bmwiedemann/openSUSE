@@ -362,4 +362,41 @@
   * Cleanup text attributes (#519).</comment>
     <requestid>1264635</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>16ad55aea580254855820cc1ddfeb30c</srcmd5>
+    <version>0.13.0</version>
+    <time>1745612403</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.0:
+  Breaking changes:
+  * The CLI parameter to generate the JSON schema for the config file
+    (--generate-config-file-schema) is now hidden behind a json-schema
+    feature flag. The JSON schema file for the latest version is already
+    publicly available at
+    https://github.com/mfontanini/presenterm/blob/${VERSION}/config-file-schema.json,
+    so anyone can use it without having to generate it by hand. This
+    allows cutting down the number of dependencies in this project quite a bit (#563).
+  New features:
+  * Support for slide transitions is now available (#530):
+    + Add fade slide transition (#534).
+    + Add slide horizontally slide transition animation (#528).
+    + Add collapse_horizontal slide transition (#560).
+  * Add --output option to specify the path where the output file is written to during an export
+  (#526).
+  * Allow specifying start/end lines in file snippet type (#565)
+  * Allow letting pauses become new slides when exporting (#557).
+  * Allow using images on right in footer (#554).
+  * Add max_rows configuration to cap vertical size (#531).
+  * Add julia language highlighting and execution support (#561).
+  Fixes:
+  * Center overflow lines when using centered text (#546).
+  * Don't add extra space before heading if prefix in theme is empty (#542).
+  * Use no typst background in terminal-* built in themes (#535).
+  * Use std::env::temp_dir in the external_snippet test (#533)
+  * Respect extends in a theme set via path in front matter (#532).
+  Misc:
+  * Refactor async renders (e.g. mermaid/typst/latex +render blocks, +exec blocks, etc)
+    to work truly asynchronously. This causes the output to be polled faster,</comment>
+    <requestid>1272696</requestid>
+  </revision>
 </revisionlist>
