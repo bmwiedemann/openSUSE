@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package python-pydantic
 #
 # Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
@@ -27,17 +27,19 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.10.6
+Version:        2.11.3
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
 URL:            https://github.com/pydantic/pydantic
 Source:         https://github.com/pydantic/pydantic/archive/v%{version}.tar.gz#/pydantic-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/commit/bce81efdeac1cbefd0196b478a32aa2586bd595a Do not provide field_name in validator core schemas
+Patch:          field_name.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core >= 2.27.2}
+BuildRequires:  %{python_module pydantic-core >= 2.33.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,16 +53,19 @@ BuildRequires:  %{python_module pydantic = %{version}}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-examples}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-run-parallel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv >= 0.10.4}
 BuildRequires:  %{python_module rich}
+BuildRequires:  %{python_module typing-inspection}
 %endif
 Requires:       python-annotated-types >= 0.4.0
 %if 0%{?python_version_nodots} < 310
 Requires:       python-eval-type-backport
 %endif
 Requires:       python-pydantic-core >= 2.27.2
-Requires:       python-typing-extensions >= 4.6.1
+Requires:       python-typing-extensions >= 4.12.2
+Requires:       python-typing-inspection
 BuildArch:      noarch
 %python_subpackages
 

@@ -475,4 +475,99 @@
     <comment></comment>
     <requestid>1240305</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a90418868ef6a4b0a50fc4d18fea5381</srcmd5>
+    <version>2.11.3</version>
+    <time>1745612276</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream field_name.patch for compatibility with recent pydantic-core
+- Add missing Requires on typing-inspection.
+- update to 2.11.3:
+  * Preserve field description when rebuilding model fields
+- update to 2.11.2:
+  * Make sure __pydantic_private__ exists before setting private attributes
+  * Do not override FieldInfo._complete when using field from parent class
+  * Provide the available definitions when applying discriminated unions
+  * Do not expand root type in the mypy plugin for variables
+  * Mention the attribute name in model fields deprecation message
+  * Properly validate parameterized mappings
+- update to 2.11.1:
+  * Do not override 'definitions-ref' schemas containing serialization schemas or metadata
+- update to 2.11.0:
+  * Re-enable memray related tests on Python 3.12+
+  * Add a check_pydantic_core_version() function
+  * Remove greenlet development dependency
+  * Support unsubstituted type variables with both a default and a bound or constraints
+  * Add a default_factory_takes_validated_data property to FieldInfo
+  * Raise a better error when a generic alias is used inside type[]
+  * Properly support PEP 695 generics syntax
+  * Properly support type variable defaults
+  * Add support for validating v6, v7, v8 UUIDs
+  * Improve alias configuration APIs
+  * Add experimental support for free threading
+  * Add encoded_string() method to the URL types
+  * Add support for defer_build with @validate_call decorator
+  * Allow @with_config decorator to be used with keyword arguments
+  * Simplify customization of default value inclusion in JSON Schema generation
+  * Add generate_arguments_schema() function
+  * Rework create_model field definitions format
+  * Raise a deprecation warning when a field is annotated as final with a default value
+  * Deprecate accessing model_fields and model_computed_fields on instances
+  * Move core schema generation logic for path types inside the GenerateSchema class
+  * Move Mapping schema gen to GenerateSchema to complete removal of prepare_annotations_for_known_type workaround
+  * Remove Python 3.8 Support
+  * Optimize calls to get_type_ref
+  * Disable pydantic-core core schema validation
+  * Only evaluate FieldInfo annotations if required during schema building
+  * Improve __setattr__ performance of Pydantic models by caching setter functions
+  * Improve annotation application performance
+  * Improve performance of _typing_extra module
+  * Refactor and optimize schema cleaning logic
+  * Create a single dictionary when creating a CoreConfig instance
+  * Reuse cached core schemas for parametrized generic Pydantic models
+  * Add validation tests for _internal/_validators.py
+  * Subclass all single host url classes from AnyUrl to preserve behavior from v2.9
+  * Improve TypeAdapter instance repr
+  * Use the correct frame when instantiating a parametrized TypeAdapter
+  * Relax check for validated data in default factory utils
+  * Fix type checking issue with model_fields and model_computed_fields
+  * Use the parent configuration during schema generation for stdlib dataclasses
+  * Use the globals of the function when evaluating the return type of serializers and computed_fields
+  * Fix url constraint application
+  * Fix URL equality with different validation methods
+  * Fix JSON schema title when specified as ''
+  * Do not evaluate annotations for private fields
+  * Support serialization as any for Secret types and Url types
+  * Fix type hint of Field.default to be compatible with Python 3.8 and 3.9
+  * hashing support for urls
+  * Hide BaseModel.__replace__ definition from type checkers
+  * Set fields when defer_build is set on Pydantic dataclasses
+  * Do not resolve the JSON Schema reference for dict core schema keys
+  * Use the globals of the function when evaluating the return type for PlainSerializer and WrapSerializer functions
+  * Fix host required enforcement for urls to be compatible with v2.9 behavior
+  * Fix url json schema in serialization mode
+  * Fix for comparison of AnyUrl objects
+  * Properly fetch PEP 695 type params for functions, do not fetch annotations from signature
+  * Infer final fields with a default value as class variables in the mypy plugin
+  * Recursively unpack Literal values if using PEP 695 type aliases
+  * Override __subclasscheck__ on ModelMetaclass to avoid memory leak and performance issues
+  * Include JSON Schema input core schema in function schemas
+  * Add len to _BaseUrl to avoid TypeError
+  * Make sure the type reference is removed from the seen references
+  * Add FastAPI and SQLModel to third-party tests
+  * Improve discriminated union error message for invalid union variants
+  * Unpack PEP 695 type aliases if using the Annotated form
+  * Remove custom MRO implementation of Pydantic models
+  * Add pandera third-party tests
+  * Add ODMantic third-party tests
+  * Copy WithJsonSchema schema to avoid sharing mutated data
+  * Do not cache parametrized models when in the process of parametrizing another model
+  * Add discriminated union related metadata entries to the CoreMetadata definition
+  * Consolidate schema definitions logic in the _Definitions class
+  * Fix url serialization for unions
+  * Support initializing root model fields with values of the root type in the mypy plugin
+  * Move deque schema gen to GenerateSchema class
+</comment>
+    <requestid>1272629</requestid>
+  </revision>
 </revisionlist>
