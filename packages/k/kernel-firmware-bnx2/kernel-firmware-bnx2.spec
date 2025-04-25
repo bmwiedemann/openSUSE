@@ -26,45 +26,40 @@ Name:           kernel-firmware-bnx2
 Version:        20250206
 Release:        0
 Summary:        Kernel firmware files for Broadcom network drivers
-License:        SUSE-Firmware AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-# URL:          https://github.com/openSUSE/kernel-firmware-tools/
-Source1:        kernel-firmware-tools-20250211.tar.xz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20250425.tar.gz#/kernel-firmware-tools-20250425.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
 BuildRequires:  suse-module-tools
 Requires(post): %{_bindir}/mkdir
 Requires(post): %{_bindir}/touch
-Requires(postun):%{_bindir}/mkdir
-Requires(postun):%{_bindir}/touch
+Requires(postun): %{_bindir}/mkdir
+Requires(postun): %{_bindir}/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
 Conflicts:      kernel-firmware-uncompressed
 BuildArch:      noarch
 %if 0%{?suse_version} >= 1550
-# make sure we have post-usrmerge filesystem package on TW
-Conflicts:      filesystem < 84
+Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
+Supplements:    modalias(pci:v00001077d000016A1sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d000016A4sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d000016ADsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001639sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000163Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d0000163Dsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d0000163Esv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d0000163Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Asv0000103Csd00003101bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Asv0000103Csd00003106bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Csv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d000016AAsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d000016AAsv0000103Csd00003102bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d000016ACsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d000016A1sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d000016A4sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001077d000016ADsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d0000163Dsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d0000163Esv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000014E4d0000163Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d0000164Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001650sv*sd*bc*sc*i*)
@@ -79,7 +74,10 @@ Supplements:    modalias(pci:v000014E4d000016A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A4sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A5sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016A9sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d000016AAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d000016AAsv0000103Csd00003102bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016ABsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014E4d000016ACsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016ADsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016AEsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d000016AFsv*sd*bc*sc*i*)
@@ -87,9 +85,9 @@ Supplements:    modalias(pci:v000014E4d000016AFsv*sd*bc*sc*i*)
 %description
 This package contains kernel firmware files for Broadcom network drivers.
 
-
 %prep
-%autosetup -a1 -p1
+%autosetup -p1
+tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
 scripts/strip-topic-whence.sh bnx2 < WHENCE > WHENCE.new
 mv WHENCE.new WHENCE
