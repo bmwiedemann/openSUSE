@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-mpv
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Python interface to the mpv media player
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later

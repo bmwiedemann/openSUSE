@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 25 10:29:24 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.8
+  * Add support for libmpv's new args to key binding handlers
+  * Use callback id() instead of frame hash() to identify
+    anonymous python streams
+  * Tests: Fix race condition in
+    test_wait_for_property_concurrency
+  * Fix quit and quit_watch_later commands
+  * Add test for dict-valued properties
+  * Add API to set dict-valued properties
+
+-------------------------------------------------------------------
 Fri Feb 14 03:26:31 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not use %_libdir, it doesn't expand correctly on 64 bit arches.
