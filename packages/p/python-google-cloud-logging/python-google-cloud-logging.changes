@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:47:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.12.1
+  * Make logging handler close conditional to having the transport opened (#990)
+- from version 3.12.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for opt-in debug logging
+  * Added flushes/close functionality to logging handlers (#917)
+  * Allow protobuf 6.x (#977)
+  * **deps:** Require google-cloud-audit-log >= 0.3.1 (#979)
+  * Fix typing issue with gRPC metadata when key ends in -bin
+  * Added documentation on log_level and excluded_loggers params in setup_logging (#971)
+  * Update README to break infinite redirect loop (#972)
+- from version 3.11.4
+  * Made `write_entries` raise `ValueError` on `ParseError`s (#958)
+  * Require proto-plus >= 1.25 for Python 3.13 (#955)
+- from version 3.11.3
+  * 16-bit hexadecimal formatting for XCTC span IDs (#946)
+- from version 3.11.2
+  * **deps:** Require google-cloud-appengine-logging >= 0.1.3
+  * **deps:** Require google-cloud-audit-log >= 0.2.4
+  * **deps:** Require opentelemetry-api >= 1.9.0
+  * Fixed type hinting issue with specifying Transport class (#930)
+- from version 3.11.1
+  * Allow protobuf 5.x (#888)
+- from version 3.11.0
+  * OpenTelemetry trace/spanID integration for Python handlers (#889)
+  * Added environment specific labels to client library when running
+    in Cloud Run Jobs (#877)
+  * Added missing import into logger.py (#896)
+  * Added type hints to CloudLoggingHandler constructor (#903)
+  * Add summary_overview template (#878)
+  * Changed table in web-framework-integration to bulleted list (#875)
+  * Documentation update for OpenTelemetry (#915)
+  * Update `dictConfig` snippet (#885)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Mar 25 20:09:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.0:

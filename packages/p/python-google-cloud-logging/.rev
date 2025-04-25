@@ -22,4 +22,12 @@
   * Use value of cluster-location in GKE for tagging location</comment>
     <requestid>1161550</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5edfa3fe640f1675e5cc49ff1d377d96</srcmd5>
+    <version>3.12.1</version>
+    <time>1745612395</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1272661</requestid>
+  </revision>
 </revisionlist>
