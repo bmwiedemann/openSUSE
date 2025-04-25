@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:25:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.2:
+  Rancher Kubernetes Engine (RKE) is reaching its end of life.
+  Version 1.8 is the final release in the RKE 1.x series. We
+  strongly recommend migrating to Rancher's newer Kubernetes
+  distribution, RKE2, to stay supported, secure, and take advantage
+  of the latest features and updates. For more details, please
+  refer to the official SUSE EOL article.
+  * What's Changed
+    - Introduced sha256 based checksum for Kubernetes versions
+      starting with v1.31.6. #3801
+  * RKE Kubernetes versions
+    - v1.30.11-rancher1-1
+    - v1.31.7-rancher1-1
+    - v1.32.3-rancher1-1 (default)
+
+-------------------------------------------------------------------
 Thu Mar 27 17:51:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.8.1:
