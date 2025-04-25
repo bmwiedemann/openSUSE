@@ -1,7 +1,7 @@
 #
 # spec file for package python-Unidecode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15allpythons}
 %define skip_python2 1
 Name:           python-Unidecode
-Version:        1.3.8
+Version:        1.4.0
 Release:        0
 Summary:        ASCII transliterations of Unicode text
 License:        GPL-2.0-or-later
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
