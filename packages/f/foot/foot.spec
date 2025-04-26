@@ -20,7 +20,7 @@
 %define _distconfdir %{_sysconfdir}
 %endif
 Name:           foot
-Version:        1.22.0
+Version:        1.22.1
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT

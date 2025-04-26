@@ -790,4 +790,21 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.22.0 for more details.</comment>
     <requestid>1270594</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9a76073d671f05db8fc9661cbf4f25c6</srcmd5>
+    <version>1.22.1</version>
+    <time>1745699162</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.22.1:
+  * Fixed main.alpha-mode=matching to work for
+    the default background color and indexed colors.
+  * Fixed keyboard modifiers not getting reset when switching focus away
+    from the foot window.
+  * Fixed zero-width codepoints causing font and color of adjacent cell
+    to be different from the rest.
+  * Fixed alpha getting applied to inverse text and selections.
+  * Added new themes: alacritty.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.22.1 for more details.</comment>
+    <requestid>1272863</requestid>
+  </revision>
 </revisionlist>
