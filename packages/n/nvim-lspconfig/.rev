@@ -163,4 +163,41 @@
   * refactor: replace all instances of vim.loop with vim.uv (forwarded request 1268908 from rrahl0)</comment>
     <requestid>1268909</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b3a14c0f75174d155e1fca702f80e861</srcmd5>
+    <version>2.1.0</version>
+    <time>1745699166</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * Neovim 0.11 migration
+  * feat(typos-lsp): support pyproject.toml and Cargo.toml
+  * fix(docs): docgen.lua reads from lua/*.lua
+  * docs: change contributing.md to new style lsp config
+  * feat(gh_actions_ls): add vim.lsp.config support
+  * feat(ast_grep): Update filetypes
+  * fix(gh_actions_ls): add workspace_required
+  * feat(omnisharp): add vim.lsp.config support
+  * feat: sqruff
+  * feat(biome): vim.lsp.config support, with workspace_required and proper root_dir
+  * feat(zls): add vim.lsp.config support
+  * fix(rust_analyzer): call on_dir callback when reusing client
+  * update vim.lsp.config anchor link href
+  * feat(astroJS): add vim.lsp.config support
+  * fix(astro): using vim.fs.jointhpath concat path
+  * feat(volar): add vim.lsp.config support
+  * fix(readme): update vim.lsp.config anchor links
+  * feat: emmylua_ls
+  * feat: angularls
+  * feat(tailwind): add vim.lsp.config support
+  * feat: add PL/I support
+  * feat(atlas): update doc support for atlas-rule filetype
+  * feat(eslint): add vim.lsp.config support
+  * ci(lint): enforce &quot;Lsp&quot; command name prefix
+  * lint: client:exec_cmd()
+  * feat(mdx_analyzer): add vim.lsp.config support
+  * fix(sqls): install instructions
+  * ci(lint): check @brief docstring placement
+  * fix(mdx_analyzer): remove invalid field and update brief (forwarded request 1272860 from rrahl0)</comment>
+    <requestid>1272861</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sat Apr 26 16:33:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.1.0:
+  * Neovim 0.11 migration
+  * feat(typos-lsp): support pyproject.toml and Cargo.toml
+  * fix(docs): docgen.lua reads from lua/*.lua
+  * docs: change contributing.md to new style lsp config
+  * feat(gh_actions_ls): add vim.lsp.config support
+  * feat(ast_grep): Update filetypes
+  * fix(gh_actions_ls): add workspace_required
+  * feat(omnisharp): add vim.lsp.config support
+  * feat: sqruff
+  * feat(biome): vim.lsp.config support, with workspace_required and proper root_dir
+  * feat(zls): add vim.lsp.config support
+  * fix(rust_analyzer): call on_dir callback when reusing client
+  * update vim.lsp.config anchor link href
+  * feat(astroJS): add vim.lsp.config support
+  * fix(astro): using vim.fs.jointhpath concat path
+  * feat(volar): add vim.lsp.config support
+  * fix(readme): update vim.lsp.config anchor links
+  * feat: emmylua_ls
+  * feat: angularls
+  * feat(tailwind): add vim.lsp.config support
+  * feat: add PL/I support
+  * feat(atlas): update doc support for atlas-rule filetype
+  * feat(eslint): add vim.lsp.config support
+  * ci(lint): enforce "Lsp" command name prefix
+  * lint: client:exec_cmd()
+  * feat(mdx_analyzer): add vim.lsp.config support
+  * fix(sqls): install instructions
+  * ci(lint): check @brief docstring placement
+  * fix(mdx_analyzer): remove invalid field and update brief
+  * fix(docgen.lua): omnisharp "--hostPID" arg always changes
+  * ci(lint): deprecate util.path.is_descendant() on Nvim 0.11+
+  * fix(tailwindcss): improved root dir detection for tailwind v4
+  * fix(unocss): add workspace_required to true
+  * rpmspec: Updated cmd and description
+  * refactor: deprecate util.path.search_ancestors()
+  * refactor: deprecate util.validate_bufnr()
+  * feat: Add gnls config
+  * feat(roslyn_ls): add initial config as vim.lsp.config
+  * fix(roslyn_ls): use absolute paths when open .sln and .csproj files
+  * feat(ts_ls): add _typescript.rename handler
+
+-------------------------------------------------------------------
 Sun Apr 13 00:58:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.0.0:
