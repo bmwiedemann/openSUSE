@@ -2670,7 +2670,6 @@ unsorted:
   - cppreference-doc 
   - cppreference-doc-devhelp 
   - cppreference-doc-qhelp 
-  - cpprest-devel 
   - cpptasks 
   - cpptasks-javadoc 
   - cpptoml-devel 
@@ -12644,7 +12643,6 @@ unsorted:
   - libcpluffxx-devel 
   - libcpluffxx0 
   - libcpp-httplib0_18 
-  - libcpprest2_10 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -16156,7 +16154,6 @@ unsorted:
   - libsolv-devel 
   - libsolv-devel-static 
   - libsolv-tools 
-  - libsolv1 
   - libsonivox3 
   - libsord-0-0-32bit 
   - libsoundio-devel 
@@ -23689,7 +23686,6 @@ unsorted:
   - python3-libuser 
   - python3-libvoikko 
   - python3-lieer 
-  - python3-lilv 
   - python3-linkchecker 
   - python3-lldb 
   - python3-lldb15 
@@ -24622,7 +24618,6 @@ unsorted:
   - python311-azure-template 
   - python311-babelfish 
   - python311-backoff 
-  - python311-backports.entry_points_selectable 
   - python311-backports.tarfile 
   - python311-backrefs 
   - python311-baron 
@@ -26588,6 +26583,7 @@ unsorted:
   - python311-pytest-remotedata 
   - python311-pytest-rerunfailures 
   - python311-pytest-responsemock 
+  - python311-pytest-run-parallel 
   - python311-pytest-salt-factories 
   - python311-pytest-server-fixtures 
   - python311-pytest-services 
@@ -30309,6 +30305,7 @@ unsorted:
   - python312-pytest-remotedata 
   - python312-pytest-rerunfailures 
   - python312-pytest-responsemock 
+  - python312-pytest-run-parallel 
   - python312-pytest-salt-factories 
   - python312-pytest-server-fixtures 
   - python312-pytest-services 
@@ -33131,6 +33128,7 @@ unsorted:
   - python313-ligo-lw 
   - python313-ligo-segments 
   - python313-ligotimegps 
+  - python313-lilv 
   - python313-limnoria 
   - python313-line_profiler 
   - python313-linetable 
@@ -33972,6 +33970,7 @@ unsorted:
   - python313-pytest-remotedata 
   - python313-pytest-rerunfailures 
   - python313-pytest-responsemock 
+  - python313-pytest-run-parallel 
   - python313-pytest-salt-factories 
   - python313-pytest-server-fixtures 
   - python313-pytest-services 
@@ -36604,8 +36603,6 @@ unsorted:
   - scotch-devel 
   - scotch-devel-static 
   - scotch-metis-devel 
-  - scout 
-  - scout-command-not-found 
   - scream 
   - screen-message 
   - screencast 
