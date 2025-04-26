@@ -18,7 +18,7 @@
 
 
 Name:           jacktrip
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        Multi-machine network music performance over the Internet
 License:        GPL-3.0-only AND MIT AND LGPL-3.0-only
@@ -61,7 +61,7 @@ audio signal streaming.
 
 %build
 mv build .build
-%meson -Dlibsamplerate=disabled # https://github.com/jacktrip/jacktrip/issues/1380
+%meson
 %meson_build
 
 %install

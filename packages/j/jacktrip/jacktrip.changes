@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Apr 26 08:23:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.6.0:
+  * Don't reset studioToJoin when going to the device settings page
+  * Fix for building with cmake and vs mode
+  * Fix for -Dlibsamplerate=disabled
+  * Support for changing host
+  * meson: support libsamplerate as system dependency
+  * Bumping builds to start using qt 6.8.2
+  * Fixing regressions that kick you out of a studio
+  * Ignore timestamps recording in gzip metadata
+  * Adding osc endpoint to get latencies for connected clients
+  * Send OSC response for client latencies without using an array
+  * Adding stats for audio interface input and output
+  * Updates to sync ui with pending ingress jitter buffer changes
+  * Bumping jitter thresholds for connection quality classification
+  * Always allow selection between mono/stereo/mixtomono when > 1 channels
+  * Add support for Linux on aarch64 and armv7
+  * Replacing qDebug() with cout for Audio Socket reconnect
+  * Don't reset device warnings and errors when stopping audio
+  * Allow higher latency when using PLC auto headroom
+  * Wait for authentication to finish before refreshing studios
+  * Temporarily disabling support for feedback detection in meson builds
+  * VS Mode improvements to audio quality override settings
+
+- re-enabled build with libsaplerate
+
+-------------------------------------------------------------------
 Mon Feb  3 12:49:39 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.5.1:
