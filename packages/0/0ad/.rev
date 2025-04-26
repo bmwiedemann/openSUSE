@@ -161,4 +161,17 @@
     <comment></comment>
     <requestid>1251573</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>ae06e487d8585ecb0000296c79777167</srcmd5>
+    <version>0.27.0</version>
+    <time>1745699155</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove several evidently unused dependencies: libjpeg-devel,
+  pkgconfig(IL), pkgconfig(gnutls), pkgconfig(libidn), and m4.
+  Some of them seem to be added by the build system, so we have to
+  remove them the hard way.
+- Don't build on s390x: not relevant and doesn't build.
+</comment>
+    <requestid>1272851</requestid>
+  </revision>
 </revisionlist>

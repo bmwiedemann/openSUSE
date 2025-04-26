@@ -49,21 +49,17 @@ BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libXcursor-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_system-devel
-BuildRequires:  libjpeg-devel
 BuildRequires:  libminiupnpc-devel
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-curses
 BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-devel
-BuildRequires:  pkgconfig(IL)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gloox)
-BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libenet)
-BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libsodium) >= 1.0.13
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openal)
@@ -72,7 +68,6 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
 Requires:       0ad-data = %{version}
-BuildRequires:  m4
 %if %{with nvtt} && %{with system_nvtt}
 BuildRequires:  nvidia-texture-tools >= 2.1
 %endif
@@ -83,6 +78,7 @@ BuildRequires:  pkgconfig(mozjs-115)
 BuildRequires:  cargo
 BuildRequires:  rust
 %endif
+ExcludeArch:    s390x
 
 %description
 0 A.D. (pronounced "zero ey-dee") is a real-time strategy (RTS) game
@@ -131,6 +127,10 @@ export CARGO_PROFILE_RELEASE_LTO=true
 %endif
 
 pushd build/workspaces/gcc
+# Not sure where those dependencies are coming from. We don't seem to need them.
+grep " -lidn -lgnutls" pyrogenesis.make && \
+    sed -i "s/ -lidn -lgnutls//g" pyrogenesis.make
+
 %make_build verbose=1
 popd
 
