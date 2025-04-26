@@ -40,4 +40,33 @@
     <comment>Update to version 1.5.1 (forwarded request 1178247 from crameleon)</comment>
     <requestid>1178320</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b53b41817942f76524bf4aeb4d969650</srcmd5>
+    <version>1.6.0</version>
+    <time>1745699120</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.0:
+  * ci: Upgrade goreleaser
+  * fix: Tag stripping in plain mode (#839)
+  * chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 (#838)
+  * chore(deps): Upgrade spinner, glamour, go-keyring and related deps (#833)
+  * feat: Add easy issue search to list cmd (#769)
+  * fix: Add shell completion to brew install; closes #651 (#795)
+  * feat: Allow adding internal comment on JSD (#825)
+  * feat: Accept multiple replace strings on clone (#811)
+  * dev: Upgrade docker config
+  * feat: Add option to output issue creation result as Json (#775)
+  * fix: use `tview.Escape` with standard square brackets (#828)
+  * chore(deps): Upgrade to go1.24
+  * chore(deps): bump golang.org/x/net from 0.33.0 to 0.36.0 (#831)
+  * feat: Respect API token for `mtls` auth (#783)
+  * fix: case insensitive sub-task comparison (#793)
+  * ci: Upgrade linter (#808)
+  * Update golang.org/x/net package to version 0.33.0 (#806)
+- Packaging improvements:
+  * Convert to using obs_scm with version in _service
+  * Generate separate completions packages
+  * Generate and include upstream-provided manpages (forwarded request 1272811 from jfkw)</comment>
+    <requestid>1272812</requestid>
+  </revision>
 </revisionlist>
