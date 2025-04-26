@@ -1,7 +1,7 @@
 #
 # spec file for package syncplay
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           syncplay
-Version:        1.7.3
+Version:        1.7.4
 Release:        0
 Summary:        Client/server to synchronize media playback on mpv/VLC on multiple computers
 License:        Apache-2.0

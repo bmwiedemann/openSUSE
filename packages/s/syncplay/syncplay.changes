@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Apr 26 09:27:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.4:
+  * Added ‘readiness override’ feature. If you can control a remove, you can
+    set someone a ready or not ready through the context menu in the list of 
+    who is playing what. Only works if the server is running v.1.7.4, but 
+    can change status for people using older clients. Adds the 
+    folderSearchWarningThreshold’ setting to the Synclay INI.
+  * Allow folder search timings to be tweaked for better FTP rmount support,
+    adding ‘folderSearchFirstFileTimeout’, ‘folderSearchTimeout’ and
+    ‘folderSearchDoubleCheckInterval’ settings to the Synclay INI
+  * Fix position not changing when playlist changed in mpv error
+  * Update Turkish translation
+  * Adjust QSplitter style
+  * Improved handling of big media directories
+  * Fix some rewind issues relating to file loads / playlist changes
+  * Set mpv.net ‘auto load folder’ setting to false to fix playlist
+    advancement bug
+
+-------------------------------------------------------------------
 Thu May  9 19:29:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.3:
