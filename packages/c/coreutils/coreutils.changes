@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 13 18:32:55 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-i18n.patch: update gnulib mbchar+mbfile to the commit
+  used by coreutils-9.7:
+    https://git.sv.gnu.org/cgit/gnulib.git/commit/?id=41e7b7e0d
+    mainly to pick up these commits:
+    - c67c553e758 mbfile: Support pushback characters also right before EOF.
+    - 87ee7ef66ee mbfile: Allow 2 pushback characters.
+
+-------------------------------------------------------------------
 Thu Apr 10 20:56:23 UTC 2025 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - Update to 9.7:

@@ -17,8 +17,8 @@
 
 
 %define srcversion 6.14
-%define patchversion 6.14.3
-%define git_commit 493ad77ba98a034285665e3ab1b19655d20d3b53
+%define patchversion 6.14.4
+%define git_commit 584fafacabcb48507d4102e6f4f7cc782ede58ae
 %define variant %{nil}
 %define gcc_package gcc
 %define gcc_compiler gcc
@@ -28,9 +28,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-source
-Version:        6.14.3
+Version:        6.14.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g493ad77
+Release:        <RELEASE>.g584fafa
 %else
 Release:        0
 %endif
@@ -323,7 +323,7 @@ popd
 
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # OBS checks don't like /usr/bin/env in script interpreter lines
-grep -Elr '^#! */usr/bin/env ' %{buildroot}/usr/src/linux* | while read f; do
+grep -Elr '^#! */(usr/)?bin/env ' %{buildroot}/usr/src/linux* | while read f; do
     sed -re '1 { s_^#! */usr/bin/env +/_#!/_ ; s_^#! */usr/bin/env +([^/])_#!/usr/bin/\1_ }' \
         -re '1 { s_^#! */bin/env +/_#!/_ ; s_^#! */bin/env +([^/])_#!/usr/bin/\1_ }' -i "$f"
 done

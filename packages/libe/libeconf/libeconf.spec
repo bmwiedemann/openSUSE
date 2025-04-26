@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        MIT

@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %define skip_python39 1
 Name:           python-libeconf
-Version:        0.7.7
+Version:        0.7.8
 Release:        0
 Summary:        Python bindings for libeconf
 License:        MIT

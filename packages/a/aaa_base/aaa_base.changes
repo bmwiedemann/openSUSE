@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 25 08:08:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 84.87+git20250425.1664836:
+  * Fix bug boo#1241205 by adding missed endif
+  * alias.bash: future-proof egrep/fgrep color aliases
+
+-------------------------------------------------------------------
 Thu Apr 10 12:35:44 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 84.87+git20250410.71df276:

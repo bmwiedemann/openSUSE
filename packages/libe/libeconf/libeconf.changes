@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 08:25:57 UTC 2025 - schubi@suse.com
+
+- Update to version 0.7.8:
+  * Fix memory access if there are a comment character inside a comment.
+
+-------------------------------------------------------------------
 Mon Jan 13 09:44:55 UTC 2025 - schubi@suse.com
 
 - Update to version 0.7.7:

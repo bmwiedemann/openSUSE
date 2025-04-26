@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.14
-%define patchversion 6.14.3
-%define git_commit 493ad77ba98a034285665e3ab1b19655d20d3b53
+%define patchversion 6.14.4
+%define git_commit 584fafacabcb48507d4102e6f4f7cc782ede58ae
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-pae
-Version:        6.14.3
+Version:        6.14.4
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g493ad77
+Release:        <RELEASE>.g584fafa
 %else
 Release:        0
 %endif
@@ -884,7 +884,7 @@ relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/li
 /usr/src/linux-obj/%kmp_target_cpu
 %endif
 
-%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%flavor" == "rt" && 0%livepatch_rt))
+%if "%livepatch" != "" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y" && (("%variant" == "" && %build_default) || ("%build_flavor" == "rt" && 0%livepatch_rt))
 %if "%livepatch" == "kgraft"
 %define patch_package %{livepatch}-patch
 %else

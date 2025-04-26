@@ -4266,4 +4266,12 @@
   * Modern s390x uses TERM=linux for ttysclp&lt;X&gt;</comment>
     <requestid>1268392</requestid>
   </revision>
+  <revision rev="509" vrev="1">
+    <srcmd5>be7cc930e58e37c7095957da51837cd7</srcmd5>
+    <version>84.87+git20250425.1664836</version>
+    <time>1745699098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1272607</requestid>
+  </revision>
 </revisionlist>
