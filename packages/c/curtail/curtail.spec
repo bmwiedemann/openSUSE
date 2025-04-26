@@ -17,7 +17,7 @@
 
 
 Name:           curtail
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        A simple and useful image compressor
 License:        GPL-3.0-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
 Requires:       jpegoptim
 Requires:       libwebp-tools
-Requires:       optipng
+Requires:       oxipng
 Requires:       pngquant
 Requires:       python3-gobject-Gdk
 BuildArch:      noarch

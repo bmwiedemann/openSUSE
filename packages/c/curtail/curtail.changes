@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 23 04:48:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.13.0:
+  * Add multi-threading.
+  * Add new preference to select between prefix and suffix for new
+    files.
+  * Use AdwToggleGroup for lossless/lossy selector.
+  * Updated translations.
+- Switch Requires from optipng to oxipng in keeping with upstream.
+
+-------------------------------------------------------------------
 Thu Jan 23 03:33:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.12.0:
