@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Apr 25 18:25:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.2:
+  * chore(deps): update anchore dependencies (#2622)
+  * chore(deps): update tools to latest versions (#2619)
+  * fix: only fallback to language if language is non-blank (#2621)
+
+-------------------------------------------------------------------
+Fri Apr 25 06:06:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.91.1:
+  * Bug Fixes
+    - Assume that empty versions should match on all possible
+      versions [#2591 @wagoodman]
+    - Fix severity field in db search vuln [#2589 @wagoodman]
+    - Recover from panic within a matcher [#2590 @wagoodman]
+    - Should only check maven central if pom info is missing [#2216
+      #2547 @tdunlap607]
+    - grype db search GHSA-mrrh-fwg8-r2c3 doesn't return results
+      [#2530]
+    - Grype stopped reporting vulnerabilities after upgrade [#2608
+      #2610 @willmurphyscode]
+    - Grype does not handle cache-dir containing ~ correctly [#2599
+      #2600 @kzantow]
+    - Grype should expand ~ in paths in config file [#2024 #2600
+      @kzantow]
+    - False Positive: Multiple old CVEs in chromium 134.0.6998.117
+      for apk ecosystem [#2581]
+    - Missing grype DB update from 20250411 [#2593]
+    - Does not fill in the Level field of the SARIF result object
+      [#2511 #2571 @bdovaz]
+  * Additional Changes
+    - add timing info to log output [#2597 @kzantow]
+    - Replace os.ReadDir with afero.ReadDir for consistency [#2579
+      @joe-ton]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2616)
+    - chore(deps): bump github/codeql-action from 3.28.15 to
+      3.28.16 (#2611)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#2612)
+    - chore(deps): bump actions/setup-python in
+      /.github/actions/bootstrap (#2614)
+    - chore(deps): update tools to latest versions (#2613)
+    - chore(deps): update tools to latest versions (#2609)
+    - chore(deps): bump github.com/docker/docker (#2604)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype from
+      1.4.8 to 1.4.9 (#2605)
+    - chore(deps): bump github.com/docker/docker (#2602)
+    - chore(deps): update tools to latest versions (#2595)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.2
+      to 0.1.3 (#2598)
+    - chore(deps): update tools to latest versions (#2583)
+    - chore(deps): bump github/codeql-action from 3.28.13 to
+      3.28.15 (#2584)
+    - chore(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0
+      (#2585)
+    - chore(deps): update tools to latest versions (#2561)
+
+-------------------------------------------------------------------
 Tue Apr 01 17:31:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.91.0:
