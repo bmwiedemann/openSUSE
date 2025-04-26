@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 26 02:27:34 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.41
+- Improve KeyvalsToKeycodes to work correctly also on Wayland
+  (The old code worked correctly only on X11)
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/691)
+- Improve starting of the setup tool, make it work correctly when starting from a git clone
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/692)
+- Translation update from Weblate (ar 99.6%)
+
+-------------------------------------------------------------------
 Wed Apr 23 02:37:48 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.38
