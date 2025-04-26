@@ -100,7 +100,6 @@ Requires:       python3-python-pam
 Requires:       python3-pytz
 # cinnamon-settings theme module
 Requires:       python3-tinycss2
-Requires:       v4l-tools
 Requires:       wget
 Requires:       xdg-user-dirs
 Requires:       xdg-user-dirs-gtk
