@@ -1516,4 +1516,51 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1253538</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>24b3f41f5b9a5788427dc9b67e4098b9</srcmd5>
+    <version>92.0</version>
+    <time>1745699167</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 92.0
+  New features and enhancements:
+  * mkvmerge: FLAC reader: pictures embedded into the FLAC file
+    were already handled as attachments, but they were left in
+    the codec initialization data as well. They're now removed
+    from the codec initialization data.
+  * mkvmerge: FLAC reader: padding metadata blocks will now be
+    removed from the codec initialization data.
+  * mkvmerge: FLAC reader: embedded Vorbis comments will now be
+    converted into Matroska comments or track/global header
+    fields when available (e.g. `TITLE` will become the segment
+    title &amp; track's name, `LANGUAGE` will become the track's
+    language). Copying of Vorbis comments that are converted
+    into actual Matroska tags can be prevented with the usual
+    options, e.g. `--no-track-tags`. The comments will also be
+    removed from the codec initialization data.
+  * mkvmerge, MKVToolNix GUI's chapter editor: when reading
+    simple (OGM-style) chapter files &amp; no character set is
+    given for the file, mkvmerge will try UTF-8 first before
+    falling back to the system's default encoding.
+  * MKVToolNix GUI: multiplexer: the special drag &amp; drop zones
+    added in v91 are now shown by default in new installations.
+  * MKVToolNix GUI: in new installations the main window will
+    now be sized at 75% of the screen's resolution initially
+    with a certain minimum initial size. This improves initial
+    readability on high DPI screens that use screen scaling
+    factors such as 150%.
+  Bug fixes:
+  * mkvmerge: Ogg reader: during identification the track tags
+    are now reported properly.
+  * MKVToolNix GUI: multiplexer: within the &quot;additional
+    options&quot;, both track-specific ones &amp; the global ones on the
+    &quot;Output&quot; tab, it wasn't possible to specify empty
+    (zero-length) arguments. With the intended syntax of two
+    consecutive single or double quotation marks the empty
+    arguments were simply skipped. This was fixed, and it is now
+    possible to specify e.g. `--title &quot;&quot;` in the global
+    &quot;Additional options&quot; in order to force no title to be written
+    ever.
+</comment>
+    <requestid>1272865</requestid>
+  </revision>
 </revisionlist>
