@@ -1,0 +1,22 @@
+Index: AppCSXCAD-0.2.3/CMakeLists.txt
+===================================================================
+--- AppCSXCAD-0.2.3.orig/CMakeLists.txt
++++ AppCSXCAD-0.2.3/CMakeLists.txt
+@@ -8,16 +8,12 @@ ENDIF()
+ 
+ PROJECT( AppCSXCAD CXX C)
+ 
+-cmake_minimum_required(VERSION 2.8)
++cmake_minimum_required(VERSION 3.10)
+ 
+ if (UNIX)
+     set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC" )
+ endif()
+ 
+-if(POLICY CMP0020)
+-  cmake_policy(SET CMP0020 OLD)
+-endif()
+-
+ IF(EXISTS ${PROJECT_SOURCE_DIR}/localConfig.cmake)
+    include(${PROJECT_SOURCE_DIR}/localConfig.cmake)
+ ENDIF()

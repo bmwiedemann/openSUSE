@@ -26,9 +26,11 @@ URL:            https://openems.de
 Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM - https://github.com/thliebig/AppCSXCAD/pull/12
 Patch0:         https://github.com/thliebig/AppCSXCAD/pull/12.patch#/fix-flag-usage.patch
+# PATCH-FIX-SUSE: cmake4 compatibility
+Patch1:         cmake4-compat.patch
 BuildRequires:  CSXCAD-devel
 BuildRequires:  QCSXCAD-devel
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
@@ -51,13 +53,9 @@ Minimal GUI Application using the QCSXCAD library.
   -DENABLE_RPATH:Bool=Off
 
 %cmake_build
-ls -l
-cat *install*
-readelf -d ./AppCSXCAD
 
 %install
 %cmake_install
-readelf -d %{buildroot}/%{_bindir}/AppCSXCAD
 
 %files
 %license COPYING

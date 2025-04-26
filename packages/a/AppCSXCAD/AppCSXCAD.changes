@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 25 19:21:59 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Fix build with cmake 4: (bsc#1239788)
+  * Add patch cmake4-compat.patch
+  * Clean-up specfile
+
+-------------------------------------------------------------------
 Tue Apr 15 08:22:12 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: glew-devel as it is not used for build.
