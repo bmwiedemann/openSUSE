@@ -55,4 +55,12 @@
     <comment>Require extra-cmake-modules at build time</comment>
     <requestid>1133541</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a40d279a9d1e681709057e3a8c6ebeb0</srcmd5>
+    <version>6.0</version>
+    <time>1745699131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1272804</requestid>
+  </revision>
 </revisionlist>

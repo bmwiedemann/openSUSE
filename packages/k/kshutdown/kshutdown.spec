@@ -1,7 +1,7 @@
 #
 # spec file for package kshutdown
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright © 2010 Lubos Lunak <llunak@novell.com>
 # Copyright © 2011 Buschmann <buschmann23@opensuse.org>
 # Copyright © 2014–2019 Markus S <kamikazow@opensuse.org>
@@ -20,34 +20,28 @@
 
 
 Name:           kshutdown
-Version:        5.2
+Version:        6.0
 Release:        0
 Summary:        Graphical shutdown utility
 License:        GPL-2.0-or-later
-Group:          System/GUI/KDE
 URL:            https://kshutdown.sourceforge.io/
-Source0:        %{name}-source-%{version}.zip
-BuildRequires:  extra-cmake-modules
-Requires(post):   hicolor-icon-theme
-Requires(post):   update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Source0:        https://downloads.sourceforge.net/project/kshutdown/KShutdown/%{version}/%{name}-source-%{version}.zip
+BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
+BuildRequires:  gettext-tools
 BuildRequires:  unzip
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5ConfigWidgets)
-BuildRequires:  cmake(KF5Crash)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IdleTime)
-BuildRequires:  cmake(KF5Notifications)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  cmake(KF6Config)
+BuildRequires:  cmake(KF6ConfigWidgets)
+BuildRequires:  cmake(KF6CoreAddons)
+BuildRequires:  cmake(KF6Crash)
+BuildRequires:  cmake(KF6DBusAddons)
+BuildRequires:  cmake(KF6GlobalAccel)
+BuildRequires:  cmake(KF6I18n)
+BuildRequires:  cmake(KF6IdleTime)
+BuildRequires:  cmake(KF6Notifications)
+BuildRequires:  cmake(KF6NotifyConfig)
+BuildRequires:  cmake(KF6StatusNotifierItem)
+BuildRequires:  cmake(KF6XmlGui)
 
 %description
 KShutdown is a graphical shutdown utility that works
@@ -57,33 +51,25 @@ various time and delay options, command-line support,
 and notifications.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1
 
 %build
-%cmake_kf5 -d build -- -DKS_KF5=ON -DCMAKE_CXX_STANDARD=14
-%make_jobs
+%cmake_kf6
+%kf6_build
 
 %install
-%kf5_makeinstall -C build
-
-%suse_update_desktop_file %{name}
+%kf6_install
 
 %find_lang %{name}
 
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
+%check
+desktop-file-validate %{buildroot}%{_kf6_applicationsdir}/%{name}.desktop
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
-%doc ChangeLog LICENSE TODO
-%{_kf5_bindir}/%{name}
-%{_kf5_applicationsdir}/%{name}.desktop
-%{_kf5_notifydir}/%{name}.notifyrc
-%{_kf5_iconsdir}/hicolor/*/apps/%{name}.png
+%license LICENSE
+%doc ChangeLog README.html TODO
+%{_kf6_bindir}/%{name}
+%{_kf6_applicationsdir}/%{name}.desktop
+%{_kf6_iconsdir}/hicolor/*/apps/%{name}.png
 
 %changelog

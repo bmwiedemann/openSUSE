@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Apr 20 09:57:05 UTC 2025 - munix9@googlemail.com
+
+- Update to version 6.0
+  * Version 6.0 works with both Qt 5 (requires 5.15.x) and Qt 6
+  * Version 6.0 works with both KDE Plasma 5 and Plasma 6
+  * NEW: Linux: Added "Unlock Screen" action
+  * NEW: Added the Ukrainian translation
+  * NEW: Show Progress Bar settings menu also in the Preferences window
+  * Updated the Polish translation
+  * Fixed missing Lithuanian translation in Qt/win32 Build
+  * Auto complete xscreensaver command and File Monitor path
+  * Hide "Check for Updates" menu item if not needed
+  * Improve confirmation messages
+  * Remove underline from links
+  * Minor UI tweaks
+  * FIXED: Wait for "grub-reboot" process start
+  * NEW: Boot entry name starting with "KS:-" is dispayed as a menu/list separator
+  * Added grub-reboot auto complete
+  * Quote grub-reboot "%entry" parameter
+  * Fixed XDG Autostart directory detection
+  * Tools → Run: Added "systemd-analyze time" command
+  * System Information: Clickable Config/Data directory links
+  * Extras: Cleanup help menu items
+  * Bookmarks: Confirm item remove
+  * Support alias names (e.g. both "sleep" and "suspend")
+  * Improved error messages
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:21 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time
