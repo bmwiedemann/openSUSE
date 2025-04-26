@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 26 10:26:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+
+- Update to version 20250425:
+  * th350: Fix FM preset failure in settings on US version
+  * dr735: Fix handling out-of-range extra settings
+  * Update bg_BG.po
+  * New settings for Wouxun KG-805g
+
+-------------------------------------------------------------------
 Fri Apr  4 15:30:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250404:
