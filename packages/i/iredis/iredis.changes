@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 16:49:07 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.15.1:
+  * fix xgroup help command output
+
+-------------------------------------------------------------------
 Sat Jan 25 17:55:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - skip test_using_pager_when_rows_too_high, test_using_pager_works_for_help, test_pager_works_for_peek, test_using_pager_from_config, test_using_pager_from_config_when_env_config_both_set because of https://github.com/laixintao/iredis/i

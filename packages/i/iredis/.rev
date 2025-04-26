@@ -112,4 +112,12 @@ ssues/495
 - run tests test_peek_zset_fetch_all, test_peek_zset_fetch_part again</comment>
     <requestid>1240291</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9308ddbc7afb1b552238a55a84d0310f</srcmd5>
+    <version>1.15.1</version>
+    <time>1745699117</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1272792</requestid>
+  </revision>
 </revisionlist>
