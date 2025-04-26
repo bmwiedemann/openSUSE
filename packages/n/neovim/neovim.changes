@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Apr 26 16:23:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.11.1:
+  * fix(ui): wincmd _ should not increase 'cmdheight' above 0
+  * fix(display): scroll logic does not take into account concealed topline
+  * fix(health): message should mention "vim.provider"
+  * fragile setup to get (preferred) keys from key_name_entry
+  * fix(mouse): crash with click on win-separator in statusline
+  * fix(cmdline): empty ext_cmdline block events for :<CR>
+  * fix(provider)!: drop Python 3.7, 3.8 support
+  * fix(lsp): warn on missing config in :checkhealth
+  * fix(cmdline): avoid empty @: register after :<CR>
+  * fix(pum): fix heap-buffer-overflow with 'rightleft'
+  * fix(api): use original LHS in keymap error message
+  * fix(checkhealth): don't override user "q" keymap
+  * fix(desktop): cannot open filename with spaces using OS file manager
+  * fix(checkhealth): check g:loaded_xx_provider for all providers
+  * fix(provider): misleading :checkhealth if user sets g:loaded_python3
+  * feat(checkhealth): use emoji for OK/WARN/ERROR
+  * vim-patch:9.1.1260: Hang when filtering buffer with NUL bytes
+  * docs: faq, lua packages
+  * fix(vim.lsp.inlay_hint): requesting inlay_hints even when disabled
+  * fix(checkhealth): check outdated pynvim version properly
+  * fix(defaults): visual-mode [[,]] for :terminal shell prompts
+  * fix(treesitter): don't memoize modified headings
+  * fix(defaults): enable :terminal [[,]] motion in operator-pending mode
+  * feat(float): 'winborder' "bold" style
+  * docs: remove duplicate news file
+  * test(float): restore border tests
+  * fix(display): wrong cursor column with 'concealcursor' = "n"
+  * fix(move): adjust for concealed lines above topline after scrolling up
+  * docs(eval): fix lnum type for functions using tv_get_lnum
+  * docs(eval): fix dict param type of mapset
+  * fix(window): crash on negative window height with 'winbar'
+  * fix(lsp): better handling of "*" configs
+  * fix(api): use E226 instead of E227 for duplicate abbreviation
+  * fix(api): nvim_set_keymap() throws error even in pcall()
+  * fix(highlight): no match highlight during :substitute prompt
+  * test(lua/secure_spec): fix failure with long path
+  * feat(clipboard): g:clipboard="foo" forces the "foo" clipboard tool
+  * docs(diagnostic): mention severity in Opts.VirtualLines
+  * feat(vim.hl): allow multiple timed highlights simultaneously
+  * docs: news.txt
+  * test(lua/hl_spec): fix hang on exit with ASAN
+  * test(plugin/shada_spec): failure if timezone isn't a whole hour ahead of UTC
+  * fix(messages): verbose message emitted without kind
+  * fix: bug in stylize_markdown
+  * fix(vim.hl): nvim_buf_del_extmark on invalid buffer
+  * fix(health): expecting nonexistent "inotifywait" function
+  * fix(treesitter): not refreshing virtualtext contents
+  * fix(decor): enable decoration provider in on_start
+  * vim-patch:9.1.1286: filetype: help files not detected when 'iskeyword' includes
+  * fix(display): scroll redrawing doesn't account for virt_lines
+  * fix(editor): respect [+cmd] when executing :drop
+  * fix(lsp): "bold" border for vim.lsp.buf.hover
+  * fix(marks): wrong display after inserting/deleting lines
+  * fix(column): don't count signs on lines beyond eob
+  * docs: clipboard, eval
+  * fix(man.lua): useless executability check
+  * fix(mouse): mouseclick after conceal_lines is miscalculated
+  * fix(completion): avoid freeing uninitialized value
+  * fix(marks): clamp conceal_lines corrected line number
+  * vim-patch:9.1.1303: missing out-of-memory check in linematch.c
+  * fix(mouse): do not fetch clipboard twice when pasting with middle button
+  * fix(vim.system): unclear non-executable message
+  * fix(treesitter): fix :InspectTree incorrect injections
+  * fix(lsp): opts.reuse_win does not jump if buf is already open
+  * vim-patch:9.1.1310: completion: redundant check for preinsert effect
+  * vim-patch:9.0.1653: Amiga: default 'viewdir' may not work
+  * vim-patch:9.0.1654: MS-Windows: test for default 'viewdir' fails
+  * vim-patch:9.1.0721: tests: test_mksession does not consider XDG_CONFIG_HOME
+  * vim-patch:9.1.1317: noisy error when restoring folds from session fails
+  * vim-patch:9.1.1314: max allowed string width too small
+  * vim-patch:9.1.1318: tests: test_format fails
+  * fix(messages): single msg_show event for multiple :set options
+  * fix(api): wrong return value with reverse range + overlap
+  * perf(snippet): use "[count]|" to move cursor
+  * fix(tui): ensure all pending escape sequences are processed
+  * vim-patch:9.1.1305: completion menu active after switching windows/tabs
+  * fix(events): avoid superfluous CursorMovedI on first autocmd
+  * fix(snippet): use <cmd>call cursor() for visual range
+  * vim-patch:9.1.1337: Undo corrupted with 'completeopt' "preinsert" when switching buffer
+  * feat(lsp): workspace_required
+  * fix(ui): exclude unfocusable windows from 'complete' "w" completion
+  * fix(lsp): prioritize showing active signature
+  * fix(lsp): cycling signatures with the default config.focusable
+- set python3-neovim only as a Suggests, not Recommends
+
+-------------------------------------------------------------------
 Wed Mar 26 16:03:04 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
 
 - Update to 0.11.0

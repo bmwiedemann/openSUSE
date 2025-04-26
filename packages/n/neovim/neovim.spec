@@ -22,7 +22,7 @@
 %bcond_without luajit
 %endif
 Name:           neovim
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim AND GPL-3.0-or-later AND CC-BY-3.0
@@ -79,9 +79,9 @@ Requires:       tree-sitter-vim >= 0.5.0
 Requires:       tree-sitter-vimdoc >= 3.0.1
 Requires:       xdg-utils
 Recommends:     inotify-tools
-Recommends:     python3-neovim
 Recommends:     wl-clipboard
 Recommends:     xsel
+Suggests:       python3-neovim
 Suggests:       ripgrep
 Provides:       nvim
 %lang_package

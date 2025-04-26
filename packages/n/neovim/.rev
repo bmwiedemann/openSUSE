@@ -1501,4 +1501,41 @@ FIXES (LSP):
     <comment> (forwarded request 1269227 from rrahl0)</comment>
     <requestid>1269228</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>b5ce7f43db661ddcf76f3f0413200657</srcmd5>
+    <version>0.11.1</version>
+    <time>1745699164</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.1:
+  * fix(ui): wincmd _ should not increase 'cmdheight' above 0
+  * fix(display): scroll logic does not take into account concealed topline
+  * fix(health): message should mention &quot;vim.provider&quot;
+  * fragile setup to get (preferred) keys from key_name_entry
+  * fix(mouse): crash with click on win-separator in statusline
+  * fix(cmdline): empty ext_cmdline block events for :&lt;CR&gt;
+  * fix(provider)!: drop Python 3.7, 3.8 support
+  * fix(lsp): warn on missing config in :checkhealth
+  * fix(cmdline): avoid empty @: register after :&lt;CR&gt;
+  * fix(pum): fix heap-buffer-overflow with 'rightleft'
+  * fix(api): use original LHS in keymap error message
+  * fix(checkhealth): don't override user &quot;q&quot; keymap
+  * fix(desktop): cannot open filename with spaces using OS file manager
+  * fix(checkhealth): check g:loaded_xx_provider for all providers
+  * fix(provider): misleading :checkhealth if user sets g:loaded_python3
+  * feat(checkhealth): use emoji for OK/WARN/ERROR
+  * vim-patch:9.1.1260: Hang when filtering buffer with NUL bytes
+  * docs: faq, lua packages
+  * fix(vim.lsp.inlay_hint): requesting inlay_hints even when disabled
+  * fix(checkhealth): check outdated pynvim version properly
+  * fix(defaults): visual-mode [[,]] for :terminal shell prompts
+  * fix(treesitter): don't memoize modified headings
+  * fix(defaults): enable :terminal [[,]] motion in operator-pending mode
+  * feat(float): 'winborder' &quot;bold&quot; style
+  * docs: remove duplicate news file
+  * test(float): restore border tests
+  * fix(display): wrong cursor column with 'concealcursor' = &quot;n&quot;
+  * fix(move): adjust for concealed lines above topline after scrolling up
+  * docs(eval): fix lnum type for functions using tv_get_lnum (forwarded request 1272858 from rrahl0)</comment>
+    <requestid>1272859</requestid>
+  </revision>
 </revisionlist>
