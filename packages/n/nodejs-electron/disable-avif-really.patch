@@ -1,0 +1,39 @@
+Cleanup after chromium-127-crabby.patch
+Do not advertise AVIF support to allow for graceful degradation.
+
+diff '--color=auto' -urp src/content/common/content_constants_internal.cc src.new/content/common/content_constants_internal.cc
+--- src/content/common/content_constants_internal.cc	2025-04-21 18:29:19.250307076 +0200
++++ src.new/content/common/content_constants_internal.cc	2025-04-23 18:12:33.518743675 +0200
+@@ -11,7 +11,7 @@ namespace content {
+ // 20MiB
+ const size_t kMaxLengthOfDataURLString = 1024 * 1024 * 20;
+ 
+-#if BUILDFLAG(ENABLE_AV1_DECODER)
++#if 0
+ const char kFrameAcceptHeaderValue[] =
+     "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,"
+     "image/webp,image/apng,*/*;q=0.8";
+diff '--color=auto' -urp src/third_party/blink/common/loader/network_utils.cc src.new/third_party/blink/common/loader/network_utils.cc
+--- src/third_party/blink/common/loader/network_utils.cc	2025-04-21 18:29:25.994307178 +0200
++++ src.new/third_party/blink/common/loader/network_utils.cc	2025-04-23 18:12:48.166740983 +0200
+@@ -34,7 +34,7 @@ bool AlwaysAccessNetwork(
+ }
+ 
+ const char* ImageAcceptHeader() {
+-#if BUILDFLAG(ENABLE_AV1_DECODER)
++#if 0
+   return "image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
+ #else
+   return "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8";
+diff '--color=auto' -urp src/third_party/blink/common/mime_util/mime_util.cc src.new/third_party/blink/common/mime_util/mime_util.cc
+--- src/third_party/blink/common/mime_util/mime_util.cc	2025-04-21 18:29:26.002307178 +0200
++++ src.new/third_party/blink/common/mime_util/mime_util.cc	2025-04-23 18:13:01.090738191 +0200
+@@ -41,7 +41,7 @@ constexpr auto kSupportedImageTypes = ba
+     "image/x-icon",              // ico
+     "image/x-xbitmap",           // xbm
+     "image/x-png",
+-#if BUILDFLAG(ENABLE_AV1_DECODER)
++#if 0
+     "image/avif",
+ #endif
+ });

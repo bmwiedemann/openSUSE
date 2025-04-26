@@ -1,0 +1,40 @@
+From 09a3abf8f4aca3b00ccbabc860b0819d7e3ea206 Mon Sep 17 00:00:00 2001
+From: Yunsik Jung <yunsik.jung@lge.com>
+Date: Fri, 21 Mar 2025 08:12:22 -0700
+Subject: [PATCH] Fix build error when "enable_video_effects=false" in Linux
+
+kVideoEffects is engaged even when ENABLE_VIDEO_EFFECTS is false.
+(https://crrev.com/c/5898146)
+However, "video_effects_sandbox_hook_linux.h" is not included when
+ENABLE_VIDEO_EFFECTS is false which caused build error.
+
+Thus, include "video_effects_sandbox_hook_linux.h" in Linux regardless
+of ENABLE_VIDEO_EFFECTS.
+
+Bug: N/A
+Change-Id: If0bb3f1b391a7960ee8ff9ad83d8c858a24cedb5
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6380633
+Reviewed-by: Rakina Zata Amni <rakina@chromium.org>
+Reviewed-by: Dave Tapuska <dtapuska@chromium.org>
+Commit-Queue: Dave Tapuska <dtapuska@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1436051}
+---
+ content/utility/utility_main.cc | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/content/utility/utility_main.cc b/content/utility/utility_main.cc
+index 7456eab4558962..ffb16be8ce8541 100644
+--- a/content/utility/utility_main.cc
++++ b/content/utility/utility_main.cc
+@@ -66,9 +66,9 @@
+ 
+ #endif  // BUILDFLAG(IS_LINUX) || BUILDFLAG(IS_CHROMEOS)
+ 
+-#if BUILDFLAG(ENABLE_VIDEO_EFFECTS) && BUILDFLAG(IS_LINUX)
++#if BUILDFLAG(IS_LINUX)
+ #include "services/video_effects/video_effects_sandbox_hook_linux.h"  // nogncheck
+-#endif  // BUILDFLAG(ENABLE_VIDEO_EFFECTS) && BUILDFLAG(IS_LINUX)
++#endif  // BUILDFLAG(IS_LINUX)
+ 
+ #if BUILDFLAG(IS_CHROMEOS)
+ #include "chromeos/ash/components/assistant/buildflags.h"

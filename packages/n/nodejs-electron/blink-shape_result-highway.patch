@@ -1,0 +1,16 @@
+--- src/third_party/blink/renderer/platform/fonts/shaping/shape_result.h.orig	2025-04-23 20:35:41.224982139 +0200
++++ src/third_party/blink/renderer/platform/fonts/shaping/shape_result.h	2025-04-23 21:44:29.556139260 +0200
+@@ -54,9 +54,13 @@
+ #include "ui/gfx/geometry/rect_f.h"
+ #include "ui/gfx/geometry/vector2d_f.h"
+ 
++#include <hwy/base.h>
++
+ #if defined(ARCH_CPU_X86_64) || defined(ARCH_CPU_ARM64)
++#if HWY_MAJOR > 1 || (HWY_MAJOR == 1 && HWY_MINOR >= 1)
+ #define USE_SIMD_FOR_COMPUTING_GLYPH_BOUNDS 1
+ #endif
++#endif
+ 
+ struct hb_buffer_t;
+ 

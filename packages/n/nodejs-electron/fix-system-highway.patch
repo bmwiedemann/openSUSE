@@ -1,0 +1,8 @@
+--- src/build/linux/unbundle/highway.gn.orig	2025-04-11 12:05:15.714160237 +0200
++++ src/build/linux/unbundle/highway.gn	2025-04-12 14:26:12.155738961 +0200
+@@ -18,3 +18,5 @@ source_set("libhwy") {
+   public_configs = [ ":libhwy_external_config" ]
+   public_deps = [ ":libhwy_shim" ]
+ }
++
++source_set("highway_tests") {}

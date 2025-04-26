@@ -1,0 +1,42 @@
+#Otherwise mksnapshot crashes
+#0  perfetto::ThreadTrack::Current () at ../../third_party/perfetto/src/tracing/track.cc:105
+#1  0x0000555555815084 in v8::internal::GCTracer::GCTracer () at ../../v8/src/heap/gc-tracer.cc:184
+#2  v8::internal::Heap::SetUpSpaces (this=0x555557507788, new_allocation_info=..., old_allocation_info=...) at ../../v8/src/heap/heap.cc:5788
+#3  0x000055555704895b in v8::internal::Isolate::Init(v8::internal::SnapshotData*, v8::internal::SnapshotData*, v8::internal::SnapshotData*, bool) [clone .isra.0] () at ../../v8/src/execution/isolate.cc:5556
+#4  0x0000555555b51ad3 in v8::internal::Isolate::InitWithoutSnapshot () at ../../v8/src/execution/isolate.cc:5184
+#5  v8::internal::SnapshotCreatorImpl::InitInternal (this=0x55555750c130, blob=0x0) at ../../v8/src/snapshot/snapshot.cc:868
+#6  0x0000555555654b15 in v8::internal::SnapshotCreatorImpl::SnapshotCreatorImpl () at ../../v8/src/snapshot/snapshot.cc:929
+#7  v8::SnapshotCreator::SnapshotCreator () at ../../v8/src/api/api.cc:552
+#8  main (argc=1465209528, argv=0x3ff0000000000000) at ../../v8/src/snapshot/mksnapshot.cc:298
+
+
+--- src/third_party/perfetto/src/tracing/internal/tracing_muxer_fake.h.orig	2025-04-16 14:38:49.066064367 +0200
++++ src/third_party/perfetto/src/tracing/internal/tracing_muxer_fake.h	2025-04-16 21:06:46.592994525 +0200
+@@ -44,11 +44,7 @@ class TracingMuxerFake : public TracingM
+   ~TracingMuxerFake() override;
+ 
+   static constexpr TracingMuxerFake* Get() {
+-#if PERFETTO_HAS_NO_DESTROY()
+     return &instance;
+-#else
+-    return nullptr;
+-#endif
+   }
+ 
+   // TracingMuxer implementation.
+--- src/third_party/perfetto/src/tracing/internal/tracing_muxer_fake.cc.orig	2025-04-16 14:38:49.066064367 +0200
++++ src/third_party/perfetto/src/tracing/internal/tracing_muxer_fake.cc	2025-04-16 21:13:09.044959936 +0200
+@@ -27,13 +27,11 @@ PERFETTO_NORETURN void FailUninitialized
+ 
+ }  // namespace
+ 
+-#if PERFETTO_HAS_NO_DESTROY()
+ // static
+ PERFETTO_NO_DESTROY TracingMuxerFake::FakePlatform
+     TracingMuxerFake::FakePlatform::instance{};
+ // static
+ PERFETTO_NO_DESTROY TracingMuxerFake TracingMuxerFake::instance{};
+-#endif  // PERFETTO_HAS_NO_DESTROY()
+ 
+ TracingMuxerFake::~TracingMuxerFake() = default;
+ 

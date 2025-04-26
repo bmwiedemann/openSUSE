@@ -1,14 +1,14 @@
---- a/skia/BUILD.gn
-+++ b/skia/BUILD.gn
-@@ -8,7 +8,6 @@
+--- src/skia/BUILD.gn.orig	2025-04-11 12:05:22.085153891 +0200
++++ src/skia/BUILD.gn	2025-04-11 20:35:59.999827501 +0200
+@@ -8,7 +8,6 @@ import("//build/config/features.gni")
  import("//build/config/freetype/freetype.gni")
  import("//build/config/rust.gni")
  import("//build/config/sanitizers/sanitizers.gni")
 -import("//build/rust/rust_static_library.gni")
  import("//gpu/vulkan/features.gni")
- import("//testing/test.gni")
- import("//third_party/skia/gn/shared_sources.gni")
-@@ -47,27 +46,6 @@
+ import("//skia/skia.gni")
+ import("//testing/libfuzzer/fuzzer_test.gni")
+@@ -37,27 +36,6 @@ buildflag_header("buildflags") {
    ]
  }
  
@@ -23,9 +23,9 @@
 -  cxx_bindings = skia_fontations_bridge_sources
 -  deps = [
 -    ":path_bridge",
--    "//third_party/rust/font_types/v0_7:lib",
--    "//third_party/rust/read_fonts/v0_22:lib",
--    "//third_party/rust/skrifa/v0_22:lib",
+-    "//third_party/rust/font_types/v0_8:lib",
+-    "//third_party/rust/read_fonts/v0_25:lib",
+-    "//third_party/rust/skrifa/v0_26:lib",
 -  ]
 -  configs -= [ "//build/config/compiler:chromium_code" ]
 -  configs += [
@@ -36,14 +36,21 @@
  
  # External-facing config for dependent code.
  config("skia_config") {
-@@ -394,15 +373,9 @@
-     # See SK_TYPEFACE_FACTORY_FREETYPE
-     sources += skia_ports_freetype_sources
-     sources += skia_ports_fontmgr_custom_sources
+@@ -182,7 +160,6 @@ config("skia_library_config") {
+   if (use_blink && enable_freetype) {
+     defines += [
+       "SK_TYPEFACE_FACTORY_FREETYPE",
+-      "SK_TYPEFACE_FACTORY_FONTATIONS",
+       "SK_FONTMGR_FREETYPE_EMPTY_AVAILABLE",
+     ]
+   }
+@@ -417,14 +394,6 @@ component("skia") {
+       public += skia_ports_fontmgr_empty_public
+     }
+     sources += skia_ports_typeface_proxy_sources
 -    sources += skia_ports_typeface_fontations_sources
-     sources += skia_ports_fontmgr_empty_sources
-     public += skia_ports_fontmgr_empty_public
- 
+-    sources += skia_ports_fontmgr_fontations_sources
+-
 -    # Fontations Rust/C++ bridge interfaces.
 -    deps += [
 -      ":bridge_rust_side",
@@ -52,17 +59,32 @@
    }
  
    if (is_win) {
---- a/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc
-+++ b/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc
-@@ -12,7 +12,6 @@
- #include "third_party/blink/renderer/platform/fonts/opentype/font_format_check.h"
+@@ -719,13 +688,7 @@ skia_source_set("skia_core_and_effects")
+     # skia_core_and_effects rather than the other way around.
+     public_deps = [ "//third_party/dawn/include/dawn:cpp_headers" ]
+   }
+-  if (use_blink) {
+-    # Fontations Rust/C++ bridge interfaces, needed by SkTypeface.
+-    deps += [
+-      ":bridge_rust_side",
+-      ":path_bridge",
+-    ]
+-  }
++
+   visibility = [ ":skia" ]
+ }
+ 
+--- src/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc.orig	2025-04-11 12:05:22.929220697 +0200
++++ src/third_party/blink/renderer/platform/fonts/web_font_typeface_factory.cc	2025-04-11 20:35:59.999827501 +0200
+@@ -13,7 +13,6 @@
+ #include "third_party/freetype_buildflags.h"
  #include "third_party/skia/include/core/SkStream.h"
  #include "third_party/skia/include/core/SkTypeface.h"
 -#include "third_party/skia/include/ports/SkTypeface_fontations.h"
  
  #if BUILDFLAG(IS_WIN)
  #include "third_party/blink/renderer/platform/fonts/win/dwrite_font_format_support.h"
-@@ -54,7 +53,7 @@
+@@ -55,7 +54,7 @@ bool IsFreeTypeSystemRasterizer() {
  }
  
  sk_sp<SkTypeface> MakeTypefaceDefaultFontMgr(sk_sp<SkData> data) {
@@ -71,7 +93,7 @@
    if (RuntimeEnabledFeatures::FontationsFontBackendEnabled()) {
      std::unique_ptr<SkStreamAsset> stream(new SkMemoryStream(data));
      return SkTypeface_Make_Fontations(std::move(stream), SkFontArguments());
-@@ -82,10 +81,6 @@
+@@ -83,10 +82,6 @@ sk_sp<SkTypeface> MakeTypefaceFallback(s
  }
  #endif
  
@@ -82,7 +104,7 @@
  
  sk_sp<SkTypeface> MakeVariationsTypeface(
      sk_sp<SkData> data,
-@@ -187,7 +182,6 @@
+@@ -188,7 +183,6 @@ bool WebFontTypefaceFactory::CreateTypef
    const FontFormatCheck format_check(data);
    const FontInstantiator instantiator = {
        MakeTypefaceDefaultFontMgr,
@@ -90,4 +112,3 @@
  #if BUILDFLAG(IS_WIN) || BUILDFLAG(IS_APPLE)
        MakeTypefaceFallback,
  #endif
-

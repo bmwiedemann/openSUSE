@@ -1,0 +1,35 @@
+From 4ca8cffec2e6dea43de24a6a9d88095b73ab10f4 Mon Sep 17 00:00:00 2001
+From: Ivan Murashov <ivan.murashov@lge.com>
+Date: Wed, 19 Feb 2025 22:59:45 -0800
+Subject: [PATCH] IWYU: Add missing include for std::optional usage in
+ media_session_uma_helper.h
+
+In the CL https://crrev.com/c/6204145 used std::optional in
+the content/browser/media/session/media_session_uma_helper.h,
+but corresponding include was missed.
+Added missing include for std::optional usage.
+
+Bug: 41455655
+Change-Id: I482a496f6f72762f02e8e6e1484a7eae58147148
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6279927
+Reviewed-by: Colin Blundell <blundell@chromium.org>
+Commit-Queue: Ivan Murashov <ivan.murashov@lge.com>
+Reviewed-by: Tommy Steimel <steimel@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1422370}
+---
+ content/browser/media/session/media_session_uma_helper.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/content/browser/media/session/media_session_uma_helper.h b/content/browser/media/session/media_session_uma_helper.h
+index 70000267af9687..51dd098826020c 100644
+--- a/content/browser/media/session/media_session_uma_helper.h
++++ b/content/browser/media/session/media_session_uma_helper.h
+@@ -5,6 +5,8 @@
+ #ifndef CONTENT_BROWSER_MEDIA_SESSION_MEDIA_SESSION_UMA_HELPER_H_
+ #define CONTENT_BROWSER_MEDIA_SESSION_MEDIA_SESSION_UMA_HELPER_H_
+ 
++#include <optional>
++
+ #include "base/memory/raw_ptr.h"
+ #include "base/time/clock.h"
+ #include "base/time/time.h"

@@ -73,9 +73,9 @@ Use -fpic for code which goes only in dlls (gives smaller code),
    sources = [
      "compression_utils_portable.cc",
      "compression_utils_portable.h",
---- src/ui/qt/BUILD.gn.old	2022-12-02 23:49:17.792117400 +0100
-+++ src/ui/qt/BUILD.gn	2022-12-04 14:32:48.407196100 +0100
-@@ -43,6 +43,8 @@
+--- src/ui/qt/BUILD.gn.orig	2025-04-10 19:56:03.150817690 +0200
++++ src/ui/qt/BUILD.gn	2025-04-11 11:42:11.904342754 +0200
+@@ -39,6 +39,8 @@ source_set("qt_interface") {
    # target instead.
    public = [ "qt_interface.h" ]
    sources = [ "qt_interface.cc" ]
@@ -84,7 +84,7 @@ Use -fpic for code which goes only in dlls (gives smaller code),
  }
  
  template("qt_shim") {
-@@ -76,6 +78,8 @@
+@@ -99,6 +101,8 @@ template("qt_shim") {
        sources += get_target_outputs(":generate_moc" + invoker.qt_version)
        deps += [ ":generate_moc" + invoker.qt_version ]
      }
@@ -92,7 +92,7 @@ Use -fpic for code which goes only in dlls (gives smaller code),
 +    asmflags = ["-fpic", "-fno-semantic-interposition"]
    }
  }
- qt_shim("qt5_shim") {
+ if (use_qt5) {
 --- src/third_party/abseil-cpp/BUILD.gn.old
 +++ src/third_party/abseil-cpp/BUILD.gn
 @@ -132,6 +132,8 @@ config("absl_define_config") {

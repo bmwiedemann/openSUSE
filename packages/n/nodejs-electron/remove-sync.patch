@@ -6,20 +6,20 @@ Inspired by:
 * https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit?h=122-based&id=8a9d741f4c4cf8170d5c50a336d51fe5d1b16ce8
 * https://code.qt.io/cgit/qt/qtwebengine-chromium.git/commit?h=122-based&id=6a11e9169f5889883bf63a3522d0c3f8f23552b0
 
---- src/components/search_engines/BUILD.gn.orig
-+++ src/components/search_engines/BUILD.gn
-@@ -66,7 +66,6 @@ static_library("search_engines") {
+--- src/components/search_engines/BUILD.gn.orig	2025-04-11 12:05:19.397475381 +0200
++++ src/components/search_engines/BUILD.gn	2025-04-11 20:18:41.424101555 +0200
+@@ -65,7 +65,6 @@ static_library("search_engines") {
      "//components/google/core/common",
      "//components/keyed_service/core",
      "//components/prefs",
 -    "//components/sync",
      "//components/webdata/common",
      "//third_party/metrics_proto",
-   ]
---- src/electron/BUILD.gn.orig
-+++ src/electron/BUILD.gn
-@@ -1204,6 +1204,8 @@ if (is_mac) {
-       "//electron/buildflags",
+     "//third_party/search_engines_data:prepopulated_engines",
+--- src/electron/BUILD.gn.orig	2025-04-11 12:02:41.207130337 +0200
++++ src/electron/BUILD.gn	2025-04-11 20:18:41.424101555 +0200
+@@ -1210,6 +1210,8 @@ if (is_mac) {
+       "//third_party/electron_node:libnode",
        "//ui/strings",
      ]
 +    
@@ -178,12 +178,15 @@ Inspired by:
  
    // True if the dictionary has been loaded. Otherwise false.
    bool is_loaded_;
---- src/device/fido/BUILD.gn.orig	2024-12-08 18:34:58.231340083 +0100
-+++ src/device/fido/BUILD.gn	2024-12-18 12:59:49.294713941 +0100
-@@ -163,36 +163,6 @@ component("fido") {
+--- src/device/fido/BUILD.gn.orig	2025-04-11 12:05:20.416153184 +0200
++++ src/device/fido/BUILD.gn	2025-04-11 20:19:44.976088243 +0200
+@@ -159,25 +159,6 @@ component("fido") {
          "device_operation.h",
          "device_response_converter.cc",
          "device_response_converter.h",
+-        "enclave/attestation.cc",
+-        "enclave/attestation.h",
+-        "enclave/attestation_report.h",
 -        "enclave/constants.cc",
 -        "enclave/constants.h",
 -        "enclave/enclave_authenticator.cc",
@@ -200,42 +203,28 @@ Inspired by:
 -        "enclave/transact.h",
 -        "enclave/types.cc",
 -        "enclave/types.h",
--        "enclave/verify/amd.cc",
--        "enclave/verify/amd.h",
--        "enclave/verify/attestation_report.cc",
--        "enclave/verify/attestation_report.h",
--        "enclave/verify/claim.cc",
--        "enclave/verify/claim.h",
--        "enclave/verify/endorsement.cc",
--        "enclave/verify/endorsement.h",
--        "enclave/verify/rekor.cc",
--        "enclave/verify/rekor.h",
--        "enclave/verify/utils.cc",
--        "enclave/verify/utils.h",
--        "enclave/verify/verifier.cc",
--        "enclave/verify/verifier.h",
          "fido_authenticator.cc",
          "fido_authenticator.h",
          "fido_device.cc",
-@@ -257,7 +227,6 @@ component("fido") {
+@@ -242,7 +223,6 @@ component("fido") {
        ]
  
        deps += [
 -        "//components/sync/protocol:protocol",
-         "//device/fido/enclave/verify/proto:proto",
+         "//device/fido/enclave/proto:proto",
          "//services/device/public/cpp/hid",
          "//services/device/public/cpp/usb",
---- src/device/fido/fido_discovery_factory.cc.orig	2024-12-08 18:34:58.241340085 +0100
-+++ src/device/fido/fido_discovery_factory.cc	2024-12-18 13:01:00.958049095 +0100
-@@ -13,7 +13,6 @@
- #include "device/fido/aoa/android_accessory_discovery.h"
+--- src/device/fido/fido_discovery_factory.cc.orig	2025-04-11 12:05:20.421153186 +0200
++++ src/device/fido/fido_discovery_factory.cc	2025-04-11 20:18:43.280101088 +0200
+@@ -12,7 +12,6 @@
+ #include "device/bluetooth/bluetooth_adapter_factory.h"
  #include "device/fido/cable/fido_cable_discovery.h"
  #include "device/fido/cable/v2_discovery.h"
 -#include "device/fido/enclave/enclave_discovery.h"
  #include "device/fido/features.h"
  #include "device/fido/fido_discovery_base.h"
  #include "device/fido/hid/fido_hid_discovery.h"
-@@ -124,12 +123,7 @@ std::vector<std::unique_ptr<FidoDiscover
+@@ -128,12 +127,7 @@ std::vector<std::unique_ptr<FidoDiscover
  
  std::optional<std::unique_ptr<FidoDiscoveryBase>>
  FidoDiscoveryFactory::MaybeCreateEnclaveDiscovery() {
@@ -268,3 +257,15 @@ Inspired by:
      "//components/variations",
      "//components/variations/field_trial_config",
      "//components/variations/proto",
+--- src/content/public/browser/BUILD.gn.orig	2025-04-11 12:05:20.173348334 +0200
++++ src/content/public/browser/BUILD.gn	2025-04-12 14:17:07.499743022 +0200
+@@ -584,9 +584,7 @@ source_set("browser_sources") {
+   deps = [
+     "//cc",
+     "//components/input",
+-    "//components/language_detection/content/browser",
+     "//components/language_detection/content/common",
+-    "//components/language_detection/core/browser:language_detection_model_service",
+     "//components/services/storage/public/cpp",
+     "//components/variations:variations",
+     "//components/viz/host",

@@ -1,0 +1,11 @@
+--- src/base/containers/to_vector.h.orig	2025-04-21 18:29:04.778306927 +0200
++++ src/base/containers/to_vector.h	2025-04-22 06:32:55.415046071 +0200
+@@ -29,7 +29,7 @@ template <typename Range, typename Proj
+            std::indirectly_unary_invocable<Proj, std::ranges::iterator_t<Range>>
+ auto ToVector(Range&& range, Proj proj = {}) {
+   using ProjectedType =
+-      std::projected<std::ranges::iterator_t<Range>, Proj>::value_type;
++      std::indirectly_readable_traits<std::projected<std::ranges::iterator_t<Range>, Proj> >::value_type;
+   std::vector<ProjectedType> container;
+   container.reserve(std::ranges::size(range));
+   std::ranges::transform(std::forward<Range>(range),

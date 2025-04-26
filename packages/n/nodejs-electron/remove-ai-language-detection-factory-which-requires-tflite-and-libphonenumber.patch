@@ -1,0 +1,373 @@
+--- src/third_party/blink/renderer/modules/ai/ai.cc.orig	2025-04-16 14:36:32.771242661 +0200
++++ src/third_party/blink/renderer/modules/ai/ai.cc	2025-04-17 16:44:52.883833032 +0200
+@@ -30,7 +30,6 @@ void AI::Trace(Visitor* visitor) const {
+   visitor->Trace(ai_summarizer_factory_);
+   visitor->Trace(ai_writer_factory_);
+   visitor->Trace(ai_rewriter_factory_);
+-  visitor->Trace(ai_language_detector_factory_);
+   visitor->Trace(ai_translator_factory_);
+ }
+ 
+@@ -78,15 +77,6 @@ AIRewriterFactory* AI::rewriter() {
+   return ai_rewriter_factory_.Get();
+ }
+ 
+-AILanguageDetectorFactory* AI::languageDetector() {
+-  if (!ai_language_detector_factory_) {
+-    ai_language_detector_factory_ =
+-        MakeGarbageCollected<AILanguageDetectorFactory>(GetExecutionContext(),
+-                                                        task_runner_);
+-  }
+-  return ai_language_detector_factory_.Get();
+-}
+-
+ AITranslatorFactory* AI::translator() {
+   if (!ai_translator_factory_) {
+     ai_translator_factory_ =
+--- src/third_party/blink/renderer/modules/ai/ai.h.orig	2025-04-16 14:36:32.771242661 +0200
++++ src/third_party/blink/renderer/modules/ai/ai.h	2025-04-17 16:45:08.367832844 +0200
+@@ -10,7 +10,6 @@
+ #include "third_party/blink/public/mojom/ai/ai_manager.mojom-blink.h"
+ #include "third_party/blink/renderer/core/execution_context/execution_context.h"
+ #include "third_party/blink/renderer/core/execution_context/execution_context_lifecycle_observer.h"
+-#include "third_party/blink/renderer/modules/ai/on_device_translation/ai_language_detector_factory.h"
+ #include "third_party/blink/renderer/modules/ai/on_device_translation/ai_translator_factory.h"
+ #include "third_party/blink/renderer/platform/bindings/script_wrappable.h"
+ #include "third_party/blink/renderer/platform/mojo/heap_mojo_remote.h"
+@@ -37,7 +36,6 @@ class AI final : public ScriptWrappable,
+   AISummarizerFactory* summarizer();
+   AIRewriterFactory* rewriter();
+   AIWriterFactory* writer();
+-  AILanguageDetectorFactory* languageDetector();
+   AITranslatorFactory* translator();
+ 
+   HeapMojoRemote<mojom::blink::AIManager>& GetAIRemote();
+@@ -51,7 +49,6 @@ class AI final : public ScriptWrappable,
+   Member<AISummarizerFactory> ai_summarizer_factory_;
+   Member<AIWriterFactory> ai_writer_factory_;
+   Member<AIRewriterFactory> ai_rewriter_factory_;
+-  Member<AILanguageDetectorFactory> ai_language_detector_factory_;
+   Member<AITranslatorFactory> ai_translator_factory_;
+ };
+ 
+--- src/third_party/blink/renderer/modules/ai/ai.idl	2025-04-16 14:36:32.771242661 +0200
++++ src/third_party/blink/renderer/modules/ai/ai.idl	2025-04-18 13:52:33.485440478 +0200
+@@ -40,11 +40,6 @@ interface AI {
+   readonly attribute AIRewriterFactory rewriter;
+ 
+   [
+-    RuntimeEnabled=LanguageDetectionAPI
+-  ]
+-  readonly attribute AILanguageDetectorFactory languageDetector;
+-
+-  [
+     RuntimeEnabled=TranslationAPI
+   ]
+   readonly attribute AITranslatorFactory translator;
+--- src/third_party/blink/renderer/modules/ai/BUILD.gn	2025-04-16 14:36:32.771172881 +0200
++++ src/third_party/blink/renderer/modules/ai/BUILD.gn	2025-04-18 21:41:05.606552171 +0200
+@@ -41,16 +41,8 @@ blink_modules_sources("ai") {
+     "exception_helpers.h",
+     "model_execution_responder.cc",
+     "model_execution_responder.h",
+-    "on_device_translation/ai_language_detector.cc",
+-    "on_device_translation/ai_language_detector.h",
+-    "on_device_translation/ai_language_detector_capabilities.cc",
+-    "on_device_translation/ai_language_detector_capabilities.h",
+-    "on_device_translation/ai_language_detector_factory.cc",
+-    "on_device_translation/ai_language_detector_factory.h",
+     "on_device_translation/ai_translator.cc",
+     "on_device_translation/ai_translator.h",
+-    "on_device_translation/ai_translator_capabilities.cc",
+-    "on_device_translation/ai_translator_capabilities.h",
+     "on_device_translation/ai_translator_factory.cc",
+     "on_device_translation/ai_translator_factory.h",
+   ]
+@@ -60,7 +52,5 @@ blink_modules_sources("ai") {
+   deps = [
+     "//components/language_detection/content/common",
+     "//components/language_detection/content/common:common_blink",
+-    "//components/language_detection/content/renderer",
+-    "//components/language_detection/core",
+   ]
+ }
+--- src/third_party/blink/renderer/platform/BUILD.gn.orig	2025-04-12 14:33:45.435739667 +0200
++++ src/third_party/blink/renderer/platform/BUILD.gn	2025-04-12 15:58:59.809440918 +0200
+@@ -1239,8 +1239,6 @@ component("platform") {
+     "keyboard_codes.h",
+     "language.cc",
+     "language.h",
+-    "language_detection/language_detection_model.cc",
+-    "language_detection/language_detection_model.h",
+     "link_hash.cc",
+     "link_hash.h",
+     "media/media_player_client.h",
+@@ -1757,11 +1755,8 @@ component("platform") {
+     "//cc/mojo_embedder",
+     "//components/language_detection/content/common",
+     "//components/language_detection/content/common:common_blink",
+-    "//components/language_detection/content/renderer",
+-    "//components/language_detection/core",
+     "//components/paint_preview/common",
+     "//components/search_engines:search_engine_utils",
+-    "//components/translate/core/language_detection:language_detection",
+     "//components/viz/client",
+     "//components/viz/common",
+     "//components/webrtc:net_address_utils",
+--- src/components/translate/core/common/BUILD.gn.orig	2025-04-12 14:33:35.535738956 +0200
++++ src/components/translate/core/common/BUILD.gn	2025-04-12 16:04:56.897440792 +0200
+@@ -23,7 +23,6 @@ static_library("common") {
+   deps = [
+     "//base",
+     "//components/language/core/common",
+-    "//components/language_detection/core:core",
+     "//third_party/metrics_proto",
+     "//url",
+   ]
+--- src/third_party/blink/renderer/modules/BUILD.gn	2025-04-16 14:36:32.763311004 +0200
++++ src/third_party/blink/renderer/modules/BUILD.gn	2025-04-18 14:17:17.869441496 +0200
+@@ -128,7 +128,6 @@ component("modules") {
+     "//third_party/blink/renderer/modules/netinfo",
+     "//third_party/blink/renderer/modules/nfc",
+     "//third_party/blink/renderer/modules/notifications",
+-    "//third_party/blink/renderer/modules/on_device_translation",
+     "//third_party/blink/renderer/modules/payments",
+     "//third_party/blink/renderer/modules/payments/goods",
+     "//third_party/blink/renderer/modules/peerconnection",
+--- src/third_party/blink/renderer/bindings/idl_in_modules.gni	2025-04-16 14:36:32.335223804 +0200
++++ src/third_party/blink/renderer/bindings/idl_in_modules.gni	2025-04-18 21:39:21.064884303 +0200
+@@ -28,12 +28,8 @@ static_idl_files_in_modules = [
+   "//third_party/blink/renderer/modules/ai/ai_summarizer_factory.idl",
+   "//third_party/blink/renderer/modules/ai/ai_writer.idl",
+   "//third_party/blink/renderer/modules/ai/ai_writer_factory.idl",
+-  "//third_party/blink/renderer/modules/ai/on_device_translation/ai_language_detector.idl",
+-  "//third_party/blink/renderer/modules/ai/on_device_translation/ai_language_detector_factory.idl",
+-  "//third_party/blink/renderer/modules/ai/on_device_translation/ai_language_detector_capabilities.idl",
+   "//third_party/blink/renderer/modules/ai/on_device_translation/ai_translator.idl",
+   "//third_party/blink/renderer/modules/ai/on_device_translation/ai_translator_factory.idl",
+-  "//third_party/blink/renderer/modules/ai/on_device_translation/ai_translator_capabilities.idl",
+   "//third_party/blink/renderer/modules/ai/window_or_worker_global_scope_ai.idl",
+   "//third_party/blink/renderer/modules/animationworklet/animation_worklet_global_scope.idl",
+   "//third_party/blink/renderer/modules/animationworklet/css_animation_worklet.idl",
+@@ -542,10 +538,6 @@ static_idl_files_in_modules = [
+   "//third_party/blink/renderer/modules/notifications/service_worker_global_scope_notifications.idl",
+   "//third_party/blink/renderer/modules/notifications/service_worker_registration_notifications.idl",
+   "//third_party/blink/renderer/modules/notifications/timestamp_trigger.idl",
+-  "//third_party/blink/renderer/modules/on_device_translation/language_translator.idl",
+-  "//third_party/blink/renderer/modules/on_device_translation/translation_language_options.idl",
+-  "//third_party/blink/renderer/modules/on_device_translation/translation.idl",
+-  "//third_party/blink/renderer/modules/on_device_translation/window_or_worker_global_scope_translation.idl",
+   "//third_party/blink/renderer/modules/payments/abort_payment_event.idl",
+   "//third_party/blink/renderer/modules/payments/address_errors.idl",
+   "//third_party/blink/renderer/modules/payments/address_init.idl",
+--- src/third_party/blink/renderer/bindings/generated_in_modules.gni	2025-04-16 14:36:32.335223804 +0200
++++ src/third_party/blink/renderer/bindings/generated_in_modules.gni	2025-04-18 15:55:02.121445718 +0200
+@@ -148,10 +148,6 @@ generated_dictionary_sources_in_modules
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_model_initial_prompt.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_model_prompt_options.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_model_prompt_options.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_create_options.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_create_options.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_detect_options.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_detect_options.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter_rewrite_options.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter_rewrite_options.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter_create_core_options.cc",
+@@ -728,8 +724,6 @@ generated_dictionary_sources_in_modules
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_key_system_track_configuration.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_landmark.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_landmark.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_detection_result.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_detection_result.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_lock_info.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_lock_info.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_lock_manager_snapshot.cc",
+@@ -922,8 +916,6 @@ generated_dictionary_sources_in_modules
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ml_triangular_options.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ml_where_support_limits.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ml_where_support_limits.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation_language_options.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation_language_options.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_multi_cache_query_options.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_multi_cache_query_options.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_navigation_preload_state.cc",
+@@ -1552,8 +1544,6 @@ generated_enumeration_sources_in_modules
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gamepad_haptics_result.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gamepad_mapping_type.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gamepad_mapping_type.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation_availability.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation_availability.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gpu_address_mode.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gpu_address_mode.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_gpu_auto_layout_mode.cc",
+@@ -1956,12 +1946,6 @@ generated_interface_sources_in_modules =
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_model_factory.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_create_monitor.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_create_monitor.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_capabilities.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_capabilities.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_factory.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector_factory.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_language_detector.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter_factory.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter_factory.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_rewriter.cc",
+@@ -1972,8 +1956,6 @@ generated_interface_sources_in_modules =
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_summarizer_factory.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_summarizer.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_summarizer.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_translator_capabilities.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_translator_capabilities.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_translator_factory.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_translator_factory.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_ai_translator.cc",
+@@ -2466,8 +2448,6 @@ generated_interface_sources_in_modules =
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_keyboard_layout_map.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_khr_parallel_shader_compile.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_khr_parallel_shader_compile.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_translator.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_language_translator.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_launch_params.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_launch_params.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_launch_queue.cc",
+@@ -2924,8 +2904,6 @@ generated_interface_sources_in_modules =
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_track_default.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_track_default_list.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_track_default_list.h",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation.cc",
+-  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_translation.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_url.cc",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_url.h",
+   "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_usb.cc",
+--- src/third_party/blink/renderer/modules/ai/on_device_translation/ai_translator_factory.idl	2025-04-16 14:36:32.773113846 +0200
++++ src/third_party/blink/renderer/modules/ai/on_device_translation/ai_translator_factory.idl	2025-04-18 21:45:18.481187932 +0200
+@@ -11,11 +11,6 @@ interface AITranslatorFactory {
+   ]
+   Promise<AITranslator> create(AITranslatorCreateOptions options);
+   // TODO(crbug.com/390459310): Replace with availability.
+-  [
+-    CallWith=ScriptState,
+-    RaisesException
+-  ]
+-  Promise<AITranslatorCapabilities> capabilities();
+ };
+ 
+ dictionary AITranslatorCreateCoreOptions {
+--- src/content/public/browser/content_browser_client.cc	2025-04-17 16:18:19.395831947 +0200
++++ src/content/public/browser/content_browser_client.cc	2025-04-18 22:48:04.297289260 +0200
+@@ -1882,15 +1882,6 @@ GetContentLanguageDetectionDriver() {
+ }
+ }  // namespace
+ 
+-void ContentBrowserClient::BindLanguageDetectionDriver(
+-    content::BrowserContext* browser_context,
+-    base::SupportsUserData* context_user_data,
+-    mojo::PendingReceiver<
+-        language_detection::mojom::ContentLanguageDetectionDriver> receiver) {
+-  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+-    GetContentLanguageDetectionDriver().AddReceiver(std::move(receiver));
+-  }
+-}
+ 
+ #if !BUILDFLAG(IS_ANDROID)
+ void ContentBrowserClient::QueryInstalledWebAppsByManifestId(
+--- src/content/browser/browser_interface_binders.cc	2025-04-16 14:36:28.520070884 +0200
++++ src/content/browser/browser_interface_binders.cc	2025-04-18 23:10:18.079235856 +0200
+@@ -1156,19 +1164,6 @@ void PopulateFrameBinders(RenderFrameHos
+         base::Unretained(host)));
+   }
+ 
+-  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+-    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+-        base::BindRepeating(
+-            [](RenderFrameHostImpl* host,
+-               mojo::PendingReceiver<
+-                   language_detection::mojom::ContentLanguageDetectionDriver>
+-                   receiver) {
+-              GetContentClient()->browser()->BindLanguageDetectionDriver(
+-                  host->GetBrowserContext(), &host->document_associated_data(),
+-                  std::move(receiver));
+-            },
+-            base::Unretained(host)));
+-  }
+ }
+ 
+ void PopulateBinderMapWithContext(
+@@ -1446,19 +1443,6 @@ void PopulateDedicatedWorkerBinders(Dedi
+         },
+         base::Unretained(host)));
+   }
+-  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+-    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+-        base::BindRepeating(
+-            [](DedicatedWorkerHost* host,
+-               mojo::PendingReceiver<
+-                   language_detection::mojom::ContentLanguageDetectionDriver>
+-                   receiver) {
+-              GetContentClient()->browser()->BindLanguageDetectionDriver(
+-                  host->GetProcessHost()->GetBrowserContext(), host,
+-                  std::move(receiver));
+-            },
+-            base::Unretained(host)));
+-  }
+ }
+ 
+ void PopulateBinderMapWithContext(
+@@ -1549,19 +1533,6 @@ void PopulateSharedWorkerBinders(SharedW
+         },
+         base::Unretained(host)));
+   }
+-  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+-    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+-        base::BindRepeating(
+-            [](SharedWorkerHost* host,
+-               mojo::PendingReceiver<
+-                   language_detection::mojom::ContentLanguageDetectionDriver>
+-                   receiver) {
+-              GetContentClient()->browser()->BindLanguageDetectionDriver(
+-                  host->GetProcessHost()->GetBrowserContext(), host,
+-                  std::move(receiver));
+-            },
+-            base::Unretained(host)));
+-  }
+ 
+   // RenderProcessHost binders
+   map->Add<media::mojom::VideoDecodePerfHistory>(BindWorkerReceiver(
+@@ -1704,22 +1675,6 @@ void PopulateServiceWorkerBinders(Servic
+         },
+         base::Unretained(host)));
+   }
+-  if (base::FeatureList::IsEnabled(blink::features::kLanguageDetectionAPI)) {
+-    map->Add<language_detection::mojom::ContentLanguageDetectionDriver>(
+-        base::BindRepeating(
+-            [](ServiceWorkerHost* host,
+-               mojo::PendingReceiver<
+-                   language_detection::mojom::ContentLanguageDetectionDriver>
+-                   receiver) {
+-              if (auto* process_host = static_cast<RenderProcessHostImpl*>(
+-                      RenderProcessHost::FromID(host->worker_process_id()))) {
+-                GetContentClient()->browser()->BindLanguageDetectionDriver(
+-                    process_host->GetBrowserContext(), host,
+-                    std::move(receiver));
+-              }
+-            },
+-            base::Unretained(host)));
+-  }
+ 
+   // RenderProcessHost binders
+   map->Add<media::mojom::VideoDecodePerfHistory>(BindServiceWorkerReceiver(
+--- src/content/public/browser/content_browser_client.h	2025-04-16 14:45:28.636752215 +0200
++++ src/content/public/browser/content_browser_client.h	2025-04-18 23:30:15.399851141 +0200
+@@ -3144,11 +3144,6 @@ class CONTENT_EXPORT ContentBrowserClien
+   // Binds to a singleton new instance of
+   // `language_detection::ContentLanguageDetectionDriver` which receives the
+   // model from a local file specified by a flag param..
+-  virtual void BindLanguageDetectionDriver(
+-      BrowserContext* browser_context,
+-      base::SupportsUserData* context_user_data,
+-      mojo::PendingReceiver<
+-          language_detection::mojom::ContentLanguageDetectionDriver> receiver);
+ 
+ #if !BUILDFLAG(IS_ANDROID)
+   // Given the last committed URL of the RenderFrameHost, |frame_url|, and the

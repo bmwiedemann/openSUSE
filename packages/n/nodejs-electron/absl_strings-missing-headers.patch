@@ -1,0 +1,40 @@
+--- src/build/linux/unbundle/absl_strings.gn.orig	2025-04-12 17:15:17.061420294 +0200
++++ src/build/linux/unbundle/absl_strings.gn	2025-04-15 20:16:58.452941199 +0200
+@@ -5,6 +5,10 @@ pkg_config("system_absl_cord") {
+   packages = [ "absl_cord" ]
+ }
+ 
++pkg_config("system_absl_has_ostream_operator") {
++  packages = [ "absl_has_ostream_operator" ]
++}
++
+ pkg_config("system_absl_strings") {
+   packages = [ "absl_strings" ]
+ }
+@@ -35,6 +39,9 @@ shim_headers("strings_shim") {
+     "ascii.h",
+     "charconv.h",
+     "escaping.h",
++    "has_absl_stringify.h",
++    "internal/damerau_levenshtein_distance.h",
++    "internal/string_constant.h",
+     "match.h",
+     "numbers.h",
+     "str_cat.h",
+@@ -74,8 +81,15 @@ source_set("string_view") {
+   public_configs = [ ":system_absl_string_view" ]
+ }
+ 
++shim_headers("has_ostream_operator_shim") {
++  root_path = "."
++  prefix = "absl/strings/"
++  headers = [ "has_ostream_operator.h" ]
++}
++
+ source_set("has_ostream_operator") {
+-  # Dummy — unavailable with abseil 202308 and chromium 122 does not use it
++  deps = [ ":has_ostream_operator_shim" ]
++  public_configs = [ ":system_absl_has_ostream_operator" ]
+ }
+ 
+ source_set("ascii_test") {

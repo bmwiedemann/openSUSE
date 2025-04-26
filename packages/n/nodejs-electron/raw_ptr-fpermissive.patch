@@ -1,0 +1,48 @@
+From f12e128221d2011c57448032d67309da94f55dde Mon Sep 17 00:00:00 2001
+From: Marshall Greenblatt <marshall@chromium.org>
+Date: Thu, 13 Feb 2025 17:47:09 -0800
+Subject: [PATCH] Fix extra qualification on member 'basic_common_reference'
+
+Fixes the following errors when building on Windows with
+use_custom_libcxx=false.
+
+In file included from ../..\base/memory/raw_ptr.h:11:
+../../base/allocator/partition_allocator/src\partition_alloc/pointers/raw_ptr.h(1274,13): error: extra qualification on member 'basic_common_reference' [-Werror,-Wextra-qualification]
+ 1274 | struct std::basic_common_reference<raw_ptr<T, Traits>, T*, TQ, UQ> {
+      |             ^
+../../base/allocator/partition_allocator/src\partition_alloc/pointers/raw_ptr.h(1284,13): error: extra qualification on member 'basic_common_reference' [-Werror,-Wextra-qualification]
+ 1284 | struct std::basic_common_reference<T*, raw_ptr<T, Traits>, TQ, UQ> {
+      |             ^
+2 errors generated.
+
+Change-Id: I86f92b206fdcba8d0e820c7a625e1c28518f02a0
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/6265643
+Commit-Queue: Peter Kasting <pkasting@chromium.org>
+Reviewed-by: Peter Kasting <pkasting@chromium.org>
+Cr-Commit-Position: refs/heads/main@{#1420246}
+---
+ .../src/partition_alloc/pointers/raw_ptr.h                    | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h b/base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h
+index c3ac11523410fb..2a3d3bc4d1f342 100644
+--- a/base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h
++++ b/base/allocator/partition_allocator/src/partition_alloc/pointers/raw_ptr.h
+@@ -1271,7 +1271,7 @@ template <typename T,
+           typename TQ,
+           template <typename>
+           typename UQ>
+-struct std::basic_common_reference<raw_ptr<T, Traits>, T*, TQ, UQ> {
++struct basic_common_reference<raw_ptr<T, Traits>, T*, TQ, UQ> {
+   using type = T*;
+ };
+ 
+@@ -1281,7 +1281,7 @@ template <typename T,
+           typename TQ,
+           template <typename>
+           typename UQ>
+-struct std::basic_common_reference<T*, raw_ptr<T, Traits>, TQ, UQ> {
++struct basic_common_reference<T*, raw_ptr<T, Traits>, TQ, UQ> {
+   using type = T*;
+ };
+ 

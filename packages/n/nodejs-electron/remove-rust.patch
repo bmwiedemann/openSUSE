@@ -1,26 +1,26 @@
 Remove this dead code which brings a dependency on rustc
 
---- src/components/BUILD.gn.orig	2024-03-27 16:30:09.189645288 +0100
-+++ src/components/BUILD.gn	2024-03-28 23:11:14.847582213 +0100
-@@ -282,7 +282,6 @@ test("components_unittests") {
+--- src/components/BUILD.gn.orig	2025-04-11 12:05:18.743943100 +0200
++++ src/components/BUILD.gn	2025-04-11 19:52:11.508526413 +0200
+@@ -297,7 +297,6 @@ test("components_unittests") {
      "//components/profile_metrics:unit_tests",
      "//components/proxy_config:unit_tests",
      "//components/push_notification:unit_tests",
 -    "//components/qr_code_generator:unit_tests",
      "//components/query_parser:unit_tests",
      "//components/reading_list/core:unit_tests",
-     "//components/reporting/client:unit_tests",
---- src/chrome/browser/BUILD.gn.orig	2024-12-08 18:44:32.671357320 +0100
-+++ src/chrome/browser/BUILD.gn	2024-12-18 12:38:43.758015814 +0100
-@@ -1798,7 +1798,6 @@ static_library("browser") {
+     "//components/regional_capabilities:unit_tests",
+--- src/chrome/browser/BUILD.gn.orig	2025-04-11 12:13:12.927314100 +0200
++++ src/chrome/browser/BUILD.gn	2025-04-11 19:52:48.976512203 +0200
+@@ -1777,7 +1777,6 @@ static_library("browser") {
      "//chrome/browser/profiling_host",
  
      # TODO(crbug.com/40228447): break this dep when favicon is in its own target
 -    "//chrome/browser/share",
-     "//chrome/browser/ui",
  
      # TODO(358041220): There is a circular_dependency of `cookie_controls:impl` module
-@@ -1950,7 +1949,6 @@ static_library("browser") {
+     # with "//chrome/browser" due to the inclusion of //c/b/policy/profile_policy_connector.h
+@@ -1935,7 +1934,6 @@ static_library("browser") {
      "//chrome/browser/search_engine_choice",
      "//chrome/browser/search_engine_choice:impl",
      "//chrome/browser/search_engines",
@@ -28,7 +28,7 @@ Remove this dead code which brings a dependency on rustc
      "//chrome/browser/sharing:buildflags",
      "//chrome/browser/signin",
      "//chrome/browser/signin:identity_manager_provider",
-@@ -8566,7 +8564,6 @@ static_library("browser_generated_files"
+@@ -8426,7 +8424,6 @@ static_library("browser_generated_files"
        "//chrome/browser/new_tab_page/modules/v2/calendar:mojo_bindings",
        "//chrome/browser/new_tab_page/modules/v2/most_relevant_tab_resumption:mojo_bindings",
        "//chrome/browser/profile_resetter:profile_reset_report_proto",
@@ -36,7 +36,7 @@ Remove this dead code which brings a dependency on rustc
        "//chrome/browser/support_tool:support_tool_proto",
        "//chrome/browser/sync_file_system/drive_backend:sync_file_system_drive_proto",
        "//chrome/browser/ui:webui_name_variants",
-@@ -9024,7 +9021,6 @@ static_library("test_support") {
+@@ -8877,7 +8874,6 @@ static_library("test_support") {
      "//chrome/browser/policy/messaging_layer/proto:crd_event_proto",
      "//chrome/browser/search_engine_choice",
      "//chrome/browser/search_engines",
@@ -62,17 +62,17 @@ Remove this dead code which brings a dependency on rustc
      "//components/query_parser",
      "//components/reading_list/core",
      "//components/reading_list/features:flags",
---- src/chrome/test/BUILD.gn.orig	2024-12-08 18:44:32.671357320 +0100
-+++ src/chrome/test/BUILD.gn	2024-12-18 12:39:55.361350918 +0100
-@@ -2013,7 +2013,6 @@ if (!is_android) {
+--- src/chrome/test/BUILD.gn.orig	2025-04-11 12:13:12.932314099 +0200
++++ src/chrome/test/BUILD.gn	2025-04-11 19:53:28.092504094 +0200
+@@ -2163,7 +2163,6 @@ if (!is_android) {
        "//chrome/browser/web_applications:prevent_close_test_support",
        "//chrome/browser/web_applications:web_applications_test_support",
        "//chrome/browser/webaudio:browser_tests",
 -      "//chrome/browser/webauthn:test_support",
        "//chrome/common:version_header",
-       "//chrome/common/companion/visual_query:flags",
        "//chrome/common/privacy_budget:test_support",
-@@ -2186,7 +2185,6 @@ if (!is_android) {
+       "//chrome/renderer",
+@@ -2337,7 +2336,6 @@ if (!is_android) {
        "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
        "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
        "//components/proxy_config",
@@ -80,7 +80,7 @@ Remove this dead code which brings a dependency on rustc
        "//components/reading_list/core",
        "//components/reading_list/features:flags",
        "//components/resources",
-@@ -6855,7 +6853,6 @@ test("unit_tests") {
+@@ -6648,7 +6646,6 @@ test("unit_tests") {
      "//components/privacy_sandbox/privacy_sandbox_attestations:test_support",
      "//components/privacy_sandbox/privacy_sandbox_attestations/proto:proto",
      "//components/proxy_config",
@@ -88,7 +88,7 @@ Remove this dead code which brings a dependency on rustc
      "//components/query_parser",
      "//components/reading_list/core",
      "//components/reading_list/core:test_support",
-@@ -7029,7 +7026,6 @@ test("unit_tests") {
+@@ -6829,7 +6826,6 @@ test("unit_tests") {
      "//third_party/metrics_proto",
      "//third_party/microsoft_webauthn",
      "//third_party/re2",
@@ -96,12 +96,12 @@ Remove this dead code which brings a dependency on rustc
      "//third_party/webrtc_overrides:webrtc_component",
      "//third_party/widevine/cdm:headers",
      "//third_party/zlib/google:compression_utils",
-@@ -8314,8 +8310,6 @@ test("unit_tests") {
-       "//chrome/browser/ui/zoom",
-       "//chrome/browser/ui/zoom:unit_tests",
+@@ -8115,8 +8111,6 @@ test("unit_tests") {
+       "//chrome/browser/upgrade_detector:build_state_observer",
+       "//chrome/browser/user_annotations",
        "//chrome/browser/web_applications:web_applications_test_support",
 -      "//chrome/browser/webauthn:test_support",
 -      "//chrome/browser/webauthn/proto",
-       "//chrome/common/accessibility:mojo_bindings",
+       "//chrome/common/read_anything:mojo_bindings",
        "//chrome/services/speech:unit_tests",
        "//components/app_constants",

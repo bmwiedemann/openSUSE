@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Sat Apr 26 09:53:27 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Update to 35.2.1
+  * Chromium 134.0.6998.205
+  * Node 22.14.0
+  * V8 13.4
+  * Removed AVIF image format
+  * Added excludeUrls to webRequest filter and deprecated the use of empty arrays in urls property.
+  * Added fromVersionID on ServiceWorkers to get an instance of ServiceWorkerMain.
+  * Deprecated getPreloads and setPreloads on Session.
+  * Moved 'console-message' arguments into event object.
+  * Added ServiceWorkerMain class to interact with service workers in the main process.
+  * Added contextBridge.executeInMainWorld to safely execute code across world boundaries.
+  * Added frame to 'console-message' event.
+  * Added optional animation parameter to BrowserWindow.setVibrancy.
+  * Added permission support for document.executeCommand("paste").
+  * Added support for service worker preload scripts.
+  * Support Portal's globalShortcuts.
+    Electron must be run with --enable-features=GlobalShortcutsPortal in order to have the feature working.
+  * see https://github.com/electron/electron/releases/tag/v35.0.0 and https://www.electronjs.org/blog/electron-35-0 for more
+- Remove Fedora 40 support
+  * drop bundled-minizip.patch
+  * drop quiche-absl-HexStringToBytes.patch
+- Leap 15.6: use backported wayland-protocols
+  * drop wayland-protocol-toplevel-icon.patch
+  * drop wayland-protocol-toplevel-icon-2.patch
+  * drop wayland-protocol-toplevel-drag.patch
+- Build with LTO also on 15.6 (so now we enable it everywhere)
+- Fedora: use system simdjson
+  * merge system-ada-url.patch into use-system-libraries-in-node.patch
+- Drop no longer applicable patches
+  * account_id-missing-optional.patch
+  * blink-platform-INSIDE_BLINK-Wodr.patch
+  * boringssl-internal-addc-cxx.patch
+  * build-without-extensions.patch
+  * css_attr_value_tainting-missing-once_flag.patch
+  * electron-13-fix-base-check-nomerge.patch
+  * exception_context-missing-variant.patch
+  * fix-build-without-safebrowsing.patch
+  * fix-build-without-service-discovery.patch
+  * ip_protection_data_types-missing-optional.patch
+  * node-compiler.patch
+  * skia_image_decoder_base-missing-stack.patch
+  * vtt_scanner-missing-variant.patch
+  * wayland_connection-Wchanges-meaning.patch
+- Add backported or upstreamable patches
+  * ax_platform_node_id-fpermissive.patch
+  * browser_process_impl-fix-safe_browsing_mode-0.patch
+  * content_browser_client-incomplete-WebUIController.patch
+  * css_shape_value-constructor.patch
+  * exception_state-constexpr-initializer.patch
+  * fix-build-without-pdf.patch
+  * fix-build-without-video-effects.patch
+  * media_session_uma_helper-missing-optional.patch
+  * object_paint_properties-explicit-specialization-in-non-namespace-scope.patch
+  * perfetto-ThreadTrack-Current-null-dereference.patch
+  * picture_in_picture_window_manager_uma_helper-missing-optional.patch
+  * plugin_utils-build-without-electron_extensions.patch
+  * raw_ptr-fpermissive.patch
+  * resource_response-Wchanges-meaning.patch
+  * resource-Wchanges-meaning.patch
+  * string-hasher-flax-vector-conversions.patch
+  * string_truncator-convert.patch
+  * style_scope-unqualified-To.patch
+  * to_vector-std-projected-gcc119888.patch
+  * unexportable_key_service_impl-Wlto-type-mismatch.patch
+  * xml_document_parser-Wmissing-template-keyword.patch
+- merge remove-libphonenumber.patch & delete-old-language-detection-which-uses-tflite.patch
+  into remove-ai-language-detection-factory-which-requires-tflite-and-libphonenumber.patch
+- Revert upstream change which breaks build with old abseil
+  * webrtc-make_ref_counted-absl2024-nullability.patch
+- Conditionally (15.6) remove feature change which needs new spirv
+  * angle-SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT.patch
+- Use system sqlite in node (except 15.6)
+  * system-sqlite.patch
+- Remove more rust code
+  * chromium-132-no-rust.patch
+- Actually disable AVIF support without disabling AV1 video
+  * disable-avif-really.patch
+- Various other build fixes
+  * absl_strings-missing-headers.patch
+  * blink-shape_result-highway.patch
+  * build-without-mesage-center.patch
+  * fix-system-highway.patch
+  * gn-logspam-breaks-install.patch
+  * permission-gcc14.2.patch
+
+-------------------------------------------------------------------
 Sat Apr 19 08:45:19 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 33.4.10

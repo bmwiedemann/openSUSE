@@ -48,12 +48,12 @@
  assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
  
  generate_allowlist_from_histograms_file("webui_name_variants") {
---- src/chrome/browser/extensions/BUILD.gn.orig	2024-12-08 18:34:53.171339936 +0100
-+++ src/chrome/browser/extensions/BUILD.gn	2024-12-18 13:09:34.948061857 +0100
+--- src/chrome/browser/extensions/BUILD.gn.orig	2025-04-11 12:05:16.772151640 +0200
++++ src/chrome/browser/extensions/BUILD.gn	2025-04-11 20:28:31.291951121 +0200
 @@ -20,7 +20,6 @@ import("//testing/libfuzzer/fuzzer_test.
  import("//third_party/protobuf/proto_library.gni")
  
- assert(enable_extensions)
+ assert(enable_extensions_core)
 -assert(enable_supervised_users)
  assert(!is_fuchsia, "Fuchsia shouldn't use anything in //chrome")
  

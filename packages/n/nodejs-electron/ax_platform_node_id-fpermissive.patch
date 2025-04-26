@@ -1,0 +1,12 @@
+--- src/ui/accessibility/platform/ax_platform_node_id.h.orig	2025-04-16 14:36:44.316067879 +0200
++++ src/ui/accessibility/platform/ax_platform_node_id.h	2025-04-17 12:14:07.150992641 +0200
+@@ -55,9 +55,7 @@ class AXPlatformNodeId
+ 
+ }  // namespace ui
+ 
+-namespace std {
+ template <>
+ struct std::hash<ui::AXPlatformNodeId>
+     : std::hash<base::StrongAlias<class ui::AXPlatformNodeIdTag, int32_t>> {};
+-}  // namespace std
+ #endif  // UI_ACCESSIBILITY_PLATFORM_AX_PLATFORM_NODE_ID_H_

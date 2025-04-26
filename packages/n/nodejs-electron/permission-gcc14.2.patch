@@ -1,0 +1,13 @@
+This file fails to compile under gcc 14.2 but should be entirely dead code
+
+--- src/components/services/app_service/public/cpp/BUILD.gn.orig	2025-04-21 18:29:17.630307050 +0200
++++ src/components/services/app_service/public/cpp/BUILD.gn	2025-04-23 18:18:14.510674646 +0200
+@@ -28,8 +28,6 @@ component("app_types") {
+     "menu.h",
+     "package_id.cc",
+     "package_id.h",
+-    "permission.cc",
+-    "permission.h",
+     "preferred_app.cc",
+     "preferred_app.h",
+     "run_on_os_login_types.cc",

@@ -232,10 +232,8 @@ keeplibs=(
     third_party/hunspell #heavily forked version
     third_party/inspector_protocol #integral part of chrome
     third_party/ipcz #not in any distro
-    third_party/jstemplate #javascript
     third_party/khronos #Modified to add ANGLE definitions
     third_party/leveldatabase #use of private headers
-    third_party/libavif #bleeding-edge nightly. try unbundling again when 1.1 gets released
     third_party/libgav1 #Usage of private headers (ObuFrameHeader from utils/types.h)
     third_party/libsrtp #Needs to be built against boringssl, not openssl
     third_party/libsync #not yet in any distro
@@ -276,9 +274,11 @@ keeplibs=(
     third_party/rapidhash #Fork
     third_party/re2 # fedora too old
     third_party/rnnoise #use of private headers
+    third_party/search_engines_data #integral part of chromium (but should not be?). was under components/ before E35, see https://github.com/chromium/chromium/commit/b8a327a1aa0227cf96dbbe0ad55f1c2773b23c23
+    third_party/simdutf #Not in Factory
     third_party/skia #integral part of chrome
     third_party/speech-dispatcher #Headers for a delay-loaded optional dependency
-    third_party/spirv-headers
+    third_party/spirv-headers #15.6 too old
     third_party/sqlite #heavily forked version
     third_party/swiftshader #not available as a shared library
     third_party/swiftshader/third_party/astc-encoder #not in rawhide or factory. Debian has it (astc-encoder)
@@ -307,14 +307,14 @@ keeplibs=(
     third_party/wayland-protocols/unstable #unknown origin. not in wayland-protocol-devel or elsewhere
     third_party/wuffs #not in any distro
     third_party/x11proto #derived code, not vendored dep
-    third_party/zlib/contrib/minizip #https://bugzilla.redhat.com/show_bug.cgi?id=2240599 https://github.com/zlib-ng/minizip-ng/issues/447
     third_party/zlib/google #derived code, not vendored dep
     url/third_party/mozilla #derived code, not vendored dep
-    v8/src/third_party/siphash #derived code, not vendored dep
-    v8/src/third_party/utf8-decoder #derived code, not vendored dep
-    v8/src/third_party/valgrind #incompatible definition of VALGRIND_DISCARD_TRANSLATIONS
     v8/third_party/inspector_protocol #integral part of chrome
+    v8/third_party/rapidhash-v8 #derived code, not vendored dep
+    v8/third_party/siphash #derived code, not vendored dep
+    v8/third_party/utf8-decoder #derived code, not vendored dep
     v8/third_party/v8 #derived code, not vendored dep
+    v8/third_party/valgrind #incompatible definition of VALGRIND_DISCARD_TRANSLATIONS
 )
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 if [ $? -ne 0 ]; then
@@ -330,6 +330,7 @@ find third_party/electron_node/deps/cares -type f ! -name "*.gn" -a ! -name "*.g
 find third_party/electron_node/deps/nghttp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/ngtcp2 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/openssl -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
+find third_party/electron_node/deps/simdutf -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 find third_party/electron_node/deps/v8 -type f ! -name "*.gn" -a ! -name "*.gni" -a ! -name "*.gyp" -a ! -name "*.gypi" -delete
 rm -rvf third_party/electron_node/deps/v8/tools
 ln -srv v8/tools -t third_party/electron_node/deps/v8/

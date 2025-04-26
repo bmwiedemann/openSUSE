@@ -1,0 +1,10 @@
+--- src/components/global_media_controls/BUILD.gn	2025-04-16 14:36:27.043179983 +0200
++++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/BUILD/nodejs-electron-35.1.5-build/src/components/global_media_controls/BUILD.gn	2025-04-18 14:41:32.341441955 +0200
+@@ -48,7 +48,6 @@ component("global_media_controls") {
+   }
+ 
+   public_deps = [
+-    "//components/media_message_center",
+     "//services/media_session/public/cpp",
+     "//services/media_session/public/mojom",
+     "//ui/views",

@@ -10,72 +10,42 @@ We don't need this huge test-only dependency in the tarball. Only one header is 
 +#include <gtest/gtest_prod.h>
  
  #endif  // TESTING_GTEST_INCLUDE_GTEST_GTEST_PROD_H_
---- a/third_party/electron_node/deps/googletest/BUILD.gn	2022-07-22 14:56:38.984761919 +0200
-+++ b/third_party/electron_node/deps/googletest/BUILD.gn	2022-07-29 19:21:57.655767809 +0200
-@@ -1,61 +1,11 @@
--config("gtest_config") {
--  include_dirs = [ "include" ]
--  defines = [ "UNIT_TEST" ]
--}
+--- src/third_party/electron_node/deps/googletest/unofficial.gni.orig	2025-04-11 12:06:33.194184022 +0200
++++ src/third_party/electron_node/deps/googletest/unofficial.gni	2025-04-11 20:55:32.455520889 +0200
+@@ -1,3 +1,5 @@
 +import("//build/config/linux/pkg_config.gni")
++
+ # This file is used by GN for building, which is NOT the build system used for
+ # building official binaries.
+ # Please edit the gyp files if you are making changes to build system.
+@@ -5,27 +7,14 @@
+ # The actual configurations are put inside a template in unofficial.gni to
+ # prevent accidental edits from contributors.
+ template("googletest_gn_build") {
+-  config("googletest_config") {
+-    include_dirs = [ "include" ]
++  pkg_config("googletest_config") {
++    packages = [ "gtest" ]
+   }
  
--static_library("gtest") {
--  include_dirs = [
--    "include",
--    "." # src
--  ]
-+pkg_config("gtest_config") {
-+  packages = [ "gtest" ]
-+}
+-  gypi_values = exec_script("../../tools/gypi_to_gn.py",
+-                            [ rebase_path("googletest.gyp") ],
+-                            "scope",
+-                            [ "googletest.gyp" ])
  
-+source_set("gtest") {
-   public_configs = [ ":gtest_config" ]
--
--  cflags_cc = [
--    "-Wno-c++98-compat-extra-semi",
--    "-Wno-unused-const-variable",
--    "-Wno-unreachable-code-return",
--  ]
--
--  defines = [
--    "GTEST_HAS_POSIX_RE=0",
--    "GTEST_LANG_CXX11=1",
--  ]
--
--  sources = [
--    "include/gtest/gtest_pred_impl.h",
--    "include/gtest/gtest_prod.h",
--    "include/gtest/gtest-death-test.h",
--    "include/gtest/gtest-matchers.h",
--    "include/gtest/gtest-message.h",
--    "include/gtest/gtest-param-test.h",
--    "include/gtest/gtest-printers.h",
--    "include/gtest/gtest-spi.h",
--    "include/gtest/gtest-test-part.h",
--    "include/gtest/gtest-typed-test.h",
--    "include/gtest/gtest.h",
--    "include/gtest/internal/gtest-death-test-internal.h",
--    "include/gtest/internal/gtest-filepath.h",
--    "include/gtest/internal/gtest-internal.h",
--    "include/gtest/internal/gtest-param-util.h",
--    "include/gtest/internal/gtest-port-arch.h",
--    "include/gtest/internal/gtest-port.h",
--    "include/gtest/internal/gtest-string.h",
--    "include/gtest/internal/gtest-type-util.h",
--    "include/gtest/internal/custom/gtest-port.h",
--    "include/gtest/internal/custom/gtest-printers.h",
--    "include/gtest/internal/custom/gtest.h",
--    "src/gtest-all.cc",
--    "src/gtest-death-test.cc",
--    "src/gtest-filepath.cc",
--    "src/gtest-internal-inl.h",
--    "src/gtest-matchers.cc",
--    "src/gtest-port.cc",
--    "src/gtest-printers.cc",
--    "src/gtest-test-part.cc",
--    "src/gtest-typed-test.cc",
--    "src/gtest.cc",
--  ]
- }
+   source_set(target_name) {
+     forward_variables_from(invoker, "*")
+-    testonly = true
+-    include_dirs = [
+-      "include",
+-      ".",
+-    ]
+-    defines = [
+-      "GTEST_HAS_POSIX_RE=0",
+-      "GTEST_LANG_CXX11=1",
+-    ]
+-    sources = gypi_values.googletest_sources
++    public_configs = [ ":googletest_config" ]
+   }
  
- static_library("gtest_main") {
+   source_set("gtest_main") {

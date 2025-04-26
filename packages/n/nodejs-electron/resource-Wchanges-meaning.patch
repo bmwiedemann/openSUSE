@@ -1,0 +1,11 @@
+--- src/third_party/blink/renderer/platform/loader/fetch/resource.h.orig	2025-04-16 14:36:33.086070015 +0200
++++ src/third_party/blink/renderer/platform/loader/fetch/resource.h	2025-04-16 21:57:27.672717364 +0200
+@@ -363,7 +363,7 @@ class PLATFORM_EXPORT Resource : public
+   // attributes.
+   bool ForceIntegrityChecks() const;
+ 
+-  const IntegrityReport& IntegrityReport() const { return integrity_report_; }
++  const blink::IntegrityReport& IntegrityReport() const { return integrity_report_; }
+   bool MustRefetchDueToIntegrityMetadata(const FetchParameters&) const;
+ 
+   bool IsAlive() const { return is_alive_; }

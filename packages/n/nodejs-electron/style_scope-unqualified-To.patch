@@ -1,0 +1,11 @@
+--- src/third_party/blink/renderer/core/css/style_scope.cc	2025-04-16 14:36:32.429070140 +0200
++++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/BUILD/nodejs-electron-35.1.5-build/src/third_party/blink/renderer/core/css/style_scope.cc	2025-04-17 16:02:10.183836430 +0200
+@@ -32,7 +32,7 @@ StyleScope* StyleScope::CopyWithParent(c
+ 
+ const StyleScope* StyleScope::Renest(StyleRule* new_parent) const {
+   StyleRule* reparented_from =
+-      from_ ? To<StyleRule>(from_->Renest(new_parent)) : nullptr;
++      from_ ? blink::To<StyleRule>(from_->Renest(new_parent)) : nullptr;
+   if (from_ == reparented_from) {
+     return this;
+   }

@@ -1,0 +1,21 @@
+Threatening downstream maintainers on stdout may be fun, but it breaks `gn desc` which we call in %install
+
+--- src/build/config/c++/c++.gni	2025-04-16 14:36:21.927410223 +0200
++++ src/build/config/c++/c++.gni	2025-04-19 00:11:43.759874434 +0200
+@@ -110,16 +110,3 @@ assert(!(is_ios && libcxx_is_shared),
+ 
+ # Chromium will require using its libc++ library implementation. Warn if the
+ # current configuration is not using it.
+-if ((!use_custom_libcxx || !use_custom_libcxx_for_host) &&
+-    # Standalone use of //build outside of Chromium can disable libc++.
+-    build_with_chromium &&
+-    # Try to avoid spamming the console lots. It's not actually
+-    # toolchain-specific.
+-    current_toolchain == default_toolchain) {
+-  print("*********************************************************************")
+-  print("WARNING: Support for linking against a C++ standard library other ")
+-  print("  than the one in-tree (buildtools/third_party/libc++) is deprecated")
+-  print("  and support for this will end. We plan to remove this option in ")
+-  print("  M138.")
+-  print("*********************************************************************")
+-}

@@ -29,11 +29,11 @@ Index: chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/crtc_controller.h
  #include "ui/ozone/platform/drm/common/scoped_drm_types.h"
 Index: chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
 ===================================================================
---- chromium-98.0.4758.80.orig/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-+++ chromium-98.0.4758.80/ui/ozone/platform/drm/gpu/hardware_display_controller.cc
-@@ -20,7 +20,7 @@
+--- src/ui/ozone/platform/drm/gpu/hardware_display_controller.cc.orig	2025-04-11 12:05:30.840157601 +0200
++++ src/ui/ozone/platform/drm/gpu/hardware_display_controller.cc	2025-04-11 20:45:59.075673214 +0200
+@@ -18,7 +18,7 @@
+ #include "base/logging.h"
  #include "base/metrics/histogram_macros.h"
- #include "base/ranges/algorithm.h"
  #include "base/trace_event/typed_macros.h"
 -#include "third_party/libdrm/src/include/drm/drm_fourcc.h"
 +#include <drm_fourcc.h>

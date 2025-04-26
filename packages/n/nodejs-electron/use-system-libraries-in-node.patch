@@ -1,0 +1,138 @@
+--- src/third_party/electron_node/node.gni.orig	2025-04-20 10:49:28.656330018 +0200
++++ src/third_party/electron_node/node.gni	2025-04-20 19:08:01.482693254 +0200
+@@ -73,10 +73,12 @@ declare_args() {
+   node_use_amaro = true
+ 
+   # Allows downstream packagers (eg. Linux distributions) to build against system shared libraries.
++  use_system_ada = false
+   use_system_cares = false
+   use_system_nghttp2 = false
+   use_system_llhttp = false
+   use_system_histogram = false
++  use_system_simdjson = false
+ }
+ 
+ assert(!node_enable_inspector || node_use_openssl,
+--- src/third_party/electron_node/unofficial.gni.orig	2025-04-20 10:49:28.656330018 +0200
++++ src/third_party/electron_node/unofficial.gni	2025-04-20 19:16:09.442680896 +0200
+@@ -9,6 +9,35 @@ import("$node_v8_path/gni/v8.gni")
+ # The actual configurations are put inside a template in unofficial.gni to
+ # prevent accidental edits from contributors.
+ template("node_gn_build") {
++    if (is_linux) {
++    import("//build/config/linux/pkg_config.gni")
++    if (use_system_cares) {
++      pkg_config("system_cares") {
++        packages = [ "libcares" ]
++      }
++    }
++    if (use_system_histogram) {
++      pkg_config("system_histogram") {
++        packages = [ "hdr_histogram" ]
++      }
++    }
++    if (use_system_llhttp) {
++      pkg_config("system_llhttp") {
++        packages = [ "libllhttp" ]
++      }
++    }
++    if (use_system_nghttp2) {
++      pkg_config("system_nghttp2") {
++        packages = [ "libnghttp2" ]
++      }
++    }
++    if (use_system_simdjson) {
++      pkg_config("system_simdjson") {
++        packages = [ "simdjson" ]
++      }
++    }
++  }
++
+   config("node_features") {
+     defines = []
+     if (is_component_build) {
+@@ -138,23 +167,19 @@ template("node_gn_build") {
+ 
+   source_set("libnode") {
+     configs += [ ":node_internal_config" ]
++    libs = []
+     public_configs = [
+       ":node_external_config",
+       "deps/googletest:googletest_config",
+     ]
+     public_deps = [
+-      "deps/ada",
+       "deps/uv",
+       "//electron:electron_js2c",
+-      "deps/simdjson",
+       "$node_v8_path",
+     ]
+     deps = [
+       ":run_node_js2c",
+-      "deps/cares",
+-      "deps/histogram",
+       "deps/nbytes",
+-      "deps/nghttp2",
+       "deps/postject",
+       "deps/sqlite",
+       "deps/uvwasi",
+@@ -183,17 +208,36 @@ template("node_gn_build") {
+       configs -= [ "//build/config/gcc:symbol_visibility_hidden" ]
+       configs += [ "//build/config/gcc:symbol_visibility_default" ]
+     }
++    if (use_system_ada) {
++      libs += ["ada"]
++    } else {
++      public_deps += [ "deps/ada" ]
++    }
++    if (use_system_cares) {
++      configs += [ ":system_cares" ]
++    } else {
++      deps += [ "deps/cares" ]
++    }
+     if (use_system_llhttp) {
+-      libs += [ "llhttp" ]
++      configs += [ ":system_llhttp" ]
+     } else {
+       deps += [ "deps/llhttp" ]
+     }
+     if (use_system_histogram) {
+-      libs += [ "hdr_histogram" ]
+-      include_dirs += [ "/usr/include/hdr" ]
++      configs += [":system_histogram"]
+     } else {
+       deps += [ "deps/histogram" ]
+     }
++    if (use_system_nghttp2) {
++      configs += [":system_nghttp2"]
++    } else {
++      deps += [ "deps/nghttp2" ]
++    }
++    if (use_system_simdjson) {
++      public_configs += [":system_simdjson"]
++    } else {
++      public_deps += [ "deps/simdjson" ]
++    }
+     if (v8_enable_i18n_support) {
+       deps += [ "//third_party/icu" ]
+     }
+@@ -222,19 +266,6 @@ template("node_gn_build") {
+       sources += node_inspector.node_inspector_sources +
+                  node_inspector.node_inspector_generated_sources
+     }
+-    if (is_linux) {
+-      import("//build/config/linux/pkg_config.gni")
+-        if (use_system_cares) {
+-          pkg_config("cares") {
+-            packages = [ "libcares" ]
+-          }
+-        }
+-      if (use_system_nghttp2) {
+-        pkg_config("nghttp2") {
+-          packages = [ "libnghttp2" ]
+-        }
+-      }
+-    }
+   }
+ 
+   executable(target_name) {

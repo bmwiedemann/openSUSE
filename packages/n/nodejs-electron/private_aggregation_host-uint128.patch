@@ -21,22 +21,22 @@ In file included from /usr/include/c++/14/string:49,
   143 |   absl::uint128 bucket;
       |                 ^~~~~~
 
---- src/content/browser/private_aggregation/private_aggregation_host.cc	2025-01-02 22:23:57.594885484 +0100
-+++ /var/tmp/build-root/openSUSE_Tumbleweed-x86_64/home/abuild/rpmbuild/BUILD/src/content/browser/private_aggregation/private_aggregation_host.cc	2025-01-03 21:33:27.795544465 +0100
-@@ -51,7 +51,6 @@
- #include "mojo/public/cpp/bindings/pending_receiver.h"
- #include "mojo/public/cpp/bindings/receiver_set.h"
- #include "services/network/public/cpp/is_potentially_trustworthy.h"
+--- src/content/browser/private_aggregation/private_aggregation_pending_contributions.h.orig	2025-04-16 14:36:28.649070859 +0200
++++ src/content/browser/private_aggregation/private_aggregation_pending_contributions.h	2025-04-17 16:33:05.731832452 +0200
+@@ -11,7 +11,6 @@
+ #include <vector>
+ 
+ #include "content/common/content_export.h"
 -#include "third_party/abseil-cpp/absl/numeric/int128.h"
- #include "third_party/blink/public/common/features.h"
+ #include "third_party/abseil-cpp/absl/types/variant.h"
  #include "third_party/blink/public/mojom/aggregation_service/aggregatable_report.mojom.h"
- #include "third_party/blink/public/mojom/private_aggregation/private_aggregation_host.mojom.h"
-@@ -140,7 +139,7 @@ struct ContributionMergeKey {
  
-   auto operator<=>(const ContributionMergeKey& a) const = default;
+@@ -41,7 +40,7 @@ class CONTENT_EXPORT PrivateAggregationP
  
--  absl::uint128 bucket;
-+  unsigned __int128 bucket;
-   uint64_t filtering_id;
- };
+     auto operator<=>(const ContributionMergeKey& a) const = default;
+ 
+-    absl::uint128 bucket;
++    unsigned __int128 bucket;
+     uint64_t filtering_id;
+   };
  

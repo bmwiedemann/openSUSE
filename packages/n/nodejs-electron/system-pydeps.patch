@@ -116,9 +116,9 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
  ../../build/scripts/blinkbuild/__init__.py
  ../../build/scripts/blinkbuild/name_style_converter.py
  validate_web_idl.py
---- a/mojo/public/tools/bindings/mojom.gni
-+++ b/mojo/public/tools/bindings/mojom.gni
-@@ -699,7 +699,7 @@
+--- src/mojo/public/tools/bindings/mojom.gni.orig	2025-04-11 12:05:21.530272509 +0200
++++ src/mojo/public/tools/bindings/mojom.gni	2025-04-11 20:56:50.579500868 +0200
+@@ -802,7 +802,7 @@ template("mojom") {
        remote_worker = "large"
        custom_processor = "mojom_parser"
        script = mojom_parser_script
@@ -126,7 +126,7 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
 +      inputs = mojom_parser_sources + [ build_metadata_filename ]
        sources = sources_list
        public_deps = parser_deps
-       outputs = []
+       outputs = action_outputs
 --- src/third_party/blink/renderer/build/scripts/scripts.gni.orig	2024-12-08 18:35:01.138006834 +0100
 +++ src/third_party/blink/renderer/build/scripts/scripts.gni	2024-12-18 13:24:36.436191575 +0100
 @@ -18,10 +18,6 @@ if (is_ios) {
@@ -164,3 +164,14 @@ Unbundle assorted lexing/parsing/transpiling tools written in Python.
                     "//third_party/jinja2/__init__.py",
                     "//third_party/jinja2/_identifier.py",
                     "//third_party/jinja2/async_utils.py",
+--- src/third_party/blink/renderer/core/sanitizer/builtins_all_known.py.orig	2025-04-16 14:36:32.677312629 +0200
++++ src/third_party/blink/renderer/core/sanitizer/builtins_all_known.py	2025-04-16 21:52:51.840741724 +0200
+@@ -13,7 +13,7 @@ namespace that Blink's C++ implementatio
+ import json
+ import optparse
+ import sys
+-from pyjson5.src import json5
++import json5
+ 
+ 
+ def error(context, *infos):

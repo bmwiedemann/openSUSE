@@ -144,21 +144,19 @@ author: Michael Gilbert <mgilbert@debian.org>
    ]
    data_deps = [ "//testing:test_scripts_shared" ]
  }
---- a/tools/gritsettings/resource_ids.spec
-+++ b/tools/gritsettings/resource_ids.spec
-@@ -755,12 +755,6 @@
-   "content/test/web_ui_mojo_test_resources.grd": {
-     "includes": [7340],
+--- src/tools/gritsettings/resource_ids.spec.orig	2025-04-11 12:29:49.277239656 +0200
++++ src/tools/gritsettings/resource_ids.spec	2025-04-11 12:30:15.524243417 +0200
+@@ -1248,10 +1248,6 @@
+     "META": {"sizes": {"includes": [20]}},
+     "includes": [8280],
    },
--
--  # This file is generated during the build.
 -  "<(SHARED_INTERMEDIATE_DIR)/content/browser/tracing/tracing_resources.grd": {
 -    "META": {"sizes": {"includes": [20],}},
--    "includes": [7360],
+-    "includes": [8300],
 -  },
-   # END content/ section.
- 
-   # START "everything else" section.
+   "<(SHARED_INTERMEDIATE_DIR)/content/browser/webrtc/resources/resources.grd": {
+     "META": {"sizes": {"includes": [20],}},
+     "includes": [8320],
 --- a/content/browser/BUILD.gn
 +++ b/content/browser/BUILD.gn
 @@ -2530,7 +2530,6 @@ source_set("browser") {
@@ -315,17 +313,17 @@ author: Michael Gilbert <mgilbert@debian.org>
      "//third_party/perfetto/src/trace_processor:trace_processor_shell",
    ]
    data = [
---- a/electron/electron_paks.gni
-+++ b/electron/electron_paks.gni
-@@ -57,7 +57,6 @@
-       "$root_gen_dir/chrome/dev_ui_browser_resources.pak",
+--- src/electron/electron_paks.gni.orig	2025-04-11 12:02:41.243100651 +0200
++++ src/electron/electron_paks.gni	2025-04-11 12:28:19.897748625 +0200
+@@ -57,7 +57,6 @@ template("electron_extra_paks") {
+       "$root_gen_dir/chrome/common_resources.pak",
        "$root_gen_dir/components/components_resources.pak",
        "$root_gen_dir/content/browser/resources/media/media_internals_resources.pak",
 -      "$root_gen_dir/content/browser/tracing/tracing_resources.pak",
        "$root_gen_dir/content/browser/webrtc/resources/webrtc_internals_resources.pak",
        "$root_gen_dir/content/content_resources.pak",
        "$root_gen_dir/content/gpu_resources.pak",
-@@ -73,7 +72,6 @@
+@@ -76,7 +75,6 @@ template("electron_extra_paks") {
        "//content/browser/resources/gpu:resources",
        "//content/browser/resources/media:resources",
        "//content/browser/resources/process:resources",

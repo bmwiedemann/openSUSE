@@ -1,0 +1,45 @@
+--- src/electron/shell/browser/browser_process_impl.h.orig	2025-04-16 14:34:09.211257279 +0200
++++ src/electron/shell/browser/browser_process_impl.h	2025-04-18 21:20:48.780761049 +0200
+@@ -16,6 +16,7 @@
+ #include "chrome/browser/browser_process.h"
+ #include "components/embedder_support/origin_trials/origin_trials_settings_storage.h"
+ #include "components/prefs/value_map_pref_store.h"
++#include "components/safe_browsing/buildflags.h"
+ #include "printing/buildflags/buildflags.h"
+ #include "services/network/public/cpp/network_quality_tracker.h"
+ #include "services/network/public/cpp/shared_url_loader_factory.h"
+@@ -104,7 +105,9 @@ class BrowserProcessImpl : public Browse
+   DownloadRequestLimiter* download_request_limiter() override;
+   BackgroundModeManager* background_mode_manager() override;
+   StatusTray* status_tray() override;
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+   safe_browsing::SafeBrowsingService* safe_browsing_service() override;
++#endif
+   subresource_filter::RulesetService* subresource_filter_ruleset_service()
+       override;
+   component_updater::ComponentUpdateService* component_updater() override;
+--- src/electron/BUILD.gn.orig	2025-04-16 14:34:09.140868383 +0200
++++ src/electron/BUILD.gn	2025-04-18 21:29:07.278572174 +0200
+@@ -465,6 +465,7 @@ source_set("electron_lib") {
+     "//components/os_crypt/sync",
+     "//components/pref_registry",
+     "//components/prefs",
++    "//components/safe_browsing:buildflags",
+     "//components/security_state/content",
+     "//components/upload_list",
+     "//components/user_prefs",
+--- src/electron/shell/browser/browser_process_impl.cc.orig	2025-04-16 14:34:09.211257279 +0200
++++ src/electron/shell/browser/browser_process_impl.cc	2025-04-18 21:32:53.957517063 +0200
+@@ -257,10 +257,12 @@ StatusTray* BrowserProcessImpl::status_t
+   return nullptr;
+ }
+ 
++#if BUILDFLAG(SAFE_BROWSING_AVAILABLE)
+ safe_browsing::SafeBrowsingService*
+ BrowserProcessImpl::safe_browsing_service() {
+   return nullptr;
+ }
++#endif
+ 
+ subresource_filter::RulesetService*
+ BrowserProcessImpl::subresource_filter_ruleset_service() {

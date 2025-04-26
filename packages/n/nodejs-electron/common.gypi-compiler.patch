@@ -1,6 +1,6 @@
---- src/third_party/electron_node/common.gypi.orig	2024-12-08 18:45:44.261359453 +0100
-+++ src/third_party/electron_node/common.gypi	2024-12-18 11:12:53.414653184 +0100
-@@ -487,10 +487,15 @@
+--- src/third_party/electron_node/common.gypi.orig	2025-04-10 20:07:02.154742467 +0200
++++ src/third_party/electron_node/common.gypi	2025-04-11 11:45:57.996110023 +0200
+@@ -514,15 +514,19 @@
          'ldflags': [ '-pthread' ],
        }],
        [ 'OS in "linux freebsd openbsd solaris android aix os400 cloudabi"', {
@@ -11,14 +11,19 @@
 +        # `-fvisibility=hidden` is something we're adding to fix downstream overzealous exports.
 +        # The electron headers annotate their visibility correctly, but many third-party code does not which leads to bloated builds.
 +        'cflags': [ '-Wall', '-Wextra', '-Wno-unused-parameter', '-fpic', '-fno-semantic-interposition', '-fvisibility=hidden' ],
-         'cflags_cc': [ '-fno-rtti', '-fno-exceptions', '-std=gnu++20' ],
+         'cflags_cc': [
+           '-fno-rtti',
+           '-fno-exceptions',
+-          '-fno-strict-aliasing',
+           '-std=gnu++20',
+         ],
          'defines': [ '__STDC_FORMAT_MACROS' ],
 -        'ldflags': [ '-rdynamic' ],
-+        #'ldflags': [ '-rdynamic' ], this is totally bogus — we are building a plugin, not a plugin host
++         #'ldflags': [ '-rdynamic' ], this is totally bogus — we are building a plugin, not a plugin host
          'target_conditions': [
            # The 1990s toolchain on SmartOS can't handle thin archives.
            ['_type=="static_library" and OS=="solaris"', {
-@@ -670,29 +675,7 @@
+@@ -700,29 +704,7 @@
            '-Wl,--export-dynamic',
          ],
        }],

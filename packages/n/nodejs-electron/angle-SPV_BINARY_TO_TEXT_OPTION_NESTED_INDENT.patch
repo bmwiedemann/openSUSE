@@ -1,0 +1,62 @@
+From 397eb7c81ee996027470b2453b787e4947cdc8c0 Mon Sep 17 00:00:00 2001
+From: Shahbaz Youssefi <syoussefi@chromium.org>
+Date: Sat, 29 Jun 2024 00:22:42 -0400
+Subject: [PATCH] Vulkan: Easier to read SPIR-V disassembly
+
+Bug: angleproject:349994211
+Change-Id: I9d8da4a9fa336e1f5ecdfa39c33959ecebb2c6ea
+Reviewed-on: https://chromium-review.googlesource.com/c/angle/angle/+/5667081
+Auto-Submit: Shahbaz Youssefi <syoussefi@chromium.org>
+Reviewed-by: Amirali Abdolrashidi <abdolrashidi@google.com>
+Commit-Queue: Shahbaz Youssefi <syoussefi@chromium.org>
+---
+ samples/shader_translator/shader_translator.cpp | 4 +++-
+ src/common/spirv/angle_spirv_utils.cpp          | 4 +++-
+ src/compiler/translator/spirv/OutputSPIRV.cpp   | 4 +++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/samples/shader_translator/shader_translator.cpp b/samples/shader_translator/shader_translator.cpp
+index 64f4df372f0..3d6aa709ce1 100644
+--- a/third_party/angle/samples/shader_translator/shader_translator.cpp
++++ b/third_party/angle/samples/shader_translator/shader_translator.cpp
+@@ -928,7 +928,9 @@ static void PrintSpirv(const sh::BinaryBlob &blob)
+     spvtools::SpirvTools spirvTools(SPV_ENV_VULKAN_1_1);
+ 
+     std::string readableSpirv;
+-    spirvTools.Disassemble(blob, &readableSpirv, 0);
++    spirvTools.Disassemble(blob, &readableSpirv,
++                           SPV_BINARY_TO_TEXT_OPTION_COMMENT | SPV_BINARY_TO_TEXT_OPTION_INDENT |
++                               SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT);
+ 
+     puts(readableSpirv.c_str());
+ #endif
+diff --git a/src/common/spirv/angle_spirv_utils.cpp b/src/common/spirv/angle_spirv_utils.cpp
+index 5082b3c7341..fc83582eb48 100644
+--- a/third_party/angle/src/common/spirv/angle_spirv_utils.cpp
++++ b/third_party/angle/src/common/spirv/angle_spirv_utils.cpp
+@@ -62,7 +62,9 @@ void Print(const Blob &blob)
+ {
+     spvtools::SpirvTools spirvTools(GetEnv(blob));
+     std::string readableSpirv;
+-    spirvTools.Disassemble(blob, &readableSpirv, 0);
++    spirvTools.Disassemble(blob, &readableSpirv,
++                           SPV_BINARY_TO_TEXT_OPTION_COMMENT | SPV_BINARY_TO_TEXT_OPTION_INDENT |
++                               SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT);
+     INFO() << "Disassembled SPIR-V:\n" << readableSpirv.c_str();
+ }
+ 
+diff --git a/src/compiler/translator/spirv/OutputSPIRV.cpp b/src/compiler/translator/spirv/OutputSPIRV.cpp
+index ad5c12e07fe..1ed6b264622 100644
+--- a/third_party/angle/src/compiler/translator/spirv/OutputSPIRV.cpp
++++ b/third_party/angle/src/compiler/translator/spirv/OutputSPIRV.cpp
+@@ -6550,7 +6550,9 @@ spirv::Blob OutputSPIRVTraverser::getSpirv()
+     spvtools::SpirvTools spirvTools(mCompileOptions.emitSPIRV14 ? SPV_ENV_VULKAN_1_1_SPIRV_1_4
+                                                                 : SPV_ENV_VULKAN_1_1);
+     std::string readableSpirv;
+-    spirvTools.Disassemble(result, &readableSpirv, 0);
++    spirvTools.Disassemble(result, &readableSpirv,
++                           SPV_BINARY_TO_TEXT_OPTION_COMMENT | SPV_BINARY_TO_TEXT_OPTION_INDENT |
++                               SPV_BINARY_TO_TEXT_OPTION_NESTED_INDENT);
+     fprintf(stderr, "%s\n", readableSpirv.c_str());
+ #endif  // ANGLE_DEBUG_SPIRV_GENERATION
+ 

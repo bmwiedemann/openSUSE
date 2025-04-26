@@ -1,0 +1,30 @@
+From 36a764f13dc04d0c06b89d9e5a205224eb2784c8 Mon Sep 17 00:00:00 2001
+From: Danil Chapovalov <danilchap@webrtc.org>
+Date: Thu, 24 Oct 2024 11:12:57 +0200
+Subject: [PATCH] Remove nullability compatible tag in scoped_refptr as
+ obsolete
+
+As of https://github.com/abseil/abseil-cpp/commit/485f2be7c1d2f1a2ad2d89f6aef308dd7bfede8d, this no longer has any effect; instead, the ABSL_NULLABILITY_COMPATIBLE attribute which is already present on the class determines whether a class is compatible with nullability annotations.
+
+Bug: None
+Change-Id: I5aeca86c86c2b6eadb2644695ee3621e92f1f568
+Reviewed-on: https://webrtc-review.googlesource.com/c/src/+/366601
+Reviewed-by: Harald Alvestrand <hta@webrtc.org>
+Commit-Queue: Danil Chapovalov <danilchap@webrtc.org>
+Cr-Commit-Position: refs/heads/main@{#43532}
+---
+ api/scoped_refptr.h | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/api/scoped_refptr.h b/api/scoped_refptr.h
+index c6fb5605ca..e3274741cc 100644
+--- a/third_party/webrtc/api/scoped_refptr.h
++++ b/third_party/webrtc/api/scoped_refptr.h
+@@ -73,7 +73,6 @@ namespace webrtc {
+ template <class T>
+ class ABSL_NULLABILITY_COMPATIBLE scoped_refptr {
+  public:
+-  using absl_nullability_compatible = void;
+   using element_type = T;
+ 
+   scoped_refptr() : ptr_(nullptr) {}
