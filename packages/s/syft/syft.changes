@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Apr 25 18:25:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.23.1:
+  * chore(deps): update tools to latest versions (#3830)
+  * Resolve owned file paths when searching for overlaps (#3828)
+
+-------------------------------------------------------------------
+Fri Apr 25 06:06:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.23.0:
+  * Added Features
+    - Support skipping archive extraction with file source [#3795
+      @adammcclenaghan]
+    - Use the R cataloger in directory scans [#3774 @spiffcs]
+    - Add support for detecting javascript assets in .NET projects
+      using libman [#3825 @wagoodman]
+    - Parse GitHub actions comments [#3776 @wagoodman]
+    - Support chrome binary detection [#3174 #3136 @lem-onade]
+    - Add support for detecting undeclared license files scanning
+      from python installations [#2624 #3779 @wagoodman]
+  * Bug Fixes
+    - .NET cataloger should consider compile target paths from
+      deps.json [#3821 @wagoodman]
+    - Skip license scanner injection [#3796 @adammcclenaghan]
+    - Delete collection name/type key entries when empty [#3797
+      @adammcclenaghan]
+    - Use module name over relative paths in go.mod replace
+      directives [#3812 @VictorHuu]
+    - Correct variable names for Conan lock parsing version
+      handling [#3802 @musangk]
+    - Consider DLL claims for dependencies of .NET packages from
+      deps.json [#3822 @wagoodman]
+    - Empty source during decoding an SBOM document should not be
+      fatal [#3791 @wagoodman]
+    - Dpkg are not detected when scanning a directory [#3726 #3820
+      @VictorHuu]
+    - Support golang tip image [#3681 #3757 @VictorHuu]
+    - syft cataloger list should flatten options [#3801 #3804
+      @kzantow]
+    - Unable to generate a correct SBOM for C++ project [#3755]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#3827)
+    - chore(deps): update tools to latest versions (#3823)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#3818)
+    - chore(deps): bump github/codeql-action from 3.28.15 to
+      3.28.16 (#3819)
+    - chore(deps): update tools to latest versions (#3815)
+    - chore(deps): update CPE dictionary index (#3813)
+    - chore(deps): update tools to latest versions (#3806)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.15.0 to
+      5.16.0 (#3807)
+    - chore(deps): bump github.com/anchore/stereoscope from 0.1.2
+      to 0.1.3 (#3803)
+    - chore(deps): update tools to latest versions (#3798)
+    - chore(deps): update CPE dictionary index (#3799)
+    - chore(deps): bump github.com/mholt/archives from 0.1.0 to
+      0.1.1 (#3778)
+    - chore(deps): bump marocchino/sticky-pull-request-comment
+      (#3788)
+    - chore(deps): bump github.com/magiconair/properties from 1.8.9
+      to 1.8.10 (#3789)
+    - chore(deps): bump github.com/charmbracelet/bubbles from
+      0.20.0 to 0.21.0 (#3790)
+    - chore(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to
+      5.15.0 (#3792)
+    - chore(deps): update tools to latest versions (#3785)
+    - chore(deps): bump github/codeql-action from 3.28.13 to
+      3.28.15 (#3786)
+    - chore(deps): bump golang.org/x/net from 0.38.0 to 0.39.0
+      (#3787)
+    - chore(deps): update CPE dictionary index (#3782)
+    - chore(deps): update tools to latest versions (#3775)
+
+-------------------------------------------------------------------
 Tue Apr 01 17:31:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.22.0:
