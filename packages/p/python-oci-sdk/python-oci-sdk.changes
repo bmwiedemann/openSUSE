@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Apr 27 07:35:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.150.2
+  * Support for patch management in the Database Lifecycle Management service
+  * Support for restricting public network access to service instances in the
+    Visual Builder service
+  * Support for iSCSI-3 persistent reservations on block volume in the Core
+    services (Networking, Compute, Block Volume)
+  * Limited the `enable_fips` method in `oci.fips` module to work only on
+    OpenSSL 1.x for compatibility with OpenSSL 3.x
+- from version 2.150.1
+  * Support for applying guardrails, enabling content moderation and detection
+    of Prompt Injection and Personally Identifiable Information (PII) in the
+    Generative AI Inference service
+  * Support for providing customer contacts for operational notifications in
+    the Database service
+- from version 2.150.0
+  * Support for connector source and targets with private endpoints in the
+    Resource Scheduler service
+  * Support for Cross Region Replication(XRR) for external key managers in
+    the Key Management service
+  * Support for dry run of function invocation in the Functions service
+  * Support for collecting diagnostics for ZeroETL pipelines in the GoldenGate service
+  * Support for adding, removing and switchover to local peers of deployment
+    in different availability and fault domains within in the same region in
+    the GoldenGate service
+  * Support for creating standby deployments in the GoldenGate service
+  * The property `kind` in the `SourceDetails`, `TaskDetails` and `TargetDetails`
+    models in the Resource Scheduler service was fixed to no longer support
+    `UNKNOWN_ENUM_VALUE`. Instead, a `ValueError` will be raised if this property
+    is assigned a value that it does not support.
+  * The type of property `source` in model `ServiceConnector` changed from
+    `oci.sch.models.SourceDetails` to `oci.sch.models.SourceDetailsResponse`
+    in the Resource Scheduler service
+  * The type of property `tasks` in model `ServiceConnector` changed from
+    `oci.sch.models.TargetDetails` to `oci.sch.models.TaskDetailsResponse`
+    in the Resource Scheduler service
+  * The type of property `target` in model `ServiceConnector` changed from
+    `oci.sch.models.TaskDetails` to `oci.sch.models.TargetDetailsResponse`
+    in the Resource Scheduler service
+
+-------------------------------------------------------------------
 Mon Apr  7 07:39:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.149.2
