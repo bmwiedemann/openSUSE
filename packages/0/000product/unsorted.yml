@@ -9611,6 +9611,9 @@ unsorted:
   - jing 
   - jing-javadoc 
   - jira-cli 
+  - jira-cli-bash-completion 
+  - jira-cli-fish-completion 
+  - jira-cli-zsh-completion 
   - jisp2 
   - jisp2-demo 
   - jisp2-javadoc 
