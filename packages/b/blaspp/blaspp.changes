@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 26 19:30:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2024.10.26:
+  * Added PAPI SDE that counts flops.
+  * Use to_blas_int to convert int32 to int64.
+- Drop 87.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Tue Aug 20 07:16:54 UTC 2024 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add 87.patch for reproducible builds (boo#1084909)
