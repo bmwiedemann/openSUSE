@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Apr 26 22:08:27 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 14.0.2
+  * Only build-relevant changes. (The VNC backend can be built with
+    a newer neatvnc library.)
+
+-------------------------------------------------------------------
 Mon Oct 21 16:36:16 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 14.0.1

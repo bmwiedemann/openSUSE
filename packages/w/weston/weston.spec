@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           weston
 %define lname	libweston0
 %define major   14
-Version:        14.0.1
+Version:        14.0.2
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
