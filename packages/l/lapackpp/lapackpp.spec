@@ -1,7 +1,7 @@
 #
 # spec file for package lapackpp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           lapackpp
-Version:        2024.05.31
+Version:        2024.10.26
 Release:        0
 Summary:        C++ API for the Linear Algebra PACKage
 License:        BSD-3-Clause
 URL:            https://icl.utk.edu/slate/
 Source:         https://github.com/icl-utk-edu/lapackpp/releases/download/v%{version}/lapackpp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/icl-utk-edu/lapackpp/pull/68.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
