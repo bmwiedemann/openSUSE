@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Tue Apr 15 19:35:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * Allow for successful synchronization when logged in via altname
+    (turning it into email address internally)
+  * TimeZoneStruct wDayOfWeek and wDay were erroneously switched
+    whan calculating DST start and end, which has been fixed.
+  * Adjust all day events to midnight only if a TZ definition was
+    saved with the message. The server timezone should not be
+    applied in this case, because if no TZ is there,
+    starttime/endtime of an event should be midnight already.
+  * Apply server TZ to allday appointments with non GMT start times.
+
+-------------------------------------------------------------------
+Mon Mar 10 00:02:47 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1
+  * Better handling of all-day events with
+    PidLidAppointmentTimeZoneDefinition*
+  * Enhanced robustness for organizer data on GAL without
+    PR_SENT_REPRESENTING_*
+  * More efficient GAL object retrieval
+  * Prevent organizers double listing to recipients
+
+-------------------------------------------------------------------
+Mon Jan 30 17:57:41 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 1.1.59) for build.opensuse.org

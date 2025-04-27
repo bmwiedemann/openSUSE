@@ -1,0 +1,23 @@
+Source: grommunio-sync
+Section: web
+Priority: extra
+Maintainer: grommunio <dev@grommunio.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: https://grommunio.com
+
+Package: grommunio-sync
+Architecture: all
+Depends: system-user-grosync, ${misc:Depends}, mapi-header-php (>= 1.5),
+ php (>= 7.4) | php7 (>= 7.4), php-intl, 
+ php-mbstring, php-mysql, php-redis,
+ php-soap, php-xml, php-mapi-gromox, nginx, nginx-common,
+ ${dist:Depends}
+Provides: system-user-grosync
+Replaces: system-user-grosync
+Breaks: system-user-grosync
+Description: an implementation of the ActiveSync protocol which is
+ used "over-the-air" for multi-platform ActiveSync devices. Devices
+ supported are including Windows Mobile, Android, iPhone, and Nokia.
+ With grommunio-sync, many groupware servers can be connected and synced
+ with these devices.

@@ -1,0 +1,10 @@
+#!/bin/sh
+# Wrapper script for grommunio-sync-top.
+user=$(id -nu)
+if [ "$user" = "root" ]; then
+	su -l www-data -s /bin/sh -c "/usr/share/grommunio-sync/grommunio-sync-top.php $*"
+elif [ "$user" = "www-data" ]; then
+	/usr/share/grommunio-sync/grommunio-sync-top.php "$@"
+else
+	exit 1
+fi

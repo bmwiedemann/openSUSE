@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+INSTDIR=$(CURDIR)/debian/grommunio-sync
+phpdir := $(shell readlink -f $$(php-config --ini-path)/..)
+
+#include /usr/share/quilt/quilt.make
+
+SUBSTVARS = -Vdist:Depends="php-mbstring"
+DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+
+%:
+	dh  $@
+
+override_dh_gencontrol:
+	dh_gencontrol -- $(SUBSTVARS)
+
+override_dh_auto_install:
+	rm -f {INSTALL,LICENSE,DEVELOPMENT}
+	# set version number
+	sed -s "s/__VERSION__/${DEB_VERSION}/" build/version.php.in > version.php
+	mkdir -p ${INSTDIR}/usr/share/grommunio-sync
+
+	mv "config.php" "grommunio-sync.conf.php"
+	
+	# Nginx conf
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d"
+	install -Dpvm 644 build/grommunio-sync.conf "${INSTDIR}/usr/share/grommunio-common/nginx/locations.d/"
+	mkdir -pv "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/grommunio-sync-upstream.conf
+	install -Dpvm 644 build/grommunio-sync-upstream.conf "${INSTDIR}/usr/share/grommunio-common/nginx/upstreams.d/grommunio-sync.conf"
+
+	# PHP-FPM
+	mkdir -pv "${INSTDIR}/${phpdir}/fpm/pool.d" "${INSTDIR}/usr/lib/sysusers.d"
+	sed -i "s#/run/php-fpm/#/run/php/#g" build/pool-grommunio-sync.conf
+	install -Dpvm 644 build/pool-grommunio-sync.conf "${INSTDIR}/${phpdir}/fpm/pool.d/"
+	cp -a build/sysuser.conf "${INSTDIR}/usr/lib/sysusers.d/grommunio-sync.conf"
+
+	dh_install
+	mkdir -p ${INSTDIR}/var/log/grommunio-sync
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	dh_clean
+
+build:

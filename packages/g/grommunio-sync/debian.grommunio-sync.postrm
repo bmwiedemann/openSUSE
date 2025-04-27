@@ -1,0 +1,38 @@
+#!/bin/sh
+# postrm script for grommunio-sync
+
+set -e
+
+# Use debconf
+. /usr/share/debconf/confmodule
+
+case "$1" in
+    purge|abort-install)
+        if [ -f /usr/share/grommunio-common/nginx/locations.d/grommunio-sync.conf ]; then
+            echo "Remove grommunio-sync config files and restart nginx"
+            rm /usr/share/grommunio-common/nginx/locations.d/grommunio-sync.conf
+            ucf --purge /usr/share/grommunio-common/nginx/locations.d/grommunio-sync.conf
+            rm /usr/share/grommunio-common/nginx/upstreams.d/grommunio-sync-upstream.conf
+            ucf --purge /usr/share/grommunio-common/nginx/upstreams.d/grommunio-sync-upstream.conf
+            rm /usr/share/grommunio-common/nginx/upstreams.d/grommunio-sync.conf
+            ucf --purge /usr/share/grommunio-common/nginx/upstreams.d/grommunio-sync.conf
+            systemctl reload nginx php
+
+            rm /etc/php7/fpm/php-fpm.d/pool-grommunio-sync.conf
+            ucf --purge /etc/php7/fpm/php-fpm.d/pool-grommunio-sync.conf
+            systemctl restart php7.4-fpm.service
+        fi
+        ;;
+
+    remove|upgrade|failed-upgrade|abort-upgrade|disappear)
+        ;;
+
+    *)
+        echo "postrm called with unknown argument \`$1'" >&2
+        exit 1
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

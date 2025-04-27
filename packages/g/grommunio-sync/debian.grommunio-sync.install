@@ -1,0 +1,12 @@
+grommunio-sync.conf.php             /etc/grommunio-sync/
+index.php                           /usr/share/grommunio-sync/
+lib                                 /usr/share/grommunio-sync/
+vendor                              /usr/share/grommunio-sync/
+version.php                         /usr/share/grommunio-sync/
+grommunio-sync-top                  /usr/sbin/
+grommunio-sync-top                  /usr/share/grommunio-sync/
+grommunio-sync-top.php              /usr/share/grommunio-sync/
+
+build/grommunio-sync.lr             etc/logrotate.d/
+
+build/grommunio-sync.conf           /usr/share/grommunio-common/nginx/locations.d/
