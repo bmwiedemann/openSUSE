@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Mar 23 05:32:25 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.200.0 (1.20)
+   see /usr/share/doc/packages/perl-DateTime-Format-Natural/Changes
+
+  1.20  2025-03-22  <schubiger@cpan.org>
+
+   - Document ::Duration::Checks.
+
+-------------------------------------------------------------------
 Mon Jan  6 05:32:08 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.190.0 (1.19)
