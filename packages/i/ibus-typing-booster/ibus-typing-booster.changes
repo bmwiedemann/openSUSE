@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 27 16:00:43 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.42
+- Ignore self._candidates_delay_milliseconds when OSK is in use
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/695)
+- Do not show frequency debugging information in the looup table when OSK is active
+- Improve instantiation speed of EmojiMatcher:
+  Use @functools.lru_cache(maxsize=500_000) to cache the variation_selector_normalize() method
+
+-------------------------------------------------------------------
 Sat Apr 26 02:27:34 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.41
