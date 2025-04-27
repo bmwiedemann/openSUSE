@@ -1,0 +1,162 @@
+-------------------------------------------------------------------
+Sat Apr 26 08:23:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 2.0.3+git.1745262257.669f8ce:
+  * engine and engine plugin: refactor, extract classes
+  * Refactor: move unused function blit_map from enginePlugin to engine
+  * engine: refactor: make mapOps.h a separately compiled map.c
+  * Add test of Render>Texture plugin on image w alpha
+  * Test and fix conversions from high-bit depth images
+  * Fix engine handling of indexed mode images.
+  * Test: restore test of plugin FillPatternSeamless
+  * Plugin Edit>FillPatternSeamless  port to script-fu-register-filter
+  * Port Edit>FillPatternSeamless to 3.0 API
+  * Plugin Enhance>Uncrop: enhance, option to anti-erase the enlargement
+  * Plugin Enhance>Uncrop: restore anti-erase feature
+  * Plugin Enhance>Uncrop: refactor extracting methods
+  * Make Enhance>Uncrop use v3 binding
+  * Restore outer plugin Enhance>Uncrop to working condition
+  * New reference test images for GIMP 3
+  * Fix conversion of selection masks
+  * build: fix broken build when not option synth-debug
+  * test plugin: restore to working order
+  * build: option to install test plugin, and option to install i18n translations
+  * test plugin: restore to somewhat working
+  * outer plugins: rename the .scm files and the plugin procedures to standard names
+  * Render>Texture outer plugin: fix bug for image mode indexed
+  * Render>Texture outer plugin: port to use script-fu-register-filter
+  * Render>Texture outer plugin: port to v3 binding of PDB return values
+  * Render>Texture outer plugin: port to GIMP 3 API
+  * Map Style outer plugin: port to script-fu-register-filter
+
+-------------------------------------------------------------------
+Fri Apr 04 13:45:19 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 20250403.7e3eaea:
+  * build: option to install test plugin, and option to install i18n translations
+  * test plugin: restore to somewhat working
+  * outer plugins: rename the .scm files and the plugin procedures to standard names
+  * Render>Texture outer plugin: fix bug for image mode indexed
+  * Render>Texture outer plugin: port to use script-fu-register-filter
+  * Render>Texture outer plugin: port to v3 binding of PDB return values
+  * Render>Texture outer plugin: port to GIMP 3 API
+  * Map Style outer plugin: port to script-fu-register-filter
+  * Update README.md re state of this branch.
+  * Map Style outer plugin: allow images of mode INDEXED
+  * Map Style outer plugin: port to GIMP v3
+  * refactor: move count_color_channels to format.c
+  * Enhance: let plugins be called on images of mode INDEXED
+  * Add comments on code for threading.
+  * Resurrect animation in slow motion.
+  * Refactor: adaptGimp.h into separate declarations .h and definitions .h
+  * Resurrect animation for debugging.
+  * Resurrect broken code for debugging, statistics
+  * adaption from Gimp to resynthesizer: fix for high bit-depth
+- No language files included in this build of the plugin.
+
+-------------------------------------------------------------------
+Thu Feb 13 12:50:12 UTC 2025 - info@paolostivanin.com
+
+- Update to version 20250128.eed3bf8:
+  * build: fix broken po/meson.build
+  * i18n: fix wrong path in POTFILES.in
+  * build and outerPlugins: fix i18n
+
+-------------------------------------------------------------------
+Fri Jan 24 15:18:40 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 20250123.93d2139:
+  * Update ci-meson.yaml disable continuousness until we have libgimp3.0
+  * Update ci-meson.yaml only build linux
+  * Update ci-meson.yaml install glib before build
+  * Update ci-meson.yaml to allow manual run
+  * actions: add an action on resynthesizer3 branch to build using meson
+  * build: don't install plugins not yet ported from GIMP 2 to 3
+  * outerPlugin: Heal Transparency: restore to working
+  * outer plugin: Map>Resynthesize: restore to somewhat working
+  * Heal selection: port from Gimp 2 to 3
+  * build: revise vagga.yaml for Ubuntu 24.04
+  * Changes required for resynthesizer3 branch to build
+  * Fix format-security warning in debug.c
+
+-------------------------------------------------------------------
+Tue Jan 21 15:05:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Build on the top of resynthesizer3 branch of
+  https://github.com/bootchk/resynthesizer repository
+- Add resynthesizer3-build.patch, which are local adjustments to
+  make thing buildable.
+
+-------------------------------------------------------------------
+Mon Feb 26 07:48:11 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3~git.20240203:
+  * Add check if plugin-resynthesizer is defined.
+
+-------------------------------------------------------------------
+Fri Jan 19 10:29:36 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3~git.20231001:
+  * switch to a new fork that removes Python2 requirements
+
+-------------------------------------------------------------------
+Thu Sep  8 06:22:53 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3~git.20220422:
+  * Fix Filter>Render>Texture improperly yields a transparent image
+    for an input image with alpha channel.
+
+-------------------------------------------------------------------
+Wed Nov 10 06:40:10 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.3.20210530:
+  * implement imageSynth2 which takes two masks
+  * update translations
+  * update documentation
+
+-------------------------------------------------------------------
+Thu May 28 13:21:37 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add missing copyright header to the spec file
+
+-------------------------------------------------------------------
+Mon May 11 09:07:16 UTC 2020 - info@paolostivanin.com
+
+- Update to version 2.0.3.20190428:
+  * Adding missing translation on progress bar text.
+  * Adding French Translation and updating all po files with new strings.  Tweaked README on how to use translation files on Ubuntu.
+  * Add vagga test gimp-plugin-registry and installed resynthesizer.
+  * Add vagga scripts for testing build
+  * README: replace dead links with archive
+  * Issued #47 typo in readme
+
+-------------------------------------------------------------------
+Thu Jan  2 10:18:54 UTC 2014 - pgajdos@suse.com
+
+- updated to git snapshot 77eb3a6fc0
+  * fixes build failure (am 1.13)
+
+-------------------------------------------------------------------
+Thu May 16 11:32:51 UTC 2013 - prusnak@opensuse.org
+
+- updated to git snapshot 23dced0908
+  - fixes build failures
+- added gimp-plugins-python dependency
+- spec file cleanup
+
+-------------------------------------------------------------------
+Sun Jul  8 23:29:59 UTC 2012 - jw@suse.com
+
+- upgrade to 2.0, added autoconf/automake support
+- linking with gthread-2.0
+
+-------------------------------------------------------------------
+Sun Jul  8 21:25:02 UTC 2012 - jw@suse.com
+
+- fixed missing intltool and SUSE_ASNEEDED
+
+-------------------------------------------------------------------
+Wed Oct 12 20:43:26 UTC 2011 - dmacvicar@suse.de
+
+- initial package
+

@@ -1,0 +1,14 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/bootchk/resynthesizer.git</param>
+    <param name="versionprefix">2.0.3+git</param>
+    <param name="scm">git</param>
+    <param name="revision">resynthesizer3</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
