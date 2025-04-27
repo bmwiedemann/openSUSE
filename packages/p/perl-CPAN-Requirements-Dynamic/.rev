@@ -7,4 +7,12 @@
     <comment>New dependency for perl-Module-Build-Tiny</comment>
     <requestid>1185883</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f70690eee28b759a41510d8cc3b20856</srcmd5>
+    <version>0.2.0</version>
+    <time>1745787259</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1272896</requestid>
+  </revision>
 </revisionlist>

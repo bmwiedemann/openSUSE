@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Requirements-Dynamic
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name CPAN-Requirements-Dynamic
 Name:           perl-CPAN-Requirements-Dynamic
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
-# 0.001 -> normalize -> 0.1.0
-%define cpan_version 0.001
+# 0.002 -> normalize -> 0.2.0
+%define cpan_version 0.002
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Dynamic prerequisites in meta files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -35,7 +35,6 @@ BuildRequires:  perl(CPAN::Meta::Requirements::Range)
 BuildRequires:  perl(ExtUtils::Config)
 BuildRequires:  perl(ExtUtils::HasCompiler)
 BuildRequires:  perl(IPC::Cmd)
-BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Parse::CPAN::Meta)
 BuildRequires:  perl(Perl::OSType)
 Requires:       perl(CPAN::Meta::Prereqs)
@@ -43,7 +42,6 @@ Requires:       perl(CPAN::Meta::Requirements::Range)
 Requires:       perl(ExtUtils::Config)
 Requires:       perl(ExtUtils::HasCompiler)
 Requires:       perl(IPC::Cmd)
-Requires:       perl(Module::Metadata)
 Requires:       perl(Parse::CPAN::Meta)
 Requires:       perl(Perl::OSType)
 Provides:       perl(CPAN::Requirements::Dynamic) = %{version}
@@ -55,7 +53,7 @@ This module implements a format for describing dynamic prerequisites of a
 distribution.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
