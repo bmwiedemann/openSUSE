@@ -7,4 +7,13 @@
     <comment>new package framework_tool for Framework laptops</comment>
     <requestid>1256459</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c12de276388aeb1838ee32d6202d50ac</srcmd5>
+    <version>0.2.1</version>
+    <time>1745787251</time>
+    <user>dimstar_suse</user>
+    <comment>- add make-reproducable.patch to force newer versions of
+  dependencies to make package reproducable</comment>
+    <requestid>1272875</requestid>
+  </revision>
 </revisionlist>

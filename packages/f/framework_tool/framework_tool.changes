@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 16 13:03:46 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- add make-reproducable.patch to force newer versions of
+  dependencies to make package reproducable
+
+-------------------------------------------------------------------
 Wed Feb 26 09:54:17 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.2.1

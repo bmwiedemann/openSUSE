@@ -1,0 +1,13 @@
+Index: framework-system-0.2.1/framework_lib/Cargo.toml
+===================================================================
+--- framework-system-0.2.1.orig/framework_lib/Cargo.toml
++++ framework-system-0.2.1/framework_lib/Cargo.toml
+@@ -42,7 +42,7 @@ cros_ec_driver = []
+ win_driver = []
+ 
+ [build-dependencies]
+-built = { version = "0.5", features = ["chrono", "git2"] }
++built = { version = "0.7.7", features = ["chrono", "git2"] }
+ 
+ [dependencies]
+ lazy_static = "1.4.0"

@@ -2,6 +2,6 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="src">framework_tool-*.tar.gz</param>
      <param name="cargotoml">framework_tool/Cargo.toml</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>

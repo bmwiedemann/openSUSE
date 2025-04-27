@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/FrameworkComputer/framework-system
 Source0:        https://github.com/FrameworkComputer/framework-system/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE make-reproducable.patch
+Patch0:         make-reproducable.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  pkg-config
 BuildRequires:  systemd-devel
@@ -41,8 +43,7 @@ Rust tools to interact with the Framework Computer systems, especially with the 
 %cargo_build
 
 %install
-install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/%{reponame}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
 %check
 %cargo_test
