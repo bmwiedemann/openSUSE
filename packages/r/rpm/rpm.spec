@@ -124,6 +124,9 @@ Patch154:       undefbuildroot.diff
 Patch155:       rpm2archive.diff
 Patch156:       mtime_policy_set.diff
 Patch157:       cmake_fhardened.diff
+Patch158:       archcheck.diff
+Patch159:       emptypw.diff
+Patch160:       buildsysprep.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -242,7 +245,8 @@ rm -rf sqlite
 %patch -P 131          -P 133 -P 134 -P 135 -P 136        -P 138
 %patch -P 139
 %patch -P 141 -P 142
-%patch -P 150 -P 151               -P 154 -P 155 -P 156 -P 157
+%patch -P 150 -P 151 -P 154 -P 155 -P 156 -P 157 -P 158 -P 159
+%patch -P 160
 
 %ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464

@@ -1,8 +1,8 @@
 Convert output to the current locale. Assumes utf8 input if the
 decoding works, otherwise iso-8859-1.
 
---- lib/tagexts.c.orig	2021-06-21 12:00:44.615612184 +0000
-+++ lib/tagexts.c	2021-09-23 18:58:58.461872258 +0000
+--- lib/tagexts.c.orig	2025-02-19 15:29:33.000000000 +0000
++++ lib/tagexts.c	2025-04-25 11:59:49.808794382 +0000
 @@ -2,6 +2,7 @@
   * \file lib/formats.c
   */
@@ -11,7 +11,7 @@ decoding works, otherwise iso-8859-1.
  #include "system.h"
  
  #include <rpm/rpmtypes.h>
-@@ -197,6 +198,114 @@ typedef enum tMode_e {
+@@ -192,6 +193,115 @@ typedef enum tMode_e {
      TRANSFILETRIGGER  = 2,
  } tMode;
  
@@ -94,6 +94,7 @@ decoding works, otherwise iso-8859-1.
 +    if (wcrtomb(cc, 0x20ac, &ps) != 3 || memcmp(cc, "\342\202\254", 3))
 +	locisutf8 = 0;
 +    if (locisutf8 == strisutf8) {
++	_free(cc);
 +	wstr = _free(wstr);
 +	return str;
 +    }
@@ -126,7 +127,7 @@ decoding works, otherwise iso-8859-1.
  /**
   * Retrieve trigger info.
   * @param mode		type of trigger (see tMode_e)
-@@ -607,10 +716,41 @@ static int i18nTag(Header h, rpmTag tag,
+@@ -606,10 +716,41 @@ static int i18nTag(Header h, rpmTag tag,
  #endif
  
      rc = headerGet(h, tag, td, HEADERGET_ALLOC);
@@ -168,7 +169,7 @@ decoding works, otherwise iso-8859-1.
   * Retrieve summary text.
   * @param h		header
   * @param[out] td		tag data container
-@@ -634,6 +774,16 @@ static int descriptionTag(Header h, rpmt
+@@ -633,6 +774,16 @@ static int descriptionTag(Header h, rpmt
      return i18nTag(h, RPMTAG_DESCRIPTION, td, hgflags);
  }
  
@@ -185,7 +186,7 @@ decoding works, otherwise iso-8859-1.
  /**
   * Retrieve group text.
   * @param h		header
-@@ -971,6 +1121,8 @@ static const struct headerTagFunc_s rpmH
+@@ -1022,6 +1173,8 @@ static const struct headerTagFunc_s rpmH
      { RPMTAG_LONGARCHIVESIZE,	longarchivesizeTag },
      { RPMTAG_LONGSIZE,		longsizeTag },
      { RPMTAG_LONGSIGSIZE,	longsigsizeTag },

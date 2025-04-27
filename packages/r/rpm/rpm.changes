@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 25 11:29:35 CEST 2025 - mls@suse.de
+
+- print scriptlet messages in --runposttrans
+  * needed to fix leaking tmp files [bsc#1218459]
+  * updated patch: posttrans.diff
+- backport architecture check fix from upstream
+  * new patch: archcheck.diff
+- backport empty password fix from upstream
+  * new patch: emptypw.diff
+- backport buildsys specific prep fix from upstream
+  * new patch: buildsysprep.diff
+- fix memory leak in str2locale [bsc#1241052]
+  * updated patch: localetag.diff
+
+-------------------------------------------------------------------
 Wed Mar 26 14:48:09 CET 2025 - mls@suse.de
 
 - Backport check_c_compiler_flag cmake tests fix from upstream
