@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 11 05:37:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.26026
+   see /usr/share/doc/packages/perl-PkgConfig/Changes
+
+  0.26026 2025-04-10 08:11:00 -0700
+    - Fixes for spaces and long filenames (gh#48, gh#61, mohawk++)
+
+-------------------------------------------------------------------
 Thu Nov 12 03:11:42 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.25026
