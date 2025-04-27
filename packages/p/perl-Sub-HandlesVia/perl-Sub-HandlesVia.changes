@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr  1 05:35:42 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.050002
+   see /usr/share/doc/packages/perl-Sub-HandlesVia/Changes
+
+  0.050002	2025-03-23
+   [ SECURITY ]
+   - Fix: Rebuild using Mite 0.013000.
+  0.050001	2025-03-23
+   [ Documentation ]
+   - Update documentation which is out of date due to Object::Pad dropping
+     the `has` keyword.
+   [ Other ]
+   - Updated: Fix test cases which failed due to Object::Pad dropping the
+     `has` keyword.
+   - Updated: Fix test cases which will fail due to changed error messages in
+     next release of Type::Tiny.
+
+-------------------------------------------------------------------
 Thu Apr  6 03:09:44 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.050000
