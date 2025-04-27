@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Apr 27 15:54:21 UTC 2025 - munix9@googlemail.com
+
+- Add fix_cve_2025_22872.patch to patch CVE-2025-22872 (bsc#1241812)
+- Add man page
+- Clean up spec file
+
+-------------------------------------------------------------------
 Sat Mar 22 07:30:15 UTC 2025 - munix9@googlemail.com
 
 - Update to 2.1.0:

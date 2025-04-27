@@ -19,17 +19,18 @@
 %{go_nostrip}
 # Disable LTO flags to stop builds failing on some architectures
 %global _lto_cflags %nil
+
 Name:           glow
 Version:        2.1.0
 Release:        0
 Summary:        Render markdown on the CLI
 License:        MIT
-Group:          System/Console
 URL:            https://github.com/charmbracelet/glow
-Source0:        https://github.com/charmbracelet/glow/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 # vendoring obtained by `osc service manualrun`. See README.suse-maint.md for details.
 Source1:        vendor.tar.zst
 Source2:        README.suse-maint.md
+Source3:        fix_cve_2025_22872.patch
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.23
@@ -45,7 +46,7 @@ Git repository.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
+BuildRequires:  bash-completion
 Supplements:    (%{name} and bash-completion)
 Requires:       %{name}
 Requires:       bash-completion
@@ -56,7 +57,6 @@ Bash command-line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Supplements:    (%{name} and fish)
 Requires:       %{name}
 Requires:       fish
@@ -67,7 +67,7 @@ Fish command-line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
+BuildRequires:  zsh
 Supplements:    (%{name} and zsh)
 Requires:       %{name}
 Requires:       zsh
@@ -78,6 +78,7 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a1
+patch -d vendor/golang.org/x/net/ -p1 -i %{SOURCE3}
 
 %build
 %ifarch ppc64
@@ -93,6 +94,12 @@ go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.Version=%{version}"
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}
 
+# man page (and fix date)
+install -d -m 0755 %{buildroot}%{_mandir}/man1
+_date1=$(date '+%%F')
+_date2=$(date -u -d@$SOURCE_DATE_EPOCH '+%%F')
+./%{name} man | sed -e "s/$_date1/$_date2/g" > %{buildroot}%{_mandir}/man1/%{name}.1
+
 # Completions
 for sh in bash zsh fish; do
   ./%{name} completion $sh > %{name}.${sh}
@@ -102,24 +109,25 @@ install -Dm644 %{name}.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm644 %{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %check
+./%{name} --version
 # Skip TestGlowSources and TestURLParser as they can both fail without internet.
 go test -v ./... -skip 'TestGlowSources|TestURLParser'
 
 %files
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
-%{_bindir}/glow
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
-%{_datadir}/bash-completion/*
+%{_datadir}/bash-completion/completions/%{name}
 
 %files fish-completion
 %dir %{_datadir}/fish
-%{_datadir}/fish/*
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %files zsh-completion
-%dir %{_datadir}/zsh
-%{_datadir}/zsh/*
+%{_datadir}/zsh/site-functions/_%{name}
 
 %changelog
