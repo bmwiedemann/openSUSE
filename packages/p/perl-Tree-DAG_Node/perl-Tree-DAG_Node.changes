@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Mar 30 05:34:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.330.0 (1.33)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+
+  [V 1.33]
+  Date=2025-03-20T11:16:00
+  Deploy.Action=Upgrade
+  Deploy.Reason=Security
+  Comments= <<EOT
+  - Replace the discouraged File::Slurp::Tiny with File::Slurper.
+  Thanx to Marcel Telka for the report.
+  But why not use File::Slurp? Because...
+  https://blogs.perl.org/users/leon_timmermans/2015/08/fileslurp-is-broken-and-wrong.html
+  - Add a security policy file SECURITY.md
+  - Update Makefile.PL to include both ExtUtils::MakeMaker and perl.
+  EOT
+
+-------------------------------------------------------------------
 Tue Feb  2 03:11:28 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.32
