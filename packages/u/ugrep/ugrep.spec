@@ -23,7 +23,7 @@
 %bcond_without fish
 %endif
 Name:           ugrep
-Version:        7.3.0
+Version:        7.4.1
 Release:        0
 Summary:        Universal grep: a feature-rich grep implementation with focus on speed
 License:        BSD-3-Clause

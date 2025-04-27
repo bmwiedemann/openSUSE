@@ -666,4 +666,12 @@
     <comment></comment>
     <requestid>1255512</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>30e92b7d02acf86116c8c6b89736653f</srcmd5>
+    <version>7.4.1</version>
+    <time>1745787269</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 7.4.1 (forwarded request 1272940 from AndreasStieger)</comment>
+    <requestid>1272941</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Apr 27 11:49:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.4.1:
+  * more responsive output when searching slow standard input pipes
+    such as tail -f log | ug pattern
+  * new option argument -t seed7 (or --file-type=seed7) searches
+    seed7 files
+  * faster path glob search
+  * options with paths (globs containing a /) also enable option
+    -r when -d, -r or -R are not specified
+  * clarify the usefulness of the default to not empty-match
+    empty-matching patterns versus GNU grep that does
+    (as with ugrep option -Y)
+  * option -z (or --decompress) now also auto-detects bzip2, XZ,
+    and Zstandard compressed files
+  * new option --from=FILE: read additional pathnames of files to
+    search from FILE
+  * drain the input pipe until EOF when reading non-seekable
+    standard input such as from a pipe, for compatibility with GNU
+    grep
+
+-------------------------------------------------------------------
 Tue Mar  4 07:34:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.3.0:
