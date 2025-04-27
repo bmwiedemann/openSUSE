@@ -886,4 +886,15 @@
   * core: add refresh of window title on buffer switch, when option weechat.look.window_title is set</comment>
     <requestid>1271254</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>406d038954c83c0fc09f02c332fc6732</srcmd5>
+    <version>4.6.2</version>
+    <time>1745787275</time>
+    <user>dimstar_suse</user>
+    <comment>  * core: fix write of weechat.log to stdout with weechat-headless --stdout
+  * core: add refresh of window title on buffer switch, when option
+    weechat.look.window_title is set
+- Update to version 4.4.2 (bsc#1233171, CVE-2024-46613):</comment>
+    <requestid>1272957</requestid>
+  </revision>
 </revisionlist>

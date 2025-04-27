@@ -2,10 +2,9 @@
 Tue Apr 22 03:56:22 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.6.2:
-
-  Fixed
-  * core: fix write of weechat.log to stdout with weechat-headless --stdout (#2247)
-  * core: add refresh of window title on buffer switch, when option weechat.look.window_title is set 
+  * core: fix write of weechat.log to stdout with weechat-headless --stdout
+  * core: add refresh of window title on buffer switch, when option
+    weechat.look.window_title is set
 
 -------------------------------------------------------------------
 Wed Apr  9 19:16:41 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
@@ -132,7 +131,7 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * core: always send the signal "buffer_switch", even when the buffer is opening (#2198)
   * core: fix build on Android (#2180)
 
-- Update to version 4.4.2:
+- Update to version 4.4.2 (bsc#1233171, CVE-2024-46613):
 
   Fixed
   * core, plugins: fix integer overflow in loops (#2178)
