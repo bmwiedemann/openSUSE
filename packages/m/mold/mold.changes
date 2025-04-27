@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Apr 27 06:40:12 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.38.0
+  * The --audit and --depaudit options are now supported for compatibility with GNU
+    ld. (af396ad)
+
+  * Recent versions of LLVM support an alternative, experimental relocation table
+    format called CREL. mold can now read object files containing CREL relocation
+    tables. (c43a859)
+
+  * [ARM32][ARM64][PPC32][PPC64] The branch instruction ranges of RISC processors
+    are generally insufficient to support the medium code model because their
+    instructions are typically 32 bits long, which makes it impossible to embed
+    large immediate offsets. For example, ARM64’s branch instruction can target only
+    PC ± 128 MiB. If the branch target is farther than that, the linker must emit a
+    small piece of code—often called a thunk or branch island—to extend the branch
+    range.
+
+  * Previously, mold created unnecessary range extension thunks for symbols that had
+    PLT entries. Now, mold does not create thunks unless they are truly needed.
+    (a43f395)
+
+  * Previously, --no-allow-shlib-undefined could cause a segmentation fault due to
+    an out-of-bounds array access. This has been fixed. (82affb9)
+
+  * --no-allow-shlib-undefined is enabled by default if the output type is an
+    executable (as opposed to a shared library) for compatibility with other
+    linkers. (43810df)
+
+  * mold could report a spurious "duplicate symbol" error when performing LTO. This
+    bug has been fixed. (5d24db5)
+
+  * In rare cases involving symbol versioning, mold mistakenly filtered out
+    necessary libraries specified with --as-needed. This bug has been fixed.
+    (a97a628)
+
+  * In rare cases involving symbol versioning, mold reported a spurious "undefined
+    symbol" error. This bug has been fixed. (2d6061a)
+
+  * If the same symbol was defined with and without the default version (e.g., if an
+    object file defined both foo and foo@@VERSION), mold mistakenly hid both symbols
+    from the dynamic symbol table instead of exporting the default one (e.g.,
+    foo@@VERSION). This bug has been fixed. (ac6f1ec)
+
+-------------------------------------------------------------------
 Sat Apr  5 15:06:39 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix build on 15.6 x86_64
