@@ -1,0 +1,12 @@
+addFilter("python...-qmk_gui\.x86_64: E: non-executable-script.*")
+# subpackage of x86_64 only package
+addFilter("python...-qmk_gui\.x86_64: E: no-binary.*")
+addFilter("qmk_hid-udev-rules\.x86_64: E: no-binary.*")
+# false positive
+addFilter("python...-qmk_gui\.x86_64: W: python-leftover-require python...-tkinter.*")
+# no upstream testsuite
+addFilter("python-qmk_gui\.spec: W: no-%check-section.*")
+addFilter("qmk_hid\.spec: W: no-%check-section.*")
+# rules are used in only one of the flavors
+addFilter("qmk_hid\.src: E: unused-rpmlintrc-filter.*")
+addFilter("python-qmk_gui\.src: E: unused-rpmlintrc-filter.*")

@@ -1,7 +1,7 @@
 #
 # spec file for package qmk_hid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%define qmk_version 0.28.5
 Name:           qmk_hid
-Version:        0.1.12
+Version:        0.1.12+git44
 Release:        0
 Summary:        Commandline tool for interacting with QMK devices over HID
 License:        BSD-3-Clause
 URL:            https://github.com/FrameworkComputer/qmk_hid
-Source0:        https://github.com/FrameworkComputer/qmk_hid/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Source2:        https://raw.githubusercontent.com/qmk/qmk_firmware/refs/heads/master/util/udev/50-qmk.rules
+Source2:        https://raw.githubusercontent.com/qmk/qmk_firmware/refs/tags/%{qmk_version}/util/udev/50-qmk.rules
+Source3:        qmk_hid-rpmlintrc
 BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(libsystemd)
+Recommends:     python-qmk_gui
+Recommends:     qmk_hid-udev-rules
+ExclusiveArch:  x86_64
 
 %description
 Commandline tool for interacting with QMK devices over HID
 
 %package -n qmk_hid-udev-rules
-Summary:        qmk_hid udev rules
+Summary:        Udev rules for qmk_hid
+Requires:       qmk_hid
 
 %description -n qmk_hid-udev-rules
 Udev rules for the Framework Laptop 16 qmk_hid command line tool
@@ -43,8 +50,7 @@ Udev rules for the Framework Laptop 16 qmk_hid command line tool
 %cargo_build
 
 %install
-install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
 # rename udev rules file to (hopefully) avoid conflicts with manually installed qmk rules
 install -D -m 0644 %{_sourcedir}/50-qmk.rules %{buildroot}%{_udevrulesdir}/50-framework-qmk.rules
 

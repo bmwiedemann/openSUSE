@@ -1,0 +1,56 @@
+From 8489c01aacda55415b9a3b0a1f6691c65c11895e Mon Sep 17 00:00:00 2001
+From: nkrapp <nico.krapp@web.de>
+Date: Wed, 16 Apr 2025 10:42:37 +0200
+Subject: [PATCH] fix version
+
+---
+ pyproject.toml   | 2 +-
+ qmk_hid/gui.py   | 3 ++-
+ requirements.txt | 1 -
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 68fe1b9..bd7de4f 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -7,7 +7,7 @@ name = "qmk_hid"
+ # TODO: Dynamic version from git (requires tags)
+ #dynamic = ["version"]
+ dynamic = ["dependencies"]
+-version = "0.1.8"
++version = "0.1.12"
+ description = 'A GUI tool to control QMK keyboard, specifically of the Framework Laptop 16'
+ # TODO: Custom README for python project
+ readme = "README.md"
+diff --git a/qmk_hid/gui.py b/qmk_hid/gui.py
+index b0a5cca..330d156 100644
+--- a/qmk_hid/gui.py
++++ b/qmk_hid/gui.py
+@@ -3,6 +3,7 @@ import os
+ import sys
+ import subprocess
+ import time
++import importlib.metadata
+ 
+ import tkinter as tk
+ from tkinter import ttk, messagebox
+@@ -21,7 +22,7 @@ from qmk_hid import firmware_update
+ # - Get current values
+ #   - Set sliders to current values
+ 
+-PROGRAM_VERSION = "0.2.0"
++PROGRAM_VERSION = "0.1.12"
+ 
+ DEBUG_PRINT = False
+ 
+diff --git a/requirements.txt b/requirements.txt
+index 37f2cea..954ef87 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,3 +1,2 @@
+ hidapi==0.14.0.post2
+-PySimpleGUI-4-foss==4.60.4.1
+ pywin32; os_name == 'nt'
+-- 
+2.49.0
+

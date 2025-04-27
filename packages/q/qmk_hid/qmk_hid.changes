@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 14 16:21:11 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.1.12+git44
+  * migrate python GUI to tkinter
+- Add python GUI as subpackage
+- Add rpmlint rules
+- Update qmk rules and pin source link to latest release
+
+-------------------------------------------------------------------
 Sat Dec  7 22:11:05 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - remove empty post and postun scripts

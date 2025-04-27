@@ -1,6 +1,19 @@
 <services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/FrameworkComputer/qmk_hid.git</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="manual" />
   <service name="cargo_vendor" mode="disabled">
      <param name="src">qmk_hid-*.tar.gz</param>
-     <param name="update">false</param>
+     <param name="update">true</param>
   </service>
 </services>

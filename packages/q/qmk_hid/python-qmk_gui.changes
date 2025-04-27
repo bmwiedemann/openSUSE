@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Apr 14 12:42:03 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- initial version of GUI subpackage 0.1.12+git44
+- Add fix-version.patch to fix outdated version in pyproject.toml
