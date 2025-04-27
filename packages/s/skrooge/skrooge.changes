@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Apr 26 07:47:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.0
+  * Correction kde#498626: Filter on specific attribute doesn't work
+  * Correction kde#498903: Import fails for numbers with more
+    than 3 decimal places
+  * Correction kde#498613: Application-wide Currency Formatting
+    Issue in Multiple Distros and Package Versions
+  * Correction kde#501642: Segmentation fault on quit
+  * Correction kde#501993: Segfault when started in a path
+    containing json files
+  * Correction: Better icons
+  * Correction: Better tooltip for tabs
+  * Correction: Better performances on balances computations
+
+-------------------------------------------------------------------
 Sat Feb  1 14:20:33 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.1.0
