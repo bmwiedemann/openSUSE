@@ -18,30 +18,50 @@
 
 %define cpan_name Graph
 Name:           perl-Graph
-Version:        0.9733
+Version:        0.973.500
 Release:        0
+# 0.9735 -> normalize -> 0.973.500
+%define cpan_version 0.9735
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Graph data structures and algorithms
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Heap) >= 0.80
+BuildRequires:  perl(Heap) >= 0.800
 BuildRequires:  perl(List::Util) >= 1.45
-BuildRequires:  perl(Set::Object) >= 1.40
+BuildRequires:  perl(Set::Object) >= 1.400
 BuildRequires:  perl(Test::More) >= 0.82
-Requires:       perl(Heap) >= 0.80
+Requires:       perl(Heap) >= 0.800
 Requires:       perl(List::Util) >= 1.45
-Requires:       perl(Set::Object) >= 1.40
+Requires:       perl(Set::Object) >= 1.400
+Provides:       perl(Graph) = %{version}
+Provides:       perl(Graph::AdjacencyMap)
+Provides:       perl(Graph::AdjacencyMap::Light)
+Provides:       perl(Graph::AdjacencyMatrix)
+Provides:       perl(Graph::Attribute)
+Provides:       perl(Graph::BitMatrix)
+Provides:       perl(Graph::Directed)
+Provides:       perl(Graph::MSTHeapElem)
+Provides:       perl(Graph::Matrix)
+Provides:       perl(Graph::SPTHeapElem)
+Provides:       perl(Graph::TransitiveClosure)
+Provides:       perl(Graph::TransitiveClosure::Matrix)
+Provides:       perl(Graph::Traversal)
+Provides:       perl(Graph::Traversal::BFS)
+Provides:       perl(Graph::Traversal::DFS)
+Provides:       perl(Graph::Undirected)
+Provides:       perl(Graph::UnionFind)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 graph data structures and algorithms
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

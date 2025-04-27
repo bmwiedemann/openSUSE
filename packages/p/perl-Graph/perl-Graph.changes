@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 14 21:34:45 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
+Fri Mar 28 05:35:59 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9735
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9735 2025-03-27
+  - better connectedness docs (#36 #37) - thanks @gwselke
+
+  0.9734 2025-03-01
+  - add connected_subgraphs (#35) - thanks @merkys
+
+-------------------------------------------------------------------
 Mon Jan 13 05:31:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9733
