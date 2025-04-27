@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sys-SigAction
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Sys-SigAction
-Version:        0.23
-Release:        0
 %define cpan_name Sys-SigAction
+Name:           perl-Sys-SigAction
+Version:        0.240.0
+Release:        0
+# 0.24 -> normalize -> 0.240.0
+%define cpan_version 0.24
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for Consistent Signal Handling
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Sys-SigAction/
-Source0:        http://www.cpan.org/authors/id/L/LB/LBAXTER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/L/LB/LBAXTER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Sys::SigAction) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,8 +52,8 @@ perl 5.8.0 implementation was modified further in version 5.8.2.
 
 From the perl 5.8.2 *perlvar* man page:
 
-   The default delivery policy of signals changed in Perl 5.8.0 
-   from immediate (also known as "unsafe") to deferred, also 
+   The default delivery policy of signals changed in Perl 5.8.0
+   from immediate (also known as "unsafe") to deferred, also
    known as "safe signals".
 
 The implementation of this changed the 'sa_flags' with which the signal
@@ -155,15 +157,16 @@ can be coded in a way that does not change from one perl version to the
 next, and that sigaction() will be easier for you to use.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -171,7 +174,6 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
