@@ -18,7 +18,7 @@
 
 
 Name:           ripcalc
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        Tool for network addresses
 License:        GPL-3.0-or-later
