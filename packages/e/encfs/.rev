@@ -317,4 +317,12 @@
     <comment>disable RPATH for building, the bit has been removed from macros.cmake (forwarded request 787677 from mlin7442)</comment>
     <requestid>787679</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>789f3a31b4b9a52a662df923d1c94d2a</srcmd5>
+    <version>1.9.5</version>
+    <time>1745849833</time>
+    <user>dimstar_suse</user>
+    <comment>fix build (forwarded request 1272779 from AndreasStieger)</comment>
+    <requestid>1273047</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 18:42:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build and simplify spec file
+- use system easylogging
+
+-------------------------------------------------------------------
 Tue Mar 24 06:58:25 UTC 2020 - Max Lin <mlin@suse.com>
 
 - Disable RPATH for building
