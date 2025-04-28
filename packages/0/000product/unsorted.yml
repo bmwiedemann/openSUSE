@@ -39,7 +39,6 @@ unsorted:
   - Coin-devel 
   - Coin4-devel 
   - ColPack-devel 
-  - ColPack-devel-32bit 
   - ColorFull-devel 
   - ComputeLibrary 
   - ComputeLibrary-devel 
@@ -446,7 +445,6 @@ unsorted:
   - adobe-sourcehanserif-kr-fonts 
   - adobe-sourceserif4-fonts 
   - adolc-devel 
-  - adolc-devel-32bit 
   - adolc-doc 
   - adplugdb 
   - adriconf 
@@ -11168,7 +11166,6 @@ unsorted:
   - libCoin80 
   - libCoinUtils3 
   - libColPack0 
-  - libColPack0-32bit 
   - libColorFull0 
   - libConvexDecomposition3_17 
   - libDWaylandClient5 
@@ -11661,7 +11658,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2025_1_rc1-32bit 
+  - libSPIRV-Tools-2025_2_rc2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -11861,7 +11858,6 @@ unsorted:
   - libadns-devel 
   - libadns1 
   - libadolc2 
-  - libadolc2-32bit 
   - libadplug-devel 
   - libadplug2_4-0 
   - libadwaita-devel 
@@ -18483,6 +18479,7 @@ unsorted:
   - meld-lang 
   - meli 
   - meli-with-debug-tracing 
+  - melonds 
   - melt 
   - memcached 
   - memcached-devel 
@@ -24002,6 +23999,8 @@ unsorted:
   - python311-PyQt6-WebEngine-devel 
   - python311-PyQt6-devel 
   - python311-PyQt6-doc 
+  - python311-PyQt6-qt6pdf 
+  - python311-PyQt6-qt6pdf-devel 
   - python311-PyQt6-sip 
   - python311-PyRIC 
   - python311-PyRSS2Gen 
@@ -24517,6 +24516,7 @@ unsorted:
   - python311-azure-mgmt-playwrighttesting 
   - python311-azure-mgmt-policyinsights 
   - python311-azure-mgmt-portal 
+  - python311-azure-mgmt-portalservicescopilot 
   - python311-azure-mgmt-postgresqlflexibleservers 
   - python311-azure-mgmt-powerbidedicated 
   - python311-azure-mgmt-powerbiembedded 
@@ -27341,7 +27341,6 @@ unsorted:
   - python311-virtualenvwrapper 
   - python311-virtue 
   - python311-visitor 
-  - python311-vispy 
   - python311-vistir 
   - python311-visvis 
   - python311-vncdotool 
@@ -27664,6 +27663,8 @@ unsorted:
   - python312-PyQt6-WebEngine-devel 
   - python312-PyQt6-devel 
   - python312-PyQt6-doc 
+  - python312-PyQt6-qt6pdf 
+  - python312-PyQt6-qt6pdf-devel 
   - python312-PyQt6-sip 
   - python312-PyRIC 
   - python312-PyRSS2Gen 
@@ -28189,6 +28190,7 @@ unsorted:
   - python312-azure-mgmt-playwrighttesting 
   - python312-azure-mgmt-policyinsights 
   - python312-azure-mgmt-portal 
+  - python312-azure-mgmt-portalservicescopilot 
   - python312-azure-mgmt-postgresqlflexibleservers 
   - python312-azure-mgmt-powerbidedicated 
   - python312-azure-mgmt-powerbiembedded 
@@ -31077,7 +31079,6 @@ unsorted:
   - python312-virtualenvwrapper 
   - python312-virtue 
   - python312-visitor 
-  - python312-vispy 
   - python312-vistir 
   - python312-visvis 
   - python312-vncdotool 
@@ -31396,6 +31397,8 @@ unsorted:
   - python313-PyQt6-WebEngine-devel 
   - python313-PyQt6-devel 
   - python313-PyQt6-doc 
+  - python313-PyQt6-qt6pdf 
+  - python313-PyQt6-qt6pdf-devel 
   - python313-PyQt6-sip 
   - python313-PyRIC 
   - python313-PyRSS2Gen 
@@ -31915,6 +31918,7 @@ unsorted:
   - python313-azure-mgmt-playwrighttesting 
   - python313-azure-mgmt-policyinsights 
   - python313-azure-mgmt-portal 
+  - python313-azure-mgmt-portalservicescopilot 
   - python313-azure-mgmt-postgresqlflexibleservers 
   - python313-azure-mgmt-powerbidedicated 
   - python313-azure-mgmt-powerbiembedded 
@@ -34728,7 +34732,6 @@ unsorted:
   - python313-virtualenvwrapper 
   - python313-virtue 
   - python313-visitor 
-  - python313-vispy 
   - python313-vistir 
   - python313-visvis 
   - python313-vncdotool 
