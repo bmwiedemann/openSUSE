@@ -25,7 +25,6 @@ License:        LGPL-3.0
 Group:          Development/Libraries/C and C++
 Url:            http://cscapes.cs.purdue.edu/coloringpage/
 Source:         https://github.com/CSCsw/ColPack/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        baselibs.conf
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
