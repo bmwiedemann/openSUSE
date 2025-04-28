@@ -22,8 +22,8 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git-core openSUSE-release openSUSE-release-appliance-docker; \
-    zypper -n clean; \
+    zypper -n install --no-recommends osc expect obs-service-format_spec_file obs-service-source_validator typescript git-core openSUSE-release openSUSE-release-appliance-docker
+RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
