@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.12
-%define patchversion 6.12.24
-%define git_commit 726c2d06ad1d81b68e479b3bdffd8f8b7af66c72
+%define patchversion 6.12.25
+%define git_commit da82bfde6a1e237ce54a2751871fdc9cd96bd169
 %define variant -longterm%{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-longterm
-Version:        6.12.24
+Version:        6.12.25
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g726c2d0
+Release:        <RELEASE>.gda82bfd
 %else
 Release:        0
 %endif
