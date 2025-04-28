@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon Apr 28 06:56:02 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.1.0
+  Added features:
+  * Enable customizing the save statistics time interval
+  * Add drag support to torrent content widget
+  * Display External IP Address in status bar
+  * Use modern functions to get random numbers
+  * Add eXact Length parameter when creating magnet URI
+  * Support fetching tracker list from URL
+  * Add `announce_port` support
+  Bug fixes:
+  * Enable adaptive step size for upload and download limits
+  * Add URL link for reverse proxy setup examples
+  * Allow drop action only on transfer list
+  * Fix the tab order in dialogs
+  * Fix filesize sorting in preview dialog
+  * Improve the speed icons in the status bar
+  * Update link to news
+  * Fix tab stop order in various dialogs and UI elements
+  * Make links accessible by keyboard
+  * Make tab key switch focus
+  * Revise DHT bootstrap node list
+  * Return first tracker as fallback for "current tracker"
+  * Prevent crash when exiting app with `Add torrent` dialogs
+    opened
+  * Fix torrent relocating files when switching to "manual" mode
+  * Prevent crash due to corrupted resume data
+  Web UI:
+  * Improvements that should help with assistive technologies
+  * Internal refactoring to migrate away from MooTools and
+    towards native browser APIs
+  * Implement path autocompletion
+  * Implement double-click behavior controls
+  * Add ability to toggle alternating row colors in tables
+  * Improve visibility of unread RSS articles
+  * Remove deleted torrents even if they are currently filtered
+    out
+  * Highlight torrent category in context menu
+  * Implement 'Auto hide zero status filters'
+  * Allow to filter torrent list by save path
+  * Handle regex syntax error for torrent filtering
+  * Add missing icons
+  * Add link to 'List of alternative WebUI' wiki page in Options
+  * Improve properties panel, torrent deletion dialog, filter
+    list, subcategories, torrent deletion, statistics window
+  * Allow to display only hostname in the Tracker column
+  * Show country/region name next to its flag
+  * Improve hash copy actions in context menu
+  * Support removing tracker from all torrents in WebUI/WebAPI
+  * Display DHT information in the Status bar only when DHT is
+    enabled
+  * Add 'Confirm torrent recheck' option
+  * Support managing web seeds
+  * Add colors to log table rows
+  * Prevent text selection within tabs, menu items
+  * Use correct text and background colors in RSS details view
+  * Reduce padding in torrents table
+  * Add WebAPI/WebUI for managing cookies
+  * Support updating RSS feed URL
+  * Add 'Engine' column to Search table
+  * Add confirm dialog for Auto TMM
+  * Add context menu to search tabs
+  * Show file filter when Content tab selected on load
+  * DHT, PeX and LSD rows are now always on top in Trackers table
+  * Clear properties panel when torrent no longer selected
+  * Support auto resizing table columns
+  * Fix displaying RSS panel on load
+  * Add tooltip to regex filter button
+  * Hide context menu when clicking on a table row
+  * Display torrent progress percentage in General tab
+  * Use thin scrollbars
+  * Show 'Rename...' context menu item only when one torrent is
+    selected
+  * Display error when download fails
+  * Add colors to 'Status' column in Trackers table
+  * Add missing icon to 'Queue' context menu item
+  * Change filter inputs to type search
+  * Allow to move state icon to name column in torrents table
+  * Fix bug where the 'Tracker editing' dialog displays
+    incorrect data
+  * Maintain row highlight after rearranging table columns
+  * Fix preferences not applied in magnet handler
+  * Update sort icon after changing column order
+  * Show 'Edit tracker URL...' only when one tracker is selected
+  * Set status filter to 'All' if selected filter is no longer
+    visible
+  Web API:
+  * Don't reannounce when removing tracker via WebAPI
+  * Add WebAPI for managing torrent webseeds
+  * Add `forced` parameter to `torrents/add`
+  * Optionally include trackers list in torrent info response
+  * Add new method `setTags` to upsert tags on torrents
+  RSS:
+  * Resolve relative URLs within RSS article description
+  Search:
+  * Provide SSL context field
+  * Allow to refresh existing search
+  * Allow multiple simultaneous searches
+  * Store opened search tabs
+  * Store search history
+  * Migrate socks.py from SocksiPy to PySocks 1.7.1
+  * Bump Python version minimum requirement
+  Other changes:
+  * Add support for Thunar file manager
+
+-------------------------------------------------------------------
 Mon Apr 14 06:42:54 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.0.5
