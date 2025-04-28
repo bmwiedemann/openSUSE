@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Apr 26 23:00:35 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Updae to release 3.17.2
+  * Fixed initialization races related to buffer reallocation when
+    large buf sizes are used (/proc/sys/fs/fuse/max_pages_limit).
+  * A conn.want flag conversion fix for high-level applications.
+
+-------------------------------------------------------------------
 Tue Mar 25 23:09:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.17.1
