@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Apr 17 16:58:54 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * Unpack integer header data values as unsigned
+  * Fixing incorrect parsing of first headers block (a.k.a.
+    "signature headers")
+  * added new tags
+- update to 2.0.0:
+  * Store only one version of i18n strings
+  * Fix rpmfile fails to load localized RPM headers
+- update to 1.1.0:
+  * bz2 support, thank you @OneMoreByte!
+- update to 1.0.8:
+  * If a CPIO archive contained an entry for a directory we
+    attempted to identify it via nlinks. Since it should have at
+    least two nlinks if it's a directory.
+    However, We stumbled across a case where this is not true. By
+    using the mode bits we should be able to correctly identify
+    directories without relying on nlinks.
+    We're now using mode bits.
+- update to 1.0.7:
+  * Use setup.cfg and setuptools_scm for version
+- update to 1.0.6:
+  * For the command line interface, only print file paths when
+    extracting if `-v/--verbose` is given
+- update to 1.0.5:
+  * Extract rpm files from the command line
+
+-------------------------------------------------------------------
 Tue Nov 17 07:28:06 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec
@@ -17,5 +46,5 @@ Wed Jul 03 07:42:45 UTC 2019 - cbosdonnat@suse.com
 -------------------------------------------------------------------
 Tue Jul  2 14:26:57 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
-- Initial package 
+- Initial package
   Added patch: python3.patch

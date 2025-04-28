@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpmfile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,22 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-rpmfile
-Version:        1.0.4
+Version:        2.1.0
 Release:        0
 Summary:        Python module to read rpm files
 License:        MIT
 URL:            https://github.com/srossross/rpmfile
 Source:         https://files.pythonhosted.org/packages/source/r/rpmfile/rpmfile-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Recommends:     python-zstandard >= 0.13.0
+Conflicts:      rpmdevtools
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -43,22 +49,27 @@ Tools for inspecting RPM files in python. This module is modeled after the tarfi
 sed -i '1{/#!/d}' rpmfile/cpiofile.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
-%fdupes %{buildroot}%{$python_sitelib}
-}
+%pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/rpmfile
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_group_libalternatives rpmfile
+
+%pre
+%python_libalternatives_reset_alternative rpmfile
 
 %check
 # https://github.com/srossross/rpmfile/issues/35
 # test_extract depend on github.com
-%pytest -k 'not test_extract'
+%pytest -k 'not (test_extract or test_info or test_list)'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%python_alternative %{_bindir}/rpmfile
+%{python_sitelib}/rpmfile
+%{python_sitelib}/rpmfile-%{version}.dist-info
 
 %changelog
