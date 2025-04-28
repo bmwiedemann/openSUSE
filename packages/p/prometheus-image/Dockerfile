@@ -24,8 +24,8 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends golang-github-prometheus-prometheus curl; \
-    zypper -n clean; \
+    zypper -n install --no-recommends golang-github-prometheus-prometheus curl
+RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
