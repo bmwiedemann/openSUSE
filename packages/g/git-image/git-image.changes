@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- zypper clean also the system repository from the container
+
+-------------------------------------------------------------------
 Mon Mar 17 09:27:18 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Bump git version to 2.49
