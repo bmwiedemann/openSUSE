@@ -23,8 +23,8 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-readline; \
-    zypper -n clean; \
+    zypper -n install php8 php8-cli php-composer2 php8-curl php8-zip php8-zlib php8-phar php8-mbstring php8-readline
+RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers

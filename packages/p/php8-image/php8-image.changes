@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- zypper clean also the system repository from the container
+
+-------------------------------------------------------------------
 Mon Apr 14 08:40:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - stylistic changes to pass dockerfmt
