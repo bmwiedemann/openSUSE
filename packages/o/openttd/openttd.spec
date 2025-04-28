@@ -1,7 +1,7 @@
 #
 # spec file for package openttd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2007-2012 The OpenTTD developers
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,7 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# use GCC 12 for Leap
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 12
+%endif
 %define about OpenTTD is a reimplementation of the Microprose game "Transport Tycoon Deluxe" with lots of new features and enhancements. To play the game, you need either the original proprietary data set from the game, or install the recommend subpackages OpenGFX, OpenSFX and OpenMSX for an alternate, free set of graphics, sounds and music, respectively.
 Name:           openttd
 Version:        14.1
@@ -26,17 +29,12 @@ License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://openttd.org/
 Source:         https://cdn.openttd.org/openttd-releases/%{version}/%{name}-%{version}-source.tar.xz
+Source2:        openttd.appdata.xml
 # PATCH-FEATURE-UPSTREAM https://bugs.openttd.org/task/6490
 Patch1:         0001-icu-build-fix.patch
-Source2:        openttd.appdata.xml
-BuildRequires:  SDL2-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc10-c++
-%else
-BuildRequires:  gcc-c++ >= 8.1
-%endif
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libpng-devel
 BuildRequires:  pkgconfig
@@ -46,6 +44,7 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-data = %{version}-%{release}
 Conflicts:      %{name}-dedicated
@@ -63,7 +62,6 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  freetype-devel
 %endif
 %if 0%{?suse_version}
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libtimidity)
 BuildRequires:  pkgconfig(libxdg-basedir)
 %else
@@ -114,8 +112,8 @@ This package provides the data files needed by %{name} or %{name}-dedicated.
 sed -i "s/__DATE__.*__TIME__/\"${SOURCE_DATE_EPOCH}\"/" src/rev.cpp.in
 
 %build
-%if 0%{?suse_version} <= 1500
-export CXX=g++-10
+%if 0%{?force_gcc_version}
+export CXX="g++-%{force_gcc_version}"
 %else
 export CXX=g++
 %endif
@@ -151,12 +149,6 @@ install -D -m0644 %{SOURCE2} %{buildroot}%{_datadir}/appdata/openttd.appdata.xml
 
 %fdupes %{buildroot}%{_datadir}
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
 %post dedicated
 rm -f %{_bindir}/%{name}
 ln -s %{name}-dedicated %{_bindir}/%{name}
@@ -165,12 +157,6 @@ ln -s %{name}-dedicated %{_bindir}/%{name}
 if [ "$1" -eq 0 ] ; then
     rm -f %{_bindir}/%{name}
 fi
-
-%if 0%{?suse_version} < 1500
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %{_bindir}/%{name}

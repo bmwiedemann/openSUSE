@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 21 06:11:28 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use BuildRequires pkgconfig(sdl2) instead SDL2-devel, fixes 
+  building for Leap
+- Use gcc 12 for Leap
+- Drop BuildRequires update-desktop-files, it is deprecated
+- Drop obsolete post/postun
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Nov 25 15:40:43 UTC 2024 - Jan Baier <jbaier@suse.com>
 
 - Add upstreamed but unreleased patch 0001-icu-build-fix.patch to fix builds
