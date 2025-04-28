@@ -17,7 +17,7 @@
 
 
 Name:           kubecolor
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Colorize your kubectl output
 License:        MIT
@@ -31,7 +31,7 @@ Requires:       kubernetes-client-provider
 A command-line wrapper used to add colors to your kubectl output
 
 %prep
-%autosetup
+%autosetup -p 1 -a 1
 
 %build
 go build \
