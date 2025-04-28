@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 26 10:13:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.20.2
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 3.20.1
+  * **deps:** Require grpc-google-iam-v1 >= 0.14.0
+- from version 3.20.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 3.19.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 3.18.0
+  * Adds Contextual Glossary support for Translation and AdaptiveMt
+  * Disable universe-domain validation (#13246)
+- from version 3.17.0
+  * Add support for Python 3.13 (#13210)
+- from version 3.16.0
+  * Adds AdaptiveMt HTML/Glossary support
+  * Adds protos for Custom Translation API (AutoML)
+  * Adds protos for Romanization APIs
+  * Adds protos for Transliteration in V3 Advanced translate text
+  * Fixes typos in docs
+- from version 3.15.5
+  * Retry and timeout values do not propagate in requests during pagination
+- from version 3.15.4
+  * Allow Protobuf 5.x (#12870)
+- Adjust upstream source name in spec file
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Mon Apr 15 06:12:50 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15.3:
