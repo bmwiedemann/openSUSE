@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Apr 27 08:56:06 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.0:
+  * Implemented support for the free-threaded build of CPython
+    3.13
+  * Started building wheels for the free-threaded build of
+    CPython 3.13
+  * Fixed entire name being re-encoded when using
+    :py:meth:`yarl.URL.with_suffix`
+  * Started building armv7l wheels for manylinux
+  * GitHub Actions CI/CD is now configured to manage caching pip-
+    ecosystem dependencies using re-actors/cache-python-deps --
+    an action by :user:`webknjaz` that takes into account ABI
+    stability and the exact version of Python runtime.
+  * Increased minimum propcache version to 0.2.1 to fix failing
+    tests
+  * Added all hidden folders to pytest's norecursedirs to prevent
+    it from trying to collect tests there
+  * Improved accuracy of type annotations
+  * Improved performance of parsing query strings
+  * Improved performance of the C unquoter
+
+-------------------------------------------------------------------
 Wed Feb 26 16:53:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Delete pytest.ini
