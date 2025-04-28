@@ -1,0 +1,26 @@
+From 18ccaa9f4fcc768954b96c10efbabd240f3b99b0 Mon Sep 17 00:00:00 2001
+From: Georg Sauthoff <mail@gms.tf>
+Date: Wed, 23 Apr 2025 02:34:23 +0200
+Subject: [PATCH 2/2] eliminate misleading error message with openssh 9
+
+fixes #97
+---
+ 46sshd/module-setup.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/46sshd/module-setup.sh b/46sshd/module-setup.sh
+index 3678d18..e335787 100755
+--- a/46sshd/module-setup.sh
++++ b/46sshd/module-setup.sh
+@@ -66,7 +66,7 @@ install() {
+     local d
+     for d in /usr/lib/ssh /usr/lib64/misc /usr/lib/misc /usr/libexec/openssh /usr/libexec/ssh ; do
+         if [ -f "$d"/sshd-session ]; then
+-            inst_multiple "$d"/{sshd-session,sftp-server,sshd-auth}
++            inst_multiple -o "$d"/{sshd-session,sftp-server,sshd-auth}
+             break
+         fi
+     done
+-- 
+2.43.0
+

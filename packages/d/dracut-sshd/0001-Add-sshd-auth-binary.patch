@@ -1,0 +1,39 @@
+From 1c9ac6e4c8a11f0f11fb81e170f28940657faa0d Mon Sep 17 00:00:00 2001
+From: Ellison Patterson <3533001+ellisonpatterson@users.noreply.github.com>
+Date: Thu, 10 Apr 2025 14:13:57 -0400
+Subject: [PATCH 1/2] Add sshd-auth binary
+
+https://www.openssh.com/releasenotes.html
+
+ * sshd(8): this release removes the code responsible for the
+   user authentication phase of the protocol from the per-
+   connection sshd-session binary to a new sshd-auth binary.
+   Splitting this code into a separate binary ensures that the
+   crucial pre-authentication attack surface has an entirely
+   disjoint address space from the code used for the rest of the
+   connection. It also yields a small runtime memory saving as the
+   authentication code will be unloaded after the authentication
+   phase completes. This change should be largely invisible to
+   users, though some log messages may now come from "sshd-auth"
+   instead of "sshd-session". Downstream distributors of OpenSSH
+   will need to package the sshd-auth binary.
+---
+ 46sshd/module-setup.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/46sshd/module-setup.sh b/46sshd/module-setup.sh
+index 3eee79c..3678d18 100755
+--- a/46sshd/module-setup.sh
++++ b/46sshd/module-setup.sh
+@@ -66,7 +66,7 @@ install() {
+     local d
+     for d in /usr/lib/ssh /usr/lib64/misc /usr/lib/misc /usr/libexec/openssh /usr/libexec/ssh ; do
+         if [ -f "$d"/sshd-session ]; then
+-            inst_multiple "$d"/{sshd-session,sftp-server}
++            inst_multiple "$d"/{sshd-session,sftp-server,sshd-auth}
+             break
+         fi
+     done
+-- 
+2.43.0
+

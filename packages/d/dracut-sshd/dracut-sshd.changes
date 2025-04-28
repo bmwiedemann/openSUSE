@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 09:19:45 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Support OpenSSH 10.0
+  * Adds 0001-Add-sshd-auth-binary.patch
+  * Adds 0002-eliminate-misleading-error-message-with-openssh-9.patch
+
+-------------------------------------------------------------------
 Wed Jan  1 15:56:54 UTC 2025 - Taeyeon Mori <taeyeon@oro.sodimm.me>
 
 - Update to 0.6.7

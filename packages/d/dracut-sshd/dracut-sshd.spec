@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            https://github.com/gsauthof/dracut-sshd
 Source:         https://github.com/gsauthof/dracut-sshd/archive/%{version}/%{name}-%{version}.tar.gz
+Patch1:         0001-Add-sshd-auth-binary.patch
+Patch2:         0002-eliminate-misleading-error-message-with-openssh-9.patch
 BuildRequires:  dracut
 Requires:       dracut
 Suggests:       systemd-network

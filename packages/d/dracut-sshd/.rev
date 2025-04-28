@@ -46,4 +46,12 @@
 - Add Suggests: systemd-network to go with included docs and examples</comment>
     <requestid>1248361</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>8f05a1653b8f16c54e96cc0e844cc8e3</srcmd5>
+    <version>0.6.7</version>
+    <time>1745849843</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273058</requestid>
+  </revision>
 </revisionlist>
