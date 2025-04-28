@@ -202,4 +202,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>1269985</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>3a9f21a08e0d4291beee250e41518e3f</srcmd5>
+    <version>0.8.3.0.git+db0870e</version>
+    <time>1745849878</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273064</requestid>
+  </revision>
 </revisionlist>

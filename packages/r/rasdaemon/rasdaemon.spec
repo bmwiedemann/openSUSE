@@ -24,6 +24,7 @@ License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            http://git.infradead.org/users/mchehab/rasdaemon.git
 Source:         %{name}-%{version}.tar.xz
+Patch1:         Fix-buffer-overflow-in-add_event_handler-read.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-devel

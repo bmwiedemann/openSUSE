@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 10:50:48 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Fix early bufferoverflow in event initialization (bsc#1241567)
+A Fix-buffer-overflow-in-add_event_handler-read.patch
+
+-------------------------------------------------------------------
 Fri Apr 11 12:51:25 UTC 2025 - trenn@suse.de
 
 - CXL device support (bsc#1241023, jsc#PED-12657)
