@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Apr 26 09:07:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.32.0
+  * Add ALAW support to RecognitionConfig
+  * Add new fields to CustomClass and PhraseSet.Phrase messages
+  * Deprecating speaker_tag (int) for speaker_label (string)
+  * Make transcript_normalization field optional
+  * Miscellaneous clarifications
+- from version 2.31.1
+  * [Many APIs] Allow Protobuf 6.x
+  * Remove setup.cfg configuration for creating universal wheels (#13659)
+- from version 2.31.0
+  * Add REST Interceptors which support reading metadata
+  * Add support for reading selective GAPIC generation methods from service YAML
+- from version 2.30.0
+  * Expand the set of supported explicit audio encodings
+  * Updated ExplicitDecodingConfig documentation to reflect
+    changes related to newly supported encodings
+- from version 2.29.0
+  * Add support for opt-in debug logging
+  * Fix typing issue with gRPC metadata when key ends in -bin
+- from version 2.28.1
+  * Disable universe-domain validation (#13246)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Oct 29 20:45:00 UTC 2024 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.28.0:
+  * Add support for Python 3.13
+  * add locations metadata proto file
+  * Retry and timeout values do not propagate in requests during
+    pagination
+  * update the list of automatically detected encodings
+  * update the maximum number of files that may be included in a
+    BatchRecognizeRequest
+
+-------------------------------------------------------------------
 Sat Apr 20 20:45:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.26.0:
