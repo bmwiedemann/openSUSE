@@ -1,0 +1,14 @@
+Index: pyqt6-6.8.1/project.py
+===================================================================
+--- pyqt6-6.8.1.orig/project.py
++++ pyqt6-6.8.1/project.py
+@@ -180,7 +180,8 @@ del find_qt
+             'win32':    'Windows',
+         }
+ 
+-        self.bindings['QtCore'].tags.append(
++        if QtCore in self.bindings:
++            self.bindings['QtCore'].tags.append(
+                 platform_tags_map.get(self.py_platform, 'Linux'))
+ 
+         # Make sure the bindings are buildable.

@@ -249,4 +249,12 @@ in order to avoid conflicts like boo#1192300</comment>
   basically PyQt6 6.9.0.dev2504021615 without the version bump (forwarded request 1266946 from bnavigator)</comment>
     <requestid>1266947</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>68441506b352fb990b3a5dce5f677b88</srcmd5>
+    <version>6.8.1</version>
+    <time>1745849764</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1272850</requestid>
+  </revision>
 </revisionlist>

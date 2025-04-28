@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Apr 25 07:44:03 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Split the package to build the Qt6Pdf bindings as a separate
+  flavor. This allows to build most of the bindings in SLFO but
+  only build the Qt6Pdf bindings (which need qt6-webengine) in
+  Backports.
+- Add patch to allow building only the Qt6Pdf bindings without
+  having to build Qt6Core too:
+  * fix-build-without-qtcore.patch
+
+-------------------------------------------------------------------
 Thu Apr  3 17:05:34 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.8.1
