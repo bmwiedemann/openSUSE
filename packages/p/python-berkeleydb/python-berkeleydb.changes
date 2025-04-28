@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Mon Apr 28 09:23:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.1.14:
+  *  Warning WARNING - BREAKING CHANGE: We eliminate dbobj.py. It
+    was very outdated and it was only barely useful if you wanted
+    to create subclasses of berkeleydb classes.
+  * Allow unicode and binary keys when using encryption.
+    Previously, only unicode keys were allowed. In both cases,
+    null bytes will raise an exception.
+  * Correctly display (in the raised exception) the type of the
+    parameter when it is not accepted, beside the required type.
+    This solves a regression introduced in 18.1.9.
+  * Delete stale and outdated entries in the TO DO file.
+  * Solve some redefinitions in the dictionary returned by
+    DBEnv.lock_stat() and add more entries:  Berkeley DB >= 4.8:
+    locksteals, maxhlocks, maxhobjects, maxlsteals, maxosteals,
+    objectsteals, part_max_nowait, part_max_wait, part_nowait,
+    part_wait, partitions. Berkeley DB >= 5.3: initlocks,
+    initlockers, initobjects, lockers, locks, objects, tablesize.
+    Berkeley DB >= 6.2: nlockers_hit, nlockers_reused.
+  * Berkeley DB >= 4.8: locksteals, maxhlocks, maxhobjects,
+    maxlsteals, maxosteals, objectsteals, part_max_nowait,
+    part_max_wait, part_nowait, part_wait, partitions.
+  * Berkeley DB >= 5.3: initlocks, initlockers, initobjects,
+    lockers, locks, objects, tablesize.
+  * Berkeley DB >= 6.2: nlockers_hit, nlockers_reused.
+  * Add more entries to DBEnv.log_stat() if we are using Berkeley
+    DB >= 5.3: fileid_init, maxnfileid, nfileid.
+  * nelem value in DB.stat() for hash databases was dropped some
+    time ago. Update stale documentation. That value is actually
+    available via DB.get_h_nelem().
+  * Improve docs explaining the end value in the dictionary
+    returned by DB.compact() and documenting that empty_buckets
+    is not available when using Berkeley DB 4.8.
+  * In several stats dictionaries, document that ext_files value
+    is only available from Berkeley DB 6.2.
+  * Add more entries to DBEnv.memp_stat(): pagesize.
+  * Add more entries to DBEnv.memp_stat() if we are using
+    Berkeley DB >= 5.3: regmax, hash_mutexes, backup_spins.
+  * Add more entries to DBEnv.memp_stat() if we are using
+    Berkeley DB >= 6.2: mvcc_reused.
+  * Add more entries to DBEnv.txn_stat() if we are using Berkeley
+    DB >= 5.3: inittxns.
+  * Add more entries to DBEnv.mutex_stat() if we are using
+    Berkeley DB >= 5.3: mutex_init, mutex_max, regmax.
+  * Add more entries to DBEnv.repmgr_stat() if we are using
+    Berkeley DB >= 5.3: elect_threads, max_elect_threads.
+  * Add more entries to DBEnv.repmgr_stat() if we are using
+    Berkeley DB >= 6.2: incoming_msgs_dropped,
+    incoming_queue_bytes, incoming_queue_gbytes,
+    site_participants, site_total, site_views, takeovers,
+    write_ops_forwarded, write_ops_received.
+  * Add more entries to DBEnv.repmgr_stat() if we are using
+    Berkeley DB >= 18.1: group_stable_log_file, polling_method.
+  * Add more entries to DBEnv.rep_stat() if we are using Berkeley
+    DB >= 5.3: election_datagen, lease_chk, lease_chk_misses,
+    lease_chk_refresh, lease_sends.
+  * Add more entries to DBEnv.rep_stat() if we are using Berkeley
+    DB >= 6.2: ext_duplicated, ext_records, ext_rereq,
+    ext_update_rereq, view.
+  * In the different stats documentation, add notes about what
+    versions of Berkeley DB provide the different values.
+  * Complete documentation about berkeleydb exceptions and what
+    Berkeley DB releases provide each one.
+  * Document what functions are available when compiled against
+    each Berkeley DB release.
+
+-------------------------------------------------------------------
 Mon Feb  3 14:02:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 18.1.13
@@ -232,4 +300,4 @@ Wed Oct  9 06:33:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Mon Feb  5 03:28:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 18.1.8 
+- Initial release of 18.1.8

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-berkeleydb
-Version:        18.1.13
+Version:        18.1.14
 Release:        0
 Summary:        Python bindings for Oracle Berkeley DB
 License:        BSD-3-Clause
