@@ -1,7 +1,7 @@
 #
 # spec file for package php-imagick
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Wrapper to the ImageMagick library
 License:        PHP-3.01
@@ -43,9 +43,6 @@ Source1:        php-%{pkg_name}-rpmlintrc
 Patch0:         imagick-reproducible.patch
 # PATCH-FIX-OPENSUSE - test expected to fail because of resource limits in policy.xml
 Patch10:        imagick-xfail-test014.patch
-# PATCH-FIX-OPENSUSE - calculation of kurtosis and skewness was fixed in Imagick-7.1.1.24
-Patch11:        imagick-fix-test316.patch
-Patch12:        imagick-php_strtolower-php84.patch
 BuildRequires:  %{php_name}-devel >= 7.0.1
 BuildRequires:  ImageMagick-devel >= 6.5.3.10
 BuildRequires:  ghostscript-fonts-std

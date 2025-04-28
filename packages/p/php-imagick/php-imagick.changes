@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Apr 27 18:47:24 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Upgrade to version 3.8.0
+  * Fix signedness formatting mistakes
+
+- Upgrade to version 3.8.0RC2
+  * Corrected PHP_IMAGICK_EXTNUM
+
+- Upgrade to 3.8.0RC1
+  * Imagick::clutImage(...) now respects the images interpolate method.
+  * You can now pass null to ImagickDraw::setStrokeDashArray() to reset
+    the dash array.
+  * Fixed memory leak in ImageKernel
+  * Fixed compiling against PHP 8.4.
+  * Fixed various reflection issues related to incorrect arginfo
+  * function Imagick::clutImageWithInterpolate(Imagick $lookup_table,
+    int $pixel_interpolate_method): bool {}
+  * Constants Imagick::COMPRESSION_BC5, Imagick::COMPRESSION_BC7,
+    Imagick::COMPRESSION_LERC, Imagick::DIRECTION_TOP_TO_BOTTOM,
+    Imagick::ALPHACHANNEL_OFF_IF_OPAQUE
+
+- Remove upstreamed patches
+  - imagick-fix-test316.patch
+  - imagick-php_strtolower-php84.patch
+
+-------------------------------------------------------------------
 Fri Nov 22 10:28:40 UTC 2024 - Manu Maier <mmanu84@outlook.de>
 
 - Fix removed "php_strtolower" for PHP 8.4
