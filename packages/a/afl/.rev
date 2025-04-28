@@ -1529,4 +1529,41 @@
     <comment></comment>
     <requestid>1239244</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>8e1cc11a5c1a984128690e4859441001</srcmd5>
+    <version>4.32c</version>
+    <time>1745849882</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 4.32c
+  - Fixed a bug where after a fast restart of a full fuzzed corpus afl-fuzz
+    terminates with &quot;need at least one valid input seed that does not crash&quot;
+    Small improvements to afl-*-config
+  - afl-fuzz:
+    - memory leak fixes by @kcwu - thanks!
+    - many more nits and small memory saves thanks to @kcwu
+    - remove deprecated files from queue/.state
+    - fix bitmap update function if no current trace is present
+    - fix for afl_custom_queue_get
+    - various small nits
+  - afl-cc:
+    - fix pass support for LLVM 20 (passes were run too early)
+    - dropped plugin support for LLVM 13
+    - fix AFL_OLD_FORKSERVER
+    - various minor fixes
+  - frida_mode:
+    - fixes for new MacOS + M4 hardware
+- 0001-fix-32-bit-compile.patch: upstream
+
+- updated to 4.31c
+  - SAND mode added (docs/SAND.md) for more effecient fuzzing with sanitizers
+    (thanks to @wtdcode !)
+  - afl-fuzz:
+    - splicing phase is now DISABLED by default because research showed
+      it is counterproductive. New command line parameter `-u` to enable
+      it. Splicing is auto-enabled if two cycles without finds happen.
+    - Python 3.13+ support
+    - loose file and shared memory permissions on Android and iPhone
+  - afl-cc: (forwarded request 1273087 from msmeissn)</comment>
+    <requestid>1273088</requestid>
+  </revision>
 </revisionlist>
