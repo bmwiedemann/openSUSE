@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- zypper clean also the system repository from the container
+
+-------------------------------------------------------------------
 Tue Apr 22 10:43:27 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - rust 1.86 for stable, rust 1.85 for oldstable
