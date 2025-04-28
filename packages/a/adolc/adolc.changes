@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Apr 12 12:11:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop baselibs.conf, 32bit support is not needed anymore
+
+-------------------------------------------------------------------
 Mon Feb 24 15:53:08 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile and avoid bashisms (commented, but still)

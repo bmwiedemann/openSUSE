@@ -24,7 +24,6 @@ Summary:        Algorithmic Differentiation Library for C/C++
 License:        EPL-1.0 OR GPL-2.0-or-later
 URL:            https://github.com/coin-or/ADOL-C
 Source0:        https://github.com/coin-or/ADOL-C/archive/releases/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        baselibs.conf
 # from https://github.com/coin-or/ADOL-C/pull/47.patch
 Patch1:         handle-lib64-for-riscv64.patch
 BuildRequires:  ColPack-devel
