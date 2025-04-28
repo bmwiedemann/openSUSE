@@ -30,15 +30,15 @@
 %endif
 
 Name:           spirv-headers
-Version:        1.6.4+sdk309
+Version:        1.6.4+sdk309+git17
 %define innerver 1.4.309
-%define rev 09913f088a1197aba4aefd300a876b2ebbaa3391
+%define rev aa6cef192b8e693916eb713e7a9ccadf06062ceb
 Release:        0
 Summary:        Machine-readable files from the SPIR-V registry
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/KhronosGroup/SPIRV-Headers
-Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/refs/tags/vulkan-sdk-%innerver.0.tar.gz
+Source:         https://github.com/KhronosGroup/SPIRV-Headers/archive/%rev.tar.gz
 BuildArch:      noarch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  fdupes
@@ -56,7 +56,7 @@ registry. This includes:
 * The XML registry file.
 
 %prep
-%autosetup -n SPIRV-Headers-vulkan-sdk-%innerver.0 -p1
+%autosetup -n SPIRV-Headers-%rev -p1
 
 %build
 %cmake \

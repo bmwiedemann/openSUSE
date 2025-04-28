@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Apr 25 22:39:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 1.6.4+sdk309+git17 (Git aa6cef19)
+  * Add SPV_KHR_bfloat16 & SPV_QCOM_tile_shading
+  * Add DisplacementMicromapNV to the capabilities enabling
+    OpTypeAccelerationStructureKHR
+
+-------------------------------------------------------------------
 Thu Mar 13 16:52:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.309.0 (Git 00913f088)
