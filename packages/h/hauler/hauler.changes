@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 28 09:58:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.2.3:
+  * formatting and flag text updates
+  * add keyless signature verification (#434)
+  * bump helm.sh/helm/v3 in the go_modules group across 1 directory (#430)
+  * add --only flag to hauler store copy (for images) (#429)
+  * fix tlog verification error/warning output (#428)
+
+-------------------------------------------------------------------
 Tue Apr 15 08:10:25 UTC 2025 - dmueller@suse.com
 
 - Update to version 1.2.2 (bsc#1241184, CVE-2024-0406):

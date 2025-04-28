@@ -17,7 +17,7 @@
 
 
 Name:           hauler
-Version:        1.2.2
+Version:        1.2.3
 %global git_commit 5021f3ab6b364a5172fe9fece97bf3742ab1b4ce
 Release:        0
 Summary:        Airgap Swiss Army Knife

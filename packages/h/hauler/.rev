@@ -124,4 +124,17 @@
   (upstream)</comment>
     <requestid>1269481</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b909d00e915d4717cd7d660c58fbf560</srcmd5>
+    <version>1.2.3</version>
+    <time>1745849872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.3:
+  * formatting and flag text updates
+  * add keyless signature verification (#434)
+  * bump helm.sh/helm/v3 in the go_modules group across 1 directory (#430)
+  * add --only flag to hauler store copy (for images) (#429)
+  * fix tlog verification error/warning output (#428)</comment>
+    <requestid>1273079</requestid>
+  </revision>
 </revisionlist>
