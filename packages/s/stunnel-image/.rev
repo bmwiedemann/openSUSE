@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of stunnel-image</comment>
     <requestid>1241419</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0aed49365cdaf4746a1d07b8e1587883</srcmd5>
+    <version>unknown</version>
+    <time>1745849998</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1273089</requestid>
+  </revision>
 </revisionlist>
