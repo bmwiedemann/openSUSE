@@ -23,8 +23,8 @@
 FROM opensuse/bci/openjdk:23
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends java-23-openjdk-devel maven; \
-    zypper -n clean; \
+    zypper -n install --no-recommends java-23-openjdk-devel maven
+RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
