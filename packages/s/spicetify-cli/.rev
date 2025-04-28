@@ -93,4 +93,12 @@
     <comment>Update to version 2.40.4</comment>
     <requestid>1272234</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c1b311c28b372d8baea0938e02844cc1</srcmd5>
+    <version>2.40.5</version>
+    <time>1745849786</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.40.5</comment>
+    <requestid>1272972</requestid>
+  </revision>
 </revisionlist>

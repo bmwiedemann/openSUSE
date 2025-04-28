@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 27 19:21:15 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.5:
+  * build: bump golang to `1.24.2`
+  * fix: `frameworkResourcesPath` for macOS
+  * chore: change names
+
+-------------------------------------------------------------------
 Wed Apr 23 15:45:03 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.40.4:
