@@ -1,7 +1,7 @@
 #
 # spec file for package gocryptfs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gocryptfs
-Version:        2.4.0
+Version:        2.5.4
 Release:        0
 Summary:        Encrypted overlay filesystem written in Go
 License:        MIT
@@ -64,6 +64,9 @@ install -D -m 0755 -t %{buildroot}%{_bindir} contrib/atomicrename/atomicrename \
 install -D -m 0644 -t %{buildroot}%{_mandir}/man1 Documentation/statfs.1
 
 rm Documentation/MANPAGE* Documentation/*.1
+
+%check
+./%{name} --version
 
 %files
 %license LICENSE

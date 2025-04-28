@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Apr 27 17:04:09 UTC 2025 - munix9@googlemail.com
+
+- Update to version 2.5.4:
+  * Drop GOAMD64=v2 from build.bash, there's user(s) still running
+    GOAMD64=v1 CPUs (#908, commit)
+
+- Update to version 2.5.3:
+  * Fix go install failing with g: malformed file path
+    "tests/fsck/malleable_base64/27AG8t-XZH7G9ou2OSD_z\ng":
+    invalid char '\n' (c80558)
+  * Fix panic when go-fuse is newer than specified in go.mod (#897)
+
+- Update to version 2.5.2:
+  * Use our own syscallcompat.Setreuid (and friends) wrappers
+    (6b1ba584)
+  * Upgrade golang.org/x/sys again
+  * Provide arm64 binaries in releases in addition to amd64
+
+- Update to version 2.5.1:
+  * Downgrade golang.org/x/sys to unbreak unix.Setreuid and
+    -allow_other (6d342f3, #893, #892)
+
+- Update to version 2.5.0:
+  * Important fixes for -reverse mode affecting the virtual
+    gocryptfs.diriv and gocryptfs.longname.*.name files. The bug
+    can cause file names to become undecryptable. To make sure
+    that sync tools like rsync copy new, good copies, gocryptfs
+    v2.5.0 and later advance ctime and mtime for these files by
+    10 seconds.
+    - Fix -reverse mode sometimes (triggered by inode number reuse)
+      returning stale data for gocryptfs.diriv (#802)
+    - Fix -reverse mode hardlinking gocryptfs.longname.*.name files
+      of hardlinked files together (#802)
+  * Fix -reverse mode ignoring -force-owner (#809)
+  * Add workaround for excessive file fragementation on btrfs
+    (#811)
+  * -ctlsock: automatically delete orphaned colliding socket file
+    (#776)
+  * MacOS: Fix XTIMES panic on startup (#823)
+    - Fixed by updating the go-fuse library to v2.5.0
+  * MacOS: merge kernel options before passing them on (#854, #557)
+  * Add -fido2-assert-option (#807)
+  * -init now accepts -masterkey
+  * -passwd now ignores -extpass and -passfile for the new password
+    (#287, #882)
+
+-------------------------------------------------------------------
 Mon Jun 12 07:59:59 UTC 2023 - munix9@googlemail.com
 
 - Update to version 2.4.0:
