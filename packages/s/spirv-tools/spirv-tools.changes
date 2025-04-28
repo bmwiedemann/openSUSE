@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 25 22:36:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.2~rc2
+  * Add SPV_KHR_bfloat16 support
+  * Support scalar replacement of large structs
+  * Support optimization of OpCopyLogical
+  * Add QuadControlKHR to trim pass and allow lists
+
+-------------------------------------------------------------------
 Thu Mar 13 16:56:20 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Bump BuildRequires to match spirv-headers
