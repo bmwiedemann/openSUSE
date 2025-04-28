@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 27 14:21:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.15.0:
+  * Add support for systemd-resolved as resolvconf
+
+-------------------------------------------------------------------
 Sat Mar 29 09:52:48 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.14.1:

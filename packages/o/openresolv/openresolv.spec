@@ -17,7 +17,7 @@
 
 
 Name:           openresolv
-Version:        3.14.1
+Version:        3.15.0
 Release:        0
 Summary:        DNS management framework
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ openresolv can generate a combined resolv.conf or a configuration file for a loc
 
 %prep
 %autosetup
-sed -i -e 's/^#!\/bin\/sh$//' named.in pdnsd.in dnsmasq.in unbound.in libc.in pdns_recursor.in
+sed -i -e 's/^#!\/bin\/sh$//' named.in pdnsd.in dnsmasq.in unbound.in libc.in pdns_recursor.in systemd-resolved.in
 
 %build
 ./configure --bindir=%{_sbindir} --libexecdir=%{_libexecdir}/resolvconf
