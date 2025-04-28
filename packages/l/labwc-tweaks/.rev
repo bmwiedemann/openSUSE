@@ -16,4 +16,14 @@ the labwc wayland compositor</comment>
     <comment></comment>
     <requestid>1252941</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>143f022803c0fc30372a4b1deb756dba</srcmd5>
+    <version>0~git.20250410.a7110e4</version>
+    <time>1745849792</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0~git.20250410.a7110e4:
+  * Weblate commits
+  * main: Fix &quot;qt.svg: Cannot open file&quot; mesage</comment>
+    <requestid>1272979</requestid>
+  </revision>
 </revisionlist>

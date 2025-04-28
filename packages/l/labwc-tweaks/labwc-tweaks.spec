@@ -18,7 +18,7 @@
 
 
 Name:           labwc-tweaks
-Version:        0~git.20250219.818c98b
+Version:        0~git.20250410.a7110e4
 Release:        0
 Summary:        GUI Configuration app for labwc
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -64,5 +64,6 @@ labwc-tweaks is a GUI configuration application for the labwc Wayland compositor
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
+%{_datadir}/%{name}/translations/%{name}_kab.qm
 
 %changelog
