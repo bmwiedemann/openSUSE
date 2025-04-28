@@ -23,8 +23,8 @@
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends pulseaudio pulseaudio-utils; \
-    zypper -n clean; \
+    zypper -n install --no-recommends pulseaudio pulseaudio-utils
+RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
@@ -43,7 +43,7 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/pulseaudio-image/README.md"
-CMD ["/usr/bin/pulseaudio"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 # sanity check that the version from the tag is equal to the version of pulseaudio that we expect
 RUN set -euo pipefail; \
     [ "$(rpm -q --qf '%{version}' pulseaudio | \
@@ -51,3 +51,5 @@ RUN set -euo pipefail; \
 COPY daemon.conf /etc/pulse/
 COPY client.conf /etc/pulse/
 COPY system.pa /etc/pulse/
+COPY entrypoint.sh /usr/local/bin/
+RUN set -euo pipefail; chmod +x /usr/local/bin/entrypoint.sh;

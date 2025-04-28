@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- zypper clean also the system repository from the container
+
+-------------------------------------------------------------------
+Sun Apr 27 08:43:57 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- fix device permissions before starting pulseaudio
+
+-------------------------------------------------------------------
 Wed Feb 26 17:26:32 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - First version of the Pulseaudio BCI

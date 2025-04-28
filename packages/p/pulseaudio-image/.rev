@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of pulseaudio-image</comment>
     <requestid>1249041</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>32c90761946d15c8b447c4775a7de577</srcmd5>
+    <version>unknown</version>
+    <time>1745850012</time>
+    <user>dimstar_suse</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1273106</requestid>
+  </revision>
 </revisionlist>
