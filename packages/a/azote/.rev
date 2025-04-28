@@ -345,4 +345,13 @@
   * Support for using miraclemsg when miracle-wm is detected #213</comment>
     <requestid>1266621</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>006caca6878619d9934d42b995b6b4e5</srcmd5>
+    <version>1.15.1</version>
+    <time>1745849848</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.1:
+  * Fix a regression introduced in #213, that caused crashing on sway.</comment>
+    <requestid>1273072</requestid>
+  </revision>
 </revisionlist>
