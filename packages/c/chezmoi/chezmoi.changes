@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 07:11:44 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.2:
+  - Fixes
+    * fix: Set .chezmoi.sourceFile in execute-template command
+    * fix: Fix truncated placeholder in choice input
+
+-------------------------------------------------------------------
 Tue Apr  8 17:35:28 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.62.0:
