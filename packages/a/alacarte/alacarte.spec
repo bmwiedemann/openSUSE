@@ -17,7 +17,7 @@
 
 
 Name:           alacarte
-Version:        3.54.1
+Version:        3.56.0
 Release:        0
 Summary:        Menu editor for GNOME
 License:        LGPL-2.1-or-later
@@ -35,7 +35,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3 >= 3.3
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libgnome-menu-3.0) >= 3.5.3
 BuildRequires:  pkgconfig(pygobject-3.0)
 Requires:       python3-gobject-Gdk
@@ -58,7 +57,6 @@ NOCONFIGURE=1 ./autogen.sh
 
 %install
 %make_install
-%suse_update_desktop_file -r alacarte GNOME Utility DesktopUtility X-GNOME-PersonalSettings
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}
 

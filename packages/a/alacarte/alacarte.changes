@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Apr 26 18:20:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.0:
+  + Ignore missing icon file.
+  + Updated translations.
+- Drop update-desktop-files BuildRequires and macro, we are
+  dropping it from distro.
+
+-------------------------------------------------------------------
 Mon Jan 13 16:02:52 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.54.1:
