@@ -301,4 +301,12 @@
   * SuppressionManager: Rework controlflow to avoid multiple regex checks in same comment</comment>
     <requestid>1267387</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bf8d6fd695d4b79ec8687c7fa7f6657a</srcmd5>
+    <version>1.14.0</version>
+    <time>1745849875</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.14</comment>
+    <requestid>1273080</requestid>
+  </revision>
 </revisionlist>
