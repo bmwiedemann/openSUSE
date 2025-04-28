@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 26 21:55:13 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.0
+  * keysyms can now be written as just Unicode strings, including
+    multi-keysyms.
+  * Added support for new `<none>`, `<some>` and `<any>` wildcard
+    syntax in rules files.
+  * Added support for a new escaping format for Unicode, `\u{NNNN}`.
+
+-------------------------------------------------------------------
 Wed Mar 12 16:30:46 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.1
