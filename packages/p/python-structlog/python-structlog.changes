@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:25:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 25.3.0:
+  * Fix a rather ugly bug where seemingly UTC timestamps in TimeStamper
+    had the timestamp from the local timezone when passing utc=True #713
+
+-------------------------------------------------------------------
 Wed Mar 12 08:14:09 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 25.2.0:

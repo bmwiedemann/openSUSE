@@ -284,4 +284,14 @@
   * Expose structlog.processors.LogfmtRenderer for imports. #701</comment>
     <requestid>1252316</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0bb4b71f72db5a59a2bef87e13826f98</srcmd5>
+    <version>25.3.0</version>
+    <time>1745849851</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 25.3.0:
+  * Fix a rather ugly bug where seemingly UTC timestamps in TimeStamper
+    had the timestamp from the local timezone when passing utc=True #713</comment>
+    <requestid>1273073</requestid>
+  </revision>
 </revisionlist>
