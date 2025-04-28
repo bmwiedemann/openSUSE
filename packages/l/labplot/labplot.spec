@@ -16,22 +16,19 @@
 #
 
 
-%define kf6_version 6.0
-%define qt6_version 6.2.2
+%define kf6_version 6.3
+%define qt6_version 6.5
 
 Name:           labplot
-Version:        2.11.1git.20250114T013234~18418c36
+Version:        2.12.0
 Release:        0
 Summary:        Data Visualization and Analysis software
 License:        GPL-2.0-or-later
 URL:            https://apps.kde.org/labplot/
-Source0:        %{name}-%{version}.tar.xz
-# SECTION TODO
-# TODO: Uncomment when a new release with cantor fixes is available
-# Source1:        https://download.kde.org/stable/labplot/%%{name}-%%{version}.tar.xz.sig
+Source0:        https://download.kde.org/stable/labplot/%{name}-%{version}.tar.xz
+Source1:        https://download.kde.org/stable/labplot/%{name}-%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/sgerlach@key1.asc?ref_type=heads
-# Source2:        labplot.keyring
-# /SECTION
+Source2:        labplot.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Fix-finding-liborigin-on-openSUSE.patch
 BuildRequires:  bison
