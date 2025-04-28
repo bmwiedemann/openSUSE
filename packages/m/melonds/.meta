@@ -1,0 +1,7 @@
+<package name="melonds" project="openSUSE:Factory">
+  <title>Nintendo DS emulator</title>
+  <description>
+melonDS aims at providing fast and accurate Nintendo DS emulation.
+  </description>
+  <url>https://github.com/melonDS-emu/melonDS</url>
+</package>

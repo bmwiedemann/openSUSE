@@ -1,0 +1,179 @@
+-------------------------------------------------------------------
+Sun Apr 27 23:56:53 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated spec-file via spec-cleaner and manual optimizations.
+- Updated to 1.0rc
+  * https://github.com/melonDS-emu/melonDS/releases/tag/1.0rc
+
+-------------------------------------------------------------------
+Sun May 19 16:37:37 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
+
+- Fix building for openSUSE Leap, use gcc11 for building
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Wed Apr 17 07:04:25 UTC 2024 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix errors in tubleweed
+  wayland-egl.h file not found
+  executable-stack (Badness: 10000)  
+
+-------------------------------------------------------------------
+Sat Nov  5 23:11:22 UTC 2022 - Markus S <kamikazow@web.de>
+
+- Update to 0.9.5
+  * remove incorrect color profile from PNG icons (Nadia)
+  * DLDI fixes for the Smash demo (Arisotura)
+  * fix gaps in I/O handling (Arisotura)
+  * fix invalid savemem commands, fixes Dementium (Arisotura)
+  * FreeBIOS: add VRAM-compatible LZ77 decompress function, fixes Yoshi's Island (Arisotura)
+  * default firmware: in DSi mode, emulate DWM-W015 wifi board instead of DWM-W024 (Arisotura)
+  * default firmware: save WFC settings to separate file (Arisotura)
+  * disable firmware overrides UI when firmware override isn't checked (Nadia)
+  * 2D: more accurate fade/blending (Arisotura)
+  * DSi: add support for GXFIFO NDMA (Arisotura)
+  * DSi: add mainRAM mirror at 0x0C000000 (Arisotura)
+  * add 3DS 5:3 aspect ratio, refactor aspect ratio code (Nadia)
+  * OpenGL: fix 16x resolution on macOS (Nadia)
+  * fix triggers being recognized as negative analog stick values during mapping (Nadia)
+  * fix joystick mapping buttons on macOS (Nadia)
+  * DSi: preliminary implementation of SNDEXCNT (Generic)
+  * DSi: fix SD inserted/removed IRQ bits (Generic)
+  * DSi: implement 8/16bit access to AES registers (Generic)
+  * DSi: fix SCFG_MC cart-inserted bit (Generic)
+  * JIT: invalidate blocks in ARM7 VRAM/WRAM when it is remapped (Generic)
+  * fix ROM banner reading when the ROM has no banner (Rayyan, Arisotura)
+  * fix UTF16 ROM title handling in the ROM info dialog (Rayyan)
+  * wifi: improvements to wifi emulation (Arisotura)
+  * wifi: shared-memory based sync/comm mechanism for local wifi (Arisotura)
+  * proper support for multiple melonDS instances for multiplayer (Arisotura)
+  * DSi: actual, proper camera support (Arisotura)
+  * DSi: fix DSP enough that it will actually work (Arisotura)
+  * fix OpenGL context handling (Stenzek, Generic, Nadia)
+  * force-align all memory accesses (instead of just CPU memory accesses) (Arisotura)
+  * better CLI parameter handling (patataofcourse)
+  * fix bugs in DSi direct boot (Arisotura)
+
+-------------------------------------------------------------------
+Tue Mar  8 20:58:35 UTC 2022 - Markus S <kamikazow@web.de>
+
+- Update to 0.9.4
+  * Redesign of the Input dialog (Rayyan)
+  * Use DraStic open-source DS BIOS replacement (Swordfish90, asiekierka)
+  * Generate non-bootable firmware replacement (Swordfish90, asiekierka, others)
+  * Support for syncing DLDI/DSi SD image to a folder (Arisotura)
+  * ARM9 PU (code/data abort) support in interpreter mode (Arisotura)
+  * Fix ADPCM decoding bug resulting in potential crackling (Arisotura)
+  * Block sound DMA from reading the ARM7 BIOS (Arisotura)
+  * Smarter SDL initialization (andrigamerita, Nadia, Arisotura)
+  * Properly center the main window on macOS (Nadia)
+  * Don't try to render if the emulator is inactive (Nadia)
+  * Fix potential issues with DSi title importing (Nadia, Epicpkmn11)
+  * Custom path support (Arisotura)
+  * Fix nifi socket init on BSD and macOS (Nadia)
+  * Add support for zero addresses in AR codes 3xxxxxxx to Axxxxxxx (Arisotura)
+  * Lower window refresh rate if running too fast (RSDuck)
+  * Wifi power-saving support (RSDuck)
+  * Allow swap-screen hotkey to swap between displaying only top screen and only bottom screen (ZackWeinstein)
+  * Add RAM search dialog (2jun0)
+  * Add power management dialog for setting battery parameters (Rayyan)
+
+-------------------------------------------------------------------
+Sun Nov  7 08:14:16 UTC 2021 - Markus S <kamikazow@opensuse.org>
+
+- Update to 0.9.3
+ - Changes from 0.9.0:
+  * merge in experimental DSi support
+  * 2D: delay palette lookup for sprites
+  * 2D: some attempts at fixing mosaic
+  * CP15: only update PU regions when actually needed
+  * 2D: fix sprite Y-flip
+  * 3D/GL: fix transparency bugs
+  * add warning against hacked firmwares
+  * fix libpcap bug (i404788)
+  * better file handling code (Nadia)
+  * GBA slot and solar sensor support (rzumer)
+  * add support for AR cheat codes
+  * fix handling of ROMs with encrypted secure area
+  * 3D: change clipping to be closer to hardware
+  * 3D: implement DISP_1DOT_DEPTH
+  * 3D: more accurate viewport transform
+  * build fixes (Nadia)
+  * add JIT recompiler (RSDuck)
+  * new Qt UI
+  * SPU: only start channels when they can actually run
+  * 2D: allow writes to DISPCNT/masterbright/capture/dispFIFO regardless of POWCNT
+  * SPU: don't process channels with len<4
+  * 3D/GL: cleaner polygon generation code
+  * 3D/GL: add attempt at reducing warping on quads/etc
+  * 3D: add missing variables to savestates
+  * wifi: avoid potential out-of-bounds writes with invalid RX buffer setups
+  * 3D/GL: fix issues with framebuffer handling
+  * make MAC randomization optional
+  * make software renderer the default
+  * add basic DLDI
+
+ - Changes from 0.9.1:
+  * add fullscreen hotkey
+  * remove hardcoded F11-debug key (oops)
+  * fix some gaps in the IO handlers
+  * add ability to run unlaunch'd DSi NANDs
+  * add preliminary camera support (feeds fixed stripe pattern)
+  * fix potential bugs with tight timers (fixes ZXDS)
+  * SPU: small optimization to the mixer
+  * better framerate limiter
+  * fix several JIT issues
+  * GPU: lay bases for EVIL PLANS
+  * GPU: emulate separate scroll register for 3D layer scrolling
+  * some corrections to the ROM savetype list
+  * a bunch of misc fixes, as usual
+
+ - Changes from 0.9.2:
+  * GX: optimize single-param commands
+  * add recent-files menu (abcdjdj)
+  * add support for loading files from archives
+  * fix JIT bugs
+  * fix wifi bugs
+  * improve performance of save-memory writeback
+  * add hotkey for swapping screens
+  * 3D/GL: attempt fixing various bugs
+  * fix OpenGL scaling on hiDPI displays
+  * rework GPU2D for easier integration of full GL rendering
+  * rework NDSCart and GBACart to make it easier to implement new cart types
+  * add support for NAND save memory (WarioWare DIY, Jam with the Band)
+  * fix bugs in DSi I2C and SD/MMC interfaces
+  * new screen modes
+
+ - Changes from 0.9.3:
+  * Fill most gaps in ROMList (Arisotura)
+  * Fix touchscreen code in non-hybrid layout mode (Arisotura)
+  * GBACart: simulate open-bus decay roughly (Arisotura)
+  * Frontend: handle tablet and touch events (Generic aka RSDuck)
+  * Implement NO$GBA debug registers (BlueTheDuck)
+  * Add frame step hotkey (Yukitty, additional fixes by Gal20)
+  * Add DSP code (PoroCYon, purringChaos)
+  * Save window state (Arisotura)
+  * JIT optimisations and fixes (Generic aka RSDuck)
+  * Add ROM info dialog (Rayyan)
+  * Allow using DSi footer within NAND images (MightyMax)
+  * More accurate NWRAM implementation (MightyMax)
+  * Only open microphone if necessary (Arisotura)
+  * Fix undo load savestate loading (Generic aka RSDuck)
+  * Fix pause when inactive (Generic aka RSDuck)
+  * Add audio interpolation (Arisotura)
+  * Add SOUNDBIAS and optional 10bit audio (Nadia)
+  * Patch touchscreen calibration data in DSi mode (Arisotura)
+  * Add DSi title manager (Arisotura)
+  * Fix threaded rasteriser deadlock when VCount is moved (Generic aka RSDuck)
+  * More accurate DMA timings (Arisotura)
+  * Add preliminary DSi-mode direct boot (MightyMax, Arisotura)
+
+-------------------------------------------------------------------
+Fri Nov 22 17:46:49 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Install icon and launcher
+
+-------------------------------------------------------------------
+Sun Nov 10 22:05:28 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Initial packaging
