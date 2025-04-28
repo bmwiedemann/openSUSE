@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-storage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        2.19.0
+Version:        3.1.0
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -42,11 +42,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-google-api-core >= 1.31.5
-Requires:       python-google-auth >= 2.23.3
-Requires:       python-google-cloud-core >= 2.3.0
+Requires:       python-google-api-core >= 2.15.0
+Requires:       python-google-auth >= 2.26.1
+Requires:       python-google-cloud-core >= 2.4.2
 Requires:       python-google-crc32c >= 1.0
-Requires:       python-google-resumable-media >= 2.6.0
+Requires:       python-google-resumable-media >= 2.7.2
 Requires:       python-googleapis-common-protos
 Requires:       python-requests >= 2.18.0
 BuildArch:      noarch
@@ -55,12 +55,12 @@ Obsoletes:      python3-google-cloud-storage < %{version}
 %endif
 # SECTION test requirements
 %if %{with test}
-BuildRequires:  %{python_module google-api-core >= 1.31.5}
-BuildRequires:  %{python_module google-auth >= 2.23.3}
-BuildRequires:  %{python_module google-cloud-core >= 2.3.0}
+BuildRequires:  %{python_module google-api-core >= 2.15.0}
+BuildRequires:  %{python_module google-auth >= 2.26.1}
+BuildRequires:  %{python_module google-cloud-core >= 2.4.2}
 BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module google-crc32c >= 1.0}
-BuildRequires:  %{python_module google-resumable-media >= 2.6.0}
+BuildRequires:  %{python_module google-resumable-media >= 2.7.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

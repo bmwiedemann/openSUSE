@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Apr 26 09:45:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.1.0
+  * Add api_key argument to Client constructor (#1441)
+  * Add Bucket.move_blob() for HNS-enabled buckets (#1431)
+- from version 3.0.0
+  * The default checksum strategy for uploads has changed from None to "auto" (#1383)
+  * The default checksum strategy for downloads has changed from "md5" to "auto" (#1383)
+  * Deprecated positional argument "num_retries" has been removed (#1377)
+  * Deprecated argument "text_mode" has been removed (#1379)
+  * Blob.download_to_filename() now deletes the empty destination file on a 404 (#1394)
+  * Media operations now use the same retry backoff, timeout and custom predicate system
+    as non-media operations, which may slightly impact default retry behavior (#1385)
+  * Retries are now enabled by default for uploads, blob deletes and blob metadata updates (#1400)
+  * Add "auto" checksum option and make default ([1383)
+  * Blob.download_to_filename() deletes the empty destination file on a 404 (#1394)
+  * Enable custom predicates for media operations (#1385)
+  * Integrate google-resumable-media (#1283)
+  * Retry by default for uploads, blob deletes, metadata updates (#1400)
+  * Cancel upload when BlobWriter exits with exception (#1243)
+  * Changed name of methods `Blob.from_string()` and `Bucket.from_string()` to `from_uri()` (#1335)
+  * Correctly calculate starting offset for retries of ranged reads (#1376)
+  * Filter download_kwargs in BlobReader (#1411)
+  * Remove deprecated num_retries argument (#1377)
+  * Remove deprecated text_mode argument (#1379)
+  * Correct formatting and update README.rst (#1427)
+  * Fix issue with exceptions.py documentation (#1328)
+- Refresh demock.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Dec  5 08:59:33 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.19.0:
