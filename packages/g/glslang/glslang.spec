@@ -22,16 +22,14 @@
 %endif
 
 Name:           glslang
-Version:        15.2.0
+Version:        15.3.0
 Release:        0
 Summary:        OpenGL and OpenGL ES shader front end and validator
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://www.khronos.org/opengles/sdk/tools/Reference-Compiler/
 #Git-URL:	https://github.com/KhronosGroup/glslang
-# tag 15.2.0 missing in git as of 2025-03-13
-%define rev 0018771b46c492e28ca916b00eda96093381a3b2
-Source:         https://github.com/KhronosGroup/glslang/archive/%rev.tar.gz
+Source:         https://github.com/KhronosGroup/glslang/archive/%version.tar.gz
 Source3:        baselibs.conf
 BuildRequires:  bison
 BuildRequires:  cmake >= 3.14.0
@@ -39,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_version} >= 9
 BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  python3-base
-BuildRequires:  spirv-tools-devel >= 2025.1~rc1
+BuildRequires:  spirv-tools-devel >= 2025.2~rc2
 
 %description
 glslang is a compiler front end for the OpenGL ES and OpenGL shading
@@ -89,7 +87,7 @@ This package contains additional headers that are not officially installed,
 but which some downstream packages rely on.
 
 %prep
-%autosetup -n glslang-%rev -p1
+%autosetup -n glslang-%version -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
