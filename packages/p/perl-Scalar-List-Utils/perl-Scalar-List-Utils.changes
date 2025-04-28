@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Apr  2 05:37:28 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.690.0 (1.69)
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.69 -- 2025-04-01
+  	[CHANGES]
+  	 * Always allow `isvstring` to be exported even on Perl 5.6, where it
+  	   just returns false
+  	 * Fix string comparison logic that compares versions with `$]`
+
+-------------------------------------------------------------------
 Sat Oct 19 05:33:40 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.680.0 (1.68)
