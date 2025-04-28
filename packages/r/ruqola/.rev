@@ -187,4 +187,12 @@
     <comment>Update to 2.4.1</comment>
     <requestid>1240028</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>bec5dc6296e7cf9c5ee75207fd7caa8e</srcmd5>
+    <version>2.5.0</version>
+    <time>1745849817</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.5.0</comment>
+    <requestid>1273041</requestid>
+  </revision>
 </revisionlist>

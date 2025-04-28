@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 28 07:04:41 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.5.0
+  * Add support for tools plugins
+  * Implement invite RC url support
+  * Implement verify if a new Ruqola version exist
+  * Show images from attachment dialog box
+  * Implement Rocket.Chat application support
+  * Implement command preview
+  * Implement plugin UI support
+  * Fix download languages apps
+  *  Bug: Search in encrypted room is not possible
+  * Bug: A command start with '/' and not /* or //
+
+-------------------------------------------------------------------
 Fri Jan 24 07:17:35 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.4.1
