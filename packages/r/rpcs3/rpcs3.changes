@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Apr 28 06:30:23 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250427:
+  * vk: Fix more silly mistakes
+  * vk: Fix indexed multidraw
+  * rsx: Silence compiler warnings
+  * rsx: simplify simple_array<T>::erase_if
+  * Update wolfssl to 5.8.0
+  * Update miniupnp to 2.3.9
+  * Avoid passing -fuse-ld to non-linking step
+  * cellVideoOutConvertCursorColor: fix and implement
+  * fix missing check on swapped item
+  * fix erase_if method
+  * Fix IPv6 support detection
+  * Warning fixes
+  * SPU Image Finder Fixes
+  * Fix some warnings
+  * Remove some obsolete pragmas
+  * vk: Fix copypasta causing incorrect buffer to be released by GC
+  * vk: Properly initialize EXT_multidraw functionality
+  * vk: Fix a rare GPU timeline UAF when replacing buffer views
+  * rsx: Fix static ringbuffer allocator logic
+  * hotfix: fix parentheses when saving some files
+  * vk: Get rid of multidraw indirection buffer
+  * vk: Fix bug preparing multidraw command details
+  * rsx: Do not consume draw call barrier iterator when executing deps
+  * rsx: Cache draw subranges storage
+  * Qt: implement music player dialog for music handler tests
+  * cellMusic: improve logging
+  * Fix sceNpTrophyRegisterContext
+
+-------------------------------------------------------------------
 Tue Apr 22 04:11:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 0.0.36~git20250420: 
