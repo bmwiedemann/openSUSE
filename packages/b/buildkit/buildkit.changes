@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Apr 22 05:03:55 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.21.0:
+  * vendor: update fsutil to master
+  * vendor: github.com/docker/cli v28.1.1
+  * vendor: github.com/docker/docker v28.1.1
+  * vendor: github.com/containerd/containerd v2.0.5
+  * Improve documentation of S3 authentication
+  * vendor: github.com/docker/docker, github.com/docker/cli v28.1.0
+  * chore: update broken links to https://docs.docker.com/registry
+  * fix(debug): use correct path when copying delve to buildkit-linux-debug
+  * fix: wcow: simplify CNI setup for windows
+  * vendor: github.com/moby/go-archive v0.1.0
+  * hack: aggregate protobuf includes to a separate stage
+  * exporter: allow session exporter to access refs
+  * source: add metadata-only transfer option for local source
+  * exporter: add session exporter capability
+  * go.mod: golang.org/x/* latest
+  * remotecache: enable image-manifest by default
+  * ci: fix freebsd package repository
+  * vendor: change usage of docker/pkg/archive to moby/go-archive
+  * add support for cert-manager.io syntax for tls using tlsdir
+  * tests: client: windows: add various llb.AddMount related tests
+  * vendor: github.com/docker/cli v28.0.4
+  * vendor: github.com/docker/docker v28.0.4
+  * vendor: github.com/moby/sys/user v0.4.0
+  * vendor: github.com/opencontainers/image-spec v1.1.1
+  * fix: wcow: fix race condition in localmounter
+  * vendor: switch from idtools to moby/sys/user
+  * contrib: check if nvidia drivers are already installed
+  * contrib: support non PCI-based nvidia GPUs for WSL
+  * chore(labeler): area/cdi
+  * prune: update free-space filter when no max-space set
+  * lint: update some sorting code to newer generics based libs
+  * fix: reduce default expire time for opaque tokens
+  * tests: integrate mirror into worker tests
+  * dockerfile: add suggestion for mistyped target
+  * file: fix X mode to be Linux-compatible
+  * hack: allow building golangci from source for custom versions
+
+-------------------------------------------------------------------
 Tue Mar 25 07:30:43 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 0.20.2:

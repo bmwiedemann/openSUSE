@@ -127,4 +127,12 @@
     <comment>Update to version 0.20.2 (forwarded request 1255854 from mchellamuthu)</comment>
     <requestid>1255855</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>52961d938123cde3e549e2bf215ba584</srcmd5>
+    <version>0.21.0</version>
+    <time>1745849802</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.21.0: (forwarded request 1271259 from mchellamuthu)</comment>
+    <requestid>1273026</requestid>
+  </revision>
 </revisionlist>
