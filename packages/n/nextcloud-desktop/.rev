@@ -655,4 +655,12 @@
     <comment></comment>
     <requestid>1270081</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f6826c5e50f061e19e5c5bf8b6a2b845</srcmd5>
+    <version>3.16.4</version>
+    <time>1745937673</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.16.4.</comment>
+    <requestid>1273200</requestid>
+  </revision>
 </revisionlist>

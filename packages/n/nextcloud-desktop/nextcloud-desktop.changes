@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:41:16 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 3.16.4:
+   * pin Craft revision to a specific commit 
+     (gh#nextcloud/desktop#8194)
+   * Bugfix/filesystem remove file not working 
+     (gh#nextcloud/desktop#8197)
+   * revert to QFile::remove to remove single files 
+     (gh#nextcloud/desktop#8198)
+   * Bugfix/do not crash when propagating changes with move or 
+     rename (gh#nextcloud/desktop#8199)
+   * fix(assert): remove runtime assert that could crash production 
+     builds (gh#nextcloud/desktop#8211)
+   * fix(gui): resize sharee search results list dependent on 
+     required space (gh#nextcloud/desktop#8214)
+
+-------------------------------------------------------------------
 Wed Apr 16 14:08:02 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to version 3.16.3:
