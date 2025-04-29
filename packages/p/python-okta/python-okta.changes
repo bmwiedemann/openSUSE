@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  9 14:03:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.11
+  * Allow latest aenum release
+  * Add missing OAuthGrantType enum values
+  * Add data_type parameter for OktaAPIResponse
+
+-------------------------------------------------------------------
 Mon Feb 17 13:17:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.9.10
