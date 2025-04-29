@@ -1,7 +1,7 @@
 #
 # spec file for package cal3d
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@ Name:           cal3d
 Version:        0.120
 Release:        0
 Summary:        A 3D character animation library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Convertors
-Url:            https://mp3butcher.github.io/Cal3D/
+URL:            https://mp3butcher.github.io/Cal3D/
 Source:         https://github.com/mp3butcher/Cal3D/archive/%{version}.tar.gz#/%{oname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-boolean-to-pointer.patch -- https://gna.org/bugs/index.php?24805
 Patch0:         fix-boolean-to-pointer.patch
@@ -38,7 +38,6 @@ BuildRequires:  docbook-toys
 BuildRequires:  doxygen
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
