@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Apr 23 12:43:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.17
+  * ci: use correct openssl version for updated AL2023 version (#5255)
+  * ci: pytest generate junit reports (#5235)
+  * feat: Expose `as_ptr()` for external build (#5229)
+  * doc: tainted stuffer reset operation (#5231)
+  * fix: make -fPIC flag private (#5227)
+  * Revert "ci: exclude new setuptools (#5215)" (#5226)
+  * refactor: remove legacy pkey impls (#5241)
+  * chore: bindings release 0.3.16 (#5242)
+  * fix: tainted handshake.io and add large client hello test (#5208)
+  * ci: rebalance integV2 testcases (#5232)
+  * chore: Fix new clippy warning (#5243)
+  * ci: pin nix installer to older version (#5245)
+
+-------------------------------------------------------------------
 Wed Apr  9 09:16:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.5.16
