@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 21:56:11 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+-  Update to 0.0.36~git20250428:
+  * sys_mmapper: Lazily allocate shared memory descriptors
+  * Embedded SPU Image Search Fixes
+  * PPU: HasBreakpoint fast path when empty
+
+-------------------------------------------------------------------
 Mon Apr 28 06:30:23 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 0.0.36~git20250427:
