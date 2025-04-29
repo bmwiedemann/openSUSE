@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:58:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 2.0.3:
+  * update pyproject.toml
+  * update readme
+  * update header
+  * update authorization header
+  * update api specs
+  * update tests
+
+-------------------------------------------------------------------
 Thu Apr 17 14:56:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 2.0.2:

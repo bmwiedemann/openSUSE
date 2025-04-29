@@ -24,4 +24,18 @@
     <comment></comment>
     <requestid>1270988</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bbed24627a352bea01776d23d134a5ea</srcmd5>
+    <version>2.0.3</version>
+    <time>1745937754</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.3:
+  * update pyproject.toml
+  * update readme
+  * update header
+  * update authorization header
+  * update api specs
+  * update tests (forwarded request 1273431 from rrahl0)</comment>
+    <requestid>1273432</requestid>
+  </revision>
 </revisionlist>

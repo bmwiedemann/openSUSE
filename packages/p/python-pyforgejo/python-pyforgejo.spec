@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyforgejo
-Version:        2.0.2
+Version:        2.0.3
 Release:        0
 Summary:        A client library for accessing the Forgejo API
 License:        MIT
