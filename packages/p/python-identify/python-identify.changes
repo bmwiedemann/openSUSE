@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 15:06:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.6.10
+  * Add support for Magik
+- Convert to pyproject macros
+
+-------------------------------------------------------------------
 Tue Apr  1 12:18:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.9

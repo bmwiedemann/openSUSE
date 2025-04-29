@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-identify
-Version:        2.6.9
+Version:        2.6.10
 Release:        0
 Summary:        File identification library for Python
 License:        MIT
@@ -28,6 +28,7 @@ Source:         https://github.com/pre-commit/identify/archive/v%{version}.tar.g
 # PATCH-FIX-OPENSUSE 0001-use-editdistance-not-ukkonen.patch -- ukkonen not packaged for opensuse now
 Patch1:         0001-use-editdistance-not-ukkonen.patch
 BuildRequires:  %{python_module editdistance}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,10 +47,10 @@ File identification library for Python, including license file SPDX identifier.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/identify-cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,6 +68,6 @@ File identification library for Python, including license file SPDX identifier.
 %license LICENSE
 %python_alternative %{_bindir}/identify-cli
 %{python_sitelib}/identify
-%{python_sitelib}/identify-%{version}-*-info
+%{python_sitelib}/identify-%{version}*info
 
 %changelog
