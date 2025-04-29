@@ -17,21 +17,18 @@
 
 
 Name:           subfinder
-Version:        2.7.0
+Version:        2.7.1
 Release:        0
 Summary:        Fast passive subdomain enumeration tool
 License:        MIT
 URL:            https://github.com/projectdiscovery/subfinder
 Source0:        https://github.com/projectdiscovery/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zstd
-Source2:        fix_cve_2024_0406.patch
-Source3:        fix_cve_2025_22872.patch
 Patch1:         disable-version-check.patch
-BuildRequires:  binutils
 BuildRequires:  help2man
 BuildRequires:  udev
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.24
 
 %description
 subfinder is a subdomain discovery tool that returns valid subdomains for websites, using passive online sources.
@@ -42,15 +39,15 @@ The passive model guarantees speed and stealthiness that can be leveraged by bot
 
 %prep
 %autosetup -p1 -a1
-patch -d vendor/github.com/mholt/archiver/v3 < %{S:2}
-patch -d vendor/golang.org/x/net/ -p1 < %{S:3}
+cd v2
+ln -s ../vendor
 
 %build
 cd v2
-ln -s ../vendor
-make GOFLAGS="-mod=vendor -buildmode=pie -v"
-ls -l
-strip subfinder
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build ./cmd/%{name}
 help2man -s8 -N ./subfinder --version-string=%{version} > subfinder.8
 
 %install

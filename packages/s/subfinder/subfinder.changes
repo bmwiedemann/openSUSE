@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Apr 29 02:40:35 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Normalize go build invocation extracted from upstream Makefile
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Drop upstream go build arguments used in upstream Makefile.
+    -ldflags="-extldflags -static"
+    Absent a clear need, use go build defaults.
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Drop use of strip utility. Binaries are stripped automatically.
+  * Drop BuildRequires: binutils no longer needed
+
+-------------------------------------------------------------------
+Mon Apr 28 13:23:26 UTC 2025 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.7.1
+  * Update dependencies
+  * Remove backported patch fix_cve_2024_0406.patch
+  * Remove backported patch fix_cve_2025_22872.patch
+- Packaging improvements
+  * Update to BuildRequires: golang(API) >= 1.24 matching go.mod
+
+-------------------------------------------------------------------
 Fri Apr 25 10:31:03 UTC 2025 - Dominik Heidler <dheidler@suse.de>
 
 - Add fix_cve_2025_22872.patch to patch CVE-2025-22872 / bsc#1241750
