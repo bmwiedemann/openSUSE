@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:13:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.4.1:
+  * Bugfixes
+    - Add contents:read permissions to tox workflow (#1971)
+      @shatakshiiii
+    - Add a new script to fetch latest installed python version
+      (#1968) @shatakshiiii
+    - Isolate navigator tests from user configuration (#1963)
+      @ssbarnea
+    - Normalize ansible config path (#1960) @ssbarnea
+    - Log and ignore malformed plugin doc string. (#1944)
+      @cidrblock
+    - Fix the lint subcommand failure: (KeyError: 'lines') (#1939)
+      @shatakshiiii
+
+-------------------------------------------------------------------
 Tue Apr  1 17:34:30 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - update to 25.4.0:
