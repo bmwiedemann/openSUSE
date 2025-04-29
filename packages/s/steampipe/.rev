@@ -44,4 +44,16 @@
   * again try with the locally built pg (with extensions) (forwarded request 1269447 from ph03nix)</comment>
     <requestid>1269736</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a93c3f50f88a891949355a5ded284121</srcmd5>
+    <version>1.1.1</version>
+    <time>1745937748</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.1:
+  * v1.1.1
+  * Fix issue where query batch mode outputs were not returning rows to stdout incase of any row error. Closes #4516
+  * github actions: pin (#4509)
+  * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.13.0 to 5.15.0 (#4510) (forwarded request 1273321 from ph03nix)</comment>
+    <requestid>1273416</requestid>
+  </revision>
 </revisionlist>

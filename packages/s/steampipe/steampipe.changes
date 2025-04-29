@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:39:10 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.1.1:
+  * v1.1.1
+  * Fix issue where query batch mode outputs were not returning rows to stdout incase of any row error. Closes #4516
+  * github actions: pin (#4509)
+  * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.13.0 to 5.15.0 (#4510)
+
+-------------------------------------------------------------------
 Tue Apr 15 06:45:52 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.1.0:
