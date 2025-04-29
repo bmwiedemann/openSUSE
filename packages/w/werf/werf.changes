@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:04:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.5:
+  * Bug Fixes
+    - build: print "Error: " prefix on termination error (0d011b8)
+    - build: use ctx for graceful shutdown (be456ca)
+    - deploy: plan shows insignificant changes for no reason
+      (11400e4)
+    - deploy: allow werf.io/sensitive: false for Secrets; update
+      Nelm (c1aaa2a)
+    - host-cleanup: enable warning for the recent problem
+      background run (#6813) (de4cb98)
+    - host-cleanup: fix service host cleanup image cannot be
+      replaced (eb05266)
+    - host-cleanup: parse host cleanup options if cmd uses auto
+      host cleanup (8520d20)
+    - host-cleanup: preserve --tmp-dir and --home-dir options for
+      auto host cleanup (9f6bcbd)
+
+-------------------------------------------------------------------
 Wed Apr 16 18:01:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.4:
