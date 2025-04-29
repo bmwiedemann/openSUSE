@@ -257,4 +257,20 @@ use private glib API but implement a share memory mkstemp</comment>
   is not in the initrd</comment>
     <requestid>1270560</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>080fae79ef7260b93a7523e200d2a34e</srcmd5>
+    <version>2.35</version>
+    <time>1745937584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.35
+  * Make s390 3215 console work that is use EPOLLOUT|EPOLLONESHOT
+    to control if we can write to ttyS0 in nonblocking mode and if
+    not reenable EPOLLOUT|EPOLLONESHOT.
+  * At boot set for ttyS0 via vmcp API nonblocking MORE mode with
+    `0 0'.  It beeps but boots.
+- Remove patches now upstream
+  * blog-3215.patch
+  * blog-install.patch</comment>
+    <requestid>1273161</requestid>
+  </revision>
 </revisionlist>

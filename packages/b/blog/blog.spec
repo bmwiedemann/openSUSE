@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.34
+Version:        2.35
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -26,8 +26,6 @@ Group:          System/Base
 URL:            https://github.com/bitstreamout/showconsole
 Source:         https://github.com/bitstreamout/showconsole/archive/v%{version}.tar.gz#/showconsole-%{version}.tar.gz
 Source1:        blog-rpmlintrc
-Patch0:         blog-install.patch
-Patch1:         blog-3215.patch
 BuildRequires:  bash
 %if 0%{suse_version} >= 1550
 # regenerate_initrd_post moved to rpm-config-SUSE:initrd.macros
@@ -89,8 +87,6 @@ the LSB startproc command.
 
 %prep
 %setup -q -n showconsole-%version
-%patch -P0
-%patch -P1
 for l in rt util pthread
 do
     ln -sf %{_libdir}/lib${l}.so.[0-9] lib${l}.so

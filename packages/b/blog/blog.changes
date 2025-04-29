@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 28 13:42:43 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.35
+  * Make s390 3215 console work that is use EPOLLOUT|EPOLLONESHOT
+    to control if we can write to ttyS0 in nonblocking mode and if
+    not reenable EPOLLOUT|EPOLLONESHOT.
+  * At boot set for ttyS0 via vmcp API nonblocking MORE mode with
+    `0 0'.  It beeps but boots.
+- Remove patches now upstream
+  * blog-3215.patch
+  * blog-install.patch 
+
+-------------------------------------------------------------------
 Thu Apr 17 13:04:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch blog-3215.patch
