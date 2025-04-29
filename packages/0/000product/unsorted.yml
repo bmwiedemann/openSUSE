@@ -13304,6 +13304,7 @@ unsorted:
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
+  - libfuse3-4-32bit 
   - libfusn-devel 
   - libfusn1 
   - libfuturesql5-0 
@@ -15207,17 +15208,9 @@ unsorted:
   - libpcp_mmv1 
   - libpcp_trace2 
   - libpcp_web1 
-  - libpcre1 
-  - libpcre1-32bit 
-  - libpcre16-0 
-  - libpcre16-0-32bit 
   - libpcre2-16-0-32bit 
   - libpcre2-32-0-32bit 
   - libpcre2-posix3-32bit 
-  - libpcrecpp0 
-  - libpcrecpp0-32bit 
-  - libpcreposix0 
-  - libpcreposix0-32bit 
   - libpcsclite1-32bit 
   - libpcscspy0 
   - libpcscspy0-32bit 
@@ -21022,11 +21015,6 @@ unsorted:
   - pcp-system-tools 
   - pcp-testsuite 
   - pcp-zeroconf 
-  - pcre-devel 
-  - pcre-devel-static 
-  - pcre-doc 
-  - pcre-testsuite 
-  - pcre-tools 
   - pcre2-devel 
   - pcre2-devel-static 
   - pcre2-doc 
@@ -24424,6 +24412,7 @@ unsorted:
   - python311-azure-mgmt-dataprotection 
   - python311-azure-mgmt-datashare 
   - python311-azure-mgmt-defendereasm 
+  - python311-azure-mgmt-dependencymap 
   - python311-azure-mgmt-deploymentmanager 
   - python311-azure-mgmt-desktopvirtualization 
   - python311-azure-mgmt-devcenter 
@@ -24493,11 +24482,14 @@ unsorted:
   - python311-azure-mgmt-marketplaceordering 
   - python311-azure-mgmt-media 
   - python311-azure-mgmt-migrationassessment 
+  - python311-azure-mgmt-migrationdiscoverysap 
   - python311-azure-mgmt-mixedreality 
   - python311-azure-mgmt-mobilenetwork 
+  - python311-azure-mgmt-mongocluster 
   - python311-azure-mgmt-monitor 
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-mysqlflexibleservers 
+  - python311-azure-mgmt-neonpostgres 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
   - python311-azure-mgmt-networkanalytics 
@@ -24562,6 +24554,7 @@ unsorted:
   - python311-azure-mgmt-sqlvirtualmachine 
   - python311-azure-mgmt-standbypool 
   - python311-azure-mgmt-storage 
+  - python311-azure-mgmt-storageactions 
   - python311-azure-mgmt-storagecache 
   - python311-azure-mgmt-storageimportexport 
   - python311-azure-mgmt-storagemover 
@@ -24571,9 +24564,11 @@ unsorted:
   - python311-azure-mgmt-subscription 
   - python311-azure-mgmt-support 
   - python311-azure-mgmt-synapse 
+  - python311-azure-mgmt-terraform 
   - python311-azure-mgmt-testbase 
   - python311-azure-mgmt-timeseriesinsights 
   - python311-azure-mgmt-trafficmanager 
+  - python311-azure-mgmt-trustedsigning 
   - python311-azure-mgmt-videoanalyzer 
   - python311-azure-mgmt-vmwarecloudsimple 
   - python311-azure-mgmt-voiceservices 
@@ -24582,6 +24577,7 @@ unsorted:
   - python311-azure-mgmt-weightsandbiases 
   - python311-azure-mgmt-workloadmonitor 
   - python311-azure-mgmt-workloads 
+  - python311-azure-mgmt-workloadssapvirtualinstance 
   - python311-azure-mixedreality-authentication 
   - python311-azure-mixedreality-nspkg 
   - python311-azure-monitor-ingestion 
@@ -24608,6 +24604,7 @@ unsorted:
   - python311-azure-servicefabric 
   - python311-azure-servicemanagement-legacy 
   - python311-azure-storage-blob 
+  - python311-azure-storage-blob-changefeed 
   - python311-azure-storage-common 
   - python311-azure-storage-file 
   - python311-azure-storage-file-datalake 
@@ -28098,6 +28095,7 @@ unsorted:
   - python312-azure-mgmt-dataprotection 
   - python312-azure-mgmt-datashare 
   - python312-azure-mgmt-defendereasm 
+  - python312-azure-mgmt-dependencymap 
   - python312-azure-mgmt-deploymentmanager 
   - python312-azure-mgmt-desktopvirtualization 
   - python312-azure-mgmt-devcenter 
@@ -28167,11 +28165,14 @@ unsorted:
   - python312-azure-mgmt-marketplaceordering 
   - python312-azure-mgmt-media 
   - python312-azure-mgmt-migrationassessment 
+  - python312-azure-mgmt-migrationdiscoverysap 
   - python312-azure-mgmt-mixedreality 
   - python312-azure-mgmt-mobilenetwork 
+  - python312-azure-mgmt-mongocluster 
   - python312-azure-mgmt-monitor 
   - python312-azure-mgmt-msi 
   - python312-azure-mgmt-mysqlflexibleservers 
+  - python312-azure-mgmt-neonpostgres 
   - python312-azure-mgmt-netapp 
   - python312-azure-mgmt-network 
   - python312-azure-mgmt-networkanalytics 
@@ -28236,6 +28237,7 @@ unsorted:
   - python312-azure-mgmt-sqlvirtualmachine 
   - python312-azure-mgmt-standbypool 
   - python312-azure-mgmt-storage 
+  - python312-azure-mgmt-storageactions 
   - python312-azure-mgmt-storagecache 
   - python312-azure-mgmt-storageimportexport 
   - python312-azure-mgmt-storagemover 
@@ -28245,9 +28247,11 @@ unsorted:
   - python312-azure-mgmt-subscription 
   - python312-azure-mgmt-support 
   - python312-azure-mgmt-synapse 
+  - python312-azure-mgmt-terraform 
   - python312-azure-mgmt-testbase 
   - python312-azure-mgmt-timeseriesinsights 
   - python312-azure-mgmt-trafficmanager 
+  - python312-azure-mgmt-trustedsigning 
   - python312-azure-mgmt-videoanalyzer 
   - python312-azure-mgmt-vmwarecloudsimple 
   - python312-azure-mgmt-voiceservices 
@@ -28256,6 +28260,7 @@ unsorted:
   - python312-azure-mgmt-weightsandbiases 
   - python312-azure-mgmt-workloadmonitor 
   - python312-azure-mgmt-workloads 
+  - python312-azure-mgmt-workloadssapvirtualinstance 
   - python312-azure-mixedreality-authentication 
   - python312-azure-mixedreality-nspkg 
   - python312-azure-monitor-ingestion 
@@ -28282,6 +28287,7 @@ unsorted:
   - python312-azure-servicefabric 
   - python312-azure-servicemanagement-legacy 
   - python312-azure-storage-blob 
+  - python312-azure-storage-blob-changefeed 
   - python312-azure-storage-common 
   - python312-azure-storage-file 
   - python312-azure-storage-file-datalake 
@@ -31826,6 +31832,7 @@ unsorted:
   - python313-azure-mgmt-dataprotection 
   - python313-azure-mgmt-datashare 
   - python313-azure-mgmt-defendereasm 
+  - python313-azure-mgmt-dependencymap 
   - python313-azure-mgmt-deploymentmanager 
   - python313-azure-mgmt-desktopvirtualization 
   - python313-azure-mgmt-devcenter 
@@ -31895,11 +31902,14 @@ unsorted:
   - python313-azure-mgmt-marketplaceordering 
   - python313-azure-mgmt-media 
   - python313-azure-mgmt-migrationassessment 
+  - python313-azure-mgmt-migrationdiscoverysap 
   - python313-azure-mgmt-mixedreality 
   - python313-azure-mgmt-mobilenetwork 
+  - python313-azure-mgmt-mongocluster 
   - python313-azure-mgmt-monitor 
   - python313-azure-mgmt-msi 
   - python313-azure-mgmt-mysqlflexibleservers 
+  - python313-azure-mgmt-neonpostgres 
   - python313-azure-mgmt-netapp 
   - python313-azure-mgmt-network 
   - python313-azure-mgmt-networkanalytics 
@@ -31964,6 +31974,7 @@ unsorted:
   - python313-azure-mgmt-sqlvirtualmachine 
   - python313-azure-mgmt-standbypool 
   - python313-azure-mgmt-storage 
+  - python313-azure-mgmt-storageactions 
   - python313-azure-mgmt-storagecache 
   - python313-azure-mgmt-storageimportexport 
   - python313-azure-mgmt-storagemover 
@@ -31973,9 +31984,11 @@ unsorted:
   - python313-azure-mgmt-subscription 
   - python313-azure-mgmt-support 
   - python313-azure-mgmt-synapse 
+  - python313-azure-mgmt-terraform 
   - python313-azure-mgmt-testbase 
   - python313-azure-mgmt-timeseriesinsights 
   - python313-azure-mgmt-trafficmanager 
+  - python313-azure-mgmt-trustedsigning 
   - python313-azure-mgmt-videoanalyzer 
   - python313-azure-mgmt-vmwarecloudsimple 
   - python313-azure-mgmt-voiceservices 
@@ -31984,6 +31997,7 @@ unsorted:
   - python313-azure-mgmt-weightsandbiases 
   - python313-azure-mgmt-workloadmonitor 
   - python313-azure-mgmt-workloads 
+  - python313-azure-mgmt-workloadssapvirtualinstance 
   - python313-azure-mixedreality-authentication 
   - python313-azure-mixedreality-nspkg 
   - python313-azure-monitor-ingestion 
@@ -32010,6 +32024,7 @@ unsorted:
   - python313-azure-servicefabric 
   - python313-azure-servicemanagement-legacy 
   - python313-azure-storage-blob 
+  - python313-azure-storage-blob-changefeed 
   - python313-azure-storage-common 
   - python313-azure-storage-file 
   - python313-azure-storage-file-datalake 
@@ -32472,6 +32487,7 @@ unsorted:
   - python313-dqsegdb 
   - python313-dqsegdb2 
   - python313-dragonmapper 
+  - python313-drf-spectacular 
   - python313-drf-spectacular-sidecar 
   - python313-drgn 
   - python313-drms 
@@ -47849,6 +47865,7 @@ unsorted:
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
   - typelib-1_0-GFBGraph-0_2 
+  - typelib-1_0-GIRepository-3_0 
   - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
   - typelib-1_0-GOffice-0_10 
