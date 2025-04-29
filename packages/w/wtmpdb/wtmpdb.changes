@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 06:53:09 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.74.0+git20250424.2e93e77:
+  * Release version 0.74.0
+  * Fix varlink interface name (rebootmgr vs wtmpdb)
+  * import: match login by tty if non-zero pid does not match
+
+-------------------------------------------------------------------
 Tue Apr 08 13:19:54 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.73.0+git20250408.edb8638:

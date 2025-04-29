@@ -236,4 +236,15 @@
   * hurd: compat for lack of CLOCK_BOOTTIME</comment>
     <requestid>1267915</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8b9b232f268d9ae10d687c458f7b3f86</srcmd5>
+    <version>0.74.0+git20250424.2e93e77</version>
+    <time>1745937575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.74.0+git20250424.2e93e77:
+  * Release version 0.74.0
+  * Fix varlink interface name (rebootmgr vs wtmpdb)
+  * import: match login by tty if non-zero pid does not match</comment>
+    <requestid>1273031</requestid>
+  </revision>
 </revisionlist>
