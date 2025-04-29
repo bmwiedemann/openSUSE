@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:00:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.3:
+  * Bug Fixes
+    - Fix #1599: Auth token scope not correctly added when using
+      --debug or --no-tty with oras push
+    - Fix #1623: Should show KB instead of kB in the progress bar
+  * Other Changes
+    - Minor security enhancements
+    - Update dependencies
+  * Detailed Commits
+    - bump: tag and release ORAS CLI v1.2.2 by @shizhMSFT in #1592
+    - fix: scope action only has pull when get service token in
+      executing cmd org push by @hopegi in #1600
+    - build: upgrade Go version and dependencies to the latest by
+      @Wwwsylvia in #1706
+    - backport(fix): show KB in progress bar instead of kB (#1623)
+      by @Wwwsylvia in #1707
+    - build: use alpine 3.21.3 by @Wwwsylvia in #1708
+
+-------------------------------------------------------------------
 Thu Dec 19 13:57:39 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.2.2:
