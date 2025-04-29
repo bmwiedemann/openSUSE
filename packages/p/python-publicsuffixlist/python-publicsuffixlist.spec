@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-publicsuffixlist
-Version:        1.0.2.20250225
+Version:        1.0.2.20250428
 Release:        0
 Summary:        Public suffix list implementaion in Python
 License:        MPL-2.0

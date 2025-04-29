@@ -375,4 +375,13 @@
   * various toplevel domain updates</comment>
     <requestid>1248484</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>86109f34b66f43340d3723be4217738a</srcmd5>
+    <version>1.0.2.20250428</version>
+    <time>1745937642</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.2.20250428:
+  * various toplevel domain updates</comment>
+    <requestid>1273221</requestid>
+  </revision>
 </revisionlist>
