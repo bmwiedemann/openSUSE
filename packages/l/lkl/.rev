@@ -64,4 +64,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
 - lkl: fix lklfuse.sh umount (forwarded request 1271892 from dmdiss)</comment>
     <requestid>1271893</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9cef55115988d81d44476b5e0aa26ee</srcmd5>
+    <version>0.6.4+git.8cb35d4bbc9</version>
+    <time>1745937682</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273260</requestid>
+  </revision>
 </revisionlist>

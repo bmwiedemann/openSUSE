@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 12:10:39 UTC 2025 - David Disseldorp <ddiss@suse.de>
+
+- Merge opensuse-kernel/SLE15-SP6 78686786c024
+- lkl: pci: Never override IORESOURCE_IO
+- lkl: Fix builds without CONFIG_PCI
+
+-------------------------------------------------------------------
 Tue Apr 22 11:07:46 UTC 2025 - David Disseldorp <ddiss@suse.de>
 
 - Merge opensuse-kernel/SLE15-SP6 8e9e83c36b32
