@@ -1,8 +1,8 @@
 #
 # spec file for package RigelEngine
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,9 @@
 #
 
 
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
 Name:           RigelEngine
 Version:        0.9.1
 Release:        0
@@ -28,15 +31,11 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         RigelEngine-fix-build-with-gcc13.patch
 Patch1:         RigelEngine-fix-build-with-gcc14.patch
 BuildRequires:  cmake >= 3.12
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(sdl2)
-%if 0%{?sle_version} >= 150100 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
-%else
-BuildRequires:  gcc-c++
-%endif
+BuildRequires:  pkgconfig(x11)
 
 %description
 A modern reimplementation of the game Duke Nukem II, originally released in
@@ -49,9 +48,9 @@ available shareware version.
 %autosetup -p1
 
 %build
-%if 0%{?sle_version} >= 150100 && 0%{?is_opensuse}
-export CC="gcc-9"
-export CXX="g++-9"
+%if 0%{?force_gcc_version}
+export CC="gcc-%{force_gcc_version}"
+export CXX="g++-%{force_gcc_version}"
 %endif
 %cmake -DBUILD_TESTS=ON \
  -DBUILD_MODDING_TOOLS=ON \

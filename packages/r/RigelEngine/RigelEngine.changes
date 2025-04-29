@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 21 14:42:54 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add BuildRequires pkgconfig(x11), fixes building
+- Rebase enforcement gcc for Leap
+
+-------------------------------------------------------------------
 Sun Aug 25 16:01:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add patch:
