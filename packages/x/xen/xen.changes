@@ -11,8 +11,10 @@ Thu Mar 13 12:50:00 CET 2025 - jbeulich@suse.com
   67c818d8-x86-Dom0-relax-Interrupt-Address-Range.patch
 - bsc#1237692 - When attempting to start guest vm's libxl fills disk with errors
   67d2a3fe-libxl-avoid-infinite-loop-in-libxl__remove_directory.patch
-- Upstream bug fixes (bsc#1027519)
+- bsc#1241206 - xen fv domU failed to migrate from sle15SP6 host
+  to sle15SP7 host
   67cb03e0-x86-vlapic-ESR-write-handling.patch
+- Upstream bug fixes (bsc#1027519)
   67d17edd-x86-expose-MSR_FAM10H_MMIO_CONF_BASE-on-AMD.patch
   67d17ede-VT-x-PI-usage-of-msi_desc-msg-field.patch
 

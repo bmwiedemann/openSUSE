@@ -3078,4 +3078,12 @@
     <comment>Fixes for bsc#1219354, bsc#1227301, bsc#1237692, and a few other upstream fixes</comment>
     <requestid>1253904</requestid>
   </revision>
+  <revision rev="363" vrev="2">
+    <srcmd5>8c9bb6ec723acf5ed9a93bb1960d6a9b</srcmd5>
+    <version>4.20.0_10</version>
+    <time>1745937611</time>
+    <user>dimstar_suse</user>
+    <comment>Add changelog entry for bug 1241206. No code change.</comment>
+    <requestid>1273188</requestid>
+  </revision>
 </revisionlist>
