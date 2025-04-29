@@ -1,6 +1,7 @@
 #
 # spec file for package python-pytest-recording
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,21 +18,21 @@
 
 
 Name:           python-pytest-recording
-Version:        0.13.2
+Version:        0.13.3
 Release:        0
 Summary:        A pytest plugin that allows you recording of network interactions via VCRpy
 License:        MIT
 URL:            https://github.com/kiwicom/pytest-recording
 Source:         https://github.com/kiwicom/pytest-recording/archive/refs/tags/v%{version}.tar.gz#/pytest-recording-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 3.5.0}
-BuildRequires:  %{python_module vcrpy >= 2.0.1}
-BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module vcrpy >= 2.0.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pytest >= 3.5.0

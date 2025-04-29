@@ -7,4 +7,13 @@
     <comment>Forward the current version of python-pytest-recording to Factory</comment>
     <requestid>1223832</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7a37f85c011b5e28390acd3aac1a83b7</srcmd5>
+    <version>0.13.3</version>
+    <time>1745937645</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.13.3:
+  * Limit generated cassette names to prevent OSError. `#172`_</comment>
+    <requestid>1273215</requestid>
+  </revision>
 </revisionlist>
