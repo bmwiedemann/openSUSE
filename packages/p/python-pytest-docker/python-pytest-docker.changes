@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:38:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.1:
+  * Fix non-existing docker_setup_command into docker_setup
+  * Make the plugin.Services class available at the base module
+    level for easier typing
+- update to 3.2.0:
+  * Add option to ignore stderr when executing commands
+- update to 3.1.2:
+  * Document how to use multiple compose files
+  * docs: Docker compose stack reuse & debug example
+
+-------------------------------------------------------------------
 Thu Aug 29 16:14:15 UTC 2024 - Meera Belur <mbelur@suse.com>
 
-- Initial Package 
+- Initial Package
