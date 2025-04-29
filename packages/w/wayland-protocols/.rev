@@ -403,4 +403,12 @@
   * New version of the cursor shape protocol</comment>
     <requestid>1270805</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>5313e1d82ef1fd8055afc5204ac4c883</srcmd5>
+    <version>1.44</version>
+    <time>1745937576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273038</requestid>
+  </revision>
 </revisionlist>
