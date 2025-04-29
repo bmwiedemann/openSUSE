@@ -1,7 +1,7 @@
 #
 # spec file for package supertux2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,10 +38,8 @@ BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_system-devel
 BuildRequires:  libphysfs-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libpng)
@@ -50,6 +48,11 @@ BuildRequires:  pkgconfig(raqm)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  pkgconfig(glew)
+%else
+BuildRequires:  glbinding-devel
+%endif
 
 %description
 SuperTux is a classic 2D jump'n run sidescroller game in a similar
@@ -66,19 +69,24 @@ sed -i 's|^\(Icon=\).*$|\1%{name}|' %{name}.desktop.in
 
 %build
 # Since there are .so files involved, we need stronger than PIE: PIC.
-export CFLAGS="%optflags -fPIC" CXXFLAGS="$CFLAGS"
+export CFLAGS="%{optflags} -fPIC" CXXFLAGS="$CFLAGS"
 %cmake \
   -DINSTALL_SUBDIR_BIN="$(realpath --relative-to=%{_prefix} %{_bindir})"            \
   -DINSTALL_SUBDIR_SHARE="$(realpath --relative-to=%{_prefix} %{_datadir})/%{name}" \
   -DINSTALL_SUBDIR_DOC="$(realpath --relative-to=%{_prefix} %{_docdir})/%{name}" \
+%if 0%{?sle_version} >= 150600 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
   -DENABLE_BOOST_STATIC_LIBS=OFF
-%make_build
+%else
+  -DENABLE_BOOST_STATIC_LIBS=OFF \
+  -DGLBINDING_ENABLED=ON
+%endif
+
+%cmake_build
 
 %install
 %cmake_install
 rm -f %{buildroot}%{_docdir}/%{name}/INSTALL.md
 rm -f %{buildroot}%{_docdir}/%{name}/LICENSE.txt
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}/%{_prefix}
 
 %files

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 28 17:34:34 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use BuildRequires pkgconfig(glew) for Leap because Leap does not
+  have glbinding-devel
+
+-------------------------------------------------------------------
+Mon Apr 14 18:19:49 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) in favour of
+  glbinding-devel.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Thu May 12 13:06:54 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add supertux2-gcc12.patch: Fix build with gcc12.
