@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 29 05:56:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.11:
+  * bump apko (#1948)
+  * Fixed command melange completion panicking by adding error
+    handling (#1933)
+
+-------------------------------------------------------------------
 Fri Apr 25 06:24:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.10:
