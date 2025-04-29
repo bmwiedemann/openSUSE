@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Apr 29 05:57:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.21.0:
+  * Features
+    - datastore: add index on manifests id field (60371d6)
+    - decouple npdm from pdm migrations (8e28d8f)
+    - registry: require auth for v1 statistics API endpoint
+      (5b4f3f9)
+    - wrap query row context calls during DLB (719f05f)
+  * Build
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.14 (8d2c201)
+    - deps: update module
+      github.com/azure/azure-sdk-for-go/sdk/storage/azblob to
+      v1.6.1 (da51247)
+    - deps: update module
+      github.com/testcontainers/testcontainers-go to v0.36.0
+      (8d49261)
+    - deps: update module gitlab.com/gitlab-org/api/client-go to
+      v0.128.0 (cba984d)
+
+-------------------------------------------------------------------
 Fri Apr 18 05:45:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.20.0:
