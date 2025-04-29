@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- zypper clean also the system repository from the container
+
+-------------------------------------------------------------------
 Wed Mar 26 16:58:55 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - remove duplicated buildtag
