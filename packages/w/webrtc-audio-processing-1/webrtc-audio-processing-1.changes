@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 25 15:20:31 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add webrtc-audio-processing-1.3-gcc15.patch to fix gcc-15
+  compile time errors
+
+-------------------------------------------------------------------
 Tue Feb  4 11:25:16 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix package name in spec file to include the -1

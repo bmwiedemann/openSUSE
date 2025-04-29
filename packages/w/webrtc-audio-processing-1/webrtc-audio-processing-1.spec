@@ -37,6 +37,7 @@ Patch1:         big_endian_support.patch
 # PATCH-FIX-UPSTREAN big_endian_support.patch https://bugs.freedesktop.org/show_bug.cgi?id=95738
 Patch2:         big_endian_support_2.patch
 Patch3:         fix-i586.patch
+Patch4:         webrtc-audio-processing-1.3-gcc15.patch
 # PATCH-FIX-OPENSUSE webrtc-(ppc64|s390x|aarch64).patch
 Patch100:       webrtc-ppc64.patch
 Patch101:       webrtc-s390x.patch
@@ -137,6 +138,7 @@ sed -i 's/\r$//' AUTHORS
 #%%patch -P 1 -p1
 #%%patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 %patch -P 100 -p1
 %patch -P 101 -p1
 %patch -P 102 -p1
