@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Apr 29 05:56:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.21:
+  * What's new in this release 🎉
+    This is a smaller service release focusing on fixing reported
+    bugs and further stability improvements and memory usage
+    improvements.
+    It also comes with
+    - A new login flow + UI
+    - Better checking and prompting if tailscale isn't installed or
+      can't be found through a users PATH
+    - Single instance mode, we'll now detect and enforce a single
+      instance of Tail Tray
+    - Translation updates and additions where translations where
+      missing for DE, FR and SE
+  * Commits
+    - fabfe68: When waiting for login, show cancel dialog #62 (#68)
+      (Marcus Grenängen) #68
+    - 07f5cd7: Warn if Tailscale isn't installed #66 (#69) (Marcus
+      Grenängen) #69
+    - 6969c62: [Fix] - Unknown CMake command "qt_add_executable"
+      when trying to build on Arch Linux #70 (Marcus Grenängen)
+    - 453ad33: Repeated prompts to set myself as operator #67
+      (Marcus Grenängen)
+    - 9d5f76b: Enforce single application instance #71 (Marcus
+      Grenängen)
+    - d9be255: [Feature] - Better please wait dlg (#72) (Marcus
+      Grenängen) #72
+    - 04156c2: Minor optimization and alignment + correctness
+      (Marcus Grenängen)
+    - 8edadc8: Translation updates and additions (Marcus Grenängen)
+    - 5bf5ad3: Bump version to 0.2.21 (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Thu Apr 24 10:11:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.20:
