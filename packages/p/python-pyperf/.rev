@@ -122,4 +122,18 @@
     <comment></comment>
     <requestid>1242788</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>32314ce95a7000c77f3058fe6f34f84a</srcmd5>
+    <version>2.9.0</version>
+    <time>1745937632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.9.0:
+  * Feature: A new hook, perf_record, is available to turn Linux
+    perf profiling on and off around the benchmark code. To use
+    it, pass --hook perf_record. Patch by Matt Page.
+  * Feature: pyperf will now warn if you are collecting too few
+    or too many samples for stable results. Patch by Michael
+    Droettboom</comment>
+    <requestid>1273206</requestid>
+  </revision>
 </revisionlist>
