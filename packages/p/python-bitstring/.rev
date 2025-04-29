@@ -57,4 +57,41 @@
   * More work for LSB0 mode, but still not finished or documented (sorry).</comment>
     <requestid>946638</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>37276463a90aa3ebb2d0f996fcec2842</srcmd5>
+    <version>4.3.1</version>
+    <time>1745937713</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Requires, it's python-bitarray.
+
+- Update to 4.3.1:
+  * Updated bitarray dependency to allow for v3.x.
+- Update to 4.3.0:
+  * Upgraded bitarray dependency to &gt;= 3.0.0.
+  * Explicit support for Python 3.13.
+  * Added i and I struct codes for 32-bit ints. Bug #340.
+  * Removed the 'experimental feature' label from the new exotic floating point
+    types.
+  * Fix for negative index LSB0 slicing issue. Bug #343.
+- Update to 4.2.3:
+  * Some codes representing exotic float negative zero converted to positive
+    zero. Bug #333.
+  * Auto-scaling rounding the wrong way on occasion. Bug #334.
+- Update to 4.2.2: 
+  * Sometimes a ValueError was being raised instead of a ReadError. Bug #325.
+  * Initialising a bitstring from None now raises a TypeError rather than
+    generating an empty bitstring. Bug #323.
+  * Fixed performance regression for find/findall in some situations. Bug #326.
+  * Fix for AttributeError bug when combining Bits with BitStream. Bug #329.
+- Update to 4.2.1:
+  * Module crashes on import with 32-bit Python. Bug #317.
+  * Lists of integers not converted to bytes when using the bytes constructor.
+    Bug #318.
+  * Empty comma separated tokens not handled correctly. Bug #319.
+  * Crash on import when docstrings not present due to optimize flag. Bug #321.
+- Update to 4.2.0:
+  * Dropped support for Python 3.7. Minimum version is now 3.8.
+  * For tokens that use a non-numeric length, a ':' is now compulsory rather</comment>
+    <requestid>1273301</requestid>
+  </revision>
 </revisionlist>

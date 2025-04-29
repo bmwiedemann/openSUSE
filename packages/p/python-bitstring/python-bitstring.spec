@@ -1,7 +1,7 @@
 #
 # spec file for package python-bitstring
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bitstring
-Version:        3.1.9
+Version:        4.3.1
 Release:        0
 Summary:        Python module for the construction, analysis and modification of binary data
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/scott-griffiths/bitstring
 Source:         https://github.com/scott-griffiths/bitstring/archive/bitstring-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-bitarray >= 3.0
+BuildRequires:  %{python_module bitarray >= 3.0}
+BuildRequires:  %{python_module gfloat}
+BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,24 +48,23 @@ They can also be read from, searched and replaced, and navigated in,
 similar to a file or stream.
 
 %prep
-%setup -q -n bitstring-bitstring-%{version}
-dos2unix README.rst
-sed -i '1{\@^#!%{_bindir}/env python@d}' bitstring.py
+%autosetup -p1 -n bitstring-bitstring-%{version}
+sed -i '1{\@^#!%{_bindir}/env python@d}' bitstring/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cd test
 %pytest
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
-%{python_sitelib}/*
+%doc README.md
+%{python_sitelib}/bitstring
+%{python_sitelib}/bitstring-4.3.1.dist-info
 
 %changelog

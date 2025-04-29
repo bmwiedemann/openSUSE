@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:17:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Requires, it's python-bitarray.
+
+-------------------------------------------------------------------
+Mon Apr 28 13:01:32 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 4.3.1:
+  * Updated bitarray dependency to allow for v3.x.
+
+- Update to 4.3.0:
+  * Upgraded bitarray dependency to >= 3.0.0.
+  * Explicit support for Python 3.13.
+  * Added i and I struct codes for 32-bit ints. Bug #340.
+  * Removed the 'experimental feature' label from the new exotic floating point
+    types.
+  * Fix for negative index LSB0 slicing issue. Bug #343.
+
+- Update to 4.2.3:
+  * Some codes representing exotic float negative zero converted to positive
+    zero. Bug #333.
+  * Auto-scaling rounding the wrong way on occasion. Bug #334.
+
+- Update to 4.2.2: 
+  * Sometimes a ValueError was being raised instead of a ReadError. Bug #325.
+  * Initialising a bitstring from None now raises a TypeError rather than
+    generating an empty bitstring. Bug #323.
+  * Fixed performance regression for find/findall in some situations. Bug #326.
+  * Fix for AttributeError bug when combining Bits with BitStream. Bug #329.
+
+- Update to 4.2.1:
+  * Module crashes on import with 32-bit Python. Bug #317.
+  * Lists of integers not converted to bytes when using the bytes constructor.
+    Bug #318.
+  * Empty comma separated tokens not handled correctly. Bug #319.
+  * Crash on import when docstrings not present due to optimize flag. Bug #321.
+
+- Update to 4.2.0:
+  * Dropped support for Python 3.7. Minimum version is now 3.8.
+  * For tokens that use a non-numeric length, a ':' is now compulsory rather
+    than recommended. For example use 'uint:foo' instead of 'uintfoo'.
+  * The previous e4m3float and e5m2float formats have become the slightly
+    modified p4binary8 and p3binary8 formats.
+  * Some parameters are now enforced as positional only, such as auto in
+    constructors.
+  * The Array class is no longer 'beta'.
+  * A new Dtype class can be optionally used to specify types.
+  * The bitstring.options object is now the preferred method for changing
+    module options.
+    The bitstring.lsb0 and bitstring.bytealigned variables are now deprecated,
+    use bitstring.options.lsb0 and bitstring.options.bytealigned instead.
+  * New fromstring method as another way to create bitstrings from formatted
+    strings.
+    Instead of relying on the auto parameter you can now optionally use fromstring.
+  * More types can now be pretty printed. For example integer and float formats
+    can be used.
+  * Pretty printing is now prettier - optional terminal colours added.
+  * A range of 8-bit, 6-bit and even 4-bit float formats added (beta).
+  * Performance improvements.
+
+- Update to 4.1.4:
+  * 'bytes' token can't be used without explicit length. Bug #303.
+
+- Update to 4.1.3:
+  * Removed a couple of files that accidentally got included in the previous
+    release. Bug #293.
+  * The 8-bit float formats have been renamed e4m3float and e5m2float.
+  * Some refactoring and performance optimizations.
+
+- Update to 4.1.2:
+  * Fix for the module command-line usage. Bug #290.
+  * Fix for when creating bitstrings from memoryview objects.
+  * Renamed the fmt parameter for Arrays to dtype.
+  * More Array operator coverage.
+  * Added operators that act on two Arrays of the same size.
+  * Added comparison operators for Arrays that return an Array of bools.
+  * Added Array.equals method as == will now return an Array (see above item).
+  * Added astype() method for Arrays to easily cast to a new dtype.
+
+- Update to 4.1.1:
+  * bitarray dependency now pinned to ">=2.8.0, <3.0.0" rather than a specific
+    version. Bug #283.
+  * Fix for using numpy integers as integer parameters. Bug #286.
+  * Removed ability to extend an Array with the + operator. Use the extend
+    method instead.
+  * Improvements when pretty-printing the Array.
+  * Array.count() can now count float('nan') values for floating point types.
+
+- Update to 4.1.0:
+  * Speed increased with bitarray dependency
+  * New Array class for homogeneous data
+  * Added two new floating point interpretations: float8_143 and float8_152
+  * Auto initialization from ints has been removed and now raises a TypeError.
+    Creating a bitstring from an int still creates a zeroed bitstring of that
+    length but ints won't be promoted to bitstrings as that has been a constant
+    source of errors and confusion.
+  * Explicitly specifying the auto parameter is now disallowed rather than
+    discouraged.
+  * Deleting, replacing or inserting into a bitstring resets the bit position
+    to 0 if the bitstring's length has been changed. Previously the bit position
+    was adjusted but this was not well-defined
+  * Only empty bitstring are now considered false in a boolean sense.
+  * Casting to bytes now behaves as expected, so that bytes(s) gives the same
+    result as s.tobytes(). Previously it created a byte per bit.
+  * Pretty printing with the 'bytes' format now uses characters from the 
+    'Latin Extended-A' unicode block for non-ASCII and unprintable characters
+    instead of replacing them with '.'
+  * When using struct-like codes you can now use '=' instead of '@' to signify
+    native- endianness. They behave identically, but the new '=' is now preferred.
+  * More fixes for LSB0 mode.
+
+- Update to 4.0.2:  
+  * Added py.typed file and converted the module to a package to let mypy
+    find type annotations. Bug 248.
+  * Fix to shifting operations when using LSB0 mode. Bug 251.
+  * A few more fixes for LSB0 mode.
+  * Improved LSB0 documentation.
+  * Added build-system section to pyproject.toml. Bug 243.
+  * Rewrote the walkthrough documentation as a jupyter notebook.
+  * Updated the project's logo.
+
+- Update to 4.0:
+  * Minimum supported Python version is now Python 3.7.
+  * Removed ConstBitArray and BitString class aliases. Use Bits and BitStream
+    instead.
+  * The cut() method will now also yield the final bits of a bitstring, even if
+    they are shorter than the requested cut size.
+  * Removed default uint interpretation. This wasn't being applied uniformly
+    the default is now always to return a bitstring object of the given length
+    and not to interpret it as a uint. Bug 220.
+  * If an overwrite goes beyond the end of the bitstring it will now extend the
+    bitstring rather than raise an exception. Bug 148.
+  * Type hints added throughout the code.
+  * Underscores are now allowed in strings representing number literals.
+  * The copy() method now works on Bits as well as BitArray objects.
+  * The experimental command-line feature is now official.
+  * New pp() method that pretty-prints the bitstring in various formats - useful
+    especially in interactive sessions.
+  * Shorter and more versatile properties. The bin, oct, hex, float, uint and
+    int properties can now be shortened to just their first letter. They can
+    also have a length in bits after them - allowing Rust-like data types.
+  * A colon is no longer required in format strings before a bit length.
+  * Support for IEEE 16 bit floats. Floating point types can now be 16 bits
+    long as well as 32 and 64 bits.
+  * Support for bfloats. This is a specialised 16-bit floating point format
+    mostly used in machine learning.
+
+-------------------------------------------------------------------
 Sat Jan 15 15:22:21 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.9:
