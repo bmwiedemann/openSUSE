@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:42:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.1:
+  * Close socket on loop.sock_connect(...) error by @aaugustin
+
+-------------------------------------------------------------------
 Mon Oct 28 17:01:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.3:

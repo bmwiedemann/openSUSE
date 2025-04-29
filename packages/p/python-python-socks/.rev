@@ -97,4 +97,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1221061</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>107e2d64b2484fe317af3a0c5c989a64</srcmd5>
+    <version>2.7.1</version>
+    <time>1745937636</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.7.1:
+  * Close socket on loop.sock_connect(...) error by @aaugustin</comment>
+    <requestid>1273210</requestid>
+  </revision>
 </revisionlist>
