@@ -107,4 +107,15 @@
     <comment></comment>
     <requestid>1269820</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1d10a8e2f181593ef226b6588878df0c</srcmd5>
+    <version>0.99.35</version>
+    <time>1745937770</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.99.35:
+  * Fixed libxml2 2.14.2 compatibility
+  * sane-airscan(5) man page tweaked a bit
+  * Added SANE_AIRSCAN_DEVICE environment variable (forwarded request 1273429 from rrahl0)</comment>
+    <requestid>1273430</requestid>
+  </revision>
 </revisionlist>

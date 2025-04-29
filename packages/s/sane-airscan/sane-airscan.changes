@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:41:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.99.35:
+  * Fixed libxml2 2.14.2 compatibility
+  * sane-airscan(5) man page tweaked a bit
+  * Added SANE_AIRSCAN_DEVICE environment variable
+
+-------------------------------------------------------------------
 Wed Apr 16 07:33:13 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.99.34:
