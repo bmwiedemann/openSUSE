@@ -34,9 +34,9 @@ BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
-BuildRequires:  fuse-devel
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
+BuildRequires:  pkgconfig(fuse3)
 %if 0%{?suse_version} >= 1140
 BuildRequires:  dejavu-fonts
 BuildRequires:  gnu-unifont
@@ -466,6 +466,11 @@ Patch292:       0007-util-grub-protect-Support-NV-index-mode.patch
 Patch293:       grub2-string-initializer.patch
 Patch294:       0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
 Patch295:       0001-blscfg-read-fragments-in-order.patch
+Patch296:       grub2-bls-boot-counting.patch
+Patch297:       grub2-bls-boot-assessment.patch
+Patch298:       grub2-bls-boot-show-snapshot.patch
+Patch299:       grub2-blscfg-fix-hang.patch
+Patch300:       grub2-blscfg-set-efivars.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -853,7 +858,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg blsbumpcounter"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -959,7 +964,7 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     %{?sbat_generation:--sbat sbat.csv} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg linux bli regexp loadenv test echo true sleep
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blscfg blsbumpcounter linux bli regexp loadenv test echo true sleep
 %endif
 
 %ifarch x86_64 aarch64

@@ -1,0 +1,20 @@
+Grub2 was hanging due to a infinite loop on incorrect entries.
+
+Entries that contained the string ".conf" but did not end with it
+were causing the loop to never exit. Move dotconf pointer up
+if it doesn't trigger the loop exit condition so that
+grub_strstr can return a NULL pointer at some point.
+
+Index: grub-2.12/grub-core/commands/blscfg.c
+===================================================================
+--- grub-2.12.orig/grub-core/commands/blscfg.c
++++ grub-2.12/grub-core/commands/blscfg.c
+@@ -850,7 +850,7 @@ static void create_entry (struct bls_ent
+   do
+     {
+       dotconf = grub_strstr(dotconf, ".conf");
+-    } while (dotconf != NULL && dotconf[5] != '\0');
++    } while (dotconf != NULL && dotconf[5] != '\0' && *(++dotconf));
+   if (dotconf)
+     dotconf[0] = '\0';
+ 

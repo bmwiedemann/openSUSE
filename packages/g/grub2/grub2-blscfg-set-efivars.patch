@@ -1,0 +1,101 @@
+Set the EFI variables LoaderEntries and LoaderEntrySelected to
+follow systemd-boot implementation and make bootctl work.
+
+Index: grub-2.12/grub-core/commands/blscfg.c
+===================================================================
+--- grub-2.12.orig/grub-core/commands/blscfg.c
++++ grub-2.12/grub-core/commands/blscfg.c
+@@ -47,6 +47,14 @@ GRUB_MOD_LICENSE ("GPLv3+");
+ #define GRUB_BOOT_DEVICE "($root)"
+ #endif
+ 
++#ifdef GRUB_MACHINE_EFI
++#include <grub/efi/efi.h>
++#define GRUB_EFI_LOADER_GUID \
++        { 0x4a67b082, 0x0a4c, 0x41cf, { 0xb6, 0xc7, 0x44, 0x0b, 0x29, 0xbb, 0x8c, 0x4f } }
++
++static grub_guid_t grub_efi_loader_guid = GRUB_EFI_LOADER_GUID;
++#endif
++
+ struct keyval
+ {
+   const char *key;
+@@ -1223,6 +1231,12 @@ bls_create_entries (bool show_default, b
+   const char *def_entry = NULL;
+   struct bls_entry *entry = NULL;
+   int idx = 0;
++#ifdef GRUB_MACHINE_EFI
++  int size = 0;
++  grub_efi_char16_t *efi_entries = NULL;
++  grub_efi_char16_t *p = NULL;
++  char* tmp = NULL;
++#endif
+ 
+   def_entry = grub_env_get("default");
+ 
+@@ -1238,10 +1252,38 @@ bls_create_entries (bool show_default, b
+ 	(entry_id && grub_strcmp(entry_id, entry->filename) == 0)) {
+       create_entry(entry);
+       entry->visible = 1;
++#ifdef GRUB_MACHINE_EFI
++      size += grub_strlen(entry->filename) + 1;
++#endif
+     }
+     idx++;
+   }
+ 
++#ifdef GRUB_MACHINE_EFI
++  efi_entries = grub_malloc(size * sizeof(grub_efi_char16_t));
++  if (efi_entries == NULL) {
++    return grub_error (GRUB_ERR_OUT_OF_MEMORY,
++		       "couldn't find space for LoaderEntries efi variable");
++  }
++  p = efi_entries;
++  FOR_BLS_ENTRIES(entry) {
++    if (entry->visible) {
++      tmp = entry->filename;
++      while (*tmp) {
++        *p++ = (grub_efi_char16_t) *tmp++;
++      }
++      *p++ = (grub_efi_char16_t) '\0';
++    }
++  }
++  if (efi_entries + size + 1 == p) {
++      return grub_error(GRUB_ERR_BAD_NUMBER, "efi entries value is not correct");
++  }
++  grub_efi_set_variable_with_attributes("LoaderEntries", &grub_efi_loader_guid,
++					      efi_entries, size * sizeof(grub_efi_char16_t),
++					      GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS |
++					      GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
++#endif
++
+   return GRUB_ERR_NONE;
+ }
+ 
+Index: grub-2.12/grub-core/commands/efi/blsbumpcounter.c
+===================================================================
+--- grub-2.12.orig/grub-core/commands/efi/blsbumpcounter.c
++++ grub-2.12/grub-core/commands/efi/blsbumpcounter.c
+@@ -60,8 +60,14 @@ grub_cmd_bumpcounters (grub_extcmd_conte
+ 
+   /* Look for the start of the count
+      If no '+' symbol has been found, the boot counting isn't enabled for the selected entry */
++  char* new_path = grub_xasprintf ("%s.conf", id);
++  grub_efi_set_variable_to_string("LoaderEntrySelected", &grub_efi_loader_guid, new_path,
++					      GRUB_EFI_VARIABLE_BOOTSERVICE_ACCESS |
++					      GRUB_EFI_VARIABLE_RUNTIME_ACCESS);
++  grub_free(new_path);
+   if (grub_strrchr(id, '+') == NULL) {
+     grub_dprintf("bls_bumpcounter", "boot counting is not in effect for id %s\n", id);
++
+     return GRUB_ERR_NONE;
+   }
+ 
+@@ -183,7 +189,6 @@ grub_cmd_bumpcounters (grub_extcmd_conte
+       goto finish;
+   }
+ 
+-  char *new_path;
+   if (tries == -1) {
+     /* This is the first try, rename accordingly */
+     new_path = grub_xasprintf ("%s+%d-1.conf", id, tries_left);

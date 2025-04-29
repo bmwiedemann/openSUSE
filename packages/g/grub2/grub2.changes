@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Apr 25 17:44:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- grub2-common: use fuse3
+
+-------------------------------------------------------------------
+Wed Apr 23 09:50:10 UTC 2025 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add support for boot assessment, needed by health-checker
+  * grub2-bls-boot-counting.patch
+  * grub2-bls-boot-assessment.patch
+  * grub2-bls-boot-show-snapshot.patch
+  * grub2-blscfg-fix-hang.patch
+  * grub2-blscfg-set-efivars.patch
+
+-------------------------------------------------------------------
 Wed Apr 23 09:25:57 UTC 2025 - Michael Chang <mchang@suse.com>
 
 - Fix reading bls fragments in file-system dependent order that is not

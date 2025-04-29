@@ -1,0 +1,31 @@
+Index: grub-2.12/grub-core/commands/blscfg.c
+===================================================================
+--- grub-2.12.orig/grub-core/commands/blscfg.c
++++ grub-2.12/grub-core/commands/blscfg.c
+@@ -810,6 +810,7 @@ static void create_entry (struct bls_ent
+   const char **argv = NULL;
+ 
+   char *title = NULL;
++  char *version = NULL;
+   char *clinux = NULL;
+   char *options = NULL;
+   char **initrds = NULL;
+@@ -853,7 +854,9 @@ static void create_entry (struct bls_ent
+   if (dotconf)
+     dotconf[0] = '\0';
+ 
+-  title = bls_get_val (entry, "title", NULL);
++  title = grub_strdup(bls_get_val (entry, "title", NULL));
++  version = bls_get_val (entry, "version", NULL);
++  title = version ? grub_xasprintf("%s (%s)", title, version) : title;
+   options = expand_val (bls_get_val (entry, "options", NULL));
+ 
+   if (!options)
+@@ -1040,6 +1043,7 @@ finish:
+   grub_free (devicetree);
+   grub_free (initrds);
+   grub_free (options);
++  grub_free (title);
+   grub_free (classes);
+   grub_free (args);
+   grub_free (argv);
