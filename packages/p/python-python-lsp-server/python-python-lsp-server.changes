@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:35:30 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.2:
+  * PR 608 - Fix putting `extra_paths` in front of `sys.path`
+
+-------------------------------------------------------------------
 Sun Feb  9 14:02:20 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.12.1

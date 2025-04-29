@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-lsp-server
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT

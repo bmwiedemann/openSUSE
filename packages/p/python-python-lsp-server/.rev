@@ -397,4 +397,13 @@
 </comment>
     <requestid>1244499</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>38a1d1393cadc696169325d36884e11c</srcmd5>
+    <version>1.12.2</version>
+    <time>1745937611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.12.2:
+  * PR 608 - Fix putting `extra_paths` in front of `sys.path`</comment>
+    <requestid>1273177</requestid>
+  </revision>
 </revisionlist>
