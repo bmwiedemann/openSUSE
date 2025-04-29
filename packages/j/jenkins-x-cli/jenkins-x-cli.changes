@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:05:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.81:
+  * chore(deps): bump sigstore/cosign-installer from 3.8.1 to 3.8.2
+
+-------------------------------------------------------------------
+Tue Apr 29 08:03:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.80:
+  * chore(deps): bump anchore/sbom-action from 0.18.0 to 0.19.0
+
+-------------------------------------------------------------------
+Tue Apr 29 08:01:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.79:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    0.26.0
+
+-------------------------------------------------------------------
 Fri Apr 18 05:38:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.78:
