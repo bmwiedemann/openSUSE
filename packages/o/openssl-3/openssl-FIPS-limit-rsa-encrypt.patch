@@ -1,7 +1,7 @@
-From 012e319b3d5b936a9208b1c75c13d9c4a2d0cc04 Mon Sep 17 00:00:00 2001
+From 3b0b89e7b30425add1889c0ed6c6b45e8d0ea744 Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
 Date: Wed, 6 Mar 2024 19:17:15 +0100
-Subject: [PATCH 24/49] 0058-FIPS-limit-rsa-encrypt.patch
+Subject: [PATCH 26/53] FIPS: RSA: encrypt limits - REVIEW
 
 Patch-name: 0058-FIPS-limit-rsa-encrypt.patch
 Patch-id: 58
@@ -10,56 +10,50 @@ Patch-status: |
 From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
  providers/common/securitycheck.c              |   1 +
- .../implementations/asymciphers/rsa_enc.c     |  35 +++++
- .../30-test_evp_data/evppkey_rsa_common.txt   | 140 +++++++++++++-----
+ .../fips/include/fips_indicator_params.inc    |   2 +-
+ .../implementations/asymciphers/rsa_enc.c     |  26 ++++
+ .../30-test_evp_data/evppkey_rsa_common.txt   | 146 +++++++++++++-----
  test/recipes/80-test_cms.t                    |   5 +-
  test/recipes/80-test_ssl_old.t                |  27 +++-
- 5 files changed, 168 insertions(+), 40 deletions(-)
+ 6 files changed, 164 insertions(+), 43 deletions(-)
+ mode change 100644 => 100755 test/recipes/80-test_ssl_old.t
 
-Index: openssl-3.2.3/providers/common/securitycheck.c
+Index: openssl-3.5.0-beta1/providers/common/securitycheck.c
 ===================================================================
---- openssl-3.2.3.orig/providers/common/securitycheck.c
-+++ openssl-3.2.3/providers/common/securitycheck.c
-@@ -27,6 +27,10 @@
+--- openssl-3.5.0-beta1.orig/providers/common/securitycheck.c
++++ openssl-3.5.0-beta1/providers/common/securitycheck.c
+@@ -64,6 +64,7 @@ int ossl_rsa_key_op_get_protect(const RS
   * Set protect = 1 for encryption or signing operations, or 0 otherwise. See
   * https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf.
   */
-+/*
-+ * SUSE/openSUSE builds implement some extra limitations in
-+ * providers/implementations/asymciphers/rsa_enc.c
-+ */
- int ossl_rsa_check_key(OSSL_LIB_CTX *ctx, const RSA *rsa, int operation)
++/* openSUSE/SUSE build implements some extra limitations in providers/implementations/asymciphers/rsa_enc.c */
+ int ossl_rsa_check_key_size(const RSA *rsa, int protect)
  {
-     int protect = 0;
-Index: openssl-3.2.3/providers/implementations/asymciphers/rsa_enc.c
+     int sz = RSA_bits(rsa);
+Index: openssl-3.5.0-beta1/providers/fips/include/fips_indicator_params.inc
 ===================================================================
---- openssl-3.2.3.orig/providers/implementations/asymciphers/rsa_enc.c
-+++ openssl-3.2.3/providers/implementations/asymciphers/rsa_enc.c
-@@ -135,6 +135,17 @@ static int rsa_decrypt_init(void *vprsac
-     return rsa_init(vprsactx, vrsa, params, EVP_PKEY_OP_DECRYPT);
- }
+--- openssl-3.5.0-beta1.orig/providers/fips/include/fips_indicator_params.inc
++++ openssl-3.5.0-beta1/providers/fips/include/fips_indicator_params.inc
+@@ -13,7 +13,7 @@ OSSL_FIPS_PARAM(sskdf_digest_check, SSKD
+ OSSL_FIPS_PARAM(x963kdf_digest_check, X963KDF_DIGEST_CHECK, 0)
+ OSSL_FIPS_PARAM(dsa_sign_disallowed, DSA_SIGN_DISABLED, 0)
+ OSSL_FIPS_PARAM(tdes_encrypt_disallowed, TDES_ENCRYPT_DISABLED, 0)
+-OSSL_FIPS_PARAM(rsa_pkcs15_padding_disabled, RSA_PKCS15_PAD_DISABLED, 0)
++OSSL_FIPS_PARAM(rsa_pkcs15_padding_disabled, RSA_PKCS15_PAD_DISABLED, 1)
+ OSSL_FIPS_PARAM(rsa_pss_saltlen_check, RSA_PSS_SALTLEN_CHECK, 0)
+ OSSL_FIPS_PARAM(rsa_sign_x931_disallowed, RSA_SIGN_X931_PAD_DISABLED, 0)
+ OSSL_FIPS_PARAM(hkdf_key_check, HKDF_KEY_CHECK, 0)
+Index: openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/asymciphers/rsa_enc.c
++++ openssl-3.5.0-beta1/providers/implementations/asymciphers/rsa_enc.c
+@@ -168,6 +168,18 @@ static int rsa_encrypt(void *vprsactx, u
+     }
+ #endif
  
 +# ifdef FIPS_MODULE
-+static int fips_padding_allowed(const PROV_RSA_CTX *prsactx)
-+{
-+    if (prsactx->pad_mode == RSA_PKCS1_PADDING || prsactx->pad_mode == RSA_NO_PADDING
-+        || prsactx->pad_mode == RSA_PKCS1_WITH_TLS_PADDING)
-+        return 0;
-+
-+    return 1;
-+}
-+# endif
-+
- static int rsa_encrypt(void *vprsactx, unsigned char *out, size_t *outlen,
-                        size_t outsize, const unsigned char *in, size_t inlen)
- {
-@@ -144,6 +155,18 @@ static int rsa_encrypt(void *vprsactx, u
-     if (!ossl_prov_is_running())
-         return 0;
- 
-+# ifdef FIPS_MODULE
-+    if (fips_padding_allowed(prsactx) == 0) {
-+        ERR_raise(ERR_LIB_PROV, PROV_R_ILLEGAL_OR_UNSUPPORTED_PADDING_MODE);
++    if (prsactx->pad_mode == RSA_NO_PADDING) {
++        ERR_raise(ERR_LIB_PROV, PROV_R_INVALID_PADDING_MODE);
 +        return 0;
 +    }
 +
@@ -72,13 +66,15 @@ Index: openssl-3.2.3/providers/implementations/asymciphers/rsa_enc.c
      if (out == NULL) {
          size_t len = RSA_size(prsactx->rsa);
  
-@@ -206,6 +229,18 @@ static int rsa_decrypt(void *vprsactx, u
+@@ -230,6 +242,20 @@ static int rsa_decrypt(void *vprsactx, u
      if (!ossl_prov_is_running())
          return 0;
  
 +# ifdef FIPS_MODULE
-+    if (fips_padding_allowed(prsactx) == 0) {
-+        ERR_raise(ERR_LIB_PROV, PROV_R_ILLEGAL_OR_UNSUPPORTED_PADDING_MODE);
++    if ((prsactx->pad_mode == RSA_PKCS1_PADDING
++         || prsactx->pad_mode == RSA_PKCS1_WITH_TLS_PADDING
++         || prsactx->pad_mode == RSA_NO_PADDING)) {
++        ERR_raise(ERR_LIB_PROV, PROV_R_INVALID_PADDING_MODE);
 +        return 0;
 +    }
 +
@@ -91,11 +87,11 @@ Index: openssl-3.2.3/providers/implementations/asymciphers/rsa_enc.c
      if (prsactx->pad_mode == RSA_PKCS1_WITH_TLS_PADDING) {
          if (out == NULL) {
              *outlen = SSL_MAX_MASTER_KEY_LENGTH;
-Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
-+++ openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
-@@ -263,13 +263,13 @@ Input = 64b0e9f9892371110c40ba5739dc0974
+--- openssl-3.5.0-beta1.orig/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
++++ openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
+@@ -248,13 +248,13 @@ Input = 64b0e9f9892371110c40ba5739dc0974
  Output = 0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
  
  # RSA decrypt
@@ -111,7 +107,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # Note: disable the Bleichenbacher workaround to see if it passes
  Decrypt = RSA-2048
  Ctrl = rsa_pkcs1_implicit_rejection:0
-@@ -277,7 +277,7 @@ Input = 550AF55A2904E7B9762352F8FB7FA235
+@@ -262,7 +262,7 @@ Input = 550AF55A2904E7B9762352F8FB7FA235
  Output = "Hello World"
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -120,7 +116,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # Corrupted ciphertext
  # Note: output is generated synthethically by the Bleichenbacher workaround
  Decrypt = RSA-2048
-@@ -285,7 +285,7 @@ Input = 550AF55A2904E7B9762352F8FB7FA235
+@@ -270,7 +270,7 @@ Input = 550AF55A2904E7B9762352F8FB7FA235
  Output = 4cbb988d6a46228379132b0b5f8c249b3860043848c93632fb982c807c7c82fffc7a9ef83f4908f890373ac181ffea6381e103bcaa27e65638b6ecebef38b59ed4226a9d12af675cfcb634d8c40e7a7aff
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -129,7 +125,31 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # Corrupted ciphertext
  # Note: disable the Bleichenbacher workaround to see if it fails
  Decrypt = RSA-2048
-@@ -360,82 +360,90 @@ PrivPubKeyPair = RSA-2048-2:RSA-2048-2-P
+@@ -296,13 +296,14 @@ Input = 00000000000000000000000000000000
+ Result = KEYOP_ERROR
+ 
+ # RSADP Ciphertext = 2 should pass
++Availablein = default
+ Decrypt = RSA-2048
+ Ctrl = rsa_padding_mode:none
+ Input = 0000000000000000000000000000000000000002
+ Output = 93d0bae8ad0d94de400eb078dd10edd7418ef1bf11b8e8b5d2b86b142e77d603e108fbcca2b976aa7b5326e5369db3bb73bf74f8d47c36a6318e913888c873502a561fc69329e7c24a0a016d81310449a52b29e49a6a41bdfe6c10a8d90072d64b4486756fd007c0071da2a8c7107a904621c11f0d81aa80b655a713c28170594ece28133dfbfddd61d4e4dad0d6781f6145a351a994054993fd57cd1330966ce97d7ac259b15616fd7235e2cac29fdc1c05f1612c61785614b80e7b650c03ef77d64163d75fa637cc2a9a7e570b3176fdcfb6ad6d25e8515f6ced02cfb3a441c87220044110fd27dcb53888f0377e1797bf297b7da27d3f033cd8b5d60ececc
+ 
+ # RSADP Ciphertext = n-2 should pass
+-Availablein = fips
++Availablein = none
+ Decrypt = RSA-2048
+ Ctrl = rsa_padding_mode:none
+ Input = cd0081ea7b2ae1ea06d59f7c73d9ffb94a09615c2e4ba7c636cef08dd3533ec3185525b015c769b99a77d6725bf9c3532a9b6e5f6627d5fb85160768d3dda9cbd35974511717dc3d309d2fc47ee41f97e32adb7f9dd864a1c4767a666ecd71bc1aacf5e7517f4b38594fea9b05e42d5ada9912008013e45316a4d9bb8ed086b88d28758bacaf922d46a868b485d239c9baeb0e2b64592710f42b2d1ea0a4b4802c0becab328f8a68b0073bdb546feea9809d2849912b390c1532bc7e29c7658f8175fae46f34332ff87bcab3e40649b98577869da0ea718353f0722754886913648760d122be676e0fc483dd20ffc31bda96a31966c9aa2e75ad03de47e1c44d
+@@ -317,6 +318,7 @@ Input = cd0081ea7b2ae1ea06d59f7c73d9ffb9
+ Result = KEYOP_ERROR
+ 
+ # RSADP Ciphertext = n should fail
++Availablein = default
+ Decrypt = RSA-2048
+ Ctrl = rsa_padding_mode:none
+ Input = cd0081ea7b2ae1ea06d59f7c73d9ffb94a09615c2e4ba7c636cef08dd3533ec3185525b015c769b99a77d6725bf9c3532a9b6e5f6627d5fb85160768d3dda9cbd35974511717dc3d309d2fc47ee41f97e32adb7f9dd864a1c4767a666ecd71bc1aacf5e7517f4b38594fea9b05e42d5ada9912008013e45316a4d9bb8ed086b88d28758bacaf922d46a868b485d239c9baeb0e2b64592710f42b2d1ea0a4b4802c0becab328f8a68b0073bdb546feea9809d2849912b390c1532bc7e29c7658f8175fae46f34332ff87bcab3e40649b98577869da0ea718353f0722754886913648760d122be676e0fc483dd20ffc31bda96a31966c9aa2e75ad03de47e1c44f
+@@ -406,82 +408,90 @@ PrivPubKeyPair = RSA-2048-2:RSA-2048-2-P
  # RSA decrypt
  
  # a random positive test case
@@ -226,7 +246,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an otherwise correct plaintext, but with wrong first byte
  # (0x01 instead of 0x00), generates a random 11 byte long plaintext
  Decrypt = RSA-2048-2
-@@ -443,7 +451,7 @@ Input = 9b2ec9c0c917c98f1ad3d0119aec6be5
+@@ -489,7 +499,7 @@ Input = 9b2ec9c0c917c98f1ad3d0119aec6be5
  Output = a1f8c9255c35cfba403ccc
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -235,7 +255,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an otherwise correct plaintext, but with wrong second byte
  # (0x01 instead of 0x02), generates a random 11 byte long plaintext
  Decrypt = RSA-2048-2
-@@ -451,7 +459,7 @@ Input = 782c2b59a21a511243820acedd567c13
+@@ -497,7 +507,7 @@ Input = 782c2b59a21a511243820acedd567c13
  Output = e6d700309ca0ed62452254
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -244,7 +264,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an invalid ciphertext, with a zero byte in first byte of
  # ciphertext, decrypts to a random 11 byte long synthetic
  # plaintext
-@@ -460,7 +468,7 @@ Input = 0096136621faf36d5290b16bd26295de
+@@ -506,7 +516,7 @@ Input = 0096136621faf36d5290b16bd26295de
  Output = ba27b1842e7c21c0e7ef6a
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -253,7 +273,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an invalid ciphertext, with a zero byte removed from first byte of
  # ciphertext, decrypts to a random 11 byte long synthetic
  # plaintext
-@@ -469,7 +477,7 @@ Input = 96136621faf36d5290b16bd26295de27
+@@ -515,7 +525,7 @@ Input = 96136621faf36d5290b16bd26295de27
  Output = ba27b1842e7c21c0e7ef6a
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -262,7 +282,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an invalid ciphertext, with two zero bytes in first bytes of
  # ciphertext, decrypts to a random 11 byte long synthetic
  # plaintext
-@@ -478,7 +486,7 @@ Input = 0000587cccc6b264bdfe0dc2149a9880
+@@ -524,7 +534,7 @@ Input = 0000587cccc6b264bdfe0dc2149a9880
  Output = d5cf555b1d6151029a429a
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -271,7 +291,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an invalid ciphertext, with two zero bytes removed from first bytes of
  # ciphertext, decrypts to a random 11 byte long synthetic
  # plaintext
-@@ -487,7 +495,7 @@ Input = 587cccc6b264bdfe0dc2149a988047fa
+@@ -533,7 +543,7 @@ Input = 587cccc6b264bdfe0dc2149a988047fa
  Output = d5cf555b1d6151029a429a
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -280,7 +300,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # and invalid ciphertext, otherwise valid but starting with 000002, decrypts
  # to random 11 byte long synthetic plaintext
  Decrypt = RSA-2048-2
-@@ -495,7 +503,7 @@ Input = 1786550ce8d8433052e01ecba8b76d30
+@@ -541,7 +551,7 @@ Input = 1786550ce8d8433052e01ecba8b76d30
  Output = 3d4a054d9358209e9cbbb9
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -289,7 +309,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # negative test with otherwise valid padding but a zero byte in first byte
  # of padding
  Decrypt = RSA-2048-2
-@@ -503,7 +511,7 @@ Input = 179598823812d2c58a7eb50521150a48
+@@ -549,7 +559,7 @@ Input = 179598823812d2c58a7eb50521150a48
  Output = 1f037dd717b07d3e7f7359
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -298,7 +318,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # negative test with otherwise valid padding but a zero byte at the eighth
  # byte of padding
  Decrypt = RSA-2048-2
-@@ -511,7 +519,7 @@ Input = a7a340675a82c30e22219a55bc07cdf3
+@@ -557,7 +567,7 @@ Input = a7a340675a82c30e22219a55bc07cdf3
  Output = 63cb0bf65fc8255dd29e17
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -307,7 +327,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # negative test with an otherwise valid plaintext but with missing separator
  # byte
  Decrypt = RSA-2048-2
-@@ -566,53 +574,58 @@ PrivPubKeyPair = RSA-2049:RSA-2049-PUBLI
+@@ -612,53 +622,58 @@ PrivPubKeyPair = RSA-2049:RSA-2049-PUBLI
  # RSA decrypt
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -370,7 +390,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # otherwise correct plaintext, but with wrong second byte (0x01 instead of 0x02)
  Decrypt = RSA-2049
  Input = 00c5d77826c1ab7a34d6390f9d342d5dbe848942e2618287952ba0350d7de6726112e9cebc391a0fae1839e2bf168229e3e0d71d4161801509f1f28f6e1487ca52df05c466b6b0a6fbbe57a3268a970610ec0beac39ec0fa67babce1ef2a86bf77466dc127d7d0d2962c20e66593126f276863cd38dc6351428f884c1384f67cad0a0ffdbc2af16711fb68dc559b96b37b4f04cd133ffc7d79c43c42ca4948fa895b9daeb853150c8a5169849b730cc77d68b0217d6c0e3dbf38d751a1998186633418367e7576530566c23d6d4e0da9b038d0bb5169ce40133ea076472d055001f0135645940fd08ea44269af2604c8b1ba225053d6db9ab43577689401bdc0f3
-@@ -676,14 +689,14 @@ ooCElYcob01/JWzoXl61Z5sdrMH5CVZJty5foHKu
+@@ -722,14 +737,14 @@ ooCElYcob01/JWzoXl61Z5sdrMH5CVZJty5foHKu
  PrivPubKeyPair = RSA-3072:RSA-3072-PUBLIC
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -387,7 +407,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # a random invalid that has PRF output with a length one byte too long
  # in the last value
  Decrypt = RSA-3072
-@@ -691,46 +704,51 @@ Input = 7db0390d75fcf9d4c59cf27b264190d8
+@@ -737,46 +752,51 @@ Input = 7db0390d75fcf9d4c59cf27b264190d8
  Output = 56a3bea054e01338be9b7d7957539c
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -442,7 +462,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # a random negative test case that generates a 9 byte long message based on
  # second to last value from PRF
  Decrypt = RSA-3072
-@@ -738,7 +756,7 @@ Input = 758c215aa6acd61248062b88284bf43c
+@@ -784,7 +804,7 @@ Input = 758c215aa6acd61248062b88284bf43c
  Output = 043383c929060374ed
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -451,7 +471,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # a random negative test that generates message based on 3rd last value from
  # PRF
  Decrypt = RSA-3072
-@@ -746,35 +764,35 @@ Input = 7b22d5e62d287968c6622171a1f75db4
+@@ -792,35 +812,35 @@ Input = 7b22d5e62d287968c6622171a1f75db4
  Output = 70263fa6050534b9e0
  
  # The old FIPS provider doesn't include the workaround (#13817)
@@ -492,7 +512,18 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  # an otherwise valid plaintext, but with null separator missing
  Decrypt = RSA-3072
  Input = a7a5c99e50da48769ecb779d9abe86ef9ec8c38c6f43f17c7f2d7af608a4a1bd6cf695b47e97c191c61fb5a27318d02f495a176b9fae5a55b5d3fabd1d8aae4957e3879cb0c60f037724e11be5f30f08fc51c033731f14b44b414d11278cd3dba7e1c8bfe208d2b2bb7ec36366dacb6c88b24cd79ab394adf19dbbc21dfa5788bacbadc6a62f79cf54fd8cf585c615b5c0eb94c35aa9de25321c8ffefb8916bbaa2697cb2dd82ee98939df9b6704cee77793edd2b4947d82e00e5749664970736c59a84197bd72b5c71e36aae29cd39af6ac73a368edbc1ca792e1309f442aafcd77c992c88f8e4863149f221695cb7b0236e75b2339a02c4ea114854372c306b9412d8eedb600a31532002f2cea07b4df963a093185e4607732e46d753b540974fb5a5c3f9432df22e85bb17611370966c5522fd23f2ad3484341ba7fd8885fc8e6d379a611d13a2aca784fba2073208faad2137bf1979a0fa146c1880d4337db3274269493bab44a1bcd0681f7227ffdf589c2e925ed9d36302509d1109ba4
-@@ -1153,36 +1171,42 @@ vcDtKrdWo6btTWc1Kml9QhbpMhKxJ6Y9VBHOb6mN
+@@ -912,9 +932,9 @@ Output=4DE433D5844043EF08D354DA03CB29068
+ 
+ # Verify of above signature
+ Verify = RSA-2048-PUBLIC
++Ctrl = digest:sha256
+ Ctrl = rsa_padding_mode:pss
+ Ctrl = rsa_pss_saltlen:0
+-Ctrl = digest:sha256
+ Input="0123456789ABCDEF0123456789ABCDEF"
+ Output=4DE433D5844043EF08D354DA03CB29068780D52706D7D1E4D50EFB7D58C9D547D83A747DDD0635A96B28F854E50145518482CB49E963054621B53C60C498D07C16E9C2789C893CF38D4D86900DE71BDE463BD2761D1271E358C7480A1AC0BAB930DDF39602AD1BC165B5D7436B516B7A7858E8EB7AB1C420EEB482F4D207F0E462B1724959320A084E13848D11D10FB593E66BF680BF6D3F345FC3E9C3DE60ABBAC37E1C6EC80A268C8D9FC49626C679097AA690BC1AA662B95EB8DB70390861AA0898229F9349B4B5FDD030D4928C47084708A933144BE23BD3C6E661B85B2C0EF9ED36D498D5B7320E8194D363D4AD478C059BAE804181965E0B81B663158A
+ 
+@@ -1207,36 +1227,42 @@ vcDtKrdWo6btTWc1Kml9QhbpMhKxJ6Y9VBHOb6mN
  h90qjKHS9PvY4Q==
  -----END PRIVATE KEY-----
  
@@ -535,7 +566,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-1
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1207,36 +1231,42 @@ SwGNdhGLJDiac1Dsg2sAY6IXISNv2O222JtR5+64
+@@ -1261,36 +1287,42 @@ SwGNdhGLJDiac1Dsg2sAY6IXISNv2O222JtR5+64
  eG2e4XlBcKjI6A==
  -----END PRIVATE KEY-----
  
@@ -578,7 +609,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-2
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1261,36 +1291,42 @@ iUGx07dw5a0x7jc7KKzaaf+bb0D+V4ufGvuFg2+W
+@@ -1315,36 +1347,42 @@ iUGx07dw5a0x7jc7KKzaaf+bb0D+V4ufGvuFg2+W
  Ya4qnqZe1onjY5o=
  -----END PRIVATE KEY-----
  
@@ -621,7 +652,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-3
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1315,36 +1351,42 @@ s/XkIiO6MDAcQabYfLtw4wy308Z9JUc9sfbL8D4/
+@@ -1369,36 +1407,42 @@ s/XkIiO6MDAcQabYfLtw4wy308Z9JUc9sfbL8D4/
  aD0x7TDrmEvkEro=
  -----END PRIVATE KEY-----
  
@@ -664,7 +695,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-4
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1369,36 +1411,42 @@ OPlAQGLrhaQpJFILOPW7iGoBlvSLuNzqYP2SzAJ/
+@@ -1423,36 +1467,42 @@ OPlAQGLrhaQpJFILOPW7iGoBlvSLuNzqYP2SzAJ/
  MSwGUGLx60i3nRyDyw==
  -----END PRIVATE KEY-----
  
@@ -707,7 +738,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-5
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1423,36 +1471,42 @@ xT1F29tenZbQ/s9Cdd8JdLxKBza0p0wyaQU++2hq
+@@ -1477,36 +1527,42 @@ xT1F29tenZbQ/s9Cdd8JdLxKBza0p0wyaQU++2hq
  Yejn5Ly8mU2q+jBcRQ==
  -----END PRIVATE KEY-----
  
@@ -750,7 +781,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-6
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1477,36 +1531,42 @@ tu4XIedy0DiaVZw9PN+VUNRXxGsDe3RkGx1SFmr4
+@@ -1531,36 +1587,42 @@ tu4XIedy0DiaVZw9PN+VUNRXxGsDe3RkGx1SFmr4
  FMlxv0gq65dqc3DC
  -----END PRIVATE KEY-----
  
@@ -793,7 +824,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-7
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1531,36 +1591,42 @@ njraT2MgdSwJ2AX/fR8a4NAXru7pzvoNfdf/d15E
+@@ -1585,36 +1647,42 @@ njraT2MgdSwJ2AX/fR8a4NAXru7pzvoNfdf/d15E
  2MiPa249Z+lh3Luj0A==
  -----END PRIVATE KEY-----
  
@@ -836,7 +867,7 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-8
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-@@ -1591,36 +1657,42 @@ Z7CDuaemy2HkLbNiuMmJbbcGTgKtWuYVh9oVtGSc
+@@ -1645,36 +1713,42 @@ Z7CDuaemy2HkLbNiuMmJbbcGTgKtWuYVh9oVtGSc
  tKo5Eb69iFQvBb4=
  -----END PRIVATE KEY-----
  
@@ -879,53 +910,53 @@ Index: openssl-3.2.3/test/recipes/30-test_evp_data/evppkey_rsa_common.txt
  Decrypt=RSA-OAEP-9
  Ctrl = rsa_padding_mode:oaep
  Ctrl = rsa_mgf1_md:sha1
-Index: openssl-3.2.3/test/recipes/80-test_cms.t
+Index: openssl-3.5.0-beta1/test/recipes/80-test_cms.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/80-test_cms.t
-+++ openssl-3.2.3/test/recipes/80-test_cms.t
-@@ -235,7 +235,7 @@ my @smime_pkcs7_tests = (
-       \&final_compare
-     ],
+--- openssl-3.5.0-beta1.orig/test/recipes/80-test_cms.t
++++ openssl-3.5.0-beta1/test/recipes/80-test_cms.t
+@@ -250,7 +250,7 @@ my @smime_pkcs7_tests = (
  
--    [ "enveloped content test streaming S/MIME format, AES-256 cipher, 3 recipients",
-+    [ "enveloped content test streaming S/MIME format, AES-256 cipher, 3 recipients, no SUSE FIPS",
-       [ "{cmd1}", @prov, "-encrypt", "-in", $smcont,
-         "-aes256", "-stream", "-out", "{output}.cms",
-         $smrsa1,
-@@ -1125,6 +1125,9 @@ sub check_availability {
+ if ($no_fips || $old_fips) {
+     push(@smime_pkcs7_tests,
+-         [ "enveloped content test streaming S/MIME format, AES-256 cipher, 3 recipients",
++         [ "enveloped content test streaming S/MIME format, AES-256 cipher, 3 recipients, no SUSE FIPS",
+            [ "{cmd1}", @prov, "-encrypt", "-in", $smcont,
+              "-aes256", "-stream", "-out", "{output}.cms",
+              $smrsa1,
+@@ -1267,6 +1267,9 @@ sub check_availability {
      return "$tnam: skipped, DSA disabled\n"
          if ($no_dsa && $tnam =~ / DSA/);
  
-+    return "$tnam: skipped, SUSE FIPS\n"
++    return "$tnam: skipped, SUSE/openSUSE FIPS\n"
 +        if ($tnam =~ /no SUSE FIPS/);
 +
      return "";
  }
  
-Index: openssl-3.2.3/test/recipes/80-test_ssl_old.t
+Index: openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/80-test_ssl_old.t
-+++ openssl-3.2.3/test/recipes/80-test_ssl_old.t
-@@ -497,6 +497,18 @@ sub testssl {
+--- openssl-3.5.0-beta1.orig/test/recipes/80-test_ssl_old.t
++++ openssl-3.5.0-beta1/test/recipes/80-test_ssl_old.t
+@@ -561,6 +561,18 @@ sub testssl {
              # the default choice if TLSv1.3 enabled
              my $flag = $protocol eq "-tls1_3" ? "" : $protocol;
              my $ciphersuites = "";
-+            my %FIPS_skip_cipher = map {$_ => 1} qw(
-+                AES256-GCM-SHA384:@SECLEVEL=0
-+                AES256-CCM8:@SECLEVEL=0
-+                AES256-CCM:@SECLEVEL=0
-+                AES128-GCM-SHA256:@SECLEVEL=0
-+                AES128-CCM8:@SECLEVEL=0
-+                AES128-CCM:@SECLEVEL=0
-+                AES256-SHA256:@SECLEVEL=0
-+                AES128-SHA256:@SECLEVEL=0
-+                AES256-SHA:@SECLEVEL=0
-+                AES128-SHA:@SECLEVEL=0
++            my %redhat_skip_cipher = map {$_ => 1} qw(
++AES256-GCM-SHA384:@SECLEVEL=0
++AES256-CCM8:@SECLEVEL=0
++AES256-CCM:@SECLEVEL=0
++AES128-GCM-SHA256:@SECLEVEL=0
++AES128-CCM8:@SECLEVEL=0
++AES128-CCM:@SECLEVEL=0
++AES256-SHA256:@SECLEVEL=0
++AES128-SHA256:@SECLEVEL=0
++AES256-SHA:@SECLEVEL=0
++AES128-SHA:@SECLEVEL=0
 +	    );
              foreach my $cipher (@{$ciphersuites{$protocol}}) {
-                 if ($protocol eq "-ssl3" && $cipher =~ /ECDH/ ) {
-                     note "*****SKIPPING $protocol $cipher";
-@@ -508,11 +520,16 @@ sub testssl {
+                 if ($dsaallow == '0' && index($cipher, "DSS") != -1) {
+                     # DSA is not allowed in FIPS 140-3
+@@ -576,11 +588,16 @@ sub testssl {
                      } else {
                          $cipher = $cipher.':@SECLEVEL=0';
                      }
@@ -934,8 +965,8 @@ Index: openssl-3.2.3/test/recipes/80-test_ssl_old.t
 -                                 "-ciphersuites", $ciphersuites,
 -                                 $flag || ()])),
 -                       "Testing $cipher");
-+                    if ($provider eq "fips" && exists $FIPS_skip_cipher{$cipher}) {
-+                        note "*****SKIPPING $cipher in SUSE FIPS mode";
++                    if ($provider eq "fips" && exists $redhat_skip_cipher{$cipher}) {
++                        note "*****SKIPPING $cipher in SUSE/openSUSE FIPS mode";
 +                        ok(1);
 +                    } else {
 +                        ok(run(test([@ssltest, @exkeys, "-cipher",

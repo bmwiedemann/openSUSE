@@ -22,11 +22,11 @@ From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
  8 files changed, 200 insertions(+), 18 deletions(-)
  create mode 100644 test/fipsmodule.cnf
 
-Index: openssl-3.2.3/providers/fips/self_test.c
+Index: openssl-3.5.0-beta1/providers/fips/self_test.c
 ===================================================================
---- openssl-3.2.3.orig/providers/fips/self_test.c
-+++ openssl-3.2.3/providers/fips/self_test.c
-@@ -230,11 +230,133 @@ err:
+--- openssl-3.5.0-beta1.orig/providers/fips/self_test.c
++++ openssl-3.5.0-beta1/providers/fips/self_test.c
+@@ -235,11 +235,133 @@ err:
      return ok;
  }
  
@@ -160,7 +160,7 @@ Index: openssl-3.2.3/providers/fips/self_test.c
  static int verify_integrity(OSSL_CORE_BIO *bio, OSSL_FUNC_BIO_read_ex_fn read_ex_cb,
                              unsigned char *expected, size_t expected_len,
                              OSSL_LIB_CTX *libctx, OSSL_SELF_TEST *ev,
-@@ -247,12 +369,23 @@ static int verify_integrity(OSSL_CORE_BI
+@@ -252,12 +374,23 @@ static int verify_integrity(OSSL_CORE_BI
      EVP_MAC *mac = NULL;
      EVP_MAC_CTX *ctx = NULL;
      OSSL_PARAM params[2], *p = params;
@@ -184,7 +184,7 @@ Index: openssl-3.2.3/providers/fips/self_test.c
      mac = EVP_MAC_fetch(libctx, MAC_NAME, NULL);
      if (mac == NULL)
          goto err;
-@@ -266,13 +399,42 @@ static int verify_integrity(OSSL_CORE_BI
+@@ -271,13 +404,42 @@ static int verify_integrity(OSSL_CORE_BI
      if (!EVP_MAC_init(ctx, fixed_key, sizeof(fixed_key), params))
          goto err;
  
@@ -192,12 +192,12 @@ Index: openssl-3.2.3/providers/fips/self_test.c
 -        status = read_ex_cb(bio, buf, sizeof(buf), &bytes_read);
 +    while ((off + INTEGRITY_BUF_SIZE) <= paddr) {
 +        status = read_ex_cb(bio, buf, INTEGRITY_BUF_SIZE, &bytes_read);
-         if (status != 1)
-             break;
-         if (!EVP_MAC_update(ctx, buf, bytes_read))
-             goto err;
++        if (status != 1)
++            break;
++        if (!EVP_MAC_update(ctx, buf, bytes_read))
++            goto err;
 +        off += bytes_read;
-     }
++    }
 +
 +    if (off + INTEGRITY_BUF_SIZE > paddr) {
 +        int delta = paddr - off;
@@ -219,17 +219,17 @@ Index: openssl-3.2.3/providers/fips/self_test.c
 +
 +    while (bytes_read > 0) {
 +        status = read_ex_cb(bio, buf, INTEGRITY_BUF_SIZE, &bytes_read);
-+        if (status != 1)
-+            break;
-+        if (!EVP_MAC_update(ctx, buf, bytes_read))
-+            goto err;
+         if (status != 1)
+             break;
+         if (!EVP_MAC_update(ctx, buf, bytes_read))
+             goto err;
 +        off += bytes_read;
-+    }
+     }
 +
      if (!EVP_MAC_final(ctx, out, &out_len, sizeof(out)))
          goto err;
  
-@@ -282,6 +444,7 @@ static int verify_integrity(OSSL_CORE_BI
+@@ -287,6 +449,7 @@ static int verify_integrity(OSSL_CORE_BI
          goto err;
      ret = 1;
  err:
@@ -237,7 +237,15 @@ Index: openssl-3.2.3/providers/fips/self_test.c
      OSSL_SELF_TEST_onend(ev, ret);
      EVP_MAC_CTX_free(ctx);
      EVP_MAC_free(mac);
-@@ -335,8 +498,7 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+@@ -320,6 +483,7 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+     OSSL_SELF_TEST *ev = NULL;
+     EVP_RAND *testrand = NULL;
+     EVP_RAND_CTX *rng;
++    unsigned char *alloc_checksum = NULL;
+ #endif
+ 
+     if (!RUN_ONCE(&fips_self_test_init, do_fips_self_test_init))
+@@ -352,8 +516,7 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
          return 0;
      }
  
@@ -247,7 +255,7 @@ Index: openssl-3.2.3/providers/fips/self_test.c
          ERR_raise(ERR_LIB_PROV, PROV_R_MISSING_CONFIG_DATA);
          goto end;
      }
-@@ -345,8 +507,14 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+@@ -362,8 +525,15 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
      if (ev == NULL)
          goto end;
  
@@ -257,14 +265,15 @@ Index: openssl-3.2.3/providers/fips/self_test.c
 +        module_checksum = fips_hmac_container;
 +        checksum_len = sizeof(fips_hmac_container);
 +    } else {
-+        module_checksum = OPENSSL_hexstr2buf(st->module_checksum_data,
++        alloc_checksum = OPENSSL_hexstr2buf(st->module_checksum_data,
 +                                             &checksum_len);
++        module_checksum = alloc_checksum;
 +    }
 +
      if (module_checksum == NULL) {
          ERR_raise(ERR_LIB_PROV, PROV_R_INVALID_CONFIG_DATA);
          goto end;
-@@ -354,14 +522,27 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
+@@ -371,14 +541,29 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
      bio_module = (*st->bio_new_file_cb)(st->module_filename, "rb");
  
      /* Always check the integrity of the fips module */
@@ -276,7 +285,7 @@ Index: openssl-3.2.3/providers/fips/self_test.c
          ERR_raise(ERR_LIB_PROV, PROV_R_MODULE_INTEGRITY_FAILURE);
          goto end;
      }
--
+ 
 +    if (st->module_checksum_data == NULL) {
 +        if (!verify_integrity_rodata(bio_module, st->bio_read_ex_cb,
 +                                     module_checksum, checksum_len,
@@ -294,28 +303,31 @@ Index: openssl-3.2.3/providers/fips/self_test.c
 +            goto end;
 +        }
 +    }
-     /* This will be NULL during installation - so the self test KATS will run */
-     if (st->indicator_data != NULL) {
-         /*
-@@ -420,7 +601,6 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
++
+     if (!SELF_TEST_kats(ev, st->libctx)) {
+         ERR_raise(ERR_LIB_PROV, PROV_R_SELF_TEST_KAT_FAILURE);
+         goto end;
+@@ -398,7 +583,8 @@ int SELF_TEST_post(SELF_TEST_POST_PARAMS
  end:
      EVP_RAND_free(testrand);
      OSSL_SELF_TEST_free(ev);
 -    OPENSSL_free(module_checksum);
-     OPENSSL_free(indicator_checksum);
++    if (alloc_checksum != NULL)
++        OPENSSL_free(alloc_checksum);
  
-     if (st != NULL) {
-Index: openssl-3.2.3/test/fipsmodule.cnf
+     if (st != NULL)
+         (*st->bio_free_cb)(bio_module);
+Index: openssl-3.5.0-beta1/test/fipsmodule.cnf
 ===================================================================
 --- /dev/null
-+++ openssl-3.2.3/test/fipsmodule.cnf
++++ openssl-3.5.0-beta1/test/fipsmodule.cnf
 @@ -0,0 +1,2 @@
 +[fips_sect]
 +activate = 1
-Index: openssl-3.2.3/test/recipes/00-prep_fipsmodule_cnf.t
+Index: openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/00-prep_fipsmodule_cnf.t
-+++ openssl-3.2.3/test/recipes/00-prep_fipsmodule_cnf.t
+--- openssl-3.5.0-beta1.orig/test/recipes/00-prep_fipsmodule_cnf.t
++++ openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
 @@ -20,7 +20,7 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
@@ -325,10 +337,10 @@ Index: openssl-3.2.3/test/recipes/00-prep_fipsmodule_cnf.t
  plan skip_all => "FIPS module config file only supported in a fips build"
      if $no_check;
  
-Index: openssl-3.2.3/test/recipes/01-test_fipsmodule_cnf.t
+Index: openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/01-test_fipsmodule_cnf.t
-+++ openssl-3.2.3/test/recipes/01-test_fipsmodule_cnf.t
+--- openssl-3.5.0-beta1.orig/test/recipes/01-test_fipsmodule_cnf.t
++++ openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
 @@ -23,7 +23,7 @@ use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
  use platform;
@@ -338,36 +350,23 @@ Index: openssl-3.2.3/test/recipes/01-test_fipsmodule_cnf.t
  plan skip_all => "Test only supported in a fips build"
      if $no_check;
  plan tests => 1;
-Index: openssl-3.2.3/test/recipes/03-test_fipsinstall.t
+Index: openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/03-test_fipsinstall.t
-+++ openssl-3.2.3/test/recipes/03-test_fipsinstall.t
-@@ -22,7 +22,7 @@ use lib srctop_dir('Configurations');
- use lib bldtop_dir('.');
- use platform;
+--- openssl-3.5.0-beta1.orig/test/recipes/03-test_fipsinstall.t
++++ openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
+@@ -24,7 +24,7 @@ use platform;
+ 
+ plan skip_all => "Fipsinstall not available in SUSE/openSUSE FIPS build";
  
 -plan skip_all => "Test only supported in a fips build" if disabled("fips");
 +plan skip_all => "Test only supported in a fips build" if 1;
  
  # Compatible options for pedantic FIPS compliance
  my @pedantic_okay =
-Index: openssl-3.2.3/test/recipes/30-test_defltfips.t
+Index: openssl-3.5.0-beta1/test/recipes/80-test_ssl_new.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/30-test_defltfips.t
-+++ openssl-3.2.3/test/recipes/30-test_defltfips.t
-@@ -24,7 +24,7 @@ use lib bldtop_dir('.');
- plan skip_all => "Configuration loading is turned off"
-     if disabled("autoload-config");
- 
--my $no_fips = disabled('fips') || ($ENV{NO_FIPS} // 0);
-+my $no_fips = 1; #disabled('fips') || ($ENV{NO_FIPS} // 0);
- 
- plan tests =>
-     ($no_fips ? 1 : 5);
-Index: openssl-3.2.3/test/recipes/80-test_ssl_new.t
-===================================================================
---- openssl-3.2.3.orig/test/recipes/80-test_ssl_new.t
-+++ openssl-3.2.3/test/recipes/80-test_ssl_new.t
+--- openssl-3.5.0-beta1.orig/test/recipes/80-test_ssl_new.t
++++ openssl-3.5.0-beta1/test/recipes/80-test_ssl_new.t
 @@ -27,7 +27,7 @@ setup("test_ssl_new");
  use lib srctop_dir('Configurations');
  use lib bldtop_dir('.');
@@ -377,10 +376,10 @@ Index: openssl-3.2.3/test/recipes/80-test_ssl_new.t
  
  $ENV{TEST_CERTS_DIR} = srctop_dir("test", "certs");
  
-Index: openssl-3.2.3/test/recipes/90-test_sslapi.t
+Index: openssl-3.5.0-beta1/test/recipes/90-test_sslapi.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/90-test_sslapi.t
-+++ openssl-3.2.3/test/recipes/90-test_sslapi.t
+--- openssl-3.5.0-beta1.orig/test/recipes/90-test_sslapi.t
++++ openssl-3.5.0-beta1/test/recipes/90-test_sslapi.t
 @@ -14,7 +14,7 @@ BEGIN {
  setup("test_sslapi");
  }
@@ -390,3 +389,16 @@ Index: openssl-3.2.3/test/recipes/90-test_sslapi.t
  my $fipsmodcfg_filename = "fipsmodule.cnf";
  my $fipsmodcfg = bldtop_file("test", $fipsmodcfg_filename);
  
+Index: openssl-3.5.0-beta1/test/recipes/30-test_defltfips.t
+===================================================================
+--- openssl-3.5.0-beta1.orig/test/recipes/30-test_defltfips.t
++++ openssl-3.5.0-beta1/test/recipes/30-test_defltfips.t
+@@ -24,7 +24,7 @@ use lib bldtop_dir('.');
+ plan skip_all => "Configuration loading is turned off"
+     if disabled("autoload-config");
+ 
+-my $no_fips = disabled('fips') || disabled('fips-post') || ($ENV{NO_FIPS} // 0);
++my $no_fips = 1; #disabled('fips') || disabled('fips-post') || ($ENV{NO_FIPS} // 0);
+ 
+ plan tests =>
+     ($no_fips ? 1 : 5);

@@ -1,19 +1,26 @@
-Index: openssl-3.2.3/apps/openssl.cnf
+Index: openssl-3.5.0/apps/openssl.cnf
 ===================================================================
---- openssl-3.2.3.orig/apps/openssl.cnf
-+++ openssl-3.2.3/apps/openssl.cnf
-@@ -45,8 +45,8 @@ tsa_policy3 = 1.2.3.4.5.7
+--- openssl-3.5.0.orig/apps/openssl.cnf
++++ openssl-3.5.0/apps/openssl.cnf
+@@ -45,12 +45,12 @@ tsa_policy3 = 1.2.3.4.5.7
  [openssl_init]
  providers = provider_sect
  # Load default TLS policy configuration
 -ssl_conf = ssl_module
 -alg_section = evp_properties
+-random = random
 +##ssl_conf = ssl_module
 +##alg_section = evp_properties
++##random = random
+ 
+-[random]
+-seed=JITTER
++##[random]
++##seed=JITTER
  
  [ evp_properties ]
  # This section is intentionally added empty here to be tuned on particular systems
-@@ -61,20 +61,20 @@ alg_section = evp_properties
+@@ -65,20 +65,20 @@ seed=JITTER
  # to side-channel attacks and as such have been deprecated.
  
  [provider_sect]

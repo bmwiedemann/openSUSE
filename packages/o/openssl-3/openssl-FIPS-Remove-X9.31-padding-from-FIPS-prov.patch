@@ -1,54 +1,52 @@
-From 930e7acf7dd225102b6e88d23f5e2a3f4acea9fa Mon Sep 17 00:00:00 2001
-From: Dmitry Belyavskiy <dbelyavs@redhat.com>
-Date: Mon, 21 Aug 2023 15:43:57 +0200
-Subject: [PATCH 37/48] 
- 0081-signature-Remove-X9.31-padding-from-FIPS-prov.patch
+From 0010acdf5d7c1a1285189c36fa2fc46bea93cee8 Mon Sep 17 00:00:00 2001
+From: rpm-build <rpm-build>
+Date: Wed, 6 Mar 2024 19:17:16 +0100
+Subject: [PATCH 32/53] FIPS: RSA: Remove X9.31 padding signatures tests
 
-Patch-name: 0081-signature-Remove-X9.31-padding-from-FIPS-prov.patch
-Patch-id: 81
+The current draft of FIPS 186-5 [1] no longer contains specifications
+for X9.31 signature padding. Instead, it contains the following
+information in Appendix E:
+
+> ANSI X9.31 was withdrawn, so X9.31 RSA signatures were removed from
+> this standard.
+
+Since this situation is unlikely to change in future revisions of the
+draft, and future FIPS 140-3 validations of the provider will require
+X9.31 to be disabled or marked as not approved with an explicit
+indicator, disallow this padding mode now.
+
+Remove the X9.31 tests from the acvp test, since they will always fail
+now.
+
+ [1]: https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-5-draft.pdf
+
+Signed-off-by: Clemens Lang <cllang@redhat.com>
+
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
- providers/implementations/signature/rsa_sig.c |   6 +
- test/acvp_test.inc                            | 214 ------------------
- 2 files changed, 6 insertions(+), 214 deletions(-)
+ test/acvp_test.inc | 225 ---------------------------------------------
+ 1 file changed, 225 deletions(-)
 
-Index: openssl-3.2.3/providers/implementations/signature/rsa_sig.c
-===================================================================
---- openssl-3.2.3.orig/providers/implementations/signature/rsa_sig.c
-+++ openssl-3.2.3/providers/implementations/signature/rsa_sig.c
-@@ -1291,7 +1291,13 @@ static int rsa_set_ctx_params(void *vprs
-             err_extra_text = "No padding not allowed with RSA-PSS";
-             goto cont;
-         case RSA_X931_PADDING:
-+#ifndef FIPS_MODULE
-             err_extra_text = "X.931 padding not allowed with RSA-PSS";
-+#else /* !defined(FIPS_MODULE) */
-+            err_extra_text = "X.931 padding no longer allowed in FIPS mode,"
-+                             " since it was removed from FIPS 186-5";
-+            goto bad_pad;
-+#endif /* !defined(FIPS_MODULE) */
-         cont:
-             if (RSA_test_flags(prsactx->rsa,
-                                RSA_FLAG_TYPE_MASK) == RSA_FLAG_TYPE_RSA)
-Index: openssl-3.2.3/test/acvp_test.inc
-===================================================================
---- openssl-3.2.3.orig/test/acvp_test.inc
-+++ openssl-3.2.3/test/acvp_test.inc
-@@ -1214,13 +1214,6 @@ static const struct rsa_siggen_st rsa_si
+diff --git a/test/acvp_test.inc b/test/acvp_test.inc
+index 97ec1ff3e5..31fa0eafc6 100644
+--- a/test/acvp_test.inc
++++ b/test/acvp_test.inc
+@@ -1354,13 +1354,6 @@ static const struct rsa_siggen_st rsa_siggen_data[] = {
+         ITM(rsa_siggen0_msg),
          NO_PSS_SALT_LEN,
      },
-     {
+-    {
 -        "x931",
 -        2048,
 -        "SHA384",
 -        ITM(rsa_siggen0_msg),
 -        NO_PSS_SALT_LEN,
 -    },
--    {
+     {
          "pss",
          2048,
-         "SHA384",
-@@ -1631,202 +1624,6 @@ static const unsigned char rsa_sigverpss
-     0x5c, 0xea, 0x8a, 0x92, 0x31, 0xd2, 0x11, 0x4b,
+@@ -1772,202 +1765,6 @@ static const unsigned char rsa_sigverpss_1_sig[] = {
+     0xe9, 0x97, 0x20, 0x35, 0xf8, 0xf1, 0x78, 0xe1
  };
  
 -static const unsigned char rsa_sigverx931_0_n[] = {
@@ -250,10 +248,21 @@ Index: openssl-3.2.3/test/acvp_test.inc
  static const struct rsa_sigver_st rsa_sigver_data[] = {
      {
          "pkcs1", /* pkcs1v1.5 */
-@@ -1850,17 +1647,6 @@ static const struct rsa_sigver_st rsa_si
+@@ -1991,28 +1788,6 @@ static const struct rsa_sigver_st rsa_sigver_data[] = {
          NO_PSS_SALT_LEN,
          FAIL
      },
+-    {
+-        "x931",
+-        3072,
+-        "SHA1",
+-        ITM(rsa_sigverx931_0_msg),
+-        ITM(rsa_sigverx931_0_n),
+-        ITM(rsa_sigverx931_0_e),
+-        ITM(rsa_sigverx931_0_sig),
+-        NO_PSS_SALT_LEN,
+-        PASS
+-    },
 -    {
 -        "x931",
 -        3072,
@@ -268,3 +277,6 @@ Index: openssl-3.2.3/test/acvp_test.inc
      {
          "pss",
          4096,
+-- 
+2.49.0
+

@@ -1,36 +1,60 @@
-From 9ede2b1e13f72db37718853faff74b4429084d59 Mon Sep 17 00:00:00 2001
+From a4f09a10050fa504610fc02f4dc3f066c53e7ba0 Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
-Date: Mon, 31 Jul 2023 09:41:28 +0200
-Subject: [PATCH 13/35] 0013-skipped-tests-EC-curves.patch
+Date: Wed, 6 Mar 2024 19:17:15 +0100
+Subject: [PATCH 13/53] RH: skipped tests EC curves
 
 Patch-name: 0013-skipped-tests-EC-curves.patch
 Patch-id: 13
 Patch-status: |
-    # Skipped tests from former 0011-Remove-EC-curves.patch
-From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
+    # # Skipped tests from former 0011-Remove-EC-curves.patch
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
- test/recipes/15-test_ec.t          | 2 +-
- test/recipes/65-test_cmp_protect.t | 2 +-
- test/recipes/65-test_cmp_vfy.t     | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ test/recipes/15-test_ec.t                            |  2 +-
+ .../30-test_evp_data/evppkey_ecdsa_sigalg.txt        | 12 ------------
+ test/recipes/65-test_cmp_protect.t                   |  2 +-
+ test/recipes/65-test_cmp_vfy.t                       |  2 +-
+ 4 files changed, 3 insertions(+), 15 deletions(-)
 
-Index: openssl-3.2.3/test/recipes/15-test_ec.t
+Index: openssl-3.5.0-beta1/test/recipes/15-test_ec.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/15-test_ec.t
-+++ openssl-3.2.3/test/recipes/15-test_ec.t
+--- openssl-3.5.0-beta1.orig/test/recipes/15-test_ec.t
++++ openssl-3.5.0-beta1/test/recipes/15-test_ec.t
 @@ -94,7 +94,7 @@ SKIP: {
  
  subtest 'Check loading of fips and non-fips keys' => sub {
      plan skip_all => "FIPS is disabled"
 -        if $no_fips;
-+        if 1; #SUSE specific, original value is $no_fips;
++        if 1; #original value is $no_fips;
  
      plan tests => 2;
  
-Index: openssl-3.2.3/test/recipes/65-test_cmp_protect.t
+Index: openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/65-test_cmp_protect.t
-+++ openssl-3.2.3/test/recipes/65-test_cmp_protect.t
+--- openssl-3.5.0-beta1.orig/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
++++ openssl-3.5.0-beta1/test/recipes/30-test_evp_data/evppkey_ecdsa_sigalg.txt
+@@ -132,18 +132,6 @@ AAAA//////////+85vqtpxeehPO5ysL8YyVRAgEB
+ 3ev1gTwRBduzqqlwd54AUSgI+pjttW8zrWNitO8H1sf59MPWOESKxNtZ1+Nl
+ -----END PRIVATE KEY-----
+ 
+-PrivateKey = EC_EXPLICIT
+------BEGIN PRIVATE KEY-----
+-MIIBeQIBADCCAQMGByqGSM49AgEwgfcCAQEwLAYHKoZIzj0BAQIhAP////8AAAAB
+-AAAAAAAAAAAAAAAA////////////////MFsEIP////8AAAABAAAAAAAAAAAAAAAA
+-///////////////8BCBaxjXYqjqT57PrvVV2mIa8ZR0GsMxTsPY7zjw+J9JgSwMV
+-AMSdNgiG5wSTamZ44ROdJreBn36QBEEE5JcIvn36opqjEm/k59Al40rBAxWM2TPG
+-l0L13Je51zHpfXQ9Z2o7IQicMXP4wSfJ0qCgg2bgydqoxlYrlLGuVQIhAP////8A
+-AAAA//////////+85vqtpxeehPO5ysL8YyVRAgEBBG0wawIBAQQgec92jwduadCk
+-OjoNRI+YT5Be5TkzZXzYCyTLkMOikDmhRANCAATtECEhQbLEaiUj/Wu0qjcr81lL
+-46dx5zYgArz/iaSNJ3W80oO+F7v04jlQ7wxQzg96R0bwKiMeq5CcW9ZFt6xg
+------END PRIVATE KEY-----
+-
+ PrivateKey = B-163
+ -----BEGIN PRIVATE KEY-----
+ MGMCAQAwEAYHKoZIzj0CAQYFK4EEAA8ETDBKAgEBBBUDnQW0mLiHVha/jqFznX/K
+Index: openssl-3.5.0-beta1/test/recipes/65-test_cmp_protect.t
+===================================================================
+--- openssl-3.5.0-beta1.orig/test/recipes/65-test_cmp_protect.t
++++ openssl-3.5.0-beta1/test/recipes/65-test_cmp_protect.t
 @@ -27,7 +27,7 @@ plan skip_all => "This test is not suppo
  plan skip_all => "This test is not supported in a shared library build on Windows"
      if $^O eq 'MSWin32' && !disabled("shared");
@@ -40,10 +64,10 @@ Index: openssl-3.2.3/test/recipes/65-test_cmp_protect.t
  
  my @basic_cmd = ("cmp_protect_test",
                   data_file("prot_RSA.pem"),
-Index: openssl-3.2.3/test/recipes/65-test_cmp_vfy.t
+Index: openssl-3.5.0-beta1/test/recipes/65-test_cmp_vfy.t
 ===================================================================
---- openssl-3.2.3.orig/test/recipes/65-test_cmp_vfy.t
-+++ openssl-3.2.3/test/recipes/65-test_cmp_vfy.t
+--- openssl-3.5.0-beta1.orig/test/recipes/65-test_cmp_vfy.t
++++ openssl-3.5.0-beta1/test/recipes/65-test_cmp_vfy.t
 @@ -27,7 +27,7 @@ plan skip_all => "This test is not suppo
  plan skip_all => "This test is not supported in a no-ec build"
      if disabled("ec");

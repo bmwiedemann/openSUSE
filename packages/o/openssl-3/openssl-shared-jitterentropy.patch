@@ -1,0 +1,28 @@
+Index: openssl-3.5.0-beta1/Configurations/00-base-templates.conf
+===================================================================
+--- openssl-3.5.0-beta1.orig/Configurations/00-base-templates.conf
++++ openssl-3.5.0-beta1/Configurations/00-base-templates.conf
+@@ -107,7 +107,7 @@ my %targets=(
+         ex_libs         =>
+             sub {
+                 my @libs = ();
+-                push(@libs, "-l:libjitterentropy.a") if !defined($disabled{jitter});
++                push(@libs, "-l:libjitterentropy.so") if !defined($disabled{jitter});
+                 push(@libs, "-lz") if !defined($disabled{zlib}) && defined($disabled{"zlib-dynamic"});
+                 if (!defined($disabled{brotli}) && defined($disabled{"brotli-dynamic"})) {
+                     push(@libs, "-lbrotlienc");
+Index: openssl-3.5.0-beta1/apps/openssl.cnf
+===================================================================
+--- openssl-3.5.0-beta1.orig/apps/openssl.cnf
++++ openssl-3.5.0-beta1/apps/openssl.cnf
+@@ -47,6 +47,10 @@ providers = provider_sect
+ # Load default TLS policy configuration
+ ssl_conf = ssl_module
+ alg_section = evp_properties
++random = random
++
++[random]
++seed=JITTER
+ 
+ [ evp_properties ]
+ # This section is intentionally added empty here to be tuned on particular systems

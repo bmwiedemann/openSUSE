@@ -1,4 +1,206 @@
 -------------------------------------------------------------------
+Fri Apr  4 13:34:27 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 3.5.0:
+  * Changes:
+    - Default encryption cipher for the req, cms, and smime applications
+      changed from des-ede3-cbc to aes-256-cbc.
+    - The default TLS supported groups list has been changed to include
+      and prefer hybrid PQC KEM groups. Some practically unused groups
+      were removed from the default list.
+    - The default TLS keyshares have been changed to offer X25519MLKEM768
+      and and X25519.
+    - All BIO_meth_get_*() functions were deprecated.
+  * New features:
+    - Support for server side QUIC (RFC 9000)
+    - Support for 3rd party QUIC stacks including 0-RTT support
+    - Support for PQC algorithms (ML-KEM, ML-DSA and SLH-DSA)
+    - A new configuration option no-tls-deprecated-ec to disable support
+      for TLS groups deprecated in RFC8422
+    - A new configuration option enable-fips-jitter to make the FIPS
+      provider to use the JITTER seed source
+    - Support for central key generation in CMP
+    - Support added for opaque symmetric key objects (EVP_SKEY)
+    - Support for multiple TLS keyshares and improved TLS key establishment
+      group configurability
+    - API support for pipelining in provided cipher algorithms
+  * Remove patches:
+    - openssl-3-disable-hmac-hw-acceleration-with-engine-digest.patch
+    - openssl-3-support-CPACF-sha3-shake-perf-improvement.patch
+    - openssl-3-add-defines-CPACF-funcs.patch
+    - openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
+    - openssl-3-add-xof-state-handling-s3_absorb.patch
+    - openssl-3-fix-state-handling-sha3_absorb_s390x.patch
+    - openssl-3-fix-s390x_shake_squeeze.patch
+    - openssl-3-hw-acceleration-aes-xts-s390x.patch
+    - openssl-3-support-EVP_DigestSqueeze-in-digest-prov-s390x.patch
+    - openssl-3-fix-state-handling-keccak_final_s390x.patch
+    - openssl-3-add-hw-acceleration-hmac.patch
+    - openssl-3-fix-state-handling-sha3_final_s390x.patch
+    - openssl-3-fix-hmac-digest-detection-s390x.patch
+    - openssl-3-support-multiple-sha3_squeeze_s390x.patch
+    - openssl-3-fix-sha3-squeeze-ppc64.patch
+    - openssl-3-fix-s390x_sha3_absorb.patch
+    - openssl-3-fix-state-handling-shake_final_s390x.patch
+    - openssl-3-add_EVP_DigestSqueeze_api.patch
+    - openssl-FIPS-enforce-security-checks-during-initialization.patch
+    - openssl-FIPS-140-3-zeroization.patch
+    - openssl-FIPS-Add-explicit-indicator-for-key-length.patch
+    - openssl-FIPS-Mark-SHA1-as-nonapproved.patch
+    - openssl-Remove-EC-curves.patch
+    - openssl-FIPS-services-minimize.patch
+    - openssl-Revert-Improve-FIPS-RSA-keygen-performance.patch
+    - openssl-3-FIPS-GCM-Implement-explicit-indicator-for-IV-gen.patch
+    - openssl-3-fix-quic_multistream_test.patch
+    - openssl-3-jitterentropy-3.4.0.patch
+    - openssl-Add-FIPS-indicator-parameter-to-HKDF.patch
+    - openssl-FIPS-140-3-DRBG.patch
+    - openssl-FIPS-Use-FFDHE2048-in-self-test.patch
+    - openssl-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
+    - openssl-FIPS-signature-Add-indicator-for-PSS-salt-length.patch
+    - openssl-pbkdf2-Set-indicator-if-pkcs5-param-disabled-checks.patch
+    - openssl-FIPS-enforce-EMS-support.patch
+    - openssl-Allow-disabling-of-SHA1-signatures.patch
+    - openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+  * Rebased patches:
+    - openssl-pkgconfig.patch
+    - openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
+    - openssl-Add-Kernel-FIPS-mode-flag-support.patch
+    - openssl-Force-FIPS.patch
+    - openssl-disable-fipsinstall.patch
+    - openssl-FIPS-embed-hmac.patch
+    - openssl-Add-changes-to-ectest-and-eccurve.patch
+    - openssl-Disable-explicit-ec.patch
+    - openssl-skipped-tests-EC-curves.patch
+    - openssl-FIPS-140-3-keychecks.patch
+    - openssl-FIPS-early-KATS.patch
+    - openssl-FIPS-limit-rsa-encrypt.patch
+    - openssl-FIPS-Expose-a-FIPS-indicator.patch
+    - openssl-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
+    - openssl-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
+    - openssl-pbkdf2-Set-minimum-password-length-of-8-bytes.patch
+    - openssl-FIPS-RSA-disable-shake.patch
+    - openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
+    - openssl-FIPS-Enforce-error-state.patch
+    - openssl-FIPS-Remove-X9.31-padding-from-FIPS-prov.patch
+    - openssl-FIPS-enforce-EMS-support.patch
+    - openssl-TESTS-Disable-default-provider-crypto-policies.patch
+    - openssl-skip-quic-pairwise.patch
+  * Add patches:
+    - openssl-FIPS-Fix-encoder-decoder-negative-test.patch
+    - openssl-FIPS-SUSE-FIPS-module-version.patch
+    - openssl-FIPS-EC-disable-weak-curves.patch
+    - openssl-FIPS-NO-DES-support.patch
+    - openssl-FIPS-NO-DSA-Support.patch
+    - openssl-FIPS-NO-Kmac.patch
+    - openssl-FIPS-NO-PQ-ML-SLH-DSA.patch
+    - openssl-shared-jitterentropy.patch
+    - openssl-rh-allow-sha1-signatures.patch
+    - openssl-disable-75-test_quicapi-test.patch
+
+- Changes between 3.3.0 and 3.4.0:
+  * Changes:
+    - Deprecation of TS_VERIFY_CTX_set_* functions and addition of
+      replacement TS_VERIFY_CTX_set0_* functions with improved semantics
+    - The X25519 and X448 key exchange implementation in the FIPS provider
+      is unapproved and has fips=no property.
+    - SHAKE-128 and SHAKE-256 implementations have no default digest length
+      anymore. That means these algorithms cannot be used with
+      EVP_DigestFinal/_ex() unless the xoflen param is set before.
+    - Setting config_diagnostics=1 in the config file will cause errors to
+      be returned from SSL_CTX_new() and SSL_CTX_new_ex() if there is an
+      error in the ssl module configuration.
+    - An empty renegotiate extension will be used in TLS client hellos
+      instead of the empty renegotiation SCSV, for all connections with a
+      minimum TLS version > 1.0.
+    - Deprecation of SSL_SESSION_get_time(), SSL_SESSION_set_time() and
+      SSL_CTX_flush_sessions() functions in favor of their respective _ex
+      functions which are Y2038-safe on platforms with Y2038-safe time_t
+  * New features:
+    - Support for directly fetched composite signature algorithms such as
+      RSA-SHA2-256 including new API functions
+    - FIPS indicators support in the FIPS provider and various updates of
+      the FIPS provider required for future FIPS 140-3 validations
+    - Implementation of RFC 9579 (PBMAC1) in PKCS#12
+    - An optional additional random seed source RNG JITTER using a statically
+      linked jitterentropy library
+    - New options -not_before and -not_after for explicit setting start and
+      end dates of certificates created with the req and x509 apps
+    - Support for integrity-only cipher suites TLS_SHA256_SHA256 and
+      TLS_SHA384_SHA384 in TLS 1.3, as defined in RFC 9150
+    - Support for retrieving certificate request templates and CRLs in CMP
+    - Support for additional X.509v3 extensions related to Attribute Certificates
+    - Initial Attribute Certificate (RFC 5755) support
+    - Possibility to customize ECC groups initialization to use precomputed
+      values to save CPU time and use of this feature by the P-256 implementation
+
+- Changes between 3.2.0 and 3.3.0:
+  * Changes:
+    - Optimized AES-CTR for ARM Neoverse V1 and V2
+    - Various optimizations for cryptographic routines using RISC-V vector
+      crypto extensions
+    - Added assembly implementation for md5 on loongarch64
+    - Accept longer context for TLS 1.2 exporters
+    - The activate and soft_load configuration settings for providers in
+      openssl.cnf have been updated to require a value of [1|yes|true|on]
+      (in lower or UPPER case) to enable the setting. Conversely a value of
+      [0|no|false|off] will disable the setting.
+    - In openssl speed, changed the default hash function used with hmac from
+      md5 to sha256.
+    - The -verify option to the openssl crl and openssl req will make the
+      program exit with 1 on failure.
+    - The d2i_ASN1_GENERALIZEDTIME(), d2i_ASN1_UTCTIME(), ASN1_TIME_check(),
+      and related functions have been augmented to check for a minimum length
+      of the input string, in accordance with ITU-T X.690 section 11.7 and 11.8.
+    - OPENSSL_sk_push() and sk__push() functions now return 0 instead of -1
+      if called with a NULL stack argument.
+    - New limit on HTTP response headers is introduced to HTTP client.
+      The default limit is set to 256 header lines.
+  * Bug fixes and mitigations:
+    - The BIO_get_new_index() function can only be called 127 times before
+      it reaches its upper bound of BIO_TYPE_MASK and will now return -1
+      once its exhausted.
+  * new features:
+    - Support for qlog for tracing QUIC connections has been added
+    - Added APIs to allow configuring the negotiated idle timeout for QUIC
+      connections, and to allow determining the number of additional streams
+      that can currently be created for a QUIC connection.
+    - Added APIs to allow disabling implicit QUIC event processing for QUIC
+      SSL objects
+    - Added APIs to allow querying the size and utilisation of a QUIC
+      stream's write buffer
+    - New API SSL_write_ex2, which can be used to send an end-of-stream (FIN)
+      condition in an optimised way when using QUIC.
+    - Limited support for polling of QUIC connection and stream objects in a
+      non-blocking manner.
+    - Added a new EVP_DigestSqueeze() API. This allows SHAKE to squeeze multiple
+      times with different output sizes.
+    - The BLAKE2s hash algorithm matches BLAKE2b's support for configurable
+      output length.
+    - The EVP_PKEY_fromdata function has been augmented to allow for the
+      derivation of CRT (Chinese Remainder Theorem) parameters when requested
+    - Added API functions SSL_SESSION_get_time_ex(), SSL_SESSION_set_time_ex()
+      using time_t which is Y2038 safe on 32 bit systems when 64 bit time
+      is enabled.
+    - Unknown entries in TLS SignatureAlgorithms, ClientSignatureAlgorithms
+      config
+      options and the respective calls to SSL[_CTX]_set1_sigalgs() and
+      SSL[_CTX]_set1_client_sigalgs() that start with ? character are ignored
+      and the configuration will still be used.
+    - Added -set_issuer and -set_subject options to openssl x509 to override
+      the Issuer and Subject when creating a certificate. The -subj option
+      now is an alias for -set_subject.
+    - Added several new features of CMPv3 defined in RFC 9480 and RFC 9483
+    - New option SSL_OP_PREFER_NO_DHE_KEX, which allows configuring a TLS1.3
+      server to prefer session resumption using PSK-only key exchange over
+      PSK with DHE, if both are available.
+    - New atexit configuration switch, which controls whether the OPENSSL_cleanup
+      is registered when libcrypto is unloaded.
+    - Added X509_STORE_get1_objects to avoid issues with the existing
+      X509_STORE_get0_objects API in multi-threaded applications.
+    - Support for using certificate profiles and extened delayed delivery in CMP
+
+-------------------------------------------------------------------
 Fri Mar 21 17:19:40 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - FIPS: Mark SHA-1 as non-approved in the SLI. [jsc#PED-12224]

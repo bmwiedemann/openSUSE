@@ -1,28 +1,162 @@
-From 4512f620199126e6b87433ef184f0450652ee28a Mon Sep 17 00:00:00 2001
-From: Dmitry Belyavskiy <dbelyavs@redhat.com>
-Date: Thu, 4 Apr 2024 11:42:18 +0200
-Subject: [PATCH 19/50] 0044-FIPS-140-3-keychecks.patch
+From 36d037a91a3ad76988c4495547c2bca33b525811 Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Mon, 24 Mar 2025 10:50:37 -0400
+Subject: [PATCH 27/53] FIPS: RSA: PCTs
 
-Patch-name: 0044-FIPS-140-3-keychecks.patch
-Patch-id: 44
-Patch-status: |
-    # Extra public/private key checks required by FIPS-140-3
-From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
+Signed-off-by: Simo Sorce <simo@redhat.com>
 ---
- crypto/dh/dh_key.c                            | 26 ++++++++++
- crypto/rsa/rsa_gen.c                          |  3 ++
- .../implementations/exchange/ecdh_exch.c      | 19 ++++++++
- providers/implementations/keymgmt/ec_kmgmt.c  | 24 +++++++++-
  providers/implementations/keymgmt/rsa_kmgmt.c | 18 +++++++
- .../implementations/signature/ecdsa_sig.c     | 37 +++++++++++++--
  providers/implementations/signature/rsa_sig.c | 47 +++++++++++++++++--
- 7 files changed, 165 insertions(+), 9 deletions(-)
+ 2 files changed, 61 insertions(+), 4 deletions(-)
 
-diff --git a/crypto/dh/dh_key.c b/crypto/dh/dh_key.c
-index 7132b9b68e..189bfc3e8b 100644
---- a/crypto/dh/dh_key.c
-+++ b/crypto/dh/dh_key.c
-@@ -43,6 +43,9 @@ int ossl_dh_compute_key(unsigned char *key, const BIGNUM *pub_key, DH *dh)
+Index: openssl-3.5.0-beta1/providers/implementations/keymgmt/rsa_kmgmt.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/keymgmt/rsa_kmgmt.c
++++ openssl-3.5.0-beta1/providers/implementations/keymgmt/rsa_kmgmt.c
+@@ -433,6 +433,7 @@ struct rsa_gen_ctx {
+ #if defined(FIPS_MODULE) && !defined(OPENSSL_NO_ACVP_TESTS)
+     /* ACVP test parameters */
+     OSSL_PARAM *acvp_test_params;
++    void *prov_rsa_ctx;
+ #endif
+ };
+ 
+@@ -446,6 +447,12 @@ static int rsa_gencb(int p, int n, BN_GE
+     return gctx->cb(params, gctx->cbarg);
+ }
+ 
++#ifdef FIPS_MODULE
++void *rsa_newctx(void *provctx, const char *propq);
++void rsa_freectx(void *vctx);
++int do_rsa_pct(void *, const char *, void *);
++#endif
++
+ static void *gen_init(void *provctx, int selection, int rsa_type,
+                       const OSSL_PARAM params[])
+ {
+@@ -473,6 +480,10 @@ static void *gen_init(void *provctx, int
+ 
+     if (!rsa_gen_set_params(gctx, params))
+         goto err;
++#ifdef FIPS_MODULE
++    if (gctx != NULL)
++        gctx->prov_rsa_ctx = rsa_newctx(provctx, NULL);
++#endif
+     return gctx;
+ 
+ err:
+@@ -629,6 +640,11 @@ static void *rsa_gen(void *genctx, OSSL_
+ 
+     rsa = rsa_tmp;
+     rsa_tmp = NULL;
++#ifdef FIPS_MODULE
++    /* Pairwise consistency test */
++    if (do_rsa_pct(gctx->prov_rsa_ctx, "sha256", rsa) != 1)
++        abort();
++#endif
+  err:
+     BN_GENCB_free(gencb);
+     RSA_free(rsa_tmp);
+@@ -644,6 +660,8 @@ static void rsa_gen_cleanup(void *genctx
+ #if defined(FIPS_MODULE) && !defined(OPENSSL_NO_ACVP_TESTS)
+     ossl_rsa_acvp_test_gen_params_free(gctx->acvp_test_params);
+     gctx->acvp_test_params = NULL;
++    rsa_freectx(gctx->prov_rsa_ctx);
++    gctx->prov_rsa_ctx = NULL;
+ #endif
+     BN_clear_free(gctx->pub_exp);
+     OPENSSL_free(gctx);
+Index: openssl-3.5.0-beta1/providers/implementations/signature/rsa_sig.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/signature/rsa_sig.c
++++ openssl-3.5.0-beta1/providers/implementations/signature/rsa_sig.c
+@@ -35,7 +35,7 @@
+ 
+ #define RSA_DEFAULT_DIGEST_NAME OSSL_DIGEST_NAME_SHA1
+ 
+-static OSSL_FUNC_signature_newctx_fn rsa_newctx;
++OSSL_FUNC_signature_newctx_fn rsa_newctx;
+ static OSSL_FUNC_signature_sign_init_fn rsa_sign_init;
+ static OSSL_FUNC_signature_verify_init_fn rsa_verify_init;
+ static OSSL_FUNC_signature_verify_recover_init_fn rsa_verify_recover_init;
+@@ -52,7 +52,7 @@ static OSSL_FUNC_signature_digest_sign_f
+ static OSSL_FUNC_signature_digest_verify_init_fn rsa_digest_verify_init;
+ static OSSL_FUNC_signature_digest_verify_update_fn rsa_digest_verify_update;
+ static OSSL_FUNC_signature_digest_verify_final_fn rsa_digest_verify_final;
+-static OSSL_FUNC_signature_freectx_fn rsa_freectx;
++OSSL_FUNC_signature_freectx_fn rsa_freectx;
+ static OSSL_FUNC_signature_dupctx_fn rsa_dupctx;
+ static OSSL_FUNC_signature_query_key_types_fn rsa_sigalg_query_key_types;
+ static OSSL_FUNC_signature_get_ctx_params_fn rsa_get_ctx_params;
+@@ -224,7 +224,7 @@ static int rsa_check_parameters(PROV_RSA
+     return 1;
+ }
+ 
+-static void *rsa_newctx(void *provctx, const char *propq)
++void *rsa_newctx(void *provctx, const char *propq)
+ {
+     PROV_RSA_CTX *prsactx = NULL;
+     char *propq_copy = NULL;
+@@ -1313,7 +1313,7 @@ int rsa_digest_verify_final(void *vprsac
+     return ok;
+ }
+ 
+-static void rsa_freectx(void *vprsactx)
++void rsa_freectx(void *vprsactx)
+ {
+     PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
+ 
+@@ -1858,6 +1858,45 @@ static const OSSL_PARAM *rsa_settable_ct
+     return EVP_MD_settable_ctx_params(prsactx->md);
+ }
+ 
++#ifdef FIPS_MODULE
++int do_rsa_pct(void *vctx, const char *mdname, void *rsa)
++{
++    static const unsigned char data[32];
++    unsigned char *sigbuf = NULL;
++    size_t siglen = 0;
++    int ret = 0;
++
++    if (rsa_digest_sign_init(vctx, mdname, rsa, NULL) <= 0)
++        return 0;
++
++    if (rsa_digest_sign_update(vctx, data, sizeof(data)) <= 0)
++        return 0;
++
++    if (rsa_digest_sign_final(vctx, NULL, &siglen, 0) <= 0)
++        return 0;
++
++    if ((sigbuf = OPENSSL_malloc(siglen)) == NULL)
++        return 0;
++
++    if (rsa_digest_sign_final(vctx, sigbuf, &siglen, siglen) <= 0)
++        goto err;
++
++    if (rsa_digest_verify_init(vctx, mdname, rsa, NULL) <= 0)
++        goto err;
++
++    if (rsa_digest_verify_update(vctx, data, sizeof(data)) <= 0)
++        goto err;
++
++    if (rsa_digest_verify_final(vctx, sigbuf, siglen) <= 0)
++        goto err;
++    ret = 1;
++
++ err:
++    OPENSSL_free(sigbuf);
++    return ret;
++}
++#endif
++
+ const OSSL_DISPATCH ossl_rsa_signature_functions[] = {
+     { OSSL_FUNC_SIGNATURE_NEWCTX, (void (*)(void))rsa_newctx },
+     { OSSL_FUNC_SIGNATURE_SIGN_INIT, (void (*)(void))rsa_sign_init },
+Index: openssl-3.5.0-beta1/crypto/dh/dh_key.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/crypto/dh/dh_key.c
++++ openssl-3.5.0-beta1/crypto/dh/dh_key.c
+@@ -43,6 +43,9 @@ int ossl_dh_compute_key(unsigned char *k
      BN_MONT_CTX *mont = NULL;
      BIGNUM *z = NULL, *pminus1;
      int ret = -1;
@@ -32,7 +166,7 @@ index 7132b9b68e..189bfc3e8b 100644
  
      if (BN_num_bits(dh->params.p) > OPENSSL_DH_MAX_MODULUS_BITS) {
          ERR_raise(ERR_LIB_DH, DH_R_MODULUS_TOO_LARGE);
-@@ -60,6 +63,13 @@ int ossl_dh_compute_key(unsigned char *key, const BIGNUM *pub_key, DH *dh)
+@@ -60,6 +63,13 @@ int ossl_dh_compute_key(unsigned char *k
          return 0;
      }
  
@@ -78,26 +212,12 @@ index 7132b9b68e..189bfc3e8b 100644
      dh->dirty_cnt++;
      ok = 1;
   err:
-diff --git a/crypto/rsa/rsa_gen.c b/crypto/rsa/rsa_gen.c
-index 0cdbb3fde2..65ff9d2d47 100644
---- a/crypto/rsa/rsa_gen.c
-+++ b/crypto/rsa/rsa_gen.c
-@@ -464,6 +464,9 @@ static int rsa_keygen(OSSL_LIB_CTX *libctx, RSA *rsa, int bits, int primes,
-             rsa->dmp1 = NULL;
-             rsa->dmq1 = NULL;
-             rsa->iqmp = NULL;
-+#ifdef FIPS_MODULE
-+            abort();
-+#endif /* defined(FIPS_MODULE) */
-         }
-     }
-     return ok;
-diff --git a/providers/implementations/exchange/ecdh_exch.c b/providers/implementations/exchange/ecdh_exch.c
-index 5b8412aba1..1d98eba132 100644
---- a/providers/implementations/exchange/ecdh_exch.c
-+++ b/providers/implementations/exchange/ecdh_exch.c
-@@ -489,6 +489,25 @@ int ecdh_plain_derive(void *vpecdhctx, unsigned char *secret,
-     }
+Index: openssl-3.5.0-beta1/providers/implementations/exchange/ecdh_exch.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/exchange/ecdh_exch.c
++++ openssl-3.5.0-beta1/providers/implementations/exchange/ecdh_exch.c
+@@ -560,6 +560,25 @@ int ecdh_plain_derive(void *vpecdhctx, u
+ #endif
  
      ppubkey = EC_KEY_get0_public_key(pecdhctx->peerk);
 +#ifdef FIPS_MODULE
@@ -122,17 +242,18 @@ index 5b8412aba1..1d98eba132 100644
  
      retlen = ECDH_compute_key(secret, size, ppubkey, privk, NULL);
  
-diff --git a/providers/implementations/keymgmt/ec_kmgmt.c b/providers/implementations/keymgmt/ec_kmgmt.c
-index 9390935394..1399be1751 100644
---- a/providers/implementations/keymgmt/ec_kmgmt.c
-+++ b/providers/implementations/keymgmt/ec_kmgmt.c
-@@ -991,8 +991,17 @@ struct ec_gen_ctx {
+Index: openssl-3.5.0-beta1/providers/implementations/keymgmt/ec_kmgmt.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/keymgmt/ec_kmgmt.c
++++ openssl-3.5.0-beta1/providers/implementations/keymgmt/ec_kmgmt.c
+@@ -993,9 +993,18 @@ struct ec_gen_ctx {
      EC_GROUP *gen_group;
      unsigned char *dhkem_ikm;
      size_t dhkem_ikmlen;
 +#ifdef FIPS_MODULE
 +    void *ecdsa_sig_ctx;
 +#endif
+     OSSL_FIPS_IND_DECLARE
  };
  
 +#ifdef FIPS_MODULE
@@ -144,7 +265,7 @@ index 9390935394..1399be1751 100644
  static void *ec_gen_init(void *provctx, int selection,
                           const OSSL_PARAM params[])
  {
-@@ -1011,6 +1020,10 @@ static void *ec_gen_init(void *provctx, int selection,
+@@ -1015,6 +1024,10 @@ static void *ec_gen_init(void *provctx,
              gctx = NULL;
          }
      }
@@ -155,7 +276,7 @@ index 9390935394..1399be1751 100644
      return gctx;
  }
  
-@@ -1291,6 +1304,12 @@ static void *ec_gen(void *genctx, OSSL_CALLBACK *osslcb, void *cbarg)
+@@ -1326,6 +1339,12 @@ static void *ec_gen(void *genctx, OSSL_C
  
      if (gctx->ecdh_mode != -1)
          ret = ret && ossl_ec_set_ecdh_cofactor_mode(ec, gctx->ecdh_mode);
@@ -168,7 +289,7 @@ index 9390935394..1399be1751 100644
  
      if (gctx->group_check != NULL)
          ret = ret && ossl_ec_set_check_group_type_from_name(ec,
-@@ -1361,7 +1380,10 @@ static void ec_gen_cleanup(void *genctx)
+@@ -1396,7 +1415,10 @@ static void ec_gen_cleanup(void *genctx)
  
      if (gctx == NULL)
          return;
@@ -180,87 +301,30 @@ index 9390935394..1399be1751 100644
      OPENSSL_clear_free(gctx->dhkem_ikm, gctx->dhkem_ikmlen);
      EC_GROUP_free(gctx->gen_group);
      BN_free(gctx->p);
-diff --git a/providers/implementations/keymgmt/rsa_kmgmt.c b/providers/implementations/keymgmt/rsa_kmgmt.c
-index c24cb8da88..4462afa041 100644
---- a/providers/implementations/keymgmt/rsa_kmgmt.c
-+++ b/providers/implementations/keymgmt/rsa_kmgmt.c
-@@ -434,6 +434,7 @@ struct rsa_gen_ctx {
- #if defined(FIPS_MODULE) && !defined(OPENSSL_NO_ACVP_TESTS)
-     /* ACVP test parameters */
-     OSSL_PARAM *acvp_test_params;
-+    void *prov_rsa_ctx;
- #endif
- };
- 
-@@ -447,6 +448,12 @@ static int rsa_gencb(int p, int n, BN_GENCB *cb)
-     return gctx->cb(params, gctx->cbarg);
- }
- 
-+#ifdef FIPS_MODULE
-+void *rsa_newctx(void *provctx, const char *propq);
-+void rsa_freectx(void *vctx);
-+int do_rsa_pct(void *, const char *, void *);
-+#endif
-+
- static void *gen_init(void *provctx, int selection, int rsa_type,
-                       const OSSL_PARAM params[])
- {
-@@ -474,6 +481,10 @@ static void *gen_init(void *provctx, int selection, int rsa_type,
- 
-     if (!rsa_gen_set_params(gctx, params))
-         goto err;
-+#ifdef FIPS_MODULE
-+    if (gctx != NULL)
-+        gctx->prov_rsa_ctx = rsa_newctx(provctx, NULL);
-+#endif
-     return gctx;
- 
- err:
-@@ -630,6 +641,11 @@ static void *rsa_gen(void *genctx, OSSL_CALLBACK *osslcb, void *cbarg)
- 
-     rsa = rsa_tmp;
-     rsa_tmp = NULL;
-+#ifdef FIPS_MODULE
-+    /* Pairwise consistency test */
-+    if (do_rsa_pct(gctx->prov_rsa_ctx, "sha256", rsa) != 1)
-+        abort();
-+#endif
-  err:
-     BN_GENCB_free(gencb);
-     RSA_free(rsa_tmp);
-@@ -645,6 +661,8 @@ static void rsa_gen_cleanup(void *genctx)
- #if defined(FIPS_MODULE) && !defined(OPENSSL_NO_ACVP_TESTS)
-     ossl_rsa_acvp_test_gen_params_free(gctx->acvp_test_params);
-     gctx->acvp_test_params = NULL;
-+    rsa_freectx(gctx->prov_rsa_ctx);
-+    gctx->prov_rsa_ctx = NULL;
- #endif
-     BN_clear_free(gctx->pub_exp);
-     OPENSSL_free(gctx);
-diff --git a/providers/implementations/signature/ecdsa_sig.c b/providers/implementations/signature/ecdsa_sig.c
-index fe65ed8dc6..f158105e71 100644
---- a/providers/implementations/signature/ecdsa_sig.c
-+++ b/providers/implementations/signature/ecdsa_sig.c
+Index: openssl-3.5.0-beta1/providers/implementations/signature/ecdsa_sig.c
+===================================================================
+--- openssl-3.5.0-beta1.orig/providers/implementations/signature/ecdsa_sig.c
++++ openssl-3.5.0-beta1/providers/implementations/signature/ecdsa_sig.c
 @@ -33,7 +33,7 @@
- #include "crypto/ec.h"
  #include "prov/der_ec.h"
+ #include "crypto/ec.h"
  
 -static OSSL_FUNC_signature_newctx_fn ecdsa_newctx;
 +OSSL_FUNC_signature_newctx_fn ecdsa_newctx;
  static OSSL_FUNC_signature_sign_init_fn ecdsa_sign_init;
  static OSSL_FUNC_signature_verify_init_fn ecdsa_verify_init;
  static OSSL_FUNC_signature_sign_fn ecdsa_sign;
-@@ -44,7 +44,7 @@ static OSSL_FUNC_signature_digest_sign_final_fn ecdsa_digest_sign_final;
+@@ -48,7 +48,7 @@ static OSSL_FUNC_signature_digest_sign_f
  static OSSL_FUNC_signature_digest_verify_init_fn ecdsa_digest_verify_init;
  static OSSL_FUNC_signature_digest_verify_update_fn ecdsa_digest_signverify_update;
  static OSSL_FUNC_signature_digest_verify_final_fn ecdsa_digest_verify_final;
 -static OSSL_FUNC_signature_freectx_fn ecdsa_freectx;
 +OSSL_FUNC_signature_freectx_fn ecdsa_freectx;
  static OSSL_FUNC_signature_dupctx_fn ecdsa_dupctx;
+ static OSSL_FUNC_signature_query_key_types_fn ecdsa_sigalg_query_key_types;
  static OSSL_FUNC_signature_get_ctx_params_fn ecdsa_get_ctx_params;
- static OSSL_FUNC_signature_gettable_ctx_params_fn ecdsa_gettable_ctx_params;
-@@ -107,7 +107,7 @@ typedef struct {
-     unsigned int nonce_type;
+@@ -139,7 +139,7 @@ typedef struct {
+     OSSL_FIPS_IND_DECLARE
  } PROV_ECDSA_CTX;
  
 -static void *ecdsa_newctx(void *provctx, const char *propq)
@@ -268,8 +332,8 @@ index fe65ed8dc6..f158105e71 100644
  {
      PROV_ECDSA_CTX *ctx;
  
-@@ -380,7 +380,7 @@ int ecdsa_digest_verify_final(void *vctx, const unsigned char *sig,
-     return ecdsa_verify(ctx, sig, siglen, digest, (size_t)dlen);
+@@ -604,7 +604,7 @@ int ecdsa_digest_verify_final(void *vctx
+     return ok;
  }
  
 -static void ecdsa_freectx(void *vctx)
@@ -277,7 +341,7 @@ index fe65ed8dc6..f158105e71 100644
  {
      PROV_ECDSA_CTX *ctx = (PROV_ECDSA_CTX *)vctx;
  
-@@ -601,6 +601,35 @@ static const OSSL_PARAM *ecdsa_settable_ctx_md_params(void *vctx)
+@@ -853,6 +853,35 @@ static const OSSL_PARAM *ecdsa_settable_
      return EVP_MD_settable_ctx_params(ctx->md);
  }
  
@@ -313,92 +377,3 @@ index fe65ed8dc6..f158105e71 100644
  const OSSL_DISPATCH ossl_ecdsa_signature_functions[] = {
      { OSSL_FUNC_SIGNATURE_NEWCTX, (void (*)(void))ecdsa_newctx },
      { OSSL_FUNC_SIGNATURE_SIGN_INIT, (void (*)(void))ecdsa_sign_init },
-diff --git a/providers/implementations/signature/rsa_sig.c b/providers/implementations/signature/rsa_sig.c
-index 76db37dd02..22d93ead53 100644
---- a/providers/implementations/signature/rsa_sig.c
-+++ b/providers/implementations/signature/rsa_sig.c
-@@ -34,7 +34,7 @@
- 
- #define RSA_DEFAULT_DIGEST_NAME OSSL_DIGEST_NAME_SHA1
- 
--static OSSL_FUNC_signature_newctx_fn rsa_newctx;
-+OSSL_FUNC_signature_newctx_fn rsa_newctx;
- static OSSL_FUNC_signature_sign_init_fn rsa_sign_init;
- static OSSL_FUNC_signature_verify_init_fn rsa_verify_init;
- static OSSL_FUNC_signature_verify_recover_init_fn rsa_verify_recover_init;
-@@ -47,7 +47,7 @@ static OSSL_FUNC_signature_digest_sign_final_fn rsa_digest_sign_final;
- static OSSL_FUNC_signature_digest_verify_init_fn rsa_digest_verify_init;
- static OSSL_FUNC_signature_digest_verify_update_fn rsa_digest_signverify_update;
- static OSSL_FUNC_signature_digest_verify_final_fn rsa_digest_verify_final;
--static OSSL_FUNC_signature_freectx_fn rsa_freectx;
-+OSSL_FUNC_signature_freectx_fn rsa_freectx;
- static OSSL_FUNC_signature_dupctx_fn rsa_dupctx;
- static OSSL_FUNC_signature_get_ctx_params_fn rsa_get_ctx_params;
- static OSSL_FUNC_signature_gettable_ctx_params_fn rsa_gettable_ctx_params;
-@@ -170,7 +170,7 @@ static int rsa_check_parameters(PROV_RSA_CTX *prsactx, int min_saltlen)
-     return 1;
- }
- 
--static void *rsa_newctx(void *provctx, const char *propq)
-+void *rsa_newctx(void *provctx, const char *propq)
- {
-     PROV_RSA_CTX *prsactx = NULL;
-     char *propq_copy = NULL;
-@@ -974,7 +974,7 @@ int rsa_digest_verify_final(void *vprsactx, const unsigned char *sig,
-     return rsa_verify(vprsactx, sig, siglen, digest, (size_t)dlen);
- }
- 
--static void rsa_freectx(void *vprsactx)
-+void rsa_freectx(void *vprsactx)
- {
-     PROV_RSA_CTX *prsactx = (PROV_RSA_CTX *)vprsactx;
- 
-@@ -1451,6 +1451,45 @@ static const OSSL_PARAM *rsa_settable_ctx_md_params(void *vprsactx)
-     return EVP_MD_settable_ctx_params(prsactx->md);
- }
- 
-+#ifdef FIPS_MODULE
-+int do_rsa_pct(void *vctx, const char *mdname, void *rsa)
-+{
-+    static const unsigned char data[32];
-+    unsigned char *sigbuf = NULL;
-+    size_t siglen = 0;
-+    int ret = 0;
-+
-+    if (rsa_digest_sign_init(vctx, mdname, rsa, NULL) <= 0)
-+        return 0;
-+
-+    if (rsa_digest_signverify_update(vctx, data, sizeof(data)) <= 0)
-+        return 0;
-+
-+    if (rsa_digest_sign_final(vctx, NULL, &siglen, 0) <= 0)
-+        return 0;
-+
-+    if ((sigbuf = OPENSSL_malloc(siglen)) == NULL)
-+        return 0;
-+
-+    if (rsa_digest_sign_final(vctx, sigbuf, &siglen, siglen) <= 0)
-+        goto err;
-+
-+    if (rsa_digest_verify_init(vctx, mdname, rsa, NULL) <= 0)
-+        goto err;
-+
-+    if (rsa_digest_signverify_update(vctx, data, sizeof(data)) <= 0)
-+        goto err;
-+
-+    if (rsa_digest_verify_final(vctx, sigbuf, siglen) <= 0)
-+        goto err;
-+    ret = 1;
-+
-+ err:
-+    OPENSSL_free(sigbuf);
-+    return ret;
-+}
-+#endif
-+
- const OSSL_DISPATCH ossl_rsa_signature_functions[] = {
-     { OSSL_FUNC_SIGNATURE_NEWCTX, (void (*)(void))rsa_newctx },
-     { OSSL_FUNC_SIGNATURE_SIGN_INIT, (void (*)(void))rsa_sign_init },
--- 
-2.44.0
-

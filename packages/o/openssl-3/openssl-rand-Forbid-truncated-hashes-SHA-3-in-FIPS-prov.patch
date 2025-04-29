@@ -1,14 +1,28 @@
-From 936e081bd752ca0a883568aaf3b5752c9eaccb12 Mon Sep 17 00:00:00 2001
-From: Dmitry Belyavskiy <dbelyavs@redhat.com>
-Date: Mon, 21 Aug 2023 15:38:21 +0200
-Subject: [PATCH 36/48] 
- 0080-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
+From 0a0734b3b47640e5e0665a5775cf68e8a01f59f6 Mon Sep 17 00:00:00 2001
+From: rpm-build <rpm-build>
+Date: Wed, 6 Mar 2024 19:17:16 +0100
+Subject: [PATCH 36/53] FIPS: RAND: Forbid truncated hashes & SHA-3
 
-Patch-name: 0080-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
-Patch-id: 80
-Patch-status: |
-    # We believe that some changes present in CentOS are not necessary
-    # because ustream has a check for FIPS version
+Section D.R "Hash Functions Acceptable for Use in the SP 800-90A DRBGs"
+of the Implementation Guidance for FIPS 140-3 [1] notes that there is no
+efficiency improvement when using truncated hash functions (i.e. SHA-224
+rather than SHA-256 or SHA-384, SHA-512/224, or SHA512/256 rather than
+SHA-512). Starting on 2023-05-16, all submissions to NIST's
+Cryptographic Module Validation Program shall only use SHA-1, SHA-256,
+or SHA-512.
+
+NIST further notes that the same will apply for the truncated versions
+of SHA-3, i.e. SHA3-224 and SHA3-384, and that SHA-3 should currently
+not be used.
+
+Adjust tests to only run Hash-DRBG and HMAC-DRBG tests with truncated
+algorithms in the default provider.
+
+[1]: https://csrc.nist.gov/CSRC/media/Projects/cryptographic-module-validation-program/documents/fips%20140-3/FIPS%20140-3%20IG.pdf
+
+Signed-off-by: Clemens Lang <cllang@redhat.com>
+
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
  providers/implementations/rands/drbg_hash.c |  12 ++
  providers/implementations/rands/drbg_hmac.c |  12 ++
@@ -16,11 +30,11 @@ Patch-status: |
  3 files changed, 153 insertions(+)
 
 diff --git a/providers/implementations/rands/drbg_hash.c b/providers/implementations/rands/drbg_hash.c
-index fb824abfa6..b90fee6dec 100644
+index 8bb831ae35..cedf5c3894 100644
 --- a/providers/implementations/rands/drbg_hash.c
 +++ b/providers/implementations/rands/drbg_hash.c
-@@ -471,6 +471,18 @@ static int drbg_hash_set_ctx_params(void *vctx, const OSSL_PARAM params[])
-         if (!ossl_drbg_verify_digest(libctx, md))
+@@ -579,6 +579,18 @@ static int drbg_hash_set_ctx_params_locked(void *vctx, const OSSL_PARAM params[]
+         if (!ossl_drbg_verify_digest(ctx, libctx, md))
              return 0;   /* Error already raised for us */
  
 +#ifdef FIPS_MODULE
@@ -36,14 +50,14 @@ index fb824abfa6..b90fee6dec 100644
 +#endif /* defined(FIPS_MODULE) */
 +
          /* These are taken from SP 800-90 10.1 Table 2 */
-         hash->blocklen = EVP_MD_get_size(md);
-         /* See SP800-57 Part1 Rev4 5.6.1 Table 3 */
+         md_size = EVP_MD_get_size(md);
+         if (md_size <= 0)
 diff --git a/providers/implementations/rands/drbg_hmac.c b/providers/implementations/rands/drbg_hmac.c
-index 664a074639..cbd4d0f519 100644
+index 43b3f8766e..64b7610cd1 100644
 --- a/providers/implementations/rands/drbg_hmac.c
 +++ b/providers/implementations/rands/drbg_hmac.c
-@@ -367,6 +367,18 @@ static int drbg_hmac_set_ctx_params(void *vctx, const OSSL_PARAM params[])
-     if (md != NULL && !ossl_drbg_verify_digest(libctx, md))
+@@ -505,6 +505,18 @@ static int drbg_hmac_set_ctx_params_locked(void *vctx, const OSSL_PARAM params[]
+     if (md != NULL && !ossl_drbg_verify_digest(ctx, libctx, md))
          return 0;   /* Error already raised for us */
  
 +#ifdef FIPS_MODULE
@@ -58,11 +72,11 @@ index 664a074639..cbd4d0f519 100644
 +    }
 +#endif /* defined(FIPS_MODULE) */
 +
-     if (!ossl_prov_macctx_load_from_params(&hmac->ctx, params,
-                                            NULL, NULL, NULL, libctx))
-         return 0;
+     if (md != NULL && hmac->ctx != NULL) {
+         /* These are taken from SP 800-90 10.1 Table 2 */
+         md_size = EVP_MD_get_size(md);
 diff --git a/test/recipes/30-test_evp_data/evprand.txt b/test/recipes/30-test_evp_data/evprand.txt
-index 0e2ee82c58..7a17e7b3e1 100644
+index 9756859c0e..e3bc794997 100644
 --- a/test/recipes/30-test_evp_data/evprand.txt
 +++ b/test/recipes/30-test_evp_data/evprand.txt
 @@ -7388,6 +7388,7 @@ Nonce.14 = 7239f92b63fb3dbe
@@ -1098,5 +1112,5 @@ index 0e2ee82c58..7a17e7b3e1 100644
  Digest = SHA-512
  PredictionResistance = 1
 -- 
-2.41.0
+2.49.0
 

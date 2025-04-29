@@ -1,23 +1,23 @@
-From 42ed594a3a905830374fb65cced431748f8c639c Mon Sep 17 00:00:00 2001
+From ce9fd9a7e822c37229c482febb1f38edbf3d36b7 Mon Sep 17 00:00:00 2001
 From: Dmitry Belyavskiy <dbelyavs@redhat.com>
-Date: Thu, 4 Apr 2024 11:50:58 +0200
-Subject: [PATCH 45/50] 0115-skip-quic-pairwise.patch
+Date: Thu, 7 Mar 2024 17:37:09 +0100
+Subject: [PATCH 14/53] RH: skip quic pairwise
 
 Patch-name: 0115-skip-quic-pairwise.patch
 Patch-id: 115
 Patch-status: |
-    # Amend tests according to Fedora/RHEL code
+    # skip quic and pairwise tests temporarily
 ---
  test/quicapitest.c                     |  4 +++-
  test/recipes/01-test_symbol_presence.t |  1 +
- test/recipes/30-test_pairwise_fail.t   | 13 +++++++++++--
- 3 files changed, 15 insertions(+), 3 deletions(-)
+ test/recipes/30-test_pairwise_fail.t   | 10 ++++++++--
+ 3 files changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/test/quicapitest.c b/test/quicapitest.c
-index 41cf0fc7a8..0fb7492700 100644
+index 4782479cc6..2b41b8259c 100644
 --- a/test/quicapitest.c
 +++ b/test/quicapitest.c
-@@ -2139,7 +2139,9 @@ int setup_tests(void)
+@@ -2729,7 +2729,9 @@ int setup_tests(void)
      ADD_TEST(test_cipher_find);
      ADD_TEST(test_version);
  #if defined(DO_SSL_TRACE_TEST)
@@ -28,8 +28,20 @@ index 41cf0fc7a8..0fb7492700 100644
  #endif
      ADD_TEST(test_quic_forbidden_apis_ctx);
      ADD_TEST(test_quic_forbidden_apis);
+diff --git a/test/recipes/01-test_symbol_presence.t b/test/recipes/01-test_symbol_presence.t
+index 222b1886ae..7e2f65cccb 100644
+--- a/test/recipes/01-test_symbol_presence.t
++++ b/test/recipes/01-test_symbol_presence.t
+@@ -185,6 +185,7 @@ foreach (sort keys %stlibname) {
+     }
+ }
+ my @duplicates = sort grep { $symbols{$_} > 1 } keys %symbols;
++@duplicates = grep {($_ ne "OPENSSL_ia32cap_P") && ($_ ne "EVP_CIPHER_CTX_dup") && ($_ ne "EVP_MD_CTX_dup") } @duplicates;
+ if (@duplicates) {
+     note "Duplicates:";
+     note join('\n', @duplicates);
 diff --git a/test/recipes/30-test_pairwise_fail.t b/test/recipes/30-test_pairwise_fail.t
-index c837d48fb4..f06ef04b1a 100644
+index a101a26fb1..43e5396766 100644
 --- a/test/recipes/30-test_pairwise_fail.t
 +++ b/test/recipes/30-test_pairwise_fail.t
 @@ -9,7 +9,7 @@
@@ -41,18 +53,7 @@ index c837d48fb4..f06ef04b1a 100644
  use OpenSSL::Test::Utils;
  
  BEGIN {
-@@ -31,28 +31,37 @@ run(test(["fips_version_test", "-config", $provconf, ">=3.1.0"]),
- SKIP: {
-     skip "Skip RSA test because of no rsa in this build", 1
-         if disabled("rsa");
-+    with({ exit_checker => sub {my $val = shift; return $val == 134; } },
-+    sub {
-     ok(run(test(["pairwise_fail_test", "-config", $provconf,
-                  "-pairwise", "rsa"])),
-        "fips provider rsa keygen pairwise failure test");
-+    });
- }
- 
+@@ -39,20 +39,26 @@ SKIP: {
  SKIP: {
      skip "Skip EC test because of no ec in this build", 2
          if disabled("ec");
@@ -81,5 +82,5 @@ index c837d48fb4..f06ef04b1a 100644
                   "-pairwise", "dsa", "-dsaparam", data_file("dsaparam.pem")])),
         "fips provider dsa keygen pairwise failure test");
 -- 
-2.44.0
+2.49.0
 

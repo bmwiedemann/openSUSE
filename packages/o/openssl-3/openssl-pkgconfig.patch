@@ -1,22 +1,26 @@
-Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
+Index: openssl-3.5.0-beta1/exporters/pkg-config/libcrypto.pc.in
 ===================================================================
---- openssl-3.2.3.orig/Configurations/unix-Makefile.tmpl
-+++ openssl-3.2.3/Configurations/unix-Makefile.tmpl
-@@ -1453,7 +1453,7 @@ libcrypto.pc:
- 	    echo 'Version: '$(VERSION); \
- 	    echo 'Libs: -L$${libdir} -lcrypto'; \
- 	    echo 'Libs.private: $(LIB_EX_LIBS)'; \
--	    echo 'Cflags: -I$${includedir}' ) > libcrypto.pc
-+	    echo 'Cflags: -DOPENSSL_LOAD_CONF -I$${includedir}' ) > libcrypto.pc
- 
- libssl.pc:
- 	@ ( echo 'prefix=$(INSTALLTOP)'; \
-@@ -1470,7 +1470,7 @@ libssl.pc:
- 	    echo 'Version: '$(VERSION); \
- 	    echo 'Requires.private: libcrypto'; \
- 	    echo 'Libs: -L$${libdir} -lssl'; \
--	    echo 'Cflags: -I$${includedir}' ) > libssl.pc
-+	    echo 'Cflags: -DOPENSSL_LOAD_CONF -I$${includedir}' ) > libssl.pc
- 
- openssl.pc:
- 	@ ( echo 'prefix=$(INSTALLTOP)'; \
+--- openssl-3.5.0-beta1.orig/exporters/pkg-config/libcrypto.pc.in
++++ openssl-3.5.0-beta1/exporters/pkg-config/libcrypto.pc.in
+@@ -19,7 +19,7 @@ Description: OpenSSL cryptography librar
+ Version: {- $OpenSSL::safe::installdata::VERSION -}
+ Libs: -L${libdir} -lcrypto
+ Libs.private: {- join(' ', @OpenSSL::safe::installdata::LDLIBS) -}
+-Cflags:{- $OUT = ' -I${includedir}';
++Cflags:{- $OUT = ' -DOPENSSL_LOAD_CONF -I${includedir}';
+           if (scalar @OpenSSL::safe::installdata::INCLUDEDIR_REL_PREFIX > 1) {
+               $OUT = '';
+               $OUT .= ' -I${prefix}/' . $_ . ' '
+Index: openssl-3.5.0-beta1/exporters/pkg-config/libssl.pc.in
+===================================================================
+--- openssl-3.5.0-beta1.orig/exporters/pkg-config/libssl.pc.in
++++ openssl-3.5.0-beta1/exporters/pkg-config/libssl.pc.in
+@@ -17,7 +17,7 @@ Description: Secure Sockets Layer and cr
+ Version: {- $OpenSSL::safe::installdata::VERSION -}
+ Requires.private: libcrypto
+ Libs: -L${libdir} -lssl
+-Cflags:{- $OUT = ' -I${includedir}';
++Cflags:{- $OUT = ' -DOPENSSL_LOAD_CONF -I${includedir}';
+           if (scalar @OpenSSL::safe::installdata::INCLUDEDIR_REL_PREFIX > 1) {
+               $OUT = '';
+               $OUT .= ' -I${prefix}/' . $_ . ' '

@@ -1,0 +1,33 @@
+From 181aed0bb72694e08a87584add058db1dd562576 Mon Sep 17 00:00:00 2001
+From: Simo Sorce <simo@redhat.com>
+Date: Fri, 7 Mar 2025 18:24:36 -0500
+Subject: [PATCH 50/53] FIPS: NO PQ (ML/SLH-DSA)
+
+Signed-off-by: Simo Sorce <simo@redhat.com>
+---
+ providers/fips/self_test_data.inc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/providers/fips/self_test_data.inc b/providers/fips/self_test_data.inc
+index cdba162674..136a580f25 100644
+--- a/providers/fips/self_test_data.inc
++++ b/providers/fips/self_test_data.inc
+@@ -3039,6 +3039,7 @@ static const ST_KAT_SIGN st_kat_sign_tests[] = {
+ #endif /* OPENSSL_NO_DSA */
+ #endif
+ 
++#if 0
+ #ifndef OPENSSL_NO_ML_DSA
+     {
+         OSSL_SELF_TEST_DESC_SIGN_ML_DSA,
+@@ -3083,6 +3084,7 @@ static const ST_KAT_SIGN st_kat_sign_tests[] = {
+         slh_dsa_sig_params, slh_dsa_sig_params
+     },
+ #endif /* OPENSSL_NO_SLH_DSA */
++#endif
+ };
+ 
+ #if !defined(OPENSSL_NO_ML_DSA)
+-- 
+2.49.0
+

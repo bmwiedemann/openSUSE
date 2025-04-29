@@ -1,0 +1,15 @@
+Index: openssl-3.5.0/test/recipes/75-test_quicapi.t
+===================================================================
+--- openssl-3.5.0.orig/test/recipes/75-test_quicapi.t
++++ openssl-3.5.0/test/recipes/75-test_quicapi.t
+@@ -19,8 +19,8 @@ use lib bldtop_dir('.');
+ 
+ my $no_fips = disabled('fips') || ($ENV{NO_FIPS} // 0);
+ 
+-plan skip_all => "QUIC protocol is not supported by this OpenSSL build"
+-    if disabled('quic');
++plan skip_all => "Test is disabled in this OpenSSL build"
++    if 1;
+ 
+ plan skip_all => "These tests are not supported in a fuzz build"
+     if config('options') =~ /-DFUZZING_BUILD_MODE_UNSAFE_FOR_PRODUCTION|enable-fuzz-afl/;

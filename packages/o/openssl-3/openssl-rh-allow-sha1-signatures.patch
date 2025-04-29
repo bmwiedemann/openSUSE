@@ -1,0 +1,54 @@
+Index: openssl-3.5.0/crypto/evp/evp_cnf.c
+===================================================================
+--- openssl-3.5.0.orig/crypto/evp/evp_cnf.c
++++ openssl-3.5.0/crypto/evp/evp_cnf.c
+@@ -10,6 +10,7 @@
+ #include <stdio.h>
+ #include <openssl/crypto.h>
+ #include "internal/cryptlib.h"
++#include "internal/sslconf.h"
+ #include <openssl/conf.h>
+ #include <openssl/x509.h>
+ #include <openssl/x509v3.h>
+@@ -57,6 +58,15 @@ static int alg_module_init(CONF_IMODULE
+                 ERR_raise(ERR_LIB_EVP, EVP_R_SET_DEFAULT_PROPERTY_FAILURE);
+                 return 0;
+             }
++	} else if (strcmp(oval->name, "rh-allow-sha1-signatures") == 0) {
++            int m;
++
++            /* Detailed error already reported. */
++            if (!X509V3_get_value_bool(oval, &m))
++                return 0;
++
++            /* NO-OP */
++
+         } else {
+             ERR_raise_data(ERR_LIB_EVP, EVP_R_UNKNOWN_OPTION,
+                            "name=%s, value=%s", oval->name, oval->value);
+Index: openssl-3.5.0/doc/man5/config.pod
+===================================================================
+--- openssl-3.5.0.orig/doc/man5/config.pod
++++ openssl-3.5.0/doc/man5/config.pod
+@@ -315,6 +315,21 @@ Within the algorithm properties section,
+ The value may be anything that is acceptable as a property query
+ string for EVP_set_default_properties().
+ 
++=item B<rh-allow-sha1-signatures> (NOOP)
++
++The value is a boolean that can be B<yes> or B<no>.  If the value is not set,
++it behaves as if it was set to B<yes>.
++
++When set to B<no>, any attempt to create or verify a signature with a SHA1
++digest will fail.  To test whether your software will work with future versions
++of OpenSSL, set this option to B<no>.  This setting also affects TLS, where
++signature algorithms that use SHA1 as digest will no longer be supported if
++this option is set to B<no>.  Because TLS 1.1 or lower use MD5-SHA1 as
++pseudorandom function (PRF) to derive key material, disabling
++B<rh-allow-sha1-signatures> requires the use of TLS 1.2 or newer.
++
++This option is not implemented in this build.
++
+ =item B<fips_mode> (deprecated)
+ 
+ The value is a boolean that can be B<yes> or B<no>.  If the value is

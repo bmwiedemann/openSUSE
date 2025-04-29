@@ -1,41 +1,47 @@
-From a9825123e7ab3474d2794a5706d9bed047959c9c Mon Sep 17 00:00:00 2001
+From df72b988df3e71992327107b6a7ad2ca762efb61 Mon Sep 17 00:00:00 2001
 From: rpm-build <rpm-build>
-Date: Mon, 31 Jul 2023 09:41:28 +0200
-Subject: [PATCH 18/35] 0034.fipsinstall_disable.patch
+Date: Wed, 6 Mar 2024 19:17:15 +0100
+Subject: [PATCH 21/53] FIPS: disable fipsinstall
 
 Patch-name: 0034.fipsinstall_disable.patch
 Patch-id: 34
 Patch-status: |
-    # Comment out fipsinstall command-line utility
-From-dist-git-commit: 9409bc7044cf4b5773639cce20f51399888c45fd
+    # # Comment out fipsinstall command-line utility
+From-dist-git-commit: 4334bc837fbc64d14890fdc51679a80770d498ce
 ---
- apps/fipsinstall.c                  |   3 +
- doc/man1/openssl-fipsinstall.pod.in | 272 +---------------------------
- doc/man1/openssl.pod                |   4 -
- doc/man5/config.pod                 |   1 -
- doc/man5/fips_config.pod            | 104 +----------
- doc/man7/OSSL_PROVIDER-FIPS.pod     |   1 -
- 6 files changed, 10 insertions(+), 375 deletions(-)
+ apps/fipsinstall.c                    |   3 +
+ doc/man1/openssl-fipsinstall.pod.in   | 485 +-------------------------
+ doc/man1/openssl.pod                  |   4 -
+ doc/man5/config.pod                   |   1 -
+ doc/man5/fips_config.pod              | 228 +-----------
+ doc/man7/OSSL_PROVIDER-FIPS.pod       |   1 -
+ test/recipes/00-prep_fipsmodule_cnf.t |  10 +-
+ test/recipes/01-test_fipsmodule_cnf.t |   7 +-
+ test/recipes/03-test_fipsinstall.t    |   2 +
+ 9 files changed, 22 insertions(+), 719 deletions(-)
+ mode change 100644 => 100755 test/recipes/00-prep_fipsmodule_cnf.t
+ mode change 100644 => 100755 test/recipes/01-test_fipsmodule_cnf.t
+ mode change 100644 => 100755 test/recipes/03-test_fipsinstall.t
 
-Index: openssl-3.2.4/apps/fipsinstall.c
+Index: openssl-3.5.0-beta1/apps/fipsinstall.c
 ===================================================================
---- openssl-3.2.4.orig/apps/fipsinstall.c
-+++ openssl-3.2.4/apps/fipsinstall.c
-@@ -374,6 +374,9 @@ int fipsinstall_main(int argc, char **ar
+--- openssl-3.5.0-beta1.orig/apps/fipsinstall.c
++++ openssl-3.5.0-beta1/apps/fipsinstall.c
+@@ -590,6 +590,9 @@ int fipsinstall_main(int argc, char **ar
      EVP_MAC *mac = NULL;
      CONF *conf = NULL;
  
-+    BIO_printf(bio_err, "This command is not enabled in SUSE/openSUSE OpenSSL build, please see 'man 8 fips-mode-setup' to learn how to enable FIPS mode\n");
++    BIO_printf(bio_err, "This command is not enabled in the SUSE/openSUSE OpenSSL build, please consult SUSE/openSUSE documentation to learn how to enable FIPS mode\n");
 +    return 1;
 +
      if ((opts = sk_OPENSSL_STRING_new_null()) == NULL)
          goto end;
  
-Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
+Index: openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
 ===================================================================
---- openssl-3.2.4.orig/doc/man1/openssl-fipsinstall.pod.in
-+++ openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
-@@ -8,275 +8,9 @@ openssl-fipsinstall - perform FIPS confi
+--- openssl-3.5.0-beta1.orig/doc/man1/openssl-fipsinstall.pod.in
++++ openssl-3.5.0-beta1/doc/man1/openssl-fipsinstall.pod.in
+@@ -8,488 +8,9 @@ openssl-fipsinstall - perform FIPS confi
  =head1 SYNOPSIS
  
  B<openssl fipsinstall>
@@ -53,8 +59,33 @@ Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 -[B<-pedantic>]
 -[B<-no_conditional_errors>]
 -[B<-no_security_checks>]
+-[B<-hmac_key_check>]
+-[B<-kmac_key_check>]
 -[B<-ems_check>]
 -[B<-no_drbg_truncated_digests>]
+-[B<-signature_digest_check>]
+-[B<-hkdf_digest_check>]
+-[B<-tls13_kdf_digest_check>]
+-[B<-tls1_prf_digest_check>]
+-[B<-sshkdf_digest_check>]
+-[B<-sskdf_digest_check>]
+-[B<-x963kdf_digest_check>]
+-[B<-dsa_sign_disabled>]
+-[B<-no_pbkdf2_lower_bound_check>]
+-[B<-no_short_mac>]
+-[B<-tdes_encrypt_disabled>]
+-[B<-rsa_pkcs15_padding_disabled>]
+-[B<-rsa_pss_saltlen_check>]
+-[B<-rsa_sign_x931_disabled>]
+-[B<-hkdf_key_check>]
+-[B<-kbkdf_key_check>]
+-[B<-tls13_kdf_key_check>]
+-[B<-tls1_prf_key_check>]
+-[B<-sshkdf_key_check>]
+-[B<-sskdf_key_check>]
+-[B<-x963kdf_key_check>]
+-[B<-x942kdf_key_check>]
+-[B<-ecdh_cofactor_check>]
 -[B<-self_test_onload>]
 -[B<-self_test_oninstall>]
 -[B<-corrupt_desc> I<selftest_description>]
@@ -216,10 +247,153 @@ Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 -when using the TLS1_PRF KDF algorithm. This check is disabled by default.
 -See RFC 7627 for information related to EMS.
 -
+-=item B<-no_short_mac>
+-
+-Configure the module to not allow short MAC outputs.
+-See SP 800-185 8.4.2 and FIPS 140-3 ID C.D for details.
+-
+-=item B<-hmac_key_check>
+-
+-Configure the module to not allow small keys sizes when using HMAC.
+-See SP 800-131Ar2 for details.
+-
+-=item B<-kmac_key_check>
+-
+-Configure the module to not allow small keys sizes when using KMAC.
+-See SP 800-131Ar2 for details.
+-
 -=item B<-no_drbg_truncated_digests>
 -
 -Configure the module to not allow truncated digests to be used with Hash and
 -HMAC DRBGs.  See FIPS 140-3 IG D.R for details.
+-
+-=item B<-signature_digest_check>
+-
+-Configure the module to enforce signature algorithms to use digests that are
+-explicitly permitted by the various standards.
+-
+-=item B<-hkdf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-HKDF.
+-See NIST SP 800-56Cr2 for details.
+-
+-=item B<-tls13_kdf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-TLS13 KDF.
+-See RFC 8446 for details.
+-
+-=item B<-tls1_prf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-TLS_PRF.
+-See NIST SP 800-135r1 for details.
+-
+-=item B<-sshkdf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-SSHKDF.
+-See NIST SP 800-135r1 for details.
+-
+-=item B<-sskdf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-SSKDF.
+-See NIST SP 800-56Cr2 for details.
+-
+-=item B<-x963kdf_digest_check>
+-
+-Configure the module to enable a run-time digest check when deriving a key by
+-X963KDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-dsa_sign_disabled>
+-
+-Configure the module to not allow DSA signing (DSA signature verification is
+-still allowed). See FIPS 140-3 IG C.K for details.
+-
+-=item B<-tdes_encrypt_disabled>
+-
+-Configure the module to not allow Triple-DES encryption.
+-Triple-DES decryption is still allowed for legacy purposes.
+-See SP800-131Ar2 for details.
+-
+-=item B<-rsa_pkcs15_padding_disabled>
+-
+-Configure the module to not allow PKCS#1 version 1.5 padding to be used with
+-RSA for key transport and key agreement.  See NIST's SP 800-131A Revision 2
+-for details.
+-
+-=item B<-rsa_pss_saltlen_check>
+-
+-Configure the module to enable a run-time salt length check when generating or
+-verifying a RSA-PSS signature.
+-See FIPS 186-5 5.4 (g) for details.
+-
+-=item B<-rsa_sign_x931_disabled>
+-
+-Configure the module to not allow X9.31 padding to be used when signing with
+-RSA.  See FIPS 140-3 IG C.K for details.
+-
+-=item B<-hkdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by HKDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-kbkdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by KBKDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-tls13_kdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by TLS13 KDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-tls1_prf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by TLS_PRF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-sshkdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by SSHKDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-sskdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by SSKDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-x963kdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by X963KDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-x942kdf_key_check>
+-
+-Configure the module to enable a run-time short key-derivation key check when
+-deriving a key by X942KDF.
+-See NIST SP 800-131Ar2 for details.
+-
+-=item B<-no_pbkdf2_lower_bound_check>
+-
+-Configure the module to not perform run-time lower bound check for PBKDF2.
+-See NIST SP 800-132 for details.
+-
+-=item B<-ecdh_cofactor_check>
+-
+-Configure the module to enable a run-time check that ECDH uses the EC curves
+-cofactor value when deriving a key. This only affects the 'B' and 'K' curves.
+-See SP 800-56A r3 Section 5.7.1.2 for details.
 -
 -=item B<-self_test_onload>
 -
@@ -230,14 +404,17 @@ Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 -target machine. Once the self tests have run on the target machine the user
 -could possibly then add the 2 fields into the configuration using some other
 -mechanism.
--
--This is the default.
+-This option defaults to 0 for any OpenSSL FIPS 140-2 provider (OpenSSL 3.0.X).
+-and is not relevant for an OpenSSL FIPS 140-3 provider, since this is no
+-longer allowed.
 -
 -=item B<-self_test_oninstall>
 -
 -The converse of B<-self_test_oninstall>.  The two fields related to the
 -"test status indicator" and "MAC status indicator" are written to the
 -output configuration file.
+-This field is not relevant for an OpenSSL FIPS 140-3 provider, since this is no
+-longer allowed.
 -
 -=item B<-quiet>
 -
@@ -308,16 +485,58 @@ Index: openssl-3.2.4/doc/man1/openssl-fipsinstall.pod.in
 -L<fips_config(5)>,
 -L<OSSL_PROVIDER-FIPS(7)>,
 -L<EVP_MAC(3)>
+-
+-=head1 HISTORY
+-
+-The B<openssl-fipsinstall> application was added in OpenSSL 3.0.
+-
+-The following options were added in OpenSSL 3.1:
+-
+-B<-ems_check>,
+-B<-self_test_oninstall>
+-
+-The following options were added in OpenSSL 3.2:
+-
+-B<-pedantic>,
+-B<-no_drbg_truncated_digests>
+-
+-The following options were added in OpenSSL 3.4:
+-
+-B<-hmac_key_check>,
+-B<-kmac_key_check>,
+-B<-signature_digest_check>,
+-B<-hkdf_digest_check>,
+-B<-tls13_kdf_digest_check>,
+-B<-tls1_prf_digest_check>,
+-B<-sshkdf_digest_check>,
+-B<-sskdf_digest_check>,
+-B<-x963kdf_digest_check>,
+-B<-dsa_sign_disabled>,
+-B<-no_pbkdf2_lower_bound_check>,
+-B<-no_short_mac>,
+-B<-tdes_encrypt_disabled>,
+-B<-rsa_pkcs15_padding_disabled>,
+-B<-rsa_pss_saltlen_check>,
+-B<-rsa_sign_x931_disabled>,
+-B<-hkdf_key_check>,
+-B<-kbkdf_key_check>,
+-B<-tls13_kdf_key_check>,
+-B<-tls1_prf_key_check>,
+-B<-sshkdf_key_check>,
+-B<-sskdf_key_check>,
+-B<-x963kdf_key_check>,
+-B<-x942kdf_key_check>,
+-B<-ecdh_cofactor_check>
 +This command is disabled.
-+Please consult the SUSE/openSUSE documentation to learn how to correctly
-+enable FIPS mode.
++Please consult SUSE/openSUSE Linux documentation to learn how to correctly
++enable FIPS mode SUSE/openSUSE
  
- =head1 HISTORY
+ =head1 COPYRIGHT
  
-Index: openssl-3.2.4/doc/man1/openssl.pod
+Index: openssl-3.5.0-beta1/doc/man1/openssl.pod
 ===================================================================
---- openssl-3.2.4.orig/doc/man1/openssl.pod
-+++ openssl-3.2.4/doc/man1/openssl.pod
+--- openssl-3.5.0-beta1.orig/doc/man1/openssl.pod
++++ openssl-3.5.0-beta1/doc/man1/openssl.pod
 @@ -137,10 +137,6 @@ Engine (loadable module) information and
  
  Error Number to Error String Conversion.
@@ -329,11 +548,11 @@ Index: openssl-3.2.4/doc/man1/openssl.pod
  =item B<gendsa>
  
  Generation of DSA Private Key from Parameters. Superseded by
-Index: openssl-3.2.4/doc/man5/config.pod
+Index: openssl-3.5.0-beta1/doc/man5/config.pod
 ===================================================================
---- openssl-3.2.4.orig/doc/man5/config.pod
-+++ openssl-3.2.4/doc/man5/config.pod
-@@ -565,7 +565,6 @@ configuration files using that syntax wi
+--- openssl-3.5.0-beta1.orig/doc/man5/config.pod
++++ openssl-3.5.0-beta1/doc/man5/config.pod
+@@ -582,7 +582,6 @@ configuration files using that syntax wi
  =head1 SEE ALSO
  
  L<openssl-x509(1)>, L<openssl-req(1)>, L<openssl-ca(1)>,
@@ -341,11 +560,11 @@ Index: openssl-3.2.4/doc/man5/config.pod
  L<ASN1_generate_nconf(3)>,
  L<EVP_set_default_properties(3)>,
  L<CONF_modules_load(3)>,
-Index: openssl-3.2.4/doc/man5/fips_config.pod
+Index: openssl-3.5.0-beta1/doc/man5/fips_config.pod
 ===================================================================
---- openssl-3.2.4.orig/doc/man5/fips_config.pod
-+++ openssl-3.2.4/doc/man5/fips_config.pod
-@@ -6,106 +6,10 @@ fips_config - OpenSSL FIPS configuration
+--- openssl-3.5.0-beta1.orig/doc/man5/fips_config.pod
++++ openssl-3.5.0-beta1/doc/man5/fips_config.pod
+@@ -6,230 +6,10 @@ fips_config - OpenSSL FIPS configuration
  
  =head1 DESCRIPTION
  
@@ -382,10 +601,6 @@ Index: openssl-3.2.4/doc/man5/fips_config.pod
 -If present, the module is activated. The value assigned to this name is not
 -significant.
 -
--=item B<install-version>
--
--A version number for the fips install process. Should be 1.
--
 -=item B<conditional-errors>
 -
 -The FIPS module normally enters an internal error mode if any self test fails.
@@ -399,17 +614,13 @@ Index: openssl-3.2.4/doc/man5/fips_config.pod
 -continuous test will return an error code if its continuous test fails. The
 -operation may then be retried if the error mode has not been triggered.
 -
--=item B<security-checks>
--
--This indicates if run-time checks related to enforcement of security parameters
--such as minimum security strength of keys and approved curve names are used.
--A value of '1' will perform the checks, otherwise if the value is '0' the checks
--are not performed and FIPS compliance must be done by procedures documented in
--the relevant Security Policy.
--
 -=item B<module-mac>
 -
 -The calculated MAC of the FIPS provider file.
+-
+-=item B<install-version>
+-
+-A version number for the fips install process. Should be 1.
 -
 -=item B<install-status>
 -
@@ -424,6 +635,134 @@ Index: openssl-3.2.4/doc/man5/fips_config.pod
 -A MAC of the value of the B<install-status> option, to prevent accidental
 -changes to that value.
 -It is written-to at the same time as B<install-status> is updated.
+-
+-=back
+-
+-=head2 FIPS indicator options
+-
+-The following FIPS configuration options indicate if run-time checks related to
+-enforcement of FIPS security parameters such as minimum security strength of
+-keys and approved curve names are used.
+-A value of '1' will perform the checks, otherwise if the value is '0' the checks
+-are not performed and FIPS compliance must be done by procedures documented in
+-the relevant Security Policy.
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> for further information related to these
+-options.
+-
+-=over 4
+-
+-=item B<security-checks>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-no_security_checks>
+-
+-=item B<tls1-prf-ems-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-ems_check>
+-
+-=item B<no-short-mac>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-no_short_mac>
+-
+-=item B<drbg-no-trunc-md>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-no_drbg_truncated_digests>
+-
+-=item B<signature-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-signature_digest_check>
+-
+-=item B<hkdf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-hkdf_digest_check>
+-
+-=item B<tls13-kdf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-tls13_kdf_digest_check>
+-
+-=item B<tls1-prf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-tls1_prf_digest_check>
+-
+-=item B<sshkdf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-sshkdf_digest_check>
+-
+-=item B<sskdf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-sskdf_digest_check>
+-
+-=item B<x963kdf-digest-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-x963kdf_digest_check>
+-
+-=item B<dsa-sign-disabled>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-dsa_sign_disabled>
+-
+-=item B<tdes-encrypt-disabled>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-tdes_encrypt_disabled>
+-
+-=item B<rsa-pkcs15-pad-disabled>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-rsa_pkcs15_pad_disabled>
+-
+-=item B<rsa-pss-saltlen-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-rsa_pss_saltlen_check>
+-
+-=item B<rsa-sign-x931-pad-disabled>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-rsa_sign_x931_disabled>
+-
+-=item B<hkdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-hkdf_key_check>
+-
+-=item B<kbkdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-kbkdf_key_check>
+-
+-=item B<tls13-kdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-tls13_kdf_key_check>
+-
+-=item B<tls1-prf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-tls1_prf_key_check>
+-
+-=item B<sshkdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-sshkdf_key_check>
+-
+-=item B<sskdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-sskdf_key_check>
+-
+-=item B<x963kdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-x963kdf_key_check>
+-
+-=item B<x942kdf-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-x942kdf_key_check>
+-
+-=item B<pbkdf2-lower-bound-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-no_pbkdf2_lower_bound_check>
+-
+-=item B<ecdh-cofactor-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-ecdh_cofactor_check>
+-
+-=item B<hmac-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-hmac_key_check>
+-
+-=item B<kmac-key-check>
+-
+-See L<openssl-fipsinstall(1)/OPTIONS> B<-kmac_key_check>
 -
 -=back
 -
@@ -449,18 +788,22 @@ Index: openssl-3.2.4/doc/man5/fips_config.pod
 -
 -L<config(5)>
 -L<openssl-fipsinstall(1)>
+-
+-=head1 HISTORY
+-
+-This functionality was added in OpenSSL 3.0.
 +This command is disabled in SUSE/openSUSE. The FIPS provider is
 +automatically loaded when the system is booted in FIPS mode, or when the
-+environment variable B<OPENSSL_FORCE_FIPS_MODE> is set.
-+See the documentation for more information.
++environment variable B<OPENSSL_FORCE_FIPS_MODE> is set. See the documentation
++for more information.
  
- =head1 HISTORY
+ =head1 COPYRIGHT
  
-Index: openssl-3.2.4/doc/man7/OSSL_PROVIDER-FIPS.pod
+Index: openssl-3.5.0-beta1/doc/man7/OSSL_PROVIDER-FIPS.pod
 ===================================================================
---- openssl-3.2.4.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
-+++ openssl-3.2.4/doc/man7/OSSL_PROVIDER-FIPS.pod
-@@ -489,7 +489,6 @@ want to operate in a FIPS approved manne
+--- openssl-3.5.0-beta1.orig/doc/man7/OSSL_PROVIDER-FIPS.pod
++++ openssl-3.5.0-beta1/doc/man7/OSSL_PROVIDER-FIPS.pod
+@@ -575,7 +575,6 @@ want to operate in a FIPS approved manne
  
  =head1 SEE ALSO
  
@@ -468,3 +811,51 @@ Index: openssl-3.2.4/doc/man7/OSSL_PROVIDER-FIPS.pod
  L<fips_config(5)>,
  L<OSSL_SELF_TEST_set_callback(3)>,
  L<OSSL_SELF_TEST_new(3)>,
+Index: openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
+===================================================================
+--- openssl-3.5.0-beta1.orig/test/recipes/00-prep_fipsmodule_cnf.t
++++ openssl-3.5.0-beta1/test/recipes/00-prep_fipsmodule_cnf.t
+@@ -29,8 +29,10 @@ my $fipsmoduleconf = bldtop_file('test',
+ 
+ plan tests => 1;
+ 
++ok(1 == 1);
++
+ # Create the $fipsmoduleconf file
+-ok(run(app(['openssl', 'fipsinstall', '-pedantic',
+-            '-module', $fipsmodule, '-provider_name', 'fips',
+-            '-section_name', 'fips_sect', '-out', $fipsmoduleconf])),
+-   "fips install");
++#ok(run(app(['openssl', 'fipsinstall', '-pedantic',
++#            '-module', $fipsmodule, '-provider_name', 'fips',
++#            '-section_name', 'fips_sect', '-out', $fipsmoduleconf])),
++#   "fips install");
+Index: openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
+===================================================================
+--- openssl-3.5.0-beta1.orig/test/recipes/01-test_fipsmodule_cnf.t
++++ openssl-3.5.0-beta1/test/recipes/01-test_fipsmodule_cnf.t
+@@ -31,7 +31,8 @@ plan tests => 1;
+ my $fipsmodule = bldtop_file('providers', platform->dso('fips'));
+ my $fipsmoduleconf = bldtop_file('test', 'fipsmodule.cnf');
+ 
++ok(1 == 1)
+ # verify the $fipsconf file
+-ok(run(app(['openssl', 'fipsinstall',
+-            '-in',  $fipsmoduleconf, '-module', $fipsmodule, '-verify'])),
+-   "fipsinstall verify");
++#ok(run(app(['openssl', 'fipsinstall',
++#            '-in',  $fipsmoduleconf, '-module', $fipsmodule, '-verify'])),
++#   "fipsinstall verify");
+Index: openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
+===================================================================
+--- openssl-3.5.0-beta1.orig/test/recipes/03-test_fipsinstall.t
++++ openssl-3.5.0-beta1/test/recipes/03-test_fipsinstall.t
+@@ -22,6 +22,8 @@ use lib srctop_dir('Configurations');
+ use lib bldtop_dir('.');
+ use platform;
+ 
++plan skip_all => "Fipsinstall not available in SUSE/openSUSE FIPS build";
++
+ plan skip_all => "Test only supported in a fips build" if disabled("fips");
+ 
+ # Compatible options for pedantic FIPS compliance

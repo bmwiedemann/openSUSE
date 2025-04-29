@@ -15,11 +15,11 @@ Subject: Add support for PROFILE=SYSTEM system default cipherlist
  util/libcrypto.num                |    1 
  8 files changed, 110 insertions(+), 14 deletions(-)
 
-Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
+Index: openssl-3.5.0-beta1/Configurations/unix-Makefile.tmpl
 ===================================================================
---- openssl-3.2.3.orig/Configurations/unix-Makefile.tmpl
-+++ openssl-3.2.3/Configurations/unix-Makefile.tmpl
-@@ -324,6 +324,10 @@ MANDIR=$(INSTALLTOP)/share/man
+--- openssl-3.5.0-beta1.orig/Configurations/unix-Makefile.tmpl
++++ openssl-3.5.0-beta1/Configurations/unix-Makefile.tmpl
+@@ -344,6 +344,10 @@ MANDIR=$(INSTALLTOP)/share/man
  DOCDIR=$(INSTALLTOP)/share/doc/$(BASENAME)
  HTMLDIR=$(DOCDIR)/html
  
@@ -30,7 +30,7 @@ Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
  # MANSUFFIX is for the benefit of anyone who may want to have a suffix
  # appended after the manpage file section number.  "ssl" is popular,
  # resulting in files such as config.5ssl rather than config.5.
-@@ -347,6 +351,7 @@ CC=$(CROSS_COMPILE){- $config{CC} -}
+@@ -367,6 +371,7 @@ CC=$(CROSS_COMPILE){- $config{CC} -}
  CXX={- $config{CXX} ? "\$(CROSS_COMPILE)$config{CXX}" : '' -}
  CPPFLAGS={- our $cppflags1 = join(" ",
                                    (map { "-D".$_} @{$config{CPPDEFINES}}),
@@ -38,10 +38,10 @@ Index: openssl-3.2.3/Configurations/unix-Makefile.tmpl
                                    (map { "-I".$_} @{$config{CPPINCLUDES}}),
                                    @{$config{CPPFLAGS}}) -}
  CFLAGS={- join(' ', @{$config{CFLAGS}}) -}
-Index: openssl-3.2.3/Configure
+Index: openssl-3.5.0-beta1/Configure
 ===================================================================
---- openssl-3.2.3.orig/Configure
-+++ openssl-3.2.3/Configure
+--- openssl-3.5.0-beta1.orig/Configure
++++ openssl-3.5.0-beta1/Configure
 @@ -27,7 +27,7 @@ use OpenSSL::config;
  my $orig_death_handler = $SIG{__DIE__};
  $SIG{__DIE__} = \&death_handler;
@@ -62,7 +62,7 @@ Index: openssl-3.2.3/Configure
  # --banner=".." Output specified text instead of default completion banner
  #
  # -w            Don't wait after showing a Configure warning
-@@ -393,6 +397,7 @@ $config{prefix}="";
+@@ -408,6 +412,7 @@ $config{prefix}="";
  $config{openssldir}="";
  $config{processor}="";
  $config{libdir}="";
@@ -70,7 +70,7 @@ Index: openssl-3.2.3/Configure
  my $auto_threads=1;    # enable threads automatically? true by default
  my $default_ranlib;
  
-@@ -1047,6 +1052,10 @@ while (@argvcopy)
+@@ -1104,6 +1109,10 @@ while (@argvcopy)
                          die "FIPS key too long (64 bytes max)\n"
                             if length $1 > 64;
                          }
@@ -81,10 +81,10 @@ Index: openssl-3.2.3/Configure
                  elsif (/^--banner=(.*)$/)
                          {
                          $banner = $1 . "\n";
-Index: openssl-3.2.3/doc/man1/openssl-ciphers.pod.in
+Index: openssl-3.5.0-beta1/doc/man1/openssl-ciphers.pod.in
 ===================================================================
---- openssl-3.2.3.orig/doc/man1/openssl-ciphers.pod.in
-+++ openssl-3.2.3/doc/man1/openssl-ciphers.pod.in
+--- openssl-3.5.0-beta1.orig/doc/man1/openssl-ciphers.pod.in
++++ openssl-3.5.0-beta1/doc/man1/openssl-ciphers.pod.in
 @@ -190,6 +190,15 @@ As of OpenSSL 1.0.0, the B<ALL> cipher s
  
  The cipher suites not enabled by B<ALL>, currently B<eNULL>.
@@ -101,11 +101,11 @@ Index: openssl-3.2.3/doc/man1/openssl-ciphers.pod.in
  =item B<HIGH>
  
  "High" encryption cipher suites. This currently means those with key lengths
-Index: openssl-3.2.3/include/openssl/ssl.h.in
+Index: openssl-3.5.0-beta1/include/openssl/ssl.h.in
 ===================================================================
---- openssl-3.2.3.orig/include/openssl/ssl.h.in
-+++ openssl-3.2.3/include/openssl/ssl.h.in
-@@ -214,6 +214,11 @@ extern "C" {
+--- openssl-3.5.0-beta1.orig/include/openssl/ssl.h.in
++++ openssl-3.5.0-beta1/include/openssl/ssl.h.in
+@@ -209,6 +209,11 @@ extern "C" {
   * throwing out anonymous and unencrypted ciphersuites! (The latter are not
   * actually enabled by ALL, but "ALL:RSA" would enable some of them.)
   */
@@ -117,11 +117,11 @@ Index: openssl-3.2.3/include/openssl/ssl.h.in
  
  /* Used in SSL_set_shutdown()/SSL_get_shutdown(); */
  # define SSL_SENT_SHUTDOWN       1
-Index: openssl-3.2.3/ssl/ssl_ciph.c
+Index: openssl-3.5.0-beta1/ssl/ssl_ciph.c
 ===================================================================
---- openssl-3.2.3.orig/ssl/ssl_ciph.c
-+++ openssl-3.2.3/ssl/ssl_ciph.c
-@@ -1455,6 +1455,53 @@ int SSL_set_ciphersuites(SSL *s, const c
+--- openssl-3.5.0-beta1.orig/ssl/ssl_ciph.c
++++ openssl-3.5.0-beta1/ssl/ssl_ciph.c
+@@ -1421,6 +1421,53 @@ int SSL_set_ciphersuites(SSL *s, const c
      return ret;
  }
  
@@ -175,7 +175,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
  STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(SSL_CTX *ctx,
                                               STACK_OF(SSL_CIPHER) *tls13_ciphersuites,
                                               STACK_OF(SSL_CIPHER) **cipher_list,
-@@ -1469,15 +1516,25 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1435,15 +1482,25 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      CIPHER_ORDER *co_list = NULL, *head = NULL, *tail = NULL, *curr;
      const SSL_CIPHER **ca_list = NULL;
      const SSL_METHOD *ssl_method = ctx->method;
@@ -203,7 +203,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
  
      /*
       * To reduce the work to do we only want to process the compiled
-@@ -1499,7 +1556,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1465,7 +1522,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      if (num_of_ciphers > 0) {
          co_list = OPENSSL_malloc(sizeof(*co_list) * num_of_ciphers);
          if (co_list == NULL)
@@ -212,7 +212,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
      }
  
      ssl_cipher_collect_ciphers(ssl_method, num_of_ciphers,
-@@ -1565,8 +1622,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1531,8 +1588,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
       * in force within each class
       */
      if (!ssl_cipher_strength_sort(&head, &tail)) {
@@ -222,7 +222,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
      }
  
      /*
-@@ -1610,8 +1666,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1576,8 +1632,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      num_of_alias_max = num_of_ciphers + num_of_group_aliases + 1;
      ca_list = OPENSSL_malloc(sizeof(*ca_list) * num_of_alias_max);
      if (ca_list == NULL) {
@@ -232,7 +232,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
      }
      ssl_cipher_collect_aliases(ca_list, num_of_group_aliases,
                                 disabled_mkey, disabled_auth, disabled_enc,
-@@ -1644,8 +1699,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1603,8 +1658,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      OPENSSL_free(ca_list);      /* Not needed anymore */
  
      if (!ok) {                  /* Rule processing failure */
@@ -242,7 +242,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
      }
  
      /*
-@@ -1653,10 +1707,13 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1612,10 +1666,13 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
       * if we cannot get one.
       */
      if ((cipherstack = sk_SSL_CIPHER_new_null()) == NULL) {
@@ -258,7 +258,7 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
      /* Add TLSv1.3 ciphers first - we always prefer those if possible */
      for (i = 0; i < sk_SSL_CIPHER_num(tls13_ciphersuites); i++) {
          const SSL_CIPHER *sslc = sk_SSL_CIPHER_value(tls13_ciphersuites, i);
-@@ -1708,6 +1765,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
+@@ -1667,6 +1724,14 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_
      *cipher_list = cipherstack;
  
      return cipherstack;
@@ -273,11 +273,11 @@ Index: openssl-3.2.3/ssl/ssl_ciph.c
  }
  
  char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf, int len)
-Index: openssl-3.2.3/ssl/ssl_lib.c
+Index: openssl-3.5.0-beta1/ssl/ssl_lib.c
 ===================================================================
---- openssl-3.2.3.orig/ssl/ssl_lib.c
-+++ openssl-3.2.3/ssl/ssl_lib.c
-@@ -670,7 +670,7 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx
+--- openssl-3.5.0-beta1.orig/ssl/ssl_lib.c
++++ openssl-3.5.0-beta1/ssl/ssl_lib.c
+@@ -679,7 +679,7 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx
                                  ctx->tls13_ciphersuites,
                                  &(ctx->cipher_list),
                                  &(ctx->cipher_list_by_id),
@@ -286,7 +286,7 @@ Index: openssl-3.2.3/ssl/ssl_lib.c
      if ((sk == NULL) || (sk_SSL_CIPHER_num(sk) <= 0)) {
          ERR_raise(ERR_LIB_SSL, SSL_R_SSL_LIBRARY_HAS_NO_CIPHERS);
          return 0;
-@@ -3955,7 +3955,7 @@ SSL_CTX *SSL_CTX_new_ex(OSSL_LIB_CTX *li
+@@ -4099,7 +4099,7 @@ SSL_CTX *SSL_CTX_new_ex(OSSL_LIB_CTX *li
      if (!ssl_create_cipher_list(ret,
                                  ret->tls13_ciphersuites,
                                  &ret->cipher_list, &ret->cipher_list_by_id,
@@ -295,10 +295,10 @@ Index: openssl-3.2.3/ssl/ssl_lib.c
          || sk_SSL_CIPHER_num(ret->cipher_list) <= 0) {
          ERR_raise(ERR_LIB_SSL, SSL_R_LIBRARY_HAS_NO_CIPHERS);
          goto err;
-Index: openssl-3.2.3/test/cipherlist_test.c
+Index: openssl-3.5.0-beta1/test/cipherlist_test.c
 ===================================================================
---- openssl-3.2.3.orig/test/cipherlist_test.c
-+++ openssl-3.2.3/test/cipherlist_test.c
+--- openssl-3.5.0-beta1.orig/test/cipherlist_test.c
++++ openssl-3.5.0-beta1/test/cipherlist_test.c
 @@ -261,7 +261,9 @@ end:
  
  int setup_tests(void)
@@ -309,19 +309,22 @@ Index: openssl-3.2.3/test/cipherlist_test.c
      ADD_TEST(test_default_cipherlist_explicit);
      ADD_TEST(test_default_cipherlist_clear);
      ADD_TEST(test_stdname_cipherlist);
-Index: openssl-3.2.3/util/libcrypto.num
+Index: openssl-3.5.0-beta1/util/libcrypto.num
 ===================================================================
---- openssl-3.2.3.orig/util/libcrypto.num
-+++ openssl-3.2.3/util/libcrypto.num
-@@ -5536,3 +5536,4 @@ X509_STORE_CTX_set_get_crl
+--- openssl-3.5.0-beta1.orig/util/libcrypto.num
++++ openssl-3.5.0-beta1/util/libcrypto.num
+@@ -5536,6 +5536,7 @@ X509_STORE_CTX_set_get_crl
  X509_STORE_CTX_set_current_reasons      5664	3_2_0	EXIST::FUNCTION:
  OSSL_STORE_delete                       5665	3_2_0	EXIST::FUNCTION:
  BIO_ADDR_copy                           5666	3_2_0	EXIST::FUNCTION:SOCK
-+ossl_safe_getenv                        ?	3_2_0	EXIST::FUNCTION:
-Index: openssl-3.2.3/apps/openssl.cnf
++ossl_safe_getenv                           ?	3_2_0	EXIST::FUNCTION:
+ OSSL_CMP_CTX_get0_geninfo_ITAVs         5667	3_3_0	EXIST::FUNCTION:CMP
+ OSSL_CMP_HDR_get0_geninfo_ITAVs         5668	3_3_0	EXIST::FUNCTION:CMP
+ OSSL_CMP_ITAV_new0_certProfile          5669	3_3_0	EXIST::FUNCTION:CMP
+Index: openssl-3.5.0-beta1/apps/openssl.cnf
 ===================================================================
---- openssl-3.2.3.orig/apps/openssl.cnf
-+++ openssl-3.2.3/apps/openssl.cnf
+--- openssl-3.5.0-beta1.orig/apps/openssl.cnf
++++ openssl-3.5.0-beta1/apps/openssl.cnf
 @@ -52,6 +52,12 @@ tsa_policy3 = 1.2.3.4.5.7
  
  [openssl_init]
@@ -335,7 +338,7 @@ Index: openssl-3.2.3/apps/openssl.cnf
  
  # List of providers to load
  [provider_sect]
-@@ -71,6 +76,11 @@ default = default_sect
+@@ -71,6 +77,11 @@ default = default_sect
  [default_sect]
  # activate = 1
  

@@ -26,11 +26,19 @@
 %define _lto_cflags %{nil}
 %endif
 
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%global sle_needs_crypto_policies 1
+%endif
+
+%if 0%{?suse_version} > 1600
+%global openssl_test_flags HARNESS_JOBS=${RPM_BUILD_NCPUS}
+%endif
+
 # Enable userspace livepatching.
 %define livepatchable 1
 
 Name:           openssl-3
-Version:        3.2.4
+Version:        3.5.0
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        Apache-2.0
@@ -51,7 +59,7 @@ Patch2:         openssl-truststore.patch
 Patch3:         openssl-pkgconfig.patch
 Patch4:         openssl-ppc64-config.patch
 Patch5:         openssl-no-date.patch
-# Add crypto-policies support
+# PATCH-FIX-FEDORA Add crypto-policies support
 Patch6:         openssl-Add-support-for-PROFILE-SYSTEM-system-default-cipher.patch
 # PATCH-FIX-FEDORA Add FIPS_mode compatibility macro and flag support
 Patch7:         openssl-Add-FIPS_mode-compatibility-macro.patch
@@ -66,101 +74,54 @@ Patch11:        openssl-load-legacy-provider.patch
 Patch12:        openssl-FIPS-embed-hmac.patch
 # PATCH-FIX-FEDORA bsc#1221786 FIPS: Use of non-Approved Elliptic Curves
 Patch13:        openssl-Add-changes-to-ectest-and-eccurve.patch
-Patch14:        openssl-Remove-EC-curves.patch
-Patch15:        openssl-Disable-explicit-ec.patch
-Patch16:        openssl-skipped-tests-EC-curves.patch
+Patch14:        openssl-Disable-explicit-ec.patch
+Patch15:        openssl-skipped-tests-EC-curves.patch
 # PATCH-FIX-FEDORA bsc#1221753 bsc#1221760 bsc#1221822 FIPS: Extra public/private key checks required by FIPS-140-3
-Patch17:        openssl-FIPS-140-3-keychecks.patch
-# PATCH-FIX-FEDORA bsc#1221365 bsc#1221786 bsc#1221787 FIPS: Minimize fips services
-Patch18:        openssl-FIPS-services-minimize.patch
+Patch16:        openssl-FIPS-140-3-keychecks.patch
 # PATCH-FIX-FEDORA bsc#1221760 FIPS: Execute KATS before HMAC verification
-Patch19:        openssl-FIPS-early-KATS.patch
-# PATCH-FIX-SUSE bsc#1221787 FIPS: Approved Modulus Sizes for RSA Digital Signature for FIPS 186-4
-Patch20:        openssl-Revert-Improve-FIPS-RSA-keygen-performance.patch
-# PATCH-FIX-FEDORA bsc#1221787 FIPS: Selectively disallow SHA1 signatures
-Patch21:        openssl-Allow-disabling-of-SHA1-signatures.patch
-# # PATCH-FIX-FEDORA bsc#1221365 FIPS: Deny SHA-1 signature verification in FIPS provider
-Patch22:        openssl-3-FIPS-Deny-SHA-1-sigver-in-FIPS-provider.patch
+Patch17:        openssl-FIPS-early-KATS.patch
+# PATCH-FIX-SUSE NOOP rh-allow-sha1-signatures from crypto-policies
+Patch18:        openssl-rh-allow-sha1-signatures.patch
 # PATCH-FIX-FEDORA bsc#1221365 bsc#1221824 FIPS: Service Level Indicator is needed
-Patch23:        openssl-FIPS-limit-rsa-encrypt.patch
-Patch24:        openssl-FIPS-Expose-a-FIPS-indicator.patch
+Patch19:        openssl-FIPS-limit-rsa-encrypt.patch
+Patch20:        openssl-FIPS-Expose-a-FIPS-indicator.patch
 # PATCH-FIX-FEDORA bsc#1221760 FIPS: Execute KATS before HMAC verification
-Patch25:        openssl-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
-# PATCH-FIX-FEDORA bsc#1221365 bsc#1221760 FIPS: Selftests are required
-Patch26:        openssl-FIPS-Use-digest_sign-digest_verify-in-self-test.patch
-# PATCH-FIX-FEDORA bsc#1221760 FIPS: Selftests are required
-Patch27:        openssl-FIPS-Use-FFDHE2048-in-self-test.patch
-# PATCH-FIX-FEDORA bsc#1220690 bsc#1220693 bsc#1220696 FIPS: Reseed DRBG
-Patch28:        openssl-FIPS-140-3-DRBG.patch
-# PATCH-FIX-FEDORA bsc#1221752 FIPS: Zeroisation is required
-Patch29:        openssl-FIPS-140-3-zeroization.patch
-# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
-Patch30:        openssl-Add-FIPS-indicator-parameter-to-HKDF.patch
-Patch31:        openssl-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
+Patch21:        openssl-FIPS-Use-OAEP-in-KATs-support-fixed-OAEP-seed.patch
+Patch22:        openssl-rand-Forbid-truncated-hashes-SHA-3-in-FIPS-prov.patch
 # PATCH-FIX-FEDORA bsc#1221365 bsc#1221365 FIPS: Service Level Indicator is needed
-Patch32:        openssl-FIPS-Remove-X9.31-padding-from-FIPS-prov.patch
-# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
-Patch33:        openssl-FIPS-Add-explicit-indicator-for-key-length.patch
+Patch23:        openssl-FIPS-Remove-X9.31-padding-from-FIPS-prov.patch
 # PATCH-FIX-FEDORA bsc#1221827 FIPS: Recommendation for Password-Based Key Derivation
-Patch34:        openssl-pbkdf2-Set-minimum-password-length-of-8-bytes.patch
+Patch24:        openssl-pbkdf2-Set-minimum-password-length-of-8-bytes.patch
 # PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
-Patch35:        openssl-FIPS-RSA-disable-shake.patch
-Patch36:        openssl-FIPS-signature-Add-indicator-for-PSS-salt-length.patch
+Patch25:        openssl-FIPS-RSA-disable-shake.patch
 # PATCH-FIX-FEDORA bsc#1221824 FIPS: NIST SP 800-56Brev2 Section 6.4.1.2.1
-Patch37:        openssl-FIPS-RSA-encapsulate.patch
+Patch26:        openssl-FIPS-RSA-encapsulate.patch
 # PATCH-FIX-FEDORA bsc#1221821 FIPS: Disable FIPS 186-4 Domain Parameters
-Patch38:        openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
-# PATCH-FIX-SUSE bsc#1221365 FIPS: Service Level Indicator is needed
-Patch39:        openssl-3-FIPS-GCM-Implement-explicit-indicator-for-IV-gen.patch
-# PATCH-FIX-FEDORA bsc#1221827 FIPS: Recommendation for Password-Based Key Derivation
-Patch40:        openssl-pbkdf2-Set-indicator-if-pkcs5-param-disabled-checks.patch
-# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
-Patch41:        openssl-FIPS-enforce-EMS-support.patch
+Patch27:        openssl-DH-Disable-FIPS-186-4-type-parameters-in-FIPS-mode.patch
 # PATCH-FIX-SUSE bsc#1221824 FIPS: Add check for SP 800-56Brev2 Section 6.4.1.2.1
-Patch42:        openssl-FIPS-Add-SP800-56Br2-6.4.1.2.1-3.c-check.patch
-# PATCH-FIX-SUSE bsc#1220523 FIPS: Port openssl to use jitterentropy
-Patch43:        openssl-3-jitterentropy-3.4.0.patch
+Patch28:        openssl-FIPS-Add-SP800-56Br2-6.4.1.2.1-3.c-check.patch
 # PATCH-FIX-SUSE bsc#1221753 FIPS: Enforce error state
-Patch44:        openssl-FIPS-Enforce-error-state.patch
-# PATCH-FIX-SUSE bsc#1221365 FIPS: Service Level Indicator is needed
-Patch45:        openssl-FIPS-enforce-security-checks-during-initialization.patch
+Patch29:        openssl-FIPS-Enforce-error-state.patch
 # PATCH-FIX-FEDORA Adapt pairwise tests
-Patch46:        openssl-skip-quic-pairwise.patch
-# PATCH-FIX-UPSTREAM support MSA 12 (SHA3) jsc#PED-10280
-Patch48:        openssl-3-add_EVP_DigestSqueeze_api.patch
-Patch49:        openssl-3-support-multiple-sha3_squeeze_s390x.patch
-Patch50:        openssl-3-add-xof-state-handling-s3_absorb.patch
-Patch51:        openssl-3-fix-state-handling-sha3_absorb_s390x.patch
-Patch52:        openssl-3-fix-state-handling-sha3_final_s390x.patch
-Patch53:        openssl-3-fix-state-handling-shake_final_s390x.patch
-Patch54:        openssl-3-fix-state-handling-keccak_final_s390x.patch
-Patch55:        openssl-3-support-EVP_DigestSqueeze-in-digest-prov-s390x.patch
-Patch56:        openssl-3-add-defines-CPACF-funcs.patch
-Patch57:        openssl-3-add-hw-acceleration-hmac.patch
-Patch58:        openssl-3-support-CPACF-sha3-shake-perf-improvement.patch
-Patch59:        openssl-3-fix-s390x_sha3_absorb.patch
-Patch60:        openssl-3-fix-s390x_shake_squeeze.patch
-# PATCH-FIX-UPSTREAM: support MSA 10 XTS jsc#PED-10273
-Patch61:        openssl-3-hw-acceleration-aes-xts-s390x.patch
-# PATCH-FIX-UPSTREAM: support MSA 11 HMAC jsc#PED-10274
-Patch62:        openssl-3-disable-hmac-hw-acceleration-with-engine-digest.patch
-Patch63:        openssl-3-fix-hmac-digest-detection-s390x.patch
-Patch64:        openssl-3-fix-memleak-s390x_HMAC_CTX_copy.patch
-# PATCH-FIX-UPSTREAM: Fix failing tests on ppc64 jsc#PED-10280
-Patch65:        openssl-3-fix-sha3-squeeze-ppc64.patch
-Patch66:        openssl-3-fix-quic_multistream_test.patch
-# PATCH-FIX-SUSE jsc#PED-12224 FIPS: Mark SHA1 as nonapproved in the SLI
-Patch67:        openssl-FIPS-Mark-SHA1-as-nonapproved.patch
+Patch30:        openssl-skip-quic-pairwise.patch
+# PATCH-FIX-FEDORA Fix broken selftests in fips provider init
+Patch31:        openssl-FIPS-Fix-encoder-decoder-negative-test.patch
+Patch32:        openssl-FIPS-SUSE-FIPS-module-version.patch
+Patch33:        openssl-FIPS-EC-disable-weak-curves.patch
+Patch34:        openssl-FIPS-NO-DSA-Support.patch
+Patch35:        openssl-FIPS-NO-DES-support.patch
+Patch36:        openssl-FIPS-NO-Kmac.patch
+Patch37:        openssl-FIPS-NO-PQ-ML-SLH-DSA.patch
+# PATCH-FIX-SUSE Use the shared jitterentropy library instead of static
+Patch38:        openssl-shared-jitterentropy.patch
+# PATCH-FIX-SUSE Disable dubious broken test
+Patch39:        openssl-disable-75-test_quicapi-test.patch
+# PATCH-FIX-FEDORA bsc#1221365 FIPS: Service Level Indicator is needed
+Patch40:        openssl-FIPS-enforce-EMS-support.patch
 
 # ulp-macros is available according to SUSE version.
 %ifarch x86_64
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540
-BuildRequires:  ulp-macros
-%endif
-%endif
-%ifarch ppc64le
-%if 0%{?sle_version} >= 150700 || 0%{?suse_version} >= 1570
-BuildRequires:  gcc13
 BuildRequires:  ulp-macros
 %endif
 %endif
@@ -174,9 +135,10 @@ Obsoletes:      openssl-1_0_0
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      openssl-1_1_0
 %{?suse_build_hwcaps_libs}
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?sle_needs_crypto_policies}
 Requires:       crypto-policies
 %endif
+BuildRequires:  jitterentropy-devel >= 3.4.0
 
 %description
 OpenSSL is a software library to be used in applications that need to
@@ -190,7 +152,7 @@ Recommends:     ca-certificates-mozilla
 Conflicts:      %{name} < %{version}-%{release}
 # Needed for clean upgrade from former openssl-1_1_0, boo#1081335
 Obsoletes:      libopenssl1_1_0
-%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
+%if 0%{?sle_needs_crypto_policies}
 Requires:       crypto-policies
 %endif
 # Merge back the hmac files bsc#1185116
@@ -257,25 +219,20 @@ export MACHINE=armv5el
 export MACHINE=armv6l
 %endif
 
-# In ppc64le we need gcc-13 for userspace livepatching until we have the
-# required -fpatchable-functions-entry patch merged into the mainline
-%ifarch ppc64le
-%if 0%{?sle_version} >= 150700 || 0%{?suse_version} >= 1570
-export CC=gcc-13
-export CXX=g++-13
-%endif
-%endif
 ./Configure \
     enable-camellia \
 %ifarch x86_64 aarch64 ppc64le
     enable-ec_nistp_64_gcc_128 \
 %endif
     enable-fips \
-    enable-jitterentropy \
+    enable-fips-jitter \
+    enable-jitter \
     enable-ktls \
+    enable-pie \
     enable-rfc3779 \
     enable-seed \
     no-afalgeng \
+    no-atexit \
     no-ec2m \
     no-mdc2 \
     zlib \
@@ -290,11 +247,11 @@ export CXX=g++-13
     -DTERMIO \
     -DPURIFY \
     -D_GNU_SOURCE \
+    -DOPENSSL_PEDANTIC_ZEROIZATION \
     '-DSUSE_OPENSSL_RELEASE="\"%{release}\""' \
     -DOPENSSL_NO_BUF_FREELISTS \
     $(getconf LFS_CFLAGS) \
     -Wall \
-    --with-rand-seed=getrandom,jitterentropy \
     --system-ciphers-file=%{_sysconfdir}/crypto-policies/back-ends/openssl.config
 
 # Show build configuration
@@ -320,7 +277,7 @@ objcopy --update-section .rodata1=providers/fips.so.hmac providers/fips.so provi
 mv providers/fips.so.mac providers/fips.so
 
 # Run the tests in non FIPS mode
-LD_LIBRARY_PATH="$PWD" make test -j16
+LD_LIBRARY_PATH="$PWD" make test %{?_smp_mflags} %{?openssl_test_flags}
 
 # Run the tests also in FIPS mode
 # OPENSSL_FORCE_FIPS_MODE=1 LD_LIBRARY_PATH="$PWD" make TESTS='-test_evp_fetch_prov -test_tsa' test -j16 || :
@@ -433,6 +390,9 @@ fi
 %{_includedir}/ssl
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
+%dir %{_libdir}/cmake
+%{_libdir}/cmake/OpenSSL
+%{_libdir}/cmake/OpenSSL/*.cmake
 
 %files doc
 %doc README.md

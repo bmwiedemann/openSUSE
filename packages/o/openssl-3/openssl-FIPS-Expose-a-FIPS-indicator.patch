@@ -52,11 +52,11 @@ Signed-off-by: Clemens Lang <cllang@redhat.com>
  create mode 100644 doc/man7/fips_module_indicators.pod
  create mode 100644 providers/fips/indicator.h
 
-Index: openssl-3.1.4/doc/build.info
+Index: openssl-3.5.0-beta1/doc/build.info
 ===================================================================
---- openssl-3.1.4.orig/doc/build.info
-+++ openssl-3.1.4/doc/build.info
-@@ -4467,6 +4467,10 @@ DEPEND[html/man7/fips_module.html]=man7/
+--- openssl-3.5.0-beta1.orig/doc/build.info
++++ openssl-3.5.0-beta1/doc/build.info
+@@ -4939,6 +4939,10 @@ DEPEND[html/man7/fips_module.html]=man7/
  GENERATE[html/man7/fips_module.html]=man7/fips_module.pod
  DEPEND[man/man7/fips_module.7]=man7/fips_module.pod
  GENERATE[man/man7/fips_module.7]=man7/fips_module.pod
@@ -67,7 +67,7 @@ Index: openssl-3.1.4/doc/build.info
  DEPEND[html/man7/life_cycle-cipher.html]=man7/life_cycle-cipher.pod
  GENERATE[html/man7/life_cycle-cipher.html]=man7/life_cycle-cipher.pod
  DEPEND[man/man7/life_cycle-cipher.7]=man7/life_cycle-cipher.pod
-@@ -4712,6 +4716,7 @@ html/man7/ct.html \
+@@ -5266,6 +5270,7 @@ html/man7/ct.html \
  html/man7/des_modes.html \
  html/man7/evp.html \
  html/man7/fips_module.html \
@@ -75,7 +75,7 @@ Index: openssl-3.1.4/doc/build.info
  html/man7/life_cycle-cipher.html \
  html/man7/life_cycle-digest.html \
  html/man7/life_cycle-kdf.html \
-@@ -4838,6 +4843,7 @@ man/man7/ct.7 \
+@@ -5423,6 +5428,7 @@ man/man7/ct.7 \
  man/man7/des_modes.7 \
  man/man7/evp.7 \
  man/man7/fips_module.7 \
@@ -83,10 +83,10 @@ Index: openssl-3.1.4/doc/build.info
  man/man7/life_cycle-cipher.7 \
  man/man7/life_cycle-digest.7 \
  man/man7/life_cycle-kdf.7 \
-Index: openssl-3.1.4/doc/man7/fips_module_indicators.pod
+Index: openssl-3.5.0-beta1/doc/man7/fips_module_indicators.pod
 ===================================================================
 --- /dev/null
-+++ openssl-3.1.4/doc/man7/fips_module_indicators.pod
++++ openssl-3.5.0-beta1/doc/man7/fips_module_indicators.pod
 @@ -0,0 +1,155 @@
 +=pod
 +
@@ -243,19 +243,19 @@ Index: openssl-3.1.4/doc/man7/fips_module_indicators.pod
 +L<https://www.openssl.org/source/license.html>.
 +
 +=cut
-Index: openssl-3.1.4/providers/fips/fipsprov.c
+Index: openssl-3.5.0-beta1/providers/fips/fipsprov.c
 ===================================================================
---- openssl-3.1.4.orig/providers/fips/fipsprov.c
-+++ openssl-3.1.4/providers/fips/fipsprov.c
-@@ -26,6 +26,7 @@
- #include "self_test.h"
+--- openssl-3.5.0-beta1.orig/providers/fips/fipsprov.c
++++ openssl-3.5.0-beta1/providers/fips/fipsprov.c
+@@ -28,6 +28,7 @@
  #include "crypto/context.h"
+ #include "fipscommon.h"
  #include "internal/core.h"
 +#include "indicator.h"
  
  static const char FIPS_DEFAULT_PROPERTIES[] = "provider=fips,fips=yes";
  static const char FIPS_UNAPPROVED_PROPERTIES[] = "provider=fips,fips=no";
-@@ -438,6 +439,68 @@ static const OSSL_ALGORITHM fips_signatu
+@@ -542,6 +543,68 @@ static const OSSL_ALGORITHM fips_signatu
      { NULL, NULL, NULL }
  };
  
@@ -324,7 +324,7 @@ Index: openssl-3.1.4/providers/fips/fipsprov.c
  static const OSSL_ALGORITHM fips_asym_cipher[] = {
      { PROV_NAMES_RSA, FIPS_DEFAULT_PROPERTIES, ossl_rsa_asym_cipher_functions },
      { NULL, NULL, NULL }
-@@ -520,6 +583,14 @@ static const OSSL_ALGORITHM *fips_query(
+@@ -696,6 +759,14 @@ static const OSSL_ALGORITHM *fips_query(
      }
      return NULL;
  }
@@ -337,12 +337,12 @@ Index: openssl-3.1.4/providers/fips/fipsprov.c
 +    return NULL;
 +}
  
- static void fips_teardown(void *provctx)
- {
-Index: openssl-3.1.4/providers/fips/indicator.h
+ static const OSSL_ALGORITHM *fips_query_internal(void *provctx, int operation_id,
+                                                  int *no_cache)
+Index: openssl-3.5.0-beta1/providers/fips/indicator.h
 ===================================================================
 --- /dev/null
-+++ openssl-3.1.4/providers/fips/indicator.h
++++ openssl-3.5.0-beta1/providers/fips/indicator.h
 @@ -0,0 +1,66 @@
 +/*
 + * Copyright 2019-2021 The OpenSSL Project Authors. All Rights Reserved.
@@ -410,11 +410,11 @@ Index: openssl-3.1.4/providers/fips/indicator.h
 +# endif
 +
 +#endif
-Index: openssl-3.1.4/util/mkdef.pl
+Index: openssl-3.5.0-beta1/util/mkdef.pl
 ===================================================================
---- openssl-3.1.4.orig/util/mkdef.pl
-+++ openssl-3.1.4/util/mkdef.pl
-@@ -153,7 +153,8 @@ $ordinal_opts{filter} =
+--- openssl-3.5.0-beta1.orig/util/mkdef.pl
++++ openssl-3.5.0-beta1/util/mkdef.pl
+@@ -154,7 +154,8 @@ $ordinal_opts{filter} =
          return
              $item->exists()
              && platform_filter($item)
@@ -424,7 +424,7 @@ Index: openssl-3.1.4/util/mkdef.pl
      };
  my $ordinals = OpenSSL::Ordinals->new(from => $ordinals_file);
  
-@@ -209,6 +210,28 @@ sub feature_filter {
+@@ -210,6 +211,28 @@ sub feature_filter {
      return $verdict;
  }
  
@@ -453,10 +453,10 @@ Index: openssl-3.1.4/util/mkdef.pl
  sub sorter_unix {
      my $by_name = OpenSSL::Ordinals::by_name();
      my %weight = (
-Index: openssl-3.1.4/util/providers.num
+Index: openssl-3.5.0-beta1/util/providers.num
 ===================================================================
---- openssl-3.1.4.orig/util/providers.num
-+++ openssl-3.1.4/util/providers.num
+--- openssl-3.5.0-beta1.orig/util/providers.num
++++ openssl-3.5.0-beta1/util/providers.num
 @@ -1 +1,2 @@
  OSSL_provider_init                     1	*	EXIST::FUNCTION:
 +suse_ossl_query_fipsindicator          1	*	EXIST::FUNCTION:ONLY_PROVIDERS/FIPS
