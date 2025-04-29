@@ -1,7 +1,7 @@
 #
-# spec file for <package name>
+# spec file for package amber-cli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           amber-cli
-Version:        0.3.0+git20230728.955f78d
+Version:        1.13.1+git20250329.c2e3bb8
 Release:        0
 Summary:        CLI tool for tenants to use and access Amber services
 License:        BSD-3-Clause
 URL:            https://github.com/intel/amber-cli
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zstd
-BuildRequires:  golang(API) >= 1.20
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.20
 
 %description
 CLI tool for tenants to use and access Amber services.
