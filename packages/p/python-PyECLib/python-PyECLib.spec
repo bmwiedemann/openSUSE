@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyECLib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyECLib
-Version:        1.6.1
+Version:        1.6.4
 Release:        0
 Summary:        Simple interface for implementing erasure codes
 License:        BSD-3-Clause
-URL:            https://git.openstack.org/cgit/openstack/pyeclib/
+URL:            https://opendev.org/openstack/pyeclib/
 Source:         https://files.pythonhosted.org/packages/source/p/pyeclib/pyeclib-%{version}.tar.gz
 Source99:       https://opendev.org/openstack/pyeclib/raw/branch/master/LICENSE
 BuildRequires:  %{python_module devel}

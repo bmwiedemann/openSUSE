@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:46:48 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Binary wheels support a broader range of processors.
+  * Only destroy liberasurecode descriptors on liberasurecode
+    versions where it should be safe to do so.
+
+-------------------------------------------------------------------
 Thu May  5 04:58:38 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.6.1:
@@ -6,19 +14,19 @@ Thu May  5 04:58:38 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
   * Use Py_ssize_t when calling PyArg_Parse
   * Test against Python 3.8 - 3.10
   * Use the Python Stable ABI
-  * Various other minor bugs fixes and improvements 
+  * Various other minor bugs fixes and improvements
 - Stop skipping Python 3.10
 - Update the license file location
 
 -------------------------------------------------------------------
 Tue Jan 11 10:14:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- skip python 3.10 for now 
+- skip python 3.10 for now
 
 -------------------------------------------------------------------
 Mon Nov  8 10:40:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- six is needed by testsuite 
+- six is needed by testsuite
 
 -------------------------------------------------------------------
 Thu Jun  3 10:34:02 UTC 2021 - pgajdos@suse.com
