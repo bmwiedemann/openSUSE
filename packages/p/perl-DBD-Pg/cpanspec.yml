@@ -36,7 +36,12 @@ preamble: |-
 # [   59s] t/09arrays.t         (Wstat: 11 Tests: 203 Failed: 0)
 # [   59s]   Non-zero wait status: 11
 # See also https://rt.cpan.org/Ticket/Display.html?id=132799
+
+# For DBDPG_TEMPDIR see https://github.com/bucardo/dbdpg/issues/78
+# Error was: Unix-domain socket path
+# "/home/abuild/rpmbuild/BUILD/perl-DBD-Pg-3.18.0-build/DBD-Pg-3.18.0/dbdpg_test_database/data/socket/.s.PGSQL.5442"
+# is too long (maximum 107 bytes) at t/dbdpg_test_setup.pl line 608.
 custom_test: |-
-  HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
+  DBDPG_TEMPDIR=/tmp HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 #startserver && make test
 #ignore_requires: Bizarre::Module

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-Pg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,14 +49,14 @@ DBD::Pg is a Perl module that works with the DBI module to provide access
 to PostgreSQL databases.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
 %make_build
 
 %check
-HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
+DBDPG_TEMPDIR=/tmp HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 
 %install
 %perl_make_install

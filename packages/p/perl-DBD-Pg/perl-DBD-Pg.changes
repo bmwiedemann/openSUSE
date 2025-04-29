@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 13:23:01 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- Fix sporadic build failures by setting DBDPG_TEMPDIR for testing
+
+-------------------------------------------------------------------
 Thu Dec  7 03:06:29 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.18.0
