@@ -281,4 +281,16 @@
 - Add tumbleweed.yaml and leap.idx</comment>
     <requestid>1256421</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>79bab307cd83ea010291f4656781fe38</srcmd5>
+    <version>20250428.1b0295a</version>
+    <time>1745937597</time>
+    <user>dimstar_suse</user>
+    <comment>- Update leap.idx
+- Update to version 20250428.83286ab:
+  * Set manual page width to 110 character
+  * Remove Leap hacks in index page
+  * Update go dependencies [bsc#1241744]</comment>
+    <requestid>1273144</requestid>
+  </revision>
 </revisionlist>

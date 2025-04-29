@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 28 12:23:44 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update leap.idx
+- Update to version 20250428.83286ab:
+  * Set manual page width to 110 character
+  * Remove Leap hacks in index page
+  * Update go dependencies [bsc#1241744]
+
+-------------------------------------------------------------------
 Thu Mar 27 09:08:12 UTC 2025 - kukuk@suse.com
 
 - Update to version 20250327.1888603:
