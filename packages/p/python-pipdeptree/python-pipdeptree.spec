@@ -1,7 +1,7 @@
 #
 # spec file for package python-pipdeptree
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-pipdeptree
-Version:        2.23.4
+Version:        2.26.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT

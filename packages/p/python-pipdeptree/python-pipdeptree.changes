@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:43:51 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.26.1:
+  * Refactor license option tests to use Mock objects instead of
+    lambdas
+  * Handle exceptions when passed an invalid interpreter
+- update to 2.26.0:
+  * Support for License-Expression field
+- update to 2.25.1:
+  * Remove unused .gitignore rule
+  * Use SPDX license identifier
+  * Remove unnecessary assertion in render()
+  * Update CLI usage for --all by moving it to the "render" group
+  * Split freeze and text output into their own implementations
+  * Remove unused graphviz library code
+  * Use MockGraph type alias in tests
+  * Update outdated graphviz docs
+- update to 2.25.0:
+  * Migrate tox config from ini to toml
+  * Drop support for python 3.8
+- update to 2.24.0:
+  * Implement --path argument
+
+-------------------------------------------------------------------
 Mon Oct 28 16:51:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.4:

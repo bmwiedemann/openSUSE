@@ -208,4 +208,31 @@
   * Declare 3.13 support</comment>
     <requestid>1218841</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a714b9be9a6b5a059418e82ea5b61b86</srcmd5>
+    <version>2.26.1</version>
+    <time>1745937637</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.26.1:
+  * Refactor license option tests to use Mock objects instead of
+    lambdas
+  * Handle exceptions when passed an invalid interpreter
+- update to 2.26.0:
+  * Support for License-Expression field
+- update to 2.25.1:
+  * Remove unused .gitignore rule
+  * Use SPDX license identifier
+  * Remove unnecessary assertion in render()
+  * Update CLI usage for --all by moving it to the &quot;render&quot; group
+  * Split freeze and text output into their own implementations
+  * Remove unused graphviz library code
+  * Use MockGraph type alias in tests
+  * Update outdated graphviz docs
+- update to 2.25.0:
+  * Migrate tox config from ini to toml
+  * Drop support for python 3.8
+- update to 2.24.0:
+  * Implement --path argument</comment>
+    <requestid>1273212</requestid>
+  </revision>
 </revisionlist>
