@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msal
-Version:        1.32.0
+Version:        1.32.3
 Release:        0
 Summary:        Microsoft Authentication Library (MSAL) for Python
 License:        MIT

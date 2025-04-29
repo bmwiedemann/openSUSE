@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:12:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.32.3
+  * Fix a regression on Azure Arc / on-prem servers (#814, #815)
+- from version 1.32.2
+  * Bugfix for Authentication Failed: MsalResponse object has no
+    attribute 'headers' (#812)
+- from version 1.32.1
+  * Optimization on cache
+
+-------------------------------------------------------------------
 Tue Mar 18 09:30:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.32.0

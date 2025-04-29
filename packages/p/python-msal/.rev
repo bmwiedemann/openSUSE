@@ -383,4 +383,18 @@
   * Scope to resource by @rayluo in (#785) (forwarded request 1254060 from glaubitz)</comment>
     <requestid>1254233</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d12bbf1b7334676c5bc6d85eaebf80bb</srcmd5>
+    <version>1.32.3</version>
+    <time>1745937768</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32.3
+  * Fix a regression on Azure Arc / on-prem servers (#814, #815)
+- from version 1.32.2
+  * Bugfix for Authentication Failed: MsalResponse object has no
+    attribute 'headers' (#812)
+- from version 1.32.1
+  * Optimization on cache (forwarded request 1273415 from glaubitz)</comment>
+    <requestid>1273419</requestid>
+  </revision>
 </revisionlist>
