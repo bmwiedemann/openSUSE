@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 29 04:18:50 UTC 2025 - Martin Liška <martin.liska@hey.com>
+
+- Update to version 2.38.1
+  * Fixed a bug where mold could fail with a spurious mutually-recursive .so
+    detected error message when building an executable. This happened if there was a
+    circular dependency between shared libraries given to the linker (i.e.,
+    libfoo.so depends on libbar.so and vice versa). Even though libraries with
+    circular dependencies are rare and a strong indication of a bug in the original
+    program's library layering, the dynamic loader can load such libraries, and the
+    linker shouldn't reject them. (21e20e0)
+
+-------------------------------------------------------------------
 Sun Apr 27 06:40:12 UTC 2025 - Martin Liška <martin.liska@hey.com>
 
 - Update to version 2.38.0

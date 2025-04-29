@@ -1122,4 +1122,19 @@
     object file defined both foo and foo@@VERSION), mold mistakenly hid both symbols</comment>
     <requestid>1272922</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>60c222f2f9be5984556ef6f7e44a03a9</srcmd5>
+    <version>2.38.1</version>
+    <time>1745937689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.38.1
+  * Fixed a bug where mold could fail with a spurious mutually-recursive .so
+    detected error message when building an executable. This happened if there was a
+    circular dependency between shared libraries given to the linker (i.e.,
+    libfoo.so depends on libbar.so and vice versa). Even though libraries with
+    circular dependencies are rare and a strong indication of a bug in the original
+    program's library layering, the dynamic loader can load such libraries, and the
+    linker shouldn't reject them. (21e20e0)</comment>
+    <requestid>1273270</requestid>
+  </revision>
 </revisionlist>
