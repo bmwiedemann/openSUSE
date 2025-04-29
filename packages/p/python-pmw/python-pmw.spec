@@ -54,6 +54,6 @@ sed -i '1d' Pmw/Pmw_2_1_1/{demos/All,bin/bundlepmw,tests/All,tests/ManualTests}.
 
 %files %{python_files}
 %{python_sitelib}/[pP]mw
-%{python_sitelib}/pmw-%{version}*-info
+%{python_sitelib}/[pP]mw-%{version}*-info
 
 %changelog
