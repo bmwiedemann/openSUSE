@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 29 05:55:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.1:
+  * Allow an empty layering object for legacy behavior (#1643)
+  * apk: expose ParsedConstraint version (#1640)
+
+-------------------------------------------------------------------
 Thu Apr 24 15:31:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.0:
