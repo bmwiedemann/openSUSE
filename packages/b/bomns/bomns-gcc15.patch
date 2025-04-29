@@ -1,0 +1,13 @@
+Index: Bomns-for-Linux/src/launcher/main.h
+===================================================================
+--- Bomns-for-Linux.orig/src/launcher/main.h
++++ Bomns-for-Linux/src/launcher/main.h
+@@ -26,7 +26,7 @@ int main(int, char **);
+ void set_defaults();
+ void write_bomns_rc();
+ void load_bomns_rc();
+-void parse_bomns_rc();
++void parse_bomns_rc(const char * cszBuf);
+ 
+ 
+ #endif

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 11:47:21 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + bomns-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Nov 11 20:20:09 UTC 2024 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add fix-missing-header.patch

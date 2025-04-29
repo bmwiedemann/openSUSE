@@ -1,7 +1,7 @@
 #
 # spec file for package bomns
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         %{name}-%{version}+git-113be27.tar.bz2
 Patch0:         %{name}-%{name}.desktop.patch
 # PATCH-FIX-UPSTREAM - fix-missing-header.patch -- Add missing header for isspace
 Patch1:         fix-missing-header.patch
+# fix build with gcc15
+Patch2:         bomns-gcc15.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
