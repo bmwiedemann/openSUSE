@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:13:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.65:
+  * no changes in this release
+- update to 0.8.64:
+  * General
+    - A test of the Meshery Istio Adapter @leecalcote (#14493)
+  * Meshery CLI
+    - [mesheryctl] add e2e tests for mesheryctl model view command
+      @VinayCheripally (#14098)
+    - Test: E2E playwright test for model create and model import
+      wizard @vr-varad (#14388)
+    - e2e tests for mesheryctl perf command @shinigami-777 (#14423)
+    - chore(mesheryctl-e2e): update tests to fix fail in ci
+      @lekaf974 (#14540)
+  * Maintenance
+    - [Chore] Update the go and alpine Docker images @thealberto
+      (#14249)
+    - [mesheryctl] add e2e tests for mesheryctl model view command
+      @VinayCheripally (#14098)
+    - Set appropriate permissions for GitHub workflows
+      @Prajwal-kp-18 (#14168)
+    - Test: E2E playwright test for model create and model import
+      wizard @vr-varad (#14388)
+    - e2e tests for mesheryctl perf command @shinigami-777 (#14423)
+    - chore(mesheryctl-e2e): update tests to fix fail in ci
+      @lekaf974 (#14540)
+  * Documentation
+    - [Docs] Mesheryctl uses MeshKit for logging (or at least it
+      should be) @leecalcote (#14347)
+    - Test: E2E playwright test for model create and model import
+      wizard @vr-varad (#14388)
+    - e2e tests for mesheryctl perf command @shinigami-777 (#14423)
+    - Docs: Update about improving connection modal @vr-varad
+      (#14542)
+  * Security
+    - Fixed Cross-site Scripting (XSS) in prometheus_handlers.go
+      @Sumitsh28 (#14241)
+    - [Chore] Update the go and alpine Docker images @thealberto
+      (#14249)
+
+-------------------------------------------------------------------
+Fri Apr 25 18:43:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.63:
+  no CLI-related changes in this release
+- update to 0.8.62:
+  CLI-related changes in the changelog:
+  *  add e2e tests for mesheryctl model import
+
+-------------------------------------------------------------------
 Fri Apr 25 06:30:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.61:
