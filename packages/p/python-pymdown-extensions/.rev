@@ -142,4 +142,24 @@
     <comment></comment>
     <requestid>1243048</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>05faf90a0b79dcc9fe4bb7947c95279e</srcmd5>
+    <version>10.15</version>
+    <time>1745937602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 10.15:
+  * **NEW**: SuperFences: Add `relaxed_headers` option which
+    can tolerate bad content in the fenced code header. When
+    enabled, code blocks with bad content in the header will
+    likely still convert into code blocks, often respecting
+    the specified language.
+  * **NEW**: Add type hints to the Blocks interface and a few
+    additional files.
+  * **FIX**: Blocks: Fix some corner cases of nested blocks
+    with lists.
+  * **FIX**: Tab and Tabbed: Fix a case where tabs could fail
+    if `combine_header_slug` was enabled and there was no
+    header.</comment>
+    <requestid>1273168</requestid>
+  </revision>
 </revisionlist>
