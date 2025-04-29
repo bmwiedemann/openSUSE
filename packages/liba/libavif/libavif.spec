@@ -1,7 +1,7 @@
 #
 # spec file for package libavif
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,28 +19,60 @@
 # Also update baselibs.conf if you bump the version
 %global lib_soversion 16
 %global lib_name libavif%{lib_soversion}
+%global libargparse ee74d1b53bd680748af14e737378de57e2a0a954
+
+# currently disabled
+%bcond_with     man_pages
+%bcond_with     tests
+
+%ifarch aarch64 x86_64
+%bcond_without  SvtAv1Enc
+%else
+%bcond_with     SvtAv1Enc
+%endif
+
 Name:           libavif
-Version:        1.1.1
+Version:        1.2.1
 Release:        0
 Summary:        Library for encoding and decoding .avif files
-License:        BSD-2-Clause
+License:        BSD-2-Clause AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/AOMediaCodec/libavif
-Source:         https://github.com/AOMediaCodec/libavif/archive/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source10:       https://github.com/kmurray/libargparse/archive/%{libargparse}/libargparse-%{libargparse}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  libjpeg8-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aom) >= 2.0.0
 BuildRequires:  pkgconfig(dav1d)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng) >= 1.6.32
 BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libyuv)
 BuildRequires:  pkgconfig(rav1e) >= 0.5.0
+%if %{with SvtAv1Enc}
+BuildRequires:  pkgconfig(SvtAv1Enc)
+%endif
+%if %{with man_pages}
+BuildRequires:  pandoc
+%endif
+%if %{with tests}
+BuildRequires:  ImageMagick
+BuildRequires:  pkgconfig(gtest)
+%endif
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc11-PIE
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(libsharpyuv)
+%endif
+Provides:       bundled(libargparse)
 
 %description
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -99,23 +131,55 @@ This package holds the development files for libavif.
 %prep
 %autosetup -p1
 
+mkdir ext/libargparse
+tar -xf %{SOURCE10} --strip-components=1 -C ext/libargparse
+
 %build
+%define __builder ninja
 %cmake \
- -DAVIF_CODEC_AOM=SYSTEM \
- -DAVIF_CODEC_DAV1D=SYSTEM \
- -DAVIF_CODEC_RAV1E=SYSTEM \
- -DAVIF_GTEST=SYSTEM \
- -DAVIF_JPEG=SYSTEM \
- -DAVIF_LIBXML2=SYSTEM \
- -DAVIF_LIBYUV=SYSTEM \
- -DAVIF_ZLIBPNG=SYSTEM \
- -DAVIF_BUILD_APPS:BOOL=ON \
- -DAVIF_BUILD_EXAMPLES:BOOL=ON \
- -DAVIF_BUILD_GDK_PIXBUF=ON
+%if 0%{?suse_version} < 1600
+	-DCMAKE_C_COMPILER=gcc-11	\
+	-DCMAKE_CXX_COMPILER=g++-11	\
+	-DAVIF_LIBSHARPYUV=OFF		\
+%else
+	-DAVIF_LIBSHARPYUV=SYSTEM	\
+%endif
+%if %{with SvtAv1Enc}
+	-DAVIF_CODEC_SVT=SYSTEM		\
+%endif
+%if %{with man_pages}
+	-DAVIF_BUILD_MAN_PAGES=ON	\
+%endif
+%if %{with tests}
+	-DAVIF_BUILD_TESTS=ON		\
+	-DAVIF_GTEST=SYSTEM		\
+%endif
+	-DAVIF_CODEC_AOM=SYSTEM		\
+	-DAVIF_CODEC_DAV1D=SYSTEM	\
+	-DAVIF_CODEC_RAV1E=SYSTEM	\
+	-DAVIF_JPEG=SYSTEM		\
+	-DAVIF_LIBXML2=SYSTEM		\
+	-DAVIF_LIBYUV=SYSTEM		\
+	-DAVIF_ZLIBPNG=SYSTEM		\
+	-DAVIF_BUILD_APPS:BOOL=ON	\
+	-DAVIF_BUILD_EXAMPLES:BOOL=ON	\
+	-DAVIF_BUILD_GDK_PIXBUF=ON
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+export PATH=%{buildroot}%{_bindir}:$PATH
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}:$LD_LIBRARY_PATH
+avifdec --version
+avifenc --version
+%if %{with tests}
+%ifarch ppc64le
+skip="-E avifgainmaptest"
+%endif
+%ctest --parallel 1 --timeout 60 --verbose $skip
+%endif
 
 %ldconfig_scriptlets -n %{lib_name}
 
@@ -135,6 +199,11 @@ This package holds the development files for libavif.
 %license LICENSE
 %{_bindir}/avifdec
 %{_bindir}/avifenc
+%{_bindir}/avifgainmaputil
+%if %{with man_pages}
+%{_mandir}/man1/avifdec.1%{?ext_man}
+%{_mandir}/man1/avifenc.1%{?ext_man}
+%endif
 
 %files -n gdk-pixbuf-loader-libavif
 %license LICENSE
