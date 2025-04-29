@@ -1956,4 +1956,41 @@
    * Raise syntax error when \ is at end of file</comment>
     <requestid>1271168</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>3f041fae8494a39ba5bcfc779b4baf52</srcmd5>
+    <version>0.11.7</version>
+    <time>1745937571</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.7:
+  * \[`airflow`\] Apply auto fixes to cases where the names have
+    changed in Airflow 3 (`AIR301`)
+  * \[`perflint`\] Implement fix for `manual-dict-comprehension`
+    (`PERF403`)
+  * [syntax-errors] Make duplicate parameter names a semantic
+    error
+  * \[`flake8-type-checking`\] Visit keyword arguments in checks
+    involving `typing.cast`/`typing.NewType` arguments
+  * \[`pyupgrade`\] Preserve parenthesis when fixing native
+    literals containing newlines (`UP018`)
+  * \[`refurb`\] Mark the `FURB161` fix unsafe except for
+    integers and booleans
+
+   * Avoid adding whitespace to the end of a docstring after an escaped quote
+   * Raise syntax error when \ is at end of file
+   * [airflow] Add missing AIR302 attribute check
+   * [airflow] Expand module path check to individual symbols (AIR302)
+   * [airflow] Extract AIR312 from AIR302 rules (AIR302, AIR312)
+   * [airflow] Update oudated AIR301, AIR302 rules
+   * [syntax-errors] Async comprehension in sync comprehension
+   * [syntax-errors] Check annotations in annotated assignments
+   * [syntax-errors] Extend annotation checks to await
+   * [flake8-pie] Avoid false positive for multiple assignment with auto() (PIE796)
+   * [ruff] Fix RUF100 to detect unused file-level noqa directives with specific codes
+   * [flake8-pytest-style] Avoid false positive for legacy form of pytest.raises (PT011)
+   * Fix formatting of &quot;See Style Guide&quot; link
+   * [ruff] Implement invalid-rule-code as RUF102
+   * [syntax-errors] Detect duplicate keys in match mapping patterns
+   * [syntax-errors] Detect duplicate attributes in match class patterns</comment>
+    <requestid>1272955</requestid>
+  </revision>
 </revisionlist>

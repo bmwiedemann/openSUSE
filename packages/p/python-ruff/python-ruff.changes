@@ -1,92 +1,109 @@
 -------------------------------------------------------------------
+Sun Apr 27 14:51:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.7:
+  * \[`airflow`\] Apply auto fixes to cases where the names have
+    changed in Airflow 3 (`AIR301`)
+  * \[`perflint`\] Implement fix for `manual-dict-comprehension`
+    (`PERF403`)
+  * [syntax-errors] Make duplicate parameter names a semantic
+    error
+  * \[`flake8-type-checking`\] Visit keyword arguments in checks
+    involving `typing.cast`/`typing.NewType` arguments
+  * \[`pyupgrade`\] Preserve parenthesis when fixing native
+    literals containing newlines (`UP018`)
+  * \[`refurb`\] Mark the `FURB161` fix unsafe except for
+    integers and booleans
+
+-------------------------------------------------------------------
 Mon Apr 21 12:16:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.6
  * Preview features
-   * Avoid adding whitespace to the end of a docstring after an escaped quote 
+   * Avoid adding whitespace to the end of a docstring after an escaped quote
    * [airflow] Extract AIR311 from AIR301 rules (AIR301, AIR311)
  * Bug fixes
-   * Raise syntax error when \ is at end of file 
+   * Raise syntax error when \ is at end of file
 
 -------------------------------------------------------------------
 Fri Apr 11 13:52:09 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.5
  * Preview features
-   * [airflow] Add missing AIR302 attribute check 
-   * [airflow] Expand module path check to individual symbols (AIR302) 
-   * [airflow] Extract AIR312 from AIR302 rules (AIR302, AIR312) 
-   * [airflow] Update oudated AIR301, AIR302 rules 
-   * [syntax-errors] Async comprehension in sync comprehension 
-   * [syntax-errors] Check annotations in annotated assignments 
-   * [syntax-errors] Extend annotation checks to await 
+   * [airflow] Add missing AIR302 attribute check
+   * [airflow] Expand module path check to individual symbols (AIR302)
+   * [airflow] Extract AIR312 from AIR302 rules (AIR302, AIR312)
+   * [airflow] Update oudated AIR301, AIR302 rules
+   * [syntax-errors] Async comprehension in sync comprehension
+   * [syntax-errors] Check annotations in annotated assignments
+   * [syntax-errors] Extend annotation checks to await
  * Bug fixes
-   * [flake8-pie] Avoid false positive for multiple assignment with auto() (PIE796) 
+   * [flake8-pie] Avoid false positive for multiple assignment with auto() (PIE796)
  * Rule changes
-   * [ruff] Fix RUF100 to detect unused file-level noqa directives with specific codes  
-   * [flake8-pytest-style] Avoid false positive for legacy form of pytest.raises (PT011) 
+   * [ruff] Fix RUF100 to detect unused file-level noqa directives with specific codes
+   * [flake8-pytest-style] Avoid false positive for legacy form of pytest.raises (PT011)
  * Documentation
-   * Fix formatting of "See Style Guide" link 
+   * Fix formatting of "See Style Guide" link
 
 -------------------------------------------------------------------
 Sun Apr  6 18:44:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.4
  * Preview features
-   * [ruff] Implement invalid-rule-code as RUF102 
-   * [syntax-errors] Detect duplicate keys in match mapping patterns 
-   * [syntax-errors] Detect duplicate attributes in match class patterns 
-   * [syntax-errors] Detect invalid syntax in annotations 
+   * [ruff] Implement invalid-rule-code as RUF102
+   * [syntax-errors] Detect duplicate keys in match mapping patterns
+   * [syntax-errors] Detect duplicate attributes in match class patterns
+   * [syntax-errors] Detect invalid syntax in annotations
    * [airflow] Add more autofixes for AIR302
-   * [airflow] Move AIR301 to AIR002 
-   * [airflow] Move AIR302 to AIR301 and AIR303 to AIR302 
-   * [flake8-bandit] Mark str and list[str] literals as trusted input (S603) 
-   * [ruff] Support slices in RUF005 
-   * [syntax-errors] Start detecting compile-time syntax errors 
-   * [syntax-errors] Duplicate type parameter names 
-   * [syntax-errors] Irrefutable case pattern before final case 
-   * [syntax-errors] Multiple assignments in case pattern 
-   * [syntax-errors] Single starred assignment target 
-   * [syntax-errors] Starred expressions in return, yield, and for 
-   * [syntax-errors] Store to or delete __debug__ 
+   * [airflow] Move AIR301 to AIR002
+   * [airflow] Move AIR302 to AIR301 and AIR303 to AIR302
+   * [flake8-bandit] Mark str and list[str] literals as trusted input (S603)
+   * [ruff] Support slices in RUF005
+   * [syntax-errors] Start detecting compile-time syntax errors
+   * [syntax-errors] Duplicate type parameter names
+   * [syntax-errors] Irrefutable case pattern before final case
+   * [syntax-errors] Multiple assignments in case pattern
+   * [syntax-errors] Single starred assignment target
+   * [syntax-errors] Starred expressions in return, yield, and for
+   * [syntax-errors] Store to or delete __debug__
  * Bug fixes
-   * [syntax-errors] Fix multiple assignment error for class fields in match patterns 
-   * Don't skip visiting non-tuple slice in typing.Annotated subscripts 
+   * [syntax-errors] Fix multiple assignment error for class fields in match patterns
+   * Don't skip visiting non-tuple slice in typing.Annotated subscripts
    * Error instead of panic! when running Ruff from a deleted directory
-   * [syntax-errors] Fix false positive for parenthesized tuple index 
+   * [syntax-errors] Fix false positive for parenthesized tuple index
  * CLI
-   * Check pyproject.toml correctly when it is passed via stdin 
+   * Check pyproject.toml correctly when it is passed via stdin
  * Configuration
-   * [flake8-import-conventions] Add import numpy.typing as npt to default flake8-import-conventions.aliases 
+   * [flake8-import-conventions] Add import numpy.typing as npt to default flake8-import-conventions.aliases
    * Documentation
-   * [refurb] Document why UserDict, UserList, and UserString are preferred over dict, list, and str (FURB189) 
+   * [refurb] Document why UserDict, UserList, and UserString are preferred over dict, list, and str (FURB189)
 
 -------------------------------------------------------------------
 Sat Mar 22 13:29:35 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.2
  * Preview features
-   * [syntax-errors] Fix false-positive syntax errors emitted for annotations on variadic parameters before Python 3.11 
-   * [airflow] Add chain, chain_linear and cross_downstream for AIR302 
-   * [syntax-errors] Improve error message and range for pre-PEP-614 decorator syntax errors 
-   * [syntax-errors] PEP 701 f-strings before Python 3.12 
-   * [syntax-errors] Parenthesized context managers before Python 3.9 
-   * [syntax-errors] Star annotations before Python 3.11 
-   * [syntax-errors] Star expression in index before Python 3.11 
-   * [syntax-errors] Unparenthesized assignment expressions in sets and indexes 
+   * [syntax-errors] Fix false-positive syntax errors emitted for annotations on variadic parameters before Python 3.11
+   * [airflow] Add chain, chain_linear and cross_downstream for AIR302
+   * [syntax-errors] Improve error message and range for pre-PEP-614 decorator syntax errors
+   * [syntax-errors] PEP 701 f-strings before Python 3.12
+   * [syntax-errors] Parenthesized context managers before Python 3.9
+   * [syntax-errors] Star annotations before Python 3.11
+   * [syntax-errors] Star expression in index before Python 3.11
+   * [syntax-errors] Unparenthesized assignment expressions in sets and indexes
  * Bug fixes
-   * Server: Allow FixAll action in presence of version-specific syntax errors 
+   * Server: Allow FixAll action in presence of version-specific syntax errors
    * [flake8-bandit] Allow raw strings in suspicious-mark-safe-usage (S308)
-   * [refurb] Avoid panicking unwrap in verbose-decimal-constructor (FURB157) 
-   * [refurb] Fix starred expressions fix (FURB161) 
-   * Fix --statistics reporting for unsafe fixes 
+   * [refurb] Avoid panicking unwrap in verbose-decimal-constructor (FURB157)
+   * [refurb] Fix starred expressions fix (FURB161)
+   * Fix --statistics reporting for unsafe fixes
  * Rule changes
    * [flake8-executables] Allow uv run in shebang line for shebang-missing-python (EXE003)
  * CLI
-   * Add --exit-non-zero-on-format 
+   * Add --exit-non-zero-on-format
  * Documentation
-   * Update Ruff tutorial to avoid non-existent fix in __init__.py 
-   * [flake8-gettext] Swap format- and printf-in-get-text-func-call examples (INT002, INT003) 
+   * Update Ruff tutorial to avoid non-existent fix in __init__.py
+   * [flake8-gettext] Swap format- and printf-in-get-text-func-call examples (INT002, INT003)
 
 -------------------------------------------------------------------
 Sat Mar 15 22:51:35 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -110,182 +127,182 @@ Mon Mar 10 10:18:59 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.10
  * Preview features
-   * [ruff] Add new rule RUF059: Unused unpacked assignment 
-   * [syntax-errors] Detect assignment expressions before Python 3.8 
-   * [syntax-errors] Named expressions in decorators before Python 3.9 
-   * [syntax-errors] Parenthesized keyword argument names after Python 3.8 
-   * [syntax-errors] Positional-only parameters before Python 3.8 
-   * [syntax-errors] Tuple unpacking in return and yield before Python 3.8 
-   * [syntax-errors] Type parameter defaults before Python 3.13 
-   * [syntax-errors] Type parameter lists before Python 3.12 
-   * [syntax-errors] except* before Python 3.11 
-   * [syntax-errors] type statements before Python 3.12 
+   * [ruff] Add new rule RUF059: Unused unpacked assignment
+   * [syntax-errors] Detect assignment expressions before Python 3.8
+   * [syntax-errors] Named expressions in decorators before Python 3.9
+   * [syntax-errors] Parenthesized keyword argument names after Python 3.8
+   * [syntax-errors] Positional-only parameters before Python 3.8
+   * [syntax-errors] Tuple unpacking in return and yield before Python 3.8
+   * [syntax-errors] Type parameter defaults before Python 3.13
+   * [syntax-errors] Type parameter lists before Python 3.12
+   * [syntax-errors] except* before Python 3.11
+   * [syntax-errors] type statements before Python 3.12
  * Bug fixes
-   * Escape template filenames in glob patterns in configuration 
-   * [flake8-simplify] Exempt unittest context methods for SIM115 rule 
-   * Formatter: Fix syntax error location in notebooks 
-   * [pyupgrade] Do not offer fix when at least one target is global/nonlocal (UP028) 
-   * [flake8-builtins] Ignore variables matching module attribute names (A001) 
-   * [pylint] Convert code keyword argument to a positional argument in fix for (PLR1722) 
+   * Escape template filenames in glob patterns in configuration
+   * [flake8-simplify] Exempt unittest context methods for SIM115 rule
+   * Formatter: Fix syntax error location in notebooks
+   * [pyupgrade] Do not offer fix when at least one target is global/nonlocal (UP028)
+   * [flake8-builtins] Ignore variables matching module attribute names (A001)
+   * [pylint] Convert code keyword argument to a positional argument in fix for (PLR1722)
  * CLI
-   * Move rule code from description to check_name in GitLab output serializer 
+   * Move rule code from description to check_name in GitLab output serializer
  * Documentation
-   * [pydocstyle] Clarify that D417 only checks docstrings with an arguments section 
+   * [pydocstyle] Clarify that D417 only checks docstrings with an arguments section
 
 -------------------------------------------------------------------
 Tue Mar  4 13:44:16 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.9
  * Preview features
-   * Fix caching of unsupported-syntax errors 
-   * Start detecting version-related syntax errors in the parser 
+   * Fix caching of unsupported-syntax errors
+   * Start detecting version-related syntax errors in the parser
  * Rule changes
-   * [pylint] Mark fix unsafe (PLW1507) 
-   * [pylint] Catch case np.nan/case math.nan in match statements (PLW0177) 
-   * [ruff] Add more Pydantic models variants to the list of default copy semantics (RUF012) 
+   * [pylint] Mark fix unsafe (PLW1507)
+   * [pylint] Catch case np.nan/case math.nan in match statements (PLW0177)
+   * [ruff] Add more Pydantic models variants to the list of default copy semantics (RUF012)
  * Server
-   * Avoid indexing the project if configurationPreference is editorOnly 
-   * Avoid unnecessary info at non-trace server log level 
-   * Expand ruff.configuration to allow inline config 
-   * Notify users for invalid client settings 
+   * Avoid indexing the project if configurationPreference is editorOnly
+   * Avoid unnecessary info at non-trace server log level
+   * Expand ruff.configuration to allow inline config
+   * Notify users for invalid client settings
  * Configuration
-   * Add per-file-target-version option 
+   * Add per-file-target-version option
  * Bug fixes
-   * Only show unsupported-syntax errors in editors when preview mode is enabled 
-   * [refurb] Do not consider docstring(s) (FURB156) 
-   * [flake8-self] Ignore attribute accesses on instance-like variables (SLF001) 
-   * [pylint] Fix false positives, add missing methods, and support positional-only parameters (PLE0302) 
-   * [flake8-pyi] Mark PYI030 fix unsafe when comments are deleted 
+   * Only show unsupported-syntax errors in editors when preview mode is enabled
+   * [refurb] Do not consider docstring(s) (FURB156)
+   * [flake8-self] Ignore attribute accesses on instance-like variables (SLF001)
+   * [pylint] Fix false positives, add missing methods, and support positional-only parameters (PLE0302)
+   * [flake8-pyi] Mark PYI030 fix unsafe when comments are deleted
  * Documentation
-   * Fix example for S611 
-   * Normalize inconsistent markdown headings in docstrings 
-   * Document MSRV policy 
+   * Fix example for S611
+   * Normalize inconsistent markdown headings in docstrings
+   * Document MSRV policy
 
 -------------------------------------------------------------------
 Wed Feb 26 12:35:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.7
   * Consider __new__ methods as special function type for enforcing
-    class method or static method rules 
+    class method or static method rules
   * [airflow] Improve the internal logic to differentiate deprecated
-    symbols (AIR303) 
-  * [refurb] Manual timezone monkeypatching (FURB162) 
-  * [ruff] Implicit class variable in dataclass (RUF045) 
+    symbols (AIR303)
+  * [refurb] Manual timezone monkeypatching (FURB162)
+  * [ruff] Implicit class variable in dataclass (RUF045)
   * [ruff] Skip singleton starred expressions for incorrectly-\
-    parenthesized-tuple-in-subscript (RUF031) 
-  * [refurb] Check for subclasses includes subscript expressions (FURB189) 
+    parenthesized-tuple-in-subscript (RUF031)
+  * [refurb] Check for subclasses includes subscript expressions (FURB189)
   * [flake8-debugger] Also flag sys.breakpointhook and
-    sys.__breakpointhook__ (T100) 
-  * [pycodestyle] Exempt site.addsitedir(...) calls (E402) 
+    sys.__breakpointhook__ (T100)
+  * [pycodestyle] Exempt site.addsitedir(...) calls (E402)
   * Fix unstable formatting of trailing end-of-line comments of
-    parenthesized attribute values 
-  * Fix handling of requests received after shutdown message 
+    parenthesized attribute values
+  * Fix handling of requests received after shutdown message
   * Ignore source.organizeImports.ruff and source.fixAll.ruff code
-    actions for a notebook cell 
-  * Include document specific debug info for ruff.printDebugInformation 
+    actions for a notebook cell
+  * Include document specific debug info for ruff.printDebugInformation
   * Update server to return the debug info as string with
-    ruff.printDebugInformation 
-  * Warn on invalid noqa even when there are no diagnostics 
-  * Better error messages while loading configuration extends 
-  * [flake8-comprehensions] Handle trailing comma in C403 fix 
+    ruff.printDebugInformation
+  * Warn on invalid noqa even when there are no diagnostics
+  * Better error messages while loading configuration extends
+  * [flake8-comprehensions] Handle trailing comma in C403 fix
   * [flake8-pyi] Avoid flagging custom-typevar-for-self on metaclass
-    methods (PYI019) 
-  * [pydocstyle] Handle arguments with the same names as sections (D417) 
-  * [pylint] Correct ordering of arguments in fix for if-stmt-min-max (PLR1730) 
-  * [pylint] Do not offer fix for raw strings (PLE251) 
+    methods (PYI019)
+  * [pydocstyle] Handle arguments with the same names as sections (D417)
+  * [pylint] Correct ordering of arguments in fix for if-stmt-min-max (PLR1730)
+  * [pylint] Do not offer fix for raw strings (PLE251)
   * [pyupgrade] Do not upgrade functional TypedDicts with private field
-    names to the class-based syntax (UP013) 
-  * [pyupgrade] Handle micro version numbers correctly (UP036) 
-  * [pyupgrade] Unwrap unary expressions correctly (UP018) 
+    names to the class-based syntax (UP013)
+  * [pyupgrade] Handle micro version numbers correctly (UP036)
+  * [pyupgrade] Unwrap unary expressions correctly (UP018)
   * [refurb] Correctly handle lengths of literal strings in
-    slice-to-remove-prefix-or-suffix (FURB188) 
-  * [ruff] Skip RUF001 diagnostics when visiting string type definitions 
-  * Add FAQ entry for source.* code actions in Notebook 
-  * Add SECURITY.md 
+    slice-to-remove-prefix-or-suffix (FURB188)
+  * [ruff] Skip RUF001 diagnostics when visiting string type definitions
+  * Add FAQ entry for source.* code actions in Notebook
+  * Add SECURITY.md
 
 -------------------------------------------------------------------
 Mon Feb 10 16:29:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.6 
+- update to 0.9.6
  * Preview features
-   * [airflow] Add external_task.{ExternalTaskMarker, ExternalTaskSensor} for AIR302 
-   * [flake8-builtins] Make strict module name comparison optional (A005) 
-   * [flake8-pyi] Extend fix to Python <= 3.9 for redundant-none-literal (PYI061) 
-   * [pylint] Also report when the object isn't a literal (PLE1310) 
-   * [ruff] Implement indented-form-feed (RUF054) 
-   * [ruff] Skip type definitions for missing-f-string-syntax (RUF027) 
+   * [airflow] Add external_task.{ExternalTaskMarker, ExternalTaskSensor} for AIR302
+   * [flake8-builtins] Make strict module name comparison optional (A005)
+   * [flake8-pyi] Extend fix to Python <= 3.9 for redundant-none-literal (PYI061)
+   * [pylint] Also report when the object isn't a literal (PLE1310)
+   * [ruff] Implement indented-form-feed (RUF054)
+   * [ruff] Skip type definitions for missing-f-string-syntax (RUF027)
  * Rule changes
-   * [flake8-annotations] Correct syntax for typing.Union in suggested return type fixes for ANN20x rules 
-   * [flake8-builtins] Match upstream module name comparison (A005) 
-   * [flake8-comprehensions] Detect overshadowed list/set/dict, ignore variadics and named expressions (C417) 
-   * [flake8-pie] Remove following comma correctly when the unpacked dictionary is empty (PIE800) 
-   * [flake8-simplify] Only trigger SIM401 on known dictionaries 
-   * [pylint] Do not report calls when object type and argument type mismatch, remove custom escape handling logic (PLE1310) 
-   * [pyupgrade] Comments within parenthesized value ranges should not affect applicability (UP040) 
-   * [pyupgrade] Don't introduce invalid syntax when upgrading old-style type aliases with parenthesized multiline values (UP040) 
-   * [pyupgrade] Ensure we do not rename two type parameters to the same name (UP049) 
-   * [pyupgrade] [ruff] Don't apply renamings if the new name is shadowed in a scope of one of the references to the binding (UP049, RUF052) 
-   * [ruff] Update RUF009 to behave similar to B008 and ignore attributes with immutable types 
+   * [flake8-annotations] Correct syntax for typing.Union in suggested return type fixes for ANN20x rules
+   * [flake8-builtins] Match upstream module name comparison (A005)
+   * [flake8-comprehensions] Detect overshadowed list/set/dict, ignore variadics and named expressions (C417)
+   * [flake8-pie] Remove following comma correctly when the unpacked dictionary is empty (PIE800)
+   * [flake8-simplify] Only trigger SIM401 on known dictionaries
+   * [pylint] Do not report calls when object type and argument type mismatch, remove custom escape handling logic (PLE1310)
+   * [pyupgrade] Comments within parenthesized value ranges should not affect applicability (UP040)
+   * [pyupgrade] Don't introduce invalid syntax when upgrading old-style type aliases with parenthesized multiline values (UP040)
+   * [pyupgrade] Ensure we do not rename two type parameters to the same name (UP049)
+   * [pyupgrade] [ruff] Don't apply renamings if the new name is shadowed in a scope of one of the references to the binding (UP049, RUF052)
+   * [ruff] Update RUF009 to behave similar to B008 and ignore attributes with immutable types
  * Server
-   * Root exclusions in the server to project root 
+   * Root exclusions in the server to project root
  * Bug fixes
-   * [flake8-datetime] Ignore .replace() calls while looking for .astimezone 
-   * [flake8-type-checking] Avoid TC004 false positive where the runtime definition is provided by __getattr__ 
+   * [flake8-datetime] Ignore .replace() calls while looking for .astimezone
+   * [flake8-type-checking] Avoid TC004 false positive where the runtime definition is provided by __getattr__
  * Documentation
-   * Improve ruff-lsp migration document 
-   * Undeprecate ruff.nativeServer 
+   * Improve ruff-lsp migration document
+   * Undeprecate ruff.nativeServer
 
 -------------------------------------------------------------------
 Sun Feb  9 00:50:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.5
  * Preview features
-   * Recognize all symbols named TYPE_CHECKING for in_type_checking_block 
-   * [flake8-comprehensions] Handle builtins at top of file correctly for unnecessary-dict-comprehension-for-iterable (C420) 
-   * [flake8-logging] .exception() and exc_info= outside exception handlers (LOG004, LOG014) 
-   * [flake8-pyi] Fix incorrect behaviour of custom-typevar-return-type preview-mode autofix if typing was already imported (PYI019) 
-   * [flake8-pyi] Fix more complex cases (PYI019) 
-   * [flake8-pyi] Make PYI019 autofixable for .py files in preview mode as well as stubs 
-   * [flake8-pyi] Remove type parameter correctly when it is the last (PYI019) 
-   * [pylint] Fix missing parens in unsafe fix for unnecessary-dunder-call (PLC2801) 
-   * [pyupgrade] Better messages and diagnostic range (UP015) 
-   * [pyupgrade] Rename private type parameters in PEP 695 generics (UP049) 
-   * [refurb] Also report non-name expressions (FURB169) 
-   * [refurb] Mark fix as unsafe if there are comments (FURB171) 
-   * [ruff] Classes with mixed type variable style (RUF053) 
-   * [airflow] BashOperator has been moved to airflow.providers.standard.operators.bash.BashOperator (AIR302) 
-   * [flake8-pyi] Add autofix for unused-private-type-var (PYI018) 
-   * [flake8-pyi] Significantly improve accuracy of PYI019 if preview mode is enabled 
+   * Recognize all symbols named TYPE_CHECKING for in_type_checking_block
+   * [flake8-comprehensions] Handle builtins at top of file correctly for unnecessary-dict-comprehension-for-iterable (C420)
+   * [flake8-logging] .exception() and exc_info= outside exception handlers (LOG004, LOG014)
+   * [flake8-pyi] Fix incorrect behaviour of custom-typevar-return-type preview-mode autofix if typing was already imported (PYI019)
+   * [flake8-pyi] Fix more complex cases (PYI019)
+   * [flake8-pyi] Make PYI019 autofixable for .py files in preview mode as well as stubs
+   * [flake8-pyi] Remove type parameter correctly when it is the last (PYI019)
+   * [pylint] Fix missing parens in unsafe fix for unnecessary-dunder-call (PLC2801)
+   * [pyupgrade] Better messages and diagnostic range (UP015)
+   * [pyupgrade] Rename private type parameters in PEP 695 generics (UP049)
+   * [refurb] Also report non-name expressions (FURB169)
+   * [refurb] Mark fix as unsafe if there are comments (FURB171)
+   * [ruff] Classes with mixed type variable style (RUF053)
+   * [airflow] BashOperator has been moved to airflow.providers.standard.operators.bash.BashOperator (AIR302)
+   * [flake8-pyi] Add autofix for unused-private-type-var (PYI018)
+   * [flake8-pyi] Significantly improve accuracy of PYI019 if preview mode is enabled
  * Rule changes
-   * Preserve triple quotes and prefixes for strings 
-   * [flake8-comprehensions] Skip when TypeError present from too many (kw)args for C410,C411, and C418 
-   * [flake8-pyi] Rename PYI019 and improve its diagnostic message 
-   * [pep8-naming] Ignore @override methods (N803) 
-   * [pyupgrade] Reuse replacement logic from UP046 and UP047 to preserve more comments (UP040) 
-   * [ruff] Analyze deferred annotations before enforcing mutable-(data)class-default and function-call-in-dataclass-default-argument (RUF008,RUF009,RUF012) 
-   * [pycodestyle] Exempt sys.path += ... calls (E402) 
+   * Preserve triple quotes and prefixes for strings
+   * [flake8-comprehensions] Skip when TypeError present from too many (kw)args for C410,C411, and C418
+   * [flake8-pyi] Rename PYI019 and improve its diagnostic message
+   * [pep8-naming] Ignore @override methods (N803)
+   * [pyupgrade] Reuse replacement logic from UP046 and UP047 to preserve more comments (UP040)
+   * [ruff] Analyze deferred annotations before enforcing mutable-(data)class-default and function-call-in-dataclass-default-argument (RUF008,RUF009,RUF012)
+   * [pycodestyle] Exempt sys.path += ... calls (E402)
  * Configuration
-   * Config error only when flake8-import-conventions alias conflicts with isort.required-imports bound name 
-   * Workaround Even Better TOML crash related to allOf 
+   * Config error only when flake8-import-conventions alias conflicts with isort.required-imports bound name
+   * Workaround Even Better TOML crash related to allOf
  * Bug fixes
-   * [flake8-comprehensions] Unnecessary list comprehension (rewrite as a set comprehension) (C403) - Handle extraneous parentheses around list comprehension 
-   * [flake8-comprehensions] Handle trailing comma in fixes for unnecessary-generator-list/set (C400,C401) 
-   * [flake8-pyi] Fix several correctness issues with custom-type-var-return-type (PYI019) 
-   * [pep8-naming] Consider any number of leading underscore for N801 
-   * [pyflakes] Visit forward annotations in TypeAliasType as types (F401) 
-   * [pylint] Correct min/max auto-fix and suggestion for (PL1730) 
-   * [refurb] Handle unparenthesized tuples correctly (FURB122, FURB142) 
-   * [refurb] Avoid None | None as well as better detection and fix (FURB168) 
+   * [flake8-comprehensions] Unnecessary list comprehension (rewrite as a set comprehension) (C403) - Handle extraneous parentheses around list comprehension
+   * [flake8-comprehensions] Handle trailing comma in fixes for unnecessary-generator-list/set (C400,C401)
+   * [flake8-pyi] Fix several correctness issues with custom-type-var-return-type (PYI019)
+   * [pep8-naming] Consider any number of leading underscore for N801
+   * [pyflakes] Visit forward annotations in TypeAliasType as types (F401)
+   * [pylint] Correct min/max auto-fix and suggestion for (PL1730)
+   * [refurb] Handle unparenthesized tuples correctly (FURB122, FURB142)
+   * [refurb] Avoid None | None as well as better detection and fix (FURB168)
  * Documentation
-   * Add deprecation warning for ruff-lsp related settings 
-   * Docs (linter.md): clarify that Python files are always searched for in subdirectories 
-   * Fix a typo in non_pep695_generic_class.rs 
-   * Improve Docs: Pylint subcategories' codes 
-   * Remove non-existing lint.extendIgnore editor setting 
-   * Update black deviations 
-   * Mention UP049 in UP046 and UP047, add See also section to UP040 
-   * Add instance variable examples to RUF012 
-   * Explain precedence for ignore and select config 
+   * Add deprecation warning for ruff-lsp related settings
+   * Docs (linter.md): clarify that Python files are always searched for in subdirectories
+   * Fix a typo in non_pep695_generic_class.rs
+   * Improve Docs: Pylint subcategories' codes
+   * Remove non-existing lint.extendIgnore editor setting
+   * Update black deviations
+   * Mention UP049 in UP046 and UP047, add See also section to UP040
+   * Add instance variable examples to RUF012
+   * Explain precedence for ignore and select config
 
 -------------------------------------------------------------------
 Wed Feb  5 09:29:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -323,95 +340,95 @@ Fri Jan 24 10:43:17 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Upade to 0.9.3
  * Preview features
-   * [airflow] Argument fail_stop in DAG has been renamed as fail_fast (AIR302) 
-   * [airflow] Extend AIR303 with more symbols 
-   * [flake8-bandit] Report all references to suspicious functions (S3) 
-   * [flake8-pytest-style] Do not emit diagnostics for empty for loops (PT012, PT031) 
-   * [flake8-simplify] Avoid double negations (SIM103) 
-   * [pyflakes] Fix infinite loop with unused local import in __init__.py (F401) 
-   * [pylint] Do not report methods with only one EM101-compatible raise (PLR6301) 
-   * [pylint] Implement redefined-slots-in-subclass (W0244) 
+   * [airflow] Argument fail_stop in DAG has been renamed as fail_fast (AIR302)
+   * [airflow] Extend AIR303 with more symbols
+   * [flake8-bandit] Report all references to suspicious functions (S3)
+   * [flake8-pytest-style] Do not emit diagnostics for empty for loops (PT012, PT031)
+   * [flake8-simplify] Avoid double negations (SIM103)
+   * [pyflakes] Fix infinite loop with unused local import in __init__.py (F401)
+   * [pylint] Do not report methods with only one EM101-compatible raise (PLR6301)
+   * [pylint] Implement redefined-slots-in-subclass (W0244)
    * [pyupgrade] Add rules to use PEP 695 generics in classes and functions (UP046, UP047)
-   * [refurb] Implement for-loop-writes (FURB122) 
+   * [refurb] Implement for-loop-writes (FURB122)
    * [ruff] Implement needless-else clause (RUF047)
-   * [ruff] Implement starmap-zip (RUF058) 
+   * [ruff] Implement starmap-zip (RUF058)
  * Rule changes
-   * [flake8-bugbear] Do not raise error if keyword argument is present and target-python version is less or equals than 3.9 (B903) 
-   * [flake8-comprehensions] strip parentheses around generators in unnecessary-generator-set (C401) 
-   * [flake8-pytest-style] Rewrite references to .exception (PT027) 
-   * [flake8-simplify] Mark fixes as unsafe (SIM201, SIM202) 
-   * [flake8-type-checking] Fix some safe fixes being labeled unsafe (TC006,TC008) 
-   * [isort] Omit trailing whitespace in unsorted-imports (I001) 
-   * [pydoclint] Allow ignoring one line docstrings for DOC rules 
-   * [pyflakes] Apply redefinition fixes by source code order (F811) 
-   * [pyflakes] Avoid removing too many imports in redefined-while-unused (F811) 
-   * [pyflakes] Group redefinition fixes by source statement (F811) 
-   * [pylint] Include name of base class in message for redefined-slots-in-subclass (W0244) 
-   * [ruff] Update fix for RUF055 to use var == value 
+   * [flake8-bugbear] Do not raise error if keyword argument is present and target-python version is less or equals than 3.9 (B903)
+   * [flake8-comprehensions] strip parentheses around generators in unnecessary-generator-set (C401)
+   * [flake8-pytest-style] Rewrite references to .exception (PT027)
+   * [flake8-simplify] Mark fixes as unsafe (SIM201, SIM202)
+   * [flake8-type-checking] Fix some safe fixes being labeled unsafe (TC006,TC008)
+   * [isort] Omit trailing whitespace in unsorted-imports (I001)
+   * [pydoclint] Allow ignoring one line docstrings for DOC rules
+   * [pyflakes] Apply redefinition fixes by source code order (F811)
+   * [pyflakes] Avoid removing too many imports in redefined-while-unused (F811)
+   * [pyflakes] Group redefinition fixes by source statement (F811)
+   * [pylint] Include name of base class in message for redefined-slots-in-subclass (W0244)
+   * [ruff] Update fix for RUF055 to use var == value
  * Formatter
-   * Fix bracket spacing for single-element tuples in f-string expressions 
-   * Fix unstable f-string formatting for expressions containing a trailing comma 
+   * Fix bracket spacing for single-element tuples in f-string expressions
+   * Fix unstable f-string formatting for expressions containing a trailing comma
  * Performance
-   * Avoid quadratic membership check in import fixes 
+   * Avoid quadratic membership check in import fixes
  * Server
-   * Allow unsafe-fixes settings for code actions 
+   * Allow unsafe-fixes settings for code actions
  * Bug fixes
-   * [flake8-bandit] Add missing single-line/dotall regex flag (S608) 
-   * [flake8-import-conventions] Fix infinite loop between ICN001 and I002 (ICN001) 
-   * [flake8-simplify] Do not emit diagnostics for expressions inside string type annotations (SIM222, SIM223) 
-   * [pyflakes] Treat arguments passed to the default= parameter of TypeVar as type expressions (F821) 
-   * [pyupgrade] Avoid syntax error when the iterable is a non-parenthesized tuple (UP028) 
-   * [ruff] Exempt NewType calls where the original type is immutable (RUF009) 
-   * Preserve raw string prefix and escapes in all codegen fixes 
+   * [flake8-bandit] Add missing single-line/dotall regex flag (S608)
+   * [flake8-import-conventions] Fix infinite loop between ICN001 and I002 (ICN001)
+   * [flake8-simplify] Do not emit diagnostics for expressions inside string type annotations (SIM222, SIM223)
+   * [pyflakes] Treat arguments passed to the default= parameter of TypeVar as type expressions (F821)
+   * [pyupgrade] Avoid syntax error when the iterable is a non-parenthesized tuple (UP028)
+   * [ruff] Exempt NewType calls where the original type is immutable (RUF009)
+   * Preserve raw string prefix and escapes in all codegen fixes
  * Documentation
-   * Generate documentation redirects for lowercase rule codes 
-   * TRY300: Add some extra notes on not catching exceptions you didn't expect 
+   * Generate documentation redirects for lowercase rule codes
+   * TRY300: Add some extra notes on not catching exceptions you didn't expect
 
 -------------------------------------------------------------------
 Fri Jan 17 19:28:35 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.9.2
  * Preview features
-   * [airflow] Fix typo "security_managr" to "security_manager" (AIR303) 
-   * [airflow] extend and fix AIR302 rules 
-   * [fastapi] Handle parameters with Depends correctly (FAST003) 
-   * [flake8-pytest-style] Implement pytest.warns diagnostics (PT029, PT030, PT031) 
-   * [flake8-pytest-style] Test function parameters with default arguments (PT028) 
-   * [flake8-type-checking] Avoid false positives for | in TC008 
+   * [airflow] Fix typo "security_managr" to "security_manager" (AIR303)
+   * [airflow] extend and fix AIR302 rules
+   * [fastapi] Handle parameters with Depends correctly (FAST003)
+   * [flake8-pytest-style] Implement pytest.warns diagnostics (PT029, PT030, PT031)
+   * [flake8-pytest-style] Test function parameters with default arguments (PT028)
+   * [flake8-type-checking] Avoid false positives for | in TC008
  * Rule changes
-   * [flake8-todos] Allow VSCode GitHub PR extension style links in missing-todo-link (TD003) 
-   * [pyflakes] Show syntax error message for F722 
+   * [flake8-todos] Allow VSCode GitHub PR extension style links in missing-todo-link (TD003)
+   * [pyflakes] Show syntax error message for F722
  * Formatter
-   * Fix curly bracket spacing around f-string expressions containing curly braces 
-   * Fix joining of f-strings with different quotes when using quote style Preserve 
+   * Fix curly bracket spacing around f-string expressions containing curly braces
+   * Fix joining of f-strings with different quotes when using quote style Preserve
  * Server
-   * Avoid indexing the same workspace multiple times 
-   * Display context for ruff.configuration errors 
+   * Avoid indexing the same workspace multiple times
+   * Display context for ruff.configuration errors
  * Configuration
-   * Remove flatten to improve deserialization error messages 
+   * Remove flatten to improve deserialization error messages
  * Bug fixes
-   * Parse triple-quoted string annotations as if parenthesized 
-   * [fastapi] Update Annotated fixes (FAST002) 
-   * [flake8-bandit] Check for builtins instead of builtin (S102, PTH123) 
-   * [flake8-pathlib] Fix --select for os-path-dirname (PTH120) 
-   * [ruff] Fix false positive on global keyword (RUF052) 
+   * Parse triple-quoted string annotations as if parenthesized
+   * [fastapi] Update Annotated fixes (FAST002)
+   * [flake8-bandit] Check for builtins instead of builtin (S102, PTH123)
+   * [flake8-pathlib] Fix --select for os-path-dirname (PTH120)
+   * [ruff] Fix false positive on global keyword (RUF052)
 
 -------------------------------------------------------------------
 Sun Jan 12 22:05:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.1
  * Preview features
-   * [pycodestyle] Run too-many-newlines-at-end-of-file on each cell in notebooks (W391) 
-   * [ruff] Omit diagnostic for shadowed private function parameters in used-dummy-variable (RUF052) 
+   * [pycodestyle] Run too-many-newlines-at-end-of-file on each cell in notebooks (W391)
+   * [ruff] Omit diagnostic for shadowed private function parameters in used-dummy-variable (RUF052)
  * Rule changes
-   * [flake8-bugbear] Improve assert-raises-exception message (B017) 
+   * [flake8-bugbear] Improve assert-raises-exception message (B017)
  * Formatter
-   * Preserve trailing end-of line comments for the last string literal in implicitly concatenated strings 
+   * Preserve trailing end-of line comments for the last string literal in implicitly concatenated strings
  * Server
-   * Fix a bug where the server and client notebooks were out of sync after reordering cells 
+   * Fix a bug where the server and client notebooks were out of sync after reordering cells
  * Bug fixes
-   * [flake8-pie] Correctly remove wrapping parentheses (PIE800) 
-   * [pyupgrade] Handle comments and multiline expressions correctly (UP037) 
+   * [flake8-pie] Correctly remove wrapping parentheses (PIE800)
+   * [pyupgrade] Handle comments and multiline expressions correctly (UP037)
 
 -------------------------------------------------------------------
 Fri Jan 10 10:47:59 UTC 2025 - Dirk Müller <dmueller@suse.com>
