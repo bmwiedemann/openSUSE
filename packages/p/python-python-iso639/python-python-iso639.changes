@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:06:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2025.2.18:
+  * `Language.match` now supports case-insensitive matching
+    and ignores leading/trailing whitespace by default.
+  * Explicitly indicated that the library is type-annotated.
+  * Sped up the retrieval of `Language` objects during runtime.
+  * Updated the ISO 639 data from SIL to the latest 2025-01-15
+    release.
+  * Fixed `Language.from_part3` so that it now also works for a
+    retired ISO 639-3 code.
+  * Added support for Python 3.13.
+  * Dropped support for Python 3.8.
+
+-------------------------------------------------------------------
 Thu Sep 26 21:53:50 UTC 2024 - Guang Yee <gyee@suse.com>
 
-- Enable sle15_python_module_pythons. 
+- Enable sle15_python_module_pythons.
 
 -------------------------------------------------------------------
 Thu Sep  5 09:41:00 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

@@ -16,4 +16,24 @@
     <comment></comment>
     <requestid>1218369</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>74aedeca0e2110368dd7ed9639628c3d</srcmd5>
+    <version>2025.2.18</version>
+    <time>1745937602</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2025.2.18:
+  * `Language.match` now supports case-insensitive matching
+    and ignores leading/trailing whitespace by default.
+  * Explicitly indicated that the library is type-annotated.
+  * Sped up the retrieval of `Language` objects during runtime.
+  * Updated the ISO 639 data from SIL to the latest 2025-01-15
+    release.
+  * Fixed `Language.from_part3` so that it now also works for a
+    retired ISO 639-3 code.
+  * Added support for Python 3.13.
+  * Dropped support for Python 3.8.
+
+- Enable sle15_python_module_pythons.</comment>
+    <requestid>1273167</requestid>
+  </revision>
 </revisionlist>
