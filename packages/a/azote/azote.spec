@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           azote
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Wallpaper manager for Sway, i3 and some other WMs
 License:        GPL-3.0-only
@@ -34,6 +34,7 @@ BuildRequires:  python3-setuptools
 Requires:       ImageMagick
 Requires:       feh
 Requires:       python3-Pillow
+Recommends:     python3-pillow-heif
 # for alacritty.yml toolbox
 Requires:       python3-PyYAML
 Requires:       python3-Send2Trash

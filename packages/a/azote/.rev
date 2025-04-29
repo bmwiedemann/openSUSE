@@ -354,4 +354,13 @@
   * Fix a regression introduced in #213, that caused crashing on sway.</comment>
     <requestid>1273072</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4e947b2f1ab59750733e0cf57ecd866a</srcmd5>
+    <version>1.16.0</version>
+    <time>1745937698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.16.0:
+  * Added support for HEIF/HEIC &amp; AVIF formats.</comment>
+    <requestid>1273298</requestid>
+  </revision>
 </revisionlist>
