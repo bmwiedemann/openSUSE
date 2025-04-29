@@ -5101,4 +5101,20 @@
   * Add ansi.sys entry to ibm327x for coloring support</comment>
     <requestid>1269306</requestid>
   </revision>
+  <revision rev="294" vrev="67">
+    <srcmd5>091d3b93f71c1d34f34a0529f5fdfebd</srcmd5>
+    <version>unknown</version>
+    <time>1745937565</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20250426
+  + expand note on extensions in curs_addch.3x
+  + add illumos, sun-16color, sun-256color, sun-direct -TD
+  + add wyse+cvis -TD
+- Add ncurses patch 20250419
+  + add note on scrolling and lower-right corner to waddch and wadd_wch
+    manual pages.
+- Modify patch ncurses-5.9-ibm327x.dif
+  * sclp term: more missed features like home/end/pageup/pagedown keys</comment>
+    <requestid>1273043</requestid>
+  </revision>
 </revisionlist>

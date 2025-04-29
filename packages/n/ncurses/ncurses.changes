@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Apr 28 06:34:28 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250426
+  + expand note on extensions in curs_addch.3x
+  + add illumos, sun-16color, sun-256color, sun-direct -TD
+  + add wyse+cvis -TD
+- Add ncurses patch 20250419
+  + add note on scrolling and lower-right corner to waddch and wadd_wch
+    manual pages.
+- Modify patch ncurses-5.9-ibm327x.dif
+  * sclp term: more missed features like home/end/pageup/pagedown keys
+
+-------------------------------------------------------------------
 Mon Apr 14 08:59:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250412
