@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyHanko
-Version:        0.25.3
+Version:        0.26.0
 Release:        0
 Summary:        Tools for stamping and signing PDF files
 License:        MIT
@@ -50,6 +50,7 @@ Requires:       python-pyhanko-certvalidator
 Requires:       python-qrcode
 Requires:       python-requests
 Requires:       python-tzlocal
+Requires:       python-uharfbuzz
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

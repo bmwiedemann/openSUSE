@@ -26,4 +26,24 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264888</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2dd37ab342c332050fdce61520885def</srcmd5>
+    <version>0.26.0</version>
+    <time>1745937603</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.26.0:
+  * Some outdated algos for encrypting the security handler seed
+    in a public-key encrypted PDF were dropped to get rid of
+    oscrypto as a direct dependency of pyhanko. It is still
+    pulled in via pyhanko-certvalidator, but it is no longer used
+    for any cryptographic operations (which is significant,
+    because of compatibility issues on systems that no longer
+    ship OpenSSL 1.1.1)
+  * Relax uharfbuzz upper bound to &lt;0.47.0.
+  * Make defusedxml a regular dependency
+  * Expose signature_mechanism parameter in PKCS#11 API.
+
+- Initial release of 0.25.1.</comment>
+    <requestid>1273170</requestid>
+  </revision>
 </revisionlist>

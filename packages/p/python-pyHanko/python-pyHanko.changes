@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:08:25 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.0:
+  * Some outdated algos for encrypting the security handler seed
+    in a public-key encrypted PDF were dropped to get rid of
+    oscrypto as a direct dependency of pyhanko. It is still
+    pulled in via pyhanko-certvalidator, but it is no longer used
+    for any cryptographic operations (which is significant,
+    because of compatibility issues on systems that no longer
+    ship OpenSSL 1.1.1)
+  * Relax uharfbuzz upper bound to <0.47.0.
+  * Make defusedxml a regular dependency
+  * Expose signature_mechanism parameter in PKCS#11 API.
+
+-------------------------------------------------------------------
 Thu Mar 27 03:57:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
@@ -23,4 +38,4 @@ Fri Feb 21 14:49:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Tue Sep 17 01:29:06 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.25.1. 
+- Initial release of 0.25.1.
