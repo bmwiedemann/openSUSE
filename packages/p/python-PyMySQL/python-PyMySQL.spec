@@ -109,6 +109,6 @@ exit $exit_code
 %license LICENSE
 %doc CHANGELOG.md README.md
 %{python_sitelib}/pymysql
-%{python_sitelib}/pymysql-%{version}.dist-info
+%{python_sitelib}/[pP]y[mM]y[sS][qQ][lL]-%{version}.dist-info
 
 %changelog

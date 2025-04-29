@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:17:15 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update filelist to be compatible with older setuptools
+
+-------------------------------------------------------------------
 Tue Mar 25 05:50:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Lowercase metadata directory name.
@@ -57,7 +62,7 @@ Wed May  3 08:35:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu Oct 13 06:38:41 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip a test that is failing due to character set fun and games. 
+- Skip a test that is failing due to character set fun and games.
 
 -------------------------------------------------------------------
 Wed Jul 28 13:51:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
@@ -94,7 +99,7 @@ Thu Nov 26 09:10:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Sep 23 13:18:38 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
-- disable testing for Leaps 
+- disable testing for Leaps
   mariadb-rpm-macros not available or not sufficient
 
 -------------------------------------------------------------------

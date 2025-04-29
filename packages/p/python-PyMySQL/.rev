@@ -289,4 +289,15 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264834</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>504222f7961e5ff434a9898a85d81a85</srcmd5>
+    <version>1.1.1</version>
+    <time>1745937752</time>
+    <user>dimstar_suse</user>
+    <comment>- update filelist to be compatible with older setuptools
+
+- Skip a test that is failing due to character set fun and games.
+- disable testing for Leaps</comment>
+    <requestid>1273418</requestid>
+  </revision>
 </revisionlist>
