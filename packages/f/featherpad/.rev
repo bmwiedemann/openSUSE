@@ -638,4 +638,18 @@
     with those of C++.</comment>
     <requestid>1250311</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>dc5eccff8735c0e8e20cf73017290142</srcmd5>
+    <version>1.6.2</version>
+    <time>1745937697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.2:
+  * Removed an old workaround about translations, which prevented
+    some languages from being loaded by recent versions of Qt.
+  * Show the print bar (&quot;Printing in progress...&quot;) before printing,
+    because Qt's print dialog may be shown with a delay (due to
+    avahi-daemon, or simply because the document is huge).
+  * A small change in syntax highlighting of numbers.</comment>
+    <requestid>1273299</requestid>
+  </revision>
 </revisionlist>

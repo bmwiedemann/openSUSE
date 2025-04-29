@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:06:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.2:
+  * Removed an old workaround about translations, which prevented
+    some languages from being loaded by recent versions of Qt.
+  * Show the print bar ("Printing in progress...") before printing,
+    because Qt's print dialog may be shown with a delay (due to
+    avahi-daemon, or simply because the document is huge).
+  * A small change in syntax highlighting of numbers.
+
+-------------------------------------------------------------------
 Wed Mar  5 07:35:32 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.1:
