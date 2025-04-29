@@ -24,8 +24,8 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kubernetes1.31-client; \
-    zypper -n clean; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends kubernetes1.31-client
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
 FROM opensuse/bci/bci-micro:latest
 COPY --from=builder /target /
