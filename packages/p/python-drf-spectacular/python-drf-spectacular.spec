@@ -16,8 +16,6 @@
 #
 
 
-# python 3.13 not supported yet
-%define skip_python313 1
 %{?sle15_python_module_pythons}
 Name:           python-drf-spectacular
 Version:        0.28.0
@@ -26,6 +24,8 @@ Summary:        Sane and flexible OpenAPI 3 schema generation for Django REST fr
 License:        BSD-3-Clause
 URL:            https://github.com/tfranzel/drf-spectacular
 Source:         https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf_spectacular-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/tfranzel/drf-spectacular/pull/1381 Django 5.2 and python 3.13 minor changes
+Patch:          py313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

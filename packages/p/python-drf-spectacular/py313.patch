@@ -1,0 +1,63 @@
+From cb5ff5ac17c6ce9ed94a7daece47a2d6ec3913a0 Mon Sep 17 00:00:00 2001
+From: "T. Franzel" <tfranzel@users.noreply.github.com>
+Date: Sat, 15 Feb 2025 15:45:14 +0100
+Subject: [PATCH] Django 5.2 and python 3.13 minor changes
+
+---
+ README.rst                  | 2 +-
+ drf_spectacular/openapi.py  | 6 ++++++
+ drf_spectacular/plumbing.py | 2 ++
+ setup.py                    | 2 ++
+ tox.ini                     | 3 ++-
+ 5 files changed, 13 insertions(+), 2 deletions(-)
+
+Index: drf_spectacular-0.28.0/drf_spectacular/openapi.py
+===================================================================
+--- drf_spectacular-0.28.0.orig/drf_spectacular/openapi.py
++++ drf_spectacular-0.28.0/drf_spectacular/openapi.py
+@@ -912,6 +912,12 @@ class AutoSchema(ViewInspector):
+                 # the only way to detect an uninitialized partial method
+                 # this is a convenience method for model choice fields and is mostly a string
+                 schema = build_basic_type(str)
++            elif (
++                hasattr(target, "__partialmethod__")
++                and target.__partialmethod__.func.__name__ == '_get_FIELD_display'
++            ):
++                # same as above but specifically for python >= 3.13
++                schema = build_basic_type(str)
+             elif callable(target):
+                 schema = self._map_response_type_hint(target)
+             elif isinstance(target, models.Field):
+Index: drf_spectacular-0.28.0/drf_spectacular/plumbing.py
+===================================================================
+--- drf_spectacular-0.28.0.orig/drf_spectacular/plumbing.py
++++ drf_spectacular-0.28.0/drf_spectacular/plumbing.py
+@@ -236,6 +236,8 @@ def get_doc(obj) -> str:
+         # also clean up trailing whitespace for each line
+         return '\n'.join(line.rstrip() for line in doc.rstrip().split('\n'))
+ 
++    if obj is None:
++        return ''
+     if not inspect.isclass(obj):
+         return post_cleanup(inspect.getdoc(obj) or '')
+ 
+Index: drf_spectacular-0.28.0/setup.py
+===================================================================
+--- drf_spectacular-0.28.0.orig/setup.py
++++ drf_spectacular-0.28.0/setup.py
+@@ -88,6 +88,7 @@ setup(
+         'Framework :: Django :: 4.2',
+         'Framework :: Django :: 5.0',
+         'Framework :: Django :: 5.1',
++        'Framework :: Django :: 5.2',
+         'Intended Audience :: Developers',
+         'License :: OSI Approved :: BSD License',
+         'Operating System :: OS Independent',
+@@ -100,6 +101,7 @@ setup(
+         'Programming Language :: Python :: 3.10',
+         'Programming Language :: Python :: 3.11',
+         'Programming Language :: Python :: 3.12',
++        'Programming Language :: Python :: 3.13',
+         'Topic :: Internet :: WWW/HTTP',
+         'Topic :: Documentation',
+         'Topic :: Software Development :: Code Generators',
