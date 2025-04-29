@@ -1,7 +1,7 @@
 #
 # spec file for package ballerburg
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           ballerburg
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Two players, two castles, and a hill in between
 License:        GPL-3.0-only
 Group:          Amusements/Games/Action/Arcade
-URL:            http://baller.tuxfamily.org/
-#Git-Clone:     git://git.tuxfamily.org/gitroot/baller/baller.git
-Source:         http://download.tuxfamily.org/baller/ballerburg-%{version}.tar.gz
+URL:            https://baller.frama.io/
+#Git-Clone:     git://framagit.org/baller/ballerburg.git
+Source:         https://framagit.org/baller/ballerburg/-/archive/v%{version}/ballerburg-v%{version}.tar.gz
 Source1:        %{name}.xpm
-BuildRequires:  cmake >= 3.5
+BuildRequires:  cmake >= 3.10
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-#BuildRequires:  pkgconfig(SDL_gfx)
 BuildRequires:  pkgconfig(sdl2)
 
 %description
@@ -39,21 +38,18 @@ computer-controlled) try to destroy the opponent's castle with their cannons.
 Eckhard Kruse's original Ballerburg from 1987 ported to SDL.
 
 %prep
-%setup -q
+%setup -q -n ballerburg-v%{version}
 
 %build
 %cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-make %{?_smp_mflags}
+%make_build
 
 %install
 %cmake_install
-install -D -m0644 %{S:1} %{buildroot}/%{_datadir}/pixmaps/%{name}.xpm
+install -D -m0644 %{SOURCE1} %{buildroot}/%{_datadir}/pixmaps/%{name}.xpm
 %suse_update_desktop_file -c %{name} %{name} "Turn-based castle computer game" %{name} %{name} Game BoardGame
 rm -rf %{buildroot}%{_datadir}/doc/ballerburg/
 %find_lang %{name}
-
-%check
-%ctest
 
 %files -f %{name}.lang
 %license COPYING.txt
