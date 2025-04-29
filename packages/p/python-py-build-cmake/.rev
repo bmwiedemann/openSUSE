@@ -23,4 +23,22 @@
     <comment></comment>
     <requestid>1248708</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b0afc81d7ec0af545dcc4a40b71775bd</srcmd5>
+    <version>0.4.3</version>
+    <time>1745937638</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.3:
+  * Experimental free-threading support
+  * Python 3.14 support
+  * Set `MYPYPATH` for stubgen
+  * Add `PY_BUILD_CMAKE_VERBOSE_ENV` option
+  * Use `CMAKE_GENERATOR` environment variable as default value
+    for `cmake.generator`
+
+  * Produce a warning when MACOSX_DEPLOYMENT_TARGET is set in the
+    Its value is now used to determine the Wheel platform tag on macOS,
+    and the target version is passed on to CMake.</comment>
+    <requestid>1273213</requestid>
+  </revision>
 </revisionlist>
