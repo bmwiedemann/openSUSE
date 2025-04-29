@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Apr 28 10:31:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.29:
+  * Changed default -geotime argument to use SubSecDateTimeOriginal
+    if available instead of DateTimeOriginal, instead of applying both
+    (as was done since ExifTool 13.18). This is more efficient, and
+    avoids an unnecessary warning
+  * Properly return warnings from inverse value conversions when
+    copying a tag using -tagsFromFile with a tag name string
+  * Fixed issue where RW2 images from the Panasonic DC-S1RM2 could
+    be corrupted when writing
+
+-------------------------------------------------------------------
+Mon Apr 28 10:30:51 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.28:
+  * Added print conversion for Pentax AFPointValues
+  * Added another Pentax PictureMode value
+  * Decode timed GPS from GKU D900 dashcam videos
+  * Decode timed telemetry data from newer ARCore videos
+  * Decode Panasonic AFAreaSize
+  * Decode ShutterCount for Canon EOS R8 and R50 (github #325)
+  * Decode ThumbnailTIFF from some Insta360 videos
+  * Decode AROT:HDRGainCurveSize from APP10
+  * Updated to the 2025 MPF specification
+  * Renamed K-3III AFPoints to AFPointsSelected and changed decoding
+  * Fixed bug introduced in 13.23 that could cause an incorrect parsing
+    of XMP attributes containing an equals sign
+  * Fixed issue reading timed GPS from some Insta360 videos, and issue
+    where writing these videos would fail
+  * Fixed exif2xmp.args and xmp2exif.args to properly handle EXIF:ImageUniqueID
+
+-------------------------------------------------------------------
+Mon Apr 28 10:30:30 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.27:
+  * Decode AF points for the Pentax K-3III
+  * Decode timed GPS from a variant of the Rove R2-4K dashcam
+  * Properly decode SensorTemperature for Pentax K3-III
+  * Patched PCAP test to avoid potential failure
+  * Patched to avoid potential "not a HASH reference" error when writing MOV/MP4 videos
+  * Fixed issue which could result in "uninitialized value" errors
+    when reading one type of timed GPS from MP4 videos
+  * Fixed problem writing MotionPhotoVideo in MP4 files
+
+-------------------------------------------------------------------
+Mon Apr 28 10:30:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.26:
+  * Added a new Olympus CameraType
+  * Added a new PentaxModelID (github #322)
+  * Added a new Nikon LensID
+  * Improved Duration calculation for some WAV files
+  * Changed a PCAP tag name and fixed typos in a few others
+  * Patched to avoid VignettingCorr warning for images from some Canon cameras
+  * Patched to avoid some unnecessary duplicate tag warnings when -validate used with HEIC images
+  * Fixed issue with XMP-xmpMM:Pantry items not exhibiting proper List-type behaviour
+
+-------------------------------------------------------------------
+Mon Apr 28 10:29:41 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.25:
+  * IMPORTANT: Fixed issue which could corrupt HEIC images from newer
+    iPhones under certain conditions when writing QuickTime:Rotation
+  * Decode more PLIST information from HEIC images
+  * Updated Geolocation databases from current geonames.org files
+  * Updated DarwinCore for the 2023 specification
+  * API Changes:
+    + Added KeepUTCTime option
+
+-------------------------------------------------------------------
 Sat Mar  8 11:49:11 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.24:
