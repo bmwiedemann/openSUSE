@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyInstaller
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without  test
 %define modname PyInstaller
 Name:           python-PyInstaller
-Version:        6.11.1
+Version:        6.13.0
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only

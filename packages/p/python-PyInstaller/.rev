@@ -241,4 +241,41 @@
     <comment></comment>
     <requestid>1228830</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>152704f2c0aec730bda7714334ac5d1e</srcmd5>
+    <version>6.13.0</version>
+    <time>1745937634</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.13.0:
+  * Extend analysis code so that when extension module is
+    encountered, it checks for the presence of an adjacent .py or
+    .pyi file, and if present, attempt to perform import analysis
+    on such accompanying source/interface file. (:issue:`9084`)
+  * Fix detection of setuptools-vendored modules (i.e., not
+    packages) in the
+    PyInstaller.utils.hooks.setuptools.SetuptoolsInfo hook
+    utility class; for example, the
+    setuptools/_vendor/typing_extensions.py module.
+    (:issue:`9102`)
+  * Add hook for PyQt6.QtStateMachine that was introduced in
+    PyQt6 v6.8.1. (:issue:`9019`)
+  * Fix ModuleNotFoundError for scipy when provided by Debian's
+    python3-scipy package. (:issue:`9069`)
+  * Update hook for PyGObject (gi) and associated helper code to
+    support changes made in PyGObject v3.52 (switch from
+    girepository-1.0 to girepository-2.0). (:issue:`9055`)
+  * On POSIX systems other than macOS, use POSIX semaphore API
+    instead of SysV semaphore API to synchronize onefile parent
+    and child process. This restores the ability to compile
+    bootloader under Termux, where sys/sem.h (and the SysV
+    semaphore API) is unavailable due to deliberate lack of
+    support for it in the underlying Android base.
+    (:issue:`9089`)
+  * Extend the :ref:`module_collection_mode &lt;package collection
+    mode&gt;` setting from :issue:`6945` to also apply to modules
+    collected into base_library.zip archive. Implement discovery
+    of source .py files for modules in base_library.zip at run-
+    time. This allows collection and discovery of source .py</comment>
+    <requestid>1273209</requestid>
+  </revision>
 </revisionlist>

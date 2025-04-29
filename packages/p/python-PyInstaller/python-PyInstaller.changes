@@ -1,51 +1,136 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:40:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.13.0:
+  * Extend analysis code so that when extension module is
+    encountered, it checks for the presence of an adjacent .py or
+    .pyi file, and if present, attempt to perform import analysis
+    on such accompanying source/interface file. (:issue:`9084`)
+  * Fix detection of setuptools-vendored modules (i.e., not
+    packages) in the
+    PyInstaller.utils.hooks.setuptools.SetuptoolsInfo hook
+    utility class; for example, the
+    setuptools/_vendor/typing_extensions.py module.
+    (:issue:`9102`)
+  * Add hook for PyQt6.QtStateMachine that was introduced in
+    PyQt6 v6.8.1. (:issue:`9019`)
+  * Fix ModuleNotFoundError for scipy when provided by Debian's
+    python3-scipy package. (:issue:`9069`)
+  * Update hook for PyGObject (gi) and associated helper code to
+    support changes made in PyGObject v3.52 (switch from
+    girepository-1.0 to girepository-2.0). (:issue:`9055`)
+  * On POSIX systems other than macOS, use POSIX semaphore API
+    instead of SysV semaphore API to synchronize onefile parent
+    and child process. This restores the ability to compile
+    bootloader under Termux, where sys/sem.h (and the SysV
+    semaphore API) is unavailable due to deliberate lack of
+    support for it in the underlying Android base.
+    (:issue:`9089`)
+  * Extend the :ref:`module_collection_mode <package collection
+    mode>` setting from :issue:`6945` to also apply to modules
+    collected into base_library.zip archive. Implement discovery
+    of source .py files for modules in base_library.zip at run-
+    time. This allows collection and discovery of source .py
+    files for modules in base_library.zip, which might be
+    required by frameworks that perform aggressive recursive
+    introspection all way down to standard library modules (for
+    example, torch JIT in combination with certain model
+    implementations). (:issue:`8971`)
+  * Add exclude for libwayland*.so to prevent mismatches with
+    system drivers. (:issue:`8963`)
+  * Fix errors raised by setuptools hook utility class and
+    various related hooks when building with completely de-
+    vendored setuptools (for example, as packaged by Arch Linux).
+    (:issue:`8947`)
+  * Gracefully handle cases when _tkinter is a built-in instead
+    of an extension module, and thus does not have a __file__
+    attribute. Most notable example of this are indygreg's
+    python-build-standalone CPython builds for macOS and Linux.
+    This fixes collection of tkinter and associated Tcl/Tk
+    resources when using such python builds. When trying to
+    enable splash screen, a descriptive error is now raised,
+    because splash screen requires shared Tcl/Tk libraries, while
+    a built-in _tkinter seems to indicate that python was
+    statically linked against Tcl/Tk libraries. (:issue:`9012`)
+  * Rework the localpycs cache in the build directory to avoid
+    relying on the source .py file timestamps. Some package
+    managers (e.g., Anaconda) (re)set the file
+    creation/modification time of installed files to the time of
+    packaging rather than having them reflect the time of
+    installation; therefore, the PyInstaller bootstrap script and
+    modules would fail to be properly recompiled when switching
+    between different versions of PyInstaller packaged by
+    Anaconda. (:issue:`8909`)
+  * When constructing PyiFrozenFinder for the given path and
+    trying to compute the path that is relative to the top-level
+    application directory, do not fully resolve the given path.
+    Instead, try computing relative path using both the original
+    and the fully resolved top-level application directory path.
+    This change prevents us from potentially resolving symbolic
+    links in parts of the given path that do not belong to the
+    top-level application directory. (:issue:`8994`)
+  * Add hook for gi.repository.Rsvg. (:issue:`8940`)
+  * Add hooks for PyQt6.QtGraphs and PyQt6.QtGraphsWidgets that
+    were introduced in PyQt6 v6.8.1 (via PyQt6-Graphs add-on
+    package). (:issue:`8924`)
+  * Split the PyiFrozenImporter (fused path based finder and
+    loader) into separate finder (PyiFrozenFinder) and loader
+    (PyiFrozenLoader). This better matches the separation between
+    python's built-in finders and loaders, and thus accommodates
+    3rd-party code that naively expects to encounter only
+    python's built-in finders and loaders. (:issue:`8934`)
+  * The stock Linux bootloaders are now built using generic
+    Ubuntu 18.04 and Alpine 3.12 Docker images rather than
+    manylinux/musllinux/dockcross. (:issue:`8881`)
+
+-------------------------------------------------------------------
 Fri Dec  6 12:46:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.11.1
-  * Add automatic binary vs. data file (re)classification step to the 
+  * Add automatic binary vs. data file (re)classification step to the
     analysis process.
-  * Add support for specifying hash randomization seed via hash_seed=<value> 
+  * Add support for specifying hash randomization seed via hash_seed=<value>
     run-time option when building the application.
   * Allow spec files to take custom command line parameters.
-  * Implement pass-through for Python’s X-options via PyInstaller’s 
+  * Implement pass-through for Python’s X-options via PyInstaller’s
     run-time options mechanism.
-  * The PyInstaller.utils.hooks.collect_all() hook utility function now 
-    attempts to translate the given importable package name into 
+  * The PyInstaller.utils.hooks.collect_all() hook utility function now
+    attempts to translate the given importable package name into
     distribution name before attempting to collect metadata.
-  * Removed support for building LSB-compliant bootloader, due to lack of 
+  * Removed support for building LSB-compliant bootloader, due to lack of
     support for LSB (Linux Standard Base) in contemporary linux distributions.
-  * All of onedir build’s contents except for the executable are now moved 
-    into a sub-directory (called _internal by default). sys._MEIPASS is 
-    adjusted to point to this _internal directory. Assumptions that 
+  * All of onedir build’s contents except for the executable are now moved
+    into a sub-directory (called _internal by default). sys._MEIPASS is
+    adjusted to point to this _internal directory. Assumptions that
     os.path.dirname(sys.executable) == sys._MEIPASS will break.
-  * PyInstaller-frozen applications are not affected by the PYTHONUTF8 
-    environment variable anymore. To permanently enable or disable the UTF8 
-    mode, use the X utf8_mode=1 or X utf_mode=0 run-time option when 
+  * PyInstaller-frozen applications are not affected by the PYTHONUTF8
+    environment variable anymore. To permanently enable or disable the UTF8
+    mode, use the X utf8_mode=1 or X utf_mode=0 run-time option when
     building the application.
   * Remove bytecode encryption (--key and cipher options).
-  * Allow users to re-enable the old onedir layout (without contents 
+  * Allow users to re-enable the old onedir layout (without contents
     directory) by settings the --contents-directory option
-  * If the argcomplete Python module is installed, PyInstaller will use it 
-    enable tab completion for its CLI tools. PyInstaller CLIs can still be 
+  * If the argcomplete Python module is installed, PyInstaller will use it
+    enable tab completion for its CLI tools. PyInstaller CLIs can still be
     used without this optional dependency.
-  * Optimize the automatic binary-vs-data classification by avoiding 
+  * Optimize the automatic binary-vs-data classification by avoiding
     objdump based check on files that do not have ELF signature.
-  * Collect .hmac files accompanying shared libraries, if such files are 
-    available. This allows frozen application to run on FIPS-enabled Red 
-    Hat Enterprise systems, where HMAC is required by self-check implemented 
+  * Collect .hmac files accompanying shared libraries, if such files are
+    available. This allows frozen application to run on FIPS-enabled Red
+    Hat Enterprise systems, where HMAC is required by self-check implemented
     by the OpenSSL crypto library.
-  * Implement strict Qt dependency validation for collection of Qt plugins 
-    and QML components/plugins. We now perform preliminary binary dependency 
-    analysis of the plugins, and automatically exclude plugins that have 
+  * Implement strict Qt dependency validation for collection of Qt plugins
+    and QML components/plugins. We now perform preliminary binary dependency
+    analysis of the plugins, and automatically exclude plugins that have
     at least one missing Qt dependency.
-  * Implement an option to explicitly specify the bytecode optimization level 
-    for collected python code, independent of the optimization level in the 
+  * Implement an option to explicitly specify the bytecode optimization level
+    for collected python code, independent of the optimization level in the
     python process under which PyInstaller is running.
-  * Fix PyInstaller.depend.bindepend.resolve_library_path for cases when 
+  * Fix PyInstaller.depend.bindepend.resolve_library_path for cases when
     ldconfig cache is not available
-  * Attempting to restart the application by spawning new process via 
-    sys.executable and exiting the current process now requires the 
-    PYINSTALLER_RESET_ENVIRONMENT environment variable to be set prior to 
+  * Attempting to restart the application by spawning new process via
+    sys.executable and exiting the current process now requires the
+    PYINSTALLER_RESET_ENVIRONMENT environment variable to be set prior to
     spawning the process.
   * Add support for Python 3.13.
   * Many more changes, see https://pyinstaller.org/en/stable/CHANGES.html
@@ -55,29 +140,29 @@ Fri Dec  6 12:46:11 UTC 2024 - Markéta Machová <mmachova@suse.com>
 Tue Jul 11 12:38:14 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.13.0
-  * Allow controlling the build log level (--log-level) via a 
+  * Allow controlling the build log level (--log-level) via a
     PYI_LOG_LEVEL environment variable.
-  * Fixes an issue with gi shared libraries not being packaged if 
-    they don’t have version suffix and are in a special location 
+  * Fixes an issue with gi shared libraries not being packaged if
+    they don’t have version suffix and are in a special location
     set by LD_LIBRARY_PATH instead of a typical library path.
-  * The deprecated PEP-302 find_module() and load_module() methods 
+  * The deprecated PEP-302 find_module() and load_module() methods
     have been removed from PyInstaller’s FrozenImporter.
-  * Compile the collected GLib schema files using glib-schema-compiler 
+  * Compile the collected GLib schema files using glib-schema-compiler
     instead of collecting the pre-compiled gschemas.compiled.
-  * The archive_viewer utility has been rewritten with modified 
-    command-line interface (--log has been renamed to --list) and 
-    with changed output formatting. 
+  * The archive_viewer utility has been rewritten with modified
+    command-line interface (--log has been renamed to --list) and
+    with changed output formatting.
   * Extend PySide6 hooks for PySide6 6.5.0 compatibility.
-  * Ensure that binaries that are manually specified in the .spec file 
-    (or via corresponding --add-binary or --collect-binaries 
-    command-line switches) undergo the binary dependency analysis, 
-    so their dependencies are automatically collected. 
-  * Remove the use of the TOC class in the analysis / build process, 
-    and use plain list instances instead. 
-  * Attempt to fix compatibility of PyInstaller’s PyiFrozenImporter 
+  * Ensure that binaries that are manually specified in the .spec file
+    (or via corresponding --add-binary or --collect-binaries
+    command-line switches) undergo the binary dependency analysis,
+    so their dependencies are automatically collected.
+  * Remove the use of the TOC class in the analysis / build process,
+    and use plain list instances instead.
+  * Attempt to fix compatibility of PyInstaller’s PyiFrozenImporter
     with importlib.util.LazyLoader.
   * Add support for Python 3.12.
-  * Limit the import of collected packages prior to performing binary 
+  * Limit the import of collected packages prior to performing binary
     dependency analysis to only Windows, where it is actually useful.
 
 -------------------------------------------------------------------
@@ -93,7 +178,7 @@ Mon Nov  7 20:29:32 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
    (Linux, macOS) Fix the regression in shared library collection, where the shared library would end up collected under its fully-versioned .
    so name (e.g., libsomething.so.1.2.3) instead of its originally referenced name (e.g., libsomething.so.1) due to accidental symbolic link resolution. (#7189)
 
-- Update to 5.6.1 
+- Update to 5.6.1
   Bugfix
   * (macOS) Fix regression in macOS app bundle signing caused by a typo made in #7180. (#7184)
 
@@ -128,7 +213,7 @@ Thu Oct 27 20:51:42 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
   Bootloader
   - (Windows) Update the bundled zlib sources to v1.2.13. (#7166)
 
-- Update to 5.5  
+- Update to 5.5
   Features
   - (Windows) Support embedding multiple icons in the executable. (#7103)
   Bugfix
@@ -148,23 +233,23 @@ Fri Sep 30 08:41:35 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.4.1
   * Many changes, see upstream changelog
-  * Issue an error report if a .spec file will not be generated, but 
+  * Issue an error report if a .spec file will not be generated, but
     command-line options specific to that functionality are given
-  * The `PyInstaller.utils.hooks.get_module_attribute` function now 
+  * The `PyInstaller.utils.hooks.get_module_attribute` function now
     returns the actual attribute value instead of its string representation.
-  * The matplotlib.backends hook no longer collects all available matplotlib 
+  * The matplotlib.backends hook no longer collects all available matplotlib
     backends, but rather tries to auto-detect the used backend(s) by default.
   * Drop support for Python 3.6.
-  * Make the error handing of `~PyInstaller.utils.hooks.collect_submodules` 
+  * Make the error handing of `~PyInstaller.utils.hooks.collect_submodules`
     configurable.
-  * Detect if an icon file (.ico or .icns) is of another image type but has 
-    been mislabelled as a native icon type via its file suffix then either 
-    normalise to a genuinely native image type if pillow is installed or 
+  * Detect if an icon file (.ico or .icns) is of another image type but has
+    been mislabelled as a native icon type via its file suffix then either
+    normalise to a genuinely native image type if pillow is installed or
     raise an error.
-  * Implement a mechanism for controlling the collection mode of modules and 
-    packages, with granularity ranging from top-level packages to individual 
+  * Implement a mechanism for controlling the collection mode of modules and
+    packages, with granularity ranging from top-level packages to individual
     sub-modules.
-  * Add support for setuptools-provided distutils, available since 
+  * Add support for setuptools-provided distutils, available since
     setuptools >= 60.0.
 
 -------------------------------------------------------------------
