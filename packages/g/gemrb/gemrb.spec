@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:  pkgconfig(openal)
@@ -56,14 +56,13 @@ sed -ie 's,\(#!/usr/bin/python\)$,\13,' admin/extend2da.py
 
 %build
 rm -Rf CMakeCache.txt CMakeFiles/
-%cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
+%cmake \
     -DLIB_DIR=%{_libdir} \
     -DPLUGIN_DIR=%{_libdir}/gemrb/plugins \
     -DDISABLE_WERROR=1 \
-    -DCMAKE_VERBOSE_MAKEFILE:BOOL="true" \
     -DOPENGL_BACKEND=OpenGL
 
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
@@ -71,8 +70,7 @@ rm -Rf CMakeCache.txt CMakeFiles/
 rm %{buildroot}%{_datadir}/doc/gemrb/INSTALL
 rm %{buildroot}%{_libdir}/libgemrb*.so
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %{_bindir}/extend2da.py

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 15 17:54:21 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build.
+- Add BuildRequires: pkgconfig(gl).
+- Use modern rpm macros where possible.
+
+-------------------------------------------------------------------
 Sun Jan 12 15:28:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.9.4
