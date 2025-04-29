@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        48.beta+25
+Version:        48.beta+31
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
