@@ -1,20 +1,20 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/keybase/client.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v6.3.1</param>
+    <param name="revision">v6.5.1</param>
     <param name="filename">client</param>
     <param name="changesgenerate">disable</param>
   </service>
-  <service name="tar" mode="disabled">
+  <service name="tar" mode="manual">
     <param name="include">go</param>
     <param name="include">packaging</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version" />
+  <service mode="manual" name="set_version" />
 </services>

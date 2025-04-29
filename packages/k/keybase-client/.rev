@@ -292,4 +292,19 @@
   boo#1227158. This is done via the new update-golang-x-image.patch.</comment>
     <requestid>1185695</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3538313f95d406cc9dba3a0815c9ed1e</srcmd5>
+    <version>6.5.1</version>
+    <time>1745937677</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.5.1
+  * Fix team deletion not working
+  * Chat attachments improvements
+  * Miscellaneous bugfixes
+- Drop update-golang-x-image.patch as upstream now ships with
+  a vendored version of the Image library that includes the fix.
+- Switch source download service from deprecated disabledrun to
+  manualrun.</comment>
+    <requestid>1273254</requestid>
+  </revision>
 </revisionlist>
