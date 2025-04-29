@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:14:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.19.1:
+  * pyupgrade support for 3.13
+  * run pyupgrade on itself for removal of 3.13 deprecated
+    constructs
+
+-------------------------------------------------------------------
 Sat Aug 31 12:15:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.0:

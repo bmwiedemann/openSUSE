@@ -543,4 +543,15 @@
   * run pyupgrade on itself</comment>
     <requestid>1198060</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>adf64c3f1729ba658def82022bd75a9d</srcmd5>
+    <version>3.19.1</version>
+    <time>1745937608</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.19.1:
+  * pyupgrade support for 3.13
+  * run pyupgrade on itself for removal of 3.13 deprecated
+    constructs</comment>
+    <requestid>1273175</requestid>
+  </revision>
 </revisionlist>
