@@ -64,7 +64,7 @@
 %define build_ada 0
 %endif
 
-%define quadmath_arch %ix86 x86_64 ia64 ppc64le
+%define quadmath_arch %ix86 x86_64 ia64 ppc64le loongarch64
 %define tsan_arch x86_64 aarch64 ppc ppc64 ppc64le s390 s390x riscv64 loongarch64
 %define asan_arch x86_64 %ix86 ppc ppc64 ppc64le s390 s390x %sparc %arm aarch64 riscv64 loongarch64
 %define hwasan_arch aarch64 x86_64
@@ -110,7 +110,7 @@
 %define build_cobol 0
 %if %{suse_version} >= 1699
 # build cobol for factory and x86_64 for now
-%ifarch x86_64 aarch64 ppc64le
+%ifarch x86_64 aarch64 ppc64le riscv64
 %define build_cobol 1
 %endif
 %endif
@@ -238,7 +238,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git9352
+Version:        15.1.1+git9595
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -806,6 +806,9 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "amdgcn"
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--enable-libgomp \
+%if 0%{?product_libs_llvm_ver} >= 19
+	--with-multilib-list=gfx900,gfx906,gfx908,gfx90a,gfx90c,gfx1030,gfx1036,gfx1100,gfx1103,gfx9-generic,gfx10-3-generic,gfx11-generic \
+%endif
 %endif
 %if "%{TARGET_ARCH}" == "avr"
 	--enable-lto \

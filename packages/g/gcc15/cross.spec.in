@@ -192,7 +192,7 @@ Conflicts: %{gcc_target_arch}-gcc
 Conflicts: cross-%{cross_arch}-gcc@base_ver@
 %endif
 #!BuildIgnore: gcc-PIE
-%if 0%{build_cp:1}
+%if %{build_cp}
 # The cross compiler only packages the arch specific c++ headers, so
 # we need to depend on the host libstdc++ devel headers (we wouldn't need
 # the libs, though)

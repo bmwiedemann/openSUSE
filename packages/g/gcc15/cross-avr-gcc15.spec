@@ -102,7 +102,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.0.1+git9352
+Version:        15.1.1+git9595
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -278,7 +278,7 @@ Conflicts:      %{gcc_target_arch}-gcc
 Conflicts:      cross-%{cross_arch}-gcc15
 %endif
 #!BuildIgnore: gcc-PIE
-%if 0%{build_cp:1}
+%if %{build_cp}
 # The cross compiler only packages the arch specific c++ headers, so
 # we need to depend on the host libstdc++ devel headers (we wouldn't need
 # the libs, though)
@@ -595,6 +595,9 @@ amdgcn-amdhsa,\
 %if "%{TARGET_ARCH}" == "amdgcn"
 	--enable-as-accelerator-for=%{GCCDIST} \
 	--enable-libgomp \
+%if 0%{?product_libs_llvm_ver} >= 19
+	--with-multilib-list=gfx900,gfx906,gfx908,gfx90a,gfx90c,gfx1030,gfx1036,gfx1100,gfx1103,gfx9-generic,gfx10-3-generic,gfx11-generic \
+%endif
 %endif
 %if "%{TARGET_ARCH}" == "avr"
 	--enable-lto \

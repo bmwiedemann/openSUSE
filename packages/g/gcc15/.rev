@@ -59,4 +59,18 @@ since we bumped libgo SONAME as well for 15</comment>
   for GCN offloading.</comment>
     <requestid>1268364</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a52cdf2cd4c8329ad83a3b18d93bf493</srcmd5>
+    <version>15.1.1+git9595</version>
+    <time>1745937588</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 15 branch head, 15.1.1+git9595
+  * includes GCC 15.1 release
+- Enable gfx9-generic, gfx10-3-generic and gfx11-generic multilibs
+  for the AMD GCN offload compiler when llvm is new enough.
+- Build the COBOL frontend also for risc-v
+
+- Add loongarch64 to quadmath_arch</comment>
+    <requestid>1273075</requestid>
+  </revision>
 </revisionlist>

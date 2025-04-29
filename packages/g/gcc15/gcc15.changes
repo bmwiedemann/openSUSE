@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 28 06:12:42 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.1.1+git9595
+  * includes GCC 15.1 release
+- Enable gfx9-generic, gfx10-3-generic and gfx11-generic multilibs
+  for the AMD GCN offload compiler when llvm is new enough.
+- Build the COBOL frontend also for risc-v
+
+-------------------------------------------------------------------
+Sat Apr 12 09:09:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add loongarch64 to quadmath_arch
+
+-------------------------------------------------------------------
 Thu Apr 10 06:17:49 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC trunk head, 15.0.1+git9352
