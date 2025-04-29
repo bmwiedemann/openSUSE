@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 29 05:57:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.13.15:
+  * Bugfixes
+    - Fixed tasks stopping
+    - Fixed schedule weekday checkboxes
+
+-------------------------------------------------------------------
 Sun Apr 20 06:48:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.14 (2.13.13 was not released):
