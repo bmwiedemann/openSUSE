@@ -145,4 +145,12 @@
     <comment></comment>
     <requestid>1217790</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>b6aef2c09d967ac99d0463bc74f03742</srcmd5>
+    <version>unknown</version>
+    <time>1745937774</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove custom SELinux policy as it was removed with upstream Kubevirt 1.5</comment>
+    <requestid>1273458</requestid>
+  </revision>
 </revisionlist>

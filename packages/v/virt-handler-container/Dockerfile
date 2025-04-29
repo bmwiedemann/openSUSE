@@ -38,7 +38,6 @@ RUN zypper -n install \
               util-linux-systemd && \
     zypper clean -a
 
-RUN cp -f /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/ && \
-    cp -f /usr/share/kube-virt/virt-handler/virt_launcher.cil /
+RUN cp -f /usr/share/kube-virt/virt-handler/nsswitch.conf /etc/
 
 ENTRYPOINT [ "/usr/bin/virt-handler" ]
