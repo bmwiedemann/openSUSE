@@ -28,7 +28,7 @@
 %bcond_with ringdisabled
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.5.1
+Version:        5.5.2
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
@@ -44,6 +44,7 @@ Requires:       python-click >= 8.0.3
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
+Requires:       python-dbm
 Requires:       python-kombu >= 5.5
 Requires:       python-python-dateutil
 Requires:       python-tzdata
@@ -55,8 +56,6 @@ Recommends:     python-curses
 Suggests:       python-eventlet
 Suggests:       python-gevent
 Suggests:       python-pymongo
-Suggests:       python-python-daemon
-Suggests:       python-pytyrant
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML >= 3.10}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:36:22 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.5.2
+  * Fix calculating remaining time across DST changes
+  * Remove setup_logger from COMPAT_MODULES
+- Add missing runtime requirement python-dbm
+
+-------------------------------------------------------------------
 Tue Apr  8 10:51:40 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 5.5.1
