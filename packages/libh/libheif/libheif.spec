@@ -44,7 +44,7 @@
 %endif
 
 Name:           libheif%{?psuffix}
-Version:        1.19.7
+Version:        1.19.8
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Apr 27 20:13:21 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.19.8:
+  * Set essential flag for transformative properties as required by
+    MIAF. This fixes the display of AVIF images with transformations
+    encoded by libheif in Chrome, which checks whether this flag is
+    set. This mainly affected images encoded by ImageMagick.
+  * If the environment variable LIBHEIF_SECURITY_LIMITS is set to OFF,
+    libheif will not check any security limits. This can be used if a
+    user works with large images and the application software does not
+    allow to adjust the libheif security limits.
+  * Resolved processing 16-bit JPEG-2000
+
+-------------------------------------------------------------------
 Mon Mar  3 18:28:54 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.19.7:
