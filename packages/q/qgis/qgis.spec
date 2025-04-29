@@ -34,7 +34,7 @@ Name:           qgis
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 
-Version:        3.42.0
+Version:        3.42.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -48,8 +48,6 @@ Source3:        https://download.qgis.org/downloads/data/qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch2:         qgis-fix-cmake-findpdal.patch
-# PATCH-FIX-UPSTREAM - only determine GL_MAX_CLIP_PLANES if it is defined
-Patch3:         qgis-check-if-maxcliplanes-is-defined.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
@@ -167,6 +165,10 @@ BuildRequires:  grass-devel >= 7.2
 %endif
 %ifarch ppc64le
 BuildRequires:  memory-constraints
+%endif
+%ifarch aarch64
+# Picked up by x86_64 and ppc64le, but not aarch64
+BuildRequires: Mesa-libGL-devel
 %endif
 
 %package devel

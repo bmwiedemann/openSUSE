@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Apr 23 18:11:28 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.42.2
+  * See https://github.com/qgis/QGIS/compare/final-3_42_1%5E...final-3_42_2
+    for commits between 3.42.1 and 3.42.2
+  * Drop qgis-import-gl_h.patch; The issue has been fixed upstream with
+    commit 7a8d98c ("Fix QGIS 3.42 build on arm64")
+
+-------------------------------------------------------------------
+Sat Mar 22 08:04:27 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to 3.42.1
+  * See https://github.com/qgis/QGIS/compare/final-3_42_0%5E...final-3_42_1
+    for commits between 3.42.0 and 4.32.1
+  * Replace qgis-check-if-maxcliplanes-is-defined.patch with
+    qgis-import-gl_h.patch to fix building with aarch64 (less
+    invasive patch, which also restores the intended behaviour)
+  * Add Mesa-libGL-devel as a dependency for aarch64, since it does
+    not get picked up automatically for some reason
+
+-------------------------------------------------------------------
 Wed Mar  5 12:05:50 UTC 2025 - Enno Tensing <tenno+suse@suij.in>
 
 - Update to 3.42.0
