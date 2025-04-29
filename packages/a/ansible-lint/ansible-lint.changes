@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:10:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.4.0:
+  * Bugfixes
+    - Fix type issue affecting builds (#4595) @ssbarnea
+    - chore(schema): Add Fedora:42 to schema (#4583) @andrewrothstein
+    - Package Latest: Use DNF for Examples (#4576) @amayer5125
+    - chore(schema): add missing ubuntu codenames (#4572) @uberjew666
+
+-------------------------------------------------------------------
 Thu Apr  3 13:18:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.2.1:
