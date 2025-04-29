@@ -17,7 +17,7 @@
 
 
 Name:           trace-cmd
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Configuration tool for Ftrace
 License:        GPL-2.0-only

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:43:04 UTC 2025 - Petr Pavlu <petr.pavlu@suse.com>
+
+- Update to version 3.3.2:
+  * Add trace-cmd show --max_latency
+  * Bail out of trace-cmd reset on invalid options
+  * Add trace-cmd reset -k option to keep events
+  * New bash completions
+  * Update help messages of trace-cmd show for --hist and --trigger options
+  * Fix some memory errors
+  * Fix sqlhist initialization of variables
+  * Fix trace-cmd record demonization stdin redirection to /dev/null
+
+-------------------------------------------------------------------
 Tue Feb  4 08:53:01 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to latest upstream version 3.3.1:
