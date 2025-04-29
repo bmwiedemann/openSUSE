@@ -36,4 +36,15 @@ Therefore it would be important to have the package available in the main repos.
 </comment>
     <requestid>1266309</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9b9e2a2eeaff9bdc29c58f94275d4d90</srcmd5>
+    <version>0.18.2</version>
+    <time>1745937613</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new upstream release v0.18.2:
+  * Fix a wlroots compositor warning with wlroots 0.19.0-rc1 and newer when compiling with libdecor
+  * Fix unused variable warnings when compiling without GBM
+</comment>
+    <requestid>1273198</requestid>
+  </revision>
 </revisionlist>
