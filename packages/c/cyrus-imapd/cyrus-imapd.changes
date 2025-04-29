@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 11:06:47 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- CVE-2025-23394: cyrus-imapd: daily-backup.sh allows escalation from 
+  cyrus to root (bsc#1241536)
+  Adapt backup-cyrus.service to run as user cyrus:mail
+
+-------------------------------------------------------------------
 Tue Feb 25 16:04:31 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - spec: add "Conflicts: leafnode" because both leafnode and cyrus-imapd

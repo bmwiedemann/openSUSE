@@ -8,4 +8,14 @@
 https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/CUQSLJLY6BIUGPNSC4KTHF4UJLD6QHEO/</comment>
     <requestid>1266934</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>02beebfbb03990107f44aae28204da16</srcmd5>
+    <version>3.8.4</version>
+    <time>1745937738</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2025-23394: cyrus-imapd: daily-backup.sh allows escalation from 
+  cyrus to root (bsc#1241536)
+  Adapt backup-cyrus.service to run as user cyrus:mail</comment>
+    <requestid>1273379</requestid>
+  </revision>
 </revisionlist>
