@@ -1,16 +1,21 @@
 ---
- Lib/test/test_subprocess.py |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ Lib/test/test_subprocess.py |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
---- a/Lib/test/test_subprocess.py
-+++ b/Lib/test/test_subprocess.py
-@@ -281,7 +281,8 @@ class ProcessTestCase(BaseTestCase):
-                      "time.sleep(3600)"],
-                     # Some heavily loaded buildbots (sparc Debian 3.x) require
-                     # this much time to start and print.
--                    timeout=3)
-+                    # OBS might require even more
-+                    timeout=10)
-             self.fail("Expected TimeoutExpired.")
-         self.assertEqual(c.exception.output, b'BDFL')
+Index: Python-3.14.0a7/Lib/test/test_subprocess.py
+===================================================================
+--- Python-3.14.0a7.orig/Lib/test/test_subprocess.py	2025-04-12 23:55:25.222319332 +0200
++++ Python-3.14.0a7/Lib/test/test_subprocess.py	2025-04-12 23:56:40.450491892 +0200
+@@ -156,7 +156,11 @@
+         # child.
+         self.assertRaises(subprocess.TimeoutExpired, subprocess.call,
+                           [sys.executable, "-c", "while True: pass"],
+-                          timeout=0.1)
++                          # Some heavily loaded buildbots (sparc Debian 3.x) require
++                          # this much time to start and print.
++                          # timeout=3)
++                          # OBS might require even more
++                          timeout=10)
  
+     def test_check_call_zero(self):
+         # check_call() function with zero return code

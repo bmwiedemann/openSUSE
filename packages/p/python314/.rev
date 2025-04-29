@@ -1204,4 +1204,41 @@
     <comment>- Skip PGO with %want_reproducible_builds (bsc#1239210).</comment>
     <requestid>1251945</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e6dc1d1b61d0a847dceeb63a64751399</srcmd5>
+    <version>3.14.0~a7</version>
+    <time>1745937691</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.14.0~a7:
+  - Tools/Demos
+    - gh-132121: Always escape non-printable Unicode characters in
+      pygettext.
+    - gh-131852: msgfmt no longer adds the POT-Creation-Date to
+      generated .mo files for consistency with GNU msgfmt.
+  - Tests
+    - gh-131277: Allow to unset one or more environment variables
+      at once via EnvironmentVarGuard.unset(). Patch by Bénédikt
+      Tran.
+    - gh-131050: test_ssl.test_dh_params is skipped if the
+      underlying TLS library does not support finite-field
+      ephemeral Diffie-Hellman.
+  - Security
+    - gh-131809: Update bundled libexpat to 2.7.1
+    - gh-131261: Upgrade to libexpat 2.7.0
+    - gh-121284: Fix bug in the folding of rfc2047 encoded-words
+      when flattening an email message using a modern email
+      policy. Previously when an encoded-word was too long for
+      a line, it would be decoded, split across lines, and
+      re-encoded. But commas and other special characters in the
+      original text could be left unencoded and unquoted. This
+      could theoretically be used to spoof header lines using a
+      carefully constructed encoded-word if the resulting rendered
+      email was transmitted or re-parsed.
+  - Library
+    - gh-132174: Fix function name in error message of
+      _interpreters.run_string.
+    - gh-132171: Fix crash of _interpreters.run_string on string
+      subclasses.</comment>
+    <requestid>1273280</requestid>
+  </revision>
 </revisionlist>

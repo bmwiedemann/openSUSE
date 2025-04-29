@@ -2,9 +2,11 @@
  Lib/test/test_compile.py |    5 +++++
  1 file changed, 5 insertions(+)
 
---- a/Lib/test/test_compile.py
-+++ b/Lib/test/test_compile.py
-@@ -25,6 +25,9 @@ from test.support import (script_helper,
+Index: Python-3.14.0a7/Lib/test/test_compile.py
+===================================================================
+--- Python-3.14.0a7.orig/Lib/test/test_compile.py	2025-04-12 23:55:24.033076315 +0200
++++ Python-3.14.0a7/Lib/test/test_compile.py	2025-04-12 23:58:06.932213319 +0200
+@@ -24,6 +24,9 @@
  from test.support.bytecode_helper import instructions_with_positions
  from test.support.os_helper import FakePath
  
@@ -14,19 +16,19 @@
  class TestSpecifics(unittest.TestCase):
  
      def compile_single(self, source):
-@@ -121,6 +124,7 @@ class TestSpecifics(unittest.TestCase):
+@@ -120,6 +123,7 @@
          self.assertEqual(d['z'], 12)
  
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
 +    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
      @support.skip_emscripten_stack_overflow()
      def test_extended_arg(self):
-         repeat = int(get_c_recursion_limit() * 0.9)
-@@ -710,6 +714,7 @@ class TestSpecifics(unittest.TestCase):
+         repeat = 100
+@@ -709,6 +713,7 @@
  
      @support.cpython_only
      @unittest.skipIf(support.is_wasi, "exhausts limited stack on WASI")
 +    @unittest.skipIf(IS_SLE_15_6 and IS_32bit, "fails on 15.6 i586")
      @support.skip_emscripten_stack_overflow()
      def test_compiler_recursion_limit(self):
-         # Expected limit is Py_C_RECURSION_LIMIT
+         # Compiler frames are small
