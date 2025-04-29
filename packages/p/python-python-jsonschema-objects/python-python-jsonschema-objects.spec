@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jsonschema-objects
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           python-python-jsonschema-objects
-Version:        0.5.5
+Version:        0.5.7
 Release:        0
 Summary:        An object wrapper for JSON Schema definitions
 License:        MIT
-URL:            https://python-jsonschema-objects.readthedocs.org/
+URL:            https://github.com/cwacek/python-jsonschema-objects
 Source:         https://files.pythonhosted.org/packages/source/p/python_jsonschema_objects/python_jsonschema_objects-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}

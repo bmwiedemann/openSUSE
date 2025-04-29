@@ -110,4 +110,16 @@
   * Fixes import path for collections.abc to be compliant with Python 3.8 [#197] (h/t @adriangay)</comment>
     <requestid>1208372</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>386b3a58979d470ba7a90c42d1c0c57d</srcmd5>
+    <version>0.5.7</version>
+    <time>1745937641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.7:
+  * Fix an issue where the any_of flag wasn’t properly respected
+    in other than simple cases #297
+- update to 0.5.6:
+  * Fix #292 by adding intermediary class builder.</comment>
+    <requestid>1273216</requestid>
+  </revision>
 </revisionlist>

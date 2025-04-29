@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:49:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.7:
+  * Fix an issue where the any_of flag wasn’t properly respected
+    in other than simple cases #297
+- update to 0.5.6:
+  * Fix #292 by adding intermediary class builder.
+
+-------------------------------------------------------------------
 Wed Oct 16 08:21:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.5:
