@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  scons
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(mad)
