@@ -80,6 +80,8 @@ Patch105:       gnutls-skip-pqx-test.patch
 Patch106:       gnutls-fips-sonames-check.patch
 # PATCH-FIX-SUSE jsc#jsc#PED-12224 FIPS: Mark SHA1 as unapproved in the SLI
 Patch107:       gnutls-FIPS-disable-mac-sha1.patch
+# PATCH-FIX-SUSE bsc#1237101 GNUTLS FIPS selfcheck is failing again on tumbleweed
+Patch108:       gnutls-FIPS-HMAC-x86_64-v3-opt.patch
 
 BuildRequires:  autogen
 BuildRequires:  automake
