@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Apr 30 09:34:05 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.0
+ + Breaking Changes:
+  * Update uv version to display and update project versions
+  * Avoid fallback to subsequent indexes on authentication failure
+  * Require the command in uvx <name> to be available in the Python environment
+  * Use index URL instead of package URL for keyring credential lookups
+  * Remove --version from subcommands
+  * Omit Python 3.7 downloads from managed versions
+  * Reject non-PEP 751 TOML files in install, compile, and export commands
+  * Ignore arbitrary Python requests in version files
+  * Error on unknown dependency object specifiers
+  * Make --frozen and --no-sources conflicting options
+  * Treat empty UV_PYTHON_INSTALL_DIR and UV_TOOL_DIR as unset
+ * Enhancements
+  * Disallow mixing requirements across PyTorch indexes 
+  * Add optional managed Python archive download cache 
+  * Add poetry-core as a uv init build backend option 
+  * Show tag hints when failing to find a compatible wheel in pylock.toml 
+  * Report Python versions in pyvenv.cfg version mismatch 
+ * Bug fixes
+  * Avoid erroring on omitted wheel-only packages in pylock.toml 
+  * Fix display name for uvx --version 
+  * Restore handling of authentication when encountering redirects 
+  * Respect build options (--no-binary et al) in pylock.toml 
+  * Use upload-time rather than upload_time in uv.lock 
+ * Documentation
+  * Changed fish completions append >> to overwrite > 
+  * Add pylock.toml mentions where relevant 
+  * Add ROCm example to the PyTorch guide 
+  * Upgrade PyTorch guide to CUDA 12.8 and PyTorch 2.7 
+
+-------------------------------------------------------------------
 Wed Apr 23 13:41:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.6.16
