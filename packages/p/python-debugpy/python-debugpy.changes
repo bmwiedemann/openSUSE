@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Apr 28 15:12:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.14
+  * fix ResourceWarning: unclosed socket
+  * fix binskim warnings on linux
+
+-------------------------------------------------------------------
+Mon Feb 10 15:07:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.8.12
+  * To simplify command line usage, an debugpy entry point has been 
+    added to the debugpy package.
+  * To simplify command line usage, switches can now be read from 
+    the environment.
+  * Consuming PyDev.Debugger's sys.monitoring support to improve 
+    performance of debugging 3.12
+  * Support for 3.13
+  * Multithreading fixes
+
+-------------------------------------------------------------------
 Thu Sep 26 10:32:41 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Drop unneeded Django test dependency

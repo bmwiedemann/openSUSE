@@ -1,7 +1,7 @@
 #
 # spec file for package python-debugpy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-debugpy%{psuffix}
-Version:        1.8.2
+Version:        1.8.14
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
@@ -35,6 +35,7 @@ URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -51,6 +52,8 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  gdb
 %endif
+Requires(post): alts
+Requires(postun): alts
 %python_subpackages
 
 %description
@@ -61,11 +64,6 @@ debugpy is an implementation of the Debug Adapter Protocol for Python.
 
 # don't remove vendored pydevd: upstream's intention is to always bundle it. Development happens in debugpy anyway
 
-# remove precompiled libs
-rm src/debugpy/_vendored/pydevd/pydevd_attach_to_process/*.{so,dll,dylib,exe,pdb}
-# remove script interpreter lines
-sed -i '1 {/^#!/ d}' \
-  src/debugpy/_vendored/pydevd/pydevd_attach_to_process/winappdbg/*/*.py
 # remove gitignore file
 find src/debugpy/_vendored/pydevd/ -name .gitignore -delete
 # remove a performance tweak not compatible with older gdb: https://github.com/microsoft/debugpy/issues/762
@@ -100,6 +98,8 @@ popd
 # Dont compile pydevd again
 export SKIP_CYTHON_BUILD=1
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/debugpy
+%python_clone -a %{buildroot}%{_bindir}/debugpy-adapter
 %{python_expand # remove source files
 rm -r %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/pydevd_attach_to_process/{common,linux_and_mac,windows}/
 rm %{buildroot}%{$python_sitearch}/debugpy/_vendored/pydevd/_*/*.{c,h,pxd,pyx}
@@ -114,11 +114,7 @@ export DEBUGPY_PROCESS_EXIT_TIMEOUT=30
 export DEBUGPY_PROCESS_SPAWN_TIMEOUT=90
 # extra flags are not added
 donttest="test_custom_python_args"
-# python 3.11 failures
-donttest="$donttest or test_redirect_output or test_with_no_output or test_systemexit or test_exceptions_and_partial_exclude_rules or test_exception_stack or test_flask_template_exception_no_multiproc or test_flask_exception_no_multiproc or test_gevent"
-rm -v tests/debugpy/test_exception.py tests/debugpy/test_django.py
-# gh#microsoft/debugpy#1462
-donttest="$donttest or test_attach_pid_client"
+rm -v tests/debugpy/test_django.py
 
 # Disable broken tests in s390x, bsc#1217019
 %ifarch s390x
@@ -138,10 +134,18 @@ donttest+=" or attach_pid"
 %pytest_arch -k "not ($donttest)"
 %endif
 
+%post
+%python_install_alternative debugpy debugpy-adapter
+
+%postun
+%python_uninstall_alternative debugpy
+
 %if ! %{with test}
 %files %{python_files}
 %{python_sitearch}/debugpy
 %{python_sitearch}/debugpy-%{version}*-info
+%python_alternative %{_bindir}/debugpy
+%python_alternative %{_bindir}/debugpy-adapter
 %endif
 
 %changelog
