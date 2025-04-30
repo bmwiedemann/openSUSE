@@ -1,0 +1,30 @@
+--- utils/asymptote/LspCpp/include/LibLsp/JsonRpc/serializer.h	2025-02-08 18:23:03.000000000 +0100
++++ utils/asymptote/LspCpp/include/LibLsp/JsonRpc/serializer.h	2025-04-20 18:46:52.290632025 +0200
+@@ -10,6 +10,7 @@
+ #include <functional>
+ #include <map>
+ #include <algorithm>
++#include <cstdint>
+ 
+ #include "optionalVersion.h"
+ 
+--- utils/asymptote/LspCpp/include/LibLsp/lsp/lru_cache.h	2025-02-08 18:23:03.000000000 +0100
++++ utils/asymptote/LspCpp/include/LibLsp/lsp/lru_cache.h	2025-04-20 19:11:26.843059032 +0200
+@@ -5,6 +5,7 @@
+ #include <limits>
+ #include <memory>
+ #include <vector>
++#include <cstdint>
+ 
+ // Cache that evicts old entries which have not been used recently. Implemented
+ // using array/linear search so this works well for small array sizes.
+--- utils/asymptote/LspCpp/include/LibLsp/lsp/ParentProcessWatcher.h	2025-02-08 18:23:03.000000000 +0100
++++ utils/asymptote/LspCpp/include/LibLsp/lsp/ParentProcessWatcher.h	2025-04-20 19:14:32.442863120 +0200
+@@ -2,6 +2,7 @@
+ 
+ #include "LibLsp/JsonRpc/MessageIssue.h"
+ #include <memory>
++#include <cstdint>
+ 
+ class ParentProcessWatcher
+ {

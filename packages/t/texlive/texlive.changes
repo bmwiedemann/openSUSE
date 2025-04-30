@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 20 17:46:08 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add source-asymptote-liblsp.dif:  fix some missing #include
+  statements (boo#1241475)
+
+-------------------------------------------------------------------
 Thu Apr 10 11:43:10 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Make it build with latest gcc 

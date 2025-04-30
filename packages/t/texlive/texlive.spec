@@ -19,7 +19,7 @@
 %define texlive_version  2025
 %define texlive_previous 2022
 %define texlive_release  20250308
-%define texlive_noarch   217
+%define texlive_noarch   220
 %define texlive_source   texlive-20250308-source
 %define biber_version    2.20
 
@@ -273,6 +273,8 @@ Patch17:        source-64.dif
 Patch18:        source-a2ping.dif
 Patch19:        source-dvipng.dif
 Patch21:        source-ppc64.dif
+# fix missing include files to make gcc-15 happy
+Patch22:        source-asymptote-liblsp.dif
 # PATCH-FIX-SUSE Make biber work with our perl
 Patch42:        biblatex-encoding.dif
 Patch43:        biblatex-ms-encoding.dif
@@ -4393,6 +4395,7 @@ This package is required by the package texlive-biber-bin.
 %patch -P18 -p0 -b .a2p
 %patch -P19 -p0 -b .dvipng
 %patch -P21 -p0 -b .ppcelf
+%patch -P22 -p0 -b .asy
 pushd libs/luajit/LuaJIT-src/
 #Missed patch ppc and risc
 popd
@@ -4621,7 +4624,6 @@ popd
     popd
 
     pushd utils/asymptote
-	CFLAGS=${CFLAGS//-std=gnu11/}
 	version=$(autoreconf --version | head -n 1 | sed -r 's/.* ([0-9.]+)$/\1/')
 	if test ${version%%.*} -ge 2 -a ${version#*.} -ge 71
 	then
@@ -4649,8 +4651,8 @@ popd
 	LDFLAGS="$LDFLAGS -L$PWD"		\
 	CFLAGS="${CFLAGS/-Wno-unprototyped-calls/}"	\
 	CXXFLAGS="${CXXFLAGS/-Wno-unprototyped-calls/}"	\
-	CFLAGS="${CFLAGS/-std=gnu99/}"		\
-	CXXFLAGS="${CXXFLAGS/-std=gnu99/}"	\
+	CFLAGS="${CFLAGS//-std=gnu11/}"		\
+	CXXFLAGS="${CXXFLAGS//-std=gnu11/}"	\
 	./configure				\
 	    --host=${HOST}			\
 	    --build=${BUILD}			\

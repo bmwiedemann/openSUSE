@@ -1241,4 +1241,13 @@
     <comment>- Make it build with latest gcc</comment>
     <requestid>1268376</requestid>
   </revision>
+  <revision rev="102" vrev="105">
+    <srcmd5>c10e9d81acae28d1b40703db02f6e118</srcmd5>
+    <version>unknown</version>
+    <time>1746032569</time>
+    <user>dimstar_suse</user>
+    <comment>- Add source-asymptote-liblsp.dif:  fix some missing #include
+  statements (boo#1241475)</comment>
+    <requestid>1273421</requestid>
+  </revision>
 </revisionlist>
