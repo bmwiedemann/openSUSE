@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 28 15:37:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.1.9
+  * Reduce the number of iterations in memory leak test to avoid JIT
+    triggering
+  * Cleanup formatting in a few modules
+  * Don't bomb out during egl test when there's no egl devices
+  * Regenerated C wrappers with latest Cython
+  * Numpy intp type for latest numpy
+  * Fix ctypes FormatHandler for Python 3.12+
+  * More changes, see upstream commits
+- Drop merged 112.patch and numpy2.patch
+
+-------------------------------------------------------------------
 Tue Sep 10 12:33:04 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream patch numpy2.patch to fix compatibility with Numpy 2

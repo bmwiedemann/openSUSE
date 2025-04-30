@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl-accelerate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define tarname PyOpenGL-accelerate
-%define _version 3.1.7
+%define _version 3.1.9
 %{?sle15_python_module_pythons}
 Name:           python-opengl-accelerate
 Version:        %{_version}
@@ -27,10 +27,6 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            http://pyopengl.sourceforge.net
 Source0:        %{tarname}-%{_version}.tar.gz
-# PATCH-FIX-UPSTREAM - accelerate: Fix C type errors for GCC 14/Clang compatibility
-Patch0:         https://github.com/mcfletch/pyopengl/pull/112.patch
-# PATCH-FIX-UPSTREAM https://github.com/mcfletch/pyopengl/commit/f897b0ed75c00d4c524be4689683a334832217ac BUGFIX Numpy intp type for latest numpy
-Patch1:         numpy2.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module opengl >= %{version}}
@@ -58,9 +54,6 @@ code.
 mv accelerate/* ./
 rmdir accelerate
 
-# Force Cython to rebuild .c files
-rm src/*.c
-
 %build
 export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
 %python_build
@@ -74,7 +67,7 @@ export CFLAGS="%{optflags} -DGLX_GLXEXT_LEGACY"
 
 %files %{python_files}
 %license license.txt
-%doc README.txt
+%doc README.md
 %{python_sitearch}/OpenGL_accelerate/
 %{python_sitearch}/PyOpenGL_accelerate-*-py%{python_version}.egg-info
 
