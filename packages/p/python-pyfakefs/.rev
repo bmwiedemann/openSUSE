@@ -323,4 +323,41 @@
     <comment></comment>
     <requestid>1189791</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aa37697909654c96940378216d630ab1</srcmd5>
+    <version>5.8.0</version>
+    <time>1746032544</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.8.0:
+  * Adds preliminary support for Python 3.14.
+  * added some preliminary support for Python 3.14
+  * change behavior of `FakeFilesystem.get_object()` to ignore
+    permissions as it has been
+  * before version 5.4.0 (see #1122)
+  * fixed a problem with flushing if writing over the buffer end
+  * (see #1120)
+  * fixed a regression that could break tests under Posix in
+    Python 3.12
+  * (see #1126)
+  * fixed behavior for `os.access` for symlinks under Windows
+  * fixed permission problem on querying file properties (see
+    #1122)
+  * fixed patching in pytest setup phase for module and session-
+    scoped fs fixtures
+  * fixed a problem with module and session scoped fixtures in
+    Python 3.13
+  * fixed handling of `cwd` if set to a `pathlib.Path` (see
+    #1108)
+  * fixed documentation for cleanup handlers, added convenience
+    handler `reload_cleanup_handler`
+  * Fixes some problems with patching.
+  * added some support for loading fake modules in `AUTO` patch
+    mode using `importlib.import_module` (see #1079)
+  * added some support to avoid patching debugger related modules
+  * avoid reloading `tempfile` in Posix systems
+  * Adds official Python 3.13 support, improves OS emulation
+    behavior.
+  * avoid reloading `glob` in Python 3.13</comment>
+    <requestid>1273204</requestid>
+  </revision>
 </revisionlist>
