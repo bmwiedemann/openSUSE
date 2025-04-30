@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 30 09:17:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.4.2:
+  * speed up regex pattern search for some more extreme cases
+  * clean up code base to remove shadowed locals
+  * add safeguards for preventable pattern undermatch
+
+-------------------------------------------------------------------
 Sun Apr 27 11:49:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.4.1:
