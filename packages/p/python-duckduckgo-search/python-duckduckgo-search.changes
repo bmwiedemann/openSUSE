@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Apr 30 11:05:28 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 8.0.1:
+  * refactor: remove dead code
+  * refactor: remove dead code
+  * refactor: bump to primp=0.15.0
+
+- Update to 8.0.0:
+  * Chat moved to duckai package.
+  * feat(chat): remove chat
+  * fix(typing): fix typing in cli and tests
+
+- Update to 7.5.5:
+  * fix(chat): add _chat_xfe
+
+- Update to 7.5.4:
+  * fix(chat): x-vqd-hash-1 = ""
+
+- Update to 7.5.3:
+  * DDGS.chat: bugfix by @deedy5 in #294
+
+- Update to 7.5.2:
+  * fix(temp): don't set Client.headers
+  * Full Changelog: v7.5.1...v7.5.2
+
+- Update to 7.5.1:
+  * Bugfix DDGS.text() payload by @deedy5 in #291
+
+- Update to 7.5.0:
+  * chore: bump primp to v0.14.0
+  * tests: sleep 2 seconds between tests
+  * feat(chat): add mistral-small-3
+  * feat(chat): stream response
+  * feat(cli chat): stream response
+
+- Update to 7.4.5:
+  * Chat: bugfix ConversationLimitException by @deedy5 in #288
+
+- Update to 7.4.4:
+  * DDGS.chat: add mistral-small-3 by @deedy5 in #285
+  * fix(patch): patch only while sending request
+
+- Update to 7.4.3:
+  * feat: patch httpcore
+  * feat: improve ssl_context
+
+- Update to 7.4.2:
+  * Use httpx for requests by @deedy5 in #282
+  * Cli(chat): stream answer, add DDGS.chat_yield (response message generator) by @deedy5 in #283
+
+- Update to 7.3.2:
+  * DDGS.chat: add llama-3.3-70b model by @deedy5 in #281
+
+- Update to 7.3.1:
+  * DDGS.chat: add o3-mini model by @deedy5 in #280
+
+- Update to 7.3.0:
+  * clarify exceptions in README by @vpoulailleau in #275
+  * Drop Support for Python 3.8 by @deedy5 in #276
+  * Bump primp to v0.11.0
+  * Add _impersonates_os
+
+- Update to 7.2.1:
+  * Bump primp to v0.10.0
+  * DDGS._impersonates: add "firefox_128"
+
+- Update to 7.2.1:
+  * Bump primp to v0.10.0
+  * DDGS._impersonates: add "firefox_128"
+
+-------------------------------------------------------------------
 Thu Jan  2 14:10:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.1:

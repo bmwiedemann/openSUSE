@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-duckduckgo-search
-Version:        7.1.1
+Version:        8.0.1
 Release:        0
 Summary:        Search using the DuckDuckGo.com search engine
 License:        MIT
@@ -31,17 +31,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module click >= 8.1.7}
-BuildRequires:  %{python_module primp >= 0.6.3}
+BuildRequires:  %{python_module click >= 8.1.8}
+BuildRequires:  %{python_module primp >= 0.15.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-click >= 8.1.7
-Requires:       python-primp >= 0.6.3
-Suggests:       python-lxml >= 5.2.2
-Suggests:       python-mypy >= 1.11.1
-Suggests:       python-pytest >= 8.3.1
-Suggests:       python-pytest-asyncio >= 0.23.8
-Suggests:       python-ruff >= 0.6.1
+Requires:       python-click >= 8.1.8
+Requires:       python-lxml >= 5.3.0
+Requires:       python-primp >= 0.15.0
+Suggests:       python-mypy >= 1.14.1
+Suggests:       python-pytest >= 8.3.4
+Suggests:       python-pytest-dependency >= 0.6.0
+Suggests:       python-ruff >= 0.9.2
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
