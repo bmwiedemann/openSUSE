@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:55:47 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 2025.5
+  * avoid using deprecated setuptools helpers
+  * add license classifiers to pyproject.toml
+  * fix: sync Arabic plural rules
+  * feat: add list of case-insentive languages
+  * add Viossa
+  * extend CLDR plurals definitions
+  * many translation fixes
+
+-------------------------------------------------------------------
 Wed Nov 20 16:49:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.14:
