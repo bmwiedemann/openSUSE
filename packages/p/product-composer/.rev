@@ -368,4 +368,15 @@
     supportstatus, superseded_by and embargo_date .</comment>
     <requestid>1265732</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a359424dc99e08e09a5a4af701f5a93d</srcmd5>
+    <version>0.5.13</version>
+    <time>1746032752</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 0.5.13:
+  * support encoding of &quot;update&quot; and &quot;edition&quot; fields into CPE
+  * allow blacklisting binaries via updateinfo flag
+  * allow to specify repodata config per flavor</comment>
+    <requestid>1273682</requestid>
+  </revision>
 </revisionlist>

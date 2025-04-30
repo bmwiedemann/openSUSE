@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 30 12:36:01 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.13:
+  * support encoding of "update" and "edition" fields into CPE
+  * allow blacklisting binaries via updateinfo flag
+  * allow to specify repodata config per flavor
+
+-------------------------------------------------------------------
 Mon Mar 31 10:05:44 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.12:
