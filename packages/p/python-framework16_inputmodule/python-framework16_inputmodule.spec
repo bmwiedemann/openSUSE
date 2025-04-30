@@ -1,6 +1,7 @@
 #
 # spec file for package python-framework16_inputmodule
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Nico Krapp
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +21,7 @@
 %define reponame inputmodule-rs
 %{?sle15_python_module_python}
 Name:           python-framework16_inputmodule
-Version:        20241125.d9f18af
+Version:        0.2.0+git49
 Release:        0
 Summary:        A library to control input modules on the Framework 16 Laptop
 License:        MIT
@@ -37,8 +38,8 @@ Requires:       framework-inputmodule-control
 Requires:       python-Pillow
 Requires:       python-base >= 3.7
 Requires:       python-getkey
-Requires:       python-pyserial
 Requires:       python-pygame
+Requires:       python-pyserial
 Requires:       python-tk
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
