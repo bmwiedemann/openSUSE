@@ -287,6 +287,10 @@ sed -i '1s@#!.*python.*@#!%{_bindir}/%{python_binary_for_executables}@' %{buildr
 %else
 %python3_fix_shebang
 %endif
+find %{buildroot}/usr/lib/python3.*/site-packages/sepolicy/ | sed 's|^%{buildroot}||' > sepolicy.files
+sed -i '/\/gui\.py$/d' sepolicy.files
+sed -i '/\/gui\.cpython-.*\.pyc$/d' sepolicy.files
+sed -i '/site-packages\/sepolicy\/$/d' sepolicy.files
 
 %if 0%{?suse_version} > 1500
 %pre
@@ -385,11 +389,11 @@ done
 %{_mandir}/man1/unsetfiles.1%{?ext_man}
 %{_datadir}/bash-completion/completions/setsebool
 
-%files %{python_files policycoreutils}
-%{python_sitelib}/sepolicy
+%files %{python_files policycoreutils} -f sepolicy.files
 %{python_sitelib}/sepolgen
 %{python_sitelib}/sepolicy-%{version}.dist-info
 %{python_sitelib}/seobject.py
+%dir %{python_sitelib}/sepolicy
 
 %files lang -f %{name}.lang
 
@@ -465,6 +469,7 @@ done
 %config(noreplace) %{_sysconfdir}/pam.d/system-config-selinux
 %config(noreplace) %{_sysconfdir}/pam.d/selinux-polgengui
 %endif
+/usr/lib/python*/site-packages/sepolicy/gui.py
 
 %files dbus
 %{_datadir}/dbus-1/system.d/org.selinux.conf

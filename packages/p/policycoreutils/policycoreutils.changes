@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 11 08:06:35 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
+
+- Move gui.py file to gui sub-package to prevent policycoreutil python
+  packages from having excessive requirements
+
+-------------------------------------------------------------------
 Fri Mar  7 14:12:08 UTC 2025 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.8.1
