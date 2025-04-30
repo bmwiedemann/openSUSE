@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Apr 30 06:20:53 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.26:
+  * Add --no-color option to force disabling colorized output (#4081)
+  * Don't die on collection request failure to Postman API (#4094)
+  * Don't die on workspace request failure to Postman API (#4095)
+  * Remove unnecessarily verbosity call when logging error (#4097)
+  * feat: langfuse support (#4079)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.13.3 [security] (#4105)
+  * added shannon entropy check in accuweather detector (#4096)
+  * Harness Detector Implementation (#4085)
+  * Netlify Detector Version 2 implementation (#4091)
+  * Small comment fix: workspaces --> collections (#4093)
+  * test(sources/s3): fix infinite blocking and timeout issue in TestSource_Chunks (#4048)
+  * Ignore common key (#4039)
+  * Added azure COSMOSDB detector (#3951)
+  * remove trailing commas and quotes from snowflake passwords (#4078)
+  * [Fix] Updated Dropbox Detector (#4073)
+  * [Feat] Support Dockerhub OATs (#4062)
+  * Polish logging around git and archives to reduce noise (#4034)
+
+-------------------------------------------------------------------
 Tue Apr 22 06:21:15 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.88.25:

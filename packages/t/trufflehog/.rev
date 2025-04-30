@@ -2113,4 +2113,29 @@
   * fix(deps): update module cloud.google.com/go/secretmanager to v1.14.7 (#4065) (forwarded request 1271282 from ph03nix)</comment>
     <requestid>1271866</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>55448f4e4a2ec0a29a50ec697549e3cd</srcmd5>
+    <version>3.88.26</version>
+    <time>1746032742</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.88.26:
+  * Add --no-color option to force disabling colorized output (#4081)
+  * Don't die on collection request failure to Postman API (#4094)
+  * Don't die on workspace request failure to Postman API (#4095)
+  * Remove unnecessarily verbosity call when logging error (#4097)
+  * feat: langfuse support (#4079)
+  * fix(deps): update module github.com/snowflakedb/gosnowflake to v1.13.3 [security] (#4105)
+  * added shannon entropy check in accuweather detector (#4096)
+  * Harness Detector Implementation (#4085)
+  * Netlify Detector Version 2 implementation (#4091)
+  * Small comment fix: workspaces --&gt; collections (#4093)
+  * test(sources/s3): fix infinite blocking and timeout issue in TestSource_Chunks (#4048)
+  * Ignore common key (#4039)
+  * Added azure COSMOSDB detector (#3951)
+  * remove trailing commas and quotes from snowflake passwords (#4078)
+  * [Fix] Updated Dropbox Detector (#4073)
+  * [Feat] Support Dockerhub OATs (#4062)
+  * Polish logging around git and archives to reduce noise (#4034) (forwarded request 1273575 from ph03nix)</comment>
+    <requestid>1273640</requestid>
+  </revision>
 </revisionlist>
