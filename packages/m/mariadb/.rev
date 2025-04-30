@@ -1992,4 +1992,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>1269721</requestid>
   </revision>
+  <revision rev="147" vrev="3">
+    <srcmd5>62a406aa5c5968b2aecbbbb6f8e26e10</srcmd5>
+    <version>11.7.2</version>
+    <time>1746032551</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 24 21:57:38 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Fix galera condition in SLFO
+- Fix exclude list for galera-related files when galera is disabled 
+
+-------------------------------------------------------------------
 Tue Apr 15 05:59:24 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with pcre2 10.45 boo#1241198, adding

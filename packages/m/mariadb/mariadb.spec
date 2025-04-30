@@ -38,7 +38,7 @@
 %endif
 # Build galera on SLE. Galera requires mariadb >= 10.5, so only
 # build it on SLE15SP3 onwards
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150300 || 0%{?suse_version} >= 1600
 %bcond_without galera
 %else
 %bcond_with    galera
@@ -584,8 +584,8 @@ filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariaback
 touch mariadb-galera-exclude.files
 %else
 filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan wsrep_sst_backup >mariadb-galera-exclude.files
-echo "%exclude %{_datadir}/mysql/systemd/use_galera_new_cluster.conf" >>mariadb-galera-exclude.files
-echo "%exclude %{_datadir}/mysql/wsrep_notify" >>mariadb-galera-exclude.files
+echo "%exclude %{_datadir}/mariadb/systemd/use_galera_new_cluster.conf" >>mariadb-galera-exclude.files
+echo "%exclude %{_datadir}/mariadb/wsrep_notify" >>mariadb-galera-exclude.files
 %endif
 
 # mariadb-bench.files
