@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 29 13:13:47 UTC 2025 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- update to 3.38:
+  * https://git.kernel.dk/?p=fio.git;a=shortlog;h=refs/tags/fio-3.38 
+
+-------------------------------------------------------------------
 Wed Jul  3 06:57:21 UTC 2024 - Christophe Marin <christophe@krop.fr>
 
 - Drop the unneeded libpmemblk-devel build dependency. This
