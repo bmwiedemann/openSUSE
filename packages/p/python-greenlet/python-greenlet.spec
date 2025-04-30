@@ -1,7 +1,7 @@
 #
 # spec file for package python-greenlet
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2010 B1 Systems GmbH, Vohburg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.1.1
+Version:        3.2.1
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
