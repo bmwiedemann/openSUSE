@@ -136,4 +136,24 @@
     <comment></comment>
     <requestid>1224722</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>485e99e1103d506bc74a2443793a0cc8</srcmd5>
+    <version>1.2.1</version>
+    <time>1746032712</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch BuildRequires from 'pkgconfig(glew)' to
+  'glbinding-devel' as the latter supports EGL/Wayland
+  better (only for openSUSE &gt;= 1600).
+- Drop no longer needed BuildRequires: update-desktop-files as
+  %suse_update_desktop_file is not used any more.
+- Add BuildRequire: pkgconfig(minizip) to use system minizip for
+  build.
+- Move trivial test to %check section.
+- adapt build process to new code repository
+- Use gcc13 for Leap and add BuildRequires pkgconfig(gl) and
+  pkgconfig(glu), fixes building for Leap
+- Switch source from Github to Codeberg
+</comment>
+    <requestid>1273521</requestid>
+  </revision>
 </revisionlist>

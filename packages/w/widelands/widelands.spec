@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,52 @@
 #
 
 
+# widelands needs gcc-c++ >= 8 at least according to sr#1270958
+%if 0%{?sle_version} && 0%{?sle_version} < 160000
+%global force_gcc_version 13
+%endif
+%if 0%{?suse_version} < 1600
+# Build against glew for Leap 15.X...
+%bcond_without glew
+%else
+# ...but disable glew and build with glbinding for Tumbleweed, Leap 16.0 and newer
+%bcond_with glew
+%endif
 Name:           widelands
 Version:        1.2.1
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
-Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+Source0:        https://codeberg.org/wl/widelands/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base >= 1.5.2
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
 BuildRequires:  pkgconfig(asio)
-BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-io)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libpng) >= 1.6
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(opengl)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
+%if %{with glew}
+BuildRequires:  glew-devel
+%else
+BuildRequires:  glbinding-devel
+%endif
 Requires:       %{name}-data = %{version}
 
 %description
@@ -72,13 +90,17 @@ Additional debugging data for Widelands. This package is not needed for normal
 operation.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}
 
 sed -i '/wl_add_flag(WL_COMPILE_DIAGNOSTICS "-Werror=uninitialized")/d' CMakeLists.txt
 sed -i 's/\(install(TARGETS ${NAME} DESTINATION \)"."\( COMPONENT ExecutableFiles)\)/\1bin\2/' cmake/WlFunctions.cmake
 find . -type f -name "*.py" -exec sed -i -E 's/env python[3]?/python3/' {} \;
 
 %build
+%if 0%{?force_gcc_version}
+export CXX="g++-%{force_gcc_version}"
+%endif
+
 mkdir -p build/locale
 %define __builder ninja
 
@@ -86,6 +108,7 @@ mkdir -p build/locale
   -DWL_INSTALL_BINDIR=%{_bindir} \
   -DWL_INSTALL_DATADIR=%{_datadir}/%{name} \
   -DCMAKE_BUILD_TYPE=Release \
+  -DOPTION_USE_GLBINDING=%{?with_glew:OFF}%{!?with_glew:ON} \
   %{?nil}
 
 %cmake_build
@@ -99,8 +122,9 @@ mkdir -p build/locale
 
 rm -f %{buildroot}%{_prefix}/{COPYING,CREDITS,ChangeLog,VERSION}
 
+%check
 # No need to execute tests as they are already executed implicitly on install
-# instead do post-install test
+# instead do trivial post-install test
 PATH=%{buildroot}%{_bindir}:$PATH %{name} --help | grep 'This is Widelands'
 
 %files

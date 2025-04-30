@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Apr 29 19:36:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch BuildRequires from 'pkgconfig(glew)' to
+  'glbinding-devel' as the latter supports EGL/Wayland
+  better (only for openSUSE >= 1600).
+- Drop no longer needed BuildRequires: update-desktop-files as
+  %suse_update_desktop_file is not used any more.
+- Add BuildRequire: pkgconfig(minizip) to use system minizip for
+  build.
+- Move trivial test to %check section.
+
+-------------------------------------------------------------------
+Tue Apr 29 13:52:28 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- adapt build process to new code repository
+
+-------------------------------------------------------------------
+Mon Apr 28 17:24:00 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Use gcc13 for Leap and add BuildRequires pkgconfig(gl) and
+  pkgconfig(glu), fixes building for Leap
+
+-------------------------------------------------------------------
+Sat Apr 19 13:17:10 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Switch source from Github to Codeberg
+
+-------------------------------------------------------------------
 Sun Nov 17 13:15:23 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 1.2.1:
