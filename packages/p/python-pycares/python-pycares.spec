@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pycares
-Version:        4.6.0
+Version:        4.6.1
 Release:        0
 Summary:        Python interface for c-ares
 License:        MIT
