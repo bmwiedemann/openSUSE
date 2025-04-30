@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 29 17:28:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.17 (API & ABI are backwards compatible).
+- Sieve_pre_sieve.hpp: Improved pre-sieving using primes ≤ 71.
+- Pre-sieving speeds up S2_hard and D algorithms by up to 5%.
+- README.md: Fix Markdown math formulas.
+- Hard-Special-Leaves.md: Fix Markdown math formulas.
+- Update to primesieve-12.8 library.
+
+-------------------------------------------------------------------
 Wed Apr 02 15:36:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.16 (API & ABI are backwards compatible).
