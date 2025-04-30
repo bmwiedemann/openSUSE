@@ -1,7 +1,7 @@
 #
 # spec file for package gimp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -172,6 +172,7 @@ BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libexif) >= %{libexif_version}
 %if %{with libheif}
 BuildRequires:  pkgconfig(libheif) >= %{libheif_version}
+BuildRequires:  libheif-aom >= %{libheif_version}
 %endif
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblzma) >= %{liblzma_version}
@@ -205,6 +206,9 @@ Requires:       gjs
 # Explicitly declare the libgimp versions for upgrade purposes
 Requires:       libgimp-3_0-0 = %{version}
 Requires:       libgimpui-3_0-0 = %{version}
+%if %{with libheif}
+Requires:       libheif-aom >= %{libheif_version}
+%endif
 %if %{with gimp_lua}
 Requires:       %{lua_lgi}
 %endif

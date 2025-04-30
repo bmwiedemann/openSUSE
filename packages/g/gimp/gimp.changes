@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Apr 24 00:30:23 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Added libheif-aom dependency to AVIF support (boo#1241553).
+
+-------------------------------------------------------------------
 Mon Apr  7 14:17:14 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - all distros actually ship with python 3.6 we can have it enabled
