@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:18:23 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.9.1
+  * **serializer:** preserve trailing newlines in ambr serialization (#950)
+- from version 4.9.0
+  * **serializer:** raise TypeError when serializing non-byte like object
+    in binary mode (#951)
+  * Add --snapshot-ignore-file-extensions argument to support DVC (#943)
+  * Add compose_matchers utility for composing 1 or more matchers (#952)
+  * Add SingleFileAmberSnapshotExtension as a single-file variant of the
+    default amber extension (#959)
+  * Include details about created/updated snapshots in detailed report (#942)
+- from version 4.8.3
+  * Snapshots of deselected parametrized tests wrongly marked as unused (#965)
+- from version 4.8.2
+  * Avoid unnecessary env updates to reduce chances of segfault (#956)
+- from version 4.8.1
+  * Check current session's pending-write queue when recalling snapshots
+    (e.g. diffing) (#927)
+- from version 4.8.0
+  * Add option to disable diffing (#924)
+
+-------------------------------------------------------------------
 Sat Nov  9 15:51:25 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.7.2:
