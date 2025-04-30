@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-sdk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ Requires:       python-azure-communication-chat
 Requires:       python-azure-communication-email
 Requires:       python-azure-communication-identity
 Requires:       python-azure-communication-jobrouter
+Requires:       python-azure-communication-messages
 Requires:       python-azure-communication-networktraversal
 Requires:       python-azure-communication-nspkg
 Requires:       python-azure-communication-phonenumbers
@@ -100,8 +101,10 @@ Requires:       python-azure-eventhub
 Requires:       python-azure-eventhub-checkpointstoreblob
 Requires:       python-azure-eventhub-checkpointstoreblob-aio
 Requires:       python-azure-graphrbac
+Requires:       python-azure-health-deidentification
 Requires:       python-azure-healthinsights-cancerprofiling
 Requires:       python-azure-healthinsights-clinicalmatching
+Requires:       python-azure-healthinsights-radiologyinsights
 Requires:       python-azure-identity
 Requires:       python-azure-identity-broker
 Requires:       python-azure-iot-deviceprovisioning
@@ -114,8 +117,10 @@ Requires:       python-azure-keyvault-keys
 Requires:       python-azure-keyvault-nspkg
 Requires:       python-azure-keyvault-secrets
 Requires:       python-azure-loganalytics
+Requires:       python-azure-maps-geolocation
 Requires:       python-azure-maps-render
 Requires:       python-azure-maps-route
+Requires:       python-azure-maps-timezone
 Requires:       python-azure-media-videoanalyzer-edge
 Requires:       python-azure-messaging-webpubsubclient
 Requires:       python-azure-messaging-webpubsubservice

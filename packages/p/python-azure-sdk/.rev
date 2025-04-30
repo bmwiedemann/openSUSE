@@ -200,4 +200,12 @@
     <comment>- Add Obsoletes for python3-azure-functions-devops-build package on SLE-15 (forwarded request 1172498 from glaubitz)</comment>
     <requestid>1172505</requestid>
   </revision>
+  <revision rev="19" vrev="16">
+    <srcmd5>9452c4221797ea2d9aaa99e426cfbda8</srcmd5>
+    <version>4.0.0</version>
+    <time>1746032725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273601</requestid>
+  </revision>
 </revisionlist>

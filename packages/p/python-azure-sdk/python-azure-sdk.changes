@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:05:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-communication-messages
+  + python-azure-health-deidentification
+  + python-azure-healthinsights-radiologyinsights
+  + python-azure-maps-geolocation
+  + python-azure-maps-timezone
+
+-------------------------------------------------------------------
 Tue May  7 16:20:51 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add Obsoletes for python3-azure-functions-devops-build package on SLE-15
