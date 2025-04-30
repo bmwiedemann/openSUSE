@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 28 15:25:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.1.9
+  * Reduce the number of iterations in memory leak test to avoid JIT
+    triggering
+  * Cleanup formatting in a few modules
+  * Don't bomb out during egl test when there's no egl devices
+  * Regenerated C wrappers with latest Cython
+  * Numpy intp type for latest numpy
+  * Fix ctypes FormatHandler for Python 3.12+
+  * More changes, see upstream commits
+- Drop merged PyOpenGL-pr100-py312.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 08:55:23 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add PyOpenGL-pr100-py312.patch gh#mcfletch/pyopengl#100

@@ -250,4 +250,21 @@
     <comment></comment>
     <requestid>1159358</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>bde41117cf57ec0f558551063ddcee0b</srcmd5>
+    <version>3.1.9</version>
+    <time>1746032578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.9
+  * Reduce the number of iterations in memory leak test to avoid JIT
+    triggering
+  * Cleanup formatting in a few modules
+  * Don't bomb out during egl test when there's no egl devices
+  * Regenerated C wrappers with latest Cython
+  * Numpy intp type for latest numpy
+  * Fix ctypes FormatHandler for Python 3.12+
+  * More changes, see upstream commits
+- Drop merged PyOpenGL-pr100-py312.patch</comment>
+    <requestid>1273380</requestid>
+  </revision>
 </revisionlist>

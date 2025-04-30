@@ -1,7 +1,7 @@
 #
 # spec file for package python-opengl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,16 @@
 %bcond_with test
 %endif
 
-%define tarname PyOpenGL
+%define tarname pyopengl
 %{?sle15_python_module_pythons}
 Name:           python-opengl%{psuffix}
-Version:        3.1.7
+Version:        3.1.9
 Release:        0
 Summary:        OpenGL bindings for Python
 License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 URL:            https://github.com/mcfletch/pyopengl
-Source0:        https://files.pythonhosted.org/packages/source/P/%{tarname}/%{tarname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM PyOpenGL-pr100-py312.patch gh#mcfletch/pyopengl#100
-Patch0:         PyOpenGL-pr100-py312.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/%{tarname}/%{tarname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -58,6 +56,7 @@ BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-xlib}
 BuildRequires:  Mesa-dri
 BuildRequires:  freeglut-devel
 BuildRequires:  libdrm-devel
@@ -66,6 +65,7 @@ BuildRequires:  swig
 BuildRequires:  tk-devel
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb-glx)
 %endif
@@ -93,14 +93,15 @@ sed -e '1{/^#/d}' -i OpenGL/arrays/_buffers.py OpenGL/arrays/buffers.py
 
 %if %{with test}
 %check
-%pytest tests
+# some tests reported in https://github.com/mcfletch/pyopengl/issues/141 fail in our environment too
+%pytest tests -k "not (test_glCallLists_twice2 or test_check_egl_es2 or test_egl_ext_enumerate)"
 %endif
 
 %if !%{with test}
 %files %{python_files}
 %license license.txt
 %{python_sitelib}/OpenGL/
-%{python_sitelib}/PyOpenGL-%{version}.dist-info
+%{python_sitelib}/[Pp]y[Oo]pen[Gg][Ll]-%{version}.dist-info
 %endif
 
 %changelog
