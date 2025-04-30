@@ -667,4 +667,15 @@ For details, see https://cockpit-project.org/blog/cockpit-322.html</comment>
   regardless of selinuxenabled status (bsc#1240787 and bsc#1240421)</comment>
     <requestid>1270288</requestid>
   </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>a40e877af769c91a72542d9acae26e59</srcmd5>
+    <version>334.1</version>
+    <time>1746032559</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0007-Remove-DynamicUser-setting-as-these-conflict-with-re.patch
+  Update the patch to set ProtectHome and PrivateTmp to yes as it is implied
+  when DynamicUser is enabled. The patch is also now only applied on leap 15
+  where it is relevant</comment>
+    <requestid>1273359</requestid>
+  </revision>
 </revisionlist>

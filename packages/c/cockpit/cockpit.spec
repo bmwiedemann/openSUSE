@@ -215,7 +215,6 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 106 -p1
-%patch -P 108 -p1
 %patch -P 109 -p1
 
 # SLE Micro specific patches
@@ -232,6 +231,7 @@ BuildRequires:  python3-pytest-timeout
 %patch -P 103 -p1
 %patch -P 104 -p1
 %patch -P 105 -p1
+%patch -P 108 -p1
 %else
 %patch -P 107 -p1
 %endif
@@ -562,11 +562,13 @@ Requires: wallpaper-branding
 # for cockpit-desktop
 Suggests: python3
 Obsoletes: cockpit-tests < 331
+%if 0%{?suse_version} == 1500
 Provides:       group(cockpit-wsinstance-socket)
 Provides:       group(cockpit-session-socket)
 Provides:       user(cockpit-wsinstance-socket)
 Provides:       user(cockpit-session-socket)
 Provides:       user(cockpit-systemd-service)
+%endif
 
 # prevent hard python3 dependency for cockpit-desktop, it falls back to other browsers
 %global __requires_exclude_from ^%{_libexecdir}/cockpit-client$
@@ -626,10 +628,15 @@ authentication via sssd/FreeIPA.
 %{_libexecdir}/cockpit-desktop
 %{_libexecdir}/cockpit-certificate-ensure
 %{_libexecdir}/cockpit-certificate-helper
+%if 0%{?suse_version} == 1500
 %{?suse_version:%verify(not mode) }%attr(4750, root, cockpit-wsinstance-socket) %{_libexecdir}/cockpit-session
+%else
+%{_libexecdir}/cockpit-session
+%endif
 %{_datadir}/cockpit/branding
 
 %pre ws
+%if 0%{?suse_version} == 1500
 # HACK: old RPM and even Fedora's current RPM don't properly support sysusers
 # https://github.com/rpm-software-management/rpm/issues/3073
 getent group cockpit-wsinstance-socket >/dev/null || groupadd -r cockpit-wsinstance-socket
@@ -637,6 +644,7 @@ getent group cockpit-session-socket >/dev/null || groupadd -r cockpit-session-so
 getent passwd cockpit-wsinstance-socket >/dev/null || useradd -r -g cockpit-wsinstance-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit-ws instances" cockpit-wsinstance-socket
 getent passwd cockpit-session-socket >/dev/null || useradd -r -g cockpit-session-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit-session instances" cockpit-session-socket
 getent passwd cockpit-systemd-service >/dev/null || useradd -r -g cockpit-wsinstance-socket -d /nonexisting -s /sbin/nologin -c "User for cockpit.service" cockpit-systemd-service
+%endif
 
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/lib; save any old .rpmsave
