@@ -1,0 +1,37 @@
+From dbc37d4228bdefa858ab299517097d6e52a0b698 Mon Sep 17 00:00:00 2001
+From: Kerstin Humm <kerstin@erictapen.name>
+Date: Sat, 15 Feb 2025 15:47:34 +0100
+Subject: [PATCH 1/2] fix test_openapi_utils
+
+---
+ tests/test_openapi_utils.py | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+Index: drf_standardized_errors-0.14.1/tests/test_openapi_utils.py
+===================================================================
+--- drf_standardized_errors-0.14.1.orig/tests/test_openapi_utils.py
++++ drf_standardized_errors-0.14.1/tests/test_openapi_utils.py
+@@ -1,6 +1,7 @@
+ import sys
+ from unittest import mock
+ 
++import django
+ import pytest
+ from django import forms
+ from django.contrib.auth.models import User
+@@ -515,7 +516,14 @@ def test_char_fields_with_error_codes():
+     assert slug.error_codes == {"invalid", "null_characters_not_allowed"}
+     assert regex.error_codes == {"invalid", "required", "null_characters_not_allowed"}
+     assert uuid.error_codes == {"invalid", "required", "null_characters_not_allowed"}
+-    assert ip.error_codes == {"invalid", "null_characters_not_allowed"}
++    if django.VERSION >= (4, 2):
++        assert ip.error_codes == {
++            "invalid",
++            "null_characters_not_allowed",
++            "max_length",
++        }
++    else:
++        assert ip.error_codes == {"invalid", "null_characters_not_allowed"}
+ 
+ 
+ class NumberForm(forms.Form):
