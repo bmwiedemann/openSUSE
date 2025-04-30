@@ -241,4 +241,12 @@
     <comment>- Update to release 1.2.9</comment>
     <requestid>1269650</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>5b66cd4df12cd82006cadff71ee04ea3</srcmd5>
+    <version>1.2.9</version>
+    <time>1746032544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update signing key to 0x8C5F7146A1757A65E2422A94D70D1A666ACF2B21,</comment>
+    <requestid>1273203</requestid>
+  </revision>
 </revisionlist>

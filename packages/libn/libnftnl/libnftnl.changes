@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 15:56:38 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Update signing key to 0x8C5F7146A1757A65E2422A94D70D1A666ACF2B21,
+  which is currently used to sign the latest tarballs including
+  version 1.2.9. 
+
+-------------------------------------------------------------------
 Mon Apr 14 20:07:10 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.2.9
