@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Apr 28 13:02:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add missing test dependencies to BuildRequires
+
+-------------------------------------------------------------------
+Sat Apr 26 08:45:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.53.0
+  * Add AddSplitPoints API
+  * Add Attempt, Operation and GFE Metrics (#1302)
+  * Add REST Interceptors which support reading metadata
+  * Add support for opt-in debug logging
+  * Add support for reading selective GAPIC generation methods from service YAML
+  * Add the last statement option to ExecuteSqlRequest and ExecuteBatchDmlRequest
+  * Add UUID in Spanner TypeCode enum
+  * End to end tracing (#1315)
+  * Exposing FreeInstanceAvailability in InstanceConfig
+  * Exposing FreeInstanceMetadata in Instance configuration
+    (to define the metadata related to FREE instance type)
+  * Exposing InstanceType in Instance configuration
+    (to define PROVISIONED or FREE spanner instance)
+  * Exposing QuorumType in InstanceConfig
+  * Exposing storage_limit_per_processing_unit in InstanceConfig
+  * Snapshot isolation (#1318)
+  * **spanner:** A new enum `IsolationLevel` is added (#1224)
+  * Allow Protobuf 6.x (#1320)
+  * Cleanup after metric integration test (#1322)
+  * **deps:** Require grpc-google-iam-v1 >= 0.14.0
+  * Fix typing issue with gRPC metadata when key ends in -bin
+  * Add option for last_statement (#1313)
+  * A comment for enum `DefaultBackupScheduleType` is changed
+  * A comment for enum value `AUTOMATIC` in enum `DefaultBackupScheduleType` is changed
+  * A comment for enum value `GOOGLE_MANAGED` in enum `Type` is changed
+  * A comment for enum value `NONE` in enum `DefaultBackupScheduleType` is changed
+  * A comment for enum value `USER_MANAGED` in enum `Type` is changed
+  * A comment for field `base_config` in message
+    `.google.spanner.admin.instance.v1.InstanceConfig` is changed
+  * A comment for field `default_backup_schedule_type` in message
+    `.google.spanner.admin.instance.v1.Instance`
+  * A comment for field `filter` in message
+    `.google.spanner.admin.instance.v1.ListInstanceConfigOperationsRequest`
+    is changed
+  * A comment for field `filter` in message
+    `.google.spanner.admin.instance.v1.ListInstancePartitionOperationsRequest`
+    is changed
+  * A comment for field `instance_config` in message
+    `.google.spanner.admin.instance.v1.CreateInstanceConfigRequest`
+    is changed
+  * A comment for field `instance_partition_deadline` in message
+    `.google.spanner.admin.instance.v1.ListInstancePartitionOperationsRequest`
+    is changed
+  * A comment for field `location` in message
+    `.google.spanner.admin.instance.v1.ReplicaInfo` is changed
+  * A comment for field `node_count` in message
+    `.google.spanner.admin.instance.v1.Instance` is changed
+  * A comment for field `node_count` in message
+    `.google.spanner.admin.instance.v1.InstancePartition` is changed
+  * A comment for field `operations` in message
+    `.google.spanner.admin.instance.v1.ListInstanceConfigOperationsResponse`
+    is changed
+  * A comment for field `operations` in message
+    `.google.spanner.admin.instance.v1.ListInstancePartitionOperationsResponse`
+    is changed
+  * A comment for field `optional_replicas` in message
+    `.google.spanner.admin.instance.v1.InstanceConfig` is changed
+  * A comment for field `parent` in message
+    `.google.spanner.admin.instance.v1.ListInstancePartitionsRequest` is changed
+  * A comment for field `processing_units` in message
+    `.google.spanner.admin.instance.v1.Instance` is changed
+  * A comment for field `processing_units` in message
+    `.google.spanner.admin.instance.v1.InstancePartition` is changed
+  * A comment for field `referencing_backups` in message
+    `.google.spanner.admin.instance.v1.InstancePartition` is changed
+  * A comment for field `replicas` in message
+    `.google.spanner.admin.instance.v1.InstanceConfig` is changed
+  * A comment for field `storage_utilization_percent` in message
+    `.google.spanner.admin.instance.v1.AutoscalingConfig` is changed
+  * A comment for field `unreachable` in message
+    `.google.spanner.admin.instance.v1.ListInstancePartitionsResponse` is changed
+  * A comment for message `CreateInstanceConfigRequest` is changed
+  * A comment for message `DeleteInstanceConfigRequest` is changed
+  * A comment for message `UpdateInstanceConfigRequest` is changed
+  * A comment for method `CreateInstance` in service `InstanceAdmin` is changed
+  * A comment for method `CreateInstanceConfig` in service `InstanceAdmin` is changed
+  * A comment for method `CreateInstancePartition` in service `InstanceAdmin` is changed
+  * A comment for method `ListInstanceConfigOperations` in service `InstanceAdmin` is changed
+  * A comment for method `ListInstanceConfigs` in service `InstanceAdmin` is changed
+  * A comment for method `ListInstancePartitionOperations` in service `InstanceAdmin` is changed
+  * A comment for method `MoveInstance` in service `InstanceAdmin` is changed
+  * A comment for method `UpdateInstance` in service `InstanceAdmin` is changed
+  * A comment for method `UpdateInstanceConfig` in service `InstanceAdmin` is changed
+  * A comment for method `UpdateInstancePartition` in service `InstanceAdmin` is changed
+  * Fix typo timzeone -> timezone
+- from version 3.52.0
+  * Add additional opentelemetry span events for session pool
+  * Add GCP standard otel attributes for python client (#1308)
+  * Add updated span events + trace more methods (#1259)
+  * MetricsTracer implementation (#1291)
+  * Support GRAPH and pipe syntax in dbapi (#1285)
+  * Support transaction and request tags in dbapi (#1262)
+  * **x-goog-spanner-request-id:** Introduce AtomicCounter (#1275)
+  * Retry UNAVAILABLE errors for streaming RPCs (#1278)
+  * **tracing:** Ensure nesting of Transaction.begin under commit
+    + fix suggestions from feature review (#1287)
+  * **tracing:** Only set span.status=OK if UNSET (#1248)
+  * Update retry strategy for mutation calls to handle aborted transactions (#1279)
+- from version 3.51.0
+  * Add connection variable for ignoring transaction warnings (#1249)
+  * **spanner:** Implement custom tracer_provider injection for opentelemetry traces (#1229)
+  * Support float32 parameters in dbapi (#1245)
+  * Allow setting connection.read_only to same value (#1247)
+  * Allow setting staleness to same value in tx (#1253)
+  * Dbapi raised AttributeError with [] as arguments (#1257)
+  * Optimize ResultSet decoding (#1244)
+  * Remove repeated GetSession calls for FixedSizePool (#1252)
+  * **samples:** Add samples for Cloud Spanner Default Backup Schedules (#1238)
+- Update Suggests from setup.py
+
+-------------------------------------------------------------------
 Mon Nov 18 13:07:49 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.50.1

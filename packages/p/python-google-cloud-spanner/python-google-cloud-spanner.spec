@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-cloud-spanner
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.50.1
+Version:        3.53.0
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
@@ -39,7 +39,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 %if %{with test}
+BuildRequires:  %{python_module google-cloud-monitoring >= 2.16.0}
 BuildRequires:  %{python_module google-cloud-spanner = %{version}}
+BuildRequires:  %{python_module mmh3 >= 4.1.0}
+BuildRequires:  %{python_module opentelemetry-api >= 1.22.0}
+BuildRequires:  %{python_module opentelemetry-resourcedetector-gcp >= 1.8.0a0}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.22.0}
+BuildRequires:  %{python_module opentelemetry-semantic-conventions >= 0.43b0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 %endif
@@ -52,9 +58,13 @@ Requires:       python-grpc-interceptor >= 0.15.4
 Requires:       python-proto-plus >= 1.22.0
 Requires:       python-protobuf >= 3.20.2
 Requires:       python-sqlparse >= 0.4.4
+Suggests:       python-google-cloud-monitoring >= 2.16.0
+Suggests:       python-mmh3 >= 4.1.0
 Suggests:       python-libcst >= 0.2.5
 Suggests:       python-opentelemetry-api >= 1.22.0
 Suggests:       python-opentelemetry-sdk >= 1.22.0
+Suggests:       python-opentelemetry-semantic-conventions >= 0.43b0
+Suggests:       python-opentelemetry-resourcedetector-gcp >= 1.8.0a0
 Suggests:       python-opentelemetry-instrumentation >= 0.20b0
 BuildArch:      noarch
 %python_subpackages
