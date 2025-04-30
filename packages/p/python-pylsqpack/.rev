@@ -44,4 +44,13 @@
     <comment></comment>
     <requestid>1245661</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>accf24a1638c8b2e3c694b191be8b7d4</srcmd5>
+    <version>0.3.20</version>
+    <time>1746032548</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.20:
+  * update ls-qpack to 2.6.1</comment>
+    <requestid>1273218</requestid>
+  </revision>
 </revisionlist>
