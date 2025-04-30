@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:05:48 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add additional packages from the Azure SDK to Requires
+  + python-azure-mgmt-arizeaiobservabilityeval
+  + python-azure-mgmt-astro
+  + python-azure-mgmt-billingbenefits
+  + python-azure-mgmt-computefleet
+  + python-azure-mgmt-computeschedule
+  + python-azure-mgmt-connectedcache
+  + python-azure-mgmt-containerorchestratorruntime
+  + python-azure-mgmt-databasewatcher
+  + python-azure-mgmt-deviceregistry
+  + python-azure-mgmt-devopsinfrastructure
+  + python-azure-mgmt-durabletask
+  + python-azure-mgmt-edgezones
+  + python-azure-mgmt-fabric
+  + python-azure-mgmt-hdinsightcontainers
+  + python-azure-mgmt-healthdataaiservices
+  + python-azure-mgmt-impactreporting
+  + python-azure-mgmt-informaticadatamanagement
+  + python-azure-mgmt-iotoperations
+  + python-azure-mgmt-largeinstance
+  + python-azure-mgmt-migrationassessment
+  + python-azure-mgmt-mysqlflexibleservers
+  + python-azure-mgmt-oracledatabase
+  + python-azure-mgmt-pineconevectordb
+  + python-azure-mgmt-portalservicescopilot
+  + python-azure-mgmt-postgresqlflexibleservers
+  + python-azure-mgmt-standbypool
+  + python-azure-mgmt-weightsandbiases
+
+-------------------------------------------------------------------
 Fri May  3 16:42:40 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Change version setting of Obsoletes to <= to trigger python3

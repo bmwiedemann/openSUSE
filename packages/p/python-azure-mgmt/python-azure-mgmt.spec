@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-mgmt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,8 @@ Requires:       python-azure-mgmt-appconfiguration
 Requires:       python-azure-mgmt-appcontainers
 Requires:       python-azure-mgmt-applicationinsights
 Requires:       python-azure-mgmt-appplatform
+Requires:       python-azure-mgmt-arizeaiobservabilityeval
+Requires:       python-azure-mgmt-astro
 Requires:       python-azure-mgmt-attestation
 Requires:       python-azure-mgmt-authorization
 Requires:       python-azure-mgmt-automanage
@@ -57,6 +59,7 @@ Requires:       python-azure-mgmt-baremetalinfrastructure
 Requires:       python-azure-mgmt-batch
 Requires:       python-azure-mgmt-batchai
 Requires:       python-azure-mgmt-billing
+Requires:       python-azure-mgmt-billingbenefits
 Requires:       python-azure-mgmt-botservice
 Requires:       python-azure-mgmt-cdn
 Requires:       python-azure-mgmt-chaos
@@ -64,11 +67,15 @@ Requires:       python-azure-mgmt-cognitiveservices
 Requires:       python-azure-mgmt-commerce
 Requires:       python-azure-mgmt-communication
 Requires:       python-azure-mgmt-compute
+Requires:       python-azure-mgmt-computefleet
+Requires:       python-azure-mgmt-computeschedule
 Requires:       python-azure-mgmt-confidentialledger
 Requires:       python-azure-mgmt-confluent
+Requires:       python-azure-mgmt-connectedcache
 Requires:       python-azure-mgmt-connectedvmware
 Requires:       python-azure-mgmt-consumption
 Requires:       python-azure-mgmt-containerinstance
+Requires:       python-azure-mgmt-containerorchestratorruntime
 Requires:       python-azure-mgmt-containerregistry
 Requires:       python-azure-mgmt-containerservice
 Requires:       python-azure-mgmt-containerservicefleet
@@ -78,6 +85,7 @@ Requires:       python-azure-mgmt-cosmosdbforpostgresql
 Requires:       python-azure-mgmt-costmanagement
 Requires:       python-azure-mgmt-customproviders
 Requires:       python-azure-mgmt-dashboard
+Requires:       python-azure-mgmt-databasewatcher
 Requires:       python-azure-mgmt-databox
 Requires:       python-azure-mgmt-databoxedge
 Requires:       python-azure-mgmt-databricks
@@ -94,21 +102,26 @@ Requires:       python-azure-mgmt-deploymentmanager
 Requires:       python-azure-mgmt-desktopvirtualization
 Requires:       python-azure-mgmt-devcenter
 Requires:       python-azure-mgmt-devhub
+Requires:       python-azure-mgmt-deviceregistry
 Requires:       python-azure-mgmt-deviceupdate
+Requires:       python-azure-mgmt-devopsinfrastructure
 Requires:       python-azure-mgmt-devspaces
 Requires:       python-azure-mgmt-devtestlabs
 Requires:       python-azure-mgmt-digitaltwins
 Requires:       python-azure-mgmt-dns
 Requires:       python-azure-mgmt-dnsresolver
+Requires:       python-azure-mgmt-durabletask
 Requires:       python-azure-mgmt-dynatrace
 Requires:       python-azure-mgmt-edgegateway
 Requires:       python-azure-mgmt-edgeorder
+Requires:       python-azure-mgmt-edgezones
 Requires:       python-azure-mgmt-education
 Requires:       python-azure-mgmt-elastic
 Requires:       python-azure-mgmt-elasticsan
 Requires:       python-azure-mgmt-eventgrid
 Requires:       python-azure-mgmt-eventhub
 Requires:       python-azure-mgmt-extendedlocation
+Requires:       python-azure-mgmt-fabric
 Requires:       python-azure-mgmt-fluidrelay
 Requires:       python-azure-mgmt-frontdoor
 Requires:       python-azure-mgmt-graphservices
@@ -116,21 +129,27 @@ Requires:       python-azure-mgmt-guestconfig
 Requires:       python-azure-mgmt-hanaonazure
 Requires:       python-azure-mgmt-hardwaresecuritymodules
 Requires:       python-azure-mgmt-hdinsight
+Requires:       python-azure-mgmt-hdinsightcontainers
 Requires:       python-azure-mgmt-healthcareapis
+Requires:       python-azure-mgmt-healthdataaiservices
 Requires:       python-azure-mgmt-hybridcompute
 Requires:       python-azure-mgmt-hybridconnectivity
 Requires:       python-azure-mgmt-hybridcontainerservice
 Requires:       python-azure-mgmt-hybridkubernetes
 Requires:       python-azure-mgmt-hybridnetwork
 Requires:       python-azure-mgmt-imagebuilder
+Requires:       python-azure-mgmt-impactreporting
+Requires:       python-azure-mgmt-informaticadatamanagement
 Requires:       python-azure-mgmt-iotcentral
 Requires:       python-azure-mgmt-iotfirmwaredefense
 Requires:       python-azure-mgmt-iothub
 Requires:       python-azure-mgmt-iothubprovisioningservices
+Requires:       python-azure-mgmt-iotoperations
 Requires:       python-azure-mgmt-keyvault
 Requires:       python-azure-mgmt-kubernetesconfiguration
 Requires:       python-azure-mgmt-kusto
 Requires:       python-azure-mgmt-labservices
+Requires:       python-azure-mgmt-largeinstance
 Requires:       python-azure-mgmt-loadtesting
 Requires:       python-azure-mgmt-loadtestservice
 Requires:       python-azure-mgmt-loganalytics
@@ -147,10 +166,12 @@ Requires:       python-azure-mgmt-managementpartner
 Requires:       python-azure-mgmt-maps
 Requires:       python-azure-mgmt-marketplaceordering
 Requires:       python-azure-mgmt-media
+Requires:       python-azure-mgmt-migrationassessment
 Requires:       python-azure-mgmt-mixedreality
 Requires:       python-azure-mgmt-mobilenetwork
 Requires:       python-azure-mgmt-monitor
 Requires:       python-azure-mgmt-msi
+Requires:       python-azure-mgmt-mysqlflexibleservers
 Requires:       python-azure-mgmt-netapp
 Requires:       python-azure-mgmt-network
 Requires:       python-azure-mgmt-networkanalytics
@@ -161,12 +182,16 @@ Requires:       python-azure-mgmt-nginx
 Requires:       python-azure-mgmt-notificationhubs
 Requires:       python-azure-mgmt-nspkg
 Requires:       python-azure-mgmt-oep
+Requires:       python-azure-mgmt-oracledatabase
 Requires:       python-azure-mgmt-orbital
 Requires:       python-azure-mgmt-paloaltonetworksngfw
 Requires:       python-azure-mgmt-peering
+Requires:       python-azure-mgmt-pineconevectordb
 Requires:       python-azure-mgmt-playwrighttesting
 Requires:       python-azure-mgmt-policyinsights
 Requires:       python-azure-mgmt-portal
+Requires:       python-azure-mgmt-portalservicescopilot
+Requires:       python-azure-mgmt-postgresqlflexibleservers
 Requires:       python-azure-mgmt-powerbidedicated
 Requires:       python-azure-mgmt-powerbiembedded
 Requires:       python-azure-mgmt-privatedns
@@ -209,6 +234,7 @@ Requires:       python-azure-mgmt-sphere
 Requires:       python-azure-mgmt-springappdiscovery
 Requires:       python-azure-mgmt-sql
 Requires:       python-azure-mgmt-sqlvirtualmachine
+Requires:       python-azure-mgmt-standbypool
 Requires:       python-azure-mgmt-storage
 Requires:       python-azure-mgmt-storagecache
 Requires:       python-azure-mgmt-storageimportexport
@@ -227,6 +253,7 @@ Requires:       python-azure-mgmt-vmwarecloudsimple
 Requires:       python-azure-mgmt-voiceservices
 Requires:       python-azure-mgmt-web
 Requires:       python-azure-mgmt-webpubsub
+Requires:       python-azure-mgmt-weightsandbiases
 Requires:       python-azure-mgmt-workloadmonitor
 Requires:       python-azure-mgmt-workloads
 Conflicts:      python-azure-sdk <= 2.0.0
