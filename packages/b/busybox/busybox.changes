@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Apr 29 07:57:10 UTC 2025 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- fix regression in hexdump that broke kernel build:
+  * busybox-1.37.0-fix-regression-n2.patch
+- fix build/tests and hexdump on big endian systems (S390):
+  * busybox-1.37.0-hexdump-fix-regression-for-uint16-on-big-endian-syst.patch 
+  * busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for-bi.patch
+  * busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
+
+-------------------------------------------------------------------
 Mon Mar 10 16:45:08 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add busybox-1.37.0-make-ping-work-without-root-privileges.patch

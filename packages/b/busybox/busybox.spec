@@ -49,6 +49,13 @@ Patch5:         tc-no-TCA_CBQ.patch
 Patch6:         busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
 # https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.21-stable/main/busybox/0015-ping-make-ping-work-without-root-privileges.patch?ref_type=heads
 Patch7:         busybox-1.37.0-make-ping-work-without-root-privileges.patch
+#PATCH-FIX-UPSTREAM -  hexdump: fix regression with -n4 -e '"%u"' bug introduced in busybox 1.37.0 that broke kernel builds.
+Patch8:         busybox-1.37.0-fix-regression-n2.patch
+#PATCH-FIX-UPSTREAM - Fixes for hexdump and tests on big endian (S390) systems
+Patch9:         busybox-1.37.0-hexdump-fix-regression-for-uint16-on-big-endian-syst.patch
+Patch10:        busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for-bi.patch
+Patch11:        busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
+
 # other patches
 Patch100:       busybox.install.patch
 BuildRequires:  glibc-devel-static

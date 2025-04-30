@@ -1,0 +1,45 @@
+From 6bd928b9952abb2141122080757337e2fe47e96a Mon Sep 17 00:00:00 2001
+From: Radoslav Kolev <radoslav.kolev@suse.com>
+Date: Wed, 23 Apr 2025 21:06:09 +0300
+Subject: [PATCH 2/3] od: make -B test little endian only, add variant for big
+ endian
+
+Signed-off-by: Radoslav Kolev <radoslav.kolev@suse.com>
+---
+ testsuite/od.tests | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/testsuite/od.tests b/testsuite/od.tests
+index 4f245a7e8..c863bf2e8 100755
+--- a/testsuite/od.tests
++++ b/testsuite/od.tests
+@@ -61,7 +61,8 @@ testing "od -a (DESKTOP)" \
+ "\xf0\xf1\xf2\xf3\xf4\xf5\xf6\xf7\xf8\xf9\xfa\xfb\xfc\xfd\xfe\xff"
+ SKIP=
+ 
+-testing "od -B" \
++$little_endian || SKIP=1
++testing "od -B (little-endian)" \
+         "od -B" \
+ "\
+ 0000000 001001 005003 041101 177103
+@@ -70,6 +71,16 @@ testing "od -B" \
+ 	"" "$input"
+ SKIP=
+ 
++$little_endian && SKIP=1
++testing "od -B (big-endian)" \
++        "od -B" \
++"\
++0000000 000402 001412 040502 041776
++0000010
++" \
++       "" "$input"
++SKIP=
++
+ $little_endian || SKIP=1
+ testing "od -o (little-endian)" \
+         "od -o" \
+-- 
+2.47.1
+
