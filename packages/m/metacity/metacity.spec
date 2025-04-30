@@ -1,7 +1,7 @@
 #
 # spec file for package metacity
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define soname   libmetacity
 %define sover    3
-%define _version 3.52
+%define _version 3.56
 
 Name:           metacity
-Version:        3.52.0
+Version:        3.56.0
 Release:        0
 Summary:        Window Manager for the MATE and GNOME Flashback desktops
 License:        GPL-2.0-or-later
@@ -34,7 +34,6 @@ BuildRequires:  gettext
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  zenity
 BuildRequires:  pkgconfig(glib-2.0)
@@ -114,7 +113,6 @@ autoreconf -fi
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file metacity
 %find_lang %{name} %{?no_lang_C}
 
 %post -n %{soname}%{sover} -p /sbin/ldconfig

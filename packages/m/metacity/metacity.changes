@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Apr 27 09:43:31 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.56.0:
+  * Use window icon for the menu button.
+- Changes from version 3.54.0:
+  * Add basic color-scheme support.
+  * Updated translations.
+- Drop update-desktop-files and macro, obsoleteded from distro.
+
+-------------------------------------------------------------------
 Sun Mar 24 13:26:37 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 3.52.0
