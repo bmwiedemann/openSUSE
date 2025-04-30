@@ -4274,4 +4274,13 @@
     <comment></comment>
     <requestid>1272607</requestid>
   </revision>
+  <revision rev="510" vrev="1">
+    <srcmd5>cd661855037a35f5eeadd7858077acc5</srcmd5>
+    <version>84.87+git20250429.1cad3bc</version>
+    <time>1746032532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20250429.1cad3bc:
+  * Remove alias &quot;you&quot; (boo#1242011)</comment>
+    <requestid>1273488</requestid>
+  </revision>
 </revisionlist>
