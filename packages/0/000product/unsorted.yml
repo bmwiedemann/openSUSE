@@ -9386,6 +9386,13 @@ unsorted:
   - java-23-openjdk-javadoc 
   - java-23-openjdk-jmods 
   - java-23-openjdk-src 
+  - java-24-openjdk 
+  - java-24-openjdk-demo 
+  - java-24-openjdk-devel 
+  - java-24-openjdk-headless 
+  - java-24-openjdk-javadoc 
+  - java-24-openjdk-jmods 
+  - java-24-openjdk-src 
   - java-atk-wrapper 
   - java-cup 
   - java-cup-bootstrap 
@@ -10603,6 +10610,10 @@ unsorted:
   - kube-linter-fish-completion 
   - kube-linter-zsh-completion 
   - kube-no-trouble 
+  - kube-review 
+  - kube-review-bash-completion 
+  - kube-review-fish-completion 
+  - kube-review-zsh-completion 
   - kubearmor-client 
   - kubearmor-client-bash-completion 
   - kubearmor-client-fish-completion 
@@ -12856,6 +12867,8 @@ unsorted:
   - libdnf5-cli2 
   - libdnf5-devel 
   - libdnf5-plugin-actions 
+  - libdnf5-plugin-appstream 
+  - libdnf5-plugin-expired-pgp-keys 
   - libdnf5_2 
   - libdnnl3 
   - libdns_sd 
@@ -15438,9 +15451,7 @@ unsorted:
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
-  - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
-  - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
   - libpython3_13t-1_0 
   - libpython3_14-1_0 
@@ -24321,6 +24332,7 @@ unsorted:
   - python311-azure-eventhub-checkpointstoreblob 
   - python311-azure-eventhub-checkpointstoreblob-aio 
   - python311-azure-graphrbac 
+  - python311-azure-health-deidentification 
   - python311-azure-healthinsights-cancerprofiling 
   - python311-azure-healthinsights-clinicalmatching 
   - python311-azure-healthinsights-radiologyinsights 
@@ -25072,6 +25084,7 @@ unsorted:
   - python311-dragonmapper 
   - python311-drf-spectacular 
   - python311-drf-spectacular-sidecar 
+  - python311-drf-standardized-errors 
   - python311-drgn 
   - python311-drms 
   - python311-dropbox 
@@ -25290,6 +25303,7 @@ unsorted:
   - python311-git-url-parse 
   - python311-gitdb 
   - python311-github3.py 
+  - python311-gitlabcis 
   - python311-glean 
   - python311-glean-parser 
   - python311-glfw 
@@ -26036,6 +26050,7 @@ unsorted:
   - python311-opentelemetry-instrumentation-asgi 
   - python311-opentelemetry-instrumentation-fastapi 
   - python311-opentelemetry-proto 
+  - python311-opentelemetry-resourcedetector-gcp 
   - python311-opentelemetry-sdk 
   - python311-opentelemetry-semantic-conventions 
   - python311-opentelemetry-test-utils 
@@ -27491,7 +27506,6 @@ unsorted:
   - python311-zstd 
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
-  - python312 
   - python312-32bit 
   - python312-APScheduler 
   - python312-AnyQt 
@@ -28004,6 +28018,7 @@ unsorted:
   - python312-azure-eventhub-checkpointstoreblob 
   - python312-azure-eventhub-checkpointstoreblob-aio 
   - python312-azure-graphrbac 
+  - python312-azure-health-deidentification 
   - python312-azure-healthinsights-cancerprofiling 
   - python312-azure-healthinsights-clinicalmatching 
   - python312-azure-healthinsights-radiologyinsights 
@@ -28307,9 +28322,7 @@ unsorted:
   - python312-backports.tarfile 
   - python312-backrefs 
   - python312-baron 
-  - python312-base 
   - python312-base-32bit 
-  - python312-base-x86-64-v3 
   - python312-base58 
   - python312-bashate 
   - python312-bcrypt 
@@ -28551,7 +28564,6 @@ unsorted:
   - python312-ctranslate2 
   - python312-ctypesgen 
   - python312-curlylint 
-  - python312-curses 
   - python312-curtsies 
   - python312-cwcwidth 
   - python312-cx_Freeze 
@@ -28586,7 +28598,6 @@ unsorted:
   - python312-datrie 
   - python312-dbf 
   - python312-dbfread 
-  - python312-dbm 
   - python312-dbus-deviation 
   - python312-dbus-python 
   - python312-dbus-python-devel 
@@ -28769,6 +28780,7 @@ unsorted:
   - python312-dragonmapper 
   - python312-drf-spectacular 
   - python312-drf-spectacular-sidecar 
+  - python312-drf-standardized-errors 
   - python312-drgn 
   - python312-drms 
   - python312-dropbox 
@@ -28988,6 +29000,7 @@ unsorted:
   - python312-git-url-parse 
   - python312-gitdb 
   - python312-github3.py 
+  - python312-gitlabcis 
   - python312-glean 
   - python312-glean-parser 
   - python312-glfw 
@@ -28995,9 +29008,7 @@ unsorted:
   - python312-glucat 
   - python312-gmpy2 
   - python312-gns3fy 
-  - python312-gobject 
   - python312-gobject-Gdk 
-  - python312-gobject-cairo 
   - python312-gobject-devel 
   - python312-google-ai-generativelanguage 
   - python312-google-api-core 
@@ -29755,6 +29766,7 @@ unsorted:
   - python312-opentelemetry-instrumentation-asgi 
   - python312-opentelemetry-instrumentation-fastapi 
   - python312-opentelemetry-proto 
+  - python312-opentelemetry-resourcedetector-gcp 
   - python312-opentelemetry-sdk 
   - python312-opentelemetry-semantic-conventions 
   - python312-opentelemetry-test-utils 
@@ -29886,7 +29898,6 @@ unsorted:
   - python312-pilkit 
   - python312-pillow-heif 
   - python312-pingparsing 
-  - python312-pip 
   - python312-pip-api 
   - python312-pip-licenses 
   - python312-pip-requirements-parser 
@@ -30042,7 +30053,6 @@ unsorted:
   - python312-pybluez 
   - python312-pybtex 
   - python312-pybugz 
-  - python312-pycairo 
   - python312-pycairo-devel 
   - python312-pycapnp 
   - python312-pycares 
@@ -31145,7 +31155,6 @@ unsorted:
   - python312-wurlitzer 
   - python312-wxPython 
   - python312-wyoming 
-  - python312-x86-64-v3 
   - python312-xapian 
   - python312-xapian-haystack 
   - python312-xapp 
@@ -31741,6 +31750,7 @@ unsorted:
   - python313-azure-eventhub-checkpointstoreblob 
   - python313-azure-eventhub-checkpointstoreblob-aio 
   - python313-azure-graphrbac 
+  - python313-azure-health-deidentification 
   - python313-azure-healthinsights-cancerprofiling 
   - python313-azure-healthinsights-clinicalmatching 
   - python313-azure-healthinsights-radiologyinsights 
@@ -32489,6 +32499,7 @@ unsorted:
   - python313-dragonmapper 
   - python313-drf-spectacular 
   - python313-drf-spectacular-sidecar 
+  - python313-drf-standardized-errors 
   - python313-drgn 
   - python313-drms 
   - python313-dropbox 
@@ -32707,6 +32718,7 @@ unsorted:
   - python313-git-url-parse 
   - python313-gitdb 
   - python313-github3.py 
+  - python313-gitlabcis 
   - python313-gitlint 
   - python313-glean 
   - python313-glean-parser 
@@ -33453,6 +33465,7 @@ unsorted:
   - python313-opentelemetry-instrumentation-asgi 
   - python313-opentelemetry-instrumentation-fastapi 
   - python313-opentelemetry-proto 
+  - python313-opentelemetry-resourcedetector-gcp 
   - python313-opentelemetry-sdk 
   - python313-opentelemetry-semantic-conventions 
   - python313-opentelemetry-test-utils 
