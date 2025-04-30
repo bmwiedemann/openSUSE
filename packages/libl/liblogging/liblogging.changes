@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 18 11:35:35 UTC 2025 - Max Lin <mlin@suse.com>
+
+- Compile with gcc15 instead of gcc14
+  * gcc14 is not availalbe in the Leap16 codestream
+
+-------------------------------------------------------------------
 Wed Jun 19 08:29:24 UTC 2024 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix build error with gcc14 (bsc#1221715)

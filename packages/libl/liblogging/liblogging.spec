@@ -29,7 +29,7 @@ URL:            http://www.liblogging.org/
 Source0:        http://download.rsyslog.com/liblogging/%{name}-%{version}.tar.gz
 Patch0:         0001-support-build-with-gcc-14.patch
 BuildRequires:  dos2unix
-BuildRequires:  gcc14
+BuildRequires:  gcc15
 BuildRequires:  pkgconfig >= 0.9.0
 %if %{with_rst2man}
 %if 0%{?is_opensuse}
