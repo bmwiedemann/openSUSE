@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 30 14:50:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.2
+  * add missing requests and API entry points for cfg set/get
+    repeat interval
+  * fixed spnav_sensitivity (proto1) sending garbage
+  * fixed omission of linking with libm, while using math
+    functions in util
+  * fixed graphical glitches in the fly example on non-nvidia GPUs
+  * compatibility improvements for IRIX and Solaris
+  * fixed various minor build issues
+
+-------------------------------------------------------------------
 Fri Dec 23 20:04:26 UTC 2022 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to 1.1:

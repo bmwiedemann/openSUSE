@@ -18,11 +18,10 @@
 
 
 Name:           libspnav
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        Library for accessing 3D connexion devices
 License:        BSD-3-Clause
-Group:          Hardware/Other
 URL:            https://sourceforge.net/projects/spacenav/
 Source0:        https://github.com/FreeSpacenav/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
@@ -44,7 +43,6 @@ restrictions of the official SDK.
 
 %package -n libspnav0
 Summary:        Library for accessing 3D connexion devices
-Group:          Hardware/Other
 Suggests:       spacenavd
 
 %description -n libspnav0
@@ -63,7 +61,6 @@ restrictions of the official SDK.
 
 %package devel
 Summary:        Include files for libspnav
-Group:          Development/Libraries/C and C++
 Requires:       libspnav0 = %{version}-%{release}
 
 %description devel
@@ -100,8 +97,7 @@ rm %{buildroot}%{_libdir}/libspnav.a
 mkdir -p %{buildroot}%{_libdir}/pkgconfig
 mv %{buildroot}%{_datadir}/pkgconfig/spnav.pc %{buildroot}%{_libdir}/pkgconfig/
 
-%post -n libspnav0 -p /sbin/ldconfig
-%postun -n libspnav0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libspnav0
 
 %files -n libspnav0
 %license LICENSE
