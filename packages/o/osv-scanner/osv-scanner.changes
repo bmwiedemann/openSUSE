@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Apr 30 07:32:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.0.2:
+  * Fixes:
+    - Bug #1842 Fix an issue in the GitHub Action where call
+      analysis for Go projects using the tool directive (Go 1.24+)
+      in go.mod files would fail. The scanner image has been
+      updated to use a newer Go version.
+    - Bug #1806 Fix an issue where license overrides were not
+      correctly reflected in the final scan results and license
+      summary.
+    - Fix #1825, #1809, #1805, #1803, #1787 Enhance XML output
+      stability and consistency by preserving original spacing and
+      minimizing unnecessary escaping. This helps reduce
+      differences when XML files are processed.
+  * What's changed
+    - chore(deps-dev): bump nokogiri from 1.18.4 to 1.18.8 in /docs
+      in the bundler group across 1 directory (#1815)
+    - chore: Changelog for v2.0.2 (#1847)
+    - fix(gh-action): call analysis doesn't work for go 1.24
+      (#1842)
+    - test(osv-scanner/fix): actually import command from package
+      (#1845)
+    - test(fix): use public package (#1832)
+    - test: add case for when "false" is explicitly passed as the
+      value for `--offline` (#1841)
+    - refactor(cmd): rename and cleanup `licenseGenericFlag`
+      implementation (#1834)
+    - test: only include specific command under test in `cmd`
+      package tests (#1831)
+    - test: update snapshots (#1833)
+    - feat(xml): store the original text in CharData (#1825)
+    - chore: Update snaps again (#1824)
+    - chore(deps): update workflows (#1799)
+    - fix(deps): update osv-scanner minor (#1800)
+    - chore(deps): lock file maintenance (#1801)
+    - test: move `source` cases into subpackage (#1759)
+    - chore: Remove renovatebot constraint (#1820)
+    - refactor: use constants for extractor names (#1819)
+    - test: ensure that all tests are run in parallel (#1817)
+    - refactor: ensure all extractors have a single interface check
+      at the bottom of the file (#1818)
+    - refactor: avoid repeated call to get scan global flags
+      (#1816)
+    - docs: Update Maven Central and private registries support
+      (#1812)
+    - chore: Update snapshots (#1813)
+    - feat(xml): do not escape texts in char data (#1809)
+    - feat: Parallel tests with global logger (#1798)
+    - fix: override licenses in scan results (#1806)
+    - chore: Update snapshot again again (#1807)
+    - feat(xml): keep the white space between attributes (#1805)
+    - refactor: Switch to use public osvdev client (#1804)
+    - feat(xml): do not escape double quotes (#1803)
+    - chore: Update scalibr to use the new inventory format.
+      (#1797)
+    - chore: Update snapshot again (#1802)
+    - chore: Update snapshots (#1796)
+    - feat(xml): keep the extra space in self-closing tags (#1787)
+    - chore(deps): update
+      gaurav-nelson/github-action-markdown-link-check digest to
+      3c3b66f (#1784)
+    - chore(deps): update golang docker tag to v1.24.2 (#1785)
+    - test: update snapshots (#1786)
+    - feat: support outputting results in `spdx` format (#1776)
+    - test: update snapshots (#1782)
+    - build: move off deprecated archives.format and
+      archives.builds properties again (#1779)
+
+-------------------------------------------------------------------
 Thu Apr 03 05:15:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.0.1:

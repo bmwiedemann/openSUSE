@@ -17,7 +17,7 @@
 
 
 Name:           osv-scanner
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Vulnerability scanner written in Go
 License:        Apache-2.0
