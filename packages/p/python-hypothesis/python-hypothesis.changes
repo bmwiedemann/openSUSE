@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Mar  6 10:05:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.127.8
+  * Fix a type-hinting regression from version 6.125.1, where we would
+    no longer guarantee the type of the argument to .filter predicates
+  * Improve shrinking behavior for values from text() and binary()
+    which contain duplicate elements, like "zzzabc".
+
+-------------------------------------------------------------------
 Wed Mar  5 14:22:04 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.127.6

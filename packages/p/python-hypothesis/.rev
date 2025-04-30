@@ -1001,4 +1001,12 @@ This version fixes the license naming issue.</comment>
     <comment></comment>
     <requestid>1250597</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>d653dc3e40a63f5d24d369568bd0b693</srcmd5>
+    <version>6.127.8</version>
+    <time>1746032542</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273194</requestid>
+  </revision>
 </revisionlist>
