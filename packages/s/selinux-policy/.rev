@@ -1697,4 +1697,16 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1269261</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>893ccd0960c7289cdb1f605c8abe3428</srcmd5>
+    <version>20250429</version>
+    <time>1746032573</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250429:
+  * Allow cluster_t use NoNewPrivileges systemd hardening (bsc#1241921)
+  * allows gssd_t to read nfs symlinks (bsc#1241042)
+  * Label tpm2-measure.log with systemd_pcrlock_var_lib_t (bsc#1240887)
+</comment>
+    <requestid>1273471</requestid>
+  </revision>
 </revisionlist>

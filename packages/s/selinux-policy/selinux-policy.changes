@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 29 14:43:00 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250429:
+  * Allow cluster_t use NoNewPrivileges systemd hardening (bsc#1241921)
+  * allows gssd_t to read nfs symlinks (bsc#1241042)
+  * Label tpm2-measure.log with systemd_pcrlock_var_lib_t (bsc#1240887)
+
+-------------------------------------------------------------------
 Fri Apr 11 16:24:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20250411:
