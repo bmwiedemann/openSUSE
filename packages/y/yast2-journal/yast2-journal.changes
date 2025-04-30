@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Apr 27 11:50:04 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Fixed regexp for changed 'journalctl --list-boots' output:
+  Now taking daylight savings time on/off into account
+  (bsc#1241904)
+- 5.0.2
+
+-------------------------------------------------------------------
 Thu Jan  4 13:40:35 UTC 2024 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Make sure not to get escape sequences (for colors) into the 
