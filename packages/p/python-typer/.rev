@@ -238,4 +238,15 @@
 </comment>
     <requestid>1249294</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>344fde9155fc639a6f4df4d7da2dc2df</srcmd5>
+    <version>0.15.3</version>
+    <time>1746032576</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.3
+  * Ensure that autocompletion works for Path arguments/options.
+  * Fix newline after header in help text.
+</comment>
+    <requestid>1273509</requestid>
+  </revision>
 </revisionlist>
