@@ -1,0 +1,32 @@
+Author: Bernhard M. Wiedemann <bwiedemann+git@suse.de>
+Date:   Wed Apr 9 12:08:01 2025 +0000
+
+    Allow to override build date with SOURCE_DATE_EPOCH
+    
+    to make builds reproducible.
+    See https://reproducible-builds.org/ for why this is good
+    and https://reproducible-builds.org/specs/source-date-epoch/
+    for the definition of this variable.
+    
+    This patch was done while working on reproducible builds for openSUSE.
+
+diff --git a/z35.c b/z35.c
+index 8adbec3..57cd5a0 100644
+--- a/z35.c
++++ b/z35.c
+@@ -101,8 +101,13 @@ void InitTime(void)
+   dst       = load(KW_DAYLIGHTSAVING, NPAR,  MomentSym);
+ 
+   /* get current time and convert to ASCII */
+-  if( time(&raw_time) == -1 )
+-    Error(35, 1, "unable to obtain the current time", WARN, no_fpos);
++  char *source_date_epoch;
++  /* This assumes that the SOURCE_DATE_EPOCH environment variable will contain
++   a correct, positive integer in the time_t range */
++  if ((source_date_epoch = getenv("SOURCE_DATE_EPOCH")) == NULL ||
++    (raw_time = (time_t)strtoll(source_date_epoch, NULL, 10)) <= 0)
++      if( time(&raw_time) == -1 )
++        Error(35, 1, "unable to obtain the current time", WARN, no_fpos);
+   now = localtime(&raw_time);
+   StringCopy(time_string, AsciiToFull(asctime(now)));
+   time_string[StringLength(time_string) - 1] = '\0';

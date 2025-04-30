@@ -1,7 +1,7 @@
 #
 # spec file for package lout
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,7 @@ Patch2:         tblf-fix-typo-in-PaintBox-PDF-backend.patch
 # Patch from https://github.com/william8000/lout/commit/5e7b8f9e7d44.patch
 # avoid calling catclose with an invalid argument
 Patch3:         avoid-calling-catclose-with-an-invalid-argument.patch
+Patch4:         reproducible.patch
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 
