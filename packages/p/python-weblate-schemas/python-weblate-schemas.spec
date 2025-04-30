@@ -17,7 +17,7 @@
 
 
 Name:           python-weblate-schemas
-Version:        2024.2
+Version:        2025.1
 Release:        0
 Summary:        A collection of schemas used by Weblate
 License:        MIT
