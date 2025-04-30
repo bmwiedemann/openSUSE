@@ -195,4 +195,14 @@
     <comment>- Use multibuild for test package</comment>
     <requestid>1243366</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4a25bbf95b64d4a4ead8ad4a2fc302ac</srcmd5>
+    <version>4.3.7</version>
+    <time>1746032541</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.7:
+  * Chunk dependabot updates into a single PR
+  * Drop support for EOL Python 3.8</comment>
+    <requestid>1273176</requestid>
+  </revision>
 </revisionlist>
