@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:41:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.0:
+  * docs: sort available services (#711)
+  * chore(deps): update samuelmeuli/action-snapcraft action to v3
+    (#710)
+  * Fix: Exit less if an interrupt character is typed (#704)
+  * chore(deps): bump renovatebot/github-action from 41.0.5 to
+    41.0.21 (#705)
+  * feat(github): enable dependabot for golang and gh actions
+    (#703)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    to v0.5.0 (#701)
+  * Feat/stackitcli 134 onboading alb service (#697)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/core to v0.17.1 (#699)
+  * fix(image): Uefi flag cannot be set to false (#698)
+  * feat: add completion to homebrew installation (#692)
+  * fix(deps): update module golang.org/x/term to v0.31.0 (#689)
+  * feat(network-interface): Extend list output to contain device
+    and ipv4 (#695)
+  * feat(ci): close stale PRs automatically (#693)
+  * chore(doc): add documentation of release process (#687)
+
+-------------------------------------------------------------------
 Tue Apr 08 08:30:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.0:
