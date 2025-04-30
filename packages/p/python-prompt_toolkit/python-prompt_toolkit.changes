@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:39:24 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.51:
+  * Use pyproject.toml instead of setup.py.
+  * Fix edge case in `formatted_text.split_lines` when the input
+    starts with a line ending.
+  * Fixes non user impacting regression on the output rendering.
+    Don't render cursor hide/show ANSI escape codes if not needed.
+  * On Windows, use virtual terminal input when available.
+  * Support for multiline suggestions.
+  * Handle `InvalidStateError` during termination when using
+    `run_in_terminal`/`patch_stdout`. This can happen in some
+    cases during cancellation, probably when using anyio.
+  * Fix cursor that remains in hidden state when the application
+    exits. This can happen when the application doesn't show the
+    cursor and `erase_when_done` is being used.
+  * Drop support for Python 3.7:
+
+-------------------------------------------------------------------
 Fri Nov 22 14:42:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add compat provides on the safe name
