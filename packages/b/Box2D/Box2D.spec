@@ -1,7 +1,7 @@
 #
 # spec file for package Box2D
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ Source0:        https://github.com/erincatto/box2d/archive/v%{version}.tar.gz#/b
 Source1:        baselibs.conf
 BuildRequires:  cmake >= 3
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXcursor-devel
 BuildRequires:  libXi-devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:38:33 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: glew-devel as it is not used for build
+
+-------------------------------------------------------------------
 Thu Aug  5 10:37:18 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Disabled tests because of boo#1189082

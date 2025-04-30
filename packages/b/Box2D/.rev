@@ -79,4 +79,12 @@ It's a necessary dependency for qml-box2d and thus newer gcompris-qt</comment>
     <comment></comment>
     <requestid>911014</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>09fd6bc17ef472cdc88ffe1254397436</srcmd5>
+    <version>2.4.1</version>
+    <time>1746032550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273222</requestid>
+  </revision>
 </revisionlist>
