@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Tue Apr 29 14:47:16 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 0.15.0
+  * build: remove unused dependencies
+  * add random
+  * implement Client.headers_update()
+  * add "random" to Literal Client.IMPERSONATE, Client.IMPERSONATE_OS
+  * fix(impersonate): remove okhttp_3.9, 'okhttp_3.11` from "random" variants to bypass FAILURE_ON_CLIENT_HELLO
+
+- Update to 0.14.0
+  * feat: add response.stream()
+  * fix(cookies): del Client.cookies setter and getter
+
+- Update to 0.13.0
+  * refactor(response): change reponse logic
+  * remove: delete dead code
+  * fix: cookies logic improve
+  * feat: add chrome_133, firefox_135
+  * typing: improve
+  * benchmark(async): add aiohttp
+
+- Update to 0.12.0
+  * refactor: move request functions to python
+  * feat: add getter and setter to impersonate, impersonate_os
+  * fix: remove the redirection of the Proxy-Authorization header
+  * feat: add AsyncClient
+  * tests: add AsyncClient tests
+  * benchmark: add AsyncClient
+  * ci(pytest): add pytest-asyncio
+  * feat: python format + lint (ruff, mypy)
+
+- Update to 0.11.0
+  * Add impersonate_os, bump rquest to v2.0.3
+
+- Update to 0.10.0
+  * Improve get_encoding_from_content
+  * files: take file paths instead of contents; post files as streams
+  * [stubs] create primp.pyi
+  * Enable proxy authentication during HTTP redirects
+  * Use tracing crate instead of log
+  * traits: small performance improvements
+
+- Update to 0.9.0
+  * Build with webpki-root-certs
+  * Client: add https_only, http2_only parameters; remove http1, `http2`
+  * Add trait HeadersTraits
+  * Client: add [getter, setter] for auth, auth_bearer, params, headers
+  * IndexMap: change ahash to foldhash
+  * Client: auth + auth_bearer - remove unnecessary check
+  * Client: add [getter, setter] for proxy, timeout
+  * add trait CookiesTraits
+  * Client: add [getter, setter] for cookies
+  * utils: small performance improvements
+  * response: small performance improvements
+  * into() -> to_string()
+  * [bugfix] POST Multipart-Encoded Files
+  * optimize code
+
+- Update to 0.8.0
+  * Use env variable CA_CERT_FILE to specify the CA Certificates
+  * CI: macos - rust-toolchain: stable; release - add permissions and step `Generate artifact attestation`
+  * CI: [linux] - add armv7 build
+  * Change content: PyBytes::new_bound PyBytes::new
+  * parameters data, json - replace PyDict with PyAny
+  * CI: macos - update runner (macos-12 to macos-13)
+  * add env var PRIMP_PROXY
+  * add env var PRIMP_CA_BUNDLE
+-------------------------------------------------------------------
 Tue Nov 19 12:11:55 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:

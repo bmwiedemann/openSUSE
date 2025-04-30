@@ -37,4 +37,43 @@
   * Bump html2text to v0.13</comment>
     <requestid>1225081</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1faec62be312146e5dab41cfe3696280</srcmd5>
+    <version>0.15.0</version>
+    <time>1746032747</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1273645 from fstegmeier
+
+- Update to 0.15.0
+    * build: remove unused dependencies
+    * add random
+    * implement Client.headers_update()
+    * add &quot;random&quot; to Literal Client.IMPERSONATE, Client.IMPERSONATE_OS
+    * fix(impersonate): remove okhttp_3.9, 'okhttp_3.11` from &quot;random&quot; variants to bypass FAILURE_ON_CLIENT_HELLO
+  - Update to 0.14.0
+    * feat: add response.stream()
+    * fix(cookies): del Client.cookies setter and getter
+  - Update to 0.13.0
+    * refactor(response): change reponse logic
+    * remove: delete dead code
+    * fix: cookies logic improve
+    * feat: add chrome_133, firefox_135
+    * typing: improve
+    * benchmark(async): add aiohttp
+  - Update to 0.12.0
+    * refactor: move request functions to python
+    * feat: add getter and setter to impersonate, impersonate_os
+    * fix: remove the redirection of the Proxy-Authorization header
+    * feat: add AsyncClient
+    * tests: add AsyncClient tests
+    * benchmark: add AsyncClient
+    * ci(pytest): add pytest-asyncio
+    * feat: python format + lint (ruff, mypy)
+  - Update to 0.11.0
+    * Add impersonate_os, bump rquest to v2.0.3
+  - Update to 0.10.0
+    * Improve get_encoding_from_content
+    * files: take file paths instead of contents; post files as streams</comment>
+    <requestid>1273674</requestid>
+  </revision>
 </revisionlist>
