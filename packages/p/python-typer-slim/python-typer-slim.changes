@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 29 16:18:17 UTC 2025 - Matthias Bach <marix@marix.org> - 0.15.3
+
+- Update to 0.15.3
+  * Ensure that autocompletion works for Path arguments/options.
+  * Fix newline after header in help text.
+
+-------------------------------------------------------------------
 Fri Feb 28 16:41:21 UTC 2025 - Matthias Bach <marix@marix.org> - 0.15.2
 
 - Update to 0.15.2

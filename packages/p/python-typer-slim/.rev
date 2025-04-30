@@ -122,4 +122,15 @@ I tested the upgrade path and this will not break anybody relying on the package
 </comment>
     <requestid>1249293</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c45c176fe3fb0189e466c2b4b1a43787</srcmd5>
+    <version>0.15.3</version>
+    <time>1746032574</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.15.3
+  * Ensure that autocompletion works for Path arguments/options.
+  * Fix newline after header in help text.
+</comment>
+    <requestid>1273508</requestid>
+  </revision>
 </revisionlist>
