@@ -807,4 +807,15 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.22.1 for more details.</comment>
     <requestid>1272863</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>03d8c6ab2559c597267b6c3b2a5475cd</srcmd5>
+    <version>1.22.2</version>
+    <time>1746032729</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v1.22.2:
+  * Fixed colors to be more accurate when gamma-correct font rendering
+    is active.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.22.2 for more details.</comment>
+    <requestid>1273619</requestid>
+  </revision>
 </revisionlist>

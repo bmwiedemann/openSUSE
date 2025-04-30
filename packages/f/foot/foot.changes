@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:37:51 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.22.2:
+  * Fixed colors to be more accurate when gamma-correct font rendering
+    is active.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.22.2 for more details.
+
+-------------------------------------------------------------------
 Sat Apr 26 16:35:08 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.22.1:
