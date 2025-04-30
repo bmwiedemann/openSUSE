@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 29 15:43:07 UTC 2025 - Antoine Ginies <aginies@suse.com>
+
+- version 1.0
+  * fix issue for autoconnection=yes (bsc#1239445)
+  * add an option for timeout (bsc#1239445)
+
+-------------------------------------------------------------------
 Thu Apr  3 08:17:56 UTC 2025 - Antoine Ginies <aginies@suse.com>
 
 - version 0.9:

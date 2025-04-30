@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Apr 30 03:53:45 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.104.0:
+  * New datetime and duration Features.
+    New date from-human command
+    into datetime now accepts a record
+    into duration now accepts a record
+    into datetime --format can now parse dates and times separately
+    into duration now accepts floats
+  * New Polars commands.
+  * Changes:
+    + Additions:
+      - `kill` now accepts list spreading
+      - Custom indicator for missing table values
+      - Some `math` commands now work with bounded ranges
+      - The executable directory is now added to 
+        `$NU_PLUGIN_DIRS` by default
+      - `env-conversions` helpers added to the standard library
+      - Proxy support for `http` commands
+      - Tab completion when importing the standard library 
+        and its exports
+      - LSP: Snippet-style completions
+      - `debug --raw-value`
+      - More info from describe `--detailed`
+      - Support PATHEXT for additional extensions on Windows
+      - Execute Nushell scripts on the Path in Windows
+      - New flag glob `--follow-symlinks`
+      - Substring match algorithm.
+    + Breaking changes:
+      - Parse human date time explicitly
+      - `str join` formatting for `datetime` values has changed
+      - `history` with sqlite uses datetimes now
+      - `date` is now `datetime`
+    + Deprecations:
+      - `positional` completer optiona.
+    + Removals:
+      - Removed `-s` and `-p` in `do`
+  * Bug fixes and other changes.
+  * For a full list of changes with detailed descriptions, see:
+    - https://www.nushell.sh/blog/2025-04-29-nushell_0_104_0.html. 
+
+-------------------------------------------------------------------
 Wed Mar 19 04:57:25 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.103.0:

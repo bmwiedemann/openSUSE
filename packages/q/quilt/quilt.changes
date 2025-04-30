@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Apr 29 12:28:28 UTC 2025 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 0.69:
+  * Fix escaping of % and backslash in patch names
+  * new: Stop claiming support of option -p ab
+  * patches: Several performance optimizations
+  * series: Simplify the code
+  * Obsoletes fix-two-exit-values.patch
+  * Obsoletes guards-fix-exit-operator-precedence-error.patch
+  * Obsoletes inspect-wrapper-fix-rpm-4.20.patch
+  * Obsoletes setup-implement-a-spec-filter-library.patch
+  * Obsoletes setup-new-option-spec-filter.patch
+  * Obsoletes setup-pass-define-to-rpmbuild-instead-of-eval-define.patch
+- setup-deal-with-ExclusiveArch.patch: Make it possible to run
+  "quilt setup" on a spec file which excludes the local
+  architecture (boo#1238516).
+
+-------------------------------------------------------------------
 Mon Mar 17 15:27:54 UTC 2025 - Jean Delvare <jdelvare@suse.com>
 
 - Drop obsolete suse version checks (reported by rpmlint).

@@ -23,12 +23,13 @@ Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause
 URL:            https://github.com/pyapp-kit/psygnal
 Source:         https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pyapp-kit/psygnal#364
+Patch0:         support-pydantic-211.patch
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling >= 1.8.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module mypy_extensions}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module msgspec}
@@ -37,12 +38,9 @@ BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module toolz}
-BuildRequires:  %{python_module typing-extensions >= 3.7.4.2}
 BuildRequires:  %{python_module wrapt}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-mypy_extensions
-Requires:       python-typing-extensions >= 3.7.4.2
 Suggests:       python-dask
 Suggests:       python-ipython
 Suggests:       python-numpy

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 29 07:57:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 128.10.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 128.10
+  https://www.mozilla.org/security/advisories/mfsa2025-29
+  MFSA 2025-29 (boo#1241621)
+  * CVE-2025-2817 (bmo#1917536)
+    Privilege escalation in Firefox Updater
+  * MFSA-RESERVE-2025-1937097 (bmo#1937097)
+    WebGL shader attribute memory corruption in Firefox for macOS
+  * MFSA-RESERVE-2025-1958350 (bmo#1958350)
+    Process isolation bypass using `javascript:` URI links in
+    cross-origin frames
+  * MFSA-RESERVE-2025-1949994 (bmo#1949994, bmo#1956698,
+    bmo#1960198)
+    Potential local code execution in "copy as cURL" command
+  * MFSA-RESERVE-2025-1952465 (bmo#1952465)
+    Unsafe attribute access during XPath parsing
+  * MFSA-RESERVE-2025-3 (bmo#1951161, bmo#1952105)
+    Memory safety bugs fixed in Firefox 138, Thunderbird 138,
+    Firefox ESR 128.10, and Thunderbird 128.10
+  * MFSA-RESERVE-2025-7 (bmo#1894100)
+    Memory safety bug fixed in Firefox ESR 128.10 and Thunderbird
+    128.10
+
+-------------------------------------------------------------------
 Thu Apr  3 09:40:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - BuildRequires: clang-devel on Tumbleweed/Factory, which works for

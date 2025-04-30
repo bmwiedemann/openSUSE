@@ -18,7 +18,7 @@
 
 
 Name:           vdu_controls
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        Visual Display Unit virtual control panel
 License:        GPL-3.0-or-later
@@ -107,12 +107,14 @@ ln -s -f %{_datadir}/icons %{_datadir}/%{name}/icons/system-icons
 %{_datadir}/%{name}/sample-scripts/lux-from-webcam.bash
 %{_datadir}/%{name}/sample-scripts/lux-from-webcam.py
 %{_datadir}/%{name}/sample-scripts/vlux_meter.py
+%{_datadir}/%{name}/sample-scripts/laptop-ddcutil-emulator.bash
 %ghost %{_datadir}/%{name}/icons/system-icons
 
 # Build service notes:
 # 0) Build service page: https://build.opensuse.org/package/show/utilities/vdu_controls
 # 1) branch the package (link on left margin of page)
 # 2) upload/alter package files in branch (should be the github versions)
+#    check that changelog lines are less than 67 characters.
 # 3) wait for builds to complete
 # 4) when OK/finished/happy, submit
 # 5) check assigned tasks: self approve submission and opt to remove branch

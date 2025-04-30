@@ -2,7 +2,7 @@
 # spec file for package dnf5
 #
 # Copyright (c) 2023 Red Hat, Inc.
-# Copyright (c) 2024 Neal Gompa.
+# Copyright (c) 2025 Neal Gompa.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@
 %bcond_without dnf5
 %bcond_without dnf5_plugins
 %bcond_without plugin_actions
+%bcond_without plugin_appstream
+%bcond_without plugin_expired_pgp_keys
 %bcond_without python_plugins_loader
 
 %bcond_without comps
@@ -57,7 +59,7 @@
 
 %global libmodulemd_version 2.5.0
 %global librepo_version 1.18.0
-%global libsolv_version 0.7.30
+%global libsolv_version 0.7.32
 %global sqlite_version 3.35.0
 %global swig_version 4
 %global zchunk_version 0.9.11
@@ -76,7 +78,7 @@
 %global devcliname %{libcliprefix}-devel
 
 Name:           dnf5
-Version:        5.2.8.1
+Version:        5.2.13.1
 Release:        0
 Summary:        Next generation RPM package manager
 License:        GPL-2.0-or-later
@@ -86,23 +88,23 @@ Source0:        %{url}/archive/%{version}/dnf5-%{version}.tar.gz
 # Backports from upstream
 
 # Proposed upstream
-## Fix with sdbus-cpp v2
-Patch0101:      https://github.com/rpm-software-management/dnf5/pull/1888.patch#/dnf5-PR1888.patch
 
 # openSUSE specific fixes
-## Fix libdnf build with static libsolvext
-Patch1001:      dnf5-with-static-libsolvext.patch
 ## Migrate DNF persistent state directory to /usr/lib/sysimage
-Patch1002:      dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+Patch1001:      dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
 ## Switch default reposdir to /etc/dnf/repos.d
-Patch1003:      dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
+Patch1002:      dnf5-Switch-default-reposdir-to-etc-dnf-repos.d.patch
 ## Disable Werror to fix bindings builds
-Patch1004:      dnf5-disable-Werror.patch
+Patch1003:      dnf5-disable-Werror.patch
 
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
 Requires:       dnf-data
 Recommends:     bash-completion
+
+%if %{with plugin_expired_pgp_keys}
+Recommends:     (libdnf5-plugin-expired-pgp-keys if gpg2)
+%endif
 
 %if %{with as_microdnf}
 # We want to replace Micro DNF
@@ -171,6 +173,7 @@ BuildRequires:  pkgconfig(rpm) >= 4.17.0
 BuildRequires:  pkgconfig(sqlite3) >= %{sqlite_version}
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  toml11-devel
+BuildRequires:  zlib-devel
 
 %if %{with tests}
 BuildRequires:  createrepo_c
@@ -205,6 +208,7 @@ BuildRequires:  python3-Sphinx >= 4.1.2
 #BuildRequires:  python3dist(sphinx-rtd-theme)
 BuildRequires:  python3-sphinx_rtd_theme
 # requests requires ca-certs to work properly
+BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 %endif
 
@@ -292,6 +296,8 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %if %{with as_dnf}
 %{_bindir}/dnf
 %{_mandir}/man?/dnf-*
+%{_unitdir}/dnf-makecache.service
+%{_unitdir}/dnf-makecache.timer
 %endif
 %if %{with as_yum}
 %{_bindir}/yum
@@ -304,6 +310,7 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %dir %{_sysconfdir}/dnf/dnf5-aliases.d
 %doc %{_sysconfdir}/dnf/dnf5-aliases.d/README
 %dir %{_sysconfdir}/dnf/dnf5-plugins
+%ghost %attr(0644, root, root) %{_sysconfdir}/dnf/versionlock.toml
 %dir %{_datadir}/dnf5
 %dir %{_datadir}/dnf5/aliases.d
 %config %{_datadir}/dnf5/aliases.d/compatibility.conf
@@ -376,7 +383,7 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 Summary:        Package management library
 License:        LGPL-2.1-or-later
 Requires:       libmodulemd2%{?_isa} >= %{libmodulemd_version}
-#Requires:       libsolv%{?_isa} >= %{libsolv_version}
+Requires:       libsolv1%{?_isa} >= %{libsolv_version}
 Requires:       librepo0%{?_isa} >= %{librepo_version}
 Requires:       libsqlite3-0%{?_isa} >= %{sqlite_version}
 
@@ -390,6 +397,19 @@ Package management library.
 %{_libdir}/libdnf5.so.%{libsoversion}
 %license lgpl-2.1.txt
 %ghost %attr(0755, root, root) %dir %{_var}/cache/libdnf5
+%dir %{_prefix}/lib/sysimage/libdnf5
+%attr(0755, root, root) %ghost %dir %{_prefix}/lib/sysimage/libdnf5/comps_groups
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/environments.toml
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/groups.toml
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/modules.toml
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/nevras.toml
+%attr(0755, root, root) %ghost %dir %{_prefix}/lib/sysimage/libdnf5/offline
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/offline/offline-transaction-state.toml
+%attr(0755, root, root) %ghost %dir %{_prefix}/lib/sysimage/libdnf5/offline/packages
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/offline/transaction.json
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/packages.toml
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/system.toml
+%verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/transaction_history.sqlite{,-shm,-wal}
 %dir %{_datadir}/dnf5/libdnf.conf.d
 %dir %{_sysconfdir}/dnf/libdnf5.conf.d
 %dir %{_datadir}/dnf5/repos.override.d
@@ -613,6 +633,43 @@ Libdnf plugin that allows to run actions (external executables) on hooks.
 %endif
 
 
+# ========== libdnf5-plugin-appstream ==========
+
+%if %{with plugin_appstream}
+%package -n libdnf5-plugin-appstream
+Summary:        Libdnf5 plugin to install repo AppStream data
+License:        LGPL-2.1-or-later
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
+BuildRequires:  pkgconfig(appstream) >= 0.16
+
+%description -n libdnf5-plugin-appstream
+Libdnf5 plugin that installs repository's AppStream data, for repositories which provide them.
+
+%files -n libdnf5-plugin-appstream
+%{_libdir}/libdnf5/plugins/appstream.so
+%config(noreplace) %{_sysconfdir}/dnf/libdnf5-plugins/appstream.conf
+%endif
+
+
+# ========== libdnf5-plugin-expired-pgp-keys ==========
+
+%if %{with plugin_expired_pgp_keys}
+%package -n libdnf5-plugin-expired-pgp-keys
+Summary:        Libdnf5 plugin for detecting and removing expired PGP keys
+License:        LGPL-2.1-or-later
+Requires:       %{libname}%{?_isa} = %{version}-%{release}
+Requires:       gpg2
+
+%description -n libdnf5-plugin-expired-pgp-keys
+Libdnf5 plugin for detecting and removing expired PGP keys.
+
+%files -n libdnf5-plugin-expired-pgp-keys -f libdnf5-plugin-expired-pgp-keys.lang
+%{_libdir}/libdnf5/plugins/expired-pgp-keys.*
+%config(noreplace) %{_sysconfdir}/dnf/libdnf5-plugins/expired-pgp-keys.conf
+%{_mandir}/man8/libdnf5-expired-pgp-keys.8.*
+%endif
+
+
 # ========== python3-libdnf5-plugins-loader ==========
 
 %if %{with python_plugins_loader}
@@ -678,6 +735,7 @@ Package management service with a DBus interface.
 %systemd_postun_with_restart dnf5daemon-server.service
 
 %files -n dnf5daemon-server -f dnf5daemon-server.lang
+%config(noreplace) %{_sysconfdir}/dnf/dnf5daemon-server.conf
 %{_sbindir}/dnf5daemon-server
 %{_unitdir}/dnf5daemon-server.service
 %dir %{_datadir}/dbus-1
@@ -789,7 +847,10 @@ automatically and regularly from systemd timers, cron jobs or similar.
     -DWITH_DNF5DAEMON_SERVER=%{?with_dnf5daemon_server:ON}%{!?with_dnf5daemon_server:OFF} \
     -DWITH_LIBDNF5_CLI=%{?with_libdnf_cli:ON}%{!?with_libdnf_cli:OFF} \
     -DWITH_DNF5=%{?with_dnf5:ON}%{!?with_dnf5:OFF} \
+    -DWITH_DNF5_OBSOLETES_DNF=OFF \
     -DWITH_PLUGIN_ACTIONS=%{?with_plugin_actions:ON}%{!?with_plugin_actions:OFF} \
+    -DWITH_PLUGIN_APPSTREAM=%{?with_plugin_appstream:ON}%{!?with_plugin_appstream:OFF} \
+    -DWITH_PLUGIN_EXPIRED_PGP_KEYS=%{?with_plugin_expired_pgp_keys:ON}%{!?with_plugin_expired_pgp_keys:OFF} \
     -DWITH_PYTHON_PLUGINS_LOADER=%{?with_python_plugins_loader:ON}%{!?with_python_plugins_loader:OFF} \
     \
     -DWITH_COMPS=%{?with_comps:ON}%{!?with_comps:OFF} \
@@ -856,6 +917,7 @@ popd
 %find_lang libdnf5
 %find_lang libdnf5-cli
 %find_lang libdnf5-plugin-actions
+%find_lang libdnf5-plugin-expired-pgp-keys
 
 # Let's not replace what dnf-data offers just yet..
 rm %{buildroot}%{_sysconfdir}/dnf/dnf.conf
@@ -871,9 +933,26 @@ for file in %{buildroot}%{_mandir}/man[578]/dnf5[-.]*; do
     filename=$(basename $file)
     ln -sr $file $dir/${filename/dnf5/dnf}
 done
+ln -sr %{buildroot}%{_unitdir}/dnf5-makecache.service %{buildroot}%{_unitdir}/dnf-makecache.service
+ln -sr %{buildroot}%{_unitdir}/dnf5-makecache.timer %{buildroot}%{_unitdir}/dnf-makecache.timer
 %else
 rm %{buildroot}%{_bindir}/dnf-automatic
 %endif
+
+# own dirs and files that dnf5 creates on runtime
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5
+for file in \
+    environments.toml groups.toml modules.toml nevras.toml packages.toml \
+    system.toml \
+    transaction_history.sqlite transaction_history.sqlite-shm \
+    transaction_history.sqlite-wal
+do
+    touch %{buildroot}%{_prefix}/lib/sysimage/libdnf5/$file
+done
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/comps_groups
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/offline
+touch %{buildroot}%{_sysconfdir}/dnf/versionlock.toml
+
 %if %{with as_yum}
 ln -sr %{buildroot}%{_bindir}/dnf5 %{buildroot}%{_bindir}/yum
 %endif

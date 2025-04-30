@@ -55,4 +55,15 @@
   * fix displaying error</comment>
     <requestid>1266842</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0af273df835783e93433cfee82ac1b3a</srcmd5>
+    <version>1.0</version>
+    <time>1746032603</time>
+    <user>dimstar_suse</user>
+    <comment>
+    fix issue for autoconnection=yes
+    add an option for timeout
+</comment>
+    <requestid>1273487</requestid>
+  </revision>
 </revisionlist>

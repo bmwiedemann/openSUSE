@@ -1,7 +1,7 @@
 #
 # spec file for package cmctl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 %define kubectl_plugin_name kubectl-cert_manager
 
 Name:           cmctl
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        CLI tool that can help you to manage cert-manager resources inside your cluster
 License:        Apache-2.0
-URL:            https://github.com/cert-manager/cert-manager
+URL:            https://github.com/cert-manager/cmctl
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        README.md
+BuildRequires:  bash-completion
+BuildRequires:  fish
 BuildRequires:  go >= 1.22
+BuildRequires:  zsh
 
 %description
 cmctl is a CLI tool that can help you to manage cert-manager resources inside your cluster.
@@ -97,9 +98,9 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 %{buildroot}/%{_bindir}/%{kubectl_plugin_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{kubectl_plugin_name}.fish
 
 # create the zsh completion file
-mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
-%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
-%{buildroot}/%{_bindir}/%{kubectl_plugin_name} completion zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{kubectl_plugin_name}
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+%{buildroot}/%{_bindir}/%{kubectl_plugin_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{kubectl_plugin_name}
 
 %files
 %doc README.md
@@ -108,20 +109,15 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 %{_bindir}/%{kubectl_plugin_name}
 
 %files -n %{name}-bash-completion
-%dir %{_datarootdir}/bash-completion/completions/
 %{_datarootdir}/bash-completion/completions/%{name}
 %{_datarootdir}/bash-completion/completions/%{kubectl_plugin_name}
 
 %files -n %{name}-fish-completion
-%dir %{_datarootdir}/fish
-%dir %{_datarootdir}/fish/vendor_completions.d
 %{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 %{_datarootdir}/fish/vendor_completions.d/%{kubectl_plugin_name}.fish
 
 %files -n %{name}-zsh-completion
-%defattr(-,root,root)
-%dir %{_datarootdir}/zsh_completion.d/
-%{_datarootdir}/zsh_completion.d/_%{name}
-%{_datarootdir}/zsh_completion.d/_%{kubectl_plugin_name}
+%{_datarootdir}/zsh/site-functions/_%{name}
+%{_datarootdir}/zsh/site-functions/_%{kubectl_plugin_name}
 
 %changelog

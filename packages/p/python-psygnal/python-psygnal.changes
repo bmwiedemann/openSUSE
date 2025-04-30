@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 05:00:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pydantic-211.patch:
+  * Support Pydantic 2.11 changes by not calling model_fields on
+    instances.
+
+-------------------------------------------------------------------
 Tue Feb  4 16:20:22 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.12.0:

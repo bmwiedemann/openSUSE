@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 15:02:27 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- use %_libidir, not /usr/lib64, as it breaks otherwise i586
+
+-------------------------------------------------------------------
+Tue Apr 29 07:16:07 UTC 2025 - Michal Vyskocil <michal.vyskocil@gmail.com>
+
+- drop 0001-neovim-0.10.4-install-treesitter-vimdoc.patch
+- link the system treesitter vimdoc parser to the runtimepath instead
+
+-------------------------------------------------------------------
 Sat Apr 26 16:23:28 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.11.1:

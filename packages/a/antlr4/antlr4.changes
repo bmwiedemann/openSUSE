@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:39:49 UTC 2025 - Mykola Krachkovsky <w01dnick@gmail.com>
+
+- Add new shell script antlr4-test-rig to run with main class
+  org.antlr.v4.gui.TestRig for testing/debugging grammars (boo#1241063)
+
+-------------------------------------------------------------------
 Mon Dec  2 15:58:42 UTC 2024 - Christian Goll <cgoll@suse.com>
 
 - add cmake configuration files 

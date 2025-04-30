@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 29 13:21:53 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 1.0.4
+  * Allow previous to return datetime
+  * make returned datetime respect requested timezone
+
+-------------------------------------------------------------------
 Sat Jan 18 11:32:28 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

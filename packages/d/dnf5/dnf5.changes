@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:25:05 UTC 2025 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.2.13.1
+  + 5.2.13.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.13.1
+  + 5.2.13.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.13.0
+  + 5.2.12.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.12.0
+  + 5.2.11.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.11.0
+  + 5.2.10.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.10.0
+  + 5.2.9.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.2.9.0
+- Drop merged patch for sdbus-cpp v2
+  + Patch: dnf5-PR1888.patch
+- Drop no longer needed patch for static libsolvext
+  + Patch: dnf5-with-static-libsolvext.patch
+
+-------------------------------------------------------------------
 Sun Dec  8 16:15:06 UTC 2024 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 5.2.8.1

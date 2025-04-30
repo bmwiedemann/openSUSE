@@ -47,4 +47,12 @@
     <comment>update to 2.13.15</comment>
     <requestid>1273302</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccca780d77a9bb9e05ad826fe27f72f1</srcmd5>
+    <version>2.14.6</version>
+    <time>1746032657</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.14.6</comment>
+    <requestid>1273519</requestid>
+  </revision>
 </revisionlist>

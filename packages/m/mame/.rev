@@ -259,4 +259,13 @@
   * /usr/share/doc/packages/mame/whatsnew-0.276.txt</comment>
     <requestid>1265747</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>99b02553c061710ea0de3bb96b9d88fd</srcmd5>
+    <version>0.277</version>
+    <time>1746032658</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.277
+  * /usr/share/doc/packages/mame/whatsnew-0.277.txt</comment>
+    <requestid>1273526</requestid>
+  </revision>
 </revisionlist>

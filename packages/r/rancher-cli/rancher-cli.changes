@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 29 17:21:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.11.1:
+  * bump refs v2.11.1 (#431)
+  * [v2.11] Pre-release bump of dependencies for v2.11.1 (#427)
+  * [v2.11] Bump rancher/rancher to v2.11.0 (#421)
+  * [v2.11] Bump dependencies (#415)
+
+-------------------------------------------------------------------
 Tue Apr 01 05:48:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.11.0:

@@ -17,14 +17,14 @@
 
 
 Name:           rancher-cli
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        Rancher CLI
 License:        Apache-2.0
 URL:            https://github.com/rancher/cli
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.23.1
+BuildRequires:  golang(API) >= 1.23
 
 %description
 The Rancher Command Line Interface (CLI) is a unified tool for interacting with
@@ -38,7 +38,7 @@ For usage information see: https://rancher.com/docs/rancher/v2.x/en/cli/
 go build \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags="-X main.Version=%{version}"
+   -ldflags="-X main.VERSION=%{version}"
 
 %install
 # Install the binary.

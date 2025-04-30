@@ -1,7 +1,7 @@
 #
 # spec file for package python-crontab
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-crontab
-Version:        0.23.0
+Version:        1.0.4
 Release:        0
 Summary:        Python module for parsing and using crontab schedules
 License:        LGPL-2.1-only
@@ -58,6 +58,7 @@ to when the item should next be executed.
 %files %{python_files}
 %doc README.rst
 %license LICENSE LICENSE3
-%{python_sitelib}/*
+%{python_sitelib}/crontab
+%{python_sitelib}/crontab-%{version}-*
 
 %changelog

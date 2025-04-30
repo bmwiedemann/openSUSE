@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 30 04:25:10 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on attrs.
+- Be a tiny bit more explicit in the files list.
+
+-------------------------------------------------------------------
 Wed Dec 11 12:48:56 UTC 2024 - Andreas Schwab <schwab@suse.de>
 
 - Avoid race condition in test script

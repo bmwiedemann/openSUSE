@@ -1,0 +1,76 @@
+-------------------------------------------------------------------
+Wed Apr 16 17:50:42 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.1:
+  * Fix
+    - fix: remove non-required detect cmd (#127) (14ff8da)
+
+-------------------------------------------------------------------
+Thu Apr 10 04:56:50 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.15.0:
+  * Feature
+    - feat: Add Group input type controls in build pipelines (&2) &
+      (#125) (a5bca5d)
+
+-------------------------------------------------------------------
+Tue Apr  8 04:52:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.0:
+  * Documentation
+    - docs: add statement for benchmark contributions (3693222)
+  * Feature
+    - feat: Add group controls for source_code code_changes (&2),
+      (#125), (#118) (dac4b1e)
+  * Fix
+    - fix: Hardpin release dependencies (079c94a)
+
+-------------------------------------------------------------------
+Fri Mar 21 06:00:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.2:
+  * Fix
+    - fix: add dependency sbom to version control (#124) (d890086)
+
+-------------------------------------------------------------------
+Tue Mar 18 17:49:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.1:
+  * Fix
+    - fix: add error handling for 404 responses (#117) (06bdb55)
+
+-------------------------------------------------------------------
+Mon Mar 17 19:44:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.13.0:
+  * Feature
+    - feat: add final instance type control functions (deployment)
+      (#111) (b98fcb9)
+
+-------------------------------------------------------------------
+Mon Mar 17 17:56:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.12.0:
+  * Feature
+    - feat: add cli option "--no-ssl-verify" to disable ssl cert
+      verifications (#121) (a53ed08)
+
+-------------------------------------------------------------------
+Mon Mar 17 17:53:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.3:
+  * Fix
+    - fix: add better error handling for 1.1.14 (#120) (ce774b5)
+
+-------------------------------------------------------------------
+Mon Mar 17 17:41:30 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.11.2:
+  * Fix
+    - fix(deps): update dependency gql to v3.5.2 (2bd3d8a)
+
+-------------------------------------------------------------------
+Sun Mar  9 14:31:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package python-gitlabcis: an automated tool that assesses the
+  GitLab CIS benchmarks against a project

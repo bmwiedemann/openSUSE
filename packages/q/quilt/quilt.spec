@@ -17,7 +17,7 @@
 
 
 Name:           quilt
-Version:        0.68
+Version:        0.69
 Release:        0
 Summary:        A Tool for Working with Many Patches
 License:        GPL-2.0-or-later
@@ -41,12 +41,7 @@ Requires:       perl
 URL:            http://savannah.nongnu.org/projects/quilt
 Source:         %{name}-%{version}.tar.xz
 Source1:        suse-start-quilt-mode.el
-Patch1:         guards-fix-exit-operator-precedence-error.patch
-Patch2:         fix-two-exit-values.patch
-Patch3:         setup-pass-define-to-rpmbuild-instead-of-eval-define.patch
-Patch4:         setup-new-option-spec-filter.patch
-Patch5:         setup-implement-a-spec-filter-library.patch
-Patch6:         inspect-wrapper-fix-rpm-4.20.patch
+Patch1:         setup-deal-with-ExclusiveArch.patch
 Patch82:        quilt-support-vimdiff.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch

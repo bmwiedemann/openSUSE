@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Apr 30 06:21:42 UTC 2025 - pgajdos@suse.com
+
+- version update to 2.4.17
+  * Features
+    - proto: pass the scope parameter as returned from the token endpoint in the OIDC_scope
+      header/environment variable and make it available for Require claim scope: purposes,
+      if not available as a claim returned in the id_token or userinfo endpoint; thanks Amaury Buffet
+  * Bugfixes
+    - metadata: fix parsing the OPs token_endpoint_auth_methods_supported and avoid the log error:
+    - oidc_metadata_provider_parse: oidc_provider_token_endpoint_auth_set: invalid value
+      and falling back to client_secret_basic after that; thanks François Kooman
+    - fix memory leaks when using provider specific client keys and/or signed_jwks_uri_key in.a
+       multi-provider setup; thanks Sami Korvonen
+    - allow for regular Apache processing (e.g. setting response/security headers) by deferring HTML/HTTP
+      output generation to the content handler (instead of user id check handler) for the following use cases:
+        OIDCProviderAuthRequestMethod POST
+        OIDCPreservePost On (both internal and template-based)
+        POST page for the implicit grant type
+        Request URI handler
+        internally generated POST logout page
+        session management RP iframe
+        session management logout HTML top-window redirect page
+
+-------------------------------------------------------------------
 Tue Apr  8 06:53:53 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.4.16.11 (CVE-2025-31492 [bsc#1240893])

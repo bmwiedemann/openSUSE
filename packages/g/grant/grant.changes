@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Apr 30 04:47:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.7:
+  * chore(deps): bump github.com/anchore/syft from 1.23.0 to 1.23.1
+    (#203)
+  * chore(deps): update anchore dependencies (#202)
+  * feat: bump go version (#201)
+  * chore(deps): bump github.com/anchore/stereoscope from 0.1.2 to
+    0.1.3 (#199)
+  * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#200)
+  * chore(deps): bump github.com/anchore/stereoscope (#198)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.24
+    to 1.7.27 (#193)
+  * chore(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    (#186)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.6 to
+    6.6.7 (#190)
+  * chore(deps): bump golang.org/x/net from 0.35.0 to 0.36.0 (#191)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.3.3
+    to 1.3.4 (#189)
+  * chore(deps): bump github.com/charmbracelet/lipgloss from 1.0.0
+    to 1.1.0 (#192)
+  * chore(deps): bump github.com/anchore/syft from 1.19.0 to 1.20.0
+    (#187)
+  * chore: cache update (#185)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.10
+    to 0.5.11 (#184)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.3.0
+    to 1.3.3 (#181)
+  * feat: update to go 1.24.x (#182)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.6.5 to
+    6.6.6 (#180)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.9 to
+    0.5.10 (#178)
+  * chore(deps): bump github.com/charmbracelet/bubbletea from 1.2.4
+    to 1.3.0 (#177)
+  * chore(deps): bump github.com/gkampitakis/go-snaps from 0.5.8 to
+    0.5.9 (#175)
+  * chore(deps): update anchore dependencies (#174)
+
+-------------------------------------------------------------------
 Thu Jan 23 06:03:18 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.2.6:

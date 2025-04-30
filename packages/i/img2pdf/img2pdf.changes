@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 30 06:27:37 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.6.1
+  - testsuite fixes
+- Change from 0.6.0
+  - Add support for JBIG2 (generic coding)
+  - Add convert_to_docobject() broken out from convert()
+  - Add pil_get_dpi() broken out from get_imgmetadata()
+
+-------------------------------------------------------------------
 Thu Jan  4 10:33:44 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.5.1

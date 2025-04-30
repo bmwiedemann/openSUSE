@@ -1,0 +1,71 @@
+From: Jean Delvare <jdelvare@suse.de>
+Subject: Let quilt setup deal with ExclusiveArch
+References: boo#1238516
+
+If the spec file includes an ExclusiveArch statement and the local
+architecture isn't part of the list, rpmbuild will fail. Check for
+the presence of this statement before calling rpmbuild, and if it
+would fail, pass option --target to set the architecture to a
+supported one.
+---
+ quilt/setup.in |   35 ++++++++++++++++++++++++++++++++++-
+ 1 file changed, 34 insertions(+), 1 deletion(-)
+
+--- a/quilt/setup.in
++++ b/quilt/setup.in
+@@ -270,6 +270,7 @@ inspect()
+ 		 --define "__unzip    $tmpdir/bin/unzip" \
+ 		 --define "__7zip     $tmpdir/bin/7z" \
+ 		 "${DEFINE_FUZZ[@]}" \
++		 "${FORCE_ARCH[@]}" \
+ 		 --nodeps \
+ 		 -bp "$specdir/$specfile" < /dev/null >&5 2>&5
+ 	status=$?
+@@ -343,7 +344,36 @@ eval set -- "$options"
+ export QUILT_SETUP_FAST=1
+ prefix=
+ sourcedir=
+-declare -a DEFINE_FUZZ
++declare -a DEFINE_FUZZ FORCE_ARCH
++
++# Sets FORCE_ARCH if needed
++check_exclusivearch()
++{
++	local spec_file=$1 our_arch a
++	local -a archs
++
++	archs=( $(sed -ne 's/^ExclusiveArch:[[:space:]]*\(.*\)$/\1/p' "$spec_file") )
++	if [ ${#archs[@]} -eq 0 ]
++	then
++		return
++	fi
++
++	# ExclusiveArch statement is present
++	our_arch=$(arch 2>/dev/null)
++	for a in "${archs[@]}"
++	do
++		if [ "$a" == "$our_arch" ]
++		then
++			# We are in the list, so no problem
++			return
++		fi
++	done
++
++	# We are not in the exclusive arch list. Force the target to the
++	# first listed architecture to make rpmbuild happy.
++
++	FORCE_ARCH=( "--target" "${archs[0]}" )
++}
+ 
+ while true
+ do
+@@ -417,6 +447,9 @@ case "$1" in
+ 	# check if rpmbuild is installed before running inspect
+ 	check_external_tool rpmbuild rpm-build
+ 
++	# check if ExclusiveArch statement would block rpmbuild
++	check_exclusivearch "$spec_file"
++
+ 	if [ -n "$QUILT_SETUP_FAST" ]
+ 	then
+ 		if [ "${prefix:0:1}" = / ]

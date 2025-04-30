@@ -39,4 +39,13 @@
     <comment></comment>
     <requestid>1230124</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>314056751c31bf857dfb8dc09ff483e3</srcmd5>
+    <version>0.5</version>
+    <time>1746032671</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires on attrs.
+- Be a tiny bit more explicit in the files list.</comment>
+    <requestid>1273544</requestid>
+  </revision>
 </revisionlist>

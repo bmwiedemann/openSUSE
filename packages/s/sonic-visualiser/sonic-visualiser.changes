@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 23:53:13 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Add sonic-visualiser-fix-atomic-arguments.patch fixing build errors.
+- Update to 5.2.1
+
+  * Fix hang on exporting an image or SVG during interactive use
+
+  * Fix failure to highlight some points on mouse-over when using a
+    hi-dpi display
+
+-------------------------------------------------------------------
 Wed Mar 12 22:49:06 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 5.2

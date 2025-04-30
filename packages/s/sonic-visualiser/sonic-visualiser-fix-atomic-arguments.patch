@@ -1,0 +1,61 @@
+Только в sonic-visualiser-5.2.1: .cache
+diff -ur sonic-visualiser-5.2.1.orig/svcore/data/model/EditableDenseThreeDimensionalModel.cpp sonic-visualiser-5.2.1/svcore/data/model/EditableDenseThreeDimensionalModel.cpp
+--- sonic-visualiser-5.2.1.orig/svcore/data/model/EditableDenseThreeDimensionalModel.cpp	2025-03-21 07:36:49.000000000 -0700
++++ sonic-visualiser-5.2.1/svcore/data/model/EditableDenseThreeDimensionalModel.cpp	2025-04-29 16:38:23.326799410 -0700
+@@ -458,10 +458,10 @@
+     Model::toXml
+         (out, indent,
+          QString("type=\"dense\" dimensions=\"3\" windowSize=\"%1\" yBinCount=\"%2\" minimum=\"%3\" maximum=\"%4\" dataset=\"%5\" startFrame=\"%6\" %7")
+-         .arg(m_resolution)
+-         .arg(m_yBinCount)
+-         .arg(m_minimum)
+-         .arg(m_maximum)
++         .arg(m_resolution.load())
++         .arg(m_yBinCount.load())
++         .arg(m_minimum.load())
++         .arg(m_maximum.load())
+          .arg(getExportId())
+          .arg(m_startFrame)
+          .arg(extraAttributes));
+diff -ur sonic-visualiser-5.2.1.orig/svcore/data/model/NoteModel.h sonic-visualiser-5.2.1/svcore/data/model/NoteModel.h
+--- sonic-visualiser-5.2.1.orig/svcore/data/model/NoteModel.h	2025-03-21 07:36:49.000000000 -0700
++++ sonic-visualiser-5.2.1/svcore/data/model/NoteModel.h	2025-04-29 16:35:54.547939090 -0700
+@@ -403,8 +403,8 @@
+              .arg(m_events.getExportId())
+              .arg(m_subtype == FLEXI_NOTE ? "flexinote" : "note")
+              .arg(m_valueQuantization)
+-             .arg(m_valueMinimum)
+-             .arg(m_valueMaximum)
++             .arg(m_valueMinimum.load())
++             .arg(m_valueMaximum.load())
+              .arg(encodeEntities(m_units))
+              .arg(extraAttributes));
+         
+diff -ur sonic-visualiser-5.2.1.orig/svcore/data/model/RegionModel.h sonic-visualiser-5.2.1/svcore/data/model/RegionModel.h
+--- sonic-visualiser-5.2.1.orig/svcore/data/model/RegionModel.h	2025-03-21 07:36:49.000000000 -0700
++++ sonic-visualiser-5.2.1/svcore/data/model/RegionModel.h	2025-04-29 16:36:24.463181624 -0700
+@@ -335,8 +335,8 @@
+              .arg(m_events.getExportId())
+              .arg("region")
+              .arg(m_valueQuantization)
+-             .arg(m_valueMinimum)
+-             .arg(m_valueMaximum)
++             .arg(m_valueMinimum.load())
++             .arg(m_valueMaximum.load())
+              .arg(encodeEntities(m_units))
+              .arg(extraAttributes));
+         
+diff -ur sonic-visualiser-5.2.1.orig/svcore/data/model/SparseTimeValueModel.h sonic-visualiser-5.2.1/svcore/data/model/SparseTimeValueModel.h
+--- sonic-visualiser-5.2.1.orig/svcore/data/model/SparseTimeValueModel.h	2025-03-21 07:36:49.000000000 -0700
++++ sonic-visualiser-5.2.1/svcore/data/model/SparseTimeValueModel.h	2025-04-29 16:35:09.799808667 -0700
+@@ -342,8 +342,8 @@
+              .arg("true") // always true after model reaches 100% -
+                           // subsequent events are always notified
+              .arg(m_events.getExportId())
+-             .arg(m_valueMinimum)
+-             .arg(m_valueMaximum)
++             .arg(m_valueMinimum.load())
++             .arg(m_valueMaximum.load())
+              .arg(encodeEntities(m_units))
+              .arg(extraAttributes));
+         

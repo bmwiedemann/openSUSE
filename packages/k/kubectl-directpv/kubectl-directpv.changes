@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Apr 29 13:58:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.1.5:
+  * Adding SELinux Documentation (#900)
+  * Indicate Deleting status if deletion timestamp is set for
+    volume (#991)
+  * Sync: error out devices having mount issues (#996)
+  * InitDevices: handle device denied reason and PartTableType
+    (#999)
+  * upgrade dependencies (#993)
+  * Add EOL/maintenance version notes of DirectCSI/DirectPV (#985)
+  * De not set XFS retry_timeout_seconds as max_retries is zero
+    (#980)
+  * Remove used release operator script (#983)
+  * Removing the Certified Helm Operator from the DirectPV
+    Repository (#982)
+  * Move pkg/utils/ToLabelValues into
+    pkg/apis/directpv.min.io/types (#975)
+  * Add staticcheck linter (#974)
+  * upgrade dependencies (#973)
+  * Organize k8s client methods and default client. (#971)
+  * Add component startup message (#966)
+  * Humanize byte value to two decimal places (#968)
+  * Add image-tag annotation to the deployment and daemonset (#965)
+  * fix typo in init error message (#963)
+  * add kustomize support for v4.0 (#961)
+  * Add drive I/O metrics for Prometheus (#955)
+  * upgrade dependencies (#953)
+  * Add kustomize support for declarative management (#952)
+  * tests: fix scp command to get multiple files (#951)
+
+-------------------------------------------------------------------
 Fri Sep 20 07:44:07 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 4.1.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonlines
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,26 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-jsonlines
 Version:        4.0.0
 Release:        0
 Summary:        Library with helpers for the jsonlines file format
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/wbolster/jsonlines
 Source:         https://github.com/wbolster/jsonlines/archive/%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module attrs >= 19.2.0}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module ujson}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-Requires:       python-ujson
+Requires:       python-attrs >= 19.2.0
+Recommends:     python-ujson
 %python_subpackages
 
 %description
@@ -44,18 +45,19 @@ Python library to simplify working with jsonlines_ and ndjson_ data.
 %setup -q -n jsonlines-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_version}
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/jsonlines
+%{python_sitelib}/jsonlines-%{version}.dist-info
 
 %changelog

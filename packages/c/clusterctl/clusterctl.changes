@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 29 19:46:06 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.1:
+  * New Features
+    - Testing: Bump Kubernetes in tests to v1.33.0 and claim
+      support for v1.33 (#12105)
+  * Bug Fixes
+   - Bootstrap: Make
+     joinConfiguration.discovery.bootstrapToken.token optional
+     (#12136)
+  * Others
+    - Dependency: Bump cert-manager to v1.17.1 (#12127)
+
+-------------------------------------------------------------------
 Fri Apr 25 18:28:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:

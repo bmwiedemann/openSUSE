@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Tue Apr 29 19:45:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.6:
+  * Bugfixes
+    - Fixed error log message:
+      "Level=error msg="remove
+      /data/semaphore/project_1/repository_3_template_3_inventory_3:
+      directory not empty"
+
+-------------------------------------------------------------------
+Tue Apr 29 19:40:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.5:
+  * Bugfix
+    - Option value cannot be null #2980
+
+-------------------------------------------------------------------
+Tue Apr 29 17:36:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.4:
+  * Bugfixes
+    - Restore ability to set timezone for Schedule:
+    - Added config option schedule.timezone and environment
+      variable SEMAPHORE_SCHEDULE_TIMEZONE.
+
+-------------------------------------------------------------------
+Tue Apr 29 17:28:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.3:
+  * Bugfixes
+    - Fixed latest database migration #2976
+    - Fixed database request for session expiration #2974
+
+-------------------------------------------------------------------
+Tue Apr 29 17:23:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.2:
+  * fix(db): migration
+  * fix(survey): cleanable default value
+  * fix(survey): enum key->value field titles
+
+-------------------------------------------------------------------
+Tue Apr 29 17:05:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.1:
+  * Bugfixes
+    - Fixed default value handling for enums in survey variables.
+
+-------------------------------------------------------------------
+Tue Apr 29 14:26:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.0:
+  https://semaphoreui.com/releases/semaphore-v2_14
+  What's new in Semaphore UI 2.14
+  - API Token page has been added (you don't need API call anymore
+    to create API token)
+  - template editor becomes more user friendly.
+
+-------------------------------------------------------------------
 Tue Apr 29 05:57:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.15:

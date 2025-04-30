@@ -22,7 +22,7 @@
 
 #%%define urlcode 2786
 Name:           sonic-visualiser
-Version:        5.2
+Version:        5.2.1
 Release:        0
 Summary:        A program for viewing and analysing contents of audio files
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Source0:        https://github.com/sonic-visualiser/sonic-visualiser/releases/do
 Source1:        %{name}.xml
 # PATCH-FIX-OPENSUSE sonic-visualiser-system-dataquay.patch aloisio@gmx.com -- force use of system libdataquay
 Patch0:         sonic-visualiser-system-dataquay.patch
+Patch1:         sonic-visualiser-fix-atomic-arguments.patch
 BuildRequires:  capnproto
 BuildRequires:  dssi
 BuildRequires:  flac
@@ -130,6 +131,8 @@ With Sonic Visualiser you can:
 %if 0%{?BUILD_ORIG}
 %patch -P 0 -p1
 %endif
+
+%patch -P 1 -p1
 
 # required with capnproto 0.7.0
 for x in *.pr* config* Makefile* ; do perl -i -p -e 's/c\+\+11/c++14/g' "$x" ; done

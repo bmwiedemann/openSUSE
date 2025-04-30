@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Apr 26 01:13:12 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Update to version 2.3.0:
+  * Fix the doze function, this improves the responsiveness of all
+    slider controls.
+  * Fix an infinite loop if menu->quit is used when the "Failed to 
+    obtain capabilities" dialog is showing.
+  * The Settings-Dialog has been reorganized to make it scrollable.
+  * When lux options are enabled, the tray will show the icon for the 
+    current light-level (if no Preset is active). 
+  * Renamed two light-light levels more appropriately (room becomes
+    subdued, rise-set becomes twilight).
+  * Support a user-defined ddcutil-emulator executable for controlling
+    laptop-panels or other non-DDC-capable displays. A template sample
+    emulator written in bash is included as a DIY starter 
+    (sample-scripts/laptop-ddcutil-emulator.bash).
+  * Add smart-uses-xcb option to control the use of XWayland for the
+    smart positioning of windows (defaults to yes).
+  * Fix title-bars on sub-windows in COSMIC. 
+  * The About Dialog now includes some desktop and platform
+    information.
+
+-------------------------------------------------------------------
 Thu Mar 20 19:57:56 UTC 2025 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.2.0

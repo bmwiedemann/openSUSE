@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Apr 29 17:04:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.25.0:
+  * feat(config): define multiple global allowlists (#1777)
+  * feat(rules): Add Perplexity AI API key detection (#1825)
+  * feat(gcp): increase rule entropy (#1840)
+  * Adding clickhouse scanner (#1826)
+  * fix(baseline): work with --redact (#1741)
+  * feat(rule): validate & sort rule when generating (#1817)
+
+-------------------------------------------------------------------
 Fri Apr 11 18:22:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.24.3:

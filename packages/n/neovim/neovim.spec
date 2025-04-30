@@ -32,8 +32,6 @@ Source1:        sysinit.vim
 Source3:        suse-spec-template
 Source4:        spec.vim
 Source10:       https://github.com/neovim/deps/raw/06ef2b58b0876f8de1a3f5a710473dcd7afff251/opt/lua-dev-deps.tar.gz
-# PATCH-FIX-OPENSUSE: ensure installed tree-sitter-vimdoc is enabled in order to test to succeed
-Patch0:         0001-neovim-0.10.4-install-treesitter-vimdoc.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -129,8 +127,10 @@ USERNAME=OBS
 %make_build
 
 %check
+mkdir -p runtime/parser
+ln -sf %{_libdir}/tree_sitter/vimdoc.so runtime/parser
+
 # old tests
-VIMDOC_PATH=$(readlink -f %{_libdir}/tree_sitter/vimdoc.so) \
 %make_build USE_BUNDLED=OFF oldtest
 # functional tests
 %ifarch aarch64 x86_64

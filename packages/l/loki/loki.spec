@@ -21,7 +21,7 @@
 %global promtail_datadir /var/lib/promtail
 
 Name:           loki
-Version:        3.4.3
+Version:        3.5.0
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -37,7 +37,7 @@ Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) = 1.23
+BuildRequires:  golang(API) = 1.24
 Requires:       logcli = %{version}
 Requires(pre):  group(loki)
 Requires(pre):  user(loki)

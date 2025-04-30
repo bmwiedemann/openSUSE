@@ -1,4 +1,4 @@
-From b94b7bb1e6e3542594a775df8b5b97170ab6e01e Mon Sep 17 00:00:00 2001
+From 1dc697c0cb86dc3799b52c4318e01ba84fe1e527 Mon Sep 17 00:00:00 2001
 From: Andreas Schneider <asn@cryptomilk.org>
 Date: Sat, 1 Mar 2025 10:14:57 +0100
 Subject: [PATCH] Allow to build PrusaSlicer with EGL support
@@ -9,40 +9,27 @@ distribution has built wxWidgets and GLEW with EGL support, you should
 turn that on!
 ---
  CMakeLists.txt                  |  4 ++++
- deps/+GLEW/GLEW.cmake           |  3 ++-
  deps/+wxWidgets/wxWidgets.cmake |  2 +-
  src/CLI/GuiParams.cpp           |  9 ++++++---
  src/CLI/Setup.cpp               | 10 ++++++----
  src/CMakeLists.txt              |  4 ++++
- 6 files changed, 23 insertions(+), 9 deletions(-)
+ 5 files changed, 21 insertions(+), 8 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 57b60ea62..c7defb8eb 100644
+index e37bb3f55..4fc18db26 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -35,6 +35,10 @@ endif()
  
- option(SLIC3R_STATIC 			"Compile PrusaSlicer with static libraries (Boost, TBB, glew)" ${SLIC3R_STATIC_INITIAL})
+ option(SLIC3R_STATIC 			"Compile PrusaSlicer with static libraries (Boost, TBB)" ${SLIC3R_STATIC_INITIAL})
  option(SLIC3R_GUI    			"Compile PrusaSlicer with GUI components (OpenGL, wxWidgets)" 1)
 +# A lot of Linux distribution don't build wxWidgets with EGL support yet. This
 +# is why by default this option is set to OFF. If a Linux distribution has
-+# built wxWidgets and GLEW with EGL support, you should turn that on!
++# built wxWidgets EGL support, you should turn that on!
 +option(SLIC3R_EGL               "Compile PrusaSlicer with Wayland (EGL) support" OFF)
  option(SLIC3R_FHS               "Assume PrusaSlicer is to be installed in a FHS directory structure" 0)
  option(SLIC3R_PCH               "Use precompiled headers" 1)
  option(SLIC3R_MSVC_COMPILE_PARALLEL "Compile on Visual Studio in parallel" 1)
-diff --git a/deps/+GLEW/GLEW.cmake b/deps/+GLEW/GLEW.cmake
-index c2db9117b..b2382af38 100644
---- a/deps/+GLEW/GLEW.cmake
-+++ b/deps/+GLEW/GLEW.cmake
-@@ -5,4 +5,5 @@ add_cmake_project(
-   SOURCE_SUBDIR build/cmake
-   CMAKE_ARGS
-     -DBUILD_UTILS=OFF
--)
-\ No newline at end of file
-+    -DGLEW_EGL=${SLIC3R_EGL}
-+)
 diff --git a/deps/+wxWidgets/wxWidgets.cmake b/deps/+wxWidgets/wxWidgets.cmake
 index 5537ff8b5..95f1cd21b 100644
 --- a/deps/+wxWidgets/wxWidgets.cmake
@@ -125,5 +112,5 @@ index c6ddf2e1d..44612b102 100644
  target_link_libraries(PrusaSlicer PRIVATE libslic3r libcereal slic3r-arrange-wrapper libseqarrange stb_image)
  
 -- 
-2.48.1
+2.49.0
 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wmctrl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,9 @@ Release:        0
 Summary:        Python programmatic control of X windows
 # Project is in the process of transitioning from Bitbucket to GitHub
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/antocuni/wmctrl
 Source:         https://files.pythonhosted.org/packages/source/w/wmctrl/wmctrl-%{version}.tar.gz
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -74,8 +74,8 @@ xvfb-run /tmp/test_script.sh
 
 %files %{python_files}
 %license LICENSE
-%{python_sitelib}/wmctrl.py*
-%pycache_only %{python_sitelib}/__pycache__
-%{python_sitelib}/wmctrl*/
+%{python_sitelib}/wmctrl.py
+%pycache_only %{python_sitelib}/__pycache__/wmctrl*pyc
+%{python_sitelib}/wmctrl-%{version}.dist-info
 
 %changelog

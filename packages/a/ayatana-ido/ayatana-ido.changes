@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 30 07:31:22 UTC 2025 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+
+- Update to version 0.10.4: 
+  * src/idoscalemenuitem.c: Disable menu item selection
+  * src/idoscalemenuitem.c: Add ability to close the menu when the
+    slider's value changes.
+- Update to version 0.10.3:
+  * src/idoswitchmenuitem.c: Allow the switch to display an
+    accelerator.
+
+-------------------------------------------------------------------
 Sat Apr 09 08:32:02 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Update to version 0.10.2:

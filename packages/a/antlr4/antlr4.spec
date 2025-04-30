@@ -1,7 +1,7 @@
 #
 # spec file for package antlr4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -183,6 +183,7 @@ popd
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %jpackage_script org.antlr.v4.Tool "" "" antlr4/antlr4:antlr3-runtime:antlr4/antlr4-runtime:stringtemplate4:treelayout %{name} true
+%jpackage_script org.antlr.v4.gui.TestRig "" "" antlr4/antlr4:antlr3-runtime:antlr4/antlr4-runtime:stringtemplate4:treelayout %{name}-test-rig true
 
 pushd runtime/Cpp
 %cmake_install
@@ -193,6 +194,7 @@ popd
 
 %files tool -f .mfiles-antlr4
 %{_bindir}/%{name}
+%{_bindir}/%{name}-test-rig
 
 %files java -f .mfiles-antlr4-runtime
 %doc CHANGES.txt README.md

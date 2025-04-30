@@ -49,10 +49,12 @@ Patch11:        PrusaSlicer-2.6.0-octoprint-name-fix.patch
 Patch13:        PrusaSlicer-2.9.0-pr13885-printconfig-segfault.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.0-pr13081-cgal6.0.patch gh#prusa3d/PrusaSlicer#13081
 Patch15:        PrusaSlicer-2.9.0-pr13081-cgal6.0.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14440-glad.patch gh#prusa3d/PrusaSlicer#14440
+Patch16:        PrusaSlicer-2.9.1-pr14440-glad.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14214-egl-support.patch gh#prusa3d/PrusaSlicer#14214
-Patch16:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
+Patch17:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
-Patch17:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
+Patch18:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -99,7 +101,6 @@ BuildRequires:  cmake(Qhull)
 BuildRequires:  cmake(Z3)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(qhullcpp)

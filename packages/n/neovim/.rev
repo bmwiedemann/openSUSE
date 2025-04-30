@@ -1538,4 +1538,12 @@ FIXES (LSP):
   * docs(eval): fix lnum type for functions using tv_get_lnum (forwarded request 1272858 from rrahl0)</comment>
     <requestid>1272859</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>775da82553f2abd4c52ff8f993784051</srcmd5>
+    <version>0.11.1</version>
+    <time>1746032610</time>
+    <user>dimstar_suse</user>
+    <comment>- use %_libidir, not /usr/lib64, as it breaks otherwise i586 (forwarded request 1273475 from rrahl0)</comment>
+    <requestid>1273476</requestid>
+  </revision>
 </revisionlist>

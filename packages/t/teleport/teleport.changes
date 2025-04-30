@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 30 05:06:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 17.4.7:
+  * AWS Roles Anywhere output now includes the expiration time as
+    milliseconds since unix epoch. #54386
+  * Increased the email access plugin timeout for sending e-mails
+    from 5 to 15 seconds. #54381
+  * Fixed a potential panic during Auth Server startup when the
+    backend returns an error. #54327
+  * Added a Hardware Key Agent to Teleport Connect along with other
+    significant UX improvements for Hardware Key support. With the
+    agent enabled, Teleport Connect will handle prompts on behalf
+    of other Teleport Clients (tsh, tctl), with an additional
+    option to cache the PIN between client calls (New cluster
+    option:cap.hardware_key.pin_cache_ttl). #54297
+  * More customizability options for the AWS Roles Anywhere MWI
+    service. #54260
+
+-------------------------------------------------------------------
 Thu Apr 24 06:52:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 17.4.6:

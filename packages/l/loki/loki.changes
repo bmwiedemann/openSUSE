@@ -1,4 +1,525 @@
 -------------------------------------------------------------------
+Fri Apr 25 06:08:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.0:
+  * BREAKING CHANGES
+    - operator: Add configuration option for dropping OTLP
+      attributes (#15857)
+    - ksonnet: clean-up deprecated configs (#16007)
+  * Features
+    - Account for policy when reporting seen resource and metadata
+      labels (#16189) (9a356a1)
+    - add a config option for custom GCS endpoints (#16419)
+      (f1ebd97)
+    - add dry-run mode for checking limits in distributors (#16754)
+      (d6c499b)
+    - add limits package (#16489) (127b609)
+    - add limits/frontend pkg (#16658) (0cbaa46)
+    - Add PartitionManager and move this out of ingest_limits.go
+      (#16602) (8a0cc0f)
+    - add S3 chunk delimiter config to support MinIO running on
+      Windows (#16319) (8429b0f)
+    - Add support for blocking a policy to be ingested (#16203)
+      (69089ef)
+    - add support for using sqlite for storing delete requests
+      (#16437) (5b33e65)
+    - Assert for bad max_query_lookback config (#16362) (073c94c)
+    - dataob: Implement SelectSamples (#16251) (13a6c33)
+    - dataobj-explorer: Add stream distribution info to dataobj
+      explorer UI (#16525) (4befd22)
+    - dataobj-querier: Fixes streams section sharding &
+      instrumentation (#16349) (543ad8e)
+    - dataobj/querier: Add logging and improve stream processing
+      metrics (#16325) (49bcaf4)
+    - dataobj: Add methods for querying data objects metadata
+      (#16190) (4bc95c0)
+    - dataobj: cardinality estimation (#16233) (66889ec)
+    - dataobj: Ensure constant sharding for the dataobj querier
+      (#16273) (78a141c)
+    - dataobj: expose cardinality estimations in UI (#16376)
+      (7d9414d)
+    - dataobj: Implement SelectLogs using a topk min-heap (#16261)
+      (8f69f0d)
+    - dataobj: tenant partition consumer (#16065) (4399775)
+    - Distributed Operational UI (#16097) (dbf2bef)
+    - distributor: Add simulated latency (#16733) (7119f6e)
+    - Do not enforce labels vs agg metric stream (#16696) (25c0620)
+    - enforce limits in distributors (#16705) (bc2111e)
+    - helm global values updates (#16062) (e5f31b3)
+    - Helm: Add extraContainers to backend pods (#16205) (528a1c6),
+      closes #16164
+    - helm: Add tpl() support back to read, write and backend pods
+      (#16664) (af05c38)
+    - helm: Allow provisioner to be namespaced (#16091) (af85ecf)
+    - helm: Optionally add the operational UI (#16317) (197265b)
+    - ingest-limits: Implement global tenant rate limiting (#16727)
+      (3a3df62)
+    - Introduce policy to received_bytes (#16056) (affedaf)
+    - Introduce policy stream mapping (#15982) (5c8e832)
+    - kafka: tenant topics (#15977) (c258419)
+    - ksonnet: Add no_schedule_constraints option to distributors
+      (#16029) (9e9a09d)
+    - lambda-promtail: Improve relabel configuration parsing and
+      testing (#16100) (2587f34)
+    - logical planning: Planner playground (#16403) (89f0ed7)
+    - logql: Add LogQL Benchmark Suite (#16434) (1b57297)
+    - metastore: Add initial interface for Metastore (#16604)
+      (475d25f)
+    - metastore: Implement Labels() and Values() on ObjectMetastore
+      (#16734) (a57a80e)
+    - metastore: Implement listing data object for a given tenant
+      and timerange (#16180) (fa790e1)
+    - operator: Add configuration option for dropping OTLP
+      attributes (#15857) (bd1ea23)
+    - operator: Add support for Swift TLS CA configuration (#15260)
+      (62a72f6)
+    - operator: Enable time-based stream-sharding (#16390)
+      (1b4f1f5)
+    - operator: Update Loki operand to v3.4.2 (#16360) (42f87d3)
+    - policies: Add PoliciesStreamMapping to loghttp limits
+      interface (#16105) (c2e1e88)
+    - policies: Log when multiple policies match the same stream
+      (#16321) (0be39a0)
+    - policies: Per policy enforced labels (#16182) (5fda84b)
+    - policies: Support global policy (#16439) (837b70a)
+    - Snapshopt stream overrides values on each request (#16523)
+      (ea13730)
+    - ui: Makes UI reverse proxy friendly. (#16364) (4ab0efd)
+    - update log level discovery from json to detect nested fields
+      (#16026) (86dc47b)
+    - use stream labels instead of hash in rate limit reasons
+      (#16738) (fdf8632)
+    - when using sqlite for storing delete requests, use the stored
+      completion time to reduce the requests considered for
+      querytime filtering (#16600) (3277321)
+    - wire up ingest-limits service (#16660) (18d143b)
+  * Performance Improvements
+    - dataobj: improve parallelized read spead of Zstd (#16632)
+      (abf3772)
+    - Improve push.RetentionPeriodToString() efficiency (#16252)
+      (6e6658f)
+    - Optimization pass for reading from dataobjs (#16747)
+      (979f761)
+  * Miscellaneous Chores
+    - ksonnet: clean-up deprecated configs (#16007) (76183fa)
+  * Bug Fixes
+    - Adjust with offset in last, first and quantile over time
+      queries. (#15915) (83339cb)
+    - approx_topk: Map approx_topk operation in all cases (#16131)
+      (6d691ac)
+    - blooms: Initialize bloom gateway client only once (#15994)
+      (e271e22)
+    - change object_store.prefix to object_store.storage_prefix in
+      helm (#16266) (b5ad4f0)
+    - ci: do not disable CGO in Makefile (#16271) (810dff9)
+    - ci: Pass image tag details to logcli docker build (#16159)
+      (f22527f)
+    - ci: Provide correct build info for release builds (#15939)
+      (625bdab)
+    - dataobj: Fix shutdown race in dataobj consumer (#16157)
+      (656b1fa)
+    - dataobj: Fixes timerange matching for dataobj files (#16222)
+      (5aa9e47)
+    - dataobj: Fixes timerange predicate (#16245) (5195296)
+    - deps: update dependency @hookform/resolvers to v4.1.3 (main)
+      (#16524) (2869e92)
+    - deps: update dependency @radix-ui/react-checkbox to v1.1.4
+      (main) (#16297) (85a6e88)
+    - deps: update dependency @radix-ui/react-collapsible to v1.1.3
+      (main) (#16298) (4a1225e)
+    - deps: update dependency @radix-ui/react-dialog to v1.1.6
+      (main) (#16301) (548c8c2)
+    - deps: update dependency @radix-ui/react-dropdown-menu to
+      v2.1.6 (main) (#16303) (5fedc3c)
+    - deps: update dependency @radix-ui/react-hover-card to v1.1.6
+      (main) (#16304) (f11fd12)
+    - deps: update dependency @radix-ui/react-label to v2.1.2
+      (main) (#16305) (13bfb12)
+    - deps: update dependency @radix-ui/react-popover to v1.1.6
+      (main) (#16306) (abb3a94)
+    - deps: update dependency @radix-ui/react-progress to v1.1.2
+      (main) (#16307) (18210e9)
+    - deps: update dependency @radix-ui/react-scroll-area to v1.2.3
+      (main) (#16308) (9136ba3)
+    - deps: update dependency @radix-ui/react-select to v2.1.6
+      (main) (#16310) (1115a77)
+    - deps: update dependency @radix-ui/react-separator to v1.1.2
+      (main) (#16311) (aee6e88)
+    - deps: update dependency @radix-ui/react-slot to v1.1.2 (main)
+      (#16313) (9b5f33c)
+    - deps: update dependency @radix-ui/react-switch to v1.1.3
+      (main) (#16314) (7fa049e)
+    - deps: update dependency @radix-ui/react-tabs to v1.1.3 (main)
+      (#16316) (96b4e8f)
+    - deps: update dependency @radix-ui/react-toast to v1.2.6
+      (main) (#16320) (9b47b19)
+    - deps: update dependency @radix-ui/react-toggle to v1.1.2
+      (main) (#16323) (8fd8697)
+    - deps: update dependency @radix-ui/react-toggle-group to
+      v1.1.2 (main) (#16326) (677faad)
+    - deps: update dependency @radix-ui/react-tooltip to v1.1.8
+      (main) (#16327) (c084144)
+    - deps: update dependency @tanstack/react-query to v5.66.5
+      (main) (#16328) (dbf0161)
+    - deps: update dependency @tanstack/react-query to v5.66.6
+      (main) (#16341) (24137bf)
+    - deps: update dependency @tanstack/react-query to v5.66.7
+      (main) (#16352) (877243c)
+    - deps: update dependency @tanstack/react-query to v5.66.9
+      (main) (#16421) (d8f0c06)
+    - deps: update dependency @tanstack/react-query to v5.67.1
+      (main) (#16561) (8641a02)
+    - deps: update dependency @tanstack/react-query to v5.67.2
+      (main) (#16621) (15c498c)
+    - deps: update dependency @tanstack/react-query to v5.67.3
+      (main) (#16685) (2935a74)
+    - deps: update dependency @tanstack/react-query to v5.68.0
+      (main) (#16757) (58840c5)
+    - deps: update dependency @tanstack/react-query to v5.69.0
+      (main) (#16808) (4161c76)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.66.5 (main) (#16331) (dbb1716)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.66.6 (main) (#16343) (2d707d9)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.66.7 (main) (#16353) (412f733)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.66.9 (main) (#16423) (48e00b5)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.67.1 (main) (#16563) (0f1dce8)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.67.2 (main) (#16622) (7276ae2)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.67.3 (main) (#16686) (029abea)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.68.0 (main) (#16756) (02a6800)
+    - deps: update dependency @tanstack/react-query-devtools to
+      v5.69.0 (main) (#16810) (6109de3)
+    - deps: update dependency @types/lodash to v4.17.16 (main)
+      (#16516) (7c9b44a)
+    - deps: update dependency @types/react-datepicker to v7 (main)
+      (#16480) (1796269)
+    - deps: update dependency cmdk to v1.1.1 (main) (#16766)
+      (06553d8)
+    - deps: update dependency date-fns to v4 (main) (#16481)
+      (5b7f1f0)
+    - deps: update dependency lucide-react to ^0.475.0 (main)
+      (#16344) (2f57d60)
+    - deps: update dependency lucide-react to ^0.476.0 (main)
+      (#16455) (32fd332)
+    - deps: update dependency lucide-react to ^0.477.0 (main)
+      (#16509) (f84f0c7)
+    - deps: update dependency lucide-react to ^0.478.0 (main)
+      (#16623) (31d8648)
+    - deps: update dependency lucide-react to ^0.479.0 (main)
+      (#16630) (1e1e7a9)
+    - deps: update dependency lucide-react to ^0.481.0 (main)
+      (#16765) (a354eee)
+    - deps: update dependency lucide-react to ^0.482.0 (main)
+      (#16767) (901320c)
+    - deps: update dependency lucide-react to ^0.483.0 (main)
+      (#16811) (de6f0e9)
+    - deps: update dependency next-themes to v0.4.5 (main) (#16655)
+      (2507888)
+    - deps: update dependency next-themes to v0.4.6 (main) (#16697)
+      (c515a4e)
+    - deps: update dependency react to v19 (main) (#16000)
+      (1b35cb6)
+    - deps: update dependency react-code-block to v1.1.3 (main)
+      (#16428) (9691e94)
+    - deps: update dependency react-datepicker to v8.1.0 (main)
+      (#16346) (4a674b2)
+    - deps: update dependency react-datepicker to v8.2.0 (main)
+      (#16662) (7a70860)
+    - deps: update dependency react-datepicker to v8.2.1 (main)
+      (#16749) (20eeecb)
+    - deps: update dependency react-icons to v5.5.0 (main) (#16456)
+      (bce5f55)
+    - deps: update dependency react-router-dom to v6.29.0 (main)
+      (#16347) (14ce844)
+    - deps: update dependency react-router-dom to v7 (main)
+      (#16515) (976cbbb)
+    - deps: update dependency react-router-dom to v7.1.4 (main)
+      (#16018) (f163e44)
+    - deps: update dependency react-router-dom to v7.1.5 (main)
+      (#16046) (45a0c59)
+    - deps: update dependency react-router-dom to v7.3.0 (main)
+      (#16615) (23acfcb)
+    - deps: update dependency tailwind-merge to v3 (main) (#16518)
+      (c8f9474)
+    - deps: update dependency zod to v3.24.2 (main) (#16333)
+      (ec5bef4)
+    - deps: update github.com/prometheus/prometheus (main) (#15950)
+      (b37eefe)
+    - deps: update module cloud.google.com/go/pubsub to v1.46.0
+      (main) (#16019) (998da11)
+    - deps: update module cloud.google.com/go/pubsub to v1.47.0
+      (main) (#16047) (8f9f92f)
+    - deps: update module cloud.google.com/go/pubsub to v1.48.0
+      (main) (#16724) (b07bb72)
+    - deps: update module cloud.google.com/go/storage to v1.51.0
+      (main) (#16720) (b4abbf4)
+    - deps: update module github.com/aws/aws-sdk-go-v2 to v1.36.1
+      (main) (#16024) (542cff4)
+    - deps: update module github.com/aws/aws-sdk-go-v2 to v1.36.2
+      (main) (#16430) (ba9afd6)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.3 (main) (#16022) (03f18ac)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.4 (main) (#16042) (0bf0253)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.5 (main) (#16093) (c4e916d)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.6 (main) (#16123) (d28e627)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.7 (main) (#16431) (ca41297)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.8 (main) (#16503) (364e80e)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.29.9 (main) (#16542) (2cb3b3a)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.75.0 (main) (#16003) (e3d1054)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.75.1 (main) (#16023) (d2b7d82)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.75.2 (main) (#16043) (01358cf)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.75.3 (main) (#16094) (1d6c0eb)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.75.4 (main) (#16124) (0c44e76)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.76.0 (main) (#16140) (f70984c)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.76.1 (main) (#16173) (a93a3ab)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.77.0 (main) (#16356) (879168b)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.77.1 (main) (#16433) (92bdb9d)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.78.0 (main) (#16513) (b7b5c76)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.78.1 (main) (#16548) (81aab19)
+    - deps: update module github.com/aws/aws-sdk-go-v2/service/s3
+      to v1.78.2 (main) (#16694) (9a99859)
+    - deps: update module github.com/axiomhq/hyperloglog to v0.2.5
+      (main) (#16504) (dcda340)
+    - deps: update module github.com/azure/go-autorest/autorest to
+      v0.11.30 (main) (#15987) (543b7f3)
+    - deps: update module github.com/baidubce/bce-sdk-go to
+      v0.9.216 (main) (#16177) (9690cad)
+    - deps: update module github.com/baidubce/bce-sdk-go to
+      v0.9.217 (main) (#16276) (b262a2b)
+    - deps: update module github.com/baidubce/bce-sdk-go to
+      v0.9.219 (main) (#16612) (ade0de6)
+    - deps: update module github.com/baidubce/bce-sdk-go to
+      v0.9.221 (main) (#16760) (e0e7133)
+    - deps: update module github.com/bmatcuk/doublestar/v4 to
+      v4.8.1 (main) (#15973) (a8bd3a8)
+    - deps: update module github.com/charmbracelet/bubbletea to
+      v1.3.4 (main) (#16730) (2f99d84)
+    - deps: update module github.com/charmbracelet/lipgloss to
+      v1.1.0 (main) (#16742) (53ae070)
+    - deps: update module github.com/datadog/sketches-go to v1.4.7
+      (main) (#16436) (1907238)
+    - deps: update module github.com/docker/docker to v28 (main)
+      (#16520) (722ce05)
+    - deps: update module github.com/fsouza/fake-gcs-server to
+      v1.52.2 (main) (#16334) (20b9bd2)
+    - deps: update module github.com/golang/snappy to v1 (main)
+      (#16620) (2306f0b)
+    - deps: update module github.com/google/go-cmp to v0.7.0 (main)
+      (#16457) (4f7fd29)
+    - deps: update module github.com/grafana/loki/v3 to v3.4.0
+      (main) (#16217) (750fe66)
+    - deps: update module github.com/grafana/loki/v3 to v3.4.1
+      (main) (#16265) (cc49ebc)
+    - deps: update module github.com/grafana/loki/v3 to v3.4.2
+      (main) (#16335) (977fd54)
+    - deps: update module
+      github.com/grpc-ecosystem/go-grpc-middleware/v2 to v2.3.0
+      (main) (#16357) (5fe1fa7)
+    - deps: update module
+      github.com/grpc-ecosystem/go-grpc-middleware/v2 to v2.3.1
+      (main) (#16613) (9d8a310)
+    - deps: update module github.com/hashicorp/consul/api to
+      v1.31.1 (main) (#16230) (70d3863)
+    - deps: update module github.com/hashicorp/consul/api to
+      v1.31.2 (main) (#16361) (2f4f16d)
+    - deps: update module github.com/heroku/x to v0.4.3 (main)
+      (#16204) (12e436a)
+    - deps: update module github.com/ibm/go-sdk-core/v5 to v5.19.0
+      (main) (#16647) (16e87a6)
+    - deps: update module github.com/ibm/ibm-cos-sdk-go to v1.12.2
+      (main) (#16728) (22cdf61)
+    - deps: update module github.com/ibm/sarama to v1.45.1 (main)
+      (#16522) (bc9bbb8)
+    - deps: update module github.com/influxdata/telegraf to v1.33.2
+      (main) (#16179) (022b45c)
+    - deps: update module github.com/influxdata/telegraf to v1.33.3
+      (main) (#16444) (01c9117)
+    - deps: update module github.com/influxdata/telegraf to v1.34.0
+      (main) (#16669) (5d0e6fb)
+    - deps: update module github.com/klauspost/compress to v1.18.0
+      (main) (#16458) (6c0f67d)
+    - deps: update module github.com/minio/minio-go/v7 to v7.0.85
+      (main) (#16152) (be047cb)
+    - deps: update module github.com/minio/minio-go/v7 to v7.0.87
+      (main) (#16442) (c92e339)
+    - deps: update module github.com/minio/minio-go/v7 to v7.0.88
+      (main) (#16657) (bf99989)
+    - deps: update module github.com/parquet-go/parquet-go to
+      v0.25.0 (main) (#16459) (4d65435)
+    - deps: update module github.com/prometheus/alertmanager to
+      v0.28.1 (main) (#16634) (57c14ac)
+    - deps: update module github.com/prometheus/client_golang to
+      v1.21.0 (main) (#16446) (c128aa8)
+    - deps: update module github.com/prometheus/client_golang to
+      v1.21.1 (main) (#16552) (0a697f9)
+    - deps: update module github.com/prometheus/prometheus to
+      v0.302.1 (main) (#16475) (9fe8b57)
+    - deps: update module github.com/prometheus/prometheus to v2
+      (main) (#16004) (dc01eb9)
+    - deps: update module github.com/prometheus/sigv4 to v0.1.2
+      (main) (#16447) (946497e)
+    - deps: update module github.com/redis/go-redis/v9 to v9.7.1
+      (main) (#16448) (2cc1873)
+    - deps: update module github.com/shirou/gopsutil/v4 to v4.25.1
+      (main) (#16049) (319bb0f)
+    - deps: update module github.com/shirou/gopsutil/v4 to v4.25.2
+      (main) (#16517) (fcf1518)
+    - deps: update module github.com/spf13/afero to v1.14.0 (main)
+      (#16769) (342fd40)
+    - deps: update module github.com/tjhop/slog-gokit to v0.1.4
+      (main) (#16505) (c409a66)
+    - deps: update module go.etcd.io/bbolt to v1.4.0 (main)
+      (#16107) (78becba)
+    - deps: update module go.opentelemetry.io/collector/pdata to
+      v1.25.0 (main) (#16076) (2ec948c)
+    - deps: update module go.opentelemetry.io/collector/pdata to
+      v1.26.0 (main) (#16359) (043617e)
+    - deps: update module go.opentelemetry.io/collector/pdata to
+      v1.27.0 (main) (#16564) (2b99806)
+    - deps: update module go.opentelemetry.io/collector/pdata to
+      v1.28.0 (main) (#16797) (65f90c7)
+    - deps: update module go.opentelemetry.io/otel to v1.35.0
+      (main) (#16580) (ec2c9dc)
+    - deps: update module go.opentelemetry.io/otel/trace to v1.35.0
+      (main) (#16581) (378af0c)
+    - deps: update module golang.org/x/crypto to v0.33.0 (main)
+      (#16149) (0c20717)
+    - deps: update module golang.org/x/crypto to v0.35.0 (main)
+      (#16452) (41c1cfc)
+    - deps: update module golang.org/x/crypto to v0.36.0 (main)
+      (#16575) (e9f2ee1)
+    - deps: update module golang.org/x/net to v0.35.0 (main)
+      (#16167) (f084f02)
+    - deps: update module golang.org/x/net to v0.36.0 (main)
+      (#16567) (c84d7e9)
+    - deps: update module golang.org/x/net to v0.37.0 (main)
+      (#16582) (133c884)
+    - deps: update module golang.org/x/oauth2 to v0.26.0 (main)
+      (#16085) (9ddc756)
+    - deps: update module golang.org/x/oauth2 to v0.27.0 (main)
+      (#16453) (b731680)
+    - deps: update module golang.org/x/oauth2 to v0.28.0 (main)
+      (#16568) (f86c43c)
+    - deps: update module golang.org/x/sync to v0.11.0 (main)
+      (#16086) (536dbc6)
+    - deps: update module golang.org/x/sync to v0.12.0 (main)
+      (#16569) (9052cc2)
+    - deps: update module golang.org/x/sys to v0.30.0 (main)
+      (#16087) (6d49d91)
+    - deps: update module golang.org/x/sys to v0.31.0 (main)
+      (#16570) (173e75c)
+    - deps: update module golang.org/x/text to v0.22.0 (main)
+      (#16090) (8c2406e)
+    - deps: update module golang.org/x/text to v0.23.0 (main) -
+      abandoned (#16576) (97981a5)
+    - deps: update module golang.org/x/time to v0.10.0 (main)
+      (#16089) (fe17cc0)
+    - deps: update module golang.org/x/time to v0.11.0 (main)
+      (#16571) (a38bba9)
+    - deps: update module google.golang.org/api to v0.219.0 (main)
+      (#15991) (d2e6d99)
+    - deps: update module google.golang.org/api to v0.220.0 (main)
+      (#16115) (0528e40)
+    - deps: update module google.golang.org/api to v0.221.0 (main)
+      (#16234) (a66faf5)
+    - deps: update module google.golang.org/api to v0.223.0 (main)
+      (#16460) (861affe)
+    - deps: update module google.golang.org/api to v0.224.0 (main)
+      (#16614) (7dfe4a5)
+    - deps: update module google.golang.org/api to v0.225.0 (main)
+      (#16690) (b243d42)
+    - deps: update module google.golang.org/api to v0.226.0 (main)
+      (#16752) (745bf67)
+    - deps: update module google.golang.org/grpc to v1.71.0 (main)
+      (#16578) (f989bd0)
+    - deps: update module google.golang.org/protobuf to v1.36.5
+      (main) (#16130) (b1c1c5a)
+    - deps: update module k8s.io/apimachinery to v0.32.2 (main)
+      (#16267) (abcd730)
+    - deps: update module k8s.io/apimachinery to v0.32.3 (main)
+      (#16704) (0be4897)
+    - Determine when all logs have been filtered (#16073) (f2bff20)
+    - docs: add a note on docker configuration.md doc to explain
+      accep… (#16299) (2071a50)
+    - engine: Fix Walk() function implementation on various Expr
+      implementations (#16033) (3888866)
+    - Export exportTSInSecs field in TSDB identifier to make sure
+      correct gap calculation (#13116) (99d9f1c)
+    - export ExcludedMetadataLabels so it can be extended in GEL
+      (#16083) (9d84a68)
+    - fix a panic in ServeHTTP where stream was nil (#16818)
+      (ba7550a)
+    - Fix blocked ingestion returned error when 260 (#16387)
+      (3d6163a)
+    - Fix label values query when server.http_path_prefix is set
+      (#15978) (65f5990)
+    - fixes a data race I added changing this to a map (#16814)
+      (f4893ee)
+    - helm: Disable service monitor for nginx service (#12746)
+      (0c38b94)
+    - increment UsageTracker.DiscardedBytesAdd() for ingestion
+      policy discards (#16528) (a4c796d)
+    - Make policy test non-flaky (#16158) (41d9c8b)
+    - memchunk: Skip a test that currently is not used in our main
+      path (#16474) (196cbaa)
+    - metastore: empty object corrections (#16147) (d9892b4)
+    - nix: build with go 1.24 (#16579) (f1ac3c4)
+    - only allow aggregated metric queries from logs drilldown app
+      (#16670) (6c6410c)
+    - operator: Fix minimum available ingesters for 1x.pico size
+      (#16035) (40cf074)
+    - operator: Select non-zero delete worker count for all sizes
+      (#16492) (1e5579a)
+    - operator: Update maximum OpenShift version (#16443) (ddf3cfb)
+    - operator: Update OTLP user guide to reflect change in
+      LokiStack (#16057) (14e2c87)
+    - operator: Update skipRange in OpenShift variant (#15984)
+      (dfbe00c)
+    - pattern: Correctly initialize overrides for pattern tee.
+      (#16112) (8f38cf7)
+    - promtail: remove flaky TestFileTarget_StopsTailersCleanly
+      (#16473) (2ab63d2)
+    - promtail: windows forward event crash (#16155) (82cfaea)
+    - queryrange: properly handle context cancellation in
+      Downstreamer (#16471) (5335a21)
+    - remove colons from level detection (#16764) (865c43a)
+    - remove unused variable in delete requests store code (#16241)
+      (5e6d0b5)
+    - Revert "feat: Assert for bad max_query_lookback config
+      (#16362)" (#16441) (42ddb68)
+    - reverts the tailwindcss upgrade that was breaking builds
+      (#16058) (bb76772)
+    - ruler: ensure test service shutdown is properly awaited
+      (#16468) (8976709)
+    - scheduling constraints (#16045) (b45a31e)
+    - update crc64nvme to fix build issues with arm images (#16413)
+      (80a616d)
+    - zeroed stream hash when checking limits (#16729) (ab0cbce)
+
+-------------------------------------------------------------------
 Fri Apr 04 13:06:29 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.4.3:
@@ -352,7 +873,7 @@ Mon Dec 16 11:56:07 UTC 2024 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Mon Dec  9 22:54:30 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
 
-- use golang(API) to force the proper version 
+- use golang(API) to force the proper version
 
 -------------------------------------------------------------------
 Mon Dec 09 10:04:09 UTC 2024 - opensuse_buildservice@ojkastl.de
@@ -3675,7 +4196,7 @@ Mon May 23 07:35:18 UTC 2022 - ecsos@opensuse.org
   * WIP
   * init
   * init
-- Use BuildRequires: golang(API) = 1.17 instead of >=, 
+- Use BuildRequires: golang(API) = 1.17 instead of >=,
   because with go1.18 it stop mmediately and rise up an error:
   "panic: Something in this program imports go4.org/unsafe/assume-no-moving-gc to declare that it
   assumes a non-moving garbage collector, but your version of go4.org/unsafe/assume-no-moving-gc
@@ -3724,7 +4245,7 @@ Mon Dec 13 13:56:26 UTC 2021 - ecsos@opensuse.org
 Sun Dec 12 23:32:48 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Move the logcli tool in a separate package, to allow users to install it
-  without pulling in the full loki package 
+  without pulling in the full loki package
 
 -------------------------------------------------------------------
 Wed Oct  6 06:11:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
@@ -3738,7 +4259,7 @@ Wed Oct  6 06:11:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 -------------------------------------------------------------------
 Fri Jun 25 08:58:58 UTC 2021 - Stefano Torresi <stefano.torresi@suse.com>
 
-- Fix config fillup 
+- Fix config fillup
 
 -------------------------------------------------------------------
 Fri May 28 07:51:35 UTC 2021 - Stefano Torresi <stefano.torresi@suse.com>
@@ -3766,7 +4287,7 @@ Mon Nov  9 13:15:42 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 -------------------------------------------------------------------
 Wed Sep  2 15:19:22 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 
-- Install binaries in /usr/bin instead of /usr/sbin since they're supposed to be ran by an unprivileged user. 
+- Install binaries in /usr/bin instead of /usr/sbin since they're supposed to be ran by an unprivileged user.
 
 -------------------------------------------------------------------
 Thu May 28 16:59:26 UTC 2020 - dmaiocchi@suse.com
@@ -3936,9 +4457,9 @@ Fri Apr 17 11:26:33 UTC 2020 - Dario Maiocchi <dmaiocchi@suse.com>
 -------------------------------------------------------------------
 Mon Jul  1 17:15:41 UTC 2019 - JMC <jcavalheiro@suse.com>
 
-- Add compat macro for _fillupdir to allow builds in SLE12 
+- Add compat macro for _fillupdir to allow builds in SLE12
 
 -------------------------------------------------------------------
 Mon Jul  1 14:40:56 UTC 2019 - João Cavalheiro <jcavalheiro@suse.com>
 
-- Initial commit (v0.1.0) 
+- Initial commit (v0.1.0)

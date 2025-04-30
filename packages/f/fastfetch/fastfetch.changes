@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Apr 29 17:11:38 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.42.0:
+  Changes: 
+   * Normalize the module name `Bios` to `BIOS` 
+     (gh#fastfetch-cli/fastfetch#1721) 
+     - No configuration file changes are required because fastfetch 
+       parses module names case-insensitively.
+  Bugfixes:
+   * Disable disk type detection for virtual disks 
+     (gh#fastfetch-cli/fastfetch#1669)
+   * Fix incorrect CPU temperature reporting (CPU, OpenBSD)
+   * Fix setting logo.chafa.symbols in JSON configuration 
+     (gh#fastfetch-cli/fastfetch#1709)
+   * Fix non-normalized time display 
+     (gh#fastfetch-cli/fastfetch#1720)
+   * Miscellaneous minor fixes
+  Features:
+   * Add CPU temperature detection support (CPU, SunOS)
+   * Improve CPU frequency detection (CPU, NetBSD)
+   * Add Wi-Fi detection support (Wifi, NetBSD)
+   * Add Webcam detection support (Camera, OpenBSD) 
+     - Requires root privileges
+  Logos:
+   * Remove GoralixOS logo (gh#fastfetch-cli/fastfetch#1699)
+   * Add Aurora logo (gh#fastfetch-cli/fastfetch#1700)
+   * Add Codex Linux logo (gh#fastfetch-cli/fastfetch#1701)
+
+-------------------------------------------------------------------
 Wed Apr 16 12:28:47 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 2.41.0

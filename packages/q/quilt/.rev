@@ -613,4 +613,13 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
     <comment></comment>
     <requestid>1253876</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8e2881cde5c8d051a71c213b596f9b1b</srcmd5>
+    <version>0.69</version>
+    <time>1746032609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.69.
+- Make it possible to run &quot;quilt setup&quot; on a spec file which excludes the local architecture (boo#1238516).</comment>
+    <requestid>1273478</requestid>
+  </revision>
 </revisionlist>
