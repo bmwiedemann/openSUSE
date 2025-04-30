@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr 25 10:33:23 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.55:
+  * Rewrite the extended length path handling under Windows. [T5754]
+  * Add new test commands to the gpg-error tool. Allow command w/o
+    dashes and reformat the help. [rEc002490a8f]
+  * Silence warning from gcc 15. [T7621]
+
+-------------------------------------------------------------------
 Mon Apr 21 07:29:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.54:
