@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 29 08:47:24 UTC 2025 - jsegitz@suse.com
+
+- Update to version 2.237.0:
+  * bootc/install_t: allow transition to container_runtime_t
+  * Allow containers to mask parts of their /proc
+
+-------------------------------------------------------------------
 Mon Mar 31 12:35:29 UTC 2025 - jsegitz@suse.com
 
 - Update to version 2.236.0:
