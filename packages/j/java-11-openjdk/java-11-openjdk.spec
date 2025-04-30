@@ -587,7 +587,7 @@ EXTRA_CFLAGS="${EXTRA_CFLAGS} -fno-strict-aliasing"
 %endif
 
 %if 0%{?suse_version} >= 1330
-EXTRA_CFLAGS="${EXTRA_CFLAGS} -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
+EXTRA_CFLAGS="${EXTRA_CFLAGS} -std=gnu11 -fno-delete-null-pointer-checks -fno-lifetime-dse -fpermissive"
 EXTRA_CPP_FLAGS="${EXTRA_CPP_FLAGS} -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
 %endif
 
