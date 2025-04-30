@@ -79,4 +79,41 @@
   * docs: use docker and pip instead of nix (#5672) (forwarded request 1266409 from ph03nix)</comment>
     <requestid>1267199</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2f4d9ae51ee006fface0e339b8629cf9</srcmd5>
+    <version>2.9.0</version>
+    <time>1746032735</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.9.0:
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: v2.9 release (#5744)
+  * docs: update
+  * feat: add checksum template function (#5743)
+  * chore: revert acidental commit
+  * chore: typo
+  * docs: improve choco help
+  * fix(brew): improve if hardware structures (#5741)
+  * docs: fix typo
+  * feat: poetry builder (#5734)
+  * chore(deps): bump astral-sh/setup-uv from 5 to 6 (#5739)
+  * chore(deps): bump anchore/sbom-action from 0.18.0 to 0.19.0 (#5738)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.127.0 to 0.128.0 (#5737)
+  * chore(deps): bump github/codeql-action from 3.28.15 to 3.28.16 (#5735)
+  * docs: fix npm docs
+  * chore(deps): bump sigstore/cosign-installer from 3.8.1 to 3.8.2 (#5732)
+  * chore(deps): update
+  * ci: remove gitleaks configuration
+  * docs: update
+  * chore(deps): bump mkdocs-material from 9.6.11 to 9.6.12 in /www (#5727)
+  * test: update golden files
+  * feat(winget): Add additional template values (#5714)
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 5.1.0 to 5.2.0 (#5729)
+  * fix: increase default timeout (#5726)
+  * fix: group by platform should consider abi if available (#5723)
+  * chore(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2 (#5724)
+  * fix: small lint issue
+  * fix: upx properly handle skips (#5720) (forwarded request 1273570 from ph03nix)</comment>
+    <requestid>1273639</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Apr 30 06:10:18 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.9.0:
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: v2.9 release (#5744)
+  * docs: update
+  * feat: add checksum template function (#5743)
+  * chore: revert acidental commit
+  * chore: typo
+  * docs: improve choco help
+  * fix(brew): improve if hardware structures (#5741)
+  * docs: fix typo
+  * feat: poetry builder (#5734)
+  * chore(deps): bump astral-sh/setup-uv from 5 to 6 (#5739)
+  * chore(deps): bump anchore/sbom-action from 0.18.0 to 0.19.0 (#5738)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.127.0 to 0.128.0 (#5737)
+  * chore(deps): bump github/codeql-action from 3.28.15 to 3.28.16 (#5735)
+  * docs: fix npm docs
+  * chore(deps): bump sigstore/cosign-installer from 3.8.1 to 3.8.2 (#5732)
+  * chore(deps): update
+  * ci: remove gitleaks configuration
+  * docs: update
+  * chore(deps): bump mkdocs-material from 9.6.11 to 9.6.12 in /www (#5727)
+  * test: update golden files
+  * feat(winget): Add additional template values (#5714)
+  * chore(deps): bump stefanzweifel/git-auto-commit-action from 5.1.0 to 5.2.0 (#5729)
+  * fix: increase default timeout (#5726)
+  * fix: group by platform should consider abi if available (#5723)
+  * chore(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2 (#5724)
+  * fix: small lint issue
+  * fix: upx properly handle skips (#5720)
+  * fix: upx.Binary not being respected
+  * fix: upx dependencies
+  * test: improve artifact type tests
+  * docs: update
+  * chore: lint
+  * feat: uv builder (#5652)
+  * fix(aur): panic if both aur and aur_sources configured (#5717)
+  * fix: sbom jsonschema
+  * feat: allow passing sbomDir to KO (#5688)
+  * feat: warn about repeated uploadable artifact names (#5713)
+  * chore(deps): update go-github
+  * docs: fix
+  * docs: build and GOMAXPROCS
+  * docs: document accepted config filename variants (#5693)
+  * chore(deps): bump gocloud.dev from 0.40.0 to 0.41.0 (#5709)
+  * chore(deps): bump golang.org/x/tools from 0.31.0 to 0.32.0 (#5711)
+  * chore(deps): bump github/codeql-action from 3.28.13 to 3.28.15 (#5710)
+  * chore(deps): bump golang.org/x/sync from 0.12.0 to 0.13.0 (#5705)
+  * chore(deps): bump github.com/jarcoal/httpmock from 1.3.1 to 1.4.0 (#5707)
+  * chore(deps): bump golang.org/x/oauth2 from 0.28.0 to 0.29.0 (#5704)
+  * chore(deps): bump golang from 1.24.1-alpine to 1.24.2-alpine (#5703)
+  * chore(deps): bump code.gitea.io/sdk/gitea from 0.20.0 to 0.21.0 (#5700)
+  * chore(deps): bump github.com/ory/dockertest/v3 from 3.11.0 to 3.12.0 (#5694)
+  * chore(deps): bump gitlab.com/gitlab-org/api/client-go from 0.126.0 to 0.127.0 (#5695)
+  * chore(deps): bump github.com/distribution/distribution/v3 from 3.0.0-rc.4 to 3.0.0 (#5696)
+
+-------------------------------------------------------------------
 Wed Apr 02 08:23:43 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.8.2:
