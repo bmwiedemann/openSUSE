@@ -30,6 +30,8 @@ Source99:       baselibs.conf
 Patch0:         libsoup-CVE-2025-32914.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2025-32908.patch boo#1241223 mgorse@suse.com -- soup-server-http2: Check validity of the constructed connection URI.
 Patch1:         libsoup-CVE-2025-32908.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32907.patch boo#1241222 mgorse@suse.com -- correct merge of ranges.
+Patch2:         libsoup-CVE-2025-32907.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53

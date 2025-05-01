@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 29 16:41:58 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup-CVE-2025-32907.patch: correct merge of ranges
+  (boo#1241222 CVE-2025-32907 glgo#GNOME/libsoup!452).
+
+-------------------------------------------------------------------
 Mon Apr 21 21:54:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add CVE fixes:
