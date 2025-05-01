@@ -1,7 +1,7 @@
 #
 # spec file for package php-gnupg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        PHP wrapper around the gpgme library
 License:        BSD-2-Clause
@@ -39,6 +39,7 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/gnupg
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
+Source2:        no_uid_hint_msg.gpg
 BuildRequires:  %{php_name}-devel
 BuildRequires:  gpgme-devel
 Requires:       php(api) = %{php_core_api}
@@ -51,6 +52,7 @@ This extension provides methods to interact with gnupg.
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+cp %{SOURCE2} tests/
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

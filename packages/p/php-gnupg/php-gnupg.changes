@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr 27 18:42:54 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.5.2
+  * Fixed GH-37: gnupg_decrypt() returns false when decrypting an
+    encrypted empty string
+  * Fixed GH-46: gnupg_decrypt() segfaults when password callback user
+    ID hint is not supplied
+  * Fixed 1.5.0 regressition - the deletekey `allow_secret` made
+    optional again
+- Add no_uid_hint_msg.gpg that was accidentally not packaged in the
+  archive available from upstream
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)

@@ -7,4 +7,12 @@
     <comment>Please add php-gnupg into Factory.</comment>
     <requestid>1172386</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4be9ceda9f43cbef80cc2084f258ff63</srcmd5>
+    <version>1.5.2</version>
+    <time>1746105815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273811</requestid>
+  </revision>
 </revisionlist>
