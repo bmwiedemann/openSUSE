@@ -5849,4 +5849,35 @@ I cannot test locally unfortunately.
     User Interface (UI) Misrepresentation of attachment URL</comment>
     <requestid>1269739</requestid>
   </revision>
+  <revision rev="360" vrev="1">
+    <srcmd5>c5061d7b1b7e0b7f52577da3129e6514</srcmd5>
+    <version>128.10.0</version>
+    <time>1746105799</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird ESR 128.10.0
+  * Changed color override defaults with high contrast mode on
+    macOS and Linux
+  * Using Delete column in &quot;Search Messages...&quot; window could delete
+    other messages
+  MFSA 2025-32 (bsc#1241621)
+  * CVE-2025-2817 (bmo#1917536)
+    Privilege escalation in Thunderbird Updater
+  * CVE-2025-4082 (bmo#1937097)
+    WebGL shader attribute memory corruption in Thunderbird for
+    macOS
+  * CVE-2025-4083 (bmo#1958350)
+    Process isolation bypass using &quot;javascript:&quot; URI links in
+    cross-origin frames
+  * CVE-2025-4084 (bmo#1949994, bmo#1956698, bmo#1960198)
+    Potential local code execution in &quot;copy as cURL&quot; command
+  * CVE-2025-4087 (bmo#1952465)
+    Unsafe attribute access during XPath parsing
+  * CVE-2025-4091 (bmo#1951161, bmo#1952105)
+    Memory safety bugs fixed in Firefox 138, Thunderbird 138,
+    Firefox ESR 128.10, and Thunderbird 128.10
+  * CVE-2025-4093 (bmo#1894100)
+    Memory safety bug fixed in Firefox ESR 128.10 and Thunderbird
+    128.10</comment>
+    <requestid>1273775</requestid>
+  </revision>
 </revisionlist>
