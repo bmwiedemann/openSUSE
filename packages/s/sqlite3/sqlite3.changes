@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 17 09:33:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Add subpackage for the lemon parser generator.
+- Add patches:
+  * sqlite-3.49.0-fix-lemon-missing-cflags.patch
+  * sqlite-3.6.23-lemon-system-template.patch
+
+-------------------------------------------------------------------
 Tue Mar 11 21:34:05 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Mark build recipe as POSIX-sh-incompatible

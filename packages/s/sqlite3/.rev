@@ -1848,4 +1848,12 @@ CVE-2020-13871 boo#1172646</comment>
     against misuse.</comment>
     <requestid>1269271</requestid>
   </revision>
+  <revision rev="162" vrev="4">
+    <srcmd5>246e4328d074579e51e3810a066ea496</srcmd5>
+    <version>3.49.1</version>
+    <time>1746105759</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273687</requestid>
+  </revision>
 </revisionlist>

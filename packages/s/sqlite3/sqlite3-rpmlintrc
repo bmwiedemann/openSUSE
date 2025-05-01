@@ -1,0 +1,2 @@
+# Driver template for the LEMON parser generator
+addFilter("devel-file-in-non-devel-package /usr/share/lemon/lempar.c")

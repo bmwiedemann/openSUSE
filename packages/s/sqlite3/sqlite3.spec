@@ -32,6 +32,9 @@ URL:            https://www.sqlite.org/
 Source0:        https://www.sqlite.org/2023/sqlite-src-%{tarversion}.zip
 Source1:        baselibs.conf
 Source2:        https://www.sqlite.org/2023/sqlite-doc-%{docversion}.zip
+Source99:       %{name}-rpmlintrc
+Patch0:         sqlite-3.6.23-lemon-system-template.patch
+Patch1:         sqlite-3.49.0-fix-lemon-missing-cflags.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -127,6 +130,20 @@ Contains HTML documentation for SQLite: SQL Syntax, C/C++ API and
 other documentation found on sqlite.org. The files can be found in
 %{_docdir}/%{name}-doc.
 
+%package -n lemon
+Summary:        A parser generator
+
+%description -n lemon
+Lemon is an LALR(1) parser generator for C or C++. It does the same
+job as bison and yacc. But lemon is not another bison or yacc
+clone. It uses a different grammar syntax which is designed to reduce
+the number of coding errors. Lemon also uses a more sophisticated
+parsing engine that is faster than yacc and bison and which is both
+reentrant and thread-safe. Furthermore, Lemon implements features
+that can be used to eliminate resource leaks, making is suitable for
+use in long-running programs such as graphical user interfaces or
+embedded controllers.
+
 %prep
 # Version and %%tarversion need to match, but %%docversion might be different,
 IFS=. read a b c d <<< "%version"
@@ -136,7 +153,7 @@ then
 	exit 1
 fi
 
-%autosetup -p0 -n sqlite-src-%{tarversion} -a2
+%autosetup -p1 -n sqlite-src-%{tarversion} -a2
 
 rm -v sqlite-doc-%{docversion}/releaselog/current.html
 ln -sv `echo %{docversion} | sed "s/\./_/g"`.html sqlite-doc-%{docversion}/releaselog/current.html
@@ -188,11 +205,12 @@ export CFLAGS="%{optflags} \
 
 %install
 %make_install
-#mkdir -pv %{buildroot}/%{_mandir}/man{1,n}/
 install -Dpvm 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
 install -Dpvm 0644 -t %{buildroot}/%{_mandir}/mann autoconf/tea/doc/sqlite3.n
+install -Dpvm 0755 -t %{buildroot}%{_bindir} lemon
+install -Dpvm 0644 -t %{buildroot}%{_datadir}/lemon tool/lempar.c
 # tcl bindings are provided by tcl itself
-#rm -rf %{buildroot}%{_libdir}/tcl/tcl8.?/sqlite3*
+#rm -rf %%{buildroot}%%{_libdir}/tcl/tcl8.?/sqlite3*
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n libsqlite3-0
@@ -216,5 +234,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files doc
 %doc sqlite-doc-%{docversion}/*
+
+%files -n lemon
+%{_bindir}/lemon
+%{_datadir}/lemon
 
 %changelog
