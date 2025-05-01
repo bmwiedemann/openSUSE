@@ -18,13 +18,13 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version e89a29929c775025419ab0d218a43588b4c12b9a
-%define git_short   e89a29929c77
+%define git_version 4ca628d1d4c974f92d24daccb901aa078aad748e
+%define git_short   4ca628d1d4c9
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.2.6
+Version:        1.3.0
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
@@ -36,7 +36,7 @@ Source1:        https://github.com/opencontainers/runc/releases/download/v%{upst
 Source2:        runc.keyring
 BuildRequires:  diffutils
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.22.4
+BuildRequires:  go >= 1.23
 BuildRequires:  go-go-md2man
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
