@@ -678,4 +678,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment></comment>
     <requestid>1273378</requestid>
   </revision>
+  <revision rev="81" vrev="3">
+    <srcmd5>276faffb936917b19242706372eab067</srcmd5>
+    <version>3.8.1</version>
+    <time>1746105767</time>
+    <user>dimstar_suse</user>
+    <comment>Revert! Excessive deps on python packages - boo#1242096</comment>
+    <requestid>1273798</requestid>
+  </revision>
 </revisionlist>
