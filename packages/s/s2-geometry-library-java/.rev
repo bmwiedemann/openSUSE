@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1218934</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>112c20ac1ff008e02156fd7d53854107</srcmd5>
+    <version>2.0.0</version>
+    <time>1746105824</time>
+    <user>dimstar_suse</user>
+    <comment>Explicite jsr305 requirement</comment>
+    <requestid>1273823</requestid>
+  </revision>
 </revisionlist>
