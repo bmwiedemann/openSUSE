@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 15:00:02 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/p-gen/smenu/issues/46
+  + smenu-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Apr  1 14:27:58 UTC 2024 - Pierre Gentile <p.gen.progs@gmail.com>
 
  Version 1.4.0                                                                  

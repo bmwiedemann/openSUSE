@@ -1,7 +1,7 @@
 #
 # spec file for package smenu
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/p-gen/%{name}
 Source:         https://github.com/p-gen/smenu/releases/download/v%{version}/smenu-%{version}.tar.bz2
+# https://github.com/p-gen/smenu/issues/46
+Patch0:         smenu-gcc15.patch
 BuildRequires:  ncurses-devel
 
 %description
@@ -32,7 +34,7 @@ interactive window after the current line on the terminal, and writes the
 selected words, if any, to standard output.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure
