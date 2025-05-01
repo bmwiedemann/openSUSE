@@ -56,6 +56,14 @@ Patch13:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/19124679.patch
 Patch14:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/a5b86bfc.patch
 # PATCH-FIX-UPSTREAM 5739a090.patch boo#1240757 mgorse@suse.com -- fix heap buffer overflow in soup_content_sniffer.c:sniff_feed_or_html
 Patch15:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/5739a090.patch
+# PATCH-FIX-UPSTREAM c9083869.patch boo#1241686 mgorse@suse.com -- fix leak in soup_header_parse_quality_list.
+Patch16:        https://gitlab.gnome.org/GNOME/libsoup/-/commit/c9083869.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32914.patch boo#1241164 mgorse@suse.com -- fix read out of buffer bounds under soup_multipart_new_from_message.
+Patch17:        libsoup-CVE-2025-32914.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-32907.patch boo#1241222 mgorse@suse.com -- correct merge of ranges.
+Patch18:        libsoup-CVE-2025-32907.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2025-46421.patch boo#1241688 mgorse@suse.com -- strip authentication credentials on cross-origin redirect.
+Patch19:        libsoup-CVE-2025-46421.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

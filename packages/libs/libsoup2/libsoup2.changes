@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 29 17:04:13 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Add more CVE fixes:
+  + c9083869.patch (boo#1241686 CVE-2025-46420)
+  + libsoup-CVE-2025-32914.patch (boo#1241164 CVE-2025-32914)
+  + libsoup-CVE-2025-32907.patch (boo#1241222 CVE-2025-32907)
+  + libsoup-CVE-2025-46421.patch (boo#1241688 CVE-2025-46421)
+
+-------------------------------------------------------------------
 Fri Apr 18 21:38:24 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Add more CVE fixes:
