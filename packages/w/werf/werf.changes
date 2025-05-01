@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 30 21:19:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.7:
+  * Bug Fixes
+    - deploy: label/annotation separator options have no effect
+      (c9e2eff)
+    - export: align label separator default (comma) with other
+      commands (c04db26)
+
+-------------------------------------------------------------------
+Wed Apr 30 21:11:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.6:
+  * Bug Fixes
+    - bundle: incorrect parsing of image reference with colon in
+      tag (ba851eb)
+    - deploy: improve log color detection (c113429)
+
+-------------------------------------------------------------------
 Tue Apr 29 08:04:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.5:
