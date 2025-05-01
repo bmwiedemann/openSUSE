@@ -16,35 +16,49 @@
 #
 
 
-# disable lto for ppc64
-%ifarch ppc64
-%define _lto_cflags %{nil}
-%endif
+# https://www.cryptopp.com/wiki/Link_Time_Optimization
+# see also -DCRYPTOPP_DISABLE_ASM=ON below
+#%%define _lto_cflags %%{nil}
+
+%bcond_without  tests
+
 Name:           cryfs
 Version:        1.0.1
 Release:        0
 Summary:        Cryptographic filesystem for the cloud
 License:        LGPL-3.0-only
 URL:            https://www.cryfs.org/
-Source:         https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz
+Source0:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/cryfs/cryfs/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 # 0x5D5EC7BC6F1443EC2AF7177A9E6C996C991D25E1
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM fix-build-with-boost-1_88.patch -- based on PR 494
+Patch0:         fix-build-with-boost-1_88.patch
+# PATCH-FIX-UPSTREAM fix-feature-fuse3.patch -- based on branch feature/fuse3
+Patch1:         fix-feature-fuse3.patch
 BuildRequires:  cmake >= 3.25
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_atomic-devel >= 1.84.0
-BuildRequires:  libboost_chrono-devel >= 1.84.0
-BuildRequires:  libboost_filesystem-devel >= 1.84.0
-BuildRequires:  libboost_program_options-devel >= 1.84.0
-BuildRequires:  libboost_system-devel >= 1.84.0
-BuildRequires:  libboost_thread-devel >= 1.84.0
+BuildRequires:  libboost_atomic-devel-impl >= 1.84.0
+BuildRequires:  libboost_chrono-devel-impl >= 1.84.0
+BuildRequires:  libboost_filesystem-devel-impl >= 1.84.0
+BuildRequires:  libboost_program_options-devel-impl >= 1.84.0
+BuildRequires:  libboost_system-devel-impl >= 1.84.0
+BuildRequires:  libboost_thread-devel-impl >= 1.84.0
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  cmake(range-v3)
 BuildRequires:  cmake(spdlog)
-BuildRequires:  pkgconfig(fuse) >= 2.9.0
+BuildRequires:  pkgconfig(fuse3) >= 3.9.0
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libssl)
+%if %{with tests}
+BuildRequires:  pkgconfig(gmock)
+BuildRequires:  pkgconfig(gtest)
+%endif
+# system cryptopp lib cannot currently be used.
+# see also https://github.com/cryfs/cryfs/issues/369
+Provides:       bundled(libcryptopp) = 8.9.0
 
 %description
 CryFS provides a FUSE-based mount that encrypts file contents, file
@@ -57,32 +71,52 @@ base directory, which can then be synchronized to remote storage
 %prep
 %autosetup -c -p1
 
-%build
-mkdir build
-cd build
-# FIXME: you should use the %%cmake macros
-cmake .. \
-	-DDEPENDENCY_CONFIG=../cmake-utils/DependenciesFromLocalSystem.cmake \
-	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
-	-DCMAKE_CXX_FLAGS="%{optflags} -fPIC" \
-	-DCMAKE_C_FLAGS="%{optflags} -fPIC" \
-	-DBoost_USE_STATIC_LIBS=OFF \
-	-DBUILD_TESTING=OFF \
-	-DCRYFS_UPDATE_CHECKS=OFF \
-%ifarch %{ix86} x86_64
- 	-DCMAKE_CXX_FLAGS="-msse4.1" \
-%endif
-	-DCMAKE_BUILD_TYPE=Release
+# install man pages also with default build type
+sed -e '/Release/d' -i doc/CMakeLists.txt
 
+%build
+%define __builder ninja
+%cmake \
+%ifarch %{arm32} %{ix86} ppc64 ppc64le s390x
+	-DCRYPTOPP_DISABLE_ASM=ON \
+%endif
+%if %{with tests}
+	-DBUILD_TESTING=ON \
+%endif
+	-DBUILD_SHARED_LIBS=OFF \
+	-DCMAKE_POSITION_INDEPENDENT_CODE=ON \
+	-DCRYFS_UPDATE_CHECKS=OFF
 %cmake_build
 
 %install
 %cmake_install
 
+%check
+export PATH=%{buildroot}%{_bindir}:$PATH
+cryfs --version
+%if %{with tests}
+pushd build/test
+./blobstore/blobstore-test
+./blockstore/blockstore-test
+#./cpp-utils/cpp-utils-test
+%ifnarch %{ix86} ppc64 ppc64le
+./cryfs/cryfs-test --gtest_filter='-CryConfigCompatibilityTest.*'
+%endif
+%ifnarch riscv64
+./cryfs-cli/cryfs-cli-test --gtest_filter='-CliTest.*:CliTest_Unmount.*'
+%endif
+#./fspp/fspp-test
+./gitversion/gitversion-test
+./parallelaccessstore/parallelaccessstore-test
+popd
+%endif
+
 %files
 %license LICENSE.txt
 %doc README.md ChangeLog.txt
-%{_bindir}/cryfs*
-%{_mandir}/man?/cryfs*
+%{_bindir}/%{name}
+%{_bindir}/%{name}-unmount
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/%{name}-unmount.1%{?ext_man}
 
 %changelog

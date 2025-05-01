@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May  1 06:32:49 UTC 2025 - munix9@googlemail.com
+
+- Migration to fuse 3 and deprecation of fuse (1)
+  * Add fix-feature-fuse3.patch -- based on upstream branch
+    https://github.com/cryfs/cryfs/tree/feature/fuse3
+    (bsc#1242083) (bsc#1242079)
+- Increase physicalmemory for ppc64 and ppc64le builds
+
+-------------------------------------------------------------------
+Fri Apr 25 05:24:25 UTC 2025 - munix9@googlemail.com
+
+- Add _constraints (required for ppc64, ppc64le)
+
+-------------------------------------------------------------------
+Fri Apr 25 04:16:51 UTC 2025 - munix9@googlemail.com
+
+- Add fix-build-with-boost-1_88.patch
+- Remove _constraints file (not needed for now)
+- Cleanup spec file (from the previous 0.x versions):
+  * Use __builder ninja
+  * Use %cmake macro
+  * Add %check/tests (arch specific)
+  * Add -DCRYPTOPP_DISABLE_ASM=ON (arch specific)
+
+-------------------------------------------------------------------
 Sat Mar 22 17:16:21 UTC 2025 - munix9@googlemail.com
 
 - Update to version 1.0.1:

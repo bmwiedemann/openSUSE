@@ -1,0 +1,1744 @@
+diff --git a/src/cryfs/impl/filesystem/CryOpenFile.cpp b/src/cryfs/impl/filesystem/CryOpenFile.cpp
+index da923fb9..d2ce316c 100644
+--- a/src/cryfs/impl/filesystem/CryOpenFile.cpp
++++ b/src/cryfs/impl/filesystem/CryOpenFile.cpp
+@@ -31,21 +31,6 @@ void CryOpenFile::flush() {
+   _parent->flush();
+ }
+ 
+-fspp::Node::stat_info CryOpenFile::stat() const {
+-  _device->callFsActionCallbacks();
+-  auto childOpt = _parent->GetChild(_fileBlob->blockId());
+-  if (childOpt == boost::none) {
+-    throw fspp::fuse::FuseErrnoException(ENOENT);
+-  }
+-  return dirEntryToStatInfo(*childOpt, _fileBlob->size());
+-}
+-
+-void CryOpenFile::truncate(fspp::num_bytes_t size) const {
+-  _device->callFsActionCallbacks();
+-  _fileBlob->resize(size);
+-  _parent->updateModificationTimestampForChild(_fileBlob->blockId());
+-}
+-
+ fspp::num_bytes_t CryOpenFile::read(void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) const {
+   _device->callFsActionCallbacks();
+   _parent->updateAccessTimestampForChild(_fileBlob->blockId(), timestampUpdateBehavior());
+diff --git a/src/cryfs/impl/filesystem/CryOpenFile.h b/src/cryfs/impl/filesystem/CryOpenFile.h
+index d2b6e3d3..199b3bb5 100644
+--- a/src/cryfs/impl/filesystem/CryOpenFile.h
++++ b/src/cryfs/impl/filesystem/CryOpenFile.h
+@@ -14,8 +14,6 @@ public:
+   explicit CryOpenFile(const CryDevice *device, std::shared_ptr<parallelaccessfsblobstore::DirBlobRef> parent, cpputils::unique_ref<parallelaccessfsblobstore::FileBlobRef> fileBlob);
+   ~CryOpenFile() override;
+ 
+-  stat_info stat() const override;
+-  void truncate(fspp::num_bytes_t size) const override;
+   fspp::num_bytes_t read(void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) const override;
+   void write(const void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) override;
+   void flush() override;
+diff --git a/src/fspp/fs_interface/OpenFile.h b/src/fspp/fs_interface/OpenFile.h
+index 3388762b..b9b1657a 100644
+--- a/src/fspp/fs_interface/OpenFile.h
++++ b/src/fspp/fs_interface/OpenFile.h
+@@ -14,8 +14,6 @@ public:
+ 
+   using stat_info = fspp::stat_info;
+ 
+-  virtual stat_info stat() const = 0;
+-  virtual void truncate(fspp::num_bytes_t size) const = 0;
+   virtual fspp::num_bytes_t read(void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) const = 0;
+   virtual void write(const void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) = 0;
+   virtual void flush() = 0;
+diff --git a/src/fspp/fstest/FsppFileTest.h b/src/fspp/fstest/FsppFileTest.h
+index 77d3a6e2..02098038 100644
+--- a/src/fspp/fstest/FsppFileTest.h
++++ b/src/fspp/fstest/FsppFileTest.h
+@@ -58,33 +58,33 @@ public:
+     this->EXPECT_SIZE(fspp::num_bytes_t(0), file, node);
+   }
+ 
+-  void Test_Chown_Uid(fspp::File *file, fspp::Node *node) {
++  void Test_Chown_Uid(fspp::Node *node) {
+     node->chown(fspp::uid_t(100), fspp::gid_t(200));
+-    this->IN_STAT(file, node, [] (const fspp::Node::stat_info& st){
++    this->IN_STAT(node, [] (const fspp::Node::stat_info& st){
+         EXPECT_EQ(fspp::uid_t(100u), st.uid);
+     });
+   }
+ 
+-  void Test_Chown_Gid(fspp::File *file, fspp::Node *node) {
++  void Test_Chown_Gid(fspp::Node *node) {
+     node->chown(fspp::uid_t(100), fspp::gid_t(200));
+-    this->IN_STAT(file, node, [] (const fspp::Node::stat_info& st){
++    this->IN_STAT(node, [] (const fspp::Node::stat_info& st){
+         EXPECT_EQ(fspp::gid_t(200u), st.gid);
+     });
+   }
+ 
+-  void Test_Chmod(fspp::File *file, fspp::Node *node) {
++  void Test_Chmod(fspp::Node *node) {
+     constexpr auto mode = fspp::mode_t().addFileFlag().addUserReadFlag().addOtherWriteFlag();
+     node->chmod(mode);
+-    this->IN_STAT(file, node, [mode] (const fspp::Node::stat_info& st){
++    this->IN_STAT(node, [mode] (const fspp::Node::stat_info& st){
+         EXPECT_EQ(mode, st.mode);
+     });
+   }
+ 
+-  void Test_Utimens(fspp::File *file, fspp::Node *node) {
++  void Test_Utimens(fspp::Node *node) {
+     struct timespec ATIME{}; ATIME.tv_sec = 1458086400; ATIME.tv_nsec = 34525;
+     struct timespec MTIME{}; MTIME.tv_sec = 1458086300; MTIME.tv_nsec = 48293;
+     node->utimens(ATIME, MTIME);
+-    this->IN_STAT(file, node, [this, ATIME, MTIME] (const fspp::Node::stat_info& st) {
++    this->IN_STAT(node, [this, ATIME, MTIME] (const fspp::Node::stat_info& st) {
+         this->EXPECT_ATIME_EQ(ATIME, st);
+         this->EXPECT_MTIME_EQ(MTIME, st);
+     });
+@@ -166,35 +166,35 @@ TYPED_TEST_P(FsppFileTest, Truncate_ShrinkTo0_Nested) {
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chown_Uid) {
+-  this->Test_Chown_Uid(this->file_root.get(), this->file_root_node.get());
++  this->Test_Chown_Uid(this->file_root_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chown_Uid_Nested) {
+-  this->Test_Chown_Uid(this->file_nested.get(), this->file_nested_node.get());
++  this->Test_Chown_Uid(this->file_nested_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chown_Gid) {
+-  this->Test_Chown_Gid(this->file_root.get(), this->file_root_node.get());
++  this->Test_Chown_Gid(this->file_root_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chown_Gid_Nested) {
+-  this->Test_Chown_Gid(this->file_nested.get(), this->file_nested_node.get());
++  this->Test_Chown_Gid(this->file_nested_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chmod) {
+-  this->Test_Chmod(this->file_root.get(), this->file_root_node.get());
++  this->Test_Chmod(this->file_root_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Chmod_Nested) {
+-  this->Test_Chmod(this->file_nested.get(), this->file_nested_node.get());
++  this->Test_Chmod(this->file_nested_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Utimens) {
+-  this->Test_Utimens(this->file_root.get(), this->file_root_node.get());
++  this->Test_Utimens(this->file_root_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Utimens_Nested) {
+-  this->Test_Utimens(this->file_nested.get(), this->file_nested_node.get());
++  this->Test_Utimens(this->file_nested_node.get());
+ }
+ 
+ TYPED_TEST_P(FsppFileTest, Remove) {
+diff --git a/src/fspp/fstest/FsppOpenFileTest.h b/src/fspp/fstest/FsppOpenFileTest.h
+index af15fe04..53133a66 100644
+--- a/src/fspp/fstest/FsppOpenFileTest.h
++++ b/src/fspp/fstest/FsppOpenFileTest.h
+@@ -7,19 +7,6 @@
+ template<class ConcreteFileSystemTestFixture>
+ class FsppOpenFileTest: public FileSystemTest<ConcreteFileSystemTestFixture> {
+ public:
+-    void IN_STAT(fspp::OpenFile *openFile, std::function<void (const fspp::OpenFile::stat_info&)> callback) {
+-        auto st = openFile->stat();
+-        callback(st);
+-    }
+-
+-    void EXPECT_SIZE(fspp::num_bytes_t expectedSize, fspp::OpenFile *openFile) {
+-        IN_STAT(openFile, [expectedSize] (const fspp::OpenFile::stat_info& st) {
+-            EXPECT_EQ(expectedSize, st.size);
+-        });
+-
+-        EXPECT_NUMBYTES_READABLE(expectedSize, openFile);
+-    }
+-
+     void EXPECT_NUMBYTES_READABLE(fspp::num_bytes_t expectedSize, fspp::OpenFile *openFile) {
+         cpputils::Data data(expectedSize.value());
+         //Try to read one byte more than the expected size
+@@ -34,20 +21,11 @@ TYPED_TEST_SUITE_P(FsppOpenFileTest);
+ TYPED_TEST_P(FsppOpenFileTest, CreatedFileIsEmpty) {
+     auto file = this->CreateFile("/myfile");
+     auto openFile = this->LoadFile("/myfile")->open(fspp::openflags_t::RDONLY());
+-    this->EXPECT_SIZE(fspp::num_bytes_t(0), openFile.get());
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest, FileIsFile) {
+-    auto file = this->CreateFile("/myfile");
+-    auto openFile = this->LoadFile("/myfile")->open(fspp::openflags_t::RDONLY());
+-    this->IN_STAT(openFile.get(), [] (const fspp::OpenFile::stat_info& st) {
+-        EXPECT_TRUE(st.mode.hasFileFlag());
+-    });
++    this->EXPECT_NUMBYTES_READABLE(fspp::num_bytes_t(0), openFile.get());
+ }
+ 
+ REGISTER_TYPED_TEST_SUITE_P(FsppOpenFileTest,
+-    CreatedFileIsEmpty,
+-    FileIsFile
++    CreatedFileIsEmpty
+ );
+ 
+ //TODO Test stat
+diff --git a/src/fspp/fstest/FsppOpenFileTest_Timestamps.h b/src/fspp/fstest/FsppOpenFileTest_Timestamps.h
+index 663e66a2..8763f117 100644
+--- a/src/fspp/fstest/FsppOpenFileTest_Timestamps.h
++++ b/src/fspp/fstest/FsppOpenFileTest_Timestamps.h
+@@ -14,7 +14,6 @@ public:
+         auto file = this->CreateFile(path);
+         file->truncate(size);
+         auto openFile = file->open(fspp::openflags_t::RDWR());
+-        ASSERT(this->stat(*openFile).size == size, "");
+         ASSERT(this->stat(*this->Load(path)).size == size, "");
+         return openFile;
+     }
+@@ -25,268 +24,165 @@ public:
+     cpputils::unique_ref<fspp::OpenFile> OpenFile(const boost::filesystem::path &path, fspp::num_bytes_t size) {
+         auto file = this->LoadFile(path);
+         auto openFile = file->open(fspp::openflags_t::RDWR());
+-        ASSERT(this->stat(*openFile).size == size, "");
+         ASSERT(this->stat(*this->Load(path)).size == size, "");
+         return openFile;
+     }
+ };
+ TYPED_TEST_SUITE_P(FsppOpenFileTest_Timestamps);
+ 
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, stat) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->stat();
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFile("/mynode");
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
+-    });
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, truncate_empty_to_empty) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->truncate(fspp::num_bytes_t(0));
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(0));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+-    });
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, truncate_empty_to_nonempty) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->truncate(fspp::num_bytes_t(10));
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(0));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+-    });
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, truncate_nonempty_to_empty) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->truncate(fspp::num_bytes_t(0));
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+-    });
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, truncate_nonempty_to_nonempty_shrink) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->truncate(fspp::num_bytes_t(5));
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+-    });
+-}
+-
+-TYPED_TEST_P(FsppOpenFileTest_Timestamps, truncate_nonempty_to_nonempty_grow) {
+-    auto operation = [] (fspp::OpenFile* openFile){
+-        return [openFile] {
+-            openFile->truncate(fspp::num_bytes_t(20));
+-        };
+-    };
+-    this->testBuilder().withAnyAtimeConfig([&] {
+-        auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+-    });
+-}
+-
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeNewerThanMtimeButBeforeYesterday_read_inbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeNewerThanMtimeButBeforeYesterday("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeNewerThanMtimeButBeforeYesterday(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(0));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeNewerThanMtime_read_inbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeNewerThanMtime("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeNewerThanMtime(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(0));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeOlderThanMtime_read_inbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeOlderThanMtime("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeOlderThanMtime(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(0));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeNewerThanMtimeButBeforeYesterday_read_outofbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeNewerThanMtimeButBeforeYesterday("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeNewerThanMtimeButBeforeYesterday(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(2));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeNewerThanMtime_read_outofbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeNewerThanMtime("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeNewerThanMtime(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(2));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+ TYPED_TEST_P(FsppOpenFileTest_Timestamps, givenAtimeOlderThanMtime_read_outofbounds) {
+-    auto operation = [this] () {
+-        this->CreateFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->setAtimeOlderThanMtime("/myfile");
+-        auto openFile = this->OpenFile("/myfile", fspp::num_bytes_t(10));
+-        auto* openFilePtr = openFile.get();
++    const boost::filesystem::path path = "/myfile";
++    auto operation = [this, path] () {
++        this->CreateFileWithSize(path, fspp::num_bytes_t(10));
++        this->setAtimeOlderThanMtime(path);
++        auto openFile = this->OpenFile(path, fspp::num_bytes_t(10));
+ 
+-        return std::make_pair(openFilePtr, [openFile = std::move(openFile)] {
++        return [openFile = std::move(openFile)] {
+             std::array<char, 5> buffer{};
+             openFile->read(buffer.data(), fspp::num_bytes_t(5), fspp::num_bytes_t(2));
+-        });
++        };
+     };
+     this->testBuilder()
+       .withNoatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectDoesntUpdateAnyTimestamps});
+     }).withStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeRelatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     }).withNodiratimeStrictatime([&] {
+-        auto op = operation();
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*op.first, std::move(op.second), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(path, operation(), {this->ExpectUpdatesAccessTimestamp, this->ExpectDoesntUpdateModificationTimestamp, this->ExpectDoesntUpdateMetadataTimestamp});
+     });
+ }
+ 
+@@ -298,7 +194,7 @@ TYPED_TEST_P(FsppOpenFileTest_Timestamps, write_inbounds) {
+     };
+     this->testBuilder().withAnyAtimeConfig([&] {
+         auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS("/myfile", operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+     });
+ }
+ 
+@@ -310,7 +206,7 @@ TYPED_TEST_P(FsppOpenFileTest_Timestamps, write_outofbounds) {
+     };
+     this->testBuilder().withAnyAtimeConfig([&] {
+         auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(0));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS("/myfile", operation(openFile.get()), {this->ExpectDoesntUpdateAccessTimestamp, this->ExpectUpdatesModificationTimestamp, this->ExpectUpdatesMetadataTimestamp});
+     });
+ }
+ 
+@@ -323,7 +219,7 @@ TYPED_TEST_P(FsppOpenFileTest_Timestamps, flush) {
+     };
+     this->testBuilder().withAnyAtimeConfig([&] {
+         auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS("/myfile", operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
+     });
+ }
+ 
+@@ -336,7 +232,7 @@ TYPED_TEST_P(FsppOpenFileTest_Timestamps, fsync) {
+     };
+     this->testBuilder().withAnyAtimeConfig([&] {
+         auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS("/myfile", operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
+     });
+ }
+ 
+@@ -349,17 +245,11 @@ TYPED_TEST_P(FsppOpenFileTest_Timestamps, fdatasync) {
+     };
+     this->testBuilder().withAnyAtimeConfig([&] {
+         auto openFile = this->CreateAndOpenFileWithSize("/myfile", fspp::num_bytes_t(10));
+-        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(*openFile, operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
++        this->EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS("/myfile", operation(openFile.get()), {this->ExpectDoesntUpdateAnyTimestamps});
+     });
+ }
+ 
+ REGISTER_TYPED_TEST_SUITE_P(FsppOpenFileTest_Timestamps,
+-   stat,
+-   truncate_empty_to_empty,
+-   truncate_empty_to_nonempty,
+-   truncate_nonempty_to_empty,
+-   truncate_nonempty_to_nonempty_shrink,
+-   truncate_nonempty_to_nonempty_grow,
+    givenAtimeNewerThanMtimeButBeforeYesterday_read_inbounds,
+    givenAtimeNewerThanMtime_read_inbounds,
+    givenAtimeOlderThanMtime_read_inbounds,
+diff --git a/src/fspp/fstest/testutils/FileTest.h b/src/fspp/fstest/testutils/FileTest.h
+index c72354a1..cd9fccb2 100644
+--- a/src/fspp/fstest/testutils/FileTest.h
++++ b/src/fspp/fstest/testutils/FileTest.h
+@@ -30,15 +30,13 @@ public:
+   std::unique_ptr<fspp::Node> file_nested_node;
+ 
+   //TODO IN_STAT still needed after moving it to FsppNodeTest?
+-  void IN_STAT(fspp::File *file, fspp::Node *node, std::function<void (const fspp::Node::stat_info&)> callback) {
++  void IN_STAT(fspp::Node *node, std::function<void (const fspp::Node::stat_info&)> callback) {
+ 	  auto st1 = node->stat();
+ 	  callback(st1);
+-	  auto st2 = file->open(fspp::openflags_t::RDONLY())->stat();
+-	  callback(st2);
+   }
+ 
+   void EXPECT_SIZE(fspp::num_bytes_t expectedSize, fspp::File *file, fspp::Node *node) {
+-    IN_STAT(file, node, [expectedSize] (const fspp::Node::stat_info& st) {
++    IN_STAT(node, [expectedSize] (const fspp::Node::stat_info& st) {
+       EXPECT_EQ(expectedSize, st.size);
+     });
+ 
+diff --git a/src/fspp/fstest/testutils/TimestampTestUtils.h b/src/fspp/fstest/testutils/TimestampTestUtils.h
+index 915f51b6..eabee569 100644
+--- a/src/fspp/fstest/testutils/TimestampTestUtils.h
++++ b/src/fspp/fstest/testutils/TimestampTestUtils.h
+@@ -37,16 +37,6 @@ public:
+         }
+     }
+ 
+-    template<class Operation>
+-    void EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(const fspp::OpenFile &node, Operation&& operation, std::initializer_list<TimestampUpdateExpectation> behaviorChecks) {
+-        EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(
+-            [this, &node](){return this->stat(node);},
+-            [this, &node](){return this->stat(node);},
+-            std::forward<Operation>(operation),
+-            behaviorChecks
+-        );
+-    }
+-
+     template<class Operation>
+     void EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(const boost::filesystem::path &oldPath, const boost::filesystem::path &newPath, Operation&& operation, std::initializer_list<TimestampUpdateExpectation> behaviorChecks) {
+         EXPECT_OPERATION_UPDATES_TIMESTAMPS_AS(
+@@ -81,10 +71,6 @@ public:
+         return node.stat();
+     }
+ 
+-    static fspp::Node::stat_info stat(const fspp::OpenFile &openFile) {
+-        return openFile.stat();
+-    }
+-
+     timespec xSecondsAgo(int sec) {
+         timespec result = cpputils::time::now();
+         result.tv_sec -= sec;
+diff --git a/src/fspp/fuse/CMakeLists.txt b/src/fspp/fuse/CMakeLists.txt
+index e05def02..29556046 100644
+--- a/src/fspp/fuse/CMakeLists.txt
++++ b/src/fspp/fuse/CMakeLists.txt
+@@ -35,10 +35,14 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+     DESTINATION "${CMAKE_INSTALL_BINDIR}"
+   )
+ 
+-else() # Linux and macOS
++elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin") # macOS
+   find_package(PkgConfig REQUIRED)
+   pkg_check_modules(Fuse REQUIRED IMPORTED_TARGET fuse)
+   target_link_libraries(${PROJECT_NAME} PUBLIC PkgConfig::Fuse)
++else() # Linux
++  find_package(PkgConfig REQUIRED)
++  pkg_check_modules(Fuse3 REQUIRED IMPORTED_TARGET fuse3)
++  target_link_libraries(${PROJECT_NAME} PUBLIC PkgConfig::Fuse3)
+ endif()
+ 
+ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+diff --git a/src/fspp/fuse/Filesystem.h b/src/fspp/fuse/Filesystem.h
+index eb20d1f8..13c8e0e2 100644
+--- a/src/fspp/fuse/Filesystem.h
++++ b/src/fspp/fuse/Filesystem.h
+@@ -28,13 +28,11 @@ public:
+   virtual void flush(int descriptor) = 0;
+   virtual void closeFile(int descriptor) = 0;
+   virtual void lstat(const boost::filesystem::path &path, fspp::fuse::STAT *stbuf) = 0;
+-  virtual void fstat(int descriptor, fspp::fuse::STAT *stbuf) = 0;
+   //TODO Test chmod
+   virtual void chmod(const boost::filesystem::path &path, ::mode_t mode) = 0;
+   //TODO Test chown
+   virtual void chown(const boost::filesystem::path &path, ::uid_t uid, ::gid_t gid) = 0;
+   virtual void truncate(const boost::filesystem::path &path, fspp::num_bytes_t size) = 0;
+-  virtual void ftruncate(int descriptor, fspp::num_bytes_t size) = 0;
+   virtual fspp::num_bytes_t read(int descriptor, void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) = 0;
+   virtual void write(int descriptor, const void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) = 0;
+   virtual void fsync(int descriptor) = 0;
+diff --git a/src/fspp/fuse/Fuse.cpp b/src/fspp/fuse/Fuse.cpp
+index c101d611..29b5440c 100644
+--- a/src/fspp/fuse/Fuse.cpp
++++ b/src/fspp/fuse/Fuse.cpp
+@@ -66,15 +66,11 @@ namespace {
+ //#define FSPP_LOG 1
+ 
+ namespace {
+-  int fusepp_getattr(const char *path, fspp::fuse::STAT *stbuf) {
+-    const int rs = FUSE_OBJ->getattr(bf::path(path), stbuf);
++  int fusepp_getattr(const char* path, fspp::fuse::STAT* stbuf, fuse_file_info* file_info) {
++    const int rs = FUSE_OBJ->getattr(bf::path(path), stbuf, file_info);
+     return rs;
+   }
+ 
+-  int fusepp_fgetattr(const char *path, fspp::fuse::STAT *stbuf, fuse_file_info *fileinfo) {
+-    return FUSE_OBJ->fgetattr(bf::path(path), stbuf, fileinfo);
+-  }
+-
+   int fusepp_readlink(const char *path, char *buf, size_t size) {
+     return FUSE_OBJ->readlink(bf::path(path), buf, size);
+   }
+@@ -99,32 +95,29 @@ namespace {
+     return FUSE_OBJ->symlink(bf::path(to), bf::path(from));
+   }
+ 
+-  int fusepp_rename(const char *from, const char *to) {
+-    return FUSE_OBJ->rename(bf::path(from), bf::path(to));
++  int fusepp_rename(const char *from, const char *to, unsigned int flags) {
++    return FUSE_OBJ->rename(bf::path(from), bf::path(to), flags);
+   }
+ 
+   int fusepp_link(const char *from, const char *to) {
+     return FUSE_OBJ->link(bf::path(from), bf::path(to));
+   }
+ 
+-  int fusepp_chmod(const char *path, ::mode_t mode) {
+-    return FUSE_OBJ->chmod(bf::path(path), mode);
+-  }
+-
+-  int fusepp_chown(const char *path, ::uid_t uid, ::gid_t gid) {
+-    return FUSE_OBJ->chown(bf::path(path), uid, gid);
++  int fusepp_chmod(const char *path, ::mode_t mode, fuse_file_info* file_info) {
++    return FUSE_OBJ->chmod(bf::path(path), mode, file_info);
+   }
+ 
+-  int fusepp_truncate(const char *path, int64_t size) {
+-    return FUSE_OBJ->truncate(bf::path(path), size);
++  int fusepp_chown(const char *path, ::uid_t uid, ::gid_t gid, fuse_file_info* file_info) {
++    return FUSE_OBJ->chown(bf::path(path), uid, gid, file_info);
+   }
+ 
+-  int fusepp_ftruncate(const char *path, int64_t size, fuse_file_info *fileinfo) {
+-    return FUSE_OBJ->ftruncate(bf::path(path), size, fileinfo);
++  int fusepp_truncate(const char *path, int64_t size, fuse_file_info* file_info) {
++    return FUSE_OBJ->truncate(bf::path(path), size, file_info);
+   }
+ 
+-  int fusepp_utimens(const char *path, const timespec times[2]) {  // NOLINT(cppcoreguidelines-avoid-c-arrays)
+-    return FUSE_OBJ->utimens(bf::path(path), {times[0], times[1]});
++  // NOLINTNEXTLINE(cppcoreguidelines-avoid-c-arrays)
++  int fusepp_utimens(const char *path, const timespec times[2], fuse_file_info* file_info) {
++    return FUSE_OBJ->utimens(bf::path(path), {times[0], times[1]}, file_info);
+   }
+ 
+   int fusepp_open(const char *path, fuse_file_info *fileinfo) {
+@@ -164,8 +157,8 @@ namespace {
+     return FUSE_OBJ->opendir(bf::path(path), fileinfo);
+   }
+ 
+-  int fusepp_readdir(const char *path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo) {
+-    return FUSE_OBJ->readdir(bf::path(path), buf, filler, offset, fileinfo);
++  int fusepp_readdir(const char *path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo, fuse_readdir_flags flags) {
++    return FUSE_OBJ->readdir(bf::path(path), buf, filler, offset, fileinfo, flags);
+   }
+ 
+   int fusepp_releasedir(const char *path, fuse_file_info *fileinfo) {
+@@ -176,9 +169,9 @@ namespace {
+     return FUSE_OBJ->fsyncdir(bf::path(path), datasync, fileinfo);
+   }
+ 
+-  void* fusepp_init(fuse_conn_info *conn) {
++  void* fusepp_init(fuse_conn_info *conn, fuse_config* config) {
+     auto f = FUSE_OBJ;
+-    f->init(conn);
++    f->init(conn, config);
+     return f;
+   }
+ 
+@@ -212,7 +205,6 @@ namespace {
+     if (!singleton) {
+       singleton = std::make_unique<fuse_operations>();
+       singleton->getattr = &fusepp_getattr;
+-      singleton->fgetattr = &fusepp_fgetattr;
+       singleton->readlink = &fusepp_readlink;
+       singleton->mknod = &fusepp_mknod;
+       singleton->mkdir = &fusepp_mkdir;
+@@ -246,7 +238,6 @@ namespace {
+       singleton->destroy = &fusepp_destroy;
+       singleton->access = &fusepp_access;
+       singleton->create = &fusepp_create;
+-      singleton->ftruncate = &fusepp_ftruncate;
+     }
+ 
+     return singleton.get();
+@@ -466,12 +457,6 @@ vector<char *> Fuse::_build_argv(const bf::path &mountdir, const vector<string>
+   // Make volume name default to mountdir on macOS
+   _add_fuse_option_if_not_exists(&argv, "volname", mountdir.filename().string());
+ #endif
+-  // TODO Also set read/write size for macFUSE. The options there are called differently.
+-  // large_read not necessary because reads are large anyhow. This option is only important for 2.4.
+-  //argv.push_back(_create_c_string("-o"));
+-  //argv.push_back(_create_c_string("large_read"));
+-  argv.push_back(_create_c_string("-o"));
+-  argv.push_back(_create_c_string("big_writes"));
+   return argv;
+ }
+ 
+@@ -521,14 +506,15 @@ void Fuse::unmount(const bf::path& mountdir, bool force) {
+   int returncode = success ? 0 : -1;
+ #else
+   const std::vector<std::string> args = force ? std::vector<std::string>({"-u", mountdir.string()}) : std::vector<std::string>({"-u", "-z", mountdir.string()});  // "-z" takes care that if the filesystem can't be unmounted right now because something is opened, it will be unmounted as soon as it can be.
+-  const int returncode = cpputils::Subprocess::call("fusermount", args, "").exitcode;
++  const int returncode = cpputils::Subprocess::call("fusermount3", args, "").exitcode;
+ #endif
+   if (returncode != 0) {
+     throw std::runtime_error("Could not unmount filesystem");
+   }
+ }
+ 
+-int Fuse::getattr(const bf::path &path, fspp::fuse::STAT *stbuf) {
++int Fuse::getattr(const bf::path &path, fspp::fuse::STAT *stbuf, fuse_file_info* file_info) {
++  UNUSED(file_info);
+   const ThreadNameForDebugging _threadName("getattr");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "getattr({}, _, _)", path);
+@@ -557,49 +543,6 @@ int Fuse::getattr(const bf::path &path, fspp::fuse::STAT *stbuf) {
+   }
+ }
+ 
+-int Fuse::fgetattr(const bf::path &path, fspp::fuse::STAT *stbuf, fuse_file_info *fileinfo) {
+-  const ThreadNameForDebugging _threadName("fgetattr");
+-#ifdef FSPP_LOG
+-  LOG(DEBUG, "fgetattr({}, _, _)", path);
+-#endif
+-
+-  // On FreeBSD, trying to do anything with the mountpoint ends up
+-  // opening it, and then using the FD for an fgetattr.  So in the
+-  // special case of a path of "/", I need to do a getattr on the
+-  // underlying base directory instead of doing the fgetattr().
+-  // TODO Check if necessary
+-  if (path.string() == "/") {
+-    const int result = getattr(path, stbuf);
+-#ifdef FSPP_LOG
+-    LOG(DEBUG, "fgetattr({}, _, _): success", path);
+-#endif
+-    return result;
+-  }
+-
+-  try {
+-    ASSERT(is_valid_fspp_path(path), "has to be an absolute path");
+-    _fs->fstat(fileinfo->fh, stbuf);
+-#ifdef FSPP_LOG
+-    LOG(DEBUG, "fgetattr({}, _, _): success", path);
+-#endif
+-    return 0;
+-  } catch(const cpputils::AssertFailed &e) {
+-    LOG(ERR, "AssertFailed in Fuse::fgetattr: {}", e.what());
+-    return -EIO;
+-  } catch(const fspp::fuse::FuseErrnoException &e) {
+-#ifdef FSPP_LOG
+-      LOG(ERR, "fgetattr({}, _, _): error", path);
+-#endif
+-    return -e.getErrno();
+-  } catch(const std::exception &e) {
+-    _logException(e);
+-    return -EIO;
+-  } catch(...) {
+-    _logUnknownException();
+-    return -EIO;
+-  }
+-}
+-
+ int Fuse::readlink(const bf::path &path, char *buf, size_t size) {
+   const ThreadNameForDebugging _threadName("readlink");
+ #ifdef FSPP_LOG
+@@ -764,7 +707,9 @@ int Fuse::symlink(const bf::path &to, const bf::path &from) {
+   }
+ }
+ 
+-int Fuse::rename(const bf::path &from, const bf::path &to) {
++int Fuse::rename(const bf::path &from, const bf::path &to, unsigned int flags) {
++  // TODO Handle flags correctly (see man renameat2)
++  UNUSED(flags);
+   const ThreadNameForDebugging _threadName("rename");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "rename({}, {})", from, to);
+@@ -805,7 +750,8 @@ int Fuse::link(const bf::path &from, const bf::path &to) {
+   return ENOSYS;
+ }
+ 
+-int Fuse::chmod(const bf::path &path, ::mode_t mode) {
++int Fuse::chmod(const bf::path &path, ::mode_t mode, fuse_file_info* file_info) {
++  UNUSED(file_info);
+   const ThreadNameForDebugging _threadName("chmod");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "chmod({}, {})", path, mode);
+@@ -834,7 +780,8 @@ int Fuse::chmod(const bf::path &path, ::mode_t mode) {
+   }
+ }
+ 
+-int Fuse::chown(const bf::path &path, ::uid_t uid, ::gid_t gid) {
++int Fuse::chown(const bf::path &path, ::uid_t uid, ::gid_t gid, fuse_file_info* file_info) {
++  UNUSED(file_info);
+   const ThreadNameForDebugging _threadName("chown");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "chown({}, {}, {})", path, uid, gid);
+@@ -863,7 +810,8 @@ int Fuse::chown(const bf::path &path, ::uid_t uid, ::gid_t gid) {
+   }
+ }
+ 
+-int Fuse::truncate(const bf::path &path, int64_t size) {
++int Fuse::truncate(const bf::path &path, int64_t size, fuse_file_info* file_info) {
++  UNUSED(file_info);
+   const ThreadNameForDebugging _threadName("truncate");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "truncate({}, {})", path, size);
+@@ -892,36 +840,8 @@ int Fuse::truncate(const bf::path &path, int64_t size) {
+   }
+ }
+ 
+-int Fuse::ftruncate(const bf::path &path, int64_t size, fuse_file_info *fileinfo) {
+-  const ThreadNameForDebugging _threadName("ftruncate");
+-#ifdef FSPP_LOG
+-  LOG(DEBUG, "ftruncate({}, {})", path, size);
+-#endif
+-  UNUSED(path);
+-  try {
+-    _fs->ftruncate(fileinfo->fh, fspp::num_bytes_t(size));
+-#ifdef FSPP_LOG
+-    LOG(DEBUG, "ftruncate({}, {}): success", path, size);
+-#endif
+-    return 0;
+-  } catch(const cpputils::AssertFailed &e) {
+-    LOG(ERR, "AssertFailed in Fuse::ftruncate: {}", e.what());
+-    return -EIO;
+-  } catch (FuseErrnoException &e) {
+-#ifdef FSPP_LOG
+-    LOG(WARN, "ftruncate({}, {}): failed with errno {}", path, size, e.getErrno());
+-#endif
+-    return -e.getErrno();
+-  } catch(const std::exception &e) {
+-    _logException(e);
+-    return -EIO;
+-  } catch(...) {
+-    _logUnknownException();
+-    return -EIO;
+-  }
+-}
+-
+-int Fuse::utimens(const bf::path &path, const std::array<timespec, 2> times) {
++int Fuse::utimens(const bf::path &path, const std::array<timespec, 2> times, fuse_file_info* file_info) {
++  UNUSED(file_info);
+   const ThreadNameForDebugging _threadName("utimens");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "utimens({}, _)", path);
+@@ -1167,13 +1087,14 @@ int Fuse::opendir(const bf::path &path, fuse_file_info *fileinfo) {
+   return 0;
+ }
+ 
+-int Fuse::readdir(const bf::path &path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo) {
++int Fuse::readdir(const bf::path &path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo, fuse_readdir_flags flags) {
+   const ThreadNameForDebugging _threadName("readdir");
+ #ifdef FSPP_LOG
+   LOG(DEBUG, "readdir({}, _, _, {}, _)", path, offset);
+ #endif
+   UNUSED(fileinfo);
+   UNUSED(offset);
++  UNUSED(flags);
+   try {
+     ASSERT(is_valid_fspp_path(path), "has to be an absolute path");
+     auto entries = _fs->readDir(path);
+@@ -1183,6 +1104,7 @@ int Fuse::readdir(const bf::path &path, void *buf, fuse_fill_dir_t filler, int64
+       //but it doesn't help performance since fuse ignores everything in stbuf
+       //except for file-type bits in st_mode and (if used) st_ino.
+       //It does getattr() calls on all entries nevertheless.
++      // TODO With fuse3 and fuse_fill_dir_flags::FUSE_FILL_DIR_PLUS, it could make sense to pass more metadata.
+       if (entry.type == Dir::EntryType::DIR) {
+         stbuf.st_mode = S_IFDIR;
+       } else if (entry.type == Dir::EntryType::FILE) {
+@@ -1192,7 +1114,7 @@ int Fuse::readdir(const bf::path &path, void *buf, fuse_fill_dir_t filler, int64
+       } else {
+         ASSERT(false, "Unknown entry type");
+       }
+-      if (filler(buf, entry.name.c_str(), &stbuf, 0) != 0) {
++      if (filler(buf, entry.name.c_str(), &stbuf, 0, static_cast<fuse_fill_dir_flags>(0)) != 0) {
+ #ifdef FSPP_LOG
+         LOG(DEBUG, "readdir({}, _, _, {}, _): failure with ENOMEM", path, offset);
+ #endif
+@@ -1239,9 +1161,14 @@ int Fuse::fsyncdir(const bf::path &path, int datasync, fuse_file_info *fileinfo)
+   return 0;
+ }
+ 
+-void Fuse::init(fuse_conn_info *conn) {
+-  UNUSED(conn);
++void Fuse::init(fuse_conn_info *conn, fuse_config *config) {
++  UNUSED(config);
++  
+   const ThreadNameForDebugging _threadName("init");
++
++  // Disable capabilities that we don't support
++  conn->want &= ~(FUSE_CAP_POSIX_LOCKS | FUSE_CAP_ATOMIC_O_TRUNC | FUSE_CAP_EXPORT_SUPPORT);
++
+   _fs = _init(this);
+ 
+   ASSERT(_context != boost::none, "Context should have been initialized in Fuse::run() but somehow didn't");
+diff --git a/src/fspp/fuse/Fuse.h b/src/fspp/fuse/Fuse.h
+index 3841e38a..8d41cf79 100644
+--- a/src/fspp/fuse/Fuse.h
++++ b/src/fspp/fuse/Fuse.h
+@@ -33,21 +33,19 @@ public:
+ 
+   static void unmount(const boost::filesystem::path &mountdir, bool force = false);
+ 
+-  int getattr(const boost::filesystem::path &path, fspp::fuse::STAT *stbuf);
+-  int fgetattr(const boost::filesystem::path &path, fspp::fuse::STAT *stbuf, fuse_file_info *fileinfo);
++  int getattr(const boost::filesystem::path &path, fspp::fuse::STAT *stbuf, fuse_file_info* file_info);
+   int readlink(const boost::filesystem::path &path, char *buf, size_t size);
+   int mknod(const boost::filesystem::path &path, ::mode_t mode, dev_t rdev);
+   int mkdir(const boost::filesystem::path &path, ::mode_t mode);
+   int unlink(const boost::filesystem::path &path);
+   int rmdir(const boost::filesystem::path &path);
+   int symlink(const boost::filesystem::path &from, const boost::filesystem::path &to);
+-  int rename(const boost::filesystem::path &from, const boost::filesystem::path &to);
++  int rename(const boost::filesystem::path &from, const boost::filesystem::path &to, unsigned int flags);
+   int link(const boost::filesystem::path &from, const boost::filesystem::path &to);
+-  int chmod(const boost::filesystem::path &path, ::mode_t mode);
+-  int chown(const boost::filesystem::path &path, ::uid_t uid, ::gid_t gid);
+-  int truncate(const boost::filesystem::path &path, int64_t size);
+-  int ftruncate(const boost::filesystem::path &path, int64_t size, fuse_file_info *fileinfo);
+-  int utimens(const boost::filesystem::path &path, const std::array<timespec, 2> times);
++  int chmod(const boost::filesystem::path &path, ::mode_t mode, fuse_file_info* file_info);
++  int chown(const boost::filesystem::path &path, ::uid_t uid, ::gid_t gid, fuse_file_info* file_info);
++  int truncate(const boost::filesystem::path &path, int64_t size, fuse_file_info* file_info);
++  int utimens(const boost::filesystem::path &path, const std::array<timespec, 2> times, fuse_file_info* file_info);
+   int open(const boost::filesystem::path &path, fuse_file_info *fileinfo);
+   int release(const boost::filesystem::path &path, fuse_file_info *fileinfo);
+   int read(const boost::filesystem::path &path, char *buf, size_t size, int64_t offset, fuse_file_info *fileinfo);
+@@ -56,10 +54,10 @@ public:
+   int flush(const boost::filesystem::path &path, fuse_file_info *fileinfo);
+   int fsync(const boost::filesystem::path &path, int flags, fuse_file_info *fileinfo);
+   int opendir(const boost::filesystem::path &path, fuse_file_info *fileinfo);
+-  int readdir(const boost::filesystem::path &path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo);
++  int readdir(const boost::filesystem::path &path, void *buf, fuse_fill_dir_t filler, int64_t offset, fuse_file_info *fileinfo, fuse_readdir_flags flags);
+   int releasedir(const boost::filesystem::path &path, fuse_file_info *fileinfo);
+   int fsyncdir(const boost::filesystem::path &path, int datasync, fuse_file_info *fileinfo);
+-  void init(fuse_conn_info *conn);
++  void init(fuse_conn_info *conn, fuse_config* config);
+   void destroy();
+   int access(const boost::filesystem::path &path, int mask);
+   int create(const boost::filesystem::path &path, ::mode_t mode, fuse_file_info *fileinfo);
+diff --git a/src/fspp/fuse/InvalidFilesystem.h b/src/fspp/fuse/InvalidFilesystem.h
+index 38e79f49..7a4db6e8 100644
+--- a/src/fspp/fuse/InvalidFilesystem.h
++++ b/src/fspp/fuse/InvalidFilesystem.h
+@@ -32,10 +32,6 @@ namespace fspp {
+                 throw std::logic_error("Filesystem not initialized yet");
+             }
+ 
+-            void fstat(int , fspp::fuse::STAT *) override {
+-                throw std::logic_error("Filesystem not initialized yet");
+-            }
+-
+             void chmod(const boost::filesystem::path &, ::mode_t ) override {
+                 throw std::logic_error("Filesystem not initialized yet");
+             }
+@@ -48,10 +44,6 @@ namespace fspp {
+                 throw std::logic_error("Filesystem not initialized yet");
+             }
+ 
+-            void ftruncate(int , fspp::num_bytes_t ) override {
+-                throw std::logic_error("Filesystem not initialized yet");
+-            }
+-
+             fspp::num_bytes_t read(int , void *, fspp::num_bytes_t , fspp::num_bytes_t ) override {
+                 throw std::logic_error("Filesystem not initialized yet");
+             }
+diff --git a/src/fspp/fuse/params.h b/src/fspp/fuse/params.h
+index 19626f57..e9fd9a83 100644
+--- a/src/fspp/fuse/params.h
++++ b/src/fspp/fuse/params.h
+@@ -2,7 +2,7 @@
+ #ifndef MESSMER_FSPP_FUSE_PARAMS_H_
+ #define MESSMER_FSPP_FUSE_PARAMS_H_
+ 
+-#define FUSE_USE_VERSION 29
++#define FUSE_USE_VERSION 39
+ #include <fuse.h>
+ 
+ #endif
+diff --git a/src/fspp/impl/FilesystemImpl.cpp b/src/fspp/impl/FilesystemImpl.cpp
+index b7ec6a3a..c8fc2c91 100644
+--- a/src/fspp/impl/FilesystemImpl.cpp
++++ b/src/fspp/impl/FilesystemImpl.cpp
+@@ -36,8 +36,8 @@ FilesystemImpl::FilesystemImpl(cpputils::unique_ref<Device> device)
+   :
+ #ifdef FSPP_PROFILE
+    _loadFileNanosec(0), _loadDirNanosec(0), _loadSymlinkNanosec(0), _openFileNanosec(0), _flushNanosec(0),
+-   _closeFileNanosec(0), _lstatNanosec(0), _fstatNanosec(0), _chmodNanosec(0), _chownNanosec(0), _truncateNanosec(0),
+-   _ftruncateNanosec(0), _readNanosec(0), _writeNanosec(0), _fsyncNanosec(0), _fdatasyncNanosec(0), _accessNanosec(0),
++   _closeFileNanosec(0), _lstatNanosec(0), _chmodNanosec(0), _chownNanosec(0), _truncateNanosec(0),
++   _readNanosec(0), _writeNanosec(0), _fsyncNanosec(0), _fdatasyncNanosec(0), _accessNanosec(0),
+    _createAndOpenFileNanosec(0), _createAndOpenFileNanosec_withoutLoading(0), _mkdirNanosec(0),
+    _mkdirNanosec_withoutLoading(0), _rmdirNanosec(0), _rmdirNanosec_withoutLoading(0), _unlinkNanosec(0),
+    _unlinkNanosec_withoutLoading(0), _renameNanosec(0), _readDirNanosec(0), _readDirNanosec_withoutLoading(0),
+@@ -60,11 +60,9 @@ FilesystemImpl::~FilesystemImpl() {
+     << std::setw(40) << "Flush: " << static_cast<double>(_flushNanosec)/1000000000 << "\n"
+     << std::setw(40) << "CloseFile: " << static_cast<double>(_closeFileNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Lstat: " << static_cast<double>(_lstatNanosec)/1000000000 << "\n"
+-    << std::setw(40) << "Fstat: " << static_cast<double>(_fstatNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Chmod: " << static_cast<double>(_chmodNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Chown: " << static_cast<double>(_chownNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Truncate: " << static_cast<double>(_truncateNanosec)/1000000000 << "\n"
+-    << std::setw(40) << "Ftruncate: " << static_cast<double>(_ftruncateNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Read: " << static_cast<double>(_readNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Write: " << static_cast<double>(_writeNanosec)/1000000000 << "\n"
+     << std::setw(40) << "Fsync: " << static_cast<double>(_fsyncNanosec)/1000000000 << "\n"
+@@ -169,14 +167,6 @@ void FilesystemImpl::lstat(const bf::path &path, fspp::fuse::STAT *stbuf) {
+   }
+ }
+ 
+-void FilesystemImpl::fstat(int descriptor, fspp::fuse::STAT *stbuf) {
+-	PROFILE(_fstatNanosec);
+-	auto stat_info = _open_files.load(descriptor, [] (OpenFile* openFile) {
+-		return openFile->stat();
+-	});
+-	convert_stat_info_(stat_info, stbuf);
+-}
+-
+ void FilesystemImpl::chmod(const boost::filesystem::path &path, ::mode_t mode) {
+   PROFILE(_chmodNanosec);
+   auto node = _device->Load(path);
+@@ -202,13 +192,6 @@ void FilesystemImpl::truncate(const bf::path &path, fspp::num_bytes_t size) {
+   LoadFile(path)->truncate(size);
+ }
+ 
+-void FilesystemImpl::ftruncate(int descriptor, fspp::num_bytes_t size) {
+-  PROFILE(_ftruncateNanosec);
+-  _open_files.load(descriptor, [size] (OpenFile* openFile) {
+-	  openFile->truncate(size);
+-  });
+-}
+-
+ fspp::num_bytes_t FilesystemImpl::read(int descriptor, void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) {
+   PROFILE(_readNanosec);
+   return _open_files.load(descriptor, [buf, count, offset] (OpenFile* openFile) {
+diff --git a/src/fspp/impl/FilesystemImpl.h b/src/fspp/impl/FilesystemImpl.h
+index 3e7d40ee..c97f4c4b 100644
+--- a/src/fspp/impl/FilesystemImpl.h
++++ b/src/fspp/impl/FilesystemImpl.h
+@@ -30,11 +30,9 @@ public:
+ 	void flush(int descriptor) override;
+ 	void closeFile(int descriptor) override;
+ 	void lstat(const boost::filesystem::path &path, fspp::fuse::STAT *stbuf) override;
+-	void fstat(int descriptor, fspp::fuse::STAT *stbuf) override;
+ 	void chmod(const boost::filesystem::path &path, ::mode_t mode) override;
+ 	void chown(const boost::filesystem::path &path, ::uid_t uid, ::gid_t gid) override;
+ 	void truncate(const boost::filesystem::path &path, fspp::num_bytes_t size) override;
+-	void ftruncate(int descriptor, fspp::num_bytes_t size) override;
+ 	fspp::num_bytes_t read(int descriptor, void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) override;
+ 	void write(int descriptor, const void *buf, fspp::num_bytes_t count, fspp::num_bytes_t offset) override;
+ 	void fsync(int descriptor) override;
+@@ -66,11 +64,9 @@ private:
+     std::atomic<uint64_t> _flushNanosec;
+     std::atomic<uint64_t> _closeFileNanosec;
+     std::atomic<uint64_t> _lstatNanosec;
+-    std::atomic<uint64_t> _fstatNanosec;
+     std::atomic<uint64_t> _chmodNanosec;
+     std::atomic<uint64_t> _chownNanosec;
+     std::atomic<uint64_t> _truncateNanosec;
+-    std::atomic<uint64_t> _ftruncateNanosec;
+     std::atomic<uint64_t> _readNanosec;
+     std::atomic<uint64_t> _writeNanosec;
+     std::atomic<uint64_t> _fsyncNanosec;
+diff --git a/test/fspp/CMakeLists.txt b/test/fspp/CMakeLists.txt
+index ca984e35..401f9abc 100644
+--- a/test/fspp/CMakeLists.txt
++++ b/test/fspp/CMakeLists.txt
+@@ -35,13 +35,6 @@ set(SOURCES
+     fuse/unlink/testutils/FuseUnlinkTest.cpp
+     fuse/unlink/FuseUnlinkErrorTest.cpp
+     fuse/unlink/FuseUnlinkFilenameTest.cpp
+-    fuse/ftruncate/testutils/FuseFTruncateTest.cpp
+-    fuse/ftruncate/FuseFTruncateFileDescriptorTest.cpp
+-    fuse/ftruncate/FuseFTruncateSizeTest.cpp
+-    fuse/ftruncate/FuseFTruncateErrorTest.cpp
+-    fuse/fstat/testutils/FuseFstatTest.cpp
+-    fuse/fstat/FuseFstatParameterTest.cpp
+-    fuse/fstat/FuseFstatErrorTest.cpp
+     fuse/truncate/FuseTruncateSizeTest.cpp
+     fuse/truncate/testutils/FuseTruncateTest.cpp
+     fuse/truncate/FuseTruncateErrorTest.cpp
+diff --git a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenErrorTest.cpp b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenErrorTest.cpp
+index 8631f1f2..76ced436 100644
+--- a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenErrorTest.cpp
++++ b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenErrorTest.cpp
+@@ -4,9 +4,9 @@
+ 
+ using ::testing::WithParamInterface;
+ using ::testing::Values;
+-using ::testing::Return;
+ using ::testing::Throw;
+ using ::testing::Eq;
++using ::testing::Invoke;
+ 
+ using namespace fspp::fuse;
+ 
+@@ -15,10 +15,13 @@ class FuseCreateAndOpenErrorTest: public FuseCreateAndOpenTest, public WithParam
+ INSTANTIATE_TEST_SUITE_P(FuseCreateAndOpenErrorTest, FuseCreateAndOpenErrorTest, Values(EACCES, EDQUOT, EEXIST, EFAULT, EFBIG, EINTR, EOVERFLOW, EINVAL, EISDIR, ELOOP, EMFILE, ENAMETOOLONG, ENFILE, ENODEV, ENOENT, ENOMEM, ENOSPC, ENOTDIR, ENXIO, EOPNOTSUPP, EPERM, EROFS, ETXTBSY, EWOULDBLOCK, EBADF, ENOTDIR));
+ 
+ TEST_F(FuseCreateAndOpenErrorTest, ReturnNoError) {
+-  ReturnDoesntExistOnLstat(FILENAME);
+-  EXPECT_CALL(*fsimpl, createAndOpenFile(Eq(FILENAME), testing::_, testing::_, testing::_)).Times(1).WillOnce(Return(1));
+-  //For the syscall to succeed, we also need to give an fstat implementation.
+-  ReturnIsFileOnFstat(1);
++  bool created = false;
++  ReturnIsFileOnLstatIfFlagIsSet(FILENAME, &created);
++  EXPECT_CALL(*fsimpl, createAndOpenFile(Eq(FILENAME), testing::_, testing::_, testing::_)).Times(1).WillOnce(Invoke([&] () {
++    ASSERT(!created, "called created multiple times");
++    created = true;
++    return 1;
++  }));
+ 
+   const int error = CreateAndOpenFileReturnError(FILENAME, O_RDONLY);
+   EXPECT_EQ(0, error);
+diff --git a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFileDescriptorTest.cpp b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFileDescriptorTest.cpp
+index 7ad08183..2f138390 100644
+--- a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFileDescriptorTest.cpp
++++ b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFileDescriptorTest.cpp
+@@ -3,7 +3,7 @@
+ using ::testing::Eq;
+ using ::testing::WithParamInterface;
+ using ::testing::Values;
+-using ::testing::Return;
++using ::testing::Invoke;
+ using cpputils::unique_ref;
+ using cpputils::make_unique_ref;
+ 
+@@ -32,12 +32,17 @@ private:
+ INSTANTIATE_TEST_SUITE_P(FuseCreateAndOpenFileDescriptorTest, FuseCreateAndOpenFileDescriptorTest, Values(0, 2, 5, 1000, 1024*1024*1024));
+ 
+ TEST_P(FuseCreateAndOpenFileDescriptorTest, TestReturnedFileDescriptor) {
+-  ReturnDoesntExistOnLstat(FILENAME);
++  bool created = false;
++  ReturnIsFileOnLstatWithSizeIfFlagIsSet(FILENAME, fspp::num_bytes_t(100), &created);
+   EXPECT_CALL(*fsimpl, createAndOpenFile(Eq(FILENAME), testing::_, testing::_, testing::_))
+-    .Times(1).WillOnce(Return(GetParam()));
+-  EXPECT_CALL(*fsimpl, read(GetParam(), testing::_, testing::_, testing::_)).Times(1).WillOnce(Return(fspp::num_bytes_t(1)));
+-  //For the syscall to succeed, we also need to give an fstat implementation.
+-  ReturnIsFileOnFstatWithSize(GetParam(), fspp::num_bytes_t(1));
++    .Times(1).WillOnce(Invoke([&] () {
++      ASSERT(!created, "called createAndOpenFile multiple times");
++      created = true;
++      return GetParam();
++    }));
++  EXPECT_CALL(*fsimpl, read(Eq(GetParam()), testing::_, testing::_, testing::_)).Times(1).WillOnce(Invoke([] () {
++    return fspp::num_bytes_t(1);
++  }));
+ 
+   CreateAndOpenAndReadFile(FILENAME);
+ }
+diff --git a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFilenameTest.cpp b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFilenameTest.cpp
+index aa3f9ecd..77d93416 100644
+--- a/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFilenameTest.cpp
++++ b/test/fspp/fuse/createAndOpenFile/FuseCreateAndOpenFilenameTest.cpp
+@@ -1,41 +1,50 @@
+ #include "testutils/FuseCreateAndOpenTest.h"
+ 
+ using ::testing::Eq;
+-using ::testing::Return;
++using ::testing::Invoke;
+ 
+ class FuseCreateAndOpenFilenameTest: public FuseCreateAndOpenTest {
+ public:
+ };
+ 
+ TEST_F(FuseCreateAndOpenFilenameTest, CreateAndOpenFile) {
+-  ReturnDoesntExistOnLstat("/myfile");
++  bool created = false;
++  ReturnIsFileOnLstatIfFlagIsSet("/myfile", &created);
+   EXPECT_CALL(*fsimpl, createAndOpenFile(Eq("/myfile"), testing::_, testing::_, testing::_))
+-    .Times(1).WillOnce(Return(0));
+-  //For the syscall to succeed, we also need to give an fstat implementation.
+-  ReturnIsFileOnFstat(0);
++    .Times(1).WillOnce(Invoke([&] () {
++      ASSERT(!created, "called createAndOpenFile multiple times");
++      created = true;
++      return 0;
++    }));
+ 
+   CreateAndOpenFile("/myfile", O_RDONLY);
+ }
+ 
+ TEST_F(FuseCreateAndOpenFilenameTest, CreateAndOpenFileNested) {
++  bool created = false;
+   ReturnIsDirOnLstat("/mydir");
+-  ReturnDoesntExistOnLstat("/mydir/myfile");
++  ReturnIsFileOnLstatIfFlagIsSet("/mydir/myfile", &created);
+   EXPECT_CALL(*fsimpl, createAndOpenFile(Eq("/mydir/myfile"), testing::_, testing::_, testing::_))
+-    .Times(1).WillOnce(Return(0));
+-  //For the syscall to succeed, we also need to give an fstat implementation.
+-  ReturnIsFileOnFstat(0);
++    .Times(1).WillOnce(Invoke([&] () {
++      ASSERT(!created, "called createAndOpenFile multiple times");
++      created = true;
++      return 0;
++    }));
+ 
+   CreateAndOpenFile("/mydir/myfile", O_RDONLY);
+ }
+ 
+ TEST_F(FuseCreateAndOpenFilenameTest, CreateAndOpenFileNested2) {
++  bool created = false;
+   ReturnIsDirOnLstat("/mydir");
+   ReturnIsDirOnLstat("/mydir/mydir2");
+-  ReturnDoesntExistOnLstat("/mydir/mydir2/myfile");
++  ReturnIsFileOnLstatIfFlagIsSet("/mydir/mydir2/myfile", &created);
+   EXPECT_CALL(*fsimpl, createAndOpenFile(Eq("/mydir/mydir2/myfile"), testing::_, testing::_, testing::_))
+-    .Times(1).WillOnce(Return(0));
+-  //For the syscall to succeed, we also need to give an fstat implementation.
+-  ReturnIsFileOnFstat(0);
++    .Times(1).WillOnce(Invoke([&] () {
++      ASSERT(!created, "called createAndOpenFile multiple times");
++      created = true;
++      return 0;
++    }));
+ 
+   CreateAndOpenFile("/mydir/mydir2/myfile", O_RDONLY);
+ }
+diff --git a/test/fspp/fuse/fstat/FuseFstatErrorTest.cpp b/test/fspp/fuse/fstat/FuseFstatErrorTest.cpp
+deleted file mode 100644
+index e50c03df..00000000
+--- a/test/fspp/fuse/fstat/FuseFstatErrorTest.cpp
++++ /dev/null
+@@ -1,37 +0,0 @@
+-#include "testutils/FuseFstatTest.h"
+-
+-#include "fspp/fs_interface/FuseErrnoException.h"
+-
+-using ::testing::WithParamInterface;
+-using ::testing::Values;
+-using ::testing::Eq;
+-using ::testing::Throw;
+-
+-
+-using namespace fspp::fuse;
+-
+-// Cite from FUSE documentation on the fgetattr function:
+-// "Currently this is only called after the create() method if that is implemented (see above).
+-//  Later it may be called for invocations of fstat() too."
+-// So we need to issue a create to get our fstat called.
+-
+-class FuseFstatErrorTest: public FuseFstatTest, public WithParamInterface<int> {
+-public:
+-  /*unique_ref<OpenFileHandle> CreateFileAllowErrors(const TempTestFS *fs, const std::string &filename) {
+-    auto real_path = fs->mountDir() / filename;
+-    return make_unique_ref<OpenFileHandle>(real_path.string().c_str(), O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+-  }*/
+-};
+-INSTANTIATE_TEST_SUITE_P(FuseFstatErrorTest, FuseFstatErrorTest, Values(EACCES, EBADF, EFAULT, ELOOP, ENAMETOOLONG, ENOENT, ENOMEM, ENOTDIR, EOVERFLOW));
+-
+-TEST_P(FuseFstatErrorTest, ReturnedErrorCodeIsCorrect) {
+-  ReturnDoesntExistOnLstat(FILENAME);
+-  OnCreateAndOpenReturnFileDescriptor(FILENAME, 0);
+-
+-  EXPECT_CALL(*fsimpl, fstat(Eq(0), testing::_)).Times(1).WillOnce(Throw(FuseErrnoException(GetParam())));
+-
+-  auto fs = TestFS();
+-
+-  const int error = CreateFileReturnError(fs.get(), FILENAME);
+-  EXPECT_EQ(GetParam(), error);
+-}
+diff --git a/test/fspp/fuse/fstat/FuseFstatParameterTest.cpp b/test/fspp/fuse/fstat/FuseFstatParameterTest.cpp
+deleted file mode 100644
+index 9009f8d2..00000000
+--- a/test/fspp/fuse/fstat/FuseFstatParameterTest.cpp
++++ /dev/null
+@@ -1,33 +0,0 @@
+-#include "testutils/FuseFstatTest.h"
+-
+-#include "fspp/fs_interface/FuseErrnoException.h"
+-
+-using ::testing::WithParamInterface;
+-using ::testing::Values;
+-using ::testing::Eq;
+-
+-using namespace fspp::fuse;
+-
+-// Cite from FUSE documentation on the fgetattr function:
+-// "Currently this is only called after the create() method if that is implemented (see above).
+-//  Later it may be called for invocations of fstat() too."
+-// So we need to issue a create to get our fstat called.
+-
+-class FuseFstatParameterTest: public FuseFstatTest, public WithParamInterface<int> {
+-public:
+-  void CallFstat(const char *filename) {
+-    auto fs = TestFS();
+-    CreateFile(fs.get(), filename);
+-  }
+-};
+-INSTANTIATE_TEST_SUITE_P(FuseFstatParameterTest, FuseFstatParameterTest, Values(0,1,10,1000,1024*1024*1024));
+-
+-
+-TEST_P(FuseFstatParameterTest, FileDescriptorIsCorrect) {
+-  ReturnDoesntExistOnLstat(FILENAME);
+-  OnCreateAndOpenReturnFileDescriptor(FILENAME, GetParam());
+-
+-  EXPECT_CALL(*fsimpl, fstat(Eq(GetParam()), testing::_)).Times(1).WillOnce(ReturnIsFileFstat);
+-
+-  CallFstat(FILENAME);
+-}
+diff --git a/test/fspp/fuse/fstat/README b/test/fspp/fuse/fstat/README
+deleted file mode 100644
+index a72352a3..00000000
+--- a/test/fspp/fuse/fstat/README
++++ /dev/null
+@@ -1,6 +0,0 @@
+-Cite from FUSE documentation on the fgetattr function:
+-    Currently this is only called after the create() method if that is implemented (see above).
+-    Later it may be called for invocations of fstat() too.
+-So we need to issue a create to get our fstat called.
+-Since fstat is currently only called after create, we can't call it directly.
+-So we can't test the returned values.
+diff --git a/test/fspp/fuse/fstat/testutils/FuseFstatTest.cpp b/test/fspp/fuse/fstat/testutils/FuseFstatTest.cpp
+deleted file mode 100644
+index 6d4b320a..00000000
+--- a/test/fspp/fuse/fstat/testutils/FuseFstatTest.cpp
++++ /dev/null
+@@ -1,28 +0,0 @@
+-#include "FuseFstatTest.h"
+-
+-using ::testing::Eq;
+-using ::testing::Return;
+-using cpputils::unique_ref;
+-using cpputils::make_unique_ref;
+-
+-
+-unique_ref<OpenFileHandle> FuseFstatTest::CreateFile(const TempTestFS *fs, const std::string &filename) {
+-  auto fd = CreateFileAllowErrors(fs, filename);
+-  EXPECT_GE(fd->fd(), 0) << "Opening file failed";
+-  return fd;
+-}
+-
+-int FuseFstatTest::CreateFileReturnError(const TempTestFS *fs, const std::string &filename) {
+-  auto fd = CreateFileAllowErrors(fs, filename);
+-  return fd->errorcode();
+-}
+-
+-unique_ref<OpenFileHandle> FuseFstatTest::CreateFileAllowErrors(const TempTestFS *fs, const std::string &filename) {
+-  auto real_path = fs->mountDir() / filename;
+-  auto fd = make_unique_ref<OpenFileHandle>(real_path.string().c_str(), O_RDWR | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+-  return fd;
+-}
+-
+-void FuseFstatTest::OnCreateAndOpenReturnFileDescriptor(const char *filename, int descriptor) {
+-  EXPECT_CALL(*fsimpl, createAndOpenFile(Eq(filename), testing::_, testing::_, testing::_)).Times(1).WillOnce(Return(descriptor));
+-}
+diff --git a/test/fspp/fuse/fstat/testutils/FuseFstatTest.h b/test/fspp/fuse/fstat/testutils/FuseFstatTest.h
+deleted file mode 100644
+index b15760c1..00000000
+--- a/test/fspp/fuse/fstat/testutils/FuseFstatTest.h
++++ /dev/null
+@@ -1,18 +0,0 @@
+-#pragma once
+-#ifndef MESSMER_FSPP_TEST_FUSE_FSTAT_TESTUTILS_FUSEFSTATTEST_H_
+-#define MESSMER_FSPP_TEST_FUSE_FSTAT_TESTUTILS_FUSEFSTATTEST_H_
+-
+-#include "../../../testutils/FuseTest.h"
+-#include "../../../testutils/OpenFileHandle.h"
+-
+-class FuseFstatTest: public FuseTest {
+-public:
+-  cpputils::unique_ref<OpenFileHandle> CreateFile(const TempTestFS *fs, const std::string &filename);
+-  int CreateFileReturnError(const TempTestFS *fs, const std::string &filename);
+-  void OnCreateAndOpenReturnFileDescriptor(const char *filename, int descriptor);
+-private:
+-  cpputils::unique_ref<OpenFileHandle> CreateFileAllowErrors(const TempTestFS *fs, const std::string &filename);
+-};
+-
+-
+-#endif
+diff --git a/test/fspp/fuse/ftruncate/FuseFTruncateErrorTest.cpp b/test/fspp/fuse/ftruncate/FuseFTruncateErrorTest.cpp
+deleted file mode 100644
+index 402a2711..00000000
+--- a/test/fspp/fuse/ftruncate/FuseFTruncateErrorTest.cpp
++++ /dev/null
+@@ -1,25 +0,0 @@
+-#include "testutils/FuseFTruncateTest.h"
+-
+-#include "fspp/fs_interface/FuseErrnoException.h"
+-
+-using ::testing::Throw;
+-using ::testing::WithParamInterface;
+-using ::testing::Values;
+-
+-using namespace fspp::fuse;
+-
+-class FuseFTruncateErrorTest: public FuseFTruncateTest, public WithParamInterface<int> {
+-};
+-INSTANTIATE_TEST_SUITE_P(FuseFTruncateErrorTest, FuseFTruncateErrorTest, Values(EACCES, EFAULT, EFBIG, EINTR, EINVAL, EIO, EISDIR, ELOOP, ENAMETOOLONG, ENOENT, ENOTDIR, EPERM, EROFS, ETXTBSY, EBADF));
+-
+-TEST_P(FuseFTruncateErrorTest, ReturnedErrorIsCorrect) {
+-  ReturnIsFileOnLstat(FILENAME);
+-  OnOpenReturnFileDescriptor(FILENAME, 0);
+-  EXPECT_CALL(*fsimpl, ftruncate(0, testing::_))
+-    .Times(1).WillOnce(Throw(FuseErrnoException(GetParam())));
+-  //Needed to make ::ftruncate system call return successfully
+-  ReturnIsFileOnFstat(0);
+-
+-  const int error = FTruncateFileReturnError(FILENAME, fspp::num_bytes_t(0));
+-  EXPECT_EQ(GetParam(), error);
+-}
+diff --git a/test/fspp/fuse/ftruncate/FuseFTruncateFileDescriptorTest.cpp b/test/fspp/fuse/ftruncate/FuseFTruncateFileDescriptorTest.cpp
+deleted file mode 100644
+index 93f723e8..00000000
+--- a/test/fspp/fuse/ftruncate/FuseFTruncateFileDescriptorTest.cpp
++++ /dev/null
+@@ -1,26 +0,0 @@
+-#include "testutils/FuseFTruncateTest.h"
+-
+-#include "fspp/fs_interface/FuseErrnoException.h"
+-
+-using ::testing::WithParamInterface;
+-using ::testing::Values;
+-using ::testing::Eq;
+-using ::testing::Return;
+-
+-using namespace fspp::fuse;
+-
+-class FuseFTruncateFileDescriptorTest: public FuseFTruncateTest, public WithParamInterface<int> {
+-};
+-INSTANTIATE_TEST_SUITE_P(FuseFTruncateFileDescriptorTest, FuseFTruncateFileDescriptorTest, Values(0,1,10,1000,1024*1024*1024));
+-
+-
+-TEST_P(FuseFTruncateFileDescriptorTest, FileDescriptorIsCorrect) {
+-  ReturnIsFileOnLstat(FILENAME);
+-  OnOpenReturnFileDescriptor(FILENAME, GetParam());
+-  EXPECT_CALL(*fsimpl, ftruncate(Eq(GetParam()), testing::_))
+-    .Times(1).WillOnce(Return());
+-  //Needed to make ::ftruncate system call return successfully
+-  ReturnIsFileOnFstat(GetParam());
+-
+-  FTruncateFile(FILENAME, fspp::num_bytes_t(0));
+-}
+diff --git a/test/fspp/fuse/ftruncate/FuseFTruncateSizeTest.cpp b/test/fspp/fuse/ftruncate/FuseFTruncateSizeTest.cpp
+deleted file mode 100644
+index 7560c581..00000000
+--- a/test/fspp/fuse/ftruncate/FuseFTruncateSizeTest.cpp
++++ /dev/null
+@@ -1,27 +0,0 @@
+-#include "testutils/FuseFTruncateTest.h"
+-
+-using ::testing::Eq;
+-using ::testing::Return;
+-using ::testing::WithParamInterface;
+-using ::testing::Values;
+-
+-class FuseFTruncateSizeTest: public FuseFTruncateTest, public WithParamInterface<fspp::num_bytes_t> {
+-};
+-INSTANTIATE_TEST_SUITE_P(FuseFTruncateSizeTest, FuseFTruncateSizeTest, Values(
+-    fspp::num_bytes_t(0),
+-    fspp::num_bytes_t(1),
+-    fspp::num_bytes_t(10),
+-    fspp::num_bytes_t(1024),
+-    fspp::num_bytes_t(1024*1024*1024)));
+-
+-
+-TEST_P(FuseFTruncateSizeTest, FTruncateFile) {
+-  ReturnIsFileOnLstat(FILENAME);
+-  OnOpenReturnFileDescriptor(FILENAME, 0);
+-  EXPECT_CALL(*fsimpl, ftruncate(Eq(0), GetParam()))
+-    .Times(1).WillOnce(Return());
+-  //Needed to make ::ftruncate system call return successfully
+-  ReturnIsFileOnFstat(0);
+-
+-  FTruncateFile(FILENAME, fspp::num_bytes_t(GetParam()));
+-}
+diff --git a/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.cpp b/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.cpp
+deleted file mode 100644
+index 741570ce..00000000
+--- a/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.cpp
++++ /dev/null
+@@ -1,28 +0,0 @@
+-#include "FuseFTruncateTest.h"
+-
+-using cpputils::unique_ref;
+-using cpputils::make_unique_ref;
+-
+-void FuseFTruncateTest::FTruncateFile(const char *filename, fspp::num_bytes_t size) {
+-  const int error = FTruncateFileReturnError(filename, size);
+-  EXPECT_EQ(0, error);
+-}
+-
+-int FuseFTruncateTest::FTruncateFileReturnError(const char *filename, fspp::num_bytes_t size) {
+-  auto fs = TestFS();
+-
+-  auto fd = OpenFile(fs.get(), filename);
+-  const int retval = ::ftruncate(fd->fd(), size.value());
+-  if (0 == retval) {
+-    return 0;
+-  } else {
+-    return errno;
+-  }
+-}
+-
+-unique_ref<OpenFileHandle> FuseFTruncateTest::OpenFile(const TempTestFS *fs, const char *filename) {
+-  auto realpath = fs->mountDir() / filename;
+-  auto fd = make_unique_ref<OpenFileHandle>(realpath.string().c_str(), O_RDWR);
+-  EXPECT_GE(fd->fd(), 0) << "Error opening file";
+-  return fd;
+-}
+diff --git a/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.h b/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.h
+deleted file mode 100644
+index a4353d50..00000000
+--- a/test/fspp/fuse/ftruncate/testutils/FuseFTruncateTest.h
++++ /dev/null
+@@ -1,19 +0,0 @@
+-#pragma once
+-#ifndef MESSMER_FSPP_TEST_FUSE_FTRUNCATE_TESTUTILS_FUSEFTRUNCATETEST_H_
+-#define MESSMER_FSPP_TEST_FUSE_FTRUNCATE_TESTUTILS_FUSEFTRUNCATETEST_H_
+-
+-#include "../../../testutils/FuseTest.h"
+-#include "../../../testutils/OpenFileHandle.h"
+-
+-class FuseFTruncateTest: public FuseTest {
+-public:
+-  const char *FILENAME = "/myfile";
+-
+-  void FTruncateFile(const char *filename, fspp::num_bytes_t size);
+-  int FTruncateFileReturnError(const char *filename, fspp::num_bytes_t size);
+-
+-private:
+-  cpputils::unique_ref<OpenFileHandle> OpenFile(const TempTestFS *fs, const char *filename);
+-};
+-
+-#endif
+diff --git a/test/fspp/impl/FuseOpenFileListTest.cpp b/test/fspp/impl/FuseOpenFileListTest.cpp
+index 228b5fa5..60506bc5 100644
+--- a/test/fspp/impl/FuseOpenFileListTest.cpp
++++ b/test/fspp/impl/FuseOpenFileListTest.cpp
+@@ -17,8 +17,6 @@ public:
+ 
+   ~MockOpenFile() override {destructed = true;}
+ 
+-  MOCK_METHOD(OpenFile::stat_info, stat, (), (const, override));
+-  MOCK_METHOD(void, truncate, (fspp::num_bytes_t), (const, override));
+   MOCK_METHOD(fspp::num_bytes_t, read, (void*, fspp::num_bytes_t, fspp::num_bytes_t), (const, override));
+   MOCK_METHOD(void, write, (const void*, fspp::num_bytes_t, fspp::num_bytes_t), (override));
+   MOCK_METHOD(void, flush, (), (override));
+diff --git a/test/fspp/testutils/FuseTest.cpp b/test/fspp/testutils/FuseTest.cpp
+index fa45ba8f..c4e6c063 100644
+--- a/test/fspp/testutils/FuseTest.cpp
++++ b/test/fspp/testutils/FuseTest.cpp
+@@ -24,9 +24,7 @@ FuseTest::FuseTest(): fsimpl(make_shared<MockFilesystem>()), _context(boost::non
+   ON_CALL(*fsimpl, openFile(_,_)).WillByDefault(defaultAction);
+   ON_CALL(*fsimpl, closeFile(_)).WillByDefault(defaultAction);
+   ON_CALL(*fsimpl, lstat(_,_)).WillByDefault(Throw(FuseErrnoException(ENOENT)));
+-  ON_CALL(*fsimpl, fstat(_,_)).WillByDefault(Throw(FuseErrnoException(ENOENT)));
+   ON_CALL(*fsimpl, truncate(_,_)).WillByDefault(defaultAction);
+-  ON_CALL(*fsimpl, ftruncate(_,_)).WillByDefault(defaultAction);
+   ON_CALL(*fsimpl, read(_,_,_,_)).WillByDefault(defaultAction);
+   ON_CALL(*fsimpl, write(_,_,_,_)).WillByDefault(defaultAction);
+   ON_CALL(*fsimpl, fsync(_)).WillByDefault(defaultAction);
+@@ -85,6 +83,18 @@ Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> FuseTest::Return
+   });
+ }
+ 
++Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> FuseTest::ReturnIsFileWithSizeIfFlagIsSet(fspp::num_bytes_t size, const bool* flag) {
++  return Invoke([size, flag](const boost::filesystem::path&, fspp::fuse::STAT* result) {
++    if (*flag) {
++      result->st_mode = S_IFREG | S_IRUSR | S_IRGRP | S_IROTH;
++      result->st_nlink = 1;
++      result->st_size = size.value();
++    } else {
++      throw fspp::fuse::FuseErrnoException(ENOENT);
++    }
++  });
++}
++
+ //TODO Combine ReturnIsFile and ReturnIsFileFstat. This should be possible in gmock by either (a) using ::testing::Undefined as parameter type or (b) using action macros
+ Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> FuseTest::ReturnIsFile = ReturnIsFileWithSize(fspp::num_bytes_t(0));
+ 
+@@ -118,6 +128,14 @@ void FuseTest::ReturnIsFileOnLstat(const bf::path &path) {
+   EXPECT_CALL(*fsimpl, lstat(Eq(path), ::testing::_)).WillRepeatedly(ReturnIsFile);
+ }
+ 
++void FuseTest::ReturnIsFileOnLstatIfFlagIsSet(const bf::path &path, const bool* created) {
++  ReturnIsFileOnLstatWithSizeIfFlagIsSet(path, fspp::num_bytes_t(0), created);
++}
++
++void FuseTest::ReturnIsFileOnLstatWithSizeIfFlagIsSet(const bf::path &path, const fspp::num_bytes_t size, const bool* created) {
++  EXPECT_CALL(*fsimpl, lstat(Eq(path), ::testing::_)).WillRepeatedly(ReturnIsFileWithSizeIfFlagIsSet(size, created));
++}
++
+ void FuseTest::ReturnIsFileOnLstatWithSize(const bf::path &path, const fspp::num_bytes_t size) {
+   EXPECT_CALL(*fsimpl, lstat(Eq(path), ::testing::_)).WillRepeatedly(ReturnIsFileWithSize(size));
+ }
+@@ -129,11 +147,3 @@ void FuseTest::ReturnIsDirOnLstat(const bf::path &path) {
+ void FuseTest::ReturnDoesntExistOnLstat(const bf::path &path) {
+   EXPECT_CALL(*fsimpl, lstat(Eq(path), ::testing::_)).WillRepeatedly(ReturnDoesntExist);
+ }
+-
+-void FuseTest::ReturnIsFileOnFstat(int descriptor) {
+-  EXPECT_CALL(*fsimpl, fstat(descriptor, testing::_)).WillRepeatedly(ReturnIsFileFstat);
+-}
+-
+-void FuseTest::ReturnIsFileOnFstatWithSize(int descriptor, fspp::num_bytes_t size) {
+-  EXPECT_CALL(*fsimpl, fstat(descriptor, testing::_)).WillRepeatedly(ReturnIsFileFstatWithSize(size));
+-}
+diff --git a/test/fspp/testutils/FuseTest.h b/test/fspp/testutils/FuseTest.h
+index 08ca036a..fa97a38e 100644
+--- a/test/fspp/testutils/FuseTest.h
++++ b/test/fspp/testutils/FuseTest.h
+@@ -24,9 +24,7 @@ public:
+   MOCK_METHOD(int, openFile, (const boost::filesystem::path&, int), (override));
+   MOCK_METHOD(void, closeFile, (int), (override));
+   MOCK_METHOD(void, lstat, (const boost::filesystem::path&, fspp::fuse::STAT*), (override));
+-  MOCK_METHOD(void, fstat, (int, fspp::fuse::STAT*), (override));
+   MOCK_METHOD(void, truncate, (const boost::filesystem::path&, fspp::num_bytes_t), (override));
+-  MOCK_METHOD(void, ftruncate, (int, fspp::num_bytes_t), (override));
+   MOCK_METHOD(fspp::num_bytes_t, read, (int, void*, fspp::num_bytes_t, fspp::num_bytes_t), (override));
+   MOCK_METHOD(void, write, (int, const void*, fspp::num_bytes_t, fspp::num_bytes_t), (override));
+   MOCK_METHOD(void, flush, (int), (override));
+@@ -81,18 +79,19 @@ public:
+   //TODO Combine ReturnIsFile and ReturnIsFileFstat. This should be possible in gmock by either (a) using ::testing::Undefined as parameter type or (b) using action macros
+   static ::testing::Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> ReturnIsFile; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+   static ::testing::Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> ReturnIsFileWithSize(fspp::num_bytes_t size); // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
++  static ::testing::Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> ReturnIsFileWithSizeIfFlagIsSet(fspp::num_bytes_t size, const bool* flag); // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+   static ::testing::Action<void(int, fspp::fuse::STAT*)> ReturnIsFileFstat; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+   static ::testing::Action<void(int, fspp::fuse::STAT*)> ReturnIsFileFstatWithSize(fspp::num_bytes_t size); // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+   static ::testing::Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> ReturnIsDir; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+   static ::testing::Action<void(const boost::filesystem::path&, fspp::fuse::STAT*)> ReturnDoesntExist; // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+ 
+   void ReturnIsFileOnLstat(const boost::filesystem::path &path);
++  void ReturnIsFileOnLstatIfFlagIsSet(const boost::filesystem::path &path, const bool *created);
++  void ReturnIsFileOnLstatWithSizeIfFlagIsSet(const boost::filesystem::path &path, const fspp::num_bytes_t size, const bool* created);
+   void ReturnIsFileOnLstatWithSize(const boost::filesystem::path &path, fspp::num_bytes_t size);
+   void ReturnIsDirOnLstat(const boost::filesystem::path &path);
+   void ReturnDoesntExistOnLstat(const boost::filesystem::path &path);
+   void OnOpenReturnFileDescriptor(const char *filename, int descriptor);
+-  void ReturnIsFileOnFstat(int descriptor);
+-  void ReturnIsFileOnFstatWithSize(int descriptor, fspp::num_bytes_t size);
+ };
+ 
+ #endif
