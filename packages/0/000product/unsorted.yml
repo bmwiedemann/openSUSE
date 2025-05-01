@@ -844,6 +844,7 @@ unsorted:
   - arcanist 
   - arch-install-scripts 
   - archivemount 
+  - archivemount-ng 
   - ardour 
   - argocd-autopilot 
   - argocd-autopilot-bash-completion 
@@ -9379,13 +9380,6 @@ unsorted:
   - java-21-openjdk-javadoc 
   - java-21-openjdk-jmods 
   - java-21-openjdk-src 
-  - java-23-openjdk 
-  - java-23-openjdk-demo 
-  - java-23-openjdk-devel 
-  - java-23-openjdk-headless 
-  - java-23-openjdk-javadoc 
-  - java-23-openjdk-jmods 
-  - java-23-openjdk-src 
   - java-24-openjdk 
   - java-24-openjdk-demo 
   - java-24-openjdk-devel 
@@ -11117,6 +11111,7 @@ unsorted:
   - lego 
   - leiningen 
   - lekha 
+  - lemon 
   - lemonbar 
   - lensfun-devel 
   - lensfun-doc 
@@ -14812,8 +14807,8 @@ unsorted:
   - libnfc-devel 
   - libnfc-tools 
   - libnfc6 
-  - libnfdump-1_7_5 
-  - libnffile-1_7_5 
+  - libnfdump-1_7_6 
+  - libnffile-1_7_6 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -15451,7 +15446,9 @@ unsorted:
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit 
   - libpython3_11-1_0-32bit 
+  - libpython3_12-1_0 
   - libpython3_12-1_0-32bit 
+  - libpython3_12-1_0-x86-64-v3 
   - libpython3_13-1_0-32bit 
   - libpython3_13t-1_0 
   - libpython3_14-1_0 
@@ -27506,6 +27503,7 @@ unsorted:
   - python311-zstd 
   - python311-zxcvbn 
   - python311-zxcvbn-rs-py 
+  - python312 
   - python312-32bit 
   - python312-APScheduler 
   - python312-AnyQt 
@@ -28322,7 +28320,9 @@ unsorted:
   - python312-backports.tarfile 
   - python312-backrefs 
   - python312-baron 
+  - python312-base 
   - python312-base-32bit 
+  - python312-base-x86-64-v3 
   - python312-base58 
   - python312-bashate 
   - python312-bcrypt 
@@ -28564,6 +28564,7 @@ unsorted:
   - python312-ctranslate2 
   - python312-ctypesgen 
   - python312-curlylint 
+  - python312-curses 
   - python312-curtsies 
   - python312-cwcwidth 
   - python312-cx_Freeze 
@@ -28598,6 +28599,7 @@ unsorted:
   - python312-datrie 
   - python312-dbf 
   - python312-dbfread 
+  - python312-dbm 
   - python312-dbus-deviation 
   - python312-dbus-python 
   - python312-dbus-python-devel 
@@ -29008,7 +29010,9 @@ unsorted:
   - python312-glucat 
   - python312-gmpy2 
   - python312-gns3fy 
+  - python312-gobject 
   - python312-gobject-Gdk 
+  - python312-gobject-cairo 
   - python312-gobject-devel 
   - python312-google-ai-generativelanguage 
   - python312-google-api-core 
@@ -29898,6 +29902,7 @@ unsorted:
   - python312-pilkit 
   - python312-pillow-heif 
   - python312-pingparsing 
+  - python312-pip 
   - python312-pip-api 
   - python312-pip-licenses 
   - python312-pip-requirements-parser 
@@ -30053,6 +30058,7 @@ unsorted:
   - python312-pybluez 
   - python312-pybtex 
   - python312-pybugz 
+  - python312-pycairo 
   - python312-pycairo-devel 
   - python312-pycapnp 
   - python312-pycares 
@@ -31155,6 +31161,7 @@ unsorted:
   - python312-wurlitzer 
   - python312-wxPython 
   - python312-wyoming 
+  - python312-x86-64-v3 
   - python312-xapian 
   - python312-xapian-haystack 
   - python312-xapp 
