@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 17 10:30:36 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 1.73.0
+  * api: add o3 and o4-mini model IDs (4bacbd5)
+  * api: Add evalapi to sdk (#2287) (35262fc)
+  * api: add get /responses/{response_id}/input_items endpoint (4c6a35d)
+  * api: add get /chat/completions endpoint (e6b8a42)
+  * add audio helpers (423655c)
+  * api: new models for TTS, STT, + new audio features for Realtime (#2232) (ab5192d)
+  * api: add support for storing chat completions (#2117) (2357a8f)
+  * client: send X-Stainless-Read-Timeout header (#2094) (0288213)
+  * embeddings: use stdlib array type for improved performance (#2060) (9a95db9)
+  * pagination: avoid fetching when has_more: false (#2098) (1882483)
+
+
+-------------------------------------------------------------------
 Fri Jan  3 13:46:26 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.59.1:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        1.59.1
+Version:        1.73.0
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.5.0
+Requires:       python-anyio >= 4.5.0
 Requires:       python-distro >= 1.7.0
 Requires:       python-httpx >= 0.23.0
 Requires:       python-jiter >= 0.4.0
@@ -45,12 +45,12 @@ Requires(postun): update-alternatives
 BuildRequires:  %{python_module dirty-equals >= 0.6.0}
 BuildRequires:  %{python_module distro >= 1.7.0}
 BuildRequires:  %{python_module httpx >= 0.23.0}
-BuildRequires:  %{python_module importlib-metadata >= 6.7.0}
+BuildRequires:  %{python_module importlib-metadata >= 7.7.0}
 BuildRequires:  %{python_module inline-snapshot >= 0.7.0}
-BuildRequires:  %{python_module jiter}
+BuildRequires:  %{python_module jiter >= 0.4.0}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module nest-asyncio}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 1.9.0}
 BuildRequires:  %{python_module pyright >= 1.1.359}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -58,7 +58,7 @@ BuildRequires:  %{python_module respx}
 BuildRequires:  %{python_module rich >= 13.7.1}
 BuildRequires:  %{python_module time-machine}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module tqdm > 4}
 BuildRequires:  %{python_module trio >= 0.22.2}
 BuildRequires:  %{python_module typing_extensions}
 # /SECTION
@@ -94,7 +94,7 @@ You can find usage examples for the OpenAI Python library in
 # test_basic_attribute_access_works needs network connection
 # NOTE: Also, "tests/lib/chat/test_completions_streaming.py" required static snapshot
 # files (./.inline_snapshop/external) which are *not included* in the tarball so we need to deselect those tests.
-# NOTE: disable tests with the "asyncio" marker because they required pluggy version 1.3.0 or older
+# NOTE: disable tests with the "asyncio" marker because they required pluggy version 2.3.0 or older
 %pytest --ignore "tests/api_resources" --ignore "tests/lib/chat/test_completions_streaming.py" -m "not asyncio" -k "not (test_streaming_response or test_copy_build_request or test_basic_attribute_access_works)"
 
 %post
