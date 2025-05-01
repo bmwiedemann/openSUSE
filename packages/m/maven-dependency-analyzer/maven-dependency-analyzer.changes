@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 19 04:52:14 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.16.0
+  * New features and improvements
+    + Enable GitHub Issues
+  * Bug Fixes
+    + MSHARED-47: Don't flag xml-apis:xml-apis as undeclared
+  * Maintenance
+    + Remove unneeded suppression
+  * Dependency updates
+    + Bump org.apache.maven.shared:maven-shared-components from 43
+      to 44
+    + Bump org.ow2.asm:asm from 9.7.1 to 9.8
+    + Bump org.assertj:assertj-bom from 3.27.2 to 3.27.3
+    + Bump org.assertj:assertj-bom from 3.26.3 to 3.27.2
+
+-------------------------------------------------------------------
 Tue Oct 29 17:25:56 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.15.1
