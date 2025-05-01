@@ -35,6 +35,8 @@ Summary:        Portable Hardware Locality
 License:        BSD-3-Clause
 URL:            https://www.open-mpi.org/projects/hwloc/
 Source0:        https://download.open-mpi.org/release/hwloc/v2.11/hwloc-%{version}.tar.bz2
+Patch0:         0001-x86-work-around-legacy_max_proc-being-0-while-HTT-fe.patch
+
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -137,6 +139,7 @@ HW accelerators from AMD and NVIDIA
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 autoreconf -fvi
