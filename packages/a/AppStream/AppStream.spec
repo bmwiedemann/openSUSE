@@ -36,7 +36,7 @@
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream%{?pkg_suffix}
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later

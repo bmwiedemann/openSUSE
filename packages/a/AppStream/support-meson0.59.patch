@@ -3,18 +3,18 @@ Author: Antonio Larrosa
 
 ---
  data/meson.build | 12 ++++++++++++
- meson.build      |  4 ++--
+ meson.build      |  3 ++-
  po/meson.build   | 15 +++++++++++++++
- 3 files changed, 29 insertions(+), 2 deletions(-)
+ 3 files changed, 29 insertions(+), 1 deletion(-)
 
 diff --git a/data/meson.build b/data/meson.build
-index 7ae7a9b3..b9208821 100644
+index 7ae7a9b..b920882 100644
 --- a/data/meson.build
 +++ b/data/meson.build
 @@ -24,6 +24,17 @@ metainfo_with_relinfo = custom_target('gen-output',
      command : [ascli_exe, 'news-to-metainfo', '--limit=6', '@INPUT0@', '@INPUT1@', '@OUTPUT@']
  )
-
+ 
 +if meson.version().version_compare('<0.62')
 +metainfo_i18n = i18n.merge_file (
 +    input:  metainfo_with_relinfo,
@@ -34,35 +34,34 @@ index 7ae7a9b3..b9208821 100644
      install_dir: metainfo_dir,
  )
 +endif
-
+ 
  test('as-validate_metainfo.cli',
      ascli_exe,
 diff --git a/meson.build b/meson.build
-index 4636789f..6742fc7c 100644
+index ce84a77..e378bad 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -1,5 +1,5 @@
  project('AppStream', 'c',
 -  meson_version: '>=0.62',
 +  meson_version: '>=0.59',
-   default_options: ['c_std=c11', 'cpp_std=gnu++17'],
-
+   default_options: ['c_std=gnu17', 'cpp_std=c++20'],
+ 
    license: 'LGPL-2.1-or-later',
-@@ -107,7 +107,7 @@ add_project_arguments(
-     '-Werror=missing-include-dirs',
-     '-Werror=declaration-after-statement',
-     '-Werror=format-security',
--
-+    '-Werror=format',
-     '-Wno-missing-field-initializers',
-     '-Wno-error=missing-field-initializers',
-     '-Wno-unused-parameter',
+@@ -73,6 +73,7 @@ if get_option('maintainer')
+                          '-Winline',
+                          '-Wno-error=comment',
+                          '-Werror=format-security',
++                         '-Werror=format',
+ 
+                          # used in rsvg's headers, so we can not make this fatal yet
+                          '-Wno-error=expansion-to-defined',
 diff --git a/po/meson.build b/po/meson.build
-index e9ede195..f7c1d842 100644
+index e9ede19..f7c1d84 100644
 --- a/po/meson.build
 +++ b/po/meson.build
 @@ -1,5 +1,19 @@
-
+ 
  as_gettext_domain = 'appstream'
 +if meson.version().version_compare('<0.62')
 +i18n.gettext(as_gettext_domain,
@@ -86,8 +85,8 @@ index e9ede195..f7c1d842 100644
      ]
  )
 +endif
-
+ 
  run_target ('make-linguas',
      command: ['sh',
---
-2.42.1
+-- 
+2.49.0
