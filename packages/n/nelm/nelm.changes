@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 14 10:43:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * Features
+    - --no-install-crds for release install/plan (efc22bc)
+    - --print-values option for release get (f41f615)
+    - --release-labels option for release install (9b20bc0)
+    - --timeout option for release install/rollback/uninstall/plan
+      (d563296)
+  * Bug Fixes
+    - disallow unknown NELM_FEAT_.* env vars (7e25a16)
+  * Dependencies
+    - chore: update 3p-helm module
+
+-------------------------------------------------------------------
 Wed May 07 12:02:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.0:
