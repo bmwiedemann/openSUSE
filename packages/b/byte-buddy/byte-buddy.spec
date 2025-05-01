@@ -17,7 +17,7 @@
 
 
 Name:           byte-buddy
-Version:        1.17.4
+Version:        1.17.5
 Release:        0
 Summary:        Runtime code generation for the Java virtual machine
 License:        Apache-2.0
@@ -118,7 +118,6 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
 
 %build
 %{mvn_build} -f -s -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install
