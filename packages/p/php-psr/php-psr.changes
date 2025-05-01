@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Apr 27 19:21:08 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix deprecate implicitly nullable parameter types
+  + psr-explicit-nullable-types-php84.patch
+
+-------------------------------------------------------------------
 Sat Dec 10 10:32:12 UTC 2022 - Arjen de Korte <suse+build@de-korte.org>
 
 - Remove php7 build for Tumbleweed (PHP 7.4 has reached EOL)

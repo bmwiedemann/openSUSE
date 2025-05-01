@@ -39,6 +39,8 @@ Group:          Development/Libraries/PHP
 URL:            https://pecl.php.net/package/psr
 Source0:        https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
 Source1:        php-%{pkg_name}-rpmlintrc
+# PATCH-FIX-UPSTREAM - https://github.com/jbboehr/php-psr/commit/4d959c5c006504379c68cdffac6fa0a2cae3bed4
+Patch1:         psr-explicit-nullable-types-php84.patch
 BuildRequires:  %{php_name}-devel >= 7.3.0
 BuildRequires:  gcc
 Requires:       php(api) = %{php_core_api}
@@ -48,7 +50,7 @@ Requires:       php(zend-abi) = %{php_zend_api}
 This extension provides the accepted PSR interfaces, so they can be used in an extension.
 
 %prep
-%setup -q -n %{pkg_name}-%{version}
+%autosetup -p1 -n %{pkg_name}-%{version}
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"
