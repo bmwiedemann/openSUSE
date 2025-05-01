@@ -1,7 +1,7 @@
 #
 # spec file for package haguichi
 #
-# Copyright (c) 2013-2024 Stephen Brandt <stephen@stephenbrandt.com>
+# Copyright (c) 2013-2025 Stephen Brandt <stephen@stephenbrandt.com>
 # Copyright (c) 2018 Alexei Podvalsky <avvissu@yandex.by>
 # Copyright (c) 2010-2012 Adam Mizerski <adam@mizerski.pl>
 #
@@ -20,7 +20,7 @@
 
 %define rdnn    com.github.ztefn.%{name}
 Name:           haguichi
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Hamachi Network Manager
 License:        GPL-3.0-or-later
@@ -36,9 +36,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.56
 BuildRequires:  pkgconfig(gee-0.8) >= 0.20.6
-BuildRequires:  pkgconfig(glib-2.0) >= 2.78
-BuildRequires:  pkgconfig(gtk4) >= 4.12
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.4
+BuildRequires:  pkgconfig(glib-2.0) >= 2.80
+BuildRequires:  pkgconfig(gtk4) >= 4.14
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 BuildRequires:  pkgconfig(libportal) >= 0.7.1
 BuildRequires:  pkgconfig(libportal-gtk4) >= 0.7.1
 Recommends:     %{name}-lang
