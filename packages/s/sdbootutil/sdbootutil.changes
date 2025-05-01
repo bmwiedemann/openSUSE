@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 11:49:27 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250430.f7d1ad1:
+  * Update DA lockout message
+  * jeos-firstboot-enroll: show errors as dialog
+
+-------------------------------------------------------------------
 Fri Apr 25 13:37:14 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250425.25d659b:
