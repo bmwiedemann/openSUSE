@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Apr 30 05:47:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- archivemount-ng is a fork and continuation of archivemount, the
+  original author passed away.
+- This version contains bug fixes and fuse 3 support (boo#1242079)

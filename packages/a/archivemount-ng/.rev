@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bdbee76ad9dbda8f049ab60224a57a79</srcmd5>
+    <version>1a</version>
+    <time>1746105770</time>
+    <user>dimstar_suse</user>
+    <comment>archivemount-ng is a fork and continuation of archivemount, the original author passed away. This version contains bug fixes and fuse 3 support. boo#1242079</comment>
+    <requestid>1273730</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,10 @@
+<package name="archivemount-ng" project="openSUSE:Factory">
+  <title>Mount archives as a file system</title>
+  <description>Archivemount is a piece of glue code between libarchive and FUSE. It can be
+used to mount a (possibly compressed) archive (as in .tar.gz or .zip or .iso)
+and use it like an ordinary filesystem.
+
+This version of the package is a fork and continuation of the original
+archivemount, with fuse 3 support and bug fixes.</description>
+  <url>https://git.sr.ht/~nabijaczleweli/archivemount-ng</url>
+</package>
