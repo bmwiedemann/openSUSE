@@ -167,4 +167,12 @@
     <comment>- Update to release 20240510</comment>
     <requestid>1173057</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>b32ba23d284e47ce847ee23b325c9c79</srcmd5>
+    <version>20240510</version>
+    <time>1746105814</time>
+    <user>dimstar_suse</user>
+    <comment>build with fuse 3 boo#1242079 (forwarded request 1273734 from AndreasStieger)</comment>
+    <requestid>1273779</requestid>
+  </revision>
 </revisionlist>
