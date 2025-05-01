@@ -1,7 +1,7 @@
 #
 # spec file for package nfdump
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define nfcapddatadir   %{_localstatedir}/lib/nfcapd
 %define sfcapddatadir   %{_localstatedir}/lib/sfcapd
 %define nfhomedir       %{_var}/lib/%{name}
-%define sover           1_7_5
+%define sover           1_7_6
 Name:           nfdump
-Version:        1.7.5
+Version:        1.7.6
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Apr 18 19:25:27 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.6
+  * Improve speed through some code optimisation.
+  * Improve support for Palo Alto PA-5420.
+  * Add filter for min ttl and max ttl ttl equal filter for
+    min ttl == max ttl.
+  * Implements Tunnel extension & IPv6 encapsulation in sfcapd.
+  * Allow user selected output format with custom aggregation.
+  * Add ident as %idt token in output formats.
+  * Teach nfpcapd to read gzip compressed pcap files transparently.
+  * Improve exporter algorithm.
+  * Add Subdir -S to dynamic FlowSource -M.
+  * Extend timeWindow to msec format everywhere.
+  * Lot's of bug fixes and tiny changes.
+
+-------------------------------------------------------------------
 Wed Oct 23 19:29:25 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.5
