@@ -89,4 +89,13 @@
     <comment></comment>
     <requestid>1238044</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>a8c2c82792edf3a8021e3082c1ec738a</srcmd5>
+    <version>3.0.0</version>
+    <time>1746105752</time>
+    <user>dimstar_suse</user>
+    <comment>- skip test_deep_recursion, it fails in s390x,
+  gh#gristlabs/asttokens#159</comment>
+    <requestid>1273669</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 30 12:07:17 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- skip test_deep_recursion, it fails in s390x,
+  gh#gristlabs/asttokens#159
+
+-------------------------------------------------------------------
 Tue Jan 14 12:38:36 UTC 2025 - pgajdos@suse.com
 
 - version update to 3.0.0

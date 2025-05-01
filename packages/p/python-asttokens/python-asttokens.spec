@@ -56,7 +56,10 @@ export LC_ALL=en_US.utf8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k 'not TestAstroid'
+donttest="TestAstroid"
+# Fails in s390x gh#gristlabs/asttokens#159
+donttest+=" or test_deep_recursion"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.rst
