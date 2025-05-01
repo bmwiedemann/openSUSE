@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Apr 19 04:56:49 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.2.0
+  * New features and improvements
+    + Enable GitHub Issues
+    + Add Release Drafter
+    + MSHARED-1203: no longer need to shell out to create a symbolic
+      link
+    + Java 7 can detect symbolic links
+  * Maintenance
+    + Update site descriptor
+    + Skip generating of xml reader and writer for FileSet
+    + Use version of modello-maven-plugin from parent
+    + Add PR Automation and Stale actions
+    + MSHARED-1448: Refresh download page
+    + remove duplicate tests and unneeded code
+    + fix JUnit dependencies
+    + MSHARED-1265: use JUnit assumptions
+    + MSHARED-1203: use JUnit @TempDir
+    + MSHARED-1264: Convert to JUnit5
+    + Add GitHub Actions setup and Dependabot
+  * Dependency updates
+    + Bump commons-io:commons-io from 2.18.0 to 2.19.0
+    + Bump org.apache.maven.shared:maven-shared-components from 43
+      to 44
+    + MSHARED-1380: Bump commons-io:commons-io from 2.17.0 to 2.18.0
+    + MSHARED-1381: Bump
+      org.apache.maven.shared:maven-shared-components from 42 to 43
+    + MSHARED-1380: Bump commons-io:commons-io from 2.16.1 to 2.17.0
+    + MSHARED-1380: Bump commons-io:commons-io from 2.13.0 to 2.16.1
+    + MSHARED-1381: Upgrade parent pom to 42
+    + Bump apache/maven-gh-actions-shared from 3 to 4
+    + Bump org.junit:junit-bom from 5.10.1 to 5.10.2
+    + Bump org.junit:junit-bom from 5.10.0 to 5.10.1
+    + Bump org.junit:junit-bom from 5.9.3 to 5.10.0
+    + MSHARED-1266: upgrade commons-io 2.11.0 --> 2.13.0
+    + update to parent pom 39
+
+-------------------------------------------------------------------
 Wed Jun 12 10:00:20 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.1.0
