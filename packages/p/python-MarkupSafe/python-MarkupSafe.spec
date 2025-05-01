@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-MarkupSafe%{psuffix}
-Version:        2.1.5
+Version:        3.0.2
 Release:        0
 Summary:        Implements a XML/HTML/XHTML Markup safe string for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pallets/markupsafe
-Source:         https://files.pythonhosted.org/packages/source/M/MarkupSafe/MarkupSafe-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/M/MarkupSafe/markupsafe-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -51,7 +51,7 @@ Implements a unicode subclass that supports HTML strings. This can be used to
 safely encode strings for dynamically generated web pages.
 
 %prep
-%autosetup -p1 -n MarkupSafe-%{version}
+%autosetup -p1 -n markupsafe-%{version}
 
 # Upstream changed the Python package metadata to require Python 3.7, but the tests pass on Python 3.6.
 sed -i -e '/^python_requires =/s/3\.7/3\.6/' setup.cfg
@@ -76,8 +76,8 @@ export CFLAGS="%{optflags}"
 
 %if !%{with test}
 %files %{python_files}
-%license LICENSE.rst
-%doc README.rst docs/
+%license LICENSE.txt
+%doc README.md docs/
 %{python_sitearch}/markupsafe/
 %{python_sitearch}/[mM]arkup[sS]afe-%{version}.dist-info
 %endif
