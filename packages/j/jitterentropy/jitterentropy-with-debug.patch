@@ -1,7 +1,7 @@
-Index: jitterentropy-library-3.4.0/Makefile
+Index: jitterentropy-library-3.6.3/Makefile
 ===================================================================
---- jitterentropy-library-3.4.0.orig/Makefile
-+++ jitterentropy-library-3.4.0/Makefile
+--- jitterentropy-library-3.6.3.orig/Makefile
++++ jitterentropy-library-3.6.3/Makefile
 @@ -4,8 +4,8 @@ CC ?= gcc
  #Hardening
  ENABLE_STACK_PROTECTOR ?= 1
@@ -21,4 +21,4 @@ Index: jitterentropy-library-3.4.0/Makefile
 +INSTALL_STRIP ?= install
  
  NAME := jitterentropy
- LIBMAJOR=$(shell cat $(SRCDIR)/jitterentropy-base.c | grep define | grep MAJVERSION | awk '{print $$3}')
+ LIBMAJOR=$(shell cat jitterentropy.h | egrep "define\s+JENT_MAJVERSION" | awk '{print $$3}')

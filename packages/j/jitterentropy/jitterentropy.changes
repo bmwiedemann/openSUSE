@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Apr 30 09:00:00 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 3.6.3: [bsc#1242050]
+  * Correct time stamp processing on AIX
+  * Use high-resolution time stamp on Apple Silicon
+  * GCD power-up test: consider OSR
+  * Remove patches fixed in the update:
+    - jitterentropy-fix-a-stack-corruption-on-s390x.patch
+  * Rebase patches:
+    - jitterentropy-split-internal-header.patch
+    - jitterentropy-with-debug.patch
+
+- Update to 3.6.2:
+  * Fix RCT re-initialization in jent_read_entropy_safe
+  * simplify test code
+  * improve keyword portability
+
+- Update to 3.6.1:
+  * Add more test code
+  * Add support for SunPRO compiler
+  * Fix compilation on OpenBSD by replacing sed with tr
+  * internal timer: Add support for Apple
+  * Various small fixes to compilation to imporve portability
+
+- Update to 3.6.0:
+  * Remove bi-modal behavior of conditioning function
+  * Make jent_read_entropy_safe safer by retrying the health test
+  * Move the version information to make them available at compile time
+
+- Update to 3.5.0:
+  * add distinction between intermittent and permanent health failure
+  * add compile time option to allow configuring a mask to reduce the
+    size of the time stamp used for the APT
+
+-------------------------------------------------------------------
 Wed Dec  6 15:44:30 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Make use of distro flags with %set_build_flags

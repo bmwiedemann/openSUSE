@@ -1,7 +1,7 @@
 #
 # spec file for package jitterentropy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,11 @@ Name:           jitterentropy
 Summary:        A userspace library for jitter entropy generation
 License:        BSD-3-Clause OR GPL-2.0-or-later
 Group:          Development/Tools/Other
-Version:        3.4.1
+Version:        3.6.3
 Release:        0
 URL:            https://github.com/smuellerDD/jitterentropy-library
 Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs/tags/v%{version}.tar.gz
 Source1:        baselibs.conf
-#PATCH-FIX-UPSTREAM github.com/smuellerDD/jitterentropy-library/commit/7bf9f85
-Patch0:         jitterentropy-fix-a-stack-corruption-on-s390x.patch
 Patch1:         jitterentropy-split-internal-header.patch
 Patch2:         jitterentropy-with-debug.patch
 

@@ -67,4 +67,12 @@ It is filled with the time delta containing entropy and auxiliary data that does
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1147641</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e5fe22601330add764c832f51bc2f133</srcmd5>
+    <version>3.6.3</version>
+    <time>1746105766</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.3: [bsc#1242050] (forwarded request 1273627 from pmonrealgonzalez)</comment>
+    <requestid>1273628</requestid>
+  </revision>
 </revisionlist>
