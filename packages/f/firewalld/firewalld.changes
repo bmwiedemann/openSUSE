@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 30 11:57:21 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Split the package to build the firewalld-rpmmacros subpackage in
+  a _multibuild flavor so that we can build it in Factory/i586 by
+  itself instead of building the whole package, which has more
+  dependencies (like python-PyQt6).
+
+-------------------------------------------------------------------
 Tue Apr 15 07:18:15 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require python3-PyQt6 in firewall-applet, since that's preferred

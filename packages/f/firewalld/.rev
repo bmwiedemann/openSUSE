@@ -1371,4 +1371,12 @@ This is a bug fix only release.
     <comment></comment>
     <requestid>1269827</requestid>
   </revision>
+  <revision rev="93" vrev="6">
+    <srcmd5>cc882ce71ac87e222e5889162e2dcb4b</srcmd5>
+    <version>2.1.2</version>
+    <time>1746105755</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273679</requestid>
+  </revision>
 </revisionlist>

@@ -16,6 +16,14 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "macros"
+%define pkg_suffix -macros
+%bcond_without macros
+%else
+%bcond_with macros
+%endif
+
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -26,7 +34,7 @@
 %endif
 %global modprobe_d_files firewalld-sysctls.conf
 
-Name:           firewalld
+Name:           firewalld%{?pkg_suffix}
 Version:        2.1.2
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
@@ -145,7 +153,7 @@ Zsh command line completion support for firewalld.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n "firewalld-%{version}"
 
 # bsc#1078223
 rm config/services/high-availability.xml
@@ -155,14 +163,24 @@ export PYTHON="%{_bindir}/python3"
 autoreconf -fiv
 %configure \
   --enable-sysconfig \
+%if 0%{with macros}
   --enable-rpmmacros \
+%endif
   --with-ifcfgdir="%{_sysconfdir}/sysconfig/network"
 
 # Normally documentation is shipped but this will ensure that missing
 # files will be generated.
+%if 0%{without macros}
 %make_build
+%endif
 
 %install
+%if 0%{with macros}
+cd config
+%{__make} install-rpmmacros DESTDIR=%{?buildroot} INSTALL="%{__install} -p"
+exit 0
+%endif
+
 %make_install
 
 %py3_compile %{buildroot}
@@ -275,6 +293,7 @@ fi
 %{_bindir}/gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{_bindir}/glib-compile-schemas %{_datadir}/glib-2.0/schemas &> /dev/null || :
 
+%if 0%{without macros}
 %files
 %doc README.md
 %license COPYING
@@ -344,9 +363,6 @@ fi
 %{python3_sitelib}/firewall/core/io/*.py*
 %{python3_sitelib}/firewall/core/*.py*
 
-%files -n firewall-macros
-%{_rpmmacrodir}/macros.firewalld
-
 %files -n firewall-applet
 %attr(0755,root,root) %{_bindir}/firewall-applet
 %dir %{_sysconfdir}/firewall
@@ -391,5 +407,12 @@ fi
 
 %files lang -f %{name}.lang
 %exclude %{_datadir}/locale/en_*/LC_MESSAGES/firewalld.mo
+
+%else
+# with macros
+
+%files -n firewall-macros
+%{_rpmmacrodir}/macros.firewalld
+%endif
 
 %changelog
