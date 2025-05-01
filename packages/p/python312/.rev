@@ -1719,4 +1719,16 @@
   - gh-132002: Fix crash when deallocating contextvars.ContextVar</comment>
     <requestid>1269059</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>829053c0461095fff401d04d4c66ab36</srcmd5>
+    <version>3.12.10</version>
+    <time>1746105748</time>
+    <user>dimstar_suse</user>
+    <comment>- New libexpat doesn’t need expectedFailure, it doesn't fail any
+  more.
+- Remove CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch as
+  well.
+- doc-py38-to-py36.patch needs to substantially extended.</comment>
+    <requestid>1273530</requestid>
+  </revision>
 </revisionlist>

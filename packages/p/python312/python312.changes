@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-Fri Apr 11 19:22:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+Tue Apr 29 19:26:57 UTC 2025 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.12.10:
   - gh-131852: msgfmt no longer adds the POT-Creation-Date to
@@ -163,6 +163,11 @@ Fri Apr 11 19:22:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
   - gh-129660: Drop test_embed from PGO training, whose
     contribution in recent versions is considered to be
     ignorable.
+- New libexpat doesn’t need expectedFailure, it doesn't fail any
+  more.
+- Remove CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch as
+  well.
+- doc-py38-to-py36.patch needs to substantially extended.
 
 -------------------------------------------------------------------
 Mon Mar 10 15:44:31 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>

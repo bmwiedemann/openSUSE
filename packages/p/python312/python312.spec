@@ -177,11 +177,6 @@ Patch34:        skip-test_pyobject_freed_is_freed.patch
 # PATCH-FIX-SLE fix_configure_rst.patch bpo#43774 mcepl@suse.com
 # remove duplicate link targets and make documentation with old Sphinx in SLE
 Patch35:        fix_configure_rst.patch
-# PATCH-FIX-OPENSUSE CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
-# This problem on libexpat is patched on 15.6 without version
-# update, this patch changes the tests to match the libexpat provided
-# by SUSE
-Patch39:        CVE-2023-52425-libexpat-2.6.0-backport-15.6.patch
 # PATCH-FIX-OPENSUSE fix-test-recursion-limit-15.6.patch gh#python/cpython#115083
 # Skip some failing tests in test_compile for i586 arch in 15.6.
 Patch40:        fix-test-recursion-limit-15.6.patch

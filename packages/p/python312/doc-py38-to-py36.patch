@@ -1,20 +1,23 @@
 ---
- Doc/Makefile                            |    8 ++--
- Doc/conf.py                             |   16 ++++++++-
- Doc/tools/check-warnings.py             |    5 +-
- Doc/tools/extensions/audit_events.py    |   54 ++++++++++++++++----------------
- Doc/tools/extensions/availability.py    |   15 ++++----
- Doc/tools/extensions/c_annotations.py   |   45 ++++++++++++++++----------
- Doc/tools/extensions/changes.py         |    8 +---
- Doc/tools/extensions/glossary_search.py |   10 +----
- Doc/tools/extensions/misc_news.py       |   14 +++-----
- Doc/tools/extensions/patchlevel.py      |    9 ++---
- 10 files changed, 100 insertions(+), 84 deletions(-)
+ Doc/Makefile                                  |    8 +--
+ Doc/conf.py                                   |   16 ++++++-
+ Doc/tools/check-warnings.py                   |    5 +-
+ Doc/tools/extensions/audit_events.py          |   54 +++++++++++++-------------
+ Doc/tools/extensions/availability.py          |   15 +++----
+ Doc/tools/extensions/c_annotations.py         |   45 +++++++++++++--------
+ Doc/tools/extensions/changes.py               |    8 +--
+ Doc/tools/extensions/glossary_search.py       |   10 +---
+ Doc/tools/extensions/implementation_detail.py |   22 +++-------
+ Doc/tools/extensions/issue_role.py            |   16 ++-----
+ Doc/tools/extensions/misc_news.py             |   14 ++----
+ Doc/tools/extensions/patchlevel.py            |    9 ++--
+ Doc/tools/extensions/pydoc_topics.py          |   22 +++++-----
+ 13 files changed, 126 insertions(+), 118 deletions(-)
 
 Index: Python-3.12.10/Doc/Makefile
 ===================================================================
---- Python-3.12.10.orig/Doc/Makefile	2025-04-11 21:04:46.171424996 +0200
-+++ Python-3.12.10/Doc/Makefile	2025-04-11 21:18:23.184451081 +0200
+--- Python-3.12.10.orig/Doc/Makefile	2025-04-29 22:11:50.013198738 +0200
++++ Python-3.12.10/Doc/Makefile	2025-04-29 22:11:52.047098026 +0200
 @@ -14,15 +14,15 @@
  SOURCES      =
  DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
@@ -37,8 +40,8 @@ Index: Python-3.12.10/Doc/Makefile
                  . build/$(BUILDER) $(SOURCES)
 Index: Python-3.12.10/Doc/conf.py
 ===================================================================
---- Python-3.12.10.orig/Doc/conf.py	2025-04-11 21:04:42.254653936 +0200
-+++ Python-3.12.10/Doc/conf.py	2025-04-11 21:18:44.605665782 +0200
+--- Python-3.12.10.orig/Doc/conf.py	2025-04-29 22:11:46.161835452 +0200
++++ Python-3.12.10/Doc/conf.py	2025-04-29 22:11:52.047459667 +0200
 @@ -11,6 +11,8 @@
  from importlib import import_module
  from importlib.util import find_spec
@@ -86,7 +89,7 @@ Index: Python-3.12.10/Doc/conf.py
 Index: Python-3.12.10/Doc/tools/check-warnings.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/check-warnings.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/check-warnings.py	2025-04-11 21:18:23.185204047 +0200
++++ Python-3.12.10/Doc/tools/check-warnings.py	2025-04-29 22:11:52.047704324 +0200
 @@ -228,7 +228,8 @@
              print(filename)
              for warning in warnings:
@@ -109,7 +112,7 @@ Index: Python-3.12.10/Doc/tools/check-warnings.py
 Index: Python-3.12.10/Doc/tools/extensions/audit_events.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/extensions/audit_events.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/extensions/audit_events.py	2025-04-11 21:18:23.185493402 +0200
++++ Python-3.12.10/Doc/tools/extensions/audit_events.py	2025-04-29 22:11:52.047967558 +0200
 @@ -1,9 +1,6 @@
  """Support for documenting audit events."""
  
@@ -253,7 +256,7 @@ Index: Python-3.12.10/Doc/tools/extensions/audit_events.py
 Index: Python-3.12.10/Doc/tools/extensions/availability.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/extensions/availability.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/extensions/availability.py	2025-04-11 21:18:23.185756636 +0200
++++ Python-3.12.10/Doc/tools/extensions/availability.py	2025-04-29 22:11:52.048206976 +0200
 @@ -1,8 +1,6 @@
  """Support for documenting platform availability"""
  
@@ -309,8 +312,8 @@ Index: Python-3.12.10/Doc/tools/extensions/availability.py
      return {
 Index: Python-3.12.10/Doc/tools/extensions/c_annotations.py
 ===================================================================
---- Python-3.12.10.orig/Doc/tools/extensions/c_annotations.py	2025-04-11 21:16:39.007011463 +0200
-+++ Python-3.12.10/Doc/tools/extensions/c_annotations.py	2025-04-11 21:18:23.185953242 +0200
+--- Python-3.12.10.orig/Doc/tools/extensions/c_annotations.py	2025-04-29 22:11:52.033400629 +0200
++++ Python-3.12.10/Doc/tools/extensions/c_annotations.py	2025-04-29 22:11:52.048411194 +0200
 @@ -9,22 +9,18 @@
  * Set ``stable_abi_file`` to the path to stable ABI list.
  """
@@ -443,7 +446,7 @@ Index: Python-3.12.10/Doc/tools/extensions/c_annotations.py
 Index: Python-3.12.10/Doc/tools/extensions/changes.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/extensions/changes.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/extensions/changes.py	2025-04-11 21:18:23.186150755 +0200
++++ Python-3.12.10/Doc/tools/extensions/changes.py	2025-04-29 22:11:52.048619113 +0200
 @@ -1,7 +1,5 @@
  """Support for documenting version of changes, additions, deprecations."""
  
@@ -481,8 +484,8 @@ Index: Python-3.12.10/Doc/tools/extensions/changes.py
      app.add_directive("versionchanged", PyVersionChange, override=True)
 Index: Python-3.12.10/Doc/tools/extensions/glossary_search.py
 ===================================================================
---- Python-3.12.10.orig/Doc/tools/extensions/glossary_search.py	2025-04-11 21:16:39.007340209 +0200
-+++ Python-3.12.10/Doc/tools/extensions/glossary_search.py	2025-04-11 21:18:23.186307620 +0200
+--- Python-3.12.10.orig/Doc/tools/extensions/glossary_search.py	2025-04-29 22:11:52.033722879 +0200
++++ Python-3.12.10/Doc/tools/extensions/glossary_search.py	2025-04-29 22:11:52.048797629 +0200
 @@ -1,18 +1,14 @@
  """Feature search results for glossary items prominently."""
  
@@ -513,10 +516,113 @@ Index: Python-3.12.10/Doc/tools/extensions/glossary_search.py
      app.connect('doctree-resolved', process_glossary_nodes)
      app.connect('build-finished', write_glossary_json)
  
+Index: Python-3.12.10/Doc/tools/extensions/implementation_detail.py
+===================================================================
+--- Python-3.12.10.orig/Doc/tools/extensions/implementation_detail.py	2025-04-08 13:35:47.000000000 +0200
++++ Python-3.12.10/Doc/tools/extensions/implementation_detail.py	2025-04-29 22:48:23.397548211 +0200
+@@ -1,17 +1,10 @@
+ """Support for marking up implementation details."""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
+-
+ from docutils import nodes
+ from sphinx.locale import _ as sphinx_gettext
+ from sphinx.util.docutils import SphinxDirective
+ 
+-if TYPE_CHECKING:
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
+-
++from sphinx.application import Sphinx
+ 
+ class ImplementationDetail(SphinxDirective):
+     has_content = True
+@@ -21,23 +14,24 @@
+     label_text = sphinx_gettext("CPython implementation detail:")
+ 
+     def run(self):
+-        self.assert_has_content()
+-        content_nodes = self.parse_content_to_nodes()
++        container_node = nodes.container()
++        container_node.document = self.state.document # Ensure node has document context
++        self.state.nested_parse(self.content, self.content_offset, container_node)
++        parsed_nodes = container_node.children
+ 
+         # insert our prefix at the start of the first paragraph
+-        first_node = content_nodes[0]
++        first_node = parsed_nodes[0]
+         first_node[:0] = [
+             nodes.strong(self.label_text, self.label_text),
+             nodes.Text(" "),
+         ]
+ 
+-        # create a new compound container node
+-        cnode = nodes.compound("", *content_nodes, classes=["impl-detail"])
++        cnode = nodes.compound("", *parsed_nodes, classes=["impl-detail"])
+         self.set_source_info(cnode)
+         return [cnode]
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx):
+     app.add_directive("impl-detail", ImplementationDetail)
+ 
+     return {
+Index: Python-3.12.10/Doc/tools/extensions/issue_role.py
+===================================================================
+--- Python-3.12.10.orig/Doc/tools/extensions/issue_role.py	2025-04-08 13:35:47.000000000 +0200
++++ Python-3.12.10/Doc/tools/extensions/issue_role.py	2025-04-29 22:21:55.278961032 +0200
+@@ -1,22 +1,18 @@
+ """Support for referencing issues in the tracker."""
+ 
+-from __future__ import annotations
+-
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, List, Tuple
+ 
+ from docutils import nodes
+ from sphinx.util.docutils import SphinxRole
+ 
+-if TYPE_CHECKING:
+-    from docutils.nodes import Element
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from docutils.nodes import Element
++from sphinx.application import Sphinx
+ 
+ 
+ class BPOIssue(SphinxRole):
+     ISSUE_URI = "https://bugs.python.org/issue?@action=redirect&bpo={0}"
+ 
+-    def run(self) -> tuple[list[Element], list[nodes.system_message]]:
++    def run(self) -> Tuple[List[Element], List[nodes.system_message]]:
+         issue = self.text
+ 
+         # sanity check: there are no bpo issues within these two values
+@@ -38,7 +34,7 @@
+ class GitHubIssue(SphinxRole):
+     ISSUE_URI = "https://github.com/python/cpython/issues/{0}"
+ 
+-    def run(self) -> tuple[list[Element], list[nodes.system_message]]:
++    def run(self) -> Tuple[List[Element], List[nodes.system_message]]:
+         issue = self.text
+ 
+         # sanity check: all GitHub issues have ID >= 32426
+@@ -58,7 +54,7 @@
+         return [refnode], []
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> "ExtensionMetadata":
+     app.add_role("issue", BPOIssue())
+     app.add_role("gh", GitHubIssue())
+ 
 Index: Python-3.12.10/Doc/tools/extensions/misc_news.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/extensions/misc_news.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/extensions/misc_news.py	2025-04-11 21:18:23.186501571 +0200
++++ Python-3.12.10/Doc/tools/extensions/misc_news.py	2025-04-29 22:11:52.049046825 +0200
 @@ -1,7 +1,5 @@
  """Support for including Misc/NEWS."""
  
@@ -572,7 +678,7 @@ Index: Python-3.12.10/Doc/tools/extensions/misc_news.py
 Index: Python-3.12.10/Doc/tools/extensions/patchlevel.py
 ===================================================================
 --- Python-3.12.10.orig/Doc/tools/extensions/patchlevel.py	2025-04-08 13:35:47.000000000 +0200
-+++ Python-3.12.10/Doc/tools/extensions/patchlevel.py	2025-04-11 21:18:23.186669122 +0200
++++ Python-3.12.10/Doc/tools/extensions/patchlevel.py	2025-04-29 22:11:52.049253068 +0200
 @@ -3,7 +3,7 @@
  import re
  import sys
@@ -610,3 +716,65 @@ Index: Python-3.12.10/Doc/tools/extensions/patchlevel.py
      version = f"{info.major}.{info.minor}"
      release = f"{info.major}.{info.minor}.{info.micro}"
      if info.releaselevel != "final":
+Index: Python-3.12.10/Doc/tools/extensions/pydoc_topics.py
+===================================================================
+--- Python-3.12.10.orig/Doc/tools/extensions/pydoc_topics.py	2025-04-08 13:35:47.000000000 +0200
++++ Python-3.12.10/Doc/tools/extensions/pydoc_topics.py	2025-04-29 22:33:59.916893510 +0200
+@@ -1,21 +1,23 @@
+ """Support for building "topic help" for pydoc."""
+ 
+-from __future__ import annotations
+-
+ from time import asctime
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Tuple
+ 
+ from sphinx.builders.text import TextBuilder
+ from sphinx.util import logging
+-from sphinx.util.display import status_iterator
++try:
++    from sphinx.util.display import status_iterator
++except ModuleNotFoundError:
++    from sphinx.util import status_iterator
+ from sphinx.util.docutils import new_document
+ from sphinx.writers.text import TextTranslator
+ 
+-if TYPE_CHECKING:
++try:
++    from typing import Sequence, Set
++except ModuleNotFoundError:
+     from collections.abc import Sequence, Set
+ 
+-    from sphinx.application import Sphinx
+-    from sphinx.util.typing import ExtensionMetadata
++from sphinx.application import Sphinx
+ 
+ logger = logging.getLogger(__name__)
+ 
+@@ -161,7 +163,7 @@
+         self.outdir.joinpath("topics.py").write_text(topics, encoding="utf-8")
+ 
+ 
+-def _display_labels(item: tuple[str, Sequence[tuple[str, str]]]) -> str:
++def _display_labels(item: Tuple[str, Sequence[Tuple[str, str]]]) -> str:
+     _docname, label_ids = item
+     labels = [name for name, _id in label_ids]
+     if len(labels) > 4:
+@@ -169,7 +171,7 @@
+     return ", ".join(labels)
+ 
+ 
+-def _repr(text: str, /) -> str:
++def _repr(text: str) -> str:
+     """Return a triple-single-quoted representation of text."""
+     if "'''" not in text:
+         return f"r'''{text}'''"
+@@ -177,7 +179,7 @@
+     return f"'''{text}'''"
+ 
+ 
+-def setup(app: Sphinx) -> ExtensionMetadata:
++def setup(app: Sphinx) -> "ExtensionMetadata":
+     app.add_builder(PydocTopicsBuilder)
+ 
+     return {
