@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
-                <param name="url">https://github.com/helmfile/helmfile.git</param>
-              <param name="changesrevision">41d8070b85e461505cc8eb3ad6ca1e75e44c3936</param></service></servicedata>
+  <param name="url">https://github.com/helmfile/helmfile.git</param>
+  <param name="changesrevision">c3864a45d31a9fe00efcde6ff536ad66f15a4e11</param>
+</service>
+</servicedata>

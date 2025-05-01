@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Wed Apr 30 17:03:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.0.0:
+  PLEASE READ
+  https://github.com/helmfile/helmfile/blob/main/docs/proposals/towards-1.0.md
+
+  What's Changed:
+  * build(deps): bump github.com/helmfile/vals from 0.39.0 to 0.39.1
+    by @dependabot in #1926
+  * Bump kubectl to current version (1.32.1) by @DerDaku in #1924
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.21 to 1.15.22
+    by @dependabot in #1925
+  * build: update Helm to v3.17.1 and related dependencies by
+    @yxxhero in #1928
+  * build(deps): bump k8s.io/apimachinery from 0.32.1 to 0.32.2 by
+    @dependabot in #1931
+  * feat: inject cli state values (--state-values-set) into environment
+    templating context by @Vince-Chenal in #1917
+  * docs: add skipSchemaValidation to index.md and update related
+    structs by @yxxhero in #1935
+  * refactor(state): optimize HelmState flags handling by @yxxhero
+    in #1937
+  * Update vals package to v0.39.2 by @aditmeno in #1938
+  * build(deps): bump github.com/spf13/cobra from 1.8.1 to 1.9.1 by
+    @dependabot in #1940
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.22 to 1.15.23
+    by @dependabot in #1941
+  * build(deps): bump github.com/helmfile/chartify from 0.20.8 to
+    0.20.9 by @dependabot in #1942
+  * feat: colorized DELETED by @yurrriq in #1944
+  * feat(docs): add proposal to remove charts and delete subcommands
+    by @yxxhero in #1936
+  * build(deps): bump github.com/google/go-cmp from 0.6.0 to 0.7.0
+    by @dependabot in #1945
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.0.4 to
+    4.0.5 by @dependabot in #1946
+  * build: update golang version to 1.24 and golangci-lint to
+    v1.64.5 by @yxxhero in #1949
+  * build(deps): bump github.com/helmfile/vals from 0.39.2 to 0.39.3
+    by @dependabot in #1951
+  * build(deps): bump github.com/helmfile/chartify from 0.20.9 to
+    0.21.0 by @dependabot in #1950
+  * build(deps): bump golang.org/x/sync from 0.11.0 to 0.12.0 by
+    @dependabot in #1955
+  * build(deps): bump jinja2 from 3.1.5 to 3.1.6 in /docs by
+    @dependabot in #1956
+  * Don't warn if this and the needed release set installed: false
+    by @jayme-github in #1958
+  * build(deps): bump golang.org/x/term from 0.29.0 to 0.30.0 by
+    @dependabot in #1959
+  * Remove all v0.x references by @yxxhero in #1919
+  * build(deps): bump k8s.io/apimachinery from 0.32.2 to 0.32.3
+    by @dependabot in #1960
+  * build(deps): bump golang.org/x/net from 0.35.0 to 0.36.0 by
+    @dependabot in #1961
+  * build(deps): bump github.com/helmfile/vals from 0.39.3 to 0.39.4
+    by @dependabot in #1962
+  * build: update Helm to v3.17.2 and related dependencies by
+    @yxxhero in #1965
+  * build: update yaml.v3 dependency and remove colega/go-yaml-yaml
+    by @yxxhero in #1929
+  * build(deps): bump github.com/containerd/containerd from 1.7.24
+    to 1.7.27 by @dependabot in #1966
+  * build(deps): bump github.com/goccy/go-yaml from 1.15.23 to
+    1.16.0 by @dependabot in #1967
+  * build(deps): bump github.com/golang-jwt/jwt/v5 from 5.2.1 to
+    5.2.2 by @dependabot in #1969
+  * build(deps): bump github.com/golang-jwt/jwt/v4 from 4.5.1 to
+    4.5.2 by @dependabot in #1970
+  * build(deps): bump golangci/golangci-lint-action from 6 to 7
+    by @dependabot in #1975
+  * build(deps): bump github.com/helmfile/vals from 0.39.4 to
+    0.40.0 by @dependabot in #1978
+  * build(deps): bump github.com/helmfile/chartify from 0.21.0 to
+    0.21.1 by @dependabot in #1979
+  * docs(fix): correct typo in 'tier=fronted' to 'tier=frontend'
+    by @yxxhero in #1980
+  * feat: add labels for helm release by @yxxhero in #1046
+  * build(deps): bump github.com/helmfile/vals from 0.40.0 to
+    0.40.1 by @dependabot in #1981
+  * build(deps): bump github.com/goccy/go-yaml from 1.16.0 to 1.17.1
+    by @dependabot in #1982
+  * fix: Check needs with context and namespace by @aarnq in #1986
+  * build(deps): bump golang.org/x/sync from 0.12.0 to 0.13.0 by
+    @dependabot in #1991
+  * build(deps): bump golang.org/x/term from 0.30.0 to 0.31.0 by
+    @dependabot in #1990
+  * fix(state): enhance error message for missing .gotmpl extension
+    in helmfile v1 by @yxxhero in #1989
+  * build(deps): bump github.com/helmfile/chartify from 0.21.1 to
+    0.22.0 by @dependabot in #1996
+  * build: update Helm plugin versions in CI and Dockerfiles by
+    @yxxhero in #1995
+  * build: update Helm to v3.17.3 and update related Dockerfiles
+    by @yxxhero in #1993
+  * build(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 by
+    @dependabot in #2010
+  * feat: add helmfile archive configuration in goreleaser by
+    @yxxhero in #2000
+  * docs: add more complex examples section in README by @yxxhero
+    in #2013
+  * Feat: setting reuseValues flag in release by @blaskoa in #2004
+  * build(deps): bump k8s.io/apimachinery from 0.32.3 to 0.32.4 by
+    @dependabot in #2016
+  * build(deps): bump github.com/aws/aws-sdk-go from 1.55.6 to
+    1.55.7 by @dependabot in #2015
+  * chore: support parsing any type with fromYaml by @ProbstDJakob
+    in #2017
+  * build(deps): bump k8s.io/apimachinery from 0.32.4 to 0.33.0 by
+    @dependabot in #2018
+  * feat: add --take-ownership flag to helm diff and related config
+    by @yxxhero in #1992
+
+-------------------------------------------------------------------
 Thu Feb 13 09:00:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.171.0:

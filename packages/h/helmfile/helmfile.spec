@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit 41d8070b85e461505cc8eb3ad6ca1e75e44c3936
+%define git_commit c3864a45d31a9fe00efcde6ff536ad66f15a4e11
 Name:           helmfile
-Version:        0.171.0
+Version:        1.0.0
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -31,7 +31,7 @@ Requires:       helm >= 3.13.1
 Recommends:     helm >= 3.14.3
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.24
 Obsoletes:      %{name}-bash-completion < %{version}
 Obsoletes:      %{name}-zsh-completion < %{version}
 
