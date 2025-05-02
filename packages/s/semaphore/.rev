@@ -55,4 +55,12 @@
     <comment>update to 2.14.6</comment>
     <requestid>1273519</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>40a3f5da34d632b7ba3dfc5f995986d5</srcmd5>
+    <version>2.14.7</version>
+    <time>1746190891</time>
+    <user>dimstar_suse</user>
+    <comment>update to 2.14.7</comment>
+    <requestid>1273989</requestid>
+  </revision>
 </revisionlist>

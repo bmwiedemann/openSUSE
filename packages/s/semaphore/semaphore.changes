@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 02 09:15:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.7:
+  * Bugfixes
+    - Fixed migrations undo command:
+      semaphore migrate --undo-to 2.14
+    - Fixed issue with error 404 on Schedule page.
+
+-------------------------------------------------------------------
 Tue Apr 29 19:45:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.6:
