@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.15.2
+Version:        0.15.3
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -28,7 +28,6 @@ Source2:        rtorrent.desktop
 # This manpage copied from the 0.9.2 tarball as it was missing in later versions
 Source3:        rtorrent.1
 Source4:        rtorrent.service
-Patch1:         0001-Added-default-switch-cases-to-RpcManager.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
@@ -41,7 +40,7 @@ BuildRequires:  ncurses-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cppunit) >= 1.9.6
 BuildRequires:  pkgconfig(libcurl) >= 7.15.4
-BuildRequires:  pkgconfig(libtorrent) >= 0.15.2
+BuildRequires:  pkgconfig(libtorrent) >= 0.15.3
 BuildRequires:  sysuser-tools
 Provides:       bundled(tinyxml2) = 10.0.0
 %sysusers_requires
