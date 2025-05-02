@@ -128,4 +128,18 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>39db977f723cf6496da804124b92c428</srcmd5>
+    <version>1.0</version>
+    <time>1746190879</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.0 upstream release
+  - ported to fuse3
+  - do not check events in read (slows it down too much)
+  - use the random read function if present to avoid using too much memory
+  - refresh directories on file/folder addition 
+  - Updates live when you do add or remove files on the device/camera.
+  - Fixed removal protection permissions. (forwarded request 1273984 from msmeissn)</comment>
+    <requestid>1273985</requestid>
+  </revision>
 </revisionlist>

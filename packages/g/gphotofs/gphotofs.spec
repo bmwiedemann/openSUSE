@@ -1,7 +1,7 @@
 #
 # spec file for package gphotofs
 #
-# Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gphotofs
-BuildRequires:  fuse-devel
+BuildRequires:  fuse3-devel
 BuildRequires:  glib2-devel
 BuildRequires:  libgphoto2-devel
 BuildRequires:  libjpeg-devel
-Requires:       fuse
-Url:            http://gphoto.sourceforge.net
+Requires:       fuse3
+URL:            http://gphoto.sourceforge.net
 %define prefix /usr
 Summary:        User Level File System for gphoto-Based Cameras
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Hardware/Camera
-Version:        0.5
+Version:        1.0
 Release:        0
-Source0:        gphotofs-%{version}.tar.bz2
+Source0:        https://github.com/gphoto/gphotofs/releases/download/v1.0/gphotofs-%{version}.tar.bz2
+Source1:        https://github.com/gphoto/gphotofs/releases/download/v1.0/gphotofs-%{version}.tar.bz2.asc
+Source2:        gphotofs.keyring
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -86,13 +88,12 @@ Authors:
 make
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" ] && [ -d $RPM_BUILD_ROOT ] && rm -rf $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT
 make DESTDIR=$RPM_BUILD_ROOT mandir=%{_mandir} install
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING NEWS README
+%license COPYING
+%doc AUTHORS NEWS README
 /usr/bin/gphotofs
 
 %changelog
