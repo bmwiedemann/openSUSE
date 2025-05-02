@@ -289,6 +289,8 @@ Requires:       chrome-gnome-shell
 # So users can be configured and have pretty face thumbnails
 Requires:       gnome-control-center-users
 Requires:       gnome-control-center-user-faces
+# So users can configure Parental controls
+Requires:       malcontent-control
 # we need something for xdg-su
 Requires:       gnome-shell-search-provider-nautilus
 Requires:       libgnomesu
