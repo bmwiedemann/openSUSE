@@ -51,8 +51,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 27.5.1
-%define docker_git_version 4c9b3b011ae4
+%define docker_real_version 28.1.1
+%define docker_git_version 01f442b84
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -60,7 +60,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.22.0
+%define buildx_version 0.23.0
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -68,7 +68,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1737503210
+%define git_commit_epoch 1744950323
 
 Name:           docker%{flavour}
 Version:        %{docker_version}
@@ -104,16 +104,9 @@ Patch200:       0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 Patch201:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
-# UPSTREAM: Backport of <https://go-review.googlesource.com/c/oauth2/+/652155>. CVE-2025-22868
-Patch203:       0006-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
-# UPSTREAM: Backport of <https://go-review.googlesource.com/c/crypto/+/652135>. CVE-2025-22869
-Patch204:       0007-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
-# UPSTREAM: Backport of <https://github.com/docker/cli/pull/4228>.
-Patch900:       cli-0001-docs-include-required-tools-in-source-tree.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
-BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  fdupes
 %if %{with apparmor}
 BuildRequires:  libapparmor-devel
@@ -128,7 +121,7 @@ BuildRequires:  procps
 BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.22
+BuildRequires:  golang(API) = 1.23
 BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?suse_version} >= 1500
@@ -173,8 +166,6 @@ Requires:       containerd >= 1.7.3
 # Needed for --init support. We don't use "tini", we use our own implementation
 # which handles edge-cases better.
 Requires:       catatonit
-# Provides mkfs.ext4 - used by Docker when devicemapper storage driver is used
-Requires:       e2fsprogs
 Requires:       iproute2 >= 3.5
 Requires:       iptables >= 1.4
 Requires:       procps
@@ -189,10 +180,6 @@ Requires:       %{name}-buildx
 Requires(post): %fillup_prereq
 Requires(post): udev
 Requires(post): shadow
-# Not necessary, but must be installed when the underlying system is
-# configured to use lvm and the user doesn't explicitly provide a
-# different storage-driver than devicemapper
-Recommends:     lvm2 >= 2.2.89
 Recommends:     %{name}-rootless-extras
 Recommends:     git-core >= 1.7
 ExcludeArch:    s390 ppc
@@ -342,8 +329,6 @@ Fish command line completion support for %{name}.
 %define cli_builddir %{_builddir}/docker-cli-%{docker_version}
 %setup -q -T -b 1 -n docker-cli-%{docker_version}
 [ "%{cli_builddir}" = "$PWD" ]
-# offline manpages
-%patch -P900 -p1
 
 %if %{with buildx}
 # docker-buildx
@@ -372,22 +357,11 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
-# CVE-2025-22868
-%patch -P203 -p1
-# CVE-2025-22869
-%patch -P204 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} docker.conf
 
-BUILDTAGS="exclude_graphdriver_aufs apparmor selinux seccomp pkcs11"
-%if 0%{?sle_version} == 120000
-	# Allow us to build with older distros but still have deferred removal
-	# support at runtime. We only use this when building on SLE12, because
-	# later openSUSE/SLE versions have a new enough libdevicemapper to not
-	# require the runtime checking.
-	BUILDTAGS="libdm_dlsym_deferred_remove $BUILDTAGS"
-%endif
+BUILDTAGS="apparmor selinux seccomp pkcs11"
 
 export AUTO_GOPATH=1
 # Make sure we always build PIC code. bsc#1048046
@@ -410,6 +384,8 @@ pushd "%{docker_builddir}"
 cp {vendor,go}.mod
 cp {vendor,go}.sum
 ./hack/make.sh dynbinary
+# dockerd man page
+GO_MD2MAN=go-md2man make -C ./man/
 
 %if %{with integration_tests}
 # build test binaries for integration tests
@@ -502,12 +478,12 @@ install -D -m0640 %{SOURCE140} %{buildroot}%{_sysconfdir}/audit/rules.d/docker.r
 install -D -m0644 %{SOURCE120} %{buildroot}%{_fillupdir}/sysconfig.docker
 
 # install manpages (using the ones from the engine)
-install -d %{buildroot}%{_mandir}/man1
-install -p -m0644 %{cli_builddir}/man/man1/*.1 %{buildroot}%{_mandir}/man1
-install -d %{buildroot}%{_mandir}/man5
-install -p -m0644 %{cli_builddir}/man/man5/Dockerfile.5 %{buildroot}%{_mandir}/man5
-install -d %{buildroot}%{_mandir}/man8
-install -p -m0644 %{cli_builddir}/man/man8/*.8 %{buildroot}%{_mandir}/man8
+for mansrcdir in %{cli_builddir}/man/man[1-9] %{docker_builddir}/man/man[1-9]
+do
+	section="$(basename $mansrcdir)"
+	install -d %{buildroot}%{_mandir}/$section
+	install -p -m0644 $mansrcdir/* %{buildroot}%{_mandir}/$section
+done
 
 # sysusers.d
 install -D -m0644 %{SOURCE160} %{buildroot}%{_sysusersdir}/docker.conf
@@ -584,10 +560,7 @@ grep -q '^dockremap:' /etc/subgid || \
 %config %{_sysconfdir}/audit/rules.d/docker.rules
 %{_udevrulesdir}/80-docker.rules
 
-%{_mandir}/man1/docker-*.1%{ext_man}
-%{_mandir}/man1/docker.1%{ext_man}
-%{_mandir}/man5/Dockerfile.5%{ext_man}
-%{_mandir}/man8/dockerd.8%{ext_man}
+%{_mandir}/man*/*%{ext_man}
 
 %if %{with buildx}
 %files buildx

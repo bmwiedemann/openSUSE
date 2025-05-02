@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 03:35:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Apr  1 10:49:33 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Set homepage to the GITHUB the upstream points to in last commit

@@ -69,4 +69,13 @@
     <comment>- Add %{?sle15_python_module_pythons}</comment>
     <requestid>1092224</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>d9bd5651e18cdb270359831347dc00e5</srcmd5>
+    <version>2.2.1</version>
+    <time>1746190546</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1273808</requestid>
+  </revision>
 </revisionlist>

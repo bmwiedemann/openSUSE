@@ -1,7 +1,7 @@
 #
 # spec file for package python-meson-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -78,6 +78,8 @@ modules implemented in languages such as C, C++, Cython, Fortran, Pythran, or Ru
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+# the test suite fails with SOURCE_DATE_EPOCH set
+unset SOURCE_DATE_EPOCH
 # test suite path issues
 donttest="test_vendored_meson"
 %{python_expand # clear test builds

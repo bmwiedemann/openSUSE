@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:11:40 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Update https://pydata-google-
+    auth.readthedocs.io/en/latest/oauth.html with information
+    about magics commands and other Cloud resources.
+    (https://github.com/pydata/pydata-google-auth/pull/79)
+- update to 1.9.0:
+  * Do not require six on Python 3
+  * Support Python 3.13, drop Python <=3.8
+  * Try colab credentials in `get_user_credentials` if
+    `client_id` not specified
+- drop no-six.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Mar 22 20:24:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Remove ancient versioneer.py and use system one for Python 3.12
@@ -13,12 +28,12 @@ Thu Oct 19 14:38:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
 Thu Oct 19 12:49:00 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.8.2
-  * Adds pydata_google_auth.load_service_account_credentials() function to get 
+  * Adds pydata_google_auth.load_service_account_credentials() function to get
     service account credentials from the specified JSON path.
   * Adds support for Python 3.10.
   * Default use_local_webserver to True.
   * Adds ability to provide redirect uri.
-  * Adds decision logic to handle use cases where a user may not have the ability 
+  * Adds decision logic to handle use cases where a user may not have the ability
     to log in via an Out of Band authentication flow.
   * Add optional colab specific ADC
 - Add no-six.patch to get rid of six dependency

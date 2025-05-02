@@ -47,7 +47,9 @@ Fcitx-fbterm is a Wrapper for Fcitx in fbterm, a fast Framebuffer based terminal
 %build
 %{__mkdir} -pv build
 pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DLIB_INSTALL_DIR=%{_lib} ..
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      -DLIB_INSTALL_DIR=%{_lib} ..
 make %{?_smp_mflags}
 
 %install

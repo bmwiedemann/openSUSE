@@ -227,4 +227,19 @@
   * Basic support for index source maps (#3439, #4109)</comment>
     <requestid>1266344</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>7fdbc0532cc71d28fae3811fb846b9e2</srcmd5>
+    <version>0.25.3</version>
+    <time>1746190777</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.25.3:
+  * Fix lowered async arrow functions before super() (#4141, #4142)
+  * Fix memory leak with --watch=true (#4131, #4132)
+  * More concise output for repeated legal comments (#4139)
+  * Allow a custom host with the development server (#4110)
+  * Add a limit to CSS nesting expansion (#4114)
+  * Fix path resolution edge case (#4144)
+  * Update Go from 1.23.7 to 1.23.8 (#4133, #4134)</comment>
+    <requestid>1273877</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-happybase
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-happybase
 Version:        1.2.0
 Release:        0
 Summary:        A Python library to interact with Apache HBase
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wbolster/happybase
 Source:         https://github.com/wbolster/happybase/archive/%{version}.tar.gz
 # https://github.com/python-happybase/happybase/pull/238
 Patch0:         use_pytest.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module thriftpy2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -56,11 +56,11 @@ This package contains the documentation.
 %autosetup -p1 -n happybase-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build -b html doc docs/build/html
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 rm -r docs/build/html/.[a-z]*
 
@@ -71,7 +71,8 @@ rm -r docs/build/html/.[a-z]*
 %files %{python_files}
 %license LICENSE.rst
 %doc NEWS.rst README.rst TODO.rst
-%{python_sitelib}/*
+%{python_sitelib}/happybase
+%{python_sitelib}/happybase-%{version}.dist-info
 
 %files -n python-happybase-doc
 %license LICENSE.rst

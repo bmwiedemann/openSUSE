@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Wed Apr 30 10:48:23 UTC 2025 - Michele Bussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 9.0.104
+  * Fixed CVEs:  
+    + CVE-2025-31650: invalid priority field values should be ignored
+      (bsc#1242008)
+    + CVE-2025-31651: Better handling of URLs with literal ';' and '?'
+      (bsc#1242009)
+  * Catalina
+    + Fix: Fix use of SSS in SimpleDateFormat pattern for AccessLogValve.
+      (rjung)
+    + Fix: Process possible path parameters rewrite production in the rewrite
+      valve. (remm)
+    + Fix: 69643: Optimize directory listing for large amount of files. Patch
+      submitted by Loic de l'Eprevier. (remm)
+    + Fix: Return 400 if the amount of content sent for a partial PUT is
+      inconsistent with the range that was specified. (remm)
+    + Add: Add a new RateLimiter implementation,
+      org.apache.catalina.util.ExactRateLimiter, that can be used with
+      org.apache.catalina.filters.RateLimitFilter to provide rate limit based
+      on the exact values configured. Based on pull request #794 by Chenjp.
+      (markt)
+    + Fix: Fix parsing of the time-taken token in the ExtendedAccessLogValve.
+      (remm)
+    + Fix: Fix invocation of the FFM OpenSSL code for setting a SSL engine and
+      FIPS mode. (remm)
+    + Fix: 69600: Add IPv6 local addresses (RFC 4193 and RFC 4291) to the
+      default internal proxies for the RemoteIpFilter and RemoteIpValve.
+      (markt)
+    + Fix: 69615: Improve integration with the not found class resources cache
+      for users who are using a custom web application class loader and/or
+      using reflection to dynamically add external repositories to the web
+      application class loader. (markt)
+    + Add: Add a new initialisation parameter to the Default servlet -
+      allowPostAsGet - which controls whether a direct request (i.e. not a
+      forward or an include) for a static resource using the POST method will
+      be processed as if the GET method had been used. If not allowed, the
+      request will be rejected. The default behaviour of processing the request
+      as if the GET method had been used is unchanged. (markt)
+    + Fix: 69623: Correct a long standing regression that meant that calls to
+      ClassLoader.getResource().getContent() failed when made from within a web
+      application with resource caching enabled. (markt)
+    + Fix: 69634: Avoid NPE on JsonErrorReportValve. (remm)
+    + Fix: Add missing throwable stack trace to JsonErrorReportValve equivalent
+      to the one from ErrorReportValve. (remm)
+    + Fix: Improve the handling of %nn URL encoding in the RewriteValve and
+      document how %nn URL encoding may be used with rewrite rules. (markt)
+    + Fix: Fix a potential exception when calling
+      WebappClassLoaderBase.getResource(""). (markt)
+  * Coyote
+    + Fix: 69607: Allow failed initialization of MD5. Based on code submitted
+      by Shivam Verma. (remm)
+    + Fix: 69614: HTTP/2 priority frames with an invalid priority field value
+      should be ignored. (markt)
+    + Fix: Improve handling of unexpected errors during HTTP/2 processing.
+      (markt)
+    + Fix: Add missing code to process an OpenSSL profile, such as PROFILE=
+      SYSTEM, using FFM. (remm)
+    + Add: Simplify the process of using a custom SSLContext for an HTTPS
+      enabled connector. Based on pull request #805 by Hakky54. (markt)
+  * Jasper
+    + Code: Replace custom URL encoding provided by the JSP runtime library
+      with calls to java.net.URLEncoder.encode(). (markt)
+    + Add: Add compiler using the Java Compiler API, supporting exploded web
+      applications. The compilerClassName to use is
+      org.apache.jasper.compiler.JavaCompiler. (remm)
+    + Add: Add support for specifying Java 25 (with the value 25) as the
+      compiler source and/or compiler target for JSP compilation. If used with
+      an Eclipse JDT compiler version that does not support these values, a
+      warning will be logged and the default will be used. (markt)
+  * Cluster
+    + Fix: Fix resetting cross context sessions in the ReplicationValve.
+      (remm)
+  * Web applications
+    + Add: Documentation. Add a link to the Log4j documentation that describes
+      how to use Log4j rather than JULI for Tomcat's internal logging. (markt)
+    + Add: Documentation. Document the runtime attributes available to web
+      applications via the Request or the ServletContext. Based on pull request
+      #832 by usmazat. (markt)
+  * Other
+    + Fix: Set sun.io.useCanonCaches in service.bat. Based on pull request
+      #841 by Paul Lodge. (remm)
+    + Fix: The minimum Java version to build a release is now Java 22,
+      mirroring Tomcat 10.1. This removes the need for using a java-ffm.home
+      property. (remm)
+    + Update: Revert JSign to 6.0 to avoid a file locking issue. (markt)
+    + Update: Update to NSIS 3.11. (markt)
+    + Update: Update to ByteBuddy 1.17.4. (markt)
+    + Update: Update to Checkstyle 10.21.4. (markt)
+    + Update: Update to SpotBugs to 4.9.3. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Tue Mar 18 21:04:04 UTC 2025 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 9.0.102

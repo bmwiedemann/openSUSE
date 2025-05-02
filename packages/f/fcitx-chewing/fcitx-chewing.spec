@@ -50,6 +50,7 @@ Chewing is a set of free intelligent Chinese Phonetic IME.
 mkdir -pv build
 pushd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       -DLIB_INSTALL_DIR=%{_lib} ..
 make %{?_smp_mflags}
 

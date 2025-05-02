@@ -35,6 +35,8 @@ Source2:        digikam.keyring
 %endif
 #PATCH-FIX-UPSTREAM
 Patch0:         digikam-qt69.patch
+#PATCH-FIX-OPENSUSE
+Patch1:         digikam-pointer-casting.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -101,9 +103,9 @@ BuildRequires:  pkgconfig(libgphoto2) >= 2.4.0
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(vdpau)
@@ -126,8 +128,8 @@ Obsoletes:      digikam-plugin-enhance < %{version}
 Provides:       digikam-plugin-fxfilters = %{version}
 Obsoletes:      digikam-plugin-fxfilters < %{version}
 Provides:       digikam-plugin-transform = %{version}
-Obsoletes:      digikam-plugin-transform < %{version}
 Obsoletes:      digikam-libs < %{version}
+Obsoletes:      digikam-plugin-transform < %{version}
 # Docs no longer included in 6.0.0
 Provides:       digikam-doc = %{version}
 Obsoletes:      digikam-doc < %{version}
@@ -174,7 +176,11 @@ The main digikam libraries that are being shared between showfoto and digikam
 %lang_package
 
 %prep
-%autosetup -p1 -n digikam-%{version}
+%setup -n digikam-%{version}
+%patch -P 0 -p1
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%patch -P 1 -p1 -R
+%endif
 
 %build
 %cmake_kf6 \

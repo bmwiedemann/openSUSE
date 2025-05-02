@@ -1,7 +1,7 @@
 #
 # spec file for package python-volatile
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-volatile
 Version:        2.1.0
 Release:        0
 Summary:        Python extension for the tempfile module
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mbr/volatile
 Source:         https://github.com/mbr/volatile/archive/%{version}.tar.gz#/volatile-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -39,10 +39,10 @@ A small Python extension for the tempfile module.
 %setup -q -n volatile-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +51,7 @@ A small Python extension for the tempfile module.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/volatile
+%{python_sitelib}/volatile-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Apr 29 11:41:17 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- update to 25.1
+  * Allow using dictionaries for grouped choices on Django 5.0+.
+  * Adds unknown_field_behavior FilterSet option to allowing warning
+    and ignore behaviours for unknown field types during FilterSet
+    generation.
+  * Removed the in-built API schema generation methods, which have
+    been deprecated since v23.2. Use drf-spectacular.
+  * Dropped support for EOL Python 3.8.
+  * Added testing against Python 3.13.
+  * Added official support for Django 5.2.
+
+-------------------------------------------------------------------
 Fri Jul 19 08:19:23 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add missing test requirement

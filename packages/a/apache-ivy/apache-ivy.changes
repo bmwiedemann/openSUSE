@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 30 13:27:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Use standalone pack200 implementation and allow wider variety
+  of Java versions
+
+-------------------------------------------------------------------
 Thu Jan 30 12:51:50 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 2.5.3

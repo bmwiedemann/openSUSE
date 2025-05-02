@@ -71,7 +71,9 @@ CXXFLAGS="%{optflags} -I/usr/include/sunpinyin-2.0/" cmake \
 %else
 cmake  \
 %endif
-        -DCMAKE_INSTALL_PREFIX=%{_prefix} -DLIB_INSTALL_DIR=%{_libdir} \
+        -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DLIB_INSTALL_DIR=%{_libdir} \
         ..
 make
 

@@ -35,7 +35,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -50,6 +50,8 @@ Patch0:         meson-test-installed-bin.patch
 Patch1:         extend-test-timeout-on-qemu-builds.patch
 # PATCH-FEATURE-UPSTREAM -- based on https://github.com/mesonbuild/meson/pull/14001/commits
 Patch2:         14001.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         https://patch-diff.githubusercontent.com/raw/mesonbuild/meson/pull/14526.patch
 
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}

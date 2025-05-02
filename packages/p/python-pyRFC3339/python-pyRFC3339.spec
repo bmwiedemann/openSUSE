@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyRFC3339
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kurtraschke/pyRFC3339
 Source:         https://github.com/kurtraschke/pyRFC3339/archive/refs/tags/v%{version}.tar.gz#/pyRFC3339-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
@@ -38,14 +40,13 @@ BuildArch:      noarch
 pyRFC3339 parses and generates :RFC:`3339`-compliant timestamps using Python `datetime.datetime` objects.
 
 %prep
-%setup -q -n pyRFC3339-%{version}
-%autopatch -p1
+%autosetup -p1 -n pyRFC3339-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/pyrfc3339
 
 %check
@@ -54,6 +55,7 @@ pyRFC3339 parses and generates :RFC:`3339`-compliant timestamps using Python `da
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pyrfc3339
+%{python_sitelib}/py[Rr][Ff][Cc]3339-%{version}.dist-info
 
 %changelog

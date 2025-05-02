@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 03:18:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jan 31 04:22:18 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-310.patch:

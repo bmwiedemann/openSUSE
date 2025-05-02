@@ -67,4 +67,13 @@
 - Update to version 1.0</comment>
     <requestid>1223443</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>443e4528da24ac5d5edda4dac09d3169</srcmd5>
+    <version>2.0.1</version>
+    <time>1746190781</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1273883</requestid>
+  </revision>
 </revisionlist>

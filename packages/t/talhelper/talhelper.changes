@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Fri May 02 04:49:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.23:
+  * feat: add `v1.11` as supported version
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.11.0-alpha.0
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.7.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#967)
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.22
+  * feat: update Scoop for talhelper version v3.0.22
+  * feat: update flake (#963)
+
+-------------------------------------------------------------------
+Fri May 02 04:47:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.22:
+  * docs: update CLI reference documentation (#962)
+  * chore(deps): update dependency siderolabs/talos to v1.10.0
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.0
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.10.0
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.9.0
+  * chore(schema): update talos-extensions.yaml JSON schema (#956)
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.6.9
+  * chore(schema): update talos-extensions.yaml JSON schema (#955)
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.22
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.1.5
+  * feat(test): seems like the image factory doesn't like our
+    workflow
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.10.0-beta.1
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.33.0
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.32.4
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.21
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talconfig.yaml JSON schema (#944)
+  * feat(config): add `userVolumes` to generate `UserVolumeConfig`
+  * feat(config): deprecate `machineDisks`
+  * chore(schema): update talos-extensions.yaml JSON schema (#942)
+  * fix(code): ignore deprecated warnings on golangci-lint
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.10.0-beta.0
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.1.2
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.1.1
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.20
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.10.2
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.10.2
+  * fix: home-operations
+  * chore(schema): update talos-extensions.yaml JSON schema (#938)
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.19
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.24-bookworm docker digest
+    to fb6bc4a (#929)
+  * docs: update CLI reference documentation (#930)
+  * fix: lint issue move to switch case in pathsubst
+  * fix: flip & rename flag to disable-nodes-section
+  * feat: do not include nodes per default in talosconfig toggle
+    with --list-nodes
+  * fix(loader): paths of `extraManifests` should be relative to
+    config file
+  * chore(schema): update talos-extensions.yaml JSON schema (#925)
+  * chore(schema): update talos-extensions.yaml JSON schema (#924)
+  * feat(golangci): update `golangci-lint` to v2
+  * chore(github-action)!: Update golangci/golangci-lint-action
+    action to v7
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.8.2
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(deps): update dependency go to v1.24.2
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.18
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.10.1
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.10.1
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * feat(flake): update flake.lock
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.0.2
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.10.0-alpha.3
+  * chore(container)!: Update golangci/golangci-lint Docker tag to
+    v2
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.17
+  * chore(schema): update talos-extensions.yaml JSON schema (#913)
+  * chore(schema): update talos-extensions.yaml JSON schema (#909)
+  * fix(deps): update module github.com/siderolabs/image-factory to
+    v0.6.8
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update actions/setup-go action to v5.4.0
+  * chore(container): update golangci/golangci-lint docker tag to
+    v1.64.8
+  * chore(container): update mcr.microsoft.com/devcontainers/go
+    docker tag to v1.24
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.16
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.23-bookworm docker digest
+    to eaea1ec (#903)
+  * chore(github-action): update renovatebot/github-action action
+    to v41.0.15
+  * chore(schema): update talos-extensions.yaml JSON schema (#900)
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.8.1
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.21
+  * chore(schema): update talos-extensions.yaml JSON schema (#899)
+  * feat: update Scoop for talhelper version v3.0.21
+  * feat: update flake
+  * docs: update CLI reference documentation (#895)
+
+-------------------------------------------------------------------
 Thu Mar 13 05:53:28 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.0.21:

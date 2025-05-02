@@ -17,15 +17,15 @@
 #
 
 
-%global nss_softokn_fips_version 3.109
+%global nss_softokn_fips_version 3.110
 %define NSPR_min_version 4.36
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 Name:           mozilla-nss
-Version:        3.109
+Version:        3.110
 Release:        0
-%define underscore_version 3_109
+%define underscore_version 3_110
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -50,6 +50,7 @@ Patch2:         system-nspr.patch
 Patch3:         nss-no-rpath.patch
 Patch4:         add-relro-linker-option.patch
 Patch5:         malloc.patch
+Patch6:         bmo1962556.patch
 Patch7:         nss-sqlitename.patch
 Patch9:         nss-fips-use-getrandom.patch
 Patch10:        nss-fips-dsa-kat.patch
@@ -70,7 +71,6 @@ Patch25:        nss-fips-detect-fips-mode-fixes.patch
 Patch26:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
 Patch27:        nss-fips-aes-keywrap-post.patch
 Patch37:        nss-fips-fix-missing-nspr.patch
-Patch38:        nss-fips-stricter-dh.patch
 Patch40:        nss-fips-180-3-csp-clearing.patch
 Patch41:        nss-fips-pbkdf-kat-compliance.patch
 Patch44:        nss-fips-tests-enable-fips.patch
@@ -208,6 +208,7 @@ cd nss
 %if 0%{?suse_version} > 1110
 %patch -P 5 -p1
 %endif
+%patch -P 6 -p1
 %patch -P 7 -p1
 # FIPS patches
 %patch -P 9 -p1
@@ -229,7 +230,6 @@ cd nss
 %patch -P 26 -p1
 %patch -P 27 -p1
 %patch -P 37 -p1
-%patch -P 38 -p1
 %patch -P 40 -p1
 %patch -P 41 -p1
 %patch -P 44 -p1

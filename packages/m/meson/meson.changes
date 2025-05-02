@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 29 10:11:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.8.0:
+  + New argument android_exe_type for executables.
+  + Changes to the b_sanitize option.
+  + New C standard c2y (and gnu2y).
+  + i18n module xgettext.
+  + version_compare now accept multiple compare strings.
+  + Improvements to Objective-C and Objective-C++.
+  + Per project subproject options rewrite.
+  + objects added correctly to Rust executables.
+  + rust.test now supports link_whole.
+  + Meson can run "rustdoc" on Rust projects.
+  + The Wayland module is stable.
+  + New swift_std compiler option.
+  + New option to execute a slice of tests.
+  + Valgrind now fails tests if errors are found.
+- Add 14526.patch: Fix test suite when run in a directory
+  containing 'test-1' as part of the name (as in meson-test-1.8.0).
+
+-------------------------------------------------------------------
 Wed Apr  2 06:43:44 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.7.1:

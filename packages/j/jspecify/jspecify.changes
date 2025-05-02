@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Thu May  1 08:30:09 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build system for ANT: to be able to use early
+
+-------------------------------------------------------------------
+Fri Aug  2 00:46:25 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.0.0
+  * No code changes, only Javadoc changes and OSGI metadata.
+
+-------------------------------------------------------------------
+Fri May  3 15:40:48 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v0.3.0

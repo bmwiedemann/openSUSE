@@ -22,7 +22,7 @@
 %define elspec 3.0
 %define major_version 9
 %define minor_version 0
-%define micro_version 102
+%define micro_version 104
 %define packdname apache-tomcat-%{version}-src
 # FHS 2.3 compliant tree structure - http://www.pathname.com/fhs/2.3/
 %global basedir /srv/%{name}
@@ -308,7 +308,7 @@ ant -Dbase.path="." \
     -Dno.build.dbcp=true \
     -Dversion="%{version}" \
     -Dversion.build="%{micro_version}" \
-    deploy dist-prepare dist-source javadoc package embed-jars
+    deploy javadoc package embed-jars
 
 # remove some jars that we'll replace with symlinks later
 rm output/build/bin/commons-daemon.jar \

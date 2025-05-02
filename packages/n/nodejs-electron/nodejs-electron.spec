@@ -189,7 +189,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.2.1
+Version:        35.2.2
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -354,7 +354,6 @@ Patch3144:      mt21_util-flax-vector-conversions.patch
 Patch3151:      distributed_point_functions-evaluate_prg_hwy-signature.patch
 Patch3174:      swiftshader-llvm19-LLVMJIT-getHostCPUFeatures.patch
 Patch3175:      swiftshader-llvm19-LLVMReactor-incomplete-Module.patch
-Patch3184:      electron_usb_delegate-incomplete-UsbDeviceInfo.patch
 Patch3185:      bsc1224178-font-gc.patch
 Patch3186:      string_view-incomplete-CodePointIterator.patch
 Patch3187:      swiftshader-llvm20-absoluteSymbols.patch
@@ -1152,31 +1151,14 @@ myconf_gn+=' enable_platform_apps=false'
 # symbol_level=1 is enough info for stacktraces
 # symbol_level=0 no debuginfo (only function names in private symbols)
 # blink (HTML engine) and v8 (js engine) are template-heavy, trying to compile them with full debug leads to linker errors due to inherent limitations of the DWARF format.
-%ifnarch %ix86 %arm aarch64
+
 %if 0%{?fedora}
-# [10675s] lto1: internal compiler error: in build_abbrev_table, at dwarf2out.cc:9244
-myconf_gn+=' symbol_level=1'
-%else
-%if %{without lto}
-myconf_gn+=' symbol_level=1' # relocation truncated to fit
+myconf_gn+=' symbol_level=1' #OOM during linking
 %else
 myconf_gn+=' symbol_level=2'
 %endif
-%endif
 myconf_gn+=' blink_symbol_level=1'
 myconf_gn+=' v8_symbol_level=1'
-%endif
-%ifarch %ix86 %arm
-#Sorry, no debug on 32bit.
-myconf_gn+=" symbol_level=1"
-myconf_gn+=" blink_symbol_level=0"
-myconf_gn+=" v8_symbol_level=0"
-%endif
-%ifarch aarch64
-myconf_gn+=' symbol_level=2'
-myconf_gn+=' blink_symbol_level=1'
-myconf_gn+=' v8_symbol_level=1'
-%endif
 
 #symbol_level should not affect generated code.
 myconf_gn+=' enable_stack_trace_line_numbers=true'

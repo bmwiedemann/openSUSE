@@ -49,6 +49,7 @@ Cloulpinyin is an based cloud compute input method
 mkdir build
 cd build
 cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DLIB_INSTALL_DIR=%{_libdir} \
         ..
 make

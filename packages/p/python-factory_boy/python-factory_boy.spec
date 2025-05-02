@@ -27,8 +27,10 @@ Source:         https://files.pythonhosted.org/packages/source/f/factory_boy/fac
 BuildRequires:  %{python_module Faker >= 0.7.0}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 0.8}
 BuildRequires:  %{python_module typing_extensions}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{suse_version} > 1600
@@ -53,10 +55,10 @@ sed -i -e '/test_alchemy/d' tests/__init__.py
 sed -i -e 's|"3.2.1.dev0"|"3.3.0"|g' tests/test_version.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +68,6 @@ sed -i -e 's|"3.2.1.dev0"|"3.3.0"|g' tests/test_version.py
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/factory
-%{python_sitelib}/factory_boy-%{version}*-info
+%{python_sitelib}/factory_boy-%{version}.dist-info
 
 %changelog

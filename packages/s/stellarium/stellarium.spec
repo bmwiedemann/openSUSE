@@ -34,6 +34,7 @@ Source1:        https://github.com/Stellarium/stellarium/releases/download/v%{ve
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         use-local-md4c.patch
+Patch1:         Qt-6.9-Fix-compilation.patch
 BuildRequires:  cmake >= 3.16.0
 %if 0%{?suse_version} <= 1600
 BuildRequires:  cmake(FastFloat)
@@ -67,8 +68,8 @@ BuildRequires:  pkgconfig(Qt5Script)
 BuildRequires:  pkgconfig(Qt5SerialPort)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5UiTools)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5Widgets)
 %else
 BuildRequires:  qt6-core-private-devel >= 6.2.0
 BuildRequires:  qt6-gui-private-devel >= 6.2.0

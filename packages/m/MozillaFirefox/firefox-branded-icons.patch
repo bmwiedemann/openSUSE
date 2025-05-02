@@ -1,6 +1,6 @@
 # HG changeset patch
 # Parent e0751ad74e835e80041a61ea00c2a63bf6fbe2de
-# Parent  ad547c5985d362e88a47ccbba0cc5fa07bd24e8b
+# Parent  9309f1ac14b7173985576932c01874184be1dcf9
 
 diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
 --- a/browser/branding/branding-common.mozbuild
@@ -24,7 +24,7 @@ diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/brandi
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -208,20 +208,23 @@
+@@ -221,20 +221,23 @@
  ; [Browser Chrome Files]
  @RESPATH@/browser/chrome.manifest
  @RESPATH@/browser/chrome/browser@JAREXT@
@@ -41,10 +41,10 @@ diff --git a/browser/installer/package-manifest.in b/browser/installer/package-m
  @RESPATH@/browser/chrome/icons/default/default128.png
 +@RESPATH@/browser/chrome/icons/default/default256.png
  #endif
- @RESPATH@/browser/features/*
  
  ; [DevTools Startup Files]
  @RESPATH@/browser/chrome/devtools-startup@JAREXT@
  @RESPATH@/browser/chrome/devtools-startup.manifest
  
  ; DevTools
+ @RESPATH@/browser/chrome/devtools@JAREXT@

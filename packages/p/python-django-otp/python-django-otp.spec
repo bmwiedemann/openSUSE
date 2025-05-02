@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-otp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           python-django-otp
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Add two-factor authentication to Django using one-time passwords
 License:        Unlicense
 URL:            https://github.com/django-otp/django-otp
 Source:         https://files.pythonhosted.org/packages/source/d/django-otp/django_otp-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 4.2}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Django >= 3.2
+Requires:       python-Django >= 4.2
 Suggests:       python-segno
 Suggests:       python-qrcode
 BuildArch:      noarch

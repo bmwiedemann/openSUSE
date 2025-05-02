@@ -2709,4 +2709,12 @@
     - Check properly for the DBus backend presence (forwarded request 1265365 from iznogood)</comment>
     <requestid>1265725</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>8ddba510f4ce400fc5716f865560110c</srcmd5>
+    <version>2.56.2</version>
+    <time>1746190546</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273810</requestid>
+  </revision>
 </revisionlist>

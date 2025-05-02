@@ -1083,4 +1083,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment></comment>
     <requestid>1254481</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>43f9cd7527bb803aa42ed843c099cdde</srcmd5>
+    <version>9.0.104</version>
+    <time>1746190706</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273836</requestid>
+  </revision>
 </revisionlist>

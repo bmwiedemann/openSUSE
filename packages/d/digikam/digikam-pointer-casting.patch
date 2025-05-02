@@ -1,0 +1,66 @@
+From d8f881d55a71de1deb9955e02db891af77265bbe Mon Sep 17 00:00:00 2001
+From: Gilles Caulier <caulier.gilles@gmail.com>
+Date: Wed, 15 Jan 2025 04:38:44 +0000
+Subject: [PATCH] cppcheck: fix C-style pointer casting
+
+---
+ .../thumb/thumbnailcreator_basic.cpp              | 15 ++++++++++-----
+ .../threadimageio/video/videothumbdecoder_p.cpp   |  2 +-
+ 2 files changed, 11 insertions(+), 6 deletions(-)
+
+diff --git a/core/libs/threadimageio/thumb/thumbnailcreator_basic.cpp b/core/libs/threadimageio/thumb/thumbnailcreator_basic.cpp
+index 7c54332f964..b04363e5fef 100644
+--- a/core/libs/threadimageio/thumb/thumbnailcreator_basic.cpp
++++ b/core/libs/threadimageio/thumb/thumbnailcreator_basic.cpp
+@@ -210,9 +210,14 @@ QImage ThumbnailCreator::loadPNG(const QString& path) const
+ 
+     png_init_io(png_ptr, f);
+     png_read_info(png_ptr, info_ptr);
+-    png_get_IHDR(png_ptr, info_ptr, (png_uint_32*) (&w32),
+-                 (png_uint_32*) (&h32), &bit_depth, &color_type,
+-                 &interlace_type, nullptr, nullptr);
++    png_get_IHDR(png_ptr, info_ptr,
++                 reinterpret_cast<png_uint_32*>(&w32),
++                 reinterpret_cast<png_uint_32*>(&h32),
++                 &bit_depth,
++                 &color_type,
++                 &interlace_type,
++                 nullptr,
++                 nullptr);
+ 
+     bool  has_grey = 0;
+     w              = w32;
+@@ -285,7 +290,7 @@ QImage ThumbnailCreator::loadPNG(const QString& path) const
+         png_set_expand(png_ptr);
+     }
+ 
+-    lines = (unsigned char**)malloc(h * sizeof(unsigned char*));
++    lines = reinterpret_cast<unsigned char**>(malloc(h * sizeof(unsigned char*)));
+ 
+     if (!lines)
+     {
+@@ -317,7 +322,7 @@ QImage ThumbnailCreator::loadPNG(const QString& path) const
+ 
+     for (i = 0 ; i < h ; ++i)
+     {
+-        lines[i] = ((unsigned char*)(qimage.bits())) + (i * w * sizeOfUint);
++        lines[i] = (reinterpret_cast<unsigned char*>(qimage.bits())) + (i * w * sizeOfUint);
+     }
+ 
+     png_read_image(png_ptr, lines);
+diff --git a/core/libs/threadimageio/video/videothumbdecoder_p.cpp b/core/libs/threadimageio/video/videothumbdecoder_p.cpp
+index 3da45632f36..97a1e6e98a4 100644
+--- a/core/libs/threadimageio/video/videothumbdecoder_p.cpp
++++ b/core/libs/threadimageio/video/videothumbdecoder_p.cpp
+@@ -292,7 +292,7 @@ bool VideoThumbDecoder::Private::processFilterGraph(AVFrame* const dst,
+         return false;
+     }
+ 
+-    av_image_copy(dst->data, dst->linesize, (const uint8_t**)filterFrame->data, filterFrame->linesize, pixfmt, width, height);
++    av_image_copy(dst->data, dst->linesize, reinterpret_cast<uint8_t**>(filterFrame->data), filterFrame->linesize, pixfmt, width, height);
+     av_frame_unref(filterFrame);
+ 
+     return true;
+-- 
+GitLab
+

@@ -45,6 +45,7 @@ fcitx-googlepinyin is a Googlepinyin module for fcitx.
 %{__mkdir} -pv build
 pushd build
 cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DLIB_INSTALL_DIR=%{_libdir} \
         ..
 make

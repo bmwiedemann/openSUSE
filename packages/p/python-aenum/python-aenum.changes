@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  2 03:13:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros. 
+
+-------------------------------------------------------------------
 Tue Feb  6 08:42:07 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add fix-python312-tests.patch to skip failing tests with python 3.12

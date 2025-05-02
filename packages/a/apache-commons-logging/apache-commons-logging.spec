@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-logging
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Apache Commons Logging
 License:        Apache-2.0

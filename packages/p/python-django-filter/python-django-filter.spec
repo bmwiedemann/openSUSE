@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-filter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-filter
-Version:        24.2
+Version:        25.1
 Release:        0
 Summary:        Reusable Django app to allow users to filter queryset dynamically
 License:        BSD-3-Clause
 URL:            https://github.com/carltongibson/django-filter
-Source:         https://files.pythonhosted.org/packages/source/d/django-filter/django-filter-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django_filter/django_filter-%{version}.tar.gz
 BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-crispy-forms}
 BuildRequires:  %{python_module djangorestframework}
@@ -41,7 +41,7 @@ Django-filter is a reusable Django application for allowing users to filter quer
 For usage and installation instructions, consult the docs directory.
 
 %prep
-%setup -q -n django-filter-%{version}
+%setup -q -n django_filter-%{version}
 
 %build
 %pyproject_wheel

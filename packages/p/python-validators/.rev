@@ -305,4 +305,35 @@ Features:
   * Fixed domain validator for international domains and certain</comment>
     <requestid>1199455</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>78b24f46be58090e026c7f4432e010df</srcmd5>
+    <version>0.35.0</version>
+    <time>1746190551</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.35.0:
+Features
+  * Validator russian individual tax number
+    gh#python-validators/validators#408
+  * feat: allow custom URL scheme validation
+    gh#python-validators/validators#409
+  * Refactor API: remove print from `ru_inn`, update description,
+    and expose via `__init__`
+    gh#python-validators/validators#419
+  * Add Mir card validation support
+    gh#python-validators/validators#420
+Maintenance
+  * fix(domain): accept .onion as a valid TLD
+    gh#python-validators/validators#402
+  * fix(url): add hashtag to allowed fragment characters
+    gh#python-validators/validators#411
+  * fix(uri): replace `lstrip(&quot;mailto:&quot;)` with manual prefix
+    removal
+    gh#python-validators/validators#418
+  * running `doctest` failes
+    gh#python-validators/validators#417
+  * Fix: Allow Special DOI Cases Used in Public Administration
+    Tests
+    gh#python-validators/validators#415</comment>
+    <requestid>1273822</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,7 +43,7 @@ BuildRequires:  libXext-devel
 BuildRequires:  libXv-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  meson >= 1.1
+BuildRequires:  meson >= 1.4
 BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

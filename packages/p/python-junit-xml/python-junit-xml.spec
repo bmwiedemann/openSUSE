@@ -1,7 +1,7 @@
 #
 # spec file for package python-junit-xml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Version:        1.9
 Release:        0
 Summary:        Module that creates JUnit XML test result documents
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/kyrus/python-junit-xml
 # 1.9 source not published on pypi
 #Source:         https://files.pythonhosted.org/packages/source/j/junit-xml/junit-xml-%{version}.tar.gz
 Source:         junit-xml-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -48,10 +49,10 @@ that can be read by tools such as Jenkins.
 sed -i '1{/^#!/d}' junit_xml/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/junit_xml
+%{python_sitelib}/junit_xml-%{version}.dist-info
 
 %changelog

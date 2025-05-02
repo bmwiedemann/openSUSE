@@ -47,7 +47,7 @@ fcitx-skk is an input method engine for Fcitx, which uses libskk as its backend.
 %build
 mkdir -p build
 pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 make %{?_smp_mflags}
 popd
 

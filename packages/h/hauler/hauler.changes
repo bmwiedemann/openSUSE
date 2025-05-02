@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  1 16:34:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.4 (CVE-2025-22872, bsc#1241804):
+  * Bump golang.org/x/net from 0.37.0 to 0.38.0 in the go_modules
+    group across 1 directory
+  * minor tests updates
+
+-------------------------------------------------------------------
 Mon Apr 28 09:58:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.2.3:

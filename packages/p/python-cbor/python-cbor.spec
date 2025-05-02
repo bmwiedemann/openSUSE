@@ -1,7 +1,7 @@
 #
 # spec file for package python-cbor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-cbor
 Version:        1.0.0
 Release:        0
 Summary:        RFC 7049 - Concise Binary Object Representation
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/brianolson/cbor_py
 Source:         https://files.pythonhosted.org/packages/source/c/cbor/cbor-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/brianolson/cbor_py/master/LICENSE
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-base
 %python_subpackages
 
 %description
@@ -42,14 +41,15 @@ cp %{SOURCE1} .
 
 %build
 export CFLAGS="-fno-strict-aliasing %{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/cbor
+%{python_sitearch}/cbor-%{version}.dist-info
 
 %changelog

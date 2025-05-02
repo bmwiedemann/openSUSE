@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Apr 30 10:52:09 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.1:
+  + gst-python:
+    - Fix compatibility with PyGObject >= 3.52.0
+    - Segmentation Fault since PyGObject >= 3.52.0 due to missing
+      _introspection_module attribute
+- Drop 0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Mar 30 08:55:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch: Fix

@@ -1,7 +1,7 @@
 #
 # spec file for package python-testrepository
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,14 @@ Version:        0.0.21
 Release:        0
 Summary:        A repository of test results
 License:        Apache-2.0 OR BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/testing-cabal/testrepository
 Source:         https://files.pythonhosted.org/packages/source/t/testrepository/testrepository-%{version}.tar.gz
+BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module iso8601}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-mimeparse}
 BuildRequires:  %{python_module python-subunit}
 BuildRequires:  %{python_module pytz}
@@ -35,20 +37,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testresources}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-dbm
-Requires:       python-extras
 Requires:       python-fixtures
+Requires:       python-iso8601
 Requires:       python-python-subunit >= 0.0.11
-Requires:       python-testscenarios
-Requires:       python-testtools >= 0.9.30
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
-%if "%python_flavor" != "python2"
-Requires:       python-dbm
-%endif
 %python_subpackages
 
 %description
@@ -67,32 +64,34 @@ subunit or be converted into a subunit stream can be accepted).
 %setup -q -n testrepository-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/testr
 
 %check
-#mv .testr.conf .testr.conf.orig
-#%%{python_expand # first line can't be empty
-#rm -rf .testrepository
-#sed 's/python/$python/' .testr.conf.orig >| .testr.conf
-#$python ./testr init
-#$python ./testr run --parallel
-#}
+mv .testr.conf .testr.conf.orig
+%{python_expand # first line can't be empty
+rm -rf .testrepository
+sed 's/python/$python/' .testr.conf.orig >| .testr.conf
+export PYTHON=$python
+$python ./testr init
+$python ./testr run --parallel
+}
 
 %post
 %python_install_alternative testr
 
-%preun
+%postun
 %python_uninstall_alternative testr
 
 %files %{python_files}
 %license COPYING Apache-2.0 BSD
 %doc NEWS README.rst
 %python_alternative %{_bindir}/testr
-%{python_sitelib}/*
+%{python_sitelib}/testrepository
+%{python_sitelib}/testrepository-%{version}.dist-info
 
 %changelog

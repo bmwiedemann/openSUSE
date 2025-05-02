@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May  1 08:58:10 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.2.2
+  * Fixed electron.shell.openExternal and electron.shell.openPath to honor user-defined system defaults on Linux.
+  * Fixed a possible crash when using navigator.bluetooth.requestDevice and the select-bluetooth-device event.
+  * Fixed a potential crash when closing a window with child windows.
+  * Fixed crash when renderer process crashes while webview is reloading.
+  * Fixed the visibleOnAllWorkspaces property on Linux.
+- Drop electron_usb_delegate-incomplete-UsbDeviceInfo.patch applied upstream
+
+-------------------------------------------------------------------
 Tue Apr 29 09:33:21 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Remove spurious exports of internal functions bloating binary due to incorrectly building libnode with -fvisibility=default

@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  51c04f4ff9825942da48a84dcc04e34a212316ee
+# Parent  9ffe1fea48c514ef323c1e238a516ed01f78362b
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -308,25 +308,25 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
  }
  
  FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
-     FractionSignificantSettings settings;
+     FractionSignificantSettings settings{};
      settings.fMinFrac = static_cast<digits_t>(minFrac);
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
 +    settings.fPriority = UNUM_ROUNDING_PRIORITY_RELAXED;
-     PrecisionUnion union_;
+     PrecisionUnion union_{};
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
  }
  
  Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
-     FractionSignificantSettings settings;
+     FractionSignificantSettings settings{};
      settings.fMinFrac = -1;
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
 +    settings.fPriority = UNUM_ROUNDING_PRIORITY_RELAXED;
-     PrecisionUnion union_;
+     PrecisionUnion union_{};
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
  }
@@ -720,7 +720,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
      const StreamConfig& input_config,
      const StreamConfig& output_config) {
    AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2061,16 +2062,17 @@ void AudioProcessingImpl::InitializeNois
+@@ -2062,16 +2063,17 @@ void AudioProcessingImpl::InitializeNois
              case NoiseSuppresionConfig::kModerate:
                return NsConfig::SuppressionLevel::k12dB;
              case NoiseSuppresionConfig::kHigh:
@@ -1103,14 +1103,14 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
 diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 --- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
 +++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-@@ -105,16 +105,17 @@ int GetDefaultMaxQp(webrtc::VideoCodecTy
-     case webrtc::kVideoCodecH265:
+@@ -106,16 +106,17 @@ int GetDefaultMaxQp(webrtc::VideoCodecTy
        return kDefaultVideoMaxQpH26x;
      case webrtc::kVideoCodecVP8:
      case webrtc::kVideoCodecVP9:
-     case webrtc::kVideoCodecAV1:
      case webrtc::kVideoCodecGeneric:
        return kDefaultVideoMaxQpVpx;
+     case webrtc::kVideoCodecAV1:
+       return kDefaultVideoMaxQpAv1;
    }
 +  return kDefaultVideoMaxQpVpx; // fake return for hopefully not reached
  }
@@ -1121,24 +1121,3 @@ diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/thir
  int NormalizeSimulcastSize(const FieldTrialsView& field_trials,
                             int size,
                             size_t simulcast_layers) {
-diff --git a/third_party/libwebrtc/video/config/simulcast.cc b/third_party/libwebrtc/video/config/simulcast.cc
---- a/third_party/libwebrtc/video/config/simulcast.cc
-+++ b/third_party/libwebrtc/video/config/simulcast.cc
-@@ -192,16 +192,17 @@ int GetDefaultSimulcastTemporalLayers(we
-     case webrtc::kVideoCodecGeneric:
-       return kDefaultNumTemporalLayers;
-     // For codec type that has no software fallback, defaults to L1T1 for
-     // initial simulcast setup, as this is the only scalability mode secure to
-     // be supported.
-     case webrtc::kVideoCodecH265:
-       return 1;
-   }
-+  return 1;
- }
- 
- std::vector<SimulcastFormat> GetSimulcastFormats(
-     bool enable_lowres_bitrate_interpolation,
-     webrtc::VideoCodecType codec) {
-   std::vector<SimulcastFormat> formats;
-   switch (codec) {
-     case webrtc::kVideoCodecVP8:

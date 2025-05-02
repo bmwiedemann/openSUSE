@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  1 01:31:19 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Set -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix build with cmake4
+
+-------------------------------------------------------------------
 Sat Dec  2 05:42:01 UTC 2017 - i@marguerite.su
 
 - update version 0.1.2

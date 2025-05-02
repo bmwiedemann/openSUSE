@@ -1968,4 +1968,12 @@ General : Update internal Libraw to snapshot 202110
   * digikam-qt69.patch</comment>
     <requestid>1268164</requestid>
   </revision>
+  <revision rev="228" vrev="3">
+    <srcmd5>f5a773122e42ce617cd9569f9e655af1</srcmd5>
+    <version>8.6.0</version>
+    <time>1746190733</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273865</requestid>
+  </revision>
 </revisionlist>

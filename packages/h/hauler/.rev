@@ -137,4 +137,15 @@
   * fix tlog verification error/warning output (#428)</comment>
     <requestid>1273079</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ab73c7b0b401be657fc37ea67e3d832</srcmd5>
+    <version>1.2.4</version>
+    <time>1746190736</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.4 (CVE-2025-22872, bsc#1241804):
+  * Bump golang.org/x/net from 0.37.0 to 0.38.0 in the go_modules
+    group across 1 directory
+  * minor tests updates</comment>
+    <requestid>1273864</requestid>
+  </revision>
 </revisionlist>

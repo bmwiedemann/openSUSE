@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  1 19:27:50 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.25.3:
+  * Fix lowered async arrow functions before super() (#4141, #4142)
+  * Fix memory leak with --watch=true (#4131, #4132)
+  * More concise output for repeated legal comments (#4139)
+  * Allow a custom host with the development server (#4110)
+  * Add a limit to CSS nesting expansion (#4114)
+  * Fix path resolution edge case (#4144)
+  * Update Go from 1.23.7 to 1.23.8 (#4133, #4134)
+
+-------------------------------------------------------------------
 Wed Apr  2 02:11:52 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.25.2:

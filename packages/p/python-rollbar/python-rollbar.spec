@@ -1,7 +1,7 @@
 #
 # spec file for package python-rollbar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-rollbar
-Version:        1.0.0
+Version:        1.3.0
 Release:        0
 Summary:        Report exceptions, errors, and log messages to Rollbar
 License:        MIT
@@ -26,9 +26,11 @@ Source:         https://github.com/rollbar/pyrollbar/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module WebOb}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 0.12.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 0.12.1
@@ -44,12 +46,16 @@ Send messages and exceptions with arbitrary context, get back aggregates, and de
 %autosetup -p1 -n pyrollbar-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+
 %python_clone -a %{buildroot}%{_bindir}/rollbar
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+#Examples not needed in the package
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/rollbar/examples
 
 %check
 %pytest -k 'not (test_shorten_array or test_encode_empty_tuple)'

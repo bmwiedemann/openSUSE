@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu May  1 16:27:28 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to Docker 28.1.1-ce. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/28/#2811> bsc#1242114
+  Includes upstream fixes:
+   - CVE-2025-22872 bsc#1241830
+- Remove long-outdated build handling for deprecated and unsupported
+  devicemapper and AUFS storage drivers. AUFS was removed in v24, and
+  devicemapper was removed in v25.
+  <https://docs.docker.com/engine/deprecated/#aufs-storage-driver>
+- Rebase patches:
+ * 0001-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+ * 0002-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+ * 0003-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+ * 0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+ * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+- Remove upstreamed patches:
+ - 0006-CVE-2025-22868-vendor-jws-split-token-into-fixed-num.patch
+ - 0007-CVE-2025-22869-vendor-ssh-limit-the-size-of-the-inte.patch
+ - cli-0001-docs-include-required-tools-in-source-tree.patch
+
+-------------------------------------------------------------------
+Mon Apr 28 18:22:47 UTC 2025 - Aleksa Sarai <asarai@suse.com>
+
+- Update to docker-buildx v0.23.0. Upstream changelog:
+  <https://github.com/docker/buildx/releases/tag/v0.23.0>
+
+-------------------------------------------------------------------
 Thu Apr 10 03:18:42 UTC 2025 - Aleksa Sarai <asarai@suse.com>
 
 - Update to docker-buildx v0.22.0. Upstream changelog:

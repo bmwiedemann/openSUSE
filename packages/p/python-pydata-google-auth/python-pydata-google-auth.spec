@@ -1,7 +1,7 @@
 #
 # spec file for package python-pydata-google-auth
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           python-pydata-google-auth
-Version:        1.8.2
+Version:        1.9.1
 Release:        0
 Summary:        PyData helpers for authenticating to Google APIs
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/pydata-google-auth
 Source:         https://github.com/pydata/pydata-google-auth/archive/%{version}.tar.gz#/pydata-google-auth-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pydata/pydata-google-auth/pull/73 Do not require six on Python 3
-Patch0:         no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module versioneer}

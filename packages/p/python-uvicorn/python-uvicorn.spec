@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-uvicorn
-Version:        0.32.0
+Version:        0.34.2
 Release:        0
 Summary:        An Asynchronous Server Gateway Interface server
 License:        BSD-3-Clause
 URL:            https://github.com/encode/uvicorn
 Source:         https://github.com/encode/uvicorn/archive/%{version}.tar.gz#/uvicorn-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Ignore the large amount of DeprecationWarnings that websockets 14 gave us
+Patch0:         support-websockets-14+.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing-extensions >= 4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
 Requires:       python-h11 >= 0.8.0
-Requires:       python-typing-extensions >= 4
 Recommends:     python-PyYAML >= 5.1
 Recommends:     python-httptools >= 0.4.0
 Recommends:     python-websockets >= 8.0
@@ -49,6 +49,7 @@ BuildRequires:  %{python_module httptools >= 0.4.0}
 BuildRequires:  %{python_module httpx >= 0.27}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dotenv}
 BuildRequires:  %{python_module requests}
@@ -93,13 +94,14 @@ ignore="--ignore tests/middleware/test_wsgi.py"
 %if "%{_arch}" == "s390x"
 ignore+=" --ignore tests/protocols/test_websocket.py"
 %endif
-%pytest $ignore
+# no longer raises an exception with Websockets 14+
+%pytest $ignore -k 'not test_send_binary_data_to_server_bigger_than_default_on_websockets'
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
 %python_alternative %{_bindir}/uvicorn
 %{python_sitelib}/uvicorn
-%{python_sitelib}/uvicorn-%{version}*-info
+%{python_sitelib}/uvicorn-%{version}.dist-info
 
 %changelog

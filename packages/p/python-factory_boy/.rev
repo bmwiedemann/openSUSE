@@ -230,4 +230,12 @@
     <comment></comment>
     <requestid>1271876</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>280c997c32e1df64ba8ed0d27e775756</srcmd5>
+    <version>3.3.3</version>
+    <time>1746190793</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1273892</requestid>
+  </revision>
 </revisionlist>

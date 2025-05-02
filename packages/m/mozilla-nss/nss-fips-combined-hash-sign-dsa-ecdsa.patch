@@ -68,7 +68,7 @@ Index: nss/lib/softoken/pkcs11c.c
 ===================================================================
 --- nss.orig/lib/softoken/pkcs11c.c
 +++ nss/lib/softoken/pkcs11c.c
-@@ -2848,6 +2848,38 @@ nsc_EDDSASignStub(void *ctx, unsigned ch
+@@ -2849,6 +2849,38 @@ nsc_EDDSASignStub(void *ctx, unsigned ch
      return rv;
  }
  
@@ -107,7 +107,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3755,6 +3787,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
+@@ -3756,6 +3788,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
          info->hashOid = SEC_OID_##mmm;        \
          goto finish_rsa;
  
@@ -130,7 +130,7 @@ Index: nss/lib/softoken/pkcs11c.c
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -5017,6 +5065,73 @@ loser:
+@@ -5018,6 +5066,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -204,7 +204,7 @@ Index: nss/lib/softoken/pkcs11c.c
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -5071,8 +5186,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5072,8 +5187,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -213,7 +213,7 @@ Index: nss/lib/softoken/pkcs11c.c
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -5226,80 +5339,36 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
+@@ -5227,80 +5340,37 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  
@@ -223,6 +223,7 @@ Index: nss/lib/softoken/pkcs11c.c
 +                                    mech, signature_length, pairwise_digest_length); \
 +    if (crv != CKR_OK)                                                               \
 +        return crv;
++    
 +
      if (canSignVerify) {
 -        /* Determine length of signature. */
@@ -279,7 +280,7 @@ Index: nss/lib/softoken/pkcs11c.c
 -        if ((signature_length >= pairwise_digest_length) &&
 -            (PORT_Memcmp(known_digest, signature + (signature_length - pairwise_digest_length), pairwise_digest_length) == 0)) {
 -            PORT_Free(signature);
--            return CKR_DEVICE_ERROR;
+-            return CKR_GENERAL_ERROR;
 -        }
 -
 -        /* Verify the known hash using the public key. */

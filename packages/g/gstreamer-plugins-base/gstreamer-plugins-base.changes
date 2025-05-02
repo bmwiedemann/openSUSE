@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Apr 30 10:17:08 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.1:
+  + Ensure properties are freed before (re)setting with
+    g_value_dup_string() and during cleanup
+  + alsadeviceprovider: Fix leak of Alsa longname
+  + audioaggregator: fix error added in !8416 when chaining up
+  + audiobasesink: Fix custom slaving driftsamples calculation and
+    add custom audio clock slaving callback example
+  + decodebin3:
+    - Don't avoid parsebin even if we have a matching decoder
+    - Doesn't plug parsebin for AAC from tsdemux
+  + gl: eglimage: warn the reason of export failure
+  + glcolorconvert:
+    - Fix YUVA<->RGBA conversions
+    - Regression when rendering alpha vp9
+  + gldownload: Unref glcontext after usage
+  + meson.build: test for and link against libatomic if it exists
+  + oggdemux: Don't push new packets if there is a pending seek
+  + urisourcebin:
+    - Make parsebin activation more reliable
+    - Deadlock between parsebin and typefind
+  + videoencoder: Use the correct segment and buffer timestamp in
+    the chain function
+  + videotimecode: Fix conversion of timecode to datetime with
+    drop-frame timecodes and handle 119.88 fps correctly in all
+    places
+
+-------------------------------------------------------------------
 Wed Mar 12 06:55:24 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.26.0:

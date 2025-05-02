@@ -1,7 +1,7 @@
 #
 # spec file for package javaparser
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
+BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)
 BuildRequires:  mvn(org.checkerframework:checker-qual)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
@@ -54,7 +55,8 @@ sed -i 's/\r//' readme.md
 %pom_remove_plugin -r :jacoco-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 
-%pom_add_dep org.checkerframework:checker-qual javaparser-symbol-solver-core
+%pom_add_dep org.checkerframework:checker-qual::provided javaparser-symbol-solver-core
+%pom_add_dep com.google.code.findbugs:jsr305::provided javaparser-symbol-solver-core
 
 # Compatibility alias
 %{mvn_alias} :javaparser-core com.google.code.javaparser:javaparser
@@ -91,7 +93,6 @@ echo "-snapshot: SNAPSHOT" >> javaparser-core/bnd.bnd
 
 %build
 %{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif

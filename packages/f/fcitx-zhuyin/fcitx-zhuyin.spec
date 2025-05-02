@@ -55,6 +55,7 @@ This is a libzhuyin wrapper for fcitx.
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:%{_libdir}/libzhuyin-1.1.1/pkgconfig
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
       ..
 make %{?_smp_mflags}
 

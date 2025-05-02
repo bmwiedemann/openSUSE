@@ -19,7 +19,7 @@
 
 %global __requires_exclude typelib\\(GtkosxApplication\\)|typelib\\(Gtkspell\\)|typelib\\(GConf\\)
 Name:           gramps
-Version:        5.2.4
+Version:        6.0.1
 Release:        0
 Summary:        Genealogical Research Software
 License:        GPL-2.0-or-later
@@ -42,6 +42,7 @@ Requires:       python3-bsddb3
 Requires:       python3-cairo
 Requires:       python3-gobject >= 3.12.0
 Requires:       python3-gobject-Gdk
+Requires:       python3-orjson
 Requires:       xdg-utils
 Recommends:     ghostscript
 Recommends:     graphviz
@@ -71,6 +72,7 @@ python3 setup.py build
 
 %install
 python3 setup.py install --root=%{buildroot}
+%python3_fix_shebang
 # fix resource-path containing buildroot information
 echo -n %{_datadir} > %{buildroot}%{python3_sitelib}/gramps/gen/utils/resource-path
 # We package those files as package docs...

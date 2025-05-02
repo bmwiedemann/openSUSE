@@ -1615,4 +1615,41 @@ Please add to Staging:G</comment>
     <comment></comment>
     <requestid>1268528</requestid>
   </revision>
+  <revision rev="182" vrev="1">
+    <srcmd5>96e1d38f6f6549945155cc15e2bf6418</srcmd5>
+    <version>1.26.1</version>
+    <time>1746190567</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.26.1:
+  + Add missing Requires in pkg-config
+  + Ensure properties are freed before (re)setting with
+    g_value_dup_string() and during cleanup
+  + Update docs
+  + aja: Use the correct location of the AJA NTV2 SDK in the docs
+  + alphacombine: De-couple flush-start/stop events handling
+  + alphadecodebin: use a multiqueue instead of a couple of queues
+  + avfvideosrc: Guess reasonable framerate values for some 3rd
+    party devices
+  + codecalpha: name both queues
+  + d3d12converter: Fix cropping when automatic mipmap is enabled
+  + dashsink: Make sure to use a non-NULL pad name when requesting
+    a pad from splitmuxsink
+  + docs: Fix GstWebRTCICE* class documentation
+  + h264ccextractor, h265ccextractor: Handle gap with unknown pts
+  + h265decoder, h265ccinserter: Fix broken SPS/PPS link
+  + h265parser: Fix num_long_term_pics bound check
+  + Segmentation fault in H265 decoder
+  + h266decoder: fix leak parsing SEI messages
+  + meson.build: test for and link against libatomic if it exists
+  + mse: Improved Thread Safety of API
+  + mse: Revert ownership transfer API change in
+    gst_source_buffer_append_buffer()
+  + tensordecoders: updating element classification
+  + unixfd: Fix wrong memory size when offset &gt; 0
+  + uvcsink: Respond to control requests with proper error handling
+  + v4l2codecs: unref frame in all error paths of end_picture
+  + va: Skip codecs that report maximum width or height lower than
+    minimum</comment>
+    <requestid>1273828</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-log
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
-%global skip_python2 1
 Name:           python-click-log
 Version:        0.4.0
 Release:        0
@@ -25,9 +23,11 @@ Summary:        Logging integration for Click
 License:        MIT
 URL:            https://github.com/click-contrib/click-log
 Source:         https://files.pythonhosted.org/packages/source/c/click-log/click-log-%{version}.tar.gz
-BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click
@@ -43,15 +43,19 @@ Integrates logging with click.
 rm -rf click_log.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/click_log
+%{python_sitelib}/click_log-%{version}.dist-info
 
 %changelog

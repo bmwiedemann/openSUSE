@@ -1,7 +1,7 @@
 #
 # spec file for package python-aenum
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,9 @@ Patch0:         tempdir_missing.patch
 Patch1:         skip_failing_testcases.patch
 # PATCH-FIX-UPSTREAM fix-python312-tests.patch gh#ethanfurman/aenum#36
 Patch2:         fix-python312-tests.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -67,10 +69,10 @@ duplicate values.
 %autosetup -p1 -n aenum-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -81,6 +83,6 @@ export LANG=en_US.UTF-8
 %doc README.md aenum/CHANGES aenum/doc/*
 %license aenum/LICENSE
 %{python_sitelib}/aenum
-%{python_sitelib}/aenum-%{version}*-info
+%{python_sitelib}/aenum-%{version}.dist-info
 
 %changelog

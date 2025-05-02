@@ -1,7 +1,7 @@
-Index: apache-tomcat-9.0.82-src/conf/catalina.policy
+Index: apache-tomcat-9.0.104-src/conf/catalina.policy
 ===================================================================
---- apache-tomcat-9.0.82-src.orig/conf/catalina.policy
-+++ apache-tomcat-9.0.82-src/conf/catalina.policy
+--- apache-tomcat-9.0.104-src.orig/conf/catalina.policy
++++ apache-tomcat-9.0.104-src/conf/catalina.policy
 @@ -171,6 +171,9 @@ grant {
      permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat";
  

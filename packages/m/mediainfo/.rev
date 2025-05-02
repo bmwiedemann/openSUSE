@@ -2566,4 +2566,38 @@
     <comment></comment>
     <requestid>1255408</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>2c37a1a941e30f8eb2a5a6075edcd4c2</srcmd5>
+    <version>25.04</version>
+    <time>1746190775</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 25.04
+  Added features:
+  * MP4: Detect caption presence in the middle of the file for AVC
+    with CEA-608 in SEI
+  * MP4: Support of Spherical Video metadata
+  * MP4: support of com.apple.quicktime.location.ISO6709
+  * IAMF: Basic (name, sampling rate, audio format used)
+    support of IAMF (raw, in MP4), thanks to cjee21
+  * JPEG: read XMP metadata, thanks to cjee21
+  * XMP metadata: Display photoshop:Credit, xmp:CreatorTool
+  * Mach-O: Basic Mach-O (including Universal) binary support,
+    thanks to cjee21
+  * MZ: Add more archs
+  * WepP: Support of WebP, thanks to bitplane
+  * FLAC: Add picture information
+  * FLAC: Add muxing method of images
+  * DVB: Update MJD parsing for accepting dates after 2038
+  * Input: Accept literal IPv6 addresses, thanks to cjee21
+  * I2231, 2vuy: Bit depth
+  Fixed bugs:
+  * ADM: fix crash and wrong conformance issue report with
+    specific files
+  * MPEG-4: avoid nearly infinite loops with buggy streams
+  * HEVC: fix false positive conformance issue with LHEVC SPS
+  * I2248, FLAC: fix format name in case of image in metadata
+  * I2240, Aspect ratio: Add display aspect ratio 9:16
+</comment>
+    <requestid>1273876</requestid>
+  </revision>
 </revisionlist>

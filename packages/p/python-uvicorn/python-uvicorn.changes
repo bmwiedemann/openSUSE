@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu May  1 06:28:46 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.34.2:
+  * Added
+    + Add content-length to 500 response in wsproto implementation
+  * Fixed
+    + Flush stdout buffer on Windows to trigger reload
+    + Drop ASGI spec version to 2.3 on HTTP scope
+    + Enable httptools lenient data on httptools >= 0.6.3
+  * Deprecated
+    + Deprecate ServerState in the main module
+  * Removed
+    + Drop support for Python 3.8
+    + Remove WatchGod support for --reload
+- Add patch support-websockets-14+.patch:
+  * Ignore multiple classes of DeprecationWarnings.
+
+-------------------------------------------------------------------
 Wed Oct 30 10:37:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.32.0:

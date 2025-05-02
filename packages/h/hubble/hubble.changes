@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 02 04:48:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.3:
+  * Prepare for v1.17.3 release
+  * chore(deps): update module golang.org/x/net to v0.38.0
+    [security]
+  * chore(deps): update library/golang docker tag to v1.24.2
+  * chore(deps): update all github action dependencies
+  * chore(deps): update library/golang docker tag to v1.23.8
+  * README: Update latest version to 1.17.2
+  * Update stable release to 1.17.2
+
+-------------------------------------------------------------------
 Wed Apr 02 04:44:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.2:

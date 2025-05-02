@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 16:08:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.56.2:
+  + Fix the build with glib < 2.76.
+  + a11y-manager-device: Fix unmap_keysym_modifier.
+
+-------------------------------------------------------------------
 Sat Mar 29 08:43:24 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.56.1:

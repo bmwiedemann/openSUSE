@@ -1,7 +1,7 @@
-From d14bce9bafde35ad958f38f608bf3e0481d98ad7 Mon Sep 17 00:00:00 2001
+From ea43e18e821bda80dd475ce0f16e1f617399dc20 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Fri, 29 Jun 2018 17:59:30 +1000
-Subject: [PATCH 4/7] bsc1073877: apparmor: clobber docker-default profile on
+Subject: [PATCH 4/5] bsc1073877: apparmor: clobber docker-default profile on
  start
 
 In the process of making docker-default reloading far less expensive,
@@ -22,7 +22,7 @@ Signed-off-by: Aleksa Sarai <asarai@suse.de>
  3 files changed, 17 insertions(+), 6 deletions(-)
 
 diff --git a/daemon/apparmor_default.go b/daemon/apparmor_default.go
-index 81e10b6cbec0..e695667a190f 100644
+index 5a3121d05b5a..d63799b4e113 100644
 --- a/daemon/apparmor_default.go
 +++ b/daemon/apparmor_default.go
 @@ -23,6 +23,15 @@ func DefaultApparmorProfile() string {
@@ -69,10 +69,10 @@ index be4938f5b61a..2b326fea5829 100644
  	return nil
  }
 diff --git a/daemon/daemon.go b/daemon/daemon.go
-index f152685e6026..dee4c33471d5 100644
+index c38c34ab8348..6ad567279025 100644
 --- a/daemon/daemon.go
 +++ b/daemon/daemon.go
-@@ -941,8 +941,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
+@@ -873,8 +873,9 @@ func NewDaemon(ctx context.Context, config *config.Config, pluginStore *plugin.S
  		log.G(ctx).Warnf("Failed to configure golang's threads limit: %v", err)
  	}
  
@@ -85,5 +85,5 @@ index f152685e6026..dee4c33471d5 100644
  	}
  
 -- 
-2.48.1
+2.49.0
 

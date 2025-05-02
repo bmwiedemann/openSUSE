@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -41,7 +41,7 @@ BuildRequires:  flex >= 2.5.31
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
-BuildRequires:  meson >= 1.1
+BuildRequires:  meson >= 1.4
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml

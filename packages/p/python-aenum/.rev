@@ -157,4 +157,12 @@ https://build.opensuse.org/request/show/612101</comment>
   gh#ethanfurman/aenum#36</comment>
     <requestid>1144506</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>64eb492c09f96b9bace948b48cfa5207</srcmd5>
+    <version>3.1.15</version>
+    <time>1746190783</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1273885</requestid>
+  </revision>
 </revisionlist>

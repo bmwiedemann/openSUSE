@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-services
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,14 @@ Summary:        Services plugin for pytest testing framework
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-services
 Source:         https://github.com/pytest-dev/pytest-services/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.lockfile >= 2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,10 +60,10 @@ processes for your tests with pytest.
 sed -i -e '/import MySQLdb/d' tests/test_plugin.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,6 +73,7 @@ sed -i -e '/import MySQLdb/d' tests/test_plugin.py
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pytest_services
+%{python_sitelib}/pytest_services-%{version}.dist-info
 
 %changelog

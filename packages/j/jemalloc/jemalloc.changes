@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 30 17:20:06 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Add fix_make_check_with_gcc15.patch to make the testsuite pass
+  despite new GCC malloc-related optimizations. [boo#1240665]
+
+-------------------------------------------------------------------
 Fri May  6 20:53:16 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.3.0

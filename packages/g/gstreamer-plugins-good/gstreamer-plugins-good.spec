@@ -33,7 +33,7 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -59,7 +59,7 @@ BuildRequires:  libavc1394-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmp3lame-devel
-BuildRequires:  meson >= 1.1
+BuildRequires:  meson >= 1.4
 BuildRequires:  nasm
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig

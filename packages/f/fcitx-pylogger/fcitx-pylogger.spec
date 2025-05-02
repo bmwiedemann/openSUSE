@@ -45,7 +45,7 @@ contribution to make fcitx a better world.
 %build
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 make %{?_smp_mflags}
 
 %install

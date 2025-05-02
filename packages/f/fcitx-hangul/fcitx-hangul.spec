@@ -47,7 +47,9 @@ It's generally an IBus hangul implementation on Fcitx.
 %build
 mkdir -p build
 pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DLIB_INSTALL_DIR=%{_libdir} ..
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+      -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      -DLIB_INSTALL_DIR=%{_libdir} ..
 make %{?_smp_mflags}
 
 %install

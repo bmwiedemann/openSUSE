@@ -782,4 +782,16 @@ in future runs if it turned out to be implemented incorrectly).</comment>
   (merged)</comment>
     <requestid>975721</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>e0b662a9e191ed7c15de15e38cdabb64</srcmd5>
+    <version>5.3.0</version>
+    <time>1746190536</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_make_check_with_gcc15.patch to make the testsuite pass
+  despite new GCC malloc-related optimizations. [boo#1240665]
+
+If the request is OK, please forward it to Factory soon so that we can
+switch the default compiler. (forwarded request 1273720 from jamborm)</comment>
+    <requestid>1273778</requestid>
+  </revision>
 </revisionlist>

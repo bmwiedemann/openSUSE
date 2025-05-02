@@ -127,4 +127,12 @@
     <comment>3.26.2</comment>
     <requestid>1206187</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ffc91981ef66a8cd53c2e5bda54235a5</srcmd5>
+    <version>3.26.2</version>
+    <time>1746190714</time>
+    <user>dimstar_suse</user>
+    <comment>Explicitely declare jsr305 in build requires</comment>
+    <requestid>1273843</requestid>
+  </revision>
 </revisionlist>

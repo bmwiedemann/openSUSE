@@ -7456,4 +7456,41 @@
   * Fixed an occasional startup crash. (bmo#1958293)</comment>
     <requestid>1269740</requestid>
   </revision>
+  <revision rev="454" vrev="1">
+    <srcmd5>3676d45bbfdb3d1563984757cd130588</srcmd5>
+    <version>138.0</version>
+    <time>1746190553</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 138.0
+  https://www.mozilla.org/en-US/firefox/138.0/releasenotes/
+  MFSA 2025-28 (bsc#1241621)
+  * CVE-2025-2817 (bmo#1917536)
+    Privilege escalation in Firefox Updater
+  * CVE-2025-4082 (bmo#1937097)
+    WebGL shader attribute memory corruption in Firefox for macOS
+  * CVE-2025-4083 (bmo#1958350)
+    Process isolation bypass using &quot;javascript:&quot; URI links in
+    cross-origin frames
+  * CVE-2025-4085 (bmo#1915280)
+    Potential information leakage and privilege escalation in
+    UITour actor
+  * CVE-2025-4086 (bmo#1945705)
+    Specially crafted filename could be used to obscure download
+    type
+  * CVE-2025-4087 (bmo#1952465)
+    Unsafe attribute access during XPath parsing
+  * CVE-2025-4088 (bmo#1953521)
+    Cross-site request forgery via storage access API redirects
+  * CVE-2025-4089 (bmo#1949994, bmo#1956698, bmo#1960198)
+    Potential local code execution in &quot;copy as cURL&quot; command
+  * CVE-2025-4090 (bmo#1929478)
+    Leaked library paths in Firefox for Android
+  * CVE-2025-4091 (bmo#1951161, bmo#1952105)
+    Memory safety bugs fixed in Firefox 138, Thunderbird 138,
+    Firefox ESR 128.10, and Thunderbird 128.10
+  * CVE-2025-4092 (bmo#1924108, bmo#1950780, bmo#1959367)
+    Memory safety bugs fixed in Firefox 138 and Thunderbird 138
+- requires NSS 3.110</comment>
+    <requestid>1273825</requestid>
+  </revision>
 </revisionlist>

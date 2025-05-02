@@ -20,15 +20,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.zst
-# PATCH-FIX-UPSTREAM 0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch -- Fix compatibility with PyGObject>=3.52.0
-Patch0:         https://gitlab.freedesktop.org/gstreamer/gstreamer/-/commit/0496a778bb85e0b263ed2fddfcf3dac7961fe4f5.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler

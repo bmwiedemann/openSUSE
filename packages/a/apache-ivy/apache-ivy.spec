@@ -20,7 +20,7 @@
 %bcond_without  oro
 %bcond_without  sftp
 %bcond_without  vfs
-%bcond_with pack200
+%bcond_without  pack200
 Name:           apache-ivy
 Version:        2.5.3
 Release:        0

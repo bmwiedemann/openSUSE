@@ -47,7 +47,7 @@ fcitx-kkc is a Japanese KKC IME Wrapper for Fcitx.
 %build
 mkdir -p build
 pushd build
-cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} ..
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_POLICY_VERSION_MINIMUM=3.5 ..
 make %{?_smp_mflags}
 popd
 

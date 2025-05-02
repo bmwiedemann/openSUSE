@@ -1,7 +1,7 @@
 #
 # spec file for package python-chest
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-chest
 Version:        0.2.3
 Release:        0
@@ -27,8 +26,10 @@ Source:         https://files.pythonhosted.org/packages/source/c/chest/chest-%{v
 Patch0:         support-python-310.patch
 BuildRequires:  %{python_module HeapDict}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-HeapDict
@@ -46,10 +47,10 @@ This is useful in the following two occasions:
 %autosetup -p1 -n chest-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,7 @@ This is useful in the following two occasions:
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/chest
+%{python_sitelib}/chest-%{version}.dist-info
 
 %changelog

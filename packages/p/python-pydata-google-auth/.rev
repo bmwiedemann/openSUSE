@@ -67,4 +67,25 @@
     <comment></comment>
     <requestid>1160829</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bb955dfd9ecdf8e166b50d2d501dfb3</srcmd5>
+    <version>1.9.1</version>
+    <time>1746190684</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.9.1:
+  * Update https://pydata-google-
+    auth.readthedocs.io/en/latest/oauth.html with information
+    about magics commands and other Cloud resources.
+    (https://github.com/pydata/pydata-google-auth/pull/79)
+- update to 1.9.0:
+  * Do not require six on Python 3
+  * Support Python 3.13, drop Python &lt;=3.8
+  * Try colab credentials in `get_user_credentials` if
+    `client_id` not specified
+- drop no-six.patch (upstream)
+
+  * Adds pydata_google_auth.load_service_account_credentials() function to get
+  * Adds decision logic to handle use cases where a user may not have the ability</comment>
+    <requestid>1273173</requestid>
+  </revision>
 </revisionlist>
