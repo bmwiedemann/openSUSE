@@ -1,7 +1,7 @@
 #
 # spec file for package ardour
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -107,6 +107,7 @@ Requires(postun): desktop-file-utils
 Requires(postun): shared-mime-info
 Recommends:     a2jmidid
 Recommends:     gtk2-engine-clearlooks
+Recommends:     libcanberra-gtk2-module
 Recommends:     libfftw3_threads3
 Conflicts:      ardour-vst
 Conflicts:      ardour2
