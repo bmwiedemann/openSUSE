@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/jfrog/jfrog-cli.git</param>
+              <param name="changesrevision">5c16b02dcdebe2cb31e016efa16703ff11fcd500</param></service></servicedata>
