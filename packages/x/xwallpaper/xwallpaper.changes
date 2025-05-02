@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 08:17:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.6:
+  * Extend sandbox to support glibc 2.41.
+
+-------------------------------------------------------------------
 Thu Sep 19 17:26:52 UTC 2024 - Tomasz Hołubowicz <services@alternateved.com> - 0.7.5
 
 - Update to version 0.7.5

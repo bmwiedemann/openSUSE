@@ -1,7 +1,7 @@
 #
 # spec file for package xwallpaper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2022 Tomasz Hołubowicz <alternateved@pm.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           xwallpaper
-Version:        0.7.5
+Version:        0.7.6
 Release:        0
 Summary:        Wallpaper setting utility for X
 License:        ISC
