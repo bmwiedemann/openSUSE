@@ -843,7 +843,6 @@ unsorted:
   - arc-icon-theme 
   - arcanist 
   - arch-install-scripts 
-  - archivemount 
   - archivemount-ng 
   - ardour 
   - argocd-autopilot 
@@ -9596,6 +9595,10 @@ unsorted:
   - jformatstring-javadoc 
   - jfreechart 
   - jfreechart-javadoc 
+  - jfrog-cli 
+  - jfrog-cli-bash-completion 
+  - jfrog-cli-fish-completion 
+  - jfrog-cli-zsh-completion 
   - jgit 
   - jgit-javadoc 
   - jgmenu 
@@ -9735,6 +9738,8 @@ unsorted:
   - jsonrpc-glib-devel 
   - jsoup 
   - jsoup-javadoc 
+  - jspecify 
+  - jspecify-javadoc 
   - jsr-305 
   - jsr-305-javadoc 
   - jsr-311 
@@ -25049,6 +25054,7 @@ unsorted:
   - python311-django-widget-tweaks 
   - python311-djangorestframework 
   - python311-djangorestframework-camel-case 
+  - python311-djangorestframework-csv 
   - python311-djangorestframework-simplejwt 
   - python311-dkimpy 
   - python311-dlib 
@@ -28749,6 +28755,7 @@ unsorted:
   - python312-django-widget-tweaks 
   - python312-djangorestframework 
   - python312-djangorestframework-camel-case 
+  - python312-djangorestframework-csv 
   - python312-djangorestframework-simplejwt 
   - python312-dkimpy 
   - python312-dlib 
@@ -32473,6 +32480,7 @@ unsorted:
   - python313-django-widget-tweaks 
   - python313-djangorestframework 
   - python313-djangorestframework-camel-case 
+  - python313-djangorestframework-csv 
   - python313-djangorestframework-simplejwt 
   - python313-dkimpy 
   - python313-dlib 
@@ -36018,9 +36026,6 @@ unsorted:
   - rss-glx 
   - rssguard 
   - rsstail 
-  - rstudio 
-  - rstudio-desktop 
-  - rstudio-server 
   - rsvg-convert 
   - rsvndump 
   - rsvndump-lang 
