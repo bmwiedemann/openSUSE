@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 
-%if 0%{?suse_version} < 1550
+%if 0%{?suse_version} <= 1600
 %bcond_with pylama
 %else
 %bcond_without pylama

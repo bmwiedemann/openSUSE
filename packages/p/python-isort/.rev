@@ -658,4 +658,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>1267733</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>cf219cc7eadbe07bc56b57d14aa748b8</srcmd5>
+    <version>6.0.1</version>
+    <time>1746190865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273976</requestid>
+  </revision>
 </revisionlist>
