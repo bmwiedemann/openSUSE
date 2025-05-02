@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  2 07:37:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1:
+  * About, Preferences and Languages windows have been migrated to
+    the new adaptive dialogs.
+  * All message dialogs have been migrated to the new alert
+    dialogs.
+  * New tooltips have been added to the text search bar.
+  * Removed access permission to the user folder in the Flatpak
+    sandbox.
+  * Minor code adjustments and fixes.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 28 23:39:14 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.0:
