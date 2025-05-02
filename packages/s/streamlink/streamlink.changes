@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 29 03:20:45 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 7.3.0:
+  * Changed: download progress to use the console output stream rather than always stderr, which previously caused log and progress messages to be interweaved
+  * Changed: download progress output to be a status message line at the bottom
+    of the console output, unless --progress=force is set in non-interactive or
+    unsupported environments, in which case less frequent regular progress
+    messages are written
+  * Fixed: potential division by zero error when formatting progress output
+  * Build: bumped setuptools requirement from >=65.6 to >=77 and switched to PEP 639 project license metadata format
+
+-------------------------------------------------------------------
 Fri Apr  4 20:12:39 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 7.2.0:

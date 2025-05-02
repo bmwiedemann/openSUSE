@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           streamlink%{psuffix}
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
@@ -43,7 +43,7 @@ BuildRequires:  python3-pip >= 9
 BuildRequires:  python3-pycountry
 BuildRequires:  python3-pycryptodome >= 3.4.3
 BuildRequires:  python3-requests >= 2.26
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools >= 77.0
 BuildRequires:  python3-trio >= 0.25.0
 BuildRequires:  python3-trio-typing
 BuildRequires:  python3-trio-websocket >= 0.9.0
