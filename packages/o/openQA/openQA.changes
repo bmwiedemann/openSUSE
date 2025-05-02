@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May 02 09:26:33 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1746018652.10b1e438:
+  * Bump datatables.net-bs5 from 2.2.2 to 2.3.0
+  * Follow symlinks but only delete files with dump-db script
+  * Avoid unbound variable error in dump-db script
+  * Fix result in case of giving up gru jobs without GruTasks
+  * Add nice and ionice to dump-db script
+  * Documented the PROVE_COMMAND and prove_wrapper feature
+  * Add explicit test for `obsolete_minion_jobs`
+  * Avoid leftover Minion jobs after failing txn when scheduling jobs
+  * Wrap prove to prevent unhandled output
+
+-------------------------------------------------------------------
 Thu Apr 24 14:14:39 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1745500773.055f94fe:
