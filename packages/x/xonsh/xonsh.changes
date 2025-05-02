@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  2 08:04:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.4:
+  * Updated bash_completion.py from archived xonsh/py-bash-
+    completion repo
+  * Using trace on with .xsh scripts could previously lead to a
+    spurious ignored exception showing up on stderr. This is now
+    fixed.
+  * bash_completion: Fixed empty line in completion result
+    (https://github.com/xonsh/py-bash-completion/pull/21).
+  * pipelines: fixed 'NoneType' object has no attribute 'pid'
+    exception (#5794).
+  * The history delete action on the sqlite backend used to pass
+    matched history lines to a SQL statement without
+    sanitization. This could lead to unexpected SQL being run on
+    the history database. This is now fixed. Security risk: low.
+
+-------------------------------------------------------------------
 Mon Feb 24 15:35:56 UTC 2025 - Alexey Kolos <lioli7k@gmail.com>
 
 - fix use python3-base during build
