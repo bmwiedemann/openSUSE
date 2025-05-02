@@ -1,7 +1,7 @@
 #
 # spec file for package deadbeef
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.9.6
+Version:        1.10.0
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
@@ -31,12 +31,6 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
-# PATCH-FIX-OPENSUSE deadbeef-drop-documents-installation.patch hillwood@opensuse.org -- Install documents by rpmbuild.
-Patch1:         %{name}-drop-documents-installation.patch
-# PATCH-FIX-OPENSUSE deadbeef-fix-desktop-file.patch -- fix bogus "Play Pause" action
-Patch2:         %{name}-fix-desktop-file.patch
-# PATCH-FIX-OPENSUSE 70ae99463889e191c3d5d0af6ba28e893d73a63f.patch -- see patch
-Patch3:         70ae99463889e191c3d5d0af6ba28e893d73a63f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  clang
@@ -114,6 +108,7 @@ Summary:        Development files for %{name}
 License:        Zlib
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 This package provides headers for DeaDBeeF plugins development.
@@ -211,6 +206,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/%{name}/ddb_mono2stereo.so*
 %{_libdir}/%{name}/ddb_out_pw.so*
 %{_libdir}/%{name}/ddb_shn.so*
+%{_libdir}/%{name}/medialib.so*
 %ifnarch %{ix86}
 %{_libdir}/%{name}/ddb_soundtouch.so*
 %endif
