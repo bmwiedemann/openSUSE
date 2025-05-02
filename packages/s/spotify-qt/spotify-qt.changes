@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Apr 29 04:04:45 UTC 2025 - Tobias Schula <tobias@schula.org>
+
+- Update to version 4.0.0
+
+Major Changes
+* Now defaults to Qt 6.
+* Deprecated Qt 5 support, to be removed in the next major release.
+* Now requires C++17 on all platforms, as required by Qt 6.
+* Development builds now use an incrementing "-dev" suffix instead of using the commit hash.
+* Now uses "x.y.z" versioning, in an attempt for more frequent updates.
+* Renamed the "master" branch to "develop" to clearer indicate it's in-development and unstable.
+
+Fixes
+* Fixed Qt 6.9 support (#284).
+
+Changes
+* Changed "localhost" during auth to "127.0.0.1" (#281).
+* Now requires CMake 3.16 or newer.
+* Now targets macOS 12, as required by Qt 6.
+
+-------------------------------------------------------------------
 Fri Dec 20 13:48:28 UTC 2024 - Jens K. <karatekhd@opensuse.org>
 
 - Add checks for SUSE Version
