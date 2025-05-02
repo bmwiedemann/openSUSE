@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Apr 24 15:52:23 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1745509934.49afb50:
+  * video_stream: support setting EDID also with ustreamer
+  * video_stream: add support for BGR3 format via ustreamer
+  * tidy: Enforce blank lines before subs
+  * New script: os-autoinst-generate-needle-preview
+  * Revert removal of '%cmd' after regressions
+  * backend: Make screen check time exceed check configurable
+  * backend: Make stall detection factor configurable
+
+-------------------------------------------------------------------
 Mon Apr 21 20:11:11 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1745266261.8745de3:
