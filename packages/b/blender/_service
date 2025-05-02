@@ -11,8 +11,8 @@
   </service>
   -->
   <service name="tar_scm" mode="manual">
-    <param name="revision">v4.4.0</param>
-    <param name="version">4.4.0</param>
+    <param name="revision">v4.4.1</param>
+    <param name="version">4.4.3</param>
     <param name="url">https://projects.blender.org/blender/blender-assets.git</param>
     <param name="scm">git</param>
     <param name="lfs">enable</param>

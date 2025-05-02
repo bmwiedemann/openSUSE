@@ -1507,4 +1507,12 @@ Enable cycles-osl in build</comment>
     <comment>discontinue use of openCollada to deprecate pcre</comment>
     <requestid>1270159</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>0ac63097df171e74983ea0974b196199</srcmd5>
+    <version>4.4.3</version>
+    <time>1746190868</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273975</requestid>
+  </revision>
 </revisionlist>

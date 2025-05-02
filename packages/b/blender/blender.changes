@@ -1,4 +1,207 @@
 -------------------------------------------------------------------
+Thu May  1 02:32:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- add BuildRequires for fftw3-threads-devel which is needed now
+
+-------------------------------------------------------------------
+Thu May  1 01:46:58 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.4.3
+  https://developer.blender.org/docs/release_notes/4.4/corrective_releases/
+  - Crashing in compositor (#138132)
+  - Assigning Action without assigning slot crashes the Dope Sheet
+    when the NLA is involved. (#137779)
+  - Compositor: Support link search for Glare node. (e6aae3926b)
+  - Crash in Blender 4.4.1 related to custom properties and
+    drivers. (#138073)
+  - Crash when compositor references another scene. (#137821)
+  - Principled BSDF and curve info shading error when using
+    roughness and image texture in cycles. (#137621)
+  - Switching Lattice to Edit Mode Crashes Blender. (#137700)
+  - The Curve to Point node cannot output the tangent attribute in
+    Blender 4.4.1. (#137600)
+  - "Merge Group" on empty grease pencil layer group will crash.
+    (#136755)
+  - Anim: Converting bone rotation with Rigify crashes Blender.
+    (#136706)
+  - Anim: Keying slotless NLA strip does not update the strip's
+    slot. (#136596)
+  - Anim: versioning after #136347 fixed keyframe interpolation
+    flags. (f15257ae3c)
+  - Assets Reload After each Save which makes it Invisible in the
+    Search List for a second. (#136254)
+  - Blender 4.4.0 Reference images draw in front of meshes while
+    render engine is set to Cycles. (#136185)
+  - Blender crash when entering a number in remesh modifier.
+    (#136637)
+  - Bugs with Slotted Actions and the Available Keying Set.
+    (#137041)
+  - Canceling sculpt transform tool leads to invalid display of
+    mesh. (fa2eee6f70)
+  - Cannot edit any texts when file comes from blender translated
+    in Chinese . (#136829)
+  - Cannot select objects inside View Clipping Region (ALT+B).
+    (#136273)
+  - Changed legacy node types. (#136891)
+  - Collection Line Art is distorted. (#136868)
+  - Color management settings can't be animated in 4.4. (#136415)
+  - Color sample only works as "merge". (#136105)
+  - Compilation error with XCode 16.3. (2a4303a1cb)
+  - Crash 'Select Linked' after 'Select Boundary Loop' in
+    multiobject editmode. (#136491)
+  - Crash drawing poly-line gesture. (fe8e7618f4)
+  - Crash loading & saving large Iris images. (ac5b00a453)
+  - Crash on Mac arm64 trying to draw an empty batch for shader.
+    (#136831)
+  - Crash on Merge Animation when Slot has no Channelbag. (#136967)
+  - Crash open a file in early versions with a closure node output.
+    (#136949)
+  - Crash saving large Cineon images. (44a91fd528)
+  - Crash saving large WebP images. (7ce866e3c0)
+  - Crash when deleting tools Measure. (#136402)
+  - Crash when hiding a collection referenced by Geometry Nodes.
+    (#136269)
+  - Crash when left click after deleting light. (#136563)
+  - Crash when using both viewport and normal compositor with fog
+    glow. (#136557)
+  - Crash with certain compositor setups. (#136360)
+  - Crash with object info node. (#137114)
+  - Crash with Select "Shortest path" in the UV editor. (#136280)
+  - Crashed while using Interpolate tool in Grease Pencil.
+    (#136646)
+  - Cycles HIP RDNA2 white and blue render artifacts. (#136138)
+  - Cycles OSL: Window texture coordinate is wrong for panoramic
+    cameras. (#135955)
+  - Cycles: Disable MNEE on RDNA4 GPUs. (6dbecf1fdb)
+  - Cycles: Principled BSDF renders incorrectly in specific setup.
+    (#137420)
+  - Difficulty to select pose bones when in Weight Paint mode.
+    (#136098)
+  - Edges become occluded in Edit Mode when they line up with the
+    viewport grid. (#136501)
+  - ERROR (gpu.shader): gpu_shader_2D_widget_base FragShader.
+    (#132968)
+  - Error reading RLE compressed Iris images. (2cbb07d7ad)
+  - Exception showing touch-pad preferences. (c0c76b34b5)
+  - Failure to save an existing Cineon file. (23c7ca6e39)
+  - FCurve noise modifier offset affected by scale. (f1e829a459)
+  - Fix crash from a missing check for an environment variable on
+    macOS. (e0244cb2cb)
+  - Fix missing topology cache in during node tree updates.
+    (e4e4d642bd)
+  - Geometry Nodes: Fill Caps + Resample Curves Count result in
+    crash. (#136668)
+  - Geometry Nodes: Segfault when deleting one of multiple Group
+    Output nodes. (#136327)
+  - glTF export: Fix NLA animation mode export. (d5fc1b070e)
+  - Graph Editor: copy/pasting a single keyframe pastes on
+    unselected curves when channels are collapsed. (#136736)
+  - Grease Pencil corrupted strokes turn black and can't be
+    colorized any more. (#136844)
+  - Grease Pencil Edit Mode does not apply low Multiframe Falloff
+    properly. (#137043)
+  - grease pencil materials duplicating on custom brushes.
+    (#137197)
+  - Grease Pencil SVG export - wrong export resolution (should be
+    Output > Resolution X,Y). (#136312)
+  - Grease Pencil: "AutoMerge" Destroys weight paining on strokes.
+    (#136243)
+  - Grease Pencil: Assert when weight painting rigged GP object and
+    some layers hidden. (#134517)
+  - Grease Pencil: Channel color versioning. (fa29eef109)
+  - Grease Pencil: Crash when exporting PDF/SVG with sampling.
+    (97fe0a3aac)
+  - Grease Pencil: Crash when using selection tools in edit mode.
+    (#137227)
+  - Grease Pencil: Interpolation changing static strokes. (#128769)
+  - Grease Pencil: SVG export uniform width option. (85657e36a0)
+  - Grease Pencil: Thickness modifier affects strokes that are not
+    part of the vertex group. (#137385)
+  - GreasePencil: Layer visible when loading in Blender 4.5.
+    (#137152)
+  - H.265 / HEVC Codec ID incompatible with Apple's apps such as
+    Final Cut Pro. (#136651)
+  - Hard Crash when second UV Map has big Islands. (#136235)
+  - Inconsistent Bézier Curve to Grease Pencil Conversion and
+    Stroke Thickness Issue. (#134098)
+  - Integer overflows calculating the number of pixels in imbuf.
+    (358d4b8e02)
+  - Integer overflows calculating the number of pixels.
+    (8cacf61568)
+  - Intel OpenGL: Camera gizmo can not be shifted with gizmo while
+    Drag Select box is active. (#132196)
+  - Interface: Division by zero exception opening a enum menu.
+    (#136206)
+  - Interface: Edge slide and Mesh Shear Status Bars Incorrectly
+    Overridden. (#136061)
+  - Interface: various minor fixes/changes to file
+    BUTTONS_OT_file_browse. (d0157b0b70)
+  - Internal mode in IES texture node flagged in missing file
+    report. (#134756)
+  - Inversion Mode of the Fill/Deepen and Scrape/Fill brushes is
+    weaker than expected. (#136204)
+  - Keyframe interpolation behavior changed for BoolProperty.
+    (#136347)
+  - Knife Tool Cut through not working after enabling Angle
+    Constraint. (#136867)
+  - macOS: Disable OpenMP when using Xcode 16.3 / LLVM 17.
+    (12ae5630dc)
+  - Mantaflow moving Collision not detected. (#136317)
+  - Material set from geometry nodes with a texture does not
+    display in edit mode. (#136175)
+  - Messed up Buttons with Spacemouse Pro. (#136401)
+  - Missed Update when node Tool is removed. (#113215)
+  - Missing BLI_endian_switch_uint32(&val) leads to failure on
+    s390x architecture. (#136860)
+  - Motion path keyframe number not showing on bones. (#136728)
+  - Move slots to new action not maintaining animation data.
+    (#136388)
+  - My blender is crashing randomly when I change the glare in the
+    composition. (#136310)
+  - Name Filter/Search in Dope Sheet and Timeline editors do not
+    hide channels properly. (#136887)
+  - New render slots could contain truncated UTF8 byte sequences.
+    (898c840480)
+  - Opening files from Splash executes scripts even from excluded
+    folders. (#137314)
+  - Orbit & Pan Auto Depth affected by transparent geometry when
+    Viewport Shading is set to Material Preview or Rendered.
+    (#136335)
+  - Pasted curves on multiple selected objects only visible after
+    deselecting. (#136830)
+  - Plane brush symmetry passes do not use the stabilized normal.
+    (04db7df4ef)
+  - Potential stack use after free with Plane brush. (74d14e2588)
+  - Potential use of invalid IME window pointer on Wayland.
+    (d0ef007134)
+  - Python: Limit numpy version for bpy wheel. (#134551)
+  - python3.dll dependency in extensions cant be loaded from
+    subprocesses..? leads to import issues in extension. (#126782)
+  - QuadriFlow Remesh gets stuck in a specific case. (#136593)
+  - Regression: Geometry Nodes: "Set Curve Normal" -> "Free"
+    corrupts normals (?). (#136378)
+  - Regression: Stereoscope Output Images Wrong Color. (#136619)
+  - Regression: VSE: Playhead jumps to start frame on Mac.
+    (#136155)
+  - Retain slot name when baking actions. (a89d6e0544)
+  - Sculpt: Improve smooth brush performance with small radius.
+    (b38ecd5148)
+  - Shadow Loss on Non-manifold Meshes in Solid Viewport Mode with
+    Backface Culling Enabled. (#136422)
+  - Slotted Actions - Duplicate Slot doesn't duplicate animation
+    data. (#136947)
+  - The presence of a hidden panels affects the text weight of
+    sided tabs. (#135742)
+  - UV maps can render incorrectly in certain situations. (#136810)
+  - Viewport render in 4.4 beta does not match the viewport render
+    of 4.3.2. (#135841)
+  - VSE crash when moving retiming key. (983f0ba086)
+  - VSE Inconsistent retiming key UI over audio waveform (and a
+    crash). (#136724)
+  - When marking multiple objects as assets, only the last asset
+    automatically generates a preview thumbnail. (#136645)
+
+-------------------------------------------------------------------
 Mon Mar 24 16:55:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - the big conditionals and BuildRequires cleanup

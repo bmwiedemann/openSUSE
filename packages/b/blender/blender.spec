@@ -84,7 +84,7 @@
 %global pkg_name blender
 
 Name:           blender
-Version:        4.4.0
+Version:        4.4.3
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -122,6 +122,7 @@ BuildRequires:  libboost_python-py3-%{?force_boost_version}-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
+BuildRequires:  fftw3-threads-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libharu-devel
 BuildRequires:  ninja
