@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  2 09:54:42 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.15.3
+  * Fixed slow SCGI replies
+  * Cleaned up thread/scheduler code
+- Delete 0001-0.15.2-Missing-header-algorithm.patch
+  0002-Fixed-DhtController-m_router-check-and-log-unit-test.patch
+  (merged)
+
+-------------------------------------------------------------------
 Fri Mar 28 20:41:18 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.15.2

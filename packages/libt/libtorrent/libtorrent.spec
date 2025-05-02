@@ -20,15 +20,13 @@
 %define _buildshell /bin/sh
 %define lname	libtorrent24
 Name:           libtorrent
-Version:        0.15.2
+Version:        0.15.3
 Release:        0
 Summary:        A BitTorrent library written in C++
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Productivity/Networking/File-Sharing
 URL:            https://github.com/rakshasa/libtorrent
 Source:         https://github.com/rakshasa/rtorrent/releases/download/v%version/libtorrent-%version.tar.gz
-Patch1:         0001-0.15.2-Missing-header-algorithm.patch
-Patch2:         0002-Fixed-DhtController-m_router-check-and-log-unit-test.patch
 BuildRequires:  automake
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc13-c++
