@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Apr 26 08:53:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.4.0:
+  * Add quick summary option that skips byte-for-byte match confirmation.
+  * Reduce number of progress indicator updates for better performance.
+
+- Update to 2.3.2:
+  * Keep cursor as close to current group as possible after deleting files.
+
+-------------------------------------------------------------------
 Mon Feb 24 21:48:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe succeed with POSIX sh
