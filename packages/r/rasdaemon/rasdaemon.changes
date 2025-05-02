@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 30 09:17:13 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Avoid daemon start-up delays by checking whether events are accessible
+  in sysfs before adding event handlers (bsc#1241567)
+A rasdaemon-skip-doesn-t-exist-event.patch
+  
+
+-------------------------------------------------------------------
 Thu Apr 24 10:50:48 UTC 2025 - Thomas Renninger <trenn@suse.de>
 
 - Fix early bufferoverflow in event initialization (bsc#1241567)
