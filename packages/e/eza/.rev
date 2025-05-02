@@ -1108,4 +1108,13 @@
   * Bump uutils_term_grid from 0.6.0 to 0.7.0</comment>
     <requestid>1272688</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>72e4cc8848d4a93395c8a94d0a164f25</srcmd5>
+    <version>0.21.3</version>
+    <time>1746190856</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.22.3:
+  * Add support for .ipynb file icons</comment>
+    <requestid>1273961</requestid>
+  </revision>
 </revisionlist>
