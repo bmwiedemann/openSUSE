@@ -216,4 +216,14 @@
     <comment></comment>
     <requestid>1272263</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f46ba7726d7ad2000e2fc5751a7d7e56</srcmd5>
+    <version>1.5.2</version>
+    <time>1746298755</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 767-skip-xc20p-tests.patch to skip unavailable tests
+  (gh#authlib/authlib#456).
+</comment>
+    <requestid>1274078</requestid>
+  </revision>
 </revisionlist>

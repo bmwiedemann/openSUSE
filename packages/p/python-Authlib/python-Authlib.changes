@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 21:29:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add 767-skip-xc20p-tests.patch to skip unavailable tests
+  (gh#authlib/authlib#456).
+
+-------------------------------------------------------------------
 Wed Apr 23 10:49:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.2

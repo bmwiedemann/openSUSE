@@ -25,6 +25,9 @@ Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
 URL:            https://authlib.org/
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 767-skip-xc20p-tests.patch bsc#[0-9]+ mcepl@suse.com
+# skip unavailable tests
+Patch0:         767-skip-xc20p-tests.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -73,7 +76,8 @@ rm COMMERCIAL-LICENSE
 $python -mpytest tests/core
 $python -mpytest tests/flask
 # gh#lepture/authlib#456
-$python -mpytest tests/jose -k 'not (test_dir_alg_xc20p or test_xc20p_content_encryption_decryption)'
+# $python -mpytest tests/jose -k 'not (test_dir_alg_xc20p or test_xc20p_content_encryption_decryption)'
+$python -mpytest tests/jose
 export DJANGO_SETTINGS_MODULE=tests.clients.test_django.settings
 $python -mpytest tests/clients
 # export DJANGO_SETTINGS_MODULE=tests.django.settings
