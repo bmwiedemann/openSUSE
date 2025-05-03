@@ -20,7 +20,7 @@ Name:           OpenLP
 Version:        3.1.5
 Release:        0
 Summary:        Open source Church presentation and lyrics projection application
-License:        GPL-2.0-only
+License:        GPL-2.0-only AND GPL-3.0-or-later AND (MIT OR GPL-2.0-only) AND (MIT OR BSD-3-Clause OR GPL-3.0-or-later) AND MIT
 URL:            https://gitlab.com/openlp/openlp
 Source0:        https://get.openlp.org/%{version}/%{name}-%{version}.tar.gz
 Source1:        OpenLP-rpmlintrc
@@ -122,7 +122,7 @@ update-desktop-database > /dev/null 2>&1 ||:
 %{_datadir}/applications/openlp.desktop
 %{_datadir}/icons/hicolor
 %{_datadir}/openlp
-%{python3_sitelib}/openlp/
-%{python3_sitelib}/%{name}-%{version}*-info
+%{python3_sitelib}/[Oo]pen[Ll][Pp]
+%{python3_sitelib}/[Oo]pen[Ll][Pp]-%{version}*-info
 
 %changelog

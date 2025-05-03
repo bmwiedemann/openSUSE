@@ -251,4 +251,12 @@
     <comment></comment>
     <requestid>1234161</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9fcfccd715fe0be5a740c6ec6823db0d</srcmd5>
+    <version>3.1.5</version>
+    <time>1746298704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update licenses to match latest legal review</comment>
+    <requestid>1274037</requestid>
+  </revision>
 </revisionlist>
