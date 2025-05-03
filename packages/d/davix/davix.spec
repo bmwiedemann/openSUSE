@@ -1,7 +1,7 @@
 #
 # spec file for package davix
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,22 +19,21 @@
 %define shlib lib%{name}0
 %define v_maj 0
 %define v_min 8
-%define v_pat 7
+%define v_pat 10
 Name:           davix
-Version:        0.8.7
+Version:        0.8.10
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            https://davix.web.cern.ch/davix/docs/devel
 Source:         https://github.com/cern-fts/davix/releases/download/R_%{v_maj}_%{v_min}_%{v_pat}/davix-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/cern-fts/davix/commit/057b4fa188b6b8afdb34cc6b7d103c78e73c1001.patch
-BuildRequires:  cmake >= 2.6
+BuildRequires:  cmake >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  python3
+BuildRequires:  cmake(GTest)
 BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(gsoapssl++)
 BuildRequires:  pkgconfig(libcurl)
@@ -76,7 +75,9 @@ applications using davix.
 %build
 %cmake \
   -DEMBEDDED_LIBCURL=FALSE \
-  -DENABLE_THIRD_PARTY_COPY:BOOL=TRUE
+  -DENABLE_THIRD_PARTY_COPY:BOOL=TRUE \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  %{nil}
 %cmake_build
 
 %install
@@ -88,8 +89,7 @@ rm -fr %{buildroot}%{_datadir}/doc/davix
 %check
 %ctest
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files
 %doc README.md RELEASE-NOTES.md
