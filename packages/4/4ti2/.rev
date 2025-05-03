@@ -81,4 +81,12 @@
     <comment>since there is no popd matching the pushd, this is trivially replacable by cd</comment>
     <requestid>1248181</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9de4dfb4809968ea27a753affd07c44</srcmd5>
+    <version>1.6.11</version>
+    <time>1746298760</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.6.11</comment>
+    <requestid>1274081</requestid>
+  </revision>
 </revisionlist>
