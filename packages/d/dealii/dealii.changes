@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:32:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 9.6.2:
+  * CMake: tests: fix tests in release tarball
+    (gh#dealii/dealii#17953).
+
+-------------------------------------------------------------------
 Sun Jan  5 05:14:43 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Remove obsolete netcdf build dependency, netcdf bindings were

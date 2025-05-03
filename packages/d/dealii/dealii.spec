@@ -1,7 +1,7 @@
 #
 # spec file for package dealii
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 
 %define __builder ninja
-%define sover 9.6.1
+%define sover 9.6.2
 %define shlibver %(echo %{sover} | tr "." "_")
 %define srcname dealii
 
@@ -83,7 +83,7 @@
 %endif
 
 Name:           %{pname}
-Version:        9.6.1
+Version:        9.6.2
 Release:        0
 Summary:        A Finite Element Differential Equations Analysis Library
 License:        LGPL-2.1-or-later
@@ -214,8 +214,7 @@ sed -i "1{/\/usr\/bin\/env/d}" %{buildroot}%{my_datadir}/deal.II/scripts/indent.
 %fdupes %{buildroot}%{_docdir}/%{name}/
 %endif
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{my_libdir}/libdeal_II.so.%{sover}
