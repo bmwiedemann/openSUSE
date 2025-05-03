@@ -173,4 +173,12 @@
     <comment></comment>
     <requestid>1273838</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>cf01754b675144b4844afdff36db0d68</srcmd5>
+    <version>10.1.40</version>
+    <time>1746298700</time>
+    <user>dimstar_suse</user>
+    <comment>Make conflicts and provides more generic</comment>
+    <requestid>1274035</requestid>
+  </revision>
 </revisionlist>
