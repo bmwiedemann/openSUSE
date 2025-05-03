@@ -1,7 +1,7 @@
 #
 # spec file for package python-testscenarios
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %{?sle15_python_module_pythons}
-Name:           python-testscenarios
+Name:           python-testscenarios%{psuffix}
 Version:        0.5.0
 Release:        0
 Summary:        A pyunit extension for dependency injection
@@ -26,10 +33,12 @@ License:        Apache-2.0 OR BSD-3-Clause
 URL:            https://launchpad.net/testscenarios
 Source:         https://files.pythonhosted.org/packages/source/t/testscenarios/testscenarios-%{version}.tar.gz
 BuildRequires:  %{python_module pbr >= 0.11}
-# Tests cause a dependency loop
-#BuildRequires:  %%{python_module extras}
-#BuildRequires:  %%{python_module nose}
-#BuildRequires:  %%{python_module testtools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
+%if %{with test}
+BuildRequires:  %{python_module extras}
+BuildRequires:  %{python_module testscenarios = %{version}}
+%endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pbr >= 0.11
@@ -48,22 +57,29 @@ different situations).
 %setup -q -n testscenarios-%{version}
 
 %build
-%python_build
+%if !%{with test}
+%pyproject_wheel
+%endif
 
 %install
-%python_install
+%if !%{with test}
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
-# Tests introduce dependency loop with python-testtools
-#%%check
-#%%{python_expand PYTHONPATH=%%{buildroot}%{$python_sitelib}
-#  $python -m testtools.run testscenarios.test_suite
-#}
+%check
+%if %{with test}
+%{python_expand PYTHONPATH=%%{buildroot}%{$python_sitelib}
+  $python -m testtools.run testscenarios.test_suite
+}
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license COPYING
 %doc Apache-2.0 BSD GOALS HACKING NEWS README
 %{python_sitelib}/testscenarios
-%{python_sitelib}/testscenarios-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/testscenarios-%{version}.dist-info
+%endif
 
 %changelog

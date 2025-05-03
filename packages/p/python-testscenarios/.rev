@@ -69,4 +69,13 @@
     <comment></comment>
     <requestid>1081666</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>9b238eea984bc0834fb61dc9c36c3e2c</srcmd5>
+    <version>0.5.0</version>
+    <time>1746298676</time>
+    <user>dimstar_suse</user>
+    <comment>- Sprinkle in multibuild to break a cycle.
+- Switch to pyproject macros.</comment>
+    <requestid>1273923</requestid>
+  </revision>
 </revisionlist>
