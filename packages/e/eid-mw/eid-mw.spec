@@ -1,7 +1,7 @@
 #
 # spec file for package eid-mw
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2014 Philipp Thomas <psmt@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define src_name eid-mw-%{version}-v%{version}
 
 Name:           eid-mw
-Version:        5.1.11
+Version:        5.1.21
 Release:        0
 URL:            https://eid.belgium.be/nl
 Summary:        Belgium electronic identity card PKCS#11 module and Firefox plugin
@@ -163,7 +163,8 @@ fi
 
 %files -f about-eid-mw.lang -f dialogs-beid.lang
 %defattr(-, root, root, 0755)
-%doc AUTHORS COPYING
+%license COPYING
+%doc AUTHORS
 %exclude %{_libdir}/*.la
 %{_libexecdir}/beid-askaccess
 %{_libexecdir}/beid-askpin

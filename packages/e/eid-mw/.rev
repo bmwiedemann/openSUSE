@@ -32,4 +32,13 @@
   * did not find the changes entries :/ (forwarded request 1096891 from msmeissn)</comment>
     <requestid>1096893</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>debdb26e9d65fff280492c9c5e6f3d15</srcmd5>
+    <version>5.1.21</version>
+    <time>1746298813</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.1.21
+  * again, no good changes posted by authors (forwarded request 1274142 from msmeissn)</comment>
+    <requestid>1274143</requestid>
+  </revision>
 </revisionlist>
