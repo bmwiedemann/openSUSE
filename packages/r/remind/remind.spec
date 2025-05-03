@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        5.3.5
+Version:        5.3.6
 Release:        0
-%define tar_version 05.03.05
+%define tar_version 05.03.06
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers

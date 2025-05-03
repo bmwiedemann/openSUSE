@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Apr 25 21:24:17 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+-  VERSION 5.3 Patch 6 - 2025-04-25
+
+- BUG FIX: remind: Make "remind -s" respect $DefaultColor.  Bug found by
+  Tim Chase.
+
+- DOCUMENTATION IMPROVEMENT: Make documentation of $SuppressLRM a bit
+  more prominent
+
+- UPDATE: contrib/remind-conf-mode: Add new functions moonrise,
+  moonset, etc. to Emacs highlighting file
+
+- MINOR IMPROVEMENT: examples/astro: Align output better
+
+- MINOR FIX: src/moon.c: Change C++-style comments to C-style comments
+
+-------------------------------------------------------------------
 Mon Mar 24 09:21:36 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 -  VERSION 5.3 Patch 5 - 2025-03-23
