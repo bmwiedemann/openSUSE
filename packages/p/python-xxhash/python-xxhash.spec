@@ -1,7 +1,7 @@
 #
 # spec file for package python-xxhash
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        BSD-2-Clause
 URL:            https://github.com/ifduyue/python-xxhash
 Source:         https://files.pythonhosted.org/packages/source/x/xxhash/xxhash-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  xxhash-devel
@@ -42,12 +44,12 @@ xxhash is a Python binding for the xxHash library.
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 export LANG=en_US.UTF-8
 export XXHASH_LINK_SO=1
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
 export XXHASH_LINK_SO=1
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -61,6 +63,6 @@ mv xxhash{.hide,}
 %doc README.rst
 %license LICENSE
 %{python_sitearch}/xxhash
-%{python_sitearch}/xxhash-%{version}*-info
+%{python_sitearch}/xxhash-%{version}.dist-info
 
 %changelog
