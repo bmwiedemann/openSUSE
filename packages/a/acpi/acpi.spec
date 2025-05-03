@@ -1,7 +1,7 @@
 #
 # spec file for package acpi
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           acpi
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Command-line ACPI client
 License:        GPL-2.0-or-later
-Group:          System/Daemons
 URL:            https://sourceforge.net/projects/acpiclient/
 Source:         https://sourceforge.net/projects/acpiclient/files/acpiclient/%{version}/%{name}-%{version}.tar.gz
 # Package was split from acpid package
@@ -43,10 +42,13 @@ It includes battery and thermal information.
 %install
 %make_install
 
+install -D -m 0644 acpi.de.1 %{buildroot}%{_mandir}/de/man1/acpi.1
+
 %files
 %license COPYING
-%doc AUTHORS ChangeLog README
+%doc AUTHORS README
 %{_bindir}/acpi
 %{_mandir}/man1/acpi.1%{?ext_man}
+%{_mandir}/de/man1/acpi.1%{?ext_man}
 
 %changelog

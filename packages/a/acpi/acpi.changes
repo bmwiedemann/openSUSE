@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Apr 27 08:41:45 UTC 2025 - munix9@googlemail.com
+
+- Update to version 1.8
+  * Make sure filename is NULL terminated.
+  * Update German manpage
+  * Allow different output formats for (dis)charge information.
+  * Display estimated end time for {,dis}charging, too.
+  * fix: battery runtime estimation with negative sysfs values
+    Some drivers (example: qualcomm-battmgr, present on Snapdragon
+    X1 laptops) expose the current_now and power_now values in
+    sysfs as negative int when the device is discharging, positive
+    when charging.
+    This breaks the battery runtime estimation in acpi, as it
+    expects a uint32 for power_now.
+    Use the absolute values of power_now to fix the problem, and
+    does the same for current_now to respect the ABI documentation.
+- Add german man page
+
+-------------------------------------------------------------------
 Mon Jan  4 13:09:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner 
