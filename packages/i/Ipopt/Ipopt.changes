@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Apr 30 08:59:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.17:
+  * Added Ipopt::RegisterInterruptHandler() and
+    Ipopt::UnregisterInterruptHandler() to IpUtils.hpp to wrap
+    handling of interrupt signals.
+  * Added parameter checkinterrupt (default false) to AmplTNLP
+    constructor to enable check for interrupt signal in
+    intermediate_callback.
+  * The ipopt and ipopt_sens executables and scalable problems C++
+    examples can now be interrupted by SIGINT/SIGHUP (systems with
+    sigaction()) or SIGINT/SIGTERM/SIGABRT (Windows systems).
+  * New option mumps_mpi_communicator to specify the MPI
+    communicator when using an MPI-enabled build of MUMPS
+    [gh#coin-or/Ipopt#790].
+  * Updated build system to current autotools versions; initial
+    support for icx/ifx and flang.
+  * Removed use of vsprintf and sprintf. Added
+    IpoptData::Append_info_string(std::string,double).
+  * Removed use of strcpy, strncpy, strdup, and sscanf.
+  * Using fopen_s and getenv_s instead of fopen and getenv,
+    respectively, if available.
+  * Added workaround for using Pardiso from Intel MKL 2025.0.1
+    [gh#coin-or/Ipopt#799].
+
+-------------------------------------------------------------------
 Wed Jul 17 05:30:18 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.16:
