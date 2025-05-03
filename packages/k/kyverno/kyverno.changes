@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Apr 30 21:13:00 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.1:
+  * Added
+    - Added a new adopter ONZACK AG (#12983)
+    - Added support for auditAnnotations in ImageValidatingPolicy
+      (#12946)
+  * Fixed
+    - Fixed object matching in cel/matching package (#12899,
+      #12920, #12929)
+    - Fixed a panic issue for the reports controller to check if
+      apiGroup and apiVersion are defined (#12924)
+    - Fixed to avoid applying CEL PolicyException when the flag is
+      disabled (#12931)
+    - Fixed a panic issue when ValidatingPolicy does not have
+      matchConstraints defined (#12957, #12968)
+    - [CLI]Fixed the issue which maps gvk to gvr for custom
+      resources (#12979)
+    - [CLI]Fixed gvk/gvr conversion for ValidatingAdmissionPolicy
+      (#12937)
+  * Others
+    - Tests enhancements (#12873, #12875, #12877, #12886, #12904,
+      #12942, #12964)
+    - Code refactoring (#12950, #12951, #12952, #12955, #12975,
+      #12934, #12961, #12971)
+
+-------------------------------------------------------------------
 Fri Apr 25 06:14:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.0:
