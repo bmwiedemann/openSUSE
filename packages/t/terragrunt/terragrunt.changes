@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 14 04:49:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.78.4:
+  * New Features
+    - OpenTelemetry Trace Propogation
+      In anticipation of the introduction of OpenTelemetry support
+      in OpenTofu 1.10, Terragrunt will now propagate the
+      TRACEPARENT environment variable to child processes to
+      support OpenTelemetry traces that maintain context across
+      Terragrunt and OpenTofu.
+      This work is based on @Yantrio 's PoC PR #4254, and is only
+      useful due to his work adding OpenTelemtry in OpenTofu. Thank
+      you!
+  * What's Changed
+    - feat: Add generation of opentelemtry parent traces to invoked
+      executables (#4278)
+    - feat: Adding homepage to Starlight docs (#4250)
+    - chore: Offboarding Levko (#4280)
+    - Add support for Terraform tests in Github Action (#4275)
+
+-------------------------------------------------------------------
 Mon May 12 18:57:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.78.3:
