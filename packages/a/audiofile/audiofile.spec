@@ -1,7 +1,7 @@
 #
 # spec file for package audiofile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +47,8 @@ Patch8:         0006-Check-for-division-by-zero-in-BlockCodec-runPull.patch
 Patch9:         0007-set-the-output-chunk-to-the-amount-of-frames.patch
 # PATCH-FIX-OPENSUSE bsc#1221308 -- correction to audiofile-CVE-2015-7747.patch
 Patch10:        createTemporaryFile-argument-fix.patch
+# PATCH-FIX-UPSTREAM audiofile-CVE-2022-24599.patch bsc#1196487 alynx.zhou@suse.com -- Clear buffer when allocating https://github.com/mpruett/audiofile/issues/60#issuecomment-1806866667
+Patch11:        audiofile-CVE-2022-24599.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
