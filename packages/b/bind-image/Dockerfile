@@ -15,30 +15,41 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/bind:9-%RELEASE%
+#!BuildTag: opensuse/bind:%%bind_major_minor_patch%%-%RELEASE%
+#!BuildTag: opensuse/bind:%%bind_major_minor_patch%%
 #!BuildTag: opensuse/bind:9
 #!BuildTag: opensuse/bind:%%bind_major_minor%%
-#!BuildTag: opensuse/bind:%%bind_major_minor_patch%%
 #!BuildTag: opensuse/bind:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends bind
-RUN set -euo pipefail; zypper -n clean -a; \
-    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bind
 
+# patch named.prep to not call logger (provided by systemd)
+# and just log to stdout
+RUN set -euo pipefail; \
+    mkdir -p /target/usr/local/lib/bind; \
+    cp /target//usr/libexec/bind/named.prep /target/usr/local/lib/bind/named.prep; \
+    sed -i -e 's|logger "Warning: \$1"|echo "Warning: \$1" >\&2|' -e '/\. \$SYSCONFIG_FILE/d' /target/usr/local/lib/bind/named.prep
+
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.bind
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed ISC BIND 9"
 LABEL org.opencontainers.image.description="ISC BIND 9 container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="9"
+LABEL org.opencontainers.image.version="%%bind_major_minor_patch%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="9-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bind:9-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%bind_major_minor_patch%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/bind:%%bind_major_minor_patch%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
@@ -54,13 +65,6 @@ COPY healthcheck.sh /usr/local/bin/healthcheck.sh
 RUN set -euo pipefail; \
     chmod +x /usr/local/bin/entrypoint.sh; \
     chmod +x /usr/local/bin/healthcheck.sh;
-
-# patch named.prep to not call logger (provided by systemd)
-# and just log to stdout
-RUN set -euo pipefail; \
-    mkdir -p /usr/local/lib/bind; \
-    cp /usr/libexec/bind/named.prep /usr/local/lib/bind/named.prep; \
-    sed -i -e 's|logger "Warning: \$1"|echo "Warning: \$1" >\&2|' -e '/\. \$SYSCONFIG_FILE/d' /usr/local/lib/bind/named.prep
 
 # create directories that tmpfiles.d would create for us
 RUN set -euo pipefail; \

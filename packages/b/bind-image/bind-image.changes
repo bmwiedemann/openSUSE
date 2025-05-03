@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  2 13:38:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Switch to a multistage build and adjust versions metadata
+
+-------------------------------------------------------------------
 Mon Apr 28 10:47:42 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - zypper clean also the system repository from the container
