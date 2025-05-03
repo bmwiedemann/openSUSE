@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  2 08:58:43 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Add gcc14-pr108900.patch to revert it, fixing libqt6webengine build.
+
+-------------------------------------------------------------------
+Wed Apr 30 06:32:16 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, 3418d740b344e0ba38022f3be, git11702
+  * Remove gcc14-pr118780.patch now on the upstream branch
+- Fix build on s390x [bsc#1241549]
+
+-------------------------------------------------------------------
 Tue Apr  8 11:08:02 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Make sure link editing is done against our own shared library

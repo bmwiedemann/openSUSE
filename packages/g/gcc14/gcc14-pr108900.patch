@@ -1,0 +1,58 @@
+From 8a884140c2bcb738122e71d8d1c680f234de9843 Mon Sep 17 00:00:00 2001
+From: Richard Biener <rguenther@suse.de>
+Date: Wed, 16 Apr 2025 21:00:00 -0700
+Subject: [PATCH] libcpp: Fix incorrect line numbers in large files [PR108900]
+To: gcc-patches@gcc.gnu.org
+
+From: Jeremy Bettis <jbettis@google.com>
+
+This patch addresses an issue in the C preprocessor where incorrect
+line number information is generated when processing files with a
+large number of lines. The problem arises from improper handling
+of location intervals in the line map, particularly when locations
+exceed LINE_MAP_MAX_LOCATION_WITH_PACKED_RANGES.
+
+By ensuring that the highest location is not decremented if it
+would move to a different ordinary map, this fix resolves
+the line number discrepancies observed in certain test cases.
+This change improves the accuracy of line number reporting, benefiting
+users relying on precise code coverage and debugging information.
+
+Tested x86_64-linux.
+
+libcpp/ChangeLog:
+
+	PR preprocessor/108900
+	* files.cc (_cpp_stack_file): Do not decrement highest_location
+	across distinct maps.
+
+Signed-off-by: Jeremy Bettis <jbettis@google.com>
+Signed-off-by: Yash Shinde <Yash.Shinde@windriver.com>
+(cherry picked from commit d9b56c65a2697e0d7a6c0f15f1977803dc94579b)
+---
+ libcpp/files.cc | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/libcpp/files.cc b/libcpp/files.cc
+index c61df339e20..5d53d7f6279 100644
+--- a/libcpp/files.cc
++++ b/libcpp/files.cc
+@@ -1005,6 +1005,15 @@ _cpp_stack_file (cpp_reader *pfile, _cpp_file *file, include_type type,
+ 		    && type < IT_DIRECTIVE_HWM
+ 		    && (pfile->line_table->highest_location
+ 			!= LINE_MAP_MAX_LOCATION - 1));
++
++  if (decrement && LINEMAPS_ORDINARY_USED (pfile->line_table))
++    {
++      const line_map_ordinary *map
++	= LINEMAPS_LAST_ORDINARY_MAP (pfile->line_table);
++      if (map && map->start_location == pfile->line_table->highest_location)
++	decrement = false;
++    }
++
+   if (decrement)
+     pfile->line_table->highest_location--;
+ 
+-- 
+2.43.0
+

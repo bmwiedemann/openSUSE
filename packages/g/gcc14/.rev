@@ -194,4 +194,16 @@ next week.  Gcc7 can pick it up from there.
   --enable-host-pie.</comment>
     <requestid>1267950</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d20a3ccc1f1b8e32bc65898c803addf2</srcmd5>
+    <version>14.2.1+git11702</version>
+    <time>1746298669</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc14-pr108900.patch to revert it, fixing libqt6webengine build.
+
+- Update to gcc-14 branch head, 3418d740b344e0ba38022f3be, git11702
+  * Remove gcc14-pr118780.patch now on the upstream branch
+- Fix build on s390x [bsc#1241549]</comment>
+    <requestid>1273971</requestid>
+  </revision>
 </revisionlist>

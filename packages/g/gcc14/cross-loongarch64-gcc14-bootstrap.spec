@@ -101,7 +101,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.2.1+git11321
+Version:        14.2.1+git11702
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -123,11 +123,11 @@ Patch16:        gcc9-reproducible-builds.patch
 Patch17:        gcc9-reproducible-builds-buildid-for-checksum.patch
 Patch19:        gcc11-gdwarf-4-default.patch
 Patch20:        gcc13-pr101523.patch
-Patch22:        gcc14-pr118780.patch
 Patch23:        gcc13-bsc1239566.patch
 Patch24:        gcc14-bsc1239938.patch
 Patch25:        gcc14-rs6000-msplit-patch-nops.patch
 Patch26:        gcc14-pr119680.patch
+Patch27:        gcc14-pr108900.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -325,7 +325,8 @@ ln -s newlib-4.4.0.20231231/newlib .
 %if %{suse_version} < 1550
 %patch -p1 -P 19
 %endif
-%patch -p1 -P 20 -P 22 -P 23 -P 24 -P 25 -P 26
+%patch -p1 -P 20 -P 23 -P 24 -P 25 -P 26
+%patch -p1 -R -P 27
 %patch -P 51
 %patch -p1 -P 60 -P 61
 
