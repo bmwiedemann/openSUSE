@@ -1,0 +1,4 @@
+<package name="micro-fips-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI FIPS-140-3 Micro</title>
+  <description>A FIPS enforcing micro environment for containers based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
