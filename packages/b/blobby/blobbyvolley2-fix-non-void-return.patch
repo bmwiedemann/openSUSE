@@ -1,0 +1,55 @@
+diff -Nur blobbyvolley2-1.1.1-orig/src/GameLogic.h blobbyvolley2-1.1.1/src/GameLogic.h
+--- blobbyvolley2-1.1.1-orig/src/GameLogic.h	2023-08-05 19:58:00.000000000 +0200
++++ blobbyvolley2-1.1.1/src/GameLogic.h	2025-04-29 18:50:52.289953661 +0200
+@@ -171,6 +171,8 @@
+ 					return LEFT_PLAYER;
+ 				default:
+ 					assert(0);
++					// impossible to reach but now with a return
++					return LEFT_PLAYER;
+ 			}
+ 		}
+ 
+diff -Nur blobbyvolley2-1.1.1-orig/src/replays/ReplayLoader.cpp blobbyvolley2-1.1.1/src/replays/ReplayLoader.cpp
+--- blobbyvolley2-1.1.1-orig/src/replays/ReplayLoader.cpp	2023-08-05 19:58:00.000000000 +0200
++++ blobbyvolley2-1.1.1/src/replays/ReplayLoader.cpp	2025-04-29 18:51:15.074125249 +0200
+@@ -79,6 +79,9 @@
+ 				return mRightPlayerName;
+ 
+ 			assert(0);
++			// impossible to reach but now with a return
++			return mRightPlayerName;
++
+ 		}
+ 
+ 		Color getBlobColor(PlayerSide player) const override
+@@ -89,6 +92,8 @@
+ 				return mRightColor;
+ 
+ 			assert(0);
++			// impossible to reach but now with a return
++			return mRightColor;
+ 		}
+ 
+ 
+@@ -100,6 +105,8 @@
+ 				return mRightFinalScore;
+ 
+ 			assert(0);
++			// impossible to reach but now with a return
++			return mRightFinalScore;
+ 		}
+ 
+ 		int getSpeed() const override
+diff -Nur blobbyvolley2-1.1.1-orig/src/server/NetworkGame.cpp blobbyvolley2-1.1.1/src/server/NetworkGame.cpp
+--- blobbyvolley2-1.1.1-orig/src/server/NetworkGame.cpp	2023-08-05 19:58:00.000000000 +0200
++++ blobbyvolley2-1.1.1/src/server/NetworkGame.cpp	2025-04-29 18:49:52.945506751 +0200
+@@ -447,5 +447,8 @@
+ 	}
+ 
+ 	assert(0);
++	// impossible to reach but now with a return
++	return mRightPlayer;
++
+ }
+ 

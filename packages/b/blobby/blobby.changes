@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri May  2 20:23:42 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add blobbyvolley2-1.1.1_external_tinyxml.patch to use system tinyxml2
+
+-------------------------------------------------------------------
+Tue Apr 29 16:44:37 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Add blobbyvolley2-fix-non-void-return.patch
+
+-------------------------------------------------------------------
+Sun Apr 13 15:53:23 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.1.1
+  * fix server crash
+  * fix ruleset misbehavior (four ball touches possible)
+  * improved server log
+  * added official macos build support
+- Changes in 1.1.0
+  * new languages added and some parts of old translations
+    corrected
+  * new high resolution icon
+  * reworked online game lobby and matchmaking
+  * added different game settings (rules, final scores and speeds)
+    possible on the same server
+  * bot scripting overhaul
+  * new xml based replay file format
+  * a lot of minor improvements and maintenance
+  * bugfixes
+- Run spec-cleaner
+- Drop reproducible.patch, fixed upstream
+- Drop networkmessage.patch, fixed upstream
+- Drop icon.patch, fixed upstream
+- Drop data-dir.patch, fixed upstream
+
+-------------------------------------------------------------------
 Sun Jan 10 20:36:33 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch use cmake zip to not add timestamps (boo#1047218) 

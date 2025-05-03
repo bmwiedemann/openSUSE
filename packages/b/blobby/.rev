@@ -15,4 +15,35 @@
     <comment></comment>
     <requestid>862234</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2871ef09249c257075e5d5e827eb371f</srcmd5>
+    <version>1.1.1</version>
+    <time>1746298739</time>
+    <user>dimstar_suse</user>
+    <comment>- add blobbyvolley2-1.1.1_external_tinyxml.patch to use system tinyxml2
+- Add blobbyvolley2-fix-non-void-return.patch
+- Update to 1.1.1
+  * fix server crash
+  * fix ruleset misbehavior (four ball touches possible)
+  * improved server log
+  * added official macos build support
+- Changes in 1.1.0
+  * new languages added and some parts of old translations
+    corrected
+  * new high resolution icon
+  * reworked online game lobby and matchmaking
+  * added different game settings (rules, final scores and speeds)
+    possible on the same server
+  * bot scripting overhaul
+  * new xml based replay file format
+  * a lot of minor improvements and maintenance
+  * bugfixes
+- Run spec-cleaner
+- Drop reproducible.patch, fixed upstream
+- Drop networkmessage.patch, fixed upstream
+- Drop icon.patch, fixed upstream
+- Drop data-dir.patch, fixed upstream
+</comment>
+    <requestid>1274071</requestid>
+  </revision>
 </revisionlist>
