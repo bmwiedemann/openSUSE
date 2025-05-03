@@ -7,4 +7,12 @@
     <comment>new package bomctl: Format agnostic SBOM tooling</comment>
     <requestid>1236100</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4f90b4704ba87b5e5663b41db6a3b18c</srcmd5>
+    <version>0.4.3</version>
+    <time>1746298778</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274117</requestid>
+  </revision>
 </revisionlist>
