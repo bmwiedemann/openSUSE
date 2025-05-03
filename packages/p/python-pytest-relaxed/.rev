@@ -137,4 +137,12 @@
     version 8.x. Thanks to Alex Gaynor for the patch!</comment>
     <requestid>1165772</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d6dace83d01e6c34799d8ea2dd659b10</srcmd5>
+    <version>2.0.2</version>
+    <time>1746298680</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1273926</requestid>
+  </revision>
 </revisionlist>

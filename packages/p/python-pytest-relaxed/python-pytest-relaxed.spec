@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-relaxed
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/pytest-relaxed
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-relaxed/pytest-relaxed-%{version}.tar.gz
 BuildRequires:  %{python_module decorator >= 4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
@@ -42,11 +44,11 @@ Relaxed test discovery/organization plugin for pytest from python-paramiko autho
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +58,6 @@ export LANG=en_US.UTF-8
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pytest_relaxed
-%{python_sitelib}/pytest_relaxed-%{version}*-info
+%{python_sitelib}/pytest_relaxed-%{version}.dist-info
 
 %changelog
