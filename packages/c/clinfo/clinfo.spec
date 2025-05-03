@@ -1,7 +1,7 @@
 #
 # spec file for package clinfo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015-2023, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           clinfo
-Version:        3.0.23.01.25
+Version:        3.0.25.02.14
 Release:        0
 Summary:        Utility that reports status information for all installed OpenCL ICDs
 License:        SUSE-Public-Domain
