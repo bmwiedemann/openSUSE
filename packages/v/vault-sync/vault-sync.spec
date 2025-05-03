@@ -17,7 +17,7 @@
 
 
 Name:           vault-sync
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Synchronize secrets between HashiCorp Vault instances
 License:        Apache-2.0
