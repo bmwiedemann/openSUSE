@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-hatch-fancy-pypi-readme
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch-fancy-pypi-readme%{psuffix}
-Version:        24.1.0
+Version:        25.1.0
 Release:        0
 Summary:        Fancy PyPI READMEs with Hatch
 License:        MIT
 URL:            https://github.com/hynek/hatch-fancy-pypi-readme
 Source:         https://files.pythonhosted.org/packages/source/h/hatch-fancy-pypi-readme/hatch_fancy_pypi_readme-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 %endif
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-hatch_fancy_pypi_readme = %{version}-%{release}
 BuildArch:      noarch
 %{?python_enable_dependency_generator}

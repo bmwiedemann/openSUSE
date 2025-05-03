@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  2 04:56:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.1.0:
+  * Highlights
+    - $HFPR_PACKAGE_NAME is now replaced by the package name
+      (analogously to $HFPR_VERSION)!
+  * Added
+    - $HFPR_PACKAGE_NAME is now replaced by the package name in the
+      PyPI readme. The version is not available in CLI mode, therefore
+      it's replaced by the dummy value of your-package. #64
+  * Removed
+    - Support for Python 3.7.
+
+-------------------------------------------------------------------
 Sun Jan  7 18:17:04 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.1.0:
