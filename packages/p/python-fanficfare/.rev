@@ -1548,4 +1548,32 @@ Update to 4.43.0:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1268067</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>51e1107d829106db1147fb56c22cbf43</srcmd5>
+    <version>4.45.0</version>
+    <time>1746298757</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.45.0:
+  - Transition finestories.com to new domain
+    storyroom.com. Thanks, bpothier
+  - XF2: Add threadmarks_per_page setting
+  - Fix for alternatehistory.com changing threadmark date attr.
+  - adapter_literotica: get_urls_from_page - series have urls,
+    thanks dbhmw
+  - Update translations.
+  - Remove base_xenforoforum_adapter, consolidate into
+    base_xenforo2forum_adapter
+  - adapter_archiveofourownorg: Add use_archiveofourown_gay,
+    allow archiveofourown.gay input for story URLs.
+  - adapter_fanfictionnet: Make get_urls_from_page work, thanks
+    dbhmw
+  - adapter_ficbooknet: Add series collection &amp; fix downloads,
+    thanks dbhmw
+  - adapter_fictionmaniatv: Update for ancient stories
+  - adapter_fictionmaniatv: Updates for site change
+  - Reject HTML sites in no_convert_image - thanks dbhmw #1186
+  - base_xenforoforum: Add timeperiodtags and better handle
+    unexpected typed tags</comment>
+    <requestid>1274084</requestid>
+  </revision>
 </revisionlist>

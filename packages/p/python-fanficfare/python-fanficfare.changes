@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May  2 23:44:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.45.0:
+  - Transition finestories.com to new domain
+    storyroom.com. Thanks, bpothier
+  - XF2: Add threadmarks_per_page setting
+  - Fix for alternatehistory.com changing threadmark date attr.
+  - adapter_literotica: get_urls_from_page - series have urls,
+    thanks dbhmw
+  - Update translations.
+  - Remove base_xenforoforum_adapter, consolidate into
+    base_xenforo2forum_adapter
+  - adapter_archiveofourownorg: Add use_archiveofourown_gay,
+    allow archiveofourown.gay input for story URLs.
+  - adapter_fanfictionnet: Make get_urls_from_page work, thanks
+    dbhmw
+  - adapter_ficbooknet: Add series collection & fix downloads,
+    thanks dbhmw
+  - adapter_fictionmaniatv: Update for ancient stories
+  - adapter_fictionmaniatv: Updates for site change
+  - Reject HTML sites in no_convert_image - thanks dbhmw #1186
+  - base_xenforoforum: Add timeperiodtags and better handle
+    unexpected typed tags
+
+-------------------------------------------------------------------
 Tue Apr  1 20:53:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.44.0:
