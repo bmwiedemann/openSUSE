@@ -62,7 +62,6 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
     </type>
     <version>2025</version>
     <packagemanager>zypper</packagemanager>
-    <rpm-check-signatures>false</rpm-check-signatures>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
   <repository type="rpm-md">
