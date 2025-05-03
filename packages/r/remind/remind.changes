@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  7 07:32:41 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 5.3 Patch 7 - 2025-05-06
+
+- IMPROVEMENT: examples/astro: Make moonrise/moonset appear after
+  sunrise/sunset
+
+- NEW FILES: Add include/solar-eclipses.rem and
+  include/lunar-eclipses.rem for solar and lunar eclipses
+  (respectively) in the 21st century.
+
+- NEW SYSTEM VARIABLE: remind: Add $TimetIs64bit system variable,
+  which is 1 if the built in time_t type is at least 64 bits, and 0
+  otherwise.
+
+- TEST FIX: "make test" now passes on systems with a 32-bit time_t
+  type.
+
+- BUG FIX: include/holidays/nl.rem: Use the correct rules for
+  Koningsdag and Bevrijdingsdag, courtesy of Adrian P. van Bloois. 
+
+-------------------------------------------------------------------
 Fri Apr 25 21:24:17 UTC 2025 - Detlef Steuer <detlef.steuer@gmx.de>
 
 -  VERSION 5.3 Patch 6 - 2025-04-25

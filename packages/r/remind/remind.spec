@@ -17,9 +17,9 @@
 
 
 Name:           remind
-Version:        5.3.6
+Version:        5.3.7
 Release:        0
-%define tar_version 05.03.06
+%define tar_version 05.03.07
 Summary:        A sophisticated calendar and alarm program
 License:        GPL-2.0-only
 Group:          Productivity/Office/Organizers
@@ -667,9 +667,12 @@ make DESTDIR=%{buildroot} install
 /usr/share/remind/holidays/zm.rem
 
 /usr/share/remind/lang/auto.rem
+/usr/share/remind/lunar-eclipses.rem
 /usr/share/remind/moonphases.rem
 /usr/share/remind/seasons.rem
+/usr/share/remind/solar-eclipses.rem
 /usr/share/remind/sun.rem
+
 /usr/share/remind/site/README
 /usr/share/applications/tkremind.desktop
 /usr/share/pixmaps/tkremind.png
