@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  2 12:08:25 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file
+- Removed unnecessary source file - 'cargo_config'
+- Updated the '_service' file
+- Changed the compression method from 'gz' to 'zst'
+- 'vendor.tar.gz' is now renamed to 'vendor.tar.zst'
+
+-------------------------------------------------------------------
 Mon Feb 24 06:51:08 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied additional patches (jsc#PED-10303 (IBM-1575))

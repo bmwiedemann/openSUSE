@@ -127,8 +127,7 @@ Source97:       qeth_configure.8
 Source98:       zfcp_disk_configure.8
 Source99:       zfcp_host_configure.8
 ###
-Source200:      cargo_config
-Source201:      vendor.tar.gz
+Source200:      vendor.tar.zst
 ###
 
 ###
@@ -364,12 +363,9 @@ This package provides auxiliary data used by pvimg(genprotimg).
 %ifarch s390x
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a200
 
 cp -vi %{SOURCE22} CAUTION
-
-install -D -m 0644 %{SOURCE200} .cargo/config.toml
-tar -xzf %{SOURCE201}
 
 %build
 
@@ -804,10 +800,7 @@ done
 %else
 
 %prep
-%autosetup -p1
-
-install -D -m 0644 %{SOURCE200} .cargo/config.toml
-tar -xzf %{SOURCE201}
+%autosetup -p1 -a200
 
 %build
 export OPT_FLAGS="%{optflags}"
