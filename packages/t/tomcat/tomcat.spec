@@ -122,6 +122,8 @@ Requires(post): util-linux
 Requires(pre):  shadow
 Recommends:     libtcnative-1-0 >= 1.1.24
 Recommends:     logrotate
+Conflicts:      %{name}-implementation
+Provides:       %{name}-implementation = %{version}
 Provides:       group(tomcat)
 Provides:       user(tomcat)
 BuildArch:      noarch
@@ -142,6 +144,8 @@ Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
 # for runuser
 Requires(post): util-linux
+Conflicts:      %{name}-implementation-admin-webapps
+Provides:       %{name}-implementation-admin-webapps = %{version}
 
 %description admin-webapps
 The host manager and manager web-based applications for Apache Tomcat.
@@ -149,6 +153,8 @@ The host manager and manager web-based applications for Apache Tomcat.
 %package embed
 Summary:        Libraries for Embedding Apache Tomcat
 Group:          Productivity/Networking/Web/Servers
+Conflicts:      %{name}-implementation-embed
+Provides:       %{name}-implementation-embed = %{version}
 
 %description embed
 Embeddeding support (various libraries) for Apache Tomcat.
@@ -160,6 +166,8 @@ Requires:       %{name} = %{version}-%{release}
 Requires(post): libxslt-tools
 # for runuser
 Requires(post): util-linux
+Conflicts:      %{name}-implementation-docs-webapp
+Provides:       %{name}-implementation-docs-webapp = %{version}
 
 %description docs-webapp
 The documentation of web application for Apache Tomcat.
@@ -169,11 +177,13 @@ Summary:        Expression Language v3.0 API
 Group:          Development/Libraries/Java
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Conflicts:      %{name}-implementation-el-api
 Provides:       %{name}-el-%{elspec}-api = %{version}-%{release}
 Provides:       el_3_0_api = %{version}-%{release}
 Provides:       el_api = %{elspec}
 Obsoletes:      el_api < %{elspec}
 Obsoletes:      tomcat-el-2_2-api
+Provides:       %{name}-implementation-el-api = %{version}
 
 %description el-3_0-api
 Expression Language API version 3.0.
@@ -181,6 +191,8 @@ Expression Language API version 3.0.
 %package javadoc
 Summary:        Javadoc generated documentation for Apache Tomcat
 Group:          Documentation/HTML
+Conflicts:      %{name}-implementation-javadoc
+Provides:       %{name}-implementation-javadoc = %{version}
 BuildArch:      noarch
 
 %description javadoc
@@ -193,6 +205,8 @@ Requires:       mvn(org.apache.tomcat:tomcat-el-api)
 Requires:       mvn(org.apache.tomcat:tomcat-servlet-api)
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      %{name}-implementation-jsp-api
+Provides:       %{name}-implementation-jsp-api = %{version}
 Provides:       %{name}-jsp-%{jspspec}-api
 Provides:       jsp = %{jspspec}
 Provides:       jsp23
@@ -207,6 +221,8 @@ Summary:        Apache jsvc wrapper for Apache Tomcat as separate service
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}-%{release}
 Requires:       apache-commons-daemon-jsvc
+Conflicts:      %{name}-implementation-jsvc
+Provides:       %{name}-implementation-jsvc = %{version}
 %systemd_ordering
 
 %description jsvc
@@ -222,8 +238,10 @@ Requires:       %{name}-jsp-%{jspspec}-api = %{version}-%{release}
 Requires:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Requires(post): ecj >= 4.4
 Requires(preun): coreutils
+Conflicts:      %{name}-implementation-lib
 Provides:       jakarta-commons-dbcp-tomcat5 = 1.4
 Obsoletes:      jakarta-commons-dbcp-tomcat5 < 1.4
+Provides:       %{name}-implementation-lib = %{version}
 
 %description lib
 Libraries required to successfully run the Tomcat Web container
@@ -233,6 +251,7 @@ Summary:        Apache Tomcat Servlet API implementation classes
 Group:          Productivity/Networking/Web/Servers
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      %{name}-implementation-servlet-api
 Provides:       %{name}-servlet-%{servletspec}-api = %{version}-%{release}
 Provides:       servlet = %{servletspec}
 Provides:       servlet31
@@ -240,6 +259,7 @@ Provides:       servlet7
 Obsoletes:      servlet < %{servletspec}
 Obsoletes:      tomcat-servlet-3_0-api
 Obsoletes:      tomcat-servlet-3_1-api
+Provides:       %{name}-implementation-servlet-api = %{version}
 
 %description servlet-4_0-api
 Apache Tomcat Servlet API implementation classes version 3.1
@@ -252,6 +272,8 @@ Requires:       jakarta-taglibs-standard >= 1.1
 Requires(post): libxslt-tools
 # for runuser
 Requires(post): util-linux
+Conflicts:      %{name}-implementation-webapps
+Provides:       %{name}-implementation-webapps = %{version}
 
 %description webapps
 The ROOT and examples web applications for Apache Tomcat
