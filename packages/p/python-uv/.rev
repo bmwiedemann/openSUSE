@@ -594,4 +594,22 @@
   * Upgrade PyTorch guide to CUDA 12.8 and PyTorch 2.7</comment>
     <requestid>1273631</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>11f76362fda0c0c03d00a6d3190a01d2</srcmd5>
+    <version>0.7.2</version>
+    <time>1746298732</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.2
+ * Enhancements
+  * Improve trace log for retryable errors 
+  * Use &quot;error&quot; instead of &quot;warning&quot; for self-update message 
+  * Error when uv version is used with project-specific flags but no project is found 
+  * Add support for BLAKE2b-256 
+ * Bug fixes
+  * Fix incorrect virtual environment invalidation for pre-release Python versions 
+  * Fix patching of clang in managed Python sysconfig 
+  * Respect --project in uv version 
+  * Revert fix handling of authentication when encountering redirects</comment>
+    <requestid>1274065</requestid>
+  </revision>
 </revisionlist>

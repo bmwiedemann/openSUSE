@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  2 18:16:12 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.2
+ * Enhancements
+  * Improve trace log for retryable errors 
+  * Use "error" instead of "warning" for self-update message 
+  * Error when uv version is used with project-specific flags but no project is found 
+  * Add support for BLAKE2b-256 
+ * Bug fixes
+  * Fix incorrect virtual environment invalidation for pre-release Python versions 
+  * Fix patching of clang in managed Python sysconfig 
+  * Respect --project in uv version 
+  * Revert fix handling of authentication when encountering redirects
+
+-------------------------------------------------------------------
 Wed Apr 30 09:34:05 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.0
