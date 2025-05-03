@@ -58,8 +58,9 @@
 %define ffmpeg_version 58
 %endif
 %bcond_with system_zstd
-%define node_ver 22.0
-%define node_ver_next 23.0
+%define node_ver 22
+%define node_ver_next 23
+%define node_version %(rpm -q --qf "%%{version}" nodejs%{node_ver})
 # LLVM version
 %define llvm_version 19
 # RUST version
@@ -67,7 +68,7 @@
 # GCC version
 %define gcc_version 14
 # esbuild version
-%define esbuild_version 0.24.0
+%define esbuild_version 0.25.1
 %if 0%{?suse_version} <= 1699
 %bcond_with system_webp
 %bcond_with system_re2
@@ -106,7 +107,7 @@
 %define n_suffix %{nil}
 %endif
 Name:           chromium%{n_suffix}
-Version:        135.0.7049.95
+Version:        136.0.7103.59
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -152,7 +153,6 @@ Patch363:       chromium-127-constexpr.patch
 Patch364:       chromium-129-revert-AVFMT_FLAG_NOH264PARSE.patch
 Patch368:       chromium-131-clang-stack-protector.patch
 Patch369:       chromium-132-pdfium-explicit-template.patch
-Patch370:       fix-build-with-pipewire-1.3.82.patch
 Patch371:       chromium-133-bring_back_and_disable_allowlist.patch
 Patch373:       chromium-134-type-mismatch-error.patch
 Patch375:       chromium-131-fix-qt-ui.pach
@@ -171,6 +171,8 @@ Patch1010:      chromium-124-system-libxml.patch
 Patch1030:      chromium-134-revert-rust-adler2.patch
 # gtk4 is too old
 Patch1040:      gtk-414.patch
+# clang is too old
+Patch1050:      chromium-warning-suppression-mappings.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -196,7 +198,7 @@ BuildRequires:  nasm
 BuildRequires:  ninja >= 1.7.2
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  (nodejs >= %node_ver with nodejs < %node_ver_next)
+BuildRequires:  (nodejs >= %node_ver.0 with nodejs < %node_ver_next.0)
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3
 BuildRequires:  python3-setuptools
@@ -450,6 +452,14 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -R -P 1040
 %endif
 
+clang_version="$(clang --version | sed -n 's/clang version //p')"
+if [[ $(echo ${clang_version} | cut -d. -f1) -ge 16 ]]; then
+  clang_version="$(echo ${clang_version} | cut -d. -f1)"
+fi
+if [ "$clang_version" -lt 20 ] ; then
+%patch -p1 -R -P 1050
+fi
+
 %build
 # esbuild
 rm third_party/devtools-frontend/src/third_party/esbuild/esbuild
@@ -469,6 +479,7 @@ popd
 mkdir -p third_party/node/linux/node-linux-x64/bin
 rm -f third_party/node/linux/node-linux-x64/bin/node
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
+sed -i -e "s@^NODE_VERSION=.*@NODE_VERSION=\"v%{node_version}\"@" third_party/node/update_node_binaries
 
 rm buildtools/third_party/eu-strip/bin/eu-strip
 ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip

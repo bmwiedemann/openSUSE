@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri May  2 16:40:19 CEST 2025 - ro@suse.de
+
+- Chromium 136.0.7103.48
+  (stable release 2025-04-29) (boo#1242153)
+  * CVE-2025-4096: Heap buffer overflow in HTML. Reported by Anonymous on 2025-04-11
+  * CVE-2025-4050: Out of bounds memory access in DevTools. Reported by Anonymous on 2025-04-09
+  * CVE-2025-4051: Insufficient data validation in DevTools. Reported by Daniel Fröjdendahl on 2025-03-1
+  * CVE-2025-4052: Inappropriate implementation in DevTools. Reported by vanillawebdev on 2025-03-10
+
+- added patches:
+  chromium-warning-suppression-mappings.patch
+  (from upstream, revert for llvm < 20)
+- dropped patches:
+  fix-build-with-pipewire-1.3.82.patch (upstream)
+- modified patches:
+  chromium-125-compiler.patch (context)
+  gtk-414.patch (one more place with GSK_SUBSURFACE_NODE)
+- bump esbuild from 0.24.0 to 0.25.1
+  * Fix incorrect paths in inline source maps (#4070, #4075, #4105)
+  * Fix invalid generated source maps (#4080, #4082, #4104, #4107)
+  * Fix a regression with non-file source map paths (#4078)
+  * Update Go from 1.23.5 to 1.23.7 (#4076, #4077)
+
+-------------------------------------------------------------------
+Thu Apr 24 01:38:01 CEST 2025 - ro@suse.de
+
+- Chromium 135.0.7049.114
+  (stable release 2025-04-22)
+  * stability fixes
+
+-------------------------------------------------------------------
 Tue Apr 22 14:28:27 CEST 2025 - ro@suse.de
 
 - add patch chromium-135-gperf-output.patch from upstream
