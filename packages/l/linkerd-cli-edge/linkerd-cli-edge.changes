@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 03 11:13:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.1:
+  No CLI-related changes (other than dependencies)
+  * build(deps): bump tokio-metrics from 0.4.1 to 0.4.2 (#13983)
+  * build(deps): bump openssl-sys from 0.9.107 to 0.9.108 (#13984)
+  * build(deps): bump sha2 from 0.10.8 to 0.10.9 (#13985)
+  * build(deps): bump github.com/emicklei/proto from 1.14.0 to
+    1.14.1 (#13978)
+  * build(deps): bump chrono from 0.4.40 to 0.4.41 (#13977)
+  * build(deps): bump getrandom from 0.2.15 to 0.2.16 (#13961)
+  * build(deps): bump tokio-util from 0.7.14 to 0.7.15 (#13963)
+  * build(deps): bump actions/download-artifact from 4.2.1 to 4.3.0
+    (#13967)
+  * build(deps-dev): bump webpack from 5.99.6 to 5.99.7 in /web/app
+    (#13970)
+  * build(deps): bump syn from 2.0.100 to 2.0.101 (#13971)
+  * build(deps): bump cc from 1.2.19 to 1.2.20 (#13972)
+  * build(deps): bump google-github-actions/auth from 2.1.8 to
+    2.1.10 (#13973)
+  * build(deps): bump tj-actions/changed-files (#13974)
+  * build(deps): bump google.golang.org/grpc from 1.71.1 to 1.72.0
+    (#13959)
+  * build(deps): bump tokio-metrics from 0.4.0 to 0.4.1 (#13960)
+
+-------------------------------------------------------------------
 Thu Apr 24 19:36:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.4.4:
