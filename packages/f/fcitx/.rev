@@ -631,4 +631,12 @@
   fcitx-gclient-Export-fcitx_client_enable_ic-fcitx_cl.patch</comment>
     <requestid>1174813</requestid>
   </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>737001063ac1c201a25fc7cc2f1c7873</srcmd5>
+    <version>4.2.9.9</version>
+    <time>1746298688</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1273944</requestid>
+  </revision>
 </revisionlist>

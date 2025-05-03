@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May  1 01:31:19 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- Set -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix build with cmake4
+
+-------------------------------------------------------------------
 Thu May 16 19:27:05 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
 
 - Add missing fcitx_client_close_ic and fcitx_client_enable_ic prototypes:

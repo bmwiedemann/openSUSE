@@ -349,6 +349,7 @@ cmake .. \
         -DCMAKE_CXX_FLAGS="%{optflags}" \
         -DCMAKE_VERBOSE_MAKEFILE=On \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DOPENCC_LIBRARY_FILENAME=libopencc.so.2 \
         -DENCHANT_LIBRARY_FILENAME=libenchant.so.1 \
         -DPRESAGE_LIBRARY_FILENAME=libpresage.so.1 \
