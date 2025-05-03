@@ -1,6 +1,12 @@
 -------------------------------------------------------------------
-Sat Apr 26 10:26:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+Sat May  3 07:46:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
+- Update to version 20250502:
+  * Raise a specific error for fixed banks with link
+  * Unify handling of RadioSpecificError in common
+
+-------------------------------------------------------------------
+Sat Apr 26 10:26:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250425:
   * th350: Fix FM preset failure in settings on US version
