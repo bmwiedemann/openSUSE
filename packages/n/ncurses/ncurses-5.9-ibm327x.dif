@@ -1,35 +1,45 @@
 ---
- misc/terminfo.src |    8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ misc/terminfo.src |   18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
 
 --- misc/terminfo.src
-+++ misc/terminfo.src	2025-04-28 07:30:59.775683818 +0000
-@@ -1252,8 +1252,8 @@ sclp|IBM s390 driver for Linux,
++++ misc/terminfo.src	2025-04-30 11:04:18.993772223 +0000
+@@ -1250,7 +1250,7 @@ sclp|IBM s390 driver for Linux,
+ 	cols#80, lines#24,
+ 	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
  	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
- 	cup=\E[%i%p1%d;%p2%dH, dch=\E[%p1%dP, dch1=\E[P,
+-	cup=\E[%i%p1%d;%p2%dH, dch=\E[%p1%dP, dch1=\E[P,
++	dch=\E[%p1%dP, dch1=\E[P,
  	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, ed=\E[J, el1=\E[1K,
--	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec, kbs=^H,
--	kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A,
-+	enacs=\E)0, home=\E[H, ht=^I, ich=\E[%p1%d@, ind=\ED,
-+	is2=\Ec, kbs=^H, kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A,
- 	kdch1=\E[3~, kf5=\E[15~, nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
- 	rmacs=\E(B$<4>, rmso=\E[27m, rmul=\E[24m, sc=\E7,
- 	sgr=\E[0%?%p2%t;4%;%?%p4%t;5%;%?%p1%p3%|%t;7%;m%?%p9%t\E(0%e
+ 	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec, kbs=^H,
+ 	kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A,
 @@ -1261,7 +1261,7 @@ sclp|IBM s390 driver for Linux,
  	sgr0=\E[m\E(B, smacs=\E(0$<2>, smso=\E[7m, smul=\E[4m,
  	use=klone+color, use=ansi+cpr, use=ansi+erase,
  	use=ansi+local, use=linux+sfkeys, use=vt100+pf1-pf4,
 -	use=vt220+ufkeys,
-+	use=vt220+ufkeys, use=vt100+noapp+pc, kfnd@, use=vt220+vtedit, 
++	use=vt220+ufkeys, use=ansi+cup, use=vt220+pcedit, 
  
  #### Mach
  #
-@@ -18279,7 +18279,7 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18279,7 +18279,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,
 -	clear=\r\n, el=\r, home=\r,
-+	use=dumb, use=klone+color,
++	cols#80, lines#24,
++	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
++	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
++	dch=\E[%p1%dP, dch1=\E[P,
++	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, ed=\E[J, el1=\E[1K,
++	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec,
++	nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
++	rmacs=\E(B$<4>, rmso=\E[27m, rmul=\E[24m, sc=\E7,
++	sgr=\E[0%?%p2%t;4%;%?%p4%t;5%;%?%p1%p3%|%t;7%;m%?%p9%t\E(0%e
++	    \E(B%;$<2>,
++	sgr0=\E[m\E(B, smacs=\E(0$<2>, smso=\E[7m, smul=\E[4m,
++	use=dumb, use=klone+color, use=ansi+local,
++	use=ansi+cup, use=ansi+erase,
  
  ibm3101|i3101|IBM 3101-10,
  	OTbs, am, xon,

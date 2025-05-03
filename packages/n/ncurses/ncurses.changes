@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Apr 30 12:32:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch ncurses-5.9-ibm327x.dif
+  * sclp term: use ASCII Console key mapping and support home
+  * ibm327x term: can do color and drawings but no cursor
+
+-------------------------------------------------------------------
 Mon Apr 28 06:34:28 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20250426

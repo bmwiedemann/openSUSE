@@ -5117,4 +5117,14 @@
   * sclp term: more missed features like home/end/pageup/pagedown keys</comment>
     <requestid>1273043</requestid>
   </revision>
+  <revision rev="295" vrev="68">
+    <srcmd5>e0921aa9603af553f9d1bc3ea6225113</srcmd5>
+    <version>unknown</version>
+    <time>1746298693</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify patch ncurses-5.9-ibm327x.dif
+  * sclp term: use ASCII Console key mapping and support home
+  * ibm327x term: can do color and drawings but no cursor</comment>
+    <requestid>1273680</requestid>
+  </revision>
 </revisionlist>
