@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 30 12:42:32 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add 0001-do-not-re-resolve-iterator-value-types.patch
+  We've resolved the value type in the type propagator. Trying to do it
+  again in the code generator, after the iterator may have been adjusted,
+  is quite wrong. If we resolve the list value type on a type that's not
+  a list (anymore), then we get an invalid type, which subsequently
+  crashes.
+
+-------------------------------------------------------------------
 Wed Apr  2 11:03:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0:

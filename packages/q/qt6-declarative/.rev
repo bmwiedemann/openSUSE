@@ -403,4 +403,17 @@
     <comment>Qt 6.9.0</comment>
     <requestid>1266639</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>c9ffba02509c3b1219998ed29b97857d</srcmd5>
+    <version>6.9.0</version>
+    <time>1746298690</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-do-not-re-resolve-iterator-value-types.patch
+  We've resolved the value type in the type propagator. Trying to do it
+  again in the code generator, after the iterator may have been adjusted,
+  is quite wrong. If we resolve the list value type on a type that's not
+  a list (anymore), then we get an invalid type, which subsequently
+  crashes.</comment>
+    <requestid>1273986</requestid>
+  </revision>
 </revisionlist>

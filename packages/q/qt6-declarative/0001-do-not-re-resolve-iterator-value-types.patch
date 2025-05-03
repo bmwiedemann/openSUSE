@@ -1,0 +1,143 @@
+From d1aa2e8466bab73c3e4d120356238b482b55f02a Mon Sep 17 00:00:00 2001
+From: Ulf Hermann <ulf.hermann@qt.io>
+Date: Fri, 28 Mar 2025 09:20:09 +0100
+Subject: [PATCH] QmlCompiler: Do not re-resolve iterator value types
+
+We've resolved the value type in the type propagator. Trying to do it
+again in the code generator, after the iterator may have been adjusted,
+is quite wrong. If we resolve the list value type on a type that's not
+a list (anymore), then we get an invalid type, which subsequently
+crashes.
+
+Amends commit a173d50a9e54d2a21a5207f6c66bb54bb8f3a612.
+
+Pick-to: 6.8
+Fixes: QTBUG-135288
+Change-Id: I1227803ed100c83f8fc11898be0a4d0199d639dd
+Reviewed-by: Fabian Kosmale <fabian.kosmale@qt.io>
+(cherry picked from commit c36416c9713f9ac98529affadf07b05d8b6ae95e)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/qmlcompiler/qqmljscodegenerator.cpp       |  3 ++-
+ .../qml/qmlcppcodegen/data/CMakeLists.txt     |  2 ++
+ .../data/iterateUnknownValue.qml              | 13 +++++++++++
+ .../qml/qmlcppcodegen/data/listsingleton.h    | 22 +++++++++++++++++++
+ .../qml/qmlcppcodegen/tst_qmlcppcodegen.cpp   | 15 +++++++++++++
+ 5 files changed, 54 insertions(+), 1 deletion(-)
+ create mode 100644 tests/auto/qml/qmlcppcodegen/data/iterateUnknownValue.qml
+ create mode 100644 tests/auto/qml/qmlcppcodegen/data/listsingleton.h
+
+diff --git a/src/qmlcompiler/qqmljscodegenerator.cpp b/src/qmlcompiler/qqmljscodegenerator.cpp
+index d3d2b9591eb..ec782564739 100644
+--- a/src/qmlcompiler/qqmljscodegenerator.cpp
++++ b/src/qmlcompiler/qqmljscodegenerator.cpp
+@@ -2669,7 +2669,8 @@ void QQmlJSCodeGenerator::generate_IteratorNext(int value, int offset)
+     m_body += u"if (" + m_state.accumulatorVariableIn + u"->hasNext(" + qjsList + u")) {\n    ";
+ 
+     // We know that this works because we can do ->next() below.
+-    QQmlJSRegisterContent iteratorValue = m_typeResolver->valueType(iteratorContent);
++    QQmlJSRegisterContent iteratorValue = m_typeResolver->extractNonVoidFromOptionalType(
++            m_typeResolver->original(m_state.changedRegister()));
+     iteratorValue = m_pool->storedIn(iteratorValue, iteratorValue.containedType());
+ 
+     m_body += changedRegisterVariable() + u" = "
+diff --git a/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt b/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
+index dbf750c4638..36486359be3 100644
+--- a/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
++++ b/tests/auto/qml/qmlcppcodegen/data/CMakeLists.txt
+@@ -19,6 +19,7 @@ set(cpp_sources
+     invisible.h
+     largeValueType.h
+     listprovider.h
++    listsingleton.h
+     multiforeign.h
+     objectwithmethod.h
+     person.cpp person.h
+@@ -191,6 +192,7 @@ set(qml_files
+     invisibleListElementType.qml
+     invisibleTypes.qml
+     isnan.qml
++    iterateUnknownValue.qml
+     iteration.qml
+     javaScriptArgument.qml
+     jsArrayMethods.qml
+diff --git a/tests/auto/qml/qmlcppcodegen/data/iterateUnknownValue.qml b/tests/auto/qml/qmlcppcodegen/data/iterateUnknownValue.qml
+new file mode 100644
+index 00000000000..d9164f72150
+--- /dev/null
++++ b/tests/auto/qml/qmlcppcodegen/data/iterateUnknownValue.qml
+@@ -0,0 +1,13 @@
++import QtQml
++import TestTypes as PC
++
++QtObject {
++    Component.onCompleted: {
++        const theList = PC.ListSingleton.get()
++        if (theList) {
++            for (let entry of theList) {
++                console.log(entry)
++            }
++        }
++    }
++}
+diff --git a/tests/auto/qml/qmlcppcodegen/data/listsingleton.h b/tests/auto/qml/qmlcppcodegen/data/listsingleton.h
+new file mode 100644
+index 00000000000..06fe993584c
+--- /dev/null
++++ b/tests/auto/qml/qmlcppcodegen/data/listsingleton.h
+@@ -0,0 +1,22 @@
++#ifndef LISTSINGLETON_H
++#define LISTSINGLETON_H
++
++#include <QObject>
++#include <QtQml/qqml.h>
++#include <QtQml/qqmlregistration.h>
++
++class ListSingleton : public QObject {
++    Q_OBJECT
++    QML_ELEMENT
++    QML_SINGLETON
++
++public:
++    ListSingleton(QObject *parent = nullptr) : QObject(parent) {}
++
++    Q_INVOKABLE QStringList get() const
++    {
++        return { QStringLiteral("one"), QStringLiteral("two"), QStringLiteral("three") };
++    }
++};
++
++#endif // LISTSINGLETON_H
+diff --git a/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp b/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
+index a9683b1f6cb..9ba97a0a941 100644
+--- a/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
++++ b/tests/auto/qml/qmlcppcodegen/tst_qmlcppcodegen.cpp
+@@ -156,6 +156,7 @@ private slots:
+     void invisibleListElementType();
+     void invisibleSingleton();
+     void invisibleTypes();
++    void iterateUnknownValue();
+     void iteration();
+     void javaScriptArgument();
+     void jsArrayMethods();
+@@ -2914,6 +2915,20 @@ void tst_QmlCppCodegen::invisibleTypes()
+ //    QCOMPARE(meta->className(), "DerivedFromInvisible");
+ }
+ 
++void tst_QmlCppCodegen::iterateUnknownValue()
++{
++    QQmlEngine engine;
++    QQmlComponent c(&engine, QUrl(u"qrc:/qt/qml/TestTypes/iterateUnknownValue.qml"_s));
++    QVERIFY2(c.isReady(), qPrintable(c.errorString()));
++
++    QTest::ignoreMessage(QtDebugMsg, "one");
++    QTest::ignoreMessage(QtDebugMsg, "two");
++    QTest::ignoreMessage(QtDebugMsg, "three");
++
++    QScopedPointer<QObject> o(c.create());
++    QVERIFY(!o.isNull());
++}
++
+ void tst_QmlCppCodegen::iteration()
+ {
+     QQmlEngine engine;
