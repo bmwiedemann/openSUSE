@@ -1,0 +1,141 @@
+From 16637f194e86708913ec6e09064c713eb0715bb6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Randy=20D=C3=B6ring?=
+ <30527984+radoering@users.noreply.github.com>
+Date: Sat, 25 Jan 2025 13:02:47 +0100
+Subject: [PATCH] tests: adapt tests to cosmetic changes caused by
+ poetry-core#826
+
+---
+ poetry.lock            | 107 ++++++++++++++++++++++++++++++++++++-----
+ pyproject.toml         |   3 +-
+ tests/markers.py       |  10 ++--
+ tests/test_exporter.py |  16 +++---
+ 4 files changed, 112 insertions(+), 24 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 4c6c1be..fb242c2 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -19,7 +19,8 @@ include = [
+ [tool.poetry.dependencies]
+ python = "^3.9"
+ poetry = ">=2.0.0,<3.0.0"
+-poetry-core = ">=1.7.0,<3.0.0"
++# poetry-core = ">=1.7.0,<3.0.0"
++poetry-core = { git = "git+https://github.com/python-poetry/poetry-core.git" }
+ 
+ [tool.poetry.group.dev.dependencies]
+ pre-commit = ">=2.18"
+diff --git a/tests/markers.py b/tests/markers.py
+index 8f23c3b..a8ab8bc 100644
+--- a/tests/markers.py
++++ b/tests/markers.py
+@@ -1,5 +1,6 @@
+ from __future__ import annotations
+ 
++from poetry.core.version.markers import MarkerUnion
+ from poetry.core.version.markers import parse_marker
+ 
+ 
+@@ -10,21 +11,24 @@
+ 
+ MARKER_CPYTHON = parse_marker('implementation_name == "cpython"')
+ 
+-MARKER_PY27 = parse_marker('python_version >= "2.7" and python_version < "2.8"')
++MARKER_PY27 = parse_marker('python_version == "2.7"')
+ 
+ MARKER_PY36 = parse_marker('python_version >= "3.6" and python_version < "4.0"')
+ MARKER_PY36_38 = parse_marker('python_version >= "3.6" and python_version < "3.8"')
+ MARKER_PY36_PY362 = parse_marker(
+     'python_version >= "3.6" and python_full_version < "3.6.2"'
+ )
++MARKER_PY36_PY362_ALT = parse_marker(
++    'python_full_version < "3.6.2" and python_version == "3.6"'
++)
+ MARKER_PY362_PY40 = parse_marker(
+     'python_full_version >= "3.6.2" and python_version < "4.0"'
+ )
+-MARKER_PY36_ONLY = parse_marker('python_version >= "3.6" and python_version < "3.7"')
++MARKER_PY36_ONLY = parse_marker('python_version == "3.6"')
+ 
+ MARKER_PY37 = parse_marker('python_version >= "3.7" and python_version < "4.0"')
+ 
+-MARKER_PY = MARKER_PY27.union(MARKER_PY36)
++MARKER_PY = MarkerUnion(MARKER_PY27, MARKER_PY36)
+ 
+ MARKER_PY_WIN32 = MARKER_PY.intersect(MARKER_WIN32)
+ MARKER_PY_WINDOWS = MARKER_PY.intersect(MARKER_WINDOWS)
+diff --git a/tests/test_exporter.py b/tests/test_exporter.py
+index e46e5ca..d2fbb74 100644
+--- a/tests/test_exporter.py
++++ b/tests/test_exporter.py
+@@ -10,6 +10,7 @@
+ from poetry.core.constraints.version import Version
+ from poetry.core.packages.dependency import Dependency
+ from poetry.core.packages.dependency_group import MAIN_GROUP
++from poetry.core.version.markers import MarkerUnion
+ from poetry.core.version.markers import parse_marker
+ from poetry.factory import Factory
+ from poetry.packages import Locker as BaseLocker
+@@ -27,6 +28,7 @@
+ from tests.markers import MARKER_PY36_38
+ from tests.markers import MARKER_PY36_ONLY
+ from tests.markers import MARKER_PY36_PY362
++from tests.markers import MARKER_PY36_PY362_ALT
+ from tests.markers import MARKER_PY37
+ from tests.markers import MARKER_PY362_PY40
+ from tests.markers import MARKER_PY_DARWIN
+@@ -212,7 +214,7 @@ def test_exporter_can_export_requirements_txt_with_standard_packages_and_markers
+     expected = f"""\
+ bar==4.5.6 ; {MARKER_PY}
+ baz==7.8.9 ; {MARKER_PY_WIN32}
+-foo==1.2.3 ; {MARKER_PY27.union(MARKER_PY36_ONLY)}
++foo==1.2.3 ; {MarkerUnion(MARKER_PY27, MARKER_PY36_ONLY)}
+ """
+ 
+     assert content == expected
+@@ -495,7 +497,7 @@ def test_exporter_can_export_requirements_txt_with_nested_packages_and_markers(
+     with (tmp_path / "requirements.txt").open(encoding="utf-8") as f:
+         content = f.read()
+ 
+-    marker_py = MARKER_PY27.union(MARKER_PY36_ONLY)
++    marker_py = MarkerUnion(MARKER_PY27, MARKER_PY36_ONLY)
+     marker_py_win32 = marker_py.intersect(MARKER_WIN32)
+     marker_py_windows = marker_py.intersect(MARKER_WINDOWS)
+ 
+@@ -523,12 +525,12 @@ def test_exporter_can_export_requirements_txt_with_nested_packages_and_markers(
+     [
+         (
+             False,
+-            [f"a==1.2.3 ; {MARKER_PY27.union(MARKER_PY36_38)}"],
++            [f"a==1.2.3 ; {MarkerUnion(MARKER_PY27, MARKER_PY36_38)}"],
+         ),
+         (
+             True,
+             [
+-                f"a==1.2.3 ; {MARKER_PY27.union(MARKER_PY36_38).union(MARKER_PY36)}",
++                f"a==1.2.3 ; {MarkerUnion(MARKER_PY27, MARKER_PY36_38.union(MARKER_PY36))}",
+                 f"b==4.5.6 ; {MARKER_PY}",
+             ],
+         ),
+@@ -2304,7 +2306,7 @@ def test_exporter_doesnt_confuse_repeated_packages(
+     expected = f"""\
+ celery==5.1.2 ; {MARKER_PY36_ONLY}
+ celery==5.2.3 ; {MARKER_PY37}
+-click-didyoumean==0.0.3 ; {MARKER_PY36_PY362}
++click-didyoumean==0.0.3 ; {MARKER_PY36_PY362 if lock_version == "2.1" else MARKER_PY36_PY362_ALT}
+ click-didyoumean==0.3.0 ; {MARKER_PY362_PY40}
+ click-plugins==1.1.1 ; {MARKER_PY36}
+ click==7.1.2 ; {MARKER_PY36_ONLY}
+@@ -3272,9 +3274,9 @@ def test_dependency_walk_error(
+         content = f.read()
+ 
+     expected = """\
+-bar==1 ; python_version >= "3.8" and python_version < "3.9"
++bar==1 ; python_version == "3.8"
+ bar==2 ; python_version >= "3.9" and python_version < "4.0"
+-foo==1 ; python_version >= "3.8" and python_version < "3.9"
++foo==1 ; python_version == "3.8"
+ foo==2 ; python_version >= "3.9" and python_version < "4.0"
+ """
+ 

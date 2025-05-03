@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri May  2 11:26:45 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.9.0
+  * Add an --all-groups option to export dependencies from all groups
+  * Drop support for Python 3.8
+  * Clarify the help text of --with and --only and deprecate --without
+  * Fail if the poetry.lock file is not consistent with the pyproject.toml
+    file
+  * Fix an issue where the export failed with the message "dependency walk
+    failed". This fix requires a poetry.lock file created with Poetry 2.x
+  * Fix an issue where the pre-commit hook regex matched wrong files
+- Add upstream tests.patch to fix tests with recent poetry
+
+-------------------------------------------------------------------
 Mon Nov  4 19:08:14 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.8.0

@@ -82,4 +82,23 @@ fix multibuild</comment>
     <comment></comment>
     <requestid>1221226</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a68105e6a24b548adfb7f13039e02e26</srcmd5>
+    <version>1.9.0</version>
+    <time>1746298702</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1273997 from mcalabkova
+
+- Update to 1.9.0
+    * Add an --all-groups option to export dependencies from all groups
+    * Drop support for Python 3.8
+    * Clarify the help text of --with and --only and deprecate --without
+    * Fail if the poetry.lock file is not consistent with the pyproject.toml
+      file
+    * Fix an issue where the export failed with the message &quot;dependency walk
+      failed&quot;. This fix requires a poetry.lock file created with Poetry 2.x
+    * Fix an issue where the pre-commit hook regex matched wrong files
+  - Add upstream tests.patch to fix tests with recent poetry</comment>
+    <requestid>1274046</requestid>
+  </revision>
 </revisionlist>

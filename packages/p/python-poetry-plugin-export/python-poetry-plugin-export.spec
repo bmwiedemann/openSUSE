@@ -1,7 +1,7 @@
 #
 # spec file for package python-poetry-plugin-export
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-poetry-plugin-export%{psuffix}
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        Poetry plugin to export the dependencies to various formats
 License:        MIT
 URL:            https://python-poetry.org/
 # RepositorySource: https://github.com/python-poetry/poetry-plugin-export
 Source:         https://files.pythonhosted.org/packages/source/p/poetry-plugin-export/poetry_plugin_export-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/python-poetry/poetry-plugin-export/pull/321 tests: adapt tests to cosmetic changes caused by poetry-core#826
+Patch:          tests.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.7.0 with %python-poetry-core < 3}
@@ -58,7 +60,7 @@ BuildArch:      noarch
 Poetry plugin to export the dependencies to various formats
 
 %prep
-%setup -q -n poetry_plugin_export-%{version}
+%autosetup -p1 -n poetry_plugin_export-%{version}
 
 %if !%{with test}
 %build
