@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri May  2 13:23:33 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.3.2
+  Matomo 5.3.2 is a patch release that delivers a range of stability, security, and performance improvements.
+  - #23117 If login is sent as an array, Matomo shows a proper error message indicating that the login parameter must be a string.
+  - #23248 Prevented email clients from automatically converting plain text (e.g. URLs or emails) into clickable links.
+  - #23247 Improve handling of prefixUrl parameter in API.listAllMethods.
+  - #23245 Escaped tracked parameters before rendering in Real-time reports.
+  - #23176 Ensure all translations required for Password Confirmation are always loaded.
+  - #23161 Handled errors when accessing navigator.javaEnabled in matomo.js, preventing issues caused by certain crawlers.
+  - #23229 Ensure to discard campaign names with invalid type; only string values are used.
+  - #23230 Prevent the concurrent deletion of multiple sites to ensure at least one website always remains in the instance.
+  - #23228 Prevent the warning message from displaying when no email is set for the current user.
+  - #23235 Optimised region name lookup by reducing execution time and memory usage.
+  - #23234 Improved memory usage in Live.getLastVisitDetails.
+  - #23072 Updated URLs in code comments from HTTP to HTTPS.
+
+-------------------------------------------------------------------
 Wed Mar 19 05:58:34 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.3.1
