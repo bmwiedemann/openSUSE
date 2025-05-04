@@ -12802,9 +12802,9 @@ unsorted:
   - libdde-network-utils1 
   - libdde-wayland-client0 
   - libdde-wayland-server0 
-  - libdeal_II9_6_1 
-  - libdeal_II9_6_1-openmpi4 
-  - libdeal_II9_6_1-openmpi5 
+  - libdeal_II9_6_2 
+  - libdeal_II9_6_2-openmpi4 
+  - libdeal_II9_6_2-openmpi5 
   - libdebuginfod-devel 
   - libdebuginfod-dummy-devel 
   - libdebuginfod1-dummy 
@@ -17329,8 +17329,6 @@ unsorted:
   - lightdm-deepin-greeter 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
-  - lightdm-pantheon-greeter 
-  - lightdm-pantheon-greeter-lang 
   - lightdm-qt5-devel 
   - lightdm-slick-greeter 
   - lightdm-slick-greeter-branding-openSUSE 
