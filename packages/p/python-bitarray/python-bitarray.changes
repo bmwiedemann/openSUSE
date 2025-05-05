@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 14 09:31:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.0
+  * remove `.endian()` method in favor of data descriptor `.endian`
+  * allow bitarray initializer `bytes` or `bytearray` to set buffer directly
+  * allow calling `.extend()` with `bytes` object (although the only
+    valid bytes are 0x00 and 0x01)
+  * add `util.byteswap()`
+  * add `util.correspond_all()`
+  * fix `.reverse()` for imported buffer
+  * drop Python 3.5 support
+  * add tests
+
+-------------------------------------------------------------------
 Mon May  5 06:46:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.2
