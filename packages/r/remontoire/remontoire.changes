@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 14 07:10:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.4:
+  * feat: use build-only to test pull request #25
+  * Fixing version on main.vala #24
+
+-------------------------------------------------------------------
+Wed May 14 07:10:02 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.2:
+  * Document -i, -p. #11
+  * Add openSUSE install instructions #14
+  * Adding content to Description tag #18
+  * Setup GitHub Actions for building and publishing package #21
+
+-------------------------------------------------------------------
 Thu Nov 19 09:08:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of remontoire 1.4.0 for openSUSE

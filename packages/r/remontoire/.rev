@@ -7,4 +7,20 @@
     <comment>remontoire</comment>
     <requestid>849604</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>16a22987a22ca5c30c419823ad079f30</srcmd5>
+    <version>1.4.4</version>
+    <time>1747234899</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.4:
+  * feat: use build-only to test pull request #25
+  * Fixing version on main.vala #24
+
+- Update to 1.4.2:
+  * Document -i, -p. #11
+  * Add openSUSE install instructions #14
+  * Adding content to Description tag #18
+  * Setup GitHub Actions for building and publishing package #21</comment>
+    <requestid>1277322</requestid>
+  </revision>
 </revisionlist>

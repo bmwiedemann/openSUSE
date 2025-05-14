@@ -1,7 +1,7 @@
 #
 # spec file for package remontoire
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           remontoire
-Version:        1.4.0
+Version:        1.4.4
 Release:        0
 Summary:        A keybinding viewer for i3 and other programs
 License:        GPL-3.0-or-later
 Group:          System/X11/Utilities
 URL:            https://github.com/regolith-linux/remontoire
-Source:         https://github.com/regolith-linux/remontoire/archive/1.4.0.tar.gz
+Source:         https://github.com/regolith-linux/remontoire/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  glib2-devel
 BuildRequires:  gtk3-devel >= 3.22
 BuildRequires:  json-glib-devel
