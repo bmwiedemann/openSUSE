@@ -1,7 +1,7 @@
 #
 # spec file for package qore-yaml-module
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@
 
 %define src_name qore-yaml-module-%{version}
 Name:           qore-yaml-module
-Version:        0.7.3
+Version:        1.0.0
 Release:        0
 Summary:        YAML module for Qore
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -60,9 +60,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libyaml-devel
+BuildRequires:  qore >= 2.0
+BuildRequires:  qore-devel >= 2.0
 BuildRequires:  timezone
-BuildRequires:  qore >= 1.12.4
-BuildRequires:  qore-devel >= 1.12.4
+BuildRequires:  (qore-stdlib if qore >= 2.0)
 Suggests:       %{name}-doc = %{version}
 
 %description
@@ -91,6 +92,7 @@ yaml module.
 find examples -type f|xargs chmod 644
 
 %build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export CXXFLAGS="%{?optflags}"
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
 make %{?_smp_mflags}

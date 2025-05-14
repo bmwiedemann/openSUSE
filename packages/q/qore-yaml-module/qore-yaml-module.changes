@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 13 18:42:02 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 1.0.0 for qore 2.1.1
+  * fixed a bug parsing single-quoted date-only strings (ex: 2022-02-22), 
+    previously parsed as date/time values, now parsed correctly as strings
+  * fixed a bug parsing n; was parsed as 0n before, now parsed correctly
+  * fixed a bug where aliases in YAML caused parsing to fail 
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings (boo#1241902) 
+
+-------------------------------------------------------------------
 Sun May 26 13:25:07 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore
