@@ -10,4 +10,23 @@ conservative and provide it as an alternative. For 16.0 and Tumbleweed it makes
 sense to provide it as the main implementation.</comment>
     <requestid>1276246</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>79617474229647ef72b25b667e830a22</srcmd5>
+    <version>3.1.1</version>
+    <time>1747234879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.1
+  * Makefile: Fix accidentally added dry-run markers
+  * BGP: Fix route refresh behavior
+  * BGP: Fix reconfiguration of import behavior modifiers
+  * BGP: Fix crash on too long export
+  * Conf: Fix invalid check in text_or_ipa grammar
+  * Netlink: Fix FreeBSD build error
+  * Fix use-after-free in thread group reconfiguration
+  * Fix CentOS 7 and NetBSD build
+  * Fix several crashes in table export (already fixed in 3.0.2)
+  * Fix crash on graceful restart of a channel with ROA subscription
+  * Lots of internal tooling and CI updates</comment>
+    <requestid>1277280</requestid>
+  </revision>
 </revisionlist>

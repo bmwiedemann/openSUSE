@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 13 21:51:14 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 3.1.1
+  * Makefile: Fix accidentally added dry-run markers
+  * BGP: Fix route refresh behavior
+  * BGP: Fix reconfiguration of import behavior modifiers
+  * BGP: Fix crash on too long export
+  * Conf: Fix invalid check in text_or_ipa grammar
+  * Netlink: Fix FreeBSD build error
+  * Fix use-after-free in thread group reconfiguration
+  * Fix CentOS 7 and NetBSD build
+  * Fix several crashes in table export (already fixed in 3.0.2)
+  * Fix crash on graceful restart of a channel with ROA subscription
+  * Lots of internal tooling and CI updates
+
+-------------------------------------------------------------------
 Fri May  9 11:45:55 UTC 2025 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Minor polishing
