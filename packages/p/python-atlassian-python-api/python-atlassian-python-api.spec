@@ -1,7 +1,7 @@
 #
 # spec file for package python-atlassian-python-api
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,11 +27,13 @@ Source1:        python-atlassian-python-api.rpmlintrc
 BuildRequires:  %{python_module deprecated}
 BuildRequires:  %{python_module kerberos}
 BuildRequires:  %{python_module oauthlib}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-deprecated
@@ -51,10 +53,10 @@ Python Atlassian REST API Wrapper
 %autosetup -p1 -n atlassian-python-api-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

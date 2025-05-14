@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 15:53:59 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Dec 15 12:54:54 UTC 2023 - pgajdos@suse.com
 
 - add python-atlassian-python-api.rpmlintrc into sources
