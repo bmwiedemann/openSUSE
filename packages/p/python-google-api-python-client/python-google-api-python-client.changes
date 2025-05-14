@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed May 14 09:46:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.169.0
+  * **aiplatform:** Update the api
+  * **artifactregistry:** Update the api
+  * **blockchainnodeengine:** Update the api
+  * **cloudchannel:** Update the api
+  * **cloudresourcemanager:** Update the api
+  * **connectors:** Update the api
+  * **dataflow:** Update the api
+  * **dataform:** Update the api
+  * **datamigration:** Update the api
+  * **dataplex:** Update the api
+  * **dialogflow:** Update the api
+  * **discoveryengine:** Update the api
+  * **displayvideo:** Update the api
+  * **documentai:** Update the api
+  * **drive:** Update the api
+  * **file:** Update the api
+  * **firebaseml:** Update the api
+  * **gkehub:** Update the api
+  * **iamcredentials:** Update the api
+  * **integrations:** Update the api
+  * **merchantapi:** Update the api
+  * **networkconnectivity:** Update the api
+  * **networkmanagement:** Update the api
+  * **networksecurity:** Update the api
+  * **oracledatabase:** Update the api
+  * **orgpolicy:** Update the api
+  * **sheets:** Update the api
+  * **sqladmin:** Update the api
+  * **tpu:** Update the api
+  * **translate:** Update the api
+  * **vpcaccess:** Update the api
+  * **youtube:** Update the api
+  * **admin:** Update the api
+  * **cloudbuild:** Update the api
+  * **storage:** Update the api
+
+-------------------------------------------------------------------
 Tue Apr 29 08:55:15 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.168.0
