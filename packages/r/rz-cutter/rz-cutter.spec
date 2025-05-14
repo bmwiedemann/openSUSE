@@ -16,15 +16,15 @@
 #
 
 
+%define appid re.rizin.cutter
+
 Name:           rz-cutter
-Version:        2.3.4
+Version:        2.4.0
 Release:        0
 Summary:        GUI for Rizin reverse engineering framework
 License:        GPL-3.0-only
 URL:            https://github.com/rizinorg/cutter
 Source0:        https://github.com/rizinorg/cutter/releases/download/v%{version}/Cutter-v%{version}-src.tar.gz
-# FIX-UPSTREAM, https://github.com/rizinorg/cutter/commit/93a06f5edd6fe5d6dc74eab564b93b9b0968c6f8
-Patch0:         Fix-build-failure-against-PySide-6.8.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -67,8 +67,7 @@ information.
 	-DCUTTER_USE_BUNDLED_RIZIN=OFF \
 	-DCUTTER_ENABLE_PYTHON=ON \
 	-DCUTTER_ENABLE_PYTHON_BINDINGS=ON \
-	-DCUTTER_ENABLE_GRAPHVIZ=ON \
-	-DCUTTER_QT6=ON
+	-DCUTTER_ENABLE_GRAPHVIZ=ON
 %cmake_build
 
 %install
@@ -80,7 +79,8 @@ information.
 %license COPYING src/img/icons/Iconic-LICENSE
 %doc README.md
 %{_bindir}/cutter
-%{_datadir}/applications/re.rizin.cutter.desktop
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/cutter.svg
 %dir %{_datadir}/rizin/cutter
 %dir %{_datadir}/rizin/cutter/translations

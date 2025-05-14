@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  2 07:56:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.3.3:
+  * New fractal type (clock).
+  * New outcoloring mode smoothlog.
+  * Official debut of build via cmake (for developers).
+- Add explicit pkgconfig(Qt6OpenGL) BuildRequires.
+
+-------------------------------------------------------------------
 Sat Jan 27 21:52:03 UTC 2024 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to 4.3.2:

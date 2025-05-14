@@ -1,7 +1,7 @@
 #
 # spec file for package rsyslog
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,6 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir /var/adm/fillup-templates
 %endif
-
-%define mark_daemon_restart %if 0%{?suse_version} > 1550 \
-				/usr/lib/systemd/systemd-update-helper mark-restart-system-units rsyslog.service ||: \
-			     %else \
-				/usr/bin/systemctl set-property "rsyslog.service" Markers=+needs-restart ||: \
-			     %endif
 
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
@@ -833,6 +827,17 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
   install -m0640 %{SOURCE9} %{buildroot}%{APPARMOR_PROFILE_PATH}/rsyslog.d/
 %endif
 
+%define post_for_mark_daemon_restart() \
+%if 0%{?suse_version} < 1600 \
+%post %1 \
+%if 0%{?suse_version} < 1550 \
+/usr/bin/systemctl set-property "rsyslog.service" Markers=+needs-restart ||: \
+%else \
+/usr/lib/systemd/systemd-update-helper mark-restart-system-units rsyslog.service ||: \
+%endif \
+%endif \
+%{nil}
+
 %pre
 %{service_add_pre rsyslog.service}
 
@@ -894,127 +899,90 @@ fi # first install
 /usr/bin/systemctl -f enable rsyslog.service >/dev/null 2>&1 || :
 
 %if %{with gssapi}
-
-%post module-gssapi
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-gssapi
 %endif
 
 %if %{with mysql}
-
-%post module-mysql
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-mysql
 %endif
 
 %if %{with pgsql}
-
-%post module-pgsql
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-pgsql
 %endif
 
 %if %{with dbi}
-
-%post module-dbi
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-dbi
 %endif
 
 %if %{with snmp}
-
-%post module-snmp
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-snmp
 %endif
 
 %if %{with gnutls}
-
-%post module-gtls
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-gtls
 %endif
 
 %if %{with openssl}
-
-%post module-ossl
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-ossl
 %endif
 
 %if %{with relp}
-
-%post module-relp
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-relp
 %endif
 
 %if %{with mmnormalize}
-
-%post module-mmnormalize
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-mmnormalize
 %endif
 
 %if %{with udpspoof}
-
-%post module-udpspoof
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-udpspoof
 %endif
 
 %if %{with elasticsearch}
-
-%post module-elasticsearch
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-elasticsearch
 %endif
 
 %if %{with omhttpfs}
-
-%post module-omhttpfs
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-omhttpfs
 %endif
 
 %if %{with hdfs}
-
-%post module-hdfs
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-hdfs
 %endif
 
 %if %{with mongodb}
-
-%post module-mongodb
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-mongodb
 %endif
 
 %if %{with hiredis}
-
-%post module-hiredis
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-hiredis
 %endif
 
 %if %{with zeromq}
-
-%post module-zeromq
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-zeromq
 %endif
 
 %if %{with kafka}
-
-%post module-kafka
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-kafka
 %endif
 
 %if %{with omamqp1}
-
-%post module-omamqp1
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-omamqp1
 %endif
 
 %if %{with gcrypt}
-
-%post module-gcrypt
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-gcrypt
 %endif
 
 %if %{with tcl}
-
-%post module-omtcl
-%mark_daemon_restart
+%post_for_mark_daemon_restart module-omtcl
 %endif
 
+%if 0%{?suse_version} < 1600
 %posttrans
+/usr/bin/systemctl daemon-reload ||:
 /usr/bin/systemctl --marked reload-or-restart ||:
+%endif
 
 %preun
 #

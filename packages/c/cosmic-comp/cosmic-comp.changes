@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:27:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+1:
+  * i18n (pt-BR) - Update translations
+  * Initial support for workspace pinning and moving
+  * protocols/workspace: Make `move_workspace_to_group` move existing handle
+  * protocols/workspace: Store request queue in workspace manager udata
+  * protocol/workspace: Store manager as part of workspace/group udata
+  * protocol/workspace: Move `WorkspaceGroupData` to `ext.rs`
+  * protocol/workspace: Remove type bounds that aren't required
+  * protocol/workspace: Drop support for cosmic v1 protocol
+  * xwayland: Set scaled cursor size via xsettings
+  * render/cursor: Don't round cursor coordinates early
+  * render/cursor: Correctly convert hotspot coordinates
+  * i18n(cs): Add Czech translations
+  * shell: Don't engage new MoveGrabs while in Overview
+  * chore: use cosmic-text shape cache
+  * xwayland: Honor primary output for fractional scale
+  * output_configuration: Allow setting xwayland primary output
+  * chore: update cosmic-protocols
+  * xwayland: store and restore primary output
+  * feat: Allow fractional xwayland client scale
+  * chore: update smithay
+  * Change default X11 eavesdropping to None
+  * shell/element: Attach a resize border to tiled undecorated windows
+  * chore: Update smithay
+  * state: Use `WeakOutput` for frame trottling
+  * xwayland: Allow eavesdropping on certain keyboard/pointer events
+  * chore: Update smithay
+  * xwayland: Always allow writing into clipboard
+  * xwayland: Allow pasting into fullscreen surfaces
+  * shell/workspace: Disambiguate output with edid match by connector name
+  * shell/workspace: Store edid in output stack
+  * shell/workspace: Clear output stack when moved user moves workspace
+  * Add `EdidProduct`, as user data for kms `Output`s
+  * Replace screencopy with `ext-image-copy-capture-v1`
+  * config: Refactor WorkspaceLayout to use the Default macro
+  * Argument support with clap_lex
+  * i18n(sk): Add Slovak translations
+  * a11y/zoom: Fix settings page
+  * input: Don't trigger modifier shortcuts, when zooming
+  * a11y/zoom: Add more leeway for OnEdge movement
+  * a11y/zoom: zoom level per output
+  * a11y/zoom: Drop last state
+  * a11y/zoom: Allow disabling scroll-shortcuts
+  * a11y/zoom: Allow hiding the overlay
+  * xdg-activation/toplevel-management: Unmaximize when activating a tiled window
+  * shell: Unmaximize when moving a single window to another tiling layer
+  * shell: Unmaximize windows on the target workspace when moving groups
+  * shell: Don't move group to tiled layer of floating-only workspace
+  * kms: Support screencopy cursor modes with active filters
+  * backend: Support screen filters in nested mode
+  * chore: Update smithay
+  * kms: Support screen filters
+  * kms: Refactor out postprocessing helpers
+  * wayland: Add support for cosmic-a11y version 2
+  * chore: Update cosmic-protocols
+  * config: Add screen-filter configuration and persistent state
+  * screencopy: Remove unnecessary lifetime
+  * Call `underlying_storage` of `TextureRenderElement` without mapping
+  * kms.timings.presented: print debug msg when frame time is overflowing
+  * kms: protect against potential overflow of Duration when calculating avg frametime
+  * shell: Refactor out common code for removing workspace from set
+  * Fixes for `migrate_workspace`
+  * Refactor out duplicated `workspace_set_idx` loops
+  * Send one-dimensional workspace coordinates, without output index
+  * Take slice instead of array in `set_workspace_coordinates`
+  * Improve handling of XDG activation tokens in shell
+  * Update `smithay`
+  * Fix `dependency_on_unit_never_type_fallback` warning on latest Rustc
+  * chore: Update rust toolchain
+  * iced: Don't call update from render_elements
+  * iced: Don't throttle resizes
+  * input: Fix events for subsurfaces of lock surface
+  * fix: Remove extra scaling of borders
+  * chore: smithay update
+  * shell: On `output_remove`, focus moved workspace instead of empty one
+  * protocol/workspace: Store ext/cosmic specific capabilities
+  * protocol/workspace: Split ext/cosmic-v1 workspace data into two types
+  * shell: If active workspace moved, add `WState::Active` to new active
+  * shell: Fix getting `active_handle` for `other_set`
+  * tiling: Exclude maximized windows from input/render
+  * iced: refresh after output_enter
+  * floating: Refresh space after mapping
+  * main: throttle refresh
+  * i18n (pt-BR) update translation
+  * i18n(pt): update Portuguese translation
+  * Create cosmic_comp.ftl (Swedish)
+  * i18n(nl) update Dutch translation
+  * shell: next_output - axis overlap filter logic without negation
+  * actions: Remember previous workspace on extended action
+  * actions: Shortcut handling changes for #1005
+  * stack: Remember position during continuous move action
+  * stack: Remember previous position during focus navigation
+  * ci: Update unsupported cache v2 action to v4
+  * fix(protocol/workspace): Handle cosmic-workspace-v2 destroy requests
+  * Add `cosmic-workspace-v2`, image source, toplevel info changes
+  * Update cosmic-protocols
+  * Set `WorkspaceCapabilities::SetTilingState` capability
+  * protocol/toplevel_management: Use `WorkspaceHandle` in argument
+  * protocol/workspace: Fix initial sending of states and capabilities
+  * feat: add shortcut for input source switch
+  * i18n(pl): update translation
+  * Update Hungarian translations
+
+-------------------------------------------------------------------
 Sat Feb 22 02:45:10 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

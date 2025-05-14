@@ -18,7 +18,7 @@
 
 
 Name:           flamp
-Version:        2.2.13
+Version:        2.2.14
 Release:        0
 Summary:        Amateur Multicast Protocol - file transfer program
 License:        GPL-2.0

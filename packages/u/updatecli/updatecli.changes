@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May 05 08:03:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.99.0:
+  * Features
+    - feat(core): export pipeline report to disk [experimental]
+      @olblak (#4898)
+    - feat(autodiscovery): Add Nomad integration @olblak (#4957)
+    - feat(autodiscovery/githubaction): digest should allow
+      handling of main @loispostula (#4959)
+    - feat(autodiscovery/precommit): add support for digest in
+      precommit autodiscovery @loispostula (#4928)
+    - feat: add quote/unquote transformers @loispostula (#4870)
+  * Bug Fixes
+    - fix: github action e2e test branch @olblak (#4975)
+    - fix(yaml): improve target change detection logic @omissis
+      (#4864)
+    - fix(autodiscovery/flux): don't ignore flux helmrelease update
+      when using an actionID @olblak (#4866)
+  * Maintenance
+    - deps(go): bump module github.com/drone/go-scm to v1.40.1
+      @updateclibot[bot] (#5003)
+    - fix(autodiscovery/githubaction): replace deprecated key hash
+      by hashtag @olblak (#4982)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.11
+      @updateclibot[bot] (#4949)
+    - deps(github/action): bump all dependencies @updateclibot[bot]
+      (#4938)
+    - deps(go): bump module
+      github.com/testcontainers/testcontainers-go to v0.37.0
+      @updateclibot[bot] (#4937)
+    - deps: bump golangci-lint to v2.1.5 @updateclibot[bot] (#4909)
+    - deps(go): bump module github.com/beevik/etree to v1.5.1
+      @updateclibot[bot] (#4914)
+    - deps(go): bump module github.com/aws/aws-sdk-go to v1.55.7
+      @updateclibot[bot] (#4905)
+    - deps: update ubuntu version used in Update
+      release-drafter.yml @olblak (#4888)
+    - deps(go): bump module github.com/yuin/goldmark to v1.7.10
+      @updateclibot[bot] (#4853)
+    - deps(go): bump module
+      github.com/hashicorp/terraform-registry-address to v0.2.5
+      @updateclibot[bot] (#4844)
+    - deps(go): bump module github.com/go-git/go-git/v5 to v5.16.0
+      @updateclibot[bot] (#4836)
+
+-------------------------------------------------------------------
 Mon Apr 14 13:22:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.98.0:

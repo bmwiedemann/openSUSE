@@ -1,0 +1,38 @@
+
+github.com/python/mypy/issues/18698
+github.com/python/mypy/pull/18699
+github.com/python/mypy/commit/0808624
+
+From 0808624c67331f52c2d503ad8afe4f1087b0371c Mon Sep 17 00:00:00 2001
+From: "Michael R. Crusoe" <1330696+mr-c@users.noreply.github.com>
+Date: Tue, 18 Feb 2025 00:45:37 +0100
+Subject: [PATCH] pythoncapi_compat: don't define Py_NULL if it is already
+ defined (#18699)
+
+Fixes: #18698
+
+This is a naive fix for the gcc 15 error when compiling for Python 3.12
+---
+ mypyc/lib-rt/pythoncapi_compat.h |    2 ++
+ 1 file changed, 2 insertions(+)
+
+Index: mypy-1.14.1/mypyc/lib-rt/pythoncapi_compat.h
+===================================================================
+--- mypy-1.14.1.orig/mypyc/lib-rt/pythoncapi_compat.h	2024-12-30 15:26:58.000000000 +0100
++++ mypy-1.14.1/mypyc/lib-rt/pythoncapi_compat.h	2025-05-05 16:10:16.167068167 +0200
+@@ -30,6 +30,7 @@
+ #  define _Py_CAST(type, expr) ((type)(expr))
+ #endif
+ 
++#ifndef _Py_NULL
+ // Static inline functions should use _Py_NULL rather than using directly NULL
+ // to prevent C++ compiler warnings. On C23 and newer and on C++11 and newer,
+ // _Py_NULL is defined as nullptr.
+@@ -39,6 +40,7 @@
+ #else
+ #  define _Py_NULL NULL
+ #endif
++#endif
+ 
+ // Cast argument to PyObject* type.
+ #ifndef _PyObject_CAST

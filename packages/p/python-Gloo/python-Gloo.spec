@@ -1,7 +1,7 @@
 #
 # spec file for package python-Gloo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%define         skip_python36 1
 Name:           python-Gloo
 Version:        0.1.2
 Release:        0
@@ -25,7 +24,9 @@ Summary:        Project management for data analysis projects
 License:        BSD-3-Clause
 URL:            https://pypi.python.org/pypi/Gloo/
 Source:         https://files.pythonhosted.org/packages/source/G/Gloo/Gloo-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pandas
@@ -42,10 +43,10 @@ runs scripts, makes utitlity functions available and more.
 %setup -q -n Gloo-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # The tests in test directory are broken and so they are not checked
@@ -53,6 +54,7 @@ runs scripts, makes utitlity functions available and more.
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/[Gg]loo
+%{python_sitelib}/[Gg]loo-%{version}.dist-info
 
 %changelog

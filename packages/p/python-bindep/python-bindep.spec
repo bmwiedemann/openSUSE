@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bindep
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Binary dependency utility
 License:        Apache-2.0
@@ -44,6 +44,8 @@ BuildRequires:  %{python_module wheel}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  openSUSE-release
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 Requires:       python-Parsley
 Requires:       python-distro >= 1.7.0
 Requires:       python-packaging

@@ -1,0 +1,7 @@
+<package name="python-ropgadget" project="openSUSE:Factory">
+  <title>ROPgadget Tool</title>
+  <description>This tool lets you search your gadgets on your binaries to facilitate your ROP exploitation. 
+
+ROPgadget supports ELF/PE/Mach-O/Raw formats on x86, x64, ARM, ARM64, PowerPC, SPARC, MIPS, RISC-V 64, and RISC-V Compressed architectures.</description>
+  <url>https://github.com/JonathanSalwan/ROPgadget</url>
+</package>

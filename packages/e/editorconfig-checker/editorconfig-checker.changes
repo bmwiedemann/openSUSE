@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 07 10:43:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.3.0:
+  * Features
+    - add .jj (Jujutsu) directory to default exclude list (#458)
+      (ac903a0)
+    - update default paths to exclude (#462) (84c5c55)
+  * Bug Fixes
+    - skip correct number of errors when consolidating errors
+      (#464) (8c695f5)
+  * Dependencies
+    - chore(deps): bump golang.org/x/text from 0.24.0 to 0.25.0
+      (#467)
+    - chore(deps): bump anchore/sbom-action from 0.18.0 to 0.19.0
+      (#463)
+    - chore(deps): bump github.com/gabriel-vasile/mimetype from
+      1.4.8 to 1.4.9 (#461)
+    - chore(deps): bump golang.org/x/text from 0.23.0 to 0.24.0
+      (#460)
+
+-------------------------------------------------------------------
 Sun Mar 16 12:35:44 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 3.2.1:

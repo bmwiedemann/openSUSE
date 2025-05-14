@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 12 13:25:40 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add BuildRequire for qore-stdlib >= 2.0 with new qore package
+
+-------------------------------------------------------------------
+Wed May  7 10:57:38 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Sun May 26 11:58:31 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore

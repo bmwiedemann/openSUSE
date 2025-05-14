@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  2 10:51:40 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- disabled unsupported -rt flavor (bsc#1242054) 
+
+-------------------------------------------------------------------
 Fri Apr 18 20:39:43 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update CUDA variant to 570.133.20

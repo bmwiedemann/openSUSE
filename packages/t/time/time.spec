@@ -29,6 +29,8 @@ Source2:        https://ftp.gnu.org/gnu/time/%{name}-%{version}.tar.gz.sig
 Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=94790#/%{name}.keyring
 # PATCH-FIX-OPENSUSE disable-time-max-rss-test.patch bsc#1211092
 Patch1:         disable-time-max-rss-test.patch
+# build with gcc15
+Patch2:         time-gcc15.patch
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
 
@@ -42,9 +44,9 @@ while the program was running.
 %ifarch ppc ppc64 ppc64le
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 
 %build
-export CFLAGS="%{optflags} -std=gnu99"
 %configure
 make %{?_smp_mflags}
 

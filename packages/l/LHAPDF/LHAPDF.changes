@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May  2 08:55:07 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 6.5.5:
+  * Allow use of an external yaml-cpp library via a new
+    --with-yaml-cpp configure-script flag.
+  * Add filter kwarg to tarfile.extractall() call in the "lhapdf
+    install" script action, if supported.
+  * Change Python build to use PY_LDFLAGS rather than
+    LINKFORSHARED variable.
+  * Add ForcePositive regularisation to PDF values computed via
+    the accelerated vector-return variant.
+  * Fix the getPDFSet() function to raise a Python exception if it
+    fails via the Python interface.
+  * Expose LHAPDF_PYTHONPATH as a configure-time environment
+    variable for overriding the calculated install path.
+  * Fix a typo in PDF upgrading via lhapdf.
+  * Improvements to lhapdf-config, including a --pythonpath flag.
+  * Update yaml.load() call to use SafeLoader.
+  * Make lhapdf update return a non-zero exit code if data
+    installation fails.
+  * Add --enable-librelease configure option to use libtool
+    -release
+- Drop patch sover.diff. Use configure option --enable-librelease
+  to add so versioning to shared object instead.
+
+-------------------------------------------------------------------
 Mon Apr 10 04:18:13 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.5.4:

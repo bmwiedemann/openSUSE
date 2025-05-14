@@ -1,7 +1,7 @@
 #
 # spec file for package direnv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,17 @@
 
 %define gopackagepath github.com/direnv/direnv
 Name:           direnv
-Version:        2.35.0
+Version:        2.36.0
 Release:        0
 Summary:        Environment switcher for shells
 License:        MIT
 Group:          Productivity/File utilities
 URL:            https://direnv.net/
 Source0:        https://github.com/direnv/direnv/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.zst
+Source1:        vendor.tar.gz
 Patch0:         resolve-bin-path.patch
 BuildRequires:  fish
-BuildRequires:  go >= 1.6
+BuildRequires:  go >= 1.24
 BuildRequires:  make
 BuildRequires:  zstd
 
@@ -80,15 +80,18 @@ clutter the "~/.profile" file.
   GO_BUILD_FLAGS="-buildmode=pie"
 %endif
 
+%check
+bash test/direnv-test.bash
+
 %install
 %make_install PREFIX=%{_prefix}
 
 export PATH="%{buildroot}%{_bindir}:${PATH}"
-mkdir -p %{buildroot}%{_sysconfdir}/bash_completion.d
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 
-direnv hook bash > %{buildroot}%{_sysconfdir}/bash_completion.d/direnv.sh
+direnv hook bash > %{buildroot}%{_datadir}/bash-completion/completions/direnv.sh
 direnv hook fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 direnv hook zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
@@ -104,8 +107,8 @@ direnv hook zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 %{_datadir}/fish/vendor_conf.d/%{name}.fish
 
 %files bash-completion
-%dir %{_sysconfdir}/bash_completion.d
-%{_sysconfdir}/bash_completion.d/direnv.sh
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/direnv.sh
 
 %files zsh-completion
 %dir %{_datadir}/zsh

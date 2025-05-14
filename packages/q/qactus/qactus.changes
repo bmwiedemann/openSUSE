@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  2 13:11:43 UTC 2025 - Javier Llorente <javier@opensuse.org>
+
+- Update to 3.0.0
+  * UI redesign, package-centred with a modern style
+  * Port to Qt 6
+  * New feature: location bar
+  * New feature: quick search
+  * New feature: project/package overview
+  * New feature: getting revisions
+  * New feature: getting requests per project/package
+  * New logo
+  * Switch to Apache License 2.0
+  * Improve build log viewer
+  * Improve error handling
+  * Improve progress indicator management
+  * Improve memory management with smart pointers
+  * Improve signals/slots by using modern connect syntax
+  * Refactor request box to make its components reusable
+  * Bump cmake_minimum_required to 3.16
+  * Remove Qt5-related code
+  * Remove unneeded QtDBus dependency
+  * Multiple fixes
+- Update spec:
+  * Use qt6 macros
+  * Remove qactus-fix-leap-build.patch
+  * Remove update-desktop-files
+
+-------------------------------------------------------------------
 Tue Oct  5 21:15:20 UTC 2021 - Javier Llorente <javier@opensuse.org>
 
 - Fix build for openSUSE Leap 15.2 and 15.3

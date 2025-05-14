@@ -1,0 +1,13 @@
+Index: termcap-2.0.8/tparam.c
+===================================================================
+--- termcap-2.0.8.orig/tparam.c
++++ termcap-2.0.8/tparam.c
+@@ -87,7 +87,7 @@ xrealloc (ptr, size)
+ 
+    The fourth and following args to tparam serve as the parameter values.  */
+ 
+-static char *tparam1 ();
++static char *tparam1 (char *, char *, int, char *, char *, register int *);
+ 
+ /* VARARGS 2 */
+ char *

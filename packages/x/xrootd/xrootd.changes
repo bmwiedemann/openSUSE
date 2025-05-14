@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun May 11 09:01:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.8.2:
+  * [Server] Correct handling of wait during redrive
+    (gh#xrootd/xrootd#2480).
+  * [Server] Enforce reasonable default thread limit of 8192
+    (gh#xrootd/xrootd#2468).
+  * [XrdHttp] Add missing default HTTP status messages
+    (gh#xrootd/xrootd#2486).
+  * [XrdHttp] Handle = sign correctly in URL encoding/decoding
+    (gh#xrootd/xrootd#2491).
+  * [XrdOuc] Redact URL-encoded tokens with % character
+    (gh#xrootd/xrootd#2500).
+  * [XrdPosix] Map operation timeouts to ETIME
+    (gh#xrootd/xrootd#2482).
+  * [XrdPss] Implement the auto-stat protocol for XrdPss
+    (gh#xrootd/xrootd#2454).
+  * [XrdSecsss] Fix issues reported by clang-tidy static analysis.
+  * [XrdSecsss] Protect against buffer overflow due to large key
+    name.
+  * [CMake] General modernization of the build system
+    (gh#xrootd/xrootd#2453).
+  * [CMake] Set stricter baseline compiler warning level.
+  * [Misc] Fix compiler warnings with C++20/23, GCC 15 and Clang
+    20.
+  * [RPM] Revert move to sysusers.d config file for user/group
+    creation.
+  * [Tests] Set a discovery timeout for gtest_discover_tests
+    (gh#xrootd/xrootd#2485).
+- Enable tests for main flavour as part of %check as these no
+  longer require network connectivity; tests for python are too
+  slow and remain disabled.
+
+-------------------------------------------------------------------
 Wed Apr 23 16:03:27 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.8.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-py
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Version:        1.11.0
 Release:        0
 Summary:        Library with cross-python path, ini-parsing, io, code, log facilities
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/pytest-dev/py
 Source:         https://files.pythonhosted.org/packages/source/p/py/py-%{version}.tar.gz
 # https://github.com/pytest-dev/py/pull/222
@@ -40,8 +39,10 @@ Patch0:         pr_222.patch
 Patch1:         remove-svn-remants.patch
 BuildRequires:  %{python_module apipkg}
 BuildRequires:  %{python_module iniconfig}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 Requires:       python-apipkg
 Requires:       python-iniconfig
 BuildRequires:  fdupes
@@ -82,11 +83,11 @@ rm conftest.py svntestbase.py test_svnauth.py test_svnurl.py test_svnwc.py
 popd
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -106,7 +107,7 @@ export LANG=en_US.UTF-8
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/py
-%{python_sitelib}/py-%{version}*-info
+%{python_sitelib}/py-%{version}.dist-info
 %endif
 
 %changelog

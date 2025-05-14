@@ -160,4 +160,12 @@
 - Switch to autosetup macro.</comment>
     <requestid>1225076</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>287ea42f07662bf0c487f332a28c5140</srcmd5>
+    <version>6.4.3</version>
+    <time>1746809453</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276029</requestid>
+  </revision>
 </revisionlist>

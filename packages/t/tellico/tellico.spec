@@ -20,7 +20,7 @@
 %define qt6_version 6.4.0
 
 Name:           tellico
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  cmake(KCddb6)
 BuildRequires:  cmake(KF6Archive) >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
+BuildRequires:  cmake(KF6ColorScheme) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}

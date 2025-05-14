@@ -36,4 +36,15 @@
   * fix(grammar): remove unnecessary choice wrapper (forwarded request 1256333 from rrahl0)</comment>
     <requestid>1256334</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cc1a15ba07a56555fadadb10faae63b2</srcmd5>
+    <version>0.6.0</version>
+    <time>1746729599</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.0:
+  * Add file-types to tree-sitter.json
+  * feat: add support for :substitute command
+  * feat(grammar): support = lua chunks (forwarded request 1275633 from rrahl0)</comment>
+    <requestid>1275634</requestid>
+  </revision>
 </revisionlist>

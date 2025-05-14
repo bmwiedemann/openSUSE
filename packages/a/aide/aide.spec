@@ -1,7 +1,7 @@
 #
 # spec file for package aide
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           aide
-Version:        0.18.8
+Version:        0.19
 Release:        0
 Summary:        Advanced Intrusion Detection Environment
 License:        GPL-2.0-or-later
 URL:            https://aide.github.io/
 Source0:        https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz
-Source100:      https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Source1:        aide.conf
 Source2:        aide-cron_daily.sh
 Source3:        aide-test.sh
@@ -33,6 +32,7 @@ Source6:        aide.timer
 Source7:        aide.timer.8
 Source8:        aide_service.conf
 Source43:       aide.keyring
+Source100:      https://github.com/aide/aide/releases/download/v%{version}/aide-%{version}.tar.gz.asc
 Patch1:         aide-0.18-as-needed.patch
 Patch2:         aide-xattr-in-libc.patch
 Patch3:         aide-systemd.patch
@@ -43,13 +43,16 @@ BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
 BuildRequires:  gzip
-BuildRequires:  libacl-devel
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libselinux-devel
-BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libpcre2-16)
+BuildRequires:  pkgconfig(libpcre2-32)
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(libpcre2-posix)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 AIDE is an intrusion detection system that checks file integrity.
@@ -66,15 +69,15 @@ Simple AIDE test script for externalized testing.
 
 %build
 autoreconf -fiv
-%configure 					\
+%configure \
 	--with-config_file=%{_sysconfdir}/aide.conf	\
-	--with-dbhmactype=md5			\
-	--disable-static			\
-	--enable-lfs				\
-	--with-posix-acl			\
-	--with-xattr				\
-	--with-selinux				\
-	--with-curl				\
+	--with-dbhmactype=md5 \
+	--disable-static \
+	--enable-lfs \
+	--with-posix-acl \
+	--with-xattr \
+	--with-selinux \
+	--with-curl \
 	--with-zlib \
     --with-gcrypt \
     --without-mhash
@@ -154,8 +157,8 @@ rm -rf $TESTDIR
 %config(noreplace) %{_sysconfdir}/aide_service.conf
 %{_unitdir}/aide.service
 %{_unitdir}/aide.timer
-%{_mandir}/man8/aide.timer.8*
-%{_mandir}/man8/aide.service.8*
+%{_mandir}/man8/aide.timer.8%{?ext_man}
+%{_mandir}/man8/aide.service.8%{?ext_man}
 
 %files test
 %{_bindir}/aide-test.sh

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Apr 26 09:04:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.35.0:
+  * update dependencies
+  * Make GroupConfig Clone
+  * By default, only report progress when stderr is a terminal
+  * Add shell completion subcommand
+
+- added shell completion subpackages
+
+-------------------------------------------------------------------
 Mon Dec  4 07:37:55 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.34.0:

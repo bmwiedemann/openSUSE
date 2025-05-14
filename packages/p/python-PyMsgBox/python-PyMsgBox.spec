@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMsgBox
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyMsgBox
 Version:        1.0.9
 Release:        0
@@ -26,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/asweigart/PyMsgBox
 Source:         https://files.pythonhosted.org/packages/source/P/PyMsgBox/PyMsgBox-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/asweigart/PyMsgBox/master/LICENSE.txt
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,15 +44,16 @@ cp %{SOURCE99} .
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pymsgbox
+%{python_sitelib}/[Pp]y[Mm]sg[Bb]ox-%{version}*-info
 
 %changelog

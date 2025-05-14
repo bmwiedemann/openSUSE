@@ -375,8 +375,6 @@ Patch188:       grub2-mkconfig-riscv64.patch
 Patch189:       arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch190:       0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
 Patch191:       Fix-the-size-calculation-for-the-synthesized-initrd.patch
-Patch192:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
-Patch195:       0004-Key-revocation-on-out-of-bound-file-access.patch
 # Workaround for 2.12 tarball
 Patch196:       fix_no_extra_deps_in_release_tarball.patch
 Patch197:       0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
@@ -471,6 +469,16 @@ Patch297:       grub2-bls-boot-assessment.patch
 Patch298:       grub2-bls-boot-show-snapshot.patch
 Patch299:       grub2-blscfg-fix-hang.patch
 Patch300:       grub2-blscfg-set-efivars.patch
+Patch301:       0001-kern-rescue_reader-Block-the-rescue-mode-until-the-C.patch
+Patch302:       0002-commands-search-Introduce-the-cryptodisk-only-argume.patch
+Patch303:       0003-disk-diskfilter-Introduce-the-cryptocheck-command.patch
+Patch304:       0004-commands-search-Add-the-diskfilter-support.patch
+Patch305:       0005-docs-Document-available-crypto-disks-checks.patch
+Patch306:       0006-disk-cryptodisk-Add-the-erase-secrets-function.patch
+Patch307:       0007-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
+Patch308:       0008-cryptocheck-Add-quiet-option.patch
+Patch309:       0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+Patch310:       0004-Key-revocation-on-out-of-bound-file-access.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

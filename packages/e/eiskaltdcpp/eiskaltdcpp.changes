@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 00:15:45 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Fixed the build with cmake4.
+
+-------------------------------------------------------------------
 Wed Mar 19 22:12:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Added eiskaltdcpp-2.4.2-pcre2.patch to pcre2 support.

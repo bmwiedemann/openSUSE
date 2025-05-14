@@ -2,6 +2,7 @@
 # spec file for package lxcfs
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# On pre-15 SLE versions, _sharedstatedir was /usr/com -- which is just wrong.
-%if 0%{?suse_version} < 1500
-%define _sharedstatedir /var/lib
-%endif
 
 Name:           lxcfs
 Version:        6.0.4
@@ -36,10 +32,10 @@ BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  meson >= 0.50
 BuildRequires:  pam-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Jinja2
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 
@@ -52,11 +48,7 @@ LXC but is usable by any runtime.
 Summary:        LXC hooks for %{name}
 Group:          System/Management
 Requires:       %{name} = %{version}
-%if 0%{?sle_version} < 150000
-Supplements:    packageand(%{name}:liblxc1)
-%else
 Supplements:    (%{name} and liblxc1)
-%endif
 BuildArch:      noarch
 
 %description hooks-lxc
@@ -78,14 +70,14 @@ with LXC for all containers.
 # any other program. lxcfs will automatically install it to {_libdir}/{name}
 # which is out of the way of any other users.
 %meson_install
-install -d -m 0755 %{buildroot}%{_sharedstatedir}/%{name}
+install -d -m 0755 %{buildroot}%{_localstatedir}/lib/%{name}
 
 # systemd service and sysv-init compat wrapper.
 mkdir -p %{buildroot}%{_sbindir}
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 # Clean up.
-find %{buildroot} -type f -name '*.la' -delete
+find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}
 
 %pre
@@ -101,7 +93,6 @@ find %{buildroot} -type f -name '*.la' -delete
 %service_del_postun lxcfs.service
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README*
 %license COPYING
 %{_sbindir}/*
@@ -122,7 +113,7 @@ find %{buildroot} -type f -name '*.la' -delete
 %{_libdir}/%{name}/liblxcfs.so
 
 %files hooks-lxc
-%defattr(-,root,root)
+%license COPYING
 %{_datadir}/lxc
 
 %changelog

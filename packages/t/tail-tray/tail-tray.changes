@@ -1,8 +1,36 @@
 -------------------------------------------------------------------
+Wed May 07 15:43:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.22:
+  * What's new in this release
+    This release has some new Notification handling if you are
+    building and running it for KDE Plasma 6 or later, using this
+    feature will give you fancy notification integrations into your
+    Plasma Desktop.
+    It also comes with the regular flow of bug fixes, most notable
+    are fixes around potential segfaults, that hopefully should be
+    fully resolved now
+  * Commits
+    - [Issue #36] - Use KNotification framework for notifications
+      (#73) (Marcus Grenängen) #73
+    - Test to build on kdeneon/plasma:user (Marcus Grenängen)
+    - Revert "Test to build on kdeneon/plasma:user" (Marcus
+      Grenängen)
+    - gh runner (Marcus Grenängen)
+    - Revert "gh runner" (Marcus Grenängen)
+    - KNOTIFICATIONS_ENABLED=OFF to have it still build for ubuntu
+      24.04 and Debian stable (Marcus Grenängen)
+    - Fix for potential segfault due to double free + code
+      readability fix/cleanup (Marcus Grenängen)
+    - Ignore .cache dir (Marcus Grenängen)
+    - Fix segfault for Issue #75 (Marcus Grenängen)
+    - Bump version to 0.2.22 (Marcus Grenängen)
+
+-------------------------------------------------------------------
 Tue Apr 29 05:56:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.21:
-  * What's new in this release 🎉
+  * What's new in this release
     This is a smaller service release focusing on fixing reported
     bugs and further stability improvements and memory usage
     improvements.

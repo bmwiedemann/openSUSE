@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 12 14:18:20 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove clean section
+
+-------------------------------------------------------------------
+Mon May 12 13:59:44 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add if case for qore >= 2.0 and BuildRequire qore-stdlib
+
+-------------------------------------------------------------------
+Mon May 12 13:30:24 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add qore-stdlib >= 2.0 as BuildRequire for new qore package
+
+-------------------------------------------------------------------
+Wed May  7 10:56:45 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Tue Mar  4 11:34:52 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove empty SUSE case

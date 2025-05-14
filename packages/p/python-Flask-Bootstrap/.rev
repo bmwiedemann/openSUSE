@@ -7,4 +7,13 @@
     <comment>needs to go with python-vector and python-dominate</comment>
     <requestid>642829</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9df9d89cb6ceb010ab8fa6ab32f9139a</srcmd5>
+    <version>3.3.7.1</version>
+    <time>1746542547</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.</comment>
+    <requestid>1274778</requestid>
+  </revision>
 </revisionlist>

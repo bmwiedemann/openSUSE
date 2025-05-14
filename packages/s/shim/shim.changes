@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Tue May  6 06:19:02 UTC 2025 - Dennis <dennis.tseng@suse.com>
+
+-- Update to version 16.0
+    - remove shim-bsc1177315-verify-eku-codesign.patch
+        remove it because shim github upstream has accepted it (PR #664)
+    - add revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt to revoked certificates for dbx
+        SLES-UEFI-SIGN-Certificate-20220525.crt can be blacklisted,
+        and can be added to the vendor dbx.
+    - add shim-alloc-one-more-byte-for-sprintf.patch (bsc#1240871)
+        The codes already submitted to git upstream (PR #746)
+        In generate_sbat_var_defs.c, realloc() should allocate one more byte for
+        the end of string '\0' when running sprintf() later.
+    - Patches (git log --oneline --reverse 15.8..16.0)
+        126a07e Validate that a supplied vendor cert is not in PEM format
+        63edf92 sbat: Add grub.peimage,2 to latest (CVE-2024-2312)
+        3e1394e sbat: Also bump latest for grub,4 (and to todays date)
+        470a8cd undo change that limits certificate files to a single file
+        0287c6b shim: don't set second_stage to the empty string
+        3685b13 Fix SBAT.md for today's consensus about numbers
+        dc07432 Realize the suggestions as part of PR #672
+        e064e7d Update Code of Conduct contact address
+        e68f4ca make-certs: Handle missing OpenSSL installation
+        74a1f29 Update MokVars.txt  - Update documented mirrored variable attributes from RT to BS,RT  - Add missing MokSBStateRT  - Clarify that MokIgnoreDB is a mirror of MokDBState  - Add missing attributes for MokPWStore
+        f6674fe export DEFINES for sub makefile
+        47bbb5e Drop unused EFI_IMAGE_SECURITY_DATABASE_GUID definition
+        338fded Null-terminate 'arguments' in fallback
+        3d1dcd4 Fix "Verifiying" typo in error message
+        b5d359a CI: use checkout@v4
+        1d8365f CI: work around ownership issue on github
+        20094ca Update fedora CI targets
+        3cf0e09 Force gcc to produce DWARF4 so that gdb can use it
+        5f54182 includes: work around CLANG_PREREQ() double-definition
+        ab06527 Makefile: don't warn about clang when building compile_commands.json
+        0c9249d Suppress some warnings even harder in Cryptlib and OpenSSL.
+        fd7e16f Add building compile_commands.json to CI
+        314aecf Discard load-options that start with WINDOWS
+        ac85ba4 Fix the issue that the gBS->LoadImage pointer was empty.
+        d8c86b7 shim: Allow data after the end of device path node in load options
+        d197220 Backport EFI_HTTP_ERROR status code
+        6410312 netboot: Convert TFTP error codes to EFI status codes
+        ef8e729 httpboot: Convert HTTP status codes to EFI status codes
+        2a1cbe6 Update gnu-efi submodule for EFI_HTTP_ERROR
+        196cbb9 Increase EFI file alignment
+        ad8692e avoid EFIv2 runtime services on Apple x86 machines
+        0345331 Improve shortcut performance when comparing two boolean expressions
+        27562ea Fix bad reference to PathName in image loading
+        1508ece Move is_removable_media_path() to a shared location.
+        7864c10 Provide better error message when MokManager is not found
+        3e60895 tpm: Boot with a warning if the event log is full
+        b560c52 MokManager: remove redundant logical constraints
+        9229e7c Make mock_set_variable() correctly account for resource usage.
+        f7e1d72 tests: make it possible to use different limits for variable space
+        67efdfc test-mok-mirror: refactor the validation of test_mok_mirror_0
+        70366a2 test-mok-mirror: add a test case where MokListRT won't fit.
+        3caa75e test-mok-mirror: minor bug fix
+        dc45aa6 lib/simple_file.c: Allocate zeroed pool for SimpleFS entries
+        9415d3c simple_file: Allow to form a volume name from DevicePath
+        d6076cb simple_file: Use second variable to create filesystem entries
+        f99749a Ignore a minor clang-tidy nit
+        98173f0 Fall back to default loader when encountering errors on network boot
+        e42c319 test.mk: don't use a temporary random.bin
+        c66c157 pe: Enhance debug report for update_mem_attrs
+        1125212 Fix leak in error path
+        2daf1db Load concatenated EFI_SIGNATURE_LISTs from shim_certificate.efi
+        eeca60a Update SbatLevel_Variable.txt with peimage CVE-2024-2312 revocation
+        743f3fa Add generate_sbat_var_defs utility program
+        5ae408a Generate and use generated_sbat_var_defs.h
+        e886fb3 SbatLevel_Variable.txt: clarify where and how revocation data is tracked
+        15c1a9a Implement the CodeSign EKU check to fulfill the requirements of NIAP OS_PP.
+        eb02afc Optionally enabling codesign EKU check in compiling time.
+        7ae0ee6 Add docs for ENABLE_CODESIGN_EKU
+        38dfa37 Create utils file
+        83850cd Add configuration option to boot an alternative 2nd stage
+        bb114a3 Implement shim image load protocol
+        e7b3598 Move some stuff around
+        0322e10 Implement the rest of the loader protocol functions
+        e43aea8 Add EFI_LOAD_FILE2_PROTOCOL to gnu-efi
+        2bff460 loader-proto: Add support for loading files from disk to LoadImage()
+        5d17278 loader-proto: Mark load_image()'s handle_image() call as "in_protocol"
+        fe2ad36 Don't print full screen error dialog from handle_image() when called in_protocol
+        c57af36 loader-proto: Respect optional DevicePath parameter to load_image()
+        2b49dc1 Suppress file open failures for some netboot cases
+        3c3295d netboot: process revocations.efi as revocations not shim_certificate
+        c66ce2a Allow indepdent SkuSi and SBAT revocation updates
+        6b8e40c netboot can try to load shim_certificate_[0..9].efi
+        301cf52 Document how revocations can be delivered
+        7cde2cc post-process-pe: add tests to validate NX compliance
+        1294b47 regression: out of bounds read in CopyMem() in ad8692e
+        765f294 compiler.h: minor ALIGN_... fixes
+        5c1e6e4 Move error logging decls out of shim.h
+        d972515 Save the debug and error logs in mok-variables
+        e3f0338 Silence minor nit in load-options parsing debug output
+        3d7c057 get_mem_attrs(): ensure an error code is set on failure
+        49db3de mok: add MOK_VARIABLE_CONFIG_ONLY
+        887c0ed mok variables: add a format callback
+        e4857b4 Make test-mok-error failures *slightly* more clear.
+        589c3f2 Move memory attribute support to its own file.
+        848667d shim: add HSIStatus feature
+        e136e64 mock-variables: fix debugging printf format specifier oopsie
+        f0958ba test-mock-variables: improve some debug prints
+        b216543 Move mok state variable data flag definitions to the header.
+        fc0cfac Mirror some more efi variables to mok-variables
+        eeda3fa gnu-efi: add some DXE services.
+        c41b1f0 Add support for DXE memory attribute updates.
+        9269e9b Add DXE Services information to HSI
+        c868d54 hexdump: give a different debug log for size==0
+        1baf1ef HSI: Add decode_hsi_bits() for easier reading of the debug log
+        3bce118 pe: read_header(): allow skipping SecDir content validation
+        89e6150 Add shim's current NX_COMPAT status to HSIStatus
+        c5c5287 peimage.h: minor whitespace fixes
+        5007d83 peimage: add a bunch of comments to read_header()
+        489af5e README.tpm: reflect that vendor_db is in fact logged as "vendor_db"
+        1958b0f reject message with different values in multiple Content-Length header field
+        9c423e0 Some save_logs() improvements.
+        81d40e3 Disable log saving for now.
+        498b149 fallback: don't add new boot order entries backwards
+        06d8dec makefiles: Make GITTAG swizzle tildes to dashes
+        f02b2c1 make-archive: some minor housekeeping
+        794d237 Update version to 16.0~rc1
+        d45c610 SetSecureVariable(): free Cert on failure
+        76fab7b generate_sbat_var_defs: run clang-format on readfile()
+        6dadb70 generate_sbat_var_defs: Fix memory leak on realloc failure and fd leak.
+        f58c77e generate_sbat_var_defs: Ensure revlistentry->revocations is initialized.
+        b427a34 mirror_mok_db(): get rid of an unused variable+allocation
+        92630f2 mirror_one_mok_variable(): fix a memory leak on TPM log error.
+        38f0a9c mirror_mok_db(): Free our mok variable name correctly
+        db04321 shim_load_image(): initialize the buffer fully
+        7b75382 simple_dir_filter(): test our 'next' pointer
+        db1f1da Make 'make fanalyzer' work again.
+        28d8871 README.tpm: Update MokList entry to MokListRT
+        8932527 SBAT Level update for February 2025 GRUB CVEs
+        18d98bf Update version to 16.0 
+
+-------------------------------------------------------------------
 Fri Dec 20 11:34:51 CET 2024 - mls@suse.de
 
 - undefine %_enable_debug_packages to fix building with rpm-4.20

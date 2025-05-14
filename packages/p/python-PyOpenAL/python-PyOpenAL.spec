@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyOpenAL
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyOpenAL
 Version:        0.7.11a1
 Release:        0
@@ -25,7 +24,9 @@ License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
 URL:            https://github.com/Zuzu-Typ/PyOpenAL
 Source:         https://files.pythonhosted.org/packages/source/P/PyOpenAL/PyOpenAL-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,15 +47,16 @@ installed, OGG Vorbis, OGG Opus and FLAC files.
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license COPYING LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/openal
+%{python_sitelib}/[Pp]y[Oo]pen[Aa][Ll]-%{version}*-info
 
 %changelog

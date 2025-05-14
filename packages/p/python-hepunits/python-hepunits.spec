@@ -1,7 +1,7 @@
 #
 # spec file for package python-hepunits
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,11 @@ Summary:        Units and constants in the HEP system of units
 License:        BSD-3-Clause
 URL:            https://github.com/scikit-hep/hepunits
 Source:         https://files.pythonhosted.org/packages/source/h/%{modname}/%{modname}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools > 42.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION For tests
@@ -45,10 +47,10 @@ project.
 %setup -q -n hepunits-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,7 +59,7 @@ project.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

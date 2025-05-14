@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Too many changes since 25.04.0, only listing bugfixes:
+  * Fix crash moving single clip from group and standalone clip (kde#503626)
+  * Fix ghost widget and other layout issues in effectstack (kde#503562)
+  * Fix project corruption pasting sequences into another project (kde#503227)
+  * Fix title text outline has sharp angles Requires latest MLT git (kde#437781)
+  * Fix editing title text with outline makes text ugly (kde#503205)
+  * Audio mix composition should only be allowed on audio tracks (kde#502998)
+  * Don't save disabled built-in effects when saving effect stack (kde#502973)
+  * Fix freeze extracting last clips in timeline (kde#503149)
+
+-------------------------------------------------------------------
 Tue Apr 15 11:38:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop BuildRequires: pkgconfig(glew) as it is not used for build

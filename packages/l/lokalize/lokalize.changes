@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:42 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Set initial value of "Hide translated items" button to saved state (kde#503329)
+  * Close the tab page on middle mouse click over tab (kde#503417)
+  * Use one global synchronised editor layout across all projects and all editors (kde#503042)
+  * Set Project Overview tab focus proxy to its file browser widget (kde#503329)
+  * flatpak: Use new runtime
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

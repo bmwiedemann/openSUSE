@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:50:17 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n(nl) update Dutch translation
+  * Added Irish translation
+  * Update Hungarian translations
+  * i18n(de): add German translation
+  * Shorten and correct suspend label for swedish
+  * Add missing suspend translation for en
+  * i18n (pt-BR) Update translations
+  * Refactor translation
+  * i18n(ro): Improve Romanian translation
+  * chore: update cosmic-settings-subscriptions
+  * fix(libcosmic): theme subscription
+
+-------------------------------------------------------------------
 Sat Feb 22 03:19:15 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

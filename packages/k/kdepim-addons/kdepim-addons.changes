@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Fix loading check state in plasma calendar configuration
+  * Load event colors for plasma calendar plugin
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

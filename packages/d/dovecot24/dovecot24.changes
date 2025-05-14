@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  8 05:25:21 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Dovecot: /etc/dovecot/conf.d/ doesn't exist after installing dovecot
+  (bsc#1242774)
+  Dovecot misses many configuration files (bsc#1242687)
+  Remove list of not delivered files
+- dovecot fails to build (bsc#1242418)
+  Do not use libunwind on s390x
+
+-------------------------------------------------------------------
 Sat Apr  5 06:52:05 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Fix bsc#1240399 dovecot24 has incomplete config.

@@ -18,7 +18,7 @@
 
 %define cpan_name Test-CheckGitStatus
 Name:           perl-Test-CheckGitStatus
-Version:        0.1.0
+Version:        0.1.2
 Release:        0
 License:        MIT
 Summary:        Check git status after every test

@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1239205</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>444c8419bc5666ebd0072214c023976b</srcmd5>
+    <version>1.4.1</version>
+    <time>1746638241</time>
+    <user>dimstar_suse</user>
+    <comment>make onboard compile and fix crash on hover ( https://bugs.launchpad.net/ubuntu/+source/onboard/+bug/2063041 ) (forwarded request 1274790 from BZZZZ3)</comment>
+    <requestid>1274960</requestid>
+  </revision>
 </revisionlist>

@@ -43,4 +43,12 @@
     <comment>- Skip python39: no longer supported since ipython 8.19</comment>
     <requestid>1155319</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>e874d2a234f5c89c129fd4a97d25de0d</srcmd5>
+    <version>0.2.2</version>
+    <time>1746638301</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275033</requestid>
+  </revision>
 </revisionlist>

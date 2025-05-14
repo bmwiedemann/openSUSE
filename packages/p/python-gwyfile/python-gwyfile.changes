@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:10:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Mar 20 13:06:05 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python312.patch to make it compatible with latest python

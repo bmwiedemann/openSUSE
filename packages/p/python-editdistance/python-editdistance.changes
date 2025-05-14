@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:08:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Nov 22 20:34:43 UTC 2023 - Matthias Bach <marix@marix.org>
 
 - Also build for modern Python on Leap

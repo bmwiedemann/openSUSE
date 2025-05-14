@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  5 21:31:56 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.62.0:
+  * Reset coordinator delay on 'reload'
+  * [fish] History: Operate only on line at cursor
+  * [fish] Add version check
+  * [fish] Simplify commandline call in fzf-file-widget
+  * [fish] Support deleting history items with SHIFT-DEL
+  * Added `alt-bg` color to create striped lines to visually separate rows<S-Del>
+  * [vim] Update g:fzf_colors example with 'query'
+  * Relaxed the `--color` option syntax to allow whitespace-
+    separated entries (in addition to commas), making multi-line
+    definitions easier to write and read
+
+-------------------------------------------------------------------
 Thu Apr 24 17:53:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.61.3:

@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Tue May 06 13:40:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.14:
+  * update to 0.2.14
+  * fix index out of reach for line (closes #1093)
+  * cut 0.2.13 version in docs
+  * update docs
+  * introduce last_active property on screen to fix update
+  * flake.lock: Update
+  * move logic of drawable_character recognition to sugarloaf
+  * update docs
+  * add QuadrantUpperRightAndLowerRight and QuadrantUpperRightAndLowerLeft
+  * remove BlackSquare to WhiteDiamond
+  * implement QuadrantUpperLeftAndLowerLeft and QuadrantUpperLeftAndLowerRight
+  * implement LightDownAndHeavyRight, LightDownAndHeavyLeft, HeavyDownAndLightRight, HeavyDownAndLightLeft, LightUpAndHeavyRight, LightUpAndHeavyLeft, HeavyUpAndLightRight, HeavyUpAndLightLeft
+  * implement DownDoubleAndRightSingle, DownDoubleAndLeftSingle, VerticalDoubleAndRightSingle, VerticalDoubleAndLeftSingle, VerticalSingleAndRightDouble, VerticalSingleAndLeftDouble, DownSingleAndRightDouble, DownSingleAndLeftDouble, HeavyDownAndRight, HeavyDownAndLeft, HeavyUpAndRight, HeavyUpAndLeft
+  * update notify
+  * update comment
+  * specify as default-features true
+  * Add support for custom parsing of APC, SOS and PM sequences
+  * downgrade msvr to 1.85.0
+  * fix lint
+  * VerticalDoubleAndHorizontalSingle, DownDoubleAndRightSingle and DownDoubleAndLeftSingle
+  * DoubleHorizontalUp
+  * DoubleHorizontalDown
+  * DoubleVerticalLeft
+  * fix DoubleCross and DoubleVerticalRight
+  * add request_animation_frame
+  * fix wait_until calculation
+  * remove utf8 parser, update handler to receive slice
+  * octants and sextants
+  * format code
+  * make drawable characters be foldable
+  * add more characters to drawable-chars
+  * update links
+  * update README.md
+  * update rust version (closes #1080)
+  * flake.lock: Update (#1084)
+  * Add support for $RIO_CONFIG_HOME and additional font dirs (#1082)
+  * update deps
+  * fix glyph session
+  * fix lint
+  * fix panic whenever data is empty (close #1075)
+  * lock line run to first line data
+  * Remove duplicate cursor in default-colors.md
+  * flake.lock: Update
+  * update goreleaser-action
+  * update examples
+  * update lint
+  * introduce line cache for the vertex
+  * increase font_size
+  * merge fetch_dimensions into draw_layout
+  * drop display list
+  * use draw instead, dropping indices
+  * few improvs
+  * remove clones
+  * add force_damage
+  * update renderer
+  * fix image
+  * drop RioEvent::UpdateGraphicLibrary
+  * updates
+  * update releases.md
+  * fmt code
+  * updates
+  * update
+  * use damage
+  * update to work with cursor/hyperlink
+  * wip
+  * Update the links to the installation guides
+  * anti aliased polygon
+  * feat: change to shift key for hyperlinks on windows/linux
+  * update releases md
+  * fix: Shift+Tab event is doubled, as if hit twice (close https://github.com/raphamorim/rio/issues/1061)
+  * add info in releases.md
+  * fix: fps calculation
+  * update yt video
+  * update releases md
+  * update releases.md
+  * update releases
+  * implement fonts.disable-warnings-not-found (closes https://github.com/raphamorim/rio/issues/1031)
+  * comment panic
+  * refactor how dots works
+  * implement missing vertical and horizontal dashes
+  * update docs
+  * implement powerlines until \ue0bf
+  * increase segments
+  * braille symbols
+  * implement remaining chars
+  * use unicode straigh instead of char notation
+  * update brailes, still missing stuff
+  * add remaining to from
+  * braille dots (partial support, needs to fix 7 and 7w8)
+  * fmt code
+  * still has to fix DoubleUpAndRight, DoubleUpAndLeft, UpSingleAndRightDouble, UpSingleAndLeftDouble, VerticalSingleAndHorizontalDouble
+  * reenable debug
+  * add DoubleHorizontal
+  * flake.lock: Update
+  * fix some lints
+  * add DoubleVertical
+  * remove unused functions
+  * fix PowerlineCurvedLeftSolid and PowerlineCurvedRightSolid
+  * update PowerlineCurvedRightSolid and left version
+  * add_polygon
+  * ignore font shaping for drawable chars
+  * update wgpu to v25
+  * move from CascadiaCodePL to CascadiaCode
+  * update docs
+  * add more eightblocks and quarterblocks
+  * add Lower chars
+  * update deps
+  * fix VerticalRight and VerticalLeft gaps
+  * fix topright and topleft
+  * calculate with radius
+  * fix for multiple characters
+  * quadrants and shades
+  * HorizontalDown and HorizontalUp
+  * dynamic stroke
+  * fix size
+  * lint fix
+  * remove unnecessary comment
+  * ignore shaping
+  * fix some stuff
+  * fix line_height
+  * update ui
+  * remove rect
+  * add max_layers
+  * control layers
+  * remove HEAD
+  * only rendering last layer
+  * update stuff
+  * only rendering last layer
+  * rename to drawable_char
+  * rename curved to arc and fix bottomright, topright, bottomleft and bottomright
+  * fix tab size
+  * flake.lock: Update
+  * update lock file
+  * Fix dimension for whenever a new tab is created from a view with splits
+  * update enums
+  * docs: add path to debug log file
+  * fix examples
+  * work in progress
+  * add support to box drawing
+  * fix lint
+  * correct docs
+  * logic should be in sugarloaf instead
+  * todo: move builtin_box_drawing logic inside of sugarloaf
+  * move to fonts.symbol-map in docs
+  * move symbol_maps to fonts
+  * update changelog
+  * symbol-map in config and docs level
+  * support builtin_box_drawing config
+  * fix lint
+  * fix lint
+  * use wgpu from branch trunk for now
+  * update versioning
+  * add info about sugarloaf since it's also used in boo
+  * README: make repology badge display 3 columns
+  * update docs regarding unfocused-split-opacity
+  * docs: add note for flake install instruction process
+  * refactor: add title for nixos part
+  * feat: add nix flake install instructions
+  * fix: remove duplicate cursor in colors example
+  * add details
+  * Drop subtables with empty coverage (implemented by @xorgy on https://github.com/dfrg/swash/pull/92)
+  * add filters data
+  * flake.lock: Update
+
+-------------------------------------------------------------------
 Fri Mar 28 14:19:37 UTC 2025 - scott.bradnick@suse.com
 
 - Adding 'rioterm-rpmlintrc' to deal w/ 'useless provides' warnings

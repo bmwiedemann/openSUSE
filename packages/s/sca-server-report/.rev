@@ -95,4 +95,12 @@
     <comment>bsc#1230857 bsc#1230862 bsc#1230880 bsc#1230881 bsc#1230882 bsc#1231049 bsc#1231259 bsc#1231286 bsc#1231287 (forwarded request 1206082 from jrecord)</comment>
     <requestid>1206083</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>69c157033833cc23cd5fc2aa16cb8bd7</srcmd5>
+    <version>1.6.4</version>
+    <time>1746809536</time>
+    <user>anag_factory</user>
+    <comment>bsc#1242706 bsc#1241308 bsc#1237320 (forwarded request 1276273 from jrecord)</comment>
+    <requestid>1276274</requestid>
+  </revision>
 </revisionlist>

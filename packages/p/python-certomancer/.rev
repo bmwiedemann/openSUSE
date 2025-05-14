@@ -7,4 +7,13 @@
     <comment>- Initial release of 0.12.0.</comment>
     <requestid>1201489</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a1701fe87774abddf0283c221b7b0d7</srcmd5>
+    <version>0.12.0</version>
+    <time>1747061537</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives instead of update-alternatives
+- Skip some failing tests</comment>
+    <requestid>1276833</requestid>
+  </revision>
 </revisionlist>

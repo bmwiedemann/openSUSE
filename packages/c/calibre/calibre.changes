@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri May  9 05:03:33 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 8.4.0
+  * New Features
+    - KEPUB Output: Add an option to generate KEPUB files that have
+      better text justification at the cost of gaps in highlighting
+      when used on the Kobo
+    - E-book viewer: Allow the background image specified in the
+      Style section of the viewer preferences to extend under the
+      page margins as well
+  * Bug Fixes
+    - E-book viewer: Fix a regression that broke the "show book in
+      main calibre program" link
+    - News download: Fix Next/Previous links not working when the
+      pointed to article failed to download
+    - E-book viewer: Handle links to missing internal files with
+      an error popup rather than becoming non-functional
+    - E-book viewer: Fix some links not being processed correctly
+      for very large EPUB files with many internal HTML files
+    - Get books: Update ebooks.com plugin for website changes
+    - Metadata review dialog: Fix merging of tags not working
+      correctly
+    - Wayland: Workaround Qt/Wayland bug that prevents the menu of
+      the Layout button from showing
+    - Prevent recursion when creating base temporary folder if
+      something on system deletes the created temporary folder
+
+-------------------------------------------------------------------
 Fri Apr 18 06:19:16 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Uptate to 8.3.0

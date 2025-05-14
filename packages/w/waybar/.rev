@@ -1060,4 +1060,15 @@
     <comment></comment>
     <requestid>1248068</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>37c5e6ed7b852f55144f393b5a89e61a</srcmd5>
+    <version>0.12.0</version>
+    <time>1746476957</time>
+    <user>anag_factory</user>
+    <comment>- change sway to Suggests as waybar now supports other window managers too
+  and when user ignores the --no-reccommends flag, It pulls the sway window
+  manager components
+</comment>
+    <requestid>1274566</requestid>
+  </revision>
 </revisionlist>

@@ -885,4 +885,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1268556</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>c141de12c98dd0545105c99132538be0</srcmd5>
+    <version>2.0.9</version>
+    <time>1746808754</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1275456</requestid>
+  </revision>
 </revisionlist>

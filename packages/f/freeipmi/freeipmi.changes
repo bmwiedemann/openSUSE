@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 08:56:11 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add freeipmi-1.6.15-gcc15.patch from upstream  to fix gcc15
+  compile time error
+
+-------------------------------------------------------------------
 Thu Jan 16 21:37:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeimpi 1.6.15:

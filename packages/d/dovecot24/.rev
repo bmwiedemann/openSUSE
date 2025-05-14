@@ -104,4 +104,17 @@ bugowner: varkoly</comment>
   configuration for the system users.</comment>
     <requestid>1267353</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>0852da528bf54a0c73cec0933b74cd3d</srcmd5>
+    <version>2.4.1</version>
+    <time>1746721392</time>
+    <user>dimstar_suse</user>
+    <comment>- Dovecot: /etc/dovecot/conf.d/ doesn't exist after installing dovecot
+  (bsc#1242774)
+  Dovecot misses many configuration files (bsc#1242687)
+  Remove list of not delivered files
+- dovecot fails to build (bsc#1242418)
+  Do not use libunwind on s390x</comment>
+    <requestid>1275437</requestid>
+  </revision>
 </revisionlist>

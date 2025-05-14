@@ -1,7 +1,7 @@
 #
 # spec file for package LHAPDF
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,15 @@
 #
 
 
-# Not needed for actual use, but quilt does not work without this
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-#
-%define so_name libLHAPDF-6_5_4
+%define so_name libLHAPDF-6_5_5
 %define execname lhapdf
 Name:           LHAPDF
-Version:        6.5.4
+Version:        6.5.5
 Release:        0
 Summary:        A library for unified interface to PDF sets
 License:        GPL-3.0-only
 URL:            https://lhapdf.hepforge.org/
 Source:         http://www.hepforge.org/archive/lhapdf/%{name}-%{version}.tar.gz
-Patch1:         sover.diff
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  texlive-latex-bin
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 %python_subpackages
 
 %description
@@ -102,7 +98,11 @@ export PYTHON=%{_bindir}/$python
 mkdir ../$python
 cp -pr ./ ../$python
 pushd ../$python
-%configure --disable-static --docdir=%{_docdir}/%{name}/
+%configure \
+  --disable-static \
+  --docdir=%{_docdir}/%{name}/ \
+  --enable-librelease \
+  %{nil}
 %make_build
 # Build doc only for one flavour, viz., which provides the default python3
 if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
@@ -137,8 +137,7 @@ sed -E -i "s|#! /usr/bin/env bash|#! /bin/bash|" %{buildroot}%{_bindir}/lhapdf-c
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{so_name} -p /sbin/ldconfig
-%postun -n %{so_name} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{so_name}
 
 %files -n %{so_name}
 %license COPYING

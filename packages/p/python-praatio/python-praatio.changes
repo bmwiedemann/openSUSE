@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:12:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Apr  8 11:47:51 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests in a copy of the examples folder to do not modify

@@ -25,7 +25,7 @@ License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
 URL:            https://www.qore.org
 Source:         %{name}-%{version}.tar.zst
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  qore
 BuildRequires:  qore-devel >= 0.7
@@ -46,14 +46,18 @@ This package contains the HTML documentation and example programs for the Qore
 xml module.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake
-%cmake_build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+export CXXFLAGS="%{?optflags}"
+cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
+make %{?_smp_mflags}
+make docs
 
 %install
-%cmake_install
+make DESTDIR=%{buildroot} install %{?_smp_mflags}
+
 
 %files
 %license COPYING

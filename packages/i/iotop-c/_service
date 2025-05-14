@@ -1,10 +1,9 @@
 <services>
   <service name="tar_scm" mode="disabled">
-    <param name="versionformat">1.27</param>
+    <param name="versionformat">1.29</param>
     <param name="url">https://github.com/Tomas-M/iotop</param>
     <param name="scm">git</param>
     <param name="changesgenerate">disable</param>
-    <param name="exclude">.*</param>
     <param name="filename">iotop-c</param>
   </service>
   <service name="recompress" mode="disabled">

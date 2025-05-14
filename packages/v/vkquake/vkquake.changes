@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May  1 16:46:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.32.2
+  * Fixes:
+    - #767 : Deactivate transparent surface optimization (r_drawwater_fast 0)
+      in order to fix non-water (lava, slime...etc.) transparency issues
+      on particular levels. This has no apparent performance impact so
+      r_drawwater_fast 0 is the default until a better solution arises
+    - #785: Dot crosshair enables player footstep sounds in Scourge of Armagon
+    - #787 : Added sv_fte_recursivehullckeck (default 1) to allow deactivation
+      of FTE physics optimizations, for some levels with bad item placement
+      (stuck in walls, falling through surfaces...etc)
+  * Improvements:
+    - #777 : MDL external skins support. (from QSS)
+    - This change brings vkQuake roughly at the level of QSS w.r.t external
+      textures support for BSP levels, BSP models, MDL & MD5 models
+    Other minor external textures support adjustments
+    - #784 : added DP_SV_NODRAWTOCLIENT and DP_SV_DRAWONLYTOCLIENT extensions. (from QSS)
+    - Added more Crosshair choices
+    - Added labels to Sliders (from QS). Added a Max FPS slider in particular
+      with a more natural scale
+    - Code cleanups
+    - Library updates
+
+-------------------------------------------------------------------
 Wed Mar  5 19:26:15 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to version 1.32.1

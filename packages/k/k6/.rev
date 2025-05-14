@@ -7,4 +7,12 @@
     <comment>new package k6: a modern load testing tool, using Go and JavaScript</comment>
     <requestid>1256460</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7996626d9414ecbeeee2e8ae61859b99</srcmd5>
+    <version>1.0.0</version>
+    <time>1746542541</time>
+    <user>anag_factory</user>
+    <comment>update to 1.0.0</comment>
+    <requestid>1274913</requestid>
+  </revision>
 </revisionlist>

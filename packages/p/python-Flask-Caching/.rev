@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>810985</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66012c1adef3f1e4ce66e472cf317b36</srcmd5>
+    <version>2.3.1</version>
+    <time>1746542549</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Relax cachelib version to allow latest releases
+  * Drop python 3.7 support
+  * python 3.11 officially supported
+  * Fix issue causing args_to_ignore to not work with
+    flask_caching.Cache.memoize decorator when keyword arguments were used in
+    the decorated function call
+  * fix type signature in flask_caching.utils.make_template_fragment_key.
+  * support Flask 3
+  * bug fix: make the make_cache_key attributed of decorated view functions
+    writeable.
+  * fix bug where flask_caching.backends.RedisSentinelCache.get_many would
+    query wrong host&amp;port combination.
+  * Remove flask_caching.backends.FileSystemCache method overrides.
+  * Add proxy to underlaying has method of cache clients.
+  * flask_caching.backends.FileSystemCache now stores timestamps in a
+    universal (non-frammed) way following the lastest version of
+    cachelib.FileSystemCache.
+  * Add suport for cached/memoized generators.
+  * Add support for Flask 2.0 async.
+  * Cachelib is now used as backend.
+  * Drop support for python 3.6.
+  * Add support for dynamic cache timeouts
+  * Fix bug in CACHE_OPTIONS reading for redis in RedisSentinelCache.
+  * A GoogleCloudStorageCache backend has been added to the user contributed
+    caching backends.
+  * Important: The way caching backends are loaded have been refactored.
+    Instead of passing the name of the initialization function one can now
+    use the full path to the caching backend class.
+  * UWSGICache is not officially supported anymore and moved to the user</comment>
+    <requestid>1274779</requestid>
+  </revision>
 </revisionlist>

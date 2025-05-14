@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat May  3 17:20:58 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.1.6:
+  * Fix media autostart behavior regarding video slide items
+  * Attempt to prevent false antivirus warnings in Windows
+  * Fix an incorrect version number in some builds
+- Update to 3.1.7:
+  * PDF presentations that were disabled in release 3.1.6 by accident are available again.
+  *  Fix issue 1733 by forcing VLC version 3.0.18.
+- Drop no longer necessary fix-version.patch
+
+-------------------------------------------------------------------
 Thu Apr 24 10:34:16 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update licenses to match latest legal review 

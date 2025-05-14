@@ -150,4 +150,16 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272713</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9e607833b51b200030a4fe5eb4c2d5fb</srcmd5>
+    <version>20250509</version>
+    <time>1747061157</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250509 (git commit a1d732703915):
+  * amdgpu: updates for dcn 3.20 and dcn 4.01 firmware to 0.1.10.0
+
+- Update to version 20250505 (git commit 2b8dfb5e11a8):
+  * amdgpu: update dcn 4.01 firmware to 0.1.8.0</comment>
+    <requestid>1276608</requestid>
+  </revision>
 </revisionlist>

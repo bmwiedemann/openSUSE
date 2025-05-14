@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 11 19:06:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.10:
+  * Added custom cursor.
+  * Added menu option to enable/disable gamepad.
+  * Added new levelset Picky by Michael Uplawski.
+  * Updated levelset JustGoForIt by anonymous.
+- Drop use of deprecated %suse_update_desktop_file macro.
+
+-------------------------------------------------------------------
 Mon Jul 22 15:30:40 UTC 2024 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.1.9

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:18:00 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix(time): popup initial wrong size
+  * feat(network): support for eap peap networks
+  * fix(bluetooth): other devices not initially appearing
+  * fix(network): skip connections if getting settings fails
+  * perf(bluetooth): reduce CPU usage and improve async performance
+  * improv(bluetooth): potential fixes for excess CPU usage
+  * refactor: applet tooltips may be for an overflow window
+  * fix(app-list): missing app icons when an appid is not found
+  * fix: Remove duplicate portuguese entries from desktop entries
+  * refactor(power): remove text from icons
+
+-------------------------------------------------------------------
 Sat Feb 22 02:24:58 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

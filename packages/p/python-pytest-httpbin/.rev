@@ -102,4 +102,19 @@
 - drop python-pytest-httpbin-no-six.patch (upstream)</comment>
     <requestid>1124086</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>49352ab44d52dc933b88355c59bd45a1</srcmd5>
+    <version>2.1.0</version>
+    <time>1746638152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0:
+  * Drop support for Python 3.7
+  * Test against PyPy 3.10
+  * Add support for CPython 3.13 by regenerating the bundled certificates
+  * Fix an issue where secure POST requests would fail with a connection
+    reset by peer
+  * Include a LICENCE
+- Switch to pyproject macros.</comment>
+    <requestid>1275103</requestid>
+  </revision>
 </revisionlist>

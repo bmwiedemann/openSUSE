@@ -257,4 +257,31 @@ for menus;
       + size of selection can now be queried via selected() (previous releases</comment>
     <requestid>1244664</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>16f318b543c697d99a8173e03de3f54b</srcmd5>
+    <version>0.14.2</version>
+    <time>1746721396</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.2:
+  * Fix an issue with %r in 'trashdir' when root file-system is
+    read-only (like on macOS) and also broke build with musl libc.
+  * Trash directories specified via an absolute path and containing
+    %u weren't created with 700 permissions.
+  * Don't use strverscmp() of musl if it doesn't sort things
+    correctly (A must be greater than 0).  This avoids numerical
+    sorting results looking different with musl.
+
+- Update to 0.14.1:
+  * Fixed a preview-related crash on Windows easily reproducible using binary files.
+  * Fixed a tree-related crash when using {fileext} or {ext} columns.
+  * Fixed 'trashdir' with %r not working on BSD-like systems.
+  * Fixed vifm path/to/file incorrectly running file handling in current working directory.
+  * Restored terminal access for commands that use %i macro (so :!echo ... %i can affect the
+    terminal as before v0.12.1). Use %i &amp; for ignoring output while denying terminal accesses.
+  * Fixed occasional incorrect truncation of wide characters on drawing columns broken while
+    introducing column-specific highlighting in v0.14-beta.
+  * Clarified information on comments after :commands. Provided some information on copy-on-write
+    file copying. Improved documentation on leaving compare and custom views.</comment>
+    <requestid>1275420</requestid>
+  </revision>
 </revisionlist>

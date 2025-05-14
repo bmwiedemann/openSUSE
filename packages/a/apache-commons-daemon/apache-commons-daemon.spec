@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define short_name commons-daemon
 %define _lto_cflags %{nil}
 Name:           apache-%{short_name}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0
@@ -30,8 +30,7 @@ Source0:        https://archive.apache.org/dist/commons/daemon/source/%{short_na
 Source1:        https://archive.apache.org/dist/commons/daemon/source/%{short_name}-%{version}-src.tar.gz.asc
 Source2:        apache-commons-daemon.keyring
 Source10:       apache-commons-daemon-build.xml
-Patch0:         apache-commons-daemon-JAVA_OS.patch
-Patch1:         apache-commons-daemon-gcc14-compat.patch
+Patch0:         apache-commons-daemon-gcc14-compat.patch
 BuildRequires:  ant
 BuildRequires:  autoconf
 BuildRequires:  fdupes
@@ -78,7 +77,6 @@ The Javadoc Documentation for Commons Daemon.
 %setup -q -n %{short_name}-%{version}-src
 cp %{SOURCE10} build.xml
 %patch -P 0 -p1
-%patch -P 1 -p1
 
 # remove java binaries from sources
 rm -rf src/samples/build/

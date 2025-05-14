@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 13 11:38:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.1:
+  * version 2.10.1
+  * do a CSI reset on other termimad tables too
+  * reset style after printing table
+  * update dependencies
+  * clippy
+  * add uuid and partuuid columns to tests
+  * remove mention of broot in website
+
+-------------------------------------------------------------------
 Sat Dec 21 14:14:42 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.10.0:

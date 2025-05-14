@@ -25,6 +25,7 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://vgough.github.io/encfs/
 Source:         https://github.com/vgough/encfs/releases/download/v%{version}/encfs-%{version}.tar.gz
+Source2:        README.openSUSE
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fuse
@@ -59,6 +60,7 @@ application using fuse (FUSE (Filesystem in USErspace)).
 
 %prep
 %autosetup -p1
+cp %{SOURCE2} .
 
 %build
 %cmake \
@@ -78,6 +80,7 @@ application using fuse (FUSE (Filesystem in USErspace)).
 %files
 %license COPYING*
 %doc AUTHORS ChangeLog DESIGN.md PERFORMANCE.md README*
+%doc README.openSUSE
 %{_bindir}/encfs*
 %{_mandir}/man1/*.1%{?ext_man}
 %{_libdir}/libencfs.so*

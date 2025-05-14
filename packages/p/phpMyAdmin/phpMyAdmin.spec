@@ -37,6 +37,7 @@ Source1:        https://files.phpmyadmin.net/phpMyAdmin/%{version}/%{name}-%{ver
 Source2:        https://files.phpmyadmin.net/phpmyadmin.keyring#/%{name}.keyring
 Source3:        %{name}.http
 Source4:        %{name}.http.inc
+Source5:        README.SUSE
 Source100:      %{name}-rpmlintrc
 # Fix-SuSE: provide useful default config
 Patch0:         %{name}-config.patch
@@ -133,6 +134,7 @@ find . -type d -exec chmod 755 {} \;
 find . ! -name '*.sh' ! -name '*-query' -type f -exec chmod 644 {} \;
 
 %build
+cp %{SOURCE5} .
 
 %install
 #%%{__install} -d -m0750 $RPM_BUILD_ROOT%%{_sysconfdir}/%%{name}
@@ -258,7 +260,7 @@ fi
 %defattr(644,root,root,755)
 %doc ChangeLog
 %license LICENSE
-%doc README RELEASE-DATE*
+%doc README RELEASE-DATE* README.SUSE
 %doc examples doc sql
 %dir %attr(0750,root,%{apache_group}) %{_sysconfdir}/%{name}
 %dir %attr(0770,root,%{apache_group}) %{ap_tmpdir}

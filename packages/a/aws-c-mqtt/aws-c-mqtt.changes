@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  6 13:03:41 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.0
+  * Make exports consistent by @DmitriyMusatkin in (#388)
+  * Capture fields from PUBLISH for req-resp stream
+    operations by @sfod in (#389)
+  * Support wildcards streams in request-response stream
+    client by @sfod in (#381)
+
+-------------------------------------------------------------------
 Wed Apr  2 15:01:00 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.3

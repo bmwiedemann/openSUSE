@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyTweening
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,8 +23,10 @@ Release:        0
 Summary:        A collection of tweening / easing functions
 License:        BSD-3-Clause
 URL:            https://github.com/asweigart/pytweening
-Source:         https://files.pythonhosted.org/packages/source/P/PyTweening/pytweening-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pytweening/pytweening-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -40,10 +42,10 @@ A collection of tweening / easing functions implemented in Python.
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}

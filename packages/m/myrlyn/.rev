@@ -7,4 +7,23 @@
     <comment>New package: myrlyn as an alternative to 'yast2 sw_single'</comment>
     <requestid>1267699</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>845593079ea7a4e2015209fc24f854d0</srcmd5>
+    <version>0.9.4</version>
+    <time>1747061375</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.4:
+  * Version bump
+  * Different text highlight colors for dark widget themes (Closes #91)
+  * Report failed repo refresh (closes #89)
+  * Linked official distro packages
+  * Redundant
+  * Typos
+  * Imported modernized packaging files
+  * Markdown formatting
+  * More relevant URLs
+  * Expanced OBS packaging doc
+  * Added doc for OBS packaging</comment>
+    <requestid>1276607</requestid>
+  </revision>
 </revisionlist>

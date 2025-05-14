@@ -19,7 +19,7 @@
 %define appid org.gnome.Showtime
 
 Name:           showtime
-Version:        48.0
+Version:        48.1
 Release:        0
 Summary:        Video player
 License:        GPL-3.0-or-later

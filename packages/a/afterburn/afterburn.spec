@@ -1,7 +1,7 @@
 #
 # spec file for package afterburn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %global dracutmodulesdir %(pkg-config --variable=dracutmodulesdir dracut || echo '/usr/lib/dracut/modules.d')
 
 Name:           afterburn
-Version:        5.4.1
+Version:        5.7.0.git103.bae893c
 Release:        0
 Summary:        A cloud provider agent
 License:        Apache-2.0
@@ -29,14 +29,13 @@ URL:            https://coreos.github.io/afterburn/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-Patch1:         fix-authorized-keys-location.patch
-Patch2:         set-default-user.patch
-Patch3:         no-network-args.patch
+Patch0:         0001-Fix-authorized-keys-location-for-OpenSUSE.patch
+Patch1:         0002-Set-the-default-user-to-suse.patch
+Patch2:         0003-On-OpenSUSE-do-not-add-to-kernel-command-line.patch
 
-ExcludeArch:    %ix86 s390x ppc64le
 
 BuildRequires:  cargo
-BuildRequires:  rust >= 1.66.0
+BuildRequires:  rust >= 1.84.1
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -47,17 +46,14 @@ Summary:        Dracut modules for afterburn
 BuildRequires:  pkgconfig(dracut)
 Requires:       %{name}%{?_isa} = %{?epoch:}%{version}-%{release}
 Requires:       dracut
+BuildArch:      noarch
 
 %description dracut
 Dracut module that enables afterburn and corresponding services
 to run in the initramfs on boot.
 
 %prep
-%autosetup -N -a1
-%patch -P 1 -p1
-%patch -P 2 -p0
-%patch -P 3 -p0
-
+%autosetup -p1 -a1
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking
@@ -66,6 +62,10 @@ find vendor -type f -name \*.rs -exec chmod -x '{}' +
 %build
 export RUSTFLAGS="%{rustflags}"
 cargo build --offline --release
+
+%check
+export RUSTFLAGS="%{rustflags}"
+cargo test --offline --release
 
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
@@ -85,16 +85,16 @@ cp -a dracut/* %{buildroot}%{dracutmodulesdir}
 rm %{buildroot}%{dracutmodulesdir}/30afterburn/afterburn-network-kargs.service
 
 %pre
-%service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
+%service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service %{name}-sshkeys.target
 
 %post
-%service_add_post %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
+%service_add_post %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service %{name}-sshkeys.target
 
 %preun
-%service_del_preun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
+%service_del_preun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service %{name}-sshkeys.target
 
 %postun
-%service_del_postun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service
+%service_del_postun %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service %{name}-sshkeys.target
 
 %files
 %license LICENSE

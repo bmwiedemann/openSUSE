@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 09:00:38 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable build on aarch64 and %{arm}
+
+-------------------------------------------------------------------
 Wed Feb 22 03:11:11 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.7.6

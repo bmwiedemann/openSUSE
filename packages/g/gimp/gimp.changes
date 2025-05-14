@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:49:41 UTC 2025 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add gimp-3.0.2_de_shortcut_clash.patch to fix shortcuts of JPEG export
+
+-------------------------------------------------------------------
 Thu Apr 24 00:30:23 UTC 2025 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Added libheif-aom dependency to AVIF support (boo#1241553).

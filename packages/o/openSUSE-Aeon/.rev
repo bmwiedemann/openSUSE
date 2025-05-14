@@ -84,4 +84,16 @@
     <comment></comment>
     <requestid>1206509</requestid>
   </revision>
+  <revision rev="11" vrev="11">
+    <srcmd5>78bc718b1f7487553b2fc5a4c3bdf9ee</srcmd5>
+    <version>0.1.0</version>
+    <time>1746638188</time>
+    <user>dimstar_suse</user>
+    <comment>- Setup /etc subvolume for transactional-update v5.0+ 
+
+- No longer setup fstab for overlayfs thanks to
+  transactional-update v5.0+ 
+- Use systemd-boot</comment>
+    <requestid>1274821</requestid>
+  </revision>
 </revisionlist>

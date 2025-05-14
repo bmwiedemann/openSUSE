@@ -52,7 +52,7 @@ ExclusiveArch:  do-not-build
 %endif
 %{?sle15_python_module_pythons}
 Name:           %{pprefix}-flit-core%{?psuffix}
-Version:        3.11.0
+Version:        3.12.0
 Release:        0
 Summary:        Distribution-building parts of Flit
 License:        BSD-3-Clause AND MIT

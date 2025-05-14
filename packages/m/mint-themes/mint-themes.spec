@@ -1,7 +1,7 @@
 #
 # spec file for package mint-themes
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name   mint
 Name:           mint-themes
-Version:        2.0.8
+Version:        2.2.3
 Release:        0
 Summary:        Mint Themes
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source:         http://packages.linuxmint.com/pool/main/m/mint-themes/%{name}_%{
 BuildRequires:  fdupes
 BuildRequires:  python3
 BuildRequires:  rubygem(sass)
+BuildRequires:  python3-libsass
 BuildArch:      noarch
 
 %description
@@ -70,6 +71,17 @@ Obsoletes:      %{_name}-themes-gtk3 < %{version}
 %description -n gtk3-metatheme-%{_name}
 A collection of Mint GTK+ themes.
 
+%package -n gtk4-metatheme-%{_name}
+Summary:        Mint Themes -- GTK+ 4 Support
+Group:          System/GUI/Other
+Requires:       metatheme-%{_name}-common
+Supplements:    packageand(metatheme-%{_name}-common:gtk4)
+Provides:       %{_name}-themes-gtk4 = %{version}
+Obsoletes:      %{_name}-themes-gtk4 < %{version}
+
+%description -n gtk4-metatheme-%{_name}
+A collection of Mint GTK+ themes.
+
 %prep
 %setup -q -n %{name}
 
@@ -87,12 +99,14 @@ cp -a .%{_datadir}/themes/ %{buildroot}%{_datadir}/themes/
 %doc debian/changelog
 %{_datadir}/themes/Mint*/
 %exclude %{_datadir}/themes/Mint*/gtk-?.0/
-"%{_datadir}/themes/Linux Mint/"
 
 %files -n gtk2-metatheme-%{_name}
 %{_datadir}/themes/Mint*/gtk-2.0/
 
 %files -n gtk3-metatheme-%{_name}
 %{_datadir}/themes/Mint*/gtk-3.0/
+
+%files -n gtk4-metatheme-%{_name}
+%{_datadir}/themes/Mint*/gtk-4.0/
 
 %changelog

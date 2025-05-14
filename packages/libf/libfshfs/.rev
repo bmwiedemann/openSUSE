@@ -135,4 +135,12 @@
     <comment>- Update to release 20240501</comment>
     <requestid>1171121</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>074800e661ceaeb0cc871b2e1e1b2f90</srcmd5>
+    <version>20240501</version>
+    <time>1746476796</time>
+    <user>anag_factory</user>
+    <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274205 from AndreasStieger)</comment>
+    <requestid>1274222</requestid>
+  </revision>
 </revisionlist>

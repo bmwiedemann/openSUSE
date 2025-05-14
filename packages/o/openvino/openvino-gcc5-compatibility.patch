@@ -1,0 +1,132 @@
+diff -uNr openvino-2025.1.0.orig/samples/cpp/common/format_reader/src/bmp.cpp openvino-2025.1.0/samples/cpp/common/format_reader/src/bmp.cpp
+--- openvino-2025.1.0.orig/samples/cpp/common/format_reader/src/bmp.cpp	2025-05-02 02:27:59.429840534 -0300
++++ openvino-2025.1.0/samples/cpp/common/format_reader/src/bmp.cpp	2025-05-02 20:16:42.608165749 -0300
+@@ -5,6 +5,7 @@
+ // clang-format off
+ #include <fstream>
+ #include <iostream>
++#include <cstdint>
+ 
+ #include "bmp.h"
+ // clang-format on
+diff -uNr openvino-2025.1.0.orig/src/core/dev_api/openvino/core/type/nf4.hpp openvino-2025.1.0/src/core/dev_api/openvino/core/type/nf4.hpp
+--- openvino-2025.1.0.orig/src/core/dev_api/openvino/core/type/nf4.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/dev_api/openvino/core/type/nf4.hpp	2025-05-02 17:11:44.554142623 -0300
+@@ -11,6 +11,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/bfloat16.hpp openvino-2025.1.0/src/core/include/openvino/core/type/bfloat16.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/bfloat16.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/bfloat16.hpp	2025-05-02 14:01:22.520086199 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/float16.hpp openvino-2025.1.0/src/core/include/openvino/core/type/float16.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/float16.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/float16.hpp	2025-05-02 15:24:29.311061382 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/float4_e2m1.hpp openvino-2025.1.0/src/core/include/openvino/core/type/float4_e2m1.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/float4_e2m1.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/float4_e2m1.hpp	2025-05-02 14:46:01.977600995 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e4m3.hpp openvino-2025.1.0/src/core/include/openvino/core/type/float8_e4m3.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e4m3.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/float8_e4m3.hpp	2025-05-02 16:49:34.259457109 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e5m2.hpp openvino-2025.1.0/src/core/include/openvino/core/type/float8_e5m2.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e5m2.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/float8_e5m2.hpp	2025-05-02 16:25:15.483376800 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e8m0.hpp openvino-2025.1.0/src/core/include/openvino/core/type/float8_e8m0.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type/float8_e8m0.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type/float8_e8m0.hpp	2025-05-02 15:51:56.949204191 -0300
+@@ -10,6 +10,7 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/include/openvino/core/type.hpp openvino-2025.1.0/src/core/include/openvino/core/type.hpp
+--- openvino-2025.1.0.orig/src/core/include/openvino/core/type.hpp	2025-05-02 02:27:59.461840885 -0300
++++ openvino-2025.1.0/src/core/include/openvino/core/type.hpp	2025-05-02 17:18:37.788424513 -0300
+@@ -12,6 +12,7 @@
+ #include <string>
+ #include <utility>
+ #include <vector>
++#include <cstdint>
+ 
+ #include "openvino/core/core_visibility.hpp"
+ 
+diff -uNr openvino-2025.1.0.orig/src/core/src/type/float16.cpp openvino-2025.1.0/src/core/src/type/float16.cpp
+--- openvino-2025.1.0.orig/src/core/src/type/float16.cpp	2025-05-02 02:27:59.469840973 -0300
++++ openvino-2025.1.0/src/core/src/type/float16.cpp	2025-05-02 14:01:16.632021374 -0300
+@@ -24,6 +24,7 @@
+ #include <cmath>
+ #include <iostream>
+ #include <limits>
++#include <cstdint>
+ 
+ using namespace ov;
+ 
+diff -uNr openvino-2025.1.0.orig/src/plugins/intel_npu/src/plugin/npuw/partitioning/online/graph.hpp openvino-2025.1.0/src/plugins/intel_npu/src/plugin/npuw/partitioning/online/graph.hpp
+--- openvino-2025.1.0.orig/src/plugins/intel_npu/src/plugin/npuw/partitioning/online/graph.hpp	2025-05-02 02:27:59.773844303 -0300
++++ openvino-2025.1.0/src/plugins/intel_npu/src/plugin/npuw/partitioning/online/graph.hpp	2025-05-02 22:56:38.438952949 -0300
+@@ -15,6 +15,7 @@
+ #include <unordered_map>
+ #include <unordered_set>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace {
+ namespace detail {
+diff -uNr openvino-2025.1.0.orig/src/plugins/intel_npu/src/plugin/npuw/serialization.hpp openvino-2025.1.0/src/plugins/intel_npu/src/plugin/npuw/serialization.hpp
+--- openvino-2025.1.0.orig/src/plugins/intel_npu/src/plugin/npuw/serialization.hpp	2025-05-02 02:27:59.773844303 -0300
++++ openvino-2025.1.0/src/plugins/intel_npu/src/plugin/npuw/serialization.hpp	2025-05-03 02:41:40.985844786 -0300
+@@ -15,6 +15,7 @@
+ #include <unordered_map>
+ #include <unordered_set>
+ #include <vector>
++#include <cstdint>
+ 
+ namespace ov {
+ namespace npuw {

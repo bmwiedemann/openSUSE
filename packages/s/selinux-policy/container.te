@@ -1,4 +1,4 @@
-policy_module(container, 2.236.0)
+policy_module(container, 2.237.0)
 
 gen_require(`
 	class passwd rootok;
@@ -984,6 +984,7 @@ allow container_domain container_runtime_domain:socket_class_set { accept append
 
 kernel_getattr_proc(container_domain)
 kernel_list_all_proc(container_domain)
+kernel_mounton_all_proc(container_domain)
 kernel_read_all_sysctls(container_domain)
 kernel_dontaudit_write_kernel_sysctl(container_domain)
 kernel_read_network_state(container_domain)
@@ -1614,6 +1615,8 @@ allow container_domain container_file_t:file entrypoint;
 allow container_domain container_ro_file_t:file { entrypoint execmod execute execute_no_trans getattr ioctl lock map open read };
 allow container_domain container_var_lib_t:file entrypoint;
 allow container_domain fusefs_t:file { append create entrypoint execmod execute execute_no_trans getattr ioctl link lock map mounton open read rename setattr unlink watch watch_reads write };
+
+allow install_t container_runtime_t:process2 { nnp_transition nosuid_transition };
 
 corecmd_entrypoint_all_executables(container_kvm_t)
 allow svirt_sandbox_domain exec_type:file { entrypoint execute execute_no_trans getattr ioctl lock map open read };

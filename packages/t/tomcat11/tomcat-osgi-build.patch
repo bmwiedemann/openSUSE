@@ -1,0 +1,29 @@
+Index: apache-tomcat-11.0.5-src/build.xml
+===================================================================
+--- apache-tomcat-11.0.5-src.orig/build.xml
++++ apache-tomcat-11.0.5-src/build.xml
+@@ -231,9 +231,9 @@
+ 
+   <!-- Classpaths -->
+   <path id="compile.classpath">
+-    <pathelement location="${bnd.jar}"/>
+     <pathelement location="${jdt.jar}"/>
+     <pathelement location="${migration-lib.jar}"/>
++    <path refid="bnd.classpath"/>
+   </path>
+ 
+   <path id="tomcat.classpath">
+@@ -3973,6 +3973,13 @@ Read the Building page on the Apache Tom
+     <!-- Add bnd tasks to project -->
+     <path id="bnd.classpath">
+       <fileset file="${bnd.jar}" />
++      <fileset dir="${bnd.dir}">
++        <include name="**/*.jar"/>
++      </fileset>
++      <fileset file="${osgiannotation.jar}" />
++      <fileset file="${osgicmpn.jar}" />
++      <fileset file="${osgicore.jar}" />
++      <fileset file="${slf4j-api.jar}" />
+     </path>
+ 
+     <taskdef resource="aQute/bnd/ant/taskdef.properties" classpathref="bnd.classpath" />

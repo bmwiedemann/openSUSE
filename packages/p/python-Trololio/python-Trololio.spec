@@ -1,7 +1,7 @@
 #
 # spec file for package python-Trololio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Trololio
 Version:        1.0
 Release:        0
@@ -27,7 +26,9 @@ URL:            https://github.com/ThinkChaos/Trololio
 Source:         https://files.pythonhosted.org/packages/source/T/Trololio/Trololio-%{version}.zip
 # License file from source repository
 Source1:        https://raw.githubusercontent.com/ThinkChaos/Trololio/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -52,14 +53,16 @@ It addresses the differences listed in Trollius and Tulip:
 cp %{SOURCE1} LICENSE
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%{python_sitelib}/*
+%{python_sitelib}/trololio.py
+%{python_sitelib}/[Tt]rololio-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/trololio*
 %doc README.rst
 %license LICENSE
 

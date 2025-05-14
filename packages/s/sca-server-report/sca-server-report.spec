@@ -1,7 +1,7 @@
 #
 # spec file for package sca-server-report
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define sca_python %{libbase}/python
 
 Name:           sca-server-report
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Supportconfig Analysis Server Report
 License:        GPL-2.0-only
@@ -30,6 +30,7 @@ URL:            https://github.com/g23guy/sca-server-report
 Group:          System/Monitoring
 Source:         %{name}-%{version}.tar.gz
 Requires:       python3-base
+Requires:       sca-patterns-base >= 1.6.2
 Requires:       sca-patterns-template-gen2
 BuildArch:      noarch
 

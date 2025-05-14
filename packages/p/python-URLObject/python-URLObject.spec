@@ -1,7 +1,7 @@
 #
 # spec file for package python-URLObject
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-URLObject
 Version:        2.4.3
 Release:        0
@@ -27,7 +26,9 @@ Source:         https://files.pythonhosted.org/packages/source/U/URLObject/URLOb
 # patch-feature-upstream remove_nose.patch gh#zacharyvoase/urlobject#42 mcepl@suse.com
 # Remove the need for nose and use the standard library.
 Patch0:         remove_nose.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +49,10 @@ test-driven manner, and has full Sphinx documentation.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ test-driven manner, and has full Sphinx documentation.
 %files %{python_files}
 %doc README.rst
 %license UNLICENSE
-%{python_sitelib}/*
+%{python_sitelib}/[Uu][Rr][Ll][Oo]bject
+%{python_sitelib}/[Uu][Rr][Ll][Oo]bject-%{version}*-info
 
 %changelog

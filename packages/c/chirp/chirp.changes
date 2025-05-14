@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  9 14:06:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20250509:
+  * Modify TIDRADIO TD-H8 and TD-H3 Driver for consistency and
+    New Settings
+  * tdh3: Fix invalid brightness setting in test image
+  * Add a link in the about box to open online documentation
+  * update translations
+
+-------------------------------------------------------------------
 Sat May  3 07:46:01 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20250502:

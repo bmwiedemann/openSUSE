@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Mar 22 11:36:56 CET 2025 - Ruediger Oertel <ro@suse.de>
+
+- update to 1.98.12
+  + remove openSUSE Leap 15.4, 15.5
+  + add SLE-15-SP7
+  + add Tumbleweed 2025
+
+-------------------------------------------------------------------
 Wed Aug 16 08:05:02 UTC 2023 - Lars Vogdt <lars@linux-schulserver.de>
 
 - update to 1.98.11

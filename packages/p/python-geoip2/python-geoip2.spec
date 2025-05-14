@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geoip2
-Version:        4.8.0
+Version:        5.0.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
 Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,16 +33,19 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module aiohttp >= 3.6.2}
-BuildRequires:  %{python_module maxminddb >= 2.3.0}
+BuildRequires:  %{python_module maxminddb >= 2.5.1}
 BuildRequires:  %{python_module mocket >= 3.11.0}
 BuildRequires:  %{python_module pytest}
+%if 0%{?suse_version} > 1600
+# Leap has too old pytest-httpserver
+BuildRequires:  %{python_module pytest-httpserver >= 1.0.10}
+%endif
 BuildRequires:  %{python_module python-magic >= 0.4.18}
-BuildRequires:  %{python_module requests >= 2.14.0}
+BuildRequires:  %{python_module requests >= 2.24.0}
 # /SECTION
 Requires:       python-aiohttp >= 3.6.2
-Requires:       python-maxminddb >= 2.0.0
-Requires:       python-requests >= 2.14.0
-Requires:       python-setuptools
+Requires:       python-maxminddb >= 2.5.1
+Requires:       python-requests >= 2.24.0
 BuildArch:      noarch
 %python_subpackages
 

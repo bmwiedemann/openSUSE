@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:19:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Nov 19 10:26:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - add py313-ctraits.patch to fix build with python 313

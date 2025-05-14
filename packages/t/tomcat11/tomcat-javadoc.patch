@@ -1,0 +1,13 @@
+Index: apache-tomcat-11.0.5-src/build.xml
+===================================================================
+--- apache-tomcat-11.0.5-src.orig/build.xml
++++ apache-tomcat-11.0.5-src/build.xml
+@@ -2416,8 +2416,6 @@
+       <link href="../elapi"/>
+       <link href="../websocketapi"/>
+       <link href="../jaspicapi"/>
+-      <link href="https://docs.oracle.com/en/java/javase/17/docs/api/"/>
+-      <link href="https://jakarta.ee/specifications/platform/11/apidocs/"/>
+       <packageset dir="${tomcat.dist}/src/java/">
+         <include name="org/**"/>
+         <exclude name="org/apache/el/parser/**"/>

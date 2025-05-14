@@ -628,4 +628,13 @@
       written.</comment>
     <requestid>1270150</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>a807f4c745d2686b88084abec5aec30c</srcmd5>
+    <version>3.13.3</version>
+    <time>1747159526</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)</comment>
+    <requestid>1276664</requestid>
+  </revision>
 </revisionlist>

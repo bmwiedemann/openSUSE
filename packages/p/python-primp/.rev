@@ -76,4 +76,12 @@
     * files: take file paths instead of contents; post files as streams</comment>
     <requestid>1273674</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e38ad5a6b8cb5b4578605c1f5fc9afc7</srcmd5>
+    <version>0.15.0</version>
+    <time>1746721411</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275453</requestid>
+  </revision>
 </revisionlist>

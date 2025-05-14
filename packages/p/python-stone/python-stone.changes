@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue May 13 03:29:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- BuildRequire testsuite, drop pwd PYTHONPATH.
+
+-------------------------------------------------------------------
+Tue May  6 13:58:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Initial version (v3.3.9), needed by python-dropbox

@@ -79,4 +79,17 @@
   * src/iotop: correct pg_cb signature #64</comment>
     <requestid>1237438</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f13f0a3f013d14976a575f8c823b7529</srcmd5>
+    <version>1.29</version>
+    <time>1746721380</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.29:
+  * Fix Linux kernel incompatible struct taskstats
+
+- Update to 1.28:
+  * add option to specify bin directory #78
+  * fix batch mode</comment>
+    <requestid>1275421</requestid>
+  </revision>
 </revisionlist>

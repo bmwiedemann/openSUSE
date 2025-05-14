@@ -1,7 +1,7 @@
 #
 # spec file for package kcm5-fcitx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,6 +95,9 @@ This package provides systemsettings5 icons for fcitx in plasma5-workspace.
 %autosetup -p1 -n kcm-fcitx-%{version}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_kf5 -d build
 make %{?_smp_mflags}
 

@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1229618</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>65c7b4b922cf0d48294710ca82d150fb</srcmd5>
+    <version>3.1.0</version>
+    <time>1747061401</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * feat: tuple rbg/rgba
+  * fix: file pattern
+  * feat(queries): add bash injections
+  * update(test): add highlight test
+  * fix: variables values
+  * feat(queries): more injections
+  * fix(#17): add support for display and position 
+  * update: remove unnecessary conflict
+  * add: MIT License
+  * feat: support new exec keywords
+  * fix: sync parser and tests
+  * feat: add ALT_L mod (forwarded request 1276624 from rrahl0)</comment>
+    <requestid>1276625</requestid>
+  </revision>
 </revisionlist>

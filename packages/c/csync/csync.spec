@@ -1,7 +1,7 @@
 #
 # spec file for package csync
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -135,6 +135,9 @@ if [ -f %{_includedir}/libssh/libssh_version.h ]; then
 fi
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 if test ! -e "build"; then
   mkdir build
 fi

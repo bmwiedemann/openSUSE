@@ -3,26 +3,26 @@
  1 file changed, 15 insertions(+), 3 deletions(-)
 
 --- misc/terminfo.src
-+++ misc/terminfo.src	2025-04-30 11:04:18.993772223 +0000
-@@ -1250,7 +1250,7 @@ sclp|IBM s390 driver for Linux,
++++ misc/terminfo.src	2025-05-05 07:10:18.639838164 +0000
+@@ -1252,7 +1252,7 @@ sclp|IBM s390 driver for Linux,
  	cols#80, lines#24,
  	acsc=``aaffggjjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
  	bel=^G, blink=\E[5m, cr=\r, cub1=^H, cud1=\n,
 -	cup=\E[%i%p1%d;%p2%dH, dch=\E[%p1%dP, dch1=\E[P,
 +	dch=\E[%p1%dP, dch1=\E[P,
- 	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, ed=\E[J, el1=\E[1K,
- 	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec, kbs=^H,
- 	kcub1=\E[D, kcud1=\E[B, kcuf1=\E[C, kcuu1=\E[A,
+ 	dl=\E[%p1%dM, dl1=\E[M, ech=\E[%p1%dX, el1=\E[1K,
+ 	enacs=\E)0, ht=^I, ich=\E[%p1%d@, ind=\ED, is2=\Ec,
+ 	kf5=\E[15~, khome=\E[1~, nel=\EE, rc=\E8, rev=\E[7m, ri=\EM,
 @@ -1261,7 +1261,7 @@ sclp|IBM s390 driver for Linux,
- 	sgr0=\E[m\E(B, smacs=\E(0$<2>, smso=\E[7m, smul=\E[4m,
- 	use=klone+color, use=ansi+cpr, use=ansi+erase,
- 	use=ansi+local, use=linux+sfkeys, use=vt100+pf1-pf4,
--	use=vt220+ufkeys,
-+	use=vt220+ufkeys, use=ansi+cup, use=vt220+pcedit, 
+ 	    \E(B%;$<2>,
+ 	sgr0=\E[m\E(B, smacs=\E(0$<2>, smul=\E[4m,
+ 	use=ecma+underline, use=ecma+standout, use=klone+color,
+-	use=ansi+arrows, use=ansi+cpr, use=ansi+erase,
++	use=ansi+arrows, use=ansi+cpr, use=ansi+cup, use=ansi+erase,
+ 	use=ansi+local, use=ansi+rca, use=linux+sfkeys,
+ 	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
- #### Mach
- #
-@@ -18279,7 +18279,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18305,7 +18305,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,
@@ -39,7 +39,7 @@
 +	    \E(B%;$<2>,
 +	sgr0=\E[m\E(B, smacs=\E(0$<2>, smso=\E[7m, smul=\E[4m,
 +	use=dumb, use=klone+color, use=ansi+local,
-+	use=ansi+cup, use=ansi+erase,
++	use=ansi+cpr, use=ansi+cup, use=ansi+erase,
  
  ibm3101|i3101|IBM 3101-10,
  	OTbs, am, xon,

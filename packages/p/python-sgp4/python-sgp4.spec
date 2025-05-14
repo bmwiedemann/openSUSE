@@ -1,7 +1,7 @@
 #
 # spec file for package python-sgp4
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ URL:            https://github.com/brandon-rhodes/python-sgp4
 Source:         https://files.pythonhosted.org/packages/source/s/sgp4/sgp4-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,10 +55,10 @@ sed -i 's/error = 2e-7/error = 2e-5/' sgp4/tests.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -71,8 +73,9 @@ pushd testdocs
 popd
 
 %files %{python_files}
+%doc README.md
 %license LICENSE
 %{python_sitearch}/sgp4
-%{python_sitearch}/sgp4-%{version}-py*.egg-info
+%{python_sitearch}/sgp4-%{version}.dist-info
 
 %changelog

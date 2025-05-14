@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri May  2 10:17:46 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.26.1:
+  + Bump MSRV to 1.83
+  + Allow any windows-sys version >= 0.52 and <= 0.59
+  + aws/polly: add GstScaletempoTargetDurationMeta to output
+    buffers
+  + awstranslate: improve message posted on bus
+  + cdg: typefind: Division by zero fix
+  + cea708mux: Improve support for overflowing input captions
+  + colordetect: Change to videofilter base class
+  + dav1ddec:
+    - Drain decoder on caps changes if necessary
+    - Only update unknown parts of the upstream colorimetry and not
+      all of it
+    - Support RGB encoded AV1
+    - Use downstream buffer pool for copying if video meta is not
+      supported
+    - Use max-frame-delay value from the decoder instead of
+      calculating it
+    - Use max-frame-delay value from the decoder instead of
+      calculating it
+  + doc: Update to latest way of generating hotdoc config files
+  + Fix gtk4 compile
+  + Fix various clippy 1.86 warnings and update gstreamer-rs /
+    gtk-rs dependencies
+  + fmp4mux:
+    - Add a couple of minor new features
+    - Add manual-split mode that is triggered by serialized
+      downstream events
+    - Add send-force-keyunit property
+    - Fix latency configuration for properties set during
+      construction
+    - Improve split-at-running-time handling
+    - Write a v0 tfdt box if the decode time is small enough
+  + fmp4mux/mp4mux: Handle the case of multiple tags per taglist
+    correctly
+  + gstwebrtc-api: Add TypeScript type definitions, build ESM for
+    broader compatibility, improve JSDocs
+  + hlsmultivariantsink: Allow users to specify playlist and
+    segment location
+  + hlssink3: Add Support for NTP timestamp from buffer
+  + livesync:
+    - Notify in/out/drop/duplicate properties on change
+    - Only notify drop/duplicate properties
+  + meson: Require gst 1.18 features for dav1d
+  + mp4mux: Don't write composition time offsets if they're all
+    zero
+  + mp4mux, fmp4mux: Use correct timescales for edit lists
+  + mpegtslivesrc:
+    - Increase threshold for PCR <-> PTS DISCONT
+    - Use a separate mutex for the properties
+  + mux: use smaller number of samples for testing
+  + net/aws: punctuation-related improvements to our
+    span_tokenize_items function
+  + pcap_writer: Mark target-factory and pad-path props as
+    construct-only
+  + speechmatics: Handle multiple stream-start event
+  + tracers: buffer-lateness: don't panic on add overflow + reduce
+    graph legend entry font size a bit
+  + tracers: Update to etherparse 0.17
+  + transcriberbin: make auto passthrough work when transcriber is
+    a bin
+  + ts-jitterbuffer: improve scheduling of lost events
+  + tttocea708: fix origin-row handling for roll-up in CEA-708
+  + Update dependencies
+  + Update gtk-rs / gstreamer-rs dependencies and update for API
+    changes
+  + Update to bitstream-io 3
+  + uriplaylistbin: skip cache test when offline
+  + webrtc: Port to reqwest 0.12
+  + webrtcsink: Fix compatibility with audio level header extension
+- Pass vvdec=disabled to meson setup, libvvdec is currently not
+  available in openSUSE.
+- Disable aws plugin for all arches via bcond, fails to build.
+
+-------------------------------------------------------------------
 Wed Mar 12 14:06:37 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.13.5:

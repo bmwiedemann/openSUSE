@@ -347,4 +347,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1225111 from glaubitz)</comment>
     <requestid>1225152</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>0a1a33af12ab90ce5549d4d7f3d31567</srcmd5>
+    <version>9.8.0</version>
+    <time>1746809513</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 9.8.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 1276167 from glaubitz)</comment>
+    <requestid>1276202</requestid>
+  </revision>
 </revisionlist>

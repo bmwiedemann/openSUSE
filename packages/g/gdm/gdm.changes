@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 10:07:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete gnome-common BuildRequires. Add itstool
+  BuildRequires.
+
+-------------------------------------------------------------------
 Mon Apr 14 16:36:58 UTC 2025 - Joan Torres <joan.torres@suse.com>
 
 - SLES16 won't ship pulseaudio-gdm-hooks so remove the last missing

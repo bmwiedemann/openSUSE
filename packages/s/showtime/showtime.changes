@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  4 06:27:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1:
+  + Improved the styling of the overlay. You should now be able to
+    see more of the video.
+  + Subtitles now render at the display’s native resolution.
+  + Moved the spinner for buffering videos to the top right to be
+    less distracting.
+  + Made sure to pause the video while seeking.
+  + Fixed the options popover not going away after picking a
+    playback speed.
+
+-------------------------------------------------------------------
 Sat Mar 15 15:57:51 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

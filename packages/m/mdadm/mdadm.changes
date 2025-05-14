@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  7 15:59:57 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Allow any valid minor name in md device name (bsc#1240789)
+  * add 1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
+
+-------------------------------------------------------------------
+Tue May  6 15:54:25 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Add dependency on suse-module-tools for SLE15 (bsc#1242696)
+
+-------------------------------------------------------------------
 Thu Apr 10 10:54:06 UTC 2025 - Ales Novak <alnovak@suse.com>
 
 - IMSM RAID0 2 disks to RAID10 4 disks migration fix

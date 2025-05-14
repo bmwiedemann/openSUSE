@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 12 16:09:34 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to v0.1.18f:
+  * Allow to pass a client name string and omit a port number to --addr option
+
+-------------------------------------------------------------------
 Wed May 29 13:06:57 UTC 2024 - Takashi Iwai <tiwai@suse.com>
 
 - Update to v0.1.18e:

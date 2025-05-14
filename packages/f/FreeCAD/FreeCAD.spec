@@ -85,7 +85,6 @@ BuildRequires:  double-conversion-devel
 BuildRequires:  eigen3-devel
 BuildRequires:  fdupes
 BuildRequires:  fmt-devel
-BuildRequires:  glew-devel
 BuildRequires:  hdf5-devel
 BuildRequires:  hicolor-icon-theme
 %if %{with smesh_external}

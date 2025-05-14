@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 13:43:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Nov 25 07:09:30 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-httpx.patch to drop dependency on unmaintained hyper. 

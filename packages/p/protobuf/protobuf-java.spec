@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,9 @@
 
 
 %define tarname protobuf
+%define patchjuname protobuf-java-util-removescope.patch
 Name:           protobuf-java
-Version:        28.3
+Version:        29.3
 Release:        0
 Summary:        Java Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
@@ -29,6 +30,7 @@ Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%
 Source1:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}/4.%{version}/%{name}-4.%{version}.pom
 Source2:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}lite/4.%{version}/%{name}lite-4.%{version}.pom
 Source3:        https://repo1.maven.org/maven2/com/google/protobuf/%{name}-util/4.%{version}/%{name}-util-4.%{version}.pom
+Source4:        %{patchjuname}
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -86,6 +88,10 @@ pushd java
 cp %{SOURCE1} core/pom.xml
 cp %{SOURCE2} lite/pom.xml
 cp %{SOURCE3} util/pom.xml
+cp %{SOURCE4} util/%{patchjuname}
+pushd util
+patch -p0 < %{patchjuname}
+popd
 %pom_disable_module kotlin
 %pom_disable_module kotlin-lite
 %pom_remove_plugin :animal-sniffer-maven-plugin

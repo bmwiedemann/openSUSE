@@ -18,7 +18,7 @@
 
 %{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
 Name:           klp-build
-Version:        0~20250108.8e6c7f6
+Version:        1.1.0~20250507.8576150
 Release:        0
 Summary:        The kernel livepatching creation tool
 License:        GPL-2.0-only
@@ -26,6 +26,7 @@ URL:            https://github.com/SUSE/klp-build
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools-git-versioning
 Requires:       python3-GitPython
 Requires:       python3-Mako
 Requires:       python3-MarkupSafe

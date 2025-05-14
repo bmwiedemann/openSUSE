@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun May 11 09:27:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.1.0:
+  * feat: tuple rbg/rgba
+  * fix: file pattern
+  * feat(queries): add bash injections
+  * update(test): add highlight test
+  * fix: variables values
+  * feat(queries): more injections
+  * fix(#17): add support for display and position 
+  * update: remove unnecessary conflict
+  * add: MIT License
+  * feat: support new exec keywords
+  * fix: sync parser and tests
+  * feat: add ALT_L mod
+
+-------------------------------------------------------------------
 Thu Dec  5 02:11:55 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial package

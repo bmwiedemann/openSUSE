@@ -1,7 +1,7 @@
 #
 # spec file for package python-binary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-binary
 Version:        1.0.0
 Release:        0
 License:        Apache-2.0 OR MIT
 Summary:        Library to convert between binary and SI units
 URL:            https://github.com/ofek/binary
-Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/b/binary/binary-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -45,10 +45,10 @@ Python library to convert between and within binary (IEC) and decimal (SI) units
 dos2unix README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand rm -r %{buildroot}/%{$python_sitelib}/tests/
 
@@ -58,6 +58,7 @@ dos2unix README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE-APACHE LICENSE-MIT
-%{python_sitelib}/*
+%{python_sitelib}/binary
+%{python_sitelib}/binary-%{version}.dist-info
 
 %changelog

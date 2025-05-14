@@ -41,7 +41,7 @@
 %endif
 
 Name:           shim
-Version:        15.8
+Version:        16.0
 Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
@@ -76,18 +76,19 @@ Source56:       revoked-SLES-UEFI-SIGN-Certificate-2013-04.crt
 Source57:       revoked-SLES-UEFI-SIGN-Certificate-2016-02.crt
 Source58:       revoked-SLES-UEFI-SIGN-Certificate-2020-07.crt
 Source59:       revoked-SLES-UEFI-SIGN-Certificate-2021-05.crt
+Source60:       revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt
 ###
 Source99:       SIGNATURE_UPDATE.txt
 # PATCH-FIX-SUSE shim-arch-independent-names.patch glin@suse.com -- Use the Arch-independent names
 Patch1:         shim-arch-independent-names.patch
 # PATCH-FIX-OPENSUSE shim-change-debug-file-path.patch glin@suse.com -- Change the default debug file path
 Patch2:         shim-change-debug-file-path.patch
-# PATCH-FIX-SUSE shim-bsc1177315-verify-eku-codesign.patch bsc#1177315 glin@suse.com -- Verify CodeSign in the signer's EKU
-Patch3:         shim-bsc1177315-verify-eku-codesign.patch
 # PATCH-FIX-SUSE remove_build_id.patch -- Remove the build ID to make the binary reproducible when building with AArch64 container
-Patch4:         remove_build_id.patch
+Patch3:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
-Patch5:         shim-disable-export-vendor-dbx.patch
+Patch4:         shim-disable-export-vendor-dbx.patch
+# PATCH-FIX-UPSTREAM shim-alloc-one-more-byte-for-sprintf.patch dennis.tseng@suse.com
+Patch5:         shim-alloc-one-more-byte-for-sprintf.patch
 BuildRequires:  dos2unix
 BuildRequires:  efitools
 BuildRequires:  mozilla-nss-tools
@@ -155,7 +156,7 @@ ls -al *.esl
 
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate
-make RELEASE=0 \
+make RELEASE=0 ENABLE_CODESIGN_EKU=1 \
      MMSTEM=MokManager FBSTEM=fallback \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigUpdater
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Summary:        Parser like ConfigParser but for updating configuration files
 License:        MIT
 URL:            https://github.com/pyscaffold/configupdater
 Source:         https://files.pythonhosted.org/packages/source/C/ConfigUpdater/ConfigUpdater-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-virtualenv}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
@@ -51,10 +52,10 @@ meant for reading config files and writing new ones.
 sed -i '/--cov/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,6 @@ sed -i '/--cov/d' setup.cfg
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %license LICENSE.txt
 %{python_sitelib}/configupdater
-%{python_sitelib}/ConfigUpdater-%{version}*-info
+%{python_sitelib}/[Cc]onfig[Uu]pdater-%{version}*info
 
 %changelog

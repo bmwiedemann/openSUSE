@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-mockito
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2021 Fabrice Bauzac-Stehly
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
-# python-mockito is not available for Python 3.6
-%define skip_python36 1
-
 Name:           python-pytest-mockito
 Version:        0.0.4
 Release:        0
 Summary:        Convenience plugin on top of mockito
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/kaste/pytest-mockito
 Source:         https://github.com/kaste/pytest-mockito/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module mockito}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ca-certificates
@@ -53,10 +49,10 @@ For example:
 %autosetup -n pytest-mockito-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,7 +61,7 @@ For example:
 %files %python_files
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/pytest_mockito/
-%{python_sitelib}/pytest_mockito-*
+%{python_sitelib}/pytest_mockito
+%{python_sitelib}/pytest_mockito-%{version}.dist-info
 
 %changelog

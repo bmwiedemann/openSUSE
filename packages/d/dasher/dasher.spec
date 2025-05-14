@@ -29,7 +29,6 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
-BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libexpat-devel
 BuildRequires:  libtool

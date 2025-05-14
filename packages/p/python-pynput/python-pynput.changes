@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:04:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.1:
+  * Remove incorrectly merged line for the *Xorg* backend.
+  * Let events know about the new ``injected`` parameter.
+  * Add a flag to callbacks to allow detecting injected input
+    events.
+  * Add ``media_stop`` key for *macOS*. Thanks to *laura-3*!
+  * Add ``eject`` key for *macOS*. Thanks to *DiMNDev*!
+  * Rename method for listeners to not conflict with new
+    ``threading.Thread`` field.
+  * Small corrections to the documentation.
+  * Handle explicit timeout when calling ``join`` on listeners.
+  * Correct regression in hot key handling for special keys.
+  * Reverted changes to lazy loading of ``CoreFoundation`` and
+    ``Quartz``, since this still does not appear to work.
+  * Let the type of values in ``Key`` be ``KeyCode`` so that type
+    checkers are not confused.
+  * Do not crash in ``__del__`` on *Xorg* if display creation fails.
+
+-------------------------------------------------------------------
 Wed Aug 16 09:51:47 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix dependencies: do not ever use python_module in requires, as

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 set -ex
 
@@ -61,11 +61,16 @@ systemctl enable checkmedia.service
 systemctl enable qemu-guest-agent.service
 systemctl enable setup-systemd-proxy-env.path
 systemctl enable x11-autologin.service
-systemctl enable spice-vdagentd.service
+test -f  /usr/lib/systemd/system/spice-vdagentd.service && systemctl enable spice-vdagentd.service
 systemctl enable zramswap
 
-# default target
-systemctl set-default graphical.target
+# set the default target
+if [[ "$kiwi_profiles" == *MINI* ]]; then
+  # the MINI images do not include graphical environment
+  systemctl set-default multi-user.target
+else
+  systemctl set-default graphical.target
+fi
 
 # disable snapshot cleanup
 systemctl disable snapper-cleanup.timer
@@ -93,26 +98,17 @@ echo 'add_dracutmodules+=" dracut-menu agama-cmdline "' >>/etc/dracut.conf.d/10-
 # decrease the kernel logging on the console, use a dracut module to do it early in the boot process
 echo 'add_dracutmodules+=" agama-logging "' > /etc/dracut.conf.d/10-agama-logging.conf
 
-# add xhci-pci-renesas to initrd if available (workaround for bsc#1237235)
-# FIXME: remove when the module is included in the default driver list in
-# in /usr/lib/dracut/modules.d/90kernel-modules/module-setup.sh, see
-# https://github.com/openSUSE/dracut/blob/7559201e7480a65b0da050263d96a1cd8f15f50d/modules.d/90kernel-modules/module-setup.sh#L42-L46
-for file in /lib/modules/*/kernel/drivers/usb/host/xhci-pci-renesas.ko*
-do
-  if [ -f "$file" ]; then
-    echo "Adding xhci-pci-renesas driver to initrd..."
-    echo 'add_drivers+=" xhci-pci-renesas "' >> /etc/dracut.conf.d/10-extra-drivers.conf
-    break
-  fi
-done
+# add the ipmi drivers to the initrd (bsc#1237354)
+extra_drivers=(acpi_ipmi ipmi_devintf ipmi_poweroff ipmi_si ipmi_ssif ipmi_watchdog)
 
-# add ipmi drivers (bsc#1237354)
-for dir in /lib/modules/*/kernel/drivers/char/ipmi
+for driver in "${extra_drivers[@]}"
 do
-  if [ -d "$dir" ]; then
-    echo "Adding ipmi drivers to initrd..."
-    echo 'add_drivers+=" acpi_ipmi ipmi_devintf ipmi_poweroff ipmi_si ipmi_ssif ipmi_watchdog "' >> /etc/dracut.conf.d/10-extra-drivers.conf
-    break
+  # check if the driver is present (allow a suffix like .zstd or .xz for optionally compressed drivers)
+  if find /lib/modules -type f -name "$driver.ko*" -print0 | grep -qz .; then
+    echo "Adding $driver driver to initrd..."
+    echo "add_drivers+=\" $driver \"" >> /etc/dracut.conf.d/10-extra-drivers.conf
+  else
+    echo "Skipping driver $driver, not found in the system"
   fi
 done
 
@@ -140,6 +136,33 @@ dd bs=1 count=1 seek=2G if=/dev/zero of=/var/lib/live_free_space
 
 ################################################################################
 # Reducing the used space
+#
+# Profile specific cleanup
+#
+
+# Extra cleanup for the MINI images
+if [[ "$kiwi_profiles" == *MINI* ]]; then
+  # remove the GPU drivers, not needed when running in text mode only,
+  # the related firmware is deleted by the script below
+  rm -rf /usr/lib/modules/*/kernel/drivers/gpu
+
+  # remove WiFi drivers
+  rm -rf /usr/lib/modules/*/kernel/drivers/net/wireless
+  # remove Bluetooth drivers
+  rm -rf /usr/lib/modules/*/kernel/drivers/bluetooth
+  rm -rf /usr/lib/modules/*/kernel/net/bluetooth
+fi
+
+# Remove the SUSEConnect CLI tool from the openSUSE images and the mini PXE image,
+# keep it in the SLE images, it might be useful for testing/debugging
+# (Agama uses libsuseconnect.so directly via the Ruby bindings and does not need the CLI,
+# registration in theory would be still possible even in the openSUSE images)
+if [[ "$kiwi_profiles" == *MINI* ]] || [[ "$kiwi_profiles" == *Leap* ]] || [[ "$kiwi_profiles" == *openSUSE* ]]; then
+  rm -f /usr/bin/suseconnect
+fi
+
+################################################################################
+# Generic cleanup in all images
 
 # Clean-up logs
 rm /var/log/zypper.log /var/log/zypp/history
@@ -163,7 +186,7 @@ mkdir -p /etc/agama.d
 # insists on running systemd as PID 1 :-/
 ls -1 -d /usr/lib/locale/*.utf8 | sed -e "s#/usr/lib/locale/##" -e "s#utf8#UTF-8#" >/etc/agama.d/locales
 
-# delete translations and unusupported languages (makes ISO about 22MiB smaller)
+# delete translations and unsupported languages (makes ISO about 22MiB smaller)
 # build list of ignore options for "ls" with supported languages like "-I cs* -I de* -I es* ..."
 readarray -t IGNORE_OPTS < <(ls /usr/share/agama/web_ui/po.*.js.gz | sed -e "s#/usr/share/agama/web_ui/po\.\(.*\)\.js\.gz#-I\n\\1*#")
 # additionally keep the en_US translations
@@ -207,7 +230,14 @@ if [ -n "$python" ]; then
 fi
 
 # remove OpenGL support
-rpm -qa | grep ^Mesa | xargs rpm -e --nodeps
+rpm -qa | grep ^Mesa | xargs --no-run-if-empty rpm -e --nodeps
+
+# remove unused SUSEConnect libzypp plugins
+rm -f /usr/lib/zypper/commands/zypper-migration
+rm -f /usr/lib/zypper/commands/zypper-search-packages
+
+# delete some FireFox audio codec support
+rm -f /usr/lib64/firefox/libmozavcodec.so
 
 # uninstall libyui-qt and libqt (pulled in by the YaST dependencies),
 # not present in SLES, do not fail if not installed
@@ -280,9 +310,12 @@ rpm -e --nodeps Mesa-gallium || true
 rm -rf /usr/lib*/libmfxhw*.so.* /usr/lib*/mfx/
 
 # the new, optional nvidia gsp firmware blobs are huge - ~ 70MB
-du -h -s /lib/firmware/nvidia
-find /lib/firmware/nvidia -name gsp | xargs -r rm -rf
-du -h -s /lib/firmware/nvidia
+if [ -e /lib/firmware/nvidia ]; then
+  du -h -s /lib/firmware/nvidia
+  find /lib/firmware/nvidia -name gsp | xargs -r rm -rf
+  du -h -s /lib/firmware/nvidia
+fi
+
 # The gems are unpackaged already, no need to store them twice
 du -h -s /usr/lib*/ruby/gems/*/cache/
 rm -rf /usr/lib*/ruby/gems/*/cache/

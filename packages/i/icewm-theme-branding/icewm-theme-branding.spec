@@ -35,7 +35,7 @@ ExclusiveArch:  do-not-build
 %endif
 %endif
 
-%if (0%{?build_SLE} && 0%{?is_opensuse}) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
+%if (0%{?build_SLE} && (0%{?is_opensuse} && !0%{?is_backports})) || (0%{?build_openSUSE} && ! 0%{?is_opensuse})
 # Don't build SLE branding on openSUSE and vice-versa
 ExclusiveArch:  do-not-build
 %endif

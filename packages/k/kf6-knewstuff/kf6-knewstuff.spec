@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname knewstuff
-# Full KF6 version (e.g. 6.13.0)
+# Full KF6 version (e.g. 6.14.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-knewstuff
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Framework for downloading and sharing additional application data
 License:        LGPL-2.1-or-later
@@ -87,22 +87,15 @@ The KNewStuff library implements collaborative data sharing for
 applications. It uses libattica to support the Open Collaboration Services
 specification.
 
-%package core-devel
-Summary:        Framework for downloading and sharing additional application data
-Requires:       libKF6NewStuffCore6 = %{version}
-Requires:       cmake(KF6Attica) >= %{_kf6_bugfix_version}
-Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
-
-%description core-devel
-The KNewStuff library implements collaborative data sharing for
-applications. It uses libattica to support the Open Collaboration Services
-specification. Development files.
-
 %package devel
 Summary:        Framework for downloading and sharing additional application data
-Requires:       kf6-knewstuff-core-devel = %{version}
+Requires:       libKF6NewStuffCore6 = %{version}
 Requires:       libKF6NewStuffWidgets6 = %{version}
+Requires:       cmake(KF6Attica) >= %{_kf6_bugfix_version}
+Requires:       cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
 Requires:       cmake(Qt6Widgets) >= %{qt6_version}
+Provides:       kf6-knewstuff-core-devel = %{version}
+Obsoletes:      kf6-knewstuff-core-devel < %{version}
 
 %description devel
 The KNewStuff library implements collaborative data sharing for
@@ -146,17 +139,15 @@ specification. Development files.
 %files imports
 %{_kf6_qmldir}/org/kde/newstuff/
 
-%files core-devel
-%doc %{_kf6_qchdir}/KF6NewStuffCore.*
-%{_kf6_includedir}/KNewStuffCore/
-%{_kf6_cmakedir}/KF6NewStuffCore/
-%{_kf6_libdir}/libKF6NewStuffCore.so
-
 %files devel
+%doc %{_kf6_qchdir}/KF6NewStuffCore.*
 %doc %{_kf6_qchdir}/KF6NewStuffWidgets.*
 %{_kf6_cmakedir}/KF6NewStuff/
+%{_kf6_cmakedir}/KF6NewStuffCore/
 %{_kf6_includedir}/KNewStuff/
+%{_kf6_includedir}/KNewStuffCore/
 %{_kf6_includedir}/KNewStuffWidgets/
+%{_kf6_libdir}/libKF6NewStuffCore.so
 %{_kf6_libdir}/libKF6NewStuffWidgets.so
 %{_kf6_plugindir}/designer/knewstuff6widgets.so
 

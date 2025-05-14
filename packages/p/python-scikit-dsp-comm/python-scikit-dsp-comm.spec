@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-dsp-comm
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define skip_python36 1
 Name:           python-scikit-dsp-comm
 Version:        1.2.0
 Release:        0
 Summary:        DSP and Comm package for Python
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/mwickert/scikit-dsp-comm
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-dsp-comm/scikit-dsp-comm-%{version}.tar.gz
 Source100:      python-scikit-dsp-comm-rpmlintrc
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib
@@ -57,16 +56,17 @@ The foundation for this package is scipy.signal.
 %setup -q -n scikit-dsp-comm-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_expand chmod a-x %{buildroot}%{$python_sitelib}/sk_dsp_comm/*.txt
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/sk_dsp_comm
+%{python_sitelib}/scikit_dsp_comm-%{version}.dist-info
 
 %changelog

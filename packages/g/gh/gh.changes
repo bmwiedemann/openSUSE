@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon May  5 06:44:10 UTC 2025 - Pavel Dostál <pdostal@suse.com>
+
+- Fix the package tests:
+  * Ignore TestNewInspectCmd
+	  https://github.com/cli/cli/issues/10926
+	* Ignore TestAccessiblePrompter
+	  https://github.com/cli/cli/issues/10916
+
+-------------------------------------------------------------------
+Sat May 03 15:15:17 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.72.0:
+  * Introduce gh accessibility help topic highlighting GitHub CLI accessibility
+    experiences
+  * [gh pr view] Support closingIssuesReferences JSON field
+  * Fix expected error output of TestRepo/repo-set-default
+  * Ensure accessible password and auth token prompters disable echo mode
+  * Fix: Accessible multiselect prompt respects default selections
+
+- Update to version 2.71.2:
+  * Fix pr create when push.default tracking and no merge ref
+
+- Update to version 2.71.1:
+  * Fix pr create when branch name contains slashes 
+
+- Update to version 2.71.0:
+  * gh pr create: Support Git's @{push} revision syntax for determining
+    head ref
+  * Introduce option to opt-out of spinners
+  * Update configuration support for accessible colors
+  * gh config: add config settings for accessible prompter and disabling spinner
+  * Fix multi pages search for gh search
+  * Fix: project commands use shared progress indicator
+  * Issue commands should parse args early
+  * Feature detect v1 projects on issue view and edit
+  * Feature detect v1 projects on web and non web-mode issue create
+  * Refactor Sigstore verifier logic
+  * bump deps
+
+-------------------------------------------------------------------
 Tue Apr 15 11:03:38 UTC 2025 - pdostal@suse.com
 
 - Update to version 2.70.0:

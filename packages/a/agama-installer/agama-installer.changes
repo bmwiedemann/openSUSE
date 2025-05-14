@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Apr 28 12:14:51 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Fixed missing drivers in ppc64le initrd, fixes broken
+  installation via PXE (bsc#1241887)
+- Removed the workaround for adding the xhci-pci-renesas driver,
+  now it is included in the default dracut drivers
+
+-------------------------------------------------------------------
+Wed Apr 23 05:47:23 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Include the kernel-default-optional package in the Live ISO
+  to support more hardware (bsc#1241099)
+
+-------------------------------------------------------------------
+Tue Apr 22 14:14:54 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Version 14
+
+-------------------------------------------------------------------
+Thu Apr 10 05:20:55 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add a new SUSE_SLE_16_PXE_MINI that only includes the software
+  to use Agama remotely (jsc#PED-12152).
+
+-------------------------------------------------------------------
+Tue Apr  8 15:52:18 UTC 2025 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix boot from Hard Disk for EFI x86_64 (bsc#1240646)
+
+-------------------------------------------------------------------
+Thu Apr  3 08:28:18 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Workaround for a not working file picker in local installation
+  (gh#agama-project/agama#2243)
+
+-------------------------------------------------------------------
+Wed Apr  2 05:47:01 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Use "agama download" to fetch the info file (gh#agama-project/agama#2176).
+
+-------------------------------------------------------------------
+Mon Mar 31 13:06:53 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Print also the IPv6 installer URLs in the console (bsc#1240197)
+
+-------------------------------------------------------------------
+Thu Mar 27 15:56:11 UTC 2025 - Ladislav Slezák <lslezak@suse.com>
+
+- Version 14pre
+
+-------------------------------------------------------------------
 Thu Mar 27 12:40:06 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Version 13

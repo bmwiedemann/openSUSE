@@ -49,4 +49,16 @@
   * Dropped support for Python 3.7.</comment>
     <requestid>1124083</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0f66019d8d37f693aa6280f6128a6668</srcmd5>
+    <version>1.6.1</version>
+    <time>1746542307</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.1:
+  * pytest 7.0+ is now required.
+  * Fixed compatibility with pytest-describe.
+  * original_datadir fixture is now module-scoped.
+- Switch to pyproject macros.</comment>
+    <requestid>1274275</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  2 08:19:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.4:
+  * Fix potential shift overflow problems reported by static
+    checkers
+  * VS2015: Fix an unfortunate bug #1862
+  * RVV: Workaround error G6E97C40B #1853
+  * s390x: Disable CRC32-VX Extensions for some broken Clang
+    versions #1852
+  * Add uncompress benchmark #1860
+
+-------------------------------------------------------------------
 Sat Feb  8 18:26:35 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.3:

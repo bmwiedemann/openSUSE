@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-html-components
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Vanilla HTML components for Dash - Legacy
 License:        MIT
 URL:            https://github.com/plotly/dash-html-components
 Source:         https://files.pythonhosted.org/packages/source/d/dash-html-components/dash_html_components-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,16 +43,16 @@ has no further functionality than displaying a deprecation message.
 %setup -q -n dash_html_components-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/dash_html_components
-%{python_sitelib}/dash_html_components-%{version}*-info
+%{python_sitelib}/dash_html_components-%{version}.dist-info
 
 %changelog

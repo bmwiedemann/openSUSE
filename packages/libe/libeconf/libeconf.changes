@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May 08 14:41:05 UTC 2025 - schubi@suse.com
+
+- Update to version 0.7.9:
+  * Comments can include comment character tag multiple time.
+  * Fixed static library declaration in meason
+  * Fixed versioning in cmake
+
+-------------------------------------------------------------------
 Fri Apr 25 08:25:57 UTC 2025 - schubi@suse.com
 
 - Update to version 0.7.8:

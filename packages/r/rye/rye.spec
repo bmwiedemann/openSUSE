@@ -1,7 +1,7 @@
 #
 # spec file for package rye
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rye
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
 Summary:        Hassle-free Python project manager in Rust
 License:        MIT
@@ -76,7 +76,7 @@ Bash command-line completion support for %{name}.
 %prep
 %autosetup -p1 -a1
 # license crate feature 'offline' is bogus and not implemented
-pushd vendor/license-3.5.1+3.25.0
+pushd vendor/license-3.6.0+3.26.0
 mkdir -p license-list-data
 tar xf %{SOURCE2} -C license-list-data --strip-components=1
 popd

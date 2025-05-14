@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 12:37:50 UTC 2025 - jason.record@suse.com
+
+- Changes to version 1.6.2
+ + Fixed re syntax error (bsc#1241308)
+
+-------------------------------------------------------------------
 Wed Jan 31 23:10:38 UTC 2024 - jason.record@suse.com
 
 - Changes to version 1.6.1

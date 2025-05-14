@@ -141,4 +141,13 @@
     <comment></comment>
     <requestid>1150771</requestid>
   </revision>
+  <revision rev="22" vrev="53">
+    <srcmd5>b544dcc44e29a04158155b29575222ae</srcmd5>
+    <version>20070708</version>
+    <time>1747159668</time>
+    <user>anag_factory</user>
+    <comment>- Added fuseiso-fuse3.patch to fuse3 support (boo#1242092).
+  * Removed fuseiso-20061017.patch (included).</comment>
+    <requestid>1277123</requestid>
+  </revision>
 </revisionlist>

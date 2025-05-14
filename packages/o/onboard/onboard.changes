@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  6 06:51:10 UTC 2025 - BZZZZ DZZZZ <alanas.00@mail.ru>
+
+- Add patch: onboard-stdbool.patch.
+  Make onboard possible to compile on openSUSE Tumbleweed.
+- Add patch: onboard-fix-crash-on-hover.patch.
+  Don't crash on hover if "Input event source:" is "XInput".
+  https://bugs.launchpad.net/ubuntu/+source/onboard/+bug/2063041
+
+-------------------------------------------------------------------
 Fri Apr 26 08:02:10 UTC 2024 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Mark /etc/xdg/autostart/onboard-autostart.desktop as conffile.

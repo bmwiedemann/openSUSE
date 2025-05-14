@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-trio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Pytest plugin for trio
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/python-trio/pytest-trio
 Source:         https://github.com/python-trio/pytest-trio/archive/v%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-outcome >= 1.1.0
@@ -52,10 +54,10 @@ rm pytest_trio/_tests/test_hypothesis_interaction.py
 mv pytest_trio/_tests/ tests
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -67,6 +69,6 @@ mv pytest_trio/_tests/ tests
 %doc README.rst
 %license LICENSE LICENSE.APACHE2 LICENSE.MIT
 %{python_sitelib}/pytest_trio
-%{python_sitelib}/pytest_trio-%{version}*-info
+%{python_sitelib}/pytest_trio-%{version}.dist-info
 
 %changelog

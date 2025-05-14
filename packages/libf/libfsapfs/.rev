@@ -143,4 +143,12 @@
     <comment>- Update to release 20240429</comment>
     <requestid>1170868</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6292aa0ad8617b075d195e06e397126f</srcmd5>
+    <version>20240429</version>
+    <time>1746476793</time>
+    <user>anag_factory</user>
+    <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274197 from AndreasStieger)</comment>
+    <requestid>1274221</requestid>
+  </revision>
 </revisionlist>

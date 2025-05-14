@@ -480,4 +480,18 @@
 </comment>
     <requestid>1192175</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>7b8cdb98aa44940331f71f7ae0481f1e</srcmd5>
+    <version>4.1.0</version>
+    <time>1746809523</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.0:
+  * ADDED: minimize to tray with ayatana-appindicator3 (#386 thanks a lot @len-foss)
+  * IMPROVED: only show memlock warning dialog when secure memory is unavailable (#397)
+  * IMPROVED: allow creating a database via CLI (#392)
+  * FIX: allow using different databases in flatpak (#372)
+  * CHANGED: dropped andOTP support
+</comment>
+    <requestid>1276247</requestid>
+  </revision>
 </revisionlist>

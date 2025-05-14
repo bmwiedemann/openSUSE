@@ -64,4 +64,12 @@
 - Also build for modern Python on Leap</comment>
     <requestid>1128369</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7b74ed4f41f2594f8b3893f6c57dc90d</srcmd5>
+    <version>0.6.2</version>
+    <time>1746809388</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275978</requestid>
+  </revision>
 </revisionlist>

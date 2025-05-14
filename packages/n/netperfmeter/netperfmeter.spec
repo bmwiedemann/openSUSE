@@ -1,7 +1,7 @@
 #
 # spec file for package netperfmeter
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,9 @@ The vector files can e.g. be used to create plots of the results.
 %autosetup
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # FIXME: you should use the %%cmake macros
 mkdir build && cd build
 cmake .. \

@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           falkon
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        Modern web browser
 License:        GPL-3.0-or-later
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-crash-when-creating-bookmarks-toolbar.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

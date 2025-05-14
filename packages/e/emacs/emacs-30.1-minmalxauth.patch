@@ -1,0 +1,21 @@
+---
+ etc/emacs.service |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+--- etc/emacs.service
++++ etc/emacs.service	2025-05-08 06:17:23.503020867 +0000
+@@ -5,6 +5,8 @@
+ [Unit]
+ Description=Emacs text editor
+ Documentation=info:emacs man:emacs(1) https://gnu.org/software/emacs/
++PartOf=graphical-session.target
++After=graphical-session.target
+ 
+ [Service]
+ Type=notify
+@@ -20,4 +22,4 @@ SuccessExitStatus=15
+ Restart=on-failure
+ 
+ [Install]
+-WantedBy=default.target
++WantedBy=graphical-session.target

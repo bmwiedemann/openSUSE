@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-charset-normalizer
-Version:        3.4.1
+Version:        3.4.2
 Release:        0
 Summary:        Python Universal Charset detector
 License:        MIT

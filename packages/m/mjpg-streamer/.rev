@@ -40,4 +40,13 @@
     <comment></comment>
     <requestid>1245260</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>d3f9a8d3268ae07d7a5d08a959351799</srcmd5>
+    <version>1.0.0</version>
+    <time>1746721432</time>
+    <user>dimstar_suse</user>
+    <comment>- export CMAKE_POLICY_VERSION_MINIMUM=&quot;3.5&quot; to ignore cmakes
+  minimum version warnings (forwarded request 1275506 from simotek)</comment>
+    <requestid>1275519</requestid>
+  </revision>
 </revisionlist>

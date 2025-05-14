@@ -25,7 +25,7 @@ URL:            https://github.com/pytorch/cpuinfo
 Source:         %name-%version.tar.xz
 Patch1:         soname.patch
 BuildRequires:  cmake
-ExcludeArch:    s390x
+ExcludeArch:    s390x ppc64le
 
 %description
 cpuinfo is a library to detect essential for performance optimization

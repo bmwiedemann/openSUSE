@@ -1709,4 +1709,73 @@ https://build.opensuse.org/request/show/1178504 </comment>
 </comment>
     <requestid>1273471</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>2188b275a7a5a629f8a5c082957dcb02</srcmd5>
+    <version>20250507</version>
+    <time>1746638165</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20250507:
+  * Allow snapper_tu_etc_plugin_t fowner (bsc#1242768)
+  * Allow snapper_tu_etc_plugin_t dac_override (bsc#1242768)
+- Update to version 20250506:
+  * Revert &quot;add dev_watch_sysfs_dirs interface&quot;
+  * Revert &quot;Allow journalctl read messages from /var/lib/machines (bsc#1235829)&quot;
+  * Revert &quot;Allow xenstored_t manage xend_var_lib_t files (bsc#1228540)&quot;
+  * label start script for pcp logger properly (bsc#1241611)
+  * Allow collectd accept and listen to tcp sockets
+  * healthchecker: fix findmnt with encrypted disks (bsc#1238606)
+  * dontaudit sys_resource for NetworkManager_dispatcher types (bsc#1241888)
+  * Allow init_t nnp domain transition to redis_t
+  * Allow tlshd read network sysctls
+  * Allow NetworkManager create and use icmp_socket
+  * Allow varnishd execute the prlimit64() syscall
+  * Allow rhsmcertd connect to systemd-machined
+  * Allow virt_domain write to virt_image_t files
+  * Allow system-dbusd list systemd-machined directories
+  * Allow asterisk read network sysctls
+  * Allow virtstoraged fsetid capability
+  * Allow xdm watch a mnt_t directory
+  * Allow collectd bind TCP sockets to the collectd port
+  * Allow virtqemud relabel from tmpfs lnk files
+  * Allow gnome-remote-desktop additional sockets permissions
+  * Update insights-core policy
+  * Update systemd-homed policy
+  * Allow xenstored_t manage xend_var_lib_t files (bsc#1228540)
+  * Allow init and login_pgm connect to systemd-logind over a unix socket
+  * Allow login_userdomain read pressure stall information
+  * Allow systemd-journald create and use vsock socket
+  * Update systemd-pcrextend policy
+  * Allow systemd watch/watch_reads usb ttys
+  * Update coreos-installer-generator policy
+  * Update systemd-homed policy
+  * Allow systemd-user-runtime-dir get/set tmpfs quotas
+  * Allow systemd-rfkill read nsfs files
+  * Dontaudit bootc-systemd-generator search sssd lib directories
+  * Allow systemd-user-runtime-dir delete gnome homedir content
+  * Allow tuned-ppd read sssd public files
+  * Allow tuned-ppd watch_reads sysfs directories
+  * Confine /usr/lib/systemd/systemd-user-runtime-dir
+  * Revert &quot;Dontaudit systemd-logind remove all files&quot;
+  * Make bootupd use bootupd_tmp_t as its private type for files in /tmp
+  * Label SetroubleshootPrivileged.py with setroubleshootd_exec_t
+  * Allow power-profiles-daemon watch sysfs directories
+  * systemd: allow reading /dev/cpu/0/msr
+  * Update the pcmsensor policy
+  * Allow chronyd-restricted sendto to chronyc
+  * Allow system_dbusd_t r/w unix stream sockets of unconfined_service_t
+  * Allow dovecot-deliver read mail aliases
+  * Confine systemd-factory-reset system generator
+  * Allow systemd debug generator read tmpfs files
+  * Allow gnome-shell get attributes of systemd inhibit pipes
+  * Allow tuned-ppd watch sysfs directories
+  * Fix the storage_rw_inherited_removable_device() interface
+  * Allow sadc read global pressure stall information
+  * Allow virtqemud read sblim-gatherd process state
+- Syncing with upstream rawhide selinux-policy up to:
+  * 7e35030d91e0a1ca8dd0f8f28c6440c598242fdd
+- Update embedded container-selinux version to commit:
+  * d7e420a1166c8bd237a7877f76fa9a0e484a7c68 (version 2.237.0)
+</comment>
+    <requestid>1275299</requestid>
+  </revision>
 </revisionlist>

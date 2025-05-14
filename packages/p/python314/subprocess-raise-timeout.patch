@@ -2,11 +2,11 @@
  Lib/test/test_subprocess.py |    6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
-Index: Python-3.14.0a7/Lib/test/test_subprocess.py
+Index: Python-3.14.0b1/Lib/test/test_subprocess.py
 ===================================================================
---- Python-3.14.0a7.orig/Lib/test/test_subprocess.py	2025-04-12 23:55:25.222319332 +0200
-+++ Python-3.14.0a7/Lib/test/test_subprocess.py	2025-04-12 23:56:40.450491892 +0200
-@@ -156,7 +156,11 @@
+--- Python-3.14.0b1.orig/Lib/test/test_subprocess.py	2025-05-09 10:36:08.150615546 +0200
++++ Python-3.14.0b1/Lib/test/test_subprocess.py	2025-05-09 10:36:21.907614565 +0200
+@@ -160,7 +160,11 @@
          # child.
          self.assertRaises(subprocess.TimeoutExpired, subprocess.call,
                            [sys.executable, "-c", "while True: pass"],
@@ -17,5 +17,5 @@ Index: Python-3.14.0a7/Lib/test/test_subprocess.py
 +                          # OBS might require even more
 +                          timeout=10)
  
-     def test_check_call_zero(self):
-         # check_call() function with zero return code
+     def test_timeout_exception(self):
+         try:

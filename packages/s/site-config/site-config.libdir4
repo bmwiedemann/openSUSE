@@ -5,7 +5,14 @@
 	esac
 
 	if test "x$ac_config_site_64bit_host" = xYES; then
-		libdir='${exec_prefix}/lib64'
+		case "$OUT_DIR" in
+		# rust cargo hardcodes $OUT_DIR/lib
+		*cargo* )
+			;;
+		* )
+			libdir='${exec_prefix}/lib64'
+			;;
+		esac
 	fi
 fi
 

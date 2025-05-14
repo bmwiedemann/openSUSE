@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Harness
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Harness
 Name:           perl-Test-Harness
-Version:        3.50
+Version:        3.52
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Run Perl standard test scripts with statistics
@@ -45,7 +45,7 @@ See TAP::Parser, TAP::Harness for the main documentation for this
 distribution.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 # MANUAL BEGIN

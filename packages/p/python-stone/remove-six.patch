@@ -1,0 +1,218 @@
+From a58e5b61c0460a54aaddc04fb8b32cf7c6948048 Mon Sep 17 00:00:00 2001
+From: Alexandre Detiste <alexandre.detiste@gmail.com>
+Date: Thu, 25 Jan 2024 00:11:05 +0100
+Subject: [PATCH] remove dependency on six
+
+---
+ .github/workflows/CI.yaml                     |  2 +-
+ README.rst                                    |  4 +-
+ requirements.txt                              |  1 -
+ stone/backends/obj_c_types.py                 |  4 +-
+ .../backends/python_rsrc/stone_serializers.py | 46 ++-----------------
+ .../backends/python_rsrc/stone_validators.py  |  9 ----
+ stone/backends/swift_types.py                 |  4 +-
+ test/test_python_gen.py                       |  4 +-
+ 8 files changed, 9 insertions(+), 65 deletions(-)
+
+Index: stone-3.3.9/README.rst
+===================================================================
+--- stone-3.3.9.orig/README.rst
++++ stone-3.3.9/README.rst
+@@ -32,10 +32,10 @@ Alternative
+ -----------
+ 
+ If you choose not to install ``stone`` using the method above, you will need
+-to ensure that you have the Python packages ``ply`` and ``six``, which can be
++to ensure that you have the Python package ``ply``, which can be
+ installed through ``pip``::
+ 
+-    $ pip install "ply>=3.4" "six>=1.3.0" "typing>=3.5.2"
++    $ pip install "ply>=3.4" "typing>=3.5.2"
+ 
+ If the ``stone`` package is in your PYTHONPATH, you can replace ``stone``
+ with ``python -m stone.cli`` as follows::
+Index: stone-3.3.9/requirements.txt
+===================================================================
+--- stone-3.3.9.orig/requirements.txt
++++ stone-3.3.9/requirements.txt
+@@ -1,4 +1,3 @@
+ ply>= 3.4
+-six>= 1.12.0
+ packaging>=21.0
+ Jinja2>= 3.0.3
+Index: stone-3.3.9/stone/backends/obj_c_types.py
+===================================================================
+--- stone-3.3.9.orig/stone/backends/obj_c_types.py
++++ stone-3.3.9/stone/backends/obj_c_types.py
+@@ -2,8 +2,6 @@ import json
+ import os
+ import shutil
+ 
+-import six
+-
+ from stone.backends.obj_c import (
+     base_file_comment,
+     comment_prefix,
+@@ -915,7 +913,7 @@ class ObjCTypesBackend(ObjCBaseBackend):
+                          if data_type.min_length else 'nil'),
+                         ('maxLength', '@({})'.format(data_type.max_length)
+                          if data_type.max_length else 'nil'),
+-                        ('pattern', '@"{}"'.format(six.ensure_str(pattern))
++                        ('pattern', '@"{}"'.format(str(pattern))
+                          if pattern else 'nil'),
+                     ]))
+ 
+Index: stone-3.3.9/stone/backends/python_rsrc/stone_serializers.py
+===================================================================
+--- stone-3.3.9.orig/stone/backends/python_rsrc/stone_serializers.py
++++ stone-3.3.9/stone/backends/python_rsrc/stone_serializers.py
+@@ -20,8 +20,6 @@ import json
+ import re
+ import time
+ 
+-import six
+-
+ from stone.backends.python_rsrc import (
+     stone_base as bb,
+     stone_validators as bv,
+@@ -658,7 +656,7 @@ class PythonPrimitiveToStoneDecoder:
+         else:
+             raise bv.ValidationError("expected string or object, got %s" %
+                                      bv.generic_type_name(obj))
+-        return data_type.definition(six.ensure_str(tag), val)
++        return data_type.definition(str(tag), val)
+ 
+     def decode_union_dict(self, data_type, obj):
+         if '.tag' not in obj:
+@@ -785,7 +783,7 @@ class PythonPrimitiveToStoneDecoder:
+         else:
+             raise bv.ValidationError("expected string or object, got %s" %
+                                      bv.generic_type_name(obj))
+-        return data_type.definition(six.ensure_str(tag), val)
++        return data_type.definition(str(tag), val)
+ 
+     def decode_struct_tree(self, data_type, obj):
+         """
+@@ -1003,45 +1001,7 @@ def _findall(text, substr):
+ # Every 28 years the calendar repeats, except through century leap years
+ # where it's 6 years. But only if you're using the Gregorian calendar. ;)
+ def _strftime(dt, fmt):
+-    try:
+-        return dt.strftime(fmt)
+-    except ValueError:
+-        if not six.PY2 or dt.year > 1900:
+-            raise
+-
+-    if _ILLEGAL_S.search(fmt):
+-        raise TypeError("This strftime implementation does not handle %s")
+-
+-    year = dt.year
+-
+-    # For every non-leap year century, advance by 6 years to get into the
+-    # 28-year repeat cycle
+-    delta = 2000 - year
+-    off = 6 * (delta // 100 + delta // 400)
+-    year = year + off
+-
+-    # Move to around the year 2000
+-    year = year + ((2000 - year) // 28) * 28
+-    timetuple = dt.timetuple()
+-    s1 = time.strftime(fmt, (year,) + timetuple[1:])
+-    sites1 = _findall(s1, str(year))
+-
+-    s2 = time.strftime(fmt, (year + 28,) + timetuple[1:])
+-    sites2 = _findall(s2, str(year + 28))
+-
+-    sites = []
+-
+-    for site in sites1:
+-        if site in sites2:
+-            sites.append(site)
+-
+-    s = s1
+-    syear = '%4d' % (dt.year,)
+-
+-    for site in sites:
+-        s = s[:site] + syear + s[site + 4:]
+-
+-    return s
++    return dt.strftime(fmt)
+ 
+ 
+ try:
+Index: stone-3.3.9/stone/backends/python_rsrc/stone_validators.py
+===================================================================
+--- stone-3.3.9.orig/stone/backends/python_rsrc/stone_validators.py
++++ stone-3.3.9/stone/backends/python_rsrc/stone_validators.py
+@@ -14,8 +14,6 @@ import numbers
+ import re
+ from abc import ABCMeta, abstractmethod
+ 
+-import six
+-
+ _MYPY = False
+ if _MYPY:
+     import typing  # noqa: F401 # pylint: disable=import-error,unused-import,useless-suppression
+@@ -328,18 +326,11 @@ class String(Primitive):
+     def validate(self, val):
+         """
+         A unicode string of the correct length and pattern will pass validation.
+-        In PY2, we enforce that a str type must be valid utf-8, and a unicode
+-        string will be returned.
+         """
+         if not isinstance(val, str):
+             raise ValidationError("'%s' expected to be a string, got %s"
+                                   % (get_value_string(val), generic_type_name(val)))
+-        if not six.PY3 and isinstance(val, str):
+-            try:
+-                val = val.decode('utf-8')
+-            except UnicodeDecodeError:
+-                raise ValidationError("'%s' was not valid utf-8")
+-
++        
+         if self.max_length is not None and len(val) > self.max_length:
+             raise ValidationError("'%s' must be at most %d characters, got %d"
+                                   % (get_value_string(val), self.max_length, len(val)))
+Index: stone-3.3.9/stone/backends/swift_types.py
+===================================================================
+--- stone-3.3.9.orig/stone/backends/swift_types.py
++++ stone-3.3.9/stone/backends/swift_types.py
+@@ -2,7 +2,6 @@ import json
+ import os
+ import shutil
+ 
+-import six
+ import jinja2
+ import textwrap
+ 
+@@ -304,7 +303,7 @@ class SwiftTypesBackend(SwiftBaseBackend
+                 self._func_args([
+                     ("minLength", data_type.min_length),
+                     ("maxLength", data_type.max_length),
+-                    ("pattern", '"{}"'.format(six.ensure_str(pat)) if pat else None),
++                    ("pattern", '"{}"'.format(str(pat)) if pat else None),
+                 ])
+             )
+         else:
+Index: stone-3.3.9/test/test_python_gen.py
+===================================================================
+--- stone-3.3.9.orig/test/test_python_gen.py
++++ stone-3.3.9/test/test_python_gen.py
+@@ -10,8 +10,6 @@ import subprocess
+ import sys
+ import unittest
+ 
+-import six
+-
+ import stone.backends.python_rsrc.stone_base as bb
+ import stone.backends.python_rsrc.stone_serializers as ss
+ import stone.backends.python_rsrc.stone_validators as bv
+@@ -655,7 +653,7 @@ class TestDropInModules(unittest.TestCas
+                 pass
+ 
+         assert bv.type_name_with_module(Foo) == "test.test_python_gen.Foo"
+-        assert bv.type_name_with_module(int) == "builtins.int" if six.PY3 else "__builtin__.int"
++        assert bv.type_name_with_module(int) == "builtins.int"
+ 
+ 
+ test_spec = """\

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue May 13 12:29:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.0:
+  * fix panic in auth.TokenExpired (#736)
+  * Add stackit git commands: list, describe, create and delete.
+    (#725)
+  * chore(deps): update renovatebot/github-action action to v42.0.2
+    (#743)
+  * feat(cli): set custom user-agent header for STACKIT API calls
+    (#741)
+  * fix(deps): update stackit sdk modules (#740)
+  * refactor(cli): pass parameter struct to cmd factories (#735)
+  * feat(fmt): run goimports on format make command (#733)
+  * chore(deps): update module github.com/golangci/golangci-lint to
+    v2 (#731)
+  * feat: prettify json output using stackit curl (#713)
+  * fix(deps): update module golang.org/x/term to v0.32.0 (#729)
+  * fix(deps): update module golang.org/x/oauth2 to v0.30.0 (#728)
+  * chore(deps): bump golang.org/x/oauth2 from 0.29.0 to 0.30.0
+    (#727)
+  * fix(deps): update module golang.org/x/text to v0.25.0 (#730)
+  * chore(deps): update renovatebot/github-action action to v42
+    (#732)
+  * feat(deps): use go 1.24 tool feature to install golangci-lint
+    (#709)
+  * fix(deps): update module
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex to
+    v1 (#724)
+  * fix(deps): update stackit sdk modules (#721)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#718)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#722)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#723)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#719)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq (#720)
+  * chore(deps): bump renovatebot/github-action from 41.0.21 to
+    41.0.22 (#712)
+  * fix(deps): update stackit sdk modules (#717)
+
+-------------------------------------------------------------------
 Wed Apr 30 08:41:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.0:

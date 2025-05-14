@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 20:59:04 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.2:
+  * add static type hints (PRs #1302, #1349)
+  * Expose nc_rc_set, nc_rc_get (via rc_set, rc_get module
+    functions). (PR #1348)
+  * Add Variable.get_fill_value and allow `fill_value='default'`
+    to set `_FillValue` attribute using default fill values.
+  * Fix NETCDF3 endian error (issue #1373, PR #1355).
+
+-------------------------------------------------------------------
 Tue Apr 22 01:40:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

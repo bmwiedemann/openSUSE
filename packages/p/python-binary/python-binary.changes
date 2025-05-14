@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 04:40:38 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Sep  6 08:08:08 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest macro

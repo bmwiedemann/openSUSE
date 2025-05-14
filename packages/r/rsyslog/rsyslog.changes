@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 09:17:09 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- rely on systemd file-triggers for reloading the daemon after
+  rsyslog modules update (bsc#1237462)
+
+-------------------------------------------------------------------
 Tue Apr  1 17:26:14 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Upgrade to rsyslog 8.2502

@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>1273446</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>b20023f98efdb653a9bf5885bb9cda6a</srcmd5>
+    <version>128.10.0</version>
+    <time>1747061379</time>
+    <user>anag_factory</user>
+    <comment>- build on s390x needs 14G memory - adjust _constraints
+</comment>
+    <requestid>1276614</requestid>
+  </revision>
 </revisionlist>

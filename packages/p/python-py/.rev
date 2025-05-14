@@ -475,4 +475,12 @@
     <comment>- Skip a recalcitrant test for Python 3.13's benefit.</comment>
     <requestid>1207774</requestid>
   </revision>
+  <revision rev="44" vrev="8">
+    <srcmd5>cef2d79d3e96c0660c8de6f6bd8c46c3</srcmd5>
+    <version>1.11.0</version>
+    <time>1746638141</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275088</requestid>
+  </revision>
 </revisionlist>

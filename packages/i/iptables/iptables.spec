@@ -68,6 +68,7 @@ Requires(postun): update-alternatives
 %else
 Provides:		%name-backend-nft = %version-%release
 Obsoletes:		%name-backend-nft < %version-%release
+Provides:       ebtables
 %endif
 # During the update to iptables 1.8, ip6tables-restore-translate, ip6tables-translate,
 # iptables-restore-translate and iptables-translate were moved from iptables-nft subpackage

@@ -267,68 +267,38 @@
 ;; GNUS
 ;; ----
 ;; Sorting
-(if (or (and (= emacs-major-version 19) (> emacs-minor-version 29))
-	(> emacs-major-version 19))
-     (add-hook 'gnus-select-group-hook
-	#'(lambda ()
-	  (setq-default gnus-auto-select-first nil)
-	  (setq-default gnus-auto-center-summary nil)
-	  (setq gnus-thread-sort-functions
-	   '(gnus-thread-sort-by-number
-	     gnus-thread-sort-by-subject
-	     gnus-thread-sort-by-date
-	     gnus-thread-sort-by-score))))
-   (add-hook 'gnus-select-group-hook
-	#'(lambda ()
-	  (setq-default gnus-auto-select-first nil)
-	  (setq-default gnus-auto-center-summary nil)
-	  ;; First of all, sort by date.
-	  (gnus-keysort-headers
-	   (function string-lessp)
-	   (function
-	    (lambda (a)
-	      (gnus-sortable-date (gnus-header-date a)))))
-	  ;; Then sort by subject string ignoring `Re:'.
-	  ;; If case-fold-search is non-nil, case of letters is ignored.
-	  (gnus-keysort-headers
-	   (function string-lessp)
-	   (function
-	    (lambda (a)
-	      (if case-fold-search
-		  (downcase (gnus-simplify-subject (gnus-header-subject a) t))
-		(gnus-simplify-subject (gnus-header-subject a) t)))))
-	 ))
-)
-;; highlighting, menus, and subscribing in GNUS
-(add-hook 'gnus-startup-hook
-     #'(lambda ()
-	(setq gnus-subscribe-newsgroup-method
-	#'(lambda (newsgroup)
-	   (gnus-subscribe-newsgroup newsgroup)
-	   (gnus-kill-newsgroup newsgroup)))
-	(setq gnus-use-generic-from t)
-	;; highlighting and menu in GNUS
-	(if (or (and (= emacs-major-version 19) (> emacs-minor-version 29))
-		(> emacs-major-version 19))
-	  (progn
-	    (setq gnus-visual '(highlight menu))
-	    (setq gnus-group-highlight
-		'(;; News.
-		  ((and (> unread 100) (not mailp)) . gnus-summary-high-ticked-face)
-		  ((and (> unread 0) (not mailp))   . gnus-summary-high-read-face)
-		  ((and (= unread 0) (not mailp))   . gnus-summary-high-ancient-face) 
-		  ((not mailp)			    . gnus-summary-normal-ancient-face) 
-		  ;; Mail.
-		  ((and (= unread 0) (eq level 1))  . gnus-group-mail-1-empty-face)
-		  ((eq level 1)			    . gnus-group-mail-1-face)
-		  ((and (= unread 0) (eq level 2))  . gnus-group-mail-2-empty-face)
-		  ((eq level 2)			    . gnus-group-mail-2-face)
-		  ((and (= unread 0) (eq level 3))  . gnus-group-mail-3-empty-face)
-		  ((eq level 3)			    . gnus-group-mail-3-face)
-		  ((= unread 0)			    . gnus-group-mail-low-empty-face)
-		  (t				    . gnus-group-mail-low-face)))
-      )))
-)
+;(if (or (and (= emacs-major-version 19) (> emacs-minor-version 29))
+;	(> emacs-major-version 19))
+;     (add-hook 'gnus-select-group-hook
+;	#'(lambda ()
+;	  (setq-default gnus-auto-select-first nil)
+;	  (setq-default gnus-auto-center-summary nil)
+;	  (setq gnus-thread-sort-functions
+;	   '(gnus-thread-sort-by-number
+;	     gnus-thread-sort-by-subject
+;	     gnus-thread-sort-by-date
+;	     gnus-thread-sort-by-score))))
+;   (add-hook 'gnus-select-group-hook
+;	#'(lambda ()
+;	  (setq-default gnus-auto-select-first nil)
+;	  (setq-default gnus-auto-center-summary nil)
+;	  ;; First of all, sort by date.
+;	  (gnus-keysort-headers
+;	   (function string-lessp)
+;	   (function
+;	    (lambda (a)
+;	      (gnus-sortable-date (gnus-header-date a)))))
+;	  ;; Then sort by subject string ignoring `Re:'.
+;	  ;; If case-fold-search is non-nil, case of letters is ignored.
+;	  (gnus-keysort-headers
+;	   (function string-lessp)
+;	   (function
+;	    (lambda (a)
+;	      (if case-fold-search
+;		  (downcase (gnus-simplify-subject (gnus-header-subject a) t))
+;		(gnus-simplify-subject (gnus-header-subject a) t)))))
+;	 ))
+;)
 ;;
 ;; Common to all C modes
 ;; ---------------------

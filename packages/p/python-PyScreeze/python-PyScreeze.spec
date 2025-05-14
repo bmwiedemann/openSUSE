@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyScreeze
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyScreeze
 Version:        0.1.30
 Release:        0
@@ -25,7 +24,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/asweigart/pyscreeze
 Source:         https://files.pythonhosted.org/packages/source/P/PyScreeze/PyScreeze-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -47,10 +48,10 @@ PyScreeze is a screenshot module for Python 2 and 3.
 %setup -q -n PyScreeze-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +63,7 @@ PyScreeze is a screenshot module for Python 2 and 3.
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyscreeze
+%{python_sitelib}/[Pp]y[Ss]creeze-%{version}*-info
 
 %changelog

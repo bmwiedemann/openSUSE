@@ -1,7 +1,7 @@
 #
 # spec file for package usrsctp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Networking/Other
 URL:            https://github.com/sctplab/usrsctp/
 Source:         https://github.com/sctplab/usrsctp/archive/%{version}.tar.gz
+# https://sources.debian.org/src/libusrsctp/0.9.5.0-2/debian/patches/1001_install_pkg-config_file.patch
+Patch0:         usrsctp-enable-pkgconfig.patch
 # for run bootstrap
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -42,7 +44,7 @@ Group:          System/Libraries
 The libraries for usersctp.
 
 %package devel
-Summary:        Usersctp Development Kit 
+Summary:        Usersctp Development Kit
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
@@ -73,5 +75,6 @@ rm -f %{buildroot}%{_libdir}/lib*.la
 %files devel
 %{_includedir}/*.h
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/usrsctp.pc
 
 %changelog

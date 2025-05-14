@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 07 03:31:11 UTC 2025 - william.brown@suse.com
+
+- Update to version 20250507:
+  * RUSTSEC-2025-0028: Indicate 'cve-rs' is a joke
+  * RUSTSEC-2025-0030: Indicate 'totally-safe-transmute' is a toy.
+  * Adjust patched versions in mp3-metadata advisory
+  * Assigned RUSTSEC-2025-0032 to redox_uefi_std
+  * Out of bounds read in redux_uefi_std (#2263)
+  * Assigned RUSTSEC-2025-0031 to tanton_engine
+  * tanton_engine: unsound public API (#2286)
+  * Assigned RUSTSEC-2025-0028 to cve-rs, RUSTSEC-2025-0029 to totally-safe, RUSTSEC-2025-0030 to totally-safe-transmute
+  * Report unsoundness in `cve-rs`, `totally-safe-transmute` and `totally-safe` (#2221)
+  * Assigned RUSTSEC-2023-0090 to wasmtime, RUSTSEC-2022-0095 to wasmtime, RUSTSEC-2022-0096 to wasmtime, RUSTSEC-2022-0097 to wasmtime, RUSTSEC-2023-0091 to wasmtime, RUSTSEC-2022-0098 to wasmtime, RUSTSEC-2022-0099 to wasmtime, RUSTSEC-2023-0092 to wasmtime, RUSTSEC-2024-0438 to wasmtime, RUSTSEC-2024-0439 to wasmtime, RUSTSEC-2024-0440 to wasmtime, RUSTSEC-2024-0441 to wasmtime, RUSTSEC-2022-0100 to wasmtime, RUSTSEC-2022-0101 to wasmtime, RUSTSEC-2023-0093 to wasmtime, RUSTSEC-2022-0102 to wasmtime
+
+-------------------------------------------------------------------
 Fri Apr 11 02:21:43 UTC 2025 - william.brown@suse.com
 
 - Update to version 20250411:

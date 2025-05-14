@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 07:35:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete and unneeded gnome-common with libtool
+  BuildRequires.
+
+-------------------------------------------------------------------
 Thu Jul  6 08:26:53 UTC 2023 - Gordon Leung <pirateclip@protonmail.com>
 
 - Update to 1.3.16

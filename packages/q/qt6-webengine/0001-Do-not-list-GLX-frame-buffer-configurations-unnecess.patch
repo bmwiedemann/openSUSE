@@ -1,0 +1,81 @@
+From 58eb9571eb7f1a806e25310508d78dca798331e5 Mon Sep 17 00:00:00 2001
+From: Peter Varga <pvarga@inf.u-szeged.hu>
+Date: Mon, 7 Apr 2025 10:44:22 +0200
+Subject: [PATCH] Do not list GLX frame buffer configurations unnecessarily
+
+List it on demand instead of in constructor. It is not used if
+dma-buf/GBM/NativePixmap is disabled.
+
+This fixes fatal error when glXChooseFBConfig() fails to return
+configuration in XWayland with Nvidia driver.
+
+Fixes: QTBUG-135647
+Change-Id: Iab10f6f0cdff54732a2dee8d201f1e3b14146b0e
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Reviewed-by: Moss Heim <moss.heim@qt.io>
+(cherry picked from commit 23cb28fa0c21c3205b398eb177dffada62de6cc9)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ src/core/ozone/glx_helper.cpp | 19 ++++++++++++++++---
+ src/core/ozone/glx_helper.h   |  2 +-
+ 2 files changed, 17 insertions(+), 4 deletions(-)
+
+diff --git a/src/core/ozone/glx_helper.cpp b/src/core/ozone/glx_helper.cpp
+index 02319e9..4207b7f 100644
+--- a/src/core/ozone/glx_helper.cpp
++++ b/src/core/ozone/glx_helper.cpp
+@@ -43,8 +43,17 @@ GLXHelper::GLXHelper() : m_functions(new GLXHelper::GLXFunctions())
+     m_display = x11Application->display();
+     m_connection = x11Application->connection();
+ 
++    m_isDmaBufSupported = QtWebEngineCore::WebEngineContext::isGbmSupported()
++            && ui::GpuMemoryBufferSupportX11::GetInstance()->has_gbm_device();
++}
++
++GLXFBConfig GLXHelper::getFBConfig()
++{
++    if (m_configs)
++        return m_configs[0];
++
+     // clang-format off
+-    const int configAttribs[] = {
++    static const int configAttribs[] = {
+         GLX_RED_SIZE, 8,
+         GLX_GREEN_SIZE, 8,
+         GLX_BLUE_SIZE, 8,
+@@ -59,13 +68,17 @@ GLXHelper::GLXHelper() : m_functions(new GLXHelper::GLXFunctions())
+     };
+     // clang-format on
+ 
++    if (Q_UNLIKELY(!m_isDmaBufSupported)) {
++        qWarning("GLX: Frame buffer configuration is not expected to be used without dma-buf "
++                 "support.");
++    }
++
+     int numConfigs = 0;
+     m_configs = glXChooseFBConfig(m_display, /* screen */ 0, configAttribs, &numConfigs);
+     if (!m_configs || numConfigs < 1)
+         qFatal("GLX: Failed to find frame buffer configuration.");
+ 
+-    m_isDmaBufSupported = QtWebEngineCore::WebEngineContext::isGbmSupported()
+-            && ui::GpuMemoryBufferSupportX11::GetInstance()->has_gbm_device();
++    return m_configs[0];
+ }
+ 
+ GLXPixmap GLXHelper::importBufferAsPixmap(int dmaBufFd, uint32_t size, uint16_t width,
+diff --git a/src/core/ozone/glx_helper.h b/src/core/ozone/glx_helper.h
+index c142072..963c4a6 100644
+--- a/src/core/ozone/glx_helper.h
++++ b/src/core/ozone/glx_helper.h
+@@ -30,7 +30,7 @@ public:
+     Display *getXDisplay() const { return m_display; }
+     GLXFunctions *functions() const { return m_functions.get(); }
+ 
+-    GLXFBConfig getFBConfig() const { return m_configs[0]; }
++    GLXFBConfig getFBConfig();
+     GLXPixmap importBufferAsPixmap(int dmaBufFd, uint32_t size, uint16_t width, uint16_t height,
+                                    uint16_t stride) const;
+     bool isDmaBufSupported() const { return m_isDmaBufSupported; }
+-- 
+2.49.0
+

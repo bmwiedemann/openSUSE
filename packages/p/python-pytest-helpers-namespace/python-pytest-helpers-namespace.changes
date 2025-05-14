@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 06:50:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Oct 24 13:44:39 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - use setuptools_scm to get proper version in metadata

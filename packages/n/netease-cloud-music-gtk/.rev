@@ -241,4 +241,19 @@
 </comment>
     <requestid>1220382</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>cb3d3e927e106513c8c2252ea2ae5012</srcmd5>
+    <version>2.5.2</version>
+    <time>1746542583</time>
+    <user>anag_factory</user>
+    <comment>- Release version 2.5.0 
+ + Fix gnome48 icon anomaly
+ + Modify debian installation instructions
+ + Optimize interface design
+ + mpris show original image
+ + Update dependency version
+ + Hide daily song list
+</comment>
+    <requestid>1274830</requestid>
+  </revision>
 </revisionlist>

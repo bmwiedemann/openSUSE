@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu May  8 22:04:47 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to 9.0.2:
+  See https://www.kicad.org/blog/2025/05/KiCad-9.0.2-Release/ for details
+
+-------------------------------------------------------------------
+Tue Apr 15 12:50:13 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use glew_EGL-devel for BuildRequires when building with egl
+  support.
+
+-------------------------------------------------------------------
 Mon Mar 31 22:45:20 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 9.0.1:

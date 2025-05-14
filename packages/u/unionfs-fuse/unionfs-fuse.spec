@@ -2,6 +2,7 @@
 # spec file for package unionfs-fuse
 #
 # Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +18,22 @@
 
 
 Name:           unionfs-fuse
-Version:        2.2
+Version:        3.6
 Release:        0
 Summary:        Userspace Unionfs File System
 License:        BSD-3-Clause
 URL:            https://github.com/rpodgorny/unionfs-fuse
 Source:         https://github.com/rpodgorny/unionfs-fuse/archive/v%{version}.tar.gz
-BuildRequires:  cmake >= 3.5
-BuildRequires:  fuse-devel
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
+BuildRequires:  cmake
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fuse3)
+Requires:       fuse3
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(libattr)
+%else
 BuildRequires:  libattr-devel
-Requires:       fuse
+%endif
 
 %description
 unionfs-fuse overlays several directory into one single mount point
@@ -39,10 +45,10 @@ copied to to a higher level read-write branch if the copy-on-write
 (cow) mode was enabled.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake -DWITH_XATTR=1 -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+%cmake -DWITH_XATTR=1
 %cmake_build
 
 %install
@@ -54,8 +60,9 @@ copied to to a higher level read-write branch if the copy-on-write
 %files
 %license LICENSE
 %doc CREDITS NEWS
-%{_mandir}/man?/*
+%{_mandir}/man8/unionfs.8%{?ext_man}
 %{_bindir}/unionfs
 %{_bindir}/unionfsctl
+%{_sbindir}/mount.unionfs
 
 %changelog

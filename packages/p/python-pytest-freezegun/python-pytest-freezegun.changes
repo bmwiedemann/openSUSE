@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 06:50:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed May  3 03:17:36 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-packaging.patch:

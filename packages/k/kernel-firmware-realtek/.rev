@@ -65,4 +65,14 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272740</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>13dd5a9ab8dcb92fba007aeb788be220</srcmd5>
+    <version>20250502</version>
+    <time>1747061145</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * rtw89: 8852c: add tables for dynamic antenna TXPWR
+  * rtw89: 8922a: update fw to v0.35.71.0</comment>
+    <requestid>1276107</requestid>
+  </revision>
 </revisionlist>

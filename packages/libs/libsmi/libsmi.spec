@@ -90,6 +90,7 @@ libsmi.
 
 %build
 autoreconf --force --install
+export CFLAGS="%{optflags} -std=gnu11"
 %configure --disable-static \
            --with-pic --enable-smi \
 	       --enable-sming \

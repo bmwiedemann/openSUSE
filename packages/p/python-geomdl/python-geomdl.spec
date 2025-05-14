@@ -1,7 +1,7 @@
 #
 # spec file for package python-geomdl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,6 @@
 %define archivename NURBS-Python
 %define packagename geomdl
 %{?sle15_python_module_pythons}
-%global skip_python39 1
 Name:           python-geomdl
 Version:        5.3.1
 Release:        0
@@ -31,9 +30,11 @@ Source:         https://github.com/orbingol/NURBS-Python/archive/v%{version}.tar
 Patch0:         support-numpy-124.patch
 BuildRequires:  %{python_module matplotlib >= 2.2.3}
 BuildRequires:  %{python_module numpy >= 1.15.4}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plotly}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 2.2.3
@@ -50,10 +51,10 @@ B-Spline and NURBS spline library.
 %autosetup -p1 -n %{archivename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,7 +63,7 @@ B-Spline and NURBS spline library.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*egg-info
 %{python_sitelib}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

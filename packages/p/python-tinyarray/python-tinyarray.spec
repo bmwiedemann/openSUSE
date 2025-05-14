@@ -1,7 +1,7 @@
 #
 # spec file for package python-tinyarray
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        1.2.4
 Release:        0
 Summary:        Arrays of numbers for Python, optimized for small sizes
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://gitlab.kwant-project.org/kwant/tinyarray
 Source:         https://files.pythonhosted.org/packages/source/t/tinyarray/tinyarray-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -51,10 +52,10 @@ with NumPy, and less memory is used to store them.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -73,6 +74,7 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc README.rst
 %license LICENSE.rst
-%{python_sitearch}/*
+%{python_sitearch}/tinyarray.cpython*.so
+%{python_sitearch}/tinyarray-%{version}.dist-info
 
 %changelog

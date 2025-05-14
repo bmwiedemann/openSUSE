@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 13:29:04 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add mypy-1.14.1-gcc15.patch from upstream to fix gcc15 compile
+  time error
+
+-------------------------------------------------------------------
+Mon May  5 12:58:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update vendored types_* to the appropriate versions.
+
+-------------------------------------------------------------------
 Fri Jan 24 15:13:25 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.14.1

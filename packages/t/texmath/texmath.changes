@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Apr 29 21:50:43 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update texmath to version 0.12.10.
+  texmath (0.12.10)
+
+    * texmath-server:
+
+      + Change endpoints: `/convert` to root, and `/convert-batch` to `/batch`.
+      + Allow running as CGI if renamed pandoc-server.cgi. In this mode it
+        accepts JSON content with POST requests or parameters with GET requests,
+        just like pandoc-server itself.
+
+    * TeX reader:
+
+      + Fix parsing bug with comment at beginning of braced (#258).
+      + Support negative numbers in `\hspace` (#259).
+      + Allow decimals in `\hspace` (#259).
+      + Support `\quad` in `\text` (#260).
+
+-------------------------------------------------------------------
 Sun Mar 16 17:14:36 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update texmath to version 0.12.9.

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 13 04:37:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.99:
+  * fix pro deployment
+  * fix(auth): set organisation from job token when present (#1934)
+  * Use pagination options when listing GitHub App repositories to
+    retrieve more results (100) per page (#1941)
+  * fix: auto_merge not working properly with orchestrator backend
+    (#1871)
+
+-------------------------------------------------------------------
 Wed Apr 30 04:48:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.98:

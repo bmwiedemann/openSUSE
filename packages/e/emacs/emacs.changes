@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  8 06:27:38 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Remove/disable GNUS setup in (dot).gnu-emacs  (boo#1241188)
+- Add patch emacs-30.1-minmalxauth.patch (boo#1241254)
+
+-------------------------------------------------------------------
+Mon Apr  7 11:52:23 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Modify patch emacs-30.1-seccomp.patch
+  * include asm/termbits.h is mandatory accordingly to latest ioctl_tty(2)  
+  * set default for MAP_DROPPABLE to 0x08
+
+-------------------------------------------------------------------
 Thu Mar 27 12:19:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid override of delete-selection-mode in site-load.el (boo#1239926) 

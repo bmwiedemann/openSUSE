@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 11 12:49:39 CEST 2025 - tumic@cbox.cz
+
+- Update to version 4.2
+  * Qt5 builds now require Qt 5.15.
+  * Fixed UNIX builds on MacOS (Macports).
+
+-------------------------------------------------------------------
+Thu Feb 13 23:40:07 CET 2025 - tumic@cbox.cz
+
+- Update to version 4.1
+  * Fixed broken text handling under Qt5.
+
+-------------------------------------------------------------------
 Wed Jan  8 01:07:27 CET 2025 - tumic@cbox.cz
 
 - Update to version 4.0

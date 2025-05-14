@@ -1,7 +1,7 @@
 #
 # spec file for package parti
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2024 SUSE LLC
 # Copyright (c) 2013-2015 Steffen Winterfeldt
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,29 +13,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           parti
-Version:        2.6
+Version:        2.8
 Release:        0
 Summary:        Show partition table information
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Hardware/Other
-Url:            https://github.com/wfeldt/parti
+URL:            https://github.com/wfeldt/parti
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  xz
-BuildRequires:  pkgconfig(blkid)
-BuildRequires:  pkgconfig(uuid)
-BuildRequires:  pkgconfig(json-c)
 BuildRequires:  libmediacheck-devel
-%if 0%{suse_version} >= 1500
+BuildRequires:  pkgconfig
+BuildRequires:  xz
+BuildRequires:  rubygem(asciidoctor)
+BuildRequires:  pkgconfig(blkid)
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(uuid)
+%if 0%{?suse_version} >= 1500
 Requires:       mkisofs
 %else
 Requires:       cdrkit-cdrtools-compat
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Show partition table information for
@@ -53,15 +54,16 @@ So it can be used to verify the data your favorite partitioning tool has actuall
 %setup -q
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 
 %files
-%defattr(-,root,root)
 %{_bindir}/parti
 %{_bindir}/unify-gpt
-%doc README.md COPYING
+%license COPYING
+%doc README.md
+%doc %{_mandir}/man1/unify-gpt.*
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:10:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Thu Mar 14 10:15:49 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - skip build for 3.9 as plotly is gone

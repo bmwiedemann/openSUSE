@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Fix theming on Windows
+  * KCM: Make the list widget resize to fit the contents
+  * app: allow more arrow key navigation
+  * Prevent WinRT-related plugins from crashing on initialization
+  * fix windowsnotificationslistener
+  * fix mpris crash on getting media props
+  * plugins/notifications: Fix notification images sometimes duplicating
+  * Fix: Enable album art transmission on windows clients
+  * Fix build on platforms with sizeof(qsizetype) < sizeof(qint64)
+- Drop patch, merged upstream
+  * * 0001-Fix-build-on-32bit-archs.patch
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:38 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

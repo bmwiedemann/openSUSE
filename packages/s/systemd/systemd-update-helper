@@ -14,77 +14,112 @@ command -v systemctl >/dev/null || exit 0
 
 UPDATE_HELPER_USER_TIMEOUT_SEC=15
 
-case "$command" in
-    mark-install-system-units)
-        mkdir -p /run/systemd/rpm/needs-preset
+do_mark_install_units() {
+    mode=$1
+    shift
+    mkdir -p /run/systemd/rpm/$mode/{needs-preset,dont-disable}
 
-        for unit in "$@" ; do
-            if [ ! -e /usr/lib/systemd/system/"$unit" ]; then
-                touch /run/systemd/rpm/needs-preset/"$unit"
-            fi
-        done
-        ;;
+    for unit in "$@" ; do
+        if [ ! -e /usr/lib/systemd/$mode/"$unit" ]; then
+            # The unit is being introduced: remember we need to apply preset on
+            # this new unit regardless of whether it's a package update or
+            # installation.
+            touch /run/systemd/rpm/$mode/needs-preset/"$unit"
+        fi
 
-    install-system-units)
-        units=()
+        # All passed units are part of a package being installed or updated and
+        # therefore should not be disabled by the removal of a different package
+        # part of the same rpm transaction. This can happen when the package
+        # shipping the unit is being renamed (e.g. from "A" to "B"), where "A"
+        # is installed first, followed by the removal "B". In that case, "B" is
+        # removed and its %preun scriptlet runs %systemd_preun on the unit.
+        touch /run/systemd/rpm/$mode/dont-disable/"$unit"
+    done
+}
 
-        for unit in "$@" ; do
-            if [ -e /run/systemd/rpm/needs-preset/"$unit" ]; then
-		rm /run/systemd/rpm/needs-preset/"$unit"
-                units+=("$unit")
-            fi
-	done
+do_install_units() {
+    mode=$1
+    shift
+    units=()
 
-        [ ${#units[*]} -gt 0 ] &&
-                systemctl --no-reload preset "${units[@]}"
-        ;;
+    for unit in "$@" ; do
+        if [ -e /run/systemd/rpm/$mode/needs-preset/"$unit" ]; then
+            units+=("$unit")
+        fi
+    done
 
-    mark-install-user-units)
-        mkdir -p /run/systemd/rpm/needs-user-preset
+    [ ${#units[*]} -gt 0 ] && {
+        case $mode in
+        system)
+            systemctl --no-reload preset "${units[@]}" ;;
+        user)
+            systemctl --no-reload preset --global "${units[@]}" ;;
+        esac
+    }
+}
 
-        for unit in "$@" ; do
-            if [ ! -e /usr/lib/systemd/user/"$unit" ]; then
-                touch /run/systemd/rpm/needs-user-preset/"$unit"
-            fi
-        done
-        ;;
+do_remove_units() {
+    mode=$1
+    shift
+    units=()
 
-    install-user-units)
-        units=()
+    for unit in "$@" ; do
+        if [ ! -e /run/systemd/rpm/$mode/dont-disable/"$unit" ]; then
+            units+=("$unit")
+        fi
+    done
 
-        for unit in "$@" ; do
-            if [ -e /run/systemd/rpm/needs-user-preset/"$unit" ]; then
-                rm /run/systemd/rpm/needs-user-preset/"$unit"
-                units+=("$unit")
-            fi
-        done
+    [ ${#units[*]} -eq 0 ] && return
 
-        [ ${#units[*]} -gt 0 ] &&
-            systemctl --no-reload preset --global "$@" || :
-        ;;
-
-    remove-system-units)
+    case $mode in
+    system)
         if [ -d /run/systemd/system ]; then
-            systemctl --no-reload disable --now --no-warn "$@"
+            systemctl --no-reload disable --now --no-warn "${units[@]}"
         else
-            systemctl --no-reload disable --no-warn "$@"
+            systemctl --no-reload disable --no-warn "${units[@]}"
         fi
         ;;
+    user)
+        systemctl --global disable --no-warn "${units[@]}"
 
-    remove-user-units)
-        systemctl --global disable --no-warn "$@"
-
-        [ -d /run/systemd/system ] || exit 0
+        [ -d /run/systemd/system ] || break
 
         users=$(systemctl list-units 'user@*' --legend=no | sed -n -r 's/.*user@([0-9]+).service.*/\1/p')
         for user in $users; do
             SYSTEMD_BUS_TIMEOUT=${UPDATE_HELPER_USER_TIMEOUT_SEC}s \
-                    systemctl --user -M "$user@" disable --now --no-warn "$@" &
+                    systemctl --user -M "$user@" disable --now --no-warn "${units[@]}" &
         done
         wait
         ;;
+    esac
+}
 
-    mark-restart-system-units)
+case "$command" in
+    mark-install-system-units) # called from %pre
+        do_mark_install_units system "$@"
+        ;;
+
+    mark-install-user-units)
+        do_mark_install_units user "$@"
+        ;;
+
+    install-system-units) # called from %post
+        do_install_units system "$@"
+        ;;
+
+    install-user-units)
+        do_install_units user "$@"
+        ;;
+
+    remove-system-units) # called from %preun
+        do_remove_units system "$@"
+        ;;
+
+    remove-user-units)
+        do_remove_units user "$@"
+        ;;
+
+    mark-restart-system-units) # called from %postun
         [ -d /run/systemd/system ] || exit 0
 
         for unit in "$@"; do
@@ -106,7 +141,7 @@ case "$command" in
         wait
         ;;
 
-    system-reload-restart|system-reload|system-restart)
+    system-reload-restart|system-reload|system-restart) # called from the filetriggers
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
@@ -123,7 +158,7 @@ case "$command" in
         fi
         ;;
 
-    user-reload-restart|user-reload|user-restart|user-reexec)
+    user-reload-restart|user-reload|user-restart|user-reexec) # called from the filetriggers
         if [ -n "$*" ]; then
             echo >&2 "Unexpected arguments for '$command': $*"
             exit 2
@@ -144,6 +179,10 @@ case "$command" in
             done
             wait
         fi
+        ;;
+
+    clean-state)
+        rm -fr /run/systemd/rpm
         ;;
 
     *)

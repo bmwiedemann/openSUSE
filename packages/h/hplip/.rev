@@ -1511,4 +1511,20 @@
 Fixes build in Staging_A (python 3.13) - and seems to address the real reaason why PYTHON_INCLUDEDIR needed to be injected (forwarded request 1241212 from dimstar)</comment>
     <requestid>1245683</requestid>
   </revision>
+  <revision rev="160" vrev="7">
+    <srcmd5>5219ed5fa7391e1ad85ea8155a0bc1c2</srcmd5>
+    <version>3.24.4</version>
+    <time>1746638090</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274854</requestid>
+  </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>d603cd94a2a2b9105d76daf84be8f953</srcmd5>
+    <version>3.25.2</version>
+    <time>1746808774</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1275594</requestid>
+  </revision>
 </revisionlist>

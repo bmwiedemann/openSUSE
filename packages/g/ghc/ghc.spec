@@ -14,8 +14,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define full_version 9.10.1
-%define short_version 9.10.1
+%define full_version 9.10.2
+%define short_version 9.10.2
 
 %global llvm_major 15
 
@@ -61,10 +61,10 @@
 %global ghc_llvm_archs s390x
 %global ghc_unregisterized_arches noarch
 
-%global base_ver 4.20.0.0
+%global base_ver 4.20.1.0
 %global ghc_compact_ver 0.1.0.0
-%global hpc_ver 0.7.0.1
-%global hsc2hs_ver 0.68.8
+%global hpc_ver 0.7.0.2
+%global hsc2hs_ver 0.68.10
 %global ghc_bignum_ver 1.3
 %global xhtml_ver 3000.2.2.1
 
@@ -84,16 +84,10 @@ Source7:        runghc.man
 Patch1:         ghc-gen_contents_index-haddock-path.patch
 # https://ghc.haskell.org/trac/ghc/ticket/15689
 Patch2:         ghc-Cabal-install-PATH-warning.patch
-
 # PATCH-FIX-UPSTREAM Disable-unboxed-arrays.patch ptrommler@icloud.com -- Do not use unboxed arrays on big-endian platforms. See Haskell Trac #15411.
 Patch3:         Disable-unboxed-arrays.patch
-
-Patch5:         ppc64le-miscompilation.patch
-
-Patch100:       os-string-be.patch 
 Patch200:       ghc-hadrian-s390x-rts--qg.patch
 Patch300:       hadrian-9.10-deps.patch
-
 # Backport of MR 13105 (NCG for RISCV64)
 Patch243:       riscv64-ncg.patch
 
@@ -228,44 +222,44 @@ This package provides the User Guide and Haddock manual.
 %global ghc_pkg_c_deps ghc-compiler = %{ghc_version_override}-%{release}
 %global version %{ghc_version_override}
 #!ForceMultiversion
-%ghc_lib_subpackage -d Cabal-3.12.0.0
-%ghc_lib_subpackage -d Cabal-syntax-3.12.0.0
-%ghc_lib_subpackage -d array-0.5.7.0
+%ghc_lib_subpackage -d Cabal-3.12.1.0
+%ghc_lib_subpackage -d Cabal-syntax-3.12.1.0
+%ghc_lib_subpackage -d array-0.5.8.0
 %ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel,libnuma-devel base-%{base_ver}
-%ghc_lib_subpackage -d binary-0.8.9.2
-%ghc_lib_subpackage -d bytestring-0.12.1.0
+%ghc_lib_subpackage -d binary-0.8.9.3
+%ghc_lib_subpackage -d bytestring-0.12.2.0
 %ghc_lib_subpackage -d containers-0.7
 %ghc_lib_subpackage -d deepseq-1.5.0.0
-%ghc_lib_subpackage -d directory-1.3.8.3
-%ghc_lib_subpackage -d exceptions-0.10.7
-%ghc_lib_subpackage -d filepath-1.5.2.0
+%ghc_lib_subpackage -d directory-1.3.8.5
+%ghc_lib_subpackage -d exceptions-0.10.9
+%ghc_lib_subpackage -d filepath-1.5.4.0
 %ghc_lib_subpackage -d -x ghc-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-bignum-%{ghc_bignum_ver}
 %ghc_lib_subpackage -d -x ghc-boot-%{ghc_version_override}
 %ghc_lib_subpackage -d ghc-boot-th-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghc-compact-%{ghc_compact_ver}
-%ghc_lib_subpackage -d ghc-experimental-0.1.0.0
+%ghc_lib_subpackage -d ghc-experimental-9.1002.0
 %ghc_lib_subpackage -d -x ghc-heap-%{ghc_version_override}
-%ghc_lib_subpackage -d ghc-internal-9.1001.0
+%ghc_lib_subpackage -d ghc-internal-9.1002.0
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
 %ghc_lib_subpackage -d haskeline-0.8.2.1
 %ghc_lib_subpackage -d -x hpc-%{hpc_ver}
 %ghc_lib_subpackage -d mtl-2.3.1
-%ghc_lib_subpackage -d parsec-3.1.17.0
+%ghc_lib_subpackage -d parsec-3.1.18.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.19.0
+%ghc_lib_subpackage -d process-1.6.25.0
 %ghc_lib_subpackage -d stm-2.5.3.1
 %ghc_lib_subpackage -d semaphore-compat-1.0.0
 %ghc_lib_subpackage -d template-haskell-2.22.0.0
-%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.6
-%ghc_lib_subpackage -d text-2.1.1
+%ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.7
+%ghc_lib_subpackage -d text-2.1.2
 %ghc_lib_subpackage -d time-1.12.2
 %ghc_lib_subpackage -d transformers-0.6.1.1
-%ghc_lib_subpackage -d unix-2.8.5.1
+%ghc_lib_subpackage -d unix-2.8.6.0
 %ghc_lib_subpackage -d xhtml-%{xhtml_ver}
 
 # new in 9.10 
-%ghc_lib_subpackage -d os-string-2.0.2
+%ghc_lib_subpackage -d os-string-2.0.4
 %ghc_lib_subpackage -d ghc-toolchain-0.1.0.0
 %ghc_lib_subpackage -d ghc-platform-0.1.0.0
 
@@ -301,17 +295,12 @@ Installing this package causes %{name}-*-prof packages corresponding to
 %patch -P 3 -p1
 %endif
 
-%patch -P 5 -p1
-
-%patch -P 100 -p1
-
 %ifarch ppc64le s390x riscv64
 %patch -P 200 -p1
 %endif
+%patch -P 243 -p1
 
 %patch -P 300 -p1
-
-%patch -P 243 -p1
 
 rm libffi-tarballs/libffi-*.tar.gz
 
@@ -414,7 +403,7 @@ echo "%%dir %{ghclibdir}" >> %{name}-base%{?_ghcdynlibdir:-devel}.files
 %ghc_gen_filelists ghci %{ghc_version_override}
 %ghc_gen_filelists hpc %{hpc_ver}
 
-%ghc_gen_filelists ghc-prim 0.11.0
+%ghc_gen_filelists ghc-prim 0.12.0
 %ghc_gen_filelists integer-gmp 1.1
 %ghc_gen_filelists rts 1.0.2
 
@@ -461,14 +450,6 @@ rm %{buildroot}%{ghclibdir}/lib/package.conf.d/*.conf.copy
 # https://gitlab.haskell.org/ghc/ghc/-/issues/24121
 rm %{buildroot}%{ghclibdir}/share/doc/%{ghcplatform}/*/LICENSE
 
-#(
-#cd %{buildroot}%{ghclibdir}/lib/bin
-#for i in *; do
-#  if [ -f %{buildroot}%{ghclibdir}/bin/$i ]; then
-#     ln -sf ../../bin/$i
-#  fi
-#done
-#)
 
 %check
 # Actually, I took this from Jens Petersen's Fedora package

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May  2 08:44:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 25.04.0:
+  * Use the (standard) wxWidgets log window instead of our own log
+    pane.
+  * Do not set lmxchar/rmxchar (used for displaying a matrix in
+    text mode) (gh#wxMaxima-developers/wxmaxima#1926).
+  * Kill Lisp (e.g. sbcl.exe) when closing wxMaxima.
+    (gh#wxMaxima-developers/wxmaxima#1963,
+    gh#wxMaxima-developers/wxmaxima#1922,
+    gh#wxMaxima-developers/wxmaxima#1824,
+    gh#wxMaxima-developers/wxmaxima#1199).
+  * Correct heading colors (gh#wxMaxima-developers/wxmaxima#2005).
+  * Repaired the Equations->Solve numerical->Find numerical
+    solution" menu (gh#wxMaxima-developers/wxmaxima#2010).
+  * Included examples (10MinuteTutorial.wxm,
+    testbench_simple.wxmx) were affected by the Maxima/Gnuplot 6
+    problem (see issue gh#wxMaxima-developers/wxmaxima#1960).
+  * Support wxWidgets, if it was build with '--enable-utf8=yes'
+    (gh#wxMaxima-developers/wxmaxima#2012).
+  * Fix compiling with wxWidgets without webview.
+  * HTML export/Mathjax: Don't remove 1st/last label char
+    (gh#wxMaxima-developers/wxmaxima#2003).
+
+-------------------------------------------------------------------
 Fri Feb 14 10:17:37 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 25.01.0:

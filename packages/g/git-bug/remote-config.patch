@@ -10,10 +10,10 @@ Subject: [PATCH] pull, push: try reading git-bug.remote config value before
  repository/config.go |   11 +++++++++++
  3 files changed, 33 insertions(+), 10 deletions(-)
 
-Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/pull.go
+Index: git-bug-0.8.1+git.1746484874.96c7a111/commands/pull.go
 ===================================================================
---- git-bug-0.8.0+git.1742269202.0ab94c9.orig/commands/pull.go	2025-03-18 04:40:02.000000000 +0100
-+++ git-bug-0.8.0+git.1742269202.0ab94c9/commands/pull.go	2025-03-25 16:36:27.048924722 +0100
+--- git-bug-0.8.1+git.1746484874.96c7a111.orig/commands/pull.go	2025-05-06 00:41:14.000000000 +0200
++++ git-bug-0.8.1+git.1746484874.96c7a111/commands/pull.go	2025-05-06 12:25:33.320505683 +0200
 @@ -8,6 +8,7 @@
  	"github.com/git-bug/git-bug/commands/completion"
  	"github.com/git-bug/git-bug/commands/execenv"
@@ -46,10 +46,10 @@ Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/pull.go
  	}
  
  	env.Out.Println("Fetching remote ...")
-Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/push.go
+Index: git-bug-0.8.1+git.1746484874.96c7a111/commands/push.go
 ===================================================================
---- git-bug-0.8.0+git.1742269202.0ab94c9.orig/commands/push.go	2025-03-18 04:40:02.000000000 +0100
-+++ git-bug-0.8.0+git.1742269202.0ab94c9/commands/push.go	2025-03-25 16:36:27.049118817 +0100
+--- git-bug-0.8.1+git.1746484874.96c7a111.orig/commands/push.go	2025-05-06 00:41:14.000000000 +0200
++++ git-bug-0.8.1+git.1746484874.96c7a111/commands/push.go	2025-05-06 12:25:33.320753379 +0200
 @@ -7,6 +7,7 @@
  
  	"github.com/git-bug/git-bug/commands/completion"
@@ -82,10 +82,10 @@ Index: git-bug-0.8.0+git.1742269202.0ab94c9/commands/push.go
  	}
  
  	stdout, err := env.Backend.Push(remote)
-Index: git-bug-0.8.0+git.1742269202.0ab94c9/repository/config.go
+Index: git-bug-0.8.1+git.1746484874.96c7a111/repository/config.go
 ===================================================================
---- git-bug-0.8.0+git.1742269202.0ab94c9.orig/repository/config.go	2025-03-18 04:40:02.000000000 +0100
-+++ git-bug-0.8.0+git.1742269202.0ab94c9/repository/config.go	2025-03-25 16:36:27.049354801 +0100
+--- git-bug-0.8.1+git.1746484874.96c7a111.orig/repository/config.go	2025-05-06 00:41:14.000000000 +0200
++++ git-bug-0.8.1+git.1746484874.96c7a111/repository/config.go	2025-05-06 12:25:33.320922899 +0200
 @@ -60,6 +60,17 @@
  	RemoveAll(keyPrefix string) error
  }

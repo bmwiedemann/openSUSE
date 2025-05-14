@@ -19,7 +19,7 @@ cd "$RPM_BUILD_ROOT"
 [ -z "$STRIP" ] && STRIP="$host-strip"
 
 for f in `find . -type f -name "*.exe" -or -name "*.dll"`; do
-	case $("$host-objdump" -h "$f" 2>/dev/null | egrep -o '(debug[\.a-z_]*|gnu.version)') in
+	case $("$host-objdump" -h "$f" 2>/dev/null | grep -E -o '(debug[\.a-z_]*|gnu.version)') in
 	    *debuglink*) continue ;;
 	    *debug*) ;;
 	    *gnu.version*)

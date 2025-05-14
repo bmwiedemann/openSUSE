@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 12 06:53:41 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
+
+- Update to version 2.40.7:
+  * feat(lyrics-plus/translator): inject internals when using netease
+  * feat(lyrics-plus/netease): implement below-mode for netease (#3404)
+  * chore: `error` -> `warning`
+  * chore: change message in preprocess
+  * chore(deps): bump golang.org/x/net from 0.39.0 to 0.40.0 (#3399)
+  * feat(preprocess): expose graphql defs from every js file
+  * fix: correct minor typo when version is invalid (#3393)
+
+-------------------------------------------------------------------
 Sun Apr 27 19:21:15 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 2.40.5:

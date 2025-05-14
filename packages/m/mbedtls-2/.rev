@@ -120,4 +120,14 @@
 </comment>
     <requestid>1255752</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>c06126be629a7fe5c6bf577699b6ebb0</srcmd5>
+    <version>2.28.10</version>
+    <time>1746809326</time>
+    <user>anag_factory</user>
+    <comment>- Enable SRTP and DTLS protocols needed by some software. 
+
+Requested by @Yoshio_Sato at https://build.opensuse.org/requests/1274997 , who needs it for submitting MistServer to openSUSE:Factory .</comment>
+    <requestid>1275902</requestid>
+  </revision>
 </revisionlist>

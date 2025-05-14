@@ -235,4 +235,12 @@ Used by https://build.opensuse.org/package/show/home:gladiac/rav1e (AV1 encoder)
     <comment></comment>
     <requestid>1202069</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>2afea59b0c7080c6681cfbf3f708d698</srcmd5>
+    <version>0.10.3~git0.ee7d7ef</version>
+    <time>1746638134</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275080</requestid>
+  </revision>
 </revisionlist>

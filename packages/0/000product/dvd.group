@@ -244,7 +244,7 @@
     <package name="chrony-pool-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cifs-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clamav" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="clicfs" supportstatus="unsupported"/> <!-- reason: dvd:clicfs -->
+    <!-- clicfs not found on x86_64-->
     <package name="clutter-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="clutter-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="cm-unicode-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2394,7 +2394,7 @@
     <package name="libmpc3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpcdec6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpd1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="libmpdec3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libmpdec4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libmpeg2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpeg2encpp-2_2-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmpfr6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2559,8 +2559,8 @@
     <package name="libproc2-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libprojectM3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libprotobuf-c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libprotobuf-lite28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libprotobuf28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libprotobuf-lite29_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libprotobuf29_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpskc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2831,7 +2831,7 @@
     <package name="libusbredirhost1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusbredirparser1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libusdm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="libutf8_range-28_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libutf8_range-29_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libuuid1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libuv1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_x11 -->
     <package name="libv4l" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3742,7 +3742,6 @@
     <package name="qca-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qca-qt6-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
-    <package name="qemu-accel-tcg-x86" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-audio-spice" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-block-curl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-block-nfs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->

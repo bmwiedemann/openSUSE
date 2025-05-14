@@ -87,4 +87,12 @@
     <comment>- Added eiskaltdcpp-2.4.2-pcre2.patch to pcre2 support.</comment>
     <requestid>1254644</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>c606aaad2d67b445c72e6572adf19cfd</srcmd5>
+    <version>2.4.2</version>
+    <time>1746809464</time>
+    <user>anag_factory</user>
+    <comment>- Fixed the build with cmake4.</comment>
+    <requestid>1275932</requestid>
+  </revision>
 </revisionlist>

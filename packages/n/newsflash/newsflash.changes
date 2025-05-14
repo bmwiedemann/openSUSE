@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri May 09 10:50:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 3.3.5+223:
+  * fix custom sync interval initial error state
+  * update blueprint repo url
+  * restore search term before selecting sidebar item
+  * restore search term before selecting sidebar item
+  * Article View Style updates
+  * warning about short update intervals
+  * fmt
+  * close article on deselect article list (fixes #751)
+  * visual fixes
+  * use default values for new setting keys
+- enable updating vendor tarball, fixes bsc#1242632, bsc#1242810
+- remove aarch64 workaround, got fixed in Factory
+- needs clang-devel, as a crate doesn't build otherwise
+- remove suse_update_desktop_file macro
+
+-------------------------------------------------------------------
 Tue Sep 24 21:16:06 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update 3.3.5:

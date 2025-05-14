@@ -1237,4 +1237,56 @@
     <comment></comment>
     <requestid>1271170</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>35e61e0046e45389650bb25765721db8</srcmd5>
+    <version>8.4.7</version>
+    <time>1747061200</time>
+    <user>anag_factory</user>
+    <comment>- version update to 8.4.7
+    Core:
+        Fixed bug GH-18038 (Lazy proxy calls magic methods twice).
+        Fixed bug GH-18209 (Use-after-free in extract() with EXTR_REFS).
+        Fixed bug GH-18268 (Segfault in array_walk() on object with added property hooks).
+        Fixed bug GH-18304 (Changing the properties of a DateInterval through dynamic properties triggers a SegFault).
+        Fix some leaks in php_scandir.
+    DBA:
+        FIxed bug GH-18247 dba_popen() memory leak on invalid path.
+    Filter:
+        Fixed bug GH-18309 (ipv6 filter integer overflow).
+    GD:
+        Fixed imagecrop() overflow with rect argument with x/width y/heigh usage in gdImageCrop().
+        Fixed GH-18243 imagettftext() overflow/underflow on font size value.
+    Intl:
+        Fix reference support for intltz_get_offset().
+    LDAP:
+        Fixed bug GH-17776 (LDAP_OPT_X_TLS_* options can't be overridden).
+        Fix NULL deref on high modification key.
+    libxml:
+        Fixed custom external entity loader returning an invalid resource leading to a confusing TypeError message.
+    Opcache:
+        Fixed bug GH-18294 (assertion failure zend_jit_ir.c).
+        Fixed bug GH-18289 (Fix segfault in JIT).
+        Fixed bug GH-18136 (tracing JIT floating point register clobbering on Windows and ARM64).
+    OpenSSL:
+        Fix memory leak in openssl_sign() when passing invalid algorithm.
+        Fix potential leaks when writing to BIO fails.
+    PDO Firebird:
+        Fixed bug GH-18276 (persistent connection - &quot;zend_mm_heap corrupted&quot; with setAttribute())
+        Fixed bug GH-17383 (PDOException has wrong code and message since PHP 8.4)
+    PDO Sqlite:
+        Fix memory leak on error return of collation callback.
+    PgSql:
+        Fix uouv in pg_put_copy_end().
+    SPL:
+        Fixed bug GH-18322 (SplObjectStorage debug handler mismanages memory).
+    Standard:
+        Fixed bug GH-18145 (php8ts crashes in php_clear_stat_cache()).
+        Fix resource leak in iptcembed() on error.
+    Tests:
+        Address deprecated PHP 8.4 session options to prevent test failures.
+    Zip:
+        Fix uouv when handling empty options in ZipArchive::addGlob().
+        Fix memory leak when handling a too long path in ZipArchive::addGlob(). (forwarded request 1276314 from adkorte)</comment>
+    <requestid>1276711</requestid>
+  </revision>
 </revisionlist>

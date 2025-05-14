@@ -17,20 +17,56 @@
 
 
 Name:           zizmor
-Version:        1.5.2
+Version:        1.7.0
 Release:        0
 Summary:        A static analysis tool for GitHub Actions
 License:        MIT
 URL:            https://github.com/woodruffw/zizmor
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  bash-completion
 BuildRequires:  cargo >= 1.80
 BuildRequires:  cargo-packaging
+BuildRequires:  fish
+BuildRequires:  zsh
 ExcludeArch:    %{ix86} armv7hl
 
 %description
 zizmor is a static analysis tool for GitHub Actions. It can find many common
 security issues in typical GitHub Actions CI/CD setups.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
 %autosetup -p 1 -a 1
@@ -42,6 +78,18 @@ security issues in typical GitHub Actions CI/CD setups.
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} --completions=bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} --completions=fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{name} --completions=zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
 %check
 %{cargo_test}
 
@@ -49,5 +97,14 @@ install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildro
 %doc README.md
 %license LICENSE
 %{_bindir}/zizmor
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{name}
 
 %changelog

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  6 13:19:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 2022.1.0:
+  * Introduced the ONETBB_SPEC_VERSION macro to specify the version
+    of oneAPI specification implemented by the current version of
+    the library.
+  * blocked_nd_range is now a fully supported feature.
+
+- Migrated URLs to the new UXL Foundation organization
+- Use common URL format for Source URL
+- Format .spec file
+- Build with ninja 
+
+-------------------------------------------------------------------
 Thu Apr  3 05:23:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support older and current versions of setuptools WRT to the case of
@@ -18,16 +32,16 @@ Tue Dec 31 13:57:21 UTC 2024 - Eyad Issa <eyadlorenzo@gmail.com>
 - Use _service to download the source tarball
 
 - Update to version 2022.0.0:
-  * Extended the Flow Graph receiving nodes with a new 
-    try_put_and_wait API that submits a message to the graph and 
+  * Extended the Flow Graph receiving nodes with a new
+    try_put_and_wait API that submits a message to the graph and
     waits for its completion.
-  * Fixed the missed signal for thread request for enqueue 
+  * Fixed the missed signal for thread request for enqueue
     operation
-  * Significantly improved scalability of task_group, flow_graph, 
+  * Significantly improved scalability of task_group, flow_graph,
     and parallel_for_each
   * Removed usage of std::aligned_storage deprecated in C++23
-  * Fixed the issue where oneapi::tbb::info interfaces might 
-    interfere with the process affinity mask on the Windows* OS 
+  * Fixed the issue where oneapi::tbb::info interfaces might
+    interfere with the process affinity mask on the Windows* OS
     systems with multiple processor groups.
 
 -------------------------------------------------------------------
@@ -41,7 +55,7 @@ Fri Apr 19 03:16:09 UTC 2024 - Alessandro de Oliveira Faria <cabelo@opensuse.org
 -------------------------------------------------------------------
 Thu Jan 25 16:31:59 UTC 2024 - Ana Guerrero <ana.guerrero@suse.com>
 
-- Fix build to handle changes in (open)SUSE specific cmake macros,  
+- Fix build to handle changes in (open)SUSE specific cmake macros,
   no user visible changes
 
 -------------------------------------------------------------------
@@ -135,7 +149,7 @@ Sat Sep 24 12:16:41 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Deadlock in a concurrent_vector resize() that could happen when the new
     size is less than the previous size
 - drop tbb-pr609-32bit-mwaitpkg.patch (upstream)
-- add 5cb212d44732947396abdd39eae1229c7cd51644.patch, 917.patch: 
+- add 5cb212d44732947396abdd39eae1229c7cd51644.patch, 917.patch:
   build on riscv64, hppa, s390x
 
 -------------------------------------------------------------------
@@ -155,7 +169,7 @@ Sat May  7 12:51:47 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Extended task_group interface with a new run_and_wait overload to accept
     task_handle.
   * Fixed possible correctness issue in queuing_rw_mutex on non-Intel platforms.
-  * Fixed sporadic memory corruption. 
+  * Fixed sporadic memory corruption.
 
 -------------------------------------------------------------------
 Tue Apr  5 14:34:05 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
@@ -218,7 +232,7 @@ Mon Mar 30 15:50:42 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 - Update to version 2020.2
   * Cross-allocator copying constructor and copy assignment operator
     for concurrent_vector are deprecated.
-  * Added input_node to the flow graph API. It acts like a source_node 
+  * Added input_node to the flow graph API. It acts like a source_node
     except for being inactive by default; source_node is deprecated.
   * Allocator template parameter for flow graph nodes is deprecated. Set
     TBB_DEPRECATED_FLOW_NODE_ALLOCATOR to 1 to avoid compilation errors.
@@ -239,7 +253,7 @@ Tue Jan 21 15:25:51 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 -------------------------------------------------------------------
 Wed Dec 18 16:28:51 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
 
-- Update to version 2020.0 
+- Update to version 2020.0
   * Extended task_arena interface to simplify development of
     NUMA-aware applications.
   * Added warning notifications when the deprecated functionality is
@@ -254,13 +268,13 @@ Thu Oct 10 12:45:32 UTC 2019 - Ismail Dönmez <idonmez@suse.com>
   * Added C++17 deduction guides for flow graph nodes.
 
   Preview Features
-  * Added isolated_task_group class that allows multiple threads to add 
+  * Added isolated_task_group class that allows multiple threads to add
     and execute tasks sharing the same isolation.
   * Extended the flow graph API to simplify connecting nodes.
   * Added erase() by heterogeneous keys for concurrent ordered containers.
   * Added a possibility to suspend task execution at a specific point
     and resume it later.
-  
+
   Bugs fixed
   * Fixed the emplace() method of concurrent unordered containers to
     destroy a temporary element that was not inserted.
@@ -470,7 +484,7 @@ Sat Sep 17 13:02:18 UTC 2016 - idonmez@suse.com
 Wed Jun  8 10:50:50 UTC 2016 - idonmez@suse.com
 
 - Update to version 44_20160526
-  * Added a Python module which is able to replace Python's thread pool 
+  * Added a Python module which is able to replace Python's thread pool
     class with the implementation based on Intel TBB task scheduler.
   * Fixed the implementation of 64-bit tbb::atomic for IA-32 architecture
     to work correctly with GCC 5.2 in C++11/14 mode.
@@ -510,7 +524,7 @@ Sun Jan 29 01:33:25 UTC 2012 - jengelh@medozas.de
 -------------------------------------------------------------------
 Sun Aug 14 23:35:15 UTC 2011 - crrodriguez@opensuse.org
 
-- Update to version tbb30_20110704 
+- Update to version tbb30_20110704
 
 -------------------------------------------------------------------
 Wed Sep 16 11:09:37 CEST 2009 - meissner@suse.de

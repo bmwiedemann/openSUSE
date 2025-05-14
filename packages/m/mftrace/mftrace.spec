@@ -1,7 +1,7 @@
 #
 # spec file for package mftrace
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://lilypond.org/mftrace/
 Source0:        https://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
 Source1:        gf2pbm.1
+# build with gcc15
+Patch0:         mftrace-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  potrace
@@ -40,7 +42,7 @@ into a PFA or PFB font (A PostScript Type1 Scalable Font) or TTF
 (TrueType) font.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 cp %{SOURCE1} .

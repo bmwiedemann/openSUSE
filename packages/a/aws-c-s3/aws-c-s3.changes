@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  6 12:38:47 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.7.16
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#508)
+  * Add init for checksums by @DmitriyMusatkin in (#501)
+  * Auto - Update S3 Ruleset & Partition by @waahm7 in (#511)
+  * Update first byte timeout algo by @TingDaoK in (#461)
+
+-------------------------------------------------------------------
 Fri Apr  4 11:00:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.7.15

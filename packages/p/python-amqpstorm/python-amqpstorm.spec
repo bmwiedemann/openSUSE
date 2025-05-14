@@ -1,7 +1,7 @@
 #
 # spec file for package python-amqpstorm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ Source:         https://files.pythonhosted.org/packages/source/A/AMQPStorm/AMQPS
 Patch0:         mock.patch
 Patch1:         pamqp3.patch
 BuildRequires:  %{python_module pamqp >= 3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pamqp >= 3.0
@@ -51,11 +53,11 @@ When using a SSL connection, TLSv1 or higher is required.
 
 %build
 export LANG="en_US.UTF8"
-%python_build
+%pyproject_wheel
 
 %install
 export LANG="en_US.UTF8"
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/amqpstorm
 # remove generic named examples from sitelib
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/examples
@@ -67,6 +69,7 @@ export LANG="en_US.UTF8"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/amqpstorm
+%{python_sitelib}/amqpstorm-%{version}*-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package tbb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2023 Alessandro de Oliveira Faria (A.K.A. CABELO)
 #
 # All modifications and additions to the file contributed by third parties
@@ -40,13 +40,13 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2022.0.0
+Version:        2022.1.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
-URL:            https://oneapi-src.github.io/oneTBB/
-Source0:        https://github.com/oneapi-src/oneTBB/archive/v%{version}.tar.gz#/tbb-%{version}.tar.gz
+URL:            https://uxlfoundation.github.io/oneTBB/
+Source0:        https://github.com/uxlfoundation/oneTBB/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       tbb-rpmlintrc
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
@@ -55,10 +55,11 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hwloc-devel
+BuildRequires:  ninja
 %if %{with python3}
 BuildRequires:  %{python_module devel >= 3.5}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig >= 3.0.6
@@ -199,6 +200,8 @@ sed -i 's/version\s*="0.2"/version = "%{version}"/' python/setup.py
 sed -i '1{/^#!.*env python/ d}' python/TBB.py python/tbb/*.py
 
 %build
+# Use ninja to build
+%define __builder ninja
 # HWLOC: no automatic find on SLE-12 (older cmake)
 # TBB_TEST: don't compile by default
 # TBB4PY: use cmake build system to build libirml in the python tree

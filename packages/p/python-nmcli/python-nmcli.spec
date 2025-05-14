@@ -1,7 +1,7 @@
 #
 # spec file for package python-nmcli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-nmcli
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        A python wrapper library for the network-manager cli client
 License:        MIT
 URL:            https://github.com/ushiboy/nmcli
 Source:         https://github.com/ushiboy/nmcli/archive/refs/tags/v%{version}.tar.gz#/nmcli-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 Requires:       NetworkManager

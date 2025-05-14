@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define ROCm_version 6.3.3
+%define ROCm_version 6.4.0
 Name:           btop
-Version:        1.4.0+git20250213.53df78d
+Version:        1.4.2+git20250501.274d0c7
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0
@@ -29,6 +29,8 @@ Source99:       btop-rpmlintrc
 Patch0:         Makefile.diff
 BuildRequires:  coreutils
 BuildRequires:  cmake
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  sed
 %if 0%{?suse_version} < 1550
 BuildRequires:  gcc13-c++
 %define cxxflags CXXFLAGS="%{optflags} -fPIE"
@@ -46,10 +48,10 @@ BuildRequires:  lowdown
 %define cxxopt %{nil}
 %define lddopt %{nil}
 %endif
-BuildRequires:  sed
 
 %description
-Resource monitor that shows usage and stats for processor, memory, disks, network and processes. C++ version and continuation of bashtop and bpytop.
+Resource monitor that shows usage and stats for processor, memory, disks,
+network and processes. C++ version and continuation of bashtop and bpytop.
 
 %prep
 %autosetup -p0

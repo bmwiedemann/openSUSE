@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-xprocess
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,11 @@ Summary:        A pytest plugin for managing processes across test runs
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-xprocess
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-xprocess/pytest-xprocess-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest >= 2.8}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil
@@ -46,10 +48,10 @@ rm -rvf tests/__pycache__
 chmod -x README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +61,6 @@ chmod -x README.rst
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/xprocess
-%{python_sitelib}/pytest_xprocess-%{version}*-info
+%{python_sitelib}/pytest_xprocess-%{version}.dist-info
 
 %changelog

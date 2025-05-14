@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,7 +96,7 @@ BuildRequires:  protobuf-devel
 %bcond_without	snmp
 %endif
 Name:           syslog-ng
-Version:        4.8.1
+Version:        4.8.2
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only

@@ -7,4 +7,13 @@
     <comment>Please add this to Factory. It's required for janus-gateway (see SR#858112).</comment>
     <requestid>869190</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a489ff9e740a53631e5d19ac157c4c76</srcmd5>
+    <version>0.9.5.0</version>
+    <time>1746476862</time>
+    <user>anag_factory</user>
+    <comment>- Add usrsctp-enable-pkgconfig.patch
+  * enable generation of the .pc file needed for other software compilation (forwarded request 1274248 from Yoshio_Sato)</comment>
+    <requestid>1274282</requestid>
+  </revision>
 </revisionlist>

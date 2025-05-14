@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 10 08:53:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.13:
+  * Fixed #8204: Annotations showing list markers in print view
+  * Fixed #8153: Improve style of cardinality symbols in Mermaid.js ER
+    diagrams
+
+-------------------------------------------------------------------
+Thu Apr 24 13:17:31 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error in Leap.
+  Leap does not understand Buildrequires: >= 5.7.post1
+
+-------------------------------------------------------------------
 Fri Apr 18 05:28:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.12:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun May  4 06:28:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 11:
+  + Support for login using the OAuth 2.0 API (as used by
+    matrix.org, which recently made the switch to Matrix
+    Authentication Service).
+  + Overhaul of the page that lists user sessions, with details
+    moved to subpages, for a less cluttered feel, and allowing to
+    rename sessions!
+  + Rearranged account settings, with a new Safety tab that
+    includes a setting to toggle media preview visibility.
+  + BlurHashes for images and videos, that are used as placeholders
+    while the media is loading or if the preview is disabled.
+  + Contiguous state events are grouped behind a single item.
+  + As usual, this release includes other improvements and fixes
+    thanks to all our contributors, and our upstream projects.
+
+-------------------------------------------------------------------
 Tue Feb 11 16:56:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 10.1:

@@ -20,15 +20,14 @@
 %define pname xrootd
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "python"
-# No tests for python bindings
-%bcond_without python3
 %define psuffix -python
+%bcond_without python3
+# Tests for python bindings are slo...w
 %bcond_with tests
 %else
 %bcond_with python3
 %define psuffix %{nil}
-# Cannot run tests as some of them depend on network connection
-%bcond_with tests
+%bcond_without tests
 %endif
 # /SECTION
 
@@ -49,7 +48,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.8.1
+Version:        5.8.2
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -99,6 +98,9 @@ BuildRequires:  xrootd-client-devel  = %{version}
 BuildRequires:  xrootd-libs-devel    = %{version}
 BuildRequires:  xrootd-private-devel = %{version}
 BuildRequires:  xrootd-server-devel  = %{version}
+%if %{with tests}
+BuildRequires:  %{python_module pytest}
+%endif
 %define python_subpackage_only 1
 %python_subpackages
 %else
@@ -344,12 +346,16 @@ doxygen ../Doxyfile
 
 %install
 %if %{with python3}
+# Python flavor install
+
 pushd bindings/python
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/
 
+# Python flavor install ends
 %else
 
+# Main flavor install
 %cmake_install
 rm -rf %{buildroot}%{_sysconfdir}/%{pname}/*
 
@@ -378,21 +384,29 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 
 %fdupes %{buildroot}%{_prefix}
 
-%if %{with tests}
-%check
-%ctest
+# Main flavor install ends
 %endif
 
-%post libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
-%post client-libs -p /sbin/ldconfig
-%postun client-libs -p /sbin/ldconfig
-%post server-libs -p /sbin/ldconfig
-%postun server-libs -p /sbin/ldconfig
+%if %{with tests}
+%check
+%if %{with python3}
+export PYTHONPATH+=:%{buildroot}%{python3_sitearch}
+export PYTHONDONTWRITEBYTECODE=1
+pushd ./bindings/python
+%{_bindir}/pytest-%{python3_version} -v
+popd
+%else
+%ctest
+%endif
+%endif
+
+%if "%{flavor}" != "python"
+%ldconfig_scriptlets libs
+%ldconfig_scriptlets client-libs
+%ldconfig_scriptlets server-libs
 
 %if %{with ceph}
-%post ceph -p /sbin/ldconfig
-%postun ceph -p /sbin/ldconfig
+%ldconfig_scriptlets ceph
 %endif
 
 %pre server -f %{pname}.pre

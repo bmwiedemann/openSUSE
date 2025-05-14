@@ -259,4 +259,20 @@
   * Several minor bug fixes.</comment>
     <requestid>1267344</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>b1f6d36915083db5f935b91529b98d7a</srcmd5>
+    <version>4.0.2</version>
+    <time>1746638285</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.2:
+  * Reorganize and extend the Preferences (#1920 and #1928).
+  * Use hatchling as build backend (#1913).
+  * Updated translations: Italian, Polish.
+  * Make MIDI input work again (#1919 and #1922).
+  * Fix a garbage-collector issue (#1935 and #1942). This should
+    prevent the error &quot;RuntimeError: wrapped C/C++ object of type
+    FOO has been deleted&quot;, which has been reported as duplicates
+    several times.</comment>
+    <requestid>1275016</requestid>
+  </revision>
 </revisionlist>

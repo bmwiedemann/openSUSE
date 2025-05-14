@@ -255,7 +255,7 @@ CXX=g++
 #
 # In frm/frm.h wrong definition of MB_LEN_MAX if not defined
 #
-CFLAGS="-Wall %{optflags} -fexceptions -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing"
+CFLAGS="-Wall %{optflags} -fexceptions -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing -std=gnu17"
 CXXFLAGS="-Wall %{optflags} -D_GNU_SOURCE -DMB_LEN_MAX=16 -fno-strict-aliasing"
 export PATH CC CXX CFLAGS CXXFLAGS
 %configure --enable-ipv6	\

@@ -1,0 +1,120 @@
+-------------------------------------------------------------------
+Wed May  7 12:44:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * welle-io-fdk-aac.patch
+    + Build against fdk-aac rather then against faad2, since a free
+      version of fdk-aac exists.
+
+-------------------------------------------------------------------
+Wed May  7 10:11:10 UTC 2025 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to official 2.7 release
+- Major changes since welle.io 2.6
+  * Core
+    + Introduce a selector when a station is found in multiple
+      ensembles
+    + Add scroll bar to station list
+    + Fix some graphical issues in GUI
+    + Update readme.md
+    + Minor changes
+  * Linux
+    + Add flathub.org support
+      (https://flathub.org/apps/io.welle.welle-gui)
+      ° It is recommended to install welle.io via flathub
+    + Add flatpack arm64 support
+    + Update to Qt 6.8.2
+- Removed patch:
+  * welle-io-desktop-file.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Tue Jan  7 15:51:28 UTC 2025 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Modified patch:
+  * welle-io-desktop-file.patch
+    + fix icon name
+
+-------------------------------------------------------------------
+Fri Dec 27 22:09:45 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Added patch:
+  * welle-io-qt6.4.1.patch
+    + fix build with Qt6 versions < 6.5
+
+-------------------------------------------------------------------
+Wed Dec 25 14:59:15 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to official 2.6 release
+- Major changes since welle.io 2.5
+  * Core
+    + Round spectrum waterfall boundaries to two digits
+    + Improve station list scrolling via mouse
+    + Fix restore volume after mute
+    + Replace rtl-tcp port spinner by a text input field. Now it is
+      possible to use ports > 9999
+    + Fix broken RAW file input
+    + Add ensemble ID to service details
+    + Fix wrong display of DAB date time
+    + Phase_sync improvement
+    + Code quality improvements and small fixes
+    + Minor changes
+  * Linux
+    * Add Flatpak support (experimental)
+    + Drop AppImage support because of issue
+      probonopd/go-appimage#301
+    + Update to Qt 6.8.1
+- Removed patch:
+  * base_dir.patch
+    + not needed with this version
+- Added patch:
+  * welle-io-desktop-file.patch
+    + fix install
+
+-------------------------------------------------------------------
+Sat Nov  2 14:54:31 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to official 2.5 release
+- Major changes since welle.io 2.4
+  * Core
+    + Migrate from Qt5 to Qt6
+    + Migrate build chain from travis-ci and appveyor to GitHub
+      Actions
+    + Add inital scan button (#724).
+  * Linux
+    + Update to Qt 6.7.2
+    + Migrate to AppImage creation to
+      https://github.com/probonopd/go-appimage
+      ° Because of this bug
+       (https://github.com/probonopd/go-appimage/issues/301) a
+       working AppImage cannot be provided.
+      ° Please use version 2.4
+
+-------------------------------------------------------------------
+Sat Sep 14 11:52:48 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Added patch:
+  * base_dir.patch
+    + implement an option to specify the location of index.html and
+      index.js files.
+
+-------------------------------------------------------------------
+Fri Sep 13 17:31:51 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Build with stdc++17 capable compiler for <filesystem> include
+
+-------------------------------------------------------------------
+Thu Sep 12 17:39:03 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Update to latest git snapshot
+  * Added FLAC support
+
+-------------------------------------------------------------------
+Thu Sep 12 17:19:22 UTC 2024 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Enable alsa support for a functioning welle-cli
+
+-------------------------------------------------------------------
+Mon Nov 20 10:42:00 UTC 2023 - Fridrich Strba <fridrich.strba@bluewin.ch>
+
+- Initial packaging of welle.io from the 'next' branch

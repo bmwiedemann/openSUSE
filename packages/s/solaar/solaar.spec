@@ -63,6 +63,7 @@ Requires:       python3-pyudev
 Requires:       python3-typing_extensions
 #
 Requires:       solaar-udev >= %{version}
+Requires:       libappindicator-gtk3
 Requires:       typelib(AyatanaAppIndicator3)
 Requires:       typelib(Gtk) >= 3.0
 #

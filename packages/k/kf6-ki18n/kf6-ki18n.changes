@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Add test showing the translation can use more/less % arguments than the source text
+  * Update version to 6.14.0
+  * Remove conditions for no longer supported Qt versions
+
+-------------------------------------------------------------------
 Sat Apr  5 12:33:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

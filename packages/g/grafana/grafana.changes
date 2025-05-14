@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Apr 29 09:43:38 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Drop 0003-Bump-go-jose.patch
+- Update to version 11.5.4:
+  Features and enhancements:
+  * Azure Monitor: Filter namespaces by resource group
+  * Azure: Add support for custom namespace and custom metrics
+    variable queries
+  * Azure: Resource picker improvements
+  * Azure: Support more complex variable interpolation
+  * Azure: Variable editor and resource picker improvements
+  * DashboardScenePage: Correct slug in self referencing data links
+  * Dependencies: Bump github.com/redis/go-redis/v9
+    (CVE-2025-29923)
+  * Prometheus: Add support for cloud partners Prometheus data
+    sources
+  Bug fixes:
+  * InfluxDB: Fix nested variable interpolation
+  Security:
+  * CVE-2025-3454
+  * CVE-2025-2703
+  * CVE-2025-30204: Bump github.com/golang-jwt/jwt/v5 (bsc#1240503)
+
+- Update to version 11.5.3:
+  Bug fixes:
+  * Alerting: Fix token-based Slack image upload to work with
+    channel names
+  * Auth: Fix AzureAD config UI's ClientAuthentication dropdown
+  * Dashboard: Fix the unintentional time range and variables
+    updates on saving
+  * Dashboards: Fix missing v/e/i keybindings to return back to
+    dashboard
+  * InfluxDB: Improve handling of template variables contained in
+    regular expressions (InfluxQL)
+  * Org redirection: Fix linking between orgs
+
+-------------------------------------------------------------------
 Mon Mar 10 11:27:53 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2025-27144: Fix Go JOSE's Parsing Vulnerability (bsc#1237671)
@@ -57,6 +94,8 @@ Tue Feb 11 13:16:26 UTC 2025 - Witek Bedyk <witold.bedyk@suse.com>
   * Dashboards: Customizable shareable dashboard panel images
   * Datasources: Time series macro support in visual query builder
     for SQL data sources
+  Security:
+  * CVE-2024-6104: Bump OpenFGA to version 1.6.2 (bsc#1227039)
 
 - Update to version 11.4.0:
   Features and enhancements:

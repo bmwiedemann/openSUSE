@@ -15,4 +15,134 @@
     <comment>- Update to release 2.32.54</comment>
     <requestid>1266285</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>870d3205088c6e03683dc416f172021f</srcmd5>
+    <version>2.32.56</version>
+    <time>1746542312</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.32.56
+
+old: openSUSE:Factory/sdl2-compat
+new: games/sdl2-compat rev 13
+Index: _scmsync.obsinfo
+===================================================================
+--- _scmsync.obsinfo (revision 2)
++++ _scmsync.obsinfo (revision 13)
+@@ -1,4 +1,4 @@
+-mtime: 1743528239
+-commit: 473d16ecce1c284fca7b8bde21c2e48bd8d44f9c8e589ac949ada57de10ebc8c
++mtime: 1746416410
++commit: 3805f776203e84495c424321b91d8972ce6e147010f966f3f7d8b8f18876785a
+ url: https://src.opensuse.org/jengelh/sdl2-compat
+ revision: master
+Index: sdl2-compat.changes
+===================================================================
+--- sdl2-compat.changes (revision 2)
++++ sdl2-compat.changes (revision 13)
+@@ -1,4 +1,20 @@
+ -------------------------------------------------------------------
++Mon May  5 03:28:40 UTC 2025 - Jan Engelhardt &lt;jengelh@inai.de&gt;
++
++- Update to release 2.32.56
++  * Fixed rendering in Mesen2
++  * Fixed brightness in ioquake3
++  * Fixed a hang at launch in the xemu emulator
++  * Fixed crackling and sped up audio in OpenRCT2
++  * Fixed fullscreen window positioning on Wayland with multiple
++    displays
++  * Key events are now sent for dead keys on X11
++  * Fixed mouse wheel integer scrolling values
++  * Fixed a double-free when working with RLE surfaces
++  * Fixed a memory leak in SDL_LockTextureToSurface()
++  * Fixed sending SDL3 controller events to SDL2 applications
++
++-------------------------------------------------------------------
+ Mon Mar 31 23:26:16 UTC 2025 - Jan Engelhardt &lt;jengelh@inai.de&gt;
+ 
+ - Update to release 2.32.54
+Index: sdl2-compat.spec
+===================================================================
+--- sdl2-compat.spec (revision 2)
++++ sdl2-compat.spec (revision 13)
+@@ -19,7 +19,7 @@
+ %define lname libSDL2-2_0-0
+ %global _lto_cflags %_lto_cflags -ffat-lto-objects
+ Name:           sdl2-compat
+-Version:        2.32.54
++Version:        2.32.56
+ Release:        0
+ Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
+ License:        MIT
+@@ -27,12 +27,13 @@
+ URL:            https://github.com/libsdl-org/sdl2-compat
+ Source:         https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz
+ Source2:        https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz.sig
++Source3:        %name.keyring
+ Source8:        baselibs.conf
+ Source9:        %name-rpmlintrc
+ Patch1:         sdl2-symvers.patch
+ BuildRequires:  cmake
+ BuildRequires:  pkg-config
+-BuildRequires:  pkgconfig(sdl3) &gt;= 3.2.4
++BuildRequires:  pkgconfig(sdl3) &gt;= 3.2.12
+ 
+ %description
+ This is the &quot;Simple DirectMedia Layer&quot; library built from sdl2-compat.
+@@ -57,6 +58,9 @@
+ Requires:       %lname = %version
+ Conflicts:      SDL2-devel
+ Provides:       SDL2-devel = %version-%release
++# You should not add pkgconfig(x11) to sdl-devel; as far as SDL is concerned, it is optional.
++# (Think outputting to Wayland, KMSDRM, or null.)
++# https://github.com/libsdl-org/sdl2-compat/issues/405
+ 
+ %description devel
+ This package contains files needed for development with the SDL2
+Index: sdl2-compat-2.32.56.tar.gz
+===================================================================
+Binary file sdl2-compat-2.32.56.tar.gz (revision 13) added
+Index: sdl2-compat-2.32.56.tar.gz.sig
+===================================================================
+Binary file sdl2-compat-2.32.56.tar.gz.sig (revision 13) added
+Index: sdl2-compat.keyring
+===================================================================
+--- sdl2-compat.keyring (added)
++++ sdl2-compat.keyring (revision 13)
+@@ -0,0 +1,28 @@
++pub   1024D/A7763BE6 2001-01-05
++uid                  Sam Lantinga &lt;slouken@libsdl.org&gt;
++sub   1024g/06F8768C 2001-01-05
++
++-----BEGIN PGP PUBLIC KEY BLOCK-----
++Version: GnuPG v2.0.19 (GNU/Linux)
++
++mQGiBDpWOb0RBADQwd3d9mzt6KzqlsgXf9mikBuMbpKzYs1SBKYpdzUs9sRY0CnH
++vCQTrL5sI57yKLnqEl6SbIiE75ZwrSWwvUDFFTh35Jew5nPZwv64en2kw2y4qrnJ
++kBZCHDSU4KgfUZtoJ25Tmeru5MLNbXxCOoMszO5L5OchwMrGMtmFLRA/bwCgy5Th
++d1/vJo+bej9tbgv++SJ05o0D/3MPK7EBoxWkQ0I+ScqOsvSMRQXWc/hXy4lyIp8e
++xJByBApkv0LiiT3KlPpq/K2gTlDlCZ/JTt6Rv8Ug0g47R3a0aoz9kfc15UjHdiap
++UOfF9MWmmbw59Lyx6+y2e0/C5xWzNOR1G4G5y4RZL/GXrp67xz/0fEhI85R+eASq
++AEfSBAC5ZxwnBwyl+h+PXeJYKrPQjSUlgtSAkKp7PNBywwlue1LcSb7j4cc+cmgH
++QMVuM883LPE59btNzFTAZjlzzIMiaXf5h9EkDARTGQ1wFiO3V5vIbVLh4kAoNfpT
++egy7bYn3UrlbKg3V2DbCdEXm1zQufZzK7T0yenA5Ps8xXX7mNrQhU2FtIExhbnRp
++bmdhIDxzbG91a2VuQGxpYnNkbC5vcmc+iF8EExECABcFAjpWOb0FCwcKAwQDFQMC
++AxYCAQIXgAASCRAwpZN3p3Y75gdlR1BHAAEB31EAnjxYj6c496zRYru3fzUiPgl9
++JjFZAKCOkxoODf9qHbcdmFi1Mq0dTMP3OLkBDQQ6VjnDEAQA++MHQHlE0CPyEEX8
++urvzDmsnX9/lGpZeZ1/ECm4QT/04QVdRJReaz1/8ha/JJ3J/jw+Ti3aHxvyLsXR/
++dH61wKnqbQ+3UFI0di6Z+a2idPLkUeqnAFWUSLsjSzmYPeTE76Tw9BsBMcfmyYWe
++jPZRNz4zNCNR21PNdSRSCq9/3NMAAwYD/1j+HquGLdhhd4jpKZtepybOxArNpZWE
++t7DruzN6OdiwognWNrgx59iW2EJeCYgGuI1+3Ega0EjQ9ybPCmfR6SdE0ro2CmYR
++JsYoJaHn0l6IArmF0E97jstIVVy3nNI729CFEPIvOHM8+0Hdd6gpNSQtbEFItt5l
++XBwc8gr/AtqXiE4EGBECAAYFAjpWOcMAEgkQMKWTd6d2O+YHZUdQRwABAcZlAJ9z
++Xumd1FC6YnvEST9eUQbeitjFhQCfYSvy7PxXgSfXedKsZmHWdka01zY=
++=62+H
++-----END PGP PUBLIC KEY BLOCK-----
+Index: sdl2-compat-2.32.54.tar.gz
+===================================================================
+Binary file sdl2-compat-2.32.54.tar.gz (revision 2) deleted
+Index: sdl2-compat-2.32.54.tar.gz.sig
+===================================================================
+Binary file sdl2-compat-2.32.54.tar.gz.sig (revision 2) deleted</comment>
+    <requestid>1274285</requestid>
+  </revision>
 </revisionlist>

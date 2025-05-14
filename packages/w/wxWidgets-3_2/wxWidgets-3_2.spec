@@ -65,10 +65,10 @@ wxString and instead rely on the wxChar pointer API.
 # At most one Name: line to not confuse quilt(1)
 %define base_name wxWidgets-3_2
 %define wx_minor 3.2
-%define psonum 15_0_0
-%define sonum 15.0.0
+%define psonum 16_0_0
+%define sonum 16.0.0
 Name:           %this_spec
-Version:        3.2.7
+Version:        3.2.8
 Release:        0
 Summary:        C++ Library for Cross-Platform Development
 License:        LGPL-2.1-or-later WITH WxWindows-exception-3.1

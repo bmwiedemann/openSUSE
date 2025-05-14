@@ -198,6 +198,7 @@ virtualization.
  --disable-pixman		\\\
  --disable-plugins		\\\
  --disable-png			\\\
+ --disable-pvg			\\\
  --disable-qcow1		\\\
  --disable-qed			\\\
  --disable-qom-cast-debug	\\\

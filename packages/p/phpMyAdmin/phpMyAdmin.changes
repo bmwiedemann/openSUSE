@@ -167,12 +167,18 @@ Thu Jan 23 12:34:40 UTC 2025 - ecsos <ecsos@opensuse.org>
     - issue #19000 Disable autocomplete for the create table/db name inputs
 
 -------------------------------------------------------------------
+Mon Jan 20 07:58:12 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add README.SUSE:
+  * Add php-fpm with apparmor howto(boo#1236039, boo#1200234)
+
+-------------------------------------------------------------------
 Mon Feb 26 09:45:34 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Adjustments patch macro for rpm 4.20.
 
 -------------------------------------------------------------------
-Fri May  5 07:46:47 UTC 2023 - chris@computersalat.de
+Fri May  5 07:46:47 UTC 2023 - <chris@computersalat.de>
 
 - fix deps for subpkg apache
   * definitly Requires mod_php_any

@@ -132,4 +132,12 @@
   * Replace assert by ValueError</comment>
     <requestid>1219912</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bcfad1d452582193520080144eb4c91b</srcmd5>
+    <version>1.6.0</version>
+    <time>1746476756</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274191</requestid>
+  </revision>
 </revisionlist>

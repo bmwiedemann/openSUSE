@@ -1,0 +1,34 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%dir %{_sysconfdir}/systemd/resolved.conf.d
+%{_bindir}/resolvectl
+%{_bindir}/systemd-resolve
+%{_datadir}/bash-completion/completions/resolvectl
+%{_datadir}/bash-completion/completions/systemd-resolve
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.DnssdService.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Link.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.resolve1.Manager.xml
+%{_datadir}/dbus-1/system-services/org.freedesktop.resolve1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.resolve1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.resolve1.policy
+%{_datadir}/zsh/site-functions/_resolvectl
+%{_libdir}/libnss_resolve.so.2
+%{_mandir}/man1/resolvectl.1.gz
+%{_mandir}/man5/org.freedesktop.resolve1.5.gz
+%{_mandir}/man5/resolved.conf.5.gz
+%{_mandir}/man5/resolved.conf.d.5.gz
+%{_mandir}/man8/libnss_resolve.so.2.8.gz
+%{_mandir}/man8/nss-resolve.8.gz
+%{_mandir}/man8/systemd-resolved.8.gz
+%{_mandir}/man8/systemd-resolved.service.8.gz
+%{_systemd_util_dir}/resolv.conf
+%{_systemd_util_dir}/resolved.conf
+%{_systemd_util_dir}/systemd-resolved
+%{_sysusersdir}/systemd-resolve.conf
+%{_tmpfilesdir}/systemd-resolve.conf
+%{_unitdir}/systemd-resolved.service
+%if %{with upstream}
+%{_unitdir}/systemd-resolved-monitor.socket
+%{_unitdir}/systemd-resolved-varlink.socket
+%endif

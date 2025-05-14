@@ -174,4 +174,15 @@
 </comment>
     <requestid>1272851</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>e9a5bddb529c810f9549cc519899020d</srcmd5>
+    <version>0.27.0</version>
+    <time>1746809466</time>
+    <user>anag_factory</user>
+    <comment>- Only build on architectures supported by bundled premake, and add
+  check to ensure we revisit that list when more architectures
+  get supported (boo#1242266).
+</comment>
+    <requestid>1275934</requestid>
+  </revision>
 </revisionlist>

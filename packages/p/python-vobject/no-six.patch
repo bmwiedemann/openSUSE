@@ -1,8 +1,7 @@
-Index: vobject-0.9.8/vobject/base.py
-===================================================================
---- vobject-0.9.8.orig/vobject/base.py
-+++ vobject-0.9.8/vobject/base.py
-@@ -6,7 +6,7 @@ import copy
+diff -rU 3 a/vobject/base.py b/vobject/base.py
+--- a/vobject/base.py	2024-12-16 08:15:20.000000000 +0100
++++ b/vobject/base.py	2025-05-08 10:54:19.517509757 +0200
+@@ -6,7 +6,7 @@
  import codecs
  import logging
  import re
@@ -10,8 +9,8 @@ Index: vobject-0.9.8/vobject/base.py
 +import io
  import sys
  
- # ------------------------------------ Python 2/3 compatibility challenges  ----
-@@ -913,7 +913,7 @@ def getLogicalLines(fp, allowQP=True):
+ # Package version
+@@ -858,7 +858,7 @@
      Quoted-printable data will be decoded in the Behavior decoding phase.
  
      # We're leaving this test in for awhile, because the unittest was ugly and dumb.
@@ -20,7 +19,7 @@ Index: vobject-0.9.8/vobject/base.py
      >>> f=StringIO(testLines)
      >>> for n, l in enumerate(getLogicalLines(f)):
      ...     print("Line %s: %s" % (n, l[0]))
-@@ -936,7 +936,7 @@ def getLogicalLines(fp, allowQP=True):
+@@ -881,7 +881,7 @@
  
      else:
          quotedPrintable = False
@@ -29,7 +28,7 @@ Index: vobject-0.9.8/vobject/base.py
          logicalLine = newbuffer()
          lineNumber = 0
          lineStartNumber = 0
-@@ -1050,7 +1050,7 @@ def defaultSerialize(obj, buf, lineLengt
+@@ -996,7 +996,7 @@
      """
      Encode and fold obj and its children, write to buf or return a string.
      """
@@ -38,7 +37,7 @@ Index: vobject-0.9.8/vobject/base.py
  
      if isinstance(obj, Component):
          if obj.group is None:
-@@ -1072,7 +1072,7 @@ def defaultSerialize(obj, buf, lineLengt
+@@ -1018,7 +1018,7 @@
          if obj.behavior and not startedEncoded:
              obj.behavior.encode(obj)
  
@@ -46,8 +45,8 @@ Index: vobject-0.9.8/vobject/base.py
 +        s = io.StringIO()
  
          if obj.group is not None:
-             s.write(obj.group + ".")
-@@ -1141,7 +1141,7 @@ def readComponents(
+             s.write(obj.group + '.')
+@@ -1082,7 +1082,7 @@
      Generate one Component at a time from a stream.
      """
      if isinstance(streamOrString, basestring):
@@ -56,11 +55,10 @@ Index: vobject-0.9.8/vobject/base.py
      else:
          stream = streamOrString
  
-Index: vobject-0.9.8/vobject/hcalendar.py
-===================================================================
---- vobject-0.9.8.orig/vobject/hcalendar.py
-+++ vobject-0.9.8/vobject/hcalendar.py
-@@ -28,7 +28,7 @@ and an equivalent event in hCalendar for
+diff -rU 3 a/vobject/hcalendar.py b/vobject/hcalendar.py
+--- a/vobject/hcalendar.py	2024-10-01 16:46:45.000000000 +0200
++++ b/vobject/hcalendar.py	2025-05-08 10:55:12.047890349 +0200
+@@ -28,7 +28,7 @@
  </span>
  """
  
@@ -69,7 +67,7 @@ Index: vobject-0.9.8/vobject/hcalendar.py
  
  from datetime import date, datetime, timedelta
  
-@@ -45,7 +45,7 @@ class HCalendar(VCalendar2_0):
+@@ -45,7 +45,7 @@
          Serialize iCalendar to HTML using the hCalendar microformat (http://microformats.org/wiki/hcalendar)
          """
  
@@ -78,11 +76,10 @@ Index: vobject-0.9.8/vobject/hcalendar.py
          level = 0  # holds current indentation level
          tabwidth = 3
  
-Index: vobject-0.9.8/vobject/icalendar.py
-===================================================================
---- vobject-0.9.8.orig/vobject/icalendar.py
-+++ vobject-0.9.8/vobject/icalendar.py
-@@ -10,7 +10,7 @@ import string
+diff -rU 3 a/vobject/icalendar.py b/vobject/icalendar.py
+--- a/vobject/icalendar.py	2024-12-16 08:09:54.000000000 +0100
++++ b/vobject/icalendar.py	2025-05-08 10:57:12.542858557 +0200
+@@ -10,7 +10,7 @@
  import base64
  
  from dateutil import rrule, tz
@@ -91,39 +88,39 @@ Index: vobject-0.9.8/vobject/icalendar.py
  
  try:
      import pytz
-@@ -65,7 +65,7 @@ def toUnicode(s):
+@@ -56,7 +56,7 @@
      """
      Take a string or unicode, turn it into unicode, decoding as utf-8
      """
 -    if isinstance(s, six.binary_type):
 +    if isinstance(s, bytes):
-         s = s.decode("utf-8")
+         s = s.decode('utf-8')
      return s
  
-@@ -154,7 +154,7 @@ class TimezoneComponent(Component):
-             "tzid",
-         )
+@@ -135,7 +135,7 @@
+         good_lines = ('rdate', 'rrule', 'dtstart', 'tzname', 'tzoffsetfrom',
+                       'tzoffsetto', 'tzid')
          # serialize encodes as utf-8, cStringIO will leave utf-8 alone
 -        buffer = six.StringIO()
 +        buffer = io.StringIO()
          # allow empty VTIMEZONEs
          if len(self.contents) == 0:
              return None
-@@ -607,7 +607,7 @@ class RecurringComponent(Component):
+@@ -569,7 +569,7 @@
                      self.add(name).value = setlist
              elif name in RULENAMES:
                  for rule in setlist:
 -                    buf = six.StringIO()
 +                    buf = io.StringIO()
-                     buf.write("FREQ=")
+                     buf.write('FREQ=')
                      buf.write(FREQUENCIES[rule._freq])
  
-@@ -1074,7 +1074,7 @@ class VCalendar2_0(VCalendarComponentBeh
+@@ -1010,7 +1010,7 @@
              transformed = obj
              undoTransform = False
          out = None
 -        outbuf = buf or six.StringIO()
 +        outbuf = buf or io.StringIO()
          if obj.group is None:
-             groupString = ""
+             groupString = ''
          else:

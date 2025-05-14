@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 11:25:44 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Aug 31 09:55:14 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary tarball PyPrind-2.11.2.tar.gz

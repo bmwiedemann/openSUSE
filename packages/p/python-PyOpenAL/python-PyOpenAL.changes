@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 10:38:04 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Jan 21 16:44:01 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - actually require libopenal1 instead of a config

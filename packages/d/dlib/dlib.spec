@@ -1,7 +1,7 @@
 #
 # spec file for package dlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shlib libdlib%( echo %{version} | tr '.' '_' )
 %define python_subpackage_only 1
 Name:           dlib
-Version:        19.24.6
+Version:        19.24.8
 Release:        0
 Summary:        Toolkit for making machine learning and data analysis applications
 License:        BSL-1.0

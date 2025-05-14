@@ -43,7 +43,6 @@ BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(osmesa)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xext)
@@ -94,7 +93,7 @@ This package contains some common EGL-based demos.
 %{meson} \
   -Dgles1=enabled \
   -Dgles2=enabled \
-  -Dosmesa=enabled \
+  -Dosmesa=disabled \
   -Dlibdrm=enabled \
   -Dwayland=disabled \
   -Dvulkan=enabled \

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:11:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sun Jan 16 16:32:59 UTC 2022 - Benjamin Greiner <code@bnavigator.de>
 
 - The buildservice doesn't use the coveralls package

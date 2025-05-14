@@ -1,7 +1,8 @@
 #
 # spec file for package libregf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +36,7 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(fuse) >= 2.6
+BuildRequires:  pkgconfig(fuse3) >= 3.0
 BuildRequires:  pkgconfig(libbfio) >= 20240414
 BuildRequires:  pkgconfig(libcdata) >= 20240414
 BuildRequires:  pkgconfig(libcerror) >= 20240413
@@ -109,7 +110,7 @@ grep ' '' ''local' config.log && exit 1
 
 %install
 mv %_builddir/rt/* %buildroot/
-find %buildroot -type f -name "*.la" -delete -print
+find "%buildroot" -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %lname
 

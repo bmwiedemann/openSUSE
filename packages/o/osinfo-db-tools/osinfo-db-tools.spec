@@ -29,7 +29,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  glib2-devel
 BuildRequires:  json-glib-devel
 BuildRequires:  libarchive-devel
-BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  libxml2-devel >= 2.6.0
 BuildRequires:  libxslt-devel >= 1.0.0
 BuildRequires:  meson

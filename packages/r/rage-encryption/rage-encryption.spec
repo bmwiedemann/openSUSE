@@ -40,7 +40,7 @@ BuildRequires:  cargo >= 1.59
 BuildRequires:  libzstd-devel
 BuildRequires:  vendored_licenses_packager
 # for feature mount
-BuildRequires:  fuse-devel
+BuildRequires:  fuse3-devel
 Recommends:     pinentry
 BuildRequires:  zstd
 Conflicts:      rage

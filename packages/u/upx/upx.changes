@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May  6 14:35:01 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.1
+  * Fix UPX-compressed armv7l,mipsel,ppc32 binaries crashing on
+    launch
+- Delete 0001-More-checking-in-unpack.patch (merged)
+
+-------------------------------------------------------------------
 Fri Mar 28 11:14:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-More-checking-in-unpack.patch

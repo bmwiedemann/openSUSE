@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyqtgraph
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.13.7
 Release:        0
 Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://www.pyqtgraph.org/
 # test data is only in the GitHub archive
 Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgraph-%{version}.tar.gz
@@ -31,9 +30,11 @@ Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgra
 Patch1:         no-sphinx-qt-doc.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydata-sphinx-theme}
 BuildRequires:  %{python_module qt5 >= 5.12}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  python3-Sphinx
@@ -78,7 +79,6 @@ and OpenGL for 3D display.
 
 %package -n %{name}-doc
 Summary:        Documentation for %{name}
-Group:          Development/Languages/Python
 Provides:       %{python_module %{name} = %{version}}
 
 %description -n %{name}-doc
@@ -97,10 +97,10 @@ sed -i 's/\r//' pyqtgraph/examples/DateAxisItem_QtDesigner.ui
 chmod -x pyqtgraph/examples/verlet_chain/make
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 pushd doc
 make html
@@ -142,7 +142,7 @@ fi
 %exclude %{_docdir}/%{name}/examples/
 %exclude %{_docdir}/%{name}/html/
 %{python_sitelib}/pyqtgraph/
-%{python_sitelib}/pyqtgraph-%{version}*-info
+%{python_sitelib}/pyqtgraph-%{version}.dist-info
 
 %files -n %{name}-doc
 %license LICENSE.txt

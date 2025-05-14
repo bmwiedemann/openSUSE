@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>812758</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>8bb75dcc3688856de5b06877a3809113</srcmd5>
+    <version>5.21q</version>
+    <time>1746542574</time>
+    <user>anag_factory</user>
+    <comment>- build with -std=gnu11 to get trough gcc15 (forwarded request 1274784 from pgajdos)</comment>
+    <requestid>1274811</requestid>
+  </revision>
 </revisionlist>

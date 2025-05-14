@@ -31,18 +31,18 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      21
 %global interimver      0
-%global updatever       6
-%global buildver        7
+%global updatever       7
+%global buildver        6
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk21/archive
-%global root_revision   e01368f00df38581bf80f0aca8684d02dcdb477b
-%global root_branch     v0.49.0-release
+%global root_revision   26c2dc3d801585a322455301302e13edc5daf332
+%global root_branch     v0.51.0-release
 %global omr_repository  https://github.com/eclipse/openj9-omr/archive
-%global omr_revision    e49875871c2862e0d132e3695d55273bfbac08b6
-%global omr_branch      v0.49.0-release
+%global omr_revision    9bcff94a2a0f12baeac8f5d098b597e8ea076b67
+%global omr_branch      v0.51.0-release
 %global openj9_repository https://github.com/eclipse/openj9/archive
-%global openj9_revision 3c3d179854a524d7f95225999169ee09fda46033
-%global openj9_branch   v0.49.0-release
-%global openj9_tag      openj9-0.49.0
+%global openj9_revision 31cf5538b0a4875a2310e917a80bb16c81065d3c
+%global openj9_branch   v0.51.0-release
+%global openj9_tag      openj9-0.51.0
 # priority must be 6 digits in total
 %if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 %global priority        3101
@@ -113,7 +113,7 @@ Patch5:         multiple-pkcs11-library-init.patch
 # Fix build with older openssl
 Patch6:         openssl-OSSL_LIB_CTX.patch
 Patch7:         openj9-openssl.patch
-Patch8:         openj9-nasm-noexecstack.patch
+Patch8:         openj9-noexecstack.patch
 # Fix: implicit-pointer-decl
 Patch13:        implicit-pointer-decl.patch
 #
@@ -370,7 +370,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 5 -p1
 %patch -P 6 -p1
 %patch -P 7 -p1
-%patch -P 8
+%patch -P 8 -p1
 %patch -P 13 -p1
 
 %if %{with_system_pcsc}
@@ -405,6 +405,9 @@ done
 
 %build
 export ARCH_DATA_MODEL=64
+# Remove cmake4 error due to not setting
+# min cmake version - sflees@suse.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
 EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
@@ -866,6 +869,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/options.default
 %{_jvmdir}/%{sdkdir}/lib/psfontj2d.properties
 %{_jvmdir}/%{sdkdir}/lib/psfont.properties.ja
+%{_jvmdir}/%{sdkdir}/lib/schema.xsd
 %{_jvmdir}/%{sdkdir}/lib/tzdb.dat
 %{_jvmdir}/%{sdkdir}/lib/*/libjsig.so
 %{_jvmdir}/%{sdkdir}/lib/*/libjvm.so

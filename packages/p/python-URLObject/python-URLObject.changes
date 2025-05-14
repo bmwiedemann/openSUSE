@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 15:44:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Fri Jun  5 14:37:28 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add remove_nose.patch replacing use of nose with the standard

@@ -379,4 +379,14 @@
   * allow to specify repodata config per flavor</comment>
     <requestid>1273682</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fe0468eb5f3342650d803cdee3fc050f</srcmd5>
+    <version>0.5.14</version>
+    <time>1747061506</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.5.14:
+  * fixing CPE-ID generation (ommit * in empty fields)
+  * allowing to select build-options via cli and project build configuration</comment>
+    <requestid>1276775</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Mon May 12 12:02:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.72
+  * Add Sao Tome and Principe holidays
+  * Add Trinidad and Tobago holidays
+  * Fix TestClosestHoliday current date handling
+  * Fix typography: replace U+2019 with "'" and U+2013 with '-'
+  * Update Canada holidays: add historical holidays
+  * Update Ethiopia holidays: official source namings, WORKDAY category
+  * Update India holidays: add missing Tamil Nadu holidays
+  * Update README: add Snyk package health badge
+  * Update Singapore holidays: 2025 Polling Day on May 3rd
+  * Update Taiwan holidays: test case refactor
+  * Update documentation build process
+  * Update documentation tests: add AUTHORS.md checking
+  * Add missing subdivisions aliases
+  * Disable v1 incompatibility warning
+  * Docstring cleanup for Indochinese countries
+  * Extend Chinese Lunisolar calendar support
+  * Rename AUTHORS.md to CONTRIBUTORS
+
+-------------------------------------------------------------------
+Mon May  5 16:09:58 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.71
+  * Add French Southern Territories holidays
+  * Add Oman holidays
+  * Add Sierra Leone holidays
+  * Add Suriname holidays
+  * Update .po files generator
+  * Update .po files generator
+  * Update BY.po files
+  * Update Pakistan holidays: add Youm-e-Takbeer holiday
+  * Update Python latest supported version format
+  * Update RELEASE.md
+  * Update South Korea holidays: add 2025 Presidential Election Day
+  * Update l10n related documentation: detailed explain of
+    language parameter behavior
+  * Update mypy configuration
+  * Add FUNDING.yml
+- Update to 0.70
+  * Add iCalendar export support
+  * Add Antigua and Barbuda holidays
+  * Add Fiji holidays
+  * Add Guinea holidays
+  * Add Ivory Coast holidays
+  * Add Qatar holidays
+  * Update Argentina holidays: add categories and subdivisions support
+  * Update India holidays: Hindi l10n fixes
+  * Update Pakistan holidays: add 2023-2024 exact dates
+  * Update Pakistan holidays: add l10n support (en_PK, en_US, ur_PK
+  * Update Philippines holidays: 2025 Eid'l Fitr
+  * Update Philippines holidays: adjust Bonifacio Day for 2023
+  * Update README.md badges
+  * Update Timor-Leste holidays: add en_TL, th l10n, update en_US l10n
+  * Update HolidayBase::pop_named: add support for more lookup types
+  * Update _ThaiLunisolar and ThaiCalendarHolidays documentation
+  * Update pyproject.toml: align with PEP 639 metadata format
+  * Update release notes generator
+  * Update tests requirements
+  * Added commit SHAs instead of versions
+  * Adjust project files after migration to MkDocs
+  * Migrate Documentation from Sphinx to MkDocs
+  * Reformat .po files
+  * Reformat BY.po files
+- Update to 0.69
+  * Introduce HolidayBase methods for proper serialization
+  * Add Macau holidays
+  * Update IN holidays and localization
+  * Update Poland holidays: add de localization
+  * Fix l10n handling
+  * Update Hong Kong holidays: standardizes en_US l10n with China's and
+    Macau's implementation
+  * Update Indonesia holidays: 2031-2050 Day of Silence (Nyepi) data, migrate
+    to BalineseSakaCalendarHolidays
+  * Update Philippines holidays: 2025 Eid'l Fitr and Eid'l Adha Tentative Date
+  * Update Taiwan holidays: add categories support
+  * Update Timor Leste holidays: fix 2025 Islamic holidays
+  * Update US holidays: add federal holidays as GOVERNMENT category
+  * Update US holidays: аdd additional MI state holidays
+  * Update IslamicHolidays: add an option whether to add estimation label
+    to holiday name
+- Update to 0.68
+  * Fix 2025 Chinese Calendar's Birthday of Buddha
+  * Update AZ holidays: add 2025 substituted holidays
+  * Update Kenya holidays, add l10n support
+  * Update Malaysia holidays
+  * Update Zenodo record URL in README
+  * Update issue templates
+  * Update l10n scripts
+  * Add .coderabbit.yaml
+
+-------------------------------------------------------------------
 Mon Feb 24 13:12:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.67

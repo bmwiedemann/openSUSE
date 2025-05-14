@@ -1,0 +1,19 @@
+--- airspyhf-1.6.8.orig/tools/src/airspyhf_rx.c	2025-05-05 14:40:18.791315628 +0000
++++ airspyhf-1.6.8/tools/src/airspyhf_rx.c	2025-05-05 14:42:14.990256589 +0000
+@@ -36,6 +36,7 @@
+ 
+ #include <airspyhf.h>
+ 
++#if __STDC_VERSION__ < 202311L
+ #if !defined __cplusplus
+ #ifndef bool
+ typedef int bool;
+@@ -43,6 +44,7 @@ typedef int bool;
+ #define false 0
+ #endif
+ #endif
++#endif
+ 
+ #ifdef _WIN32
+ #include <windows.h>
+

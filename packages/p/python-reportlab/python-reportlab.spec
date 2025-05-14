@@ -1,7 +1,7 @@
 #
 # spec file for package python-reportlab
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ URL:            https://www.reportlab.com/
 Source0:        https://files.pythonhosted.org/packages/source/r/reportlab/reportlab-%{version}.tar.gz
 Source1:        encryption.gif
 BuildRequires:  %{python_module Pillow >= 9.0.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  python-rpm-macros
@@ -50,14 +52,13 @@ sed -i "1d" src/reportlab/graphics/{widgets/table,barcode/test,testdrawings,test
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --no-download-t1-files
+%pyproject_wheel
 
 mypython=%{expand:%%__%(pythons="%{pythons}"; echo ${pythons##python* })}
-PYTHONPATH=$(readlink -f build/lib/) \
-    $mypython docs/genAll.py
+PYTHONPATH=src $mypython docs/genAll.py
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,6 +77,6 @@ $python runAll.py --verbosity=2
 %license LICENSE
 %doc CHANGES.md README.txt docs/reportlab-userguide.pdf
 %{python_sitelib}/reportlab/
-%{python_sitelib}/reportlab-%{version}-py*.egg-info
+%{python_sitelib}/reportlab-%{version}.dist-info
 
 %changelog

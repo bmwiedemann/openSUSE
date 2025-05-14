@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed May  7 13:33:02 UTC 2025 - Martin Wilck <mwilck@suse.com>
+
+- Update to hplip 3.25.2
+- Added support for new printers:
+  * HP LaserJet Enterprise Flow MFP 8601z
+  * HP LaserJet Enterprise Flow MFP 8601z+
+  * HP LaserJet Enterprise MFP 8601dn
+  * HP Color LaserJet Enterprise MFP 8801dn
+  * HP Color LaserJet Enterprise Flow MFP 8801z
+  * HP Color LaserJet Enterprise Flow MFP 8801z+
+  * HP LaserJet Enterprise 8501dn
+  * HP LaserJet Enterprise 8501x
+  * HP LaserJet Enterprise 8501x+
+  * DEX MFP D826
+  * DEX MFP D82640
+  * DEX MFP D82650
+  * DEX MFP D82660
+  * DEX D50145
+  * DEX MFP D42540
+  * DEX MFP D52645
+  * DEX Color D55745
+  * DEX Color MFP D57945
+  * DEX Color MFP D677
+  * DEX Color MFP D67755
+  * DEX Color MFP D67765
+  * DEX Color MFP D877
+  * DEX Color MFP D87740
+  * DEX Color MFP D87750
+  * DEX Color MFP D87760
+  * DEX Color MFP D87770
+  * DEX Color MFP D786
+  * DEX Colour MFP D78625
+  * DEX Color MFP D78630
+  * DEX Color MFP D78635
+  * DEX MFP D731
+  * DEX MFP D73130
+  * DEX MFP D73135
+  * DEX MFP D73140
+
+- Fix plugin verification with sha256 (lp#2110100)
+  * add hplip-utils-Fix-plugin-verification-with-sha256.patch
+
+- Fix C++ compilation on SLE12
+  * add hpcups-fix-compilation-on-SLE12.patch
+
+-------------------------------------------------------------------
+Mon May  5 11:07:28 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add hplip-3.24.4-gcc15.patch to fix gcc-15 compile time error
+  (lp#2096650)
+
+-------------------------------------------------------------------
 Wed Jan 29 14:51:04 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add python3-setuptools BuildRequires: replaces the fix to

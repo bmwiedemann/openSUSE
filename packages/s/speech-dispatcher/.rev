@@ -426,4 +426,21 @@ Now as requested only for Leap (forwarded request 1096175 from ecsos)</comment>
     <comment>- Update to version 0.12.0 (forwarded request 1247969 from mgorse)</comment>
     <requestid>1247970</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2cd91b3beb7f2652997b04f4d06584ab</srcmd5>
+    <version>0.12.1</version>
+    <time>1746638123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.1:
+  * Fix spd-say -k ' '.
+  * Fix output getting stuck in some rare condition triggered in
+    Orca preference dialog.
+  * Fix taking character punctuation levels from NVDA files.
+  * espeak: Fix translated pronounciation.
+  * generic: Fix getting stuck on speaking nothing.
+  * generic: Add GenericDefaultCharset parameter.
+  * generic: Fix random garbage on non-text utterances.
+  * Fix Czech documentation encoding. (forwarded request 1275020 from mgorse)</comment>
+    <requestid>1275021</requestid>
+  </revision>
 </revisionlist>

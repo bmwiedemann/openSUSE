@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  5 09:15:53 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 1.35:
+  * Just a hotfix release to revert a change that broke some CI workflows
+
+- Update to 1.34:
+  * This new version includes lots of improvements in the SSH protocol and a
+    better support for the s390 architecture.
+  * Now, by default, SSH connections to the guest are using vsock, a
+    lightweight transport that bypasses the full network stack and can speed up
+    testing workflows.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:31:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.33:

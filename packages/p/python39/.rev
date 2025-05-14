@@ -1392,4 +1392,13 @@
     deprecated directives.</comment>
     <requestid>1269058</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>58df54edb0b907ddcb9c06c5076d1d0b</srcmd5>
+    <version>3.9.22</version>
+    <time>1747061425</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)</comment>
+    <requestid>1276660</requestid>
+  </revision>
 </revisionlist>

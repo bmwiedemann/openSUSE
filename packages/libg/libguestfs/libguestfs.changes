@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 12 14:17:21 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use FUSE3 starting with suse_version 1600 (aka CODE16): Release
+  CODE16 from the beginning without relying on FUSE 2.
+- Do not add the patch conditionally to the .src.rpm, but only
+  apply the patch conditionally: allows to reuse src.rpm across
+  codestreams.
+
+-------------------------------------------------------------------
+Wed Apr 30 14:41:53 MDT 2025 - carnold@suse.com
+
+- bsc#1242082 - libguestfs: migration to fuse 3 and deprecation of
+  fuse (1)
+  use-fuse3-for-build.patch
+- Update to version 1.55.10 (jsc#PED-8910)
+  * mltools: decouple and simplify osinfo device support checks
+  * mlcustomize: disable `--inject-virtio-win osinfo`
+  * mltools: Fix de-oUnit-ized tests
+  * mltools: Unreference various objects
+  * Revert "mltools: Unreference various objects"
+  * generator: Implement struct FDevice type
+  * mltools: Fix memory leak in OCaml binding of libosinfo
+  * mlstdutils: Implement String.implode
+  * daemon: Rewrite {pvs,vgs,lvs}-full APIs in OCaml
+  * daemon: inspect: Resolve Ubuntu 22+ /dev/disk/by-id/dm-uuid-LVM-... in fstab
+  * Various build improvements
+  * daemon/fstrim.c: Issue sync_disks after fstri
+
+-------------------------------------------------------------------
 Thu Apr  3 15:04:42 MDT 2025 - carnold@suse.com
 
 - Update to version 1.55.8 (jsc#PED-8910)

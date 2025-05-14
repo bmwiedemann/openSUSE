@@ -565,4 +565,21 @@
     <comment></comment>
     <requestid>1273493</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>902f92385b31b8c04d09b9c84f38be7b</srcmd5>
+    <version>10.10.0</version>
+    <time>1747061423</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.10.0:
+  * Allow loading the preResolution, importPackage, and fetchers
+    hooks from local pnpmfile.
+  * Fix cd command, when shellEmulator is true #7838.
+  * Sort keys in pnpm-workspace.yaml #9453.
+  * Pass the npm_package_json environment variable to the
+    executed scripts #9452.
+  * Fixed a mistake in the description of the --reporter=silent
+    option.
+</comment>
+    <requestid>1276646</requestid>
+  </revision>
 </revisionlist>

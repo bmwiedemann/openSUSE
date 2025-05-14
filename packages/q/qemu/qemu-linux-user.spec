@@ -27,7 +27,7 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.2.3
+Version:        10.0.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -69,37 +69,39 @@ syscall layer occurs on the native hardware and operating system.
 %files
 %doc README.rst VERSION
 %license COPYING COPYING.LIB LICENSE
+%ifnarch %ix86 armv7hl
 %_bindir/qemu-aarch64
 %_bindir/qemu-aarch64_be
 %_bindir/qemu-alpha
+%_bindir/qemu-hppa
+%_bindir/qemu-loongarch64
+%_bindir/qemu-mips64
+%_bindir/qemu-mips64el
+%_bindir/qemu-mipsn32
+%_bindir/qemu-mipsn32el
+%_bindir/qemu-ppc64
+%_bindir/qemu-ppc64le
+%_bindir/qemu-riscv64
+%_bindir/qemu-s390x
+%_bindir/qemu-sparc32plus
+%_bindir/qemu-sparc64
+%_bindir/qemu-x86_64
+%endif
 %_bindir/qemu-arm
 %_bindir/qemu-armeb
 %_bindir/qemu-hexagon
-%_bindir/qemu-hppa
-%_bindir/qemu-i386
-%_bindir/qemu-loongarch64
 %_bindir/qemu-m68k
 %_bindir/qemu-microblaze
 %_bindir/qemu-microblazeel
 %_bindir/qemu-mips
-%_bindir/qemu-mips64
-%_bindir/qemu-mips64el
 %_bindir/qemu-mipsel
-%_bindir/qemu-mipsn32
-%_bindir/qemu-mipsn32el
 %_bindir/qemu-or1k
 %_bindir/qemu-ppc
-%_bindir/qemu-ppc64
-%_bindir/qemu-ppc64le
 %_bindir/qemu-riscv32
-%_bindir/qemu-riscv64
-%_bindir/qemu-s390x
 %_bindir/qemu-sh4
 %_bindir/qemu-sh4eb
 %_bindir/qemu-sparc
-%_bindir/qemu-sparc32plus
-%_bindir/qemu-sparc64
-%_bindir/qemu-x86_64
+%_bindir/qemu-i386
 %_bindir/qemu-xtensa
 %_bindir/qemu-xtensaeb
 %_sbindir/qemu-binfmt-conf.sh
@@ -209,6 +211,7 @@ cd %blddir
 ./qemu-%{qemu_arch} %_bindir/ls > /dev/null
 %endif
 
+echo "######## Soft Float tests ########"
 %make_build check-softfloat
 
 %changelog

@@ -1,7 +1,7 @@
-Index: ghc-9.10.1/CODEOWNERS
+Index: ghc-9.10.2/CODEOWNERS
 ===================================================================
---- ghc-9.10.1.orig/CODEOWNERS
-+++ ghc-9.10.1/CODEOWNERS
+--- ghc-9.10.2.orig/CODEOWNERS
++++ ghc-9.10.2/CODEOWNERS
 @@ -40,6 +40,7 @@
  /compiler/GHC/HsToCore/Foreign/Wasm.hs @TerrorJack
  /compiler/GHC/Tc/Deriv/            @RyanGlScott
@@ -10,10 +10,10 @@ Index: ghc-9.10.1/CODEOWNERS
  /compiler/GHC/CmmToAsm/Wasm/       @TerrorJack
  /compiler/GHC/CmmToLlvm/           @angerman
  /compiler/GHC/StgToCmm/            @simonmar @osa1
-Index: ghc-9.10.1/compiler/CodeGen.Platform.h
+Index: ghc-9.10.2/compiler/CodeGen.Platform.h
 ===================================================================
---- ghc-9.10.1.orig/compiler/CodeGen.Platform.h
-+++ ghc-9.10.1/compiler/CodeGen.Platform.h
+--- ghc-9.10.2.orig/compiler/CodeGen.Platform.h
++++ ghc-9.10.2/compiler/CodeGen.Platform.h
 @@ -1,7 +1,8 @@
  
  import GHC.Cmm.Expr
@@ -130,10 +130,10 @@ Index: ghc-9.10.1/compiler/CodeGen.Platform.h
  # endif
  # if defined(REG_Sp)
  freeReg REG_Sp    = False
-Index: ghc-9.10.1/compiler/GHC/Cmm/CLabel.hs
+Index: ghc-9.10.2/compiler/GHC/Cmm/CLabel.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/Cmm/CLabel.hs
-+++ ghc-9.10.1/compiler/GHC/Cmm/CLabel.hs
+--- ghc-9.10.2.orig/compiler/GHC/Cmm/CLabel.hs
++++ ghc-9.10.2/compiler/GHC/Cmm/CLabel.hs
 @@ -1720,6 +1720,8 @@ pprDynamicLinkerAsmLabel !platform dllIn
        | platformArch platform == ArchAArch64
        = ppLbl
@@ -143,10 +143,10 @@ Index: ghc-9.10.1/compiler/GHC/Cmm/CLabel.hs
  
        | platformArch platform == ArchX86_64
        = case dllInfo of
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm.hs
 @@ -67,6 +67,7 @@ import qualified GHC.CmmToAsm.X86   as X
  import qualified GHC.CmmToAsm.PPC   as PPC
  import qualified GHC.CmmToAsm.AArch64 as AArch64
@@ -164,10 +164,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm.hs
        ArchLoongArch64->panic "nativeCodeGen: No NCG for LoongArch64"
        ArchUnknown   -> panic "nativeCodeGen: No NCG for unknown arch"
        ArchJavaScript-> panic "nativeCodeGen: No NCG for JavaScript"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
 @@ -240,6 +240,7 @@ dwarfRegNo p r = case platformArch p of
      | r == xmm15 -> 32
    ArchPPC_64 _ -> fromIntegral $ toRegNo r
@@ -184,10 +184,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Dwarf/Constants.hs
 +    ArchAArch64 -> 30
 +    ArchRISCV64 -> 1 -- ra (return address)
      _other     -> error "dwarfReturnRegNo: Unsupported platform!"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/PIC.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/PIC.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/PIC.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/PIC.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/PIC.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/PIC.hs
 @@ -132,6 +132,11 @@ cmmMakeDynamicReference config reference
                addImport symbolPtr
                return $ cmmMakePicReference config symbolPtr
@@ -211,10 +211,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/PIC.hs
    | OSAIX <- platformOS platform
    = CmmMachOp (MO_Add W32)
            [ CmmReg (CmmGlobal $ GlobalRegUse PicBaseReg (bWord platform))
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64.hs
 @@ -0,0 +1,57 @@
 +{-# OPTIONS_GHC -fno-warn-orphans #-}
 +
@@ -273,10 +273,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64.hs
 +  mkStackDeallocInstr = RV64.mkStackDeallocInstr
 +  mkComment = pure . RV64.COMMENT . ftext
 +  pprInstr = RV64.pprInstr
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/CodeGen.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/CodeGen.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/CodeGen.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/CodeGen.hs
 @@ -0,0 +1,2207 @@
 +{-# LANGUAGE BangPatterns #-}
 +{-# LANGUAGE BinaryLiterals #-}
@@ -2485,10 +2485,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/CodeGen.hs
 +      B (TReg _) -> 1
 +      BL _ _ -> 1
 +      J_TBL {} -> 1
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Cond.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Cond.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Cond.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Cond.hs
 @@ -0,0 +1,42 @@
 +module GHC.CmmToAsm.RV64.Cond
 +  ( Cond (..),
@@ -2532,10 +2532,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Cond.hs
 +  | -- | floating point instruction @fgt@
 +    FGT
 +  deriving (Eq, Show)
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Instr.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Instr.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Instr.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Instr.hs
 @@ -0,0 +1,823 @@
 +-- All instructions will be rendered eventually. Thus, there's no benefit in
 +-- being lazy in data types.
@@ -3360,10 +3360,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Instr.hs
 +isFloatReg (RegVirtual (VirtualRegF _)) = True
 +isFloatReg (RegVirtual (VirtualRegD _)) = True
 +isFloatReg _ = False
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Ppr.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Ppr.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Ppr.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Ppr.hs
 @@ -0,0 +1,715 @@
 +{-# LANGUAGE ScopedTypeVariables #-}
 +
@@ -4080,10 +4080,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Ppr.hs
 +      UGT -> text "gtu"
 +      -- BCOND cannot handle floating point comparisons / registers
 +      _ -> panic $ "RV64.ppr: unhandled BCOND conditional: " ++ show c
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/RegInfo.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/RegInfo.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/RegInfo.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/RegInfo.hs
 @@ -0,0 +1,41 @@
 +-- | Minimum viable implementation of jump short-cutting: No short-cutting.
 +--
@@ -4126,10 +4126,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/RegInfo.hs
 +-- Identity of the provided `Instr`
 +shortcutJump :: (BlockId -> Maybe JumpDest) -> Instr -> Instr
 +shortcutJump _ other = other
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Regs.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Regs.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Regs.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/RV64/Regs.hs
 @@ -0,0 +1,230 @@
 +module GHC.CmmToAsm.RV64.Regs where
 +
@@ -4361,10 +4361,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/RV64/Regs.hs
 +    RcInteger -> text "blue"
 +    RcFloat -> text "red"
 +    RcDouble -> text "green"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
 @@ -119,7 +119,7 @@ trivColorable platform virtualRegSqueeze
                              ArchMipseb    -> panic "trivColorable ArchMipseb"
                              ArchMipsel    -> panic "trivColorable ArchMipsel"
@@ -4383,7 +4383,7 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
                              ArchLoongArch64->panic "trivColorable ArchLoongArch64"
                              ArchJavaScript-> panic "trivColorable ArchJavaScript"
                              ArchWasm32    -> panic "trivColorable ArchWasm32"
-@@ -188,7 +188,7 @@ trivColorable platform virtualRegSqueeze
+@@ -189,7 +189,7 @@ trivColorable platform virtualRegSqueeze
                              ArchMipseb    -> panic "trivColorable ArchMipseb"
                              ArchMipsel    -> panic "trivColorable ArchMipsel"
                              ArchS390X     -> panic "trivColorable ArchS390X"
@@ -4392,10 +4392,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Graph/TrivColorable.hs
                              ArchLoongArch64->panic "trivColorable ArchLoongArch64"
                              ArchJavaScript-> panic "trivColorable ArchJavaScript"
                              ArchWasm32    -> panic "trivColorable ArchWasm32"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/Reg/Linear.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/Reg/Linear.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear.hs
 @@ -112,6 +112,7 @@ import qualified GHC.CmmToAsm.Reg.Linear
  import qualified GHC.CmmToAsm.Reg.Linear.X86     as X86
  import qualified GHC.CmmToAsm.Reg.Linear.X86_64  as X86_64
@@ -4413,10 +4413,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear.hs
        ArchLoongArch64-> panic "linearRegAlloc ArchLoongArch64"
        ArchJavaScript -> panic "linearRegAlloc ArchJavaScript"
        ArchWasm32     -> panic "linearRegAlloc ArchWasm32"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
 @@ -29,10 +29,12 @@ import qualified GHC.CmmToAsm.Reg.Linear
  import qualified GHC.CmmToAsm.Reg.Linear.X86     as X86
  import qualified GHC.CmmToAsm.Reg.Linear.X86_64  as X86_64
@@ -4452,10 +4452,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/FreeRegs.hs
     ArchLoongArch64->panic "maxSpillSlots ArchLoongArch64"
     ArchJavaScript-> panic "maxSpillSlots ArchJavaScript"
     ArchWasm32    -> panic "maxSpillSlots ArchWasm32"
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/RV64.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear/RV64.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/RV64.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Linear/RV64.hs
 @@ -0,0 +1,96 @@
 +-- | Functions to implement the @FR@ (as in "free regs") type class.
 +--
@@ -4553,10 +4553,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Linear/RV64.hs
 +  | r < 32 && testBit g r = pprPanic "Linear.RV64.releaseReg" (text "can't release non-allocated reg x" <> int r)
 +  | r > 31 = FreeRegs g (setBit f (r - 32))
 +  | otherwise = FreeRegs (setBit g r) f
-Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Target.hs
+Index: ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Target.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/CmmToAsm/Reg/Target.hs
-+++ ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Target.hs
+--- ghc-9.10.2.orig/compiler/GHC/CmmToAsm/Reg/Target.hs
++++ ghc-9.10.2/compiler/GHC/CmmToAsm/Reg/Target.hs
 @@ -34,7 +34,7 @@ import qualified GHC.CmmToAsm.X86.Regs
  import qualified GHC.CmmToAsm.X86.RegInfo    as X86
  import qualified GHC.CmmToAsm.PPC.Regs       as PPC
@@ -4611,10 +4611,10 @@ Index: ghc-9.10.1/compiler/GHC/CmmToAsm/Reg/Target.hs
        ArchLoongArch64->panic "targetRegDotColor ArchLoongArch64"
        ArchJavaScript-> panic "targetRegDotColor ArchJavaScript"
        ArchWasm32    -> panic "targetRegDotColor ArchWasm32"
-Index: ghc-9.10.1/compiler/GHC/Driver/Backend.hs
+Index: ghc-9.10.2/compiler/GHC/Driver/Backend.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/Driver/Backend.hs
-+++ ghc-9.10.1/compiler/GHC/Driver/Backend.hs
+--- ghc-9.10.2.orig/compiler/GHC/Driver/Backend.hs
++++ ghc-9.10.2/compiler/GHC/Driver/Backend.hs
 @@ -213,6 +213,7 @@ platformNcgSupported platform = if
           ArchPPC_64 {} -> True
           ArchAArch64   -> True
@@ -4623,11 +4623,11 @@ Index: ghc-9.10.1/compiler/GHC/Driver/Backend.hs
           _             -> False
  
  -- | Is the platform supported by the JS backend?
-Index: ghc-9.10.1/compiler/GHC/Driver/DynFlags.hs
+Index: ghc-9.10.2/compiler/GHC/Driver/DynFlags.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/Driver/DynFlags.hs
-+++ ghc-9.10.1/compiler/GHC/Driver/DynFlags.hs
-@@ -1325,6 +1325,7 @@ default_PIC platform =
+--- ghc-9.10.2.orig/compiler/GHC/Driver/DynFlags.hs
++++ ghc-9.10.2/compiler/GHC/Driver/DynFlags.hs
+@@ -1327,6 +1327,7 @@ default_PIC platform =
      (OSDarwin,  ArchAArch64) -> [Opt_PIC]
      (OSLinux,   ArchAArch64) -> [Opt_PIC, Opt_ExternalDynamicRefs]
      (OSLinux,   ArchARM {})  -> [Opt_PIC, Opt_ExternalDynamicRefs]
@@ -4635,10 +4635,10 @@ Index: ghc-9.10.1/compiler/GHC/Driver/DynFlags.hs
      (OSOpenBSD, ArchX86_64)  -> [Opt_PIC] -- Due to PIE support in
                                           -- OpenBSD since 5.3 release
                                           -- (1 May 2013) we need to
-Index: ghc-9.10.1/compiler/GHC/Platform.hs
+Index: ghc-9.10.2/compiler/GHC/Platform.hs
 ===================================================================
---- ghc-9.10.1.orig/compiler/GHC/Platform.hs
-+++ ghc-9.10.1/compiler/GHC/Platform.hs
+--- ghc-9.10.2.orig/compiler/GHC/Platform.hs
++++ ghc-9.10.2/compiler/GHC/Platform.hs
 @@ -250,7 +250,6 @@ platformHasRTSLinker p = case archOS_arc
    ArchPPC_64 ELF_V1 -> False -- powerpc64
    ArchPPC_64 ELF_V2 -> False -- powerpc64le
@@ -4647,10 +4647,10 @@ Index: ghc-9.10.1/compiler/GHC/Platform.hs
    ArchLoongArch64   -> False
    ArchJavaScript    -> False
    ArchWasm32        -> False
-Index: ghc-9.10.1/compiler/ghc.cabal.in
+Index: ghc-9.10.2/compiler/ghc.cabal.in
 ===================================================================
---- ghc-9.10.1.orig/compiler/ghc.cabal.in
-+++ ghc-9.10.1/compiler/ghc.cabal.in
+--- ghc-9.10.2.orig/compiler/ghc.cabal.in
++++ ghc-9.10.2/compiler/ghc.cabal.in
 @@ -290,6 +290,7 @@ Library
          GHC.CmmToAsm.Reg.Linear.FreeRegs
          GHC.CmmToAsm.Reg.Linear.JoinToTargets
@@ -4673,11 +4673,11 @@ Index: ghc-9.10.1/compiler/ghc.cabal.in
          GHC.CmmToAsm.Types
          GHC.CmmToAsm.Utils
          GHC.CmmToAsm.X86
-Index: ghc-9.10.1/hadrian/bindist/config.mk.in
+Index: ghc-9.10.2/hadrian/bindist/config.mk.in
 ===================================================================
---- ghc-9.10.1.orig/hadrian/bindist/config.mk.in
-+++ ghc-9.10.1/hadrian/bindist/config.mk.in
-@@ -152,7 +152,7 @@ GhcWithSMP := $(strip $(if $(filter YESN
+--- ghc-9.10.2.orig/hadrian/bindist/config.mk.in
++++ ghc-9.10.2/hadrian/bindist/config.mk.in
+@@ -153,7 +153,7 @@ GhcWithSMP := $(strip $(if $(filter YESN
  # Whether to include GHCi in the compiler.  Depends on whether the RTS linker
  # has support for this OS/ARCH combination.
  OsSupportsGHCi=$(strip $(patsubst $(TargetOS_CPP), YES, $(findstring $(TargetOS_CPP), mingw32 linux solaris2 freebsd dragonfly netbsd openbsd darwin kfreebsdgnu)))
@@ -4686,10 +4686,10 @@ Index: ghc-9.10.1/hadrian/bindist/config.mk.in
  
  ifeq "$(OsSupportsGHCi)$(ArchSupportsGHCi)" "YESYES"
  GhcWithInterpreter=YES
-Index: ghc-9.10.1/hadrian/src/Settings/Builders/RunTest.hs
+Index: ghc-9.10.2/hadrian/src/Settings/Builders/RunTest.hs
 ===================================================================
---- ghc-9.10.1.orig/hadrian/src/Settings/Builders/RunTest.hs
-+++ ghc-9.10.1/hadrian/src/Settings/Builders/RunTest.hs
+--- ghc-9.10.2.orig/hadrian/src/Settings/Builders/RunTest.hs
++++ ghc-9.10.2/hadrian/src/Settings/Builders/RunTest.hs
 @@ -118,7 +118,7 @@ inTreeCompilerArgs stg = do
  
      os          <- queryHostTarget queryOS
@@ -4708,10 +4708,10 @@ Index: ghc-9.10.1/hadrian/src/Settings/Builders/RunTest.hs
  
      return TestCompilerArgs{..}
  
-Index: ghc-9.10.1/rts/LinkerInternals.h
+Index: ghc-9.10.2/rts/LinkerInternals.h
 ===================================================================
---- ghc-9.10.1.orig/rts/LinkerInternals.h
-+++ ghc-9.10.1/rts/LinkerInternals.h
+--- ghc-9.10.2.orig/rts/LinkerInternals.h
++++ ghc-9.10.2/rts/LinkerInternals.h
 @@ -208,7 +208,7 @@ typedef struct _Segment {
      int n_sections;
  } Segment;
@@ -4742,11 +4742,11 @@ Index: ghc-9.10.1/rts/LinkerInternals.h
  #endif
  } SymbolExtra;
  
-Index: ghc-9.10.1/rts/RtsSymbols.c
+Index: ghc-9.10.2/rts/RtsSymbols.c
 ===================================================================
---- ghc-9.10.1.orig/rts/RtsSymbols.c
-+++ ghc-9.10.1/rts/RtsSymbols.c
-@@ -980,6 +980,17 @@ extern char **environ;
+--- ghc-9.10.2.orig/rts/RtsSymbols.c
++++ ghc-9.10.2/rts/RtsSymbols.c
+@@ -983,6 +983,17 @@ extern char **environ;
  #define RTS_LIBGCC_SYMBOLS
  #endif
  
@@ -4764,7 +4764,7 @@ Index: ghc-9.10.1/rts/RtsSymbols.c
  // Symbols defined by libgcc/compiler-rt for AArch64's outline atomics.
  #if defined(HAVE_ARM_OUTLINE_ATOMICS)
  #include "ARMOutlineAtomicsSymbols.h"
-@@ -1032,6 +1043,7 @@ RTS_DARWIN_ONLY_SYMBOLS
+@@ -1035,6 +1046,7 @@ RTS_DARWIN_ONLY_SYMBOLS
  RTS_OPENBSD_ONLY_SYMBOLS
  RTS_LIBC_SYMBOLS
  RTS_LIBGCC_SYMBOLS
@@ -4772,7 +4772,7 @@ Index: ghc-9.10.1/rts/RtsSymbols.c
  RTS_FINI_ARRAY_SYMBOLS
  RTS_LIBFFI_SYMBOLS
  RTS_ARM_OUTLINE_ATOMIC_SYMBOLS
-@@ -1074,6 +1086,7 @@ RtsSymbolVal rtsSyms[] = {
+@@ -1077,6 +1089,7 @@ RtsSymbolVal rtsSyms[] = {
        RTS_DARWIN_ONLY_SYMBOLS
        RTS_OPENBSD_ONLY_SYMBOLS
        RTS_LIBGCC_SYMBOLS
@@ -4780,10 +4780,10 @@ Index: ghc-9.10.1/rts/RtsSymbols.c
        RTS_FINI_ARRAY_SYMBOLS
        RTS_LIBFFI_SYMBOLS
        RTS_ARM_OUTLINE_ATOMIC_SYMBOLS
-Index: ghc-9.10.1/rts/adjustor/LibffiAdjustor.c
+Index: ghc-9.10.2/rts/adjustor/LibffiAdjustor.c
 ===================================================================
---- ghc-9.10.1.orig/rts/adjustor/LibffiAdjustor.c
-+++ ghc-9.10.1/rts/adjustor/LibffiAdjustor.c
+--- ghc-9.10.2.orig/rts/adjustor/LibffiAdjustor.c
++++ ghc-9.10.2/rts/adjustor/LibffiAdjustor.c
 @@ -12,6 +12,7 @@
  #include "Adjustor.h"
  
@@ -4815,11 +4815,11 @@ Index: ghc-9.10.1/rts/adjustor/LibffiAdjustor.c
 +
 +    return (void *)code;
  }
-Index: ghc-9.10.1/rts/linker/Elf.c
+Index: ghc-9.10.2/rts/linker/Elf.c
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/Elf.c
-+++ ghc-9.10.1/rts/linker/Elf.c
-@@ -103,7 +103,8 @@
+--- ghc-9.10.2.orig/rts/linker/Elf.c
++++ ghc-9.10.2/rts/linker/Elf.c
+@@ -107,7 +107,8 @@
  
  #include "elf_got.h"
  
@@ -4829,7 +4829,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
  #  define NEED_PLT
  #  include "elf_plt.h"
  #  include "elf_reloc.h"
-@@ -430,10 +431,7 @@ ocVerifyImage_ELF ( ObjectCode* oc )
+@@ -434,10 +435,7 @@ ocVerifyImage_ELF ( ObjectCode* oc )
        case EM_AARCH64: IF_DEBUG(linker,debugBelch( "aarch64" )); break;
  #endif
  #if defined(EM_RISCV)
@@ -4841,7 +4841,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
  #endif
  #if defined(EM_LOONGARCH)
        case EM_LOONGARCH:  IF_DEBUG(linker,debugBelch( "loongarch64" ));
-@@ -1130,9 +1128,10 @@ end:
+@@ -1132,9 +1130,10 @@ end:
     return result;
  }
  
@@ -4855,7 +4855,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
  
  /* Do ELF relocations which lack an explicit addend.  All x86-linux
     and arm-linux relocations appear to be of this form. */
-@@ -1359,7 +1358,7 @@ do_Elf_Rel_relocations ( ObjectCode* oc,
+@@ -1361,7 +1360,7 @@ do_Elf_Rel_relocations ( ObjectCode* oc,
                 /* try to locate an existing stub for this target */
                 if(findStub(&oc->sections[target_shndx], (void**)&S, 0)) {
                     /* didn't find any. Need to create one */
@@ -4864,7 +4864,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
                         errorBelch("Unable to create veneer for ARM_CALL\n");
                         return 0;
                     }
-@@ -1451,7 +1450,7 @@ do_Elf_Rel_relocations ( ObjectCode* oc,
+@@ -1453,7 +1452,7 @@ do_Elf_Rel_relocations ( ObjectCode* oc,
                 /* try to locate an existing stub for this target */
                 if(findStub(&oc->sections[target_shndx], (void**)&S, 1)) {
                     /* didn't find any. Need to create one */
@@ -4873,7 +4873,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
                         errorBelch("Unable to create veneer for ARM_THM_CALL\n");
                         return 0;
                     }
-@@ -1991,7 +1990,7 @@ ocResolve_ELF ( ObjectCode* oc )
+@@ -1993,7 +1992,7 @@ ocResolve_ELF ( ObjectCode* oc )
      (void) shnum;
      (void) shdr;
  
@@ -4882,7 +4882,7 @@ Index: ghc-9.10.1/rts/linker/Elf.c
      /* use new relocation design */
      if(relocateObjectCode( oc ))
          return 0;
-@@ -2014,6 +2013,9 @@ ocResolve_ELF ( ObjectCode* oc )
+@@ -2016,6 +2015,9 @@ ocResolve_ELF ( ObjectCode* oc )
  
  #if defined(powerpc_HOST_ARCH)
      ocFlushInstructionCache( oc );
@@ -4892,10 +4892,10 @@ Index: ghc-9.10.1/rts/linker/Elf.c
  #endif
  
      return ocMprotect_Elf(oc);
-Index: ghc-9.10.1/rts/linker/ElfTypes.h
+Index: ghc-9.10.2/rts/linker/ElfTypes.h
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/ElfTypes.h
-+++ ghc-9.10.1/rts/linker/ElfTypes.h
+--- ghc-9.10.2.orig/rts/linker/ElfTypes.h
++++ ghc-9.10.2/rts/linker/ElfTypes.h
 @@ -150,6 +150,7 @@ typedef
  struct _Stub {
      void * addr;
@@ -4904,10 +4904,10 @@ Index: ghc-9.10.1/rts/linker/ElfTypes.h
      /* flags can hold architecture specific information they are used during
       * lookup of stubs as well. Thus two stubs for the same target with
       * different flags are considered unequal.
-Index: ghc-9.10.1/rts/linker/SymbolExtras.c
+Index: ghc-9.10.2/rts/linker/SymbolExtras.c
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/SymbolExtras.c
-+++ ghc-9.10.1/rts/linker/SymbolExtras.c
+--- ghc-9.10.2.orig/rts/linker/SymbolExtras.c
++++ ghc-9.10.2/rts/linker/SymbolExtras.c
 @@ -153,7 +153,7 @@ void ocProtectExtras(ObjectCode* oc)
  }
  
@@ -4932,10 +4932,10 @@ Index: ghc-9.10.1/rts/linker/SymbolExtras.c
 +#endif /* powerpc_HOST_ARCH || x86_64_HOST_ARCH || riscv64_HOST_ARCH */
  #endif /* !x86_64_HOST_ARCH) || !mingw32_HOST_OS */
  #endif // NEED_SYMBOL_EXTRAS
-Index: ghc-9.10.1/rts/linker/SymbolExtras.h
+Index: ghc-9.10.2/rts/linker/SymbolExtras.h
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/SymbolExtras.h
-+++ ghc-9.10.1/rts/linker/SymbolExtras.h
+--- ghc-9.10.2.orig/rts/linker/SymbolExtras.h
++++ ghc-9.10.2/rts/linker/SymbolExtras.h
 @@ -16,7 +16,7 @@ SymbolExtra* makeArmSymbolExtra( ObjectC
                                   unsigned long target,
                                   bool fromThumb,
@@ -4945,10 +4945,10 @@ Index: ghc-9.10.1/rts/linker/SymbolExtras.h
  SymbolExtra* makeSymbolExtra( ObjectCode const* oc,
                                unsigned long symbolNumber,
                                unsigned long target );
-Index: ghc-9.10.1/rts/linker/elf_plt.c
+Index: ghc-9.10.2/rts/linker/elf_plt.c
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_plt.c
-+++ ghc-9.10.1/rts/linker/elf_plt.c
+--- ghc-9.10.2.orig/rts/linker/elf_plt.c
++++ ghc-9.10.2/rts/linker/elf_plt.c
 @@ -5,7 +5,7 @@
  #include <stdint.h>
  #include <stdlib.h>
@@ -4971,11 +4971,11 @@ Index: ghc-9.10.1/rts/linker/elf_plt.c
 +    s->got_addr = got_addr;
      s->flags  = flags;
      s->next = NULL;
-     s->addr = (uint8_t *)section->info->stub_offset + 8
-Index: ghc-9.10.1/rts/linker/elf_plt.h
+     s->addr = (uint8_t *)section->info->stub_offset + STUB_SIZE * section->info->nstubs;
+Index: ghc-9.10.2/rts/linker/elf_plt.h
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_plt.h
-+++ ghc-9.10.1/rts/linker/elf_plt.h
+--- ghc-9.10.2.orig/rts/linker/elf_plt.h
++++ ghc-9.10.2/rts/linker/elf_plt.h
 @@ -4,8 +4,9 @@
  
  #include "elf_plt_arm.h"
@@ -5009,10 +5009,10 @@ Index: ghc-9.10.1/rts/linker/elf_plt.h
  
 -#endif // arm/aarch64_HOST_ARCH
 +#endif // arm/aarch64_HOST_ARCH/riscv64_HOST_ARCH
-Index: ghc-9.10.1/rts/linker/elf_plt_riscv64.c
+Index: ghc-9.10.2/rts/linker/elf_plt_riscv64.c
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/rts/linker/elf_plt_riscv64.c
++++ ghc-9.10.2/rts/linker/elf_plt_riscv64.c
 @@ -0,0 +1,90 @@
 +#include "Rts.h"
 +#include "elf_compat.h"
@@ -5104,10 +5104,10 @@ Index: ghc-9.10.1/rts/linker/elf_plt_riscv64.c
 +
 +#endif
 +#endif
-Index: ghc-9.10.1/rts/linker/elf_plt_riscv64.h
+Index: ghc-9.10.2/rts/linker/elf_plt_riscv64.h
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/rts/linker/elf_plt_riscv64.h
++++ ghc-9.10.2/rts/linker/elf_plt_riscv64.h
 @@ -0,0 +1,12 @@
 +#pragma once
 +
@@ -5121,10 +5121,10 @@ Index: ghc-9.10.1/rts/linker/elf_plt_riscv64.h
 +bool makeStubRISCV64(Stub * s);
 +
 +#endif
-Index: ghc-9.10.1/rts/linker/elf_reloc.c
+Index: ghc-9.10.2/rts/linker/elf_reloc.c
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_reloc.c
-+++ ghc-9.10.1/rts/linker/elf_reloc.c
+--- ghc-9.10.2.orig/rts/linker/elf_reloc.c
++++ ghc-9.10.2/rts/linker/elf_reloc.c
 @@ -4,13 +4,18 @@
  
  #if defined(OBJFORMAT_ELF)
@@ -5146,10 +5146,10 @@ Index: ghc-9.10.1/rts/linker/elf_reloc.c
  #endif
  
  #endif
-Index: ghc-9.10.1/rts/linker/elf_reloc.h
+Index: ghc-9.10.2/rts/linker/elf_reloc.h
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_reloc.h
-+++ ghc-9.10.1/rts/linker/elf_reloc.h
+--- ghc-9.10.2.orig/rts/linker/elf_reloc.h
++++ ghc-9.10.2/rts/linker/elf_reloc.h
 @@ -5,9 +5,10 @@
  #if defined(OBJFORMAT_ELF)
  
@@ -5162,10 +5162,10 @@ Index: ghc-9.10.1/rts/linker/elf_reloc.h
 -
 +void flushInstructionCache(ObjectCode *oc);
  #endif /* OBJETFORMAT_ELF */
-Index: ghc-9.10.1/rts/linker/elf_reloc_aarch64.c
+Index: ghc-9.10.2/rts/linker/elf_reloc_aarch64.c
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_reloc_aarch64.c
-+++ ghc-9.10.1/rts/linker/elf_reloc_aarch64.c
+--- ghc-9.10.2.orig/rts/linker/elf_reloc_aarch64.c
++++ ghc-9.10.2/rts/linker/elf_reloc_aarch64.c
 @@ -240,7 +240,7 @@ computeAddend(Section * section, Elf_Rel
                  /* check if we already have that stub */
                  if(findStub(section, (void**)&S, 0)) {
@@ -5175,7 +5175,7 @@ Index: ghc-9.10.1/rts/linker/elf_reloc_aarch64.c
                          abort(/* could not find or make stub */);
                      }
                  }
-@@ -339,5 +339,10 @@ relocateObjectCodeAarch64(ObjectCode * o
+@@ -345,5 +345,10 @@ relocateObjectCodeAarch64(ObjectCode * o
      return EXIT_SUCCESS;
  }
  
@@ -5186,20 +5186,20 @@ Index: ghc-9.10.1/rts/linker/elf_reloc_aarch64.c
 +
  #endif /* OBJECTFORMAT_ELF */
  #endif /* aarch64_HOST_ARCH */
-Index: ghc-9.10.1/rts/linker/elf_reloc_aarch64.h
+Index: ghc-9.10.2/rts/linker/elf_reloc_aarch64.h
 ===================================================================
---- ghc-9.10.1.orig/rts/linker/elf_reloc_aarch64.h
-+++ ghc-9.10.1/rts/linker/elf_reloc_aarch64.h
+--- ghc-9.10.2.orig/rts/linker/elf_reloc_aarch64.h
++++ ghc-9.10.2/rts/linker/elf_reloc_aarch64.h
 @@ -7,4 +7,5 @@
  bool
  relocateObjectCodeAarch64(ObjectCode * oc);
  
 +void flushInstructionCacheAarch64(ObjectCode *oc);
  #endif /* OBJETFORMAT_ELF */
-Index: ghc-9.10.1/rts/linker/elf_reloc_riscv64.c
+Index: ghc-9.10.2/rts/linker/elf_reloc_riscv64.c
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/rts/linker/elf_reloc_riscv64.c
++++ ghc-9.10.2/rts/linker/elf_reloc_riscv64.c
 @@ -0,0 +1,693 @@
 +#include "elf_reloc_riscv64.h"
 +#include "LinkerInternals.h"
@@ -5894,10 +5894,10 @@ Index: ghc-9.10.1/rts/linker/elf_reloc_riscv64.c
 +
 +#endif /* OBJECTFORMAT_ELF */
 +#endif /* riscv64_HOST_ARCH */
-Index: ghc-9.10.1/rts/linker/elf_reloc_riscv64.h
+Index: ghc-9.10.2/rts/linker/elf_reloc_riscv64.h
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/rts/linker/elf_reloc_riscv64.h
++++ ghc-9.10.2/rts/linker/elf_reloc_riscv64.h
 @@ -0,0 +1,11 @@
 +#pragma once
 +
@@ -5910,10 +5910,10 @@ Index: ghc-9.10.1/rts/linker/elf_reloc_riscv64.h
 +
 +void flushInstructionCacheRISCV64(ObjectCode *oc);
 +#endif /* OBJETFORMAT_ELF */
-Index: ghc-9.10.1/rts/rts.cabal
+Index: ghc-9.10.2/rts/rts.cabal
 ===================================================================
---- ghc-9.10.1.orig/rts/rts.cabal
-+++ ghc-9.10.1/rts/rts.cabal
+--- ghc-9.10.2.orig/rts/rts.cabal
++++ ghc-9.10.2/rts/rts.cabal
 @@ -468,9 +468,11 @@ library
                   linker/elf_got.c
                   linker/elf_plt.c
@@ -5926,10 +5926,10 @@ Index: ghc-9.10.1/rts/rts.cabal
                   linker/elf_tlsgd.c
                   linker/elf_util.c
                   sm/BlockAlloc.c
-Index: ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.hs
+Index: ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv.hs
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.hs
++++ ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv.hs
 @@ -0,0 +1,123 @@
 +{-# LANGUAGE ForeignFunctionInterface #-}
 +{-# LANGUAGE GHCForeignImportPrim #-}
@@ -6054,10 +6054,10 @@ Index: ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.hs
 +  if a == b
 +    then pure ()
 +    else error $ show a ++ " =/= " ++ show b
-Index: ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.stdout
+Index: ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv.stdout
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.stdout
++++ ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv.stdout
 @@ -0,0 +1,60 @@
 +"fun8 result:502"
 +"fun16 result:131062"
@@ -6119,10 +6119,10 @@ Index: ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv.stdout
 +a7: 1.700000
 +s0: 1.800000
 +s1: 1.900000
-Index: ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv_c.c
+Index: ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv_c.c
 ===================================================================
 --- /dev/null
-+++ ghc-9.10.1/testsuite/tests/codeGen/should_run/CCallConv_c.c
++++ ghc-9.10.2/testsuite/tests/codeGen/should_run/CCallConv_c.c
 @@ -0,0 +1,91 @@
 +#include "stdint.h"
 +#include "stdio.h"

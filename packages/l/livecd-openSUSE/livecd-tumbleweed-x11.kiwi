@@ -392,23 +392,8 @@
     <package name="util-linux"/>
     <package name="wireless-regdb"/>
     <package name="wpa_supplicant"/>
-    <package name="xf86-video-ark"/>
-    <package name="xf86-video-ati"/>
-    <package name="xf86-video-chips" arch="i686,x86_64"/>
-    <package name="xf86-video-i128"/>
-    <package name="xf86-video-mga"/>
-    <package name="xf86-video-neomagic"/>
     <package name="xf86-video-nouveau"/>
-    <package name="xf86-video-nv"/>
     <package name="xf86-video-qxl"/>
-    <package name="xf86-video-r128"/>
-    <package name="xf86-video-savage"/>
-    <package name="xf86-video-siliconmotion" arch="i686,x86_64"/>
-    <package name="xf86-video-sis" arch="i686,x86_64"/>
-    <package name="xf86-video-sisusb"/>
-    <package name="xf86-video-tdfx"/>
-    <package name="xf86-video-v4l"/>
-    <package name="xf86-video-vesa" arch="i686,x86_64"/>
     <package name="xz"/>
     <package name="zd1211-firmware"/>
     <package name="zip"/>

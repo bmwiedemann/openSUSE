@@ -157,7 +157,6 @@ BuildRequires:  pkgconfig(eigen3) >= 3.3.9
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2) >= 2.11.0
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)

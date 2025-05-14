@@ -7,4 +7,12 @@
     <comment>introduce selinux-policy-targeted-gaming</comment>
     <requestid>1255965</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8a4611019d4bc5d807f2a8bb29b0bc3</srcmd5>
+    <version>1</version>
+    <time>1746721413</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275471</requestid>
+  </revision>
 </revisionlist>

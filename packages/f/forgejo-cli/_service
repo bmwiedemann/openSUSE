@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://codeberg.org/Cyborus/forgejo-cli.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/v0.2.0</param>
+    <param name="revision">refs/tags/v0.3.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
@@ -13,6 +13,7 @@
   </service>
   <service name="cargo_vendor" mode="manual">
     <param name="src">forgejo-cli</param>
+    <param name="update">true</param>
   </service>
   <service name="set_version" mode="manual" />
 </services>

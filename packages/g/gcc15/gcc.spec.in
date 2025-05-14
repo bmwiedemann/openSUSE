@@ -1236,6 +1236,10 @@ License:        GPL-3.0-or-later
 Group:        Development/Languages/Other
 Requires: gcc@base_ver@@variant@ = %{version}-%{release}
 Requires: gcc@base_ver@-cobol = %{version}-%{release}
+Requires: libgcobol%{libgcobol_sover}@variant@ >= %{version}-%{release}
+%ifarch %quadmath_arch
+Requires: libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}@variant@ = %{version}-%{release}
+%endif
 
 %description cobol@variant@
 This package contains a COBOL compiler.

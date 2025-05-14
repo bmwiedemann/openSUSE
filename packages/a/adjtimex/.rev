@@ -49,4 +49,12 @@ The request is equal to 235578, but also removes UsrMerge compatibility symlink 
     <comment></comment>
     <requestid>729446</requestid>
   </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>4780cd8e96e3491845fea2a1b7b74f8b</srcmd5>
+    <version>1.29</version>
+    <time>1746542511</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274741</requestid>
+  </revision>
 </revisionlist>

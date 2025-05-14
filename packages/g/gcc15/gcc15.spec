@@ -217,7 +217,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.1.1+git9595
+Version:        15.1.1+git9642
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2268,6 +2268,10 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc15 = %{version}-%{release}
 Requires:       gcc15-cobol = %{version}-%{release}
+Requires:       libgcobol%{libgcobol_sover} >= %{version}-%{release}
+%ifarch %quadmath_arch
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix} = %{version}-%{release}
+%endif
 
 %description cobol
 This package contains a COBOL compiler.
@@ -2278,6 +2282,10 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc15-32bit = %{version}-%{release}
 Requires:       gcc15-cobol = %{version}-%{release}
+Requires:       libgcobol%{libgcobol_sover}-32bit >= %{version}-%{release}
+%ifarch %quadmath_arch
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-32bit = %{version}-%{release}
+%endif
 
 %description cobol-32bit
 This package contains a COBOL compiler.
@@ -2288,6 +2296,10 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Other
 Requires:       gcc15-64bit = %{version}-%{release}
 Requires:       gcc15-cobol = %{version}-%{release}
+Requires:       libgcobol%{libgcobol_sover}-64bit >= %{version}-%{release}
+%ifarch %quadmath_arch
+Requires:       libquadmath%{libquadmath_sover}-devel%{libdevel_suffix}-64bit = %{version}-%{release}
+%endif
 
 %description cobol-64bit
 This package contains a COBOL compiler.

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  9 20:43:16 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.2.4:
+  * added x-appimage as supported mime
+- Update to 3.2.3:
+  * unsquashfs: fixed errors with symbolic links
+
+-------------------------------------------------------------------
 Mon Apr 21 18:17:58 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.2.2:

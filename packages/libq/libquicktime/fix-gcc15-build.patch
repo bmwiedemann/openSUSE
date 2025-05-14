@@ -1,0 +1,39 @@
+
+sourceforge.net/p/libquicktime/git/ci/5aba9ba
+
+lqtplay.c:1518:36: warning: too many arguments in call to 'decode_audio'
+decode_audio(AUDIO_BLOCK_SIZE);
+decode_audio takes no arguments. remove the argument so the error goes away.
+
+Authored by: Steven Schultz 2021-03-04
+
+--- a/utils/lqtplay.c
++++ b/utils/lqtplay.c
+@@ -1477,7 +1477,7 @@
+     while(!done) {
+         /* Decode new audio samples */
+         if(!qt_audio_samples_in_buffer)
+-          decode_audio(AUDIO_BLOCK_SIZE);
++          decode_audio();
+         ret = snd_pcm_writei(pcm_handle, (void *)(qt_audio_ptr), qt_audio_samples_in_buffer);
+         if (ret == -EAGAIN) { 
+             ret = 0;
+@@ -1515,7 +1515,7 @@
+     int rc, n, revents;
+ 
+     if(!qt_audio_samples_in_buffer)
+-      decode_audio(AUDIO_BLOCK_SIZE);
++      decode_audio();
+ 
+     /* this code is absolutely horrible.  do not follow this example. */
+ 
+@@ -1557,7 +1557,7 @@
+     int rc;
+ 
+     if(!qt_audio_samples_in_buffer)
+-      decode_audio(AUDIO_BLOCK_SIZE);
++      decode_audio();
+     
+     rc = write(oss_fd,qt_audio_ptr,qt_audio_samples_in_buffer * qt_channels * sizeof(*qt_audio));
+     switch (rc) {
+

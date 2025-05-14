@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Tue May 06 11:22:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0:
+  Grafana k6 v1.0 is here!
+  After 9 years of iteration and countless community contributions,
+  we're thrilled to announce Grafana k6 v1.0.
+  While many features and capabilities in this release were
+  introduced gradually in previous versions, k6 v1.0 marks a
+  turning point: a commitment to stability, formal support
+  guarantees, and transparency in how we evolve and develop the
+  project from here. This milestone is more than a version number;
+  it's about trust, reliability, and empowering you to test
+  confidently.
+
+  What's New in k6 1.0?
+  * Stability You Can Build On
+  * First-Class TypeScript Support
+  * Extensions Made Simple
+  * Revamped test summary
+  * Quality of Life Upgrades
+
+  Full changelog:
+  https://github.com/grafana/k6/releases/tag/v1.0.0
+
+-------------------------------------------------------------------
+Tue May 06 04:56:02 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.59.0:
+  The v0.59.0 release mirrors the previous v1.0.0-rc2 release to
+  allow automation tools to recognize it as the latest version.
+  For example, Homebrew's k6 formulae and pkg.go.dev do not
+  automatically fetch unstable versions such as v1.0.0-rc2, which
+  is legitimately the expected behavior for these tools.
+  However, this has been the default for all previous v0.*
+  releases, where they were considered the latest stable
+  version—even if they were under a version typically associated
+  with unstable releases. To address this, we will continue
+  releasing mirrored versions under v0.* for necessary release
+  candidates.
+  This practice will end once the official stable v1.0.0 release is
+  available, after which we will follow the standard SemVer
+  lifecycle to simplify the workflow for everyone.
+  The release notes for v1.0.0-rc2 provide a detailed look at all
+  the changes that have been implemented since v1.0.0-rc1/v0.58.0
+  and are now part of this version.
+  * New features
+    - Native support for extensions in the Cloud #4671
+      The new Binary Provisioning feature automatically requests
+      and uses custom k6 binaries with the required extensions for
+      your tests. This allows you to run scripts that use
+      extensions without manually rebuilding k6 as it was in the
+      past by depending on tools like xk6. The system caches
+      binaries locally for efficiency, and any additional runs with
+      the same dependencies will use the same binary and will run
+      faster.
+      Binary Provisioning is available for all k6 Cloud users (free
+      and paid plans). It is an experimental feature, it's enabled
+      by opt-in with the feature flag K6_BINARY_PROVISIONING=true.
+      Binary provisioning is a limited set of extensions that are
+      supported, and it's not available for the k6 run command that
+      might be added in the future. However, local development is
+      supported with the k6 cloud --local-execution command if a
+      cloud token is provided by the canonical login methods.
+      Check out the documentation for additional details.
+      https://grafana.com/docs/grafana-cloud/testing/k6/author-run/use-k6-extensions
+    - Test failure control with execution.test.fail #4672
+      The new execution.test.fail function allows you to explicitly
+      fail a test while letting it continue execution until
+      completion. This gives you more control over test outcomes
+      while still collecting all metrics and completing necessary
+      cleanup tasks.
+  * UX improvements and enhancements
+    - #4698 Displays threshold values even when are not configured
+      in summaryTrendStats option.
+    - #4699 Drops the link of the legacy k6 website from the user
+      agent.
+  * Bug fixes
+    - #4717 Safeguards against pressedKeys being updated
+      concurrently in the browser module.
+    - #4665 Prevents race condition between Ended & Interrupted
+      execution states.
+    - #4677 Makes secretsource also redact float32 and float64
+      values.
+  * Maintenance and internal improvements
+    - #4675, #4676, #4678 Move several packages to internal as
+      preparations for v1.0.0 stabilization
+    - #4686 Drops the redundant NO_COLOR detection.
+    - #4709 Fixes JS native objects override to avoid a page under
+      the test from overwriting native JavaScript objects, like Set
+      and Map.
+    - #4726 Unifies the internal/cmd.Execute methods.
+    - #4703 Makes wptTests run without tags or skip if repos not
+      checkout.
+    - #4701 Fixes WebCrypto errors not propagating from the tests.
+    - #4691, #4674, #4673, #4663 Bumps the versions for
+      OpenTelemetry, grpc, golang/x and esbuild dependencies.
+    - #4691 Bumps x509roots/fallback dependency for fallback
+      certificates.
+    - #4739 Removes deprecated GetLayoutMetrics.VisualViewport CDP
+      usage.
+
+-------------------------------------------------------------------
+Mon Mar 31 10:52:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.58.0:
+  The v0.58.0 release mirrors the previous v1.0.0-rc1 release to
+  allow automation tools to recognize it as the latest version.
+  For example, Homebrew's k6 formulae and pkg.go.dev do not
+  automatically fetch unstable versions such as v1.0.0-rc1, which
+  is legitimately the expected behavior for these tools.
+  However, this has been the default for all previous v0.*
+  releases, where they were considered the latest stable
+  version—even if they were under a version typically associated
+  with unstable releases. To address this, we will continue
+  releasing mirrored versions under v0.* for necessary release
+  candidates.
+  This practice will end once the official stable v1.0.0 release is
+  available, after which we will follow the standard SemVer
+  lifecycle to simplify the workflow for everyone.
+  The release notes for v1.0.0-rc1 provide a detailed look at all
+  the changes that have been implemented since v0.57.0 and are now
+  part of this version.
+  https://github.com/grafana/k6/releases/v1.0.0-rc1
+
+-------------------------------------------------------------------
 Tue Mar 18 17:41:47 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.0:

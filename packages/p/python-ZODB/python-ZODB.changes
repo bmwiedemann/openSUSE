@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue May 13 12:06:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0.1
+  * repozo: fix restoring on stdout.
+  * repozo: prevent an incorrect "option ignored" warning when running
+    backup or verify.
+  * FileStorage: fix restore regression introduced in ZODB 6.0 in #395:
+    when restoring data records with undo the restore was no longer
+    emitting backpointers and was emitting duplicate data copies instead.
+    #409 fixes restore back to emit data records with backpointers for
+    undo again.
+- Add conflict with fstail, since ZODB has a binary with the same name.
+
+-------------------------------------------------------------------
+Tue May 13 06:37:07 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu May 30 12:34:58 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.0

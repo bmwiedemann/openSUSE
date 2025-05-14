@@ -189,7 +189,7 @@ ExcludeArch: %arm
 
 
 Name:           nodejs-electron
-Version:        35.2.2
+Version:        35.3.0
 %global tag_version %version
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
@@ -242,6 +242,7 @@ Patch85:        devtools-frontend-compress_files-oom.patch
 Patch86:        enable_stack_trace_line_numbers-symbol_level.patch
 Patch97:        chromium-127-cargo_crate.patch
 Patch98:        gn-logspam-breaks-install.patch
+Patch99:        torque-debuginfo.patch
 
 
 # PATCHES that remove code we don't want. Most of them can be reused verbatim by other distributors,
@@ -378,6 +379,9 @@ Patch3205:      plugin_utils-build-without-electron_extensions.patch
 Patch3206:      string-hasher-flax-vector-conversions.patch
 Patch3207:      unexportable_key_service_impl-Wlto-type-mismatch.patch
 Patch3208:      to_vector-std-projected-gcc119888.patch
+Patch3209:      file_dialog-missing-uint32_t.patch
+Patch3210:      CheckPortalAvailabilityOnBusThread-UaF-crash.patch
+Patch3211:      html_permission_element_strings_map-reproducible.patch
 
 # Patches to re-enable upstream force disabled features.
 # There's no sense in submitting them but they may be reused as-is by other packagers.
@@ -1380,7 +1384,8 @@ popd
 
 
 
-cp -lrvT out/Release/gen/node_headers/include/node %{buildroot}%{_includedir}/electron
+cp -lrvT out/Release/gen/node_headers %{buildroot}%{_includedir}/electron
+
 
 # Electron has a little known feature that make it work like a nodejs binary.
 # We make use of it in the %%electron_rebuild macro which builds all dependencies in node_modules against Electron's headers.

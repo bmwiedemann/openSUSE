@@ -1,7 +1,7 @@
 #
 # spec file for package libqjack
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -25,7 +25,7 @@ Release:        0
 Summary:        Connect to the Jack Sound Server with Qt
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://bitbucket.org/asiniscalchi/qjack
+URL:            https://bitbucket.org/asiniscalchi/qjack
 ## https://bitbucket.org/asiniscalchi/qjack.git
 Source:         qjack-%{_reldate}.tar.bz2
 Patch1:         qjack-soname-lib.patch
@@ -64,6 +64,9 @@ QJack makes you connect with the Jack soundserver system with Qt.
 %autosetup -p1 -n qjack-%{_reldate}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 install -d build
 pushd build
 cmake \

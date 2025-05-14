@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat May  3 16:07:23 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some ASUS laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

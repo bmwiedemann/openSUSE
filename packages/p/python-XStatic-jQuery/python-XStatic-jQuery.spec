@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-jQuery
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic-jQuery
 Version:        3.5.1.1
 Release:        0
 Summary:        jQuery repackaged for the XStatic standard
 License:        MIT
-URL:            http://jquery.com/
+URL:            https://jquery.com/
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic-jQuery/XStatic-jQuery-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -40,14 +40,17 @@ You can find more info about the xstatic packaging way in the package `XStatic`.
 %setup -q -n XStatic-jQuery-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
-%{python_sitelib}/*
+%dir %{python_sitelib}/xstatic
+%dir %{python_sitelib}/xstatic/pkg
+%{python_sitelib}/xstatic/pkg/jquery
+%{python_sitelib}/[Xx][Ss]tatic[-_]j[Qq]uery-%{version}*-info
+%{python_sitelib}/[Xx][Ss]tatic[-_]j[Qq]uery-%{version}*nspkg.pth
 
 %changelog

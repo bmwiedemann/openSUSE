@@ -1,0 +1,52 @@
+#
+# Please keep the list sorted (with `LC_ALL=C sort`).
+#
+%dir %{_sysconfdir}/systemd/network
+%dir %{_sysconfdir}/systemd/networkd.conf.d
+%dir %{_systemd_util_dir}/network
+# Main config files have been replaced in favor of drop-ins.
+%ghost %{_sysconfdir}/systemd/networkd.conf
+%{_bindir}/networkctl
+%{_datadir}/bash-completion/completions/networkctl
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.DHCPServer.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.DHCPv4Client.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.DHCPv6Client.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Link.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Manager.xml
+%{_datadir}/dbus-1/interfaces/org.freedesktop.network1.Network.xml
+%{_datadir}/dbus-1/system-services/org.freedesktop.network1.service
+%{_datadir}/dbus-1/system.d/org.freedesktop.network1.conf
+%{_datadir}/polkit-1/actions/org.freedesktop.network1.policy
+%{_datadir}/polkit-1/rules.d/60-systemd-networkd.rules
+%{_datadir}/zsh/site-functions/_networkctl
+%{_mandir}/man1/networkctl.1.gz
+%{_mandir}/man5/networkd.conf.5.gz
+%{_mandir}/man5/networkd.conf.d.5.gz
+%{_mandir}/man5/org.freedesktop.network1.5.gz
+%{_mandir}/man5/systemd.network.5.gz
+%{_mandir}/man8/systemd-networkd-wait-online.8.gz
+%{_mandir}/man8/systemd-networkd-wait-online.service.8.gz
+%{_mandir}/man8/systemd-networkd-wait-online@.service.8.gz
+%{_mandir}/man8/systemd-networkd.8.gz
+%{_mandir}/man8/systemd-networkd.service.8.gz
+%{_systemd_util_dir}/network/80-6rd-tunnel.link
+%{_systemd_util_dir}/network/80-6rd-tunnel.network
+%{_systemd_util_dir}/network/80-auto-link-local.network.example
+%{_systemd_util_dir}/network/80-container-host0.network
+%{_systemd_util_dir}/network/80-container-host0-tun.network
+%{_systemd_util_dir}/network/80-vm-vt.link
+%{_systemd_util_dir}/network/80-vm-vt.network
+%{_systemd_util_dir}/network/80-wifi-adhoc.network
+%{_systemd_util_dir}/network/80-wifi-ap.network.example
+%{_systemd_util_dir}/network/80-wifi-station.network.example
+%{_systemd_util_dir}/network/89-ethernet.network.example
+%{_systemd_util_dir}/networkd.conf
+%{_systemd_util_dir}/systemd-networkd
+%{_systemd_util_dir}/systemd-networkd-wait-online
+%{_sysusersdir}/systemd-network.conf
+%{_tmpfilesdir}/systemd-network.conf
+%{_unitdir}/systemd-networkd-persistent-storage.service
+%{_unitdir}/systemd-networkd-wait-online.service
+%{_unitdir}/systemd-networkd-wait-online@.service
+%{_unitdir}/systemd-networkd.service
+%{_unitdir}/systemd-networkd.socket

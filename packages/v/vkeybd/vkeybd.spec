@@ -1,7 +1,7 @@
 #
 # spec file for package vkeybd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           vkeybd
-Version:        0.1.18e
+Version:        0.1.18f
 Release:        0
 Summary:        Virtual Keyboard Instrument
 License:        GPL-2.0-or-later

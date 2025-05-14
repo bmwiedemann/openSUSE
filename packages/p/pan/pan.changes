@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  2 09:30:34 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.162:
+  * cmake: switch to c++17.
+  * bug fix: Show multipart binary article information. Now,
+    getting article headers (with key 'h') is easier. Most headers
+    contain an abuse clause that may be useful to fight abuses.
+  * mime-utils: fix assertion 'G_IS_OBJECT (object)' failure.
+  * Fixed incorrect whitespaces in manual Face wrapping.
+
+-------------------------------------------------------------------
 Sun Nov  3 15:30:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.161:

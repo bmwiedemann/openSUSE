@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.71.0
+Version:        2.72.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -75,10 +75,10 @@ Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
 Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 13.5.0
-Requires:       %{pythons}-azure-mgmt-compute >= 33.0.0
+Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
-Requires:       %{pythons}-azure-mgmt-containerregistry >= 10.3.0
-Requires:       %{pythons}-azure-mgmt-containerservice >= 34.2.0
+Requires:       %{pythons}-azure-mgmt-containerregistry >= 11.0.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 35.0.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 9.7.0
 Requires:       %{pythons}-azure-mgmt-databoxedge >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
@@ -120,7 +120,7 @@ Requires:       %{pythons}-azure-mgmt-servicefabric >= 2.1.0
 Requires:       %{pythons}-azure-mgmt-servicefabricmanagedclusters >= 2.1.0~b1
 Requires:       %{pythons}-azure-mgmt-servicelinker >= 1.2.0~b3
 Requires:       %{pythons}-azure-mgmt-signalr >= 2.0.0~b2
-Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b20
+Requires:       %{pythons}-azure-mgmt-sql >= 4.0.0b21
 Requires:       %{pythons}-azure-mgmt-sqlvirtualmachine >= 1.0.0b5
 Requires:       %{pythons}-azure-mgmt-storage >= 21.2.0
 Requires:       %{pythons}-azure-mgmt-synapse >= 2.1.0b5
@@ -293,9 +293,9 @@ install -DTm644 %{buildroot}%{_bindir}/az.completion.sh %{buildroot}%{_datadir}/
 %if %{with test}
 %check
 set +x
+failed=0
 for i in $(az | sed -n 's/\s*\([a-z,-]*\)\s\+\:.*/\1/p') ; do
     echo -n "Testing $i command .. "
-    failed=0
     if az $i --help > /dev/null 2>&1 ; then
 	echo "OK"
     else

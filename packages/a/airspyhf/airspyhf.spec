@@ -29,6 +29,8 @@ URL:            http://www.airspy.com/airspy-hf-plus
 #Git-Clone:     https://github.com/airspy/airspyhf.git
 Source:         https://github.com/airspy/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         airspyhf-fix-libm-linking.patch
+# https://github.com/airspy/airspyhf/issues/57
+Patch1:         airspyhf-gcc15.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

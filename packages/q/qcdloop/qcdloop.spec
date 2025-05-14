@@ -1,7 +1,7 @@
 #
 # spec file for package qcdloop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,21 @@
 
 %global shlib libqcdloop2
 Name:           qcdloop
-Version:        2.0.9
+Version:        2.1.0
 Release:        0
 Summary:        An object-oriented one-loop scalar Feynman integrals framework
 License:        GPL-3.0-only
 URL:            https://qcdloop.web.cern.ch/qcdloop/
 Source:         https://github.com/scarrazza/qcdloop/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM qcdloop-math-linking.patch badshah400@gmail.com -- Explicitly link to math library to fix linking error when linking with --Wl,no-undefined
-Patch0:         qcdloop-quadmath-linking.patch
 # PATCH-FIX-UPSTREAM qcdloop-soversion.patch badshah400@gmail.com -- Implement so versioning
 Patch1:         qcdloop-soversion.patch
 # PATCH-FIX-UPSTREAM qcdloop-fix-conflicting-types.patch badshah400@gmail.com -- Explicitly cast a variable type to ensure consistency across build archs; fixes build failures for i586
 Patch2:         qcdloop-fix-conflicting-types.patch
-# PATCH-FEATURE-OPENSUSE qcdloop-remove-march-mtune-flags.patch badshah400@gmail.com -- Drop march and mtune flags being passed to the c++ compiler to enable building on multiple archs
-Patch3:         qcdloop-remove-march-mtune-flags.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  pkgconfig
-# Doesn't build on aarch64, ppc64* due to no quadmath
-ExcludeArch:    aarch64 %power64
+ExcludeArch:    ppc %{power64}
 
 %description
 QCDLoop is a library of one-loop scalar Feynman integrals, evaluated close to
@@ -67,16 +62,28 @@ sed -i "1{s|#! %{_bindir}/env bash|#! /bin/bash|}"  src/qcdloop-config.in
 
 %build
 %cmake \
+%ifarch %{ix86} x86_64
+  -DQUADMATH_LIBRARY=quadmath \
   -DENABLE_EXAMPLES:BOOL=ON \
-  -DENABLE_FORTRAN_WRAPPER:BOOL=ON
-
+%endif
+  -DENABLE_FORTRAN_WRAPPER:BOOL=ON \
+  %{nil}
 %cmake_build
 
 %install
 %cmake_install
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ifarch %{ix86} x86_64
+%check
+pushd %__builddir
+for exe in ./cache_test ./cmass_test ./trigger_test;
+do
+  exec ${exe}
+done
+popd
+%endif
+
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %{_libdir}/libqcdloop.so.*

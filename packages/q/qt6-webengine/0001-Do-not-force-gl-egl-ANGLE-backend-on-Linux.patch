@@ -1,0 +1,45 @@
+From 2b5df7c931cd4ce2c146c43d9018745de34681eb Mon Sep 17 00:00:00 2001
+From: Peter Varga <pvarga@inf.u-szeged.hu>
+Date: Mon, 5 May 2025 16:22:30 +0200
+Subject: [PATCH] Do not force gl-egl ANGLE backend on Linux
+
+Let Chromium decide which ANGLE backend to use by keeping "default"
+setting. The "gl" backend is available since
+75b0d12f6 Add "default" and "gl" ANGLE implementation support to Ozone
+
+Reportedly, the "gl-egl" backend doesn't work properly with certain GPU
+drivers under X11.
+
+Task-number: QTBUG-135786
+Pick-to: 6.8 6.9
+Change-Id: I1592e3c480059b0cd17831ba375ff709f00791cc
+---
+ src/core/web_engine_context.cpp | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/core/web_engine_context.cpp b/src/core/web_engine_context.cpp
+index 2410492..14d3f08 100644
+--- a/src/core/web_engine_context.cpp
++++ b/src/core/web_engine_context.cpp
+@@ -879,18 +879,11 @@ WebEngineContext::WebEngineContext()
+                       == gl::kGLImplementationANGLEName);
+     }
+ 
+-    if (usingANGLE && !parsedCommandLine->HasSwitch(switches::kUseANGLE)) {
+-        parsedCommandLine->AppendSwitchASCII(switches::kUseANGLE,
+-                                             gl::kANGLEImplementationOpenGLEGLName);
+-    }
+-
+ #if QT_CONFIG(webengine_vulkan)
+     if (QQuickWindow::graphicsApi() == QSGRendererInterface::OpenGL && usingSupportedSGBackend()) {
+         if (usingANGLE && !isGbmSupported()) {
+             qWarning("GBM is not supported with the current configuration. "
+                      "Fallback to Vulkan rendering in Chromium.");
+-            parsedCommandLine->AppendSwitchASCII(switches::kUseANGLE,
+-                                                 gl::kANGLEImplementationDefaultName);
+             parsedCommandLine->AppendSwitchASCII(switches::kUseVulkan,
+                                                  switches::kVulkanImplementationNameNative);
+             enableFeatures.push_back(features::kVulkan.name);
+-- 
+2.49.0
+

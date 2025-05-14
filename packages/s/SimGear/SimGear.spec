@@ -32,6 +32,8 @@ Group:          Amusements/Games/3D/Simulation
 URL:            https://www.flightgear.org/
 Source0:        https://gitlab.com/flightgear/fgmeta/-/jobs/9343758788/artifacts/raw/sgbuild/simgear-%{version}.tar.bz2
 Source99:       SimGear-rpmlintrc
+# PATCH-FIX-UPSTREAM -- rebased https://gitlab.com/flightgear/simgear/-/commit/a630ad75a62d63563b37df6e4642bee2f7081907.patch
+Patch0:         simgear-boost_1_88.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libOpenSceneGraph-devel

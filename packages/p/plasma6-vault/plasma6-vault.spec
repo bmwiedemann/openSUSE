@@ -27,7 +27,7 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           plasma6-vault
-Version:        6.3.4
+Version:        6.3.5
 Release:        0
 Summary:        Plasma applet and services for creating encrypted vaults
 License:        GPL-2.0-or-later
@@ -37,8 +37,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-include.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-morecvutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define         pythons python3
 Name:           python-morecvutils
 Version:        1.0.2
@@ -26,7 +25,9 @@ License:        MIT
 URL:            https://github.com/scivision/morecvutils
 Source:         https://github.com/scivision/morecvutils/archive/v%{version}.tar.gz#/morecvutils-%{version}.tar.gz
 BuildRequires:  %{python_module pip >= 10}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       ffmpeg
@@ -60,10 +61,10 @@ sed -i '1{/env python/d}' morecvutils/calcOptFlow.py
 chmod -x Demo* OpticalFlow_Python_vs_Matlab.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand # main section present: make executable and patch shebang
 chmod +x %{buildroot}%{$python_sitelib}/morecvutils/getaviprop.py
 sed -i '1{s/env python.*/$python/}' %{buildroot}%{$python_sitelib}/morecvutils/getaviprop.py
@@ -85,6 +86,6 @@ rm %{buildroot}%{_bindir}/OpticalFlow_Python_vs_Matlab.py
 %doc OpticalFlow_Python_vs_Matlab.py
 %license LICENSE.txt
 %{python_sitelib}/morecvutils
-%{python_sitelib}/morecvutils-%{version}*-info
+%{python_sitelib}/morecvutils-%{version}.dist-info
 
 %changelog

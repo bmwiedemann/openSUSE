@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Thu May 01 20:33:51 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.2+git20250501.274d0c7:
+  * v1.4.2 Bug fixes
+  * Fix process arguments appearing outside proc box by replacing ASCII control codes with blankspace, issue #1080
+  * perf: use string view everywhere
+  * perf: avoid copies by moving string into struct
+  * perf: avoid copies with capture-by-reference
+  * refactor: use algorithm from <ranges>
+  * refactor: remove unnecessary lamda
+  * perf: use smaller enum base type
+  * Update flags in help message and README
+  * Fix wrong naming in documentation and error messages for force-utf argument
+  * Respect the cli flags debug and force utf
+  * Remove unused variable
+  * Flatten cmake module path
+  * CMake: Remove option to use mold
+  * Some spelling + grammar fixes :)
+  * Update Terminus font link
+  * Fix typo
+  * Fix devide by 0
+  * Avoid potential uninitialzed variables
+  * Avoid stack-use-after-return
+  * Avoid floating-point division by 0
+  * Initialize pti struct
+  * Fix macos tree-mode + aggregate memory issue
+  * Fix typo: Mhz -> MHz
+
+-------------------------------------------------------------------
+Mon Apr 28 13:56:28 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.1+git20250427.666d31b:
+  * v1.4.1
+  * CI: Pass link flags as LDFLAGS to avoid unused argument warning
+  * CI: Remove debug leftover
+  * Fix various typos in code, themes and workflows
+  * Mark destructor noexcept and satisfy rule-of-five
+  * Initialize all struct fields
+  * Mark member variables private
+  * Use explicit single parameter constructor
+  * Ensure NUL-termination on truncation
+  * Avoid repeated bounds check
+  * Use O_CLOEXEC
+  * Use member function instead of cast
+  * Avoid copy in constructor
+  * Drop trailing newlines
+  * Declare local function static
+  * Drop duplicate include
+  * Simplify ternary expression
+  * Use explicit initialization
+  * Use nullptr for pointer argument
+  * Add missing override annotations
+  * Avoid comma operator
+  * Fixed typo
+  * Avoid copies in ltrim() and ltrim()
+  * Avoid string copies
+  * Drop unused struct members
+  * Reduce variable scope
+  * Avoid string copy
+  * Initialize vector in one step
+  * Avoid repeated lookup
+  * Avoid repeated lookup
+  * Avoid repeated lookup
+  * Drop unnecessary string construction
+  * Avoid unnecessary copy of vector
+  * Avoid copies in loop iterator
+  * Reserve known vector size
+  * Exit loop only if element found
+  * Move the config parser in it's own module
+  * Adding a menu option to show bitrates in base 10 separate from the setting to show bytes/bits in base 10
+  * Update README.md GCC10 -> GCC11
+  * Allow MidnightBSD to build btop using the existing freebsd support.
+  * Drop workarounds for GCC 10
+  * CI: Bump gcc version for NetBSD
+  * CMake: Downgrade lowdown not found warning to a message
+  * Make arg parser function to snake_case
+  * Combine help function calls in argument parser
+  * Add CLI flag to specify a different config file
+  * Make: Disable LTO for debug builds
+  * CMake: Check LTO support only if LTO is wanted
+  * CMake: Enable LTO by default only for release builds
+  * Use `XDG_STATE_HOME` to save logs
+  * Remove _FORTIFY_SOURCE define
+  * CMake: Generate markdown page in build directory
+  * CI: Test more versions and architectures for FreeBSD and NetBSD
+  * CI: Test a range of current gcc and clang versions
+  * CI: Bump OpenBSD release to 7.6
+  * CI: Pin runner versions to get a pull request by Renovate on updates
+  * Bump CMake version to 3.25 required for `LINUX` variable
+  * Replace brackets with arrows in net box
+  * Replace brackets with arrows in proc box
+  * chore(deps): update dependency ubuntu to v24
+  * Bump bundled fmt to 11.1.4
+  * Add renovate.json
+
+-------------------------------------------------------------------
+Fri Apr 11 13:41:10 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Rearranging BuildRequires
+- Updating ROCm to v6.4.0
+- Update to version 1.4.0+git20250410.e2d8e13:
+  * cmake:  link to CMAKE_DL_LIBS
+  * Fix phoenix-night.theme marked as executable
+  * Add Kanagawa-lotus theme
+  * add Kanagawa theme
+  * Bump NetBSD version to 10.1.
+  * Bump FreeBSD version to 14.2.
+  * Add dark version of adwaita theme: adwaita-dark
+  * Update bug_report.md
+  * Update feature_request.md
+
+-------------------------------------------------------------------
 Wed Feb 19 18:23:05 UTC 2025 - scott.bradnick@suse.com
 
 - Updating ROCm to v6.3.3

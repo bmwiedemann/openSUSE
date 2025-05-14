@@ -166,4 +166,12 @@
     <comment>- require who to builld with coreutils-systemd split</comment>
     <requestid>1109371</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>afb6fa22f95f1a44da1b2e19a68fc032</srcmd5>
+    <version>3.0</version>
+    <time>1747159939</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276783</requestid>
+  </revision>
 </revisionlist>

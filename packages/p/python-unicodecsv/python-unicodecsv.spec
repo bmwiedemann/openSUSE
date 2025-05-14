@@ -1,7 +1,7 @@
 #
 # spec file for package python-unicodecsv
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-unicodecsv
 Version:        0.14.1
 Release:        0
 Summary:        Drop-in replacment for python's csv module with unicode support
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
-Url:            https://github.com/jdunck/python-unicodecsv
-Source:         https://pypi.io/packages/source/u/unicodecsv/unicodecsv-%{version}.tar.gz
+URL:            https://github.com/jdunck/python-unicodecsv
+Source0:        https://pypi.io/packages/source/u/unicodecsv/unicodecsv-%{version}.tar.gz
+# sdist does not ship a LICENSE
+Source1:        https://raw.githubusercontent.com/jdunck/python-unicodecsv/refs/heads/master/LICENSE
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} && 0%{?suse_version} <= 1110
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%else
 BuildArch:      noarch
-%endif
-
 %python_subpackages
 
 %description
@@ -47,16 +44,18 @@ which supports unicode strings without a hassle.
 
 %prep
 %setup -q -n unicodecsv-%{version}
+cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
-%defattr(-,root,root,-)
+%license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/unicodecsv
+%{python_sitelib}/unicodecsv-%{version}.dist-info
 
 %changelog

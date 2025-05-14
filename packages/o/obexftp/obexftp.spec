@@ -1,7 +1,7 @@
 #
 # spec file for package obexftp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,6 +64,9 @@ Files needed for software development using obexftp.
 chmod -x AUTHORS Doxyfile ChangeLog NEWS README THANKS TODO examples/README_obexftpbackup
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 mkdir build
 cd build
 # FIXME: you should use the %%cmake macros

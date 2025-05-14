@@ -1,7 +1,7 @@
 #
 # spec file for package gli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -83,6 +83,9 @@ This package provides the documentation for GLI library.
 %autopatch -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %if 0%{?suse_version} < 1500
 %cmake \
     -DCMAKE_C_COMPILER=gcc-7 \

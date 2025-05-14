@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-zope.schema
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.schema
 Source:         https://files.pythonhosted.org/packages/source/z/zope.schema/zope.schema-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -63,11 +64,11 @@ required.
 rm -rf zope.schema.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -80,7 +81,10 @@ rm -rf zope.schema.egg-info
 %files %{python_files}
 %license LICENSE.txt
 %doc COPYRIGHT.txt CHANGES.rst README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/schema
+%{python_sitelib}/zope[_.]schema-%{version}*info
+%{python_sitelib}/zope.schema-%{version}*pth
 %endif
 
 %changelog

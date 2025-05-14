@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon May 12 10:16:56 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.29:
+  * [Feat] Detector implementation for Azure Configuration Connection String Key (#3939)
+  * test(sources/s3): fix missing region error (#4131)
+  * feat(sources/s3): migrate to AWS SDK v2 (#4069)
+  * Update PreCommit.md (#4112)
+  * Exclusion of FalsePositive GH's usernames in PrivateKeyDetector (#4046)
+  * Monday App Analyzer (#4120)
+  * [Feat] Detector implementation for Azure API Management Direct Management Key (#3938)
+  * Fastly Analyzer (#4082)
+  * Postman Code Uses Consistent Casing for Id Var Names (#4124)
+  * Normalize UID to Uid in Postman Code (#4125)
+  * postman_client.IDNameUUID becomes IdNameUid (#4123)
+  * Fixed Kontent Detector (#4122)
+
+-------------------------------------------------------------------
+Tue May 06 14:17:21 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 3.88.28:
+  * [Fix] Added Prefix In Dockerhub Detector Regex (#4084)
+  * Issue - 3697 - GitHub analyzer panic (#4113)
+  * fix(test/snowflake): Snowflake flaky pattern test (#4083)
+  * Netlify Analyzer (#4106)
+  * Add xAI detector (#4117)
+  * added tunnel authtoken detection in ngrok detector (#4115)
+  * Postman increase http client timeout (#4086)
+  * feat: bing subscription key support (#4092)
+  * Improve precommit hook setup and support both global and repo pre-commit hooks, frameworkless and with pre-commit or husky (#4098)
+  * Make a first pass at some structural introduction docs (#4076)
+  * Update action.yml (#4108)
+  * Refactor Netlify Detector (#4102)
+  * chore: added github action custom detector name (#3417)
+  * Fixed PubnubsubsciptionKey detector verification (#4107)
+
+-------------------------------------------------------------------
 Wed Apr 30 06:20:53 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 3.88.26:

@@ -20,8 +20,10 @@
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
-%define ada_ver   3.2.1
-%define owt_ver   git20241202
+%define ada_ver   3.2.4
+%define exp_ver   1.1.0
+%define h264_ver  2.6.0
+%define owt_ver   git20250501
 Name:           telegram-desktop
 Version:        5.13.1
 Release:        0
@@ -30,56 +32,45 @@ License:        GPL-3.0-only
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar.gz#/ada-%{ada_ver}.tar.gz
-# n=tg_owt && cd /tmp && git clone https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
-Source2:        tg_owt-%{owt_ver}.tar.xz
-Source3:        tg_owt-dlopen-headers.tar.gz
-Patch1:         0001-dynamic-link-x.patch
-Patch2:         0002-tg_owt-h264-dlopen.patch
-Patch3:         0003-tg_owt-pipewire-1.4.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/desktop-app/lib_base/pull/268
-Patch4:         0001-Fix-build-with-Qt-6.9.patch
+# v=2.6.0 && n=openh264 && d=$n-headers-$v && f=$d.tar.xz && cd /tmp && git clone -bv$v --depth=1 https://github.com/cisco/$n.git && mkdir $d && mv $n/codec/api/wels/*.h $d && rm -rf $n && tar c --remove-files "$d" | xz -9e > "$f"
+Source2:        openh264-headers-%{h264_ver}.tar.xz
+# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+Source3:        tg_owt-%{owt_ver}.tar.xz
+Patch0:         dynamic-link-x.patch
+Patch1:         tg_owt-h264-dlopen.patch
+Patch2:         Qt-6.9.patch
 BuildRequires:  appstream-glib
-BuildRequires:  chrpath
-BuildRequires:  clang
 BuildRequires:  cmake
-BuildRequires:  desktop-file-utils
-BuildRequires:  enchant-devel
-BuildRequires:  expect-devel
-BuildRequires:  ffmpeg-7-libavcodec-devel
-BuildRequires:  ffmpeg-7-libavdevice-devel
-BuildRequires:  ffmpeg-7-libavfilter-devel
-BuildRequires:  ffmpeg-7-libavformat-devel
-BuildRequires:  ffmpeg-7-libavutil-devel
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
+BuildRequires:  kf6-kcoreaddons-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
 BuildRequires:  libdispatch-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblz4-devel
+BuildRequires:  mold
+BuildRequires:  ms-gsl-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.7
+BuildRequires:  python3
 BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-waylandclient-private-devel
 BuildRequires:  qt6-widgets-private-devel
 BuildRequires:  range-v3-devel
 BuildRequires:  unzip
-BuildRequires:  wayland-devel
 BuildRequires:  xxhash-devel
 BuildRequires:  xz
-BuildRequires:  yasm
-BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Network)
-BuildRequires:  cmake(Qt6OpenGL)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Qml)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6WaylandClient)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Concurrent)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Quick)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6WaylandClient)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fmt)
@@ -90,10 +81,13 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.68)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(jemalloc)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmng)
@@ -101,6 +95,8 @@ BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libproxy-1.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libswresample)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libva-glx)
@@ -111,8 +107,6 @@ BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(openal)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(opusurl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(protobuf)
@@ -143,8 +137,6 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       icu
 Requires:       qt6-imageformats
 Requires:       xdg-desktop-portal
-Recommends:     google-opensans-fonts
-Recommends:     qt6-wayland
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -156,38 +148,54 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full -b1 -b2 -b3
-%autopatch -p1 1 4
+%autopatch -p1 0 2
 
-mkdir -p %{_builddir}/Libraries/ada
-mkdir -p %{_builddir}/Libraries/tg_owt
-mkdir -p %{_builddir}/Libraries/openh264/include
-mv ../ada-%{ada_ver}/* %{_builddir}/Libraries/ada
-mv ../tg_owt-%{owt_ver}/* %{_builddir}/Libraries/tg_owt
-mv ../wels %{_builddir}/Libraries/openh264/include
+mkdir -p ../Libraries/ada
+mv ../ada-%{ada_ver}/* ../Libraries/ada
 
-pushd %{_builddir}/Libraries/tg_owt
-%autopatch -p1 2 3
+mv Telegram/ThirdParty/expected ../Libraries
+
+mkdir -p ../Libraries/openh264/include/wels
+mv ../openh264-headers-%{h264_ver}/* ../Libraries/openh264/include/wels
+
+mkdir -p ../Libraries/tg_owt
+mv ../tg_owt-%{owt_ver}/* ../Libraries/tg_owt
+pushd ../Libraries/tg_owt
+%autopatch -p1 1
 popd
 
 %build
+CFLAGS="%{optflags} -g1 -Wl,-v -fuse-ld=mold"
+export CMAKE_GENERATOR=Ninja
 mkdir -p %{_builddir}/Libraries/install
 
-pushd %{_builddir}/Libraries/ada
+cd %{_builddir}/Libraries/ada
 %cmake -LA \
-      -G Ninja \
-      -B build \
       -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install
-%cmake_build -C build
-ninja install -C build
+%cmake_build
+ninja install
+
+cd %{_builddir}/Libraries/expected
+%cmake -LA \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CFLAGS" \
+      -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
+      -DEXPECTED_BUILD_PACKAGE=OFF \
+      -DEXPECTED_BUILD_TESTS=OFF
+%cmake_build
+ninja install
 
 cd %{_builddir}/Libraries/tg_owt
 %cmake -LA \
-      -G Ninja \
-      -B out/Release \
       -DBUILD_SHARED_LIBS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX=%{_builddir}/Libraries/install \
       -DTG_OWT_DLOPEN_H264=ON \
       -DTG_OWT_SPECIAL_TARGET=linux \
@@ -197,17 +205,16 @@ cd %{_builddir}/Libraries/tg_owt
       -DTG_OWT_OPUS_INCLUDE_PATH=%{_includedir}/opus \
       -DTG_OWT_FFMPEG_INCLUDE_PATH=%{_includedir}/ffmpeg \
       -DTG_OWT_LIBVPX_INCLUDE_PATH=%{_includedir}/vpx
-%cmake_build -C out/Release
-ninja install -C out/Release
+%cmake_build
+ninja install
 
-pushd %{_builddir}/tdesktop-%{version}-full
+cd %{_builddir}/tdesktop-%{version}-full
 %cmake -LA \
-      -G Ninja \
       -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_C_FLAGS="%{optflags} -g1" \
-      -DCMAKE_CXX_FLAGS="%{optflags} -g1" \
+      -DCMAKE_C_FLAGS="$CFLAGS" \
+      -DCMAKE_CXX_FLAGS="$CFLAGS" \
       -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-      -DCMAKE_PREFIX_PATH=%{_builddir}/Libraries/install/lib64/cmake \
+      -DCMAKE_PREFIX_PATH="%{_builddir}/Libraries/install/lib64/cmake;%{_builddir}/Libraries/install/share/cmake/tl-expected" \
       -DDESKTOP_APP_QT6=ON \
       -DQT_VERSION_MAJOR=6 \
       -DTDESKTOP_API_ID=%{api_id} \

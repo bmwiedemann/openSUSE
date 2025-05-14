@@ -1,7 +1,7 @@
 #
 # spec file for package qore-xml-module
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%global mod_ver 1.8.1
+%global mod_ver 2.0.0
 
 %{?_datarootdir: %global mydatarootdir %_datarootdir}
 %{!?_datarootdir: %global mydatarootdir /usr/share}
@@ -65,14 +65,16 @@ Source:         https://github.com/qorelanguage/module-xml/releases/download/v%{
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       /usr/bin/env
 Requires:       qore-module(abi)%{?_isa} = %{module_api}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
-BuildRequires:  qore >= 1.12.4
-BuildRequires:  qore-devel >= 1.12.4
+BuildRequires:  qore >= 2.0
+BuildRequires:  qore-devel >= 2.0
+BuildRequires:  (qore-stdlib if qore >= 2.0)
+
 %if 0%{?suse_version} || 0%{?sles_version}
 BuildRequires:  timezone
 %else
@@ -101,9 +103,12 @@ xml module.
 %doc docs/xml docs/XmlRpcHandler docs/SalesforceSoapClient docs/SaxDataProvider docs/SoapClient docs/SoapDataProvider docs/SoapHandler docs/WSDL docs/XmlRpcConnection test examples
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export CXXFLAGS="%{?optflags}"
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
 make %{?_smp_mflags}
@@ -121,6 +126,7 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %{user_module_dir}
 %{_bindir}/soaputil
 %{_bindir}/webdav-server
-%doc COPYING.LGPL COPYING.MIT README RELEASE-NOTES AUTHORS
+%license COPYING.LGPL COPYING.MIT
+%doc README RELEASE-NOTES AUTHORS
 
 %changelog

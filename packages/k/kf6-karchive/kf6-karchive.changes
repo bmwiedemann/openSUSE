@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Fix heap buffer overflow
+  * kzip: Fix position calculation for archives with prepended arbitrary data (kde#329579)
+  * Skip two bytes on invalid header signature in `seekToNextHeaderToken()`
+  * Avoid searching uninitialized bytes in `header.indexOf("PK")`
+  * Update version to 6.14.0
+  * kzip: Fix crash on malformed files
+
+-------------------------------------------------------------------
 Sat Apr  5 12:32:30 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

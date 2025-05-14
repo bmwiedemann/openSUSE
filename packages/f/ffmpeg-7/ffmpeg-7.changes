@@ -39,17 +39,12 @@ Sun Mar 23 23:21:26 UTC 2025 - Mia Herkt <mia@0x0.st>
 - Build with OpenVINO support in libavfilter
 
 -------------------------------------------------------------------
-Fri Mar 21 15:28:30 UTC 2025 - Cliff Zhao <qzhao@suse.com>
+Sun Mar 23 15:33:59 UTC 2025 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2025-1816.patch:
   Backport 0526535c from upstream, add missing constrains for
   num_parameters in audio_element_oub().
   (CVE-2025-1816, bsc#1238728)
-
--------------------------------------------------------------------
-Sun Mar 23 23:21:26 UTC 2025 - Mia Herkt <mia@0x0.st>
-
-- Build with OpenVINO support in libavfilter
 
 -------------------------------------------------------------------
 Wed Mar  5 09:46:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>

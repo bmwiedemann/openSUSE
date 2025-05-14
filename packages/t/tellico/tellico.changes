@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 12 07:08:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.1.2
+  * Updated Giant Bomb, kino.de, and VideoGameGeek data sources.
+  * Fixed a bug with showing local images defined by links only
+    (kde#503645)
+
+-------------------------------------------------------------------
 Tue Feb 11 08:35:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.1.1

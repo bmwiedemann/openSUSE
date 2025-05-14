@@ -70,4 +70,13 @@
     from ``pandas.DataFrame``.</comment>
     <requestid>1109484</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>179bbcc8a5484102d816598dfd8b3bfb</srcmd5>
+    <version>2.5.0</version>
+    <time>1746638153</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- Be more explicit about directories in %files.</comment>
+    <requestid>1275110</requestid>
+  </revision>
 </revisionlist>

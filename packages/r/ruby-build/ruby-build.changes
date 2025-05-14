@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  7 18:29:34 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20250507.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20250507
+  * Add JRuby 10.0.0.1 and 9.4.12.1 by @headius in #2530
+
+-------------------------------------------------------------------
 Thu May  1 13:18:43 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20250430.

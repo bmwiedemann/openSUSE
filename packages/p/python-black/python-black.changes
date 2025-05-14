@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 12 11:01:03 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives instead of update-alternatives
+- Add upstream click-820.patch to make it work with latest
+  python-click
+  gh#psf/black#4577, gh#psf/black#4591, gh#psf/black#4666
+
+-------------------------------------------------------------------
 Mon Feb 10 09:37:29 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 25.1.0:

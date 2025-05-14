@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri May  9 13:44:40 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 3.16.3:
+  * Removed an accidental bashism in resolvconf
+
+- update to 3.16.3:
+  * libc: Don't restore resolv.conf.bak if we have nothing to write
+
+- update to 3.16.1:
+  * Fixes an issue from v3.16.0 where the last nameserver processed would be
+    the only one listed
+  * Implement tolower() in shell as tr might not be available
+
+- update to 3.16.0:
+  * man pages and code reworded to enforce we are a key/value store, not an
+    interface/value store
+  * resolvconf -L now shows fully post-processed output
+  * resolvconf -Li now shows fully post-processed keys
+  * only search and domains keys are stripped of trailing commas
+  * search and domains are now enforced lowercase if the tr program is available
+  * systemd-resolved: improvements and commented code if/when it supports
+    Split Horizon
+
+-------------------------------------------------------------------
 Sun Apr 27 14:21:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.15.0:

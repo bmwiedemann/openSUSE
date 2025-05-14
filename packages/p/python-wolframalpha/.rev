@@ -83,4 +83,13 @@
 - Initial release of python-wolframalpha 3.0</comment>
     <requestid>1142664</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3932c14d31fa6b026261ca2a519be713</srcmd5>
+    <version>5.0.0</version>
+    <time>1746809458</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1276033</requestid>
+  </revision>
 </revisionlist>

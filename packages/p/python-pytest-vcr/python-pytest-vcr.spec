@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-vcr
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        1.0.2
 Release:        0
 Summary:        Plugin for managing VCR.py cassettes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ktosiek/pytest-vcr
 Source:         https://github.com/ktosiek/pytest-vcr/archive/%{version}.tar.gz#/pytest-vcr-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 3.6.0
@@ -46,10 +47,10 @@ Plugin for managing VCR.py cassettes.
 sed -i '/pytest.config/d' tests/test_vcr.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,8 @@ sed -i '/pytest.config/d' tests/test_vcr.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_vcr.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_vcr*.pyc
+%{python_sitelib}/pytest_vcr-%{version}.dist-info
 
 %changelog

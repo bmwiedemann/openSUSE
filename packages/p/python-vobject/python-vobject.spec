@@ -1,7 +1,7 @@
 #
 # spec file for package python-vobject
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global modname vobject
 %{?sle15_python_module_pythons}
 Name:           python-vobject
-Version:        0.9.8
+Version:        0.9.9
 Release:        0
 Summary:        Python package for parsing and creating iCalendar and vCard files
 License:        Apache-2.0
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/py-vobject/vobject/
 Source:         https://files.pythonhosted.org/packages/source/v/vobject/%{modname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/py-vobject/vobject/pull/87 remove six
+# file missiing in release
+Source1:        radicale-1587.vcf
 Patch0:         no-six.patch
 BuildRequires:  %{python_module PyICU}
 BuildRequires:  %{python_module devel >= 2.7}
@@ -55,6 +57,8 @@ unicode strings.
 %autosetup -p1 -n %{modname}-%{version}
 # Fix wrong-file-end-of-line-encoding
 sed -i 's/\r$//' ACKNOWLEDGEMENTS.txt
+
+cp %{S:1} test_files/.
 
 %build
 %python_build

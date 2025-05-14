@@ -17,7 +17,7 @@
 
 
 Name:           sdbootutil
-Version:        1+git20250430.f7d1ad1
+Version:        1+git20250505.f4890e9
 Release:        0
 Summary:        bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -45,7 +45,7 @@ Requires:       udev
 Supplements:    (grub2-x86_64-efi-bls and shim)
 Supplements:    (systemd-boot and shim)
 BuildArch:      noarch
-ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
+ExclusiveArch:  aarch64 x86_64
 %{?systemd_requires}
 
 %description

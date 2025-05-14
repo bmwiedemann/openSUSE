@@ -7493,4 +7493,19 @@
 - requires NSS 3.110</comment>
     <requestid>1273825</requestid>
   </revision>
+  <revision rev="455" vrev="1">
+    <srcmd5>22488752432bcffca6349edbeef27700</srcmd5>
+    <version>138.0.1</version>
+    <time>1747061182</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 138.0.1
+  * Fixed an issue which caused a blank page to be shown for Home
+    and New Tab pages for some users. (bmo#1963537)
+  * Added a workaround for a bug in outlook.office.com/outlook.live.com
+    where attachment filenames are incorrectly prefixed with UTF-8
+    when saved. (bmo#1961710)
+
+- build on s390x needs 15G memory, adjust _constraints</comment>
+    <requestid>1276701</requestid>
+  </revision>
 </revisionlist>

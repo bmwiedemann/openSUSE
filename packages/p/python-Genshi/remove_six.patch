@@ -1,0 +1,1175 @@
+---
+ genshi/builder.py                 |   12 ++++------
+ genshi/compat.py                  |    5 +---
+ genshi/core.py                    |   33 ++++++++++++++---------------
+ genshi/filters/html.py            |   15 ++++++-------
+ genshi/filters/i18n.py            |   23 +++++++++-----------
+ genshi/filters/tests/i18n.py      |    5 +---
+ genshi/filters/tests/test_html.py |   43 ++++++++++++++++++--------------------
+ genshi/filters/tests/transform.py |   17 +++++++--------
+ genshi/filters/transform.py       |   10 +++-----
+ genshi/input.py                   |   26 +++++++++++-----------
+ genshi/output.py                  |    7 ++----
+ genshi/path.py                    |    3 --
+ genshi/template/base.py           |   16 ++++++--------
+ genshi/template/directives.py     |    6 +----
+ genshi/template/eval.py           |   20 +++++++----------
+ genshi/template/loader.py         |    5 +---
+ genshi/template/plugin.py         |    5 +---
+ genshi/template/tests/markup.py   |    5 +---
+ genshi/template/text.py           |    5 +---
+ genshi/util.py                    |    7 ++----
+ setup.cfg                         |    2 -
+ 21 files changed, 122 insertions(+), 148 deletions(-)
+
+Index: Genshi-0.7.9/genshi/builder.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/builder.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/builder.py	2025-05-09 08:47:55.639423560 +0200
+@@ -68,8 +68,6 @@
+ Hello, <em>world</em>!
+ """
+ 
+-import six
+-
+ from genshi.compat import numeric_types
+ from genshi.core import Attrs, Markup, Namespace, QName, Stream, \
+                         START, END, TEXT
+@@ -110,7 +108,7 @@
+         return str(self.generate())
+ 
+     def __unicode__(self):
+-        return six.text_type(self.generate())
++        return str(self.generate())
+ 
+     def __html__(self):
+         return Markup(self.generate())
+@@ -121,7 +119,7 @@
+         :param node: the node to append; can be an `Element`, `Fragment`, or a
+                      `Stream`, or a Python string or number
+         """
+-        simple_types = (Stream, Element) + six.string_types + numeric_types
++        simple_types = (Stream, Element, str) + numeric_types
+         if isinstance(node, simple_types):
+             # For objects of a known/primitive type, we avoid the check for
+             # whether it is iterable for better performance
+@@ -144,8 +142,8 @@
+                 for event in child:
+                     yield event
+             else:
+-                if not isinstance(child, six.string_types):
+-                    child = six.text_type(child)
++                if not isinstance(child, str):
++                    child = str(child)
+                 yield TEXT, child, (None, -1, -1)
+ 
+     def generate(self):
+@@ -162,7 +160,7 @@
+     for name, value in kwargs.items():
+         name = name.rstrip('_').replace('_', '-')
+         if value is not None and name not in names:
+-            attrs.append((QName(name), six.text_type(value)))
++            attrs.append((QName(name), str(value)))
+             names.add(name)
+     return Attrs(attrs)
+ 
+Index: Genshi-0.7.9/genshi/compat.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/compat.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/compat.py	2025-05-09 08:33:55.950025453 +0200
+@@ -23,11 +23,10 @@
+ import warnings
+ from types import CodeType
+ 
+-import six
+ 
+ IS_PYTHON2 = (sys.version_info[0] == 2)
+ 
+-numeric_types = (float, ) + six.integer_types
++numeric_types = (float, int)
+ 
+ # This function should only be called in Python 2, and will fail in Python 3
+ 
+@@ -47,7 +46,7 @@
+ # We need to test if an object is an instance of a string type in places
+ 
+ def isstring(obj):
+-    return isinstance(obj, six.string_types)
++    return isinstance(obj, str)
+ 
+ # We need to differentiate between StringIO and BytesIO in places
+ 
+Index: Genshi-0.7.9/genshi/core.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/core.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/core.py	2025-05-09 08:30:16.089149971 +0200
+@@ -18,7 +18,6 @@
+ from itertools import chain
+ import operator
+ 
+-import six
+ 
+ from genshi.compat import stringrepr
+ from genshi.util import stripentities, striptags
+@@ -282,7 +281,7 @@
+             if hasattr(event, 'totuple'):
+                 event = event.totuple()
+             else:
+-                event = TEXT, six.text_type(event), (None, -1, -1)
++                event = TEXT, str(event), (None, -1, -1)
+             yield event
+         return
+ 
+@@ -411,7 +410,7 @@
+         :return: a new instance with the attribute removed
+         :rtype: `Attrs`
+         """
+-        if isinstance(names, six.string_types):
++        if isinstance(names, str):
+             names = (names,)
+         return Attrs([(name, val) for name, val in self if name not in names])
+ 
+@@ -445,17 +444,17 @@
+         return TEXT, ''.join([x[1] for x in self]), (None, -1, -1)
+ 
+ 
+-class Markup(six.text_type):
++class Markup(str):
+     """Marks a string as being safe for inclusion in HTML/XML output without
+     needing to be escaped.
+     """
+     __slots__ = []
+ 
+     def __add__(self, other):
+-        return Markup(six.text_type.__add__(self, escape(other)))
++        return Markup(str.__add__(self, escape(other)))
+ 
+     def __radd__(self, other):
+-        return Markup(six.text_type.__add__(escape(other), self))
++        return Markup(str.__add__(escape(other), self))
+ 
+     def __mod__(self, args):
+         if isinstance(args, dict):
+@@ -464,14 +463,14 @@
+             args = tuple(map(escape, args))
+         else:
+             args = escape(args)
+-        return Markup(six.text_type.__mod__(self, args))
++        return Markup(str.__mod__(self, args))
+ 
+     def __mul__(self, num):
+-        return Markup(six.text_type.__mul__(self, num))
++        return Markup(str.__mul__(self, num))
+     __rmul__ = __mul__
+ 
+     def __repr__(self):
+-        return "<%s %s>" % (type(self).__name__, six.text_type.__repr__(self))
++        return "<%s %s>" % (type(self).__name__, str.__repr__(self))
+ 
+     def join(self, seq, escape_quotes=True):
+         """Return a `Markup` object which is the concatenation of the strings
+@@ -489,7 +488,7 @@
+         :see: `escape`
+         """
+         escaped_items = [escape(item, quotes=escape_quotes) for item in seq]
+-        return Markup(six.text_type.join(self, escaped_items))
++        return Markup(str.join(self, escaped_items))
+ 
+     @classmethod
+     def escape(cls, text, quotes=True):
+@@ -538,7 +537,7 @@
+         """
+         if not self:
+             return ''
+-        return six.text_type(self).replace('&#34;', '"') \
++        return str(self).replace('&#34;', '"') \
+                                   .replace('&gt;', '>') \
+                                   .replace('&lt;', '<') \
+                                   .replace('&amp;', '&')
+@@ -652,7 +651,7 @@
+         self.uri = uri
+ 
+     def __init__(self, uri):
+-        self.uri = six.text_type(uri)
++        self.uri = str(uri)
+ 
+     def __contains__(self, qname):
+         return qname.namespace == self.uri
+@@ -691,7 +690,7 @@
+ XML_NAMESPACE = Namespace('http://www.w3.org/XML/1998/namespace')
+ 
+ 
+-class QName(six.text_type):
++class QName(str):
+     """A qualified element or attribute name.
+     
+     The unicode value of instances of this class contains the qualified name of
+@@ -729,11 +728,11 @@
+         qname = qname.lstrip('{')
+         parts = qname.split('}', 1)
+         if len(parts) > 1:
+-            self = six.text_type.__new__(cls, '{%s' % qname)
+-            self.namespace, self.localname = map(six.text_type, parts)
++            self = str.__new__(cls, '{%s' % qname)
++            self.namespace, self.localname = map(str, parts)
+         else:
+-            self = six.text_type.__new__(cls, qname)
+-            self.namespace, self.localname = None, six.text_type(qname)
++            self = str.__new__(cls, qname)
++            self.namespace, self.localname = None, str(qname)
+         return self
+ 
+     def __getnewargs__(self):
+Index: Genshi-0.7.9/genshi/filters/html.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/html.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/html.py	2025-05-09 08:30:16.089433034 +0200
+@@ -15,7 +15,6 @@
+ 
+ import re
+ 
+-import six
+ 
+ from genshi.core import Attrs, QName, stripentities
+ from genshi.core import END, START, TEXT, COMMENT
+@@ -99,13 +98,13 @@
+                                 checked = False
+                                 if isinstance(value, (list, tuple)):
+                                     if declval is not None:
+-                                        u_vals = [six.text_type(v) for v in value]
++                                        u_vals = [str(v) for v in value]
+                                         checked = declval in u_vals
+                                     else:
+                                         checked = any(value)
+                                 else:
+                                     if declval is not None:
+-                                        checked = declval == six.text_type(value)
++                                        checked = declval == str(value)
+                                     elif type == 'checkbox':
+                                         checked = bool(value)
+                                 if checked:
+@@ -121,7 +120,7 @@
+                                     value = value[0]
+                                 if value is not None:
+                                     attrs |= [
+-                                        (QName('value'), six.text_type(value))
++                                        (QName('value'), str(value))
+                                     ]
+                     elif tagname == 'select':
+                         name = attrs.get('name')
+@@ -164,10 +163,10 @@
+                     select_value = None
+                 elif in_select and tagname == 'option':
+                     if isinstance(select_value, (tuple, list)):
+-                        selected = option_value in [six.text_type(v) for v
++                        selected = option_value in [str(v) for v
+                                                     in select_value]
+                     else:
+-                        selected = option_value == six.text_type(select_value)
++                        selected = option_value == str(select_value)
+                     okind, (tag, attrs), opos = option_start
+                     if selected:
+                         attrs |= [(QName('selected'), 'selected')]
+@@ -183,7 +182,7 @@
+                     option_text = []
+                 elif in_textarea and tagname == 'textarea':
+                     if textarea_value:
+-                        yield TEXT, six.text_type(textarea_value), pos
++                        yield TEXT, str(textarea_value), pos
+                         textarea_value = None
+                     in_textarea = False
+                 yield kind, data, pos
+@@ -526,7 +525,7 @@
+         def _repl(match):
+             t = match.group(1)
+             if t:
+-                return six.unichr(int(t, 16))
++                return chr(int(t, 16))
+             t = match.group(2)
+             if t == '\\':
+                 return r'\\'
+Index: Genshi-0.7.9/genshi/filters/i18n.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/i18n.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/i18n.py	2025-05-09 08:30:16.089768807 +0200
+@@ -24,7 +24,6 @@
+ from functools import partial
+ from types import FunctionType
+ 
+-import six
+ 
+ from genshi.core import Attrs, Namespace, QName, START, END, TEXT, \
+                         XML_NAMESPACE, _ensure, StreamEventKind
+@@ -801,7 +800,7 @@
+             if kind is START:
+                 tag, attrs = data
+                 if tag in self.ignore_tags or \
+-                        isinstance(attrs.get(xml_lang), six.string_types):
++                        isinstance(attrs.get(xml_lang), str):
+                     skip += 1
+                     yield kind, data, pos
+                     continue
+@@ -811,7 +810,7 @@
+ 
+                 for name, value in attrs:
+                     newval = value
+-                    if isinstance(value, six.string_types):
++                    if isinstance(value, str):
+                         text = value.strip()
+                         if translate_attrs and name in include_attrs and text:
+                             newval = gettext(text)
+@@ -831,7 +830,7 @@
+             elif translate_text and kind is TEXT:
+                 text = data.strip()
+                 if text:
+-                    data = data.replace(text, six.text_type(gettext(text)))
++                    data = data.replace(text, str(gettext(text)))
+                 yield kind, data, pos
+ 
+             elif kind is SUB:
+@@ -944,7 +943,7 @@
+             if kind is START and not skip:
+                 tag, attrs = data
+                 if tag in self.ignore_tags or \
+-                        isinstance(attrs.get(xml_lang), six.string_types):
++                        isinstance(attrs.get(xml_lang), str):
+                     skip += 1
+                     continue
+ 
+@@ -1050,7 +1049,7 @@
+ 
+     def _extract_attrs(self, event, gettext_functions, search_text):
+         for name, value in event[1][1]:
+-            if search_text and isinstance(value, six.string_types):
++            if search_text and isinstance(value, str):
+                 if name in self.include_attrs:
+                     text = value.strip()
+                     if text:
+@@ -1321,10 +1320,10 @@
+             strings = []
+             def _add(arg):
+                 if isinstance(arg, _ast_Str) \
+-                        and isinstance(_ast_Str_value(arg), six.text_type):
++                        and isinstance(_ast_Str_value(arg), str):
+                     strings.append(_ast_Str_value(arg))
+                 elif isinstance(arg, _ast_Str):
+-                    strings.append(six.text_type(_ast_Str_value(arg), 'utf-8'))
++                    strings.append(str(_ast_Str_value(arg), 'utf-8'))
+                 elif arg:
+                     strings.append(None)
+             [_add(arg) for arg in node.args]
+@@ -1365,22 +1364,22 @@
+     :rtype: ``iterator``
+     """
+     template_class = options.get('template_class', MarkupTemplate)
+-    if isinstance(template_class, six.string_types):
++    if isinstance(template_class, str):
+         module, clsname = template_class.split(':', 1)
+         template_class = getattr(__import__(module, {}, {}, [clsname]), clsname)
+     encoding = options.get('encoding', None)
+ 
+     extract_text = options.get('extract_text', True)
+-    if isinstance(extract_text, six.string_types):
++    if isinstance(extract_text, str):
+         extract_text = extract_text.lower() in ('1', 'on', 'yes', 'true')
+ 
+     ignore_tags = options.get('ignore_tags', Translator.IGNORE_TAGS)
+-    if isinstance(ignore_tags, six.string_types):
++    if isinstance(ignore_tags, str):
+         ignore_tags = ignore_tags.split()
+     ignore_tags = [QName(tag) for tag in ignore_tags]
+ 
+     include_attrs = options.get('include_attrs', Translator.INCLUDE_ATTRS)
+-    if isinstance(include_attrs, six.string_types):
++    if isinstance(include_attrs, str):
+         include_attrs = include_attrs.split()
+     include_attrs = [QName(attr) for attr in include_attrs]
+ 
+Index: Genshi-0.7.9/genshi/filters/tests/i18n.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/tests/i18n.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/tests/i18n.py	2025-05-09 08:30:16.090147309 +0200
+@@ -15,7 +15,6 @@
+ from gettext import NullTranslations
+ import unittest
+ 
+-import six
+ 
+ from genshi.core import Attrs
+ from genshi.template import MarkupTemplate, Context
+@@ -48,7 +47,7 @@
+             if tmsg is missing:
+                 if self._fallback:
+                     return self._fallback.ugettext(message)
+-                return six.text_type(message)
++                return str(message)
+             return tmsg
+     else:
+         def gettext(self, message):
+@@ -57,7 +56,7 @@
+             if tmsg is missing:
+                 if self._fallback:
+                     return self._fallback.gettext(message)
+-                return six.text_type(message)
++                return str(message)
+             return tmsg
+ 
+     if IS_PYTHON2:
+Index: Genshi-0.7.9/genshi/filters/tests/test_html.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/tests/test_html.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/tests/test_html.py	2025-05-09 08:30:16.090568412 +0200
+@@ -13,7 +13,6 @@
+ 
+ import unittest
+ 
+-import six
+ 
+ from genshi.input import HTML, ParseError
+ from genshi.filters.html import HTMLFormFiller, HTMLSanitizer
+@@ -524,91 +523,91 @@
+ 
+     def test_sanitize_expression(self):
+         html = HTML(u'<div style="top:expression(alert())">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_capital_expression(self):
+         html = HTML(u'<div style="top:EXPRESSION(alert())">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_url_with_javascript(self):
+         html = HTML(u'<div style="background-image:url(javascript:alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_capital_url_with_javascript(self):
+         html = HTML(u'<div style="background-image:URL(javascript:alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_unicode_escapes(self):
+         html = HTML(u'<div style="top:exp\\72 ess\\000069 on(alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_backslash_without_hex(self):
+         html = HTML(u'<div style="top:e\\xp\\ression(alert())">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+         input_str = u'<div style="top:e\\\\xp\\\\ression(alert())">XSS</div>'
+         html = HTML(input_str)
+-        self.assertEqual(input_str, six.text_type(html | StyleSanitizer()))
++        self.assertEqual(input_str, str(html | StyleSanitizer()))
+ 
+     def test_sanitize_unsafe_props(self):
+         html = HTML(u'<div style="POSITION:RELATIVE">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+         html = HTML(u'<div style="behavior:url(test.htc)">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+         html = HTML(u'<div style="-ms-behavior:url(test.htc) url(#obj)">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+         html = HTML(u"""<div style="-o-link:'javascript:alert(1)';"""
+                     u"""-o-link-source:current">XSS</div>""")
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+         html = HTML(u"""<div style="-moz-binding:url(xss.xbl)">XSS</div>""")
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_negative_margin(self):
+         html = HTML(u'<div style="margin-top:-9999px">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+         html = HTML(u'<div style="margin:0 -9999px">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_css_hack(self):
+         html = HTML(u'<div style="*position:static">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+         html = HTML(u'<div style="_margin:-10px">XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_property_name(self):
+         html = HTML(u'<div style="display:none;border-left-color:red;'
+                     u'user_defined:1;-moz-user-selct:-moz-all">prop</div>')
+         self.assertEqual('<div style="display:none; border-left-color:red'
+                          '">prop</div>',
+-                         six.text_type(html | StyleSanitizer()))
++                         str(html | StyleSanitizer()))
+ 
+     def test_sanitize_unicode_expression(self):
+         # Fullwidth small letters
+         html = HTML(u'<div style="top:ｅｘｐｒｅｓｓｉｏｎ(alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+         # Fullwidth capital letters
+         html = HTML(u'<div style="top:ＥＸＰＲＥＳＳＩＯＮ(alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+         # IPA extensions
+         html = HTML(u'<div style="top:expʀessɪoɴ(alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+     def test_sanitize_unicode_url(self):
+         # IPA extensions
+         html = HTML(u'<div style="background-image:uʀʟ(javascript:alert())">'
+                     u'XSS</div>')
+-        self.assertEqual('<div>XSS</div>', six.text_type(html | StyleSanitizer()))
++        self.assertEqual('<div>XSS</div>', str(html | StyleSanitizer()))
+ 
+ 
+ def suite():
+Index: Genshi-0.7.9/genshi/filters/tests/transform.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/tests/transform.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/tests/transform.py	2025-05-09 08:30:16.090861554 +0200
+@@ -14,7 +14,6 @@
+ import doctest
+ import unittest
+ 
+-import six
+ 
+ from genshi import HTML
+ from genshi.builder import Element
+@@ -36,22 +35,22 @@
+         for mark, (kind, data, pos) in stream:
+             if kind is START:
+                 if with_attrs:
+-                    kv_attrs = dict((six.text_type(k), v) for k, v in data[1])
+-                    data = (six.text_type(data[0]), kv_attrs)
++                    kv_attrs = dict((str(k), v) for k, v in data[1])
++                    data = (str(data[0]), kv_attrs)
+                 else:
+-                    data = six.text_type(data[0])
++                    data = str(data[0])
+             elif kind is END:
+-                data = six.text_type(data)
++                data = str(data)
+             elif kind is ATTR:
+                 kind = ATTR
+-                data = dict((six.text_type(k), v) for k, v in data[1])
++                data = dict((str(k), v) for k, v in data[1])
+             yield mark, kind, data
+     return list(_generate())
+ 
+ 
+ def _transform(html, transformer, with_attrs=False):
+     """Apply transformation returning simplified marked stream."""
+-    if isinstance(html, six.string_types):
++    if isinstance(html, str):
+         html = HTML(html, encoding='utf-8')
+     stream = transformer(html, keep_marks=True)
+     return _simplify(stream, with_attrs)
+@@ -61,7 +60,7 @@
+     """Test .select()"""
+     def _select(self, select):
+         html = HTML(FOOBAR, encoding='utf-8')
+-        if isinstance(select, six.string_types):
++        if isinstance(select, str):
+             select = [select]
+         transformer = Transformer(select[0])
+         for sel in select[1:]:
+@@ -668,7 +667,7 @@
+             html = HTML(html)
+         if content is None:
+             content = Injector()
+-        elif isinstance(content, six.string_types):
++        elif isinstance(content, str):
+             content = HTML(content)
+         return _transform(html, getattr(Transformer(select), self.operation)
+                                 (content))
+Index: Genshi-0.7.9/genshi/filters/transform.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/filters/transform.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/filters/transform.py	2025-05-09 08:30:16.091146631 +0200
+@@ -33,7 +33,7 @@
+ ...  </body>
+ ... </html>''',
+ ... encoding='utf-8')
+->>> print(html | Transformer('body/em').map(six.text_type.upper, TEXT)
++>>> print(html | Transformer('body/em').map(str.upper, TEXT)
+ ...                                    .unwrap().wrap(tag.u))
+ <html>
+   <head><title>Some Title</title></head>
+@@ -51,7 +51,6 @@
+ import re
+ import sys
+ 
+-import six
+ 
+ from genshi.builder import Element
+ from genshi.core import Stream, Attrs, QName, TEXT, START, END, _ensure, Markup
+@@ -627,11 +626,10 @@
+         """Applies a function to the ``data`` element of events of ``kind`` in
+         the selection.
+ 
+-        >>> import six
+         >>> html = HTML('<html><head><title>Some Title</title></head>'
+         ...               '<body>Some <em>body</em> text.</body></html>',
+         ...             encoding='utf-8')
+-        >>> print(html | Transformer('head/title').map(six.text_type.upper, TEXT))
++        >>> print(html | Transformer('head/title').map(str.upper, TEXT))
+         <html><head><title>SOME TITLE</title></head><body>Some <em>body</em>
+         text.</body></html>
+ 
+@@ -767,7 +765,7 @@
+                 yield OUTSIDE, result
+             elif result:
+                 # XXX Assume everything else is "text"?
+-                yield None, (TEXT, six.text_type(result), (None, -1, -1))
++                yield None, (TEXT, str(result), (None, -1, -1))
+             else:
+                 yield None, event
+ 
+@@ -993,7 +991,7 @@
+         :param replace: Replacement pattern.
+         :param count: Number of replacements to make in each text fragment.
+         """
+-        if isinstance(pattern, six.string_types):
++        if isinstance(pattern, str):
+             self.pattern = re.compile(pattern)
+         else:
+             self.pattern = pattern
+Index: Genshi-0.7.9/genshi/input.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/input.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/input.py	2025-05-09 08:30:16.091399898 +0200
+@@ -19,8 +19,8 @@
+ import codecs
+ from xml.parsers import expat
+ 
+-import six
+-from six.moves import html_entities as entities, html_parser as html
++import html.entities
++import html.parser
+ 
+ from genshi.core import Attrs, QName, Stream, stripentities
+ from genshi.core import START, END, XML_DECL, DOCTYPE, TEXT, START_NS, \
+@@ -92,7 +92,7 @@
+     """
+ 
+     _entitydefs = ['<!ENTITY %s "&#%d;">' % (name, value) for name, value in
+-                   entities.name2codepoint.items()]
++                   html.entities.name2codepoint.items()]
+     _external_dtd = u'\n'.join(_entitydefs).encode('utf-8')
+ 
+     def __init__(self, source, filename=None, encoding=None):
+@@ -157,7 +157,7 @@
+                                 del self.expat # get rid of circular references
+                             done = True
+                         else:
+-                            if isinstance(data, six.text_type):
++                            if isinstance(data, str):
+                                 data = data.encode('utf-8')
+                             self.expat.Parse(data, False)
+                     for event in self._queue:
+@@ -243,7 +243,7 @@
+         if text.startswith('&'):
+             # deal with undefined entities
+             try:
+-                text = six.unichr(entities.name2codepoint[text[1:-1]])
++                text = chr(html.entities.name2codepoint[text[1:-1]])
+                 self._enqueue(TEXT, text)
+             except KeyError:
+                 filename, lineno, offset = self._getpos()
+@@ -276,7 +276,7 @@
+     return Stream(list(XMLParser(StringIO(text))))
+ 
+ 
+-class HTMLParser(html.HTMLParser, object):
++class HTMLParser(html.parser.HTMLParser, object):
+     """Parser for HTML input based on the Python `HTMLParser` module.
+     
+     This class provides the same interface for generating stream events as
+@@ -305,7 +305,7 @@
+         :param filename: the name of the file, if known
+         :param filename: encoding of the file; ignored if the input is unicode
+         """
+-        html.HTMLParser.__init__(self)
++        html.parser.HTMLParser.__init__(self)
+         self.source = source
+         self.filename = filename
+         self.encoding = encoding
+@@ -334,7 +334,7 @@
+                             self.close()
+                             done = True
+                         else:
+-                            if not isinstance(data, six.text_type):
++                            if not isinstance(data, str):
+                                 raise UnicodeError("source returned bytes, but no encoding specified")
+                             self.feed(data)
+                     for kind, data, pos in self._queue:
+@@ -346,7 +346,7 @@
+                         for tag in open_tags:
+                             yield END, QName(tag), pos
+                         break
+-            except html.HTMLParseError as e:
++            except html.parser.HTMLParseError as e:
+                 msg = '%s: line %d, column %d' % (e.msg, e.lineno, e.offset)
+                 raise ParseError(msg, self.filename, e.lineno, e.offset)
+         return Stream(_generate()).filter(_coalesce)
+@@ -389,14 +389,14 @@
+ 
+     def handle_charref(self, name):
+         if name.lower().startswith('x'):
+-            text = six.unichr(int(name[1:], 16))
++            text = chr(int(name[1:], 16))
+         else:
+-            text = six.unichr(int(name))
++            text = chr(int(name))
+         self._enqueue(TEXT, text)
+ 
+     def handle_entityref(self, name):
+         try:
+-            text = six.unichr(entities.name2codepoint[name])
++            text = chr(html.entities.name2codepoint[name])
+         except KeyError:
+             text = '&%s;' % name
+         self._enqueue(TEXT, text)
+@@ -435,7 +435,7 @@
+     :raises ParseError: if the HTML text is not well-formed, and error recovery
+                         fails
+     """
+-    if isinstance(text, six.text_type):
++    if isinstance(text, str):
+         # If it's unicode text the encoding should be set to None.
+         # The option to pass in an incorrect encoding is for ease
+         # of writing doctests that work in both Python 2.x and 3.x.
+Index: Genshi-0.7.9/genshi/output.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/output.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/output.py	2025-05-09 08:30:16.091646863 +0200
+@@ -18,7 +18,6 @@
+ from itertools import chain
+ import re
+ 
+-import six
+ 
+ from genshi.core import escape, Attrs, Markup, QName, StreamEventKind
+ from genshi.core import START, END, TEXT, XML_DECL, DOCTYPE, START_NS, END_NS, \
+@@ -73,7 +72,7 @@
+     :see: `XMLSerializer`, `XHTMLSerializer`, `HTMLSerializer`, `TextSerializer`
+     :since: version 0.4.1
+     """
+-    if isinstance(method, six.string_types):
++    if isinstance(method, str):
+         method = {'xml':   XMLSerializer,
+                   'xhtml': XHTMLSerializer,
+                   'html':  HTMLSerializer,
+@@ -583,7 +582,7 @@
+                 data = event[1]
+                 if strip_markup and type(data) is Markup:
+                     data = data.striptags().stripentities()
+-                yield six.text_type(data)
++                yield str(data)
+ 
+ 
+ class EmptyTagFilter(object):
+@@ -825,7 +824,7 @@
+ 
+         :param doctype: DOCTYPE as a string or DocType object.
+         """
+-        if isinstance(doctype, six.string_types):
++        if isinstance(doctype, str):
+             doctype = DocType.get(doctype)
+         self.doctype_event = (DOCTYPE, doctype, (None, -1, -1))
+ 
+Index: Genshi-0.7.9/genshi/path.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/path.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/path.py	2025-05-09 08:30:16.092083005 +0200
+@@ -45,7 +45,6 @@
+ import re
+ from itertools import chain
+ 
+-import six
+ 
+ from genshi.compat import IS_PYTHON2
+ from genshi.core import Stream, Attrs, Namespace, QName
+@@ -939,7 +938,7 @@
+     value = as_scalar(value)
+     if value is False:
+         return ''
+-    return six.text_type(value)
++    return str(value)
+ 
+ def as_bool(value):
+     return bool(as_scalar(value))
+Index: Genshi-0.7.9/genshi/template/base.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/base.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/base.py	2025-05-09 08:30:16.092500501 +0200
+@@ -16,7 +16,6 @@
+ from collections import deque
+ import os
+ 
+-import six
+ 
+ from genshi.compat import numeric_types, StringIO, BytesIO
+ from genshi.core import Attrs, Stream, StreamEventKind, START, TEXT, _ensure
+@@ -322,8 +321,7 @@
+         return type.__new__(cls, name, bases, d)
+ 
+ 
+-@six.add_metaclass(DirectiveFactoryMeta)
+-class DirectiveFactory(object):
++class DirectiveFactory(metaclass=DirectiveFactoryMeta):
+     """Base for classes that provide a set of template directives.
+     
+     :since: version 0.6
+@@ -380,7 +378,7 @@
+     """
+ 
+     serializer = None
+-    _number_conv = six.text_type # function used to convert numbers to event data
++    _number_conv = str # function used to convert numbers to event data
+ 
+     def __init__(self, source, filepath=None, filename=None, loader=None,
+                  encoding=None, lookup='strict', allow_exec=True):
+@@ -412,7 +410,7 @@
+         self._prepared = False
+ 
+         if not isinstance(source, Stream) and not hasattr(source, 'read'):
+-            if isinstance(source, six.text_type):
++            if isinstance(source, str):
+                 source = StringIO(source)
+             else:
+                 source = BytesIO(source)
+@@ -504,7 +502,7 @@
+                 if kind is INCLUDE:
+                     href, cls, fallback = data
+                     tmpl_inlined = False
+-                    if (isinstance(href, six.string_types) and
++                    if (isinstance(href, str) and
+                             not getattr(self.loader, 'auto_reload', True)):
+                         # If the path to the included template is static, and
+                         # auto-reloading is disabled on the template loader,
+@@ -603,7 +601,7 @@
+                         # First check for a string, otherwise the iterable test
+                         # below succeeds, and the string will be chopped up into
+                         # individual characters
+-                        if isinstance(result, six.string_types):
++                        if isinstance(result, str):
+                             yield TEXT, result, pos
+                         elif isinstance(result, numeric_types):
+                             yield TEXT, number_conv(result), pos
+@@ -612,7 +610,7 @@
+                             stream = _ensure(result)
+                             break
+                         else:
+-                            yield TEXT, six.text_type(result), pos
++                            yield TEXT, str(result), pos
+ 
+                 elif kind is SUB:
+                     # This event is a list of directives and a list of nested
+@@ -641,7 +639,7 @@
+         for event in stream:
+             if event[0] is INCLUDE:
+                 href, cls, fallback = event[1]
+-                if not isinstance(href, six.string_types):
++                if not isinstance(href, str):
+                     parts = []
+                     for subkind, subdata, subpos in self._flatten(href, ctxt,
+                                                                   **vars):
+Index: Genshi-0.7.9/genshi/template/directives.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/directives.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/directives.py	2025-05-09 08:30:16.092811998 +0200
+@@ -13,7 +13,6 @@
+ 
+ """Implementation of the various template directives."""
+ 
+-import six
+ 
+ from genshi.core import QName, Stream
+ from genshi.path import Path
+@@ -36,8 +35,7 @@
+         return type.__new__(cls, name, bases, d)
+ 
+ 
+-@six.add_metaclass(DirectiveMeta)
+-class Directive(object):
++class Directive(metaclass=DirectiveMeta):
+     """Abstract base class for template directives.
+     
+     A directive is basically a callable that takes three positional arguments:
+@@ -177,7 +175,7 @@
+                 elif not isinstance(attrs, list): # assume it's a dict
+                     attrs = attrs.items()
+                 attrib |= [
+-                    (QName(n), v is not None and six.text_type(v).strip() or None)
++                    (QName(n), v is not None and str(v).strip() or None)
+                     for n, v in attrs
+                 ]
+             yield kind, (tag, attrib), pos
+Index: Genshi-0.7.9/genshi/template/eval.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/eval.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/eval.py	2025-05-09 08:46:35.444265640 +0200
+@@ -13,12 +13,10 @@
+ 
+ """Support for "safe" evaluation of Python expressions."""
+ 
++import builtins
+ from textwrap import dedent
+ from types import CodeType
+ 
+-import six
+-from six.moves import builtins
+-
+ from genshi.core import Markup
+ from genshi.template.astutil import ASTTransformer, ASTCodeGenerator, parse
+ from genshi.template.base import TemplateRuntimeError
+@@ -53,7 +51,7 @@
+                       if `None`, the appropriate transformation is chosen
+                       depending on the mode
+         """
+-        if isinstance(source, six.string_types):
++        if isinstance(source, str):
+             self.source = source
+             node = _parse(source, mode=self.mode)
+         else:
+@@ -72,7 +70,7 @@
+                              filename=filename, lineno=lineno, xform=xform)
+         if lookup is None:
+             lookup = LenientLookup
+-        elif isinstance(lookup, six.string_types):
++        elif isinstance(lookup, str):
+             lookup = {'lenient': LenientLookup, 'strict': StrictLookup}[lookup]
+         self._globals = lookup.globals
+ 
+@@ -178,7 +176,7 @@
+         """
+         __traceback_hide__ = 'before_and_this'
+         _globals = self._globals(data)
+-        six.exec_(self.code, _globals, data)
++        exec(self.code, _globals, data)
+ 
+ 
+ UNDEFINED = object()
+@@ -317,7 +315,7 @@
+         try:
+             return obj[key]
+         except (AttributeError, KeyError, IndexError, TypeError) as e:
+-            if isinstance(key, six.string_types):
++            if isinstance(key, str):
+                 val = getattr(obj, key, UNDEFINED)
+                 if val is UNDEFINED:
+                     val = cls.undefined(key, owner=obj)
+@@ -407,7 +405,7 @@
+             if first.rstrip().endswith(':') and not rest[0].isspace():
+                 rest = '\n'.join(['    %s' % line for line in rest.splitlines()])
+             source = '\n'.join([first, rest])
+-    if isinstance(source, six.text_type):
++    if isinstance(source, str):
+         source = (u'\ufeff' + source).encode('utf-8')
+     return parse(source, mode)
+ 
+@@ -418,11 +416,11 @@
+         filename = '<string>'
+     if IS_PYTHON2:
+         # Python 2 requires non-unicode filenames
+-        if isinstance(filename, six.text_type):
++        if isinstance(filename, str):
+             filename = filename.encode('utf-8', 'replace')
+     else:
+         # Python 3 requires unicode filenames
+-        if not isinstance(filename, six.text_type):
++        if not isinstance(filename, str):
+             filename = filename.decode('utf-8', 'replace')
+     if lineno <= 0:
+         lineno = 1
+@@ -510,7 +508,7 @@
+         return names
+ 
+     def visit_Str(self, node):
+-        if not isinstance(node.s, six.text_type):
++        if not isinstance(node.s, str):
+             try: # If the string is ASCII, return a `str` object
+                 node.s.decode('ascii')
+             except ValueError: # Otherwise return a `unicode` object
+Index: Genshi-0.7.9/genshi/template/loader.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/loader.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/loader.py	2025-05-09 08:30:16.093319313 +0200
+@@ -19,7 +19,6 @@
+ except ImportError:
+     import dummy_threading as threading
+ 
+-import six
+ 
+ from genshi.template.base import TemplateError
+ from genshi.util import LRUCache
+@@ -219,7 +218,7 @@
+                 raise TemplateError('Search path for templates not configured')
+ 
+             for loadfunc in search_path:
+-                if isinstance(loadfunc, six.string_types):
++                if isinstance(loadfunc, str):
+                     loadfunc = directory(loadfunc)
+                 try:
+                     filepath, filename, fileobj, uptodate = loadfunc(filename)
+@@ -331,7 +330,7 @@
+         def _dispatch_by_prefix(filename):
+             for prefix, delegate in delegates.items():
+                 if filename.startswith(prefix):
+-                    if isinstance(delegate, six.string_types):
++                    if isinstance(delegate, str):
+                         delegate = directory(delegate)
+                     filepath, _, fileobj, uptodate = delegate(
+                         filename[len(prefix):].lstrip('/\\')
+Index: Genshi-0.7.9/genshi/template/plugin.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/plugin.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/plugin.py	2025-05-09 08:30:16.093507047 +0200
+@@ -16,7 +16,6 @@
+ CherryPy/Buffet.
+ """
+ 
+-import six
+ 
+ from genshi.input import ET, HTML, XML
+ from genshi.output import DocType
+@@ -48,7 +47,7 @@
+ 
+         self.default_encoding = options.get('genshi.default_encoding', None)
+         auto_reload = options.get('genshi.auto_reload', '1')
+-        if isinstance(auto_reload, six.string_types):
++        if isinstance(auto_reload, str):
+             auto_reload = auto_reload.lower() in ('1', 'on', 'yes', 'true')
+         search_path = [p for p in
+                        options.get('genshi.search_path', '').split(':') if p]
+@@ -170,7 +169,7 @@
+             options = {}
+ 
+         new_syntax = options.get('genshi.new_text_syntax')
+-        if isinstance(new_syntax, six.string_types):
++        if isinstance(new_syntax, str):
+             new_syntax = new_syntax.lower() in ('1', 'on', 'yes', 'true')
+         if new_syntax:
+             self.template_class = NewTextTemplate
+Index: Genshi-0.7.9/genshi/template/tests/markup.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/tests/markup.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/tests/markup.py	2025-05-09 08:30:16.093698697 +0200
+@@ -19,7 +19,6 @@
+ import tempfile
+ import unittest
+ 
+-import six
+ 
+ from genshi.compat import BytesIO, StringIO
+ from genshi.core import Markup
+@@ -199,7 +198,7 @@
+         </div>""".encode('iso-8859-1'), encoding='iso-8859-1')
+         self.assertEqual(u"""<?xml version="1.0" encoding="iso-8859-1"?>\n<div>
+           \xf6
+-        </div>""", six.text_type(tmpl.generate()))
++        </div>""", str(tmpl.generate()))
+ 
+     def test_latin1_encoded_explicit_encoding(self):
+         tmpl = MarkupTemplate(u"""<div xmlns:py="http://genshi.edgewall.org/">
+@@ -207,7 +206,7 @@
+         </div>""".encode('iso-8859-1'), encoding='iso-8859-1')
+         self.assertEqual(u"""<div>
+           \xf6
+-        </div>""", six.text_type(tmpl.generate()))
++        </div>""", str(tmpl.generate()))
+ 
+     def test_exec_with_trailing_space(self):
+         """
+Index: Genshi-0.7.9/genshi/template/text.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/template/text.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/template/text.py	2025-05-09 08:30:16.093948257 +0200
+@@ -28,7 +28,6 @@
+ 
+ import re
+ 
+-import six
+ 
+ from genshi.core import TEXT
+ from genshi.template.base import BadDirectiveError, Template, \
+@@ -163,7 +162,7 @@
+         depth = 0
+ 
+         source = source.read()
+-        if not isinstance(source, six.text_type):
++        if not isinstance(source, str):
+             source = source.decode(encoding or 'utf-8', 'replace')
+         offset = 0
+         lineno = 1
+@@ -280,7 +279,7 @@
+         depth = 0
+ 
+         source = source.read()
+-        if not isinstance(source, six.text_type):
++        if not isinstance(source, str):
+             source = source.decode(encoding or 'utf-8', 'replace')
+         offset = 0
+         lineno = 1
+Index: Genshi-0.7.9/genshi/util.py
+===================================================================
+--- Genshi-0.7.9.orig/genshi/util.py	2024-06-16 01:52:43.000000000 +0200
++++ Genshi-0.7.9/genshi/util.py	2025-05-09 08:30:16.094135209 +0200
+@@ -15,9 +15,8 @@
+ 
+ import re
+ 
+-from six.moves import html_entities as entities
++import html.entities
+ 
+-import six
+ 
+ __docformat__ = 'restructuredtext en'
+ 
+@@ -212,13 +211,13 @@
+                 ref = int(ref[1:], 16)
+             else:
+                 ref = int(ref, 10)
+-            return six.unichr(ref)
++            return chr(ref)
+         else: # character entity
+             ref = match.group(2)
+             if keepxmlentities and ref in ('amp', 'apos', 'gt', 'lt', 'quot'):
+                 return '&%s;' % ref
+             try:
+-                return six.unichr(entities.name2codepoint[ref])
++                return chr(html.entities.name2codepoint[ref])
+             except KeyError:
+                 if keepxmlentities:
+                     return '&amp;%s;' % ref
+Index: Genshi-0.7.9/setup.cfg
+===================================================================
+--- Genshi-0.7.9.orig/setup.cfg	2024-06-16 01:52:56.000000000 +0200
++++ Genshi-0.7.9/setup.cfg	2025-05-09 08:30:26.396346827 +0200
+@@ -39,8 +39,6 @@
+ 	genshi.filters.tests
+ 	genshi.template.tests
+ 	genshi.template.tests.templates
+-install_requires = 
+-	six
+ setup_requires = 
+ 	setuptools
+ 

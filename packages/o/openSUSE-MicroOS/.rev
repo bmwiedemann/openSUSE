@@ -818,4 +818,12 @@
     <comment>Revert t-u to 4.x</comment>
     <requestid>1270256</requestid>
   </revision>
+  <revision rev="90" vrev="90">
+    <srcmd5>546248275aa1d3a35eb41768dedde78d</srcmd5>
+    <version>16.0.0</version>
+    <time>1746542353</time>
+    <user>anag_factory</user>
+    <comment>- config.sh/disk.sh: Support for new read-only-root-fs with /etc as subvolume</comment>
+    <requestid>1272418</requestid>
+  </revision>
 </revisionlist>

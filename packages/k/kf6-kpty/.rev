@@ -119,4 +119,12 @@
     <comment>KDE Frameworks 6.13.0</comment>
     <requestid>1268866</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>181c1b05d113ec3fd1b4553a4e04066f</srcmd5>
+    <version>6.14.0</version>
+    <time>1747061065</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.14 (forwarded request 1275345 from krop)</comment>
+    <requestid>1276392</requestid>
+  </revision>
 </revisionlist>

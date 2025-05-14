@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 04:41:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Sat Feb  3 13:46:20 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - require setuptools

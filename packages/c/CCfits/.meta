@@ -1,0 +1,8 @@
+<package name="CCfits" project="openSUSE:Factory">
+  <title>An object oriented interface to the cfitsio library</title>
+  <description>It is designed to make the capabilities of cfitsio available to programmers
+working in C++. It is written in ANSI C++ and implemented using the C++
+Standard Library with namespaces, exception handling, and member template
+functions.</description>
+  <url>https://heasarc.gsfc.nasa.gov/docs/software/fitsio/ccfits/</url>
+</package>

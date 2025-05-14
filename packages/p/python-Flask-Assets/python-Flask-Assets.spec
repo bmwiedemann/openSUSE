@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Assets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        2.1.0
 Release:        0
 Summary:        Asset management for Flask, to compress and merge CSS and Javascript files
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/miracle2k/flask-assets
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Assets/Flask-Assets-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM denose.patch gh#miracle2k/flask-assets#169 mcepl@suse.com
@@ -31,9 +30,11 @@ Patch1:         denose.patch
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webassets}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-Flask
 Requires:       python-webassets
@@ -47,7 +48,6 @@ merging, minifying and compiling CSS and Javascript files.
 
 %package -n %{name}-doc
 Summary:        Documentation for Flask-Assets
-Group:          Documentation/HTML
 Provides:       %{python_module Flask-Assets-doc = %{version}}
 
 %description -n %{name}-doc
@@ -60,13 +60,13 @@ This package contains documentation for the Flask-Assets module.
 sed -i "s/html_theme = 'flask_small'//" docs/conf.py
 
 %build
-%python_build
+%pyproject_wheel
 cd docs
 %make_build html
 rm _build/html/.buildinfo
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -76,7 +76,7 @@ rm _build/html/.buildinfo
 %license LICENSE
 %{python_sitelib}/flask_assets.py
 %pycache_only %{python_sitelib}/__pycache__/flask_assets*.pyc
-%{python_sitelib}/Flask_Assets-%{version}*-info
+%{python_sitelib}/[Ff]lask[_-][Aa]ssets-%{version}.dist-info
 
 %files -n %{name}-doc
 %doc CHANGES README.rst docs/_build/html

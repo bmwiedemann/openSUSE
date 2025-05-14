@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat May  3 16:57:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.2.0
+  * Added the `s` specifier for std::error_code. It allows
+    formatting an error message as a string.
+  * Fixed formatting of std::chrono::local_time and tm (#3815,
+    #4350) to be consistent across platforms.
+  * Added compile-time diagnostics for cases when {:Z} is requested
+    while the system has no timezone information.
+  * Deprecated fmt::localtime in favor of std::localtime.
+  * Added error reporting for duplicate named arguments.
+
+-------------------------------------------------------------------
 Wed Feb 26 22:12:48 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.1.4

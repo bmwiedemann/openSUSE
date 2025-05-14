@@ -15,4 +15,14 @@
     <comment>- switch to %{?sle15_python_module_pythons} for SLE15</comment>
     <requestid>1131557</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2b65ac975576dfac29b0044a05025c7f</srcmd5>
+    <version>0.6.0.post2</version>
+    <time>1746638378</time>
+    <user>dimstar_suse</user>
+    <comment>- Run the testsuite.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275117</requestid>
+  </revision>
 </revisionlist>

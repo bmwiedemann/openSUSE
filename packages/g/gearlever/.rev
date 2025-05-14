@@ -129,4 +129,16 @@
 </comment>
     <requestid>1272254</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>db28e20d3f16eb53ec83f82ad178e81f</srcmd5>
+    <version>3.2.4</version>
+    <time>1747061251</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.4:
+  * added x-appimage as supported mime
+- Update to 3.2.3:
+  * unsquashfs: fixed errors with symbolic links
+</comment>
+    <requestid>1276330</requestid>
+  </revision>
 </revisionlist>

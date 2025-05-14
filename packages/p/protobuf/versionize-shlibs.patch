@@ -16,10 +16,10 @@ slightly different from PR19009 while the PR is unmerged.
  third_party/utf8_range/CMakeLists.txt |    8 ++++++++
  1 file changed, 8 insertions(+)
 
-Index: protobuf-28.3/third_party/utf8_range/CMakeLists.txt
+Index: protobuf-29.3/third_party/utf8_range/CMakeLists.txt
 ===================================================================
---- protobuf-28.3.orig/third_party/utf8_range/CMakeLists.txt
-+++ protobuf-28.3/third_party/utf8_range/CMakeLists.txt
+--- protobuf-29.3.orig/third_party/utf8_range/CMakeLists.txt
++++ protobuf-29.3/third_party/utf8_range/CMakeLists.txt
 @@ -19,6 +19,9 @@ add_library (utf8_range
  # A heavier-weight C++ wrapper that supports Abseil.
  add_library (utf8_validity utf8_validity.cc utf8_range.c)

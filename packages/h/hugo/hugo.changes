@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon May 12 17:33:23 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.3:
+  * releaser: Bump versions for release of 0.147.3
+  * tpl/tplimpl: Change calls to simple versions of embedded shortcodes
+  * Update README.md
+  * config: Fix env override of slices
+  * Fix/implement cascade for content adapters
+  * commands: Fix description of new theme commands
+  * tpl/tplimpl: Fix vimeo shortcode test to accommodate API changes
+  * tpl/math: Add MaxInt64 function
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
+Fri May 09 02:08:59 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.2:
+  * releaser: Bump versions for release of 0.147.2
+  * Fix handling of "outputs" from content adapter pages
+  * tpl: Fix case issue in templates.Exists
+  * config: Add some more merge tests
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
+Fri May 09 02:07:36 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.1:
+  * releaser: Bump versions for release of 0.147.1
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.17.0 to 2.17.2
+  * build(deps): bump github.com/getkin/kin-openapi from 0.131.0 to 0.132.0
+  * tpl: Add some more test cases
+  * build(deps): bump github.com/yuin/goldmark from 1.7.10 to 1.7.11
+  * tpl: Fix overlapping layout sections
+  * Fix it so the owning taxonomy gets rerendered in server when new tags are added
+  * commands/server: Display correct multihost language in console
+  * hugolib: Use new build key in content placeholder
+  * releaser: Prepare repository for 0.148.0-DEV
+
+-------------------------------------------------------------------
+Fri Apr 25 20:01:40 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.147.0:
+  * releaser: Bump versions for release of 0.147.0
+  * tpl: Fix it so we always prefer internal codeblock rendering over render-codeblock-foo.html and similar
+  * tpl/tplimpl: Fix allowFullScreen option in Vimeo and YouTube shortcodes
+  * create/skeletons: Adjust template names in theme skeleton
+  * tpl: Remove some unreached code branches
+  * images: Add some test cases for aligny on images.Text
+  * images: Add option for vertical alignment to images.Text
+  * config: Fix _merge issue when key doesn't exist on the left side
+  * Squashed 'docs/' changes from dc7a9ae12..b654fcba0
+  * all: Fix typos
+  * build(deps): bump github.com/evanw/esbuild from 0.25.2 to 0.25.3
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.16.0 to 2.17.0
+  * releaser: Prepare repository for 0.147.0-DEV
+
+-------------------------------------------------------------------
 Wed Apr 23 02:02:50 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.146.7:

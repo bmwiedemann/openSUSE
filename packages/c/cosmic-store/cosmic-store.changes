@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May  6 15:45:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update vendor tarball, fixing bsc#1242678
+
+-------------------------------------------------------------------
+Thu Apr 24 18:20:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n - Update portuguese translations (#270)
+  * i18n(be): update Belarusian translation (#268)
+  * i18n(ro): Improve Romanian translation (#269)
+  * empty commit to force rebuild
+  * i18n (pt-BR) Update translations (#262)
+  * Update com.system76.CosmicStore.desktop PL metadata
+  * Update libcosmic
+  * i18n(zh-CN): update zh-CN translation
+  * fix(libcosmic): theme subscription
+  * Update flathub stats
+  * fix: Call `malloc_trim` only on glibc systems
+  * i18n(pl): minor fix
+  * i18n(sk): Update Slovak translations
+  * Update Hungarian translations
+
+-------------------------------------------------------------------
 Sat Feb 22 03:47:33 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

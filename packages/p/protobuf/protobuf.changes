@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  1 09:05:08 UTC 2025 - Antonello Tartamo <antonello.tartamo@suse.com>
+
+- update to 29.3
+  * Fix cmake installation location of java and go features.
+  * Add .bazeliskrc for protobuf repo to tell bazelisk to use 7.1.2 by default. 
+  * Update artifact actions to v4
+  * Added protobuf-java-util-removescope.patch to avoid Java compilation errors
+    due to dependencies marked as runtime.
+
+-------------------------------------------------------------------
 Mon Oct 28 08:20:17 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - python: switch to pypi package to get the cythonized component

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 28 09:39:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.8
+  * Fix crash in wxPropertyGrid with wxGTK3 after recent change.
+  * Fix key codes in WXK_NUMPADx events in wxGTK.
+  * Add wxVector(std::initializer_list<U> list) constructor.
+  * Add mouse scrolling support to generic wxSpinCtrl.
+  * Compute wxStaticText best size ourselves if GTK does it wrongly.
+
+-------------------------------------------------------------------
 Thu Mar 20 12:11:36 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.7

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  4 12:57:03 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete gnome-common with libtool BuildRequires.
+
+-------------------------------------------------------------------
 Sun Dec 15 13:40:49 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.0.5(1.2.0+git20180916+1.0.5)

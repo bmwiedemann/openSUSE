@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  6 12:19:45 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.14.1:
+  * Make behavior of linalg::lstsq match NumPy when inputting a
+    multidimensional b array [gh#dpilger26/NumCpp#229].
+
+-------------------------------------------------------------------
 Sun Feb  9 15:05:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.14.0:

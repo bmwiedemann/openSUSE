@@ -1,0 +1,70 @@
+From a01da2eca0d2de5e5a1f6938da3b0c761ee360a1 Mon Sep 17 00:00:00 2001
+From: Peter Varga <pvarga@inf.u-szeged.hu>
+Date: Mon, 24 Mar 2025 10:53:12 +0100
+Subject: [PATCH] NativeSkiaOutputDeviceOpenGL: Fix leaking X11 Pixmap
+
+Pick-to: 6.8
+Fixes: QTBUG-135047
+Change-Id: I42b6387407551079241350661adadedf7d71a303
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+(cherry picked from commit dbf459268d4bbc20e0a7e83e7889e0f6da79cf84)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ .../compositor/native_skia_output_device_opengl.cpp    |  5 +++--
+ src/core/ozone/glx_helper.cpp                          | 10 ++++++++++
+ src/core/ozone/glx_helper.h                            |  1 +
+ 3 files changed, 14 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/compositor/native_skia_output_device_opengl.cpp b/src/core/compositor/native_skia_output_device_opengl.cpp
+index e48adba..5aa8c6e 100644
+--- a/src/core/compositor/native_skia_output_device_opengl.cpp
++++ b/src/core/compositor/native_skia_output_device_opengl.cpp
+@@ -213,11 +213,12 @@ QSGTexture *NativeSkiaOutputDeviceOpenGL::texture(QQuickWindow *win, uint32_t te
+             glxFun->glXBindTexImageEXT(display, glxPixmap, GLX_FRONT_LEFT_EXT, nullptr);
+             glFun->glBindTexture(GL_TEXTURE_2D, 0);
+ 
+-            m_frontBuffer->textureCleanupCallback = [glFun, glxFun, display, glxPixmap,
+-                                                     glTexture]() {
++            m_frontBuffer->textureCleanupCallback = [glFun, glxFun, display, glxPixmap, glTexture,
++                                                     glxHelper, pixmapId]() {
+                 glxFun->glXReleaseTexImageEXT(display, glxPixmap, GLX_FRONT_LEFT_EXT);
+                 glFun->glDeleteTextures(1, &glTexture);
+                 glXDestroyGLXPixmap(display, glxPixmap);
++                glxHelper->freePixmap(pixmapId);
+             };
+         }
+ #endif // BUILDFLAG(IS_OZONE_X11) && QT_CONFIG(xcb_glx_plugin)
+diff --git a/src/core/ozone/glx_helper.cpp b/src/core/ozone/glx_helper.cpp
+index 4207b7f..e292276 100644
+--- a/src/core/ozone/glx_helper.cpp
++++ b/src/core/ozone/glx_helper.cpp
+@@ -113,4 +113,14 @@ GLXPixmap GLXHelper::importBufferAsPixmap(int dmaBufFd, uint32_t size, uint16_t
+     return pixmapId;
+ }
+ 
++void GLXHelper::freePixmap(uint32_t pixmapId) const
++{
++    xcb_void_cookie_t cookie = xcb_free_pixmap_checked(m_connection, pixmapId);
++    xcb_generic_error_t *error = xcb_request_check(m_connection, cookie);
++    if (error) {
++        qWarning("GLX: XCB_FREE_PIXMAP failed with error code: 0x%x", error->error_code);
++        free(error);
++    }
++}
++
+ QT_END_NAMESPACE
+diff --git a/src/core/ozone/glx_helper.h b/src/core/ozone/glx_helper.h
+index 963c4a6..20bc715 100644
+--- a/src/core/ozone/glx_helper.h
++++ b/src/core/ozone/glx_helper.h
+@@ -33,6 +33,7 @@ public:
+     GLXFBConfig getFBConfig();
+     GLXPixmap importBufferAsPixmap(int dmaBufFd, uint32_t size, uint16_t width, uint16_t height,
+                                    uint16_t stride) const;
++    void freePixmap(uint32_t pixmapId) const;
+     bool isDmaBufSupported() const { return m_isDmaBufSupported; }
+ 
+ private:
+-- 
+2.49.0
+

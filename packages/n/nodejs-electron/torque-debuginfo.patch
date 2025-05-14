@@ -1,0 +1,61 @@
+Adds debuginfo directives to embedded.S and torque-generated .cc files.
+
+This does not change the electron binary in any way (the text is identical), only makes the symbols better.
+
+Revert https://github.com/v8/v8/commit/28e0e97dfe0d2b4587cb8f9a809fcaeb4670546f
+
+reverted:
+--- b/v8/src/snapshot/embedded/embedded-file-writer.cc
++++ a/v8/src/snapshot/embedded/embedded-file-writer.cc
+@@ -77,10 +77,6 @@ void EmbeddedFileWriter::WriteBuiltin(Pl
+   v8::internal::SourcePositionTableIterator positions(
+       vpos, SourcePositionTableIterator::kExternalOnly);
+ 
+-#ifndef DEBUG
+-  CHECK(positions.done());  // Release builds must not contain debug infos.
+-#endif
+-
+   // Some builtins (InterpreterPushArgsThenFastConstructFunction,
+   // JSConstructStubGeneric) have entry points located in the middle of them, we
+   // need to store their addresses since they are part of the list of allowed
+reverted:
+--- b/v8/src/snapshot/embedded/embedded-file-writer.h
++++ a/v8/src/snapshot/embedded/embedded-file-writer.h
+@@ -121,11 +121,6 @@
+   }
+ 
+   void WriteExternalFilenames(PlatformEmbeddedFileWriterBase* w) const {
+-#ifndef DEBUG
+-    // Release builds must not contain debug infos.
+-    CHECK_EQ(external_filenames_by_index_.size(), 0);
+-#endif
+-
+     w->Comment(
+         "Source positions in the embedded blob refer to filenames by id.");
+     w->Comment("Assembly directives here map the id to a filename.");
+--- src/v8/src/torque/torque-code-generator.cc.orig	2025-05-07 20:01:00.337777745 +0200
++++ src/v8/src/torque/torque-code-generator.cc	2025-05-08 20:03:23.726364897 +0200
+@@ -26,11 +26,9 @@ bool TorqueCodeGenerator::IsEmptyInstruc
+ 
+ void TorqueCodeGenerator::EmitInstruction(const Instruction& instruction,
+                                           Stack<std::string>* stack) {
+-#ifdef DEBUG
+   if (!IsEmptyInstruction(instruction)) {
+     EmitSourcePosition(instruction->pos);
+   }
+-#endif
+ 
+   switch (instruction.kind()) {
+ #define ENUM_ITEM(T)                                  \
+--- src/v8/src/compiler/code-assembler.cc.orig	2025-05-07 20:01:00.165777775 +0200
++++ src/v8/src/compiler/code-assembler.cc	2025-05-08 21:30:20.037471973 +0200
+@@ -100,7 +100,9 @@ void CodeAssemblerState::SetInitialDebug
+                                                     int line) {
+ #if DEBUG
+   AssemblerDebugInfo debug_info = {msg, file, line};
++#endif
+   raw_assembler_->SetCurrentExternalSourcePosition({file, line});
++#if DEBUG
+   raw_assembler_->SetInitialDebugInformation(debug_info);
+ #endif  // DEBUG
+ }

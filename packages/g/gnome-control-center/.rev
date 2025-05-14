@@ -2346,4 +2346,19 @@ New stable rel</comment>
   + Updated translations. (forwarded request 1269326 from iznogood)</comment>
     <requestid>1269690</requestid>
   </revision>
+  <revision rev="266" vrev="1">
+    <srcmd5>9e1b36392a3f580d62e4632c69bd73a6</srcmd5>
+    <version>48.1+15</version>
+    <time>1746808764</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1+15:
+  + About: fix multiple GPU name display with NVIDIA GPU on Desktop
+    PC
+  + application-shortcut-dialog: Set bold style to the app name
+  + style:
+    - Add frame border radius to rows with illustration
+    - Rename to &quot;illustrated&quot; class to rows with illustration
+  + Updated translations. (forwarded request 1275305 from iznogood)</comment>
+    <requestid>1275537</requestid>
+  </revision>
 </revisionlist>

@@ -50,4 +50,29 @@
   longer dies horribly.</comment>
     <requestid>1004050</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>41e719849b487acc5fc30d201a0fe20b</srcmd5>
+    <version>3.2.0</version>
+    <time>1746476847</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.0:
+  * Update Translations
+  * Fix for Calibre plugin CLI
+  * Don't require dc:identifier to have attribute opf:scheme=uuid when using
+    IDPF font encryption
+  * Add title/author/filename output on individual input epub failure
+  * Decrypt encrypted/obfuscated font files
+  * Save opf:file-as attr from author tags in CLI
+  * Actually have 'en' default for -l in CLI.
+  * Show busy cursor during unmerge
+  * Consolidate FFF title/log page skipping code to fix cover issue
+  * Add option to not condense TOC for a book down to a single entry if
+    there's only one chapter in it.
+  * Add Restore Selection option
+  * Fix for writing relative paths in merged epub
+- Switch to pyproject macros.
+- Support both mixed case and normalized metadata directory names.
+- Remove find/cp hack, package now has a proper build system.</comment>
+    <requestid>1274309</requestid>
+  </revision>
 </revisionlist>

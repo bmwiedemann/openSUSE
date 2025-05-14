@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue May  6 10:32:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Initial package version 1.12.0
+  * Version specified in kubernetes v1.33.0 - https://github.com/kubernetes/kubernetes/blob/v1.33.0/build/dependencies.yaml#L32-L34
+  * Changelog – https://github.com/coredns/coredns/releases/tag/v1.12.0

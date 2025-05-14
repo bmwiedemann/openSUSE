@@ -49,4 +49,12 @@ required by python-intake</comment>
     <comment></comment>
     <requestid>988275</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>342df93bc75b7073868ab0c0a93a0d51</srcmd5>
+    <version>0.4.8</version>
+    <time>1746809413</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275998</requestid>
+  </revision>
 </revisionlist>

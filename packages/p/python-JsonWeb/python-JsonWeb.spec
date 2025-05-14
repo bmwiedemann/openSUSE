@@ -1,7 +1,7 @@
 #
 # spec file for package python-JsonWeb
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,10 @@ URL:            http://www.jsonweb.info/
 Source:         https://files.pythonhosted.org/packages/source/J/JsonWeb/JsonWeb-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE python-311.patch
 Patch0:         python-311.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -38,10 +41,10 @@ to your python classes.
 %autosetup -p1 -n JsonWeb-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
 %pytest
@@ -49,6 +52,6 @@ to your python classes.
 %files %{python_files}
 %doc README.rst
 %{python_sitelib}/jsonweb
-%{python_sitelib}/JsonWeb-%{version}*-info
+%{python_sitelib}/[Jj]son[Ww]eb-%{version}*info
 
 %changelog

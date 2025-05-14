@@ -32,6 +32,7 @@ export BUILD_DIST=.dist
 cat >Dockerfile <<EOF
 DISTURL=%DISTURL%
 SOURCEURL=%SOURCEURL%
+README=%SOURCEURL_WITH(README.md)%
 RELEASE=%RELEASE%
 BUILDTIME=%BUILDTIME%
 ARCH=%ARCH%
@@ -51,6 +52,7 @@ bash "${script}"
 diff -u Dockerfile - <<EOF
 DISTURL=obs://build.opensuse.org/openSUSE:Factory/images/0f40c57dd619e1dff9e512949b6bca09-opensuse-tumbleweed-image:docker
 SOURCEURL=https://build.opensuse.org/package/show/openSUSE:Factory/opensuse-tumbleweed-image?rev=0f40c57dd619e1dff9e512949b6bca09
+README=https://build.opensuse.org/public/source/openSUSE:Factory/opensuse-tumbleweed-image/README.md?rev=0f40c57dd619e1dff9e512949b6bca09
 RELEASE=4.2
 BUILDTIME=2018-10-30T09:19:02.074934628Z
 ARCH=aarch64
@@ -76,6 +78,7 @@ EOF
 cat >Dockerfile <<EOF
 DISTURL=%DISTURL%
 SOURCEURL=%SOURCEURL%
+README=%SOURCEURL_WITH(README.md-flavor)%
 EOF
 
 bash "${script}"
@@ -83,6 +86,7 @@ bash "${script}"
 diff -u Dockerfile - <<EOF
 DISTURL=obs://build.suse.de/SUSE:SLE-15-SP3:Update:CR/images/5f0a221b7877396cbf977205e64690d2-sles15-image
 SOURCEURL=https://sources.suse.com/SUSE:SLE-15-SP3:Update:CR/sles15-image/5f0a221b7877396cbf977205e64690d2/
+README=https://sources.suse.com/SUSE:SLE-15-SP3:Update:CR/sles15-image/5f0a221b7877396cbf977205e64690d2/README.md-flavor
 EOF
 
 # Test _multibuild

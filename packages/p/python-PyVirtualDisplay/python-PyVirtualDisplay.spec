@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-PyVirtualDisplay
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,7 +50,6 @@ BuildRequires:  %{python_module entrypoint2}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module vncdotool >= 0.13.0}
 BuildRequires:  /usr/bin/who
 BuildRequires:  xmessage
 BuildRequires:  xorg-x11-server-extra
@@ -64,6 +63,8 @@ PyVirtualDisplay is a python wrapper for Xvfb, Xephyr and Xvnc.
 
 %prep
 %setup -q -n PyVirtualDisplay-%{version}
+# Ignore test_xvnc.py to remove python-vncdotool build dependency
+rm tests/test_xvnc.py
 
 %build
 %python_build

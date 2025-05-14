@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:22:15 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * Use `KeyboardInteractivity::Exclusive` (#229)
+  * Update cosmic_app_library.ftl (SV)
+  * i18n - update portuguese translations (#225)
+  * Adjusting two translations
+  * Added Irish translation
+  * i18n(ro): Add Romanian translation
+  * Minor wording fixes
+  * i18n (pt-BR) Update translations
+  * Update i18n/zh-CN/cosmic_app_library.ftl
+  * Update zh-CN translate
+  * Update cosmic_app_library.ftl
+  * Create cosmic_app_library.ftl
+  * fix: mid height comparison
+  * fix: add 16 px margin
+  * Capitalize COSMIC
+  * Fix homepage and bugtracker URLs
+  * Update Hungarian translations
+  * fix: filter out overlaps past half of surface height
+  * update libcosmic
+  * fix: ignore exclusive_zone
+  * feat: avoid overlap
+  * fix: use LANG from env
+  * fix: parse language and region from langtag
+  * fix(libcosmic): theme subscription
+  * fix license references
+  * fix: do not create new dialog when one already exists.
+
+-------------------------------------------------------------------
 Sat Feb 22 02:31:20 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

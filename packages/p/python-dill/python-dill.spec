@@ -1,7 +1,7 @@
 #
 # spec file for package python-dill
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dill
-Version:        0.3.9
+Version:        0.4.0
 Release:        0
 Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/uqfoundation/dill
 Source:         https://github.com/uqfoundation/dill/archive/refs/tags/%{version}.tar.gz#/dill-%{version}.tar.gz
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module objgraph >= 1.7.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
@@ -54,10 +55,10 @@ session in a single command.
 find dill -name '*.py' -exec sed -i '1{\@^#!%{_bindir}/env python@d}' {} \;
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/dill/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -84,6 +85,6 @@ export PYTHONPATH=%{_builddir}/dill-%{version}
 %python_alternative %{_bindir}/get_gprof
 %python_alternative %{_bindir}/get_objgraph
 %{python_sitelib}/dill
-%{python_sitelib}/dill-%{version}*-info
+%{python_sitelib}/dill-%{version}.dist-info
 
 %changelog

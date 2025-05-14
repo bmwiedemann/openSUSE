@@ -1,7 +1,7 @@
 #
 # spec file for package python-libarchive-c
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,16 @@
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 Name:           python-libarchive-c
-Version:        5.1
+Version:        5.2
 Release:        0
 Summary:        Python interface to libarchive
 License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/Changaco/python-libarchive-c
-Source:         https://files.pythonhosted.org/packages/source/l/libarchive-c/libarchive-c-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/Changaco/python-libarchive-c/pull/131 Handle new libarchive versions
-Patch0:         libarchive.patch
+Source:         https://files.pythonhosted.org/packages/source/l/libarchive-c/libarchive_c-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with libarchive_dynamically}
@@ -48,13 +48,13 @@ A Python interface to libarchive. It uses the standard ctypes_ module to
 dynamically load and access the C library.
 
 %prep
-%autosetup -p1 -n libarchive-c-%{version}
+%autosetup -p1 -n libarchive_c-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,6 @@ export LANG="en_US.UTF-8"
 %doc README.rst
 %license LICENSE.md
 %{python_sitelib}/libarchive
-%{python_sitelib}/libarchive_c-%{version}*info
+%{python_sitelib}/libarchive_c-%{version}.dist-info
 
 %changelog

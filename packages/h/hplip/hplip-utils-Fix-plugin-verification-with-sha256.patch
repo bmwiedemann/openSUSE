@@ -1,0 +1,68 @@
+From 8d14912a48e589bee05e0c377c29218132083145 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 7 May 2025 15:23:17 +0200
+Subject: [PATCH] hplip/utils: Fix plugin verification with sha256
+
+https://bugs.launchpad.net/hplip/+bug/2110100
+---
+ base/smart_install.py      |  2 +-
+ base/utils.py              | 12 +++++++++++-
+ installer/pluginhandler.py |  4 ++--
+ 3 files changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/base/smart_install.py b/base/smart_install.py
+index cff5924..699f70f 100755
+--- a/base/smart_install.py
++++ b/base/smart_install.py
+@@ -155,7 +155,7 @@ def validate(mode, smart_install_run, smart_install_asc, req_checksum=''):
+     calc_checksum = utils.get_checksum(open(smart_install_run, 'r').read())
+     log.debug("File checksum=%s" % calc_checksum)
+ 
+-    if req_checksum and req_checksum != calc_checksum:
++    if utils.sha256_checksum(req_checksum) != calc_checksum:
+         return ERROR_FILE_CHECKSUM, queryString(ERROR_CHECKSUM_ERROR, 0, plugin_file)
+ 
+     #Validate Digital Signature
+diff --git a/base/utils.py b/base/utils.py
+index d5b3a49..f9de94e 100644
+--- a/base/utils.py
++++ b/base/utils.py
+@@ -72,8 +72,18 @@ import hashlib
+ def get_checksum(s):
+     return hashlib.sha256(s).hexdigest()
+ 
++__sha1_sha256_map = {
++    "bd99405113d43447e7a37ed46d75187785774cff":
++    "9a2cf8d5661e846548dbbb595231a5448a5cb63729cc93df8d1f652dfd167a54"
++}
+ 
+-
++def sha256_checksum(s):
++    if not s:
++        return ""
++    elif s in __sha1_sha256_map:
++        return __sha1_sha256_map[s]
++    else:
++        return s
+ 
+ # Local
+ from .g import *
+diff --git a/installer/pluginhandler.py b/installer/pluginhandler.py
+index a37db39..26b0033 100755
+--- a/installer/pluginhandler.py
++++ b/installer/pluginhandler.py
+@@ -217,9 +217,9 @@ class PluginHandle(object):
+     def __validatePlugin(self,plugin_file, digsig_file, req_checksum):
+ 
+         #Validate Checksum
+-        calc_checksum = get_checksum(open(plugin_file, 'rb').read())
++        calc_checksum = utils.get_checksum(open(plugin_file, 'rb').read())
+         log.debug("D/L file checksum=%s" % calc_checksum)
+-        if req_checksum and req_checksum != calc_checksum:
++        if utils.sha256_checksum(req_checksum) != calc_checksum:
+             return ERROR_CHECKSUM_ERROR, queryString(ERROR_CHECKSUM_ERROR, 0, plugin_file)
+ 
+         #Validate Digital Signatures
+-- 
+2.49.0
+

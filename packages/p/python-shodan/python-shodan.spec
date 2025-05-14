@@ -1,7 +1,7 @@
 #
 # spec file for package python-shodan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,13 +26,14 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/achillean/shodan-python/
 Source:         https://files.pythonhosted.org/packages/source/s/shodan/shodan-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove-click-plugins.patch -- remove dependency to unmaintained click-plugins
+Patch0:         https://github.com/achillean/shodan-python/pull/236.patch#/remove-click-plugins.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 Requires:       python-XlsxWriter
 Requires:       python-click
-Requires:       python-click-plugins
 Requires:       python-colorama
 Requires:       python-requests >= 2.2.1
 Requires:       python-setuptools
@@ -55,7 +56,7 @@ Shodan is a search engine for Internet-connected devices. Google lets you search
 HTML documentation on the API and examples for %{name}.
 
 %prep
-%setup -q -n shodan-%{version}
+%autosetup -n shodan-%{version} -p1
 sed -i '1s/^#!.*//' shodan/cli/worldmap.py
 
 %build

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May  5 18:25:18 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 0.8.1
+  * Fix tree-sitter's C grammar dependency building
+  * rz-find: do not print filenames without a match
+  * Forbid aav analysis step when the architecture is MIPS (fixes misalignment issues)
+  * Fix izx and iz commands help
+  * Fix pxf command to print function hexdump
+  * MIPS: set correct instruction alignment according to the CPU
+  * Split very large basic blocks
+  * Fix possible NULL derefence in the RzCrypto
+
+-------------------------------------------------------------------
 Sat Jan  4 03:13:12 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
 
 - add cmake to BuildRequires

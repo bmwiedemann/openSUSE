@@ -1,7 +1,7 @@
 #
 # spec file for package python-anymarkup-core
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 SUSE Software Solutions Germany GmbH.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-anymarkup-core
 Version:        0.8.1
 Release:        0
@@ -29,7 +28,9 @@ Source0:        https://github.com/bkabrda/anymarkup-core/archive/v%{version}/an
 Patch0:         xml-to-dict-0.13.patch
 # PATCH-FIX-UPSTREAM drop-python2-support.patch gh#bkabrda/anymarkup-core#7
 Patch1:         drop-python2-support.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-PyYAML
@@ -57,10 +58,10 @@ python-anymarkup.
 %autosetup -p1 -n anymarkup-core-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

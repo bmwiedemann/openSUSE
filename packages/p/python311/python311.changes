@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May 10 11:38:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)
+
+-------------------------------------------------------------------
 Fri Apr 18 14:05:38 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.12:

@@ -80,4 +80,12 @@
     platforms. Added type annotations.</comment>
     <requestid>1170472</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>772338bed311854e4630312bac8a1574</srcmd5>
+    <version>2.6.7</version>
+    <time>1746809365</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275960</requestid>
+  </revision>
 </revisionlist>

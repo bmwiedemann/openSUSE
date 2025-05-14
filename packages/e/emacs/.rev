@@ -2165,4 +2165,17 @@ Now one could consider building emacs with gsettings support (both debian and fe
 - Make libXPM loaded dynamically for gtk/wayland (boo#1239926, boo#1239927)</comment>
     <requestid>1265662</requestid>
   </revision>
+  <revision rev="204" vrev="5">
+    <srcmd5>d86429d937b444e45ceef26758730532</srcmd5>
+    <version>30.1</version>
+    <time>1746808757</time>
+    <user>anag_factory</user>
+    <comment>- Remove/disable GNUS setup in (dot).gnu-emacs  (boo#1241188)
+- Add patch emacs-30.1-minmalxauth.patch (boo#1241254)
+
+- Modify patch emacs-30.1-seccomp.patch
+  * include asm/termbits.h is mandatory accordingly to latest ioctl_tty(2)  
+  * set default for MAP_DROPPABLE to 0x08</comment>
+    <requestid>1275457</requestid>
+  </revision>
 </revisionlist>

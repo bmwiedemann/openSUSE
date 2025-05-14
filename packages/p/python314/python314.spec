@@ -64,12 +64,17 @@
 %if 0%{?suse_version} <= 1600
 %bcond_with experimental_jit
 %else
+# Doesn’t work with GIL support disabled
+%if %{without GIL}
+%bcond_with experimental_jit
+%else
 # Currently supported architectures
 # https://peps.python.org/pep-0744/#support
 %ifarch x86_64 %{x86_64} aarch64
 %bcond_without experimental_jit
 %else
 %bcond_with experimental_jit
+%endif
 %endif
 %endif
 
@@ -157,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.0~a7
-%define         tarversion 3.14.0a7
+Version:        3.14.0~b1
+%define         tarversion 3.14.0b1
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -198,8 +203,6 @@ Patch02:        F00251-change-user-install-location.patch
 Patch03:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
 Patch04:        python-3.3.0b1-fix_date_time_compiler.patch
-# POSIX_FADV_WILLNEED throws EINVAL. Use a different constant in test
-Patch05:        python-3.3.0b1-test-posix_fadvise.patch
 # Raise timeout value for test_subprocess
 Patch06:        subprocess-raise-timeout.patch
 # PATCH-FEATURE-UPSTREAM bpo-31046_ensurepip_honours_prefix.patch bpo#31046 mcepl@suse.com
@@ -710,7 +713,7 @@ for module in \
     asyncio ctypes collections concurrent email encodings \
     ensurepip html http re pathlib _pyrepl \
     importlib json logging multiprocessing pydoc_data unittest \
-    urllib venv wsgiref test sysconfig tomllib turtledemo \
+    urllib venv wsgiref test string sysconfig tomllib turtledemo \
     xml xmlrpc zipfile zoneinfo __phello__
 do
     rm -r %{buildroot}%{sitedir}/$module
@@ -718,13 +721,13 @@ done
 
 for library in \
     array _asyncio binascii _bisect _bz2 cmath _codecs_* \
-    _contextvars _csv _ctypes _datetime _decimal fcntl grp \
+    _csv _ctypes _datetime _decimal fcntl grp \
     _hashlib _heapq _hmac _json _lsprof _lzma math mmap \
     _multibytecodec _multiprocessing _pickle _posixshmem \
     _posixsubprocess _queue _random resource select _ssl _socket \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
     _testmultiphase unicodedata zlib _ctypes_test _testinternalcapi _testcapi \
-    _testclinic _testclinic_limited xxlimited xxlimited_35 _testexternalinspection \
+    _testclinic _testclinic_limited xxlimited xxlimited_35 _remote_debugging \
     _testlimitedcapi _xxtestfuzz _elementtree pyexpat _md5 _sha1 \
     _interpchannels _interpqueues _interpreters \
     _sha2 _blake2 _sha3 _uuid _zoneinfo \
@@ -783,7 +786,7 @@ install -d -m 755 %{buildroot}%{sitedir}/site-packages/__pycache__
 mkdir -p %{buildroot}%{_prefix}/lib/python%{python_abi}/site-packages/__pycache__
 
 # cleanup parts that don't belong
-for dir in curses dbm sqlite3 tkinter idlelib; do
+for dir in curses dbm compression sqlite3 tkinter idlelib; do
     find "%{buildroot}/%{sitedir}/$dir"/* -maxdepth 0 -name "test" -o -exec rm -rf {} +
 done
 
@@ -903,6 +906,7 @@ fi
 %files -n %{python_pkg_name}
 %dir %{sitedir}
 %dir %{sitedir}/lib-dynload
+%{sitedir}/compression
 %{sitedir}/sqlite3
 %{dynlib readline}
 %{dynlib _sqlite3}
@@ -983,7 +987,7 @@ fi
 %{dynlib _testimportmultiple}
 %{dynlib _testmultiphase}
 %{dynlib _testsinglephase}
-%{dynlib _testexternalinspection}
+%{dynlib _remote_debugging}
 %{dynlib _testlimitedcapi}
 %{dynlib _xxtestfuzz}
 # workaround for missing packages
@@ -1032,7 +1036,6 @@ fi
 %{dynlib _codecs_jp}
 %{dynlib _codecs_kr}
 %{dynlib _codecs_tw}
-%{dynlib _contextvars}
 %{dynlib _csv}
 %{dynlib _ctypes}
 %{dynlib _datetime}
@@ -1108,6 +1111,7 @@ fi
 %{sitedir}/pathlib
 %{sitedir}/pydoc_data
 %{sitedir}/re
+%{sitedir}/string
 %{sitedir}/sysconfig
 %{sitedir}/tomllib
 %{sitedir}/unittest

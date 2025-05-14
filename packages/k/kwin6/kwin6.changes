@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  6 20:08:21 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.5
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-xwayland-Only-pass-actual-mime-type-offers-to-Waylan.patch
+  * 0001-backends-drm-also-clean-up-pending-commits-with-lega.patch
+
+-------------------------------------------------------------------
 Fri Apr 11 08:54:40 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add upstream fixes:

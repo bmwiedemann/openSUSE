@@ -56,6 +56,9 @@ Patch2:         %{name}_ipsec_service.patch
 Patch5:         0005-ikev1-Don-t-retransmit-Aggressive-Mode-response.patch
 Patch6:         harden_strongswan.service.patch
 Patch7:         init.patch
+Patch11:        strongswan-gcc15-part1.patch
+Patch12:        strongswan-gcc15-part2.patch
+Patch13:        strongswan-gcc15-part3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

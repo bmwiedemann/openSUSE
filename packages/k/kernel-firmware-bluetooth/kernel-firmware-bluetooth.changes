@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 28 07:29:27 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250425 (git commit 8d82acd29b5c):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May  7 15:51:33 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 44.0.3
+  * Update test vectors to match python-cryptography 44.0.3
+- No need for rpmlintrc any more.
+
+-------------------------------------------------------------------
 Sun Mar 23 21:38:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 44.0.2: 

@@ -311,7 +311,7 @@ ctest_exclude_regex="smart_smart_pointer"
 %define xvfb_command xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" \\
 
 %define excluded_tests 1
-# Excluded tests (last update: 2025-04-04)
+# Excluded tests (last update: 2025-05-07)
 # QtWebEngineWidgets_pyside-474-qtwebengineview fails with 'ContextResult::kTransientFailure: Failed to send GpuControl.CreateCommandBuffer'
 # QtGui_qpen_test times out
 # QtMultimediaWidgets_qmultimediawidgets aborts
@@ -334,6 +334,15 @@ ctest_exclude_regex="$ctest_exclude_regex|QtWebEngineCore_web_engine_custom_sche
 %ifarch riscv64
 ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtQml_qquickitem_grabToImage"
 %endif
+%ifarch ppc64le
+# Tests started segfaulting after an unknown change that happened ~ april 10
+ctest_exclude_regex+="|QtQml_bug_825_old|QtQml_bug_825|QtQml_bug_847|QtQml_qqmlnetwork_test|QtQml_registertype|QtQml_registersingletontype|QtQml_qqmlincubator_incubateWhile|QtQml_qquickitem_grabToImage|quicktestmainwithsetup_tst_quicktestmainwithsetup|QtDataVisualization_datavisualization_test"
+%endif
+%ifarch x86_64 riscv64
+# QtWebengine failures caused by fixes for AMD graphics (cf. sr#1274939)
+ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test"
+%endif
+
 # qemu linux-user emulation is always multi-threaded, sandbox refuses to start
 %if 0%{?qemu_user_space_build}
 ctest_exclude_regex+="|QtWebEngineCore_web_engine_custom_scheme|QtWebEngineCore_qwebenginecookiestore_test|QtWebEngineWidgets_pyside-474-qtwebengineview"

@@ -16,10 +16,8 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           konstraint
-Version:        0.41.0
+Version:        0.42.0
 Release:        0
 Summary:        A policy management tool for interacting with Gatekeeper
 License:        Apache-2.0
@@ -29,20 +27,22 @@ Source1:        vendor.tar.gz
 BuildRequires:  go >= 1.22
 
 %description
-Konstraint is a CLI tool to assist with the creation and management of templates and constraints when using Gatekeeper.
+Konstraint is a CLI tool to assist with the creation and management of
+templates and constraints when using Gatekeeper.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p 1 -a 1
 
 %build
 go build \
    -mod=vendor \
-   -ldflags="-X main.Version=%{version}"
+   -ldflags="-X github.com/plexsystems/konstraint/internal/commands.version=%{version}"
 
 %install
-# Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} --version | grep %{version}
 
 %files
 %doc README.md

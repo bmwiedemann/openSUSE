@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * konfigurator: Use correct kwalletd DBus interface name
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:08 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

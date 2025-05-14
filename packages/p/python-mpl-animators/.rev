@@ -17,4 +17,12 @@
   * Add changelog config and bump minimum Python version to 3.8</comment>
     <requestid>1132439</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>72828e190f085e3c18b980241a45039a</srcmd5>
+    <version>1.1.1</version>
+    <time>1746809410</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275996</requestid>
+  </revision>
 </revisionlist>

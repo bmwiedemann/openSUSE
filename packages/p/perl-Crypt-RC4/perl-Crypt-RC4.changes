@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 14:26:10 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build for reproducible builds
+
+-------------------------------------------------------------------
 Tue Jun  7 07:19:30 UTC 2011 - coolo@novell.com
 
 - ran spec-cleaner

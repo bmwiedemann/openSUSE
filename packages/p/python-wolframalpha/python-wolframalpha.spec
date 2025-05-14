@@ -1,7 +1,7 @@
 #
 # spec file for package python-wolframalpha
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        5.0.0
 Release:        0
 Summary:        WolframAlpha 2.0 API client
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/wolframalpha
 Source:         https://files.pythonhosted.org/packages/source/w/wolframalpha/wolframalpha-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm >= 1.9}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.context
@@ -50,10 +51,10 @@ v2.0 API.
 %setup -q -n wolframalpha-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -64,6 +65,7 @@ rm wolframalpha/{test_,}pmxbot.py
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/wolframalpha
+%{python_sitelib}/wolframalpha-%{version}.dist-info
 
 %changelog

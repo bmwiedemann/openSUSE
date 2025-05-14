@@ -1748,4 +1748,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
     <requestid>1270551</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1ac61805f152b99aab8f874a78d1886a</srcmd5>
+    <version>25.04.1</version>
+    <time>1746809315</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.1</comment>
+    <requestid>1275899</requestid>
+  </revision>
 </revisionlist>

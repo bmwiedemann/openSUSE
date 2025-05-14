@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 12 08:41:24 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.5.14:
+  * fixing CPE-ID generation (ommit * in empty fields)
+  * allowing to select build-options via cli and project build configuration
+
+-------------------------------------------------------------------
 Wed Apr 30 12:36:01 UTC 2025 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.5.13:

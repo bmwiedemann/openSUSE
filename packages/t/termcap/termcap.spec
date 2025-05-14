@@ -1,7 +1,7 @@
 #
 # spec file for package termcap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch0:         termcap-2.0.8.dif
 Patch1:         curses-bsd4.4-linux.patch
 Patch2:         termcap-2.0.8-setuid.patch
 Patch3:         termcap-2.0.8-fix-tc.patch
+Patch4:         termcap-gcc15.patch
+Patch5:         termcap-curses-gcc15.patch
 
 %description
 The termcap and curses libraries.
@@ -87,8 +89,10 @@ and libraries needed to build termcap based applications.
 %patch -P 0 -p0
 %patch -P 2 -p1 -b .setuid
 %patch -P 3 -p1 -b .tc
+%patch -P 4 -p1
 cd ../curses-bsd4.4
 %patch -P 1 -p0
+%patch -P 5 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

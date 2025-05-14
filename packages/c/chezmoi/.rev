@@ -801,4 +801,20 @@
 </comment>
     <requestid>1273037</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>4de33d5d20f1b1238db69f50e1c2b4d1</srcmd5>
+    <version>2.62.3</version>
+    <time>1746721335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.62.3:
+  - Features
+    * feat: Extend toStrings template function to handle more types
+    * feat: Extend toString template function to handle more types
+  - Fixes
+    * fix: Improve diff command output when removing files
+  - Documentation updates
+    * docs: Add hint for when to use toString with GitHub template functions
+</comment>
+    <requestid>1275327</requestid>
+  </revision>
 </revisionlist>

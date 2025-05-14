@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.15.0
+Version:        2.16.0
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -51,6 +51,7 @@ Bash command line completion support for %{name}.
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -61,6 +62,7 @@ Fish command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 

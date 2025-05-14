@@ -23,4 +23,25 @@
     <comment>- Update to v0.11.4:</comment>
     <requestid>1239507</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9eb957aa7172a3608b28ab8ccbd20e22</srcmd5>
+    <version>0.11.10</version>
+    <time>1746638529</time>
+    <user>dimstar_suse</user>
+    <comment>- Use source urls to fetch project sources 
+
+- Update to v0.11.10:
+  * [UR][L0] Release parent of sub-buffer when sub-buffer
+- Update to v0.11.9:
+  * [UR][L0] Disable Immediate Command List DG2 Windows
+
+- Update to v0.11.8:
+  * [DeivceASAN] Make ShadowMemory one instance per type
+  * [DeviceASAN] Fix kernel release order
+  * [DeviceASAN] Bugfix for GetDeviceType
+  * [L0]: fix missing destroy of event given enqueue wait out event
+  * [DeviceASAN][bugfix] Not allow concurrent kernel launches
+    across different queue</comment>
+    <requestid>1275288</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,0 @@
-<package name="gsettings-qt" project="openSUSE:Factory">
-  <title>gsettings-qt</title>
-  <description></description>
-  <devel project="X11:Deepin" package="gsettings-qt"/>
-</package>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 14:14:16 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- add patch remove-click-plugins.patch to remove the dependeny on unmainted click-plugins
+
+-------------------------------------------------------------------
 Thu Mar 14 08:46:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.31.0:

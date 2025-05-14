@@ -57,6 +57,10 @@ Source:         https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz
 Source2:        https://ftp.isc.org/isc/kea/%version/kea-%version.tar.gz.asc
 # https://www.isc.org/pgpkey/
 Source3:        kea.keyring
+Source4:        kea-dhcp4.service
+Source5:        kea-dhcp6.service
+Source6:        kea-dhcp-ddns.service
+Source7:        kea-ctrl-agent.service
 Patch0:         kea-2.6.1-boost_1.87-compat.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
@@ -374,22 +378,7 @@ b=%buildroot
 %make_install
 find %buildroot -type f -name "*.la" -delete -print
 mkdir -p "$b/%_unitdir" "$b/%_tmpfilesdir" "$b/%_sysusersdir"
-cat <<-EOF >"$b/%_unitdir/kea.service"
-	[Unit]
-	Description=ISC Kea DHCP server
-	Before=multi-user.target
-	After=remote-fs.target network.target nss-lookup.target time-sync.target ldap.service ndsd.service
-	[Service]
-	Type=forking
-	Environment=KEA_PIDFILE_DIR=%_rundir/%name
-        RuntimeDirectory=kea
-	ExecStart=%_sbindir/keactrl start
-	ExecReload=%_sbindir/keactrl reload
-	ExecStop=%_sbindir/keactrl stop
-	[Install]
-	WantedBy=multi-user.target
-	Alias=dhcp-server.service
-EOF
+cp %_sourcedir/*.service "$b/%_unitdir/"
 cat <<-EOF >"$b/%_tmpfilesdir/kea.conf"
 	d /run/kea 0775 keadhcp keadhcp -
 EOF
@@ -408,16 +397,60 @@ rm -Rf "%buildroot/%python3_sitelib/kea/__pycache__"
 
 %pre -f random.pre
 systemd-tmpfiles --create kea.conf || :
-%service_add_pre kea.service
+%service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 %post
-%service_add_post kea.service
+%service_add_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
+if [ "$1" -gt 1 ]; then
+	chown -R keadhcp:keadhcp "%_localstatedir/lib/kea"
+	chown -R keadhcp:keadhcp "%_localstatedir/log/kea"
+	chown -h root:keadhcp %_sysconfdir/kea/*.conf
+	chmod -h 640 %_sysconfdir/kea/*.conf
+fi
+bigkea_enabled=$(/usr/bin/systemctl is-enabled kea.service 2>/dev/null || :)
+bigkea_active=$(/usr/bin/systemctl is-active kea.service 2>/dev/null || :)
+use_dhcp4=$(grep -ie ^dhcp4=yes /etc/kea/keactrl.conf 2>/dev/null || :)
+use_dhcp6=$(grep -ie ^dhcp6=yes /etc/kea/keactrl.conf 2>/dev/null || :)
+use_ddns=$(grep -ie ^dhcp_ddns=yes /etc/kea/keactrl.conf 2>/dev/null || :)
+use_agent=$(grep -ie ^ctrl_agent=yes /etc/kea/keactrl.conf 2>/dev/null || :)
+if [ "$bigkea_enabled" = "enabled" ]; then
+	echo "Transferring enablement of kea.service to new split units..."
+	/usr/bin/systemctl disable kea.service || :
+	if [ -n "$use_dhcp4" ]; then
+		/usr/bin/systemctl enable kea-dhcp4.service || :
+	fi
+	if [ -n "$use_dhcp6" ]; then
+		/usr/bin/systemctl enable kea-dhcp6.service || :
+	fi
+	if [ -n "$use_ddns" ]; then
+		/usr/bin/systemctl enable kea-dhcp-ddns.service || :
+	fi
+	if [ -n "$use_agent" ]; then
+		/usr/bin/systemctl enable kea-ctrl-agent.service || :
+	fi
+fi
+if [ "$bigkea_active" = "active" ]; then
+	echo "Transferring active state of kea.service to new split units..."
+	/usr/bin/systemctl disable --now kea.service || :
+	if [ -n "$use_dhcp4" ]; then
+		/usr/bin/systemctl start kea-dhcp4.service || :
+	fi
+	if [ -n "$use_dhcp6" ]; then
+		/usr/bin/systemctl start kea-dhcp6.service || :
+	fi
+	if [ -n "$use_ddns" ]; then
+		/usr/bin/systemctl start kea-dhcp-ddns.service || :
+	fi
+	if [ -n "$use_agent" ]; then
+		/usr/bin/systemctl start kea-ctrl-agent.service || :
+	fi
+fi
 
 %preun
-%service_del_preun kea.service
+%service_del_preun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 %postun
-%service_del_postun kea.service
+%service_del_postun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
 
 %ldconfig_scriptlets -n libkea-asiodns%asiodns_sover
 %ldconfig_scriptlets -n libkea-asiolink%asiolink_sover
@@ -445,16 +478,16 @@ systemd-tmpfiles --create kea.conf || :
 
 %files
 %dir %_sysconfdir/kea
-%config(noreplace) %_sysconfdir/kea/*.conf
+%config(noreplace) %attr(0640,root,keadhcp) %_sysconfdir/kea/*.conf
 %_mandir/man8/*.8%{?ext_man}
 %_sbindir/kea*
 %_sbindir/perfdhcp
 %_datadir/kea/
 %_unitdir/*.service
-%dir %_localstatedir/lib/kea
-%_tmpfilesdir/
-%_sysusersdir/
-%attr(0775,keadhcp,keadhcp) %_localstatedir/log/kea/
+%dir %attr(0750,keadhcp,keadhcp) %_localstatedir/lib/kea
+%_tmpfilesdir/*
+%_sysusersdir/*
+%attr(0750,keadhcp,keadhcp) %_localstatedir/log/kea/
 
 %files doc
 %doc %_datadir/doc/kea/

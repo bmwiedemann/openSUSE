@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 12 14:30:12 UTC 2025 - lduncan@suse.com
+
+- Update to version 1.72_release+2.94d8d07c8d71:
+  * mhvtl.ko: Bump version string to account for SPIN_LOCK_ fixes
+  * mhvtl: kernel: fix build issue if RealTime kernel (which fixes
+    a OBS build issue for "16.0")
+
+-------------------------------------------------------------------
 Thu Apr 17 18:05:54 UTC 2025 - lduncan@suse.com
 
 - Update to version 1.72_release+0.70719883aae2:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-npTDMS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Python module for reading TDMS files produced by LabView
 License:        LGPL-3.0-only
 URL:            https://github.com/adamreeve/npTDMS
 Source:         https://github.com/adamreeve/npTDMS/archive/%{version}.tar.gz#/npTDMS-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -45,10 +47,10 @@ NumPy based module for reading TDMS files produced by LabView.
 %setup -q -n npTDMS-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/tdmsinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -67,6 +69,6 @@ NumPy based module for reading TDMS files produced by LabView.
 %license COPYING COPYING.LESSER
 %python_alternative %{_bindir}/tdmsinfo
 %{python_sitelib}/nptdms
-%{python_sitelib}/npTDMS-%{version}*info
+%{python_sitelib}/np[Tt][Dd][Mm][Ss]-%{version}.dist-info
 
 %changelog

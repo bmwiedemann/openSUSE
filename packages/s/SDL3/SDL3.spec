@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL3
 %define lname   libSDL3-0
-Version:        3.2.10
+Version:        3.2.12
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -93,6 +93,9 @@ Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glesv1_cm)
 Requires:       pkgconfig(glesv2)
 Requires:       pkgconfig(glu)
+# You should not add pkgconfig(x11) to sdl-devel; as far as SDL is concerned, it is optional.
+# (Think outputting to Wayland, KMSDRM, or null.)
+# https://github.com/libsdl-org/sdl2-compat/issues/405
 
 %description devel
 This package contains files needed for development with the SDL

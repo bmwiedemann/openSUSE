@@ -19,7 +19,7 @@
 %define executable_name kubectl-rook_ceph
 
 Name:           kubectl-rook-ceph
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Management and troubleshooting tools for the Rook Ceph storage provider
 License:        Apache-2.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 12 13:07:15 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to 4.8.7
+  * add “Start Column” (sets column of first page, same as Shift+Click)
+    to Grid menu of pdf-viewer’s context menu gh#texstudio-org/texstudio#3974
+  * add preview with default compiler option gh#texstudio-org/texstudio#3978
+  * shrink embedded pdf-viewer when an item of the Structure or TOC tree
+    view is selected gh#texstudio-org/texstudio#3989
+  * allow executing ai queries from macros see manual
+  * fix completion of empty key/val values gh#texstudio-org/texstudio#4017
+  * add clear button to search fields of Packages Help (TeXdoc)
+    dialog gh#texstudio-org/texstudio#4041, Config dialog
+    gh#texstudio-org/texstudio#4043, and Symbols side panel
+
+-------------------------------------------------------------------
 Fri Feb 21 14:21:09 UTC 2025 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to 4.8.6

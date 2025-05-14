@@ -206,4 +206,12 @@
     before a decimal).</comment>
     <requestid>1204400</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>2eb99aecb634f0614232e144308a3b88</srcmd5>
+    <version>1.12.0</version>
+    <time>1746809358</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275953</requestid>
+  </revision>
 </revisionlist>

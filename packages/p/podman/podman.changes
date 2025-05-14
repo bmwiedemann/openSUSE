@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  7 15:50:54 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Downgrade criu from Requires to Recommends. It's provides optional
+  functionality and shouldn't be a hard requires.
+
+-------------------------------------------------------------------
+Mon Apr 28 11:37:21 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Added patch to remove using rw as a default mount option (bsc#1239776)
+  * 0001-remove-appending-rw-as-the-default-mount-option.patch
+
+-------------------------------------------------------------------
+Fri Apr 11 15:31:49 UTC 2025 - Danish Prakash <danish.prakash@suse.com>
+
+- Remove iptables dependency (bsc#1231424)
+- Hard require criu for checkpointing functionality.
+
+-------------------------------------------------------------------
 Thu Apr 03 15:58:24 UTC 2025 - dcermak@suse.com
 
 - Update to version 5.4.2:

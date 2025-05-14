@@ -1,3 +1,16 @@
+qt5-pbf-image-plugin (4.2) stable; urgency=low
+
+  * Qt5 builds now require Qt 5.15.
+  * Fixed UNIX builds on MacOS (Macports).
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 11 May 2025 12:53:03 +0200
+
+qt5-pbf-image-plugin (4.1) stable; urgency=critical
+
+  * Fixed broken text handling under Qt5.
+
+ -- Martin Tuma <tumic@cbox.cz>  Thu, 13 Feb 2025 23:44:42 +0100
+
 qt5-pbf-image-plugin (4.0) stable; urgency=low
 
   * Removed Google Protocol buffers dependency.

@@ -1,7 +1,7 @@
 #
 # spec file for package lbreakouthd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lbreakouthd
-Version:        1.1.9
+Version:        1.1.10
 Release:        0
 Summary:        Classic Breakout-Style Game
 License:        GPL-2.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(SDL2_image)
 BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(SDL2_ttf)
@@ -53,12 +52,11 @@ and must destroy bricks at the top by bouncing balls against them.
 
 %install
 %make_install
-%suse_update_desktop_file -r -G "Breakout-like Game" %{name} Game ArcadeGame
 
 ## install levels
 tar -xf %{SOURCE1} -C %{buildroot}%{_datadir}/%{name}/levels
 
-# Remove global hiscores files, not needed after Patch0
+# Remove global hiscores files, not needed since version 1.1.2
 rm %{buildroot}%{_localstatedir}/games/*
 
 %find_lang %{name}

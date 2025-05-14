@@ -32,13 +32,12 @@
 %endif
 
 Name:           libavif
-Version:        1.2.1
+Version:        1.3.0
 Release:        0
 Summary:        Library for encoding and decoding .avif files
-License:        BSD-2-Clause AND MIT
-Group:          Development/Libraries/C and C++
+License:        BSD-2-Clause
 URL:            https://github.com/AOMediaCodec/libavif
-Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source10:       https://github.com/kmurray/libargparse/archive/%{libargparse}/libargparse-%{libargparse}.tar.gz
 Source99:       baselibs.conf
 BuildRequires:  cmake
@@ -72,7 +71,6 @@ BuildRequires:  gcc11-c++
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(libsharpyuv)
 %endif
-Provides:       bundled(libargparse)
 
 %description
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -82,7 +80,8 @@ https://aomediacodec.github.io/av1-avif/
 
 %package -n avif-tools
 Summary:        Tools for libavif
-Group:          Productivity/Graphics/Convertors
+License:        BSD-2-Clause AND MIT
+Provides:       bundled(libargparse) = 20211125.ee74d1b
 Provides:       libavif-tools = %{version}
 Obsoletes:      libavif-tools < %{version}
 
@@ -97,7 +96,6 @@ This package holds the commandline tools for libavif.
 %package -n %{lib_name}
 #
 Summary:        Shared library from libavif
-Group:          Development/Libraries/C and C++
 
 %description -n %{lib_name}
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -107,9 +105,8 @@ https://aomediacodec.github.io/av1-avif/
 
 This package holds the shared library for libavif.
 
-%package     -n gdk-pixbuf-loader-libavif
+%package -n gdk-pixbuf-loader-libavif
 Summary:        AVIF image loader for GTK+ applications
-Group:          Development/Libraries/C and C++
 
 %description -n gdk-pixbuf-loader-libavif
 A pixbuf-loader plugin to load AVIF images in GTK+ applications.
@@ -117,8 +114,7 @@ A pixbuf-loader plugin to load AVIF images in GTK+ applications.
 %package devel
 #
 Summary:        Development files for libavif
-Group:          Development/Libraries/C and C++
-Requires:       %{lib_name} = %{version}-%{release}
+Requires:       %{lib_name} = %{version}
 
 %description devel
 This library aims to be a friendly, portable C implementation of the AV1 Image
@@ -140,7 +136,7 @@ tar -xf %{SOURCE10} --strip-components=1 -C ext/libargparse
 %if 0%{?suse_version} < 1600
 	-DCMAKE_C_COMPILER=gcc-11	\
 	-DCMAKE_CXX_COMPILER=g++-11	\
-	-DAVIF_LIBSHARPYUV=OFF		\
+	-DAVIF_LIBSHARPYUV:BOOL=OFF	\
 %else
 	-DAVIF_LIBSHARPYUV=SYSTEM	\
 %endif
@@ -148,10 +144,10 @@ tar -xf %{SOURCE10} --strip-components=1 -C ext/libargparse
 	-DAVIF_CODEC_SVT=SYSTEM		\
 %endif
 %if %{with man_pages}
-	-DAVIF_BUILD_MAN_PAGES=ON	\
+	-DAVIF_BUILD_MAN_PAGES:BOOL=ON	\
 %endif
 %if %{with tests}
-	-DAVIF_BUILD_TESTS=ON		\
+	-DAVIF_BUILD_TESTS:BOOL=ON	\
 	-DAVIF_GTEST=SYSTEM		\
 %endif
 	-DAVIF_CODEC_AOM=SYSTEM		\
@@ -163,7 +159,7 @@ tar -xf %{SOURCE10} --strip-components=1 -C ext/libargparse
 	-DAVIF_ZLIBPNG=SYSTEM		\
 	-DAVIF_BUILD_APPS:BOOL=ON	\
 	-DAVIF_BUILD_EXAMPLES:BOOL=ON	\
-	-DAVIF_BUILD_GDK_PIXBUF=ON
+	-DAVIF_BUILD_GDK_PIXBUF:BOOL=ON
 %cmake_build
 
 %install
@@ -195,7 +191,7 @@ skip="-E avifgainmaptest"
 %{_libdir}/pkgconfig/libavif.pc
 
 %files -n avif-tools
-%doc *.md
+%doc CHANGELOG.md README.md SECURITY.md
 %license LICENSE
 %{_bindir}/avifdec
 %{_bindir}/avifenc

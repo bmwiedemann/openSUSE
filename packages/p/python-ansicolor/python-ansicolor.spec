@@ -1,7 +1,7 @@
 #
 # spec file for package python-ansicolor
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # For license file
 %define tag     a5a5c31dc6de5c864a0c5684ae326972573a712b
 Name:           python-ansicolor
@@ -27,7 +26,9 @@ License:        Apache-2.0
 URL:            https://github.com/numerodix/ansicolor
 Source:         https://files.pythonhosted.org/packages/source/a/ansicolor/ansicolor-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/numerodix/ansicolor/%{tag}/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -42,15 +43,16 @@ command line programs.
 cp %{SOURCE10} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/ansicolor
+%{python_sitelib}/ansicolor-%{version}*-info
 
 %changelog

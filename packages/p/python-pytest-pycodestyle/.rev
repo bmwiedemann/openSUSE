@@ -73,4 +73,12 @@
 - Remove python_module macro definition</comment>
     <requestid>1243190</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>4c833807f0794ed427d4c3d690724b31</srcmd5>
+    <version>2.4.1</version>
+    <time>1746638370</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275109</requestid>
+  </revision>
 </revisionlist>

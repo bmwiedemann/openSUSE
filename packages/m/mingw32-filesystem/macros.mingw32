@@ -164,15 +164,16 @@ package or when debugging this package.\
 %_mingw32_package_header \
   %global __strip %{_mingw32_strip} \
   %global __objdump %{_mingw32_objdump} \
-  %global __os_install_post %{_mingw32_install_post}
+  %global __arch_install_post %{_mingw32_install_post}
 
 # see also macros.mingw32-cross
 %_mingw32_package_header_debug \
   %{?!__mingw32_cross_debug_package:%global debug_package %{nil}} \
+  %{?buildsubdir:%global __debug_package 1} \
   %global __strip %{_mingw32_strip} \
   %global __objdump %{_mingw32_objdump} \
-  %global __os_install_post %{_mingw32_debug_install_post} \\\
-                            %{_mingw32_install_post}
+  %global __arch_install_post %{_mingw32_debug_install_post} \\\
+                              %{_mingw32_install_post}
 
 %_mingw32_configure %{_mingw32_env} ; \
   __mingw32_topdir=.; if ! test -x configure; then __mingw32_topdir=..; fi; \\\

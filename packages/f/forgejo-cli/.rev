@@ -57,4 +57,12 @@
 </comment>
     <requestid>1230725</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed787e86e94d9e91bd64e4b2532c48f8</srcmd5>
+    <version>0.3.0</version>
+    <time>1746638206</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor tarball, fixing bsc#1242683 (forwarded request 1274967 from rrahl0)</comment>
+    <requestid>1274968</requestid>
+  </revision>
 </revisionlist>

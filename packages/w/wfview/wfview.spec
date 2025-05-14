@@ -17,7 +17,7 @@
 
 
 Name:           wfview
-Version:        2.03
+Version:        2.10
 Release:        0
 Summary:        ICOM SDR transceiver control software
 License:        GPL-3.0-or-later

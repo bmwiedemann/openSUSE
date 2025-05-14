@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 06 06:13:37 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250506.7ca341fa:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: cibconfig: Use VerifyResult to define the return value of sanity check related functions
+  * Dev: bootstrap: minor message wording refine
+  * Dev: boostrap: ssh_copy_id should not use keys from ssh-agent (#1663)
+  * Dev: behave: adjust functional tests for previous changes
+  * Fix: codecov: move sitecustomize hook to python3.13
+  * Dev: unittest: adjust unit tests for previous changes
+  * Dev: user_of_host: remove unused no_generating_ssh_key (#1663)
+  * Dev: remove use_ssh_ssh_agent() and always relay SSH_AUTH_SOCK (#1663)
+  * Dev: bootstrap geo: allow to fallback to keyfile when login with ssh-agent fails (#1663)
+  * Dev: bootstrap: should pass SSH_AUTH_SOCK when swapping keys (#1633)
+  * Dev: bootstrap join: implement setup_passwordless_with_other_nodes by merging authorized_keys (#1663)
+  * Fix: ssh_key: should not use ssh-copy-id -i when using keys from ssh-agent (#1633)
+  * Dev: bootstrap join: allow to fallback to keyfile when login with ssh-agent fails (#1663)
+  * Dev: bootstrap init -N: do not raise an error when no ssh key is available (#1663)
+  * Dev: bootstrap join: do not raise an error when no ssh key is available (#1663)
+  * Dev: bootstrap init: do not raise an error when no ssh key is available (#1663)
+  * Dev: ui_cluster: add `--no-use-ssh-agent` (#1663)
+
+-------------------------------------------------------------------
+Wed Apr 30 06:17:01 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250430.63b8830b:
+  * Dev: behave: Add functional test for previous commit
+  * Dev: unittests: Add unit test for utils.VerifyResult
+  * Fix: ra: Prevent to add unknown operation (bsc#1236442)
+
+-------------------------------------------------------------------
+Tue Apr 29 07:00:36 UTC 2025 - XLiang@suse.com
+
+- Update to version 5.0.0+20250429.49f29916:
+  * Dev: unittests: Adjust unit test for previous commit
+  * Dev: Refactored node reachability handling in multiple modules
+
+-------------------------------------------------------------------
 Mon Apr 28 14:02:47 UTC 2025 - XLiang@suse.com
 
 - Update to version 5.0.0+20250428.d6473ab2:

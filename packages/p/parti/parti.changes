@@ -1,4 +1,28 @@
 --------------------------------------------------------------------
+Fri May 9 15:41:25 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#21
+- improved unify-gpt
+- parti: add disk size in blocks
+- add unify-gpt man page
+- unify-gpt: fixed layout calculation, better logging
+- adjust documentation
+- 2.8
+
+--------------------------------------------------------------------
+Wed May 7 18:07:30 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#20
+- rework unify-gpt
+- 2.7
+
+--------------------------------------------------------------------
+Wed May 7 18:04:41 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/parti#19
+- parti.spec: bring spec file to 2024
+
+--------------------------------------------------------------------
 Mon Jul 8 11:23:37 UTC 2024 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/parti#18

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  6 14:22:24 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update vendor tarball, fixing bsc#1242683
+
+-------------------------------------------------------------------
+Tue May  6 04:35:21 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.3.0:
+  * Additions
+    - Added fj completion to generate completion scripts for various
+      shells
+    - Added fj org for Organization commands.
+    - Added fj actions for Forgejo Actions-related commands (thank
+      you, @LordMZTE !)
+    - OAuth client IDs for fj auth login can now be customized.
+    See the wiki for more on the new features.
+	https://codeberg.org/Cyborus/forgejo-cli/wiki/Organizations
+  * Fixes
+    - Keys file now has proper file permissions
+    - Fixed incorrect help commands (thank you, @0ko !)
+    - Always set user agent in requests
+
+-------------------------------------------------------------------
 Fri Dec 13 05:17:50 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 0.2.0:

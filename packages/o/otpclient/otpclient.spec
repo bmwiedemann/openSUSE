@@ -1,7 +1,7 @@
 #
 # spec file for package otpclient
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define uclname OTPClient
 Name:           otpclient
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Simple GTK+ client for managing TOTP and HOTP
 License:        GPL-3.0-or-later
@@ -30,6 +30,7 @@ Source2:        otpclient.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  libayatana-appindicator3-devel
 BuildRequires:  libcotp-devel >= 3.0.0
 BuildRequires:  libgcrypt-devel >= 1.10.1
 BuildRequires:  libjansson-devel >= 2.12.0
@@ -51,13 +52,14 @@ that supports both Time-based One-time Passwords (TOTP) and
 HMAC-Based One-Time Passwords (HOTP).
 
 %prep
-%setup -q -n %{uclname}-%{version}
+%autosetup -p1 -n %{uclname}-%{version}
 
 %build
 %cmake \
     -DCMAKE_INSTALL_PREFIX=%{_prefix} \
     -DBUILD_GUI=ON \
-    -DBUILD_CLI=ON
+    -DBUILD_CLI=ON \
+    -DENABLE_MINIMIZE_TO_TRAY=ON
 %cmake_build
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Mar 21 00:09:58 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
+
+-------------------------------------------------------------------
 Wed Feb 10 19:54:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require zlib explicitly

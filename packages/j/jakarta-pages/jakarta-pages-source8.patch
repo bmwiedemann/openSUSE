@@ -1,0 +1,83 @@
+--- a/api/src/main/java/jakarta/servlet/jsp/el/ImplicitObjectELResolver.java	2025-05-09 07:26:46.579598463 +0200
++++ b/api/src/main/java/jakarta/servlet/jsp/el/ImplicitObjectELResolver.java	2025-05-09 07:21:47.426242537 +0200
+@@ -464,7 +464,7 @@
+          */
+         public static Map<String, Object> createPageScopeMap(PageContext pContext) {
+             final PageContext context = pContext;
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, Object>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return context.getAttributeNamesInScope(PageContext.PAGE_SCOPE);
+@@ -497,7 +497,7 @@
+          */
+         public static Map<String, Object> createRequestScopeMap(PageContext pContext) {
+             final PageContext context = pContext;
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, Object>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return context.getAttributeNamesInScope(PageContext.REQUEST_SCOPE);
+@@ -530,7 +530,7 @@
+          */
+         public static Map<String, Object> createSessionScopeMap(PageContext pContext) {
+             final PageContext context = pContext;
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, Object>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return context.getAttributeNamesInScope(PageContext.SESSION_SCOPE);
+@@ -563,7 +563,7 @@
+          */
+         public static Map<String, Object> createApplicationScopeMap(PageContext pContext) {
+             final PageContext context = pContext;
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, Object>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return context.getAttributeNamesInScope(PageContext.APPLICATION_SCOPE);
+@@ -596,7 +596,7 @@
+          */
+         public static Map<String, String> createParamMap(PageContext pContext) {
+             final HttpServletRequest request = (HttpServletRequest) pContext.getRequest();
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, String>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return request.getParameterNames();
+@@ -629,7 +629,7 @@
+          */
+         public static Map<String, String[]> createParamsMap(PageContext pContext) {
+             final HttpServletRequest request = (HttpServletRequest) pContext.getRequest();
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, String[]>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return request.getParameterNames();
+@@ -662,7 +662,7 @@
+          */
+         public static Map<String, String> createHeaderMap(PageContext pContext) {
+             final HttpServletRequest request = (HttpServletRequest) pContext.getRequest();
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, String>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return request.getHeaderNames();
+@@ -695,7 +695,7 @@
+          */
+         public static Map<String, String[]> createHeadersMap(PageContext pContext) {
+             final HttpServletRequest request = (HttpServletRequest) pContext.getRequest();
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, String[]>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return request.getHeaderNames();
+@@ -736,7 +736,7 @@
+          */
+         public static Map<String, String> createInitParamMap(PageContext pContext) {
+             final ServletContext context = pContext.getServletContext();
+-            return new EnumeratedMap<>() {
++            return new EnumeratedMap<String, String>() {
+                 @Override
+                 public Enumeration<String> enumerateKeys() {
+                     return context.getInitParameterNames();

@@ -181,4 +181,12 @@
     <comment>Make conflicts and provides more generic</comment>
     <requestid>1274035</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>328a40e077b92b2fdda4afddbde0ba46</srcmd5>
+    <version>10.1.40</version>
+    <time>1746476813</time>
+    <user>anag_factory</user>
+    <comment>Fix changelog</comment>
+    <requestid>1274590</requestid>
+  </revision>
 </revisionlist>

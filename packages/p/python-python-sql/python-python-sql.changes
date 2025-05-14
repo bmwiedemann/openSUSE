@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  3 08:43:48 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.6.0 - 2025-05-02
+  * Fix position of order_by parameters in Select query
+  * Add support for weak reference on SQL objects
+  * Add support for Python 3.13
+
+-------------------------------------------------------------------
 Thu Oct 31 16:46:13 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.2:

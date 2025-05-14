@@ -1,7 +1,7 @@
 #
 # spec file for package python-UkPostcodeParser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-UkPostcodeParser
 Version:        1.1.2
@@ -27,7 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/hamstah/ukpostcodeparser
 Source:         https://files.pythonhosted.org/packages/source/U/UkPostcodeParser/UkPostcodeParser-%{version}.tar.gz
 Patch1:         python312.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-base
@@ -41,10 +42,10 @@ United Kingdom Postcode parser.
 %autosetup -p1 -n UkPostcodeParser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/ukpostcodeparser/test/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -57,6 +58,6 @@ sed -i 's/test_\(091\|097\|098\|125\|131\)/_test_\1/' ukpostcodeparser/test/pars
 %license LICENSE
 %doc README
 %{python_sitelib}/ukpostcodeparser
-%{python_sitelib}/UkPostcodeParser-%{version}*-info
+%{python_sitelib}/[Uu]k[Pp]ostcode[Pp]arser-%{version}*-info
 
 %changelog

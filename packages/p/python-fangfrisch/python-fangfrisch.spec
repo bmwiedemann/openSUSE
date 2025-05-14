@@ -16,9 +16,9 @@
 #
 
 
-%define skip_python2 1
+%{?sle15_python_module_pythons}
 Name:           python-fangfrisch
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Update and verify unofficial Clam Anti-Virus signatures
 License:        GPL-3.0-or-later

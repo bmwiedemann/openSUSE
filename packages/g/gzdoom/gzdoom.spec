@@ -17,13 +17,12 @@
 
 
 Name:           gzdoom
-Version:        4.14.1
+Version:        4.14.2
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
 Group:          Amusements/Games/3D/Shoot
 URL:            https://zdoom.org/
-
 #Git-Clone:     https://github.com/zdoom/gzdoom
 Source:         https://github.com/zdoom/gzdoom/archive/g%version.tar.gz
 Patch2:         gzdoom-discord.patch
@@ -63,7 +62,9 @@ Provides:       bundled(xbrz) = 1.8
 Suggests:       freedoom
 
 %description
-GZDoom is a port (a modification) of the original Doom source code, featuring:
+GZDoom is a port (a modification) of the original Doom source code,
+featuring:
+
 * an OpenGL renderer, HQnX/xBRZ rescaling, 3D floor and model support
 * Truecolor software rendering, extending the classic 8-bit palette
 * Heretic, Hexen and Strife game modes and support for a lot of

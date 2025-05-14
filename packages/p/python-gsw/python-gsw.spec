@@ -1,7 +1,7 @@
 #
 # spec file for package python-gsw
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%define skip_python36 1
 Name:           python-gsw
 Version:        3.6.18
 Release:        0
@@ -26,13 +24,15 @@ Summary:        Gibbs Seawater Oceanographic Package of TEOS-10
 # C-code IS BSD-3-Clause licensed (see src/c_gsw/LICENSE)
 # MATLAB function names and documentation are BSD-3-Clause licensed (see http://teos-10.org/pubs/gsw/html/gsw_licence.html)
 License:        BSD-3-Clause AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/TEOS-10/GSW-python
 # gh#TEOS-10/GSW-Python#39 -- Tests are not included in the source tarball
 Source0:        https://github.com/TEOS-10/GSW-Python/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.5}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-numpy
 # SECTION tests
@@ -54,10 +54,11 @@ CFLAGS="%{optflags}"
 CFLAGS="$CFLAGS -ffloat-store"
 %endif
 export CFLAGS
-%python_build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand %fdupes %{buildroot}%{$python_sitearch}}
 
 %check
@@ -67,6 +68,6 @@ export CFLAGS
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/gsw
-%{python_sitearch}/gsw-*.egg-info
+%{python_sitearch}/gsw-%{version}.dist-info
 
 %changelog

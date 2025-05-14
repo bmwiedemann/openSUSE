@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        2.3.1
+Version:        2.3.3
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -41,7 +41,6 @@ Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.xz.asc
 Source8:        %{name}.keyring
 Source9:        %{name}.sysusers
 Patch0:         systemd-service.patch
-Patch1:         harden_pcscd.service.patch
 BuildRequires:  cmake
 BuildRequires:  flex
 BuildRequires:  gcc
@@ -115,10 +114,9 @@ This package contains the development files for pcsc-lite. It allows to
 compile plugins for the pcsc-lite package.
 
 %prep
-%setup
-%patch -P 0 -p1
+%autosetup -p1
+#%%patch -P 0 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
-%patch -P 1 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE9} %{PKG_USER} %{PKG_USER}.conf

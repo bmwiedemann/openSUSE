@@ -2,7 +2,7 @@
 # spec file for package orthanc-ohif
 #
 # Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2023-2024 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2023-2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           orthanc-ohif
 Summary:        OHIF plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.5
+Version:        1.6
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancOHIF-%{version}.tar.gz

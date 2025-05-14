@@ -1,7 +1,7 @@
 #
 # spec file for package python-svgpathtools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%global skip_python36 1
+%{?sle15_python_module_pythons}
 Name:           python-svgpathtools
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Tools for manipulating and analyzing SVG Path objects and Bézier curves
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mathandy/svgpathtools
 Source:         https://files.pythonhosted.org/packages/source/s/svgpathtools/svgpathtools-%{version}.tar.gz
 BuildRequires:  %{python_module numpy}
@@ -52,11 +51,8 @@ analyzing SVG Path objects and Bézier curves.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# test suite uses hashes that only match on some CPUs
-# due to float math
-# https://github.com/mathandy/svgpathtools/issues/183
-# %%check
-# %%pytest
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt LICENSE2.txt

@@ -1,7 +1,7 @@
 #
 # spec file for package python-arf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,9 @@ Summary:        Advanced Recording Format for physiology and behavior
 License:        GPL-2.0-only
 URL:            https://github.com/melizalab/arf
 Source:         https://files.pythonhosted.org/packages/source/a/arf/arf-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py >= 2.8
@@ -59,10 +61,10 @@ specifications on how different kinds of data are stored.
 %autosetup -p1 -n arf-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,8 +73,8 @@ specifications on how different kinds of data are stored.
 %files %{python_files}
 %doc README.rst
 %license COPYING
-%{python_sitelib}/arf.py*
+%{python_sitelib}/arf.py
 %pycache_only %{python_sitelib}/__pycache__/arf*.pyc
-%{python_sitelib}/arf-%{version}*-info
+%{python_sitelib}/arf-%{version}.dist-info
 
 %changelog

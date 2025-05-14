@@ -535,4 +535,22 @@
   * chore(deps): update all dependencies (#1315) (forwarded request 1267596 from ph03nix)</comment>
     <requestid>1267714</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ff7d457e7b3f751d7cc8b615e8c87d7f</srcmd5>
+    <version>2.22.4</version>
+    <time>1746721479</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.22.4:
+  * Update to go version 1.24.3 and 1.23.9
+  * update: updated the build command to include version metadata
+  * chore(deps): update all dependencies
+  * Update the AI provider API key value when provided as an argument
+  * chore(deps): update module google.golang.org/api to v0.230.0
+  * chore(deps): update module google.golang.org/api to v0.229.0
+  * chore(deps): update all dependencies
+  * Comment the reason why the file can be nil when an issue is created
+  * Handle nil file when creating a new issue
+  * chore(deps): update all dependencies (#1333) (forwarded request 1275586 from ph03nix)</comment>
+    <requestid>1275596</requestid>
+  </revision>
 </revisionlist>

@@ -607,4 +607,41 @@
 - Add -buildmode=pie to go build command line (bsc#1239944) (forwarded request 1269147 from glaubitz)</comment>
     <requestid>1269694</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>6e75894dbfa050dbf29bca6782e1b8db</srcmd5>
+    <version>20250508.00</version>
+    <time>1747159738</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250508.00
+  * Preparing stable build.
+- from version 20250506.01
+  * Make sure agent added connections are activated by NM (#534)
+- from version 20250506.00
+  * wrap NSS cache refresh in a goroutine (#533)
+- from version 20250502.01
+  * Wicked: Only reload interfaces for which configurations are written or changed. (#524)
+- from version 20250502.00
+  * Add AuthorizedKeysCompat to windows packaging (#530)
+  * Remove error messages from gce_workload_cert_refresh and metadata script runner (#527)
+  * Update guest-logging-go dependency (#526)
+  * Add 'created-by' metadata, and pass it as option to logging library (#508)
+  * Revert &quot;oslogin: Correctly handle newlines at the end of modified files (#520)&quot; (#523)
+  * Re-enable disabled services if the core plugin was enabled (#522)
+  * Enable guest services on package upgrade (#519)
+  * oslogin: Correctly handle newlines at the end of modified files (#520)
+  * Fix core plugin path (#518)
+  * Fix package build issues (#517)
+  * Fix dependencies ran go mod tidy -v (#515)
+  * Fix debian build path (#514)
+  * Bundle compat metadata script runner binary in package (#513)
+  * Bump golang.org/x/net from 0.27.0 to 0.36.0 (#512)
+  * Update startup/shutdown services to launch compat manager (#503)
+  * Bundle new gce metadata script runner binary in agent package (#502)
+  * Revert &quot;Revert bundling new binaries in the package (#509)&quot; (#511)
+- from version 20250418.00
+  * Re-enable disabled services if the core plugin was enabled (#521)
+- from version 20250414.00
+  * Add AuthorizedKeysCompat to windows packaging (#530) (forwarded request 1277169 from glaubitz)</comment>
+    <requestid>1277202</requestid>
+  </revision>
 </revisionlist>

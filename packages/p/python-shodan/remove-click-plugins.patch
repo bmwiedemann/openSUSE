@@ -1,0 +1,54 @@
+From ef910fdf33b735c55f14abce13bda2906fbb5f74 Mon Sep 17 00:00:00 2001
+From: Sebastian Wagner <sebix@sebix.at>
+Date: Tue, 13 May 2025 16:08:16 +0200
+Subject: [PATCH] remove unmaintained click-plugins dependency
+
+click-plugins is unmaintained for 6 years and incompatible with current
+click 6.2.0 (https://github.com/click-contrib/click-plugins/issues/38)
+
+click-plugins is not required to run shodan-python, only adds a
+possibility for third parties to potentially hook into the cli interface.
+if that's required, it needs to be done by other means
+
+keeping the dependency to an unmaintained library is also a potential
+security risk and prevents the usage of current versions of click itself
+---
+ requirements.txt   | 3 +--
+ shodan/__main__.py | 3 ---
+ 2 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/requirements.txt b/requirements.txt
+index 2692414..8d682c4 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,7 +1,6 @@
+ click
+-click-plugins
+ colorama
+ requests>=2.2.1
+ XlsxWriter
+ ipaddress;python_version<='2.7'
+-tldextract
+\ No newline at end of file
++tldextract
+diff --git a/shodan/__main__.py b/shodan/__main__.py
+index 4093b94..d7078e7 100644
+--- a/shodan/__main__.py
++++ b/shodan/__main__.py
+@@ -49,7 +49,6 @@
+ from shodan.cli.host import HOST_PRINT
+ 
+ # Allow 3rd-parties to develop custom commands
+-from click_plugins import with_plugins
+ from pkg_resources import iter_entry_points
+ 
+ # Large subcommands are stored in separate modules
+@@ -77,8 +76,6 @@
+ 
+ 
+ # Define the main entry point for all of our commands
+-# and expose a way for 3rd-party plugins to tie into the Shodan CLI.
+-@with_plugins(iter_entry_points('shodan.cli.plugins'))
+ @click.group(context_settings=CONTEXT_SETTINGS)
+ def main():
+     pass

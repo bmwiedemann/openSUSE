@@ -1,9 +1,9 @@
-Index: framework-system-0.2.1/framework_lib/Cargo.toml
+Index: framework-system-0.4.1/framework_lib/Cargo.toml
 ===================================================================
---- framework-system-0.2.1.orig/framework_lib/Cargo.toml
-+++ framework-system-0.2.1/framework_lib/Cargo.toml
-@@ -42,7 +42,7 @@ cros_ec_driver = []
- win_driver = []
+--- framework-system-0.4.1.orig/framework_lib/Cargo.toml
++++ framework-system-0.4.1/framework_lib/Cargo.toml
+@@ -14,7 +14,7 @@ hidapi = ["dep:hidapi"]
+ uefi = [ "lazy_static/spin_no_std" ]
  
  [build-dependencies]
 -built = { version = "0.5", features = ["chrono", "git2"] }

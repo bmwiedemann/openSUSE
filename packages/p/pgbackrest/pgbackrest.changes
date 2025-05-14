@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  5 21:56:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.55.1
+  - Revert "calculate content-md5 on S3 only when required".
+    (Reviewed by David Christensen. Reported by Frank Brendel.)
+  - Fix lower bounds checking for option keys. (Reviewed by David
+    Christensen, Wolfgang Walther. Reported by Wolfgang Walther.)
+
+-------------------------------------------------------------------
 Tue Apr 22 01:26:10 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.55.0

@@ -358,4 +358,12 @@ FTR: meson build system is not part of the tarball (forwarded request 980056 fro
     <comment></comment>
     <requestid>1096314</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>a67657352adea1fc1424d982b6cd1bff</srcmd5>
+    <version>0.10.1</version>
+    <time>1747061515</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.10.1 (forwarded request 1276777 from simonlm)</comment>
+    <requestid>1276788</requestid>
+  </revision>
 </revisionlist>

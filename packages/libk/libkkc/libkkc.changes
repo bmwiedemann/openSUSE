@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 12:38:47 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete and unused gnome-common with really used libtool
+  BuildRequires.
+
+-------------------------------------------------------------------
 Sat Oct 19 15:04:20 UTC 2024 - wei@hardenedlinux.org
 
 - Update to version 0.3.6~git20240902.ce17a35:

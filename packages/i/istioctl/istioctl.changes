@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri May  9 05:44:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.26.0:
+  https://istio.io/latest/news/releases/1.26.x/announcing-1.26/
+  * Changes
+    - istioctl analyze can now run specific checks!
+    - Improved the installation experience on GKE. When
+      global.platform=gke is set, required ResourceQuota resources
+      are deployed automatically. When installing via istioctl,
+      this setting is also auto-enabled if GKE is detected.
+      Additionally, the cniBinDir is now configured appropriately.
+    - Added support for setting the reinvocationPolicy in the
+      revision-tag webhook when installing Istio via istioctl or
+      Helm.
+    - Added a --locality parameter on istioctl experimental
+      workload group create. (Issue #54022)
+    - Added the ability to run specific analyzer checks using the
+      istioctl analyze command.
+    - Added a --tls-server-name parameter to istioctl
+      create-remote-secret, allowing the tls-server-name to be set
+      in the generated kubeconfig. This ensures successful TLS
+      connections when the server field is overridden with a
+      gateway proxy hostname.
+    - Added support for the envVarFrom field in the istiod chart.
+    - Fixed an issue where istioctl analyze reported an unknown
+      annotation sidecar.istio.io/statsCompression. (Issue #52082)
+    - Fixed an error that blocked installation when
+      IstioOperator.components.gateways.ingressGateways.label or
+      IstioOperator.components.gateways.ingressGateways.label was
+      omitted. (Issue #54955)
+    - Fixed a bug where istioctl ignored the tag fields under
+      IstioOperator.components.gateways.ingressGateways and
+      egressGateways. (Issue #54955)
+    - Fixed an issue where istioctl waypoint delete could remove a
+      non-waypoint Gateway resource when a name was specified.
+      (Issue #55235)
+    - Fixed an issue where istioctl experimental describe did not
+      respect the --namespace flag. (Issue #55243)
+    - Fixed a bug that prevented simultaneous generation of
+      istio.io/waypoint-for and istio.io/rev labels when creating a
+      waypoint proxy using istioctl. (Issue #55437)
+    - Fixed an issue where istioctl admin log could not modify the
+      log level for ingress status. (Issue #55741)
+    - Fixed a validation failure when reconcileIptablesOnStartup:
+      true was set in the istioctl YAML configuration. (Issue
+      #55347)
+
+-------------------------------------------------------------------
 Wed Apr 16 19:20:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.25.2:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May 11 07:13:26 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250509 (git commit a1d732703915):
+  * amdgpu: updates for dcn 3.20 and dcn 4.01 firmware to 0.1.10.0
+
+-------------------------------------------------------------------
+Mon May  5 15:22:44 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250505 (git commit 2b8dfb5e11a8):
+  * amdgpu: update dcn 4.01 firmware to 0.1.8.0
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

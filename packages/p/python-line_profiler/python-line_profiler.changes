@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  4 08:46:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * FIX: Fix issue with auto-profile of editable installs #279
+  * FIX: Lookup OP-codes instead of hard coding them #284
+  * CHANGE: Drop support for Python 3.6 and Python 3.7
+  * ENH: Add support for Python 3.13
+
+-------------------------------------------------------------------
 Tue Nov 26 23:59:21 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.1.3:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 08:17:17 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Mon Jan 27 11:02:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop optional pkgconfig(opencv) BuildRequires, no longer build

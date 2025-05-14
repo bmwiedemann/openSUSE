@@ -818,4 +818,12 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.22.2 for more details.</comment>
     <requestid>1273619</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c6a1c2b4495f6a204ad847d65b291de5</srcmd5>
+    <version>1.22.3</version>
+    <time>1746729597</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1275643</requestid>
+  </revision>
 </revisionlist>

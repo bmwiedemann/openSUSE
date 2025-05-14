@@ -41,4 +41,12 @@
   * packaging improvements, include pyproject.toml</comment>
     <requestid>1090384</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a65874809e4937ae4364b2aeeff32ec5</srcmd5>
+    <version>2.0.7</version>
+    <time>1746638421</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275130</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,15 @@
+diff -upr mftrace-1.2.20.orig/gf2pbm.c mftrace-1.2.20/gf2pbm.c
+--- mftrace-1.2.20.orig/gf2pbm.c	2025-05-13 13:58:57.354037615 +0000
++++ mftrace-1.2.20/gf2pbm.c	2025-05-13 14:02:08.421543082 +0000
+@@ -105,8 +105,9 @@ BMUNIT	bit_masks[33] = {
+ };
+ #endif
+ #endif
+-
++#if __STDC_VERSION__ < 202311L
+ typedef enum {false,true}bool;
++#endif
+ bool debug;
+ 
+ struct font {
+

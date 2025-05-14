@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:31 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Set the KWALLETD_BIN_PATH to ksecretd
+  * Fix compile without deprecated API
+  * Backend folder doesn't exist
+  * Fix build
+  * Small config file changes
+  * Use DBus calls only to avoid unstable libsecret API
+  * Compatibility for binary data
+  * Be very aggressive with dbus activation
+  * Address some comments
+  * Proxy pamOpen
+  * When renaming, refuse to overwrite an already existing entry (kde#458639)
+  * Correctly forward collection created and deleted signals
+  * Minor code refactors
+  * Support KeePassXC as SecretService backend
+  * Compatibility for Windows
+  * Fix FdoSecretsTest
+  * Add support for Json encoding maps
+  * Add secret service bridge (kde#491280)
+  * Prepare kwalletd for migration to be a bridge
+  * Update version to 6.14.0
+  * Fix assertion failure due to invalid DBus object path
+
+-------------------------------------------------------------------
 Sat Apr  5 12:34:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

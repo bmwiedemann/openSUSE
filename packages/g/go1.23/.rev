@@ -207,4 +207,16 @@
   the reflect, runtime, and syscall packages. (forwarded request 1266332 from jfkw)</comment>
     <requestid>1266334</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>171cea7e0488a9142643da2b7d558524</srcmd5>
+    <version>1.23.9</version>
+    <time>1746638132</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.23.9 (released 2025-05-06) includes fixes to the runtime and
+  the linker.
+  Refs boo#1229122 go1.23 release tracking
+  * go#73091 cmd/link: linkname directive on userspace variable can override runtime variable
+  * go#73380 runtime, x/sys/unix: Connectx is broken on darwin/amd64 (forwarded request 1275043 from jfkw)</comment>
+    <requestid>1275045</requestid>
+  </revision>
 </revisionlist>

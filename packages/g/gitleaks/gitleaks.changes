@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 13 04:29:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 8.26.0:
+  Changelog
+  - 78eebac Percent/URL Decoding Support (#1831)
+  - 6f967ca fix(kubernetes): remove slow element from pat (#1848)
+  - 88f56d3 feat: identify slow file (#1479)
+  - 9609928 rm 1password detect test since we test it in cfg gen
+  - 23cb69f feat(rules): Add 1Password secret key detection (#1834)
+  Calling this one @bplaxco's release as he introduced a really
+  clever method for mixed decoding without sacrificing too much
+  performance. As I stated in his PR, I think he's either a wizard
+  or some time traveling AI. Dude is wicked smaht
+  Anyways, Gitleaks now supports the following decoders: hex,
+  percent(url enconding), and b64. It's relatively straight forward
+  to add a new decoder so if you're motivated, community
+  contributions are welcomed!
+  Here's an example:
+  https://github.com/gitleaks/gitleaks/releases/tag/v8.26.0
+
+-------------------------------------------------------------------
 Wed Apr 30 21:18:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 8.25.1:

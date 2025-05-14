@@ -1,7 +1,6 @@
-Index: smartmontools-7.4/smartd.service.in
-===================================================================
---- smartmontools-7.4.orig/smartd.service.in
-+++ smartmontools-7.4/smartd.service.in
+diff -Pdpru smartmontools-7.5.orig/smartd.service.in smartmontools-7.5/smartd.service.in
+--- smartmontools-7.5.orig/smartd.service.in	2025-01-24 15:28:39.000000000 +0100
++++ smartmontools-7.5/smartd.service.in	2025-05-01 12:28:15.062462785 +0200
 @@ -7,6 +7,16 @@ Documentation=man:smartd(8) man:smartd.c
  ConditionVirtualization=no
  
@@ -15,7 +14,7 @@ Index: smartmontools-7.4/smartd.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=notify
+ Environment=smartd_opts=''
  EnvironmentFile=-/usr/local/etc/sysconfig/smartmontools
- ExecStart=/usr/local/sbin/smartd -n -q never $smartd_opts

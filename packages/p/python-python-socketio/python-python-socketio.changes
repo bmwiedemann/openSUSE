@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 28 14:20:32 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.13.0:
+  * Eliminate race conditions on disconnect #1441 (commit)
+  * Preserve exception context in `Client.connect` and
+    `AsyncClient.connect`
+  * Allow custom client subclasses to be used in SimpleClient and
+    AsyncSimpleClient
+  * Add support for Redis Sentinel URLs in `RedisManager` and
+    `AsyncRedisManager`
+  * Remove incorrect reference to an `asyncio` installation extra
+    in documentation
+
+-------------------------------------------------------------------
 Sun Mar 23 18:01:01 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.12.1
@@ -17,7 +31,7 @@ Fri Sep  6 06:24:13 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Tue Sep  3 04:58:19 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Do not use python_module in Requires/Suggests. 
+- Do not use python_module in Requires/Suggests.
 
 -------------------------------------------------------------------
 Wed Aug 14 17:15:24 UTC 2024 - Guang Yee <gyee@suse.com>
@@ -38,7 +52,7 @@ Fri Dec  1 16:43:24 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 -------------------------------------------------------------------
 Fri Oct 28 20:49:21 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
-- Update to 5.7.2 
+- Update to 5.7.2
   * Fixed disconnect implementation when using a message queue #1002 (commit)
   * Fixed remote async disconnects via message queue #1003 (commit)
   * Support optional payloads in msgpack implementation #981 (commit) (thanks Cromfel!)
@@ -73,50 +87,50 @@ Thu Oct  6 22:50:37 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 - Update to Release 5.5.2 - 2022-02-15
   Connect with an empty auth object instead of None #861 (commit)
   Fix indentation in the "Rooms" docs example. #872 (commit) (thanks Ezio Melotti!)
-  Remove 3.6 and pypy-3.6 builds, add 3.10 and pypy-3.8 (commit) 
+  Remove 3.6 and pypy-3.6 builds, add 3.10 and pypy-3.8 (commit)
 
 -------------------------------------------------------------------
 Sun Jan 23 08:34:21 UTC 2022 - Axel Braun <axel.braun@gmx.de>
 
 - version 5.5.1
   * Support multiple Kafka servers (thanks sparkingdark!)
-  * Include example code in flake8 pass 
-  * Option to disable the SIGINT handler in the client #792 
-  * Do not invoke reserved events on a catch-all handler #814 
-  * Use correct binary packet types in the msgpack packet encoder #811 
-  * Add missing call() method to namespace classes #800 
-  * Add missing to argument to namespace emit() and send() methods #810 
-  * Configure Redis pubsub to skip subscription messages 
+  * Include example code in flake8 pass
+  * Option to disable the SIGINT handler in the client #792
+  * Do not invoke reserved events on a catch-all handler #814
+  * Use correct binary packet types in the msgpack packet encoder #811
+  * Add missing call() method to namespace classes #800
+  * Add missing to argument to namespace emit() and send() methods #810
+  * Configure Redis pubsub to skip subscription messages
   * Migrate async Redis client manager to aioredis 2 #771 (thanks Sam Mosleh!)
-  * Update Python supported versions in docs 
-  * Document how to get the connection state in the client #799 
-  * Improved documentation of start_background_task() function 
-  * Improved documentation of call() method #813 
-  * Fixed intermittent test failures #572 
+  * Update Python supported versions in docs
+  * Document how to get the connection state in the client #799
+  * Improved documentation of start_background_task() function
+  * Improved documentation of call() method #813
+  * Fixed intermittent test failures #572
 
 -------------------------------------------------------------------
 Sat Oct 23 16:21:35 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- version 5.4.1  
-  * Catch-all event handlers 
-  * Implement disconnect method for external processes #684 
+- version 5.4.1
+  * Catch-all event handlers
+  * Implement disconnect method for external processes #684
 
 -------------------------------------------------------------------
 Wed Oct  6 10:45:54 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update to version 5.4.0
-  * Big changelog, see CHANGES.md 
+  * Big changelog, see CHANGES.md
 
 -------------------------------------------------------------------
 Tue May 25 17:26:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.3.0
-  * Big changelog, see CHANGES.md 
+  * Big changelog, see CHANGES.md
 
 -------------------------------------------------------------------
 Sun May 16 09:43:42 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
-- python2 build removed 
+- python2 build removed
 
 -------------------------------------------------------------------
 Sun Nov 29 02:00:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>

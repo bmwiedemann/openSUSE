@@ -58,4 +58,13 @@
     ``pytest-leaks``.</comment>
     <requestid>1114845</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7be86e379d6e16d9b076948bdea6507a</srcmd5>
+    <version>0.4.1</version>
+    <time>1746638371</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275111</requestid>
+  </revision>
 </revisionlist>

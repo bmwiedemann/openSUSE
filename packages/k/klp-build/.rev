@@ -231,4 +231,41 @@
     <comment></comment>
     <requestid>1252379</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1f64ef18554d0ba6a94fe057c08cc1df</srcmd5>
+    <version>1.1.0~20250507.8576150</version>
+    <time>1747159728</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.0~20250507.8576150:
+  * plugins: extractor: Remove -Wno-dangling-pointer from gcc invocation
+  * plugins/scan: Integrate patch analysis into scan
+  * klplib: Add patch analysis functions
+  * klplib/ksrc: Add ksrc_is_module_supported()
+  * klplib/codestream: Add config dict per codestream
+  * klplib/ksrc: Improve get_commit_files
+  * klplib: file2config: search Makefile also in parent directories
+  * klplib: Add file2config script
+  * klplib/kernel_tree: Add read_file_in_tag()
+  * klplib/ksrc: Filter out merge commits
+  * klplib: codestream: use ksrc to read config
+  * klplib: ksrc: use decorator to fetch kernel-source tags
+  * klplib: ksrc: drop GitHelper class
+  * klplib: ksrc: drop unused lp_filter field from class
+  * klplib: ksrc: drop kernel_branches field from class
+  * klplib: ksrc: drop kern_src from class
+  * klplib: ksrc: drop unused imports
+  * klplib: kernel_tree: use decorator to update kernel tree tags
+  * drop get-patches command
+  * setup.py: Remove importlib as dependency
+  * plugins/scan: Filter codestreams with no-check set
+  * klplib: utils: don't use PurePath in get_tests_path
+  * plugins/scan: Update kernel trees on scan
+  * tests: Adapt the tests to use kernel.git repo
+  * klplib/kernel-tree: re-implement get_commit_data
+  * klplib/kernel_tree: return bool in file_exists_in_tag()
+  * plugins: drop inline plug
+  * man: Document the new 'data' command
+  * man: Document 'scan --download' option</comment>
+    <requestid>1277178</requestid>
+  </revision>
 </revisionlist>

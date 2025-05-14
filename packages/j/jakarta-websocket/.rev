@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6c4d9c60629471f6934babd21ef2af0</srcmd5>
+    <version>2.2.0</version>
+    <time>1746476704</time>
+    <user>anag_factory</user>
+    <comment>new package needed by tomcat11</comment>
+    <requestid>1274293</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>37fa84d372bbc2d2c33cd5f121106695</srcmd5>
+    <version>2.2.0</version>
+    <time>1746809479</time>
+    <user>anag_factory</user>
+    <comment>Rewrite for ant</comment>
+    <requestid>1276070</requestid>
+  </revision>
+</revisionlist>

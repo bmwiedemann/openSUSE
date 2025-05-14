@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri May  9 19:57:18 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 17.0.15 with OpenJ9 0.51.0 virtual machine
+- Including Oracle April 2025 CPU changes
+  * CVE-2025-21587 (bsc#1241274), CVE-2025-30691 (bsc#1241275),
+    CVE-2025-30698 (bsc#1241276)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.51/
+- Removed patch:
+  * openj9-nasm-noexecstack.patch
+    + chosing a better upstream solution
+- Added patch:
+  * openj9-noexecstack.patch
+    + better upstream solution to the previous fix
+- Modified patch:
+  * openssl-OSSL_LIB_CTX.patch
+    + rediff
+
+-------------------------------------------------------------------
+Wed May  7 06:41:05 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Tue Feb 18 16:23:13 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

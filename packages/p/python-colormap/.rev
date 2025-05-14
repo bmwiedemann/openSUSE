@@ -60,4 +60,12 @@
   * synchronize README with doc and online image</comment>
     <requestid>1116831</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>3ec8fe1816bdea753bbda5efbb361766</srcmd5>
+    <version>1.0.6</version>
+    <time>1746809378</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275970</requestid>
+  </revision>
 </revisionlist>

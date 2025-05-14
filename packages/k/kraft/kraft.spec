@@ -1,7 +1,7 @@
 #
 # spec file for package kraft
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2007-2011 Klaas Freitag <freitag@kde.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -87,6 +87,9 @@ See the website http://volle-kraft-voraus.de for more information.
 %endif
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 # Create the .tag file that is read by cmake with the version.
 # Workaround since the github created tarball does not contain the .tag file with

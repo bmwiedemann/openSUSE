@@ -5449,4 +5449,48 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
   and you can use the 'symbol' directly: 'conflicts: symbol' (forwarded request 1248193 from rhabacker)</comment>
     <requestid>1248325</requestid>
   </revision>
+  <revision rev="460" vrev="1">
+    <srcmd5>0390a26125f6bb4aca1fbcbac7a7b730</srcmd5>
+    <version>10.7</version>
+    <time>1746638238</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 10.7 release
+  - User fault fd support to improve write watches performance.
+  - Support for Float format conversions in WindowsCodecs.
+  - More work on the new PDB backend.
+  - Various bug fixes.
+- update staging to 10.7 release
+- changed packaging around a bit, buildrequire wine-32bit from wine
+
+- updated to 10.6 release
+  - New lexer in Command Processor.
+  - PBKDF2 algorithm in Bcrypt.
+  - More support for image metadata in WindowsCodecs.
+  - Various bug fixes.
+- update staging to 10.6 release
+
+- Overwrite -Werror=return-type in CFLAGS and CXXFLAGS to fix
+  detection of -mabi=ms in configure
+- Correctly exclude x86_64-unix/*.a in non-devel packages
+- Correctly include x86_64-unix/*.a in devel packages
+- Fixes boo#1231820
+
+- updated to 10.5 release
+  - Support for larger page sizes on ARM64.
+  - Mono engine updated to version 10.0.0.
+  - Pairing support in the Bluetooth driver.
+  - Vulkan H.264 decoding.
+  - %GS register swapping on macOS.
+  - Various bug fixes.
+- update staging to 10.5 release</comment>
+    <requestid>1274946</requestid>
+  </revision>
+  <revision rev="461" vrev="3">
+    <srcmd5>2ef49deebd989f636ba1fd58b6444d96</srcmd5>
+    <version>10.0</version>
+    <time>1746721438</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1242879</comment>
+    <requestid>1275544</requestid>
+  </revision>
 </revisionlist>

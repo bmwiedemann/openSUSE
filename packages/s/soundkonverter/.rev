@@ -29,4 +29,12 @@
   on Factory/Tumbleweed.</comment>
     <requestid>1160905</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9c89d6e52894b9e8158d0a195e64a4bd</srcmd5>
+    <version>3.0.1+git20240225</version>
+    <time>1746721439</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed the build with cmake4.</comment>
+    <requestid>1275552</requestid>
+  </revision>
 </revisionlist>

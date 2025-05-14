@@ -1,7 +1,7 @@
 #
 # spec file for package lftp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,6 +37,7 @@ Patch5:         0005-Add-the-wrapper-code-to-the-Makefile-in-order-to-bui.patch
 # https://github.com/lavv17/lftp/issues/716
 Patch6:         0001-lftp_ssl-deinitialize-the-lftp_ssl_openssl_instance.patch
 Patch7:         lftp-gcc14.patch
+Patch100:       https://src.fedoraproject.org/rpms/lftp/raw/rawhide/f/lftp-4.9.2-cdefs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -55,7 +56,7 @@ BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(zlib)
 Requires:       less
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      ftp
 
 %description
@@ -74,7 +75,12 @@ at specified times, opie and skey support in the FTP protocol, SSL for
 HTTP and FTP, and FXP transfers.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M99
+
+%ifarch ppc64le
+%patch -P100 -p1
+%endif
 
 %build
 # It's necessary to update the Autotools build system, because of patches 2-6

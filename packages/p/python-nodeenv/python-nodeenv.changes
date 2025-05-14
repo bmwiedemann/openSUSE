@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  5 02:59:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Nov 13 13:47:10 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Fix package license to BSD-3-Clause

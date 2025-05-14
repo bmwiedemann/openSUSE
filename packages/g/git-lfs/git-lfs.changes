@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jan 15 07:00:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 3.6.0: (boo#1235876)
+- update to 3.6.1: (boo#1235876)
   This release introduces a security fix for all platforms, which
   has been assigned CVE-2024-53263.
   When requesting credentials from Git for a remote host, prior

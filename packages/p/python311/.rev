@@ -1583,4 +1583,13 @@ C API
     <comment></comment>
     <requestid>1270996</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>e332ed33ce92855ff9bdf09f17b9e3cf</srcmd5>
+    <version>3.11.12</version>
+    <time>1747159905</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)</comment>
+    <requestid>1276662</requestid>
+  </revision>
 </revisionlist>

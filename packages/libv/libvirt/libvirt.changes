@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  5 15:47:51 UTC 2025 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 11.3.0
+  - bsc#1241952
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-3-0-2025-05-02
+- spec: Build with fuse3
+  boo#1242081
+
+-------------------------------------------------------------------
 Thu Apr 10 14:53:16 UTC 2025 - James Fehlig <jfehlig@suse.com>
 
 - cpu_map: Install Ampere-1 ARM CPU models

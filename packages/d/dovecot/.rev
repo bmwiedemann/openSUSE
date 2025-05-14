@@ -148,4 +148,16 @@
   Add unit files from 2.4</comment>
     <requestid>1241073</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e18138f381f92f3f6a6859876e824550</srcmd5>
+    <version>2.4</version>
+    <time>1746721391</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend dovecot24
+- Dovecot misses many configuration files (bsc#1242687)
+  Dovecot: /etc/dovecot/conf.d/ doesn't exist after installing dovecot
+  (bsc#1242774)
+  On dovecot 2.4 we only provides one simple configuration file.</comment>
+    <requestid>1275436</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat May 10 20:04:59 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build on s390x needs 14G memory - adjust _constraints
+
+-------------------------------------------------------------------
 Tue Apr 29 07:57:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Firefox Extended Support Release 128.10.0 ESR

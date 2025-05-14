@@ -20,7 +20,7 @@
 
 %define sover   5
 Name:           capstone
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        A multi-platform, multi-architecture disassembly framework
 License:        BSD-3-Clause
@@ -95,9 +95,9 @@ This package contains the Capstone bindings for Python.
 
 cd .. # back to the main source directory
 
-pushd bindings/python/
+pushd bindings/python/ || exit 1
 %python3_build
-popd
+popd || exit 1
 
 %install
 %cmake_install
@@ -119,8 +119,7 @@ sed -e '/^archive/d' -e 's|^libdir=.*|libdir=%{_libdir}|' \
 
 %fdupes %{buildroot}
 
-%post -n libcapstone%{sover} -p /sbin/ldconfig
-%postun -n libcapstone%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libcapstone%{sover}
 
 %files
 %license LICENSE*.TXT

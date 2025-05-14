@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 15 08:15:48 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build
+  (since version 9.4.0).
+
+-------------------------------------------------------------------
 Sun Jan  5 04:39:42 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add bcond for mysql, keep it disabled by default. Make libmysql

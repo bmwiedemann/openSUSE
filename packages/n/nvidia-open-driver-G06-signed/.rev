@@ -743,4 +743,12 @@
 - limit build of -azure flavor to SP6</comment>
     <requestid>1270905</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>06d53d0906bfbe5fe99c744cda78ce22</srcmd5>
+    <version>570.144</version>
+    <time>1746809502</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1276198</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  7 06:53:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * Drop support for Python 3.7
+  * Test against PyPy 3.10
+  * Add support for CPython 3.13 by regenerating the bundled certificates
+  * Fix an issue where secure POST requests would fail with a connection
+    reset by peer
+  * Include a LICENCE
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Nov  7 19:42:56 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.0:

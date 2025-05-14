@@ -64,4 +64,13 @@
     <comment>- reenable python 3.11 build (numba available now)</comment>
     <requestid>1089357</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>7e6cf1e36a5e49b392afb2b65c7755ec</srcmd5>
+    <version>6.0.0</version>
+    <time>1746809369</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275962</requestid>
+  </revision>
 </revisionlist>

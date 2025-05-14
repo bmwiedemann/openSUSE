@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Apr 22 15:06:19 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- systemd-update-helper: do not stop or disable services when they are migrated
+  to other packages. This can occur during package renaming or splitting.
+
+-------------------------------------------------------------------
+Wed Apr 16 14:09:42 UTC 2025 - Franck Bui <fbui@suse.com>
+
+- Split systemd-network into two new sub-packages: systemd-networkd and
+  systemd-resolved (bsc#1224386 jsc#PED-12669)
+
+-------------------------------------------------------------------
 Fri Apr  4 08:43:26 UTC 2025 - Franck Bui <fbui@suse.com>
 
 - Import commit c10a66fb4dd34b86d42fa92501bd88db63df479a (merge of v257.5)

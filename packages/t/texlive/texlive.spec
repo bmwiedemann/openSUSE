@@ -119,6 +119,13 @@ BuildRequires:  freeglut-devel
 BuildRequires:  freetype2-devel
 BuildRequires:  gc-devel
 BuildRequires:  gcc-c++
+%if 0%{?suse_version} <= 1500
+BuildRequires:  Mesa-libglapi-devel
+BuildRequires:  gcc13-c++
+BuildRequires:  python311
+BuildRequires:  python311-base
+BuildRequires:  python311-packaging
+%endif
 BuildRequires:  gd-devel
 BuildConflicts: ghostscript-mini
 BuildRequires:  %{name}-filesystem
@@ -135,8 +142,17 @@ BuildRequires:  jpeg
 BuildRequires:  libicu-devel >= 72.1
 %endif
 BuildRequires:  Mesa-dri-devel
+%if 0%{?suse_version} <= 1500
+BuildRequires:  libboost_filesystem1_75_0-devel
+BuildRequires:  libboost_program_options1_75_0-devel
+BuildRequires:  libboost_system1_75_0-devel
+BuildRequires:  libboost_thread1_75_0-devel
+%else
 BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_thread-devel
+%endif
 BuildRequires:  libjpeg-devel
 BuildRequires:  libopenssl-devel
 BuildRequires:  libpaper-devel
@@ -287,6 +303,8 @@ Patch47:        biber-perl-5.18.2.dif
 Patch50:        luametatex.dif
 # PATCH-FIX-SUSE Let it build even without ls-R files around
 Patch62:        source-psutils-kpathsea.dif
+# fix build with boost 1.88
+Patch70:        boost.dif
 # Missed luajit fix for ppc/ppc64/ppc64le and riscv64
 Prefix:         %{_bindir}
 
@@ -4230,8 +4248,16 @@ This package is required by the package texlive-biber-bin.
 %ifarch %arm
     RPM_OPT_FLAGS=${RPM_OPT_FLAGS/-mthumb/-mthumb-interwork -marm}
 %endif
+%if 0%{?suse_version} <= 1500
+    CC=gcc-13
+    CXX=g++-13
+    CPP=cpp-13
+%else
     CC=gcc
     CXX=g++
+    CPP=cpp
+%endif
+    export CC CXX CPP
     XCFLAGS="$RPM_OPT_FLAGS -D_GNU_SOURCE"
     XCXXFLAGS="$XCFLAGS -include cstdint"
     cflags ()
@@ -4343,12 +4369,13 @@ This package is required by the package texlive-biber-bin.
     echo CONFIG_SHELL=/bin/bash
     echo CC=\"$CC\"
     echo CXX=\"$CXX\"
+    echo CPP=\"$CPP\"
     echo CFLAGS=\"$XCFLAGS\"
     echo CXXFLAGS=\"$XCXXFLAGS\"
     echo LDFLAGS=\"-Wl,-warn-common $XLDFLAGS\"
     echo VENDOR=\"${VENDOR}\"
     echo ARCH_LIB=%{_lib}
-    echo export CC CXX CFLAGS CXXFLAGS LDFLAGS VENDOR PATH CONFIG_SHELL ARCH_LIB
+    echo export CC CXX CPP CFLAGS CXXFLAGS LDFLAGS VENDOR PATH CONFIG_SHELL ARCH_LIB
 
     # Do not run TeX engine in fmtutil with batchmode
     echo batchmode=no
@@ -4428,6 +4455,7 @@ rm -vf bin/biber.noica
 rm -vf t/*.fastsort
 popd
 %endif
+%patch -P70 -p0
 
 %patch -P62 -p0 -b .kpserr
 
@@ -4624,6 +4652,10 @@ popd
     popd
 
     pushd utils/asymptote
+%if 0%{?suse_version} <= 1500
+	mkdir bin
+	ln -sf /usr/bin/python3.11 bin/python3
+%endif
 	version=$(autoreconf --version | head -n 1 | sed -r 's/.* ([0-9.]+)$/\1/')
 	if test ${version%%.*} -ge 2 -a ${version#*.} -ge 71
 	then
@@ -4667,6 +4699,9 @@ popd
 	    --enable-fftw			\
 	    --enable-gc=system			\
 	    --enable-gl
+%if 0%{?suse_version} <= 1500
+	PATH=${PWD}/bin:$PATH \
+%endif
 	make asy
 	mkdir -p ${prefix}/bin
 	mkdir -p ${prefix}/texmf/asymptote/GUI
@@ -4709,12 +4744,14 @@ popd
 
 %if %{with luametatex}
     pushd ../luametatex*
-        %cmake \
-        -DVERBOSE=ON \
-        -DCMAKE_C_COMPILER=gcc \
-        -DCMAKE_STRIP:FILEPATH=/bin/true \
-        -DCMAKE_CXX_COMPILER=g++
-        cmake --build . --parallel %{?_smp_mflags}
+	%cmake \
+	-DVERBOSE=ON \
+	-DCMAKE_C_COMPILER=${CC} \
+	-DCMAKE_C_FLAGS="${CFLAGS}" \
+	-DCMAKE_STRIP:FILEPATH=/bin/true \
+	-DCMAKE_CXX_COMPILER=${CXX} \
+	-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+	cmake --build . --parallel %{?_smp_mflags}
     popd
 %endif
 %if %{with buildbiber}

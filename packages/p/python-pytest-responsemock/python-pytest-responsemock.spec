@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-responsemock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-responsemock
 Version:        1.1.1
 Release:        0
@@ -25,7 +24,9 @@ License:        BSD-3-Clause
 URL:            https://github.com/idlesign/pytest-responsemock
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-responsemock/pytest-responsemock-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -45,10 +46,10 @@ Simplified requests calls mocking for pytest.
 %setup -q -n pytest-responsemock-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +60,6 @@ Simplified requests calls mocking for pytest.
 %doc AUTHORS CHANGELOG README.rst
 %license LICENSE
 %{python_sitelib}/responsemock
-%{python_sitelib}/pytest_responsemock-%{version}*-info
+%{python_sitelib}/pytest_responsemock-%{version}.dist-info
 
 %changelog

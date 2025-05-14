@@ -7,4 +7,12 @@
     <comment></comment>
     <requestid>1267945</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>42f5f6775edcaa0bed7e451e53f6b9a6</srcmd5>
+    <version>2025.115.133852</version>
+    <time>1746809538</time>
+    <user>anag_factory</user>
+    <comment>- add fix-name.patch, removing the patchelf hack</comment>
+    <requestid>1276275</requestid>
+  </revision>
 </revisionlist>

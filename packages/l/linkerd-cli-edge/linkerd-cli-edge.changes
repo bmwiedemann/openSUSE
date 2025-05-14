@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May 09 05:35:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 25.5.2:
+  No CLI-related changes (other than dependencies)
+  * build(deps): bump backtrace from 0.3.74 to 0.3.75 (#14000)
+  * build(deps): bump rustls-pki-types from 1.11.0 to 1.12.0
+    (#14004)
+  * build(deps): bump tower-http from 0.6.2 to 0.6.3 (#14005)
+  * build(deps): bump tj-actions/changed-files (#14006)
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0 (#14007)
+  * build(deps): bump tj-actions/changed-files (#14003)
+  * build(deps): bump golang.org/x/tools from 0.32.0 to 0.33.0
+    (#13999)
+  * build(deps): bump tokio from 1.44.2 to 1.45.0 (#14001)
+  * build(deps): bump h2 from 0.4.9 to 0.4.10 (#13996)
+  * build(deps): bump rustls from 0.23.26 to 0.23.27 (#13995)
+  * build(deps): bump rustls-webpki from 0.103.1 to 0.103.2
+    (#13997)
+  * build(deps): bump golang.org/x/net from 0.39.0 to 0.40.0
+    (#13998)
+  * build(deps-dev): bump @babel/preset-react in /web/app (#13989)
+  * build(deps): bump tj-actions/changed-files (#13986)
+  * build(deps-dev): bump @babel/runtime from 7.27.0 to 7.27.1 in
+    /web/app (#13988)
+  * build(deps-dev): bump @babel/core from 7.26.10 to 7.27.1 in
+    /web/app (#13990)
+  * build(deps): bump cc from 1.2.20 to 1.2.21 (#13991)
+
+-------------------------------------------------------------------
 Sat May 03 11:13:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 25.5.1:

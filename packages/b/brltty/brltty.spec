@@ -1,7 +1,7 @@
 #
 # spec file for package brltty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -396,9 +396,8 @@ install -Dm0644 Autostart/AppStream/org.a11y.brltty.metainfo.xml \
 
 %post -n %{soname}
 if [ ! -e %_sysconfdir/brlapi.key ]; then
- mcookie > %_sysconfdir/brlapi.key
+ umask 027 && mcookie > %_sysconfdir/brlapi.key
  chgrp brlapi %_sysconfdir/brlapi.key
- chmod 0640 %_sysconfdir/brlapi.key
 fi
 /sbin/ldconfig
 

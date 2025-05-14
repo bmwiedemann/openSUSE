@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 30 19:18:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- use fuse3 (boo#1242079)
+- drop spec file constructs for versions earlier than 15
+
+-------------------------------------------------------------------
 Sat Apr  5 18:16:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.4:

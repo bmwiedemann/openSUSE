@@ -1,7 +1,7 @@
 #
 # spec file for package python-editdistance
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15allpythons}
 
 Name:           python-editdistance
@@ -27,8 +28,10 @@ URL:            https://www.github.com/aflc/editdistance
 Source:         https://github.com/roy-ht/editdistance/archive/refs/tags/v%{version}.tar.gz#/editdistance-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -56,10 +59,10 @@ This package contains the files needed for binding the %{name} C module.
 %setup -q -n editdistance-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -70,7 +73,7 @@ This package contains the files needed for binding the %{name} C module.
 %doc README.rst
 %exclude %{python_sitearch}/editdistance/*.h
 %{python_sitearch}/editdistance
-%{python_sitearch}/editdistance-%{version}*info
+%{python_sitearch}/editdistance-%{version}.dist-info
 
 %files %{python_files devel}
 %{python_sitearch}/editdistance/*.h

@@ -209,7 +209,8 @@ Source8:        emacs-%{version}-pdf.tar.xz
 Source9:        macros.emacs
 %{load:%{SOURCE9}}
 Patch0:         emacs-29.1.dif
-# Currently disabled
+Patch1:         emacs-30.1-minmalxauth.patch
+# Currently disabled due memmmap build condition
 Patch2:         emacs-24.4-glibc.patch
 Patch4:         emacs-24.3-asian-print.patch
 Patch5:         emacs-24.4-ps-bdf.patch
@@ -375,6 +376,7 @@ and most assembler-like syntaxes.
 
 %prep
 %setup -q -b 2
+%patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
 %endif

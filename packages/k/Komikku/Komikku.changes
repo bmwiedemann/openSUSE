@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May  9 18:18:30 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.1:
+  * [Reader] Webtoon mode: Fixed scrolling after a pages jump
+    (using controls overlay)
+  * [L10n] Updated Portuguese (Brazil) translation
+
+-------------------------------------------------------------------
+Wed May  7 23:18:59 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 1.76.0:
+  * [Servers] Added ComicHubFree (EN)
+  * [Servers] Asura Scans For Free (EN): Disabled
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] Read Comic Online (EN): Update
+  * [Servers] Team-X (AR): Update
+  * [Servers] Terco Scans (EN):Update
+  * [L10n] Updated translations
+- remove convert-to-modern-colorthief.patch, upstreamed accepted PR
+
+-------------------------------------------------------------------
 Fri Apr  4 17:48:32 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.75.0:

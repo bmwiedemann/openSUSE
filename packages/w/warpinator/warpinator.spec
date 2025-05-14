@@ -1,7 +1,7 @@
 #
 # spec file for package warpinator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           warpinator
-Version:        1.8.6
+Version:        1.8.8
 Release:        0
 Summary:        Share files across the LAN
 License:        GPL-3.0-or-later
 URL:            https://github.com/linuxmint/warpinator
 Source:         https://github.com/linuxmint/warpinator/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  glib2-tools
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
@@ -33,7 +34,6 @@ BuildRequires:  python3-grpcio
 BuildRequires:  python3-protobuf
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-zeroconf
-BuildRequires:  update-desktop-files
 Requires:       python3-PyNaCl
 Requires:       python3-cryptography
 Requires:       python3-gobject-Gdk
@@ -82,12 +82,11 @@ This package provides an extension to use warpinator from nemo file browser.
 # Files missing hashbangs
 for f in config warp_pb2 warp_pb2_grpc
 do
-  sed -i "1i#!%{_bindir}/python3" %{buildroot}%{_libexecdir}/warpinator/${f}.py
+  sed -i "1i#!%{_bindir}/python%{python3_version}" %{buildroot}%{_libexecdir}/warpinator/${f}.py
 done
 
 chmod +x %{buildroot}%{_libexecdir}/warpinator/*.py
 
-%suse_update_desktop_file -r org.x.Warpinator Network FileTransfer
 %find_lang %{name} %{?no_lang_C}
 
 %files

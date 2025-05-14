@@ -325,4 +325,12 @@
     <comment></comment>
     <requestid>1256102</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>9056b059e92e3db1916d06c382e7ce3f</srcmd5>
+    <version>2.10.1</version>
+    <time>1746476946</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete and unused gnome-common BuildRequires. (forwarded request 1274239 from iznogood)</comment>
+    <requestid>1274532</requestid>
+  </revision>
 </revisionlist>

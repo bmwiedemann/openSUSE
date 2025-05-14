@@ -946,4 +946,12 @@
   * Avoid non-standard use of `std::basic_string_view`.</comment>
     <requestid>1180732</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>c3de9c8be3b2587ac36681f67bf7a087</srcmd5>
+    <version>11.9.1</version>
+    <time>1746542300</time>
+    <user>anag_factory</user>
+    <comment>add qpdf-11.9.1-gcc15.patch from upstream to fix gcc-15 compile time error (forwarded request 1274144 from hsk17)</comment>
+    <requestid>1274146</requestid>
+  </revision>
 </revisionlist>

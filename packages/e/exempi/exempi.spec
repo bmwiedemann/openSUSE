@@ -18,7 +18,7 @@
 
 %define sonum 8
 Name:           exempi
-Version:        2.6.5
+Version:        2.6.6
 Release:        0
 Summary:        XMP support library
 License:        BSD-3-Clause

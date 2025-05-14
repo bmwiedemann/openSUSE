@@ -200,4 +200,41 @@
     but none exist at this time. (forwarded request 1243573 from jfkw)</comment>
     <requestid>1243578</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d1a69c6c6286b12fada946106a93f3bb</srcmd5>
+    <version>0.7.0</version>
+    <time>1746476832</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.9:
+  * Icons: connections can include icons #12
+  * Syntax: suspend/unsuspend to define models and instantiate them #2394
+  * Globs: support for filtering edges based on properties of endpoint nodes (e.g., &amp;src.style.fill: blue) #2395
+  * Globs: level filter implemented #2473
+  * Render: markdown, latex, and code can be used as object labels #2204
+  * Render: shape: c4-person to render a person shape like what the C4 model prescribes #2397
+  * Icons: border-radius should work on icon #2409
+  * Misc: Diagram legends are implemented #2416
+  * CLI: Support validate command. #2415
+  * CLI: Watch mode ignores backup files (e.g. files created by certain editors like Helix). #2131
+  * CLI: Support for --omit-version flag. #2377
+  * CLI: Casing is ignored for plugin names #2486
+  * Compiler: links can be set to root path, e.g. /xyz. #2357
+  * Compiler: When importing a file, attempt resolving substitutions at the imported file scope first #2482
+  * Compiler: validate gradient color stops. #2492
+  * Parser: impose max key length. It's almost certainly a mistake if an ID gets too long, e.g. missing quotes #2465
+  * Render: horizontal padding added for connection labels #2461
+  * Compiler: fixes panic when sql_shape shape value had mixed casing #2349
+  * Compiler: fixes panic when importing from a file with spread substitutions in vars #2427
+  * Compiler: fixes support for center in d2-config #2360
+  * Compiler: fixes panic when comment lines appear in arrays #2378
+  * Compiler: fixes inconsistencies when objects were double quoted #2390
+  * Compiler: fixes globs not applying to spread substitutions #2426
+  * Compiler: fixes panic when classes were mixed with layers incorrectly #2448
+  * Compiler: fixes panic when gradient colors are used in sketch mode #2481
+  * Compiler: fixes panic using glob ampersand filters with composite values #2489
+  * Compiler: fixes leaf ampersand filter when used with imports #2494
+  * Formatter: fixes substitutions in quotes surrounded by text #2462
+  * CLI: fetch and render remote images of mimetype octet-stream correctly #2370 (forwarded request 1274297 from jfkw)</comment>
+    <requestid>1274300</requestid>
+  </revision>
 </revisionlist>

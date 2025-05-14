@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Apr 25 17:19:58 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.6:
+  * fix long standing bug with directory renames in cow mode
+  * disable logging to file since it had some unresolved locking
+    issues
+  * add support for direct_io
+  * various nfs fixes and race conditions fixes
+  * fuse3 support (boo#1242079)
+  * add branch-preserving logic
+- upstream cmake 4 compatibility
+
+-------------------------------------------------------------------
 Sat Mar 22 00:33:11 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

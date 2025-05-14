@@ -1,7 +1,7 @@
 #
 # spec file for package python-radexreader
 #
-# Copyright (c) 2021-2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-radexreader
 Version:        1.2.5
 Release:        0
@@ -24,14 +23,16 @@ Summary:        Reader for the RADEX RD1212 and ONE Geiger counters
 License:        GPL-2.0-or-later
 URL:            https://github.com/luigifab/python-radexreader
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyserial}
 BuildRequires:  %{python_module pyusb}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-pyserial
 Requires:       python-pyusb
-Requires(post):   update-alternatives
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
@@ -51,11 +52,11 @@ sed -i 's/\#\!\/usr\/bin\/python3/\#/g' src/radexreader/__init__.py
 
 %build
 cd src
-%python_build
+%pyproject_wheel
 
 %install
 cd src
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 install -Dpm 755 radexreader-cli.py %{buildroot}%{_bindir}/radexreader
 install -Dpm 644 ../data/radexreader.1 %{buildroot}%{_mandir}/man1/radexreader.1
@@ -68,8 +69,8 @@ install -Dpm 644 ../data/radexreader.fr.1 %{buildroot}%{_mandir}/fr/man1/radexre
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/radexreader/
-%{python_sitelib}/radexreader*egg-info/
+%{python_sitelib}/radexreader
+%{python_sitelib}/radexreader-%{version}.dist-info
 %python_alternative %{_bindir}/radexreader
 %python_alternative %{_mandir}/man1/radexreader.1%{?ext_man}
 %python_alternative %{_mandir}/fr/man1/radexreader.1%{?ext_man}

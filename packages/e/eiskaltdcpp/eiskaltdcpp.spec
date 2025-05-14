@@ -126,6 +126,7 @@ all common DC hub software.
 %autosetup -p1
 
 %build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake -LA \
        -DNO_UI_DAEMON=ON \
        -DUSE_CLI_JSONRPC=ON \
@@ -139,8 +140,7 @@ install -Dpm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name
 %find_lang lib%{name} %{name}-common.lang
 %find_lang %{name} %{name}-qt.lang --with-qt --without-mo --all-name
 
-%post   -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files common
 %license COPYING LICENSE

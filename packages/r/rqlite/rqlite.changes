@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  4 06:54:08 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 8.37.0:
+  * Add support for automatically reloading all X.509 certificates
+    and keys
+
+-------------------------------------------------------------------
 Sun Apr 20 13:04:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 8.36.18:

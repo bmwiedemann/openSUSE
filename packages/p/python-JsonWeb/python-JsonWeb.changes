@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 08:16:06 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Apr 10 12:14:57 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Add python-311.patch to support python 3.11

@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue May 06 05:04:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.0:
+  Welcome to the v0.40.0 release of Inspektor Gadget!
+    The most relevant changes in this release are:
+    - gadgets: Introduce bpfstats gadget by @mauriciovasquezbernal
+      in #3820
+    - gadgets: Implement advise_seccomp as image-based by
+      @mauriciovasquezbernal in #4089
+    - wasm: Use cache to speed-up things by @mqasimsarfraz in #4165
+  * Security
+    We found a security issue described in GHSA-pv22-fqcj-7xwh,
+    please be sure to update Inspektor Gadget if it affects you!
+  * General Improvements
+    - ig(UX): add aliases for image list (ls) and remove (rm) by
+      @flyth in #4313
+    - operators/KubeIPResolver: Set kind to raw when its not a pod
+      and svc by @burak-ok in #4168
+    - feat(helm): missing Kubernetes recommended labels by
+      @nlamirault in #4309
+    - gadgets: traceloop: Polish eBPF code by @eiffel-fl in #4303
+    - Rename ebpf-builder to gadget-builder by @burak-ok in #4315
+    - Makefile: Build ig for host architecture with go build
+      instead of doc… by @eiffel-fl in #4277
+    - inspect: adds command to kubectl-gadget by @KapilSareen in
+      #4290
+    - ustack: generic collect-ustack param and templates by @alban
+      in #4329
+    - Introduce value.one-of annotation. by @mqasimsarfraz in #4331
+    - Update to Go 1.24 by @burak-ok in #4339
+    - trace_dns: Handling warning during build by @mqasimsarfraz in
+      #4351
+    - Feat: Add builder-image-pull flag to ig image-build command
+      by @4rivappa in #4251
+    - inspect: adds oci extra info by @KapilSareen in #4272
+    - OCI Handler Unit Tests by @Shaheer-Ahmd in #4289
+    - inspect: adds mermaid graphs extra info by @KapilSareen in
+      #4259
+    - inspect: adds ebpf relocations in extraInfo by @KapilSareen
+      in #4333
+    - Remove dependency on 32 bit stubs header by @burak-ok in
+      #4360
+    - Use bytes.IndexBytes() in romCString() by @eiffel-fl in #4302
+    - KubeNameResolver: Add support for image based gadgets by
+      @burak-ok in #4169
+    - Remove the targ_pid from gadgets by @burak-ok in #4415
+    - gadget-builder: Switch to debian:bookworm-slim by @burak-ok
+      in #4407
+  * Bug Fixes
+    - fixes arbitrary Runtime.Init call from inspect command by
+      @KapilSareen in #4304
+    - Remove panic when sort used incorrectly by @AdvH039 in #4274
+    - trace_capabilities: fix use of uninitialized variable by
+      @alban in #4350
+    - Port container datasource to kubemanager by @eiffel-fl in
+      #4330
+    - operators/ebpf: Fix missing parameter default value
+      map-fetch-interval by @mauriciovasquezbernal in #4409
+    - params: Avoid overwritting params in CopyToMap() by
+      @mauriciovasquezbernal in #4410
+    - image-build: fix update-metadata with targ_comm by @alban in
+      #4405
+  * Documentation Improvements
+    - docs: Fix website build by @mqasimsarfraz in #4325
+    - ADOPTERS.md: Add Headlamp by @alban in #4336
+    - docs: Fix broken link to previous section in
+      hello-world-gadget.md. by @eiffel-fl in #4363
+    - Documentation: Correct function for getting mntns id of
+      containers by @Daksh-10 in #4239
+    - docs: Fix metrics documentation by @mauriciovasquezbernal in
+      #4365
+    - docs: Add documentation for exposing metrics on K8s by
+      @mauriciovasquezbernal in #4366
+  * Testing and Continue Integration
+    - Unit Tests for Inventory Cache by @Shaheer-Ahmd in #4282
+    - Added unit tests for formmaters in ebpf operator by
+      @Shaheer-Ahmd in #4249
+    - ci: Publish helm-charts to registry by @mqasimsarfraz in
+      #3805
+    - Cli Operator Unit Tests by @Shaheer-Ahmd in #4241
+    - pkg/kallsyms: disable failing test by @mauriciovasquezbernal
+      in #4370
+    - ci: Automatically update the latest tag on release by
+      @mauriciovasquezbernal in #4374
+    - tests: Fix unit tests by @mauriciovasquezbernal in #4426
+
+-------------------------------------------------------------------
 Mon Apr 07 09:07:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.0:

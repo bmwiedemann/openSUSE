@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 06:00:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.
+
+-------------------------------------------------------------------
 Sat Jan 20 13:10:36 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14:

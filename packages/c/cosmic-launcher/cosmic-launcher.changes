@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:43:25 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n(ar): improve and complete translations (#285)
+  * i18n - update portuguese translations (#281)
+  * i18n(ro): Add Romanian translation (#280)
+  * Add es-419 translations (#157)
+  * Added German Translation (#166)
+  * Polish translation for desktop entry (#247)
+  * Added Irish translation (#252)
+  * Update metainfo with the Hungarian translation (#253)
+  * Create cosmic_launcher.ftl (#266)
+  * i18n(sk): Add Slovak translations (#275)
+  * Minor fix (#278)
+  * i18n (pt-BR) Update translations
+  * chore: update libcosmic
+  * chore: update libcosmic
+  * fix: add 16 px margin
+  * fix: filter out overlaps past half of surface height
+  * chore: udpate libcosmic
+  * i18n/es fix
+  * fix: ignore exclusive_zone
+  * feat: avoid overlap
+  * fix(libcosmic): theme subscription
+  * i18n(ca): Add Catalan translation
+  * fix license references
+
+-------------------------------------------------------------------
 Sat Feb 22 03:10:23 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

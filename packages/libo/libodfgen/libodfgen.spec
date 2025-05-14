@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later AND MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            http://libwpd.sourceforge.net
 Source:         https://downloads.sourceforge.net/project/libwpd/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
+Patch1:         libodfgen-0.1.8-gcc15-cstdint.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -67,6 +68,7 @@ This package contains documentation for the libodfgen API.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"

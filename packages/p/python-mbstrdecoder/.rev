@@ -106,4 +106,19 @@
   * allow chardet 4</comment>
     <requestid>1130334</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e87f32bf48c21690d0cef55b93f10c4a</srcmd5>
+    <version>1.1.4</version>
+    <time>1746542492</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.4:
+  * Fix `UnicodeDecodeError` exception sending correctly
+  * Remove deprecated `tests_require` from setup.py
+  * Modify to use `setuptools_scm` for package build
+  * Add support for Python 3.13
+  * Drop support for Python 3.7/3.8
+  * Add metadata attributes to the `mbstrdecoder` module
+  * Improve type annotations</comment>
+    <requestid>1274712</requestid>
+  </revision>
 </revisionlist>

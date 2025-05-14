@@ -45,4 +45,12 @@
 - Add license and documentation file.</comment>
     <requestid>1157932</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>6a5d28179943e63db1c330f33ad20128</srcmd5>
+    <version>5.3.1</version>
+    <time>1746809395</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275985</requestid>
+  </revision>
 </revisionlist>

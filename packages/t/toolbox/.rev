@@ -307,4 +307,13 @@
   * Ignore generated toolbox.1 manual page</comment>
     <requestid>1219327</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0416e953a24108e6c084b02df2c01571</srcmd5>
+    <version>2.4+git20250429.b335d1b</version>
+    <time>1746542338</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4+git20250429.b335d1b:
+  * Support addition podman arguments</comment>
+    <requestid>1274366</requestid>
+  </revision>
 </revisionlist>

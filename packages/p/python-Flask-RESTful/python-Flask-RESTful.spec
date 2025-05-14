@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-RESTful
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-RESTful
 Version:        0.3.10
 Release:        0
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://www.github.com/flask-restful/flask-restful/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-RESTful/Flask-RESTful-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.8
@@ -43,10 +45,10 @@ Flask-RESTful provides the building blocks for creating a REST API.
 sed -i '1{/^#!/d}' flask_restful/__version__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand \
 $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/flask_restful/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/flask_restful/
@@ -55,8 +57,9 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/fl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%dir %{python_sitelib}/flask_restful
-%{python_sitelib}/flask_restful/*
-%{python_sitelib}/Flask_RESTful-%{version}-py*.egg-info
+%license LICENSE
+%doc README.md
+%{python_sitelib}/flask_restful
+%{python_sitelib}/[Ff]lask[_-][Rr][Ee][Ss][Tt]ful-%{version}.dist-info
 
 %changelog

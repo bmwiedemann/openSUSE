@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  9 15:36:58 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.5
+  * Fix qobuz plugin, it had stopped working, probably following a
+    Qobuz API change
+
+-------------------------------------------------------------------
+Tue May  6 12:37:50 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.4
+  * Fix startup crash when built with gcc 15 (initialisation order issue)
+  * Many updates in Media Server plugins, mostly Tidal and Subsonic
+- Update to 1.9.3
+  * Misc cleanups in media server plugins
+
+-------------------------------------------------------------------
 Fri Feb 21 14:40:17 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.2

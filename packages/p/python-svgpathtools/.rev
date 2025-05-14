@@ -106,4 +106,15 @@
   * return error if Path.point() cannot be computed</comment>
     <requestid>1088124</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9007883ad52a201486600cf6c24a524</srcmd5>
+    <version>1.7.0</version>
+    <time>1746809524</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.0
+ * Hashes used by test suite are now platform-agnostic
+ * Drop support for Python &lt; 3.8
+- Enable test suite</comment>
+    <requestid>1276248</requestid>
+  </revision>
 </revisionlist>

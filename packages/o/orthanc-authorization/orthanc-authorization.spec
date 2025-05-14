@@ -1,6 +1,7 @@
 #
-# spec file for package orthanc-neuro
+# spec file for package orthanc-authorization
 #
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +21,7 @@ Name:           orthanc-authorization
 Summary:        Authorisation plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancAuthorization-%{version}.tar.gz
@@ -29,8 +30,6 @@ Source2:        https://orthanc.uclouvain.be/downloads/third-party-downloads/gte
 Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/jsoncpp-1.9.5.tar.gz
 Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/e2fsprogs-1.44.5.tar.gz
 Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/boost_1_86_0_bcpdigest-1.12.5.tar.gz
-
-Patch0:         static_build.patch
 
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200

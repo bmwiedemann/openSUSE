@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 05:21:01 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Jan 29 21:44:59 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern pythonstack

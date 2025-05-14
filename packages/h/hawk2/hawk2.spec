@@ -71,8 +71,8 @@ Source22:       crass-1.0.6.gem
 Source23:       loofah-2.24.0.gem
 Source24:       rails-html-sanitizer-1.6.2.gem
 Source25:       actionview-8.0.2.gem
-Source26:       rack-3.1.12.gem
-Source27:       rack-session-2.1.0.gem
+Source26:       rack-3.1.14.gem
+Source27:       rack-session-2.1.1.gem
 Source28:       rack-test-2.2.0.gem
 Source29:       useragent-0.16.11.gem
 Source30:       actionpack-8.0.2.gem
@@ -91,7 +91,7 @@ Source42:       activestorage-8.0.2.gem
 Source43:       mini_mime-1.1.5.gem
 Source44:       date-3.4.1.gem
 Source45:       net-protocol-0.2.2.gem
-Source46:       net-imap-0.5.6.gem
+Source46:       net-imap-0.5.8.gem
 Source47:       net-pop-0.1.2.gem
 Source48:       net-smtp-0.5.1.gem
 Source49:       mail-2.8.1.gem

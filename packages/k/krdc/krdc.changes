@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * RDP: ensure rdpview gets closed on session disconnect (kde#503176)
+  * RDP: Fix passing domain from saved bookmark (kde#503174)
+  * flatpak: Update runtime version
+  * Find Qt6Gui before using Qt6Gui_VERSION
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:02 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

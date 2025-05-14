@@ -1,7 +1,7 @@
 #
 # spec file for package python-traits
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,9 @@ URL:            https://github.com/enthought/traits
 Source:         https://github.com/enthought/traits/archive/%{version}.tar.gz#/traits-%{version}.tar.gz
 Patch1:         https://github.com/enthought/traits/commit/a20f2154b2c79eb8550ea9228d1a4415ff51b72a.patch#/py313-ctraits.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -76,12 +78,12 @@ Part of the Enthought Tool Suite (ETS).
 %build
 %if %{without test}
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if %{without test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
@@ -102,7 +104,7 @@ popd
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitearch}/traits/
-%{python_sitearch}/traits-%{version}-py*.egg-info
+%{python_sitearch}/traits-%{version}.dist-info
 %endif
 
 %changelog

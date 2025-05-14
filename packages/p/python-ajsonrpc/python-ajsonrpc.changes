@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 13:05:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed Jan 25 09:40:02 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run test on all python versions but for python 3.6

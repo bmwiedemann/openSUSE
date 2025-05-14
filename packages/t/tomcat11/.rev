@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2df7fe87935bf915e2495b54997a0f03</srcmd5>
+    <version>11.0.6</version>
+    <time>1746476700</time>
+    <user>anag_factory</user>
+    <comment>Make conflicts and provides more generic</comment>
+    <requestid>1274036</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>362e78ef7f40ea50468a88bf57300968</srcmd5>
+    <version>11.0.6</version>
+    <time>1746809485</time>
+    <user>anag_factory</user>
+    <comment>cleanup</comment>
+    <requestid>1276093</requestid>
+  </revision>
+</revisionlist>

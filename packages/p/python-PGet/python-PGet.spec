@@ -1,7 +1,7 @@
 #
 # spec file for package python-PGet
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PGet
 Version:        0.5.1
 Release:        0
@@ -25,7 +24,9 @@ Summary:        Download tool using chunks
 URL:            https://github.com/halilozercan/pget
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/P/PGet/PGet-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module requests >= 2.20.0}
@@ -33,8 +34,8 @@ BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  fdupes
 Requires:       python-requests >= 2.20.0
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 
 %python_subpackages
 
@@ -45,10 +46,10 @@ A tool and library to save large files by creating multiple connections.
 %setup -q -n PGet-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pget
 
@@ -60,6 +61,7 @@ A tool and library to save large files by creating multiple connections.
 
 %files %{python_files}
 %python_alternative %{_bindir}/pget
-%{python_sitelib}/*
+%{python_sitelib}/pget
+%{python_sitelib}/[Pp][Gg]et-%{version}*dist-info
 
 %changelog

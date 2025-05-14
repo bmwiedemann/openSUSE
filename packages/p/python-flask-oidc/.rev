@@ -41,4 +41,41 @@
     <comment></comment>
     <requestid>1079106</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c87b564de8e824811d4ce950d0a0e357</srcmd5>
+    <version>2.3.1</version>
+    <time>1746542556</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.1:
+  * Important
+    + Rebased the Flask OIDC API on Authlib.
+  * Added
+    + Make the client_secrets.json file optional when OIDC is disabled
+    + Support Python 3.12
+    + Re-add redirect_to_auth_server() for compatibility with v1.x
+    + Add a user model to flask.g with convenience properties
+    + Add signals to hook into the login and logout process
+  * Fixed
+    + Include the root_path when redirecting to the custom callback route
+    + Avoid redirect loops when the app is not mounted on the webserver root
+    + Handle token expiration when there is no refresh_token or no token URL
+    + Use the OIDC_CALLBACK_ROUTE with the ID provider when it is defined,
+      instead of the default
+    + Auto-renew tokens when they have expired (if possible), as version 1.x
+      used to do
+    + Avoid a redirect loop on logout when the token is expired
+    + Don't crash if the client_secrets don't contain a userinfo_uri key
+    + Handle older versions of Werkzeug.
+  * Changed
+    + Ship the licenses files in the sdist
+    + Don't request the profile scope by default, as version 1.x used to do.
+  * Deprecated
+    + Configuration option OIDC_USERINFO_URL (and the userinfo_uri key in
+      client_secrets)
+- Switch to pyproject macros.
+- Add patch ignore-quoting-madness.patch:
+  * Ignore quoting madness that is different for each Python version.
+- Drop patch authlib.patch, included upstream.</comment>
+    <requestid>1274786</requestid>
+  </revision>
 </revisionlist>

@@ -26,10 +26,9 @@ URL:            https://github.com/libhangul/ibus-hangul
 Source:         https://github.com/libhangul/ibus-hangul/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gettext
-BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libhangul)
@@ -59,7 +58,6 @@ autoreconf -fi
 
 %install
 %make_install
-%suse_update_desktop_file ibus-setup-hangul Utility DesktopUtility System
 ln -sf %{_ibus_libexecdir}/ibus-setup-hangul %{buildroot}%{_bindir}/ibus-setup-hangul
 
 %find_lang %{name}

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-filter-subpackage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,11 +24,12 @@ Summary:        Pytest plugin for filtering based on sub-packages
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/pytest-filter-subpackage
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-filter-subpackage/pytest-filter-subpackage-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.6}
-# Patch0 is for the change from doctestplus 0.5 to 0.6
 BuildRequires:  %{python_module pytest-doctestplus >= 0.6}
 BuildRequires:  %{python_module setuptools >= 30.3}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 4.6
@@ -43,10 +44,10 @@ shortcut to testing all code and documentation for a given sub-package.
 %autosetup -p1 -n pytest-filter-subpackage-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,6 @@ sed -i '/^\s*error/ a \    ignore::ResourceWarning' setup.cfg
 %doc README.rst CHANGES.rst
 %license LICENSE.rst
 %{python_sitelib}/pytest_filter_subpackage
-%{python_sitelib}/pytest_filter_subpackage-%{version}*-info
+%{python_sitelib}/pytest_filter_subpackage-%{version}.dist-info
 
 %changelog

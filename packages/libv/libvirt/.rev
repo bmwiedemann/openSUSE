@@ -4848,4 +4848,17 @@ make it easier to directly use the Factory package in SUSE projects.</comment>
   - jsc#PED-6556, jsc#PED-11466</comment>
     <requestid>1268494</requestid>
   </revision>
+  <revision rev="422" vrev="1">
+    <srcmd5>080098b5d33d94529b5410f38f0fd0b4</srcmd5>
+    <version>11.3.0</version>
+    <time>1746638081</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to libvirt 11.3.0
+  - bsc#1241952
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v11-3-0-2025-05-02
+- spec: Build with fuse3
+  boo#1242081</comment>
+    <requestid>1274735</requestid>
+  </revision>
 </revisionlist>

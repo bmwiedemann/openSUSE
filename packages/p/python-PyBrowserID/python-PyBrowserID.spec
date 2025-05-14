@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyBrowserID
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2018 The openSUSE Project.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyBrowserID
 Version:        0.14.0
 Release:        0
@@ -29,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyBrowserID/PyB
 Patch0:         python-PyBrowserID-unittest-mock.patch
 # PATCH-FIX-UPSTREAM (not submitted because the project is archive and doesn't accept pull requests)
 Patch1:         0001-Remove-the-use-of-the-deprecated-assertEquals-functi.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -50,10 +51,10 @@ Mozilla Persona.
 %autosetup -p1 -n PyBrowserID-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +62,7 @@ Mozilla Persona.
 
 %files %{python_files}
 %doc CHANGES.txt README.rst
-%{python_sitelib}/*
+%{python_sitelib}/browserid
+%{python_sitelib}/[Pp]y[Bb]rowser[Ii][Dd]-%{version}*-info
 
 %changelog

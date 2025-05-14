@@ -156,4 +156,16 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
     <comment>- update to 2.55.0</comment>
     <requestid>1271216</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>2aba97d5e0b9638fa13f3fbcc40d469c</srcmd5>
+    <version>2.55.1</version>
+    <time>1746542507</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.55.1
+  - Revert &quot;calculate content-md5 on S3 only when required&quot;.
+    (Reviewed by David Christensen. Reported by Frank Brendel.)
+  - Fix lower bounds checking for option keys. (Reviewed by David
+    Christensen, Wolfgang Walther. Reported by Wolfgang Walther.)</comment>
+    <requestid>1274734</requestid>
+  </revision>
 </revisionlist>

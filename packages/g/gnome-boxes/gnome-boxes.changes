@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  8 05:15:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Require cdio-utils for iso-read instead of fuse-iso, unused
+  since 3.11.3 from 2013 (boo#1242092)
+
+-------------------------------------------------------------------
 Tue Mar 18 13:52:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0:

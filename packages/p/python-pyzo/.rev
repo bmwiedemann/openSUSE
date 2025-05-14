@@ -45,4 +45,13 @@
   * Autocompletion is triggered a bit later to make it less anoying</comment>
     <requestid>889741</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a0efd94648aeb66c4e079d35625add48</srcmd5>
+    <version>4.11.2</version>
+    <time>1746809432</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1276016</requestid>
+  </revision>
 </revisionlist>

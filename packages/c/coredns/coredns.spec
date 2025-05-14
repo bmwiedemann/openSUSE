@@ -29,6 +29,7 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source10:       Corefile
 Source11:       coredns.service
+Patch12:        fixquic-go.patch
 BuildRequires:  fdupes
 BuildRequires:  golang(API) >= 1.21
 

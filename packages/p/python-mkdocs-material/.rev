@@ -701,4 +701,20 @@ update to 9.5.26</comment>
     <comment></comment>
     <requestid>1270977</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>0dbb97a8d71290a2aab6efbb0c8be5e8</srcmd5>
+    <version>9.6.12</version>
+    <time>1746721328</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275310</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>624fa912115104ac85f3f9dcedcb3084</srcmd5>
+    <version>9.6.13</version>
+    <time>1747061465</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276703</requestid>
+  </revision>
 </revisionlist>

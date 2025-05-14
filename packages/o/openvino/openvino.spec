@@ -51,7 +51,8 @@ Patch0:         openvino-fix-install-paths.patch
 Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
 Patch2:         openvino-fix-build-sample-path.patch
-
+# PATCH-FIX-UPSTREAM gcc5-compatibility.patch cabelo@opensuse.org - Include header for uint8_t, uint16_ and  uint32_t
+Patch3:         openvino-gcc5-compatibility.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -81,7 +82,6 @@ BuildRequires:  opencl-headers
 BuildRequires:  snappy-devel
 BuildRequires:  tbb-devel
 %else
-BuildRequires:  gcc14-c++
 BuildRequires:  pkgconfig(OpenCL-Headers)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(tbb)
@@ -280,8 +280,6 @@ This package provides some samples for use with openVINO.
 %build
 %if %{defined isLeap}
 export CC=gcc-12 CXX=g++-12
-%else
-export CC=gcc-14 CXX=g++-14
 %endif
 # Otherwise intel_cpu plugin declares an executable stack
 %ifarch %{x86_64}
@@ -305,10 +303,10 @@ export CC=gcc-14 CXX=g++-14
       -DENABLE_SYSTEM_PROTOBUF=ON \
       -DENABLE_SYSTEM_PUGIXML=ON \
       -DENABLE_SYSTEM_SNAPPY=ON \
-      -DENABLE_SYSTEM_TBB=ON \
 %if %{defined isLeap}
       -DENABLE_TBBBIND_2_5=OFF \
 %endif
+      -DENABLE_SYSTEM_TBB=ON \
       -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
       -DProtobuf_USE_STATIC_LIBS=OFF \
       %{nil}

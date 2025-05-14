@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flakes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-flakes
 Version:        4.0.5
 Release:        0
 Summary:        Pytest plugin to check source code with pyflakes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/asmeurer/pytest-flakes
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-flakes/pytest-flakes-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module pyflakes}
@@ -45,10 +45,10 @@ py.test plugin for efficiently checking python source with pyflakes.
 %setup -q -n pytest-flakes-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,8 +57,8 @@ py.test plugin for efficiently checking python source with pyflakes.
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/pytest_flakes.py*
-%pycache_only %{python_sitelib}/__pycache__/pytest_flakes.*
-%{python_sitelib}/pytest_flakes-%{version}-py*.egg-info
+%{python_sitelib}/pytest_flakes.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_flakes.*pyc
+%{python_sitelib}/pytest_flakes-%{version}.dist-info
 
 %changelog

@@ -20,7 +20,7 @@
 # ignore the explicit bash requires from the kernel mod scripts
 %define __requires_exclude ^/bin/bash$
 Name:           rpm-config-SUSE
-Version:        20250328
+Version:        20250423
 Release:        0
 Summary:        SUSE specific RPM configuration files
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ openSUSE distribution families.
 sed -e 's/@suse_version@/%{?suse_version}%{!?suse_version:0}/' \
     -e 's/@sles_version@/%{?sles_version}%{!?sles_version:0}/' \
     -e 's/@ul_version@/%{?ul_version}%{!?ul_version:0}/' \
+    -e 's/@leap_version@/%{?leap_version}%{!?leap_version:0}/' \
     -e '/@is_opensuse@%{?is_opensuse:nomatch}/d' \
     -e 's/@is_opensuse@/%{?is_opensuse}%{!?is_opensuse:0}/' \
 %if 0%{?is_opensuse}

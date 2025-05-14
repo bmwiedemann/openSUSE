@@ -97,7 +97,6 @@ cat >/etc/fstab.script <<"EOF"
 #!/bin/sh
 set -eux
 
-/usr/sbin/setup-fstab-for-overlayfs
 # ... set options for autoexpanding /home
 gawk -i inplace '$2 == "/home" { $4 = $4",x-systemd.growfs" } { print $0 }' /etc/fstab
 # workaround https://github.com/systemd/systemd/issues/927, drop the ro from the fstab mount
@@ -159,6 +158,23 @@ if [ -e /etc/default/grub ]; then
 	sed -i "s#^GRUB_CMDLINE_LINUX_DEFAULT=.*\$#GRUB_CMDLINE_LINUX_DEFAULT=\"${cmdline[*]}\"#" /etc/default/grub
 else
 	echo "${cmdline[*]}" > /etc/kernel/cmdline
+fi
+
+#======================================
+# systemd-boot specifics
+#--------------------------------------
+if rpm -q sdbootutil; then
+        for d in /usr/lib/modules/*; do
+                test -d "$d" || continue
+                depmod -a "${d##*/}"
+        done
+        ENTRY_TOKEN=$(. /usr/lib/os-release; echo $ID)
+        mkdir -p /etc/kernel
+        echo "$ENTRY_TOKEN" > /etc/kernel/entry-token
+        # FIXME: kiwi needs /boot/efi to exist before syncing the disk image
+        mkdir -p /boot/efi
+        mkdir -p /boot/efi/loader/entries
+    echo "LOADER_TYPE=systemd-boot" > /etc/sysconfig/bootloader
 fi
 
 #======================================

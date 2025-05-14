@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-ternary
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define skip_python36 1
 Name:           python-python-ternary
 Version:        1.0.8
@@ -26,7 +24,9 @@ Summary:        Tool to make ternary plots in python
 License:        MIT
 URL:            https://github.com/marcharper/python-ternary
 Source:         https://github.com/marcharper/python-ternary/archive/%{version}.tar.gz#/python-ternary-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-matplotlib >= 1.4
@@ -47,10 +47,10 @@ The library provides functions for plotting projected lines, curves
 %setup -q -n python-ternary-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,7 +59,7 @@ The library provides functions for plotting projected lines, curves
 %files %{python_files}
 %doc README.md README.txt CITATION.md citations.md
 %license LICENSE
-%{python_sitelib}/python_ternary-%{version}*-info
+%{python_sitelib}/python_ternary-%{version}.dist-info
 %{python_sitelib}/ternary
 
 %changelog

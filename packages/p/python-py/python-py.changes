@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 06:46:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Mon Oct 14 05:25:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a recalcitrant test for Python 3.13's benefit. 

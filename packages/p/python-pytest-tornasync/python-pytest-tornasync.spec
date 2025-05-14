@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tornasync
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,17 @@ Release:        0
 License:        MIT
 Summary:        PyTest plugin for testing Tornado code
 URL:            https://github.com/eukaryote/pytest-tornasync
-Group:          Development/Languages/Python
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-tornasync/pytest-tornasync-%{version}.tar.gz
+Source:         https://github.com/eukaryote/pytest-tornasync/archive/refs/tags/%{version}.tar.gz#/pytest-tornasync-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 5.0}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-base >= 3.5
 Requires:       python-pytest
 Requires:       python-tornado >= 5.0
 BuildArch:      noarch
@@ -48,24 +48,21 @@ apps and handling of plain (undecoratored) native coroutine tests.
 %setup -q -n pytest-tornasync-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # We'll package this ourself
 rm -f %{buildroot}%{_prefix}/LICENSE
 
-# Tests are missing files
-# See: https://github.com/eukaryote/pytest-tornasync/pull/8
-# There are no tags on github:
-# See: https://github.com/eukaryote/pytest-tornasync/issues/9
-# %%check
-# %%pytest
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_tornasync
+%{python_sitelib}/pytest_tornasync-%{version}.dist-info
 
 %changelog

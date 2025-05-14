@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 06 07:21:47 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 0.21.1:
+  * util: fix stack compression compare bug
+  * feat: add FrontendError
+  * dockerui: update platforms key calculation
+  * frontend/dockerui/build: fix "no scan targets for linux/arm64/v8"
+  * frontend/dockerui/build.go: split normalizePlatform()
+  * buildctl: fix tlsdir handling logic for cert-manager.io
+  * client: reorder arguments for integration test
+  * ci: fix vagrant build
+  * build(deps): bump softprops/action-gh-release from 2.2.1 to 2.2.2
+  * vendor: github.com/vbatts/tar-split v0.12.1 (indirect)
+  * control: make sure sending nil cache options does not panic
+  * feat(grpc): preserve unknown detail types when decoding gRPC errors
+
+-------------------------------------------------------------------
 Tue Apr 22 05:03:55 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.21.0:

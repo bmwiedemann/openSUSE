@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-remote
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-agate-remote
 Version:        0.2.2
 Release:        0
 License:        MIT
 Summary:        Read support for remote files for agate
 URL:            http://agate-remote.readthedocs.org/
-Group:          Development/Languages/Python
 Source:         https://github.com/wireservice/agate-remote/archive/refs/tags/%{version}.tar.gz#/agate-remote-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -47,10 +47,10 @@ Agate-remote adds read support for remote files to agate.
 sed -i -e '/^#!\//, 1d' agateremote/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,9 +58,9 @@ sed -i -e '/^#!\//, 1d' agateremote/*.py
 #%%pytest
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/agateremote
+%{python_sitelib}/agate_remote-%{version}.dist-info
 
 %changelog

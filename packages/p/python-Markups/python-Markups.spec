@@ -16,15 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-Markups
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        A wrapper around various text markups
 License:        BSD-3-Clause
 URL:            https://github.com/mitya57/pymarkups
 Source:         https://files.pythonhosted.org/packages/source/m/markups/markups-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/retext-project/pymarkups/pull/20 adapt to Pygments 2.19
-Patch:          pygments.patch
 BuildRequires:  %{python_module Markdown >= 3}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Pygments}

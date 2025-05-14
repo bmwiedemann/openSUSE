@@ -25,11 +25,12 @@ Name:           frescobaldi
 Summary:        Lilypond editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 URL:            http://www.frescobaldi.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        https://github.com/frescobaldi/frescobaldi/archive/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  %mypython-hatchling
 BuildRequires:  %mypython-ly >= 0.9.9
 BuildRequires:  %mypython-pip
 BuildRequires:  %mypython-setuptools

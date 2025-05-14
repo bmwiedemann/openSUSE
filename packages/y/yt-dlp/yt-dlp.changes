@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 08:49:41 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2025.04.30 [boo#1242186]
+  * New option --preset-alias/-t has been added
+
+-------------------------------------------------------------------
 Mon Mar 31 23:24:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2025.03.31

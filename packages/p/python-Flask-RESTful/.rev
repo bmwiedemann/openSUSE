@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>1140815</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>8f7533d8a374d030234adb3a8cf6950d</srcmd5>
+    <version>0.3.10</version>
+    <time>1746542555</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.</comment>
+    <requestid>1274783</requestid>
+  </revision>
 </revisionlist>

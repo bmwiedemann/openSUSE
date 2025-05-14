@@ -102,4 +102,22 @@
     <comment></comment>
     <requestid>1204119</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d84ed35d4a87dae7d75cd51491e9a4ba</srcmd5>
+    <version>5.0.1</version>
+    <time>1746476852</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.1:
+  * Fix minor typos
+  * Migrate packaging and environment management to use uv
+  * Fix release pipeline
+  * Always use trusted publishing
+  * Workaround license publishing issue
+  * Fix packaging: missing source files
+- Switch to pyproject macros.
+- Switch to GitHub tarball to continue running the testsuite.
+- Support upper case and normalized metadata directory name.
+- Patch version number, issue filed upstream.</comment>
+    <requestid>1274316</requestid>
+  </revision>
 </revisionlist>

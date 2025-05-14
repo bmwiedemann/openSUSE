@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 16:08:03 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add abseil-ciso646.patch from upstream to avoid gcc15 deprecation
+  warnings that result in build failure of dependant packages
+
+-------------------------------------------------------------------
 Sat Mar 22 22:02:43 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 20250127.1:

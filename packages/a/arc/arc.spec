@@ -1,7 +1,7 @@
 #
 # spec file for package arc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ This package allows you to unpack *.arc file
 %autosetup -p1
 
 %build
-%make_build OPT="%{optflags}"
+%make_build OPT="%{optflags} -std=gnu11"
 
 %install
 install -Dpm 0755 arc \

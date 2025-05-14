@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 07 15:01:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1+15:
+  + About: fix multiple GPU name display with NVIDIA GPU on Desktop
+    PC
+  + application-shortcut-dialog: Set bold style to the app name
+  + style:
+    - Add frame border radius to rows with illustration
+    - Rename to "illustrated" class to rows with illustration
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Apr 14 15:47:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

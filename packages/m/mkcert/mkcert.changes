@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Mon May  5 01:56:52 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * _service obs_scm param url add suffix .git for clarity
+  * _service change disabled to manual per osc deprecation warning:
+    WARNING: Command 'disabledrun/dr' is obsolete, please convert
+    your _service to use 'manual' and then 'manualrun/mr' instead.
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Add Requires: mozilla-nss-tools for certutil binary
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
+Wed Sep 28 07:52:14 UTC 2022 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Initial package version 1.4.4:
+  * Drop "go vet" from CI due to false positives
+  * Add dl.filippo.io instructions to the README
+  * Only print help when called without arguments
+  * Correct failed to save CA certificate message (#399)
+  * Print the right hosts when a CSR doesn't have SANs
+  * Add support for Firefox in a Snap for Ubuntu 22.04
+  * Add Windows arm64 build to CI pipeline (#396)
+  * Build binaries for darwin/arm64 (#433)
+  * Update dependencies
+  * Update bug-report.md

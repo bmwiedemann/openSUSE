@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  2 14:17:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.12.0
+  * Support for license expressions using the AND and OR operators.
+  * Recognise __version__: str = "0.1" annotated assignments when
+    finding the version number.
+  * Clear error message when referring to a license file in a parent
+    directory, which is not supported.
+
+-------------------------------------------------------------------
 Fri Mar 14 12:32:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.11.0

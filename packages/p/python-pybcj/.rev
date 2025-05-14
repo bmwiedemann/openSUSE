@@ -32,4 +32,15 @@
     <comment></comment>
     <requestid>1239850</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00118e81bb9ec445eb1e1c87092e4afd</srcmd5>
+    <version>1.0.6</version>
+    <time>1746476774</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.6:
+  * ci: release workflows
+  * ci: add GitHub Actions as trusted publisher for PyPi
+  * ci: azure-pipelines</comment>
+    <requestid>1274210</requestid>
+  </revision>
 </revisionlist>

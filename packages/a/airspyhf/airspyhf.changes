@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 14:47:25 UTC 2025 - pgajdos@suse.com
+
+- fix build with gcc15
+  https://github.com/airspy/airspyhf/issues/57
+  + airspyhf-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 21:50:16 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 14:18:56 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  build with gcc15
+  + acct-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Mar 12 12:49:48 UTC 2025 - pgajdos@suse.com
 
 - modified patches

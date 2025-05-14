@@ -1,0 +1,12 @@
+--- kbuild-0.1.9998+svn3613/src/kmk/glob/fnmatch.c	2024-09-19 03:34:43.000000000 +0200
++++ kbuild-0.1.9998+svn3613/src/kmk/glob/fnmatch.c	2025-05-06 17:54:12.786646913 +0200
+@@ -121,7 +121,8 @@
+    whose names are inconsistent.  */
+ 
+ # if !defined _LIBC && !defined getenv && !defined _MSC_VER
+-extern char *getenv ();
++/* getenv() is declared in stdlib.h */
++/* extern char *getenv (); */
+ # endif
+ 
+ # ifndef errno

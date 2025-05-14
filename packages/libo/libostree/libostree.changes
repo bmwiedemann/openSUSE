@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 10:59:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete gnome-common BuildRequires, and add
+  docbook-xsl-stylesheets and xsltproc BuildRequires.
+
+-------------------------------------------------------------------
 Sat Mar 22 17:43:39 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2025.2:

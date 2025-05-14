@@ -66,4 +66,34 @@ AFAIK we do miss an open source SYCL implementation in Factory.</comment>
     <comment></comment>
     <requestid>1270916</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>bdc116076d6391d1477124afbda2ab97</srcmd5>
+    <version>24.10.0</version>
+    <time>1746542610</time>
+    <user>anag_factory</user>
+    <comment>- Use Source URL instead of _service to fetch the source code</comment>
+    <requestid>1274861</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2c112631db550b2d89d335a9c51f383f</srcmd5>
+    <version>25.02.0</version>
+    <time>1747061252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.02.0:
+  * Introducing AdaptiveCpp portable CUDA (PCUDA):
+    AdaptiveCpp 25.02 introduces support for a new programming
+    model in its generic JIT compiler: The portable CUDA (PCUDA)
+    model. This programming model is a dialect of the CUDA and HIP
+    programming model. AdaptiveCpp PCUDA allows taking CUDA or HIP
+    source code, recompile with AdaptiveCpp, and obtain a single
+    single binary that can dispatch kernels to CPUs, Intel GPUs,
+    AMD GPUs, NVIDIA GPUs (or all at the same time).
+  * Full highlights at:
+    https://github.com/AdaptiveCpp/AdaptiveCpp/releases/tag/v25.02.0
+  * Full changelog at:
+    https://github.com/AdaptiveCpp/AdaptiveCpp/compare/v24.10.0...v25.02.0
+* Drop adaptivecpp-24.10.0-cmake4.patch: upstreamed
+</comment>
+    <requestid>1276334</requestid>
+  </revision>
 </revisionlist>

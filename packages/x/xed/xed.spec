@@ -24,7 +24,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/linuxmint/xed
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
+BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3

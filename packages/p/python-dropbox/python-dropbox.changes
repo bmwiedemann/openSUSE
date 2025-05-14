@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon May  5 11:26:23 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
+
+- Update to 12.0.2
+  * Remove the pin for urllib3 (#507)
+  * Fix incorrect pin of requests (#505)
+
+- Update to 12.0.0
+  * Fixes to Restore CI (#492, #501)
+  * Fixes to doc generation (#500, #503)
+  * Manual Spec Update (#498)
+  * Stop providing a hardcoded CA bundle (#489, #499)
+
+- Update to 11.36.2
+  * Fix invalid specifier in stone requirement (#456)
+  * Added _ca_certs property to _SSLAdapter to properly support pickling (broke in SDK v11.33) (#440)
+  * Add ca_certs argument for oauth and dropbox client (#385)
+  * [Setup] Update deprecated description-file to use description_file (#410)
+  * Add scopes to documentation (#408)
+  * Ensure Dropbox error is thrown in refresh access token (#407)
+  * Fix CI test environment (#391)
+  * Add integration tests to the test suite (#377)
+  * Refresh access token when using a very old short-lived access token with unknown expiration (#352)
+  * Bump actions/setup-python from v2.2.1 to v2.2.2 (#342)
+  * Bump codecov/codecov-action from v1.2.1 to v1.3.2 (#339)
+  * Update Release Notes Generator to Fetch Latest Tags (#341)
+  * Fix status classifier in setup.py (#334)
+  * Fix setup.py dependencies by removing pull from requirements.txt (#333)
+  * Move requirements.txt and test/requirements.txt as source of truth (#329)
+  * Update dropbox reference to link to the new name to fix documentation (#328)
+  * Fix and update build step for Python2.7 (#326)
+  * Fix DropboxOAuth2Flow Documentation Parameters (#325)
+  * Bump peter-evans/create-pull-request from v3.7.0 to v3.8.2 (#322)
+  * Bump peter-evans/create-pull-request from v3.5.1 to v3.7.0 (#318)
+  * Bump codecov/codecov-action from v1.0.15 to v1.2.1 (#315)
+  * Bump actions/setup-python from v2.1.4 to v2.2.1 (#306)
+  * Convert integration tests to use pytest instead of unittest (#313)
+  * Add support for app authentication (#305)
+  * Reorganize test directory (#312)
+  * Fix CI matrix Python version (#311
+  * Add stone to setup.py (#300)
+  * Fix links in release notes to be absolute (#287)
+  * Bump peter-evans/create-pull-request from v3.4.1 to v3.5.1 (#297)
+  * change update_version.sh to reflect the renaming of dropbox/dropbox.py to dropbox/dropbox_client.py (#294)
+  * Regenerate client using Stone 3.2.0 (#291)
+  * Bump codecov/codecov-action from v1.0.14 to v1.0.15 (#290)
+  * remove auto generated stone_fixtures.py (#292)
+
+- Add remove_six.patch to remove six from requirements
+
+-------------------------------------------------------------------
 Tue Apr 23 22:28:00 UTC 2024 - Georg Pfuetzenreuter <mail+rpm@georg-pfuetzenreuter.net>
 
 - Switch to sle15_python_module_pythons to build for newer Python stack

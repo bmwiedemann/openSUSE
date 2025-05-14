@@ -1,0 +1,25 @@
+From b8e105f7a7c33540e767fd7c1dbd09f2b69de8d4 Mon Sep 17 00:00:00 2001
+From: Robert Schweikert <rjschwei@suse.com>
+Date: Wed, 7 May 2025 18:38:13 +0200
+Subject: [PATCH 2/3] Set the default user to suse
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 45ac4ae..50600b2 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+ DESTDIR ?=
+ PREFIX ?= /usr
+ RELEASE ?= 1
+-DEFAULT_INSTANCE ?= core
++DEFAULT_INSTANCE ?= suse
+ 
+ ifeq ($(RELEASE),1)
+         PROFILE ?= release
+-- 
+2.47.2
+

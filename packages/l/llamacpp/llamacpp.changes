@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  9 09:25:51 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use source urls instead of obs_scm
+
+- Add libllava and libmtmd libraries
+
+- Update to version 5327:
+  * A new binary llama-mtmd-cli is introduced to replace llava-cli,
+    minicpmv-cli, gemma3-cli (#13012) and qwen2vl-cli (#13141),
+    libllava will be deprecated
+  * Full changes here:
+    https://github.com/ggml-org/llama.cpp/compare/b5158...b5321
+
+- Delete patch 0002-build-main-cli.patch: build system changed
+  upstream
+
+-------------------------------------------------------------------
 Sat Apr 19 21:35:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Remove convert_hf_to_gguf.py

@@ -1,7 +1,7 @@
 #
 # spec file for package a2ps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch9:         a2ps-4.13-utf8.patch
 Patch10:        a2ps-4.13-types.patch
 Patch13:        a2ps-4.14-linker.patch
 Patch17:        a2ps-buildcompare.patch
+# https://savannah.gnu.org/bugs/?66678
+Patch18:        a2ps-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -59,7 +61,7 @@ Requires:       sed
 Requires:       w3m
 Requires:       wdiff
 Requires(post): %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 Suggests:       ImageMagick
 Suggests:       acroread
 Suggests:       gv
@@ -115,6 +117,7 @@ touch -r configure.ac .ref
 %patch -P 13 -p1 -b .p13
 %patch -P 17 -p1 -b .p17
 %patch -P 0   -b .p0
+%patch -P 18 -p1
 cp -f %{SOURCE3} po/ko.po
 find -type f | grep -vE '(parseppd|parsessh).y' | xargs \
 sed -ri 's/59 Temple Place(,| -) Suite 330/51 Franklin Street, Fifth Floor/;s/02111-1307/02110-1301/'

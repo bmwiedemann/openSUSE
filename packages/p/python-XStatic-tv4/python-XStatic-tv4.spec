@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-tv4
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic-tv4
 Version:        1.2.7.0
 Release:        0
 Summary:        AngularJS library "tv4" repackaged for the XStatic standard
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
-Url:            http://geraintluff.github.com/tv4/
+URL:            http://geraintluff.github.com/tv4/
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic-tv4/XStatic-tv4-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -42,15 +42,18 @@ You can find more info about the xstatic packaging way in the package `XStatic`.
 %setup -q -n XStatic-tv4-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.txt
-%{python_sitelib}/*
+%dir %{python_sitelib}/xstatic
+%dir %{python_sitelib}/xstatic/pkg
+%{python_sitelib}/xstatic/pkg/tv4
+%{python_sitelib}/[Xx][Ss]tatic[-_]tv4-%{version}*-info
+%{python_sitelib}/[Xx][Ss]tatic[-_]tv4-%{version}*nspkg.pth
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package warzone2100
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -118,6 +118,9 @@ TIME="\"$(date -d "${modified}" "+%%T")\""
 find .  -name '*.cpp' | xargs sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g"
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake .. \
 %if %{without vulkan}
         -DWZ_ENABLE_BACKEND_VULKAN=Off \
@@ -142,6 +145,7 @@ mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/h
 %fdupes %{buildroot}%{_datadir}
 
 %files -f %{name}.lang
+
 %files -f %{name}_guide.lang
 %license COPYING COPYING.NONGPL COPYING.README
 %doc %{_docdir}/%{name}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Apr 30 23:52:49 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.7.0
+  * Support OpenSSH 10.0
+  * More complete testing
+  * Removed 0001-Add-sshd-auth-binary.patch
+  * Removed 0002-eliminate-misleading-error-message-with-openssh-9.patch
+
+-------------------------------------------------------------------
 Mon Apr 28 09:19:45 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Support OpenSSH 10.0

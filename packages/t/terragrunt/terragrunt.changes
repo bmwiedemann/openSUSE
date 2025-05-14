@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon May 12 18:57:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.78.3:
+  * Bug Fixes
+    When an error retry results in a plan succeeding when it
+    initially failed, usage of run --all -- plan -detailed-exitcode
+    will now properly take into account the final exit code, rather
+    than the first one, meaning that the exit code of the whole run
+    will be zero if no other units fail their plans.
+  * What's Changed
+    - fix #3845 set the correct exit code when a retry is
+      successful. by @wakeful in #3966
+    - docs: Improving Run Queue docs by @yhakbar in #4272
+
+-------------------------------------------------------------------
+Sat May 10 08:58:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.78.2:
+  * feat: enable GCP integration tests in GH Action by @denis256 in
+    #4257
+  * feat: fixed TestGcpWorksWithImpersonateBackend test by
+    @denis256 in #4261
+  * feat: Adding integration tests by @yhakbar in #4198
+  * feat: add Windows integration tests by @denis256 in #4262
+  * fix: Removing HTML font-size by @yhakbar in #4256
+  * docs: Adding Run Queue Docs by @yhakbar in #4249
+  * build(deps): bump github.com/gruntwork-io/boilerplate to v0.6.1
+    by @denis256 in #4263
+  * build(deps): bump github.com/gruntwork-io/terragrunt-engine-go
+    to v0.0.14 by @denis256 in #4263
+  * build(deps): bump golang.org/x/oauth2 to v0.30.0 by @denis256
+    in #4263
+  * build(deps): bump golang.org/x/sync to v0.14.0 by @denis256 in
+    #4263
+  * build(deps): bump google.golang.org/api to v0.232.0 by
+    @denis256 in #4263
+  * build(deps): bump google.golang.org/grpc to v1.72.0 by
+    @denis256 in #4263
+  * chore: dependencies update by @denis256 in #4263
+
+-------------------------------------------------------------------
+Tue May 06 11:02:45 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.78.1:
+  * fix: AWS S3 backend access logging bucket not versioning
+    (#4246)
+  * docs: Updating docs now that stacks are generally available
+    (#4243)
+
+-------------------------------------------------------------------
 Fri May 02 19:54:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.78.0:

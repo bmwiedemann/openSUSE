@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  6 11:33:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
+Tue May  6 10:17:52 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.21.0
+  * bugfix infinite loop in method Terminal.wrap() when "Wide" characters of
+    width 2 (East-Asian or Emoji) are used with a wrap width of 1, and a small
+    performance enhancement, #273 and #274 by @grayjk, merged as #275
+
+-------------------------------------------------------------------
 Thu Dec 14 11:10:32 UTC 2023 - pgajdos@suse.com
 
 - deleted patches

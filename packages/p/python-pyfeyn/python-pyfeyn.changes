@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:13:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Mar 22 08:54:38 UTC 2024 - Max Lin <mlin@suse.com>
 
 - Add %{?sle15_python_module_pythons}

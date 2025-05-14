@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  4 11:37:40 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2025.4.2
+  * emit explicit errors for the service command on unsupported OSes
+  * Fix some issues
+- Drop update-vendor.patch and reproducible.patch
+
+-------------------------------------------------------------------
 Sat Dec 14 11:40:38 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2024.12.1

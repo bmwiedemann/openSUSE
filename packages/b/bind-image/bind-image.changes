@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  6 07:48:54 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- restore executable permission on entrypoint
+
+-------------------------------------------------------------------
+Mon May  5 09:55:34 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
+
+- Move healthcheck into Dockerfile
+
+-------------------------------------------------------------------
 Fri May  2 13:38:50 UTC 2025 - SUSE Update Bot <bci-internal@suse.de>
 
 - Switch to a multistage build and adjust versions metadata

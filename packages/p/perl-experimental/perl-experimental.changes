@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  2 05:36:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.035
+   see /usr/share/doc/packages/perl-experimental/Changes
+
+  0.035     2025-05-01 11:35:41+02:00 Europe/Berlin
+            - regex_sets no longer experimental
+            - switch/smartmatch were deprecated then undeprecated
+            - Properly handle the win32_perlio warning
+
+-------------------------------------------------------------------
 Fri Jan 10 05:33:23 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.034

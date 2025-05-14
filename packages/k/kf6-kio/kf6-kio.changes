@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Redesign ExecutableFileOpenDialog
+  * OpenUrlJob: Add getter for URL
+  * WidgetsUntrustedProgramHandler: Play warning message box sound
+  * Dropjob: Rename configuration option
+  * Dropjob: When DndBehavior is MoveIfSameDevice, respect the ctrl modifier
+  * Dropjob: Add sanity check for mount point comparison
+  * Dropjob: Fix naming scheme of dndToMove -> DndToMove
+  * Dropjob: Add option for alternative Drag & Drop behavior (kde#154804)
+  * KProcessRunner: Fix launching actions without executable
+  * KFileItemDelegate: Set selection highlight more even in Icons view
+  * KFileWidget: Do not override filename with folder name if edited (kde#502794)
+  * Use imported targets for XML libraries
+  * Update version to 6.14.0
+  * KFileWidget: Add quickfilter bar (kde#179483)
+  * KFileWidget: Ignore selected folders during file selection (kde#271400)
+  * Remove code for no longer supported Qt versions
+  * KFileWidget: Fix key navigation escaping in save dialogs (kde#466206)
+  * Show single-click selection emblem when using single-click mouse mode (kde#185793)
+  * KFileItem/KDirLister: add test for paths with square brackets
+  * KUrlNavigatorButton: Use arrow as separators (kde#501587)
+
+-------------------------------------------------------------------
 Sat Apr  5 12:33:16 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

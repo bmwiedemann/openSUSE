@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>9ed7e12bdd6f6a494e4e9ddb881cfa79</srcmd5>
+    <version>0.7.0</version>
+    <time>1747061318</time>
+    <user>anag_factory</user>
+    <comment>new package chainguard-dfc: (d)ocker(f)ile (c)onverter: CLI to
+ convert Dockerfiles to use Chainguard Images and APKs in FROM and RUN lines etc.</comment>
+    <requestid>1276494</requestid>
+  </revision>
+</revisionlist>

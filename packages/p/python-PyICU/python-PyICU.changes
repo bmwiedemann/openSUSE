@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  6 09:30:09 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.15.2
+  * fixed calloc/free mismatch with arg::Q() uses (Fredrik Roubert)
+  * replaced all malloc/calloc/free with std::unique_ptr<T[]>
+- from version 2.15.1
+  * fixed build error missing conditional ICU < 70 in UnicodeSetIterator()
+  * fixed Enum arg parser with broken strict aliasing rules (Jakub Wilk)
+  * replaced all new[]/delete[] with std::unique_ptr<[]>, fixed leaks
+  * replaced most new/delete with std::unique_ptr<>, fixed leaks
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
+Tue May  6 08:34:17 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add pyicu-2.15-gcc15.patch to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Fri Apr 11 09:50:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.15

@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Compress
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,14 +23,15 @@ Version:        1.14
 Release:        0
 Summary:        Compress responses in Flask apps with gzip
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/colour-science/flask-compress
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Compress/Flask-Compress-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli
@@ -53,10 +54,10 @@ Flask-Compress can solve the problem.
 %setup -q -n Flask-Compress-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,7 +67,7 @@ Flask-Compress can solve the problem.
 %doc README.md
 %license LICENSE.txt
 %{python_sitelib}/flask_compress
-%{python_sitelib}/Flask_Compress-%{version}-py*.egg-info
+%{python_sitelib}/[Ff]lask[_-][Cc]ompress-%{version}.dist-info
 %pycache_only %{python_sitelib}/flask_compress/__pycache__
 
 %changelog

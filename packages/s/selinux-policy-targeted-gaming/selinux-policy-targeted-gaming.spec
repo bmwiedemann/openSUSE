@@ -24,6 +24,7 @@ URL:            https://en.opensuse.org/Portal:SELinux/Common_issues#Steam_Proto
 Source1:        README.md
 BuildArch:      noarch
 BuildRequires:  selinux-policy
+BuildRequires:  selinux-policy-targeted
 Requires:       selinux-tools
 Requires:       selinux-policy
 Requires:       selinux-policy-%{selinuxtype}

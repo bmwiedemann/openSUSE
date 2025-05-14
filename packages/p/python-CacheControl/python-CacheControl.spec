@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-CacheControl
-Version:        0.14.2
+Version:        0.14.3
 Release:        0
 Summary:        Caching library for Python requests
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/psf/cachecontrol
 Source:         https://github.com/psf/cachecontrol/archive/v%{version}.tar.gz#/cachecontrol-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core >= 3.2}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

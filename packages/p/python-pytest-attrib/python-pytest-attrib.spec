@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-attrib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,10 +21,11 @@ Version:        0.1.3
 Release:        0
 Summary:        Pytest plugin to select tests based on attributes
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://pypi.python.org/pypi/pytest-attrib/
 Source:         https://github.com/AbdealiJK/pytest-attrib/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION tests
@@ -52,10 +53,10 @@ It offers features similar to the nose plugin nose-attrib.
 rm setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/pytest_attrib
 
 %check
@@ -65,6 +66,6 @@ rm setup.cfg
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pytest_attrib
-%{python_sitelib}/pytest_attrib-%{version}*-info
+%{python_sitelib}/pytest_attrib-%{version}.dist-info
 
 %changelog

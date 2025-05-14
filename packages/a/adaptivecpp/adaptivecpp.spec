@@ -18,17 +18,16 @@
 
 
 Name:           adaptivecpp
-Version:        24.10.0
+Version:        25.02.0
 Release:        0
 Summary:        Open implementation of SYCL for CPUs and GPUs
 License:        BSD-2-Clause
 URL:            https://adaptivecpp.github.io
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/AdaptiveCpp/AdaptiveCpp/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         0001-Use-bin-env-python3-instead-of-python3-in-scripts.patch
 Patch2:         0002-Remove-realpath-in-acpp.patch
-Patch3:         adaptivecpp-24.10.0-cmake4.patch
 BuildRequires:  boost-devel
-BuildRequires:  clang19-devel
+BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -36,12 +35,12 @@ BuildRequires:  gcc-c++
 BuildRequires:  libboost_context-devel
 BuildRequires:  libboost_fiber-devel
 BuildRequires:  libboost_test-devel
-BuildRequires:  libedit-devel
-BuildRequires:  llvm19-devel
+BuildRequires:  llvm-devel
 BuildRequires:  make
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  terminfo
+BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 ExcludeArch:    i586
@@ -122,14 +121,17 @@ Requires:       libacpp-clang = %{version}
 Obsoletes:      libadaptivecpp-devel <= %{version}-%{release}
 
 %description devel
-Development files for AdaptiveCpp
+AdaptiveCpp is an open implementation of SYCL and C++ standard parallelism
+for CPUs and GPUs from all vendors.
+
+This package contains the development files for AdaptiveCpp.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n AdaptiveCpp-%{version}
 
 %build
 %define __builder ninja
-%cmake
+%cmake -DCMAKE_SKIP_RPATH=ON
 
 %cmake_build
 
@@ -148,9 +150,11 @@ Development files for AdaptiveCpp
 %{_bindir}/acpp
 %{_bindir}/acpp-hcf-tool
 %{_bindir}/acpp-appdb-tool
+%{_bindir}/acpp-pcuda-pp
 %{_bindir}/acpp-info
 %{_bindir}/syclcc
 %{_bindir}/syclcc-clang
+%{_bindir}/hipSYCL/
 
 # Leap <= 15.6
 %if 0%{?sle_version} <= 150600 && 0%{?is_opensuse}

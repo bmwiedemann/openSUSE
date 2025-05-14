@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Code-TidyAll
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,10 @@
 
 %define cpan_name Code-TidyAll
 Name:           perl-Code-TidyAll
-Version:        0.840.0
+Version:        0.850.0
 Release:        0
-%define cpan_version 0.84
+# 0.85 -> normalize -> 0.850.0
+%define cpan_version 0.85
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Engine for tidyall, your all-in-one code tidier and validator
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -43,20 +44,20 @@ BuildRequires:  perl(Log::Any)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo) >= 2.000000
 BuildRequires:  perl(Moo::Role)
-BuildRequires:  perl(Path::Tiny) >= 0.098
+BuildRequires:  perl(Path::Tiny) >= 0.98.0
 BuildRequires:  perl(Scope::Guard)
-BuildRequires:  perl(Specio) >= 0.40
+BuildRequires:  perl(Specio) >= 0.400
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Library::Builtins)
 BuildRequires:  perl(Specio::Library::Numeric)
-BuildRequires:  perl(Specio::Library::Path::Tiny) >= 0.04
+BuildRequires:  perl(Specio::Library::Path::Tiny) >= 0.40.0
 BuildRequires:  perl(Specio::Library::String)
 BuildRequires:  perl(Test::Class::Most)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Warnings)
-BuildRequires:  perl(Text::Diff) >= 1.44
+BuildRequires:  perl(Text::Diff) >= 1.440
 BuildRequires:  perl(Text::Diff::Table)
 BuildRequires:  perl(Time::Duration::Parse)
 BuildRequires:  perl(Try::Tiny)
@@ -76,15 +77,15 @@ Requires:       perl(Log::Any)
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moo) >= 2.000000
 Requires:       perl(Moo::Role)
-Requires:       perl(Path::Tiny) >= 0.098
+Requires:       perl(Path::Tiny) >= 0.98.0
 Requires:       perl(Scope::Guard)
-Requires:       perl(Specio) >= 0.40
+Requires:       perl(Specio) >= 0.400
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Library::Builtins)
 Requires:       perl(Specio::Library::Numeric)
-Requires:       perl(Specio::Library::Path::Tiny) >= 0.04
+Requires:       perl(Specio::Library::Path::Tiny) >= 0.40.0
 Requires:       perl(Specio::Library::String)
-Requires:       perl(Text::Diff) >= 1.44
+Requires:       perl(Text::Diff) >= 1.440
 Requires:       perl(Text::Diff::Table)
 Requires:       perl(Time::Duration::Parse)
 Requires:       perl(Try::Tiny)
@@ -133,7 +134,7 @@ This is the engine used by tidyall - read that first to get an overview.
 You can call this API from your own program instead of executing 'tidyall'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

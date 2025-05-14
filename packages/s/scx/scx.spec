@@ -19,7 +19,7 @@
 %define libbpf_min_ver 1.5.0
 
 Name:           scx
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -34,8 +34,10 @@ BuildRequires:  libbpf-devel >= %libbpf_min_ver
 BuildRequires:  lld
 BuildRequires:  meson >= 1.3.0
 BuildRequires:  ninja
+BuildRequires:  protobuf-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libbpf) >= %libbpf_min_ver
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(systemd)
 
 %description

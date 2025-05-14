@@ -31,4 +31,12 @@
 - drop add-network-marker.patch (upstream)</comment>
     <requestid>1137817</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>7d06bea5fceebc1dd4431d659ead7aae</srcmd5>
+    <version>5.15</version>
+    <time>1747073968</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276906</requestid>
+  </revision>
 </revisionlist>

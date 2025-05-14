@@ -1,7 +1,7 @@
 #
 # spec file for package fuseiso
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           fuseiso
-BuildRequires:  fuse-devel
-BuildRequires:  glib2-devel
-BuildRequires:  libtool
-BuildRequires:  zlib-devel
-Requires:       fuse
+Version:        20070708
+Release:        0
 Summary:        FUSE module to mount CD-ROM images with ISO9660 filesystems in them
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Version:        20070708
-Release:        0
-Source:         %{name}-%{version}.tar.bz2
-Patch0:         fuseiso-20061017.patch
-URL:            http://apps.sourceforge.net/mediawiki/fuse/index.php?title=FuseIso
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://sourceforge.net/projects/fuseiso/
+Source0:        %{name}-%{version}.tar.bz2
+Patch0:         %{name}-fuse3.patch
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(zlib)
+Requires:       fuse3
 
 %description
 Fuseiso is a FUSE filesystem module which allows to mount many ISO9660
@@ -41,19 +41,19 @@ zisofs extensions and also supports the CD-ROM image types img, bin,
 mdf and nrg.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR="$RPM_BUILD_ROOT" install
+%make_install
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING* ChangeLog NEWS README*
-%{_bindir}/*
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README
+%{_bindir}/%{name}
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 06:15:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.
+
+-------------------------------------------------------------------
 Mon Jan 22 12:22:31 UTC 2024 - Axel Braun <axel.braun@gmx.de>
 
 - enable %{?sle15_python_module_pythons}

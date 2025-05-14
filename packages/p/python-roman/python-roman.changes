@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  9 05:17:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0:
+  * Drop support for Python 3.7, 3.8.
+  * Add support for lower case roman numerals.
+  * Remove overlooked mentions of the Python 2.1.1 license
+  * Add support for Python 3.12 and 3.13.
+  * Change license to the Zope Public License (ZPL) version 2.1
+  * Add support for Python 3.10, 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

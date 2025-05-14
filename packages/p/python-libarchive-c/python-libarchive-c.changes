@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 30 06:22:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2:
+  * Change to the library: fix inoperative `pathname` argument of
+    `add_files` method (#135), by @nvinson.
+  * Change to the tests: update a test to handle new libarchive
+    versions (#131).
+- drop libarchive.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Nov 12 12:33:08 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream libarchive.patch to fix tests

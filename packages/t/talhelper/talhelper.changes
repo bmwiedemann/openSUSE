@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu May 08 08:22:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.24:
+  * docs: update CLI reference documentation (#991)
+  * chore(deps): update dependency siderolabs/talos to v1.10.1
+  * chore(github-action): update actions/setup-go action to v5.5.0
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.10.1
+  * feat(genconfig): reflect to the installer image url change
+  * chore(schema): update talos-extensions.yaml JSON schema (#989)
+  * chore(schema): update talconfig.yaml JSON schema (#985)
+  * fix(code): make `golangci-lint` happy
+  * docs(reference): update docs
+  * feat(genconfig): support changing the output file name
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:1.24-bookworm docker digest
+    to be739eb (#984)
+  * chore(github-action): update renovatebot/github-action action
+    to v42.0.1
+  * chore(schema): update talos-extensions.yaml JSON schema (#980)
+  * chore(github-action)!: Update golangci/golangci-lint-action
+    action to v8
+  * feat(readme): thank you @oliverbaehler for the sponsor!
+  * chore(schema): update talos-extensions.yaml JSON schema (#977)
+  * chore(container): update golangci/golangci-lint docker tag to
+    v2.1.6
+  * chore(github-action)!: Update renovatebot/github-action action
+    to v42
+  * chore(schema): update talconfig.yaml JSON schema (#972)
+  * fix(schema): fix json schema for `volumes` and `userVolumes`
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.0.23
+  * feat: update flake
+  * feat: update Scoop for talhelper version v3.0.23
+
+-------------------------------------------------------------------
 Fri May 02 04:49:09 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.23:

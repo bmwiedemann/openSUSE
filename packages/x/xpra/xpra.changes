@@ -1,9 +1,207 @@
 -------------------------------------------------------------------
+Sun May 04 18:35:36 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250504.7a6f181e:
+  * notification action_id is a string
+  * #4573 timeout can be negative
+  * add type hints
+  * fix authentication issues: need the default digests
+  * move 'digest' to 'authentication' and out of net_util
+  * stop support legacy 'hmac' alias
+  * more type hints
+
+-------------------------------------------------------------------
+Sat May 03 17:41:51 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250504.c538921e:
+  * more type hints
+  * don't care about uinput
+  * cosmetic
+  * #4573 dbus_id is a string
+  * #4572 x11 properties can't be used with wayland backend
+  * whitespace
+  * must have /bin scripts to use clients or servers
+  * preserve child order: use a sequence number
+  * logging tweak: don't show menus when debugging 'exec'
+  * Cython 3.1.0rc1
+  * #4571 no need to invoke a shell
+  * support older / misspelt logging category names via alias lookup
+  * add example caps using json
+
+-------------------------------------------------------------------
+Wed Apr 30 15:55:05 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250430.ebfd5860:
+  * #4570 derp: cut & paste gone wrong
+  * provide a default / fallback get_mouse_position implementation
+  * #4570 add explicit weak dependency on notification library
+
+-------------------------------------------------------------------
+Wed Apr 30 14:54:34 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250430.51ffb918:
+  * #4570 fix client tray
+  * #4523 finish converting 'notification' to a fully prefixed module
+  * #4523 finish converting 'cursor' to a fully prefixed module
+  * #4523 finish converting 'mmap' to a fully prefixed module
+  * #4523 finish converting 'notification' to a fully prefixed module
+  * #4523 finish converting 'pointer' to a fully prefixed module
+  * bail out early with a more useful message
+
+-------------------------------------------------------------------
+Wed Apr 30 13:22:10 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250430.34be35ce:
+  * use 'auth' logger for challenge handling
+  * #4570 re-add missing 'salt-digest' capability
+  * this module no longer exists
+  * split auth caps from generic network caps
+  * split help to its own function
+  * #1789 make it easier to run the u2f tool
+  * convert Gtk.MessageDialog to avoid deprecation warnings
+  * #4523 finish moving workspace to a submodule
+
+-------------------------------------------------------------------
+Tue Apr 29 15:41:10 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250429.42406b49:
+  * #4570 add debug logging
+  * better wording
+  * #4566 move towards using 0 for no-window / root-window / all windows
+  * push 'cursor_data' down to PointerWindow
+  * use a closure to set watcher-pid
+  * push 'default_cursor_data' soft dependency down to window object
+  * type fixes
+  * minor renaming + debug logging
+  * derp: missing arg
+  * fix opengl probing which uses a fake client object
+  * remove unused var
+  * handle missing opengl message
+  * remove unused types
+  * subclass StubWindow to get all required methods
+  * fix 'not a package' error
+  * move headerbar to a module
+  * #4523 split window some more
+  * add plucky for 'install-repo' subcommand
+
+-------------------------------------------------------------------
+Mon Apr 28 15:46:49 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.4.0+git20250427.104a44d7:
+  * #4523 also split window class into feature modules
+  * move window to its own module and factory
+  * fix type hints
+  * oops
+  * clearer distinction between client and server packet handlers
+  * try to switch to blocking ssl sockets on win32
+  * constify + stricter types
+  * tolerate packet parsing errors, at least for now
+  * try to build for centos stream9 arm64
+  * match 3ea9a1f849e4e43636328faac8cd9d1b77a013df
+  * confusion over return types
+  * #4496 toggle for the new prefixed packet type
+  * #4523 add a new dedicate module prefix for pings
+  * always use utf8 encoded log events
+  * #4496 use newer packet types in non-backwards compatible mode
+  * mmap area is not an int
+  * avoid tray errors when connection fails
+  * #4496 / #4566 make it possible to stop overloading draw image data
+  * make it easier to test with extra cythonization
+  * #4566 -1 indicates no latency available
+  * #4566 we sometimes use -1 to indicate 'no / not a window'
+  * #4496 make it easier to turn off backwards compatibility earlier
+  * #4566 stricter data types: bell, notification, etc
+  * #4566 force notification app_icon to use a string
+  * #4566 convert more callers
+  * older python versions can't unpack, so duplicate the values
+  * always log keyboard id using hex
+  * #4566 stricter packet data parsing
+  * fix Cython 3.1 warnings
+  * remove 'xdg-' prefix for menu
+  * simplify using type alias
+  * #4547 honour cursors flag
+  * remove debug logging
+  * stronger type hints
+  * #4564 they've also changed the package name in Ubuntu
+  * #4491 fix backwards compatibility
+  * better error message
+  * try harder to identify modifier key events
+  * weaker dependency for html5 client
+  * also update deb build script
+  * forgot to bump version here
+  * #4561 Debian has bumped the openh264 version
+  * make it possible to change load_lock without causing havoc
+  * stronger type hints
+  * refactor osclose utility function
+  * oops: refactoring did not update string
+  * update packaging to match bf3e565df68da9c80021afa71e6506480dc3ac48
+  * #4523 split notifications, systray and clipboard out of gui
+  * forgot to update some tests for bf3e565df68da9c80021afa71e6506480dc3ac48
+  * #4523 rename all modules to use singular form more consistently
+  * add more subsystem templates
+  * add more subsystem docs
+  * IDE refactoring forgot docs
+  * stronger type hints
+  * linter type hint fixes
+  * test fixups
+  * prettify test output
+  * #4523 split into more sub-modules
+  * prevent naming conflict
+  * #4523 split ssh agent to its own module
+  * minor linter warnings
+  * derp: infinite recursion!
+  * remove debug logging
+  * convert client_type to an attribute
+  * cosmetic warnings and type hints
+  * use 'session_type' attribute instead of get_server_mode() function
+  * keep setup and cleanup in the same class
+  * #4523 move 'ClientExtras' to another client subsystem
+  * handle usual close window shortcuts
+  * simplify: no need to keep references to menu items
+  * more type hints
+  * Python 3.13 is stable, so test with that
+  * fix deprecation warning
+  * simplify
+  * oops: must convert string to a boolean
+  * #4523 forgot to add aes client module
+  * simplify
+  * fix compatibility with newer python versions
+  * log is not a logger..
+  * #4523 add startup_complete() to client mixins
+  * add types hints
+  * #511 forgot to actually add the files
+  * derp: forgot to update packaging in d81dff2c32236130ffae36bdf00d94a7861faaba
+  * #4523 move aes to its own module
+  * oops: search and replace gone wrong
+  * #4523 default value for 'file-transfer' client feature
+  * #4523 move challenge and ssl to new modules
+  * #4523 move control to a module
+  * remove debug
+  * remove unused logger
+  * constify + remove unused attribute
+  * move mouse handling to PointerClient
+  * rename for better consistency
+  * remove unused attributes, add stronger types
+  * stronger type hints
+  * include build info with FULL_INFO >= 1
+  * match new 'build' data structure
+  * split into more sub-modules
+  * add keyboard and pointer docs
+  * #4556: Minor README.md spelling
+  * split input devices into two: keyboard and pointer modules
+  * make it possible to enable read or write or both
+  * #4555 also document 'connect-test'
+  * #4555 add 'id' to man page
+  * bandwidth detection is in 'network-state', now optional
+  * can't use get_entries_for_keyval without a keyval
+  * some client connections don't support cursors
+
+-------------------------------------------------------------------
 Sat Apr 19 22:43:07 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - For some reason /usr/bin/{run_scaled,xpra,xpra_launcher} were all having
   "#!python" put as the 1st line resulting in a wrong-interpreter error
-  * Adding a find command that will use set to replace "#!python" with
+  * Adding a find command that will use sed to replace "#!python" with
   "/usr/bin/python3"
 
 -------------------------------------------------------------------

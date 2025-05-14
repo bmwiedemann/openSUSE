@@ -30,7 +30,7 @@
 %bcond_with acl
 %endif
 Name:           onednn
-Version:        3.7.2
+Version:        3.7.3
 Release:        0
 Summary:        oneAPI Deep Neural Network Library (oneDNN)
 License:        Apache-2.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysmb
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,20 @@
 
 
 Name:           python-pysmb
-Version:        1.2.9.1
+Version:        1.2.11
 Release:        0
 Summary:        SMB/CIFS library to support file sharing between Windows and Linux machines
 License:        Zlib
-Group:          Development/Languages/Python
 URL:            https://miketeo.net/projects/pysmb
 Source:         https://files.pythonhosted.org/packages/source/p/pysmb/pysmb-%{version}.zip
-# PATCH-FIX-UPSTREAM python-pysmb-drop-SafeConfigParser.patch gh#miketeo/pysmb#219 badshah400@gmail.com -- Replace deprecated SafeConfigParser with ConfigParser
-Patch0:         python-pysmb-drop-SafeConfigParser.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-pyasn1
+Requires:       python-tqdm
 BuildArch:      noarch
 # SECTION test requirements
 %if 0%{?sle_version} && 0%{?sle_version} <= 150400
@@ -53,10 +53,10 @@ pysmb is an experimental SMB/CIFS library written in Python. It implements the c
 sed -Ei "1{/^#!\/usr\/bin\/python/d}" python*/smb/*/sha256.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -74,6 +74,6 @@ pytest-%{$python_bin_suffix} ${python_testdir} -k 'not (SMB or test_broadcast)'
 %license LICENSE
 %{python_sitelib}/smb/
 %{python_sitelib}/nmb/
-%{python_sitelib}/pysmb-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/pysmb-%{version}.dist-info/
 
 %changelog

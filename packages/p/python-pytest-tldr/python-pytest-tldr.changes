@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 06:59:51 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Nov 30 11:56:24 UTC 2022 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Remove python_module macro definition

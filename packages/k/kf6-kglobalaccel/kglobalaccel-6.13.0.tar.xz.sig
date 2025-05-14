@@ -1,7 +1,0 @@
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQSQqWisqEU3zCe5nq8sjfWHptSqwQUCZ+/mBgAKCRAsjfWHptSq
-wTxdAQCrLkaMRYVhmmTmlV3QFcjG/7t7mwedujbFhwQrs60P2wD+NgxTb9AeO1YX
-FiDauHT+QcXAW41Cu+iVXOyvYljMqwA=
-=Wnid
------END PGP SIGNATURE-----

@@ -335,4 +335,12 @@ and that one is GPL3.</comment>
     <comment>- Update to release 4.14.1</comment>
     <requestid>1251166</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e62b82c8e9d6619b25b802d4ecbcf4c0</srcmd5>
+    <version>4.14.2</version>
+    <time>1746476861</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 4.14.2</comment>
+    <requestid>1274289</requestid>
+  </revision>
 </revisionlist>

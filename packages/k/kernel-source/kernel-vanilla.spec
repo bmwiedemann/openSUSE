@@ -18,8 +18,8 @@
 
 
 %define srcversion 6.14
-%define patchversion 6.14.4
-%define git_commit 584fafacabcb48507d4102e6f4f7cc782ede58ae
+%define patchversion 6.14.6
+%define git_commit ad69173661e912fc54ea9589c400528b76aa8aca
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -39,9 +39,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,mkspec,compute-PATCHVERSION.sh,arch-symbols,log.sh,try-disable-staging-driver,compress-vmlinux.sh,mkspec-dtb,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        6.14.4
+Version:        6.14.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g584fafa
+Release:        <RELEASE>.gad69173
 %else
 Release:        0
 %endif
@@ -762,6 +762,9 @@ Supplements:    packageand(%name:kernel-devel%variant)
 %else
 Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
+%endif
+%if "%{compress_modules}" == "zstd"
+Requires:       zstd
 %endif
 %if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
 Requires:       dwarves >= 1.22

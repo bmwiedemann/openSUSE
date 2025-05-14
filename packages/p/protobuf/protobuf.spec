@@ -1,7 +1,7 @@
 #
 # spec file for package protobuf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20230125.3
-%global         sover 28_3_0
+%global         sover 29_3_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
@@ -66,7 +66,7 @@
 %global protoc_arch sparc_64
 %endif
 Name:           protobuf
-Version:        28.3
+Version:        29.3
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
@@ -206,6 +206,7 @@ install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto
 # manual ln that we could not manage to get into versionize-shlibs.patch
 ln -s libutf8_range-%{version}.0.so %{buildroot}/%{_libdir}/libutf8_range.so
 ln -s libutf8_validity-%{version}.0.so %{buildroot}/%{_libdir}/libutf8_validity.so
+install -D java/core/src/main/resources/google/protobuf/java_features.proto %{buildroot}%{_includedir}/java/core/src/main/resources/google/protobuf/java_features.proto
 
 # create maven metadata for the protoc executable
 install -dm 0755 %{buildroot}%{_datadir}/maven-metadata

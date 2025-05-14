@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Wed May  7 12:09:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 4.0.1 (bsc#1242704):
+  - Add Cygwin support.
+  - Update config.guess and config.sub to the latest versions.
+  - Fix pkg-config files for custom paths.
+  - Set LD/LDXX unconditionally to CC/CXX, since LDFLAGS/LDXXFLAGS from ./configure rely on it.
+- Update to 4.0.0:
+  - sync soversion and major_version
+  - The added number formatting feature requires an ABI change,
+    hence the increase to SOVERSION=4.
+  - Packagers outside of the Linux distributions sometimes use
+    the major version number as the equivalent of SOVERSION on
+    their platforms and have an incorrect SOVERSION for 2.5.1,
+    which requires SOVERSION=3.
+  - While SOVERSION is not required to match the major
+    version number (example: glibc), mpdecimal will from
+    now on take the path of least resistance and always use
+    SOVERSION=MPD_MAJOR_VERSION.
+  - The jump to 4.0.0 should also remind users that a C++ library
+    is available.
+  - Support for out-of-tree build.
+  - Support for pkg-config.
+  - Unix: support for Loongson.
+  - Unix: support for CheriBSD.
+  - Compilers: support for icx, icpx, ibm-clang_r, ibm-clang++_r,
+    CompCert, clang-cl and emscripten.
+  - Windows: support for MSYS2/MinGW.
+  - MSVC: the build now uses /O2 /DNDEBUG.
+  - MSVC: new arm64/arm32 cross build scripts.
+  - AIX: the shared libraries are now installed as versioned
+    objects, e.g., shr4.o, shr4_64.o.
+  - New ./configure switches:
+  - --enable-static: enable/disable the build of the static
+    libraries (default: enabled).
+  - --enable-pc: enable/disable the install of the pkgconfig
+    files (default: enabled).
+  - --enable-doc: enable/disable the install of the documentation
+    (default: enabled).
+  - New man pages direct users to the mpdecimal-doc package or
+    the online HTML documentation.
+  - The prebuilt HTML documentation is now in the separate
+    mpdecimal-doc package, which gives distributions that reject
+    prebuilt documentation the option to disregard it and use the
+    new man pages.
+  - libmpdec:
+    - Add the “z” format specifier (coerce negative zeros to
+      positive).
+    - In extremely rare cases the transcendental functions (exp,
+      ln, log10) did not set the Subnormal/Underflow flags. The
+      reason is that in the case of an exponent boundary the Ziv
+      correction loop for correct rounding requires very few
+      iterations to arrive at the correctly rounded result, but
+      may need many more iterations to arrive at the correct
+      flags.
+    - In these cases, Subnormal/Underflow is not very
+      informative, so the status quo was to skip the extra
+      iterations.
+    - Version 4.0.0 now specializes exponent boundary cases
+      and uses up to five additional iterations to set
+      Subnormal/Underflow. The refactored code has no speed
+      penalty on average; in fact, in the deccheck tests (random
+      tests with a bias towards corner cases) it is slightly
+      faster.
+    - No cases have been found where more than two additional
+      iterations are required, but they may exist.
+    -eability fixes
+    - mpd_qset_string_exact(), mpd_qset_i64_exact() and
+      mpd_qset_u64_exact() can now be called with a nonzero
+      status. Previously, the functions could return
+      NaN/Invalid_operation in that case.
+    - This is listed under “reliability fixes” since there is
+      no possible scenario under which these functions would
+      legitimately be called with a nonzero status.
+  - libmpdec++
+    - Add input validation for Decimal.shiftl(), Decimal.shiftr()
+      and Decimal::ln10().
+
+-------------------------------------------------------------------
 Thu Sep  2 13:07:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Switch on _multibuild with the separate test step (to minimize

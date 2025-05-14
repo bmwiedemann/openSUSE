@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           okular
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -206,7 +206,6 @@ sed -i 's#3.22#3.20#' CMakeLists.txt
 %{_kf6_plugindir}/okular_generators/okularGenerator_tiff.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_txt.so
 %{_kf6_plugindir}/okular_generators/okularGenerator_xps.so
-%{_kf6_sharedir}/kconf_update/okular.upd
 %{_kf6_sharedir}/okular/
 
 %files spectre

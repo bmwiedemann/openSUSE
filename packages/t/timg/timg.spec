@@ -1,6 +1,7 @@
 #
 # spec file for package timg
 #
+# Copyright (c) 2025 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %define force_gcc_version 13
 Name:           timg
-Version:        1.6.0
+Version:        1.6.2
 Release:        0
 Summary:        Terminal image viewer
 License:        GPL-2.0-only
@@ -29,6 +30,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++
 %else
 BuildRequires:  gcc-c++
+BuildRequires:  qoi-devel
 %endif
 BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  pkgconfig(libavcodec)
@@ -58,7 +60,9 @@ character blocks if these are not available.
 export CXX="g++-%{?force_gcc_version}"
 %endif
 %cmake  \
+%if 0%{?suse_version} < 1600
     -DWITH_QOI_IMAGE=OFF \
+%endif
     -DTIMG_VERSION_FROM_GIT=OFF
 %{nil}
 %cmake_build

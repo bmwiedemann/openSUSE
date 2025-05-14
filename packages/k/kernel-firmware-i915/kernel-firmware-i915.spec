@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 6a006cef10cebfaa282100a81cb45ad3a9212721
+%define git_version 8d82acd29b5c115f0b75b17907ebce712c6f2e22
 
 Name:           kernel-firmware-i915
-Version:        20250410
+Version:        20250425
 Release:        0
 Summary:        Kernel firmware files for Intel i915 graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyprimes
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
+# Alpha releases also contain a digit, assuming 0 if not provided
+%define wheel_version %{version}0
 Name:           python-pyprimes
 Version:        0.2.2a
 Release:        0
 Summary:        Generate and test for prime numbers
 License:        MIT
-Group:          Development/Languages/Python
-Url:            http://code.google.com/p/pyprimes/
+URL:            http://code.google.com/p/pyprimes/
 Source:         https://files.pythonhosted.org/packages/source/p/pyprimes/pyprimes-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -62,10 +64,10 @@ sed -i 's/\r$//' CHANGES.txt
 sed -i 's/\r$//' README.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -74,9 +76,9 @@ sed -i 's/\r$//' README.txt
 %endif
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc CHANGES.txt README.txt
 %license LICENCE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyprimes
+%{python_sitelib}/pyprimes-%{wheel_version}.dist-info
 
 %changelog

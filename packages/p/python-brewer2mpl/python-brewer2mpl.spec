@@ -1,7 +1,7 @@
 #
 # spec file for package python-brewer2mpl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-brewer2mpl
 Version:        1.4.1
 Release:        0
 Summary:        colorbrewer2org color maps for Python and matplotlib
 License:        Apache-2.0 AND MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jiffyclub/brewer2mpl/wiki
 Source:         https://files.pythonhosted.org/packages/source/b/brewer2mpl/brewer2mpl-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/jiffyclub/palettable/v%{version}/license.txt
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-matplotlib
@@ -48,16 +48,16 @@ https://github.com/jiffyclub/brewer2mpl/wiki.
 cp %{SOURCE10} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
 %license license.txt
-%{python_sitelib}/*
+%{python_sitelib}/brewer2mpl
+%{python_sitelib}/brewer2mpl-%{version}.dist-info
 
 %changelog

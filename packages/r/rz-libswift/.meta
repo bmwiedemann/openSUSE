@@ -1,0 +1,6 @@
+<package name="rz-libswift" project="openSUSE:Factory">
+  <title>Swift demangler for Rizin</title>
+  <description>Plugin for Rizin to demangle swift binaries
+</description>
+  <url>https://github.com/rizinorg/rz-libswift</url>
+</package>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May  2 14:35:23 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.12.0
+  * Support for license expressions using the AND and OR operators.
+  * Recognise __version__: str = "0.1" annotated assignments when
+    finding the version number.
+  * Clear error message when referring to a license file in a parent
+    directory, which is not supported.
+- Update to 3.11.0
+  * Support for SPDX license expressions and multiple license files,
+    as detailed in PEP 639:
+      license = "BSD-3-Clause"
+      license-files = ["LICENSE"]
+    For now, only a single license identifier is allowed. More complex
+    expressions describing multiple licenses & expressions may be supported
+    in a future version.
+  * The metadata format in produced packages is now version 2.4, to support
+    the expanded license information.
+
+-------------------------------------------------------------------
 Tue Jan 14 02:39:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.10.1:

@@ -1,7 +1,7 @@
 #
 # spec file for package site-config
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -144,7 +144,8 @@ EOF
 
 %files
 %defattr (-,root,root)
-%doc AUTHORS COPYING README
+%license COPYING
+%doc AUTHORS README
 %{_datadir}/site
 %{_sysconfdir}/profile.d/*.*
 

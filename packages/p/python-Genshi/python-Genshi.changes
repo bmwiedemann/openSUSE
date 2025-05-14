@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 06:30:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add remove_six.patch removing six from the package
+  (gh#edgewall/genshi!92).
+
+-------------------------------------------------------------------
 Wed Sep 25 14:08:40 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Fix build error under Leap.

@@ -108,6 +108,9 @@ mkdir -p build/build/downloads/lua_dev_deps/
 cp %{SOURCE10} build/build/downloads/lua_dev_deps/
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # set vars to make build reproducible in spite of config/CMakeLists.txt
 HOSTNAME=OBS
 USERNAME=OBS

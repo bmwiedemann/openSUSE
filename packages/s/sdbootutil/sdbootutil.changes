@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 05 12:49:05 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20250505.f4890e9:
+  * Build only for Intel and arm (bsc#1242256)
+
+-------------------------------------------------------------------
 Wed Apr 30 11:49:27 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20250430.f7d1ad1:

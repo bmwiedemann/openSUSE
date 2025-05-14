@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue May 06 11:03:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.4:
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * mon: add support for restoring OCS CRs
+  * mons: fix quorum restoration with IPv6 monitor addresses
+  * ci: update ubuntu version to 22.04
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * core: remove unused Execute()
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump github.com/spf13/cobra
+  * csi: fix rbd listing failure by correctly filtering builtin
+    block pools
+  * maintenance: remove hardcoded crd constants in restoreCrd
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump the k8s-dependencies group with 3 updates
+  * build(deps): bump github.com/rook/rook in the
+    github-dependencies group
+  * build(deps): bump wagoid/commitlint-github-action from 6.2.0 to
+    6.2.1
+  * ci: increase wait timeout for blockready state
+  * build: update go version to 1.23
+  * build(deps): bump wagoid/commitlint-github-action from 6.1.2 to
+    6.2.0
+  * csi: add test for rbd ls with rados namespace
+
+-------------------------------------------------------------------
 Tue Jan 28 19:53:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package kubectl-rook-ceph: provide common management and

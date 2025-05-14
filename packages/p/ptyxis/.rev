@@ -124,4 +124,22 @@
   + Respect gtk-decoration-layout for tab close buttons (forwarded request 1254596 from iznogood)</comment>
     <requestid>1255562</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>272a7ac5b0834e32295e4b390e914d57</srcmd5>
+    <version>48.3</version>
+    <time>1746721434</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.3:
+  + New build to work around GNOME CI infrastructure issue.
+- Changes from version 48.2:
+  + Fix palette selection via keyboard.
+  + Avoid saving sessions twice during shutdown which fixes an
+    issue where session state was getting cleared after destruction
+    of tabs.
+  + Make background opaque in fullscreen as Wayland forbids
+    compositors from allowing contents to bleed through fullscreen
+    surfaces anyway.
+  + Updated translations. (forwarded request 1275356 from iznogood)</comment>
+    <requestid>1275538</requestid>
+  </revision>
 </revisionlist>

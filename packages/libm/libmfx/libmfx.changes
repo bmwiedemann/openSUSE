@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 06:55:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop storing build machine kernel version (boo#1101107)
+
+-------------------------------------------------------------------
 Mon Feb  5 09:07:36 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - disabled compiling samples, tools and tutorials, which are no 

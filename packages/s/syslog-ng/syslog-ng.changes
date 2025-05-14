@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  8 07:42:47 UTC 2025 - peter czanik <peter@czanik.hu>
+
+- update to 4.8.2 which is a bug fix release:
+  * fixes an inproper certificate validation problem (CVE-2024-47619)
+  * fixes elasticsearch-http() and other drivers after a backwards
+    incompatible fix in format-json
+  * reliability and performance improvements in the S3 destination 
+
+-------------------------------------------------------------------
 Wed Apr  2 19:42:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Drop explicit requirements of -devel: pcre switched to pcre2

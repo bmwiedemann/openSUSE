@@ -302,6 +302,14 @@ diff -u ld/ldgram.y ld/ldgram.y.orig
 sed -i -e '/BFD_VERSION_DATE/s/$/-%(echo %release | sed 's/\.[0-9]*$//')/' bfd/version.h
 RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-error"
 
+# gcc15 and up default to c23, these older binutils would need patches
+# for that.  As an impeding version update fixes that as well, simply
+# override the compiler instead of bothering with backports
+%if %{suse_version} > 1600
+CC="gcc -std=gnu17"
+export CC
+%endif
+
 %if 0%{!?cross:1}
 # Building native binutils
 echo "Building native binutils."

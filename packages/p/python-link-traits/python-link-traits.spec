@@ -1,7 +1,7 @@
 #
 # spec file for package python-link-traits
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define skip_python2 1
 %define packagename link_traits
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-link-traits
 Version:        1.0.3
 Release:        0
@@ -26,9 +24,11 @@ Summary:        A fork to traitlets' link and dlink to link traits in addition t
 License:        BSD-3-Clause
 URL:            https://github.com/hyperspy/link_traits
 Source:         https://github.com/hyperspy/link_traits/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-traits
@@ -43,10 +43,10 @@ A fork to traitlets' link and dlink to link traits in addition to traitlets.
 %setup -q -n %{packagename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,7 +55,7 @@ A fork to traitlets' link and dlink to link traits in addition to traitlets.
 %files %{python_files}
 %license COPYING.md
 %doc README.md
-%{python_sitelib}/*egg-info
 %{python_sitelib}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

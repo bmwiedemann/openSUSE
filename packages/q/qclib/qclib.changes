@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 12 06:11:17 UTC 2025 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade qclib to 2.5.1
+  * Changes:
+    - Recognize IBM z17 and LinuxONE Emperor 5
+    - sysinfo: Use consistent logic when reading from dump and in live system, increase initial buffer size to accommodate bigger systems 
+
+-------------------------------------------------------------------
 Mon Aug 19 08:12:06 UTC 2024 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade qclib to version 2.5.0

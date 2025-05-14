@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 12 20:37:40 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
+
+- Updated to version 1.12.1
+  * The C extension now checks that the database metadata lookup was
+    successful.
+
+-------------------------------------------------------------------
 Tue Dec  3 21:11:11 UTC 2024 - Arjen de Korte <suse+build@de-korte.org>
 
 - Updated to version 1.12.0

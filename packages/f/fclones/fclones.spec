@@ -1,7 +1,7 @@
 #
 # spec file for package fclones
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fclones
-Version:        0.34.0
+Version:        0.35.0
 Release:        0
 Summary:        Finds duplicate, unique, under- or over-replicated files
 License:        MIT
@@ -34,6 +34,35 @@ Contrary to fdupes or rdfind, %{name} processes files in parallel, which makes i
 %{name} communicates through standard Unix streams and it can write reports in human- and machine-friendly formats,
 therefore you can easily combine it with other tools.
 
+%package bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+The official bash completion script for %{name}, generated during the build.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}, generated during the build.
+
+%package zsh-completion
+Summary:        ZSH Completion for %{name}
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+The official zsh completion script for %{name}, generated during the build.
+
 %prep
 %setup -qa1
 install -D -m 644 %{SOURCE2} .cargo/config
@@ -45,9 +74,34 @@ install -D -m 644 %{SOURCE2} .cargo/config
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{name} complete bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{name} complete fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
+%{buildroot}/%{_bindir}/%{name} complete zsh > %{buildroot}%{_datarootdir}/zsh_completion.d/_%{name}
+
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+
+%files -n %{name}-bash-completion
+%dir %{_datarootdir}/bash-completion/completions/
+%{_datarootdir}/bash-completion/completions/%{name}
+
+%files -n %{name}-fish-completion
+%dir %{_datarootdir}/fish
+%dir %{_datarootdir}/fish/vendor_completions.d
+%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+
+%files -n %{name}-zsh-completion
+%dir %{_datarootdir}/zsh_completion.d/
+%{_datarootdir}/zsh_completion.d/_%{name}
 
 %changelog

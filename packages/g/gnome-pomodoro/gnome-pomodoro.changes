@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun May  4 10:28:40 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused gnome-common BuildRequires.
+
+-------------------------------------------------------------------
 Fri Mar 21 20:45:13 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix gnome-shell BuildRequires/Requires max version.

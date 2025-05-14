@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-regressions
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Summary:        Python fixtures to write regression tests
 URL:            https://github.com/ESSS/pytest-regressions
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-regressions/pytest-regressions-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 6.2.0}
@@ -58,10 +60,10 @@ Python fixtures to write regression tests.
 %autosetup -p1 -n pytest-regressions-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -79,6 +81,7 @@ donttest+=" or test_different_data_types"
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE
-%{python_sitelib}/pytest_regressions*
+%{python_sitelib}/pytest_regressions
+%{python_sitelib}/pytest_regressions-%{version}.dist-info
 
 %changelog

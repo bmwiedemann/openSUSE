@@ -48,6 +48,7 @@ Source0:        http://prdownloads.sourceforge.net/tcl/%{name}%{version}%{rrc}-s
 Source1:        tcl-rpmlintrc
 Source2:        baselibs.conf
 Source3:        macros.tcl
+Patch0:         tcl-fix-socket-13.1.patch
 BuildRequires:  autoconf
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
@@ -87,6 +88,7 @@ the Tcl language itself.
 
 %prep
 %setup -q -n %name%version
+%patch -P 0
 if ! test -d pkgs/itcl%itclver; then
    : New itcl version: pkgs/itcl* . Please update the %%itclver macro acordingly.
    exit 1

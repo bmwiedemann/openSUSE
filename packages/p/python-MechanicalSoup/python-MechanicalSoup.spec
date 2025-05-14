@@ -1,7 +1,7 @@
 #
 # spec file for package python-MechanicalSoup
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,14 @@ BuildRequires:  %{python_module beautifulsoup4 >= 4.4}
 BuildRequires:  %{python_module httpbin}
 BuildRequires:  %{python_module jsonschema >= 2.5.1}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-httpbin}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-beautifulsoup4 >= 4.4
@@ -60,10 +62,10 @@ document navigation).
 sed -i -e '/addopts/d' setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,7 +75,7 @@ sed -i -e '/addopts/d' setup.cfg
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/MechanicalSoup*
-%{python_sitelib}/mechanicalsoup*
+%{python_sitelib}/mechanicalsoup
+%{python_sitelib}/[Mm]echanical[Ss]oup-%{version}*info
 
 %changelog

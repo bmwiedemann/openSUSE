@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu May 08 08:25:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.10:
+  * Bugfixes
+    - Semaphore runner does not use correct ansible version in
+      image *--ansible2.16.5 #3005
+    - No Survey variables when launching task with play button from
+      Task Templates #3009
+
+-------------------------------------------------------------------
+Mon May 05 12:48:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.9:
+  * Feature
+    - Use autocomplete instead of select for new schedule.
+
+-------------------------------------------------------------------
+Mon May 05 04:35:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.8:
+  * Performance
+    - Optimized API usage to improve UI's responsiveness
+
+-------------------------------------------------------------------
 Fri May 02 09:15:03 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.7:

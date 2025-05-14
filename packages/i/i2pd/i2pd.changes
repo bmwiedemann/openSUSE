@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Apr 27 13:42:59 UTC 2025 - Felix Felix <felix@dumbeck.net>
+
+- update to 2.56.0:
+  * Config params for shared local destination
+  * Exclude disk operations from SSU2 and NTCP2 threads
+  * Set minimal version for peer test to 0.9.62
+  * Fixed termination deadlock if SAM session is active
+  * AddressBook full addresses cache
+  * Shorter ECIESx25519 ack request interval for datagram and I2CP sessions
+  * Updated reseeds list
+  * Recreate tunnels in random order
+  * Send Ack requested flag after second SSU2 resend attempt
+  * Don't change datagram routing path too often if unidirectional data stream
+  * Fixed race condition at tunnel endpoint
+  * Decline transit tunnel to duplicated router
+- format .spec
+
+-------------------------------------------------------------------
 Mon Feb 10 19:30:45 UTC 2025 - Matthias Eliasson <elimat@opensuse.org>
 
 - update to 2.55.0:

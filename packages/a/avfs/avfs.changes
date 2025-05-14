@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 10 20:57:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.0:
+  * fix decoding zip64 archives when some fields on regular header
+    are ff..ff
+  * extfs: replace temporary files from extfs archives if the
+    basefile has been changed or modified. Otherwise an inner
+    file would contain invalid old data from the previous basefile.
+  * virtual: add support in virt_readdir for longer names than
+    NAME_MAX
+  * developer visible fixes
+- simplify spec file
+- disable fuse, code was not ported to fuse 3 yet (boo#1242079)
+
+-------------------------------------------------------------------
 Tue Mar  7 19:57:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.5:

@@ -20,13 +20,16 @@
 #!BuildTag: opensuse/blackbox_exporter:%%blackbox_exporter_minor_version%%
 #!BuildTag: opensuse/blackbox_exporter:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends prometheus-blackbox_exporter curl
-RUN set -euo pipefail; zypper -n clean -a; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends prometheus-blackbox_exporter curl
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.blackbox_exporter
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Blackbox Exporter"

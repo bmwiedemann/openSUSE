@@ -427,4 +427,24 @@
     * Fix test-only issue that can occur in Python 3.14a4.</comment>
     <requestid>1247409</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>83d5c24593c561e35ef9787598bd3c58</srcmd5>
+    <version>3.18.1</version>
+    <time>1746542496</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.18.1:
+  * The behavior of `postgresql_ext.BinaryJSONField.contains()`
+    has changed.  Previously, passing a string to this method
+    would perform a JSON key exists check (`?` operator) instead
+    of JSON contains (`@&gt;` operator). As of 3.18.0,
+    this special-case has been **removed** and the `contains()`
+    method always uses the JSONB contains operator (`@&gt;`).
+    For the **old** behavior of checking whether a key exists,
+    use the `BinaryJSONField.has_key()`
+  * Add options to URL-unquote user and password when using the
+    `db_url` helpers
+  * Support using `postgresql://` URLs when connecting to
+    psycopg3.</comment>
+    <requestid>1274716</requestid>
+  </revision>
 </revisionlist>

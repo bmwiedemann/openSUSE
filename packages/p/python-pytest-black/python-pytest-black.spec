@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-black
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-pytest-black
 Version:        0.3.12
 Release:        0
@@ -27,8 +25,10 @@ URL:            https://github.com/shopkeep/pytest-black
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-black/pytest-black-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix-pytest-makefile.patch -- gh#shopkeep/pytest-black#53
 Patch0:         https://github.com/shopkeep/pytest-black/pull/53.patch#/fix-pytest-makefile.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-black
@@ -49,10 +49,10 @@ A pytest plugin to enable format checking with black.
 %autosetup -p1 -n pytest-black-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,6 +61,8 @@ A pytest plugin to enable format checking with black.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_black.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_black*.pyc
+%{python_sitelib}/pytest_black-%{version}.dist-info
 
 %changelog

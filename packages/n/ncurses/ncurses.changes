@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon May 12 06:43:54 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250510
+  + add rv/xr codes for domterm, mintty, mlterm -TD
+  + add xr code for putty -TD
+  + update teraterm to 5.0 -TD
+  + add rlogin-color -TD
+
+-------------------------------------------------------------------
+Mon May  5 06:36:48 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20250503
+  + update/correct some of the rv/xr strings, checked with tack -TD
+  + use ansi+rca in sclp -TD
+  + use vt220+pcedit in sclp (Werner Fink)
+  + move some building blocks from illumos to sun-color, based on
+    illumos source-history -TD
+  + improve use-clauses: ansi+cup, ansi+idl1, ansi+rca, ansi+rca2,
+    ansi+sgrso, ansi+sgrul -TD
+  + add ecma+standout, ecma+underline -TD
+  + add rv code for alacritty -TD
+  + add rv/xr codes for contour, ghostty, iterm2, kitty, konsole,
+    vscode, vte, wezterm -TD
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Reflect upstream added changes
+- Port patch ncurses-6.4.dif
+
+-------------------------------------------------------------------
 Wed Apr 30 12:32:29 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch ncurses-5.9-ibm327x.dif

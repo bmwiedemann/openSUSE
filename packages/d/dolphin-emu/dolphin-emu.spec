@@ -110,6 +110,7 @@ echo "%{_datadir}/%{name}/Sys/GC:" > font-licenses.txt
 cat Data/Sys/GC/font-licenses.txt >> font-licenses.txt
 
 %build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # FIXME: you should use the %%cmake macros
 cmake . -LA \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \

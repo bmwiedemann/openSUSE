@@ -18,7 +18,7 @@
 
 
 Name:           freeciv
-Version:        3.1.4
+Version:        3.1.5
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -111,6 +111,7 @@ Freeciv executable using Gtk4 library
 	--enable-sys-lua \
 	--disable-static \
 	--docdir=%{_docdir}/freeciv \
+	--disable-static \
 	%{nil}
 %make_build
 

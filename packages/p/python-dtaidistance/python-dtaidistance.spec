@@ -1,7 +1,7 @@
 #
 # spec file for package python-dtaidistance
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,10 +52,10 @@ Library for time series distances (e.g. Dynamic Time Warping, DTW).
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 find %{buildroot}/usr/lib*/python* -name compilation.log -delete
@@ -79,6 +79,6 @@ donttest+=" or test_bug3 or test_distance1_a"
 %doc README.md
 %license LICENSE
 %{python_sitearch}/dtaidistance
-%{python_sitearch}/dtaidistance-%{version}-py*.egg-info
+%{python_sitearch}/dtaidistance-%{version}.dist-info
 
 %changelog

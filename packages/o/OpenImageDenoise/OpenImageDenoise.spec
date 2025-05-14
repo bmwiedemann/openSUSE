@@ -36,7 +36,7 @@ BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  ispc >= 1.21.0
 BuildRequires:  tbb-devel
-ExclusiveArch:  x86_64
+ExclusiveArch:  x86_64 aarch64
 
 %description
 Intel Open Image Denoise is an open source library of high-performance,

@@ -95,4 +95,17 @@
     <comment></comment>
     <requestid>1176943</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>149a5f1db39dd2b184a3f0e1a0faa1af</srcmd5>
+    <version>1.9.0</version>
+    <time>1747061414</time>
+    <user>anag_factory</user>
+    <comment>- remove clean section
+- Remove %debugpackage
+- Update to 2.0.0 (boo#1241902)
+  * added support for an MCP server with the McpServerHandler module
+- Move to %autosetup
+</comment>
+    <requestid>1276850</requestid>
+  </revision>
 </revisionlist>

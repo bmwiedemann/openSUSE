@@ -1,7 +1,7 @@
 #
 # spec file for package discount
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover 3
 %bcond_with fenced_code
 Name:           discount
-Version:        3.0.0a
+Version:        3.0.0d
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
@@ -30,8 +30,8 @@ Patch1:         discount-disable_ldconfig.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 Provides:       markdown
-Requires(preun):update-alternatives
-Requires(postun):update-alternatives
+Requires(preun): update-alternatives
+Requires(postun): update-alternatives
 
 %description
 Discount is an implementation of John Gruber’s Markdown text to HTML language
@@ -76,11 +76,8 @@ CFLAGS="%{optflags}" ./configure.sh \
   --enable-all-features
 %make_build
 
-%check
-make test
-
 %install
-make DESTDIR=%{buildroot} install.everything
+%make_build DESTDIR=%{buildroot} install.everything
 
 %fdupes -s %{buildroot}%{_mandir}/man3
 install -D -p -m 0644 libmarkdown.pc \
@@ -92,6 +89,9 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/markdown
 ln -sf %{_sysconfdir}/alternatives/markdown %{buildroot}%{_bindir}/markdown
 
+%check
+%make_build test
+
 %post
 update-alternatives \
 	--install %{_bindir}/markdown markdown %{_bindir}/discount-markdown 20
@@ -101,8 +101,7 @@ if [ $1 -eq 0 ] ; then
 	update-alternatives --remove markdown %{_bindir}/discount-markdown
 fi
 
-%post   -n libmarkdown%{sover} -p /sbin/ldconfig
-%postun -n libmarkdown%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libmarkdown%{sover}
 
 %files
 %license COPYRIGHT

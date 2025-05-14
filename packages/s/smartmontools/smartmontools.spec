@@ -1,7 +1,7 @@
 #
 # spec file for package smartmontools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 Name:           smartmontools
-Version:        7.4
+Version:        7.5
 Release:        0
 Summary:        Monitor for SMART devices
 License:        GPL-2.0-or-later

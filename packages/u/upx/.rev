@@ -255,4 +255,12 @@
     <comment>- Add 0001-More-checking-in-unpack.patch [boo#1240236, CVE-2025-2849]</comment>
     <requestid>1265185</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4903b0fe17a24231f69b8365f7b283d0</srcmd5>
+    <version>5.0.1</version>
+    <time>1746638263</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.0.1</comment>
+    <requestid>1274982</requestid>
+  </revision>
 </revisionlist>

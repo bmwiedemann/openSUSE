@@ -25,7 +25,9 @@ URL:            https://gitlab.com/sequoia-pgp/sequoia-octopus-librnp
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  cargo-packaging
+BuildRequires:  cargo1.84
 BuildRequires:  clang-devel
+BuildRequires:  rust1.84
 BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)

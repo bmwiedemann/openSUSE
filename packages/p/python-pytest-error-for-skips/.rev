@@ -24,4 +24,13 @@ Pytest plugin to treat skipped tests a test failure</comment>
     <comment></comment>
     <requestid>758779</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>02a9677c5131dada5926c0c2bff7eade</srcmd5>
+    <version>2.0.2</version>
+    <time>1746638359</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275095</requestid>
+  </revision>
 </revisionlist>

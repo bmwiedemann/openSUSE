@@ -1,7 +1,7 @@
 #
 # spec file for package scidavis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2012 Quentin Denis <quentin@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,7 @@
 #
 
 
+%define __builder ninja
 Name:           scidavis
 Version:        2.9.0
 Release:        0
@@ -33,25 +34,27 @@ Patch1:         0001-Adapt-scidavis-for-Leap.patch
 Patch2:         scidavis-specify-std-namespace.patch
 # PATCH-FIX-UPSTREAM scidavis-grabFrameBuffer.patch badshah400@gmail.com -- Use grabFrameBuffer instead of grabFramebuffer, https://sourceforge.net/p/scidavis/scidavis-bugs/441
 Patch3:         scidavis-grabFrameBuffer.patch
-BuildRequires:  glu-devel
+BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  liborigin-devel
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
 BuildRequires:  python3-sip4
 BuildRequires:  python3-sip4-devel
-BuildRequires:  qwt-devel
 BuildRequires:  qwtplot3d-devel
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(liborigin)
 BuildRequires:  pkgconfig(muparser)
+BuildRequires:  pkgconfig(qwt5-qt5)
+BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    aarch64
 
 %description
@@ -74,31 +77,25 @@ QtiPlot, Labplot and Gnuplot.
 %patch -P 3 -p1
 
 %build
-export PYTHON=python3
-%qmake5 CONFIG+=python \
-  CONFIG+=liborigin \
-%if "%{_lib}" == "lib64"
-  64BITS=1
-%endif
-
-%make_jobs
+export PYTHON=%{_bindir}/python%{python3_version}
+%cmake \
+  -DBUILD_QWTPLOT3D=OFF \
+  -DORIGIN_IMPORT=ON \
+  -DQWTPLOT3D_LIBRARY=%{_libqt5_libdir}/libqwtplot3d-qt5.so \
+  -Wno-dev \
+  %{nil}
+%cmake_build
 
 %install
-%qmake5_install
-
-mkdir -p %{buildroot}%{_datadir}/%{name}/translations
-cp %{name}/translations/%{name}_*.qm %{buildroot}%{_datadir}/%{name}/translations/
+%cmake_install
 
 %find_lang %{name} --with-qt
 
 # Remove unneeded files.
-rm -rf %{buildroot}%{_datadir}/doc/%{name}
+rm -rf %{buildroot}%{_docdir}/%{name}
 
 # mimelnk is deprecated in favor of %%{_datadir}/mime/packages/ for a long time
 rm -Rf %{buildroot}%{_datadir}/mimelnk
-
-# Not a config file, not used on Linux
-rm %{buildroot}%{_sysconfdir}/scidavis/scidavisrc.py
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/scidavis
@@ -115,7 +112,7 @@ rm %{buildroot}%{_sysconfdir}/scidavis/scidavisrc.py
 %dir %{_datadir}/icons/locolor/32x32
 %dir %{_datadir}/icons/locolor/32x32/apps
 %{_bindir}/%{name}
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/*/*/apps/%{name}.*
 %{_datadir}/mime/packages/%{name}.xml

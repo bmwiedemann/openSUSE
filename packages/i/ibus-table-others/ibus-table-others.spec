@@ -24,8 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/Localization
 URL:            https://github.com/moebiuscurve/ibus-table-others
 Source:         https://github.com/moebiuscurve/ibus-table-others/releases/download/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  gnome-common
 BuildRequires:  ibus-table >= 1.9.1
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python3
 BuildRequires:  pkgconfig(ibus-table) >= 1.9.1

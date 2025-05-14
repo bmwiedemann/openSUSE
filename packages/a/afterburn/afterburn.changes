@@ -1,4 +1,318 @@
 -------------------------------------------------------------------
+Wed May  7 17:00:57 UTC 2025 - Jan Zerebecki <jan.suse@zerebecki.de>
+
+- Use autosetup for patches, refresh them and rename
+  * fix-authorized-keys-location.patch to 0001-Fix-authorized-keys-location-for-OpenSUSE.patch
+  * set-default-user.patch to 0002-Set-the-default-user-to-suse.patch
+  * no-network-args.patch to 0003-On-OpenSUSE-do-not-add-to-kernel-command-line.patch
+
+-------------------------------------------------------------------
+Wed May 07 15:52:01 UTC 2025 - jan.suse@zerebecki.de
+
+- Update to version 5.7.0.git103.bae893c:
+  * Sync repo templates ⚙
+  * build(deps): bump crossbeam-channel from 0.5.13 to 0.5.15
+  * build(deps): bump tokio from 1.40.0 to 1.44.2
+  * build(deps): bump openssl from 0.10.71 to 0.10.72
+    fixes RUSTSEC-2025-0022 AKA CVE-2025-3416
+  * build(deps): bump zbus from 4.4.0 to 5.5.0
+  * mod.rs: Fix clippy lint errors
+  * release-notes.md: add release notes for rust version update
+  * Cargo.toml: bump MSRV to 1.84.1
+  * Fix clippy lint issues
+  * Sync repo templates ⚙
+  * build(deps): bump mockito from 1.6.1 to 1.7.0
+  * build(deps): bump serde_json from 1.0.139 to 1.0.140
+  * build(deps): bump tempfile from 3.17.1 to 3.19.1
+  * build(deps): bump clap from 4.5.31 to 4.5.35
+  * build(deps): bump reqwest from 0.12.12 to 0.12.15
+  * Update release notes.
+  * proxmoxve: Add more context to log messages.
+  * proxmoxve: Remove unneeded fields
+  * proxmoxve: Add tests for static network configuration from cloud-init.
+  * proxmoxve: Add support for static network configuration from cloud-init.
+  * build(deps): bump mailparse from 0.15.0 to 0.16.1
+  * Sync repo templates ⚙
+  * build(deps): bump ring from 0.17.8 to 0.17.13
+  * build(deps): bump anyhow from 1.0.95 to 1.0.96
+  * release notes: add notes for tempfile bump from 3.16.0 to 3.17.1
+  * build(deps): bump serde from 1.0.217 to 1.0.218
+  * build(deps): bump openssl from 0.10.70 to 0.10.71
+  * build(deps): bump tempfile from 3.16.0 to 3.17.1
+  * build(deps): bump serde_json from 1.0.138 to 1.0.139
+  * build(deps): bump clap from 4.5.27 to 4.5.31
+  * add makefile targets for fmt,lint and test
+  * providers/openstack: ignore ec2 metadata if not present
+  * build(deps): bump openssl from 0.10.66 to 0.10.70
+  * build(deps): bump serde_json from 1.0.137 to 1.0.138
+  * build(deps): bump tempfile from 3.14.0 to 3.16.0
+  * build(deps): bump openssl from 0.10.66 to 0.10.69
+  * build(deps): bump ipnetwork from 0.20.0 to 0.21.1
+  * build(deps): bump serde from 1.0.215 to 1.0.217
+  * build(deps): bump serde_json from 1.0.133 to 1.0.137
+  * build(deps): bump anyhow from 1.0.93 to 1.0.95
+  * build(deps): bump clap from 4.5.21 to 4.5.27
+  * build(deps): bump reqwest from 0.12.7 to 0.12.12
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * build(deps): bump mockito from 1.5.0 to 1.6.1
+  * build(deps): bump serde_json from 1.0.128 to 1.0.133
+  * Sync repo templates ⚙
+  * build(deps): bump clap from 4.5.17 to 4.5.21
+  * build(deps): bump tempfile from 3.12.0 to 3.14.0
+  * build(deps): bump anyhow from 1.0.89 to 1.0.93
+  * build(deps): bump serde from 1.0.210 to 1.0.215
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * docs: add changelog entry
+  * proxmox: use noop provider if no configdrive
+  * add noop provider
+  * release-notes: remove "upcoming"
+
+-------------------------------------------------------------------
+Wed May 07 15:04:32 UTC 2025 - jan.suse@zerebecki.de
+
+- Update to version 5.7.0:
+  * cargo: Afterburn release 5.7.0
+  * docs/release-notes: update for release 5.7.0
+  * cargo: update dependencies
+  * dhcp: replace dbus_proxy with proxy, and zbus traits
+  * build(deps): bump zbus from 3.15.2 to 4.4.0
+  * build(deps): bump tempfile from 3.10.1 to 3.12.0
+  * build(deps): bump serde from 1.0.205 to 1.0.210
+  * build(deps): bump serde_json from 1.0.121 to 1.0.127
+  * build(deps): bump reqwest from 0.12.5 to 0.12.7
+  * build(deps): bump uzers from 0.12.0 to 0.12.1
+  * build(deps): bump clap from 4.5.13 to 4.5.16
+  * build(deps): bump serde from 1.0.203 to 1.0.205
+  * build(deps): bump serde_json from 1.0.119 to 1.0.121
+  * build(deps): bump mockito from 1.4.0 to 1.5.0
+  * build(deps): bump openssh-keys from 0.6.3 to 0.6.4
+  * build(deps): bump clap from 4.5.8 to 4.5.13
+  * build(deps): bump openssl from 0.10.64 to 0.10.66
+  * providers/hetzner: private ipv4 addresses in attributes
+  * openstack: Document the two platforms
+  * build(deps): bump zerovec-derive from 0.10.2 to 0.10.3
+  * build(deps): bump zerovec from 0.10.2 to 0.10.4
+  * build(deps): bump nix from 0.27.1 to 0.29.0
+  * build(deps): bump clap from 4.5.7 to 4.5.8
+  * build(deps): bump serde_json from 1.0.117 to 1.0.119
+  * microsoft/azure: allow empty certificate chain in PKCS12 file
+  * proxmoxve: implement proxmoxve provider
+  * providers/hetzner: fix duplicate attribute prefix
+  * build(deps): bump pnet_base from 0.34.0 to 0.35.0
+  * cargo: Afterburn release 5.6.0
+  * docs/release-notes: update for release 5.6.0
+  * cargo: update dependencies
+  * build(deps): bump libflate from 1.4.0 to 2.1.0
+  * build(deps): bump base64 from 0.21.7 to 0.22.1
+  * build(deps): bump uzers from 0.11.3 to 0.12.0
+  * build(deps): bump pnet_datalink from 0.34.0 to 0.35.0
+  * build(deps): bump nix from 0.28.0 to 0.29.0
+  * lint: silence deadcode warnings
+  * lint: address latest lint's from msrv update
+  * workflows/rust: directly update toolchain to 1.75.0
+  * cargo: update msrv to 1.75
+  * Sync repo templates ⚙
+  * build(deps): bump reqwest from 0.12.2 to 0.12.4
+  * build(deps): bump serde from 1.0.197 to 1.0.200
+  * build(deps): bump anyhow from 1.0.81 to 1.0.82
+  * build(deps): bump mailparse from 0.14.1 to 0.15.0
+  * build(deps): bump serde_json from 1.0.115 to 1.0.116
+  * Sync repo templates ⚙
+  * providers: Add "akamai" provider
+  * build(deps): bump h2 from 0.3.24 to 0.3.26
+  * build(deps): bump anyhow from 1.0.79 to 1.0.81
+  * build(deps): bump serde_json from 1.0.113 to 1.0.115
+  * build(deps): bump reqwest from 0.11.24 to 0.12.2
+  * build(deps): bump serde_yaml from 0.9.32 to 0.9.34+deprecated
+  * build(deps): bump mio from 0.8.10 to 0.8.11
+  * build(deps): bump mailparse from 0.14.0 to 0.14.1
+  * build(deps): bump openssl from 0.10.62 to 0.10.64
+  * build(deps): bump nix from 0.27.1 to 0.28.0
+  * build(deps): bump mockito from 1.2.0 to 1.4.0
+  * build(deps): bump tempfile from 3.9.0 to 3.10.1
+  * build(deps): bump serde_yaml from 0.9.31 to 0.9.32
+  * build(deps): bump serde from 1.0.195 to 1.0.197
+  * build(deps): bump h2 from 0.3.23 to 0.3.24
+  * build(deps): bump slog-term from 2.9.0 to 2.9.1
+  * build(deps): bump serde_yaml from 0.9.30 to 0.9.31
+  * build(deps): bump serde_json from 1.0.111 to 1.0.113
+  * build(deps): bump clap from 4.4.16 to 4.4.18
+  * build(deps): bump reqwest from 0.11.23 to 0.11.24
+  * Sync repo templates ⚙
+  * cargo: Afterburn release 5.5.1
+  * docs/release-notes: update for release 5.5.1
+  * cargo: update dependencies
+  * build(deps): bump anyhow from 1.0.75 to 1.0.78
+  * build(deps): bump serde_yaml from 0.9.27 to 0.9.29
+  * build(deps): bump reqwest from 0.11.22 to 0.11.23
+  * build(deps): bump serde_json from 1.0.108 to 1.0.109
+  * build(deps): bump openssl from 0.10.60 to 0.10.62
+  * build(deps): bump tempfile from 3.8.1 to 3.9.0
+  * build(deps): bump clap from 4.4.10 to 4.4.12
+  * build(deps): bump unsafe-libyaml from 0.2.9 to 0.2.10
+  * providers/vmware: add missing public functions for non-amd64
+  * build(deps): bump clap from 4.4.8 to 4.4.10
+  * cargo: Afterburn release 5.5.0
+  * build(deps): bump openssl from 0.10.59 to 0.10.60
+  * Sync repo templates ⚙
+  * docs/release-notes: update for release 5.5.0
+  * cargo: update dependencies
+  * ci: cancel previous build on PR update
+  * build(deps): allow building with libsystemd 0.7.0
+  * providers/vmware: Process guestinfo.metadata netplan configuration
+  * kubevirt: Run afterburn-hostname service
+  * build(deps): bump reqwest from 0.11.20 to 0.11.22
+  * build(deps): bump tempfile from 3.8.0 to 3.8.1
+  * build(deps): bump clap from 4.4.6 to 4.4.7
+  * build(deps): bump serde_json from 1.0.107 to 1.0.108
+  * build(deps): bump serde_yaml from 0.9.25 to 0.9.27
+  * build(deps): bump rustix from 0.37.19 to 0.37.25
+  * build(deps): bump clap from 4.4.2 to 4.4.6
+  * build(deps): bump serde_json from 1.0.105 to 1.0.107
+  * build(deps): bump mockito from 1.1.0 to 1.2.0
+  * providers: add support for scaleway
+  * Move away from deprecated `users` to `uzers`
+  * Sync repo templates ⚙
+  * providers/hetzner: add support for Hetzner Cloud
+  * build(deps): bump clap from 4.4.1 to 4.4.2
+  * cargo: update MSRV to 1.71
+  * build(deps): bump clap from 4.3.19 to 4.4.1
+  * chore: Get rid of Clippy warnings
+  * cargo: specify required features for nix dependency
+  * build(deps): bump nix from 0.26.2 to 0.27.1
+  * build(deps): bump slog-async from 2.7.0 to 2.8.0
+  * build(deps): bump openssl from 0.10.56 to 0.10.57
+  * build(deps): bump reqwest from 0.11.18 to 0.11.20
+  * build(deps): bump serde from 1.0.185 to 1.0.188
+  * Sync repo templates ⚙
+  * build(deps): bump tempfile from 3.7.1 to 3.8.0
+  * build(deps): bump serde from 1.0.183 to 1.0.185
+  * build(deps): bump anyhow from 1.0.72 to 1.0.75
+  * build(deps): bump serde_json from 1.0.104 to 1.0.105
+  * build(deps): bump openssl from 0.10.55 to 0.10.56
+  * build(deps): bump tempfile from 3.7.0 to 3.7.1
+  * build(deps): bump serde from 1.0.180 to 1.0.183
+  * Sync repo templates ⚙
+  * build(deps): bump serde from 1.0.179 to 1.0.180
+  * build(deps): bump serde_json from 1.0.103 to 1.0.104
+  * build(deps): bump serde from 1.0.175 to 1.0.179
+  * build(deps): bump pnet_datalink from 0.33.0 to 0.34.0
+  * build(deps): bump serde from 1.0.171 to 1.0.175
+  * build(deps): bump clap from 4.3.14 to 4.3.19
+  * build(deps): bump pnet_base from 0.33.0 to 0.34.0
+  * build(deps): bump serde_yaml from 0.9.23 to 0.9.25
+  * build(deps): bump tempfile from 3.6.0 to 3.7.0
+  * build(deps): bump clap from 4.3.11 to 4.3.14
+  * build(deps): bump serde_yaml from 0.9.22 to 0.9.23
+  * build(deps): bump anyhow from 1.0.71 to 1.0.72
+  * build(deps): bump serde_json from 1.0.100 to 1.0.103
+  * Sync repo templates ⚙
+  * build(deps): bump clap from 4.3.10 to 4.3.11
+  * build(deps): bump serde_json from 1.0.99 to 1.0.100
+  * build(deps): bump openssh-keys from 0.6.1 to 0.6.2
+  * build(deps): bump zbus from 3.13.1 to 3.14.1
+  * build(deps): bump clap from 4.3.8 to 4.3.10
+  * build(deps): bump serde from 1.0.164 to 1.0.165
+  * build(deps): bump serde_json from 1.0.96 to 1.0.99
+  * build(deps): bump clap from 4.3.3 to 4.3.8
+  * build(deps): bump serde_yaml from 0.9.21 to 0.9.22
+  * build(deps): bump openssl from 0.10.54 to 0.10.55
+  * build(deps): bump mockito from 1.0.2 to 1.1.0
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * openstack: Add attribute OPENSTACK_INSTANCE_UUID
+  * build(deps): bump serde from 1.0.163 to 1.0.164
+  * build(deps): bump clap from 4.3.2 to 4.3.3
+  * build(deps): bump tempfile from 3.5.0 to 3.6.0
+  * cargo: Afterburn release 5.4.3
+  * docs/release-notes: update for release 5.4.3
+  * cargo: update dependencies
+  * cargo: allow openssl 0.10.46
+  * build(deps): bump openssl from 0.10.52 to 0.10.54
+  * build(deps): bump openssh-keys from 0.6.0 to 0.6.1
+  * build(deps): bump vmw_backdoor from 0.2.3 to 0.2.4
+  * ci: strip debug symbols
+  * Sync repo templates ⚙
+  * build-sys: Use new tier = 2 for cargo-vendor-filterer
+  * Sync repo templates ⚙
+  * Sync repo templates ⚙
+  * build(deps): bump reqwest from 0.11.17 to 0.11.18
+  * cargo: Afterburn release 5.4.2
+  * docs/release-notes: update for release
+  * docs/release-notes: note Azure SSH regression fix with new openssl
+  * cargo: fix minimum version of openssl crate
+  * build(deps): bump serde from 1.0.162 to 1.0.163
+  * build(deps): bump zbus from 3.12.0 to 3.13.1
+  * build(deps): bump serde from 1.0.160 to 1.0.162
+  * build(deps): bump anyhow from 1.0.70 to 1.0.71
+  * build(deps): bump openssl from 0.10.51 to 0.10.52
+  * build(deps): bump reqwest from 0.11.16 to 0.11.17
+  * build(deps): bump openssl from 0.10.50 to 0.10.51
+  * build(deps): bump enumflags2 from 0.7.5 to 0.7.7
+  * build(deps): bump openssl from 0.10.48 to 0.10.50
+  * build(deps): bump zbus from 3.11.1 to 3.12.0
+  * build(deps): bump serde_json from 1.0.95 to 1.0.96
+  * build(deps): bump h2 from 0.3.15 to 0.3.17
+  * build(deps): bump openssl from 0.10.47 to 0.10.48
+  * microsoft/crypto/mod: replace deprecated function `parse` with `parse2`
+  * build(deps): bump serde from 1.0.159 to 1.0.160
+  * build(deps): bump serde_yaml from 0.9.19 to 0.9.21
+  * build(deps): bump tempfile from 3.4.0 to 3.5.0
+  * build(deps): bump serde from 1.0.158 to 1.0.159
+  * build(deps): bump mockito from 1.0.1 to 1.0.2
+  * Update mockito to 1.0.1
+  * build(deps): bump reqwest from 0.11.15 to 0.11.16
+  * build(deps): bump serde_json from 1.0.94 to 1.0.95
+  * cli: switch to clap derive
+  * cli: add descriptive value names for option arguments in --help
+  * build(deps): bump zbus from 3.11.0 to 3.11.1
+  * build(deps): bump openssl from 0.10.45 to 0.10.47
+  * build(deps): bump reqwest from 0.11.14 to 0.11.15
+  * build(deps): bump serde from 1.0.155 to 1.0.158
+  * build(deps): bump anyhow from 1.0.69 to 1.0.70
+  * cli: have clap require exactly one of --cmdline/--provider
+  * providers/*: move endpoint mocking into retry::Client
+  * retry/client: move URL parsing into helper function
+  * providers/microsoft: import crate::retry
+  * providers/microsoft: use stored client for all fetches
+  * providers/packet: use stored client for boot checkin
+  * build(deps): bump zbus from 3.10.0 to 3.11.0
+  * build(deps): bump serde from 1.0.152 to 1.0.155
+  * Sync repo templates ⚙
+  * docs: Use upstream theme & update to 0.4.1
+  * build(deps): bump serde_json from 1.0.93 to 1.0.94
+  * build(deps): bump serde_yaml from 0.9.17 to 0.9.19
+  * build(deps): bump mockito from 0.32.3 to 0.32.4
+  * build(deps): bump tempfile from 3.3.0 to 3.4.0
+  * initrd: remember to write trailing newline to network kargs file
+  * util: drop obsolete "OEM" terminology
+  * Update to clap 4
+  * build(deps): bump mockito from 0.31.1 to 0.32.3
+  * workflows: update clippy to 1.67
+  * Fix clippy lints
+  * Inline variables into format strings
+  * build(deps): bump zbus from 3.9.0 to 3.10.0
+  * build(deps): bump serde_json from 1.0.92 to 1.0.93
+
+-------------------------------------------------------------------
+Thu Sep 12 09:52:10 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable all arches
+
+-------------------------------------------------------------------
+Mon Aug  5 23:16:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- enable upstream tests
+
+-------------------------------------------------------------------
+Thu Feb 22 19:15:58 UTC 2024 - Richard Rahl <rrahl0@proton.me>
+
+- make lint happy about dracut package not being noarch
+- add afterburn-sshkeys.target to pre/post
+
+-------------------------------------------------------------------
 Tue Feb 20 10:03:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

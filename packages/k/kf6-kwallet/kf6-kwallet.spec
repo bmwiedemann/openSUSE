@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname kwallet
-# Full KF6 version (e.g. 6.13.0)
+# Full KF6 version (e.g. 6.14.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kwallet
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Safe desktop-wide storage for passwords
 License:        LGPL-2.1-or-later
@@ -40,6 +40,7 @@ BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  libgpgmepp-devel
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF6ColorScheme) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6Config) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{_kf6_bugfix_version}
@@ -57,6 +58,7 @@ BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig(libsecret-1)
 
 %description
 This framework contains two main components:
@@ -143,11 +145,13 @@ Development files.
 %{_kf6_debugdir}/kwallet.renamecategories
 
 %files -n kwalletd6
-%{_kf6_applicationsdir}/org.kde.kwalletd6.desktop
+%{_kf6_applicationsdir}/org.kde.ksecretd.desktop
+%{_kf6_bindir}/ksecretd
 %{_kf6_bindir}/kwalletd6
-%{_kf6_notificationsdir}/kwalletd6.notifyrc
+%{_kf6_notificationsdir}/ksecretd.notifyrc
 %{_kf6_sharedir}/dbus-1/services/org.kde.kwalletd5.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.kwalletd6.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.secretservicecompat.service
 %dir %{_kf6_sharedir}/xdg-desktop-portal
 %dir %{_kf6_sharedir}/xdg-desktop-portal/portals
 %{_kf6_sharedir}/xdg-desktop-portal/portals/kwallet.portal

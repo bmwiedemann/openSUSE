@@ -1,0 +1,37 @@
+diff -upr lash-0.5.4.orig/lashd/client.c lash-0.5.4/lashd/client.c
+--- lash-0.5.4.orig/lashd/client.c	2025-05-07 09:52:41.420054548 +0000
++++ lash-0.5.4/lashd/client.c	2025-05-07 09:57:57.308583774 +0000
+@@ -26,7 +26,7 @@
+ #include "alsa_patch.h"
+ 
+ client_t *
+-client_new(lash_connect_params_t * params)
++client_new(void)
+ {
+ 	client_t *client;
+ 
+diff -upr lash-0.5.4.orig/lashd/client.h lash-0.5.4/lashd/client.h
+--- lash-0.5.4.orig/lashd/client.h	2025-05-07 09:52:41.420091378 +0000
++++ lash-0.5.4/lashd/client.h	2025-05-07 09:58:11.707054639 +0000
+@@ -63,7 +63,7 @@ struct _client
+ #define CLIENT_SAVED(x)             (((x)->flags) & LASH_Saved)
+ 
+ 
+-client_t * client_new ();
++client_t * client_new (void);
+ void       client_destroy (client_t * client);
+ 
+ const char * client_get_id_str   (client_t * client);
+diff -upr lash-0.5.4.orig/lashd/server_event.h lash-0.5.4/lashd/server_event.h
+--- lash-0.5.4.orig/lashd/server_event.h	2025-05-07 09:52:41.420864158 +0000
++++ lash-0.5.4/lashd/server_event.h	2025-05-07 09:56:19.463694613 +0000
+@@ -51,7 +51,7 @@ struct _server_event
+ };
+ 
+ server_event_t * server_event_new ();
+-void             server_event_destroy ();
++void             server_event_destroy (server_event_t * event);
+ 
+ void server_event_set_type           (server_event_t * event, enum Server_Event_Type type);
+ void server_event_set_conn_id        (server_event_t * event, unsigned long id);
+

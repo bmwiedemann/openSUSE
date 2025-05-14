@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-dotenv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-pytest-dotenv
 Version:        0.5.2
 Release:        0
@@ -25,9 +23,11 @@ Summary:        A pytest plugin that parses environment files
 License:        MIT
 URL:            https://github.com/quiqua/pytest-dotenv
 Source:         https://github.com/quiqua/pytest-dotenv/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5.0}
 BuildRequires:  %{python_module python-dotenv >= 0.9.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 5.0
@@ -42,10 +42,10 @@ A py.test plugin that parses environment files before running tests.
 %setup -q -n pytest-dotenv-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -54,6 +54,7 @@ A py.test plugin that parses environment files before running tests.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_dotenv
+%{python_sitelib}/pytest_dotenv-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package xmgrace
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ For further information consult the main package.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+export CFLAGS="%{optflags} -std=gnu17"
 %configure \
   --enable-grace-home=%{_libdir}/xmgrace \
   --with-helpviewer="%{_bindir}/desktop-launch %{s}"

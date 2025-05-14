@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Wed May  7 18:50:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250507:
+  * Logitech G27 fixes and cleanups (#17170)
+  * PPU Loader: Consume Executable Memory
+  * VS: compile glslang with the solution
+  * Remove old OGLCompiler.lib dep
+  * Cleanup what we build in glslang vcxproj
+  * Just build the latest glslang instead of dowloading the
+    precompiled libs
+  * VS: Add glslang include directory
+  * Update glslang to 15.3.0
+  * vk: Limit NV crash workaround to older generations
+  * vk: Fix cyclic dependency problem during physical device init
+  * vk: Disable texel buffer update-after-bind on NVIDIA driver
+  * SDL/Input: add DS3 pressure intensity
+  * SDL/Input: add new misc buttons
+  * Update SDL to 3.2.12
+  * Atomic utils fixup after ASLR changes (#17168)
+  * Update MoltenVK to v1.3.0
+  * rsx: Do not interpolate when performing image reconstruction
+
+-------------------------------------------------------------------
+Sat May  3 17:54:36 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update fix-test-files.patch
+
+-------------------------------------------------------------------
+Sat May  3 17:42:52 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+
+- Update to 0.0.36~git20250503:
+  * Fix crash in memory viewer launcher (#17152)
+  * Logitech G27 cleanup
+  * Qt: "Show in Memory Viewer" context action (#17131)
+  * virtual Logitech G27 for Gran Turismo 6 (#17135)
+  * CMake: try to fix gcc
+  * Update FAudio to 25.05
+  * tests: Fix failing test and improve msvc setup
+  * test: Add UTs for rsx::simple_array<T>
+  * Disable WholeProgramOptimization for unit test
+  * CI: Only run unit tests for pull requests
+  * CI: Add windows unit tests
+  * VS: improve unit test project setup
+  * Add unit test for fmt::merge
+  * Update libpng to 1.6.48
+  * Remove unused fmt::match function
+  * Fix fmt::replace_all with empty from and add unit tests
+  * Add submodule version check script
+  * CMake: Disable unit tests in gcc
+  * CMake: Use existing main for unit tests
+  * Move spellcheck before build
+  * CI: Add unit tests
+  * VS: Remove unnecessary LinkIncremental to fix some warning
+  * VS: Remove unnecessary moc_predefs file to fix a warning
+  * Fix some warnings
+  * VS: Enable ASLR in unit test
+  * CMake: fix gcc build
+  * CMake: move all rpcs3 cpp files to rpcs3qt
+  * CMake: Run unit test during build if requested
+  * CMake: Create unit test
+  * CMake: Create static rpcs3_lib
+  * Utils fixes for ASLR
+  * Separate segment and function addresses in PPU LLVM
+  * Disable SPU asmjit on ARM. Only supported on x86
+  * Don't make assumptions about address format
+  * Enable ASLR
+  * fmt: add some unit tests and fix fmt::trim
+  * Add unit test project to VS
+  * Update docker to 1.6
+  * Move main to main.cpp
+  * Rename main.cpp to rpcs3.cpp
+  * CI: Use variables for docker artifacts dir
+  * Avoid checking out unused submodules
+  * VS: fix relative 3rdparty paths
+  * VS: remove some outdated keywords
+  * github actions: disable pushes unless it's the RPCS3 master
+    branch
+  * Qt: Hex validator for address/instruction inputs (#17113)
+  * vm_native.cpp: Fix possible weakness of map_self()
+  * Fix sys_mmapper_unmap_shared_memory
+  * vk: Prevent header internals from leaking
+  * vk: Stop using internal defines to structure platform-specific 
+        code
+
+-------------------------------------------------------------------
 Mon Apr 28 21:56:11 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 -  Update to 0.0.36~git20250428:

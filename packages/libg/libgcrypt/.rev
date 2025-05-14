@@ -930,4 +930,20 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>1270020</requestid>
   </revision>
+  <revision rev="107" vrev="5">
+    <srcmd5>0de70f996213149a8b72812ac27fa5d0</srcmd5>
+    <version>1.11.0</version>
+    <time>1746638072</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274800</requestid>
+  </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>d8ffa2b077f86bf5649c4178253600ea</srcmd5>
+    <version>1.11.1</version>
+    <time>1747061209</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276114</requestid>
+  </revision>
 </revisionlist>

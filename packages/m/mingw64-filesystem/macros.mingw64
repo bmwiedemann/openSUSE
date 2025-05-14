@@ -162,16 +162,12 @@ package or when debugging this package.\
   unset x i
 
 %_mingw64_package_header \
-  %global __strip %{_mingw64_strip} \
-  %global __objdump %{_mingw64_objdump} \
-  %global __os_install_post %{_mingw64_install_post}
+  %global __arch_install_post %{_mingw64_install_post}
 
 # see also macros.mingw64-cross
 %_mingw64_package_header_debug \
   %{?!__mingw64_cross_debug_package:%global debug_package %{nil}} \
-  %global __strip %{_mingw64_strip} \
-  %global __objdump %{_mingw64_objdump} \
-  %global __os_install_post %{_mingw64_debug_install_post} \\\
+  %global __arch_install_post %{_mingw64_debug_install_post} \\\
                             %{_mingw64_install_post}
 
 %_mingw64_configure %{_mingw64_env} ; \

@@ -1,7 +1,7 @@
 #
 # spec file for package xgboost
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,9 @@ cp %{SOURCE1} jvm-packages/%{artifactId}/build.xml
 %pom_remove_dep ":scala-collection-compat_\${scala.binary.version}" jvm-packages/%{artifactId}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 pushd jvm-packages
 %if 0%{?suse_version} <= 1500
 export CC=gcc-8

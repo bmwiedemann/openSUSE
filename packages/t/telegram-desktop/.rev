@@ -1432,4 +1432,21 @@
   if the DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION option is enabled.</comment>
     <requestid>1268616</requestid>
   </revision>
+  <revision rev="135" vrev="3">
+    <srcmd5>ad516f5eccddac711f2ccb329c622df9</srcmd5>
+    <version>5.13.1</version>
+    <time>1746638259</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated ada to 3.2.4.
+- Updated openh264-headers to 2.6.0.
+- Updated tg_owt to git20250501
+  * Changed 0002-tg_owt-h264-dlopen.patch.
+  * Added pipewire 1.4 support (removed 0003-tg_owt-pipewire-1.4.patch).
+- Replaced tg_owt-dlopen-headers.tar.gz to openh264-headers-2.6.0.tar.xz.
+- Renamed 0001-dynamic-link-x.patch to dynamic-link-x.patch.
+- Renamed 0002-tg_owt-h264-dlopen.patch to tg_owt-h264-dlopen.patch.
+- Renamed 0001-Fix-build-with-Qt-6.9.patch to Qt-6.9.patch.
+- Used mold linker (keeps RAM consumption within the 16 GB limit).</comment>
+    <requestid>1275038</requestid>
+  </revision>
 </revisionlist>

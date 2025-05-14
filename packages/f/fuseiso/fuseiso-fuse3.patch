@@ -1,0 +1,262 @@
+diff -Pdpru fuseiso-20070708.orig/config.h.in fuseiso-20070708/config.h.in
+--- fuseiso-20070708.orig/config.h.in	2007-07-08 17:15:53.000000000 +0400
++++ fuseiso-20070708/config.h.in	2025-05-13 12:31:23.807970397 +0300
+@@ -3,13 +3,13 @@
+ /* Define to 1 if you have the <dlfcn.h> header file. */
+ #undef HAVE_DLFCN_H
+ 
+-/* Define to 1 if you have the <fuse.h> header file. */
++/* Define to 1 if you have the <fuse3/fuse.h> header file. */
+ #undef HAVE_FUSE_H
+ 
+ /* Define to 1 if you have the <inttypes.h> header file. */
+ #undef HAVE_INTTYPES_H
+ 
+-/* Define to 1 if you have the `fuse' library (-lfuse). */
++/* Define to 1 if you have the `fuse3' library (-lfuse3). */
+ #undef HAVE_LIBFUSE
+ 
+ /* Define to 1 if you have the <memory.h> header file. */
+diff -Pdpru fuseiso-20070708.orig/configure.in fuseiso-20070708/configure.in
+--- fuseiso-20070708.orig/configure.in	2007-07-08 16:56:29.000000000 +0400
++++ fuseiso-20070708/configure.in	2025-05-13 12:39:01.414616472 +0300
+@@ -7,13 +7,4 @@ AC_LANG_C
+ AC_PROG_CC
+ AM_PROG_LIBTOOL
+ 
+-AC_CHECK_HEADERS(fuse.h, AC_CHECK_LIB(fuse, fuse_main, [],
+-    [ AC_MSG_ERROR([libfuse is required]) ]), 
+-    [ AC_MSG_ERROR([libfuse is required]) ],
+-[
+-#ifndef _FILE_OFFSET_BITS
+-#define _FILE_OFFSET_BITS 64
+-#endif
+-])
+-
+ AC_OUTPUT(Makefile src/Makefile zAppRun/Makefile)
+diff -Pdpru fuseiso-20070708.orig/linux/iso_fs.h fuseiso-20070708/linux/iso_fs.h
+--- fuseiso-20070708.orig/linux/iso_fs.h	2006-09-27 06:42:10.000000000 +0400
++++ fuseiso-20070708/linux/iso_fs.h	2025-05-13 14:40:37.998140317 +0300
+@@ -170,8 +170,6 @@ struct iso_directory_record {
+ #define ISOFS_BUFFER_SIZE(INODE) ((INODE)->i_sb->s_blocksize)
+ #define ISOFS_BUFFER_BITS(INODE) ((INODE)->i_sb->s_blocksize_bits)
+ 
+-#define ISOFS_SUPER_MAGIC 0x9660
+-
+ #ifdef __KERNEL__
+ /* Number conversion inlines, named after the section in ISO 9660
+    they correspond to. */
+diff -Pdpru fuseiso-20070708.orig/src/fuseiso.c fuseiso-20070708/src/fuseiso.c
+--- fuseiso-20070708.orig/src/fuseiso.c	2007-05-06 21:01:17.000000000 +0400
++++ fuseiso-20070708/src/fuseiso.c	2025-05-13 12:15:03.866171309 +0300
+@@ -38,8 +38,8 @@
+ 
+ #include <linux/iso_fs.h>
+ 
+-#define FUSE_USE_VERSION 22
+-#include <fuse.h>
++#define FUSE_USE_VERSION 314
++#include <fuse3/fuse.h>
+ 
+ #include <zlib.h>
+ #include <locale.h>
+@@ -214,7 +214,7 @@ int del_mtab_record() {
+     return 0;
+ };
+ 
+-static int isofs_getattr(const char *path, struct stat *stbuf)
++static int isofs_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *UNUSED(fi))
+ {
+     return isofs_real_getattr(path, stbuf);
+ }
+@@ -238,7 +238,7 @@ static int isofs_flush(const char *UNUSE
+     return 0;
+ };
+ 
+-static void* isofs_init() {
++static void* isofs_init(struct fuse_conn_info *UNUSED(conn), struct fuse_config *cfg) {
+     int rc;
+     if(maintain_mtab) {
+         rc = add_mtab_record();
+@@ -246,6 +246,7 @@ static void* isofs_init() {
+             exit(EXIT_FAILURE);
+         };
+     };
++    cfg->use_ino = 1;
+     return isofs_real_init();
+ };
+ 
+@@ -261,11 +262,11 @@ static int isofs_opendir(const char *pat
+ };
+ 
+ static int isofs_readdir(const char *path, void *buf, fuse_fill_dir_t filler, off_t UNUSED(offset),
+-    struct fuse_file_info *UNUSED(fi)) {
++    struct fuse_file_info *UNUSED(fi), enum fuse_readdir_flags UNUSED(flags)) {
+     return isofs_real_readdir(path, buf, filler);
+ };
+ 
+-static int isofs_statfs(const char *UNUSED(path), struct statfs *stbuf)
++static int isofs_statfs(const char *UNUSED(path), struct statvfs *stbuf)
+ {
+     return isofs_real_statfs(stbuf);
+ }
+@@ -340,7 +341,7 @@ int main(int argc, char *argv[])
+         exit(EXIT_FAILURE);
+     };
+     
+-    imagefile = normalize_name(argv[optind]);
++    imagefile = normalize_name(argv[optind++]);
+     
+     image_fd = open(imagefile, O_RDONLY);
+     if(image_fd == -1) {
+@@ -349,42 +350,16 @@ int main(int argc, char *argv[])
+         exit(EXIT_FAILURE);
+     };
+     
+-    mount_point = normalize_name(argv[optind + 1]);
++    mount_point = normalize_name(argv[optind]);
+     
+-    // with space for possible -o use_ino arguments
+-    char **nargv = (char **) malloc((argc + 2) * sizeof(char *));
+-    int nargc = argc - optind;
++    int nargc = 1 + argc - optind;
++    char **nargv = (char **) malloc((nargc) * sizeof(char *));
+     
+     nargv[0] = argv[0];
+     
+     int i;
+-    int next_opt = 0;
+-    int use_ino_found = 0;
+     for(i = 0; i < nargc - 1; ++i) {
+-        if(next_opt && !use_ino_found) {
+-            if(strstr(argv[i + optind + 1], "use_ino")) { // ok, already there
+-                use_ino_found = 1;
+-                nargv[i + 1] = argv[i + optind + 1];
+-            } else { // add it
+-                char* str = (char*) malloc(strlen(argv[i + optind + 1]) + 10);
+-                strcpy(str, argv[i + optind + 1]);
+-                strcat(str, ",use_ino");
+-                nargv[i + 1] = str;
+-                use_ino_found = 1;
+-            };
+-        } else {
+-            nargv[i + 1] = argv[i + optind + 1];
+-        };
+-        // check if this is -o string mean that next argument should be options string
+-        if(i > 1 && nargv[i + 1][0] == '-' && nargv[i + 1][1] == 'o') {
+-            next_opt = 1;
+-        };
+-    };
+-    if(!use_ino_found) {
+-        nargv[nargc] = "-o";
+-        nargc++;
+-        nargv[nargc] = "use_ino";
+-        nargc++;
++        nargv[i + 1] = argv[optind + i];
+     };
+     
+     if(!iocharset) {
+@@ -417,5 +392,5 @@ int main(int argc, char *argv[])
+     // will exit in case of failure
+     rc = isofs_real_preinit(imagefile, image_fd);
+     
+-    return fuse_main(nargc, nargv, &isofs_oper);
++    return fuse_main(nargc, nargv, &isofs_oper, NULL);
+ };
+diff -Pdpru fuseiso-20070708.orig/src/isofs.c fuseiso-20070708/src/isofs.c
+--- fuseiso-20070708.orig/src/isofs.c	2007-07-08 16:22:59.000000000 +0400
++++ fuseiso-20070708/src/isofs.c	2025-05-13 14:57:31.626485224 +0300
+@@ -18,8 +18,7 @@
+  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+  ***************************************************************************/
+ 
+-// for struct tm->tm_gmtoff
+-#define _BSD_SOURCE
++#define _DEFAULT_SOURCE
+ 
+ #include <stdio.h>
+ #include <fcntl.h>
+@@ -32,7 +31,7 @@
+ #include <zlib.h>
+ #include <dirent.h>
+ #include <pthread.h>
+-#include <sys/statfs.h>
++#include <sys/statvfs.h>
+ #include <iconv.h>
+ 
+ #include "isofs.h"
+@@ -1346,7 +1345,7 @@ int isofs_real_opendir(const char *path)
+     return 0;
+ };
+ 
+-int isofs_real_readdir(const char *path, void *filler_buf, isofs_dir_fill_t filler) {
++int isofs_real_readdir(const char *path, void *filler_buf, fuse_fill_dir_t filler) {
+     if(path[0] == '\0') {
+         fprintf(stderr, "readdir: attempt to read empty path name\n");
+         return -EINVAL;
+@@ -1517,7 +1516,7 @@ int isofs_real_readdir(const char *path,
+                 struct stat st;
+                 memset(& st, '\0', sizeof(struct stat));
+                 isofs_direntry2stat(& st, inode);
+-                rc = filler(filler_buf, entry, & st, 0);
++                rc = filler(filler_buf, entry, & st, 0, 0);
+                 if(rc) {
+                     printf("readdir: filler return with %d, entry %s\n", rc, entry);
+                     isofs_free_inode(inode);
+@@ -1806,14 +1805,14 @@ int isofs_real_read(const char *path, ch
+     return total_size;
+ };
+ 
+-int isofs_real_statfs(struct statfs *stbuf) {
+-    stbuf->f_type = ISOFS_SUPER_MAGIC;
++int isofs_real_statfs(struct statvfs *stbuf) {
+     stbuf->f_bsize = context.data_size; // or PAGE_CACHE_SIZE?
+     stbuf->f_blocks = 0; // while it is possible to calculate this, i see no reasons to do so
+     stbuf->f_bfree = 0;
+     stbuf->f_bavail = 0;
+     stbuf->f_files = 0;
+     stbuf->f_ffree = 0;
+-    stbuf->f_namelen = NAME_MAX - 1; // ? not sure..
++    stbuf->f_favail = 0;
++    stbuf->f_namemax = NAME_MAX - 1; // ? not sure..
+     return 0;
+ };
+diff -Pdpru fuseiso-20070708.orig/src/isofs.h fuseiso-20070708/src/isofs.h
+--- fuseiso-20070708.orig/src/isofs.h	2006-10-17 05:50:39.000000000 +0400
++++ fuseiso-20070708/src/isofs.h	2025-05-13 12:15:40.305888650 +0300
+@@ -25,8 +25,8 @@
+ #include <linux/iso_fs.h>
+ #include <linux/rock.h>
+ 
+-typedef int (*isofs_dir_fill_t) (void *buf, const char *name,
+-    const struct stat *stat, off_t off);
++#define FUSE_USE_VERSION 314
++#include <fuse3/fuse.h>
+ 
+ typedef struct _isofs_context {
+     char *imagefile;
+@@ -154,11 +154,11 @@ int isofs_real_preinit(char* imagefile,
+ void* isofs_real_init();
+ 
+ int isofs_real_opendir(const char *path);
+-int isofs_real_readdir(const char *path, void *filler_buf, isofs_dir_fill_t filler);
++int isofs_real_readdir(const char *path, void *filler_buf, fuse_fill_dir_t filler);
+ int isofs_real_getattr(const char *path, struct stat *stbuf);
+ int isofs_real_readlink(const char *path, char *target, size_t size);
+ int isofs_real_open(const char *path);
+ int isofs_real_read(const char *path, char *out_buf, size_t size, off_t offset);
+-int isofs_real_statfs(struct statfs *stbuf);
++int isofs_real_statfs(struct statvfs *stbuf);
+ 
+ #endif // _ISOFS_H
+diff -Pdpru fuseiso-20070708.orig/src/Makefile.am fuseiso-20070708/src/Makefile.am
+--- fuseiso-20070708.orig/src/Makefile.am	2006-10-17 05:47:28.000000000 +0400
++++ fuseiso-20070708/src/Makefile.am	2025-05-13 12:21:42.312158417 +0300
+@@ -8,5 +8,5 @@ INCLUDES= $(all_includes)
+ fuseiso_LDFLAGS = $(all_libraries)
+ noinst_HEADERS = isofs.h
+ 
+-AM_CFLAGS = -D_FILE_OFFSET_BITS=64 `pkg-config --cflags fuse glib-2.0` -Wall
+-AM_LDFLAGS = `pkg-config --libs fuse glib-2.0` -lz
++AM_CFLAGS = -D_FILE_OFFSET_BITS=64 `pkg-config --cflags fuse3 glib-2.0` -Wall
++LIBS = `pkg-config --libs fuse3 glib-2.0` -lz

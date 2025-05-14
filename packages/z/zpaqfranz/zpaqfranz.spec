@@ -1,7 +1,7 @@
 #
 # spec file for package zpaqfranz
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        60.8
+Version:        62.2
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 License:        MIT AND SUSE-Public-Domain
@@ -25,6 +25,7 @@ Group:          Productivity/Archiving/Compression
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
+Suggests:       libcurl
 
 %description
 Swiss army knife for backup and disaster recovery, like 7z or RAR on
@@ -41,7 +42,7 @@ g++ %{optflags} \
   %elifarch s390x  \
   -Dunix -DNOJIT -DBIG \
   %else
-  -Dunix -DNOJIT \
+  -Dunix -DNOJIT -DSFTP \
   %endif
   zpaqfranz.cpp -o zpaqfranz -pthread -lstdc++ -lm
 

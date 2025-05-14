@@ -1038,4 +1038,31 @@ New upstream release</comment>
   + Updated translations. (forwarded request 1267515 from iznogood)</comment>
     <requestid>1267617</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>43d7b5315639504346145963f84acc73</srcmd5>
+    <version>4.18.5</version>
+    <time>1746542394</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.5:
+  + Bugs fixed:
+    - `gdk_surface_get_device_position: assertion 'GDK_IS_SURFACE
+      (surface)' failed` on popover close
+    - Cairo device scale changes lead to significant performance
+      regression in cairo blur
+    - gtkmm programs fail to start on Windows with AccessKit
+      support enabled
+    - Epiphany Crash in GTK file chooser when last used directory
+      has insufficient filesystem permissions: &quot;GFileInfo created
+      without standard::type&quot;
+    - Failed to link with the mold linker
+    - Broken boxed-list ListBox
+    - XCompose preventing GTK4 applications from launching (again)
+    - critical when selecting label with use-underline but mnemonic
+      with screenreader enabled
+    - Some cherry-picked fixes for 4.18
+    - Early exit  if the clipped bound rectangle's area is zero
+      after snapping
+  + Updated translations. (forwarded request 1274185 from iznogood)</comment>
+    <requestid>1274592</requestid>
+  </revision>
 </revisionlist>

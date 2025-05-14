@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  5 18:31:02 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 2.4.0
+  * Use Rizin 0.8.0
+  * Switch to use Qt 6 by default (Qt5 still available for older Linux distros)
+  *     Appimage now supports running on wayland natively
+  * Add a scrollbar to the disassembly window
+  * Add nicer display of 1-instruction loops
+  * Debugger improvements (#3407 #3411 #3410)
+  * Fix io.va checkbox - previously it didn't had any effect
+  * Fix single key shortcuts getting triggered in text input fields
+  * Updated translations
+  * Various bugfixes and refactors (67 commits total)
+  * Drop Fix-build-failure-against-PySide-6.8.patch
+
+-------------------------------------------------------------------
 Sun Sep  8 06:14:29 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
 
 - new package rz-cutter

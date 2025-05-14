@@ -18,23 +18,23 @@
 
 %define directory_name rke2
 %define binary_name rke2
-%define kubernetes_version v1.32.3
-%define kubernetes_version_major_minor 1.32
-%define kubernetes_version_next 1.33
+%define kubernetes_version v1.33.0
+%define kubernetes_version_major_minor 1.33
+%define kubernetes_version_next 1.34
 # check the upstream dependency file and adapt according to the 'golang: upstream version'
 # https://raw.githubusercontent.com/kubernetes/kubernetes/${KUBERNETES_VERSION}/build/dependencies.yaml
 # curl -sL https://raw.githubusercontent.com/kubernetes/kubernetes/${KUBERNETES_VERSION}/build/dependencies.yaml | yq e '.dependencies[] | select(.name == "golang: upstream version").version'
 # example:
 # result of the command 1.22.2 => golang_version go1.22 (including go prefix, without patch version)
 # result of the command 1.22.2 => min_required_golang_minor_version 1.22.2
-%define golang_version go1.23
-%define min_required_golang_minor_version 1.23.6
+%define golang_version go1.24
+%define min_required_golang_minor_version 1.24.2
 
 #
-%define hardened_etcd_version build20250306
+%define hardened_etcd_version build20250411
 
 Name:           rke2
-Version:        1.32.3+rke2r1
+Version:        1.33.0+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0

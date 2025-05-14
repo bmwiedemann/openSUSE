@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Tue May 06 05:43:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.1:
+  * Bump version to v0.9.1
+  * Fix the build issue with the replace directive
+
+-------------------------------------------------------------------
+Sat May 03 17:41:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * Bump version to v0.9.0
+  * Update CHANGELOG
+  * Update description for brew tap
+  * Update README
+  * Add acceptance tests for OpenTofu
+  * Add support for updating .terraform.lock.hcl using OpenTofu
+    registry
+  * Create a lock index from the given tfregistry config
+  * Unify tfregistry config for release and lock packages
+  * Allow TFREGISTRY_BASE_URL to set the host of the Terraform
+    registry
+  * Remove the experimental badge from the Registry Provider source
+    type
+  * Use the list all versions API for the OpenTofu registry
+    compatibility
+  * Add support for the OpenTofu registry as a release source
+  * Pin all GitHub Actions
+  * Use a forked terraform-config-inspect to support .tofu
+    extension
+  * Add support for .tofu extension
+  * Add support for updating version constraints of opentofu core
+  * Add support for Terraform 1.11
+  * Update hcl to v2.23.0
+  * Update Alpine to 3.21
+  * Update golangci-lint to 1.64.8
+  * Update Go to 1.24
+
+-------------------------------------------------------------------
+Mon Apr 28 14:17:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package tfupdate: update version constraints in your
+  Terraform configurations

@@ -109,4 +109,13 @@
     <comment></comment>
     <requestid>1209037</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a69b9661a832ce201360fa54a4c0f22a</srcmd5>
+    <version>0.3.6~git20240902.ce17a35</version>
+    <time>1746476950</time>
+    <user>anag_factory</user>
+    <comment>- Replace obsolete and unused gnome-common with really used libtool
+  BuildRequires. (forwarded request 1274238 from iznogood)</comment>
+    <requestid>1274535</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           NumCpp
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        C++ implementation of the Python Numpy library
 License:        MIT
@@ -70,6 +70,7 @@ This package provides the header files for compiling code using NumCpp.
   -DBUILD_TESTS:BOOL=ON \
   -DBUILD_MULTIPLE_TEST:BOOL=ON \
   -DBUILD_CPPCHECK_TEST:BOOL=ON \
+  -Wno-dev \
 %{nil}
 %cmake_build
 

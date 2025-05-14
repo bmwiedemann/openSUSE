@@ -1,0 +1,20 @@
+Index: flask_oidc-2.3.1/tests/test_flask_oidc.py
+===================================================================
+--- flask_oidc-2.3.1.orig/tests/test_flask_oidc.py
++++ flask_oidc-2.3.1/tests/test_flask_oidc.py
+@@ -299,10 +299,11 @@ def test_accept_token(client, mocked_res
+ def test_accept_token_no_token(client, mocked_responses):
+     resp = client.get("/need-token")
+     assert resp.status_code == 401
+-    assert resp.json == {
+-        "error": "missing_authorization",
+-        "error_description": 'Missing "Authorization" in headers.',
+-    }
++    assert resp.json["error"] == "missing_authorization"
++    assert resp.json["error_description"] in (
++        "Missing 'Authorization' in headers.",
++        'Missing "Authorization" in headers.',
++    )
+ 
+ 
+ def test_accept_token_invalid(client, mocked_responses):

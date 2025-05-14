@@ -19,7 +19,7 @@
 %define lname libSDL2-2_0-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 Name:           sdl2-compat
-Version:        2.32.54
+Version:        2.32.56
 Release:        0
 Summary:        SDL-2.0 Compatibility Layer for Simple DirectMedia Layer 3.0
 License:        MIT
@@ -27,12 +27,13 @@ Group:          Development/Libraries/X11
 URL:            https://github.com/libsdl-org/sdl2-compat
 Source:         https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz
 Source2:        https://github.com/libsdl-org/sdl2-compat/releases/download/release-%version/sdl2-compat-%version.tar.gz.sig
+Source3:        %name.keyring
 Source8:        baselibs.conf
 Source9:        %name-rpmlintrc
 Patch1:         sdl2-symvers.patch
 BuildRequires:  cmake
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(sdl3) >= 3.2.4
+BuildRequires:  pkgconfig(sdl3) >= 3.2.12
 
 %description
 This is the "Simple DirectMedia Layer" library built from sdl2-compat.
@@ -57,6 +58,9 @@ Group:          Development/Libraries/X11
 Requires:       %lname = %version
 Conflicts:      SDL2-devel
 Provides:       SDL2-devel = %version-%release
+# You should not add pkgconfig(x11) to sdl-devel; as far as SDL is concerned, it is optional.
+# (Think outputting to Wayland, KMSDRM, or null.)
+# https://github.com/libsdl-org/sdl2-compat/issues/405
 
 %description devel
 This package contains files needed for development with the SDL2

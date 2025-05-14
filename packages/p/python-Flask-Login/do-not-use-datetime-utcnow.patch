@@ -1,0 +1,55 @@
+From a20c1075529b3e848cdfd1385c68415f33991b32 Mon Sep 17 00:00:00 2001
+From: David Lord <davidism@gmail.com>
+Date: Mon, 30 Oct 2023 20:30:37 -0700
+Subject: [PATCH] use datetime.now with timezone instead of utcnow
+
+---
+ CHANGES.md                       | 1 +
+ src/flask_login/login_manager.py | 3 ++-
+ tests/test_login.py              | 6 +++---
+ 3 files changed, 6 insertions(+), 4 deletions(-)
+
+Index: Flask-Login-0.6.3/src/flask_login/login_manager.py
+===================================================================
+--- Flask-Login-0.6.3.orig/src/flask_login/login_manager.py
++++ Flask-Login-0.6.3/src/flask_login/login_manager.py
+@@ -1,5 +1,6 @@
+ from datetime import datetime
+ from datetime import timedelta
++from datetime import timezone
+ 
+ from flask import abort
+ from flask import current_app
+@@ -485,7 +486,7 @@ class LoginManager:
+             duration = timedelta(seconds=duration)
+ 
+         try:
+-            expires = datetime.utcnow() + duration
++            expires = datetime.now(timezone.utc) + duration
+         except TypeError as e:
+             raise Exception(
+                 "REMEMBER_COOKIE_DURATION must be a datetime.timedelta,"
+Index: Flask-Login-0.6.3/tests/test_login.py
+===================================================================
+--- Flask-Login-0.6.3.orig/tests/test_login.py
++++ Flask-Login-0.6.3/tests/test_login.py
+@@ -818,8 +818,8 @@ class LoginTestCase(unittest.TestCase):
+ 
+     def test_remember_me_refresh_each_request(self):
+         with patch("flask_login.login_manager.datetime") as mock_dt:
+-            now = datetime.utcnow()
+-            mock_dt.utcnow = Mock(return_value=now)
++            now = datetime.now(timezone.utc)
++            mock_dt.now = Mock(return_value=now)
+ 
+             domain = self.app.config["REMEMBER_COOKIE_DOMAIN"] = ".localhost.local"
+             path = self.app.config["REMEMBER_COOKIE_PATH"] = "/"
+@@ -828,7 +828,7 @@ class LoginTestCase(unittest.TestCase):
+             c.get("/login-notch-remember")
+             cookie1 = client_get_cookie(c, "remember", domain, path)
+             self.assertIsNotNone(cookie1.expires)
+-            mock_dt.utcnow.return_value = now + timedelta(seconds=1)
++            mock_dt.now.return_value = now + timedelta(seconds=1)
+             c.get("/username")
+             cookie2 = client_get_cookie(c, "remember", domain, path)
+             self.assertNotEqual(cookie1.expires, cookie2.expires)

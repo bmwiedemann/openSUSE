@@ -1,7 +1,7 @@
 #
 # spec file for package ldap-proxy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define configdir %{_sysconfdir}/ldap-proxy
 
 Name:           ldap-proxy
-Version:        0.1.0~6
+Version:        0.1.0~90
 Release:        0
 Summary:        An in-memory caching proxy for LDAP
 License:        MPL-2.0 AND MPL-2.0+

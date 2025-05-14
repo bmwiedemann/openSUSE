@@ -75,4 +75,12 @@
   * MAINT: updates for numpy2 closes #509</comment>
     <requestid>1169367</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>9d6f7a187fdf539453ecee1a197bb56f</srcmd5>
+    <version>3.1.6</version>
+    <time>1746809389</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275980</requestid>
+  </revision>
 </revisionlist>

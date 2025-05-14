@@ -17,6 +17,8 @@
             fsmountoptions="compress=zstd:1"
             firmware="uefi"
             bootpartition="false"
+            initrd_system="none"
+            efipartsize="750"
             bootkernel="custom"
             devicepersistency="by-uuid"
             btrfs_root_is_subvolume="true"
@@ -25,7 +27,7 @@
             btrfs_quota_groups="true"
             rootfs_label="TIKINSTALL"
         >
-	    <bootloader name="grub2" console="gfxterm"/>
+	    <bootloader name="custom"/>
 	    <oemconfig>
                 <oem-resize>false</oem-resize>
             </oemconfig>
@@ -34,9 +36,6 @@
                 <volume name="root"/>
                 <volume name="opt"/>
 		<volume name="srv"/>
-                <volume name="boot/grub2/i386-pc"/>
-                <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
-                <volume name="boot/writable"/>
                 <volume name="usr/local"/>
                 <volume name="var" copy_on_write="false"/>
             </systemdisk>

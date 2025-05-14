@@ -20,13 +20,16 @@
 #!BuildTag: opensuse/alertmanager:%%alertmanager_minor_version%%
 #!BuildTag: opensuse/alertmanager:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends golang-github-prometheus-alertmanager curl
-RUN set -euo pipefail; zypper -n clean -a; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends golang-github-prometheus-alertmanager curl
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.alertmanager
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Alertmanager"

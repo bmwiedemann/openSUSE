@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a5de4b35c1e3e994d0aab3b85e387f91</srcmd5>
+    <version>3.3.9</version>
+    <time>1747159595</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequire testsuite, drop pwd PYTHONPATH.
+- Initial version (v3.3.9), needed by python-dropbox</comment>
+    <requestid>1276988</requestid>
+  </revision>
+</revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-XStatic
 Version:        1.0.3
 Release:        0
@@ -24,7 +23,9 @@ Summary:        XStatic base package with minimal support code
 License:        MIT
 URL:            https://github.com/xstatic-py/xstatic
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic/XStatic-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -37,14 +38,16 @@ static files as a Python package.
 %setup -q -n XStatic-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %doc README.txt
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/[Xx][Ss]tatic
+%{python_sitelib}/[Xx][Ss]tatic-%{version}*-info
+%{python_sitelib}/[Xx][Ss]tatic-%{version}*nspkg.pth
 
 %changelog

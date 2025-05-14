@@ -1,7 +1,7 @@
 #
 # spec file for package python-Dumper
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Dumper
 Version:        1.2.0
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Tool to conveniently describe any Python datastructure
 License:        MIT
 URL:            https://github.com/jric/Dumper.py
 Source:         https://github.com/jric/Dumper.py/archive/refs/tags/%{version}.tar.gz#/Dumper.py-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -37,10 +38,10 @@ Tool to conveniently describe any Python datastructure
 %setup -q -n Dumper.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -50,7 +51,7 @@ $python test.py
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/dumper/
-%{python_sitelib}/Dumper-%{version}-py*.egg-info
+%{python_sitelib}/dumper
+%{python_sitelib}/[Dd]umper-%{version}.dist-info
 
 %changelog

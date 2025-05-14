@@ -97,4 +97,13 @@
   * Use brotlicffi for PyPy</comment>
     <requestid>1140115</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c5b6d364e47501136359db4e760e3b2e</srcmd5>
+    <version>1.14</version>
+    <time>1746542550</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.</comment>
+    <requestid>1274780</requestid>
+  </revision>
 </revisionlist>

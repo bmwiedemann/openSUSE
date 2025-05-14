@@ -105,4 +105,14 @@
     <comment></comment>
     <requestid>568413</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>185dab0ab637daf1306141dc1aa37878</srcmd5>
+    <version>0.80.0</version>
+    <time>1747061163</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+</comment>
+    <requestid>1276520</requestid>
+  </revision>
 </revisionlist>

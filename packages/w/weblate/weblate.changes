@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Apr 29 12:14:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.11.3
+  * Inconsistent reStructuredText references check to validate
+    reStructuredText references.
+  * reStructuredText syntax error check to validate reStructuredText
+    syntax.
+  * API can now produce CSV output.
+  * New management command import_projectbackup to import Project
+    level backups.
+  * Improved error handling in Automatic suggestions.
+  * Synchronize on shared repository now operates on all its components.
+  * Reused translation check gracefully handles languages which are
+    not case sensitive.
+  * Running tests using Django test executor is no longer supported,
+    see Weblate testsuite and continuous integration.
+  * Weblate has switched to a different library for zxcvbn integration,
+    as the old one is no longer maintained, see Password authentication.
+  * Weblate uses proactive authentication with Git 2.46.0 and newer when
+    HTTP credentials are supplied.
+  * Webhook is now available as an add-on.
+  * Automattic components formatting check to validate placeholders in
+    Automattic components.
+  * Inherited flags can now be discarded, see Customizing behavior using
+    flags.
+  * Security: Cloning a component could leak component configuration
+    into the URL (CVE-2025-32021).
+  * Fixed captcha verification when some time zone was configured.
+  * Project level backups now include teams and categories.
+  * Registration now disallows disposable e-mail domains.
+  * Glossary performance in zen mode and automatic suggestions.
+  * Django 5.2 compatibility.
+- Drop merged ttkit.patch
+
+-------------------------------------------------------------------
 Tue Jan  7 10:58:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.9.2

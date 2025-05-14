@@ -1137,4 +1137,43 @@
     linker shouldn't reject them. (21e20e0)</comment>
     <requestid>1273270</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>a2bc7d800a52377a8c9df64e9c3757ae</srcmd5>
+    <version>2.39.0</version>
+    <time>1746542468</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.39.0
+  * [ARM32] Support for 32-bit big-endian ARM has been added. Although running ARM32
+    in big-endian mode is very rare, the processor does technically support both
+    little- and big-endian modes, and we now support both.
+  * There are two variants of big-endian mode for ARM32: BE32 and BE8. BE32 is now
+    obsolete and uses big-endian format for both instructions and data. In BE8,
+    instructions are always in little-endian (i.e., the same as little-endian
+    ARM32), while only the data is in big-endian. mold supports only BE8 output.
+    (157b16a)
+  * Fixed a spurious --no-allow-shlib-undefined error. (3274bcb)
+  * [ARM][PPC] Fixed a regression introduced in 2.38.0 that mold could crash when
+    linking a large program. (fded2d8)
+  * Previously, --default-symver didn't set versions to symbols if the symbols were
+    marked as global: in a version script. Now, --default-symver correctly version
+    all symbols with the soname of the output file. (8bae43b)
+  * [RISC-V] Fixed an issue where mold reported an error on R_RISCV_32 when the
+    target was 64-bit RISC-V. (564757a)
+  * [RISC-V] Fixed an issue where a call to an weak undefined symbol within the same
+    shared library was mistakenly turned into an infinite loop. Now, such calls are
+    promoted to a function call through the PLT entry. (e08e7f6)
+  * Fixed an issue that mold falls into an infinite loop in a rare occasion when
+    computing an address of the program header. (83dd353)</comment>
+    <requestid>1274689</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a7aa4b5558fbf26df07e213b3de63129</srcmd5>
+    <version>2.39.1</version>
+    <time>1747159543</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.39.1
+  * Fixed a potential use-after-free issue that occurred when doing LTO (link-time
+    optimization) with LLVM. (d0dffd5)</comment>
+    <requestid>1276942</requestid>
+  </revision>
 </revisionlist>

@@ -109,4 +109,24 @@
     <comment></comment>
     <requestid>1152894</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0f44a07bc569cdaad1c689f4dae8a9cb</srcmd5>
+    <version>1.0.13</version>
+    <time>1746476944</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.13 
+  * bugfix release 
+- u_src-gen_deftwmrc.sh-is-not-executable-so-run-it-with.patch
+  * fixes build</comment>
+    <requestid>1274520</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>de217286f4142f7f3d6644ce1b0d3545</srcmd5>
+    <version>1.0.13.1</version>
+    <time>1746638264</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.13.1
+- supersedes u_src-gen_deftwmrc.sh-is-not-executable-so-run-it-with.patch</comment>
+    <requestid>1274983</requestid>
+  </revision>
 </revisionlist>

@@ -955,4 +955,20 @@
     <comment></comment>
     <requestid>1273256</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>dcc0386df784d1292bd44579efdd7155</srcmd5>
+    <version>0.0.36~git20250503</version>
+    <time>1746476722</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274161</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>87b205312c3dce9a3ad81de9e4077c12</srcmd5>
+    <version>0.0.36~git20250507</version>
+    <time>1746721370</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275383</requestid>
+  </revision>
 </revisionlist>

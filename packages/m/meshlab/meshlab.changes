@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 11 23:22:03 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2023.12
+  * This version brings several bugfixes, and new plugins:
+    + filter_cubization
+    + filter_developability
+    + filter_embree
+    + filter_mesh_alpha_wrap
+- Drop upstream patches:
+  * 0001-Set-correct-RPATH-for-libraries-and-executable.patch
+  * gcc13-fix.patch
+
+-------------------------------------------------------------------
 Wed Mar 12 13:10:40 UTC 2025 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Query GLEW version from rpm database instead of using a static version

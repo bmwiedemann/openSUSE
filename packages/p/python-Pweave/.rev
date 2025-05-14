@@ -84,4 +84,12 @@
 - update-alternatives for multi-python3 builds</comment>
     <requestid>1157513</requestid>
   </revision>
+  <revision rev="10" vrev="8">
+    <srcmd5>712c03b4a12e0b0f4b27a4419a735230</srcmd5>
+    <version>0.30.3</version>
+    <time>1746542624</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274882</requestid>
+  </revision>
 </revisionlist>

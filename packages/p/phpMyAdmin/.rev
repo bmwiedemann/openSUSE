@@ -1562,4 +1562,12 @@ CVE-2014-8958 [boo#906485]</comment>
     <comment>Update changes file to mention correct boo# fixes (forwarded request 1248912 from computersalat)</comment>
     <requestid>1248914</requestid>
   </revision>
+  <revision rev="185" vrev="3">
+    <srcmd5>515b86f5b691aa4a45ee12712818a957</srcmd5>
+    <version>5.2.2</version>
+    <time>1746476815</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274261</requestid>
+  </revision>
 </revisionlist>

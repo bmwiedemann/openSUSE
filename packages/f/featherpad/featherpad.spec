@@ -23,14 +23,16 @@ Summary:        Qt-based plaintext editor
 License:        GPL-3.0-only
 Group:          Productivity/Text/Editors
 URL:            https://github.com/tsujan/FeatherPad
-Source:         https://github.com/tsujan/FeatherPad/archive/V%{version}.tar.gz
+Source0:        %{url}/releases/download/V%{version}/FeatherPad-%{version}.tar.xz
+Source1:        %{url}/releases/download/V%{version}/FeatherPad-%{version}.tar.xz.asc
+Source2:        %{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  pkgconfig(Qt6Core) >= 5.15
+BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
@@ -57,14 +59,14 @@ FeatherPad is a plain-text editor. It is independent of any desktop environment 
 %lang_package
 
 %prep
-%setup -q -n FeatherPad-%{version}
+%autosetup -p1 -n FeatherPad-%{version}
 
 %build
-%cmake
-%make_build
+%cmake_qt6
+%qt6_build
 
 %install
-%cmake_install
+%qt6_install
 
 %find_lang %{name} --with-qt
 

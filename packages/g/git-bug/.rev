@@ -227,4 +227,36 @@ Update to the commit d499b6e.
 (🤖: Submission of git-bug via https://src.opensuse.org/pool/git-bug/pulls/7 by mcepl)</comment>
     <requestid>1256145</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4e9e5fecc329e3504c6321df635b0a03</srcmd5>
+    <version>0.8.1+git.1746484874.96c7a111</version>
+    <time>1746638343</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.1+git.1746484874.96c7a111:
+* docs: update install, contrib, and usage documentation (#1222)
+* fix: resolve the remote URI using url.*.insteadOf (#1394)
+* build(deps): bump the go_modules group across 1 directory with 3 updates (#1376)
+* chore: gofmt simplify gitlab/export_test.go (#1392)
+* fix: checkout repo before setting up go environment (#1390)
+* feat: bump to go v1.24.2 (#1389)
+* chore: update golang.org/x/net (#1379)
+* fix: use -0700 when formatting time (#1388)
+* fix: use correct url for gitlab PATs (#1384)
+* refactor: remove depdendency on pnpm for auto-label action (#1383)
+* feat: add action: auto-label (#1380)
+* feat: remove lifecycle/frozen (#1377)
+* build(deps): bump the npm_and_yarn group across 1 directory with 12 updates (#1378)
+* feat: support new exclusion label: lifecycle/pinned (#1375)
+* fix: refactor how gitlab title changes are detected (#1370)
+* revert: &quot;Create Dependabot config file&quot; (#1374)
+* refactor: rename //:git-bug.go to //:main.go (#1373)
+* build(deps): bump github.com/vektah/gqlparser/v2 from 2.5.16 to 2.5.25 (#1361)
+* fix: set GitLastTag to an empty string when git-describe errors (#1355)
+* chore: update go-git to v5@masterupdate_mods (#1284)
+* refactor: Directly swap two variables to optimize code (#1272)
+* Update README.md Matrix link to new room (#1275)
+- Remove upstreamed patch:
+- CVE-2025-22869-bump-go-crypto-ssh.patch</comment>
+    <requestid>1275060</requestid>
+  </revision>
 </revisionlist>

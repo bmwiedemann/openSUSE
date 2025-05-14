@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-textX
-Version:        4.1.0
+Version:        4.2.2
 Release:        0
 Summary:        Meta-language for DSL implementation inspired by Xtext
 License:        MIT
@@ -87,7 +87,7 @@ find tests/functional -name '*.whl' -exec python3 -m installer -d tmp-modules {}
 %check
 export LC_ALL=C.UTF-8
 export PYTHONPATH=$(ls -1d tmp-modules/usr/lib/python3.*/site-packages)
-%pytest
+%pytest tests/functional
 
 %post
 %python_install_alternative textx

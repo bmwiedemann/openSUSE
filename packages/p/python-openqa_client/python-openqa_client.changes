@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  5 20:58:14 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Add new `get_latest_build` method (asmorodskyi)
+
+-------------------------------------------------------------------
 Mon Dec 11 08:36:52 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.3:

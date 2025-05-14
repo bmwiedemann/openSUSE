@@ -1,7 +1,7 @@
 #
 # spec file for package adjtimex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Kernel time variables configuration utility
 License:        GPL-2.0-or-later
 Group:          System/Base
 Source:         http://ftp.debian.org/debian/pool/main/a/adjtimex/%{name}_%{version}.orig.tar.gz
+# fix build with gcc15
+Patch0:         adjtimex-gcc15.patch
 Provides:       util-linux:%{_sbindir}/adjtimex
 
 %description
@@ -36,7 +38,7 @@ using the CMOS clock as a reference, and can log times for long-term
 estimation of drift rates.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure

@@ -1,7 +1,7 @@
 #
 # spec file for package umockdev
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,12 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.18.4
+Version:        0.19.1
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
 URL:            https://github.com/martinpitt/umockdev/
 Source:         https://github.com/martinpitt/umockdev/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM 0001-t_system_single-handle-missing-selinux-context.patch gh#martinpitt/umockdev#256 eugenio.paolantonio@suse.com -- tests: umockdev-record: t_system_single: handle missing SELinux context on /dev/null
-Patch1:         0001-t_system_single-handle-missing-selinux-context.patch
 BuildRequires:  cmake
 BuildRequires:  gtk-doc
 BuildRequires:  meson

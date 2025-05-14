@@ -71,7 +71,6 @@ BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(librevenge-0.0)
-BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libvisio-0.1)
 BuildRequires:  pkgconfig(libwpg-0.3)
 # extensions use annotations which requires 3.7+

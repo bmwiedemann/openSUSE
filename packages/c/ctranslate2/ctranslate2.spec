@@ -1,7 +1,7 @@
 #
 # spec file for package ctranslate2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ctranslate2
-Version:        4.5.0
+Version:        4.6.0
 %define lname libctranslate2-4
 Release:        0
 Summary:        Library for efficient inference with Transformer models

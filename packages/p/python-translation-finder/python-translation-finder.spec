@@ -1,7 +1,7 @@
 #
 # spec file for package python-translation-finder
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2021 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,11 +27,13 @@ URL:            https://github.com/WeblateOrg/translation-finder
 # test_data/linked has to be symlink, hance using github tar ball
 Source:         https://github.com/WeblateOrg/translation-finder/archive/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module charset-normalizer}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module twine}
 BuildRequires:  %{python_module weblate-language-data >= 2021.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-charset-normalizer
@@ -50,10 +52,10 @@ A translation file finder for Weblate, translation tool with tight version contr
 sed -i -e '/pytest-runner/d' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/weblate-discover
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 # remove test data
@@ -73,6 +75,6 @@ sed -i -e '/pytest-runner/d' setup.py
 %license LICENSE
 %python_alternative %{_bindir}/weblate-discover
 %{python_sitelib}/translation_finder
-%{python_sitelib}/translation_finder-%{version}*info
+%{python_sitelib}/translation_finder-%{version}.dist-info
 
 %changelog

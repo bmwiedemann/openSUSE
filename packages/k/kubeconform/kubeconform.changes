@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 12 10:26:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.0:
+  * Add support for duration (#328)
+  * Invalid JSON should not be considered an error - see
+    https://github.com/yannh/kubeconform/issues/67 (#327)
+  * Add acceptance tests for caching of references (#326)
+  * Add tests for the HTTP loader (#325)
+  * Update jsonschema library to v6 (#324)
+  * Update go/goreleaser (#322)
+
+-------------------------------------------------------------------
 Sun Dec 15 07:45:34 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - workaround build failures by building with go1.22

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 12 02:35:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.2.11:
+  * Fix out-of-memory issues during large file operations (due to
+    accumulation of messages in message_history).
+  * Fix a bug where the OperationFailure exceptions do not contain the error
+    messages that were thrown when the exception occurred (#212)
+  * Update test cases to replace SafeConfigParser with ConfigParser (#219)
+  * Allow callers to override default tqdm kwargs (#222)
+- Add missing Requires on python-tqdm.
+- Switch to pyproject macros.
+- Drop patch python-pysmb-drop-SafeConfigParser.patch, included upstream.
+
+-------------------------------------------------------------------
 Mon Feb  5 14:31:00 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-pysmb-drop-SafeConfigParser.patch -- Replace

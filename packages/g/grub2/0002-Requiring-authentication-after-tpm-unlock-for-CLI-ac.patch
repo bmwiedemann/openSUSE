@@ -38,19 +38,19 @@ Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
  include/grub/misc.h           |  2 +
  8 files changed, 140 insertions(+)
 
-diff --git a/grub-core/disk/cryptodisk.c b/grub-core/disk/cryptodisk.c
-index babc94868d..21bf22ead1 100644
 --- a/grub-core/disk/cryptodisk.c
 +++ b/grub-core/disk/cryptodisk.c
-@@ -1188,6 +1188,7 @@ grub_cryptodisk_scan_device_real (const char *name,
+@@ -1183,6 +1183,9 @@
+ 	      ret = grub_cryptodisk_insert (dev, name, source);
+ 	      if (ret != GRUB_ERR_NONE)
  	        goto error;
- #ifndef GRUB_UTIL
- 	      is_tpmkey = 1;
++#ifndef GRUB_UTIL
 +	      grub_cli_set_auth_needed ();
- #endif
++#endif
  	      goto cleanup;
  	    }
-@@ -1706,6 +1707,89 @@ luks_script_get (grub_size_t *sz)
+ 	}
+@@ -1700,6 +1703,89 @@
    return ret;
  }
  
@@ -140,8 +140,6 @@ index babc94868d..21bf22ead1 100644
  struct grub_procfs_entry luks_script =
  {
    .name = "luks_script",
-diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 07b6940d2e..ef3b3756de 100644
 --- a/grub-core/kern/main.c
 +++ b/grub-core/kern/main.c
 @@ -37,6 +37,7 @@
@@ -152,7 +150,7 @@ index 07b6940d2e..ef3b3756de 100644
  
  grub_addr_t
  grub_modules_get_end (void)
-@@ -246,6 +247,17 @@ grub_is_cli_disabled (void)
+@@ -246,6 +247,17 @@
    return cli_disabled;
  }
  
@@ -170,8 +168,6 @@ index 07b6940d2e..ef3b3756de 100644
  static void
  check_is_cli_disabled (void)
  {
-diff --git a/grub-core/normal/auth.c b/grub-core/normal/auth.c
-index d940201866..2931ba604a 100644
 --- a/grub-core/normal/auth.c
 +++ b/grub-core/normal/auth.c
 @@ -25,6 +25,10 @@
@@ -185,11 +181,10 @@ index d940201866..2931ba604a 100644
  struct grub_auth_user
  {
    struct grub_auth_user *next;
-@@ -200,6 +204,32 @@ grub_username_get (char buf[], unsigned buf_size)
-   return (key != GRUB_TERM_ESC);
+@@ -201,6 +205,32 @@
  }
  
-+grub_err_t
+ grub_err_t
 +grub_auth_check_cli_access (void)
 +{
 +  if (grub_is_cli_need_auth () == true)
@@ -211,18 +206,17 @@ index d940201866..2931ba604a 100644
 +      return GRUB_ACCESS_DENIED;
 +#endif
 +    }
-+    
++
 +  return GRUB_ERR_NONE;
 +}
 +
- grub_err_t
++grub_err_t
  grub_auth_check_authentication (const char *userlist)
  {
-diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index 8e58ced679..b08fd6977d 100644
+   char login[1024];
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
-@@ -560,9 +560,13 @@ grub_cmdline_run (int nested, int force_auth)
+@@ -560,9 +560,13 @@
      }
    while (err && force_auth);
  
@@ -236,11 +230,9 @@ index 8e58ced679..b08fd6977d 100644
        grub_errno = GRUB_ERR_NONE;
        return;
      }
-diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
-index e5ba91ea4d..06682a396d 100644
 --- a/grub-core/normal/menu_entry.c
 +++ b/grub-core/normal/menu_entry.c
-@@ -1256,9 +1256,13 @@ grub_menu_entry_run (grub_menu_entry_t entry)
+@@ -1256,9 +1256,13 @@
  
    err = grub_auth_check_authentication (NULL);
  
@@ -254,22 +246,18 @@ index e5ba91ea4d..06682a396d 100644
        grub_errno = GRUB_ERR_NONE;
        return;
      }
-diff --git a/include/grub/auth.h b/include/grub/auth.h
-index 7473344517..21d5190f04 100644
 --- a/include/grub/auth.h
 +++ b/include/grub/auth.h
-@@ -33,5 +33,6 @@ grub_err_t grub_auth_unregister_authentication (const char *user);
+@@ -33,5 +33,6 @@
  grub_err_t grub_auth_authenticate (const char *user);
  grub_err_t grub_auth_deauthenticate (const char *user);
  grub_err_t grub_auth_check_authentication (const char *userlist);
 +grub_err_t grub_auth_check_cli_access (void);
  
  #endif /* ! GRUB_AUTH_HEADER */
-diff --git a/include/grub/cryptodisk.h b/include/grub/cryptodisk.h
-index 0b41e249e8..b3291519b1 100644
 --- a/include/grub/cryptodisk.h
 +++ b/include/grub/cryptodisk.h
-@@ -203,4 +203,7 @@ grub_util_get_geli_uuid (const char *dev);
+@@ -203,4 +203,7 @@
  grub_cryptodisk_t grub_cryptodisk_get_by_uuid (const char *uuid);
  grub_cryptodisk_t grub_cryptodisk_get_by_source_disk (grub_disk_t disk);
  
@@ -277,11 +265,9 @@ index 0b41e249e8..b3291519b1 100644
 +grub_err_t grub_cryptodisk_challenge_password (void);
 +#endif
  #endif
-diff --git a/include/grub/misc.h b/include/grub/misc.h
-index 1578f36c3c..6e94d18f5a 100644
 --- a/include/grub/misc.h
 +++ b/include/grub/misc.h
-@@ -392,6 +392,8 @@ grub_uint64_t EXPORT_FUNC(grub_divmod64) (grub_uint64_t n,
+@@ -392,6 +392,8 @@
  					  grub_uint64_t *r);
  
  extern bool EXPORT_FUNC(grub_is_cli_disabled) (void);
@@ -290,6 +276,3 @@ index 1578f36c3c..6e94d18f5a 100644
  
  /* Must match softdiv group in gentpl.py.  */
  #if !defined(GRUB_MACHINE_EMU) && (defined(__arm__) || defined(__ia64__) || \
--- 
-2.47.1
-

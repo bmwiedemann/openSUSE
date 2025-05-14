@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (2.4.0)
+  * (gtk 3 & 4) fix/update design of headerbar
+  * (gtk 3 & 4) fix/update design of CSD window
+  * (gtk 3 & 4) fix position of check/radio in menuitem
+  * (gtk 3 & 4) fix rtl menu with only check/radio
+  * (gtk 3) fix/update design for Mate notifications
+    PR => github.com/mate-desktop/mate-notification-daemon/pull/232
+    PR => github.com/mate-desktop/mate-notification-daemon/pull/233
+    PR => github.com/mate-desktop/mate-notification-daemon/pull/234
+- It works: with or without compositor, with or without CSD windows
+   and with or without gtk3-classic/gtk4-classic
+- The best with gtk3-classic and gtk4-classic
+    gist.github.com/luigifab/0fce786cdb93b5687069a82f490ea95e
+  * (gtk 3 & 4) automatic min-width/min-height from text for
+    progressbars, with dual text color, without excessive cpu usage
+
+-------------------------------------------------------------------
 Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.3.0)

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  6 20:12:25 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.5
+- Changes since 6.3.4:
+  * update version for new release
+  * Port Timer objects away from adjustable-duration intervals where needed (kde#500717)
+  * applets/taskmanager: Don't undesirably rotate group dialog items (kde#470410)
+  * Avoid double-addition of x coordinate of ActivitySwitcher (kde#502656,kde#502375)
+  * kcms/recentfiles: fix grid items responding to hover when disabled (kde#502522)
+  * round AudioStream width which in turn rounds its position as well (kde#500039)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Apr  2 10:05:57 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.4

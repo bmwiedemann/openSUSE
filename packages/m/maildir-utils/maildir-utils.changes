@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 13 05:25:15 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.11:
+  * New stable update; mostly to fix #2847, but with some doc fixes as well.
+
+-------------------------------------------------------------------
+Thu May  8 06:56:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.10:
+  * add --format=json2 for mu find, which produces a bit more 'idiomatic' json
+  * close notifications once done
+  * more informative mu4e-analyze-last-query (include all parameters)
+  * Make mu4e-maildir-shortcut and mu4e-bookmarks understand a property
+    :hide-if-no-unread, which hides the maildir/bookmark from the main-view
+    if there are no unread messages which the corresponding query.
+
+-------------------------------------------------------------------
 Thu Feb 27 08:34:14 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.9:

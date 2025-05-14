@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 30 00:41:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust run-time dependencies to avoid old virtual provides.
+
+-------------------------------------------------------------------
+Mon Apr 28 13:58:16 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Adjust build-time dependencies so that it builds with SDL3.
+
+-------------------------------------------------------------------
 Tue Mar  4 15:07:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.9.17

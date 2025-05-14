@@ -1,7 +1,7 @@
 #
 # spec file for package python-numericalunits
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-numericalunits
 Version:        1.25
 Release:        0
 Summary:        Python module for defining quantities with units
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sbyrnes321/numericalunits
 Source:         https://files.pythonhosted.org/packages/source/n/numericalunits/numericalunits-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/sbyrnes321/numericalunits/master/tests/tests.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,10 +49,10 @@ dos2unix numericalunits.py
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,8 +61,8 @@ cp %{SOURCE1} .
 %files %{python_files}
 %license LICENSE.txt
 %doc Changes.txt README.rst
-%{python_sitelib}/numericalunits-%{version}*egg-info/
-%{python_sitelib}/numericalunits.py*
-%pycache_only %{python_sitelib}/__pycache__/numericalunits.*
+%{python_sitelib}/numericalunits.py
+%pycache_only %{python_sitelib}/__pycache__/numericalunits*.pyc
+%{python_sitelib}/numericalunits-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package xrdp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.23.1
+Version:        0.9.26
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -109,7 +109,7 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
-#%patch -P 1004 -p1
+#%%patch -P 1004 -p1
 %endif
 
 %build

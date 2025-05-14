@@ -1,0 +1,10 @@
+<package name="python-pyorthanc" project="openSUSE:Factory">
+  <title>PyOrthanc is a comprehensive Python client for Orthanc</title>
+  <description>PyOrthanc provides:
+
+- complete wrapping of the Orthanc REST API methods
+- High-level utilities for common DICOM operations
+- Asynchronous client support
+- Helper functions for working with DICOM data
+- Integration with the Orthanc Python plugin</description>
+</package>

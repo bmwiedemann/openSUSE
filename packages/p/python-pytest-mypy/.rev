@@ -27,4 +27,41 @@
     <comment></comment>
     <requestid>1218368</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89df910e075aad349b54cedf99ad861b</srcmd5>
+    <version>1.0.1</version>
+    <time>1746638367</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Catch OSErrors when parsing mypy error paths
+  * Add test_pyproject_toml
+  * Drop Python 3.6 support and use PEP 621 metadata
+  * Test with mypy 1.x and fewer old versions
+  * Prevent AttributeError in pytest_terminal_summary
+  * Add support for Python 3.12
+  * Add support for pytest 8
+  * Ensure expected versions are installed while testing
+  * Require mypy &gt;= 1.0
+  * Generalize MypyResults.from_mypy
+  * Require Pytest 7+
+  * Use config.stash to store the results path
+  * Replace attrs with dataclasses
+  * Create MypyConfigStash
+  * Refactor xdist integration
+  * Add strict type-checking
+  * Add --mypy-no-status-check
+  * Add --mypy-xfail
+  * Move results path cleanup to pytest_unconfigure
+  * Remove MypyWarning
+  * Replace MypyItem.MARKER with item_marker
+  * Create MypyCollectionPlugin
+  * Add support for Python 3.13
+  * Drop support for Python 3.7
+  * Resolve PYTHONWARNDEFAULTENCODING warnings
+  * Make MypyResults line-based
+  * Add test_name_formatter
+  * Add --mypy-report-style
+- Switch to pyproject macros.</comment>
+    <requestid>1275106</requestid>
+  </revision>
 </revisionlist>

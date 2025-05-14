@@ -2,6 +2,7 @@
 # spec file for package libewf
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +45,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(bzip2) >= 1.0
-BuildRequires:  pkgconfig(fuse) >= 2.6
+BuildRequires:  pkgconfig(fuse3) >= 3.0
 BuildRequires:  pkgconfig(libbfio) >= 20240414
 BuildRequires:  pkgconfig(libcaes) >= 20240413
 BuildRequires:  pkgconfig(libcdata) >= 20240414
@@ -96,8 +97,7 @@ by EnCase 1 to 6, linen and FTK Imager.
 Summary:        Utilities for the Expert Witness Compression Format (EWF)
 License:        LGPL-3.0-or-later
 Group:          System/Filesystems
-Requires:       fuse
-Requires:       python3-fuse >= 0.2
+Requires:       fuse3
 
 %description tools
 Several tools for reading and writing EWF files.

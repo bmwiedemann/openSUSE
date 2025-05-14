@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  5 07:47:30 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not force GCC15 on Tumblewed just yet: follow the distro
+  default compiler, like any other package.
+
+-------------------------------------------------------------------
+Sat May  3 19:19:07 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- openvino-gcc5-compatibility.patch to resolve incompatibility 
+  in gcc5 
+
+-------------------------------------------------------------------
 Thu May  1 01:06:52 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Added gcc-14

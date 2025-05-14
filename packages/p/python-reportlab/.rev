@@ -448,4 +448,12 @@
   * ReportLab 3.0 now supports Python 2.7, 3.3 and higher.</comment>
     <requestid>1129212</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>fd814383f2089d5a1bbaf4a2b165d812</srcmd5>
+    <version>4.0.7</version>
+    <time>1746809434</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276019</requestid>
+  </revision>
 </revisionlist>

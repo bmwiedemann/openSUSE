@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May  6 14:12:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2025.1:
+  * Fix failing to build with AdaptiveCpp and HeFFTe due to
+    incomplete refactoring.
+  * Silence compiler warning when building with ARM SVE.
+  * Fix CMake issues when building with Plumed
+  * Correctly suggest NEON over SVE for CPU builds on Neoverse-v2
+    at run time
+- Changes from version 2025.0:
+  - Too many to list, see
+    <https://manual.gromacs.org/2025.0/release-notes/index.html>.
+- Bump so version in shared library to keep up with upstream.
+
+-------------------------------------------------------------------
 Fri Feb  2 16:41:46 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - Aarch64: fix tests and enable neon support

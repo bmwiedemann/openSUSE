@@ -897,4 +897,21 @@
 - Update to version 4.4.2 (bsc#1233171, CVE-2024-46613):</comment>
     <requestid>1272957</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>12998f2c2b9f3c050fec4e581d72c2f9</srcmd5>
+    <version>4.6.3</version>
+    <time>1747159558</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.6.3:
+  * core: fix integer overflow with decimal numbers in calculation of 
+    expression
+  * core: fix integer overflow in base32 encoding/decoding
+  * core: fix integer overflow in function util_version_number
+  * core: fix buffer overflow in function util_parse_time
+  * core: fix buffer overflow in function eval_syntax_highlight_colorize
+  * core: fix buffer overflow in function eval_string_base_encode
+  * core: fix buffer overflow in function eval_string_range_chars
+  * core: fix memory leak in function util_parse_delay</comment>
+    <requestid>1276949</requestid>
+  </revision>
 </revisionlist>

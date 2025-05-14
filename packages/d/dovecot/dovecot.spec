@@ -25,7 +25,7 @@ Group:          Productivity/Networking/Email/Servers
 URL:            http://www.dovecot.org/
 PreReq:         dovecot-implementation
 PreReq:         shadow
-Recommends:     %{name}23
+Recommends:     %{name}24
 #!BuildIgnore: dovecot-implementation
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -42,7 +42,6 @@ Source11:       %{name}-2.2-pigeonhole.configfiles
 Source12:       %{name}-2.3.configfiles
 Source13:       %{name}-2.3-pigeonhole.configfiles
 Source14:       %{name}-2.4.configfiles
-Source15:       %{name}-2.4-pigeonhole.configfiles
 
 %description
 Dovecot is an IMAP and POP3 server for Linux and UNIX-like systems,

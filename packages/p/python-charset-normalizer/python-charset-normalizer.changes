@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  5 06:58:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.4.2
+  * Addressed the DeprecationWarning in our CLI regarding `argparse.FileType`
+    by backporting the target class into the package. (#591)
+  * Improved the overall reliability of the detector with CJK Ideographs.
+    (#605) (#587)
+  * Optional mypyc compilation upgraded to version 1.15 for Python >= 3.8
+
+-------------------------------------------------------------------
 Wed Jan 15 10:26:52 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Use libalternatives instead of update-alternatives, bsc#1235781

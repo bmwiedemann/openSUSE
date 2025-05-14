@@ -1,7 +1,7 @@
 #
 # spec file for package kokkos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 %define major_ver 4
-%define minor_ver 3
-%define patch_ver 00
+%define minor_ver 6
+%define patch_ver 01
 %define shlib   libkokkos-%{major_ver}_%{minor_ver}
 %global kokkos_desc \
 Kokkos Core implements a programming model in C++ for writing performance \
@@ -35,13 +35,15 @@ Summary:        A C++ Performance Portability Programming
 License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/kokkos/kokkos
-Source0:        kokkos-%{version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.16
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc11-c++
 %else
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  gmock
+BuildRequires:  gtest
 BuildRequires:  hwloc-devel
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
@@ -73,16 +75,14 @@ Conflicts:      trilinos-devel
 This package contains the development files of %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 sed -i '1c #!/usr/bin/bash' bin/hpcbind bin/runtest
 sed -i '1s|/usr/bin/env bash|/usr/bin/bash|' bin/kokkos_launch_compiler bin/nvcc_wrapper
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 %global __builder ninja
 
 %cmake \
-  -DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
 %if 0%{?suse_version} <= 1500
   -DCMAKE_CXX_COMPILER=g++-11 \
 %endif
@@ -104,10 +104,9 @@ sed -i '1s|/usr/bin/env bash|/usr/bin/bash|' bin/kokkos_launch_compiler bin/nvcc
 %check
 export LD_LIBRARY_PATH="%{buildroot}/%{_libdir}:$PWD/build/core/unit_test:${LD_LIBRARY_PATH}"
 export OMP_PROC_BIND=false
-%ctest --parallel 4 --exclude-regex 'Kokkos_CoreUnitTest_OpenMP|Kokkos_Containers*|Kokkos_Algorithms*'
+%ctest --exclude-regex 'Kokkos_CoreUnitTest_OpenMP|Kokkos_Containers*|Kokkos_Algorithms*'
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files -n %{shlib}
 %doc README.md

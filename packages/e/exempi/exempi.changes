@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May  4 09:15:07 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.6.6:
+  * Cherry-pick patch from Adobe XMP SDK v2025.03: Protect from
+    buffer overruns. Fixes:
+    - Issue 33
+    - GHSL-2024-083
+    - GHSL-2024-084
+    - GHSL-2024-085
+    - GHSL-2024-086
+    - GHSL-2024-087
+
+-------------------------------------------------------------------
 Thu Mar 13 18:48:02 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Ignore testcore test failure on s390x. It is known to fail on

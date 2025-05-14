@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun May 11 18:45:14 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Fix build failure with BuildArch
+
+-------------------------------------------------------------------
+Sun May 11 17:49:25 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 2.1.1
+  * RestClient module adds support for custom token refresh methods
+  * Swagger module improves support for parsing some invalid schemas
+  * added new module blacklist functionality and a new 
+    qore_add_module_to_blacklist() function
+  * fixed bugs generating and parsing URL-encoded values in the Mime module
+  * fixed memory issues in class and socket operations revealed by AddressSantizer
+  * fixed bugs in Deterministic Garbage Collection scanning complex object graphs 
+    that could lead to memory leaks
+  * DataProvider module fixed handling implicit default values in HashDataType
+  * GoogleDataProvider module updates to allow the module to be more easily and 
+    generically extensible for other apps
+  * fixed a bug handling non-blocking SSL socket reads when the remote end closes 
+    the connection
+- Remove cmake patch from reproducible.patch because of upstream fix
+
+-------------------------------------------------------------------
 Thu Apr 17 08:58:54 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 2.0.0

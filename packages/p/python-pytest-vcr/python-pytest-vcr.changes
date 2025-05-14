@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 07:00:50 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Jun 13 11:33:14 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - tag sle15 build for new python stack

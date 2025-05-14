@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  6 15:16:52 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.0.13.1
+- supersedes u_src-gen_deftwmrc.sh-is-not-executable-so-run-it-with.patch 
+
+-------------------------------------------------------------------
+Mon May  5 09:58:28 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 1.0.13 
+  * bugfix release 
+- u_src-gen_deftwmrc.sh-is-not-executable-so-run-it-with.patch
+  * fixes build
+
+-------------------------------------------------------------------
 Mon Feb 26 16:25:44 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

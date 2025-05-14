@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-uhd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,11 +17,11 @@
 #
 
 
-%define soapy_modver 0.8
+%define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
 
 Name:           soapy-uhd
-Version:        0.4.1
+Version:        0.4.1git20250213
 Release:        0
 Summary:        Soapy SDR plugins for UHD supported SDR devices
 License:        GPL-3.0-only
@@ -59,11 +59,14 @@ Soapy UHD - Soapy SDR devices for UHD.
 A UHD module that supports Soapy devices within the UHD API.
 
 %prep
-%setup -q -n SoapyUHD-%{name}-%{version}
+%setup -q -n SoapyUHD
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake
-make VERBOSE=1 %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install

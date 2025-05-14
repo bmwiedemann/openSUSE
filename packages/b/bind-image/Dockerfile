@@ -26,7 +26,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bind
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bind bind-utils
 
 # patch named.prep to not call logger (provided by systemd)
 # and just log to stdout
@@ -60,11 +60,9 @@ ENV NAMED_ARGS=""
 ENV NAMED_INITIALIZE_SCRIPTS=""
 ENV NAMED_CONF="/etc/named.conf"
 EXPOSE 53/tcp 53/udp 953/tcp 853/tcp 443/tcp
+
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY healthcheck.sh /usr/local/bin/healthcheck.sh
-RUN set -euo pipefail; \
-    chmod +x /usr/local/bin/entrypoint.sh; \
-    chmod +x /usr/local/bin/healthcheck.sh;
+RUN set -euo pipefail; chmod +x /usr/local/bin/entrypoint.sh
 
 # create directories that tmpfiles.d would create for us
 RUN set -euo pipefail; \
@@ -78,5 +76,4 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; touch /var/lib/named/127.0.0.zone /var/lib/named/localhost.zone /var/lib/named/named.root.key /var/lib/named/root.hint
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-HEALTHCHECK --interval=10s --timeout=5s --retries=10 CMD ["/usr/local/bin/healthcheck.sh"]
-
+HEALTHCHECK --interval=10s --timeout=5s --retries=10 CMD dig +retry=0 +short @127.0.0.1 conncheck.opensuse.org >/dev/null && echo OK

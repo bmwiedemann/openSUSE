@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-django
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-django
-Version:        4.5.2
+Version:        4.11.1
 Release:        0
 Summary:        A Django plugin for Pytest
 License:        BSD-3-Clause
 URL:            https://github.com/pytest-dev/pytest-django
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest-django-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM autoclear_mailbox.patch gh#pytest-dev/pytest-django#993 mcepl@suse.com
-# Protect against non-existant mail.outbox folder
-# https://stackoverflow.com/q/5424498/164233
-Patch0:         autoclear_mailbox.patch
-# PATCH-FIX-UPSTREAM pytest-django-pr996-pytest7.patch -- gh#pytest-dev/pytest-django#996
-Patch1:         https://github.com/pytest-dev/pytest-django/pull/996.patch#/pytest-django-pr996-pytest7.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-django/pytest_django-%{version}.tar.gz
 BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module pytest > 5.4.0}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 7.0}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools_scm >= 5.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sqlite3
 Requires:       python-Django
-Requires:       python-pytest > 5.4.0
+Requires:       python-pytest > 7.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,13 +56,13 @@ that are already present in pytest:
 * Works with both worlds: Existing unittest-style TestCase's still work without any modifications.
 
 %prep
-%autosetup -p1 -n pytest-django-%{version}
+%autosetup -p1 -n pytest_django-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -78,6 +75,6 @@ export PYTHONPATH=$(pwd)
 %license LICENSE
 %doc AUTHORS README.rst docs/*.rst
 %{python_sitelib}/pytest_django
-%{python_sitelib}/pytest_django-%{version}*-info
+%{python_sitelib}/pytest_django-%{version}.dist-info
 
 %changelog

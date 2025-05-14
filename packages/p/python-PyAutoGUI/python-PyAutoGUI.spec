@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAutoGUI
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyAutoGUI
 Version:        0.9.54
 Release:        0
@@ -25,8 +24,10 @@ License:        BSD-3-Clause
 URL:            https://github.com/asweigart/pyautogui
 Source:         https://files.pythonhosted.org/packages/source/P/PyAutoGUI/PyAutoGUI-%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/asweigart/pyautogui/master/LICENSE.txt
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-xlib}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,15 +51,16 @@ sed -i -e "s/version=__import__('pyautogui').__version__,/version='%{version}',/
 dos2unix README.md
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyautogui
+%{python_sitelib}/[Pp]y[Aa]uto[Gg][Uu][Ii]-%{version}*-info
 
 %changelog

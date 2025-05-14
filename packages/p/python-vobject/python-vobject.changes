@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  8 09:04:57 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- verion 0.9.9
+  * Added product version to PRODID tag in iCalendar headers
+  * Added support for GEO tags in vCards
+  * radicale-1587.vcf added (missing in release tarball)
+
+-------------------------------------------------------------------
 Thu Dec 19 09:35:46 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Use regular %%pynittest macro instead of running the test

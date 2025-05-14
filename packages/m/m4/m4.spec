@@ -1,7 +1,7 @@
 #
 # spec file for package m4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           m4
-Version:        1.4.18
+Version:        1.4.20
 Release:        0
 Summary:        GNU m4
 License:        GPL-3.0-or-later
@@ -26,8 +26,6 @@ URL:            https://www.gnu.org/software/m4/
 Source0:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=m4&download=1#/%{name}.keyring
-Patch1:         gnulib-libio.patch
-Patch2:         gnulib-c-stack.patch
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
 Requires(preun): %{install_info_prereq}
@@ -51,7 +49,7 @@ cp -a /usr/lib/rpm/config.{sub,guess} build-aux/
 	gl_cv_func_isnanl_works=yes \
 	gl_cv_func_printf_directive_n=yes \
 	gl_cv_func_printf_infinite_long_double=yes
-%if %{do_profiling} && !0%{?want_reproducible_builds}
+%if %{do_profiling} && !0%{?want_reproducible_builds} && 0
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate} -std=gnu17"
   # run profiling check sequentially to have it reproducible
   %make_build -j1 check CFLAGS="%{optflags} %{cflags_profile_generate} -std=gnu17"
@@ -83,5 +81,6 @@ rm -rf %{buildroot}%{_infodir}/dir
 %{_infodir}/m4.info-2%{ext_info}
 %{_infodir}/m4.info%{?ext_info}
 %{_mandir}/man1/m4.1%{?ext_man}
+%{_prefix}/share/locale/*/LC_MESSAGES/m4.mo
 
 %changelog

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package mpdecimal
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@
 %bcond_with test
 %endif
 Name:           mpdecimal%{psuffix}
-Version:        2.5.1
+Version:        4.0.1
 Release:        0
 Summary:        C/C++ libraries for arbitrary precision decimal floating point arithmetic
 License:        BSD-2-Clause
@@ -52,25 +52,25 @@ provided that the appropriate context parameters are set. libmpdec++
 has a thread local context for inline operators and other functions
 that use the implicit context.
 
-%package -n libmpdec3
+%package -n libmpdec4
 Summary:        C library for arbitrary precision decimal floating point arithmetic
 License:        BSD-2-Clause
 Group:          System/Libraries
 
-%description -n libmpdec3
+%description -n libmpdec4
 libmpdec is a C implementation of the General Decimal Arithmetic
 Specification. The specification defines a general purpose arbitrary
 precision data type together with rigorously specified functions and
 rounding behavior. libmpdec conforms - with minor restrictions - to
 the IEEE 754-2008 Standard for Floating-Point Arithmetic.
 
-%package -n libmpdec++3
+%package -n libmpdec++4
 Summary:        C++ library for arbitrary precision decimal floating point arithmetic
 License:        BSD-2-Clause
 Group:          System/Libraries
-Requires:       libmpdec3 >= %{version}
+Requires:       libmpdec4 >= %{version}
 
-%description -n libmpdec++3
+%description -n libmpdec++4
 libmpdec++ is a C++ implementation of the General Decimal Arithmetic
 Specification. The specification defines a general purpose arbitrary
 precision data type together with rigorously specified functions and
@@ -81,8 +81,8 @@ the IEEE 754-2008 Standard for Floating-Point Arithmetic.
 Summary:        Development headers and documentation for mpdecimal
 License:        BSD-2-Clause
 Group:          Development/Libraries/C and C++
-Requires:       libmpdec++3 = %{version}-%{release}
-Requires:       libmpdec3 = %{version}-%{release}
+Requires:       libmpdec++4 = %{version}-%{release}
+Requires:       libmpdec4 = %{version}-%{release}
 
 %description devel
 The package contains documentation and development headers for
@@ -116,27 +116,29 @@ rm -f "%{buildroot}/%{_libdir}"/*.a
 %endif
 
 %if !%{with test}
-%post -n libmpdec3 -p /sbin/ldconfig
-%post -n libmpdec++3 -p /sbin/ldconfig
-%postun -n libmpdec3 -p /sbin/ldconfig
-%postun -n libmpdec++3 -p /sbin/ldconfig
+%post -n libmpdec4 -p /sbin/ldconfig
+%post -n libmpdec++4 -p /sbin/ldconfig
+%postun -n libmpdec4 -p /sbin/ldconfig
+%postun -n libmpdec++4 -p /sbin/ldconfig
 
-%files -n libmpdec3
-%license LICENSE.txt
-%{_libdir}/libmpdec.so.3
+%files -n libmpdec4
+%license COPYRIGHT.txt
+%{_libdir}/libmpdec.so.4
 %{_libdir}/libmpdec.so.%{version}
 
-%files -n libmpdec++3
-%{_libdir}/libmpdec++.so.3
+%files -n libmpdec++4
+%{_libdir}/libmpdec++.so.4
 %{_libdir}/libmpdec++.so.%{version}
 
 %files devel
-%license doc/LICENSE.txt
+%license doc/COPYRIGHT.txt
 %doc %{_docdir}/%{name}
 %{_libdir}/libmpdec.so
 %{_libdir}/libmpdec++.so
 %{_includedir}/mpdecimal.h
 %{_includedir}/decimal.hh
+%{_libdir}/pkgconfig/libmpdec*.pc
+%{_mandir}/man3/*mpdec*.3%{?ext_man}
 %endif
 
 %changelog

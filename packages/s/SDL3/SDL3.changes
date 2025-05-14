@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  5 03:31:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.12
+  * Fixed crash if SDL_BlitSurfaceScaled() is used with a surface
+    that has no pixels
+  * Allow rendering a zero sized source rectangle in the SDL render
+    API
+  * Added support for the share button on the GameSir-K1 FLUX
+    controller
+  * Added support for the PowerA Battle Dragon Advanced Wireless
+    Controller
+  * Added support for the HORI Taiko No Tatsujin Drum Controller
+  * Fixed the Keychron K1 Pro System Control keyboard being
+    detected as a joystick
+  * Fixed right mouse button emulation when using a Wacom tablet in
+    Windows Ink mode
+  * Fixed missing simulated mouse events using a Wacom tablet when
+    Windows Ink mode is disabled
+  * Key events are now sent for dead keys on X11
+  * Improved handling of window management edge conditions on X11
+  * Fixed message box location on multi-monitor configurations on
+    X11
+  * Fixed XInput2 mouse tracking outside the window on X11
+
+-------------------------------------------------------------------
 Tue Apr  1 17:20:44 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.10

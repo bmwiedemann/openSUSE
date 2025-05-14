@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flit
-Version:        3.10.1
+Version:        3.12.0
 Release:        0
 Summary:        Simplified packaging of Python modules
 License:        BSD-3-Clause

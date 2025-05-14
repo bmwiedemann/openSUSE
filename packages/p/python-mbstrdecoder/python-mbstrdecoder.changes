@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May  5 20:57:36 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.4:
+  * Fix `UnicodeDecodeError` exception sending correctly
+  * Remove deprecated `tests_require` from setup.py
+  * Modify to use `setuptools_scm` for package build
+  * Add support for Python 3.13
+  * Drop support for Python 3.7/3.8
+  * Add metadata attributes to the `mbstrdecoder` module
+  * Improve type annotations
+
+-------------------------------------------------------------------
 Fri Dec  1 17:01:42 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.3:

@@ -407,4 +407,28 @@
     <comment></comment>
     <requestid>1247769</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>514f38553b49c1d39fbeed15b93ce491</srcmd5>
+    <version>1.6.0~git0.d7ae0f336</version>
+    <time>1746638395</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275084</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>2017d3a04dcc209ef4500ceaa248447e</srcmd5>
+    <version>1.6.1~git0.2e4429eca</version>
+    <time>1746721373</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275385</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a2780ed6e7b82a40180cd6924c963461</srcmd5>
+    <version>1.6.2~git0.a20663ea8</version>
+    <time>1746809473</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276066</requestid>
+  </revision>
 </revisionlist>

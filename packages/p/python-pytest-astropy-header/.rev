@@ -66,4 +66,12 @@
     options introduced in ``pytest-astropy`` version 0.10.0. [#48]</comment>
     <requestid>1031606</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>184bbec2867a50941751041b4ad0881f</srcmd5>
+    <version>0.2.2</version>
+    <time>1746638350</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275089</requestid>
+  </revision>
 </revisionlist>

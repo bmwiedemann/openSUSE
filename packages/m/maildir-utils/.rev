@@ -890,4 +890,27 @@
   * updated documentation; man-pages and mu4e reference manual</comment>
     <requestid>1248922</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>868f17622c8688bc3ffd63eb078d6327</srcmd5>
+    <version>1.12.10</version>
+    <time>1746721389</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.12.10:
+  * add --format=json2 for mu find, which produces a bit more 'idiomatic' json
+  * close notifications once done
+  * more informative mu4e-analyze-last-query (include all parameters)
+  * Make mu4e-maildir-shortcut and mu4e-bookmarks understand a property
+    :hide-if-no-unread, which hides the maildir/bookmark from the main-view
+    if there are no unread messages which the corresponding query.</comment>
+    <requestid>1275419</requestid>
+  </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>19b8a16d2e5224fef1852a1b4fd6bf4e</srcmd5>
+    <version>1.12.11</version>
+    <time>1747159618</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.11:
+  * New stable update; mostly to fix #2847, but with some doc fixes as well.</comment>
+    <requestid>1277001</requestid>
+  </revision>
 </revisionlist>

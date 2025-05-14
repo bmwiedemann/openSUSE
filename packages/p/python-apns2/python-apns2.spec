@@ -1,7 +1,7 @@
 #
 # spec file for package python-apns2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-apns2
 Version:        0.7.2
 Release:        0
@@ -29,7 +27,9 @@ Source0:        https://files.pythonhosted.org/packages/source/a/apns2/apns2-%{v
 Patch0:         pr_122.patch
 # PATCH-FIX-OPENSUSE Based on gh#Pr0Ger/PyAPNs2#149, is gross
 Patch1:         use-httpx.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT >= 1.4.0
@@ -56,10 +56,10 @@ via HTTP/2 protocol.
 %autosetup -p1 -n apns2-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +68,7 @@ via HTTP/2 protocol.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/apns2
+%{python_sitelib}/apns2-%{version}*-info
 
 %changelog

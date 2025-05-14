@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  8 07:02:33 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.29:
+  * Fix Linux kernel incompatible struct taskstats
+
+-------------------------------------------------------------------
+Thu May  8 07:02:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.28:
+  * add option to specify bin directory #78
+  * fix batch mode
+
+-------------------------------------------------------------------
 Mon Jan 13 14:50:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.27:

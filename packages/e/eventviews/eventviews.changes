@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  7 20:59:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * src/todo/todoview.cpp - save/restore fullview mode
+  * src/todo/todoview.cpp - saveLayout() - also save the flatview setting (kde#417974)
+  * todoviewsortfilterproxymodel.cpp - filterAcceptsRow() harden
+  * Monthview - no longer force new events to be allDay (in some situations) (kde#426611)
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

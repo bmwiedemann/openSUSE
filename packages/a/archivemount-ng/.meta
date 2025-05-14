@@ -6,5 +6,6 @@ and use it like an ordinary filesystem.
 
 This version of the package is a fork and continuation of the original
 archivemount, with fuse 3 support and bug fixes.</description>
+  <devel project="Archiving" package="archivemount-ng"/>
   <url>https://git.sr.ht/~nabijaczleweli/archivemount-ng</url>
 </package>

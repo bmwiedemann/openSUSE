@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 11:02:58 UTC 2025 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- change sway to Suggests as waybar now supports other window managers too
+  and when user ignores the --no-reccommends flag, It pulls the sway window
+  manager components
+
+-------------------------------------------------------------------
 Fri Feb 21 15:43:03 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.12.0:

@@ -7,4 +7,15 @@
     <comment>snapraid</comment>
     <requestid>1159834</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ad30ccdd26d1346f0765a93a47c537d5</srcmd5>
+    <version>12.4</version>
+    <time>1747061458</time>
+    <user>anag_factory</user>
+    <comment>- update to 12.4:
+  * Avoid a warning about function pointer conversion
+- added %check section to run internal test suite at build time
+</comment>
+    <requestid>1276713</requestid>
+  </revision>
 </revisionlist>

@@ -65,4 +65,12 @@
 - Fix rpmlint issues</comment>
     <requestid>1166183</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>b0c1ab961a2f1c61722da347c571bdea</srcmd5>
+    <version>4.1.0</version>
+    <time>1746809421</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276005</requestid>
+  </revision>
 </revisionlist>

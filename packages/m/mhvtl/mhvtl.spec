@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.72_release+0.70719883aae2
+Version:        1.72_release+2.94d8d07c8d71
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools

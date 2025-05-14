@@ -85,4 +85,16 @@
     + Use init_app instead of setup_app</comment>
     <requestid>1199443</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>d31b3015f502b1655bdc458b95f5f5b1</srcmd5>
+    <version>0.6.3</version>
+    <time>1746542552</time>
+    <user>anag_factory</user>
+    <comment>- Actually run the testsuite.
+- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.
+- Add patch do-not-use-datetime-utcnow.patch:
+  * Do not use deprecated datetime.utcnow() function.</comment>
+    <requestid>1274781</requestid>
+  </revision>
 </revisionlist>

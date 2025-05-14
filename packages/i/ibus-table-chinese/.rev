@@ -261,4 +261,12 @@
   * Add .svg icon files for use in appdata.xml files (forwarded request 1078833 from hillwood)</comment>
     <requestid>1078834</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>4b5bd6cea92f9947868e8c41def127a9</srcmd5>
+    <version>1.8.12</version>
+    <time>1746729594</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275626</requestid>
+  </revision>
 </revisionlist>

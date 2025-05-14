@@ -1,7 +1,7 @@
 #
 # spec file for package python-msgpack-numpy
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python36 1
 Name:           python-msgpack-numpy
 Version:        0.4.8
@@ -26,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lebedov/msgpack-numpy
 Source:         https://files.pythonhosted.org/packages/source/m/msgpack-numpy/msgpack-numpy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-msgpack >= 0.5.2
@@ -49,10 +50,10 @@ Serialization of Python's native complex data types is also supported.
 sed -i -e '/^#!\//, 1d' msgpack_numpy.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,8 +62,8 @@ sed -i -e '/^#!\//, 1d' msgpack_numpy.py
 %files %{python_files}
 %doc AUTHORS.md CHANGES.md README.md
 %license LICENSE.md
-%{python_sitelib}/msgpack_numpy-%{version}-py*.egg-info
-%{python_sitelib}/msgpack_numpy.*
-%pycache_only %{python_sitelib}/__pycache__
+%{python_sitelib}/msgpack_numpy.py
+%{python_sitelib}/msgpack_numpy-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/msgpack_numpy*.pyc
 
 %changelog

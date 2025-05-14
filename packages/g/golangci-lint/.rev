@@ -771,4 +771,22 @@
   * docs: update GitHub Action assets (#5738) (forwarded request 1272538 from jfkw)</comment>
     <requestid>1272539</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>cd27345dd8ddeb3162f65c46ae8923ff</srcmd5>
+    <version>2.1.6</version>
+    <time>1746476828</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.6:
+  * chore: prepare release
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.17.0 to 2.17.2 (#5779)
+  * build(deps): bump github.com/shirou/gopsutil/v4 from 4.25.3 to 4.25.4 (#5778)
+  * build(deps): bump the linter-testdata group across 2 directories with 2 updates (#5777)
+  * build(deps): bump base-x from 3.0.9 to 3.0.11 in /docs (#5776)
+  * build(deps): bump github.com/tetafro/godot from 1.5.0 to 1.5.1 (#5770)
+  * build(deps): bump github.com/alecthomas/chroma/v2 from 2.16.0 to 2.17.0 (#5772)
+  * build(deps): bump go-simpler.org/musttag from 0.13.0 to 0.13.1 (#5769)
+  * docs: add note about golangci-lint v2 integration in VS Code (#5768)
+  * docs: update GitHub Action assets (#5766) (forwarded request 1274257 from jfkw)</comment>
+    <requestid>1274268</requestid>
+  </revision>
 </revisionlist>

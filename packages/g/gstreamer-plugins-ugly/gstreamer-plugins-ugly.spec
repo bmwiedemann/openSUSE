@@ -25,7 +25,7 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.26.0
+Version:        1.26.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -38,7 +38,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  liba52-devel
 BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
-BuildRequires:  meson >= 1.1
+BuildRequires:  meson >= 1.4
 BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:46 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Switch clang-clazy ci build to newer docker
+  * CI: For now don't expect QtNext tests to pass
+  * Fix build with Qt 6.10
+  * Delete old kconf update script
+  * fax: Add a few bugprone-sizeof-expression exceptions
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

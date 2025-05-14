@@ -328,4 +328,14 @@
   * Split the SUSE distribution version macros to a separate file</comment>
     <requestid>1265247</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0386177c16f29c8be94f5d02bb3b1b34</srcmd5>
+    <version>20250423</version>
+    <time>1746808736</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250423:
+  * packaging: replace @leap_version@ in suse_dist_macros.in
+  * kmp.attr: Run scripts for all modules (bsc#1237308). (forwarded request 1272600 from dimstar)</comment>
+    <requestid>1272601</requestid>
+  </revision>
 </revisionlist>

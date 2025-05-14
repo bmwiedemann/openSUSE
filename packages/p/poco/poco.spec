@@ -16,26 +16,29 @@
 #
 
 
-%define sover  101
+%define sover  111
 # disabled for now as 4 of them fail
 %bcond_with tests
 Name:           poco
-Version:        1.13.1
+Version:        1.14.1
 Release:        0
 Summary:        C++ Framework for Network-based Applications
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://pocoproject.org
 Source:         https://github.com/pocoproject/%{name}/archive/%{name}-%{version}-release.tar.gz
-BuildRequires:  cmake >= 2.8.12
+BuildRequires:  cmake >= 3.15
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  mysql-devel
 BuildRequires:  ninja
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  postgresql-devel
 BuildRequires:  unixODBC-devel
 BuildRequires:  pkgconfig(expat)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libutf8proc)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.7
 BuildRequires:  pkgconfig(zlib)
@@ -52,6 +55,7 @@ Requires:       libPocoCrypto%{sover} = %{version}
 Requires:       libPocoData%{sover} = %{version}
 Requires:       libPocoDataMySQL%{sover} = %{version}
 Requires:       libPocoDataODBC%{sover} = %{version}
+Requires:       libPocoDataPostgreSQL%{sover} = %{version}
 Requires:       libPocoDataSQLite%{sover} = %{version}
 Requires:       libPocoEncodings%{sover} = %{version}
 Requires:       libPocoFoundation%{sover} = %{version}
@@ -72,7 +76,12 @@ Requires:       libstdc++-devel
 Requires:       openssl-devel
 Requires:       pcre2-devel
 Requires:       poco-cpspc = %{version}
+Requires:       postgresql-devel
 Requires:       unixODBC-devel
+Requires:       pkgconfig(libpng)
+Requires:       pkgconfig(libutf8proc)
+Requires:       pkgconfig(sqlite3) >= 3.7
+Requires:       pkgconfig(zlib)
 Provides:       libpoco-devel = %{version}
 
 %description devel
@@ -137,6 +146,15 @@ Group:          System/Libraries
 Provides:       poco-dataodbc = %{version}
 
 %description -n libPocoDataODBC%{sover}
+C++ class libraries and frameworks for building
+network- and Internet-based applications.
+
+%package -n libPocoDataPostgreSQL%{sover}
+Summary:        C++ Framework for Network-based Applications
+Group:          System/Libraries
+Provides:       poco-datapostgresql = %{version}
+
+%description -n libPocoDataPostgreSQL%{sover}
 C++ class libraries and frameworks for building
 network- and Internet-based applications.
 
@@ -302,8 +320,8 @@ network- and Internet-based applications.
 
 %install
 %cmake_install
-rm -rf %{buildroot}%{_libdir}/cmake/Poco/V*
-%fdupes -s %{buildroot}/%{_libdir}/cmake/Poco
+
+%fdupes %{buildroot}/%{_libdir}/cmake/Poco
 
 %check
 %if %{with tests}
@@ -317,6 +335,7 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 %ldconfig_scriptlets -n libPocoData%{sover}
 %ldconfig_scriptlets -n libPocoDataMySQL%{sover}
 %ldconfig_scriptlets -n libPocoDataODBC%{sover}
+%ldconfig_scriptlets -n libPocoDataPostgreSQL%{sover}
 %ldconfig_scriptlets -n libPocoDataSQLite%{sover}
 %ldconfig_scriptlets -n libPocoEncodings%{sover}
 %ldconfig_scriptlets -n libPocoFoundation%{sover}
@@ -349,6 +368,9 @@ export LD_LIBRARY_PATH=%{buildroot}/%{_libdir}:$(pwd)/build/lib:$LD_LIBRARY_PATH
 
 %files -n libPocoDataODBC%{sover}
 %{_libdir}/libPocoDataODBC.so.%{sover}
+
+%files -n libPocoDataPostgreSQL%{sover}
+%{_libdir}/libPocoDataPostgreSQL.so.%{sover}
 
 %files -n libPocoDataSQLite%{sover}
 %{_libdir}/libPocoDataSQLite.so.%{sover}

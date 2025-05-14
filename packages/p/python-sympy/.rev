@@ -331,4 +331,12 @@ Note: resubmit with fixed license</comment>
   * see also https://github.com/sympy/sympy/wiki/release-notes-for-1.13.0</comment>
     <requestid>1225363</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>8d861935629fe435ca49bb511b72fcca</srcmd5>
+    <version>1.13.3</version>
+    <time>1746809449</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276026</requestid>
+  </revision>
 </revisionlist>

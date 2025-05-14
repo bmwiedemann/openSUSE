@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri May  9 15:31:47 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Fix reproducible builds (bsc#1041090)
+  * html_permission_element_strings_map-reproducible.patch
+
+-------------------------------------------------------------------
+Thu May  8 21:03:32 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- New upstream release 35.3.0
+  * Fixed xdg portal version detection for file dialogs
+- Add file_dialog-missing-uint32_t.patch to fix build error
+- Add backported CheckPortalAvailabilityOnBusThread-UaF-crash.patch to fix gh#electron/electron#47007
+- Enable debuginfo in Torque code (torque-debuginfo.patch)
+- Fix headers installed in wrong location causing node-gyp unable to find config.gypi
+
+-------------------------------------------------------------------
 Thu May  1 08:58:10 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - New upstream release 35.2.2

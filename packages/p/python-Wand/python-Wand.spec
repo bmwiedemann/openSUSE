@@ -1,7 +1,7 @@
 #
 # spec file for package python-Wand
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-
 Name:           python-Wand
 Version:        0.6.13
 Release:        0
@@ -26,17 +25,19 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/emcconville/wand
 Source:         https://files.pythonhosted.org/packages/source/W/Wand/Wand-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-Requires:       ImageMagick
+BuildRequires:  %{python_module wheel}
 BuildRequires:  ImageMagick-devel
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
 BuildRequires:  python-rpm-macros
+Requires:       ImageMagick
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module psutil >= 1.0.1}
 BuildRequires:  %{python_module pytest >= 7.2.0}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 # /SECTION
 %python_subpackages
 
@@ -47,10 +48,10 @@ Ctypes-based simple MagickWand API binding for Python.
 %setup -q -n Wand-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -66,6 +67,6 @@ export PYTEST_ADDOPTS="--skip-fft"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/wand
-%{python_sitelib}/Wand-%{version}*-info
+%{python_sitelib}/[Ww]and-%{version}*-info
 
 %changelog

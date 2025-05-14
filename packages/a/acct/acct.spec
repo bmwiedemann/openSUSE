@@ -31,6 +31,8 @@ Source4:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=acc
 Patch0:         acct-6.6.2-hz.patch
 # [bug#1233891]
 Patch1:         acct-sprintf-buffer-overflow.patch
+# build with gcc15
+Patch2:         acct-gcc15.patch
 BuildRequires:  makeinfo
 BuildRequires:  systemd-rpm-macros
 Requires:       logrotate

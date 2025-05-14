@@ -47,16 +47,8 @@ BuildRequires:  pkgconfig(vte-2.91)
 Requires:       gedit >= 48.1
 Recommends:     %{name}-data
 Suggests:       gedit-plugin-bookmarks
-Suggests:       gedit-plugin-bracketcompletion
-Suggests:       gedit-plugin-charmap
-Suggests:       gedit-plugin-codecomment
-Suggests:       gedit-plugin-colorpicker
 Suggests:       gedit-plugin-drawspaces
-Suggests:       gedit-plugin-joinlines
-Suggests:       gedit-plugin-multiedit
 Suggests:       gedit-plugin-smartspaces
-Suggests:       gedit-plugin-session-saver
-Suggests:       gedit-plugin-terminal
 Suggests:       gedit-plugin-wordcompletion
 Enhances:       gedit
 Obsoletes:      gedit-plugin-dashboard <= %{version}
@@ -70,20 +62,8 @@ Obsoletes:      gedit-plugin-synctex < 45.0
 %description
 This package contains a number of plugins for gedit, such as:
 
- * Bracket Completion: Automatically adds a closing bracket when you
-   insert an opening one
- * Charmap: Select characters from a charactermap
- * Code Comment: Comment or uncomment blocks of code
- * Color picker: Select and insert a color from a dialog (for html,
-   css, php)
- * Join lines/Split lines: Join or split multiple lines through Ctrl+J
-   and Ctrl+Shift+J
- * Session Saver: Allows to bookmark working sessions in order to get
-   them back for further use
  * Smart Spaces: Allows to unindent like if you were using tabs while
    you're using spaces
- * Show tabbar: A plugin to show or hide the gedit tabbar
- * Terminal: A terminal widget accessible from the bottom panel
 
 %package -n gedit-plugin-bookmarks
 Summary:        Gedit bookmarks plugin

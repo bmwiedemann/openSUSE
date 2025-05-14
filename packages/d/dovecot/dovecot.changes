@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  8 07:59:36 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Recommend dovecot24
+- Dovecot misses many configuration files (bsc#1242687)
+  Dovecot: /etc/dovecot/conf.d/ doesn't exist after installing dovecot
+  (bsc#1242774)
+  On dovecot 2.4 we only provides one simple configuration file.
+
+-------------------------------------------------------------------
 Fri Jan 24 23:35:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add config files for dovecot 2.4

@@ -1,0 +1,22 @@
+---
+ CMakeLists.txt |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+Index: CCfits-2.7/CMakeLists.txt
+===================================================================
+--- CCfits-2.7.orig/CMakeLists.txt
++++ CCfits-2.7/CMakeLists.txt
+@@ -139,3 +139,13 @@ IF (TESTS)
+     #FILE(COPY ${CMAKE_SOURCE_DIR}/testprog.tpt DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+ 
+ ENDIF(TESTS)
++
++#==============================================================================
++# pkgconfig:
++#==============================================================================
++set(prefix ${CMAKE_INSTALL_PREFIX})
++set(exec_prefix "\${prefix}")
++set(libdir ${LIB_DESTINATION})
++set(includedir ${INCLUDE_INSTALL_DIR})
++configure_file(CCfits.pc.in ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc @ONLY)
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/CCfits.pc DESTINATION ${LIB_DESTINATION}/pkgconfig)

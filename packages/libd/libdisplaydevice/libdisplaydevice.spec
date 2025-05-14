@@ -25,6 +25,7 @@ License:        AGPL-3.0-or-later OR GPL-3.0-or-later
 URL:            https://github.com/LizardByte/libdisplaydevice
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         soversion.patch
+Patch1:         fix-name.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
@@ -57,10 +58,7 @@ desktop software, and video players.
 %cmake_build
 
 %install
-install -D build/src/common/lib%{name}_common.so.0.0.0 %{buildroot}%{_libdir}/%{name}_common.so.0.0.0
-
-#fix soname
-patchelf --set-soname %{name}_common.so.0.0.0 %{buildroot}%{_libdir}/%{name}_common.so.0.0.0
+install -D build/src/common/%{name}_common.so.0.0.0 %{buildroot}%{_libdir}/%{name}_common.so.0.0.0
 
 %ldconfig_scriptlets -n %{name}%{sover}
 

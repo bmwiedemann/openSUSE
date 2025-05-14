@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  4 07:30:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.5.0:
+  * Fix "RuntimeError: Event loop is closed" by @allenporter in #872
+  * Fix helm valuesFrom escape dot notation by @Lingkar in #871
+  * Allow --sources to operate on a GitRepository source and allow it
+    to be external to the cluster by @allenporter in #873
+
+-------------------------------------------------------------------
 Fri Apr 25 06:02:17 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.4.0:

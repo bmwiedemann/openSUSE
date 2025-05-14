@@ -1173,4 +1173,41 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     during startup) when a PATH longer than 10240 was set.</comment>
     <requestid>1253985</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>e2eb4f6a61fccbc892f91f03821634b8</srcmd5>
+    <version>27.3.4</version>
+    <time>1746809489</time>
+    <user>anag_factory</user>
+    <comment>- Changes for 27.3.4:
+  * ssh: Fix KEX strict implementation according to draft-miller-
+    sshm-strict-kex-01 document.
+  * kernel: With this change, disk_log will not crash when using
+    chunk_step/3 after log size was decreased.
+  * kernel: With this change, disk_log will not run into infinite
+    loop when using chunk/2,3 after log size was decreased.
+  * erts: Fixed an emulator crash when setting an error_handler
+    module that was not yet loaded.
+  * erts: Fixed a rare bug that could cause an emulator crash after
+    unloading a module or erasing a persistent_term.
+  * xmerl: A new option to discard whitespace before the xml tag
+    when reading from a stream has been added to the Xmerl SAX
+    parser.
+
+- Changes for 27.3.3:
+  * kernel: Fixed bug in call_memory tracing that could cause
+    wildly incorrect reported memory values. Bug exists since OTP
+    27.1.
+  * megaco: Corrected type spec for type mid().
+  * erts: Fixed bug in call_memory tracing that could cause wildly
+    incorrect reported memory values. Bug exists since OTP 27.1.
+  * ssh: Reception of wrong Unicode does not cause unnecessary
+    processing. US-ASCII fields are not decoded as Unicode.
+  * ssh: SSH daemon disconnects upon receiving connection protocol
+    message for unauthenticated used.
+  * ssl: Lower log level for user cancelation as this is not an
+    error case. Also handle possible undecrypted close alert
+    during TLS-1.3 handshake.
+- Changes for 27.3.2:</comment>
+    <requestid>1276092</requestid>
+  </revision>
 </revisionlist>

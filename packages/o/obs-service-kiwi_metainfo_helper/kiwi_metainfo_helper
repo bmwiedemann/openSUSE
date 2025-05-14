@@ -58,8 +58,10 @@ rev=$(echo ${localpath} | cut -d- -f1)
 packagename=$(echo ${localpath} | cut -d- -f2- | cut -d: -f1)
 if [[ "${DISTURL}" == obs://build.suse.de/* ]]; then
 	SOURCEURL="https://sources.suse.com/${prj}/${packagename}/${rev}/"
+	SOURCEURL_PLACEHOLDER="${SOURCEURL}\\1"
 else
 	SOURCEURL="https://$(echo ${DISTURL} | cut -d/ -f3)/package/show/${prj}/${packagename}?rev=${rev}"
+	SOURCEURL_PLACEHOLDER="https://$(echo ${DISTURL} | cut -d/ -f3)/public/source/${prj}/${packagename}/\\1?rev=${rev}"
 fi
 
 # Print all rpm files which contain os-release
@@ -159,6 +161,7 @@ fi
 sed -i"" \
     -e "s#%DISTURL%#${DISTURL}#g" \
     -e "s#%SOURCEURL%#${SOURCEURL}#g" \
+    -e "s#%SOURCEURL_WITH(\([^)]\+\))%#${SOURCEURL_PLACEHOLDER}#g" \
     -e "s/%RELEASE%/${RELEASE}/g" \
     -e "s/%ARCH%/${BUILD_ARCH}/g" \
     -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" "${files[@]}"

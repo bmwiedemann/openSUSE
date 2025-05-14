@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May 09 08:13:11 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.74.0+git20250509.272b109:
+  * libwtmpdb: enhance/unify error messages
+
+-------------------------------------------------------------------
+Wed May  7 08:43:33 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Fix summary of libwtmpdb subpackage
+
+-------------------------------------------------------------------
 Mon Apr 28 06:53:09 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.74.0+git20250424.2e93e77:

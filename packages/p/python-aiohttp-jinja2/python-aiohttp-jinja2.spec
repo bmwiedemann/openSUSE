@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohttp-jinja2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,15 +25,13 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/aio-libs/aiohttp-jinja2
 Source:         https://github.com/aio-libs/aiohttp-jinja2/archive/v%{version}.tar.gz#/aiohttp-jinja2-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-typing_extensions if python3-base <= 3.6)
 Requires:       python-Jinja2 >= 3.0
 Requires:       python-aiohttp
-%if 0%{?python_version_nodots} <= 36
-Requires:       python3-typing_extensions
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 3.0}
@@ -53,10 +51,10 @@ Jinja2 template renderer for aiohttp.web.
 rm setup.cfg
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

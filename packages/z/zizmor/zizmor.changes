@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Fri May 09 05:25:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add shell completion subpackages
+- Update to version 1.7.0:
+  This release comes with four new audits: obfuscation,
+  stale-action-refs, unsound-contains, and unpinned-images. It also
+  includes several improvements to existing audits and zizmor's
+  output formats and error reporting behavior.
+  Additionally, this release comes with bugfixes for the SARIF
+  output format as well as input collection in some edge cases when
+  collecting from remote repositories.
+  * New Features
+    - New audit: The obfuscation audit detects obfuscatory patterns
+      in GitHub Actions usages. These patterns are not themselves
+      dangerous, but may indicate an attempt to obscure malicious
+      behavior (#683)
+    - New audit: The stale-action-refs pedantic audit detects
+      pinned action references which don't point to a Git tag
+      (#713)
+    - New audit: The unsound-contains audit detects uses of the
+      contains() function that can be bypassed (#577)
+    - New audit: The unpinned-images audit detects uses of Docker
+      images that are unpinned or pinned to :latest (#733)
+    - zizmor now reports much clearer error messages when auditing
+      fails due to an invalid workflow or action definition (#719)
+    - zizmor now has a --strict-collection flag that turns skipped
+      workflow or action definition warnings into errors. Passing
+      this flag changes zizmor's behavior back to the default in
+      v1.6.0 and earlier, which was to terminate the audit if any
+      collected input could not be parsed (#734)
+    - The forbidden-uses audit can now be configured with patterns
+      that match exact uses: clauses, including refs. For example,
+      exactly actions/checkout@v4 can now be explicitly allowed or
+      forbidden, rather than every ref that matches
+      actions/checkout (#750)
+    - zizmor now has a --completions=<shell> flag that generates
+      shell completion scripts (#765)
+  * Bug Fixes
+    - The SARIF output format now uses zizmor/{id} for rule IDs
+      instead of bare IDs, reducing the chance of conflict or
+      confusion with other tools (#710)
+    - The SARIF output format now includes a rule name for each
+      rule descriptor, which should improve rendering behavior in
+      SARIF viewers like the VS Code SARIF Viewer extension (#710)
+    - Fixed a bug where zizmor would fail to collection actions
+      defined within subdirectories of .github/workflows when
+      collecting from a remote source (#731)
+  * Upcoming Changes
+    Starting with v1.8.0, zizmor will migrate from @woodruffw on
+    GitHub to @zizmorcore. This should not cause any breakage as
+    GitHub will handle redirects, but users who explicitly
+    reference @woodruffw/zizmor should consider updating their
+    references to @zizmorcore/zizmor once the migration occurs.
+    See #758 for details.
+  * Dependencies
+    - chore(deps): bump the github-actions group with 3 updates
+      (#747)
+    - chore(deps): cargo update (#722)
+    - chore(deps): bump insta from 1.42.2 to 1.43.0 in the cargo
+      group (#702)
+    - chore(deps): bump the cargo group with 2 updates (#686)
+    - chore(deps): bump astral-sh/setup-uv in the github-actions
+      group (#685)
+
+-------------------------------------------------------------------
+Sun Apr 20 06:34:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.6.0:
+  * New Features
+    - New audit: The forbidden-uses audit is a configurable audit
+      that allows allow- or denylisting of entire orgs, repos, or
+      specific action patterns. This audit must be configured; by
+      default it has no effect (#664)
+    - zizmor now supports --format=github as an output format. This
+      format produces check annotations via GitHub workflow
+      commands, e.g. ::warning and ::error. See the Output formats
+      documentation for more information on annotations, including
+      key limitations (#634)
+    - The unpinned-uses audit has been completely rewritten, with
+      two key changes:
+       - The audit now has configurable policies that give users
+         more control over the audit's behavior. In particular,
+         users can now define policies that mirror their actual
+         threat model, such as trusting their own GitHub
+         organizations while leaving others untrusted.
+       - The audit's default policy is more precise and
+         conservative: official GitHub actions (e.g. those under
+         actions/* and similar) are allowed to be pinned by branch
+         or tag, but all other actions are required to be pinned by
+         SHA. This is a change from the previous policy, which was
+         to only flag completely unpinned actions by default.
+  * Improvements
+    - The SARIF output format now marks each rule as a "security"
+      rule, which helps GitHub's presentation of the results (#631)
+    - The template-injection audit is now performs dataflow
+      analysis to determine whether contexts actually expand in an
+      unsafe manner, making it significantly more accurate (#640)
+    - The cache-poisoning audit is now aware of jdx/mise-action
+      (#645)
+    - The cache-poisoning audit is now significantly more accurate
+      when analyzing workflows that use docker/setup-buildx-action
+      (#644)
+    - --format=json is now an alias for --format=json-v1, enabling
+      future JSON formats. The policy for the --format=json alias
+      is documented under Output formats - JSON (#657)
+    - Configuration file loading is now stricter, and produces a
+      more useful error message when the configuration file is
+      invalid (#663)
+  * Bug Fixes
+    - The template-injection audit no longer considers
+      github.event.pull_request.head.sha dangerous (#636)
+    - Fixed a bug where zizmor would fail to parse workflows with
+      workflow_call triggers that specified inputs without the
+      required field being present (#646)
+    - Fixed a bug where zizmor would fail to parse workflows with
+      pull_request or pull_request_target triggers that specified
+      types as a scalar value (#653)
+    - Fixed a crash where zizmor would fail to generate correct
+      concrete location spans for YAML inputs with comments inside
+      block sequences (#660)
+    - The template-injection audit no longer considers github.job
+      dangerous (#661)
+    - The template-injection audit no longer considers
+      github.event.pull_request.head.repo.fork dangerous (#675)
+
+-------------------------------------------------------------------
 Sun Mar 23 18:20:03 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 1.5.2:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu May  1 06:31:41 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
+
+- Update to 3.5.2
+  * Adjust: [auth] ldap: use ldap_user_attr either first element of list or directly
+  * Fix: use value of property for time range filter
+  * Fix: return 204 instead of 201 in case PUT updates an item
+  * Add: [auth] ldap: option ldap_security (none, startls, tls) for additional support of STARTTLS, deprecate ldap_use_ssl
+  * Extend: log PYTHONPATH on startup if found in environment
+
+-------------------------------------------------------------------
 Wed Apr 16 05:51:57 UTC 2025 - Ákos Szőts <szotsaki@gmail.com>
 
 - Update to 3.5.1

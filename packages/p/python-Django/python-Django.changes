@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 12 08:20:40 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.1 (bsc#1242210)
+  * This release was built using an upgraded setuptools, producing
+    filenames compliant with PEP 491 and PEP 625 and thus addressing
+    a PyPI warning about non-compliant distribution filenames. This
+    change only affects the Django packaging process and does not
+    impact Django’s behavior.
+  * CVE-2025-32873: Denial-of-service possibility in strip_tags()
+  * Fixed a data corruption possibility in file_move_safe() when
+    allow_overwrite=True
+  * Fixed a regression introduced when fixing CVE 2025-26699, where
+    the wordwrap template filter did not preserve empty lines between
+    paragraphs after wrapping text
+  * Fixed many bugs and regressions in Django 5.2, see upstream changelog
+
+-------------------------------------------------------------------
 Tue Apr 22 15:46:20 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add missing runtime dependency on tzdata

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue May  6 06:00:07 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.1:
+  * Relax cachelib version to allow latest releases
+  * Drop python 3.7 support
+  * python 3.11 officially supported
+  * Fix issue causing args_to_ignore to not work with
+    flask_caching.Cache.memoize decorator when keyword arguments were used in
+    the decorated function call
+  * fix type signature in flask_caching.utils.make_template_fragment_key.
+  * support Flask 3
+  * bug fix: make the make_cache_key attributed of decorated view functions
+    writeable.
+  * fix bug where flask_caching.backends.RedisSentinelCache.get_many would
+    query wrong host&port combination.
+  * Remove flask_caching.backends.FileSystemCache method overrides.
+  * Add proxy to underlaying has method of cache clients.
+  * flask_caching.backends.FileSystemCache now stores timestamps in a
+    universal (non-frammed) way following the lastest version of
+    cachelib.FileSystemCache.
+  * Add suport for cached/memoized generators.
+  * Add support for Flask 2.0 async.
+  * Cachelib is now used as backend.
+  * Drop support for python 3.6.
+  * Add support for dynamic cache timeouts
+  * Fix bug in CACHE_OPTIONS reading for redis in RedisSentinelCache.
+  * A GoogleCloudStorageCache backend has been added to the user contributed
+    caching backends.
+  * Important: The way caching backends are loaded have been refactored.
+    Instead of passing the name of the initialization function one can now
+    use the full path to the caching backend class.
+  * UWSGICache is not officially supported anymore and moved to the user
+    contributed backends.
+  * Fix add() in RedisCache without a timeout.
+  * Fix error in how the FileSystemCache counts the number of files.
+  * Fix kwargs not being passed on in function _memoize_make_cache_key.
+  * Add a Redis Cluster Mode caching backend.
+  * Add an option to include the functions source code when generating the
+    cache key.
+  * Completely control the way how cache keys are generated.
+- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.
+
+-------------------------------------------------------------------
 Wed Jun  3 02:41:23 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

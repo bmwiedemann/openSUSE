@@ -1,7 +1,7 @@
 #
 # spec file for package python-ezdxf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://ezdxf.mozman.at/
 Source:         https://github.com/mozman/ezdxf/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 # SECTION setup requirements
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -59,10 +60,10 @@ DXF version.
 sed -i '1 {/env python/ d}' src/ezdxf/addons/drawing/qtviewer.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/ezdxf
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
@@ -80,7 +81,7 @@ sed -i '1 {/env python/ d}' src/ezdxf/addons/drawing/qtviewer.py
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/ezdxf
-%{python_sitearch}/%{packagename}-%{version}*-info
 %{python_sitearch}/%{packagename}
+%{python_sitearch}/%{packagename}-%{version}.dist-info
 
 %changelog

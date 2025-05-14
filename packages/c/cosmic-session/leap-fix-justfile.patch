@@ -1,6 +1,6 @@
-diff -rub cosmic-session-1.0.0~alpha5+1/Justfile cosmic-session-1.0.0~alpha5+1-patched/Justfile
---- cosmic-session-1.0.0~alpha5+1/Justfile	2025-01-11 02:25:02.142173758 +0100
-+++ cosmic-session-1.0.0~alpha5+1-patched/Justfile	2025-01-11 02:25:33.485173370 +0100
+diff -rub cosmic-session/Justfile cosmic-session-patched/Justfile
+--- cosmic-session/Justfile	2025-04-24 20:05:00.838805419 +0200
++++ cosmic-session-patched/Justfile	2025-04-24 20:13:38.440286559 +0200
 @@ -9,7 +9,7 @@
  vendor_args := if vendor == '1' { '--frozen --offline' } else { '' }
  debug_args := if debug == '1' { '' } else { '--release' }
@@ -8,5 +8,5 @@ diff -rub cosmic-session-1.0.0~alpha5+1/Justfile cosmic-session-1.0.0~alpha5+1-p
 -xdp_cosmic := '/usr/libexec/xdg-desktop-portal-cosmic'
 +xdp_cosmic := '/usr/lib/xdg-desktop-portal-cosmic'
  orca := '/usr/bin/orca'
- cosmic_dconf_profile := '/usr/share/dconf/profile/cosmic'
+ cosmic_dconf_profile := prefix + '/share/dconf/profile/cosmic'
  

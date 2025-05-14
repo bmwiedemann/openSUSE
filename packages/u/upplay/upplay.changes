@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May 12 16:07:55 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- added disable-mpris.patch to disable MPRIS support because it is part
+  of Deepin
+
+-------------------------------------------------------------------
+Sun May 11 08:48:08 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.9.6:
+  * Fix album headers HTML so that they can always be used with the full popup
+  * Allow all qss/css files to exist in the user home upplay data directory
+    and override the default ones
+  * Allow changing the division of space between player and playlist in the
+    left column (use a splitter)
+  * Change the image fit for the player cover from "cover" (letterbox) to
+    scale-down
+  * Allow toggling the directory view between list and covers (popup or Ctrl+l)
+
+-------------------------------------------------------------------
 Fri Apr 11 07:27:11 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.9.1:

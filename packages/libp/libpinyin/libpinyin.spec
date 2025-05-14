@@ -28,7 +28,6 @@ Source:         https://github.com/libpinyin/libpinyin/releases/download/%{versi
 Source99:       baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

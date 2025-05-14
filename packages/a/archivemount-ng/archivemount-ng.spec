@@ -35,7 +35,7 @@ Requires:       fuse3
 Conflicts:      archivemount
 Provides:       archivemount = %{version}
 Obsoletes:      archivemount < %{version}
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%if 0%{?suse_version} < 1600
 # -std=c++2b
 BuildRequires:  gcc12-c++
 %endif
@@ -52,7 +52,7 @@ archivemount, with fuse 3 support and bug fixes.
 %autosetup -p1
 
 %build
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%if 0%{?suse_version} < 1600
 export CXX=g++-12
 %endif
 # for --version output

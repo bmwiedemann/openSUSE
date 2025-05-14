@@ -190,4 +190,13 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     <comment></comment>
     <requestid>1142605</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3271426e4384fc44c6b52b02a00f1a44</srcmd5>
+    <version>2.7.2</version>
+    <time>1746809471</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.7.2
+  * Fixed the build with cmake4.</comment>
+    <requestid>1275942</requestid>
+  </revision>
 </revisionlist>

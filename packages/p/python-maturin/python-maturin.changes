@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue May 13 15:37:19 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.8.6
+  * Print a message when overriding platform tag from
+    `_PYTHON_HOST_PLATFORM`
+    gh#PyO3/maturin#2594
+  * Use the current python interpreter's version when the abi3
+    feature is set with no explicit version
+    gh#PyO3/maturin#2597
+
+-------------------------------------------------------------------
+Fri May  9 15:37:54 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.8.4
+  * Install a Rust toolchain into a temporary directory when building maturin
+    itself or a package and a Rust toolchain is missing. Set
+    MATURIN_NO_INSTALL_RUST to disable this behavior. #2421
+  * Fix broken maturin develop with latest uv in #2584
+  * Add PYO3_PYTHON env var support in #2534
+  * Sort RECORD file in wheel archives to make them deterministic in #2550
+  * Publish wheel for loongarch64 in #2548
+  * Add --compression-level option to build command in #2572
+
+-------------------------------------------------------------------
 Sun Mar 16 17:32:45 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.8.3

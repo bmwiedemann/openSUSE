@@ -38,7 +38,12 @@ BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  docbook2x
 BuildRequires:  freetype2-devel
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libiw-devel
@@ -86,12 +91,8 @@ Provides:       conky-feature-nvidia = %{version}
 Obsoletes:      conky-feature-nvidia < %{version}
 %endif
 %if 0%{?is_opensuse}
-%if 0%{?suse_version} >= 1315
 BuildRequires:  libircclient-devel
 BuildRequires:  libtolua++-5_1-devel
-%else
-BuildRequires:  tolua++
-%endif
 %endif
 
 %description
@@ -136,6 +137,8 @@ configuration files in nano.
 %autopatch -p1
 
 %build
+test -x "$(type -p gcc-13)" && export CC="$_"
+test -x "$(type -p g++-13)" && export CXX="$_"
 %cmake -G Ninja \
 	-DBUILD_APCUPSD=ON \
 	-DBUILD_ARGB=ON \

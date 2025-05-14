@@ -220,4 +220,12 @@ zu finden ... nur eine wesentlich Ã¤ltere Version.</comment>
     <comment>- Use %patch -P N instead of deprecated %patchN. (forwarded request 1151376 from pgajdos)</comment>
     <requestid>1151474</requestid>
   </revision>
+  <revision rev="30" vrev="1050">
+    <srcmd5>6726a3fa3d88a90d20af2565fe4cbaff</srcmd5>
+    <version>unknown</version>
+    <time>1746542636</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274909</requestid>
+  </revision>
 </revisionlist>

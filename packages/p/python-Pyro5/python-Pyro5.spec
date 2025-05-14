@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyro5
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,19 +24,20 @@ Summary:        Distributed object middleware for Python (RPC)
 License:        MIT
 URL:            https://github.com/irmen/Pyro5
 Source:         https://files.pythonhosted.org/packages/source/P/Pyro5/Pyro5-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-serpent >= 1.41
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Recommends:     ca-certificates
 Recommends:     python-cloudpickle >= 0.4.0
 Recommends:     python-dill >= 0.2.6
 Recommends:     python-msgpack-python >= 0.5.2
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  sqlite3
 BuildRequires:  %{python_module cloudpickle >= 0.4.0}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module dill >= 0.2.6}
@@ -44,6 +45,7 @@ BuildRequires:  %{python_module msgpack-python >= 0.5.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module serpent >= 1.41}
 BuildRequires:  ca-certificates
+BuildRequires:  sqlite3
 # /SECTION
 %python_subpackages
 
@@ -62,10 +64,10 @@ runs on many different platforms and Python versions.
 %autosetup -p1 -n Pyro5-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pyro5-check-config
 %python_clone -a %{buildroot}%{_bindir}/pyro5-echoserver
@@ -90,6 +92,6 @@ runs on many different platforms and Python versions.
 %python_alternative %{_bindir}/pyro5-ns
 %python_alternative %{_bindir}/pyro5-nsc
 %{python_sitelib}/Pyro5
-%{python_sitelib}/Pyro5-%{version}*-info
+%{python_sitelib}/[Pp]yro5-%{version}*-info
 
 %changelog

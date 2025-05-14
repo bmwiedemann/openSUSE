@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
+Mon Mar  3 03:03:03 UTC 2025 - olaf@aepfle.de
+
+- Use gcc13 in SLE15 because because C++17 is used
+
+-------------------------------------------------------------------
 Thu Oct 17 01:27:40 UTC 2024 - Simon Lees <sflees@suse.de>
+
 - Update to 1.21.7
   * Too many changes in the 8 version bumps to list here
 - Drop

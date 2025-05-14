@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  3 14:17:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Updated to version 0.4.7:
+  * Read XDG_CONFIG_HOME environment variable instead of assuming ~/.config
+  * Dependency upgrades
+
+-------------------------------------------------------------------
 Sat Mar  9 00:30:14 UTC 2024 - malcolmlewis@opensuse.org
 
 - Updated to version 0.4.6:

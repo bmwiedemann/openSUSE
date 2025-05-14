@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>928ec4eb038b15e0bc079bb879d6f42d</srcmd5>
+    <version>3.1.0</version>
+    <time>1746809526</time>
+    <user>anag_factory</user>
+    <comment>Main changes are under the hood, from the users perspective should be almost
+the same as Bird 2. But for stable distributions (&lt;16.0) it makes sense to be
+conservative and provide it as an alternative. For 16.0 and Tumbleweed it makes
+sense to provide it as the main implementation.</comment>
+    <requestid>1276246</requestid>
+  </revision>
+</revisionlist>

@@ -176,4 +176,20 @@
   * bugfixes and support for new hardware</comment>
     <requestid>1245065</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>7dc614405b13f2a8937c06a83d578a26</srcmd5>
+    <version>25.1.1</version>
+    <time>1747061489</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276751</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>269de85f11e1defdbf03c4a70c663a7d</srcmd5>
+    <version>25.1.4</version>
+    <time>1747159563</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276964</requestid>
+  </revision>
 </revisionlist>

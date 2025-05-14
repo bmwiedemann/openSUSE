@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Apr 25 08:11:22 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20250423:
+  * packaging: replace @leap_version@ in suse_dist_macros.in
+  * kmp.attr: Run scripts for all modules (bsc#1237308).
+
+-------------------------------------------------------------------
 Fri Mar 28 16:22:44 UTC 2025 - dmueller@suse.com
 
 - Update to version 20250328:

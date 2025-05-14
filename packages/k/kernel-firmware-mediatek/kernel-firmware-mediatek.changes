@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  3 16:05:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * mediatek MT7925: update bluetooth firmware to 20250425073330
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

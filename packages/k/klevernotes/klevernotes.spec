@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           klevernotes
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Note taking and management application
 License:        GPL-3.0-or-later
@@ -72,9 +72,6 @@ emoji, etc.
 
 %prep
 %autosetup -p1
-
-# Version bump was forgotten
-sed -i 's#VERSION "1\.1\.1"#VERSION "1\.2\.0"#' CMakeLists.txt
 
 %build
 %cmake_kf6

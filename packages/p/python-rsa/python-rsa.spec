@@ -1,7 +1,7 @@
 #
 # spec file for package python-rsa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,18 +22,18 @@
 %bcond_with libalternatives
 %endif
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-rsa
-Version:        4.9
+Version:        4.9.1
 Release:        0
 Summary:        Pure-Python RSA Implementation
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://stuvel.eu/rsa
 Source:         https://files.pythonhosted.org/packages/source/r/rsa/rsa-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 Requires:       python-pyasn1 >= 0.1.3
@@ -42,7 +42,7 @@ Requires:       alts
 BuildRequires:  alts
 %else
 Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(preun): update-alternatives
 %endif
 Requires(pre):  coreutils
 BuildArch:      noarch
@@ -62,11 +62,11 @@ PKCS#1 version 1.5.
 
 %build
 export LC_ALL=en_US.utf8
-%python_build
+%pyproject_wheel
 
 %install
 export LC_ALL=en_US.utf8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/pyrsa-priv2pub

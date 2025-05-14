@@ -72,4 +72,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272723</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bc1d6b694f4350ffaff41c56802c8c21</srcmd5>
+    <version>20250425</version>
+    <time>1747061138</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250425 (git commit 8d82acd29b5c):
+  * i915: Update Xe3LPD DMC to v2.23</comment>
+    <requestid>1276103</requestid>
+  </revision>
 </revisionlist>

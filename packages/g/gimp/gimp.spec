@@ -101,6 +101,7 @@ Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
 Patch4:         0001-Avoid-type-names-and-keywords.patch
+Patch5:         gimp-3.0.2_de_shortcut_clash.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed May 07 12:02:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.10:
+  * Bug Fixes
+    - giterminism: guard the git patch with host lock (6733b2f)
+    - giterminism: prevent consistency error if .git file is not
+      exist (03e435a)
+    - giterminism: resolve naming confusion about dot git (439d8ae)
+    - host-cleanup: enable git data cleaning (1038bb2)
+    - host-cleanup: translate and handle docker prune error
+      (42df434)
+
+-------------------------------------------------------------------
+Tue May 06 11:02:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.9:
+  * Bug Fixes
+    - build, dockerfile, buildah: label intermediate and dangling
+      images (0efd655)
+    - deploy: remove add-(label|annotation)-separator to keep
+      reproducibility (8827f58)
+    - export: use a new line (\n) as a default
+      --add-label-separator (bb536d8)
+    - host-cleanup, buildah: translate Buildah's error "image is in
+      use by a container" to a notice (b6749b9)
+
+-------------------------------------------------------------------
+Mon May 05 10:50:58 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.8:
+  * Bug Fixes
+    - don't parse WERF_ADD_*_SEPARATOR as label or annotation value
+      (#6835) (a9289b1)
+    - host-cleanup: disable git data cleaning temporary (7d38726)
+
+-------------------------------------------------------------------
 Wed Apr 30 21:19:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.35.7:

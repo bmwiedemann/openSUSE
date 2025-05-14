@@ -18,7 +18,7 @@
 
 
 Name:           scamper
-Version:        20250401
+Version:        20250505
 Release:        0
 Summary:        Parallel Internet measurement utility
 License:        GPL-2.0-only
@@ -51,11 +51,11 @@ infer where the failure appears to occur.
 
 This also contains the Python module.
 
-%package -n libscamperfile12
+%package -n libscamperfile13
 Summary:        File access library for scamper's binary dump format
 Group:          System/Libraries
 
-%description -n libscamperfile12
+%description -n libscamperfile13
 Scamper is a program that is able to conduct Internet measurement
 tasks to large numbers of IPv4 and IPv6 addresses, in parallel, to
 fill a specified packets-per-second rate. Currently, it supports the
@@ -68,7 +68,7 @@ files that scamper can produce in certain modes.
 %package -n libscamperfile-devel
 Summary:        Development headers for scamper's binary dump file access library
 Group:          Development/Libraries/Other
-Requires:       libscamperfile12 = %{version}-%{release}
+Requires:       libscamperfile13 = %{version}-%{release}
 
 %description -n libscamperfile-devel
 Scamper is a program that is able to conduct Internet measurement
@@ -127,9 +127,9 @@ pushd tests
 make %{?_smp_mflags}
 popd
 
-%post   -n libscamperfile12 -p /sbin/ldconfig
+%post   -n libscamperfile13 -p /sbin/ldconfig
 %post   -n libscamperctrl4 -p /sbin/ldconfig
-%postun -n libscamperfile12 -p /sbin/ldconfig
+%postun -n libscamperfile13 -p /sbin/ldconfig
 %postun -n libscamperctrl4 -p /sbin/ldconfig
 
 %files
@@ -140,7 +140,7 @@ popd
 %{_mandir}/man5/*
 %{python3_sitelib}/scamper.so
 
-%files -n libscamperfile12
+%files -n libscamperfile13
 %{_libdir}/libscamperfile.so.*
 
 %files -n libscamperfile-devel

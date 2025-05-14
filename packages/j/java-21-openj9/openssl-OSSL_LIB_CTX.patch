@@ -2,7 +2,7 @@ diff --git a/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c b/clos
 index 2e53d0a8e1e..1226f96f1f8 100644
 --- a/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c
 +++ b/closed/src/java.base/share/native/libjncrypto/NativeCrypto.c
-@@ -64,6 +64,10 @@
+@@ -77,6 +77,10 @@
  # include <pthread.h>
  #endif /* defined(WINDOWS) */
  
@@ -10,6 +10,6 @@ index 2e53d0a8e1e..1226f96f1f8 100644
 +typedef struct ossl_lib_ctx_st OSSL_LIB_CTX;
 +#endif
 +
- /* Header for RSA algorithm using 1.0.2 OpenSSL. */
- int OSSL102_RSA_set0_key(RSA *, BIGNUM *, BIGNUM *, BIGNUM *);
- int OSSL102_RSA_set0_factors(RSA *, BIGNUM *, BIGNUM *);
+ /* Header for NativeCrypto loading methods. */
+ static void * find_crypto_symbol(void *handle, const char *symname);
+ static void * find_crypto_library(jboolean traceEnabled, const char *chomepath);

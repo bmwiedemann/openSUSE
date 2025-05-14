@@ -8,17 +8,11 @@ zero memory under memory pressure.
 
 --- lib-src/seccomp-filter.c
 +++ lib-src/seccomp-filter.c	2025-03-19 12:29:10.689765873 +0000
-@@ -42,6 +42,13 @@ variants of those files that can be used
+@@ -42,6 +42,7 @@ variants of those files that can be used
  #include <stdlib.h>
  #include <stdint.h>
  #include <stdio.h>
-+#ifdef __powerpc64__
-+/* glibc uses internal an other TCGETS ioctl for its
-+   tcgetattr(3) call with its internal struct termios */
-+# include <asm/termbits.h>
-+#else
-+# include <termios.h>
-+#endif
++#include <asm/termbits.h>  /* mandatory accordingly to latest ioctl_tty(2) */
  #include <time.h>
  
  #include <asm/prctl.h>
@@ -28,7 +22,7 @@ zero memory under memory pressure.
  
 +/* https://github.com/torvalds/linux/commit/9651fcedf7b92d3f7f1ab179e8ab55b85ee10fc1 */
 +#ifndef MAP_DROPPABLE
-+#define MAP_DROPPABLE 0x0
++#define MAP_DROPPABLE 0x08
 +#endif
 +
  static ATTRIBUTE_FORMAT_PRINTF (2, 3) _Noreturn void

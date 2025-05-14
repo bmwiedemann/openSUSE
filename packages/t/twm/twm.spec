@@ -1,7 +1,7 @@
 #
 # spec file for package twm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           twm
-Version:        1.0.12
+Version:        1.0.13.1
 Release:        0
 Summary:        Tab Window Manager for the X Window System
 License:        HPND
@@ -26,6 +26,7 @@ URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        twm.desktop
 Patch1:         twm-suse.diff
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
@@ -52,6 +53,7 @@ keyboard focus, and user-specified key and pointer button bindings.
 %autosetup -p1
 
 %build
+autoreconf -fi
 %configure
 make %{?_smp_mflags}
 

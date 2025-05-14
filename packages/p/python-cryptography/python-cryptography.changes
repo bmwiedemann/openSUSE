@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 15:45:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 44.0.3
+  * Fixed compilation when using LibreSSL 4.1.0.
+
+-------------------------------------------------------------------
 Sun Mar 23 21:40:26 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 44.0.2:

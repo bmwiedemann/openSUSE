@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 15:54:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %_smp_mflags for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Fri Apr 25 07:37:04 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 25.4.2: [bsc#1241067, bsc#1241037]

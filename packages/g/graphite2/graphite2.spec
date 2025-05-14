@@ -28,6 +28,7 @@ Source0:        https://github.com/silnrsi/graphite/archive/%{version}.tar.gz#/%
 Source1:        baselibs.conf
 Patch0:         graphite2-1.2.0-cmakepath.patch
 Patch2:         link-gcc-shared.diff
+Patch3:         graphite2-1.3.14-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel

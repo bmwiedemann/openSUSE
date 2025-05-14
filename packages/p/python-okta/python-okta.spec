@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-okta
-Version:        2.9.11
+Version:        2.9.13
 Release:        0
 Summary:        Python SDK for the Okta Management API
 License:        Apache-2.0

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May  6 21:28:36 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 3.4.0:
+  * Update to GNOME 48 runtime
+  * Fix cancel button not working as expected
+  * Add variants to the list of available images
+  * Updated translations
+- remove update-desktop-files as BR, deprecated
+- adjust BRs, according to upstream meson.build
+- update spec file:
+  * formatting
+  * use pkgconfig for gdk-pixbuf-devel
+  * use more %name macros throughout the spec file
+- add small-fixes.patch, to fix the version and shown changelog in
+  the about section
+
+-------------------------------------------------------------------
 Fri Sep 20 21:06:30 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 3.3.0:

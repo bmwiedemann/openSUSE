@@ -21,7 +21,7 @@ Version:        24.12.1
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
-URL:            https://github.com/cmdrkotori/mpc-qt
+URL:            https://github.com/mpc-qt/mpc-qt
 Source0:        https://github.com/mpc-qt/mpc-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.changes
 BuildRequires:  libQt5Gui-private-headers-devel

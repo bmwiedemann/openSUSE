@@ -1235,4 +1235,28 @@
     gh#PyO3/maturin#2514</comment>
     <requestid>1253536</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>6128467beadadffcced2b6ae32a753e7</srcmd5>
+    <version>1.8.6</version>
+    <time>1747159963</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.6
+  * Print a message when overriding platform tag from
+    `_PYTHON_HOST_PLATFORM`
+    gh#PyO3/maturin#2594
+  * Use the current python interpreter's version when the abi3
+    feature is set with no explicit version
+    gh#PyO3/maturin#2597
+
+- Update to 1.8.4
+  * Install a Rust toolchain into a temporary directory when building maturin
+    itself or a package and a Rust toolchain is missing. Set
+    MATURIN_NO_INSTALL_RUST to disable this behavior. #2421
+  * Fix broken maturin develop with latest uv in #2584
+  * Add PYO3_PYTHON env var support in #2534
+  * Sort RECORD file in wheel archives to make them deterministic in #2550
+  * Publish wheel for loongarch64 in #2548
+  * Add --compression-level option to build command in #2572</comment>
+    <requestid>1277201</requestid>
+  </revision>
 </revisionlist>

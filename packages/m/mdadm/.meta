@@ -4,4 +4,5 @@
 intended to provide all the functionality of the mdtools and raidtools
 programs but with a very different interface.</description>
   <devel project="Base:System" package="mdadm"/>
+  <person userid="mwilck" role="bugowner"/>
 </package>

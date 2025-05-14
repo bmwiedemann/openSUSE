@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May 11 16:37:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.1:
+  * (cargo-release) version 0.21.1
+  * `--show-zero` display unset cpu and memory for pods
+
+-------------------------------------------------------------------
+Sun May 11 16:34:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.21.0:
+  * on cli, allow multi-value option to be defined as a list (with
+    comma as separator)
+  * look at pods only on selected nodes
+  * minor update of README
+  * add an option to calculate Free as Allocatable - Requested
+  * upgrade to rust 1.86
+  * Bump chrono from 0.4.40 to 0.4.41
+  * Bump clap from 4.5.36 to 4.5.37
+  * Bump anyhow from 1.0.97 to 1.0.98
+  * Bump clap from 4.5.35 to 4.5.36
+  * Bump tokio from 1.44.1 to 1.44.2
+  * Bump clap from 4.5.34 to 4.5.35
+  * Bump clap from 4.5.32 to 4.5.34 (#257)
+  * Bump mozilla-actions/sccache-action from 0.0.8 to 0.0.9 (#256)
+
+-------------------------------------------------------------------
 Fri Mar 21 17:06:43 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.20.5 (there is no 0.20.4 release):

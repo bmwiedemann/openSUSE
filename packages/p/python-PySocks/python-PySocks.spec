@@ -1,7 +1,7 @@
 #
 # spec file for package python-PySocks
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2016 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-PySocks
@@ -28,7 +27,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/Anorov/PySocks
 Source:         https://files.pythonhosted.org/packages/source/P/PySocks/PySocks-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %ifpython2
@@ -49,15 +50,15 @@ See https://github.com/Anorov/PySocks for more information.
 %setup -q -n PySocks-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %files %{python_files}
 %{python_sitelib}/socks.py*
 %{python_sitelib}/sockshandler.py*
-%{python_sitelib}/PySocks-%{version}-py*.egg-info
+%{python_sitelib}/[Pp]y[Ss]ocks-%{version}*-info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog

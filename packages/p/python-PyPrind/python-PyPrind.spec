@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPrind
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyPrind
 Version:        2.11.3
 Release:        0
@@ -24,9 +23,11 @@ Summary:        Python progress bar and percent indicator utility
 License:        BSD-3-Clause
 URL:            https://github.com/rasbt/pyprind
 Source0:        https://files.pythonhosted.org/packages/source/P/PyPrind/PyPrind-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= 3.2.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-psutil >= 3.2.0
@@ -45,10 +46,10 @@ computation progress.
 %setup -q -n PyPrind-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +57,7 @@ computation progress.
 
 %files %{python_files}
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/pyprind
+%{python_sitelib}/[Pp]y[Pp]rind-%{version}*-info
 
 %changelog

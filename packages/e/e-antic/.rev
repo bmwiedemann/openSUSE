@@ -111,4 +111,12 @@
     <comment>- Add 0001-build-fix-build-failure-with-flint-3.2.patch</comment>
     <requestid>1253273</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9db4b91f6fc649ef25db692dacd3e4c1</srcmd5>
+    <version>2.1.0</version>
+    <time>1746638297</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.1.0</comment>
+    <requestid>1275029</requestid>
+  </revision>
 </revisionlist>

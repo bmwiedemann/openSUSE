@@ -1,7 +1,7 @@
 #
 # spec file for package abcm2ps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2007 by Edgar Aichinger
 #
 # All modifications and additions to the file contributed by third parties
@@ -33,6 +33,8 @@ Source4:        renaissance.fmt
 Source5:        thinlines.fmt
 # PATCH-FIX-OPENSUSE compiler_flags.patch -- aloisio@gmx.com
 Patch0:         compiler_flags.patch
+# build with gcc15
+Patch1:         abcm2ps-gcc15.patch
 BuildRequires:  pkgconfig
 # for rst2man
 BuildRequires:  python3-docutils

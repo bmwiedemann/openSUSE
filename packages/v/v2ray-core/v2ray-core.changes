@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May  4 08:35:24 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.31.0
+  * Add Dns Proxy Response TTL Control
+  * Fix call newError Base with a nil value error
+  * Update vendor (boo#1235164)
+
+-------------------------------------------------------------------
 Sun Apr  6 04:47:00 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update version to 5.29.3

@@ -161,7 +161,7 @@ $python -m gevent.tests \
   --ignore skip_tests.txt \
   -u-network \
   --verbose \
-  %{?jobs:--processes %jobs}
+  %{?_smp_mflags}
 }
 
 %files %{python_files}

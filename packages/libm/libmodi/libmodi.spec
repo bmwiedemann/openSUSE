@@ -2,6 +2,7 @@
 # spec file for package libmodi
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +36,7 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20240414
 BuildRequires:  pkgconfig(libcaes) >= 20240413
 BuildRequires:  pkgconfig(libcdata) >= 20240414

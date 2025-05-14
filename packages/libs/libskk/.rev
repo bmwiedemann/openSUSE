@@ -79,4 +79,12 @@
 - Add fix-build-on-gcc14+.patch. (forwarded request 1231231 from hillwood)</comment>
     <requestid>1231233</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f0c0064048cf9be23b392b7360898539</srcmd5>
+    <version>1.2.0+git20180916+1.0.5</version>
+    <time>1746476948</time>
+    <user>anag_factory</user>
+    <comment>- Replace obsolete gnome-common with libtool BuildRequires. (forwarded request 1274240 from iznogood)</comment>
+    <requestid>1274534</requestid>
+  </revision>
 </revisionlist>

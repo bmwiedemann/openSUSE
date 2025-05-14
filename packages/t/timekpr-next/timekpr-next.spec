@@ -18,16 +18,14 @@
 %define         _confdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 %define         _sitelib %( echo %{python3_sitelib} | cut -c 10- )
 Name:           %{shortname}-next
-Version:        0.5.7
-Release:        0
+Version:        0.5.8
+Release:        
 Summary:        Keep control of computer usage
 License:        GPL-3.0-only
 URL:            https://launchpad.net/%{shortname}-next
 Source0:        https://launchpad.net/%{name}/stable/%{version}/+download/%{name}-%{version}.tar.gz
 Source1:        system-group-%{shortname}.conf
 Source2:        README.SUSE.md
-Patch0:         tmp_file_issue_1cec26bd22b73f00b4a834b7f66cd92895b2901d.patch
-Patch1:         tmp_file_issue_07e0b29763def53d95611f9ee4a2f54ae50df38c.patch
 BuildRequires:  appstream-glib
 BuildRequires:  sysuser-tools
 BuildRequires:  python3-base

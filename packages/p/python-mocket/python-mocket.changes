@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May  4 06:56:02 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to 3.13.5:
+ - First stable version after huge refactor
+ - Fix for caching when using uv
+ - Better conf for pytest-asyncio
+ - Fix test_truesendall failure on MacOS
+
+-------------------------------------------------------------------
 Sat Mar 29 07:30:02 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - uptdate to 3.13.4:

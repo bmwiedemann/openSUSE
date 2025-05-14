@@ -1,7 +1,7 @@
 #
 # spec file for package python-dash-core-components
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,9 @@ Summary:        Core component suite for Dash - Legacy
 License:        MIT
 URL:            https://github.com/plotly/dash-core-components
 Source:         https://files.pythonhosted.org/packages/source/d/dash-core-components/dash_core_components-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,16 +43,16 @@ has no further functionality than displaying a deprecation message.
 %setup -q -n dash_core_components-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/dash_core_components
-%{python_sitelib}/dash_core_components-%{version}-py*.egg-info
+%{python_sitelib}/dash_core_components-%{version}.dist-info
 
 %changelog

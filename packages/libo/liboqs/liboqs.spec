@@ -27,6 +27,7 @@ Source:         https://github.com/open-quantum-safe/liboqs/archive/refs/tags/%{
 Source1:        baselibs.conf
 Patch0:         liboqs-fix-build.patch
 Patch1:         liboqs-fix-prototypemismatch.patch
+Patch2:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
@@ -60,7 +61,7 @@ export RPM_OPT_FLAGS="%{optflags} -std=gnu11"
 
 # 20220702: The %%cmake macro can't be used because a 'CMakeLists.txt' folder
 # exists
-cmake -S . -B build -DBUILD_SHARED_LIBS:BOOL=ON -DOQS_DIST_BUILD:BOOL=ON
+cmake -S . -B build -DBUILD_SHARED_LIBS:BOOL=ON -DOQS_DIST_BUILD:BOOL=ON -DOQS_ENABLE_KEM_HQC=ON
 
 pushd build
 %cmake_build

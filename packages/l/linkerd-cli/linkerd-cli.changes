@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat May 03 17:47:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18:
+  major update, see the release announcement
+  https://linkerd.io/2025/04/23/announcing-linkerd-2.18/
+
+-------------------------------------------------------------------
+Sat May 03 17:40:46 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.17:
+  major update, see the release announcement
+  https://linkerd.io/2024/12/05/announcing-linkerd-2.17/
+
+-------------------------------------------------------------------
 Fri Aug 16 11:12:38 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add Conflicts: for linkerd-cli-edge

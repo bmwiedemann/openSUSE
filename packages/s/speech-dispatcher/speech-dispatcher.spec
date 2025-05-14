@@ -47,7 +47,7 @@ Name:           speech-dispatcher
 %else
 Name:           speech-dispatcher-%{_python}
 %endif
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 # FIXME missing backends: festival lite, ibmeci (ibm tts), dumbtts/ivona, nas
 # The API and bindings are LGPL-2.1-or-later, other parts are

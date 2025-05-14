@@ -25,11 +25,13 @@ License:        MIT
 URL:            https://github.com/henry0312/pytest-pycodestyle
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-pycodestyle/pytest_pycodestyle-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pytest >= 5.4}
 BuildRequires:  %{python_module pytest-isort}
 BuildRequires:  %{python_module py}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-py
@@ -49,10 +51,10 @@ pytest plugin to run pycodestyle in python tests
 sed -i -e 's:~=:>=:g' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -61,8 +63,8 @@ sed -i -e 's:~=:>=:g' setup.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%pycache_only %{python_sitelib}/__pycache__/*.pyc
+%pycache_only %{python_sitelib}/__pycache__/pytest_pycodestyle*.pyc
 %{python_sitelib}/pytest_pycodestyle.py
-%{python_sitelib}/pytest_pycodestyle-%{version}*-info
+%{python_sitelib}/pytest_pycodestyle-%{version}.dist-info
 
 %changelog

@@ -297,4 +297,14 @@
     08-ssl-connect-cert-auth-revoked tests when under load.</comment>
     <requestid>1251827</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>63ce3c3218ffcc2e06d70a54bb04fc7f</srcmd5>
+    <version>2.0.21</version>
+    <time>1746809552</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1272943 from dirkmueller
+
+- Update to version 2.0.19 (CVE-2024-3935 bsc#1232635, CVE-2024-10525 bsc#1232636):</comment>
+    <requestid>1276283</requestid>
+  </revision>
 </revisionlist>

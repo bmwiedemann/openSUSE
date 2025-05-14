@@ -28,12 +28,10 @@ Source1:        %{name}.appdata.xml
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
-BuildRequires:  gnome-common
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appindicator-0.1)
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -81,8 +79,6 @@ NOCONFIGURE=1 ./autogen.sh
 %make_install
 install -d %{buildroot}%{_datadir}/metainfo
 install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/metainfo
-
-%suse_update_desktop_file %{name}
 
 %find_lang %{name}
 %fdupes %{buildroot}%{_datadir}

@@ -225,4 +225,12 @@ part of summer 20013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20240504</comment>
     <requestid>1172030</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>a7ce4b1fc6830f0d77aeb7b890f147dd</srcmd5>
+    <version>20240504</version>
+    <time>1746476864</time>
+    <user>anag_factory</user>
+    <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274250 from AndreasStieger)</comment>
+    <requestid>1274278</requestid>
+  </revision>
 </revisionlist>

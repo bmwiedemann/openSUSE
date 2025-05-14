@@ -1,4 +1,204 @@
 -------------------------------------------------------------------
+Tue May 13 14:52:47 UTC 2025 - mvetter@suse.com
+
+- Update to version 1.1.0~20250507.8576150:
+  * plugins: extractor: Remove -Wno-dangling-pointer from gcc invocation
+  * plugins/scan: Integrate patch analysis into scan
+  * klplib: Add patch analysis functions
+  * klplib/ksrc: Add ksrc_is_module_supported()
+  * klplib/codestream: Add config dict per codestream
+  * klplib/ksrc: Improve get_commit_files
+  * klplib: file2config: search Makefile also in parent directories
+  * klplib: Add file2config script
+  * klplib/kernel_tree: Add read_file_in_tag()
+  * klplib/ksrc: Filter out merge commits
+  * klplib: codestream: use ksrc to read config
+  * klplib: ksrc: use decorator to fetch kernel-source tags
+  * klplib: ksrc: drop GitHelper class
+  * klplib: ksrc: drop unused lp_filter field from class
+  * klplib: ksrc: drop kernel_branches field from class
+  * klplib: ksrc: drop kern_src from class
+  * klplib: ksrc: drop unused imports
+  * klplib: kernel_tree: use decorator to update kernel tree tags
+  * drop get-patches command
+  * setup.py: Remove importlib as dependency
+  * plugins/scan: Filter codestreams with no-check set
+  * klplib: utils: don't use PurePath in get_tests_path
+  * plugins/scan: Update kernel trees on scan
+  * tests: Adapt the tests to use kernel.git repo
+  * klplib/kernel-tree: re-implement get_commit_data
+  * klplib/kernel_tree: return bool in file_exists_in_tag()
+  * plugins: drop inline plug
+  * man: Document the new 'data' command
+  * man: Document 'scan --download' option
+  * klplib/cmd:man: Document the 'cs-diff' command
+  * plugins: format-patches: allow format-patches to skip test script
+  * klplib: utils: make get_test_path return None if no test is found
+  * klplib: config: emit debug log when entry is not found
+  * plugins: format-patches: drop unused warning
+  * plugins: setup: update kernel tree tags
+  * plugins: extractor: update kernel tree tags before extraction
+  * plugins: introduce clean-sources plugin
+  * klplib: kernel_tree: check file exists from kernel tree git
+  * klpbuild: ibs: stop downloading sources paskages
+  * klplib: codestream: make get_src_dir initialize the kernel source
+  * klplib: plugins: introduce kernel tree module
+  * klplib: ibs: drop unused imports
+  * plugins: scan: add download_data option
+  * plugins: data: introduce command to handle cs data
+  * cmd: Add 'version' command
+  * argparsers: drop "SLE specific" from all subparser
+  * plugins: format-patches: fix help message
+  * plugins: extractor: add help message
+  * plugins: setup: add help message
+  * klplib: data: introduce module to manage rpms
+  * klplib: codestreams: call set_archs directly in from_codestreams
+  * klplib: ibs: add extraction logging
+  * tests: extract: check warning is emitted on opt clones
+  * plugins: extractor: add warning on optimization clone
+  * ibs: Fix decompression of vmlinux and config for s390x
+  * klplib/ksrc: Show progress when getting SUSE fixes for upstream commits per CVE branch
+  * klplib/ksrc: Print also the name of the related suse source branches
+  * scan: Ignore code streams which do not match --filter
+  * extract: Replace only the first '..' on a path
+  * setup: Make validate_config to check for specified archs
+  * test_extract: Add an example of compile_commands.json search failing
+  * plugin: extract: Make sure that we propagate the correct errors
+  * extract: Get gcc args by using compile_commands.json
+  * plugins: format-patches: convert to plugin
+  * klplib: plugins: use underscore in plugin file name
+  * plugins: setup: make sure archs is an array
+  * plugins: setup: convert to plugin
+  * plugins: setup: drop unused import
+  * klplib: cmd: make lp_name arg destination name consistent
+
+-------------------------------------------------------------------
+Tue Apr 15 12:46:44 UTC 2025 - mvetter@suse.com
+
+- Update to version 0~20250321.366c1ea:
+  * ibs: Fix decompression of vmlinux and config for s390x
+  * ibs: Remove the .zst files aftect they are extracted
+  * codestreams.py: Detect if a .ko module is missing
+  * tests: Add more tests for scan
+  * klplib/ksrc: Minor fix when diffing commits
+  * tox: Set default logging level to DEBUG
+  * klplib: templ: Add prototypes of _init/_cleanup functions of files
+  * klplib: utils: Add get_fname
+  * templ: Move __create_kbuild function out of TemplateGen class
+  * templ: Cleanup generate_lp_file
+  * klplib:ksrc: Switch all the prints to logs
+  * templ: Remove ununsed mod variable
+  * klplib: config: use debug logging when loading user conf
+  * klp-build: enable global verbose option
+  * klplib: cmd: enable klp-build help message
+  * ci: Trigger klp-build tests only on PRs
+  * klplib:ksrc: Don't fetch kernel-src in `TEST_MODE`
+  * ci: Add support for Github CI
+  * tox: Allow specifying additional args to Pylint
+  * tests: Do not use 12.5 codestream
+  * klplib: Add `TEST_MODE` env variable
+  * klpbuild: Use bugzilla lib to fill the livepatch title on commit.msg file
+  * klplib: Add bugzilla lib
+  * setup: Move generate_commit_msg_file to Setup plugin
+  * klp-build: main: stop catching every assertion error
+  * templ: Move generate_commit_msg_file out of TemplateGen class
+  * klpbuild: utils: Introduce filter_codestreams_str
+  * plugins: extractor: Group files based on generated livepatches
+  * templ: Add livepatch.h include when IBT is being used with ext vars
+  * codestream: Remove the absolute module path from codestreams.json
+  * tox: add pytest dependency when running pylint
+  * setup: Add a more advanced versioning schema
+  * templ: Simplify livepatch.h generation
+  * ibs: Show the codestreams that are about to be pushed
+  * templ: Remove clang-extract feature called proto-files
+  * ksrc: Improve is_kernel_patched() heuristic
+  * ksrc: Ignore unrelated and duplicated commits
+  * klplib: plugins: move plugins args subparser outside of klplib/cmd
+  * klplib: cmd: reorganize argument parser
+  * klplib: ksrc: fix syntax warning
+  * plugins: scan: introduce scan plugin
+  * ibs: Finally remove the deprecated usage of pkg_resources
+  * klplib: cmd: make filter arg destination name consistent
+  * klplib: plugins: add helper to extract the required plugin arguments
+  * klplib: plugins: add helper to dynamically load plugins
+  * klplib: ksrc: make scan() storing the patches only if needed
+  * klplib: ksrc: make get_commits() storing the patches only if needed
+  * klplib: ksrc: rename upatches to upstream_patches_dir
+  * klplib: ksrc: create fetch_kernel_branch() function
+  * klplib: ksrc: drop lp_name field
+  * klplib: supported: add docstrings
+  * klplib: supported: rename download_codestream_file to get_supported_codestreams
+  * klplib: ksrc: move download_supported_file to supported.py
+  * klplib: codestream: drop data_path, lp_path and lp_name fields
+  * test: codestream: test filter regexp
+  * klplib: codestream: add check on filter regexp
+  * klplib: codestream: make sure codestream name contains SLE|MICRO
+  * klplib: codestream: rename work_dir() to get_ccp_work_dir()
+  * klplib: codestream: rename lpdir() to get_lp_dir()
+  * klplib: codestream: rename dir() to get_ccp_dir()
+  * klplib: codestream: use dir() in lpdir()
+  * klplib: codestream: drop get_data_dir
+  * klpbuild: Remove the --skip argument and use negative regex
+  * klpbuild: Use more --filter instead of --cs on log and cs-diff
+  * Drop support to SLE15-SP2
+  * Drop support to SLE15-SP2
+  * ibs: Test the procedure of getting kernel rpm packages
+  * klpblib: ibs: Fix download_cs_data method
+  * Remove Makefile responsible for running tests
+  * klplib: config: move get_tests_path to klplib/utils
+  * klplib: config: add docstrings
+  * klplib: config: apply name mangling to private methods
+  * klplib: config: finally drop Config class
+  * klplib: config: drop data field
+  * klplib: config: drop lp_path field
+  * klplib: config: move methods out of the Config Class
+  * klplib: config: drop user_conf_file field
+  * klplib: config: fix: avoid reloading config file
+  * klplib: config: move logging configuration to main
+  * klplib: codestreams_data: introduce codestreams_data module
+  * tox: Use the ssh-agent from host
+  * Release klp-build v0.0.2
+  * klplib: ibs: stop importing get_elf_modinfo_entry
+  * klplib: ibs: Remove check for module dependencies on prepare-tests
+  * ksrc: Filter out commits related to the CVE
+  * templ: Create Kbuild.inc file only after generating the LP files
+  * config: move to klplib package
+  * extractor: move to plugins package
+  * utils: move to klplib package
+  * inline: move to plugins package
+  * templ: move to klplib package
+  * ibs: move to klplib package
+  * ksrc: move to klplib package
+  * setup: move to plugins package
+  * codestream: move to klplib package
+  * cmd: move main_func out of cmd.py
+  * utils: drop double import
+  * utils: rename filter_cs to filter_codestreams
+  * codestream: fix dict type annotation
+  * codestream: rename get_odir to get_obj_dir
+  * codestream: rename get_sdir to get_src_dir
+  * codestreams: Make set_archs to choose the correct archs per codestream
+  * ibs: push: fetch the remote codestreams before rebasing
+  * klp-build: Extract gz files on MICRO as well
+  * tests: Add tests for MICRO-6-0
+  * templ: Add SLE MICRO6
+  * ibs: Refactor validate_livepatch_module to support MICRO
+  * ibs: Extract all zst and xz files under /usr/lib/modules
+  * codestreams: Add MICRO version on name_full method
+  * ibs: Change push/log projects from devbuild to standard
+  * ksrc: Enable MICRO
+  * klp-build: Add SLE Micro support
+  * ksrc: drop support for SLE15-SP5-RT
+  * ksrc: rename SLE15-SP5 branch to LTSS
+  * setup: Always set archs and cve to cs_data
+  * extractor: Remove empty lines
+  * scripts: run-kgr-test.sh: Add more paths to search for vms and kgr-test
+  * extractor: Replace '-' for "-" on module name of externalized syms
+  * ibs: Redownload the rpm if the extraction failed
+  * ksrc: Skip SLE Micro for now
+  * ibs: push: Get the codestream branch and rebase it on top of base branch
+
+-------------------------------------------------------------------
 Tue Mar 11 05:33:30 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not hardcode the Python version for the egg-info directory.

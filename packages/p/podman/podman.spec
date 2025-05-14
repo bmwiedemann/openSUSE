@@ -31,6 +31,7 @@ URL:            https://%{project}
 Source0:        %{name}-%{version}.tar.gz
 Source1:        podman.conf
 Patch0:         0001-CVE-2025-22869-ssh-limit-the-size-of-the-internal-pa.patch
+Patch1:         0001-remove-appending-rw-as-the-default-mount-option.patch
 BuildRequires:  man
 BuildRequires:  bash-completion
 BuildRequires:  device-mapper-devel
@@ -62,8 +63,8 @@ Recommends:     apparmor-parser
 Recommends:     gvisor-tap-vsock
 Requires:       catatonit >= 0.1.7
 Requires:       conmon >= 2.0.24
+Recommends:     criu
 Requires:       fuse-overlayfs
-Requires:       iptables
 Requires:       libcontainers-common >= 20230214
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 # Build podman with CNI support for SLE-15-SP5 and lower

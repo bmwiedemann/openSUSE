@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  8 11:08:19 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Add build requires for selinux-policy-targeted, to make build more
+  robust for Leap 16.
+
+-------------------------------------------------------------------
 Fri Mar 21 08:41:07 UTC 2025 - Robert Frohl <rfrohl@suse.com>
 
 - Initial package (bsc#1206292)

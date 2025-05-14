@@ -1531,4 +1531,12 @@
     <comment>Update to 1.29.4</comment>
     <requestid>1266067</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>05fd9a8f3ae54539babf71842343e58b</srcmd5>
+    <version>1.29.6</version>
+    <time>1746638245</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v1.29.6</comment>
+    <requestid>1274955</requestid>
+  </revision>
 </revisionlist>

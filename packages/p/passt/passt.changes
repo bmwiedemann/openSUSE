@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 05 08:25:44 UTC 2025 - dcermak@suse.com
+
+- Update to version 20250503.587980c:
+  * udp: Actually discard datagrams we can't forward
+  * fwd: fix doc typo
+  * selinux: Add getattr to class udp_socket
+  * flow: fix podman issue #25959
+  * util: Fix typo, ASSSERTION -> ASSERTION
+  * passt-repair: Hide bogus gcc warning from -Og
+  * conf: allow --fd 0
+  * udp: Translate offender addresses for ICMP messages
+  * udp: Rework offender address handling in udp_sock_recverr()
+  * treewide: Improve robustness against sockaddrs of unexpected family
+  * fwd: Split out helpers for port-independent NAT
+
+-------------------------------------------------------------------
 Wed Apr 16 06:17:16 UTC 2025 - dcermak@suse.com
 
 - Update to version 20250415.2340bbf:

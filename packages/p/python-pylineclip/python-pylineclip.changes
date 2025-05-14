@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:13:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Sat Jan 23 18:47:26 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - The rpm packaging does neither require pip, twine nor any of the 

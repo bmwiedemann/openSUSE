@@ -277,4 +277,13 @@
 - Update to version 1.28.0</comment>
     <requestid>1157890</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>9938e9417f93b7bb7baa18aeab30b250</srcmd5>
+    <version>1.31.0</version>
+    <time>1747159724</time>
+    <user>anag_factory</user>
+    <comment>- add patch remove-click-plugins.patch to remove the dependency on unmaintained click-plugins
+</comment>
+    <requestid>1277173</requestid>
+  </revision>
 </revisionlist>

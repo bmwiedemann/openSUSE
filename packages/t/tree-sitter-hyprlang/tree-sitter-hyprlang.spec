@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter-hyprlang
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,12 @@
 
 %define         _name hyprlang
 Name:           tree-sitter-hyprlang
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Hyprlang grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-hyprlang
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        LICENSE
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
@@ -33,7 +32,6 @@ BuildRequires:  tree-sitter
 
 %prep
 %autosetup
-cp %{SOURCE1} .
 
 %build
 %treesitter_configure

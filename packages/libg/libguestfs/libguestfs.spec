@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.55.8
+Version:        1.55.10
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ Source101:      README
 
 # Patches
 Patch1:         use-rtc-driftfix-slew-for-x86-only.patch
+Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
 BuildRequires:  file-devel
@@ -61,7 +62,11 @@ BuildRequires:  perl(Pod::Usage)
 BuildRequires:  perl(Test::More)
 BuildRequires:  pkgconfig(augeas)
 BuildRequires:  pkgconfig(bash-completion)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  pkgconfig(fuse3)
+%else
 BuildRequires:  pkgconfig(fuse)
+%endif
 BuildRequires:  pkgconfig(hivex)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libacl)
@@ -91,7 +96,11 @@ to: ext2/3/4, btrfs, FAT and NTFS, LVM, many different disk partition
 schemes, qcow, qcow2, vmdk.
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 99
+%if 0%{?suse_version} >= 1600
+%autopatch -p1 -m 100
+%endif
 
 sed -i 's|RPMVSF_MASK_NOSIGNATURES|_RPMVSF_NOSIGNATURES|' daemon/rpm-c.c
 sed -i 's/tar zcf/tar -zcf/' appliance/Makefile.am
@@ -276,7 +285,11 @@ tar -czf %{buildroot}%{_libdir}/guestfs/supermin.d/zz-winsupport.tar.gz .
 popd
 
 cat > %{buildroot}%{_libdir}/guestfs/supermin.d/zz-packages-winsupport << EOF
+%if 0%{?suse_version} >= 1600
+libfuse3
+%else
 libfuse2
+%endif
 hwinfo
 EOF
 

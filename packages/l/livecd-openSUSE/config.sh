@@ -119,8 +119,8 @@ EULA_DIR=/etc/YaST2/licenses/base
 [ -d "${EULA_DIR}" ] || EULA_DIR=/usr/share/licenses/product/base
 (cd "${EULA_DIR}"; tar -cvzf /license.tar.gz *)
 
-# Remove some large locales to save space
-rm -rf /usr/{lib,share}/locale/{a,b,c,da,dz,e,fa,fi,g,h,i,ja,k,l,m,n,o,p,r,s,t,u,v,w,z}*
+# Remove some large locales to save space, but make sure to keep en_US.utf8 to make "locale" happy
+echo /usr/{lib,share}/locale/{a,b,c,da,dz,e*,fa,fi,g,h,i,ja,k,l,m,n,o,p,r,s,t,u,v,w,z}* | tr ' ' '\n' | grep -v en_US | xargs rm -rf
 rm -rf /usr/share/qt5/translations/*_{ca,cs,da,es,it,ja,fi,hu,id,ko,nl,pl,pr_BR,tr,ro,ru,sk,sr,sv,uk,vi,cmn_TW,zh}*
 zypper --non-interactive rm yast2-trans-{uk,sv,ru,ja,da,cs,sr,vi} || :
 
@@ -132,6 +132,10 @@ rm -rf /lib/firmware/{amdgpu/{gc_,isp,psp}*,amdnpu,liquidio,netronome,qca,qed,mr
 if [ "$(arch)" == "aarch64" ]; then
 	# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
 	rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
+	# On Leap 15.x this doesn't work anyway so delete it as well (save ~43MiB)
+	if grep -q '15\.6' /etc/os-release; then
+		rm -rf /lib/firmware/qcom/x1e80100/
+	fi
 else
 	rm -rf /lib/firmware/qcom
 fi

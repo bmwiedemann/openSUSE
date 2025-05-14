@@ -1,7 +1,7 @@
 #
 # spec file for package python-dropbox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dropbox
-Version:        10.4.1
+Version:        12.0.2
 Release:        0
 Summary:        Official Dropbox API Client
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/dropbox/dropbox-sdk-python
-Source:         https://files.pythonhosted.org/packages/source/d/dropbox/dropbox-%{version}.tar.gz
+Source:         https://github.com/dropbox/dropbox-sdk-python/archive/refs/tags/v%{version}.tar.gz#/dropbox-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM remove_six.patch https://github.com/dropbox/dropbox-sdk-python/pull/493
+Patch1:         remove_six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests >= 2.16.2}
-BuildRequires:  %{python_module six >= 1.3.0}
-# /SECTION
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.16.2
-Requires:       python-six >= 1.3.0
+Requires:       python-stone
 BuildArch:      noarch
 
 %python_subpackages
@@ -43,15 +42,13 @@ BuildArch:      noarch
 Official Dropbox API Client
 
 %prep
-%setup -q -n dropbox-%{version}
-# https://github.com/dropbox/dropbox-sdk-python/issues/401
-sed -i 's:pytest-runner::' setup.py
+%autosetup -p1 -n dropbox-sdk-python-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Tests require an access token
@@ -59,6 +56,9 @@ sed -i 's:pytest-runner::' setup.py
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/dropbox
+%{python_sitelib}/dropbox-%{version}.dist-info
+
+%check
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 15:49:25 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/sagb/alttab/issues/181
+  + alttab-gcc15.patch
+
+-------------------------------------------------------------------
 Fri Aug 23 15:05:36 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire /usr/bin/ronn instead of rubygem(ronn): there are

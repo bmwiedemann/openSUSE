@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May 13 10:33:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 25.5.0:
+  * Bugfixes
+    Enable junit.xml reporting to codecov.io (#486) @Qalthos
+
+-------------------------------------------------------------------
 Thu Apr  3 12:31:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 25.1.5:

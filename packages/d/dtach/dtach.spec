@@ -1,7 +1,7 @@
 #
 # spec file for package dtach
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          System/Console
 URL:            http://dtach.sourceforge.net/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         dtach-remove-date-time-compile-macros.patch
+# fix build with gcc15
+Patch1:         dtach-gcc15.patch
 
 %description
 dtach wraps a command in a sort of process container with new

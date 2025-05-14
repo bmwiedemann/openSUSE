@@ -1,0 +1,4 @@
+<package name="python-susepubliccloudinfo" project="openSUSE:Factory">
+  <title>SUSE Public Cloud Info Client</title>
+  <description>Provides the pint (Publiccloud INformation Tracker) command to access the SUSE Public Cloud information service.</description>
+</package>

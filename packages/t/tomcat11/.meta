@@ -1,0 +1,11 @@
+<package name="tomcat11" project="openSUSE:Factory">
+  <title>Apache Servlet/JSP/EL Engine, RI for Servlet 6.1/JSP 4.0/EL 6.0 API</title>
+  <description>https://tomcat.apache.org
+Tomcat is the servlet container that is used in the official Reference
+Implementation for the Java Servlet and JavaServer Pages technologies.
+The Java Servlet and JavaServer Pages specifications are developed by
+Sun under the Java Community Process.
+
+ATTENTION: This tomcat is built with java 21.</description>
+  <url>https://tomcat.apache.org</url>
+</package>

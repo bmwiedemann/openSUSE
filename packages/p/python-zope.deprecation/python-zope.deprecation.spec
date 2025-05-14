@@ -25,6 +25,7 @@ Summary:        Zope Deprecation Infrastructure
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.deprecation
 Source:         https://files.pythonhosted.org/packages/source/z/zope.deprecation/zope_deprecation-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,22 +54,21 @@ This package contains documentation files for %{name}.
 rm -rf zope_deprecation.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd build/lib
 %pyunittest -v zope.deprecation.tests
 
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGES.rst COPYRIGHT.txt README.rst
 %dir %{python_sitelib}/zope
-%{python_sitelib}/zope.deprecation-%{version}*-info
+%{python_sitelib}/zope[_.]deprecation-%{version}*info
 %{python_sitelib}/zope.deprecation-%{version}*-nspkg.pth
 %{python_sitelib}/zope/deprecation
 

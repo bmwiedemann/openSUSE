@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  8 06:57:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.3:
+  * Reverse older commit: version.h cannot be included without breaking
+    the build (everything recompiles every time) and the release archive
+    creation (which relies on git tags).
+
+-------------------------------------------------------------------
+Thu May  8 06:56:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.2:
+  * Fix potential vulnerability similar to CVE-2020-28935
+
+-------------------------------------------------------------------
 Mon Apr  7 13:50:20 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.1:

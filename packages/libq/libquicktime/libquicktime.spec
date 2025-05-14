@@ -30,6 +30,7 @@ URL:            http://libquicktime.sf.net
 Source0:        %{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch0:         fix-gcc14-build.patch
+Patch1:         fix-gcc15-build.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake

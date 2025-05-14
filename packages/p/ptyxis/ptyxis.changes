@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  7 19:29:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.3:
+  + New build to work around GNOME CI infrastructure issue.
+- Changes from version 48.2:
+  + Fix palette selection via keyboard.
+  + Avoid saving sessions twice during shutdown which fixes an
+    issue where session state was getting cleared after destruction
+    of tabs.
+  + Make background opaque in fullscreen as Wayland forbids
+    compositors from allowing contents to bleed through fullscreen
+    surfaces anyway.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Mar 20 07:08:41 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.1:

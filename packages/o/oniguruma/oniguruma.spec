@@ -26,6 +26,7 @@ License:        BSD-2-Clause
 Group:          Development/Languages/C and C++
 URL:            https://github.com/kkos/oniguruma
 Source:         https://github.com/kkos/oniguruma/releases/download/v%{version}/onig-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 
 %description
@@ -83,31 +84,33 @@ cp -rp sample/ examples
 
 %build
 export CFLAGS="%{optflags} -g"
-%configure --enable-posix-api
-%make_build
-
-%check
-cd test
-%make_build test
+%cmake \
+  -DENABLE_POSIX_API:BOOL=ON \
+	-DBUILD_TESTS:BOOL=ON \
+	%{nil}
+%cmake_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.a" -delete -print
-find %{buildroot} -type f -name "*.la" -delete -print
+%cmake_install
+rm -fr %{buildroot}%{_datadir}/doc/onig
 
-%post -n %{lib_name} -p /sbin/ldconfig
-%postun -n %{lib_name} -p /sbin/ldconfig
+%check
+%ctest
+
+%ldconfig_scriptlets -n %{lib_name}
 
 %files -n %{lib_name}
 %{_libdir}/libonig.so.*
 
 %files devel
-%doc AUTHORS COPYING HISTORY index.html index_ja.html README
+%license COPYING
+%doc AUTHORS HISTORY index.html index_ja.html README
 %doc doc/* examples/
 %{_bindir}/onig-config
 %{_includedir}/oniguruma.h
 %{_includedir}/oniggnu.h
 %{_includedir}/onigposix.h
+%{_libdir}/cmake/%{name}/
 %{_libdir}/libonig.so
 %{_libdir}/pkgconfig/oniguruma.pc
 

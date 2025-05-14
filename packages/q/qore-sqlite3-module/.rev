@@ -61,4 +61,15 @@ new module for Qore programming language as described in: http://lists.opensuse.
 </comment>
     <requestid>1063057</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ddf5a164d2db69d7b11cffeb1dfa6f73</srcmd5>
+    <version>1.0.2</version>
+    <time>1747061416</time>
+    <user>anag_factory</user>
+    <comment>- Remove clean section
+- Add CMAKE Policy &gt;=3.5  (boo#1241902)
+- Move to %autosetup
+</comment>
+    <requestid>1276879</requestid>
+  </revision>
 </revisionlist>

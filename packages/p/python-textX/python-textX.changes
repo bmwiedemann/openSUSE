@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May 13 06:47:45 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- limit check to tests/functional as upstream does
+- update to version 4.2.2:
+ - Fixed:
+  - tests for subcommands. Click 8.2.0 now returns exit code 2 when command is not
+    correct. See [433].
+- update to version 4.2.1:
+ - Fixed:
+  - regression where textx generate/check command didn't report location info.
+  - removed encoding of unicode strings in textx exceptions.
+- update to version 4.2.0:
+ - Changed:
+  - Moved from click.echo to logging.
+
+-------------------------------------------------------------------
 Tue Oct 29 20:58:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:

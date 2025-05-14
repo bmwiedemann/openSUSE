@@ -460,4 +460,15 @@
     <comment></comment>
     <requestid>1250385</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>e8750e1c9462c2652f7b6536967ddbd4</srcmd5>
+    <version>25.1.0</version>
+    <time>1747159956</time>
+    <user>anag_factory</user>
+    <comment>- Use libalternatives instead of update-alternatives
+- Add upstream click-820.patch to make it work with latest
+  python-click
+  gh#psf/black#4577, gh#psf/black#4591, gh#psf/black#4666</comment>
+    <requestid>1276821</requestid>
+  </revision>
 </revisionlist>

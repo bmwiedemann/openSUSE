@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed May  7 09:31:29 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
+Mon May  5 17:17:57 UTC 2025 - Erico Mendonca <erico.mendonca@suse.com>
+
+- New build for 5.1.0 with latest release tarball.
+- Using standard OBS cmake macros.
+- Disabling optimizations that can cause segfaults on threading.
+- Major changes in this version (complete list in CHANGES file):
+ * New TraceObject class (cf. 5.4.25. in rexxref.pdf)
+ * 72 bugs solved
+ * 35 documentation bugs solved
+ * 36 new requests for enhancements implemented
+
+-------------------------------------------------------------------
 Thu Feb 27 03:27:41 UTC 2025 - Erico Mendonca <erico.mendonca@suse.com>
 
 - Renaming package to ooRexx to keep in sync with previous package.

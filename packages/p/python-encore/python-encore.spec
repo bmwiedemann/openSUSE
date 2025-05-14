@@ -1,7 +1,7 @@
 #
 # spec file for package python-encore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 Name:           python-encore
 Version:        0.8.0
 Release:        0
 Summary:        Low-level core modules for building Python applications
 License:        Apache-2.0 AND LGPL-2.1-only AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/enthought/encore
 Source:         https://files.pythonhosted.org/packages/source/e/encore/encore-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Recommends:     python-requests
@@ -69,10 +69,10 @@ sed -i 's/assertEquals/assertEqual/' encore/storage/tests/*.py
 sed -i 's/\\\*/*/g' encore/concurrent/futures/enhanced_thread_pool_executor.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -83,6 +83,7 @@ sed -i 's:import mock:from unittest import mock:' encore/events/tests/test_event
 %files %{python_files}
 %doc CHANGES.txt README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/encore
+%{python_sitelib}/encore-%{version}.dist-info
 
 %changelog

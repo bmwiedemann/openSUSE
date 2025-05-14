@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 07:30:57 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Fri Dec 15 22:03:01 UTC 2023 - Christophe Marin <christophe@krop.fr>
 
 - Require extra-cmake-modules at build time

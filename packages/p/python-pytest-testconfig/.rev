@@ -34,4 +34,13 @@
   * Move config loading form pytest_configure to pytest_cmdline_main</comment>
     <requestid>764064</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>18c6e318dff966f4b03b6fab1b7d712a</srcmd5>
+    <version>0.2.0</version>
+    <time>1746638374</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275113</requestid>
+  </revision>
 </revisionlist>

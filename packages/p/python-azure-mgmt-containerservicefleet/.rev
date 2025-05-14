@@ -84,4 +84,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1219857 from glaubitz)</comment>
     <requestid>1219858</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>cc3ab4cfe4992393cd6f3a6dc170370c</srcmd5>
+    <version>3.1.0</version>
+    <time>1746809511</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1276186 from glaubitz)</comment>
+    <requestid>1276196</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package alttab
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,8 @@ Summary:        Task Switcher
 License:        GPL-3.0-only
 URL:            https://github.com/sagb/alttab
 Source:         https://github.com/sagb/alttab/archive/v%{version}.tar.gz
+# https://github.com/sagb/alttab/issues/181
+Patch0:         alttab-gcc15.patch
 BuildRequires:  /usr/bin/ronn
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -37,7 +39,7 @@ BuildRequires:  uthash-devel
 alttab is a X11 window switcher designed for minimalistic window managers or standalone X11 session.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # workaround for GCC10 build failure

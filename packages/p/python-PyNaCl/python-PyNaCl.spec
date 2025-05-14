@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyNaCl
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source:         https://pypi.org/packages/source/P/PyNaCl/PyNaCl-%{version}.tar.
 # https://github.com/pyca/pynacl/commit/a8c08b18f3a2e8f2140c531afaf42715fcab68e7
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycparser}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -55,10 +56,10 @@ rm -Rf src/libsodium
 
 %build
 export SODIUM_INSTALL="system"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}
 
 %check
@@ -67,6 +68,7 @@ export SODIUM_INSTALL="system"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitearch}/*
+%{python_sitearch}/nacl
+%{python_sitearch}/[Pp]y[Nn]a[Cc]l-%{version}*-info
 
 %changelog

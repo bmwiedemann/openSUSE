@@ -1,7 +1,7 @@
 #
 # spec file for package python-CommonMark
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,12 @@ Summary:        Python parser for the CommonMark Markdown spec
 License:        BSD-3-Clause
 URL:            https://github.com/rtfd/CommonMark-py
 Source:         https://files.pythonhosted.org/packages/source/c/commonmark/commonmark-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-commonmark = %{version}
 Obsoletes:      python-commonmark < %{version}
 BuildArch:      noarch
@@ -55,10 +56,10 @@ CommonMark specification, using only native modules.
 %setup -q -n commonmark-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/cmark
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -80,7 +81,7 @@ PYTHONPATH=%{buildroot}%{python3_sitelib} python3 commonmark/tests/run_spec_test
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/commonmark
-%{python_sitelib}/commonmark-%{version}*-info
+%{python_sitelib}/commonmark-%{version}*info
 %python_alternative %{_bindir}/cmark
 
 %changelog

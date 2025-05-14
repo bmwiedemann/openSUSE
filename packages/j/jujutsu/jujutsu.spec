@@ -19,7 +19,7 @@
 %define binary_name jj
 
 Name:           jujutsu
-Version:        0.28.2
+Version:        0.29.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
@@ -119,10 +119,9 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{binary_name} util completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{binary_name}
 
 %check
+%{buildroot}/%{_bindir}/%{binary_name} --version | grep %{version}
 rm -rf tests/contest/
-# disable tests as some are failing, to get the security fix into Tumbleweed
-# https://github.com/jj-vcs/jj/issues/6241
-%{buildroot}/%{_bindir}/%{binary_name} --version
+%{cargo_test} -- --skip 'test_gpg::gpgsm_signing_roundtrip' --skip 'test_gpg::gpgsm_signing_roundtrip_explicit_key' --skip 'test_gpg::gpgsm_unknown_key'
 
 %files
 %doc README.md

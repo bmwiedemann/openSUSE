@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 11 18:56:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.0
+  * Rough approximation of MDAC saturation for the 6581.
+  * New play API for client side mixing.
+  * Minor fixes and optimizations.
+
+-------------------------------------------------------------------
 Sun Apr 13 12:13:17 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13.0

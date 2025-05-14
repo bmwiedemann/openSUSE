@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 05:32:05 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Tue Dec 17 23:27:06 UTC 2024 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 1.2.4 

@@ -34,4 +34,13 @@
   * Drop Python 3.7 support (end-of-life was June 27, 2023).</comment>
     <requestid>1158980</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>48267fed5acda44215d39dd819a23552</srcmd5>
+    <version>0.2.2</version>
+    <time>1746809362</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275958</requestid>
+  </revision>
 </revisionlist>

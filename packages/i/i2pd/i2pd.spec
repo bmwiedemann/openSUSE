@@ -21,13 +21,13 @@
 %define sysuser i2pd
 %define sysgroup i2pd
 Name:           i2pd
-Version:        2.55.0
+Version:        2.56.0
 Release:        0
 Summary:        C++ implementation of an I2P client
 License:        BSD-3-Clause
 Group:          Productivity/Networking/System
 URL:            https://i2pd.website
-Source0:        https://github.com/PurpleI2P/i2pd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/PurpleI2P/i2pd/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libminiupnpc-devel

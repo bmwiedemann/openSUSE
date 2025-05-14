@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-pybcj
-Version:        1.0.3
+Version:        1.0.6
 Release:        0
 Summary:        A bcj filter library
 License:        LGPL-2.1-or-later

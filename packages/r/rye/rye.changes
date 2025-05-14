@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 13 12:50:50 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to version 0.43.0 (bsc#1243086):
+  * Fix compatible toolchain to allow Python 3.13 by @PushUpek in #1429
+  * Ignore free-threaded CPython builds by @Alexis-D in #1437
+  * Bump bundled Ruff version to v0.8.2 by @charliermarsh in #1440
+  * Add support for Python 3.9.21, 3.10.16, 3.11.11, 3.12.8, and 3.13.1 by @github-actions in #1439
+  * Upgrade bundled uv version to v0.5.7 by @github-actions in #1424
+
+-------------------------------------------------------------------
 Sat Oct 26 13:10:22 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.42.0:

@@ -1,0 +1,178 @@
+References: bsc#1242082 - libguestfs: migration to fuse 3 and
+            deprecation of fuse (1)
+See also spec file changes to use fuse3
+
+Index: libguestfs-1.55.10/m4/guestfs-fuse.m4
+===================================================================
+--- libguestfs-1.55.10.orig/m4/guestfs-fuse.m4
++++ libguestfs-1.55.10/m4/guestfs-fuse.m4
+@@ -21,7 +21,7 @@ AC_ARG_ENABLE([fuse],
+     [],
+     [enable_fuse=yes])
+ AS_IF([test "x$enable_fuse" != "xno"],[
+-    PKG_CHECK_MODULES([FUSE],[fuse],[
++    PKG_CHECK_MODULES([FUSE],[fuse3],[
+         AC_SUBST([FUSE_CFLAGS])
+         AC_SUBST([FUSE_LIBS])
+         AC_DEFINE([HAVE_FUSE],[1],[Define to 1 if you have FUSE.])
+Index: libguestfs-1.55.10/lib/fuse.c
+===================================================================
+--- libguestfs-1.55.10.orig/lib/fuse.c
++++ libguestfs-1.55.10/lib/fuse.c
+@@ -40,7 +40,7 @@
+ #define ENOATTR ENODATA
+ #endif
+ 
+-#define FUSE_USE_VERSION 26
++#define FUSE_USE_VERSION 30
+ 
+ #include <fuse.h>
+ #include <fuse_lowlevel.h>
+@@ -115,7 +115,7 @@ copy_xattr_list (guestfs_h *g, const str
+ 
+ static int
+ mount_local_readdir (const char *path, void *buf, fuse_fill_dir_t filler,
+-                     off_t offset, struct fuse_file_info *fi)
++                     off_t offset, struct fuse_file_info *fi, enum fuse_readdir_flags flags)
+ {
+   time_t now;
+   size_t i;
+@@ -154,7 +154,7 @@ mount_local_readdir (const char *path, v
+      * not quite sure how this is ever supposed to work on large
+      * directories. XXX
+      */
+-    if (filler (buf, ents->val[i].name, &stat, 0))
++    if (filler (buf, ents->val[i].name, &stat, 0, flags))
+       break;
+   }
+ 
+@@ -250,7 +250,7 @@ mount_local_readdir (const char *path, v
+ }
+ 
+ static int
+-mount_local_getattr (const char *path, struct stat *statbuf)
++mount_local_getattr (const char *path, struct stat *statbuf, struct fuse_file_info *fi)
+ {
+   const struct stat *buf;
+   CLEANUP_FREE_STAT struct guestfs_statns *r = NULL;
+@@ -304,6 +304,7 @@ mount_local_access (const char *path, in
+   struct stat statbuf;
+   int r;
+   struct fuse_context *fuse;
++  struct fuse_file_info fi;
+   int ok = 1;
+   DECL_G ();
+   DEBUG_CALL ("%s, %d", path, mask);
+@@ -311,7 +312,7 @@ mount_local_access (const char *path, in
+   if (g->ml_read_only && (mask & W_OK))
+     return -EROFS;
+ 
+-  r = mount_local_getattr (path, &statbuf);
++  r = mount_local_getattr (path, &statbuf, &fi);
+   if (r < 0 || mask == F_OK) {
+     debug (g, "%s: mount_local_getattr returned r = %d", path, r);
+     return r;
+@@ -490,7 +491,7 @@ mount_local_symlink (const char *from, c
+ }
+ 
+ static int
+-mount_local_rename (const char *from, const char *to)
++mount_local_rename (const char *from, const char *to, unsigned int flags)
+ {
+   int r;
+   DECL_G ();
+@@ -528,7 +529,7 @@ mount_local_link (const char *from, cons
+ }
+ 
+ static int
+-mount_local_chmod (const char *path, mode_t mode)
++mount_local_chmod (const char *path, mode_t mode, struct fuse_file_info *fi)
+ {
+   int r;
+   DECL_G ();
+@@ -546,7 +547,7 @@ mount_local_chmod (const char *path, mod
+ }
+ 
+ static int
+-mount_local_chown (const char *path, uid_t uid, gid_t gid)
++mount_local_chown (const char *path, uid_t uid, gid_t gid, struct fuse_file_info *fi)
+ {
+   int r;
+   DECL_G ();
+@@ -564,7 +565,7 @@ mount_local_chown (const char *path, uid
+ }
+ 
+ static int
+-mount_local_truncate (const char *path, off_t size)
++mount_local_truncate (const char *path, off_t size, struct fuse_file_info *fi)
+ {
+   int r;
+   DECL_G ();
+@@ -582,7 +583,7 @@ mount_local_truncate (const char *path,
+ }
+ 
+ static int
+-mount_local_utimens (const char *path, const struct timespec ts[2])
++mount_local_utimens (const char *path, const struct timespec ts[2], struct fuse_file_info *fi)
+ {
+   int r;
+   time_t atsecs, mtsecs;
+@@ -1005,32 +1006,26 @@ guestfs_impl_mount_local (guestfs_h *g,
+       goto arg_error;
+   }
+ 
+-  debug (g, "%s: fuse_mount %s", __func__, localmountpoint);
+-
+-  /* Create the FUSE mountpoint. */
+-  ch = fuse_mount (localmountpoint, &args);
+-  if (ch == NULL) {
+-    error (g, _("fuse_mount failed: %s, see error messages above"),
+-           localmountpoint);
+-    fuse_opt_free_args (&args);
+-    guestfs_int_free_fuse (g);
+-    return -1;
+-  }
+-
+-  /* Set F_CLOEXEC on the channel.  XXX libfuse should do this. */
+-  fd = fuse_chan_fd (ch);
+-  if (fd >= 0)
+-    set_cloexec_flag (fd, 1);
+-
+   debug (g, "%s: fuse_new", __func__);
+ 
+   /* Create the FUSE handle. */
+-  g->fuse = fuse_new (ch, &args,
++  g->fuse = fuse_new (&args,
+                       &mount_local_operations, sizeof mount_local_operations,
+                       g);
+   if (!g->fuse) {
+     perrorf (g, _("fuse_new: %s"), localmountpoint);
+-    fuse_unmount (localmountpoint, ch);
++    fuse_opt_free_args (&args);
++    guestfs_int_free_fuse (g);
++    return -1;
++  }
++
++  debug (g, "%s: fuse_mount %s", __func__, localmountpoint);
++
++  /* Create the FUSE mountpoint. */
++  if (fuse_mount (g->fuse, localmountpoint) == -1) {
++    error (g, _("fuse_mount failed: %s, see error messages above"),
++           localmountpoint);
++    fuse_destroy(g->fuse);
+     fuse_opt_free_args (&args);
+     guestfs_int_free_fuse (g);
+     return -1;
+Index: libguestfs-1.55.10/fuse/guestmount.c
+===================================================================
+--- libguestfs-1.55.10.orig/fuse/guestmount.c
++++ libguestfs-1.55.10/fuse/guestmount.c
+@@ -16,7 +16,7 @@
+  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+  */
+ 
+-#define FUSE_USE_VERSION 26
++#define FUSE_USE_VERSION 30
+ 
+ #include <config.h>
+ 

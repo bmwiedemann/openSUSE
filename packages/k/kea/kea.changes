@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Apr 30 13:21:39 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update owner and perms in %post on modified config files
+
+-------------------------------------------------------------------
+Tue Apr 15 11:01:25 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Add logic to %post for switching from kea.service to the new
+  split units, kea-*.service.
+  (Inspiration taken from strongswan.spec.)
+
+-------------------------------------------------------------------
+Wed Apr  2 15:29:59 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Split off services into separate ones to allow more fine grained
+  control for e.g. capabilities.
+- Tighten access to state and log directories.
+
+-------------------------------------------------------------------
 Wed Mar 26 16:01:54 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to release 2.6.2

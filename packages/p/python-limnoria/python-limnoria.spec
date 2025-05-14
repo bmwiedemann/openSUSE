@@ -17,7 +17,7 @@
 
 
 Name:           python-limnoria
-Version:        2024.10.19
+Version:        2025.5.3
 Release:        0
 Summary:        A modified version of Supybot (an IRC bot and framework)
 License:        BSD-3-Clause

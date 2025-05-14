@@ -82,8 +82,8 @@ BuildRequires:  check-devel
 # dconf and gnome-session-core are needed for directory ownership
 BuildRequires:  dconf
 BuildRequires:  fdupes
-BuildRequires:  gnome-common
 BuildRequires:  gnome-session-core
+BuildRequires:  itstool
 BuildRequires:  meson >= 0.57
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig

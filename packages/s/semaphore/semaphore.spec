@@ -17,7 +17,7 @@
 
 
 Name:           semaphore
-Version:        2.14.7
+Version:        2.14.10
 Release:        0
 Summary:        Modern UI for Ansible
 License:        MIT
@@ -56,6 +56,7 @@ BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || dat
 go build \
    -mod=vendor \
    -buildmode=pie \
+   -tags "netgo" \
    -ldflags=" \
    -X github.com/semaphoreui/semaphore/util.Ver=v%{version} \
    -X github.com/semaphoreui/semaphore/util.Commit=${COMMIT_HASH:0:8} \
@@ -64,7 +65,7 @@ go build \
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the configuration directory
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/%{name}/

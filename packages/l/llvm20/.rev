@@ -52,4 +52,15 @@
 - Rebase llvm-do-not-install-static-libraries.patch.</comment>
     <requestid>1270294</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3f0934d798ab0de4caf050925b561825</srcmd5>
+    <version>20.1.4</version>
+    <time>1746542304</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20.1.4.
+  * This release contains bug-fixes for the LLVM 20.1.0 release.
+    This release is API and ABI compatible with 20.1.0.
+- Rebase llvm-do-not-install-static-libraries.patch.</comment>
+    <requestid>1274226</requestid>
+  </revision>
 </revisionlist>

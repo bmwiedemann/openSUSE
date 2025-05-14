@@ -247,4 +247,15 @@
   * import: match login by tty if non-zero pid does not match</comment>
     <requestid>1273031</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>70314daaef4d88913a442737db384181</srcmd5>
+    <version>0.74.0+git20250509.272b109</version>
+    <time>1747061148</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74.0+git20250509.272b109:
+  * libwtmpdb: enhance/unify error messages
+
+- Fix summary of libwtmpdb subpackage</comment>
+    <requestid>1276112</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 12 05:56:15 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 138.0.1
+  * Fixed an issue which caused a blank page to be shown for Home
+    and New Tab pages for some users. (bmo#1963537)
+  * Added a workaround for a bug in outlook.office.com/outlook.live.com
+    where attachment filenames are incorrectly prefixed with UTF-8
+    when saved. (bmo#1961710)
+
+-------------------------------------------------------------------
+Sat May 10 18:26:26 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build on s390x needs 15G memory, adjust _constraints
+
+-------------------------------------------------------------------
 Tue Apr 29 20:49:17 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 138.0

@@ -228,4 +228,12 @@
 - update to 4.6.0 (CVE-2020-13757 bsc#1172389):</comment>
     <requestid>1116020</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d3b3dd691d1aee9dfd4a8893de79fe32</srcmd5>
+    <version>4.9.1</version>
+    <time>1746542343</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274401</requestid>
+  </revision>
 </revisionlist>

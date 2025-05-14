@@ -244,4 +244,16 @@
     pattern (Issue #292)</comment>
     <requestid>1234315</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>5b8071a1d37a47c2e809996c5dd6293a</srcmd5>
+    <version>6.9.10</version>
+    <time>1747061152</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1276180 from badshah400
+
+* Build using cmake (needed to support apps which depend on this and use cmake find_package to find the library).
+* Use %ldconfig_scriptlets macro for post(un) ldconfig update.
+* Use %license to package COPYING file.</comment>
+    <requestid>1276270</requestid>
+  </revision>
 </revisionlist>

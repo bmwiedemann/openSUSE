@@ -1,7 +1,7 @@
 #
 # spec file for package snapraid
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           snapraid
-Version:        12.3
+Version:        12.4
 Release:        0
 Summary:        Disk array backup for many large rarely-changed files
 License:        GPL-3.0-or-later
@@ -38,6 +38,9 @@ lot of big files that rarely change.
 %configure
 %make_build
 
+%check
+%make_build check
+
 %install
 %make_install
 sed -i '/^#/! s/^/#/' snapraid.conf.example
@@ -45,9 +48,9 @@ install -Dm 0644 snapraid.conf.example %{buildroot}%{_sysconfdir}/snapraid.conf
 
 %files
 %license COPYING
-%doc HISTORY README AUTHORS
+%doc HISTORY README AUTHORS %{name}.txt
 %config %{_sysconfdir}/snapraid.conf
 %{_bindir}/snapraid
-%{_mandir}/man1/snapraid.1*
+%{_mandir}/man1/snapraid.1%{?ext_man}
 
 %changelog

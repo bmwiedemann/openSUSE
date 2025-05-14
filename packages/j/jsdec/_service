@@ -1,0 +1,24 @@
+<services>
+    <service name="format_spec_file" mode="manual" />
+
+    <service name="obs_scm" mode="manual">
+        <param name="filename">jsdec</param>
+        <param name="url">https://github.com/rizinorg/jsdec.git</param>
+        <param name="scm">git</param>
+        <param name="revision">v0.7.0</param>
+        <param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">v(.+)</param>
+    </service>
+    <service name="obs_scm" mode="manual">
+        <param name="filename">quickjs</param>
+        <param name="url">https://github.com/frida/quickjs.git</param>
+        <param name="scm">git</param>
+        <param name="revision">c81f05c9859cea5f83a80057416a0c7affe9b876</param>
+    </service>
+
+    <service name="tar" mode="buildtime"></service>
+    <service name="recompress" mode="buildtime">
+      <param name="compression">gz</param>
+      <param name="file">*.tar</param>
+    </service>
+</services>

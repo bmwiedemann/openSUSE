@@ -467,4 +467,12 @@ feat: use _service files to automate fetching sources</comment>
  * Update translations for Greek</comment>
     <requestid>1200671</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>2ead297b75d883866c8a9bb1c6e0d6a2</srcmd5>
+    <version>1.17.8</version>
+    <time>1746638253</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274973</requestid>
+  </revision>
 </revisionlist>

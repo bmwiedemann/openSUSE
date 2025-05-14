@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:26 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Fix behaviour change in Qt 6.10 regarding QCalendar::daysInMonth
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:59 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

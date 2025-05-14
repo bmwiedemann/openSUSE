@@ -97,4 +97,12 @@
     <comment>- Add update-vendor.patch, fix CVE-2024-45337 and boo#1234582 (forwarded request 1230992 from hillwood)</comment>
     <requestid>1230993</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a47cddb080288ef81de890b4a0eb08b0</srcmd5>
+    <version>2025.4.2</version>
+    <time>1746476798</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274231</requestid>
+  </revision>
 </revisionlist>

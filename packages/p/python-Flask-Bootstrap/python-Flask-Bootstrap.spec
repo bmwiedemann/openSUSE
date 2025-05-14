@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Bootstrap
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,21 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Bootstrap
 Version:        3.3.7.1
 Release:        0
 Summary:        An extension that includes Bootstrap in your project
-License:        BSD-2-Clause AND Apache-2.0
-Group:          Development/Languages/Python
+License:        Apache-2.0 AND BSD-2-Clause
 URL:            http://github.com/mbr/flask-bootstrap
 Source:         https://github.com/mbr/flask-bootstrap/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module dominate}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module visitor}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.8
@@ -53,10 +53,10 @@ rm tests/test_sample_app.py
 rm tests/test_versions_match.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,7 @@ rm tests/test_versions_match.py
 %files %{python_files}
 %license LICENSE
 %doc README.rst CHANGES
-%{python_sitelib}/*
+%{python_sitelib}/flask_bootstrap
+%{python_sitelib}/[Ff]lask[_-][Bb]ootstrap-%{version}.dist-info
 
 %changelog

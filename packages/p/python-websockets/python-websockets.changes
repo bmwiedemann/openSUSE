@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue May  6 09:28:40 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Skip flaky tests for s390x
+- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 50 to fix flaky tests in
+  different architectures, bsc#1242254
+
+-------------------------------------------------------------------
+Fri Feb 14 12:10:52 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 14.2
+  * Added support for regular expressions in the origins argument of serve()
+  * Wrapped errors when reading the opening handshake request or response in 
+    InvalidMessage so that connect() raises InvalidHandshake or a subclass 
+    when the opening handshake fails
+  * Fixed recv() with timeout=0 in the threading implementation. If a message 
+    is already received, it is returned. Previously, TimeoutError was 
+    raised incorrectly
+  * Fixed a crash in the asyncio implementation when cancelling a ping then 
+    receiving the corresponding pong
+  * Prevented close() from blocking when the network becomes unavailable or 
+    when receive buffers are saturated in the asyncio and threading 
+    implementations
+- Update to 14.1
+  * Supported max_queue=None in the asyncio and threading implementations 
+    for consistency with the legacy implementation, even though this is 
+    never a good idea
+  * Added close_code and close_reason attributes in the asyncio and 
+    threading implementations for consistency with the legacy implementation
+  * Once the connection is closed, messages previously received and buffered 
+    can be read in the asyncio and threading implementations, just like in 
+    the legacy implementation
+- Update to 14.0
+  * Added an option to receive text frames as bytes, without decoding, in 
+    the threading implementation; also binary frames as str
+  * Added an option to send bytes in a text frame in the asyncio and 
+    threading implementations; also str in a binary frame
+  * The threading implementation receives messages faster.
+  * Sending or receiving large compressed messages is now faster.
+  * Errors when a fragmented message is too large are clearer.
+  * Log messages at the WARNING and INFO levels no longer include 
+    stack traces.
+  * Clients no longer crash when the server rejects the opening handshake 
+    and the HTTP response doesn’t Include a Content-Length header.
+  * Returning an HTTP response in process_request or process_response 
+    doesn’t generate a log message at the ERROR level anymore.
+  * Connections are closed with code 1007 (invalid data) when receiving 
+    invalid UTF-8 in a text frame.
+
+-------------------------------------------------------------------
 Tue Oct 29 16:04:09 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 13.1

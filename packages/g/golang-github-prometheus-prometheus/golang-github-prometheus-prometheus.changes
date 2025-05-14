@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May  3 11:49:47 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.3.1:
+  * [BUGFIX] Azure SD: Fix panic on malformed log message. #16434
+    #16210
+  * [BUGFIX] Config: Update GOGC before loading TSDB. #16491
+
+-------------------------------------------------------------------
 Fri Apr 18 15:09:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.3.0:

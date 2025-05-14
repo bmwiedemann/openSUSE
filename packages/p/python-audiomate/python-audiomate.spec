@@ -1,7 +1,7 @@
 #
 # spec file for package python-audiomate
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        6.0.0
 Release:        0
 Summary:        A library for working with audio datasets
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/ynop/audiomate
 Source0:        https://files.pythonhosted.org/packages/source/a/audiomate/audiomate-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PGet >= 0.5.0
@@ -51,10 +52,10 @@ audio datasets.
 sed -i "s/'pytest-runner'//" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Test files not present
@@ -67,6 +68,8 @@ sed -i "s/'pytest-runner'//" setup.py
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/audiomate
+%{python_sitelib}/bench
+%{python_sitelib}/audiomate-%{version}.dist-info
 
 %changelog

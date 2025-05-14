@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun May  4 12:59:48 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.23.2
+  * local-tun: Fixes panic when resizing cached buffers
+  * local-tun: Enable congestion control algorithm for TCP connections
+  * local-tun: Disable TCP package receive checksum for improving performance
+  * local-tun: Buffer for receiving/sending packets from/to tun device are 
+    cached globally
+  * Fix some issues
+
+-------------------------------------------------------------------
 Mon Apr  7 09:33:03 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - Update version to 1.23.0

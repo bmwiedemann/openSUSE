@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 05:14:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files, correcting parsed version.
+
+-------------------------------------------------------------------
 Wed May  9 23:43:30 UTC 2018 - toddrme2178@gmail.com
 
 - Use license tag

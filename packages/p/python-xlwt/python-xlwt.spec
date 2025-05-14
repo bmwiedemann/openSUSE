@@ -1,7 +1,7 @@
 #
 # spec file for package python-xlwt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,13 @@ Name:           python-xlwt
 Version:        1.3.0
 Release:        0
 Summary:        Library to Create Spreadsheet Files Compatible With MS Excel 97/2000/XP/2003
-License:        BSD-4-Clause AND BSD-3-Clause AND LGPL-2.1-or-later
-Group:          Development/Languages/Python
-URL:            https://secure.simplistix.co.uk/svn/xlwt/trunk
-Source:         https://files.pythonhosted.org/packages/source/x/xlwt/xlwt-%{version}.tar.gz
+License:        BSD-3-Clause AND BSD-4-Clause AND LGPL-2.1-or-later
+URL:            https://github.com/python-excel/xlwt
+Source0:        https://files.pythonhosted.org/packages/source/x/xlwt/xlwt-%{version}.tar.gz
+Source1:        https://raw.githubusercontent.com/python-excel/xlwt/refs/heads/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
@@ -48,13 +50,14 @@ Python 2.3 to 2.6. xlwt is a fork of pyExcelerator.
 %setup -q -n xlwt-%{version}
 # fix end of line encoding
 sed -i 's/\r$//' examples/{numbers_demo.py,panes2.py,image_chg_col_wid.py,zoom_magnification.py}
+cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 cd docs && make html && rm _build/html/.buildinfo
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with tests}
@@ -66,6 +69,8 @@ cd docs && make html && rm _build/html/.buildinfo
 %doc README.rst
 %doc docs/_build/html/
 %doc examples/
-%{python_sitelib}/*
+%license LICENSE
+%{python_sitelib}/xlwt
+%{python_sitelib}/xlwt-%{version}.dist-info
 
 %changelog

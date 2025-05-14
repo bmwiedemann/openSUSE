@@ -83,4 +83,12 @@
 - Install pytxis as new default terminal, remove gnome-terminal</comment>
     <requestid>1208125</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>11a3fa59da40a56b7dcceebec1da4e94</srcmd5>
+    <version>1.0</version>
+    <time>1746638186</time>
+    <user>dimstar_suse</user>
+    <comment>- Use systemd-boot</comment>
+    <requestid>1274009</requestid>
+  </revision>
 </revisionlist>

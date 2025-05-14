@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:23:52 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n(ar): add translations
+  * Create cosmic_bg.ftl - Add Swedish Translation
+  * i18n (pt-BR) update translations
+  * feat: match against directories in $XDG_DATA_DIRS to check for backgrounds
+  * i18n(ro): Add Romanian translation
+  * Create cosmic_bg.ftl
+  * fix(l18n): Ensure COSMIC is properly cased
+  * Update .desktop entry, capitalize COSMIC correctly, translate to Polish
+  * fix: use valid license identifiers
+  * i18n(zh-TW): add zh-TW translation
+  * i18n(ja): add ja translation
+
+-------------------------------------------------------------------
 Sat Feb 22 02:37:10 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

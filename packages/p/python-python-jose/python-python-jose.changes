@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  6 17:27:12 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Update to 3.4.0
+  * Remove support for Python 3.6 and 3.7
+  * Added support for Python 3.10 and 3.11
+  * Updating CryptographyAESKey::encrypt to generate 96 bit IVs for
+    GCM block cipher mode
+  * Fix for PEM key comparisons caused by line lengths and new lines
+  * Fix for CVE-2024-33664 - JWE limited to 250KiB
+  * Fix for CVE-2024-33663 - signing JWT with public key is now forbidden
+  * Replace usage of deprecated datetime.utcnow() with datetime.now(UTC)
+- Removed patches CVE-2024-33663.patch,  CVE-2024-33664.patch,
+  fix-tests-ecdsa-019.patch, and unpin-deps.patch as they have been
+  incorporated into release 3.4.0
+
+-------------------------------------------------------------------
 Mon Jun  3 07:38:00 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update CVE-2024-33664.patch with upstream

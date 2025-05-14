@@ -2,6 +2,7 @@
 # spec file for package libbfoverlay
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +32,7 @@ BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libbfio) >= 20240414
 BuildRequires:  pkgconfig(libcdata) >= 20240414
 BuildRequires:  pkgconfig(libcerror) >= 20240413

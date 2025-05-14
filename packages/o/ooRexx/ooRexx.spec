@@ -1,7 +1,7 @@
 #
-# spec file for package oorexx
+# spec file for package ooRexx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define _rexxpath %{_datadir}/ooRexx
 Name:           ooRexx
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Open Object REXX
 License:        CPL-1.0
 Group:          Development/Languages/Other
 URL:            https://www.rexxla.org
-Source:         https://master.dl.sourceforge.net/project/oorexx/oorexx/5.0.0/oorexx-5.0.0-12583.tar.gz
-Source1:        %{name}-rpmlintrc
+Source0:        https://master.dl.sourceforge.net/project/oorexx/oorexx/5.1.0/oorexx-5.1.0-12973.tar.gz
+Source1:        ooRexx-rpmlintrc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
@@ -32,6 +33,7 @@ Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
 Obsoletes:      ooRexx <= 4.2.0
 Provides:       ooRexx = %{version}
+Requires:       liboorexx4 = %{version}
 
 %description
 Open Object Rexx is an object-oriented scripting language. The language is designed for both beginners and experienced Rexx programmers. It is easy to learn and use, and provides an excellent vehicle to enter the
@@ -58,22 +60,24 @@ Development files for Open Object Rexx. These are intended for developing REXX e
 Library files for Open Object Rexx.
 
 %prep
-mkdir -p src build
-tar -C src -xvzf %{SOURCE0}
+%autosetup -n oorexx-5.1.0-12973
 
 %build
-cd build
-
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 # reproducible builds: https://sourceforge.net/p/oorexx/bugs/1712/
 setarch -R
 
-# FIXME: you should use the %%cmake macros
-cmake -S ../src -DORX_REXXPATH=%{_rexxpath} -DORX_SHEBANG=%{_bindir}/rexx -DBUILD_RPM=1 -DCMAKE_INSTALL_PREFIX=%{_prefix}
-%make_build -O -j 2
+# disable optimizations that could cause segfaults in REXX threading
+export CFLAGS="-Og"
+export CXXFLAGS="-Og"
+
+%cmake -DORX_REXXPATH=%{_rexxpath} -DORX_SHEBANG=%{_bindir}/rexx -DBUILD_RPM=1
+%cmake_build
 
 %install
-cd build
-%make_install
+%cmake_install
 
 # create a pkgconfig file
 mkdir -p %{buildroot}%{_datadir}/pkgconfig
@@ -87,9 +91,9 @@ includedir=%{_includedir}
 %{name}_major=$(echo %{version} | cut -d. -f1)
 %{name}_minor=$(echo %{version} | cut -d. -f2)
 
-Name: %{name}
+Name:           %{name}
 Description: Open Object Rexx
-Version: %{version}
+Version:        %{version}
 Libs: -L\${libdir} -lrexx -lrexxapi
 Cflags: -I\${includedir}
 EOF
@@ -149,7 +153,6 @@ fi
 %post -n liboorexx4 -p /sbin/ldconfig
 %postun -n liboorexx4 -p /sbin/ldconfig
 
-%changelog
 %files
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/48x48

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Mar 25 10:18:19 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add lightdm.service to prepare for systemd control of display
+  manager choice
+
+-------------------------------------------------------------------
 Mon Aug  25 13:51:43 UTC 2024 - sb56637 <mxoo28j7@duck.com>
 
 - Added /usr/sbin/nologin to hidden-shells to prevent "Dynamic User" from appearing in user list

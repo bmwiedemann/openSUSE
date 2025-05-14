@@ -1,8 +1,8 @@
-Index: qcdloop-2.0.5b1/src/types.cc
+Index: qcdloop-2.1.0/src/types.cc
 ===================================================================
---- qcdloop-2.0.5b1.orig/src/types.cc
-+++ qcdloop-2.0.5b1/src/types.cc
-@@ -13,7 +13,7 @@ namespace std
+--- qcdloop-2.1.0.orig/src/types.cc
++++ qcdloop-2.1.0/src/types.cc
+@@ -14,7 +14,7 @@ namespace std
    {
       char buf[200];
       std::ostringstream format;

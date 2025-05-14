@@ -43,11 +43,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/script/execute.c    |  7 ----
  4 files changed, 154 insertions(+), 28 deletions(-)
 
-diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
-index c9eda889ca..091450e53c 100644
 --- a/grub-core/normal/main.c
 +++ b/grub-core/normal/main.c
-@@ -365,21 +365,6 @@ grub_normal_execute (const char *config, int nested, int batch)
+@@ -365,21 +365,6 @@
      {
        menu = read_config_file (config);
  
@@ -69,16 +67,15 @@ index c9eda889ca..091450e53c 100644
        /* Ignore any error.  */
        grub_errno = GRUB_ERR_NONE;
      }
-@@ -393,7 +378,50 @@ grub_normal_execute (const char *config, int nested, int batch)
+@@ -393,7 +378,50 @@
      {
        if (menu && menu->size)
  	{
--
 +#ifdef GRUB_MACHINE_IEEE1275
 +	  char *entry_id = NULL;
 +	  char *delim;
 +	  const char *chosen;
-+
+ 
 +	  if (grub_ieee1275_cas_reboot (&entry_id) != 0)
 +	    goto enter_menu;
 +
@@ -121,21 +118,19 @@ index c9eda889ca..091450e53c 100644
  	  grub_boot_time ("Entering menu");
  	  grub_show_menu (menu, nested, 0);
  	  if (nested)
-diff --git a/grub-core/normal/menu.c b/grub-core/normal/menu.c
-index dfdf0c7268..897da6abac 100644
 --- a/grub-core/normal/menu.c
 +++ b/grub-core/normal/menu.c
-@@ -33,6 +33,9 @@
+@@ -32,6 +32,9 @@
+ #include <grub/script_sh.h>
  #include <grub/gfxterm.h>
  #include <grub/dl.h>
- #include <grub/crypttab.h>
 +#ifdef GRUB_MACHINE_IEEE1275
 +#include <grub/ieee1275/ieee1275.h>
 +#endif
  
  /* Time to delay after displaying an error message about a default/fallback
     entry failing to boot.  */
-@@ -318,8 +321,31 @@ grub_menu_execute_entry(grub_menu_entry_t entry, int auto_boot)
+@@ -317,8 +320,31 @@
      grub_env_set ("default", ptr + 1);
    else
      grub_env_unset ("default");
@@ -167,7 +162,7 @@ index dfdf0c7268..897da6abac 100644
  
    if (errs_before != grub_err_printed_errors)
      grub_wait_after_message ();
-@@ -327,8 +353,23 @@ grub_menu_execute_entry(grub_menu_entry_t entry, int auto_boot)
+@@ -326,8 +352,23 @@
    errs_before = grub_err_printed_errors;
  
    if (grub_errno == GRUB_ERR_NONE && grub_loader_is_loaded ())
@@ -193,8 +188,6 @@ index dfdf0c7268..897da6abac 100644
  
    if (errs_before != grub_err_printed_errors)
      grub_wait_after_message ();
-diff --git a/grub-core/normal/menu_entry.c b/grub-core/normal/menu_entry.c
-index 06682a396d..bbd05e5638 100644
 --- a/grub-core/normal/menu_entry.c
 +++ b/grub-core/normal/menu_entry.c
 @@ -29,6 +29,9 @@
@@ -207,7 +200,7 @@ index 06682a396d..bbd05e5638 100644
  
  enum update_mode
    {
-@@ -78,6 +81,9 @@ struct screen
+@@ -78,6 +81,9 @@
    int completion_shown;
  
    int submenu;
@@ -217,7 +210,7 @@ index 06682a396d..bbd05e5638 100644
  
    struct per_term_screen *terms;
    unsigned nterms;
-@@ -578,6 +584,9 @@ destroy_screen (struct screen *screen)
+@@ -578,6 +584,9 @@
    grub_free (screen->killed_text);
    grub_free (screen->lines);
    grub_free (screen->terms);
@@ -227,7 +220,7 @@ index 06682a396d..bbd05e5638 100644
    grub_free (screen);
  }
  
-@@ -599,6 +608,11 @@ make_screen (grub_menu_entry_t entry)
+@@ -599,6 +608,11 @@
    screen->lines = grub_malloc (sizeof (struct line));
    if (! screen->lines)
      goto fail;
@@ -239,7 +232,7 @@ index 06682a396d..bbd05e5638 100644
  
    /* Initialize the first line which must be always present.  */
    if (! init_line (screen, screen->lines))
-@@ -1215,14 +1229,64 @@ run (struct screen *screen)
+@@ -1215,14 +1229,64 @@
      script[size] = '\0';
    }
    grub_script_execute_new_scope (script, 0, dummy);
@@ -307,8 +300,6 @@ index 06682a396d..bbd05e5638 100644
  
    if (screen->submenu)
      {
-diff --git a/grub-core/script/execute.c b/grub-core/script/execute.c
-index dab8fd2aeb..14ff09094f 100644
 --- a/grub-core/script/execute.c
 +++ b/grub-core/script/execute.c
 @@ -28,9 +28,6 @@
@@ -321,7 +312,7 @@ index dab8fd2aeb..14ff09094f 100644
  
  /* Max digits for a char is 3 (0xFF is 255), similarly for an int it
     is sizeof (int) * 3, and one extra for a possible -ve sign.  */
-@@ -886,10 +883,6 @@ grub_script_execute_sourcecode (const char *source)
+@@ -886,10 +883,6 @@
    grub_err_t ret = 0;
    struct grub_script *parsed_script;
  
@@ -332,6 +323,3 @@ index dab8fd2aeb..14ff09094f 100644
    while (source)
      {
        char *line;
--- 
-2.49.0
-

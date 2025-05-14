@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Apr 30 14:21:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.0:
+  * Add one more QUADMATH lookup path [gh#scarrazza/qcdloop#31].
+  * Add support for aarch64 [gh#scarrazza/qcdloop#34].
+- Changes from version 2.0.11:
+  * fix: Allow for environment override of CMAKE_CXX_FLAGS
+    [gh#scarrazza/qcdloop#29].
+- Changes from version 2.0.10:
+  * Fix an off-by-one error in Tools::ddilog
+    [gh#scarrazza/qcdloop#24].
+  * fix: Use 'grep -E' over 'egrep' [gh#scarrazza/qcdloop#25].
+  * Small cmake updates [gh#scarrazza/qcdloop#23].
+- Drop patches incorporated upstream:
+  * qcdloop-quadmath-linking.patch
+  * qcdloop-remove-march-mtune-flags.patch
+- Re-base qcdloop-soversion.patch for update.
+- Allow building for aarch64 as this is now allowed by upstream
+  [gh#scarrazza/qcdloop#34]; still no support for ppc or power64,
+  so these remain excluded.
+- Implement %check section to run tests (only for %ix86, x86_64).
+
+-------------------------------------------------------------------
 Tue Dec  6 10:10:40 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.0.9:

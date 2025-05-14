@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyDispatcher
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-PyDispatcher
 Version:        2.0.7
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Multi-producer-multi-consumer signal dispatching mechanism
 License:        BSD-3-Clause
 URL:            https://github.com/mcfletch/pydispatcher
 Source:         https://files.pythonhosted.org/packages/source/P/PyDispatcher/PyDispatcher-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,14 +46,15 @@ to reference instance methods using weak-references.
 %setup -q -n PyDispatcher-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license license.txt
-%{python_sitelib}/*
+%{python_sitelib}/pydispatch
+%{python_sitelib}/[Pp]y[Dd]ispatcher-%{version}*-info
 
 %changelog

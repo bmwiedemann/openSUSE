@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May  9 11:36:43 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.7.0
+ * Hashes used by test suite are now platform-agnostic
+ * Drop support for Python < 3.8
+- Enable test suite
+
+-------------------------------------------------------------------
 Sun May 21 12:16:43 UTC 2023 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.6.1

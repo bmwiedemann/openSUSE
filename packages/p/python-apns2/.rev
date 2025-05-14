@@ -23,4 +23,12 @@
     <comment>- Add patch use-httpx.patch to drop dependency on unmaintained hyper.</comment>
     <requestid>1038550</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>5250f3a83f9525f539fb33b0025410c3</srcmd5>
+    <version>0.7.2</version>
+    <time>1747159765</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277192</requestid>
+  </revision>
 </revisionlist>

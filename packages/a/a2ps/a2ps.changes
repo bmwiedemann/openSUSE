@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 10:43:29 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://savannah.gnu.org/bugs/?66678
+  + a2ps-gcc15.patch
+
+-------------------------------------------------------------------
 Tue May 21 08:06:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Updated to 4.15.6 (boo#1224770)

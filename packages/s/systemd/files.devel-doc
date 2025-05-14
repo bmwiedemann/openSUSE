@@ -284,6 +284,9 @@
 %{_mandir}/man3/sd_bus_message_close_container.3.gz
 %{_mandir}/man3/sd_bus_message_copy.3.gz
 %{_mandir}/man3/sd_bus_message_dump.3.gz
+%if %{with upstream}
+%{_mandir}/man3/sd_bus_message_dump_json.3.gz
+%endif
 %{_mandir}/man3/sd_bus_message_enter_container.3.gz
 %{_mandir}/man3/sd_bus_message_exit_container.3.gz
 %{_mandir}/man3/sd_bus_message_get_allow_interactive_authorization.3.gz
@@ -723,6 +726,11 @@
 %if %{with upstream}
 %{_mandir}/man3/sd_varlink_get_description.3.gz
 %{_mandir}/man3/sd_varlink_set_description.3.gz
+%{_mandir}/man3/sd_varlink_push_fd.3.gz
+%{_mandir}/man3/sd_varlink_push_dup_fd.3.gz
+%{_mandir}/man3/sd_varlink_send.3.gz
+%{_mandir}/man3/sd_varlink_sendb.3.gz
+%{_mandir}/man3/sd_varlink_sendbo.3.gz
 %endif
 %{_mandir}/man3/sd_watchdog_enabled.3.gz
 %{_mandir}/man3/udev_device_get_action.3.gz

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  5 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (3.0.0)
+  * add support for CSD window
+  * add --enable-only-gtkx and --disable-gtkx options
+  * add headerbar for CSD window
+  * stop spinner and remove -n option
+  * add bash autocomplete script
+
+-------------------------------------------------------------------
 Fri Apr  4 20:00:00 UTC 2025 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (2.9.0)

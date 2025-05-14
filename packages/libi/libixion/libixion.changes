@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Apr 10 19:51:52 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add libixion-0.19.0-gcc15-cstdint.patch to fix gcc15 compile time
+  error
+
+-------------------------------------------------------------------
 Tue Jan 14 00:51:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change to fix failure with -Werror=undef:

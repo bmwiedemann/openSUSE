@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:28 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Make mode filters work on the bwegt EFA endpoint
+  * Treat neither a positive nor a negative cache hit as missing backend
+  * Adapt test data to different storage format in 25.04
+  * Fix ÖBB onboard API journey data parsing and extract track information
+  * Add QML module dependency information
+  * Fix MOTIS v2 admin area parsing
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:01 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

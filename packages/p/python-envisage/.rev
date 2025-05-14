@@ -106,4 +106,12 @@
   * Update end year in copyright headers. (#458)</comment>
     <requestid>1069026</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>a50d7bcce8c97d8d937b3f786d9470b7</srcmd5>
+    <version>6.1.1</version>
+    <time>1746809391</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275982</requestid>
+  </revision>
 </revisionlist>

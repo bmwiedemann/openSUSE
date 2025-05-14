@@ -34,6 +34,7 @@ Patch6:         cflags-sgml-tools-1.0.9.diff
 Patch7:         sgml-tools-1.0.9-sgmlpre.diff
 Patch8:         sgml-tools-1.0.9-strip.diff
 Patch9:         sgml-tools-1.0.9-latex.diff
+Patch10:        sgml-tools-1.0.9-gcc15.diff
 BuildRequires:  flex
 BuildRequires:  groff
 BuildRequires:  opensp
@@ -90,6 +91,7 @@ This package contains the LaTeX generator (sgml2latex) from sgmltool.
 %patch -P 7 -p1
 %patch -P 8
 %patch -P 9
+%patch -P 10 -p1
 
 %build
 #%global optflags %{optflags} -fpermissive

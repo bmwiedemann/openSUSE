@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May  5 04:01:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1:
+  * Drop support for Python 3.7, 3.8.
+  * Add support for Python 3.12, 3.13.
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Apr 21 12:39:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -1,0 +1,12 @@
+Index: touchegg-2.0.17/src/animations/animation.h
+===================================================================
+--- touchegg-2.0.17.orig/src/animations/animation.h
++++ touchegg-2.0.17/src/animations/animation.h
+@@ -19,6 +19,7 @@
+ #define ANIMATIONS_ANIMATION_H_
+ 
+ #include <cairo.h>
++#include <cstdint>
+ 
+ #include <memory>
+ 

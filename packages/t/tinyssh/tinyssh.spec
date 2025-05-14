@@ -17,7 +17,7 @@
 
 
 Name:           tinyssh
-Version:        20250201
+Version:        20250501
 Release:        0
 Summary:        A minimalistic SSH server which implements only a subset of SSHv2 features
 License:        CC0-1.0

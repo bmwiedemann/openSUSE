@@ -122,4 +122,13 @@
     <comment>- Fix package license to BSD-3-Clause</comment>
     <requestid>1223960</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>cb89c33b5834586add2bdfad4b987746</srcmd5>
+    <version>1.9.1</version>
+    <time>1746542308</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1274277</requestid>
+  </revision>
 </revisionlist>

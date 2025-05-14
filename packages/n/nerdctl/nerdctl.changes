@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Tue May 06 11:18:00 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 2.0.5:
+  * update Kubo (0.34.1)
+  * update Nydus (2.3.1)
+  * update BuildKit (0.21.1)
+  * update CNI plugins (1.7.1)
+  * update runc (1.3.0)
+  * Refactor lint workflows
+  * Harmonize variable names
+  * Enable rootful unit testing on linux
+  * Refactor unit test workflow
+  * Fix cache scope in EL8
+  * Remove broken variable
+  * Cleanup CI:setup-go
+  * build(deps): bump actions/attest-build-provenance from 2.2.3 to 2.3.0
+  * build(deps): bump go.uber.org/mock from 0.5.1 to 0.5.2
+  * Fix wrong number of lines reported
+  * Fix tigron CI bustage
+  * fix stats for exited container and introduce some refacto
+  * feat: add --details flag to logs command
+  * Add --buildg-startup-timeout flag
+  * Move netutil flock to subdirectory
+  * ./hack cleanup
+  * Enhance error information for failing logURI
+  * build(deps): bump github.com/containernetworking/plugins
+  * Bump up buildg to v0.5.2
+  * build(deps): bump docker/build-push-action from 6.15.0 to 6.16.0
+  * Shorten max lines in logs to 50 and add message
+  * fix: disable strict dependency enforcement for vagrant-libvirt plugin installation
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * Add provenance from github actions
+  * fix: BUILDKIT_HOST env parsing
+  * Cleanup ca/ca.go and use new helper
+  * Add x509 test helper
+  * darwin build
+  * Add DataTemp.SaveToWriter
+  * Streamline tests to leverage Contain/DoesNotContain multi parameters
+  * Allow multiple needles in Contains and DoesNotContain
+  * Rewrite TestRunBindMountBind
+  * Extend CI timeout as windows fail
+  * Bump kind version 0.27
+  * Mark kube target as flaky
+  * build(deps): bump the docker group with 2 updates
+  * Increase test timeout for EL8
+  * Modernize tests in container and compose
+  * Fixing cross-merge failure
+  * Bump cni go dependency
+  * Bump Dockerfile dependencies
+  * Fix image delete in convert
+  * Fix EL8 tests execution
+  * Update containerd to v2.0.5
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump the docker group with 2 updates
+  * Update tests to use modified tigron
+  * test.Data to support temp resources manipulation
+  * Allow per-command environment override
+  * Fix internal command flaky test (window)
+  * Implement env whitelist to reduce debug noise
+  * Cosmetic fixes for testing debug logs
+  * Fix image removal
+  * feat: Add "Containers" propery in the "nerdctl network inspect" command.
+  * mod/tigron/require documentation
+  * Enhanced test debug information
+  * Cleaner debug information for assertive
+  * Deprecate info in comparators
+  * Mark t.Helper() to avoid reporting wrong source info on failure
+  * Adjust command test
+  * Migrate Volume test to use expect.JSON
+  * Add expect.JSON comparator
+  * Fix canary version matching
+  * test(inspect): validate combined container and image inspect output
+  * fix: inspect should return one array rather than a stream of array
+  * Cosmetic cleanup and linting
+  * Add environment WhiteList support for Command + prefix matching
+  * build(deps): bump crazy-max/ghaction-github-runtime from 3.0.0 to 3.1.0
+  * Assertive enhancements
+  * Adding mimicry (internal mock mechanism)
+  * (fix) stopping container when setup using setuid bit
+  * Update golangci
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * feat: add cpu-rt-period and cpu-rt-runtime options in nerdctl create/run
+  * CI: FreeBSD: fix "No packages available to install matching ..."
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump go.uber.org/mock from 0.5.0 to 0.5.1
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.2.3 to 2.2.4
+  * build(deps): bump the golang-x group with 6 updates
+  * build(deps): bump github.com/fsnotify/fsnotify from 1.8.0 to 1.9.0
+  * update go-logrotate to v0.3.0
+  * Fix logging regression.
+  * add parallel
+  * ltag
+  * fix hardcode in TestImageHistory
+  * Fix env_file in compose work with profile
+  * test for run -td
+  * Update tests to adopt tooling changes
+  * Adapt nerdtest to updated tigron
+  * Enable leak detection for tests under test
+  * Adapt tooling to the new command implementation
+  * Enhance comparators debugging info
+  * Add new command implementation
+  * CI: quiet run output
+  * Fix content digest not found
+  * Mute noisy test pull logs
+  * fix: Pass ps_args as option to container top
+  * Adjust drifting test for another year
+  * Lint: staticcheck review remaining checks
+  * Lint: staticcheck fix ST1005
+  * Lint: staticcheck fix QF1004
+  * Lint: revive: review and organization off all rules
+  * Lint: revive import-alias-naming
+  * Lint: revive filename-format
+  * Lint: revive if-return
+  * Lint: revive unexported-naming
+  * Lint: revive time-equal
+  * Lint: revive struct-tag
+  * Lint: revive redundant-import-alias
+  * golangci yml configuration cleanup
+  * Update wincni
+  * Avoid console SetRaw
+  * Enabling tigron lint and test on the CI
+  * Update golangci to v2
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * Adding tigron tests
+  * Adding internal leak detection lib
+  * Migrate away from assert to internal assertive
+  * Add assertive lib
+  * Cosmetic fixes
+  * Makefile cleanup and update
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump the docker group with 2 updates
+  * Dockerfile git clones to be quiet and shallow
+  * add user to inspect
+  * add env to inspect
+
+-------------------------------------------------------------------
 Fri Mar 21 04:44:26 UTC 2025 - madhankumar.chellamuthu@suse.com
 
 - Update to version 2.0.4:

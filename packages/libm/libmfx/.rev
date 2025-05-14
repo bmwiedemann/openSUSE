@@ -318,4 +318,12 @@
   are not supported by libmfx-gen (boo#1219494)</comment>
     <requestid>1144149</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>bcd17b20eef1b254af280c616aa4f0e1</srcmd5>
+    <version>23.2.2</version>
+    <time>1747061397</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276634</requestid>
+  </revision>
 </revisionlist>

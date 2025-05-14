@@ -177,4 +177,16 @@
 - Drop patch use-sys-executable-python.patch, included upstream.</comment>
     <requestid>1226686</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d6215351cc00c86df1fa44a4421080d0</srcmd5>
+    <version>4.2.0</version>
+    <time>1746476771</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.0:
+  * FIX: Fix issue with auto-profile of editable installs #279
+  * FIX: Lookup OP-codes instead of hard coding them #284
+  * CHANGE: Drop support for Python 3.6 and Python 3.7
+  * ENH: Add support for Python 3.13</comment>
+    <requestid>1274207</requestid>
+  </revision>
 </revisionlist>

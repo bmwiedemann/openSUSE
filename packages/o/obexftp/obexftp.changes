@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 09:16:08 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Wed Feb 21 09:24:04 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %patch -P N instead of deprecated %patchN.

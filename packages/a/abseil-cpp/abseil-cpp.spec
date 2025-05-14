@@ -42,6 +42,8 @@ Patch1:         cmake.patch
 %else
 Patch0:         options-cxx17.patch
 %endif
+# PATCH-FIX-UPSTREAM abseil-ciso646.patch -- avoid deprecation warnings
+Patch2:         abseil-ciso646.patch
 
 %description
 Abseil is a collection of C++11 libraries which augment the C++

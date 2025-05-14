@@ -2374,4 +2374,13 @@ soon.
     <comment>- Enable multitarget build on loongarch64 (forwarded request 1236850 from jsulig)</comment>
     <requestid>1237516</requestid>
   </revision>
+  <revision rev="177" vrev="6">
+    <srcmd5>635b35c66eb1e379d84f483e30e7634a</srcmd5>
+    <version>2.43</version>
+    <time>1746721301</time>
+    <user>dimstar_suse</user>
+    <comment>- Add -std=gnu17 to move gcc15 forward, as temporary measure until
+  the binutils version can be updated [bsc#1241916].</comment>
+    <requestid>1275274</requestid>
+  </revision>
 </revisionlist>

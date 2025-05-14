@@ -1,0 +1,7 @@
+<services>
+  <service name="download_url" mode="manual">
+    <param name="host">packages.linuxmint.com</param>
+    <param name="protocol">http</param>
+    <param name="path">/pool/main/m/mint-themes/mint-themes_2.2.3.tar.xz</param>
+  </service>
+</services>

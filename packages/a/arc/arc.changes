@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 06:14:50 UTC 2025 - pgajdos@suse.com
+
+- build with -std=gnu11 to get trough gcc15
+
+-------------------------------------------------------------------
 Mon Jun  8 15:57:22 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 -  arc-5.21p-fno-common.patch: from Gentoo, fixe FTBS with

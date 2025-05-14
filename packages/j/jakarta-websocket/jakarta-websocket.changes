@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Fri May  9 06:38:42 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite the build system for ant so that we can use this package
+  early
+
+-------------------------------------------------------------------
+Sun Oct 13 08:21:55 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v2.2.0

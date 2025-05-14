@@ -32,6 +32,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/googletest
 Source0:        https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        googletest-rpmlintrc
+# PATCH-FIX-UPSTREAM googletest-ciso646.patch -- avoid deprecation warnings
+Patch1:         googletest-ciso646.patch
 BuildRequires:  cmake >= 3.10.0
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc11
@@ -85,7 +87,7 @@ This package provides shared libraries and header files for development
 with googlemock.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %global optflags %(echo "%{optflags} -Wno-infinite-recursion -Wno-deprecated-declarations")

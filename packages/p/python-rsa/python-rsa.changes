@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  5 09:15:33 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.9.1
+  * Final release, just to add a note about the 'archived' status
+    of the project.No other changes. See `README.md` for more info.
+- Switch build system from setuptools to pyproject.toml
+  * Add python-pip and python-wheel to BuildRequires
+  * Replace %python_build with %pyproject_wheel
+  * Replace %python_install with %pyproject_install
+- Switch package to modern Python Stack on SLE-15
+  * Use Python 3.11 on SLE-15 by default
+  * Drop support for older Python versions
+- Update BuildRequires from pyproject.toml
+
+-------------------------------------------------------------------
 Fri Apr 21 12:33:27 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add sle15_python_module_pythons (jsc#PED-68)

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysnmpcrypto
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           python-pysnmpcrypto
-Version:        0.0.4
+Version:        0.1.0
 Release:        0
 Summary:        Strong cryptography support for PySNMP (SNMP library for Python)
 License:        BSD-2-Clause
-URL:            https://github.com/etingof/pysnmpcrypto
-Source:         https://files.pythonhosted.org/packages/source/p/pysnmpcrypto/pysnmpcrypto-%{version}.tar.gz
+URL:            https://github.com/lextudio/pysnmpcrypto
+Source:         https://github.com/lextudio/pysnmpcrypto/archive/refs/tags/v%{version}.tar.gz#/pysnmpcrypto-%{version}.tar.gz
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

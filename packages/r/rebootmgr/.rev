@@ -352,4 +352,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1255659</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e00feca923ae6fc66b282d7ad329f561</srcmd5>
+    <version>3.3+git20250512.b6e4e84</version>
+    <time>1747159953</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3+git20250512.b6e4e84:
+  * Release version 3.3
+  * Fix handling of temporarily disabled reboots</comment>
+    <requestid>1276813</requestid>
+  </revision>
 </revisionlist>

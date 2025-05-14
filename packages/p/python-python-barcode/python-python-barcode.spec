@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-python-barcode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,15 +28,17 @@ License:        MIT
 URL:            https://github.com/WhyNotHugo/python-barcode
 Source:         https://files.pythonhosted.org/packages/source/p/%{base_name}/%{base_name}-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       dejavu-fonts
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Provides:       python-pyBarcode = %{version}-%{release}
 Obsoletes:      python-pyBarcode < %{version}-%{release}
 BuildArch:      noarch
@@ -53,10 +55,10 @@ find . -type f -exec chmod a-x {} +
 rm docs/Makefile
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/python-barcode
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 find %{buildroot} -type f -name "*.ttf" | while read i; do
@@ -82,7 +84,7 @@ sed -i '/cov/d' setup.cfg
 %license LICENCE
 %doc %{_docdir}/%{python_flavor}-python-barcode
 %{python_sitelib}/barcode
-%{python_sitelib}/python_barcode-%{version}*-info
+%{python_sitelib}/python_barcode-%{version}.dist-info
 %python_alternative %{_bindir}/python-barcode
 
 %changelog

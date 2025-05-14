@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 12 16:08:25 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add CMAKE Policy for >= 3.5 (boo#1241902)
+- Remove clean section
+
+-------------------------------------------------------------------
 Sat May 28 11:46:57 UTC 2022 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to version 2.1

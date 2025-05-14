@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-expect
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        1.1.0
 Release:        0
 Summary:        Py.test plugin to store test expectations and mark tests based on them
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/gsnedders/pytest-expect
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-expect/pytest-expect-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/gsnedders/pytest-expect/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -50,16 +51,16 @@ ASCII characters in identifiers.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pytest_expect
-%{python_sitelib}/pytest_expect-%{version}*-info
+%{python_sitelib}/pytest_expect-%{version}.dist-info
 
 %changelog

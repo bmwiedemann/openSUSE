@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  5 19:14:02 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Apply "lftp-4.9.2-cdefs.patch" when building on ppc64le
+  architectures to fix a trivial build error. [bsc#1242138]
+
+-------------------------------------------------------------------
 Wed Jul 31 20:10:18 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - lftp-gcc14.patch: fixed issues with gcc14

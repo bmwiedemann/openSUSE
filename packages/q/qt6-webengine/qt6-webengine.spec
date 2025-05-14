@@ -40,6 +40,8 @@
 %bcond_without system_tiff
 # Leap 15's ffmpeg is too old since 6.8.0
 %bcond_without system_ffmpeg
+# openjpeg2 is too old and doesn't know opj_decoder_set_strict_mode
+%bcond_without system_openjpeg2
 # and python 3.6 is also too old for this QtWE version
 %define pyver python3
 %else
@@ -62,6 +64,14 @@ Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{r
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
 Patch0:         qtwebengine-glibc_2.41.patch
+Patch1:         0001-Do-not-force-gl-egl-ANGLE-backend-on-Linux.patch
+Patch2:         0001-gbm-Add-fallback-for-drmPrimeHandleToFD.patch
+Patch3:         0001-Do-not-list-GLX-frame-buffer-configurations-unnecess.patch
+Patch4:         0001-angle-Always-use-primary-GPU.patch
+Patch5:         0001-NativeSkiaOutputDeviceOpenGL-Fix-leaking-X11-Pixmap.patch
+Patch6:         0001-NativeSkiaOutputDeviceVulkan-Use-minimal-set-of-usag.patch
+Patch7:         0001-Add-default-and-gl-ANGLE-implementation-support-to-O.patch
+Patch8:         0001-Avoid-crash-due-to-long-dictionary-commands.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
@@ -140,7 +150,9 @@ BuildRequires:  pkgconfig(libavutil) >= 58.29.100
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libevent)
+%if %{with system_openjpeg2}
 BuildRequires:  pkgconfig(libopenjp2)
+%endif
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.10
 %if %{with system_tiff}
@@ -404,6 +416,9 @@ export NINJAFLAGS="%{?_smp_mflags}"
   -DFEATURE_webengine_system_icu:BOOL=TRUE \
 %else
   -DFEATURE_webengine_system_icu:BOOL=FALSE \
+%endif
+%if %{without system_openjpeg2}
+  -DFEATURE_webengine_system_libopenjpeg2:BOOL=FALSE \
 %endif
   -DFEATURE_webengine_system_libevent:BOOL=TRUE \
   -DFEATURE_webengine_webrtc:BOOL=TRUE \

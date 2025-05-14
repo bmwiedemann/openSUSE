@@ -959,4 +959,12 @@
     <comment>KDE release gear 25.04.0</comment>
     <requestid>1270626</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>a72e75e613bbece4b5fcbd5ac501d853</srcmd5>
+    <version>25.04.1</version>
+    <time>1746809004</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.1</comment>
+    <requestid>1275685</requestid>
+  </revision>
 </revisionlist>

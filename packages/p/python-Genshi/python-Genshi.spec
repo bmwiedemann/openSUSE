@@ -1,7 +1,7 @@
 #
 # spec file for package python-Genshi
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,19 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://genshi.edgewall.org/
 Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%{version}.tar.gz
+# PATCH-FEATURE-UPSTREAM remove_six.patch gh#edgewall/genshi!92 mcepl@suse.com
+# remove six
+Patch0:         remove_six.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
-Requires:       python-six
 Requires:       python-xml
 %ifpython2
 Obsoletes:      %{oldpython}-genshi < %{version}
@@ -67,15 +70,10 @@ This package contains documentation and examples.
 %autosetup -p1 -n Genshi-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-# Fix python-bytecode-inconsistent-mtime
-pushd %{buildroot}%{python_sitearch}
-find . -name '*.pyc' -exec rm -f '{}' ';'
-python%python_bin_suffix -m compileall *.py ';'
-popd
+%pyproject_install
 # remove accidentally installed source files
 %python_expand find %{buildroot}%{$python_sitearch}/genshi -name '*.c' -delete
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
@@ -87,7 +85,7 @@ popd
 %license COPYING
 %doc ChangeLog README.md
 %{python_sitearch}/genshi/
-%{python_sitearch}/Genshi-%{version}*-info
+%{python_sitearch}/[Gg]enshi-%{version}*-info
 
 %files -n %{name}-doc
 %doc doc

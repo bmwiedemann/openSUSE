@@ -118,4 +118,13 @@
     <comment></comment>
     <requestid>1138330</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>fdb6a8032bd8ae13cf7e75d3886e866d</srcmd5>
+    <version>0.5.15</version>
+    <time>1746476953</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete and unused gnome-common BuildRequires.
+- Drop obsolete update-desktop-files BuildRequires and macro. (forwarded request 1274242 from iznogood)</comment>
+    <requestid>1274533</requestid>
+  </revision>
 </revisionlist>

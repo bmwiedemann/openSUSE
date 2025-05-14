@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 06:53:02 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Nov  7 09:58:56 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build with RPM 4.19: unnumbered patches are no longer

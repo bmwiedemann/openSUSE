@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed May 07 04:23:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.0:
+  * New Features and Additions:
+    - feat(config): Enhance config list/set output #9780
+    - feat: Add support for configurable statusCheckDeadlineSeconds
+      field for Cloud Run #9778
+    - feat: Add support in Cloud Run for configuring
+      tolerateFailuresUntilDeadline and disabling status checks
+      #9799
+  * Fixes:
+    - Bugfix: Only prune images if changed #9787
+  * Docs, Test, and Release Updates:
+    - docs: Make --no-prune documentation clearer #9786
+    - chore: bump golang.org/x/net from 0.23.0 to 0.38.0 in
+      /integration/examples/grpc-e2e-tests/service #9792
+    - chore: remove the skaffold survey code #9803
+    - chore: upgrade all dependencies #9802
+    - chore: upgrade to Go 1.24.2 #9805
+    - chore: update dependencies in Dockerfile and integration
+      tests #9806
+
+-------------------------------------------------------------------
 Sat Apr 05 10:03:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.15.0:

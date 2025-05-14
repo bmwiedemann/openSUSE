@@ -212,4 +212,12 @@
     <comment>- Update to release 20240501</comment>
     <requestid>1171131</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>4a082ce5afc474de6b9e3efeaa2f1d04</srcmd5>
+    <version>20240501</version>
+    <time>1746476784</time>
+    <user>anag_factory</user>
+    <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274193 from AndreasStieger)</comment>
+    <requestid>1274219</requestid>
+  </revision>
 </revisionlist>

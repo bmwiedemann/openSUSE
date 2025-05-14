@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/z/zope.event/%{modname}-%{version}.tar.gz
 # fix upstream, compatible with recent Sphinx
 Patch1:         intersphinx.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,28 +53,28 @@ This package contains documentation files for %{name}.
 %autopatch -p1
 
 %build
-%python_build
-# cannot give build/lib here, as pkg_resources.py needs the egg info and
-# raises DistributionNotFound for zope.event, hence build doc directly
-# from source in order to avoid the need for an external doc package
+%pyproject_wheel
 export PYTHONPATH=$(pwd)/src
 sphinx-build -b html docs build/sphinx/html && rm -r build/sphinx/html/.{buildinfo,doctrees}
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cd build/lib
+export PYTHONPATH=$(pwd)/src
 %{python_expand \
 $python -m unittest -v zope.event.tests
-$python -m doctest -v zope/event/classhandler.py
+$python -m doctest -v src/zope/event/classhandler.py
 }
 
 %files %{python_files}
 %license COPYRIGHT.txt LICENSE.txt
 %doc CHANGES.rst README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/event
+%{python_sitelib}/zope[_.]event-%{version}*info
+%{python_sitelib}/zope.event-%{version}*pth
 
 %if 0%{?suse_version} > 1500
 %files -n %{name}-doc

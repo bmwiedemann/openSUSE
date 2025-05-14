@@ -176,4 +176,13 @@
 </comment>
     <requestid>1249061</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>50ea1c6a3e0d377c0885901c95e03300</srcmd5>
+    <version>24.12.1</version>
+    <time>1747159570</time>
+    <user>anag_factory</user>
+    <comment>- Use current repository in the URL field
+</comment>
+    <requestid>1276958</requestid>
+  </revision>
 </revisionlist>

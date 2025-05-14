@@ -17,45 +17,45 @@
 
 
 # baseversion - base minor version (n) of kubernetes for this package
-%define baseversion 1.32
+%define baseversion 1.33
 
 # baseversionminus1 - previous base minor (n-1) version of kubernetes
-%define baseversionminus1 1.31
+%define baseversionminus1 1.32
 # versionminus1 - full previous base minor (n-1) version of kubernetes, including point revision
-%define versionminus1 1.31.8
+%define versionminus1 1.32.4
 
 # baseversionminus2 - previous base minor (n-2) version of kubernetes
-%define baseversionminus2 1.30
+%define baseversionminus2 1.31
 # versionminus2 - full previous base minor (n-2) version of kubernetes, including point revision
-%define versionminus2 1.30.12
+%define versionminus2 1.31.8
 
 # baseversionminus3 - previous base minor (n-3) version of kubernetes
-%define baseversionminus3 1.29
+%define baseversionminus3 1.30
 # versionminus3 - full previous base minor (n-3) version of kubernetes, including point revision
-%define versionminus3 1.29.15
+%define versionminus3 1.30.12
 
 
 # etcdversion - version of etcd
-%define etcdversion 3.5.16
+%define etcdversion 3.5.21
 # etcdversionminus1 - version of etcd for versionminus1
-%define etcdversionminus1 3.5.15
+%define etcdversionminus1 3.5.16
 # etcdversionminus2 - version of etcd for versionminus2
 %define etcdversionminus2 3.5.15
 # etcdversionminus3 - version of etcd for versionminus3
-%define etcdversionminus3 3.5.16
+%define etcdversionminus3 3.5.15
 
 
 # corednsversion - version of coredns
-%define corednsversion 1.11.3
+%define corednsversion 1.12.0
 # corednsversionminus1 - version of coredns for versionminus1
 %define corednsversionminus1 1.11.3
 # corednsversionminus2 - version of coredns for versionminus2
 %define corednsversionminus2 1.11.3
 # corednsversionminus3 - version of coredns for versionminus3
-%define corednsversionminus3 1.11.1
+%define corednsversionminus3 1.11.3
 
 Name:           kubernetes
-Version:        1.32.4
+Version:        1.33.0
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0

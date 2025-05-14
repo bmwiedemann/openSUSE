@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 15:47:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Aug 15 07:31:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - add python312.patch to fix build with python 3.12

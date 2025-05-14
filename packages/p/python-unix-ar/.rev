@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2716c816be390c133b3308488010e80e</srcmd5>
+    <version>0.2.1</version>
+    <time>1746809096</time>
+    <user>anag_factory</user>
+    <comment>This packages allows the reading and writing of AR archive files.
+
+Needed for pwntools (https://docs.pwntools.com/en/stable/)</comment>
+    <requestid>1275490</requestid>
+  </revision>
+</revisionlist>

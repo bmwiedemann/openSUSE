@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  6 10:23:10 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + dtach-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:06:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

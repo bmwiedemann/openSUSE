@@ -4,10 +4,7 @@
      <param name="srctar">typst-0.13.1.tar.gz</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
-     <!-- needs a fixed cargo-vendor-filtered package
-          unfiltered tarball isnt actually much bigger
      <param name="filter">true</param>
-     -->
   </service>
 </services>
 

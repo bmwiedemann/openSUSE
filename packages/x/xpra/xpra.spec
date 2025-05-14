@@ -20,7 +20,6 @@
 %global with_pandoc 1
 %endif
 %bcond_with pandoc
-# -----
 ### Comes from git tarball setup.py:
 ###   setup.py build --verbose ...
 %define xpra_ver %(echo %{version} | awk -F+ '{print $1}' | awk -F. '{print $1"."$2}')
@@ -29,10 +28,9 @@
 %define python_short_ver 3.13
 %define python_bin python3.13
 
-# ----
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.0+git20250410.63a3b70d
+Version:        6.4.0+git20250504.7a6f181e
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -41,7 +39,6 @@ URL:            https://www.xpra.org/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xpra-icon.png
 Source100:      xpra-rpmlintrc
-# ----
 BuildRequires:  ImageMagick
 BuildRequires:  brotli
 BuildRequires:  cups
@@ -51,7 +48,6 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  hicolor-icon-theme
-# ----
 %if 0%{?suse_version} >= 1550
 %define using_release "distribution-release"
 BuildRequires:  distribution-release
@@ -59,7 +55,6 @@ BuildRequires:  distribution-release
 %define using_release "openSUSE-release"
 BuildRequires:  openSUSE-release
 %endif
-# ----
 BuildRequires:  pam-devel
 %if %{with pandoc}
 BuildRequires:  pandoc-cli
@@ -67,10 +62,10 @@ BuildRequires:  pandoc-cli
 BuildRequires:  %{python_ver}-Cython
 BuildRequires:  %{python_ver}-devel
 BuildRequires:  %{python_ver}-gobject-devel
+BuildRequires:  %{python_ver}-pip
 BuildRequires:  %{python_ver}-pyxdg
 BuildRequires:  %{python_ver}-setuptools
 BuildRequires:  pkgconfig
-#BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libavcodec) >= 58
 BuildRequires:  pkgconfig(libavformat) >= 58
@@ -87,8 +82,6 @@ BuildRequires:  procps-devel
 BuildRequires:  qrencode-devel
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vpx) >= 1.4.0
-#BuildRequires:  pkgconfig(x264)
-#BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(xdamage)
@@ -112,39 +105,26 @@ Requires:       %{python_ver}-gobject
 Requires:       %{python_ver}-gobject-Gdk
 Requires:       %{python_ver}-gst
 Requires:       pulseaudio-utils
-#Requires:       python3-lz4
-#Requires:       python3-opencv
 Requires:       %{python_ver}-pycups
 Requires:       %{python_ver}-rencode
 Requires:       shared-mime-info
+Requires:       typelib-1_0-Notify-0_7
 Requires:       xf86-video-dummy
 Requires:       xorg-x11-xauth
 Requires(post): %fillup_prereq
 Recommends:     lsb-release
 Recommends:     pinentry
 Recommends:     pulseaudio-module-x11
-#Recommends:     python3-asn1crypto
-#Recommends:     python3-cffi
 Recommends:     %{python_ver}-cryptography
-#Recommends:     python3-decorator
 Recommends:     %{python_ver}-dnspython
-#Recommends:     python3-idna
-#Recommends:     python3-ipaddress
 Recommends:     %{python_ver}-netifaces
 Recommends:     %{python_ver}-opencv
 Recommends:     %{python_ver}-opengl
 Recommends:     %{python_ver}-opengl-accelerate
-#Recommends:     python3-packaging
 Recommends:     %{python_ver}-paramiko
-#Recommends:     python3-pyasn1
-#Recommends:     python3-pycparser
 Recommends:     %{python_ver}-pyinotify
-#Recommends:     python3-pynacl
-#Recommends:     python3-pyparsing
 Recommends:     %{python_ver}-pyu2f
 Recommends:     %{python_ver}-pyxdg
-#Recommends:     python3-setuptools
-#Recommends:     python3-six
 Recommends:     xdg-menu
 # Updating %%ghost items makes it complain about missing xpra group
 Provides:       group(xpra)

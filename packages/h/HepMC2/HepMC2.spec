@@ -1,7 +1,7 @@
 #
 # spec file for package HepMC2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Version:        2.06.11
 Release:        0
 Summary:        An event record for High Energy Physics Monte Carlo Generators in C++
 License:        GPL-2.0-only
-Group:          Development/Libraries/C and C++ 
+Group:          Development/Libraries/C and C++
 URL:            http://hepmc.web.cern.ch/hepmc/
 Source:         http://hepmc.web.cern.ch/hepmc/releases/hepmc%{version}.tgz
 BuildRequires:  cmake
@@ -72,6 +72,10 @@ developng with HepMC.
 chmod 0644 ChangeLog
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
 mkdir ../BUILD
 pushd ../BUILD
 cmake ../%{srcname}-%{version} \
@@ -79,7 +83,7 @@ cmake ../%{srcname}-%{version} \
        -DCMAKE_BUILD_TYPE=Release \
        -Dmomentum:STRING="GEV" \
        -Dlength:STRING="MM" \
-       -Dbuild_docs:BOOL=OFF 
+       -Dbuild_docs:BOOL=OFF
 
 make %{?_smp_mflags}
 popd

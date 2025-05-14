@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 08:13:38 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Thu Oct 31 09:48:30 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Add tinyxml2-devel to BuildRequiers

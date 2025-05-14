@@ -82,8 +82,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lib_crypto} = %{version}
 Requires:       %{lib_tls} = %{version}
 Requires:       %{lib_x509} = %{version}
-Provides:       mbedtls-devel = %{version}-%{release}
 Conflicts:      mbedtls-devel >= 3
+Provides:       mbedtls-devel = %{version}-%{release}
 
 %description devel
 This subpackage contains the development files for mbedtls,
@@ -96,6 +96,8 @@ sed -i 's|//\(#define MBEDTLS_ZLIB_SUPPORT\)|\1|' include/mbedtls/config.h
 sed -i 's|//\(#define MBEDTLS_HAVEGE_C\)|\1|' include/mbedtls/config.h
 sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
 sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
+sed -i 's|//\(#define MBEDTLS_SSL_DTLS_SRTP\)|\1|' include/mbedtls/config.h
+sed -i 's|//\(#define MBEDTLS_SSL_PROTO_DTLS\)|\1|' include/mbedtls/config.h
 
 %build
 %define __builder ninja

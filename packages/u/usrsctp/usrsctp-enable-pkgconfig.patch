@@ -1,0 +1,24 @@
+Description: Enable installation of pkg-config file
+Author: Jonas Smedegaard <dr@jones.dk>
+Last-Update: 2020-11-30
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -35,4 +35,5 @@
+ SUBDIRS = usrsctplib $(MAYBEPROGRAMS)
+ EXTRA_DIST = bootstrap Makefile.nmake
+ ACLOCAL_AMFLAGS = -I m4
+-# pkgconfig_DATA = usrsctp.pc
++pkgconfigdir = $(libdir)/pkgconfig
++pkgconfig_DATA = usrsctp.pc
+--- a/configure.ac
++++ b/configure.ac
+@@ -183,6 +183,6 @@
+ 
+ AC_SUBST([LIBCFLAGS])
+ AC_SUBST([APPCFLAGS])
+-dnl AC_CONFIG_FILES([usrsctp.pc])
++AC_CONFIG_FILES([usrsctp.pc])
+ AC_CONFIG_FILES(usrsctplib/Makefile programs/Makefile Makefile)
+ AC_OUTPUT

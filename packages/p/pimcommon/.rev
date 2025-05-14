@@ -896,4 +896,12 @@
     <comment>KDE release gear 25.04.0 (forwarded request 1270198 from krop)</comment>
     <requestid>1270537</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>67e51b29fb57826c39dd1fd948297385</srcmd5>
+    <version>25.04.1</version>
+    <time>1746809088</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.1</comment>
+    <requestid>1275881</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May  9 21:01:36 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to version 6.0.1:
+  * a trouble about the "open terminal" and "texdoc" has been fixed
+  * cs and pl tranlations have been updated
+  * a bug related to the non use of % !TEX root = has been fixed
+  * the combobox of the find/replace widgets are now case sensitive
+  * after comment/indent a selected text, all the corresponding
+    paragraphs are selected from the beginning of the first line
+    (user request)
+  * a trouble with the "reset/replace settings file" commands on Qt6
+    has been fixed
+  * a trouble with the "recent files" menu on Qt6 has been fixed
+
+-------------------------------------------------------------------
 Thu Sep  5 18:12:58 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop texmaker-rpmlintrc file and use `-DCMAKE_SKIP_RPATH=ON`

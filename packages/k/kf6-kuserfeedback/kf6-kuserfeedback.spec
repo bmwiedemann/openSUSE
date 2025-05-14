@@ -20,13 +20,13 @@
 
 %define rname kuserfeedback
 
-# Full KF6 version (e.g. 6.13.0)
+# Full KF6 version (e.g. 6.14.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kuserfeedback
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Framework for collecting feedback from application users
 License:        MIT
@@ -45,7 +45,6 @@ BuildRequires:  fdupes
 # # Needed for tests
 BuildRequires:  Mesa-dri
 BuildRequires:  xvfb-run
-BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Charts) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -106,17 +105,6 @@ KUserFeedback is a framework which allows applications to collect user
 telemetry and feedback surveys. This package provides a server component
 used to collect telemetry and feedback.
 
-%package tools
-Summary:        Command line utilities for the kuserfeedback server
-Requires:       kf6-kuserfeedback >= %{version}
-Suggests:       kf6-kuserfeedback-server
-Conflicts:      kuserfeedback-tools
-
-%description tools
-KUserFeedback is a framework which allows applications to collect user
-telemetry and feedback surveys. This package provides tools to connect to
-and query a local or remote KUserFeedback server.
-
 %package devel
 Summary:        Development files for kf6-kuserfeedback
 Requires:       kf6-kuserfeedback >= %{version}
@@ -152,9 +140,6 @@ cp -r src/server %{buildroot}%{_kf6_sharedir}/php/kuserfeedback6
 # CMakeLists.txt is not needed there and will trigger a rpmlint warning
 rm %{buildroot}%{_kf6_sharedir}/php/kuserfeedback6/CMakeLists.txt
 
-install -Dm0644  %{_kf6_iconsdir}/breeze/actions/16/search.svg %{buildroot}%{_kf6_iconsdir}/hicolor/scalable/actions/search.svg
-%suse_update_desktop_file -r %{buildroot}%{_kf6_applicationsdir}/org.kde.kuserfeedback-console.desktop Qt KDE Network RemoteAccess
-
 %fdupes %{buildroot}
 
 %check
@@ -183,13 +168,6 @@ popd
 %files imports
 %dir %{_kf6_qmldir}/org/kde/userfeedback
 %{_kf6_qmldir}/org/kde/userfeedback/
-
-%files tools
-%{_kf6_appstreamdir}/org.kde.kuserfeedback-console.appdata.xml
-%{_kf6_bindir}/UserFeedbackConsole
-%{_kf6_bindir}/userfeedbackctl
-%{_kf6_applicationsdir}/org.kde.kuserfeedback-console.desktop
-%{_kf6_iconsdir}/hicolor/scalable/actions/search.svg
 
 %files server
 %doc composer.json

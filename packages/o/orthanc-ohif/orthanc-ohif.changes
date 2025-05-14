@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  5 19:38:12 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.6
+  * Updated OHIF to 3.10.1
+  * Known issues: 
+    - authorization tokens are not functional with videos.
+      Waiting for this PR to be validated and incorporated: 
+      https://github.com/OHIF/Viewers/pull/4958
+
+-------------------------------------------------------------------
 Sun Jan 19 10:06:41 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.5

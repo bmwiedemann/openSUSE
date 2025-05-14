@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr  2 16:52:44 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.3.3
+  * Make polkit rules work again (bug introduced in 2.3.2)
+  * harden_pcscd.service.patch removed (went to upstream)
+  
+-------------------------------------------------------------------
+Wed Mar 26 16:38:17 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 2.3.2
+  * Hardening systemd pcscd.service file
+  * pcscd.service: add missing Requires=polkit.service
+  * pcsc-spy: add missing PCSCv2_PART10_PROPERTY_* definitions
+  * Support udev PCSCLITE_IGNORE property to filter readers
+  * debuglog: force use of colors when --color is used
+  * Some other minor improvements
+
+-------------------------------------------------------------------
 Wed Jan 22 16:06:25 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop rcFOO symlinks for CODE16 (PED-266).

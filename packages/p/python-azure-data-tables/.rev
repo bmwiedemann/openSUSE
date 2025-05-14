@@ -207,4 +207,15 @@
 - Drop extra LICENSE.txt as upstream now ships its own (forwarded request 1225742 from glaubitz)</comment>
     <requestid>1225817</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d3cc8d26e975c1ab34f6eb3ea7c353cb</srcmd5>
+    <version>12.7.0</version>
+    <time>1746638481</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1275073 from glaubitz)</comment>
+    <requestid>1275245</requestid>
+  </revision>
 </revisionlist>

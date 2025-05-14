@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  5 13:14:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Jul 25 10:17:03 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - remove obsolete python2 constructs

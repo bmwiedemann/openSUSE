@@ -78,7 +78,7 @@ BuildRequires:  pkgconfig(mozjs-115)
 BuildRequires:  cargo
 BuildRequires:  rust
 %endif
-ExcludeArch:    s390x
+ExclusiveArch:  aarch64 %{arm} %{ix86} loongarch64 riscv64 x86_64
 
 %description
 0 A.D. (pronounced "zero ey-dee") is a real-time strategy (RTS) game
@@ -107,6 +107,19 @@ export LDFLAGS="-Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
 libraries/source/cxxtest-4.4/build.sh
 JOBS="%{?_smp_mflags}" libraries/source/fcollada/build.sh
 JOBS="%{?_smp_mflags}" libraries/source/premake-core/build.sh
+
+# Compare list of supported architectures against known list. If this changes, revise ExclusiveArch.
+grep "#define PLATFORM_ARCHITECTURE" libraries/source/premake-core/premake-core-*/src/host/premake.h >arch.list
+diff arch.list - <<END
+#define PLATFORM_ARCHITECTURE "x86_64"
+#define PLATFORM_ARCHITECTURE "x86"
+#define PLATFORM_ARCHITECTURE "ARM64"
+#define PLATFORM_ARCHITECTURE "ARM"
+#define PLATFORM_ARCHITECTURE "RISCV64"
+#define PLATFORM_ARCHITECTURE "loongarch64"
+#define PLATFORM_ARCHITECTURE "e2k"
+END
+
 build/workspaces/update-workspaces.sh \
     %{?_smp_mflags} \
     --bindir=%{_bindir} \

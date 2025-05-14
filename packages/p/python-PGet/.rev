@@ -20,4 +20,12 @@ Required by the latest version of python-audiomate, which is already in openSUSE
 - Set minimum requests version to 2.20.0 in BuildRequires and Requires (forwarded request 932227 from glaubitz)</comment>
     <requestid>932254</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9c19fa4970a03d4a2c3875e2cb0de576</srcmd5>
+    <version>0.5.1</version>
+    <time>1746542648</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274907</requestid>
+  </revision>
 </revisionlist>

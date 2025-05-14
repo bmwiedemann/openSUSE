@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 05 16:47:01 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.7.0+git20250505.8f450e38:
+  * polkit-rules-whitelist: adjust systemd-network package name (bsc#1242056)
+  * dbus-services: adjust systemd-networkd and systemd-resolved (bsc#1242056)
+
+-------------------------------------------------------------------
 Tue Mar 25 08:57:01 UTC 2025 - wolfgang.frisch@suse.com
 
 - Update to version 2.7.0+git20250325.dd508d6:

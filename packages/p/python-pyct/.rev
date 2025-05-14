@@ -33,4 +33,12 @@
     support to Python 3.11.</comment>
     <requestid>1067094</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa05eb2dbe3f4793e665d3d4d577e590</srcmd5>
+    <version>0.5.0</version>
+    <time>1746809422</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject and pytest macros.</comment>
+    <requestid>1276006</requestid>
+  </revision>
 </revisionlist>

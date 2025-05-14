@@ -7,4 +7,12 @@
     <comment>Module to compute differences between images.</comment>
     <requestid>887537</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>366c3b5345b1abf5a4f2865bacadedae</srcmd5>
+    <version>0.3.0</version>
+    <time>1746809385</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275975</requestid>
+  </revision>
 </revisionlist>

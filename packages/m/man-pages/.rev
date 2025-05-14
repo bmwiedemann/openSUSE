@@ -2224,4 +2224,41 @@
   * Changes to individual files</comment>
     <requestid>1251674</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>6751141922e31fcd514f2837394ea34b</srcmd5>
+    <version>6.14</version>
+    <time>1747061205</time>
+    <user>anag_factory</user>
+    <comment>- version update to 6.14
+  New and rewritten pages
+  -----------------------
+  man2const/
+    UFFDIO_MOVE.2const
+  man7/
+    mctp.7
+  Newly documented interfaces in existing pages
+  ---------------------------------------------
+  man2/
+    fanotify_init.2
+      FAN_REPORT_FD_ERROR
+      FAN_REPORT_MNT
+    fanotify_mark.2
+      FAN_PRE_ACCESS
+      FAN_MARK_MNTNS
+      FAN_MNT_ATTACH, FAN_MNT_DETACH
+    open_by_handle_at.2
+      AT_HANDLE_CONNECTABLE
+      AT_HANDLE_MNT_ID_UNIQUE
+  man2const/
+    TIOCLINUX.2const
+      TIOCL_SELCHAR
+      TIOCL_SELWORD
+      TIOCL_SELLINE
+      TIOCL_SELPOINTER
+      TIOCL_SELCLEAR
+      TIOCL_SELMOUSEREPORT
+  man3/
+    abs.3</comment>
+    <requestid>1276752</requestid>
+  </revision>
 </revisionlist>

@@ -49,4 +49,12 @@ https://build.opensuse.org/request/show/605895</comment>
     <comment></comment>
     <requestid>1090560</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>960997d992cb05c83efc03385841bf2f</srcmd5>
+    <version>0.3.4</version>
+    <time>1746809406</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275993</requestid>
+  </revision>
 </revisionlist>

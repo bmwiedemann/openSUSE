@@ -47,4 +47,12 @@
 - initial commit</comment>
     <requestid>1133635</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>a5f100f76f511cdc8a688aa1c20ffc8a</srcmd5>
+    <version>1.0.2</version>
+    <time>1746809396</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275986</requestid>
+  </revision>
 </revisionlist>

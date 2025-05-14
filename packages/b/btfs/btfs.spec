@@ -2,6 +2,7 @@
 # spec file for package btfs
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           btfs
-Version:        2.24
+Version:        3.1
 Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later
@@ -32,9 +33,9 @@ BuildRequires:  libboost_system-devel
 BuildRequires:  libboost_system1_75_0-devel
 %endif
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fuse)
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libtorrent-rasterbar) > 0.16
+BuildRequires:  pkgconfig(fuse3) >= 3.0
+BuildRequires:  pkgconfig(libcurl) >= 7.22.0
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.0.0
 
 %description
 With BTFS, you can mount any .torrent file or magnet link and then use it as

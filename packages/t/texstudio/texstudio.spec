@@ -17,7 +17,7 @@
 
 
 Name:           texstudio
-Version:        4.8.6
+Version:        4.8.7
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
@@ -64,14 +64,15 @@ syntax highlighting, automatically code completion and more.
 mkdir -p %{buildroot}%{_datadir}/metainfo
 cp utilities/texstudio.metainfo.xml %{buildroot}%{_datadir}/metainfo/texstudio.metainfo.xml
 
-rm -f %{buildroot}%{_datadir}/texstudio/{AUTHORS,COPYING,CHANGELOG.txt}
+rm -f %{buildroot}%{_datadir}/doc/texstudio/{AUTHORS,COPYING,CHANGELOG.txt}
 %fdupes -s %{buildroot}%{_datadir}/texstudio/
 
 %files
 %license utilities/COPYING
 %doc utilities/AUTHORS utilities/manual/CHANGELOG.txt
 %{_bindir}/texstudio
-%{_datadir}/texstudio/
+%{_datadir}/texstudio
+%{_datadir}/doc/texstudio
 %{_datadir}/applications/texstudio.desktop
 %{_datadir}/icons/hicolor/scalable/apps/texstudio.svg
 %dir %{_datadir}/metainfo

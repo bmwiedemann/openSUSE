@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 12:59:17 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused gnome-common BuildRequires.
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Fri Jan 12 05:45:57 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Actually drop the Requires on python3-future. 

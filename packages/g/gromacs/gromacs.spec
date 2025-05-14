@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package gromacs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2015-2019 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,11 +16,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# 32-bit archs officially unsupported 
-# https://gitlab.com/gromacs/gromacs/-/merge_requests/2453
-ExcludeArch:   %{ix86} %{arm}
 
 %global flavor @BUILD_FLAVOR@%{nil}
+
+# Section 32-bit archs officially unsupported
+# https://gitlab.com/gromacs/gromacs/-/merge_requests/2453
+ExcludeArch:    %{ix86} %{arm}
+# /Section
 
 %if "%flavor" == ""
 ExclusiveArch:  do_not_build
@@ -33,10 +35,10 @@ ExclusiveArch:  do_not_build
 %endif
 
 %if %{with mpi}
-%define libname_gromacs libgromacs_mpi9
+%define libname_gromacs libgromacs_mpi10
 %define libname_gmxapi libgmxapi_mpi0
 %else
-%define libname_gromacs libgromacs9
+%define libname_gromacs libgromacs10
 %define libname_gmxapi libgmxapi0
 %endif
 %define libname_nblib_gmx libnblib_gmx0
@@ -51,7 +53,7 @@ ExclusiveArch:  do_not_build
 %bcond_without tests
 
 Name:           gromacs%{?with_mpi:-openmpi}
-Version:        2024
+Version:        2025.1
 Release:        0
 %define uversion %{version}
 Summary:        Molecular Dynamics Package
@@ -74,6 +76,7 @@ BuildRequires:  openmpi-devel
 BuildRequires:  openmpi-macros-devel
 %endif
 BuildRequires:  pkg-config
+BuildRequires:  cmake(GTest)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(muparser)
 BuildRequires:  pkgconfig(zlib)
@@ -203,7 +206,6 @@ export MAX_TEST_THREADS=$(( %{?_smp_build_ncpus}%{!?_smp_build_ncpus:2} / 2 ))
   -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-  -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_C_FLAGS_RELEASE:STRING="%{optflags} -fno-strict-aliasing" \
   -DCMAKE_CXX_FLAGS_RELEASE:STRING="%{optflags}" \
   -DCMAKE_SKIP_RPATH=OFF \
@@ -268,7 +270,7 @@ rm -f %{buildroot}%{_bindir}/gmx-completion*
 %check
 %if %{with tests}
 # parallel test are broken, gl#gromacs/gromacs#4975
-%ctest --parallel 1
+%ctest
 %endif
 
 %post   -n %{libname_gromacs} -p /sbin/ldconfig

@@ -32,4 +32,12 @@
   * Use packaging.Version, stops packages relying on this to fail.</comment>
     <requestid>1084152</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1c413f51e30a038957f4d25f3ceb0481</srcmd5>
+    <version>0.4.2</version>
+    <time>1746638150</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275101</requestid>
+  </revision>
 </revisionlist>

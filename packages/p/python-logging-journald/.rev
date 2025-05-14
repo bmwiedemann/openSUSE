@@ -43,4 +43,13 @@
   * drop python 3.7-3.8 support</comment>
     <requestid>1217415</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ca5e1deab8164f2d9818c455b6d60b54</srcmd5>
+    <version>0.6.11</version>
+    <time>1746476776</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.11:
+  * no upstream changelog available</comment>
+    <requestid>1274212</requestid>
+  </revision>
 </revisionlist>

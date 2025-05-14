@@ -23,11 +23,10 @@ Summary:        Zhuyin engine based on libzhuyin for IBus
 License:        GPL-2.0-only
 Group:          System/I18n/Chinese
 URL:            https://github.com/libzhuyin/ibus-libzhuyin
-Source:         https://github.com/libzhuyin/ibus-libzhuyin/releases/download/%{version}/ibus-libzhuyin-%{version}.tar.gz
+Source:         %{url}/releases/download/%{version}/ibus-libzhuyin-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
-BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  libpinyin-tools >= 2.0.91
 BuildRequires:  python3-devel
@@ -36,29 +35,27 @@ BuildRequires:  pkgconfig(ibus-1.0) >= 1.4.99
 BuildRequires:  pkgconfig(libpinyin) >= 2.2.0
 BuildRequires:  pkgconfig(opencc) >= 1.0.0
 Provides:       locale(ibus:zh_TW;zh_HK)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 This package includes a Chinese Zhuyin (Bopomofo) input method based
 on libzhuyin for IBus.
 
 %prep
-%setup -q
+%autosetup -p1
 #NOCONFIGURE=1 ./autogen.sh
 
 %build
 %configure --libexecdir=%{_ibus_libexecdir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 rm -rf %{buildroot}%{_datadir}/doc
 %find_lang %{name}
-%fdupes %{buildroot}
+%fdupes %{buildroot}%{_prefix}
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %license COPYING
 %{_ibus_libexecdir}/ibus-engine-libzhuyin

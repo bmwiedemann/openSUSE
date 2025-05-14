@@ -39,7 +39,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc13-c++
 %endif
 # for autogen.sh
-BuildRequires:  gnome-common
+BuildRequires:  libtool
 BuildRequires:  gobject-introspection-devel
 # json_generator_set_pretty is not available in version below.
 BuildRequires:  json-glib-devel >= 0.14.0

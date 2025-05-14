@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:46:51 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n - update portuguese translations (#76)
+  * i18n(nl) add/update Dutch translation (#75)
+  * Add Hungarian translations (#65)
+  * i18n(fr): Add French translation (#32)
+  * Create cosmic_notifications.ftl (#38)
+  * i18n(hu): Add Hungarian translation (#39)
+  * fix(l18n): Ensure COSMIC is properly cased (#51)
+  * add Dutch translation (#59)
+  * Add Polish translation to metainfo (#63)
+  * i18n (pt-BR) Update translation (#71)
+  * Add Italian translation (#73)
+  * i18n(ro): Add Romanian translation (#74)
+  * fix: freeze in Firefox when notifications are received
+  * fix: define rust 1.85.1 in toolchain to force rustup to update
+  * chore: filter cosmic-config errors that need not be logged
+  * chore: Rust 2024 edition
+  * chore: upgrade all dependencies / fix clippy warnings
+  * chore: update libcosmic
+  * fix(libcosmic): theme subscription
+  * fix license references
+
+-------------------------------------------------------------------
 Sat Feb 22 03:15:26 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

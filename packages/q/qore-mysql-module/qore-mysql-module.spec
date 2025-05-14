@@ -85,10 +85,13 @@ stored procedure execution.
 %endif
 
 %prep
-%setup -q
+%autosetup -p1
 ./configure RPM_OPT_FLAGS="$RPM_OPT_FLAGS" --prefix=/usr --disable-debug
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %{__make}
 
 %install
@@ -97,8 +100,6 @@ mkdir -p $RPM_BUILD_ROOT/%{module_dir}
 mkdir -p $RPM_BUILD_ROOT/usr/share/doc/qore-mysql-module
 make install DESTDIR=$RPM_BUILD_ROOT
 
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
@@ -108,6 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %package doc
 Summary:        MySQL DBI module for Qore
 Group:          Development/Languages
+BuildArch:      noarch
 
 %description doc
 MySQL module for the Qore Programming Language.

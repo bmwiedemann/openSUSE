@@ -1,7 +1,7 @@
 #
 # spec file for package touchegg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ Group:          Hardware/Other
 URL:            https://github.com/JoseExposito/touchegg
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         harden_touchegg.service.patch
+# https://github.com/JoseExposito/touchegg/issues/679
+Patch1:         touchegg-gcc15.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme

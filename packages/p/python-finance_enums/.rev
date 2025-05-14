@@ -15,4 +15,13 @@
     <comment>- Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>895089</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>adfbdedaad0ad37a3f0f9c5cb682e01f</srcmd5>
+    <version>0.1.0</version>
+    <time>1746809394</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275984</requestid>
+  </revision>
 </revisionlist>

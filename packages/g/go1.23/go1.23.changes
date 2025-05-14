@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May  6 18:34:22 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.23.9 (released 2025-05-06) includes fixes to the runtime and
+  the linker.
+  Refs boo#1229122 go1.23 release tracking
+  * go#73091 cmd/link: linkname directive on userspace variable can override runtime variable
+  * go#73380 runtime, x/sys/unix: Connectx is broken on darwin/amd64
+
+-------------------------------------------------------------------
 Tue Apr  1 16:11:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.23.8 (released 2025-04-01) includes security fixes to the

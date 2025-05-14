@@ -17,18 +17,13 @@
 
 
 Name:           gnome-music
-Version:        48.beta+31
+Version:        48.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.zst
-
-#PATCH-FIX-SLE  0001-gnome-music-use-python36.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
-Patch0:         0001-gnome-music-use-python36.patch
-#PATCH-FIX-SLE  0002-gnome-music-revert-from-future-import-annotations.patch yfjiang@suse.com -- disable python 3.7 specific feature to allow gnome-music build and run on python 3.6 for SLE/Leap 15.4.
-Patch1:         0002-gnome-music-revert-from-future-import-annotations.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -79,11 +74,7 @@ Music player and management application for GNOME.
 %lang_package
 
 %prep
-%setup -q
-%if 0%{?sle_version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%endif
+%autosetup -p1
 
 %build
 %meson

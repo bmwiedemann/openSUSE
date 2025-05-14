@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed May  7 20:59:51 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Add 25.04.1 release notes
+  * Don't search for rental vehicle journeys
+  * Also poll for updates for newly imported reservations in the far future
+  * Fix geocoding when no country is selected
+  * Fill in missing address bits when geocoding
+  * Postprocess reservations after editing
+  * Apply live data journey updates to entire batches in one go
+  * Fix display of arrival stop notes
+  * Improve trip group action state handling for ending trips
+  * Disable Appium tests on the CI for now
+  * Build APKs against released dependencies
+  * cmake: We're linking to CorePrivate so search for it
+  * Fix typo in Qt translation catalog exclusion pattern
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:29 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

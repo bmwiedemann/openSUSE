@@ -1,0 +1,40 @@
+From 03c7dcc3280530dacf58620d169ff9c540c04592 Mon Sep 17 00:00:00 2001
+From: Peter Varga <pvarga@inf.u-szeged.hu>
+Date: Tue, 11 Mar 2025 09:19:16 +0100
+Subject: [PATCH] [angle] Always use primary GPU
+
+Since https://crrev.com/c/5320107, ANGLE may choose another GPU what Qt
+uses with an EGL configuration. This may lead to sporadic crashes when
+ANGLE uses the native EGL context.
+
+It is reproducible with integrated Intel GPU and dedicated Nvidia GPU.
+If the primary GPU is Nvidia and the kernel mode setting (KMS) is not
+explicitly enabled for the driver, it will fail to access DRM and will
+fallback to Intel.
+
+As a workaround, stop prioritizing EGL drivers with DRM support.
+
+Change-Id: I5d346fdc0db59521e4a2d323c8b230a75f128eaa
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/630511
+Reviewed-by: Moss Heim <moss.heim@qt.io>
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ .../angle/src/libANGLE/renderer/gl/egl/FunctionsEGL.cpp         | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/third_party/angle/src/libANGLE/renderer/gl/egl/FunctionsEGL.cpp b/src/3rdparty/chromium/third_party/angle/src/libANGLE/renderer/gl/egl/FunctionsEGL.cpp
+index f9bd8aa417d..aa68b72f98e 100644
+--- a/src/3rdparty/chromium/third_party/angle/src/libANGLE/renderer/gl/egl/FunctionsEGL.cpp
++++ b/src/3rdparty/chromium/third_party/angle/src/libANGLE/renderer/gl/egl/FunctionsEGL.cpp
+@@ -245,7 +245,7 @@ egl::Error FunctionsEGL::initialize(EGLAttrib platformType, EGLNativeDisplayType
+     // extensions once the display is created and initialized.
+     queryExtensions();
+ 
+-#if defined(ANGLE_HAS_LIBDRM)
++#if defined(ANGLE_HAS_LIBDRM) && !defined(TOOLKIT_QT)
+     mEGLDisplay = getPreferredDisplay(&majorVersion, &minorVersion);
+ #endif  // defined(ANGLE_HAS_LIBDRM)
+ 
+-- 
+2.49.0
+

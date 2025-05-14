@@ -20,12 +20,12 @@
 
 %define kf6_version 6.6.0
 %define qt6_version 6.6.0
-%define kpim6_version 6.4.0
+%define kpim6_version 6.4.1
 %define plasma6_version 6.2.0
 
 %bcond_without released
 Name:           merkuro
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        Calendar Application
 License:        GPL-3.0-only

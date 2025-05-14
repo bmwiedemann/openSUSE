@@ -1,0 +1,27 @@
+# Information for Encfs on openSUSE
+
+## Encfs is deprecated
+
+Encfs is no longer maintained upstream. A number of inherrent security issues
+may remain unresolved forever. The package is on a deprecation path in
+openSUSE. Users are advised to move to alternatives, such as LUKS, crypfs,
+gocryptfs, or file based encryption (GnuPG).
+
+See https://bugzilla.opensuse.org/show_bug.cgi?id=1243036
+
+## encfs on Leap 15.6 or later may fail to decrypt old directories
+
+encfs, when built against OpenSSL 3, may fail to decrypt data created with
+versions built against OpenSSL 1. This applies when when transitioing from
+openSUSE Leap 15.5 to 15.6, or to openSUSE Tumbleweed. As a workaround, the
+following configuration may be added to /etc/ssl/openssl.cnf :
+
+````
+[provider_sect]
+legacy = legacy_sect
+
+[legacy_sect]
+activate = 1
+````
+
+See https://bugzilla.opensuse.org/show_bug.cgi?id=1221085

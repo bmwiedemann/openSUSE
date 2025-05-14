@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May  7 13:18:04 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use source urls to fetch project sources 
+
+-------------------------------------------------------------------
+Thu May  1 15:59:09 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to v0.11.10:
+  * [UR][L0] Release parent of sub-buffer when sub-buffer
+
+- Update to v0.11.9:
+  * [UR][L0] Disable Immediate Command List DG2 Windows
+
+-------------------------------------------------------------------
+Sat Feb 15 00:14:20 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to v0.11.8:
+  * [DeivceASAN] Make ShadowMemory one instance per type
+  * [DeviceASAN] Fix kernel release order
+  * [DeviceASAN] Bugfix for GetDeviceType
+  * [L0]: fix missing destroy of event given enqueue wait out event
+  * [DeviceASAN][bugfix] Not allow concurrent kernel launches
+    across different queue
+
+-------------------------------------------------------------------
 Wed Jan 22 02:29:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to v0.11.4:

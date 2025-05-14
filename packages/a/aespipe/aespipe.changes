@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  5 08:30:23 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to version 2.4i:
+  * Added AES Crypto Extension opcodes for 64-bit arm64 on Linux.
+  * aes-armv8sca.S aes-armv8ce.S : add PAC/BTI branch protection
+    support.
+
+-------------------------------------------------------------------
 Mon Sep  2 09:26:31 UTC 2024 - ming li <mli@suse.com>
 
 - Update to version 2.4h:

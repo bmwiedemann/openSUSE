@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  6 08:09:18 UTC 2025 - Richard Brown <rbrown@suse.de>
+
+- Setup /etc subvolume for transactional-update v5.0+ 
+
+-------------------------------------------------------------------
+Fri May  2 11:57:57 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- No longer setup fstab for overlayfs thanks to
+  transactional-update v5.0+ 
+- Use systemd-boot
+
+-------------------------------------------------------------------
 Thu Oct  3 07:03:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Exclusively build for x86_64 and aarch64: match with

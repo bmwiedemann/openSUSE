@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  7 17:06:32 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- refactor _service file and spec
+
+-------------------------------------------------------------------
+Tue May 06 03:22:14 UTC 2025 - Dobri Danchev <dobri@danchev.net>
+
+- Update to version 5.6.0:
+  * Update api to v0.19.0
+  * Update cmd/config to v0.19.0
+  * Update kyaml to v0.19.0
+  * add go work verification step for github actions (#5833)
+  * downgrade go-difflib and go-spew to tagged releases (#5830)
+  * build(deps): bump golang.org/x/crypto from 0.24.0 to 0.31.0 in /hack
+
+-------------------------------------------------------------------
 Thu Oct 05 14:15:58 UTC 2023 - Guilherme Macedo <guilherme.macedo@suse.com>
 
 - Update to version 5.1.1:
@@ -278,7 +294,7 @@ Thu Oct 05 14:15:58 UTC 2023 - Guilherme Macedo <guilherme.macedo@suse.com>
 -------------------------------------------------------------------
 Tue Dec 13 20:30:28 UTC 2022 - Robert Munteanu <rombert@apache.org>
 
-- Add completions 
+- Add completions
 
 -------------------------------------------------------------------
 Tue Dec 13 20:24:31 UTC 2022 - rombert@apache.org
@@ -1028,7 +1044,7 @@ Thu Oct 21 11:57:03 UTC 2021 - Robert Munteanu <rombert@apache.org>
 -------------------------------------------------------------------
 Tue Oct 19 19:17:13 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
-- include the version and build date in the version output 
+- include the version and build date in the version output
 
 -------------------------------------------------------------------
 Wed Feb 10 04:02:15 UTC 2021 - jenting hsiao <jenting.hsiao@suse.com>

@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon May 12 09:03:51 UTC 2025 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/linuxrc#338
+- adjust to c23 changes in gcc-15 (bsc#1241934)
+- 9.5
+
+--------------------------------------------------------------------
 Mon Feb 24 18:02:02 UTC 2025 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/linuxrc#335

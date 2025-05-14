@@ -97,7 +97,6 @@ cat >/etc/fstab.script <<"EOF"
 #!/bin/sh
 set -eux
 
-/usr/sbin/setup-fstab-for-overlayfs
 # ... set options for autoexpanding /home
 gawk -i inplace '$2 == "/home" { $4 = $4",x-systemd.growfs" } { print $0 }' /etc/fstab
 # workaround https://github.com/systemd/systemd/issues/927, drop the ro from the fstab mount

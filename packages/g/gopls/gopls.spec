@@ -25,7 +25,8 @@ Group:          Development/Tools/Other
 URL:            https://pkg.go.dev/golang.org/x/tools/gopls
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  golang(API) >= 1.23
+Requires:       golang(API) >= 1.23
 
 %description
 gopls (pronounced "Go please") is the official Go language server developed

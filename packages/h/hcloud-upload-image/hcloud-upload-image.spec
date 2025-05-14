@@ -1,7 +1,7 @@
 #
 # spec file for package hcloud-upload-image
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           hcloud-upload-image
-Version:        0.3.1
+Version:        1.1.0
 Release:        0
 Summary:        Quickly upload any raw disk images into your Hetzner Cloud projects
 License:        MIT
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.24
 
 %description
 Quickly upload any raw disk images into your Hetzner Cloud projects!

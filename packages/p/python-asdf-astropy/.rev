@@ -130,4 +130,12 @@ This is just to get rid of the build failure in d:l:p. It is not suitable for an
     astropy.wcs.wcsapi.SlicedLowLevelWCS [#246] (forwarded request 1227122 from bnavigator)</comment>
     <requestid>1227123</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>4671e923a9e5dee4835e5886e1aaf347</srcmd5>
+    <version>0.7.1</version>
+    <time>1746476933</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1274491</requestid>
+  </revision>
 </revisionlist>

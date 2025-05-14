@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 12 15:33:26 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove clean section
+
+-------------------------------------------------------------------
+Mon May 12 13:39:52 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add CMAKE Policy >=3.5  (boo#1241902)
+- Move to %autosetup
+
+-------------------------------------------------------------------
 Fri Feb  3 15:24:03 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Change documentation to nonarch

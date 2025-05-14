@@ -21,8 +21,8 @@ Version:        0.3.3
 Release:        0
 Summary:        Rizin package manager
 License:        LGPL-3.0-only
-URL:            https://github.com/rizinorg/rz-pm.git
-Source:         %{name}-%{version}.tar
+URL:            https://github.com/rizinorg/rz-pm
+Source:         https://github.com/rizinorg/rz-pm/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  golang(API) >= 1.22
 Requires:       rizin

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 05:12:32 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Jun 27 11:53:34 UTC 2023 - Markéta Machová <mmachova@suse.com>
 
 - Adapt to changes in urllib3 v2

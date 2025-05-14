@@ -230,4 +230,16 @@
   * skip BufferedRandomType on pyodide</comment>
     <requestid>1217040</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dd6abf466e34fddb0d3c990086739723</srcmd5>
+    <version>0.4.0</version>
+    <time>1746476836</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.0:
+  * add initial support for python 3.14
+  * fix typo in requirements.txt
+  * updated copyright for 2025
+- Switch to pyproject macros.</comment>
+    <requestid>1274274</requestid>
+  </revision>
 </revisionlist>

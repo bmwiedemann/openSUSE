@@ -88,7 +88,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        9.2.3
+Version:        10.0.0
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -290,6 +290,7 @@ Provides:       kvm = %{version}
 Provides:       qemu-kvm = %{version}
 ## Pacakges we OBSOLETE (and CONFLICT)
 Obsoletes:      kvm <= %{version}
+Obsoletes:      qemu-accel-tcg-x86 < %{version}
 Obsoletes:      qemu-audio-oss < %{version}
 Obsoletes:      qemu-audio-sdl < %{version}
 Obsoletes:      qemu-kvm <= %{version}
@@ -354,6 +355,7 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %dir %_datadir/%name/vhost-user
 %dir %_sysconfdir/%name
 %dir %_sysconfdir/%name/firmware
+%dir %{_libdir}/%{name}
 %dir /usr/lib/supportconfig
 %dir /usr/lib/supportconfig/plugins
 %_datadir/applications/qemu.desktop
@@ -376,6 +378,7 @@ This package acts as an umbrella package to the other QEMU sub-packages.
 %_mandir/man7/qemu-cpu-models.7.gz
 %_mandir/man7/qemu-qmp-ref.7.gz
 %_mandir/man7/qemu-ga-ref.7.gz
+%{_libdir}/%{name}/hw-uefi-vars.so
 /usr/lib/supportconfig/plugins/%name
 %license COPYING COPYING.LIB LICENSE
 
@@ -425,7 +428,7 @@ meson subprojects packagefiles --apply berkeley-softfloat-3
 # petalogix-s3adsp1800.dtb QEMU,cgthree.bin QEMU,tcx.bin qemu_vga.ndrv
 # u-boot.e500 u-boot-sam460-20100605.bin opensbi-riscv32-generic-fw_dynamic.bin
 # opensbi-riscv32-generic-fw_dynamic.elfnpcm7xx_bootrom.bin vof.bin
-# vof-nvram.bin
+# vof-nvram.bin npcm8xx_bootrom.bin pnv-pnor.bin vof.bin vof-nvram.bin
 
 # Note that:
 # - default firmwares are built "by default", i.e., they're built automatically
@@ -433,7 +436,6 @@ meson subprojects packagefiles --apply berkeley-softfloat-3
 # - extra firmwares are built "manually" (see below)  from their own sources
 #   (which, typically, are submodules checked out in the {srcdi}r/roms directory)
 %define ppc_default_firmware %{nil}
-#{vof.bin vof-nvram.bin}
 %define ppc_extra_firmware {skiboot.lid slof.bin}
 %define riscv64_default_firmware %{nil}
 %define riscv64_extra_firmware {opensbi-riscv64-generic-fw_dynamic.bin}
@@ -817,7 +819,9 @@ install -D -m 0755 %{rpmfilesdir}/qemu-supportconfig %{buildroot}/usr/lib/suppor
 install -D -m 0644 %{rpmfilesdir}/supported.arm.txt %{buildroot}%_docdir/qemu-arm/supported.txt
 install -D -m 0644 %{rpmfilesdir}/supported.ppc.txt %{buildroot}%_docdir/qemu-ppc/supported.txt
 install -D -m 0644 %{rpmfilesdir}/supported.x86.txt %{buildroot}%_docdir/qemu-x86/supported.txt
+%ifnarch %ix86 armv7hl
 install -D -m 0644 %{rpmfilesdir}/supported.s390.txt %{buildroot}%_docdir/qemu-s390x/supported.txt
+%endif
 
 %if %{legacy_qemu_kvm}
 install -D -m 0644 %{rpmfilesdir}/qemu-kvm.1.gz %{buildroot}%_mandir/man1/qemu-kvm.1.gz
@@ -956,6 +960,11 @@ echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-seccomp.c
 echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-crypto-secret.c
 %endif
 
+# Quick sanity check, as it'll give easier to debug failures
+# than we see with 'make check'
+./qemu-system-%{qemu_arch} -help
+./qemu-img -help
+
 # Compile the QOM test binary first, so that ...
 %make_build tests/qtest/qom-test
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
@@ -965,16 +974,43 @@ echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-crypto-secret.c
 %make_build check-build
 # Let's now run the 'make check' component individually, so we have
 # more control on the options (like -j, etc)
+
+%define timeout_multiplier 1
+# Particularly slow arch-es (on OBS) may benefit from this
+%ifarch riscv64
+%define timeout_multiplier 3
+%endif
+
+echo "######## unit tests ########"
 %make_build check-unit
+
+echo "######## QAPI schema tests ########"
 %make_build check-qapi-schema
+
+echo "######## DecodeTree tests ########"
+%make_build check-decodetree
+
+echo "######## Soft Float tests ########"
 %make_build check-softfloat
+
+%if %{with chkqtests} && !0%{?qemu_user_space_build}
+echo "######## QTest tests ########"
+# Run qtests sequentially, as it's too unreliable, when run in OBS, if parallelized
+make -O V=1 VERBOSE=1 -j1 check-qtest TIMEOUT_MULTIPLIER=%{timeout_multiplier}
+%endif
+
 # This would be `make_build check-block`. But iotests are not reliable
 # if ran in parallel in OBS, so let's be slow for now.
-make -O V=1 VERBOSE=1 -j1 check-block
-%if %{with chkqtests} && !0%{?qemu_user_space_build}
-# Run qtests sequentially, as it's too unreliable, when run in OBS, if parallelized
-make -O V=1 VERBOSE=1 -j1 check-qtest
+echo "######## Block I/O tests ########"
+make -O V=1 VERBOSE=1 -j1 check-block TIMEOUT_MULTIPLIER=%{timeout_multiplier}
+
+echo "######## Functional tests ########"
+# NB: ppc64le hosts often fail one or more functional tests...
+%ifnarch ppc64le
+# 'check-func-quick' instead of 'check-functional' to avoid asset download
+%make_build check-func-quick TIMEOUT_MULTIPLIER=%{timeout_multiplier}
 %endif
+
 # Last step will be to run a full check-report, but we will
 # enable this at a later point
 #make -O V=1 VERBOSE=1 -j1 check-report.junit.xml
@@ -1096,7 +1132,6 @@ currently necessary for having a functional (headless) QEMU/KVM stack.
 Summary:        Machine emulator and virtualizer for x86 architectures
 Group:          System/Emulators/PC
 Requires:       %name = %{version}
-Requires:       qemu-accel-tcg-x86
 Requires:       qemu-ipxe
 Requires:       qemu-seabios
 Requires:       qemu-vgabios
@@ -1116,7 +1151,9 @@ This package provides i386 and x86_64 emulation.
 
 %files x86
 %_bindir/qemu-system-i386
+%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-x86_64
+%endif
 %_datadir/%name/kvmvapic.bin
 %_datadir/%name/linuxboot.bin
 %_datadir/%name/linuxboot_dma.bin
@@ -1140,16 +1177,20 @@ This package provides ppc and ppc64 emulation.
 
 %files ppc
 %_bindir/qemu-system-ppc
+%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-ppc64
+%endif
 %_datadir/%name/bamboo.dtb
 %_datadir/%name/canyonlands.dtb
 %_datadir/%name/openbios-ppc
 %_datadir/%name/qemu_vga.ndrv
+%_datadir/%name/pnv-pnor.bin
 %_datadir/%name/u-boot.e500
 %_datadir/%name/u-boot-sam460-20100605.bin
 %_datadir/%name/vof*.bin
 %doc %_docdir/qemu-ppc
 
+%ifnarch %ix86 armv7hl
 %package s390x
 Summary:        Machine emulator and virtualizer for S/390 architectures
 Group:          System/Emulators/PC
@@ -1166,6 +1207,7 @@ This package provides s390x emulation.
 %_bindir/qemu-system-s390x
 %_datadir/%name/s390-ccw.img
 %doc %_docdir/qemu-s390x
+%endif
 
 %package arm
 Summary:        Machine emulator and virtualizer for ARM architectures
@@ -1183,8 +1225,11 @@ This package provides arm emulation.
 
 %files arm
 %_bindir/qemu-system-arm
+%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-aarch64
+%endif
 %_datadir/%name/npcm7xx_bootrom.bin
+%_datadir/%name/npcm8xx_bootrom.bin
 %doc %_docdir/qemu-arm
 
 %package extra
@@ -1194,6 +1239,12 @@ Requires:       %name = %{version}
 Recommends:     qemu-ipxe
 Recommends:     qemu-skiboot
 Recommends:     qemu-vgabios
+%ifarch %ix86 armv7hl
+# The package is not built any longer for 32bits arch-es, but we're still
+# providing the s390-ccw.img firmware, as part of this package (for those
+# arch-es only, of course)
+Obsoletes:      qemu-s390x < %{version}
+%endif
 
 %description extra
 %{generic_qemu_description}
@@ -1203,28 +1254,33 @@ mips, sparc, and xtensa. (The term "extra" is juxtapositioned against more
 popular QEMU packages which are dedicated to a single architecture.)
 
 %files extra
+%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-alpha
-%_bindir/qemu-system-avr
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-loongarch64
-%_bindir/qemu-system-m68k
 %_bindir/qemu-system-microblaze
 %_bindir/qemu-system-microblazeel
-%_bindir/qemu-system-mips
-%_bindir/qemu-system-mipsel
 %_bindir/qemu-system-mips64
 %_bindir/qemu-system-mips64el
+%_bindir/qemu-system-riscv64
+%_bindir/qemu-system-sparc64
+%endif
+%_bindir/qemu-system-avr
+%_bindir/qemu-system-m68k
+%_bindir/qemu-system-mips
+%_bindir/qemu-system-mipsel
 %_bindir/qemu-system-or1k
 %_bindir/qemu-system-riscv32
-%_bindir/qemu-system-riscv64
 %_bindir/qemu-system-rx
 %_bindir/qemu-system-sh4
 %_bindir/qemu-system-sh4eb
 %_bindir/qemu-system-sparc
-%_bindir/qemu-system-sparc64
 %_bindir/qemu-system-tricore
 %_bindir/qemu-system-xtensa
 %_bindir/qemu-system-xtensaeb
+%ifarch %ix86 armv7hl
+%_datadir/%name/s390-ccw.img
+%endif
 %_datadir/%name/hppa-firmware.img
 %_datadir/%name/hppa-firmware64.img
 %_datadir/%name/openbios-sparc32
@@ -1738,23 +1794,6 @@ This package provides a service file for starting and stopping KSM.
 %postun ksm
 %service_del_postun ksm.service
 
-%package accel-tcg-x86
-Summary:        TCG accelerator for QEMU
-Group:          System/Emulators/PC
-%{qemu_module_conflicts}
-
-%description accel-tcg-x86
-TCG is the QEMU binary translator, responsible for converting from target to
-host instruction set.
-
-This package provides the TCG accelerator for QEMU.
-
-%files accel-tcg-x86
-%dir %_datadir/%name
-%dir %_libdir/%name
-%_libdir/%name/accel-tcg-i386.so
-%_libdir/%name/accel-tcg-x86_64.so
-
 %package accel-qtest
 Summary:        QTest accelerator for QEMU
 Group:          System/Emulators/PC
@@ -1769,33 +1808,35 @@ This package provides QTest accelerator for testing QEMU.
 %files accel-qtest
 %dir %_datadir/%name
 %dir %_libdir/%name
+%ifnarch %ix86 armv7hl
 %_libdir/%name/accel-qtest-aarch64.so
 %_libdir/%name/accel-qtest-alpha.so
-%_libdir/%name/accel-qtest-arm.so
-%_libdir/%name/accel-qtest-avr.so
 %_libdir/%name/accel-qtest-hppa.so
-%_libdir/%name/accel-qtest-i386.so
 %_libdir/%name/accel-qtest-loongarch64.so
-%_libdir/%name/accel-qtest-m68k.so
 %_libdir/%name/accel-qtest-microblaze.so
 %_libdir/%name/accel-qtest-microblazeel.so
-%_libdir/%name/accel-qtest-mips.so
 %_libdir/%name/accel-qtest-mips64.so
 %_libdir/%name/accel-qtest-mips64el.so
+%_libdir/%name/accel-qtest-ppc64.so
+%_libdir/%name/accel-qtest-riscv64.so
+%_libdir/%name/accel-qtest-s390x.so
+%_libdir/%name/accel-qtest-sparc64.so
+%_libdir/%name/accel-qtest-x86_64.so
+%endif
+%_libdir/%name/accel-qtest-arm.so
+%_libdir/%name/accel-qtest-avr.so
+%_libdir/%name/accel-qtest-i386.so
+%_libdir/%name/accel-qtest-m68k.so
+%_libdir/%name/accel-qtest-mips.so
 %_libdir/%name/accel-qtest-mipsel.so
 %_libdir/%name/accel-qtest-or1k.so
 %_libdir/%name/accel-qtest-ppc.so
-%_libdir/%name/accel-qtest-ppc64.so
 %_libdir/%name/accel-qtest-riscv32.so
-%_libdir/%name/accel-qtest-riscv64.so
 %_libdir/%name/accel-qtest-rx.so
-%_libdir/%name/accel-qtest-s390x.so
 %_libdir/%name/accel-qtest-sh4.so
 %_libdir/%name/accel-qtest-sh4eb.so
 %_libdir/%name/accel-qtest-sparc.so
-%_libdir/%name/accel-qtest-sparc64.so
 %_libdir/%name/accel-qtest-tricore.so
-%_libdir/%name/accel-qtest-x86_64.so
 %_libdir/%name/accel-qtest-xtensa.so
 %_libdir/%name/accel-qtest-xtensaeb.so
 
@@ -1877,7 +1918,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        9.2.3%{sbver}
+Version:        10.0.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1898,7 +1939,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        9.2.3%{sbver}
+Version:        10.0.0%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1924,7 +1965,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        9.2.3
+Version:        10.0.0
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

@@ -68,4 +68,12 @@
     <comment></comment>
     <requestid>1250165</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>867303194c517680bb15e33043f75e7e</srcmd5>
+    <version>1.0.0~alpha7+0</version>
+    <time>1746721474</time>
+    <user>dimstar_suse</user>
+    <comment>- remove fix-justfile.patch, upstream fixed the issue (forwarded request 1275589 from rrahl0)</comment>
+    <requestid>1275590</requestid>
+  </revision>
 </revisionlist>

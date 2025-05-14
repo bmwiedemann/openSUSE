@@ -1,7 +1,7 @@
 #
 # spec file for package libint
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libint
-Version:        2.7.2
+Version:        2.11.0
 Release:        0
 %define         sover 2
 Summary:        High-performance library for computing Gaussian integrals in quantum mechanics
@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Scientific/Chemistry
 URL:            https://evaleev.github.io/libint/
 Source0:        https://github.com/evaleev/libint/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/evaleev/libint/commit/485aaae9e18e9ad3d0d43f20caf8f054ded9b80b
+Patch0:         libint-gcc15.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -85,7 +87,7 @@ super-scalar architectures.
 This package contains development headers and libraries for libint.
 
 %prep
-%setup -q
+%autosetup -p1
 ./autogen.sh
 
 %build

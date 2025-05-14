@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May  5 12:11:21 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  https://github.com/airspy/airspyone_host/commit/bd15be38e91ebaa3e0bebb1e320255bde4ccf059
+  + airspy-gcc15.patch
+
+-------------------------------------------------------------------
 Thu Mar 20 21:45:48 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

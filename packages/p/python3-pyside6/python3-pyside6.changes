@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  7 07:44:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Disable more failing test on x86_64 and riscv
+
+-------------------------------------------------------------------
+Thu Apr 24 10:40:36 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Exclude a number of tests that segfault in ppc64le 
+
+-------------------------------------------------------------------
 Fri Apr  4 13:13:03 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Disable a test that fails randomly

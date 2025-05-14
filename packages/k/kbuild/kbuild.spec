@@ -33,6 +33,7 @@ Patch8:         kbuild-wrong-memset.patch
 Patch9:         ppc64le.patch
 Patch10:        aarch64.patch
 Patch13:        glob-lstat.patch
+Patch14:        kbuild-gcc15.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  byacc

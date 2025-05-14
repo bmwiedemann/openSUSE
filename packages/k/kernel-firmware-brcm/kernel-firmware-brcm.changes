@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 29 06:17:18 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250428 (git commit 0d104598cd5b):
+  * brcm: Add NVRAM file for Radxa Rock Pi X mini PC
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

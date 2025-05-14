@@ -40,7 +40,7 @@
 %define docs 0
 
 Name:           fwupd
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -106,12 +106,14 @@ BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libgcab-1.0) >= 1.0
 BuildRequires:  pkgconfig(libprotobuf-c)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libusb-1.0) >= 0.1.27
 BuildRequires:  pkgconfig(mbim-glib)
 BuildRequires:  pkgconfig(mm-glib)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(qmi-glib)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(tss2-esys) >= 2.0
 BuildRequires:  pkgconfig(udev)

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Apr 24 18:05:01 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * refactor: enter span
+  * Fix compilation
+  * fix: ignore error when starting service
+  * fix(just): wrong path for dconf profile in start-cosmic
+  * fix(debian): dconf profile now installed by justfile
+  * justfile: install dconf profile
+  * justfile: use prefix in dconf profile path
+  * fix: xdg autostart was not executing
+  * fix: update asyinc-signals to fix loongarch build
+  * Adding autostart flag for use / consts
+  * Rustfmt + adding checks for OnlyShowIn / NotShowIn
+  * Getting graphical applications working
+  * Hiding autostart functionality behind feature gate "autostart"
+  * Adding in functionality to autostart programs on non-systemd systems
+  * start-cosmic: Import DCONF_PROFILE into systemd user environment
+- remove fix-justfile.patch, upstream fixed the issue
+
+-------------------------------------------------------------------
 Sat Feb 22 03:36:03 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

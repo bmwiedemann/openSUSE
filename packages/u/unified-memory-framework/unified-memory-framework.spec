@@ -18,12 +18,12 @@
 
 %define libname libumf0
 Name:           unified-memory-framework
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        oneAPI Unified Memory Framework (UMF)
 License:        Apache-2.0
 URL:            https://github.com/oneapi-src/unified-memory-framework
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/oneapi-src/unified-memory-framework/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hwloc-devel

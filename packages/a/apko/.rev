@@ -375,4 +375,36 @@
     <comment></comment>
     <requestid>1273304</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3c3f6b75497f18671a7d14862843cae8</srcmd5>
+    <version>0.27.2</version>
+    <time>1746542521</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274757</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>888f8dc612e565c8a7ca3fcb336cd31a</srcmd5>
+    <version>0.27.3</version>
+    <time>1746721349</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275352</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>51973647a713ca9a7e1f382a98a1ff91</srcmd5>
+    <version>0.27.4</version>
+    <time>1746809337</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276017</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8832b0b08e3b902b2815b4f2c60bcfbe</srcmd5>
+    <version>0.27.6</version>
+    <time>1747159560</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276996</requestid>
+  </revision>
 </revisionlist>

@@ -196,4 +196,18 @@
     verbose settings.</comment>
     <requestid>1267690</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e110cb247463bc5509a6fd36cd6dc1fb</srcmd5>
+    <version>2.2.3</version>
+    <time>1746721388</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.3:
+  * Reverse older commit: version.h cannot be included without breaking
+    the build (everything recompiles every time) and the release archive
+    creation (which relies on git tags).
+
+- Update to 2.2.2:
+  * Fix potential vulnerability similar to CVE-2020-28935</comment>
+    <requestid>1275417</requestid>
+  </revision>
 </revisionlist>

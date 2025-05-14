@@ -9,4 +9,13 @@
 Required by python-cufflinks</comment>
     <requestid>669896</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b92f66932ca8beaaf3a0a36bc3c9fa5e</srcmd5>
+    <version>0.3.0</version>
+    <time>1746809377</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275969</requestid>
+  </revision>
 </revisionlist>

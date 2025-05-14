@@ -26,6 +26,7 @@ Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libmspub
 Source:         http://dev-www.libreoffice.org/src/libmspub/libmspub-%{version}.tar.xz
 Patch0:         fix-missing-include.patch
+Patch1:         libmspub-0.1.4-gcc15.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

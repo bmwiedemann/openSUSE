@@ -54,6 +54,7 @@
 %define with_userfaultfd_sysctl 0%{!?_without_userfaultfd_sysctl:1}
 
 # A few optional bits off by default, we enable later
+%define with_fuse          0%{!?_without_fuse:0}
 %define with_numad         0%{!?_without_numad:0}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:0}
 %define with_libssh        0%{!?_without_libssh:0}
@@ -112,6 +113,11 @@
     %endif
 %endif
 
+# fuse is used to provide virtualized /proc for LXC
+%if %{with_lxc}
+    %define with_fuse      0%{!?_without_fuse:1}
+%endif
+
 # Items to exclude in SLFO:Main based products
 %if 0%{?suse_version} == 1600
     %define with_apparmor  0
@@ -119,6 +125,7 @@
     %define with_interface 0
     %define with_libxl     0
     %define with_lxc       0
+    %define with_fuse      0
     %define with_numad     0
     %define with_sanlock   0
     %define with_storage_gluster 0
@@ -150,7 +157,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        11.2.0
+Version:        11.3.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -255,7 +262,9 @@ BuildRequires:  glusterfs-devel >= 3.4.1
 # For QEMU/LXC numa info
 BuildRequires:  libnuma-devel
 %endif
-BuildRequires:  fuse-devel >= 2.8.6
+%if %{with_fuse}
+BuildRequires:  pkgconfig(fuse3) >= 3.1.0
+%endif
 BuildRequires:  libcap-ng-devel >= 0.5.0
 %if %{with_interface}
 BuildRequires:  libnetcontrol-devel >= 0.2.0
@@ -943,6 +952,11 @@ Allows SSH into domains via VSOCK without need for network.
 %else
     %define arg_numad -Dnumad=disabled
 %endif
+%if %{with_fuse}
+    %define arg_fuse -Dfuse=enabled
+%else
+    %define arg_fuse -Dfuse=disabled
+%endif
 %if %{with_userfaultfd_sysctl}
     %define arg_userfaultfd_sysctl -Duserfaultfd_sysctl=enabled
 %else
@@ -1076,7 +1090,7 @@ Allows SSH into domains via VSOCK without need for network.
            -Dssh_proxy=enabled \
            -Dsysctl_config=enabled \
            -Dcapng=enabled \
-           -Dfuse=enabled \
+           %{?arg_fuse} \
            -Dnetcf=disabled \
            %{?arg_netcontrol} \
            -Dselinux=enabled \

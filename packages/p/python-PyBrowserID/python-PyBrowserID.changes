@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 12:25:18 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Mar 18 07:18:27 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add 0001-Remove-the-use-of-the-deprecated-assertEquals-functi.patch

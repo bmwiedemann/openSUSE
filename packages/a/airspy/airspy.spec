@@ -28,6 +28,8 @@ License:        GPL-2.0-or-later
 URL:            http://www.airspy.com
 #Git-Clone:     https://github.com/airspy/airspyone_host.git
 Source:         https://github.com/airspy/airspyone_host/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# https://github.com/airspy/airspyone_host/commit/bd15be38e91ebaa3e0bebb1e320255bde4ccf059
+Patch0:         airspy-gcc15.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
@@ -60,7 +62,7 @@ Requires:       %{libname} = %{version}
 Library headers for airspy driver.
 
 %prep
-%setup -q -n airspyone_host-%{version}
+%autosetup -p1 -n airspyone_host-%{version}
 
 # HACK: set udev group to airspy
 sed -i "s/plugdev/airspy/g" airspy-tools/52-airspy.rules

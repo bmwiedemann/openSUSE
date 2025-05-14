@@ -19,13 +19,14 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.41.1
+Version:        0.42.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/kovidgoyal/kitty
 Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#####
 Source1:        vendor.tar.gz
 Source2:        kitty-rpmlintrc
 Patch0:         buildmode-and-skip_docs.diff
@@ -35,10 +36,10 @@ BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
 ### Avoiding any 'have choice for go' issues ...
-BuildRequires:  go >= 1.23
+#BuildRequires:  go >= 1.24
 #####
-### Temporarily disabled until go1.23 is default
-#BuildRequires:  golang-packaging
+### Temporarily disabled until go1.2# (1.24?) is default
+BuildRequires:  golang-packaging
 #####
 BuildRequires:  harfbuzz-devel >= 1.5.0
 BuildRequires:  libXcursor-devel

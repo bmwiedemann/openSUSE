@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bytecode
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        Python module to generate and modify bytecode
 License:        MIT

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 08:25:02 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- systemd-network got split, install networkd and resolved explicitly
+
+-------------------------------------------------------------------
 Fri Sep 20 11:13:20 UTC 2024 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Install system-user-nobody to provide nobody user

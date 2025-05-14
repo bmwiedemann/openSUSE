@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyfeyn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        1.0.0
 Release:        0
 Summary:        A Python library to help draw Feynman diagrams
 License:        GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            http://projects.hepforge.org/pyfeyn/
 Source:         https://files.pythonhosted.org/packages/source/p/pyfeyn/pyfeyn-%{version}.tar.gz
 BuildRequires:  %{python_module PyX}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyX
@@ -48,10 +49,10 @@ using constructs from PyX, which PyFeyn is based around.
 %setup -q -n pyfeyn-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mkfeyndiag
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -64,6 +65,6 @@ using constructs from PyX, which PyFeyn is based around.
 %files %{python_files}
 %python_alternative %{_bindir}/mkfeyndiag
 %{python_sitelib}/pyfeyn/
-%{python_sitelib}/pyfeyn-%{version}-py*.egg-info
+%{python_sitelib}/pyfeyn-%{version}.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZODB
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,20 @@
 
 
 Name:           python-ZODB
-Version:        6.0
+Version:        6.0.1
 Release:        0
 Summary:        Zope Object Database: object database and persistence
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZODB
-Source:         https://files.pythonhosted.org/packages/source/Z/ZODB/ZODB-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zodb/zodb-%{version}.tar.gz
 BuildRequires:  %{python_module BTrees >= 4.2.0}
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module persistent-devel >= 4.4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module transaction >= 2.4.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zc.lockfile}
 BuildRequires:  %{python_module zodbpickle >= 1.0.1}
 BuildRequires:  %{python_module zope.interface}
@@ -44,8 +46,9 @@ Requires:       python-transaction >= 2.4.0
 Requires:       python-zc.lockfile
 Requires:       python-zodbpickle >= 1.0.1
 Requires:       python-zope.interface
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(post): alts
+Requires(preun): alts
+Conflicts:      fstail
 BuildArch:      noarch
 %python_subpackages
 
@@ -64,7 +67,7 @@ Provides:       %{python_module ZODB-doc = %{version}}
 This package contains documentation files for %{name}.
 
 %prep
-%setup -q -n ZODB-%{version}
+%setup -q -n zodb-%{version}
 # delete backup files
 find . -name "*~" -print -delete
 # remove unwanted shebang
@@ -74,10 +77,10 @@ rm -rf src/ZODB.egg-info
 rm -f src/ZODB/tests/testdocumentation.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %python_clone -a %{buildroot}%{_bindir}/fsdump
@@ -103,7 +106,7 @@ cp -r docs/* %{buildroot}%{_defaultdocdir}/python-ZODB-doc/docs/
 %license LICENSE.txt COPYRIGHT.txt
 %doc 3.11.txt CHANGES.rst HISTORY.rst README.rst
 %{python_sitelib}/ZODB/
-%{python_sitelib}/ZODB-%{version}-py*.egg-info
+%{python_sitelib}/[Zz][Oo][Dd][Bb]-%{version}*-info
 %python_alternative %{_bindir}/fsdump
 %python_alternative %{_bindir}/fsoids
 %python_alternative %{_bindir}/fsrefs

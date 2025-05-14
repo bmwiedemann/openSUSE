@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Apr 19 05:35:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.1.2
+   see /usr/share/doc/packages/perl-Test-CheckGitStatus/Changes
+
+  0.1.2 2025-04-19 00:13:52+02:00
+
+      - Fix calling git on Windows
+      - tests: Call the right perl
+      - tests: Support older git versions
+
+-------------------------------------------------------------------
 Sun Apr 13 21:02:04 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.1.0

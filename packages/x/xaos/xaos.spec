@@ -1,7 +1,7 @@
 #
 # spec file for package xaos
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define alt_name XaoS
 Name:           xaos
-Version:        4.3.2
+Version:        4.3.3
 Release:        0
 Summary:        Powerful fractal generator
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  pkg-config
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6OpenGL)
 BuildRequires:  pkgconfig(Qt6Widgets)
 Provides:       %{alt_name}
 

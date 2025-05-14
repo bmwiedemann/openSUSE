@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * ModerationTools: Fix opening some subpages
+  * Remove Qt 6.10 job for now
+  * Clamp contentY when using the PageUp key (kde#501936)
+  * Stop registering for push notifications despite them being disabled
+  * Print out what the old endpoint was in the warning message
+  * Don't spam network error log with push subscription checks
+  * Don't bother updating push subscriptions if there is none
+  * Remove annual_report from push notification rules
+  * Call updatePushNotifications when toggling the notifications checkbox
+  * snapcraft: sync fixes into release
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

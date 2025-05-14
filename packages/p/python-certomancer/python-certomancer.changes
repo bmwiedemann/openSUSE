@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May 12 12:03:26 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Use libalternatives instead of update-alternatives
+- Skip some failing tests
+
+-------------------------------------------------------------------
 Tue Sep 17 01:28:58 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.12.0. 

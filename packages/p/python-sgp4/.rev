@@ -103,4 +103,13 @@ Submitting because it is an optional package for python-astropy</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1133439</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>97eee792a0b0492992088b3c3b81199a</srcmd5>
+    <version>2.23</version>
+    <time>1746809448</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Ship README as docs.</comment>
+    <requestid>1276025</requestid>
+  </revision>
 </revisionlist>

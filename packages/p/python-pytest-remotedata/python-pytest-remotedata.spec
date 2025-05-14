@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-remotedata
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,14 @@ Version:        0.4.1
 Release:        0
 Summary:        Pytest plugin for controlling remote data access
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/astropy/pytest-remotedata
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-remotedata/pytest-remotedata-%{version}.tar.gz
 BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
@@ -44,10 +45,10 @@ developers to control unit tests that require access to data from the internet.
 %setup -q -n pytest-remotedata-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ developers to control unit tests that require access to data from the internet.
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_remotedata
+%{python_sitelib}/pytest_remotedata-%{version}.dist-info
 
 %changelog

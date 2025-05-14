@@ -1,0 +1,11 @@
+Index: apache-tomcat-11.0.5-src/conf/logging.properties
+===================================================================
+--- apache-tomcat-11.0.5-src.orig/conf/logging.properties
++++ apache-tomcat-11.0.5-src/conf/logging.properties
+@@ -74,3 +74,6 @@ org.apache.catalina.core.ContainerBase.[
+ 
+ # To see debug messages for WebSocket handling, uncomment the following line:
+ #org.apache.tomcat.websocket.level = FINE
++
++1catalina.org.apache.juli.AsyncFileHandler.suffix = out
++1catalina.org.apache.juli.AsyncFileHandler.rotatable = false

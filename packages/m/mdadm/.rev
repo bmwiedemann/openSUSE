@@ -1586,4 +1586,15 @@ which haven't landed upstream yet
   add 1006-imsm-Fix-RAID0-to-RAID10-migration.patch (bsc#1241001) (forwarded request 1268424 from alnovak)</comment>
     <requestid>1268644</requestid>
   </revision>
+  <revision rev="155" vrev="4">
+    <srcmd5>d99310084a0e4b965424d174a634ba9c</srcmd5>
+    <version>4.4</version>
+    <time>1746729588</time>
+    <user>dimstar_suse</user>
+    <comment>- Allow any valid minor name in md device name (bsc#1240789)
+  * add 1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
+
+- Add dependency on suse-module-tools for SLE15 (bsc#1242696)</comment>
+    <requestid>1275591</requestid>
+  </revision>
 </revisionlist>

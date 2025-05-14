@@ -15,4 +15,27 @@
     <comment>- Update to v0.10.1:</comment>
     <requestid>1239466</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b0eaf6ad581aeb2e3f5cf17075b3003</srcmd5>
+    <version>0.11.0</version>
+    <time>1746638231</time>
+    <user>dimstar_suse</user>
+    <comment>- Use source urls to fetch sources 
+
+- Update to v0.11.0:
+  * make disjoint pool a C structure
+  * add fixed provider
+  * remove the Coarse provider and replace with internal coarse
+    library
+  * implement umfPool[Set/Get]Tag
+  * L0 provider: implement support for defer and blocking free
+  * add set/restore context in CUDA provider free()
+  * L0 provider: implement min/recommended page size query
+  * add support for CUDA allocation flags
+  * increase refcount to ze_loader/CUDA libraries
+  * implement size limit for the cache of opened IPC handles
+  * allow creating fixed provider based on allocations from
+    another pool</comment>
+    <requestid>1274936</requestid>
+  </revision>
 </revisionlist>

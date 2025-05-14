@@ -20,14 +20,14 @@
 %define _name gst-plugins-rs
 %define gst_branch 1.0
 
-%ifarch s390 s390x ppc ppc64
+%dnl #%%ifarch s390 s390x ppc ppc64
 %bcond_with aws
-%else
-%bcond_without aws
-%endif
+%dnl #%%else
+%dnl #%%bcond_without aws
+%dnl #%%endif
 
 Name:           gstreamer-plugins-rs
-Version:        0.13.5
+Version:        1.26.1
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -100,6 +100,7 @@ plugins.
 	-Ddav1d=auto \
 	-Dsodium=enabled \
 	-Dcsound=disabled \
+	-Dvvdec=disabled \
 %if %{without aws}
 	-Daws=disabled \
 %endif
@@ -164,6 +165,10 @@ cp %{SOURCE4} %{buildroot}%{_datadir}/appdata/
 %{_libdir}/gstreamer-%{gst_branch}/libgsttogglerecord.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsturiplaylistbin.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstwebrtchttp.so
+%{_libdir}/gstreamer-%{gst_branch}/libgsthlsmultivariantsink.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstrsrelationmeta.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstspeechmatics.so
+%{_libdir}/gstreamer-%{gst_branch}/libgststreamgrouper.so
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-rs.appdata.xml
 %{_bindir}/gst-webrtc-signalling-server

@@ -15,4 +15,13 @@
     <comment>- Update denose.patch to fix more setup methods.</comment>
     <requestid>1204851</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>9ca03516c793ad1f239d276a6fcf24e3</srcmd5>
+    <version>2.1.0</version>
+    <time>1746542546</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.</comment>
+    <requestid>1274777</requestid>
+  </revision>
 </revisionlist>

@@ -167,4 +167,23 @@
     <comment>Revert t-u to 4.x</comment>
     <requestid>1270255</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a07e6181b8060237cdd8f95108e221b3</srcmd5>
+    <version>1.0+git20250422.3e17744</version>
+    <time>1746542352</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0+git20250422.3e17744:
+  * Remount /sysroot/etc between sysroot-etc.mount and initrd-fs.target
+
+- Update to version 1.0+git20250415.7e7aea4:
+  * Add missing dependency on mountpoint
+
+- Add missing dependencies for %post
+
+- Update to version 1.0+git20250414.6ef7163:
+  * Add a note why we need to keep 10-read-only-root-fs.conf around
+  * Migrate from /etc overlays to subvolumes
+- Switch _service to use mode=&quot;manual&quot;</comment>
+    <requestid>1272417</requestid>
+  </revision>
 </revisionlist>

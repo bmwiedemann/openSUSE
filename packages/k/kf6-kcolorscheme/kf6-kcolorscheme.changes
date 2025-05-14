@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Remove assert in createApplicationPalette
+  * Initialize color scheme from system palette if high-contrast is active
+  * Add support for high-contrast color themes (on Windows)
+  * Update version to 6.14.0
+
+-------------------------------------------------------------------
 Sat Apr  5 12:32:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

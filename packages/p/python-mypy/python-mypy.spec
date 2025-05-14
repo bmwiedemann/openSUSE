@@ -16,10 +16,10 @@
 #
 
 
-%{?sle15_python_module_pythons}
+%define types_psutil_version 7.0.0.20250401
+%define types_setuptools_version 78.1.0.20250329
 %bcond_without test
-%define types_psutil_version 6.0.0.20241011
-%define types_setuptools_version 75.1.0.20241014
+%{?sle15_python_module_pythons}
 Name:           python-mypy
 Version:        1.14.1
 Release:        0
@@ -29,10 +29,12 @@ URL:            https://www.mypy-lang.org/
 Source0:        https://files.pythonhosted.org/packages/source/m/mypy/mypy-%{version}.tar.gz
 # Source0:        mypy-%%{version}.tar.gz
 # License Source1: Apache-2.0. Only for the test suite, not packaged here.
-Source1:        https://files.pythonhosted.org/packages/source/t/types-psutil/types-psutil-%{types_psutil_version}.tar.gz
+Source1:        https://files.pythonhosted.org/packages/source/t/types_psutil/types_psutil-%{types_psutil_version}.tar.gz
 # License Source2: Apache-2.0. Only for the test suite, not packaged here.
-Source2:        https://files.pythonhosted.org/packages/source/t/types-setuptools/types-setuptools-%{types_setuptools_version}.tar.gz
+Source2:        https://files.pythonhosted.org/packages/source/t/types_setuptools/types_setuptools-%{types_setuptools_version}.tar.gz
 Source99:       python-mypy-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch1:         mypy-1.14.1-gcc15.patch
 BuildRequires:  %{python_module exceptiongroup}
 BuildRequires:  %{python_module mypy_extensions >= 1.0.0}
 BuildRequires:  %{python_module pip}
@@ -40,20 +42,19 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tomli >= 1.1.0}
 BuildRequires:  %{python_module typing_extensions >= 4.6.0}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-typing_extensions >= 3.10
 Requires:       (python-tomli >= 1.1.0 if python-base < 3.11)
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
+Suggests:       python-psutil >= 4.0
+BuildArch:      noarch
 %if "%{python_flavor}" == "python3" || "%{?python_provides}" == "python3"
 Provides:       mypy = %{version}
 Obsoletes:      mypy < %{version}
 %endif
-Suggests:       python-psutil >= 4.0
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module attrs >= 18}
 BuildRequires:  %{python_module devel}
@@ -85,15 +86,16 @@ Mypy's type system features type inference, gradual typing, generics
 and union types.
 
 %prep
-%setup -q -a 1 -a 2 -n mypy-%{version}
+%setup -q -a1 -n mypy-%{version}
+%setup -q -T -D -a2 -n mypy-%{version}
 %autopatch -p1
 
 sed -i '/env python3/d' ./mypy/stubgenc.py
 sed -i '/env python3/d' ./mypy/stubgen.py
 
 mkdir mystubs
-mv types-setuptools-%{types_setuptools_version}/setuptools-stubs* mystubs/
-mv types-psutil-%{types_psutil_version}/psutil-stubs* mystubs/
+mv types_setuptools-%{types_setuptools_version}/setuptools-stubs* mystubs/
+mv types_psutil-%{types_psutil_version}/psutil-stubs* mystubs/
 
 # "E: wrong-script-end-of-line-encoding" and "E: spurious-executable-perm", file is not needed anyways
 rm docs/make.bat
@@ -153,7 +155,7 @@ donttest+=" or PEP561Suite"
 %license LICENSE
 %{python_sitelib}/mypy
 %{python_sitelib}/mypyc
-# %{python_sitelib}/mypy-%%{version}.dist-info
+# %%{python_sitelib}/mypy-%%{version}.dist-info
 %{python_sitelib}/mypy-*.dist-info
 %python_alternative %{_bindir}/dmypy
 %python_alternative %{_bindir}/mypy

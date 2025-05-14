@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-percent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-percent
 Version:        0.1.2
 Release:        0
 Summary:        Pytest plugin to exit successfully when a required percent of tests pass
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/dillonm197/pytest.percent
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-percent/pytest-percent-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/dillonm197/pytest.percent/master/tests/test_percent.py
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 5.2.0
@@ -45,10 +45,10 @@ cp %{SOURCE1} .
 printf "[pytest]\naddopts = --required-percent=80" > pytest.ini
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +57,8 @@ printf "[pytest]\naddopts = --required-percent=80" > pytest.ini
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_percent.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_percent*.pyc
+%{python_sitelib}/pytest_percent-%{version}.dist-info
 
 %changelog

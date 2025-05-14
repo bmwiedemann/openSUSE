@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu May  8 09:05:31 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.0.9:
+  + This release adds the following features:
+    - Add some documentation about updating the KEK and db
+    - Allow installing multiple db certificate updates at the same time
+    - Show what certificate signed the EFI authenticated variable
+    - Use readline to look up inputs from user, and make it optional
+  + This release fixes the following bugs:
+    - Add several devices with broken firmware to the UEFI dbx blocklist
+    - Constructing the authenticated URI properly when using FirmwareBaseURI
+    - Do not enumerate non-updatable OptionROM devices
+    - Do not export Redfish backup partitions as devices
+    - Fix a crash when installing some Wacom firmware types
+    - Fix a crash when parsing uevents that are not KEY=VALUE
+    - Fix parsing the DFU descriptor when not using libusb
+    - Fix PK and KEK enumeration failure on some systems
+    - Fix SMBIOS parsing for ROM size >= 16MiB
+    - Include a resolution for more of the HSI failures
+    - Include more output when using fwupdtool get-devices --json
+    - Never allow updating updatable-hidden devices with fwupdtool
+    - Properly handle redfish location redirect when installing firmware
+    - Recognize a very old dbx hash to allow upgrades
+    - Require a reboot after updating Intel CVS devices
+    - Rework the MEI code so that a device can use more than one interface
+    - Rewrite the ModemManger plugin to be simpler and more supportable
+    - Simplify parsing USB descriptors
+  + This release adds support for the following hardware:
+    - Intel Arc Battlemage GPUs
+- Add explicit pkgconfig(libusb-1.0) B?uildREquires: pulled in by
+  gusb already, but having it explicit allows to add specific
+  version constrains.
+- Add pkgconfig(readline) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Fri Apr 11 07:33:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.8:

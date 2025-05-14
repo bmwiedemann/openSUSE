@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May  5 18:57:29 UTC 2025 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 0.8.0
+  * Add PIC (MCU) architecture support (#356)
+  * Add tricore support (#352)
+  * Fix tailjump to relocs (#347)
+  * Bump minimum cmake to 3.5 to support newer cmake versions
+  * Various changes to use updated Rizin APIs
+
+-------------------------------------------------------------------
 Sun Sep  8 06:59:17 UTC 2024 - Jianhua Lu <lujianhua000@gmail.com>
 
 - new package

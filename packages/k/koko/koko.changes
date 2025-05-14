@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * CI: Flatpak - Disable inih requirement
+  * CI: Flatpak - Disable testing for all KDE projects
+  * CI: Flatpak - Update exiv2 (fedc formatted file)
+  * CI: Flatpak - Fix exiv2 URL template
+  * CI: Flatpak - Sort finish args
+  * CI: Flatpak - Update runtime to 6.8
+  * cmake: We're linking to GuiPrivate so search for it
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:56 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

@@ -39,4 +39,13 @@
 - drop pytest6.2.patch (upstream)</comment>
     <requestid>1137828</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7d7794ea3cb922169a15ab785beca658</srcmd5>
+    <version>0.6.0</version>
+    <time>1746638143</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275093</requestid>
+  </revision>
 </revisionlist>

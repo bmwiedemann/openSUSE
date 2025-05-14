@@ -77,4 +77,13 @@
     <comment></comment>
     <requestid>1238944</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>bc7b002b0f3ee475fe281a6e6fa1f93c</srcmd5>
+    <version>1.3.0</version>
+    <time>1746809462</time>
+    <user>anag_factory</user>
+    <comment>- Ship the license file.
+- Switch to pyproject macros.</comment>
+    <requestid>1276035</requestid>
+  </revision>
 </revisionlist>

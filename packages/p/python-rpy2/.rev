@@ -139,4 +139,13 @@ Fix license</comment>
 - Do not build on Python 3.6, due to no NumPy.</comment>
     <requestid>888641</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>80bdaac6eae9b3fd4c47b92f2cd4708d</srcmd5>
+    <version>3.4.4</version>
+    <time>1746809436</time>
+    <user>anag_factory</user>
+    <comment>- Update URL.
+- Switch to pyproject macros.</comment>
+    <requestid>1276021</requestid>
+  </revision>
 </revisionlist>

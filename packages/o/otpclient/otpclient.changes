@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri May  9 11:43:25 UTC 2025 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.1.0:
+  * ADDED: minimize to tray with ayatana-appindicator3 (#386 thanks a lot @len-foss)
+  * IMPROVED: only show memlock warning dialog when secure memory is unavailable (#397)
+  * IMPROVED: allow creating a database via CLI (#392)
+  * FIX: allow using different databases in flatpak (#372)
+  * CHANGED: dropped andOTP support
+
+-------------------------------------------------------------------
 Wed Aug  7 08:24:08 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.0.2:

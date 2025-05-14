@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  8 09:10:35 UTC 2025 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.1.1+git9642
+  * includes fix for libgfortran.so.5 ABI regression [gcc#120152]
+- Add libgcobol and libquadmath-devel dependence to the cobol frontend
+  package.
+
+-------------------------------------------------------------------
 Mon Apr 28 06:12:42 UTC 2025 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 15 branch head, 15.1.1+git9595

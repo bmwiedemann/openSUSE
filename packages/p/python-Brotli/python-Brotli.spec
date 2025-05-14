@@ -1,7 +1,7 @@
 #
 # spec file for package python-Brotli
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://pypi.org/project/Brotli/
 Source:         https://files.pythonhosted.org/packages/source/B/Brotli/Brotli-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -46,15 +47,18 @@ The specification of the Brotli Compressed Data Format is defined in RFC 7932.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/brotli.py
+%{python_sitearch}/_brotli*
+%pycache_only %{python_sitearch}/__pycache__/brotli*
+%{python_sitearch}/[Bb]rotli-%{version}*info
 
 %changelog

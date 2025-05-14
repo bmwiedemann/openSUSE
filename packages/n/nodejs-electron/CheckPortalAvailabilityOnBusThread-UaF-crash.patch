@@ -1,0 +1,24 @@
+From 41cfb13e3fd199108130e4b29ccb54b52ae82bbb Mon Sep 17 00:00:00 2001
+From: deepak1556 <hop2deep@gmail.com>
+Date: Fri, 9 May 2025 01:07:04 +0900
+Subject: [PATCH] fix: use-after-move of bus connection in xdg portal detection
+
+---
+ shell/browser/ui/file_dialog_linux_portal.cc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/shell/browser/ui/file_dialog_linux_portal.cc b/shell/browser/ui/file_dialog_linux_portal.cc
+index 298ee25caffb4..7dd520d92bdfa 100644
+--- a/electron/shell/browser/ui/file_dialog_linux_portal.cc
++++ b/electron/shell/browser/ui/file_dialog_linux_portal.cc
+@@ -86,8 +86,9 @@ void CheckPortalAvailabilityOnBusThread() {
+                     << (g_portal_available ? "yes" : "no");
+             flag->Set();
+             bus->ShutdownAndBlock();
++            bus.reset();
+           },
+-          std::move(bus), flag));
++          bus, flag));
+ }
+ 
+ }  // namespace

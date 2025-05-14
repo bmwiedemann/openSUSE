@@ -39,4 +39,13 @@
     <comment>- Remove nose BuildRequires.</comment>
     <requestid>923386</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>444bd126cdf25bb85225e63b56e0d58e</srcmd5>
+    <version>1.2.0</version>
+    <time>1746809438</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1276022</requestid>
+  </revision>
 </revisionlist>

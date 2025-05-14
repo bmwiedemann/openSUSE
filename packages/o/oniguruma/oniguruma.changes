@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  8 13:10:31 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build using cmake (needed to support apps which depend on this
+  and use cmake find_package to find the library).
+- Use %ldconfig_scriptlets macro for post(un) ldconfig update.
+- Use %license to package COPYING file.
+
+-------------------------------------------------------------------
 Wed Jan  1 13:30:52 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 6.9.10

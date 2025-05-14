@@ -640,4 +640,13 @@
     <comment></comment>
     <requestid>1217115</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>f3ea39414857d58cda141a461b5fcb36</srcmd5>
+    <version>6.7</version>
+    <time>1746542422</time>
+    <user>anag_factory</user>
+    <comment>- Set umask to generate brlapi.key with correct permissions; avoid
+  having the file temporarily world-readable (bsc#1235438). (forwarded request 1274687 from mgorse)</comment>
+    <requestid>1274711</requestid>
+  </revision>
 </revisionlist>

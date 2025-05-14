@@ -918,4 +918,40 @@
     <comment></comment>
     <requestid>1267013</requestid>
   </revision>
+  <revision rev="115" vrev="3">
+    <srcmd5>46aa129b7efa9702ae39b9d9f4821d51</srcmd5>
+    <version>202502</version>
+    <time>1746542407</time>
+    <user>anag_factory</user>
+    <comment>- Add TDX flavor OVMF using Config-B (OvmfPkg/IntelTdx/IntelTdxX64.dsc).
+Full TDX functionality has been supported with Config-B. 
+- Config-A (OvmfPkg/OvmfPkgX64.dsc) will be proposed for switching 
+from Config-B once TDX upstream support becomes more complete and integration is 
+more mature.
+- Below is the difference between Config-A and Config-B.
+    - Config-A:
+        - Merge the basic TDVF feature to existing OvmfPkgX64.dsc. (Align with existing SEV)
+        - Threat model: VMM is NOT out of TCB. (We don't make things worse)
+        - The OvmfPkgX64.dsc includes SEV/TDX/normal OVMF basic boot capability. The final binary can run on SEV/TDX/normal OVMF.
+        - No changes to existing OvmfPkgX64 image layout.
+        - No need to remove features if they exist today.
+        - PEI phase is NOT skipped in either TD or Non-TD.
+        - RTMR based measurement (CC_MEASUREMENT) is supported as an optional requirement.
+        - External inputs from Host VMM are measured, such as TdHob, CFV.
+        - Other external inputs are measured, such as FW_CFG data, os loader, initrd, etc.
+    - Config-B:
+        - Add a standalone IntelTdxX64.dsc to a TDX specific directory (OvmfPkg/IntelTdx) for a full feature TDVF.(Align with existing SEV)
+        - Threat model: VMM is out of TCB. (We need necessary change to prevent attack from VMM)
+        - IntelTdxX64.dsc includes TDX/normal OVMF basic boot capability. The final binary can run on TDX/normal OVMF. 
+        - It might eventually merge with AmdSev.dsc, but NOT at this point of time. And we don't know when it will happen. We need sync with AMD in the community after both of us think the solutions are mature to merge.
+        - RTMR based measurement (CC_MEASUREMENT) is supported as a mandatory requirement.
+        - External inputs from Host VMM are measured, such as TdHob, CFV.
+        - Other external inputs are measured, such as FW_CFG data, os loader, initrd, etc.
+        - PEI phase is skipped to remove unnecessary attack surface.
+        - DXE FV is split into 2 FVs (DXEFV &amp; NCCFV) to remove the unnecessary attack surface in a TD guest..
+        - When launching a TD guest, only drivers in DXEFV are loaded.
+        - When launching a Non-TD guest, dirvers in both DXEFV and NCCFV are loaded.
+</comment>
+    <requestid>1274608</requestid>
+  </revision>
 </revisionlist>

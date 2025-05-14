@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 06:48:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Fri Feb  9 13:52:08 UTC 2024 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

@@ -23,4 +23,14 @@
     <comment>1</comment>
     <requestid>487701</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>9d267561367645041c447c83a016e7e1</srcmd5>
+    <version>0.14.1</version>
+    <time>1746809455</time>
+    <user>anag_factory</user>
+    <comment>- Ship the license file.
+- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1276031</requestid>
+  </revision>
 </revisionlist>

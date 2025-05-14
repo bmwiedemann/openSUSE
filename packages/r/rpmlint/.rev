@@ -5204,4 +5204,15 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1255923</requestid>
   </revision>
+  <revision rev="503" vrev="1">
+    <srcmd5>54e4ecbabff1ad6079c2489473bc55ef</srcmd5>
+    <version>2.7.0+git20250505.8f450e38</version>
+    <time>1746638169</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.7.0+git20250505.8f450e38:
+  * polkit-rules-whitelist: adjust systemd-network package name (bsc#1242056)
+  * dbus-services: adjust systemd-networkd and systemd-resolved (bsc#1242056)
+</comment>
+    <requestid>1274680</requestid>
+  </revision>
 </revisionlist>

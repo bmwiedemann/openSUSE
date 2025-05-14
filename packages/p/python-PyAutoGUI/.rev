@@ -43,4 +43,14 @@
    -- Fixed Windows XP problem with the DPI scaling API call.</comment>
     <requestid>1135311</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>41555b9d379f709cfa32f07ee58dbfc2</srcmd5>
+    <version>0.9.54</version>
+    <time>1747061470</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1274921 from mcalabkova
+
+- Convert to pip-based build</comment>
+    <requestid>1276722</requestid>
+  </revision>
 </revisionlist>

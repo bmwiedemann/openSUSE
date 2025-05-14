@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair-widgets
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define         skip_python39 1
 # The test suite is not packaged in the PyPI package. The tests available on
 # GitHub require pytest-ipynb which is not available on openSUSE and was
 # abandoned upstream
@@ -26,10 +25,11 @@ Version:        0.2.2
 Release:        0
 Summary:        Interactive visualization package for statistical data for Python
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            http://altair-viz.github.io
 Source:         https://files.pythonhosted.org/packages/source/a/altair_widgets/altair_widgets-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-altair >= 2.0.0
@@ -67,10 +67,10 @@ widget also supports some basic configuration (i.e., log vs linear scales).
 %setup -q -n altair_widgets-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -82,6 +82,6 @@ widget also supports some basic configuration (i.e., log vs linear scales).
 %doc README.md
 %license LICENSE
 %{python_sitelib}/altair_widgets/
-%{python_sitelib}/altair_widgets-%{version}-py*.egg-info
+%{python_sitelib}/altair_widgets-%{version}.dist-info
 
 %changelog

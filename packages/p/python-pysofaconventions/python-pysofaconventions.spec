@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysofaconventions
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-pysofaconventions
 Version:        0.1.5
 Release:        0
 Summary:        Python implementation of the SOFA Convention
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
-URL:            https://andresperezlopez.github.io/pysofaconventions/
-Source:         https://files.pythonhosted.org/packages/source/p/pysofaconventions/pysofaconventions-%{version}.tar.gz
+URL:            https://github.com/andresperezEUT/pysofaconventions
+Source0:        https://files.pythonhosted.org/packages/source/p/pysofaconventions/pysofaconventions-%{version}.tar.gz
+# LICENSE not shipped in sdist
+Source1:        https://raw.githubusercontent.com/andresperezEUT/pysofaconventions/refs/heads/master/LICENSE
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-netCDF4
@@ -44,12 +46,13 @@ pysofaconventions is a python implementation of the SOFA Specification.
 %setup -q -n pysofaconventions-%{version}
 sed -i -e '/^#!\//, 1d' pysofaconventions/__init__.py
 sed -i -e 's/--cov-report term-missing --cov pysofaconventions//' setup.cfg
+cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand rm -rf  %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -57,8 +60,9 @@ sed -i -e 's/--cov-report term-missing --cov pysofaconventions//' setup.cfg
 %pytest
 
 %files %{python_files}
+%license LICENSE
 %doc README.md
 %{python_sitelib}/pysofaconventions
-%{python_sitelib}/pysofaconventions-%{version}*-info
+%{python_sitelib}/pysofaconventions-%{version}.dist-info
 
 %changelog

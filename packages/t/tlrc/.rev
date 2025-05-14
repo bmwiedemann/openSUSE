@@ -92,4 +92,14 @@
       Specifies which option style should be shown in new option placeholders ({{[-s|--long]}}).</comment>
     <requestid>1253602</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>677718777a2f574c3ba509971484b940</srcmd5>
+    <version>1.11.1</version>
+    <time>1746721394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.1:
+  * Increase the HTTP request timeout to 30 seconds (#128)
+  * Fix issues with proxies (#111)</comment>
+    <requestid>1275418</requestid>
+  </revision>
 </revisionlist>

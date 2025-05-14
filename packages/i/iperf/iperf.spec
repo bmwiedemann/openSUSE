@@ -26,6 +26,8 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/esnet/iperf
 Source:         https://github.com/esnet/iperf/releases/download/%{version}/iperf-%{version}.tar.gz
 Source1:        https://github.com/esnet/iperf/releases/download/%{version}/iperf-%{version}.tar.gz.sha256
+# https://github.com/esnet/iperf/commit/beadb59b90e8d3339d31f9f15525108072fde135
+Patch0:         iperf-gcc15.patch
 Requires:       lib%{name}%{soname} = %{version}-%{release}
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel
@@ -79,7 +81,7 @@ other parameters.
 This package contains development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --disable-static

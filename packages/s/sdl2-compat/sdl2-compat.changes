@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  5 03:28:40 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.32.56
+  * Fixed rendering in Mesen2
+  * Fixed brightness in ioquake3
+  * Fixed a hang at launch in the xemu emulator
+  * Fixed crackling and sped up audio in OpenRCT2
+  * Fixed fullscreen window positioning on Wayland with multiple
+    displays
+  * Key events are now sent for dead keys on X11
+  * Fixed mouse wheel integer scrolling values
+  * Fixed a double-free when working with RLE surfaces
+  * Fixed a memory leak in SDL_LockTextureToSurface()
+  * Fixed sending SDL3 controller events to SDL2 applications
+
+-------------------------------------------------------------------
 Mon Mar 31 23:26:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.32.54

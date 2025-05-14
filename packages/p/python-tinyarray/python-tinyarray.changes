@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 05:19:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Tue Sep 27 10:59:59 UTC 2022 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop testing patch added to sources by mistake.

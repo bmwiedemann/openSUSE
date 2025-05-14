@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun May  4 05:34:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.52
+   see /usr/share/doc/packages/perl-Test-Harness/Changes
+
+  3.52    2025-05-03
+
+  3.51_01 2025-01-17
+          - Supports additional indicators on block scalars in YAML
+          - fix string comparisons with $] to use numeric comparison instead
+
+-------------------------------------------------------------------
 Wed Aug 14 05:30:43 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.50

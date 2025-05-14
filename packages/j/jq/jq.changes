@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 20:43:03 UTC 2025 - Martin Jambor <mjambor@suse.com>
+
+- Build with compiler option -std=gnu17 to avoid issues with code
+  which is not valid in C23. [boo#1241922]
+
+-------------------------------------------------------------------
 Wed Dec 13 20:28:23 UTC 2023 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.1

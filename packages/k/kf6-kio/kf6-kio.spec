@@ -19,13 +19,13 @@
 %define qt6_version 6.7.0
 
 %define rname kio
-# Full KF6 version (e.g. 6.13.0)
+# Full KF6 version (e.g. 6.14.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -66,7 +66,6 @@ BuildRequires:  cmake(KF6WidgetsAddons) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{_kf6_bugfix_version}
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}

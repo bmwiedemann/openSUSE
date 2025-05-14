@@ -1,8 +1,14 @@
-Index: less-656/filename.c
+---
+ filename.c |    2 +-
+ less.hlp   |    2 +-
+ lsystem.c  |    4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: less-676/filename.c
 ===================================================================
---- less-656.orig/filename.c
-+++ less-656/filename.c
-@@ -553,7 +553,7 @@ static FILE * shellcmd(constant char *cm
+--- less-676.orig/filename.c	2025-04-16 21:56:56.000000000 +0200
++++ less-676/filename.c	2025-04-25 13:37:10.333952009 +0200
+@@ -553,7 +553,7 @@
  #if HAVE_SHELL
  	constant char *shell;
  
@@ -11,11 +17,11 @@ Index: less-656/filename.c
  	if (!isnullenv(shell))
  	{
  		char *scmd;
-Index: less-656/less.hlp
+Index: less-676/less.hlp
 ===================================================================
---- less-656.orig/less.hlp
-+++ less-656/less.hlp
-@@ -109,7 +109,7 @@
+--- less-676.orig/less.hlp	2025-04-16 21:56:56.000000000 +0200
++++ less-676/less.hlp	2025-04-25 13:37:10.334552439 +0200
+@@ -113,7 +113,7 @@
    ___<_n_a_m_e_>             Display the setting of an option, by name.
    +_c_m_d                 Execute the less cmd each time a new file is examined.
  
@@ -24,33 +30,11 @@ Index: less-656/less.hlp
    #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
    |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
    s _f_i_l_e               Save input to a file.
-Index: less-656/less.nro
+Index: less-676/lsystem.c
 ===================================================================
---- less-656.orig/less.nro
-+++ less-656/less.nro
-@@ -468,7 +468,7 @@ A pound sign (#) is replaced by the name
- "!" with no shell command simply invokes a shell.
- If a \(haP (CONTROL-P) is entered immediately after the !,
- no "done" message is printed after the shell command is executed.
--On Unix systems, the shell is taken from the environment variable SHELL,
-+On Unix systems, the shell is taken from the environment variable LESSSHELL,
- or defaults to "sh".
- On MS-DOS, Windows, and OS/2 systems, the shell is the normal command processor.
- .IP "# shell-command"
-@@ -2493,7 +2493,7 @@ automatically when running in
- .IP PATH
- User's search path (used to find a lesskey file
- on MS-DOS, Windows, and OS/2 systems).
--.IP SHELL
-+.IP LESSSHELL
- The shell used to execute the !\& command, as well as to expand filenames.
- .IP TERM
- The type of terminal on which
-Index: less-656/lsystem.c
-===================================================================
---- less-656.orig/lsystem.c
-+++ less-656/lsystem.c
-@@ -120,13 +120,13 @@ public void lsystem(constant char *cmd,
+--- less-676.orig/lsystem.c	2025-04-16 21:56:56.000000000 +0200
++++ less-676/lsystem.c	2025-04-25 13:37:10.334851222 +0200
+@@ -120,13 +120,13 @@
  
  	/*
  	 * Pass the command to the system to be executed.

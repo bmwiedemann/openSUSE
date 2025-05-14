@@ -55,4 +55,12 @@
     <comment>Remove bogus dependencies</comment>
     <requestid>1218822</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>5a693963723304a09bf0b0c7e4a10eac</srcmd5>
+    <version>2.0.0</version>
+    <time>1746721429</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275533</requestid>
+  </revision>
 </revisionlist>

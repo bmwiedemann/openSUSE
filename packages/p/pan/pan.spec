@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           pan
-Version:        0.161
+Version:        0.162
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later
@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gmime-3.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gspell-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 2.0.16
 BuildRequires:  pkgconfig(libnotify) >= 0.4.1
 BuildRequires:  pkgconfig(libsecret-1)

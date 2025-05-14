@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyAudio
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
 Name:           python-PyAudio
 Version:        0.2.11
@@ -29,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyAudio/PyAudio
 # Mark tests requiring specific hardware as such
 Patch0:         loopback_required.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  portaudio-devel
 BuildRequires:  python-rpm-macros
@@ -50,10 +51,10 @@ of platforms (e.g., GNU/Linux, Microsoft Windows, and Mac OS X).
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}
@@ -69,6 +70,6 @@ export HW_REQUIRED=1
 %{python_sitearch}/_portaudio*.so
 %{python_sitearch}/pyaudio.py*
 %pycache_only %{python_sitearch}/__pycache__/pyaudio*.py*
-%{python_sitearch}/PyAudio-%{version}-py*.egg-info
+%{python_sitearch}/[Pp]y[Aa]udio-%{version}*-info
 
 %changelog

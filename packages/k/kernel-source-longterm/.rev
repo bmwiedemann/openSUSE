@@ -545,4 +545,20 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>6.12.26</comment>
     <requestid>1272826</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>64a0e4f22be76fbc8862b9800e065475</srcmd5>
+    <version>6.12.27</version>
+    <time>1746638087</time>
+    <user>dimstar_suse</user>
+    <comment>6.12.27</comment>
+    <requestid>1274796</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>90814b6fa5cd5fb1251357e14c4ca157</srcmd5>
+    <version>6.12.28</version>
+    <time>1747061160</time>
+    <user>anag_factory</user>
+    <comment>6.12.28</comment>
+    <requestid>1276433</requestid>
+  </revision>
 </revisionlist>

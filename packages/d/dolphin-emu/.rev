@@ -182,4 +182,12 @@
   * https://github.com/dolphin-emu/dolphin/compare/2503...2503a</comment>
     <requestid>1272468</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>77910913a6cc38c8bd5c317568b76429</srcmd5>
+    <version>2503a</version>
+    <time>1746721401</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed the build with cmake4.</comment>
+    <requestid>1275435</requestid>
+  </revision>
 </revisionlist>

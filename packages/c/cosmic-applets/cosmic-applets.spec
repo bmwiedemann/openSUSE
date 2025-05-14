@@ -37,7 +37,7 @@
 %define         workspacesbutton PanelWorkspacesButton
 %define         launcherbutton PanelLauncherButton
 Name:           cosmic-applets
-Version:        1.0.0~alpha6+0
+Version:        1.0.0~alpha7+0
 Release:        0
 Summary:        Applets for COSMIC DE
 License:        GPL-3.0-only

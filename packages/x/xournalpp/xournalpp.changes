@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun May 11 06:57:35 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.2.7:
+  * Improved error logs (gh#xournalpp/xournalpp#6319).
+  * Fixed some undefined behaviours that may have caused crashes
+    (gh#xournalpp/xournalpp#6326).
+  * Fixed some memory leaks (gh#xournalpp/xournalpp#6356).
+  * Ensured timers are cancelled on exit
+    (gh#xournalpp/xournalpp#6351).
+  * Fixed handling of linebreaks in latex tool
+    (gh#xournalpp/xournalpp#6374).
+  * Linux: forward crash signals to system handler after emergency
+    save (gh#xournalpp/xournalpp#6392).
+  * Fixed wrong glyph spacing in texts using small fonts
+    (gh#xournalpp/xournalpp#6393).
+  * Fixed rasterization of Tex elements on PDF/SVG export or
+    printing (gh#xournalpp/xournalpp#6395).
+  * Updated translations.
+
+-------------------------------------------------------------------
 Thu Feb 20 03:55:50 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.2.6:

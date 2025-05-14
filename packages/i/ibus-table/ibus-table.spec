@@ -27,7 +27,7 @@ Source:         https://github.com/mike-fabian/ibus-table/releases/download/%{ve
 BuildRequires:  docbook-utils-minimal
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
-BuildRequires:  gnome-common
+BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(python3)

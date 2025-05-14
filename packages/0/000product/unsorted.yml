@@ -27,6 +27,7 @@ unsorted:
   - Bear 
   - Botan 
   - Botan-doc 
+  - CCfits-devel 
   - CSXCAD-devel 
   - CSXCAD-matlab 
   - Cadence 
@@ -1422,6 +1423,8 @@ unsorted:
   - birb-doc 
   - bird 
   - bird-doc 
+  - bird3 
+  - bird3-doc 
   - bison 
   - bison-32bit 
   - bison-lang 
@@ -1812,8 +1815,6 @@ unsorted:
   - byte-buddy-javadoc 
   - byte-buddy-maven-plugin 
   - bytelist 
-  - byzanz 
-  - byzanz-lang 
   - bzflag 
   - bzip2-doc 
   - bzip3 
@@ -1958,11 +1959,7 @@ unsorted:
   - cargo-packaging 
   - cargo-vendor-filterer 
   - cargo1.78 
-  - cargo1.79 
-  - cargo1.80 
-  - cargo1.81 
   - cargo1.82 
-  - cargo1.83 
   - cargo1.84 
   - cargo1.85 
   - cargo1.86 
@@ -2094,6 +2091,10 @@ unsorted:
   - chafa 
   - chafa-devel 
   - chafa-doc 
+  - chainguard-dfc 
+  - chainguard-dfc-bash-completion 
+  - chainguard-dfc-fish-completion 
+  - chainguard-dfc-zsh-completion 
   - changelog-generator-data 
   - chart-testing 
   - chasen 
@@ -2556,14 +2557,14 @@ unsorted:
   - coreboot-utils 
   - coredns 
   - coredns-extras 
-  - coredns-for-k8s1.29 
-  - coredns-for-k8s1.29-extras 
   - coredns-for-k8s1.30 
   - coredns-for-k8s1.30-extras 
   - coredns-for-k8s1.31 
   - coredns-for-k8s1.31-extras 
   - coredns-for-k8s1.32 
   - coredns-for-k8s1.32-extras 
+  - coredns-for-k8s1.33 
+  - coredns-for-k8s1.33-extras 
   - coreos-installer 
   - corepack-default 
   - corepack22 
@@ -2947,6 +2948,10 @@ unsorted:
   - ctl-data 
   - ctl-devel 
   - ctl-doc 
+  - ctlptl 
+  - ctlptl-bash-completion 
+  - ctlptl-fish-completion 
+  - ctlptl-zsh-completion 
   - ctop 
   - ctranslate2 
   - ctranslate2-devel 
@@ -2971,7 +2976,6 @@ unsorted:
   - cura-fdm-materials 
   - curl-fish-completion 
   - curl-zsh-completion 
-  - curlftpfs 
   - curlie 
   - curtail 
   - curtail-lang 
@@ -3059,7 +3063,6 @@ unsorted:
   - dar 
   - dar-doc 
   - dar-lang 
-  - dareader-devel 
   - darkhttpd 
   - darkman 
   - darktable 
@@ -3152,102 +3155,6 @@ unsorted:
   - decker 
   - decker-doc 
   - deco 
-  - deepin-account-faces 
-  - deepin-api 
-  - deepin-calculator 
-  - deepin-calculator-lang 
-  - deepin-calendar 
-  - deepin-calendar-lang 
-  - deepin-compressor 
-  - deepin-compressor-lang 
-  - deepin-control-center 
-  - deepin-control-center-data 
-  - deepin-control-center-devel 
-  - deepin-control-center-lang 
-  - deepin-daemon 
-  - deepin-daemon-dbus 
-  - deepin-daemon-lang 
-  - deepin-daemon-lightdm 
-  - deepin-daemon-polkit 
-  - deepin-desktop 
-  - deepin-desktop-base 
-  - deepin-desktop-schemas 
-  - deepin-desktop-schemas-branding-openSUSE 
-  - deepin-desktop-schemas-branding-upstream 
-  - deepin-dock 
-  - deepin-dock-devel 
-  - deepin-dock-lang 
-  - deepin-dock-plugin-screen-recorder 
-  - deepin-dock-plugin-shot-start 
-  - deepin-draw 
-  - deepin-draw-lang 
-  - deepin-editor 
-  - deepin-editor-lang 
-  - deepin-feature-enable 
-  - deepin-file-manager 
-  - deepin-file-manager-dbus 
-  - deepin-file-manager-devel 
-  - deepin-file-manager-lang 
-  - deepin-file-manager-polkit 
-  - deepin-gettext-tools 
-  - deepin-gir-generator 
-  - deepin-gtk-theme 
-  - deepin-icon-theme 
-  - deepin-icon-theme-vintage 
-  - deepin-image-editor 
-  - deepin-image-editor-lang 
-  - deepin-image-viewer 
-  - deepin-image-viewer-lang 
-  - deepin-kwin 
-  - deepin-kwin-devel 
-  - deepin-kwin-lang 
-  - deepin-launcher 
-  - deepin-launcher-branding-openSUSE 
-  - deepin-launcher-branding-upstream 
-  - deepin-launcher-lang 
-  - deepin-manual 
-  - deepin-movie 
-  - deepin-movie-devel 
-  - deepin-movie-lang 
-  - deepin-music-player 
-  - deepin-music-player-lang 
-  - deepin-network-utils 
-  - deepin-network-utils-devel 
-  - deepin-network-utils-lang 
-  - deepin-override-tool 
-  - deepin-polkit-agent 
-  - deepin-polkit-agent-devel 
-  - deepin-polkit-agent-lang 
-  - deepin-pw-check 
-  - deepin-pw-check-devel 
-  - deepin-pw-check-lang 
-  - deepin-reader 
-  - deepin-reader-lang 
-  - deepin-screen-recorder 
-  - deepin-screen-recorder-lang 
-  - deepin-session-shell 
-  - deepin-session-shell-devel 
-  - deepin-session-shell-lang 
-  - deepin-session-ui 
-  - deepin-session-ui-lang 
-  - deepin-shortcut-viewer 
-  - deepin-sound-theme 
-  - deepin-start 
-  - deepin-start-lang 
-  - deepin-system-monitor 
-  - deepin-system-monitor-lang 
-  - deepin-terminal 
-  - deepin-terminal-devel 
-  - deepin-terminal-lang 
-  - deepin-turbo 
-  - deepin-turbo-devel 
-  - deepin-voice-note 
-  - deepin-voice-note-lang 
-  - deepin-wallpapers 
-  - deepin-wallpapers-community 
-  - deepin-wayland-devel 
-  - deepin-wayland-protocols 
-  - deepin-x11-client 
   - dehydrated 
   - dehydrated-apache2 
   - dehydrated-nginx 
@@ -3257,7 +3164,6 @@ unsorted:
   - delaguardo-inconsolata_lgc-fonts 
   - delayacct-utils 
   - delayacct-utils-rebuild 
-  - deltafs 
   - deluge 
   - deluge-lang 
   - delve 
@@ -3267,6 +3173,8 @@ unsorted:
   - deno-fish-completion 
   - deno-zsh-completion 
   - descent3 
+  - deskflow 
+  - deskflow-doc 
   - desktop-translations-devel 
   - desktopfolder 
   - desktopfolder-lang 
@@ -3347,11 +3255,9 @@ unsorted:
   - discord-rpc-devel 
   - discount 
   - disk-encryption-tool 
-  - diskimage-builder 
   - diskmonitor 
   - diskmonitor-lang 
   - diskscan 
-  - disomaster-devel 
   - disorderfs 
   - disruptor 
   - disruptor-javadoc 
@@ -3439,7 +3345,6 @@ unsorted:
   - docker-stable-rootless-extras 
   - docker-stable-zsh-completion 
   - docker-zsh-completion 
-  - docparser-devel 
   - docserv-auxserver 
   - docserv-config-apache2 
   - docserv-config-nginx 
@@ -3552,15 +3457,6 @@ unsorted:
   - dtach 
   - dtc 
   - dtdinst 
-  - dtkcommon 
-  - dtkcore 
-  - dtkcore-devel 
-  - dtkgui 
-  - dtkgui-devel 
-  - dtkwidget 
-  - dtkwidget-devel 
-  - dtkwidget-lang 
-  - dtkwm-devel 
   - dtrx 
   - dtv-scan-tables 
   - dtv-scan-tables-v5 
@@ -3605,7 +3501,6 @@ unsorted:
   - dwarfs-devel 
   - dwarves 
   - dwarves-devel 
-  - dwayland-devel 
   - dwz 
   - dwz-testsuite 
   - dxflib-devel 
@@ -3914,10 +3809,10 @@ unsorted:
   - espeakedit 
   - etc-update 
   - etcd 
-  - etcd-for-k8s1.29 
   - etcd-for-k8s1.30 
   - etcd-for-k8s1.31 
   - etcd-for-k8s1.32 
+  - etcd-for-k8s1.33 
   - etcdctl 
   - etcdutl 
   - etckeeper 
@@ -4073,7 +3968,6 @@ unsorted:
   - fcitx-kkc 
   - fcitx-m17n 
   - fcitx-pinyin-tools 
-  - fcitx-pylogger 
   - fcitx-qt5-devel 
   - fcitx-quwei 
   - fcitx-rime 
@@ -4161,6 +4055,9 @@ unsorted:
   - fcitx5-unikey-qt6 
   - fcitx5-zhuyin 
   - fclones 
+  - fclones-bash-completion 
+  - fclones-fish-completion 
+  - fclones-zsh-completion 
   - fd 
   - fd-bash-completion 
   - fd-fish-completion 
@@ -4705,10 +4602,6 @@ unsorted:
   - g810-led 
   - gajim 
   - gajim-lang 
-  - gala 
-  - gala-devel 
-  - gala-lang 
-  - gala-plugins 
   - galaxis 
   - galera-4 
   - galera-4-wsrep-provider 
@@ -5157,8 +5050,6 @@ unsorted:
   - gexif-lang 
   - gf2x-devel 
   - gfan 
-  - gfbgraph-devel 
-  - gfbgraph-doc 
   - gfio 
   - gflags 
   - gflags-devel 
@@ -7153,7 +7044,6 @@ unsorted:
   - ginac-doc-pdf 
   - ginac-doc-tutorial 
   - gio-branding-upstream 
-  - gio-qt-devel 
   - gio-sharp 
   - gio-sharp-devel 
   - girara-devel 
@@ -7502,6 +7392,7 @@ unsorted:
   - gnome-shell-search-provider-gnome-recipes 
   - gnome-shell-search-provider-gnome-terminal 
   - gnome-shell-search-provider-gnote 
+  - gnome-shell-search-provider-iotas 
   - gnome-shell-search-provider-lollypop 
   - gnome-shell-search-provider-wike 
   - gnome-shell-theme-adapta 
@@ -7686,15 +7577,6 @@ unsorted:
   - golang-github-czerwonk-ping_exporter 
   - golang-github-google-jsonnet 
   - golang-github-jteeuwen-go-bindata 
-  - golang-github-linuxdeepin-dde-api 
-  - golang-github-linuxdeepin-deepin-daemon 
-  - golang-github-linuxdeepin-deepin-desktop-schemas 
-  - golang-github-linuxdeepin-deepin-pw-check 
-  - golang-github-linuxdeepin-go-dbus-factory 
-  - golang-github-linuxdeepin-go-gir-generator 
-  - golang-github-linuxdeepin-go-lib 
-  - golang-github-linuxdeepin-go-x11-client 
-  - golang-github-linuxdeepin-startdde 
   - golang-github-lusitaniae-apache_exporter 
   - golang-github-prometheus-alertmanager 
   - golang-github-prometheus-node_exporter 
@@ -8178,8 +8060,6 @@ unsorted:
   - gsequencer-devel 
   - gsequencer-devel-doc 
   - gsettings-desktop-schemas-devel 
-  - gsettings-qt 
-  - gsettings-qt-devel 
   - gsl 
   - gsl-devel 
   - gsl-doc 
@@ -8361,6 +8241,7 @@ unsorted:
   - gtk4-metatheme-dracula 
   - gtk4-metatheme-greybird 
   - gtk4-metatheme-matcha 
+  - gtk4-metatheme-mint 
   - gtk4-metatheme-yaru-mate 
   - gtkam 
   - gtkam-doc 
@@ -9006,6 +8887,7 @@ unsorted:
   - incus-bash-completion 
   - incus-fish-completion 
   - incus-tools 
+  - incus-ui-canonical 
   - incus-zsh-completion 
   - indent 
   - indent-lang 
@@ -9118,6 +9000,8 @@ unsorted:
   - iosevka-ss16-fonts 
   - iosevka-ss17-fonts 
   - iosevka-ss18-fonts 
+  - iotas 
+  - iotas-lang 
   - iotop 
   - iotop-c 
   - iouyap 
@@ -9296,21 +9180,29 @@ unsorted:
   - jag-editor 
   - jakarta-activation 
   - jakarta-activation-javadoc 
+  - jakarta-annotations 
+  - jakarta-annotations-javadoc 
   - jakarta-commons-discovery 
   - jakarta-commons-discovery-javadoc 
   - jakarta-commons-launcher 
   - jakarta-commons-launcher-javadoc 
   - jakarta-commons-transaction 
+  - jakarta-expression-language 
+  - jakarta-expression-language-javadoc 
   - jakarta-inject 
   - jakarta-inject-javadoc 
   - jakarta-mail 
   - jakarta-mail-javadoc 
+  - jakarta-pages 
+  - jakarta-pages-javadoc 
   - jakarta-servlet 
   - jakarta-servlet-javadoc 
   - jakarta-taglibs-standard 
   - jakarta-taglibs-standard-javadoc 
   - jakarta-validation-api 
   - jakarta-validation-api-javadoc 
+  - jakarta-websocket 
+  - jakarta-websocket-javadoc 
   - jameica 
   - jameica-devel 
   - jameica-javadoc 
@@ -9394,7 +9286,6 @@ unsorted:
   - java-diff-utils-javadoc 
   - java-jwt 
   - java-jwt-javadoc 
-  - java-mraa 
   - javacc 
   - javacc-bootstrap 
   - javacc-demo 
@@ -9725,6 +9616,7 @@ unsorted:
   - jsch-agent-proxy-usocket-nc 
   - jsch-demo 
   - jsch-javadoc 
+  - jsdec 
   - jshon 
   - json-glib-devel 
   - json-java 
@@ -10192,7 +10084,6 @@ unsorted:
   - kf6-kitemmodels-devel 
   - kf6-kitemviews-devel 
   - kf6-kjobwidgets-devel 
-  - kf6-knewstuff-core-devel 
   - kf6-knewstuff-devel 
   - kf6-knotifications-devel 
   - kf6-knotifyconfig-devel 
@@ -10213,7 +10104,6 @@ unsorted:
   - kf6-kunitconversion-devel 
   - kf6-kuserfeedback-devel 
   - kf6-kuserfeedback-server 
-  - kf6-kuserfeedback-tools 
   - kf6-kwallet-devel 
   - kf6-kwidgetsaddons-devel 
   - kf6-kwindowsystem-devel 
@@ -10541,7 +10431,6 @@ unsorted:
   - kross 
   - kross-devel 
   - kross-lang 
-  - kross-ruby 
   - kruler 
   - kruler-lang 
   - krunner-devel 
@@ -10700,17 +10589,6 @@ unsorted:
   - kubernetes-scheduler-minus1 
   - kubernetes-scheduler-minus2 
   - kubernetes-scheduler-minus3 
-  - kubernetes1.29-apiserver 
-  - kubernetes1.29-client 
-  - kubernetes1.29-client-bash-completion 
-  - kubernetes1.29-client-common 
-  - kubernetes1.29-client-fish-completion 
-  - kubernetes1.29-controller-manager 
-  - kubernetes1.29-kubeadm 
-  - kubernetes1.29-kubelet 
-  - kubernetes1.29-kubelet-common 
-  - kubernetes1.29-proxy 
-  - kubernetes1.29-scheduler 
   - kubernetes1.30-apiserver 
   - kubernetes1.30-client 
   - kubernetes1.30-client-bash-completion 
@@ -10744,6 +10622,17 @@ unsorted:
   - kubernetes1.32-kubelet-common 
   - kubernetes1.32-proxy 
   - kubernetes1.32-scheduler 
+  - kubernetes1.33-apiserver 
+  - kubernetes1.33-client 
+  - kubernetes1.33-client-bash-completion 
+  - kubernetes1.33-client-common 
+  - kubernetes1.33-client-fish-completion 
+  - kubernetes1.33-controller-manager 
+  - kubernetes1.33-kubeadm 
+  - kubernetes1.33-kubelet 
+  - kubernetes1.33-kubelet-common 
+  - kubernetes1.33-proxy 
+  - kubernetes1.33-scheduler 
   - kubescape 
   - kubeseal 
   - kubesec 
@@ -11158,6 +11047,7 @@ unsorted:
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
   - libBulletXmlWorldImporter3_17 
+  - libCCfits2_6 
   - libCLHEP-2_4_7_1 
   - libCLHEP-Cast-2_4_7_1 
   - libCLHEP-Evaluator-2_4_7_1 
@@ -11179,8 +11069,6 @@ unsorted:
   - libColPack0 
   - libColorFull0 
   - libConvexDecomposition3_17 
-  - libDWaylandClient5 
-  - libDWaylandServer5 
   - libDebugUtils1 
   - libDetour1 
   - libDetourCrowd1 
@@ -11312,7 +11200,7 @@ unsorted:
   - libKasten4 
   - libLASi-devel 
   - libLASi2 
-  - libLHAPDF-6_5_4 
+  - libLHAPDF-6_5_5 
   - libLLVM15 
   - libLLVM18 
   - libLLVM18-32bit 
@@ -11388,26 +11276,27 @@ unsorted:
   - libOsiCbc3 
   - libOsiClp1 
   - libPDAL18 
-  - libPocoActiveRecord101 
-  - libPocoCppParser101 
-  - libPocoCrypto101 
-  - libPocoData101 
-  - libPocoDataMySQL101 
-  - libPocoDataODBC101 
-  - libPocoDataSQLite101 
-  - libPocoEncodings101 
-  - libPocoFoundation101 
-  - libPocoJSON101 
-  - libPocoJWT101 
-  - libPocoMongoDB101 
-  - libPocoNet101 
-  - libPocoNetSSL101 
-  - libPocoPDF101 
-  - libPocoPrometheus101 
-  - libPocoRedis101 
-  - libPocoUtil101 
-  - libPocoXML101 
-  - libPocoZip101 
+  - libPocoActiveRecord111 
+  - libPocoCppParser111 
+  - libPocoCrypto111 
+  - libPocoData111 
+  - libPocoDataMySQL111 
+  - libPocoDataODBC111 
+  - libPocoDataPostgreSQL111 
+  - libPocoDataSQLite111 
+  - libPocoEncodings111 
+  - libPocoFoundation111 
+  - libPocoJSON111 
+  - libPocoJWT111 
+  - libPocoMongoDB111 
+  - libPocoNet111 
+  - libPocoNetSSL111 
+  - libPocoPDF111 
+  - libPocoPrometheus111 
+  - libPocoRedis111 
+  - libPocoUtil111 
+  - libPocoXML111 
+  - libPocoZip111 
   - libQCSXCAD0 
   - libQCoro5Core0 
   - libQCoro5DBus0 
@@ -11965,8 +11854,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute50 
-  - libarm_compute_graph50 
+  - libarm_compute52 
+  - libarm_compute_graph52 
   - libarmadillo14 
   - libarmnn35 
   - libarmnn35-opencl 
@@ -12069,7 +11958,7 @@ unsorted:
   - libavformat58_76-32bit 
   - libavformat60 
   - libavformat61-32bit 
-  - libavfs0 
+  - libavfs1 
   - libavif-devel 
   - libavif16-32bit 
   - libavrdude2 
@@ -12176,6 +12065,8 @@ unsorted:
   - libblacs2-openmpi5-devel-static 
   - libbladeRF2 
   - libbladeRF2-doc 
+  - libblake3-0 
+  - libblake3-devel 
   - libblas3-32bit 
   - libblaspp1 
   - libblastrampoline-devel 
@@ -12654,7 +12545,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_18 
+  - libcpp-httplib0_20 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
   - libcppunit_subunit0 
@@ -12742,7 +12633,6 @@ unsorted:
   - libdaemon-devel 
   - libdar-devel 
   - libdar64-6000 
-  - libdareader1 
   - libdat2-2 
   - libdataquay0 
   - libdate-tz3 
@@ -12776,7 +12666,6 @@ unsorted:
   - libdbus-c++-glib-1-1 
   - libdbus-c++-glib-devel 
   - libdbus-glib-1-2-32bit 
-  - libdbusextended-qt5-1 
   - libdbusmenu-glib-devel 
   - libdbusmenu-glib-doc 
   - libdbusmenu-gtk2-devel 
@@ -12798,10 +12687,6 @@ unsorted:
   - libdca0-32bit 
   - libdcmtk19 
   - libddcutil-devel 
-  - libdde-file-manager5 
-  - libdde-network-utils1 
-  - libdde-wayland-client0 
-  - libdde-wayland-server0 
   - libdeal_II9_6_2 
   - libdeal_II9_6_2-openmpi4 
   - libdeal_II9_6_2-openmpi5 
@@ -12813,9 +12698,6 @@ unsorted:
   - libdecor-32bit 
   - libdecor-devel 
   - libdecoration0 
-  - libdeepin-pdfium1 
-  - libdeepin-turbo0 
-  - libdeepin_pw_check1 
   - libdeflate-devel 
   - libdeflate-tools 
   - libdeflate0-32bit 
@@ -12825,9 +12707,6 @@ unsorted:
   - libdex-1-1 
   - libdex-devel 
   - libdex-devel-docs 
-  - libdfm-extension5 
-  - libdframeworkdbus-devel 
-  - libdframeworkdbus2 
   - libdhash-devel 
   - libdi6 
   - libdico2 
@@ -12841,13 +12720,12 @@ unsorted:
   - libdiscid-devel 
   - libdiscid0 
   - libdiscord-rpc3_4_0 
-  - libdisomaster1 
   - libdispatch-devel 
   - libdispatch1_3 
   - libdisplay-info-devel 
   - libdisplaydevice0_0_0 
   - libdjvulibre-devel 
-  - libdlib19_24_6 
+  - libdlib19_24_8 
   - libdlm 
   - libdlm-devel 
   - libdlm3 
@@ -12856,7 +12734,6 @@ unsorted:
   - libdmapsharing3-devel 
   - libdmmp-devel 
   - libdmmp0_2_0 
-  - libdmr0_1 
   - libdmtx-devel 
   - libdmx-devel 
   - libdmx1 
@@ -12874,7 +12751,6 @@ unsorted:
   - libdns_sd 
   - libdns_sd-32bit 
   - libdnssec9 
-  - libdocparser1 
   - libdom-devel 
   - libdom0 
   - libdouble-conversion3-32bit 
@@ -12905,10 +12781,6 @@ unsorted:
   - libdrumstick-widgets2 
   - libdruntime-ldc110 
   - libdrvproxy2 
-  - libdtkcore5 
-  - libdtkgui5 
-  - libdtkwidget5 
-  - libdtkwm5 
   - libduktape207-32bit 
   - libdumb2 
   - libdv 
@@ -13339,7 +13211,6 @@ unsorted:
   - libfwsi1 
   - libgadu-devel 
   - libgadu3 
-  - libgala0 
   - libgamemode-devel 
   - libgamemode0 
   - libgamemode0-32bit 
@@ -13450,7 +13321,6 @@ unsorted:
   - libgexiv2-devel 
   - libgf2x3 
   - libgfapi0 
-  - libgfbgraph-0_2-0 
   - libgfchangelog0 
   - libgflags2_2 
   - libgfortran4 
@@ -13474,7 +13344,6 @@ unsorted:
   - libgig11 
   - libginac11 
   - libgio-2_0-0-32bit 
-  - libgio-qt0 
   - libgiomm-2_4-1-32bit 
   - libgirara-gtk3-4 
   - libgirepository-1_0-1-32bit 
@@ -13673,14 +13542,13 @@ unsorted:
   - libgraphene-devel 
   - libgraphite2-3-32bit 
   - libgravatar-devel 
-  - libgretl-1_0-50 
-  - libgromacs9 
-  - libgromacs_mpi9 
+  - libgretl-1_0-51 
+  - libgromacs10 
+  - libgromacs_mpi10 
   - libgrpc++1_71 
   - libgrpc1_71 
   - libgrpc46 
   - libgsequencer0 
-  - libgsettings-qt1 
   - libgsf-devel 
   - libgsf-tools 
   - libgsm-devel 
@@ -13972,11 +13840,6 @@ unsorted:
   - libiir1 
   - libilbc0 
   - libimagequant-devel 
-  - libimageviewer-devel 
-  - libimageviewer0_1 
-  - libimagevisualresult-data 
-  - libimagevisualresult-devel 
-  - libimagevisualresult0_1 
   - libime-devel 
   - libime-dicts 
   - libime-tools 
@@ -14222,7 +14085,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-plugins-all 
   - libknot15 
-  - libkokkos-4_3 
+  - libkokkos-4_6 
   - libkomparediff2-devel 
   - libkpathsea6 
   - libkrun-devel 
@@ -14346,6 +14209,7 @@ unsorted:
   - liblittleb0 
   - liblkl0 
   - libllama 
+  - libllava 
   - liblldb15 
   - liblldb18 
   - liblldb19 
@@ -14678,9 +14542,9 @@ unsorted:
   - libmpd-devel 
   - libmpdclient-devel 
   - libmpdclient2 
-  - libmpdec++3 
-  - libmpdec++3-32bit 
-  - libmpdec3-32bit 
+  - libmpdec++4 
+  - libmpdec++4-32bit 
+  - libmpdec4-32bit 
   - libmpeg2-0-32bit 
   - libmpeg2-devel 
   - libmpeg2convert0 
@@ -14690,9 +14554,7 @@ unsorted:
   - libmpfrcx1 
   - libmpg123-0-32bit 
   - libmplex2-2_2-0-32bit 
-  - libmpris-qt5-1 
   - libmpv2 
-  - libmraa2 
   - libmrss-devel 
   - libmrss0 
   - libmruby3_1_0 
@@ -14714,6 +14576,7 @@ unsorted:
   - libmt32emu-devel 
   - libmt32emu2 
   - libmtdev1-32bit 
+  - libmtmd 
   - libmtp-devel 
   - libmuffin0 
   - libmumps-ptscotch5_3_5-openmpi4 
@@ -14911,6 +14774,7 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
+  - liboapv1 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -15374,13 +15238,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp0_13 
-  - libprotobuf-lite28_3_0-32bit 
+  - libprotobuf-lite29_3_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf28_3_0-32bit 
+  - libprotobuf29_3_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc28_3_0 
-  - libprotoc28_3_0-32bit 
+  - libprotoc29_3_0 
+  - libprotoc29_3_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -15496,7 +15360,7 @@ unsorted:
   - libqmobipocket2 
   - libqoauth2 
   - libqobs-devel 
-  - libqobs2 
+  - libqobs3 
   - libqore12 
   - libqpid-proton-core10 
   - libqpid-proton-cpp12 
@@ -15510,9 +15374,6 @@ unsorted:
   - libqrupdate1 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
-  - libqt5-dwaylandplugin 
-  - libqt5-dxcbplugin 
-  - libqt5-kwayland-shellplugin 
   - libqt5-linguist 
   - libqt5-linguist-devel 
   - libqt5-qdbus 
@@ -15999,7 +15860,7 @@ unsorted:
   - libscamperctrl-devel 
   - libscamperctrl4 
   - libscamperfile-devel 
-  - libscamperfile12 
+  - libscamperfile13 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -16420,7 +16281,6 @@ unsorted:
   - libtemplate_glib-1_0-0 
   - libteredo5 
   - libtermcap2 
-  - libterminalwidget5-0 
   - libtermkey-devel 
   - libtermkey1 
   - libtesseract5 
@@ -16502,7 +16362,7 @@ unsorted:
   - libtpl-extensions3 
   - libtpm_unseal1 
   - libtpms-devel 
-  - libtqsllib2_5 
+  - libtqsllib2_6 
   - libtracecmd-devel 
   - libtracecmd1 
   - libtraceevent-devel 
@@ -16589,7 +16449,6 @@ unsorted:
   - libudisks2-0-devel 
   - libudisks2-0_lsm 
   - libudisks2-0_lvm2 
-  - libudisks2-qt5-0 
   - libudns0 
   - libudt-devel 
   - libudt0 
@@ -16671,7 +16530,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-28_3_0-32bit 
+  - libutf8_range-29_3_0-32bit 
   - libutf8proc3 
   - libuuid-devel 
   - libuuid-devel-32bit 
@@ -16915,7 +16774,6 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
-  - libwingpanel8 
   - libwinpr2-2 
   - libwireshark18 
   - libwiretap15 
@@ -16968,61 +16826,61 @@ unsorted:
   - libwv-1_2-4 
   - libwx_base-suse-devel 
   - libwx_base-suse-nostl-devel 
-  - libwx_baseu-suse-nostl15_0_0 
-  - libwx_baseu-suse15_0_0 
-  - libwx_baseu_net-suse-nostl15_0_0 
-  - libwx_baseu_net-suse15_0_0 
-  - libwx_baseu_xml-suse-nostl15_0_0 
-  - libwx_baseu_xml-suse15_0_0 
-  - libwx_gtk2u_adv-suse15_0_0 
-  - libwx_gtk2u_aui-suse15_0_0 
-  - libwx_gtk2u_core-suse15_0_0 
-  - libwx_gtk2u_gl-suse15_0_0 
-  - libwx_gtk2u_html-suse15_0_0 
-  - libwx_gtk2u_media-suse15_0_0 
-  - libwx_gtk2u_propgrid-suse15_0_0 
-  - libwx_gtk2u_qa-suse15_0_0 
-  - libwx_gtk2u_ribbon-suse15_0_0 
-  - libwx_gtk2u_richtext-suse15_0_0 
-  - libwx_gtk2u_stc-suse15_0_0 
-  - libwx_gtk2u_xrc-suse15_0_0 
-  - libwx_gtk3u_adv-suse-nostl15_0_0 
-  - libwx_gtk3u_adv-suse15_0_0 
-  - libwx_gtk3u_aui-suse-nostl15_0_0 
-  - libwx_gtk3u_aui-suse15_0_0 
-  - libwx_gtk3u_core-suse-nostl15_0_0 
-  - libwx_gtk3u_core-suse15_0_0 
-  - libwx_gtk3u_gl-suse-nostl15_0_0 
-  - libwx_gtk3u_gl-suse15_0_0 
-  - libwx_gtk3u_html-suse-nostl15_0_0 
-  - libwx_gtk3u_html-suse15_0_0 
-  - libwx_gtk3u_media-suse-nostl15_0_0 
-  - libwx_gtk3u_media-suse15_0_0 
-  - libwx_gtk3u_propgrid-suse-nostl15_0_0 
-  - libwx_gtk3u_propgrid-suse15_0_0 
-  - libwx_gtk3u_qa-suse-nostl15_0_0 
-  - libwx_gtk3u_qa-suse15_0_0 
-  - libwx_gtk3u_ribbon-suse-nostl15_0_0 
-  - libwx_gtk3u_ribbon-suse15_0_0 
-  - libwx_gtk3u_richtext-suse-nostl15_0_0 
-  - libwx_gtk3u_richtext-suse15_0_0 
-  - libwx_gtk3u_stc-suse-nostl15_0_0 
-  - libwx_gtk3u_stc-suse15_0_0 
-  - libwx_gtk3u_webview-suse15_0_0 
-  - libwx_gtk3u_xrc-suse-nostl15_0_0 
-  - libwx_gtk3u_xrc-suse15_0_0 
-  - libwx_qtu_adv-suse15_0_0 
-  - libwx_qtu_aui-suse15_0_0 
-  - libwx_qtu_core-suse15_0_0 
-  - libwx_qtu_gl-suse15_0_0 
-  - libwx_qtu_html-suse15_0_0 
-  - libwx_qtu_media-suse15_0_0 
-  - libwx_qtu_propgrid-suse15_0_0 
-  - libwx_qtu_qa-suse15_0_0 
-  - libwx_qtu_ribbon-suse15_0_0 
-  - libwx_qtu_richtext-suse15_0_0 
-  - libwx_qtu_stc-suse15_0_0 
-  - libwx_qtu_xrc-suse15_0_0 
+  - libwx_baseu-suse-nostl16_0_0 
+  - libwx_baseu-suse16_0_0 
+  - libwx_baseu_net-suse-nostl16_0_0 
+  - libwx_baseu_net-suse16_0_0 
+  - libwx_baseu_xml-suse-nostl16_0_0 
+  - libwx_baseu_xml-suse16_0_0 
+  - libwx_gtk2u_adv-suse16_0_0 
+  - libwx_gtk2u_aui-suse16_0_0 
+  - libwx_gtk2u_core-suse16_0_0 
+  - libwx_gtk2u_gl-suse16_0_0 
+  - libwx_gtk2u_html-suse16_0_0 
+  - libwx_gtk2u_media-suse16_0_0 
+  - libwx_gtk2u_propgrid-suse16_0_0 
+  - libwx_gtk2u_qa-suse16_0_0 
+  - libwx_gtk2u_ribbon-suse16_0_0 
+  - libwx_gtk2u_richtext-suse16_0_0 
+  - libwx_gtk2u_stc-suse16_0_0 
+  - libwx_gtk2u_xrc-suse16_0_0 
+  - libwx_gtk3u_adv-suse-nostl16_0_0 
+  - libwx_gtk3u_adv-suse16_0_0 
+  - libwx_gtk3u_aui-suse-nostl16_0_0 
+  - libwx_gtk3u_aui-suse16_0_0 
+  - libwx_gtk3u_core-suse-nostl16_0_0 
+  - libwx_gtk3u_core-suse16_0_0 
+  - libwx_gtk3u_gl-suse-nostl16_0_0 
+  - libwx_gtk3u_gl-suse16_0_0 
+  - libwx_gtk3u_html-suse-nostl16_0_0 
+  - libwx_gtk3u_html-suse16_0_0 
+  - libwx_gtk3u_media-suse-nostl16_0_0 
+  - libwx_gtk3u_media-suse16_0_0 
+  - libwx_gtk3u_propgrid-suse-nostl16_0_0 
+  - libwx_gtk3u_propgrid-suse16_0_0 
+  - libwx_gtk3u_qa-suse-nostl16_0_0 
+  - libwx_gtk3u_qa-suse16_0_0 
+  - libwx_gtk3u_ribbon-suse-nostl16_0_0 
+  - libwx_gtk3u_ribbon-suse16_0_0 
+  - libwx_gtk3u_richtext-suse-nostl16_0_0 
+  - libwx_gtk3u_richtext-suse16_0_0 
+  - libwx_gtk3u_stc-suse-nostl16_0_0 
+  - libwx_gtk3u_stc-suse16_0_0 
+  - libwx_gtk3u_webview-suse16_0_0 
+  - libwx_gtk3u_xrc-suse-nostl16_0_0 
+  - libwx_gtk3u_xrc-suse16_0_0 
+  - libwx_qtu_adv-suse16_0_0 
+  - libwx_qtu_aui-suse16_0_0 
+  - libwx_qtu_core-suse16_0_0 
+  - libwx_qtu_gl-suse16_0_0 
+  - libwx_qtu_html-suse16_0_0 
+  - libwx_qtu_media-suse16_0_0 
+  - libwx_qtu_propgrid-suse16_0_0 
+  - libwx_qtu_qa-suse16_0_0 
+  - libwx_qtu_ribbon-suse16_0_0 
+  - libwx_qtu_richtext-suse16_0_0 
+  - libwx_qtu_stc-suse16_0_0 
+  - libwx_qtu_xrc-suse16_0_0 
   - libwxcode_gtk2u_wxsqlite3-3_2-0 
   - libwxlua 
   - libwxlua-wx32-3_1_0_0 
@@ -17254,8 +17112,6 @@ unsorted:
   - libz-ng2 
   - libz-ng2-32bit 
   - libz3-4_14 
-  - libzapojit-0_0-0 
-  - libzapojit-devel 
   - libzarchive0_1 
   - libzbar-devel 
   - libzbar0-32bit 
@@ -17326,7 +17182,6 @@ unsorted:
   - light-locker-lang 
   - lightcouch 
   - lightcouch-javadoc 
-  - lightdm-deepin-greeter 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
   - lightdm-qt5-devel 
@@ -18746,6 +18601,7 @@ unsorted:
   - mjpg-streamer 
   - mk-configure 
   - mk-configure-doc 
+  - mkcert 
   - mkcomposecache 
   - mkdud 
   - mkelfImage 
@@ -19059,9 +18915,6 @@ unsorted:
   - mpvqt-devel 
   - mpy-tools 
   - mr 
-  - mraa 
-  - mraa-devel 
-  - mraa-examples 
   - mrboom 
   - mrouted 
   - mrrescue 
@@ -19619,6 +19472,7 @@ unsorted:
   - nlohmann_json-devel 
   - nlopt-devel 
   - nlopt-java 
+  - nm-configurator 
   - nm-tray 
   - nm-tray-lang 
   - nmap-parse-output 
@@ -20243,6 +20097,8 @@ unsorted:
   - openal-soft-tools 
   - openamp-devel 
   - openamp-examples 
+  - openapv 
+  - openapv-devel 
   - openbabel 
   - openbabel-devel 
   - openbabel-gui 
@@ -20687,8 +20543,6 @@ unsorted:
   - panini 
   - pantheon-agent-polkit 
   - pantheon-agent-polkit-lang 
-  - pantheon-applications-menu 
-  - pantheon-applications-menu-lang 
   - pantheon-bluetooth-daemon 
   - pantheon-bluetooth-daemon-lang 
   - pantheon-calculator 
@@ -20722,8 +20576,6 @@ unsorted:
   - pantheon-photos 
   - pantheon-photos-lang 
   - pantheon-photos-plugins 
-  - pantheon-quick-settings 
-  - pantheon-quick-settings-lang 
   - pantheon-screenshot 
   - pantheon-screenshot-lang 
   - pantheon-session 
@@ -20846,14 +20698,6 @@ unsorted:
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
   - patterns-cockpit 
-  - patterns-deepin-deepin 
-  - patterns-deepin-deepin_admin 
-  - patterns-deepin-deepin_basis 
-  - patterns-deepin-deepin_internet 
-  - patterns-deepin-deepin_multimedia 
-  - patterns-deepin-deepin_office 
-  - patterns-deepin-deepin_office_opt 
-  - patterns-deepin-deepin_utilities 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -23523,6 +23367,7 @@ unsorted:
   - python-sip4-common 
   - python-sip4-doc 
   - python-six-doc 
+  - python-susepubliccloudinfo 
   - python-sushy-doc 
   - python-swiftclient-doc 
   - python-tooz-doc 
@@ -23704,7 +23549,6 @@ unsorted:
   - python3-monascaclient 
   - python3-monitoring-plugins-http_json 
   - python3-morecvutils 
-  - python3-mraa 
   - python3-nemo 
   - python3-netgen 
   - python3-neutronclient 
@@ -23801,7 +23645,6 @@ unsorted:
   - python3-sss_nss_idmap 
   - python3-sssd-config 
   - python3-stp 
-  - python3-susepubliccloudinfo 
   - python3-sushy 
   - python3-swiftclient 
   - python3-talloc-32bit 
@@ -23890,7 +23733,6 @@ unsorted:
   - python311-Flask-Paranoid 
   - python311-Flask-Principal 
   - python311-Flask-RESTful 
-  - python311-Flask-RSTPages 
   - python311-Flask-SQLAlchemy 
   - python311-Flask-Security 
   - python311-Flask-SocketIO 
@@ -24347,6 +24189,7 @@ unsorted:
   - python311-azure-keyvault-keys 
   - python311-azure-keyvault-nspkg 
   - python311-azure-keyvault-secrets 
+  - python311-azure-keyvault-securitydomain 
   - python311-azure-loganalytics 
   - python311-azure-maps-geolocation 
   - python311-azure-maps-render 
@@ -24387,6 +24230,7 @@ unsorted:
   - python311-azure-mgmt-billing 
   - python311-azure-mgmt-billingbenefits 
   - python311-azure-mgmt-botservice 
+  - python311-azure-mgmt-carbonoptimization 
   - python311-azure-mgmt-cdn 
   - python311-azure-mgmt-chaos 
   - python311-azure-mgmt-cognitiveservices 
@@ -24476,6 +24320,7 @@ unsorted:
   - python311-azure-mgmt-kubernetesconfiguration 
   - python311-azure-mgmt-kusto 
   - python311-azure-mgmt-labservices 
+  - python311-azure-mgmt-lambdatesthyperexecute 
   - python311-azure-mgmt-largeinstance 
   - python311-azure-mgmt-loadtesting 
   - python311-azure-mgmt-loadtestservice 
@@ -24672,7 +24517,6 @@ unsorted:
   - python311-blockdiag 
   - python311-blosc 
   - python311-blosc2 
-  - python311-bloscpack 
   - python311-blue 
   - python311-blurb 
   - python311-bmap-tools 
@@ -24948,6 +24792,7 @@ unsorted:
   - python311-discid 
   - python311-discogs-client 
   - python311-diskcache 
+  - python311-disposable-email-domains 
   - python311-dist 
   - python311-dist-meta 
   - python311-distlib 
@@ -26394,6 +26239,7 @@ unsorted:
   - python311-pygments-pytest 
   - python311-pygn 
   - python311-pygraphviz 
+  - python311-pygtkspellcheck 
   - python311-pyhanko-certvalidator 
   - python311-pyhcl 
   - python311-pyhibp 
@@ -26452,6 +26298,7 @@ unsorted:
   - python311-pyocr 
   - python311-pyodbc 
   - python311-pyogrio 
+  - python311-pyorthanc 
   - python311-pyosf 
   - python311-pyotp 
   - python311-pyowm 
@@ -26871,6 +26718,7 @@ unsorted:
   - python311-roman 
   - python311-roman-numerals 
   - python311-rope 
+  - python311-ropgadget 
   - python311-rpcq 
   - python311-rpds-py 
   - python311-rply 
@@ -27103,6 +26951,7 @@ unsorted:
   - python311-stevedore 
   - python311-stomp.py 
   - python311-stomper 
+  - python311-stone 
   - python311-stopit 
   - python311-straight-plugin 
   - python311-streamdeck 
@@ -27300,6 +27149,7 @@ unsorted:
   - python311-uniseg 
   - python311-unittest-mixins 
   - python311-unittest-xml-reporting 
+  - python311-unix-ar 
   - python311-unpaddedbase64 
   - python311-unsync 
   - python311-untokenize 
@@ -27565,7 +27415,6 @@ unsorted:
   - python312-Flask-Paranoid 
   - python312-Flask-Principal 
   - python312-Flask-RESTful 
-  - python312-Flask-RSTPages 
   - python312-Flask-SQLAlchemy 
   - python312-Flask-Security 
   - python312-Flask-SocketIO 
@@ -28035,6 +27884,7 @@ unsorted:
   - python312-azure-keyvault-keys 
   - python312-azure-keyvault-nspkg 
   - python312-azure-keyvault-secrets 
+  - python312-azure-keyvault-securitydomain 
   - python312-azure-loganalytics 
   - python312-azure-maps-geolocation 
   - python312-azure-maps-render 
@@ -28075,6 +27925,7 @@ unsorted:
   - python312-azure-mgmt-billing 
   - python312-azure-mgmt-billingbenefits 
   - python312-azure-mgmt-botservice 
+  - python312-azure-mgmt-carbonoptimization 
   - python312-azure-mgmt-cdn 
   - python312-azure-mgmt-chaos 
   - python312-azure-mgmt-cognitiveservices 
@@ -28164,6 +28015,7 @@ unsorted:
   - python312-azure-mgmt-kubernetesconfiguration 
   - python312-azure-mgmt-kusto 
   - python312-azure-mgmt-labservices 
+  - python312-azure-mgmt-lambdatesthyperexecute 
   - python312-azure-mgmt-largeinstance 
   - python312-azure-mgmt-loadtesting 
   - python312-azure-mgmt-loadtestservice 
@@ -28364,7 +28216,6 @@ unsorted:
   - python312-blockdiag 
   - python312-blosc 
   - python312-blosc2 
-  - python312-bloscpack 
   - python312-blue 
   - python312-blurb 
   - python312-bmap-tools 
@@ -28648,6 +28499,7 @@ unsorted:
   - python312-discid 
   - python312-discogs-client 
   - python312-diskcache 
+  - python312-disposable-email-domains 
   - python312-dist 
   - python312-dist-meta 
   - python312-distlib 
@@ -30131,6 +29983,7 @@ unsorted:
   - python312-pygments-pytest 
   - python312-pygn 
   - python312-pygraphviz 
+  - python312-pygtkspellcheck 
   - python312-pyhanko-certvalidator 
   - python312-pyhcl 
   - python312-pyhibp 
@@ -30191,6 +30044,7 @@ unsorted:
   - python312-pyocr 
   - python312-pyodbc 
   - python312-pyogrio 
+  - python312-pyorthanc 
   - python312-pyosf 
   - python312-pyotp 
   - python312-pyowm 
@@ -30613,6 +30467,7 @@ unsorted:
   - python312-roman 
   - python312-roman-numerals 
   - python312-rope 
+  - python312-ropgadget 
   - python312-rpcq 
   - python312-rpds-py 
   - python312-rply 
@@ -30852,6 +30707,7 @@ unsorted:
   - python312-stevedore 
   - python312-stomp.py 
   - python312-stomper 
+  - python312-stone 
   - python312-stopit 
   - python312-straight-plugin 
   - python312-streamdeck 
@@ -31052,6 +30908,7 @@ unsorted:
   - python312-uniseg 
   - python312-unittest-mixins 
   - python312-unittest-xml-reporting 
+  - python312-unix-ar 
   - python312-unpaddedbase64 
   - python312-unsync 
   - python312-untokenize 
@@ -31320,7 +31177,6 @@ unsorted:
   - python313-Flask-Paranoid 
   - python313-Flask-Principal 
   - python313-Flask-RESTful 
-  - python313-Flask-RSTPages 
   - python313-Flask-SQLAlchemy 
   - python313-Flask-Security 
   - python313-Flask-SocketIO 
@@ -31777,6 +31633,7 @@ unsorted:
   - python313-azure-keyvault-keys 
   - python313-azure-keyvault-nspkg 
   - python313-azure-keyvault-secrets 
+  - python313-azure-keyvault-securitydomain 
   - python313-azure-loganalytics 
   - python313-azure-maps-geolocation 
   - python313-azure-maps-render 
@@ -31817,6 +31674,7 @@ unsorted:
   - python313-azure-mgmt-billing 
   - python313-azure-mgmt-billingbenefits 
   - python313-azure-mgmt-botservice 
+  - python313-azure-mgmt-carbonoptimization 
   - python313-azure-mgmt-cdn 
   - python313-azure-mgmt-chaos 
   - python313-azure-mgmt-cognitiveservices 
@@ -31906,6 +31764,7 @@ unsorted:
   - python313-azure-mgmt-kubernetesconfiguration 
   - python313-azure-mgmt-kusto 
   - python313-azure-mgmt-labservices 
+  - python313-azure-mgmt-lambdatesthyperexecute 
   - python313-azure-mgmt-largeinstance 
   - python313-azure-mgmt-loadtesting 
   - python313-azure-mgmt-loadtestservice 
@@ -32102,7 +31961,6 @@ unsorted:
   - python313-blockdiag 
   - python313-blosc 
   - python313-blosc2 
-  - python313-bloscpack 
   - python313-blue 
   - python313-blurb 
   - python313-bmap-tools 
@@ -32374,6 +32232,7 @@ unsorted:
   - python313-discid 
   - python313-discogs-client 
   - python313-diskcache 
+  - python313-disposable-email-domains 
   - python313-dist 
   - python313-dist-meta 
   - python313-distlib 
@@ -33818,6 +33677,7 @@ unsorted:
   - python313-pygments-pytest 
   - python313-pygn 
   - python313-pygraphviz 
+  - python313-pygtkspellcheck 
   - python313-pyhanko-certvalidator 
   - python313-pyhcl 
   - python313-pyhibp 
@@ -33876,6 +33736,7 @@ unsorted:
   - python313-pyocr 
   - python313-pyodbc 
   - python313-pyogrio 
+  - python313-pyorthanc 
   - python313-pyosf 
   - python313-pyotp 
   - python313-pyowm 
@@ -34288,6 +34149,7 @@ unsorted:
   - python313-roman 
   - python313-roman-numerals 
   - python313-rope 
+  - python313-ropgadget 
   - python313-rpcq 
   - python313-rply 
   - python313-rpm-spec-language-server 
@@ -34525,6 +34387,7 @@ unsorted:
   - python313-stevedore 
   - python313-stomp.py 
   - python313-stomper 
+  - python313-stone 
   - python313-stopit 
   - python313-straight-plugin 
   - python313-streamdeck 
@@ -34721,6 +34584,7 @@ unsorted:
   - python313-uniseg 
   - python313-unittest-mixins 
   - python313-unittest-xml-reporting 
+  - python313-unix-ar 
   - python313-unpaddedbase64 
   - python313-unsync 
   - python313-untokenize 
@@ -35095,6 +34959,7 @@ unsorted:
   - qore-sqlite3-module-doc 
   - qore-ssh2-module 
   - qore-ssh2-module-doc 
+  - qore-stdlib 
   - qore-uuid-module 
   - qore-uuid-module-doc 
   - qore-xml-module 
@@ -35143,7 +35008,6 @@ unsorted:
   - qsynth 
   - qsynth-lang 
   - qt5ct 
-  - qt5integration 
   - qt6-3d-devel 
   - qt6-3d-docs-html 
   - qt6-3d-docs-qch 
@@ -35557,7 +35421,6 @@ unsorted:
   - qtcurve-gtk2 
   - qtcurve-qt5 
   - qtcurve-qt5-lang 
-  - qtdbusextended-devel 
   - qtel 
   - qterm 
   - qterminal 
@@ -35570,8 +35433,6 @@ unsorted:
   - qtilitools 
   - qtkeychain-qt5-devel 
   - qtkeychain-qt6-devel 
-  - qtmpris 
-  - qtmpris-devel 
   - qtodotxt 
   - qtractor 
   - qtractor-doc-pdf 
@@ -35936,6 +35797,7 @@ unsorted:
   - rke2-1.29 
   - rke2-1.30 
   - rke2-1.31 
+  - rke2-1.32 
   - rke2-selinux 
   - rkhunter 
   - rkward 
@@ -36453,16 +36315,8 @@ unsorted:
   - rust-stakeholder 
   - rust1.78 
   - rust1.78-src 
-  - rust1.79 
-  - rust1.79-src 
-  - rust1.80 
-  - rust1.80-src 
-  - rust1.81 
-  - rust1.81-src 
   - rust1.82 
   - rust1.82-src 
-  - rust1.83 
-  - rust1.83-src 
   - rust1.84 
   - rust1.84-src 
   - rust1.85 
@@ -36496,6 +36350,7 @@ unsorted:
   - rz-cutter-devel 
   - rz-ghidra 
   - rz-ghidra-devel 
+  - rz-libswift 
   - rz-pm 
   - rzip 
   - rzsz 
@@ -37020,7 +36875,7 @@ unsorted:
   - soapysdr0.8-3-module-osmosdr 
   - soapysdr0.8-3-module-remote 
   - soapysdr0.8-3-module-rtlsdr 
-  - soapysdr0.8-module-uhd 
+  - soapysdr0.8-3-module-uhd 
   - soapysdr0.8-module-xtrx 
   - sobby 
   - socat-extra 
@@ -37052,7 +36907,6 @@ unsorted:
   - solfege 
   - solid-devel 
   - solo-udev 
-  - something-for-reddit 
   - sonar-icon-theme 
   - sonatype-oss-parent 
   - sonatype-plugins-parent 
@@ -37573,12 +37427,13 @@ unsorted:
   - systemd-mini 
   - systemd-mini-container 
   - systemd-mini-devel 
-  - systemd-network 
+  - systemd-networkd 
   - systemd-portable 
   - systemd-presets-branding-transactional-server 
   - systemd-repart-branding-Aeon 
   - systemd-repart-branding-tik 
   - systemd-repart-dracut 
+  - systemd-resolved 
   - systemd-status-mail 
   - systemd-sysvcompat 
   - systemd-testsuite 
@@ -47293,6 +47148,7 @@ unsorted:
   - tftpboot-installation-common 
   - tftpboot-installation-openSUSE-MicroOS-x86_64 
   - tftpboot-installation-openSUSE-Tumbleweed-x86_64 
+  - tfupdate 
   - tgt 
   - thermal-monitor 
   - thermald 
@@ -47454,6 +47310,17 @@ unsorted:
   - tomcat10-lib 
   - tomcat10-servlet-6_0-api 
   - tomcat10-webapps 
+  - tomcat11 
+  - tomcat11-admin-webapps 
+  - tomcat11-doc 
+  - tomcat11-docs-webapp 
+  - tomcat11-el-6_0-api 
+  - tomcat11-embed 
+  - tomcat11-jsp-4_0-api 
+  - tomcat11-jsvc 
+  - tomcat11-lib 
+  - tomcat11-servlet-6_1-api 
+  - tomcat11-webapps 
   - toml11-devel 
   - tomlplusplus-devel 
   - tomoe 
@@ -47887,7 +47754,6 @@ unsorted:
   - typelib-1_0-GData-0_0 
   - typelib-1_0-GES-1_0 
   - typelib-1_0-GExiv2-0_10 
-  - typelib-1_0-GFBGraph-0_2 
   - typelib-1_0-GIRepository-3_0 
   - typelib-1_0-GLibUnix-2_0 
   - typelib-1_0-GMime-3_0 
@@ -48069,7 +47935,6 @@ unsorted:
   - typelib-1_0-XreaderView-1_5 
   - typelib-1_0-Xviewer-3_0 
   - typelib-1_0-Zeitgeist-2_0 
-  - typelib-1_0-Zpj-0_0 
   - typelib-1_0-kkc-1_0 
   - typelib-1_0-libdazzle-1_0 
   - typelib-1_0-libmirage-3_2 
@@ -48112,7 +47977,6 @@ unsorted:
   - udiskie 
   - udiskie-lang 
   - udisks2-docs 
-  - udisks2-qt5-devel 
   - udisks2-zsh-completion 
   - udns 
   - udns-devel 
@@ -48728,6 +48592,7 @@ unsorted:
   - webkit2gtk3-soup2-minibrowser 
   - webkit2gtk4-devel 
   - webkit2gtk4-minibrowser 
+  - weblate 
   - weblug 
   - webrepl 
   - websocketpp-devel 
@@ -48742,6 +48607,8 @@ unsorted:
   - weechat-tcl 
   - weggli 
   - weld-parent 
+  - welle-cli 
+  - welle-io 
   - werf 
   - werf-bash-completion 
   - werf-fish-completion 
@@ -48778,6 +48645,7 @@ unsorted:
   - whois 
   - whois-bash-completion 
   - wicked-nbft 
+  - wicked2nm 
   - widelands 
   - widelands-data 
   - widelands-debug 
@@ -48806,25 +48674,6 @@ unsorted:
   - wine-wow64-devel 
   - winetricks 
   - winetricks-bash-completion 
-  - wingpanel 
-  - wingpanel-devel 
-  - wingpanel-indicator-a11y 
-  - wingpanel-indicator-a11y-lang 
-  - wingpanel-indicator-bluetooth 
-  - wingpanel-indicator-bluetooth-lang 
-  - wingpanel-indicator-datetime 
-  - wingpanel-indicator-datetime-lang 
-  - wingpanel-indicator-keyboard 
-  - wingpanel-indicator-keyboard-lang 
-  - wingpanel-indicator-nightlight 
-  - wingpanel-indicator-nightlight-lang 
-  - wingpanel-indicator-notifications 
-  - wingpanel-indicator-notifications-lang 
-  - wingpanel-indicator-power 
-  - wingpanel-indicator-power-lang 
-  - wingpanel-indicator-sound 
-  - wingpanel-indicator-sound-lang 
-  - wingpanel-lang 
   - winpr-devel 
   - winpr2-devel 
   - winrs 
@@ -49584,6 +49433,9 @@ unsorted:
   - zita-resampler-tools 
   - zix-devel 
   - zizmor 
+  - zizmor-bash-completion 
+  - zizmor-fish-completion 
+  - zizmor-zsh-completion 
   - zk 
   - zk-spaced 
   - zli 

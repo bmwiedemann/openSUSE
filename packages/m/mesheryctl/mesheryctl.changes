@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Tue May 13 10:44:56 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.78:
+  * General
+    - update generate handler @aabidsofi19 (#14677)
+    - fix: added connection name to remote provider @ianrwhitney
+      (#14672)
+  * Meshery CLI
+    - feat(mehseryctl-system): add e2e test on system check command
+      @lekaf974 (#14643)
+    - [mod]: fixed script not running tests, modified script to be
+      extensible @gentcod (#14671)
+  * Maintenance
+    - feat(mehseryctl-system): add e2e test on system check command
+      @lekaf974 (#14643)
+    - Bump start-server-and-test from 2.0.10 to 2.0.11 in /ui
+      @dependabot (#14599)
+    - Bump fortio.org/fortio from 1.66.2 to 1.69.4 @dependabot
+      (#14593)
+    - Enable Meshery edge release to staging @sangramrath (#14676)
+    - [mod]: fixed script not running tests, modified script to be
+      extensible @gentcod (#14671)
+  * Documentation
+    - docs: updated docs for docker-extension install @Paladian78
+      (#14176)
+    - Scroll feature in code blocks for docs @Paladian78 (#14666)
+    - Bump rack-session from 2.0.0 to 2.1.1 in /docs @dependabot
+      (#14662)
+    - Hide link to Shape Builder (not ready for use) - Update
+      component-shape-guide.md @ritzorama (#14679)
+    - created azure tutorial @Paladian78 (#14674)
+
+-------------------------------------------------------------------
+Sat May 10 09:10:48 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.77:
+  * General
+    - set default name for aliases @aabidsofi19 (#14669)
+  * eshery CLI
+    - Fix URL in model import e2e test for valid OCI artifact
+      @102vansh (#14615)
+  * Maintenance
+    - migrate infomodal from axios to rtk-query @LibenHailu (#14649)
+    - Fix URL in model import e2e test for valid OCI artifact
+      @102vansh (#14615)
+  * Documentation
+    - update contributing ui dashboard widget guide @amitamrutiya
+      (#14664)
+
+-------------------------------------------------------------------
+Fri May  9 05:58:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.76:
+  * Meshery CLI
+    - chore(mesheryctl-workspace): update workspace command using
+      reusable fetch and list function @lekaf974 (#14288)
+- update to 0.8.75:
+  * no CLI-related changes in this release
+- update to 0.8.74:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Wed May  7 10:46:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.73:
+  * Meshery CLI
+    - fix(mesheryctl-e2e): updating model view command failing
+      @lekaf974 (#14614)
+- update to 0.8.72:
+  * no CLI-related changes in this release
+- update to 0.8.71:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
+Tue May  6 04:48:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.70:
+  * General
+    - fix: 14552: update nighthawk-go version from v1.0.3 to v1.0.6
+      @n2h9 (#14616)
+  * eshery CLI
+    - e2e tests for mesheryctl component search command
+      @VinayCheripally (#14609)
+  * Maintenance
+    - e2e tests for mesheryctl component search command
+      @VinayCheripally (#14609)
+- update to 0.8.69:
+  * no CLI-related changes in this release
+  * Meshery UI
+    - Revert "Bump react-share from 4.4.1 to 5.2.2 in /ui"
+      @amitamrutiya (#14606)
+- update to 0.8.68:
+  * no CLI-related changes in this release
+  * Maintenance
+    - Bump @layer5/sistent from 0.14.156 to 0.14.183 in /provider-ui
+      @dependabot (#14598)
+    - Bump react-share from 4.4.1 to 5.2.2 in /ui @dependabot (#14600)
+    - Bump react-big-calendar from 1.17.1 to 1.18.0 in /ui @dependabot
+      (#14602)
+- update to 0.8.67:
+  * no CLI-related changes in this release
+  * Maintenance
+    - Bump autoprefixer from 10.4.20 to 10.4.21 in /ui @dependabot
+      (#14601)
+    - Bump start-server-and-test from 2.0.10 to 2.0.11 in /provider-ui
+      @dependabot (#14595)
+    - Bump @mui/x-date-pickers from 7.26.0 to 8.2.0 in /ui @dependabot
+      (#14603)
+- update to 0.8.66:
+  * no CLI-related changes in this release
+
+-------------------------------------------------------------------
 Tue Apr 29 08:13:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.65:

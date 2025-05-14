@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 944acaa23457ec6dcc33f4e7d9920a892debba9c
+%define git_version 43dfb5fb64bb2707ba4fce1bc0fe835ad644b797
 
 Name:           kernel-firmware-qcom
-Version:        20250422
+Version:        20250502
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware

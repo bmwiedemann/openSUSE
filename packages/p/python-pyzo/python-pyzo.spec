@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyzo
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-pyzo
 Version:        4.11.2
 Release:        0
@@ -25,8 +23,10 @@ Summary:        Python IDE for scientific computing
 License:        BSD-3-Clause
 URL:            https://github.com/pyzo/pyzo
 Source:         https://files.pythonhosted.org/packages/source/p/pyzo/pyzo-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
@@ -64,10 +64,10 @@ sed -i -e '/^#!\//, 1d' pyzo/codeeditor/_test.py
 sed -i -e '/^#!\//, 1d' pyzo/pyzokernel/guisupport.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 pushd pyzo/resources/
 %suse_update_desktop_file pyzo Development Science IDE NumericalAnalysis
 install -m 644 -Dt %{buildroot}%{_datadir}/applications pyzo.desktop
@@ -100,7 +100,8 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/*
+%{python_sitelib}/pyzo
+%{python_sitelib}/pyzo-%{version}.dist-info
 
 %files -n pyzo
 %license LICENSE.md

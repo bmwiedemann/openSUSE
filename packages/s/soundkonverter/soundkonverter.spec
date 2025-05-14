@@ -1,7 +1,7 @@
 #
 # spec file for package soundkonverter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,7 @@ soundKonverter is a frontend to various audio converters.
 %autosetup -p1
 
 %build
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 pushd src
 %cmake_kf5 -d build -- "-DKF5_BUILD=ON"
 %cmake_build

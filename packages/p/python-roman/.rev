@@ -107,4 +107,20 @@
     <comment>- add sle15_python_module_pythons (jsc#PED-68)</comment>
     <requestid>1084400</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d1a82fba9597880e7b306457ba142491</srcmd5>
+    <version>5.0</version>
+    <time>1746809435</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0:
+  * Drop support for Python 3.7, 3.8.
+  * Add support for lower case roman numerals.
+  * Remove overlooked mentions of the Python 2.1.1 license
+  * Add support for Python 3.12 and 3.13.
+  * Change license to the Zope Public License (ZPL) version 2.1
+  * Add support for Python 3.10, 3.11.
+  * Drop support for Python 2.7, 3.5, 3.6.
+- Switch to pyproject macros.</comment>
+    <requestid>1276020</requestid>
+  </revision>
 </revisionlist>

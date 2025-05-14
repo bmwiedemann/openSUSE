@@ -1,4 +1,4 @@
-From ae806749f02502be1a8c073fd81050c04aa56c96 Mon Sep 17 00:00:00 2001
+From 24aeb89d24d5f7d9304249516e35b831152314d0 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Tin=20Tvrtkovi=C4=87?= <tinchester@gmail.com>
 Date: Sat, 5 Oct 2024 03:55:06 +0200
 Subject: [PATCH] Python 3.13 support (#543)
@@ -16,20 +16,19 @@ Subject: [PATCH] Python 3.13 support (#543)
 * Fix typing.NoDefault for list unstructuring
 ---
  .github/workflows/main.yml |   2 +-
- HISTORY.md                 |   2 +
- pdm.lock                   | 193 +++++++++++++++++++------------------
+ pdm.lock                   | 191 +++++++++++++++++++------------------
  pyproject.toml             |   5 +-
  src/cattrs/dispatch.py     |   3 +-
  src/cattrs/gen/__init__.py |   6 ++
  tests/conftest.py          |   2 +
  tests/test_preconf.py      |  11 ++-
  tox.ini                    |  13 ++-
- 9 files changed, 134 insertions(+), 103 deletions(-)
+ 8 files changed, 131 insertions(+), 102 deletions(-)
 
-Index: cattrs-24.1.2/.github/workflows/main.yml
-===================================================================
---- cattrs-24.1.2.orig/.github/workflows/main.yml
-+++ cattrs-24.1.2/.github/workflows/main.yml
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index de772e7..5a2de57 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
 @@ -14,7 +14,7 @@ jobs:
  
      strategy:
@@ -39,33 +38,11 @@ Index: cattrs-24.1.2/.github/workflows/main.yml
        fail-fast: false
  
      steps:
-Index: cattrs-24.1.2/HISTORY.md
-===================================================================
---- cattrs-24.1.2.orig/HISTORY.md
-+++ cattrs-24.1.2/HISTORY.md
-@@ -8,6 +8,8 @@ The second number is incremented with ea
- The third number is for emergencies when we need to start branches for older releases.
- 
- Our backwards-compatibility policy can be found [here](https://github.com/python-attrs/cattrs/blob/main/.github/SECURITY.md).
-+- Python 3.13 is now supported.
-+  ([#543](https://github.com/python-attrs/cattrs/pull/543) [#547](https://github.com/python-attrs/cattrs/issues/547))
- 
- ## 24.1.2 (2024-09-22)
- 
-Index: cattrs-24.1.2/pdm.lock
-===================================================================
---- cattrs-24.1.2.orig/pdm.lock
-+++ cattrs-24.1.2/pdm.lock
-@@ -5,7 +5,7 @@
- groups = ["default", "bench", "bson", "cbor2", "docs", "lint", "msgpack", "msgspec", "orjson", "pyyaml", "test", "tomlkit", "ujson"]
- strategy = ["cross_platform"]
- lock_version = "4.5.0"
--content_hash = "sha256:c32bd648a77ba4ea8214234796f8785a16e071604a46fd16737d4fc15ad7dba0"
-+content_hash = "sha256:3d2f4b852119c21e2ce96a9dbca3591ce2456f02ca8d27d2cc91db2eb58a39c0"
- 
- [[metadata.targets]]
- name = "alabaster"
-@@ -668,46 +668,46 @@ files = [
+diff --git a/pdm.lock b/pdm.lock
+index 53b69d4..7164add 100644
+--- a/pdm.lock
++++ b/pdm.lock
+@@ -648,46 +648,46 @@ files = [
  
  [[package]]
  name = "msgspec"
@@ -149,7 +126,7 @@ Index: cattrs-24.1.2/pdm.lock
  ]
  
  [[package]]
-@@ -740,60 +740,67 @@ files = [
+@@ -720,60 +720,67 @@ files = [
  
  [[package]]
  name = "orjson"
@@ -269,7 +246,7 @@ Index: cattrs-24.1.2/pdm.lock
  ]
  
  [[package]]
-@@ -1479,12 +1486,12 @@ files = [
+@@ -1459,12 +1466,12 @@ files = [
  
  [[package]]
  name = "typing-extensions"
@@ -285,10 +262,10 @@ Index: cattrs-24.1.2/pdm.lock
  ]
  
  [[package]]
-Index: cattrs-24.1.2/pyproject.toml
-===================================================================
---- cattrs-24.1.2.orig/pyproject.toml
-+++ cattrs-24.1.2/pyproject.toml
+diff --git a/pyproject.toml b/pyproject.toml
+index 7288cee..9114c20 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -43,7 +43,7 @@ authors = [
  ]
  dependencies = [
@@ -315,11 +292,11 @@ Index: cattrs-24.1.2/pyproject.toml
  ]
  msgpack = [
      "msgpack>=1.0.5",
-Index: cattrs-24.1.2/src/cattrs/dispatch.py
-===================================================================
---- cattrs-24.1.2.orig/src/cattrs/dispatch.py
-+++ cattrs-24.1.2/src/cattrs/dispatch.py
-@@ -91,9 +91,9 @@ class MultiStrategyDispatch(Generic[Hook
+diff --git a/src/cattrs/dispatch.py b/src/cattrs/dispatch.py
+index 3d746db..f98dc51 100644
+--- a/src/cattrs/dispatch.py
++++ b/src/cattrs/dispatch.py
+@@ -91,9 +91,9 @@ class MultiStrategyDispatch(Generic[Hook]):
      MultiStrategyDispatch uses a combination of exact-match dispatch,
      singledispatch, and FunctionDispatch.
  
@@ -330,7 +307,7 @@ Index: cattrs-24.1.2/src/cattrs/dispatch.py
  
      .. versionchanged:: 23.2.0
          Fallbacks are now factories.
-@@ -103,7 +103,6 @@ class MultiStrategyDispatch(Generic[Hook
+@@ -103,7 +103,6 @@ class MultiStrategyDispatch(Generic[Hook]):
      """
  
      _fallback_factory: HookFactory[Hook]
@@ -338,10 +315,10 @@ Index: cattrs-24.1.2/src/cattrs/dispatch.py
      _direct_dispatch: dict[TargetType, Hook]
      _function_dispatch: FunctionDispatch
      _single_dispatch: Any
-Index: cattrs-24.1.2/src/cattrs/gen/__init__.py
-===================================================================
---- cattrs-24.1.2.orig/src/cattrs/gen/__init__.py
-+++ cattrs-24.1.2/src/cattrs/gen/__init__.py
+diff --git a/src/cattrs/gen/__init__.py b/src/cattrs/gen/__init__.py
+index 97d2876..bb31236 100644
+--- a/src/cattrs/gen/__init__.py
++++ b/src/cattrs/gen/__init__.py
 @@ -14,6 +14,7 @@ from typing import (
  )
  
@@ -369,20 +346,20 @@ Index: cattrs-24.1.2/src/cattrs/gen/__init__.py
          handler = converter.get_unstructure_hook(type_arg, cache_result=False)
          if handler == identity:
              # Save ourselves the trouble of iterating over it all.
-Index: cattrs-24.1.2/tests/conftest.py
-===================================================================
---- cattrs-24.1.2.orig/tests/conftest.py
-+++ cattrs-24.1.2/tests/conftest.py
+diff --git a/tests/conftest.py b/tests/conftest.py
+index d295990..4b014df 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
 @@ -37,3 +37,5 @@ if sys.version_info < (3, 12):
      collect_ignore_glob.append("*_695.py")
  if platform.python_implementation() == "PyPy":
      collect_ignore_glob.append("*_cpython.py")
 +if sys.version_info >= (3, 13):  # Remove when msgspec supports 3.13.
 +    collect_ignore_glob.append("*test_msgspec_cpython.py")
-Index: cattrs-24.1.2/tests/test_preconf.py
-===================================================================
---- cattrs-24.1.2.orig/tests/test_preconf.py
-+++ cattrs-24.1.2/tests/test_preconf.py
+diff --git a/tests/test_preconf.py b/tests/test_preconf.py
+index dba47fe..b7cf464 100644
+--- a/tests/test_preconf.py
++++ b/tests/test_preconf.py
 @@ -4,7 +4,7 @@ from enum import Enum, IntEnum, unique
  from json import dumps as json_dumps
  from json import loads as json_loads
@@ -392,7 +369,7 @@ Index: cattrs-24.1.2/tests/test_preconf.py
  
  import pytest
  from attrs import define
-@@ -699,7 +699,10 @@ def test_cbor2_unions(union_and_val: tup
+@@ -699,7 +699,10 @@ def test_cbor2_unions(union_and_val: tuple, detailed_validation: bool):
      assert converter.structure(val, type) == val
  
  
@@ -404,7 +381,7 @@ Index: cattrs-24.1.2/tests/test_preconf.py
  @given(everythings(allow_inf=False))
  def test_msgspec_json_converter(everything: Everything):
      from cattrs.preconf.msgspec import make_converter as msgspec_make_converter
-@@ -709,7 +712,7 @@ def test_msgspec_json_converter(everythi
+@@ -709,7 +712,7 @@ def test_msgspec_json_converter(everything: Everything):
      assert converter.loads(raw, Everything) == everything
  
  
@@ -413,7 +390,7 @@ Index: cattrs-24.1.2/tests/test_preconf.py
  @given(everythings(allow_inf=False))
  def test_msgspec_json_unstruct_collection_overrides(everything: Everything):
      """Ensure collection overrides work."""
-@@ -724,7 +727,7 @@ def test_msgspec_json_unstruct_collectio
+@@ -724,7 +727,7 @@ def test_msgspec_json_unstruct_collection_overrides(everything: Everything):
      assert raw["a_frozenset"] == sorted(raw["a_frozenset"])
  
  
@@ -422,10 +399,10 @@ Index: cattrs-24.1.2/tests/test_preconf.py
  @given(
      union_and_val=native_unions(
          include_datetimes=False,
-Index: cattrs-24.1.2/tox.ini
-===================================================================
---- cattrs-24.1.2.orig/tox.ini
-+++ cattrs-24.1.2/tox.ini
+diff --git a/tox.ini b/tox.ini
+index 21297bd..31ca9dc 100644
+--- a/tox.ini
++++ b/tox.ini
 @@ -6,10 +6,12 @@ python =
      3.10: py310
      3.11: py311, docs
@@ -456,3 +433,6 @@ Index: cattrs-24.1.2/tox.ini
  [testenv:pypy3]
  setenv =
      FAST = 1
+-- 
+2.49.0
+

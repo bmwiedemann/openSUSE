@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  3 16:51:01 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add open-vm-tools-12.5.0-gcc15.patch from upstream to fix
+  gcc15 compile time error (boo#1241938)
+
+-------------------------------------------------------------------
 Wed Apr 16 21:49:08 UTC 2025 - Kirk Allan <kallan@suse.com>
 
 - (bsc#1237147): Newer version of containerd do not have the directory

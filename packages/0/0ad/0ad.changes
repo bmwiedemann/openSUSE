@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  8 21:02:10 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Only build on architectures supported by bundled premake, and add
+  check to ensure we revisit that list when more architectures
+  get supported (boo#1242266).
+
+-------------------------------------------------------------------
 Sat Apr 26 12:06:05 UTC 2025 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove several evidently unused dependencies: libjpeg-devel,

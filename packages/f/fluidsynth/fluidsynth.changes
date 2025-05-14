@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun May 11 07:58:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.6
+  * Fix MIDI player skipping some events when seeking.
+  * A regression introduced in 2.4.5 could have caused a
+    heap-based buffer overrun (#1560)
+  * Fix several issues when generating API docs with recent
+    versions of Doxygen.
+
+-------------------------------------------------------------------
 Tue Apr 15 10:43:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.5

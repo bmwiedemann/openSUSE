@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  6 09:02:19 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fixes:
+  * 0001-Do-not-force-gl-egl-ANGLE-backend-on-Linux.patch (QTBUG-135786)
+  * 0001-gbm-Add-fallback-for-drmPrimeHandleToFD.patch (QTBUG-135935)
+  * 0001-Do-not-list-GLX-frame-buffer-configurations-unnecess.patch (QTBUG-135647)
+  * 0001-angle-Always-use-primary-GPU.patch
+  * 0001-NativeSkiaOutputDeviceOpenGL-Fix-leaking-X11-Pixmap.patch (QTBUG-135047)
+  * 0001-NativeSkiaOutputDeviceVulkan-Use-minimal-set-of-usag.patch (QTBUG-123607)
+  * 0001-Add-default-and-gl-ANGLE-implementation-support-to-O.patch (QTBUG-129769)
+  * 0001-Avoid-crash-due-to-long-dictionary-commands.patch
+
+-------------------------------------------------------------------
+Fri Apr  4 07:57:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- openjpeg2 is too old for Leap 15 builds, use the embedded one
+
+-------------------------------------------------------------------
 Wed Apr  2 11:03:45 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.9.0:

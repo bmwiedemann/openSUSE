@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat May 10 17:57:09 UTC 2025 - fredrik.lonnegren@suse.com
+
+- Update to version 1.0.12:
+  * scx_p2dq: Keep non-interactive tasks sticky
+  * scx_tickless: Avoid distributing tasks on scheduling CPUs
+  * scx_p2dq: Try to keep affinitized tasks sticky
+  * scx_p2dq: Fix accounting for long running tasks
+  * layered: fix verifier error when cleaning up matchers
+  * layered: add stats to skip preempt and read kallsyms to get addresses
+  * layered: update policies used for determining preemption eligibility
+  * layered: dont preempt if policy is not sched_ext
+  * scx_lavd: Check if conflicting options are used.
+  * scx_lavd: Remove less useful options affecting CPU preference order.
+  * scx_lavd: Do not deprioritize a new task.
+  * scx_layered: Create pinned task local storage map
+  * scx_p2dq: Make interactive sticky work again
+  * scx_lavd: Collect and show the preemption stats.
+  * scx_lavd: Add --no-wake-sync, --no-preemption options
+  * scx_layered: add placement config option
+  * scx_layered: add layer matching based on average runtime
+  * scx_p2dq: Update slice accounting
+  * scx_layered: do not prevent protected CPUs from executing tasks in the fallback queue
+  * scx_rustland: Virtual deadline with partial execution runtime
+  * scxtop: attach dsq bpf programs on kernels < 6.13
+  * scx_lavd: Get the right CPU context from ops.stopping()
+  * scx_lavd: Improve handling of synchronous wake-up.
+  * lavd: get cpu context of scx_bpf_task_cpu in running
+  * scxtop: Add mangoapp TUI view
+  * scx_lavd: Use smt_level and cache_size for CPU preference order.
+  * scx_bpfland: Introduce --no-wake-sync
+  * rustscheds: add common SCX_TIMEOUT_MS env var to set stall watchdog limit
+  * scx_layered: Implement layer option skip_remote_node
+  * scx_p2dq: Add configuration for dispatch load balancing
+  * scx_layered: Fix queue delay output underflow in debug dump
+  * scxtop: better naming for kernel worker threads
+  * scx_p2dq: Fix affinitized task handling
+  * scx_lavd: Print scaled CPU utilization with --monitor-sched-samples.
+  * scx_lavd: Calculate scaled and invariant CPU utilization.
+  * scxtop: add process and thread descriptors
+  * scx_lavd: Use 1024 instead 1000 for fixed point arithmetic.
+  * scx_layered: gate nvidia_poll kprobe behind flag
+  * scx_bpfland: Normalize task weight
+  * scxtop: attach sched_waking program
+  * scx_p2dq: Update kthread selection on task context
+  * scx_lavd: Relax the atomic visibility of sys_stat.
+  * scx_lavd: Further prioritize kworkers.
+  * scx_lavd: Calculate the base time slice once every state is updated.
+  * scx_p2dq: Adjust max vtime calculation
+  * scx_lavd: Prioritize recently woken-up tasks.
+  * scx_lavd: Clean up runtime-related variable names.
+  * scx_lavd: Add --cpu-pref-order.
+  * scx_rusty: add private copy of allocator code that uses cast_kern()
+  * chaos: store p2dq vtime and restore it before enqueue
+  * chaos: guarantee dispatch of tasks on quiet cpus
+  * scxtop: scx_utils: Correctly handle signed values in CPU topology files
+  * scx_p2dq: Deprecate greedy idle selection
+
+-------------------------------------------------------------------
 Thu Apr 03 07:49:22 UTC 2025 - fredrik.lonnegren@suse.com
 
 - Update to version 1.0.11:

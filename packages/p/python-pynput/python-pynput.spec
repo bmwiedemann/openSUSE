@@ -1,7 +1,7 @@
 #
 # spec file for package python-pynput
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-pynput
-Version:        1.7.6
+Version:        1.8.1
 Release:        0
 Summary:        Monitor and control user input devices
 License:        LGPL-3.0-only

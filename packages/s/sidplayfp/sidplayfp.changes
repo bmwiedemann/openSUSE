@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 11 18:58:00 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.0
+  * Ported to new play API.
+  * Removed support for old library version.
+  * Minor fixes and optimizations.
+
+-------------------------------------------------------------------
 Sun Apr 13 12:14:52 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13.0

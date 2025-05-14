@@ -1,7 +1,7 @@
 #
 # spec file for package python-audio-degrader
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-audio-degrader
@@ -27,9 +26,11 @@ License:        GPL-3.0-only
 URL:            https://github.com/emilio-molina/audio_degrader
 Source:         https://files.pythonhosted.org/packages/source/a/audio-degrader/audio_degrader-%{version}.tar.gz
 BuildRequires:  %{python_module SoundFile >= 0.10.3.post1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scipy >= 1.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sox}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-SoundFile >= 0.10.3.post1
@@ -51,10 +52,10 @@ degradations to audio.
 %autosetup -p1 -n audio_degrader-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/audio_degrader
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -72,6 +73,6 @@ degradations to audio.
 %doc README.md
 %python_alternative %{_bindir}/audio_degrader
 %{python_sitelib}/audio_degrader
-%{python_sitelib}/audio_degrader-%{version}*-info
+%{python_sitelib}/audio_degrader-%{version}.dist-info
 
 %changelog

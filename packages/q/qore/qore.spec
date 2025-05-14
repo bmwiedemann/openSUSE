@@ -42,7 +42,7 @@
 %global user_module_dir %{mydatarootdir}/qore-modules/
 %global libname libqore12
 Name:           qore
-Version:        2.0.0
+Version:        2.1.1
 Release:        1%{dist}
 Summary:        Multithreaded Programming Language
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MIT
@@ -77,9 +77,6 @@ Qore is a scripting language supporting threading and embedded logic.
 It applies a scripting-based approach to interface development and
 can also be used as a general purpose language.
 
-%if 0%{?suse_version}
-%endif
-
 %package -n libqore12
 Summary:        Libraries for the qore runtime and qore clients
 License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
@@ -87,10 +84,10 @@ Group:          Development/Languages/Other
 Provides:       qore-module(abi)%{?_isa} = 1.3
 Provides:       qore-module(abi)%{?_isa} = 1.4
 %if "%{libname}" == "libqore"
-Provides:       libqore12 = %{version}
-Obsoletes:      libqore-stdlib
-Obsoletes:      libqore12 < %{version}
+Provides: libqore12 = %{version}
+Obsoletes: libqore12 < %{version}
 %endif
+
 
 %description -n libqore12
 Qore is a scripting language supporting threading and embedded logic.
@@ -102,13 +99,32 @@ functionality.
 
 %files -n libqore12
 %defattr(-,root,root,-)
-%{_libdir}/libqore.so.12.5.0
+%{_libdir}/libqore.so.12.6.0
 %{_libdir}/libqore.so.12
 %doc README.md README-MODULES RELEASE-NOTES AUTHORS ABOUT
 %license COPYING.LGPL COPYING.GPL COPYING.MIT README-LICENSE
 
 %post -n libqore12 -p /sbin/ldconfig
 %postun -n libqore12 -p /sbin/ldconfig
+
+%package stdlib
+Summary:        Standard library modules
+Group:          System Environment/Libraries
+Requires:       %{libname} = %{version}-%{release}
+
+%description stdlib
+Qore is a scripting language supporting threading and embedded logic, designed
+for applying a flexible scripting-based approach to enterprise interface
+development but is also useful as a general purpose language.
+
+This package provides the Qore language standard library user and binary
+modules.
+
+%files stdlib
+%defattr(-,root,root,-)
+%{user_module_dir}
+%{module_dir}
+%doc COPYING.MIT README-LICENSE
 
 %package doc
 Summary:        API documentation, programming language reference, and Qore example programs
@@ -133,7 +149,7 @@ and also for user modules delivered with Qore and also example programs.
 Summary:        Header files needed to compile programs using the qore library
 License:        GPL-2.0-or-later OR LGPL-2.0-or-later OR MIT
 Group:          Development/Languages/C and C++
-Requires:       %{libname}%{?_isa} = %{version}-%{release}
+Requires:       libqore12 = %{version}-%{release}
 
 %description devel
 Qore is a scripting language supporting threading and embedded logic.
@@ -240,9 +256,6 @@ export QORE_MODULE_DIR=qlib:modules/reflection:${RPM_BUILD_ROOT}%{module_dir}/%{
 %defattr(-,root,root,-)
 %{_bindir}/qore
 %{_bindir}/qdbg*
-%{module_dir}
-%dir %{_datadir}/qore-modules
-%{_datadir}/qore-modules/%{version}
 %{_mandir}/man1/qore.1.*
 
 %changelog

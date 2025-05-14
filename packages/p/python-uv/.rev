@@ -612,4 +612,47 @@
   * Revert fix handling of authentication when encountering redirects</comment>
     <requestid>1274065</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4f79d16db54cc52b19f7e11b1cf108f5</srcmd5>
+    <version>0.7.3</version>
+    <time>1746809507</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.3
+ * Enhancements
+   * Add --dry-run support to uv self update 
+   * Add --show-with to uv tool list to list packages included by --with 
+   * De-duplicate fetched index URLs 
+   * Support more zip compression formats: bzip2, lzma, xz, zstd 
+   * Add support for downloading GraalPy 
+   * Improve error message when a virtual environment Python symlink is broken 
+   * Use fs_err for paths in symlinking errors 
+   * Minify and embed managed Python JSON at compile time 
+ * Preview features
+   * Build backend: Make preview default and add configuration docs 
+   * Build backend: Allow escaping in globs 
+   * Build backend: Make builds reproducible across operating systems 
+ * Configuration
+   * Add python-downloads-json-url option for uv.toml to configure custom Python installations via JSON URL 
+ * Bug fixes
+   * Check nested IO errors for retries 
+   * Accept musllinux_1_0 as a valid platform tag 
+   * Fix discovery of pre-release managed Python versions in range requests 
+   * Respect locked script preferences in uv run --with 
+   * Retry streaming downloads on broken pipe errors 
+   * Treat already-installed base environment packages as preferences in uv run --with 
+   * Avoid enumerating sources in errors for path Python requests 
+   * Avoid re-creating virtual environment with --no-sync 
+ * Documentation
+   * Remove outdated description of index strategy 
+   * Update &quot;Viewing the version&quot; docs</comment>
+    <requestid>1276194</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3245ead03a7dd14ba18cfd411d4d7b26</srcmd5>
+    <version>0.7.3</version>
+    <time>1747061466</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276718</requestid>
+  </revision>
 </revisionlist>

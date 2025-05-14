@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           angelfish
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source2:        applications.keyring
 %endif
 Source3:        vendor.tar.zst
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-BuildRequires:  qt6-core-private-devel >= %{qt6_version}
-BuildRequires:  qt6-webenginequick-private-devel >= %{qt6_version}
 BuildRequires:  zstd
 BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(FutureSQL6)

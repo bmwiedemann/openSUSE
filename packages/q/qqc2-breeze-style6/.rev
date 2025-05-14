@@ -175,4 +175,12 @@
     <comment>Plasma 6.3.4 (still building) (forwarded request 1266434 from krop)</comment>
     <requestid>1266513</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a762a386e077abc513dc9db2578f2ea2</srcmd5>
+    <version>6.3.5</version>
+    <time>1746721294</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.3.5, untested (forwarded request 1275160 from Vogtinator)</comment>
+    <requestid>1275223</requestid>
+  </revision>
 </revisionlist>

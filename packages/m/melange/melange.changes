@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon May 12 19:02:12 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.17:
+  * experiment: on the fly disk for melange QEMU runner (#1977)
+
+-------------------------------------------------------------------
+Mon May 12 04:46:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.16:
+  * test: add --ignore-signatures (#1965)
+  * Drop the `isBuildLess` optimization. (#1975)
+  * fix: exclude fifos in WorkspaceTar (#1973)
+  * Fix typo in license reporting re: ignored results. (#1972)
+
+-------------------------------------------------------------------
+Wed May 07 04:15:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.15:
+  * Fix absolute path handling. (#1967)
+  * bump apko to v0.27.2 (#1966)
+  * Improve QEMU logging. (#1968)
+  * QEMU runner tweaks (#1957)
+
+-------------------------------------------------------------------
+Tue May 06 04:39:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.14:
+  * Add a test leg to cover license-path (#1963)
+
+-------------------------------------------------------------------
+Tue May 06 04:35:26 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.13:
+  * Turn relative working-dir into absolute paths. (#1962)
+  * Retrieve the full workspace. (#1961)
+
+-------------------------------------------------------------------
+Mon May 05 04:35:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.23.12:
+  * Add license checks to package builds and an external
+    license-check command (#1905)
+  * remove GCS-based cache-dir support (#1955)
+  * build: drop dagger runner (#1952)
+
+-------------------------------------------------------------------
 Tue Apr 29 05:56:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.11:

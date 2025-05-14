@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Object
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,27 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Test-Object
-Version:        0.08
-Release:        0
 %define cpan_name Test-Object
+Name:           perl-Test-Object
+Version:        0.80.0
+Release:        0
+# 0.08 -> normalize -> 0.80.0
+%define cpan_version 0.08
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Thoroughly testing objects via registered handlers
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Test-Object/
-Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Test::Object) = %{version}
+Provides:       perl(Test::Object::Test) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -63,17 +66,18 @@ This also means that more than one test might be "counted" for each call to
 count.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' Makefile.PL
 # MANUAL END
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -81,7 +85,6 @@ sed -i -e 's/use inc::Module::Install/use lib q[.];\nuse inc::Module::Install/' 
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING README
 %license LICENSE
 

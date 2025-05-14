@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  7 16:21:46 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.3:
+  - Features
+    * feat: Extend toStrings template function to handle more types
+    * feat: Extend toString template function to handle more types
+  - Fixes
+    * fix: Improve diff command output when removing files
+  - Documentation updates
+    * docs: Add hint for when to use toString with GitHub template functions
+
+-------------------------------------------------------------------
 Mon Apr 28 07:11:44 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.62.2:

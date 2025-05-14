@@ -17,7 +17,7 @@
 
 
 Name:           upmpdcli
-Version:        1.9.2
+Version:        1.9.5
 Release:        0
 Summary:        UPnP AV and OpenHome Media Renderer front-end to MPD, the Music Player Daemon
 License:        GPL-2.0-or-later
@@ -183,7 +183,7 @@ Media Server plugin providing access to Mother Earth Radio streams.
 ####
 
 %package radio-browser
-Summary:        https://radio-browser.info media server plugin for upmpdcli
+Summary:        Media server plugin for upmpdcli for https://radio-browser.info
 Requires:       python3-requests
 Requires:       upmpdcli = %{version}
 BuildArch:      noarch
@@ -219,8 +219,8 @@ BuildArch:      noarch
 
 %description subsonic
 Media Server plugin providing access to a Subsonic or Navidrome server.
-It needs the installation of the subsonic-connector (version 0.3.1)
-and py-sonic (version 1.0.0) Python modules (not packaged, use Pypi).
+It needs the installation of the subsonic-connector (version 0.3.10b3)
+and py-sonic (version 1.0.2) Python modules (not packaged, use Pypi).
 
 %files subsonic
 %{_datadir}/%{name}/cdplugins/subsonic

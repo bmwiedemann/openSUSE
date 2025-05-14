@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(xkbregistry)
 # NOTE: unversioned branding is required to avoid issues like bsc#1205950
 Requires:       %{name}-branding
 # optional: sway integration
-Recommends:     sway
+Suggests:       sway
 # Default configurations require Fontawesome 6
 Recommends:     fontawesome-fonts
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  6 09:50:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.1.1
+  * Adapt the tests to Pygments 2.19 (contributed by Markéta Calábková in #20).
+  * Add support for Debian ``node-mathjax-full`` package.
+  * Use :PEP:`639` license expression (needs setuptools 77 or newer).
+- Drop pygments.patch, merged upstream
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Mon Apr 14 06:06:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

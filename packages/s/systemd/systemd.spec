@@ -204,11 +204,12 @@ Source101:      fixlet-systemd-post.sh
 Source200:      files.systemd
 Source201:      files.udev
 Source202:      files.container
-Source203:      files.network
+Source203:      files.networkd
 Source204:      files.devel
 Source205:      files.sysvcompat
 Source206:      files.uefi-boot
 Source207:      files.experimental
+Source208:      files.resolved
 Source209:      files.homed
 Source210:      files.lang
 Source211:      files.journal-remote
@@ -475,9 +476,32 @@ UID/GIDs ranges used by containers to useful names.
 To activate this NSS module, you will need to include it in /etc/nsswitch.conf,
 see nss-mymachines(8) manpage for more details.
 
-%if %{with networkd} || %{with resolved}
-%package network
-Summary:        Systemd Network And Network Name Resolution Managers
+%if %{with networkd}
+%package networkd
+Summary:        Systemd Network Manager
+License:        LGPL-2.1-or-later
+Requires:       %{name} = %{version}-%{release}
+%systemd_requires
+Obsoletes:      systemd-network < %{version}-%{release}
+Provides:       systemd-network = %{version}-%{release}
+Provides:       systemd-network:/usr/lib/systemd/systemd-networkd
+# Workaround for bsc#1241513: ensure systemd-resolved is always installed before
+# systemd-network when the latter is replaced by both systemd-resolved and
+# systemd-networkd. The systemd-update-helper script logic depends on that.
+Suggests:       systemd-resolved
+
+%description networkd
+systemd-networkd is a system service that manages networks. It detects and
+configures network devices as they appear, as well as manages network addresses
+and routes for any link for which it finds a .network file, see
+systemd.network(5). It can also create virtual network devices based on their
+description given by systemd.netdev(5) files. It may be controlle by
+networkctl(1).
+%endif
+
+%if %{with resolved}
+%package resolved
+Summary:        Systemd Network Name Resolution Manager
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
 %systemd_requires
@@ -487,17 +511,9 @@ BuildRequires:  pkgconfig(libidn2)
 BuildRequires:  pkgconfig(openssl)
 Obsoletes:      nss-resolve < %{version}-%{release}
 Provides:       nss-resolve = %{version}-%{release}
-Provides:       systemd:/usr/lib/systemd/systemd-networkd
-Provides:       systemd:/usr/lib/systemd/systemd-resolved
+Provides:       systemd-network:/usr/lib/systemd/systemd-resolved
 
-%description network
-systemd-networkd is a system service that manages networks. It detects and
-configures network devices as they appear, as well as manages network addresses
-and routes for any link for which it finds a .network file, see
-systemd.network(5). It can also create virtual network devices based on their
-description given by systemd.netdev(5) files. It may be controlle by
-networkctl(1).
-
+%description resolved
 systemd-resolved is a system service that provides network name resolution to
 local applications. It implements a caching and validating DNS/DNSSEC stub
 resolver, as well as an LLMNR and MulticastDNS resolver and responder. It may be
@@ -662,7 +678,7 @@ Requires:       systemd-homed
 Requires:       systemd-journal-remote
 %endif
 %if %{with networkd}
-Requires:       systemd-network
+Requires:       systemd-networkd
 %endif
 %if %{with portabled}
 Requires:       systemd-portable
@@ -1162,9 +1178,15 @@ journalctl --update-catalog || :
 %systemd_postun_with_restart systemd-timedated.service
 %systemd_postun_with_restart systemd-userdbd.service
 
+%pretrans -p <lua>
+if posix.access("%{_systemd_util_dir}/systemd-update-helper") then
+   rpm.execute("%{_systemd_util_dir}/systemd-update-helper", "clean-state")
+end
+
+%posttrans -p <lua>
+rpm.execute("%{_systemd_util_dir}/systemd-update-helper", "clean-state")
+
 %pre -n udev%{?mini}
-# Units listed below can be enabled at installation accoding to their preset
-# setting.
 %systemd_pre remote-cryptsetup.target
 %systemd_pre systemd-pstore.service
 %systemd_pre systemd-timesyncd.service
@@ -1266,52 +1288,46 @@ fi
 %systemd_postun_with_restart systemd-journal-upload.service
 %endif
 
-%if %{with networkd} || %{with resolved}
-%pre network
 %if %{with networkd}
+%pre networkd
 %systemd_pre systemd-networkd.service
 %systemd_pre systemd-networkd-wait-online.service
-%endif
-%if %{with resolved}
-%systemd_pre systemd-resolved.service
-%endif
 
-%post network
-%if %{with networkd}
+%post networkd
 %if %{without filetriggers}
 %sysusers_create systemd-network.conf
 %tmpfiles_create systemd-network.conf
 %endif
 %systemd_post systemd-networkd.service
 %systemd_post systemd-networkd-wait-online.service
+
+%preun networkd
+%systemd_preun systemd-networkd.service
+%systemd_preun systemd-networkd-wait-online.service
+
+%postun networkd
+%systemd_postun systemd-networkd.service
+%systemd_postun systemd-networkd-wait-online.service
 %endif
+
 %if %{with resolved}
+%pre resolved
+%systemd_pre systemd-resolved.service
+
+%post resolved
 %ldconfig
 %if %{without filetriggers}
 %sysusers_create systemd-resolve.conf
 %tmpfiles_create systemd-resolve.conf
 %endif
 %systemd_post systemd-resolved.service
-%endif
 
-%preun network
-%if %{with networkd}
-%systemd_preun systemd-networkd.service
-%systemd_preun systemd-networkd-wait-online.service
-%endif
-%if %{with resolved}
+%preun resolved
 %systemd_preun systemd-resolved.service
-%endif
 
-%postun network
-%if %{with networkd}
-%systemd_postun systemd-networkd.service
-%systemd_postun systemd-networkd-wait-online.service
-%endif
-%if %{with resolved}
+%postun resolved
 %ldconfig
 %systemd_postun systemd-resolved.service
-%endif
 %endif
 
 %if %{with homed}
@@ -1399,9 +1415,14 @@ rm -rf \
 %files container
 %include %{SOURCE202}
 
-%if %{with networkd} || %{with resolved}
-%files network
+%if %{with networkd}
+%files networkd
 %include %{SOURCE203}
+%endif
+
+%if %{with resolved}
+%files resolved
+%include %{SOURCE208}
 %endif
 
 %files devel

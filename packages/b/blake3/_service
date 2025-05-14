@@ -1,0 +1,9 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+     <param name="src">blake3-*.tar.gz</param>
+     <param name="cargotoml">b3sum/Cargo.toml</param>
+     <param name="compression">zst</param>
+     <param name="update">true</param>
+  </service>
+</services>

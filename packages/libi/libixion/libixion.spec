@@ -28,6 +28,8 @@ Source:         http://kohei.us/files/ixion/src/%{name}-%{version}.tar.xz
 Patch0:         libixion-boost-system.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-_WIN32-is-not-defined-when-not-on-Windows.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         libixion-0.19.0-gcc15-cstdint.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  coreutils

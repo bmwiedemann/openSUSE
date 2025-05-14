@@ -301,4 +301,24 @@
       [#273]). Also, using base classes for rules from imported grammars in</comment>
     <requestid>1219183</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f2737f7315ab684db2ffc48f2e6e466e</srcmd5>
+    <version>4.2.2</version>
+    <time>1747159622</time>
+    <user>anag_factory</user>
+    <comment>- limit check to tests/functional as upstream does
+- update to version 4.2.2:
+ - Fixed:
+  - tests for subcommands. Click 8.2.0 now returns exit code 2 when command is not
+    correct. See [433].
+- update to version 4.2.1:
+ - Fixed:
+  - regression where textx generate/check command didn't report location info.
+  - removed encoding of unicode strings in textx exceptions.
+- update to version 4.2.0:
+ - Changed:
+  - Moved from click.echo to logging.
+</comment>
+    <requestid>1277023</requestid>
+  </revision>
 </revisionlist>

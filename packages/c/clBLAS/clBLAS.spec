@@ -1,7 +1,7 @@
 #
 # spec file for package clBLAS
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,6 +73,9 @@ against clBLAS.
 %autosetup -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 pushd src
 %cmake \
   -DBUILD_TEST:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \

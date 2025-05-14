@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 08:44:17 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix build failure, add patch fix_type_error.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:49:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

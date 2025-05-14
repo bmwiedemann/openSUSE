@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  5 06:08:49 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- update to version 4.6.0
+
+  New features
+  * Pyhton 3.13 support
+  * Support returning hidden vector in Wav2Vec2 and Wav2Vec2Bert Models
+  * Add noexecstack linker flags
+  * Support Qwen2
+  * Eoleconv
+  * Add support RobertModel
+
+  Fixes and improvements
+  * Prevent double library def
+
+-------------------------------------------------------------------
 Thu Nov  7 12:31:46 UTC 2024 - Adrian Schröter <adrian@suse.de>
 
 - update to version 4.5.0

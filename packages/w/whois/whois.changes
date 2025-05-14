@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  5 12:27:48 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
+
+- Update to version 5.6.0:
+  * Fixed the mangling of RADB queries with commands.
+  * Implemented the parsing of more variants of ARIN's ReferralServer
+    field.
+  * Implemented following the APNIC pseudo-referrals.
+  * Added the .ad and .za TLD servers.
+  * Updated the .ao, .bz, .gi, .gq, .gr, .gw, .lc, .md, .pn, .pr, .uy, .vc,
+    .info, .mobi, .ελ (.xn--qxam, Greece) and .გე (.xn--node, Georgia) TLD
+    servers.
+  * Added 2410::/12.
+  * Removed 7 new gTLDs which are no longer active.
+  * Cleaned up the markup of the man pages, courtesy of Bjarni Ingi
+    Gislason.
+
+-------------------------------------------------------------------
 Tue May 14 14:19:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.5.23:

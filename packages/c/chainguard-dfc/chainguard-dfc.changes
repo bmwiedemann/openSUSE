@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat May 10 17:57:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.0:
+  * Add an "about" section to readme, with links to
+    edu.chainguard.dev by @scalewithlee in #69
+  * Add mapping for font-liberation by @cronik in #72
+  * Git ignore .idea directory by @cronik in #73
+  * Add mapping for font-opensans by @cronik in #74
+  * Add mapping for cairo by @cronik in #75
+  * Add mapping for cups-libs by @cronik in #76
+  * Add mapping for font-util by @cronik in #77
+  * feat: Add RunLineConverter option to allow custom RUN line
+    conversion by @iamrajiv in #68
+  * Remove extra apt commands and adjust package versions by
+    @cronik in #81
+  * Remove package manager cache cleanup commands by @cronik in #82
+
+-------------------------------------------------------------------
+Fri May  2 12:03:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package chainguard-dfc: (d)ocker(f)ile (c)onverter: CLI to
+  convert Dockerfiles to use Chainguard Images and APKs in FROM and
+  RUN lines etc.

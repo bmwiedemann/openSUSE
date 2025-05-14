@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 12 07:04:21 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250512
+- Hide the rpmlint warning via an unspecified group, as this has
+  been optional since 2020 according to 
+  https://news.opensuse.org/2020/11/23/news-in-opensuse-packaging/#group-tag
+
+-------------------------------------------------------------------
+Tue Apr 22 14:51:14 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 20250422
+- mingw32.macros:
+  * Add support for creating debug info packages for native packages
+    in addition to those for Windows
+- mingw32-install-post.sh:
+  * Fix warning: warning: egrep is obsolescent; using grep -E
+
+-------------------------------------------------------------------
 Fri Feb 21 15:49:16 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20250221

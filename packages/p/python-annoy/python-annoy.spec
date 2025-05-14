@@ -1,7 +1,7 @@
 #
 # spec file for package python-annoy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -52,10 +54,10 @@ sed -i -e "s:'test/test:'test:g" test/index_test.py
 %build
 sed -i '/setup_requires/d' setup.py
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check

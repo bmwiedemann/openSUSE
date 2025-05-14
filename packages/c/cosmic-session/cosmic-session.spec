@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-session
-Version:        1.0.0~alpha6+0
+Version:        1.0.0~alpha7+0
 Release:        0
 Summary:        Session manager for the COSMIC desktop environment
 License:        GPL-3.0-only
@@ -25,9 +25,9 @@ URL:            https://github.com/pop-os/cosmic-session
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        %{name}.dconf
-Patch0:         fix-justfile.patch
-Patch1:         leap-fix-justfile.patch
+Patch0:         leap-fix-justfile.patch
 BuildRequires:  cargo-packaging
+BuildRequires:  dconf
 BuildRequires:  just
 Requires:       switcheroo-control
 
@@ -36,9 +36,8 @@ Requires:       switcheroo-control
 
 %prep
 %autosetup -N -a1
-%patch -P0 -p1
 %if 0%{?suse_version} < 1600
-%patch -P1 -p1
+%patch -P0 -p1
 %endif
 
 %build
@@ -46,21 +45,20 @@ just build
 
 %install
 just rootdir=%{buildroot} prefix=%{_prefix} install
-install -Dm0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/dconf/profile/cosmic
 
 %check
 %{cargo_test}
 
 %files
 %license LICENSE.md
+%dir %{_datadir}/dconf
+%dir %{_datadir}/dconf/profile
+%dir %{_datadir}/wayland-sessions
 %{_bindir}/%{name}
 %{_bindir}/start-cosmic
 %{_datadir}/applications/cosmic-mimeapps.list
+%{_datadir}/dconf/profile/cosmic
 %{_datadir}/wayland-sessions/cosmic.desktop
 %{_prefix}/lib/systemd/user/cosmic-session.target
-%dir %{_datadir}/wayland-sessions
-%dir %{_sysconfdir}/dconf
-%dir %{_sysconfdir}/dconf/profile
-%config %{_sysconfdir}/dconf/profile/cosmic
 
 %changelog

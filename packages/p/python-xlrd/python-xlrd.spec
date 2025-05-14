@@ -1,7 +1,7 @@
 #
 # spec file for package python-xlrd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        2.0.1
 Release:        0
 Summary:        Python module for extracting data from .xls Excel spreadsheet files
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.python-excel.org/
 Source:         https://github.com/python-excel/xlrd/archive/refs/tags/%{version}.tar.gz#/xlread-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -44,10 +45,10 @@ in the historical .xls format.
 %setup -q -n xlrd-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
 %python_clone -a %{buildroot}%{_bindir}/runxlrd
@@ -66,6 +67,6 @@ mv %{buildroot}%{_bindir}/runxlrd.py %{buildroot}%{_bindir}/runxlrd
 %license LICENSE
 %python_alternative %{_bindir}/runxlrd
 %{python_sitelib}/xlrd
-%{python_sitelib}/xlrd-%{version}*-info
+%{python_sitelib}/xlrd-%{version}.dist-info
 
 %changelog

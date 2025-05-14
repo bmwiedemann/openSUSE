@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Apr 24 18:29:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix(view): match pin button appearance to designs
+  * Add support for workspace pinning and dragging
+  * backend/wayland: Support running without toplevel manager protocol
+  * Pass `toplevel_capabilities` from backend to frontend
+  * Fix building with `mock-backend`
+  * Activate workspace only if capability is present
+  * Fix clippy lints
+  * Store `cctk::workspace::Workspace` in `struct Workspace`
+  * widget/toplevel_item: Rename to `size_cross_nth`; take index argument
+  * widget/toplevel_item: Fix tree passed to layout() of second child
+  * chore(view): remove `bg_element`
+  * improv(view): make workspace item sizing more dynamic
+  * Fix "never read" lint
+  * Use `ThreadExecutor` instead of calloop executor
+  * Add and use `TwoRowColToplevelLayout`
+  * row_col_toplevel_layout: Add a `new` method
+  * row_col_toplevel_layout: Take into account max cross axis in scale factor
+  * i18n - update portuguese translations (#154)
+  * i18n(nl) update and improve Dutch translation (#131)
+  * Update cosmic_workspaces.ftl PL translation (#132)
+  * Create cosmic_workspaces.ftl (#69)
+  * Add Ukrainian translation (#74)
+  * i18n(pt): create Portuguese translation (#91)
+  * Add Tamil translation (#102)
+  * i18n(ar): add Arabic translation (#103)
+  * Add Hungarian translations (#124)
+  * i18n(dk) Add danish translation
+  * Added Irish translation
+  * i18n(de): add German translation
+  * i18n(zh-CN): create zh-CN translation
+  * i18n (pt-BR) Update translations
+  * i18n (pt-BR) Update translations
+  * i18n(zh-TW): add zh-TW translation
+  * i18n(ro): Add Romanian translation
+  * Use `Layer::Top` instead of `Layer::Overlay`
+  * Use `match` instead of a couple `if let` branches
+  * Use `aliasable` in `AxisToplevelLayout` to use slice in argument
+  * Filter `WaylandEvent::RequestResize` events out of subscriptions
+  * Make dnd_destination code more generic
+  * chore: update libcosmic
+  * Update to workspace v2, based on ext-workspace
+
+-------------------------------------------------------------------
 Sat Feb 22 03:52:25 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

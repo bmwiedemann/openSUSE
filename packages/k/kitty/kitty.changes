@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon May 12 14:35:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.42.0:
+  * Removing nightly tarball
+  * A new kitten: quick-access-terminal to Make a Quake like quick access
+    terminal
+    - https://sw.kovidgoyal.net/kitty/kittens/quick-access-terminal/
+    - https://sw.kovidgoyal.net/kitty/kittens/quick-access-terminal/#quake
+  * The panel kitten works on macOS and X11 as well as Wayland (#2590)
+    - https://sw.kovidgoyal.net/kitty/kittens/panel/
+  * Behavior change: Now kitty does full grapheme segmentation following the
+    Unicode 16 spec when splitting text into cells (#8533)
+  * Behavior change: The automatic color switching functionality now also
+    controls background image settings (#8603)
+    - https://sw.kovidgoyal.net/kitty/kittens/themes/#auto-color-scheme
+  * panel kitten: Allow using kitty +kitten panel --single-instance to create
+    multiple panels in one process (#8549)
+    - https://sw.kovidgoyal.net/kitty/kittens/panel/#cmdoption-kitty-kitten-panel-single-instance
+  * launch: Allow creating desktop panels such as those created by the panel
+    kitten (#8549)
+    - https://sw.kovidgoyal.net/kitty/kittens/panel/
+  * Remote control: Allow modifying desktop panels and showing/hiding OS
+    Windows using the kitten @ resize-os-window command (#8550)
+  * Remote control launch: Allow waiting for a program launched in a new
+    window to exit and get the exit code via the
+    kitty +launch --wait-for-child-to-exit command line flag (#8573)
+  * Allow starting kitty with the OS window hidden via
+    kitty --start-as=hidden, useful for single instance mode (#3466)
+    - https://sw.kovidgoyal.net/kitty/invocation/#cmdoption-kitty-start-as
+  * Allow configuring the mouse unhide behavior when using
+    mouse_hide_wait (#8508)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.mouse_hide_wait
+  * diff kitten: Add half page and full page scroll vim-like bindings (#8514)
+  * diff kitten: Allow diffing named pipes (#8597)
+  * Fix a regression that caused automatic color themes to not be re-applied
+    after config file reload (#8530)
+  * Wayland: When the compositor supports the xdg-system-bell protocol use it
+    to play the default bell sound
+    - https://wayland.app/protocols/xdg-system-bell-v1
+  * panel kitten: Allow specifying panel size in pixels in addition to cells
+  * Fix a regression in 0.36.0 that caused using = with single letter command
+    line flags to no longer work correctly (#8556)
+  * Single instance: Preserve environment variables from invoking environment
+    in newly created window (#8567)
+  * Single instance: Reset OS Window class and name in new single instance OS
+    windows (#8567)
+  * macOS: Fix text color in visual window select ignoring the color
+    theme (#8579)
+  * Launch action: Allow using an env var that resolves to a full command-line
+    as the program to launch (#8613)
+  * change_font_size allow multiplying/dividing the current font size in
+    addition to incrementing it (#8616)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-change_font_size
+  * Box drawing: Improve appearance of rounder corners, giving them a uniform
+    line width (#8299)
+
+-------------------------------------------------------------------
+Tue Apr 22 14:22:12 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding a nightly tarball vs. the release tarball as builds are failing
+  related to glfw/wl_window.c and
+  `error: enumeration value ‘XDG_TOPLEVEL_STATE_CONSTRAINED_[LEFT,RIGHT,TOP,BOTTOM’ not handled in switch`
+  * A release tarball will be swapped back in for the next release
+
+-------------------------------------------------------------------
 Sat Apr  5 02:00:01 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.41.1:

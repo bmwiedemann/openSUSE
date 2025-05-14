@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun May 11 11:58:25 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to version 0.9.4:
+  * Version bump
+  * Different text highlight colors for dark widget themes (Closes #91)
+  * Report failed repo refresh (closes #89)
+  * Linked official distro packages
+  * Redundant
+  * Typos
+  * Imported modernized packaging files
+  * Markdown formatting
+  * More relevant URLs
+  * Expanced OBS packaging doc
+  * Added doc for OBS packaging
+
+-------------------------------------------------------------------
 Mon Apr 07 13:54:44 UTC 2025 - shundhammer@suse.com
 
 - Update to version 0.9.3:

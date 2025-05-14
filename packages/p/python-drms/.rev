@@ -88,4 +88,12 @@
     is no need to do .value on it.</comment>
     <requestid>1198084</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>eab9547e7535223a8e9b27f854f907ac</srcmd5>
+    <version>0.8.0</version>
+    <time>1746809386</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275976</requestid>
+  </revision>
 </revisionlist>

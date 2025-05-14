@@ -72,4 +72,12 @@
   * add numpy 2.x support</comment>
     <requestid>1224110</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>85ffe38446937056f541796adac61ff7</srcmd5>
+    <version>1.0.2</version>
+    <time>1746809419</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276003</requestid>
+  </revision>
 </revisionlist>

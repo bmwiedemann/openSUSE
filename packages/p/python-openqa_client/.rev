@@ -73,4 +73,13 @@
     environment variables (ricardobranco777)</comment>
     <requestid>1132438</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c7c1c3d54fa3adfc3033a7833da6d6ea</srcmd5>
+    <version>4.3.0</version>
+    <time>1746542494</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Add new `get_latest_build` method (asmorodskyi)</comment>
+    <requestid>1274713</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  5 12:42:39 PM UTC 2025 - Hector Oron Martinez <hector.oron@gmail.com>
+
+- Exclude ppc64le from builds boo#1242297
+
+-------------------------------------------------------------------
 Sun Feb 23 21:04:45 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot b73ae6ce38d

@@ -1,7 +1,7 @@
 #
 # spec file for package python-VyattaConfParser
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017-2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +17,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-VyattaConfParser
 Version:        0.5.5
 Release:        0
@@ -27,7 +25,9 @@ License:        MIT
 URL:            https://github.com/hedin/vyatta-conf-parser
 #Source:         https://files.pythonhosted.org/packages/source/V/VyattaConfParser/VyattaConfParser-%%{version}.tar.gz
 Source:         VyattaConfParser-%{version}.tar.xz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +44,10 @@ Vyatta/VyOS config parser with unicode support and without dependencies.
 %setup -q -n VyattaConfParser-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +56,7 @@ Vyatta/VyOS config parser with unicode support and without dependencies.
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/[Vv]yatta[Cc]onf[Pp]arser
+%{python_sitelib}/[Vv]yatta[Cc]onf[Pp]arser-%{version}*-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-intervals
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ URL:            https://github.com/kvesteri/intervals
 Source:         https://files.pythonhosted.org/packages/source/i/intervals/intervals-%{version}.tar.gz
 BuildRequires:  %{python_module infinity >= 0.1.3}
 BuildRequires:  %{python_module isort >= 4.2.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-infinity >= 0.1.3
@@ -41,10 +43,10 @@ Python tools for handling intervals (ranges of comparable objects).
 %setup -q -n intervals-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -53,6 +55,7 @@ Python tools for handling intervals (ranges of comparable objects).
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/intervals
+%{python_sitelib}/intervals-%{version}.dist-info
 
 %changelog

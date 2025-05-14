@@ -1,7 +1,7 @@
 #
 # spec file for package python-czifile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define packagename czifile
 Name:           python-czifile
-Version:        2019.7.2
+Version:        2019.7.2.1
 Release:        0
 Summary:        Read Carl Zeiss(r) Image (CZI) files
 License:        BSD-3-Clause
@@ -35,9 +35,9 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-imagecodecs >= 2019.1.1
+Requires:       python-numpy >= 1.11.3
 Requires:       python-scipy >= 1.1
 Requires:       python-tifffile >= 2019.7.2
-Requires:       python-numpy >= 1.11.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch

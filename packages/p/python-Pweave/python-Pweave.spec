@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pweave
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-# missing jupyter_ikernel
-%global skip_python39 1
 Name:           python-Pweave
 Version:        0.30.3
 Release:        0
@@ -28,7 +26,9 @@ URL:            https://github.com/mpastell/Pweave
 Source:         https://files.pythonhosted.org/packages/source/P/Pweave/Pweave-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/mpastell/Pweave/pull/167 Adjust for API changes in Python-Markdown 3.0
 Patch0:         markdown.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Markdown
@@ -75,10 +75,10 @@ with e.g. Sphinx or rest2web.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/pweave
 %python_clone -a %{buildroot}%{_bindir}/ptangle
@@ -110,6 +110,7 @@ with e.g. Sphinx or rest2web.
 %python_alternative %{_bindir}/ptangle
 %python_alternative %{_bindir}/pypublish
 %python_alternative %{_bindir}/pweave-convert
-%{python_sitelib}/*
+%{python_sitelib}/pweave
+%{python_sitelib}/[Pp]weave-%{version}*info
 
 %changelog

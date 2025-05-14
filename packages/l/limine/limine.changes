@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May  7 15:19:40 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 9.3.0:
+  * Add optional support for the 64-bit x86-64 boot protocol for Linux.
+  * Fix away some ungraceful handling of out-of-memory situations when
+    loading files using the Linux boot protocol.
+  * Improve performance and memory usage of loading modules for the
+    Linux boot protocol.
+
+-------------------------------------------------------------------
 Sat Apr 19 13:06:44 UTC 2025 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 9.2.3:

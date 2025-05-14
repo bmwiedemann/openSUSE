@@ -1,7 +1,7 @@
 #
 # spec file for package python-MulticoreTSNE
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 # TW does not have python36-scipy (SciPy 1.6.0 does not support it)
 %define skip_python36 1
 Name:           python-MulticoreTSNE
@@ -24,7 +23,6 @@ Version:        0.1
 Release:        0
 Summary:        Multicore version of t-SNE algorithm
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/DmitryUlyanov/Multicore-TSNE
 Source:         https://files.pythonhosted.org/packages/source/M/MulticoreTSNE/MulticoreTSNE-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM fix_sklearn.patch gh#DmitryUlyanov/Multicore-TSNE#90 mcepl@suse.com
@@ -32,7 +30,9 @@ Source:         https://files.pythonhosted.org/packages/source/M/MulticoreTSNE/M
 Patch0:         fix_sklearn.patch
 Patch1:         test-tsne.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -65,11 +65,14 @@ sed -i \
 sed -i 's/self.cmake_args or "--"/self.cmake_args or ""/' setup.py
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -81,6 +84,6 @@ popd
 %doc README.md
 %license LICENSE.txt
 %{python_sitearch}/MulticoreTSNE
-%{python_sitearch}/MulticoreTSNE-%{version}*-info
+%{python_sitearch}/[Mm]ulticore[Tt][Ss][Nn][Ee]-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat May  3 20:51:12 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.9.26:
+  * Fall back to IPv4 if IPv6 capable but don't have an IPv6
+    address set
+  * Remove tcutils channel from xrdp.ini
+  * Remove duplicate DEBUG output
+  * Fix drive redirection regression
+  * Fix bug when pasting image to LibreOffice
+- includes changes from 0.9.25.1:
+  * Fix mouse wheel scrolling in Xvnc session
+- includes changes from 0.9.25:
+  * touchpad inertial scrolling
+  * If the client announces support for the Image RemoteFX codec it
+    is logged
+- includes changes from 0.9.24:
+  * Checking group membership should now work better on systems
+    using directory services
+  * Pasting more than 32K characters of text to the clipboard now
+    succeeds
+  * An incompatibility with FreeRDP 2.11.2 in the drive redirector
+    has been fixed
+- Rebase xrdp-systemd-services.patch
+
+-------------------------------------------------------------------
+Tue Jan 14 13:17:43 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix escaping of commented out patch: with RPM 4.20, %patch
+  becomes a standard, expandable macro, that can span more than one
+  line. Commenting out with #%patch can thus lead to invalid
+  results.
+
+-------------------------------------------------------------------
 Fri May 24 13:23:41 UTC 2024 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop initscripts-legacy support [jsc#PED264]
@@ -9,8 +42,8 @@ Mon Feb 26 12:18:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
 
-Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 -------------------------------------------------------------------
+Thu Nov 30 20:47:32 UTC 2023 - Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
 
 - Trivial rebase of xrdp-disable-8-bpp-vnc-support.patch.
 - Trivial rebase of xrdp-support-KillDisconnected-for-Xvnc.patch.

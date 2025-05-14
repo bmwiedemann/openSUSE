@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.security
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2013-2022 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,11 +31,12 @@ Version:        7.3
 Release:        0
 Summary:        Zope Security Framework
 License:        ZPL-2.1
-Group:          Development/Languages/Python
 URL:            https://www.python.org/pypi/zope.security
 Source0:        https://files.pythonhosted.org/packages/source/z/zope_security/zope_security-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  %{python_module zope.proxy-devel}
 BuildRequires:  fdupes
@@ -69,11 +70,11 @@ policies on Python objects.
 %setup -q -n zope_security-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %python_expand rm %{buildroot}%{$python_sitearch}/zope/security/*.c
 %endif
@@ -89,7 +90,7 @@ policies on Python objects.
 %doc README.rst
 %dir %{python_sitearch}/zope
 %{python_sitearch}/zope/security
-%{python_sitearch}/zope.security-%{version}*-info
+%{python_sitearch}/zope[._]security-%{version}.dist-info
 %{python_sitearch}/zope.security-%{version}*-nspkg.pth
 %endif
 

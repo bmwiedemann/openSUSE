@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri May  2 15:28:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.8
+ * Preview features
+  * \[`airflow`\] Apply auto fixes to cases where the names have changed in Airflow 3 (`AIR302`, `AIR311`)
+  * \[`airflow`\] Extend `AIR301` rule 
+  * \[`airflow`\] Update existing `AIR302` rules with better suggestions 
+  * \[`refurb`\] Mark fix as safe for `readlines-in-for` (`FURB129`) 
+  * [syntax-errors] `nonlocal` declaration at module level 
+  * [syntax-errors] Detect single starred expression assignment `x = *y` 
+ * Bug fixes
+  * \[`flake8-pyi`\] Ensure `Literal[None,] | Literal[None,]` is not autofixed to `None | None` (`PYI061`) 
+  * \[`flake8-use-pathlib`\] Avoid suggesting `Path.iterdir()` for `os.listdir` with file descriptor (`PTH208`) 
+  * \[`flake8-use-pathlib`\] Fix `PTH104` false positive when `rename` is passed a file descriptor 
+  * \[`flake8-use-pathlib`\] Fix `PTH116` false positive when `stat` is passed a file descriptor 
+  * \[`flake8-use-pathlib`\] Fix `PTH123` false positive when `open` is passed a file descriptor from a function call 
+  * \[`pycodestyle`\] Fix duplicated diagnostic in `E712` 
+  * \[`pylint`\] Detect `global` declarations in module scope (`PLE0118`) 
+  * [syntax-errors] Make `async-comprehension-in-sync-comprehension` more specific 
+ * Configuration
+  * Add option to disable `typing_extensions` imports 
+ * Documentation
+  * Fix example syntax for the `lint.pydocstyle.ignore-var-parameters` option 
+  * Add fix safety sections (`ASYNC116`, `FLY002`, `D200`, `RUF005`, `RUF017`, `RUF027`, `RUF028`, `RUF057`) 
+ * Other changes
+  * Add Python 3.14 to configuration options 
+  * Make syntax error for unparenthesized except tuples version specific to before 3.14 
+
+-------------------------------------------------------------------
 Sun Apr 27 14:51:47 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.7:

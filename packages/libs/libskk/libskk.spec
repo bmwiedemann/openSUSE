@@ -36,9 +36,9 @@ Patch0:         libskk-typlib-dependencies.patch
 Patch1:         fix-build-on-gcc14+.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  sqlite3-devel

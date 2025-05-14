@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May  5 16:58:19 UTC 2025 - pgajdos@suse.com
+
+- build with -std=gnu17
+
+-------------------------------------------------------------------
 Sun Dec  1 18:12:11 UTC 2024 - Friedrich Haubensak <hsk17@mail.de>
 
 - to support gcc14:

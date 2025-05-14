@@ -41,11 +41,20 @@
   <overwrite>
     <conditions>
       <arch>ppc64le</arch>
-      <arch>s390x</arch>
     </conditions>
     <hardware>
       <physicalmemory>
         <size unit="G">12</size>
+      </physicalmemory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <physicalmemory>
+        <size unit="G">15</size>
       </physicalmemory>
     </hardware>
   </overwrite>

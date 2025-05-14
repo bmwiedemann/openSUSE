@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May  9 12:39:19 UTC 2025 - jason.record@suse.com
+
+- Changes to version 1.6.4
+  + Fixed all report type data (bsc#1242706)
+  + Added -a/--all_reports option for all report types
+  + Fixed re syntax error (bsc#1241308)
+  + Fixed hardware tag for Power (bsc#1237320)
+
+-------------------------------------------------------------------
 Mon Oct  7 11:04:29 UTC 2024 - jason.record@suse.com
 
 - Fixed extract here for reports regression

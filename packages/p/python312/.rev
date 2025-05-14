@@ -1731,4 +1731,13 @@
 - doc-py38-to-py36.patch needs to substantially extended.</comment>
     <requestid>1273530</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>bb6ef49053f28f9938aba1b358eeeafb</srcmd5>
+    <version>3.12.10</version>
+    <time>1747159907</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)</comment>
+    <requestid>1276663</requestid>
+  </revision>
 </revisionlist>

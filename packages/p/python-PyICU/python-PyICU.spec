@@ -19,15 +19,17 @@
 %global modname PyICU
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        2.15
+Version:        2.15.2
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
 URL:            https://gitlab.pyicu.org
-Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/PyICU-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/p/pyicu/pyicu-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove_six.patch mcepl@suse.com
 # Remove dependency on six
 Patch0:         remove_six.patch
+# PATCH-FIX-UPSTREAM pyicu-2.15-gcc15.patch
+Patch1:         pyicu-2.15-gcc15.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

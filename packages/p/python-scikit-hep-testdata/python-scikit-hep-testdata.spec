@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-hep-testdata
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,17 +23,18 @@ Version:        0.4.44
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-hep/scikit-hep-testdata
 Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE scikit-hep-testdata-datadir.patch -- change the install location of the datadir code@bnavigator.de
 Patch1:         scikit-hep-testdata-datadir.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION Test requirements
@@ -79,11 +80,10 @@ This subpackage contains the data files for all python flavors.
 %build
 # GH source doesn't allow proper detection of version: https://github.com/scikit-hep/scikit-hep-testdata/issues/40
 export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_build
+%pyproject_wheel
 
 %install
-export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/scikit-hep-testdata
 %python_clone -a %{buildroot}%{_bindir}/skhep-testdata
@@ -112,7 +112,7 @@ rm -fr ${PYTEST_DEBUG_TEMPROOT}
 %python_alternative %{_bindir}/scikit-hep-testdata
 %python_alternative %{_bindir}/skhep-testdata
 %{python_sitelib}/skhep_testdata/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}-%{version}.dist-info/
 
 %files -n scikit-hep-testdata-files
 %license LICENSE

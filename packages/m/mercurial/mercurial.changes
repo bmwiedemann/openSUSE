@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  7 11:22:36 UTC 2025 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.0.2
+
+  * rust: document a `pipx` install
+  * keepalive: don't reuse a connection to the proxy for a different host
+  * httppeer: don't put an int in headers
+  * dirstate: fix panic when validating dirstate on write
+  * reject_new_heads: handle None being passed as node
+  * rust-revlog: detect and fix nodemap lagging behind its revlog
+  * General improvements to the CI
+
+-------------------------------------------------------------------
 Mon Apr  7 10:56:25 UTC 2025 - Sean Baggaley <me@drinkybird.net>
 
 - Mercurial 7.0.1

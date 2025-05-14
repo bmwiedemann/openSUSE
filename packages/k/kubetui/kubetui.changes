@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat May 10 08:53:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.7.1:
+  * Fixes
+    - Zsh completion: Add autoload -Uz is-at-least to fix
+      '_kubetui:3:' command not found: is-at-least error #767
+  * Dependency Updates
+    - clap: Updated to v4.5.35 → v4.5.36 → v4.5.37
+      #753, #759, #762 by @renovate
+    - flate2: Updated to v1.1.1
+      #754 by @renovate
+    - arboard: Updated to v3.5.0
+      #755 by @renovate
+    - ctrlc: Updated to v3.4.6
+      #756 by @renovate
+    - tokio: Updated to v1.44.2 → v1.45.0
+      #757, #764 by @renovate
+    - anyhow: Updated to v1.0.98
+      #760 by @renovate
+    - chrono: Updated to v0.4.41
+      #763 by @renovate
+  * Maintenance
+    - Lock file maintenance
+      #758, #761, #765 by @renovate
+
+-------------------------------------------------------------------
 Thu Apr 17 18:30:34 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - relax version constraint on cargo to allow versions equal to or

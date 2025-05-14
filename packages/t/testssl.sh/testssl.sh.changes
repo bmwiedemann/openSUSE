@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr 23 19:01:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * https://github.com/testssl/testssl.sh/blob/3.2/CHANGELOG.md
+- Update patch:
+ * testssl.sh-2.9.95-set-install-dir.patch
+
+-------------------------------------------------------------------
 Wed Jul 24 06:52:48 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.9

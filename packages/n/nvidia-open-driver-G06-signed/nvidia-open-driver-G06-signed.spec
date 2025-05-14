@@ -116,7 +116,8 @@ ExclusiveArch:  x86_64 aarch64
 #  NOTE: kernel_module_package macro affects preference among nvidia, nvidia-open
 #  and nvidia-open-signed driver by adding:
 # Enhance: kernel-%FLAVOR
-%kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble
+%define x_flavors rt
+%kernel_module_package -n %{name} -t %_builddir/nvidia-kmp-template -f %_sourcedir/kmp-filelist -p %_sourcedir/preamble -x %x_flavors
 %{expand:%(
       for f in %{flavors_to_build}; do \
 	  echo "%package -n %{name}-${f}-devel"; \

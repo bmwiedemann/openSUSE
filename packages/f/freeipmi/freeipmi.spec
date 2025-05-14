@@ -43,6 +43,8 @@ URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM
+Patch1:         freeipmi-1.6.15-gcc15.patch
 Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management

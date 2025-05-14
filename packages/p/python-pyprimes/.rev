@@ -7,4 +7,13 @@
     <comment>Tools for working with prime numbers in python</comment>
     <requestid>605980</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>64348e2c80f9c3c9027f06ed656aaf48</srcmd5>
+    <version>0.2.2a</version>
+    <time>1746809426</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files, correcting parsed version.</comment>
+    <requestid>1276010</requestid>
+  </revision>
 </revisionlist>

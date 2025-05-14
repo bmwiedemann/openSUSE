@@ -391,4 +391,12 @@
   * 0001-Fix-crash-when-creating-bookmarks-toolbar.patch</comment>
     <requestid>1272773</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>d51dcf47ef6df7b67321dccb626ad1f3</srcmd5>
+    <version>25.04.1</version>
+    <time>1746809120</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 25.04.1</comment>
+    <requestid>1275684</requestid>
+  </revision>
 </revisionlist>

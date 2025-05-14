@@ -1,7 +1,7 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,6 +59,12 @@ Development files (headers and libraries for jq).
 %autosetup -p1
 
 %build
+# TODO: Remove the following line when doing the next version upgrade.
+# It is a workaround for upstream issue #3206 and boo#1241922.  Once a
+# version with commit 0b82b38 is released, it should not longer be
+# necessary.  Unfortunately, the commit does not cleanly apply to the
+# current version (1.7.1).
+CFLAGS="%{optflags} -std=gnu17"
 %configure \
   --disable-static \
 %ifarch aarch64 x86_64 ppc64le s390x

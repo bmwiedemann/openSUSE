@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://github.com/nullobsi/cantata/
 Source:         https://github.com/nullobsi/cantata/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM cantata-add-missing-qregularexpression-include.patch - https://github.com/nullobsi/cantata/pull/54/
+Patch1:         cantata-add-missing-qregularexpression-include.patch
 BuildRequires:  fdupes
 BuildRequires:  media-player-info
 BuildRequires:  pkgconfig

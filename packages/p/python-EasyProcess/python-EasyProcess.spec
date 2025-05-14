@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-EasyProcess
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ License:        BSD-2-Clause
 URL:            https://github.com/ponty/easyprocess
 Source:         https://github.com/ponty/EasyProcess/archive/%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -74,11 +75,11 @@ Limitations:
 %setup -q -n EasyProcess-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -93,7 +94,7 @@ export LANG=en_US.UTF-8
 %license LICENSE.txt
 %doc README.md
 %{python_sitelib}/easyprocess
-%{python_sitelib}/EasyProcess-%{version}*-info
+%{python_sitelib}/[Ee]asy[Pp]rocess-%{version}*info
 %endif
 
 %changelog

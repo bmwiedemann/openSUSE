@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed May 07 04:16:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2025.5.0:
+  * Added
+    - (gitlib) remove Gix enum variant and gix logic
+    - implement git2-based rebase_onto with tests
+    - Add tests for git2 remote operations
+    - (gitlib) implement switch_branch using git2
+    - (gitlib) implement push using git2
+    - (gitlib) implement fetch using git2
+    - (gitlib) implement read_file using git2 backend
+    - (gitlib) implement find_default_remote_url and commit_log
+      using git2
+    - (gitlib) implement remote_branches using git2
+    - (gitlib) implement clone using git2
+    - (gitlib) implement open using git2
+    - (git) encapsulate gix usage within gitlib module
+    - extract non-default feature 'notify-desktop'
+    - extract non-default feature 'notify-desktop'
+    - rename forgejo and github features with 'forge-' prefix
+    - remove 'notify-email' from default features
+    - define cargo feature 'notify-email'
+  * Fixed
+    - remove stray dbg macro
+    - use fetch remote if no explicit push remote configured
+    - enable https feature in git2 to allow cloning
+  * Other
+    - remove duplicate --all-features from Dockerfile
+    - allow fixes to include dependency changes
+    - allow optional scope in commit message regex patterns
+    - (ci) enhance workflow safety and performance
+    - (gitlib) introduce GitRepository enum for backend abstraction
+    - (ci) add OpenSSL build dependencies in Forgejo workflow
+    - (ci) update actions/cache usage in Forgejo workflows
+    - fix restore key for cargo registry cache
+    - add TODO plan to replace gix with git2
+    - Add inferred project rules to .dev/RULES.md
+    - Update rules to reflect gix's encapsulation within gitlib
+    - add project coding rules
+    - add coding project coding conventions
+    - Add TODO file
+    - fix regex pattern for file matching
+    - commit path rules allows dev-note updates under the 'docs'
+      tag.
+    - (workflow,justfile) use cargo check rather than build
+    - Delegate git operations to gitlib in RealOpenRepository
+    - remove pike dependency
+    - add cargo dependency caching to workflow
+    - add bon::Builder to prelude
+    - add kx_utils::marker to prelude
+    - add common tracing uses to prelude
+    - introduce prelude to isolate color_eyre
+    - rearrange root module declarations
+    - consolidate from anyhow onto color_eyre
+    - (deps) upgrade kameo from 0.15 to 0.16
+
+-------------------------------------------------------------------
 Tue Mar 25 05:48:05 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2025.3.4:

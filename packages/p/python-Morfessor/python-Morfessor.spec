@@ -1,7 +1,7 @@
 #
 # spec file for package python-Morfessor
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Morfessor
 Version:        2.0.6
 Release:        0
 Summary:        Unsupervised and semi-supervised morphological segmentation
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/aalto-speech/morfessor
 Source:         https://files.pythonhosted.org/packages/source/M/Morfessor/Morfessor-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
@@ -42,10 +42,10 @@ morphological segmentation
 sed -i -e '/^#!\//, 1d' morfessor/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/morfessor-train
 %python_clone -a %{buildroot}%{_bindir}/morfessor-segment
 %python_clone -a %{buildroot}%{_bindir}/morfessor-evaluate
@@ -76,6 +76,7 @@ $python morfessor/test/evaluation.py
 %python_alternative %{_bindir}/morfessor-evaluate
 %python_alternative %{_bindir}/morfessor-segment
 %python_alternative %{_bindir}/morfessor-train
-%{python_sitelib}/*
+%{python_sitelib}/morfessor
+%{python_sitelib}/[Mm]orfessor-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 04:44:56 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Use a compatible GCC and stdc++ library version for 15.6.
+
+-------------------------------------------------------------------
 Tue Apr 29 14:47:16 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 0.15.0

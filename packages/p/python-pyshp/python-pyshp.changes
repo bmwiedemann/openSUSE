@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  2 02:45:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- List files explicitly in %files.
+
+-------------------------------------------------------------------
 Wed Mar  6 19:28:58 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - Update to version 2.1.0

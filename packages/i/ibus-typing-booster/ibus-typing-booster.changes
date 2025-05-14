@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon May 12 15:49:30 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.53
+- Get transliterated parts for preedit text using the raw input
+  `self._typed_string` instead of the existing preedit text
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/726)
+- Fix modifier keybindings for Gtk4
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/725)
+- Add option to colour the “inner” m17n preedit not only when there
+  are candidates but always
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/719)
+- Translation update from Weblate (de 100%, fr 100%, ja 99.6%, ka 100%, sv 100%, uk 100%)
+
+-------------------------------------------------------------------
+Sat May 10 23:45:51 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.52
+- Don’t trigger a new search in emoji-picker when the search entry changes
+  just by trailing or leading whitespace
+- Improve emoji matching
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/705)
+- Apply the current case mode and normalization only to the parts of the
+  preedit which do not belong to an “inner” preedit
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/717)
+- Show the code point and a comment in the lookup table for
+  control characters or other invisible characters
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/715)
+- Do not ignore the composition exclusions for Hebrew when normalizing to NFC
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/716)
+
+-------------------------------------------------------------------
+Tue May 06 10:42:11 UTC 2025 - maiku.fabian@gmail.com
+
+- Update to 2.27.47
+- Don’t use spellchecking by default when searching for emoji and Unicode characters
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/710)
+- Support a few more unusual keys for transliteration
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/709)
+- If a key which triggers a commit makes input_phrase empty,
+  clear the input and update to UI to remove preedit and lookup table
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/707)
+- Make self.msymbol == Tab when Tab is typed to enable m17n transliterations for Tab
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/708)
+- Update emoji annotations from CLDR
+- Allow Escape as input and make self.msymbol == 'Escape'
+  when Escape is typed to enable m17n transliterations for Escape
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/704)
+
+-------------------------------------------------------------------
 Sat May 03 11:50:08 UTC 2025 - maiku.fabian@gmail.com
 
 - Update to 2.27.46

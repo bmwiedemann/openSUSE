@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May  5 21:01:49 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.1:
+  * The behavior of `postgresql_ext.BinaryJSONField.contains()`
+    has changed.  Previously, passing a string to this method
+    would perform a JSON key exists check (`?` operator) instead
+    of JSON contains (`@>` operator). As of 3.18.0,
+    this special-case has been **removed** and the `contains()`
+    method always uses the JSONB contains operator (`@>`).
+    For the **old** behavior of checking whether a key exists,
+    use the `BinaryJSONField.has_key()`
+  * Add options to URL-unquote user and password when using the
+    `db_url` helpers
+  * Support using `postgresql://` URLs when connecting to
+    psycopg3.
+
+-------------------------------------------------------------------
 Thu Feb 20 11:21:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.17.9

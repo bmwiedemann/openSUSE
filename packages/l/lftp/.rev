@@ -773,4 +773,12 @@ the underlying buffer would always contain a NUL-terminated string.
     <comment></comment>
     <requestid>1196224</requestid>
   </revision>
+  <revision rev="82" vrev="6">
+    <srcmd5>1b2ef6ddf4840d90297dc4479ff63512</srcmd5>
+    <version>4.9.2</version>
+    <time>1746542481</time>
+    <user>anag_factory</user>
+    <comment>fix build on ppc64le [bsc#1242138]</comment>
+    <requestid>1274701</requestid>
+  </revision>
 </revisionlist>

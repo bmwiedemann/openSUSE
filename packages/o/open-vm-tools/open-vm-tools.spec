@@ -159,6 +159,7 @@ Obsoletes:      open-vm-tools-deploypkg <= 10.0.5
 Supplements:    modalias(pci:v000015ADd*sv*sd*bc*sc*i*)
 ExclusiveArch:  %ix86 x86_64 aarch64
 #Upstream patches
+Patch42:        open-vm-tools-12.5.0-gcc15.patch
 
 #SUSE specific patches
 Patch0:         pam-vmtoolsd.patch
@@ -261,6 +262,7 @@ This package interfaces with the container runtime to retrieve a list of contain
 # fix for an rpmlint warning regarding wrong line feeds
 sed -i -e "s/\r//" README
 #Upstream patches
+%patch -P 42 -p2
 
 #SUSE specific patches
 %patch -P 0 -p2

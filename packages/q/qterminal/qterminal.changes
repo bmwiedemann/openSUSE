@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  5 23:25:15 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Update to version 2.2.1:
+  * Removed the workaround for problems that some X11 WMs had with
+    the drop-down mode because (1) it prevented exiting on closing
+    and (2) didn't let the terminal be focused on showing.
+
+-------------------------------------------------------------------
 Thu Apr 17 22:41:36 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Updated to version 2.2.0:

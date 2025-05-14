@@ -50,7 +50,7 @@ sed -i '/^auto_install/d' Makefile.PL
 
 %build
 perl Makefile.PL PREFIX="%{_prefix}"
-make %{?jobs:-j%{jobs}}
+%make_build
 
 %install
 %perl_make_install

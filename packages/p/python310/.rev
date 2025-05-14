@@ -1052,4 +1052,13 @@
   gh#python/cpython!126572)</comment>
     <requestid>1270151</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>3dd2ceb456d0717d90caf94c1dfcd6f2</srcmd5>
+    <version>3.10.17</version>
+    <time>1747061428</time>
+    <user>anag_factory</user>
+    <comment>- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)</comment>
+    <requestid>1276661</requestid>
+  </revision>
 </revisionlist>

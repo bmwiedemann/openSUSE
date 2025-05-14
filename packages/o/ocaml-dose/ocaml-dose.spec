@@ -37,6 +37,7 @@ Summary:        An OCaml dependency toolkit
 License:        LGPL-3.0-or-later
 URL:            https://opam.ocaml.org/packages/dose3
 Source0:        %pkg-%version.tar.xz
+Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
 BuildRequires:  ocaml-rpm-macros >= 20231101

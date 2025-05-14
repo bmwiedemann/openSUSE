@@ -1,0 +1,12 @@
+--- curses-bsd4.4.orig/tstp.c	2025-04-30 15:23:51.127526307 +0000
++++ curses-bsd4.4/tstp.c	2025-04-30 15:24:43.474605947 +0000
+@@ -103,7 +103,7 @@ __stop_signal_handler(signo)
+ 	(void)sigprocmask(SIG_SETMASK, &oset, NULL);
+ }
+ 
+-static void (*otstpfn)() = SIG_DFL;
++static void (*otstpfn)(int) = SIG_DFL;
+ 
+ /*
+  * Set the TSTP handler.
+

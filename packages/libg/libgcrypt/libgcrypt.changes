@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Thu May  8 14:28:42 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 1.11.1: [jsc#PED-12227]
+  * Bug fixes:
+    - Fix Kyber secret-dependent branch introduced by recent versions of Clang. [rCf765778e82]
+    - Fix build regression due to the use of AVX512 in Blake. [T7184]
+    - Do not build i386 asm on amd64 and vice versa. [T7220]
+    - Fix build regression on armhf with gcc-14. [T7226]
+    - Return the proper error code on malloc failure in hex2buffer. [rCc51151f5b0]
+    - Fix long standing bug for PRIME % 2 == 0. [rC639b0fca15]
+  * Performance:
+    - Add AES Vector Permute intrinsics implementation for AArch64. [rC94a63aedbb]
+    - Add GHASH AArch64/SIMD intrinsics implementation. [rCfec871fd18]
+    - Add RISC-V vector permute AES. [rCb24ebd6163]
+    - Add GHASH RISC-V Zbb+Zbc implementation. [rC0f1fec12b0]
+    - Add ChaCha20 RISC-V vector intrinsics implementation. [rC8dbee93ac2]
+    - Add SHA3 acceleration for RISC-V Zbb extension. [rC1a660068ba]
+  * Other:
+    - Add CET support for i386 and amd64 assembly. [T7220]
+    - Add PAC/BTI support for AArch64 asm. [T7220]
+    - Apply changes to Kyber from upstream for final FIPS 203. [rCcc95c36e7f]
+    - Introduce an internal API for a revampled FIPS service indicator. [T7340]
+    - Several improvements for constant time operation by the introduction of
+      Least Leak Intended (LLI) variants of internal functions. [T7519,T7490]
+  * Add libgcrypt-1.11.1-public-SLI-API.patch
+  * Rebase patches:
+    - libgcrypt-FIPS-SLI-hash-mac.patch
+    - libgcrypt-FIPS-SLI-pk.patch
+    - libgcrypt-FIPS-jitter-standalone.patch
+  * Remove patches:
+    - libgcrypt-fips-Introduce-an-internal-API-for-FIPS-service-indicator.patch
+    - libgcrypt-fips-Introduce-GCRYCTL_FIPS_SERVICE_INDICATOR-and-the-macro.patch
+    - libgcrypt-fips-kdf-Implement-new-FIPS-service-indicator-for-gcry_kdf_derive.patch
+    - libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_hash_.patch
+    - libgcrypt-fips-tests-Add-t-digest.patch
+    - libgcrypt-fips-Change-the-internal-API-for-new-FIPS-service-indicator.patch
+    - libgcrypt-fips-md-Implement-new-FIPS-service-indicator-for-gcry_md_open-API.patch
+    - libgcrypt-fips-tests-Add-tests-for-md_open-write-read-close-for-t-digest.patch
+    - libgcrypt-fips-mac-Implement-new-FIPS-service-indicator-for-gcry_mac_open.patch
+    - libgcrypt-fips-cipher-Implement-new-FIPS-service-indicator-for-cipher_open.patch
+    - libgcrypt-tests-fips-Add-gcry_mac_open-tests.patch
+    - libgcrypt-tests-fips-Rename-t-fips-service-ind.patch
+    - libgcrypt-tests-fips-Move-KDF-tests-to-t-fips-service-ind.patch
+    - libgcrypt-tests-fips-Add-gcry_cipher_open-tests.patch
+    - libgcrypt-fips-md-gcry_md_copy-should-care-about-FIPS-service-indicator.patch
+    - libgcrypt-fips-cipher-Implement-FIPS-service-indicator-for-gcry_pk_hash_-API.patch
+    - libgcrypt-fips-Introduce-GCRYCTL_FIPS_REJECT_NON_FIPS.patch
+    - libgcrypt-Fix-the-previous-change.patch
+    - libgcrypt-fips-Rejection-by-GCRYCTL_FIPS_REJECT_NON_FIPS-not-by-open-flags.patch
+    - libgcrypt-fips-cipher-Add-behavior-not-to-reject-but-mark-non-compliant.patch
+    - libgcrypt-fips-ecc-Add-rejecting-or-marking-for-gcry_pk_get_curve.patch
+    - libgcrypt-tests-Add-more-tests-to-tests-t-fips-service-ind.patch
+    - libgcrypt-fips-ecc-Check-DATA-in-gcry_pk_sign-verify-in-FIPS-mode.patch
+    - libgcrypt-fips-cipher-Fix-memory-leak-for-gcry_pk_hash_sign.patch
+    - libgcrypt-build-Improve-__thread-specifier-check.patch
+    - libgcrypt-cipher-Check-and-mark-non-compliant-cipher-modes-in-the-SLI.patch
+    - libgcrypt-cipher-Rename-_gcry_cipher_is_mode_fips_compliant.patch
+    - libgcrypt-cipher-Don-t-differentiate-GCRY_CIPHER_MODE_CMAC-in-FIPS-mode.patch
+    - libgcrypt-cipher-rsa-Mark-reject-SHA1-unknown-with-RSA-signature-generation.patch
+    - libgcrypt-md-Fix-gcry_md_algo_info-to-mark-reject-under-FIPS-mode.patch
+    - libgcrypt-md-Use-check_digest_algo_spec-in-_gcry_md_selftest.patch
+    - libgcrypt-tests-Update-t-fips-service-ind-using-GCRY_MD_SHA256-for-KDF-tests.patch
+    - libgcrypt-fips-cipher-Do-the-computation-when-marking-non-compliant.patch
+    - libgcrypt-tests-Allow-tests-with-USE_RSA.patch
+    - libgcrypt-cipher-Add-KAT-for-non-rfc6979-ECDSA-with-fixed-k.patch
+    - libgcrypt-cipher-Differentiate-use-of-label-K-in-the-SLI.patch
+    - libgcrypt-cipher-Differentiate-igninvflag-in-the-SLI.patch
+    - libgcrypt-cipher-Differentiate-no-blinding-flag-in-the-SLI.patch
+    - libgcrypt-fips-cipher-Add-GCRY_FIPS_FLAG_REJECT_PK_FLAGS.patch
+    - libgcrypt-cipher-ecc-Fix-for-supplied-K.patch
+    - libgcrypt-cipher-visibility-Differentiate-use-of-random-override-in-the-SLI.patch
+    - libgcrypt-cipher-fips-Fix-for-random-override.patch
+    - libgcrypt-md-Make-SHA-1-non-FIPS-internally-for-1.12-API.patch
+    - libgcrypt-fips-Fix-GCRY_FIPS_FLAG_REJECT_MD.patch
+    - libgcrypt-doc-Add-about-GCRYCTL_FIPS_SERVICE_INDICATOR.patch
+    - libgcrypt-doc-Fix-syntax-error.patch
+    - libgcrypt-Disable-SHA3-s390x-acceleration-for-CSHAKE.patch
+
+-------------------------------------------------------------------
+Tue May  6 07:24:14 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
+
+- CSHAKE basic regression test failure in s390x [bsc#1242419]
+  * Disable SHA3 s390x acceleration for CSHAKE [rC2486d9b5ae01]
+  * Add libgcrypt-Disable-SHA3-s390x-acceleration-for-CSHAKE.patch
+
+-------------------------------------------------------------------
 Sun Apr 13 20:10:16 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Differentiate use of SHA1 in the service level indicator [jsc#PED-12227]

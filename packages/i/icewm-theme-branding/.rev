@@ -166,4 +166,12 @@ icewm-theme-branding icewm-config-upstream</comment>
     <comment></comment>
     <requestid>1207023</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>8c9f968a5339e414d740dfc8f4fbae83</srcmd5>
+    <version>1.2.6</version>
+    <time>1746638084</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274753</requestid>
+  </revision>
 </revisionlist>

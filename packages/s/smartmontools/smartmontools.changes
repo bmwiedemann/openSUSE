@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu May  1 10:09:20 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.5
+  * See NEWS and ChangeLog files for full details
+- Rebase smartd_service_dont_quit.patch
+- Rebase harden_smartd.service.patch
+
+-------------------------------------------------------------------
 Fri Sep 22 07:41:12 UTC 2023 - Michal Suchanek <msuchanek@suse.com>
 
 - Do not quit with an error when no drives to monitor are available (bsc#990406 bsc#1167051).

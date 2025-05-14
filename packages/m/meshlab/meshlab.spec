@@ -22,27 +22,31 @@
 %bcond_with    gmp
 %endif
 
+# Optional dependencies not yet used or available
+# - embree
+# - glTF
+# - libe57Format
+# - libigl
+# - u3d
+
 %define glew_version %(rpm -q --queryformat='%%{version}' glew-devel | sed -nr 's/([0-9.]+).*/\\1/p')
 
 Name:           meshlab
-Version:        2022.02
+Version:        2023.12
 Release:        0
 Summary:        System for the processing and editing of unstructured 3D triangular meshes
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.meshlab.net/
 Source0:        https://github.com/cnr-isti-vclab/meshlab/archive/refs/tags/MeshLab-%{version}.tar.gz#/meshlab-%{version}.tar.gz
-# Probably belongs in its own package, but nothing else depends on it
+# Belongs in its own package, but meshlab requires a complete source tree -- https://github.com/cnr-isti-vclab/vcglib/issues/230
 Source1:        https://github.com/cnr-isti-vclab/vcglib/archive/refs/tags/%{version}.tar.gz#/vcglib-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- adjust plugin and shader search path
 Patch1:         0001-Use-same-paths-for-shader-plugin-lookup-as-used-for-.patch
 # PATCH-FIX-OPENSUSE -- https://github.com/cnr-isti-vclab/vcglib/issues/210
 Patch2:         0001-Remove-unused-return-value-in-unused-function.patch
 # PATCH-FIX-OPENSUSE
-Patch3:         0001-Set-correct-RPATH-for-libraries-and-executable.patch
-# PATCH-FIX-OPENSUSE
 Patch4:         0001-Allow-usage-of-system-provided-levmar.patch
-Patch5:         gcc13-fix.patch
 
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
@@ -95,22 +99,24 @@ mv vcglib-%{version} src/vcglib
 %autopatch -p1
 
 # Remove bundled library sources, since we use the packaged libraries
-rm -r src/external/{glew*,levmar*,lib3ds*,muparser*,qhull*,xerces*}/*
+rm -r src/external/glew*/*
+
+# Change defaults for MESHLAB_ALLOW_DOWNLOAD_*
+sed -i '/option/ s|\(MESHLAB_ALLOW_DOWNLOAD.*\) ON|\1 OFF|' src/external/*.cmake
+grep -E 'option.*MESHLAB_ALLOW_DOWNLOAD.*' src/external/*.cmake
 
 # set plugin and shader search path
 sed -i 's|PLUGIN_DIR|QString("%{_libdir}/meshlab/plugins")|g'  src/common/globals.cpp
 sed -i 's|SHADER_DIR|QString("%{_datadir}/meshlab/shaders")|g' src/common/globals.cpp
 
 %build
-pushd src
-%cmake -DALLOW_SYSTEM_GLEW:BOOL=ON -DGLEW_VERSION=%{glew_version}
+%cmake \
+  -DGLEW_VERSION=%{glew_version} \
+  %{nil}
 %cmake_build
-popd
 
 %install
-pushd src
 %cmake_install
-popd
 
 for i in 16 48 64 128 512 ; do
   install -D -m 644 src/meshlab/images/eye${i}.png \
@@ -121,15 +127,11 @@ done
 sed -i -e 's/Exec=.*/Exec=env QT_QPA_PLATFORM=xcb meshlab/' %{buildroot}%{_datadir}/applications/meshlab.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/meshlab.desktop
 
-# Remove leftover libIFX*.so -- https://github.com/cnr-isti-vclab/meshlab/issues/1353
-rm %{buildroot}%{_libdir}/meshlab/libIFX*.so
-
 install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ docs/man/*.1
 
 %fdupes %{buildroot}%{_datadir}
 
 %post -p /sbin/ldconfig
-
 %postun -p /sbin/ldconfig
 
 %files
@@ -140,8 +142,8 @@ install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ docs/man/*.1
 %doc README.md
 %doc docs/privacy.txt
 %license LICENSE.txt
-%license distrib/shaders/3Dlabs-license.txt
-%license distrib/shaders/LightworkDesign-license.txt
+%license resources/shaders/3Dlabs-license.txt
+%license resources/shaders/LightworkDesign-license.txt
 %{_datadir}/icons/hicolor/*/apps/meshlab.*
 %{_datadir}/applications/meshlab.desktop
 

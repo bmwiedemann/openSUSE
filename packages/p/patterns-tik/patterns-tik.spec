@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-tik
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,11 +53,15 @@ Requires:       distribution-release
 Requires:       filesystem
 
 ### Packages formerly provided by bootloader
-Requires:       grub2-snapper-plugin
-Requires:       grub2
-Requires:       grub2-branding-openSUSE
-Requires:       grub2-x86_64-efi
-Requires:       mokutil
+Requires:       systemd-boot
+Requires:       dracut-pcr-signature
+Requires:       efibootmgr
+Requires:       sdbootutil
+Requires:       sdbootutil-bash-completion
+Requires:       sdbootutil-snapper
+Requires:       sdbootutil-tukit
+Requires:       shim
+Requires:       uefi_mbr
 
 ### Packages formerly provided by base/basesystem
 Requires:       /usr/bin/hostname

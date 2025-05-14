@@ -29,6 +29,7 @@ Source1:        https://linuxcontainers.org/downloads/%{name}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        lxc-createconfig.in
 Source90:       openSUSE-apparmor.conf
+Patch0:         https://github.com/lxc/lxc/commit/2663712e8fa8f37e0bb873185e2d4526dc644764.patch#/fix-apparmor.patch
 BuildRequires:  bash-completion
 BuildRequires:  cmake
 BuildRequires:  docbook2x

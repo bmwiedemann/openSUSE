@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-jose
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,19 +38,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-jose%{psuffix}
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        JOSE implementation in Python
 License:        MIT
 URL:            https://github.com/mpdavis/python-jose
 Source:         https://files.pythonhosted.org/packages/source/p/python-jose/python-jose-%{version}.tar.gz
-Patch0:         unpin-deps.patch
-# PATCH-FIX-UPSTREAM CVE-2024-33664.patch gh#mpdavis/python-jose#352
-Patch1:         CVE-2024-33664.patch
-# PATCH-FIX-UPSTREAM CVE-2024-33663.patch gh#mpdavis/python-jose#349
-Patch2:         CVE-2024-33663.patch
-# PATCH-FIX-UPSTREAM fix-tests-ecdsa-019.patch gh#mpdavis/python-jose#350
-Patch3:         fix-tests-ecdsa-019.patch
 BuildRequires:  %{python_module setuptools >= 39.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

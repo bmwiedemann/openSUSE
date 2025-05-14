@@ -1,0 +1,162 @@
+From 6929aa51df4edc2871a7f810212fdcc0339d00e8 Mon Sep 17 00:00:00 2001
+From: Mingming Cao <mingming.cao@ibm.com>
+Date: Fri, 9 May 2025 15:05:47 -0700
+Subject: [PATCH] Fix HNV installation network conflicts across all distros by
+ automatically cleaning up stale standalone interfaces after they are enslaved
+ to the HNV bonding device. Previously, if an HNV was configured on HMC with
+ SR_IOV and backing devices assigned HNV IDs, a new installation without
+ bonding support caused the HNV init scripts at reboot to create bonding
+ devices that conflicted with existing interfaces, resulting in immediate
+ network loss. This update automates resolution of these conflicts by removing
+ outdated standalone interfaces and transferring IP configuration to the
+ bonded interface, eliminating the need for manual user intervention.
+
+Signed-off-by: Mingming Cao <mingming.cao@ibm.com>
+---
+ scripts/hcnmgr | 102 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index b5a6bfb..015272c 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -303,6 +303,48 @@ get_dev_hcn() {
+ 	hcnlog DEBUG "get_dev_hcn: exit"
+ 	return $E_SUCCESS
+ }
++# Function: check_transfer_ip_to_bond_nm
++# Purpose: Check and Transfer IP configuration from a standalone 
++#			network device to its bonding master,
++#			then clean up the legacy profile of the standalone device.
++#
++# NetworkManager Case
++check_transfer_ip_to_bond_nm() {
++	local BONDNAME="$1"
++	hcnlog DEBUG "transfer_and_cleanup_dev_nm: $DEVNAME enter"
++
++	if ! nmcli -f NAME con show | grep -q "$DEVNAME\s"; then
++		hcnlog INFO "No standalone device $DEVNAME cfg; nothing to transfer."
++		return 0
++	fi 
++	
++	# Extract IP address and gateway from the slave configuration
++	IPADDR=$(nmcli -g ipv4.addresses connection show "$DEVNAME")
++	GATEWAY=$(nmcli -g ipv4.gateway connection show "$DEVNAME")
++	DNS=$(nmcli -g ipv4.dns connection show "$DEVNAME")
++	
++	if [ -z "$IPADDR" ]; then
++		hcnlog INFO "No IP address found in $DEVNAME; nothing to transfer."
++		return 0
++	fi
++
++	if ! nmcli -f NAME con show | grep -q "$BONDNAME\s"; then
++		hcnlog WARN "Bond config for $BONDNAME not found; cannot transfer IP."
++		return 0
++	fi
++
++	# Add IP address, dns and gateway to the bond configuration
++	[ -n "$IPADDR" ] && nmcli con modify "$BONDNAME" ipv4.method manual ipv4.address "$IPADDR"
++	[ -n "$GATEWAY" ] && nmcli con modify "$BONDNAME" ipv4.method manual ipv4.gateway "$GATEWAY"
++	[ -n "$DNS" ] && nmcli con modify "$BONDNAME" ipv4.method manual ip4.dns "$DNS"
++
++	hcnlog INFO "Removing legacy profile $DEVNAME"
++	nmcli con down "$DEVNAME" 2>/dev/null
++	nmcli con delete "$DEVNAME" 2>/dev/null
++
++	hcnlog INFO "Successfully transferred IP and cleaned up $DEVNAME"
++	return 0
++}
+ 
+ #
+ # function do_config_vdevice_nm
+@@ -376,6 +418,11 @@ do_config_vdevice_nm() {
+ 	if [[ $MODE == "primary" ]]; then
+ 		hcnlog INFO "Change bonding primary slave to $DEVNAME"
+ 		nmcli con mod id "$BONDNAME" +bond.options "primary=$DEVNAME"
++
++		# if there is standalone dev, cleanup the interface
++		# and if there is ip address, transfer to bonding master
++		check_transfer_ip_to_bond_nm "$BONDNAME"
++
+ 		nmcli con up "$BONDNAME"
+ 	fi
+ 
+@@ -383,6 +430,55 @@ do_config_vdevice_nm() {
+ 	return $E_SUCCESS
+ }
+ 
++# Function: check_transfer_ip_to_bond_wicked
++# Purpose: Transfer IP configuration from a standalone network device to its bonding master,
++#          then clean up the legacy profile of the standalone device.
++#
++# Wicked Case
++#
++check_transfer_ip_to_bond_wicked() {
++	local BONDNAME="$1"
++	local DEVNAME="$2"
++	local SLAVE_CFG="/etc/sysconfig/network/ifcfg-${DEVNAME}"
++	local BOND_CFG="/etc/sysconfig/network/ifcfg-${BONDNAME}"
++
++	hcnlog DEBUG "check_transfer_ip_to_bond_wicked: enter"
++
++	if [ ! -f "$SLAVE_CFG" ]; then
++		hcnlog INFO "No standalone device cfg; nothing to transfer."
++		return 0
++	fi
++
++	# Extract IP address and gateway from the slave configuration
++	local IPADDR PREFIXLEN GATEWAY
++	IPADDR=$(grep -E '^IPADDR=' "$SLAVE_CFG" | cut -d= -f2 | tr -d '"')
++	GATEWAY=$(grep -E '^GATEWAY=' "$SLAVE_CFG" | cut -d= -f2 | tr -d '"')
++	DNS=$(grep -E '^DNS=' "$SLAVE_CFG" | cut -d= -f2 | tr -d '"')
++
++	if [ -z "$IPADDR" ]; then
++		hcnlog INFO "No IP address found in $SLAVE_CFG; nothing to transfer."
++		return 0
++	fi
++
++	if [ ! -f "$BOND_CFG" ]; then
++		hcnlog WARN "Bond config for $BONDNAME not found; cannot transfer IP."
++		return 0
++	fi
++
++	# Add IP address, dns and gateway to the bond configuration
++	[ -n "$IPADDR" ] && echo "IPADDR='$IPADDR'" >> "$BOND_CFG"
++	[ -n "$GATEWAY" ] && echo "GATEWAY='$GATEWAY'" >> "$BOND_CFG"
++	[ -n "$DNS" ] && echo "DNS='$DNS'" >> "$BOND_CFG"
++
++	# Remove conflicting settings
++	# Remove IP-related entries from the slave configuration
++	sed -i '/^IPADDR=/d;/^PREFIXLEN=/d;/^BOOTPROTO=/d' "$SLAVE_CFG"
++
++	rm "$SLAVE_CFG"
++	hcnlog INFO "Transferred IP $IPADDR from $DEVNAME to $BONDNAME"
++	return 0
++}
++
+ # function do_config_vdevice_wicked
+ #	configure or create HCN (active-backup bonding)
+ #	add device as bonding slave
+@@ -403,6 +499,7 @@ do_config_vdevice_wicked() {
+ 		#       used/reserved to separate multiple arp_ip_targets, thus
+ 		#	this could result in invalid options...:
+ 		suse_ifcfg_bond_create "$BONDNAME" "" "${BONDOPTIONS//,/ }"
++		check_transfer_ip_to_bond_wicked $BONDNAME $DEVNAME
+ 	fi
+ 
+ 	# Add device to the bond
+@@ -963,6 +1060,11 @@ scanhcn_wicked() {
+ 			hcnlog INFO "scanhcn failed to adjust bond '$bond' config primary to '$primary'"
+ 		fi
+ 
++        hcnlog INFO "check slave cfg file and transfer IP to master if present"
++        for dev in $(suse_ifcfg_bond_get_slaves "$bond") ; do
++			check_transfer_ip_to_bond_wicked "$bond" "$dev"
++        done 
++
+ 		if systemctl is-active -q wicked.service ; then
+ 			hcnlog INFO "scanhcn starting HCN bonding: $bond"
+ 			wicked ifup "$bond"
+-- 
+2.47.1
+

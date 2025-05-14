@@ -38,4 +38,16 @@
   * update tests (forwarded request 1273431 from rrahl0)</comment>
     <requestid>1273432</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f180780347c8e88466029d55b8d1a1f0</srcmd5>
+    <version>2.0.4</version>
+    <time>1746729598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.4:
+  * update pyproject.toml
+  * update dev steps
+  * remove debug statements for base_url and api_key
+  * update dev steps (forwarded request 1275631 from rrahl0)</comment>
+    <requestid>1275632</requestid>
+  </revision>
 </revisionlist>

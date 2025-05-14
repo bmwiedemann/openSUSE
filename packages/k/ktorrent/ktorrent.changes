@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:34 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * flatpak: We don-t need QCA anymore
+  * CI: Flatpak - Disable testing on ktorrent
+  * CI: Flatpak - Update to 6.8 runtime
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:06 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

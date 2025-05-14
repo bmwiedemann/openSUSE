@@ -1,7 +1,7 @@
 #
 # spec file for package ftgl
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch1:         ftgl-pkgconfig.patch
 Patch2:         ftgl-fix-no-add-needed.patch
 # PATCH-FIX-OPENSUSE: install FTVectoriser.h, required by tulip-5.0; kkaempf@suse.de
 Patch3:         install-FTVectoriser.h.patch
+# PATCH-FIX-UPSTREAM: https://github.com/frankheckenbach/ftgl/commit/d546aefd73dcbb0d0d1e0f3c916770d7f9f98169
+Patch4:         fix_type_error.patch
 %if %{with ftgl_html}
 BuildRequires:  doxygen
 BuildRequires:  texlive-epstopdf
@@ -97,6 +99,7 @@ This package provides demo application showing usage of the library.
 %patch -P 1
 %patch -P 2
 %patch -P 3 -p1
+%patch -P 4 -p1
 
 %build
 export CC=gcc

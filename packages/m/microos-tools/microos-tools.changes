@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri May 09 13:41:02 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.0+git16:
+  * man-online: fetch product specific manual pages
+  * Add import-pubring: create gpg file from rpmdb
+
+-------------------------------------------------------------------
+Tue May 06 11:01:01 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git14:
+  * test: Test with Minimal-VM as well
+  * test: Add some missing SYSTEMD_IGNORE_CHROOT=1 to poweroff calls
+  * selinux-autorelabel: Fix check for relabelling only specific filesystems
+
+-------------------------------------------------------------------
 Tue Mar 25 14:26:29 UTC 2025 - kukuk@suse.com
 
 - Update to version 4.0+git11:

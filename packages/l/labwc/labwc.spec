@@ -24,7 +24,7 @@
 %define slname  libsfdo
 %define slver   0.1.3
 Name:           labwc
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only

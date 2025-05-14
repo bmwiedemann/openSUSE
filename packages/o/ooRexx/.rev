@@ -226,4 +226,30 @@ and classes work (they are not devel files).
 </comment>
     <requestid>1251441</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0bc053f556abaed2b7f8c45cce2c1ae4</srcmd5>
+    <version>5.1.0</version>
+    <time>1746638184</time>
+    <user>dimstar_suse</user>
+    <comment>- New build for 5.1.0 with latest release tarball.
+- Using standard OBS cmake macros.
+- Disabling optimizations that can cause segfaults on threading.
+- Major changes in this version (complete list in CHANGES file):
+ * New TraceObject class (cf. 5.4.25. in rexxref.pdf)
+ * 72 bugs solved
+ * 35 documentation bugs solved
+ * 36 new requests for enhancements implemented
+</comment>
+    <requestid>1274986</requestid>
+  </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>d441525f3076b54efe6c3c03a0cd0922</srcmd5>
+    <version>5.1.0</version>
+    <time>1747061212</time>
+    <user>anag_factory</user>
+    <comment>- export CMAKE_POLICY_VERSION_MINIMUM=&quot;3.5&quot; to ignore cmakes
+  minimum version warnings
+- removing extra changelog tag.</comment>
+    <requestid>1276300</requestid>
+  </revision>
 </revisionlist>

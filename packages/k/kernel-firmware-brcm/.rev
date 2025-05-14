@@ -29,4 +29,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272720</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6a7800fc95dcb60237a85832eb51e302</srcmd5>
+    <version>20250428</version>
+    <time>1747061136</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250428 (git commit 0d104598cd5b):
+  * brcm: Add NVRAM file for Radxa Rock Pi X mini PC</comment>
+    <requestid>1276102</requestid>
+  </revision>
 </revisionlist>

@@ -200,4 +200,12 @@ on SELinux-enabled projects e.g. SLFO. (forwarded request 1186132 from danishpra
     <comment></comment>
     <requestid>1269969</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>44b674017b86c9fe674658bbd32745b4</srcmd5>
+    <version>20250503.587980c</version>
+    <time>1746542348</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274508</requestid>
+  </revision>
 </revisionlist>

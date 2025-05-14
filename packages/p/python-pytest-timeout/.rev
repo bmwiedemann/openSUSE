@@ -151,4 +151,12 @@
   * Add ``--session-timeout`` option and ``session_timeout`` setting.</comment>
     <requestid>1158473</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c7015253b63b557196c84442ce160307</srcmd5>
+    <version>2.3.1</version>
+    <time>1746638155</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275114</requestid>
+  </revision>
 </revisionlist>

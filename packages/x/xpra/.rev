@@ -747,4 +747,12 @@
   * don't show menu entries that don't work</comment>
     <requestid>1271017</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>8bc291e08afb92fbe0e2c320af242a4c</srcmd5>
+    <version>6.4.0+git20250504.7a6f181e</version>
+    <time>1747061420</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1276655</requestid>
+  </revision>
 </revisionlist>

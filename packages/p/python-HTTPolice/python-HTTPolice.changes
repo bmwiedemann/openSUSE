@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 08:12:09 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Mar 22 23:32:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip test test_from_file to avoid filing test

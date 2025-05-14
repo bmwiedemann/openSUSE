@@ -1,7 +1,8 @@
-diff -Ppru aide-0.18.8.orig/Makefile.am aide-0.18.8/Makefile.am
---- aide-0.18.8.orig/Makefile.am	2024-05-04 11:51:05.000000000 +0200
-+++ aide-0.18.8/Makefile.am	2024-08-11 16:07:45.957348909 +0200
-@@ -79,6 +79,7 @@ aide_CFLAGS = @AIDE_DEFS@ -W -Wall -g \
+Index: aide-0.19/Makefile.am
+===================================================================
+--- aide-0.19.orig/Makefile.am
++++ aide-0.19/Makefile.am
+@@ -81,6 +81,7 @@ aide_CFLAGS = @AIDE_DEFS@ -I$(top_srcdir
  			${XATTR_CFLAGS} \
  			${ZLIB_CFLAGS}
  aide_LDADD = -lm \

@@ -23,21 +23,22 @@
 %bcond_without tests
 %endif
 %{?sle15_python_module_pythons}
-%if 0%{?suse_version} > 1650
+%if 0%{?suse_version} >= 1600
 %global pythons python3
+%endif
+%if 0%{?suse_version} >= 1650
 %bcond_without jupyter
 %else
 %bcond_with jupyter
 %endif
 Name:           cadabra2
-Version:        2.5.10
+Version:        2.5.12
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://cadabra.science/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        MicroTeX.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
 BuildRequires:  %{python_module devel >= 3.9}
@@ -154,11 +155,7 @@ the solution of problems encountered in field theory.
 This package provides a jupyter kernel for %{name}.
 
 %prep
-%autosetup -p1 -b1
-
-# Populate microtex submodule using SOURCE1
-mkdir -p submodules/microtex
-cp -pr ../MicroTeX/* submodules/microtex/
+%autosetup -p1
 
 rm examples/.gitignore
 # Remove timestamps from Doxygen HTML files

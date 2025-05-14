@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Mar 31 12:38:07 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
+
+- Upgrade to 1.4.1
+  * Bug Fixes:
+    + several issues around Java OS and header files location
+      detection.
+    + Correct several log messages where an incorrect placeholder
+      led to truncation of the inserted values.
+  * New Features
+    + Add protection to avoid high CPU usage for applications
+      running in JVM mode that do not wait for the stop method to
+      be called before the start method returns. Fixes DAEMON-460.
+    + The minimum Java version has been increased to Java 8
+- Remove apache-commons-daemon-JAVA_OS.patch - patched in 1.4.1
+
+-------------------------------------------------------------------
 Mon Aug 12 11:42:00 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 1.4.0

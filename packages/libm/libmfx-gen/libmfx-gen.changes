@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 12 13:43:15 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 25.1.4
+  * VPL GPU Runtime version 25.1.4 is the final release to include
+    the MediaSDK package within the MediaStack.tar.gz file.
+    Starting with version 25.2, the MediaSDK package will no longer
+    be available. If you require the MediaSDK package, you can
+    still download it from earlier releases.
+  * What’s New
+    - Enhanced AV1 decoding performance when all decode frame
+      surface is busy.
+    - Fixed AV1/AVC/HEVC decoding crash issue for surface creasion
+      when resolution change.
+    - Enabled property-based query.
+
+-------------------------------------------------------------------
+Mon May 12 06:12:49 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Stop storing build machine kernel version (boo#1101107)
+
+-------------------------------------------------------------------
 Tue Feb 11 10:44:04 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - renamed tarball to make buildservice happy 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-vega_datasets
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 %define skip_python36 1
 Name:           python-vega_datasets
 Version:        0.9.0
 Release:        0
 Summary:        A Python package for offline access to Vega datasets
 License:        MIT
-Group:          Development/Languages/Python
 URL:            http://github.com/altair-viz/vega_datasets
 Source:         https://files.pythonhosted.org/packages/source/v/vega_datasets/vega_datasets-%{version}.tar.gz
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 Requires:       python-pandas
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,18 +45,19 @@ A Python package for offline access to vega datasets.
 %setup -q -n vega_datasets-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest vega_datasets/tests
 
 %files %{python_files}
+%doc README.md CHANGES.md
 %license LICENSE
 %{python_sitelib}/vega_datasets
-%{python_sitelib}/vega_datasets-%{version}*-info
+%{python_sitelib}/vega_datasets-%{version}.dist-info
 
 %changelog

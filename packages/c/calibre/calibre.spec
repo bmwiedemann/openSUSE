@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           calibre
-Version:        8.3.0
+Version:        8.4.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -87,16 +87,16 @@ BuildRequires:  hyphen-devel >= 2.8.8
 #upstream use:  iconv >= 1.17
 BuildRequires:  liberation-fonts
 BuildRequires:  libmtp-devel >= 1.1.21
-# Upstream use libopenssl-devel >= 3.1.5
+# Upstream use libopenssl-devel >= 3.1.7
 BuildRequires:  libopenssl-3-devel >= 3.1.4
 BuildRequires:  libpodofo-devel >= 0.10.3
-BuildRequires:  libpoppler-devel >= 21.11.0
+BuildRequires:  libpoppler-devel >= 23.08.0
 BuildRequires:  libstemmer-devel >= 2.2.0
 BuildRequires:  libwmf-devel >= 0.2.8
-# upstream use: mozjpeg >= 4.0.3
+# upstream use: mozjpeg >= 4.1.4
 BuildRequires:  optipng >= 0.7.7
 # Dont known if upstream need it. It say only podofo. But suse has removed it: BuildRequires: podofo >= 0.10.3
-BuildRequires:  poppler-tools >= 21.11.0
+BuildRequires:  poppler-tools >= 23.08.0
 BuildRequires:  qt6-core-private-devel >= %{my_qtversion}
 BuildRequires:  qt6-declarative-devel >= %{my_qtversion}
 BuildRequires:  qt6-gui-private-devel >= %{my_qtversion}
@@ -119,9 +119,9 @@ BuildRequires:  pkgconfig(Qt6Widgets) >= %{my_qtversion}
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.112
 BuildRequires:  pkgconfig(espeak-ng)
 BuildRequires:  pkgconfig(fontconfig) >= 2.14.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.70.1
-BuildRequires:  pkgconfig(gpg-error) >= 1.43
-BuildRequires:  pkgconfig(hunspell) >= 1.7.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.78.0
+BuildRequires:  pkgconfig(gpg-error) >= 1.47
+BuildRequires:  pkgconfig(hunspell) >= 1.7.2
 ###BuildRequires:  pkgconfig(icu-i18n) < 76.0
 BuildRequires:  pkgconfig(icu-i18n) >= 73.2
 # Upstream use 7.1
@@ -133,12 +133,15 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 #
 BuildRequires:  pkgconfig(libffi) >= 3.4.4
-BuildRequires:  pkgconfig(libgcrypt) >= 1.9.4
+BuildRequires:  libjbig-devel >= 2.1
+BuildRequires:  pkgconfig(libgcrypt) >= 1.10.2
+BuildRequires:  pkgconfig(libjpeg) >= 3.0.0
 BuildRequires:  pkgconfig(libmspack)
 BuildRequires:  pkgconfig(libopenjp2) >= 2.5.0
 BuildRequires:  pkgconfig(libpng16) >= 1.6.40
 BuildRequires:  pkgconfig(libtiff-4) >= 4.6.0
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.26
+BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 # upstream use BuildRequires:  pkgconfig(ncurses) >= 6.4
 BuildRequires:  pkgconfig(ncurses) >= 6.1
 BuildRequires:  pkgconfig(readline) >= 8.2
@@ -180,14 +183,14 @@ BuildRequires:  %{python_module packaging >= 21.3}
 BuildRequires:  %{python_module ply >= 3.11}
 BuildRequires:  %{python_module psutil >= 5.8.0}
 BuildRequires:  %{python_module pychm >= 0.8.6}
-BuildRequires:  %{python_module pycryptodome >= 3.11.0}
+BuildRequires:  %{python_module pycryptodome >= 3.19.0}
 BuildRequires:  libjpeg-turbo >= 3.0.0
 BuildRequires:  python-rpm-macros
 ##BuildRequires:  %%{python_module pykakasi >= 2.3.0}
 BuildRequires:  %{python_module pyparsing >= 3.0.6}
 BuildRequires:  %{python_module pyppmd >= 1.1.0}
 BuildRequires:  %{python_module pyqt-builder >= 1.14.0}
-BuildRequires:  %{python_module pyzstd >= 0.15.60}
+BuildRequires:  %{python_module pyzstd >= 0.15.6}
 BuildRequires:  %{python_module qt6-devel >= %{my_qtversion}}
 BuildRequires:  %{python_module regex >= 2021.11.10}
 # Upstream use: BuildRequires:  %%{python_module setuptools >= 68.2.2}
@@ -200,8 +203,6 @@ BuildRequires:  %{python_module soupsieve >= 2.5}
 BuildRequires:  %{python_module texttable >= 1.6.4}
 BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  %{python_module xxhash >= 3.3.0}
-BuildRequires:  pkgconfig(libjpeg) >= 3.0.0
-BuildRequires:  pkgconfig(libwebp) >= 1.3.2
 # Upstream use pkgconfig(libxml-2.0) >= 2.12.6
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.3
 BuildRequires:  pkgconfig(libxslt) >= 1.1.39
@@ -219,7 +220,7 @@ Requires:       libpng16-16 >= 1.6.40
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.7
 # Dont known if upstream need it. It say only podofo. But suse has removed it:  Requires: podofo >= 0.10.1
-Requires:       poppler-tools >= 21.11.0
+Requires:       poppler-tools >= 23.08.0
 Requires:       %{python_flavor}-Brotli >= 1.1.0
 Requires:       %{python_flavor}-Markdown >= 3.3.6
 Requires:       %{python_flavor}-Pillow >= 8.4.0
@@ -251,7 +252,7 @@ Requires:       %{python_flavor}-odfpy
 Requires:       %{python_flavor}-ply >= 3.11
 Requires:       %{python_flavor}-psutil >= 5.8.0
 Requires:       %{python_flavor}-pychm >= 0.8.6
-Requires:       %{python_flavor}-pycryptodome >= 3.11.0
+Requires:       %{python_flavor}-pycryptodome >= 3.19.0
 ##Requires:       %%{python_flavor}-pykakasi >= 2.3.0
 Requires:       %{python_flavor}-pyparsing >= 3.0.6
 Requires:       %{python_flavor}-pyppmd >= 1.1.0
@@ -277,7 +278,9 @@ Requires:       expat >= 2.4.4
 Requires:       libsqlite3-0 >= 3.43.0
 Requires:       unrar >= 6.2.11
 Requires:       xdg-utils >= 1.0.2
+# Upstream use xz >= 5.4.4
 Requires:       xz >= 5.4.1
+# upstream use zlib >= 1.3.1
 Requires:       zlib >= 1.2.13
 
 Requires(pretrans): findutils

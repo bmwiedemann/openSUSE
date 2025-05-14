@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 11 14:51:16 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.0.0d:
+  * Add the new runtime flag ALT_AS_TITLE; if an image has no
+    title, use the alt text as the title.
+  * Fix some brokenness in markdown extra footnotes that made
+    adjacent footnotes not render properly.
+  * Fix a handful of places which didn't guard against underflows
+    or null pointers; add test cases for them in crash.t.
+  * Update the callback creation functions to use the proper
+    arguments.
+  * Left an argument out of main.c's memory deallocator callback.
+  * Fix a bug in tab expansion.
+  * Replace an include of strings.h with string.h.
+  * Allow multiple classes for >% blocks.
+  * Add the --container config option so a ldconfig won't be
+    installed into librarian.sh.
+- Re-base discount-disable_ldconfig.patch for update.
+- make: Use multiple threads for tests and install.
+
+-------------------------------------------------------------------
 Thu Mar 23 16:24:30 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 3.0.0a:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue May  6 20:13:20 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.5
+- Changes since 6.3.4:
+  * update version for new release
+  * Notification: Escape lonely < and > symbols (kde#502106)
+  * Calendar: Move event indicator above main label
+  * update version for new release
+  * appelts/notifications: Fix Notifications positions (kde#500192,kde#498599,kde#491217,kde#502160)
+  * applets/notifications: improve paddings again
+  * multiscreen: fix an incorrect assert in screenInvariants (kde#494616)
+- Drop patches, now upstream:
+  * 0001-applets-notifications-improve-paddings-again.patch
+  * 0002-appelts-notifications-Fix-Notifications-positions.patch
+
+-------------------------------------------------------------------
 Thu Apr  3 11:50:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix notification appearance

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 12 08:34:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.2.21 (bsc#1242210)
+  * CVE-2025-32873: Denial-of-service possibility in strip_tags()
+  * Fixed a data corruption possibility in file_move_safe() when
+    allow_overwrite=True, where leftover content from a previously
+    larger file could remain after overwriting with a smaller one
+    due to lack of truncation
+  * Fixed a regression in Django 4.2.20, introduced when fixing
+    CVE 2025-26699, where the wordwrap template filter did not preserve
+    empty lines between paragraphs after wrapping text
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Tue Apr  1 12:04:57 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Make the dist-info name case-insensitive

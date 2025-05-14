@@ -480,4 +480,41 @@
     <comment></comment>
     <requestid>1219093</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cd9e1fe5ff72aebc4e80e7230ca71f7f</srcmd5>
+    <version>14.2</version>
+    <time>1746729583</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip flaky tests for s390x
+- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 50 to fix flaky tests in
+  different architectures, bsc#1242254
+
+- Update to 14.2
+  * Added support for regular expressions in the origins argument of serve()
+  * Wrapped errors when reading the opening handshake request or response in 
+    InvalidMessage so that connect() raises InvalidHandshake or a subclass 
+    when the opening handshake fails
+  * Fixed recv() with timeout=0 in the threading implementation. If a message 
+    is already received, it is returned. Previously, TimeoutError was 
+    raised incorrectly
+  * Fixed a crash in the asyncio implementation when cancelling a ping then 
+    receiving the corresponding pong
+  * Prevented close() from blocking when the network becomes unavailable or 
+    when receive buffers are saturated in the asyncio and threading 
+    implementations
+- Update to 14.1
+  * Supported max_queue=None in the asyncio and threading implementations 
+    for consistency with the legacy implementation, even though this is 
+    never a good idea
+  * Added close_code and close_reason attributes in the asyncio and 
+    threading implementations for consistency with the legacy implementation
+  * Once the connection is closed, messages previously received and buffered 
+    can be read in the asyncio and threading implementations, just like in 
+    the legacy implementation
+- Update to 14.0
+  * Added an option to receive text frames as bytes, without decoding, in 
+    the threading implementation; also binary frames as str
+  * Added an option to send bytes in a text frame in the asyncio and</comment>
+    <requestid>1275264</requestid>
+  </revision>
 </revisionlist>

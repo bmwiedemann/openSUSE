@@ -29,4 +29,13 @@
     - New version of distutils rejects version suffixes of `.postNN`, use `aNN` instead</comment>
     <requestid>990898</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>701feccb805178cf66a8ce062511d262</srcmd5>
+    <version>3.1.0</version>
+    <time>1746809404</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275992</requestid>
+  </revision>
 </revisionlist>

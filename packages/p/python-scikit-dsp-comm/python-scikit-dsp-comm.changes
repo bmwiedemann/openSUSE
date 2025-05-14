@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  9 05:18:24 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Wed Oct  6 04:57:31 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove nose BuildRequires. 

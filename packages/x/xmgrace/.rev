@@ -94,4 +94,12 @@
     <comment>patch changes to support gcc14 (forwarded request 1227677 from hsk17)</comment>
     <requestid>1227678</requestid>
   </revision>
+  <revision rev="13" vrev="7">
+    <srcmd5>770c9e111829e1ac70428ee6748a96b2</srcmd5>
+    <version>5.1.25</version>
+    <time>1746542572</time>
+    <user>anag_factory</user>
+    <comment>- build with -std=gnu17 (forwarded request 1274683 from pgajdos)</comment>
+    <requestid>1274808</requestid>
+  </revision>
 </revisionlist>

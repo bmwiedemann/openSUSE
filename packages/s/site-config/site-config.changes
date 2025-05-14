@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 21 01:55:57 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- libdir containing lib64 breaks rust cargo build of *-sys
+  bindings. If OUT_DIR is defined and contains "cargo", keep the
+  default libdir.
+
+-------------------------------------------------------------------
 Tue Apr 26 13:31:45 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - autoconf 2.71 uses 'new configure' format, but does no longer

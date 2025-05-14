@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:32:47 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * Fix macOS build (#944)
+  * Handle error from trash::os_limited::is_empty
+  * perf: Only enumerate trash items when necessary (#604)
+  * Update trash crate
+  * Format
+  * Fall back to unmount if eject is not supported, fixes #941
+  * i18n(pt-BR) - Update translations (#943)
+  * Remove merged libc patch
+  * chore: update libcosmic
+  * feat: responsive menu bar (#938)
+  * Add tests for `exec_to_command` (#935)
+  * Update Hungarian translations (#937)
+  * Use icu for date and time localization (#934)
+  * Update Swedish translation (#932)
+  * i18n - Update portuguese translations (#929)
+  * fix: Handle complex Exec keys in desktop entries (#930)
+  * Only write what was read during copy, fixes #931
+  * Patches to fix redox support
+  * feat: use io_uring / IOCP when available for async file IO (#911)
+  * Refactor translation (#923)
+  * i18n(ro): Improve Romanian translation (#926)
+  * empty commit to force rebuild
+  * Fix move to home location on unmount
+  * i18n(nl) fix some Dutch spell mistakes
+  * Update cosmic_files.ftl
+  * Update cosmic_files.ftl
+  * Update cosmic_files.ftl
+  * Update cosmic_files.ftl
+  * Add french translation
+  * Remove unnecessary debug output
+  * Move xdg-mime patch to dependencies, remove filetime patch
+  * Use xz2 instead of liblzma, update dependencies
+  * Update libcosmic
+  * Update cosmic_files.ftl PL Translation extract to folder
+  * feat: Open multiple files with one/multiple apps
+  * i18n (pt-BR) Update translation
+  * Fix for right and middle click in single click mode
+  * Set title and accept button label for extract dialog
+  * Fix toasts for Extract and Compress
+  * Use Open Folder dialog for Extract To
+  * Disable drag-select when not in multiple mode
+  * Add auto-scroll to dialog
+  * Simplify and fix box selection and autoscroll
+  * Update cosmic_files.ftl PL Translation Type-to-search Delete and stuff
+  * i18n(nl) update Dutch translations
+  * Allow dialog open button when opening directory and nothing is selected
+  * Add support for accelerator keys in dialog, fixes #390
+  * Update libcosmic
+  * Update Hungarian translations
+  * Format
+  * Format
+  * Add keybinds for list/grid views
+  * Added Extract To feature to the context menu.
+  * feat: Extract archive to a specified location
+  * Update cosmic_files.ftl
+  * chore: update libcosmic
+  * Add 'Single click to open' settings toggle
+  * Use press event on gallery header instead of drag event to start window drag, fixes #537
+  * Update Brazilian portuguese translation
+  * i18n(nl) update Dutch translation
+  * Only show one (default) line
+  * Removed unused imports
+  * Fixing incorrect height calculation on scrollable
+  * Use scrollable for open-with dialog and calculate height to ensure open button is visible
+  * adding note for xdg-mime patch
+  * cargo fmt
+  * simplifying list generation for mime types, applying xdg-mime patch & cargo fmt
+  * Adding in new functionality to open / open-with based off of MIME subclasses where needed
+  * Edit location when clicking on current directory
+  * Handle broken favorites in sidebar
+  * fix(libcosmic): theme subscription
+  * Improve updating favorites when moving multiple dirs
+  * Update favorites when dir is renamed or moved
+  * Implement "Open in new window" for Trash, Recents, Network
+  * Only show Show Details for Path locations
+  * Only show Empty Trash when there is trash
+  * Add open in new tab for Network and Recents
+  * Ensure skip applies to cleanup operations, fixes #854
+  * Remove accidental println
+  * Compact consecutive search locations in history, fixes #759
+  * Type to search or seek (#859)
+  * Update Hungarian translations
+  * fix(app): header actions glitch in preview page
+  * i18n(nl) update Dutch translation
+  * fix(app): close preview on single click
+  * Revert "fix(app): close selected preview on single click"
+  * fix(app): close selected preview on single click
+  * Add operation to permanently delete trash items, fixes #841
+  * Fix multiple operation progress, fixes #842
+  * Format
+  * i18n(ca): Add Catalan translation
+  * fix(tab): prevent showing future date in trash items
+  * Respect military time config from time applet
+  * Added Irish translation
+
+-------------------------------------------------------------------
 Sat Feb 22 02:55:01 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+1:

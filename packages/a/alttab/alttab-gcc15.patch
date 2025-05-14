@@ -1,0 +1,48 @@
+diff -upr alttab-1.7.1.orig/src/alttab.c alttab-1.7.1/src/alttab.c
+--- alttab-1.7.1.orig/src/alttab.c	2025-05-05 15:47:25.877677270 +0000
++++ alttab-1.7.1/src/alttab.c	2025-05-05 15:48:02.167866699 +0000
+@@ -533,7 +533,7 @@ static int use_args_and_xrm(int *argc, c
+ //
+ static int grabKeysAtStartup(bool grabUngrab)
+ {
+-    g.ignored_modmask = getOffendingModifiersMask(dpy); // or 0 for g.debug
++    g.ignored_modmask = getOffendingModifiersMask(); // or 0 for g.debug
+     char *grabhint =
+         "Error while (un)grabbing key 0x%x with mask 0x%x/0x%x.\nProbably other program already grabbed this combination.\nCheck: xdotool keydown alt+Tab; xdotool key XF86LogGrabInfo; xdotool keyup Tab; sleep 1; xdotool keyup alt\nand then look for active device grabs in /var/log/Xorg.0.log\nOr try Ctrl-Tab instead of Alt-Tab:  alttab -mk Control_L\n";
+ // attempt XF86Ungrab? probably too invasive
+diff -upr alttab-1.7.1.orig/src/pngd.h alttab-1.7.1/src/pngd.h
+--- alttab-1.7.1.orig/src/pngd.h	2025-05-05 15:47:25.877992578 +0000
++++ alttab-1.7.1/src/pngd.h	2025-05-05 15:48:02.168120212 +0000
+@@ -46,6 +46,6 @@ int pngDraw(TImage * img, Drawable d, XI
+             uint8_t bg_red, uint8_t bg_green, uint8_t bg_blue);
+ int pngReadToDrawable(char *pngpath, Drawable d, uint8_t bg_red,
+                       uint8_t bg_green, uint8_t bg_blue);
+-int pngReadToDrawable_test();
++int pngReadToDrawable_test(char *pngfile);
+ 
+ #endif
+diff -upr alttab-1.7.1.orig/src/util.c alttab-1.7.1/src/util.c
+--- alttab-1.7.1.orig/src/util.c	2025-05-05 15:47:25.878098923 +0000
++++ alttab-1.7.1/src/util.c	2025-05-05 15:48:02.168329846 +0000
+@@ -33,7 +33,7 @@ bool ee_complain;
+ //
+ // get all possible modifiers
+ //
+-unsigned int getOffendingModifiersMask()
++unsigned int getOffendingModifiersMask(void)
+ {
+     unsigned int lockmask[3];   // num=0 scroll=1 caps=2
+     int i;
+diff -upr alttab-1.7.1.orig/src/util.h alttab-1.7.1/src/util.h
+--- alttab-1.7.1.orig/src/util.h	2025-05-05 15:47:25.878146984 +0000
++++ alttab-1.7.1/src/util.h	2025-05-05 15:48:02.168553574 +0000
+@@ -66,7 +66,7 @@ typedef struct {
+ }
+ 
+ 
+-unsigned int getOffendingModifiersMask();
++unsigned int getOffendingModifiersMask(void);
+ int changeKeygrab(Window win, bool grab, KeyCode keycode,
+                   unsigned int modmask, unsigned int ignored_modmask);
+ int zeroErrorHandler(Display * dpy_our, XErrorEvent * theEvent);
+

@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Tue May 13 12:39:15 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop all xf86-video-* except for -nv and -qxl
+
+-------------------------------------------------------------------
+Wed Apr 30 14:42:30 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Drop x1e80100 FW on Leap 15.6
+
+-------------------------------------------------------------------
 Wed Mar 12 06:55:58 UTC 2025 - Ana Guerrero <ana.guerrero+factory@suse.com>
 
 - list-common: crda has been removed from Tumbleweed
+
+-------------------------------------------------------------------
+Mon Feb 10 14:59:43 UTC 2025 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Do not remove en_US locale, it breaks GNOME
 
 -------------------------------------------------------------------
 Fri Feb  7 14:34:06 UTC 2025 - Fabian Vogt <fvogt@suse.com>

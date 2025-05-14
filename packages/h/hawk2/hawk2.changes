@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 11 12:01:02 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gem rack-session to 2.1.1 (bsc#1242927)
+  * rack-session-2.1.1.gem
+
+- bump ruby gem rack to 3.1.14 (bsc#1242892,bsc#1242894)
+  * rack-3.1.14.gem
+
+-------------------------------------------------------------------
+Mon May  5 11:46:37 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump ruby gem net-imap to 0.5.8 (bsc#1242000)
+  * net-imap-0.5.8.gem
+
+-------------------------------------------------------------------
 Mon Mar 24 11:47:04 UTC 2025 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.0+git.1742310530.bfcd0e2c

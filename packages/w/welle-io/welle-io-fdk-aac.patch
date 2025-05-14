@@ -1,0 +1,126 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e0ef762..208ad4e7 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -24,10 +24,10 @@ option(AIRSPY            "Compile with Airspy support"           OFF )
+ option(RTLSDR            "Compile with RTL-SDR support"          OFF )
+ option(SOAPYSDR          "Compile with SoapySDR support"         OFF )
+ option(FLAC              "Compile with flac support for streaming" OFF )
++option(FDK_AAC           "Use FDK-AAC instead of FAAD"           OFF )
+ 
+ add_definitions(-Wall)
+ add_definitions(-g)
+-add_definitions(-DDABLIN_AAC_FAAD2)
+ 
+ if(MINGW)
+     add_definitions(-municode)
+@@ -94,7 +94,21 @@ if(NOT ANDROID)
+         set(fft_sources "")
+         set(KISS_INCLUDE_DIRS "")
+     endif()
+-    find_package(Faad REQUIRED)
++    if (FDK_AAC)
++        find_package(FdkAac REQUIRED)
++        if (FDKAAC_FOUND)
++            add_definitions(-DDABLIN_AAC_FDKAAC)
++            set(AAC_LIBRARIES ${FDKAAC_LIBRARIES})
++            set(AAC_INCLUDE_DIRS ${FDKAAC_INCLUDE_DIRS})
++        endif()
++    else()
++        find_package(Faad REQUIRED)
++        if (FAAD_FOUND)
++            add_definitions(-DDABLIN_AAC_FAAD2)
++            set(AAC_LIBRARIES ${FAAD_LIBRARIES})
++            set(AAC_INCLUDE_DIRS ${FAAD_INCLUDE_DIRS})
++        endif()
++    endif()
+     find_package(MPG123 REQUIRED)
+ else()
+     # For KISSFFT
+@@ -141,6 +155,7 @@ else()
+     )
+ 
+     # For FAAD
++    add_definitions(-DDABLIN_AAC_FAAD2)
+     add_definitions(-DHAVE_CONFIG_H)
+     include_directories(
+         src/libs/faad2
+@@ -215,7 +230,7 @@ include_directories(
+     src/libs/fec
+     ${FFTW3F_INCLUDE_DIRS}
+     ${KISS_INCLUDE_DIRS}
+-    ${FAAD_INCLUDE_DIRS}
++    ${AAC_INCLUDE_DIRS}
+     ${LIBRTLSDR_INCLUDE_DIRS}
+     ${SoapySDR_INCLUDE_DIRS}
+     ${FLACPP_INCLUDE_DIRS}
+@@ -416,7 +431,7 @@ if(BUILD_WELLE_IO)
+       ${LIBRTLSDR_LIBRARIES}
+       ${LIBAIRSPY_LIBRARIES}
+       ${FFTW3F_LIBRARIES}
+-      ${FAAD_LIBRARIES}
++      ${AAC_LIBRARIES}
+       ${SoapySDR_LIBRARIES}
+       ${MPG123_LIBRARIES}
+       Threads::Threads
+@@ -477,7 +492,7 @@ if(BUILD_WELLE_CLI AND NOT ANDROID)
+       ${LIBRTLSDR_LIBRARIES}
+       ${LIBAIRSPY_LIBRARIES}
+       ${FFTW3F_LIBRARIES}
+-      ${FAAD_LIBRARIES}
++      ${AAC_LIBRARIES}
+       ${ALSA_LIBRARIES}
+       ${LAME_LIBRARIES}
+       ${SoapySDR_LIBRARIES}
+diff --git a/cmake/Modules/FindFdkAac.cmake b/cmake/Modules/FindFdkAac.cmake
+new file mode 100644
+index 00000000..12b79243
+--- /dev/null
++++ b/cmake/Modules/FindFdkAac.cmake
+@@ -0,0 +1,34 @@
++# Try to find FDKAAC library and include path.
++# Once done this will define
++#
++# FDKAAC_INCLUDE_DIRS - where to find faad.h, etc.
++# FDKAAC_LIBRARIES - List of libraries when using libfaad.
++# FDKAAC_FOUND - True if libfaad found.
++
++find_path(FDKAAC_INCLUDE_DIR fdk-aac/aacdecoder_lib.h DOC "The directory where fdk-aac/aacdecoder_lib.h resides")
++find_library(FDKAAC_LIBRARY NAMES fdk-aac DOC "The libfdk-aac library")
++
++if(FDKAAC_INCLUDE_DIR AND FDKAAC_LIBRARY)
++  set(FDKAAC_FOUND 1)
++  set(FDKAAC_LIBRARIES ${FDKAAC_LIBRARY})
++  set(FDKAAC_INCLUDE_DIRS ${FDKAAC_INCLUDE_DIR})
++else(FDKAAC_INCLUDE_DIR AND FDKAAC_LIBRARY)
++  set(FDKAAC_FOUND 0)
++  set(FDKAAC_LIBRARIES)
++  set(FDKAAC_INCLUDE_DIRS)
++endif(FDKAAC_INCLUDE_DIR AND FDKAAC_LIBRARY)
++
++mark_as_advanced(FDKAAC_INCLUDE_DIR)
++mark_as_advanced(FDKAAC_LIBRARY)
++mark_as_advanced(FDKAAC_FOUND)
++
++if(NOT FDKAAC_FOUND)
++  set(FDKAAC_DIR_MESSAGE "libfaad was not found. Make sure FDKAAC_LIBRARY and FDKAAC_INCLUDE_DIR are set.")
++  if(NOT FDKAAC_FIND_QUIETLY)
++    message(STATUS "${FDKAAC_DIR_MESSAGE}")
++  else(NOT FDKAAC_FIND_QUIETLY)
++    if(FDKAAC_FIND_REQUIRED)
++      message(FATAL_ERROR "${FDKAAC_DIR_MESSAGE}")
++    endif(FDKAAC_FIND_REQUIRED)
++  endif(NOT FDKAAC_FIND_QUIETLY)
++endif(NOT FDKAAC_FOUND)
+diff --git a/src/backend/subchannel_sink.h b/src/backend/subchannel_sink.h
+index 826c9d22..4d234430 100644
+--- a/src/backend/subchannel_sink.h
++++ b/src/backend/subchannel_sink.h
+@@ -52,6 +52,7 @@ public:
+ 	virtual void ProcessPAD(const uint8_t* /*xpad_data*/, size_t /*xpad_len*/, bool /*exact_xpad_len*/, const uint8_t* /*fpad_data*/) {}
+ 
+ 	virtual void AudioError(const std::string& /*hint*/) {}
++	virtual void AudioWarning(const std::string& /*hint*/) {}
+     virtual void ACCFrameError(const unsigned char /* error*/) {}
+ 	virtual void FECInfo(int /*total_corr_count*/, bool /*uncorr_errors*/) {}
+ };

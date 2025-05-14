@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?sle_version} && 0%{?sle_version} == 150600
+%define force_gcc_version 13
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-primp
 Version:        0.15.0
@@ -31,7 +35,12 @@ BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
+%if 0%{?force_gcc_version}
+BuildRequires:  gcc%{?force_gcc_version}-c++
+BuildRequires:  libstdc++6-gcc%{?force_gcc_version}
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  git
 BuildRequires:  llvm
 BuildRequires:  openssl
@@ -51,7 +60,15 @@ export CARGO_NET_OFFLINE=true
 export CARGO_PROFILE_RELEASE_DEBUG=full
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 export CARGO_PROFILE_RELEASE_STRIP=false
+%if 0%{?force_gcc_version}
+export C_INCLUDE_PATH=/usr/lib64/gcc/%_arch-suse-linux/%{force_gcc_version}/include
+export CXX=g++-%{force_gcc_version}
+export CC=gcc-%{force_gcc_version}
+export DCMAKE_C_COMPILER=gcc-%{force_gcc_version}
+export DCMAKE_CXX_COMPILER=g++-%{force_gcc_version}
+%else
 export C_INCLUDE_PATH=/usr/lib64/gcc/%_arch-suse-linux/%gcc_version/include
+%endif
 %pyproject_wheel
 
 %install

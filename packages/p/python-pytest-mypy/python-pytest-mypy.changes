@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed May  7 06:57:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.1:
+  * Catch OSErrors when parsing mypy error paths
+  * Add test_pyproject_toml
+  * Drop Python 3.6 support and use PEP 621 metadata
+  * Test with mypy 1.x and fewer old versions
+  * Prevent AttributeError in pytest_terminal_summary
+  * Add support for Python 3.12
+  * Add support for pytest 8
+  * Ensure expected versions are installed while testing
+  * Require mypy >= 1.0
+  * Generalize MypyResults.from_mypy
+  * Require Pytest 7+
+  * Use config.stash to store the results path
+  * Replace attrs with dataclasses
+  * Create MypyConfigStash
+  * Refactor xdist integration
+  * Add strict type-checking
+  * Add --mypy-no-status-check
+  * Add --mypy-xfail
+  * Move results path cleanup to pytest_unconfigure
+  * Remove MypyWarning
+  * Replace MypyItem.MARKER with item_marker
+  * Create MypyCollectionPlugin
+  * Add support for Python 3.13
+  * Drop support for Python 3.7
+  * Resolve PYTHONWARNDEFAULTENCODING warnings
+  * Make MypyResults line-based
+  * Add test_name_formatter
+  * Add --mypy-report-style
+- Switch to pyproject macros.
+- Drop patch indirect-test-new-mypy.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Sep 26 20:45:09 UTC 2024 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Fixed %{?sle15_python_module_pythons} 

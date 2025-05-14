@@ -1,0 +1,12 @@
+phpMyAdmin README for SuSE
+
+If the php runs on php-fpm, please add these lines in 
+/etc/apparmor.d/local/php-fpm:
+
+allow /usr/share/phpMyAdmin/** r,
+allow /var/cache/phpMyAdmin/** rw,
+allow /usr/share/doc/packages/phpMyAdmin/** r,
+allow /etc/phpMyAdmin/** r,
+
+And then restart apparmor:
+sudo systemctl restart apparmor

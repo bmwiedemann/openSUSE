@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May  3 14:36:54 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.36.0:
+  * direnv now requires go 1.24
+  * doc: Correct duplicate usage of 'with' in the direnv(1)
+  * doc: note direnv version for log_{format,filter}
+  * feat: Add use_flox to stdlib.sh
+  * feat: logging filter
+  * fix use_nix: unset TMPDIR variables
+  * fix: A more universal fix for the python 3.14 find_spec deprecation warning
+  * fix: Don't give an error when the current directory doesn't exist
+  * fix: add support to fully reproducible guix shells
+  * fix: assert minimum powershell version
+  * fix: escape newlines in generated vimscript
+  * fix: fix empty array error in install.sh
+  * fix: optionally authenticate against github api during install
+  * fix: use_guix: Enable the watching of Guix related files.
+
+- fixed bash completions directory
+- added %check section to run unit tests on build
+
+-------------------------------------------------------------------
 Sun Dec 29 04:09:54 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2.35.0:

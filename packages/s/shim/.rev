@@ -1493,4 +1493,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>undefine %_enable_debug_packages to fix building with rpm-4.20</comment>
     <requestid>1232808</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>d4ef1def4001a7529e4b14c95f30a119</srcmd5>
+    <version>16.0</version>
+    <time>1747159930</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276758</requestid>
+  </revision>
 </revisionlist>

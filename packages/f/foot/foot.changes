@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu May  1 16:07:36 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to v1.22.3:
+  * foot.ini options:
+    * Disabled main.gamma-correct-blending option by default,
+      since correct blending with the option enabled is slower
+      (lower rendering throughput and higher input latency).
+    * Changed tweak.surface-bit-depth default from "8-bit" to "auto".
+      This becomes "8-bit" when main.gamma-correct-blending is "no"
+      and "10-bit" when that is "yes".
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.22.3 for more details.
+
+-------------------------------------------------------------------
 Wed Apr 30 08:37:51 UTC 2025 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to v1.22.2:

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May 11 06:38:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.44.1:
+  * Fix SegFault in Rotator Widget
+
+-------------------------------------------------------------------
+Fri May  9 17:56:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.44.0:
+  * Activity Manager - Added SKCC, UKSMG and FISTS as Dynamic Fields
+  * QSO - FISTS, SKCC, and UKSMG are auto-filled from MembershipQE
+  * Rotator - Added QSO destination needle
+  * QSO Detail - Adds grayline and short path
+  * Rotator - Needle colors correspond to the online map
+  * Fixed TCI cw_macros must contain RigID
+  * Fixed TCI setKeySpeed sets keyer and macros speed
+  * Fixed Data mode missing in rig control window - rigctld
+  * Improved DXC Mode detection
+  * Updated Simplified Chinese translation
+
+-------------------------------------------------------------------
 Sun Apr 20 08:39:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.43.1:

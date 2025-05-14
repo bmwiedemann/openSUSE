@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue May  6 08:04:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Do not let minor tolerance issues in tests on non-x86_64 archs
+  abort builds (gh#lammps/lammps#2383, gh#lammps/lammps#2978).
+
+-------------------------------------------------------------------
+Mon May  5 16:47:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Adapt package version to reflect upstream releases; example:
+  the current version 20240829.02 reflects upstream's (weirdly but
+  consistently named) stable_29Aug2024_update2 tag.
+- Implement python packaging using python rpm macros (for now
+  default python3-* only).
+- Enable a few non-expensive modules (in terms of build
+  dependencies): compress (depends on gzip, libzstd), manybody,
+  molecule (needed for python tests), extra-molecule, and lepton.
+- Drop a few unnecessary build dependencies: intel-opencl-devel,
+  armnn-opencl-devel.
+- Add lammps-allow-system-gtest.patch to allow using system
+  installed gtest/gmock for tests. Note that upstream seems to be
+  reticent about this (gh#lammps/lammps#3540), but we have no
+  choice if we want to run tests. So, mark our patch as
+  PATCH-FEATURE-OPENSUSE for now.
+- Use pkgconfig based BuildRequires wherever possible.
+- Use ninja for build.
+- Define and use macro for shared library name consistency.
+- Disable MPI on i586 to resolve builds (missing
+  openmpi-macros-devel).
+
+-------------------------------------------------------------------
+Tue Mar 18 16:37:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to stable_29Aug2024_update2:
+  * Too many changes to list, see
+    <https://github.com/lammps/lammps/releases/tag/stable_29Aug2024>
+
+-------------------------------------------------------------------
 Mon May 15 01:02:12 UTC 2023 - Christoph Junghans <junghans@votca.org>
 
 - Disable kokkos support until the next release will support

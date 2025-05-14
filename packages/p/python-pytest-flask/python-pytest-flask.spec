@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flask
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,11 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-flask/py
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module Werkzeug >= 0.7}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 5.2}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
@@ -46,10 +48,10 @@ to simplify testing and development of the Flask extensions and applications.
 %setup -q -n pytest-flask-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +60,7 @@ to simplify testing and development of the Flask extensions and applications.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/pytest_flask
+%{python_sitelib}/pytest_flask-%{version}.dist-info
 
 %changelog

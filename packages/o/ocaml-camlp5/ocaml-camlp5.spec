@@ -25,7 +25,7 @@
 	%nil
 
 Name:           ocaml-camlp5
-Version:        8.03.02
+Version:        8.03.04
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Preprocessor-Pretty-Printer for Objective Caml

@@ -1,10 +1,9 @@
-Index: smartmontools-7.4/smartd.service.in
-===================================================================
---- smartmontools-7.4.orig/smartd.service.in
-+++ smartmontools-7.4/smartd.service.in
-@@ -9,7 +9,7 @@ ConditionVirtualization=no
- [Service]
+diff -Pdpru smartmontools-7.5.orig/smartd.service.in smartmontools-7.5/smartd.service.in
+--- smartmontools-7.5.orig/smartd.service.in	2025-01-24 15:28:39.000000000 +0100
++++ smartmontools-7.5/smartd.service.in	2025-05-01 12:25:46.347833823 +0200
+@@ -10,7 +10,7 @@ ConditionVirtualization=no
  Type=notify
+ Environment=smartd_opts=''
  EnvironmentFile=-/usr/local/etc/sysconfig/smartmontools
 -ExecStart=/usr/local/sbin/smartd -n $smartd_opts
 +ExecStart=/usr/local/sbin/smartd -n -q never $smartd_opts

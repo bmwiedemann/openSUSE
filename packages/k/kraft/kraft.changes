@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 07:37:03 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Tue Oct  1 19:07:43 UTC 2024 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 1.2.2

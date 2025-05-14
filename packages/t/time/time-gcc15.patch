@@ -1,0 +1,13 @@
+Index: time-1.9/src/time.c
+===================================================================
+--- time-1.9.orig/src/time.c
++++ time-1.9/src/time.c
+@@ -76,7 +76,7 @@ enum
+ 
+ 
+ /* A Pointer to a signal handler.  */
+-typedef RETSIGTYPE (*sighandler) ();
++typedef RETSIGTYPE (*sighandler) (int);
+ 
+ /* msec = milliseconds = 1/1,000 (1*10e-3) second.
+    usec = microseconds = 1/1,000,000 (1*10e-6) second.  */

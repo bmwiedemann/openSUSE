@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  8 08:07:20 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- postfix incorrect logic for the master.cf handling for tls ports
+  (bsc#1242822)
+
+-------------------------------------------------------------------
 Tue Apr 22 20:09:05 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.10.2

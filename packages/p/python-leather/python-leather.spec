@@ -1,7 +1,7 @@
 #
 # spec file for package python-leather
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,14 +21,15 @@ Version:        0.3.4
 Release:        0
 Summary:        Python charting for 80% of humans
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/leather
 Source:         https://github.com/wireservice/leather/archive/%{version}.tar.gz#/leather-0.3.4-gh.tar.gz
 # https://github.com/wireservice/leather/commit/9238eb5f4603496b61fc1c1dabad805ca5380b71
 Patch0:         python-leather-no-python2.patch
 BuildRequires:  %{python_module lxml >= 3.6.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +44,10 @@ and don't care if they're perfect.
 
 %build
 find leather -name '*.py' -exec sed -i -e '/^#!\//, 1d' {} \;
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,6 @@ rm test.py
 %doc README.rst
 %license COPYING
 %{python_sitelib}/leather
-%{python_sitelib}/leather-%{version}*-info
+%{python_sitelib}/leather-%{version}.dist-info
 
 %changelog

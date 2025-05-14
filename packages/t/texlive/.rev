@@ -1250,4 +1250,15 @@
   statements (boo#1241475)</comment>
     <requestid>1273421</requestid>
   </revision>
+  <revision rev="103" vrev="106">
+    <srcmd5>faea5406239254bc4066c5b0dff54506</srcmd5>
+    <version>unknown</version>
+    <time>1747061123</time>
+    <user>anag_factory</user>
+    <comment>- Add patch boost.dif
+  * Fixed build bith boost 1.88 (bnc#1242801)
+
+- Make build also for Leap 15.6</comment>
+    <requestid>1275502</requestid>
+  </revision>
 </revisionlist>

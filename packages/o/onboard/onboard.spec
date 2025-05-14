@@ -29,6 +29,8 @@ Source1:        onboard-defaults.conf
 # PATCH-FIX-SLE onboard-remove-dep-typelib-appindicator3.patch fate#326794 yfjiang@suse.com -- remove the typelib(Appindicator3) dependency because SLE does not ship it
 Patch0:         onboard-remove-dep-typelib-appindicator3.patch
 Patch1:         onboard-Onboard-Config.py-Check-desktop-env-before-requestin.patch
+Patch2:         onboard-stdbool.patch
+Patch3:         onboard-fix-crash-on-hover.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # Needed for typelib() - Requires.
@@ -98,6 +100,8 @@ This GNOME Shell extension integrates the onboard keyboard with the GNOME Shell.
 %patch -P 0 -p1
 %endif
 %patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 python3 setup.py build

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sympy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,13 @@ Version:        1.13.3
 Release:        0
 Summary:        Computer algebra system (CAS) in Python
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            https://www.sympy.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/sympy/sympy-%{version}.tar.gz
 Source99:       python-sympy-rpmlintrc
 BuildRequires:  %{python_module mpmath >= 1.1.0 with %python-mpmath < 1.4.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mpmath >= 1.1.0
@@ -63,10 +64,10 @@ find examples-%{$python_bin_suffix} -name "*.py" -exec sed -i "s|^#! %{_bindir}/
 }
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/mechanics/models.py
 chmod a+x %{buildroot}%{$python_sitelib}/sympy/physics/optics/polarization.py
@@ -103,8 +104,8 @@ $python -c 'from sympy.testing import runtests ; runtests.run_all_tests()'
 %python_alternative %{_bindir}/isympy
 %python_alternative %{_mandir}/man1/isympy.1%{ext_man}
 %{python_sitelib}/sympy
-%{python_sitelib}/isympy.py*
-%{python_sitelib}/sympy-%{version}-py*.egg-info
-%pycache_only %{python_sitelib}/__pycache__/isympy*.py*
+%{python_sitelib}/isympy.py
+%{python_sitelib}/sympy-%{version}.dist-info
+%pycache_only %{python_sitelib}/__pycache__/isympy*.pyc
 
 %changelog

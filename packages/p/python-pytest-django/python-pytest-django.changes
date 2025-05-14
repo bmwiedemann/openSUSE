@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon May 12 06:48:41 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.11.1:
+  * Compatibility
+    + Added official support for Django 5.2.
+    + Added official support for Python 3.13.
+    + Added official support for Django 5.1.
+    + Dropped support for Django 3.2 and 4.1.
+    + Official Django 5.0 support.
+    + Official Python 3.12 support.
+    + Drop support for Python version 3.5, 3.6 & 3.7.
+    + Drop official support for Django 4.0 and 2.2
+    + Drop support for pytest < 7.
+  * Improvements
+    + Added using argument to django_assert_num_queries and
+      django_assert_max_num_queries to easily specify the database alias to
+      use.
+    + Respect the string_if_invalid template setting when
+      --fail-on-template-vars is active and
+      pytest.mark.ignore_template_errors is used.
+    + Avoid running database migrations for django.test.SimpleTestCase
+      unittest tests.
+    + Added pytest_django.asserts.assertMessages() to mimic the behaviour of
+      the django.contrib.messages.test.MessagesTestMixin.assertMessages method
+      for Django versions >= 5.0.
+    + The Django test tags from the previous release now works on any
+      django.test.SimpleTestCase.
+    + Add support for setting available_apps in the pytest.mark.django_db
+      marker.
+    + Show Django's version in the pytest django report header.
+    + Add precise pytest_django.asserts.assertQuerySetEqual typing.
+  * Bugfixes
+    + Fixed a regression in v4.11.0 for Django TestCase tests using the
+      databases class variable.
+    + Stopped setting up and serializing databases on test session setup when
+      not needed (the database is not requested / serialized_rollback is not
+      used).
+    + The determination of which databases to setup is done by static
+      inspection of the test suite.
+    + Fixed lock/unlock of db breaks if pytest is executed twice in the same
+      process.
+    + Fix --help/--version crash in a partially configured app.
+    + Fix bug where the effect of @pytest.mark.ignore_template_errors was not
+      reset when using --fail-on-template-vars.
+- Switch to pyproject macros.
+- Drop patches, included upstream:
+  * autoclear_mailbox.patch
+  * pytest-django-pr996-pytest7.patch
+
+-------------------------------------------------------------------
 Sun Jun 25 07:53:46 UTC 2023 - Andreas Schneider <asn@cryptomilk.org>
 
 - Use sle15_python_module_pythons

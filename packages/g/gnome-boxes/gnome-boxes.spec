@@ -56,8 +56,8 @@ BuildRequires:  pkgconfig(spice-client-gtk-3.0) >= 0.32
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(vte-2.91)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-# Needed for unattended installations
-Requires:       fuseiso
+# Needed for unattended installations: iso-read
+Requires:       cdio-utils
 # Need libvirtd and an hypervisor
 Requires:       libvirt-daemon-qemu
 # Needed for unattended installations

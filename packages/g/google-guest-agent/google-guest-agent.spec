@@ -24,7 +24,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           google-guest-agent
-Version:        20250411.00
+Version:        20250508.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0

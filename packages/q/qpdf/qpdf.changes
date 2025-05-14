@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  3 15:57:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add qpdf-11.9.1-gcc15.patch from upstream to fix gcc-15 compile
+  time error
+
+-------------------------------------------------------------------
 Thu Jun 13 15:34:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.9.1:

@@ -31,6 +31,9 @@ BuildRequires:  sgmltool
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
+%if 0%{?suse_version} < 1550
+BuildRequires:  suse-module-tools
+%endif
 PreReq:         %fillup_prereq
 PreReq:         coreutils
 URL:            http://www.kernel.org/pub/linux/utils/raid/mdadm/
@@ -49,6 +52,8 @@ Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
 Patch1004:      1004-call-mdadm_env.sh-from-usr-libexec-mdadm.patch
 Patch1005:      1005-mdadm-enable-Intel-Alderlake-RSTe-configuration.patch
 Patch1006:      1006-imsm-Fix-RAID0-to-RAID10-migration.patch
+Patch1007:      1007-mdadm-allow-any-valid-minor-number-in-md-device-name.patch
+
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define _systemdshutdowndir %{_unitdir}/../system-shutdown
 

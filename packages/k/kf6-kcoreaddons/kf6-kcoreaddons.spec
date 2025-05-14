@@ -32,13 +32,13 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.13.0)
+# Full KF6 version (e.g. 6.14.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 # Last major and minor KF6 version (e.g. 6.0)
 %{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kf6-kcoreaddons
-Version:        6.13.0
+Version:        6.14.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -155,10 +155,17 @@ This package provides Python bindings for kf6-kcoreaddons.
 %dir %{_kf6_datadir}/jsonschema
 %{_kf6_datadir}/jsonschema/kpluginmetadata.schema.json
 %{_kf6_libdir}/libKF6CoreAddons.so
+%{_kf6_pkgconfigdir}/KF6CoreAddons.pc
+%if %{with kde_python_bindings}
+%dir %{_includedir}/PySide6/
+%{_includedir}/PySide6/KCoreAddons/
+%endif
+
 
 %if %{with kde_python_bindings}
 %files -n python3-kf6-kcoreaddons
 %{mypython_sitearch}/*.so
+%{_kf6_sharedir}/PySide6/typesystems/typesystem_kcoreaddons.xml
 %endif
 
 %files lang -f kf6-kcoreaddons.lang

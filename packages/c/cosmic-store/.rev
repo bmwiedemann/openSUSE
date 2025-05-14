@@ -87,4 +87,28 @@
     <comment></comment>
     <requestid>1250193</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a8b94e02b7418a395507d4f69a8dbea3</srcmd5>
+    <version>1.0.0~alpha7+0</version>
+    <time>1746721364</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor tarball, fixing bsc#1242678
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n - Update portuguese translations (#270)
+  * i18n(be): update Belarusian translation (#268)
+  * i18n(ro): Improve Romanian translation (#269)
+  * empty commit to force rebuild
+  * i18n (pt-BR) Update translations (#262)
+  * Update com.system76.CosmicStore.desktop PL metadata
+  * Update libcosmic
+  * i18n(zh-CN): update zh-CN translation
+  * fix(libcosmic): theme subscription
+  * Update flathub stats
+  * fix: Call `malloc_trim` only on glibc systems
+  * i18n(pl): minor fix
+  * i18n(sk): Update Slovak translations
+  * Update Hungarian translations (forwarded request 1275372 from rrahl0)</comment>
+    <requestid>1275373</requestid>
+  </revision>
 </revisionlist>

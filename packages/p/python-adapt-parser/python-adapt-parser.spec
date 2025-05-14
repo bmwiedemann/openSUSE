@@ -1,7 +1,7 @@
 #
 # spec file for package python-adapt-parser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ URL:            https://github.com/MycroftAI/adapt
 Source:         https://github.com/MycroftAI/adapt/archive/refs/tags/release/v%{version}.tar.gz
 # PATCH-FIX-OPENSUSE remove-python-six.patch
 Patch0:         remove-python-six.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +46,10 @@ a structured intent that can then be invoked programatically.
 sed -i -s "s/==/>=/" requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

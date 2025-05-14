@@ -17,7 +17,7 @@
 
 
 Name:           cosmic-randr
-Version:        1.0.0~alpha6+0
+Version:        1.0.0~alpha7+0
 Release:        0
 Summary:        Library and utility for displaying and configuring Wayland outputs
 License:        MPL-2.0

@@ -50,4 +50,21 @@
 - Update to version 5158:</comment>
     <requestid>1271007</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ccee6bc79ea54c3d0a1e9be8b88c3fc</srcmd5>
+    <version>5321</version>
+    <time>1746809520</time>
+    <user>anag_factory</user>
+    <comment>- Use source urls instead of obs_scm
+- Add libllava and libmtmd libraries
+- Update to version 5327:
+  * A new binary llama-mtmd-cli is introduced to replace llava-cli,
+    minicpmv-cli, gemma3-cli (#13012) and qwen2vl-cli (#13141),
+    libllava will be deprecated
+  * Full changes here:
+    https://github.com/ggml-org/llama.cpp/compare/b5158...b5321
+- Delete patch 0002-build-main-cli.patch: build system changed
+  upstream</comment>
+    <requestid>1276203</requestid>
+  </revision>
 </revisionlist>

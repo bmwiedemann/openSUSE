@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat May 10 07:35:36 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.4.0:
+  + What’s New:
+    - Added new backgrounds for both day and night weather
+      conditions.
+    - Introduced a welcome screen for first-time users.
+  + UI Improvements:
+    - Updated branding colors to align with the app’s theme.
+    - Reduced grid spacing and made forecast items and UI
+      components smaller for a cleaner look.
+  + Bug Fixes:
+    - Fixed typos and improved code formatting for better
+      maintainability.
+    - Resolved issues related to styling and default location
+      settings.
+  + Updated translations.
+- Add mousam-toggle-unit-settings-button.patch -- fix: use
+  Gtk.ToggleButton.toggled for setting unit; upstream commit
+  (gh#amit9838/mousam#179).
+
+-------------------------------------------------------------------
 Fri Aug  9 12:25:38 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable builds for Leap 15.X since python3 >= 3.8 is required.

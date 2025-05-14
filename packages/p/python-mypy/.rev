@@ -299,4 +299,15 @@ reveal_type(Context[MyBot]().bot)
     <comment></comment>
     <requestid>1240302</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>e07b21f8a84286db89aec18b61a389c8</srcmd5>
+    <version>1.14.1</version>
+    <time>1746542412</time>
+    <user>anag_factory</user>
+    <comment>- Add mypy-1.14.1-gcc15.patch from upstream to fix gcc15 compile
+  time error
+- Update vendored types_* to the appropriate versions.
+</comment>
+    <requestid>1274642</requestid>
+  </revision>
 </revisionlist>

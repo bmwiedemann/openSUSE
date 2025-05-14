@@ -5127,4 +5127,38 @@
   * ibm327x term: can do color and drawings but no cursor</comment>
     <requestid>1273680</requestid>
   </revision>
+  <revision rev="296" vrev="69">
+    <srcmd5>0446c58ac031573f2afe32255daa556d</srcmd5>
+    <version>unknown</version>
+    <time>1746542426</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250503
+  + update/correct some of the rv/xr strings, checked with tack -TD
+  + use ansi+rca in sclp -TD
+  + use vt220+pcedit in sclp (Werner Fink)
+  + move some building blocks from illumos to sun-color, based on
+    illumos source-history -TD
+  + improve use-clauses: ansi+cup, ansi+idl1, ansi+rca, ansi+rca2,
+    ansi+sgrso, ansi+sgrul -TD
+  + add ecma+standout, ecma+underline -TD
+  + add rv code for alacritty -TD
+  + add rv/xr codes for contour, ghostty, iterm2, kitty, konsole,
+    vscode, vte, wezterm -TD
+- Modify patch ncurses-5.9-ibm327x.dif
+  * Reflect upstream added changes
+- Port patch ncurses-6.4.dif</comment>
+    <requestid>1274364</requestid>
+  </revision>
+  <revision rev="297" vrev="70">
+    <srcmd5>b049a05047071c4d49869f524aaa2ea1</srcmd5>
+    <version>unknown</version>
+    <time>1747159521</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20250510
+  + add rv/xr codes for domterm, mintty, mlterm -TD
+  + add xr code for putty -TD
+  + update teraterm to 5.0 -TD
+  + add rlogin-color -TD</comment>
+    <requestid>1276730</requestid>
+  </revision>
 </revisionlist>

@@ -73,4 +73,15 @@ since we bumped libgo SONAME as well for 15</comment>
 - Add loongarch64 to quadmath_arch</comment>
     <requestid>1273075</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6f743db02f8ea21ee3590e70ed6fe3f8</srcmd5>
+    <version>15.1.1+git9642</version>
+    <time>1746808744</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 15 branch head, 15.1.1+git9642
+  * includes fix for libgfortran.so.5 ABI regression [gcc#120152]
+- Add libgcobol and libquadmath-devel dependence to the cobol frontend
+  package.</comment>
+    <requestid>1275527</requestid>
+  </revision>
 </revisionlist>

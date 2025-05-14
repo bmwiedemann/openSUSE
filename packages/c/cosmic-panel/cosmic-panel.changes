@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Apr 24 17:53:46 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix: ceil for scaled width and height
+  * Run `cargo clippy --fix`, then `cargo fmt`
+  * Store just `ToplevelInfo` instead of tuple
+  * Update uses of deprecated `Rectangle::from_loc_and_size`
+  * fix: scaling
+  * improv: less jank for popup resize
+  * Use `patch` to depend on only one version of cctk
+  * Update `cctk`, with latest toplevel/workspace protocols
+  * make egl_surface current before use
+  * fix: get before creating buffer
+  * update launch-pad
+  * fix: set context to current with surface
+  * improv: use damage
+  * fix: make egl context current with surfaces
+  * fix: handling for stacked autohide panel and static dock.
+  * fix: better handling of additional gaps and input zones
+  * fix: don't skip adding additional gap if not focused
+  * chore: update smithay
+  * refactor: autoswitch for popups that have grab
+  * feat: subsurface support
+
+-------------------------------------------------------------------
 Sat Feb 22 03:23:27 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

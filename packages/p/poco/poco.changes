@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 22 09:37:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.14.1. Too many changes since last package update.
+  Check https://github.com/pocoproject/poco/releases for the full
+  list.
+
+-------------------------------------------------------------------
 Wed Mar 19 05:52:36 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - poco-devel needs to require pcre2-devel, not pcre-devel

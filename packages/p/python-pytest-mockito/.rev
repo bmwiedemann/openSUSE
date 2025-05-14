@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>942813</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1d8bcde721a9fd6cdd1c6fc2b717d0fd</srcmd5>
+    <version>0.0.4</version>
+    <time>1746638366</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- Be more explicit about the metadata directory name.</comment>
+    <requestid>1275105</requestid>
+  </revision>
 </revisionlist>

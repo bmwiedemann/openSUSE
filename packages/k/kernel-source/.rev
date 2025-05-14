@@ -6984,4 +6984,20 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>6.14.4 &amp; other fixes; bugs: bsc#1012628 bsc#1240696 bsc#1241193 bsc#1241568</comment>
     <requestid>1272635</requestid>
   </revision>
+  <revision rev="779" vrev="1">
+    <srcmd5>e6d6c28ac9e5c069820b5a63acde023e</srcmd5>
+    <version>6.14.5</version>
+    <time>1746638076</time>
+    <user>dimstar_suse</user>
+    <comment>6.14.5 &amp; other fixes; bugs: bsc#1012628 bsc#1241193 bsc#1242044</comment>
+    <requestid>1274317</requestid>
+  </revision>
+  <revision rev="780" vrev="1">
+    <srcmd5>9e742c942dec4163781c98820198b479</srcmd5>
+    <version>6.14.6</version>
+    <time>1747166233</time>
+    <user>anag_factory</user>
+    <comment>6.14.6 &amp; cBPF and ITS fixes &amp; other fixes; bugs: bsc#1012628 bsc#1242006 bsc#1242778</comment>
+    <requestid>1277082</requestid>
+  </revision>
 </revisionlist>

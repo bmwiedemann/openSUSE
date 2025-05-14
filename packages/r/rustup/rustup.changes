@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 04:35:06 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1242617 - CVE-2025-3416 - openssl use after free
+
+-------------------------------------------------------------------
 Tue Mar 25 01:39:15 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.28.1~0:

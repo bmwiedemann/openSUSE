@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 12 14:20:49 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- remove clean section
+
+-------------------------------------------------------------------
+Mon May 12 14:11:53 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove %debugpackage
+
+-------------------------------------------------------------------
+Mon May  5 18:27:29 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 2.0.0 (boo#1241902)
+  * added support for an MCP server with the McpServerHandler module
+- Move to %autosetup
+
+-------------------------------------------------------------------
 Sun May 26 13:10:00 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore

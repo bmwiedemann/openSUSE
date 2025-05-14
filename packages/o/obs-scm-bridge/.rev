@@ -169,4 +169,15 @@
 - fix missing dependency to PyYAML</comment>
     <requestid>1254217</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>54c0c33c79cc96bc2b0e5b912d4d71bd</srcmd5>
+    <version>0.6.3</version>
+    <time>1747159707</time>
+    <user>anag_factory</user>
+    <comment>- 0.6.3
+  * Allow ssh:// scm urls as used by osc
+  * project mode: avoid unecessary changes in package meta url
+  * code cleanup</comment>
+    <requestid>1277144</requestid>
+  </revision>
 </revisionlist>

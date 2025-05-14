@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 19:56:59 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.8.1:
+  * Improvements to signing implementation for robustness and
+    usability
+  * Allow import of a backup (.tbk) file using the command line
+    "-i" switch.
+  * Can now synchronize QSO data from LotW
+  * multiple UI fixes and usability improvements
+
+-------------------------------------------------------------------
 Fri Feb 14 19:33:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Prepare package for openSUSE Tumbleweed inclusion

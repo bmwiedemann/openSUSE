@@ -50,6 +50,7 @@ Source7:        users.conf
 Source8:        lightdm.pam
 Source9:        lightdm-autologin.pam
 Source10:       lightdm.sysusers
+Source11:       lightdm.service
 # PATCH-FEATURE-OPENSUSE lightdm-sysconfig-support.patch gber@opensuse.org -- Adds support for reading configuration options from /etc/sysconfig/displaymanager and /etc/sysconfig/windowmanager
 Patch0:         lightdm-sysconfig-support.patch
 # PATCH-FEATURE-OPENSUSE lightdm-xauthlocalhostname-support.patch boo#796230 gber@opensuse.org -- Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the session in case the hostname changes
@@ -282,10 +283,12 @@ sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.
 %endif
 
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/lightdm.conf
+install -Dm0644 %{SOURCE11} %{buildroot}%{_unitdir}/lightdm.service
 
 %find_lang %{name} %{?no_lang_C}
 
 %pre -f lightdm.pre
+%service_add_pre %{name}.service
 for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
   test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
 done
@@ -297,6 +300,7 @@ for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
 done
 
 %post
+%service_add_post %{name}.service
 # Special trick: migrate users from lxdm to lightdm
 # see https://lists.opensuse.org/opensuse-factory/2016-07/msg00417.html
 . %{_sysconfdir}/sysconfig/displaymanager
@@ -305,8 +309,12 @@ if [ -z "$DISPLAYMANAGER" -o "$DISPLAYMANAGER" = "lxdm" ] ; then
 fi
 %{_sbindir}/update-alternatives --install %{_prefix}/lib/X11/displaymanagers/default-displaymanager \
   default-displaymanager %{_prefix}/lib/X11/displaymanagers/lightdm 15
+  
+%preun
+%service_del_preun %{name}.service
 
 %postun
+%service_del_postun_without_restart %{name}.service
 if [ "$1" -eq 0 ]; then
     . %{_sysconfdir}/sysconfig/displaymanager
     if [ "$DISPLAYMANAGER" == "lightdm" ] ; then
@@ -371,6 +379,7 @@ fi
 %{_mandir}/man1/lightdm.1%{?ext_man}
 %{_mandir}/man1/dm-tool.1%{?ext_man}
 %{_sysusersdir}/lightdm.conf
+%{_unitdir}/lightdm.service
 
 %files lang -f %{name}.lang
 

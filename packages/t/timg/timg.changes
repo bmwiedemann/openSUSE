@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 12 18:20:27 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 1.6.2
+  * Various terminals with Sixel support have different subtle and
+    incompatible ways how they treat cursor placement and deal with
+    newlines;
+  * More ways to detect terminals and debug the process;
+  * no double-used image ID in animations followed by a static
+    image in kitty terminals.
+- Add qoi-devel BuildRequires: to support QOI format
+
+-------------------------------------------------------------------
 Mon Jul 29 18:36:39 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - add conditional build for leap with force gcc version

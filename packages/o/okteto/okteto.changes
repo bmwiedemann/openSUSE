@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed May 07 10:43:11 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.0:
+  * New Feature
+    - Option 2: add spinner forchecking services by @jLopezbarb in
+      #4705
+  * Bug Fix
+    - fix: start spinner when buidlkit fails to connect by
+      @jLopezbarb in #4693
+    - Add context command initialization in restart command by
+      @jLopezbarb in #4692
+    - PROD-343: Change when the divert deploy logic is called to
+      avoid problems when endpoints are defined in the manifest by
+      @ifbyol in #4701
+  * Dependencies
+    - build(deps): update Helm, Syncthing, and Okteto remote
+      versions (#4706)
+    - build(deps): bump golang.org/x/net from 0.36.0 to 0.38.0
+      (#4703)
+
+-------------------------------------------------------------------
 Tue Apr 01 12:12:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.0:

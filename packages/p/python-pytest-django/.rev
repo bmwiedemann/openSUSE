@@ -187,4 +187,41 @@ See request 531880 : https://build.opensuse.org/request/show/531880</comment>
 - Use sle15_python_module_pythons</comment>
     <requestid>1095248</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>5bd0aecc4903bfe550365c1d7b89dca0</srcmd5>
+    <version>4.11.1</version>
+    <time>1747159927</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.11.1:
+  * Compatibility
+    + Added official support for Django 5.2.
+    + Added official support for Python 3.13.
+    + Added official support for Django 5.1.
+    + Dropped support for Django 3.2 and 4.1.
+    + Official Django 5.0 support.
+    + Official Python 3.12 support.
+    + Drop support for Python version 3.5, 3.6 &amp; 3.7.
+    + Drop official support for Django 4.0 and 2.2
+    + Drop support for pytest &lt; 7.
+  * Improvements
+    + Added using argument to django_assert_num_queries and
+      django_assert_max_num_queries to easily specify the database alias to
+      use.
+    + Respect the string_if_invalid template setting when
+      --fail-on-template-vars is active and
+      pytest.mark.ignore_template_errors is used.
+    + Avoid running database migrations for django.test.SimpleTestCase
+      unittest tests.
+    + Added pytest_django.asserts.assertMessages() to mimic the behaviour of
+      the django.contrib.messages.test.MessagesTestMixin.assertMessages method
+      for Django versions &gt;= 5.0.
+    + The Django test tags from the previous release now works on any
+      django.test.SimpleTestCase.
+    + Add support for setting available_apps in the pytest.mark.django_db
+      marker.
+    + Show Django's version in the pytest django report header.
+    + Add precise pytest_django.asserts.assertQuerySetEqual typing.
+  * Bugfixes</comment>
+    <requestid>1276724</requestid>
+  </revision>
 </revisionlist>

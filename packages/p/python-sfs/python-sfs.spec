@@ -1,7 +1,7 @@
 #
 # spec file for package python-sfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/s/sfs/sfs-%{versi
 Patch:          numpy125.patch
 # PATCH-FIX-UPSTREAM https://github.com/sfstoolbox/sfs-python/pull/179 Update to changes in matplotlib 3.9.0
 Patch:          mpl39.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -52,10 +54,10 @@ near-field compensated higher order Ambisonics (NFC-HOA).
 %autosetup -p1 -n sfs-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +67,6 @@ near-field compensated higher order Ambisonics (NFC-HOA).
 %doc NEWS.rst README.rst
 %license LICENSE
 %{python_sitelib}/sfs
-%{python_sitelib}/sfs-%{version}*-info
+%{python_sitelib}/sfs-%{version}.dist-info
 
 %changelog

@@ -17,7 +17,7 @@
 
 
 Name:           upplay
-Version:        1.9.1
+Version:        1.9.6
 Release:        0
 Summary:        UPnP and OpenHome audio Control Point
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://www.lesbonscomptes.com/upplay/
 Source0:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz
 Source1:        https://www.lesbonscomptes.com/upplay/downloads/upplay-%{version}.tar.gz.asc
 Source2:        https://www.lesbonscomptes.com/pages/jf-at-dockes.org.pub#/%{name}.keyring
+Patch:          disable-mpris.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -33,7 +34,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5WebEngine)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libupnpp) >= 1.0.0
-BuildRequires:  pkgconfig(mpris-qt5)
 
 %description
 upplay is a Qt5-based audio Control Point for browsing and playing music

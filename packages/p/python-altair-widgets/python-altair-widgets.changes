@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 01:42:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Tue Mar  5 18:15:17 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Skip python39: no longer supported since ipython 8.19

@@ -325,4 +325,12 @@
     <comment>fix build (forwarded request 1272779 from AndreasStieger)</comment>
     <requestid>1273047</requestid>
   </revision>
+  <revision rev="43" vrev="4">
+    <srcmd5>20b80705c770c6acb70f20ae65f1e303</srcmd5>
+    <version>1.9.5</version>
+    <time>1747159545</time>
+    <user>anag_factory</user>
+    <comment>- add README.openSUSE for boo#1221085, boo#1243036</comment>
+    <requestid>1276944</requestid>
+  </revision>
 </revisionlist>

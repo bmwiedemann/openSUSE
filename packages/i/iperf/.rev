@@ -427,4 +427,12 @@ from the original iperf. These include, for example, a zero-copy mode and</comme
     pacing above 32G.  Not yet tested on big-endian systems</comment>
     <requestid>1240619</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>6038a73611b5dd1443165f62297bca13</srcmd5>
+    <version>3.18</version>
+    <time>1746638477</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1275238</requestid>
+  </revision>
 </revisionlist>

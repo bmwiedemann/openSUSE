@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 12 11:18:09 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 3.3+git20250512.b6e4e84:
+  * Release version 3.3
+  * Fix handling of temporarily disabled reboots
+
+-------------------------------------------------------------------
 Mon Mar 17 10:32:03 UTC 2025 - kukuk@suse.com
 
 - Update to version 3.2+git20250317.27192cc:

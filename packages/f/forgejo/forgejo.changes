@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon May  5 20:23:37 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 11.0.1:
+  * If LFS is enabled on a Forgejo instance with [server].LFS_START_SERVER =
+    true, it was possible for a registered user to upload LFS files to a
+    repository to which they only had read access.
+  * A user account with 2fa (two factor authentication) enrolled with a
+    security key was not enforced when using an external account
+  * fix: display the list of tasks in the runner edit page
+  * fix(ui): use gap in switch items
+  * fix(ui/pr): use eye icon for reviews
+  * fix(ui): rescope menu height patch to overflow menu
+  * fix(ui): show commit icon in branch dropdown button when viewing a commit
+  * i18n: backport of translation updates
+  * fix(i18n): prevent incorrect logging on strings missing in JSON locales
+  * chore: replace github.com/go-testfixtures/testfixtures
+  * fix: use linguist-generated for language stats
+  * chore: tune down remote user promotion debug message shown as error
+  * fix: set default restricted for OAuth2 user
+  * chore: merge tests.AddFixtures and unittest.OverrideFixtures
+  * fix(ui): make pagination labels always visible to screenreader
+  * fix: delay-write trace.dat for forgejo diagnosis
+  * Update module github.com/mattn/go-sqlite3 to v1.14.28 (v11.0/forgejo)
+
+-------------------------------------------------------------------
 Thu Apr 17 16:00:14 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 11.0.0:

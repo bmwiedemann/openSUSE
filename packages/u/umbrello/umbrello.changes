@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:53 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Fixup for commit 4f725b047.
+  * Fix showing white diagram background on KDE desktop setup with dark theme (kde#502898)
+
+-------------------------------------------------------------------
 Mon Apr 14 07:07:23 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

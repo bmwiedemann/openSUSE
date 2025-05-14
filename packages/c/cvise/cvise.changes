@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May  2 12:27:30 UTC 2025 - Filip Kastl <filip.kastl@suse.com>
+
+- Update to version 2.11.0+git.20250403.0875824
+  * Bump LLVM version in CI (#170)
+  * Trim leading/trailing spaces after topformflat (#165)
+  * Fix hang when buggy (unaltered) OK comes after STOP (#162)
+  * Add tests for LinesPass (#164)
+  * Add basic tests for TestManager (#160)
+  * Fix unclosed file in is_readable_file (#161)
+  * Delete assert of exitcode in TestManager (#158)
+  * Port to latest LLVM 20 (drop LLVM 14 and older) (#154)
+
+-------------------------------------------------------------------
 Sun Nov 10 10:01:10 UTC 2024 - martin.liska@hey.com
 
 - Update to version 2.11.0+git.20241110.d89a535:

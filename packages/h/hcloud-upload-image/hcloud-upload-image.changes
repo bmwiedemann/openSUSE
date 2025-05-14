@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sat May 10 14:46:53 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * Highlights
+    - Smaller Snapshots
+      The root disk is now zeroed before the intend image is
+      uploaded. This makes sure, that no bytes from the original
+      image are stored in the compressed snapshot. Previously a
+      very small uploaded image could not be smaller than ~0.42Gi,
+      as that was the (compressed) size of image that the server
+      was started with. Starting a server from a custom image is
+      slower the larger the image is, so by having smaller images
+      the servers can start faster.
+      As one example: The test Talos Linux 1.10.1 x86 image was
+      0.42Gi before, and now only takes up 0.2Gi.
+      This only benefits images that are smaller than 0.42Gi
+      compressed.
+  * Features
+    - smaller snapshots by zeroing disk first (#101) (fdfb284),
+      closes #96
+  * Bug Fixes
+    - upload from local image generates broken command (#98)
+      (420dcf9), closes #97
+
+-------------------------------------------------------------------
+Sat May 10 09:02:35 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * Bug Fixes
+    - timeout while waiting for SSH to become available (#92)
+      (e490b9a)
+  * Dependencies
+    - chore(deps): update module
+      github.com/apricote/hcloud-upload-image/hcloudimages to
+      v1.0.1 (#95)
+    - chore(deps): update golangci/golangci-lint-action action to
+      v8 (#86)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.1.6 (#85)
+    - chore(deps): update dependency rust-lang/mdbook to v0.4.49
+      (#87)
+    - chore(deps): update dependency go to v1.24.3 (#91)
+
+-------------------------------------------------------------------
+Sat May 10 08:49:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0:
+  * Highlights
+    - Upload qcow2 images
+      qcow2 images with a max size of 960 MB can now be uploaded.
+        hcloud-upload-image upload --format=qcow2
+        --architecture=x86
+        --image-url=https://download.opensuse.org/tumbleweed/appliances/openSUSE-MicroOS.x86_64-OpenStack-Cloud.qcow2
+      These will be converted to a raw disk image on the temporary
+      server with qemu-img dd.
+    - Container image
+      There is now a pre-built container image available at
+      ghcr.io/apricote/hcloud-upload-image that you can use to run
+      the command instead of installing it.
+    - Docs Website
+      You can now enjoy the same old docs in a new dress published
+      to a website: https://apricote.github.io/hcloud-upload-image/
+  * Features
+    - deps: require Go 1.23 (#70) (f3fcb62)
+    - docs website (#80) (d144b85)
+    - publish container image (#82) (91df729)
+    - upload qcow2 images (#69) (ac3e9dd)
+  * Dependencies
+    - chore(deps): update module
+      github.com/apricote/hcloud-upload-image/hcloudimages to
+      v1.0.0 (#84)
+    - chore(deps): update docker/login-action digest to 6d4b68b
+      (#83)
+    - chore(deps): update dependency rust-lang/mdbook to v0.4.48
+      (#81)
+    - chore(deps): update module golang.org/x/crypto to v0.37.0
+      (#72)
+    - chore(renovate): make sure to bump dependencies in lib too
+      (#74)
+    - chore(deps): update dependency golangci/golangci-lint to v2
+      (#66)
+    - chore(config): migrate renovate config (#73)
+    - chore(deps): update module golang.org/x/net to v0.38.0
+      [security] (#63)
+    - chore(deps): update module
+      github.com/hetznercloud/hcloud-go/v2 to v2.21.0 (#62)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v1.64.8 (#64)
+    - chore(deps): update module github.com/spf13/cobra to v1.9.1
+      (#65)
+    - feat(deps): require Go 1.23 (#70)
+
+-------------------------------------------------------------------
 Sun Dec 08 08:14:27 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.3.1:

@@ -137,4 +137,16 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272742</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9ec6b39c3d1e72080af0e634ad99b491</srcmd5>
+    <version>20250502</version>
+    <time>1747061146</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some ASUS laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops</comment>
+    <requestid>1276108</requestid>
+  </revision>
 </revisionlist>

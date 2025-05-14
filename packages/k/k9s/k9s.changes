@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon May 12 06:27:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.6:
+  * Resolved Issues
+    - #3334 Watcher failed for events.k8s.io/v1/events -- expecting
+      a meta table but got *unstructured.Unstructure
+  * Dependencies
+    - chore(deps): bump golangci/golangci-lint-action from 7.0.0 to
+      8.0.0 (#3325)
+
+-------------------------------------------------------------------
+Thu May 08 08:23:05 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.50.5:
+  * Resolved Issues
+    - Pod overview shows wrong number of running containers with
+      sidecar init-container
+    - [0.50.4] k9s crashes when attempting to load logs
+    - Port Forward deleted without UI notification when forwarding
+      to wrong port
+    - [0.50.4] k9s crashes when filtering based on labels
+    - k9s doesn't honor the --namespace parameter
+  * Dependencies
+    - chore(deps): bump github.com/anchore/grype from 0.91.0 to
+      0.91.2 (#3315)
+    - chore(deps): bump github.com/anchore/syft from 1.22.0 to
+      1.23.1 (#3316)
+    - chore(deps): bump k8s.io/apimachinery from 0.32.3 to 0.33.0
+      (#3317)
+
+-------------------------------------------------------------------
 Sun Apr 20 06:35:04 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.50.4:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  9 05:12:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Wed May  7 10:30:57 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Wed Mar  1 08:51:54 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.2.1, no release notes found

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri May  9 16:16:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.1.5:
+  * /write command no longer includes deprecated /metamessage
+    commands in the generated script
+  * Fixed worklist purging for units that cannot be updated
+  * Tex AI fixes towards consulting its own copy of map where it
+    should
+  * Better consider action enabler imposed restrictions on
+    selecting rampage targets
+  * Fixed corner road graphics for RoadAllCombined tile types
+  * qt: Fixed crash on fatal tileset error display when client is
+    fully set up
+  * Documentation and translations updates
+  * developer visible fixes
+
+-------------------------------------------------------------------
 Sun Feb  9 19:01:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 3.1.4:

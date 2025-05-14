@@ -1,7 +1,7 @@
 #
 # spec file for package python-nodeenv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Nodejs virtual environment builder
 License:        BSD-3-Clause
 URL:            https://github.com/ekalinin/nodeenv
 Source:         https://github.com/ekalinin/nodeenv/archive/%{version}.tar.gz#/nodeenv-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -41,10 +43,10 @@ Node.js virtual environment builder.
 %autosetup -p1 -n nodeenv-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/nodeenv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -62,6 +64,8 @@ Node.js virtual environment builder.
 %doc CHANGES README.rst
 %license LICENSE
 %python_alternative %{_bindir}/nodeenv
-%{python_sitelib}/*
+%{python_sitelib}/nodeenv.py
+%pycache_only %{python_sitelib}/__pycache__/nodeenv.*.pyc
+%{python_sitelib}/nodeenv-%{version}.dist-info
 
 %changelog

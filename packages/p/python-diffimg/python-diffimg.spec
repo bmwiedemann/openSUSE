@@ -1,7 +1,7 @@
 #
 # spec file for package python-diffimg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,11 @@ URL:            https://github.com/nicolashahn/python-image-diff
 Source0:        https://files.pythonhosted.org/packages/source/d/diffimg/diffimg-%{version}.tar.gz
 # License not bundled with tarball; download from github directly
 Source1:        https://raw.githubusercontent.com/nicolashahn/diffimg/master/LICENSE.txt
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 4.3
 BuildArch:      noarch
 %python_subpackages
@@ -42,10 +44,10 @@ cp %{S:1} ./
 sed -Ei "1{/^#!\/usr\/bin\/env python/d}" diffimg/__main__.py diffimg/test.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 # Missing benchmark images needed for tests
@@ -55,7 +57,7 @@ sed -Ei "1{/^#!\/usr\/bin\/env python/d}" diffimg/__main__.py diffimg/test.py
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}-py%{python_version}.egg-info/
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

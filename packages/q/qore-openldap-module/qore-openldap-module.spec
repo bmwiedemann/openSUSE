@@ -1,7 +1,7 @@
 #
 # spec file for package qore-openldap-module
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,12 +58,13 @@ BuildRequires:  openldap-devel
 BuildRequires:  cmake >= 3.5
 BuildRequires:  doxygen
 BuildRequires:  qore >= 1.12.4
+BuildRequires:  (qore-stdlib if qore >= 2.0)
+
 
 %description
 This package contains the openldap module for the Qore Programming Language.
 
 This module exposes functionality from the openldap library as a Qore API.
-
 
 %package doc
 Summary:        Documentation and examples for the Qore openldap module
@@ -78,9 +79,12 @@ openldap module.
 %doc docs/openldap test
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export CXXFLAGS="%{?optflags}"
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} -DCMAKE_BUILD_TYPE=RELWITHDEBINFO -DCMAKE_SKIP_RPATH=1 -DCMAKE_SKIP_INSTALL_RPATH=1 -DCMAKE_SKIP_BUILD_RPATH=1 -DCMAKE_PREFIX_PATH=${_prefix}/lib64/cmake/Qore .
 make %{?_smp_mflags}
@@ -90,8 +94,7 @@ sed -i 's/#!\/usr\/bin\/env qore/#!\/usr\/bin\/qore/' test/q*
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+
 
 %files
 %defattr(-,root,root,-)

@@ -17,12 +17,12 @@
 
 
 Name:           gotosocial
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
 URL:            https://docs.gotosocial.org/en/latest/
-Source0:        https://github.com/superseriousbusiness/%{name}/releases/download/v%{version}/%{name}-%{version}-source-code.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://codeberg.org/superseriousbusiness/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Generated with ./vendor_yarn.sh %{version}
 Source1:        %{name}-%{version}-vendor.tar.xz
 Source2:        vendor_yarn.sh
@@ -47,7 +47,7 @@ With GoToSocial, you can keep in touch with your friends, post, read, and share
 images and articles. All without being tracked or advertised to!
 
 %prep
-%autosetup -p1 -a1 -c -n %{name}-%{version}
+%autosetup -p1 -a1 -n %{name}
 
 %build
 GO_BUILDTAGS="${GO_BUILDTAGS-} netgo osusergo static_build kvformat timetzdata"

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:22 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * systemclipboard: Restore support for wlr-data-control separately
+  * systemclipboard/WaylandClipboard: Port to ext-data-control
+  * Update version to 6.14.0
+  * systemclipboard: use QFile to write data to file descriptor
+  * Remove code for no longer supported Qt versions
+
+-------------------------------------------------------------------
 Sat Apr  5 12:33:12 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

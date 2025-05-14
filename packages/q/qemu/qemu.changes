@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu May 08 13:24:02 UTC 2025 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest stable release (10.0.0)
+  Full changelog here:
+   https://wiki.qemu.org/ChangeLog/10.0
+  Highlights include:
+  * block: virtio-scsi multiqueue support for using different I/O threads
+    to process requests for each queue (similar to the virtio-blk multiqueue
+    support that was added in QEMU 9.2)
+  * VFIO: improved support for IGD passthrough on all Intel Gen 11/12
+    devices
+  * Documentation: significant improvement/overhaul of documentation for
+    QEMU Machine Protocol to make it clearer and more organized, including
+    all commands/events/types now being cross-reference-able via click-able
+    links in generated documentation
+  * ARM: emulation support for EL2 physical and virtual timers
+  * ARM: emulation support for FEAT_AFP, FEAT_RPRES, and FEAT_XS
+    architecture features
+  * ARM: new board models for NPCM8445 Evaluation and i.MX 8M Plus EVK
+    boards
+  * HPPA: new SeaBIOS-hppa version 18 with lots of fixes and enhancements
+  * HPPA: translation speed and virtual CPU reset improvements
+  * HPPA: emulation support for Diva GSP BMC boards
+  * LoongArch: support for CPU hotplug, paravirtual IPIs, KVM steal time
+    accounting, and virtual 'extioi' interrupt routing.
+  * RISC-V: ISA/extension support for riscv-iommu-sys devices, 'svukte',
+    'ssstateen', 'smrnmi', 'smdbltrp'/'ssdbltrp', 'supm'/'sspm', and
+    IOMMU translation tags
+  * RISC-V: emulation support for Ascalon and RV64 Xiangshan Nanhu CPUs,
+    and Microblaze V boards.
+  * s390x: add CPU model support for the generation 17 mainframe CPU
+  * s930x: add support for virtio-mem and for bypassing IOMMU to improve
+    PCI device performance
+  * x86: CPU model support for Clearwater Forest and Sierra Forest v2
+  * x86: faster emulation of string instructions
+  * and lots more...
+  Have a look at the list of deprecated features too, especially if you're
+  still interested in using 32bits systems as hosts:
+  * https://qemu-project.gitlab.io/qemu/about/deprecated.html
+- Post-update improvements and fixes:
+  * [openSUSE]: fix SLOF not building with gcc15 (bsc#1241473)
+  * [openSUSE][RPM]: *.spec: improve the %check phases
+  * docs: Don't define duplicate label in qemu-block-drivers.rst.inc
+  * [openSUSE] tests: workaround expected failures of func-x86_64-mem_addr_space
+  * [openSUSE]: tests/functional increase the timeout of func_hppa_seabios
+  * [openSUSE] tests/unit increase the timeouts for tlssession tests
+
+-------------------------------------------------------------------
 Fri Apr 11 18:28:37 UTC 2025 - dfaggioli@suse.com
 
 - all glib2 versions are recent enough to use pcre2:

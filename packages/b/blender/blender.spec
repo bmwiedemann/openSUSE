@@ -27,7 +27,7 @@
 
 %bcond_with blender_ua
 
-%ifarch x86_64
+%ifarch x86_64 aarch64
 %bcond_without embree
 %bcond_without oidn
 %bcond_without oneapi_support
@@ -138,7 +138,9 @@ BuildRequires:  cmake(Clang)
 BuildRequires:  cmake(LLVM)
 BuildRequires:  cmake(OpenColorIO) >= 2
 BuildRequires:  cmake(OpenEXR)
+%if %{with oidn}
 BuildRequires:  cmake(OpenImageDenoise)
+%endif
 BuildRequires:  cmake(TBB)
 BuildRequires:  cmake(Tiff)
 BuildRequires:  cmake(pugixml)

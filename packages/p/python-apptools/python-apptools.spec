@@ -1,7 +1,7 @@
 #
 # spec file for package python-apptools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,10 @@ License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-3.0-only
 URL:            https://github.com/enthought/apptools
 Source:         https://files.pythonhosted.org/packages/source/a/apptools/apptools-%{version}.tar.gz
 BuildRequires:  %{python_module configobj}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-configobj
@@ -63,12 +65,12 @@ Part of the Enthought Tool Suite (ETS).
 %autosetup -p1 -n apptools-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 # Remove duplicates now so we can let rpm install it later
 %fdupes examples/
 
 %install
-%python_install
+%pyproject_install
 %{python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 %fdupes %{buildroot}%{$python_sitelib}
@@ -89,6 +91,6 @@ sleep 10
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/apptools/
-%{python_sitelib}/apptools-%{version}-py*.egg-info
+%{python_sitelib}/apptools-%{version}.dist-info
 
 %changelog

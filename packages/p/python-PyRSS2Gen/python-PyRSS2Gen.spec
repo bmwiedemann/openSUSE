@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyRSS2Gen
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-PyRSS2Gen
 Version:        1.1
@@ -26,12 +25,13 @@ License:        BSD-3-Clause
 URL:            http://dalkescientific.com/Python/PyRSS2Gen.html
 Source:         http://dalkescientific.com/Python/PyRSS2Gen-%{version}.tar.gz
 BuildRequires:  %{python_module feedparser}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       %{oldpython}-pyrss2gen = 1.1
-#NOTE(saschpe): Change back to "<" after next version update:
-Obsoletes:      %{oldpython}-pyrss2gen <= 1.1
+Obsoletes:      %{oldpython}-pyrss2gen < 1.1
 BuildArch:      noarch
 %python_subpackages
 
@@ -42,10 +42,10 @@ A Python library for generating RSS 2.0 feeds.
 %setup -q -n PyRSS2Gen-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +55,8 @@ A Python library for generating RSS 2.0 feeds.
 %files %{python_files}
 %doc README
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/PyRSS2Gen.py
+%pycache_only %{python_sitelib}/__pycache__/PyRSS2Gen*
+%{python_sitelib}/[Pp]y[Rr][Ss][Ss]2[Gg]en-%{version}*-info
 
 %changelog

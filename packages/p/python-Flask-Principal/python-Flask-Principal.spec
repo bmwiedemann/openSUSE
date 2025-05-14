@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Principal
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,6 @@ Release:        0
 License:        MIT
 Summary:        Identity management for flask
 URL:            http://packages.python.org/Flask-Principal/
-Group:          Development/Languages/Python
 # Pypi sources don't include tests
 #Source:         https://files.pythonhosted.org/packages/source/F/Flask-Principal/Flask-Principal-%%{version}.tar.gz
 Source:         https://github.com/mattupstate/flask-principal/archive/%{version}.tar.gz
@@ -31,6 +30,7 @@ Source99:       https://raw.githubusercontent.com/mattupstate/flask-principal/ma
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Test requirements
@@ -53,10 +53,10 @@ Authentication providers and User information providers.
 cp %{SOURCE99} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -65,6 +65,8 @@ cp %{SOURCE99} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/flask_principal.py
+%pycache_only %{python_sitelib}/__pycache__/flask_principal.*.pyc
+%{python_sitelib}/[Ff]lask[_-][Pp]rincipal-%{version}.dist-info
 
 %changelog

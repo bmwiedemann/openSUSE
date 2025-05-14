@@ -1,0 +1,152 @@
+From f27f5e46a92c0ee246a0563cc4b034beec7360d5 Mon Sep 17 00:00:00 2001
+From: Max Belanger <max@dropbox.com>
+Date: Wed, 8 May 2024 16:27:20 -0700
+Subject: [PATCH] remove `six`, drop support for python 2
+
+---
+ dropbox/dropbox_client.py |  5 ++---
+ dropbox/oauth.py          | 25 +++++++------------------
+ example/updown.py         |  3 +--
+ requirements.txt          |  1 -
+ setup.py                  |  1 -
+ 5 files changed, 10 insertions(+), 25 deletions(-)
+
+Index: dropbox-sdk-python-12.0.2/dropbox/dropbox_client.py
+===================================================================
+--- dropbox-sdk-python-12.0.2.orig/dropbox/dropbox_client.py
++++ dropbox-sdk-python-12.0.2/dropbox/dropbox_client.py
+@@ -16,7 +16,6 @@ import random
+ import time
+ 
+ import requests
+-import six
+ 
+ from datetime import datetime, timedelta
+ from dropbox.auth import (
+@@ -75,7 +74,7 @@ class RouteResult(object):
+         :param requests.models.Response http_resp: A raw HTTP response. It will
+             be used to stream the binary-body payload of the response.
+         """
+-        assert isinstance(obj_result, six.string_types), \
++        assert isinstance(obj_result, str), \
+             'obj_result: expected string, got %r' % type(obj_result)
+         if http_resp is not None:
+             assert isinstance(http_resp, requests.models.Response), \
+@@ -530,7 +529,7 @@ class _DropboxTransport(object):
+         if host not in self._host_map:
+             raise ValueError('Unknown value for host: %r' % host)
+ 
+-        if not isinstance(request_binary, (six.binary_type, type(None))):
++        if not isinstance(request_binary, (bytes, type(None))):
+             # Disallow streams and file-like objects even though the underlying
+             # requests library supports them. This is to prevent incorrect
+             # behavior when a non-rewindable stream is read from, but the
+Index: dropbox-sdk-python-12.0.2/dropbox/oauth.py
+===================================================================
+--- dropbox-sdk-python-12.0.2.orig/dropbox/oauth.py
++++ dropbox-sdk-python-12.0.2/dropbox/oauth.py
+@@ -14,7 +14,6 @@ __all__ = [
+ 
+ import base64
+ import os
+-import six
+ import urllib
+ import re
+ from datetime import datetime, timedelta
+@@ -26,13 +25,6 @@ from .session import (
+     DEFAULT_TIMEOUT,
+ )
+ 
+-if six.PY3:
+-    url_path_quote = urllib.parse.quote  # pylint: disable=no-member,useless-suppression
+-    url_encode = urllib.parse.urlencode  # pylint: disable=no-member,useless-suppression
+-else:
+-    url_path_quote = urllib.quote  # pylint: disable=no-member,useless-suppression
+-    url_encode = urllib.urlencode  # pylint: disable=no-member,useless-suppression
+-
+ TOKEN_ACCESS_TYPES = ['offline', 'online', 'legacy']
+ INCLUDE_GRANTED_SCOPES_TYPES = ['user', 'team']
+ PKCE_VERIFIER_LENGTH = 128
+@@ -233,10 +225,7 @@ class DropboxOAuth2FlowBase(object):
+         :return: The path and parameters components of an API URL.
+         :rtype: str
+         """
+-        if six.PY2 and isinstance(target, six.text_type):
+-            target = target.encode('utf8')
+-
+-        target_path = url_path_quote(target)
++        target_path = urllib.parse.quote(target)
+ 
+         params = params or {}
+         params = params.copy()
+@@ -606,20 +595,20 @@ def _params_to_urlencoded(params):
+     Returns a application/x-www-form-urlencoded :class:`str` representing the key/value pairs in
+     :attr:`params`.
+ 
+-    Keys are values are ``str()``'d before calling :meth:`urllib.urlencode`, with the exception of
+-    unicode objects which are utf8-encoded.
++    Keys and values are coerced via ``str()``'d and encoded via UTF-8 before calling
++    :meth:`urllib.parse.urlencode`.
+     """
+     def encode(o):
+-        if isinstance(o, six.binary_type):
++        if isinstance(o, bytes):
+             return o
+         else:
+-            if isinstance(o, six.text_type):
++            if isinstance(o, str):
+                 return o.encode('utf-8')
+             else:
+                 return str(o).encode('utf-8')
+ 
+-    utf8_params = {encode(k): encode(v) for k, v in six.iteritems(params)}
+-    return url_encode(utf8_params)
++    utf8_params = {encode(k): encode(v) for k, v in params.items()}
++    return urllib.parse.urlencode(utf8_params)
+ 
+ def _generate_pkce_code_verifier():
+     code_verifier = base64.urlsafe_b64encode(os.urandom(PKCE_VERIFIER_LENGTH)).decode('utf-8')
+Index: dropbox-sdk-python-12.0.2/example/updown.py
+===================================================================
+--- dropbox-sdk-python-12.0.2.orig/example/updown.py
++++ dropbox-sdk-python-12.0.2/example/updown.py
+@@ -9,7 +9,6 @@ import argparse
+ import contextlib
+ import datetime
+ import os
+-import six
+ import sys
+ import time
+ import unicodedata
+@@ -74,7 +73,7 @@ def main():
+         # First do all the files.
+         for name in files:
+             fullname = os.path.join(dn, name)
+-            if not isinstance(name, six.text_type):
++            if not isinstance(name, str):
+                 name = name.decode('utf-8')
+             nname = unicodedata.normalize('NFC', name)
+             if name.startswith('.'):
+Index: dropbox-sdk-python-12.0.2/requirements.txt
+===================================================================
+--- dropbox-sdk-python-12.0.2.orig/requirements.txt
++++ dropbox-sdk-python-12.0.2/requirements.txt
+@@ -1,6 +1,5 @@
+ # Dependencies required for installation (keep in sync with setup.py)
+ requests>=2.16.2
+-six >= 1.12.0
+ stone>=2,<3.3.3
+ # Other dependencies for development
+ ply
+Index: dropbox-sdk-python-12.0.2/setup.py
+===================================================================
+--- dropbox-sdk-python-12.0.2.orig/setup.py
++++ dropbox-sdk-python-12.0.2/setup.py
+@@ -26,7 +26,6 @@ version = eval(line.split('=', 1)[1].str
+ 
+ install_reqs = [
+     'requests>=2.16.2',
+-    'six >= 1.12.0',
+     'stone>=2,<3.3.3',
+ ]
+ 

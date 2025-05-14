@@ -1,7 +1,7 @@
 #
 # spec file for package python-ExifRead
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ExifRead
 Version:        3.0.0
 Release:        0
@@ -25,11 +24,13 @@ License:        BSD-3-Clause
 URL:            https://pypi.python.org/pypi/ExifRead/%{version}
 Source:         https://files.pythonhosted.org/packages/source/E/ExifRead/ExifRead-%{version}.tar.gz
 Source1:        https://github.com/ianare/exif-samples/archive/master.tar.gz#/exif-samples-master.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,10 +41,10 @@ A Python module to extract Exif metadata from TIFF and JPEG files.
 %setup -q -n ExifRead-%{version} -a1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/EXIF.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -63,7 +64,7 @@ find exif-samples-master -name "*.tiff" -o -name "*.jpg" -exec $python %{buildro
 %license LICENSE.txt
 %doc README.rst ChangeLog.rst
 %{python_sitelib}/exifread/
-%{python_sitelib}/ExifRead-%{version}-py*.egg-info
+%{python_sitelib}/[Ee]xif[Rr]ead-%{version}*info
 %python_alternative %{_bindir}/EXIF.py
 
 %changelog

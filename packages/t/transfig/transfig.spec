@@ -24,11 +24,14 @@ Summary:        Graphic Converter
 URL:            https://mcj.sourceforge.net/
 License:        MIT
 Group:          Productivity/Graphics/Convertors
-#Source:        http://sourceforge.net/projects/mcj/files/fig2dev-%%{version}.tar.xz/download#/fig2dev-%%{version}.tar.xz
+#Source:        https://sourceforge.net/projects/mcj/files/fig2dev-%%{version}.tar.xz/download#/fig2dev-%%{version}.tar.xz
 Source:         fig2dev-%{version}.tar.xz
 Patch0:         transfig-3.2.9.dif
 Patch1:         transfig-gs10.03.patch
 Patch4:         transfig-fix-afl.patch
+Patch20:        184.patch
+Patch21:        185.patch
+Patch22:        186.patch
 Patch43:        fig2dev-3.2.6-fig2mpdf.patch
 Patch44:        fig2dev-3.2.6-fig2mpdf-doc.patch
 Patch45:        transfig-gcc14.patch
@@ -72,6 +75,9 @@ find -type f -exec chmod a-x,go-w '{}' \;
 %patch -P 0 -p0 -b .p0
 %patch -P 1 -p0 -b .p1
 %patch -P 4 -p1 -b .afl
+%patch -P 20 -p0
+%patch -P 21 -p0
+%patch -P 22 -p0
 %patch -P 43 -p1 -b .mpdf
 %patch -P 44 -p1 -b .mpdfdoc
 %patch -P 45 -p0 -b .gcc14

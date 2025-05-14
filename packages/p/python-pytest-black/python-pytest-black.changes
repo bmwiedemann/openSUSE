@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 06:47:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- No more greedy globs in %files.
+
+-------------------------------------------------------------------
 Mon Mar 15 10:47:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add fix-pytest-makefile.patch to make it work with Pytest 6

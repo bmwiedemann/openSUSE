@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May  5 05:39:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * Fix minor typos
+  * Migrate packaging and environment management to use uv
+  * Fix release pipeline
+  * Always use trusted publishing
+  * Workaround license publishing issue
+  * Fix packaging: missing source files
+- Switch to pyproject macros.
+- Switch to GitHub tarball to continue running the testsuite.
+- Support upper case and normalized metadata directory name.
+- Patch version number, issue filed upstream.
+
+-------------------------------------------------------------------
 Wed Sep 25 17:41:21 UTC 2024 - Caroline Sena <caroline.sena@suse.com>
 
 - version update to 5.0.0:

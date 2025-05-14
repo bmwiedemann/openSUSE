@@ -1,7 +1,7 @@
 #
 # spec file for package python-gwyfile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,6 @@ Version:        0.2.0
 Release:        0
 Summary:        Pure Python implementation of the Gwyddion file format
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/tuxu/gwyfile
 Source:         https://github.com/tuxu/gwyfile/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Fix_depreciated_fromstring_warning.patch andythe_great@pm.me -- Fix fromstring depreciated to frombuffer warning during testing.
@@ -30,9 +29,11 @@ Patch0:         Fix_depreciated_fromstring_warning.patch
 # PATCH-FIX-OPENSUSE python312.patch
 Patch1:         python312.patch
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -47,10 +48,10 @@ Pure Python implementation of the Gwyddion file format.
 %autosetup -p1 -n %{packagename}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,7 +60,7 @@ Pure Python implementation of the Gwyddion file format.
 %files %{python_files}
 %doc CHANGELOG.rst README.rst
 %license LICENSE.rst
-%{python_sitelib}/*egg-info
 %{python_sitelib}/%{packagename}
+%{python_sitelib}/%{packagename}-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May  6 20:07:12 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.3.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.3.5
+- Changes since 6.3.4:
+  * update version for new release
+  * ApplicationsListPage: fix "Still Looking" indicator (kde#485379)
+  * ApplicationPage: fix offline update header text at narrow window widths (kde#502835)
+  * update version for new release
+
+-------------------------------------------------------------------
 Wed Apr  2 10:05:47 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.3.4

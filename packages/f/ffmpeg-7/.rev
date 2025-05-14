@@ -124,4 +124,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>https://src.opensuse.org/jengelh/ffmpeg-7/pulls/16</comment>
     <requestid>1269920</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>b091515bb78432b3111a25f1ad8abb1f</srcmd5>
+    <version>7.1.1</version>
+    <time>1746638083</time>
+    <user>dimstar_suse</user>
+    <comment>reorder changelog for ascending time [boo#1242310]</comment>
+    <requestid>1274746</requestid>
+  </revision>
 </revisionlist>

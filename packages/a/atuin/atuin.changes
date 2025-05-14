@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat May  3 14:08:50 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 18.5.0:
+  * Bug Fixes
+    + Clear terminal area if inline
+    + Fix preexec of child Bash session started by enter_accept
+    + Filter deleted keys from kv list
+    + Ignore leading environment variables when calculating stats
+    + Fix crash when history is empty
+    + Fix an error introduced earlier with support for zsh bracketed paste mode
+    + Avoid calling user-defined widgets when searching for zsh history position
+    + Add .histfile as file to look for when doing atuin import zsh
+    + Panic when invoking delete on empty tui
+    + Sql files checksums
+    + Up binding with fish 4.0
+    + Don’t save empty commands
+    + Improve broken symlink error handling
+    + Multiline command does not honour max_preview_height
+    + Allow -ve values for timezone
+    + Fish up binding bug
+  * Features
+    + Update AWS secrets env var handling checks
+    + Add health check endpoint at /healthz
+    + Add support for ‘atuin kv delete’
+    + (wrapped) Add more pkg managers
+    + (zsh) Try to go to the position in zsh’s history
+    + (zsh) Re-enable bracketed paste
+    + Add the --print0 option to search
+    + Make new arrow key behavior configurable
+    + Use readline binding for ctrl-a when it is not the prefix
+    + Option to include duplicate commands when printing history commands
+    + Binaries as subcommands
+    + Support storing, syncing and executing scripts
+    + Add ‘atuin scripts rm’ and ‘atuin scripts ls’ aliases; allow reading 
+      from stdin
+  * Miscellaneous Tasks
+    + Remove unneeded dependencies
+    + Update rust toolchain to 1.85
+    + Align daemon and client sync freq
+    + Show host and user in inspector
+  * Performance
+    + Cache SECRET_PATTERNS’s RegexSet
+
+-------------------------------------------------------------------
 Wed Jan 15 14:10:38 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 18.4.0:

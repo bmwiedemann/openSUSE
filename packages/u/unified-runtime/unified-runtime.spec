@@ -22,12 +22,12 @@
 %bcond_with opencl_adapter
 %endif
 Name:           unified-runtime
-Version:        0.11.4
+Version:        0.11.10
 Release:        0
 Summary:        oneAPI Unified Runtime (UR)
 License:        Apache-2.0
 URL:            https://github.com/oneapi-src/unified-runtime
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/oneapi-src/unified-runtime/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch1:         remove-link.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++

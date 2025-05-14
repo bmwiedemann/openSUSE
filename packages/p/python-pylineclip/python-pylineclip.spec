@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylineclip
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 Name:           python-pylineclip
 Version:        1.0.0
 Release:        0
@@ -25,8 +23,10 @@ Summary:        Line clipping tool
 License:        MIT
 URL:            https://github.com/scivision/lineclipping-python-fortran
 Source:         https://github.com/scivision/lineclipping-python-fortran/archive/v%{version}.tar.gz#/lineclipping-python-fortran-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -43,10 +43,10 @@ Line clipping: Cohen-Sutherland
 sed -i -e '/^#!\//, 1d' pylineclip/__init__.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand #
 mkdir demo-%{$python_bin_suffix}
 sed -e '1 {s|^#!.*$|#!%{_bindir}/$python|}' DemoLineclip.py > demo-%{$python_bin_suffix}/DemoLineclip.py
@@ -61,6 +61,6 @@ rm %{buildroot}%{_bindir}/DemoLineclip.py
 %doc README.md demo-%{python_bin_suffix}/DemoLineclip.py
 %license LICENSE.txt
 %{python_sitelib}/pylineclip
-%{python_sitelib}/pylineclip-%{version}*-info
+%{python_sitelib}/pylineclip-%{version}.dist-info
 
 %changelog

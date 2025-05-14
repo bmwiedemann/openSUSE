@@ -192,4 +192,12 @@
     <comment>Plasma 6.3.4 (still building) (forwarded request 1266434 from krop)</comment>
     <requestid>1266500</requestid>
   </revision>
+  <revision rev="24" vrev="23">
+    <srcmd5>242ad33f08c677ade242d07e179a9466</srcmd5>
+    <version>84.87~git20240313T170730~9c664b7</version>
+    <time>1746721287</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.3.5, untested (forwarded request 1275160 from Vogtinator)</comment>
+    <requestid>1275210</requestid>
+  </revision>
 </revisionlist>

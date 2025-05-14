@@ -17,9 +17,9 @@
 #
 
 
-%define libname libgretl-1_0-50
+%define libname libgretl-1_0-51
 Name:           gretl
-Version:        2024d
+Version:        2025a
 Release:        0
 Summary:        GNU regression, econometrics and time-series library
 License:        GPL-3.0-only

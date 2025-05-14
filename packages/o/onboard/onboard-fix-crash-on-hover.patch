@@ -1,0 +1,29 @@
+--- NO-EDIT-onboard-1.4.1/Onboard/osk/osk_devices.c
++++ onboard-1.4.1/Onboard/osk/osk_devices.c
+@@ -794,19 +794,26 @@
+         }
+     }
+     return False;
+ }
+ 
++static inline void
++indirect_PyGILState_Release (PyGILState_STATE *gs)
++{
++    PyGILState_Release(*gs);
++}
++
+ static GdkFilterReturn
+ osk_devices_event_filter (GdkXEvent  *gdk_xevent,
+                           GdkEvent   *gdk_event,
+                           OskDevices *dev)
+ {
+     XGenericEventCookie *cookie = &((XEvent *) gdk_xevent)->xcookie;
+ 
+     if (cookie->type == GenericEvent && cookie->extension == dev->xi2_opcode)
+     {
++        __attribute__((cleanup(indirect_PyGILState_Release))) PyGILState_STATE gs = PyGILState_Ensure();
+         int evtype = cookie->evtype;
+         XIEvent *event = cookie->data;
+ 
+         //XIDeviceEvent *e = cookie->data;
+         //printf("device %d evtype %d type %d  detail %d win %d\n", e->deviceid, evtype, e->type, e->detail, (int)e->event);

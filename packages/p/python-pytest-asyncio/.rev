@@ -274,4 +274,12 @@ required by mycroft-core</comment>
     <comment></comment>
     <requestid>1250596</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>0ef4241bb230e7f91877b1661a4b54fa</srcmd5>
+    <version>0.26.0</version>
+    <time>1746542417</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1274654</requestid>
+  </revision>
 </revisionlist>

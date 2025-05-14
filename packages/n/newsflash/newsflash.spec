@@ -1,7 +1,7 @@
 #
 # spec file for package newsflash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         _lto_cflags %{nil}
 %define         appname io.gitlab.news_flash.NewsFlash
 Name:           newsflash
-Version:        3.3.5
+Version:        3.3.5+223
 Release:        0
 Summary:        The spiritual successor to FeedReader
 License:        GPL-3.0-only
@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  appstream-glib
 BuildRequires:  cargo-packaging
+BuildRequires:  clang-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
@@ -36,7 +37,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gobject
-BuildRequires:  update-desktop-files
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(blueprint-compiler)
 BuildRequires:  pkgconfig(clapper-gtk-0.0)
@@ -50,9 +50,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(webkitgtk-6.0)
-%ifarch aarch64
-BuildRequires:  typelib(ClapperGtk)
-%endif
 
 %description
 NewsFlash is a program designed to complement an already existing web-based RSS reader account.
@@ -74,8 +71,6 @@ sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build
 
 %install
 %meson_install
-%suse_update_desktop_file %{appname}
-
 %find_lang %{name}
 
 %files
@@ -83,9 +78,10 @@ sed -i "s|version: '0.0.0'|version: '%{version}'|g" meson.build
 %doc README.md
 %{_bindir}/%{appname}
 %{_datadir}/applications/%{appname}.desktop
+%{_datadir}/dbus-1/services/%{appname}.service
+%{_datadir}/metainfo/%{appname}.appdata.xml
 %{_iconsdir}/hicolor/scalable/apps/%{appname}.svg
 %{_iconsdir}/hicolor/symbolic/apps/%{appname}-symbolic.svg
-%{_datadir}/metainfo/%{appname}.appdata.xml
 
 %files lang -f %{name}.lang
 

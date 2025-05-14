@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyPDF2
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/py-pdf/PyPDF2
 Source:         https://github.com/py-pdf/PyPDF2/archive/refs/tags/%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,16 +54,17 @@ It is therefore a useful tool for websites that manage or manipulate PDFs.
 sed -i '/^#!/ d' PyPDF2/pagerange.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 chmod a-x CHANGELOG.md LICENSE README.md
 
 %files %{python_files}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{python_sitelib}/*
+%{python_sitelib}/PyPDF2
+%{python_sitelib}/[Pp]y[Pp][Dd][Ff]2-%{version}*-info
 
 %changelog

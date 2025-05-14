@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Login
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %{?sle15_python_module_pythons}
-%bcond_without  test
 Name:           python-Flask-Login
 Version:        0.6.3
 Release:        0
@@ -25,15 +24,20 @@ Summary:        User session management for Flask
 License:        MIT
 URL:            https://github.com/maxcountryman/flask-login
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Login/Flask-Login-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#maxcountryman/flask-login#815
+Patch0:         do-not-use-datetime-utcnow.patch
+BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module asgiref >= 3.2}
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module semantic_version}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
 BuildArch:      noarch
-%if %{with test}
-BuildRequires:  %{python_module Flask}
-%endif
 %python_subpackages
 
 %description
@@ -50,16 +54,19 @@ loading users from their ID.
 %autosetup -p1 -n Flask-Login-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
 %{python_sitelib}/flask_login
-%{python_sitelib}/Flask_Login-%{version}-py*.egg-info
+%{python_sitelib}/[Ff]lask[_-][Ll]ogin-%{version}.dist-info
 
 %changelog

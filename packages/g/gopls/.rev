@@ -277,4 +277,16 @@
   * gopls/internal/analysis/modernize: fix bug in minmax (forwarded request 1248237 from jfkw)</comment>
     <requestid>1248243</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>13ae6e9a2fc9d5de6666d1a06ddcd675</srcmd5>
+    <version>0.18.1</version>
+    <time>1746809354</time>
+    <user>anag_factory</user>
+    <comment>- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.23 matching go.mod
+  * Add Requires: golang(API) &gt;= 1.23 matching go.mod. This tool
+    requires a go toolchain for its functionality. Using
+    Recommends: or Suggests: instead may also make sense here. (forwarded request 1275921 from jfkw)</comment>
+    <requestid>1275936</requestid>
+  </revision>
 </revisionlist>

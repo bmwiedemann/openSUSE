@@ -1,7 +1,7 @@
 #
 # spec file for package python-power
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-power
 Version:        1.4
 Release:        0
 Summary:        System power status information in Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Kentzo/Power
 Source:         https://files.pythonhosted.org/packages/source/p/power/power-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -41,19 +41,19 @@ mkdir tests
 mv power/tests.py tests/
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # tests.py can be run directly, but those tests expect user to alter power state during tests
 cd tests
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:. $python -m unittest tests
+%pyunittest tests
 
 %files %{python_files}
 %{python_sitelib}/power/
-%{python_sitelib}/power-%{version}-py*.egg-info
+%{python_sitelib}/power-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 03:23:15 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Sun Mar 14 13:15:51 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Remove conflicts with HepMC.

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Apr 24 18:33:48 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * i18n(pt): add Portuguese translation
+  * Create xdg_desktop_portal_cosmic.ftl
+  * Added Irish translation
+  * i18n(ro): Add Romanian translation
+  * screenshot: Only resize image if needed
+  * screenshot: Share code between rectangle select, and non-interactive
+  * screenshot: De-duplicate png encoding code
+  * screenshot: Don't use document portal
+  * Removed unused dropdown model
+  * Pass `&ScreenshotImage` as argument instead of `image::Handle`
+  * Add `ScreenshotImage`, and avoid creating image `Handle` in view
+  * Remove now unused `MyImage` type
+  * Do not convert `RgbaImage` to tuple and back
+  * Take slice instead of `Vec` in `screenshot_inner`
+  * widget/rectangle_selection: Use `.round()` when converting to integer
+  * widget/rectange_selection: Make members private
+  * screenshot: Use `FuturesUnordered` in `interactive_toplevel_images`
+  * wayland: Use `FuturesOrdered` in `capture_output_toplevels_shm`
+  * screencast: Use `wait_for_formats` directly; without shm capture
+  * wayland: Make `wait_for_formats` return `None` if stopped
+  * wayland: Make `wait_for_formats` async
+  * Update cosmic-files
+  * Update dependencies
+  * chore: update libcosmic
+  * i18n(zh-TW): add Taiwanese translation
+  * Updated xdg_desktop_portal_cosmic.ftl for Turkish
+  * screencast: Accumulate buffer damage instead of damaging whole buffer
+  * Pass buffer damage to screencopy/image-copy
+  * fix(libcosmic): theme subscription
+  * Update to workspace v2, based on ext-workspace
+  * i18n(nl) provide Dutch translation
+  * i18n(it): update italian translation
+
+-------------------------------------------------------------------
 Sat Feb 22 03:55:54 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+1:

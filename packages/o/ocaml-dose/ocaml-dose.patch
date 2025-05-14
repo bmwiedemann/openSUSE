@@ -1,0 +1,15 @@
+---
+ src/common/dune |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/common/dune
++++ b/src/common/dune
+@@ -1,7 +1,7 @@
+ (library
+  (name dose_common)
+  (public_name dose3.common)
+- (libraries extlib cudf re.pcre stdlib-shims unix)
++ (libraries extlib cudf re.pcre unix)
+  (flags (:standard)))
+ 
+ (ocamllex shell_lexer)

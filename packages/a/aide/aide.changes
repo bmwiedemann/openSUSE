@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu May  8 18:03:43 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.19.0:
+  * Fix build with additional libraries on non-Linux systems
+  * Update NEWS file and aide.conf.5 man page
+  * Move log message to limit log level
+
+- Rebased aide-0.18-as-needed.patch, aide-systemd.patch,
+  aide-xattr-in-libc.patch
+
+- Moved signature to Source100, use pkgconf in BuildRequirements
+  when available
+
+-------------------------------------------------------------------
 Sun Aug 11 12:55:40 UTC 2024 - Aeneas Jaißle <aj@ajaissle.de>
 
 -  Update to 0.18.8:
@@ -46,7 +60,7 @@ Fri Jun 30 10:05:30 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Mon Jun  5 12:16:24 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
-- switched service macros from %systemd_* to %service_* 
+- switched service macros from %systemd_* to %service_*
   according to documentation at https://en.opensuse.org/openSUSE:Systemd_packaging_guidelines#Registering_unit_files_in_install_scripts
 
 -------------------------------------------------------------------

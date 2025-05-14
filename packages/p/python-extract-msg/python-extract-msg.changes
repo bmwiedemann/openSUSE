@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May  5 07:06:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.54.1
+  * Fix potential issue where child MSG might have incompatible encoding
+    to parent MSG when trying to grab a stream from the parent.
+  * Added code to attempt to significantly improve RTF deencapsulation
+    times. This tries to strip away unneeded data before passing it to
+    `RTFDE`. This shows improvements on all files that take more than
+    one second. Currently, this actually fixes some files previously
+    outputting wrong from `RTFDE` when deencapsulating the HTML body,
+    specifically around non breaking spaces sometimes not transferring over.
+- from version 0.54.0
+  * Changed the prepared html output to use plainly encoded HTML instead
+    of prettified, since current prettification options used mangles the
+    output and causes the output to sometimes be very large.
+- from version 0.53.2
+  * Adjusted code to allow html encoding to be cached to try to speed up
+    `bs4` operations.
+  * Fixed handler for too large filetimes so that some filetimes being too
+    large doesn't break the handler.
+  * Fixed a bug that would cause an error in task objects due to a lack of
+    `enumerate`.
+  * Fix `TOCEntry` not initializing `DVTargetDevice` correctly.
+  * Add temporary properties for `ContentID` to `SignedAttachment`. AFAIK
+    these can't ever be set, but this prevents errors in some places.
+
+-------------------------------------------------------------------
 Mon Feb 24 11:25:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.53.1

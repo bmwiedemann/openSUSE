@@ -1,7 +1,7 @@
 #
 # spec file for package python-nagiosplugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,9 @@ Summary:        Class library for writing Nagios (Icinga) plugins
 License:        ZPL-2.1
 URL:            https://github.com/mpounsett/nagiosplugin
 Source:         https://files.pythonhosted.org/packages/source/n/nagiosplugin/nagiosplugin-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
@@ -56,10 +58,10 @@ and default logic commonly found in Nagios checks, including:
 %setup -q -n nagiosplugin-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -70,6 +72,6 @@ and default logic commonly found in Nagios checks, including:
 %license LICENSE.txt
 %doc README.txt
 %{python_sitelib}/nagiosplugin
-%{python_sitelib}/nagiosplugin-%{version}*-info
+%{python_sitelib}/nagiosplugin-%{version}.dist-info
 
 %changelog

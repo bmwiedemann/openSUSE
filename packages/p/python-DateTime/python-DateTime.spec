@@ -1,7 +1,7 @@
 #
 # spec file for package python-DateTime
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/DateTime
 Source:         https://files.pythonhosted.org/packages/source/D/DateTime/DateTime-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,10 +49,10 @@ better off using Python's built-in datetime module.
 %setup -q -n DateTime-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,7 @@ better off using Python's built-in datetime module.
 %files %{python_files}
 %doc CHANGES.rst README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/DateTime
+%{python_sitelib}/[Dd]ate[Tt]ime-%{version}*info
 
 %changelog

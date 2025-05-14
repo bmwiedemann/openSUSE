@@ -1,7 +1,7 @@
 #
 # spec file for package python-HTTPolice
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%define skip_python2 1
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-HTTPolice
 Version:        0.9.0
 Release:        0
@@ -31,8 +29,10 @@ BuildRequires:  %{python_module bitstring >= 3.1.4}
 BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module dominate >= 2.2.0}
 BuildRequires:  %{python_module lxml >= 4.1.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Brotli >= 1.0.1
@@ -41,7 +41,7 @@ Requires:       python-defusedxml >= 0.5.0
 Requires:       python-dominate >= 2.2.0
 Requires:       python-lxml >= 4.1.0
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,17 +55,14 @@ problems in your HTTP server or client.
 rm pytest.ini
 
 %build
-export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
-export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/httpolice
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
 # gh#vfaronov/httpolice#10
 %pytest -k 'not test_from_file'
 
@@ -79,6 +76,7 @@ export LANG=en_US.UTF-8
 %license LICENSE.txt
 %doc CHANGELOG.rst README.rst
 %python_alternative %{_bindir}/httpolice
-%{python_sitelib}/*
+%{python_sitelib}/httpolice
+%{python_sitelib}/httpolice-%{version}*info
 
 %changelog

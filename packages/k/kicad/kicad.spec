@@ -26,8 +26,8 @@
 # symbol libraries from version 9.0.0
 %define compatversion 9.0.0
 Name:           kicad
-Version:        9.0.1
-%define file_version 9.0.1
+Version:        9.0.2
+%define file_version 9.0.2
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++ >= 8
 %endif
 BuildRequires:  gettext
+BuildRequires:  glew%{?with_use_egl:_EGL}-devel
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
 BuildRequires:  libboost_locale-devel-impl
@@ -63,7 +64,6 @@ BuildRequires:  cmake(nng)
 BuildRequires:  cmake(protobuf)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgit2)
 BuildRequires:  pkgconfig(libsecret-1)

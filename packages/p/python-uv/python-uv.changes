@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat May 10 16:36:30 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build needs 28G memory on s390x - adjust _constraints
+
+-------------------------------------------------------------------
+Fri May  9 10:59:10 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.7.3
+ * Enhancements
+   * Add --dry-run support to uv self update 
+   * Add --show-with to uv tool list to list packages included by --with 
+   * De-duplicate fetched index URLs 
+   * Support more zip compression formats: bzip2, lzma, xz, zstd 
+   * Add support for downloading GraalPy 
+   * Improve error message when a virtual environment Python symlink is broken 
+   * Use fs_err for paths in symlinking errors 
+   * Minify and embed managed Python JSON at compile time 
+ * Preview features
+   * Build backend: Make preview default and add configuration docs 
+   * Build backend: Allow escaping in globs 
+   * Build backend: Make builds reproducible across operating systems 
+ * Configuration
+   * Add python-downloads-json-url option for uv.toml to configure custom Python installations via JSON URL 
+ * Bug fixes
+   * Check nested IO errors for retries 
+   * Accept musllinux_1_0 as a valid platform tag 
+   * Fix discovery of pre-release managed Python versions in range requests 
+   * Respect locked script preferences in uv run --with 
+   * Retry streaming downloads on broken pipe errors 
+   * Treat already-installed base environment packages as preferences in uv run --with 
+   * Avoid enumerating sources in errors for path Python requests 
+   * Avoid re-creating virtual environment with --no-sync 
+ * Documentation
+   * Remove outdated description of index strategy 
+   * Update "Viewing the version" docs 
+
+-------------------------------------------------------------------
 Fri May  2 18:16:12 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.2

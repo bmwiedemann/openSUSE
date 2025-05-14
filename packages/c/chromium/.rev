@@ -5606,4 +5606,14 @@ boo#1224178</comment>
   * stability fixes</comment>
     <requestid>1274038</requestid>
   </revision>
+  <revision rev="461" vrev="1">
+    <srcmd5>d19734f7b81e793da5cad2a752abe43c</srcmd5>
+    <version>136.0.7103.92</version>
+    <time>1746721308</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 136.0.7103.92
+  (stable release 2025-05-06) (boo#1242717)
+  * CVE-2025-4372: Use after free in WebAudio</comment>
+    <requestid>1275140</requestid>
+  </revision>
 </revisionlist>

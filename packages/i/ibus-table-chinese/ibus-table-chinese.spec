@@ -1,7 +1,7 @@
 #
 # spec file for package ibus-table-chinese
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -201,6 +201,9 @@ YongMa input method.
 %autosetup
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export PYTHON=python3
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DDATA_DIR=%{_datadir} \

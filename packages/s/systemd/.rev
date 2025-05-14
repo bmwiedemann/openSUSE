@@ -7583,4 +7583,12 @@ handle manual pages that consist only of a .so directive such as
 - Import commit f133e5974e69708d7491d4823780690c913f7bda (merge of v257.4)</comment>
     <requestid>1268358</requestid>
   </revision>
+  <revision rev="446" vrev="2">
+    <srcmd5>06473d1c8f65e9303eff67a4a52b83d1</srcmd5>
+    <version>257.5</version>
+    <time>1746638168</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1274357</requestid>
+  </revision>
 </revisionlist>

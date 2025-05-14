@@ -1,0 +1,18 @@
+--- utils/asymptote/LspCpp/src/lsp/ParentProcessWatcher.cpp~	2025-02-08 17:23:03.000000000 +0000
++++ utils/asymptote/LspCpp/src/lsp/ParentProcessWatcher.cpp	2025-05-08 07:54:32.134245234 +0000
+@@ -1,6 +1,15 @@
+ #include "LibLsp/lsp/ParentProcessWatcher.h"
+ #include <algorithm>
++#include <boost/version.hpp>
++#if BOOST_VERSION < 108800
+ #include <boost/process.hpp>
++#else
++#define BOOST_PROCESS_VERSION 1
++#include <boost/process/v1/child.hpp>
++#include <boost/process/v1/io.hpp>
++#include <boost/process/v1/pipe.hpp>
++#include <boost/process/v1/system.hpp>
++#endif
+ 
+ #ifdef _WIN32
+ #include <boost/process/v1/windows.hpp>

@@ -1,3 +1,9 @@
+gpxsee (13.42) stable; urgency=low
+
+  * Significantly improved marine charts (ENC,IMG) style/rendering.
+
+ -- Martin Tuma <tumic@cbox.cz>  Wed, 07 May 2025 23:33:37 +0200
+
 gpxsee (13.41) stable; urgency=low
 
   * Fixed switched ENC maps units multipliers (broken in 13.40).

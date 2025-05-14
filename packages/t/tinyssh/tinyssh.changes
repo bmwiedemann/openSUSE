@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 19:50:38 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Update to 20250501:
+  * Fixed minor strict kex violation, thanks to Fabian Bäumer and Marcus
+    Brinkmann for the bug report.
+  * Updated cryptoint to version 20250414
+  * Added support for external lib1305
+- Included from 20250411:
+  * add lib1305 support
+
+-------------------------------------------------------------------
 Mon Feb 10 19:40:54 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 20250201:

@@ -1,0 +1,61 @@
+From ea67e8c8466e298a969df4c02a66798d408faaaa Mon Sep 17 00:00:00 2001
+From: Peter Varga <pvarga@inf.u-szeged.hu>
+Date: Wed, 23 Apr 2025 09:45:33 +0200
+Subject: [PATCH] Add fallback for drmPrimeHandleToFD()
+
+drmPrimeHandleToFD() does not seem to work with legacy radeon driver and
+returns invalid fd and it may cause QtWebEngine crash.
+
+Chromium replaced gbm_bo_get_plane_fd() with drmPrimeHandleToFD() to
+provide file descriptors per plane basis, see https://crrev.com/c/1273059
+
+Since then, Mesa introduced new GBM API to provide fds per plane basis,
+see https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/5442
+
+To keep legacy GPU drivers supported, use the new GBM API as a fallback
+if the drmPrimeHandleToFD() fails.
+
+Fixes: QTBUG-135935
+Change-Id: I79f54f861916d3b19f743cab183f756657094b09
+Done-with: Kevin B. Hendricks
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/641190
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ src/3rdparty/chromium/ui/gfx/linux/gbm_wrapper.cc | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/3rdparty/chromium/ui/gfx/linux/gbm_wrapper.cc b/src/3rdparty/chromium/ui/gfx/linux/gbm_wrapper.cc
+index 39d9fe6..7b75b74 100644
+--- a/src/3rdparty/chromium/ui/gfx/linux/gbm_wrapper.cc
++++ b/src/3rdparty/chromium/ui/gfx/linux/gbm_wrapper.cc
+@@ -76,14 +76,26 @@ base::ScopedFD GetPlaneFdForBo(gbm_bo* bo, size_t plane) {
+   int ret;
+   // Use DRM_RDWR to allow the fd to be mappable in another process.
+   ret = drmPrimeHandleToFD(dev_fd, plane_handle, DRM_CLOEXEC | DRM_RDWR, &fd);
+-  PLOG_IF(ERROR, ret != 0) << "Failed to get fd for plane.";
++  PLOG_IF(WARNING, ret != 0) << "Failed to get fd for plane with libdrm.";
+ 
+   // Older DRM implementations blocked DRM_RDWR, but gave a read/write mapping
+   // anyways
+   if (ret) {
+     ret = drmPrimeHandleToFD(dev_fd, plane_handle, DRM_CLOEXEC, &fd);
++    PLOG_IF(WARNING, ret != 0) << "Failed to get fd for plane even without DRM_RDWR.";
+   }
+ 
++#if BUILDFLAG(IS_QTWEBENGINE)
++  // drmPrimeHandleToFD() does not work with legacy radeon driver. Fallback to
++  // gbm_bo_get_fd_for_plane() which does provide fds per plane basis.
++  if (ret) {
++    fd = gbm_bo_get_fd_for_plane(bo, plane);
++    ret = (fd == -1) ? -1 : 0;
++    PLOG_IF(WARNING, ret != 0) << "Failed to get fd for plane even with GBM.";
++  }
++#endif
++
++  LOG_IF(ERROR, ret != 0) << "Failed to get fd for plane.";
+   return ret ? base::ScopedFD() : base::ScopedFD(fd);
+ #endif
+ }
+-- 
+2.49.0
+

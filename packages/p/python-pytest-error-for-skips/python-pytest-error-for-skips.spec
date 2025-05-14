@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-error-for-skips
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-error-for-skips
 Version:        2.0.2
 Release:        0
 Summary:        Pytest plugin to treat skipped tests a test failure
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jankatins/pytest-error-for-skips
 Source:         https://github.com/jankatins/pytest-error-for-skips/archive/%{version}.tar.gz#/pytest-error-for-skips-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 4.6
@@ -46,10 +46,10 @@ missing dependencies.
 %setup -q -n pytest-error-for-skips-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +58,8 @@ missing dependencies.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_error_for_skips.py
+%pycache_only %{python_sitelib}/__pycache__/pytest_error_for_skips*.pyc
+%{python_sitelib}/pytest_error_for_skips-%{version}.dist-info
 
 %changelog

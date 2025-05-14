@@ -7,4 +7,12 @@
     <comment>Could be useful to have in Factory (certainly more useful than just in d:l:p).</comment>
     <requestid>1221732</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>266451a707c527c3e9350b5752dd8cf8</srcmd5>
+    <version>1.3.3</version>
+    <time>1746476849</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1274318</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed May  7 04:39:57 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1242666 - CVE-2025-3416 - openssl use after free
+
+-------------------------------------------------------------------
+Wed May 07 04:38:58 UTC 2025 - william.brown@suse.com
+
+- Update to version 3.1.2~git90.2bc7250be:
+  * Issue 6764 - statistics about index lookup report a wrong duration (#6765)
+  * Issue 6753 - Port ticket test 47560
+  * Issue 4989 - Confusing error message from dsconf plugin set --enabled (#6750)
+  * Issue 6614 - CLI - Error when trying to display global DB stats with LMDB (#6622)
+  * Issue 6276 - UI - schema editing and memberof shared config not working correctly
+  * Issue 6734 - BUG - format strings may not contain backslash (#6749)
+  * Issue 6736 - Exception thrown by dsconf instance repl get_ruv (#6742)
+  * Issue 6501 - CLI - dsidm role rename was not working
+  * Issue 6744 - BUG - memory accounting is not always enabled (#6745)
+  * Issue 6492/6493 - CLI - dsdim can not create nested/filtered roles
+  * Issue #6740 Certificate verify fails in FIPS mode
+  * Issue 6603 - Release tarballs ship a different Cargo.lock
+  * Issue 6743 - CLI - dsidm add option to list DN's
+  * Issue 6595 - Regression test in betxn_test.py failing due to busy LDAP server (#6709)
+  * Issue 6669 - logconv.py updates (#6673)
+  * Issue 5356 - Set DEFAULT_PASSWORD_STORAGE_SCHEME to PBKDF2-SHA512 in tests
+  * Issue 6735 - CLI - dsidm provide option to set decription when creating an entry
+  * Bump tokio from 1.43.0 to 1.44.2 in /src (#6732)
+  * Issue 6728 - CLI - Issue with user rename operation (#6729)
+  * Issue 6515 - CLI - dsidm get_dn does not return JSON format
+  * Issue 6660 - UI - Replication Monitoring Lag Report Feature (#6661)
+  * Bump openssl from 0.10.70 to 0.10.72 in /src (#6730)
+  * Issue 6713 - ns-slapd crash during mdb offline import (#6714)
+  * Issue 6720 - Remove BDB attribute from MDB DB Monitor (#6721)
+  * Issue 6715 - dsconf backend replication monitor fails if replica id starts with 0 (#6716)
+  * Issue 6562 - Fix issues around slapi_filter_sprintf (#6725)
+  * Issue 6481 - When ports that are in use are used to update a DS instance the error message is not helpful (#6723)
+  * lib389: Remove unused runtime requirement on setuptools (#6719)
+  * Issue 6700 - CLI/UI - include superior objectclasses' allowed and requires attrs
+  * Issue 6571 - (2nd) Nested group does not receive memberOf attribute (#6697)
+  * Issue 6686 - CLI - Re-enabling user accounts that reached inactivity limit fails with error (#6687)
+  * Issue 6704 - UI - Add error log buffering config
+  * Issue 6698 - NPE after configuring invalid filtered role (#6699)
+  * Issue 6695 - UI - fix more minor issues
+  * Issue 6693 - Fix error messages inconsistencies (#6694)
+
+-------------------------------------------------------------------
 Sat Mar 29 05:14:35 UTC 2025 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Add python-psutil requires (boo#1240340).

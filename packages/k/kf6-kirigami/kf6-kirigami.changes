@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Too many changes since 6.13.0, only listing bugfixes:
+  * ScrollablePage: Don't override the contentItem's width with its implicit width (kde#502948)
+  * PlatformTheme: Add fixedWidthFont (kde#441044)
+  * WheelHandler: smooth scroll for a greater variety of movement sizes (kde#484309)
+  * Polish drawer handle appear/disappear (kde#502260)
+  * disable/enable headers too when going out of view (kde#500840)
+  * controls: Fix link activation for text of InlineMessage (kde#500578)
+
+-------------------------------------------------------------------
 Sat Apr  5 12:33:17 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

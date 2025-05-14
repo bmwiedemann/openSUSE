@@ -462,4 +462,18 @@
     <comment>- Support both lowercased and unnormalized metadata directory names.</comment>
     <requestid>1271219</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>eaf7f64ad0e0bca64ac91dc541dfbeef</srcmd5>
+    <version>1.7.2</version>
+    <time>1746542498</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.2:
+  * add static type hints (PRs #1302, #1349)
+  * Expose nc_rc_set, nc_rc_get (via rc_set, rc_get module
+    functions). (PR #1348)
+  * Add Variable.get_fill_value and allow `fill_value='default'`
+    to set `_FillValue` attribute using default fill values.
+  * Fix NETCDF3 endian error (issue #1373, PR #1355).</comment>
+    <requestid>1274714</requestid>
+  </revision>
 </revisionlist>

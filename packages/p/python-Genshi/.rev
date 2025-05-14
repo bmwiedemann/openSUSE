@@ -230,4 +230,14 @@
     <comment></comment>
     <requestid>1203708</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>507176165c405b841e3eddba60c00c6f</srcmd5>
+    <version>0.7.9</version>
+    <time>1747061133</time>
+    <user>anag_factory</user>
+    <comment>- Add remove_six.patch removing six from the package
+  (gh#edgewall/genshi!92).
+</comment>
+    <requestid>1276082</requestid>
+  </revision>
 </revisionlist>

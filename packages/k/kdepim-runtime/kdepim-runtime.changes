@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:05 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * singlefileresource.h - set a prettier display name for remote files
+  * singlefileresourceconfigwidgetbase.cpp - remotes are always read-only (kde#501336)
+  * singlefileresourceconfigwidget.h - saving a empty path is a failure condition
+  * Fix bug Password is displayed twice in settings dialog (kde#502836)
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:40 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

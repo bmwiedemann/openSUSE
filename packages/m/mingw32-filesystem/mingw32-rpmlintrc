@@ -23,6 +23,10 @@ addFilter("debuginfo-without-sources")
 # This group is used a lot, so ignore the warning about it.
 addFilter ("^mingw32-.*non-standard-group Development/Libraries$")
 
+# The group tag is optional since 2020, see
+# https://news.opensuse.org/2020/11/23/news-in-opensuse-packaging/#group-tag
+addFilter ("^mingw32-.*non-standard-group Unspecified$")
+
 # using /opt/testing
 addFilter("^mingw32-*filelist-forbidden-opt")
 

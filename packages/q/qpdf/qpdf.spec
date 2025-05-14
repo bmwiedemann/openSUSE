@@ -27,6 +27,8 @@ URL:            https://qpdf.sourceforge.io/
 Source:         https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz
 Source1:        https://github.com/qpdf/qpdf/releases/download/v%{version}/qpdf-%{version}.tar.gz.asc
 Source2:        qpdf.keyring
+# PATCH-FIX-UPSTREAM
+Patch1:         qpdf-11.9.1-gcc15.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tensorpac
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %define skip_python36 1
 Name:           python-tensorpac
 Version:        1.1
@@ -29,7 +28,9 @@ Source:         https://github.com/EtienneCmb/tensorpac/archive/refs/tags/v%{ver
 Patch0:         numpy-1.24.patch
 BuildRequires:  %{python_module joblib}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-joblib
@@ -59,11 +60,10 @@ rm -rf */__pycache__
 rm -rf */*/__pycache__
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
-%python_expand chmod a-x %{buildroot}%{$python_sitelib}/*egg-info/*
+%pyproject_install
 %python_expand rm -r %{buildroot}%{$python_sitelib}/tensorpac/{tests,methods/tests}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -81,6 +81,7 @@ donttest+=" or (TestUtils and test_psd)"
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/tensorpac
-%{python_sitelib}/tensorpac*-info
+# This declares itself as 0.6.5
+%{python_sitelib}/tensorpac-0.6.5.dist-info
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-click
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Pytest plugin for Click
 License:        MIT
 URL:            https://github.com/Stranger6667/pytest-click
 Source:         https://github.com/Stranger6667/pytest-click/archive/v%{version}.tar.gz#/pytest-click-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 6.0
@@ -44,10 +46,10 @@ Py.test plugin for Click.
 sed -i "s/'pytest-cov>=[0-9.]*'//;s/==/>=/g" setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +59,7 @@ export LANG=C.UTF-8
 %files %{python_files}
 %doc CHANGELOG.md README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/pytest_click
+%{python_sitelib}/pytest_click-%{version}.dist-info
 
 %changelog

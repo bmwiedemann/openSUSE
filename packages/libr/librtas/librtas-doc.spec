@@ -17,7 +17,7 @@
 
 
 Name:           librtas-doc
-Version:        2.0.5
+Version:        2.0.6
 Release:        0
 Summary:        Documents for librtas
 License:        LGPL-2.1-or-later
@@ -27,12 +27,6 @@ Source0:        https://github.com/ibm-power-utilities/librtas/archive/v%{versio
 Source2:        activate-firmware-regress
 Source3:        vpdupdate-regress
 Patch0:         librtas.fix_doc_path.patch
-Patch1:         0001-librtas-expose-low-level-RTAS-call-APIs-internally.patch
-Patch2:         0002-librtas-move-VPD-code-into-separate-module.patch
-Patch3:         0003-librtas-move-system-parameter-code-to-separate-modul.patch
-Patch4:         0004-librtas-vendor-papr-miscdev.h.patch
-Patch5:         0005-librtas-vpd-prefer-dev-papr-vpd-when-available.patch
-Patch6:         0006-librtas-sysparm-prefer-dev-papr-sysparm-when-availab.patch
 Patch7:         0001-librtas-Move-platform-dump-rtas-call-code-to-separat.patch
 Patch8:         0002-librtas-platform-dump-prefer-dev-papr-platform-dump-.patch
 Patch9:         0003-librtas-move-get-set-indices-RTAS-calls-code-to-sepa.patch

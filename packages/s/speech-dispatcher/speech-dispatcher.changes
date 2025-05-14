@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue May  6 20:55:32 UTC 2025 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 0.12.1:
+  * Fix spd-say -k ' '.
+  * Fix output getting stuck in some rare condition triggered in
+    Orca preference dialog.
+  * Fix taking character punctuation levels from NVDA files.
+  * espeak: Fix translated pronounciation.
+  * generic: Fix getting stuck on speaking nothing.
+  * generic: Add GenericDefaultCharset parameter.
+  * generic: Fix random garbage on non-text utterances.
+  * Fix Czech documentation encoding.
+
+-------------------------------------------------------------------
 Sun Feb 23 21:44:39 UTC 2025 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 0.12.0:

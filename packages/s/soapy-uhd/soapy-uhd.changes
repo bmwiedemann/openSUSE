@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May  7 11:26:42 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
+Sat Mar 29 20:29:20 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to git snapshot 20250213 containing fixes for uhd 4.8.0
+- SOAPY_SDR_ABI_VERSION bump -> "0.8-3"
+- Minor specfile update
+
+-------------------------------------------------------------------
 Tue Oct 12 11:23:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix installation conflicts with soapysdr0.7-module-uhd.

@@ -1,0 +1,13 @@
+Index: dtach-0.9+2.748020b/attach.c
+===================================================================
+--- dtach-0.9+2.748020b.orig/attach.c
++++ dtach-0.9+2.748020b/attach.c
+@@ -96,7 +96,7 @@ die(int sig)
+ 
+ /* Window size change. */
+ static RETSIGTYPE
+-win_change()
++win_change(int)
+ {
+ 	signal(SIGWINCH, win_change);
+ 	win_changed = 1;

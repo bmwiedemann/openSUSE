@@ -31,4 +31,12 @@
     <comment>Update to 9.2.3</comment>
     <requestid>1270956</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2ee09c5dfdabd6ea5bf8c70c87dbba3a</srcmd5>
+    <version>9.3.0</version>
+    <time>1746721331</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 9.3.0</comment>
+    <requestid>1275311</requestid>
+  </revision>
 </revisionlist>

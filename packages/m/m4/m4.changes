@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat May 10 20:00:23 UTC 2025 - Christoph G <foss@grueninger.de>
+
+- Update to 1.4.20
+ * Fix a bug in the `eval' builtin where it does not suppress warnings
+   about division by zero that occurs within a more complex expression on
+   the right hand side of || or &&
+ * The `syscmd' and `esyscmd' builtins no longer mishandle a command line
+   starting with `-' or `+'
+ * Fix regression introduced in 1.4.19 where trace output (such as with
+   `debugmode(t)') could read invalid memory when tracing a series of
+   pushed macros that are popped during argument collection.
+ * Fix regression introduced in 1.4.19 where the `format' builtin
+   inadvertently took on locale-dependent parsing and output of floating
+   point numbers as a side-effect of introducing message translations.
+ * Fix regression introduced in 1.4.11 where the experimental `changeword'
+   builtin could cause a crash if given a regex that does not match all
+   one-byte prefixes of valid longer matches.  As a reminder, `changeword'
+   is not recommended for production use, and will likely not be present
+   in the next major version release.
+** Update to comply with newer C standards, and inherit portability
+   improvements from gnulib.
+- Update to 1.4.19
+** A number of portability improvements inherited from gnulib, including
+   the ability to perform stack overflow detection on more platforms
+   without linking to GNU libsigsegv.
+** The symbol hash table now defaults to 65537 buckets instead of 509, as
+   modern systems have enough memory to benefit from fewer hash collisions
+   by default.
+** Introduce the use of gettext, with the immediate benefit of nicer
+   UTF-8 author names.
+- Disable profilied built as it lead to segmentation faults in the
+  test suite (test-free).
+- Drop gnulib-libio.patch as a similar change is part of upstream.
+- Drop gnulib-c-stack.patch as patched code got removed upstream.
+
+-------------------------------------------------------------------
 Wed Apr  9 18:38:42 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS in %check also

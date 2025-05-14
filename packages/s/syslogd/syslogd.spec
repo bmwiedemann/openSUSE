@@ -146,6 +146,8 @@ scripts for SysV and the service unit files for systemd.
 %patch -P 0 -b .p0
 
 %build
+# mis-use RPM_OPT_FLAGS here as others are not properly propagated
+export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -std=gnu89"
 %ifarch s390 s390x
 mv sample-s390.conf sample.conf
 %endif

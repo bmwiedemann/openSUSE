@@ -952,4 +952,16 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>- Update to release 6.0.1</comment>
     <requestid>1252155</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>d62094a41446de967ded430d01a8e5a0</srcmd5>
+    <version>6.0.1</version>
+    <time>1746638130</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patches from upstream github.com/strongswan/strongswan
+  to fix gcc-15 compile-time errors:
+  * strongswan-gcc15-part1.patch
+  * strongswan-gcc15-part2.patch
+  * strongswan-gcc15-part3.patch</comment>
+    <requestid>1275031</requestid>
+  </revision>
 </revisionlist>

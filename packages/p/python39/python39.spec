@@ -141,8 +141,6 @@ Patch06:        distutils-reproducible-compile.patch
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
 Patch08:        python-3.3.0b1-fix_date_time_compiler.patch
-# POSIX_FADV_WILLNEED throws EINVAL. Use a different constant in test
-Patch09:        python-3.3.0b1-test-posix_fadvise.patch
 # Raise timeout value for test_subprocess
 Patch15:        subprocess-raise-timeout.patch
 Patch25:        python3-imp-returntype.patch
@@ -437,7 +435,6 @@ other applications.
 %patch -p1 -P 06
 %patch -p1 -P 07
 %patch -p1 -P 08
-%patch -p1 -P 09
 %patch -p1 -P 15
 %patch -p1 -P 25
 %patch -p1 -P 29

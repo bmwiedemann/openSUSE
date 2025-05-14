@@ -34,7 +34,7 @@
 %bcond_without scim
 %endif
 Name:           plasma6-desktop
-Version:        6.3.4
+Version:        6.3.5
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
@@ -202,9 +202,7 @@ Requires:       (plasma6-kimpanel-ibus if ibus)
 Requires:       (plasma6-kimpanel-scim if scim)
 %endif
 
-%if %{pkg_vcmp cmake(sdl2) >= 2.0.16}
-%bcond_without gamecontroller_kcm
-%endif
+%global have_gamecontroller_kcm %{pkg_vcmp cmake(sdl2) >= 2.0.16}
 
 %description
 This package contains the basic packages for a Plasma workspace.
@@ -281,7 +279,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_applicationsdir}/kcm_clock.desktop
 %{_kf6_applicationsdir}/kcm_componentchooser.desktop
 %{_kf6_applicationsdir}/kcm_desktoppaths.desktop
-%if %{with gamecontroller_kcm}
+%if %{have_gamecontroller_kcm}
 %{_kf6_applicationsdir}/kcm_gamecontroller.desktop
 %endif
 %{_kf6_applicationsdir}/kcm_kded.desktop
@@ -332,7 +330,7 @@ rm -rv %{buildroot}%{_kf6_sharedir}/dbus-1/interfaces/
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_baloofile.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_componentchooser.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_desktoppaths.so
-%if %{with gamecontroller_kcm}
+%if %{have_gamecontroller_kcm}
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_gamecontroller.so
 %endif
 %dir %{_kf6_plugindir}/plasma/kcminit

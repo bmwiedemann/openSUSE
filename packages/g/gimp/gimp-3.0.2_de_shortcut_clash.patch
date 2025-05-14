@@ -1,0 +1,71 @@
+diff --git a/po-libgimp/de.po b/po-libgimp/de.po
+index 7bf8293e82..91b0289453 100644
+--- a/po-libgimp/de.po
++++ b/po-libgimp/de.po
+@@ -185,7 +185,7 @@ msgstr "Bildgröße auf Ebenen anpassen"
+ 
+ #: libgimp/gimpexportprocedure.c:529
+ msgid "Save _Exif"
+-msgstr "E_xif speichern"
++msgstr "Exi_f speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:530
+ msgid "Save Exif (Exchangeable image file format) metadata"
+@@ -202,7 +202,7 @@ msgstr ""
+ 
+ #: libgimp/gimpexportprocedure.c:541
+ msgid "Save _XMP"
+-msgstr "_XMP speichern"
++msgstr "X_MP speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:542
+ msgid "Save XMP (Extensible Metadata Platform) metadata"
+@@ -210,7 +210,7 @@ msgstr "XMP-Metadaten (Extensible Metadata Platform) speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:547
+ msgid "Save color _profile"
+-msgstr "Farb_profil speichern"
++msgstr "Farbprofi_l speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:548
+ msgid "Save the ICC color profile as metadata"
+@@ -226,7 +226,7 @@ msgstr "Eine kleinere Darstellung des Bildes als Metadaten speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:560
+ msgid "Save c_omment"
+-msgstr "Kommentar _speichern"
++msgstr "Kommen_tar speichern"
+ 
+ #: libgimp/gimpexportprocedure.c:561
+ msgid "Save a comment as metadata"
+diff --git a/po-plug-ins/de.po b/po-plug-ins/de.po
+index 99e35a45e9..cb26602932 100644
+--- a/po-plug-ins/de.po
++++ b/po-plug-ins/de.po
+@@ -3525,7 +3525,7 @@ msgstr "Verlustlose Kompression verwenden"
+ 
+ #: plug-ins/common/file-heif.c:274 plug-ins/common/file-heif.c:395
+ msgid "Save color prof_ile"
+-msgstr "Farb_profil speichern"
++msgstr "Farbprofi_l speichern"
+ 
+ #: plug-ins/common/file-heif.c:275 plug-ins/common/file-heif.c:396
+ msgid "Save the image's color profile"
+@@ -3581,7 +3581,7 @@ msgstr "Schnell"
+ #: plug-ins/common/file-heif.c:306 plug-ins/common/file-heif.c:427
+ #: plug-ins/common/file-jpegxl.c:239
+ msgid "Save Exi_f"
+-msgstr "_Exif speichern"
++msgstr "Exi_f speichern"
+ 
+ #: plug-ins/common/file-heif.c:307 plug-ins/common/file-heif.c:428
+ #: plug-ins/common/file-jpegxl.c:240
+@@ -3591,7 +3591,7 @@ msgstr "Exif-Daten speichern"
+ #: plug-ins/common/file-heif.c:312 plug-ins/common/file-heif.c:433
+ #: plug-ins/common/file-jpegxl.c:245
+ msgid "Save _XMP"
+-msgstr "_XMP speichern"
++msgstr "X_MP speichern"
+ 
+ #: plug-ins/common/file-heif.c:313 plug-ins/common/file-heif.c:434
+ #: plug-ins/common/file-jpegxl.c:246

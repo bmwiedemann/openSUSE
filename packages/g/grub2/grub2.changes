@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  5 12:00:12 UTC 2025 - Michael Chang <mchang@suse.com>
+
+- Fix CVE-2025-4382: TPM auto-decryption data exposure (bsc#1242971)
+  * 0001-kern-rescue_reader-Block-the-rescue-mode-until-the-C.patch
+  * 0002-commands-search-Introduce-the-cryptodisk-only-argume.patch
+  * 0003-disk-diskfilter-Introduce-the-cryptocheck-command.patch
+  * 0004-commands-search-Add-the-diskfilter-support.patch
+  * 0005-docs-Document-available-crypto-disks-checks.patch
+  * 0006-disk-cryptodisk-Add-the-erase-secrets-function.patch
+  * 0007-disk-cryptodisk-Wipe-the-passphrase-from-memory.patch
+  * 0008-cryptocheck-Add-quiet-option.patch
+- patch rebased
+  * 0001-Improve-TPM-key-protection-on-boot-interruptions.patch
+  * 0004-Key-revocation-on-out-of-bound-file-access.patch
+- patch refrehed
+  * 0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
+  * 0002-Requiring-authentication-after-tpm-unlock-for-CLI-ac.patch
+
+-------------------------------------------------------------------
 Fri Apr 25 17:44:31 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - grub2-common: use fuse3

@@ -102,4 +102,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272718</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dd6e017b5ec19ae585358e9bbd7658a</srcmd5>
+    <version>20250425</version>
+    <time>1747061134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250425 (git commit 8d82acd29b5c):
+  * rtl_bt: Update RTL8852B BT USB FW to 0x098B_154B</comment>
+    <requestid>1276101</requestid>
+  </revision>
 </revisionlist>

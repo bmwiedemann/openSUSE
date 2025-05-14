@@ -1,0 +1,45 @@
+diff -rub libdisplaydevice-2025.115.133852/src/CMakeLists.txt libdisplaydevice-2025.115.133852-patched/src/CMakeLists.txt
+--- libdisplaydevice-2025.115.133852/src/CMakeLists.txt	2025-04-11 00:54:48.016588230 +0200
++++ libdisplaydevice-2025.115.133852-patched/src/CMakeLists.txt	2025-04-11 00:55:47.831125178 +0200
+@@ -9,21 +9,21 @@
+     add_library(libdisplaydevice::platform ALIAS libdisplaydevice_macos_dummy)
+     message(WARNING "MacOS is not supported yet.")
+ elseif(UNIX)
+-    add_library(libdisplaydevice_linux_dummy INTERFACE)
+-    add_library(libdisplaydevice::platform ALIAS libdisplaydevice_linux_dummy)
++    add_library(displaydevice_linux_dummy INTERFACE)
++    add_library(displaydevice::platform ALIAS displaydevice_linux_dummy)
+     message(WARNING "Linux is not supported yet.")
+ else()
+     message(FATAL_ERROR "Unsupported platform")
+ endif()
+ 
+ # Create a target that links to everything
+-add_library(libdisplaydevice_display_device INTERFACE)
+-target_link_libraries(libdisplaydevice_display_device INTERFACE
+-        libdisplaydevice::common
+-        libdisplaydevice::platform)
++add_library(displaydevice_display_device INTERFACE)
++target_link_libraries(displaydevice_display_device INTERFACE
++        displaydevice::common
++        displaydevice::platform)
+ 
+-set_target_properties(libdisplaydevice_common PROPERTIES VERSION ${PROJECT_VERSION}
++set_target_properties(displaydevice_common PROPERTIES VERSION ${PROJECT_VERSION}
+                                                    SOVERSION ${PROJECT_VERSION})
+ 
+ # Create an alias for the main target
+-add_library(libdisplaydevice::display_device ALIAS libdisplaydevice_display_device)
++add_library(displaydevice::display_device ALIAS displaydevice_display_device)
+diff -rub libdisplaydevice-2025.115.133852/src/common/CMakeLists.txt libdisplaydevice-2025.115.133852-patched/src/common/CMakeLists.txt
+--- libdisplaydevice-2025.115.133852/src/common/CMakeLists.txt	2025-01-15 14:38:52.000000000 +0100
++++ libdisplaydevice-2025.115.133852-patched/src/common/CMakeLists.txt	2025-04-11 00:56:01.687014268 +0200
+@@ -1,6 +1,6 @@
+ # A global identifier for the library
+-set(MODULE libdisplaydevice_common)
+-set(MODULE_ALIAS libdisplaydevice::common)
++set(MODULE displaydevice_common)
++set(MODULE_ALIAS displaydevice::common)
+ 
+ # Globing headers (so that they appear in some IDEs) and sources
+ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "include/display_device/*.h")

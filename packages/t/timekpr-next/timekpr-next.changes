@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue May 13 08:18:35 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to 0.5.8:
+  * added translations for Russian, Dutch, Portugese languages
+  * improved sound notificatons:
+      added support for espeak-ng
+      system "bell" notifications are no longer reliant on freedesktop sound files
+  * packaging warning fixes (#2089143)
+  * enable standard window close button (workaround for #2091011)
+  * fixes for .rpm packaging from Alexey (#2091080)
+  * improve pidfile handling (#2097253)
+  * added an option to kill sessions instead of terminate
+      at least Kubuntu 24.04 will not terminate sessions with TerminateSession, it works fine with KillSession + SIGTERM
+  * implement a workaround for weird CMOS date reset bug which results time being reported 55 years in the future
+      which results in a lot of free time for the subordinate (this is exceptionally rare condition)
+- Removed patches for the /tmp file issues (boo#1236644). They are now included
+  in the latest release:
+  tmp_file_issue_07e0b29763def53d95611f9ee4a2f54ae50df38c.patch
+  tmp_file_issue_1cec26bd22b73f00b4a834b7f66cd92895b2901d.patch
+
+-------------------------------------------------------------------
 Wed Feb 12 13:12:59 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Include upstream fixes for the /tmp PID file issue (boo#1236644)

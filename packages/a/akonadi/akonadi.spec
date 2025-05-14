@@ -22,7 +22,7 @@
 %define name   akonadi
 %bcond_without released
 Name:           akonadi
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later

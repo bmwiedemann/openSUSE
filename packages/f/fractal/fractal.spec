@@ -25,7 +25,7 @@
 %{?is_beta:%bcond_without beta_build}%{!?is_beta:%bcond_with beta_build}
 
 Name:           fractal
-Version:        10.1
+Version:        11
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
@@ -38,10 +38,10 @@ BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  clang-devel
 BuildRequires:  desktop-file-utils
-BuildRequires:  rust-grass
 BuildRequires:  llvm-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  rust-grass
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glycin-gtk4-1)

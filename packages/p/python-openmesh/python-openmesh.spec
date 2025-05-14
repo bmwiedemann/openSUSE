@@ -1,7 +1,7 @@
 #
 # spec file for package python-openmesh
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Version:        1.2.1
 Release:        0
 Summary:        A data structure for representing and manipulating polygon meshes
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://www.graphics.rwth-aachen.de:9000/OpenMesh/openmesh-python
 Source:         https://files.pythonhosted.org/packages/source/o/openmesh/openmesh-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -46,11 +47,14 @@ A halfedge-based data structure for representing and manipulating polygon meshes
 %setup -q -n openmesh-%{version}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -64,7 +68,7 @@ popd
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/openmesh-%{version}-py*.egg-info
+%{python_sitearch}/openmesh-%{version}.dist-info
 %{python_sitearch}/openmesh.*so
 
 %changelog

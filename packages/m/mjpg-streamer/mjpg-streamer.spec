@@ -1,7 +1,7 @@
 #
 # spec file for package mjpg-streamer
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,6 +55,9 @@ The number reflects /dev/videoX and listening port 808X.
 %autosetup -p2 -n %{name}-%version/mjpg-streamer-experimental
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DINCLUDE_INSTALL_DIR:PATH=/usr/include -DLIB_INSTALL_DIR:PATH=%_libdir -DSYSCONF_INSTALL_DIR:PATH=/etc -DSHARE_INSTALL_PREFIX:PATH=/usr/share -DCMAKE_INSTALL_LIBDIR:PATH=%_libdir -DCMAKE_BUILD_TYPE=RelWithDebInfo ..

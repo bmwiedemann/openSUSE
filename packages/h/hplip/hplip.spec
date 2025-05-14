@@ -47,7 +47,7 @@
 %endif
 
 Name:           hplip
-Version:        3.24.4
+Version:        3.25.2
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -116,8 +116,12 @@ Patch603:       hplip-scan-orblite-c99.patch
 Patch604:       hplip-sclpml-strcasestr.patch
 Patch605:       hplip-hpaio-gcc14.patch
 Patch606:       hplip-base-fix-error-in-ConfigBase-handling.patch
+Patch607:       hplip-utils-Fix-plugin-verification-with-sha256.patch
+# PATCH-FIX-UPSTREAM https://bugs.launchpad.net/hplip/+bug/2096650
+Patch651:       hplip-3.24.4-gcc15.patch
 # Compatibility patches for old SUSE releases
 Patch700:       hplip-base-replace-f-string-with-string.format-for-p.patch
+Patch701:       hpcups-fix-compilation-on-SLE12.patch
 
 %if %use_qt5
 BuildRequires:  %{pymod qt5-devel}
@@ -383,9 +387,12 @@ This sub-package is only required by developers.
 %patch -P 604 -p1
 %patch -P 605 -p1
 %patch -P 606 -p1
+%patch -P 607 -p1
+%patch -P 651 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
 %patch -P 700 -p1
+%patch -P 701 -p1
 %endif
 
 # replace "env" shebang and "/usr/bin/python" with real executable

@@ -15,4 +15,20 @@
     <comment>New stable rel (forwarded request 1253386 from iznogood)</comment>
     <requestid>1253700</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b6f15d1ab1550edc517c205aa138e0f</srcmd5>
+    <version>48.1</version>
+    <time>1746476969</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1:
+  + Improved the styling of the overlay. You should now be able to
+    see more of the video.
+  + Subtitles now render at the display’s native resolution.
+  + Moved the spinner for buffering videos to the top right to be
+    less distracting.
+  + Made sure to pause the video while seeking.
+  + Fixed the options popover not going away after picking a
+    playback speed. (forwarded request 1274184 from iznogood)</comment>
+    <requestid>1274591</requestid>
+  </revision>
 </revisionlist>

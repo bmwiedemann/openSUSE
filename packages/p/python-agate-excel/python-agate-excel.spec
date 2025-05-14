@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate-excel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,10 @@ BuildRequires:  %{python_module agate >= 1.5.0}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module olefile}
 BuildRequires:  %{python_module openpyxl >= 2.3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xlrd >= 0.9.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,10 +52,10 @@ to agate.
 sed -i -e '/^#!\//, 1d' agateexcel/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,7 +64,7 @@ sed -i -e '/^#!\//, 1d' agateexcel/*.py
 %files %{python_files}
 %doc AUTHORS.rst README.rst
 %license COPYING
-%{python_sitelib}/agateexcel*
-%{python_sitelib}/agate_excel*
+%{python_sitelib}/agateexcel
+%{python_sitelib}/agate_excel-%{version}.dist-info
 
 %changelog

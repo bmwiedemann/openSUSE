@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 12:00:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Feb  7 14:14:04 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Add loopback_required.patch which allows skipping over tests

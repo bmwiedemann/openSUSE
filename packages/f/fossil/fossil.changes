@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun May  4 07:18:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fossil 2.26:
+  * fossil diff usability improvements
+  * fossil merge-info and --tk provides analysis on the most recent
+    merge operations
+  * fossil commit now can help detect formatting mistakes, can be
+    a noop when there are no changes present (--if-changes), can
+    check in with SSH keys, and UI improvements
+  * fossil patch fixed some bugs
+  * ticketing system improved: tickets can now have wiki pages
+    attached, ticket templates, multiple ticket creation is easier
+  * The FOSSIL_REPOLIST_SHOW influences the default displayed info
+  * Improves security for TH1 scripting language
+  * /chat now behaves better during server outages
+  * Various UI improvements
+  * deprecated --comfmtflags and --comment-format global options
+- drop conflicted overflow.patch added with insufficient references
+- disable fusefs, fossil was not ported to fuse3 (boo#1242079)
+
+-------------------------------------------------------------------
 Wed Feb 12 10:23:53 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - overflow.patch: Fix undefined behaviour due to overflow

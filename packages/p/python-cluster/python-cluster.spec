@@ -1,7 +1,7 @@
 #
 # spec file for package python-cluster
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python36 1
 Name:           python-cluster
 Version:        1.4.1.post2
@@ -51,14 +50,16 @@ K-Means algorithm. For the hierarchical algorithm there are different
 %setup -q -n cluster-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
+%doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/cluster
+%{python_sitelib}/cluster-%{version}.dist-info
 
 %changelog

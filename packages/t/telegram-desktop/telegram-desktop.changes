@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May  7 02:36:50 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Updated ada to 3.2.4.
+- Updated openh264-headers to 2.6.0.
+- Updated tg_owt to git20250501
+  * Changed 0002-tg_owt-h264-dlopen.patch.
+  * Added pipewire 1.4 support (removed 0003-tg_owt-pipewire-1.4.patch).
+- Replaced tg_owt-dlopen-headers.tar.gz to openh264-headers-2.6.0.tar.xz.
+- Renamed 0001-dynamic-link-x.patch to dynamic-link-x.patch.
+- Renamed 0002-tg_owt-h264-dlopen.patch to tg_owt-h264-dlopen.patch.
+- Renamed 0001-Fix-build-with-Qt-6.9.patch to Qt-6.9.patch.
+- Used mold linker (keeps RAM consumption within the 16 GB limit).
+
+-------------------------------------------------------------------
 Fri Apr 11 07:08:18 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Added 0001-Fix-build-with-Qt-6.9.patch (boo#1241069).

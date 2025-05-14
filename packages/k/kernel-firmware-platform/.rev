@@ -65,4 +65,16 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272735</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>92493facf8b0d14907f0854290cfb02a</srcmd5>
+    <version>20250508</version>
+    <time>1747061142</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250508 (git commit 788aadc8f73d):
+  * linux-firmware: Amphion: Update vpu firmware
+
+- Update to version 20250507 (git commit 94e4d273ad22):
+  * amd_pmf: Update AMD PMF TA Firmware to v3.1</comment>
+    <requestid>1276105</requestid>
+  </revision>
 </revisionlist>

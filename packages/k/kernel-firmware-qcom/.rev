@@ -95,4 +95,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272737</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ebe11dd760bb59ad0f8f5801f63d2404</srcmd5>
+    <version>20250502</version>
+    <time>1747061143</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * qcom: Add link for SM8350 GPU firmware</comment>
+    <requestid>1276106</requestid>
+  </revision>
 </revisionlist>

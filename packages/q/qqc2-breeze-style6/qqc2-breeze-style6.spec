@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           qqc2-breeze-style6
-Version:        6.3.4
+Version:        6.3.5
 Release:        0
 Summary:        Breeze Style for Qt Quick
 License:        LGPL-2.1-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
-BuildRequires:  cmake(KF6QuickCharts) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}

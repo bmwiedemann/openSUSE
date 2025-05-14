@@ -1,7 +1,7 @@
 #
 # spec file for package python-RegexOrder
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python2 1
 # For LICENSE file
 %define tag     23f0ac4ac46527404e3ec9097df931378d3d803a
 Name:           python-RegexOrder
@@ -29,7 +27,9 @@ URL:            https://github.com/chuanconggao/RegexOrder
 Source:         https://files.pythonhosted.org/packages/source/R/RegexOrder/RegexOrder-%{version}.tar.gz
 Source10:       https://raw.githubusercontent.com/chuanconggao/RegexOrder/%{tag}/LICENSE
 BuildRequires:  %{python_module base >= 3.6}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-regex >= 2018.2.21
@@ -52,15 +52,16 @@ cp %{SOURCE10} .
 sed -i -e '/^#!\s*\//, 1d' regexorder/*.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/regexorder
+%{python_sitelib}/[Rr]egex[Oo]rder-%{version}*-info
 
 %changelog

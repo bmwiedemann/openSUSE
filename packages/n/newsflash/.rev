@@ -94,4 +94,26 @@
     <comment></comment>
     <requestid>1203127</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f8bbf360aee636cc0d8886b705ccb2d9</srcmd5>
+    <version>3.3.5+223</version>
+    <time>1746809516</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.5+223:
+  * fix custom sync interval initial error state
+  * update blueprint repo url
+  * restore search term before selecting sidebar item
+  * restore search term before selecting sidebar item
+  * Article View Style updates
+  * warning about short update intervals
+  * fmt
+  * close article on deselect article list (fixes #751)
+  * visual fixes
+  * use default values for new setting keys
+- enable updating vendor tarball, fixes bsc#1242632, bsc#1242810
+- remove aarch64 workaround, got fixed in Factory
+- needs clang-devel, as a crate doesn't build otherwise
+- remove suse_update_desktop_file macro (forwarded request 1276200 from rrahl0)</comment>
+    <requestid>1276204</requestid>
+  </revision>
 </revisionlist>

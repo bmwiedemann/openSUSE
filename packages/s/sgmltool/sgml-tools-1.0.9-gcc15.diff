@@ -1,0 +1,15 @@
+--- a/sgmls-1.1/getopt.h	1996-12-02 12:16:29.000000000 +0100
++++ b/sgmls-1.1/getopt.h	2025-05-02 23:51:50.059256831 +0200
+@@ -4,8 +4,12 @@
+ conflicting definition.  Systems differ on how they declare the second
+ parameter. */
+ 
++#ifdef HAVE_UNISTD_H
++#include <unistd.h>
++#else
+ extern int getopt();
+ 
+ extern char *optarg;
+ extern int optind;
+ extern int opterr;
++#endif

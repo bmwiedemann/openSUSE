@@ -22,20 +22,22 @@
 %define _version 1.28
 
 Name:           atril
-Version:        1.28.1
+Version:        1.28.2
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
 Group:          Productivity/Office/Other
 URL:            https://mate-desktop.org/
-Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
+
+BuildRequires:  c++_compiler
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gtk-doc
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  python3-libxml2
 BuildRequires:  texlive-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(gail-3.0)
@@ -53,7 +55,7 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(poppler-glib) >= 0.22.0
 BuildRequires:  pkgconfig(sm)
-BuildRequires:  pkgconfig(webkit2gtk-4.0)
+BuildRequires:  pkgconfig(webkit2gtk-4.1)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zlib)
 Requires:       %{name}-backends = %{version}
@@ -63,7 +65,6 @@ Recommends:     %{name}-lang
 Provides:       mate-document-viewer = %{version}
 Obsoletes:      mate-document-viewer < %{version}
 Obsoletes:      mate-document-viewer-lang < %{version}
-%glib2_gsettings_schema_requires
 
 %description
 Atril is a document viewer capable of displaying multiple and single
@@ -176,24 +177,20 @@ This package contains the documentation for atril
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static                    \
+  --enable-gtk-doc                   \
   --libexecdir=%{_libexecdir}/%{name} \
   --enable-introspection
+
 %make_build
 
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}/
 
-%post -n libatrilview%{sover} -p /sbin/ldconfig
-
-%postun -n libatrilview%{sover} -p /sbin/ldconfig
-
-%post -n libatrildocument%{sover} -p /sbin/ldconfig
-
-%postun -n libatrildocument%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libatrilview%{sover}
+%ldconfig_scriptlets -n libatrildocument%{sover}
 
 %files
 %license COPYING

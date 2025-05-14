@@ -518,4 +518,12 @@
     <comment>- Update to release 2025.03.31</comment>
     <requestid>1265993</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>91b664b8167f2ac4f9d38921b7af3db6</srcmd5>
+    <version>2025.04.30</version>
+    <time>1746476779</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2025.04.30 [boo#1242186]</comment>
+    <requestid>1274208</requestid>
+  </revision>
 </revisionlist>

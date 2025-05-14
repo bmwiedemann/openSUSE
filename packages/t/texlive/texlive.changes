@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 08 10:27:23 CEST 2025 - Arvin Schnell <aschnell@suse.com>
+
+- Add patch boost.dif
+  * Fixed build bith boost 1.88 (bnc#1242801)
+
+-------------------------------------------------------------------
+Tue May  6 09:27:50 UTC 2025 - Dr. Werner Fink <werner@suse.de>
+
+- Make build also for Leap 15.6 
+
+-------------------------------------------------------------------
 Sun Apr 20 17:46:08 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add source-asymptote-liblsp.dif:  fix some missing #include

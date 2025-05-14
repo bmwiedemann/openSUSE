@@ -56,4 +56,14 @@
   * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.13.0 to 5.15.0 (#4510) (forwarded request 1273321 from ph03nix)</comment>
     <requestid>1273416</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01178995042e8aa2902c494fc6e54865</srcmd5>
+    <version>1.1.2</version>
+    <time>1746638275</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.2:
+  * v1.1.2
+  * Fix issue where system-ingestible output format(csv) was humanised(comma separated) leading to a breaking change in query outputs. Closes #4525 (forwarded request 1275009 from ph03nix)</comment>
+    <requestid>1275014</requestid>
+  </revision>
 </revisionlist>

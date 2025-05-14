@@ -1,0 +1,58 @@
+From ff9aba206a30288f456dfc91584a52ba9927b438 Mon Sep 17 00:00:00 2001
+From: Thomas Loimer <thomas.loimer@tuwien.ac.at>
+Date: Tue, 21 Jan 2025 20:50:15 +0100
+Subject: [PATCH] Allow an arc-box with zero radius, ticket #184
+
+In the pict2e output, a rectangle with rounded corners,
+dashed line type and zero corner-radius would cause a crash.
+Convert rectangles with rounded corners and zero corner-radius to
+regular rectangles.
+---
+ fig2dev/read.c        |  8 ++++++++
+ fig2dev/tests/read.at | 11 +++++++++++
+ 2 files changed, 19 insertions(+)
+
+diff --git fig2dev/read.c fig2dev/read.c
+index 387527b..f643f7e 100644
+--- fig2dev/read.c
++++ fig2dev/read.c
+@@ -1037,6 +1037,14 @@ sanitize_lineobject(F_line *l, int line_no)
+ 							line_no);
+ 					return -1;
+ 				}
++				if (l->type == T_ARC_BOX && l->radius == 0) {
++					put_msg("A %s, but zero corner radius "
++							"at line %d - convert "
++							"to a rectangle.",
++							obj_name[l->type - 2],
++							line_no);
++					l->type = T_BOX;
++				}
+ 			}
+ 
+ 		} else { /* T_BOX || T_POLYGON */
+diff --git fig2dev/tests/read.at fig2dev/tests/read.at
+index 588424d..1b4baea 100644
+--- fig2dev/tests/read.at
++++ fig2dev/tests/read.at
+@@ -123,6 +123,17 @@ A rectangle with 3 corners at line 11 - convert to a polygon.
+ ])
+ AT_CLEANUP
+ 
++AT_SETUP([convert an arc-box with zero radius to a box])
++AT_KEYWORDS(read.c arc-box)
++AT_CHECK([fig2dev -L pict2e <<EOF
++FIG_FILE_TOP
++2 4 1 1 0 0 50 -1 -1 4.0 0 0 0 0 0 5
++	0 0 300 0 300 300 0 300 0 0
++EOF
++],0,ignore,[A rectangle with rounded corners, but zero corner radius at line 11 - convert to a rectangle.
++])
++AT_CLEANUP
++
+ AT_SETUP([fail on a malformed arc-box])
+ AT_KEYWORDS(read.c malformed arc-box)
+ AT_CHECK([fig2dev -L pict2e <<EOF
+-- 
+2.35.3
+

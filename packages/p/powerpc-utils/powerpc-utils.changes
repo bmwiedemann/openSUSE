@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 12 09:44:17 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix-HNV-installation-network-conflicts-across-all-di.patch (jsc#PED-3946)
+
+-------------------------------------------------------------------
 Thu Mar 20 08:28:34 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Refresh lparstat-Fix-negative-values-for-idle-PURR.patch to work without

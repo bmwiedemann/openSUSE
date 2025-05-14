@@ -17,8 +17,17 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+%bcond_without doc
+%define psuffix -doc
+%else
+%bcond_with doc
+%define psuffix %{nil}
+%endif
+
 %{?sle15allpythons}
-Name:           python-manuel
+Name:           python-manuel%{psuffix}
 Version:        1.13.0
 Release:        0
 Summary:        Python module to build tested documentation
@@ -33,12 +42,15 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1600
+
+%if %{with doc} && 0%{?suse_version} >= 1600
 # SECTION Documentation requirements:
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-myst-parser
 BuildRequires:  python3-sphinxcontrib-copybutton
 # /SECTION
+%elif %{with doc}
+ExclusiveArch:  do-not-build
 %endif
 # SECTION Testing requirements:
 BuildRequires:  %{python_module zope.testing}
@@ -61,16 +73,18 @@ This package contains documentation files for %{name}.
 %autosetup -p1 -n manuel-%{version}
 
 %build
+%if %{without doc}
 %pyproject_wheel
-%if 0%{?suse_version} >= 1600
+%else
 sphinx-build -c sphinx/ -a src/manuel docs/
 rm docs/.buildinfo
 %endif
 
 %install
+%if %{without doc}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%if 0%{?suse_version} >= 1600
+%else
 %{python_expand #
 mkdir -p %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
@@ -78,6 +92,7 @@ cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 }
 %endif
 
+%if %{without doc}
 %check
 %pytest src/manuel/tests.py
 
@@ -86,9 +101,10 @@ cp -r docs/* %{buildroot}%{_docdir}/%{$python_prefix}-manuel-doc
 %doc CHANGES.rst COPYRIGHT.rst PKG-INFO README.rst
 %{python_sitelib}/manuel
 %{python_sitelib}/manuel-%{version}.dist-info
+%endif
 
-%if 0%{?suse_version} >= 1600
-%files %{python_files doc}
+%if %{with doc}
+%files %{python_files}
 %doc %{_docdir}/%{python_prefix}-manuel-doc
 %endif
 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-ConfigArgParse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/C/ConfigArgParse/
 Patch1:         https://github.com/bw2/ConfigArgParse/pull/295/commits/c6a974211f1a13d492bb807ff6d07cefcc948a87.patch#/py313-tests.patch
 Patch2:         https://github.com/bw2/ConfigArgParse/pull/295/commits/5e9f442374bc6d9707a43df13aaff684dff6b535.patch#/py313-skip-exit.patch
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -56,10 +57,10 @@ add these features
 %autosetup -p1 -n ConfigArgParse-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -71,7 +72,7 @@ export COLUMNS=80
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/configargparse*
-%{python_sitelib}/ConfigArgParse-%{version}-py*.egg-info
+%{python_sitelib}/[Cc]onfig[Aa]rg[Pp]arse-%{version}*info
 %pycache_only %{python_sitelib}/__pycache__
 
 %changelog

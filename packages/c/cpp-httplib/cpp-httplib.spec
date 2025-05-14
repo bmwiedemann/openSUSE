@@ -16,18 +16,16 @@
 #
 
 
-%define         sover 0.18
-%define         libver 0_18
+%define         sover 0.20
+%define         libver 0_20
 Name:           cpp-httplib
-Version:        0.18.6
+Version:        0.20.1
 Release:        0
 Summary:        A C++11 HTTP/HTTPS server and client library
 License:        MIT
 URL:            https://github.com/yhirose/cpp-httplib
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.pc
-# https://github.com/yhirose/cpp-httplib/issues/2042
-Patch0:         cpp-httplib-test-issue2004-online.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(gtest)

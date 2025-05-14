@@ -282,4 +282,41 @@ Add coreutils-systemd to BuildRequires for the `uptime` command needed for a tes
     <comment></comment>
     <requestid>1234588</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>552d8d90f2abd45402e7e54c5431d044</srcmd5>
+    <version>2025.5.3</version>
+    <time>1746476773</time>
+    <user>anag_factory</user>
+    <comment>- update to 2025.5.3:
+  * Fix compatibility with setuptools &gt;= 80
+  * registry.Json: Fix serialization/deserialization points
+  * Make supybot.plugins.Web.urlWhitelist channel-specific
+  * Fix interference of wrap() and internationalizeDocstring()
+  * Add support for Python 3.14.0-alpha1
+  * i18n: Remove hacks for Python 2
+  * Add support for negative integers options following getopt
+
+- Update to version 2022-11-16
+  + Socket: Disable resolution when using a SOCKS proxy
+  + callbacks, Misc, Relay: Fix when the message prefix is just a nick
+  + Channel: Fix Nameerror in @Alert.
+  + httpserver: Fix pointless tracebacks
+  + RSS: Default to setting announces per channel+network, instead of
+  + Log loading times for each plugin
+  + RSS: Show a meaningful error in case '@rss' is called with a non-URL/…
+  + Socket: Don't add instances twice in cls._instances.
+  + Make irc.error do nothing is no string is given as argument.
+  + Call super().setValue() before defaultHttpHeaders.
+  + Deduplicate setting Accept-Language HTTP header.
+  + Fix getSpecific usage
+  + Import MutableMapping and MutableSet from collections.abc.
+  + Readd Limnoria name to default part &amp; quit messages
+  + SedRegex: update plugin metadata
+  + Add config supybot.reply.format.list.maximumItems to limit the size o…
+  + Make getLocaleFromRegistryCache reload existing locales.
+  + Math: Display a nicer error in case of MemoryError.
+  + MoobotFactoids: Fix support of commands sent in private.
+  + QuoteGrabs: fix SyntaxWarning (#1391)</comment>
+    <requestid>1274209</requestid>
+  </revision>
 </revisionlist>

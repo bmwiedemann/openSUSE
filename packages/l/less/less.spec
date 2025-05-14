@@ -1,7 +1,7 @@
 #
 # spec file for package less
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        668
+Version:        676
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -34,12 +34,12 @@ Source1:        README.SUSE
 Source2:        lessopen.sh
 Source3:        lessclose.sh
 Source4:        lesskey.src
-Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig
+# Source5:        https://www.greenwoodsoftware.com/less/less-%%{version}.sig
 Source6:        https://www.greenwoodsoftware.com/less/pubkey.asc#/%{name}.keyring
 Patch0:         less-429-shell.patch
 Patch2:         less-429-more.patch
-Patch3:         reproducible.patch
 BuildRequires:  automake
+BuildRequires:  groff
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 # weak dependencies required only by preprocessor, which is disabled by default
@@ -61,6 +61,8 @@ chmod u+w *
 #
 cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
+make -f Makefile.aut distfiles
+
 %build
 autoreconf -fiv
 export CFLAGS="%{optflags} -fPIE"
@@ -68,7 +70,8 @@ export LDFLAGS="-pie"
 %configure
 #
 # regenerate help.c because less.hlp was patched
-./mkhelp.pl <less.hlp >help.c
+perl mkhelp.pl < less.hlp > help.c
+grep -h "^public [^;]*$" *.c *.h | sed "s/$/;/" >funcs.h
 #
 # build less
 %make_build

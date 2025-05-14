@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Apr 30 14:48:43 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update toml-parser to version 2.0.1.2.
+  ## 2.0.1.2
+
+  * Reject inputs with out-of-bounds time zone offsets in accordance
+    with the toml-tests test suite.
+
+  ## 2.0.1.1
+
+  * Fixes bug that prohibited non-ASCII characters in `'''` strings.
+
+-------------------------------------------------------------------
 Thu Dec 19 00:34:19 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update toml-parser to version 2.0.1.0 revision 1.

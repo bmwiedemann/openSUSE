@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 13:23:23 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete gnome-common with libtool BuildRequires.
+- Drop obsolete update-desktop-files BuildRequires and macro.
+
+-------------------------------------------------------------------
 Fri Jan 19 15:24:47 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_ibus_libexecdir moving to %_libexecdir (bsc#1174075)

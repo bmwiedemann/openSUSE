@@ -17,7 +17,7 @@
 
 
 Name:           tlrc
-Version:        1.11.0
+Version:        1.11.1
 Release:        0
 Summary:        A tldr-pages client written in Rust
 License:        MIT

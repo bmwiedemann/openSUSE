@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-timeout
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ Summary:        Pytest plugin to abort hanging tests
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-timeout/
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-timeout/pytest-timeout-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7.0.0}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest >= 7.0.0
@@ -58,10 +60,10 @@ stderr nevertheless, which is the most important part at this stage.
 %setup -q -n pytest-timeout-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -73,8 +75,8 @@ donttest="or test_cov"
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/pytest_timeout-%{version}*-info
-%{python_sitelib}/pytest_timeout.py*
+%{python_sitelib}/pytest_timeout-%{version}.dist-info
+%{python_sitelib}/pytest_timeout.py
 %pycache_only %{python_sitelib}/__pycache__/pytest_timeout*.pyc
 
 %changelog

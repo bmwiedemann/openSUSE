@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu May  8 13:05:24 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.1
+  * Fix charge limit based on battery charge by @JohnAZoidberg in #123
+  * Split I2C tunneling out of ccgx module by @JohnAZoidberg in #112
+  * chromium_ec: Use portio if /dev/cros_ec does not exist
+    by @JohnAZoidberg in #124
+  * chromioum_ec: Autodetect Microchip EC when using portio
+    by @JohnAZoidberg in #125
+  * --version: Add revision of mainboard by @JohnAZoidberg in #127
+  * --inputdeck: Fix Chassis Closed status by @JohnAZoidberg in #130
+  * Don't require PD config if platform isn't detected
+    by @JohnAZoidberg in #129
+  * Simplify features and detect based on OS by @JohnAZoidberg in #126
+  * windows: Run --versions command if double-clicked
+    by @JohnAZoidberg in #132
+  * --thermal: Add Framework 12 charger IC temp and unknown sensors
+    by @JohnAZoidberg in #135
+  * windows: Fix --console follow by @JohnAZoidberg in #136
+  * Bump version to 0.4.1 by @JohnAZoidberg in #133
+  * More examples by @JohnAZoidberg in #137
+
+-------------------------------------------------------------------
+Fri May  2 10:16:57 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.0
+  * framework_uefi: Document how to build on Windows
+    by @JohnAZoidberg in #102
+  * Don't show retimer as unknown if none present
+    by @JohnAZoidberg in #103
+  * gh-actions: Disable FreeBSD builds by @JohnAZoidberg in #105
+  * chromium_ec: Add adc_read by @JohnAZoidberg in #108
+  * freebsd: Remove warning by @JohnAZoidberg in #110
+  * chromium_ec: Fix reading EC console by @JohnAZoidberg in #106
+  * Fix windows clippy lint by @JohnAZoidberg in #111
+  * power: Detect number of fans and report all of them
+    by @JohnAZoidberg in #113
+  * Revert "gh-actions: Disable FreeBSD builds"
+    by @JohnAZoidberg in #115
+  * Allow custom fan speed control by @JohnAZoidberg in #114
+  * Show firmware version of Framework 16 Inputmodules
+    by @JohnAZoidberg in #104
+  * Add more EXAMPLES by @JohnAZoidberg in #116
+  * Add --expansion-bay command to print info by @JohnAZoidberg in #107
+  * --input-deck: Print Framework12 and Framework 13 input deck status
+    by @JohnAZoidberg in #109
+  * touchscreen_win: Find the right path with hidapi
+    by @JohnAZoidberg in #119
+  * Chargerate by @JohnAZoidberg in #117
+  * Improve commandline output by @JohnAZoidberg in #121
+  * Get information from USI Stylus by @JohnAZoidberg in #118
+  * Add command to set EC hibernation delay by @JohnAZoidberg in #122
+  * Bump version to 0.4.0 by @JohnAZoidberg in #120
+- add examples to documentation
+
+-------------------------------------------------------------------
+Mon Apr 28 15:01:02 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.3.0
+  * Add export and Debug deriving by @JohnAZoidberg in #78
+  * Update dependencies by @JohnAZoidberg in #79
+  * Add support for Framework 2nd Gen Event platforms 
+    by @JohnAZoidberg in #81
+  * Add command to toggle tablet mode by @JohnAZoidberg in #82
+  * fp-brightness: Add support for V1 host command 
+    by @JohnAZoidberg in #85
+  * framework_lib: Add ultra-low powerbutton brightness 
+    by @JohnAZoidberg in #83
+  * Add accelerometer support by @JohnAZoidberg in #86
+  * chromium: Add device_complete to diags by @JohnAZoidberg in #87
+  * Add support for RGB command by @JohnAZoidberg in #84
+  * freebsd: Build with latest stable on gh actions 
+    by @JohnAZoidberg in #89
+  * camera: Print firmware version of camera by @JohnAZoidberg in #88
+  * camera: Don't crash if something's wrong by @JohnAZoidberg in #93
+  * touchpad: Show IC type and firmware version by @JohnAZoidberg in #94
+  * Fix H2O capsule analysis by @JohnAZoidberg in #92
+  * windows: Upload release binary by @JohnAZoidberg in #99
+  * windows: Don't panic if driver not installed 
+    by @JohnAZoidberg in #100
+  * framework12: Support reading touchpad version 
+    by @JohnAZoidberg in #97
+  * touchscreen: Dump firmware version and protocol 
+    by @JohnAZoidberg in #90
+  * add commands to read/write gpu serial by @kiram9 in #98
+  * Add completions for ZSH and Bash by @bsdlme in #96
+
+-------------------------------------------------------------------
 Wed Apr 16 13:03:46 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - add make-reproducable.patch to force newer versions of

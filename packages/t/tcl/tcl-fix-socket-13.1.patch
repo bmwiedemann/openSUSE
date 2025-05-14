@@ -1,0 +1,22 @@
+--- tests/socket.test	2025-04-29 17:37:07.745683933 +0200
++++ tests/socket.test	2025-04-29 17:26:42.669773969 +0200
+@@ -1809,7 +1809,7 @@
+ 
+ test socket_$af-13.1 {Testing use of shared socket between two threads} -body {
+     # create a thread
+-    set serverthread [thread::create -preserved [string map [list @localhost@ $localhost] {
++    set serverthread [thread::create -joinable [string map [list @localhost@ $localhost] {
+         set f [socket -server accept -myaddr @localhost@ 0]
+         set listen [lindex [fconfigure $f -sockname] 2]
+         proc accept {s a p} {
+@@ -1840,7 +1840,7 @@
+         gets $s result
+     }
+     close $s
+-    thread::release $serverthread
++    thread::join $serverthread
+     append result " " [llength [thread::names]]
+ } -result {hello 1} -constraints [list socket supported_$af thread]
+ 
+Index: tests/socket.test
+==================================================================

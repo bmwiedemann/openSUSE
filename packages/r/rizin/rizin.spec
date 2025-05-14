@@ -17,7 +17,7 @@
 
 
 Name:           rizin
-Version:        0.7.4
+Version:        0.8.1
 Release:        0
 Summary:        UNIX-like reverse engineering framework and command-line tool-set
 URL:            https://github.com/rizinorg/rizin/
@@ -132,6 +132,7 @@ install -d %{buildroot}%{_libdir}/rizin-bindings
 
 %files common
 %dir %{_datadir}/%{name}
+%{_datadir}/%{name}/arch
 %{_datadir}/%{name}/asm
 %{_datadir}/%{name}/cons
 %{_datadir}/%{name}/flag

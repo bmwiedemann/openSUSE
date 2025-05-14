@@ -58,7 +58,8 @@
   </repository>
   <packages type="image" profiles="networkd">
     <package name="systemd"/>
-    <package name="systemd-network"/>
+    <package name="systemd-networkd"/>
+    <package name="systemd-resolved"/>
     <package name="systemd-sysvinit"/>
     <package name="iproute2"/>
   </packages>

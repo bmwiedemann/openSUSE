@@ -1,7 +1,7 @@
 #
 # spec file for package python-altgraph
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://github.com/ronaldoussoren/altgraph/
 Source:         https://files.pythonhosted.org/packages/source/a/altgraph/altgraph-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -50,11 +52,11 @@ graphviz output.
 %setup -q -n altgraph-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 cd doc && make html
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,7 +65,8 @@ cd doc && make html
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/altgraph
+%{python_sitelib}/altgraph-%{version}*-info
 
 %files -n %{name}-doc
 %doc doc/_build/html/

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 08:10:52 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add condition for OpenImageDenoise BuildRequires
+- Enable OpenImageDenoise on aarch64
+
+-------------------------------------------------------------------
 Thu May  1 02:32:07 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - add BuildRequires for fftw3-threads-devel which is needed now

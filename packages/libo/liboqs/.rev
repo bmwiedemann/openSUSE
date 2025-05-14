@@ -240,4 +240,13 @@
     - UOV: Added support for UOV algorithm from NIST Additional Signatures Round 2. (forwarded request 1270598 from msmeissn)</comment>
     <requestid>1270599</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>9d053785ca7b3cbb4bd64311889228cc</srcmd5>
+    <version>0.13.0</version>
+    <time>1747159945</time>
+    <user>anag_factory</user>
+    <comment>- add -DOQS_ENABLE_KEM_HQC=ON even due to security issues, as otherwise
+  we dropped binary compatibility with postquantumcryptoengine (bsc#1242701) (forwarded request 1276794 from msmeissn)</comment>
+    <requestid>1276795</requestid>
+  </revision>
 </revisionlist>

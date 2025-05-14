@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue May  6 06:49:32 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 20250505:
+ * scamper:
+  * trace: separate probes from replies
+  * trace: support -P tcp-ack Path MTU probing
+  * trace: support -N squeries with Path MTU probing
+  * trace: embed path MTU probing data in JSON output
+  * ping: add -O dltx option to force datalink tx, capture nhmtu in ICMP PTB messages
+  * add basic sysctl-like configuration file support, which currently only allows for disabling measurement primitives, e.g.: # disable udpprobe measurement primitive udpprobe.enable=0
+  * hopefully fix build on solaris
+ * libscamperfile:
+  * chase separation of traceroute probes from replies, add scamper_trace_hopiter_* to simplify required user code modifications.
+  * fix 20250227 regression that did not read ipid32 in ping replies correctly, which lead to speedtrap not working.
+  * fix udpprobe warts storage when no packets are sent.
+  * be defensive allocating memory in warts read path.
+  * be defensive with possible null pointers when generating json from malformed warts.
+  * bump libscamperfile version.
+ * Python module:
+  * include setup.py in source code distribution.
+  * transparently handle separation of traceroute probes from replies.
+  * extend do_ping to support MTU probing, and capture embedded nhmtu.
+ * tests:
+  * replace unit_host_warts, unit_http_warts, unit_ping_warts, unit_trace_warts, unit_udpprobe_warts, with unit_warts.
+  * expand ping warts unit tests to check ipid values.
+  * expand trace warts unit tests to include last ditch probing, and path mtu discovery.
+  * add udpprobe and dealias warts unit tests.
+  * add fuzz_warts2json.
+  * add simple unit tests for parsing scamper configuration file.
+ * throughout:
+  * chase libscamperfile modifications throughout bundled utilities.
+  * use string_concatc in all obvious places, reduce use of string_concaf further, speeding up string rendering.
+
+-------------------------------------------------------------------
 Sat Apr  5 11:22:07 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20250401:

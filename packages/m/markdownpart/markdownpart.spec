@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           markdownpart
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later

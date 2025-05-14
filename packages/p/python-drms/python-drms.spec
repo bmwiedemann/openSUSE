@@ -1,7 +1,7 @@
 #
 # spec file for package python-drms
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,10 @@ License:        MIT
 URL:            https://github.com/sunpy/drms
 Source:         https://files.pythonhosted.org/packages/source/d/drms/drms-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
@@ -52,10 +54,10 @@ default, but can also be used with local NetDRMS sites.
 %setup -q -n drms-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/drms
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -73,6 +75,6 @@ default, but can also be used with local NetDRMS sites.
 %license LICENSE.rst
 %python_alternative %{_bindir}/drms
 %{python_sitelib}/drms
-%{python_sitelib}/drms-%{version}*-info
+%{python_sitelib}/drms-%{version}.dist-info
 
 %changelog

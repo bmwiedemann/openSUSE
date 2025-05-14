@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 12 11:00:44 UTC 2025 - pgajdos@suse.com
+
+- version update to 0.20.1
+  0.20.1 (CVE-2025-46728 [bsc#1242777])
+  * Add AF_UNIX support on windows #2115
+  * Support zstd also via pkg-config #2121
+  * Fix #2113
+  * Fix "Unbounded Memory Allocation in Chunked/No-Length Requests"
+  0.20.0
+  * server_certificate_verifier extended to reuse built-in verifier #2064
+  * Assertion failed when destroying httplib::Client
+  * #2068
+  * Spaces incorrectly allowed in header field names #2096
+  * build(meson): copy MountTest.MultibytesPathName files #2098
+  * Remove SSLInit #2102
+  * Add zstd support #2088
+  * Question the behavior of method read_content_without_length #2109
+  * Crash when calling std::exit while server running or client requests in flight #2097
+  0.19.0
+  * Global timeout feature (same as "--max-time" curl option) #2034
+  * Fix check for URI length to prevent incorrect HTTP 414 errors
+  0.18.7
+  * Potential memory corruption in stream_line_reader #2028
+- deleted patches
+  - cpp-httplib-test-issue2004-online.patch (upstreamed)
+
+-------------------------------------------------------------------
 Thu Feb  6 08:51:25 UTC 2025 - pgajdos@suse.com
 
 - version update to 0.18.6

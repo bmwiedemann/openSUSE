@@ -55,18 +55,10 @@ URL:            https://www.dovecot.org
 Source:         https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz
 Source1:        https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz
 Source2:        dovecot-rpmlintrc
-Source3:        dovecot-2.0.configfiles
-Source4:        dovecot-2.1.configfiles
-Source5:        dovecot-2.2.configfiles
-Source6:        dovecot-2.3.configfiles
-Source7:        dovecot-2.1-pigeonhole.configfiles
-Source8:        dovecot-2.2-pigeonhole.configfiles
-Source9:        dovecot-2.3-pigeonhole.configfiles
 Source10:       https://www.dovecot.org/releases/%{dovecot_branch}/%{pkg_name}-%{dovecot_version}.tar.gz.sig
 Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dovecot_pigeonhole_source_dir}.tar.gz.sig
 Source12:       dovecot24.keyring
 Source13:       dovecot-2.4.configfiles
-Source14:       dovecot-2.4-pigeonhole.configfiles
 Source15:       dovecot.conf
 # PATCH-FIX-OPENSUSE - boo#932386
 Patch0:         dovecot-2.3.0-dont_use_etc_ssl_certs.patch
@@ -99,7 +91,9 @@ BuildRequires:  pam-devel
 %endif
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libsystemd)
+%ifnarch s390x
 BuildRequires:  pkgconfig(libunwind)
+%endif
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 %if %{with icu}
@@ -366,7 +360,8 @@ install -m 0755 -Dd \
   %{buildroot}%{_var}/run/%{pkg_name}/login/ \
   %{buildroot}%{_var}/lib/%{pkg_name}/
 
-install -D -m 0644 %{S:15} %{buildroot}%{_datadir}/%{pkg_name}/
+mkdir -p %{buildroot}%{_datadir}/%{pkg_name}/example-config/
+install -D -m 0644 %{S:15} %{buildroot}%{_datadir}/%{pkg_name}/example-config/
 install -m 0755 %{buildroot}%{_docdir}/%{pkg_name}/mkcert.sh  %{buildroot}%{_datadir}/%{pkg_name}/
 
 # additional docs for the main package
@@ -396,7 +391,7 @@ done
 
 # clean up of things that are now in the unversioned package.
 rm %{buildroot}%{_unitdir}/dovecot.{service,socket}
-rm %{buildroot}%{_sysconfdir}/%{pkg_name}/README
+#rm %{buildroot}%{_sysconfdir}/%{pkg_name}/README
 
 # create symlinks for man pages
 %fdupes -s %{buildroot}/%{_mandir}
@@ -565,8 +560,8 @@ fi
 %{_libdir}/%{pkg_name}/modules/sieve/lib90_sieve_imapsieve_plugin.so
 #
 %dir %{_datadir}/%{pkg_name}/
-%{_datadir}/%{pkg_name}/*.conf
 %{_datadir}/%{pkg_name}/mkcert.sh
+%{_datadir}/%{pkg_name}/example-config
 %{_mandir}/man1/deliver.1%{?ext_man}
 %{_mandir}/man1/doveadm-acl.1%{?ext_man}
 %{_mandir}/man1/doveadm-altmove.1%{?ext_man}

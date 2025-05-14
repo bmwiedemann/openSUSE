@@ -103,4 +103,12 @@ python-Werkzeug 2.0.1 (currently in Staging:F)</comment>
   * remove tests from source installation</comment>
     <requestid>1179145</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>6eafadb6b6e507b5c5983c15d6efbf7f</srcmd5>
+    <version>1.0.2</version>
+    <time>1746638158</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275120</requestid>
+  </revision>
 </revisionlist>

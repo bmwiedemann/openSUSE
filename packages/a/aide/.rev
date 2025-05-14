@@ -364,4 +364,21 @@
     <comment></comment>
     <requestid>1194143</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>16d6727120cc1257f84f0043c5512cc8</srcmd5>
+    <version>0.19</version>
+    <time>1746809541</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.0:
+  * Fix build with additional libraries on non-Linux systems
+  * Update NEWS file and aide.conf.5 man page
+  * Move log message to limit log level
+- Rebased aide-0.18-as-needed.patch, aide-systemd.patch,
+  aide-xattr-in-libc.patch
+- Moved signature to Source100, use pkgconf in BuildRequirements
+  when available
+
+- switched service macros from %systemd_* to %service_* (forwarded request 1275837 from VaiTon)</comment>
+    <requestid>1276281</requestid>
+  </revision>
 </revisionlist>

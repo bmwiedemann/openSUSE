@@ -1,0 +1,10 @@
+--- src/electron/shell/browser/ui/file_dialog.h.orig	2025-05-07 19:52:05.453848300 +0200
++++ src/electron/shell/browser/ui/file_dialog.h	2025-05-07 22:41:30.703083100 +0200
+@@ -5,6 +5,7 @@
+ #ifndef ELECTRON_SHELL_BROWSER_UI_FILE_DIALOG_H_
+ #define ELECTRON_SHELL_BROWSER_UI_FILE_DIALOG_H_
+ 
++#include <stdint.h>
+ #include <string>
+ #include <utility>
+ #include <vector>

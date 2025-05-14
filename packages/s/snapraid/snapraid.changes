@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat May 10 18:16:35 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 12.4:
+  * Avoid a warning about function pointer conversion
+
+- added %check section to run internal test suite at build time
+
+-------------------------------------------------------------------
 Thu Feb  1 07:06:41 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Initial OBS release.

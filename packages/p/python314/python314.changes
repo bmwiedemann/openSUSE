@@ -1,4 +1,631 @@
 -------------------------------------------------------------------
+Fri May  9 08:36:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.14.0~b1:
+  - Tools/Demos
+    - gh-130453: Allow passing multiple keyword arguments with
+      the same function name in pygettext.
+    - gh-130195: Add warning messages when pygettext
+      unimplemented -a/--extract-all option is called.
+  - Tests
+    - gh-133131: The iOS testbed will now select the most
+      recently released “SE-class” device for testing if a device
+      isn’t explicitly specified.
+    - gh-91048: Add ability to externally inspect all pending
+      asyncio tasks, even if no task is currently entered on the
+      event loop.
+    - gh-109981: The test helper that counts the list of open
+      file descriptors now uses the optimised /dev/fd approach on
+      all Apple platforms, not just macOS. This avoids crashes
+      caused by guarded file descriptors.
+    - gh-132678: Add --prioritize to -m test. This option allows
+      the user to specify which selected tests should execute
+      first, even if the order is otherwise randomized. This is
+      particularly useful for tests that run the longest.
+    - gh-131290: Tests in Lib/test can now be correctly executed
+      as standalone scripts.
+  - Security
+    - gh-115322: The underlying extension modules behind
+      readline:, subprocess, and ctypes now raise audit events
+      on previously uncovered code paths that could lead to file
+      system access related to C function calling and external
+      binary execution. The ctypes.call_function audit hook has
+      also been fixed to use an unsigned value for its function
+      pointer.
+  - Library
+    - gh-133490: Add color support to PDB in remote mode.
+    - gh-132493: Avoid eagerly evaluating annotations in
+      functions decorated with reprlib.recursive_repr().
+    - gh-130645: Add color to stdlib argparse CLIs. Patch by Hugo
+      van Kemenade.
+    - gh-119180: Make annotationlib.get_annotations() succeed
+      with the FORWARDREF format if evaluating the annotations
+      throws an exception other than NameError or AttributeError.
+    - gh-133351: Fix remote PDB to correctly request tab
+      completions for Python expressions from the server when
+      completing a continuation line of a multi-line Python
+      block.
+    - gh-133367: Add the --feature-version, --optimize,
+      and --show-empty options to the ast command-line
+      interface. Patch by Semyon Moroz.
+    - gh-133363: The cmd.Cmd class has been fixed to reliably
+      call the completedefault method whenever the do_shell
+      method is not defined and tab completion is requested for a
+      line beginning with !.
+    - gh-113081: Highlight syntax on source code in pdb.
+    - gh-133349: Introduced auto-indent in pdb multi-line input.
+    - gh-133306: Use \z instead of \Z in fnmatch.translate() and
+      glob.translate().
+    - gh-133306: Support \z as a synonym for \Z in regular
+      expressions.
+    - gh-133300: Make argparse.ArgumentParser’s suggest_on_error
+      a keyword-only parameter. Patch by Hugo van Kemenade.
+    - gh-133290: Fix attribute caching issue when setting
+      ctypes._Pointer._type_ in the undocumented and deprecated
+      ctypes.SetPointerType() function and the undocumented
+      set_type() method.
+    - gh-133223: When PDB is attached to a remote process, do a
+      better job of intercepting Ctrl+C and forwarding it to the
+      remote process.
+    - gh-133153: Do not complete pdb commands in interact mode of
+      pdb.
+    - gh-133139: Add the curses.assume_default_colors() function,
+      a refinement of the curses.use_default_colors() function
+      which allows to change the color pair 0.
+    - gh-133089: Use original timeout value for
+      subprocess.TimeoutExpired when the func subprocess.run()
+      is called with a timeout instead of sometimes a confusing
+      partial remaining time out value used internally on the
+      final wait().
+    - gh-133036: codecs.open() is now deprecated. Use open()
+      instead. Contributed by Inada Naoki.
+    - gh-132987: Many builtin and extension functions which
+      accept an unsigned integer argument, now use __index__() if
+      available.
+    - gh-124703: Set return code to 1 when aborting process from
+      pdb.
+    - gh-133005: Support passing preset option to tarfile.open()
+      when using 'w|xz' mode.
+    - gh-115032: Support for custom logging handlers with the
+      strm argument is deprecated and scheduled for removal in
+      Python 3.16. Define handlers with the stream argument
+      instead. Patch by Mariusz Felisiak.
+    - gh-132991: Add socket.IP_FREEBIND constant on Linux 2.4 and
+      later.
+    - gh-132995: Bump the version of pip bundled in ensurepip to
+      version 25.1.1
+    - gh-132933: The zipapp module now applies the filter when
+      creating the list of files to add, rather than waiting
+      until the file is being added to the archive.
+    - gh-121249: Always support the float complex and double
+      complex C types in the struct module. Patch by Sergey B
+      Kirpichev.
+    - gh-132915: fcntl.fcntl() and fcntl.ioctl() can now detect
+      a buffer overflow and raise SystemError. The stack and
+      memory can be corrupted in such case, so treat this error
+      as fatal.
+    - gh-132017: Fix error when pyrepl is suspended, then resumed
+      and terminated.
+    - gh-132893: Improved statistics.NormalDist.cdf() accuracy
+      for inputs smaller than the mean.
+    - gh-130328: Speedup pasting in PyREPL on Windows. Fix by
+      Chris Eibl.
+    - gh-132882: Fix copying of typing.Union objects containing
+      objects that do not support the | operator.
+    - gh-93696: Fixed the breakpoint display error for frozen
+      modules in pdb.
+    - gh-129965: Add MIME types for .7z, .apk, .deb, .glb, .gltf,
+      .gz, .m4v, .php, .rar, .rpm, .stl and .wmv. Patch by Hugo
+      van Kemenade.
+    - gh-132742: fcntl.fcntl() now supports arbitrary bytes-like
+      objects, not only bytes. fcntl.ioctl() now automatically
+      retries system calls failing with EINTR and releases the
+      GIL during a system call even for large bytes-like object.
+    - gh-132451: The CLI for the PDB debugger now accepts a -p
+      PID argument to allow attaching to a running process. The
+      process must be running the same version of Python as the
+      one running PDB.
+    - gh-125618: Add a format parameter to
+      annotationlib.ForwardRef.evaluate(). Evaluating annotations
+      in the FORWARDREF format now succeeds in more cases that
+      would previously have raised an exception.
+    - gh-132805: Fix incorrect handling of nested non-constant
+      values in the FORWARDREF format in annotationlib.
+    - gh-132734: Add new constants for Bluetooth sockets.
+    - gh-132673: Fix AssertionError raised on ctypes.Structure
+      with _align_ = 0 and _fields_ = [].
+    - gh-132578: Rename the threading.Thread._handle field
+      to avoid shadowing methods defined on subclasses of
+      threading.Thread.
+    - gh-132561: Fix the public locked method of
+      multiprocessing.SemLock class. Also adding 2 tests for the
+      derivated multiprocessing.Lock and multiprocessing.RLock
+      classes.
+    - gh-121468: Add pdb.set_trace_async() function to support
+      await statements in pdb.
+    - gh-132493: typing.Protocol now uses
+      annotationlib.get_annotations() when checking whether
+      or not an instance implements the protocol with
+      isinstance(). This enables support for isinstance checks
+      against classes with deferred annotations.
+    - gh-132536: Do not disable PY_THROW event in bdb because it
+      can’t be disabled.
+    - gh-132527: Include the valid typecode ‘w’ in the error
+      message when an invalid typecode is passed to array.array.
+    - gh-132099: The Bluetooth socket with the BTPROTO_HCI
+      protocol on Linux now accepts an address in the format of
+      an integer device_id, not only a tuple (device_id,).
+    - gh-81793: Fix os.link() on platforms (like Linux)
+      where the system link() function does not follow
+      symlinks. On Linux, it now follows symlinks by default
+      or if follow_symlinks=True is specified. On Windows, it
+      now raises an error if follow_symlinks=True is passed. On
+      macOS, it now raises an error if follow_symlinks=False is
+      passed and the system linkat() function is not available at
+      runtime.
+    - gh-132493: Support creation of typing.Protocol classes with
+      annotations that cannot be resolved at class creation time.
+    - gh-132491: Rename annotationlib.value_to_string to
+      annotationlib.type_repr() and provide better handling for
+      function objects.
+    - gh-132426: Add
+      annotationlib.get_annotate_from_class_namespace() as a
+      helper for accessing annotations in metaclasses, and remove
+      annotationlib.get_annotate_function.
+    - gh-70145: Add support for channels in Bluetooth HCI
+      protocol (BTPROTO_HCI).
+    - gh-131913: Add a shortcut function
+      multiprocessing.Process.interrupt() alongside the
+      existing multiprocessing.Process.terminate() and
+      multiprocessing.Process.kill() for an improved control over
+      child process termination.
+    - gh-132439: Fix PyREPL on Windows: characters entered via
+      AltGr are swallowed. Patch by Chris Eibl.
+    - gh-132429: Fix support of Bluetooth sockets on NetBSD
+      and DragonFly BSD. Add support for cid and bdaddr_type
+      in the BTPROTO_L2CAP address on FreeBSD. Return cid in
+      getsockname() for BTPROTO_L2CAP if it is not zero.
+    - gh-132106: QueueListener.start now raises a RuntimeError if
+      the listener is already started.
+    - gh-132417: Fix a NULL pointer dereference when a C function
+      called using ctypes with restype py_object returns NULL.
+    - gh-132385: Fix instance error suggestions trigger potential
+      exceptions in object.__getattr__() in traceback.
+    - gh-125866: Add optional add_scheme argument to
+      urllib.request.pathname2url(); when set to true, a complete
+      URL is returned. Likewise add optional require_scheme
+      argument to url2pathname(); when set to true, a complete
+      URL is accepted.
+    - gh-132308: A traceback.TracebackException now correctly
+      renders the __context__ and __cause__ attributes from
+      falsey Exception, and the exceptions attribute from falsey
+      ExceptionGroup.
+    - gh-130645: Add colour to argparse help output. Patch by
+      Hugo van Kemenade.
+    - gh-127495: In PyREPL, append a new entry to the
+      PYTHON_HISTORY file after every statement. This should
+      preserve command-line history after interpreter is
+      terminated. Patch by Sergey B Kirpichev.
+    - gh-129463: Comparison of annotationlib.ForwardRef objects
+      no longer uses the internal __code__ and __ast_node__
+      attributes, which are used as caches.
+    - gh-132250: Fixed the SystemError in cProfile when locating
+      the actual C function of a method raises an exception.
+    - gh-132064: annotationlib.get_annotations() now uses
+      the __annotate__ attribute if it is present, even if
+      __annotations__ is not present. Additionally, the function
+      now raises a TypeError if it is passed an object that does
+      not have any annotatins.
+    - gh-130664: Support the '_' digit separator in formatting
+      of the integral part of Decimal’s. Patch by Sergey B
+      Kirpichev.
+    - gh-131952: Add color output to the json CLI. Patch by Tomas
+      Roun.
+    - gh-132063: Prevent exceptions that evaluate as
+      falsey (namely, when their __bool__ method returns
+      False or their __len__ method returns 0) from being
+      ignored by concurrent.futures.ProcessPoolExecutor and
+      concurrent.futures.ThreadPoolExecutor.
+    - gh-132106: logging.handlers.QueueListener now implements
+      the context manager protocol, allowing it to be used in a
+      with statement.
+    - gh-132054: The application/yaml mime type (RFC 9512) is now
+      supported by mimetypes. Patch by Sasha “Nelie” Chernykh and
+      Hugo van Kemenade.
+    - gh-119605: Respect follow_wrapped for __init__() and
+      __new__() methods when getting the class signature for a
+      class with inspect.signature(). Preserve class signature
+      after wrapping with warnings.deprecated(). Patch by Xuehai
+      Pan.
+    - gh-118761: Improve import times by up to 33x for the shlex
+      module, and improve the performance of shlex.quote() by up
+      to 12x. Patch by Adam Turner.
+    - gh-85302: Add support for BTPROTO_SCO in sockets on
+      FreeBSD.
+    - gh-131757: Make functools.lru_cache() call the cached
+      function unlocked to allow concurrency.
+    - gh-131423: ssl can show descriptions for errors added in
+      OpenSSL 3.4.1. Patch by Bénédikt Tran.
+    - gh-131434: Improve error reporting for incorrect format in
+      time.strptime().
+    - gh-131524: Add help message to platform command-line
+      interface. Contributed by Harry Lees.
+    - gh-100926: Move ctypes.POINTER() types cache from
+      a global internal cache (_pointer_type_cache) to
+      the ctypes._CData.__pointer_type__ attribute of the
+      corresponding ctypes types. This will stop the cache from
+      growing without limits in some situations.
+    - gh-85702: If zoneinfo._common.load_tzdata is given a
+      package without a resource a ZoneInfoNotFoundError is
+      raised rather than a IsADirectoryError.
+    - gh-123471: Make concurrent iterations over itertools.repeat
+      safe under free-threading.
+    - gh-131127: Systems using LibreSSL now successfully build.
+    - gh-89157: Make the pure Python implementation of
+      datetime.date.fromisoformat(), only accept ASCII strings
+      for consistency with the C implementation.
+    - gh-130941: Fix configparser.ConfigParser parsing empty
+      interpolation with allow_no_value set to True.
+    - gh-110067: Make heapq max-heap functions
+      heapq.heapify_max(), heapq.heappush_max(),
+      heapq.heappop_max(), and heapq.heapreplace_max()
+      public. Previous underscored naming is kept for backwards
+      compatibility. Additionally, the missing function
+      heapq.heappushpop_max() has been added to both the C and
+      Python implementations.
+    - gh-129098: Fix REPL traceback reporting when using
+      compile() with an inexisting file. Patch by Bénédikt Tran.
+    - gh-130631: http.cookiejar.join_header_words() is now more
+      similar to the original Perl version. It now quotes the
+      same set of characters and always quote values that end
+      with "\n".
+    - gh-130482: Add ability to specify name for
+      tkinter.OptionMenu and tkinter.ttk.OptionMenu.
+    - gh-77065: Add keyword-only optional argument echo_char for
+      getpass.getpass() for optional visual keyboard feedback
+      support. Patch by Semyon Moroz.
+    - gh-130317: Fix PyFloat_Pack2() and PyFloat_Unpack2()
+      for NaN’s with payload. This corrects round-trip for
+      struct.unpack() and struct.pack() in case of the IEEE
+      754 binary16 “half precision” type. Patch by Sergey B
+      Kirpichev.
+    - gh-130402: Joining running daemon threads during
+      interpreter shutdown now raises PythonFinalizationError.
+    - gh-130167: Improve speed of difflib.IS_LINE_JUNK(). Patch
+      by Semyon Moroz.
+    - gh-101410: Added more detailed messages for domain errors
+      in the math module.
+    - gh-128384: Make warnings.catch_warnings use a context
+      variable for holding the warning filtering state if
+      the sys.flags.context_aware_warnings flag is set to
+      true. This makes using the context manager thread-safe
+      in multi-threaded programs. The flag is true by default
+      in free-threaded builds and is otherwise false. The
+      value of the flag can be overridden by the the -X
+      context_aware_warnings command-line option or by the
+      PYTHON_CONTEXT_AWARE_WARNINGS environment variable.
+    - gh-129719: Fix missing socket.CAN_RAW_ERR_FILTER constant
+      in the socket module on Linux systems. It was missing since
+      Python 3.11.
+    - gh-129027: Raise DeprecationWarning for
+      sys._clear_type_cache(). This function was deprecated in
+      Python 3.13 but it didn’t raise a runtime warning.
+    - gh-128307: Add eager_start keyword argument to
+      asyncio.loop.create_task()
+    - gh-127604: Add support for printing the C stack trace on
+      systems that support it via faulthandler.dump_c_stack() or
+      via the c_stack argument in faulthandler.enable().
+    - gh-127385: Add the F_DUPFD_QUERY constant to the fcntl
+      module.
+    - gh-126838: Add resolve_host keyword-only parameter to
+      urllib.request.url2pathname(), and fix handling of file
+      URLs with authorities.
+    - gh-82129: Fix NameError when calling
+      typing.get_type_hints() on a dataclasses.dataclass()
+      created by dataclasses.make_dataclass() with un-annotated
+      fields.
+    - gh-122559: Remove __reduce__() and __reduce_ex__() methods
+      that always raise TypeError in the C implementation
+      of io.FileIO, io.BufferedReader, io.BufferedWriter
+      and io.BufferedRandom and replace them with default
+      __getstate__() methods that raise TypeError. This restores
+      fine details of behavior of Python 3.11 and older versions.
+    - gh-122179: hashlib.file_digest() now raises BlockingIOError
+      when no data is available during non-blocking I/O. Before,
+      it added spurious null bytes to the digest.
+    - gh-53032: Expose decimal.IEEEContext() to support creation
+      of contexts corresponding to the IEEE 754 (2008) decimal
+      interchange formats. Patch by Sergey B Kirpichev.
+    - gh-120220: Deprecate the tkinter.Variable
+      methods trace_variable(), trace_vdelete() and
+      trace_vinfo(). Methods trace_add(), trace_remove() and
+      trace_info() can be used instead.
+    - gh-113539: webbrowser: Names in the BROWSER environment
+      variable can now refer to already registered web browsers,
+      instead of always generating a new browser command.
+      This makes it possible to set BROWSER to the value of one
+      of the supported browsers on macOS.
+    - bpo-44172: Keep a reference to original curses windows in
+      subwindows so that the original window does not get deleted
+      before subwindows.
+    - gh-75223: Deprecate undotted extensions in
+      mimetypes.MimeTypes.add_type(). Patch by Hugo van Kemenade.
+  - IDLE
+    - gh-112936: fix IDLE: no Shell menu item in single-process
+      mode.
+  - Documentation
+    - gh-107006: Move documentation and example code for
+      threading.local from its docstring to the official docs.
+    - gh-125142: As part of the builtin help intro text, show the
+      keyboard shortcuts for the new, non-basic REPL (F1, F2, and
+      F3).
+  - Core and Builtins
+    - gh-133336: -J is no longer reserved for use by
+      Jython. Patch by Adam Turner.
+    - gh-133261: Fix bug where the cycle GC could untrack
+      objects in the trashcan because they looked like they were
+      immortal. When objects are added to the trashcan, we take
+      care to ensure they keep a mortal reference count.
+    - gh-133346: Added experimental color theming support to the
+      _colorize module.
+    - gh-132917: For the free-threaded build, check the process
+      memory usage increase before triggering a full automatic
+      garbage collection. If the memory used has not increased
+      10% since the last collection then defer it.
+    - gh-91048: Add a new python -m asyncio ps PID command-line
+      interface to inspect asyncio tasks in a running Python
+      process. Displays a flat table of await relationships. A
+      variant showing a tree view is also available as python -m
+      asyncio pstree PID. Both are useful for debugging async
+      code. Patch by Pablo Galindo, Łukasz Langa, Yury Selivanov,
+      and Marta Gomez Macias.
+    - gh-133304: Workaround NaN’s “canonicalization” in
+      PyFloat_Pack4() and PyFloat_Unpack4() on RISC-V.
+    - gh-133197: Improve SyntaxError error messages for
+      incompatible string / bytes prefixes.
+    - gh-133231: Add new utilities of observing JIT compilation:
+      sys._jit.is_available(), sys._jit.is_enabled(), and
+      sys._jit.is_active().
+    - gh-133194: ast.parse() will no longer parse new PEP 758
+      syntax with older feature_version passed.
+    - gh-131798: Split CALL_LEN into several uops allowing the
+      JIT to remove them when optimizing. Patch by Diego Russo.
+    - gh-131798: Use sym_new_type instead of sym_new_not_null for
+      _BUILD_STRING, _BUILD_SET
+    - gh-132942: Fix two races in the type lookup cache. This
+      affected the free-threaded build and could cause crashes
+      (apparently quite difficult to trigger).
+    - gh-131798: Propagate the return type of
+      _BINARY_OP_SUBSCR_TUPLE_INT in JIT. Patch by Tomas Roun
+    - gh-132952: Speed up startup with the -S argument by
+      importing the private _io module instead of io. This fixes
+      a performance regression introduced earlier in Python 3.14
+      development and restores performance to the level of Python
+      3.13.
+    - gh-131798: Allow the JIT to remove int guards after
+      _CALL_LEN by setting the return type to int. Patch by Diego
+      Russo
+    - gh-131798: Split CALL_TUPLE_1 into several uops allowing
+      the JIT to remove some of them. Patch by Tomas Roun
+    - gh-131798: Split CALL_STR_1 into several uops allowing the
+      JIT to remove some of them. Patch by Tomas Roun
+    - gh-132825: Enhance unhashable key/element error messages
+      for dict and set. Patch by Victor Stinner.
+    - gh-131591: Reset any PEP 768 remote debugging pending call
+      in children after os.fork() calls.
+    - gh-132713: Fix repr(list) race condition: hold a strong
+      reference to the item while calling repr(item). Patch by
+      Victor Stinner.
+    - gh-132661: Implement PEP 750 (Template Strings). Add
+      new syntax for t-strings and implement new
+      internal string.templatelib.Template and
+      string.templatelib.Interpolation types.
+    - gh-132479: Fix compiler crash in certain circumstances
+      where multiple module-level annotations include
+      comprehensions and other nested scopes.
+    - gh-132747: Fix a crash when calling __get__() of a method
+      with a None second argument.
+    - gh-132744: Certain calls now check for runaway recursion
+      and respect the system recursion limit.
+    - gh-132449: Syntax errors that look like misspellings of
+      Python keywords now provide a helpful fix suggestion for
+      the typo. Contributed by Pablo Galindo Salgado.
+    - gh-132737: Support profiling code that requires __main__,
+      such as pickle.
+    - gh-132639: Added PyLong_AsNativeBytes(),
+      PyLong_FromNativeBytes() and
+      PyLong_FromUnsignedNativeBytes() to the limited C API.
+    - gh-100239: Add specialisation for BINARY_OP/SUBSCR on list
+      and slice.
+    - gh-132508: Uses tagged integers on the evaluation stack
+      to represent the instruction offsets when reraising an
+      exception. This avoids the need to box the integer which
+      could fail in low memory conditions.
+    - gh-124476: Fix decoding from the locale encoding in the
+      C.UTF-8 locale.
+    - gh-131927: Compiler warnings originating from the same
+      module and line number are now only emitted once, matching
+      the behaviour of warnings emitted from user code. This can
+      also be configured with warnings filters.
+    - gh-132457: Make staticmethod() and classmethod() generic.
+    - gh-131798: Use sym_new_type instead of sym_new_not_null for
+      _BUILD_LIST, _BUILD_SET, _BUILD_MAP
+    - gh-131798: Split CALL_TYPE_1 into several uops allowing the
+      JIT to remove some of them.
+    - gh-132386: Fix crash when passing a dict subclass as the
+      globals parameter to exec().
+    - gh-127682: No longer call __iter__ twice when creating and
+      executing a generator expression. Creating a generator
+      expression from a non-interable will raise only when the
+      generator expression is executed. This brings the behavior
+      of generator expressions in line with other generators.
+    - gh-132261: The internal storage for annotations and
+      annotate functions on classes now uses different keys in
+      the class dictionary. This eliminates various edge cases
+      where access to the __annotate__ and __annotations__
+      attributes would behave unpredictably.
+    - gh-132284: Don’t wrap base PyCFunction slots on class
+      creation if not overridden.
+    - gh-130415: Improve the JIT’s ability to remove unused
+      constant and local variable loads, and fix an issue where
+      deallocating unused values could cause JIT code to crash or
+      behave incorrectly.
+    - gh-126703: Fix possible use after free in cases where a
+      method’s definition has the same lifetime as its self.
+    - gh-132286: Fix that type.__annotate__ was not deleted, when
+      type.__annotations__ was deleted.
+    - gh-131798: Allow the JIT to remove an extra _TO_BOOL_BOOL
+      instruction after _CONTAINS_OP_DICT by setting the return
+      type to bool.
+    - gh-124715: Prevents against stack overflows when calling
+      Py_DECREF(). Third-party extension objects no longer need
+      to use the “trashcan” mechanism, as protection is now built
+      into the Py_DECREF() macro.
+    - gh-131798: Allow the JIT compiler to remove some type
+      checks for operations on lists, tuples, dictionaries, and
+      sets.
+    - gh-128398: Improve error message when an object supporting
+      the synchronous (resp. asynchronous) context manager
+      protocol is entered using async with (resp. with) instead
+      of with (resp. async with). Patch by Bénédikt Tran.
+    - gh-131798: Allow the JIT to remove unicode guards after
+      _BINARY_OP_SUBSCR_STR_INT by setting the return type to
+      string.
+    - gh-131878: Handle uncaught exceptions in the main input
+      loop for the new REPL.
+    - gh-131878: Fix support of unicode characters with two or
+      more codepoints on Windows in the new REPL.
+    - gh-126835: Move constant folding to the peephole
+      optimizer. Rename AST optimization related files
+      (Python/ast_opt.c -> Python/ast_preprocess.c), structs
+      (_PyASTOptimizeState -> _PyASTPreprocessState) and
+      functions (_PyAST_Optimize -> _PyAST_Preprocess,
+      _PyCompile_AstOptimize -> _PyCompile_AstPreprocess).
+    - gh-114809: Add support for macOS multi-arch builds with the
+      JIT enabled
+    - gh-131507: PyREPL now supports syntax
+      highlighing. Contributed by Łukasz Langa.
+    - gh-130907: If the __annotations__ of a module object
+      are accessed while the module is executing, return the
+      annotations that have been defined so far, without caching
+      them.
+    - gh-130104: Three-argument pow() now try calling __rpow__()
+      if necessary. Previously it was only called in two-argument
+      pow() and the binary power operator.
+    - gh-130070: Fixed an assertion error for exec() passed a
+      string source and a non-None closure. Patch by Bartosz
+      Sławecki.
+    - gh-129958: Fix a bug that was allowing newlines
+      inconsitently in format specifiers for single-quoted
+      f-strings. Patch by Pablo Galindo.
+    - gh-129858: elif statements that follow an else block now
+      have a specific error message.
+    - gh-69605: Add module autocomplete to PyREPL.
+    - gh-128555: Add the sys.flags.thread_inherit_context flag.
+        - This flag is set to true by default on the
+          free-threaded build and false otherwise. If the flag
+          is true, starting a new thread using threading.Thread
+          will, by default, use a copy of the contextvars.Context
+          from the caller of threading.Thread.start() rather than
+          using an empty context.
+        - Add the -X thread_inherit_context command-line option
+          and PYTHON_THREAD_INHERIT_CONTEXT environment variable,
+          which set the thread_inherit_context flag.
+        - Add the context keyword parameter to Thread. It can be
+          used to explicitly pass a context value to be used by a
+          new thread.
+        - Make the _contextvars module built-in.
+    - gh-123539: Improve SyntaxError message for using import ...
+      as and from ... import ... as with not a name.
+    - gh-102567: -X importtime now accepts value 2, which
+      indicates that an importtime entry should also be printed
+      if an imported module has already been loaded. Patch by
+      Noah Kim and Adam Turner.
+    - gh-116436: Improve error message when TypeError occurs
+      during dict.update()
+    - gh-103997: String arguments passed to “-c” are now
+      automatically dedented as if by textwrap.dedent(). This
+      allows “python -c” invocations to be indented in shell
+      scripts without causing indentation errors. (Patch by Jon
+      Crall and Steven Sun)
+    - gh-89562: Remove hostflags member from PySSLContext struct.
+  - C API
+    - gh-133166: Fix regression where PyType_GetModuleByDef()
+      returns NULL without setting TypeError when a static type
+      is passed.
+    - gh-133164: Add
+      PyUnstable_Object_IsUniqueReferencedTemporary() function
+      for determining if an object exists as a unique temporary
+      variable on the interpreter’s stack. This is a replacement
+      for some cases where checking that Py_REFCNT() is one is
+      no longer sufficient to determine if it’s safe to modify a
+      Python object in-place with no visible side effects.
+    - gh-133140: Add PyUnstable_Object_IsUniquelyReferenced()
+      as a replacement for Py_REFNCT(op) == 1 on free threaded
+      builds of Python.
+    - gh-131747: On non-Windows platforms, deprecate using
+      ctypes.Structure._pack_ to use a Windows-compatible layout
+      on non-Windows platforms. The layout should be specified
+      explicitly by setting ctypes.Structure._layout_ to 'ms'.
+    - gh-128972: For non-free-threaded builds, the memory layout
+      of PyASCIIObject is reverted to match Python 3.13. (Note
+      that the structure is not part of stable ABI and so its
+      memory layout is guaranteed to remain stable.)
+    - gh-133079: The undocumented APIs Py_C_RECURSION_LIMIT and
+      PyThreadState.c_recursion_remaining, added in 3.13, are
+      removed without a deprecation period.
+    - gh-132987: The k and K formats in PyArg_Parse() now support
+      the __index__() special method, like all other integer
+      formats.
+    - gh-132909: Fix an overflow when handling the K format in
+      Py_BuildValue(). Patch by Bénédikt Tran.
+    - gh-132798: Deprecated and undocumented
+      functions PyUnicode_AsEncodedObject(),
+      PyUnicode_AsDecodedObject(), PyUnicode_AsEncodedUnicode()
+      and PyUnicode_AsDecodedUnicode() are scheduled for removal
+      in 3.15.
+    - gh-132470: Creating a ctypes.CField with a byte_size that
+      does not match the actual type size now raises a ValueError
+      instead of crashing the interpreter.
+    - gh-112068: Add support of nullable arguments in
+      PyArg_Parse() and similar functions. Adding ? after any
+      format unit makes None be accepted as a value.
+    - gh-50333: Non-tuple sequences are deprecated as argument
+      for the (items) format unit in PyArg_ParseTuple() and other
+      argument parsing functions if items contains format units
+      which store a borrowed buffer or a borrowed reference.
+  - Build
+    - gh-113464: Use the cpython-bin-deps “externals” repository
+      for Windows LLVM dependency management. Installing LLVM
+      manually is no longer necessary for Windows JIT builds.
+    - gh-133183: iOS compiler shims now include
+      IPHONEOS_DEPLOYMENT_TARGET in target triples, ensuring that
+      SDK version minimums are honored.
+    - gh-133167: Fix compilation process with
+      --enable-optimizations and --without-docstrings.
+    - gh-133171: Since free-threaded builds do not support the
+      experimental JIT compiler, prevent these configurations
+      from being combined.
+    - gh-132758: Fix building with tail call interpreter and
+      pystats.
+    - gh-132649: The PClayout script now allows passing
+      --include-tcltk on Windows ARM64.
+    - gh-132257: Change the default LTO flags on GCC to not
+      pass -flto-partition=none, and allow parallelization of
+      LTO. For newer GNU makes and GCC, this has a multiple
+      factor speedup for LTO build times, with no noticeable loss
+      in performance.
+    - gh-132026: Fix use of undefined identifiers in platform
+      triplet detection on MIPS Linux platforms.
+- Disabled GIL and experimental JIT cannot be combined.
+- Remove python-3.3.0b1-test-posix_fadvise.patch (not needed
+  since kernel 3.6-rc1)
+- _contextvars is not a dynamic module any more
+  (gh#python/cpython#128384)
+- rename _testexternalinspection to _remotedebugging
+  (gh#python/cpython!133284)
+
+-------------------------------------------------------------------
 Sat Apr 12 21:50:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.14.0~a7:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May  6 10:39:12 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.72.0
+  + For detailed information about changes see the
+    HISTORY.rst file provided with this package
+- Fix testsuite evaluation logic
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Apr  1 06:25:27 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

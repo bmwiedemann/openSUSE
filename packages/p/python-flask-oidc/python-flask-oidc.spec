@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-flask-oidc
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,26 +19,28 @@
 
 %global pypi_name flask-oidc
 Name:           python-%{pypi_name}
-Version:        1.4.0
+Version:        2.3.1
 Release:        0
 Summary:        OpenID Connect support for Flask
 License:        BSD-2-Clause
-Group:          Development/Libraries/Python
 URL:            https://github.com/fedora-infra/%{pypi_name}
-Source0:        https://pypi.io/packages/source/f/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE authlib.patch -- gh#puiterwijk/flask-oidc#138
-Patch0:         authlib.patch
-BuildRequires:  %{python_module Authlib}
+Source0:        https://pypi.io/packages/source/f/%{pypi_name}/flask_oidc-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Don't fail a test due to quoting
+Patch0:         ignore-quoting-madness.patch
+BuildRequires:  %{python_module Authlib >= 1.2}
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.20}
+BuildRequires:  %{python_module responses}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Authlib
+Requires:       python-Authlib >= 1.2
 Requires:       python-Flask
-Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires:       python-blinker >= 1.4
+Requires:       python-requests >= 2.20
 BuildArch:      noarch
 %python_subpackages
 
@@ -49,27 +51,22 @@ It has been tested with:
 * Ipsilon
 
 %prep
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -p1 -n flask_oidc-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/oidc-register
 
-%post
-%python_install_alternative oidc-register
-
-%postun
-%python_uninstall_alternative oidc-register
+%check
+%pytest
 
 %files %{python_files}
 %doc README.rst
-%license LICENSE.txt
+%license LICENSES/BSD-2-Clause.txt
 %{python_sitelib}/flask_oidc/
-%{python_sitelib}/*.egg-info/
-%python_alternative %{_bindir}/oidc-register
+%{python_sitelib}/flask_oidc-%{version}.dist-info
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May  8 07:03:45 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.1:
+  * Increase the HTTP request timeout to 30 seconds (#128)
+  * Fix issues with proxies (#111)
+
+-------------------------------------------------------------------
 Mon Mar 17 06:13:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.0:

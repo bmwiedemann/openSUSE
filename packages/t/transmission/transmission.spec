@@ -165,6 +165,9 @@ sed -i 's/if(INSTALL_DOC)/if(FALSE)/' CMakeLists.txt
 cp %{SOURCE1} .
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
 export CC=gcc-13
 export CXX=g++-13

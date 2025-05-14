@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 08:43:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace obsolete gnome-common with libtool BuildRequires.
+
+-------------------------------------------------------------------
 Mon Feb  3 12:34:25 UTC 2025 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update version to 4.3.7

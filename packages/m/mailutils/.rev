@@ -330,4 +330,12 @@
 - There is no mu-mailx ... only a mailx from package mailx</comment>
     <requestid>1218057</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b2af4104b7b2933f8491f5a5a92ec126</srcmd5>
+    <version>3.17</version>
+    <time>1746542344</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1274466</requestid>
+  </revision>
 </revisionlist>

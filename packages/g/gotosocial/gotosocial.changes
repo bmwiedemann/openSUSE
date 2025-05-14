@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  6 15:45:25 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.19.1
+  * You can configure S3 lookup type now.
+  * description_limit added to /api/v2/instance response.
+  * Fix some outgoing messages issues that was causing stuff to
+    sometimes not get sent properly
+  * Fix some settings panel bugs, make sure interaction policies page
+    works properly with keyboard.
+  * Added some more queer + trans rights to the code.
+    Instance footer is now 100% gayer.
+    Folks in places where it is illegal / dangerous to show such flags
+    can remove them by editing web/template/page_footer.tmpl and
+    restarting the instance to reload the template.
+
+-------------------------------------------------------------------
 Thu Apr 24 06:08:56 UTC 2025 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Remove bump_jwt.patch, this is now part of the release

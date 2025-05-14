@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Caching
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,28 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Caching
-Version:        1.9.0
+Version:        2.3.1
 Release:        0
 Summary:        Adds caching support to your Flask application
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/sh4nks/flask-caching
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Caching/Flask-Caching-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/F/Flask-Caching/flask_caching-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module asgiref >= 3.2}
+BuildRequires:  %{python_module cachelib >= 0.9}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module redis >= 5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  memcached-devel
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask
+Requires:       python-cachelib >= 0.9
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,22 +46,22 @@ Adds caching support to your Flask application. Continuation of the Flask-Cache
 Extension.
 
 %prep
-%setup -q -n Flask-Caching-%{version}
+%setup -q -n flask_caching-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest
 
 %files %{python_files}
-%doc CHANGES README.md
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/flask_caching
-%{python_sitelib}/Flask_Caching-%{version}-py*.egg-info
+%{python_sitelib}/[Ff]lask[_-][Cc]aching-%{version}.dist-info
 
 %changelog

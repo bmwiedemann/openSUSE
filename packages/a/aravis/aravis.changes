@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  8 11:11:50 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to 0.8.35:
+  * chunk_parser: support for chunk selectors
+  * fake: fix trailer packet content
+  * fake: fix schema validation
+  * system: API to select only one interface
+
+-------------------------------------------------------------------
 Sun Feb 16 14:45:14 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Update to 0.8.34:

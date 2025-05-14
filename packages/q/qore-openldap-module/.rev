@@ -40,4 +40,17 @@
     <comment></comment>
     <requestid>1250052</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>99a22060d4dc5ccb8ec262dc0c59ea19</srcmd5>
+    <version>1.2.3</version>
+    <time>1747061412</time>
+    <user>anag_factory</user>
+    <comment>- Remove clean section
+- Add if case for qore &gt;= 2.0 and BuildRequire qore-stdlib
+- Add qore-stdlib &gt;= 2.0 as BuildRequire for new qore package
+- export CMAKE_POLICY_VERSION_MINIMUM=&quot;3.5&quot; to ignore cmakes
+  minimum version warnings
+</comment>
+    <requestid>1276849</requestid>
+  </revision>
 </revisionlist>

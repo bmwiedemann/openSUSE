@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Apr 30 12:13:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.19.1:
+  * preload: Restore errno in ioctl_emulate_open().
+  * preload: Only emulate ioctls on emulated devices.
+  * Fix ioctl_tree_execute() ret type and initialization.
+  * tests: Disable spidev on big-endian 32-bit platforms.
+- Changes from version 0.19.0:
+  * API: Add UMockdev.Testbed.wait_script() to sync to
+    scripts/evemu replays.
+  * API: UMockdev.Testbed.load_script_from_string().
+  * API: UMockdev.Testbed.load_evemu_events_from_string().
+  * Make uevent synthesis thread-safe.
+  * Handle "connection refused" when sending a uevent.
+- Drop 0001-t_system_single-handle-missing-selinux-context.patch:
+  incorporated upstream.
+
+-------------------------------------------------------------------
 Thu Oct 31 14:19:29 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Add 0001-t_system_single-handle-missing-selinux-context.patch:

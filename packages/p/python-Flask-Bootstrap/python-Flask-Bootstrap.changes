@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 05:52:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+- Support both uppercased and normalized metadata directory names.
+
+-------------------------------------------------------------------
 Thu Oct 18 08:21:35 UTC 2018 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by acitoolkit

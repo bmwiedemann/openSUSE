@@ -1,7 +1,7 @@
 #
 # spec file for package python-biopython
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,9 @@ Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopy
 Source100:      python-biopython-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -58,11 +60,11 @@ mv -v Doc/examples examples
 
 %build
 export LANG=en_US.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=en_US.UTF-8
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %if %{with test}
@@ -77,6 +79,6 @@ export LANG=en_US.UTF-8
 %license LICENSE.rst
 %{python_sitearch}/Bio/
 %{python_sitearch}/BioSQL/
-%{python_sitearch}/biopython-%{version}-py*.egg-info
+%{python_sitearch}/biopython-%{version}.dist-info
 
 %changelog

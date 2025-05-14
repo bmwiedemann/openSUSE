@@ -94,4 +94,12 @@
   * Add a header argument to `.Table.from_xls` and</comment>
     <requestid>1130507</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>75768696e7595011ca476f13d932f564</srcmd5>
+    <version>0.4.1</version>
+    <time>1746809361</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275955</requestid>
+  </revision>
 </revisionlist>

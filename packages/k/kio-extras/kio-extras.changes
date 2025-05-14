@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:13 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Image thumbnailer: add image/tiff mime type (kde#503223)
+  * imagethumbnail: Add MIME types for PSD, QOI, DDS
+  * CMake: Use find_package(Qt6::GuiPrivate) to fix build for qtbase dev
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:48 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

@@ -1,7 +1,7 @@
 #
 # spec file for package python-envisage
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define         skip_python2 1
 %define         X_display         ":98"
 %bcond_without     test
 Name:           python-envisage
@@ -28,8 +27,10 @@ Summary:        Extensible application framework for Python
 License:        BSD-3-Clause AND Python-2.0 AND LGPL-3.0-only AND CC-BY-SA-1.0 AND CC-BY-SA-2.0 AND CC-BY-SA-2.5 AND CC-BY-SA-3.0 AND SUSE-Public-Domain
 URL:            https://github.com/enthought/envisage
 Source:         https://files.pythonhosted.org/packages/source/e/envisage/envisage-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module traits >= 6.2}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-traits >= 6.2
@@ -59,10 +60,10 @@ Part of the Enthought Tool Suite (ETS).
 %setup -q -n envisage-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %if %{with test}
@@ -79,6 +80,6 @@ sleep 10
 %doc README.rst
 %license LICENSE.txt image_LICENSE.txt image_LICENSE_CP.txt
 %{python_sitelib}/envisage/
-%{python_sitelib}/envisage-%{version}-py*.egg-info
+%{python_sitelib}/envisage-%{version}.dist-info
 
 %changelog

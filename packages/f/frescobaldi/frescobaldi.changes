@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue May  6 19:40:35 UTC 2025 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4.0.2:
+  * Reorganize and extend the Preferences (#1920 and #1928).
+  * Use hatchling as build backend (#1913).
+  * Updated translations: Italian, Polish.
+  * Make MIDI input work again (#1919 and #1922).
+  * Fix a garbage-collector issue (#1935 and #1942). This should
+    prevent the error "RuntimeError: wrapped C/C++ object of type
+    FOO has been deleted", which has been reported as duplicates
+    several times.
+
+-------------------------------------------------------------------
 Fri Apr  4 19:05:21 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 4.0.1:

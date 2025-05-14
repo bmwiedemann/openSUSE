@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kbreakout
-Version:        25.04.0
+Version:        25.04.1
 Release:        0
 Summary:        Breakout-like game by KDE
 License:        GPL-2.0-or-later

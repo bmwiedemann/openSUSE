@@ -825,4 +825,22 @@
     <comment></comment>
     <requestid>1239631</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>f42e8b6193774f00564b257c2e4e8eb3</srcmd5>
+    <version>2.3.3</version>
+    <time>1746808951</time>
+    <user>anag_factory</user>
+    <comment>- version 2.3.3
+  * Make polkit rules work again (bug introduced in 2.3.2)
+  * harden_pcscd.service.patch removed (went to upstream)
+  
+- version 2.3.2
+  * Hardening systemd pcscd.service file
+  * pcscd.service: add missing Requires=polkit.service
+  * pcsc-spy: add missing PCSCv2_PART10_PROPERTY_* definitions
+  * Support udev PCSCLITE_IGNORE property to filter readers
+  * debuglog: force use of colors when --color is used
+  * Some other minor improvements (forwarded request 1266816 from DocB)</comment>
+    <requestid>1275624</requestid>
+  </revision>
 </revisionlist>

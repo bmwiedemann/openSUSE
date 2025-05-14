@@ -19,7 +19,7 @@
 %global sover 1_2
 Name:           libmfx-gen
 %define lname   libmfx-gen%{sover}
-Version:        25.1.1
+Version:        25.1.4
 Release:        0
 Summary:        Intel oneVPL GPU Runtime
 License:        MIT
@@ -64,7 +64,7 @@ the Intel oneVPL GPU Runtime.
 %build
 mkdir -p build
 pushd build
-cmake -DCMAKE_INSTALL_PREFIX="%{_prefix}" ..
+cmake -DCMAKE_INSTALL_PREFIX="%{_prefix}" -DCMAKE_SYSTEM_VERSION=6.14.0-OBS ..
 make %{?_smp_mflags}
 popd
 

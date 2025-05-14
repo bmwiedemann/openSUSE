@@ -34,11 +34,12 @@ Source:         https://github.com/ostreedev/ostree/releases/download/v%{version
 # PATCH-FIX-OPENSUSE ostree-grub2-location.patch boo#974714 dimstar@opensuse.org -- Fix path to grub-mkconfig_lib
 Patch0:         ostree-grub2-location.patch
 BuildRequires:  bison
-BuildRequires:  gnome-common
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gobject-introspection-devel >= 1.34.0
 BuildRequires:  libattr-devel
 BuildRequires:  libcap-devel
 BuildRequires:  pkgconfig
+BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(dracut)
 BuildRequires:  pkgconfig(e2p)
 BuildRequires:  pkgconfig(fuse3) >= 3.1.1

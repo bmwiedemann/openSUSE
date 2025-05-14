@@ -601,4 +601,12 @@ Pushing GNOME 45.rc packages</comment>
     <comment> (forwarded request 1271273 from dimstar)</comment>
     <requestid>1271278</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>75628debd2000502b6f929b563319bd1</srcmd5>
+    <version>48.2</version>
+    <time>1746638243</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1274938 from iznogood)</comment>
+    <requestid>1274959</requestid>
+  </revision>
 </revisionlist>

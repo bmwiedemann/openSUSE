@@ -4,5 +4,6 @@
 proxy or an ICAP server, to outsource content analysis and adaptation to a
 loadable module. The functionality is similar to the ICAP protocol (RFC 3507),
 but implemented as function calls instead of network interactions.</description>
+  <devel project="server:proxy" package="libecap"/>
   <url>https://www.e-cap.org/</url>
 </package>

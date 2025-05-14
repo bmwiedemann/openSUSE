@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %{?sle15_python_module_pythons}
 Name:           python-black
 Version:        25.1.0
@@ -24,6 +30,8 @@ Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM click-820.patch gh#psf/black#4577, gh#psf/black#4591, gh#psf/black#4666
+Patch0:         click-820.patch
 BuildRequires:  %{python_module aiohttp >= 3.3.2}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module click >= 8.0.0}
@@ -45,8 +53,14 @@ Requires:       python-mypy_extensions >= 0.4.3
 Requires:       python-packaging
 Requires:       python-pathspec >= 0.9.0
 Requires:       python-platformdirs >= 2
+
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -75,7 +89,7 @@ also recognizes YAPF's block comments to the same effect.
 
 %check
 # Copy one of the executable scripts into the PATH
-mkdir ~/bin
+mkdir -p ~/bin
 cp $(ls %{buildroot}%{_bindir}/black-* | head -1) ~/bin/black
 export PATH=$PATH:~/bin
 
@@ -83,6 +97,10 @@ export PATH=$PATH:~/bin
 # test_bpo_2142_workaround fails on arm
 skiptests="test_expression_diff or test_bpo_2142_workaround"
 %pytest -k "not ($skiptests)"
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative black
 
 %post
 %python_install_alternative black blackd

@@ -22,7 +22,7 @@
 %global pythons python311
 %endif
 Name:           virtme
-Version:        1.33
+Version:        1.35
 Release:        0
 Summary:        Tools for virtualize the running distro or a rootfs
 License:        GPL-2.0-only
@@ -72,6 +72,7 @@ sed -i -e /argparse-manpage/d $(find %{buildroot} -name requires.txt)
 %{_bindir}/virtme-mkinitramfs
 %{_bindir}/virtme-prep-kdir-mods
 %{_bindir}/virtme-run
+%{_bindir}/virtme-ssh-proxy
 %{_bindir}/vng
 %if 0%{?suse_version} > 1600
 %{_mandir}/man1/vng.1%{?ext_man}

@@ -7,4 +7,12 @@
     <comment>archivemount-ng is a fork and continuation of archivemount, the original author passed away. This version contains bug fixes and fuse 3 support. boo#1242079</comment>
     <requestid>1273730</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>230cc3005fb268a9fe310b10655e0341</srcmd5>
+    <version>1a</version>
+    <time>1746476939</time>
+    <user>anag_factory</user>
+    <comment>- fix build in openSUSE:Backports:SLE-15-SP7 (forwarded request 1274517 from AndreasStieger)</comment>
+    <requestid>1274518</requestid>
+  </revision>
 </revisionlist>

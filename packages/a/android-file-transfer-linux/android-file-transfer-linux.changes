@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 06 22:35:38 UTC 2025 - llyyr <llyyr@yukari.in>
+
+- Update to version 4.4.0~git.20250506T233238.058dbe1:
+  * fuse3 port
+  * fix GetObjectPropDesc - missing object format in API/request
+  * bump version to 4.5
+  * macosx CI fix
+  * remove travis config
+  * made clear halt optional - it seems to break newer android devices
+  * claim token later and don't disconnect existing devices if they are not MTP
+  * remove debug traces
+  * use USBDEVFS_DISCONNECT_CLAIM
+  * Add screenshot to README.md
+  * add screenshot
+  * pass transactionId to session getDeviceInfo
+  * skip fs entries which start with .
+  * check access before calling opendir (reduce number of exception)
+  * Revert "switch macosx builder to qt@6"
+  * switch macosx builder to qt@6
+  * downgrade macosx builder
+  * Revert "fix macosx bundle"
+  * fix macosx bundle
+  * bump cmake version
+  * fix qt path
+  * Allow building with Qt 6.x
+
+-------------------------------------------------------------------
 Wed Sep 18 18:43:53 UTC 2024 - llyyr@yukari.in
 
 - fix-missing-include.patch: remove patch, fixed upstream

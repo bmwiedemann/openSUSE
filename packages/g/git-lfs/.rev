@@ -166,4 +166,12 @@
       requests (@chrisd8088)</comment>
     <requestid>1238007</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>b5b8f6ca96713498c48e124d346d1619</srcmd5>
+    <version>3.6.1</version>
+    <time>1746638430</time>
+    <user>dimstar_suse</user>
+    <comment>Fix version in changelog</comment>
+    <requestid>1274926</requestid>
+  </revision>
 </revisionlist>

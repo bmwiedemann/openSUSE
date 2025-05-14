@@ -88,4 +88,26 @@
     instance (forwarded request 1255080 from rrahl0)</comment>
     <requestid>1255081</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2cd8f348dbb7fe973eb378db91640820</srcmd5>
+    <version>1.24.0</version>
+    <time>1746729595</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.24.0:
+  * Changed: Previously, for Git 2.7+, if the initial commit were
+    both tagged and empty, Dunamai would raise an exception due to
+    Git not reporting that tag in git log --simplify-by-decoration.
+    Now, if a tag is missing from that list, Dunamai treats it as the
+    oldest tag. (forwarded request 1275628 from rrahl0)</comment>
+    <requestid>1275629</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>31fee4f09cc063c3e6a280a9b6f1a710</srcmd5>
+    <version>1.24.1</version>
+    <time>1747061254</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.24.1:
+  * Fixed: Deprecation warning from re.sub() using Python 3.13+ (forwarded request 1276337 from rrahl0)</comment>
+    <requestid>1276338</requestid>
+  </revision>
 </revisionlist>

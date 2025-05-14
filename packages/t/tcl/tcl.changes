@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Apr 29 15:46:07 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Add tcl-fix-socket-13.1.patch to avoid a race condition in the
+  socket-13.1 test.
+
+-------------------------------------------------------------------
 Mon Apr  7 13:41:54 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Version 8.6.16:

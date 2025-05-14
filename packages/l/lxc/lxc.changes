@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon May  5 19:08:19 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- fix apparmor according to https://github.com/lxc/lxc/pull/4536
+  fix-apparmor.patch
+
+-------------------------------------------------------------------
 Sat Apr  5 18:17:41 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 6.0.4:

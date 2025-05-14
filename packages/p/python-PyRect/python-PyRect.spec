@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyRect
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define         skip_python36 1
 Name:           python-PyRect
 Version:        0.2.0
 Release:        0
@@ -26,9 +24,11 @@ License:        BSD-3-Clause
 URL:            https://github.com/asweigart/pyrect
 Source:         https://files.pythonhosted.org/packages/source/P/PyRect/PyRect-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/asweigart/PyRect/master/LICENSE.txt
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygame}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,10 +44,10 @@ cp %{SOURCE1} .
 dos2unix README.rst
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +56,7 @@ dos2unix README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/pyrect
+%{python_sitelib}/[Pp]y[Rr]ect-%{version}*-info
 
 %changelog

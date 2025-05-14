@@ -90,4 +90,12 @@
 - Add upstream libarchive.patch to fix tests</comment>
     <requestid>1223788</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>15c2aa338efadf9fdc0032b9d76c157a</srcmd5>
+    <version>5.2</version>
+    <time>1746638347</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1275107</requestid>
+  </revision>
 </revisionlist>

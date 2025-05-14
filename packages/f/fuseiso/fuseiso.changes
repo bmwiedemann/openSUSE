@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 13 12:05:50 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Added fuseiso-fuse3.patch to fuse3 support (boo#1242092).
+  * Removed fuseiso-20061017.patch (included).
+
+-------------------------------------------------------------------
 Mon Feb 26 08:51:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -89,4 +95,3 @@ Wed Aug  2 13:42:31 CEST 2006 - cthiel@suse.de
 Sun Apr 23 21:30:25 CEST 2006 - cthiel@suse.de
 
 - initial package (version 20060107)
-

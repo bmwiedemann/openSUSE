@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        MIT
@@ -73,7 +73,7 @@ and /etc.
 %setup -q
 
 %build
-%meson
+%meson -Ddefault_library=both
 %meson_build
 
 %install

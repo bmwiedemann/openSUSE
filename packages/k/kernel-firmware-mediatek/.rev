@@ -76,4 +76,14 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272729</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b2e6c7f00e9040ac9937e81d42965578</srcmd5>
+    <version>20250502</version>
+    <time>1747061140</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250502 (git commit 43dfb5fb64bb):
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * mediatek MT7925: update bluetooth firmware to 20250425073330</comment>
+    <requestid>1276104</requestid>
+  </revision>
 </revisionlist>

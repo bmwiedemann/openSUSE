@@ -2241,4 +2241,12 @@ General:
     <comment></comment>
     <requestid>1273184</requestid>
   </revision>
+  <revision rev="153" vrev="4">
+    <srcmd5>f5e7993c64156a7cb0108092471e472e</srcmd5>
+    <version>3.0.2</version>
+    <time>1747159957</time>
+    <user>anag_factory</user>
+    <comment>Shortcut conflicts</comment>
+    <requestid>1276841</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:55:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Drop BuildRequires: pkgconfig(glew) as it is not used for build.
+
+-------------------------------------------------------------------
 Tue Mar 11 15:13:18 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add FreeCad-drop-imghdr-import.patch: Drop imghdr import to

@@ -1,7 +1,7 @@
 #
 # spec file for package python-percy
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-percy
 Version:        2.0.2
 Release:        0
@@ -24,10 +23,12 @@ Summary:        Visual regression testing library
 License:        MIT
 URL:            https://github.com/percy/python-percy-client
 Source:         https://files.pythonhosted.org/packages/source/p/percy/percy-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.14.0}
 BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 BuildRequires:  python-rpm-macros
@@ -44,10 +45,10 @@ Python client library for visual regression testing with Percy.
 sed -i 's/method_whitelist/allowed_methods/g' percy/connection.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -57,6 +58,7 @@ sed -i 's/method_whitelist/allowed_methods/g' percy/connection.py
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/percy
+%{python_sitelib}/percy-%{version}.dist-info
 
 %changelog

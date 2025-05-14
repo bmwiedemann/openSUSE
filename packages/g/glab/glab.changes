@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri May 02 07:51:01 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.57.0:
+  * test: Use GITLAB_TOKEN_TEST instead of GITLAB_TOKEN
+  * chore: update to gomock 0.5.2
+  * chore(deps): update module go.uber.org/mock to v0.5.2
+  * test: Add UT for StackRootDir
+  * chore: apply gopls modernize
+  * chore(deps): update module k8s.io/client-go to v0.33.0
+  * chore(deps): add node
+  * chore: account for breaking changes in client-go 0.128.0
+  * chore(deps): update module gitlab.com/gitlab-org/api/client-go
+    to v0.128.0
+  * chore: format release commands
+  * chore: format schedule commands
+  * chore(deps): update module k8s.io/apimachinery to v0.32.4
+  * refactor: mrutils.getMRForBranch & mrutils.mrOptions
+  * chore(deps): update module github.com/charmbracelet/glamour to
+    v0.10.0
+
+-------------------------------------------------------------------
 Thu Apr 24 06:37:39 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.56.0:

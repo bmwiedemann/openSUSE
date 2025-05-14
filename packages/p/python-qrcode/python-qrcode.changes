@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 08:57:38 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.2.0
+  * Optimize QRColorMask apply_mask method for enhanced performance
+  * Fix typos on StyledPilImage embeded_* parameters.
+    The old parameters with the typos are still accepted
+    for backward compatibility.
+- from version 8.1
+  * Added support for Python 3.13.
+
+-------------------------------------------------------------------
 Wed Mar 26 10:05:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix build and runtime dependencies

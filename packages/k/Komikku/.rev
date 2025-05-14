@@ -420,4 +420,31 @@
   * [L10n] Updated French and Russian translations (forwarded request 1267200 from rrahl0)</comment>
     <requestid>1267619</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>cf633230adca6fecb8b37bcdb9ab1e1d</srcmd5>
+    <version>1.76.0</version>
+    <time>1746721424</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.76.0:
+  * [Servers] Added ComicHubFree (EN)
+  * [Servers] Asura Scans For Free (EN): Disabled
+  * [Servers] Flame Comics (EN): Update
+  * [Servers] Read Comic Online (EN): Update
+  * [Servers] Team-X (AR): Update
+  * [Servers] Terco Scans (EN):Update
+  * [L10n] Updated translations
+- remove convert-to-modern-colorthief.patch, upstreamed accepted PR (forwarded request 1275376 from rrahl0)</comment>
+    <requestid>1275536</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>78ea4cc6f26271d621058c1af8c38172</srcmd5>
+    <version>1.76.1</version>
+    <time>1747061551</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.76.1:
+  * [Reader] Webtoon mode: Fixed scrolling after a pages jump
+    (using controls overlay)
+  * [L10n] Updated Portuguese (Brazil) translation (forwarded request 1276326 from rrahl0)</comment>
+    <requestid>1276864</requestid>
+  </revision>
 </revisionlist>

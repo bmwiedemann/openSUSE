@@ -18,7 +18,7 @@
 
 
 Name:           rioterm
-Version:        0.2.12
+Version:        0.2.14
 Release:        0
 Summary:        A hardware-accelerated GPU terminal emulator powered by WebGPU
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://raphamorim.io/rio/
 Source0:        rio-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source99:       %{name}-rpmlintrc
-#Requires:       rioterm-terminfo
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  freetype2-devel
@@ -43,24 +42,11 @@ BuildRequires:  make
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python311
-#BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 
 %description
 A hardware-accelerated GPU terminal emulator powered by WebGPU, focusing to run in desktops and browsers.
 
-#%%package terminfo
-#Summary:        Terminfo for %%{name}
-#Supplements:    (%%{name})
-#BuildArch:      noarch
-
-
-
-
-
-
-#%%description terminfo
-#The official terminfo for rioterm.
 %prep
 %setup -a1 -qn rio-%{version}
 
@@ -70,25 +56,17 @@ export CC=gcc-13
 export CXX=g++-13
 %endif
 %{cargo_build} --no-default-features --features=x11,wayland
-#tic -e rio -x -o terminfo misc/rio.terminfo
 
 %install
 mkdir -p "%{buildroot}%{_bindir}"
 install -D -m 0755 target/release/rio %{buildroot}%{_bindir}/rio
-#install -D -m 0644 terminfo/r/rio %%{buildroot}/usr/share/terminfo/r/rio
 install -D -m 0644 misc/rio.desktop %{buildroot}/%{_datadir}/applications/rio.desktop
 install -D -m 0644 misc/logo.svg %{buildroot}/%{_datadir}/pixmaps/rio.svg
-
-# install desktop file
-#%%suse_update_desktop_file rio
 
 %files
 %license LICENSE
 %{_bindir}/rio
 %{_datadir}/applications/rio.desktop
 %{_datadir}/pixmaps/rio.svg
-
-#%%files terminfo
-#/usr/share/terminfo/r/rio
 
 %changelog

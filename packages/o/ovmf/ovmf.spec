@@ -440,6 +440,22 @@ find $src_list \( -name "*.c" -o -name "*.h" \) -type f -print0 | sort -z | xarg
 find source/ovmf-x86_64 -name *.c -type f -exec chmod 0644 {} \;
 %endif
 
+# The extra TDX flavor for x86_64
+BUILD_OPTION_X64_TDX=" \
+	-p OvmfPkg/IntelTdx/IntelTdxX64.dsc \
+	-a X64 \
+	-b DEBUG \
+	-t $TOOL_CHAIN \
+"
+
+build $BUILD_OPTION_X64_TDX
+cp Build/IntelTdx/DEBUG_*/FV/OVMF.fd ovmf-x86_64-tdx.bin
+cp Build/IntelTdx/DEBUG_*/FV/OVMF_CODE.fd ovmf-x86_64-tdx-code.bin
+cp Build/IntelTdx/DEBUG_*/FV/OVMF_VARS.fd ovmf-x86_64-tdx-vars.bin
+
+# Remove the temporary build files to reduce the disk usage (bsc#1178244)
+rm -rf Build/IntelTdx/
+
 # The extra Xen flavor for x86_64
 BUILD_OPTION_X64_XEN=" \
 	-p OvmfPkg/OvmfXen.dsc \

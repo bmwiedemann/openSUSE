@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr 24 18:01:38 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.0.0~alpha7+0:
+  * fix: kdl for xwayland_primary
+  * feat: support xwayland primary-output
+  * chore: update cosmic-protocols
+
+-------------------------------------------------------------------
 Sat Feb 22 03:31:18 UTC 2025 - rrahl0@opensuse.org
 
 - Update to version 1.0.0~alpha6+0:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May  4 15:34:41 UTC 2025 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Add usrsctp-enable-pkgconfig.patch
+  * enable generation of the .pc file needed for other software compilation
+
+-------------------------------------------------------------------
 Thu Feb  4 10:11:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.9.5.0

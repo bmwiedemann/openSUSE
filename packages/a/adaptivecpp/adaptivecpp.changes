@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri May  9 21:53:41 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 25.02.0:
+  * Introducing AdaptiveCpp portable CUDA (PCUDA):
+    AdaptiveCpp 25.02 introduces support for a new programming
+    model in its generic JIT compiler: The portable CUDA (PCUDA)
+    model. This programming model is a dialect of the CUDA and HIP
+    programming model. AdaptiveCpp PCUDA allows taking CUDA or HIP
+    source code, recompile with AdaptiveCpp, and obtain a single
+    single binary that can dispatch kernels to CPUs, Intel GPUs,
+    AMD GPUs, NVIDIA GPUs (or all at the same time).
+
+  * Full highlights at:
+    https://github.com/AdaptiveCpp/AdaptiveCpp/releases/tag/v25.02.0
+
+  * Full changelog at:
+    https://github.com/AdaptiveCpp/AdaptiveCpp/compare/v24.10.0...v25.02.0
+
+* Drop adaptivecpp-24.10.0-cmake4.patch: upstreamed
+
+-------------------------------------------------------------------
+Thu Apr 24 19:26:28 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use Source URL instead of _service to fetch the source code
+
+-------------------------------------------------------------------
 Fri Apr 18 08:24:05 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build with cmake4 boo#1239788 adaptivecpp-24.10.0-cmake4.patch

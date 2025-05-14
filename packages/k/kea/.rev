@@ -156,4 +156,18 @@ AFAICT these packages aren't needed for generating the docs and the official doc
     <comment>- Update to release 2.6.2</comment>
     <requestid>1265703</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>dcd3df7988bedcb92036f2b436dcbe94</srcmd5>
+    <version>2.6.2</version>
+    <time>1746476964</time>
+    <user>anag_factory</user>
+    <comment>- Update owner and perms in %post on modified config files
+- Add logic to %post for switching from kea.service to the new
+  split units, kea-*.service.
+  (Inspiration taken from strongswan.spec.)
+- Split off services into separate ones to allow more fine grained
+  control for e.g. capabilities.
+- Tighten access to state and log directories.</comment>
+    <requestid>1274560</requestid>
+  </revision>
 </revisionlist>

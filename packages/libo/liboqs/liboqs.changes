@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 12 09:30:45 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- add -DOQS_ENABLE_KEM_HQC=ON even due to security issues, as otherwise
+  we dropped binary compatibility with postquantumcryptoengine (bsc#1242701)
+
+-------------------------------------------------------------------
+Sun May 11 16:10:22 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to not embed the buildhost's kernel version (boo#1101107)
+
+-------------------------------------------------------------------
 Thu Apr 17 16:03:16 UTC 2025 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 0.13.0:

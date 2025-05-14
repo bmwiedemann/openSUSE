@@ -7,4 +7,24 @@
     <comment>Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind.</comment>
     <requestid>1235541</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>26815e66e8f134573065cba5de6fc6b0</srcmd5>
+    <version>2.4.0</version>
+    <time>1746542479</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.0
+  * Use Rizin 0.8.0
+  * Switch to use Qt 6 by default (Qt5 still available for older Linux distros)
+  *     Appimage now supports running on wayland natively
+  * Add a scrollbar to the disassembly window
+  * Add nicer display of 1-instruction loops
+  * Debugger improvements (#3407 #3411 #3410)
+  * Fix io.va checkbox - previously it didn't had any effect
+  * Fix single key shortcuts getting triggered in text input fields
+  * Updated translations
+  * Various bugfixes and refactors (67 commits total)
+  * Drop Fix-build-failure-against-PySide-6.8.patch
+</comment>
+    <requestid>1274702</requestid>
+  </revision>
 </revisionlist>

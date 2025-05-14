@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon May  5 05:12:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version jdk8u452 (icedtea-3.35.0)
+  * Import of OpenJDK 8 u452 build 09
+    + JDK-8037013: [TESTBUG] Fix
+      test/java/lang/ClassLoader/Assert.sh on AIX
+    + JDK-8048215: [TESTBUG] java/lang/management/ManagementFactory/
+      /ThreadMXBeanProxy.java Expected non-null LockInfo
+    + JDK-8068305: [TEST_BUG] Test java/awt/Mixing/HWDisappear.java
+      fails with GTKL&F
+    + JDK-8212096: javax/net/ssl/ServerName/
+      /SSLEngineExplorerMatchedSNI.java failed intermittently due to
+      SSLException: Tag mismatch
+    + JDK-8227651: Tests fail with SSLProtocolException: Input
+      record too big
+    + JDK-8240235: jdk.test.lib.util.JarUtils updates jar files
+      incorrectly
+    + JDK-8244966: Add .vscode to .hgignore and .gitignore
+    + JDK-8261020: Wrong format parameter in
+      create_emergency_chunk_path
+    + JDK-8265019: Update tests for additional TestNG test
+      permissions
+    + JDK-8266881: Enable debug log for
+      SSLEngineExplorerMatchedSNI.java
+    + JDK-8268457: XML Transformer outputs Unicode supplementary
+      character incorrectly to HTML
+    + JDK-8285756: clean up use of bad arguments for '@clean' in
+      langtools tests
+    + JDK-8309841: Jarsigner should print a warning if an entry is
+      removed
+    + JDK-8316193: jdk/jfr/event/oldobject/TestListenerLeak.java
+      java.lang.Exception: Could not find leak
+    + JDK-8326110: [8u] The Marlin tests should be updated after
+      JDK-8241307
+    + JDK-8337494: Clarify JarInputStream behavior
+    + JDK-8337692, CVE-2025-21587, bsc#1241274: Better TLS
+      connection support
+    + JDK-8338430, CVE-2025-30691, bsc#1241275: Improve compiler
+      transformations
+    + JDK-8339560: Unaddressed comments during code review of
+      JDK-8337664
+    + JDK-8339637: (tz) Update Timezone Data to 2024b
+    + JDK-8339644: Improve parsing of Day/Month in tzdata rules
+    + JDK-8339810: Clean up the code in sun.tools.jar.Main to
+      properly close resources and use ZipFile during extract
+    + JDK-8340552: Harden TzdbZoneRulesCompiler against missing
+      zone names
+    + JDK-8340660: [8u] Test com/sun/jdi/PrivateTransportTest.sh
+      fails on MacOS
+    + JDK-8342562: Enhance Deflater operations
+    + JDK-8343007, CVE-2025-30698, bsc#1241276: Enhance Buffered
+      Image handling
+    + JDK-8345504: Bump update version of OpenJDK: 8u452
+    + JDK-8346140: [8u] tools/jar/ExtractFilesTest.java and
+      tools/jar/MultipleManifestTest.java fails with jtreg5.1
+    + JDK-8346587: Distrust TLS server certificates anchored by
+      Camerfirma Root CAs
+    + JDK-8347847: Enhance jar file support
+    + JDK-8347965: (tz) Update Timezone Data to 2025a
+    + JDK-8348211: [8u] sun/management/jmxremote/startstop/
+      /JMXStartStopTest.java fails after backport of JDK-8066708
+    + JDK-8350816: [8u] Update TzdbZoneRulesCompiler to ignore
+      HST/EST/MST links
+    + JDK-8352097: (tz) zone.tab update missed in 2025a backport
+    + JDK-8353433: XCG currency code not recognized in JDK 8u
+  * Backports
+    + JDK-8293107: GHA: Bump to Ubuntu 22.04
+
+-------------------------------------------------------------------
 Tue Jan 28 06:46:44 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u442 (icedtea-3.34.0)

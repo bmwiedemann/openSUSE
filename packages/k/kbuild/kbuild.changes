@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May  6 16:14:23 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- Add kbuild-gcc15.patch to fix gcc15 compile time error
+
+-------------------------------------------------------------------
 Fri Sep 20 19:12:07 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.1.9998+svn3613

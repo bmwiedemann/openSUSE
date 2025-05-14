@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun May 11 08:02:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.17
+  * Fix issue with SMS and possible buffer overflow.
+
+-------------------------------------------------------------------
 Thu Mar 27 15:14:24 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16

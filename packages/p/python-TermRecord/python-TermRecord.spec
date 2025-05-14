@@ -1,7 +1,7 @@
 #
 # spec file for package python-TermRecord
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-TermRecord
 Version:        1.2.5
 Release:        0
@@ -24,12 +23,14 @@ Summary:        A terminal session recorder with HTML output
 License:        MIT
 URL:            https://github.com/theonewolf/TermRecord
 Source:         https://files.pythonhosted.org/packages/source/T/TermRecord/TermRecord-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.6
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.6}
@@ -47,10 +48,10 @@ it can be shipped to anyone that has a browser. Fonts are embedded, too.
 %setup -q -n TermRecord-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/TermRecord
 
@@ -63,6 +64,7 @@ it can be shipped to anyone that has a browser. Fonts are embedded, too.
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/TermRecord
-%{python_sitelib}/*
+%{python_sitelib}/[Tt]erm[Rr]ecord
+%{python_sitelib}/[Tt]erm[Rr]ecord-%{version}*-info
 
 %changelog

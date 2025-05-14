@@ -17,14 +17,13 @@
 
 
 Name:           llamacpp
-Version:        5158
+Version:        5321
 Release:        0
 Summary:        llama-cli tool to run inference using the llama.cpp library
 License:        MIT
-URL:            https://github.com/ggerganov/llama.cpp
-Source:         %{name}-%{version}.tar.gz
-Patch0:         0001-dl-load-path.patch
-Patch1:         0002-build-main-cli.patch
+URL:            https://github.com/ggml-org/llama.cpp
+Source:         https://github.com/ggml-org/llama.cpp/archive/b%{version}/%{name}-%{version}.tar.gz
+Patch1:         0001-dl-load-path.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -118,8 +117,28 @@ and WhisperCpp projects.
 This package includes the development files necessary for building applications
 that depend on ggml.
 
+%package -n libmtmd
+Summary:        Library to run multimodals inference models
+
+%description -n libmtmd
+As outlined in the history, libmtmd is the modern library designed to
+replace the original llava.cpp implementation for handling multimodal inputs.
+
+Built upon clip.cpp (similar to llava.cpp), libmtmd offers several advantages:
+- Unified Interface: Aims to consolidate interaction for various multimodal models.
+- Improved UX/DX: Features a more intuitive API, inspired by the Processor class
+  in the Hugging Face transformers library.
+- Flexibility: Designed to support multiple input types (text, audio, images) while
+  respecting the wide variety of chat templates used by different models.
+
+%package -n libllava
+Summary:        Library to run multimodals inference models
+
+%description -n libllava
+Library to handle multimodal inputs for llama.cpp.
+
 %prep
-%autosetup -p1
+%autosetup -p1 -n llama.cpp-b%{version}
 
 %build
 %define _lto_cflags %{nil}
@@ -128,11 +147,13 @@ that depend on ggml.
 %cmake \
     -DCMAKE_SKIP_RPATH=ON \
     -DLLAMA_BUILD_TESTS=OFF \
+    -DLLAMA_BUILD_EXAMPLES=OFF \
+    -DLLAMA_BUILD_TOOLS=ON \
+    -DLLAMA_CURL=ON \
     -DGGML_CPU=ON \
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
-    -DLLAMA_CURL=ON
 
 %cmake_build
 
@@ -141,43 +162,56 @@ that depend on ggml.
 
 # used for shader compilation only
 rm %{buildroot}%{_bindir}/vulkan-shaders-gen
-# remove dev scripts
+# dev scripts
 rm %{buildroot}%{_bindir}/convert_hf_to_gguf.py
 
 %files
 %doc README.md
 %license LICENSE
-
-%{_bindir}/llama-cli
-%{_bindir}/llama-server
-%{_bindir}/llama-bench
+%{_bindir}/llama-*
 
 %files -n libllama
+%license LICENSE
 %{_libdir}/libllama.so
 
 %files -n libggml
+%license LICENSE
 %{_libdir}/libggml.so
 
 %files -n libggml-base
+%license LICENSE
 %{_libdir}/libggml-base.so
 
 %files -n libggml-cpu
+%license LICENSE
 %{_libdir}/libggml-cpu.so
 
 %files -n libggml-vulkan
+%license LICENSE
 %{_libdir}/libggml-vulkan.so
 
 %files -n libggml-opencl
+%license LICENSE
 %{_libdir}/libggml-opencl.so
 
 %files devel
+%license LICENSE
 %{_includedir}/llama*
 %{_libdir}/cmake/llama
 %{_libdir}/pkgconfig/llama.pc
 
 %files -n ggml-devel
+%license LICENSE
 %{_includedir}/ggml*.h
 %{_includedir}/gguf.h
 %{_libdir}/cmake/ggml
+
+%files -n libmtmd
+%license LICENSE
+%{_libdir}/libmtmd_shared.so
+
+%files -n libllava
+%license LICENSE
+%{_libdir}/libllava_shared.so
 
 %changelog

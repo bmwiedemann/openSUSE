@@ -184,4 +184,12 @@
   * 0001-Add-missing-include.patch</comment>
     <requestid>1267133</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2149081186d533be65c0665256d0da79</srcmd5>
+    <version>6.3.5</version>
+    <time>1746721321</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.3.5, untested (forwarded request 1275160 from Vogtinator)</comment>
+    <requestid>1275216</requestid>
+  </revision>
 </revisionlist>

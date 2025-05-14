@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  8 21:58:42 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.23 matching go.mod
+  * Add Requires: golang(API) >= 1.23 matching go.mod. This tool
+    requires a go toolchain for its functionality. Using
+    Recommends: or Suggests: instead may also make sense here.
+
+-------------------------------------------------------------------
 Mon Feb 24 20:05:48 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.18.1:

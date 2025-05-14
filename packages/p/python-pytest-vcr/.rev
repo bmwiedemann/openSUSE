@@ -15,4 +15,13 @@
     <comment>- tag sle15 build for new python stack</comment>
     <requestid>1092849</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>75e6b0d45495e02c784bc52b8f8f32d4</srcmd5>
+    <version>1.0.2</version>
+    <time>1746638379</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1275119</requestid>
+  </revision>
 </revisionlist>

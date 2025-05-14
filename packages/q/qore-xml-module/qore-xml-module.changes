@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue May 13 11:38:40 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Tag COPYING files as %license instead of %doc
+
+-------------------------------------------------------------------
+Tue May 13 10:12:03 UTC 2025 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to version 2.0.0 with compatibility to qore 2.1.1
+  * support for the application catalog in Qore 2+
+  * fixed serializing data with SQL NULL values
+  * fixed I/O callback handling (ex: XSD callbacks)
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings (boo#1241902)  
+
+-------------------------------------------------------------------
 Sun May 26 13:14:31 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Remove BuildRequirement qore-stdlib after the move of qore-stdlib to qore

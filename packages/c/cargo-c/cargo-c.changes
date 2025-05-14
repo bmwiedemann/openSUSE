@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May  7 04:35:41 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1242675 - CVE-2025-3416 - openssl use after free
+
+-------------------------------------------------------------------
 Fri Sep 20 03:18:07 UTC 2024 - William Brown <william.brown@suse.com>
 
 - bsc#1230683 - CVE-2024-45405 - gix-path improper path resolution

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri May  9 05:12:06 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
+Wed May  7 10:26:34 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Mon Mar  6 11:50:34 UTC 2023 - Andreas Schwab <schwab@suse.de>
 
 - test-tsne.patch: skip non-sensible assertion in testsuite

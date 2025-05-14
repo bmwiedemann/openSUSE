@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  6 11:27:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Switch to building with cmake and ninja; this magically fixes
+  the python linking issues causing build failures in TW.
+- Explicitly specify qwtplot3d library to use for build: since the
+  library is suffixed with '-qt5' on openSUSE, cmake fails to find
+  it otherwise.
+- Switch over BuildRequires to pkgconfig based ones where
+  possible.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:06:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

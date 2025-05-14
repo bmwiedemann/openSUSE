@@ -24,12 +24,12 @@
 %{?sle15_python_module_pythons}
 Name:           python-Django4
 # We want support LTS versions of Django -  numbered 2.2 -> 3.2 -> 4.2 etc
-Version:        4.2.20
+Version:        4.2.21
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/4.2/Django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/4.2/django-%{version}.tar.gz
 Source1:        https://media.djangoproject.com/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
@@ -52,10 +52,12 @@ BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module geoip2}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= 0.3.1}
 BuildRequires:  %{python_module tblib >= 1.5.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gpg2
@@ -107,17 +109,17 @@ gpg --import %{SOURCE2}
 gpg --verify %{SOURCE1}
 #
 # Verify hashes in that file against source tarball.
-echo "`grep -e '^[0-9a-f]\{32\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-32`  %{SOURCE0}" | md5sum -c
-echo "`grep -e '^[0-9a-f]\{40\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-40`  %{SOURCE0}" | sha1sum -c
-echo "`grep -e '^[0-9a-f]\{64\}  Django-%{version}.tar.gz' %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
+echo "`grep -e '^[0-9a-f]\{32\}  django-%{version}.tar.gz' %{SOURCE1} | cut -c1-32`  %{SOURCE0}" | md5sum -c
+echo "`grep -e '^[0-9a-f]\{40\}  django-%{version}.tar.gz' %{SOURCE1} | cut -c1-40`  %{SOURCE0}" | sha1sum -c
+echo "`grep -e '^[0-9a-f]\{64\}  django-%{version}.tar.gz' %{SOURCE1} | cut -c1-64`  %{SOURCE0}" | sha256sum -c
 
-%autosetup -p1 -n Django-%{version}
+%autosetup -p1 -n django-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %python_clone -a %{buildroot}%{_bindir}/django-admin
 
@@ -154,6 +156,6 @@ export PATH=%{_libdir}/chromium:$PATH
 %python_alternative %{_bindir}/django-admin
 %{_datadir}/bash-completion/completions/django_bash_completion-%{python_bin_suffix}.sh
 %{python_sitelib}/django
-%{python_sitelib}/[dD]jango-%{version}-py*.egg-info
+%{python_sitelib}/[Dd]jango-%{version}*-info
 
 %changelog

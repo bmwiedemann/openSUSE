@@ -1,7 +1,7 @@
 #
 # spec file for package boomaga
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          Productivity/Publishing/Other
 URL:            https://www.boomaga.org/
 Source0:        https://github.com/Boomaga/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.5
 # SLE12 needs special BuildRequires.
 # For suse_version values see https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
 %if 0%{?suse_version} == 1315 && 0%{?is_opensuse} != 1
@@ -76,7 +76,8 @@ would be able to easily print on both sides of the sheet.
 
 %build
 %cmake \
-    -DCUPS_PPD_DIR=%{_datadir}/cups/model/
+    -DCUPS_PPD_DIR=%{_datadir}/cups/model/ \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags} VERBOSE=1
 
 %install

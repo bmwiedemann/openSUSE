@@ -162,4 +162,15 @@
     <comment>Update to version 2.4h (forwarded request 1198272 from simonlm)</comment>
     <requestid>1198377</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>2afb325340ebd9e4a963cdaa29a243c9</srcmd5>
+    <version>2.4i</version>
+    <time>1746476901</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4i:
+  * Added AES Crypto Extension opcodes for 64-bit arm64 on Linux.
+  * aes-armv8sca.S aes-armv8ce.S : add PAC/BTI branch protection
+    support. (forwarded request 1274369 from Guillaume_G)</comment>
+    <requestid>1274370</requestid>
+  </revision>
 </revisionlist>

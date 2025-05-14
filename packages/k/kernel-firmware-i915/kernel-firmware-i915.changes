@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Apr 28 07:29:38 UTC 2025 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20250425 (git commit 8d82acd29b5c):
+  * i915: Update Xe3LPD DMC to v2.23
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without

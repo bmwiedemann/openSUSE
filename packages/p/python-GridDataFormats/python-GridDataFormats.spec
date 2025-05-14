@@ -1,7 +1,7 @@
 #
 # spec file for package python-GridDataFormats
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python36 1
 Name:           python-GridDataFormats
 Version:        1.0.2
 Release:        0
@@ -24,7 +23,9 @@ Summary:        Python Tools for Reading and writing of data on regular grids
 License:        GPL-3.0-only
 URL:            https://github.com/MDAnalysis/GridDataFormats/
 Source0:        https://files.pythonhosted.org/packages/source/G/GridDataFormats/GridDataFormats-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-mrcfile
@@ -50,10 +51,10 @@ write out the data again.
 %autosetup -p1 -n GridDataFormats-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +64,6 @@ write out the data again.
 %doc AUTHORS CHANGELOG README.rst
 %license COPYING*
 %{python_sitelib}/gridData
-%{python_sitelib}/GridDataFormats-%{version}-py*.egg-info
+%{python_sitelib}/[Gg]rid[Dd]ata[Ff]ormats-%{version}.dist-info
 
 %changelog

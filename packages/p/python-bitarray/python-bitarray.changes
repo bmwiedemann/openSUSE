@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May  5 06:46:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.2
+  * fix off-by-one-error in check for length of count argument
+    in `util.canonical_decode()`
+  * simplify `util.int2ba()`
+  * add tests
+  * add [masked indexing example](../examples/masked.py)
+  * add [tricks example](../examples/tricks.py)
+
+-------------------------------------------------------------------
 Thu Apr 24 06:52:44 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:

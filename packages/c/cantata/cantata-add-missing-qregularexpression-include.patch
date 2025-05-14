@@ -1,0 +1,25 @@
+From aed0b8cdb60bb100e15c0195dbd84a4a18edc35d Mon Sep 17 00:00:00 2001
+From: Heiko Becker <mail@heiko-becker.de>
+Date: Thu, 27 Feb 2025 18:14:40 +0100
+Subject: [PATCH] Add missing QRegularExpression include
+
+This fixes the build with Qt 6.9.0-beta2, which otherwise errors out
+with
+"streamsmodel.cpp:1257:58: error: variable 'constQRegularExpression
+brokenXML' has initializer but incomplete type".
+---
+ models/streamsmodel.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/models/streamsmodel.cpp b/models/streamsmodel.cpp
+index 408d646b6..625e61921 100644
+--- a/models/streamsmodel.cpp
++++ b/models/streamsmodel.cpp
+@@ -44,6 +44,7 @@
+ #include <QLocale>
+ #include <QMimeData>
+ #include <QModelIndex>
++#include <QRegularExpression>
+ #include <QSet>
+ #include <QString>
+ #include <QTimer>

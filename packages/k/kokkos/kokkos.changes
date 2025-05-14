@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon May  5 20:24:59 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.6.01:
+  * Fix symbol visibility: make sure that AUTO has external
+    linkage (gh#kokkos/kokkos#7898).
+  * Building with generated makefiles: add missing HIP XNACK
+    source file (gh#kokkos/kokkos#8030).
+  * Fix building benchmarks when Kokkos exists as a
+    subproject/subdirectory (gh#kokkos/kokkos#8045).
+- Changes from version 4.6.00:
+  * Too many to list, see
+    <https://github.com/kokkos/kokkos/blob/4.6.00/CHANGELOG.md>.
+- Use full URL for sources.
+- Drop -ffat-lto-objects in cflags as we do not build static libs.
+- Add gmock and gtest BuildRequires to allow using system gtest
+  for tests rather than re-building the bundled libs every time.
+- Do not force 4 parallel threads when running ctest.
+
+-------------------------------------------------------------------
 Tue May  7 03:00:34 UTC 2024 - ming li <mli@suse.com> - 4.3.00
 
 - Update to version 4.3.00:

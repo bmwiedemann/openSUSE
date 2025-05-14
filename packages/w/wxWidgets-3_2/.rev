@@ -296,4 +296,12 @@
     <comment>add bugrefs</comment>
     <requestid>1269966</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>4562b26c5bb389aa5856740921fd692d</srcmd5>
+    <version>3.2.8</version>
+    <time>1746542390</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.2.8</comment>
+    <requestid>1274082</requestid>
+  </revision>
 </revisionlist>

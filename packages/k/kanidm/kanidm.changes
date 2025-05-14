@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Fri May 09 03:36:32 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.2~git0.a20663ea8:
+  * Release 1.6.2
+  * fix: clippy
+  * maint: typo in log message
+  * Set kid manually to prevent divergence
+  * Order keys in application JWKS / Fix rotation bug
+  * Fix toml issues with strings
+
+-------------------------------------------------------------------
+Thu May 08 03:18:30 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.1~git0.2e4429eca:
+  * Release 1.6.1
+  * Resolve reload of oauth2 on startup (#3604)
+
+-------------------------------------------------------------------
+Wed May  7 04:40:56 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1242642 - CVE-2025-3416 - openssl use after free
+
+-------------------------------------------------------------------
+Wed May 07 04:10:43 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.0~git0.d7ae0f336:
+  * Release 1.6.0
+  * Avoid openssl for md4
+  * Fixes #3586, inverts the navbar button color (#3593)
+  * Release 1.6.0-pre
+  * chore: Release Notes (#3588)
+  * Do not require instances to exist during optional config load (#3591)
+  * Fix std::fmt::Display for some objects (#3587)
+  * Drop fernet in favour of JWE (#3577)
+  * docs: document how to configure oauth2 for opkssh (#3566)
+  * Add kanidm_ssh_authorizedkeys_direct to client deb (#3585)
+  * Bump the all group in /pykanidm with 2 updates (#3581)
+  * Update dependencies, fix a bunch of clippy lints (#3576)
+  * Support spaces in ssh key comments (#3575)
+  * 20250402 3423 proxy protocol (#3542)
+  * fix(web): Preserve SSH key content on form validation error (#3574)
+  * Bump the all group in /pykanidm with 3 updates (#3572)
+  * Bump the all group in /pykanidm with 2 updates (#3564)
+  * Bump crossbeam-channel from 0.5.14 to 0.5.15 in the cargo group (#3560)
+  * Improve token handling (#3553)
+  * Bump tokio from 1.44.1 to 1.44.2 in the cargo group (#3549)
+  * Update fs4 and improve klock handling (#3551)
+  * Less footguns (#3552)
+  * Unify unix config parser (#3533)
+  * Bump openssl from 0.10.71 to 0.10.72 in the cargo group (#3544)
+  * Bump the all group in /pykanidm with 8 updates (#3547)
+  * implement notify-reload protocol (#3540)
+  * Allow versioning of server configs (#3515)
+  * 20250314 remove protected plugin (#3504)
+  * Bump the all group with 10 updates (#3539)
+  * Bump mozilla-actions/sccache-action from 0.0.8 to 0.0.9 in the all group (#3538)
+  * Bump the all group in /pykanidm with 4 updates (#3537)
+  * Add max_ber_size to freeipa sync (#3530)
+  * Bump the all group in /pykanidm with 5 updates (#3524)
+  * Update Concread
+  * Update developer_ethics.md (#3520)
+  * Update examples.md (#3519)
+  * Make schema indexing a boolean instead of index types (#3517)
+  * Add missing lld dependency and fix syntax typo (#3490)
+  * Update shell.nix to work with stable nixpkgs (#3514)
+  * Improve unixd tasks channel comments (#3510)
+  * Update kanidm_ppa_automation reference to latest (#3512)
+  * Add set-description to group tooling (#3511)
+  * packaging: Add kanidmd deb package, update documentation (#3506)
+  * Bump the all group in /pykanidm with 5 updates (#3508)
+  * 20250313 unixd system cache (#3501)
+  * Support rfc2307 memberUid in sync operations. (#3466)
+  * Bump mozilla-actions/sccache-action from 0.0.7 to 0.0.8 in the all group (#3496)
+  * Update Traefik config example to remove invalid label (#3500)
+  * Add uid/gid allocation table (#3498)
+  * 20250225 ldap testing in testkit (#3460)
+  * Bump the all group in /pykanidm with 5 updates (#3494)
+  * Bump ring from 0.17.10 to 0.17.13 in the cargo group (#3491)
+  * Handle form-post as a response mode (#3467)
+  * book: fix english (#3487)
+  * Correct paths with Kanidm Tools Container (#3486)
+  * 20250225 improve test performance (#3459)
+  * Bump the all group in /pykanidm with 8 updates (#3484)
+  * Use lld by default on linux (#3477)
+  * 20250213 patch used wrong acp (#3432)
+  * Android support (#3475)
+  * Changed all CI/CD builds to locked (#3471)
+  * Make it a bit clearer that providers are needed (#3468)
+  * Fix incorrect credential generation in radius docs (#3465)
+  * Add crypt formats for password import (#3458)
+  * build: Create daemon image from scratch (#3452)
+  * address webfinger doc feedbacks (#3446)
+  * Bump the all group across 1 directory with 5 updates (#3453)
+  * [htmx] Admin ui for groups and users management (#3019)
+  * Fixes #3406: add configurable maximum queryable attributes for LDAP (#3431)
+  * Accept invalid certs and fix token_cache_path (#3439)
+  * Accept lowercase ldap pwd hashes (#3444)
+  * TOTP label verification (#3419)
+  * Rewrite WebFinger docs (#3443)
+  * doc: fix formatting of URL table, remove Caddyfile instructions (#3442)
+  * book: add OAuth2 Proxy example (#3434)
+  * Exempt idm_admin and admin from denied names. (#3429)
+  * Book fixes (#3433)
+  * ci: uniform Docker builds (#3430)
+  * 20240213 3413 domain displayname (#3425)
+  * Correct path to kanidm config example in documentation. (#3424)
+  * Support redirect uris with query parameters (#3422)
+  * Update to 1.6.0-dev (#3418)
+  * Remove white background from square logo. (#3417)
+  * feat: Added webfinger implementation (#3410)
+  * Bump the all group in /pykanidm with 7 updates (#3412)
+
+-------------------------------------------------------------------
+Wed May 07 03:48:37 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.5.0~git2.21c2a1bd0:
+  * fix: documentation fail (#3555)
+
+-------------------------------------------------------------------
 Fri Feb 21 23:57:44 UTC 2025 - William Brown <william.brown@suse.com>
 
 - Enable aarch64 for Fedora/Centos

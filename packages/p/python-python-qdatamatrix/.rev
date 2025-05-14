@@ -30,4 +30,12 @@
  * Avoid empty trailing row after pasting</comment>
     <requestid>933948</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>193e017ca1d0c8fbcaefc0ef04a3b49d</srcmd5>
+    <version>0.1.31</version>
+    <time>1746809430</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276014</requestid>
+  </revision>
 </revisionlist>

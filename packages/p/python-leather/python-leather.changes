@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May  9 05:11:23 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Fri Jun  2 10:08:23 UTC 2023 - pgajdos@suse.com
 
 - do not require six

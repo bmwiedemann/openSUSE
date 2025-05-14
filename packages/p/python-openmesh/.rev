@@ -24,4 +24,20 @@
 </comment>
     <requestid>1068384</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3e1202376646734602b4aeb24c624609</srcmd5>
+    <version>1.2.1</version>
+    <time>1746809417</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1276002</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>dfb1ab36a83460f1a1e90756164c55e6</srcmd5>
+    <version>1.2.1</version>
+    <time>1747061266</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1276434</requestid>
+  </revision>
 </revisionlist>

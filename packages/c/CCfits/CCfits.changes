@@ -1,0 +1,92 @@
+-------------------------------------------------------------------
+Tue Apr 22 16:43:10 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.7:
+  * New function HDU::addKeyNull() for creating keywords with null
+    values (ie. CFITSIO's fits_write_key_null() functionality).
+    Existing keywords with null values can now also be modified.
+- Build using cmake.
+- Run tests in the %check section.
+- Add CCfits-cmake-install-pkgconfig.patch: configure and install
+  pkgconfig file when using cmake for build; patch emailed
+  upstream since no proper upstream issue tracker exists.
+- Drop patches no longer needed (due to switching to cmake):
+  * CCfits-2.5-removerpath.patch
+  * cfitsio-path.patch
+
+-------------------------------------------------------------------
+Sun Dec 11 21:56:20 UTC 2022 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.6:
+  See included CHANGES file for details.
+
+-------------------------------------------------------------------
+Wed Jan 20 09:03:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add cfitsio-path.patch: this patch fixes an import error that prevents
+  a successfull compilation, because it's currently importing headers
+  from a non-existing location
+- Add CCfits-2.5-removerpath.patch: this patch removes rpath in the
+  shared library compile instruction
+
+-------------------------------------------------------------------
+Sat Jan  4 02:16:52 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 2.5:
+  * As part of an effort to allow tables to hold multiple columns
+    with the same name (see "Enhancements" section), the Table
+    class now stores Column objects in an internal multimap
+    rather than a map. This affects the public interface in 2
+    places: the ExtHDU::column() and Table::column() accessor
+    functions. These used to return a std::map reference, but now
+    return a std::multimap (using new typedef 'ColMap' defined in
+    CCfits.h).
+  * Removed the ImageExt<T>::image() accessor function from the
+    public interface. This was only ever intended for internal use.
+  * Enhancements:
+    - Added scripts for building with the CMake system, primarily
+      intended for builds on Windows platforms.
+    - New functions: ExtHDU::copyColumn, HDU::readNextKey,
+      HDU::resetImageRead, and a new Column::read overload for
+      returning a single row into a std::vector.
+    - Keyword reads can now convert numerical types into strings.
+    - Added support for variable-width string columns (with new
+      ValueType enum = VTstring).
+    - Image write functions are now allowed to dynamically
+      increase the size of the outer dimension as needed. The
+      corresponding NAXIS keyword will be updated automatically.
+    - Tables can now handle having multiple columns with the same
+      column name. (Also see "Backwards Compatibility" section.)
+    - Added support for read/write of LONGLONG types for images.
+    - Added handling of 'D' exponent notation when reading keyword
+      values with floating-point types.
+  * Bug Fixes:
+    - Improved memory caching when reading images, reducing the
+      number of unnecessary disk reads.
+    - Removed header inclusion of config.h due to potential
+      conflicts with users' customized autotools config.h files.
+    - HDU's '<<' output operator was not showing output for the
+      highest numbered axis.
+    - Removed unused NewColumn.h code file.
+    - Fixed memory leak in internal Column::setLimits function.
+    - Added #include statements to various files, the absence of
+      which was causing compilation failures on recent Windows
+      Visual Studio builds.
+    - Added missing 'break' statement for Tlonglong case in
+      internal FITSType2String function.
+    - Replaced a valarray operation in ColumnVectorData.h file
+      which caused a compiler glitch on certain Mac platforms.
+      (This was previously released as a patch.)
+    - Fix made to HDU's getHistory and getComments internal search
+      algorithm.
+    - Fix to FITS::addTable function for case where new table
+      shares its name with a pre-existing HDU but has a different
+      version number.
+    - Fix to memory management for certain Column write
+      operations.
+
+-------------------------------------------------------------------
+Fri Oct 16 22:41:40 UTC 2015 - avvissu@yandex.ru
+
+- Initial release
+

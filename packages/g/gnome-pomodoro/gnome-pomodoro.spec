@@ -29,7 +29,6 @@ Source99:       gnome-pomodoro-rpmlintrc
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext-devel >= 0.19.6
-BuildRequires:  gnome-common
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28

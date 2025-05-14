@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May  5 08:02:16 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.13
+  * Expire and renew the access token when using OAuth 2.0
+- from version 2.9.12
+  * Reduce JWT Token Expiration time
+
+-------------------------------------------------------------------
 Wed Apr  9 14:03:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.9.11

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed May  7 15:42:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.3:
+  This release changes the piv command to ignore unsupported
+  smartcards and fixes the build of the release binaries for Linux
+  and Windows.
+  Changelog
+  * Filter cards for NK3 ATR in PIV app by @mmerklinger in #642
+  * Fix CI and release v0.8.3 by @robin-nitrokey in #646
+
+-------------------------------------------------------------------
+Wed May  7 05:04:22 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.2:
+  This release improves handling of base32 strings in the nk3
+  secrets subcommand, improves the PIV subcommand and adds support
+  for custom CAs to the nethsm subcommand.
+  Changelog
+  * Fix typo in delete_credential documentation string. by @uzb-dev
+    in #622
+  * Piv cli improvements by @mmerklinger in #630
+  * fix: append required base32 padding when handling unpadded otp
+    secrets by @deheisenbug in #639
+  * fix: allow lowercase base32 secrets input by @deheisenbug in
+    #641
+  * nethsm: Add --ca-certs option by @robin-nitrokey in #637
+
+-------------------------------------------------------------------
 Fri Mar 28 09:28:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.1:

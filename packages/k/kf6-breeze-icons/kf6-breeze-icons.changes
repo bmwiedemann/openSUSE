@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun May  4 19:05:14 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.14.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.14.0
+- Changes since 6.13.0:
+  * Update dependency version to 6.14.0
+  * Add icon for kcm_animations (preferences-desktop-animations)
+  * kdeconnect-tray: Set the fill to currentColor
+  * Replace preferences-kde-connect
+  * Replace kdeconnect-tray icons
+  * Replace kdeconnect-symbolic icons with the actual kdeconnect icon
+  * Remove KDE Connect device status icons
+  * Fix unintended Telegram Snap icons too
+  * Remove Telegram icons that shouldn't have been added
+  * Update dependency version to 6.14.0
+  * Add Sober
+  * Correct symlinks broken in the last commit
+  * Correct names of new Snap symlinks for Telegram's tray icons
+  * Add symlinks for new Telegram icons for the Snap too
+
+-------------------------------------------------------------------
 Sat Apr  5 12:32:24 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.13.0

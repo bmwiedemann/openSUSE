@@ -18,7 +18,7 @@
 
 %define lname   libwtmpdb0
 Name:           wtmpdb
-Version:        0.74.0+git20250424.2e93e77
+Version:        0.74.0+git20250509.272b109
 Release:        0
 Summary:        Database for recording the last logged in users and system reboots
 License:        BSD-2-Clause
@@ -43,7 +43,7 @@ wtmpdb utility creates boot and shutdown entries or formats and
 prints the contents of the wtmp database.
 
 %package -n %{lname}
-Summary:        PAM module to store login and logout of users
+Summary:        Library to store login and logout of users (wtmpdb)
 
 %description -n %{lname}
 The libwtmpdb provides various interfaces to read, write or modify

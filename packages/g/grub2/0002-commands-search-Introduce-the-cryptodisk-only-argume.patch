@@ -1,0 +1,134 @@
+From 9ad07efefe389568c2cedc77a4a6b48cb830dc0a Mon Sep 17 00:00:00 2001
+From: Maxim Suhanov <dfirblog@gmail.com>
+Date: Thu, 8 May 2025 19:02:08 +0200
+Subject: [PATCH 2/8] commands/search: Introduce the --cryptodisk-only argument
+
+This allows users to restrict the "search" command's scope to
+encrypted disks only.
+
+Typically, this command is used to "rebase" $root and $prefix
+before loading additional configuration files via "source" or
+"configfile". Unfortunately, this leads to security problems,
+like CVE-2023-4001, when an unexpected, attacker-controlled
+device is chosen by the "search" command.
+
+The --cryptodisk-only argument allows users to ensure that the
+file system picked is encrypted.
+
+This feature supports the CLI authentication, blocking bypass
+attempts.
+
+Signed-off-by: Maxim Suhanov <dfirblog@gmail.com>
+Reviewed-by: Daniel Kiper <daniel.kiper@oracle.com>
+---
+ grub-core/commands/search.c      | 20 ++++++++++++++++++++
+ grub-core/commands/search_wrap.c |  7 ++++++-
+ grub-core/normal/main.c          |  3 ++-
+ include/grub/search.h            |  7 ++++---
+ 4 files changed, 32 insertions(+), 5 deletions(-)
+
+diff --git a/grub-core/commands/search.c b/grub-core/commands/search.c
+index 263f1501cd..f6bfef9585 100644
+--- a/grub-core/commands/search.c
++++ b/grub-core/commands/search.c
+@@ -86,6 +86,26 @@ iterate_device (const char *name, void *data)
+       grub_device_close (dev);
+     }
+ 
++  /* Limit to encrypted disks when requested. */
++  if (ctx->flags & SEARCH_FLAGS_CRYPTODISK_ONLY)
++    {
++      grub_device_t dev;
++
++      dev = grub_device_open (name);
++      if (dev == NULL)
++	{
++	  grub_errno = GRUB_ERR_NONE;
++	  return 0;
++	}
++      if (dev->disk == NULL || dev->disk->dev->id != GRUB_DISK_DEVICE_CRYPTODISK_ID)
++	{
++	  grub_device_close (dev);
++	  grub_errno = GRUB_ERR_NONE;
++	  return 0;
++	}
++      grub_device_close (dev);
++    }
++
+ #ifdef DO_SEARCH_FS_UUID
+ #define compare_fn grub_strcasecmp
+ #else
+diff --git a/grub-core/commands/search_wrap.c b/grub-core/commands/search_wrap.c
+index 318581f3b1..5f536006cf 100644
+--- a/grub-core/commands/search_wrap.c
++++ b/grub-core/commands/search_wrap.c
+@@ -41,6 +41,7 @@ static const struct grub_arg_option options[] =
+      ARG_TYPE_STRING},
+     {"no-floppy",	'n', 0, N_("Do not probe any floppy drive."), 0, 0},
+     {"efidisk-only",	0, 0, N_("Only probe EFI disks."), 0, 0},
++    {"cryptodisk-only",	0, 0, N_("Only probe encrypted disks."), 0, 0},
+     {"hint",	        'h', GRUB_ARG_OPTION_REPEATABLE,
+      N_("First try the device HINT. If HINT ends in comma, "
+ 	"also try subpartitions"), N_("HINT"), ARG_TYPE_STRING},
+@@ -75,6 +76,7 @@ enum options
+     SEARCH_SET,
+     SEARCH_NO_FLOPPY,
+     SEARCH_EFIDISK_ONLY,
++    SEARCH_CRYPTODISK_ONLY,
+     SEARCH_HINT,
+     SEARCH_HINT_IEEE1275,
+     SEARCH_HINT_BIOS,
+@@ -189,6 +191,9 @@ grub_cmd_search (grub_extcmd_context_t ctxt, int argc, char **args)
+   if (state[SEARCH_EFIDISK_ONLY].set)
+     flags |= SEARCH_FLAGS_EFIDISK_ONLY;
+ 
++  if (state[SEARCH_CRYPTODISK_ONLY].set)
++    flags |= SEARCH_FLAGS_CRYPTODISK_ONLY;
++
+   if (state[SEARCH_LABEL].set)
+     grub_search_label (id, var, flags, hints, nhints);
+   else if (state[SEARCH_FS_UUID].set)
+@@ -210,7 +215,7 @@ GRUB_MOD_INIT(search)
+   cmd =
+     grub_register_extcmd ("search", grub_cmd_search,
+ 			  GRUB_COMMAND_FLAG_EXTRACTOR | GRUB_COMMAND_ACCEPT_DASH,
+-			  N_("[-f|-l|-u|-s|-n] [--hint HINT [--hint HINT] ...]"
++			  N_("[-f|-l|-u|-s|-n] [--cryptodisk-only] [--hint HINT [--hint HINT] ...]"
+ 			     " NAME"),
+ 			  N_("Search devices by file, filesystem label"
+ 			     " or filesystem UUID."
+diff --git a/grub-core/normal/main.c b/grub-core/normal/main.c
+index d1cbaa1806..320adbe337 100644
+--- a/grub-core/normal/main.c
++++ b/grub-core/normal/main.c
+@@ -647,7 +647,8 @@ static const char *features[] = {
+   "feature_chainloader_bpb", "feature_ntldr", "feature_platform_search_hint",
+   "feature_default_font_path", "feature_all_video_module",
+   "feature_menuentry_id", "feature_menuentry_options", "feature_200_final",
+-  "feature_nativedisk_cmd", "feature_timeout_style"
++  "feature_nativedisk_cmd", "feature_timeout_style",
++  "feature_search_cryptodisk_only"
+ };
+ 
+ GRUB_MOD_INIT(normal)
+diff --git a/include/grub/search.h b/include/grub/search.h
+index ffd2411ca1..3eabaf0ccd 100644
+--- a/include/grub/search.h
++++ b/include/grub/search.h
+@@ -21,9 +21,10 @@
+ 
+ enum search_flags
+   {
+-    SEARCH_FLAGS_NONE		= 0,
+-    SEARCH_FLAGS_NO_FLOPPY	= 1,
+-    SEARCH_FLAGS_EFIDISK_ONLY	= 2
++    SEARCH_FLAGS_NONE            = 0,
++    SEARCH_FLAGS_NO_FLOPPY       = 1,
++    SEARCH_FLAGS_EFIDISK_ONLY    = 2,
++    SEARCH_FLAGS_CRYPTODISK_ONLY = 4
+   };
+ 
+ void grub_search_fs_file (const char *key, const char *var,
+-- 
+2.49.0
+

@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>888062</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>61a3721348aafcf1e23f9b433fc1c2c4</srcmd5>
+    <version>0.1.5</version>
+    <time>1746809429</time>
+    <user>anag_factory</user>
+    <comment>- Switch to pyproject macros.
+- Ship the correct license.</comment>
+    <requestid>1276012</requestid>
+  </revision>
 </revisionlist>

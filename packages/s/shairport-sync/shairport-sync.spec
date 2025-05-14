@@ -30,7 +30,7 @@ Patch1:         harden_shairport-sync.service.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
-BuildRequires:  gnome-common
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xxd

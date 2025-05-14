@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Apr 28 05:46:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.850.0 (0.85)
+   see /usr/share/doc/packages/perl-Code-TidyAll/Changes
+
+  0.85     2025-04-27
+
+  - Fixed a bug in how this module called `Path::Tiny`. Fixed by @gregoa (Gregor Hermann). GH #128.
+
+-------------------------------------------------------------------
 Fri Mar  8 22:01:18 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

@@ -1,7 +1,7 @@
 #
 # spec file for package python-line_profiler
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-line_profiler
-Version:        4.1.3
+Version:        4.2.0
 Release:        0
 Summary:        Line-by-line profiler
 License:        BSD-3-Clause

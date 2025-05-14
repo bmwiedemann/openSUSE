@@ -1,0 +1,28 @@
+From e95a9cb2e946bec33d7f0afa04850f93ae258477 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 7 May 2025 15:53:46 +0200
+Subject: [PATCH] hpcups: fix compilation on SLE12
+
+SLE12-SP5 is not using C++11 by default, thus nullptr is not
+defined. NULL is used elsewhere in the file, so we can just
+replace nullptr with NULL.
+---
+ prnt/hpcups/HPCupsFilter.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/prnt/hpcups/HPCupsFilter.cpp b/prnt/hpcups/HPCupsFilter.cpp
+index 6750684..7d397ed 100644
+--- a/prnt/hpcups/HPCupsFilter.cpp
++++ b/prnt/hpcups/HPCupsFilter.cpp
+@@ -435,7 +435,7 @@ DRIVER_ERROR HPCupsFilter::startPage (cups_page_header2_t *cups_header)
+ 
+         if (m_JA.media_attributes.PageSizeName[0] == '\0') {
+             // Copy the value of cups_header->cupsPageSizeName if it isnot null
+-            if (cups_header->cupsPageSizeName != nullptr) {
++            if (cups_header->cupsPageSizeName != NULL) {
+                 strncpy(m_JA.media_attributes.PageSizeName, cups_header->cupsPageSizeName, sizeof(m_JA.media_attributes.PageSizeName));
+             }
+         }   
+-- 
+2.49.0
+

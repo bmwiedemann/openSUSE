@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Tue May 13 04:29:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.6:
+  * lock: fix up filter for wanted arches (#1670)
+  * ldsocache snapshot/20250507 (#1665)
+
+-------------------------------------------------------------------
+Mon May 12 19:02:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.5:
+  * build(deps): bump github.com/charmbracelet/log from 0.4.1 to
+    0.4.2 (#1669)
+  * Respect arch flags when using lockfiles (#1664)
+
+-------------------------------------------------------------------
+Fri May 09 05:20:49 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.4:
+  * Guard against empty inputs list in unify() (#1668)
+  * build(deps): bump actions/setup-go from 5.4.0 to 5.5.0 (#1666)
+  * Remove link to "support" (#1662)
+
+-------------------------------------------------------------------
+Wed May 07 18:52:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.3:
+  * Fix build_repositories for layered images (#1663)
+  * README: fix url typo (#1661)
+  * build(deps): bump golang.org/x/sys from 0.32.0 to 0.33.0
+    (#1655)
+  * build(deps): bump google.golang.org/api from 0.229.0 to 0.231.0
+    (#1647)
+  * build(deps): bump golang.org/x/oauth2 from 0.29.0 to 0.30.0
+    (#1656)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.14.0 to
+    5.16.0 (#1626)
+  * build(deps): bump sigstore/cosign-installer from 3.8.1 to 3.8.2
+    (#1639)
+  * build(deps): bump github/codeql-action from 3.28.14 to 3.28.17
+    (#1652)
+  * build(deps): bump golang.org/x/sync from 0.13.0 to 0.14.0
+    (#1657)
+
+-------------------------------------------------------------------
+Tue May 06 04:35:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.2:
+  * Make apko hermetic again. (#1654)
+  * usrmerge: apko needs to create apk dirs in /usr/lib instead of
+    /lib (#1593)
+  * auth: Add oauth2.TokenSource auth provider (#1651)
+  * Use maps and slices from stdlib (#1646)
+  * Drop cosign dep (#1645)
+
+-------------------------------------------------------------------
 Tue Apr 29 05:55:15 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.1:

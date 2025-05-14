@@ -285,4 +285,12 @@ This avoids &quot;not owned by any package&quot; if only the &quot;-x&quot; subp
     <comment></comment>
     <requestid>1269979</requestid>
   </revision>
+  <revision rev="31" vrev="5">
+    <srcmd5>af60f6c5aea88ac43c54ffd847ced236</srcmd5>
+    <version>9.0.0</version>
+    <time>1747061173</time>
+    <user>anag_factory</user>
+    <comment>- disabled osmesa support, which has been removed with Mesa 25.1.0</comment>
+    <requestid>1276579</requestid>
+  </revision>
 </revisionlist>

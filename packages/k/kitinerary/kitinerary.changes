@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed May  7 21:00:15 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 25.04.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/25.04.1/
+- Changes since 25.04.0:
+  * Update static extractor build documentation
+  * Give published static extractor builds the release service version
+  * Use release branch for stable branch build dependencies
+  * Determine static extractor package version number from CMake
+  * Add checksum and basic smoke test for published static builds
+  * Less aggressively disable translations in the static build
+  * Don't build Qt::Network
+  * Remove conflicting CMake options for shared builds
+  * Publish static extractor builds
+  * Update static extractor dependencies
+  * Add extractor script for a&o hostels pkpass files
+  * Adapt test data in release branch after the UIC price extraction backport
+  * Add Gastronovi extractor
+  * Extract prices for generic UIC 918.3 tickets as well
+  * Find more seat/berth information in ÖBB NightJet tickets
+
+-------------------------------------------------------------------
 Mon Apr 14 07:06:49 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 25.04.0

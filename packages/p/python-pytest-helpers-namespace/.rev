@@ -59,4 +59,12 @@
 - unrestric pytest4, use pytest-forked to separate tests</comment>
     <requestid>1120003</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>099951fc6e5207e2df298e5c01ab6f13</srcmd5>
+    <version>2021.12.29</version>
+    <time>1746638364</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros.</comment>
+    <requestid>1275102</requestid>
+  </revision>
 </revisionlist>

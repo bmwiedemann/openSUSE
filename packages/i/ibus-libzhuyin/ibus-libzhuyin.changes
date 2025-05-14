@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May  6 08:04:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop obsolete and unused gnome-common BuildRequires.
+- Modernize and tweak spec, use modern macros.
+
+-------------------------------------------------------------------
 Sun Apr 28 06:15:36 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Update to version 1.10.3

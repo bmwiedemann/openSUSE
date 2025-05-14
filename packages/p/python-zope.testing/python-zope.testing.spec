@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.testing
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-zope.testing
-Version:        5.0.1
+Version:        5.1
 Release:        0
 Summary:        Zope testing helpers
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zope.testing
-Source:         https://files.pythonhosted.org/packages/source/z/zope.testing/zope.testing-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zope.testing/zope_testing-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-# Test requirements:
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -83,22 +84,24 @@ wait
   See wait.txt.
 
 %prep
-%setup -q -n zope.testing-%{version}
+%setup -q -n zope_testing-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-pushd build/lib
 %pyunittest -v zope.testing.tests.test_suite
 
 %files %{python_files}
 %license LICENSE.txt
 %doc COPYRIGHT.txt README.rst
-%{python_sitelib}/*
+%dir %{python_sitelib}/zope
+%{python_sitelib}/zope/testing
+%{python_sitelib}/zope[_.]testing-%{version}.dist-info
+%{python_sitelib}/zope.testing-%{version}*-nspkg.pth
 
 %changelog

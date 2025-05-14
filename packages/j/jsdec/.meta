@@ -1,0 +1,6 @@
+<package name="jsdec" project="openSUSE:Factory">
+  <title>Simple decompiler for Rizin</title>
+  <description>Simple decompiler for Rizin.
+Converts asm to pseudo-C code.</description>
+  <url>https://github.com/rizinorg/jsdec</url>
+</package>

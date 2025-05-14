@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat May  3 14:18:03 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add fix-gcc15-build.patch from upstream to fix gcc-15 compile
+  time error
+
+-------------------------------------------------------------------
 Mon Jan 27 15:06:58 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Move build of ffmpeg plugin to conditional BUILD_ORIG part of the
