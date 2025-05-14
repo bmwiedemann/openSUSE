@@ -1013,4 +1013,12 @@
     <comment>Another new dependency is needed for this: https://build.opensuse.org/requests/1268444</comment>
     <requestid>1268445</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>e15892c76ba585a4a6c3c759798dea46</srcmd5>
+    <version>5.5.3</version>
+    <time>1747234923</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277390</requestid>
+  </revision>
 </revisionlist>

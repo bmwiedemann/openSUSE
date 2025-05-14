@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed May 14 09:59:53 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 5.5.3
+  * Fix error of double normalization options from URI in mongodb
+    transport (#2282)
+  * Move use of typing_extensions into TYPE_CHECKING block (#2283)
+  * Do not pin package tzdata anymore (#2274)
+  * Typo in pools's documentation (#2285)
+  * Prepare for release: v5.5.3 (#2288)
+
+-------------------------------------------------------------------
 Tue Apr  8 14:57:10 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 5.5.2
