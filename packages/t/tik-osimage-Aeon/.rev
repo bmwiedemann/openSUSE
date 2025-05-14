@@ -68,4 +68,12 @@
   transactional-update v5.0+</comment>
     <requestid>1274822</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>90a8ca96a7c67a143fdc19f1a6d15b9a</srcmd5>
+    <version>0.1.0</version>
+    <time>1747234916</time>
+    <user>anag_factory</user>
+    <comment>- Enable ZYPP_SINGLE_RPMTRANS</comment>
+    <requestid>1277378</requestid>
+  </revision>
 </revisionlist>
