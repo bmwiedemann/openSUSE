@@ -1,7 +1,7 @@
 #
 # spec file for package python-async-lru
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-async-lru
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Simple LRU cache for asyncio
 License:        MIT
 URL:            https://github.com/aio-libs/async-lru
-Source:         https://files.pythonhosted.org/packages/source/a/async-lru/async-lru-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/async_lru/async_lru-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +47,7 @@ result in 1 call to the wrapped function, with all awaits receiving the result o
 call when it completes.
 
 %prep
-%autosetup -p1 -n async-lru-%{version}
+%autosetup -p1 -n async_lru-%{version}
 sed -i /addopts/d setup.cfg
 
 %build

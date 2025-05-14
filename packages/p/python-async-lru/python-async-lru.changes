@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 09:27:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.5
+  * Fixed a memory leak on exceptions and minor performance improvement.
+- Adjust upstream source name in spec file
+
+-------------------------------------------------------------------
 Sat Jul 29 09:02:08 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.4:
