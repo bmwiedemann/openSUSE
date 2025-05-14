@@ -1,7 +1,7 @@
 #
 # spec file for package python-autoupgrade-ng
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,23 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-autoupgrade-ng
 Version:        0.3.0
 Release:        0
 Summary:        Automatic upgrade of PyPI packages
 License:        MIT
 Group:          Development/Languages/Python
-Url:            https://github.com/vuolter/autoupgrade
+URL:            https://github.com/vuolter/autoupgrade
 Source:         https://files.pythonhosted.org/packages/source/a/autoupgrade-ng/autoupgrade-ng-%{version}.zip
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  dos2unix
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-pip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -40,21 +40,22 @@ Automatic upgrade of PyPI packages from within Python scripts
 
 The upgrade will be unattended and the python script will be restarted.
 
-Old methods are still supported; you can accomplish the same task calling:
+Old methods are still supported.
 
 %prep
 %setup -q -n autoupgrade-ng-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 dos2unix README.rst
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/autoupgrade
+%{python_sitelib}/autoupgrade[-_]ng-%{version}*-info
 
 %changelog
