@@ -53,6 +53,7 @@ BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.9
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:  pkgconfig(zlib)
+ExcludeArch:    ppc64le
 
 %description
 Aegisub is a subtitle editor. It works with the Advanced SubStation
