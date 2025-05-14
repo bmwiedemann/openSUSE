@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 14 08:51:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.1
+  * Fix mock server window update on 0 length body by @TingDaoK in (#517)
+
+-------------------------------------------------------------------
+Wed May  7 11:32:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.0
+  * Fix initial settings for h2 by @TingDaoK in (#513)
+  * Update h2 windowing algo and http client benchmark by @TingDaoK in (#388)
+    + Batching up the window update frame until the window size drops
+      below the threshold for both manual and auto window management
+    + Initial window size now be required for HTTP/2 connection on
+      manual window management now.
+
+-------------------------------------------------------------------
 Sun Apr 20 12:48:14 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.7:
