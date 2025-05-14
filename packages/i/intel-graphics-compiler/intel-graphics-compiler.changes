@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 06:09:58 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Wed Jan 15 08:48:35 UTC 2025 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Don't include versioned libs in devel packages 

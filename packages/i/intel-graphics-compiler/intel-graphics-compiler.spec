@@ -130,6 +130,9 @@ pushd igc
 popd
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %limit_build -m 900
 
 mkdir build
