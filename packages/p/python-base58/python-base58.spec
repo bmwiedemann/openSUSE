@@ -1,7 +1,7 @@
 #
 # spec file for package python-base58
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/keis/base58
 Source:         https://files.pythonhosted.org/packages/source/b/base58/base58-%{version}.tar.gz
 BuildRequires:  %{python_module PyHamcrest >= 2.0.2}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -44,10 +46,10 @@ Base58 and Base58Check implementation compatible with what is used by the bitcoi
 %setup -q -n base58-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/base58
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -64,6 +66,7 @@ Base58 and Base58Check implementation compatible with what is used by the bitcoi
 %doc README.md
 %license COPYING
 %python_alternative %{_bindir}/base58
-%{python_sitelib}/*
+%{python_sitelib}/base58
+%{python_sitelib}/base58-%{version}*-info
 
 %changelog
