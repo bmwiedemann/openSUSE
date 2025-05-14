@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-cross-wine
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %define _rpm_macros_dir %{_rpmconfigdir}/macros.d
 
 Name:           mingw64-cross-wine
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Wine cross runtime
 License:        GPL-2.0-or-later
@@ -66,10 +66,11 @@ packages, for example cross compiled test
 mkdir -p %{buildroot}%{_rpm_macros_dir}
 cp %{_sourcedir}/macros %{buildroot}%{_rpm_macros_dir}/macros.mingw64-cross-wine
 cp %{_sourcedir}/wine.sh %{buildroot}%{_rpmconfigdir}/mingw64-cross-wine-wine.sh
-mkdir -p %{buildroot}%{_bindir}
-ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-init
-ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-run
-ln -s %{_libexecdir}/mingw64-scripts %{buildroot}%{_bindir}/mingw64-cross-wine-start-session
+
+# create shell wrapper
+%_mingw64_create_macro_links mingw64-cross-wine-init
+%_mingw64_create_macro_links mingw64-cross-wine-run
+%_mingw64_create_macro_links mingw64-cross-wine-start-session
 
 %if %{?_with_dns}
 %post
