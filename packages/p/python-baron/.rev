@@ -47,4 +47,12 @@
   * bug fix for failure of parsing of &quot;{**a}&quot;</comment>
     <requestid>948241</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>80dee48f6dbe074a6743217553b62e09</srcmd5>
+    <version>0.10.1</version>
+    <time>1747234867</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277226</requestid>
+  </revision>
 </revisionlist>

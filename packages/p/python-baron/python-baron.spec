@@ -1,7 +1,7 @@
 #
 # spec file for package python-baron
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-baron
 Version:        0.10.1
 Release:        0
@@ -25,7 +24,9 @@ License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/PyCQA/baron
 Source0:        https://files.pythonhosted.org/packages/source/b/baron/baron-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-rply
@@ -50,21 +51,19 @@ rm -f tests/*.pyc
 rm -r tests/__pycache__
 
 %build
-export LANG='en_US.UTF-8'
-%python_build
+%pyproject_wheel
 
 %install
-export LANG='en_US.UTF-8'
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG='en_US.UTF-8'
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} py.test-%{$python_bin_suffix} -v tests/
+%pytest tests/
 
 %files %{python_files}
 %doc CHANGELOG README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/baron
+%{python_sitelib}/baron-%{version}*-info
 
 %changelog
