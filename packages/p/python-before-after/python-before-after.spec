@@ -1,7 +1,7 @@
 #
 # spec file for package python-before-after
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,9 +26,12 @@ URL:            https://github.com/c-oreills/before_after
 Source:         https://files.pythonhosted.org/packages/source/b/before_after/before_after-%{version}.tar.gz
 # https://github.com/c-oreills/before_after/issues/8
 Source1:        https://raw.githubusercontent.com/c-oreills/before_after/master/LICENSE
-Patch0:         https://patch-diff.githubusercontent.com/raw/c-oreills/before_after/pull/6.patch#/pr_6.patch
-Patch1:         https://patch-diff.githubusercontent.com/raw/c-oreills/before_after/pull/10.patch#/pr_10.patch
+# the 2nd patch download attempt is blocked - we can't have links in here
+Patch0:         pr_6.patch
+Patch1:         pr_10.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -45,10 +48,10 @@ before_after provides utilities for testing race conditions.
 cp %{SOURCE1} .
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %{python_expand rm -r %{buildroot}%{$python_sitelib}/before_after/tests/
 %fdupes %{buildroot}%{$python_sitelib}
 }
@@ -59,6 +62,7 @@ cp %{SOURCE1} .
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/before[-_]after
+%{python_sitelib}/before[-_]after-%{version}*-info
 
 %changelog

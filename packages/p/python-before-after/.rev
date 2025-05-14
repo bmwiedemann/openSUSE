@@ -25,4 +25,15 @@
     <comment></comment>
     <requestid>1097123</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>aef6c7123111cf782bce05462afbe821</srcmd5>
+    <version>1.0.1</version>
+    <time>1747234924</time>
+    <user>anag_factory</user>
+    <comment>- Convert to pip-based build
+- Drop download links from the Patch: section
+  * https://patch-diff.githubusercontent.com blocks too many too fast
+    downloads from the same directory</comment>
+    <requestid>1277396</requestid>
+  </revision>
 </revisionlist>

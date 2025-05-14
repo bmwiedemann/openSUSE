@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 13 16:20:54 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+- Drop download links from the Patch: section
+  * https://patch-diff.githubusercontent.com blocks too many too fast
+    downloads from the same directory 
+
+-------------------------------------------------------------------
 Thu Jul  6 10:22:05 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
