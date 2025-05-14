@@ -160,4 +160,12 @@ to an old changelog entry in order to submit the same package to
 Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <requestid>1208903</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>89d18fe4269c07ade3f0f3867cc526a4</srcmd5>
+    <version>1.22.2</version>
+    <time>1747234889</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277278</requestid>
+  </revision>
 </revisionlist>

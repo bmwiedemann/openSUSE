@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Tue May 06 22:48:02 UTC 2025 - jfehlig@suse.com
+
+- Update to version 1.22.2:
+  * Version 1.22.2.
+  * copy: Test --allocated + --destination-is-zero options together
+  * copy: Test --destination-is-zero option
+  * copy: Test --allocated option more thoroughly
+  * copy: Add a test of the --flush option
+  * copy: Remove output file in a few tests
+  * build: Print rustc version in ./configure output
+  * rust: Use nbd.is_uri in examples
+  * ci: Skip go on FreeBSD 14
+  * ci: Update to latest
+  * copy: Fix file allocation when using --allocated
+  * copy: Fix file_sync_zero when allocate == true
+  * copy: Consider options when zeroing in synch mode
+  * copy: Hard error if sync_file_range fails
+  * info/info-uri-nbds.sh: Fix test if compiled without GnuTLS
+  * copy: Set the total size in bytes copied
+  * copy: progress: Add a comment about size and pipes
+  * info: Use magenta for export headings, instead of black
+  * Version 1.22.1.
+  * ocaml/{examples,tests}: Don't try to run OCAMLFIND if --disable-ocaml
+  * docs/libnbd-release-notes-1.22.pod: Set release date
+  * Version 1.22.0.
+  * ci: Update FreeBSD builds
+  * copy: Include pthread.h
+  * docs: Small revisions to the release notes
+  * golang: Replace () with correct argument decl, for GCC 15
+  * docs: Add outline release notes for libnbd 1.22
+  * ci: Update to latest
+  * dump: Add a test of --length and --offset
+  * dump: Add --offset for further limiting the dump
+  * dump: Document --length
+  * examples: Add simple program to benchmark connections
+  * Version 1.21.6.
+  * build: Use 'tar ztf' instead of 'zcat | tar'
+  * Revert "ci: Skip maintainer-check-extra-dist test on macOS"
+  * ci: Skip maintainer-check-extra-dist test on macOS
+  * ci: Install bash (from homebrew) in the CI environment
+  * configure: Check that bash is sufficiently new
+  * ci: Dump out failed log files when the tests fail
+  * golang, rust: Use env bash for FreeBSD
+  * python: Skip Python tests on macOS
+  * tests/newstyle-limited.c: Check truncate is GNU truncate before using
+  * ocaml/tests/test_220_opt_list.ml: Use correct nbdkit binary
+  * ocaml/tests/test_580_aio_connect.ml: Skip this test on macOS
+  * build: Test for GnuTLS certtool on macOS
+  * build: Use GNU alternatives on macOS and FreeBSD
+  * copy/copy-file-to-nbd.sh: Remove test for 'truncate'
+  * lib/test-fork-safe-execvpe.sh: Skip this test on macOS
+  * ci/build.sh: Set os_id on macOS which lacks /etc/os-release
+  * ci: Don't skip tests on non-Linux
+  * Version 1.21.5.
+  * interop: Skip nbd-server test on Alpine
+  * ci: Update CI files
+  * vsock: Document limitations and reserved vsock port numbers
+  * rust: Parse perlpod L<https://...> (external links) to rust markup
+  * generator: connect_uri: Document differences with qemu parsing
+  * podwrapper: Add some simple checks for cross-references within manual pages.
+  * docs/libnbd-release-notes-1.10.pod: Remove broken link to "nbd_connect(3)"
+  * docs/nbd_create.pod: Cross-reference nbd_shutdown(3)
+  * Version 1.21.4.
+  * docs: Use "oldstyle servers" in preference to "older servers"
+  * docs: Mention newstyle and oldstyle servers in main docs
+  * docs: Mention nbd_is_uri under "Connecting to an NBD URI" in main docs
+  * README: Fix bold markdown
+  * README: Mention 'make install DESTDIR=...'
+  * README: Mention the ./run script
+  * lib: Add nbd_get_subprocess_pid to return h->pid
+  * docs/libnbd-security.pod: Assign CVE-2024-7383
+  * Version 1.21.3.
+  * build: Prefer "for developers" in ./configure --help output
+  * build: Fix ./configure --help output for --enable-python-code-style
+  * copy: Fix URI detection
+  * lib: Add new nbd_is_uri API
+  * tests/requires.c: Don't fail to compile if NBDKIT is not defined
+  * Version 1.21.2.
+  * lib: Implement nbd+ssh:// and nbds+ssh:// URIs
+  * tests/connect-uri.c: Replace -DREQUIRES_NBDKIT_TLS_VERIFY_PEER=1
+  * lib/uri.c: Change socket required boolean into an enum
+  * generator/states-newstyle.c: Don't sign extend escaped chars
+  * rust: Add os-ext feature to get mio::unix
+  * generator/states-newstyle.c: Quote untrusted string from the server
+  * generator: Restore assignment to local 'err'
+  * .gitignore: Remove unused line
+  * lib: Don't overwrite error in nbd_opt_{go,info}
+  * generator: Print full error in handle_reply_error
+  * ci: Drop Alma Linux 8
+  * lib/crypto.c: Check <gnutls/socket.h> works before including it
+  * lib/uri.c: Append tls-hostname and tls-verify-peer when getting URI
+  * Version 1.21.1.
+  * docs: security: Add link to TLS server certificate checking announcement
+  * lib/uri.c: Allow tls-hostname to be overridden in URIs
+  * lib/uri.c: Allow tls-verify-peer to be overridden in URIs
+  * lib/crypto.c: Add API functions to get/set TLS hostname
+
+-------------------------------------------------------------------
 Fri Oct 18 16:42:38 UTC 2024 - jfehlig@suse.com
 
 - Update to version 1.20.3:
