@@ -128,6 +128,11 @@ sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.c
 sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
 
 #======================================
+# Enable ZYPP_SINGLE_RPMTRANS
+#--------------------------------------
+echo 'techpreview.ZYPP_SINGLE_RPMTRANS=1' >> /etc/zypp/zypp.conf
+
+#======================================
 # Add default kernel boot options
 #--------------------------------------
 serialconsole='console=ttyS0,115200'
@@ -233,13 +238,13 @@ mkdir -p /home/tik/.local/share/applications/
 chown -R tik:users /home/tik/.local/
 cat >> /home/tik/.local/share/applications/org.opensuse.tik.desktop << "EOF"
 [Desktop Entry]
-Name=openSUSE Aeon Installer
-Comment=Installs openSUSE Aeon
+Name=Aeon Desktop Installer
+Comment=Installs Aeon Desktop
 Exec=/usr/bin/tik
 Icon=distributor-logo-Aeon-symbolic
 Type=Application
 Categories=System;
-Name[en_GB]=openSUSE Aeon Installer
+Name[en_GB]=Aeon Desktop Installer
 EOF
 # tik-config-Aeon
 

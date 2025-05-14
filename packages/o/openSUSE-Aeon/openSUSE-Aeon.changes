@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 14 09:54:22 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Enable ZYPP_SINGLE_RPMTRANS 
+
+-------------------------------------------------------------------
+Wed May 14 09:07:21 UTC 2025 - Richard Brown <rbrown@suse.com>
+
+- Use correct Aeon brand naming in shortcuts 
+
+-------------------------------------------------------------------
 Tue May  6 08:09:18 UTC 2025 - Richard Brown <rbrown@suse.de>
 
 - Setup /etc subvolume for transactional-update v5.0+ 

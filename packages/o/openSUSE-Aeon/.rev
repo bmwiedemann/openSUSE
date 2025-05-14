@@ -96,4 +96,15 @@
 - Use systemd-boot</comment>
     <requestid>1274821</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>2903a9f8008b420c4be47930372ecdcb</srcmd5>
+    <version>0.1.0</version>
+    <time>1747234915</time>
+    <user>anag_factory</user>
+    <comment>- Use correct Aeon brand naming in shortcuts
+- Enable ZYPP_SINGLE_RPMTRANS 
+
+- Use correct Aeon brand naming in shortcuts</comment>
+    <requestid>1277377</requestid>
+  </revision>
 </revisionlist>
