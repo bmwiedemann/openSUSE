@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 14 05:48:26 UTC 2025 - william.brown@suse.com
+
+- Update to version 1.6.3~git0.389493eb1:
+  * Release 1.6.3
+  * Fix minor issue with untagged version handling (#3634)
+  * Move shadow processing out of task event loop (#3631)
+  * Dont specify config path in container (#3630)
+  * Accept SSHA with different salt lengths (#3629)
+  * Resolve flaw with ssh key parse if the key has no comment (#3628)
+  * Indicate that this is an ip list, not a range (#3626)
+  * Test for corrupted unicode in SSH keys, keep the key title on error/resubmit (#3618)
+  * Reduce replication logging verbosity
+  * cargo publish (#3613)
+
+-------------------------------------------------------------------
 Fri May 09 03:36:32 UTC 2025 - william.brown@suse.com
 
 - Update to version 1.6.2~git0.a20663ea8:
