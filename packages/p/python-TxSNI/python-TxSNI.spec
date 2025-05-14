@@ -16,6 +16,7 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-TxSNI
 Version:        0.2.0
 Release:        0
