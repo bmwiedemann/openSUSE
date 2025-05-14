@@ -1,7 +1,7 @@
 #
 # spec file for package python-bashate
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,18 @@ URL:            https://pypi.org/project/bashate/
 Source:         https://files.pythonhosted.org/packages/source/b/bashate/bashate-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 0.9.6}
 BuildRequires:  %{python_module pbr}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testtools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # OpenStack package: stestr is only available for primary python3, only test on this flavor
 BuildRequires:  python3-stestr
 Requires:       python-Babel >= 0.9.6
 Requires:       python-pbr
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %ifpython2
 Requires:       python-argparse
@@ -60,16 +62,16 @@ and will continue to evolve over time.
 %setup -q -n bashate-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bashate
 %{python_expand  #
 rm -rf %{buildroot}%{$python_sitelib}/bashate/tests
 sed -i -e '/^#!\//, 1d' %{buildroot}%{$python_sitelib}/bashate/bashate.py
 }
-%python_compileall
+%{python_compileall}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -85,6 +87,7 @@ python3 -m stestr.cli run
 %license LICENSE
 %doc AUTHORS README.rst ChangeLog
 %python_alternative %{_bindir}/bashate
-%{python_sitelib}/*
+%{python_sitelib}/bashate
+%{python_sitelib}/bashate-%{version}*-info
 
 %changelog
