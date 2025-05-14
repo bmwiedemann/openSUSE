@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 14 08:43:51 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.3
+  * Make exports consistent by @DmitriyMusatkin in (#1196)
+  * Error handling docs by @graebm in (#1197)
+  * Fix casing on Windows header files by @waahm7 in (#1199)
+  * Add reset src api for aws_cbor_decoder by @TingDaoK in (#1202)
+  * Fix invalid XML Buffer Overflow Error by @waahm7 in (#1201)
+
+-------------------------------------------------------------------
 Wed Apr  2 13:51:05 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.12.2
