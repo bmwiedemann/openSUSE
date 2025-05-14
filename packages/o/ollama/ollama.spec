@@ -17,12 +17,12 @@
 
 
 Name:           ollama
-Version:        0.6.6
+Version:        0.6.8
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
 URL:            https://ollama.com
-Source:         %{name}-%{version}.tar
+Source:         https://github.com/ollama/ollama/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zstd
 Source2:        ollama.service
 Source3:        %{name}-user.conf

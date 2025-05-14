@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue May  6 10:09:33 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.6.8:
+  * Performance improvements for Qwen 3 MoE models on NVIDIA and
+    AMD GPUs
+  * Fixed a memory leak that occurred when providing images as
+    input
+  * ollama show will now correctly label older vision models such
+    as llava
+  * Reduced out of memory errors by improving worst-case memory
+    estimations
+  * Fix issue that resulted in a context canceled error
+
+- Update to version 0.6.7:
+  * New model: Qwen 3
+  * New model: Phi 4 reasoning and Phi 4 mini reasoning
+  * New model: llama 4
+  * Increased default context window to 4096 tokens
+  * Fixed issue where image paths would not be recognized with ~
+    when being provided to ollama run
+  * Improved output quality when using JSON mode in certain
+    scenarios
+  * Fixed issue where model would be stuck in the Stopping...
+    state
+
+- Use source url (https://en.opensuse.org/SourceUrls)
+
+-------------------------------------------------------------------
 Thu Apr 24 14:46:44 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.6.6:

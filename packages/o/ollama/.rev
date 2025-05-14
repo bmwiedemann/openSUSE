@@ -421,4 +421,14 @@ because we don't need git-web and the other stuff here (forwarded request 125417
     importing models from Safetensors</comment>
     <requestid>1272498</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>cbe2024a9205d47c4030ae3723365516</srcmd5>
+    <version>0.6.8</version>
+    <time>1747234870</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.8
+- Update to version 0.6.7
+- Use source url (https://en.opensuse.org/SourceUrls)</comment>
+    <requestid>1277233</requestid>
+  </revision>
 </revisionlist>
