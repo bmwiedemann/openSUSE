@@ -806,4 +806,15 @@
   * GO-2025-3660 CVE-2025-46569 GHSA-6m8w-jc87-6cr7 (forwarded request 1274998 from jfkw)</comment>
     <requestid>1274999</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>164367c6ba6cec8ba6190ab91c04cd25</srcmd5>
+    <version>0.0.20250513T163935</version>
+    <time>1747234872</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20250513T163935 2025-05-13T16:39:35Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2025-3561 CVE-2025-30163 GHSA-c6pf-2v8j-96mc (forwarded request 1277237 from jfkw)</comment>
+    <requestid>1277238</requestid>
+  </revision>
 </revisionlist>
