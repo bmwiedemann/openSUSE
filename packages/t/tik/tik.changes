@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 12:37:46 UTC 2025 - rbrown@suse.com
+
+- Update to version 1.3.12:
+  * [15-encrypt] Generate keys for signing PCR15 predictions
+  * [15-encrypt|20-mig] Detect if /etc is overlayfs or nested subvolume and mount accordingly (boo#1243063)
+
+-------------------------------------------------------------------
 Sat Mar 29 14:27:33 UTC 2025 - rbrown@suse.com
 
 - Update to version 1.3.11:
