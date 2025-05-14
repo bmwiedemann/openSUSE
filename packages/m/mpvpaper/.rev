@@ -143,4 +143,17 @@
     &quot;--auto-stop/-s&quot;</comment>
     <requestid>1192016</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5e169c38673d369740783ca3a0c7a34d</srcmd5>
+    <version>1.8</version>
+    <time>1747234904</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8:
+  * Add &quot;ALL&quot; as a new way to select all outputs 6fda8d4
+    Compatibility for the old way with &quot;*&quot; will remain
+  * Allow for transparent backgrounds #103
+  * Fix GCC 15 compatibility issues #90
+  * Fix monitor selection issue #78</comment>
+    <requestid>1277324</requestid>
+  </revision>
 </revisionlist>
