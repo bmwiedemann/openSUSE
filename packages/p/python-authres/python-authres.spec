@@ -1,7 +1,7 @@
 #
 # spec file for package python-authres
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        authres - Authentication Results Header Module
 License:        Apache-2.0
 URL:            https://launchpad.net/authentication-results-python
 Source:         https://files.pythonhosted.org/packages/source/a/authres/authres-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -38,10 +40,10 @@ authres - Authentication Results Header Module
 %setup -q -n authres-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -51,6 +53,7 @@ authres - Authentication Results Header Module
 %files %{python_files}
 %doc CHANGES README
 %license COPYING
-%{python_sitelib}/*
+%{python_sitelib}/authres
+%{python_sitelib}/authres-%{version}*-info
 
 %changelog
