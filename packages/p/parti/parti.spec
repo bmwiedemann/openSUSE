@@ -18,7 +18,7 @@
 
 
 Name:           parti
-Version:        2.8
+Version:        2.10
 Release:        0
 Summary:        Show partition table information
 License:        GPL-3.0-only
@@ -63,7 +63,7 @@ So it can be used to verify the data your favorite partitioning tool has actuall
 %{_bindir}/parti
 %{_bindir}/unify-gpt
 %license COPYING
-%doc README.md
+%doc README*.md
 %doc %{_mandir}/man1/unify-gpt.*
 
 %changelog
