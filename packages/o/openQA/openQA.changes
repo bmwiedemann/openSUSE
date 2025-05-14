@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue May 13 19:13:51 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1747157239.98c95eac:
+  * Improve wording of bail-out messages in fullstack test
+  * Fix wrong test name in fullstack test
+  * Avoid `git_clone` tasks failing with `Job terminated unexpectedly`
+  * Bump @modelcontextprotocol/sdk from 1.11.1 to 1.11.2
+  * Ensure fullstack tests run even under high load
+  * Bump eslint-config-prettier from 10.1.3 to 10.1.5
+  * Bump eventsource from 3.0.6 to 3.0.7
+  * Bump @modelcontextprotocol/sdk from 1.11.0 to 1.11.1
+  * Don't wait for scheduler when starting webUI
+  * Improve description of systemd services
+  * Install all relevant dirs under `/var/lib/openqa` via `Makefile`
+  * Avoid permission errors when flagging a Git server outage
+  * On shutdown keep openqa-webui and web server running until gru stopped
+  * Render the SUSE "review:acceptable_for" button on overview as well
+  * Bump eslint-config-prettier from 10.1.2 to 10.1.3
+  * Fix typo in 03-auth-openid.t
+  * Bump bootstrap from 5.3.5 to 5.3.6
+  * Dependency cron 2025-05-06
+  * Revert "Block all distri git operations unless `scm = git` is set, add `git_auto_commit` setting, disentangle `git_auto_clone` and `git_auto_update`"
+  * Avoid potential warning when checking whether the test order has changed
+  * Bump eslint-plugin-prettier from 5.2.6 to 5.4.0
+  * Bump eslint from 9.25.1 to 9.26.0
+  * Bump ace-builds from 1.40.1 to 1.41.0
+  * Makefile: Create config folder template only where to be used by users
+  * oauth2: use openQA base_url to create redirect URI if set
+  * Disentangle git_auto_clone and git_auto_update
+  * enqueue_git_update_all: don't check git_auto_clone
+  * Add git_auto_commit setting to control commit of edited needles
+  * Respect 'scm' config setting in _get_needles_ref_and_url
+  * Avoid git clone/update operations unless 'scm' is set to 'git'
+  * OpenID: Prevent confusing error about unset provider endpoint
+  * OpenID: Prevent double-dot in log output
+  * Bump @eslint-community/eslint-utils from 4.6.1 to 4.7.0
+
+-------------------------------------------------------------------
 Fri May 02 16:16:31 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1746194731.ed2800a0:
