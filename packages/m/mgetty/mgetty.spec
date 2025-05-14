@@ -1,7 +1,7 @@
 #
 # spec file for package mgetty
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Patch12:        mgetty-noroot.patch
 Patch13:        mgetty-mkdir-p.patch
 Patch14:        mgetty-fix-errlist.patch
 Patch15:        faxq-libexec.patch
+# build with gcc15
+Patch16:        mgetty-gcc15.patch
 BuildRequires:  groff
 BuildRequires:  makeinfo
 BuildRequires:  netpbm
@@ -108,6 +110,7 @@ The g3utils are included in the mgetty source package.
 %patch -P 13 -p1
 %patch -P 14 -p1
 %patch -P 15 -p1
+%patch -P 16 -p1
 chmod +x mkidirs
 
 %build

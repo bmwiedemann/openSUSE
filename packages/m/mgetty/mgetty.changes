@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 13 14:37:37 UTC 2025 - pgajdos@suse.com
+
+- build with gcc15
+  + mgetty-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Mar 27 18:46:00 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Provide user(fax) in sendfax package. [bsc#1221420]

@@ -1,0 +1,51 @@
+diff -upr mgetty-1.2.1.orig/hyla_nsf.c mgetty-1.2.1/hyla_nsf.c
+--- mgetty-1.2.1.orig/hyla_nsf.c	2025-05-13 14:10:12.860908198 +0000
++++ mgetty-1.2.1/hyla_nsf.c	2025-05-13 14:22:49.891709719 +0000
+@@ -39,9 +39,11 @@
+ 
+ #ifdef FAX_NSF_PARSER
+ 
++#if __STDC_VERSION__ < 202311L
+ typedef char bool;
+ #define true 1
+ #define false 0
++#endif
+ 
+ struct ModelData 
+ {
+diff -upr mgetty-1.2.1.orig/login.c mgetty-1.2.1/login.c
+--- mgetty-1.2.1.orig/login.c	2025-05-13 14:10:12.861475059 +0000
++++ mgetty-1.2.1/login.c	2025-05-13 14:21:37.046250649 +0000
+@@ -116,7 +116,7 @@ void login_dispatch _P3( (user, is_callb
+     int file_version = 1;		/* login.config format changed! */
+     char * line, * key, *p;
+     struct passwd * pw;
+-    extern struct passwd * getpwnam();
++    extern struct passwd * getpwnam(const char *name);
+ 
+     struct stat st;
+ 
+diff -upr mgetty-1.2.1.orig/mgetty.h mgetty-1.2.1/mgetty.h
+--- mgetty-1.2.1.orig/mgetty.h	2025-05-13 14:10:12.871652206 +0000
++++ mgetty-1.2.1/mgetty.h	2025-05-13 14:18:59.312223891 +0000
+@@ -148,7 +148,7 @@ int lprintf _PROTO((int level, const cha
+  */
+ typedef	void	RETSIGTYPE;
+ 
+-#if defined(_SCO_DS) || defined(AIX5)		/* SCO OSR 5.0 */
++#if defined(_SCO_DS) || defined(AIX5) ||  __STDC_VERSION__ >= 202311L /* SCO OSR 5.0 */
+ # define SIG_HDLR_ARGS	int signo
+ #else
+ # define SIG_HDLR_ARGS
+--- mgetty-1.2.1/voice/libpvf/wav.c	2025-05-13 14:32:27.838460188 +0000
++++ mgetty-1.2.1.orig/voice/libpvf/wav.c	2025-05-13 14:30:54.753291362 +0000
+@@ -43,7 +43,7 @@ unsigned short wBitsPerSample;
+ unsigned long  data_length;             /* length of sound data in bytes */
+ unsigned long  bytespersample;          /* bytes per sample (per channel) */
+ 
+-static char *wav_format_str();
++static char *wav_format_str(unsigned wFormatTag);
+ 
+ /* Read short, little-endian: little end first. VAX/386 style. */
+ 
+
