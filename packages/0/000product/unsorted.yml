@@ -8385,6 +8385,10 @@ unsorted:
   - handedict 
   - happy 
   - haproxy 
+  - harbor-cli 
+  - harbor-cli-bash-completion 
+  - harbor-cli-fish-completion 
+  - harbor-cli-zsh-completion 
   - hardening-check 
   - hardinfo 
   - hardinfo2 
@@ -16712,9 +16716,9 @@ unsorted:
   - libvted-3-0 
   - libvterm-devel 
   - libvterm-tools 
-  - libvtk-m-2_2 
-  - libvtk-m-mpich-2_2 
-  - libvtk-m-openmpi4-2_2 
+  - libvtk-m-2_3 
+  - libvtk-m-mpich-2_3 
+  - libvtk-m-openmpi4-2_3 
   - libvtk1 
   - libvtk1-openmpi4 
   - libvulkan1-32bit 
