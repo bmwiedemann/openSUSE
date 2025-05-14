@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 09:53:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.70.0
+  * Expand QuotaFailure with quota error details (#13745)
+
+-------------------------------------------------------------------
 Thu Apr  3 06:20:30 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.69.2
