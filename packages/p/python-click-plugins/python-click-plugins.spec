@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-plugins
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?sle_version} == 150300
 # tests fail on python2 on Leap 15.3 and SLE 15 SP3
 %define skip_python2 1
@@ -27,12 +26,15 @@ Version:        1.1.1
 Release:        0
 Summary:        Click extension to register CLI commands via setuptools entry-points
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/click-contrib/click-plugins
 Source:         https://files.pythonhosted.org/packages/source/c/click-plugins/click-plugins-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE https://github.com/click-contrib/click-plugins/issues/38
+Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module click >= 3.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 3.0
@@ -48,13 +50,13 @@ You could have all plugins register alongside the core commands,
 in a special sub-group, across multiple sub-groups, or some combination.
 
 %prep
-%setup -q -n click-plugins-%{version}
+%autosetup -p1 -n click-plugins-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -68,6 +70,7 @@ export LANG=en_US.UTF-8
 %else
 %license LICENSE.txt
 %endif
-%{python_sitelib}/*
+%{python_sitelib}/click_plugins
+%{python_sitelib}/click_plugins-%{version}.dist-info
 
 %changelog

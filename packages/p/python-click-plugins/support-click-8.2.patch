@@ -1,0 +1,78 @@
+Index: click-plugins-1.1.1/tests/test_plugins.py
+===================================================================
+--- click-plugins-1.1.1.orig/tests/test_plugins.py
++++ click-plugins-1.1.1/tests/test_plugins.py
+@@ -1,3 +1,6 @@
++import importlib.metadata
++
++from packaging.version import Version
+ from pkg_resources import EntryPoint
+ from pkg_resources import iter_entry_points
+ from pkg_resources import working_set
+@@ -20,6 +23,12 @@ def cmd2(arg):
+     """Test command 2"""
+     click.echo('passed')
+ 
++click_version = Version(importlib.metadata.version("click"))
++if click_version >= Version("8.2"):
++    expected_exit_code = 2
++else:
++    expected_exit_code = 0
++
+ 
+ # Manually register plugins in an entry point and put broken plugins in a
+ # different entry point.
+@@ -78,7 +87,7 @@ def test_registered():
+ def test_register_and_run(runner):
+ 
+     result = runner.invoke(good_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+ 
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         cmd_result = runner.invoke(good_cli, [ep.name, 'something'])
+@@ -89,7 +98,7 @@ def test_register_and_run(runner):
+ def test_broken_register_and_run(runner):
+ 
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):
+@@ -108,7 +117,7 @@ def test_group_chain(runner):
+         pass
+ 
+     result = runner.invoke(good_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+     assert sub_cli.name in result.output
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         assert ep.name in result.output
+@@ -121,7 +130,7 @@ def test_group_chain(runner):
+         pass
+ 
+     result = runner.invoke(good_cli, ['sub-cli-plugins'])
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+     for ep in iter_entry_points('_test_click_plugins.test_plugins'):
+         assert ep.name in result.output
+ 
+@@ -142,7 +151,7 @@ def test_exception():
+ 
+ def test_broken_register_and_run_with_help(runner):
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):
+@@ -153,7 +162,7 @@ def test_broken_register_and_run_with_he
+ 
+ def test_broken_register_and_run_with_args(runner):
+     result = runner.invoke(broken_cli)
+-    assert result.exit_code == 0
++    assert result.exit_code == expected_exit_code
+     assert u'\U0001F4A9' in result.output or u'\u2020' in result.output
+ 
+     for ep in iter_entry_points('_test_click_plugins.broken_plugins'):

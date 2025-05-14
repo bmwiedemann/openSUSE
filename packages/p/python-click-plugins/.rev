@@ -77,4 +77,15 @@
     <comment></comment>
     <requestid>1092343</requestid>
   </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>25bf674ab03350b3746cdcda485c0466</srcmd5>
+    <version>1.1.1</version>
+    <time>1747234891</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.2.patch:
+  * Support click 8.2+ changes.
+- Switch to autosetup and pyproject macros.
+- No more greedy globs in %files.</comment>
+    <requestid>1277279</requestid>
+  </revision>
 </revisionlist>
