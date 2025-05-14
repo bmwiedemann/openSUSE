@@ -84,6 +84,7 @@ Patch3:         dwz-make-dejagnu-logs-more-elaborate.patch
 Patch4:         dwz-make-dejagnu-test-names-environment-insensitive.patch
 Patch5:         dwz-testsuite-fix-finding-gdb-without-which.patch
 Patch6:         dwz-add-support-for-version-9-gdb-index.patch
+Patch7:         dwz-fix-double-free-in-compute-abbrevs.patch
 
 %if %{build_main}
 %description

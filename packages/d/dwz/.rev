@@ -231,4 +231,14 @@
 </comment>
     <requestid>1250002</requestid>
   </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>b6d1c8b6685cf4ac49be86e04e45babb</srcmd5>
+    <version>0.15</version>
+    <time>1747234859</time>
+    <user>anag_factory</user>
+    <comment>- Add patch (backport from upstream trunk) [swo#32934]: 
+  * dwz-fix-double-free-in-compute-abbrevs.patch
+</comment>
+    <requestid>1276892</requestid>
+  </revision>
 </revisionlist>
