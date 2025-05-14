@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed May 14 08:37:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250513.00
+  * Fix rpm extractor, handle (none) value correctly. (#833)
+- from version 20250512.01
+  * Bump github.com/envoyproxy/go-control-plane from 0.13.1 to 0.13.4 (#816)
+- from version 20250512.00
+  * Bump golang.org/x/net from 0.39.0 to 0.40.0 (#819)
+- from version 20250508.01
+  * cosmetic refactoring to osinfo package (#826)
+- from version 20250508.00
+  * Refactor /inventory with dependency injection (#825)
+  * Add debian, ubuntu (InstalledDebPackages) snapshots (#821)
+  * cover packages_linux.go file with tests (#824)
+  * Add debian (10,11,12) GetPackageUpdates output snapshots (#822)
+- from version 20250507.00
+  * Add InstalledRPMPackages snapshot tests (#823)
+- from version 20250506.02
+  * Yum tests: simplify initialization of exit errors (#820)
+- from version 20250506.01
+  * Improve test coverage for gem package manager (#818)
+- from version 20250506.00
+  *  after go/x/crypto update 0.32.0 -> 0.37.0 (#817)
+- from version 20250505.01
+  * Improve packages package coverage (#814)
+  * Bump golang.org/x/net from 0.34.0 to 0.39.0 (#807)
+- from version 20250505.00
+  * Bump golang.org/x/crypto from 0.32.0 to 0.37.0 (#806)
+- from version 20250430.00
+  * Snapshot YumUpdates (GetPackageUpdates) output (#813)
+- from version 20250428.00
+  * Snapshot ZypperPatches, ZypperUpdates (GetPackageUpdates) output
+    for sles 12, 15 testdata (#812)
+- from version 20250423.00
+  * Introduce MatchSnapshot large test results matcher function, snapshot
+    apt-deb GetPackageUpdates (#811)
+- from version 20250416.02
+  * defaultSleeper: tolerate 10% difference to reduce test flakiness (#810)
+  * Add output of some packagemanagers to the testdata (#808)
+- from version 20250416.01
+  * Refactor OS Info package (#809)
+- from version 20250416.00
+  * Report RPM inventory as YUM instead of empty SoftwarePackage
+    when neither Zypper nor YUM are installed. (#805)
+- from version 20250414.00
+  * Update hash computation algorithm (#799)
+
+-------------------------------------------------------------------
 Mon Apr 14 08:11:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20250320.00

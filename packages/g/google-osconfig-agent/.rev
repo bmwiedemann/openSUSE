@@ -542,4 +542,41 @@
 - Renumber patches (forwarded request 1269158 from glaubitz)</comment>
     <requestid>1269695</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>b53ae58985bbd5157e55a76013f0a6bd</srcmd5>
+    <version>20250513.00</version>
+    <time>1747234917</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250513.00
+  * Fix rpm extractor, handle (none) value correctly. (#833)
+- from version 20250512.01
+  * Bump github.com/envoyproxy/go-control-plane from 0.13.1 to 0.13.4 (#816)
+- from version 20250512.00
+  * Bump golang.org/x/net from 0.39.0 to 0.40.0 (#819)
+- from version 20250508.01
+  * cosmetic refactoring to osinfo package (#826)
+- from version 20250508.00
+  * Refactor /inventory with dependency injection (#825)
+  * Add debian, ubuntu (InstalledDebPackages) snapshots (#821)
+  * cover packages_linux.go file with tests (#824)
+  * Add debian (10,11,12) GetPackageUpdates output snapshots (#822)
+- from version 20250507.00
+  * Add InstalledRPMPackages snapshot tests (#823)
+- from version 20250506.02
+  * Yum tests: simplify initialization of exit errors (#820)
+- from version 20250506.01
+  * Improve test coverage for gem package manager (#818)
+- from version 20250506.00
+  *  after go/x/crypto update 0.32.0 -&gt; 0.37.0 (#817)
+- from version 20250505.01
+  * Improve packages package coverage (#814)
+  * Bump golang.org/x/net from 0.34.0 to 0.39.0 (#807)
+- from version 20250505.00
+  * Bump golang.org/x/crypto from 0.32.0 to 0.37.0 (#806)
+- from version 20250430.00
+  * Snapshot YumUpdates (GetPackageUpdates) output (#813)
+- from version 20250428.00
+  * Snapshot ZypperPatches, ZypperUpdates (GetPackageUpdates) output (forwarded request 1277349 from glaubitz)</comment>
+    <requestid>1277399</requestid>
+  </revision>
 </revisionlist>
