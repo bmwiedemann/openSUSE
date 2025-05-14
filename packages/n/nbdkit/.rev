@@ -202,4 +202,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
   nbdkit-basic-filters subpackages</comment>
     <requestid>1219736</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>86defdaaf9e7b3c9144fb12780051b3a</srcmd5>
+    <version>1.42.3</version>
+    <time>1747234888</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277277</requestid>
+  </revision>
 </revisionlist>

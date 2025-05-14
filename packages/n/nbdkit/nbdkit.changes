@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Tue May 13 20:51:35 UTC 2025 - jfehlig@suse.com
+
+- Update to version 1.42.3:
+  * Version 1.42.3.
+  * file: Change confusing comment
+  * file: Implement BLKDISCARD for trim
+  * file: Don't ignore most errors on trim
+  * file: Fix check for errno EOPNOTSUPP
+  * Update TODO with file plugin vs block device issues
+  * file: zero: Use BLKDISCARD method if may_trim is set
+  * file: zero: Document implicit order that we will try zeroing methods
+  * file: Rename h->can_zeroout to h->can_blkzeroout to reflect ioctl
+  * file: Fix do_fallocate debugging on Alpine
+  * rust: Fix clippy uninlined-format-args warning
+  * file: Fix comment style in a few places
+  * file: Add more debugging when -D file.zero=1 is used
+  * file: Fix minor typo in debug message
+  * curl: Remove extra whitespace character
+  * tests: More robust check for nbdsh --base-allocation
+  * ci: Update to latest
+  * docs: Explain how debug flags work
+  * tests/test-layers.c: Replace realloc with nbdkit string type
+  * docs: Simplify and clarify the standard text about magic parameters
+  * docs: Use POD macro for all magic parameters
+  * curl: Move AC_DEFINE upwards
+  * tests/test-pycodestyle.sh: Print paths relative to top source directory
+  * python: Remove unneeded global statements
+  * random, sparse-random: Link to nbdkit-pattern-plugin
+  * file: Improve documentation for cache=none
+  * file: Annotate a few local variables with 'const'
+  * server: Turn flush into a controlpath message
+  * file: Document implicit assumption about eviction windows
+  * file: Reduce the size of the lock around write eviction
+  * file: Hard error if sync_file_range fails
+  * file: If sync_file_range fails to start, don't add window to list
+  * file: Add debugging if sync_file_range / posix_fadvise fails
+  * blocksize: Fix 32-bit overflow in .extents [CVE-2025-47712]
+    bsc#1243108
+  * server: Fix off-by-one for maximum block_status length [CVE-2025-47711]
+    bsc#1243110
+
+-------------------------------------------------------------------
+Tue May 06 22:56:00 UTC 2025 - jfehlig@suse.com
+
+- Update to version 1.42.2:
+  * Version 1.42.2.
+  * tests: Add test file to EXTRA_DIST even if !HAVE_LZIP
+  * common/protocol: Add a test of protocol string conversion functions
+  * common/protocol: Use thread-local storage for "unknown" string
+  * common/protocol/protostrings.h: Fix name_of_nbd_reply prototype
+  * protostrings: Use correct path to nbd-protocol.h
+  * docs: Add a note to --log entry about using nbdkit_error
+  * docs/nbdkit_error.pod: Describe interaction with --log option
+  * docs: Remove incorrect information about syslog
+  * docs: Simplify documentation for --log option
+  * server/log.c: Fix comment
+  * golang: Don't use '()' for no-argument C functions
+  * build: Mark libfuzzer as a developer only option
+  * rust: Disable clippy warnings unless --enable-gcc-warnings is used
+  * ci: Move FreeBSD from Tcl 8.7 to 9.0
+  * ci: Drop alpine-319, add alpine-321
+  * Version 1.42.1.
+  * golang: Add a note about breakage when plugins run in the background
+  * README: New location for Wine AF_UNIX patches
+  * build: Disable -Wunused-command-line-argument on FreeBSD
+  * gitlab: make rust jobs honour the gitlab workflow rules
+  * docs/nbdkit-release-notes-1.42.pod: Add release date
+  * Version 1.42.0.
+  * golang: Support GCC 15
+  * ci: Update FreeBSD builds
+  * docs: Small revisions to the release notes
+  * server: Add vsock_option=yes|no to --dump-config output
+  * openbsd: curl: Include pthread.h
+  * server: Define timeout_option=yes|no in --dump-config output
+  * openbsd: server: Fix detection of --timeout option
+  * docs: Add outline release notes for nbdkit 1.42
+  * Revert "build: Disable -Wunused-command-line-argument on FreeBSD"
+  * ci: In rawhide-clang test, use clang++ to compile C++ (eg. filters/stats)
+  * build: Disable -Wunused-command-line-argument on FreeBSD
+  * rust: Fix "overindented" list in comment
+  * rust: Declare explicit extern "C" API
+  * curl: Fix configure-time checks for enums
+  * ci: Update to latest
+  * Version 1.41.9.
+  * vddk: do_extents: Avoid reading partial chunk beyond the end of the disk
+  * vddk: do_extents: Exit the function if we hit req_one condition
+  * vddk: do_extents: Mark some local variables const
+  * vddk: Cache the disk size in the handle
+  * vddk: Include <stdbool.h>
+  * curl: Remove unnecessary checks for CURL_SSLVERSION_MAX_* macros
+  * docs: Link to a couple of "alternate" plugins
+  * python: examples: Fix comment above API_VERSION constant
+  * TODO: Document problems with -p 0 option and picking a port
+  * tcl: Fix for Tcl 9.0 compatibility
+  * Version 1.41.8.
+  * build: Use 'tar ztf' instead of 'zcat | tar'
+  * ci: Dump out failed log files when the tests fail
+  * tests/test-ocaml-dump-plugin.sh: Temporarily skip test on FreeBSD
+  * ci/build.sh: Set os_id on macOS which lacks /etc/os-release
+  * ci: Don't skip tests on non-Linux
+  * tests: Check that C tests using requires/skip include "requires.h"
+  * tests: Add requires.[ch] as dependencies of test-ocaml
+  * tests: Skip all OCaml tests on macOS
+  * server: Turn synopsis.c into a standalone top level source file
+  * server: Add description of nbdkit to --help output
+  * tmpdisk: Miscellaneous documentation clean-ups
+  * tmpdisk: Link to nbdkit-ondemand-plugin in SEE ALSO section
+  * tests: Add 'requires_root' C function
+  * tests: Add 'requires_not_valgrind'
+  * tests: requires: Add unconditional skip_because helper function
+  * tests: Use 'requires.c' code from libnbd to test requirements
+  * tests: tmpdisk: Check for mkfs and truncate before running these tests
+  * tmpdisk: Use configure-time truncate command
+  * Version 1.41.7.
+  * ondemand: Miscellaneous documentation clean-ups
+  * ondemand: Implement share=true option
+  * tests/test-ondemand-locking.sh: Fail if second connection succeeds
+  * ondemand: Filter out correct invalid exports in .list_exports
+  * ondemand: Refactor exportname checking
+  * ocaml: Further updates to ocamldoc documentation
+  * ocaml: Split OCaml 5 includes (eg. -I +unix) from OCAML_PLUGIN_LIBRARIES
+  * ocaml: Improve ocamldoc documentation
+  * plugins/ocaml/NBDKit.ml: Sort bindings into order
+  * ocaml: Don't call abort if caml_c_thread_unregister fails
+  * ocaml: Use real addresses instead of (void*)<constant>s
+  * evil: Link to nbdkit_parse_probability(3)
+  * Version 1.41.6.
+  * plugins/rust: use CStr literals for static strings
+  * ci: Skip rust on platforms with rustc < 1.77.0
+  * ci: Update CI files
+  * docs/nbdkit-service.pod: Add KeepAlive and User/Group settings
+  * tests/test-ondemand.sh: Refine qemu exportname skips
+  * server: Add --keepalive option
+  * tests/test-ondemand.sh: Work around bug in qemu 9.1 exportname handling
+  * Version 1.41.5.
+  * ondemand: Serialize the .open method
+  * ondemand: Delete the disk if creation fails
+  * ondemand, tmpdisk: Don't allow parameters containing '-'
+  * ondemand: Be less strict about filenames
+  * lzip: Include <config.h>
+  * lzip: Fix memory leak
+  * lzip: Use vector
+  * tests: bzip2, curl, ext2, file, gzip, lzip, memory, offset, xz: Don't leak 'data' returned by guestfs_cat
+  * Add tests for the lzip filter
+  * Introduce lzip-filter
+  * Fix documented default value for xz-max-depth
+  * bzip2: Fix version where this filter first appeared
+  * Version 1.41.4.
+  * tests: old-plugins: Use self-built 1.38.4 plugin instead of Fedora
+  * filters/qcow2dec/qcow2dec.c: Fix format specifier in error message
+  * tests: old-plugins: Fix srcdir != builddir
+  * tests: old-plugins: Discrete tests and test using nbdinfo
+  * tests: old-plugins: Rename tests so version doesn't contain '-'
+  * tests: old-plugins: Add i686 plugin from nbdkit 1.38.4
+  * tests/test-old-plugins.sh: Test --version, --help and --dump-plugin
+  * tests: old-plugins: Add plugin from nbdkit 1.38.4
+  * tests: Rearrange some filter tests in alphabetical order
+  * Version 1.41.3.
+  * time-limit: Replace ESHUTDOWN error on Windows
+  * New filter: nbdkit-time-limit-filter
+  * tests: Skip test-timeout-cancel when --timeout fails
+  * tests: Test that the timeout gets cancelled after NBD negotiation
+  * docs: Minor corrections to --timeout documentation
+  * server: Implement --timeout option
+  * server: Clear conn->magic when freeing a connection
+  * Version 1.41.2.
+  * ip: Do late filtering in list_exports as well as open
+  * docs/nbdkit_shutdown.pod: Minor copyediting
+  * docs/nbdkit_error.pod: Typo 'thre' -> 'there'
+  * podwrapper: Check cross-references to C API pages
+  * docs: Fix cross-reference to nbdkit_stdio_safe(3)
+  * ocaml: Use thread-local key to register & unregister the thread
+  * ocaml: Reinitialize the OCaml runtime after fork
+  * tests: Refactor ocaml errorcodes plugin used in testing
+  * Version 1.41.1.
+  * vddk: Print the default list of transports in --dump-plugin output
+
+-------------------------------------------------------------------
 Wed Oct 30 20:43:40 UTC 2024 - James Fehlig <jfehlig@suse.com>
 
 - spec: Cleanup 'Provides' list for the nbdkit-basic-plugins and

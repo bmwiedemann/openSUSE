@@ -1,7 +1,7 @@
 #
 # spec file for package nbdkit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64 %{ix86}
 
 Name:           nbdkit
-Version:        1.40.4
+Version:        1.42.3
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -174,9 +174,10 @@ This package contains example plugins for %{name}.
 
 
 
+
+
 # The plugins below have non-trivial dependencies are so are
 # packaged separately.
-
 %package cdi-plugin
 Summary:        Containerized Data Import plugin for %{name}
 Requires:       %{name}-server = %{version}-%{release}
@@ -196,9 +197,10 @@ This package contains cURL (HTTP/FTP) support for %{name}.
 
 
 
+
+
 # In theory this is noarch, but because plugins are placed in _libdir
 # which varies across architectures, RPM does not allow this.
-
 %package gcs-plugin
 Summary:        Gooogle Cloud Storage plugin %{name}
 Requires:       %{name}-python-plugin = %{version}-%{release}
@@ -310,6 +312,7 @@ Provides:       %{name}-rotational-filter = %{version}-%{release}
 Provides:       %{name}-scan-filter = %{version}-%{release}
 Provides:       %{name}-spinning-filter = %{version}-%{release}
 Provides:       %{name}-swab-filter = %{version}-%{release}
+Provides:       %{name}-time-limit-filter = %{version}-%{release}
 Provides:       %{name}-tls-fallback-filter = %{version}-%{release}
 Provides:       %{name}-truncate-filter = %{version}-%{release}
 
@@ -382,19 +385,21 @@ nbdkit-rate-filter          Limits bandwidth by connection or server.
 
 nbdkit-readahead-filter     Prefetches data when reading sequentially.
 
-nbdkit-readonly-filter     Switch a plugin between read-only and writable.
+nbdkit-readonly-filter      Switch a plugin between read-only and writable.
 
 nbdkit-retry-filter         Reopens connection on error.
 
 nbdkit-retry-request-filter Retries single requests if they fail.
 
-nbdkit-rotational-filter   Set if a plugin is rotational or not.
+nbdkit-rotational-filter    Set if a plugin is rotational or not.
 
 nbdkit-scan-filter          Prefetch data ahead of sequential reads.
 
-nbdkit-spinning-filter     Add seek delays to simulate a spinning hard disk.
+nbdkit-spinning-filter      Add seek delays to simulate a spinning hard disk.
 
 nbdkit-swab-filter          Filter for swapping byte order.
+
+nbdkit-time-limit-filter    Set an overall time limit for each connection.
 
 nbdkit-tls-fallback-filter  TLS protection filter.
 
@@ -423,11 +428,11 @@ Requires:       tar
 This package is a tar archive filter for %{name}.
 
 %package xz-filter
-Summary:        XZ filter for %{name}
+Summary:        XZ and lzip filters for %{name}
 Requires:       %{name}-server = %{version}-%{release}
 
 %description xz-filter
-This package is the xz filter for %{name}.
+This package contains the xz and lzip filters for %{name}.
 
 %package devel
 Summary:        Development files and documentation for %{name}
@@ -684,6 +689,7 @@ export PATH=/usr/sbin:$PATH
 %{_libdir}/%{name}/filters/nbdkit-scan-filter.so
 %{_libdir}/%{name}/filters/nbdkit-spinning-filter.so
 %{_libdir}/%{name}/filters/nbdkit-swab-filter.so
+%{_libdir}/%{name}/filters/nbdkit-time-limit-filter.so
 %{_libdir}/%{name}/filters/nbdkit-tls-fallback-filter.so
 %{_libdir}/%{name}/filters/nbdkit-truncate-filter.so
 %{_mandir}/man1/nbdkit-blocksize-filter.1*
@@ -725,6 +731,7 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-scan-filter.1*
 %{_mandir}/man1/nbdkit-spinning-filter.1*
 %{_mandir}/man1/nbdkit-swab-filter.1*
+%{_mandir}/man1/nbdkit-time-limit-filter.1*
 %{_mandir}/man1/nbdkit-tls-fallback-filter.1*
 %{_mandir}/man1/nbdkit-truncate-filter.1*
 
@@ -741,7 +748,9 @@ export PATH=/usr/sbin:$PATH
 %{_mandir}/man1/nbdkit-tar-filter.1*
 
 %files xz-filter
+%{_libdir}/%{name}/filters/nbdkit-lzip-filter.so
 %{_libdir}/%{name}/filters/nbdkit-xz-filter.so
+%{_mandir}/man1/nbdkit-lzip-filter.1*
 %{_mandir}/man1/nbdkit-xz-filter.1*
 
 %files devel
