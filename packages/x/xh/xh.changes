@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 14 07:15:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * Support RFC 5987 encoding for Content-Disposition filenames, see #416
+  * Fix crash on empty zstd response body, see #411
+  * Improve rustls errors for invalid certificates, see #413
+
+-------------------------------------------------------------------
 Tue Feb 25 13:10:55 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.0:

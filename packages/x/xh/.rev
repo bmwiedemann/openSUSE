@@ -102,4 +102,15 @@
   * Upgrade cookie_store to 0.21.1, see #397</comment>
     <requestid>1248379</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a427b1de6a85bafed5bb8a498d615cdc</srcmd5>
+    <version>0.24.1</version>
+    <time>1747234905</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.24.1:
+  * Support RFC 5987 encoding for Content-Disposition filenames, see #416
+  * Fix crash on empty zstd response body, see #411
+  * Improve rustls errors for invalid certificates, see #413</comment>
+    <requestid>1277327</requestid>
+  </revision>
 </revisionlist>
