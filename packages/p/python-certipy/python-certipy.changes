@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Apr  4 08:10:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.2.2
+  * Test with default SSL configuration
+  * Can't support Python 3.7 if we require setuptools-scm 8
+  * Return flask app
+  * Add AuthorityKeyIdentifier extension
+
+-------------------------------------------------------------------
 Fri Nov  8 10:38:43 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.2.1
