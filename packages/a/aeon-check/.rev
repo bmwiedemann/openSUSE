@@ -25,4 +25,18 @@
   * boo#1234234 - correct PCR list for Aeon FDE</comment>
     <requestid>1234760</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0d6d1ddf4858ea53b8d14e3703c1b832</srcmd5>
+    <version>1.0.5</version>
+    <time>1747234916</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.4:
+  * boo1243182 - use zypper SINGLETRANS backend
+- Update to version 1.0.5:
+  * Run grep quietly
+
+- Update to version 1.0.4:
+  * boo1243182 - use zypper SINGLETRANS backend</comment>
+    <requestid>1277408</requestid>
+  </revision>
 </revisionlist>
