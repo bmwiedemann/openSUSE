@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May  6 13:00:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.32.5
+  * Add const specifier to UUID comparison operators
+    by @sfod in (#732)
+  * Increase Operation Timeout in CI for Req/Resp
+    Tests by @sbSteveK in #733
+  * Capture fields from PUBLISH for req-resp stream
+    operations by @sfod in (#721)
+
+-------------------------------------------------------------------
 Tue Apr 15 10:26:32 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.32.4
