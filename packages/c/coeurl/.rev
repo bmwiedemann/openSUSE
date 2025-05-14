@@ -15,4 +15,13 @@
     <comment>fix for 16.0</comment>
     <requestid>1256443</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c86abfdfbde74f21f0d9318c2875f2b5</srcmd5>
+    <version>0.3.1</version>
+    <time>1747234869</time>
+    <user>anag_factory</user>
+    <comment>- Quickfix to get nheko working again post libcurl 8.13:
+  * Add workaround_libcurl8.13_issues.patch</comment>
+    <requestid>1277229</requestid>
+  </revision>
 </revisionlist>

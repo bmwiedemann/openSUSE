@@ -23,6 +23,7 @@ Summary:        A simple async wrapper around CURL for C++
 License:        MIT
 URL:            https://nheko.im/nheko-reborn/coeurl
 Source:         %{url}/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+Patch:          workaround_libcurl8.13_issues.patch
 BuildRequires:  meson
 %if 0%{?suse_version} < 1600
 BuildRequires: gcc12
