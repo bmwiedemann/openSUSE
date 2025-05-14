@@ -345,4 +345,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1275166 from glaubitz)</comment>
     <requestid>1275255</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>420909ddf882307bce7868e8aff56e6c</srcmd5>
+    <version>1.23.0</version>
+    <time>1747234925</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.23.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1277315 from glaubitz)</comment>
+    <requestid>1277402</requestid>
+  </revision>
 </revisionlist>
