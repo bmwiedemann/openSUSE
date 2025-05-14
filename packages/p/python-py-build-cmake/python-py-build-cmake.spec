@@ -24,9 +24,9 @@ Summary:        Modern, PEP 517 compliant build backend for creating Python pack
 License:        MIT
 URL:            https://github.com/tttapa/py-build-cmake
 Source:         https://github.com/tttapa/py-build-cmake/archive/refs/tags/%{version}.tar.gz#/py-build-cmake-%{version}-gh.tar.gz
-BuildRequires:  %{python_module click >= 8.1.3   with %python-click < 8.2}
-BuildRequires:  %{python_module distlib >= 0.3.5 with %python-distlib < 0.4}
-BuildRequires:  %{python_module flit-core >= 3.7 with %python-flit-core < 4}
+BuildRequires:  %{python_module click >= 8.1.3}
+BuildRequires:  %{python_module distlib >= 0.3.5}
+BuildRequires:  %{python_module flit-core >= 3.7}
 BuildRequires:  %{python_module lark}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata}
@@ -36,11 +36,11 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       cmake
-Requires:       (python-click >= 8.1.3 with python-click < 8.2)
-Requires:       (python-distlib >= 0.3.5 with python-distlib < 0.4)
-Requires:       (python-flit-core >= 3.7 with python-flit-core < 4)
+Requires:       python-click >= 8.1.3
+Requires:       python-distlib >= 0.3.5
+Requires:       python-packaging >= 23.2
 %if 0%{?python_version_nodots} < 311
-Requires:       (python-tomli >= 1.2.3 with python-tomli < 3)
+Requires:       python-tomli >= 1.2.3
 %endif
 Requires:       python-lark
 Requires:       python-pyproject-metadata

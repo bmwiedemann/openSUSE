@@ -41,4 +41,12 @@
     and the target version is passed on to CMake.</comment>
     <requestid>1273213</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa8d1bc12bf5deb5cba5883237a61ef7</srcmd5>
+    <version>0.4.3</version>
+    <time>1747234890</time>
+    <user>anag_factory</user>
+    <comment>- Loosen {Build,}Requires.</comment>
+    <requestid>1277271</requestid>
+  </revision>
 </revisionlist>
