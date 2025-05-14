@@ -1,7 +1,7 @@
 #
 # spec file for package ktikz
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,9 @@ the eps export functionality you also need the poppler-tools package.
 %setup -q
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_kf5
 %cmake_build
 
