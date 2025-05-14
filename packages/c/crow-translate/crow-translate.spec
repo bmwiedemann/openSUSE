@@ -1,7 +1,7 @@
 #
 # spec file for package crow-translate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2019, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,11 +35,11 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Wayland)
-BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
@@ -61,6 +61,9 @@ text using Google, Yandex and Bing written with Qt5.
 %autosetup -p1 -n crow-translate-v%{version}
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_kf5 -d build
 %cmake_build
 
