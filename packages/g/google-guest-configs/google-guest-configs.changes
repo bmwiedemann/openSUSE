@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May 14 06:58:28 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250501.00
+  * Configure local domain as route only domain to support cloud dns local
+    domain but avoid adding it to the search path.
+- from version 20250409.00
+  * Change RDMA test condition to ensure renaming race conditions can be
+    detected. If such a case is detected the script will err and exit rather
+    than returning a name. Udev accepts this and continues as though the rule
+    was not triggered in such a case.
+- from version 20250328.00
+  * Merge pull request #105 from dorileo:revert-ubuntu-hostname-hooks
+  * Revert "Include systemd-networkd hook in Ubuntu packaging (#77)"
+- from version 20250326.00
+  * Merge pull request #104 from xiliuxyz:master
+  * Merge pull request #1 from xiliuxyz/xiliuxyz-patch-1
+  * Update google_set_multiqueue to check pnic_ids
+- from version 20250221.00
+  * Merge pull request #103 from a-r-n:master
+  * Make google_set_multiqueue aware A4X is multinic_accelerator_platform
+- from version 20250207.00
+  * Merge pull request #102 from xiliuxyz:master
+  * Update google_set_multiqueue to adapt A4 platform
+  * Merge branch 'GoogleCloudPlatform:master' into master
+  * Fix IS_A3_PLATFORM syntax
+  * Fix IS_A3_PLATFORM syntax
+  * Correct IS_A3_PLATFORM to save is_a3_platform results
+  * Remove excess empty line.
+  * Store is_a3_platform results into a global variable to avoid redundant curl calls
+  * Skip tx affinity binding on non-gvnic interfaces only on A3 platforms.
+  * Skip tx affinity binding on non-gvnic interfaces
+  * Update comments for get_vcpu_ranges_on_accelerator_platform
+    to reflect the expected vcpu ranges
+  * rename get_vcpu_ranges to get_vcpu_ranges_on_accelerator_platform
+  * Avoid IRQ binding on vCPU 0
+  * Fix returned value for get_vcpu_ranges
+  * Update get_vcpu_ranges to read from sys file instead of hardcoded value
+  * Update google_set_multiqueue
+  * Update google_set_multiqueue to set vCPU ranges based on platform
+  * Merge branch 'GoogleCloudPlatform:master' into master
+  * Add comment for handling IRQ binding on non-gvnic devices
+  * Remove excess empty line.
+  * Update is_gvnic to include gvnic driver checks
+  * Merge branch 'master' into master
+  * revert removed echo lines
+  * Update google_set_multiqueue to skip set_irq if nic is not a gvnic device.
+  * Update google_set_multiqueue to enable on A3Ultra family
+- from version 20250124.00
+  * Merge pull request #88 from zmarano:nvme
+  * Fix missing files. This is a no-op.
+  * No public description
+  * Also force virtio_scsi.
+- from version 20250116.00
+  * Add GPL-2 to licensing information (#98)
+- from version 20250107.00
+  * Restore IDPF devices for renaming rules (#95)
+- from version 20241213.00
+  * Remove Pat from owners file. (#97)
+
+-------------------------------------------------------------------
 Mon Dec 30 14:47:09 UTC 2024 - Robert Schweikert <rjschwei@suse.com>
 
 - Add ggc-no-dup-metasrv-entry.patch

@@ -293,4 +293,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1235220</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>45b09f85da5e2f13c67f66ced437916f</srcmd5>
+    <version>20250501.00</version>
+    <time>1747234918</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250501.00
+  * Configure local domain as route only domain to support cloud dns local
+    domain but avoid adding it to the search path.
+- from version 20250409.00
+  * Change RDMA test condition to ensure renaming race conditions can be
+    detected. If such a case is detected the script will err and exit rather
+    than returning a name. Udev accepts this and continues as though the rule
+    was not triggered in such a case.
+- from version 20250328.00
+  * Merge pull request #105 from dorileo:revert-ubuntu-hostname-hooks
+  * Revert &quot;Include systemd-networkd hook in Ubuntu packaging (#77)&quot;
+- from version 20250326.00
+  * Merge pull request #104 from xiliuxyz:master
+  * Merge pull request #1 from xiliuxyz/xiliuxyz-patch-1
+  * Update google_set_multiqueue to check pnic_ids
+- from version 20250221.00
+  * Merge pull request #103 from a-r-n:master
+  * Make google_set_multiqueue aware A4X is multinic_accelerator_platform
+- from version 20250207.00
+  * Merge pull request #102 from xiliuxyz:master
+  * Update google_set_multiqueue to adapt A4 platform
+  * Merge branch 'GoogleCloudPlatform:master' into master
+  * Fix IS_A3_PLATFORM syntax
+  * Fix IS_A3_PLATFORM syntax
+  * Correct IS_A3_PLATFORM to save is_a3_platform results
+  * Remove excess empty line.
+  * Store is_a3_platform results into a global variable to avoid redundant curl calls
+  * Skip tx affinity binding on non-gvnic interfaces only on A3 platforms.
+  * Skip tx affinity binding on non-gvnic interfaces
+  * Update comments for get_vcpu_ranges_on_accelerator_platform (forwarded request 1277317 from glaubitz)</comment>
+    <requestid>1277403</requestid>
+  </revision>
 </revisionlist>
