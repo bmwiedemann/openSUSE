@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.3.0-0
+
+- Updated spec to vtk-m 2.3.0.
+- Find the release notes at
+  <https://gitlab.kitware.com/vtk/vtk-m/-/tags/v2.3.0>.
+- New features and bugfixes:
+  * Add ArraySetValues.
+  * Add a form of CellInterpolate that operates on whole cell sets.
+  * Fix deprecation warning in WorkletCellNeighborhood.
+  * Clip: Improve performance and memory consumption.
+  * Contour Polygons with Marching Cubes.
+  * Better document the creation of Field and CoordinateSystem.
+  * ExternalFaces: Improve performance and memory consumption.
+  * Fixed winding of triangles of flying edges on GPUs.
+  * Enable extracting external faces from curvilinear data.
+  * Load options from environment variables.
+  * Added log entry when a cast and call fallback is used.
+  * Automatically initialize Kokkos.
+  * Fix clang compile issue with a missing tempolate arg list.
+  * Fix include for cub::Swap.
+  * Circumvent shadow warnings with thrust swap.
+  * Simplify CellLocatorBase and PointLocatorBase.
+  * Add constexpr to Vec methods.
+
+
+-------------------------------------------------------------------
 Thu Aug  1 00:00:00 UTC 2024 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 2.2.0-0
 
 - Updated spec to vtk-m 2.2.0.
