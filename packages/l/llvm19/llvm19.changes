@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 13:37:15 CEST 2025 - Ruediger Oertel <ro@suse.de>
+
+- Enable build of libc++ for ppc64le
+
+-------------------------------------------------------------------
 Tue Mar 18 18:45:06 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build of libc++ and openmp for riscv64

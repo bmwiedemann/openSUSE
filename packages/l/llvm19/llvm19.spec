@@ -28,7 +28,7 @@
 %global _soclang 13
 %global _socxx  1
 
-%ifarch x86_64 aarch64 %arm riscv64
+%ifarch x86_64 aarch64 %arm riscv64 ppc64le
 %bcond_without libcxx
 %else
 %bcond_with libcxx
