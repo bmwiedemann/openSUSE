@@ -28,7 +28,7 @@ until /usr/bin/curl -s --max-time 5 https://flathub.org > /dev/null; do sleep 1;
 }
 
 defaultOptions() {
-    pkgs=("org.mozilla.firefox" "org.gnome.Calculator" "org.gnome.TextEditor")
+    pkgs=("org.mozilla.firefox" "org.gnome.Calculator" "org.gnome.TextEditor" "app.devsuite.Ptyxis" "page.tesk.Refine")
 }
 
 customizeOptions() {
@@ -38,6 +38,7 @@ customizeOptions() {
     --checklist --column="" --column="AppName" --column="Application" --column="Description" \
     --hide-column=2 \
 TRUE org.mozilla.firefox "Mozilla Firefox" "Default Web Browser" \
+TRUE org.gnome.Calculator "Calculator" "Basic Calculator" \
 TRUE org.gnome.TextEditor "Text Editor" "Basic Text Editor" \
 TRUE app.devsuite.Ptyxis "Ptyxis" "Advanced Terminal Emulator" \
 TRUE page.tesk.Refine "Refine" "Tweak advanced settings in GNOME" \
