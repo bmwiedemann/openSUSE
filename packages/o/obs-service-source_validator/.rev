@@ -806,4 +806,17 @@ last submission had wrong tar ball for unknown reason</comment>
   * helpers/check_patches_applied: Fix detection of applying nonexisting patches (forwarded request 1237825 from dimstar)</comment>
     <requestid>1237826</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>671b5a5f55e2fa113ac83f8f89039e85</srcmd5>
+    <version>0.40</version>
+    <time>1747234926</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.40:
+  * Report error about future timestamps
+  * Ignore local timezone
+
+- Update to version 0.39+4:
+  * Being able to handle git managed sources</comment>
+    <requestid>1277404</requestid>
+  </revision>
 </revisionlist>
