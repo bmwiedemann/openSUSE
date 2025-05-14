@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20250507
+Version:        20250512
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -475,12 +475,10 @@ Requires:       checkpolicy >= %{CHECKPOLICYVER}
 Requires:       m4
 
 %description devel
-SELinux policy development and man page package
+SELinux policy development package
 
 %files devel
 %defattr(-,root,root,-)
-%doc %{_datadir}/man/ru/man8/*
-%doc %{_datadir}/man/man8/*
 %dir %{_datadir}/selinux/devel
 %dir %{_datadir}/selinux/devel/html/
 %doc %{_datadir}/selinux/devel/html/*
@@ -496,11 +494,13 @@ Requires(pre):  selinux-policy = %{version}-%{release}
 Requires:       /usr/bin/xdg-open
 
 %description doc
-SELinux policy documentation package
+SELinux policy documentation and man page package
 
 %files doc
 %defattr(-,root,root,-)
 %doc %{_datadir}/doc/%{name}
+%doc %{_datadir}/man/ru/man8/*
+%doc %{_datadir}/man/man8/*
 %{_datadir}/selinux/devel/policy.*
 
 %if %{BUILD_TARGETED}

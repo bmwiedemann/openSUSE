@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon May 12 14:26:14 UTC 2025 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20250512:
+  * healthchecker: allow capability sys_admin (bsc#1240138)
+  * slapd needs dac_override for ldapi socket (bsc#1242252)
+  * Allow slapd_t nnp_transition for NoNewPrivileges (bsc#1242252)
+
+-------------------------------------------------------------------
+Mon May 12 07:35:48 UTC 2025 - Samuel Cabrero <scabrero@suse.de>
+
+- Move manpages to selinux-policy-doc package (bsc#1241391)
+
+-------------------------------------------------------------------
+Thu May 08 14:28:52 UTC 2025 - cathy.hu@suse.com
+
+- Update to version 20250508:
+  * Enable mysql_run_under_different_user for (open)SUSE (bsc#1240949)
+  * Introduce mysql_run_under_different_user boolean (bsc#1240949)
+  * Revert "Set mysqld_t permissive until we have tested it thorougly (bsc#1240949)"
+
+-------------------------------------------------------------------
 Wed May 07 14:09:05 UTC 2025 - cathy.hu@suse.com
 
 - Update to version 20250507:
