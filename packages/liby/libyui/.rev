@@ -767,4 +767,18 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.6.3</comment>
     <requestid>1192828</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>0ec5a011d3a535e222f42ab20190a1a2</srcmd5>
+    <version>4.7.1</version>
+    <time>1747321175</time>
+    <user>anag_factory</user>
+    <comment>- Fix build failure with gcc-15:
+  Don't build libyui-rest-api with -Werror to complain about
+  wstring_convert that was deprecated without any replacement
+  (bsc#1241933)
+- 4.7.1
+
+- Bump version to 4.7.0 to avoid conflicts with the SLE15-SP6 version</comment>
+    <requestid>1277165</requestid>
+  </revision>
 </revisionlist>
