@@ -1,7 +1,7 @@
 #
 # spec file for package python-bjoern
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-bjoern
 Version:        3.2.2
 Release:        0
@@ -25,11 +24,12 @@ License:        BSD-2-Clause
 URL:            https://github.com/jonashaag/bjoern
 Source:         https://files.pythonhosted.org/packages/source/b/bjoern/bjoern-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libev-devel
 BuildRequires:  python-rpm-macros
-
 %python_subpackages
 
 %description
@@ -40,10 +40,10 @@ A screamingly fast Python 2 + 3 WSGI server written in C.
 
 %build
 export CFLAGS="%{optflags}"
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -53,6 +53,9 @@ export CFLAGS="%{optflags}"
 %files %{python_files}
 %doc CHANGELOG README.rst
 %license LICENSE
-%{python_sitearch}/*
+%{python_sitearch}/bjoern.py
+%{python_sitearch}/_bjoern.cpython*
+%{python_sitearch}/bjoern-%{version}*-info
+%pycache_only %{python_sitearch}/__pycache__/bjoern*
 
 %changelog
