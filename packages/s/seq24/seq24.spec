@@ -54,7 +54,7 @@ sed -i \
 
 %build
 %configure
-make %{?jobs:-j %jobs}
+%make_build
 
 %install
 %makeinstall
@@ -67,7 +67,8 @@ cp %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog README RTC SEQ24
+%license COPYING
+%doc AUTHORS ChangeLog README RTC SEQ24
 %doc seq24usr.example
 %doc %{_mandir}/man?/*
 %{_bindir}/*
