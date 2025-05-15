@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2.6
+Version:        0.6.3.0
 Release:        0
 Summary:        Hackage security library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/5.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-Cabal-syntax-devel
@@ -49,8 +48,6 @@ BuildRequires:  ghc-ed25519-devel
 BuildRequires:  ghc-ed25519-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
-BuildRequires:  ghc-lukko-devel
-BuildRequires:  ghc-lukko-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
@@ -140,7 +137,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

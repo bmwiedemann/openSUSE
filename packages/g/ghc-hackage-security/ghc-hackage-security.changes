@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May  5 13:10:11 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update hackage-security to version 0.6.3.0.
+  0.6.3.0
+  -------
+
+  * Make `lukko` flag automatic and off by default, using file locking
+    facilities from `GHC.IO.Handle.Lock` and not from
+    on [`lukko` package](https://hackage.haskell.org/package/lukko).
+    The change is not expected to affect anyone detrimentally,
+    but one can set the flag on in their configuration to restore
+    the previous behaviour.
+  * Allow building against newer releases of dependencies.
+  * Tested with GHC 8.4 - 9.12.
+
+-------------------------------------------------------------------
 Sun Jan  5 16:21:50 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hackage-security to version 0.6.2.6 revision 5.
