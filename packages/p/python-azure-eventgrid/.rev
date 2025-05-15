@@ -314,4 +314,15 @@
 - Rename LICENSE.txt to LICENSE in %files section</comment>
     <requestid>1225281</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>aac0eedd7e4fd6ade9a42aa95edfa07e</srcmd5>
+    <version>4.22.0</version>
+    <time>1747321374</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.22.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1277531 from glaubitz)</comment>
+    <requestid>1277715</requestid>
+  </revision>
 </revisionlist>
