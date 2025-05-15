@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May  8 16:28:11 UTC 2025 - Rein Fernhout <me@levitati.ng>
+
+- Add patch for correctly linking the ruby bindings
+  * link_ruby_bindings.patch
+
+-------------------------------------------------------------------
 Thu Aug  8 16:56:07 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 1.9.0:

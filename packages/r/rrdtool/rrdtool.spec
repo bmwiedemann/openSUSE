@@ -1,7 +1,7 @@
 #
 # spec file for package rrdtool
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,6 +50,7 @@ Source99:       %{name}.changes
 # PATCH-FIX-UPSTREAM -- bnc#793636
 Patch1:         rrdtool-zero_vs_nothing.patch
 Patch2:         harden_rrdcached.service.patch
+Patch3:         link_ruby_bindings.patch
 # Needed for tests
 BuildRequires:  bc
 BuildRequires:  cairo-devel >= 1.2
