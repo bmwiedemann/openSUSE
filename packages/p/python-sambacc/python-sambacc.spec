@@ -1,7 +1,7 @@
 #
 # spec file for package python-sambacc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global bname sambacc
 
 Name:           python-%{bname}
-Version:        v0.2+git.108.e7850e0
+Version:        v0.6+git.5.aa9a005
 Release:        0
 Summary:        Samba Container Configurator
 License:        GPL-3.0-or-later

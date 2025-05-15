@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Wed Feb 26 02:38:05 UTC 2025 - jeffm@suse.com
+
+- Update to version v0.6+git.5.aa9a005:
+  * commands: fix a mypy failure in the ctdb commands module
+  * tests/container: update base image to fedora 41
+  * github: update mergify rules to use fedora 41, not 39
+  * workflows: update test matrix to use fedora 41
+  * ctdb: handle nodes with "GONE" state when listing CTDB nodes
+  * ctdb: Leave CTDB log levels at their original defaults
+  * commands: add retries to ctdb-must-have-nodes command
+  * ctdb: improve hostname lookup for ctdb nodes
+  * tests/container: add rhel support to rpm builds
+  * sambacc: fix constructing interface list for ctdb public_addresses
+  * commands: pass instance config to ctdb etc setup
+  * sambacc: add public addresses support to ctdb module
+  * sambacc: add config placeholder for ctdb public address config
+  * sambacc: avoid logging an error if cluster is being torn down
+  * github: Update mergify config to replace deprecated attributes
+  * sambacc: add a retry loop to ctdb.monitor_cluster_meta_changes
+  * commands: time out waiting for conditions after 5min
+  * commands: add ability to wait for ctdb when running smbd/winbindd
+  * sambacc: move ctdb pnn fetching commands into functions
+  * commands: add ctdb-list-nodes subcommand
+  * sambacc: add nodes command to ctdb configuration if needed
+  * sambacc: add ability to write to an open file to cluster_meta_to_nodes
+  * commands: add ctdb-monitor-nodes command
+  * sambacc: add monitor_cluster_meta_changes function
+  * sambacc: simplify _cluster_meta_to_ctdb_nodes function
+  * sambacc: split out some potentially common ctdb logic into funcs
+  * commands: improve ctdb_manage_nodes doc comment
+  * sambacc: rename function to manage_cluster_meta_updates
+  * commands: encapsulate retry logic
+  * commands: fix incorrect help text for --write-nodes
+  * commands: add ctdb-rados-mutex sambacc subcommand
+  * sambacc: move rados pesudo-uri parsing to top level function
+  * sambacc: add ctdb_mutex_ceph_rados_helper to known commands
+  * commands: add --archive option to ctdb-migrate cmd
+  * commands: add --write-node option to ctdb-must-have-node cmd
+  * sambacc: add archive_tdb function
+  * sambacc: add cluster_meta_to_nodes function
+  * commands: support acquiring a node number from the environment
+  * commands: enable using a rados object uri for ctdb cluster meta
+  * sambacc: rename function to enable_rados
+  * sambacc: add is_rados_uri helper function
+  * sambacc: add cluster meta rados classes
+  * sambacc: add get_object method to rados handler class
+  * sambacc: add methods for writing and locking RADOSObjectRef
+  * sambacc: rename rados object class to RADOSObjectRef
+  * commands: prepare ctdb commands for using cluster meta objects
+  * sambacc: add monitor_cluster_meta_updates func to ctdb
+  * sambacc: replace path key with uri key for ctdb metadata state object
+  * sambacc: move important CTDB constants to global vars
+  * commands: tweak --skip-if help string
+  * commands: add new generic --skip-if command line options
+  * tests: add unit tests for skips module
+  * commands: add generalized skips feature for sambacc command line
+  * tox.ini: update version of black formatter tool
+  * commands: document protocol methods
+  * smabacc: document protocol methods
+  * sambacc: add ClusterMeta protocol to ctdb functions
+  * sambacc: add ClusterMetaJSONFile class
+  * sambacc: add version wrapper around typing.Self
+  * sambacc: simplify the closure function writing ctdb config
+  * tox.ini: remove old workaround in schemacheck env
+  * tox.ini: Add descriptions to various tox envs
+  * mergify: update merge conditions to match test matrix
+  * workflows: update test matrix to use fedora 40
+  * workflows: disable fail-fast option for distro matrix
+  * workflows: upgrade to checkout@v4
+  * schema: improve wording in interfaces description field
+  * docs: document new interface filtering options
+  * schema: schema updates for new interface filtering options
+  * commands: allow filtering network interfaces when provisioning ad dc
+  * tests: add unit test for new interface filtering func
+  * sambacc: add ad dc functions for interface filtering
+  * sambacc: add a new dc interface config type
+  * tox.ini: add schemaupdate environment
+  * schema.yaml: typo fixes
+  * tests: add OU support tests
+  * sambacc: add organizational unit (OU) support for ad dc configuration
+  * samba_cmds: add --debug-stdout flag for samba
+  * samba_cmds: move --debuglevel option after positions arguments
+  * extras: enable some recommended extras on centos 9
+  * tox: stick to black 2023 style for now
+  * sambacc: remove extra parens
+  * tox: workaround test failures for schemacheck
+  * tox: set a max version for black temporarily
+  * commands: add option to select debug level logging in sambacc
+  * commands: add setting ceph id info via --ceph-id or SAMBACC_CEPH_ID env
+  * sambacc: add logging to rados opener
+  * sambacc: extend rados opener to support passing client name
+  * sambacc: extend rados pseudo-uris to include getting mon config keys
+  * commands: pass opener to read_config_files called from update-config
+  * container: update default test container version to fedora 39
+  * github: update mergify rules to use fedora 39, not 37
+  * workflows: update build matrix to use fedora 39, drop fedora 37
+  * setup.cfg: fix missing description text
+  * docs: add a link to the pypi repository for sambacc to release doc
+  * extras: add the optional rados extra to the rpm spec
+  * setup.cfg: add a new extra for rados
+  * commands: pass an opener to the joiner
+  * commands: add a context property returning an opener
+  * sambacc: fix join interactive test
+  * sambacc: support passing an opener for join source files
+  * sambacc: make FileOpener a common type
+  * sambacc: do not require coverage for protocol types
+  * sambacc: do not require coverage for protocol types
+  * tests: add test_url_opener.py
+  * tests: add test_rados_opener.py
+  * commands: enable url and rados openers for sambacc config
+  * sambacc: support passing an opener to configuration reader
+  * sambacc: add optional rados support to url opener
+  * sambacc: add a URL opener type
+  * sambacc: add the concept of an opener type
+  * docs: be clearer about what types top-level configs take
+  * github: Update mergify rules to match recent changes to ci matrix
+  * workflows: minor yaml formatting tweaks
+  * workflows: simply workflow with a matrix
+  * readme: fix mixed up mark down links
+  * tests: Fix a typo in file name
+  * commands: update smb.conf post- provision and join funcs
+  * tests: add unit tests for smbconf_samba
+  * sambacc: add smbconf_samba module to wrap samba smbconf module
+  * tests: add unit tests for smbconf_api
+  * sambacc: add smbconf_api module for abstract smbconf operations
+  * sambacc: do not raise a KeyError if a config lacks globals
+  * commands: pass global options to provision and join calls
+  * tests: add unit test cases for addc functions
+  * sambacc: add common filtering func to AD DC globals
+  * sambacc: add options argument to addc join function
+  * sambacc: add options argument to addc provision function
+  * commands: remove unnecessary protocol function
+  * container: update to a still-maintained fedora version
+  * tox: fix passing arguments to tox env for pytest
+  * gitlint: ignore body lines that are footnotes
+  * docs: add a release process document
+  * readme: update readme to reflect recent changes
+- Updated _service to use manual mode, obs_scm, and use cpio archives
+
+-------------------------------------------------------------------
 Wed Feb 28 20:35:33 UTC 2024 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Add dependency on setuptools.
