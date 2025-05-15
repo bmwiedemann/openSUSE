@@ -1,7 +1,7 @@
 #
 # spec file for package dc3dd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ URL:            https://sourceforge.net/projects/dc3dd/
 Source0:        https://sourceforge.net/projects/dc3dd/files/dc3dd/%{version}/%{name}-%{version}.zip
 # PATCH-FIX-UPSTREAMING -- bmwiedemann -- https://sourceforge.net/p/dc3dd/bugs/16/
 Patch0:         reproducible.patch
+# fix build with gcc15
+Patch1:         dc3dd-gcc15.patch
+BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  gettext
 BuildRequires:  gettext-devel
@@ -61,10 +64,11 @@ were rewritten for dc3dd.
 sed -i 's/\r$//' *.txt
 sed -i 's/\r$//' ChangeLog
 # Add executable flag to configure
-chmod +x configure
+chmod +x build-aux/git-version-gen
 
 %build
 # hpa and dco detection is recommended for linux builds
+autoreconf -fiv
 %configure --enable-hpadco \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes

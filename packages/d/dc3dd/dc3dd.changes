@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue May  6 11:54:31 UTC 2025 - pgajdos@suse.com
+
+- added patches
+  fix build with gcc15
+  + dc3dd-gcc15.patch
+
+-------------------------------------------------------------------
 Mon Feb 26 08:01:07 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
