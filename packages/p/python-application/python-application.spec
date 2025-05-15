@@ -1,7 +1,7 @@
 #
 # spec file for package python-application
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-application
 Version:        3.0.3
 Release:        0
@@ -28,9 +27,13 @@ Source:         https://github.com/AGProjects/python3-application/archive/refs/t
 # PATCH-FIX-UPSTREAM examples_to_py3k.patch gh#AGProjects/python3-application#2 mcepl@suse.com
 # Replace py2k shebangs with py3k ones
 Patch0:         examples_to_py3k.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-zope.interface
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -52,10 +55,10 @@ handle the following tasks:
 %autosetup -p1 -n python3-application-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

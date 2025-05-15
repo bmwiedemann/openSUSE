@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 13:46:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Mon Aug 30 09:56:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add examples_to_py3k.patch to remove py2k shebangs
