@@ -1,7 +1,7 @@
 #
 # spec file for package python-certstream
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,16 @@ Summary:        Python library for receiving certificate transparency list updat
 License:        MIT
 URL:            https://github.com/CaliDog/certstream-python/
 Source0:        https://files.pythonhosted.org/packages/source/c/certstream/certstream-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
+BuildRequires:  %{python_module wheel}
 #SECTION tests
 BuildRequires:  %{python_module termcolor}
 BuildRequires:  %{python_module websocket-client >= 0.58.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 # /SECTION
 Requires:       python3-termcolor
 Requires:       python3-websocket-client >= 0.48.0
@@ -50,10 +52,10 @@ It supports automatic reconnection when networks issues occur, and should be sta
 sed -i -e 's:==:>=:g' requirements.txt
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/certstream
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -69,7 +71,7 @@ sed -i -e 's:==:>=:g' requirements.txt
 %doc README.md
 %license LICENSE
 %{python_sitelib}/certstream/
-%{python_sitelib}/certstream-%{version}-py*.egg-info
+%{python_sitelib}/certstream-%{version}*-info
 %python_alternative %{_bindir}/certstream
 
 %changelog
