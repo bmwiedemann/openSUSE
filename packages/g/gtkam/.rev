@@ -188,4 +188,12 @@
     <comment>- Drop gimp plugin: gtkam does not (yet) support gimp 3. (forwarded request 1239905 from dimstar)</comment>
     <requestid>1239908</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>201aeabd16bde87e0b480da7134655c8</srcmd5>
+    <version>1.1</version>
+    <time>1747321294</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277570</requestid>
+  </revision>
 </revisionlist>

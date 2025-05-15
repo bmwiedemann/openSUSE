@@ -52,7 +52,7 @@ Documentation for gtkam.
 
 %build
 %configure
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %make_install

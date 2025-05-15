@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 15:41:36 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Thu Jan 23 14:58:35 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gimp plugin: gtkam does not (yet) support gimp 3.
