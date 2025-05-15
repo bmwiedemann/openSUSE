@@ -135,7 +135,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
 Requires:       icu
-Requires:       qt6-imageformats
+Requires:       kf6-kimageformats
 Requires:       xdg-desktop-portal
 ExclusiveArch:  x86_64 aarch64
 

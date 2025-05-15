@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 14:07:11 UTC 2025 - Илья Индиго <ilya@ilya.top>
+
+- Required kf6-kimageformats instead of qt6-imageformats to AVIF support.
+
+-------------------------------------------------------------------
 Wed May  7 02:36:50 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Updated ada to 3.2.4.

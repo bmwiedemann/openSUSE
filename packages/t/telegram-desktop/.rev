@@ -1449,4 +1449,12 @@
 - Used mold linker (keeps RAM consumption within the 16 GB limit).</comment>
     <requestid>1275038</requestid>
   </revision>
+  <revision rev="136" vrev="4">
+    <srcmd5>7e76e3b851c2b3135fadfcf41c68caab</srcmd5>
+    <version>5.13.1</version>
+    <time>1747321201</time>
+    <user>anag_factory</user>
+    <comment>- Required kf6-kimageformats instead of qt6-imageformats to AVIF support.</comment>
+    <requestid>1277435</requestid>
+  </revision>
 </revisionlist>
