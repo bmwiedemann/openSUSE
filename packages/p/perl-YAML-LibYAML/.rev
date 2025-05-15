@@ -263,4 +263,15 @@
     <comment></comment>
     <requestid>1242805</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8a3e637c7d540c507e5421cd89a0292c</srcmd5>
+    <version>0.904.0</version>
+    <time>1747321160</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.904.0
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes
+  v0.904.0 2025-05-08 14:12:41+02:00
+   - Experimental OOP Interface, YAML 1.2 (forwarded request 1276515 from tinita)</comment>
+    <requestid>1277437</requestid>
+  </revision>
 </revisionlist>

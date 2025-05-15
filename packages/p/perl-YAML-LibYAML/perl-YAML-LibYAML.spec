@@ -18,17 +18,16 @@
 
 %define cpan_name YAML-LibYAML
 Name:           perl-YAML-LibYAML
-Version:        0.903.0
+Version:        0.904.0
 Release:        0
-# v0.903.0 -> normalize -> 0.903.0
-%define cpan_version v0.903.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl YAML Serialization using XS and libyaml
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-v%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(Test::More) >= 0.9
 %{perl_requires}
 
@@ -36,7 +35,7 @@ BuildRequires:  perl(Test::More) >= 0.9
 Perl YAML Serialization using XS and libyaml
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup  -n %{cpan_name}-v%{version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
