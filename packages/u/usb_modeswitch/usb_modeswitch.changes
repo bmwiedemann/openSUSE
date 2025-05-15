@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Apr 23 13:13:52 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
+
+- add usb_modeswitch-c23.patch from upstream to fix gcc15 compile
+  time error
+
+-------------------------------------------------------------------
 Tue Feb 20 15:39:41 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

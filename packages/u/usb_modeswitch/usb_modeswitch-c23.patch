@@ -1,0 +1,29 @@
+
+see the message thread on upstream's bulletin board:
+www.draisberghof.de/usb_modeswitch/bb/viewtopic.php?t=3122
+
+
+Build fix for gcc-15
+ by heitbaum » 09 Dec 2024, 14:25 
+
+--- a/usb_modeswitch.c  2020-07-10 15:48:03.000000000 +0000
++++ b/usb_modeswitch.c  2024-12-09 12:18:10.953574344 +0000
+@@ -570,7 +570,7 @@ int main(int argc, char **argv)
+ 	/* Get current configuration of default device, note value if Configuration
+ 	 * parameter is set. Also sets active_config
+ 	 */
+-	currentConfigVal = get_current_config_value(dev);
++	currentConfigVal = get_current_config_value();
+ 	if (Configuration > -1) {
+ 		SHOW_PROGRESS(output,"Current configuration number is %d\n", currentConfigVal);
+ 	} else
+@@ -772,7 +772,7 @@ int main(int argc, char **argv)
+ 	if (Configuration > 0) {
+ 		if (currentConfigVal != Configuration) {
+ 			if (switchConfiguration()) {
+-				currentConfigVal = get_current_config_value(dev);
++				currentConfigVal = get_current_config_value();
+ 				if (currentConfigVal == Configuration) {
+ 					SHOW_PROGRESS(output,"The configuration was set successfully\n");
+ 				} else {
+

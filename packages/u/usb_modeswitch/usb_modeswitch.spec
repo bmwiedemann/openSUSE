@@ -32,6 +32,7 @@ Source2:        https://www.draisberghof.de/usb_modeswitch/device_reference.txt
 Source3:        https://www.draisberghof.de/usb_modeswitch/parameter_reference.txt
 Patch1:         usb_modeswitch-fix_fsf_address.patch
 Patch2:	harden_usb_modeswitch@.service.patch
+Patch3:         usb_modeswitch-c23.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -61,6 +62,7 @@ Data files for usb_modeswitch package.
 %setup -q -a1 -n %{source_name}-%{version}
 %patch -P 1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 cp %{SOURCE2} .
 cp %{SOURCE3} .
