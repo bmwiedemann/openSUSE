@@ -1,7 +1,7 @@
 #
 # spec file for package python-aioeventlet
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,10 @@ Patch0:         pr_1.patch
 # PATCH-FIX-OPENSUSE py311.patch Python 3.11+ support
 Patch1:         py311.patch
 BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 Requires:       python-eventlet
 BuildArch:      noarch
@@ -58,19 +60,14 @@ parallel.
 %autosetup -p1 -n aioeventlet-%{intver}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 
 %check
-# Python 2 requires trollius which is not in devel project,
-# and test setup fails on Python 3.6 as it tries to reach live DNS server
-%{python_expand PYTHON_VERSION=%{$python_version_nodots}
-if [[ ${PYTHON_VERSION:0:1} -eq 3 && ${PYTHON_VERSION:1:2} -gt 6 ]]; then
-  # Some tests in test_eventlet.py halt
-  $python -m pytest -k 'EventletTests or test_wrap_invalid_type or test_wrap_greenlet_dead or test_wrap_greenlet_running or test_greenlet'
-fi}
+# Some tests in test_eventlet.py halt
+%pytest -k 'EventletTests or test_wrap_invalid_type or test_wrap_greenlet_dead or test_wrap_greenlet_running or test_greenlet'
 
 %files %{python_files}
 %license COPYING
