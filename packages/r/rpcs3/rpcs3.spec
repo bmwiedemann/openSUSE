@@ -118,6 +118,9 @@ echo "// This is a generated file.
 " > %{name}/git-version.h
 
 %build
+# Remove cmake4 error due to not setting
+# min cmake version - sflees.de
+export CMAKE_POLICY_VERSION_MINIMUM=3.5
 
 ## llvm intel-ittapi workarounds
 
