@@ -96,4 +96,13 @@
     <comment></comment>
     <requestid>1154028</requestid>
   </revision>
+  <revision rev="15" vrev="25">
+    <srcmd5>39e4c13a9cb8b934cd7725a820a45020</srcmd5>
+    <version>1.0.0</version>
+    <time>1747321337</time>
+    <user>anag_factory</user>
+    <comment>Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license (forwarded request 1277459 from bmwiedemann)</comment>
+    <requestid>1277676</requestid>
+  </revision>
 </revisionlist>

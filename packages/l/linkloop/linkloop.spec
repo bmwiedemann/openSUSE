@@ -45,7 +45,7 @@ Authors:
 %build
 autoreconf -fi
 %configure
-make %{?jobs:-j %jobs}
+%make_build
 
 %install
 make DESTDIR="$RPM_BUILD_ROOT" install
@@ -58,7 +58,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-, root, root)
-%doc AUTHORS ChangeLog COPYING NEWS README TODO
+%license COPYING
+%doc AUTHORS ChangeLog NEWS README TODO
 %{_bindir}/*
 %{_mandir}/man*/*
 
