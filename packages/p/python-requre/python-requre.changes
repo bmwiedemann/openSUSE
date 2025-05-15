@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 05:16:09 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Promote pytest to Requires.
+- Add patch support-click-8.2.patch:
+  * click 8.2.0 now exits non-zero when printing help.
+
+-------------------------------------------------------------------
 Sat Mar 29 09:43:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.9.1:

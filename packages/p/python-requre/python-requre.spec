@@ -24,6 +24,8 @@ Summary:        Python libray for storing and using objects for testing
 License:        MIT
 URL:            https://github.com/packit-service/requre
 Source:         https://files.pythonhosted.org/packages/source/r/requre/requre-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE click 8.2.0 now exits non-zero when printing help
+Patch0:         support-click-8.2.patch
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -33,8 +35,8 @@ Requires:       python-GitPython
 Requires:       python-PyYAML
 Requires:       python-click
 Requires:       python-httpx
+Requires:       python-pytest
 Requires:       python-requests
-Suggests:       python-pytest
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -53,7 +55,7 @@ Library for testing python code what allows store output of
 various objects and use stored data for testing.
 
 %prep
-%setup -q -n requre-%{version}
+%autosetup -p1 -n requre-%{version}
 # Remove cyclic dependency with ogr
 rm tests/test_E2E_ogr.py
 

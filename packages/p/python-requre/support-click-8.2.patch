@@ -1,0 +1,13 @@
+Index: requre-0.9.1/tests/test_e2e_test_patching.py
+===================================================================
+--- requre-0.9.1.orig/tests/test_e2e_test_patching.py
++++ requre-0.9.1/tests/test_e2e_test_patching.py
+@@ -82,7 +82,7 @@ class NoApplied(unittest.TestCase):
+         run_command(cmd=f"{CMD_RELATIVE} clean", fail=False)
+ 
+     def test_help(self):
+-        run_command(cmd=f"{CMD_RELATIVE}")
++        run_command(cmd=f"{CMD_RELATIVE}", fail=False)
+ 
+     def test_bad_command(self):
+         self.assertRaises(

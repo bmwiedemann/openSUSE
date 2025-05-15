@@ -83,4 +83,14 @@
     case-sensitiveness on the cookies from Pagure.</comment>
     <requestid>1265373</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>1e498d5a30df8188080cf8b0f8e3f1d9</srcmd5>
+    <version>0.9.1</version>
+    <time>1747321285</time>
+    <user>anag_factory</user>
+    <comment>- Promote pytest to Requires.
+- Add patch support-click-8.2.patch:
+  * click 8.2.0 now exits non-zero when printing help.</comment>
+    <requestid>1277535</requestid>
+  </revision>
 </revisionlist>
