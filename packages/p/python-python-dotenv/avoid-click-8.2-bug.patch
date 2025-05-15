@@ -1,0 +1,13 @@
+Index: python-dotenv-1.1.0/src/dotenv/cli.py
+===================================================================
+--- python-dotenv-1.1.0.orig/src/dotenv/cli.py
++++ python-dotenv-1.1.0/src/dotenv/cli.py
+@@ -60,6 +60,8 @@ def stream_file(path: os.PathLike) -> It
+             yield stream
+     except OSError as exc:
+         print(f"Error opening env file: {exc}", file=sys.stderr)
++        # Work around https://github.com/pallets/click/issues/2913
++        sys.stderr.flush()
+         exit(2)
+ 
+ 

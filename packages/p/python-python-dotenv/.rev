@@ -147,4 +147,14 @@
     <comment></comment>
     <requestid>1269223</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>b847642800afe05362c8b2e7cfd883b2</srcmd5>
+    <version>1.1.0</version>
+    <time>1747321186</time>
+    <user>anag_factory</user>
+    <comment>- Add patch avoid-click-8.2-bug.patch:
+  * Work around an upstream click 8.2.0 bug.
+- Switch to pyproject macros.</comment>
+    <requestid>1277293</requestid>
+  </revision>
 </revisionlist>

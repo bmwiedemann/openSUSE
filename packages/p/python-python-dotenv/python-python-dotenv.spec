@@ -16,7 +16,6 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-python-dotenv
 Version:        1.1.0
@@ -25,10 +24,14 @@ Summary:        Python library for .env support
 License:        BSD-3-Clause
 URL:            https://github.com/theskumar/python-dotenv
 Source:         https://github.com/theskumar/python-dotenv/archive/v%{version}.tar.gz#/python-dotenv-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Avoid upstream click 8.2 bug -- gh#pallets/click#2913
+Patch0:         avoid-click-8.2-bug.patch
 BuildRequires:  %{python_module click >= 5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sh >= 2.0}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
@@ -45,15 +48,15 @@ BuildArch:      noarch
 Add .env support to your Django/Flask apps in development and deployments.
 
 %prep
-%setup -q -n python-dotenv-%{version}
+%autosetup -p1 -n python-dotenv-%{version}
 
 %build
 export LANG=C.UTF-8
-%python_build
+%pyproject_wheel
 
 %install
 export LANG=C.UTF-8
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dotenv
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -80,6 +83,6 @@ mv %{buildroot}%{_bindir}/dotenv.orig %{buildroot}%{_bindir}/dotenv
 %license LICENSE
 %python_alternative %{_bindir}/dotenv
 %{python_sitelib}/dotenv/
-%{python_sitelib}/python_dotenv*/
+%{python_sitelib}/python_dotenv-%{version}.dist-info
 
 %changelog

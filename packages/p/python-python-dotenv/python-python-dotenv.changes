@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 05:41:25 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch avoid-click-8.2-bug.patch:
+  * Work around an upstream click 8.2.0 bug.
+- Switch to pyproject macros.
+
+-------------------------------------------------------------------
 Wed Apr  9 17:26:29 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 1.1.0:
