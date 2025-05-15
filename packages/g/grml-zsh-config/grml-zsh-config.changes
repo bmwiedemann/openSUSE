@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 06:41:42 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.19:
+  * zshrc: drop sv support from init.d functions #199
+
+-------------------------------------------------------------------
 Mon Apr 14 08:27:40 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.19.18:

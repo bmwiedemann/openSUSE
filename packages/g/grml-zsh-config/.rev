@@ -164,4 +164,13 @@
   * Cleanup zshrc #197</comment>
     <requestid>1269168</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0bd0a33e634669d50270257c5f0f7eb8</srcmd5>
+    <version>0.19.19</version>
+    <time>1747321303</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.19:
+  * zshrc: drop sv support from init.d functions #199</comment>
+    <requestid>1277569</requestid>
+  </revision>
 </revisionlist>
