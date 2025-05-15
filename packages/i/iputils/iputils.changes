@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon May 12 15:38:14 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fix [bsc#1242300, CVE-2025-47268] 
+  * integer overflow in RTT calculation can lead to undefined behavior 
+  * Add iputils-CVE-2025-47268.patch
+
+-------------------------------------------------------------------
 Thu Jan  2 17:33:13 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Backport ping man page fix

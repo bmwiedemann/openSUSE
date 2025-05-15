@@ -25,6 +25,8 @@ Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/releases/download/%{version}/iputils-%{version}.tar.xz
 Patch0:         0001-Fix-ping-man-page-syntax-error.patch
+# PATCH-FIX-UPSTREAM: bcs#1242300 CVE-2025-47268  integer overflow in RTT calculation can lead to undefined behavior
+Patch1:         iputils-CVE-2025-47268.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2
