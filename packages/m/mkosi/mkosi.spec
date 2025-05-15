@@ -86,8 +86,10 @@ system.
 
 %package initrd
 Summary:        Build initrds locally using mkosi
+BuildRequires:  rpm-config-SUSE
 Requires:       %{name} = %{version}-%{release}
 Requires:       coreutils
+Requires(post): suse-module-tools-scriptlets
 
 %description initrd
 This package provides the mkosi-initrd wrapper to build initrds with mkosi
@@ -140,6 +142,13 @@ if [ ! -e %{_sysconfdir}/mkosi-initrd/mkosi.conf ]; then
 #KernelModulesExclude=
 EOF
 fi
+%{?regenerate_initrd_post}
+
+%postun initrd
+%{?regenerate_initrd_post}
+
+%posttrans initrd
+%{?regenerate_initrd_posttrans}
 
 %check
 %pytest

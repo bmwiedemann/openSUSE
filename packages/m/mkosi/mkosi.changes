@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu May 15 12:21:40 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Call macros to regenerate initrd on %post, %postun, %posttrans of the
+  mkosi-initrd package.
+- Remove also /var/tmp from mkosi-initrd images.
+
+-------------------------------------------------------------------
 Thu Apr  3 11:21:58 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - move pandoc dependency to a build condititional for inclusion
