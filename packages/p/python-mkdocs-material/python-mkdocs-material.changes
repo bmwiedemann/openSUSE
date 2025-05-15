@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 14 04:58:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.6.14:
+  * Fixed #8215: Social plugin crashes when CairoSVG is updated to
+    2.8
+
+-------------------------------------------------------------------
 Sat May 10 08:53:38 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.6.13:
