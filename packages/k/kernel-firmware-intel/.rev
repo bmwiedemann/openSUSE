@@ -64,4 +64,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272724</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>addc4b9b215bb05b1c64c2e55039ef2b</srcmd5>
+    <version>20250512</version>
+    <time>1747321154</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250512 (git commit 9f8e520fd736):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1277004</requestid>
+  </revision>
 </revisionlist>
