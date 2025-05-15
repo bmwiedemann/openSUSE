@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 05:48:11 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
+
+- select modules for SLFO (jsc#PED-12783)
+
+-------------------------------------------------------------------
 Wed May  7 09:17:09 UTC 2025 - Thomas Blume <Thomas.Blume@suse.com>
 
 - rely on systemd file-triggers for reloading the daemon after

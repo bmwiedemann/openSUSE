@@ -32,7 +32,6 @@ License:        Apache-2.0 AND GPL-3.0-or-later
 Group:          System/Daemons
 Version:        %{rsyslog_major}.%{rsyslog_patch}
 Release:        0
-%bcond_with     udpspoof
 %bcond_with     dbi
 %bcond_with     pkgconfig
 %if 0%{?suse_version} > 1230
@@ -48,14 +47,23 @@ Release:        0
 %bcond_without  pgsql
 %bcond_without  relp
 %bcond_without  rfc3195
-%bcond_without  snmp
 %bcond_without  diagtools
 %bcond_without  mmnormalize
 %bcond_without  elasticsearch
 %bcond_without  omhttpfs
-%bcond_without  omamqp1
 %bcond_without  tcl
+#SLFO
+%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1699 && !0%{?is_opensuse}
+%bcond_with     udpspoof
+%bcond_with     snmp
+%bcond_with     kafka
+%bcond_with     omamqp1
+%else
+%bcond_without  udpspoof
+%bcond_without  snmp
+%bcond_without  omamqp1
 %bcond_without  kafka
+%endif
 # https://github.com/rsyslog/rsyslog/issues/1355
 %bcond_with	maxminddb
 # contributed modules not built for various reasons
