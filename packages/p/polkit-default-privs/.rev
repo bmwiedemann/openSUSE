@@ -2332,4 +2332,14 @@ for 12.3</comment>
     <comment></comment>
     <requestid>1267511</requestid>
   </revision>
+  <revision rev="252" vrev="1">
+    <srcmd5>f961f1046fe1bb311dc28cd25506cf99</srcmd5>
+    <version>1550+20250514.1208790</version>
+    <time>1747321157</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20250514.1208790:
+  * profiles: add flatpak override-parental-controls-update (bsc#1243046)
+</comment>
+    <requestid>1277421</requestid>
+  </revision>
 </revisionlist>
