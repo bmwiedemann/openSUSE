@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat May 10 18:37:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 4.10:
+  * Update Polish translation (Jan Kara)
+  * quotasys: Make detection of QF_META format work for bcachefs (Jan Kara)
+  * quotaio_xfs: Fix memory leak (Pavel Reichl)
+  * setproject: Add support for bcachefs REINHERIT_ATTRS ioctl (Kent Overstreet)
+  * setproject: Simple utility for setting projects on files/directories
+    (Kent Overstreet)
+  * Move user/group/project name translation into common.[ch] (Jan Kara)
+  * Add support for bcachefs (Jan Kara)
+  * Fix building on musl (Brahmajit Das)
+  * quotaio_xfs: Convert remaining quotactl(2) calls to quotactl_handle()
+    (Jan Kara)
+  * quotaio_xfs: Fix quota-tools on XFS (Jan Kara)
+  * quotaio_xfs: Fix error handling in xfs_read_dquot() (Jan Kara)
+  * Disable BSD_BEHAVIOUR by default (Jan Kara)
+  * quotaops: Checking egid with BSD_BEHAVIOR (Jan Kara)
+  * Enable support for tmpfs quotas (Carlos Maiolino)
+  * Add quotactl_fd() support (Carlos Maiolino)
+  * Rename searched_dir->sd_dir to sd_isdir (Carlos Maiolino)
+  * quota-nld: fix open PID file failed when systemd read it (lihaoxiang (F))
+  * edquota: Fix editing of individual user grace times (Jan Kara)
+  * setquota: Avoid false error messages when setting grace times (Jan Kara)
+  * Make configure.ac POSIX compliant (Sam James)
+  * Update required gettext version (Jan Kara)
+
+-------------------------------------------------------------------
 Fri Dec  9 08:30:21 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
 - Remove outdated sysconfig Requires
