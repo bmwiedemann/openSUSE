@@ -36,6 +36,8 @@ Patch1:         fix-build-on-kernel-6_5.patch
 Patch2:         fix-build-on-kernel-6_8.patch
 # PATCH-FIX-UPSTREAM fix-build-on-kernel-6_13.patch hillwood@opensuse.org - Support Kernel 6.13+
 Patch3:         fix-build-on-kernel-6_13.patch
+# PATCH-FIX-UPSTREAM fix-build-on-kernel-6_14.patch hillwood@opensuse.org - Support Kernel 6.14+
+Patch4:         fix-build-on-kernel-6_14.patch
 BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  fdupes

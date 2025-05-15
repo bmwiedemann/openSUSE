@@ -1,0 +1,13 @@
+diff -Nur rtl8188gu/os_dep/linux/ioctl_cfg80211.c rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c
+--- rtl8188gu/os_dep/linux/ioctl_cfg80211.c	2025-05-15 15:43:13.636227464 +0800
++++ rtl8188gu-new/os_dep/linux/ioctl_cfg80211.c	2025-05-15 15:52:09.248082582 +0800
+@@ -3632,6 +3632,9 @@
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
+ 	struct wireless_dev *wdev,
+ #endif
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 14, 0))
++    unsigned int type,
++#endif
+ 	int *dbm)
+ {
+ 	RTW_INFO("%s\n", __func__);

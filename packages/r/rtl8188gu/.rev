@@ -15,4 +15,12 @@
     <comment>- Add fix-build-on-kernel-6_13.patch, support kernel 6.13+ (forwarded request 1240359 from hillwood)</comment>
     <requestid>1240360</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ec71064e17e9785c47ea5987a1b8c52</srcmd5>
+    <version>0.0.0+git20230112.c2b79fc</version>
+    <time>1747321324</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277602</requestid>
+  </revision>
 </revisionlist>
