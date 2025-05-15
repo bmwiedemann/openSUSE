@@ -1895,4 +1895,41 @@
     <comment>- Readd anything deleted by mistake. (jsc#PED-12354)</comment>
     <requestid>1254345</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>1434d87c8be60577501963f336a99de3</srcmd5>
+    <version>4.16.0+git73.99f301e1</version>
+    <time>1747321173</time>
+    <user>anag_factory</user>
+    <comment>- L3: DB2 resource agent forcefully shuts down database, risking data loss — ref:_00D1igLOd._500TrYJM7l:ref
+  (bsc#1241692)
+  Add patch:
+     bsc-1241692.patch
+- Update to version 4.16.0+git73.99f301e1:
+  * azure-events-az: Update wording in log line
+  * podman-etcd: remove unused actions from metadata
+  * Filesystem: fix getting the wrong block device when doing grep
+  * crypt: fix crypt_type check, and usage when action has not been specified
+  * podman-etcd: new resource agent (#2023)
+  * IPaddr2: fix iface_altname indentation
+  * IPaddr2: add support for network interfaces altname in the monitor operation (#2027)
+  * tomcat: only log &quot;validate_all_tomcat[$TOMCAT_NAME]&quot; on debug-level
+  * mdraid: Add 'auto' and multiple devices support to parameter md_dev (bsc#1200867, jsc#TEAM-6691)
+  * azure-events-az: Add params defaults to RA description (#2034)
+  * azure-events-az: Update crm_attribute call in putNodeOnline (#2033)
+  * azure-events-az: remove unused attr_globalPullState variable (#2032)
+  * azure-events-az: fix typo (#2031)
+  * azure-events-az: change variable name allNodesStopped to allResourcesNowStopped (#2030)
+  * tomcat: fix catalina_base and catalina_out parameter defaults
+  * tomcat: fix CATALINA_PID not set issue
+  * crypt: fixes to validate-action and to avoid running as a cloned resource
+  * Attempting to detect clevis automatically
+  * initial pass on supporting clevis-unlocked volumes
+  Remove: 2037.patch
+
+- Failed action that lead to stonith when there is a empty /etc/mdadm.conf on one node on cluster MD
+  (bsc#1200867)
+  cluster-md: RA mdraid to support auto-assembly at the cluster level, eg md_dev=&quot;auto&quot;
+  (jsc#TEAM-6691)</comment>
+    <requestid>1277158</requestid>
+  </revision>
 </revisionlist>

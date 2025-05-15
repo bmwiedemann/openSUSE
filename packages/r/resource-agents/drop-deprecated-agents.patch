@@ -1,5 +1,5 @@
---- resource-agents-4.16.0+git45.646a41d1/heartbeat/Makefile.am	2025-02-25 12:34:45.000000000 +0100
-+++ resource-agents/heartbeat/Makefile.am	2025-03-19 10:05:33.459275593 +0100
+--- a/heartbeat/Makefile.am.orig	2025-05-13 13:52:11.405852066 +0200
++++ b/heartbeat/Makefile.am	2025-05-13 13:51:45.149625303 +0200
 @@ -50,94 +50,61 @@
  send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
  send_ua_LDADD           = $(LIBNETLIBS)
@@ -110,12 +110,13 @@
  			oraasm			\
  			oracle			\
  			oralsnr			\
-@@ -157,38 +119,21 @@
+@@ -157,39 +119,22 @@
  			ovsmonitor		\
  			pgagent			\
  			pgsql			\
 -			pingd			\
  			podman			\
+ 			podman-etcd		\
  			portblock		\
  			postfix			\
 -			pound			\

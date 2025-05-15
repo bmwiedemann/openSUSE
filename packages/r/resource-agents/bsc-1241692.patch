@@ -1,0 +1,14 @@
+--- resource-agents-4.8.0+git30.d0077df0/heartbeat/db2.orig	2025-05-05 15:49:12.367621781 +0200
++++ resource-agents-4.8.0+git30.d0077df0/heartbeat/db2	2025-05-05 15:49:39.483844685 +0200
+@@ -782,11 +782,6 @@ db2_promote() {
+             force="by force peer window only"
+             ;;
+ 
+-            # must take over by force
+-            STANDBY/REMOTE_CATCHUP_PENDING/DISCONNECTED)
+-            force="by force"
+-            ;;
+-
+             *)
+             return $OCF_ERR_GENERIC
+         esac
