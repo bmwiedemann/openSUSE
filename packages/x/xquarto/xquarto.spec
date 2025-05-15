@@ -64,7 +64,7 @@ more details).
 
 %build
 xmkmf -a
-make %{?jobs:-j%jobs} CCOPTIONS="$RPM_OPT_FLAGS"
+%make_build CCOPTIONS="$RPM_OPT_FLAGS"
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
@@ -72,6 +72,8 @@ make DESTDIR=$RPM_BUILD_ROOT install.man
 
 %files
 %defattr(-, root, root)
+%license COPYING
+%doc README
 %{_bindir}/xquarto
 %doc %{_xorg7_mandir}/man1/xquarto.1x.gz
 

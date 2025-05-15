@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 16:29:52 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark COPYING file as %license
+
+-------------------------------------------------------------------
 Thu Feb 13 12:51:50 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc 15
