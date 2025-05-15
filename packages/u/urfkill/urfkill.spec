@@ -96,7 +96,7 @@ NOCONFIGURE=1 ./autogen.sh
 %endif
   --with-session-tracking=systemd \
   --enable-gtk-doc
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall

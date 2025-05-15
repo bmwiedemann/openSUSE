@@ -175,4 +175,12 @@ logind (bnc#853492) (forwarded request 212963 from gary_lin)</comment>
   * Do not use comma in AC_MSG_ERROR() as this is used for exit status</comment>
     <requestid>1165661</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>773040cc43876e5e9deb3276e0b90ca4</srcmd5>
+    <version>0.5.0</version>
+    <time>1747321270</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277516</requestid>
+  </revision>
 </revisionlist>

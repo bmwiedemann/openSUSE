@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 16:07:12 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Fri Apr  5 12:12:52 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch rfkill_even_size.patch
