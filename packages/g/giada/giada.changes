@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 14 00:28:01 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 1.2.0:
+  * Add support for multiple MIDI devices (#215)
+  * Preserve position and size of 'Settings' window
+  * Fix wrong name in cloned sample channels (#725)
+  * Update concurrentqueue dependency to version 1.0.4
+  * Update FLTK dependency to 1.4.2
+  * More CMake presets improvements
+  * Refactoring and code gardening
+
+-------------------------------------------------------------------
 Sat Mar 22 10:54:04 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.1.1:
