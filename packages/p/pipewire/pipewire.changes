@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed May 14 08:00:28 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Better use "Suggests" instead of Recommends otherwise
+  wireplumber-video-only-provides gets pulled in when libjack0
+  is already installed. 
+
+-------------------------------------------------------------------
+Wed May 14 06:15:04 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Don't use wireplumber-audio in Recommend package expression since
+  the wireplumber-audio doesn't exist anymore and wireplumber
+  (which now provides it) is expected to be installed in all cases.
+
+-------------------------------------------------------------------
 Mon Apr 14 11:11:32 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.4.2:

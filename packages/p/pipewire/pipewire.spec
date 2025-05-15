@@ -212,7 +212,7 @@ Requires(postun): update-alternatives
 # are also installed or we completely replace them with the pipewire
 # libraries
 Requires:       ((libjack0 and libjacknet0 and libjackserver0) or pipewire-jack)
-Recommends:     (pipewire-jack if wireplumber-audio else libjack0)
+Suggests:       (libjack0 if wireplumbler-video-only-profile else pipewire-jack)
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.

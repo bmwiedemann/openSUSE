@@ -1218,4 +1218,18 @@ Build tested.
     <comment></comment>
     <requestid>1269258</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>d6ae93f349c722c75c502e0c494d010b</srcmd5>
+    <version>1.4.2</version>
+    <time>1747321163</time>
+    <user>anag_factory</user>
+    <comment>- Better use &quot;Suggests&quot; instead of Recommends otherwise
+  wireplumber-video-only-provides gets pulled in when libjack0
+  is already installed. 
+
+- Don't use wireplumber-audio in Recommend package expression since
+  the wireplumber-audio doesn't exist anymore and wireplumber
+  (which now provides it) is expected to be installed in all cases.</comment>
+    <requestid>1277446</requestid>
+  </revision>
 </revisionlist>
