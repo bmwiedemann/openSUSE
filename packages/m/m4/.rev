@@ -371,4 +371,12 @@
 - Drop gnulib-c-stack.patch as patched code got removed upstream. (forwarded request 1276652 from mathletic)</comment>
     <requestid>1276749</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>4ee092b03bed1936a254dafe278328a2</srcmd5>
+    <version>1.4.20</version>
+    <time>1747321152</time>
+    <user>anag_factory</user>
+    <comment>drop -std=gnu17 from CFLAGS as 1.4.20 supports C23 (forwarded request 1277391 from hsk17)</comment>
+    <requestid>1277401</requestid>
+  </revision>
 </revisionlist>
