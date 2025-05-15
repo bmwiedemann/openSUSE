@@ -211,4 +211,25 @@
   * Stop calling a now removed method in new django-graphql-jwt.</comment>
     <requestid>1229987</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>18005f6aaf969db5c9b2e302f3582874</srcmd5>
+    <version>1.7.1</version>
+    <time>1747321275</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.1:
+  * New features:
+    + More detailed individual information when reviewing recommendations
+    + Renamed recommendations view labels
+    + Improved session cookie security
+    + More icons for sources
+    + Skip recommendations
+    + Sort organizations by number of enrollments
+  * Bug fixes:
+    + Wrong order of affiliations
+- Add patch no-testcontainers.patch:
+  * Do not rely on testcontainers to use mysql
+- Add patch support-click-8.2.patch:
+  * Support click 8.2+ changes.</comment>
+    <requestid>1277518</requestid>
+  </revision>
 </revisionlist>

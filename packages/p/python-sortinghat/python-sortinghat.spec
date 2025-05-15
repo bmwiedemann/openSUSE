@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        1.5.1
+Version:        1.7.1
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -27,6 +27,10 @@ Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/ta
 Patch0:         allow-database-config-overrides.patch
 # PATCH-FIX-OPENSUSE Support django-graphql-jwt 0.4.0
 Patch1:         support-new-django-graphql-jwt.patch
+# PATCH-FIX-OPENSUSE Do not use testcontainers module
+Patch2:         no-testcontainers.patch
+# PATCH-FIX-OPENSUSE Support click 8.2+
+Patch3:         support-click-8.2.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
@@ -35,12 +39,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 4.2
 Requires:       python-Jinja2 >= 3.1
-Requires:       python-PyJWT
+Requires:       python-PyJWT >= 2.4
 Requires:       python-PyMySQL >= 0.7.0
 Requires:       python-PyYAML >= 3.12
 Requires:       python-SQLAlchemy >= 1.2
 Requires:       python-click >= 7.1
-Requires:       python-django-cors-headers >= 3.7
+Requires:       python-django-cors-headers >= 4.6
 Requires:       python-django-graphql-jwt >= 0.3
 Requires:       python-django-rq >= 2.3
 Requires:       python-django-treebeard >= 4.5
@@ -50,12 +54,12 @@ Requires:       python-grimoirelab-toolkit >= 0.3
 Requires:       python-importlib-resources
 Requires:       python-mysqlclient >= 2.0
 Requires:       python-numpy
-Requires:       python-pandas >= 1.3
+Requires:       python-pandas >= 2.2
 Requires:       python-python-dateutil >= 2.8.0
 Requires:       python-requests >= 2.7
 Requires:       python-rq
 Requires:       python-setuptools
-Requires:       python-sgqlc
+Requires:       python-sgqlc >= 16.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
@@ -66,7 +70,7 @@ BuildRequires:  %{python_module PyMySQL >= 0.7.0}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module SQLAlchemy >= 1.2}
 BuildRequires:  %{python_module click >= 7.1}
-BuildRequires:  %{python_module django-cors-headers >= 3.7}
+BuildRequires:  %{python_module django-cors-headers >= 4.6}
 BuildRequires:  %{python_module django-graphql-jwt >= 0.3}
 BuildRequires:  %{python_module django-rq >= 2.3}
 BuildRequires:  %{python_module django-treebeard >= 4.5}
@@ -77,12 +81,12 @@ BuildRequires:  %{python_module httpretty >= 0.9.5}
 BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module mysqlclient >= 2.0}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas >= 1.3}
+BuildRequires:  %{python_module pandas >= 2.2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.8.0}
 BuildRequires:  %{python_module requests >= 2.7}
 BuildRequires:  %{python_module rq}
-BuildRequires:  %{python_module sgqlc}
+BuildRequires:  %{python_module sgqlc >= 16.1}
 BuildRequires:  mariadb-rpm-macros
 # /SECTION
 %python_subpackages
