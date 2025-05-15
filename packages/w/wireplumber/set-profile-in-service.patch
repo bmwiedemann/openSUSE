@@ -1,0 +1,19 @@
+Index: wireplumber-0.5.8/src/systemd/user/wireplumber.service.in
+===================================================================
+--- wireplumber-0.5.8.orig/src/systemd/user/wireplumber.service.in
++++ wireplumber-0.5.8/src/systemd/user/wireplumber.service.in
+@@ -11,10 +11,13 @@ NoNewPrivileges=yes
+ SystemCallArchitectures=native
+ SystemCallFilter=@system-service
+ Type=simple
+-ExecStart=@WP_BINARY@
++ExecStart=@WP_BINARY@ -p $WIREPLUMBER_PROFILE
+ Restart=on-failure
+ Slice=session.slice
+ Environment=GIO_USE_VFS=local
++Environment=WIREPLUMBER_PROFILE=main
++EnvironmentFile=-/usr/etc/wireplumber.env
++EnvironmentFile=-/etc/wireplumbler.env
+ 
+ [Install]
+ WantedBy=pipewire.service

@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed May 14 07:22:11 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use Supplements: pulseaudio in wireplumber-video-only-profile
+  to get it automatically installed in systems using pulseaudio.
+
+-------------------------------------------------------------------
+Tue May 13 11:56:32 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch and rework how we enable/disable audio support in
+  pipewire/wireplumber to use upstream provided profiles instead
+  of custom config files modifications. We now support audio with
+  the default wireplumber package and only when the
+  wireplumber-video-only-profile package is installed, wireplumber
+  will not use audio (allowing to use pulseaudio instead). This
+  means we now set the profile using an environment variable in
+  the wireplumber user service that has a default value of "main"
+  and is set in /usr/etc/wireplumber.conf to "video-only" by the
+  mentioned package . A user can override the value in
+  /etc/wireplumber.conf.
+  * set-profile-in-service.patch
+
+-------------------------------------------------------------------
+Mon May  5 11:55:56 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix various issues.
+  * 0001-internal-comp-loader-generate-a-provides-for-components.patch
+  * 0002-wpctl-fix-default-device-name-leak.patch
+  * 0003-wpctl-fix-types-in-variadic-arguments.patch
+  * 0004-monitor-utils-Support-devices-without-any-device-ids.patch
+  * 0005-v4l2_monitor-scripts-fix-for-deduplicate-devices-with-the.patch
+  * 0006-monitors_libcamera-fix-deduplicating-devices-with-the-same.patch
+  * 0007-monitors_alsa-fix-nil-table-indexing.patch
+
+-------------------------------------------------------------------
 Mon Feb 10 16:28:59 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.8:

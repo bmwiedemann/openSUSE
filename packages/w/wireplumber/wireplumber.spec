@@ -29,7 +29,15 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
-Source1:        split-config-file.py
+Source1:        wireplumber.env
+Patch0:         0001-internal-comp-loader-generate-a-provides-for-components.patch
+Patch1:         0002-wpctl-fix-default-device-name-leak.patch
+Patch2:         0003-wpctl-fix-types-in-variadic-arguments.patch
+Patch3:         0004-monitor-utils-Support-devices-without-any-device-ids.patch
+Patch4:         0005-v4l2_monitor-scripts-fix-for-deduplicate-devices-with-the.patch
+Patch5:         0006-monitors_libcamera-fix-deduplicating-devices-with-the-same.patch
+Patch6:         0007-monitors_alsa-fix-nil-table-indexing.patch
+Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -57,10 +65,13 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  python3-breathe
 #!BuildIgnore:  pipewire-session-manager
-# Setup ALSA devices if PipeWire handles PulseAudio or JACK connections.
-Requires:       (%{name}-audio if (pipewire-pulseaudio or pipewire-jack))
+Requires:       (%{name}-video-only-profile if pulseaudio)
 Requires:       pipewire >= %{pipewire_minimum_version}
 Provides:       pipewire-session-manager
+Recommends:     pipewire-jack
+Recommends:     pipewire-pulseaudio
+Provides:       wireplumber-audio = %{version}-%{release}
+Obsoletes:      wireplumber-audio < %{version}-%{release}
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc9
 BuildRequires:  gcc9-c++
@@ -87,23 +98,24 @@ BuildArch:      noarch
 This package contains documentation for the WirePlumber
 session/policy manager for PipeWire.
 
-%package audio
-Summary:        Enable audio support in PipeWire / WirePlumber
+%package video-only-profile
+Summary:        Disable audio support in PipeWire / WirePlumber
 Group:          Development/Libraries/C and C++
 Requires:       %{libwireplumber} = %{version}
 Requires:       %{name} = %{version}
-Recommends:     pipewire-jack
-Recommends:     pipewire-pulseaudio
-Conflicts:      pulseaudio
+Recommends:     pulseaudio
+Supplements:    pulseaudio
 BuildArch:      noarch
 
-%description audio
+%description video-only-profile
 WirePlumber is a modular session / policy manager for PipeWire and
 a GObject-based high-level library that wraps PipeWire's API,
 providing convenience for writing the daemon's modules as well as
 external tools for managing PipeWire.
 
-This package enables the use of alsa devices in PipeWire.
+This package makes wireplumber use the video-only-profile when
+started via the wireplumber user service (the default way to run
+it) effectively disabling the use of alsa devices in PipeWire.
 
 %package devel
 Summary:        Session / policy manager implementation for PipeWire
@@ -158,10 +170,6 @@ Optional dependency offering zsh completion for various wpctl parameters.
 %prep
 %autosetup -p1
 
-pushd src/config
-python3 %{SOURCE1}
-popd
-
 %build
 %if 0%{?suse_version} <= 1500
 export CC=gcc-9
@@ -174,6 +182,13 @@ export CXX=g++-9
 
 %install
 %meson_install
+%if 0%{?suse_version} > 1500
+mkdir -p %{buildroot}/%{_distconfdir}
+install -m 644 %{S:1} %{buildroot}/%{_distconfdir}/
+%else
+mkdir -p %{buildroot}/%{_sysconfdir}
+install -m 644 %{S:1} %{buildroot}/%{_sysconfdir}/
+%endif
 %fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
 %find_lang %{name} %{?no_lang_C}
 
@@ -247,14 +262,15 @@ fi
 %dir %{_datadir}/doc/wireplumber/examples
 %{_datadir}/doc/wireplumber/examples/wireplumber.conf.d
 %{_datadir}/wireplumber
-%exclude %{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
-%exclude %{_datadir}/wireplumber/wireplumber.conf.d/01-require-audio-in-main-profile.conf
 
 %files lang -f %{name}.lang
 
-%files audio
-%{_datadir}/wireplumber/wireplumber.conf.d/00-device-monitors.conf
-%{_datadir}/wireplumber/wireplumber.conf.d/01-require-audio-in-main-profile.conf
+%files video-only-profile
+%if 0%{?suse_version} > 1500
+%{_distconfdir}/wireplumber.env
+%else
+%{_sysconfdir}/wireplumber.env
+%endif
 
 %files devel
 %{_includedir}/wireplumber-%{apiver}

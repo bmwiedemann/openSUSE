@@ -1,0 +1,31 @@
+From 2d48caa74b3f69d54d96aa9e36b344d46355e38f Mon Sep 17 00:00:00 2001
+From: Pauli Virtanen <pav@iki.fi>
+Date: Tue, 8 Apr 2025 01:18:36 +0300
+Subject: [PATCH] monitors/alsa: fix nil table indexing
+
+It's possible that managed_node.properties["node.name"] == nil if the
+node is gone.
+
+The removeDevice call above has already cleared the node names, so no
+need to do it again.
+---
+ src/scripts/monitors/alsa.lua | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/src/scripts/monitors/alsa.lua b/src/scripts/monitors/alsa.lua
+index 871ebbfe..06b40f20 100644
+--- a/src/scripts/monitors/alsa.lua
++++ b/src/scripts/monitors/alsa.lua
+@@ -560,9 +560,6 @@ function createMonitor ()
+       end
+     end
+     device_names_table[device.properties["device.name"]] = nil
+-    for managed_node in device:iterate_managed_objects() do
+-      node_names_table[managed_node.properties["node.name"]] = nil
+-    end
+   end)
+ 
+   -- reset the name tables to make sure names are recycled
+-- 
+GitLab
+
