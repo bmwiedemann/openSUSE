@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon May 12 16:18:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Skip test_multiprocessing_spawn, test_remote_pdb, test_sys in qemu
+  linux-user emulation
+
+-------------------------------------------------------------------
+Mon May 12 10:59:41 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Simplify python-3.3.0b1-fix_date_time_compiler.patch not to
+  change getbuildinfo.c, normalizations are already done by gcc.
+
+-------------------------------------------------------------------
 Fri May  9 08:36:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.14.0~b1:

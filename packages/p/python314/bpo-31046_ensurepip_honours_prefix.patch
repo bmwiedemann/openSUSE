@@ -15,8 +15,8 @@ Co-Authored-By: Xavier de Gaye <xdegaye@gmail.com>
 
 Index: Python-3.14.0b1/Doc/library/ensurepip.rst
 ===================================================================
---- Python-3.14.0b1.orig/Doc/library/ensurepip.rst	2025-05-06 17:33:52.000000000 +0200
-+++ Python-3.14.0b1/Doc/library/ensurepip.rst	2025-05-09 10:36:23.988020340 +0200
+--- Python-3.14.0b1.orig/Doc/library/ensurepip.rst	2025-05-12 10:59:00.152603111 +0000
++++ Python-3.14.0b1/Doc/library/ensurepip.rst	2025-05-12 10:59:06.662087113 +0000
 @@ -61,7 +61,11 @@
  By default, ``pip`` is installed into the current virtual environment
  (if one is active) or into the system site packages (if there is no
@@ -59,8 +59,8 @@ Index: Python-3.14.0b1/Doc/library/ensurepip.rst
     .. note::
 Index: Python-3.14.0b1/Lib/ensurepip/__init__.py
 ===================================================================
---- Python-3.14.0b1.orig/Lib/ensurepip/__init__.py	2025-05-09 10:36:06.012023154 +0200
-+++ Python-3.14.0b1/Lib/ensurepip/__init__.py	2025-05-09 10:36:23.988419430 +0200
+--- Python-3.14.0b1.orig/Lib/ensurepip/__init__.py	2025-05-12 10:59:00.152603111 +0000
++++ Python-3.14.0b1/Lib/ensurepip/__init__.py	2025-05-12 10:59:06.662530889 +0000
 @@ -106,27 +106,27 @@
      os.environ['PIP_CONFIG_FILE'] = os.devnull
  
@@ -125,8 +125,8 @@ Index: Python-3.14.0b1/Lib/ensurepip/__init__.py
          verbosity=args.verbosity,
 Index: Python-3.14.0b1/Lib/test/test_ensurepip.py
 ===================================================================
---- Python-3.14.0b1.orig/Lib/test/test_ensurepip.py	2025-05-09 10:36:07.299689896 +0200
-+++ Python-3.14.0b1/Lib/test/test_ensurepip.py	2025-05-09 10:36:23.988614417 +0200
+--- Python-3.14.0b1.orig/Lib/test/test_ensurepip.py	2025-05-12 10:59:00.152603111 +0000
++++ Python-3.14.0b1/Lib/test/test_ensurepip.py	2025-05-12 10:59:06.662803061 +0000
 @@ -100,6 +100,17 @@
              unittest.mock.ANY,
          )
@@ -147,9 +147,9 @@ Index: Python-3.14.0b1/Lib/test/test_ensurepip.py
  
 Index: Python-3.14.0b1/Makefile.pre.in
 ===================================================================
---- Python-3.14.0b1.orig/Makefile.pre.in	2025-05-09 10:36:18.686043460 +0200
-+++ Python-3.14.0b1/Makefile.pre.in	2025-05-09 10:36:23.989614417 +0200
-@@ -2337,7 +2337,7 @@
+--- Python-3.14.0b1.orig/Makefile.pre.in	2025-05-12 10:59:05.200858322 +0000
++++ Python-3.14.0b1/Makefile.pre.in	2025-05-12 10:59:06.663191503 +0000
+@@ -2335,7 +2335,7 @@
  			install|*) ensurepip="" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -158,7 +158,7 @@ Index: Python-3.14.0b1/Makefile.pre.in
  	fi
  
  .PHONY: altinstall
-@@ -2348,7 +2348,7 @@
+@@ -2346,7 +2346,7 @@
  			install|*) ensurepip="--altinstall" ;; \
  		esac; \
  		$(RUNSHARED) $(PYTHON_FOR_BUILD) -m ensurepip \
@@ -170,6 +170,6 @@ Index: Python-3.14.0b1/Makefile.pre.in
 Index: Python-3.14.0b1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ Python-3.14.0b1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst	2025-05-09 10:36:23.990105239 +0200
++++ Python-3.14.0b1/Misc/NEWS.d/next/Build/2019-12-16-17-50-42.bpo-31046.XA-Qfr.rst	2025-05-12 10:59:06.663664734 +0000
 @@ -0,0 +1 @@
 +A directory prefix can now be specified when using :mod:`ensurepip`.

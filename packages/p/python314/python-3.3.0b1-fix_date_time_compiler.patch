@@ -1,19 +1,12 @@
 ---
- Makefile.pre.in |    7 +++++++
- 1 file changed, 7 insertions(+)
+ Makefile.pre.in |    5 +++++
+ 1 file changed, 5 insertions(+)
 
 Index: Python-3.14.0b1/Makefile.pre.in
 ===================================================================
---- Python-3.14.0b1.orig/Makefile.pre.in	2025-05-06 17:33:52.000000000 +0200
-+++ Python-3.14.0b1/Makefile.pre.in	2025-05-09 10:36:18.686043460 +0200
-@@ -1869,11 +1869,18 @@
- 		$(DTRACE_OBJS) \
- 		$(srcdir)/Modules/getbuildinfo.c
- 	$(CC) -c $(PY_CORE_CFLAGS) \
-+	      -DDATE="\"`date -u -r Makefile.pre.in +"%b %d %Y"`\"" \
-+	      -DTIME="\"`date -u -r Makefile.pre.in +"%T"`\"" \
- 	      -DGITVERSION="\"`LC_ALL=C $(GITVERSION)`\"" \
- 	      -DGITTAG="\"`LC_ALL=C $(GITTAG)`\"" \
+--- Python-3.14.0b1.orig/Makefile.pre.in	2025-05-12 10:57:03.566724942 +0000
++++ Python-3.14.0b1/Makefile.pre.in	2025-05-12 10:57:41.504010702 +0000
+@@ -1874,6 +1874,11 @@
  	      -DGITBRANCH="\"`LC_ALL=C $(GITBRANCH)`\"" \
  	      -o $@ $(srcdir)/Modules/getbuildinfo.c
  
