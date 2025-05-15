@@ -489,7 +489,7 @@ echo 'AC_DEFUN([AC_REQUIRE_AUX_FILE])dnl' >> acinclude.m4
 #	--disable-libxine-builtins
 #	--with-install-plugins-helper=${_prefix}/lib/opensuse-codecs-installer
 echo $CFLAGS
-make %{?jobs:-j%{jobs}} V=1
+%make_build
 
 %install
 make install DESTDIR=%{buildroot}
