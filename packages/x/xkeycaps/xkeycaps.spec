@@ -63,7 +63,7 @@ file for xmodmap to recreate your changes in future sessions.
 %build
 xmkmf -a
 touch XKeyCaps_ad.h
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 make install DESTDIR=${RPM_BUILD_ROOT}
