@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed May 14 21:12:28 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 0.7.0.
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.7.0
+  - Added program crash protection in `restoreStateAndHide` by checking GTK widget validity; closes #162;
+  - license changed back to MIT; #162;
+  - dependencies updated.
+- Changes from version 0.6.5:
+  Changelog: https://github.com/nwg-piotr/nwg-drawer/releases/tag/v0.6.5
+  - License changed to AGPLv3, as the gotk4 library uses it;
+  - dependencies updated.
+
+-------------------------------------------------------------------
 Tue Mar 18 15:36:24 UTC 2025 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 0.6.4.
