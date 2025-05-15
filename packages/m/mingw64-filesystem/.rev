@@ -261,4 +261,14 @@
     <comment></comment>
     <requestid>1276858</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3cf4dc8efd1b0879a1f1353f929358dc</srcmd5>
+    <version>20250515</version>
+    <time>1747321340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250515
+- Avoid spurious requires when using ucrt runtime (boo#1243096).
+</comment>
+    <requestid>1277680</requestid>
+  </revision>
 </revisionlist>
