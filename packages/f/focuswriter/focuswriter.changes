@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 15 06:36:58 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.12:
+  * FIXED: Compile error with QString::arg overload for char32_t
+  * FIXED: Conflict when creating default symbol shortcuts
+  * FIXED: Columns in symbols dialog were very wide
+  * Updated Swedish translation
+
+-------------------------------------------------------------------
 Sat Mar  8 11:46:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.11:
