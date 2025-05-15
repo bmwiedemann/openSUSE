@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 15 09:35:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.1.17
+  * fix(inline): do not offer changeless inline refactor,
+    backed by test by @YotamAlon in #30
+- Adjust upstream source name in spec file
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Mar 20 12:21:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.1.16:

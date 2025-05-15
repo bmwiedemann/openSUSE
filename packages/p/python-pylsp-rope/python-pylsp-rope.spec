@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylsp-rope
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-pylsp-rope
-Version:        0.1.16
+Version:        0.1.17
 Release:        0
 Summary:        Extended refactoring capabilities for Python LSP Server using Rope
 License:        MIT
 URL:            https://github.com/python-rope/pylsp-rope
-Source:         https://files.pythonhosted.org/packages/source/p/pylsp-rope/pylsp-rope-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/p/pylsp_rope/pylsp_rope-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions if %python-base <= 3.9}
@@ -48,7 +49,7 @@ Extended refactoring capabilities for Python LSP Server using Rope.
 This is a plugin for Python LSP Server.
 
 %prep
-%autosetup -p1 -n pylsp-rope-%{version}
+%autosetup -p1 -n pylsp_rope-%{version}
 
 %build
 %pyproject_wheel
