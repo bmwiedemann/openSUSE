@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 15:14:29 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- Mark NOTICE file as %license
+
+-------------------------------------------------------------------
 Mon May 13 13:11:36 UTC 2024 - pgajdos@suse.com
 
 - added patches

@@ -104,7 +104,7 @@ LDFLAGS="-pie " \
 	--libdir=%{_libdir} \
 	--includedir=%{_includedir} \
         --localstatedir=%{_localstatedir}/lib/kerberos
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 make DESTDIR=%{buildroot} install
@@ -156,6 +156,7 @@ rm -rf %{buildroot}
 
 %files servers
 %defattr(-,root,root)
+%license NOTICE
 %dir %{_sysconfdir}/xinetd.d
 %config(noreplace) %{_sysconfdir}/xinetd.d/klogin
 %config(noreplace) %{_sysconfdir}/xinetd.d/eklogin

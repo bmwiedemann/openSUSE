@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1178938</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>0a3f38a78993626bebef65f0cd2d8296</srcmd5>
+    <version>1.0.3</version>
+    <time>1747321336</time>
+    <user>anag_factory</user>
+    <comment>Use %make_build instead of %jobs (boo#1237231)
+- Mark NOTICE file as %license (forwarded request 1277456 from bmwiedemann)</comment>
+    <requestid>1277675</requestid>
+  </revision>
 </revisionlist>
