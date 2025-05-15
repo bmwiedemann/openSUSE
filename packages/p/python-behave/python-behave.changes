@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 09:11:38 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Sep 26 17:53:18 UTC 2024 - Guang Yee <gyee@suse.com>
 
 - Enable sle15_python_module_pythons. 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-behave
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,14 +32,16 @@ Patch2:         python-behave-fix-tests.patch
 # https://github.com/behave/behave/issues/1028
 Patch3:         python-behave-no-mock.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-parse >= 1.8.2
 Requires:       python-parse_type >= 0.4.2
 Requires:       python-six >= 1.11
-Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(post): alts
+Requires(postun): alts
 Suggests:       python-argparse
 Suggests:       python-coverage
 Suggests:       python-enum34
@@ -80,10 +82,10 @@ code.
 %autosetup -p1 -n behave-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/behave
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -100,6 +102,9 @@ code.
 %license LICENSE
 %doc CHANGES.rst README.rst
 %python_alternative %{_bindir}/behave
-%{python_sitelib}/*
+%{python_sitelib}/behave
+%{python_sitelib}/setuptools_behave.py
+%pycache_only %{python_sitelib}/__pycache__/setuptools_behave*
+%{python_sitelib}/behave-%{version}*-info
 
 %changelog
