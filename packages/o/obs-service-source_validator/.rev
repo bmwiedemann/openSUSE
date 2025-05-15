@@ -819,4 +819,14 @@ last submission had wrong tar ball for unknown reason</comment>
   * Being able to handle git managed sources</comment>
     <requestid>1277404</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>2bfaec3cf77dde93c07886472440ec95</srcmd5>
+    <version>0.41</version>
+    <time>1747321379</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.41:
+  * helpers/check_dates_in_changes: Handle invalid dates gracefully
+  * helpers/check_dates_in_changes: Only look at the first line of entries</comment>
+    <requestid>1277691</requestid>
+  </revision>
 </revisionlist>
