@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%global commit_haxelib f17fffa97554b1bdba37750e3418051f017a5bc2
+%global commit_haxelib 436bd844f90c61100b13a108912c1f7e918aead3
 %global commit_hx3compat f1f18201e5c0479cb5adf5f6028788b37f37b730
 
 Name:           haxe
-Version:        4.3.6
+Version:        4.3.7
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0-or-later AND MIT
@@ -40,7 +40,7 @@ BuildRequires:  ocaml >= 4.08
 BuildRequires:  ocaml-dune
 BuildRequires:  ocamlfind(camlp5)
 BuildRequires:  ocamlfind(camlp-streams)
-BuildRequires:  ocamlfind(extlib)
+BuildRequires:  ocaml-extlib-devel >= 1.8.0
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(luv)
 BuildRequires:  ocaml-luv-devel >= 0.5.12
@@ -50,7 +50,7 @@ BuildRequires:  ocamlfind(sha)
 BuildRequires:  ocamlfind(xml-light)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pcre2-devel
-BuildRequires:  mbedtls-devel < 3
+BuildRequires:  mbedtls-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
 Requires:       neko >= 2.3.0

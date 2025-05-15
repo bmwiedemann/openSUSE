@@ -434,4 +434,14 @@ We're in the process of easing the installation process across different Linux d
     <comment></comment>
     <requestid>1220387</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>7fcc85abc135bc5fd50c3ae0e67f971b</srcmd5>
+    <version>4.3.7</version>
+    <time>1747321292</time>
+    <user>anag_factory</user>
+    <comment>Depends on:
+* https://build.opensuse.org/requests/1277574
+* https://build.opensuse.org/requests/1277575</comment>
+    <requestid>1277720</requestid>
+  </revision>
 </revisionlist>
