@@ -64,7 +64,7 @@ JPEG images created by some digital cameras.
 bash ./autogen.sh
 %configure --with-pic \
 	--disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall

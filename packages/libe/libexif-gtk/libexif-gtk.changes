@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 15:26:24 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Mon Aug 31 09:08:52 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.5.0 final
