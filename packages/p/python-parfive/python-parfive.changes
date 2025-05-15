@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu May 15 05:20:40 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.0
+  * Python 3.9 support has been dropped and 3.13 is now tested.
+  * Checksums can now be verified when deciding to overwrite a file
+    and when downloads are completed based on user or server provided
+    checksums. (This is opt-in for now)
+  * Add checksums support @Cadair (#165)
+  * The first request to download a file will now attempt to use the
+    HEAD method to read the checksum and content-disposition headers.
+    If the HEAD request returns any status code other than 200 the old
+    GET behaviour will be tried - Fix a 302 issue @Cadair (#170), Add a
+    test for the head or get helper @Cadair (#169), Use a HEAD for the
+    first request @Cadair (#168)
+  * The URL associated with every downloaded file is now propagated
+    through to the Results object
+  * Add urls to results @samaloney (#146)
+  * Fix a bug where result urls were not updated in retry @samaloney (#153)
+  * Fix codecov @Cadair (#167)
+  * Add type hints to _get_http @Cadair (#164)
+  * Migrate away from setup.cfg and use more ruff @Cadair (#162)
+  * Drop Python 3.9 as it's EOL and fix tests @Cadair (#161)
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Sun Apr 14 07:44:07 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
