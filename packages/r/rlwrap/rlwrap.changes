@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue May  6 13:55:18 UTC 2025 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.46.2
+
+  * Bug fix
+
+  - python filters would cause "invalid escape sequence" SyntaxWarnings with python 3.12 or newer.
+  -  --skip-ctty option skips making slave pty a controlling terminal
+  -  warn (don't die) when a specified completion file is not found
+  -  configure will bail out (not just warn) when no termcap -like library is found.
+  -  additionally check for TERM when INSIDE_EMACS is set (allowing the use of rlwrap within shells run by emacs)
+  -  gcc -Wformat-security would warn about rl_message() being used in an unsafe manner.
+  -  silence unhelpful input/output error messages at command exit
+ 
+
+-------------------------------------------------------------------
 Tue Nov  8 16:55:32 UTC 2022 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to 0.46.1
