@@ -78,7 +78,7 @@ autoreconf -fi
 %configure \
     --enable-docbook-stylesheet=%{_datadir}/xml/docbook/stylesheet/nwalsh/current/html/chunker.xsl \
     --disable-oss-sound
-make %{?jobs:-j%jobs} all
+%make_build all
 
 %install
 %makeinstall

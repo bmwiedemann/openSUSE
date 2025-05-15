@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 16:05:21 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Mon Feb 26 13:33:08 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
