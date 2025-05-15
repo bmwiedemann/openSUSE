@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed May 14 19:45:13 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.3.8:
+  * Fix a potentially unintialized variable
+- includes changes from 2.3.7:
+  * bfb-install: Reactivate NIC_FW for runtime upgrade
+- includes changes from 2.3.6:
+  * bfb-install: cleanup the TMP_DIR
+- includes changes from 2.3.5:
+  * bfb-install: add validation of bfb and rshim options
+  * Fix the rshim command line for register read/write
+- includes changes from 2.3.4:
+  * mlx-mkbfb: Improve the performance when extracting a single image
+  * Reduce CPU utilization by network optimization
+- includes changes from 2.3.2:
+  * bfb-install: Support trimmed NIC_FW
+  * bfdump support
+  * Use BREADCRUMB.BIT32 to indicate NIC mode
+  * Added bfb-tool script
+- includes changes from 2.3.1:
+  * Enhance command line for register read/write
+  * Support PCIe device name runtime update
+  * bfb-install: Enhancement for runtime upgrade
+  * bfb-install: don't exit script when rshim install fails
+  * Add fwpkg_unpack tool
+  * Added mlx-mkbfb
+- build with fuse 3 (boo#1243151)
+
+-------------------------------------------------------------------
+Thu Feb  6 10:40:20 UTC 2025 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.2.4.0
+  * Update default USB timeout
+  * Add BF_MODE misc output to show DPU or NIC mode (BF3 only)
+  * Allow 0 to restrore USB_TIMEOUT default value
+  * Allow multi rshim processes for dev attchment
+  * Force stop if stuck during systemd service stop
+  * removes unnecesary POLLOUT polling in USB
+
+-------------------------------------------------------------------
+Wed Nov 13 12:36:55 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
+
+- Update to 2.1.6.0
+  * Add USB_TIMEOUT to rshim misc and conf settings
+  * Use BOOT_RESET_SKIP command to simulate eMMC boot
+
+-------------------------------------------------------------------
 Fri Oct 25 11:26:27 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.1.5.0
