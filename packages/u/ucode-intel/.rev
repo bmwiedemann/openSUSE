@@ -1318,4 +1318,41 @@
   - Update for functional issues. Refer to 3rd Generation Intel Xeon Processor Scalable Family Specification Update https://cdrdv2.intel.com/v1/dl/getContent/637780 for details. (forwarded request 1245387 from msmeissn)</comment>
     <requestid>1245388</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>e1ddb84f308db2269d7b8387150cd6d1</srcmd5>
+    <version>20250512</version>
+    <time>1747321156</time>
+    <user>anag_factory</user>
+    <comment>- Intel CPU Microcode was updated to the 20250512 release (bsc#1243123)
+  - Security updates for [INTEL-SA-01153](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01153.html)
+    - CVE-2024-28956: Exposure of Sensitive Information in Shared Microarchitectural Structures during Transient Execution for some Intel Processors may allow an authenticated user to potentially enable information disclosure via local access.
+  - Security updates for [INTEL-SA-01244](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01244.html)
+    - CVE-2025-20103: Insufficient resource pool in the core management mechanism for some Intel Processors may allow an authenticated user to potentially enable denial of service via local access.
+    - CVE-2025-20054: Uncaught exception in the core management mechanism for some Intel Processors may allow an authenticated user to potentially enable denial of service via local access.
+  - Security updates for [INTEL-SA-01247](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01247.html)
+     - CVE-2024-43420: Exposure of sensitive information caused by shared microarchitectural predictor state that influences transient execution for some Intel Atom processors may allow an authenticated user to potentially enable information disclosure via local access.
+     - CVE-2025-20623: Exposure of sensitive information caused by shared microarchitectural predictor state that influences transient execution for some Intel Core processors (10th Generation) may allow an authenticated user to potentially enable information disclosure via local access.
+   - CVE-2024-45332: Exposure of sensitive information caused by shared microarchitectural predictor state that influences transient execution in the indirect branch predictors for some Intel Processors may allow an authenticated user to potentially enable information disclosure via local access.
+  - Security updates for [INTEL-SA-01322](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01322.html)
+    - CVE-2025-24495:  Incorrect initialization of resource in the branch prediction unit for some Intel Core Ultra Processors may allow an authenticated user to potentially enable information disclosure via local access.
+    - CVE-2025-20012: Incorrect behavior order for some Intel Core Ultra Processors may allow an unauthenticated user to potentially enable information disclosure via physical access.
+  - Update for functional issues. Refer to [Intel Core Ultra 200 V Series Processor (Series2)](https://cdrdv2.intel.com/v1/dl/getContent/834774) for details.
+  - Update for functional issues. Refer to [Intel Core Ultra 200 V Series Processor](https://cdrdv2.intel.com/v1/dl/getContent/827538) for details.
+  - Update for functional issues. Refer to [Intel Core Ultra Processor](https://cdrdv2.intel.com/v1/dl/getContent/792254) for details.
+  - Update for functional issues. Refer to [14th/13th Generation Intel Core Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/740518) for details.
+  - Update for functional issues. Refer to [12th Generation Intel Core Processor Family](https://cdrdv2.intel.com/v1/dl/getContent/682436) for details.
+  - Update for functional issues. Refer to [11th Gen Intel Core Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/631123) for details.
+  - Update for functional issues. Refer to [10th Gen Intel Core Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/341079) for details.
+  - Update for functional issues. Refer to [10th Gen Intel Core Processor Families Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/615213) for details.
+  - Update for functional issues. Refer to [8th and 9th Generation Intel Core Processor Family Spec Update](https://cdrdv2.intel.com/v1/dl/getContent/337346) for details.
+  - Update for functional issues. Refer to [6th Gen Intel Xeon Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/835486) for details.
+  - Update for functional issues. Refer to [5th Gen Intel Xeon Processor Scalable Family](https://cdrdv2.intel.com/v1/dl/getContent/793902) for details.
+  - Update for functional issues. Refer to [4th Gen Intel Xeon Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/772415) for details.
+  - Update for functional issues. Refer to [3rd Generation Intel Xeon Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/634897) for details.
+  - Update for functional issues. Refer to [3rd Generation Intel Xeon Scalable Processors Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/637780) for details.
+  - Update for functional issues. Refer to [2nd Generation Intel Xeon Processor Scalable Family Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/338848) for details.
+  - Update for functional issues. Refer to [Intel Xeon 6700-Series Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/820922) for details.
+  - Update for functional issues. Refer to [Intel Xeon E-2300 Processor Specification Update](https://cdrdv2.intel.com/v1/dl/getContent/709192) for details. (forwarded request 1277417 from msmeissn)</comment>
+    <requestid>1277418</requestid>
+  </revision>
 </revisionlist>
