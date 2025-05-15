@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue May 13 04:34:57 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 12.5.2 (bsc#1243106):
+  https://github.com/vmware/open-vm-tools/blob/stable-12.5.2/ReleaseNotes.md
+  https://github.com/vmware/open-vm-tools/blob/stable-12.5.2/open-vm-tools/ChangeLog
+  This release resolves CVE-2025-22247. For more information on this
+  vulnerability and its impact on Broadcom products, see
+  VMSA-2025-0007
+  https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/25683
+
+-------------------------------------------------------------------
 Sat May  3 16:51:01 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add open-vm-tools-12.5.0-gcc15.patch from upstream to fix
