@@ -47,7 +47,7 @@ within JPEG images created by some digital cameras.
 %build
 autoreconf -f -i
 %configure
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall
