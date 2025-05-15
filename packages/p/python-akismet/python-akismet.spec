@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-akismet
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2017 Matthias Fehring <buschmann23@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define mod_name akismet
-%define skip_python2 1
 Name:           python-%{mod_name}
 Version:        1.2.1
 Release:        0
@@ -27,9 +25,11 @@ Summary:        Interface to the Akismet Anti Comment-Spam API
 License:        BSD-3-Clause
 URL:            https://github.com/ubernostrum/akismet
 Source0:        https://files.pythonhosted.org/packages/source/a/%{mod_name}/%{mod_name}-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-requests
@@ -43,10 +43,10 @@ A Python interface to the Akismet anti comment-spam API.
 %setup -q -n %{mod_name}-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -56,6 +56,8 @@ A Python interface to the Akismet anti comment-spam API.
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/akismet.py
+%{python_sitelib}/akismet-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/akismet*
 
 %changelog
