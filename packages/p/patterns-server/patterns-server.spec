@@ -40,6 +40,8 @@ This particular package contains all the server related patterns
 
 
 
+
+
 ################################################################################
 
 %package dhcp_dns_server
@@ -477,6 +479,63 @@ single physical machine.
 %endif
 %endif
 ################################################################################
+%if !0%{?is_opensuse}
+%ifarch s390x
+%package hwcrypto
+%pattern_basetechnologies
+Summary:        System z HW crypto support
+Group:          Metapackages
+Provides:       patterns-sles-hwcrypto = %{version}
+Provides:       pattern() = hwcrypto
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 1040
+Provides:       pattern-visible()
+Obsoletes:      patterns-sles-hwcrypto < %{version}
+Provides:       patterns-server-enterprise-hwcrypto = %{version}
+Obsoletes:      patterns-server-enterprise-hwcrypto < %{version}
+Requires:       pattern() = basesystem
+
+Recommends:     libica-4
+Recommends:     libica-4-32bit
+Requires:       openCryptoki
+Requires:       openCryptoki-64bit
+Requires:       openssl-ibmca
+
+%description hwcrypto
+A selection of packages that installs the System z HW crypto stack on
+System z.
+
+%files hwcrypto
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/hwcrypto.txt
+%endif
+
+################################################################################
+
+%package oracle_server
+%pattern_primaryfunctions
+Summary:        Oracle Server Base
+Group:          Metapackages
+Provides:       patterns-sles-oracle_server = %{version}
+Provides:       pattern() = oracle_server
+Provides:       pattern-icon() = pattern-generic
+Provides:       pattern-order() = 3120
+Provides:       pattern-visible()
+Obsoletes:      patterns-sles-oracle_server < %{version}
+Provides:       patterns-server-enterprise-oracle_server = %{version}
+Obsoletes:      patterns-server-enterprise-oracle_server < %{version}
+Requires:       orarun
+Requires:       pattern() = basesystem
+
+%description oracle_server
+Set up the server for installing Oracle databases.
+
+%files oracle_server
+%dir /usr/share/doc/packages/patterns
+/usr/share/doc/packages/patterns/oracle_server.txt
+%endif
+
+################################################################################
 
 %prep
 
@@ -493,7 +552,14 @@ for i in dhcp_dns_server directory_server file_server gateway_server \
         >"%{buildroot}%{_docdir}/patterns/$i-32bit.txt"
 done
 # NO 32bits pattern for KVM or XEN
-for i in kvm_tools kvm_server
+for i in \
+%if !0%{?is_opensuse}
+%ifarch s390x
+	hwcrypto \
+%endif
+	oracle_server \
+%endif
+    kvm_tools kvm_server
     do
     echo "This file marks the pattern $i to be installed." \
         > "%{buildroot}%{_docdir}/patterns/$i.txt"
