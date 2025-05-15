@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 14 18:15:30 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.14
+  * Fixed crash querying the name of logical audio devices.
+  * Fixed thread-local storage related black screen issue when
+    pulseaudio audio output is active.
+  * Reverted dead key reporting on X11, which introduced bugs with
+    IME handling.
+  * Fixed incorrect destination usage mode for storage buffer
+    read/write bindings on Vulkan.
+
+-------------------------------------------------------------------
 Mon May  5 03:31:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.12
