@@ -1,7 +1,7 @@
 #
 # spec file for package python-blockdiag
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,21 +33,23 @@ Patch1:         pillow10.patch
 BuildRequires:  %{python_module Pillow >= 3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module funcparserlib >= 1.0.0~a0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module webcolors}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pillow >= 3
 Requires:       python-funcparserlib >= 1.0.0~a0
 Requires:       python-setuptools
 Requires:       python-webcolors
-Requires(post): update-alternatives
-Requires(preun):update-alternatives
+Requires(post): alts
+Requires(preun): alts
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module reportlab}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module reportlab}
 # /SECTION
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ghostscript
@@ -64,10 +66,10 @@ from spec-text files.
 %autosetup -p1 -n blockdiag-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/blockdiag
 
