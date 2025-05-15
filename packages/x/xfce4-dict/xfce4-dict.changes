@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue May 13 08:36:29 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 0.8.9
+  * Hide web search link in results if not set
+  * Fix enchant binary names
+  * autotools-build: Add missing compile flags
+  * meson-build: Remove --manual-register flag from compile_resources()
+  * Replace deprecated exo with libxfce4ui 4.21.0
+  * Meson version can be older
+  * build: Automate copyright year management
+  * Add suport to Meson
+  * I18n: Update po/LINGUAS list
+  * Remove x11 includes
+  * Drop libx11 as dependency
+  * Translation Updates
+
+-------------------------------------------------------------------
 Wed Oct  2 06:32:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 0.8.8

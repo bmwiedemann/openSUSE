@@ -1,7 +1,7 @@
 #
 # spec file for package xfce4-dict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,25 @@
 #
 
 
-%define panel_version 4.10.0
+%define panel_version 4.18.0
 Name:           xfce4-dict
-Version:        0.8.8
+Version:        0.8.9
 Release:        0
 Summary:        Xfce Dictionary Client Application
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
 URL:            https://goodies.xfce.org/projects/applications/xfce4-dict
-Source:         https://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.bz2
-BuildRequires:  intltool
+Source:         https://archive.xfce.org/src/apps/xfce4-dict/0.8/%{name}-%{version}.tar.xz
+BuildRequires:  gettext >= 0.19.8
+BuildRequires:  meson >= 0.54.0
+BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.24.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxfce4panel-2.0) >= %{panel_version}
-BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.12.0
-BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.10.0
-BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
+BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
 # uses xdg-open
 Requires:       xdg-utils
 Recommends:     %{name}-lang = %{version}
@@ -56,16 +58,16 @@ This package contains the xfce4-dict dictionary plugin for the Xfce panel.
 %lang_package
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
-rm %{buildroot}%{_libdir}/xfce4/panel/plugins/libxfce4dict.la
+rm -f %{buildroot}%{_libdir}/xfce4/panel/plugins/libxfce4dict.la
 
 %suse_update_desktop_file -r %{name} Office Dictionary GTK
 
