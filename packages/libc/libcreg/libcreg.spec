@@ -2,6 +2,7 @@
 # spec file for package libcreg
 #
 # Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,20 +21,21 @@
 
 Name:           libcreg
 %define lname	libcreg1
-Version:        20240303
+Version:        20240419
 Release:        0
 Summary:        Library to access Windows 9x/Me REGF-type Registry files
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libcreg
 Source:         https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz
+Source2:        https://github.com/libyal/libcreg/releases/download/%version/libcreg-experimental-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(fuse) >= 2.6
+BuildRequires:  pkgconfig(fuse3) >= 3.0
 BuildRequires:  pkgconfig(libbfio) >= 20240313
 BuildRequires:  pkgconfig(libcdata) >= 20240103
 BuildRequires:  pkgconfig(libcerror) >= 20240101
