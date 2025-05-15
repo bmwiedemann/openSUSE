@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 05:19:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.7.1
+  * VSV-16: Resolve request smuggling attack
+
+-------------------------------------------------------------------
 Sun Apr 13 19:01:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.7.0
