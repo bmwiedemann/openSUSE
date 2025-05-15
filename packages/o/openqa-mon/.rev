@@ -192,4 +192,22 @@
   * Introduce tabs (forwarded request 1237652 from ph03nix)</comment>
     <requestid>1237893</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ad44cf1c81706f8c80c1334e3b292e58</srcmd5>
+    <version>1.5.0</version>
+    <time>1747321219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.0:
+  * Prepare 1.5.0 release
+  * Allow passing of overview links
+  * Bump golang.org/x/crypto from 0.31.0 to 0.35.0
+  * Add man pages for all tools
+  * Update README
+  * Unify RequestJobLimit setting
+  * Fix panic when RequestJobLimit is not set
+  * Minor refactoring
+  * Remove unused functions
+  * Remove year (forwarded request 1277440 from ph03nix)</comment>
+    <requestid>1277449</requestid>
+  </revision>
 </revisionlist>

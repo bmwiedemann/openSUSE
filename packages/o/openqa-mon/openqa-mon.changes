@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May 14 14:57:51 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.5.0:
+  * Prepare 1.5.0 release
+  * Allow passing of overview links
+  * Bump golang.org/x/crypto from 0.31.0 to 0.35.0
+  * Add man pages for all tools
+  * Update README
+  * Unify RequestJobLimit setting
+  * Fix panic when RequestJobLimit is not set
+  * Minor refactoring
+  * Remove unused functions
+  * Remove year
+
+-------------------------------------------------------------------
 Tue Jan 14 07:45:27 UTC 2025 - felix.niederwanger@suse.de
 
 - Update to version 1.4.0:
