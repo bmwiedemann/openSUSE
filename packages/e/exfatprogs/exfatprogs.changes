@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed May 14 07:13:13 UTC 2025 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.2.9:
+  * dump.exfat: support dumping directory entry sets,
+    which prints all fields of directory entries and
+    cluster chains. See a man page.
+  * exfatprogs: update the Github action for build test
+    with Debain + clang + lld.
+
+-------------------------------------------------------------------
 Tue Mar  4 13:31:22 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.8:

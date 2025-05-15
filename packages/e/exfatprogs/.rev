@@ -266,4 +266,17 @@
     to validate builds on the system.</comment>
     <requestid>1250086</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>503eceb9231820772a535fcef3cafaf5</srcmd5>
+    <version>1.2.9</version>
+    <time>1747321188</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.9:
+  * dump.exfat: support dumping directory entry sets,
+    which prints all fields of directory entries and
+    cluster chains. See a man page.
+  * exfatprogs: update the Github action for build test
+    with Debain + clang + lld.</comment>
+    <requestid>1277323</requestid>
+  </revision>
 </revisionlist>
