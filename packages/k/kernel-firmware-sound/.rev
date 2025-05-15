@@ -149,4 +149,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops</comment>
     <requestid>1276108</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8e84fd09e10c47e76470892a03a0a202</srcmd5>
+    <version>20250512</version>
+    <time>1747321155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250512 (git commit 9f8e520fd736):
+  * intel: avs: Update topology file for Digital Microphone Array
+    (bsc#1243030)</comment>
+    <requestid>1277005</requestid>
+  </revision>
 </revisionlist>
