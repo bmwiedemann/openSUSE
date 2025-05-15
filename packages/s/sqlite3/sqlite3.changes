@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed May  7 13:09:13 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to release 3.49.2:
+  * Fix a bug in the NOT NULL optimization of version 3.40.0 that
+    can lead to a memory error if abused.
+  * Fix the count-of-view optimization so that it does not give an
+    incorrect answer for a DISTINCT query.
+  * Fix a possible incorrect answer that can result if a UNIQUE
+    constraint of a table contains the PRIMARY KEY column and that
+    UNIQUE constraint is used by an IN operator.
+  * Fix obscure problems with the generate_series() extension
+    function.
+  * Incremental improvements to the configure/make.
+
+-------------------------------------------------------------------
 Thu Apr 17 09:33:26 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Add subpackage for the lemon parser generator.
@@ -17,10 +32,10 @@ Tue Feb 18 16:21:23 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Update to release 3.49.1:
   * Improve portability of makefiles and configure scripts.
-  * CVE-2025-29087, bsc#1241020: Fix a bug in the concat_ws()
-    function, introduced in version 3.44.0, that could lead to a
-    memory error if the separator string is very large (hundreds
-    of megabytes).
+  * CVE-2025-29087, CVE-2025-3277, bsc#1241020:
+    Fix a bug in the concat_ws() function, introduced in version
+    3.44.0, that could lead to a memory error if the separator
+    string is very large (hundreds of megabytes).
   * CVE-2025-29088, bsc#1241078: Enhanced the
     SQLITE_DBCONFIG_LOOKASIDE interface to make it  more robust
     against misuse.
