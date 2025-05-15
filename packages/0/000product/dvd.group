@@ -828,7 +828,7 @@
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="issue-generator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
+    <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-21-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-21-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-binfmt-misc" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2564,7 +2564,7 @@
     <package name="libproxy1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpskc0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3449,12 +3449,12 @@
     <package name="pinentry-gtk2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="pinentry-qt6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="pipewire" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pipewire-alsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pipewire-jack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
+    <package name="pipewire-alsa" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="pipewire-jack" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pipewire-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pipewire-libjack-0_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_basis -->
+    <package name="pipewire-libjack-0_3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pipewire-modules-0_3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pipewire-pulseaudio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pipewire-spa-plugins-0_2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pipewire-spa-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pipewire-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3553,8 +3553,8 @@
     <package name="ptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="publicsuffix" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pullin-bcm43xx-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="pulseaudio-setup" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="pulseaudio-setup" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="pulseaudio-utils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="purge-kernels-service" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python3-apparmor" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-apparmor -->
     <package name="python3-audit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
@@ -4237,7 +4237,6 @@
     <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="wireless-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="wireplumber-audio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wireplumber-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="wmctrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="wol" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

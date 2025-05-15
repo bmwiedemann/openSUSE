@@ -4169,17 +4169,6 @@ unsorted:
   - ffmpeg-4-libswresample-devel 
   - ffmpeg-4-libswscale-devel 
   - ffmpeg-4-private-devel 
-  - ffmpeg-6 
-  - ffmpeg-6-libavcodec-devel 
-  - ffmpeg-6-libavdevice-devel 
-  - ffmpeg-6-libavfilter-devel 
-  - ffmpeg-6-libavformat-devel 
-  - ffmpeg-6-libavutil-devel 
-  - ffmpeg-6-libpostproc-devel 
-  - ffmpeg-6-libswresample-devel 
-  - ffmpeg-6-libswscale-devel 
-  - ffmpeg-6-mini-devel 
-  - ffmpeg-6-mini-libs 
   - ffmpeg-7 
   - ffmpeg-7-libavcodec-devel 
   - ffmpeg-7-libavdevice-devel 
@@ -11948,19 +11937,15 @@ unsorted:
   - libavc1394-tools 
   - libavcall1 
   - libavcodec58_134-32bit 
-  - libavcodec60 
   - libavcodec61-32bit 
   - libavdevice58_13 
   - libavdevice58_13-32bit 
-  - libavdevice60 
   - libavdevice61 
   - libavdevice61-32bit 
   - libavfilter10-32bit 
   - libavfilter7_110 
   - libavfilter7_110-32bit 
-  - libavfilter9 
   - libavformat58_76-32bit 
-  - libavformat60 
   - libavformat61-32bit 
   - libavfs1 
   - libavif-devel 
@@ -11971,7 +11956,6 @@ unsorted:
   - libavtp-devel 
   - libavtp0-32bit 
   - libavutil56_70-32bit 
-  - libavutil58 
   - libavutil59-32bit 
   - libaws-c-auth1_0_0 
   - libaws-c-cal0unstable 
@@ -15219,7 +15203,6 @@ unsorted:
   - libportaudiocpp0 
   - libportmidi2 
   - libpostproc55_9-32bit 
-  - libpostproc57 
   - libpostproc58-32bit 
   - libpostquantumcryptoengine1 
   - libpowerman0 
@@ -16072,6 +16055,8 @@ unsorted:
   - libsplinter-3-0 
   - libspnav-devel 
   - libspnav0 
+  - libspng-devel 
+  - libspng0 
   - libspooles2_2 
   - libspooles2_2-openmpi 
   - libspqr4 
@@ -16210,10 +16195,8 @@ unsorted:
   - libswitchboard-3-0 
   - libsword-1_9_0 
   - libswresample3_9-32bit 
-  - libswresample4 
   - libswresample5-32bit 
   - libswscale5_9-32bit 
-  - libswscale7 
   - libswscale8-32bit 
   - libsybdb5 
   - libsybdb5-32bit 
@@ -35909,6 +35892,7 @@ unsorted:
   - rsyslog-module-pgsql 
   - rsyslog-module-relp 
   - rsyslog-module-snmp 
+  - rsyslog-module-udpspoof 
   - rt-tests 
   - rtags 
   - rtaudio-devel 
@@ -48686,6 +48670,7 @@ unsorted:
   - wireguard-tools 
   - wireplumber-devel 
   - wireplumber-doc 
+  - wireplumber-video-only-profile 
   - wireplumber-zsh-completion 
   - wireshark 
   - wireshark-devel 
