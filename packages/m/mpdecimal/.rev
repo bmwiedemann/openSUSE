@@ -26,4 +26,12 @@
     <comment></comment>
     <requestid>1275364</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1f30e5212d20cf0570f748dea76790e9</srcmd5>
+    <version>4.0.1</version>
+    <time>1747321151</time>
+    <user>anag_factory</user>
+    <comment>- Fix LDXXFLAGS (thank you Stefan Krah for providing the patch)</comment>
+    <requestid>1277259</requestid>
+  </revision>
 </revisionlist>

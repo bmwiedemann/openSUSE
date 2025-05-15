@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue May 13 20:38:48 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix LDXXFLAGS (thank you Stefan Krah for providing the patch)
+
+-------------------------------------------------------------------
 Wed May  7 12:09:23 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 4.0.1 (bsc#1242704):

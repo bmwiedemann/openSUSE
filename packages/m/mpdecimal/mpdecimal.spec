@@ -100,7 +100,7 @@ unzip -d tests/testdata %{SOURCE1}
 # have false positives on a variety of architectures.
 export CFLAGS="%optflags -ffat-lto-objects"
 export CXXFLAGS="$CFLAGS"
-%configure --docdir="%{_defaultdocdir}/%{name}"
+%configure LDXXFLAGS="%{build_ldflags}" --docdir="%{_defaultdocdir}/%{name}"
 %make_build
 
 %install
