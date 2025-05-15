@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 14 16:20:51 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+- touch ChangeLog to negate influence from patch on embedded build date
+
+-------------------------------------------------------------------
 Wed Apr 16 11:21:26 UTC 2025 - Adam Majer <adam.majer@suse.de>
 
 - ab8eba36e2ea108ebf4c4942da6d1703706849f4.patch: fix connecting with TLS

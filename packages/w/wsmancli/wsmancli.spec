@@ -46,10 +46,11 @@ the WS-Management protocol.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
+test -n "$SOURCE_DATE_EPOCH" && touch -d "@$SOURCE_DATE_EPOCH" ChangeLog
 
 %build
 %configure --disable-more-warnings
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT install
