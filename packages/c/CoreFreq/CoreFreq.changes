@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed May 14 18:27:26 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.0.3
+  * [UI]
+    - Increased length of L3 cache digits in header
+    - [MC] Renamed Disabled to Undefined channels
+    - [CLI][aarch64][riscv64][ppc64] Compute the SMBIOS DIMM part number
+    - Display N/A when Intel processor is not HDC capable
+  * [Code Review]
+    - Refactored variable names for inclusivity
+    - [Kernel] VT-d: request memory region before use
+    - uBench: Code clean-up
+  * [Doc]
+    - README for Rocky Linux and Clear Linux
+  * [Build]
+    - Prevent module loading if detected CPU count > CORE_COUNT (case of EPYC with 384 CPUs)
+    - Make static the PCI list to comply with kernel frame size
+    - Kernel 6.15 is switching to use hrtimer_setup()
+    - [CI] Bump to uraimo version 3
+    - of_root defined since Kernel 3.19
+    - Replaced inline C functions with static or macro
+    - Kernel 6.14 node_to_amd_nb() workaround
+    - Added CONFIG_ACPI_CPPC_LIB to conditionally build EPP
+    - Changed some inline function prototypes
+  * [AMD]
+    - [Zen]
+      - Count DIMM ranks from the enabled chip select
+      - Now conducts Datafabric calls through Kernel PCI
+      - [HSMP] Provides its own lock rather than SMN' lock
+      - [HSMP] arguments index fix in CONFIG_AMD_NB build mode
+      - [HSMP] Check mailbox protocol is correctly functioning using the arithmetic addition 2 + 1 = 3
+      - Replaced package thermal with a pointer function
+      - Specifications of some Zen registers
+      - Adding "Strix Halo" and "Krackan Point" architectures
+      - Adding "Fire Range" series
+      - Adding Ryzen Z2 series
+    - [Genoa]
+      - Probe up to four memory controllers
+      - Improved EPYC Genoa support:
+        - CCD and CCX topology fixed to compute the right thermal SMU address
+        - Increase BIT_IO_RETRIES_COUNT to parallelize HSMP_RD_DIMM_PWR calls
+        - Added specifics for an "Eng Sample" of Genoa architecture
+      - Accumulate the power consumed by RAM
+      - Attempt to monitor DIMM power consumption from HSMP
+      -Use generic voltage & power
+    - [Hawk Point]
+      - Set AddrCfg & DimmCfg addresses for Phoenix UMC
+    - [Family 1Ah]
+      - Added the HSMP for EPYC Turin
+  * [Intel]
+    - [MTL][ARL]
+      - Improving MC Bus and DDR speed to follow OC SOC
+      - Refactored IMC decoder to query DDR clock
+      - Merged the P-core and E-core monitoring loops
+      - Get/Set L1_NPP_Prefetch from MSR_MISC_FEATURE_CONTROL
+      - Provide monitoring functions to Arrow Lake
+        Also applying to Lunar Lake
+      - Grant ODCM and PWR MGMT accesses to MTL, ARL, Lunar Lake
+      - New features for Core Ultra 7 265K
+    - [x86_64]
+      - Order SMBIOS DIMM list by channel
+      - [IMC] Can display Twelve Channel memory controller
+      - SMBIOS dump resized to 12 channels multiplied 4 DIMM slots
+      - Compute the SMBIOS DIMM part number (rev 2)
+      - Check HCF capability for MPERF/APERF MSR access in VM
+  * [AArch64] [RISC-V] [PowerPC]
+    - [riscv64] Fill with the Machine Architecture ID Register marchid
+    - [ppc64] Added source comment
+    - [riscv64][ppc64] Improving Hybrid processor detection
+    - [ppc64] Fix the Carry flag asm code
+    - [ppc64] The processor version register (PVR) is a 32-bit register
+    - [ppc64] Use MFXER to get the XER
+               Raise the Carry Flag
+    - [ppc64][riscv64] ASM instructions for uBench macros
+    - [aarch64] Checking CSSELR and CCSIDR registers in ARMv9
+    - [aarch64] If FEAT_CCIDX implemented read NumSets from upper reg
+    - [aarch64] Safely access the PMU registers
+                Detect the Android AVF hypervisor
+                Comment PMC in uBench macros
+    - [ppc64] Detect the IBM POWER10 Functional Simulator
+    - [aarch64][riscv64][ppc64] Improving DT integration to detect VM
+    - [AArch64] Improving virtualization detection from Device Tree
+    - [ppc64][riscv64] Device Tree fetching based on kernel version
+    - [PowerPC] Preliminary port to the ppc64le architecture
+    - [riscv64] Adding vendor Microchip
+    - [riscv64] Attempt to read the Hart ID from device tree
+    - [riscv64] Restore PMU counter delta calculation
+    - [riscv64] mvendorid & marchid based architecture qualification
+    - [riscv64] Specification of SSTATUS and SCOUNTEREN registers
+    - [riscv64] Normalize counters to work with unaccurate QEMU cycles
+    - [riscv64] Attempt to enable the Cycle and Instruction counters
+    - [riscv64] Read the performance cycles using rdcycle
+    - [riscv64] Read the retired instructions counter using rdinstret
+    - [riscv64] Get the TSC from rdtime instruction
+    - [riscv64] Comment out any reading of cycles
+    - [RISC-V] Code clean-up to debug start-up
+    - [RISC-V] Preliminary port of the riscv64 architecture
+
+-------------------------------------------------------------------
 Sun Feb 16 10:27:03 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.0.1
