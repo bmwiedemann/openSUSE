@@ -1,7 +1,7 @@
 #
 # spec file for package python-boolean.py
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-boolean.py
 Version:        4.0
 Release:        0
@@ -27,7 +25,9 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bastikr/boolean.py
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -44,10 +44,10 @@ AND or and NOT. Expressions are constructed from parsed strings or in Python.
 %setup -q -n boolean.py-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 sphinx-build docs html
 rm -rf html/.{doctrees,buildinfo}
@@ -58,6 +58,7 @@ rm -rf html/.{doctrees,buildinfo}
 %files %{python_files}
 %license LICENSE.txt
 %doc README.rst CHANGELOG.rst html/
-%{python_sitelib}/*
+%{python_sitelib}/boolean
+%{python_sitelib}/boolean[._]py-%{version}*-info
 
 %changelog
