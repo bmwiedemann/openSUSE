@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu May 15 08:56:07 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.7
+  * Comparisons between two calls to `type()` won't raise an
+    ``unidiomatic-typecheck`` warning anymore, consistent with
+    the behavior applied only for ``==`` previously.
+  * Fixed a crash when importing a class decorator that did not
+    exist with the same name as a class attribute after the class
+    definition.
+  * Fix a crash caused by malformed format strings when using
+    `.format` with keyword arguments.
+  * Using a slice as a class decorator now raises a ``not-callable``
+    message instead of crashing. A lot of checks that dealt with
+    decorators (too many to list) are now shortcut if the decorator
+    can't immediately be inferred to a function or class definition.
+  * The algorithm used for ``no-member`` suggestions is now more
+    efficient and cuts the calculation when the distance score is
+    already above the threshold.
+
+-------------------------------------------------------------------
 Tue Apr  8 03:29:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.3.6:
