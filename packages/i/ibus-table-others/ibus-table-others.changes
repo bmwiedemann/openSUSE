@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 15:11:04 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Tue May  6 07:35:34 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace obsolete and unneeded gnome-common with libtool

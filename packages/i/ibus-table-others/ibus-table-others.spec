@@ -191,7 +191,7 @@ ibus-table-mongol-bichig provides the Vietnamese Vni table for ibus-table.
 ./autogen.sh
 %configure
 alias python=python3
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 make DESTDIR=${RPM_BUILD_ROOT} NO_INDEX=true install
