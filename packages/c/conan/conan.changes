@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat May 10 14:42:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.16.1:
+  - Feature: Add missing GCC 15 key to settings.yml (gh#conan-io/conan#18193).
+- Changes from version 2.16.0:
+  * Features:
+    - Add support for GCC 15.1 (gh#conan-io/conan#18175).
+    - Allow CMakeConfigDeps to support components with multilibs
+      (with deprecation warning) (gh#conan-io/conan#18172).
+    - add CMAKE_MODULE_PATH to CMakeConfigDeps for include(module)
+      (gh#conan-io/conan#18162).
+    - Add threshold for severity level in the conan audit scan
+      command (gh#conan-io/conan#18160).
+    - GnuToolchain including the latest changes from
+      AutotoolsToolchain (gh#conan-io/conan#18159).
+    - Add CycloneDx 1.6 support (gh#conan-io/conan#18108).
+    - Introduce a new no_skip=True requirement trait for
+      exceptional cases like one application depending on another
+      application privately with requires to avoid it being
+      skipped (gh#conan-io/conan#18101).
+    - Raise error early if conf_info is assigned with raw
+      settings/options etc (gh#conan-io/conan#18083).
+    - Moving functionality from Command layer to the ConanAPI for
+      clearing old private imports from conans
+      (gh#conan-io/conan#18079).
+    - Document publicly the MSBuildDeps.platform attribute to
+      allow customization for wix projects needing x86 value
+      (gh#conan-io/conan#18078).
+    - Add missing intel-cc releases (gh#conan-io/conan#18054).
+    - Add information about the configuration each package is
+      building for (gh#conan-io/conan#18019).
+    - Add -vv information for the configuration of each dependency
+      in the graph (gh#conan-io/conan#18019).
+  * Fixes:
+    - Some improvements in conan audit reports
+      (gh#conan-io/conan#18171).
+    - Fix ordering by severity value in audit html output
+      (gh#conan-io/conan#18161).
+    - Fix column overflow in audit html output
+      (gh#conan-io/conan#18161).
+    - Make audit_providers.json read/writeable only by owner
+      (gh#conan-io/conan#18158).
+    - Remove bogus SDK versions for some Apple OS's
+      (gh#conan-io/conan#18152).
+    - Make the conan.cli command layer fully independent of legacy
+      from conans imports that will break
+      (gh#conan-io/conan#18127).
+    - Explicit git fetch commit in
+      Git.checkout_from_conandata_coordinates(), for cases like
+      Azure DevOps creating commits that are not fetched by
+      default in git clone (gh#conan-io/conan#18110).
+    - Add ARM64EC platform in MSBuild, it was missing
+      (gh#conan-io/conan#18100).
+    - Allow conan graph build-order to output build_args for
+      "editable" packages (gh#conan-io/conan#18097).
+    - Improve error message when private audit providers don't
+      have curation (gh#conan-io/conan#18094).
+    - Making some Command formatter helpers private (only the ones
+      in printers are common for reusage), and making some
+      ConanAPI attributes private (gh#conan-io/conan#18079).
+    - Raise a not-found error if "local recipes index"
+      user/channel doesn't match requested one
+      (gh#conan-io/conan#18153).
+    - Fixed bug using MesonToolchain and visionOS
+      (gh#conan-io/conan#18151).
+    - Add IMPORTED_CONFIGURATIONS to INTERFACE libraries to in
+      CMakeConfigDeps (gh#conan-io/conan#18088).
+
+-------------------------------------------------------------------
 Sat Feb 15 12:01:54 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.12.2:
