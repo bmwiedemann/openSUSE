@@ -29,7 +29,7 @@ ExclusiveArch:  do-not-build
 
 %define     pkg ocaml-luv
 Name:           %pkg%nsuffix
-Version:        0.5.12
+Version:        0.5.13
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
@@ -45,8 +45,8 @@ BuildRequires:  ocamlfind(ctypes)
 BuildRequires:  pkgconfig(libuv)
 
 %if "%build_flavor" == "testsuite"
-BuildRequires:  ocamlfind(luv)
 BuildRequires:  ocamlfind(alcotest)
+BuildRequires:  ocamlfind(luv)
 %endif
 
 %description

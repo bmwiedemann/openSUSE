@@ -1,6 +1,8 @@
---- a/src/c/dune
-+++ b/src/c/dune
-@@ -117,6 +117,7 @@ let () = Jbuild_plugin.V1.send @@ {|
+Index: ocaml-luv-0.5.13/src/c/dune
+===================================================================
+--- ocaml-luv-0.5.13.orig/src/c/dune
++++ ocaml-luv-0.5.13/src/c/dune
+@@ -139,6 +139,7 @@ let () = Jbuild_plugin.V1.send @@ {|
      |}^ i_option ^{| /Fe\"%{targets}\"; \
    else \
      %{cc} %{c} \
@@ -8,8 +10,10 @@
      -I '%{lib:ctypes:.}' \
      -I %{ocaml_where} \
      |}^ i_option ^{| -o %{targets}; \
---- a/src/c/helpers.c
-+++ b/src/c/helpers.c
+Index: ocaml-luv-0.5.13/src/c/helpers.c
+===================================================================
+--- ocaml-luv-0.5.13.orig/src/c/helpers.c
++++ ocaml-luv-0.5.13/src/c/helpers.c
 @@ -181,7 +181,8 @@ static void luv_getaddrinfo_trampoline(
  }
  
@@ -20,11 +24,11 @@
  {
      caml_acquire_runtime_system();
      value callback;
-@@ -413,7 +414,7 @@ uv_getaddrinfo_cb luv_get_getaddrinfo_trampoline(void)
+@@ -413,7 +414,7 @@ uv_getaddrinfo_cb luv_get_getaddrinfo_tr
      return luv_getaddrinfo_trampoline;
  }
  
--luv_getnameinfo_cb luv_get_getnameinfo_trampoline()
+-luv_getnameinfo_cb luv_get_getnameinfo_trampoline(void)
 +uv_getnameinfo_cb luv_get_getnameinfo_trampoline(void)
  {
      return luv_getnameinfo_trampoline;
@@ -45,8 +49,10 @@
  int luv_read_start(
      uv_stream_t *stream, uv_alloc_cb alloc_cb, luv_read_cb read_cb)
  {
---- a/src/c/helpers.h
-+++ b/src/c/helpers.h
+Index: ocaml-luv-0.5.13/src/c/helpers.h
+===================================================================
+--- ocaml-luv-0.5.13.orig/src/c/helpers.h
++++ ocaml-luv-0.5.13/src/c/helpers.h
 @@ -55,9 +55,6 @@ typedef void (*luv_fs_event_cb)(
  typedef void (*luv_fs_poll_cb)(
      uv_fs_poll_t *handle, int status, uv_stat_t *prev, uv_stat_t *curr);
@@ -57,15 +63,15 @@
  typedef void (*luv_read_cb)(uv_stream_t *stream, ssize_t nread, uv_buf_t *buf);
  
  typedef void (*luv_udp_recv_cb)(
-@@ -78,7 +75,7 @@ uv_fs_cb luv_null_fs_callback_pointer(void);
- luv_fs_event_cb luv_get_fs_event_trampoline();
- luv_fs_poll_cb luv_get_fs_poll_trampoline();
- uv_getaddrinfo_cb luv_get_getaddrinfo_trampoline();
--luv_getnameinfo_cb luv_get_getnameinfo_trampoline();
+@@ -78,7 +75,7 @@ uv_fs_cb luv_null_fs_callback_pointer(vo
+ luv_fs_event_cb luv_get_fs_event_trampoline(void);
+ luv_fs_poll_cb luv_get_fs_poll_trampoline(void);
+ uv_getaddrinfo_cb luv_get_getaddrinfo_trampoline(void);
+-luv_getnameinfo_cb luv_get_getnameinfo_trampoline(void);
 +uv_getnameinfo_cb luv_get_getnameinfo_trampoline(void);
- uv_idle_cb luv_get_idle_trampoline();
- luv_once_cb luv_get_once_trampoline();
- uv_poll_cb luv_get_poll_trampoline();
+ uv_idle_cb luv_get_idle_trampoline(void);
+ luv_once_cb luv_get_once_trampoline(void);
+ uv_poll_cb luv_get_poll_trampoline(void);
 @@ -173,10 +170,6 @@ int luv_fs_poll_start(
      uv_fs_poll_t *handle, luv_fs_poll_cb poll_cb, const char *path,
      unsigned int interval);
@@ -77,8 +83,10 @@
  int luv_read_start(
      uv_stream_t *stream, uv_alloc_cb alloc_cb, luv_read_cb read_cb);
  
---- a/src/c/luv_c_function_descriptions.ml
-+++ b/src/c/luv_c_function_descriptions.ml
+Index: ocaml-luv-0.5.13/src/c/luv_c_function_descriptions.ml
+===================================================================
+--- ocaml-luv-0.5.13.orig/src/c/luv_c_function_descriptions.ml
++++ ocaml-luv-0.5.13/src/c/luv_c_function_descriptions.ml
 @@ -1353,7 +1353,7 @@ struct
            (void @-> returning trampoline)
  

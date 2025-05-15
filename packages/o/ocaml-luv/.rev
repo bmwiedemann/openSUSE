@@ -48,4 +48,42 @@
     <comment>- Handle strict API in newer OCaml versions</comment>
     <requestid>1249876</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>920a8bf1f8dca7e649298df62c45f4a7</srcmd5>
+    <version>0.5.13</version>
+    <time>1747321287</time>
+    <user>anag_factory</user>
+    <comment>This is needed for the new haxe version, I could not find other packages that depend on it.
+
+- Update to version 0.5.13
+  * Breaking
+    + Luv.Resource.free_memory and Luv.Resource.total_memory now return
+      options, in accordance with a clarification in libuv (#153).
+    + Filename in callback of Luv.FS_event.start can be None, in accordance
+      with a clarification in libuv (#155).
+    + Rename fields of Luv.Time.timeval (dbd4e43).
+  * Additions
+    + Upgrade libuv to 1.48.0, including 1.47.0, 1.46.0, 1.45.0 and io_uring
+      support (#153, #154, #155, #158).
+    + Expose uv_cpumask_size as Luv.System_info.cpumask_size,
+      uv_thread_setaffinity as Luv.Thread.setaffinity, uv_thread_getaffinity as
+      Luv.Thread.getaffinity (#153).
+    + Expose UV_ENODATA as  `ENODATA (#153).
+    + Expose uv_metrics_info as Luv.Metrics.info (#153).
+    + Expose uv_thread_getcpu as Luv.Thread.getcpu (#153).
+    + Expose uv_get_available_memory as Luv.Resource.available_memory (#153).
+    + Expose uv_os_get_passwd2 as ?uid parameter of Luv.Passwd.get_passwd (#153).
+    + Expose uv_os_get_group as Luv.Passwd.get_group (#153).
+    + Expose uv_clock_gettime as Luv.Time.clock_gettime (#153).
+    + Expose uv_pipe_bind2 and uv_pipe_connect2 as ?no_truncate parameters of
+      Luv.Pipe.bind and Luv.Pipe.connect (#154).
+    + Expose EUNATCH as  `EUNATCH (#154).
+    + Expose UTF-16/WTF-8 conversion functions in new module Luv.String (#155).
+    + Expose uv_thread_setpriority as Luv.Thread.setpriority and
+      uv_thread_getpriority as Luv.Thread.getpriority (#158).
+    + Expose UV_PROCESS_WINDOWS_FILE_PATH_EXACT_NAME as
+      ?windows_file_path_exact_name parameter of Luv.Process.spawn (#158).
+- Refresh ocaml-luv.patch (forwarded request 1277561 from jaimeMF)</comment>
+    <requestid>1277574</requestid>
+  </revision>
 </revisionlist>
