@@ -645,7 +645,7 @@ Requires:       purpose
 Requires:       xdg-desktop-portal-kde
 
 # Recommended by powerdevil5, but allow tlp as alternative
-Requires:       (power-profiles-daemon or tlp)
+Requires:       (power-profiles-daemon or tuned-ppd)
 Suggests:       power-profiles-daemon
 
 # Doesn't depend on PackageKit, but also works for other backends

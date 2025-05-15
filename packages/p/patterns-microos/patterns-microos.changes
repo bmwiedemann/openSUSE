@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 15:37:03 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Change removing tlp from the kde pattern, and making tuned-ppd
+  optional
+
+-------------------------------------------------------------------
 Fri Mar 28 20:01:07 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add Mesa-demo-egl to KDE pattern (kde#502129)
