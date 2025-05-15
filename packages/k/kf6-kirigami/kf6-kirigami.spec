@@ -35,6 +35,11 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-WheelHandler-remove-std-clamp-assert-crash.patch
+Patch1:         0002-WheelHandler-Only-apply-scrollview-event-filtering-t.patch
+Patch2:         0004-WheelHandler-remove-std-clamp-assert-crash-part-2.patch
+Patch3:         0005-WheelHandler-use-std-min-and-std-max-instead-of-qMin.patch
 BuildRequires:  doxygen
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_bugfix_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}

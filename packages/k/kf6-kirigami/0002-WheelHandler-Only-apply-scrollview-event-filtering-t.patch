@@ -1,0 +1,40 @@
+From 0b085580b3e4a8d6407a0cd35ee5a622226a1dfa Mon Sep 17 00:00:00 2001
+From: Noah Davis <noahadvs@gmail.com>
+Date: Mon, 12 May 2025 17:28:28 -0400
+Subject: [PATCH 2/5] WheelHandler: Only apply scrollview event filtering to
+ keys
+
+Matches Qt Quick ScrollView behavior a bit more closely since ScrollView only directly handles arrow key events.
+---
+ src/wheelhandler.cpp | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/wheelhandler.cpp b/src/wheelhandler.cpp
+index 93991089..ef943427 100644
+--- a/src/wheelhandler.cpp
++++ b/src/wheelhandler.cpp
+@@ -601,6 +601,12 @@ bool WheelHandler::eventFilter(QObject *watched, QEvent *event)
+         return false;
+     }
+ 
++    // We only process keyboard events for QQuickScrollView.
++    const auto eventType = event->type();
++    if (item == m_scrollView && eventType != QEvent::KeyPress && eventType != QEvent::KeyRelease) {
++        return false;
++    }
++
+     qreal contentWidth = 0;
+     qreal contentHeight = 0;
+     qreal pageWidth = 0;
+@@ -613,7 +619,7 @@ bool WheelHandler::eventFilter(QObject *watched, QEvent *event)
+     }
+ 
+     // The code handling touch, mouse and hover events is mostly copied/adapted from QQuickScrollView::childMouseEventFilter()
+-    switch (event->type()) {
++    switch (eventType) {
+     case QEvent::Wheel: {
+         // QQuickScrollBar::interactive handling Matches behavior in QQuickScrollView::eventFilter()
+         if (m_filterMouseEvents) {
+-- 
+2.49.0
+
