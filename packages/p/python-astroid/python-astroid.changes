@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed May 14 09:35:21 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.3.10
+  * Avoid importing submodules sharing names with standard library modules.
+  * Fix bug where ``pylint code.custom_extension`` would analyze ``code.py``
+    or ``code.pyi`` instead if they existed.
+
+-------------------------------------------------------------------
 Fri Mar 21 10:38:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.9
