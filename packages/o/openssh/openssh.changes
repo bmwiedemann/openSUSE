@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue May 13 09:32:44 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
+
+- Enable --with-logind to call the SetTTY dbus method in systemd
+  in SLE15 too. This allows "wall" to print messages in ssh ttys
+  (bsc#1239671)
+- Small fixes to unref the dbus session when any error occurs:
+  * logind_set_tty.patch
+
+-------------------------------------------------------------------
 Tue Apr 22 16:45:33 UTC 2025 - Hans Petter Jansson <hpj@suse.com>
 
 - Add openssh-send-extra-term-env.patch, which appends a few
@@ -68,7 +77,8 @@ Wed Apr  9 09:33:10 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
   * sshd(8): fix the DisableForwarding directive, which was failing
     to disable X11 forwarding and agent forwarding as documented.
     X11 forwarding is disabled by default in the server and agent
-    forwarding is off by default in the client.
+    forwarding is off by default in the client (bsc#1241012,
+    CVE-2025-32728)
 
   = New features
   * ssh(1): the hybrid post-quantum algorithm mlkem768x25519-sha256

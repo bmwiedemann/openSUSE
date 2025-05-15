@@ -1963,4 +1963,12 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment></comment>
     <requestid>1272617</requestid>
   </revision>
+  <revision rev="194" vrev="2">
+    <srcmd5>533aa287bf59b5de5e4372d7def47367</srcmd5>
+    <version>10.0p2</version>
+    <time>1747321175</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1277188</requestid>
+  </revision>
 </revisionlist>

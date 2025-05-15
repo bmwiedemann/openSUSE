@@ -392,8 +392,8 @@ export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS
 %endif
 %if 0%{?suse_version} >= 1550
     --disable-lastlog \
-    --with-logind \
 %endif
+    --with-logind \
     --with-security-key-builtin \
     --target=%{_target_cpu}-suse-linux
 

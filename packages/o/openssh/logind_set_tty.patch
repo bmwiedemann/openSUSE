@@ -1,8 +1,8 @@
-diff --git a/Makefile.in b/Makefile.in
-index f0ea07e7b..35dcf45f1 100644
---- a/Makefile.in
-+++ b/Makefile.in
-@@ -56,6 +56,7 @@ SSHDLIBS=@SSHDLIBS@
+Index: openssh-10.0p1/Makefile.in
+===================================================================
+--- openssh-10.0p1.orig/Makefile.in
++++ openssh-10.0p1/Makefile.in
+@@ -64,6 +64,7 @@ SSHDLIBS=@SSHDLIBS@
  LIBEDIT=@LIBEDIT@
  LIBFIDO2=@LIBFIDO2@
  LIBWTMPDB=@LIBWTMPDB@
@@ -10,7 +10,7 @@ index f0ea07e7b..35dcf45f1 100644
  AR=@AR@
  AWK=@AWK@
  RANLIB=@RANLIB@
-@@ -208,7 +209,7 @@ ssh$(EXEEXT): $(LIBCOMPAT) libssh.a $(SSHOBJS)
+@@ -244,7 +245,7 @@ ssh$(EXEEXT): $(LIBCOMPAT) libssh.a $(SS
  	$(LD) -o $@ $(SSHOBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(LIBS) $(GSSLIBS) $(CHANNELLIBS)
  
  sshd$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHDOBJS)
@@ -19,11 +19,11 @@ index f0ea07e7b..35dcf45f1 100644
  
  sshd-session$(EXEEXT): libssh.a	$(LIBCOMPAT) $(SSHD_SESSION_OBJS)
  	$(LD) -o $@ $(SSHD_SESSION_OBJS) $(LDFLAGS) -lssh -lopenbsd-compat $(SSHDLIBS) $(LIBS) $(GSSLIBS) $(K5LIBS) $(CHANNELLIBS) $(LIBWTMPDB)
-diff --git a/configure.ac b/configure.ac
-index a12c6f7ad..860df3379 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1789,6 +1789,47 @@ AC_ARG_WITH([wtmpdb],
+Index: openssh-10.0p1/configure.ac
+===================================================================
+--- openssh-10.0p1.orig/configure.ac
++++ openssh-10.0p1/configure.ac
+@@ -1872,6 +1872,47 @@ AC_ARG_WITH([wtmpdb],
  )
  
  
@@ -71,11 +71,11 @@ index a12c6f7ad..860df3379 100644
  AUDIT_MODULE=none
  AC_ARG_WITH([audit],
  	[  --with-audit=module     Enable audit support (modules=debug,bsm,linux)],
-diff --git a/loginrec.c b/loginrec.c
-index 86caf83b2..8b413190b 100644
---- a/loginrec.c
-+++ b/loginrec.c
-@@ -191,6 +191,10 @@
+Index: openssh-10.0p1/loginrec.c
+===================================================================
+--- openssh-10.0p1.orig/loginrec.c
++++ openssh-10.0p1/loginrec.c
+@@ -170,6 +170,10 @@
  # include <wtmpdb.h>
  #endif
  
@@ -86,7 +86,7 @@ index 86caf83b2..8b413190b 100644
  /**
   ** prototypes for helper functions in this file
   **/
-@@ -214,6 +218,9 @@ int syslogin_write_entry(struct logininfo *li);
+@@ -193,6 +197,9 @@ int syslogin_write_entry(struct logininf
  #ifdef USE_WTMPDB
  int wtmpdb_write_entry(struct logininfo *li);
  #endif
@@ -96,7 +96,7 @@ index 86caf83b2..8b413190b 100644
  
  int getlast_entry(struct logininfo *li);
  int lastlog_get_entry(struct logininfo *li);
-@@ -477,6 +484,9 @@ login_write(struct logininfo *li)
+@@ -456,6 +463,9 @@ login_write(struct logininfo *li)
  #ifdef USE_WTMPDB
  	wtmpdb_write_entry(li);
  #endif
@@ -106,10 +106,14 @@ index 86caf83b2..8b413190b 100644
  #ifdef CUSTOM_SYS_AUTH_RECORD_LOGIN
  	if (li->type == LTYPE_LOGIN &&
  	    !sys_auth_record_login(li->username,li->hostname,li->line,
-@@ -1476,6 +1486,91 @@ wtmpdb_write_entry(struct logininfo *li)
- }
- #endif
- 
+@@ -1459,6 +1469,100 @@ wtmpdb_write_entry(struct logininfo *li)
+ 	default:
+ 		logit("%s: invalid type field", __func__);
+ 		return (0);
++	}
++}
++#endif
++
 +#ifdef USE_LOGIND
 +#define DBUS_DESTINATION "org.freedesktop.login1"
 +#define DBUS_PATH_ID "/org/freedesktop/login1/session/auto"
@@ -139,6 +143,7 @@ index 86caf83b2..8b413190b 100644
 +				 "Id", &error, &session_id) < 0)
 +    {
 +      logit("logind: cannot get session ID");
++      sd_bus_unref(bus);
 +      return (0);
 +    }
 +
@@ -150,13 +155,17 @@ index 86caf83b2..8b413190b 100644
 +  fd = open(tty, O_RDWR|O_CLOEXEC|O_NOCTTY);
 +
 +  if (asprintf (&dbus_path, DBUS_PATH, session_id) < 0)
++  {
++    sd_bus_unref(bus);
 +    return (0);
++  }
 +
 +  if (sd_bus_call_method(bus, DBUS_DESTINATION, dbus_path,
 +			 DBUS_INTERFACE, "TakeControl", &error, NULL,
 +			 "b", 1) < 0) {
 +    logit("logind: cannot take control");
 +    free(dbus_path);
++    sd_bus_unref(bus);
 +    return (0);
 +  }
 +
@@ -165,13 +174,17 @@ index 86caf83b2..8b413190b 100644
 +			      "h", fd)) < 0) {
 +    if (r != -EBADR) /* logind does not support "SetTTY" */
 +      logit("logind: cannot set TTY(%s, %s): %s", session_id, tty, strerror(-r));
++    else
++      logit("logind: logind does not support SetTTY (%s, %s): %s", session_id, tty, strerror(-r));
 +    free(dbus_path);
++    sd_bus_unref(bus);
 +    return (0);
 +  }
 +
 +  free(dbus_path);
 +
-+  if (sd_bus_flush(bus) < 0) {
++  if (r = sd_bus_flush(bus) < 0) {
++    logit("logind: bus flush failed: %s", strerror(-r));
 +    sd_bus_unref(bus);
 +    return (0);
 +  }
@@ -191,10 +204,6 @@ index 86caf83b2..8b413190b 100644
 +	default:
 +		logit("%s: invalid type field", __func__);
 +		return (0);
-+	}
-+}
-+#endif
-+
- /**
-  ** Low-level libutil login() functions
-  **/
+ 	}
+ }
+ #endif
