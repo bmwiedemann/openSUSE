@@ -580,4 +580,12 @@
     <comment></comment>
     <requestid>1251963</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>5ea6f5c0a8de6f6fb35d49b5124db84d</srcmd5>
+    <version>2.19.1</version>
+    <time>1747321188</time>
+    <user>anag_factory</user>
+    <comment>- Redownload source file to have the same version released in pypi.</comment>
+    <requestid>1277326</requestid>
+  </revision>
 </revisionlist>

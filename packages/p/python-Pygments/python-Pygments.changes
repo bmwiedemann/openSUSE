@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 07:19:25 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Redownload source file to have the same version released in pypi.
+
+-------------------------------------------------------------------
 Mon Mar 10 17:25:50 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Remove files from testsamples that licensedigger flagged as high risks.
