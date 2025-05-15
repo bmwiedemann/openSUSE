@@ -36,9 +36,9 @@
 
 %global patch_level p0
 Name:           ruby3.4%{psuffix}
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
-%global pkg_version 3.4.3
+%global pkg_version 3.4.4
 # make the exported API version explicit
 # TODO: remove the +0 before the final release
 %global api_version 3.4.0
@@ -75,15 +75,17 @@ Release:        0
 # keep in sync with macro file!
 #
 # from valgrind.spec
-%ifarch %ix86 aarch64 x86_64 ppc64le s390x
-%define use_valgrind 1
+%if %{suse_version} == 1600 && !0%{?is_opensuse}
+%ifarch aarch64 x86_64 ppc64le s390x
+%bcond_without valgrind
+%endif
+%else
+%ifarch aarch64 %{ix86} x86_64 ppc ppc64 ppc64le s390x armv7l armv7hl armv6l armv6hl
+%bcond_without valgrind
+%endif
 %endif
 %bcond_without build_docs
-%if 0%{?suse_version} >= 1500
 %bcond_with    jemalloc
-%else
-%bcond_with    jemalloc
-%endif
 %bcond_with    clang
 %bcond_with    separate_stdlib
 %bcond_with    system_ruby
@@ -141,7 +143,7 @@ Provides:       %{name}-without-yjit = %{version}-%{release}
 BuildRequires:  ruby
 %endif
 BuildRequires:  zlib-devel
-%if 0%{?use_valgrind}
+%if %{with valgrind}
 %if 0%{?suse_version} < 1550
 BuildRequires:  valgrind-devel
 %else
@@ -348,7 +350,7 @@ export ASFLAGS="$CFLAGS"
   --program-suffix="%{rb_binary_suffix}"  \
   --with-soname=%{rb_soname} \
   --target=%{_target_platform} \
-  %if 0%{?use_valgrind}
+  %if %{with valgrind}
   --with-valgrind \
   %endif
   %if %{without build_docs}
