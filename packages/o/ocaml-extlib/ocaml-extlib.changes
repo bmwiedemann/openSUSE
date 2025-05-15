@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 11 14:44:57 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.8.0
+  * Drop pre-4.02 support and compatibility
+  * Add support for OCaml 5.3
+  * ExtString: add labels to some functions to match stdlib
+  * add ExtString.empty
+
+-------------------------------------------------------------------
 Sun Sep 25 19:39:37 UTC 2022 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Run dune build twice to ensure reproducible results

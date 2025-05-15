@@ -96,4 +96,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1029606</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4fd40d664ab66dd5be51438983a1b4d6</srcmd5>
+    <version>1.8.0</version>
+    <time>1747321289</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.0
+  * Drop pre-4.02 support and compatibility
+  * Add support for OCaml 5.3
+  * ExtString: add labels to some functions to match stdlib
+  * add ExtString.empty</comment>
+    <requestid>1277575</requestid>
+  </revision>
 </revisionlist>

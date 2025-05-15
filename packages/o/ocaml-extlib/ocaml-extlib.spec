@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-extlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ocaml-extlib
-Version:        1.7.9
+Version:        1.8.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ExtLib additions to the standard library

@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-extlib</param>
-    <param name="revision">cfb2d9632d117020f9c9bfdabea679ae9222a620</param>
+    <param name="revision">037e18fd59575fd7cebae5887348c7ca320d91fe</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ygrek/ocaml-extlib.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>
