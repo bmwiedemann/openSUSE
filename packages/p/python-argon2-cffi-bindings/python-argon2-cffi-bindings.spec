@@ -1,7 +1,7 @@
 #
 # spec file for package python-argon2-cffi-bindings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libargon2)
 Requires:       python-cffi >= 1.0.1
-Provides:       python-argon2_cffi_bindings
-Obsoletes:      python-argon2_cffi_bindings
+Provides:       python-argon2_cffi_bindings = %{version}
+Obsoletes:      python-argon2_cffi_bindings < %{version}
 %python_subpackages
 
 %description
@@ -49,10 +50,10 @@ to the Argon2 password hashing algorithm.
 
 %build
 export ARGON2_CFFI_USE_SYSTEM=1
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
