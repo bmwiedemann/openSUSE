@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May 11 12:36:44 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Change recommended backend driver to gocryptfs (boo#1243037)
+  encfs is EOL and creating new Encfs vaults will be disallowed in
+  a future release
+
+-------------------------------------------------------------------
 Tue May  6 20:12:58 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.3.5:

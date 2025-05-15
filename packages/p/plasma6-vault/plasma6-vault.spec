@@ -22,6 +22,8 @@
 %define rname plasma-vault
 
 %bcond_without released
+%bcond_without encfs
+%bcond_without cryfs
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
@@ -57,8 +59,9 @@ BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 Requires:       /usr/bin/fusermount
 Requires:       plasma6-vault-backend
-# We recommend encfs for now as cryfs has certain issues
-Recommends:     plasma6-vault-backend-encfs
+# encfs is EOL, creating new EncFS vaults will no longer be supported
+# See https://github.com/KDE/plasma-vault/commit/ef0762f188ce6568b8fa7babbce852010366c935
+Recommends:     plasma6-vault-backend-gocryptfs
 Provides:       plasma-vault = %{version}
 Obsoletes:      plasma-vault < %{version}
 Obsoletes:      plasma-vault-lang < %{version}
@@ -66,6 +69,7 @@ Obsoletes:      plasma-vault-lang < %{version}
 %description
 Plasma Vault is a plasmoid for creating and managing encrypted vaults
 
+%if %{with encfs}
 %package backend-encfs
 Summary:        Necessary packages for plasma6-vault to support encfs vaults
 Requires:       encfs >= 1.9.1
@@ -76,7 +80,9 @@ BuildArch:      noarch
 
 %description backend-encfs
 This package pulls in dependencies for the plasma6-vault encfs backend.
+%endif
 
+%if %{with cryfs}
 %package backend-cryfs
 Summary:        Necessary packages for plasma6-vault to support cryfs vaults
 Requires:       plasma6-vault = %{version}
@@ -88,6 +94,7 @@ BuildArch:      noarch
 
 %description backend-cryfs
 This package pulls in dependencies for the plasma6-vault cryfs backend.
+%endif
 
 %package backend-gocryptfs
 Summary:        Necessary packages for plasma6-vault to support gocryptfs vaults
@@ -125,12 +132,17 @@ This package pulls in dependencies for the plasma6-vault gocryptfs backend.
 %{_kf6_plugindir}/plasma/applets/org.kde.plasma.vault.so
 
 %files lang -f %{name}.lang
+%license LICENSES/*
 
+%if %{with encfs}
 %files backend-encfs
 %license LICENSES/*
+%endif
 
+%if %{with cryfs}
 %files backend-cryfs
 %license LICENSES/*
+%endif
 
 %files backend-gocryptfs
 %license LICENSES/*
