@@ -34,7 +34,7 @@ Version:        0.10
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml CUDF library
-License:        GPL-3.0-only
+License:        LGPL-3.0-or-later WITH OCaml-LGPL-linking-exception
 Group:          Development/Languages/OCaml
 URL:            https://opam.ocaml.org/packages/cudf
 Source0:        %pkg-%version.tar.xz
