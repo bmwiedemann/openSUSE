@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon May 19 06:08:36 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Bump meta package versions:
+  * kubernetes (version) - 1.33.1
+  * kubernetes (versionminus1) - 1.32.5
+  * kubernetes (versionminus2) - 1.31.9
+  * kubernetes (versionminus3) - 1.30.13
+
+-------------------------------------------------------------------
 Tue May  6 11:06:44 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Bump meta package versions:
@@ -4401,7 +4410,7 @@ Wed Nov 27 11:10:35 UTC 2019 - rbrown@suse.com
   * Mark startupProbe test as NodeAlphaFeature and fix podClient instanciation
 
 -------------------------------------------------------------------
-Tue Nov 26 11:10:35 UTC 2019 UTC 2019 - David Cassany <dcassany@suse.com>
+Tue Nov 26 11:10:35 UTC 2019 - David Cassany <dcassany@suse.com>
 
 - Update to 1.16.2 included:
   * fixes for bsc#1152861

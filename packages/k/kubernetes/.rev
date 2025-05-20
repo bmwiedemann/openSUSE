@@ -1102,4 +1102,21 @@
   * CoreDNS (corednsversionminus3) – 1.11.3</comment>
     <requestid>1274894</requestid>
   </revision>
+  <revision rev="115" vrev="55">
+    <srcmd5>99bd0d9d64c6589876fb7957684ed97e</srcmd5>
+    <version>unknown</version>
+    <time>1747736411</time>
+    <user>anag_factory</user>
+    <comment>Bump meta package versions:
+* kubernetes (version) - 1.33.1
+* kubernetes (versionminus1) - 1.32.5
+* kubernetes (versionminus2) - 1.31.9
+* kubernetes (versionminus3) - 1.30.13
+
+---
+
+fix source validator errors (date: invalid date ‘ Tue Nov 26 11:10:35 UTC 2019 UTC 2019’)
+</comment>
+    <requestid>1278478</requestid>
+  </revision>
 </revisionlist>
