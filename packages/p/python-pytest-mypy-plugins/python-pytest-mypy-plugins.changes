@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue May  6 23:39:39 UTC 2025 - Guang Yee <gyee@suse.com>
+
+- Version 3.2.0
+  * Drops python3.8 support
+  * Adds official python3.13 support
+  * Fixes regex for colon output :
+  * Fixes internal error with TraceLastReprEntry
