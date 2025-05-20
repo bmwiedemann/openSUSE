@@ -2156,7 +2156,7 @@ Tue Oct 21 21:15:53 EST 2008 - mboman@suse.de
   + Translation updates
 
 -------------------------------------------------------------------
-Wed Oct  1 08:18:08 WST 2008 - mboman@suse.de
+Wed Oct  1 08:18:08 EST 2008 - mboman@suse.de
 
 - Update to version 2.24.0:
   + bgo#546799: file-roller crashed with SIGSEGV in g_str_hash()
