@@ -1932,4 +1932,12 @@
   (jsc#TEAM-6691)</comment>
     <requestid>1277158</requestid>
   </revision>
+  <revision rev="140" vrev="2">
+    <srcmd5>6f5690a42839c097218c31e2e09f84e9</srcmd5>
+    <version>4.16.0+git73.99f301e1</version>
+    <time>1747726472</time>
+    <user>anag_factory</user>
+    <comment>  * Filesystem: fix getting the wrong block device when doing grep (bsc#1241867)</comment>
+    <requestid>1277984</requestid>
+  </revision>
 </revisionlist>

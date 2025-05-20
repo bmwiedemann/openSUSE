@@ -9,7 +9,7 @@ Tue May 13 10:25:43 UTC 2025 - varkoly@suse.com
 - Update to version 4.16.0+git73.99f301e1:
   * azure-events-az: Update wording in log line
   * podman-etcd: remove unused actions from metadata
-  * Filesystem: fix getting the wrong block device when doing grep
+  * Filesystem: fix getting the wrong block device when doing grep (bsc#1241867)
   * crypt: fix crypt_type check, and usage when action has not been specified
   * podman-etcd: new resource agent (#2023)
   * IPaddr2: fix iface_altname indentation
