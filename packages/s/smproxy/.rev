@@ -65,4 +65,18 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1011137</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>af7903de02e282f6b6218abd4d040ee1</srcmd5>
+    <version>1.0.8</version>
+    <time>1747726758</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * meson: Add option to build with meson
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * Improve man page formatting
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+- switched to meson build</comment>
+    <requestid>1278430</requestid>
+  </revision>
 </revisionlist>
