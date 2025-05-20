@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 17 16:32:41 UTC 2025 - RN <R_Nik_C@proton.me>
+
+- Update to 2.43.0:
+  Features:
+   * Add option to hide unknown GPUs (GPU)
+   * Detect VRAM type of AMD GPUs on Linux (GPU, Linux)
+  Bugfixes:
+   * Fix disk usage detection on 32-bit Linux 
+     (gh#fastfetch-cli/fastfetch#1734)
+   * Fix duplicated playback status (Media, Linux)
+  Logos:
+   * new AthenaOS
+   * add Hydra Framework
+
+-------------------------------------------------------------------
 Tue Apr 29 17:11:38 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - Update to 2.42.0:
