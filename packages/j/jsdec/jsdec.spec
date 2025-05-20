@@ -19,16 +19,16 @@
 
 
 %define rizin_plugindir %{_libdir}/rizin/plugins
-%define quickjs_version 1682540214.c81f05c
+%define quickjs_version v0.8.0
 
 Name:           jsdec
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 Summary:        Simple decompiler for Rizin
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/rizinorg/jsdec
-Source0:        %{name}-%{version}.tar.gz
-Source1:        quickjs-%{quickjs_version}.tar.gz
+Source0:        https://github.com/rizinorg/jsdec/archive/v%{version}/%{name}-v%{version}.tar.gz
+Source1:        https://github.com/quickjs-ng/quickjs/archive/%{quickjs_version}/quickjs-%{quickjs_version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

@@ -7,4 +7,13 @@
     <comment>A base decompiler for rizin</comment>
     <requestid>1274006</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cee53bb0eb0381e6c17fbdd1ae300417</srcmd5>
+    <version>0.8.0</version>
+    <time>1747726603</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.0
+- Use source urls to fetch sources</comment>
+    <requestid>1278156</requestid>
+  </revision>
 </revisionlist>
