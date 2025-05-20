@@ -441,4 +441,12 @@
     <comment></comment>
     <requestid>1238323</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>88cf9b23eaa40a60f1d8b772c53c0037</srcmd5>
+    <version>2.56.1</version>
+    <time>1747726530</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277795 from dimstar)</comment>
+    <requestid>1278250</requestid>
+  </revision>
 </revisionlist>

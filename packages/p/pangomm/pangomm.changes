@@ -554,7 +554,7 @@ Wed Oct 22 12:32:33 CDT 2008 - maw@suse.de
 - Make debug packages require a specific %{version}-%{release}.
 
 -------------------------------------------------------------------
-Fri Oct  3 15:39:10 WST 2008 - mboman@suse.de
+Fri Oct  3 15:39:10 EST 2008 - mboman@suse.de
 
 - Update to version 2.14.0:
   + Language: Added get_scripts().
