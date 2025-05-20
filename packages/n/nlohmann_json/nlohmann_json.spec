@@ -27,6 +27,8 @@ URL:            https://nlohmann.github.io/json/
 Source:         https://github.com/nlohmann/json/releases/download/v%{version}/json.tar.xz#/json-%{version}.tar.xz
 Source2:        https://github.com/nlohmann/json/releases/download/v%{version}/json.tar.xz.asc#/json-%{version}.tar.xz.asc
 Source3:        https://keybase.io/nlohmann/pgp_keys.asc?fingerprint=797167ae41c0a6d9232e48457f3cea63ae251b69#/%{name}.keyring
+# PATCH-FIX-UPSTREAM provide_char8_t_fallback.patch - PR 4736 Provide utf8 char fallback
+Patch1:         provide_char8_t_fallback.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.5
 BuildRequires:  pkgconfig

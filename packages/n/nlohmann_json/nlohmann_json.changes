@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Apr 28 17:44:49 UTC 2025 - Björn Bidar <bjorn.bidar@thaodan.de>
+
+- Add patch provide_char8_t_fallback.patch to provide C++20
+  char8_t fallback, that also makes it possible to use C++20 without implicitly
+  enabling char8_t in case projects build with  -fno-char8_t.
+
+-------------------------------------------------------------------
 Fri Apr 11 10:48:15 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Update to version 3.12.0:
