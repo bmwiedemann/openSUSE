@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 15 04:51:18 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1:
+  * Bug Fixes
+    - emit fuzzy ranges rather than invalid ranges [#574
+      @willmurphyscode]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#575)
+    - chore(deps): update generated code (#563)
+    - chore(deps): Bump mxschmitt/action-tmate from 3.21 to 3.22
+      (#567)
+    - chore(deps): Bump actions/setup-go from 5.4.0 to 5.5.0 (#573)
+    - chore(deps): Bump astral-sh/setup-uv in
+      /.github/actions/bootstrap (#562)
+    - chore(deps): update anchore dependencies (#561)
+    - chore(deps): Bump mxschmitt/action-tmate from 3.19 to 3.21
+      (#560)
+
+-------------------------------------------------------------------
 Wed Apr 16 15:49:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.0:
