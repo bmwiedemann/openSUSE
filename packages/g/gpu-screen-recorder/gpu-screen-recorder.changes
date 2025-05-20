@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat May 17 19:01:13 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 20250515:
+  * Improve default quality for systemd service file
+  * Move dbus code to a separate process to allow 
+    gpu-screen-recorder to use cap_sys_nice for better recording
+    performance on amd
+  * Fix incorrect replay duration saved for disk replay
+  * Change file extension of temporary replay data file from .mp4
+    to .gsr
+  * Fix replay to disk not working properly when restarting replay
+  * Add -replay-storage option to specify if temporary replay data
+    should be stored in ram or disk
+  * Dont list region capture option if not monitors are available
+    for capture
+  * Fix audio capture not working with noisetorch if combined with
+    another source with some audio devices. Remove the ability to
+    set audio track name for now.
+  * Fix h264 software encoding not working
+  * Fix build issues on older ffmpeg (disable unused vulkan encoder
+    for now), fix incorrect wayland protocol file
+  * Fix replay saving freeze, unable to save replay if audio is not
+    provided
+  * Change replay recording filename prefix to Video
+  * Move encoding code from video encoder to encoder, since it also
+    processes audio input
+  * Fix crash on exit when replay recording, increase SIGRTMIN
+    replay save by keyint time
+  * Refactor video encoding packet receiving, replay buffer and
+    finish SIGRTMIN for recording while replay/replaying. Add -ro
+    option to specify the directory
+  * catch SIGTERM to stop recording
+  * Move argument parsing to different file
+  * wip: support replay smaller time with SIGRTMIN+N and recording
+    in replay mode with SIGTRMIN
+  * Improve tune av1 quality
+
+-------------------------------------------------------------------
 Mon Apr 07 20:28:10 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 20250406:
