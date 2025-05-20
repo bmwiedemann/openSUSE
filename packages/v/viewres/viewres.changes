@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon May 19 18:28:06 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.8
+  * gitlab CI: stop requiring Signed-off-by in commits
+  * Print which argument was unknown before giving usage message
+  * Add -help and -version options
+  * Declare usage() as noreturn
+  * Add unused attribute to unused callback arguments
+  * Use intptr_t instead of long for casting between pointers and integers
+  * meson: Add option to build with meson
+  * Improve man page formatting
+- switch to meson build 
+
+-------------------------------------------------------------------
 Sat Oct 15 17:18:22 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.7 

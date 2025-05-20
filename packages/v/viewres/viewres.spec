@@ -1,7 +1,7 @@
 #
 # spec file for package viewres
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           viewres
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Graphical class browser for Xt
 License:        X11
 Group:          System/X11/Utilities
 URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
@@ -41,15 +42,16 @@ Athena Widget Set (libXaw).
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%doc ChangeLog README.md
+%license COPYING
 %{_bindir}/viewres
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Viewres
