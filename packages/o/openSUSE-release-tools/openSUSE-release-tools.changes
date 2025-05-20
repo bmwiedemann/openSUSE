@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue May 13 08:26:38 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250513.a8a47bd7:
+  * devel_update.sh: be flexible with space
+
+-------------------------------------------------------------------
+Mon May 12 10:17:33 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250512.73803464:
+  * ttm: moved 000productcompose to ftp products and fetch the build number from there
+
+-------------------------------------------------------------------
+Wed May 07 08:32:04 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250507.d354fc85:
+  * check_source: Do not try to add maintainer review when maintainer not known
+
+-------------------------------------------------------------------
+Tue May 06 11:24:52 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250506.c306d7bd:
+  * ttm: set offline installer the same release number
+
+-------------------------------------------------------------------
+Wed Apr 30 13:09:47 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250430.5bd55767:
+  * devel-project.py: Handle hidden projects gracefully
+
+-------------------------------------------------------------------
+Wed Apr 30 11:16:48 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250430.af5476a2:
+  * Remove EOL Leap from bots
+  * Remove 15.4 and 15.5 from oqamaint data
+
+-------------------------------------------------------------------
+Thu Apr 24 15:53:48 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250424.8d2ac58a:
+  * maintenance bot: limit devel project search to openSUSE:Maintenance targets
+  * maintenance bot: add support for git-based devel projects
+
+-------------------------------------------------------------------
+Thu Apr 24 10:50:17 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250424.70a62ea0:
+  * pkglistgen: fix handle_update_repos crashing on ET.parse(url)
+
+-------------------------------------------------------------------
+Wed Apr 23 10:11:02 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250423.9d138e96:
+  * devel_update.sh: remove premature optimization
+
+-------------------------------------------------------------------
+Tue Apr 22 10:41:12 UTC 2025 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20250422.053b9e55:
+  * github-ci: switch to latest ubuntu
+
+-------------------------------------------------------------------
 Tue Apr 15 09:47:25 UTC 2025 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20250415.4b9e2c35:
