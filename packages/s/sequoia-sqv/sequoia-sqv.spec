@@ -1,7 +1,7 @@
 #
 # spec file for package sequoia-sqv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           sequoia-sqv
-Version:        1.2.1~0
+Version:        1.3.0
 Release:        0
 Summary:        A simple signature verification program
 License:        GPL-2.0-or-later
@@ -24,11 +25,11 @@ URL:            https://sequoia-pgp.org/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.74
-BuildRequires:  pkgconfig(nettle)
 BuildRequires:  clang
 BuildRequires:  fish
+BuildRequires:  rust >= 1.79
 BuildRequires:  zsh
+BuildRequires:  pkgconfig(nettle)
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
