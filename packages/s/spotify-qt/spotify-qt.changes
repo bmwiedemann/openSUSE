@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 15 10:29:46 UTC 2025 - ecsos <ecsos@opensuse.org>
+
+- Fix build error under Leap 15.6
+  As described in changelog spotify-qt now requires QT6.
+
+-------------------------------------------------------------------
 Tue Apr 29 04:04:45 UTC 2025 - Tobias Schula <tobias@schula.org>
 
 - Update to version 4.0.0

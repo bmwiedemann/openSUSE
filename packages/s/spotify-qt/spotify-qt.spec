@@ -24,21 +24,20 @@ License:        GPL-3.0-only
 URL:            https://github.com/kraxarn/spotify-qt
 Source:         https://github.com/kraxarn/spotify-qt/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Group:          Productivity/Multimedia/Sound/Players
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} < 1600
+BuildRequires: gcc12
+BuildRequires: gcc12-c++
+%else
+BuildRequires: gcc
+BuildRequires: gcc-c++
+%endif
 BuildRequires:  libsecret
 BuildRequires:  make
-%if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
-BuildRequires:  kf6-kcrash-devel
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Svg)
-%else
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Svg)
-%endif
+BuildRequires:  cmake(Qt6Widgets)
 Suggests:       libsecret
 %if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
 Suggests:       librespot
@@ -51,6 +50,10 @@ An unofficial Spotify client using Qt as a simpler, lighter alternative to the o
 %setup -q
 
 %build
+%if 0%{?suse_version} < 1600
+export CC=gcc-12
+export CXX=g++-12
+%endif
 %cmake
 %cmake_build
 
