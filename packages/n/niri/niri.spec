@@ -19,7 +19,7 @@
 
 %bcond_without test
 Name:           niri
-Version:        25.02
+Version:        25.05
 Release:        0
 Summary:        Scrollable-tiling Wayland compositor
 License:        GPL-3.0-or-later
@@ -52,6 +52,7 @@ Recommends:     xdg-desktop-portal-gnome
 Recommends:     alacritty
 Recommends:     fuzzel
 Recommends:     swaylock
+Recommends:     waybar
 # Recommended utilities
 Recommends:     swaybg
 Recommends:     mako

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat May 17 18:34:41 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 25.05:
+  * Add feature to zooms out your workspaces and windows to let you
+    see what's going on at a glance, navigate, and drag windows
+    around, all without having to touch the keyboard.
+  * Add new features for screencasting and screensharing
+  * Add features for Windowed fullscreen
+  * Add screenshot UI support tablet and touchscreen input for
+    drawing the selection, closing this long-standing gap.
+  * Add features Window urgency
+  * Add new IPC functionality.
+- Add waybar Recommends: default bar for niri
+
+-------------------------------------------------------------------
 Sat Feb 22 11:10:26 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 25.02:
