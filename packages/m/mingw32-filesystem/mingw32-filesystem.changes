@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue May 13 16:20:39 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 20250515
+- Avoid spurious requires when using ucrt runtime (boo#1243096).
+
+-------------------------------------------------------------------
 Mon May 12 07:04:21 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Update to version 20250512

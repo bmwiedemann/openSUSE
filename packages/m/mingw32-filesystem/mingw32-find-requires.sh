@@ -30,6 +30,7 @@ fi
 filelist=`sed "s/['\"]/\\\&/g"`
 
 libs_to_exclude+="
+    api-ms-win-crt
     advapi32
     bcrypt
     cfgmgr32
