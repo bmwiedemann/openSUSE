@@ -1,0 +1,553 @@
+--- cloudinit/cmd/main.py.orig
++++ cloudinit/cmd/main.py
+@@ -684,7 +684,7 @@ def di_report_warn(datasource, cfg):
+     # where Name is the thing that shows up in datasource_list.
+     modname = datasource.__module__.rpartition(".")[2]
+     if modname.startswith(sources.DS_PREFIX):
+-        modname = modname[len(sources.DS_PREFIX) :]
++        modname = modname[len(sources.DS_PREFIX):]
+     else:
+         LOG.warning(
+             "Datasource '%s' came from unexpected module '%s'.",
+--- cloudinit/config/cc_apt_configure.py.orig
++++ cloudinit/config/cc_apt_configure.py
+@@ -270,7 +270,7 @@ def mirrorurl_to_apt_fileprefix(mirror):
+         string = string[0:-1]
+     pos = string.find("://")
+     if pos >= 0:
+-        string = string[pos + 3 :]
++        string = string[pos + 3:]
+     string = string.replace("/", "_")
+     return string
+ 
+--- cloudinit/config/cc_mounts.py.orig
++++ cloudinit/config/cc_mounts.py
+@@ -414,7 +414,7 @@ def sanitize_mounts_configuration(
+                 updated_line[index] = str(updated_line[index])
+ 
+         # fill remaining values with defaults from defvals above
+-        updated_line += default_fields[len(updated_line) :]
++        updated_line += default_fields[len(updated_line):]
+ 
+         updated_lines.append(updated_line)
+     return updated_lines
+--- cloudinit/config/cc_ssh_authkey_fingerprints.py.orig
++++ cloudinit/config/cc_ssh_authkey_fingerprints.py
+@@ -31,7 +31,7 @@ LOG = logging.getLogger(__name__)
+ def _split_hash(bin_hash):
+     split_up = []
+     for i in range(0, len(bin_hash), 2):
+-        split_up.append(bin_hash[i : i + 2])
++        split_up.append(bin_hash[i:i + 2])
+     return split_up
+ 
+ 
+--- cloudinit/config/modules.py.orig
++++ cloudinit/config/modules.py
+@@ -57,7 +57,7 @@ class ModuleDetails(NamedTuple):
+ def form_module_name(name):
+     canon_name = name.replace("-", "_")
+     if canon_name.lower().endswith(".py"):
+-        canon_name = canon_name[0 : (len(canon_name) - 3)]
++        canon_name = canon_name[0:(len(canon_name) - 3)]
+     canon_name = canon_name.strip()
+     if not canon_name:
+         return None
+--- cloudinit/distros/parsers/ifconfig.py.orig
++++ cloudinit/distros/parsers/ifconfig.py
+@@ -143,7 +143,7 @@ class Ifconfig:
+                 dev.index = int(toks[1])
+ 
+             if toks[0] == "description:":
+-                dev.description = line[line.index(":") + 2 :]
++                dev.description = line[line.index(":") + 2:]
+ 
+             if (
+                 toks[0].startswith("options=")
+@@ -168,7 +168,7 @@ class Ifconfig:
+                 dev.groups += toks[1:]
+ 
+             if toks[0] == "media:":
+-                dev.media = line[line.index(": ") + 2 :]
++                dev.media = line[line.index(": ") + 2:]
+ 
+             if toks[0] == "nd6":
+                 nd6_opts = re.split(r"<|>", toks[0])
+--- cloudinit/net/dhcp.py.orig
++++ cloudinit/net/dhcp.py
+@@ -495,24 +495,24 @@ class IscDhclient(DhcpClient):
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 5])
+-                gateway = ".".join(tokens[idx + 5 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1:idx + 5])
++                gateway = ".".join(tokens[idx + 5:idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(17, 25):
+                 req_toks = 8
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 4] + ["0"])
+-                gateway = ".".join(tokens[idx + 4 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1:idx + 4] + ["0"])
++                gateway = ".".join(tokens[idx + 4:idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(9, 17):
+                 req_toks = 7
+                 if len(tokens[idx:]) < req_toks:
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+-                net_address = ".".join(tokens[idx + 1 : idx + 3] + ["0", "0"])
+-                gateway = ".".join(tokens[idx + 3 : idx + req_toks])
++                net_address = ".".join(tokens[idx + 1:idx + 3] + ["0", "0"])
++                gateway = ".".join(tokens[idx + 3:idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length in range(1, 9):
+                 req_toks = 6
+@@ -520,9 +520,9 @@ class IscDhclient(DhcpClient):
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+                 net_address = ".".join(
+-                    tokens[idx + 1 : idx + 2] + ["0", "0", "0"]
++                    tokens[idx + 1:idx + 2] + ["0", "0", "0"]
+                 )
+-                gateway = ".".join(tokens[idx + 2 : idx + req_toks])
++                gateway = ".".join(tokens[idx + 2:idx + req_toks])
+                 current_idx = idx + req_toks
+             elif net_length == 0:
+                 req_toks = 5
+@@ -530,7 +530,7 @@ class IscDhclient(DhcpClient):
+                     _trunc_error(net_length, req_toks, len(tokens[idx:]))
+                     return static_routes
+                 net_address = "0.0.0.0"
+-                gateway = ".".join(tokens[idx + 1 : idx + req_toks])
++                gateway = ".".join(tokens[idx + 1:idx + req_toks])
+                 current_idx = idx + req_toks
+             else:
+                 LOG.error(
+@@ -767,7 +767,7 @@ class Dhcpcd(DhcpClient):
+             while len(data) >= index + 2:
+                 code = data[index]
+                 length = data[1 + index]
+-                option = data[2 + index : 2 + index + length]
++                option = data[2 + index:2 + index + length]
+                 yield code, option
+                 index = 2 + length + index
+ 
+--- cloudinit/net/network_manager.py.orig
++++ cloudinit/net/network_manager.py
+@@ -175,7 +175,8 @@ class NMConnection:
+         self.config[family]["method"] = method
+ 
+         # Network Manager sets the value of `may-fail` to `True` by default.
+-        # Please see https://www.networkmanager.dev/docs/api/1.32.10/settings-ipv6.html.
++        # Please see
++        # https://www.networkmanager.dev/docs/api/1.32.10/settings-ipv6.html.
+         # Therefore, when no configuration for ipv4 or ipv6 is specified,
+         # `may-fail = True` applies. When the user explicitly configures ipv4
+         # or ipv6, `may-fail` is set to `False`. This is so because it is
+--- cloudinit/reporting/handlers.py.orig
++++ cloudinit/reporting/handlers.py
+@@ -295,13 +295,13 @@ class HyperVKvpReportingHandler(Reportin
+                 )
+             )
+         k = (
+-            record_data[0 : self.HV_KVP_EXCHANGE_MAX_KEY_SIZE]
++            record_data[0:self.HV_KVP_EXCHANGE_MAX_KEY_SIZE]
+             .decode("utf-8")
+             .strip("\x00")
+         )
+         v = (
+             record_data[
+-                self.HV_KVP_EXCHANGE_MAX_KEY_SIZE : self.HV_KVP_RECORD_SIZE
++                self.HV_KVP_EXCHANGE_MAX_KEY_SIZE:self.HV_KVP_RECORD_SIZE
+             ]
+             .decode("utf-8")
+             .strip("\x00")
+@@ -322,7 +322,7 @@ class HyperVKvpReportingHandler(Reportin
+     def _break_down(self, key, meta_data, description):
+         del meta_data[self.MSG_KEY]
+         des_in_json = json.dumps(description)
+-        des_in_json = des_in_json[1 : (len(des_in_json) - 1)]
++        des_in_json = des_in_json[1:(len(des_in_json) - 1)]
+         i = 0
+         result_array = []
+         message_place_holder = '"' + self.MSG_KEY + '":""'
+@@ -355,7 +355,7 @@ class HyperVKvpReportingHandler(Reportin
+         Values will be truncated as needed.
+         """
+         if len(value) >= self.HV_KVP_AZURE_MAX_VALUE_SIZE:
+-            value = value[0 : self.HV_KVP_AZURE_MAX_VALUE_SIZE - 1]
++            value = value[0:self.HV_KVP_AZURE_MAX_VALUE_SIZE - 1]
+ 
+         data = [self._encode_kvp_item(key, value)]
+ 
+--- cloudinit/sources/__init__.py.orig
++++ cloudinit/sources/__init__.py
+@@ -789,7 +789,7 @@ class DataSource(CloudInitPickleMixin, m
+             if not short_name.startswith(nfrom):
+                 continue
+             for nto in tlist:
+-                cand = "/dev/%s%s" % (nto, short_name[len(nfrom) :])
++                cand = "/dev/%s%s" % (nto, short_name[len(nfrom):])
+                 if os.path.exists(cand):
+                     return cand
+         return None
+--- cloudinit/sources/helpers/azure.py.orig
++++ cloudinit/sources/helpers/azure.py
+@@ -492,7 +492,7 @@ class OpenSSLManager:
+         """
+         raw_fp = self._run_x509_action("-fingerprint", certificate)
+         eq = raw_fp.find("=")
+-        octets = raw_fp[eq + 1 : -1].split(":")
++        octets = raw_fp[eq + 1:-1].split(":")
+         return "".join(octets)
+ 
+     @azure_ds_telemetry_reporter
+--- cloudinit/sources/helpers/netlink.py.orig
++++ cloudinit/sources/helpers/netlink.py
+@@ -146,7 +146,7 @@ def unpack_rta_attr(data, offset):
+         return None  # Should mean our offset is >= remaining data
+ 
+     # Unpack just the attribute's data. Offset by 4 to skip length/type header
+-    attr_data = data[offset + RTA_DATA_START_OFFSET : offset + length]
++    attr_data = data[offset + RTA_DATA_START_OFFSET:offset + length]
+     return RTAAttr(length, rta_type, attr_data)
+ 
+ 
+--- cloudinit/ssh_util.py.orig
++++ cloudinit/ssh_util.py
+@@ -659,7 +659,7 @@ def get_opensshd_version():
+     prefix = "OpenSSH_"
+     for line in err.split("\n"):
+         if line.startswith(prefix):
+-            return line[len(prefix) : line.find(",")]
++            return line[len(prefix):line.find(",")]
+     return None
+ 
+ 
+--- cloudinit/user_data.py.orig
++++ cloudinit/user_data.py
+@@ -210,13 +210,13 @@ class UserDataProcessor:
+         for line in content.splitlines():
+             lc_line = line.lower()
+             if lc_line.startswith("#include-once"):
+-                line = line[len("#include-once") :].lstrip()
++                line = line[len("#include-once"):].lstrip()
+                 # Every following include will now
+                 # not be refetched.... but will be
+                 # re-read from a local urlcache (if it worked)
+                 include_once_on = True
+             elif lc_line.startswith("#include"):
+-                line = line[len("#include") :].lstrip()
++                line = line[len("#include"):].lstrip()
+                 # Disable the include once if it was on
+                 # if it wasn't, then this has no effect.
+                 include_once_on = False
+--- cloudinit/util.py.orig
++++ cloudinit/util.py
+@@ -585,7 +585,7 @@ def get_linux_distro():
+         dist = ("", "", "")
+         try:
+             # Was removed in 3.8
+-            dist = platform.dist()  # type: ignore  # pylint: disable=W1505,E1101
++            dist = platform.dist()  # type: ignore pylint: disable=W1505,E1101
+         except Exception:
+             pass
+         finally:
+@@ -1172,7 +1172,7 @@ def read_cc_from_cmdline(cmdline=None):
+         if end < 0:
+             end = clen
+         tokens.append(
+-            parse.unquote(cmdline[begin + begin_l : end].lstrip()).replace(
++            parse.unquote(cmdline[begin + begin_l:end].lstrip()).replace(
+                 "\\n", "\n"
+             )
+         )
+@@ -1744,7 +1744,7 @@ def get_output_cfg(
+         found = False
+         for s in swlist:
+             if val.startswith(s):
+-                val = "%s %s" % (s, val[len(s) :].strip())
++                val = "%s %s" % (s, val[len(s):].strip())
+                 found = True
+                 break
+         if not found:
+@@ -2360,7 +2360,7 @@ def shellify(cmdlist, add_header=True):
+ 
+ def strip_prefix_suffix(line, prefix=None, suffix=None):
+     if prefix and line.startswith(prefix):
+-        line = line[len(prefix) :]
++        line = line[len(prefix):]
+     if suffix and line.endswith(suffix):
+         line = line[: -len(suffix)]
+     return line
+@@ -2869,7 +2869,7 @@ def human2bytes(size):
+     for m in mpliers:
+         if size.endswith(m):
+             mplier = m
+-            num = size[0 : -len(m)]
++            num = size[0:-len(m)]
+ 
+     try:
+         num = float(num)
+@@ -2947,12 +2947,12 @@ def rootdev_from_cmdline(cmdline):
+     if found.startswith("/dev/"):
+         return found
+     if found.startswith("LABEL="):
+-        return "/dev/disk/by-label/" + found[len("LABEL=") :]
++        return "/dev/disk/by-label/" + found[len("LABEL="):]
+     if found.startswith("UUID="):
+-        return "/dev/disk/by-uuid/" + found[len("UUID=") :].lower()
++        return "/dev/disk/by-uuid/" + found[len("UUID="):].lower()
+     if found.startswith("PARTUUID="):
+         disks_path = (
+-            "/dev/disk/by-partuuid/" + found[len("PARTUUID=") :].lower()
++            "/dev/disk/by-partuuid/" + found[len("PARTUUID="):].lower()
+         )
+         if os.path.exists(disks_path):
+             return disks_path
+--- setup.py.orig
++++ setup.py
+@@ -194,7 +194,7 @@ elif os.path.isfile("/etc/system-release
+         else:
+             # String formatted CPE
+             inc = 1
+-        (cpe_vendor, cpe_product, cpe_version) = cpe_data[2 + inc : 5 + inc]
++        (cpe_vendor, cpe_product, cpe_version) = cpe_data[2 + inc:5 + inc]
+         if cpe_vendor == "amazon":
+             USR_LIB_EXEC = "usr/libexec"
+ 
+--- tests/integration_tests/conftest.py.orig
++++ tests/integration_tests/conftest.py
+@@ -501,6 +501,7 @@ def pytest_sessionstart(session) -> None
+ 
+ def pytest_sessionfinish(session, exitstatus) -> None:
+     """do session teardown"""
++    global _SESSION_CLOUD
+     global REAPER
+     log.info("finishing session")
+     try:
+--- tests/integration_tests/dropins/test_custom_modules.py.orig
++++ tests/integration_tests/dropins/test_custom_modules.py
+@@ -20,7 +20,7 @@ def test_custom_module_24_1(client: Inte
+     """
+     client.push_file(
+         ASSETS_DIR / "dropins/cc_custom_module_24_1.py",
+-        "/usr/lib/python3/dist-packages/cloudinit/config/cc_custom_module_24_1.py",
++        "/usr/lib/python3/dist-packages/cloudinit/config/cc_custom_module_24_1.py",  # noqa: E501
+     )
+     output = client.execute("cloud-init single --name cc_custom_module_24_1")
+     if releases.CURRENT_RELEASE >= releases.PLUCKY:
+--- tests/unittests/config/test_apt_source_v3.py.orig
++++ tests/unittests/config/test_apt_source_v3.py
+@@ -1,4 +1,5 @@
+ # This file is part of cloud-init. See LICENSE file for license information.
++# flake8: noqa
+ # pylint: disable=attribute-defined-outside-init
+ 
+ """test_handler_apt_source_v3
+@@ -1429,7 +1430,6 @@ Suites: mantic-backports
+ Components: main
+ """
+ 
+-
+ DEB822_DISABLED_SINGLE_SUITE = """\
+ ## Entry disabled by cloud-init, due to disable_suites
+ # disabled by cloud-init: Types: deb
+@@ -1446,7 +1446,6 @@ DEB822_DISABLED_MULTIPLE_SUITES = """\
+ # disabled by cloud-init: Components: main
+ """
+ 
+-
+ class TestDisableSuitesDeb822:
+     @pytest.mark.parametrize(
+         "disabled_suites,src,expected",
+--- tests/unittests/config/test_cc_apt_configure.py.orig
++++ tests/unittests/config/test_cc_apt_configure.py
+@@ -293,7 +293,7 @@ class TestAptConfigure:
+                 cc_apt.UBUNTU_DEFAULT_APT_SOURCES_LIST,
+                 "ubuntu",
+                 cc_apt.UBUNTU_DEFAULT_APT_SOURCES_LIST,
+-                id="ubuntu_no_warning_when_existig_sources_list_content_allowed",
++                id="ubuntu_no_warning_when_existig_sources_list_content_allowed",  # noqa: E501
+             ),
+         ),
+     )
+--- tests/unittests/config/test_cc_yum_add_repo.py.orig
++++ tests/unittests/config/test_cc_yum_add_repo.py
+@@ -90,7 +90,7 @@ class TestConfig(helpers.FilesystemMocki
+             "yum_repos": {
+                 "epel-testing": {
+                     "name": "Extra Packages for Enterprise Linux 5 - Testing",
+-                    "mirrorlist": "http://mirrors.blah.org/metalink?repo=rhel-$releasever",
++                    "mirrorlist": "http://mirrors.blah.org/metalink?repo=rhel-$releasever",  # noqa: E501
+                     "enabled": False,
+                     "gpgcheck": True,
+                     "gpgkey": "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL",
+@@ -110,7 +110,7 @@ class TestConfig(helpers.FilesystemMocki
+                 "failovermethod": "priority",
+                 "gpgkey": "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL",
+                 "enabled": "0",
+-                "mirrorlist": "http://mirrors.blah.org/metalink?repo=rhel-$releasever",
++                "mirrorlist": "http://mirrors.blah.org/metalink?repo=rhel-$releasever",  # noqa: E501
+                 "gpgcheck": "1",
+             }
+         }
+--- tests/unittests/config/test_schema.py.orig
++++ tests/unittests/config/test_schema.py
+@@ -1293,7 +1293,7 @@ class TestMain:
+                     "vd2_key": "vendor2_cloud_config",
+                     "net_key": "network_config",
+                 },
+-                id="prefer_processed_vd_file_path_when_raw_and_processed_empty",
++                id="prefer_processed_vd_file_path_when_raw_and_processed_empty",  # noqa: E501
+             ),
+         ),
+     )
+@@ -2047,7 +2047,7 @@ apt_reboot_if_required: Deprecated in ve
+                     Valid schema {cfg_file}
+                     """  # noqa: E501
+                 ),
+-                id="test_deprecation_info_boundary_does_unannotated_unredacted",
++                id="test_deprecation_info_boundary_does_unannotated_unredacted",  # noqa: E501
+             ),
+         ],
+     )
+--- tests/unittests/distros/test_create_users.py.orig
++++ tests/unittests/distros/test_create_users.py
+@@ -260,7 +260,7 @@ class TestCreateUser:
+                 "ubuntu",
+                 True,
+                 ["Not unlocking blank password for existing user foo_user."],
+-                id="no_unlock_in_snappy_on_locked_empty_user_passwd_in_extrausers",
++                id="no_unlock_in_snappy_on_locked_empty_user_passwd_in_extrausers",  # noqa: E501
+             ),
+             pytest.param(
+                 {"/etc/shadow": f"dnsmasq::\n{USER}::"},
+@@ -281,14 +281,14 @@ class TestCreateUser:
+                 "dragonflybsd",
+                 False,
+                 ["Not unlocking blank password for existing user foo_user."],
+-                id="no_unlock_on_locked_format1_empty_user_passwd_dragonflybsd",
++                id="no_unlock_on_locked_format1_empty_user_passwd_dragonflybsd",  # noqa: E501
+             ),
+             pytest.param(
+                 {"/etc/master.passwd": f"dnsmasq::\n{USER}:*LOCKED*:"},
+                 "dragonflybsd",
+                 False,
+                 ["Not unlocking blank password for existing user foo_user."],
+-                id="no_unlock_on_locked_format2_empty_user_passwd_dragonflybsd",
++                id="no_unlock_on_locked_format2_empty_user_passwd_dragonflybsd",  # noqa: E501
+             ),
+             pytest.param(
+                 {"/etc/master.passwd": f"dnsmasq::\n{USER}::"},
+--- tests/unittests/helpers.py.orig
++++ tests/unittests/helpers.py
+@@ -315,7 +315,7 @@ class FilesystemMockingTestCase(Resource
+         real_root = os.path.join(real_root, "roots", example_root)
+         for dir_path, _dirnames, filenames in os.walk(real_root):
+             real_path = dir_path
+-            make_path = rebase_path(real_path[len(real_root) :], target_root)
++            make_path = rebase_path(real_path[len(real_root):], target_root)
+             util.ensure_dir(make_path)
+             for f in filenames:
+                 real_path = os.path.abspath(os.path.join(real_path, f))
+@@ -541,7 +541,7 @@ def dir2dict(startdir, prefix=None):
+     for root, _dirs, files in os.walk(startdir):
+         for fname in files:
+             fpath = os.path.join(root, fname)
+-            key = fpath[len(prefix) :]
++            key = fpath[len(prefix):]
+             flist[key] = util.load_text_file(fpath)
+     return flist
+ 
+--- tests/unittests/sources/test_akamai.py.orig
++++ tests/unittests/sources/test_akamai.py
+@@ -278,7 +278,7 @@ class TestDataSourceAkamai:
+             (
+                 False,
+                 "H4sIAAAAAAACAytJLS7hAgDGNbk7BQAAAA==",
+-                b"\x1f\x8b\x08\x00\x00\x00\x00\x00\x02\x03+I-.\xe1\x02\x00\xc65\xb9;\x05\x00\x00\x00",
++                b"\x1f\x8b\x08\x00\x00\x00\x00\x00\x02\x03+I-.\xe1\x02\x00\xc65\xb9;\x05\x00\x00\x00",  # noqa: E501
+                 "base64-encoded gzipped data",
+             ),
+             (
+--- tests/unittests/sources/test_configdrive.py.orig
++++ tests/unittests/sources/test_configdrive.py
+@@ -412,7 +412,7 @@ class TestConfigDriveDataSource(CiTestCa
+         }
+         for name, dev_name in name_tests.items():
+             with ExitStack() as mocks:
+-                provided_name = dev_name[len("/dev/") :]
++                provided_name = dev_name[len("/dev/"):]
+                 provided_name = "s" + provided_name[1:]
+                 find_mock = mocks.enter_context(
+                     mock.patch.object(
+--- tests/unittests/sources/test_hetzner.py.orig
++++ tests/unittests/sources/test_hetzner.py
+@@ -109,7 +109,8 @@ class TestDataSourceHetzner(CiTestCase):
+             iface="eth0",
+             connectivity_urls_data=[
+                 {
+-                    "url": "http://169.254.169.254/hetzner/v1/metadata/instance-id"
++                    "url":
++                    "http://169.254.169.254/hetzner/v1/metadata/instance-id"
+                 }
+             ],
+         )
+--- tests/unittests/sources/test_maas.py.orig
++++ tests/unittests/sources/test_maas.py
+@@ -113,7 +113,7 @@ class TestMAASDataSource:
+             if not url.startswith(prefix):
+                 raise ValueError("unexpected call %s" % url)
+ 
+-            short = url[len(prefix) :]
++            short = url[len(prefix):]
+             if short not in data:
+                 raise url_helper.UrlError("not found", code=404, url=url)
+             return url_helper.StringResponse(data[short], url)
+--- tests/unittests/sources/test_smartos.py.orig
++++ tests/unittests/sources/test_smartos.py
+@@ -792,7 +792,7 @@ class ShortReader:
+             rsize = next_null - self.index + 1
+         i = self.index
+         self.index += rsize
+-        ret = self.data[i : i + rsize]
++        ret = self.data[i:i + rsize]
+         if len(ret) and ret[-1:] == self.endbyte:
+             ret = ret[:-1]
+         return ret
+--- tests/unittests/test_url_helper.py.orig
++++ tests/unittests/test_url_helper.py
+@@ -324,7 +324,7 @@ class TestReadUrl:
+         expected_headers["User-Agent"] = "Cloud-Init/%s" % (
+             version.version_string()
+         )
+-        headers_cb = lambda _: headers
++        headers_cb = lambda _: headers  # noqa: E731
+ 
+         class FakeSession(requests.Session):
+             @classmethod
+--- tests/unittests/test_util.py.orig
++++ tests/unittests/test_util.py
+@@ -3334,7 +3334,7 @@ class TestLogExc:
+     def test_logexc(self, caplog):
+         try:
+             _ = 1 / 0
+-        except Exception as _:
++        except Exception as _:  # noqa: F841
+             util.logexc(LOG, "an error occurred")
+ 
+         assert caplog.record_tuples == [
+@@ -3353,7 +3353,7 @@ class TestLogExc:
+     def test_logexc_with_log_level(self, caplog, log_level):
+         try:
+             _ = 1 / 0
+-        except Exception as _:
++        except Exception as _:  # noqa: F841
+             util.logexc(LOG, "an error occurred", log_level=log_level)
+ 
+         assert caplog.record_tuples == [

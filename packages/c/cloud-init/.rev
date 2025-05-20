@@ -1237,4 +1237,41 @@
     <comment></comment>
     <requestid>1245372</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>42676ba99630b071f3c0c386d9757754</srcmd5>
+    <version>25.1.1</version>
+    <time>1747726286</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 25.1.1 (bsc#1239715,jsc#PED-8680,bsc#1228414)
+ + Removed included upstream
+   - pep-594-drop-pipes.patch
+   - cloud-init-fix-python313.patch
+   - cloud-init-dont-assume-ordering-of-ThreadPoolExecutor.patch
+   - cloud-init-direxist.patch
+   - cloud-init-wait-for-net.patch
+   - cloud-init-usr-sudoers.patch
+   - cloud-init-no-nmcfg-needed.patch
+   - cloud-init-keep-flake.patch
+   - cloud-init-lint-fixes.patch
+   - cloud-init-pckg-reboot.patch
+   - cloud-init-ds-deterministic.patch
+   - cloud-init-write-routes.patch
+   - cloud-init-skip-empty-conf.patch
+ + Forward port
+   - cloud-init-no-tempnet-oci.patch
+   - cloud-init-no-openstack-guess.patch
+   - cloud-init-lint-set-interpreter.patch
+ + Add
+   - cloud-init-ssh-usrmerge.patch (bsc#1237764)
+   - cloud-init-lint-set-interpreter.patch
+   - cloud-init-lint-fix.patch
+   - cloud-init-no-single-process.patch
+   - cloud-init-needs-action.patch
+ + Drop hidesensitivedata in 16 &amp; greater
+ + test: pytestify cc_chef tests, add migration test
+ + chef: migrate files in old config directories for backups and cache
+ + fix: correct the path for Chef's backups (#5994)
+ + fix(Azure): don't reraise FileNotFoundError during ephemeral setup (#6113)</comment>
+    <requestid>1277881</requestid>
+  </revision>
 </revisionlist>

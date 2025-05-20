@@ -1,0 +1,34 @@
+--- cloudinit/ssh_util.py.orig
++++ cloudinit/ssh_util.py
+@@ -544,6 +544,10 @@ def parse_ssh_config_map(fname):
+ 
+ 
+ def _includes_dconf(fname: str) -> bool:
++    # Handle cases where sshd_config is handled in /usr/etc/ssh/sshd_config
++    # so /etc/ssh/sshd_config.d/ exists but /etc/ssh/sshd_config doesn't
++    if not os.path.exists(fname) and os.path.exists(f"{fname}.d"):
++        return True
+     if not os.path.isfile(fname):
+         return False
+     for line in util.load_text_file(fname).splitlines():
+--- tests/unittests/test_ssh_util.py.orig
++++ tests/unittests/test_ssh_util.py
+@@ -561,6 +561,18 @@ class TestUpdateSshConfig:
+         expected_conf_file = f"{mycfg}.d/50-cloud-init.conf"
+         assert not os.path.isfile(expected_conf_file)
+ 
++    def test_without_sshd_config(self, tmpdir):
++        """In some cases /etc/ssh/sshd_config.d exists but /etc/ssh/sshd_config
++        doesn't. In this case we shouldn't create /etc/ssh/sshd_config but make
++        /etc/ssh/sshd_config.d/50-cloud-init.conf."""
++        mycfg = tmpdir.join("sshd_config")
++        os.mkdir(os.path.join(tmpdir, "sshd_config.d"))
++        assert ssh_util.update_ssh_config({"key": "value"}, mycfg)
++        expected_conf_file = f"{mycfg}.d/50-cloud-init.conf"
++        assert os.path.isfile(expected_conf_file)
++        assert not os.path.isfile(mycfg)
++        assert "key value\n" == util.load_text_file(expected_conf_file)
++
+     @pytest.mark.parametrize(
+         "cfg",
+         ["Include {mycfg}.d/*.conf", "Include {mycfg}.d/*.conf # comment"],

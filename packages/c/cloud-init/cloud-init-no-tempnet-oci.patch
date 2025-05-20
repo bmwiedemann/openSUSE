@@ -1,6 +1,6 @@
 --- cloudinit/sources/DataSourceOracle.py.orig
 +++ cloudinit/sources/DataSourceOracle.py
-@@ -204,6 +204,8 @@ class DataSourceOracle(sources.DataSourc
+@@ -274,6 +274,8 @@ class DataSourceOracle(sources.DataSourc
  
      def _is_iscsi_root(self) -> bool:
          """Return whether we are on a iscsi machine."""
@@ -11,10 +11,11 @@
      def _get_iscsi_config(self) -> dict:
 --- tests/unittests/sources/test_oracle.py.orig
 +++ tests/unittests/sources/test_oracle.py
-@@ -996,6 +996,7 @@ class TestNonIscsiRoot_GetDataBehaviour:
+@@ -1331,7 +1331,7 @@ class TestNonIscsiRoot_GetDataBehaviour:
      def test_read_opc_metadata_called_with_ephemeral_dhcp(
-         self, m_find_fallback_nic, m_EphemeralDHCPv4, oracle_ds
+         self, m_find_fallback_nic, m_ephemeral_network, oracle_ds
      ):
+-
 +        return
          in_context_manager = False
  
