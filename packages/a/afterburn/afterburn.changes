@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 19 09:58:00 UTC 2025 - jan.suse@zerebecki.de
+
+- Update to version 5.8.2:
+  * cargo: Afterburn release 5.8.2
+  * docs/release-notes: update for release 5.8.2
+  * cargo: update dependencies
+  * cargo: Afterburn release 5.8.1
+  * cargo: Afterburn release 5.8.0
+  * docs/release-notes: update for release 5.8.0
+  * cargo: update dependencies
+  * packit: add initial support
+
+-------------------------------------------------------------------
 Wed May  7 17:00:57 UTC 2025 - Jan Zerebecki <jan.suse@zerebecki.de>
 
 - Use autosetup for patches, refresh them and rename

@@ -21,7 +21,7 @@
 %global dracutmodulesdir %(pkg-config --variable=dracutmodulesdir dracut || echo '/usr/lib/dracut/modules.d')
 
 Name:           afterburn
-Version:        5.7.0.git103.bae893c
+Version:        5.8.2
 Release:        0
 Summary:        A cloud provider agent
 License:        Apache-2.0
