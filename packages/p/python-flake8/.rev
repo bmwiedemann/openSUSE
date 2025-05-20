@@ -467,4 +467,15 @@
     lines in 3.12+.</comment>
     <requestid>1195178</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>daa41d53b510b4701ac254875567b51e</srcmd5>
+    <version>7.2.0</version>
+    <time>1747726256</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.2.0:
+  * pycodestyle has been updated to &gt;= 2.13.0, &lt; 2.14.0
+  * pyflakes has been updated to &gt;= 3.3.0, &lt; 3.4.0
+  * Require python &gt;= 3.9 (See also :pull:`1973`).</comment>
+    <requestid>1269469</requestid>
+  </revision>
 </revisionlist>

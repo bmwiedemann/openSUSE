@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:54:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * pycodestyle has been updated to >= 2.13.0, < 2.14.0
+  * pyflakes has been updated to >= 3.3.0, < 3.4.0
+  * Require python >= 3.9 (See also :pull:`1973`).
+
+-------------------------------------------------------------------
 Wed Aug 21 17:52:22 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.1:
