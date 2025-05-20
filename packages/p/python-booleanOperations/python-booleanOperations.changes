@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu May 15 11:58:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Thu Dec 16 10:45:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip python flavors <= 3.6: No FontTools available
