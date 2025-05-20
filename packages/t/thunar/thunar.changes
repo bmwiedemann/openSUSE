@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri May 16 09:08:52 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.3
+  * Always warn user before permanent deleting files
+  * Fix string leaks when UCAs use a submenu
+  * Fix a potential leak in thunar_action_manager_append_custom_actions
+  * Fix leaks with ThunarMenuX objects
+  * Fix thunarx_menu_get_items leak when multiple UCAs share a submenu
+  * Fix refresh on row-changed in list view (#1584)
+  * Add missing NULL check before unref call
+  * Fix popup position of DnD menu
+  * UCA: Correct PWD for submenu folder items (#1615)
+  * wayland: Fix popup menu not closing (#1592)
+  * Check if file exists before opening its location (#1257)
+  * Prevent popups on wrong window (#1591)
+  * thunar-tpa: Fix libxfce4panel include
+  * Prevent criticals when switching current view (#1344)
+  * Fix crash when destroying folder in list view (#1330) (#1568)
+  * Fix crash in properties dialog (#1585)
+  * Fix invalid filenames when copying to exFAT FS (#1570)
+  * Fix typo in preferences dialog
+  * Hide shortcuts editor when accel map uninitialized (#1488)
+  * Update statusbar when searching (#1560)
+  * Always update statusbar on file changes in list view (#1560)
+  * Fix item activation on double-click in list view (#1567)
+  * Use 'malloc_trim' after search (#1552)
+  * Fix missing dialog for folder errors in list view (#1538)
+  * Fix leak on search update
+  * Fix missing dialog window icon (#1506)
+  * Fix leaks on "cancel search"
+  * Properly check if a file can be trashed (#1554)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Mon Feb 10 08:24:46 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.2
@@ -2057,4 +2091,3 @@ Wed Aug  2 00:00:00 CET 2006 - pnemec@suse.cz
 - initial comment, version is 0.3.2beta2
 - package moved into BuildService
 - added thunar-desktop_file.patch - small modification of desktop file
--------------------------------------------------------------------
