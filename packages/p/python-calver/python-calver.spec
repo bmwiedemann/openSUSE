@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-calver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,12 @@ Summary:        Setuptools extension for CalVer package versions
 License:        Apache-2.0
 URL:            https://github.com/di/calver
 Source:         https://github.com/di/calver/archive/refs/tags/%{ghtag}.tar.gz#/calver-%{version}-gh.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirement
 %if %{with test}
 BuildRequires:  %{python_module calver}
@@ -43,8 +47,6 @@ BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pytest}
 %endif
 # /SECTION
-BuildRequires:  fdupes
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -57,11 +59,11 @@ Setuptools extension for CalVer package versions
 sed -i 's/calver_version(True)/"%{version}"/' setup.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
