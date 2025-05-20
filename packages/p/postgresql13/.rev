@@ -483,4 +483,19 @@
   * https://www.postgresql.org/about/news/p-3018/</comment>
     <requestid>1247461</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bb57a99ec56d4558a3636409d7390ac7</srcmd5>
+    <version>13.21</version>
+    <time>1747726514</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to 13.21:
+  * bsc#1242931, CVE-2025-4207: postgresql: PostgreSQL GB18030
+    encoding validation can read one byte past end of allocation
+    for text that fails validation.
+  * https://www.postgresql.org/docs/release/13.21/
+  * https://www.postgresql.org/about/news/p-3072/
+- Add postresql-pg_config_paths.patch to fix a race condition
+  while generating pg_config_paths.h.</comment>
+    <requestid>1278027</requestid>
+  </revision>
 </revisionlist>
