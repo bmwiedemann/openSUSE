@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 18 07:15:57 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.3.14:
+  * Fix async connection
+  * Add version info in version.h file
+  * Update slot-node mapping with time interval
+  * Support Redis function
+  * Fix scan cursor type from long long to unsigned long long
+  * Avoid throw exception in RedMutex::unlock
+  * Better support for mset, lmpop, lmove, blmove
+  * Better support for Redis Cluster in IPv6 env
+
+-------------------------------------------------------------------
 Sat Mar 22 20:36:22 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
