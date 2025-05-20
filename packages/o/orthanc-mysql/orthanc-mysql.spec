@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-mysql
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 # Copyright (c) 2020-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancMySQL-%{version}.tar.gz
 Source1:        orthanc-mysql-readme.openSUSE
 Source2:        mysql.json
+Patch0:         ggl_index.patch
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
@@ -60,7 +61,7 @@ Requires:       orthanc
 MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
 
 %prep
-%autosetup -n OrthancMySQL-%{version}
+%autosetup -p1 -n OrthancMySQL-%{version}
 
 %build
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200

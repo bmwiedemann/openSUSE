@@ -1,0 +1,11 @@
+diff -rU 3 a/MySQL/Plugins/IndexPlugin.cpp b/MySQL/Plugins/IndexPlugin.cpp
+--- a/MySQL/Plugins/IndexPlugin.cpp	2024-06-06 15:12:01.000000000 +0200
++++ b/MySQL/Plugins/IndexPlugin.cpp	2025-05-16 17:58:21.504257147 +0200
+@@ -30,6 +30,7 @@
+ #include <Toolbox.h>
+ 
+ #include <google/protobuf/any.h>
++#include <google/protobuf/stubs/common.h>
+ 
+ #define ORTHANC_PLUGIN_NAME "mysql-index"
+ 
