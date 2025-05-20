@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-completion
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-click-completion
 Version:        0.5.2
 Release:        0
@@ -25,17 +24,19 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/click-contrib/click-completion
 Source:         https://github.com/click-contrib/click-completion/archive/v%{version}.tar.gz#/click-completion-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-click
 Requires:       python-shellingham
 Requires:       python-six
+BuildArch:      noarch
 %ifpython2
 Requires:       python-enum34
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -47,15 +48,16 @@ sed -i '1 {/^#!/d}' click_completion/*.py examples/*
 chmod a-x examples/*
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.md examples/
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/click[-_]completion
+%{python_sitelib}/click[-_]completion-%{version}*-info
 
 %changelog
