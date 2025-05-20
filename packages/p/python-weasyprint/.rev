@@ -339,4 +339,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1252394</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1bbab82790b26414419bfcab163111b6</srcmd5>
+    <version>65.1</version>
+    <time>1747773960</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1278687 from glaubitz
+
+- Update to 65.1
+    * #2414: Correctly handle flex columns split between pages
+    * 1b24ad9: Include padding in outer size of item elements
+    * #2419: Set main tag as block by default
+    * #2415: Fix support of replaced block box as flex items
+    * 83da2fe0: Fix margins and padding for rtl lists
+    * #2429, #1076, #2431: Fix page groups
+  - Bump cssselect2_min_version to 0.8.0</comment>
+    <requestid>1278844</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %global brotli_min_version     1.0.1
 %global cffi_min_version       0.6
-%global cssselect2_min_version 0.1
+%global cssselect2_min_version 0.8.0
 %global fonttools_min_version  4.0.0
 %global tinyhtml5_min_version  2.0.0
 %global Pillow_min_version     9.1.0
@@ -29,7 +29,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        64.1
+Version:        65.1
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause

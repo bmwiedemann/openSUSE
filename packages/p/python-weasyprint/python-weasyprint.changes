@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 20 12:11:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 65.1
+  * #2414: Correctly handle flex columns split between pages
+  * 1b24ad9: Include padding in outer size of item elements
+  * #2419: Set main tag as block by default
+  * #2415: Fix support of replaced block box as flex items
+  * 83da2fe0: Fix margins and padding for rtl lists
+  * #2429, #1076, #2431: Fix page groups
+- Bump cssselect2_min_version to 0.8.0
+
+-------------------------------------------------------------------
 Wed Mar  5 10:07:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 64.1
