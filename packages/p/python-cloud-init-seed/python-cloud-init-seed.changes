@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 16 09:16:42 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Convert to pip-based build
+
+-------------------------------------------------------------------
 Wed May 27 09:36:45 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
