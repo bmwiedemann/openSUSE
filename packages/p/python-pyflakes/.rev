@@ -445,4 +445,20 @@ It is a dependency of the spyder python graphical environment, besides by a usef
     <comment></comment>
     <requestid>1191180</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9a2c819111e5071b5ff5a46f91ac1b28</srcmd5>
+    <version>3.3.2</version>
+    <time>1747726253</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.2:
+  * Fix crash with global / nonlocal in class bodies (regressed
+    in 3.3.0)
+  * Allow assignment expressions to redefine annotations
+    (regressed in 3.3.0)
+  * Add __debuggerskip__ as a special local
+  * Allow assignment expressions to redefine outer names
+  * Drop support for EOL python 3.8
+  * Add new error for unused global / nonlocal names</comment>
+    <requestid>1269465</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Apr 15 07:53:16 UTC 2025 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Fix crash with global / nonlocal in class bodies (regressed
+    in 3.3.0)
+  * Allow assignment expressions to redefine annotations
+    (regressed in 3.3.0)
+  * Add __debuggerskip__ as a special local
+  * Allow assignment expressions to redefine outer names
+  * Drop support for EOL python 3.8
+  * Add new error for unused global / nonlocal names
+
+-------------------------------------------------------------------
 Fri Aug  2 11:40:14 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Add python-pytest to BuildRequires
