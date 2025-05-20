@@ -17,7 +17,7 @@
 
 
 Name:           ctlptl
-Version:        0.8.40
+Version:        0.8.41
 Release:        0
 Summary:        CLI for declaratively setting up local Kubernetes clusters
 License:        Apache-2.0
@@ -50,8 +50,8 @@ Bash command line completion support for %{name}.
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
 Group:          System/Shells
-Requires:       fish
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
@@ -61,8 +61,8 @@ Fish command line completion support for %{name}.
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
-Requires:       zsh
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 

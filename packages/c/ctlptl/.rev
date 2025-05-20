@@ -7,4 +7,12 @@
     <comment>new package ctlptl (pronounced cattle patrol): CLI for declaratively setting up local Kubernetes clusters</comment>
     <requestid>1276999</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f1f441ebad48ccdd9dc39546ee335563</srcmd5>
+    <version>0.8.41</version>
+    <time>1747726671</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278304</requestid>
+  </revision>
 </revisionlist>

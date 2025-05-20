@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 19 04:37:51 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.41:
+  * cluster: support for kind 0.28 (#384)
+  * build(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#382)
+  * Update version numbers: 0.8.40
+
+-------------------------------------------------------------------
 Fri May  2 07:28:27 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package ctlptl (pronounced cattle patrol): CLI for
