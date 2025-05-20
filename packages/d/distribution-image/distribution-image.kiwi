@@ -60,7 +60,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
         </expose>
       </containerconfig>
     </type>
-    <version>2025</version>
+    <version>2025.0.2</version>
     <packagemanager>zypper</packagemanager>
     <rpm-excludedocs>true</rpm-excludedocs>
   </preferences>
