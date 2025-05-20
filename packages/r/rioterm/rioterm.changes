@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu May 15 13:58:27 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 0.2.16:
+  * prepare 0.2.16
+  * Replace changelog with details URL for all releases
+  * Remove weird linebreaks
+  * Add metainfo and screenshots for appstream
+  * fix crash with invalid line index
+  * Update release notes
+  * Update docs
+  * Read XDG_CONFIG_HOME to figure out configuration path
+  * flake.lock: Update
+  * Update build-from-source.md
+  * tbd on 0.2.16
+  * fix typed character
+  * move back sugarloaf to the fam
+  * Always damage current cursor
+  * Use both offset and render_offset in scale and update skrifa
+  * update releases.md
+  * fix bookmark size (closes #1094)
+  * update release.md
+
+-------------------------------------------------------------------
 Tue May 06 13:40:16 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 0.2.14:
