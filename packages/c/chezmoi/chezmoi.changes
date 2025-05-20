@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu May 15 16:54:15 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.62.4:.
+  - Fixes
+    * fix: Make toStrings template function flatten arguments
+  - Documentation updates
+    * docs: Document that only dictionaries are merged
+    * docs: Add a note about private externals
+    * docs: Correct the usage of execute-template
+
+-------------------------------------------------------------------
 Wed May  7 16:21:46 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.62.3:

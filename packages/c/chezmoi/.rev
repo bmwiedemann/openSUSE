@@ -817,4 +817,19 @@
 </comment>
     <requestid>1275327</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ce56741fe45ed7ef9219ec7ab5d60904</srcmd5>
+    <version>2.62.4</version>
+    <time>1747726402</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.62.4:.
+  - Fixes
+    * fix: Make toStrings template function flatten arguments
+  - Documentation updates
+    * docs: Document that only dictionaries are merged
+    * docs: Add a note about private externals
+    * docs: Correct the usage of execute-template
+</comment>
+    <requestid>1277859</requestid>
+  </revision>
 </revisionlist>
