@@ -1,7 +1,7 @@
 #
 # spec file for package python-colorful
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-colorful
 Version:        0.5.6
 Release:        0
@@ -25,8 +23,10 @@ Summary:        Terminal string styling done right, in Python
 License:        MIT
 URL:            https://github.com/timofurrer/colorful
 Source:         https://github.com/timofurrer/colorful/archive/refs/tags/v%{version}.tar.gz#/colorful-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -40,10 +40,10 @@ with an easy to use API.
 %autosetup -p1 -n colorful-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -52,6 +52,7 @@ with an easy to use API.
 %files %{python_files}
 %license LICENSE
 %doc README.md CHANGELOG.md
-%{python_sitelib}/*
+%{python_sitelib}/colorful
+%{python_sitelib}/colorful-%{version}*-info
 
 %changelog
