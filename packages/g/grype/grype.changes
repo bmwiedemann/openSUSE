@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Sat May 17 07:06:10 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.92.1:
+  * Dependencies
+    - chore(deps): update anchore dependencies (#2668)
+    - chore(deps): bump anchore/sbom-action from 0.19.0 to 0.20.0
+      (#2664)
+    - chore(deps): bump github/codeql-action from 3.28.17 to
+      3.28.18 (#2665)
+
+-------------------------------------------------------------------
+Thu May 15 04:47:16 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.92.0:
+  https://github.com/anchore/grype/compare/v0.91.2...v0.92.0
+  * Added Features
+    - improve html template [#2635 @OnceUponALoop]
+    - Add EPSS metrics to grype results [#1973 #2587 @wagoodman]
+    - Show indication of known exploited vulnerabilities (from
+      CISA) [#1511 #2587 @wagoodman]
+  * Bug Fixes
+    - adjust namespace translation logic to be v5 compatible [#2634
+      @westonsteimel]
+    - fall back to fuzzy constraint units [#2651 @willmurphyscode]
+    - adjust version prefix check when excluding overlapping
+      packages [#2653 @westonsteimel]
+    - Dropping group from npm package names leads to false
+      positives [#2554 #2645 @kzantow]
+    - Potential regression in CVE detection from 0.87.0 (v5 schema)
+      to 0.88.0 (v6 schema) for go-module detection [#2642]
+    - Removal of temporary files not working on Windows [#2233
+      #2657 @popey]
+    - @jridgewell/gen-mapping incorrectly attributed
+      GHSA-8rmg-jf7p-4p22 [#1886 #2645 @kzantow]
+    - Vulnerability reported on @group/name dependency when actual
+      vulnerability exists on name dependency [#1701 #2645
+      @kzantow]
+    - Grype false negatives in versions v0.88.0 and later leading
+      to missed critical vulnerabilities [#2628 #2645 @kzantow]
+    - PHP pecl redis mixes with redis project itself and creates
+      false positive cve [#1804]
+    - False Positive: Openssl CVE-2022-2068, CVE-2022-1292,
+      CVE-2021-3711 in SUSE Enterprise 15 SP5 [#1729]
+    - Grype does not handle purl file input with packages from
+      different distributions [#2630 #2639 @chovanecadam]
+    - grype pkg:golang/k8s.io/ingress-nginx@v1.11.2 does not show
+      cve [#2580 #2586 @goatwu1993]
+
+-------------------------------------------------------------------
 Fri Apr 25 18:25:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.91.2:
