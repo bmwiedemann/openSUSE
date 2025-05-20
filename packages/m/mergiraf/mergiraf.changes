@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat May 17 16:26:30 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  * Maintenance release to update out of a yanked dependency.
+- Update to version 0.8.0
+  General improvements
+  * feat: Specify different separators for each children group of
+    a commutative parent.
+  * fix: Avoid displaying spurious conflicts.
+  * fix: Check that the merged text is syntactically valid and
+    consistent with the merged tree.
+  * fix: Handling of duplicate signatures in base revision.
+  * fix: Don't match nodes of different types.
+  * fix: Writing changeset to debug dir.
+  Language-specific improvements
+  * C/C++: Restrict commutativity of initializer_list.
+  * C/C++: even more C++ file extensions.
+  * C#: Restrict commutativity.
+  * YAML: Fix handling of quoted strings.
+- Update to version 0.7.0
+  New languages
+  * Java Properties (.properties).
+  UX improvements
+  * file formats can be selected manually using the new
+    --language option.
+  * zdiff3-style conflicts are detected and warned against, as
+    Mergiraf doesn't support solving those.
+  * using mergiraf solve together with jj gives a helpful error
+    message.
+  * the --keep option of mergiraf solve was renamed to --stdout.
+  Bug fixes
+  * Incorrect resolution of delete-delete conflict.
+  * Spurious indentation changes on untouched nodes.
+  * Missing file extensions for C++.
+  * Unidentified conflict between --keep-backup and --stdout.
+  * The --debug option was advertised in commands where it doesn't
+    have any effect.
+  * Java: Missing commutativity for 'throws' declarations.
+  * Java: Missing commutativity in interfaces.
+  * Python: Missing commutativity for "import from" statements.
+  Performance
+  * Many optimizations.
+
+-------------------------------------------------------------------
 Sun Mar  2 22:33:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.6.0:
