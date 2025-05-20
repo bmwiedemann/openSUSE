@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-threading
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
 Name:           python-click-threading
 Version:        0.5.0
 Release:        0
@@ -26,8 +24,10 @@ License:        MIT
 URL:            https://github.com/click-contrib/click-threading
 Source:         https://files.pythonhosted.org/packages/source/c/click-threading/click-threading-%{version}.tar.gz
 BuildRequires:  %{python_module click >= 5.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 5.0
@@ -46,13 +46,12 @@ Utilities for multithreading in click <http://click.pocoo.org/>.
 
 %prep
 %setup -q -n click-threading-%{version}
-rm -rf click_threading.egg-info
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,6 +61,7 @@ export LANG=en_US.UTF-8
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%{python_sitelib}/*
+%{python_sitelib}/click[-_]threading
+%{python_sitelib}/click[-_]threading-%{version}*-info
 
 %changelog
