@@ -389,4 +389,25 @@
   * allowing to select build-options via cli and project build configuration</comment>
     <requestid>1276775</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>caadb32939cebf230a1d50fdeb844d0b</srcmd5>
+    <version>0.5.16</version>
+    <time>1747726295</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.5.16:
+  * package EULA support added
+  * agama: do not take the iso meta data from the agama iso
+  * code cleanup and refactoring
+  * build description files are now validated.
+  * verify command is now checking all flavors by default.
+
+- update to version 0.5.15:
+  * fix generation of gpg-pubkey content tags
+  * Do not error out in updateinfo_packages_only mode if packages are not found
+  * Set BUILD_DIR before calling the sbom generator
+  * Handle build_options in flavors different
+    Add them to the global set, instead of replacing the global set.
+  * Fix handover of multiple --build-option cli parameters</comment>
+    <requestid>1278080</requestid>
+  </revision>
 </revisionlist>
