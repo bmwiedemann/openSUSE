@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun May 11 17:22:57 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.100.0:
+  * Long list of changes, see
+    <https://github.com/OpenChemistry/avogadroapp/releases/tag/1.100.0>
+- Switch to Qt6 for build.
+- Set up for tests, but these cannot be built as of now due to
+  dependency on paraview's QtTesting (unavailable for openSUSE).
+- Disable Avogadro_ENABLE_RPC to avoid depending on Molequeue,
+  which is abandoned and does not build with Qt6.
+- Fix builds for 15.6 by requiring gcc-c++ >= 8 for <filesystem>
+  support.
+
+-------------------------------------------------------------------
 Fri Feb 23 09:22:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove documentation installed by cmake: we package those files
