@@ -1,7 +1,7 @@
 #
 # spec file for package libvpl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %global sover 2
 Name:           libvpl
 %define lname   libvpl%{sover}
-Version:        2.14.0
+Version:        2.15.0
 Release:        0
 Summary:        oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples
 License:        MIT
