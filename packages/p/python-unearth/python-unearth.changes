@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 16 08:28:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.17.5
+  * Do not use Path.from_uri()
+- from version 0.17.4
+  * Git checkout with short commit hash
+
+-------------------------------------------------------------------
 Thu Apr  3 07:13:06 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.3

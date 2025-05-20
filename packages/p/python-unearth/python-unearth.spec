@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-unearth
-Version:        0.17.3
+Version:        0.17.5
 Release:        0
 Summary:        A utility to fetch and download python packages
 License:        MIT
