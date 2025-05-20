@@ -53,4 +53,13 @@
     (#287, #882) (forwarded request 1272963 from munix9)</comment>
     <requestid>1272970</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b211a021b9de413fb9af4d26a641cd1b</srcmd5>
+    <version>2.5.4</version>
+    <time>1747726538</time>
+    <user>anag_factory</user>
+    <comment>- switch to fuse 3 (boo#1242079). The go code supports run-time
+  switching of both fusermount3 and fusermount (from fuse 2) (forwarded request 1277968 from AndreasStieger)</comment>
+    <requestid>1278074</requestid>
+  </revision>
 </revisionlist>
