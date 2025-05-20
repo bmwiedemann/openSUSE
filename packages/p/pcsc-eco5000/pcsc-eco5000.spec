@@ -78,7 +78,7 @@ autoreconf -f -i
 %configure\
 	--libdir=%{ifddir}\
 	--disable-static
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 %makeinstall

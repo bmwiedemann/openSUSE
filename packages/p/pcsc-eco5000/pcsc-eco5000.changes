@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed May 14 16:39:32 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use %make_build instead of %jobs (boo#1237231)
+
+-------------------------------------------------------------------
 Tue Nov 26 09:48:30 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Fix compilationo with gcc14 and fix some warnings
