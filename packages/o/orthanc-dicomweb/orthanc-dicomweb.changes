@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon May 12 15:27:53 UTC 2025 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.20
+  * Fix calls to /studies/../series/../rendered returning a 404 if the series has
+    multiple instances.
+    https://discourse.orthanc-server.org/t/thumbnail-orthanc-stone-viewer-issue/5827/3
+  * Fix response of /servers/../stow where the study id was repeated for each instance.
+    The response also now contains the list of sent instances.
+
+-------------------------------------------------------------------
 Mon May  5 19:30:51 UTC 2025 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9
