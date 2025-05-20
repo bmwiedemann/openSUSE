@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu May 15 17:11:50 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird ESR 128.10.1:
+  MFSA 2025-34 (boo#1243216)
+  * CVE-2025-3875 (bmo#1950629)
+    Sender Spoofing via Malformed From Header in Thunderbird
+  * CVE-2025-3877 (bmo#1958580)
+    Unsolicited File Download, Disk Space Exhaustion, and
+    Credential Leakage via mailbox:/// Links
+  * CVE-2025-3909 (bmo#1958376)
+    JavaScript Execution via Spoofed PDF Attachment and file:///
+    Link
+  * CVE-2025-3932 (bmo#1960412)
+    Tracking Links in Attachments Bypassed Remote Content
+    Blocking
+  * fixed: Standalone message windows/tabs no longer responded
+    after folder compaction (bmo#1960349)
+  * fixed: Thunderbird could crash when importing Outlook
+    messages (bmo#1851297)
+  * fixed: Visual and UX improvements (bmo#1960861)
+
+-------------------------------------------------------------------
+Sun May 11 09:44:51 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build on s390x needs 17G memory - adjust _constraints
+
+-------------------------------------------------------------------
 Tue Apr 29 20:33:16 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird ESR 128.10.0

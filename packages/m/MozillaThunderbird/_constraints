@@ -49,6 +49,16 @@
   </overwrite>
   <overwrite>
     <conditions>
+      <arch>s390x</arch>
+    </conditions>
+    <hardware>
+      <memory>
+        <size unit="G">17</size>
+      </memory>
+    </hardware>
+  </overwrite>
+  <overwrite>
+    <conditions>
       <arch>x86_64</arch>
     </conditions>
     <hardware>
