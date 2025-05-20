@@ -1,7 +1,7 @@
 #
 # spec file for package python-cooldict
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define normversion 1.4
 Name:           python-cooldict
 Version:        1.04
 Release:        0
@@ -26,12 +26,13 @@ Group:          Development/Languages/Python
 URL:            https://github.com/zardus/cooldict
 Source:         https://files.pythonhosted.org/packages/source/c/cooldict/cooldict-%{version}.tar.gz
 BuildRequires:  %{python_module ana >= 0.1}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ana >= 0.1
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -45,10 +46,10 @@ cooldict provides some dict-like structures for Python, such as
 %setup -q -n cooldict-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -58,6 +59,8 @@ cooldict provides some dict-like structures for Python, such as
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/cooldict.py
+%{python_sitelib}/cooldict-%{normversion}*-info
+%pycache_only %{python_sitelib}/__pycache__/cooldict*
 
 %changelog
