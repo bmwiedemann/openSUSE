@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri May 16 04:58:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  The Kargo team is excited to announce one of our biggest releases
+  to date -- Kargo v1.5.0!
+  Users will notice right away that the UI has been overhauled with
+  extensive improvements to both usability and responsiveness, but
+  this release has a lot of new and improved functionality under
+  the hood as well, so let's dive in!
+  https://github.com/akuity/kargo/releases/tag/v1.5.0
+  * CLI-related changes
+    - chore(backport release-1.5): fix(cli): fix get + delete
+      projectconfig commands (#4077)
+    - chore(backport release-1.5): feat(cli): add commands for
+      getting and deleting project config (#4069)
+  * Dependency Updates
+    - chore(backport release-1.5): chore(deps): update non-k8s
+      dependencies (#4073)
+    - chore(backport release-1.5): chore(deps): bump
+      actions/setup-go from 5.4.0 to 5.5.0 (#4063)
+    - chore(backport release-1.5): chore(deps): bump golang from
+      1.24.2-bookworm to 1.24.3-bookworm (#4061)
+    - chore(backport release-1.5): chore(deps/tools): bump the
+      go-minor group in /hack/tools with 2 updates (#4060)
+    - chore(deps): bump vite from 6.2.6 to 6.2.7 in /ui (#3962)
+    - chore(deps): bump the js-patch group across 1 directory with
+      13 updates (#3936)
+    - chore(deps): update dependencies (#3940)
+    - chore(deps): bump library/node from 22.14.0 to 22.15.0
+      (#3938)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 2 updates (#3935)
+    - chore(deps): bump github.com/ktrysmt/go-bitbucket from 0.9.81
+      to 0.9.83 in the go-patch group (#3931)
+    - chore(deps): bump sigstore/cosign-installer from 3.8.1 to
+      3.8.2 (#3933)
+    - chore(deps): bump vite from 6.2.5 to 6.2.6 in /ui (#3849)
+    - chore(deps): bump actions/setup-node from 4.3.0 to 4.4.0
+      (#3889)
+    - chore(deps): bump codecov/codecov-action from 5.4.0 to 5.4.2
+      (#3890)
+    - chore(deps): bump the go-minor group with 2 updates (#3892)
+    - chore(deps/api): bump golang.org/x/net from 0.37.0 to 0.38.0
+      in /api (#3880)
+    - chore(deps/pkg): bump golang.org/x/net from 0.37.0 to 0.38.0
+      in /pkg (#3881)
+    - chore(deps/tools): bump the go-minor group in /hack/tools
+      with 2 updates (#3853)
+    - chore(deps): bump curlimages/curl from 8.12.1 to 8.13.0
+      (#3852)
+    - chore(deps): bump the go-patch group with 4 updates (#3854)
+    - chore(deps): bump the go-minor group with 2 updates (#3855)
+    - chore(deps): update Helm to v3.17.3 (#3827)
+    - chore(deps): bump vite from 6.2.4 to 6.2.5 in /ui (#3789)
+    - chore(deps/tools): bump sigs.k8s.io/controller-tools from
+      0.17.2 to 0.17.3 in /hack/tools in the go-patch group (#3805)
+    - chore(deps): bump the go-minor group across 1 directory with
+      7 updates (#3809)
+    - chore(deps): bump the go-patch group with 5 updates (#3800)
+    - chore(deps): bump golang from 1.24.1-bookworm to
+      1.24.2-bookworm (#3799)
+    - chore(deps): bump golang.org/x/net from 0.37.0 to 0.38.0 in
+      the go-minor group (#3759)
+    - chore(deps): bump vite from 6.2.3 to 6.2.4 in /ui (#3767)
+    - chore(deps): bump the js-minor group in /ui with 27 updates
+      (#3755)
+    - chore(deps/tools): bump github.com/bufbuild/buf from 1.50.1
+      to 1.51.0 in /hack/tools in the go-minor group (#3757)
+    - chore(deps): bump the go-patch group with 2 updates (#3758)
+    - chore(deps): bump yaml from 2.7.0 to 2.7.1 in /ui in the
+      js-patch group (#3754)
+
+-------------------------------------------------------------------
 Wed May 07 18:52:52 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.4:
