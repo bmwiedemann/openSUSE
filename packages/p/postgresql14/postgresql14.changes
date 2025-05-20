@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May  9 11:54:41 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 14.18:
+  * bsc#1242931, CVE-2025-4207: postgresql: PostgreSQL GB18030
+    encoding validation can read one byte past end of allocation
+    for text that fails validation.
+  * https://www.postgresql.org/docs/release/14.18/
+  * https://www.postgresql.org/about/news/p-3072/
+- Add postresql-pg_config_paths.patch to fix a race condition
+  while generating pg_config_paths.h.
+
+-------------------------------------------------------------------
 Tue Feb 18 11:36:44 UTC 2025 - Reinhard Max <max@suse.com>
 
 - Upgrade to 14.17:
