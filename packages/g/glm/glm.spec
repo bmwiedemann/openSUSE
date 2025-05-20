@@ -1,7 +1,7 @@
 #
 # spec file for package glm
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           glm
-Version:        0.9.9.8
+Version:        1.0.1
 Release:        0
 Summary:        Header only C++ mathematics library for graphics
 License:        GPL-2.0-only AND MIT
@@ -25,12 +25,16 @@ Group:          Development/Libraries/C and C++
 URL:            https://glm.g-truc.net/
 #Git-Clone:     https://github.com/g-truc/glm.git
 Source:         https://github.com/g-truc/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE glm-0.9.9.8-install.patch
-Patch2:         glm-0.9.9.8-install.patch
-# PATCH-FIX-OPENSUSE glm-0.9.9.8-pkgconfig.patch add pkgconfig file -- aloisio@gmx.com
-Patch3:         glm-0.9.9.8-pkgconfig.patch
-# PATCH-FIX-UPSTREAM glm-0.9.9.8-fix_tests_big-endian.patch
-Patch4:         glm-0.9.9.8-fix_tests_big-endian.patch
+# PATCH-FIX-OPENSUSE glm-1.0.1-pkgconfig.patch add pkgconfig file -- aloisio@gmx.com, updated by buschmann23@opensuse.org
+Patch3:         glm-1.0.1-pkgconfig.patch
+# PATCH-FIX-UPSTREAM glm-1.0.1-fix-tests-big-endian.patch
+Patch4:         glm-1.0.1-fix-tests-big-endian.patch
+# PATCH-FIX-OPENSUSE glm-1.0.1-without-werror.patch
+Patch5:         glm-1.0.1-without-werror.patch
+# PATCH-FIX-OPENSUSE glm-1.0.1-fix-install-cmake-files.patch
+Patch6:         glm-1.0.1-fix-install-cmake-files.patch
+# PATCH-FIX-OPENSUSE glm-1.0.1-noarch.patch
+Patch7:         glm-1.0.1-noarch.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -48,6 +52,7 @@ he knows GLM as well which makes it really easy to use.
 Summary:        Header only C++ mathematics library for graphics
 Group:          Development/Libraries/C and C++
 Requires:       cmake
+BuildArch:      noarch
 
 %description    devel
 OpenGL Mathematics (GLM) is a header only C++ mathematics library for graphics
@@ -71,8 +76,10 @@ This package provides the documentation for GLM library.
 %build
 %cmake \
   -DCMAKE_CXX_FLAGS="%{optflags} -fPIC -fno-strict-aliasing" \
-  -DGLM_TEST_ENABLE=ON
-%make_jobs
+  -DGLM_BUILD_LIBRARY=OFF \
+  -DGLM_BUILD_TESTS=ON \
+  -DGLM_BUILD_INSTALL=ON
+%cmake_build
 
 %install
 %cmake_install
@@ -84,8 +91,8 @@ This package provides the documentation for GLM library.
 
 %files devel
 %{_includedir}/glm
-%{_libdir}/cmake/%{name}
-%{_libdir}/pkgconfig/%{name}.pc
+%{_datadir}/cmake/%{name}
+%{_datadir}/pkgconfig/%{name}.pc
 
 %files doc
 # See https://github.com/g-truc/glm/blob/master/manual.md#-licenses for license details

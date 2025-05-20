@@ -1,0 +1,22 @@
+--- a/CMakeLists.txt	2024-02-27 18:19:47.000000000 +0100
++++ b/CMakeLists.txt	2025-05-14 16:10:27.589678383 +0200
+@@ -276,6 +276,9 @@ if (GLM_BUILD_INSTALL)
+ 		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
+ 	)
+ 
++	configure_file(glm.pc.in glm.pc @ONLY)
++	install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glm.pc DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
++
+ 	configure_file(
+ 		"${CMAKE_CURRENT_SOURCE_DIR}/cmake/cmake_uninstall.cmake.in"
+ 		"${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake"
+--- /dev/null	2025-05-14 12:48:29.697783955 +0200
++++ b/glm.pc.in	2025-05-14 16:11:48.008352154 +0200
+@@ -0,0 +1,7 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++includedir=${prefix}/include
++
++Name: GLM
++Description: OpenGL Mathematics
++Version: @GLM_VERSION@
++Cflags: -I${includedir}

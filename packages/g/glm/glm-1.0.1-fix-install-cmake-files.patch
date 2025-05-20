@@ -1,0 +1,29 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: Wed, 14 May 2025 17:23:00 +0200
+Subject: Fix installation of cmake files
+Upstream: no
+
+---
+ CMakeLists.txt |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/CMakeLists.txt	2025-05-14 16:55:08.429478107 +0200
++++ b/CMakeLists.txt	2025-05-14 16:55:57.965657706 +0200
+@@ -263,7 +263,7 @@
+ 	install(
+ 		EXPORT glm
+ 		NAMESPACE glm::
+-		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
++		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/cmake/glm"
+ 		FILE glmConfig.cmake
+ 	)
+ 	include(CMakePackageConfigHelpers)
+@@ -273,7 +273,7 @@
+ 	)
+ 	install(
+ 		FILES "${CMAKE_CURRENT_BINARY_DIR}/glmConfigVersion.cmake"
+-		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/glm"
++		DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/cmake/glm"
+ 	)
+ 
+ 	configure_file(glm.pc.in glm.pc @ONLY)

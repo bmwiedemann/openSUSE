@@ -1,0 +1,20 @@
+From: Matthias Fehring <buschmann23@opensuse.org>
+Date: Wed, 14 May 2025 17:29:00 +0200
+Subject: Disable -Werror compile options for tests
+Upstream: no
+
+---
+ CMakeLists.txt |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/test/CMakeLists.txt	2024-02-27 18:19:47.000000000 +0100
++++ b/test/CMakeLists.txt	2025-05-14 16:20:58.092760801 +0200
+@@ -20,7 +20,7 @@
+ 	endif()
+ 
+ 	if(NOT GLM_DISABLE_AUTO_DETECTION)
+-		add_compile_options(-Werror)
++#		add_compile_options(-Werror)
+ #		add_compile_options(-Wpedantic)
+ #		add_compile_options(-Wall)
+ #		add_compile_options(-Wextra)
