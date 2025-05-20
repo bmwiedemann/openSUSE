@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May  9 18:32:05 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.17.19:
+  * No release notes.
+- Enforce BuildRequires: cargo >= 1.80 to avoid build failures.
+
+-------------------------------------------------------------------
 Sun Apr 13 03:32:26 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.17.13:

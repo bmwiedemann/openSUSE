@@ -18,10 +18,10 @@
 
 # We will keep this for now
 %global oldest_supported_julia_version 0.7.0
-%global latest_julia_version 1.11.4
+%global latest_julia_version 1.11.5
 
 Name:           juliaup
-Version:        1.17.13
+Version:        1.17.19
 Release:        0
 Summary:        Julia installer and version multiplexer
 License:        (0BSD OR MIT OR Apache-2.0) AND Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND ISC AND MIT AND MPL-2.0 AND MIT
@@ -29,7 +29,7 @@ Group:          Development/Languages/Other
 URL:            https://github.com/JuliaLang/juliaup
 Source0:        https://github.com/JuliaLang/juliaup/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo
+BuildRequires:  cargo >= 1.80
 BuildRequires:  cargo-packaging
 BuildRequires:  zstd
 Requires:       ca-certificates
