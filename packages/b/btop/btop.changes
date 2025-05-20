@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 11 00:31:30 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.3+git20250511.ffcd064:
+  * Fix dangling reference warnings for GCC 13 and later
+  * v1.4.3 Bug fixes
+  * Sync CMake.gitignore template
+  * Ignore incomplete filter regex
+  * Remove redundant optimization flag
+  * Enable additional checks in libc++ with the new hardening mode
+  * Revert e266ccd which broke str_to_upper() and str_to_lower()
+  * ci: run cmake workflows on changes to the cmake module folder
+
+-------------------------------------------------------------------
 Thu May 01 20:33:51 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.4.2+git20250501.274d0c7:
