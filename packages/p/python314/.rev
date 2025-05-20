@@ -1880,4 +1880,14 @@
     <comment></comment>
     <requestid>1277634</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>167098ded2ea7635e721a50a40fcbbc7</srcmd5>
+    <version>3.14.0~b1</version>
+    <time>1747726572</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2025-4516-DecodeError-handler.patch fixing
+  CVE-2025-4516 (bsc#1243273) blocking DecodeError handling
+  vulnerability, which could lead to DoS.</comment>
+    <requestid>1278108</requestid>
+  </revision>
 </revisionlist>

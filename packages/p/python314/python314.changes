@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri May 16 13:44:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2025-4516-DecodeError-handler.patch fixing
+  CVE-2025-4516 (bsc#1243273) blocking DecodeError handling
+  vulnerability, which could lead to DoS.
+
+-------------------------------------------------------------------
 Mon May 12 16:18:21 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Skip test_multiprocessing_spawn, test_remote_pdb, test_sys in qemu
