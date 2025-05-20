@@ -2594,7 +2594,7 @@ Tue Nov 25 17:22:26 CET 2008 - sbrabec@suse.cz
 - Supplement gtk2-32bit/gtk2-64bit in baselibs.conf (bnc#354164).
 
 -------------------------------------------------------------------
-Fri Oct  3 18:57:41 WST 2008 - mboman@suse.de
+Fri Oct  3 18:57:41 EST 2008 - mboman@suse.de
 
 - Update to version 2.22.3:
   + Make librsvg buildable on windows without freetype dependency
