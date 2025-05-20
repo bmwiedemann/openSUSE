@@ -17,7 +17,7 @@
 
 
 Name:           himmelblau
-Version:        0.9.9+git.0.5425b98
+Version:        0.9.11+git.0.04ef9c8
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -52,7 +52,6 @@ BuildRequires:  libsoup-devel
 BuildRequires:  libudev-devel
 BuildRequires:  mercurial
 BuildRequires:  pango-devel
-BuildRequires:  python3-gyp
 BuildRequires:  webkit2gtk3-devel
 %endif
 BuildRequires:  systemd-devel

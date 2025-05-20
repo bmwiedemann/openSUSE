@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Apr 29 18:49:53 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.11+git.0.04ef9c8:
+  * Ensure only the base URL is printed to log
+  * Version 0.9.11
+  * Supplying a PRT cookie to SSO doesn't require network
+  * Improve Hello PIN failed auth error
+  * Fix rocky9 build
+  * Fix nss and offline checks for domain aliases
+  * Report error when MS Authenticator denies authorization
+  * Bail out of invalid offline auth
+  * Handle AADSTS errors from BeginAuth response
+  * Never dump failed reqwests to the log
+  * Update sccache-action version to use new cache service
+  * Permit daemon to start when network is down
+  * Version 0.9.10
+  * Add an nss cache for when daemon is down
+  * Additional pam info cues
+  * Proceed with Hello auth even with net down
+  * Indicate to the user what the password and PIN are
+  * Specify request for Entra Id password in PAM
+  * Ensure pam messages are seen
+  * Display the minimum PIN length during Hello setup
+  * PAM should loop, not die on error
+  * Ensure prompt msg remains for confirmation
+
+-------------------------------------------------------------------
 Tue Apr 15 14:15:15 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.9+git.0.5425b98:
