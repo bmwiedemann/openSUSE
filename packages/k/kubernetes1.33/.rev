@@ -7,4 +7,12 @@
     <comment>initial package for Kubernetes v1.33.0</comment>
     <requestid>1274880</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa527f557249e589021525669291a7b9</srcmd5>
+    <version>1.33.1</version>
+    <time>1747726715</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – May, 2025: Update to version 1.33.1</comment>
+    <requestid>1278340</requestid>
+  </revision>
 </revisionlist>

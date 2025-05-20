@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon May 19 05:26:53 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.1:
+  * Automated cherry pick of #130503: Unhandled panic crash on rollout_history printer.PrintObj (#131496)
+  * fix: fixes a possible panic in `NewYAMLToJSONDecoder`
+  * DRA: Fix failure to allocate large number of devices
+  * Disable size check for xfs/ext3/ext4 filesystems before expansion
+  * Disable disk size checking when calling NeedsResize function
+  * Handle unsupported node expansion for RWX volumes
+  * Mark NodeExpansion finsihed without featuregate check
+  * Also change final status by removing featuregate check
+  * Check for newer fields when deciding expansion recovery feature status
+  * Fix for HNS local endpoint was being deleted instead of the remote endpoint.
+
+-------------------------------------------------------------------
 Tue May  6 09:54:20 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - initial package for Kubernetes v1.33.0
