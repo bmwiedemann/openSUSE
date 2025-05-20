@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon May 19 06:31:43 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.9.3
+  * BlueSky Support Added
+  * Added Resend Support
+  * Fix flaky test in translation tests
+  * Set default port for Mattermost notifications
+  * Office 365 posts include subject and body now
+  * Telegram messages leverage caption field when attachments
+  * Extend options for plugin Seven
+  * Ntfy.sh Internationalized URL support added for click=
+  * Improved SMS transmission documentation
+  * apprise.urls() bulletproofing/bugfix
+  * Add option label for plugin seven
+  * Minor and insignifigant changes (typos and alike)
+
+-------------------------------------------------------------------
 Fri Jan 24 12:08:22 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.9.2
