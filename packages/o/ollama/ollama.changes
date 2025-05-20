@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat May 17 13:57:41 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.7.0:
+  * Ollama now supports multimodal models via Ollama’s new engine,
+    starting with new vision multimodal models:
+    ~ Meta Llama 4
+    ~ Google Gemma 3
+    ~ Qwen 2.5 VL
+    ~ Qwen 2.5 VL
+  * Ollama now supports providing WebP images as input to
+    multimodal models
+  * Improved performance of importing safetensors models via
+    ollama create
+  * Various bug fixes and performance enhancements
+
+-------------------------------------------------------------------
 Tue May  6 10:09:33 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 0.6.8:

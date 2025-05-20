@@ -431,4 +431,23 @@ because we don't need git-web and the other stuff here (forwarded request 125417
 - Use source url (https://en.opensuse.org/SourceUrls)</comment>
     <requestid>1277233</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>64d0c21c4792097d7034eba51cfe52ae</srcmd5>
+    <version>0.7.0</version>
+    <time>1747726601</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.0:
+  * Ollama now supports multimodal models via Ollama’s new engine,
+    starting with new vision multimodal models:
+    ~ Meta Llama 4
+    ~ Google Gemma 3
+    ~ Qwen 2.5 VL
+    ~ Qwen 2.5 VL
+  * Ollama now supports providing WebP images as input to
+    multimodal models
+  * Improved performance of importing safetensors models via
+    ollama create
+  * Various bug fixes and performance enhancements</comment>
+    <requestid>1278142</requestid>
+  </revision>
 </revisionlist>

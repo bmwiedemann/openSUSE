@@ -17,7 +17,7 @@
 
 
 Name:           ollama
-Version:        0.6.8
+Version:        0.7.0
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT
