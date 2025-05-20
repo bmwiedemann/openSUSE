@@ -1,0 +1,22 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://git.rockbox.org/cgit/rockbox.git</param>
+    <param name="scm">git</param>
+    <param name="revision">rbutil_1.5.1</param>
+    <param name="changesgenerate">disable</param>
+    <param name="versionformat">1.5.1</param>
+    <param name="filename">rockbox-rbutil</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">apps</param>
+    <param name="exclude">fonts</param>
+    <param name="exclude">uisimulator</param>
+    <param name="exclude">manual</param>
+    <param name="exclude">firmware</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
+

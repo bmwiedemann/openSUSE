@@ -1,0 +1,10 @@
+diff --git a/utils/CMakeLists.txt b/utils/CMakeLists.txt
+index 55e5b79..329146e 100644
+--- a/utils/CMakeLists.txt
++++ b/utils/CMakeLists.txt
+@@ -391,5 +391,4 @@ target_include_directories(gitversion INTERFACE ${CMAKE_CURRENT_BINARY_DIR}/gitv
+ include(${CMAKE_CURRENT_LIST_DIR}/cmake/deploy.cmake)
+ include(${CMAKE_CURRENT_LIST_DIR}/cmake/QtTest.cmake)
+ add_subdirectory(rbutilqt)
+-add_subdirectory(themeeditor)
+ 

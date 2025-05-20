@@ -1,8 +1,8 @@
 #
 # spec file for package rbutil
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,64 +18,71 @@
 
 
 Name:           rbutil
-Version:        1.4.1
+Version:        1.5.1
 Release:        0
 Summary:        Rockbox Firmware Manager
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://www.rockbox.org/wiki/RockboxUtility
-Source:         http://download.rockbox.org/rbutil/source/RockboxUtility-v%{version}-src.tar.bz2
+#Git-Clone:     https://git.rockbox.org/cgit/rockbox.git
+Source:         rockbox-rbutil-%{version}.tar.xz
+Patch0:         rbutil-no-themeeditor.patch
 Patch1:         rbutil-fix-versionstring.patch
-Patch2:         0001-imxtools-sbtools-fix-compilation-with-gcc-10.patch
-BuildRequires:  gcc-c++
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtbase-common-devel
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(cryptopp)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6Linguist)
+BuildRequires:  pkgconfig(Qt6Multimedia)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Test)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} < 1330
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%else
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 %endif
 
 %description
 Firmware manager for Rockbox MP3 players.
 
 %prep
-%autosetup -p1 -n RockboxUtility-v%{version}
+%autosetup -p1 -n rockbox-rbutil-%{version}
+rm -Rv utils/rbutilqt/zlib
 
 %build
-cd rbutil/rbutilqt
-%qmake5
-make %{?_smp_mflags}
+%if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
+export CC="gcc-12"
+export CXX="g++-12"
+%endif
+#
+cd utils
+%cmake \
+  -DCMAKE_SKIP_RPATH=ON \
+  -DBUILD_SHARED_LIBS=OFF
+%cmake_build
 
 %install
-install -Dm 0755 rbutil/rbutilqt/RockboxUtility %{buildroot}%{_bindir}/RockboxUtility
-install -d %{buildroot}/%{_datadir}/pixmaps/
-install -Dm 0644 rbutil/rbutilqt/icons/rockbox-256.png %{buildroot}/%{_datadir}/pixmaps/rbutil.jpg
-%suse_update_desktop_file -c rbutil rbutil "Rockbox opensource firmware manager" RockboxUtility rbutil "Qt;AudioVideo;Utility;X-SuSE-SyncUtility;"
+install -Dm 0755 utils/build/rbutilqt/RockboxUtility %{buildroot}%{_bindir}/RockboxUtility
+install -Dm 0644 utils/rbutilqt/RockboxUtility.desktop %{buildroot}%{_datadir}/applications/RockboxUtility.desktop
+install -Dm 0644 docs/logo/rockbox-clef.svg %{buildroot}%{_datadir}/pixmaps/rockbox-clef.svg
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%endif
-
-%if 0%{?suse_version} < 1330
-%postun
-%desktop_database_postun
-%endif
+%check
+cd utils
+%ctest --exclude-regex TestHttpGet
 
 %files
 %license docs/COPYING
-%doc rbutil/rbutilqt/changelog.txt
+%doc utils/rbutilqt/changelog.txt
 %{_bindir}/RockboxUtility
-%{_datadir}/applications/rbutil.desktop
-%{_datadir}/pixmaps/rbutil.jpg
+%{_datadir}/applications/RockboxUtility.desktop
+%{_datadir}//pixmaps/rockbox-clef.svg
 
 %changelog
