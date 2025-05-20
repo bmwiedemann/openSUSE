@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 16 06:24:40 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.8.9:
+  * Fix compilation with gcc 15.
+- Changes from version 1.8.7:
+  * Fix a compilation-dependent crash in the built-in expression
+    parser.
+  * Work around weird C++ RTTI behaviour on MacOS (like on Win32).
+  * Symbol assignment in ginsh recurses into other assigned
+    symbols (again).
+- Bump so version in shlib package name in line with upstream.
+
+-------------------------------------------------------------------
 Thu Dec 28 08:36:20 UTC 2023 - jun wang <junguo.wang@suse.com>
 
 - Update to version 1.8.7

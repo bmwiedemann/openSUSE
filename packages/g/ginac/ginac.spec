@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package ginac
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,9 +36,9 @@
 %bcond_without apiref_pdf
 %endif
 
-%define library_version 11
+%define library_version 13
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.7
+Version:        1.8.9
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -120,7 +120,7 @@ Provides:       lib%{name}-devel = %{version}
 Obsoletes:      lib%{name}-devel < %{version}
 %if 0%{?suse_version} < 1550
 Requires(pre):  %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 %endif
 Recommends:     ginac-doc-tutorial
 
@@ -217,8 +217,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %cmake_build check
 
-%post -n libginac%{library_version} -p /sbin/ldconfig
-%postun -n libginac%{library_version} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libginac%{library_version}
 
 %if 0%{?suse_version} < 1550
 %post devel
