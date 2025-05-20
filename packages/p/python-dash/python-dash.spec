@@ -106,10 +106,10 @@ chmod -x dash/extract-meta.js
 find . -name .gitkeep -delete
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/renderer
 %python_clone -a %{buildroot}%{_bindir}/dash-generate-components
 %python_clone -a %{buildroot}%{_bindir}/dash-update-components
@@ -145,6 +145,6 @@ find . -name .gitkeep -delete
 %python_alternative %{_bindir}/dash-update-components
 %python_alternative %{_bindir}/renderer
 %{python_sitelib}/dash
-%{python_sitelib}/dash-%{version}*-info
+%{python_sitelib}/dash-%{version}.dist-info
 
 %changelog
