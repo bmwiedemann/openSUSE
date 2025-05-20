@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue May 20 10:54:33 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.8.83:
+  * Meshery CLI
+    - feature(mesheryctl): update common list implemeentation using
+      server side pagination
+  * Maintenance
+    - Bump github.com/99designs/gqlgen from 0.17.45 to 0.17.72
+    - Bump github.com/docker/cli
+    - Bump google.golang.org/api from 0.228.0 to 0.231.0
+
+-------------------------------------------------------------------
 Sat May 17 08:07:07 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.8.82:
