@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Sat May 17 07:14:25 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.1:
+  * remove go-rpmdb replace directive [#3908 @wagoodman]
+
+-------------------------------------------------------------------
+Sat May 17 07:05:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.0:
+  * Added Features
+    - Add PHP interpreter + extensions cataloger [#2585
+      @LaurentGoderre]
+  * Bug Fixes
+    - update license content filtering default case to be 'none'
+      for no content [#3903 @spiffcs]
+    - Distinguish openjdk vs jdk when using file source [#3895
+      @adammcclenaghan]
+    - Make it discoverable if Native Image contains no embedded
+      SBOM [#3731 #3805 @sathiya06]
+  * Dependencies
+    - chore(deps): bump github/codeql-action from 3.28.17 to
+      3.28.18 (#3905)
+    - chore(deps): bump github.com/mholt/archives from 0.1.1 to
+      0.1.2 (#3898)
+    - chore(deps): bump anchore/sbom-action from 0.19.0 to 0.20.0
+      (#3899)
+
+-------------------------------------------------------------------
+Thu May 15 04:47:08 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.24.0:
+  https://github.com/anchore/syft/compare/v1.23.1...v1.24.0
+  * Added Features
+    - Add cataloger for Dart pubspec [#3292 @LaurentGoderre]
+    - Translate Portage license strings to SPDX expressions [#1763
+      @wagoodman]
+    - Use package ID from decoded SBOMs when provided [#1872
+      @jneate]
+    - Annotate visible/hidden paths when all-layers scope [#3855
+      @wagoodman]
+    - Add support for PHP Pear [#2775 @LaurentGoderre]
+    - Detect whether full license text or a license name has been
+      provided [#3088 #3876 @spiffcs #3450 @spiffcs]
+    - Add Cataloger for Homebrew on macOS [#3632 #3724 @rezmoss]
+    - Provide a way to get the LayerID the package was first found
+      in [#435 #3858 @wagoodman #3138 @tomersein]
+    - Go binaries that currently get (devel) as the version should
+      instead stub UNKNOWN based on the compliance policy [#3324
+      #3873 @wagoodman]
+    - Upgrade base Docker image to
+      gcr.io/distroless/static-debian12 [#3840 #3862 @bgoareguer]
+    - Return full license string instead of SHA256 hash when
+      license string exceeds 64 characters [#3780 #3844 @spiffcs]
+    - Detect nix dependencies [#3814 #3837 @wagoodman]
+  * Bug Fixes
+    - update license sort to be stable with contents field [#3860
+      @spiffcs]
+    - Improve detection of erlang binary in alpine Linux [#3839
+      @avodotiiets]
+    - Do not search for main module versions within binary contents
+      by default [#3874 @wagoodman]
+    - dpkg license improvement for non SPDX licenses [#3090 #3888
+      @spiffcs]
+    - CycloneDX group field not symmetrically handled by
+      encoder/decoders [#2981 #3853 @kzantow]
+    - Syft crash [signal SIGSEGV: segmentation violation code=0x80
+      addr=0x0 pc=0x123a0da] [#3872 #3875 @wagoodman]
+    - Syft 1.23.1 shows version (devel) for grafana 12.0.0 [#3864]
+    - .NET cataloger does not always pair up PE binaries and
+      deps.json packages, resulting in duplicate packages on some
+      runs [#3866 #3869 @wagoodman]
+    - Propagate error in FileSourceProvider instead of warn log
+      [#3831 #3845 @Rupikz]
+    - Update github.com/Masterminds/semver package [#3829 #3836
+      @popey]
+    - go-module-file-cataloger fails if symlinks in path [#3614
+      #3783 @VictorHuu]
+    - Support fluent-bit some versions of arm/s390x images [#3793
+      #3817 @VictorHuu]
+  * Additional Changes
+    - update rust test fixtures to latest [#3852 @spiffcs]
+
+-------------------------------------------------------------------
 Fri Apr 25 18:25:31 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.23.1:
