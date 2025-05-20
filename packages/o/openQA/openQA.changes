@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 15 14:14:46 UTC 2025 - okurz@suse.com
+
+- Update to version 5.1747282262.9a4e6bb5:
+  * load-templates: with --clean, empty job group YAML templates
+  * Fix phrasing in jobs comment carry over unit test
+  * Bump debug from 4.4.0 to 4.4.1
+  * Bump synckit from 0.11.4 to 0.11.5
+  * Avoid workers getting stuck with old jobs
+  * Avoid duplicate `use Mojo::JSON`
+  * Follow consistent database DUMP_FOLDER target directory
+  * Create new systemd service and timer for database dump and cleanup
+  * dump-templates: dump job groups as they exist, fix group checks
+  * t: load-templates: check harder for what gets loaded
+  * load-templates: job groups: simplify, don't error on group exists
+  * load-templates: fix loading of job templates
+
+-------------------------------------------------------------------
 Tue May 13 19:13:51 UTC 2025 - okurz@suse.com
 
 - Update to version 5.1747157239.98c95eac:
