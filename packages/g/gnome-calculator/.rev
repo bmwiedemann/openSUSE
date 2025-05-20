@@ -555,4 +555,12 @@
   + Updated translation. (forwarded request 1268805 from iznogood)</comment>
     <requestid>1269673</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>7bf132f3ce5e56bfab3d0b197c186fc0</srcmd5>
+    <version>48.1</version>
+    <time>1747726459</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277773 from dimstar)</comment>
+    <requestid>1277952</requestid>
+  </revision>
 </revisionlist>
