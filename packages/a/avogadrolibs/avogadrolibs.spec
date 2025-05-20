@@ -19,9 +19,13 @@
 %if 0%{suse_version} >= 1550
 %bcond_without spglib
 %bcond_without python
+%bcond_without tests
 %else
+# Needs <filesystem>
+%define gcc_ver 8
 %bcond_with spglib
 %bcond_with python
+%bcond_with tests
 %endif
 
 # Requires genXrdPattern
@@ -31,8 +35,9 @@
 %define libname libAvogadro%{sonum}
 %define molecules_rev 1.98.0
 %define crystals_rev  1.98.0
+%define fragments_rev 1.99.0
 Name:           avogadrolibs
-Version:        1.98.1
+Version:        1.100.0
 Release:        0
 Summary:        Avogadro libraries for computational chemistry
 License:        BSD-3-Clause AND CDDL-1.0 AND GPL-3.0-or-later AND Apache-2.0
@@ -40,23 +45,29 @@ URL:            https://two.avogadro.cc/
 Source0:        https://github.com/OpenChemistry/avogadrolibs/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/OpenChemistry/molecules/archive/%{molecules_rev}.tar.gz#/molecules-%{molecules_rev}.tar.gz
 Source2:        https://github.com/OpenChemistry/crystals/archive/%{crystals_rev}.tar.gz#/crystals-%{crystals_rev}.tar.gz
+Source3:        https://github.com/OpenChemistry/fragments/archive/refs/tags/%{fragments_rev}.tar.gz#/fragments-%{fragments_rev}.tar.gz
 # PATCH-FIX-UPSTREAM not-install-gwavi.patch -- Library only used locally so no need to install this helper
 Patch0:         not-install-gwavi.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  eigen3-devel >= 2.91.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hdf5-devel
-BuildRequires:  libqt5-linguist-devel
 BuildRequires:  mmtf-cpp-devel
-BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Network)
-BuildRequires:  cmake(Qt5Svg)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Concurrent)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6OpenGL)
+BuildRequires:  cmake(Qt6OpenGLWidgets)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(libmsym) >= 0.2.0
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(nlohmann_json)
+BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(zlib)
 %if %{with python}
 BuildRequires:  python3-devel
@@ -64,6 +75,10 @@ BuildRequires:  python3-pybind11-devel
 %endif
 %if %{with spglib}
 BuildRequires:  spglib-devel
+%endif
+%if %{with tests}
+BuildRequires:  cmake(GTest)
+BuildRequires:  cmake(Qt6Test)
 %endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glu)
@@ -107,9 +122,11 @@ This package contains:
 Summary:        Header files for Avogadro libraries
 Requires:       %{libname} = %{version}
 Requires:       %{name}-plugins = %{version}
-Requires:       cmake(MoleQueue)
-Requires:       cmake(Qt5Network)
-Requires:       cmake(Qt5Widgets)
+Requires:       eigen3-devel >= 2.91.0
+Requires:       cmake(Qt6Concurrent)
+Requires:       cmake(Qt6Core)
+Requires:       cmake(Qt6OpenGLWidgets)
+Requires:       cmake(Qt6Widgets)
 Requires:       pkgconfig(gl)
 Requires:       pkgconfig(glew)
 %if 0%{?suse_version} <= 1500
@@ -130,10 +147,11 @@ modeling, bioinformatics, materials science, and related areas.
 %endif
 
 %prep
-%setup -q -b 1 -b 2
+%setup -q -b 1 -b 2 -b 3
 %autopatch -p1
 [ -e ../crystals ] && rm -rfv ../crystals; mv ../crystals-%{crystals_rev} ../crystals
 [ -e ../molecules ] && rm -rfv ../molecules; mv ../molecules-%{molecules_rev} ../molecules
+[ -e ../fragments ] && rm -rfv ../fragments; mv ../fragments-%{fragments_rev} ../fragments
 %ifarch aarch64 %{arm}
 # Workaround for Qt GLES builds on ARM, until overlayaxes fixed upstream - https://github.com/OpenChemistry/avogadrolibs/issues/810
 # Type of function prototypes differ between GLEW and GLES
@@ -141,11 +159,16 @@ sed -i 's/add_subdirectory(overlayaxes)//' avogadro/qtplugins/CMakeLists.txt
 %endif
 
 %build
+# Note: Molequeue is abandonware, see https://github.com/OpenChemistry/avogadroapp/issues/561
 %cmake \
+  -DCMAKE_CXX_COMPILER:STRING=g++%{?gcc_ver:-%{gcc_ver}} \
   -DINSTALL_DOC_DIR:PATH=%{_defaultdocdir} \
   -DBUILD_STATIC_PLUGINS:BOOL=OFF \
-  -DENABLE_TRANSLATIONS:BOOL=ON \
-  -DUSE_MOLEQUEUE:BOOL=ON \
+  -DBUILD_MOLEQUEUE:BOOL=OFF \
+  -DENABLE_TESTING:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
+  -DQT_VERSION:STRING=6 \
+  -DUSE_EXTERNAL_NLOHMANN:BOOL=ON \
+  -DUSE_EXTERNAL_PUGIXML:BOOL=ON \
   -DUSE_LIBMSYM:BOOL=ON \
   -DUSE_MMTF:BOOL=ON \
   -DUSE_HDF5:BOOL=ON \
@@ -163,16 +186,19 @@ sed -i 's/add_subdirectory(overlayaxes)//' avogadro/qtplugins/CMakeLists.txt
 rm %{buildroot}%{_defaultdocdir}/avogadrolibs/LICENSE
 %fdupes %{buildroot}%{_datadir}
 
-sed -i -e '1 s@^@#!/usr/bin/python3\n@' \
-  %{buildroot}%{_libdir}/avogadro2/scripts/charges/*.py \
-  %{buildroot}%{_libdir}/avogadro2/scripts/formatScripts/zyx.py
+sed -E -i '1{\@/usr/bin/env python@d}' %{buildroot}%{_datadir}/avogadro2/fragments/scripts/*.py
 
 # Remove exec permissions from scripts not in $$PATH
-chmod -x %{buildroot}%{_libdir}/avogadro2/scripts/energy/*.py
+chmod -x %{buildroot}%{_libdir}/avogadro2/scripts/formatScripts/zyx.py
 
-%post -n %{libname} -p /sbin/ldconfig
+rm %{buildroot}%{_datadir}/avogadro2/fragments/.gitignore
 
-%postun -n %{libname} -p /sbin/ldconfig
+%if %{with tests}
+%check
+%ctest
+%endif
+
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE
@@ -191,12 +217,13 @@ chmod -x %{buildroot}%{_libdir}/avogadro2/scripts/energy/*.py
 
 %files -n avogadro2-data
 %dir %{_datadir}/avogadro2
-%{_datadir}/avogadro2/crystals
-%{_datadir}/avogadro2/molecules
+%{_datadir}/avogadro2/crystals/
+%{_datadir}/avogadro2/fragments/
+%{_datadir}/avogadro2/molecules/
 
 %if %{with python}
 %files -n python3-avogadro
-%{python3_sitearch}/avogadro
+%{python3_sitearch}/avogadro/
 %endif
 
 %changelog

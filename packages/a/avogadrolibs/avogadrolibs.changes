@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon May 19 11:19:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add eigen3-devel to avogadrolibs-devel Requires.
+
+-------------------------------------------------------------------
+Mon May 12 06:26:42 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.00.0:
+  * Too many changes to list, see
+    <https://github.com/OpenChemistry/avogadrolibs/releases/tag/1.100.0>
+- Add fragments-1.99.0.tar.gz as source, needed for build.
+- Switch to Qt6 for build.
+- Enable testing during build and run tests as part of %check for
+  openSUSE > 1550 (gtest too old on 15.6 and older); add necessary
+  deps cmake(GTest) and cmake(Qt6Test) as BuildRequires.
+- Build with system nlohmann_json, pugixml.
+- Drop dependence on Molequeue (abandoned, does not build with
+  Qt6).
+- Fix builds for Leap 15.6 after switching to Qt6 (needs gcc-c++
+  >= 8 for <filesystem> support).
+
+-------------------------------------------------------------------
 Thu Mar 20 22:59:18 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTFBS with cmake4
