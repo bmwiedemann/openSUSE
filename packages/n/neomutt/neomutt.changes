@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu May 15 16:58:27 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20250510:
+  - Contrib
+    * Fix gpg-json output
+  - Bug Fixes
+    * main: don't stop if /var/spool/mail is missing
+    * color: fix quoted maths
+    * Don't consider "weed" when writing an email to file
+    * help: fix leaks
+    * imap: check for incomplete Mailboxes on sync
+    * fix label completion crash
+  - Translations
+    * update Esperanto translation
+    * Update lt_LT translations
+  - Docs
+    * docs: fix broken functions
+  - Build
+    * Check for DocBook XSL
+
+-------------------------------------------------------------------
 Fri Apr 11 16:37:47 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 20250404:

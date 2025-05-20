@@ -355,4 +355,28 @@ so there is no usability hurdle for existing mutt users.
     <comment>Update to version 20250404</comment>
     <requestid>1268671</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>faea2c1cea9ce7f2e09551fc80393f03</srcmd5>
+    <version>20250510</version>
+    <time>1747726399</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20250510:
+  - Contrib
+    * Fix gpg-json output
+  - Bug Fixes
+    * main: don't stop if /var/spool/mail is missing
+    * color: fix quoted maths
+    * Don't consider &quot;weed&quot; when writing an email to file
+    * help: fix leaks
+    * imap: check for incomplete Mailboxes on sync
+    * fix label completion crash
+  - Translations
+    * update Esperanto translation
+    * Update lt_LT translations
+  - Docs
+    * docs: fix broken functions
+  - Build
+    * Check for DocBook XSL</comment>
+    <requestid>1277864</requestid>
+  </revision>
 </revisionlist>
