@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon May 19 09:04:39 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use COPTFLAGS, FOPTFLAGS, and CXXOPTFLAGS to pass rpm optflags
+  to compilers instead of directly setting CFLAGS, FFLAGS, or
+  CXXFLAGS; this is recommended by upstream and fixes build
+  failures seen when compiling fortran modules on Leap 16 and
+  older (see https://gitlab.com/petsc/petsc/-/issues/1727).
+- Changes PETSC_ARCH definition to %_arch instead of
+  linux-gnu-c-opt; this is in line with upstream's recommendation
+  and what Fedora does and should be ok for openSUSE not that we
+  no longer use hpc macros.
+- Modify petsc-fix-libdir.patch to use
+  sysconfig.get_config_vars('platlibdir') instead of
+  sys.platlibdir for compatibility with python 3.6 (fix FTBFS on
+  15.6 and older).
+- Actually bail out before running make when configuring fails.
+
+-------------------------------------------------------------------
 Fri Apr  4 11:53:17 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.23.0:

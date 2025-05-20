@@ -8,20 +8,24 @@ Subject: [PATCH] libdir
  config/install.py         | 14 ++++++++------
  2 files changed, 12 insertions(+), 8 deletions(-)
 
-diff --git a/config/PETSc/Configure.py b/config/PETSc/Configure.py
-index b025144..251b8be 100644
---- a/config/PETSc/Configure.py
-+++ b/config/PETSc/Configure.py
-@@ -5,6 +5,8 @@ import sys
+Index: petsc-3.23.0/config/PETSc/Configure.py
+===================================================================
+--- petsc-3.23.0.orig/config/PETSc/Configure.py
++++ petsc-3.23.0/config/PETSc/Configure.py
+@@ -2,9 +2,12 @@ import config.base
+ 
+ import os
+ import sys
++import sysconfig
  import re
  import pickle
  
-+LIB = sys.platlibdir
++LIB = sysconfig.get_config_var('platlibdir') or 'lib'
 +
  class Configure(config.base.Configure):
    def __init__(self, framework):
      config.base.Configure.__init__(self, framework)
-@@ -172,7 +174,7 @@ class Configure(config.base.Configure):
+@@ -173,7 +176,7 @@ class Configure(config.base.Configure):
          cflags_inc.append('-I' + os.path.join(self.petscdir.dir, 'include'))
        fd.write('exec_prefix=${prefix}\n')
        fd.write('includedir=${prefix}/include\n')
@@ -30,7 +34,7 @@ index b025144..251b8be 100644
  
        with self.setCompilers.Language('C'):
          fd.write('ccompiler='+self.setCompilers.getCompiler()+'\n')
-@@ -448,7 +450,7 @@ prepend-path PATH "%s"
+@@ -449,7 +452,7 @@ prepend-path PATH "%s"
        self.addMakeMacro('PETSC_FC_INCLUDES',self.headers.toStringNoDupes(allincludes,modinc(allincludes)))
        self.addMakeMacro('PETSC_FC_INCLUDES_INSTALL',self.headers.toStringNoDupes(allincludes_install,modinc(allincludes_install)))
  
@@ -39,19 +43,20 @@ index b025144..251b8be 100644
      self.addDefine('LIB_DIR','"'+LIB_DIR+'"')
      # Use build dir here for 'make check' to work before 'make install'
      PREINSTALL_LIB_DIR = os.path.join(self.petscdir.dir,self.arch.arch,'lib')
-diff --git a/config/install.py b/config/install.py
-index e438f8f..94d2374 100755
---- a/config/install.py
-+++ b/config/install.py
-@@ -2,6 +2,8 @@
+Index: petsc-3.23.0/config/install.py
+===================================================================
+--- petsc-3.23.0.orig/config/install.py
++++ petsc-3.23.0/config/install.py
+@@ -1,6 +1,8 @@
+ #!/usr/bin/env python3
  from __future__ import print_function
- import os, re, shutil, sys
- 
-+LIB = sys.platlibdir
+-import os, re, shutil, sys
++import os, re, shutil, sys, sysconfig
 +
++LIB = sysconfig.get_config_var('platlibdir') or 'lib'
+ 
  if 'PETSC_DIR' in os.environ:
    PETSC_DIR = os.environ['PETSC_DIR']
- else:
 @@ -77,12 +79,12 @@ class Installer(script.Script):
      self.archBinDir        = os.path.join(self.rootDir, self.arch, 'bin')
      self.archLibDir        = os.path.join(self.rootDir, self.arch, 'lib')
@@ -79,6 +84,3 @@ index e438f8f..94d2374 100755
      if sys.platform == 'linux':
        libraries = [
          lib for lib in lsdir(self.destLibDir, 'lib*.so*')
--- 
-2.49.0
-

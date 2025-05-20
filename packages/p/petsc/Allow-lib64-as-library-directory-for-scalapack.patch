@@ -10,11 +10,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  config/BuildSystem/config/packages/scalapack.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
-diff --git a/config/BuildSystem/config/packages/scalapack.py b/config/BuildSystem/config/packages/scalapack.py
-index a4bf7ec..f009ca4 100644
---- a/config/BuildSystem/config/packages/scalapack.py
-+++ b/config/BuildSystem/config/packages/scalapack.py
-@@ -19,7 +19,7 @@ class Configure(config.package.CMakePackage):
+Index: petsc-3.23.0/config/BuildSystem/config/packages/scalapack.py
+===================================================================
+--- petsc-3.23.0.orig/config/BuildSystem/config/packages/scalapack.py
++++ petsc-3.23.0/config/BuildSystem/config/packages/scalapack.py
+@@ -20,7 +20,7 @@ class Configure(config.package.CMakePack
      self.downloadonWindows= 1
      self.makerulename     = 'scalapack'
      self.minCmakeVersion  = (3,9,0)

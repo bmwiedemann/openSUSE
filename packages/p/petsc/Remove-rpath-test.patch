@@ -10,11 +10,11 @@ Signed-off-by: Egbert Eich <eich@suse.de>
 ---
  config/BuildSystem/config/setCompilers.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
-diff --git a/config/BuildSystem/config/setCompilers.py b/config/BuildSystem/config/setCompilers.py
-index bcf0181..8013365 100644
---- a/config/BuildSystem/config/setCompilers.py
-+++ b/config/BuildSystem/config/setCompilers.py
-@@ -2545,7 +2545,7 @@ class Configure(config.base.Configure):
+Index: petsc-3.23.0/config/BuildSystem/config/setCompilers.py
+===================================================================
+--- petsc-3.23.0.orig/config/BuildSystem/config/setCompilers.py
++++ petsc-3.23.0/config/BuildSystem/config/setCompilers.py
+@@ -2554,7 +2554,7 @@ class Configure(config.base.Configure):
          testFlags = []
        # test '-R' before '-rpath' as sun compilers [c,fortran] don't give proper errors with wrong options.
        elif not Configure.isDarwin(self.log):

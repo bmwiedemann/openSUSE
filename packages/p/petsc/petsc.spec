@@ -65,7 +65,7 @@ ExcludeArch:    %{ix86} %{arm}
 %define p_libdir %{p_prefix}%_lib
 %define p_include %{p_prefix}include
 
-%define petsc_arch linux-gnu-c-opt
+%define petsc_arch %_arch
 
 Name:           %{package_name}
 Summary:        Portable Extensible Toolkit for Scientific Computation
@@ -198,9 +198,9 @@ export ARCHCFLAGS=-fPIC
 %endif
 
 %{_bindir}/python%{python3_version} ./configure \
-  --CFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
-  --FFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
-  --CXXFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --COPTFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --FOPTLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
+  --CXXOPTFLAGS="$RPM_OPT_FLAGS $ARCHCFLAGS" \
   --prefix=%{p_prefix} \
   --with-batch=0 \
   --with-clanguage=C++ \
@@ -225,7 +225,7 @@ export ARCHCFLAGS=-fPIC
   --with-ptscotch=1 \
   --with-scalapack=1 \
   %endif
- || cat configure.log
+|| { cat configure.log; exit 1; }
 
 %make_build
 
