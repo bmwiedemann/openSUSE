@@ -1,0 +1,781 @@
+From e868ece3c7d12be79f46da64b7c841d0486ac621 Mon Sep 17 00:00:00 2001
+From: Oliver Steffen <osteffen@redhat.com>
+Date: Wed, 11 Dec 2024 11:48:07 +0100
+Subject: [PATCH] SecurityPkg/Tpm2DeviceLibDTpm: Add TPM2 lib supporting SVSM
+ vTPM
+
+SEV-SNP provides a feature known as VM Privilege Level (VMPL), which
+allows for services to be run in the guest at different privilege
+levels. By running at VMPL0 (most privileged VM level), the SVSM can be
+used to provide privileged services, e.g. a virtual TPM, for the guest
+rather than trust such services from the hypervisor.
+
+This patch adds a DTpm driver to communicate with a virtual TPM running
+in the SVSM. The driver follows the vTPM protocol documented in the SVSM
+specification.
+
+SVSM vTPM functionality is available as new device and instance
+libraries, which can be consumed optionally, keeping changes to the
+regular TPM implementation minimal.
+
+Cc: Jiewen Yao <jiewen.yao@intel.com>
+Co-authored-by: James Bottomley <James.Bottomley@HansenPartnership.com>
+Signed-off-by: Claudio Carvalho <cclaudio@linux.ibm.com>
+Signed-off-by: Oliver Steffen <osteffen@redhat.com>
+---
+ .../Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.c |  96 +++++++++++
+ .../Tpm2DeviceLibDTpmSvsm.inf                 |  66 ++++++++
+ .../Tpm2InstanceLibDTpmSvsm.c                 |  64 ++++++++
+ .../Tpm2InstanceLibDTpmSvsm.inf               |  60 +++++++
+ .../Library/Tpm2DeviceLibDTpm/Tpm2Ptp.h       |   2 +-
+ .../Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c       | 123 ++++++++++++++
+ .../Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.h       |  30 ++++
+ .../Library/Tpm2DeviceLibDTpm/Tpm2Svsm.c      | 152 ++++++++++++++++++
+ .../Library/Tpm2DeviceLibDTpm/Tpm2Svsm.h      |  25 +++
+ SecurityPkg/SecurityPkg.ci.yaml               |   1 +
+ SecurityPkg/SecurityPkg.dec                   |  10 ++
+ SecurityPkg/SecurityPkg.dsc                   |  12 ++
+ 12 files changed, 640 insertions(+), 1 deletion(-)
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.c
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.c
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.h
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.c
+ create mode 100644 SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.h
+
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.c b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.c
+new file mode 100644
+index 0000000000..922b859168
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.c
+@@ -0,0 +1,96 @@
++/** @file
++  This library is a TPM2 DTPM instance, supporting SVSM based vTPMs and regular
++  TPM2s at the same time.
++  Choosing this library means platform uses and only uses DTPM device as TPM2 engine.
++
++Copyright (c) 2024 Red Hat
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/Tpm2DeviceLib.h>
++
++#include "Tpm2DeviceLibDTpm.h"
++#include "Tpm2PtpSvsmShim.h"
++
++/**
++  This service enables the sending of commands to the TPM2.
++
++  @param[in]      InputParameterBlockSize  Size of the TPM2 input parameter block.
++  @param[in]      InputParameterBlock      Pointer to the TPM2 input parameter block.
++  @param[in,out]  OutputParameterBlockSize Size of the TPM2 output parameter block.
++  @param[in]      OutputParameterBlock     Pointer to the TPM2 output parameter block.
++
++  @retval EFI_SUCCESS            The command byte stream was successfully sent to the device and a response was successfully received.
++  @retval EFI_DEVICE_ERROR       The command was not successfully sent to the device or a response was not successfully received from the device.
++  @retval EFI_BUFFER_TOO_SMALL   The output parameter block is too small.
++**/
++EFI_STATUS
++EFIAPI
++Tpm2SubmitCommand (
++  IN UINT32      InputParameterBlockSize,
++  IN UINT8       *InputParameterBlock,
++  IN OUT UINT32  *OutputParameterBlockSize,
++  IN UINT8       *OutputParameterBlock
++  )
++{
++  return SvsmDTpm2SubmitCommand (
++           InputParameterBlockSize,
++           InputParameterBlock,
++           OutputParameterBlockSize,
++           OutputParameterBlock
++           );
++}
++
++/**
++  This service requests to use TPM2.
++
++  @retval EFI_SUCCESS      Get the control of the TPM2 chip.
++  @retval EFI_NOT_FOUND    TPM2 not found.
++  @retval EFI_DEVICE_ERROR Unexpected device behavior.
++**/
++EFI_STATUS
++EFIAPI
++Tpm2RequestUseTpm (
++  VOID
++  )
++{
++  return SvsmDTpm2RequestUseTpm ();
++}
++
++/**
++  This service registers a TPM2 device.
++
++  @param Tpm2Device  TPM2 device
++
++  @retval EFI_SUCCESS          TPM2 device was registered successfully.
++  @retval EFI_UNSUPPORTED      System does not support registering this TPM2 device.
++  @retval EFI_ALREADY_STARTED  This TPM2 device is already registered.
++**/
++EFI_STATUS
++EFIAPI
++Tpm2RegisterTpm2DeviceLib (
++  IN TPM2_DEVICE_INTERFACE  *Tpm2Device
++  )
++{
++  return EFI_UNSUPPORTED;
++}
++
++/**
++  Initialize the library and cache SVSM vTPM presence state and TPM interface type, if applicable.
++
++  @retval EFI_SUCCESS   DTPM2.0 instance is registered, or system does not support registering a DTPM2.0 instance
++**/
++EFI_STATUS
++EFIAPI
++Tpm2DeviceLibConstructorSvsm (
++  VOID
++  )
++{
++  if (TryUseSvsmVTpm ()) {
++    return EFI_SUCCESS;
++  } else {
++    return InternalTpm2DeviceLibDTpmCommonConstructor ();
++  }
++}
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
+new file mode 100644
+index 0000000000..da48bd3c60
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
+@@ -0,0 +1,66 @@
++## @file
++#  Provides SVSM based vTPM and regular TPM 2.0 TIS/PTP functions for DTPM
++#
++#  Spec Compliance Info:
++#    "TCG PC Client Platform TPM Profile(PTP) Specification Family 2.0 Level 00 Revision 00.43"
++#    "TCG PC Client Specific TPM Interface Specification(TIS) Version 1.3"
++#
++#  This library implements TIS (TPM Interface Specification) and
++#  PTP (Platform TPM Profile) functions which is
++#  used for every TPM 2.0 command. Choosing this library means platform uses and
++#  only uses TPM 2.0 DTPM device.
++#
++#  This version of the library additionally supports SVSM based vTPMs for confidential
++#  virtual machines under AMD-SEV SNP.
++#
++# Copyright (c) 2013 - 2018, Intel Corporation. All rights reserved.<BR>
++# Copyright (c) Microsoft Corporation.
++# Copyright (c) 2024 Red Hat
++# SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++##
++
++[Defines]
++  INF_VERSION                    = 1.30
++  BASE_NAME                      = Tpm2DeviceLibDTpmSvsm
++  MODULE_UNI_FILE                = Tpm2DeviceLibDTpm.uni
++  FILE_GUID                      = EE79D4E4-8538-4FE6-A7EF-4095CB6B38E7
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
++  LIBRARY_CLASS                  = Tpm2DeviceLib|PEIM DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SMM_DRIVER UEFI_APPLICATION UEFI_DRIVER
++  CONSTRUCTOR                    = Tpm2DeviceLibConstructorSvsm
++#
++# The following information is for reference only and not required by the build tools.
++#
++#  VALID_ARCHITECTURES           = X64
++#
++
++[Sources]
++  Tpm2Tis.c
++  Tpm2Svsm.c
++  Tpm2PtpSvsmShim.c
++  Tpm2Ptp.c
++  Tpm2DeviceLibDTpmSvsm.c
++  Tpm2DeviceLibDTpmBase.c
++  Tpm2DeviceLibDTpm.h
++
++[Packages]
++  MdePkg/MdePkg.dec
++  SecurityPkg/SecurityPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
++[LibraryClasses]
++  BaseLib
++  BaseMemoryLib
++  IoLib
++  TimerLib
++  DebugLib
++  PcdLib
++  AmdSvsmLib
++
++[Pcd]
++  gEfiSecurityPkgTokenSpaceGuid.PcdTpmBaseAddress            ## CONSUMES
++  gEfiSecurityPkgTokenSpaceGuid.PcdActiveTpmInterfaceType    ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdCRBIdleByPass             ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmPresence          ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmBufferPtr         ## PRODUCES
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.c b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.c
+new file mode 100644
+index 0000000000..fda0b86347
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.c
+@@ -0,0 +1,64 @@
++/** @file
++  This library is a TPM2 DTPM instance, supporting SVSM based vTPMs and regular
++  TPM2s at the same time.
++
++  It can be registered to Tpm2 Device router, to be active TPM2 engine,
++  based on platform setting.
++
++Copyright (c) 2024 Red Hat
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++#include <Library/Tpm2DeviceLib.h>
++
++#include <Guid/TpmInstance.h>
++
++#include "Tpm2Ptp.h"
++#include "Tpm2DeviceLibDTpm.h"
++#include "Tpm2PtpSvsmShim.h"
++
++TPM2_DEVICE_INTERFACE  mDTpm2InternalTpm2Device = {
++  TPM_DEVICE_INTERFACE_TPM20_DTPM,
++  SvsmDTpm2SubmitCommand,
++  SvsmDTpm2RequestUseTpm,
++};
++
++/**
++  Registers DTPM2.0 instance and caches current active TPM interface type.
++
++  @retval EFI_SUCCESS   DTPM2.0 instance is registered, or system does not support registering a DTPM2.0 instance
++**/
++EFI_STATUS
++EFIAPI
++Tpm2InstanceLibDTpmConstructorSvsm (
++  VOID
++  )
++{
++  EFI_STATUS  Status;
++
++  Status = Tpm2RegisterTpm2DeviceLib (&mDTpm2InternalTpm2Device);
++
++  if (Status == EFI_UNSUPPORTED) {
++    //
++    // Unsupported means platform policy does not need this instance enabled.
++    //
++    return EFI_SUCCESS;
++  }
++
++  if (Status != EFI_SUCCESS) {
++    return Status;
++  }
++
++  if (TryUseSvsmVTpm ()) {
++    // SVSM vTPM found.
++    return EFI_SUCCESS;
++  }
++
++  // No SVSM vTPM found; set up regular DTPM Ptp implementation
++  Status = InternalTpm2DeviceLibDTpmCommonConstructor ();
++  DumpPtpInfo ((VOID *)(UINTN)PcdGet64 (PcdTpmBaseAddress));
++
++  return Status;
++}
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
+new file mode 100644
+index 0000000000..4baf363c11
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
+@@ -0,0 +1,60 @@
++## @file
++#  Provides a DTPM instance for SVSM based vTPMs and TPM 2.0 TIS/PTP.
++#
++#  This library can be registered to Tpm 2.0 device router, to be active TPM 2.0
++#  engine, based on platform setting. It supports both TIS (TPM Interface Specification)
++#  and PTP (Platform TPM Profile) functions.
++#
++#  This version of the library additionally supports SVSM based vTPMs for confidential
++#  virtual machines under AMD SEV-SNP.
++#
++# Copyright (c) 2024 Red Hat
++# SPDX-License-Identifier: BSD-2-Clause-Patent
++#
++##
++
++[Defines]
++  INF_VERSION                    = 1.30
++  BASE_NAME                      = Tpm2InstanceLibDTpmSvsm
++  MODULE_UNI_FILE                = Tpm2InstanceLibDTpm.uni
++  FILE_GUID                      = C7777207-A8DF-47E4-AA3C-E8BF74E7F233
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
++  LIBRARY_CLASS                  = NULL
++  CONSTRUCTOR                    = Tpm2InstanceLibDTpmConstructorSvsm
++
++#
++# The following information is for reference only and not required by the build tools.
++#
++#  VALID_ARCHITECTURES           = X64
++#
++
++[Sources]
++  Tpm2Tis.c
++  Tpm2Svsm.c
++  Tpm2Ptp.c
++  Tpm2PtpSvsmShim.c
++  Tpm2InstanceLibDTpmSvsm.c
++  Tpm2DeviceLibDTpmBase.c
++  Tpm2DeviceLibDTpm.h
++
++[Packages]
++  MdePkg/MdePkg.dec
++  SecurityPkg/SecurityPkg.dec
++  UefiCpuPkg/UefiCpuPkg.dec
++
++[LibraryClasses]
++  BaseLib
++  BaseMemoryLib
++  IoLib
++  TimerLib
++  DebugLib
++  PcdLib
++  AmdSvsmLib
++
++[Pcd]
++  gEfiSecurityPkgTokenSpaceGuid.PcdTpmBaseAddress          ## CONSUMES
++  gEfiSecurityPkgTokenSpaceGuid.PcdActiveTpmInterfaceType  ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdCRBIdleByPass           ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmPresence        ## PRODUCES
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmBufferPtr       ## PRODUCES
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Ptp.h b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Ptp.h
+index 238d6e8dba..95e7ce246a 100644
+--- a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Ptp.h
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Ptp.h
+@@ -1,5 +1,5 @@
+ /** @file
+-  PTP (Platform TPM Profile) CRB (Command Response Buffer) interface used by dTPM2.0 library.
++  PTP (Platform TPM Profile) CRB (Command Response Buffer) interface used by DTPM2.0 library.
+ 
+ Copyright (c) 2024 Red Hat
+ SPDX-License-Identifier: BSD-2-Clause-Patent
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
+new file mode 100644
+index 0000000000..8a49fe936f
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
+@@ -0,0 +1,123 @@
++/** @file
++  PTP (Platform TPM Profile) CRB (Command Response Buffer) interface shim that switches between
++  SVSM vTPM Ptp and regular Ptp implementations.
++
++  Use TryUseSvsmVTpm () do check for SVSM vTPM presnece and initialzie the shim.
++
++  The SVSM vTPM presence state is cached across library instances.
++
++Copyright (c) 2024 Red Hat
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Uefi.h>
++#include <Library/Tpm2DeviceLib.h>
++#include <Library/PcdLib.h>
++#include <Library/DebugLib.h>
++#include "Tpm2Ptp.h"
++#include "Tpm2Svsm.h"
++
++/// SVSM vTPM presence state as stored in PcdSvsmVTpmPresence
++/// @{
++#define SVSM_VTPM_PRESENCE_UNKNOWN  0xFF
++#define SVSM_VTPM_PRESENT           0x01
++#define SVSM_VTPM_ABSENT            0x00
++/// @}
++
++static BOOLEAN  mUseSvsmVTpm = FALSE;
++
++/**
++ Initializes SVSM vTPM if present, or otherwise uses TCG PTP method.
++
++ If an SVSM based vTPM is found, use it from now on.
++ If none is found, call the regular Ptp TPM implementation instead.
++
++ This function is meant to be called from the DTpm library constructor.
++ If it has not been called, the regular Ptp implementation is used.
++
++ @retval TRUE   SVSM vTPM is present.
++ @retval FALSE  SVSM vTPM was not discovered.
++ */
++BOOLEAN
++EFIAPI
++TryUseSvsmVTpm (
++  )
++{
++  UINT8  SvsmVTpmPresence = (UINT8)PcdGet8 (PcdSvsmVTpmPresence);
++
++  if (SvsmVTpmPresence == SVSM_VTPM_PRESENCE_UNKNOWN) {
++    SvsmVTpmPresence = Tpm2SvsmQueryTpmSendCmd () ? SVSM_VTPM_PRESENT : SVSM_VTPM_ABSENT;
++    PcdSet8S (PcdSvsmVTpmPresence, SvsmVTpmPresence);
++    if (SvsmVTpmPresence == SVSM_VTPM_PRESENT) {
++      DEBUG ((DEBUG_INFO, " Found SVSM vTPM\n"));
++    }
++  }
++
++  mUseSvsmVTpm = SvsmVTpmPresence == SVSM_VTPM_PRESENT;
++  return mUseSvsmVTpm;
++}
++
++/**
++  This service enables the sending of commands to the selected TPM2.
++
++  Commands are send to either the SVSM vTPM or the regular Ptp based TPM, depending
++  on what was discovered by TryUseSvsmVTpm ().
++
++  @param[in]      InputParameterBlockSize  Size of the TPM2 input parameter block.
++  @param[in]      InputParameterBlock      Pointer to the TPM2 input parameter block.
++  @param[in,out]  OutputParameterBlockSize Size of the TPM2 output parameter block.
++  @param[in]      OutputParameterBlock     Pointer to the TPM2 output parameter block.
++
++  @retval EFI_SUCCESS            The command byte stream was successfully sent to the device and a response was successfully received.
++  @retval EFI_DEVICE_ERROR       The command was not successfully sent to the device or a response was not successfully received from the device.
++  @retval EFI_BUFFER_TOO_SMALL   The output parameter block is too small.
++**/
++EFI_STATUS
++EFIAPI
++SvsmDTpm2SubmitCommand (
++  IN UINT32      InputParameterBlockSize,
++  IN UINT8       *InputParameterBlock,
++  IN OUT UINT32  *OutputParameterBlockSize,
++  IN UINT8       *OutputParameterBlock
++  )
++{
++  if (mUseSvsmVTpm) {
++    return Tpm2SvsmTpmSendCommand (
++             InputParameterBlock,
++             InputParameterBlockSize,
++             OutputParameterBlock,
++             OutputParameterBlockSize
++             );
++  } else {
++    return DTpm2SubmitCommand (
++             InputParameterBlockSize,
++             InputParameterBlock,
++             OutputParameterBlockSize,
++             OutputParameterBlock
++             );
++  }
++}
++
++/**
++  This service requests to use TPM2.
++
++  Depending on what was discovered by TryUseSvsmVTpm (), this function either
++  returns EFI_SUCCESS, for SVSM vTPM, or calls the regular Ptp implementation.
++
++  @retval EFI_SUCCESS      Get the control of the TPM2 chip.
++  @retval EFI_NOT_FOUND    TPM2 not found.
++  @retval EFI_DEVICE_ERROR Unexpected device behavior.
++**/
++EFI_STATUS
++EFIAPI
++SvsmDTpm2RequestUseTpm (
++  VOID
++  )
++{
++  if (mUseSvsmVTpm) {
++    return EFI_SUCCESS;
++  } else {
++    return DTpm2RequestUseTpm ();
++  }
++}
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.h b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.h
+new file mode 100644
+index 0000000000..6a604f8020
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.h
+@@ -0,0 +1,30 @@
++/** @file
++  PTP (Platform TPM Profile) CRB (Command Response Buffer) interface shim that switches between
++  SVSM vTPM Ptp and regular Ptp implementations.
++
++  Use TryUseSvsmVTpm () do check for SVSM vTPM presnece and initialzie the shim.
++
++Copyright (c) 2024 Red Hat
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++BOOLEAN
++EFIAPI
++TryUseSvsmVTpm (
++  );
++
++EFI_STATUS
++EFIAPI
++SvsmDTpm2SubmitCommand (
++  IN UINT32      InputParameterBlockSize,
++  IN UINT8       *InputParameterBlock,
++  IN OUT UINT32  *OutputParameterBlockSize,
++  IN UINT8       *OutputParameterBlock
++  );
++
++EFI_STATUS
++EFIAPI
++SvsmDTpm2RequestUseTpm (
++  VOID
++  );
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.c b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.c
+new file mode 100644
+index 0000000000..d9b5907c75
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.c
+@@ -0,0 +1,152 @@
++/** @file
++  SVSM TPM communication
++
++Copyright (C) 2024 James.Bottomley@HansenPartnership.com
++Copyright (C) 2024 IBM Corporation
++Copyright (C) 2024 Red Hat
++
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Uefi.h>
++#include <Library/BaseLib.h>
++#include <Library/BaseMemoryLib.h>
++#include <Library/MemoryAllocationLib.h>
++#include <Library/AmdSvsmLib.h>
++#include <Library/PcdLib.h>
++
++#include "Tpm2Svsm.h"
++
++/**
++  Platform commands (MSSIM commands) can be sent through the
++  SVSM_VTPM_CMD operation. Each command can have its own
++  request and response structures.
++**/
++#define TPM_SEND_COMMAND  8
++
++#pragma pack(1)
++typedef struct _TPM2_SEND_CMD_REQ {
++  UINT32    Cmd;
++  UINT8     Locality;
++  UINT32    BufSize;
++  UINT8     Buf[];
++} TPM2_SEND_CMD_REQ;
++
++typedef struct _TPM2_SEND_CMD_RESP {
++  UINT32    Size;
++  UINT8     Buf[];
++} TPM2_SEND_CMD_RESP;
++#pragma pack()
++
++/* Max req/resp buffer size */
++#define TPM_PLATFORM_MAX_BUFFER  4096
++
++typedef union {
++  TPM2_SEND_CMD_REQ     req;
++  TPM2_SEND_CMD_RESP    resp;
++} SVSM_TPM_CMD_BUFFER;
++
++STATIC_ASSERT (sizeof (SVSM_TPM_CMD_BUFFER) <= TPM_PLATFORM_MAX_BUFFER, "SVSM_TPM_CMD_BUFFER too large");
++
++/**
++  Probe the SVSM vTPM for TPM_SEND_COMMAND support. The
++  TPM_SEND_COMMAND platform command can be used to execute a
++  TPM command and get the result.
++
++  @retval TRUE    TPM_SEND_COMMAND is supported.
++  @retval FALSE   TPM_SEND_COMMAND is not supported.
++
++**/
++BOOLEAN
++Tpm2SvsmQueryTpmSendCmd (
++  VOID
++  )
++{
++  UINT64  PlatformCmdBitmap;
++  UINT64  TpmSendMask;
++
++  PlatformCmdBitmap = 0;
++  TpmSendMask       = 1 << TPM_SEND_COMMAND;
++
++  if (!AmdSvsmVtpmQuery (&PlatformCmdBitmap, NULL)) {
++    return FALSE;
++  }
++
++  return ((PlatformCmdBitmap & TpmSendMask) == TpmSendMask) ? TRUE : FALSE;
++}
++
++/**
++  Send a TPM command to the SVSM vTPM and return the TPM response.
++
++  @param[in]      BufferIn      It should contain the marshaled
++                                TPM command.
++  @param[in]      SizeIn        Size of the TPM command.
++  @param[out]     BufferOut     It will contain the marshaled
++                                TPM response.
++  @param[in, out] SizeOut       Size of the BufferOut; it will also
++                                be used to return the size of the
++                                TPM response
++
++  @retval EFI_SUCCESS           Operation completed successfully.
++  @retval EFI_INVALID_PARAMETER Buffer not provided.
++  @retval EFI_BUFFER_TOO_SMALL  Response data buffer is too small.
++  @retval EFI_DEVICE_ERROR      Unexpected device behavior.
++  @retval EFI_OUT_OF_RESOURCES  Out of memory when allocating internal buffer.
++  @retval EFI_UNSUPPORTED       Unsupported TPM version
++
++**/
++EFI_STATUS
++Tpm2SvsmTpmSendCommand (
++  IN     UINT8   *BufferIn,
++  IN     UINT32  SizeIn,
++  OUT UINT8      *BufferOut,
++  IN OUT UINT32  *SizeOut
++  )
++{
++  STATIC SVSM_TPM_CMD_BUFFER  *Buffer = NULL;
++
++  if ((SizeIn == 0) || !BufferIn || !SizeOut || !BufferOut) {
++    return EFI_INVALID_PARAMETER;
++  }
++
++  if (SizeIn > TPM_PLATFORM_MAX_BUFFER - sizeof (TPM2_SEND_CMD_REQ)) {
++    return EFI_BUFFER_TOO_SMALL;
++  }
++
++  if (Buffer == NULL) {
++    STATIC_ASSERT (sizeof (UINT64) >= sizeof (UINTN), "Pointer size larger than 64bit");
++    Buffer = (SVSM_TPM_CMD_BUFFER *)(UINTN)PcdGet64 (PcdSvsmVTpmBufferPtr);
++
++    if (Buffer == NULL) {
++      Buffer = (SVSM_TPM_CMD_BUFFER *)AllocatePages (EFI_SIZE_TO_PAGES (TPM_PLATFORM_MAX_BUFFER));
++      if (Buffer == NULL) {
++        DEBUG ((DEBUG_ERROR, "Unable to allocate SVSM vTPM buffer: %r", EFI_OUT_OF_RESOURCES));
++        return EFI_OUT_OF_RESOURCES;
++      }
++
++      PcdSet64S (PcdSvsmVTpmBufferPtr, (UINTN)(VOID *)Buffer);
++    }
++  }
++
++  Buffer->req.Cmd      = TPM_SEND_COMMAND;
++  Buffer->req.Locality = 0;
++  Buffer->req.BufSize  = SizeIn;
++  CopyMem (Buffer->req.Buf, BufferIn, SizeIn);
++
++  if (!AmdSvsmVtpmCmd ((UINT8 *)Buffer)) {
++    return EFI_DEVICE_ERROR;
++  }
++
++  if (Buffer->resp.Size > TPM_PLATFORM_MAX_BUFFER - sizeof (TPM2_SEND_CMD_RESP)) {
++    return EFI_DEVICE_ERROR;
++  }
++
++  if (Buffer->resp.Size > *SizeOut) {
++    return EFI_BUFFER_TOO_SMALL;
++  }
++
++  CopyMem (BufferOut, Buffer->resp.Buf, Buffer->resp.Size);
++  *SizeOut = Buffer->resp.Size;
++  return EFI_SUCCESS;
++}
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.h b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.h
+new file mode 100644
+index 0000000000..f94901601f
+--- /dev/null
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2Svsm.h
+@@ -0,0 +1,25 @@
++/** @file
++  SVSM TPM communication
++
++Copyright (C) 2024 James.Bottomley@HansenPartnership.com
++Copyright (C) 2024 IBM Corporation
++Copyright (C) 2024 Red Hat
++
++SPDX-License-Identifier: BSD-2-Clause-Patent
++
++**/
++
++#include <Library/BaseLib.h>
++
++BOOLEAN
++Tpm2SvsmQueryTpmSendCmd (
++  VOID
++  );
++
++EFI_STATUS
++Tpm2SvsmTpmSendCommand (
++  IN     UINT8   *BufferIn,
++  IN     UINT32  SizeIn,
++  OUT UINT8      *BufferOut,
++  IN OUT UINT32  *SizeOut
++  );
+diff --git a/SecurityPkg/SecurityPkg.ci.yaml b/SecurityPkg/SecurityPkg.ci.yaml
+index 26fedd179c..a0fa965381 100644
+--- a/SecurityPkg/SecurityPkg.ci.yaml
++++ b/SecurityPkg/SecurityPkg.ci.yaml
+@@ -48,6 +48,7 @@
+         "AcceptableDependencies": [
+             "MdePkg/MdePkg.dec",
+             "MdeModulePkg/MdeModulePkg.dec",
++            "UefiCpuPkg/UefiCpuPkg.dec",
+             "UnitTestFrameworkPkg/UnitTestFrameworkPkg.dec",
+             "SecurityPkg/SecurityPkg.dec",
+             "StandaloneMmPkg/StandaloneMmPkg.dec",
+diff --git a/SecurityPkg/SecurityPkg.dec b/SecurityPkg/SecurityPkg.dec
+index 0589cfaf68..17fd0aeb81 100644
+--- a/SecurityPkg/SecurityPkg.dec
++++ b/SecurityPkg/SecurityPkg.dec
+@@ -604,6 +604,16 @@
+   ## This PCD records LASA field in CC EVENTLOG ACPI table.
+   gEfiSecurityPkgTokenSpaceGuid.PcdCcEventlogAcpiTableLasa|0|UINT64|0x00010026
+ 
++  ## This PCD caches the presence state of a AMD SEV-SNP SVSM-provided vTPM.
++  # 0xFF - Unknown - Probing needed
++  # 0x00 - No - Use regular TPM
++  # 0x01 - Yes - SVSM vTPM present
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmPresence|0xFF|UINT8|0x00020030
++
++  ## This PCD stores the pointer to the communication buffer for a
++  #   AMD SEV-SNP SVSM-provided vTPM.
++  gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmBufferPtr|0|UINT64|0x00020031
++
+ [PcdsFeatureFlag]
+   ## Indicates if the platform requires PK to be self-signed when setting the PK in setup mode.
+   #   TRUE  - Require PK to be self-signed.
+diff --git a/SecurityPkg/SecurityPkg.dsc b/SecurityPkg/SecurityPkg.dsc
+index ea6a14c328..945a2dd393 100644
+--- a/SecurityPkg/SecurityPkg.dsc
++++ b/SecurityPkg/SecurityPkg.dsc
+@@ -369,6 +369,18 @@
+       TpmPlatformHierarchyLib|SecurityPkg/Library/PeiDxeTpmPlatformHierarchyLib/PeiDxeTpmPlatformHierarchyLib.inf
+   }
+ 
++  #
++  # AMD SEV-SNP SVSM vTPM
++  #
++  SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf {
++    <LibraryClasses>
++      AmdSvsmLib|UefiCpuPkg/Library/AmdSvsmLibNull/AmdSvsmLibNull.inf
++  }
++  SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf {
++    <LibraryClasses>
++      AmdSvsmLib|UefiCpuPkg/Library/AmdSvsmLibNull/AmdSvsmLibNull.inf
++  }
++
+   #
+   # Hash2
+   #
+-- 
+2.43.0
+

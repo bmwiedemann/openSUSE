@@ -1,0 +1,153 @@
+From c2d8e9236787270384bab6af9d9db0071468e9e5 Mon Sep 17 00:00:00 2001
+From: Jacob Xu <jacobhxu@google.com>
+Date: Fri, 28 Mar 2025 18:49:58 +0000
+Subject: [PATCH] SecurityPkg-Tpm2DeviceLibDTpm: Check SNP enabled prior to
+ using AmdSvsmLib
+
+AmdSvsmLib currently doesn't check if SNP enabled, thus using AmdSvsmLib
+may errantly cause the caller code to believe SVSM is present. This
+leads to boot failure on non-SNP enabled VMs.
+
+We use the PcdConfidentialComputingGuestAttr since it remains valid
+after MpInitLib runs which invalidates PcdSevEsWorkArea's cached
+sev-status msr which we use to check for SNP enabled in other places.
+
+The added functions ConfidentialComputingGuestHas() and
+AmdMemEncryptionAttrCheck() are copied from MpLib.c, which is intended
+to be replaced later on with a more minimal library perhaps in MdePkg to
+cleanup some of the circular dependencies currently surrounding SvsmLib.
+
+Signed-off-by: Jacob Xu <jacobhxu@google.com>
+Signed-off-by: Oliver Steffen <osteffen@redhat.com>
+Suggested-by: Tom Lendacky <thomas.lendacky@amd.com>
+---
+ .../Tpm2DeviceLibDTpmSvsm.inf                 |  1 +
+ .../Tpm2InstanceLibDTpmSvsm.inf               |  1 +
+ .../Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c       | 79 +++++++++++++++++++
+ 3 files changed, 81 insertions(+)
+
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
+index da48bd3c60..0efcd4fca7 100644
+--- a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpmSvsm.inf
+@@ -64,3 +64,4 @@
+   gEfiSecurityPkgTokenSpaceGuid.PcdCRBIdleByPass             ## PRODUCES
+   gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmPresence          ## PRODUCES
+   gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmBufferPtr         ## PRODUCES
++  gEfiMdePkgTokenSpaceGuid.PcdConfidentialComputingGuestAttr ## CONSUMES
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
+index 4baf363c11..357dfeb21f 100644
+--- a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2InstanceLibDTpmSvsm.inf
+@@ -58,3 +58,4 @@
+   gEfiSecurityPkgTokenSpaceGuid.PcdCRBIdleByPass           ## PRODUCES
+   gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmPresence        ## PRODUCES
+   gEfiSecurityPkgTokenSpaceGuid.PcdSvsmVTpmBufferPtr       ## PRODUCES
++  gEfiMdePkgTokenSpaceGuid.PcdConfidentialComputingGuestAttr ## CONSUMES
+diff --git a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
+index 8a49fe936f..b8c592043a 100644
+--- a/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
++++ b/SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2PtpSvsmShim.c
+@@ -15,6 +15,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ #include <Library/Tpm2DeviceLib.h>
+ #include <Library/PcdLib.h>
+ #include <Library/DebugLib.h>
++#include <ConfidentialComputingGuestAttr.h>
+ #include "Tpm2Ptp.h"
+ #include "Tpm2Svsm.h"
+ 
+@@ -27,6 +28,80 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
+ 
+ static BOOLEAN  mUseSvsmVTpm = FALSE;
+ 
++/**
++  The function check if the specified Attr is set.
++
++  @param[in]  CurrentAttr   The current attribute.
++  @param[in]  Attr          The attribute to check.
++
++  @retval  TRUE      The specified Attr is set.
++  @retval  FALSE     The specified Attr is not set.
++
++**/
++STATIC
++BOOLEAN
++AmdMemEncryptionAttrCheck (
++  IN  UINT64                             CurrentAttr,
++  IN  CONFIDENTIAL_COMPUTING_GUEST_ATTR  Attr
++  )
++{
++  UINT64  CurrentLevel;
++
++  CurrentLevel = CurrentAttr & CCAttrTypeMask;
++
++  switch (Attr) {
++    case CCAttrAmdSev:
++      //
++      // SEV is automatically enabled if SEV-ES or SEV-SNP is active.
++      //
++      return CurrentLevel >= CCAttrAmdSev;
++    case CCAttrAmdSevEs:
++      //
++      // SEV-ES is automatically enabled if SEV-SNP is active.
++      //
++      return CurrentLevel >= CCAttrAmdSevEs;
++    case CCAttrAmdSevSnp:
++      return CurrentLevel == CCAttrAmdSevSnp;
++    case CCAttrFeatureAmdSevEsDebugVirtualization:
++      return !!(CurrentAttr & CCAttrFeatureAmdSevEsDebugVirtualization);
++    default:
++      return FALSE;
++  }
++}
++
++/**
++  Check if the specified confidential computing attribute is active.
++
++  @param[in]  Attr          The attribute to check.
++
++  @retval TRUE   The specified Attr is active.
++  @retval FALSE  The specified Attr is not active.
++
++**/
++STATIC
++BOOLEAN
++EFIAPI
++ConfidentialComputingGuestHas (
++  IN  CONFIDENTIAL_COMPUTING_GUEST_ATTR  Attr
++  )
++{
++  UINT64  CurrentAttr;
++
++  //
++  // Get the current CC attribute.
++  //
++  CurrentAttr = PcdGet64 (PcdConfidentialComputingGuestAttr);
++
++  //
++  // If attr is for the AMD group then call AMD specific checks.
++  //
++  if (((RShiftU64 (CurrentAttr, 8)) & 0xff) == 1) {
++    return AmdMemEncryptionAttrCheck (CurrentAttr, Attr);
++  }
++
++  return (CurrentAttr == Attr);
++}
++
+ /**
+  Initializes SVSM vTPM if present, or otherwise uses TCG PTP method.
+ 
+@@ -44,6 +119,10 @@ EFIAPI
+ TryUseSvsmVTpm (
+   )
+ {
++  if (!ConfidentialComputingGuestHas (CCAttrAmdSevSnp)) {
++    return FALSE;
++  }
++
+   UINT8  SvsmVTpmPresence = (UINT8)PcdGet8 (PcdSvsmVTpmPresence);
+ 
+   if (SvsmVTpmPresence == SVSM_VTPM_PRESENCE_UNKNOWN) {
+-- 
+2.43.0
+

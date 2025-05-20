@@ -42,7 +42,6 @@ Source114:      descriptors.tar.xz.README
 Source2:        README
 Source3:        SLES-UEFI-CA-Certificate-2048.crt
 Source4:        openSUSE-UEFI-CA-Certificate-2048.crt
-
 Source7:        descriptors.tar.xz
 # oniguruma: https://github.com/kkos/oniguruma,  "src" directory only
 Source8:        oniguruma-v6.9.4_mark1-src.tar.xz
@@ -78,6 +77,18 @@ Patch11:        %{name}-BaseTools-Using-gcc12-for-building-image.patch
 Patch12:        %{name}-Increase-FVMAIN-Size-for-Compatibility-with-2MB-Size.patch
 # Bug 1240420 - UEFI boot breaks: X64 Exception Type - 0E(#PF - Page-Fault) CPU Apic ID - 00000000
 Patch13:        %{name}-UefiCpuPkg-Disable-EFI-memory-attributes-protocol.patch
+# Add vTPM support for SVSM in OVMF (jsc#PED-12743, jsc#PED-12767)
+Patch14:        %{name}-Maintainers.txt-Add-reviewer-for-SVSM-vTPM-related-m.patch
+Patch15:        %{name}-UefiCpuPkg-AmdSvsmLib-Stub-the-SVSM-vTPM-protocol-fo.patch
+Patch16:        %{name}-OvmfPkg-AmdSvsmLib-Add-the-SVSM-vTPM-protocol.patch
+Patch17:        %{name}-OvmfPkg-Use-Tpm2Device-lib-with-SVSM-vTPM-support.patch
+Patch18:        %{name}-OvmfPkg-AmdSvmLib-Use-named-protocol-and-call-consta.patch
+Patch19:        %{name}-MdePkg-AmdSev-Add-SVSM-protocol-call-numbers.patch
+Patch20:        %{name}-MdePkg-AmdSev-Add-SVSM-protocol-vTPM-call-numbers.patch
+Patch21:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Add-header-file-for-Tp.patch
+Patch22:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Add-TPM2-lib-supportin.patch
+Patch23:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Improve-spelling-gramm.patch
+Patch24:        %{name}-SecurityPkg-Tpm2DeviceLibDTpm-Check-SNP-enabled-prio.patch
 
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
@@ -292,11 +303,11 @@ BUILD_OPTIONS_X86=" \
 "
 
 # Flavors for x86_64: 2MB, 4MB, 4MB+SMM and AMD SEV
-FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev")
+FLAVORS_X64=("ovmf-x86_64" "ovmf-x86_64-4m" "ovmf-x86_64-smm" "ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 # Flavors will NOT enroll default kek/db keys
-FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev")
+FLAVORS_X64_SKIP_SB_KEY=("ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 # Flavors only support unified image (no separate *-code/-vars files)
-FLAVORS_X64_UNIFIED_ONLY=("")
+FLAVORS_X64_UNIFIED_ONLY=("ovmf-x86_64-sev" "ovmf-x86_64-tdx")
 BUILD_OPTIONS_X64=" \
 	$OVMF_FLAGS \
 	-D BUILD_SHELL=FALSE \
@@ -401,6 +412,7 @@ EXTRA_FLAGS_X64=(
 	[ovmf-x86_64-4m]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-smm]="-a IA32 -p OvmfPkg/OvmfPkgIa32X64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE -D SMM_REQUIRE -D SECURE_BOOT_ENABLE"
 	[ovmf-x86_64-sev]="-p OvmfPkg/OvmfPkgX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
+	[ovmf-x86_64-tdx]="-p OvmfPkg/IntelTdx/IntelTdxX64.dsc -D FD_SIZE_4MB -D NETWORK_TLS_ENABLE"
 )
 declare -A OUTDIR_X64
 OUTDIR_X64=(
@@ -408,6 +420,7 @@ OUTDIR_X64=(
 	[ovmf-x86_64-4m]="OvmfX64"
 	[ovmf-x86_64-smm]="Ovmf3264"
 	[ovmf-x86_64-sev]="OvmfX64"
+	[ovmf-x86_64-tdx]="OvmfX64"
 )
 
 %ifnarch x86_64
@@ -439,22 +452,6 @@ src_list=`find Build/OvmfX64/DEBUG_GCC*/X64/ -mindepth 1 -maxdepth 1 -type d -pr
 find $src_list \( -name "*.c" -o -name "*.h" \) -type f -print0 | sort -z | xargs -0 -i cp --parents -a {} source/ovmf-x86_64
 find source/ovmf-x86_64 -name *.c -type f -exec chmod 0644 {} \;
 %endif
-
-# The extra TDX flavor for x86_64
-BUILD_OPTION_X64_TDX=" \
-	-p OvmfPkg/IntelTdx/IntelTdxX64.dsc \
-	-a X64 \
-	-b DEBUG \
-	-t $TOOL_CHAIN \
-"
-
-build $BUILD_OPTION_X64_TDX
-cp Build/IntelTdx/DEBUG_*/FV/OVMF.fd ovmf-x86_64-tdx.bin
-cp Build/IntelTdx/DEBUG_*/FV/OVMF_CODE.fd ovmf-x86_64-tdx-code.bin
-cp Build/IntelTdx/DEBUG_*/FV/OVMF_VARS.fd ovmf-x86_64-tdx-vars.bin
-
-# Remove the temporary build files to reduce the disk usage (bsc#1178244)
-rm -rf Build/IntelTdx/
 
 # The extra Xen flavor for x86_64
 BUILD_OPTION_X64_XEN=" \

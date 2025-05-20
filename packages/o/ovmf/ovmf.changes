@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed May  7 09:52:50 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Add patchset to enable SVSM vTPM support in OVMF (jsc#PED-12743, jsc#PED-12767)
+  - 9bceb1600005 ovmf-Maintainers.txt-Add-reviewer-for-SVSM-vTPM-related-m.patch
+  - 87d4cdd09e4d ovmf-UefiCpuPkg-AmdSvsmLib-Stub-the-SVSM-vTPM-protocol-fo.patch
+  - 40b4e190d37d ovmf-OvmfPkg-AmdSvsmLib-Add-the-SVSM-vTPM-protocol.patch
+  - 06b2f9dc4385 ovmf-OvmfPkg-Use-Tpm2Device-lib-with-SVSM-vTPM-support.patch
+  - 458198aa49c3 ovmf-OvmfPkg-AmdSvmLib-Use-named-protocol-and-call-consta.patch
+  - fa74200c9269 ovmf-MdePkg-AmdSev-Add-SVSM-protocol-call-numbers.patch
+  - 70f806ec23fb ovmf-MdePkg-AmdSev-Add-SVSM-protocol-vTPM-call-numbers.patch
+  - edf5e365c104 ovmf-SecurityPkg-Tpm2DeviceLibDTpm-Add-header-file-for-Tp.patch
+  - e868ece3c7d1 ovmf-SecurityPkg-Tpm2DeviceLibDTpm-Add-TPM2-lib-supportin.patch
+  - 87f454532a61 ovmf-SecurityPkg-Tpm2DeviceLibDTpm-Improve-spelling-gramm.patch
+  - c2d8e9236787 ovmf-SecurityPkg-Tpm2DeviceLibDTpm-Check-SNP-enabled-prio.patch
+
+-------------------------------------------------------------------
+Wed May  7 02:55:27 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
+
+- Remove non-unified SEV/TDX images due to potential security risks. (bsc#1232762)
+    - ovmf-x86_64-sev-code.bin
+    - ovmf-x86_64-sev-vars.bin
+    - ovmf-x86_64-tdx-code.bin
+    - ovmf-x86_64-tdx-vars.bin
+
+-------------------------------------------------------------------
 Mon Apr 28 03:59:31 UTC 2025 - YI HSIN Lyu <richard.lyu@suse.com>
 
 - Add TDX flavor OVMF using Config-B (OvmfPkg/IntelTdx/IntelTdxX64.dsc).
