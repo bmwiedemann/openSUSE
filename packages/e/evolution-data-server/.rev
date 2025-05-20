@@ -2441,4 +2441,12 @@ New stable rel</comment>
     sources. (forwarded request 1268543 from iznogood)</comment>
     <requestid>1269661</requestid>
   </revision>
+  <revision rev="265" vrev="2">
+    <srcmd5>fb04ede348b481805991bf4ecfce62a3</srcmd5>
+    <version>3.56.1</version>
+    <time>1747726485</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277764 from dimstar)</comment>
+    <requestid>1278229</requestid>
+  </revision>
 </revisionlist>
