@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun May 18 06:25:24 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.2.1:
+  * Add convenient ALL_PLATFORMS_WITHOUT_CI group to exclude all CI
+    systems from ALL_PLATFORMS
+
+-------------------------------------------------------------------
+Sun May 18 06:03:14 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.2.0:
+  * Add detection of CI systems: GITHUB_CI, GITLAB_CI and
+    UNKNOWN_CI.
+  * Add new CI group to group all CI platforms.
+  * Move OS families diagrams to group documentation page.
+  * Remove ALL_PLATFORMS from Sankey diagram.
+  * Run tests on windows-11-arm runners.
+  * Remove tests on EOL ubuntu-20-04.
+
+-------------------------------------------------------------------
 Wed Mar  5 10:53:54 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 3.1.0:
