@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon May 19 05:52:35 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.31.9:
+  * Bump images, dependencies and versions
+  * Manually adding fix for failing pull-kubernetes-typecheck tests which had dependency with this commit: https://github.com/kubernetes/kubernetes/commit/61863035803cc105619925a0fa23a779a9578bd4
+  * Mark NodeExpansion finsihed without featuregate check
+  * Also change final status by removing featuregate check
+  * Check for newer fields when deciding expansion recovery feature status
+  * Fix for HNS local endpoint was being deleted instead of the remote endpoint.
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires: go >= 1.23.8`
+  * BuildRequires:  golang(API) = 1.23
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.31.9/build/dependencies.yaml#L117-L139
+
+-------------------------------------------------------------------
 Wed Apr 23 13:00:51 UTC 2025 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.31.8:

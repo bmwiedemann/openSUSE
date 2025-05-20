@@ -79,4 +79,12 @@ https://github.com/kubernetes/kubernetes/issues/130786</comment>
     <comment>Monthly Patch Release – April, 2025: Update to version 1.31.8</comment>
     <requestid>1272186</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>87457f9ed98e35255dec1360e57efc3b</srcmd5>
+    <version>1.31.9</version>
+    <time>1747736405</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – May, 2025: Update to version 1.31.9</comment>
+    <requestid>1278472</requestid>
+  </revision>
 </revisionlist>
