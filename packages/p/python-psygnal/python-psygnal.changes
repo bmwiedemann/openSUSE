@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu May 15 08:05:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.13.0
+  * feat: add testing utilities (#368)
+  * fix: Don't use deprecated model_fields access (#364)
+  * build: fix building of wheels with uv (#370)
+  * ci(pre-commit.ci): autoupdate (#369)
+  * docs: general docs update, use mkdocs-api-autonav (#367)
+  * build: use pyproject dependency groups and uv (#366)
+  * ci(dependabot): bump pypa/cibuildwheel from 2.22 to 2.23 (#360)
+  * Add back universal (none-any) wheel (#358)
+  * ci(pre-commit.ci): autoupdate (#355)
+- Drop support-pydantic-211.patch, merged upstream
+- Update Suggests from pyproject.toml
+- Use Python 3.11 on SLE-15 by default
+
+-------------------------------------------------------------------
 Wed Apr 30 05:00:03 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pydantic-211.patch:

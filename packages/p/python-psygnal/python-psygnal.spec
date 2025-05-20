@@ -16,15 +16,14 @@
 #
 
 
+%{?sle15_python_module_pythons}
 Name:           python-psygnal
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause
 URL:            https://github.com/pyapp-kit/psygnal
 Source:         https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pyapp-kit/psygnal#364
-Patch0:         support-pydantic-211.patch
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling >= 1.8.0}
 BuildRequires:  %{python_module pip}
@@ -46,7 +45,7 @@ Suggests:       python-ipython
 Suggests:       python-numpy
 Suggests:       python-pydantic
 Suggests:       python-qtpy
-Suggests:       python-rich
+Suggests:       python-rich >= 14.0.0
 Suggests:       python-wrapt
 Suggests:       python-griffe == 0.25.5
 Suggests:       python-wrapt
