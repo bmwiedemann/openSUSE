@@ -119,4 +119,12 @@ Forwarded request #1101518 from iznogood
     <comment></comment>
     <requestid>1273716</requestid>
   </revision>
+  <revision rev="14" vrev="10">
+    <srcmd5>dc6a3c3c4054ab460374a95e1da58e65</srcmd5>
+    <version>2.74.3</version>
+    <time>1747726465</time>
+    <user>anag_factory</user>
+    <comment>Fix date format in old changelog entries (forwarded request 1277789 from dimstar)</comment>
+    <requestid>1277955</requestid>
+  </revision>
 </revisionlist>
