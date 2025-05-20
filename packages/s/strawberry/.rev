@@ -1642,4 +1642,17 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1270901</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>6c4d16f69c634f9002d66cd03fd4e1be</srcmd5>
+    <version>1.2.11</version>
+    <time>1747726432</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.11
+  + Fixed playlist songs sometimes not updated with new cover.
+  + Fixed context album cover showing even when it's disabled in the setting (#1744).
+  + Fixed crash when dragging songs to a closed playlist (#1741).
+  + Enable startup notify in desktop file.
+</comment>
+    <requestid>1277894</requestid>
+  </revision>
 </revisionlist>
