@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 27 16:16:26 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- test-binary-format.patch: Use efi-app-$EFI_ARCH also for aarch64 and
+  riscv64
+- Use -ffat-lto-objects to fix testsuite on arm
+
+-------------------------------------------------------------------
 Sun Apr 02 14:29:25 UTC 2023 - bjorn.lie@gmail.com
 
 - Update to version 0.9.5:

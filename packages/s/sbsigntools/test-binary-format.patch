@@ -1,0 +1,32 @@
+From 9b72031f830f943e0e6695b5228a7068f5b4edee Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Fri, 28 Mar 2025 21:45:03 +0100
+Subject: [PATCH] Use efi-app for testing also on aarch64 and riscv64
+
+Current binutils implement the efi-app target also for aarch64 and
+riscv64, and gnu-efi is using it by default as of version 4.0.0.  This
+means that crt0-efi-$(EFI_ARCH) no longer contains the PE header, and
+linking as binary produces an unrecognizable object.  Switch to using
+efi-app-$(EFI_ARCH) to ensure the PE header is included in the output.
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 8a5340a..00c15bb 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -68,7 +68,7 @@ PKG_CHECK_MODULES(uuid, uuid,
+ 
+ dnl gnu-efi headers require extra include dirs
+ EFI_ARCH=$(uname -m | sed 's/i.86/ia32/;s/arm.*/arm/')
+-AM_CONDITIONAL(TEST_BINARY_FORMAT, [ test "$EFI_ARCH" = "arm" -o "$EFI_ARCH" = "aarch64" -o "$EFI_ARCH" = riscv64 ])
++AM_CONDITIONAL(TEST_BINARY_FORMAT, [ test "$EFI_ARCH" = "arm" ])
+ 
+ ##
+ # no consistent view of where gnu-efi should dump the efi stuff, so find it
+-- 
+2.49.0
+

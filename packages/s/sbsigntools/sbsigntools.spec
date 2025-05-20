@@ -1,7 +1,7 @@
 #
 # spec file for package sbsigntools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,6 +23,7 @@ Version:        0.9.5
 Release:        0
 URL:            http://git.kernel.org/pub/scm/linux/kernel/git/jejb/sbsigntools.git
 Source:         %{name}-%{version}.tar.gz
+Patch0:         test-binary-format.patch
 BuildRequires:  binutils-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  openssl-devel
@@ -43,6 +44,9 @@ binaries and drivers.
 
 %prep
 %autosetup -p1
+
+# Needed for tests/test.elf which is linked by calling ld directly
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 %build
 NOCONFIGURE=1 ./autogen.sh
