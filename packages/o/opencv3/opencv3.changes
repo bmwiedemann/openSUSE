@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May  7 10:02:57 UTC 2025 - Simon Lees <sflees@suse.de>
+
+- export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
+  minimum version warnings
+
+-------------------------------------------------------------------
 Tue Mar 11 12:29:00 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add opencv3-drop-numpy-distutils.patch: drop use of
