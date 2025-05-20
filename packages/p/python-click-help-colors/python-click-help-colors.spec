@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-help-colors
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/r-m-n/click-help-colors
 Source:         https://files.pythonhosted.org/packages/source/c/click-help-colors/click-help-colors-%{version}.tar.gz
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.0
@@ -43,10 +45,10 @@ Colorization of help messages in Click
 %setup -q -n click-help-colors-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -55,6 +57,7 @@ Colorization of help messages in Click
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%{python_sitelib}/*
+%{python_sitelib}/click[-_]help[-_]colors
+%{python_sitelib}/click[-_]help[-_]colors-%{version}*-info
 
 %changelog
