@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 17 08:59:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.9
+- CMakeLists.txt: Speed up build by removing compile dependencies
+- Move private header files from /include to /src
+- src/CMakeLists.txt: Update for private header files in /src
+- test/CMakeLists.txt: Update for private header files in /src
+- Vector.hpp: Get rid of std::is_trivial which is deprecated in C++26
+
+-------------------------------------------------------------------
 Mon Apr 14 06:30:00 UTC 2025 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.8
