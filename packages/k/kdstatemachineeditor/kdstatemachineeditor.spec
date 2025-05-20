@@ -34,18 +34,16 @@
 %define libnameview libkdstatemachineeditor_view%{?qt6:%{pkg_suffix}-}%{sover}
 #
 Name:           kdstatemachineeditor%{?pkg_suffix}
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        A framework for creating Qt State Machine metacode using a GUI
 # Legal: NOTE the EULA mentioned in LICENSE.txt only applies to "Licensed Product" users.
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://kdab.github.io/KDStateMachineEditor/
-Source:         https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/KDStateMachineEditor-v%{version}.tar.gz
+Source0:        https://github.com/KDAB/KDStateMachineEditor/releases/download/v%{version}/kdstatemachineeditor-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE -- work around build issue caused by graphviz packaging decisions
 Patch0:         0001-CMake-Find-gvplugin_dot_layout-on-openSUSE.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Fix-build-with-Qt-6.9.patch
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  doxygen
 BuildRequires:  graphviz-devel >= 2.30.1
@@ -145,13 +143,11 @@ or QML that can then be used in Qt or QtQuick projects.
 # libkdstatemachineeditor_debuginterfacesource is a static library
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
-%define build_options -DKDSME_INTERNAL_GRAPHVIZ:BOOL=FALSE
-
 %if 0%{?qt5}
 %cmake \
   -DECM_MKSPECS_INSTALL_DIR:STRING=%{_libdir}/qt5/mkspecs/modules \
-  %{build_options}
-%{nil}
+  -DKDSME_QT6:BOOL=FALSE \
+  -DKDSME_INTERNAL_GRAPHVIZ:BOOL=FALSE
 
 %cmake_build
 %endif
@@ -159,8 +155,7 @@ or QML that can then be used in Qt or QtQuick projects.
 %if 0%{?qt6}
 %cmake_qt6 \
   -DKDSME_QT6:BOOL=TRUE \
-  %{build_options}
-%{nil}
+  -DKDSME_INTERNAL_GRAPHVIZ:BOOL=FALSE
 
 %qt6_build
 %endif

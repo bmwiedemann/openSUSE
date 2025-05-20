@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri May 16 06:04:36 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.1.0
+  * KDStateMachineEditor now looks for Qt6 by default
+  * Bump to Graphviz 12.2.1
+- Drop patch, merged upstream:
+  * 0001-Fix-build-with-Qt-6.9.patch
+
+-------------------------------------------------------------------
 Thu Apr 24 15:03:04 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

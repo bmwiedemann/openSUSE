@@ -96,4 +96,12 @@
   * 0001-Fix-build-with-Qt-6.9.patch</comment>
     <requestid>1272458</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3f48b39f3a6f7c2fc8f885f80db0f94a</srcmd5>
+    <version>2.1.0</version>
+    <time>1747726473</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.0</comment>
+    <requestid>1277958</requestid>
+  </revision>
 </revisionlist>
