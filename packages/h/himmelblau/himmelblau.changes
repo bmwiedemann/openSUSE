@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue May 20 07:19:23 UTC 2025 - david.mulder@suse.com
+
+- Update to version 0.9.12+git.0.99b5ca6:
+  * Version 0.9.12
+  * Fix deadlock in nss
+  * systemd notify fixes
+
+-------------------------------------------------------------------
 Tue Apr 29 18:49:53 UTC 2025 - david.mulder@suse.com
 
 - Update to version 0.9.11+git.0.04ef9c8:
