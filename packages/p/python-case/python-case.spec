@@ -1,7 +1,7 @@
 #
 # spec file for package python-case
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,9 @@ Source:         https://files.pythonhosted.org/packages/source/c/case/case-%{ver
 Patch0:         remove_unittest2.patch
 Patch1:         remove_coverage.patch
 Patch2:         remove-nose.patch
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-pytest
@@ -45,10 +47,10 @@ Python unittest Utilities.
 %autopatch -p1
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 #%%check no tests exist https://github.com/celery/case/issues/8
@@ -56,6 +58,7 @@ Python unittest Utilities.
 %files %{python_files}
 %license LICENSE
 %doc Changelog README.rst
-%{python_sitelib}/*
+%{python_sitelib}/case
+%{python_sitelib}/case-%{version}*-info
 
 %changelog
