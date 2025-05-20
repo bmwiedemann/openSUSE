@@ -1,7 +1,7 @@
 #
 # spec file for package python-bowler
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
 Name:           python-bowler
 Version:        0.9.0
 Release:        0
@@ -31,18 +29,19 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module fissix}
 BuildRequires:  %{python_module moreorless}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  %{python_module volatile}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-attrs
 Requires:       python-click
 Requires:       python-fissix
 Requires:       python-moreorless
-Requires:       python-setuptools
 Requires:       python-volatile
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(post): alts
+Requires(postun): alts
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,10 +61,10 @@ modifiers as needed to build more complex or custom refactorings.  See the
 %setup -q -n bowler-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/bowler
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -81,7 +80,8 @@ modifiers as needed to build more complex or custom refactorings.  See the
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/bowler
+%{python_sitelib}/bowler-%{version}*-info
 %python_alternative %{_bindir}/bowler
 
 %changelog
