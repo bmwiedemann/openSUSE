@@ -21,7 +21,7 @@
 %endif
 
 Name:           fde-tools
-Version:        0.7.2
+Version:        0.7.3
 Release:        0
 Summary:        Tools required for Full Disk Encryption
 License:        GPL-2.0-only
@@ -30,16 +30,6 @@ URL:            https://github.com/openSUSE/fde-tools
 Source:         https://github.com/openSUSE/%{name}/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        fde-tools.service
 Patch0:         fde-tools-firstboot-alp-snapshot.patch
-Patch1:         fde-tools-bsc1213945-set-rsa-key-size.patch
-Patch2:         fde-tools-change-rpm-macro-dir.patch
-Patch3:         fde-tools-bsc1220160-conditional-requires.patch
-Patch4:         fde-tools-bsc1222970-firstboot-replace-ALP.patch
-Patch5:         fde-tools-bsc1223002-firstboot-disable-ccid.patch
-Patch6:         fde-tools-bsc1218390-Switch-to-target-platform-when-available.patch
-Patch7:         fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
-Patch8:         fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
-Patch9:         fde-tools-bsc1218181-replace-crypttab-key-path.patch
-Patch10:        fde-tools-bsc1238593-firstboot-more-bootloader-functions.patch
 BuildRequires:  help2man
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcryptsetup)

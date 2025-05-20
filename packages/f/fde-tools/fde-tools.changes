@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu May 15 02:54:23 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to version 0.7.3
+  + Detect the supported RSA key size
+  + Take snapshot when signing
+  + Switch to "--target-platform" when available
+  + Allow RPM_MACRO_DIR to be defined during build time
+  + Fix naming and disable ccid
+  + tpm: fix tpm-present with the newer pcr-oracle
+  + firstboot: make "Pass phrase" mandatory
+  + firstboot: disable FDE/TPM2 when secure boot is off
+  + Conditional helper
+  + firstboot: replace the key file path in crypttab
+  + firstboot: add more alias bootloader functions
+  + firstboot: detect the early reencryption
+- Refresh fde-tools-firstboot-alp-snapshot.patch
+- Drop merged patches
+  + fde-tools-bsc1213945-set-rsa-key-size.patch
+  + fde-tools-bsc1223771-firstboot-make-Pass-phrase-mandatory.patch
+  + fde-tools-bsc1223002-firstboot-disable-ccid.patch
+  + fde-tools-bsc1218181-replace-crypttab-key-path.patch
+  + fde-tools-bsc1220160-conditional-requires.patch
+  + fde-tools-change-rpm-macro-dir.patch
+  + fde-tools-bsc1243166-firstboot-disable-tpm2-when-sb-is-off.patch
+  + fde-tools-bsc1222970-firstboot-replace-ALP.patch
+  + fde-tools-bsc1218390-fix-tpm-present-with-the-newer-pcr-oracle.patch
+  + fde-tools-bsc1238593-firstboot-more-bootloader-functions.patch
+  + fde-tools-bsc1218390-Switch-to-target-platform-when-available.patch
+
+-------------------------------------------------------------------
+Wed May 14 08:17:56 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add fde-tools-bsc1243166-firstboot-disable-tpm2-when-sb-is-off.patch
+  to not skip the encryption process when Secure Boot is off
+  (bsc#1243166)
+
+-------------------------------------------------------------------
 Tue Mar 11 07:55:45 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add fde-tools-bsc1238593-firstboot-more-bootloader-functions.patch

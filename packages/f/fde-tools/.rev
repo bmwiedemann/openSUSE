@@ -209,4 +209,12 @@
     <comment></comment>
     <requestid>1251967</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d48a6ad6316b6fec4e5c829f35a743b2</srcmd5>
+    <version>0.7.3</version>
+    <time>1747726272</time>
+    <user>anag_factory</user>
+    <comment>update to 0.7.3 to include the fix for bsc#1243166 and to support KIWI early reencryption</comment>
+    <requestid>1277521</requestid>
+  </revision>
 </revisionlist>
