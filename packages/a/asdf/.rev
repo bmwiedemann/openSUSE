@@ -33,4 +33,12 @@
   * fix: remove comment from first line zsh completion output (#2035) (#2037) (forwarded request 1264739 from alessio.biancalana)</comment>
     <requestid>1264740</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6fd4c724dc2bdb639ad3eb290b6832ed</srcmd5>
+    <version>0.17.0</version>
+    <time>1747773964</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1278834</requestid>
+  </revision>
 </revisionlist>

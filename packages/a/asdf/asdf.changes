@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Tue May 20 14:12:50 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.17.0:
+  * chore: release 0.17.0 (#2084)
+  * fix: ensures output always ends with a newline when printed (#2098)
+  * fix: correct output of install command when system or path version set (#2097)
+  * fix: handle tilde in env vars (#2092)
+  * docs: add faq on version ranges in .tool-versions files (#2091)
+  * docs: add faq item on use of latest in .tool-versions files (#2090)
+  * fix: remove unused ForcePrepend option from Go code (#2089)
+  * feat: switch back to native git client (#1998)
+  * feat(golang-rewrite): add support for shim templates resolution (#2076)
+  * test(golang-rewrite): ignore global git config on repotest (#2068)
+  * chore: adjusting release-please-action config (#2083)
+  * chore: adjusting release-please-action config (#2082)
+  * chore: add proper release please config file (#2080)
+  * chore: fix release please config version is updated in all files (#2079)
+  * fix: set correct version for go install and make builds (#2077)
+  * chore(docs): bump vite from 5.4.18 to 5.4.19 in /docs (#2075)
+  * chore(docs): bump @types/node from 22.13.16 to 22.15.3 in /docs in the docs group (#2074)
+  * feat: log failure to add plugin in "plugin test" (#2059)
+  * docs: Fix link to bin/list-bin-paths (#2066)
+  * chore(docs): bump vite from 5.4.17 to 5.4.18 in /docs (#2065)
+  * chore(deps): bump golang.org/x/net from 0.36.0 to 0.38.0 (#2064)
+  * fix: remove default error action from plugin command (#2027)
+  * fix: correct intersection logic in `shims.FindExecutable` function so ordering of multiple versions is preserved (#2063)
+  * docs: use release-please-manifest.json for version on documentation website (#2050)
+  * fix: address linter warning
+  * chore(docs): bump vite from 5.4.14 to 5.4.17 in /docs (#2056)
+  * chore(docs): add binary download link to guide page (#2052)
+  * chore(docs): bump the docs group in /docs with 2 updates (#2048)
+  * add test for VersionStringFromFSFormat
+  * for FS format not from
+  * move version parsing of FS format to direct fs file name read
+  * chore(docs): bump vite from 5.4.14 to 5.4.17 in /docs (#2056)
+  * chore(docs): add binary download link to guide page (#2052)
+  * chore(docs): bump the docs group in /docs with 2 updates (#2048)
+  * update naming to reflect that this is tool not plugin version
+  * move to shims.parse to for better project wide handling
+  * support ref installed tool shims
+
+-------------------------------------------------------------------
 Thu Mar 27 20:56:09 UTC 2025 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.16.7:
