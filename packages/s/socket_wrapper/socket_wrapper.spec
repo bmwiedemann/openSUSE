@@ -24,7 +24,7 @@
 ############################# NOTE ##################################
 
 Name:           socket_wrapper
-Version:        1.4.4
+Version:        1.5.0
 Release:        0
 Summary:        A library passing all socket communications through Unix sockets
 License:        BSD-3-Clause

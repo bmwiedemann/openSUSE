@@ -260,4 +260,12 @@ Note: socket_wrapper fails if built on 'lamb'</comment>
 </comment>
     <requestid>1239849</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6fb9817b8bef7969031d205ebfc93077</srcmd5>
+    <version>1.5.0</version>
+    <time>1747726267</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1277071</requestid>
+  </revision>
 </revisionlist>
