@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 16 14:26:43 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.1:
+  * sbom: pass SHA512 not SHA256 when in use. (#1993)
+
+-------------------------------------------------------------------
+Fri May 16 12:56:29 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.25.0:
+  * license-check: fix running checks for builds using qemu (#1989)
+  * fix: improve QEMU resource limits handling (#1990)
+  * Fix/random port pwd shell (#1988)
+  * sbom: Populate downloadLocation and checksums (#1983)
+  * feat: use unsafe IO on QEMU, improve performance (#1987)
+  * Fix/metapackage builds (#1986)
+  * fix: ensure make parent dirs when unpacking files from
+    workspace (#1985)
+  * Fix test user permissions for logstash-8 (#1984)
+
+-------------------------------------------------------------------
 Wed May 14 04:49:59 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.24.0:
