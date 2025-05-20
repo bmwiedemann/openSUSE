@@ -1,7 +1,7 @@
 #
 # spec file for package python-cached-property
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %{?sle15_python_module_pythons}
 Name:           python-cached-property
 Version:        1.5.2
@@ -32,8 +31,10 @@ Patch0:         freezegun-skip.patch
 # PATCH-FIX-UPSTREAM Don't use asyncio.coroutine if it's not available -- https://github.com/pydanny/cached-property/pull/267
 Patch1:         python311.patch
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -48,10 +49,10 @@ and 3.
 %autosetup -p1 -n cached-property-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -60,6 +61,8 @@ and 3.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst README.rst HISTORY.rst
-%{python_sitelib}/*
+%{python_sitelib}/cached[-_]property.py
+%{python_sitelib}/cached[-_]property-%{version}*-info
+%pycache_only %{python_sitelib}/__pycache__/cached[-_]property*
 
 %changelog
