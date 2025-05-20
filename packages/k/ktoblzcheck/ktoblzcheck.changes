@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue May 20 08:48:01 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to version 1.59
+  * Fix building with MinGW 12
+  * cmake: Added support for python related variables with ‘3’
+    suffix when cross-compiling
+  * cmake: add support for finding python when cross compiling
+  * cmake: drop python2 support as it is eol
+  * Remove support for creating bankdata files, which has been
+    out sourced to ktoblzcheck-data package
+  * Fix 'Fails to build without network access' (sf/ktoblzcheck#23)
+  * Fix "Download .xlsx file name is changed" (sf/ktoblzcheck#24)
+- Remove limitation to specific python version
+- Removed patch, which has been applied upstream
+  * fix-building.patch
+
+-------------------------------------------------------------------
+Wed May 14 16:03:25 UTC 2025 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 1.58
+  * ktoblzupdate: Print location where the database is saved
+  * cmake: drop obsolete support for finding python development package
+- Add patches:
+  * fix-building.patch
+- Temporary fix for building with MinGW 12
+- Removed support for creating bankdata files
+- Use mingw64-ktoblzcheck-data package
+  
+-------------------------------------------------------------------
+Tue Jan  2 21:41:03 UTC 2024 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Update to 1.57
+  * Add Python 3.12 support (sf/ktoblzcheck#15)
+
+- Update to 1.56
+  * German bankdata files could not be downloaded  (sf/ktoblzcheck#16)
+
+- Update to 1.55
+  * Doxygen 1.11 complains about obsolete tags (sf/ktoblzcheck#17)
+  * build system of ktoblzcheck fails to generate database for netherlands
+      (sf/ktoblzcheck#15)
+
+- Update to 1.54
+  * Fix bug using broken python module xlrd (sf/ktoblzcheck#14)
+  * Fix for code beautifier not finding any files 
+      (https://sourceforge.net/p/ktoblzcheck/code/merge-requests/10/)
+  * Fixed warning on running code beautifier
+      (https://sourceforge.net/p/ktoblzcheck/code/merge-requests/11/)
+  * [GSoC 2020]: Provision of bank data in SQLite Format
+      (https://sourceforge.net/p/ktoblzcheck/code/merge-requests/12/)
+  * Support for database updates from server
+      (https://sourceforge.net/p/ktoblzcheck/code/merge-requests/13/)
+  * Update methods 45, B1, and C2. Implement method E4.
+      (https://sourceforge.net/p/ktoblzcheck/code/merge-requests/14/)
+
+- Add package libcurl-devel, python3-openpyxl and sqlite3-devel as build requirement
+- Add tarball with bank data generated from ktoblzcheck-data repository
+    (https://sourceforge.net/p/ktoblzcheck/data/ci/main/tree/)
+
+-------------------------------------------------------------------
 Fri Oct  8 04:02:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.53:

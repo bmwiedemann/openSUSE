@@ -1,7 +1,7 @@
 #
 # spec file for package ktoblzcheck
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,19 @@ Name:           ktoblzcheck
 Summary:        A library to check account numbers and bank codes of German banks
 License:        LGPL-2.1-only
 Group:          Productivity/Office/Finance
-Version:        1.53
+Version:        1.59
 Release:        0
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}-%{version}.tar.gz
 URL:            http://ktoblzcheck.sourceforge.net
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  libcurl-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3
 BuildRequires:  python3-devel
+BuildRequires:  python3-openpyxl
+BuildRequires:  sqlite3-devel
 
 %description
 KtoBLZCheck is a library to check account numbers and bank codes
@@ -62,17 +65,18 @@ Summary:        KtoBLZCheck python-bindings
 Group:          Development/Libraries/Python
 Requires:       %{libsoname} = %{version}
 Requires:       %{name} = %{version}
+Provides:       python-ktoblzcheck = %{version}
 Obsoletes:      python-%{name} < %{version}
 
 %description -n python3-%{name}
 This package contains the python-bindings for ktoblzcheck.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%cmake -DINSTALL_RAW_BANKDATA_FILE=1 -DENABLE_BANKDATA_DOWNLOAD=0
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
 %cmake_install
@@ -87,13 +91,10 @@ make %{?_smp_mflags}
 %doc AUTHORS ChangeLog NEWS README.md
 %license COPYING
 %{_bindir}/%{name}
+%{_bindir}/ktoblzupdate
 %{_bindir}/ibanchk
 %{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/ibanchk.1*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/ibandata.txt
-%{_datadir}/%{name}/bankdata_*.txt
-%{_datadir}/%{name}/blz_*.txt
 
 %files -n %{libsoname}
 %{_libdir}/*.so.*
@@ -104,10 +105,12 @@ make %{?_smp_mflags}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}.h
+%{_includedir}/%{name}_export.h
 %{_includedir}/iban.h
 %{_libdir}/cmake/KtoBlzCheck
 
 %files -n python3-%{name}
+%{_libdir}/python*/site-packages
 %{python3_sitearch}/*
 
 %changelog
