@@ -19,13 +19,17 @@
 #!BuildTag: opensuse/kiosk-firefox:%%ff_ver%%
 #!BuildTag: opensuse/kiosk-firefox:latest
 
-FROM opensuse/tumbleweed:latest
+FROM opensuse/bci/bci-micro:latest AS target
+FROM opensuse/tumbleweed:latest AS builder
+COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends MozillaFirefox xorg-x11-fonts libpulse0 MozillaFirefox-branding-openSUSE
-RUN set -euo pipefail; zypper -n clean -a; \
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox xorg-x11-fonts libpulse0 MozillaFirefox-branding-openSUSE
+RUN set -euo pipefail; useradd -m user -u 1000
+RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
-
+FROM opensuse/bci/bci-micro:latest
+COPY --from=builder /target /
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.application.kiosk-firefox
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Mozilla Firefox"
@@ -43,5 +47,8 @@ LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="https://raw.githubusercontent.com/SUSE/BCI-dockerfile-generator/Tumbleweed/kiosk-firefox-image/README.md"
 CMD ["/bin/bash", "-c", "firefox --kiosk $URL"]
-RUN useradd -m user -u 1000
+
 ENV DISPLAY=":0"
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
+COPY --from=builder /home/user /home/user
