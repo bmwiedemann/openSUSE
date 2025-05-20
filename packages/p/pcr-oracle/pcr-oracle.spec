@@ -18,14 +18,14 @@
 
 
 Name:           pcr-oracle
-Version:        0.5.5
+Version:        0.5.6
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-or-later
 Group:          System/Boot
 URL:            https://github.com/openSUSE/pcr-oracle
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  libopenssl-devel >= 0.9.8
+BuildRequires:  libopenssl-devel >= 3.0.0
 BuildRequires:  tpm2-0-tss-devel >= 2.4.0
 Requires:       libtss2-tcti-device0
 ExclusiveArch:  x86_64 aarch64 ppc64le riscv64

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 13 02:53:41 UTC 2025 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.5.6
+  + rsa: adopt OpenSSL 3.0 API to generate RSA key
+  + Drop the code for openSSL < 3.0.0
+  + Look for signing authority in alternative database
+   (bsc#1241957)
+- Bump the requirement of libopenssl-devel to 3.0.0
+
+-------------------------------------------------------------------
 Tue Apr  1 15:26:00 UTC 2025 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 0.5.5
